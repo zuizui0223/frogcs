@@ -41,13 +41,24 @@ Species-selective reassembly is the article-level result:
 - prevalence × rain contrast interaction: P = 0.844.
 - Status: **unsupported**.
 
-## Final mechanism slot
+## Final mechanism slot — supported
 
-The remaining prespecified mechanism question is **species-specific post-rain activity persistence**.
-
-It is tested with a temporally disjoint design:
+**Species-specific post-rain activity sensitivity** was tested with a temporally disjoint design:
 - 2001–2007: estimate each species’ within-route rain-recency sensitivity;
-- 2008–2015: independently estimate matched-pair wet-recruitment response;
-- test whether species with stronger early-period rain-pulse sensitivity are preferentially wet-recruited later.
+- 2008–2015: independently estimate matched-pair wet-recruitment response.
 
-No additional trait or mechanism family is opened if this test is null. Further mechanism analysis then requires new external data or an editor/reviewer request.
+Result:
+- 27 species estimable in both periods;
+- later wet-recruitment log odds increased by **0.284** per 1 SD greater early-period rain-pulse sensitivity;
+- 95% CI **0.141–0.428**;
+- **P = 1.05 × 10^-4**;
+- Spearman **rho = 0.458, P = .0162**;
+- family-stratified permutation, 24 species / 5 families:
+  - weighted within-family slope = **0.193**;
+  - positive-tail **P = .0156**;
+  - two-sided **P = .0344**.
+
+Interpretation:
+> species-specific sensitivity to recent rain is persistent enough across non-overlapping years to predict which species later enter wetter active assemblages.
+
+This closes the post-opening mechanism programme. No additional trait or mechanism family is opened without new external data or an editor/reviewer request.
