@@ -31,7 +31,7 @@ def fig1():
     el=[]
     el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="108mm" viewBox="0 0 1200 720">')
     el.append('<rect width="1200" height="720" fill="white"/>')
-    el.append(text(60,55,"Figure 1. Independent acoustic systems replicate the raw multispecies-calling association",30,"bold"))
+    el.append(text(60,55,"Figure 1. Rainfall associations are estimated under different observation conditioning",30,"bold"))
 
     # NAAMP
     el.append(rect(55,100,500,235,24,"#f7f7f7"))
@@ -47,7 +47,7 @@ def fig1():
 
     # FrogID
     el.append(rect(645,100,500,235,24,"#f7f7f7"))
-    el.append(text(670,140,"FrogID — Australia",28,"bold"))
+    el.append(text(670,140,"FrogID — Australia (activity-conditioned)",28,"bold"))
     el.append(text(670,178,"Expert-validated short recordings",22))
     el.append(text(670,210,"40,754 recordings · 13,148 recorders",20))
     el.append(rect(680,235,185,62,14,"#fff"))
@@ -55,8 +55,8 @@ def fig1():
     el.append(text(895,273,"→",34,"bold","middle"))
     el.append(rect(925,225,185,82,14,"#fff"))
     el.append(text(1018,252,"1 vs ≥2 calling",18,"bold","middle"))
-    el.append(text(1018,276,"species, conditional",17,"normal","middle"))
-    el.append(text(1018,298,"on ≥1 already calling",17,"normal","middle"))
+    el.append(text(1018,276,"species among already",17,"normal","middle"))
+    el.append(text(1018,298,"active recordings",17,"normal","middle"))
 
     # convergence
     el.append(line(305,335,305,405,3))
@@ -64,9 +64,9 @@ def fig1():
     el.append(line(305,405,600,455,3))
     el.append(line(895,405,600,455,3))
     el.append(rect(305,445,590,108,20,"#efefef",sw=3))
-    el.append(text(600,482,"Cross-system directional claim",25,"bold","middle"))
-    el.append(text(600,516,"More recent rainfall ↔ more short-window multispecies calling",21,"normal","middle"))
-    el.append(text(600,542,"No pooling of effect sizes",18,"normal","middle"))
+    el.append(text(600,482,"Different estimands, shared rainfall question",25,"bold","middle"))
+    el.append(text(600,516,"NAAMP: all surveyed stops · FrogID: already-active recordings",21,"normal","middle"))
+    el.append(text(600,542,"No direct replication or effect-size pooling",18,"normal","middle"))
 
     # robustness
     el.append(rect(120,585,390,70,16,"#fff"))
@@ -76,7 +76,7 @@ def fig1():
     el.append(text(885,614,"FrogID robustness",20,"bold","middle"))
     el.append(text(885,642,"within the same ERA5 cell",19,"normal","middle"))
     el.append(line(510,620,690,620,2,"8 8"))
-    el.append(text(600,697,"Raw event-level association; mechanism is decomposed separately in NAAMP",17,"normal","middle"))
+    el.append(text(600,697,"NAAMP decomposes participation breadth; FrogID tests activity-conditioned multiplicity",17,"normal","middle"))
     el.append('</svg>')
     return "\n".join(el)+"\n"
 
@@ -91,7 +91,7 @@ def fig2():
     el=[]
     el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="115mm" viewBox="0 0 1200 770">')
     el.append('<rect width="1200" height="770" fill="white"/>')
-    el.append(text(60,52,"Figure 2. Rain-recency associations replicate and persist within spatial units",30,"bold"))
+    el.append(text(60,52,"Figure 2. System-specific rain associations persist within spatial units",30,"bold"))
 
     # Panel A
     el.append(text(65,105,"A  Primary logistic associations",25,"bold"))
@@ -114,7 +114,7 @@ def fig2():
         el.append(line(xl,y,xh,y,5)); el.append(line(xl,y-9,xl,y+9,3)); el.append(line(xh,y-9,xh,y+9,3)); el.append(circle(xv,y,8))
         el.append(text(1090,y+6,f"{v:.3f}",18,"bold","end"))
     el.append(text(720,340,"Odds ratio per 1 SD increase in dryness",18,"normal","middle"))
-    el.append(text(720,365,"Different exposure metrics; no pooled effect",16,"normal","middle"))
+    el.append(text(720,365,"Different conditioning + exposure metrics; no pooled effect",16,"normal","middle"))
 
     # Panel B
     el.append(text(65,425,"B  Within-spatial-unit diagnostics",25,"bold"))
@@ -135,7 +135,7 @@ def fig2():
         el.append(line(xl,y,xh,y,5)); el.append(line(xl,y-9,xl,y+9,3)); el.append(line(xh,y-9,xh,y+9,3)); el.append(circle(xv,y,8))
         el.append(text(1090,y+6,f"{v:.4f}",18,"bold","end"))
     el.append(text(720,700,"Within-unit probability-scale coefficient",18,"normal","middle"))
-    el.append(text(600,748,"Both diagnostics negative with 95% CI excluding 0 · association, not causation",17,"normal","middle"))
+    el.append(text(600,748,"Within each native estimand, 95% CIs exclude 0 · association, not causation",17,"normal","middle"))
     el.append('</svg>')
     return "\n".join(el)+"\n"
 
@@ -155,7 +155,7 @@ def fig3():
     el=[]
     el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="118mm" viewBox="0 0 1200 790">')
     el.append('<rect width="1200" height="790" fill="white"/>')
-    el.append(text(60,55,"Figure 3. Rain expands acoustic participation without stronger residual co-calling",30,"bold"))
+    el.append(text(60,55,"Figure 3. NAAMP rain signal is concentrated in participation breadth",30,"bold"))
 
     # cue
     el.append(rect(430,95,340,82,20,"#f7f7f7",sw=3))
@@ -165,7 +165,7 @@ def fig3():
     # left activation branch
     el.append(line(520,177,335,245,3))
     el.append(rect(70,235,500,405,24,"#f7f7f7",sw=3))
-    el.append(text(320,278,"Community participation",27,"bold","middle"))
+    el.append(text(320,278,"Participation across stops and run",27,"bold","middle"))
     el.append(text(320,315,"Any calling at a stop",21,"bold","middle"))
     el.append(text(320,346,f"OR dryness = {act['odds_ratio']:.3f}",20,"normal","middle"))
     el.append(text(320,374,f"P = {act['p_value']:.2e}",19,"normal","middle"))
@@ -174,8 +174,8 @@ def fig3():
     el.append(text(320,478,f"β dryness = {pool['beta_rain_z']:.4f}",20,"normal","middle"))
     el.append(text(320,506,f"95% CI {pool['ci95_beta'][0]:.4f} to {pool['ci95_beta'][1]:.4f}",18,"normal","middle"))
     el.append(text(320,534,f"P = {pool['p_value']:.2e}",19,"normal","middle"))
-    el.append(text(320,595,"Supported: recent rain broadens",20,"bold","middle"))
-    el.append(text(320,622,"the acoustically active community",20,"bold","middle"))
+    el.append(text(320,595,"Supported: recent rain increases",20,"bold","middle"))
+    el.append(text(320,622,"active-stop coverage and pool breadth",20,"bold","middle"))
 
     # right residual-association branch
     el.append(line(680,177,865,245,3))
@@ -187,13 +187,15 @@ def fig3():
     el.append(text(880,420,f"β = {ind['beta_rain_z']:.5f} · P = {ind['p_value']:.3f}",18,"normal","middle"))
     el.append(text(880,465,"Mean pairwise excess covariance",20,"bold","middle"))
     el.append(text(880,495,f"β = {cov['beta_rain_z']:.5f} · P = {cov['p_value']:.3f}",18,"normal","middle"))
-    el.append(text(880,540,"Pairwise network density",20,"bold","middle"))
-    el.append(text(880,570,f"OR dryness = {nw['odds_ratio']:.3f} · P = {nw['p_value']:.3f}",18,"normal","middle"))
-    el.append(text(880,612,"No detectable rain-related strengthening",19,"bold","middle"))
+    sh=read("NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json")["rain_effect_on_shuffle_residual"]
+    el.append(text(880,530,"Fixed-marginal shuffle residual",19,"bold","middle"))
+    el.append(text(880,558,f"β = {sh['beta_rain_z']:.5f} · P = {sh['p_value']:.3f}",17,"normal","middle"))
+    el.append(text(880,592,"Pairwise network density",19,"bold","middle"))
+    el.append(text(880,620,f"OR dryness = {nw['odds_ratio']:.3f} · P = {nw['p_value']:.3f}",17,"normal","middle"))
 
     el.append(rect(220,685,760,66,18,"#efefef",sw=2))
-    el.append(text(600,715,"Interpretation: activation-dominated multispecies signal",23,"bold","middle"))
-    el.append(text(600,740,"not evidence by itself for temporal-niche compression or facilitation",18,"normal","middle"))
+    el.append(text(600,715,"Interpretation: broader stop-level participation",23,"bold","middle"))
+    el.append(text(600,740,"without detectable strengthening of within-active-unit or residual association",18,"normal","middle"))
     el.append('</svg>')
     return "\n".join(el)+"\n"
 
