@@ -57,6 +57,7 @@ jobs:
           python scripts/render_submission_metadata.py \
             --metadata /tmp/metadata-final.yml \
             --strict \
+            --stage archive \
             --outdir build/submission-metadata
 
       - name: Insert archive DOI into generated manuscript copy
@@ -66,7 +67,7 @@ jobs:
             --output build/MANUSCRIPT_JAE_FINAL.md
 
       - name: Audit finalized manuscript
-        run: python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL.md
+        run: python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL.md --review-stage final
 
       - name: Build finalized anonymous DOCX
         run: |
