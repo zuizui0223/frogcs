@@ -1,0 +1,138 @@
+name: frogcs JAE submission QA
+
+on:
+  push:
+    branches:
+      - submission/jae-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-jae-submission-qa
+  cancel-in-progress: true
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install metadata QA dependency
+        run: python -m pip install --disable-pip-version-check -q PyYAML==6.0.2
+
+      - name: Audit JAE manuscript
+        run: python scripts/audit_jae_submission.py
+
+      - name: Rebuild submission figures
+        run: python scripts/build_submission_figures.py
+
+      - name: Verify figures are deterministic
+        run: git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+
+      - name: Strict-test canonical submission metadata pipeline
+        run: |
+          cat > /tmp/frogcs-submission-metadata.yml <<'YAML'
+          manuscript:
+            title: "Recent rainfall predicts greater short-window co-calling in frog communities across continents"
+            target_journal: "Journal of Animal Ecology"
+            article_type: "Research Article"
+          authors:
+            - order: 1
+              given_names: "Example"
+              family_names: "Author"
+              display_name: "Example Author"
+              affiliation_ids: ["A1"]
+              orcid: "0000-0002-1825-0097"
+              credit_roles: ["Conceptualization", "Formal analysis", "Writing – original draft"]
+          affiliations:
+            A1:
+              institution: "Example University"
+              department: "Department of Ecology"
+              city: "Example City"
+              country: "Example Country"
+          corresponding_author:
+            author_order: 1
+            email: "example@example.org"
+            postal_address: "1 Example Street, Example City"
+          funding:
+            - funder: "None"
+              grant_number: ""
+          acknowledgements: "None"
+          conflict_of_interest: "The author declares no conflict of interest."
+          statement_on_inclusion: "This secondary-data analysis involved no new local field sampling; source programmes and regional literature are acknowledged and cited."
+          ethics_and_permits:
+            secondary_public_data_only: true
+            statement: "Secondary analysis of publicly released data; no new animal handling."
+          approvals:
+            all_authors_approve_submission: true
+            all_entitled_authors_included: true
+            not_under_consideration_elsewhere: true
+          repository:
+            url: "https://github.com/zuizui0223/frogcs"
+            license: "MIT"
+            archive_doi: "10.9999/frogcs.test"
+          source_data:
+            - name: "NAAMP"
+              doi: "10.5066/F7G44NG0"
+            - name: "FrogID"
+              doi: "10.15468/wazqft"
+          YAML
+          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage initial --outdir /tmp/rendered-initial
+          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage archive --outdir /tmp/rendered-archive
+          test -s /tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md
+          test -s /tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md
+          test -s /tmp/rendered-archive/ZENODO_METADATA_FINAL.json
+          test -s /tmp/rendered-archive/CITATION.cff
+          test -s /tmp/rendered-archive/ARCHIVE_REFERENCE.txt
+          test -s /tmp/rendered-initial/JAE_PORTAL_FIELDS.json
+          test -s /tmp/rendered-initial/SUBMISSION_METADATA_VALIDATION.json
+
+      - name: Dry-run DOI finalization on generated copy
+        run: |
+          python scripts/finalize_archive_doi.py --doi 10.9999/frogcs.test --output build/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL_TEST.md --review-stage final
+
+      - name: Verify frozen scientific inputs against import manifest
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root=Path(".")
+          manifest=json.loads((root/"FILE_SHA256.json").read_text())
+          intentionally_adapted={
+              "scripts/audit_jae_submission.py",
+              "scripts/build_submission_figures.py",
+          }
+          bad=[]
+          for path, expected in manifest.items():
+              if path in intentionally_adapted:
+                  continue
+              p=root/path
+              got=hashlib.sha256(p.read_bytes()).hexdigest()
+              if got != expected:
+                  bad.append((path, expected, got))
+          assert not bad, bad
+          print({"verified_manifest_entries": len(manifest)-len(intentionally_adapted), "status":"PASS"})
+          PY
+
+      - name: Upload review package
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-review-package
+          path: |
+            MANUSCRIPT_JAE_V0_3.md
+            JAE_TITLE_PAGE_V0_1.template.md
+            figures/*.svg
+            submission/*.md
+            submission/*.yml
+            submission/*.json
+            submission/CITATION.cff.template
+          if-no-files-found: error

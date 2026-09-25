@@ -11,7 +11,7 @@ import urllib.request
 import zipfile
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -117,6 +117,18 @@ def parse_hour(raw: str) -> float:
     return h
 
 
+def parse_aware_event_datetime(event_date, event_time: str) -> datetime:
+    d=event_date.isoformat() if hasattr(event_date,"isoformat") else str(event_date).strip()[:10]
+    t=str(event_time or "").strip()
+    s=t if "T" in t else f"{d}T{t}"
+    if s.endswith("Z"):
+        s=s[:-1]+"+00:00"
+    dt=datetime.fromisoformat(s)
+    if dt.tzinfo is None or dt.utcoffset() is None:
+        raise ValueError(f"eventTime lacks explicit offset: {event_time!r}")
+    return dt
+
+
 def load_frogid_sample():
     data=fetch_bytes(FROGID_URL)
     if hashlib.sha256(data).hexdigest()!=FROGID_SHA:
@@ -162,14 +174,14 @@ def load_frogid_sample():
             continue
         try:
             d=parse_date(raw_date)
-            hour=parse_hour(raw_time)
+            parse_aware_event_datetime(d,raw_time)
         except Exception:
             continue
 
         events[eid]={
             "eventID":eid,
             "event_date":d,
-            "event_hour":hour,
+            "event_time_raw":raw_time,
             "state":state,
             "recorder":recorder,
             "uncertainty_m":unc,
@@ -239,6 +251,47 @@ def fit_model(df: pd.DataFrame, cluster_col: str):
     }
 
 
+def fit_within_cell(df: pd.DataFrame):
+    d=df.copy()
+    month=pd.get_dummies(d["month"].astype(int),prefix="month",drop_first=True,dtype=float)
+    X=pd.DataFrame({
+      "dry_z":d["dry_z"].astype(float),
+      "year_z":d["year_z"].astype(float),
+      "sin_hour":d["sin_hour"].astype(float),
+      "cos_hour":d["cos_hour"].astype(float),
+    },index=d.index)
+    X=pd.concat([X,month.set_axis(d.index)],axis=1)
+    d["_y"]=d["multi"].astype(float)
+
+    stats=d.groupby("cell_id").agg(n=("_y","size"),dry_min=("dry_z","min"),dry_max=("dry_z","max"))
+    good=stats[(stats.n>=2) & ((stats.dry_max-stats.dry_min)>1e-12)].index
+    d=d[d.cell_id.isin(good)].copy()
+    X=X.loc[d.index].copy()
+
+    groups=d["cell_id"].astype(str)
+    y=d["_y"]-d.groupby("cell_id")["_y"].transform("mean")
+    Xw=pd.DataFrame(index=d.index)
+    for col in X.columns:
+        vals=X[col].astype(float)
+        Xw[col]=vals-vals.groupby(groups).transform("mean")
+
+    fit=sm.OLS(y.astype(float),Xw.astype(float)).fit(cov_type="cluster",cov_kwds={"groups":groups})
+    b=float(fit.params["dry_z"]); se=float(fit.bse["dry_z"]); p=float(fit.pvalues["dry_z"])
+    q=1.959963984540054; lo=b-q*se; hi=b+q*se
+    return {
+      "n_recordings":int(len(d)),
+      "multi_species_recordings":int(d.multi.sum()),
+      "informative_weather_cells":int(d.cell_id.nunique()),
+      "estimator":"within-ERA5-cell fixed-effects linear probability diagnostic",
+      "beta_dry_within_probability_scale":b,
+      "se_cell_cluster":se,
+      "ci95_beta":[lo,hi],
+      "p_value":p,
+      "direction_negative":bool(b<0),
+      "ci_excludes_zero_negative":bool(hi<0),
+    }
+
+
 def main():
     df=load_frogid_sample()
 
@@ -255,6 +308,31 @@ def main():
         event_tz.append(tz_cache[key])
     df=df.copy()
     df["timezone"]=event_tz
+
+    # Frozen timezone-aware repair: use the represented instant converted to
+    # the coordinate-derived timezone for both event date and cyclic hour.
+    repaired_dates=[]
+    repaired_hours=[]
+    hour_changed=0
+    date_changed=0
+    for r in df.itertuples(index=False):
+        dt=parse_aware_event_datetime(r.event_date,r.event_time_raw)
+        local=dt.astimezone(ZoneInfo(str(r.timezone)))
+        raw_hour=parse_hour(r.event_time_raw)
+        local_hour=local.hour+local.minute/60.0+local.second/3600.0+local.microsecond/3.6e9
+        diff=abs(raw_hour-local_hour)%24.0
+        diff=min(diff,24.0-diff)
+        if diff>1e-9:
+            hour_changed+=1
+        if local.date()!=r.event_date:
+            date_changed+=1
+        repaired_dates.append(local.date())
+        repaired_hours.append(local_hour)
+
+    df["event_date"]=repaired_dates
+    df["event_hour"]=repaired_hours
+    df["year"]=[d.year for d in repaired_dates]
+    df["month"]=[d.month for d in repaired_dates]
 
     storage=icechunk.s3_storage(
         bucket="earthmover-icechunk-era5",
@@ -308,8 +386,8 @@ def main():
         for tc in range(i0//TIME_CHUNK,i1//TIME_CHUNK+1):
             chunk_requirements[(tc,yi//LAT_CHUNK,xi//LON_CHUNK)].add(combo)
 
-    if len(chunk_requirements)!=EXPECTED_CHUNKS:
-        raise RuntimeError(f"chunk footprint drift {len(chunk_requirements)} != {EXPECTED_CHUNKS}")
+    if len(chunk_requirements)>480:
+        raise RuntimeError(f"repaired chunk footprint exceeds frozen maximum: {len(chunk_requirements)} > 480")
 
     # Only the daily values actually needed by retained events are kept.
     daily=defaultdict(float)
@@ -418,8 +496,8 @@ def main():
     timezone_counts=Counter(df.timezone.astype(str))
 
     result={
-        "analysis":"frogid_rain_synchrony_external_validation_v0_2",
-        "contract":"FROGID_VALIDATION_MODEL_CONTRACT_V0_4.json",
+        "analysis":"frogid_rain_synchrony_timezone_repair_v0_3",
+        "contract":"FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
         "frogid_source_sha256":FROGID_SHA,
         "era5_source":{
             "provider":"Earthmover public Icechunk ERA5",
@@ -455,6 +533,13 @@ def main():
         "sensitivities":{
             "coordinate_uncertainty_le10km":precision,
             "recorder_cluster":recorder,
+            "within_cell":fit_within_cell(df),
+        },
+        "time_alignment_repair":{
+            "contract":"FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+            "events_with_hour_changed":hour_changed,
+            "events_with_date_changed":date_changed,
+            "required_unique_tp_chunks":len(chunk_requirements),
         },
         "naamp_primary_replaced":False,
         "causal_claim_authorized":False,
@@ -462,7 +547,7 @@ def main():
     }
 
     ds.close()
-    out=Path("frog_frogid_rain_validation_earthmover_v0_2.json")
+    out=Path("frog_frogid_rain_validation_timezone_repair_v0_3.json")
     out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,indent=2,sort_keys=True))
 

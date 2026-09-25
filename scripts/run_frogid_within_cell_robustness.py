@@ -82,8 +82,6 @@ def main():
     base.main()
     src=Path("frog_frogid_rain_validation_earthmover_v0_2.json")
     raw=src.read_text(encoding="utf-8")
-    if raw.endswith("\\n"):
-        raw=raw[:-2]
     payload=json.loads(raw)
     result={
       "analysis":"frogid_within_weather_cell_spatial_confounding_v0_1_1",

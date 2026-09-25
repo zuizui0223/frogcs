@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import argparse
 import re
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[3]
-BASE=ROOT/"incubator"/"frog_chorus_synchrony"
-MS=BASE/"MANUSCRIPT_JAE_V0_3.md"
+ROOT=Path(__file__).resolve().parents[1]
+BASE=ROOT
+parser=argparse.ArgumentParser()
+parser.add_argument("--manuscript", default=str(BASE/"MANUSCRIPT_JAE_V0_4.md"))
+parser.add_argument("--review-stage", choices=["initial","final"], default="initial")
+args=parser.parse_args()
+MS=Path(args.manuscript)
 text=MS.read_text(encoding="utf-8")
 
 def words(s):
@@ -52,12 +57,31 @@ for forbidden_identity in [
     )
 assert "@" not in text, "main manuscript must not contain email addresses"
 
-assert "Recent rainfall predicts greater short-window co-calling" in text
+assert ("Recent rainfall predicts greater short-window co-calling" in text or "Recent rainfall predicts broader frog acoustic participation" in text)
 assert "10.5066/F7G44NG0" in text
 assert "10.15468/wazqft" in text
 assert "10.1002/qj.3803" in text
-assert "Zenodo" in text
+if args.review_stage == "initial":
+    assert ("Zenodo" in text or "persistent research repository" in text), "initial manuscript must state intended archive location"
+else:
+    assert ("available at DOI 10." in text or "https://doi.org/10." in text), "final manuscript must contain archive DOI"
+
 assert "Figure 1." in text and "Figure 2." in text
+if "MANUSCRIPT_JAE_V0_4" in str(MS) or "broader frog acoustic participation" in text:
+    assert "Figure 3." in text
+
+if args.review_stage == "initial":
+    # Keep reviewer-facing main document anonymous. A generic archive-intent statement is allowed,
+    # but public author-identifying repository/deposition links are deferred.
+    for forbidden_public_identifier in [
+        "github.com/zuizui0223/frogcs",
+        "10.5281/zenodo.",
+        "zenodo.org/record/",
+        "zenodo.org/records/",
+    ]:
+        assert forbidden_public_identifier.lower() not in text.lower(), (
+            f"public identifying archive link/DOI in initial-review manuscript: {forbidden_public_identifier}"
+        )
 
 print({
     "abstract_words":abstract_words,

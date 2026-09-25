@@ -1,0 +1,40 @@
+name: sync revised JAE figures to branch
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - ".github/workflows/sync_revision_figures.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: revision/activation-decomposition-v1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild revised figures
+        run: python scripts/build_submission_figures.py
+      - name: Verify exact revised hashes
+        run: python scripts/verify_revision_figure_hashes.py
+      - name: Commit generated figures
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+          if git diff --cached --quiet; then
+            echo "Figures already synchronized"
+            exit 0
+          fi
+          git commit -m "Sync revised JAE figures from deterministic generator"
+          git push origin HEAD:revision/activation-decomposition-v1

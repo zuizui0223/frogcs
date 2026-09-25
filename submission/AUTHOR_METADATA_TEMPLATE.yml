@@ -1,0 +1,37 @@
+# Human submission metadata template
+# Fill manually. Do not commit sensitive information unless intended for public release.
+
+manuscript:
+  title: "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations"
+  target_journal: "Journal of Animal Ecology"
+  article_type: "Research Article"
+
+authors:
+  - order: 1
+    name: "[FULL NAME]"
+    affiliation_ids: ["A1"]
+    orcid: "[OPTIONAL]"
+    credit_roles: ["[CRediT ROLE]"]
+
+affiliations:
+  A1:
+    institution: "[INSTITUTION]"
+    department: "[DEPARTMENT]"
+    city: "[CITY]"
+    country: "[COUNTRY]"
+
+corresponding_author:
+  name: "[NAME]"
+  email: "[EMAIL]"
+  postal_address: "[POSTAL ADDRESS]"
+
+funding:
+  - funder: "[FUNDER OR 'None']"
+    grant_number: "[GRANT NUMBER OR N/A]"
+
+acknowledgements: "[TEXT OR None]"
+conflict_of_interest: "[STATEMENT]"
+all_authors_approve_submission: false
+not_under_consideration_elsewhere: false
+repository_license: "[CONFIRM LICENSE]"
+archive_doi: "[INSERT DOI AFTER MINTING]"

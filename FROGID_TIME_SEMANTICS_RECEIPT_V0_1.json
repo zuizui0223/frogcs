@@ -1,0 +1,16 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit": "frogid_eventtime_semantics_v0_1",
+  "contract": "FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json",
+  "workflow_run": 36112828578,
+  "artifact_id": 10853991343,
+  "artifact_digest": "sha256:49ee41606099d098560cac3d676a7c526406d272dd45c3cd6256e3ca4e8d3c7c",
+  "source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+  "distinct_events": 655502,
+  "format_counts": {
+    "explicit_offset": 655502
+  },
+  "explicit_offset_or_Z_fraction": 1,
+  "parse_failures": 0,
+  "conclusion": "All public eventTime values in the fixed snapshot carry explicit UTC offsets; timezone semantics required an outcome-blind alignment audit before final submission."
+}

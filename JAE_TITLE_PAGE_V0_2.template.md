@@ -1,4 +1,4 @@
-# Journal of Animal Ecology title page — human metadata template
+# Journal of Animal Ecology title page — human metadata template v0.2
 
 **Manuscript title:** Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations
 
@@ -19,6 +19,10 @@
 ## Author Contributions
 
 [CONFIRM CONTRIBUTIONS / CRediT ROLES FOR EACH AUTHOR]
+
+## Statement on Inclusion
+
+[CONFIRM REQUIRED JAE SUBMISSION STATEMENT]
 
 ## Approval
 

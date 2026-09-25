@@ -1,0 +1,63 @@
+{
+  "project": "frog-chorus-synchrony",
+  "repair_version": "0.1",
+  "status": "reviewer_motivated_repairs_frozen_before_new_effect_readback",
+  "rationale": "Address logical and implementation issues identified during pre-submission audit without replacing the original primary endpoint.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "days_since_rain_audit": {
+    "outcome_blind": true,
+    "publisher_definition": "Number of days since last rain event.",
+    "publisher_numeric_range_days": [
+      0,
+      180
+    ],
+    "publisher_null_code": "Null",
+    "report": [
+      "min",
+      "max",
+      "quantiles",
+      "counts_at_0_30_60_90_120_180",
+      "counts_gt_30_60_90_120_180",
+      "numeric_out_of_range",
+      "non_numeric_values"
+    ],
+    "rule": "No recoding. If any numeric value lies outside the documented [0,180] range, repaired effect analyses fail closed."
+  },
+  "h3_hierarchy_repair": {
+    "reason": "Original frozen formula omitted the lower-order shoulder main effect while including rain_z:shoulder.",
+    "primary_formula": "prop ~ rain_z * shoulder + C(State) + C(RunNumber) + C(RouteType) + year_z",
+    "sensitivity_formula": "prop ~ rain_z + rain_z:shoulder + C(State) * C(RunNumber) + C(RouteType) + year_z",
+    "term": "rain_z:shoulder",
+    "decision": "Report corrected coefficient and retain H3 unsupported unless both direction and CI support the prespecified negative interaction. This repair cannot upgrade the original H3 retrospectively to a preregistered positive result."
+  },
+  "active_pool_richness": {
+    "label": "reviewer-motivated mechanistic diagnostic",
+    "eligibility": "complete 10-stop UnifiedProtocol runs, valid documented DaysSinceRain, >=8 valid temperature stops, plausible run mean temperature [-10,45] C, parseable SurveyDate",
+    "response": "log1p(number of distinct positively calling species across the 10-stop run)",
+    "formula": "log1p_pool ~ rain_z + temp_z + bs(doy, df=5, degree=3) + C(State) + C(RunNumber) + C(RouteType) + year_z",
+    "covariance": "cluster robust by State:RouteNumber",
+    "directional_expectation": "beta_rain_z < 0 means more recent rain is associated with a larger active species pool",
+    "interpretation_boundary": "This is acoustic participation richness, not local occupancy richness or demographic richness."
+  },
+  "independence_residual": {
+    "label": "reviewer-motivated mechanistic diagnostic",
+    "eligibility": "same complete 10-stop runs as active_pool_richness with >=2 species in the run pool",
+    "observed": "fraction of the 10 stops containing >=2 positively calling species",
+    "species_marginals": "for each species in a run, fraction of the 10 stops at which that species called",
+    "expected_under_independence": "1 - product_i(1-p_i) - sum_i[p_i * product_{j!=i}(1-p_j)]",
+    "primary_response": "observed P(>=2) minus independence-expected P(>=2)",
+    "primary_formula": "independence_residual ~ rain_z + temp_z + bs(doy, df=5, degree=3) + C(State) + C(RunNumber) + C(RouteType) + year_z",
+    "sensitivity_response": "mean across species pairs of observed pairwise co-calling frequency minus p_i*p_j",
+    "sensitivity_formula": "pair_covariance_mean ~ rain_z + temp_z + bs(doy, df=5, degree=3) + C(State) + C(RunNumber) + C(RouteType) + year_z",
+    "covariance": "cluster robust by State:RouteNumber",
+    "interpretation": "A rain coefficient near zero supports activation/marginal-frequency change without detectable restructuring of residual within-run co-calling association.",
+    "limitation": "Plug-in marginal probabilities are estimated from the same 10 stops and this diagnostic is reviewer-motivated, not part of the original confirmatory family."
+  },
+  "original_primary_replaced": false,
+  "original_network_result_replaced": false,
+  "causal_claim_authorized": false
+}

@@ -1,0 +1,122 @@
+name: frogcs final JAE submission bundle
+
+on:
+  workflow_dispatch:
+    inputs:
+      archive_doi:
+        description: "Published archive DOI, e.g. 10.5281/zenodo.1234567"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+
+      - name: Materialize private submission metadata
+        env:
+          JAE_SUBMISSION_METADATA_YAML: ${{ secrets.JAE_SUBMISSION_METADATA_YAML }}
+          ARCHIVE_DOI: ${{ inputs.archive_doi }}
+        run: |
+          test -n "$JAE_SUBMISSION_METADATA_YAML" || {
+            echo "Missing repository secret JAE_SUBMISSION_METADATA_YAML" >&2
+            exit 2
+          }
+          printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-input.yml
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import yaml
+
+          p=Path("/tmp/metadata-input.yml")
+          m=yaml.safe_load(p.read_text(encoding="utf-8"))
+          if not isinstance(m,dict):
+              raise SystemExit("Secret metadata is not a YAML mapping")
+          m.setdefault("repository",{})["archive_doi"]=os.environ["ARCHIVE_DOI"]
+          Path("/tmp/metadata-final.yml").write_text(
+              yaml.safe_dump(m, sort_keys=False, allow_unicode=True),
+              encoding="utf-8",
+          )
+          print("private metadata materialized without logging values")
+          PY
+
+      - name: Validate and render human metadata
+        run: |
+          python scripts/render_submission_metadata.py \
+            --metadata /tmp/metadata-final.yml \
+            --strict \
+            --stage archive \
+            --outdir build/submission-metadata
+
+      - name: Insert archive DOI into generated manuscript copy
+        run: |
+          python scripts/finalize_archive_doi.py \
+            --doi "${{ inputs.archive_doi }}" \
+            --input MANUSCRIPT_JAE_V0_4.md \
+            --output build/MANUSCRIPT_JAE_FINAL.md
+
+      - name: Audit finalized manuscript
+        run: python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL.md --review-stage final
+
+      - name: Build finalized anonymous DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source build/MANUSCRIPT_JAE_FINAL.md \
+            --output build/FROG_JAE_ANON_MAIN_FINAL.docx
+
+      - name: Rebuild and verify figures
+        run: |
+          python scripts/build_submission_figures.py
+          python scripts/verify_revision_figure_hashes.py
+
+      - name: Assemble final submission bundle
+        run: |
+          set -eu
+          out=build/final-submission
+          mkdir -p "$out"
+
+          cp build/MANUSCRIPT_JAE_FINAL.md "$out/"
+          cp build/FROG_JAE_ANON_MAIN_FINAL.docx "$out/"
+          cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
+          cp build/submission-metadata/ZENODO_METADATA_FINAL.json "$out/"
+          cp build/submission-metadata/CITATION.cff "$out/"
+          cp build/submission-metadata/ARCHIVE_REFERENCE.txt "$out/"
+          cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
+          cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
+          cp figures/FIGURE_1_DESIGN_V0_1.svg "$out/"
+          cp figures/FIGURE_2_EFFECTS_V0_1.svg "$out/"
+          cp figures/FIGURE_3_DECOMPOSITION_V0_1.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_2.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_2.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_V2_0.md "$out/"
+
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          out=Path("build/final-submission")
+          rows={}
+          for p in sorted(out.iterdir()):
+              if p.is_file():
+                  rows[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2)+"\n",encoding="utf-8")
+          print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
+          PY
+
+      - name: Upload final JAE bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-final-submission-bundle
+          path: build/final-submission/
+          if-no-files-found: error

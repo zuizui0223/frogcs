@@ -1,0 +1,73 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "frogid_rain_synchrony_timezone_repair_v0_3",
+  "contract": "FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+  "workflow_run": 36113278243,
+  "artifact_id": 10853279432,
+  "artifact_digest": "sha256:f3e234268e45ed95f465a2cd41e49b44d801e8155ebd22a301bbb2a722ee1839",
+  "head_sha": "c7af0e5b988fd4b9d9bd903dc9392c7ad592b039",
+  "source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+  "frozen_sample": {
+    "recordings": 40754,
+    "multi_species_recordings": 18174,
+    "weather_cells": 1623,
+    "recorders": 13148
+  },
+  "time_alignment_repair": {
+    "events_with_hour_changed": 151,
+    "events_with_date_changed": 6,
+    "required_unique_tp_chunks": 470
+  },
+  "required_daily_weather_sha256": "48c72f3141cc9b6154578fc9ff79773b05bd41c81781923717e7f173bf441834",
+  "primary": {
+    "beta": -0.15906037072751616,
+    "se_cluster": 0.015518636017219813,
+    "ci95_beta": [
+      -0.1894763384104531,
+      -0.12864440304457922
+    ],
+    "odds_ratio_per_sd_log1p_dry_days": 0.8529448645127664,
+    "ci95_or": [
+      0.8273922940826984,
+      0.8792865815909882
+    ],
+    "p_value": 1.1879001000920188e-24,
+    "support_rule_pass": true
+  },
+  "recorder_cluster": {
+    "beta": -0.15906037072751616,
+    "se_cluster": 0.013315861924219788,
+    "ci95_beta": [
+      -0.18515898052209517,
+      -0.13296176093293716
+    ],
+    "ci95_or": [
+      0.8309721649616066,
+      0.8754985697172116
+    ],
+    "p_value": 6.880104126132845e-33,
+    "support_rule_pass": true
+  },
+  "within_cell": {
+    "beta_dry_within_probability_scale": -0.04261642783763978,
+    "se_cell_cluster": 0.004632096327860426,
+    "ci95_beta": [
+      -0.05169516981316646,
+      -0.03353768586211311
+    ],
+    "p_value": 3.5712969452378e-20,
+    "informative_weather_cells": 1071,
+    "n_recordings": 40020,
+    "direction_negative": true,
+    "ci_excludes_zero_negative": true
+  },
+  "effect_change_from_original": {
+    "original_or": 0.8528222811782705,
+    "repaired_or": 0.8529448645127664,
+    "original_within_cell_beta": -0.04265,
+    "repaired_within_cell_beta": -0.04261642783763978,
+    "interpretation": "negligible numerical change; original directional conclusion retained"
+  },
+  "submission_rule": "Use repaired v0.3 values in the revised manuscript and figures. Preserve original v0.2 receipt as historical provenance.",
+  "causal_claim_authorized": false
+}

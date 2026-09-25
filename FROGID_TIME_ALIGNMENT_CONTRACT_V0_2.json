@@ -1,0 +1,14 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit_version": "0.2",
+  "status": "timezone_offset_alignment_audit_frozen_before_any_timing_repair_effect_readback",
+  "source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+  "sample_rule": "first byte SHA256(eventID) < 16, valid coordinates, coordinate uncertainty <=25 km",
+  "comparison": "Compare supplied eventTime UTC offset with the offset of timezonefinder timezone_at(event coordinates) at the represented instant; also compare published eventDate and raw wall-clock hour to the coordinate-timezone-converted timestamp.",
+  "decision_rule": {
+    "no_model_repair": "If all or effectively all retained events have matching offsets and converted local date/hour equal the supplied wall-clock date/hour, retain current hour covariate semantics but document the audit.",
+    "model_repair": "If material mismatch exists, freeze a timezone-aware event datetime repair before recomputing FrogID weather effects."
+  },
+  "weather_values_read": false,
+  "frogid_effect_values_read": false
+}

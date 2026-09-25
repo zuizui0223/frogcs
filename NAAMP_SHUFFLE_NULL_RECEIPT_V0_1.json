@@ -1,0 +1,41 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_fixed_marginal_shuffle_null_v0_1",
+  "contract": "NAAMP_SHUFFLE_NULL_CONTRACT_V0_1.json",
+  "workflow_run": 36115668485,
+  "artifact_id": 10854713408,
+  "artifact_digest": "sha256:968b3761943c9c44429c319bafeddd846343594dbcee439e04ed9651f10818ae",
+  "head_sha": "63549420e6f52b024a44db3154a5981d4be7ce33",
+  "permutations_per_run": 1024,
+  "subset": {
+    "n_runs": 7176,
+    "n_routes": 794,
+    "pool_richness_mean": 4.054905239687848,
+    "observed_multi_mean": 0.47575250836120403,
+    "shuffle_mean_mean": 0.47668286922118874,
+    "shuffle_residual_mean": -0.0009303608599846845,
+    "shuffle_sd_median": 0.07390977482062269
+  },
+  "rain_effect_on_shuffle_residual": {
+    "beta_rain_z": 0.0009332932271213329,
+    "se_cluster": 0.0010360205252316565,
+    "ci95_beta": [
+      -0.0010972696895769842,
+      0.00296385614381965
+    ],
+    "p_value": 0.3676710881567309,
+    "n_runs": 7176,
+    "n_routes": 794
+  },
+  "standardized_excess_summary": {
+    "mean": 0.0222652263303966,
+    "median": 0.07632306039530198,
+    "fraction_positive": 0.5153288740245262
+  },
+  "interpretation": "No detectable rain-related change in co-calling beyond a fixed-marginal within-run shuffle null; result agrees with the plug-in independence-residual diagnostic.",
+  "limitation": "The shuffle destroys shared stop identity, so persistent stop-level habitat/detectability heterogeneity remains part of observed excess rather than being conditioned away.",
+  "label": "reviewer-motivated post-opening diagnostic",
+  "existing_independence_residual_replaced": false,
+  "original_primary_replaced": false,
+  "causal_claim_authorized": false
+}

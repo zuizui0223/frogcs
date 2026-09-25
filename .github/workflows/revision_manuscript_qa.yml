@@ -1,0 +1,144 @@
+name: frogcs activation-decomposition manuscript QA
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_4.md"
+      - "NAAMP_*RECEIPT*.json"
+      - "FROGID_*RECEIPT*.json"
+      - "SPATIAL_CONFOUNDING_ROBUSTNESS_RECEIPT_V0_1.json"
+      - "scripts/audit_jae_submission.py"
+      - "scripts/build_jae_anonymous_docx.py"
+      - "scripts/build_submission_figures.py"
+      - "CLAIM_BOUNDARY_V2_0.json"
+      - "ANALYSIS_PROVENANCE_V0_1.md"
+      - "submission/COVER_LETTER_JAE_V0_2.md"
+      - "submission/NOVELTY_AUDIT_V0_3.md"
+      - "submission/REVIEWER_ATTACK_MATRIX_V0_3.md"
+      - "submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md"
+      - "submission/SUBMISSION_HANDOFF_RC3.md"
+      - "submission/SUBMISSION_HANDOFF_V2_0.md"
+      - "submission/JAE_PORTAL_CHECKLIST_V0_2.md"
+      - "REVISION_FIGURE_HASHES_V0_1.json"
+      - "FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json"
+      - "JAE_TITLE_PAGE_V0_2.template.md"
+      - ".github/workflows/initial_submission_bundle.yml"
+      - ".github/workflows/final_submission_bundle.yml"
+      - ".github/workflows/revision_manuscript_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+      - name: Audit revised manuscript
+        run: python scripts/audit_jae_submission.py --manuscript MANUSCRIPT_JAE_V0_4.md --review-stage initial
+      - name: Rebuild all submission figures
+        run: python scripts/build_submission_figures.py
+      - name: Verify deterministic figure hashes
+        run: python scripts/verify_revision_figure_hashes.py
+      - name: Guard revised framing against superseded claims
+        run: |
+          ! grep -qi "temporal niche compression in frog communities" submission/COVER_LETTER_JAE_V0_2.md
+          ! grep -qi "conditioning.*rules out.*independent" submission/NOVELTY_AUDIT_V0_3.md
+          grep -qi "activation" CLAIM_BOUNDARY_V2_0.json
+          grep -qi "reviewer-motivated" ANALYSIS_PROVENANCE_V0_1.md
+
+      - name: Dry-run private metadata rendering and DOI finalization
+        run: |
+          cat > /tmp/rc3-metadata.yml <<'YAML'
+          manuscript:
+            title: "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations"
+            target_journal: "Journal of Animal Ecology"
+            article_type: "Research Article"
+          authors:
+            - order: 1
+              given_names: "Example"
+              family_names: "Author"
+              display_name: "Example Author"
+              affiliation_ids: ["A1"]
+              orcid: "0000-0002-1825-0097"
+              credit_roles: ["Conceptualization", "Formal analysis", "Writing – original draft"]
+          affiliations:
+            A1:
+              institution: "Example University"
+              department: "Department of Ecology"
+              city: "Example City"
+              country: "Example Country"
+          corresponding_author:
+            author_order: 1
+            email: "example@example.org"
+            postal_address: "1 Example Street, Example City"
+          funding:
+            - funder: "None"
+              grant_number: ""
+          acknowledgements: "None"
+          conflict_of_interest: "The author declares no conflict of interest."
+          statement_on_inclusion: "This secondary-data analysis involved no new local field sampling; source programmes and regional literature are acknowledged and cited."
+          ethics_and_permits:
+            secondary_public_data_only: true
+            statement: "Secondary analysis of publicly released data; no new animal handling."
+          approvals:
+            all_authors_approve_submission: true
+            all_entitled_authors_included: true
+            not_under_consideration_elsewhere: true
+          repository:
+            url: "https://github.com/zuizui0223/frogcs"
+            license: "MIT"
+            archive_year: 2026
+            archive_doi: "10.9999/frogcs.test"
+          source_data:
+            - name: "NAAMP"
+              doi: "10.5066/F7G44NG0"
+            - name: "FrogID"
+              doi: "10.15468/wazqft"
+          YAML
+
+          python scripts/render_submission_metadata.py --metadata /tmp/rc3-metadata.yml --strict --stage initial --outdir /tmp/rc3-initial
+          python scripts/render_submission_metadata.py --metadata /tmp/rc3-metadata.yml --strict --stage archive --outdir /tmp/rc3-archive
+          python scripts/finalize_archive_doi.py --doi 10.9999/frogcs.test --input MANUSCRIPT_JAE_V0_4.md --output /tmp/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/audit_jae_submission.py --manuscript /tmp/MANUSCRIPT_JAE_FINAL_TEST.md --review-stage final
+          test -s /tmp/rc3-initial/JAE_TITLE_PAGE_FINAL.md
+          test -s /tmp/rc3-initial/JAE_PORTAL_FIELDS.json
+          test -s /tmp/rc3-archive/ZENODO_METADATA_FINAL.json
+          test -s /tmp/rc3-archive/CITATION.cff
+          test -s /tmp/rc3-archive/ARCHIVE_REFERENCE.txt
+
+      - name: Build anonymous revised DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source MANUSCRIPT_JAE_V0_4.md \
+            --output build/FROG_JAE_ANON_MAIN_V0_4.docx
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v0-4-review-package
+          path: |
+            MANUSCRIPT_JAE_V0_4.md
+            figures/FIGURE_1_DESIGN_V0_1.svg
+            figures/FIGURE_2_EFFECTS_V0_1.svg
+            figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+            build/FROG_JAE_ANON_MAIN_V0_4.docx
+            CLAIM_BOUNDARY_V2_0.json
+            ANALYSIS_PROVENANCE_V0_1.md
+            submission/COVER_LETTER_JAE_V0_2.md
+            submission/NOVELTY_AUDIT_V0_3.md
+            submission/REVIEWER_ATTACK_MATRIX_V0_3.md
+            submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md
+            submission/SUBMISSION_HANDOFF_RC3.md
+            submission/SUBMISSION_HANDOFF_V2_0.md
+            submission/JAE_PORTAL_CHECKLIST_V0_2.md
+            REVISION_FIGURE_HASHES_V0_1.json
+            FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json
+            JAE_TITLE_PAGE_V0_2.template.md
+          if-no-files-found: error

@@ -1,0 +1,31 @@
+name: frogcs FrogID time alignment audit
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - "FROGID_TIME_ALIGNMENT_CONTRACT_V0_2.json"
+      - "scripts/audit_frogid_time_alignment.py"
+      - ".github/workflows/frogid_time_alignment_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q timezonefinder
+      - run: python scripts/audit_frogid_time_alignment.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogid-time-alignment-v0-2
+          path: frogid_time_alignment_v0_2.json
+          if-no-files-found: error

@@ -1,0 +1,32 @@
+name: frogcs NAAMP fixed-marginal shuffle null
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - "NAAMP_SHUFFLE_NULL_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_shuffle_null.py"
+      - ".github/workflows/naamp_shuffle_null.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  shuffle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Run frozen fixed-marginal shuffle null
+        run: python scripts/run_naamp_shuffle_null.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-shuffle-null-v0-1
+          path: NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json
+          if-no-files-found: error

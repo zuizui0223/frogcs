@@ -1,0 +1,30 @@
+name: frogcs FrogID eventTime semantics audit
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - "FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json"
+      - "scripts/audit_frogid_eventtime.py"
+      - ".github/workflows/frogid_eventtime_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/audit_frogid_eventtime.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogid-eventtime-semantics-v0-1
+          path: frogid_eventtime_semantics_v0_1.json
+          if-no-files-found: error

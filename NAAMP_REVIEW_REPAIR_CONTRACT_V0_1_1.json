@@ -1,0 +1,25 @@
+{
+  "project": "frog-chorus-synchrony",
+  "repair_version": "0.1.1",
+  "supersedes_sensitivity_only": "NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json:h3_hierarchy_repair.sensitivity_formula",
+  "status": "frozen_after_v0_1_sensitivity_nonestimable_before_replacement_sensitivity_readback",
+  "trigger": {
+    "workflow_run": 36112049537,
+    "issue": "state-by-window fixed-effect sensitivity returned non-finite SE/CI/p because the expanded fixed-effect design was not estimable",
+    "primary_h3_hierarchy_corrected_result_changed": false,
+    "active_pool_result_changed": false,
+    "independence_residual_result_changed": false
+  },
+  "replacement_h3_sensitivity": {
+    "subset": "States whose observed last_window is 4",
+    "rationale": "Within four-window states, the shoulder main effect is exactly spanned by C(RunNumber), so the lower-order baseline shoulder contrast is already contained in the nuisance fixed-effect space.",
+    "formula": "prop ~ rain_z + rain_z:shoulder + C(State) + C(RunNumber) + C(RouteType) + year_z",
+    "term": "rain_z:shoulder",
+    "interpretation": "Sensitivity only; cannot upgrade the original H3 decision."
+  },
+  "prohibited": [
+    "no threshold changes",
+    "no state selection by effect",
+    "no replacement of hierarchy-corrected primary H3 result"
+  ]
+}

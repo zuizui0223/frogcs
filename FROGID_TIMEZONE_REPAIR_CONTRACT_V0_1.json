@@ -1,0 +1,52 @@
+{
+  "project": "frog-chorus-synchrony",
+  "repair_version": "timezone_alignment_v0.1",
+  "status": "frozen_after_outcome_blind_time_audits_before_repaired_weather_effect_readback",
+  "triggers": {
+    "eventtime_semantics_audit": "all 655,502 events carry explicit UTC offsets",
+    "deterministic_sample_alignment": {
+      "comparable_events": 40754,
+      "offset_match_fraction": 0.9962948422240762,
+      "local_date_match_fraction": 0.9998527751877117,
+      "local_hour_match_fraction": 0.9962948422240762
+    }
+  },
+  "unchanged": {
+    "frogid_source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+    "sample_selection": "first byte SHA256(eventID) < 16",
+    "coordinate_uncertainty_max_m": 25000,
+    "era5_source": "Earthmover public Icechunk ERA5 single/temporal tp",
+    "wet_day_threshold_mm": 1,
+    "dry_spell_cap_days": 30,
+    "transform": "zscore(log1p(antecedent_dry_days))",
+    "primary_formula": "multi ~ dry_z + C(state) * C(month) + year_z + sin_hour + cos_hour",
+    "primary_cluster": "0.25-degree ERA5 cell",
+    "sensitivities": [
+      "recorder clustering",
+      "within-ERA5-cell fixed-effect probability-scale diagnostic"
+    ]
+  },
+  "timing_repair": {
+    "timestamp": "combine eventDate with offset-bearing eventTime and parse as an aware ISO-8601 instant",
+    "coordinate_timezone": "timezonefinder timezone_at(original coordinates)",
+    "repaired_event_date": "calendar date after converting the aware event instant to the coordinate timezone",
+    "repaired_event_hour": "fractional clock hour after the same conversion",
+    "rainfall_exposure": "count complete coordinate-local calendar days immediately before repaired_event_date; event day remains excluded",
+    "no_offset_inference": "do not infer or overwrite the supplied offset before conversion"
+  },
+  "transport_rule": {
+    "previous_required_unique_tp_chunks": 470,
+    "repaired_max_allowed_unique_chunks": 480,
+    "rationale": "a few local-date corrections may move boundary hours by one day; this is transport-only and may not be tuned to the effect"
+  },
+  "interpretation_rule": "Report repaired result regardless of direction or significance. Original result remains historical; repaired result becomes the submission value if the implementation passes frozen structural checks.",
+  "prohibited": [
+    "no sample changes",
+    "no wet-day threshold changes",
+    "no cap changes",
+    "no alternative weather source",
+    "no subset selection by repaired effect",
+    "no model-term changes"
+  ],
+  "frogid_effect_values_read_after_freeze": false
+}
