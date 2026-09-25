@@ -61,7 +61,7 @@ def affiliation_text(aid: str, affiliations: dict) -> str:
     bits=[a.get("department",""), a.get("institution",""), a.get("city",""), a.get("country","")]
     return ", ".join(x for x in bits if x)
 
-def validate(m: dict, strict: bool) -> dict:
+def validate(m: dict, strict: bool, stage: str) -> dict:
     authors=m.get("authors") or []
     require(authors, "at least one author is required")
     orders=[a.get("order") for a in authors]
@@ -96,9 +96,10 @@ def validate(m: dict, strict: bool) -> dict:
         require(bool(ca.get("email")), "corresponding author email required")
         require("@" in ca.get("email",""), "corresponding author email is invalid")
         require(bool(ca.get("postal_address")), "corresponding author postal address required")
-        require(bool(repo.get("license")), "repository license required")
-        require(bool(repo.get("archive_doi")), "archive DOI required")
         require(bool(m.get("statement_on_inclusion")), "statement_on_inclusion required for JAE submission")
+        if stage == "archive":
+            require(bool(repo.get("license")), "repository license required for archive stage")
+            require(bool(repo.get("archive_doi")), "archive DOI required for archive stage")
         for k in ("all_authors_approve_submission","all_entitled_authors_included","not_under_consideration_elsewhere"):
             require(approvals.get(k) is True, f"approval must be true: {k}")
 
@@ -218,9 +219,10 @@ def main():
     p.add_argument("--metadata", required=True)
     p.add_argument("--outdir", default="build/submission-metadata")
     p.add_argument("--strict", action="store_true")
+    p.add_argument("--stage", choices=["initial","archive"], default="initial")
     args=p.parse_args()
 
-    m=validate(load(Path(args.metadata)), args.strict)
+    m=validate(load(Path(args.metadata)), args.strict, args.stage)
     out=Path(args.outdir); out.mkdir(parents=True,exist_ok=True)
 
     (out/"JAE_TITLE_PAGE_FINAL.md").write_text(render_title_page(m),encoding="utf-8")
@@ -258,6 +260,7 @@ def main():
 
     validation={
         "strict": args.strict,
+        "stage": args.stage,
         "authors": len(m["authors"]),
         "affiliations": len(m["affiliations"]),
         "archive_doi_present": bool(m["repository"].get("archive_doi")),
