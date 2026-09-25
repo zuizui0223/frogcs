@@ -2,7 +2,7 @@
 
 ## Working title
 
-**Rainfall pulses increase frog active-community richness through species-selective reassembly**
+**Rainfall-associated richness gains accompany species-selective reassembly of active frog communities**
 
 ## Biological question
 
