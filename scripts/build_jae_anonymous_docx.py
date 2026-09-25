@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import argparse
 import re
 from pathlib import Path
 
@@ -12,8 +13,12 @@ from docx.shared import Inches, Mm, Pt
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT
-SRC = BASE / "MANUSCRIPT_JAE_V0_3.md"
-OUT = ROOT / "build" / "FROG_JAE_ANON_MAIN_V0_3.docx"
+parser = argparse.ArgumentParser()
+parser.add_argument("--source", default=str(BASE / "MANUSCRIPT_JAE_V0_3.md"))
+parser.add_argument("--output", default=str(ROOT / "build" / "FROG_JAE_ANON_MAIN_V0_3.docx"))
+args = parser.parse_args()
+SRC = Path(args.source)
+OUT = Path(args.output)
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
 
