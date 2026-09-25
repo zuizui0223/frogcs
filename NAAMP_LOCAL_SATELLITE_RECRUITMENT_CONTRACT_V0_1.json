@@ -1,0 +1,72 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_local_satellite_recruitment_v0_1",
+  "status": "ecological_mechanism_contract_frozen_before_local_prevalence_readback",
+  "ecological_question": "Do wetter conditions increase active-community richness by disproportionately recruiting species that are normally intermittent at that same route and seasonal survey window?",
+  "biological_hypothesis": "Rainfall pulses disproportionately draw locally intermittent (satellite) species into the acoustically active assemblage, while locally persistent core species are less dependent on the pulse.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "ecological_run_eligibility": "Reuse the exact complete-10-stop, >=8-temperature-stop, plausible-temperature, parseable-date, unified-protocol, valid DaysSinceRain eligibility from NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.",
+  "pair_construction": "Reuse exact State × RouteNumber × RunNumber adjacent-observed-year wetter/drier pairing from NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.",
+  "local_background": {
+    "stratum": "same State × RouteNumber × RunNumber as the focal pair",
+    "exclusion": "Exclude both focal pair runs from the background calculation.",
+    "species_presence": "Species is locally active in a background run if CallingIndex in {1,2,3} occurs at >=1 of that run's 10 sampled stops.",
+    "minimum_background_runs": 3,
+    "smoothed_prevalence": "Jeffreys prevalence = (positive_background_runs + 0.5)/(n_background_runs + 1).",
+    "transformed_prevalence": "logit(Jeffreys prevalence).",
+    "rationale": "Measures local persistence in the same site and seasonal survey window rather than regional range size or pooled species prevalence."
+  },
+  "event_definition": {
+    "universe": "For each wet/dry pair, species present in exactly one member of the pair.",
+    "outcome": "1 = wet-only species; 0 = dry-only species.",
+    "include_event_if": "At least 3 valid background runs are available in the same route × RunNumber stratum after excluding the focal pair."
+  },
+  "primary_pair_level_test": {
+    "eligibility": "Pairs with >=1 valid wet-only event and >=1 valid dry-only event.",
+    "statistic": "delta_local_logit_prevalence = mean(logit prevalence of wet-only species) - mean(logit prevalence of dry-only species).",
+    "model": "OLS intercept-only with cluster-robust SE by State:RouteNumber; each pair receives equal weight.",
+    "prediction": "Mean delta_local_logit_prevalence < 0.",
+    "interpretation": "Wet-only gains are locally more intermittent than dry-only losses within the same matched community transition."
+  },
+  "pulse_strength_test": {
+    "response": "delta_local_logit_prevalence",
+    "formula": "delta ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster robust by State:RouteNumber",
+    "prediction": "beta_rain_contrast < 0; stronger rainfall contrasts preferentially recruit locally intermittent species."
+  },
+  "event_level_sensitivity": {
+    "model": "Binomial-logit GLM wet_only ~ local_logit_prevalence + rain_contrast + local_logit_prevalence:rain_contrast + temp_difference + doy_difference + year_gap + C(species)",
+    "covariance": "cluster robust by State:RouteNumber",
+    "primary_sensitivity_prediction": "beta_local_logit_prevalence < 0",
+    "interaction_prediction": "beta_interaction < 0",
+    "interpretation": "Tests the local-prevalence gradient after species-specific baseline propensity and pair-level covariates are included."
+  },
+  "prior_only_sensitivity": {
+    "background_rule": "Recompute local prevalence using only eligible same-stratum runs with SurveyYear earlier than both focal pair years.",
+    "minimum_background_runs": 3,
+    "analysis": "Repeat the primary pair-level test.",
+    "purpose": "Avoid using future observations to define local core/satellite status."
+  },
+  "descriptive_classes": {
+    "satellite": "Jeffreys local prevalence <= 0.25",
+    "intermediate": "0.25 < prevalence < 0.75",
+    "core": "prevalence >= 0.75",
+    "status": "descriptive only; continuous prevalence is the inferential predictor."
+  },
+  "decision_language": {
+    "primary_negative": "Supports rainfall-associated recruitment from the locally intermittent component of the active community.",
+    "primary_null": "Rainfall-associated reassembly is species-selective but not organized by local background persistence under this definition.",
+    "interaction_negative": "Supports stronger pulses preferentially drawing in locally intermittent species."
+  },
+  "boundaries": [
+    "Local prevalence is acoustic participation frequency, not occupancy probability.",
+    "Satellite/core language refers only to the acoustically active assemblage at a route × seasonal window.",
+    "Wet-only does not imply colonization and dry-only does not imply extinction.",
+    "The analysis is a post-opening ecological mechanism follow-up frozen before its own readback.",
+    "No causal rainfall claim is authorized."
+  ]
+}
