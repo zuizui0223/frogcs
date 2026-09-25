@@ -1,0 +1,95 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_hydroperiod_filter_v0_1",
+  "status": "post_opening_mechanistic_followup_frozen_before_full_29_species_trait_join_readback",
+  "ecological_question": "Are species-specific wet-versus-dry active-community responses aligned with independently compiled breeding-water hydroperiod preference?",
+  "response_source": {
+    "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "fixed_species_family": 29,
+    "response": "pair-covariate-adjusted per-species wet-versus-dry intercept log odds",
+    "variance": "cluster-robust intercept SE squared",
+    "note": "Species response family is fixed before this trait join."
+  },
+  "trait_source": {
+    "scientific_source": "ATraiU (Moore et al. 2021, Ecology 102:e03261)",
+    "doi": "10.1002/ecy.3261",
+    "documented_modalities": [
+      "perm_lentic",
+      "perm_lotic",
+      "temp_lentic",
+      "temp_lotic"
+    ],
+    "modality_definition": "TRUE if any contributing source describes the species breeding in that water type; temporary means temporary/intermittent, permanent means year-round; lentic/lotic distinguish standing/flowing water.",
+    "computational_transport": {
+      "repository": "panpipiens/amphibian-vulnerability-analysis",
+      "commit": "a7be17ae44b8a81349c37b3b38c767e6db5958f2",
+      "file": "processed_data/master_iucn_spine_nearctic_anura.csv",
+      "git_blob_sha1": "4a1fd99f9b815cc512ce3e680497b34e8c9c93e6",
+      "provenance": "Derived in that repository from raw ATraiU_full_2020AUG.csv by collapsing categorical flags to species level with max(any TRUE). The transport is computational convenience; scientific attribution remains ATraiU."
+    }
+  },
+  "taxonomy": {
+    "key": "sci_clean",
+    "normalization": "first two binomial tokens after whitespace trim",
+    "frozen_genus_aliases": {
+      "Hyla": "Dryophytes",
+      "Dryophytes": "Hyla",
+      "Lithobates": "Rana",
+      "Rana": "Lithobates"
+    },
+    "match_order": [
+      "exact sci_clean",
+      "frozen genus alias only if exact fails"
+    ],
+    "prohibited": [
+      "no fuzzy matching",
+      "no effect-informed alias additions",
+      "no manual trait editing after readback"
+    ]
+  },
+  "hydroperiod_trait": {
+    "temp_any": "max(atraiu_temp_lentic, atraiu_temp_lotic)",
+    "perm_any": "max(atraiu_perm_lentic, atraiu_perm_lotic)",
+    "include_if": "ATraiU record coverage >0 and at least one of temp_any or perm_any is 1; species with neither documented temporary nor permanent water type are excluded from the primary hydroperiod test.",
+    "axis": "temp_any - perm_any",
+    "values": {
+      "0": "documented use of both temporary and permanent waters",
+      "1": "temporary-only association",
+      "-1": "permanent-only association"
+    },
+    "primary_hypothesis": "More positive hydroperiod_axis predicts more positive wet-recruitment response.",
+    "expected_sign": "positive"
+  },
+  "primary_model": {
+    "formula": "adjusted_log_odds ~ hydroperiod_axis",
+    "estimator": "inverse-variance weighted least squares with HC3 covariance across species",
+    "minimum_species": 15,
+    "reported": [
+      "beta",
+      "95% CI",
+      "P value",
+      "weighted group means",
+      "species count by hydroperiod class"
+    ]
+  },
+  "family_structure_sensitivity": {
+    "method": "weighted within-family slope after subtracting weighted family means from hydroperiod_axis and adjusted response",
+    "permutation": "permute hydroperiod_axis among species within family",
+    "permutations": 100000,
+    "seed": 20260925,
+    "p_value": "two-sided Monte Carlo",
+    "interpretation": "A significant positive within-family result supports hydroperiod association beyond broad family differences."
+  },
+  "exact_group_contrast": {
+    "purpose": "descriptive effect-size contrast",
+    "comparison": "temporary-only versus permanent-only species",
+    "statistic": "inverse-variance weighted mean adjusted log odds in each group and difference temporary minus permanent",
+    "inferential_status": "descriptive; primary inference remains the frozen WLS"
+  },
+  "boundaries": [
+    "This is a post-opening mechanistic follow-up, not an original preregistered hypothesis.",
+    "ATraiU breeding-water use is compiled from natural-history sources and does not measure the local hydroperiod at each NAAMP route.",
+    "A positive association would support a hydroperiod-linked ecological axis but would not establish rainfall causality or breeding success.",
+    "No additional ATraiU traits may be opened for headline inference within this analysis family."
+  ]
+}
