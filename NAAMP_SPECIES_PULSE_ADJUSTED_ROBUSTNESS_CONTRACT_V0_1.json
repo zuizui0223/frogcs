@@ -1,0 +1,44 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_species_pulse_adjusted_robustness_v0_1",
+  "status": "robustness_contract_frozen_after_raw_species_heterogeneity_before_adjusted_species_readback",
+  "purpose": "Test whether species-specific wet-versus-dry recruitment heterogeneity persists after pair-level temperature, survey-date, rain-contrast magnitude, and year-gap differences are accounted for.",
+  "species_family": {
+    "source": "NAAMP_SPECIES_PULSE_HETEROGENEITY_CONTRACT_V0_1.json",
+    "fixed_eligible_species": 29,
+    "rule": "No species added or removed based on adjusted results."
+  },
+  "event_data": {
+    "unit": "species × matched-run pair for pairs where that species is present in exactly one member",
+    "response": "1 = species present only in wetter run; 0 = species present only in drier run",
+    "pair_source": "NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json"
+  },
+  "model": {
+    "per_species": "Binomial-logit GLM y ~ centered_rain_contrast + centered_temp_difference + centered_doy_difference + centered_year_gap",
+    "centering": "Center each covariate within species over its discordant events; intercept therefore estimates adjusted wet-vs-dry log odds at that species' mean pair conditions.",
+    "covariance": "cluster-robust by State:RouteNumber",
+    "output": [
+      "intercept_log_odds",
+      "intercept_se",
+      "ci95",
+      "p_value",
+      "adjusted_wet_probability"
+    ],
+    "failure_rule": "If model fails or intercept/SE is nonfinite, species is retained in raw family but marked adjusted_nonestimable."
+  },
+  "multiple_testing": "BH FDR across estimable species intercept tests.",
+  "heterogeneity": {
+    "statistic": "inverse-variance Cochran Q across estimable adjusted species intercepts",
+    "reference": "chi-square df=k-1",
+    "purpose": "test residual species heterogeneity after pair-level covariate adjustment"
+  },
+  "concordance": {
+    "metric": "Spearman correlation between raw Haldane wet-vs-dry log odds and adjusted intercept log odds among estimable species",
+    "purpose": "quantify whether raw species ranking survives adjustment"
+  },
+  "boundary": [
+    "Adjustment is robustness, not a new primary species-selection family.",
+    "No causal rainfall claim.",
+    "No trait values enter this analysis."
+  ]
+}

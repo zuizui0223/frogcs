@@ -1,0 +1,81 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_rainfall_filter_trait_test_v0_1",
+  "status": "trait_hypotheses_frozen_before_amphibio_trait_readback",
+  "ecological_question": "Are species-specific wet-versus-dry recruitment responses predictable from independently compiled amphibian ecological traits?",
+  "source_effects": {
+    "contract": "NAAMP_SPECIES_PULSE_HETEROGENEITY_CONTRACT_V0_1.json",
+    "expected_eligible_species": 29,
+    "expected_eligible_wet_gains": 4483,
+    "expected_eligible_dry_losses": 4104,
+    "response": "Haldane-corrected log odds log((wet_gains+0.5)/(dry_losses+0.5)) for the 29 eligibility-qualified species"
+  },
+  "trait_source": {
+    "dataset": "AmphiBIO v1",
+    "citation_doi": "10.1038/sdata.2017.123",
+    "data_doi": "10.6084/m9.figshare.4644424.v5",
+    "mirror_repository": "rdmpage/amphibio",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "file": "AmphiBIO_v1.csv",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87",
+    "license": "CC BY 4.0"
+  },
+  "taxonomy": {
+    "normalization": "Trim whitespace; use first two binomial tokens; case-sensitive genus/species after whitespace normalization.",
+    "match_order": [
+      "exact Species match",
+      "if exact fails, apply only the frozen genus aliases below and require a unique exact binomial match"
+    ],
+    "frozen_genus_aliases": {
+      "Hyla": "Dryophytes",
+      "Dryophytes": "Hyla",
+      "Lithobates": "Rana",
+      "Rana": "Lithobates"
+    },
+    "prohibited": [
+      "no fuzzy string matching",
+      "no trait-informed manual rematching",
+      "no effect-informed synonym additions"
+    ]
+  },
+  "primary_trait": {
+    "name": "climatic_activity_axis",
+    "definition": "wet_active - dry_active, where wet_active=max(Wet_warm,Wet_cold) and dry_active=max(Dry_warm,Dry_cold); values -1,0,+1",
+    "hypothesis": "Species whose independently compiled activity seasonality is more wet-associated have more positive wet-recruitment log odds.",
+    "expected_sign": "positive",
+    "minimum_complete_species": 12
+  },
+  "secondary_traits": {
+    "family": [
+      "Fos",
+      "Aqu",
+      "Arb",
+      "Ter",
+      "log_body_size_mm"
+    ],
+    "model_rule": "One univariate species-level model per trait; binary traits require both levels and >=12 complete species; body size requires >=12 finite positive values.",
+    "multiplicity": "Benjamini-Hochberg FDR across estimable secondary traits only.",
+    "status": "exploratory finite family; no directional headline claim"
+  },
+  "model": {
+    "response": "Haldane-corrected species wet-vs-dry log odds",
+    "variance": "1/(wet_gains+0.5)+1/(dry_losses+0.5)",
+    "estimator": "weighted least squares with inverse-variance weights and HC3 covariance across species",
+    "primary_formula": "log_odds ~ climatic_activity_axis",
+    "secondary_formula": "log_odds ~ trait",
+    "no_phylogenetic_correction": "Trait test is a first ecological screen on <=29 species; lack of phylogenetic correction is a stated limitation and blocks a strong evolutionary claim."
+  },
+  "missingness": {
+    "rule": "trait-specific complete cases; no imputation",
+    "report": "matched species, unmatched species, missingness per tested trait"
+  },
+  "interpretation": {
+    "primary_positive": "Supports rainfall as a species-selective ecological filter aligned with independently compiled climatic activity strategy.",
+    "primary_null": "Species-selective rainfall response remains real, but AmphiBIO coarse seasonality does not explain it.",
+    "boundary": [
+      "Does not establish hydroperiod preference because AmphiBIO seasonality is climatic activity seasonality, not breeding-pond hydroperiod.",
+      "Does not establish causal rainfall effects.",
+      "Post-opening ecological extension frozen before external trait values were read."
+    ]
+  }
+}

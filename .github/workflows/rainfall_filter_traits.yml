@@ -1,0 +1,36 @@
+name: frogcs rainfall filter trait test
+
+on:
+  push:
+    branches:
+      - revision/rainfall-community-filter-v1
+    paths:
+      - "NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_rainfall_filter_traits.py"
+      - ".github/workflows/rainfall_filter_traits.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  traits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Recompute full species-response receipt
+        run: python scripts/run_naamp_species_pulse_heterogeneity.py
+      - name: Run frozen AmphiBIO trait test
+        run: python scripts/run_naamp_rainfall_filter_traits.py
+      - name: Upload trait receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-rainfall-filter-traits-v0-1
+          path: NAAMP_RAINFALL_FILTER_TRAIT_RECEIPT_V0_1.json
+          if-no-files-found: error

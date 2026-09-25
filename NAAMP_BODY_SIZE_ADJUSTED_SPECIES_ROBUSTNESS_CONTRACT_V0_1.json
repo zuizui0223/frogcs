@@ -1,0 +1,63 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_body_size_adjusted_species_robustness_v0_1",
+  "status": "robustness_contract_frozen_after_raw_body_size_discovery_and_adjusted_species_response_before_size_adjusted_readback",
+  "purpose": "Test whether the AmphiBIO body-size gradient persists when species wet-versus-dry response is first adjusted for pair-level temperature difference, day-of-year difference, rain-contrast magnitude, and year gap.",
+  "fixed_inputs": {
+    "body_size_discovery": {
+      "source": "AmphiBIO v1 Body_size_mm",
+      "raw_response_beta": -0.33530457076746606,
+      "raw_response_ci95": [
+        -0.46622239134947524,
+        -0.20438675018545688
+      ],
+      "raw_response_p": 5.171788761715504e-7,
+      "n_species": 26
+    },
+    "adjusted_species_response": {
+      "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+      "fixed_species_family": 29,
+      "estimable_species": 29,
+      "heterogeneity_p": 1.4592981930238995e-17,
+      "raw_adjusted_spearman_rho": 0.9970443349753692
+    }
+  },
+  "trait_source": {
+    "dataset": "AmphiBIO v1",
+    "mirror_repository": "rdmpage/amphibio",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "file": "AmphiBIO_v1.csv",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87",
+    "trait": "Body_size_mm",
+    "family_column": "Family"
+  },
+  "taxonomy": "Reuse exactly the matching rules from NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1.json; no new aliases.",
+  "primary_model": {
+    "response": "adjusted per-species wet-vs-dry intercept log odds",
+    "response_variance": "cluster-robust intercept SE squared",
+    "predictor": "log(Body_size_mm)",
+    "estimator": "inverse-variance WLS with HC3 covariance",
+    "expected_sign": "negative",
+    "minimum_complete_species": 15
+  },
+  "sensitivities": {
+    "spearman": "unweighted Spearman correlation adjusted log odds vs log body size",
+    "family_adjusted": "WLS adjusted log odds ~ log body size + C(Family), only if >=18 complete species and residual df >=10",
+    "leave_one_family_out": "repeat primary WLS after excluding each family represented by >=2 complete species; report all slopes, no threshold rescue"
+  },
+  "interpretation": {
+    "negative_primary": "Supports a body-size gradient in rainfall-associated active-community filtering that is not explained by pair-level temperature/date differences.",
+    "family_robust_negative": "Strengthens evidence that the gradient is not solely a between-family contrast.",
+    "boundary": [
+      "Body size remains a proxy trait; no direct dehydration physiology has been measured.",
+      "No independent-species replication: same NAAMP species response.",
+      "No causal rainfall claim."
+    ]
+  },
+  "prohibited": [
+    "no new AmphiBIO traits",
+    "no changed species eligibility",
+    "no changed taxonomy aliases",
+    "no removing influential families after seeing slopes"
+  ]
+}

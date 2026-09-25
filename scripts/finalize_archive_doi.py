@@ -7,6 +7,14 @@ from pathlib import Path
 
 PLACEHOLDERS = [
     (
+        "NAAMP source data are publicly available from the U.S. Geological Survey data release "
+        "(Foreman et al., 2017; DOI 10.5066/F7G44NG0). Trait analyses use AmphiBIO v1 "
+        "(Oliveira et al., 2017), distributed under CC BY 4.0. The standalone analysis repository "
+        "preserves versioned contracts, source digests, result receipts and analysis scripts. Raw "
+        "third-party source datasets are not redistributed. A persistent archive will be created at "
+        "manuscript finalization."
+    ),
+    (
         "The standalone analysis repository will preserve the exact source digests, frozen analysis "
         "contracts, derived non-sensitive weather linkage, result receipts and figure-generation code. "
         "We intend to archive that repository on Zenodo for the submitted version and will insert the "
@@ -21,9 +29,11 @@ PLACEHOLDERS = [
 ]
 
 NEW_TEMPLATE = (
-    "The standalone analysis repository preserves frozen contracts, source digests, result receipts, "
-    "analysis scripts and deterministic figure-generation code. Raw third-party source datasets are not "
-    "redistributed. The finalized reproducibility archive is available at DOI {doi}."
+    "NAAMP source data are publicly available from the U.S. Geological Survey data release "
+    "(Foreman et al., 2017; DOI 10.5066/F7G44NG0). Trait analyses use AmphiBIO v1 "
+    "(Oliveira et al., 2017), distributed under CC BY 4.0. The standalone analysis repository "
+    "preserves versioned contracts, source digests, result receipts and analysis scripts. Raw third-party "
+    "source datasets are not redistributed. The finalized reproducibility archive is available at DOI {doi}."
 )
 
 def normalize_doi(raw: str) -> str:
@@ -37,7 +47,7 @@ def normalize_doi(raw: str) -> str:
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--doi", required=True)
-    p.add_argument("--input", default="MANUSCRIPT_JAE_V0_4.md")
+    p.add_argument("--input", default="MANUSCRIPT_JAE_V0_5.md")
     p.add_argument("--output", default="build/MANUSCRIPT_JAE_FINAL.md")
     args = p.parse_args()
 

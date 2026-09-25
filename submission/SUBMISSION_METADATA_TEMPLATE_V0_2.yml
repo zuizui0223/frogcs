@@ -2,7 +2,7 @@
 # Fill locally or on a private branch. Do not commit private contact details to a public branch unless intended.
 
 manuscript:
-  title: "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations"
+  title: "Rainfall-associated richness gains accompany species-selective reassembly of active frog communities"
   target_journal: "Journal of Animal Ecology"
   article_type: "Research Article"
 
@@ -37,7 +37,7 @@ conflict_of_interest: "[STATEMENT]"
 statement_on_inclusion: "[REQUIRED DURING JAE SUBMISSION: describe regional collaboration/intellectual input/stakeholder engagement as applicable]"
 ethics_and_permits:
   secondary_public_data_only: true
-  statement: "Secondary analysis of publicly released acoustic-monitoring and citizen-science records; no new animal capture, handling or field sampling."
+  statement: "Secondary analysis of publicly released acoustic-monitoring and trait data; no new animal capture, handling or field sampling."
 
 approvals:
   all_authors_approve_submission: false
@@ -53,5 +53,5 @@ repository:
 source_data:
   - name: "NAAMP"
     doi: "10.5066/F7G44NG0"
-  - name: "FrogID"
-    doi: "10.15468/wazqft"
+  - name: "AmphiBIO v1"
+    doi: "10.6084/m9.figshare.4644424.v5"

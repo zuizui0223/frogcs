@@ -1,0 +1,72 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_body_size_adjusted_species_robustness_v0_1_summary",
+  "contract": "NAAMP_BODY_SIZE_ADJUSTED_SPECIES_ROBUSTNESS_CONTRACT_V0_1.json",
+  "workflow_run": 36125128249,
+  "artifact_id": 10859903059,
+  "artifact_digest": "sha256:662ccff96989018b9082aa28418106dbbb5b1f61fb4542373591a175f9145ab8",
+  "head_sha": "9406584e03c4a2ea1b5a866c3d830ee9e536a15e",
+  "trait_source": {
+    "dataset": "AmphiBIO v1",
+    "trait": "Body_size_mm",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87"
+  },
+  "matched_species": 26,
+  "primary": {
+    "beta": -0.3670116517367604,
+    "se_hc3": 0.07567131981977541,
+    "ci95_beta": [
+      -0.5153247132461323,
+      -0.21869859022738863
+    ],
+    "p_value": 0.0000012341418141708282,
+    "negative_ci_support": true
+  },
+  "spearman": {
+    "rho": -0.5167696084348492,
+    "p_value": 0.006870111485130087,
+    "n_species": 26
+  },
+  "leave_one_family_out": [
+    {
+      "excluded_family": "Bufonidae",
+      "n_species": 23,
+      "beta": -0.3827819485242138,
+      "ci95_beta": [
+        -0.5422539305138809,
+        -0.2233099665345467
+      ],
+      "p_value": 0.0000025446623452077967
+    },
+    {
+      "excluded_family": "Hylidae",
+      "estimable": false,
+      "n_species": 12,
+      "reason": "below_minimum"
+    },
+    {
+      "excluded_family": "Ranidae",
+      "n_species": 19,
+      "beta": -0.3796864653982402,
+      "ci95_beta": [
+        -0.5977711481652233,
+        -0.1616017826312571
+      ],
+      "p_value": 0.0006441562266743058
+    }
+  ],
+  "family_fixed_effect_model": {
+    "status": "numerically_unstable_HC3",
+    "beta": -0.18885458160930169,
+    "se_hc3": "Infinity",
+    "p_value": 1,
+    "authority": "do_not_interpret"
+  },
+  "interpretation": "Smaller-bodied species have more positive adjusted wet-recruitment responses. This is a strong post-opening trait association but body size remains a proxy and phylogenetic structure is not fully controlled.",
+  "independent_validation": {
+    "Huang_2023": "nonestimable_due_to_9_species_coverage",
+    "Amado_2018": "source retrieval unresolved in current execution environment"
+  },
+  "causal_claim_authorized": false
+}

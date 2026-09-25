@@ -1,0 +1,60 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_species_response_within_family_heterogeneity_v0_1",
+  "contract": "NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_CONTRACT_V0_1.json",
+  "workflow_run": 36140765938,
+  "artifact_id": 10865694623,
+  "artifact_digest": "sha256:c01cc076549f98c05f886bc5ee3f33f2a9a89af0103f3d08b64ac40fd384a39f",
+  "head_sha": "314750ce890dea168cb9ee5779b63d12cfc820fc",
+  "matched_species": 26,
+  "n_families": 5,
+  "family_counts": {
+    "Bufonidae": 3,
+    "Hylidae": 14,
+    "Microhylidae": 1,
+    "Ranidae": 7,
+    "Scaphiopodidae": 1
+  },
+  "decomposition": {
+    "Q_total": 141.6768902372133,
+    "df_total": 25,
+    "p_total": 2.835922123380464e-18,
+    "Q_between": 67.7975447864659,
+    "df_between": 4,
+    "p_between": 6.618511940597032e-14,
+    "Q_within": 73.87934545074741,
+    "df_within": 21,
+    "p_within": 8.284705119964522e-8,
+    "within_fraction_of_Q": 0.5214636298626353
+  },
+  "family_specific": [
+    {
+      "family": "Bufonidae",
+      "n_species": 3,
+      "Q": 5.099599624932523,
+      "df": 2,
+      "p_value": 0.07809729854196779
+    },
+    {
+      "family": "Hylidae",
+      "n_species": 14,
+      "Q": 44.966004081182454,
+      "df": 13,
+      "p_value": 0.00002120246496199302
+    },
+    {
+      "family": "Ranidae",
+      "n_species": 7,
+      "Q": 23.81374174463243,
+      "df": 6,
+      "p_value": 0.0005650967799240034
+    }
+  ],
+  "interpretation": "Adjusted wet-versus-dry species responses remain strongly heterogeneous within taxonomic families; more than half of total Q is within-family. Species-selective reassembly is therefore not reducible to broad family mean differences.",
+  "boundary": {
+    "family_is_coarse_phylogenetic_proxy": true,
+    "phylogenetic_comparative_model": false,
+    "post_opening_structure_test": true,
+    "causal_claim_authorized": false
+  }
+}

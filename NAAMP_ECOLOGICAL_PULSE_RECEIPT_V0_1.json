@@ -1,0 +1,65 @@
+{
+  "analysis": "naamp_pulse_nested_recruitment_v0_1",
+  "contract": "NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+  "workflow_run": 36121731789,
+  "artifact_id": 10857807324,
+  "artifact_digest": "sha256:1a1beb888d1cae71d3bc99b4d7a1b27207f0f67226ea6b6cbf44a2a92779367c",
+  "eligible_runs": 7848,
+  "primary_pair_summary": {
+    "n_pairs": 4236,
+    "n_routes": 585,
+    "n_states": 21,
+    "richness": {
+      "wet_mean": 3.7516525023607175,
+      "dry_mean": 3.649905571293673,
+      "mean_gain": 0.10174693106704438
+    },
+    "composition": {
+      "total_wet_only": 4726,
+      "total_dry_only": 4295,
+      "overall_gain_share": 0.5238887041347966,
+      "mean_dry_core_retention": 0.749929803572506,
+      "median_dry_core_retention": 0.75,
+      "mean_sorensen": 0.29501005343411135,
+      "mean_turnover": 0.12970574326919385,
+      "mean_nestedness": 0.16530431016491753
+    }
+  },
+  "primary_models": {
+    "richness_gain": {
+      "beta_rain_contrast": 0.28590196650411864,
+      "ci95_beta": [0.1646492519993803, 0.407154681008857],
+      "p_value": 3.8115507171919626e-06
+    },
+    "nestedness_component": {
+      "beta_rain_contrast": 0.006501109420433338,
+      "ci95_beta": [-0.005263312803122974, 0.01826553164398965],
+      "p_value": 0.2787680147564211
+    },
+    "simpson_turnover": {
+      "beta_rain_contrast": 0.012644914635582509,
+      "ci95_beta": [-0.0025867957609855257, 0.02787662503215054],
+      "p_value": 0.10371500662449153
+    }
+  },
+  "exact_consecutive_year_sensitivity": {
+    "n_pairs": 2693,
+    "richness_gain": {
+      "beta_rain_contrast": 0.300918355273146,
+      "ci95_beta": [0.14468236692709735, 0.4571543436191946],
+      "p_value": 0.00016001471938717143
+    },
+    "nestedness_component": {
+      "beta_rain_contrast": 0.002485556997821827,
+      "ci95_beta": [-0.010664091178369516, 0.01563520517401317],
+      "p_value": 0.7110293773657084
+    },
+    "simpson_turnover": {
+      "beta_rain_contrast": 0.01840040311450663,
+      "ci95_beta": [0.004695226491008283, 0.03210557973800497],
+      "p_value": 0.008502794219011536
+    }
+  },
+  "interpretation": "Greater rainfall contrast predicts higher active-species richness within matched route × seasonal-window comparisons. The response is not simple nested addition: nestedness does not increase, and turnover increases in the exact consecutive-year sensitivity.",
+  "causal_claim_authorized": false
+}

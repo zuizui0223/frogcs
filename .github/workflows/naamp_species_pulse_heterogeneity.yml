@@ -1,0 +1,34 @@
+name: frogcs NAAMP species pulse heterogeneity
+
+on:
+  push:
+    branches:
+      - revision/ecological-pulse-nested-recruitment-v1
+    paths:
+      - "NAAMP_SPECIES_PULSE_HETEROGENEITY_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_species_pulse_heterogeneity.py"
+      - ".github/workflows/naamp_species_pulse_heterogeneity.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  species-pulse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Run frozen species-specific pulse analysis
+        run: python scripts/run_naamp_species_pulse_heterogeneity.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-species-pulse-heterogeneity-v0-1
+          path: NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json
+          if-no-files-found: error

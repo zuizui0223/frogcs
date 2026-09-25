@@ -1,0 +1,74 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_body_size_filter_independent_validation_v0_1",
+  "status": "validation_contract_frozen_after_amphibio_discovery_before_huang_svl_readback",
+  "discovery": {
+    "source": "AmphiBIO v1",
+    "result": "log Body_size_mm negatively predicts wet-recruitment log odds",
+    "beta": -0.33530457076746606,
+    "ci95": [
+      -0.46622239134947524,
+      -0.20438675018545688
+    ],
+    "p_value": 5.171788761715504e-7,
+    "n_species": 26,
+    "note": "This was a frozen secondary trait screen, not the original primary trait hypothesis."
+  },
+  "validation_source": {
+    "dataset": "Amphibian traits database",
+    "paper_doi": "10.1111/geb.13656",
+    "data_doi": "10.6084/m9.figshare.21159229.v3",
+    "repository": "rdmpage/amphibian-traits-database",
+    "commit": "7b80dc0bb7f5e9ca363f5cdbcd526e658473f7a0",
+    "file": "Anura.csv",
+    "git_blob_sha1": "208dd19658da1b342c067d1af9ea08f671cd8443",
+    "schema": {
+      "species": "Species",
+      "genus": "Genus",
+      "family": "Family",
+      "sex": "Sex",
+      "body_size": "SVL"
+    },
+    "forbidden": "No other Huang morphological trait is tested or inspected for association with wet recruitment in this validation family."
+  },
+  "taxonomy": {
+    "match_order": [
+      "exact normalized binomial",
+      "frozen genus alias only if exact fails"
+    ],
+    "frozen_genus_aliases": {
+      "Hyla": "Dryophytes",
+      "Dryophytes": "Hyla",
+      "Lithobates": "Rana",
+      "Rana": "Lithobates"
+    },
+    "no_fuzzy_matching": true
+  },
+  "body_size_summary": {
+    "primary": "median positive finite SVL across all source rows for a species",
+    "adult_sensitivity": "median positive finite SVL among Sex in {M,F}; exclude J and unknown sex",
+    "unit": "mm",
+    "minimum_matched_species": 15
+  },
+  "response": {
+    "source": "same 29 eligibility-qualified NAAMP wet-gain/dry-loss species",
+    "metric": "Haldane-corrected log((wet_gains+0.5)/(dry_losses+0.5))",
+    "variance": "1/(wet_gains+0.5)+1/(dry_losses+0.5)"
+  },
+  "models": {
+    "primary": "inverse-variance weighted least squares: log_odds ~ log(median_SVL_mm), HC3 covariance",
+    "adult_sensitivity": "same model using adult-only median SVL",
+    "family_adjusted_sensitivity": "primary median SVL with C(Family), only if >=18 species and residual df >=10"
+  },
+  "decision": {
+    "validation_pass": "Primary beta < 0 and 95% CI excludes 0; adult sensitivity beta must also be < 0 when estimable.",
+    "family_adjusted": "Reported as phylogenetic-structure sensitivity, not required for primary validation pass.",
+    "expected_sign": "negative"
+  },
+  "interpretation_boundary": [
+    "Independent validation refers to an independently compiled morphological database, not an independent set of frog species.",
+    "Body size may proxy multiple life-history axes; validation alone does not establish a mechanism.",
+    "No phylogenetic comparative model is fitted; family adjustment is only a coarse sensitivity.",
+    "No causal rainfall claim."
+  ]
+}

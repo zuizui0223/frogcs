@@ -1,0 +1,52 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_body_size_within_family_permutation_v0_1",
+  "status": "post_discovery_phylogenetic_structure_robustness_frozen_before_readback",
+  "purpose": "Test whether the negative body-size gradient in adjusted species wet-recruitment responses persists within taxonomic families rather than arising only from between-family differences.",
+  "fixed_inputs": {
+    "adjusted_species_response": {
+      "source_run": 36124833717,
+      "estimable_species": 29,
+      "heterogeneity_p": 1.4592981930238995e-17,
+      "raw_adjusted_spearman_rho": 0.9970443349753692
+    },
+    "body_size": {
+      "source": "AmphiBIO v1 Body_size_mm",
+      "matched_species": 26,
+      "adjusted_response_beta": -0.3670116517367604,
+      "adjusted_response_ci95": [
+        -0.5153247132461323,
+        -0.21869859022738863
+      ],
+      "adjusted_response_p": 0.0000012341418141708282
+    }
+  },
+  "taxonomy": "Reuse exact AmphiBIO matches from NAAMP_BODY_SIZE_ADJUSTED_SPECIES_ROBUSTNESS_CONTRACT_V0_1.json.",
+  "method": {
+    "complete_cases": "26 species with adjusted response and positive finite Body_size_mm",
+    "x": "log(Body_size_mm)",
+    "y": "adjusted per-species wet-vs-dry intercept log odds",
+    "weights": "inverse adjusted intercept variance",
+    "families": "AmphiBIO Family",
+    "residualization": "Subtract weighted family mean from x and y within each family represented by >=2 complete species. Singleton families contribute zero within-family variation and are excluded from the slope denominator.",
+    "statistic": "weighted within-family slope sum(w*x_centered*y_centered)/sum(w*x_centered^2)",
+    "permutation": "Permute x values among species within each family, preserving family membership, y, and weights.",
+    "permutations": 100000,
+    "seed": 20260925,
+    "p_value": "two-sided Monte Carlo p=(1+#|Tperm|>=|Tobs|)/(B+1)",
+    "directional_summary": "also report fraction Tperm <= Tobs because discovery sign is negative"
+  },
+  "family_specific": {
+    "rule": "For each family with >=5 complete species, report weighted simple slope of adjusted response on log body size; descriptive only.",
+    "no_thresholding": true
+  },
+  "interpretation": {
+    "significant_negative_within_family": "Supports a body-size gradient not reducible to broad between-family differences.",
+    "null": "Body-size result may largely reflect family-level ecological differences and should not be a headline mechanism.",
+    "boundaries": [
+      "Not a phylogenetic comparative analysis.",
+      "Body size remains a proxy for hydric/life-history traits.",
+      "Post-discovery robustness, not independent validation."
+    ]
+  }
+}

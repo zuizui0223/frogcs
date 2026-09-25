@@ -39,7 +39,6 @@ jobs:
           import os
           from pathlib import Path
           import yaml
-
           p=Path("/tmp/metadata-input.yml")
           m=yaml.safe_load(p.read_text(encoding="utf-8"))
           if not isinstance(m,dict):
@@ -60,26 +59,36 @@ jobs:
             --stage archive \
             --outdir build/submission-metadata
 
-      - name: Insert archive DOI into generated manuscript copy
+      - name: Guard metadata title
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          expected="Rainfall-associated richness gains accompany species-selective reassembly of active frog communities"
+          text=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          assert expected in text, "JAE_SUBMISSION_METADATA_YAML still contains a superseded manuscript title"
+          print("metadata title PASS")
+          PY
+
+      - name: Insert archive DOI into ecological manuscript copy
         run: |
           python scripts/finalize_archive_doi.py \
             --doi "${{ inputs.archive_doi }}" \
-            --input MANUSCRIPT_JAE_V0_4.md \
+            --input MANUSCRIPT_JAE_V0_5.md \
             --output build/MANUSCRIPT_JAE_FINAL.md
 
-      - name: Audit finalized manuscript
-        run: python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL.md --review-stage final
+      - name: Audit finalized ecological manuscript
+        run: python scripts/audit_ecological_manuscript.py --manuscript build/MANUSCRIPT_JAE_FINAL.md --review-stage final
 
       - name: Build finalized anonymous DOCX
         run: |
           python scripts/build_jae_anonymous_docx.py \
             --source build/MANUSCRIPT_JAE_FINAL.md \
-            --output build/FROG_JAE_ANON_MAIN_FINAL.docx
+            --output build/FROG_JAE_ECOLOGY_ANON_MAIN_FINAL.docx
 
-      - name: Rebuild and verify figures
+      - name: Rebuild and verify ecological figures
         run: |
-          python scripts/build_submission_figures.py
-          python scripts/verify_revision_figure_hashes.py
+          python scripts/build_ecological_figures.py
+          python scripts/verify_ecological_figure_hashes.py
 
       - name: Assemble final submission bundle
         run: |
@@ -88,19 +97,21 @@ jobs:
           mkdir -p "$out"
 
           cp build/MANUSCRIPT_JAE_FINAL.md "$out/"
-          cp build/FROG_JAE_ANON_MAIN_FINAL.docx "$out/"
+          cp build/FROG_JAE_ECOLOGY_ANON_MAIN_FINAL.docx "$out/"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
           cp build/submission-metadata/ZENODO_METADATA_FINAL.json "$out/"
           cp build/submission-metadata/CITATION.cff "$out/"
           cp build/submission-metadata/ARCHIVE_REFERENCE.txt "$out/"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
-          cp figures/FIGURE_1_DESIGN_V0_1.svg "$out/"
-          cp figures/FIGURE_2_EFFECTS_V0_1.svg "$out/"
-          cp figures/FIGURE_3_DECOMPOSITION_V0_1.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_2.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_2.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_V2_0.md "$out/"
+          cp figures_ecology_v0_5/FIGURE_1_ECO_RICHNESS_V0_1.svg "$out/"
+          cp figures_ecology_v0_5/FIGURE_2_ECO_SPECIES_V0_1.svg "$out/"
+          cp figures_ecology_v0_5/FIGURE_3_ECO_BETA_V0_1.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_4.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_3.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_RC4.md "$out/"
+          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_1.json "$out/"
+          cp ECOLOGICAL_ARGUMENT_SPINE_V0_1.md "$out/"
 
           python - <<'PY'
           import hashlib, json
@@ -117,6 +128,6 @@ jobs:
       - name: Upload final JAE bundle
         uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-final-submission-bundle
+          name: frogcs-jae-v0-5-final-submission-bundle
           path: build/final-submission/
           if-no-files-found: error

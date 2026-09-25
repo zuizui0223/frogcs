@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+import argparse
+import re
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser()
+parser.add_argument("--manuscript", default=str(ROOT/"MANUSCRIPT_JAE_V0_5.md"))
+parser.add_argument("--review-stage", choices=["initial","final"], default="initial")
+args=parser.parse_args()
+MS=Path(args.manuscript)
+text=MS.read_text(encoding="utf-8")
+
+expected_title="# Rainfall-associated richness gains accompany species-selective reassembly of active frog communities"
+assert text.startswith(expected_title)
+assert "FrogID" not in text
+assert "environmental filtering" not in text.lower()
+assert "family-stratified permutation" in text
+assert "two-sided P = 0.314" in text
+assert "species-selective" in text
+assert "Q = 144.01" in text
+assert "β = 0.01840" in text
+assert "Q_within = 73.88" in text
+assert "P = 8.28 × 10^-8" in text
+assert "β_sim = min(b, c) / (a + min(b, c))" in text
+if args.review_stage == "initial":
+    assert "github.com/zuizui0223/frogcs" not in text
+    assert "10.5281/zenodo." not in text.lower()
+
+abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
+abstract_words=len(re.findall(r"\b[\wÀ-ÿα-ωΑ-Ω≥≤×−–]+\b",abstract))
+assert abstract_words <= 350, abstract_words
+for i in range(1,6):
+    assert re.search(rf"^\s*{i}\. ",abstract,re.M)
+
+keywords=text.split("## Keywords",1)[1].split("## Introduction",1)[0]
+ks=[x.strip() for x in keywords.strip().split(";") if x.strip()]
+assert len(ks)<=8,ks
+assert ks==sorted(ks,key=str.lower),ks
+
+total_words=len(re.findall(r"\b[\wÀ-ÿα-ωΑ-Ω≥≤×−–]+\b",text))
+assert total_words <= 8500,total_words
+
+assert "Figure 4." not in text
+assert "Figure 1." in text and "Figure 2." in text and "Figure 3." in text
+assert "Xie, J., Towsey, M., Zhu, M., Zhang, J., & Roe, P. (2017)" in text
+assert "Severgnini, M. R." in text
+
+print({
+  "abstract_words":abstract_words,
+  "keywords":len(ks),
+  "total_words":total_words,
+  "status":"PASS"
+})

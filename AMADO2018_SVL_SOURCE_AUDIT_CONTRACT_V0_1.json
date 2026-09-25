@@ -1,0 +1,38 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit": "amado2018_svl_source_audit_v0_1",
+  "status": "source_structure_audit_only_no_body_size_effect_readback",
+  "purpose": "Determine whether the Amado et al. 2018 New World anuran SVL dataset can provide an independent high-coverage body-size validation for the fixed 29-species NAAMP response family.",
+  "source": {
+    "dryad_doi": "10.5061/dryad.hn5md92",
+    "publication_doi": "10.1111/ecog.03889",
+    "published_date": "2018-08-17",
+    "file_name": "SVL_Amadoetal2018.xlsx",
+    "dryad_file_stream_id": 47038,
+    "dryad_download_url": "https://datadryad.org/downloads/file_stream/47038",
+    "documented_scope": "SVL of 1233 anuran species from the New World"
+  },
+  "allowed_outputs": [
+    "download success/failure",
+    "file SHA256 and byte size",
+    "workbook sheet names",
+    "column names and row counts",
+    "for text-like columns: number of fixed NAAMP species names matched by exact/frozen-alias normalization",
+    "best structural species-name column and matched/unmatched species list"
+  ],
+  "prohibited_outputs": [
+    "SVL values",
+    "species-level size values",
+    "any association between SVL and wet recruitment",
+    "any effect estimate or p-value involving body size"
+  ],
+  "taxonomy": {
+    "species_family": 29,
+    "aliases": "same frozen Hyla<->Dryophytes and Lithobates<->Rana only",
+    "no_fuzzy_matching": true
+  },
+  "decision": {
+    "usable_if": "one unique sheet/column yields >=15 matched NAAMP species and workbook contains an unambiguous SVL-like numeric column; final validation contract must still be frozen before body-size effect readback",
+    "stop_if": "download inaccessible or no structural species column reaches 15 matches"
+  }
+}
