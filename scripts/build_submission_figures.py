@@ -85,7 +85,8 @@ def mapx(v,lo,hi,x0,x1):
 
 def fig2():
     naamp=read("NAAMP_PRIMARY_RECEIPT_V0_1.json")["primary"]
-    frog=read("FROGID_VALIDATION_RECEIPT_V0_2.json")["primary"]
+    frog_rep=read("FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json")
+    frog=frog_rep["primary"]
     rob=read("SPATIAL_CONFOUNDING_ROBUSTNESS_RECEIPT_V0_1.json")["artifacts"]
     el=[]
     el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="115mm" viewBox="0 0 1200 770">')
@@ -126,7 +127,7 @@ def fig2():
     xz=mapx(0.0,lo,hi,x0,x1); el.append(line(xz,455,xz,630,2,"7 7"))
     rows2=[
       ("NAAMP within route",rob["NAAMP"]["beta_rain_within_probability_scale"],rob["NAAMP"]["ci95_beta"][0],rob["NAAMP"]["ci95_beta"][1],505),
-      ("FrogID within ERA5 cell",rob["FrogID"]["beta_dry_within_probability_scale"],rob["FrogID"]["ci95_beta"][0],rob["FrogID"]["ci95_beta"][1],570),
+      ("FrogID within ERA5 cell",frog_rep["within_cell"]["beta_dry_within_probability_scale"],frog_rep["within_cell"]["ci95_beta"][0],frog_rep["within_cell"]["ci95_beta"][1],570),
     ]
     for label,v,l,h,y in rows2:
         el.append(text(70,y+6,label,20,"bold"))
