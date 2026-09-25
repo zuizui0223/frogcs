@@ -1,0 +1,22 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "0.2",
+  "status": "source_version_reconciled_without_effect_change",
+  "source_url": "https://dwca-exports.ala.org.au/dr14760.zip",
+  "source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+  "analyzed_snapshot": {
+    "occurrence_rows": 1183011,
+    "distinct_recordings": 655502,
+    "min_event_date": "2017-11-10",
+    "max_event_date": "2024-11-09",
+    "species_scale_note": "structural receipt reports Dataset 7.0-compatible scale"
+  },
+  "public_metadata_reconciliation": {
+    "gbif_dataset_doi": "10.15468/wazqft",
+    "gbif_landing_metadata_observed_2026_09_25": "still describes Dataset 6.0 (2017-11-10 to 2023-11-09)",
+    "australian_museum_dataset_7_release": "Dataset 7.0 covers the first seven years, November 2017 to November 2024, with over 1 million records",
+    "manuscript_rule": "Describe the analyzed object as the SHA-pinned ALA dr14760 snapshot matching the Dataset 7.0 temporal scope; do not call the current GBIF DOI landing metadata itself version 7.0 until its metadata catches up."
+  },
+  "effect_recomputed": false,
+  "scientific_claim_changed": false
+}
