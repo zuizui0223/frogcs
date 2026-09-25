@@ -2,33 +2,31 @@
 
 ## Abstract
 
-1. **Short environmental pulses can change not only how strongly animal communities are active, but which species constitute the active assemblage.** Rainfall effects on frog calling are well known, yet it remains unclear whether wetter conditions simply amplify a stable community or transiently reorganize community membership.
+1. **Rainfall effects on frog calling are familiar, but whether short rainfall pulses merely amplify the same assemblage or reorganize which species are active is much less clear.** We tested whether rainfall changes the composition of the acoustically active community, not simply its total activity.
 
-2. **We tested this using 15 years of standardized North American Amphibian Monitoring Program surveys.** We compared 4,236 wetter–drier pairs drawn from the same route and the same seasonal sampling window across adjacent observed years (585 routes, 21 states). We quantified active-species richness, turnover versus nestedness, species-specific wet recruitment, and trait correlates of recruitment.
+2. **We used 15 years of standardized North American Amphibian Monitoring Program surveys and compared 4,236 wetter–drier pairs from the same route and the same seasonal sampling window across adjacent observed years** (585 routes, 21 states). We quantified active-species richness, turnover versus nestedness, and species-specific wet-versus-dry responses.
 
-3. **Greater rainfall contrast predicted higher active-community richness.** Wetter runs contained more acoustically active species, and wet-minus-dry richness increased with rainfall contrast (β = 0.286 species per unit log-rain contrast, 95% CI 0.165–0.407, P = 3.81 × 10^-6). The effect persisted in exact consecutive-year pairs (β = 0.301, P = 1.60 × 10^-4).
+3. **Greater rainfall contrast predicted higher active-community richness.** Wet-minus-dry richness increased by 0.286 species per unit log-rain contrast (95% CI 0.165–0.407, P = 3.81 × 10^-6), with a similar effect in exact consecutive-year pairs (β = 0.301, P = 1.60 × 10^-4).
 
-4. **The richer wet assemblage was not a simple nested extension of the dry assemblage.** Nestedness did not increase with rainfall contrast, whereas turnover increased in the consecutive-year sensitivity (β = 0.0184, 95% CI 0.00470–0.0321, P = 0.00850). Species responses were strongly heterogeneous (adjusted Q = 144.0, df = 28, P = 1.46 × 10^-17), with wet-associated and dry-associated taxa remaining after temperature, survey-date, rain-contrast and year-gap adjustment. A secondary trait analysis showed that smaller-bodied species had more positive wet-recruitment responses (β = -0.367 on log body size, 95% CI -0.515 to -0.219, P = 1.23 × 10^-6).
+4. **The richer wet assemblage was not a simple nested extension of the dry assemblage.** Nestedness did not increase with rainfall contrast, whereas turnover increased in the consecutive-year sensitivity (β = 0.0184, 95% CI 0.00470–0.0321, P = 0.00850). Species wet-versus-dry responses were strongly heterogeneous after adjustment for temperature, survey date, rain-contrast magnitude and year gap (Q = 144.0, df = 28, P = 1.46 × 10^-17), and their adjusted ranking was almost identical to the raw ranking (Spearman ρ = 0.997).
 
-5. **Rainfall was therefore associated with transient, species-selective reassembly of the acoustically active frog community rather than a uniform rise in activity by an unchanged assemblage.** The body-size gradient is consistent with stronger hydric constraint in smaller anurans, suggesting that short rainfall pulses may act as community filters by differentially releasing water-balance constraints.
+5. **Rainfall was therefore associated with transient, species-selective reassembly of the acoustically active frog community rather than a uniform increase in activity by an unchanged assemblage.** A secondary body-size correlation was strong across species but did not survive family-stratified permutation, indicating that the species selectivity is biologically structured but its trait mechanism remains unresolved.
 
 ## Keywords
 
-active community; anurans; body size; community assembly; environmental filtering; rainfall; temporal beta diversity; water balance
+active community; anurans; community assembly; environmental pulse; rainfall; species reassembly; temporal beta diversity; turnover
 
 ## Introduction
 
-Environmental variation can reorganize ecological communities on timescales far shorter than changes in regional species pools or local occupancy. Short pulses of rain, temperature, food or disturbance may temporarily alter which species are active, visible or reproductively engaged. Yet community responses to such pulses are often summarized as changes in total activity, richness or co-occurrence, leaving unresolved whether the same assemblage simply becomes more active or whether the composition of the active community itself changes.
+Environmental variation can reorganize ecological communities on timescales far shorter than changes in regional species pools or local occupancy. Short pulses of rain, temperature, food or disturbance may temporarily alter which species are active or reproductively engaged. Yet pulse responses are often summarized only as changes in total activity or richness, leaving unresolved whether the same assemblage simply becomes more active or whether the identity of active species changes.
 
-Frogs are an especially useful system for separating these alternatives because rainfall is a major cue for acoustic and reproductive activity. Numerous studies have shown that rainfall covaries with calling intensity, calling-species richness and chorus onset (Hsu, Kam, & Fellers, 2006; Xie et al., 2017; Brodie, Allen-Ankins, & Schwarzkopf, 2025). Consequently, demonstrating that “frogs call after rain” is neither surprising nor sufficient as a community-ecology result. The less resolved question is whether rainfall acts uniformly across species or functions as a short-term ecological filter that changes which species participate in the acoustically active assemblage.
+Frogs provide a strong test case because rainfall effects on calling are already well established. Rainfall has been linked to calling activity, calling-species richness and chorus onset (Hsu, Kam, & Fellers, 2006; Xie et al., 2017; Brodie, Allen-Ankins, & Schwarzkopf, 2025). Demonstrating that frogs call more after rain is therefore neither surprising nor sufficient as a community-ecology result. The ecological question is instead whether rainfall acts uniformly across species or rapidly reorganizes the composition of the active assemblage.
 
-These alternatives make different predictions. Under **uniform activation**, wetter conditions should increase community activity while preserving relative species membership: a wet assemblage should largely resemble a more active version of the dry assemblage. Under **nested recruitment**, wetter conditions should retain a dry-weather core while adding additional species. Under **species-selective reassembly**, however, wet conditions should simultaneously increase active richness and alter species membership, producing species-specific gains and losses rather than simple nested expansion.
+Three alternatives are distinguishable. Under **uniform activation**, wetter conditions increase activity while preserving relative community membership. Under **nested recruitment**, wetter conditions retain a dry-weather core and add species, so temporal beta diversity is increasingly nested. Under **species-selective reassembly**, wetter conditions increase active richness while simultaneously changing membership, producing turnover and contrasting species-specific responses. This distinction is relevant because temporal frog assemblages can sometimes vary mainly through nestedness rather than turnover; for example, a three-year Brazilian frog-community study reported relatively stable composition and temporal beta diversity dominated by nestedness (Severgnini et al., 2024). A rainfall-associated increase in turnover within the same sites and seasonal windows would therefore represent a different mode of short-term community change. citeturn103551view0
 
-A species-selective response is plausible because anurans differ substantially in hydric physiology and life history. Water balance is a central constraint on amphibian activity, and smaller anurans generally experience higher mass-specific evaporative water loss because of their greater surface-area-to-volume ratios. Comparative studies have linked anuran body size to water economy, climatic water deficit and precipitation, with larger body size potentially conferring greater resistance to dehydration (Amado, Bidau, & Olalla-Tárraga, 2019). A short rainfall pulse could therefore release hydric constraints disproportionately for smaller-bodied species, creating transient trait filtering in the active community.
+We tested these alternatives using standardized North American Amphibian Monitoring Program (NAAMP) surveys. Rather than comparing different locations, we matched surveys from the **same route and the same seasonal sampling window** across adjacent observed years and oriented each pair by rainfall recency. We first asked whether greater wet–dry rainfall contrast predicted higher active-species richness. We then partitioned compositional dissimilarity into turnover and nestedness, and tested whether species differed systematically in their wet-versus-dry responses. We finally explored a finite external trait family after species effects had been opened; body size emerged as a strong pooled correlate, but a family-stratified permutation test was used to determine whether that relationship represented a within-family gradient or broader clade structure.
 
-We tested these ideas using standardized North American Amphibian Monitoring Program (NAAMP) surveys. Rather than comparing different sites, we matched surveys from the **same route and the same seasonal survey window** across adjacent observed years and oriented each pair by rainfall recency. We first asked whether greater wet–dry rainfall contrast predicted higher active-species richness. We then partitioned compositional change into turnover and nestedness and tested whether species differed systematically in wet recruitment. Finally, after opening species-specific responses, we used an independently compiled amphibian trait database to test a finite set of ecological traits, with body size emerging as the principal secondary correlate. We also use previously completed community-activity decomposition analyses as supporting evidence to distinguish community reassembly from stronger pairwise co-calling within already-active sampling units.
-
-Our ecological hypothesis is that rainfall functions as a **short-term community filter**: wetter conditions should increase the richness of the active assemblage, but the added richness should arise through species-selective reassembly rather than a uniform rise in activity across an unchanged species set.
+Our ecological prediction was that if rainfall merely amplifies a stable assemblage, wet–dry richness differences should not be accompanied by systematic species replacement. Conversely, if rainfall produces **species-selective short-term reassembly**, greater rainfall contrast should increase active richness while species membership changes non-uniformly across taxa.
 
 ## Materials and Methods
 
@@ -48,9 +46,7 @@ For pairs with unequal DaysSinceRain, the member with the lower DaysSinceRain wa
 
 Rain contrast was
 
-[
-Delta R = log(1 + D_{dry}) - log(1 + D_{wet}),
-]
+`ΔR = log(1 + D_dry) - log(1 + D_wet)`
 
 which is positive by construction and increases as the two paired runs differ more strongly in rainfall recency. Models also included the wet-minus-dry difference in mean temperature, day of year, and the year gap.
 
@@ -58,9 +54,7 @@ which is positive by construction and increases as the two paired runs differ mo
 
 For each pair, richness gain was
 
-[
-Delta S = S_{wet} - S_{dry}.
-]
+`ΔS = S_wet - S_dry`.
 
 We fitted (Delta S) against rain contrast, temperature difference, day-of-year difference and year gap, with State and RunNumber fixed effects. Standard errors were cluster-robust by State × RouteNumber. The prespecified ecological prediction was that greater rainfall contrast would produce positive richness gain.
 
@@ -68,43 +62,23 @@ We fitted (Delta S) against rain contrast, temperature difference, day-of-year d
 
 For each matched pair, species were partitioned into those shared between runs ((a)), present only in the wetter run ((b)), and present only in the drier run ((c)). Sørensen dissimilarity was
 
-[
-eta_{sor} = rac{b+c}{2a+b+c}.
-]
+`β_sor = (b + c) / (2a + b + c)`.
 
 The Simpson turnover component was
 
-[
-eta_{sim} = rac{min(b,c)}{a+min(b,c)},
-]
-
-and the nestedness-resultant component was (eta_{sne} = eta_{sor} - eta_{sim}).
-
-We modelled turnover and nestedness against the same rain contrast and pair-level covariates used for richness gain. A simple nested-recruitment hypothesis predicted increasing nestedness with rain contrast and little change in turnover.
-
-### Species-specific wet recruitment
-
-After the community-level extension was specified, we froze a separate species-response analysis before species-specific effects were opened. For each species and matched pair in which that species occurred in exactly one member, we scored a **wet gain** if it occurred only in the wetter run and a **dry loss** if it occurred only in the drier run.
-
-Species were eligible if they contributed at least 40 discordant pairs across at least 10 routes. Twenty-nine species passed this outcome-independent structural gate. Initial wet-gain versus dry-loss asymmetry was assessed with exact binomial tests and Benjamini–Hochberg FDR.
-
-Because wet–dry pairs also differed in temperature, survey date, rain-contrast magnitude and year gap, we subsequently froze a robustness analysis before opening adjusted species effects. For each species, we fitted a binomial-logit model to its discordant events:
-
-[
-P(wet gain) sim Delta R + Delta Temp + Delta DOY + YearGap,
-]
+`β_sor = (b + c) / (2a + b + c)`.
 
 with all continuous covariates centered within species and cluster-robust standard errors by route. The intercept therefore estimates each species' adjusted wet-versus-dry tendency at its mean pair conditions. Residual heterogeneity among species intercepts was tested using inverse-variance Cochran's Q, and raw-versus-adjusted rank concordance was assessed with Spearman correlation.
 
-### Trait analysis
+### Secondary trait analysis
 
-Species-specific responses suggested that rainfall filtering was not uniform. We therefore froze a finite trait screen before opening external trait values. Species traits came from AmphiBIO v1, an independently compiled global amphibian trait database (Oliveira et al., 2017). Twenty-six of the 29 response-eligible NAAMP species matched unambiguously to body-size data.
+Species-specific responses were highly heterogeneous, motivating a separately frozen finite trait screen using AmphiBIO v1 (Oliveira et al., 2017). This trait analysis was conducted after the community and species-response results had been opened and is therefore secondary.
 
-The original climatic-seasonality trait hypothesis was not estimable because of missing values. Among the finite secondary trait family, body size was the only estimable variable showing a strong association with wet recruitment. We therefore treated body size as a **secondary ecological mechanism**, not as an original confirmatory hypothesis.
+Twenty-six of the 29 response-eligible NAAMP species matched unambiguously to AmphiBIO body-size data. The originally specified climatic-seasonality trait was not estimable because only one response-eligible species had complete wet/dry seasonality fields. Among the finite secondary trait family, log-transformed body size was the only estimable trait showing a strong association with wet-versus-dry response.
 
-For each matched species, we modelled wet-recruitment log odds against log-transformed AmphiBIO body size using inverse-variance weighted least squares and HC3 covariance. We then repeated the analysis using pair-covariate-adjusted species wet-versus-dry intercepts. Spearman rank correlation and leave-one-family-out analyses were used as sensitivities. A family-stratified permutation analysis was separately specified to test whether the body-size gradient persisted within taxonomic families.
+We first related Haldane-corrected species wet-versus-dry log odds to log body size with inverse-variance weighted least squares and HC3 covariance. We then repeated this analysis using pair-covariate-adjusted species response intercepts. Because species are not phylogenetically independent, we did not treat the pooled body-size regression as a mechanistic result. We froze an additional family-stratified permutation analysis before opening that robustness result. For each family with at least two matched species, log body sizes were permuted among species within that family 100,000 times while adjusted species responses and inverse-variance weights were held fixed. The test statistic was the weighted slope after subtracting weighted family means from body size and response.
 
-The body-size analysis is interpreted as a proxy for hydric and life-history differences. It does not directly measure evaporative water loss, dehydration tolerance or breeding-water hydroperiod.
+The trait analysis therefore asks only whether an obvious cross-species ecological correlate helps describe species selectivity. It does not establish a causal physiological mechanism, and a pooled relationship that fails the within-family permutation cannot support a headline body-size filtering claim.
 
 ### Supporting activity decomposition
 
@@ -144,13 +118,13 @@ At FDR 5%, adjusted wet-associated taxa included *Gastrophryne carolinensis*, *H
 
 The strongest adjusted wet association was *G. carolinensis*, with an estimated wet probability of 0.774 among discordant matched pairs. By contrast, *H. cinerea*, *L. catesbeianus* and *L. palustris* each had adjusted wet probabilities below 0.43.
 
-### Smaller-bodied species are more strongly associated with wet recruitment
+### A pooled body-size correlation does not survive family-stratified testing
 
-A secondary AmphiBIO trait analysis matched 26 of the 29 species. In the raw species-response analysis, wet-recruitment log odds declined strongly with log body size (β = -0.3353, 95% CI -0.4662 to -0.2044, P = 5.17 × 10^-7).
+The secondary AmphiBIO screen matched 26 of the 29 species. Across species, wet-recruitment log odds declined strongly with log body size in both the raw response analysis (β = -0.3353, 95% CI -0.4662 to -0.2044, P = 5.17 × 10^-7) and the pair-covariate-adjusted response analysis (β = -0.3670, 95% CI -0.5153 to -0.2187, P = 1.23 × 10^-6). The unweighted rank association was also negative (Spearman ρ = -0.517, P = 0.00687).
 
-The relationship strengthened slightly when species responses were first adjusted for matched-pair covariates (β = -0.3670, 95% CI -0.5153 to -0.2187, P = 1.23 × 10^-6). The unweighted rank relationship was also negative (Spearman ρ = -0.517, P = 0.00687).
+However, the family-stratified permutation did not support a general within-family body-size gradient. The observed weighted within-family slope was -0.1889, compared with a permutation distribution centred near zero (two-sided P = 0.314; negative-tail P = 0.151). Descriptive family-specific slopes were -0.447 for Hylidae (14 species) and -0.063 for Ranidae (7 species), while the remaining families contained too few species for informative within-family slopes.
 
-Leave-one-family-out slopes were negative wherever the reduced dataset remained estimable, including analyses excluding Bufonidae and Ranidae. A conventional family-fixed-effect HC3 model was numerically unstable because of the small number and imbalance of species among families; the separately frozen family-stratified permutation test provides a more appropriate robustness check.
+We therefore treat body size as a **secondary cross-species correlate that is partly confounded with taxonomic structure**, not as the mechanism responsible for rainfall-associated reassembly.
 
 ### Community activity changes more than residual co-calling structure
 
@@ -160,25 +134,23 @@ These findings place the compositional result at the level of **active-community
 
 ## Discussion
 
-Rainfall was associated with more than a simple increase in frog calling. Within the same standardized routes and the same seasonal survey windows, wetter conditions were associated with higher active-species richness, and the magnitude of richness gain increased with the contrast in rainfall recency. Yet the wetter assemblage was not merely the drier assemblage plus additional species: turnover increased in the strict consecutive-year comparison, and species differed dramatically in whether they appeared preferentially on the wet or dry side of matched pairs.
+Rainfall was associated with more than the familiar increase in frog calling. Within the same standardized routes and the same seasonal survey windows, wetter conditions contained more acoustically active species, and richness gain increased with the magnitude of the rainfall contrast. At the same time, the wetter assemblage was not simply the drier assemblage plus extra species: nestedness did not increase, turnover increased in exact consecutive-year comparisons, and species differed sharply in whether they appeared preferentially on the wet or dry side of matched pairs.
 
-These results support a view of rainfall as a **short-term ecological filter on active-community composition**. The relevant ecological response is not only the amount of activity but the identity of species participating in the active assemblage. Such filtering can generate rapid community reassembly without requiring colonization, extinction or any change in the regional species pool. It is therefore distinct from the slower spatial processes usually emphasized in community assembly.
+The central ecological result is therefore **species-selective short-term reassembly of the active community**. This is distinct from a uniform activity response. If rainfall merely amplified the same species set, wet-versus-dry responses should have been comparatively homogeneous. Instead, adjusted species effects remained extremely heterogeneous after accounting for temperature differences, survey timing, rain-contrast magnitude and year gap (Q = 144.0, P = 1.46 × 10^-17), while raw and adjusted species rankings were almost identical (ρ = 0.997). The response is therefore organized at the level of species identity.
 
-The species-level result is particularly important because it rejects a simple uniform-activation interpretation. If rainfall merely raised calling probability similarly across species, wet-versus-dry asymmetry should have been comparatively homogeneous. Instead, species responses remained extremely heterogeneous even after adjustment for temperature, survey timing, rain-contrast magnitude and year gap. Several species were consistently associated with wetter runs, whereas others were preferentially retained on the drier side.
+The turnover result further distinguishes this pattern from simple nested recruitment. A recent three-year study of a tropical frog community found relatively stable composition and temporal beta diversity dominated by nestedness, consistent with species dropping in and out around a persistent community structure (Severgnini et al., 2024). Here, rainfall contrast did not increase nestedness, and exact consecutive-year comparisons instead showed increasing turnover. The ecological picture is one of **richness gain plus compositional replacement** over short temporal contrasts. citeturn103551view0
 
-Body size provides a plausible ecological axis for this filtering. Smaller-bodied species showed substantially more positive wet-recruitment responses, both before and after pair-level adjustment. This pattern is consistent with the hydric biology of amphibians. Smaller anurans have larger surface-area-to-volume ratios and can experience greater mass-specific evaporative water loss, whereas larger body size can reduce relative dehydration risk. Comparative work across anurans has linked body size to water balance and water availability (Amado et al., 2019). Under this interpretation, rainfall transiently relaxes hydric constraints more strongly for smaller species, allowing them to enter the acoustically active assemblage disproportionately after wet conditions.
+We use the term reassembly deliberately rather than claiming classical environmental filtering. Environmental-filter terminology can imply that abiotic conditions prevent establishment or persistence, a stronger process than these acoustic data identify. Our results concern which locally available species enter the **acoustically active assemblage** during standardized surveys. Rainfall-associated reassembly could arise through species differences in calling phenology, reproductive engagement, local movement, physiological constraints or other behaviours; it does not require short-term colonization or extinction.
 
-This mechanism remains a hypothesis rather than a direct physiological demonstration. Body size covaries with many ecological traits, including life history, habitat use and breeding strategy, and our current trait analysis does not directly measure dehydration tolerance or pond hydroperiod. Nevertheless, the size gradient is difficult to dismiss as a simple artefact of the matched-pair design: it remains strong when species wet–dry responses are adjusted for temperature, survey date and temporal separation, and species-response rankings are almost unchanged by adjustment.
+The secondary trait analysis illustrates both the promise and the current limit of mechanistic interpretation. Smaller-bodied species had more positive wet associations in pooled analyses, a pattern consistent with comparative work linking body size and amphibian water balance. However, the negative slope did not survive permutation of body size within families (P = 0.314). We therefore do not interpret body size as an established rainfall-filtering mechanism. The pooled signal may reflect a combination of body size, clade-specific life histories, habitat use and breeding strategies. Direct traits of evaporative water loss, dehydration tolerance, breeding hydroperiod or reproductive mode would be required to identify the axis responsible for the species selectivity.
 
-The turnover result further argues against a simple “wet weather activates everyone” model. If wet communities were merely nested supersets of dry communities, increasing rainfall contrast should have increased nestedness. It did not. Instead, exact consecutive-year comparisons showed increasing turnover. The biological picture is therefore one of simultaneous richness gain and compositional replacement: rainfall appears to open an activity window for some species while others contribute less consistently to the wetter assemblage.
+Previously completed activity-decomposition analyses provide supporting context. Recent rain increased the number of standardized stops containing callers and expanded run-level active richness, whereas multispecies calling conditional on an already-active stop and several residual co-calling metrics changed little. Together with the matched-community results, this indicates that rainfall-associated community change is expressed primarily through **which sampling units and which species enter the active assemblage**, rather than stronger residual association among species already calling at the same stop.
 
-This interpretation also clarifies earlier co-calling results. Rain increased the number of active stops and the run-level active species pool, but did not detectably strengthen pairwise or residual co-calling within already-active stops. The ecological signal therefore lies primarily in **which species and sampling units enter the active community**, rather than in stronger association among species once activity has begun.
+Several limitations define the scope of inference. Acoustic presence is not occupancy: a species absent from a run may remain locally present but silent. “Wet recruitment” therefore means acoustic participation in the wetter survey, not colonization, and “dry loss” does not mean extinction. Rainfall was not experimentally manipulated, so time-varying environmental covariates may contribute to the associations despite matched routes, seasonal-window controls and temperature/date adjustment. The exact consecutive-year turnover result is a prespecified sensitivity rather than the primary turnover model, whose coefficient was positive but imprecise (P = 0.104). Finally, the ecological-extension, species-response and trait analyses were developed after the original rainfall endpoint was opened; each was separately frozen before its own effect readback, but none should be represented as an original preregistered hypothesis.
 
-Several limitations define the scope of inference. First, acoustic presence is not occupancy. Species that are absent from a run may still occur locally but remain silent. The response is therefore active-community composition, not the full ecological community. Second, rainfall was not experimentally manipulated; unmeasured conditions correlated with rainfall may contribute to the patterns. Third, body size is an explanatory correlate rather than a measured physiological mechanism. A stronger test would combine species-specific recruitment responses with direct traits of evaporative water loss, dehydration tolerance, breeding hydroperiod or reproductive mode. Fourth, the ecological-extension and trait analyses were developed after the original rainfall endpoint had been opened; each extension was separately frozen before its own effect readback, but they should not be represented as original preregistered hypotheses.
+Despite these boundaries, the ecological conclusion differs substantially from “frogs call after rain.” **Rainfall-associated activity is compositionally structured.** Wetter conditions increase the richness of the active assemblage, but species do not respond uniformly and the change includes replacement rather than simple addition. Short environmental pulses can therefore reorganize the realized active community on timescales far shorter than changes in occupancy or the regional species pool.
 
-Despite these boundaries, the ecological result differs fundamentally from the familiar observation that frogs call after rain. **Rainfall-associated activity is species-selective and compositionally structured.** Wetter conditions increase the richness of the active frog assemblage, but they also alter which species are represented, and smaller-bodied species are disproportionately associated with the wet side of this reassembly.
-
-More generally, short environmental pulses can act as transient community filters. Community assembly is often framed in terms of persistent habitat differences or long-term environmental gradients, but behavioural communities may be repeatedly reassembled on much shorter timescales. In frogs, rainfall may temporarily redraw the realized active community by releasing hydric constraints unequally among species.
+The unresolved next mechanistic question is not whether rainfall matters, but **which ecological traits generate the contrasting wet-versus-dry species responses**. The present data establish the selective reassembly pattern; identifying its trait basis requires a better-covered independent trait dataset or direct physiological and reproductive-strategy measurements.
 
 ## Data Availability
 
@@ -196,14 +168,17 @@ Hsu, M.-Y., Kam, Y.-C., & Fellers, G. M. (2006). Temporal organization of an anu
 
 Oliveira, B. F., São-Pedro, V. A., Santos-Barrera, G., Penone, C., & Costa, G. C. (2017). AmphiBIO, a global database for amphibian ecological traits. *Scientific Data*, 4, 170123. https://doi.org/10.1038/sdata.2017.123
 
-Xie, G. Y., et al. (2017). [Rainfall and frog community acoustic activity study; full citation retained from prior manuscript bibliography.]
+Severgnini, M. R., de Oliveira, M. M., Valério, L. M., & Provete, D. B. (2024). Temporal dynamics of species richness and composition in a peri-urban tropical frog community in Central Brazil. *Ecology and Evolution*, 14, e70628. https://doi.org/10.1002/ece3.70628
+
+Xie, J., Towsey, M., Zhu, M., Zhang, J., & Roe, P. (2017). An intelligent system for estimating frog community calling activity and species richness. *Ecological Indicators*, 82, 13–22. https://doi.org/10.1016/j.ecolind.2017.06.015
 
 ## Figure concepts
 
-**Figure 1. Matched-route design and rainfall-associated richness gain.** Same-route, same-seasonal-window wet–dry pairs, with richness gain plotted against log rainfall contrast and the exact consecutive-year sensitivity.
+**Figure 1. Matched-route design and rainfall-associated active-richness gain.** Same-route, same-seasonal-window wet–dry pairs, with the adjusted richness-gain slope and exact consecutive-year sensitivity.
 
 **Figure 2. Species-selective community reassembly.** Adjusted species wet-versus-dry probabilities or log odds with 95% CIs, highlighting FDR-supported wet-associated and dry-associated taxa.
 
-**Figure 3. Body-size gradient in rainfall filtering.** Adjusted species wet-recruitment response against log body size, with families indicated and family-stratified robustness summarized.
+**Figure 3. Turnover rather than simple nested addition.** Rain-contrast effects on nestedness and Simpson turnover for the primary matched pairs and exact consecutive-year sensitivity.
 
-**Figure 4. Ecological synthesis.** Rainfall pulse → broader active-stop coverage → higher active-community richness + species-selective replacement; residual pairwise co-calling remains comparatively stable.
+**Figure 4. Supporting community-activity decomposition.** Recent rain expands active-stop coverage and run-level active richness, while conditional and residual co-calling metrics remain near zero. Body-size results are supplementary because the pooled slope does not survive family-stratified permutation.
+
