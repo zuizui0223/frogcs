@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import argparse
 import re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-MS=ROOT/"MANUSCRIPT_JAE_V0_5.md"
+parser=argparse.ArgumentParser()
+parser.add_argument("--manuscript", default=str(ROOT/"MANUSCRIPT_JAE_V0_5.md"))
+parser.add_argument("--review-stage", choices=["initial","final"], default="initial")
+args=parser.parse_args()
+MS=Path(args.manuscript)
 text=MS.read_text(encoding="utf-8")
 
 expected_title="# Rainfall-associated richness gains accompany species-selective reassembly of active frog communities"
@@ -16,6 +21,12 @@ assert "two-sided P = 0.314" in text
 assert "species-selective" in text
 assert "Q = 144.01" in text
 assert "β = 0.01840" in text
+assert "Q_within = 73.88" in text
+assert "P = 8.28 × 10^-8" in text
+assert "β_sim = min(b, c) / (a + min(b, c))" in text
+if args.review_stage == "initial":
+    assert "github.com/zuizui0223/frogcs" not in text
+    assert "10.5281/zenodo." not in text.lower()
 
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
 abstract_words=len(re.findall(r"\b[\wÀ-ÿα-ωΑ-Ω≥≤×−–]+\b",abstract))
