@@ -1,6 +1,6 @@
 {
   "project": "frog-chorus-synchrony",
-  "version": "ecology-0.2",
+  "version": "ecology-0.3",
   "status": "ecological_submission_candidate_in_development",
   "working_title": "Rainfall-associated richness gains accompany species-selective reassembly of active frog communities",
   "primary_system": "NAAMP",
@@ -8,11 +8,13 @@
     "Within matched route × seasonal-window comparisons, wetter runs contain more acoustically active species, and richness gain increases with rainfall contrast.",
     "Rainfall-associated richness gain is not explained by simple nested addition; exact consecutive-year comparisons show increased compositional turnover with rainfall contrast.",
     "Species wet-versus-dry responses are strongly heterogeneous and remain so after pair-level temperature, survey-date, rain-contrast magnitude and year-gap adjustment.",
+    "Species-response heterogeneity is not reducible to broad family differences: 52.1% of inverse-variance Q remains within families, with significant heterogeneity inside both Hylidae and Ranidae.",
     "The species-selective pattern is the central ecological result; it rejects a uniform activation response by an unchanged assemblage."
   ],
   "secondary_results": [
     "Pooled species responses are negatively associated with body size in AmphiBIO.",
     "The body-size association does not survive family-stratified permutation (two-sided P=0.314), so body size is not authorized as the headline mechanism.",
+    "The contrast between strong within-family species-response heterogeneity and null within-family body-size permutation shows that the selectivity is finer than family identity but is not explained by body size alone.",
     "Earlier participation/residual-association decomposition supports membership-level change more than pairwise co-calling change."
   ],
   "interpretation": "Short rainfall pulses are associated with transient, species-selective reassembly of the acoustically active frog assemblage.",
@@ -34,6 +36,7 @@
     "body_size_pooled": "secondary frozen trait-family result",
     "body_size_adjusted": "separately frozen adjusted-response robustness",
     "body_size_within_family": "post-discovery robustness; null (two-sided P=0.314)",
-    "independent_body_size_validation": "not established; Huang source undercoverage and Amado source inaccessible in Actions"
+    "independent_body_size_validation": "not established; Huang source undercoverage and Amado source inaccessible in Actions",
+    "within_family_species_heterogeneity": "post-opening family-structure test frozen before readback; Qwithin=73.88, df=21, P=8.28e-8"
   }
 }
