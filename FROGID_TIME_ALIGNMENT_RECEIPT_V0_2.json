@@ -1,0 +1,17 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit": "frogid_time_alignment_v0_2",
+  "contract": "FROGID_TIME_ALIGNMENT_CONTRACT_V0_2.json",
+  "workflow_run": 36113001782,
+  "artifact_id": 10853183859,
+  "artifact_digest": "sha256:3d99fced1a143ecb4217663936713e098e2ec9d3c86660aabdc2d783bbaf7ee5",
+  "source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+  "retained_deterministic_events": 40754,
+  "comparable_events": 40754,
+  "offset_match_fraction": 0.9962948422240762,
+  "local_hour_match_fraction": 0.9962948422240762,
+  "local_date_match_fraction": 0.9998527751877117,
+  "events_with_offset_or_hour_mismatch": 151,
+  "events_with_local_date_mismatch": 6,
+  "conclusion": "Most supplied offsets match the coordinate-derived timezone, but the nonzero mismatches justified a frozen timezone-aware repair of event date/hour before final effect reporting."
+}
