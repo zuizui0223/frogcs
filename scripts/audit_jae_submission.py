@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT
 parser=argparse.ArgumentParser()
 parser.add_argument("--manuscript", default=str(BASE/"MANUSCRIPT_JAE_V0_3.md"))
+parser.add_argument("--review-stage", choices=["initial","final"], default="initial")
 args=parser.parse_args()
 MS=Path(args.manuscript)
 text=MS.read_text(encoding="utf-8")
@@ -62,6 +63,19 @@ assert "10.15468/wazqft" in text
 assert "10.1002/qj.3803" in text
 assert "Zenodo" in text
 assert "Figure 1." in text and "Figure 2." in text
+
+if args.review_stage == "initial":
+    # Keep reviewer-facing main document anonymous. A generic archive-intent statement is allowed,
+    # but public author-identifying repository/deposition links are deferred.
+    for forbidden_public_identifier in [
+        "github.com/zuizui0223/frogcs",
+        "10.5281/zenodo.",
+        "zenodo.org/record/",
+        "zenodo.org/records/",
+    ]:
+        assert forbidden_public_identifier.lower() not in text.lower(), (
+            f"public identifying archive link/DOI in initial-review manuscript: {forbidden_public_identifier}"
+        )
 
 print({
     "abstract_words":abstract_words,
