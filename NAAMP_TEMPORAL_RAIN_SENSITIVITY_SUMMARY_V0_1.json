@@ -1,0 +1,232 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_temporally_disjoint_rain_sensitivity_v0_1_summary",
+  "contract": "NAAMP_TEMPORAL_RAIN_SENSITIVITY_CONTRACT_V0_1.json",
+  "workflow_run": 36201847928,
+  "artifact_id": 10892357049,
+  "artifact_digest": "sha256:4a416fc7840bfb20366dca0ff82568b2b6d4a2de62b4badc302012b0befcf713",
+  "head_sha": "9bb474ddf093af0ee736388b750dfaf19f96fe41",
+  "coverage": {
+    "training_estimable": 27,
+    "validation_estimable": 29,
+    "overlap_estimable": 27
+  },
+  "time_split": {
+    "training_years": [
+      2001,
+      2007
+    ],
+    "training_runs": 2888,
+    "validation_years": [
+      2008,
+      2015
+    ],
+    "validation_runs": 4960,
+    "validation_pairs": 2459
+  },
+  "primary_cross_species": {
+    "n_species": 27,
+    "beta_per_1sd_early_sensitivity": 0.2843699134346247,
+    "se_hc3": 0.07331103717462491,
+    "ci95_beta": [
+      0.14068292090308285,
+      0.4280569059661665
+    ],
+    "p_value": 0.00010490792632491435,
+    "positive_ci_support": true,
+    "spearman_rho": 0.45848595848595847,
+    "spearman_p": 0.01616156205412432,
+    "early_sensitivity_mean": 0.024271703433694922,
+    "early_sensitivity_sd": 0.050230370809544275
+  },
+  "family_stratified_permutation": {
+    "n_species": 24,
+    "n_families": 5,
+    "family_counts": {
+      "Bufonidae": 3,
+      "Hylidae": 12,
+      "Microhylidae": 1,
+      "Ranidae": 7,
+      "Scaphiopodidae": 1
+    },
+    "observed_weighted_within_family_slope": 0.19334214971154143,
+    "permutations": 100000,
+    "seed": 20260926,
+    "positive_tail_p": 0.015639843601563983,
+    "two_sided_p": 0.034409655903440965,
+    "positive_support": true,
+    "q025": -0.1823270062131306,
+    "q975": 0.17569544302942053
+  },
+  "cross_species_table": [
+    {
+      "species": "Acris crepitans",
+      "early_rain_pulse_sensitivity": 0.04046944597478559,
+      "late_adjusted_wet_log_odds": 0.10570729531128503,
+      "late_adjusted_wet_probability": 0.526402243445108
+    },
+    {
+      "species": "Acris crepitans/gryllus complex",
+      "early_rain_pulse_sensitivity": -0.024884629278155133,
+      "late_adjusted_wet_log_odds": -0.16737755927413167,
+      "late_adjusted_wet_probability": 0.45825302735153123
+    },
+    {
+      "species": "Acris gryllus",
+      "early_rain_pulse_sensitivity": -0.06151168420546147,
+      "late_adjusted_wet_log_odds": 0.1129839167713122,
+      "late_adjusted_wet_probability": 0.5282159699795317
+    },
+    {
+      "species": "Anaxyrus americanus",
+      "early_rain_pulse_sensitivity": 0.006939236039124775,
+      "late_adjusted_wet_log_odds": -0.03825889071857603,
+      "late_adjusted_wet_probability": 0.4904364438407062
+    },
+    {
+      "species": "Anaxyrus fowleri",
+      "early_rain_pulse_sensitivity": -0.005326451556017392,
+      "late_adjusted_wet_log_odds": 0.3690245402331387,
+      "late_adjusted_wet_probability": 0.5912232519514735
+    },
+    {
+      "species": "Anaxyrus terrestris",
+      "early_rain_pulse_sensitivity": -0.012041208953978935,
+      "late_adjusted_wet_log_odds": 0.40759139051032695,
+      "late_adjusted_wet_probability": 0.6005101991015611
+    },
+    {
+      "species": "Gastrophryne carolinensis",
+      "early_rain_pulse_sensitivity": 0.08943611886437322,
+      "late_adjusted_wet_log_odds": 1.3851530595090367,
+      "late_adjusted_wet_probability": 0.7998173292173543
+    },
+    {
+      "species": "Hyla chrysoscelis",
+      "early_rain_pulse_sensitivity": 0.03180000861636474,
+      "late_adjusted_wet_log_odds": 0.47665259043572095,
+      "late_adjusted_wet_probability": 0.6169571218084745
+    },
+    {
+      "species": "Hyla chrysoscelis/versicolor complex",
+      "early_rain_pulse_sensitivity": 0.009021768553507278,
+      "late_adjusted_wet_log_odds": 0.17017232006180621,
+      "late_adjusted_wet_probability": 0.5424407107171947
+    },
+    {
+      "species": "Hyla cinerea",
+      "early_rain_pulse_sensitivity": 0.03171988172235924,
+      "late_adjusted_wet_log_odds": -0.7948307637950224,
+      "late_adjusted_wet_probability": 0.31113235309221704
+    },
+    {
+      "species": "Hyla femoralis",
+      "early_rain_pulse_sensitivity": 0.12338659854685442,
+      "late_adjusted_wet_log_odds": 0.5719269493433395,
+      "late_adjusted_wet_probability": 0.6392076896573919
+    },
+    {
+      "species": "Hyla gratiosa",
+      "early_rain_pulse_sensitivity": -0.05722397620510098,
+      "late_adjusted_wet_log_odds": -0.07286183458818651,
+      "late_adjusted_wet_probability": 0.4817925956672259
+    },
+    {
+      "species": "Hyla squirella",
+      "early_rain_pulse_sensitivity": 0.15233717281721637,
+      "late_adjusted_wet_log_odds": 0.9974922065072779,
+      "late_adjusted_wet_probability": 0.730565230892822
+    },
+    {
+      "species": "Hyla versicolor",
+      "early_rain_pulse_sensitivity": 0.007289263330738731,
+      "late_adjusted_wet_log_odds": 0.22876730416026622,
+      "late_adjusted_wet_probability": 0.5569436991479865
+    },
+    {
+      "species": "Lithobates catesbeianus",
+      "early_rain_pulse_sensitivity": -0.008825257077706091,
+      "late_adjusted_wet_log_odds": -0.33186911596014085,
+      "late_adjusted_wet_probability": 0.41778590807356286
+    },
+    {
+      "species": "Lithobates clamitans",
+      "early_rain_pulse_sensitivity": -0.01094254914106943,
+      "late_adjusted_wet_log_odds": -0.11117431491918763,
+      "late_adjusted_wet_probability": 0.4722350126892993
+    },
+    {
+      "species": "Lithobates palustris",
+      "early_rain_pulse_sensitivity": -0.016195731561195602,
+      "late_adjusted_wet_log_odds": -0.3136693880585984,
+      "late_adjusted_wet_probability": 0.4222193364833676
+    },
+    {
+      "species": "Lithobates pipiens",
+      "early_rain_pulse_sensitivity": 0.0364885796654284,
+      "late_adjusted_wet_log_odds": 0.21023364336788408,
+      "late_adjusted_wet_probability": 0.5523656804343077
+    },
+    {
+      "species": "Lithobates sphenocephalus",
+      "early_rain_pulse_sensitivity": 0.011756298648999713,
+      "late_adjusted_wet_log_odds": 0.3044397557596505,
+      "late_adjusted_wet_probability": 0.5755274916354501
+    },
+    {
+      "species": "Lithobates sylvaticus",
+      "early_rain_pulse_sensitivity": -0.006636282612025453,
+      "late_adjusted_wet_log_odds": 0.2130837670631671,
+      "late_adjusted_wet_probability": 0.553070290211103
+    },
+    {
+      "species": "Lithobates virgatipes",
+      "early_rain_pulse_sensitivity": 0.04351506933974793,
+      "late_adjusted_wet_log_odds": -0.8061837188437766,
+      "late_adjusted_wet_probability": 0.30870431774061097
+    },
+    {
+      "species": "Pseudacris crucifer",
+      "early_rain_pulse_sensitivity": 0.02972359297326489,
+      "late_adjusted_wet_log_odds": 0.4417677212933556,
+      "late_adjusted_wet_probability": 0.6086801626425086
+    },
+    {
+      "species": "Pseudacris feriarum",
+      "early_rain_pulse_sensitivity": 0.010756449287968907,
+      "late_adjusted_wet_log_odds": 0.5890688720538699,
+      "late_adjusted_wet_probability": 0.6431514731986533
+    },
+    {
+      "species": "Pseudacris kalmi",
+      "early_rain_pulse_sensitivity": 0.025370833648010967,
+      "late_adjusted_wet_log_odds": 0.15533945564038767,
+      "late_adjusted_wet_probability": 0.5387569603286061
+    },
+    {
+      "species": "Pseudacris maculata/triseriata complex",
+      "early_rain_pulse_sensitivity": 0.0919297269794215,
+      "late_adjusted_wet_log_odds": 0.3146169128811546,
+      "late_adjusted_wet_probability": 0.5780117953051425
+    },
+    {
+      "species": "Pseudacris ocularis",
+      "early_rain_pulse_sensitivity": 0.10902624427712142,
+      "late_adjusted_wet_log_odds": 0.5812308124348577,
+      "late_adjusted_wet_probability": 0.6413505670596767
+    },
+    {
+      "species": "Scaphiopus holbrookii",
+      "early_rain_pulse_sensitivity": 0.00795747401518543,
+      "late_adjusted_wet_log_odds": 1.0959167355639483,
+      "late_adjusted_wet_probability": 0.7494942432756787
+    }
+  ],
+  "interpretation": "Species-specific recent-rain sensitivity estimated in 2001–2007 predicts independent 2008–2015 wet-recruitment response; the relationship remains positive under family-stratified permutation.",
+  "boundary": {
+    "behavioral_trait": "Early rain sensitivity is estimated acoustic behavior, not physiology.",
+    "causal_claim_authorized": false,
+    "occupancy_claim_authorized": false,
+    "status": "final mechanism slot; temporally disjoint training and validation years"
+  }
+}
