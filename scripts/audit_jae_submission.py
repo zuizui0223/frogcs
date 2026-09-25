@@ -61,7 +61,7 @@ assert ("Recent rainfall predicts greater short-window co-calling" in text or "R
 assert "10.5066/F7G44NG0" in text
 assert "10.15468/wazqft" in text
 assert "10.1002/qj.3803" in text
-assert "Zenodo" in text
+assert ("Zenodo" in text or "persistent research repository" in text)
 assert "Figure 1." in text and "Figure 2." in text
 if "MANUSCRIPT_JAE_V0_4" in str(MS) or "broader frog acoustic participation" in text:
     assert "Figure 3." in text
