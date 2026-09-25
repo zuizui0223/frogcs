@@ -1,31 +1,29 @@
 {
   "project": "frog-chorus-synchrony",
-  "version": "ecology-0.1",
-  "status": "ecological_reframing_in_development",
+  "version": "ecology-0.2",
+  "status": "ecological_submission_candidate_in_development",
   "working_title": "Rainfall pulses increase frog active-community richness through species-selective reassembly",
   "primary_system": "NAAMP",
   "central_claims": [
     "Within matched route × seasonal-window comparisons, wetter runs contain more acoustically active species, and richness gain increases with rainfall contrast.",
     "Rainfall-associated richness gain is not explained by simple nested addition; exact consecutive-year comparisons show increased compositional turnover with rainfall contrast.",
-    "Species wet-versus-dry recruitment responses are strongly heterogeneous and remain so after pair-level temperature, survey-date, rain-contrast magnitude, and year-gap adjustment.",
-    "Body size is a strong secondary predictor of species response in AmphiBIO: smaller-bodied species have more positive wet-recruitment responses, including after pair-level covariate adjustment."
+    "Species wet-versus-dry responses are strongly heterogeneous and remain so after pair-level temperature, survey-date, rain-contrast magnitude and year-gap adjustment.",
+    "The species-selective pattern is the central ecological result; it rejects a uniform activation response by an unchanged assemblage."
   ],
-  "pending_claims": [
-    "Body-size effect persists under family-stratified permutation.",
-    "Body-size gradient can be independently validated in a second high-coverage trait source."
+  "secondary_results": [
+    "Pooled species responses are negatively associated with body size in AmphiBIO.",
+    "The body-size association does not survive family-stratified permutation (two-sided P=0.314), so body size is not authorized as the headline mechanism.",
+    "Earlier participation/residual-association decomposition supports membership-level change more than pairwise co-calling change."
   ],
-  "supporting_mechanism": [
-    "Rain increases the number of acoustically active stops.",
-    "Rain increases run-level active species richness.",
-    "Within-active-stop and residual co-calling metrics show no detectable strengthening."
-  ],
-  "interpretation": "Rainfall is associated with transient, species-selective reassembly of the acoustically active frog community rather than a uniform rise in activity by an unchanged assemblage.",
+  "interpretation": "Short rainfall pulses are associated with transient, species-selective reassembly of the acoustically active frog assemblage.",
   "prohibited": [
     "rainfall causes occupancy turnover",
     "rainfall causes colonization or extinction",
     "rainfall increases breeding success",
-    "body size is the proven causal mechanism",
-    "temporary-water breeding strategy is directly tested unless an independent trait analysis is added",
+    "classical environmental filtering through species establishment or persistence",
+    "body size is a proven rainfall-filtering mechanism",
+    "body-size gradient is phylogenetically or family robust",
+    "temporary-water breeding strategy or hydroperiod is directly tested",
     "FrogID directly replicates the matched NAAMP community-reassembly result"
   ],
   "evidence_status": {
@@ -33,7 +31,9 @@
     "composition_turnover": "same frozen ecological extension",
     "species_heterogeneity": "separately frozen before species-specific readback",
     "adjusted_species_robustness": "post-discovery robustness frozen before adjusted readback",
-    "body_size": "secondary frozen trait-family discovery plus separately frozen adjusted-response robustness",
-    "within_family_body_size": "pending"
+    "body_size_pooled": "secondary frozen trait-family result",
+    "body_size_adjusted": "separately frozen adjusted-response robustness",
+    "body_size_within_family": "post-discovery robustness; null (two-sided P=0.314)",
+    "independent_body_size_validation": "not established; Huang source undercoverage and Amado source inaccessible in Actions"
   }
 }
