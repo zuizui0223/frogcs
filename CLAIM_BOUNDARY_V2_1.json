@@ -1,0 +1,97 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "2.1",
+  "supersedes": "CLAIM_BOUNDARY_V2_0.json",
+  "status": "submission_claim_boundary_after_conditioning_mismatch_and_shuffle_null",
+  "article_title": "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations",
+  "supported_claims": [
+    "In NAAMP, more recent rainfall is associated with a greater probability of multispecies calling across all standardized surveyed stops, and this rain association remains after temperature and nonlinear day-of-year adjustment.",
+    "In NAAMP, more recent rainfall is associated with a greater probability that a standardized stop contains any caller and with a larger run-level acoustically active species pool.",
+    "In NAAMP, rain does not detectably strengthen species multiplicity within already-active stops, observed-minus-independence residual co-calling, fixed-marginal shuffle residual co-calling, mean pairwise excess covariance, or pairwise network density.",
+    "In FrogID, among recordings already conditioned on acoustic activity, recent rainfall is strongly associated with multiple rather than single calling species.",
+    "The NAAMP and FrogID activity-conditioned components do not agree: NAAMP conditional OR is 0.988 (95% CI 0.959–1.017) while FrogID conditional OR is 0.853 (95% CI 0.827–0.879).",
+    "Within each system's native estimand, the rain direction persists after removing static spatial differences within routes or ERA5 cells.",
+    "The hierarchy-corrected NAAMP seasonal-shoulder interaction remains unsupported."
+  ],
+  "interpretation": {
+    "strongest": "In standardized NAAMP monitoring, the rainfall-associated multispecies signal is concentrated in broader participation across sampling units and run-level pool breadth rather than detectable strengthening of within-active-unit or residual co-calling.",
+    "frogid_role": "FrogID is an external activity-conditioned contrast, not a direct replication of the NAAMP all-stop primary effect or its activation decomposition.",
+    "cross_system_result": "The activity-conditioned component differs across systems or observation processes; the present data do not identify why.",
+    "general_implication": "Multispecies detections should not be interpreted as synchrony, facilitation, or temporal-niche reorganization without separating participation, observation conditioning, and residual association."
+  },
+  "precision_bounds": {
+    "naamp_conditional": "The activity-conditioned NAAMP 95% CI (OR 0.959–1.017) excludes the adjusted all-stop NAAMP OR 0.946 on the same dryness scale; this is descriptive because denominators differ.",
+    "independence_residual": "The same-direction lower 95% bound is -0.00112 per SD dryness, about 8% of the magnitude of the within-route all-stop coefficient -0.01367; descriptive, not a formal equivalence test.",
+    "shuffle_residual": "The fixed-marginal shuffle residual gives a nearly identical lower bound (-0.00110) and P=0.368."
+  },
+  "prohibited_claims": [
+    "NAAMP and FrogID directly replicate the same estimand",
+    "FrogID validates the NAAMP activation decomposition",
+    "rainfall causes broader participation",
+    "rainfall synchronizes frog communities",
+    "rainfall compresses temporal niches",
+    "NAAMP proves species-level independent activation",
+    "null residual diagnostics prove statistical independence",
+    "null residual diagnostics prove there are no interactions",
+    "reviewer-motivated pool, independence, shuffle, or H3-repair diagnostics were preregistered",
+    "NAAMP and FrogID odds ratios estimate the same population parameter"
+  ],
+  "evidence_hierarchy": {
+    "original_contract_frozen": [
+      "NAAMP primary rain-recency endpoint",
+      "NAAMP temperature and original seasonal-shoulder secondary endpoints",
+      "NAAMP pairwise-network H4",
+      "FrogID original activity-conditioned rainfall validation endpoint"
+    ],
+    "post_opening_pre_specified_robustness": [
+      "NAAMP joint temperature/day-of-year robustness",
+      "NAAMP activation versus conditional-overlap decomposition",
+      "within-route and within-ERA5-cell diagnostics"
+    ],
+    "reviewer_motivated_post_opening": [
+      "NAAMP active-pool richness",
+      "NAAMP observed-minus-independence residual",
+      "NAAMP mean pairwise excess covariance",
+      "NAAMP fixed-marginal shuffle residual",
+      "H3 hierarchy repair",
+      "DaysSinceRain value audit",
+      "FrogID eventTime/timezone semantics audit and repair"
+    ]
+  },
+  "key_numbers": {
+    "naamp_primary_or": 0.969,
+    "naamp_primary_p": 0.0388,
+    "naamp_complete10_p": 0.058,
+    "naamp_doy_adjusted_rain_or": 0.9462275818456292,
+    "naamp_doy_adjusted_rain_p": 0.0005439333315429069,
+    "frogid_timezone_repaired_conditional_or": 0.8529448645127664,
+    "frogid_timezone_repaired_conditional_p": 1.1879001000920188e-24,
+    "naamp_any_call_or": 0.9041073769675746,
+    "naamp_any_call_p": 4.633106568630802e-8,
+    "naamp_conditional_overlap_or": 0.9876200014571157,
+    "naamp_conditional_overlap_ci95": [
+      0.9592682637221128,
+      1.01680969147616
+    ],
+    "naamp_conditional_overlap_p": 0.401892454703212,
+    "active_pool_beta": -0.01872496213277167,
+    "active_pool_p": 0.0001920622744992549,
+    "independence_residual_beta": 0.0008757826576161237,
+    "independence_residual_ci95": [
+      -0.0011169226627509303,
+      0.002868487977983178
+    ],
+    "independence_residual_p": 0.38902161538454694,
+    "shuffle_residual_beta": 0.0009332932271213329,
+    "shuffle_residual_ci95": [
+      -0.0010972696895769842,
+      0.00296385614381965
+    ],
+    "shuffle_residual_p": 0.3676710881567309,
+    "pair_covariance_p": 0.20479266356365566,
+    "network_density_p": 0.7243629701236499,
+    "repaired_h3_p": 0.06975106907085477
+  },
+  "original_primary_replaced": false,
+  "causal_claim_authorized": false
+}
