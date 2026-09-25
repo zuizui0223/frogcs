@@ -1,0 +1,113 @@
+{
+  "analysis": "naamp_activation_overlap_decomposition_v0_1",
+  "provenance": {
+    "source_repository": "zuizui0223/284b",
+    "contract_commit": "5a6a06fb3af7de29455ff0e39a8ceee9c3f81cd0",
+    "implementation_commit": "811f110c4f0d2efc4fe86a617cb9548096d65a40",
+    "run_commit": "be768ae8f45c535840537898a8cda7871e1af0fa",
+    "workflow_run": 36067567986,
+    "job_id": 107860781984,
+    "artifact_id": 10837505560,
+    "artifact_zip_sha256": "10f40b4fc1222a1ea7b2f82d91e275ad4c5be6d95e60e85c5a2b6e28d289724d",
+    "run_conclusion": "success"
+  },
+  "activation": {
+    "n_runs": 8200,
+    "n_routes": 814,
+    "successes": 61650,
+    "trials": 81608,
+    "rain_z": {
+      "beta": -0.10080714581233832,
+      "ci95_beta": [
+        -0.13696157728196245,
+        -0.06465271434271419
+      ],
+      "odds_ratio": 0.9041073769675746,
+      "ci95_or": [
+        0.8720037302419006,
+        0.937392949982487
+      ],
+      "p_value": 4.633106568630802e-8
+    },
+    "temp_z": {
+      "beta": 0.37356767697731813,
+      "ci95_beta": [
+        0.3105172368550484,
+        0.43661811709958787
+      ],
+      "odds_ratio": 1.4529088886981831,
+      "ci95_or": [
+        1.3641305102630172,
+        1.547465013777296
+      ],
+      "p_value": 3.5565758345185124e-31
+    }
+  },
+  "conditional_multispecies_given_active": {
+    "n_runs": 8043,
+    "n_routes": 812,
+    "successes": 35291,
+    "trials": 61650,
+    "rain_z": {
+      "beta": -0.012457269126971525,
+      "ci95_beta": [
+        -0.04158451045111573,
+        0.01666997219717268
+      ],
+      "odds_ratio": 0.9876200014571157,
+      "ci95_or": [
+        0.9592682637221128,
+        1.01680969147616
+      ],
+      "p_value": 0.401892454703212
+    },
+    "temp_z": {
+      "beta": 0.333071931281719,
+      "ci95_beta": [
+        0.2823643350790612,
+        0.3837795274843768
+      ],
+      "odds_ratio": 1.3952476568125782,
+      "ci95_or": [
+        1.32626183568421,
+        1.4678217916424412
+      ],
+      "p_value": 6.306012317166143e-38
+    }
+  },
+  "conditional_sensitivity_active_ge5": {
+    "n_runs": 7021,
+    "n_routes": 793,
+    "successes": 34326,
+    "trials": 58667,
+    "rain_z": {
+      "beta": -0.004666298147274937,
+      "ci95_beta": [
+        -0.03437117773589431,
+        0.025038581441344434
+      ],
+      "odds_ratio": 0.9953445721074022,
+      "ci95_or": [
+        0.9662128013902832,
+        1.0253546794227257
+      ],
+      "p_value": 0.7581675483769669
+    },
+    "temp_z": {
+      "beta": 0.32123765029625734,
+      "ci95_beta": [
+        0.26929980624851235,
+        0.3731754943440023
+      ],
+      "odds_ratio": 1.3788332220839166,
+      "ci95_or": [
+        1.3090475428542179,
+        1.4523391947835773
+      ],
+      "p_value": 8.031575017003341e-34
+    }
+  },
+  "interpretation": "The rain association is concentrated in acoustic activation. After conditioning on at least one active stop, rain no longer predicts additional multispecies overlap in NAAMP. This post-opening decomposition does not replace the original primary result.",
+  "original_primary_replaced": false,
+  "causal_claim_authorized": false
+}
