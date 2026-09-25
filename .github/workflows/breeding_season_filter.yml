@@ -1,0 +1,38 @@
+name: frogcs breeding-season filter test
+
+on:
+  push:
+    branches:
+      - revision/breeding-phenology-filter-v1
+    paths:
+      - "NAAMP_BREEDING_SEASON_FILTER_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_breeding_season_filter.py"
+      - ".github/workflows/breeding_season_filter.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  breeding-season:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Recompute fixed species response family
+        run: |
+          python scripts/run_naamp_species_pulse_heterogeneity.py
+          python scripts/run_naamp_species_pulse_adjusted_robustness.py
+      - name: Run frozen breeding-season breadth test
+        run: python scripts/run_naamp_breeding_season_filter.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-breeding-season-filter-v0-1
+          path: NAAMP_BREEDING_SEASON_FILTER_RECEIPT_V0_1.json
+          if-no-files-found: error
