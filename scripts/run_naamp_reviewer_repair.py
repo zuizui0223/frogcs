@@ -281,9 +281,10 @@ def main():
         h,
         "prop ~ rain_z * shoulder + C(State) + C(RunNumber) + C(RouteType) + year_z"
     )
-    h3_cell=glm_interaction(
-        h,
-        "prop ~ rain_z + rain_z:shoulder + C(State) * C(RunNumber) + C(RouteType) + year_z"
+    h4=h[h.state_last_window==4].copy()
+    h3_four=glm_interaction(
+        h4,
+        "prop ~ rain_z + rain_z:shoulder + C(State) + C(RunNumber) + C(RouteType) + year_z"
     )
 
     x=d[
@@ -307,10 +308,11 @@ def main():
     result={
         "analysis":"naamp_reviewer_repair_v0_1",
         "contract":"NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json",
+        "sensitivity_repair_contract":"NAAMP_REVIEW_REPAIR_CONTRACT_V0_1_1.json",
         "days_since_rain_audit":audit,
         "h3_hierarchy_repair":{
             "hierarchy_corrected":h3_primary,
-            "state_by_window_fixed_effect_sensitivity":h3_cell,
+            "four_window_states_sensitivity":h3_four,
             "original_h3_decision":"not_supported",
             "original_h3_upgraded":False,
         },
