@@ -1,0 +1,69 @@
+name: frogcs JAE submission QA
+
+on:
+  push:
+    branches:
+      - submission/jae-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-jae-submission-qa
+  cancel-in-progress: true
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Audit JAE manuscript
+        run: python scripts/audit_jae_submission.py
+
+      - name: Rebuild submission figures
+        run: python scripts/build_submission_figures.py
+
+      - name: Verify figures are deterministic
+        run: git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+
+      - name: Verify frozen scientific inputs against import manifest
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root=Path(".")
+          manifest=json.loads((root/"FILE_SHA256.json").read_text())
+          intentionally_adapted={
+              "scripts/audit_jae_submission.py",
+              "scripts/build_submission_figures.py",
+          }
+          bad=[]
+          for path, expected in manifest.items():
+              if path in intentionally_adapted:
+                  continue
+              p=root/path
+              got=hashlib.sha256(p.read_bytes()).hexdigest()
+              if got != expected:
+                  bad.append((path, expected, got))
+          assert not bad, bad
+          print({"verified_manifest_entries": len(manifest)-len(intentionally_adapted), "status":"PASS"})
+          PY
+
+      - name: Upload review package
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-review-package
+          path: |
+            MANUSCRIPT_JAE_V0_3.md
+            JAE_TITLE_PAGE_V0_1.template.md
+            figures/*.svg
+            submission/*.md
+          if-no-files-found: error
