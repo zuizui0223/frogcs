@@ -68,7 +68,15 @@ def load_huang():
     missing=[x for x in required if x not in d.columns]
     if missing:
         raise SystemExit(f"Huang schema missing: {missing}; columns={list(d.columns)}")
-    d["species_norm"]=d["Species"].map(norm_binomial)
+    def source_binomial(row):
+        genus=str(row.get("Genus","") or "").strip()
+        species=str(row.get("Species","") or "").strip()
+        s_norm=norm_binomial(species)
+        toks=s_norm.split()
+        if genus and (len(toks)<2 or toks[0]!=genus):
+            return norm_binomial(genus+" "+species)
+        return s_norm
+    d["species_norm"]=d.apply(source_binomial,axis=1)
     d["SVL_num"]=pd.to_numeric(d["SVL"],errors="coerce")
     d.loc[~np.isfinite(d["SVL_num"]) | (d["SVL_num"]<=0),"SVL_num"]=np.nan
     return d,got
@@ -174,6 +182,7 @@ def main():
     result={
       "analysis":"naamp_body_size_filter_independent_validation_v0_1",
       "contract":"NAAMP_BODY_SIZE_FILTER_VALIDATION_CONTRACT_V0_1.json",
+      "repair_contract":"NAAMP_BODY_SIZE_FILTER_VALIDATION_REPAIR_V0_1_1.json",
       "source":{
         "dataset":"Huang et al. Amphibian traits database",
         "paper_doi":"10.1111/geb.13656",
