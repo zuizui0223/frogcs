@@ -8,7 +8,7 @@
 
 3. **Greater rainfall contrast predicted higher active-community richness.** Wet-minus-dry richness increased by 0.286 species per unit log-rain contrast (95% CI 0.165–0.407, P = 3.81 × 10^-6), with a similar effect in exact consecutive-year pairs (β = 0.301, P = 1.60 × 10^-4).
 
-4. **The richer wet assemblage was not a simple nested extension of the dry assemblage.** Nestedness did not increase with rainfall contrast, whereas turnover increased in the consecutive-year sensitivity (β = 0.0184, 95% CI 0.00470–0.0321, P = 0.00850). Species wet-versus-dry responses were strongly heterogeneous after adjustment for temperature, survey date, rain-contrast magnitude and year gap (Q = 144.0, df = 28, P = 1.46 × 10^-17), and their adjusted ranking was almost identical to the raw ranking (Spearman ρ = 0.997).
+4. **The richer wet assemblage was not a simple nested extension of the dry assemblage.** Nestedness did not increase with rainfall contrast, whereas turnover increased in the consecutive-year sensitivity (β = 0.0184, 95% CI 0.00470–0.0321, P = 0.00850). Species wet-versus-dry responses were strongly heterogeneous after environmental adjustment (Q = 144.0, df = 28, P = 1.46 × 10^-17), and 52.1% of heterogeneity among family-matched species remained within families (P = 8.28 × 10^-8).
 
 5. **Rainfall was therefore associated with transient, species-selective reassembly of the acoustically active frog community rather than a uniform increase in activity by an unchanged assemblage.** A secondary body-size correlation was strong across species but did not survive family-stratified permutation, indicating that the species selectivity is biologically structured but its trait mechanism remains unresolved.
 
