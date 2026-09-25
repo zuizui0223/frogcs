@@ -1,0 +1,15 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit_version": "naamp_days_since_rain_qc_v0_1",
+  "status": "data_quality_audit_frozen_before_revised_manuscript_interpretation",
+  "purpose": "Audit NAAMP DaysSinceRain for sentinel codes, truncation, extreme values and distributional assumptions without using the outcome.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730"
+  },
+  "eligible_scope": "UnifiedProtocol == 1 and year 2001-2015; audit occurs before outcome construction",
+  "predeclared_sentinel_values": [-9999, -999, -99, -9, 99, 999, 9999],
+  "extreme_thresholds_days": [30, 60, 90, 99],
+  "outcome_values_read": false,
+  "model_change_authorized": false,
+  "rule": "Any discovered sentinel or truncation pattern must be documented before any revised exposure rule is considered; this audit alone does not authorize outcome-dependent retuning."
+}
