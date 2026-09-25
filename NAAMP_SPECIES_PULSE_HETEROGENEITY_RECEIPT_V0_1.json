@@ -1,0 +1,36 @@
+{
+  "analysis": "naamp_species_pulse_heterogeneity_v0_1",
+  "contract": "NAAMP_SPECIES_PULSE_HETEROGENEITY_CONTRACT_V0_1.json",
+  "workflow_run": 36122085505,
+  "artifact_id": 10858562242,
+  "artifact_digest": "sha256:b1f9c109779f2527894cc31f1f072fae0f1997d47f0cf6bc45433aeef52202f5",
+  "global": {
+    "all_species_wet_gains": 4726,
+    "all_species_dry_losses": 4295,
+    "all_species_gain_share": 0.5238887041347966,
+    "eligible_species": 29,
+    "fdr_positive_species": 9,
+    "fdr_negative_species": 3
+  },
+  "heterogeneity_test": {
+    "chi2": 165.4528140833612,
+    "df": 28,
+    "p_value": 1.908078418462498e-21
+  },
+  "fdr_significant_species": [
+    {"species":"Gastrophryne carolinensis","direction":"wet_recruited","wet_gain_share":0.7342657342657343,"wet_gains":105,"dry_losses":38,"fdr_bh":5.469001257850959e-07},
+    {"species":"Pseudacris crucifer","direction":"wet_recruited","wet_gain_share":0.5913312693498453,"wet_gains":382,"dry_losses":264,"fdr_bh":5.687889791704158e-05},
+    {"species":"Hyla squirella","direction":"wet_recruited","wet_gain_share":0.6821192052980133,"wet_gains":103,"dry_losses":48,"fdr_bh":8.653210061110052e-05},
+    {"species":"Hyla chrysoscelis","direction":"wet_recruited","wet_gain_share":0.5805860805860806,"wet_gains":317,"dry_losses":229,"fdr_bh":0.0011077943877338418},
+    {"species":"Lithobates catesbeianus","direction":"dry_retained","wet_gain_share":0.4297635605006954,"wet_gains":309,"dry_losses":410,"fdr_bh":0.0011077943877338418},
+    {"species":"Lithobates palustris","direction":"dry_retained","wet_gain_share":0.4295774647887324,"wet_gains":244,"dry_losses":324,"fdr_bh":0.004356183591296818},
+    {"species":"Hyla femoralis","direction":"wet_recruited","wet_gain_share":0.6371681415929203,"wet_gains":72,"dry_losses":41,"fdr_bh":0.018864733930706312},
+    {"species":"Pseudacris maculata","direction":"wet_recruited","wet_gain_share":0.6851851851851852,"wet_gains":37,"dry_losses":17,"fdr_bh":0.029236318872003113},
+    {"species":"Hyla cinerea","direction":"dry_retained","wet_gain_share":0.4084507042253521,"wet_gains":87,"dry_losses":126,"fdr_bh":0.029236318872003113},
+    {"species":"Pseudacris ocularis","direction":"wet_recruited","wet_gain_share":0.6571428571428571,"wet_gains":46,"dry_losses":24,"fdr_bh":0.030387807270594622},
+    {"species":"Scaphiopus holbrookii","direction":"wet_recruited","wet_gain_share":0.6533333333333333,"wet_gains":49,"dry_losses":26,"fdr_bh":0.030387807270594622},
+    {"species":"Lithobates sphenocephalus","direction":"wet_recruited","wet_gain_share":0.5566801619433198,"wet_gains":275,"dry_losses":219,"fdr_bh":0.0320444786646747}
+  ],
+  "interpretation": "Rainfall-associated community change is strongly species-selective rather than a uniform uplift in calling activity. Wet-recruited and dry-retained taxa coexist within the same matched-route comparison framework.",
+  "causal_claim_authorized": false
+}
