@@ -1,0 +1,21 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit_version": "0.1",
+  "status": "outcome_blind_time_semantics_audit_frozen_before_readback",
+  "source_url": "https://dwca-exports.ala.org.au/dr14760.zip",
+  "source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+  "fields": [
+    "eventID",
+    "eventTime",
+    "eventDate"
+  ],
+  "report": [
+    "distinct_event_times",
+    "format_counts",
+    "offset_or_Z_fraction",
+    "parse_failures",
+    "examples_redacted_to_format_only"
+  ],
+  "effect_values_read": false,
+  "rule": "If explicit UTC/offset-bearing eventTime values are present, current cyclic-hour adjustment must be repaired before submission. If values are bare wall-clock times, manuscript must describe hour adjustment as eventTime-as-supplied rather than independently verified local solar time."
+}
