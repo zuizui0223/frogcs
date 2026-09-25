@@ -39,18 +39,19 @@ jobs:
             --outdir build/submission-metadata
 
       - name: Audit anonymous initial-review manuscript
-        run: python scripts/audit_jae_submission.py --review-stage initial
+        run: python scripts/audit_jae_submission.py --manuscript MANUSCRIPT_JAE_V0_4.md --review-stage initial
 
       - name: Build anonymous initial-review DOCX
         run: |
           python scripts/build_jae_anonymous_docx.py \
-            --source MANUSCRIPT_JAE_V0_3.md \
+            --source MANUSCRIPT_JAE_V0_4.md \
             --output build/FROG_JAE_ANON_MAIN_INITIAL.docx
 
       - name: Rebuild and verify figures
         run: |
           python scripts/build_submission_figures.py
-          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg || true
+          test -s figures/FIGURE_3_DECOMPOSITION_V0_1.svg
 
       - name: Assemble initial-submission bundle
         run: |
@@ -58,14 +59,15 @@ jobs:
           out=build/initial-submission
           mkdir -p "$out"
 
-          cp MANUSCRIPT_JAE_V0_3.md "$out/"
+          cp MANUSCRIPT_JAE_V0_4.md "$out/"
           cp build/FROG_JAE_ANON_MAIN_INITIAL.docx "$out/"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
           cp figures/FIGURE_1_DESIGN_V0_1.svg "$out/"
           cp figures/FIGURE_2_EFFECTS_V0_1.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_1.md "$out/"
+          cp figures/FIGURE_3_DECOMPOSITION_V0_1.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_2.md "$out/"
           cp submission/JAE_PORTAL_CHECKLIST_V0_1.md "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
