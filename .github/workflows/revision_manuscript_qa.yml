@@ -41,7 +41,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
       - name: Audit revised manuscript
         run: python scripts/audit_jae_submission.py --manuscript MANUSCRIPT_JAE_V0_4.md --review-stage initial
       - name: Rebuild all submission figures
@@ -54,6 +54,66 @@ jobs:
           ! grep -qi "conditioning.*rules out.*independent" submission/NOVELTY_AUDIT_V0_3.md
           grep -qi "activation" CLAIM_BOUNDARY_V2_0.json
           grep -qi "reviewer-motivated" ANALYSIS_PROVENANCE_V0_1.md
+
+      - name: Dry-run private metadata rendering and DOI finalization
+        run: |
+          cat > /tmp/rc3-metadata.yml <<'YAML'
+          manuscript:
+            title: "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations"
+            target_journal: "Journal of Animal Ecology"
+            article_type: "Research Article"
+          authors:
+            - order: 1
+              given_names: "Example"
+              family_names: "Author"
+              display_name: "Example Author"
+              affiliation_ids: ["A1"]
+              orcid: "0000-0002-1825-0097"
+              credit_roles: ["Conceptualization", "Formal analysis", "Writing – original draft"]
+          affiliations:
+            A1:
+              institution: "Example University"
+              department: "Department of Ecology"
+              city: "Example City"
+              country: "Example Country"
+          corresponding_author:
+            author_order: 1
+            email: "example@example.org"
+            postal_address: "1 Example Street, Example City"
+          funding:
+            - funder: "None"
+              grant_number: ""
+          acknowledgements: "None"
+          conflict_of_interest: "The author declares no conflict of interest."
+          statement_on_inclusion: "This secondary-data analysis involved no new local field sampling; source programmes and regional literature are acknowledged and cited."
+          ethics_and_permits:
+            secondary_public_data_only: true
+            statement: "Secondary analysis of publicly released data; no new animal handling."
+          approvals:
+            all_authors_approve_submission: true
+            all_entitled_authors_included: true
+            not_under_consideration_elsewhere: true
+          repository:
+            url: "https://github.com/zuizui0223/frogcs"
+            license: "MIT"
+            archive_year: 2026
+            archive_doi: "10.9999/frogcs.test"
+          source_data:
+            - name: "NAAMP"
+              doi: "10.5066/F7G44NG0"
+            - name: "FrogID"
+              doi: "10.15468/wazqft"
+          YAML
+
+          python scripts/render_submission_metadata.py --metadata /tmp/rc3-metadata.yml --strict --stage initial --outdir /tmp/rc3-initial
+          python scripts/render_submission_metadata.py --metadata /tmp/rc3-metadata.yml --strict --stage archive --outdir /tmp/rc3-archive
+          python scripts/finalize_archive_doi.py --doi 10.9999/frogcs.test --input MANUSCRIPT_JAE_V0_4.md --output /tmp/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/audit_jae_submission.py --manuscript /tmp/MANUSCRIPT_JAE_FINAL_TEST.md --review-stage final
+          test -s /tmp/rc3-initial/JAE_TITLE_PAGE_FINAL.md
+          test -s /tmp/rc3-initial/JAE_PORTAL_FIELDS.json
+          test -s /tmp/rc3-archive/ZENODO_METADATA_FINAL.json
+          test -s /tmp/rc3-archive/CITATION.cff
+          test -s /tmp/rc3-archive/ARCHIVE_REFERENCE.txt
 
       - name: Build anonymous revised DOCX
         run: |
