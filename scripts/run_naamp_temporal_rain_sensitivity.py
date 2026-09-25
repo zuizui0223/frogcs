@@ -78,7 +78,7 @@ def within_route_ols_species(sp: str,train: pd.DataFrame,sets: dict):
 
     x["present"]=x.RunID.astype(str).map(lambda rid:int(sp in sets[rid]))
     n=int(len(x));nr=int(x.route_cluster.nunique())
-    npos=int(x.present.sum());nneg=int(n-npos)
+    npos=int(x["present"].sum());nneg=int(n-npos)
     if nr<MIN_TRAIN_ROUTES or n<MIN_TRAIN_RUNS or npos<MIN_TRAIN_POS or nneg<MIN_TRAIN_NEG:
         return {
             "species":sp,"estimable":False,
@@ -96,7 +96,7 @@ def within_route_ols_species(sp: str,train: pd.DataFrame,sets: dict):
         X=X.drop(columns=["Intercept"])
     groups=x.route_cluster.astype(str)
     Xdm=X-X.groupby(groups).transform("mean")
-    y=x.present.astype(float)
+    y=x["present"].astype(float)
     ydm=y-y.groupby(groups).transform("mean")
 
     # Remove zero-variance columns after within transformation.
