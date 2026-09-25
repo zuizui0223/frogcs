@@ -227,6 +227,19 @@ def main():
     (out/"ZENODO_METADATA_FINAL.json").write_text(json.dumps(render_zenodo(m),indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     (out/"CITATION.cff").write_text(yaml.safe_dump(render_cff(m),sort_keys=False,allow_unicode=True),encoding="utf-8")
 
+    repo=m["repository"]
+    author_ref=", ".join(f"{a['family_names']}, {a['given_names']}" for a in m["authors"])
+    archive_year=repo.get("archive_year", 2026)
+    doi=repo.get("archive_doi","")
+    archive_reference=(
+        f"{author_ref} ({archive_year}). {m['manuscript']['title']} "
+        f"[Software and reproducibility package]. Zenodo. https://doi.org/{doi}"
+        if doi else
+        f"{author_ref} ({archive_year}). {m['manuscript']['title']} "
+        f"[Software and reproducibility package]. Zenodo."
+    )
+    (out/"ARCHIVE_REFERENCE.txt").write_text(archive_reference+"\n",encoding="utf-8")
+
     portal = {
         "article_type": m["manuscript"]["article_type"],
         "title": m["manuscript"]["title"],
