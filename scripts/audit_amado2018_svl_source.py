@@ -5,11 +5,14 @@ import hashlib
 import io
 import json
 import urllib.request
+import zipfile
 from pathlib import Path
 
 import pandas as pd
 
 URLS=[
+    "https://www.ecography.org/sites/ecography.org/files/appendix/ecog-03889.zip",
+    "https://nso-journals.org/ecographysites/ecography.org/files/appendix/ecog-03889.zip",
     "https://datadryad.org/downloads/file_stream/47038",
     "https://datadryad.org/stash/downloads/file_stream/47038",
 ]
@@ -22,8 +25,8 @@ def fetch():
             url,
             headers={
                 "User-Agent":"Mozilla/5.0 frogcs-source-audit/0.1",
-                "Accept":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream,*/*",
-                "Referer":"https://datadryad.org/dataset/doi:10.5061/dryad.hn5md92"
+                "Accept":"application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream,*/*",
+                "Referer":"https://www.ecography.org/readers/appendix"
             }
         )
         try:
@@ -34,7 +37,7 @@ def fetch():
             last=f"short download {len(b)} bytes"
         except Exception as e:
             last=repr(e)
-    raise SystemExit("Dryad download failed: "+str(last))
+    raise SystemExit("Amado source download failed: "+str(last))
 
 def norm(x):
     toks=str(x or "").strip().split()
@@ -60,7 +63,18 @@ def main():
 
     b,url=fetch()
     sha=hashlib.sha256(b).hexdigest()
-    xls=pd.ExcelFile(io.BytesIO(b),engine="openpyxl")
+    archive_members=[]
+    selected_member=None
+    workbook_bytes=b
+    if b[:4] == b"PK\\x03\\x04":
+        with zipfile.ZipFile(io.BytesIO(b)) as z:
+            archive_members=z.namelist()
+            matches=[x for x in archive_members if Path(x).name=="SVL_Amadoetal2018.xlsx"]
+            if len(matches)!=1:
+                raise SystemExit(f"expected one SVL_Amadoetal2018.xlsx in archive, found {matches}")
+            selected_member=matches[0]
+            workbook_bytes=z.read(selected_member)
+    xls=pd.ExcelFile(io.BytesIO(workbook_bytes),engine="openpyxl")
     sheets=[]
     best=None
     for sheet in xls.sheet_names:
@@ -103,7 +117,10 @@ def main():
     result={
         "audit":"amado2018_svl_source_audit_v0_1",
         "contract":"AMADO2018_SVL_SOURCE_AUDIT_CONTRACT_V0_1.json",
+        "transport_repair_contract":"AMADO2018_SVL_SOURCE_AUDIT_REPAIR_V0_1_1.json",
         "download_url_used":url,
+        "archive_members":archive_members,
+        "selected_archive_member":selected_member,
         "file_name":"SVL_Amadoetal2018.xlsx",
         "byte_size":len(b),
         "sha256":sha,
