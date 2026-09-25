@@ -61,7 +61,11 @@ assert ("Recent rainfall predicts greater short-window co-calling" in text or "R
 assert "10.5066/F7G44NG0" in text
 assert "10.15468/wazqft" in text
 assert "10.1002/qj.3803" in text
-assert ("Zenodo" in text or "persistent research repository" in text)
+if args.review_stage == "initial":
+    assert ("Zenodo" in text or "persistent research repository" in text), "initial manuscript must state intended archive location"
+else:
+    assert ("available at DOI 10." in text or "https://doi.org/10." in text), "final manuscript must contain archive DOI"
+
 assert "Figure 1." in text and "Figure 2." in text
 if "MANUSCRIPT_JAE_V0_4" in str(MS) or "broader frog acoustic participation" in text:
     assert "Figure 3." in text
