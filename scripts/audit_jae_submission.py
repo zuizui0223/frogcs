@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import argparse
 import re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT
-MS=BASE/"MANUSCRIPT_JAE_V0_3.md"
+parser=argparse.ArgumentParser()
+parser.add_argument("--manuscript", default=str(BASE/"MANUSCRIPT_JAE_V0_3.md"))
+args=parser.parse_args()
+MS=Path(args.manuscript)
 text=MS.read_text(encoding="utf-8")
 
 def words(s):
