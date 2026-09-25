@@ -40,11 +40,8 @@ jobs:
         run: python scripts/audit_jae_submission.py --manuscript MANUSCRIPT_JAE_V0_4.md --review-stage initial
       - name: Rebuild all submission figures
         run: python scripts/build_submission_figures.py
-      - name: Verify figures exist
-        run: |
-          test -s figures/FIGURE_1_DESIGN_V0_1.svg
-          test -s figures/FIGURE_2_EFFECTS_V0_1.svg
-          test -s figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+      - name: Verify deterministic figure hashes
+        run: python scripts/verify_revision_figure_hashes.py
       - name: Guard revised framing against superseded claims
         run: |
           ! grep -qi "temporal niche compression in frog communities" submission/COVER_LETTER_JAE_V0_2.md
