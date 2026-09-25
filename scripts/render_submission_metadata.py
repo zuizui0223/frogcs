@@ -98,6 +98,7 @@ def validate(m: dict, strict: bool) -> dict:
         require(bool(ca.get("postal_address")), "corresponding author postal address required")
         require(bool(repo.get("license")), "repository license required")
         require(bool(repo.get("archive_doi")), "archive DOI required")
+        require(bool(m.get("statement_on_inclusion")), "statement_on_inclusion required for JAE submission")
         for k in ("all_authors_approve_submission","all_entitled_authors_included","not_under_consideration_elsewhere"):
             require(approvals.get(k) is True, f"approval must be true: {k}")
 
@@ -152,6 +153,10 @@ def render_title_page(m: dict) -> str:
         "## Author Contributions",
         "",
         *credits,
+        "",
+        "## Statement on Inclusion",
+        "",
+        str(m.get("statement_on_inclusion","")),
         "",
         "## Approval",
         "",
@@ -221,6 +226,22 @@ def main():
     (out/"JAE_TITLE_PAGE_FINAL.md").write_text(render_title_page(m),encoding="utf-8")
     (out/"ZENODO_METADATA_FINAL.json").write_text(json.dumps(render_zenodo(m),indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     (out/"CITATION.cff").write_text(yaml.safe_dump(render_cff(m),sort_keys=False,allow_unicode=True),encoding="utf-8")
+
+    portal = {
+        "article_type": m["manuscript"]["article_type"],
+        "title": m["manuscript"]["title"],
+        "authors": [author_name(a) for a in m["authors"]],
+        "corresponding_author_order": m["corresponding_author"]["author_order"],
+        "conflict_of_interest": m.get("conflict_of_interest",""),
+        "statement_on_inclusion": m.get("statement_on_inclusion",""),
+        "data_archive_doi": m["repository"].get("archive_doi",""),
+        "repository_license": m["repository"].get("license",""),
+        "all_authors_approve_submission": m["approvals"].get("all_authors_approve_submission"),
+        "all_entitled_authors_included": m["approvals"].get("all_entitled_authors_included"),
+        "not_under_consideration_elsewhere": m["approvals"].get("not_under_consideration_elsewhere"),
+        "ethics_and_permits": m.get("ethics_and_permits",{}),
+    }
+    (out/"JAE_PORTAL_FIELDS.json").write_text(json.dumps(portal,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
 
     validation={
         "strict": args.strict,
