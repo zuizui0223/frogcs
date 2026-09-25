@@ -16,7 +16,7 @@ Within the same NAAMP route and the same seasonal sampling window:
 
 Therefore:
 
-> **Short rainfall pulses are associated with rapid, species-selective reassembly of the acoustically active frog community.**
+> **Short rainfall pulses are associated with rapid, species-selective reassembly of the acoustically active frog community, and that selectivity persists within major families rather than being only a broad clade contrast.**
 
 ## Strong numerical support
 
@@ -33,7 +33,10 @@ Composition:
 Species selectivity:
 - raw heterogeneity χ²=165.45, df=28, P=1.91e-21;
 - adjusted heterogeneity Q=144.01, df=28, P=1.46e-17;
-- raw vs adjusted species ranking ρ=.997.
+- raw vs adjusted species ranking ρ=.997;
+- among 26 family-matched species, **52.1% of total heterogeneity remains within families**;
+- within-family Q=73.88, df=21, P=8.28e-8;
+- Hylidae and Ranidae are each internally heterogeneous.
 
 ## Body size is secondary, not the mechanism
 
