@@ -1,0 +1,41 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit": "amado2018_svl_source_audit_repair_v0_1_1",
+  "status": "transport_repair_only_before_any_amado_svl_effect_readback",
+  "parent_contract": "AMADO2018_SVL_SOURCE_AUDIT_CONTRACT_V0_1.json",
+  "reason": "Dryad file-stream transport returns access errors in the Actions environment; Ecography exposes the official article appendix as ecog-03889.zip.",
+  "allowed_source_urls": [
+    "https://www.ecography.org/sites/ecography.org/files/appendix/ecog-03889.zip",
+    "https://nso-journals.org/ecographysites/ecography.org/files/appendix/ecog-03889.zip",
+    "https://datadryad.org/downloads/file_stream/47038",
+    "https://datadryad.org/stash/downloads/file_stream/47038"
+  ],
+  "source_identity": {
+    "article_doi": "10.1111/ecog.03889",
+    "dryad_doi": "10.5061/dryad.hn5md92",
+    "ecography_appendix_name": "ecog-03889.zip",
+    "expected_data_file_name": "SVL_Amadoetal2018.xlsx",
+    "documented_scope": "SVL of 1233 New World anuran species"
+  },
+  "archive_handling": {
+    "if_zip": "List archive members; select exactly one workbook whose basename matches SVL_Amadoetal2018.xlsx. If absent or duplicated, fail closed.",
+    "if_xlsx": "Parse directly.",
+    "no_other_file_values": "Do not inspect numerical trait values beyond structural detection of an SVL-like column."
+  },
+  "allowed_outputs": [
+    "transport URL used",
+    "download SHA256 and byte size",
+    "archive member names and selected workbook name",
+    "workbook sheet names, row counts, column names",
+    "SVL-like column names only",
+    "exact/frozen-alias species-name coverage among the fixed 29 NAAMP species"
+  ],
+  "prohibited_outputs": [
+    "SVL values",
+    "species-level body size",
+    "wet-recruitment/body-size effect estimates",
+    "any change to the fixed 29-species response family"
+  ],
+  "usable_if": "one unique workbook has a species-name column matching >=15 of 29 fixed species and an unambiguous SVL-like numeric column",
+  "stop_if": "no transport succeeds, archive identity is ambiguous, or coverage <15"
+}
