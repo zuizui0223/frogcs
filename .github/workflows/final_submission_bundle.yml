@@ -1,0 +1,60 @@
+name: frogcs final JAE submission bundle
+
+on:
+  workflow_dispatch:
+    inputs:
+      archive_doi:
+        description: "Published archive DOI, e.g. 10.5281/zenodo.1234567"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+
+      - name: Insert archive DOI into generated manuscript copy
+        run: |
+          python scripts/finalize_archive_doi.py             --doi "${{ inputs.archive_doi }}"             --output build/MANUSCRIPT_JAE_FINAL.md
+
+      - name: Audit finalized manuscript
+        run: python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL.md
+
+      - name: Build finalized anonymous DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source build/MANUSCRIPT_JAE_FINAL.md             --output build/FROG_JAE_ANON_MAIN_FINAL.docx
+
+      - name: Rebuild and verify figures
+        run: |
+          python scripts/build_submission_figures.py
+          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+
+      - name: Assemble final bundle
+        run: |
+          mkdir -p build/final-submission
+          cp build/MANUSCRIPT_JAE_FINAL.md build/final-submission/
+          cp build/FROG_JAE_ANON_MAIN_FINAL.docx build/final-submission/
+          cp JAE_TITLE_PAGE_V0_1.template.md build/final-submission/
+          cp figures/FIGURE_1_DESIGN_V0_1.svg build/final-submission/
+          cp figures/FIGURE_2_EFFECTS_V0_1.svg build/final-submission/
+          cp submission/COVER_LETTER_JAE_V0_1.md build/final-submission/
+          cp submission/AUTHOR_METADATA_TEMPLATE.yml build/final-submission/
+          cp submission/CITATION.cff.template build/final-submission/
+          cp submission/ZENODO_METADATA_TEMPLATE.json build/final-submission/
+          cp submission/SUBMISSION_HANDOFF_RC1.md build/final-submission/
+
+      - name: Upload final JAE bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-final-submission-bundle
+          path: build/final-submission/
+          if-no-files-found: error
