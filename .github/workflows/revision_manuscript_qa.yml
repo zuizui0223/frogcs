@@ -19,7 +19,13 @@ on:
       - "submission/REVIEWER_ATTACK_MATRIX_V0_3.md"
       - "submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md"
       - "submission/SUBMISSION_HANDOFF_RC3.md"
-      - "JAE_TITLE_PAGE_V0_1.template.md"
+      - "submission/SUBMISSION_HANDOFF_V2_0.md"
+      - "submission/JAE_PORTAL_CHECKLIST_V0_2.md"
+      - "REVISION_FIGURE_HASHES_V0_1.json"
+      - "FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json"
+      - "JAE_TITLE_PAGE_V0_2.template.md"
+      - ".github/workflows/initial_submission_bundle.yml"
+      - ".github/workflows/final_submission_bundle.yml"
       - ".github/workflows/revision_manuscript_qa.yml"
   workflow_dispatch:
 
@@ -70,5 +76,9 @@ jobs:
             submission/REVIEWER_ATTACK_MATRIX_V0_3.md
             submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md
             submission/SUBMISSION_HANDOFF_RC3.md
-            JAE_TITLE_PAGE_V0_1.template.md
+            submission/SUBMISSION_HANDOFF_V2_0.md
+            submission/JAE_PORTAL_CHECKLIST_V0_2.md
+            REVISION_FIGURE_HASHES_V0_1.json
+            FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json
+            JAE_TITLE_PAGE_V0_2.template.md
           if-no-files-found: error
