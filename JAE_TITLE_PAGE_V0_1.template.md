@@ -1,6 +1,6 @@
 # Journal of Animal Ecology title page — human metadata template
 
-**Manuscript title:** Recent rainfall predicts greater short-window co-calling in frog communities across continents
+**Manuscript title:** Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations
 
 **Authors:** [CONFIRM FINAL AUTHOR SET AND ORDER]
 
