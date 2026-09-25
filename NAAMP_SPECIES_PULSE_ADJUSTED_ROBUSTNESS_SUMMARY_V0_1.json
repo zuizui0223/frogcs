@@ -1,0 +1,70 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_species_pulse_adjusted_robustness_v0_1_summary",
+  "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+  "workflow_run": 36124833717,
+  "artifact_id": 10858926771,
+  "artifact_digest": "sha256:3f224bd4ee095c2ca7375d52c863dc528376a7e0fe6b7651dba7ee845d4037af",
+  "head_sha": "c9e59810bb8ac494c959bf72f71f83697446a176",
+  "fixed_species_family": 29,
+  "estimable_species": 29,
+  "heterogeneity": {
+    "Q": 144.014669045494,
+    "df": 28,
+    "p_value": 1.4592981930238995e-17,
+    "weighted_mean_log_odds": 0.0781395563214971
+  },
+  "raw_adjusted_concordance": {
+    "spearman_rho": 0.9970443349753692,
+    "p_value": 1.2374108191992196e-31,
+    "n_species": 29
+  },
+  "fdr_5_percent": {
+    "positive_species": [
+      {
+        "species": "Gastrophryne carolinensis",
+        "adjusted_wet_probability": 0.7741060378472782,
+        "fdr_bh": 0.000031430027514494185
+      },
+      {
+        "species": "Hyla squirella",
+        "adjusted_wet_probability": 0.7237867285980955,
+        "fdr_bh": 0.00020169574320242256
+      },
+      {
+        "species": "Hyla chrysoscelis",
+        "adjusted_wet_probability": 0.589170786208515,
+        "fdr_bh": 0.0032356177023852677
+      },
+      {
+        "species": "Pseudacris crucifer",
+        "adjusted_wet_probability": 0.6098624159382148,
+        "fdr_bh": 0.00027461843935049497
+      },
+      {
+        "species": "Pseudacris maculata",
+        "adjusted_wet_probability": 0.7442413627701407,
+        "fdr_bh": 0.01130992616721754
+      }
+    ],
+    "negative_species": [
+      {
+        "species": "Hyla cinerea",
+        "adjusted_wet_probability": 0.3817866683768712,
+        "fdr_bh": 0.01946422397441171
+      },
+      {
+        "species": "Lithobates catesbeianus",
+        "adjusted_wet_probability": 0.42748134043655805,
+        "fdr_bh": 0.0022818239498514584
+      },
+      {
+        "species": "Lithobates palustris",
+        "adjusted_wet_probability": 0.4291374612487221,
+        "fdr_bh": 0.008944037917989348
+      }
+    ]
+  },
+  "interpretation": "Species-selective wet-versus-dry asymmetry remains extremely heterogeneous after adjustment for pair-level rain-contrast magnitude, temperature difference, day-of-year difference and year gap.",
+  "causal_claim_authorized": false
+}
