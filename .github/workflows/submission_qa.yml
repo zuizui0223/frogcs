@@ -85,17 +85,20 @@ jobs:
             - name: "FrogID"
               doi: "10.15468/wazqft"
           YAML
-          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --outdir /tmp/rendered
-          test -s /tmp/rendered/JAE_TITLE_PAGE_FINAL.md
-          test -s /tmp/rendered/ZENODO_METADATA_FINAL.json
-          test -s /tmp/rendered/CITATION.cff
-          test -s /tmp/rendered/JAE_PORTAL_FIELDS.json
-          test -s /tmp/rendered/SUBMISSION_METADATA_VALIDATION.json
+          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage initial --outdir /tmp/rendered-initial
+          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage archive --outdir /tmp/rendered-archive
+          test -s /tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md
+          test -s /tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md
+          test -s /tmp/rendered-archive/ZENODO_METADATA_FINAL.json
+          test -s /tmp/rendered-archive/CITATION.cff
+          test -s /tmp/rendered-archive/ARCHIVE_REFERENCE.txt
+          test -s /tmp/rendered-initial/JAE_PORTAL_FIELDS.json
+          test -s /tmp/rendered-initial/SUBMISSION_METADATA_VALIDATION.json
 
       - name: Dry-run DOI finalization on generated copy
         run: |
           python scripts/finalize_archive_doi.py --doi 10.9999/frogcs.test --output build/MANUSCRIPT_JAE_FINAL_TEST.md
-          python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL_TEST.md --review-stage final
 
       - name: Verify frozen scientific inputs against import manifest
         run: |
