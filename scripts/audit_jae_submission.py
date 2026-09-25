@@ -57,12 +57,14 @@ for forbidden_identity in [
     )
 assert "@" not in text, "main manuscript must not contain email addresses"
 
-assert "Recent rainfall predicts greater short-window co-calling" in text
+assert ("Recent rainfall predicts greater short-window co-calling" in text or "Recent rainfall predicts broader frog acoustic participation" in text)
 assert "10.5066/F7G44NG0" in text
 assert "10.15468/wazqft" in text
 assert "10.1002/qj.3803" in text
 assert "Zenodo" in text
 assert "Figure 1." in text and "Figure 2." in text
+if "MANUSCRIPT_JAE_V0_4" in str(MS) or "broader frog acoustic participation" in text:
+    assert "Figure 3." in text
 
 if args.review_stage == "initial":
     # Keep reviewer-facing main document anonymous. A generic archive-intent statement is allowed,
