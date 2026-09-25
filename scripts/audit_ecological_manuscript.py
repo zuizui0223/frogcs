@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 MS=ROOT/"MANUSCRIPT_JAE_V0_5.md"
 text=MS.read_text(encoding="utf-8")
 
-expected_title="# Rainfall pulses increase frog active-community richness through species-selective reassembly"
+expected_title="# Rainfall-associated richness gains accompany species-selective reassembly of active frog communities"
 assert text.startswith(expected_title)
 assert "FrogID" not in text
 assert "environmental filtering" not in text.lower()
