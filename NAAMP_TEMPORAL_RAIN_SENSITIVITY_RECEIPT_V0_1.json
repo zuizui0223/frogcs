@@ -1,0 +1,1383 @@
+{
+  "analysis": "naamp_temporally_disjoint_rain_sensitivity_v0_1",
+  "contract": "NAAMP_TEMPORAL_RAIN_SENSITIVITY_CONTRACT_V0_1.json",
+  "coverage": {
+    "overlap_estimable": 27,
+    "training_estimable": 27,
+    "validation_estimable": 29
+  },
+  "cross_species_table": [
+    {
+      "early_rain_pulse_sensitivity": 0.04046944597478593,
+      "early_sensitivity_se": 0.016472400760066983,
+      "late_adjusted_wet_log_odds": 0.10570729531128525,
+      "late_adjusted_wet_probability": 0.526402243445108,
+      "late_se": 0.19330401699543315,
+      "species": "Acris crepitans",
+      "z_early_sensitivity": 0.32246910146267876
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.02488462927815492,
+      "early_sensitivity_se": 0.033995064417427424,
+      "late_adjusted_wet_log_odds": -0.16737755927413156,
+      "late_adjusted_wet_probability": 0.45825302735153134,
+      "late_se": 0.2754754650342286,
+      "species": "Acris crepitans/gryllus complex",
+      "z_early_sensitivity": -0.9786177549481592
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.061511684205461235,
+      "early_sensitivity_se": 0.043408933110223265,
+      "late_adjusted_wet_log_odds": 0.11298391677131223,
+      "late_adjusted_wet_probability": 0.5282159699795317,
+      "late_se": 0.2829035030669218,
+      "species": "Acris gryllus",
+      "z_early_sensitivity": -1.7077992110473588
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.006939236039124343,
+      "early_sensitivity_se": 0.010744735190059427,
+      "late_adjusted_wet_log_odds": -0.03825889071857591,
+      "late_adjusted_wet_probability": 0.4904364438407062,
+      "late_se": 0.10536124483704713,
+      "species": "Anaxyrus americanus",
+      "z_early_sensitivity": -0.34505951509474514
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.0053264515560174155,
+      "early_sensitivity_se": 0.013709604172542316,
+      "late_adjusted_wet_log_odds": 0.36902454023313874,
+      "late_adjusted_wet_probability": 0.5912232519514735,
+      "late_se": 0.17564768373955195,
+      "species": "Anaxyrus fowleri",
+      "z_early_sensitivity": -0.5892481881517062
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.012041208953978977,
+      "early_sensitivity_se": 0.05034467114891918,
+      "late_adjusted_wet_log_odds": 0.4075913905103274,
+      "late_adjusted_wet_probability": 0.6005101991015612,
+      "late_se": 0.20860064881324566,
+      "species": "Anaxyrus terrestris",
+      "z_early_sensitivity": -0.7229274202525703
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.08943611886437329,
+      "early_sensitivity_se": 0.04278572407957944,
+      "late_adjusted_wet_log_odds": 1.3851530595090364,
+      "late_adjusted_wet_probability": 0.7998173292173543,
+      "late_se": 0.27985922756248016,
+      "species": "Gastrophryne carolinensis",
+      "z_early_sensitivity": 1.2973110566465549
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.03180000861636477,
+      "early_sensitivity_se": 0.014056162516490023,
+      "late_adjusted_wet_log_odds": 0.47665259043572067,
+      "late_adjusted_wet_probability": 0.6169571218084744,
+      "late_se": 0.13493671345720357,
+      "species": "Hyla chrysoscelis",
+      "z_early_sensitivity": 0.14987556455066658
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.009021768553507148,
+      "early_sensitivity_se": 0.014984717775806986,
+      "late_adjusted_wet_log_odds": 0.17017232006180624,
+      "late_adjusted_wet_probability": 0.5424407107171947,
+      "late_se": 0.1646980531292652,
+      "species": "Hyla chrysoscelis/versicolor complex",
+      "z_early_sensitivity": -0.30359988657081843
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.03171988172235931,
+      "early_sensitivity_se": 0.014271720509839114,
+      "late_adjusted_wet_log_odds": -0.7948307637950223,
+      "late_adjusted_wet_probability": 0.3111323530922171,
+      "late_se": 0.2340494572683092,
+      "species": "Hyla cinerea",
+      "z_early_sensitivity": 0.148280376366425
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.12338659854685421,
+      "early_sensitivity_se": 0.03234590472829544,
+      "late_adjusted_wet_log_odds": 0.5719269493433395,
+      "late_adjusted_wet_probability": 0.6392076896573919,
+      "late_se": 0.306145728871716,
+      "species": "Hyla femoralis",
+      "z_early_sensitivity": 1.9732065186014147
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.057223976205100766,
+      "early_sensitivity_se": 0.04394919944500296,
+      "late_adjusted_wet_log_odds": -0.0728618345881866,
+      "late_adjusted_wet_probability": 0.4817925956672259,
+      "late_se": 0.19965717557258394,
+      "species": "Hyla gratiosa",
+      "z_early_sensitivity": -1.6224383440806798
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.15233717281721718,
+      "early_sensitivity_se": 0.04027133512296623,
+      "late_adjusted_wet_log_odds": 0.9974922065072783,
+      "late_adjusted_wet_probability": 0.730565230892822,
+      "late_se": 0.24578582257422607,
+      "species": "Hyla squirella",
+      "z_early_sensitivity": 2.5495624921643647
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.007289263330739036,
+      "early_sensitivity_se": 0.010300723325967098,
+      "late_adjusted_wet_log_odds": 0.2287673041602655,
+      "late_adjusted_wet_probability": 0.5569436991479862,
+      "late_se": 0.13222032485017474,
+      "species": "Hyla versicolor",
+      "z_early_sensitivity": -0.33809107576265524
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.008825257077706183,
+      "early_sensitivity_se": 0.0077416970792137,
+      "late_adjusted_wet_log_odds": -0.3318691159601406,
+      "late_adjusted_wet_probability": 0.41778590807356286,
+      "late_se": 0.10053418010451132,
+      "species": "Lithobates catesbeianus",
+      "z_early_sensitivity": -0.6589033681812342
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.01094254914106934,
+      "early_sensitivity_se": 0.007825568995277496,
+      "late_adjusted_wet_log_odds": -0.11117431491918765,
+      "late_adjusted_wet_probability": 0.4722350126892993,
+      "late_se": 0.12263363598648085,
+      "species": "Lithobates clamitans",
+      "z_early_sensitivity": -0.7010549993406213
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.016195731561195782,
+      "early_sensitivity_se": 0.011631116272193716,
+      "late_adjusted_wet_log_odds": -0.3136693880585984,
+      "late_adjusted_wet_probability": 0.4222193364833676,
+      "late_se": 0.12470366000863595,
+      "species": "Lithobates palustris",
+      "z_early_sensitivity": -0.8056367958805002
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.036488579665428275,
+      "early_sensitivity_se": 0.023287843828970214,
+      "late_adjusted_wet_log_odds": 0.21023364336788397,
+      "late_adjusted_wet_probability": 0.5523656804343077,
+      "late_se": 0.19408779702967188,
+      "species": "Lithobates pipiens",
+      "z_early_sensitivity": 0.24321692304552797
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.011756298648999762,
+      "early_sensitivity_se": 0.01579027832211976,
+      "late_adjusted_wet_log_odds": 0.30443975575965027,
+      "late_adjusted_wet_probability": 0.5755274916354501,
+      "late_se": 0.129820179616809,
+      "species": "Lithobates sphenocephalus",
+      "z_early_sensitivity": -0.24916011136268837
+    },
+    {
+      "early_rain_pulse_sensitivity": -0.006636282612025502,
+      "early_sensitivity_se": 0.007734078617826791,
+      "late_adjusted_wet_log_odds": 0.21308376706316687,
+      "late_adjusted_wet_probability": 0.5530702902111029,
+      "late_se": 0.1749910519831889,
+      "species": "Lithobates sylvaticus",
+      "z_early_sensitivity": -0.6153246640944082
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.04351506933974776,
+      "early_sensitivity_se": 0.04177304806326743,
+      "late_adjusted_wet_log_odds": -0.8061837188437758,
+      "late_adjusted_wet_probability": 0.30870431774061113,
+      "late_se": 0.28207143701170834,
+      "species": "Lithobates virgatipes",
+      "z_early_sensitivity": 0.3831022068106314
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.02972359297326507,
+      "early_sensitivity_se": 0.006317822106431074,
+      "late_adjusted_wet_log_odds": 0.4417677212933561,
+      "late_adjusted_wet_probability": 0.6086801626425087,
+      "late_se": 0.14113294883977826,
+      "species": "Pseudacris crucifer",
+      "z_early_sensitivity": 0.10853771237806915
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.010756449287968869,
+      "early_sensitivity_se": 0.021582846716517914,
+      "late_adjusted_wet_log_odds": 0.5890688720538703,
+      "late_adjusted_wet_probability": 0.6431514731986533,
+      "late_se": 0.36474391895267755,
+      "species": "Pseudacris feriarum",
+      "z_early_sensitivity": -0.269065386695454
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.02537083364801074,
+      "early_sensitivity_se": 0.026742707154444368,
+      "late_adjusted_wet_log_odds": 0.15533945564038817,
+      "late_adjusted_wet_probability": 0.5387569603286062,
+      "late_se": 0.43996539410264307,
+      "species": "Pseudacris kalmi",
+      "z_early_sensitivity": 0.02188178579217087
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.09192972697942142,
+      "early_sensitivity_se": 0.03729736651861934,
+      "late_adjusted_wet_log_odds": 0.3146169128811545,
+      "late_adjusted_wet_probability": 0.5780117953051424,
+      "late_se": 0.261170158287875,
+      "species": "Pseudacris maculata/triseriata complex",
+      "z_early_sensitivity": 1.346954490984378
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.10902624427712271,
+      "early_sensitivity_se": 0.11624077074932691,
+      "late_adjusted_wet_log_odds": 0.581230812434858,
+      "late_adjusted_wet_probability": 0.6413505670596769,
+      "late_se": 0.3435671714313483,
+      "species": "Pseudacris ocularis",
+      "z_early_sensitivity": 1.6873166468307914
+    },
+    {
+      "early_rain_pulse_sensitivity": 0.007957474015184773,
+      "early_sensitivity_se": 0.03264139841510725,
+      "late_adjusted_wet_log_odds": 1.0959167355639499,
+      "late_adjusted_wet_probability": 0.7494942432756789,
+      "late_se": 0.4481273854664979,
+      "species": "Scaphiopus holbrookii",
+      "z_early_sensitivity": -0.32478815417007223
+    }
+  ],
+  "family_stratified_permutation": {
+    "estimable": true,
+    "family_counts": {
+      "Bufonidae": 3,
+      "Hylidae": 12,
+      "Microhylidae": 1,
+      "Ranidae": 7,
+      "Scaphiopodidae": 1
+    },
+    "n_families": 5,
+    "n_species": 24,
+    "observed_weighted_within_family_slope": 0.19334214971154273,
+    "permutations": 100000,
+    "positive_support": true,
+    "positive_tail_p": 0.015639843601563983,
+    "q025": -0.1823270062131314,
+    "q975": 0.1756954430294211,
+    "seed": 20260926,
+    "taxonomy_audit": [
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Acris crepitans",
+        "trait_species": "Acris crepitans"
+      },
+      {
+        "matched": false,
+        "species": "Acris crepitans/gryllus"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Acris gryllus",
+        "trait_species": "Acris gryllus"
+      },
+      {
+        "Family": "Bufonidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Anaxyrus americanus",
+        "trait_species": "Anaxyrus americanus"
+      },
+      {
+        "Family": "Bufonidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Anaxyrus fowleri",
+        "trait_species": "Anaxyrus fowleri"
+      },
+      {
+        "Family": "Bufonidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Anaxyrus terrestris",
+        "trait_species": "Anaxyrus terrestris"
+      },
+      {
+        "Family": "Microhylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Gastrophryne carolinensis",
+        "trait_species": "Gastrophryne carolinensis"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Hyla chrysoscelis",
+        "trait_species": "Hyla chrysoscelis"
+      },
+      {
+        "matched": false,
+        "species": "Hyla chrysoscelis/versicolor"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Hyla cinerea",
+        "trait_species": "Hyla cinerea"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Hyla femoralis",
+        "trait_species": "Hyla femoralis"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Hyla gratiosa",
+        "trait_species": "Hyla gratiosa"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Hyla squirella",
+        "trait_species": "Hyla squirella"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Hyla versicolor",
+        "trait_species": "Hyla versicolor"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates catesbeianus",
+        "trait_species": "Lithobates catesbeianus"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates clamitans",
+        "trait_species": "Lithobates clamitans"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates palustris",
+        "trait_species": "Lithobates palustris"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates pipiens",
+        "trait_species": "Lithobates pipiens"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates sphenocephalus",
+        "trait_species": "Lithobates sphenocephalus"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates sylvaticus",
+        "trait_species": "Lithobates sylvaticus"
+      },
+      {
+        "Family": "Ranidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Lithobates virgatipes",
+        "trait_species": "Lithobates virgatipes"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Pseudacris crucifer",
+        "trait_species": "Pseudacris crucifer"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Pseudacris feriarum",
+        "trait_species": "Pseudacris feriarum"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Pseudacris kalmi",
+        "trait_species": "Pseudacris kalmi"
+      },
+      {
+        "matched": false,
+        "species": "Pseudacris maculata/triseriata"
+      },
+      {
+        "Family": "Hylidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Pseudacris ocularis",
+        "trait_species": "Pseudacris ocularis"
+      },
+      {
+        "Family": "Scaphiopodidae",
+        "match_type": "exact",
+        "matched": true,
+        "species": "Scaphiopus holbrookii",
+        "trait_species": "Scaphiopus holbrookii"
+      }
+    ],
+    "trait_blob": "f98650972f3266c24962f70738799a39a8310e87",
+    "two_sided_p": 0.034409655903440965
+  },
+  "fixed_species_family": {
+    "n_species": 29,
+    "source": "NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json"
+  },
+  "interpretation_boundary": {
+    "behavioral_trait": "Early rain sensitivity is estimated acoustic behavior, not physiology.",
+    "causal_claim_authorized": false,
+    "occupancy_claim_authorized": false,
+    "status": "final mechanism slot; temporally disjoint training and validation years"
+  },
+  "primary_cross_species": {
+    "beta_per_1sd_early_sensitivity": 0.2843699134346255,
+    "ci95_beta": [
+      0.14068292090308404,
+      0.4280569059661669
+    ],
+    "early_sensitivity_mean": 0.024271703433694978,
+    "early_sensitivity_sd": 0.05023037080954441,
+    "estimable": true,
+    "n_species": 27,
+    "p_value": 0.0001049079263249049,
+    "positive_ci_support": true,
+    "se_hc3": 0.07331103717462469,
+    "spearman_p": 0.01616156205412432,
+    "spearman_rho": 0.45848595848595847
+  },
+  "time_split": {
+    "training_runs": 2888,
+    "training_years": [
+      2001,
+      2007
+    ],
+    "validation_pairs": 2459,
+    "validation_runs": 4960,
+    "validation_years": [
+      2008,
+      2015
+    ]
+  },
+  "training_species_results": [
+    {
+      "beta_dryness_z": -0.04046944597478593,
+      "ci95_beta": [
+        -0.07275475820342743,
+        -0.008184133746144434
+      ],
+      "estimable": true,
+      "n_routes": 120,
+      "n_runs": 753,
+      "negative_runs": 478,
+      "p_value": 0.014017947741112624,
+      "positive_runs": 275,
+      "rain_pulse_sensitivity": 0.04046944597478593,
+      "rain_pulse_sensitivity_se": 0.016472400760066983,
+      "se_cluster": 0.016472400760066983,
+      "species": "Acris crepitans"
+    },
+    {
+      "beta_dryness_z": 0.02488462927815492,
+      "ci95_beta": [
+        -0.04174447263212194,
+        0.09151373118843179
+      ],
+      "estimable": true,
+      "n_routes": 35,
+      "n_runs": 186,
+      "negative_runs": 115,
+      "p_value": 0.46416422057717677,
+      "positive_runs": 71,
+      "rain_pulse_sensitivity": -0.02488462927815492,
+      "rain_pulse_sensitivity_se": 0.033995064417427424,
+      "se_cluster": 0.033995064417427424,
+      "species": "Acris crepitans/gryllus complex"
+    },
+    {
+      "beta_dryness_z": 0.061511684205461235,
+      "ci95_beta": [
+        -0.023568261297884634,
+        0.1465916297088071
+      ],
+      "estimable": true,
+      "n_routes": 53,
+      "n_runs": 182,
+      "negative_runs": 90,
+      "p_value": 0.1564746703070143,
+      "positive_runs": 92,
+      "rain_pulse_sensitivity": -0.061511684205461235,
+      "rain_pulse_sensitivity_se": 0.043408933110223265,
+      "se_cluster": 0.043408933110223265,
+      "species": "Acris gryllus"
+    },
+    {
+      "beta_dryness_z": -0.006939236039124343,
+      "ci95_beta": [
+        -0.02799853003506095,
+        0.014120057956812263
+      ],
+      "estimable": true,
+      "n_routes": 297,
+      "n_runs": 2218,
+      "negative_runs": 1230,
+      "p_value": 0.5183916445390265,
+      "positive_runs": 988,
+      "rain_pulse_sensitivity": 0.006939236039124343,
+      "rain_pulse_sensitivity_se": 0.010744735190059427,
+      "se_cluster": 0.010744735190059427,
+      "species": "Anaxyrus americanus"
+    },
+    {
+      "beta_dryness_z": 0.0053264515560174155,
+      "ci95_beta": [
+        -0.02154387886446557,
+        0.0321967819765004
+      ],
+      "estimable": true,
+      "n_routes": 181,
+      "n_runs": 1154,
+      "negative_runs": 691,
+      "p_value": 0.6976314645365338,
+      "positive_runs": 463,
+      "rain_pulse_sensitivity": -0.0053264515560174155,
+      "rain_pulse_sensitivity_se": 0.013709604172542316,
+      "se_cluster": 0.013709604172542316,
+      "species": "Anaxyrus fowleri"
+    },
+    {
+      "beta_dryness_z": 0.012041208953978977,
+      "ci95_beta": [
+        -0.08663253331141536,
+        0.11071495121937332
+      ],
+      "estimable": true,
+      "n_routes": 43,
+      "n_runs": 145,
+      "negative_runs": 74,
+      "p_value": 0.8109695448616725,
+      "positive_runs": 71,
+      "rain_pulse_sensitivity": -0.012041208953978977,
+      "rain_pulse_sensitivity_se": 0.05034467114891918,
+      "se_cluster": 0.05034467114891918,
+      "species": "Anaxyrus terrestris"
+    },
+    {
+      "beta_dryness_z": -0.08943611886437329,
+      "ci95_beta": [
+        -0.17329459711281714,
+        -0.005577640615929441
+      ],
+      "estimable": true,
+      "n_routes": 40,
+      "n_runs": 152,
+      "negative_runs": 98,
+      "p_value": 0.036588509737245506,
+      "positive_runs": 54,
+      "rain_pulse_sensitivity": 0.08943611886437329,
+      "rain_pulse_sensitivity_se": 0.04278572407957944,
+      "se_cluster": 0.04278572407957944,
+      "species": "Gastrophryne carolinensis"
+    },
+    {
+      "beta_dryness_z": -0.03180000861636477,
+      "ci95_beta": [
+        -0.059349580909527105,
+        -0.00425043632320243
+      ],
+      "estimable": true,
+      "n_routes": 162,
+      "n_runs": 1036,
+      "negative_runs": 646,
+      "p_value": 0.023675570776579325,
+      "positive_runs": 390,
+      "rain_pulse_sensitivity": 0.03180000861636477,
+      "rain_pulse_sensitivity_se": 0.014056162516490023,
+      "se_cluster": 0.014056162516490023,
+      "species": "Hyla chrysoscelis"
+    },
+    {
+      "beta_dryness_z": -0.009021768553507148,
+      "ci95_beta": [
+        -0.038391275712585986,
+        0.020347738605571687
+      ],
+      "estimable": true,
+      "n_routes": 80,
+      "n_runs": 652,
+      "negative_runs": 519,
+      "p_value": 0.5471311177995918,
+      "positive_runs": 133,
+      "rain_pulse_sensitivity": 0.009021768553507148,
+      "rain_pulse_sensitivity_se": 0.014984717775806986,
+      "se_cluster": 0.014984717775806986,
+      "species": "Hyla chrysoscelis/versicolor complex"
+    },
+    {
+      "beta_dryness_z": -0.03171988172235931,
+      "ci95_beta": [
+        -0.05969193991906559,
+        -0.003747823525653029
+      ],
+      "estimable": true,
+      "n_routes": 98,
+      "n_runs": 561,
+      "negative_runs": 350,
+      "p_value": 0.02624488529632955,
+      "positive_runs": 211,
+      "rain_pulse_sensitivity": 0.03171988172235931,
+      "rain_pulse_sensitivity_se": 0.014271720509839114,
+      "se_cluster": 0.014271720509839114,
+      "species": "Hyla cinerea"
+    },
+    {
+      "beta_dryness_z": -0.12338659854685421,
+      "ci95_beta": [
+        -0.1867834068616771,
+        -0.05998979023203131
+      ],
+      "estimable": true,
+      "n_routes": 22,
+      "n_runs": 104,
+      "negative_runs": 75,
+      "p_value": 0.0001364052246664391,
+      "positive_runs": 29,
+      "rain_pulse_sensitivity": 0.12338659854685421,
+      "rain_pulse_sensitivity_se": 0.03234590472829544,
+      "se_cluster": 0.03234590472829544,
+      "species": "Hyla femoralis"
+    },
+    {
+      "beta_dryness_z": 0.057223976205100766,
+      "ci95_beta": [
+        -0.028914871856472762,
+        0.1433628242666743
+      ],
+      "estimable": true,
+      "n_routes": 33,
+      "n_runs": 113,
+      "negative_runs": 70,
+      "p_value": 0.19289990774656618,
+      "positive_runs": 43,
+      "rain_pulse_sensitivity": -0.057223976205100766,
+      "rain_pulse_sensitivity_se": 0.04394919944500296,
+      "se_cluster": 0.04394919944500296,
+      "species": "Hyla gratiosa"
+    },
+    {
+      "beta_dryness_z": -0.15233717281721718,
+      "ci95_beta": [
+        -0.2312675392675739,
+        -0.07340680636686045
+      ],
+      "estimable": true,
+      "n_routes": 37,
+      "n_runs": 121,
+      "negative_runs": 68,
+      "p_value": 0.00015509310892342134,
+      "positive_runs": 53,
+      "rain_pulse_sensitivity": 0.15233717281721718,
+      "rain_pulse_sensitivity_se": 0.04027133512296623,
+      "se_cluster": 0.04027133512296623,
+      "species": "Hyla squirella"
+    },
+    {
+      "beta_dryness_z": -0.007289263330739036,
+      "ci95_beta": [
+        -0.027478310064346187,
+        0.012899783402868117
+      ],
+      "estimable": true,
+      "n_routes": 233,
+      "n_runs": 1937,
+      "negative_runs": 1144,
+      "p_value": 0.4791652595946351,
+      "positive_runs": 793,
+      "rain_pulse_sensitivity": 0.007289263330739036,
+      "rain_pulse_sensitivity_se": 0.010300723325967098,
+      "se_cluster": 0.010300723325967098,
+      "species": "Hyla versicolor"
+    },
+    {
+      "beta_dryness_z": 0.008825257077706183,
+      "ci95_beta": [
+        -0.0063481903767716,
+        0.023998704532183966
+      ],
+      "estimable": true,
+      "n_routes": 339,
+      "n_runs": 2424,
+      "negative_runs": 1394,
+      "p_value": 0.25430123993856235,
+      "positive_runs": 1030,
+      "rain_pulse_sensitivity": -0.008825257077706183,
+      "rain_pulse_sensitivity_se": 0.0077416970792137,
+      "se_cluster": 0.0077416970792137,
+      "species": "Lithobates catesbeianus"
+    },
+    {
+      "beta_dryness_z": 0.01094254914106934,
+      "ci95_beta": [
+        -0.004395284248207848,
+        0.02628038253034653
+      ],
+      "estimable": true,
+      "n_routes": 381,
+      "n_runs": 2620,
+      "negative_runs": 1281,
+      "p_value": 0.16202084930839333,
+      "positive_runs": 1339,
+      "rain_pulse_sensitivity": -0.01094254914106934,
+      "rain_pulse_sensitivity_se": 0.007825568995277496,
+      "se_cluster": 0.007825568995277496,
+      "species": "Lithobates clamitans"
+    },
+    {
+      "beta_dryness_z": 0.016195731561195782,
+      "ci95_beta": [
+        -0.006600837432301672,
+        0.038992300554693236
+      ],
+      "estimable": true,
+      "n_routes": 189,
+      "n_runs": 1570,
+      "negative_runs": 1158,
+      "p_value": 0.1637865964354227,
+      "positive_runs": 412,
+      "rain_pulse_sensitivity": -0.016195731561195782,
+      "rain_pulse_sensitivity_se": 0.011631116272193716,
+      "se_cluster": 0.011631116272193716,
+      "species": "Lithobates palustris"
+    },
+    {
+      "beta_dryness_z": -0.036488579665428275,
+      "ci95_beta": [
+        -0.08213191484780324,
+        0.009154755516946694
+      ],
+      "estimable": true,
+      "n_routes": 32,
+      "n_runs": 317,
+      "negative_runs": 259,
+      "p_value": 0.11714954061684846,
+      "positive_runs": 58,
+      "rain_pulse_sensitivity": 0.036488579665428275,
+      "rain_pulse_sensitivity_se": 0.023287843828970214,
+      "se_cluster": 0.023287843828970214,
+      "species": "Lithobates pipiens"
+    },
+    {
+      "beta_dryness_z": -0.011756298648999762,
+      "ci95_beta": [
+        -0.04270467546621805,
+        0.01919207816821852
+      ],
+      "estimable": true,
+      "n_routes": 161,
+      "n_runs": 861,
+      "negative_runs": 521,
+      "p_value": 0.4565573261475653,
+      "positive_runs": 340,
+      "rain_pulse_sensitivity": 0.011756298648999762,
+      "rain_pulse_sensitivity_se": 0.01579027832211976,
+      "se_cluster": 0.01579027832211976,
+      "species": "Lithobates sphenocephalus"
+    },
+    {
+      "beta_dryness_z": 0.006636282612025502,
+      "ci95_beta": [
+        -0.00852223293251633,
+        0.021794798156567333
+      ],
+      "estimable": true,
+      "n_routes": 201,
+      "n_runs": 1782,
+      "negative_runs": 1306,
+      "p_value": 0.3908608243832924,
+      "positive_runs": 476,
+      "rain_pulse_sensitivity": -0.006636282612025502,
+      "rain_pulse_sensitivity_se": 0.007734078617826791,
+      "se_cluster": 0.007734078617826791,
+      "species": "Lithobates sylvaticus"
+    },
+    {
+      "beta_dryness_z": -0.04351506933974776,
+      "ci95_beta": [
+        -0.12538873906821257,
+        0.038358600388717065
+      ],
+      "estimable": true,
+      "n_routes": 23,
+      "n_runs": 131,
+      "negative_runs": 86,
+      "p_value": 0.29754984340823165,
+      "positive_runs": 45,
+      "rain_pulse_sensitivity": 0.04351506933974776,
+      "rain_pulse_sensitivity_se": 0.04177304806326743,
+      "se_cluster": 0.04177304806326743,
+      "species": "Lithobates virgatipes"
+    },
+    {
+      "beta_dryness_z": -0.02972359297326507,
+      "ci95_beta": [
+        -0.042106296762600956,
+        -0.017340889183929183
+      ],
+      "estimable": true,
+      "n_routes": 437,
+      "n_runs": 2805,
+      "negative_runs": 834,
+      "p_value": 2.5421283911763505e-06,
+      "positive_runs": 1971,
+      "rain_pulse_sensitivity": 0.02972359297326507,
+      "rain_pulse_sensitivity_se": 0.006317822106431074,
+      "se_cluster": 0.006317822106431074,
+      "species": "Pseudacris crucifer"
+    },
+    {
+      "beta_dryness_z": -0.010756449287968869,
+      "ci95_beta": [
+        -0.053058051536192544,
+        0.0315451529602548
+      ],
+      "estimable": true,
+      "n_routes": 63,
+      "n_runs": 343,
+      "negative_runs": 229,
+      "p_value": 0.6182165526092618,
+      "positive_runs": 114,
+      "rain_pulse_sensitivity": 0.010756449287968869,
+      "rain_pulse_sensitivity_se": 0.021582846716517914,
+      "se_cluster": 0.021582846716517914,
+      "species": "Pseudacris feriarum"
+    },
+    {
+      "beta_dryness_z": -0.02537083364801074,
+      "ci95_beta": [
+        -0.07778557651982333,
+        0.027043909223801853
+      ],
+      "estimable": true,
+      "n_routes": 37,
+      "n_runs": 232,
+      "negative_runs": 149,
+      "p_value": 0.3427726933473426,
+      "positive_runs": 83,
+      "rain_pulse_sensitivity": 0.02537083364801074,
+      "rain_pulse_sensitivity_se": 0.026742707154444368,
+      "se_cluster": 0.026742707154444368,
+      "species": "Pseudacris kalmi"
+    },
+    {
+      "estimable": false,
+      "n_routes": 0,
+      "n_runs": 0,
+      "negative_runs": 0,
+      "positive_runs": 0,
+      "reason": "no_training_opportunity_route",
+      "species": "Pseudacris maculata"
+    },
+    {
+      "beta_dryness_z": -0.09192972697942142,
+      "ci95_beta": [
+        -0.1650312220741054,
+        -0.01882823188473745
+      ],
+      "estimable": true,
+      "n_routes": 36,
+      "n_runs": 177,
+      "negative_runs": 88,
+      "p_value": 0.01370981800875738,
+      "positive_runs": 89,
+      "rain_pulse_sensitivity": 0.09192972697942142,
+      "rain_pulse_sensitivity_se": 0.03729736651861934,
+      "se_cluster": 0.03729736651861934,
+      "species": "Pseudacris maculata/triseriata complex"
+    },
+    {
+      "estimable": false,
+      "n_routes": 12,
+      "n_runs": 39,
+      "negative_runs": 21,
+      "positive_runs": 18,
+      "reason": "training_coverage",
+      "species": "Pseudacris nigrita"
+    },
+    {
+      "beta_dryness_z": -0.10902624427712271,
+      "ci95_beta": [
+        -0.3368539684809805,
+        0.11880147992673504
+      ],
+      "estimable": true,
+      "n_routes": 22,
+      "n_runs": 46,
+      "negative_runs": 21,
+      "p_value": 0.3482780053416369,
+      "positive_runs": 25,
+      "rain_pulse_sensitivity": 0.10902624427712271,
+      "rain_pulse_sensitivity_se": 0.11624077074932691,
+      "se_cluster": 0.11624077074932691,
+      "species": "Pseudacris ocularis"
+    },
+    {
+      "beta_dryness_z": -0.007957474015184773,
+      "ci95_beta": [
+        -0.07193343931381778,
+        0.05601849128344823
+      ],
+      "estimable": true,
+      "n_routes": 17,
+      "n_runs": 153,
+      "negative_runs": 134,
+      "p_value": 0.8073975587778719,
+      "positive_runs": 19,
+      "rain_pulse_sensitivity": 0.007957474015184773,
+      "rain_pulse_sensitivity_se": 0.03264139841510725,
+      "se_cluster": 0.03264139841510725,
+      "species": "Scaphiopus holbrookii"
+    }
+  ],
+  "validation_species_results": [
+    {
+      "adjusted_wet_probability": 0.526402243445108,
+      "ci95_log_odds": [
+        -0.2731616160666822,
+        0.4845762066892527
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.10570729531128525,
+      "intercept_se_cluster": 0.19330401699543315,
+      "n_events": 164,
+      "n_routes": 101,
+      "p_value": 0.5844853659997353,
+      "species": "Acris crepitans"
+    },
+    {
+      "adjusted_wet_probability": 0.45825302735153134,
+      "ci95_log_odds": [
+        -0.7072995493656425,
+        0.3725444308173794
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.16737755927413156,
+      "intercept_se_cluster": 0.2754754650342286,
+      "n_events": 86,
+      "n_routes": 45,
+      "p_value": 0.5434560116282957,
+      "species": "Acris crepitans/gryllus complex"
+    },
+    {
+      "adjusted_wet_probability": 0.5282159699795317,
+      "ci95_log_odds": [
+        -0.44149676034007124,
+        0.6674645938826957
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.11298391677131223,
+      "intercept_se_cluster": 0.2829035030669218,
+      "n_events": 95,
+      "n_routes": 40,
+      "p_value": 0.6896186561465094,
+      "species": "Acris gryllus"
+    },
+    {
+      "adjusted_wet_probability": 0.4904364438407062,
+      "ci95_log_odds": [
+        -0.244763135965495,
+        0.1682453545283432
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.03825889071857591,
+      "intercept_se_cluster": 0.10536124483704713,
+      "n_events": 549,
+      "n_routes": 221,
+      "p_value": 0.7165144261932264,
+      "species": "Anaxyrus americanus"
+    },
+    {
+      "adjusted_wet_probability": 0.5912232519514735,
+      "ci95_log_odds": [
+        0.024761406135735242,
+        0.7132876743305423
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.36902454023313874,
+      "intercept_se_cluster": 0.17564768373955195,
+      "n_events": 237,
+      "n_routes": 119,
+      "p_value": 0.035646585639699434,
+      "species": "Anaxyrus fowleri"
+    },
+    {
+      "adjusted_wet_probability": 0.6005101991015612,
+      "ci95_log_odds": [
+        -0.001258368315322056,
+        0.8164411493359769
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.4075913905103274,
+      "intercept_se_cluster": 0.20860064881324566,
+      "n_events": 138,
+      "n_routes": 53,
+      "p_value": 0.05070931197301678,
+      "species": "Anaxyrus terrestris"
+    },
+    {
+      "adjusted_wet_probability": 0.7998173292173543,
+      "ci95_log_odds": [
+        0.8366390527453761,
+        1.933667066272697
+      ],
+      "estimable": true,
+      "intercept_log_odds": 1.3851530595090364,
+      "intercept_se_cluster": 0.27985922756248016,
+      "n_events": 121,
+      "n_routes": 67,
+      "p_value": 7.441829410873849e-07,
+      "species": "Gastrophryne carolinensis"
+    },
+    {
+      "adjusted_wet_probability": 0.6169571218084744,
+      "ci95_log_odds": [
+        0.21218149186740043,
+        0.7411236890040409
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.47665259043572067,
+      "intercept_se_cluster": 0.13493671345720357,
+      "n_events": 361,
+      "n_routes": 160,
+      "p_value": 0.0004117811987324,
+      "species": "Hyla chrysoscelis"
+    },
+    {
+      "adjusted_wet_probability": 0.5424407107171947,
+      "ci95_log_odds": [
+        -0.15262993239541786,
+        0.4929745725190303
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.17017232006180624,
+      "intercept_se_cluster": 0.1646980531292652,
+      "n_events": 167,
+      "n_routes": 80,
+      "p_value": 0.3014924399275485,
+      "species": "Hyla chrysoscelis/versicolor complex"
+    },
+    {
+      "adjusted_wet_probability": 0.3111323530922171,
+      "ci95_log_odds": [
+        -1.2535592706420546,
+        -0.33610225694798984
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.7948307637950223,
+      "intercept_se_cluster": 0.2340494572683092,
+      "n_events": 137,
+      "n_routes": 75,
+      "p_value": 0.0006837963305092689,
+      "species": "Hyla cinerea"
+    },
+    {
+      "adjusted_wet_probability": 0.6392076896573919,
+      "ci95_log_odds": [
+        -0.028107653265987964,
+        1.1719615519526672
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.5719269493433395,
+      "intercept_se_cluster": 0.306145728871716,
+      "n_events": 95,
+      "n_routes": 37,
+      "p_value": 0.0617407990138114,
+      "species": "Hyla femoralis"
+    },
+    {
+      "adjusted_wet_probability": 0.4817925956672259,
+      "ci95_log_odds": [
+        -0.46418270796544137,
+        0.3184590387890682
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.0728618345881866,
+      "intercept_se_cluster": 0.19965717557258394,
+      "n_events": 118,
+      "n_routes": 56,
+      "p_value": 0.7151601394660598,
+      "species": "Hyla gratiosa"
+    },
+    {
+      "adjusted_wet_probability": 0.730565230892822,
+      "ci95_log_odds": [
+        0.5157608463512434,
+        1.4792235666633133
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.9974922065072783,
+      "intercept_se_cluster": 0.24578582257422607,
+      "n_events": 131,
+      "n_routes": 62,
+      "p_value": 4.9414365916249014e-05,
+      "species": "Hyla squirella"
+    },
+    {
+      "adjusted_wet_probability": 0.5569436991479862,
+      "ci95_log_odds": [
+        -0.03037977057026328,
+        0.48791437889079425
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.2287673041602655,
+      "intercept_se_cluster": 0.13222032485017474,
+      "n_events": 309,
+      "n_routes": 146,
+      "p_value": 0.08359495616089858,
+      "species": "Hyla versicolor"
+    },
+    {
+      "adjusted_wet_probability": 0.41778590807356286,
+      "ci95_log_odds": [
+        -0.528912488180246,
+        -0.1348257437400352
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.3318691159601406,
+      "intercept_se_cluster": 0.10053418010451132,
+      "n_events": 437,
+      "n_routes": 236,
+      "p_value": 0.0009632111722634407,
+      "species": "Lithobates catesbeianus"
+    },
+    {
+      "adjusted_wet_probability": 0.4722350126892993,
+      "ci95_log_odds": [
+        -0.35153182474588524,
+        0.1291831949075099
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.11117431491918765,
+      "intercept_se_cluster": 0.12263363598648085,
+      "n_events": 378,
+      "n_routes": 190,
+      "p_value": 0.36464139518335026,
+      "species": "Lithobates clamitans"
+    },
+    {
+      "adjusted_wet_probability": 0.4222193364833676,
+      "ci95_log_odds": [
+        -0.5580840704158527,
+        -0.0692547057013441
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.3136693880585984,
+      "intercept_se_cluster": 0.12470366000863595,
+      "n_events": 291,
+      "n_routes": 148,
+      "p_value": 0.01189249878375587,
+      "species": "Lithobates palustris"
+    },
+    {
+      "adjusted_wet_probability": 0.5523656804343077,
+      "ci95_log_odds": [
+        -0.17017144864899297,
+        0.5906387353847609
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.21023364336788397,
+      "intercept_se_cluster": 0.19408779702967188,
+      "n_events": 98,
+      "n_routes": 52,
+      "p_value": 0.2787248233974585,
+      "species": "Lithobates pipiens"
+    },
+    {
+      "adjusted_wet_probability": 0.5755274916354501,
+      "ci95_log_odds": [
+        0.04999687924418378,
+        0.5588826322751168
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.30443975575965027,
+      "intercept_se_cluster": 0.129820179616809,
+      "n_events": 326,
+      "n_routes": 138,
+      "p_value": 0.019022585172530266,
+      "species": "Lithobates sphenocephalus"
+    },
+    {
+      "adjusted_wet_probability": 0.5530702902111029,
+      "ci95_log_odds": [
+        -0.12989239244065978,
+        0.5560599265669935
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.21308376706316687,
+      "intercept_se_cluster": 0.1749910519831889,
+      "n_events": 169,
+      "n_routes": 101,
+      "p_value": 0.22334416009274882,
+      "species": "Lithobates sylvaticus"
+    },
+    {
+      "adjusted_wet_probability": 0.30870431774061113,
+      "ci95_log_odds": [
+        -1.3590335764541825,
+        -0.2533338612333691
+      ],
+      "estimable": true,
+      "intercept_log_odds": -0.8061837188437758,
+      "intercept_se_cluster": 0.28207143701170834,
+      "n_events": 33,
+      "n_routes": 14,
+      "p_value": 0.004262082258044832,
+      "species": "Lithobates virgatipes"
+    },
+    {
+      "adjusted_wet_probability": 0.6086801626425087,
+      "ci95_log_odds": [
+        0.16515222453545675,
+        0.7183832180512555
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.4417677212933561,
+      "intercept_se_cluster": 0.14113294883977826,
+      "n_events": 340,
+      "n_routes": 198,
+      "p_value": 0.001747152868285557,
+      "species": "Pseudacris crucifer"
+    },
+    {
+      "adjusted_wet_probability": 0.6431514731986533,
+      "ci95_log_odds": [
+        -0.12581607267337414,
+        1.3039538167811147
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.5890688720538703,
+      "intercept_se_cluster": 0.36474391895267755,
+      "n_events": 47,
+      "n_routes": 35,
+      "p_value": 0.10630627590432266,
+      "species": "Pseudacris feriarum"
+    },
+    {
+      "adjusted_wet_probability": 0.5387569603286062,
+      "ci95_log_odds": [
+        -0.7069768712447633,
+        1.0176557825255397
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.15533945564038817,
+      "intercept_se_cluster": 0.43996539410264307,
+      "n_events": 47,
+      "n_routes": 25,
+      "p_value": 0.7240344737608627,
+      "species": "Pseudacris kalmi"
+    },
+    {
+      "adjusted_wet_probability": 0.7442413627701411,
+      "ci95_log_odds": [
+        0.3695092612043359,
+        1.7667531750497032
+      ],
+      "estimable": true,
+      "intercept_log_odds": 1.0681312181270195,
+      "intercept_se_cluster": 0.3564463237249891,
+      "n_events": 54,
+      "n_routes": 29,
+      "p_value": 0.0027299821782938594,
+      "species": "Pseudacris maculata"
+    },
+    {
+      "adjusted_wet_probability": 0.5780117953051424,
+      "ci95_log_odds": [
+        -0.19726719119970554,
+        0.8265010169620146
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.3146169128811545,
+      "intercept_se_cluster": 0.261170158287875,
+      "n_events": 49,
+      "n_routes": 23,
+      "p_value": 0.22834098675636683,
+      "species": "Pseudacris maculata/triseriata complex"
+    },
+    {
+      "adjusted_wet_probability": 0.5216321781928025,
+      "ci95_log_odds": [
+        -0.6874257888608659,
+        0.8605913123901558
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.08658276176464494,
+      "intercept_se_cluster": 0.39490957830388296,
+      "n_events": 53,
+      "n_routes": 27,
+      "p_value": 0.8264576029772409,
+      "species": "Pseudacris nigrita"
+    },
+    {
+      "adjusted_wet_probability": 0.6413505670596769,
+      "ci95_log_odds": [
+        -0.09214846984088321,
+        1.2546100947105991
+      ],
+      "estimable": true,
+      "intercept_log_odds": 0.581230812434858,
+      "intercept_se_cluster": 0.3435671714313483,
+      "n_events": 64,
+      "n_routes": 32,
+      "p_value": 0.09069306757295749,
+      "species": "Pseudacris ocularis"
+    },
+    {
+      "adjusted_wet_probability": 0.7494942432756789,
+      "ci95_log_odds": [
+        0.21760319956351593,
+        1.9742302715643838
+      ],
+      "estimable": true,
+      "intercept_log_odds": 1.0959167355639499,
+      "intercept_se_cluster": 0.4481273854664979,
+      "n_events": 47,
+      "n_routes": 31,
+      "p_value": 0.014463245961868154,
+      "species": "Scaphiopus holbrookii"
+    }
+  ]
+}
