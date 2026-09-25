@@ -180,5 +180,5 @@ Xie, J., Towsey, M., Zhu, M., Zhang, J., & Roe, P. (2017). An intelligent system
 
 **Figure 3. Turnover rather than simple nested addition.** Rain-contrast effects on nestedness and Simpson turnover for the primary matched pairs and exact consecutive-year sensitivity.
 
-**Figure 4. Supporting community-activity decomposition.** Recent rain expands active-stop coverage and run-level active richness, while conditional and residual co-calling metrics remain near zero. Body-size results are supplementary because the pooled slope does not survive family-stratified permutation.
+The earlier co-calling decomposition and body-size analyses are treated as supplementary supporting analyses rather than main figures.
 
