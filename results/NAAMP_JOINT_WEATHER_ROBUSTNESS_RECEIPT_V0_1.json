@@ -1,0 +1,80 @@
+{
+  "analysis": "naamp_joint_weather_robustness_v0_1",
+  "provenance": {
+    "source_repository": "zuizui0223/284b",
+    "contract_commit": "2131191ee2835fd30a8e5066fca620bbd6ae5d15",
+    "implementation_commit": "c0dc75866fdc7d6c616cffd2ecfa4ff0fa4c704f",
+    "run_commit": "579efacd22a12006b2310e14f674626e5e079a29",
+    "workflow_run": 36066905845,
+    "job_id": 107858679929,
+    "artifact_id": 10836268800,
+    "artifact_zip_sha256": "fc297a820b1380d7c1fa49ed4b7aac81d85af5dded711cbd0b2bfd7e33e44180",
+    "run_conclusion": "success"
+  },
+  "joint_readback": {
+    "n_runs": 8200,
+    "n_routes": 814,
+    "rain_z": {
+      "beta": -0.06004053766130103,
+      "se": 0.01597559070112105,
+      "ci95_beta": [
+        -0.09135212006725128,
+        -0.028728955255350783
+      ],
+      "odds_ratio": 0.9417263574263522,
+      "ci95_or": [
+        0.9126962756367266,
+        0.9716797974800667
+      ],
+      "p_value": 0.0001710941580100701
+    },
+    "temp_z": {
+      "beta": 0.3882411131691604,
+      "se": 0.027347464575785848,
+      "ci95_beta": [
+        0.3346410675321352,
+        0.4418411588061856
+      ],
+      "odds_ratio": 1.4743852351310858,
+      "ci95_or": [
+        1.3974387090693872,
+        1.5555686324305265
+      ],
+      "p_value": 9.61613221221096e-46
+    }
+  },
+  "doy_spline_robustness": {
+    "n_runs": 8200,
+    "n_routes": 814,
+    "rain_z": {
+      "beta": -0.05527216608774216,
+      "se": 0.01598324019707712,
+      "ci95_beta": [
+        -0.0865987412302662,
+        -0.023945590945218122
+      ],
+      "odds_ratio": 0.9462275818456292,
+      "ci95_or": [
+        0.9170449941631087,
+        0.9763388299856719
+      ],
+      "p_value": 0.0005439333315429069
+    },
+    "temp_z": {
+      "beta": 0.40017052374599404,
+      "se": 0.0273018478295474,
+      "ci95_beta": [
+        0.3466598852886881,
+        0.4536811622033
+      ],
+      "odds_ratio": 1.4920791108682103,
+      "ci95_or": [
+        1.41433560721064,
+        1.5740960361451901
+      ],
+      "p_value": 1.2104472214116365e-48
+    }
+  },
+  "interpretation": "Rain-recency association remains negative after joint temperature adjustment and after adding a day-of-year spline; this is a robustness result, not a causal estimate.",
+  "causal_claim_authorized": false
+}
