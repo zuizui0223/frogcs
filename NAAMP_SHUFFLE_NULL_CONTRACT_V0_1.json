@@ -1,0 +1,43 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_fixed_marginal_shuffle_null_v0_1",
+  "status": "reviewer_motivated_post_opening_contract_frozen_before_shuffle_readback",
+  "purpose": "Test whether rain recency predicts co-calling above a within-run fixed-marginal shuffle null that preserves every species' 10-stop calling frequency exactly.",
+  "eligibility": "Same complete 10-stop, plausible-temperature, parseable-date runs as the existing reviewer-motivated independence-residual diagnostic; require >=2 active species.",
+  "matrix": "binary species-by-stop positive-calling matrix for each run",
+  "null": {
+    "operation": "Within each run and each species independently, randomly permute that species' length-10 stop-presence vector across the 10 stop labels.",
+    "preserved": [
+      "exact number of positive stops for every species",
+      "number of stops per run (10)",
+      "run-level active species pool"
+    ],
+    "destroyed": [
+      "which particular stops are shared among species",
+      "residual cross-species alignment across stops"
+    ],
+    "permutations_per_run": 1024,
+    "deterministic_seed": "first 64 bits of SHA256('frogcs-shuffle-v0.1|' + RunID)",
+    "statistic": "fraction of 10 stops containing >=2 calling species",
+    "summaries": [
+      "shuffle_mean",
+      "shuffle_sd",
+      "observed_minus_shuffle_mean",
+      "standardized_excess_if_sd_positive"
+    ]
+  },
+  "weather_model": {
+    "primary_response": "observed_minus_shuffle_mean",
+    "formula": "shuffle_residual ~ rain_z + temp_z + bs(doy, df=5, degree=3) + C(State) + C(RunNumber) + C(RouteType) + year_z",
+    "covariance": "cluster robust by State:RouteNumber",
+    "reported_term": "rain_z"
+  },
+  "interpretation": {
+    "null_rain_coefficient": "No detectable rain-related change in co-calling beyond that expected from fixed species-specific within-run stop frequencies under this shuffle null.",
+    "limitation": "The shuffle intentionally destroys shared stop identity, so persistent habitat/detectability heterogeneity among stops contributes to observed excess rather than being conditioned away."
+  },
+  "multiplicity_label": "reviewer-motivated diagnostic; not original confirmatory family",
+  "original_primary_replaced": false,
+  "existing_independence_residual_replaced": false,
+  "causal_claim_authorized": false
+}
