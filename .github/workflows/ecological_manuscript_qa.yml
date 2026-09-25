@@ -1,0 +1,56 @@
+name: frogcs ecological JAE v0.5 QA
+
+on:
+  push:
+    branches:
+      - revision/rainfall-community-filter-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_5.md"
+      - "NAAMP_ECOLOGICAL_PULSE_RECEIPT_V0_1.json"
+      - "NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json"
+      - "NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_RECEIPT_V0_1.json"
+      - "ECOLOGICAL_ARGUMENT_SPINE_V0_1.md"
+      - "ECOLOGICAL_CLAIM_BOUNDARY_V0_1.json"
+      - "scripts/build_ecological_figures.py"
+      - "scripts/audit_ecological_manuscript.py"
+      - ".github/workflows/ecological_manuscript_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit ecological manuscript
+        run: python scripts/audit_ecological_manuscript.py
+      - name: Build ecological figures
+        run: python scripts/build_ecological_figures.py
+      - name: Compute deterministic hashes
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          out={}
+          for p in sorted(Path("figures_ecology_v0_5").glob("*.svg")):
+              out[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          Path("ECOLOGICAL_FIGURE_HASHES_V0_1.json").write_text(json.dumps(out,indent=2)+"\n")
+          print(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v0-5-ecology-package
+          path: |
+            MANUSCRIPT_JAE_V0_5.md
+            figures_ecology_v0_5/*.svg
+            ECOLOGICAL_FIGURE_HASHES_V0_1.json
+            ECOLOGICAL_ARGUMENT_SPINE_V0_1.md
+            ECOLOGICAL_CLAIM_BOUNDARY_V0_1.json
+            NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_RECEIPT_V0_1.json
+          if-no-files-found: error
