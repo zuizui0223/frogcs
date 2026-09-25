@@ -1,0 +1,84 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_temporally_disjoint_rain_sensitivity_v0_1",
+  "status": "final_mechanism_contract_frozen_before_temporal_split_readback",
+  "ecological_question": "Does stable species-specific sensitivity to recent rainfall explain which species are recruited into wetter active assemblages?",
+  "hypothesis": "Species that show stronger declines in acoustic activity as time since rain increases during an early training period will be more strongly recruited to the wetter member of matched community pairs in a later, non-overlapping period.",
+  "finite_programme": "This is the final mechanism slot in MECHANISM_SCREEN_LEDGER_V0_1.md. If unsupported, no further post-opening mechanism family is opened without new external data or a reviewer/editor request.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "fixed_species_family": {
+    "source": "NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json",
+    "expected_species": 29,
+    "selection": "Existing coverage-only species family; no species added or removed based on the temporal-split results."
+  },
+  "time_split": {
+    "training_years": [
+      2001,
+      2007
+    ],
+    "validation_years": [
+      2008,
+      2015
+    ],
+    "no_overlap": true
+  },
+  "run_eligibility": "Reuse the exact complete-10-stop, >=8-temperature-stop, plausible-temperature, parseable-date, unified-protocol, valid DaysSinceRain eligibility from NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.",
+  "training_rain_sensitivity": {
+    "unit": "eligible route-run in 2001–2007",
+    "response": "binary species acoustic presence anywhere in the 10-stop run",
+    "opportunity_routes": "For each species, include only route clusters where that species was detected in at least one eligible training-period run.",
+    "minimum_coverage": {
+      "opportunity_routes": 8,
+      "runs": 40,
+      "positive_runs": 10,
+      "negative_runs": 10
+    },
+    "global_scaling": "Within the entire training-period eligible-run table, z-standardize log1p(DaysSinceRain), mean temperature and SurveyYear once; use the same scaled predictor for every species.",
+    "model": "OLS linear-probability model: presence ~ dryness_z + temp_z + bs(doy, df=5, degree=3) + C(route_cluster) + C(RunNumber) + year_z",
+    "covariance": "cluster robust by route_cluster",
+    "reported_species_trait": "rain_pulse_sensitivity = -beta_dryness_z, so larger positive values indicate a stronger early-period association with recent rain.",
+    "no_significance_filtering": "All coverage-qualified species traits enter the cross-species test regardless of their individual P value."
+  },
+  "validation_wet_recruitment": {
+    "pair_construction": "Filter eligible runs to 2008–2015, then rebuild the same State × RouteNumber × RunNumber adjacent-observed-year wetter/drier pairs used by NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.",
+    "event": "For each fixed-family species present in exactly one pair member, y=1 if wet-only and y=0 if dry-only.",
+    "minimum_species_coverage": {
+      "discordant_events": 20,
+      "routes": 5
+    },
+    "model": "Per species binomial-logit: y ~ centered_rain_contrast + centered_temp_difference + centered_doy_difference + centered_year_gap",
+    "covariance": "cluster robust by State:RouteNumber",
+    "response_for_cross_species_test": "intercept adjusted wet-versus-dry log odds and its cluster-robust SE."
+  },
+  "primary_cross_species_test": {
+    "eligibility": "Species estimable in both early rain-sensitivity and late wet-recruitment stages; require >=15 species.",
+    "predictor": "z-standardized early rain_pulse_sensitivity across overlapping species.",
+    "response": "late adjusted wet-versus-dry intercept log odds",
+    "model": "inverse-variance WLS response ~ z_early_rain_pulse_sensitivity with HC3 covariance",
+    "weights": "1 / late_response_SE^2",
+    "expected_sign": "positive",
+    "interpretation": "A positive relationship means species-specific rainfall sensitivity measured years earlier predicts later community reassembly under wetter conditions."
+  },
+  "sensitivities": {
+    "spearman": "Unweighted Spearman correlation between early rain_pulse_sensitivity and late adjusted wet-response.",
+    "family_stratified_permutation": {
+      "family_source": "AmphiBIO v1 using the existing exact/frozen-genus-alias taxonomy rules.",
+      "statistic": "weighted within-family slope after weighted family-mean centering of predictor and response",
+      "permutations": 100000,
+      "seed": 20260926,
+      "expected_sign": "positive",
+      "status": "robustness to broad family structure"
+    }
+  },
+  "boundaries": [
+    "Rain-pulse sensitivity is a behavioral acoustic-response trait estimated from monitoring data, not a physiological trait.",
+    "Training and validation years are disjoint, but the species set is the existing 29-species coverage family from the full ecological programme.",
+    "Species may change rainfall response through geography or time; the test asks whether a cross-period species ranking is persistent enough to predict later reassembly.",
+    "No causal rainfall claim.",
+    "No occupancy, colonization, extinction or breeding-success claim."
+  ]
+}
