@@ -50,8 +50,7 @@ jobs:
       - name: Rebuild and verify figures
         run: |
           python scripts/build_submission_figures.py
-          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg || true
-          test -s figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+          python scripts/verify_revision_figure_hashes.py
 
       - name: Assemble initial-submission bundle
         run: |
