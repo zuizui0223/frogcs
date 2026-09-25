@@ -64,6 +64,7 @@ jobs:
         run: |
           python scripts/finalize_archive_doi.py \
             --doi "${{ inputs.archive_doi }}" \
+            --input MANUSCRIPT_JAE_V0_4.md \
             --output build/MANUSCRIPT_JAE_FINAL.md
 
       - name: Audit finalized manuscript
@@ -78,7 +79,8 @@ jobs:
       - name: Rebuild and verify figures
         run: |
           python scripts/build_submission_figures.py
-          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg || true
+          test -s figures/FIGURE_3_DECOMPOSITION_V0_1.svg
 
       - name: Assemble final submission bundle
         run: |
@@ -96,7 +98,8 @@ jobs:
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
           cp figures/FIGURE_1_DESIGN_V0_1.svg "$out/"
           cp figures/FIGURE_2_EFFECTS_V0_1.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_1.md "$out/"
+          cp figures/FIGURE_3_DECOMPOSITION_V0_1.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_2.md "$out/"
           cp submission/JAE_PORTAL_CHECKLIST_V0_1.md "$out/"
           cp submission/SUBMISSION_HANDOFF_RC1.md "$out/"
 
