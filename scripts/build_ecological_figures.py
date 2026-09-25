@@ -73,38 +73,43 @@ def figure1():
     (OUT/"FIGURE_1_ECO_RICHNESS_V0_1.svg").write_text(svg_wrap(1200,740,els),encoding="utf-8")
 
 def figure2():
-    d=load_json("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
-    rows=sorted(d["species_results"],key=lambda z:z["wet_gain_share"])
-    h=1040
-    top=105
-    dy=28
-    x0,x1=475,1040
-    xmin,xmax=.25,.80
+    d=load_json("NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_SUMMARY_V0_1.json")
+    rows=[]
+    for x in d["fdr_5_percent"]["negative_species"]:
+        rows.append({**x,"direction":"dry-associated"})
+    for x in d["fdr_5_percent"]["positive_species"]:
+        rows.append({**x,"direction":"wet-associated"})
+    rows=sorted(rows,key=lambda z:z["adjusted_wet_probability"])
+
+    h=560
+    x0,x1=430,1050
+    xmin,xmax=.30,.82
     def sx(v): return x0+(v-xmin)/(xmax-xmin)*(x1-x0)
 
     els=[
-      text(55,48,"Figure 2. Species differ sharply in wet-versus-dry recruitment",28,"bold"),
-      text(55,78,"Discordant matched pairs: wet gain share; q = Benjamini–Hochberg FDR",17),
-      line(sx(.5),95,sx(.5),940,2,"6 6"),
+      text(55,48,"Figure 2. Species-selective wet-versus-dry responses persist after adjustment",28,"bold"),
+      text(55,80,"FDR-supported species; adjusted wet probability among discordant matched pairs",17),
+      line(sx(.5),110,sx(.5),400,2,"6 6"),
     ]
     for v in [.3,.4,.5,.6,.7,.8]:
-        x=sx(v); els += [line(x,940,x,952,2),text(x,980,f"{v:.1f}",15,"normal","middle")]
-    for i,r in enumerate(rows):
-        y=top+i*dy
-        sp=r["species_code"]
-        q=r["fdr_bh"]
-        sig=q<=.05
+        x=sx(v); els += [line(x,400,x,412,2),text(x,442,f"{v:.1f}",15,"normal","middle")]
+
+    ys=[135+i*38 for i in range(len(rows))]
+    for r,y in zip(rows,ys):
+        p=r["adjusted_wet_probability"]
         els += [
-          text(60,y+5,sp,16,"bold" if sig else "normal"),
-          line(sx(.5),y,sx(r["wet_gain_share"]),y,3 if sig else 1),
-          circle(sx(r["wet_gain_share"]),y,6 if sig else 4),
-          text(1145,y+5,f"{r['wet_gains']}/{r['dry_losses']}",14,"bold" if sig else "normal","end")
+          text(60,y+5,r["species"],17,"bold"),
+          line(sx(.5),y,sx(p),y,4),
+          circle(sx(p),y,7),
+          text(1140,y+5,f"q={r['fdr_bh']:.3g}",15,"bold","end")
         ]
+
+    het=d["heterogeneity"]
+    con=d["raw_adjusted_concordance"]
     els += [
-      text(sx(.35),1015,"dry-associated",17,"bold","middle"),
-      text(sx(.68),1015,"wet-associated",17,"bold","middle"),
-      text(1145,82,"wet/dry",14,"bold","end"),
-      text(60,1015,f"Species heterogeneity: χ²={d['heterogeneity_test']['chi2']:.1f}, df={d['heterogeneity_test']['df']}, P≈1.9×10⁻²¹",17,"bold")
+      text(60,485,f"All 29 species: Q={het['Q']:.1f}, df={het['df']}, P≈1.46×10⁻¹⁷",18,"bold"),
+      text(60,520,f"Raw vs adjusted species ranking: Spearman ρ={con['spearman_rho']:.3f}",17),
+      text(780,520,"0.5 = no wet/dry bias",16,"normal","middle")
     ]
     (OUT/"FIGURE_2_ECO_SPECIES_V0_1.svg").write_text(svg_wrap(1200,h,els),encoding="utf-8")
 
