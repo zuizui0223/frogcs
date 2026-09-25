@@ -30,8 +30,6 @@ Our central prediction was therefore stronger than “rainfall matters.” If sh
 
 ## Materials and Methods
 
-## Materials and Methods
-
 ### NAAMP surveys and active-community definition
 
 We used the U.S. Geological Survey North American Amphibian Monitoring Program data release for the eastern and central United States (Foreman, Grant, & Weir, 2017; DOI 10.5066/F7G44NG0). Analyses were restricted to the unified-protocol period 2001–2015. NAAMP routes contain approximately 10 standardized wetland-associated stops surveyed acoustically for 5 min. CallingIndex values 1–3 were treated as positive acoustic activity.
