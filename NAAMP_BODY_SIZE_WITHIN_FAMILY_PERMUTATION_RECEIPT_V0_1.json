@@ -1,0 +1,49 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_body_size_within_family_permutation_v0_1",
+  "contract": "NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_CONTRACT_V0_1.json",
+  "workflow_run": 36129647158,
+  "artifact_id": 10861811202,
+  "artifact_digest": "sha256:a28e64178e156045483020a5dd901b14f6951cef5e87b4712588dc43539c3518",
+  "head_sha": "7a27ee465b21195eae846f435c8cd03067607b67",
+  "n_species": 26,
+  "n_families": 5,
+  "family_counts": {
+    "Bufonidae": 3,
+    "Hylidae": 14,
+    "Microhylidae": 1,
+    "Ranidae": 7,
+    "Scaphiopodidae": 1
+  },
+  "observed_weighted_within_family_slope": -0.18885458160930196,
+  "permutations": 100000,
+  "seed": 20260925,
+  "two_sided_p": 0.3136668633313667,
+  "negative_tail_p": 0.15072849271507285,
+  "permutation_summary": {
+    "mean": 0.003046360858064769,
+    "sd": 0.18154067828255763,
+    "q025": -0.33137883458249395,
+    "q975": 0.3645282596589599
+  },
+  "family_specific_descriptive": [
+    {
+      "family": "Hylidae",
+      "n_species": 14,
+      "weighted_slope": -0.4470290810622336
+    },
+    {
+      "family": "Ranidae",
+      "n_species": 7,
+      "weighted_slope": -0.06275632953749165
+    }
+  ],
+  "negative_support": false,
+  "interpretation": "The pooled negative body-size association does not survive family-stratified permutation. Body size remains a secondary cross-species correlate and must not be used as the headline ecological mechanism.",
+  "boundary": {
+    "not_phylogenetic_model": true,
+    "body_size_proxy": true,
+    "post_discovery_robustness": true,
+    "causal_claim_authorized": false
+  }
+}
