@@ -128,19 +128,21 @@ def fit_run_level(d):
         "prespecified_richness_pulse_end":pulse_end
     }
 
-def marginal_bin_means(fit,data,response):
-    design_info=fit.model.data.design_info
+def marginal_bin_means(fit,data,response,formula):
     out={}
     cov=np.asarray(fit.cov_params())
     params=np.asarray(fit.params)
+    param_names=list(fit.params.index)
+    rhs=formula.split("~",1)[1]
     for b in RECENT_ORDER:
         nd=data.copy()
         nd["recent_bin"]=pd.Categorical([b]*len(nd),categories=RECENT_ORDER)
         nd["c_temp"]=0.0
         nd["c_doy"]=0.0
         nd["c_year_gap"]=0.0
-        mat=np.asarray(patsy.build_design_matrices([design_info],nd)[0],float)
-        L=mat.mean(axis=0)
+        mat=patsy.dmatrix(rhs,nd,return_type="dataframe")
+        mat=mat.reindex(columns=param_names,fill_value=0.0)
+        L=np.asarray(mat.mean(axis=0),float)
         est=float(L@params)
         se=float(math.sqrt(max(0.0,L@cov@L)))
         p=float(2*norm.sf(abs(est/se))) if se>0 else None
@@ -165,7 +167,7 @@ def fit_pair_response(df,response):
         "n_pairs":int(len(x)),
         "n_routes":int(x["route_cluster"].nunique()),
         "formula":formula,
-        "adjusted_means_by_recent_bin":marginal_bin_means(fit,x,response),
+        "adjusted_means_by_recent_bin":marginal_bin_means(fit,x,response,formula),
         "raw_means_by_recent_bin":{
             b:{
                 "n_pairs":int((x["recent_bin"]==b).sum()),
