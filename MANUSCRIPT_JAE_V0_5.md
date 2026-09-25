@@ -60,15 +60,29 @@ We fitted (Delta S) against rain contrast, temperature difference, day-of-year d
 
 ### Turnover and nestedness
 
-For each matched pair, species were partitioned into those shared between runs ((a)), present only in the wetter run ((b)), and present only in the drier run ((c)). Sørensen dissimilarity was
+For each matched pair, species were partitioned into those shared between runs (`a`), present only in the wetter run (`b`), and present only in the drier run (`c`). Sørensen dissimilarity was
 
 `β_sor = (b + c) / (2a + b + c)`.
 
 The Simpson turnover component was
 
-`β_sor = (b + c) / (2a + b + c)`.
+`β_sim = min(b, c) / (a + min(b, c))`,
 
-with all continuous covariates centered within species and cluster-robust standard errors by route. The intercept therefore estimates each species' adjusted wet-versus-dry tendency at its mean pair conditions. Residual heterogeneity among species intercepts was tested using inverse-variance Cochran's Q, and raw-versus-adjusted rank concordance was assessed with Spearman correlation.
+and the nestedness-resultant component was
+
+`β_sne = β_sor - β_sim`.
+
+We modelled wet-minus-dry richness gain, `β_sim`, and `β_sne` separately against rain contrast, paired temperature difference, day-of-year difference and year gap, with State and RunNumber fixed effects and cluster-robust standard errors by State × RouteNumber. The same metrics were recalculated in the exact consecutive-year sensitivity.
+
+### Species-specific wet-versus-dry responses
+
+We next asked whether rainfall-associated community change was uniform across taxa. For every matched pair and every species present in exactly one member of that pair, we scored a discordant species event as 1 when the species occurred only in the wetter run and 0 when it occurred only in the drier run. Species entered the frozen response family when they had at least 40 discordant matched pairs spanning at least 10 routes; eligibility depended only on coverage, not response direction.
+
+The initial species-level screen compared wet gains with dry losses using a two-sided exact binomial test under `P(wet gain) = 0.5`, with Benjamini–Hochberg FDR across eligible species. To test whether species differences persisted after paired environmental and temporal differences were accounted for, we then fitted a separate binomial-logit model for each eligible species:
+
+`wet_only ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap`.
+
+All four continuous predictors were centered within species, and standard errors were cluster-robust by State × RouteNumber. The model intercept therefore estimates each species' adjusted wet-versus-dry log odds at that species' mean pair conditions. We applied Benjamini–Hochberg FDR across adjusted species intercept tests, quantified residual heterogeneity with inverse-variance Cochran's Q, and measured raw-versus-adjusted rank concordance with Spearman correlation.
 
 ### Secondary trait analysis
 
