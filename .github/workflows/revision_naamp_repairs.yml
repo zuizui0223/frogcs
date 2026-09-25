@@ -1,0 +1,38 @@
+name: frogcs reviewer-motivated NAAMP repairs
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - "NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_review_repairs.py"
+      - ".github/workflows/revision_naamp_repairs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-review-naamp-repairs
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Run frozen repair diagnostics
+        run: python scripts/run_naamp_review_repairs.py
+      - name: Upload repair receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-review-repairs-v0-1
+          path: NAAMP_REVIEW_REPAIRS_RECEIPT_V0_1.json
+          if-no-files-found: error
