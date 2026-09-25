@@ -1,0 +1,54 @@
+name: frogcs activation-decomposition manuscript QA
+
+on:
+  push:
+    branches:
+      - revision/activation-decomposition-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_4.md"
+      - "NAAMP_*RECEIPT*.json"
+      - "FROGID_*RECEIPT*.json"
+      - "SPATIAL_CONFOUNDING_ROBUSTNESS_RECEIPT_V0_1.json"
+      - "scripts/audit_jae_submission.py"
+      - "scripts/build_jae_anonymous_docx.py"
+      - "scripts/build_submission_figures.py"
+      - ".github/workflows/revision_manuscript_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - name: Audit revised manuscript
+        run: python scripts/audit_jae_submission.py --manuscript MANUSCRIPT_JAE_V0_4.md --review-stage initial
+      - name: Rebuild all submission figures
+        run: python scripts/build_submission_figures.py
+      - name: Verify figures exist
+        run: |
+          test -s figures/FIGURE_1_DESIGN_V0_1.svg
+          test -s figures/FIGURE_2_EFFECTS_V0_1.svg
+          test -s figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+      - name: Build anonymous revised DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source MANUSCRIPT_JAE_V0_4.md \
+            --output build/FROG_JAE_ANON_MAIN_V0_4.docx
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v0-4-review-package
+          path: |
+            MANUSCRIPT_JAE_V0_4.md
+            figures/FIGURE_1_DESIGN_V0_1.svg
+            figures/FIGURE_2_EFFECTS_V0_1.svg
+            figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+            build/FROG_JAE_ANON_MAIN_V0_4.docx
+          if-no-files-found: error
