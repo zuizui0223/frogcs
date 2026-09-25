@@ -1,0 +1,36 @@
+name: frogcs independent body-size filter validation
+
+on:
+  push:
+    branches:
+      - revision/rainfall-community-filter-v1
+    paths:
+      - "NAAMP_BODY_SIZE_FILTER_VALIDATION_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_body_size_filter_validation.py"
+      - ".github/workflows/body_size_filter_validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Recompute full species-response receipt
+        run: python scripts/run_naamp_species_pulse_heterogeneity.py
+      - name: Run frozen independent SVL validation
+        run: python scripts/run_naamp_body_size_filter_validation.py
+      - name: Upload validation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-body-size-filter-validation-v0-1
+          path: NAAMP_BODY_SIZE_FILTER_VALIDATION_RECEIPT_V0_1.json
+          if-no-files-found: error
