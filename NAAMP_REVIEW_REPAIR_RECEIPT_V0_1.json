@@ -1,0 +1,144 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_reviewer_repair_v0_1",
+  "contracts": [
+    "NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json",
+    "NAAMP_REVIEW_REPAIR_CONTRACT_V0_1_1.json"
+  ],
+  "workflow_run": 36112267989,
+  "artifact_id": 10853836789,
+  "artifact_digest": "sha256:588c6bd87fce23c4f642486927b70e4d1280d4a8d938bdbee6ceaf3e9a01f730",
+  "head_sha": "7f23dc56a494b4a1cf1092c729dea29ba9ef6019",
+  "days_since_rain_audit": {
+    "n_numeric": 9401,
+    "nonnumeric_values": {
+      "NULL": 10648
+    },
+    "documented_range": [
+      0,
+      180
+    ],
+    "observed_min": 0,
+    "observed_max": 180,
+    "numeric_out_of_documented_range": 0,
+    "quantiles": {
+      "0": 0,
+      "1": 180,
+      "0.001": 0,
+      "0.01": 0,
+      "0.05": 0,
+      "0.25": 0,
+      "0.5": 1,
+      "0.75": 3,
+      "0.95": 7,
+      "0.99": 15,
+      "0.999": 33.400000000001455
+    },
+    "counts_at": {
+      "0": 2714,
+      "30": 4,
+      "60": 0,
+      "90": 0,
+      "120": 0,
+      "180": 1
+    },
+    "counts_gt": {
+      "30": 11,
+      "60": 3,
+      "90": 2,
+      "120": 1,
+      "180": 0
+    }
+  },
+  "h3_hierarchy_repair": {
+    "hierarchy_corrected": {
+      "n_runs": 9398,
+      "n_routes": 899,
+      "beta": -0.04803020663551628,
+      "se_cluster": 0.026484464260525968,
+      "ci95_beta": [
+        -0.0999388027359854,
+        0.003878389464952857
+      ],
+      "odds_ratio": 0.953104996547435,
+      "ci95_or": [
+        0.9048927933047116,
+        1.0038859201498693
+      ],
+      "p_value": 0.06975106907085477,
+      "support": false
+    },
+    "four_window_states_sensitivity": {
+      "n_runs": 2305,
+      "n_routes": 197,
+      "beta": 0.02359884595400897,
+      "se_cluster": 0.048712801141806004,
+      "ci95_beta": [
+        -0.07187648986999243,
+        0.11907418177801035
+      ],
+      "odds_ratio": 1.0238795020910496,
+      "ci95_or": [
+        0.9306458329009247,
+        1.1264534775108364
+      ],
+      "p_value": 0.6280675687087598,
+      "support": false
+    },
+    "decision": "not_supported"
+  },
+  "active_pool_richness": {
+    "label": "reviewer-motivated post-opening diagnostic",
+    "n_runs": 7848,
+    "n_routes": 807,
+    "beta_rain_z": -0.01872496213277167,
+    "se_cluster": 0.005021127422917641,
+    "ci95_beta": [
+      -0.028566191043476664,
+      -0.008883733222066677
+    ],
+    "p_value": 0.0001920622744992549,
+    "interpretation": "More recent rainfall is associated with a larger run-level acoustically active species pool after temperature, nonlinear day-of-year, state, sampling-window, route-type and year adjustment."
+  },
+  "independence_residual": {
+    "label": "reviewer-motivated post-opening diagnostic",
+    "n_runs": 7176,
+    "n_routes": 794,
+    "beta_rain_z": 0.0008757826576161237,
+    "se_cluster": 0.0010167050701366247,
+    "ci95_beta": [
+      -0.0011169226627509303,
+      0.002868487977983178
+    ],
+    "p_value": 0.38902161538454694,
+    "observed_ge2_mean": 0.47575250836120403,
+    "expected_ge2_independence_mean": 0.4766452814395646,
+    "mean_residual": -0.0008927730783606248,
+    "interpretation": "No detectable rain association remains in co-calling above that expected from within-run species marginal calling frequencies."
+  },
+  "pair_covariance_sensitivity": {
+    "n_runs": 7176,
+    "n_routes": 794,
+    "beta_rain_z": 0.0006173910398944735,
+    "se_cluster": 0.00048689576609701834,
+    "ci95_beta": [
+      -0.0003369071258807208,
+      0.0015716892056696677
+    ],
+    "p_value": 0.20479266356365566,
+    "interpretation": "Mean pairwise excess co-calling above marginal independence does not detectably change with rain recency."
+  },
+  "diagnostic_subset": {
+    "complete_plausible_temp_runs": 7848,
+    "runs_with_pool_ge2": 7176,
+    "pool_richness": {
+      "mean": 3.774847094801223,
+      "median": 3,
+      "min": 0,
+      "max": 16
+    }
+  },
+  "original_primary_replaced": false,
+  "original_network_result_replaced": false,
+  "causal_claim_authorized": false
+}
