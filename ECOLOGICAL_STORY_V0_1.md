@@ -1,88 +1,71 @@
-# Ecological story v0.1 — rainfall as a short-term community filter
+# Ecological story v0.2 — rainfall-pulse community reassembly
 
-## What is no longer the story
+## The paper is not about “frogs call after rain”
 
-The article should not be sold as “frogs call after rain.” That is established natural history and is not sufficient novelty.
+Rainfall effects on frog calling are established. The ecological novelty is that rainfall-associated activity changes **community membership**, not only the amount of activity.
 
-The earlier participation-versus-association decomposition remains useful, but it is now a **mechanistic supporting result**, not the ecological endpoint.
+## Core ecological result
 
-## New ecological question
+Within the same NAAMP route and the same seasonal sampling window:
 
-> **Does a rainfall pulse simply increase the number of acoustically active frog species, or does it reorganize which species constitute the active assemblage?**
+- greater rainfall contrast predicts higher active-species richness;
+- the wet assemblage is not simply a nested superset of the dry assemblage;
+- exact consecutive-year comparisons show increasing turnover with rainfall contrast;
+- species wet-versus-dry responses are extremely heterogeneous;
+- that heterogeneity persists after pair-level temperature, survey-date, rain-contrast and year-gap adjustment.
 
-The matched-route analyses answer this at the scale of standardized NAAMP communities.
+Therefore:
 
-## Result 1 — rainfall contrast increases active-species richness
+> **Short rainfall pulses are associated with rapid, species-selective reassembly of the acoustically active frog community.**
 
-Within the same route and the same seasonal sampling window, wetter runs contain more acoustically active species.
+## Strong numerical support
 
-Primary adjacent-observed-year pairs:
-- 4,236 pairs;
+Matched community:
+- 4,236 wet–dry pairs;
 - 585 routes;
-- 21 states;
-- richness-gain slope = **+0.286 species per unit log-rain contrast**;
-- 95% CI **0.165 to 0.407**;
-- **P = 3.81 × 10^-6**.
+- richness-gain β = +0.2859, 95% CI 0.1646–0.4072, P=3.81e-6;
+- consecutive-year β = +0.3009, P=1.60e-4.
 
-Exact consecutive-year sensitivity:
-- 2,693 pairs;
-- slope = **+0.301**;
-- 95% CI **0.145 to 0.457**;
-- **P = 1.60 × 10^-4**.
+Composition:
+- nestedness response unsupported;
+- consecutive-year turnover β = +0.01840, 95% CI 0.00470–0.03211, P=.00850.
 
-## Result 2 — the gain is not simple nested recruitment
+Species selectivity:
+- raw heterogeneity χ²=165.45, df=28, P=1.91e-21;
+- adjusted heterogeneity Q=144.01, df=28, P=1.46e-17;
+- raw vs adjusted species ranking ρ=.997.
 
-The original “wet community = dry community + extra species” hypothesis is not supported.
+## Body size is secondary, not the mechanism
 
-- nestedness slope: P = 0.279 primary, P = 0.711 consecutive-year;
-- turnover slope: P = 0.104 primary;
-- in exact consecutive-year comparisons, turnover **increases** with rain contrast:
-  - β = **+0.0184**;
-  - 95% CI **0.00470 to 0.0321**;
-  - **P = 0.00850**.
+Pooled AmphiBIO relationships are strong:
+- raw β=-0.3353, P=5.17e-7;
+- adjusted β=-0.3670, P=1.23e-6.
 
-Thus rainfall-richness gain is accompanied by compositional replacement, not only addition.
+But the family-stratified permutation is null:
+- within-family slope=-0.1889;
+- 100,000 permutations;
+- two-sided P=.314.
 
-## Result 3 — reassembly is species-selective
-
-Across 29 eligible species, wet-gain versus dry-loss probabilities are strongly heterogeneous:
-
-- χ² = **165.45**;
-- df = 28;
-- **P = 1.91 × 10^-21**;
-- FDR 5%: **9 wet-recruited species**, **3 dry-retained species**.
-
-Examples of wet-recruited taxa:
-- *Gastrophryne carolinensis* — wet gain share 0.734;
-- *Pseudacris maculata* — 0.685;
-- *Hyla squirella* — 0.682;
-- *Pseudacris ocularis* — 0.657;
-- *Scaphiopus holbrookii* — 0.653.
-
-Examples of dry-retained taxa:
-- *Hyla cinerea* — wet gain share 0.408;
-- *Lithobates palustris* — 0.430;
-- *Lithobates catesbeianus* — 0.430.
+Therefore body size cannot be the headline explanation. The pooled association may reflect body size, clade, habitat, breeding strategy, or correlated traits.
 
 ## Ecological interpretation
 
-The strongest emerging interpretation is:
+The most defensible interpretation is not classical “environmental filtering,” because these data do not show establishment or persistence.
 
-> **Rainfall acts as a short-term environmental filter on the active frog assemblage. Wetter conditions increase active-species richness, but they do so through species-selective recruitment and compositional reassembly rather than a uniform rise in calling by the same community.**
+Use:
 
-Natural-history literature gives a plausible trait axis for follow-up: several wet-recruited taxa are associated with temporary/ephemeral breeding waters or rain-triggered breeding, whereas several dry-retained taxa use longer-hydroperiod or permanent waters. This trait explanation is currently **hypothesis-generating** and should be tested explicitly before it becomes a headline claim.
+> **rainfall-pulse reassembly of the realized active assemblage**
 
-## Relation to the existing decomposition
+or:
 
-The earlier NAAMP decomposition now supports, rather than defines, the ecological story:
+> **species-selective short-term community reassembly**
 
-- rain increases the number of active sampling units;
-- rain increases run-level active species richness;
-- within-active-stop multiplicity and residual co-calling do not strengthen detectably;
-- matched-route composition analysis shows that the expanded active assemblage is also taxonomically reorganized.
+This is fully ecological while respecting the behavioural timescale of the data.
 
-Together these results shift the paper from a detection/inference story to **pulse-driven community assembly**.
+## General contribution
 
-## Current candidate ecological claim
+Community assembly is usually discussed over persistent spatial gradients or longer-term turnover. These data show that a behaviourally realized community can change membership over short environmental contrasts, even within the same sites and seasonal windows.
 
-> **Short rainfall pulses increase frog active-community richness while selectively reassembling species composition, revealing a dynamic community filter rather than a uniform activation response.**
+The surprising result is:
+
+> **A rainfall pulse does not simply turn up the volume on the same frog community; it changes which species make up the active community.**
