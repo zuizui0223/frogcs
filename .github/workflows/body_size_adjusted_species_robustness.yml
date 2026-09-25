@@ -1,0 +1,38 @@
+name: frogcs body-size adjusted-species robustness
+
+on:
+  push:
+    branches:
+      - revision/rainfall-community-filter-v1
+    paths:
+      - "NAAMP_BODY_SIZE_ADJUSTED_SPECIES_ROBUSTNESS_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_body_size_adjusted_species_robustness.py"
+      - ".github/workflows/body_size_adjusted_species_robustness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  size-adjusted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Recompute species response
+        run: python scripts/run_naamp_species_pulse_heterogeneity.py
+      - name: Recompute adjusted species response
+        run: python scripts/run_naamp_species_pulse_adjusted_robustness.py
+      - name: Run frozen body-size robustness
+        run: python scripts/run_naamp_body_size_adjusted_species_robustness.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-body-size-adjusted-species-v0-1
+          path: NAAMP_BODY_SIZE_ADJUSTED_SPECIES_ROBUSTNESS_RECEIPT_V0_1.json
+          if-no-files-found: error
