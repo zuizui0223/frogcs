@@ -34,6 +34,11 @@ jobs:
       - name: Verify figures are deterministic
         run: git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
 
+      - name: Dry-run DOI finalization on generated copy
+        run: |
+          python scripts/finalize_archive_doi.py --doi 10.9999/frogcs.test --output build/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL_TEST.md
+
       - name: Verify frozen scientific inputs against import manifest
         run: |
           python - <<'PY'
@@ -66,4 +71,7 @@ jobs:
             JAE_TITLE_PAGE_V0_1.template.md
             figures/*.svg
             submission/*.md
+            submission/*.yml
+            submission/*.json
+            submission/CITATION.cff.template
           if-no-files-found: error
