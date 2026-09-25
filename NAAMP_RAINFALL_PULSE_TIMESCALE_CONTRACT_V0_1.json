@@ -1,0 +1,100 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_rainfall_pulse_timescale_v0_1",
+  "status": "exposure_bin_and_model_contract_frozen_before_timescale_effect_readback",
+  "ecological_question": "Over what number of days after rain is the active-community richness and compositional reassembly signal detectable?",
+  "source": {
+    "runs": "Reuse the 7,848 complete, temperature-qualified NAAMP runs from NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json.",
+    "species_sets": "CallingIndex 1–3 species present at any of the 10 sampled stops.",
+    "audited_days_since_rain": "Publisher range 0–180; prior outcome-blind audit: median 1 day, 75th percentile 3 days, 95th percentile 7 days."
+  },
+  "recency_bins": {
+    "rule": "Bins are defined from the previously opened exposure distribution only, before outcome readback for this timescale analysis.",
+    "levels": [
+      {
+        "label": "day0",
+        "days": [
+          0,
+          0
+        ]
+      },
+      {
+        "label": "day1",
+        "days": [
+          1,
+          1
+        ]
+      },
+      {
+        "label": "days2_3",
+        "days": [
+          2,
+          3
+        ]
+      },
+      {
+        "label": "days4_7",
+        "days": [
+          4,
+          7
+        ]
+      },
+      {
+        "label": "days8plus",
+        "days": [
+          8,
+          180
+        ]
+      }
+    ],
+    "ordered": [
+      "day0",
+      "day1",
+      "days2_3",
+      "days4_7",
+      "days8plus"
+    ],
+    "dry_reference": "days8plus"
+  },
+  "primary_run_level_model": {
+    "response": "active species richness across the complete 10-stop run",
+    "formula": "richness ~ C(recency_bin, Treatment(reference='days8plus')) + mean_temp_c + bs(doy, df=5, degree=3) + SurveyYear + C(route_season_stratum)",
+    "route_season_stratum": "State × RouteNumber × RunNumber",
+    "covariance": "cluster robust by State × RouteNumber",
+    "estimands": "Adjusted richness difference for day0, day1, days2_3, and days4_7 relative to days8plus.",
+    "minimum_per_bin": 100,
+    "interpretation": "Maps the duration of the community-richness pulse while holding route and seasonal sampling window fixed."
+  },
+  "matched_dry_anchor_analysis": {
+    "pair_source": "Reuse adjacent-observed-year State × RouteNumber × RunNumber pairs from NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json.",
+    "eligibility": "One member has DaysSinceRain >=8 and the other has DaysSinceRain <8; orient the <8-day member as recent and >=8-day member as dry anchor.",
+    "recent_bin": [
+      "day0",
+      "day1",
+      "days2_3",
+      "days4_7"
+    ],
+    "responses": [
+      "richness_recent_minus_anchor",
+      "Simpson turnover between recent and anchor assemblages",
+      "nestedness-resultant dissimilarity",
+      "recent-only species count",
+      "anchor-only species count"
+    ],
+    "model": "response ~ C(recent_bin) + temperature_difference + day_of_year_difference + year_gap + C(State) + C(RunNumber), with no common dry-reference coefficient because each row is already a recent-vs->=8d contrast.",
+    "covariance": "cluster robust by State × RouteNumber",
+    "sensitivity": "Repeat on exact consecutive-year anchor pairs only."
+  },
+  "prespecified_timescale_summary": {
+    "richness_pulse_end": "The latest recency bin among day0, day1, days2_3, days4_7 whose adjusted richness contrast versus days8plus has a 95% CI entirely above zero, requiring all earlier bins to have non-negative point estimates. If this continuity condition fails, report 'non-monotonic/undefined' rather than selecting a favorable bin.",
+    "compositional_decay": "Report adjusted turnover estimates by recent bin without threshold-based cherry-picking.",
+    "no_half_life_fit": "No exponential half-life or flexible breakpoint model is permitted in v0.1."
+  },
+  "boundaries": [
+    "DaysSinceRain is programme-reported rain recency, not rainfall amount.",
+    "The analysis identifies an ecological timescale of acoustic-community response, not physiological recovery.",
+    "Active-community richness/composition reflect calling participation, not occupancy, abundance, colonization or extinction.",
+    "This is a post-opening ecological extension; bin definitions are frozen before their outcome effects are read.",
+    "No additional recency cutpoints may be introduced after readback in this analysis family."
+  ]
+}
