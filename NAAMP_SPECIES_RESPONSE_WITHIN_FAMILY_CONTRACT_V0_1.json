@@ -1,0 +1,45 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_species_response_within_family_heterogeneity_v0_1",
+  "status": "post_species_discovery_family_structure_test_frozen_before_readback",
+  "purpose": "Determine whether adjusted species-specific wet-versus-dry responses are reducible to broad taxonomic family differences or remain heterogeneous within families.",
+  "adjusted_response_source": {
+    "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "fixed_species_family": 29,
+    "estimable_species": 29,
+    "total_heterogeneity_Q": 144.01,
+    "total_heterogeneity_df": 28,
+    "total_heterogeneity_p": 1.46e-17
+  },
+  "family_source": {
+    "dataset": "AmphiBIO v1",
+    "mirror_repository": "rdmpage/amphibio",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "file": "AmphiBIO_v1.csv",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87",
+    "taxonomy_rule": "Reuse exactly the existing exact/frozen-genus-alias matching; no new aliases."
+  },
+  "eligible_species": "Species with an estimable adjusted response, a positive finite response SE, and an unambiguous AmphiBIO family assignment.",
+  "decomposition": {
+    "weights": "inverse squared adjusted-response SE",
+    "total_Q": "sum_i w_i (theta_i - grand_weighted_mean)^2",
+    "within_family_Q": "sum_f sum_i_in_f w_i (theta_i - family_weighted_mean_f)^2",
+    "between_family_Q": "total_Q - within_family_Q",
+    "df_within": "N - K families",
+    "df_between": "K - 1",
+    "reference": "chi-square approximation"
+  },
+  "family_specific": {
+    "rule": "For each family with >=3 eligible species, report Cochran Q around that family's weighted mean.",
+    "no_family_selection_after_readback": true
+  },
+  "prediction": {
+    "P1": "If within-family Q is significant, species-selective rainfall response is not reducible to broad family-level differences.",
+    "P2": "If only between-family Q is significant, broad clade structure may account for most selectivity."
+  },
+  "boundaries": [
+    "Taxonomic family is a coarse phylogenetic proxy, not a phylogenetic comparative model.",
+    "This is a post-opening structure test, not an original confirmatory hypothesis.",
+    "No causal rainfall claim."
+  ]
+}
