@@ -1,0 +1,81 @@
+name: frogcs scientific revision audits
+
+on:
+  push:
+    branches:
+      - revision/shared-activation-v1
+    paths:
+      - "NAAMP_JOINT_WEATHER_ROBUSTNESS_CONTRACT_V0_1.json"
+      - "NAAMP_MECHANISM_DECOMPOSITION_CONTRACT_V0_1.json"
+      - "NAAMP_H3_SPECIFICATION_REPAIR_CONTRACT_V0_1.json"
+      - "NAAMP_DAYS_SINCE_RAIN_QC_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_joint_weather_robustness.py"
+      - "scripts/run_naamp_mechanism_decomposition.py"
+      - "scripts/run_naamp_h3_specification_repair.py"
+      - "scripts/run_naamp_days_since_rain_qc.py"
+      - ".github/workflows/revision_science_audits.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  joint-weather:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python scripts/run_naamp_joint_weather_robustness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-joint-weather-v0-1
+          path: frog_naamp_joint_weather_robustness_v0_1.json
+          if-no-files-found: error
+
+  activation-decomposition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python scripts/run_naamp_mechanism_decomposition.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-activation-decomposition-v0-1
+          path: frog_naamp_activation_overlap_decomposition_v0_1.json
+          if-no-files-found: error
+
+  h3-repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python scripts/run_naamp_h3_specification_repair.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-h3-specification-repair-v0-1
+          path: frog_naamp_h3_specification_repair_v0_1.json
+          if-no-files-found: error
+
+  rain-qc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy
+      - run: python scripts/run_naamp_days_since_rain_qc.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-days-since-rain-qc-v0-1
+          path: frog_naamp_days_since_rain_qc_v0_1.json
+          if-no-files-found: error
