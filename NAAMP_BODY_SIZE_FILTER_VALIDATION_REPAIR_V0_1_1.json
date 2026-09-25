@@ -1,0 +1,27 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_body_size_filter_independent_validation_v0_1_1",
+  "status": "implementation_repair_frozen_after_nonestimable_v0_1_before_repaired_svl_readback",
+  "trigger": {
+    "workflow_run": 36124292982,
+    "artifact_id": 10859871389,
+    "issue": "Huang Anura schema was frozen as separate Genus and Species columns, but v0.1 implementation normalized Species alone as a binomial. This produced only 9 matches and made the validation non-estimable.",
+    "effect_readback_opened": false,
+    "reason": "Primary/adult/family models were not estimable; no Huang SVL coefficient was produced."
+  },
+  "repair": {
+    "taxon_name_rule": "Construct source binomial as normalized Genus + Species when Species does not already begin with Genus and contains fewer than two tokens; otherwise retain normalized Species.",
+    "exact_match_order": "Unchanged from v0.1: exact normalized binomial, then frozen genus alias only.",
+    "aliases": "Unchanged",
+    "body_size_metric": "Unchanged: SVL only.",
+    "models": "Unchanged",
+    "minimum_matched_species": 15
+  },
+  "prohibited": [
+    "no new morphology traits",
+    "no changed effect response",
+    "no changed minimum N",
+    "no new effect-informed taxonomy aliases",
+    "no threshold relaxation"
+  ]
+}
