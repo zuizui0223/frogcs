@@ -1,0 +1,69 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_pulse_nested_recruitment_v0_1",
+  "status": "ecological_extension_frozen_before_effect_readback",
+  "ecological_question": "Does recent rainfall expand the acoustically active frog community by recruiting additional species around a persistent route-level core, or by replacing species through turnover?",
+  "biological_hypothesis": "Rainfall acts as a short environmental pulse that relaxes constraints on reproductive acoustic activity, producing nested expansion of the active community rather than wholesale compositional turnover.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "eligibility": {
+    "years": [
+      2001,
+      2015
+    ],
+    "unified_protocol": "1",
+    "sampled_stops": "exactly 10 non-skipped stops",
+    "rain": "numeric DaysSinceRain within publisher range [0,180]",
+    "temperature": ">=8 valid stop temperatures and run mean in [-10,45] C",
+    "survey_date": "parseable",
+    "species_presence": "CallingIndex in {1,2,3}"
+  },
+  "pairing": {
+    "stratum": "State × RouteNumber × RunNumber",
+    "rule": "Within each stratum, sort eligible runs by SurveyYear and pair adjacent observed years. A run may contribute to at most two adjacent pairs.",
+    "orientation": "For pairs with unequal DaysSinceRain, define the run with lower DaysSinceRain as the wetter run and the other as the drier run. Equal-rain pairs are excluded.",
+    "primary_pairs": "all adjacent observed-year pairs",
+    "sensitivity": "pairs with SurveyYear gap exactly 1"
+  },
+  "predictors": {
+    "rain_contrast": "log1p(DaysSinceRain_drier) - log1p(DaysSinceRain_wetter), always >0",
+    "temp_difference": "mean_temp_c_wetter - mean_temp_c_drier",
+    "doy_difference": "doy_wetter - doy_drier",
+    "year_gap": "SurveyYear_later - SurveyYear_earlier"
+  },
+  "community_metrics": {
+    "richness_gain": "active_species_richness_wetter - active_species_richness_drier",
+    "shared": "number of species active in both runs",
+    "wet_only": "number active only in wetter run",
+    "dry_only": "number active only in drier run",
+    "sorensen_dissimilarity": "(wet_only + dry_only)/(2*shared + wet_only + dry_only)",
+    "simpson_turnover": "min(wet_only,dry_only)/(shared + min(wet_only,dry_only))",
+    "nestedness_component": "sorensen_dissimilarity - simpson_turnover",
+    "gain_share": "wet_only/(wet_only + dry_only), defined when discordant species >0",
+    "dry_core_retention": "shared/(shared + dry_only), defined when drier-run richness >0"
+  },
+  "primary_models": {
+    "richness_gain": "OLS with cluster-robust SE by State:RouteNumber; richness_gain ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "nestedness_component": "OLS with same predictors and clustering",
+    "simpson_turnover": "OLS with same predictors and clustering"
+  },
+  "descriptive_support": {
+    "gain_loss_balance": "Report total wet_only and dry_only counts across pairs and mean gain_share. This is descriptive because species discordances are not independent.",
+    "dry_core_retention": "Report mean and median retention of drier-run active species in wetter runs."
+  },
+  "prediction": {
+    "P1": "Greater rainfall contrast predicts positive richness_gain.",
+    "P2": "Greater rainfall contrast predicts increased nestedness_component.",
+    "P3": "Greater rainfall contrast does not require increased simpson_turnover; a null or weaker turnover slope together with P1/P2 supports nested expansion.",
+    "P4": "Across matched pairs, wetter runs retain a large fraction of the drier-run active species while adding more species than they lose."
+  },
+  "interpretation_boundary": [
+    "This analysis concerns acoustically active community composition, not census abundance or occupancy.",
+    "Calling activity is a reproductive-behaviour proxy and does not by itself establish breeding success.",
+    "The ecological extension is post-opening relative to the original rain endpoint and is not part of the original confirmatory family.",
+    "No causal rainfall claim is authorized."
+  ]
+}
