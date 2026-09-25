@@ -74,11 +74,21 @@ def within_route_ols_species(sp: str,train: pd.DataFrame,sets: dict):
     pos_ids={rid for rid,spp in sets.items() if sp in spp}
     pos_train=train[train.RunID.astype(str).isin(pos_ids)]
     routes=set(pos_train.route_cluster.astype(str))
+    if len(routes)==0:
+        return {
+            "species":sp,"estimable":False,
+            "n_runs":0,"n_routes":0,"positive_runs":0,"negative_runs":0,
+            "reason":"no_training_opportunity_route"
+        }
     x=train[train.route_cluster.astype(str).isin(routes)].copy()
 
-    x["present"]=x.RunID.astype(str).map(lambda rid:int(sp in sets[rid]))
+    present_values=np.asarray(
+        [1 if sp in sets[str(rid)] else 0 for rid in x.RunID.astype(str).tolist()],
+        dtype=np.int64
+    )
+    x["present"]=present_values
     n=int(len(x));nr=int(x.route_cluster.nunique())
-    npos=int(x["present"].sum());nneg=int(n-npos)
+    npos=int(present_values.sum());nneg=int(n-npos)
     if nr<MIN_TRAIN_ROUTES or n<MIN_TRAIN_RUNS or npos<MIN_TRAIN_POS or nneg<MIN_TRAIN_NEG:
         return {
             "species":sp,"estimable":False,
