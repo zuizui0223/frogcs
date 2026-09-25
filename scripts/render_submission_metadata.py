@@ -92,6 +92,9 @@ def validate(m: dict, strict: bool, stage: str) -> dict:
     approvals=m.get("approvals") or {}
     if strict:
         placeholders=placeholder_paths(m)
+        if stage == "initial":
+            archive_only={"repository.license","repository.archive_doi"}
+            placeholders=[p for p in placeholders if p not in archive_only]
         require(not placeholders, "unresolved placeholders: " + ", ".join(placeholders))
         require(bool(ca.get("email")), "corresponding author email required")
         require("@" in ca.get("email",""), "corresponding author email is invalid")
