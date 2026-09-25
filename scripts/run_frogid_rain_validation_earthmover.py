@@ -463,7 +463,7 @@ def main():
 
     ds.close()
     out=Path("frog_frogid_rain_validation_earthmover_v0_2.json")
-    out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\\n",encoding="utf-8")
+    out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,indent=2,sort_keys=True))
 
 
