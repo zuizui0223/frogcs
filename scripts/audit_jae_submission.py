@@ -3,8 +3,8 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[3]
-BASE=ROOT/"incubator"/"frog_chorus_synchrony"
+ROOT=Path(__file__).resolve().parents[1]
+BASE=ROOT
 MS=BASE/"MANUSCRIPT_JAE_V0_3.md"
 text=MS.read_text(encoding="utf-8")
 
