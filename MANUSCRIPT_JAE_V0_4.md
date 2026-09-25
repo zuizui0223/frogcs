@@ -30,8 +30,6 @@ The original analysis programme contained four hypotheses: greater multispecies 
 
 ## Materials and Methods
 
-## Materials and Methods
-
 ### NAAMP data and standardized acoustic response
 
 We used the USGS North American Amphibian Monitoring Program data release for the eastern and central United States (Foreman, Grant, & Weir, 2017; DOI 10.5066/F7G44NG0). Analyses were restricted to the unified-protocol period 2001–2015. NAAMP routes comprised repeated wetland-associated stops surveyed acoustically for 5 min. Publisher metadata define CallingIndex values 1–3 as positive calling states.
