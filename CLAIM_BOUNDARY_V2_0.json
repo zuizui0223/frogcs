@@ -1,0 +1,74 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "2.0",
+  "status": "submission_claim_boundary_after_pre_submission_repair",
+  "article_title": "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations",
+  "supported_claims": [
+    "Across independent North American and Australian acoustic monitoring systems, more recent rainfall is associated with a greater probability of multispecies frog calling in short observation units.",
+    "In NAAMP, the rain association remains negative after temperature adjustment and after additional nonlinear day-of-year adjustment.",
+    "Within-space diagnostics in NAAMP and FrogID retain the same rain direction, so static spatial differences in local species pools are insufficient to explain the association.",
+    "In NAAMP, more recent rain is associated with greater acoustic activation and a larger acoustically active species pool.",
+    "In NAAMP, rain does not detectably strengthen multispecies calling conditional on acoustic activity, observed-minus-independence residual co-calling, mean pairwise excess covariance, or pairwise network density.",
+    "The hierarchy-corrected seasonal-shoulder interaction remains unsupported."
+  ],
+  "interpretation": {
+    "strongest": "The NAAMP multispecies rainfall signal is activation-dominated: broader acoustic participation is detected without detectable strengthening of residual co-calling association.",
+    "cross_system_limit": "FrogID independently validates the raw event-level multispecies rainfall association, not the activation-versus-residual-association decomposition.",
+    "general_implication": "Multispecies co-activity should not by itself be interpreted as synchrony, facilitation, or temporal-niche reorganization."
+  },
+  "prohibited_claims": [
+    "rainfall causes broader participation",
+    "rainfall synchronizes frog communities",
+    "rainfall compresses temporal niches",
+    "FrogID conditioning on at least one caller rules out independent species activation",
+    "null residual diagnostics prove statistical independence",
+    "null residual diagnostics prove there are no interactions",
+    "reviewer-motivated pool-richness or independence-residual diagnostics were preregistered",
+    "the repaired H3 result is a new preregistered endpoint",
+    "NAAMP and FrogID odds ratios estimate the same population parameter"
+  ],
+  "evidence_hierarchy": {
+    "original_contract_frozen": [
+      "NAAMP primary rain-recency endpoint",
+      "NAAMP temperature and original seasonal-shoulder secondary endpoints",
+      "NAAMP pairwise-network H4",
+      "FrogID independent event-level rainfall validation"
+    ],
+    "post_opening_pre_specified_robustness": [
+      "NAAMP joint temperature/day-of-year robustness",
+      "NAAMP activation versus conditional-overlap decomposition",
+      "within-route and within-ERA5-cell diagnostics"
+    ],
+    "reviewer_motivated_post_opening": [
+      "NAAMP active-pool richness",
+      "NAAMP observed-minus-independence residual",
+      "NAAMP mean pairwise excess covariance",
+      "H3 hierarchy repair",
+      "DaysSinceRain value audit",
+      "FrogID eventTime/timezone semantics audit and repair"
+    ]
+  },
+  "key_numbers": {
+    "naamp_primary_or": 0.969,
+    "naamp_primary_p": 0.0388,
+    "naamp_complete10_p": 0.058,
+    "naamp_doy_adjusted_rain_or": 0.9462275818456292,
+    "naamp_doy_adjusted_rain_p": 0.0005439333315429069,
+    "frogid_timezone_repaired_or": 0.8529448645127664,
+    "frogid_timezone_repaired_p": 1.1879001000920188e-24,
+    "naamp_activation_or": 0.9041073769675746,
+    "naamp_activation_p": 4.633106568630802e-8,
+    "naamp_conditional_overlap_or": 0.9876200014571157,
+    "naamp_conditional_overlap_p": 0.401892454703212,
+    "active_pool_beta": -0.01872496213277167,
+    "active_pool_p": 0.0001920622744992549,
+    "independence_residual_beta": 0.0008757826576161237,
+    "independence_residual_p": 0.38902161538454694,
+    "pair_covariance_beta": 0.0006173910398944735,
+    "pair_covariance_p": 0.20479266356365566,
+    "network_density_p": 0.7243629701236499,
+    "repaired_h3_p": 0.06975106907085477
+  },
+  "original_primary_replaced": false,
+  "causal_claim_authorized": false
+}
