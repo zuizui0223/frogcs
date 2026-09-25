@@ -1,33 +1,29 @@
 {
   "project": "frog-chorus-synchrony",
-  "version": "2.1",
-  "status": "submission_claim_boundary_after_conditioning_and_shuffle_revision",
+  "version": "2.0",
+  "status": "submission_claim_boundary_after_pre_submission_repair",
   "article_title": "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations",
   "supported_claims": [
-    "In NAAMP, more recent rainfall is associated with a greater probability of multispecies calling across all standardized 5-min stops, and the rain association remains negative after temperature and nonlinear day-of-year adjustment.",
-    "In FrogID, among recordings already containing at least one calling species, more recent rainfall is associated with a greater probability of multiple calling species.",
-    "The activity-conditioned rainfall component is not consistent across systems: NAAMP conditional multispecies calling is null (OR 0.988, 95% CI 0.959–1.017), whereas FrogID shows a strong conditional association (OR 0.853, 95% CI 0.827–0.879).",
-    "Within each system's native estimand, within-space diagnostics retain the rain direction, so static spatial differences alone are insufficient to explain either association.",
-    "Within NAAMP, more recent rain is associated with a greater probability that standardized stops are acoustically active and with a larger run-level acoustically active species pool.",
-    "Within NAAMP, rain does not detectably strengthen co-calling within already-active stops, observed-minus-independence residual co-calling, fixed-marginal shuffle residual co-calling, mean pairwise excess covariance, or pairwise network density.",
+    "Across independent North American and Australian acoustic monitoring systems, more recent rainfall is associated with a greater probability of multispecies frog calling in short observation units.",
+    "In NAAMP, the rain association remains negative after temperature adjustment and after additional nonlinear day-of-year adjustment.",
+    "Within-space diagnostics in NAAMP and FrogID retain the same rain direction, so static spatial differences in local species pools are insufficient to explain the association.",
+    "In NAAMP, more recent rain is associated with greater acoustic activation and a larger acoustically active species pool.",
+    "In NAAMP, rain does not detectably strengthen multispecies calling conditional on acoustic activity, observed-minus-independence residual co-calling, mean pairwise excess covariance, or pairwise network density.",
     "The hierarchy-corrected seasonal-shoulder interaction remains unsupported."
   ],
   "interpretation": {
-    "strongest": "In standardized NAAMP monitoring, the rainfall-associated multispecies signal is concentrated in broader participation across route-stops and run-level pool breadth, without detectable strengthening of within-active-stop or residual co-calling association.",
-    "cross_system_limit": "FrogID is an activity-conditioned cross-system contrast, not a replication of the NAAMP all-stop estimand. Its strong conditional effect contrasts with the null NAAMP conditional effect and may reflect biological or observation-process differences.",
-    "general_implication": "Multispecies activity should be decomposed into participation, observation conditioning, and residual association before being interpreted as synchrony, facilitation, or temporal-niche reorganization."
+    "strongest": "The NAAMP multispecies rainfall signal is activation-dominated: broader acoustic participation is detected without detectable strengthening of residual co-calling association.",
+    "cross_system_limit": "FrogID independently validates the raw event-level multispecies rainfall association, not the activation-versus-residual-association decomposition.",
+    "general_implication": "Multispecies co-activity should not by itself be interpreted as synchrony, facilitation, or temporal-niche reorganization."
   },
   "prohibited_claims": [
     "rainfall causes broader participation",
     "rainfall synchronizes frog communities",
     "rainfall compresses temporal niches",
-    "FrogID replicates the NAAMP all-stop estimand",
-    "FrogID validates the NAAMP activation-versus-association decomposition",
     "FrogID conditioning on at least one caller rules out independent species activation",
-    "NAAMP and FrogID activity-conditioned effects are consistent",
     "null residual diagnostics prove statistical independence",
     "null residual diagnostics prove there are no interactions",
-    "reviewer-motivated pool-richness, independence-residual, or shuffle diagnostics were preregistered",
+    "reviewer-motivated pool-richness or independence-residual diagnostics were preregistered",
     "the repaired H3 result is a new preregistered endpoint",
     "NAAMP and FrogID odds ratios estimate the same population parameter"
   ],
@@ -47,7 +43,6 @@
       "NAAMP active-pool richness",
       "NAAMP observed-minus-independence residual",
       "NAAMP mean pairwise excess covariance",
-      "NAAMP fixed-marginal within-run shuffle null",
       "H3 hierarchy repair",
       "DaysSinceRain value audit",
       "FrogID eventTime/timezone semantics audit and repair"
@@ -72,17 +67,7 @@
     "pair_covariance_beta": 0.0006173910398944735,
     "pair_covariance_p": 0.20479266356365566,
     "network_density_p": 0.7243629701236499,
-    "repaired_h3_p": 0.06975106907085477,
-    "shuffle_residual_beta": 0.0009332932271213329,
-    "shuffle_residual_ci95": [
-      -0.0010972696895769842,
-      0.00296385614381965
-    ],
-    "shuffle_residual_p": 0.3676710881567309,
-    "naamp_conditional_overlap_ci95_or": [
-      0.9592682637221128,
-      1.01680969147616
-    ]
+    "repaired_h3_p": 0.06975106907085477
   },
   "original_primary_replaced": false,
   "causal_claim_authorized": false
