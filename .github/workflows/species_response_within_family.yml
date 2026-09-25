@@ -1,0 +1,38 @@
+name: frogcs species response within-family heterogeneity
+
+on:
+  push:
+    branches:
+      - revision/rainfall-community-filter-v1
+    paths:
+      - "NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_species_response_within_family.py"
+      - ".github/workflows/species_response_within_family.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  within-family:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Recompute species response
+        run: |
+          python scripts/run_naamp_species_pulse_heterogeneity.py
+          python scripts/run_naamp_species_pulse_adjusted_robustness.py
+      - name: Run frozen within-family heterogeneity test
+        run: python scripts/run_naamp_species_response_within_family.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-species-response-within-family-v0-1
+          path: NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_RECEIPT_V0_1.json
+          if-no-files-found: error
