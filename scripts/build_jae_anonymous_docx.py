@@ -179,7 +179,7 @@ def build():
                 set_run_font(run)
 
     props = doc.core_properties
-    props.title = "Recent rainfall predicts greater short-window co-calling in frog communities across continents"
+    props.title = "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations"
     props.author = ""
     props.last_modified_by = ""
     props.subject = "Journal of Animal Ecology anonymous main manuscript"
