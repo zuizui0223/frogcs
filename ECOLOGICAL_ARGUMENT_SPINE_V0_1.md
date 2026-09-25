@@ -1,32 +1,29 @@
-# Ecological argument spine v0.1 — rainfall-pulse community filtering
+# Ecological argument spine v0.2 — rainfall-pulse community reassembly
 
 ## Working title
 
 **Rainfall pulses increase frog active-community richness through species-selective reassembly**
 
-Alternative if body-size robustness survives within-family testing:
-
-**Rainfall pulses selectively reassemble frog acoustic communities along a body-size gradient**
-
 ## Biological question
 
-Short-term rainfall effects on frog calling are well known. The ecological question here is different:
+Rainfall-driven frog calling is established. The ecological question is:
 
-> **When rainfall increases community acoustic activity, does it simply activate the same assemblage more strongly, or does it change which species constitute the active community?**
+> **When rainfall increases acoustic activity, does it amplify the same assemblage or rapidly reorganize which species constitute the active community?**
 
-This turns the paper from a weather-detection study into a pulse-driven community-assembly study.
+The paper is therefore about short-timescale community dynamics, not the detection process.
 
-## Empirical design
+## Design
 
-Use standardized NAAMP runs only for the central ecological article.
+Central system: standardized NAAMP only.
 
-For each **State × RouteNumber × RunNumber** stratum:
-- retain complete 10-stop, temperature-qualified runs;
-- pair adjacent observed years;
-- orient each pair as wetter versus drier by DaysSinceRain;
-- compare active species composition within the same route and same seasonal survey window.
+Matched comparison:
+- same State × RouteNumber × RunNumber;
+- complete 10-stop, temperature-qualified runs;
+- adjacent observed years;
+- wetter vs drier orientation from DaysSinceRain;
+- pair-level adjustment for temperature difference, day-of-year difference and year gap.
 
-Primary matched dataset:
+Primary dataset:
 - 4,236 wet–dry pairs;
 - 585 routes;
 - 21 states;
@@ -35,52 +32,47 @@ Primary matched dataset:
 Exact consecutive-year sensitivity:
 - 2,693 pairs.
 
-The matched design holds place and sampling window much more tightly than the original cross-sectional rain model.
+## Claim 1 — wetter matched runs have richer active communities
 
-## Claim 1 — rainfall contrast increases active-community richness
-
-Primary:
-- β(rain contrast → wet-minus-dry richness) = **+0.2859 species**;
-- 95% CI **0.1646 to 0.4072**;
+Primary richness-gain slope:
+- β = **+0.2859 species / unit log-rain contrast**;
+- 95% CI **0.1646–0.4072**;
 - P = **3.81 × 10^-6**.
 
-Exact consecutive years:
+Exact consecutive-year:
 - β = **+0.3009**;
-- 95% CI **0.1447 to 0.4572**;
+- 95% CI **0.1447–0.4572**;
 - P = **1.60 × 10^-4**.
 
-This is not merely “frogs call after rain”: within the same route and seasonal window, the **number of species constituting the active assemblage** increases with rainfall contrast.
+This establishes a community-level response beyond “more total calling”: more species constitute the active assemblage under wetter matched conditions.
 
-## Claim 2 — richer wet assemblages are not simple nested additions
+## Claim 2 — richness gain is not simple nested addition
 
-A pure nested-recruitment model predicts wet assemblage = dry core + extra species.
+Nestedness:
+- primary P = 0.279;
+- exact consecutive-year P = 0.711.
 
-That prediction is not supported:
-- nestedness-component slope: P = 0.279 primary;
-- P = 0.711 exact consecutive-year sensitivity.
-
-Compositional replacement is non-negligible:
-- Simpson turnover slope P = 0.104 primary;
+Turnover:
+- primary β = +0.01264, P = 0.104;
 - exact consecutive-year β = **+0.01840**;
-- 95% CI **0.00470 to 0.03211**;
+- 95% CI **0.00470–0.03211**;
 - P = **0.00850**.
 
-Interpretation:
-> rainfall-associated richness gain is accompanied by **active-community reassembly**, not only species addition.
+Therefore the wet assemblage is not simply the dry assemblage plus extra species. The strict consecutive-year sensitivity supports compositional replacement.
 
-## Claim 3 — reassembly is species-selective
+## Claim 3 — reassembly is strongly species-selective
 
-Raw discordant-pair family:
+Raw species family:
 - 29 eligible species;
-- species × wet/dry heterogeneity χ² = **165.45**, df = 28;
+- χ² = **165.45**, df = 28;
 - P = **1.91 × 10^-21**;
 - FDR 5%: 9 wet-recruited, 3 dry-retained.
 
-Pair-covariate-adjusted species responses:
-- all 29 species estimable;
-- residual heterogeneity Q = **144.01**, df = 28;
+Pair-covariate-adjusted responses:
+- 29/29 estimable;
+- Q = **144.01**, df = 28;
 - P = **1.46 × 10^-17**;
-- raw vs adjusted rank concordance ρ = **0.997**;
+- raw vs adjusted Spearman ρ = **0.997**;
 - FDR 5%: 5 wet-associated, 3 dry-associated.
 
 Adjusted wet-associated examples:
@@ -95,82 +87,72 @@ Adjusted dry-associated:
 - *Lithobates catesbeianus*;
 - *Lithobates palustris*.
 
-This rejects a uniform community-wide activation model.
+This is the strongest evidence against a uniform community-wide activation model.
 
-## Claim 4 — species selectivity follows a body-size gradient
+## Secondary trait result — body size is not the mechanism authority
 
-AmphiBIO exploratory finite trait screen:
-- 26/29 species matched for body size;
-- log body size β = **-0.3353**;
-- 95% CI **-0.4662 to -0.2044**;
-- P = **5.17 × 10^-7**.
+AmphiBIO pooled association:
+- raw species response β(log body size) = **-0.3353**, P = **5.17 × 10^-7**;
+- adjusted species response β = **-0.3670**, P = **1.23 × 10^-6**;
+- Spearman ρ = **-0.517**, P = **0.00687**.
 
-Using pair-covariate-adjusted species responses:
-- β = **-0.3670**;
-- 95% CI **-0.5153 to -0.2187**;
-- P = **1.23 × 10^-6**;
-- Spearman ρ = **-0.5168**, P = **0.00687**.
+But family-stratified permutation:
+- 26 species;
+- 5 families;
+- observed within-family slope = **-0.1889**;
+- 100,000 permutations;
+- two-sided P = **0.314**;
+- negative-tail P = **0.151**.
 
-Leave-one-family-out slopes are negative wherever estimable.
+Therefore:
+> body size is a pooled cross-species correlate, not a family-robust mechanism.
 
-**Pending authority:** within-family permutation test. Until that test closes, body size is a strong secondary result rather than the article title.
+It belongs in a secondary Results paragraph / Supplement, not the title, abstract conclusion or central mechanism.
 
-Ecological mechanism:
-smaller anurans have greater surface-area-to-volume ratios and generally greater mass-specific evaporative water-loss constraints. A rainfall pulse may therefore release hydric constraints more strongly for smaller species, transiently changing the composition of the acoustically active assemblage.
+## Supporting mechanism from earlier decomposition
 
-This is a **hydric-filter hypothesis**, not yet a direct physiological measurement.
-
-## Claim 5 — older participation/association results become mechanism support
-
-The old v0.4 decomposition should move behind the community-assembly story:
-
+The prior NAAMP decomposition remains useful as support:
 - rain increases P(any calling stop);
-- rain increases active-pool richness;
+- rain increases run-level active species richness;
 - P(>=2 | >=1 active) is null;
-- independence residual is null;
+- plug-in residual is null;
 - fixed-marginal shuffle residual is null;
 - pairwise network density is null.
 
-These results support a community-filter interpretation:
-the rainfall response primarily changes **which sampling units and species enter the active assemblage**, not pairwise co-calling structure within active stops.
+This says the rainfall response is expressed more strongly in **active-community participation/membership** than in residual co-calling among already-active species.
 
 ## Role of FrogID
 
-FrogID is no longer a central pillar of the main ecological article.
+FrogID is not required for the main ecology article.
 
-Recommended placement:
-- Supplementary cross-system contrast;
-- brief Discussion paragraph only.
-
-Reason:
-FrogID is conditioned on already-active recordings and estimates a different response. Keeping it central pulls the manuscript back toward observation-process inference, which is not the desired ecological paper.
+Recommended:
+- supplementary contextual analysis only;
+- do not use it to define the ecological claim.
 
 ## Ecological synthesis
 
-The target conclusion is:
+> **Short rainfall pulses are associated with richer but compositionally different active frog assemblages. Species responses are highly non-uniform and remain so after matched-pair environmental adjustment, indicating rapid species-selective reassembly rather than uniform activation of a fixed assemblage.**
 
-> **Rainfall pulses do not simply raise frog acoustic activity uniformly. Within standardized communities, wetter conditions increase active-species richness while selectively changing species membership; smaller-bodied species are disproportionately associated with the wet side of this reassembly.**
+General implication:
 
-More general:
-
-> **Environmental pulses can act as transient trait filters that reorganize the realized active community on timescales much shorter than changes in occupancy or regional species pools.**
+> **Behaviourally realized communities can be reorganized by short environmental pulses on timescales much shorter than occupancy change.**
 
 ## Hard boundaries
 
 Do not claim:
-- rainfall changes occupancy;
-- rainfall changes abundance;
-- wet-only species colonized the route;
-- dry-only species went locally extinct;
-- body size is proven causal;
-- hydroperiod preference is directly measured;
-- breeding success increased;
-- rainfall causality from observational data.
+- rainfall changes occupancy or abundance;
+- wet-only species colonized;
+- dry-only species went extinct;
+- classical environmental filtering through establishment/persistence;
+- body size is a proven or family-robust mechanism;
+- hydroperiod preference is directly tested;
+- rainfall causality;
+- breeding success increased.
 
 Use:
 - acoustically active assemblage;
 - active-community richness;
 - species-selective reassembly;
-- short-term environmental filter;
-- body-size gradient;
-- hydric-filter hypothesis.
+- short environmental pulse;
+- temporal turnover;
+- species-specific wet/dry response.
