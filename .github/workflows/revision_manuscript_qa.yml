@@ -12,6 +12,14 @@ on:
       - "scripts/audit_jae_submission.py"
       - "scripts/build_jae_anonymous_docx.py"
       - "scripts/build_submission_figures.py"
+      - "CLAIM_BOUNDARY_V2_0.json"
+      - "ANALYSIS_PROVENANCE_V0_1.md"
+      - "submission/COVER_LETTER_JAE_V0_2.md"
+      - "submission/NOVELTY_AUDIT_V0_3.md"
+      - "submission/REVIEWER_ATTACK_MATRIX_V0_3.md"
+      - "submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md"
+      - "submission/SUBMISSION_HANDOFF_RC3.md"
+      - "JAE_TITLE_PAGE_V0_1.template.md"
       - ".github/workflows/revision_manuscript_qa.yml"
   workflow_dispatch:
 
@@ -37,6 +45,13 @@ jobs:
           test -s figures/FIGURE_1_DESIGN_V0_1.svg
           test -s figures/FIGURE_2_EFFECTS_V0_1.svg
           test -s figures/FIGURE_3_DECOMPOSITION_V0_1.svg
+      - name: Guard revised framing against superseded claims
+        run: |
+          ! grep -qi "temporal niche compression in frog communities" submission/COVER_LETTER_JAE_V0_2.md
+          ! grep -qi "conditioning.*rules out.*independent" submission/NOVELTY_AUDIT_V0_3.md
+          grep -qi "activation" CLAIM_BOUNDARY_V2_0.json
+          grep -qi "reviewer-motivated" ANALYSIS_PROVENANCE_V0_1.md
+
       - name: Build anonymous revised DOCX
         run: |
           python scripts/build_jae_anonymous_docx.py \
@@ -51,4 +66,12 @@ jobs:
             figures/FIGURE_2_EFFECTS_V0_1.svg
             figures/FIGURE_3_DECOMPOSITION_V0_1.svg
             build/FROG_JAE_ANON_MAIN_V0_4.docx
+            CLAIM_BOUNDARY_V2_0.json
+            ANALYSIS_PROVENANCE_V0_1.md
+            submission/COVER_LETTER_JAE_V0_2.md
+            submission/NOVELTY_AUDIT_V0_3.md
+            submission/REVIEWER_ATTACK_MATRIX_V0_3.md
+            submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md
+            submission/SUBMISSION_HANDOFF_RC3.md
+            JAE_TITLE_PAGE_V0_1.template.md
           if-no-files-found: error
