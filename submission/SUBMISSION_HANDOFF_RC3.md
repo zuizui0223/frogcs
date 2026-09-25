@@ -1,4 +1,4 @@
-# JAE submission handoff — RC3 activation-decomposition revision
+# JAE submission handoff — RC3 conditioning revision
 
 ## Article
 
@@ -8,32 +8,39 @@
 
 ## Core empirical story
 
-1. A raw short-window multispecies rainfall association replicates across NAAMP and FrogID.
-2. The NAAMP rain coefficient persists after temperature and nonlinear day-of-year adjustment.
-3. NAAMP decomposition shows a rain association with any acoustic activity and active species-pool richness.
-4. Rain does not detectably strengthen conditional multispecies calling, independence-residual co-calling, mean pairwise excess covariance, or pairwise network density.
-5. The ecological interpretation is therefore **broader acoustic participation without detectable strengthening of residual association**, not temporal-niche compression.
+1. In NAAMP, recent rain is associated with more multispecies calling across all standardized route-stops and the effect survives temperature and nonlinear day-of-year adjustment.
+2. NAAMP decomposition localizes that signal to **participation breadth**: more route-stops contain any caller and the run-level active species pool is larger after recent rain.
+3. NAAMP shows no detectable rain-related strengthening of species multiplicity within already-active stops, plug-in independence residuals, fixed-marginal shuffle residuals, mean pairwise excess covariance, or pairwise network density.
+4. FrogID is differently conditioned: every analysed recording is already acoustically active. Its strong rain effect on one-versus-multiple species contrasts with the null NAAMP activity-conditioned effect.
+5. Therefore FrogID is a **conditioning contrast**, not a direct replication of the NAAMP all-stop or conditional estimand.
+6. The ecological inference is that multispecies activity should be decomposed into participation, observation conditioning and residual association before being interpreted as synchrony or temporal-niche reorganization.
 
-## Key pre-submission repairs closed
+## Precision / null interpretation
 
-- temperature-adjusted NAAMP rain coefficient recovered and reported;
-- original H3 model-hierarchy defect repaired; H3 remains unsupported;
-- FrogID source described as the exact SHA-pinned ALA snapshot matching Dataset 7.0 temporal scope;
-- FrogID output serialization bug fixed without changing the pinned weather digest construction;
-- FrogID eventTime explicit-offset semantics audited;
-- timezone-aware event date/hour repair completed; effect change negligible;
-- NAAMP DaysSinceRain publisher range and observed values audited;
-- provenance ledger documents contract commits before original effect readbacks;
-- NAAMP spatial/temporal confounding of the 5-min stop is stated as a limitation;
-- small NAAMP primary effect and complete-10-stop P=.058 are retained explicitly.
+- NAAMP activity-conditioned OR = 0.988, 95% CI 0.959–1.017; this excludes the adjusted all-stop OR 0.946 on the same dryness scale.
+- plug-in residual beta = 0.000876, 95% CI -0.00112–0.00287;
+- fixed-marginal shuffle residual beta = 0.000933, 95% CI -0.00110–0.00296;
+- the rain-direction residual bounds are about 8% of the within-route all-stop coefficient magnitude (-0.01367).
 
-## Scientific provenance
+These are **descriptive precision comparisons, not formal equivalence tests**, because response definitions and subsets differ.
 
-Original effect families are separated from reviewer-motivated diagnostics in:
-- `ANALYSIS_PROVENANCE_V0_1.md`
-- `CLAIM_BOUNDARY_V2_0.json`
+## Key repairs closed
 
-The post-opening diagnostics cannot replace or retroactively redefine the original primary endpoints.
+- temperature-adjusted NAAMP rain coefficient recovered;
+- H3 hierarchy defect repaired; conclusion remains unsupported;
+- DaysSinceRain range/null codes audited;
+- FrogID source identity reconciled to the SHA-pinned ALA snapshot;
+- FrogID timezone-aware local date/hour repair completed;
+- FrogID JSON serialization bug corrected;
+- NAAMP stop interpreted as a joint spatial/temporal sampling unit;
+- plug-in independence diagnostic supplemented with a 1,024-permutation/run fixed-marginal shuffle null;
+- public provenance separates original frozen endpoints from reviewer-motivated post-opening diagnostics.
+
+## Scientific authority
+
+- historical RC3 claim boundary: `CLAIM_BOUNDARY_V2_0.json`
+- current submission authority: `CLAIM_BOUNDARY_V2_1.json`
+- provenance: `ANALYSIS_PROVENANCE_V0_1.md`
 
 ## Submission files
 
@@ -45,20 +52,19 @@ The post-opening diagnostics cannot replace or retroactively redefine the origin
 - `submission/NOVELTY_AUDIT_V0_3.md`
 - `submission/REVIEWER_ATTACK_MATRIX_V0_3.md`
 - `submission/JAE_SCIENTIFIC_ADAPTATION_V0_2.md`
-- generated anonymized DOCX from revision manuscript QA
 
 ## Remaining human-only blockers
 
 - final author set/order;
-- affiliations and corresponding-author contact details;
+- affiliations and corresponding-author details;
 - CRediT roles;
 - funding / acknowledgements;
 - conflict-of-interest statement;
-- statement on inclusion;
+- Statement on Inclusion;
 - all-author approval / authorship completeness / no simultaneous submission.
 
-An archive DOI is **not required for initial double-anonymized submission**; the manuscript currently states the intended persistent archiving plan. Public DOI finalization is deferred to the archive/finalization stage.
+An archive DOI is not required for initial double-anonymized submission.
 
 ## No further ecological outcome search
 
-No additional endpoint hunting is authorized for RC3. Any further analysis must be a response to a concrete reviewer/editor request or a documented data/implementation defect.
+No additional endpoint hunting is authorized. Further analyses require a concrete reviewer/editor request or a documented data/implementation defect.
