@@ -1,0 +1,14 @@
+{
+  "project": "frog-chorus-synchrony",
+  "repair_version": "h3_specification_repair_v0_1",
+  "status": "post_opening_specification_repair_frozen_before_reanalysis",
+  "problem": "The original seasonal-shoulder interaction model included rain_z and rain_z:shoulder but omitted the shoulder main effect, violating the hierarchical interaction principle. The original H3 p-value is therefore not used as confirmatory evidence in the revised manuscript.",
+  "original_formula": "prop ~ rain_z + rain_z:shoulder + C(State) + C(RunNumber) + C(RouteType) + year_z",
+  "repaired_primary_formula": "prop ~ rain_z * shoulder + C(State) + C(RunNumber) + C(RouteType) + year_z",
+  "four_window_sensitivity_formula": "prop ~ rain_z * shoulder + C(State) + C(RouteType) + year_z",
+  "four_window_rationale": "Within states having exactly four survey windows, shoulder is deterministically run 1 or 4 and is collinear with C(RunNumber); the sensitivity therefore removes C(RunNumber) while retaining the shoulder main effect.",
+  "reported_term": "rain_z:shoulder",
+  "interpretation": "Specification repair / robustness only. It cannot rescue or upgrade the original H3 confirmatory status.",
+  "source_pins_unchanged": true,
+  "causal_language_forbidden": true
+}
