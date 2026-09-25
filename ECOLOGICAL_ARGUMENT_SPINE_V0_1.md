@@ -87,6 +87,16 @@ Adjusted dry-associated:
 - *Lithobates catesbeianus*;
 - *Lithobates palustris*.
 
+Family-structure decomposition among 26 matched species:
+- total Q = **141.68**, df = 25, P = **2.84 × 10^-18**;
+- between-family Q = **67.80**, df = 4, P = **6.62 × 10^-14**;
+- within-family Q = **73.88**, df = 21, P = **8.28 × 10^-8**;
+- **52.1%** of total heterogeneity remains within families;
+- Hylidae: Q = **44.97**, df = 13, P = **2.12 × 10^-5**;
+- Ranidae: Q = **23.81**, df = 6, P = **5.65 × 10^-4**.
+
+Thus broad family identity explains part of the response, but species selectivity remains strong inside the two best-represented families.
+
 This is the strongest evidence against a uniform community-wide activation model.
 
 ## Secondary trait result — body size is not the mechanism authority
