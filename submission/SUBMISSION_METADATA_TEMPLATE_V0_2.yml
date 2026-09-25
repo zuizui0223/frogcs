@@ -1,0 +1,52 @@
+# Canonical human metadata for the JAE submission.
+# Fill locally or on a private branch. Do not commit private contact details to a public branch unless intended.
+
+manuscript:
+  title: "Recent rainfall predicts greater short-window co-calling in frog communities across continents"
+  target_journal: "Journal of Animal Ecology"
+  article_type: "Research Article"
+
+authors:
+  - order: 1
+    given_names: "[GIVEN NAMES]"
+    family_names: "[FAMILY NAMES]"
+    display_name: "[FULL DISPLAY NAME]"
+    affiliation_ids: ["A1"]
+    orcid: ""
+    credit_roles:
+      - "[CRediT ROLE]"
+
+affiliations:
+  A1:
+    institution: "[INSTITUTION]"
+    department: "[DEPARTMENT]"
+    city: "[CITY]"
+    country: "[COUNTRY]"
+
+corresponding_author:
+  author_order: 1
+  email: "[EMAIL]"
+  postal_address: "[POSTAL ADDRESS]"
+
+funding:
+  - funder: "None"
+    grant_number: ""
+
+acknowledgements: "None"
+conflict_of_interest: "[STATEMENT]"
+
+approvals:
+  all_authors_approve_submission: false
+  all_entitled_authors_included: false
+  not_under_consideration_elsewhere: false
+
+repository:
+  url: "https://github.com/zuizui0223/frogcs"
+  license: "[CONFIRM LICENSE]"
+  archive_doi: ""
+
+source_data:
+  - name: "NAAMP"
+    doi: "10.5066/F7G44NG0"
+  - name: "FrogID"
+    doi: "10.15468/wazqft"
