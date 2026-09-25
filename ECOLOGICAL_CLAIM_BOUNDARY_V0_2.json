@@ -1,0 +1,68 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "ecology-0.4",
+  "status": "v0_6_temporally_predictive_reassembly_submission_candidate",
+  "working_title": "Species-specific rainfall sensitivity predicts short-term reassembly of active frog communities",
+  "primary_system": "NAAMP",
+  "central_claims": [
+    "Within matched route × seasonal-window comparisons, wetter runs contain more acoustically active species and richness gain increases with rainfall contrast.",
+    "Rainfall-associated richness gain is not simple nested addition; exact consecutive-year comparisons show increased compositional turnover with rainfall contrast.",
+    "Species wet-versus-dry responses are strongly heterogeneous after pair-level temperature, date, rain-contrast and year-gap adjustment, and more than half of family-matched heterogeneity remains within families.",
+    "Species-specific recent-rain sensitivity estimated only from 2001–2007 predicts adjusted wet-versus-dry recruitment estimated independently from 2008–2015.",
+    "The temporal prediction persists after family-stratified permutation, supporting persistent species-specific rain-response differences rather than only broad family structure."
+  ],
+  "mechanism_authority": {
+    "behavioral_trait": "rain_pulse_sensitivity = negative of the within-route dryness slope for run-level acoustic presence during 2001–2007",
+    "validation_response": "adjusted wet-versus-dry species recruitment log odds during 2008–2015",
+    "overlap_species": 27,
+    "beta_per_1sd_early_sensitivity": 0.2843699134346247,
+    "ci95": [
+      0.14068292090308285,
+      0.4280569059661665
+    ],
+    "p_value": 0.00010490792632491435,
+    "spearman_rho": 0.45848595848595847,
+    "spearman_p": 0.01616156205412432,
+    "family_permutation": {
+      "n_species": 24,
+      "n_families": 5,
+      "observed_within_family_slope": 0.19334214971154143,
+      "positive_tail_p": 0.015639843601563983,
+      "two_sided_p": 0.034409655903440965
+    }
+  },
+  "interpretation": "Short rainfall pulses are associated with predictable species-selective reassembly of the acoustically active frog community because species differ persistently in their behavioral sensitivity to recent rain.",
+  "secondary_results": [
+    "Pooled body-size association is strong but does not survive family-stratified permutation and is not the mechanism authority.",
+    "Coarse hydroperiod flags were nonestimable because all matched species carried both temporary and permanent water flags in the collapsed source.",
+    "Breeding-season breadth is unsupported.",
+    "Route-local core/satellite prevalence is unsupported.",
+    "Earlier participation/residual-association decomposition supports membership-level change more than pairwise co-calling change."
+  ],
+  "prohibited": [
+    "rainfall causes occupancy turnover",
+    "rainfall causes colonization or extinction",
+    "rainfall increases breeding success",
+    "rain-pulse sensitivity is a physiological trait",
+    "rainfall response strategy is genetically fixed",
+    "body size is the mechanism",
+    "hydroperiod or breeding-season breadth explains the species response",
+    "all species follow the predictive relationship without exceptions",
+    "training and validation species are independent species samples",
+    "temporal split proves causality",
+    "FrogID replicates the matched NAAMP reassembly result"
+  ],
+  "evidence_status": {
+    "matched_richness": "post-opening ecological extension frozen before readback",
+    "composition_turnover": "same frozen ecological extension",
+    "species_heterogeneity": "separately frozen before species-specific readback",
+    "adjusted_species_robustness": "post-discovery robustness frozen before adjusted readback",
+    "within_family_species_heterogeneity": "post-opening family-structure test frozen before readback",
+    "temporal_rain_sensitivity": "final mechanism slot frozen before effect readback; 2001–2007 training and 2008–2015 validation are disjoint",
+    "body_size": "secondary post-opening trait result; pooled positive evidence but family-stratified mechanism test null",
+    "hydroperiod": "nonestimable in available collapsed trait representation",
+    "breeding_season_breadth": "unsupported",
+    "local_core_satellite": "unsupported"
+  },
+  "no_further_mechanism_hunting": true
+}
