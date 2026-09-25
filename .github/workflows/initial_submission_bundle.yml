@@ -67,7 +67,7 @@ jobs:
           cp figures/FIGURE_2_EFFECTS_V0_1.svg "$out/"
           cp figures/FIGURE_3_DECOMPOSITION_V0_1.svg "$out/"
           cp submission/COVER_LETTER_JAE_V0_2.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_1.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_2.md "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
           This is the initial double-anonymized Journal of Animal Ecology submission bundle.
