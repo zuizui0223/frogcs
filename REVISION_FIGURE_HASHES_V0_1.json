@@ -1,14 +1,14 @@
 {
   "project": "frog-chorus-synchrony",
   "figure_package": "JAE_v0_4_activation_decomposition",
-  "source_qa_run": 36113948458,
-  "source_artifact": 10854350433,
-  "source_artifact_digest": "sha256:b946c971874556b9f3b8049913439d2731a58d6ab6f92117621ba7055fafa947",
-  "source_head_sha": "a8c6bb0251586888eadd1192acfd17e5452eb923",
+  "source_qa_run": 36116345846,
+  "source_artifact": null,
+  "source_artifact_digest": null,
+  "source_head_sha": "50a22063c3561ae4974acbbd4290169cb0345ee6",
   "figures": {
-    "figures/FIGURE_1_DESIGN_V0_1.svg": "0540b4426b8c26c03e842a5d6f67e52083791f067aa68815cd195d39a6cd6de4",
-    "figures/FIGURE_2_EFFECTS_V0_1.svg": "fb897dea5dba9af5c9c29e666817c4930fe34d1585445bdf7be88cf37108b645",
-    "figures/FIGURE_3_DECOMPOSITION_V0_1.svg": "53a461dd59271ea179cf8b047995119e3465d4fef9df58c84f0419272963e79f"
+    "figures/FIGURE_1_DESIGN_V0_1.svg": "fa1119f655df42b0c66814cdd06a31fff0e76ab7451b5f0362a7e2b25cdc9f2f",
+    "figures/FIGURE_2_EFFECTS_V0_1.svg": "f146f1a983cd44dbac723f92ea1e6a3bee2ff1961d31567e6aa9f0540ca26514",
+    "figures/FIGURE_3_DECOMPOSITION_V0_1.svg": "68ab8b0722c438d4b8274d395f016879b011552aaa41b184c4ae8ea815f33389"
   },
-  "rule": "Submission workflows must regenerate all figures and match these SHA-256 values exactly unless a new figure receipt is explicitly versioned after a documented scientific/editorial change."
+  "rule": "Submission workflows must regenerate all figures and match these SHA-256 values exactly unless a new figure receipt is explicitly versioned after a documented scientific/editorial change. These hashes correspond to the conditioning-mismatch + fixed-marginal-shuffle revision."
 }
