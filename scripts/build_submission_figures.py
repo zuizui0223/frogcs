@@ -31,7 +31,7 @@ def fig1():
     el=[]
     el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="108mm" viewBox="0 0 1200 720">')
     el.append('<rect width="1200" height="720" fill="white"/>')
-    el.append(text(60,55,"Figure 1. Independent acoustic systems test the same short-window co-calling prediction",30,"bold"))
+    el.append(text(60,55,"Figure 1. Independent acoustic systems replicate the raw multispecies-calling association",30,"bold"))
 
     # NAAMP
     el.append(rect(55,100,500,235,24,"#f7f7f7"))
@@ -65,7 +65,7 @@ def fig1():
     el.append(line(895,405,600,455,3))
     el.append(rect(305,445,590,108,20,"#efefef",sw=3))
     el.append(text(600,482,"Cross-system directional claim",25,"bold","middle"))
-    el.append(text(600,516,"More recent rainfall ↔ greater short-window multispecies co-calling",21,"normal","middle"))
+    el.append(text(600,516,"More recent rainfall ↔ more short-window multispecies calling",21,"normal","middle"))
     el.append(text(600,542,"No pooling of effect sizes",18,"normal","middle"))
 
     # robustness
@@ -76,7 +76,7 @@ def fig1():
     el.append(text(885,614,"FrogID robustness",20,"bold","middle"))
     el.append(text(885,642,"within the same ERA5 cell",19,"normal","middle"))
     el.append(line(510,620,690,620,2,"8 8"))
-    el.append(text(600,697,"Association, not causation · no facilitation or network-rewiring inference",17,"normal","middle"))
+    el.append(text(600,697,"Raw event-level association; mechanism is decomposed separately in NAAMP",17,"normal","middle"))
     el.append('</svg>')
     return "\n".join(el)+"\n"
 
@@ -138,7 +138,67 @@ def fig2():
     el.append('</svg>')
     return "\n".join(el)+"\n"
 
+
+def fig3():
+    mech=read("NAAMP_MECHANISM_DECOMPOSITION_RECEIPT_V0_1.json")
+    rep=read("NAAMP_REVIEW_REPAIR_RECEIPT_V0_1.json")
+    net=read("NAAMP_NETWORK_RECEIPT_V0_1.json")
+
+    act=mech["activation"]["rain_z"]
+    cond=mech["conditional_multispecies_given_active"]["rain_z"]
+    pool=rep["active_pool_richness"]
+    ind=rep["independence_residual"]
+    cov=rep["pair_covariance_sensitivity"]
+    nw=net["primary"]
+
+    el=[]
+    el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="118mm" viewBox="0 0 1200 790">')
+    el.append('<rect width="1200" height="790" fill="white"/>')
+    el.append(text(60,55,"Figure 3. Rain expands acoustic participation without stronger residual co-calling",30,"bold"))
+
+    # cue
+    el.append(rect(430,95,340,82,20,"#f7f7f7",sw=3))
+    el.append(text(600,130,"More recent rainfall",28,"bold","middle"))
+    el.append(text(600,158,"lower dryness exposure",18,"normal","middle"))
+
+    # left activation branch
+    el.append(line(520,177,335,245,3))
+    el.append(rect(70,235,500,405,24,"#f7f7f7",sw=3))
+    el.append(text(320,278,"Community participation",27,"bold","middle"))
+    el.append(text(320,315,"Any calling at a stop",21,"bold","middle"))
+    el.append(text(320,346,f"OR dryness = {act['odds_ratio']:.3f}",20,"normal","middle"))
+    el.append(text(320,374,f"P = {act['p_value']:.2e}",19,"normal","middle"))
+    el.append(line(150,405,490,405,2,"7 7"))
+    el.append(text(320,447,"Run-level active species pool",21,"bold","middle"))
+    el.append(text(320,478,f"β dryness = {pool['beta_rain_z']:.4f}",20,"normal","middle"))
+    el.append(text(320,506,f"95% CI {pool['ci95_beta'][0]:.4f} to {pool['ci95_beta'][1]:.4f}",18,"normal","middle"))
+    el.append(text(320,534,f"P = {pool['p_value']:.2e}",19,"normal","middle"))
+    el.append(text(320,595,"Supported: recent rain broadens",20,"bold","middle"))
+    el.append(text(320,622,"the acoustically active community",20,"bold","middle"))
+
+    # right residual-association branch
+    el.append(line(680,177,865,245,3))
+    el.append(rect(630,235,500,405,24,"#fff",sw=3))
+    el.append(text(880,278,"Residual association",27,"bold","middle"))
+    el.append(text(880,315,"P(≥2 species | ≥1 active)",20,"bold","middle"))
+    el.append(text(880,345,f"OR dryness = {cond['odds_ratio']:.3f} · P = {cond['p_value']:.3f}",18,"normal","middle"))
+    el.append(text(880,390,"Observed − independence expectation",20,"bold","middle"))
+    el.append(text(880,420,f"β = {ind['beta_rain_z']:.5f} · P = {ind['p_value']:.3f}",18,"normal","middle"))
+    el.append(text(880,465,"Mean pairwise excess covariance",20,"bold","middle"))
+    el.append(text(880,495,f"β = {cov['beta_rain_z']:.5f} · P = {cov['p_value']:.3f}",18,"normal","middle"))
+    el.append(text(880,540,"Pairwise network density",20,"bold","middle"))
+    el.append(text(880,570,f"OR dryness = {nw['odds_ratio']:.3f} · P = {nw['p_value']:.3f}",18,"normal","middle"))
+    el.append(text(880,612,"No detectable rain-related strengthening",19,"bold","middle"))
+
+    el.append(rect(220,685,760,66,18,"#efefef",sw=2))
+    el.append(text(600,715,"Interpretation: activation-dominated multispecies signal",23,"bold","middle"))
+    el.append(text(600,740,"not evidence by itself for temporal-niche compression or facilitation",18,"normal","middle"))
+    el.append('</svg>')
+    return "\n".join(el)+"\n"
+
 (OUT/"FIGURE_1_DESIGN_V0_1.svg").write_text(fig1(),encoding="utf-8")
 (OUT/"FIGURE_2_EFFECTS_V0_1.svg").write_text(fig2(),encoding="utf-8")
+(OUT/"FIGURE_3_DECOMPOSITION_V0_1.svg").write_text(fig3(),encoding="utf-8")
 print(OUT/"FIGURE_1_DESIGN_V0_1.svg")
 print(OUT/"FIGURE_2_EFFECTS_V0_1.svg")
+print(OUT/"FIGURE_3_DECOMPOSITION_V0_1.svg")
