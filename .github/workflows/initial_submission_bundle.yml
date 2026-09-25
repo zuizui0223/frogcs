@@ -1,0 +1,94 @@
+name: frogcs initial JAE submission bundle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+
+      - name: Materialize private submission metadata
+        env:
+          JAE_SUBMISSION_METADATA_YAML: ${{ secrets.JAE_SUBMISSION_METADATA_YAML }}
+        run: |
+          test -n "$JAE_SUBMISSION_METADATA_YAML" || {
+            echo "Missing repository secret JAE_SUBMISSION_METADATA_YAML" >&2
+            exit 2
+          }
+          printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-initial.yml
+
+      - name: Validate initial-submission metadata
+        run: |
+          python scripts/render_submission_metadata.py \
+            --metadata /tmp/metadata-initial.yml \
+            --strict \
+            --stage initial \
+            --outdir build/submission-metadata
+
+      - name: Audit anonymous initial-review manuscript
+        run: python scripts/audit_jae_submission.py --review-stage initial
+
+      - name: Build anonymous initial-review DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source MANUSCRIPT_JAE_V0_3.md \
+            --output build/FROG_JAE_ANON_MAIN_INITIAL.docx
+
+      - name: Rebuild and verify figures
+        run: |
+          python scripts/build_submission_figures.py
+          git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+
+      - name: Assemble initial-submission bundle
+        run: |
+          set -eu
+          out=build/initial-submission
+          mkdir -p "$out"
+
+          cp MANUSCRIPT_JAE_V0_3.md "$out/"
+          cp build/FROG_JAE_ANON_MAIN_INITIAL.docx "$out/"
+          cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
+          cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
+          cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
+          cp figures/FIGURE_1_DESIGN_V0_1.svg "$out/"
+          cp figures/FIGURE_2_EFFECTS_V0_1.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_1.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_1.md "$out/"
+
+          cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
+          This is the initial double-anonymized Journal of Animal Ecology submission bundle.
+          The main manuscript intentionally contains only a generic statement of intended Zenodo archiving.
+          A public author-identifying archive DOI is deferred until the archive/finalization stage.
+          TXT
+
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          out=Path("build/initial-submission")
+          rows={}
+          for p in sorted(out.iterdir()):
+              if p.is_file():
+                  rows[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2)+"\n",encoding="utf-8")
+          print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
+          PY
+
+      - name: Upload initial JAE bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-initial-submission-bundle
+          path: build/initial-submission/
+          if-no-files-found: error
