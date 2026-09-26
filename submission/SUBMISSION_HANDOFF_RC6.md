@@ -13,7 +13,7 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 
 ## Article
 
-**Title:** Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity
+**Title:** Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry
 
 **Target:** Journal of Animal Ecology — Research Article
 

@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-Please consider our Research Article, **“Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity,”** for publication in *Journal of Animal Ecology*.
+Please consider our Research Article, **“Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry,”** for publication in *Journal of Animal Ecology*.
 
 Rainfall effects on frog calling are well known. We therefore ask a different community-ecological question: **where does a short rainfall pulse enter a spatially replicated animal community?** Does recent rain simply intensify calling at the same sites, activate additional local communities, deepen diversity within already-active sites, homogenize communities across space, or expand several dimensions simultaneously?
 
