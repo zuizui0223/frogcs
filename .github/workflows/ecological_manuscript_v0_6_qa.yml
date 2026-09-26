@@ -8,9 +8,24 @@ on:
       - "MANUSCRIPT_JAE_V0_6.md"
       - "ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json"
       - "ECOLOGICAL_ARGUMENT_SPINE_V0_2.md"
+      - "ECOLOGICAL_MECHANISM_FOLLOWUP_LEDGER_V0_1.json"
       - "NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json"
+      - "ECOLOGICAL_FIGURE_HASHES_V0_2.json"
+      - "figures_ecology_v0_6/*.svg"
+      - "submission/COVER_LETTER_JAE_V0_5.md"
+      - "submission/JAE_PORTAL_CHECKLIST_V0_4.md"
+      - "submission/SUBMISSION_HANDOFF_RC5.md"
+      - "submission/SUBMISSION_METADATA_TEMPLATE_V0_2.yml"
+      - "submission/ZENODO_METADATA_TEMPLATE.json"
+      - "JAE_TITLE_PAGE_V0_4.template.md"
       - "scripts/build_ecological_figures_v0_6.py"
+      - "scripts/verify_ecological_figure_hashes_v0_2.py"
       - "scripts/audit_ecological_manuscript_v0_6.py"
+      - "scripts/build_jae_anonymous_docx.py"
+      - "scripts/render_submission_metadata.py"
+      - "scripts/finalize_archive_doi.py"
+      - ".github/workflows/initial_submission_bundle.yml"
+      - ".github/workflows/final_submission_bundle.yml"
       - ".github/workflows/ecological_manuscript_v0_6_qa.yml"
   workflow_dispatch:
 
@@ -26,28 +41,105 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Audit v0.6 manuscript
-        run: python scripts/audit_ecological_manuscript_v0_6.py --review-stage initial
-      - name: Build v0.6 ecological figures
-        run: python scripts/build_ecological_figures_v0_6.py
-      - name: Report deterministic figure hashes
+
+      - name: Install QA dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+
+      - name: Audit initial-review v0.6
+        run: python scripts/audit_ecological_manuscript_v0_6.py --manuscript MANUSCRIPT_JAE_V0_6.md --review-stage initial
+
+      - name: Rebuild and verify exact v0.6 figures
         run: |
-          python - <<'PY'
-          import hashlib,json
-          from pathlib import Path
-          rows={}
-          for p in sorted(Path("figures_ecology_v0_6").glob("*.svg")):
-              rows[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
-          print(json.dumps(rows,indent=2))
-          Path("ECOLOGICAL_FIGURE_HASHES_V0_2_CANDIDATE.json").write_text(json.dumps(rows,indent=2)+"\n")
-          PY
+          python scripts/build_ecological_figures_v0_6.py
+          python scripts/verify_ecological_figure_hashes_v0_2.py
+
+      - name: Strict-test v0.6 metadata
+        run: |
+          cat > /tmp/frogcs-v06-metadata.yml <<'YAML'
+          manuscript:
+            title: "Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
+            target_journal: "Journal of Animal Ecology"
+            article_type: "Research Article"
+          authors:
+            - order: 1
+              given_names: "Example"
+              family_names: "Author"
+              display_name: "Example Author"
+              affiliation_ids: ["A1"]
+              orcid: "0000-0002-1825-0097"
+              credit_roles: ["Conceptualization", "Formal analysis", "Writing – original draft"]
+          affiliations:
+            A1:
+              institution: "Example University"
+              department: "Department of Ecology"
+              city: "Example City"
+              country: "Example Country"
+          corresponding_author:
+            author_order: 1
+            email: "example@example.org"
+            postal_address: "1 Example Street, Example City"
+          funding:
+            - funder: "None"
+              grant_number: ""
+          acknowledgements: "None"
+          conflict_of_interest: "The author declares no conflict of interest."
+          statement_on_inclusion: "This secondary-data analysis involved no new local field sampling; source programmes and regional literature are acknowledged and cited."
+          ethics_and_permits:
+            secondary_public_data_only: true
+            statement: "Secondary analysis of publicly released monitoring and trait data; no new animal handling."
+          approvals:
+            all_authors_approve_submission: true
+            all_entitled_authors_included: true
+            not_under_consideration_elsewhere: true
+          repository:
+            url: "https://github.com/zuizui0223/frogcs"
+            license: "MIT"
+            archive_year: 2026
+            archive_doi: "10.9999/frogcs.v06-test"
+          source_data:
+            - name: "NAAMP"
+              doi: "10.5066/F7G44NG0"
+            - name: "AmphiBIO v1"
+              doi: "10.6084/m9.figshare.4644424.v5"
+          YAML
+          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-v06-metadata.yml --strict --stage initial --outdir build/meta-initial
+          python scripts/render_submission_metadata.py --metadata /tmp/frogcs-v06-metadata.yml --strict --stage archive --outdir build/meta-archive
+          grep -F "Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities" build/meta-initial/JAE_TITLE_PAGE_FINAL.md
+          grep -F "Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities" build/meta-archive/JAE_TITLE_PAGE_FINAL.md
+
+      - name: Build anonymous v0.6 DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source MANUSCRIPT_JAE_V0_6.md \
+            --output build/FROG_JAE_ECOLOGY_ANON_MAIN_V0_6.docx
+
+      - name: Dry-run DOI finalization
+        run: |
+          python scripts/finalize_archive_doi.py \
+            --doi 10.9999/frogcs.v06-test \
+            --input MANUSCRIPT_JAE_V0_6.md \
+            --output build/MANUSCRIPT_JAE_V0_6_FINAL_TEST.md
+          python scripts/audit_ecological_manuscript_v0_6.py \
+            --manuscript build/MANUSCRIPT_JAE_V0_6_FINAL_TEST.md \
+            --review-stage final
+
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-v0-6-candidate-package
+          name: frogcs-jae-v0-6-review-package
           path: |
             MANUSCRIPT_JAE_V0_6.md
             figures_ecology_v0_6/*.svg
-            ECOLOGICAL_FIGURE_HASHES_V0_2_CANDIDATE.json
+            ECOLOGICAL_FIGURE_HASHES_V0_2.json
             ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json
             ECOLOGICAL_ARGUMENT_SPINE_V0_2.md
+            ECOLOGICAL_MECHANISM_FOLLOWUP_LEDGER_V0_1.json
+            NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json
+            submission/COVER_LETTER_JAE_V0_5.md
+            submission/JAE_PORTAL_CHECKLIST_V0_4.md
+            submission/SUBMISSION_HANDOFF_RC5.md
+            JAE_TITLE_PAGE_V0_4.template.md
+            build/FROG_JAE_ECOLOGY_ANON_MAIN_V0_6.docx
+            build/MANUSCRIPT_JAE_V0_6_FINAL_TEST.md
+            build/meta-initial/*
+            build/meta-archive/*
           if-no-files-found: error
