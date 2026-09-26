@@ -14,8 +14,8 @@ from docx.shared import Inches, Mm, Pt
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT
 parser = argparse.ArgumentParser()
-parser.add_argument("--source", default=str(BASE / "MANUSCRIPT_JAE_V0_4.md"))
-parser.add_argument("--output", default=str(ROOT / "build" / "FROG_JAE_ANON_MAIN_V0_4.docx"))
+parser.add_argument("--source", default=str(BASE / "MANUSCRIPT_JAE_V0_6.md"))
+parser.add_argument("--output", default=str(ROOT / "build" / "FROG_JAE_ANON_MAIN_V0_6.docx"))
 args = parser.parse_args()
 SRC = Path(args.source)
 OUT = Path(args.output)

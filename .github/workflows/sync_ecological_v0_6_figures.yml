@@ -1,0 +1,40 @@
+name: sync ecological JAE v0.6 figures
+
+on:
+  push:
+    branches:
+      - revision/rainfall-pulse-timescale-v1
+    paths:
+      - "ECOLOGICAL_FIGURE_HASHES_V0_2.json"
+      - ".github/workflows/sync_ecological_v0_6_figures.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: revision/rainfall-pulse-timescale-v1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build figures
+        run: python scripts/build_ecological_figures_v0_6.py
+      - name: Verify hashes
+        run: python scripts/verify_ecological_figure_hashes_v0_2.py
+      - name: Commit exact figures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add figures_ecology_v0_6/
+          if git diff --cached --quiet; then
+            echo "v0.6 figures already synchronized"
+            exit 0
+          fi
+          git commit -m "Sync deterministic ecological v0.6 figures"
+          git push origin HEAD:revision/rainfall-pulse-timescale-v1

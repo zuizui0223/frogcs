@@ -1,0 +1,14 @@
+{
+  "project": "frog-chorus-synchrony",
+  "figure_package": "JAE_v0_6_week_scale_reassembly",
+  "source_qa_run": 36219006558,
+  "source_artifact": 10898386396,
+  "source_artifact_digest": "sha256:d911e224e2fb6ab4719b4a54dd5f859d6d9201b1b1e7eec1f78e6fe74e08a16c",
+  "source_head_sha": "36f673123decd8db0e00bb451245bef6385205e0",
+  "figures": {
+    "figures_ecology_v0_6/FIGURE_1_ECO_TIMESCALE_V0_1.svg": "3ac40dc03403f7c0940149076a541f1b1fed5d0efcdaaa6664f245c31e747fe4",
+    "figures_ecology_v0_6/FIGURE_2_ECO_SPECIES_V0_2.svg": "a1fbaf2c7a8424c04257f53778da7159272d8836be5c75051df28872cb59839c",
+    "figures_ecology_v0_6/FIGURE_3_ECO_BETA_V0_2.svg": "bbda60064d021477f4b34815a5d4ee7f98c7abe6db1b09748373ac9356bc19c0"
+  },
+  "rule": "Regenerate from scripts/build_ecological_figures_v0_6.py and require exact SHA-256 identity before submission."
+}

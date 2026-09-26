@@ -1,0 +1,67 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "0.1",
+  "purpose": "Audit ledger for post-opening mechanistic/context follow-ups mentioned as boundaries in JAE v0.6. These analyses are not headline endpoints.",
+  "entries": [
+    {
+      "question": "Does coarse ATraiU breeding-water hydroperiod explain species wet/dry response?",
+      "source_branch": "revision/hydroperiod-filter-v1",
+      "workflow_run": 36149886621,
+      "status": "nonestimable",
+      "result": "23 covered species were all coded flexible_both (temporary and permanent); no hydroperiod-axis variation.",
+      "authority": "do_not_use_as_negative_effect_test"
+    },
+    {
+      "question": "Does ATraiU breeding-season breadth predict adjusted wet recruitment?",
+      "source_branch": "revision/breeding-phenology-filter-v1",
+      "workflow_run": 36150782684,
+      "status": "unsupported",
+      "result": {
+        "beta_per_month": 0.02619,
+        "p_value": 0.823,
+        "within_family_permutation_p": 0.571
+      },
+      "authority": "secondary_negative_followup"
+    },
+    {
+      "question": "Do early-period baseline rarity/episodicity traits predict later wet recruitment?",
+      "source_branch": "revision/episodic-breeder-filter-v1",
+      "workflow_run": 36211361435,
+      "status": "unsupported",
+      "result": {
+        "baseline_recurrence_p": 0.698,
+        "seasonal_concentration_p": 0.99,
+        "combined_episodicity_spearman_p": 0.686
+      },
+      "authority": "temporal_holdout_negative_followup"
+    },
+    {
+      "question": "Is rainfall richness response stronger on historically drier routes?",
+      "source_branch": "revision/context-dependent-pulse-v1",
+      "workflow_run": 36211790224,
+      "status": "unsupported",
+      "result": {
+        "primary_richness_interaction_beta": 0.024675747426128537,
+        "primary_p": 0.8554404547640997,
+        "exact_consecutive_p": 0.33364438336498936
+      },
+      "authority": "temporal_holdout_negative_followup"
+    },
+    {
+      "question": "Does 4–7-day compositional turnover exceed ordinary dry–dry temporal turnover?",
+      "source_branch": "revision/two-phase-community-memory-v1",
+      "first_workflow_run": 36218400673,
+      "estimability_audit_run": 36218481802,
+      "status": "not_opened_fail_closed",
+      "result": {
+        "original_adjacent_dry_dry_pairs": 23,
+        "candidate_max_pairs": 53,
+        "candidate_max_routes": 41,
+        "frozen_minimum_pairs": 100,
+        "frozen_minimum_routes": 50
+      },
+      "authority": "no_compositional_memory_claim"
+    }
+  ],
+  "rule": "Negative/nonestimable follow-ups may constrain interpretation but cannot replace the primary ecological results or be presented as original preregistered hypotheses."
+}
