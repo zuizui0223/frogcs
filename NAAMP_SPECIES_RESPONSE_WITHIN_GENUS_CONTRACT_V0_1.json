@@ -1,0 +1,51 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_species_response_within_genus_heterogeneity_v0_1",
+  "status": "hierarchical_taxonomic_decomposition_frozen_before_genus_readback",
+  "ecological_question": "Does rainfall-response heterogeneity persist among congeneric frog species, or is the species-selective pattern mainly explained by differences among genera?",
+  "response_source": {
+    "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "fixed_species_family": 29,
+    "response": "pair-covariate-adjusted wet-versus-dry species intercept log odds",
+    "variance": "cluster-robust intercept SE squared"
+  },
+  "taxonomy": {
+    "source": "NAAMP scientific-name labels used in the adjusted response family",
+    "rule": "Use the first token of an exact two-token binomial as genus. Exclude labels containing '/', 'complex', or labels that are not exactly two tokens.",
+    "no_synonym_remapping": true,
+    "reason": "The test asks whether heterogeneity persists within the operational genera represented in the monitoring dataset; no external taxonomic reclassification is introduced after response readback."
+  },
+  "decomposition": {
+    "weights": "inverse response variance",
+    "grand_Q": "sum_i w_i(theta_i-grand_mean)^2",
+    "within_genus_Q": "sum_g sum_i_in_g w_i(theta_i-genus_mean_g)^2",
+    "between_genus_Q": "grand_Q-within_genus_Q",
+    "df_within": "N-K genera",
+    "df_between": "K-1",
+    "reference": "chi-square approximation"
+  },
+  "primary_hypothesis": {
+    "statement": "Adjusted rainfall responses remain heterogeneous within genera.",
+    "support": "within_genus_Q P < 0.05",
+    "minimum_species": 15,
+    "minimum_genera": 4
+  },
+  "genus_specific": {
+    "rule": "For each genus with >=3 species, report weighted mean response, Cochran Q, df and P.",
+    "status": "descriptive component of the frozen hierarchical test; no post-readback genus selection"
+  },
+  "directional_structure": {
+    "report": "For genera with >=3 species, report number of species with positive versus negative adjusted log odds.",
+    "interpretation": "Presence of both signs within a genus demonstrates directional lability but is descriptive."
+  },
+  "interpretation": {
+    "supported": "Rainfall-associated active-community reassembly is ecologically differentiated at a finer taxonomic scale than genus; broad lineage identity does not fully account for species responses.",
+    "null": "Family-level heterogeneity may largely reflect differences among genera, and finer species-specific claims should be softened."
+  },
+  "boundaries": [
+    "Genus is a taxonomic grouping, not a branch-length phylogenetic model.",
+    "Taxonomy may not represent current monophyletic genus concepts for every survey label.",
+    "This test does not identify the ecological trait causing within-genus differences.",
+    "Post-opening hierarchical structure test; no causal rainfall claim."
+  ]
+}
