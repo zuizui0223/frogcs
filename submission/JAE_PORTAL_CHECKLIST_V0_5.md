@@ -1,6 +1,6 @@
 # JAE initial-submission checklist v0.5 — metacommunity expansion paper
 
-**Current manuscript title:** Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry
+**Current manuscript title:** Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change
 
 **Manuscript title:** Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity
 
