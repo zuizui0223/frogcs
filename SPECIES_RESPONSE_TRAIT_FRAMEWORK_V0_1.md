@@ -59,6 +59,28 @@ Non-overlapping temporal validation:
 
 Thus activation geometry has substantial within-species temporal repeatability.
 
+## Transfer across disjoint route identities
+
+A separate deterministic route split tested whether the trait was driven by persistent properties of particular routes. State × RouteNumber clusters were assigned by SHA-256 to non-overlapping route sets A and B before split-specific geometry readback.
+
+The two route sets contained:
+- split A: 295 routes, 2,185 matched pairs;
+- split B: 290 routes, 2,051 matched pairs.
+
+Activation geometry was estimable for 28 species in A and 27 in B; 26 species overlapped.
+
+Route-set validation:
+- Spearman A–B rho = **0.785**;
+- P = **2.09e-6**;
+- inverse-variance weighted B-on-A slope = **0.832**, 95% CI 0.542–1.122;
+- sign concordance = **21/26**, one-sided exact P = **0.00125**.
+
+Thus activation geometry is supported by two complementary transfer tests:
+1. **temporal transfer** across non-overlapping years;
+2. **route-identity transfer** across non-overlapping route sets.
+
+This strengthens the response-trait interpretation but does not constitute independent-species replication or a test along a named geographic/climatic gradient.
+
 ## Relation to conventional functional traits
 
 For the overlap species, descriptive correlations between early activation geometry and:
@@ -153,6 +175,6 @@ At the species level, repeatable activation geometry identifies which taxa dispr
 
 ## Endpoint policy
 
-The temporal-repeatability test is the confirmatory gate for promoting activation geometry as a response trait within the post-opening RC6 extension.
+The temporal-repeatability test is the primary gate for promoting activation geometry as a response trait within the post-opening RC6 extension; the independently frozen disjoint-route split provides a second transfer check against route-specific artefacts.
 
 Additional trait fishing is not authorized to redefine or rescue activation geometry. Future mechanistic work should use independently sourced, proximal traits or independent monitoring systems.

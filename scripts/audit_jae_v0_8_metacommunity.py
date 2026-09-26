@@ -69,8 +69,8 @@ required_abstract=[
     "36.9%",
     "39.9%",
     "ρ = 0.774",
+    "ρ = 0.785",
     "P = 0.00044",
-    "15 of 16",
     "±0.05 practical-equivalence"
 ]
 for x in required_abstract:
