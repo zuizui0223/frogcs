@@ -1,4 +1,5 @@
-name: frogcs final JAE submission bundle
+# Compatibility alias: canonical RC6/v0.8 workflow. Do not restore RC5/v0.6 targets.
+name: frogcs final JAE submission bundle (RC6 alias)
 
 on:
   workflow_dispatch:
@@ -14,7 +15,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,86 +25,93 @@ jobs:
       - name: Install build dependencies
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
 
+      - name: Audit RC6 scientific package
+        run: python scripts/audit_rc6_submission_package.py
+
       - name: Materialize private metadata and archive DOI
         env:
           JAE_SUBMISSION_METADATA_YAML: ${{ secrets.JAE_SUBMISSION_METADATA_YAML }}
           ARCHIVE_DOI: ${{ inputs.archive_doi }}
         run: |
-          test -n "$JAE_SUBMISSION_METADATA_YAML" || exit 2
+          test -n "$JAE_SUBMISSION_METADATA_YAML" || {
+            echo "Missing repository secret JAE_SUBMISSION_METADATA_YAML" >&2
+            exit 2
+          }
           printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-input.yml
           python - <<'PY'
           import os,yaml
           from pathlib import Path
           m=yaml.safe_load(Path("/tmp/metadata-input.yml").read_text(encoding="utf-8"))
-          if not isinstance(m,dict): raise SystemExit("metadata secret is not YAML mapping")
+          if not isinstance(m,dict):
+              raise SystemExit("metadata secret is not a YAML mapping")
           m.setdefault("repository",{})["archive_doi"]=os.environ["ARCHIVE_DOI"]
-          Path("/tmp/metadata-final.yml").write_text(yaml.safe_dump(m,sort_keys=False,allow_unicode=True),encoding="utf-8")
+          Path("/tmp/metadata-final.yml").write_text(
+              yaml.safe_dump(m,sort_keys=False,allow_unicode=True),encoding="utf-8"
+          )
           PY
 
       - name: Render archive-stage metadata
         run: |
-          python scripts/render_submission_metadata.py \
-            --metadata /tmp/metadata-final.yml \
-            --strict --stage archive \
-            --outdir build/submission-metadata
+          python scripts/render_submission_metadata.py             --metadata /tmp/metadata-final.yml             --strict --stage archive             --outdir build/submission-metadata
 
       - name: Guard current title
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
+          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
           x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
-          assert expected in x, "metadata contains a superseded title"
+          if expected not in x:
+              raise SystemExit("metadata contains a superseded title")
+          print("metadata title PASS")
           PY
 
-      - name: Insert archive DOI
+      - name: Insert archive DOI into v0.8 manuscript
         run: |
-          python scripts/finalize_archive_doi.py \
-            --doi "${{ inputs.archive_doi }}" \
-            --input MANUSCRIPT_JAE_V0_6.md \
-            --output build/MANUSCRIPT_JAE_FINAL.md
+          python scripts/finalize_archive_doi.py             --doi "${{ inputs.archive_doi }}"             --input MANUSCRIPT_JAE_V0_8.md             --output build/MANUSCRIPT_JAE_FINAL.md
 
-      - name: Audit finalized v0.6
-        run: python scripts/audit_ecological_manuscript_v0_6.py --manuscript build/MANUSCRIPT_JAE_FINAL.md --review-stage final
+      - name: Audit finalized manuscript
+        run: python scripts/audit_jae_v0_8_metacommunity.py --manuscript build/MANUSCRIPT_JAE_FINAL.md
 
       - name: Build final anonymous DOCX
         run: |
-          python scripts/build_jae_anonymous_docx.py \
-            --source build/MANUSCRIPT_JAE_FINAL.md \
-            --output build/FROG_JAE_ECOLOGY_ANON_MAIN_FINAL.docx
+          python scripts/build_jae_anonymous_docx.py             --source build/MANUSCRIPT_JAE_FINAL.md             --output build/FROG_JAE_ANON_MAIN_FINAL_RC6.docx
 
-      - name: Rebuild and verify v0.6 figures
-        run: |
-          python scripts/build_ecological_figures_v0_6.py
-          python scripts/verify_ecological_figure_hashes_v0_2.py
+      - name: Verify frozen figures
+        run: python scripts/verify_metacommunity_figure_hashes_v0_3.py
 
-      - name: Assemble final bundle
+      - name: Assemble RC6 final bundle
         run: |
           set -eu
-          out=build/final-submission
+          out=build/final-submission-rc6
           mkdir -p "$out"
           cp build/MANUSCRIPT_JAE_FINAL.md "$out/"
-          cp build/FROG_JAE_ECOLOGY_ANON_MAIN_FINAL.docx "$out/"
+          cp build/FROG_JAE_ANON_MAIN_FINAL_RC6.docx "$out/"
           cp build/submission-metadata/* "$out/"
-          cp figures_ecology_v0_6/*.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_5.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_4.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_RC5.md "$out/"
-          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json "$out/"
-          cp ECOLOGICAL_ARGUMENT_SPINE_V0_2.md "$out/"
-          cp ECOLOGICAL_MECHANISM_FOLLOWUP_LEDGER_V0_1.json "$out/"
-          cp NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json "$out/"
+          cp figures_ecology_v0_8/*.svg "$out/"
+          cp ECOLOGICAL_FIGURE_HASHES_V0_3.json "$out/"
+          cp submission/COVER_LETTER_JAE_V0_6.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_5.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_RC6.md "$out/"
+          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json "$out/"
+          cp COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md "$out/"
+          cp NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_SPECIES_STOP_QUADRANTS_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
+
           python - <<'PY'
           import hashlib,json
           from pathlib import Path
-          out=Path("build/final-submission")
+          out=Path("build/final-submission-rc6")
           rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
-          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2)+"\n",encoding="utf-8")
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
           PY
 
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-v0-6-final-submission-bundle
-          path: build/final-submission/
+          name: frogcs-jae-rc6-v0-8-final-submission-bundle
+          path: build/final-submission-rc6/
           if-no-files-found: error
