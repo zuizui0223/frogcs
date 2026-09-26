@@ -295,6 +295,28 @@ Authoritative files:
 - `scripts/run_naamp_functional_community_expansion.py`
 - `scripts/run_naamp_functional_response_decoupling.py`
 
+### S5.10 Within-genus response heterogeneity
+
+Adjusted wet-versus-dry species responses remained heterogeneous within operational genera after complex labels were excluded.
+
+Among 26 species in seven genera:
+- total heterogeneity Q = **141.68**, df = 25, P = 2.84e-18;
+- within-genus Q = **66.41**, df = 19, P = 3.59e-7;
+- between-genus Q = 75.26, df = 6, P = 3.39e-14;
+- **46.9%** of total Q remained within genera.
+
+Examples:
+- *Hyla*: Q = 33.61, df = 5, P = 2.84e-6, with both positive and negative species;
+- *Lithobates*: Q = 23.81, df = 6, P = 0.000565, with both positive and negative species;
+- *Pseudacris*: Q = 3.89, df = 5, P = .566, with all six included species on the wet-associated side.
+
+Broad genus identity therefore does not fully explain species-response heterogeneity. This is an operational genus decomposition rather than a phylogenetic comparative analysis.
+
+Authoritative files:
+- `NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json`
+- `NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_SUMMARY_V0_1.json`
+- `scripts/run_naamp_species_response_within_genus.py`
+
 ---
 
 ## S6. Activation geometry: repeatability followed by placebo falsification
