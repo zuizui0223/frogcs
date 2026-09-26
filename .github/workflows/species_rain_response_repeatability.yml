@@ -1,0 +1,34 @@
+name: frogcs species rain-response temporal repeatability
+
+on:
+  push:
+    branches:
+      - revision/temporal-repeatability-v1
+    paths:
+      - "NAAMP_SPECIES_RAIN_RESPONSE_REPEATABILITY_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_species_rain_response_repeatability.py"
+      - ".github/workflows/species_rain_response_repeatability.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repeatability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Run frozen temporal repeatability test
+        run: python scripts/run_naamp_species_rain_response_repeatability.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-species-rain-response-repeatability-v0-1
+          path: NAAMP_SPECIES_RAIN_RESPONSE_REPEATABILITY_RECEIPT_V0_1.json
+          if-no-files-found: error
