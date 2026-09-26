@@ -1,0 +1,100 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_rainfall_pulse_timescale_v0_1_summary",
+  "contract": "NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json",
+  "workflow_run": 36151533864,
+  "artifact_id": 10870919872,
+  "artifact_digest": "sha256:932e961fdb96334521b863588f9f6144bf424aeb0919ff0a54e3f9955c650111",
+  "head_sha": "30287a92bc4082da4615ea3bce5a15cd70133038",
+  "run_level_richness_curve": {
+    "n_runs": 7848,
+    "n_routes": 807,
+    "n_route_season_strata": 2212,
+    "bin_counts": {
+      "day0": 2255,
+      "day1": 2191,
+      "days2_3": 2020,
+      "days4_7": 1044,
+      "days8plus": 338
+    },
+    "effects_vs_days8plus": {
+      "day0": {
+        "difference_species": 0.6539747125332243,
+        "ci95": [
+          0.4477938943195541,
+          0.8601555307468944
+        ],
+        "p_value": 5.076784934098715e-10
+      },
+      "day1": {
+        "difference_species": 0.5444882995074075,
+        "ci95": [
+          0.35034836451015505,
+          0.73862823450466
+        ],
+        "p_value": 3.864168658327082e-8
+      },
+      "days2_3": {
+        "difference_species": 0.41143230051767554,
+        "ci95": [
+          0.22674927192278121,
+          0.5961153291125698
+        ],
+        "p_value": 0.000012633450345362055
+      },
+      "days4_7": {
+        "difference_species": 0.3812874119598792,
+        "ci95": [
+          0.20187490562265278,
+          0.5606999182971056
+        ],
+        "p_value": 0.00003109230308743974
+      }
+    },
+    "prespecified_richness_pulse_end": "days4_7"
+  },
+  "matched_dry_anchor_exact_consecutive_year": {
+    "n_pairs": 289,
+    "richness_recent_minus_anchor": {
+      "day0": {
+        "adjusted_mean": 0.8659428101036376,
+        "ci95": [
+          0.10801949074103134,
+          1.623866129466244
+        ],
+        "p_value": 0.025136485981380702
+      },
+      "day1": {
+        "adjusted_mean": 0.4497035113894504,
+        "ci95": [
+          0.10897939374722032,
+          0.7904276290316805
+        ],
+        "p_value": 0.009685733215564105
+      },
+      "days2_3": {
+        "adjusted_mean": 0.4162436278440841,
+        "ci95": [
+          0.09099149337856893,
+          0.7414957623095992
+        ],
+        "p_value": 0.012132144404915023
+      },
+      "days4_7": {
+        "adjusted_mean": 0.2565089609581499,
+        "ci95": [
+          -0.1967633028589002,
+          0.7097812247752
+        ],
+        "p_value": 0.26736415188046303
+      }
+    }
+  },
+  "interpretation": "Active-community richness remains elevated through 4–7 days after reported rain relative to >=8-day runs in the prespecified within-route-season timescale analysis. A stricter exact-consecutive-year dry-anchor sensitivity is precise through 2–3 days and directionally positive but imprecise at 4–7 days.",
+  "boundaries": {
+    "days_since_rain_is_recency_not_amount": true,
+    "no_physiological_recovery_claim": true,
+    "active_community_not_occupancy": true,
+    "compositional_memory_vs_dry_dry_background": "not established; prespecified dry-dry background minimum failed before effect readback"
+  }
+}
