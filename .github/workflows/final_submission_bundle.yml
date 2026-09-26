@@ -58,7 +58,7 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
           x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           if expected not in x:
               raise SystemExit("metadata contains a superseded title")
