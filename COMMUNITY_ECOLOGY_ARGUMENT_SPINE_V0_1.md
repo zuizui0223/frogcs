@@ -170,6 +170,23 @@ Examples:
 
 This is the strongest species-level response trait currently identified. It is an acoustic gain-placement trait, not a dispersal, colonization or occupancy-niche trait. Family-adjusted validation was not estimable, so do not claim phylogenetic independence.
 
+### Hierarchical bridge from species to community
+
+For species s in matched pair i, wetter-run gain incidences can be written as:
+
+- (G^{edge}_{si}): gains at stops inactive in the drier survey;
+- (G^{deep}_{si}): gains at stops already active in the drier survey.
+
+Activation geometry estimates the opportunity-corrected balance between these two gain placements.
+
+Aggregating over species:
+
+- (sum_s G^{edge}_{si}) contributes the wet-gain side of **corner expansion + spatial spread**;
+- (sum_s G^{deep}_{si}) contributes the wet-gain side of **taxonomic deepening + within-core gain**.
+
+The published four-way community decomposition is symmetric and subtracts dry-loss incidences, so species geometry does not reconstruct the net community coefficients by itself. The correct interpretation is hierarchical rather than causal: species geometry identifies which taxa disproportionately load onto the matrix pathways whose aggregate balance yields community expansion.
+
+
 ## Claim 5c — response magnitude and response geometry are distinct but partially coupled
 
 A frozen cross-axis holdout used:
