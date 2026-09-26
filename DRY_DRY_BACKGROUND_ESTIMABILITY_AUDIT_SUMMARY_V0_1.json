@@ -1,0 +1,32 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "dry_dry_background_estimability_audit_v0_1_summary",
+  "workflow_run": 36218481802,
+  "head_sha": "71082a7df2f28824a9852f295aaebc376f2f061c",
+  "artifact": {
+    "id": 10897934873,
+    "digest": "sha256:d485775185df29dffd2eaf6e841bdecddc081222dc3c6e4804b5ccab60dd3b57",
+    "name": "frogcs-dry-dry-estimability-v0-1"
+  },
+  "total_dry_runs": 338,
+  "strata_with_ge2_dry_runs": 46,
+  "candidate_rules": {
+    "A_adjacent_dry_observations": {
+      "pairs": 53,
+      "routes": 41
+    },
+    "B_adjacent_dry_yeargap_le3": {
+      "pairs": 40,
+      "routes": 32
+    },
+    "C_all_unique_yeargap_le3": {
+      "pairs": 45,
+      "routes": 32
+    },
+    "D_greedy_nonoverlap_adjacent_dry": {
+      "pairs": 48,
+      "routes": 41
+    }
+  },
+  "interpretation": "No dry–dry background construction met the frozen minimum needed for the planned two-phase community-memory comparison. The memory-above-background endpoint is therefore nonestimable rather than negative."
+}
