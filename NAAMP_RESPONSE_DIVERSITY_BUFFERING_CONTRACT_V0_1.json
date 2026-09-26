@@ -1,0 +1,66 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_response_diversity_buffering_v0_1",
+  "status": "post-opening held-out community-stability hypothesis frozen before validation readback",
+  "ecological_question": "Does local response diversity among frog species buffer active-community richness against rainfall contrast through compensatory species responses?",
+  "time_split": {
+    "trait_period": [2001, 2007],
+    "validation_period": [2008, 2015],
+    "non_overlap": true
+  },
+  "trait_period_species_response": {
+    "pairing": "within State x RouteNumber x RunNumber, adjacent observed years, lower DaysSinceRain oriented wetter",
+    "species_event": "y=1 for wet-only and y=0 for dry-only occurrences",
+    "eligibility": ">=25 discordant events across >=8 routes",
+    "model": "binomial-logit y ~ centered rain_contrast + centered temp_difference + centered doy_difference + centered year_gap with route-clustered covariance",
+    "response_score": "adjusted intercept log odds",
+    "no_validation_data_used": true
+  },
+  "local_pool": {
+    "definition": "union of species acoustically active in eligible 2001-2007 runs for the same State x RouteNumber x RunNumber stratum",
+    "scored_species": "intersection with species having estimable early-period response scores",
+    "minimum_scored_species": 3,
+    "minimum_scored_fraction_of_early_pool": 0.6
+  },
+  "primary_predictor": {
+    "name": "response_sign_diversity",
+    "definition": "4*p*(1-p), where p is the fraction of scored early-pool species with positive early wet-vs-dry log odds",
+    "range": [0, 1],
+    "interpretation": "0 = all scored species respond in the same direction; 1 = equal mixture of positive and negative response signs",
+    "rationale": "Temporal validation previously showed stronger sign concordance than rank repeatability, so the new test uses only response direction, not post hoc rank information."
+  },
+  "validation_pairs": {
+    "years": [2008, 2015],
+    "construction": "same matched-pair rule, with no pair crossing the temporal split",
+    "minimum_gate": {
+      "pairs": 300,
+      "routes": 100
+    }
+  },
+  "primary_model": {
+    "response": "late-period wet-minus-dry route active-species richness",
+    "formula": "richness_gain ~ rain_contrast * response_sign_diversity + rain_contrast * mean_early_response + rain_contrast * z_log_early_scored_richness + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "primary_term": "rain_contrast:response_sign_diversity",
+    "prediction": "negative",
+    "support_rule": "interaction beta < 0 and 95% CI excludes 0"
+  },
+  "prespecified_sensitivity": {
+    "sample": "exact consecutive-year validation pairs only",
+    "same_formula": true,
+    "direction": "negative"
+  },
+  "secondary_diagnostics": [
+    "replace sign diversity with SD of early adjusted species log odds; descriptive only",
+    "late pair compensation fraction = 1 - abs(wet_only-dry_only)/(wet_only+dry_only) for discordant>0; test response_sign_diversity main and rain interaction descriptively",
+    "report coverage, early scored richness, mean early response, and correlation among moderators"
+  ],
+  "interpretation_if_supported": "Communities containing species with opposing rainfall-response directions show weaker net richness shifts under rainfall contrast, consistent with response-diversity buffering of the behaviourally realized active community.",
+  "boundaries": [
+    "Response diversity is estimated from acoustic activity, not demographic response.",
+    "Temporal holdout reduces but does not eliminate confounding by persistent route characteristics.",
+    "No rainfall causality, occupancy, abundance, colonization, extinction, or demographic stability claim.",
+    "This analysis is post-opening but its predictor, sample gate, formula, and direction are frozen before validation readback.",
+    "No alternative time split, response-diversity formula, or minimum coverage rule may be substituted after readback."
+  ]
+}
