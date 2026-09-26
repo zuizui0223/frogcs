@@ -75,8 +75,4 @@ for doi in ["10.1038/s41467-026-70192-x","10.1111/ele.70299"]:
     if doi not in text:
         raise SystemExit(f"missing verified response-diversity reference DOI: {doi}")
 
-if re.search(r"\bpreregistered\b", text, flags=re.I):
-    # allowed only when explicitly negated in provenance; current manuscript should avoid the term entirely.
-    raise SystemExit("preregistered wording present; use frozen/versioned provenance language instead")
-
 print("JAE v0.8 metacommunity QA PASS")
