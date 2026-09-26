@@ -1,0 +1,53 @@
+name: frogcs ecological JAE v0.6 QA
+
+on:
+  push:
+    branches:
+      - revision/rainfall-pulse-timescale-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_6.md"
+      - "ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json"
+      - "ECOLOGICAL_ARGUMENT_SPINE_V0_2.md"
+      - "NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json"
+      - "scripts/build_ecological_figures_v0_6.py"
+      - "scripts/audit_ecological_manuscript_v0_6.py"
+      - ".github/workflows/ecological_manuscript_v0_6_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit v0.6 manuscript
+        run: python scripts/audit_ecological_manuscript_v0_6.py --review-stage initial
+      - name: Build v0.6 ecological figures
+        run: python scripts/build_ecological_figures_v0_6.py
+      - name: Report deterministic figure hashes
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          rows={}
+          for p in sorted(Path("figures_ecology_v0_6").glob("*.svg")):
+              rows[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+          print(json.dumps(rows,indent=2))
+          Path("ECOLOGICAL_FIGURE_HASHES_V0_2_CANDIDATE.json").write_text(json.dumps(rows,indent=2)+"\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v0-6-candidate-package
+          path: |
+            MANUSCRIPT_JAE_V0_6.md
+            figures_ecology_v0_6/*.svg
+            ECOLOGICAL_FIGURE_HASHES_V0_2_CANDIDATE.json
+            ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json
+            ECOLOGICAL_ARGUMENT_SPINE_V0_2.md
+          if-no-files-found: error
