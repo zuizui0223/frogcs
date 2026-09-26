@@ -1,0 +1,99 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_crossperiod_episodic_recruitment_v0_1",
+  "status": "crossperiod_ecological_hypothesis_frozen_before_validation_readback",
+  "ecological_question": "Are species that are normally less recurrent or more seasonally concentrated in the early monitoring period more strongly recruited into the acoustically active assemblage after recent rain in a later time period?",
+  "rationale": "This tests an episodic-breeder/community-pulse hypothesis using temporally separated baseline traits and validation responses, avoiding construction of the predictor and rainfall response from the same years.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "time_split": {
+    "baseline_years": [
+      2001,
+      2007
+    ],
+    "validation_years": [
+      2008,
+      2015
+    ],
+    "rule": "No baseline trait uses data from 2008-2015; no validation wet/dry response uses data from 2001-2007."
+  },
+  "common_run_eligibility": {
+    "unified_protocol": "1",
+    "sampled_stops": "exactly 10 non-skipped stops",
+    "rain": "numeric DaysSinceRain within publisher range [0,180]",
+    "temperature": ">=8 valid stop temperatures and mean in [-10,45] C",
+    "survey_date": "parseable",
+    "calling_presence": "CallingIndex in {1,2,3}"
+  },
+  "baseline_traits": {
+    "species_route_set": "For each species, routes on which that species is detected in at least one eligible baseline run.",
+    "minimum_route_set": 10,
+    "baseline_recurrence": {
+      "definition": "Among all eligible 2001-2007 runs on the species-specific baseline route set, proportion of runs in which the species is acoustically active.",
+      "transform": "logit after Jeffreys shrinkage: log((active_runs+0.5)/(eligible_runs-active_runs+0.5))",
+      "ecological_meaning": "How recurrently the species participates in the active assemblage within places where it was known to occur acoustically during the baseline period."
+    },
+    "seasonal_concentration": {
+      "definition": "For RunNumber windows 1-4, calculate effort-standardized activity probability = positive_runs / eligible_runs on the baseline route set. Normalize positive probabilities across windows, calculate Shannon entropy H and effective number exp(H); concentration = 1 - exp(H)/K where K is the number of windows with eligible effort.",
+      "minimum_windows_with_effort": 3,
+      "range": "0 = activity spread evenly across sampled seasonal windows; values closer to 1 = activity concentrated in fewer windows."
+    }
+  },
+  "validation_response": {
+    "pair_stratum": "State × RouteNumber × RunNumber",
+    "years": "2008-2015 only",
+    "pairing": "Within each stratum, sort by SurveyYear and pair adjacent observed validation-period years; orient unequal-rain pairs so lower DaysSinceRain is wetter.",
+    "species_event": "For each species present in exactly one member of a pair, y=1 if present only in wetter run, y=0 if present only in drier run.",
+    "species_eligibility": {
+      "minimum_discordant_pairs": 30,
+      "minimum_distinct_routes": 10,
+      "direction_blind": true
+    },
+    "adjusted_species_model": "For each eligible species: binomial-logit y ~ centered rain_contrast + centered temp_difference + centered doy_difference + centered year_gap with route-clustered covariance. The centered intercept is the later-period adjusted wet-vs-dry log odds."
+  },
+  "cross_species_tests": {
+    "primary": {
+      "predictor": "baseline_recurrence_logit",
+      "model": "inverse-variance weighted least squares: validation_adjusted_log_odds ~ baseline_recurrence_logit, HC3 covariance",
+      "expected_sign": "negative",
+      "hypothesis": "Species that were less recurrent during 2001-2007 show more positive wet-recruitment responses during 2008-2015.",
+      "minimum_species": 15
+    },
+    "secondary": {
+      "predictor": "baseline_seasonal_concentration",
+      "model": "inverse-variance weighted least squares: validation_adjusted_log_odds ~ baseline_seasonal_concentration, HC3 covariance",
+      "expected_sign": "positive",
+      "hypothesis": "Species whose baseline activity was concentrated into fewer seasonal windows show more positive wet-recruitment responses later.",
+      "minimum_species": 15
+    },
+    "combined_descriptive": {
+      "definition": "z(-baseline_recurrence_logit) + z(seasonal_concentration), divided by 2; higher = more episodic.",
+      "status": "descriptive only unless both primary and secondary directional hypotheses are supported"
+    }
+  },
+  "family_structure_sensitivity": {
+    "source": "AmphiBIO v1 Family using the previously frozen exact/frozen-genus-alias mapping",
+    "tests": [
+      "family-adjusted WLS if residual df >=10",
+      "within-family permutation of each predictor, 100000 permutations, seed 20260926"
+    ],
+    "interpretation": "Used to distinguish a species-level ecological gradient from a broad family contrast."
+  },
+  "predictions": {
+    "P1": "Primary baseline recurrence slope <0 with 95% CI excluding 0.",
+    "P2": "Secondary seasonal concentration slope >0 with 95% CI excluding 0.",
+    "P3": "If both P1 and P2 hold, rainfall preferentially recruits historically episodic species into the active assemblage.",
+    "P4": "If only P1 holds, interpretation is low-recurrence recruitment rather than seasonal specialization.",
+    "P5": "If neither holds, species-selective reassembly remains real but is not explained by baseline episodicity."
+  },
+  "boundaries": [
+    "Baseline recurrence is acoustic participation recurrence, not occupancy probability.",
+    "Seasonal concentration reflects NAAMP sampling windows, not a complete annual breeding phenology curve.",
+    "The same species are observed across time; this is temporal holdout validation, not an independent-species replication.",
+    "No rainfall causality, breeding success, colonization, or extinction claim.",
+    "No thresholds or additional baseline traits may be added after readback within this analysis family."
+  ]
+}
