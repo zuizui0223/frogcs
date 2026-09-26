@@ -38,7 +38,7 @@ jobs:
         run: |
           cat > /tmp/frogcs-submission-metadata.yml <<'YAML'
           manuscript:
-            title: "Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+            title: "Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change"
             target_journal: "Journal of Animal Ecology"
             article_type: "Research Article"
           authors:
@@ -87,7 +87,7 @@ jobs:
           python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage archive --outdir /tmp/rendered-archive
           python - <<'PY'
           from pathlib import Path
-          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+          expected="Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change"
           for p in [
               Path("/tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md"),
               Path("/tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md")
@@ -136,7 +136,7 @@ jobs:
           with ZipFile(p) as z:
               core=z.read("docProps/core.xml").decode("utf-8")
               document=z.read("word/document.xml").decode("utf-8")
-          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+          expected="Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change"
           assert expected in core
           assert "<w:lnNumType" in document
           print("anonymous DOCX PASS")
