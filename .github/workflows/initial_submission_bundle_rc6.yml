@@ -51,6 +51,12 @@ jobs:
         run: |
           python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V0_8.md             --output build/FROG_JAE_ANON_MAIN_V0_8.docx
 
+      - name: Build anonymous Supporting Information DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source SUPPORTING_INFORMATION_JAE_RC6_V0_1.md \
+            --output build/FROG_JAE_SUPPORTING_INFORMATION_RC6.docx
+
       - name: Verify DOCX structure
         run: |
           python - <<'PY'
@@ -79,6 +85,8 @@ jobs:
           mkdir -p "$out"
           cp MANUSCRIPT_JAE_V0_8.md "$out/"
           cp build/FROG_JAE_ANON_MAIN_V0_8.docx "$out/"
+          cp SUPPORTING_INFORMATION_JAE_RC6_V0_1.md "$out/"
+          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC6.docx "$out/"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
