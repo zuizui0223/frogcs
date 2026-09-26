@@ -1,0 +1,75 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_breeding_season_breadth_v0_1",
+  "status": "post_opening_mechanistic_followup_frozen_before_trait_readback",
+  "ecological_question": "Are species with narrower independently compiled breeding seasons more strongly recruited into the acoustically active assemblage under wetter matched conditions?",
+  "response_source": {
+    "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "fixed_species_family": 29,
+    "response": "pair-covariate-adjusted per-species wet-versus-dry intercept log odds",
+    "variance": "cluster-robust intercept SE squared"
+  },
+  "trait_source": {
+    "scientific_source": "ATraiU (Moore et al. 2021, Ecology 102:e03261)",
+    "doi": "10.1002/ecy.3261",
+    "documented_field": "breeding_season",
+    "computational_transport": {
+      "repository": "panpipiens/amphibian-vulnerability-analysis",
+      "commit": "a7be17ae44b8a81349c37b3b38c767e6db5958f2",
+      "file": "processed_data/master_iucn_spine_nearctic_anura.csv",
+      "git_blob_sha1": "4a1fd99f9b815cc512ce3e680497b34e8c9c93e6",
+      "column": "atraiu_breeding_season",
+      "provenance": "Derived from raw ATraiU_full_2020AUG.csv; the transport repository keeps the modal non-null breeding-season description for each species."
+    }
+  },
+  "parser": {
+    "allowed_information": "explicit month names or three-letter month abbreviations only",
+    "normalize": [
+      "lowercase",
+      "normalize unicode dashes to '-'",
+      "collapse whitespace"
+    ],
+    "range_rule": "Recognize explicit month-to-month ranges separated by '-', 'to', or 'through'; include all months inclusively. If end month precedes start month, wrap across December.",
+    "standalone_rule": "Any explicit month mention outside a recognized range is included as that month.",
+    "multiple_ranges": "Take union of all months recovered from all explicit ranges/mentions.",
+    "season_words": "Do not translate spring/summer/fall/autumn/winter or vague early/mid/late phrases into months.",
+    "invalid": "If no explicit month is recoverable, breeding-season breadth is missing.",
+    "output": "number of distinct calendar months represented, 1-12"
+  },
+  "primary_hypothesis": {
+    "predictor": "breeding_season_months",
+    "expected_sign": "negative",
+    "rationale": "More episodic/narrow-breeding species should depend more strongly on short rainfall opportunities and therefore show more positive wet-recruitment responses."
+  },
+  "primary_model": {
+    "formula": "adjusted_log_odds ~ breeding_season_months",
+    "estimator": "inverse-variance weighted least squares with HC3 covariance across species",
+    "minimum_complete_species": 15,
+    "reported": [
+      "beta",
+      "95% CI",
+      "P value",
+      "Spearman sensitivity",
+      "coverage"
+    ]
+  },
+  "family_structure_sensitivity": {
+    "method": "weighted within-family slope after subtracting weighted family means from predictor and response",
+    "permutation": "permute breeding-season breadth among species within family",
+    "permutations": 100000,
+    "seed": 20260926,
+    "expected_sign": "negative",
+    "inferential_role": "robustness only; not required for primary association"
+  },
+  "exact_group_descriptive": {
+    "definition": "short-season <=3 parsed months versus long-season >=6 parsed months",
+    "status": "descriptive only; thresholds frozen before readback"
+  },
+  "boundaries": [
+    "Breeding-season breadth is a phenological proxy, not a direct measure of explosive breeding.",
+    "The source uses a modal breeding-season description after collapsing references; intraspecific geographic variation is not represented comprehensively.",
+    "No causal rainfall claim.",
+    "This is a post-opening mechanistic follow-up and not an original preregistered hypothesis.",
+    "No additional ATraiU traits may be promoted within this analysis family."
+  ]
+}
