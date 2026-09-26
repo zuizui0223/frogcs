@@ -1,0 +1,57 @@
+# Canonical human metadata for the JAE v0.8 submission.
+# Fill locally or via Actions secret. Do not commit private contact details to a public branch unless intended.
+
+manuscript:
+  title: "Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+  target_journal: "Journal of Animal Ecology"
+  article_type: "Research Article"
+
+authors:
+  - order: 1
+    given_names: "[GIVEN NAMES]"
+    family_names: "[FAMILY NAMES]"
+    display_name: "[FULL DISPLAY NAME]"
+    affiliation_ids: ["A1"]
+    orcid: ""
+    credit_roles:
+      - "[CRediT ROLE]"
+
+affiliations:
+  A1:
+    institution: "[INSTITUTION]"
+    department: "[DEPARTMENT]"
+    city: "[CITY]"
+    country: "[COUNTRY]"
+
+corresponding_author:
+  author_order: 1
+  email: "[EMAIL]"
+  postal_address: "[POSTAL ADDRESS]"
+
+funding:
+  - funder: "None"
+    grant_number: ""
+
+acknowledgements: "None"
+conflict_of_interest: "[STATEMENT]"
+statement_on_inclusion: "[REQUIRED DURING JAE SUBMISSION: describe regional collaboration/intellectual input/stakeholder engagement as applicable]"
+ethics_and_permits:
+  secondary_public_data_only: true
+  statement: "Secondary analysis of publicly released acoustic-monitoring and trait data; no new animal capture, handling or field sampling."
+
+approvals:
+  all_authors_approve_submission: false
+  all_entitled_authors_included: false
+  not_under_consideration_elsewhere: false
+
+repository:
+  url: "https://github.com/zuizui0223/frogcs"
+  license: "[CONFIRM LICENSE]"
+  archive_year: 2026
+  archive_doi: ""
+
+source_data:
+  - name: "North American Amphibian Monitoring Program (NAAMP)"
+    doi: "10.5066/F7G44NG0"
+  - name: "AmphiBIO v1"
+    doi: "10.6084/m9.figshare.4644424.v5"
