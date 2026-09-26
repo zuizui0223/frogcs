@@ -1,4 +1,4 @@
-# Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity
+# Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry
 
 ## Abstract
 
