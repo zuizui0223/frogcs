@@ -41,7 +41,7 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
           x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           if expected not in x:
               raise SystemExit("JAE_SUBMISSION_METADATA_YAML contains a superseded title")
@@ -62,7 +62,7 @@ jobs:
               document=z.read("word/document.xml").decode("utf-8")
               footer=z.read("word/footer1.xml").decode("utf-8")
               core=z.read("docProps/core.xml").decode("utf-8")
-          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
           assert "<w:lnNumType" in document
           assert 'w:restart="continuous"' in document
           assert "PAGE" in footer
