@@ -7,6 +7,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 EXPECTED_TITLE="Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change"
 OLD_TITLE="Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
+SUPERSEDED_GEOMETRY_TITLE="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
 
 required=[
     "MANUSCRIPT_JAE_V0_8.md",
@@ -24,6 +25,8 @@ required=[
     "NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json",
     "NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json",
     "NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_SUMMARY_V0_1.json",
+    "NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json",
+    "NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json",
     "SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md",
     "SUPPORTING_INFORMATION_JAE_RC6_V0_1.md",
     "ECOLOGICAL_FIGURE_HASHES_V0_3.json",
@@ -53,14 +56,18 @@ for rel in surfaces:
         raise SystemExit(f"current title missing from {rel}")
     if OLD_TITLE in text:
         raise SystemExit(f"superseded RC5 title leaked into {rel}")
+    if SUPERSEDED_GEOMETRY_TITLE in text:
+        raise SystemExit(f"superseded geometry title leaked into {rel}")
 
 si=(ROOT/"SUPPORTING_INFORMATION_JAE_RC6_V0_1.md").read_text(encoding="utf-8")
 for anchor_text in [
     "## S2. Rain-recency timescale",
     "## S4. Held-out response-diversity buffering test",
     "## S5. Alternative species-trait and context mechanisms",
-    "## S6. Response magnitude versus activation geometry",
+    "## S6. Activation geometry: repeatability followed by placebo falsification",
+    "## S7. Reconciliation with the earlier v0.4 conditional-multispecies result",
     "P = **.419**",
+    "wet geometry vs reverse dry geometry",
     "family-stratified permutation was unsupported",
 ]:
     if anchor_text not in si:
