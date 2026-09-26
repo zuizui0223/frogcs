@@ -1,0 +1,183 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_species_activation_geometry_repeatability_v0_1_summary",
+  "workflow_run": 36239134973,
+  "head_sha": "4cca6461f6c2af1105a30f948837c0736538cf33",
+  "time_split": {
+    "early": [
+      2001,
+      2007
+    ],
+    "late": [
+      2008,
+      2015
+    ]
+  },
+  "trait_definition": "Opportunity-corrected log odds that a species' wetter-run gain incidence occurs at a stop that was acoustically inactive in the paired drier run, relative to the fraction of drier-run stops available in that inactive state.",
+  "labels": {
+    "positive": "spatial-edge activator",
+    "negative": "local taxonomic deepener"
+  },
+  "early": {
+    "estimable_species": 17,
+    "matched_pairs": 1276,
+    "eligible_runs": 2888
+  },
+  "late": {
+    "estimable_species": 31,
+    "matched_pairs": 2459,
+    "eligible_runs": 4960
+  },
+  "overlap_species": 16,
+  "primary": {
+    "spearman_rho": 0.7735294117647058,
+    "p_value": 0.00043935565171172104,
+    "supported": true
+  },
+  "weighted_regression": {
+    "beta": 0.9096523301526751,
+    "ci95": [
+      0.8159752937817172,
+      1.003329366523633
+    ],
+    "p_value": 9.21879634578799e-81
+  },
+  "sign_concordance": {
+    "same_sign": 15,
+    "n_species": 16,
+    "fraction": 0.9375,
+    "one_sided_binomial_p": 0.0002593994140625
+  },
+  "family_adjusted": {
+    "estimable": false,
+    "n_species": 14,
+    "reason": "insufficient_family_coverage"
+  },
+  "conventional_trait_descriptives": {
+    "log_body_size": {
+      "n_species": 14,
+      "rho": -0.3061681435902961,
+      "p": 0.28705384432097536
+    },
+    "log_clutch_size": {
+      "n_species": 14,
+      "rho": -0.006593406593406593,
+      "p": 0.9821527354577906
+    },
+    "log_offspring_size": {
+      "n_species": 14,
+      "rho": -0.16923076923076924,
+      "p": 0.5630172739962107
+    },
+    "log_reproductive_output": {
+      "n_species": 13,
+      "rho": -0.23466983204052896,
+      "p": 0.440273354801027
+    }
+  },
+  "species_table": [
+    {
+      "species": "Acris crepitans",
+      "early": 0.0038911308793801724,
+      "late": 0.26420843846800707,
+      "same_sign": true
+    },
+    {
+      "species": "Anaxyrus americanus",
+      "early": -0.1201551954642822,
+      "late": -0.12188048178903788,
+      "same_sign": true
+    },
+    {
+      "species": "Anaxyrus fowleri",
+      "early": 0.27326717180826104,
+      "late": 0.12070477078972508,
+      "same_sign": true
+    },
+    {
+      "species": "Hyla chrysoscelis",
+      "early": 0.2042558070361827,
+      "late": 0.20776456398189788,
+      "same_sign": true
+    },
+    {
+      "species": "Hyla chrysoscelis/versicolor complex",
+      "early": -0.319454159929535,
+      "late": -0.19213363724894458,
+      "same_sign": true
+    },
+    {
+      "species": "Hyla cinerea",
+      "early": 0.03938949410488533,
+      "late": 0.2603919538139255,
+      "same_sign": true
+    },
+    {
+      "species": "Hyla versicolor",
+      "early": 0.22710775782554193,
+      "late": 0.33979305310460506,
+      "same_sign": true
+    },
+    {
+      "species": "Lithobates catesbeianus",
+      "early": -0.1392267025767092,
+      "late": -0.33482947404064917,
+      "same_sign": true
+    },
+    {
+      "species": "Lithobates clamitans",
+      "early": 0.219573411299076,
+      "late": 0.1130544487216144,
+      "same_sign": true
+    },
+    {
+      "species": "Lithobates palustris",
+      "early": -0.9671523949558516,
+      "late": -0.7021157101383694,
+      "same_sign": true
+    },
+    {
+      "species": "Lithobates sphenocephalus",
+      "early": -0.2709937985011725,
+      "late": -0.39007217525974897,
+      "same_sign": true
+    },
+    {
+      "species": "Lithobates sylvaticus",
+      "early": -0.07183922646820085,
+      "late": -0.3467149869970545,
+      "same_sign": true
+    },
+    {
+      "species": "Pseudacris crucifer",
+      "early": 1.1444556505179084,
+      "late": 1.060542384821323,
+      "same_sign": true
+    },
+    {
+      "species": "Pseudacris feriarum",
+      "early": -0.11975329817687284,
+      "late": 0.676033036691368,
+      "same_sign": false
+    },
+    {
+      "species": "Pseudacris kalmi",
+      "early": -0.1797261337639803,
+      "late": -0.5563327107662626,
+      "same_sign": true
+    },
+    {
+      "species": "Pseudacris maculata/triseriata complex",
+      "early": 0.4984871914757179,
+      "late": 0.6249694372089415,
+      "same_sign": true
+    }
+  ],
+  "interpretation": "Species differ repeatably in how wetter-condition acoustic gains enter the community matrix. Some species consistently place gains disproportionately at newly active sites, whereas others consistently deepen sites that were already active. This response trait is temporally repeatable within species and is not strongly aligned with the tested conventional life-history traits.",
+  "boundaries": {
+    "occupancy_or_dispersal_trait": false,
+    "same_species_temporal_validation": true,
+    "independent_species_replication": false,
+    "causal_rainfall_claim": false
+  }
+}
