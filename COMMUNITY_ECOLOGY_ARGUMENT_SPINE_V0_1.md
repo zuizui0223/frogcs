@@ -145,6 +145,31 @@ The >=3-species fraction also rises (beta = +0.0226, P = .00670).
 
 Thus local deepening is not merely a binary single-species to multispecies transition.
 
+## Claim 5b — species have repeatable activation geometry
+
+The community-level four-way decomposition can be converted into an opportunity-corrected species response trait: when a species gains wetter-run incidences, does it do so disproportionately at stops that were inactive in the drier run, or within stops that were already active?
+
+The species model uses `logit(q_pair)` as an offset, where `q_pair` is the fraction of drier-run stops available in the inactive state.
+
+Across non-overlapping periods:
+- early estimable species = **17**;
+- late estimable species = **31**;
+- overlap family = **16** species;
+- early–late Spearman ρ = **0.774**, P = **0.000439**;
+- WLS late ~ early slope = **0.910**, 95% CI 0.816–1.003;
+- **15/16 species retain the same sign**, exact one-sided P = **0.000259**.
+
+Interpretation:
+- positive geometry = **spatial-edge activator**;
+- negative geometry = **local taxonomic deepener**.
+
+Examples:
+- *Pseudacris crucifer*: +1.144 early, +1.061 late;
+- *Lithobates palustris*: -0.967 early, -0.702 late;
+- *Lithobates catesbeianus*: -0.139 early, -0.335 late.
+
+This is the strongest species-level response trait currently identified. It is an acoustic gain-placement trait, not a dispersal, colonization or occupancy-niche trait. Family-adjusted validation was not estimable, so do not claim phylogenetic independence.
+
 ## Claim 6 — taxonomic expansion shows no detectable shift in conventional functional centroid or dispersion
 
 Frozen four-axis AmphiBIO functional space:
@@ -217,7 +242,7 @@ The paper should distinguish three diversity objects:
 
 1. **taxonomic diversity** — alpha and gamma richness increase;
 2. **spatial metacommunity structure** — measured beta diversity shows no detectable rainfall-associated shift;
-3. **response diversity** — species differ in rainfall response, but this difference is not predicted by the measured functional trait space and does not demonstrably buffer richness.
+3. **response diversity** — species differ both in wet/dry response magnitude and in a temporally repeatable activation geometry; conventional life-history traits do not strongly encode these response dimensions, and response-sign diversity does not demonstrably buffer richness.
 
 This is stronger than a generic rainfall-calling result because it asks **where in the metacommunity matrix an environmental pulse enters**.
 
@@ -241,10 +266,10 @@ Four exact incidence components:
 
 Visual message: ~92% of the slope involves opening at least one matrix boundary; only ~8% is within-core rearrangement.
 
-### Figure 3 — taxonomic, functional and response dimensions
-Panel A: taxonomic richness gain vs null functional MPD/CWM change.
+### Figure 3 — functional traits versus response geometry
+Panel A: taxonomic richness gain vs functional MPD/CWM change.
 Panel B: pairwise functional distance vs rainfall-response dissimilarity with permutation result.
-Panel C: conceptual separation of functional traits from response traits.
+Panel C: early-versus-late activation geometry for the 16 overlap species, with the 1:1 line and spatial-edge/local-deepening quadrants.
 
 Timescale, species forest plots, turnover/nestedness between years, and failed simple trait mechanisms move to Supplement.
 
