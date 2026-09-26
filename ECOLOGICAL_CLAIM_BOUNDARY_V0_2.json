@@ -1,0 +1,86 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "ecology-0.4",
+  "status": "week_scale_ecological_submission_candidate",
+  "working_title": "Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities",
+  "primary_system": "NAAMP",
+  "central_claims": [
+    "Within fixed route × seasonal-window strata, active-community richness is higher at day 0, day 1, days 2–3, and days 4–7 since reported rain than at >=8 days since rain.",
+    "The prespecified run-level richness-pulse endpoint is days 4–7: +0.381 species relative to >=8-day runs, 95% CI 0.202–0.561.",
+    "A stricter exact-consecutive-year dry-anchor sensitivity clearly supports positive richness differences through days 2–3 and is directionally positive but imprecise at days 4–7.",
+    "Within matched route × seasonal-window comparisons, greater rainfall contrast predicts higher active-species richness.",
+    "Rainfall-associated richness gain is not simple nested addition; exact consecutive-year comparisons show increased compositional turnover with rainfall contrast.",
+    "Species wet-versus-dry responses remain strongly heterogeneous after pair-level environmental and temporal adjustment and remain heterogeneous within major families."
+  ],
+  "interpretation": "Recent rainfall is associated with a multi-day expansion of the acoustically active frog community and species-selective wet–dry reassembly. The response is not confined to the immediate day of rain.",
+  "timescale_boundary": {
+    "supported": "Active-community richness elevation remains detectable through the prespecified 4–7 day recency bin in the route-season fixed-effects analysis.",
+    "strict_sensitivity": "Exact-consecutive dry-anchor richness differences are clearly positive through days 2–3 and imprecise at days 4–7.",
+    "not_supported": "Persistence of compositional turnover above dry–dry temporal background is not established because the prespecified dry–dry minimum sample-size gate failed before effect readback.",
+    "no_half_life": "No physiological recovery time, half-life, or exact decay breakpoint is authorized."
+  },
+  "mechanistic_followups": {
+    "pooled_body_size": "strong pooled correlate but family-stratified permutation null; not mechanism authority",
+    "hydroperiod_flags": "nonestimable because all 23 covered species were coded for both temporary and permanent breeding waters",
+    "breeding_season_breadth": "unsupported; beta=+0.0262/month, P=0.823",
+    "baseline_episodicity": "unsupported in temporal holdout; baseline recurrence P=0.698 and seasonal concentration P=0.990",
+    "route_dryness_context": "unsupported in temporal holdout; richness interaction P=0.855, exact-consecutive P=0.334",
+    "compositional_memory_vs_dry_dry": "not estimable; no candidate background rule reached the frozen >=100 pairs and >=50 routes threshold"
+  },
+  "prohibited": [
+    "rainfall causes a week-long community state",
+    "rainfall causes occupancy or abundance change",
+    "wet-only species colonized",
+    "dry-only species went extinct",
+    "rainfall increases breeding success",
+    "compositional turnover is proven to persist for a week",
+    "the 4–7 day bin is a physiological recovery time or exact half-life",
+    "temporary-water breeding, breeding-season breadth, baseline rarity, or historical route dryness explains species selectivity",
+    "body size is a proven mechanism",
+    "the ecological-extension analyses were original preregistered hypotheses"
+  ],
+  "key_numbers": {
+    "matched_pairs": 4236,
+    "matched_routes": 585,
+    "matched_richness_beta": 0.28590196650411864,
+    "matched_richness_ci95": [
+      0.1646492519993803,
+      0.407154681008857
+    ],
+    "matched_richness_p": 0.0000038115507171919626,
+    "timescale_day0": {
+      "delta_richness": 0.6539747125332243,
+      "ci95": [
+        0.4477938943195541,
+        0.8601555307468944
+      ]
+    },
+    "timescale_day1": {
+      "delta_richness": 0.5444882995074075,
+      "ci95": [
+        0.35034836451015505,
+        0.73862823450466
+      ]
+    },
+    "timescale_days2_3": {
+      "delta_richness": 0.41143230051767554,
+      "ci95": [
+        0.22674927192278121,
+        0.5961153291125698
+      ]
+    },
+    "timescale_days4_7": {
+      "delta_richness": 0.3812874119598792,
+      "ci95": [
+        0.20187490562265278,
+        0.5606999182971056
+      ]
+    },
+    "exact_consecutive_turnover_beta": 0.01840040311450663,
+    "exact_consecutive_turnover_p": 0.008502794219011536,
+    "adjusted_species_Q": 144.014669045494,
+    "adjusted_species_Q_p": 1.4592981930238995e-17,
+    "within_family_Q": 73.87934545074741,
+    "within_family_Q_p": 8.284705119964522e-8
+  }
+}
