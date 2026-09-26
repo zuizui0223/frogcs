@@ -1,0 +1,64 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_activation_geometry_placebo_gate_v0_1",
+  "status": "post-opening falsification gate frozen before placebo endpoint readback",
+  "purpose": "Test whether the species ranking called activation geometry is specific to wetter-condition gain placement or is largely reproduced by rain-independent co-occurrence structure.",
+  "headline_family": {
+    "source": "NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json",
+    "rule": "the 16 species in the frozen non-overlapping temporal validation family",
+    "fixed_before_placebo_readback": true
+  },
+  "focal_trait": {
+    "name": "wet_gain_geometry_all_years",
+    "definition": "Across all 2001-2015 matched wetter-drier pairs, fit the same opportunity-corrected species geometry used by RC6: wet-gain incidence at a drier-run inactive stop versus a drier-run already-active stop, with offset logit(q_dry), where q_dry is the drier-run inactive-stop fraction.",
+    "model": "intercept-only grouped binomial GLM with logit(q_dry) offset and route-clustered covariance",
+    "species_eligibility": "headline family is fixed; each metric additionally requires >=30 informative incidences across >=10 routes and >=15 informative pairs"
+  },
+  "placebo_1_reverse_direction": {
+    "name": "reverse_dry_gain_geometry",
+    "definition": "For dry-gain incidences (species detected at a stop only in the drier run), success means the paired wetter-run stop is acoustically inactive and failure means that wetter-run stop is already active; offset is logit(q_wet), where q_wet is the wetter-run inactive-stop fraction.",
+    "rationale": "A stable species co-occurrence/solitude tendency should generate similar species ordering even when the wetter-drier direction is reversed."
+  },
+  "placebo_2_low_contrast": {
+    "name": "low_contrast_wet_geometry",
+    "pair_rule": "Use the bottom quartile of positive rain_contrast across the frozen 4,236 matched pairs. The quartile cutpoint is determined from the predictor distribution only, before geometry endpoint readback.",
+    "geometry_definition": "Same as focal wet-gain geometry.",
+    "rationale": "If species ordering persists when paired surveys differ only weakly in rainfall recency, the ordering may reflect stable co-occurrence structure rather than a rainfall-specific response mode."
+  },
+  "baseline_cooccurrence": {
+    "raw_metric": "For each headline species across all eligible runs, fraction of its species-stop detections occurring at a stop with exactly one calling species total.",
+    "opportunity_corrected_metric": "For each species occurrence, success=singleton active stop and failure=multispecies active stop; offset logit(q_singleton_run), where q_singleton_run is the fraction of active stops in that run that are singleton. Use only 0<q_singleton_run<1 and fit the same intercept-only clustered binomial model.",
+    "name": "baseline_solitude_geometry",
+    "rationale": "This directly tests the proposed alternative that geometry is mostly a stable tendency to occur alone versus in multispecies calling assemblages."
+  },
+  "coupling_rule": {
+    "metric": "Spearman rank correlation across fixed headline species with both quantities estimable",
+    "minimum_species": 12,
+    "strong_same_rank_coupling": "rho >= 0.60 and two-sided P < 0.05",
+    "threshold_origin": "Reuse the already frozen strong-coupling threshold from NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_CONTRACT_V0_1.json rather than inventing a new post hoc standard."
+  },
+  "headline_gate": {
+    "retain_activation_geometry_in_title_if": [
+      "wet_gain_geometry versus reverse_dry_gain_geometry does NOT meet strong_same_rank_coupling",
+      "wet_gain_geometry versus low_contrast_wet_geometry does NOT meet strong_same_rank_coupling",
+      "wet_gain_geometry versus baseline_solitude_geometry does NOT meet strong_same_rank_coupling"
+    ],
+    "demote_if": "Any one of the three primary placebo/baseline comparisons meets strong_same_rank_coupling.",
+    "raw_singleton_fraction": "Reported as a descriptive corroboration and not a separate gate.",
+    "no_redefinition_after_readback": true
+  },
+  "secondary_outputs": [
+    "Pairwise scatter tables for all four geometry quantities",
+    "Spearman correlation between wet geometry and raw singleton fraction",
+    "WLS wet geometry on each placebo/baseline score weighted by inverse wet-geometry variance; descriptive only",
+    "Low-contrast quartile cutpoint and sample-size diagnostics"
+  ],
+  "interpretation_if_pass": "Activation geometry is not strongly reproduced by reverse-direction gains, near-zero rainfall-contrast gains, or baseline solitude tendency, supporting its use as a rainfall-associated response geometry.",
+  "interpretation_if_fail": "Activation geometry is substantially compatible with a stable species co-occurrence/solitude property. Remove it from the title and main novelty claim; retain temporal/route repeatability as a descriptive species property in Supporting Information.",
+  "boundaries": [
+    "This is a falsification gate for interpretation, not proof of causality.",
+    "The low-contrast placebo is relative to the observed rain-contrast distribution, not truly zero rainfall difference.",
+    "Baseline solitude is an acoustic co-occurrence property, not habitat occupancy.",
+    "No alternative placebo definition, threshold, species family or decision rule may replace this frozen specification after readback."
+  ]
+}
