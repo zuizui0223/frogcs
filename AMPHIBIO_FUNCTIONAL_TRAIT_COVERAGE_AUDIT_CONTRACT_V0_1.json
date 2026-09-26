@@ -1,0 +1,40 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "amphibio_functional_trait_coverage_audit_v0_1",
+  "status": "outcome_blind_trait_coverage_audit",
+  "purpose": "Determine which independently compiled species traits have enough coverage and variation among NAAMP response-eligible species to support a finite functional-community analysis. No rainfall-response association is fitted in this audit.",
+  "species_universe": {
+    "source": "NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json",
+    "expected_species": 29,
+    "taxonomy_rule": "same exact/frozen-genus-alias matching as NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1"
+  },
+  "trait_source": {
+    "dataset": "AmphiBIO v1",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "file": "AmphiBIO_v1.csv",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87"
+  },
+  "candidate_traits": {
+    "adult_habitat_binary": ["Fos","Ter","Aqu","Arb"],
+    "diel_activity_binary": ["Diu","Noc","Crepu"],
+    "reproductive_mode_binary": ["Dir","Lar","Viv"],
+    "continuous": [
+      "Body_size_mm","Body_mass_g",
+      "Age_at_maturity_min_y","Age_at_maturity_max_y","Longevity_max_y",
+      "Litter_size_min_n","Litter_size_max_n","Reproductive_output_y",
+      "Offspring_size_min_mm","Offspring_size_max_mm"
+    ]
+  },
+  "eligibility_rule_for_later_analysis": {
+    "binary_trait": "at least 18 complete matched species and both levels represented by at least 3 species",
+    "continuous_trait": "at least 18 finite positive/valid species and nonzero variance",
+    "functional_panel": "prefer one nonredundant trait from each ecological axis (morphology, habitat, activity, reproductive mode) that passes coverage; do not add traits after rainfall-response readback",
+    "no_imputation": true
+  },
+  "prohibited": [
+    "no response-trait association in this audit",
+    "no trait selection based on wet/dry effect direction",
+    "no fuzzy taxonomic matching",
+    "no post-readback expansion of the finite trait panel"
+  ]
+}

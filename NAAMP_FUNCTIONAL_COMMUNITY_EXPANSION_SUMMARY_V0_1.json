@@ -1,0 +1,32 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_functional_community_expansion_v0_1_summary",
+  "workflow_run": 36222661450,
+  "trait_space": {
+    "axes": ["log_body_size","log_clutch_size","log_offspring_size","log_reproductive_output"],
+    "complete_species": 42,
+    "fraction_eligible_run_species_incidences": 0.9321181434599156
+  },
+  "primary": {
+    "trait_covered_richness": {"beta":0.28131791962802377,"ci95":[0.15157606627394152,0.41105977298210605],"p":2.1399046321183606e-05},
+    "functional_mpd": {"beta":-0.015333226505653663,"ci95":[-0.04344728165813149,0.012780828646824165],"p":0.2850913591905545},
+    "functional_novelty_balance": {"beta":0.04193502796919546,"ci95":[0.0014772028057894737,0.08239285313260145],"p":0.04220161274011015},
+    "functional_mpd_adjusting_richness": {"beta":-0.011202557664562556,"ci95":[-0.03942552421159613,0.01702040888247102],"p":0.4365869442242232}
+  },
+  "community_weighted_mean_shifts": {
+    "body_size_fdr":0.47809635948476303,
+    "clutch_size_fdr":0.44240766152494615,
+    "offspring_size_fdr":0.44240766152494615,
+    "reproductive_output_fdr":0.44240766152494615
+  },
+  "exact_consecutive_year": {
+    "n_pairs":2693,
+    "functional_mpd_beta":-0.010821237563366769,
+    "functional_mpd_p":0.5322687234194271,
+    "functional_novelty_balance_beta":0.048316140143364855,
+    "functional_novelty_balance_p":0.06399900889084535,
+    "trait_covered_richness_beta":0.3122283277163457
+  },
+  "interpretation": "Rainfall contrast increases taxonomic richness within a well-covered four-axis life-history trait space without increasing overall functional dispersion or shifting the community centroid. Wet-only species are modestly more functionally novel relative to the opposing assemblage in the primary analysis, but this novelty signal is borderline in exact consecutive-year pairs. The dominant pattern is taxonomic expansion with conservation of broad life-history structure, not strong trait filtering.",
+  "boundaries": {"broad_trait_space_only":true,"phylogenetic_mechanism_claim":false,"causal_claim":false}
+}

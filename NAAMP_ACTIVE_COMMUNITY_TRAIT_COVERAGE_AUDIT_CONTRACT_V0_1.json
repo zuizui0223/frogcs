@@ -1,0 +1,31 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_active_community_functional_trait_coverage_audit_v0_1",
+  "status": "outcome_blind_community_trait_coverage_audit",
+  "purpose": "Assess AmphiBIO coverage for every species actually detected in the 7,848 complete NAAMP community runs before defining functional-diversity endpoints.",
+  "species_universe": "union of active species across the same eligible runs used by NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+  "trait_source": {
+    "dataset": "AmphiBIO v1",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87"
+  },
+  "priority_trait_panel": [
+    "Body_size_mm",
+    "Litter_size_min_n","Litter_size_max_n",
+    "Offspring_size_min_mm","Offspring_size_max_mm",
+    "Reproductive_output_y",
+    "Age_at_maturity_min_y","Age_at_maturity_max_y",
+    "Longevity_max_y"
+  ],
+  "future_panel_gate": {
+    "core_functional_panel": "traits must be complete for >=80% of uniquely matched active species and have nonzero variance",
+    "secondary_life_history_panel": "traits complete for >=60% may be used only for species-level secondary analyses",
+    "no_imputation": true,
+    "complex_taxa": "unmatched species-complex records remain unmatched; do not assign constituent traits"
+  },
+  "prohibited": [
+    "no rainfall-response models in this audit",
+    "no trait selection from effect directions",
+    "no fuzzy taxonomic matching"
+  ]
+}
