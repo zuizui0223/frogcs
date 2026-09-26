@@ -42,7 +42,9 @@ A single wet-versus-dry response coefficient cannot tell whether a positive resp
 
 Conversely, two species with similar activation geometry can differ in the overall frequency with which they are wetter-associated.
 
-The coordinates should therefore be interpreted as a response plane, not collapsed unless data demonstrate strong coupling.
+The coordinates should therefore be interpreted as a response plane rather than automatically collapsed.
+
+A frozen cross-axis holdout test used early activation geometry (2001–2007) to predict independently estimated late wet-versus-dry response magnitude (2008–2015). The rank association was moderate (Spearman rho = 0.415, P = 0.110) and did not meet the frozen strong-coupling rule of |rho| >= 0.6 with P < 0.05. However, inverse-variance weighted regression was positive (beta = 0.354, 95% CI 0.204–0.503). Response magnitude and activation geometry are therefore **conceptually distinct but partially coupled**; RC6 must not describe them as statistically independent.
 
 ## Temporal evidence for activation geometry
 
