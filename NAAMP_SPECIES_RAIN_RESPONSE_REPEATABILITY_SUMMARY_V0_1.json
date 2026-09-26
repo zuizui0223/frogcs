@@ -1,0 +1,31 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_species_rain_response_temporal_repeatability_v0_1_summary",
+  "contract": "NAAMP_SPECIES_RAIN_RESPONSE_REPEATABILITY_CONTRACT_V0_1.json",
+  "workflow_run": 36211564674,
+  "artifact_id": 10895403508,
+  "artifact_digest": "sha256:3cd2bfd714a87b58d9bcfea0bd78a7efd0a5cd948553728730bc63ee1bb473a2",
+  "head_sha": "86191d082ada08c0bb95ddcb66d1f1a3aef9c01b",
+  "overlap_species": 15,
+  "primary_spearman": {
+    "rho": 0.24285714285714283,
+    "p_value": 0.38312834183934164,
+    "supported": false
+  },
+  "weighted_regression": {
+    "beta": 0.6306513898889501,
+    "ci95": [
+      0.052690116043708435,
+      1.2086126637341916
+    ],
+    "p_value": 0.03246442694809142
+  },
+  "sign_concordance": {
+    "same_sign": 12,
+    "n_species": 15,
+    "fraction": 0.8,
+    "one_sided_binomial_p": 0.017578125
+  },
+  "interpretation": "Primary rank-repeatability criterion is not met. Directional sign and weighted-regression sensitivities suggest partial temporal stability, but a stable species-specific response ranking is not authorized.",
+  "headline_authorized": false
+}
