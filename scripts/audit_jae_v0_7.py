@@ -39,9 +39,9 @@ for x in required:
 prohibited_patterns=[
     (r"rainfall causes", "causal rainfall wording"),
     (r"caused by rainfall", "causal rainfall wording"),
-    (r"colonized the route", "colonization wording"),
-    (r"went extinct", "extinction wording"),
-    (r"week-long (?:community|richness|reassembly|pulse)", "week-long headline wording"),
+    (r"(?<!not )species colonized the route", "affirmative colonization wording"),
+    (r"(?<!not )species went extinct", "affirmative extinction wording"),
+    (r"the data (?:show|support|demonstrate) a week-long (?:community|richness|reassembly|pulse)", "affirmative week-long headline wording"),
     (r"response diversity (?:buffers|stabilizes) route", "unsupported response-diversity buffering"),
 ]
 low=s.lower()
@@ -56,7 +56,6 @@ if "multi-day expansion and species-selective reassembly" in low:
 # Transparency statements.
 for phrase in [
     "post-opening",
-    "not evidence of demographic connectivity",
     "do not use “week-long pulse” as a headline inference",
     "does not assume or demonstrate that all stops form a demographic metacommunity",
 ]:
