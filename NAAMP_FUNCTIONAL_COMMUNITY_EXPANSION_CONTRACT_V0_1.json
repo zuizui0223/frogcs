@@ -1,0 +1,62 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_functional_community_expansion_v0_1",
+  "status": "post-opening functional-community analysis frozen before endpoint readback",
+  "sample": "same 4,236 matched wet-dry route x seasonal-window pairs; exact-consecutive-year sensitivity prespecified",
+  "trait_source": {
+    "dataset": "AmphiBIO v1",
+    "mirror_commit": "c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87",
+    "coverage_audit": "NAAMP_ACTIVE_COMMUNITY_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json"
+  },
+  "frozen_core_trait_space": {
+    "species_required_complete_fields": [
+      "Body_size_mm",
+      "Litter_size_min_n","Litter_size_max_n",
+      "Offspring_size_min_mm","Offspring_size_max_mm",
+      "Reproductive_output_y"
+    ],
+    "coverage_from_outcome_blind_audit": "42 species; 93.2% of eligible run x species incidences",
+    "derived_traits": {
+      "log_body_size": "log(Body_size_mm)",
+      "log_clutch_size": "mean(log(Litter_size_min_n), log(Litter_size_max_n))",
+      "log_offspring_size": "mean(log(Offspring_size_min_mm), log(Offspring_size_max_mm))",
+      "log_reproductive_output": "log(Reproductive_output_y)"
+    },
+    "scaling": "z-score each derived trait across all complete matched species before community calculations",
+    "distance": "Euclidean distance in four-dimensional standardized trait space divided by sqrt(4)"
+  },
+  "primary_endpoints": [
+    {
+      "name": "delta_functional_mpd",
+      "definition": "wet minus dry mean pairwise functional distance among trait-covered active species in the route-run; requires >=2 covered species in each run",
+      "interpretation": "positive = broader functional dispersion; zero with taxonomic richness gain = functional redundancy"
+    },
+    {
+      "name": "functional_novelty_balance",
+      "definition": "mean nearest-neighbour trait distance of wet-only covered species to the dry covered assemblage minus the symmetric distance of dry-only covered species to the wet covered assemblage",
+      "interpretation": "positive = wetter assemblages recruit more functionally novel species; zero/negative = taxonomic additions mostly occupy existing trait space"
+    }
+  ],
+  "secondary_endpoints": [
+    "delta_trait_covered_richness",
+    "delta_cwm_log_body_size",
+    "delta_cwm_log_clutch_size",
+    "delta_cwm_log_offspring_size",
+    "delta_cwm_log_reproductive_output"
+  ],
+  "secondary_multiplicity": "Benjamini-Hochberg FDR across the four CWM centroid-shift tests only",
+  "model": {
+    "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "sensitivity": "exact consecutive-year pairs",
+    "mpd_richness_sensitivity": "repeat delta_functional_mpd model adding delta_trait_covered_richness as a covariate"
+  },
+  "interpretation_boundary": {
+    "functional": "broad life-history/reproductive trait space represented by the four frozen AmphiBIO axes, not complete ecological function",
+    "trait_coverage": "unmatched species complexes are excluded rather than imputed",
+    "causal_claim": false,
+    "phylogenetic_mechanism_claim": false,
+    "retuning_after_readback": false
+  }
+}
