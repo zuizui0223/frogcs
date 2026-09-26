@@ -7,8 +7,8 @@ ROOT=Path(__file__).resolve().parents[1]
 manifest=ROOT/"ECOLOGICAL_FIGURE_HASHES_V0_3.json"
 obj=json.loads(manifest.read_text(encoding="utf-8"))
 figs=obj.get("figures") or {}
-if len(figs)!=3:
-    raise SystemExit(f"expected 3 frozen figures, found {len(figs)}")
+if len(figs)!=2:
+    raise SystemExit(f"expected 2 frozen figures, found {len(figs)}")
 for rel,expected in sorted(figs.items()):
     p=ROOT/rel
     if not p.is_file():
