@@ -10,7 +10,16 @@ AMPHIBIO_URL="https://raw.githubusercontent.com/rdmpage/amphibio/c437acbc65b51b6
 AMPHIBIO_BLOB_SHA1="f98650972f3266c24962f70738799a39a8310e87"
 ALIASES={"Hyla":"Dryophytes","Dryophytes":"Hyla","Lithobates":"Rana","Rana":"Lithobates"}
 EXPECTED_N=29
-
+FROZEN_SPECIES=[
+"Gastrophryne carolinensis","Pseudacris crucifer","Hyla squirella","Hyla chrysoscelis",
+"Lithobates catesbeianus","Lithobates palustris","Hyla femoralis","Pseudacris maculata",
+"Hyla cinerea","Pseudacris ocularis","Scaphiopus holbrookii","Lithobates sphenocephalus",
+"Anaxyrus terrestris","Lithobates clamitans","Pseudacris feriarum","Hyla versicolor",
+"Pseudacris kalmi","Acris crepitans","Hyla chrysoscelis/versicolor",
+"Pseudacris maculata/triseriata","Acris gryllus","Acris crepitans/gryllus",
+"Lithobates virgatipes","Lithobates pipiens","Lithobates sylvaticus","Anaxyrus fowleri",
+"Anaxyrus americanus","Pseudacris nigrita","Hyla gratiosa"
+]
 BINARY=["Fos","Ter","Aqu","Arb","Diu","Noc","Crepu","Dir","Lar","Viv"]
 CONT=[
 "Body_size_mm","Body_mass_g","Age_at_maturity_min_y","Age_at_maturity_max_y",
@@ -31,10 +40,9 @@ def norm(x):
     return " ".join(toks[:2]) if len(toks)>=2 else str(x or "").strip()
 
 def species_universe():
-    obj=json.loads(Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json").read_text())
-    rows=obj["species_results"]
-    if len(rows)!=EXPECTED_N: raise SystemExit(f"species drift {len(rows)}")
-    return [norm(x["species_code"]) for x in rows]
+    if len(FROZEN_SPECIES)!=EXPECTED_N or len(set(FROZEN_SPECIES))!=EXPECTED_N:
+        raise SystemExit("frozen species universe malformed")
+    return [norm(x) for x in FROZEN_SPECIES]
 
 def load_traits():
     b=fetch_bytes(AMPHIBIO_URL)
@@ -60,8 +68,7 @@ def asnum(s):
 
 def main():
     spp=species_universe(); t=load_traits()
-    matched=[]
-    audit=[]
+    matched=[]; audit=[]
     for sp in spp:
         tr,kind=match(sp,t)
         audit.append({"naamp_species":sp,"matched":tr is not None,"match_type":kind,
@@ -73,8 +80,7 @@ def main():
     d=pd.DataFrame(matched)
     report={}
     for c in BINARY:
-        x=asnum(d[c])
-        valid=x[x.isin([0,1])]
+        x=asnum(d[c]); valid=x[x.isin([0,1])]
         counts={str(int(k)):int(v) for k,v in valid.value_counts().sort_index().items()}
         eligible=len(valid)>=18 and all(counts.get(str(k),0)>=3 for k in (0,1))
         report[c]={"type":"binary","complete":int(len(valid)),"missing":int(EXPECTED_N-len(valid)),
@@ -90,6 +96,10 @@ def main():
     result={
       "analysis":"amphibio_functional_trait_coverage_audit_v0_1",
       "contract":"AMPHIBIO_FUNCTIONAL_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json",
+      "species_universe_provenance":{
+        "source_workflow_run":36123858918,
+        "rule":"29 response-eligible species from frozen species-pulse workflow; copied literally after repository summary was found to omit non-significant species"
+      },
       "matched_species":int(len(d)),
       "unmatched_species":[a["naamp_species"] for a in audit if not a["matched"]],
       "taxonomy_audit":audit,
