@@ -2,7 +2,7 @@
   "project": "frog-chorus-synchrony",
   "version": "ecology-0.5",
   "status": "community_metacommunity_synthesis_candidate",
-  "working_title": "Recent rainfall expands frog active metacommunities across sites and species while preserving beta diversity",
+  "working_title": "Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity",
   "primary_system": "NAAMP",
   "central_claims": [
     "Within matched route × seasonal-window comparisons, greater rainfall contrast is associated with a larger acoustically active spatial footprint.",
@@ -75,7 +75,7 @@
     "response_diversity_buffer_beta": -0.9536587713560999,
     "response_diversity_buffer_p": 0.4190209475187544
   },
-  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise without detectable change in among-active-site beta diversity. Taxonomic expansion is therefore not equivalent to spatial homogenization, and conventional life-history functional structure remains comparatively stable.",
+  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while the measured among-active-site beta metrics show no detectable change. Taxonomic expansion is therefore not accompanied by detectable spatial homogenization in these acoustic data, and the measured life-history functional centroid and dispersion show no detectable shift.",
   "functional_response_boundary": {
     "supported": "The measured four-axis AmphiBIO functional space does not predict rainfall-response similarity among species.",
     "not_supported": "This does not establish that all functional traits are irrelevant; unmeasured traits such as developmental timing, breeding microhabitat, call energetics, or fine hydroperiod dependence may encode response differences.",
@@ -101,7 +101,8 @@
     "response diversity provides an insurance effect in these data",
     "week-long compositional reassembly",
     "a physiological rainfall-response half-life",
-    "causal mediation from newly active sites to richness gain"
+    "causal mediation from newly active sites to richness gain",
+    "beta diversity is proven unchanged or equivalent across rainfall contrasts"
   ],
   "preferred_terms": [
     "behaviourally realized active community",
