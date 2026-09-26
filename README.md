@@ -1,37 +1,31 @@
 # Frog active-community response to rainfall — JAE RC6 reproducibility package
 
-This repository contains the reproducibility and submission package for the current
-Journal of Animal Ecology candidate:
+Current Journal of Animal Ecology candidate:
 
 **Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change**
 
 ## Current scientific authority
 
-The canonical submission state is aligned across:
+The canonical submission state is intended to be aligned across:
 
 - `main`
 - `release/jae-v1-rc6`
 - `submission/jae-v1`
 
-Use these files for the current article:
+Current article files:
 
 - manuscript: `MANUSCRIPT_JAE_V0_8.md`
 - claim boundary: `ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json`
 - community-ecology spine: `COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md`
-- species response-trait framework: `SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md`
 - Supporting Information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
+- activation-geometry falsification: `NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json`
 - submission handoff: `submission/SUBMISSION_HANDOFF_RC6.md`
-- figures: `figures_ecology_v0_8/`
+- main figures: `figures_ecology_v0_8/`
 - figure hashes: `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
 
-Older RC1–RC5 manuscripts, figures and handoffs are retained as audit history only.
-Do **not** build a current submission from `MANUSCRIPT_JAE_V0_6.md`,
-`figures_ecology_v0_6/` or `submission/SUBMISSION_HANDOFF_RC5.md`.
+Older RC1–RC5 manuscripts, figures and handoffs remain audit history only.
 
 ## Main ecological result
-
-Rainfall recency is associated with expansion of the **behaviourally realized
-acoustic community** at several spatial scales.
 
 Across 4,236 matched wetter–drier route × seasonal-window comparisons:
 
@@ -39,53 +33,45 @@ Across 4,236 matched wetter–drier route × seasonal-window comparisons:
 - local alpha richness among active stops increases;
 - route gamma richness increases;
 - measured among-active-site beta-diversity metrics show no detectable shift;
-- active species × active-site matrix fill is practically equivalent within a
-  frozen ±0.05 connectance-slope margin;
-- most rainfall-associated species × stop incidence growth crosses a spatial
-  and/or taxonomic matrix boundary rather than rearranging an unchanged core.
+- active species × active-site matrix fill is practically equivalent within a frozen ±0.05 connectance-slope margin;
+- most rainfall-associated species × stop incidence growth crosses a spatial and/or taxonomic matrix boundary rather than rearranging an unchanged core.
 
-The exact community decomposition partitions incidence growth into:
+Exact incidence coefficient shares:
 
-- new species × newly active sites: 36.9%;
-- existing species × newly active sites: 15.2%;
-- new species × already-active sites: 39.9%;
-- existing species × already-active sites: 8.0%.
+- new species × newly active sites: **36.9%**;
+- existing species × newly active sites: **15.2%**;
+- new species × already-active sites: **39.9%**;
+- existing species × already-active sites: **8.0%**.
 
-## Species response geometry
+## Species-level mechanism: falsified rather than rescued
 
-Species differ in **where** wetter-condition gain incidences enter the matrix after
-correcting for the number of inactive versus already-active stops available in each
-paired survey.
+A post-opening “activation geometry” candidate was highly repeatable across time and disjoint route sets, but it failed a separately frozen placebo gate.
 
-Positive activation geometry denotes a **spatial-edge activator**; negative geometry
-denotes a **local taxonomic deepener**.
+Wet-gain geometry was strongly reproduced by:
 
-The response geometry is repeatable in two complementary validations:
+- reverse dry-gain geometry: rho = **0.929**;
+- low-rain-contrast geometry: rho = **0.953**;
+- opportunity-corrected baseline solitude geometry: rho = **0.782**;
+- raw singleton-calling fraction: rho = **0.876**.
 
-- non-overlapping time periods: Spearman rho = 0.774, P = 0.00044;
-- completely disjoint deterministic route sets: Spearman rho = 0.785,
-  P = 2.1e-6.
+Therefore activation geometry is **not** treated as a rainfall-specific response trait. Its repeatability is more compatible with a stable acoustic co-occurrence / solitude tendency.
 
-Response magnitude and activation geometry are partially coupled but are not treated
-as a single response axis. Conventional body-size, clutch-size, offspring-size and
-reproductive-output traits do not strongly encode activation geometry in the tested
-species set.
+The manuscript does not residualize, redefine or replace geometry after this failed gate.
+
+## Historical v0.4 reconciliation
+
+The earlier v0.4 manuscript reported a null pooled stop-level rain effect on multispecies probability conditional on acoustic activity (OR = 0.988, P = .402).
+
+RC6 instead analyses wet-minus-dry changes in run-level alpha and in the fraction of active stops with >=2 species under matched route × seasonal-window comparisons. The small >=2 component is positive, but ~71% of the alpha slope comes from multiplicity beyond the second species.
+
+These are different estimands and weightings. Supporting Information Section S7 preserves the explicit comparison.
 
 ## Data sources
 
-Current RC6 analyses use:
+- NAAMP: DOI **10.5066/F7G44NG0**
+- AmphiBIO v1: article DOI **10.1038/sdata.2017.123**; data DOI **10.6084/m9.figshare.4644424.v5**
 
-- North American Amphibian Monitoring Program (NAAMP):
-  DOI **10.5066/F7G44NG0**
-- AmphiBIO v1 functional traits:
-  article DOI **10.1038/sdata.2017.123**;
-  data DOI **10.6084/m9.figshare.4644424.v5**
-
-Raw third-party datasets are not redistributed. Contracts and scripts preserve
-source identities, filters, model definitions and deterministic analysis logic.
-
-FrogID and Australian-acoustic analyses belong to earlier manuscript generations and
-are **not part of the current RC6 primary article**.
+Raw third-party datasets are not redistributed.
 
 ## Inferential boundaries
 
@@ -93,50 +79,35 @@ RC6 concerns acoustic activity. It does not infer:
 
 - occupancy or abundance change;
 - colonization or extinction;
-- dispersal or demographic connectivity among stops;
+- dispersal or demographic connectivity;
 - rainfall causality;
-- exact invariance of all beta-diversity quantities;
-- complete elimination of acoustic detectability or masking;
-- phylogenetic independence of activation geometry;
-- a response-diversity insurance effect;
+- exact invariance of beta diversity;
+- elimination of all acoustic detectability or masking;
+- a validated rainfall-specific species trait;
+- response-diversity insurance;
 - a physiological rainfall-response half-life.
-
-Terms such as “route-new species” and “newly active site” refer only to paired
-acoustic detections.
 
 ## Submission QA
 
-The submission branch runs `.github/workflows/submission_qa.yml`, which checks:
+The submission pipeline checks:
 
-- the RC6 scientific package;
+- RC6 scientific package;
 - current title and metadata rendering;
 - archive-DOI finalization dry-run;
-- deterministic figure hashes;
+- deterministic hashes for the two main figures;
 - anonymous main-manuscript DOCX;
 - anonymous Supporting Information DOCX.
 
-The scientific package, current title, figure package and DOCX pipelines have passed
-on the current RC6 lineage.
-
-The remaining real submission inputs are human/finalization items:
-
-- final author set/order and affiliations;
-- CRediT roles, acknowledgements and funding;
-- corresponding-author details;
-- author approvals;
-- confirmed repository/archive license;
-- published archive DOI.
-
 ## Development policy
 
-The current ecological story is frozen around:
+The RC6 story is now frozen around:
 
 1. multiscale active-community expansion;
-2. species × site matrix geometry;
-3. repeatable species activation geometry;
-4. the distinction between conventional functional traits and empirically derived
-   response traits.
+2. species × site matrix boundary expansion;
+3. practical equivalence of active-matrix fill;
+4. no detectable beta-diversity shift;
+5. recorded detection-condition robustness.
 
-Negative and rejected mechanisms remain in Supporting Information. Further endpoint
-search is not authorized to “rescue” the manuscript; new analyses should answer a
-specific reviewer-grade alternative explanation or form a separate future study.
+Activation geometry failed its final placebo gate. No additional endpoint search, residualization, or replacement post-opening species trait is authorized for this manuscript.
+
+Future mechanistic work should start a new hypothesis family using independent data or independently sourced proximal traits.
