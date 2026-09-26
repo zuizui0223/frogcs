@@ -10,16 +10,7 @@ AMPHIBIO_URL="https://raw.githubusercontent.com/rdmpage/amphibio/c437acbc65b51b6
 AMPHIBIO_BLOB_SHA1="f98650972f3266c24962f70738799a39a8310e87"
 ALIASES={"Hyla":"Dryophytes","Dryophytes":"Hyla","Lithobates":"Rana","Rana":"Lithobates"}
 EXPECTED_N=29
-FROZEN_SPECIES=[
-"Gastrophryne carolinensis","Pseudacris crucifer","Hyla squirella","Hyla chrysoscelis",
-"Lithobates catesbeianus","Lithobates palustris","Hyla femoralis","Pseudacris maculata",
-"Hyla cinerea","Pseudacris ocularis","Scaphiopus holbrookii","Lithobates sphenocephalus",
-"Anaxyrus terrestris","Lithobates clamitans","Pseudacris feriarum","Hyla versicolor",
-"Pseudacris kalmi","Acris crepitans","Hyla chrysoscelis/versicolor",
-"Pseudacris maculata/triseriata","Acris gryllus","Acris crepitans/gryllus",
-"Lithobates virgatipes","Lithobates pipiens","Lithobates sylvaticus","Anaxyrus fowleri",
-"Anaxyrus americanus","Pseudacris nigrita","Hyla gratiosa"
-]
+SPECIES_UNIVERSE_FILE="NAAMP_RESPONSE_ELIGIBLE_SPECIES_UNIVERSE_V0_1.json"
 BINARY=["Fos","Ter","Aqu","Arb","Diu","Noc","Crepu","Dir","Lar","Viv"]
 CONT=[
 "Body_size_mm","Body_mass_g","Age_at_maturity_min_y","Age_at_maturity_max_y",
@@ -40,9 +31,13 @@ def norm(x):
     return " ".join(toks[:2]) if len(toks)>=2 else str(x or "").strip()
 
 def species_universe():
-    if len(FROZEN_SPECIES)!=EXPECTED_N or len(set(FROZEN_SPECIES))!=EXPECTED_N:
+    obj=json.loads(Path(SPECIES_UNIVERSE_FILE).read_text(encoding="utf-8"))
+    spp=[norm(x) for x in obj.get("species",[])]
+    if len(spp)!=EXPECTED_N or len(set(spp))!=EXPECTED_N:
         raise SystemExit("frozen species universe malformed")
-    return [norm(x) for x in FROZEN_SPECIES]
+    if obj.get("response_values_included") is not False:
+        raise SystemExit("species-universe file must contain no response values")
+    return spp
 
 def load_traits():
     b=fetch_bytes(AMPHIBIO_URL)
