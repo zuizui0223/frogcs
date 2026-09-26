@@ -1,5 +1,7 @@
 # JAE initial-submission checklist v0.5 — metacommunity expansion paper
 
+**Manuscript title:** Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity
+
 ## Scientific authority
 
 - [x] manuscript: `MANUSCRIPT_JAE_V0_8.md`
