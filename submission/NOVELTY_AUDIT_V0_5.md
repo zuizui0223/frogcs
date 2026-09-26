@@ -88,7 +88,7 @@ Across 2001–2007 versus 2008–2015:
 - weighted late-on-early slope = 0.910;
 - 15/16 species retain the same spatial-edge versus local-deepening sign.
 
-This is substantially stronger temporal structure than the previously tested rank repeatability of overall wet/dry response magnitude. It provides a proximal response trait derived from how species participate in community expansion.
+This is substantially stronger temporal structure than the previously tested rank repeatability of overall wet/dry response magnitude. It provides a proximal response trait derived from how species participate in community expansion. A separate cross-period diagnostic shows that geometry is not merely a rescaled magnitude axis: rank coupling with later response magnitude is moderate (rho=.415, P=.110), although precision-weighted regression is positive. The defensible interpretation is **partially coupled response coordinates**, not statistical independence.
 
 The four conventional life-history traits do not strongly correlate with this response geometry, although family-adjusted validation is not estimable and phylogenetic independence is not claimed.
 

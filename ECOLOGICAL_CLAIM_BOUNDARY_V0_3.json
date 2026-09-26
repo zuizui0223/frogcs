@@ -15,6 +15,7 @@
     "Trait-covered taxonomic richness increases with rainfall contrast, but the centroid and mean pairwise dispersion of a frozen four-axis life-history/reproductive trait space show no detectable shift.",
     "Pairwise functional similarity in that trait space does not predict pairwise similarity of species-specific rainfall responses.",
     "Species differ in a temporally repeatable activation geometry: an opportunity-corrected tendency for wetter-condition gain incidences to enter newly active versus already-active stops.",
+    "Activation geometry and overall wet-versus-dry response magnitude are conceptually distinct but partially coupled: their cross-period rank association is moderate and below the frozen strong-coupling rule, while precision-weighted regression is positive.",
     "A temporally held-out test does not support the hypothesis that early-period rainfall response-sign diversity buffers later route-level richness responses."
   ],
   "key_numbers": {
@@ -123,6 +124,18 @@
       "same_sign_species": 15,
       "sign_concordance_fraction": 0.9375,
       "sign_concordance_p": 0.0002593994140625
+    },
+    "response_geometry_vs_magnitude": {
+      "overlap_species": 16,
+      "spearman_rho": 0.4147058823529412,
+      "spearman_p": 0.11022940391770165,
+      "frozen_strong_coupling": false,
+      "weighted_beta": 0.3535782053697318,
+      "weighted_ci95": [
+        0.20447354590835526,
+        0.5026828648311084
+      ],
+      "weighted_p": 0.0000033558216970327124
     }
   },
   "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while measured among-active-site beta metrics show no detectable shift and active-matrix fill remains practically equivalent within a frozen margin. Species also show a temporally repeatable activation geometry describing whether wetter-condition gains preferentially open new active sites or deepen sites that were already active; this response trait is not strongly represented by the measured conventional life-history traits.",
@@ -156,7 +169,9 @@
     "all acoustic detectability or masking explanations have been eliminated",
     "active-matrix fill is exactly invariant across rainfall conditions",
     "activation geometry is a dispersal, colonization or occupancy-niche trait",
-    "activation geometry is independent of phylogeny or family structure"
+    "activation geometry is independent of phylogeny or family structure",
+    "response magnitude and activation geometry are statistically independent",
+    "activation geometry is merely a rescaled wet-versus-dry response magnitude"
   ],
   "preferred_terms": [
     "behaviourally realized active community",
@@ -173,6 +188,7 @@
     "practical equivalence of active-matrix fill within the frozen margin",
     "species activation geometry",
     "spatial-edge activator",
-    "local taxonomic deepener"
+    "local taxonomic deepener",
+    "partially coupled response coordinates"
   ]
 }
