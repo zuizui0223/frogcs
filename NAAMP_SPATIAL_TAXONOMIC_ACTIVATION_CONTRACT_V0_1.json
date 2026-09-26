@@ -1,0 +1,56 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_spatial_taxonomic_activation_decomposition_v0_1",
+  "status": "post-opening_mechanistic_decomposition_frozen_before_readback",
+  "parent_analysis": "NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+  "sample": {
+    "source": "same complete 10-stop, temperature-qualified NAAMP runs and adjacent-observed-year route x RunNumber matched pairs as the ecological pulse analysis",
+    "pair_orientation": "lower DaysSinceRain = wet; higher DaysSinceRain = dry",
+    "stop_alignment": "same StopNumber within matched route; fail closed unless all 10 stop numbers align"
+  },
+  "ecological_question": "Does rainfall-associated expansion of route-level active species richness arise because the active spatial footprint expands, because species composition changes within already-active stops, or both?",
+  "frozen_primary_endpoints": [
+    {
+      "name": "delta_active_stops",
+      "definition": "number of stops with >=1 calling species in wet run minus dry run",
+      "prediction": "beta_rain_contrast > 0",
+      "meaning": "spatial activation breadth"
+    },
+    {
+      "name": "shared_species_delta_stops_mean",
+      "definition": "within each pair, mean wet-minus-dry number of occupied stops among species present somewhere in both runs",
+      "prediction": "beta_rain_contrast > 0",
+      "meaning": "spatial spreading of already-participating species"
+    },
+    {
+      "name": "footprint_dependent_net_species",
+      "definition": "wet-only route species detected exclusively at stops inactive in the dry run, minus dry-only route species detected exclusively at stops inactive in the wet run",
+      "prediction": "beta_rain_contrast > 0",
+      "meaning": "conservative component of route richness change structurally dependent on expansion/contraction of the active-stop footprint"
+    },
+    {
+      "name": "within_footprint_net_species",
+      "definition": "remaining wet-only route species minus remaining dry-only route species after footprint-dependent species are removed",
+      "prediction": "reported without a directional support gate",
+      "meaning": "route richness change occurring at least partly within stops already active in the comparison run"
+    }
+  ],
+  "exact_identity": "richness_gain = footprint_dependent_net_species + within_footprint_net_species for every matched pair",
+  "secondary_diagnostics": [
+    "delta_species_stop_incidences",
+    "delta_mean_species_per_active_stop",
+    "delta_mean_stops_per_route_species",
+    "2x2 counts of wet incidence gains: route-new versus route-existing species x dry-inactive versus dry-active stop"
+  ],
+  "model": {
+    "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "sensitivity": "exact consecutive-year pairs only"
+  },
+  "interpretation_boundary": {
+    "active": "acoustically detected calling activity, not occupancy or abundance",
+    "footprint_dependent": "structural dependence in the observed stop x species matrix, not causal proof that spatial activation caused species recruitment",
+    "rainfall": "observational association; no causal rainfall claim",
+    "multiplicity": "finite decomposition family fixed before endpoint readback; no outcome-dependent retuning"
+  }
+}
