@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_TITLE="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+EXPECTED_TITLE="Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change"
 OLD_TITLE="Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
 
 required=[
