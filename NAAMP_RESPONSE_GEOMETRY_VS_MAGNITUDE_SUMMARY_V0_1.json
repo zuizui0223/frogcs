@@ -1,0 +1,44 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_response_geometry_vs_magnitude_holdout_v0_1_summary",
+  "workflow_run": 36240761560,
+  "head_sha": "317f01b7ec334774da932e8955d3aaf809b441bd",
+  "time_split": {
+    "predictor": [
+      2001,
+      2007
+    ],
+    "outcome": [
+      2008,
+      2015
+    ]
+  },
+  "intersection_species": 16,
+  "primary": {
+    "spearman_rho": 0.4147058823529412,
+    "two_sided_p": 0.11022940391770165,
+    "frozen_strong_coupling_rule": "abs(rho)>=0.6 and P<0.05",
+    "strong_cross_axis_coupling": false
+  },
+  "weighted_regression": {
+    "beta": 0.3535782053697318,
+    "ci95": [
+      0.20447354590835526,
+      0.5026828648311084
+    ],
+    "p_value": 0.0000033558216970327124
+  },
+  "sign_groups": {
+    "spatial_edge_activators_n": 8,
+    "local_deepeners_n": 8,
+    "weighted_mean_late_response_edge": 0.18367453412453594,
+    "weighted_mean_late_response_deepener": -0.0504611501457837
+  },
+  "interpretation": "Early activation geometry does not meet the frozen criterion for strong rank coupling with later wet-dry response magnitude, but precision-weighted regression is positive. Response magnitude and activation geometry should therefore be treated as conceptually distinct, partially coupled response coordinates—not as a single axis and not as statistically independent dimensions.",
+  "boundaries": {
+    "statistical_independence_claim": false,
+    "equivalence_claim": false,
+    "same_species_nonoverlapping_periods": true,
+    "causal_claim": false
+  }
+}

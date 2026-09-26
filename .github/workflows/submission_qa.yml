@@ -16,7 +16,7 @@ concurrency:
 jobs:
   qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,23 +25,20 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install metadata QA dependency
-        run: python -m pip install --disable-pip-version-check -q PyYAML==6.0.2
+      - name: Install submission QA dependencies
+        run: python -m pip install --disable-pip-version-check -q PyYAML==6.0.2 python-docx==1.2.0
 
-      - name: Audit JAE manuscript
-        run: python scripts/audit_jae_submission.py
+      - name: Audit canonical RC6 scientific package
+        run: python scripts/audit_rc6_submission_package.py
 
-      - name: Rebuild submission figures
-        run: python scripts/build_submission_figures.py
-
-      - name: Verify figures are deterministic
-        run: git diff --exit-code -- figures/FIGURE_1_DESIGN_V0_1.svg figures/FIGURE_2_EFFECTS_V0_1.svg
+      - name: Verify frozen metacommunity figures
+        run: python scripts/verify_metacommunity_figure_hashes_v0_3.py
 
       - name: Strict-test canonical submission metadata pipeline
         run: |
           cat > /tmp/frogcs-submission-metadata.yml <<'YAML'
           manuscript:
-            title: "Recent rainfall predicts greater short-window co-calling in frog communities across continents"
+            title: "Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
             target_journal: "Journal of Animal Ecology"
             article_type: "Research Article"
           authors:
@@ -70,7 +67,7 @@ jobs:
           statement_on_inclusion: "This secondary-data analysis involved no new local field sampling; source programmes and regional literature are acknowledged and cited."
           ethics_and_permits:
             secondary_public_data_only: true
-            statement: "Secondary analysis of publicly released data; no new animal handling."
+            statement: "Secondary analysis of publicly released acoustic-monitoring and trait data; no new animal handling."
           approvals:
             all_authors_approve_submission: true
             all_entitled_authors_included: true
@@ -78,61 +75,72 @@ jobs:
           repository:
             url: "https://github.com/zuizui0223/frogcs"
             license: "MIT"
+            archive_year: 2026
             archive_doi: "10.9999/frogcs.test"
           source_data:
-            - name: "NAAMP"
+            - name: "North American Amphibian Monitoring Program (NAAMP)"
               doi: "10.5066/F7G44NG0"
-            - name: "FrogID"
-              doi: "10.15468/wazqft"
+            - name: "AmphiBIO v1"
+              doi: "10.6084/m9.figshare.4644424.v5"
           YAML
           python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage initial --outdir /tmp/rendered-initial
           python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage archive --outdir /tmp/rendered-archive
-          test -s /tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md
-          test -s /tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md
-          test -s /tmp/rendered-archive/ZENODO_METADATA_FINAL.json
-          test -s /tmp/rendered-archive/CITATION.cff
-          test -s /tmp/rendered-archive/ARCHIVE_REFERENCE.txt
-          test -s /tmp/rendered-initial/JAE_PORTAL_FIELDS.json
-          test -s /tmp/rendered-initial/SUBMISSION_METADATA_VALIDATION.json
-
-      - name: Dry-run DOI finalization on generated copy
-        run: |
-          python scripts/finalize_archive_doi.py --doi 10.9999/frogcs.test --output build/MANUSCRIPT_JAE_FINAL_TEST.md
-          python scripts/audit_jae_submission.py --manuscript build/MANUSCRIPT_JAE_FINAL_TEST.md --review-stage final
-
-      - name: Verify frozen scientific inputs against import manifest
-        run: |
           python - <<'PY'
-          import hashlib, json
           from pathlib import Path
-          root=Path(".")
-          manifest=json.loads((root/"FILE_SHA256.json").read_text())
-          intentionally_adapted={
-              "scripts/audit_jae_submission.py",
-              "scripts/build_submission_figures.py",
-          }
-          bad=[]
-          for path, expected in manifest.items():
-              if path in intentionally_adapted:
-                  continue
-              p=root/path
-              got=hashlib.sha256(p.read_bytes()).hexdigest()
-              if got != expected:
-                  bad.append((path, expected, got))
-          assert not bad, bad
-          print({"verified_manifest_entries": len(manifest)-len(intentionally_adapted), "status":"PASS"})
+          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          for p in [
+              Path("/tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md"),
+              Path("/tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md")
+          ]:
+              assert p.is_file() and expected in p.read_text(encoding="utf-8")
+          for p in [
+              "/tmp/rendered-archive/ZENODO_METADATA_FINAL.json",
+              "/tmp/rendered-archive/CITATION.cff",
+              "/tmp/rendered-archive/ARCHIVE_REFERENCE.txt",
+              "/tmp/rendered-initial/JAE_PORTAL_FIELDS.json",
+              "/tmp/rendered-initial/SUBMISSION_METADATA_VALIDATION.json"
+          ]:
+              assert Path(p).is_file() and Path(p).stat().st_size>0
+          print("metadata pipeline PASS")
           PY
 
-      - name: Upload review package
+      - name: Dry-run archive DOI finalization
+        run: |
+          python scripts/finalize_archive_doi.py             --doi 10.9999/frogcs.test             --input MANUSCRIPT_JAE_V0_8.md             --output build/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/audit_jae_v0_8_metacommunity.py             --manuscript build/MANUSCRIPT_JAE_FINAL_TEST.md
+
+      - name: Build and inspect anonymous RC6 DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V0_8.md             --output build/FROG_JAE_ANON_MAIN_V0_8_SUBMISSION_QA.docx
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          p=Path("build/FROG_JAE_ANON_MAIN_V0_8_SUBMISSION_QA.docx")
+          assert p.is_file() and p.stat().st_size>10000
+          with ZipFile(p) as z:
+              core=z.read("docProps/core.xml").decode("utf-8")
+              document=z.read("word/document.xml").decode("utf-8")
+          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          assert expected in core
+          assert "<w:lnNumType" in document
+          print("anonymous DOCX PASS")
+          PY
+
+      - name: Upload RC6 review package
         uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-review-package
+          name: frogcs-jae-rc6-review-package
           path: |
-            MANUSCRIPT_JAE_V0_3.md
-            JAE_TITLE_PAGE_V0_1.template.md
-            figures/*.svg
-            submission/*.md
-            submission/*.yml
-            submission/*.json
-            submission/CITATION.cff.template
+            MANUSCRIPT_JAE_V0_8.md
+            JAE_TITLE_PAGE_V0_5.template.md
+            figures_ecology_v0_8/*.svg
+            ECOLOGICAL_FIGURE_HASHES_V0_3.json
+            ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json
+            COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md
+            SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md
+            submission/COVER_LETTER_JAE_V0_6.md
+            submission/JAE_PORTAL_CHECKLIST_V0_5.md
+            submission/SUBMISSION_HANDOFF_RC6.md
+            submission/SUBMISSION_METADATA_TEMPLATE_V0_3.yml
+            submission/CITATION_V0_2.cff.template
           if-no-files-found: error

@@ -30,6 +30,8 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 - detection robustness: `NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json`
 - matrix-density equivalence: `NAAMP_MATRIX_DENSITY_INVARIANCE_SUMMARY_V0_1.json`
 - species activation geometry: `NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json`
+- response magnitude vs geometry diagnostic: `NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_SUMMARY_V0_1.json`
+- response-trait framework: `SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md`
 
 ## Core ecological story
 
@@ -41,7 +43,7 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 6. **Expansion is two-dimensional:** species × stop incidence slope partitions into 36.9% new species × new sites, 15.2% existing species × new sites, 39.9% new species × already-active sites and 8.0% within-core rearrangement.
 7. **Local deepening is real:** the same numbered stops active in both runs gain richness; 71.1% of the active-stop alpha slope comes from multiplicity beyond the second species.
 8. **Recorded detection conditions do not explain the pattern:** hearing impairment + timeout + wind adjustment retains all three positive CIs; traffic and MassNoiseIndex sensitivities agree.
-9. **Species activation geometry is repeatable:** early–late rho=.774 (P=.00044), WLS slope=.910, and 15/16 species retain the same spatial-edge versus local-deepening sign.
+9. **Species activation geometry is repeatable:** early–late rho=.774 (P=.00044), WLS slope=.910, and 15/16 species retain the same spatial-edge versus local-deepening sign. Geometry and later wet/dry response magnitude are best treated as partially coupled response coordinates (cross-period rho=.415, P=.110; weighted slope=.354).
 10. **Functional and response dimensions are partly decoupled:** taxonomic richness expands without detectable MPD/CWM shift; functional distance does not predict rainfall-response distance (P=.797; within-family P=.739), and the four tested life-history traits do not strongly encode activation geometry.
 11. **Response-diversity buffering is unsupported:** held-out interaction P=.419.
 
