@@ -1,0 +1,82 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_species_response_within_genus_heterogeneity_v0_1_summary",
+  "contract": "NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json",
+  "workflow_run": 36212251224,
+  "artifact_id": 10895464804,
+  "artifact_digest": "sha256:5d062d1e98db87b8124bb3efd38653488422d3e1bfbccf446bfb34d5f0b532f6",
+  "head_sha": "b59d4f0a77ab62a9ada149cce03ad4c81bbc8c88",
+  "included_species": 26,
+  "excluded_complex_labels": [
+    "Acris crepitans/gryllus complex",
+    "Hyla chrysoscelis/versicolor complex",
+    "Pseudacris maculata/triseriata complex"
+  ],
+  "n_genera": 7,
+  "genus_counts": {
+    "Acris": 2,
+    "Anaxyrus": 3,
+    "Gastrophryne": 1,
+    "Hyla": 6,
+    "Lithobates": 7,
+    "Pseudacris": 6,
+    "Scaphiopus": 1
+  },
+  "decomposition": {
+    "Q_total": 141.67689023721337,
+    "df_total": 25,
+    "p_total": 2.835922123380403e-18,
+    "Q_between": 75.263791162317,
+    "df_between": 6,
+    "p_between": 3.3871025749915704e-14,
+    "Q_within": 66.41309907489637,
+    "df_within": 19,
+    "p_within": 3.591899563344481e-7,
+    "within_fraction_of_Q": 0.4687645173725874
+  },
+  "genus_specific": [
+    {
+      "genus": "Anaxyrus",
+      "n_species": 3,
+      "Q": 5.09959962493254,
+      "df": 2,
+      "p_value": 0.07809729854196715,
+      "positive_species": 2,
+      "negative_species": 1
+    },
+    {
+      "genus": "Hyla",
+      "n_species": 6,
+      "Q": 33.61167421001401,
+      "df": 5,
+      "p_value": 0.000002844655310955971,
+      "positive_species": 4,
+      "negative_species": 2
+    },
+    {
+      "genus": "Lithobates",
+      "n_species": 7,
+      "Q": 23.813741744632424,
+      "df": 6,
+      "p_value": 0.0005650967799240051,
+      "positive_species": 3,
+      "negative_species": 4
+    },
+    {
+      "genus": "Pseudacris",
+      "n_species": 6,
+      "Q": 3.88789770529828,
+      "df": 5,
+      "p_value": 0.5656663469665543,
+      "positive_species": 6,
+      "negative_species": 0
+    }
+  ],
+  "interpretation": "Adjusted wet-versus-dry rainfall responses remain strongly heterogeneous within operational genera. Nearly half of total heterogeneity remains within genera; Hyla and Lithobates each contain both wet- and dry-associated species, whereas all six Pseudacris species are wet-associated. Broad genus identity therefore does not fully explain species-selective reassembly.",
+  "boundary": {
+    "operational_genus_only": true,
+    "phylogenetic_branch_length_model": false,
+    "post_opening_hierarchical_test": true,
+    "causal_claim_authorized": false
+  }
+}
