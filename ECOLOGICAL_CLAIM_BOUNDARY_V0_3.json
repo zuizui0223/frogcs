@@ -15,6 +15,7 @@
     "Trait-covered taxonomic richness increases with rainfall contrast, but the centroid and mean pairwise dispersion of a frozen four-axis life-history/reproductive trait space show no detectable shift.",
     "Pairwise functional similarity in that trait space does not predict pairwise similarity of species-specific rainfall responses.",
     "Species differ in a temporally repeatable activation geometry: an opportunity-corrected tendency for wetter-condition gain incidences to enter newly active versus already-active stops.",
+    "Species activation geometry transfers across completely disjoint deterministic route sets as well as across non-overlapping time periods, reducing the plausibility that the species ordering is driven only by persistent properties of particular routes.",
     "Species activation geometry and the four-way community matrix decomposition are hierarchical views of the same wet-gain incidence accounting: species differ in whether gains disproportionately enter previously inactive versus already-active stops, and aggregating those gains over taxa loads the spatial-edge versus local-deepening sides of community expansion.",
     "Activation geometry and overall wet-versus-dry response magnitude are conceptually distinct but partially coupled: their cross-period rank association is moderate and below the frozen strong-coupling rule, while precision-weighted regression is positive.",
     "A temporally held-out test does not support the hypothesis that early-period rainfall response-sign diversity buffers later route-level richness responses."
@@ -137,9 +138,26 @@
         0.5026828648311084
       ],
       "weighted_p": 0.0000033558216970327124
+    },
+    "activation_geometry_route_split": {
+      "split_A_routes": 295,
+      "split_A_pairs": 2185,
+      "split_B_routes": 290,
+      "split_B_pairs": 2051,
+      "overlap_species": 26,
+      "spearman_rho": 0.7846153846153845,
+      "spearman_p": 0.00000208861741238098,
+      "weighted_slope": 0.8322509613242662,
+      "weighted_ci95": [
+        0.5424954207837343,
+        1.1220065018647982
+      ],
+      "same_sign_species": 21,
+      "sign_concordance_fraction": 0.8076923076923077,
+      "sign_concordance_p": 0.0012469589710235596
     }
   },
-  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while measured among-active-site beta metrics show no detectable shift and active-matrix fill remains practically equivalent within a frozen margin. Species also show a temporally repeatable activation geometry describing whether wetter-condition gains preferentially open new active sites or deepen sites that were already active; this response trait is not strongly represented by the measured conventional life-history traits.",
+  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while measured among-active-site beta metrics show no detectable shift and active-matrix fill remains practically equivalent within a frozen margin. Species also show an activation geometry that is repeatable across non-overlapping years and transferable across disjoint route sets describing whether wetter-condition gains preferentially open new active sites or deepen sites that were already active; this response trait is not strongly represented by the measured conventional life-history traits.",
   "functional_response_boundary": {
     "supported": "The measured four-axis AmphiBIO functional space does not predict rainfall-response similarity among species, while activation geometry itself is temporally repeatable across non-overlapping periods.",
     "not_supported": "This does not establish phylogenetic independence of activation geometry or that all functional traits are irrelevant; family-adjusted activation-geometry validation was not estimable and unmeasured traits may encode this response mode.",
@@ -173,7 +191,9 @@
     "activation geometry is independent of phylogeny or family structure",
     "response magnitude and activation geometry are statistically independent",
     "activation geometry is merely a rescaled wet-versus-dry response magnitude",
-    "species activation geometry causally mediates the community-level rainfall response"
+    "species activation geometry causally mediates the community-level rainfall response",
+    "disjoint-route activation-geometry validation is independent-species replication",
+    "the hash route split establishes a specific geographic or climatic gradient"
   ],
   "preferred_terms": [
     "behaviourally realized active community",
@@ -192,6 +212,7 @@
     "spatial-edge activator",
     "local taxonomic deepener",
     "partially coupled response coordinates",
-    "species-level response coordinate of community-matrix expansion"
+    "species-level response coordinate of community-matrix expansion",
+    "disjoint-route transfer of activation geometry"
   ]
 }
