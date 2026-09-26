@@ -1,4 +1,5 @@
-name: frogcs initial JAE submission bundle
+# Compatibility alias: canonical RC6/v0.8 workflow. Do not restore RC5/v0.6 targets.
+name: frogcs initial JAE submission bundle (RC6 alias)
 
 on:
   workflow_dispatch:
@@ -9,7 +10,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,6 +19,9 @@ jobs:
 
       - name: Install build dependencies
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+
+      - name: Audit RC6 scientific package
+        run: python scripts/audit_rc6_submission_package.py
 
       - name: Materialize private submission metadata
         env:
@@ -29,74 +33,88 @@ jobs:
           }
           printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-initial.yml
 
-      - name: Validate initial metadata
+      - name: Validate and render initial metadata
         run: |
-          python scripts/render_submission_metadata.py \
-            --metadata /tmp/metadata-initial.yml \
-            --strict --stage initial \
-            --outdir build/submission-metadata
+          python scripts/render_submission_metadata.py             --metadata /tmp/metadata-initial.yml             --strict --stage initial             --outdir build/submission-metadata
 
       - name: Guard current title
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
+          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
           x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
-          assert expected in x, "JAE_SUBMISSION_METADATA_YAML contains a superseded title"
+          if expected not in x:
+              raise SystemExit("JAE_SUBMISSION_METADATA_YAML contains a superseded title")
           print("metadata title PASS")
           PY
 
-      - name: Audit anonymous v0.6 manuscript
-        run: python scripts/audit_ecological_manuscript_v0_6.py --manuscript MANUSCRIPT_JAE_V0_6.md --review-stage initial
-
-      - name: Build anonymous v0.6 DOCX
+      - name: Build anonymous v0.8 DOCX
         run: |
-          python scripts/build_jae_anonymous_docx.py \
-            --source MANUSCRIPT_JAE_V0_6.md \
-            --output build/FROG_JAE_ECOLOGY_ANON_MAIN_V0_6.docx
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V0_8.md             --output build/FROG_JAE_ANON_MAIN_V0_8.docx
 
-      - name: Rebuild and verify v0.6 figures
+      - name: Verify DOCX structure
         run: |
-          python scripts/build_ecological_figures_v0_6.py
-          python scripts/verify_ecological_figure_hashes_v0_2.py
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          p=Path("build/FROG_JAE_ANON_MAIN_V0_8.docx")
+          with ZipFile(p) as z:
+              document=z.read("word/document.xml").decode("utf-8")
+              footer=z.read("word/footer1.xml").decode("utf-8")
+              core=z.read("docProps/core.xml").decode("utf-8")
+          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          assert "<w:lnNumType" in document
+          assert 'w:restart="continuous"' in document
+          assert "PAGE" in footer
+          assert expected in core
+          print("DOCX structure PASS")
+          PY
 
-      - name: Assemble initial bundle
+      - name: Verify frozen figures
+        run: python scripts/verify_metacommunity_figure_hashes_v0_3.py
+
+      - name: Assemble RC6 initial bundle
         run: |
           set -eu
-          out=build/initial-submission
+          out=build/initial-submission-rc6
           mkdir -p "$out"
-          cp MANUSCRIPT_JAE_V0_6.md "$out/"
-          cp build/FROG_JAE_ECOLOGY_ANON_MAIN_V0_6.docx "$out/"
+          cp MANUSCRIPT_JAE_V0_8.md "$out/"
+          cp build/FROG_JAE_ANON_MAIN_V0_8.docx "$out/"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
-          cp figures_ecology_v0_6/*.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_5.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_4.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_RC5.md "$out/"
-          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json "$out/"
-          cp ECOLOGICAL_ARGUMENT_SPINE_V0_2.md "$out/"
-          cp ECOLOGICAL_MECHANISM_FOLLOWUP_LEDGER_V0_1.json "$out/"
-          cp NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json "$out/"
+          cp figures_ecology_v0_8/*.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_6.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_5.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_RC6.md "$out/"
+          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json "$out/"
+          cp COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md "$out/"
+          cp NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_SPECIES_STOP_QUADRANTS_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
-          Canonical initial JAE submission: ecological v0.6.
-          Submission authority: MANUSCRIPT_JAE_V0_6.md + ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json.
-          v0.3-v0.5 are superseded submission surfaces and remain audit history only.
+          Canonical initial JAE submission: RC6 / ecological v0.8 metacommunity synthesis.
+          Scientific authority: MANUSCRIPT_JAE_V0_8.md + ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json.
+          Main figures: figures_ecology_v0_8/.
+          RC5/v0.6 week-scale submission surfaces are superseded and remain audit history only.
           Archive DOI is intentionally deferred during double-anonymized review.
           TXT
 
           python - <<'PY'
           import hashlib,json
           from pathlib import Path
-          out=Path("build/initial-submission")
+          out=Path("build/initial-submission-rc6")
           rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
-          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2)+"\n",encoding="utf-8")
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
           PY
 
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-v0-6-initial-submission-bundle
-          path: build/initial-submission/
+          name: frogcs-jae-rc6-v0-8-initial-submission-bundle
+          path: build/initial-submission-rc6/
           if-no-files-found: error
