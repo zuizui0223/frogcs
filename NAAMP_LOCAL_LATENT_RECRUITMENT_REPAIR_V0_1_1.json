@@ -1,0 +1,17 @@
+{
+  "project": "frog-chorus-synchrony",
+  "repair": "naamp_local_latent_recruitment_v0_1_1",
+  "status": "implementation_only_repair_after_sensitivity_rank_failure_before_primary_readback",
+  "parent_contract": "NAAMP_LOCAL_LATENT_RECRUITMENT_CONTRACT_V0_1.json",
+  "observed_failure": "Exact-consecutive-year sensitivity produced a singular Hessian under the frozen species + route + RunNumber fixed-effect specification.",
+  "permitted_change": "Wrap the exact-year sensitivity fit in fail-closed exception handling; if singular/nonestimable, record status=nonestimable with the error message.",
+  "prohibited_changes": [
+    "no change to primary model",
+    "no change to primary data",
+    "no change to baseline recurrence definition",
+    "no simplified exact-year sensitivity model",
+    "no alternative covariance",
+    "no threshold changes"
+  ],
+  "authority": "Only the primary model can support the main hypothesis. Exact-year sensitivity cannot be rescued by retuning."
+}
