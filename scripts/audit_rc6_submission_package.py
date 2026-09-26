@@ -94,7 +94,7 @@ for anchor_text in [
     "## S6. Activation geometry: repeatability followed by placebo falsification",
     "## S7. Reconciliation with the earlier v0.4 conditional-multispecies result",
     "P = **.419**",
-    "wet geometry vs reverse dry geometry",
+    "reverse dry-gain geometry",
     "family-stratified permutation was unsupported",
 ]:
     if anchor_text not in si:
