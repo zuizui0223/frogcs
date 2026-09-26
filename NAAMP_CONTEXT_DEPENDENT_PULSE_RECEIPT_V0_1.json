@@ -1,0 +1,161 @@
+{
+  "analysis": "naamp_context_dependent_rainfall_pulse_v0_1",
+  "baseline_context": {
+    "baseline_runs_summary": {
+      "max": 35,
+      "median": 10.0,
+      "min": 6
+    },
+    "eligible_routes": 191,
+    "median_days_since_rain_summary": {
+      "max": 4.5,
+      "median": 1.0,
+      "min": 0.0
+    },
+    "standardization": {
+      "mean_log1p": 0.8134242346465095,
+      "sd_log1p": 0.4270852734529022
+    }
+  },
+  "contract": "NAAMP_CONTEXT_DEPENDENT_PULSE_CONTRACT_V0_1.json",
+  "dryness_quartiles": {
+    "Q1_wetter": {
+      "mean_rain_contrast": 0.9769970824622357,
+      "mean_richness_gain": 0.009174311926605505,
+      "mean_turnover": 0.1124320211038961,
+      "median_baseline_days_since_rain": 1.0,
+      "pairs": 327,
+      "routes": 57
+    },
+    "Q2": {
+      "mean_rain_contrast": 0.8778701070073571,
+      "mean_richness_gain": 0.4342105263157895,
+      "mean_turnover": 0.06896929824561403,
+      "median_baseline_days_since_rain": 1.5,
+      "pairs": 76,
+      "routes": 14
+    },
+    "Q3": {
+      "mean_rain_contrast": 0.9337399956403658,
+      "mean_richness_gain": 0.46794871794871795,
+      "mean_turnover": 0.12689763939763937,
+      "median_baseline_days_since_rain": 2.0,
+      "pairs": 156,
+      "routes": 28
+    },
+    "Q4_drier": {
+      "mean_rain_contrast": 0.9281343258024362,
+      "mean_richness_gain": -0.055944055944055944,
+      "mean_turnover": 0.151032301032301,
+      "median_baseline_days_since_rain": 3.0,
+      "pairs": 143,
+      "routes": 18
+    }
+  },
+  "exact_consecutive_year_sensitivity": {
+    "n_pairs": 480,
+    "primary_richness_interaction": {
+      "beta_interaction": 0.1480086505764342,
+      "ci95_interaction": [
+        -0.15204496951758095,
+        0.44806227067044935
+      ],
+      "formula": "richness_gain ~ rain_contrast * baseline_dryness_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+      "interaction_term": "rain_contrast:baseline_dryness_z",
+      "n_pairs": 480,
+      "n_routes": 100,
+      "p_value": 0.3336443833649908,
+      "positive_ci_support": false,
+      "rain_contrast_slope_at_baseline_dryness_z": {
+        "-1": 0.2386346561993603,
+        "0": 0.3866433067757945,
+        "1": 0.5346519573522287
+      },
+      "response": "richness_gain",
+      "se_cluster": 0.1530913947709243
+    },
+    "secondary_turnover_interaction": {
+      "beta_interaction": -0.026548585896771434,
+      "ci95_interaction": [
+        -0.06304646655791928,
+        0.009949294764376407
+      ],
+      "formula": "simpson_turnover ~ rain_contrast * baseline_dryness_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+      "interaction_term": "rain_contrast:baseline_dryness_z",
+      "n_pairs": 477,
+      "n_routes": 100,
+      "p_value": 0.15396094027143337,
+      "positive_ci_support": false,
+      "rain_contrast_slope_at_baseline_dryness_z": {
+        "-1": 0.06701990279506166,
+        "0": 0.04047131689829023,
+        "1": 0.013922731001518793
+      },
+      "response": "simpson_turnover",
+      "se_cluster": 0.018621709862547714
+    }
+  },
+  "interpretation_boundary": {
+    "active_community_not_occupancy": true,
+    "baseline_context_uses_validation_years": false,
+    "baseline_dryness_is_full_climate_aridity": false,
+    "causal_claim_authorized": false,
+    "validation_response_uses_baseline_years": false
+  },
+  "primary_richness_interaction": {
+    "beta_interaction": 0.024675747426129217,
+    "ci95_interaction": [
+      -0.24079375238742262,
+      0.29014524723968105
+    ],
+    "formula": "richness_gain ~ rain_contrast * baseline_dryness_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "interaction_term": "rain_contrast:baseline_dryness_z",
+    "n_pairs": 702,
+    "n_routes": 117,
+    "p_value": 0.8554404547640956,
+    "positive_ci_support": false,
+    "rain_contrast_slope_at_baseline_dryness_z": {
+      "-1": 0.3076599522550333,
+      "0": 0.3323356996811625,
+      "1": 0.3570114471072917
+    },
+    "response": "richness_gain",
+    "se_cluster": 0.13544611120793107
+  },
+  "secondary_turnover_interaction": {
+    "beta_interaction": -0.02347833426259234,
+    "ci95_interaction": [
+      -0.05659257862960349,
+      0.009635910104418811
+    ],
+    "formula": "simpson_turnover ~ rain_contrast * baseline_dryness_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "interaction_term": "rain_contrast:baseline_dryness_z",
+    "n_pairs": 695,
+    "n_routes": 117,
+    "p_value": 0.16463995664156472,
+    "positive_ci_support": false,
+    "rain_contrast_slope_at_baseline_dryness_z": {
+      "-1": 0.05671164992960748,
+      "0": 0.03323331566701514,
+      "1": 0.009754981404422797
+    },
+    "response": "simpson_turnover",
+    "se_cluster": 0.01689533309194051
+  },
+  "time_split": {
+    "baseline": [
+      2001,
+      2007
+    ],
+    "validation": [
+      2008,
+      2015
+    ]
+  },
+  "validation": {
+    "eligible_runs": 4960,
+    "matched_pairs_with_context": 702,
+    "routes": 117,
+    "states": 16
+  }
+}

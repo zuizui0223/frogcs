@@ -1,0 +1,288 @@
+{
+  "analysis": "naamp_species_response_within_genus_heterogeneity_v0_1",
+  "contract": "NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json",
+  "decomposition": {
+    "Q_between": 75.26379116231698,
+    "Q_total": 141.6768902372133,
+    "Q_within": 66.41309907489634,
+    "df_between": 6,
+    "df_total": 25,
+    "df_within": 19,
+    "grand_weighted_mean_log_odds": 0.07562962931835238,
+    "p_between": 3.387102574991621e-14,
+    "p_total": 2.835922123380464e-18,
+    "p_within": 3.5918995633445104e-07,
+    "within_fraction_of_Q": 0.4687645173725874
+  },
+  "excluded_non_binomial_or_complex_labels": [
+    "Acris crepitans/gryllus complex",
+    "Hyla chrysoscelis/versicolor complex",
+    "Pseudacris maculata/triseriata complex"
+  ],
+  "genus_counts": {
+    "Acris": 2,
+    "Anaxyrus": 3,
+    "Gastrophryne": 1,
+    "Hyla": 6,
+    "Lithobates": 7,
+    "Pseudacris": 6,
+    "Scaphiopus": 1
+  },
+  "genus_specific": [
+    {
+      "estimable_Q": false,
+      "genus": "Acris",
+      "n_species": 2,
+      "negative_species": 0,
+      "positive_species": 2,
+      "reason": "fewer_than_3_species",
+      "species": [
+        {
+          "adjusted_wet_probability": 0.5443127510250183,
+          "se": 0.14287614538358862,
+          "species": "Acris crepitans",
+          "theta": 0.17771727493545691
+        },
+        {
+          "adjusted_wet_probability": 0.5433613713697678,
+          "se": 0.24237741995031672,
+          "species": "Acris gryllus",
+          "theta": 0.17388227644020715
+        }
+      ],
+      "weighted_mean_log_odds": 0.1767283197055532
+    },
+    {
+      "Q": 5.099599624932523,
+      "df": 2,
+      "genus": "Anaxyrus",
+      "n_species": 3,
+      "negative_species": 1,
+      "p_value": 0.07809729854196779,
+      "positive_species": 2,
+      "species": [
+        {
+          "adjusted_wet_probability": 0.4910732818128798,
+          "se": 0.07618126570663913,
+          "species": "Anaxyrus americanus",
+          "theta": -0.03571066727218263
+        },
+        {
+          "adjusted_wet_probability": 0.5143442859081511,
+          "se": 0.12663200496710247,
+          "species": "Anaxyrus fowleri",
+          "theta": 0.05739289252673034
+        },
+        {
+          "adjusted_wet_probability": 0.6029369907546122,
+          "se": 0.18659275312113066,
+          "species": "Anaxyrus terrestris",
+          "theta": 0.417717716765165
+        }
+      ],
+      "weighted_mean_log_odds": 0.03577752203876636
+    },
+    {
+      "estimable_Q": false,
+      "genus": "Gastrophryne",
+      "n_species": 1,
+      "negative_species": 0,
+      "positive_species": 1,
+      "reason": "fewer_than_3_species",
+      "species": [
+        {
+          "adjusted_wet_probability": 0.7741060378472782,
+          "se": 0.25260434162371354,
+          "species": "Gastrophryne carolinensis",
+          "theta": 1.2316431688569685
+        }
+      ],
+      "weighted_mean_log_odds": 1.2316431688569685
+    },
+    {
+      "Q": 33.61167421001401,
+      "df": 5,
+      "genus": "Hyla",
+      "n_species": 6,
+      "negative_species": 2,
+      "p_value": 2.844655310955971e-06,
+      "positive_species": 4,
+      "species": [
+        {
+          "adjusted_wet_probability": 0.589170786208515,
+          "se": 0.10446414367632899,
+          "species": "Hyla chrysoscelis",
+          "theta": 0.3605385113123381
+        },
+        {
+          "adjusted_wet_probability": 0.3817866683768712,
+          "se": 0.17312250059581225,
+          "species": "Hyla cinerea",
+          "theta": -0.48197160182872306
+        },
+        {
+          "adjusted_wet_probability": 0.6548480397432643,
+          "se": 0.28260055117753985,
+          "species": "Hyla femoralis",
+          "theta": 0.6404184237594156
+        },
+        {
+          "adjusted_wet_probability": 0.496612529748506,
+          "se": 0.19330142395599606,
+          "species": "Hyla gratiosa",
+          "theta": -0.013550088324046382
+        },
+        {
+          "adjusted_wet_probability": 0.7237867285980955,
+          "se": 0.22169441847374635,
+          "species": "Hyla squirella",
+          "theta": 0.9633234854392891
+        },
+        {
+          "adjusted_wet_probability": 0.5383333543633533,
+          "se": 0.09420247863012539,
+          "species": "Hyla versicolor",
+          "theta": 0.15363490165276086
+        }
+      ],
+      "weighted_mean_log_odds": 0.20693775394313974
+    },
+    {
+      "Q": 23.81374174463243,
+      "df": 6,
+      "genus": "Lithobates",
+      "n_species": 7,
+      "negative_species": 4,
+      "p_value": 0.0005650967799240034,
+      "positive_species": 3,
+      "species": [
+        {
+          "adjusted_wet_probability": 0.42748134043655805,
+          "se": 0.0810840943521029,
+          "species": "Lithobates catesbeianus",
+          "theta": -0.2921346886985765
+        },
+        {
+          "adjusted_wet_probability": 0.4581940113850118,
+          "se": 0.0948551949039531,
+          "species": "Lithobates clamitans",
+          "theta": -0.16761528271094464
+        },
+        {
+          "adjusted_wet_probability": 0.4291374612487221,
+          "se": 0.09166388625543802,
+          "species": "Lithobates palustris",
+          "theta": -0.2853711528405743
+        },
+        {
+          "adjusted_wet_probability": 0.5195429509729617,
+          "se": 0.16666334184641385,
+          "species": "Lithobates pipiens",
+          "theta": 0.07821164831031932
+        },
+        {
+          "adjusted_wet_probability": 0.5575448016254212,
+          "se": 0.1002232678228356,
+          "species": "Lithobates sphenocephalus",
+          "theta": 0.23120364905431817
+        },
+        {
+          "adjusted_wet_probability": 0.5131702769956342,
+          "se": 0.12165829344732754,
+          "species": "Lithobates sylvaticus",
+          "theta": 0.05269329687657905
+        },
+        {
+          "adjusted_wet_probability": 0.4463345323006356,
+          "se": 0.3087443683345618,
+          "species": "Lithobates virgatipes",
+          "theta": -0.21549191215970245
+        }
+      ],
+      "weighted_mean_log_odds": -0.11729697687399057
+    },
+    {
+      "Q": 3.8878977052982675,
+      "df": 5,
+      "genus": "Pseudacris",
+      "n_species": 6,
+      "negative_species": 0,
+      "p_value": 0.565666346966556,
+      "positive_species": 6,
+      "species": [
+        {
+          "adjusted_wet_probability": 0.6098624159382148,
+          "se": 0.10672451907626047,
+          "species": "Pseudacris crucifer",
+          "theta": 0.4467339275282041
+        },
+        {
+          "adjusted_wet_probability": 0.6033380942810864,
+          "se": 0.25109631944512795,
+          "species": "Pseudacris feriarum",
+          "theta": 0.41939343165810894
+        },
+        {
+          "adjusted_wet_probability": 0.5930420614805262,
+          "se": 0.2791450200533241,
+          "species": "Pseudacris kalmi",
+          "theta": 0.37655549152521905
+        },
+        {
+          "adjusted_wet_probability": 0.7442413627701407,
+          "se": 0.35644632372498886,
+          "species": "Pseudacris maculata",
+          "theta": 1.0681312181270177
+        },
+        {
+          "adjusted_wet_probability": 0.541629042995677,
+          "se": 0.39818483492630663,
+          "species": "Pseudacris nigrita",
+          "theta": 0.16690253852547265
+        },
+        {
+          "adjusted_wet_probability": 0.6573159502277616,
+          "se": 0.33479431072822075,
+          "species": "Pseudacris ocularis",
+          "theta": 0.6513559162903827
+        }
+      ],
+      "weighted_mean_log_odds": 0.47264708400034483
+    },
+    {
+      "estimable_Q": false,
+      "genus": "Scaphiopus",
+      "n_species": 1,
+      "negative_species": 0,
+      "positive_species": 1,
+      "reason": "fewer_than_3_species",
+      "species": [
+        {
+          "adjusted_wet_probability": 0.6698135186738747,
+          "se": 0.31905363306043644,
+          "species": "Scaphiopus holbrookii",
+          "theta": 0.7073417535242692
+        }
+      ],
+      "weighted_mean_log_odds": 0.7073417535242692
+    }
+  ],
+  "included_species": 26,
+  "interpretation": {
+    "between_genus_heterogeneity_supported": true,
+    "boundary": "Operational genus decomposition only; not a branch-length phylogenetic analysis.",
+    "within_genus_heterogeneity_supported": true
+  },
+  "n_genera": 7,
+  "response_source": {
+    "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "estimable_species": 29,
+    "fixed_species_family": 29,
+    "heterogeneity_test": {
+      "Q": 144.014669045494,
+      "df": 28,
+      "p_value": 1.4592981930238995e-17,
+      "weighted_mean_log_odds": 0.0781395563214971
+    }
+  }
+}
