@@ -81,6 +81,7 @@ Preferred wording:
 - `figures_ecology_v0_8/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg`
 - `figures_ecology_v0_8/FIGURE_2_MATRIX_EXPANSION_V0_1.svg`
 - `figures_ecology_v0_8/FIGURE_3_FUNCTIONAL_RESPONSE_DIVERSITY_V0_1.svg`
+  - Panel C: early-versus-late species activation geometry (rho=.774; 15/16 same sign)
 
 Figure hashes: `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
 
