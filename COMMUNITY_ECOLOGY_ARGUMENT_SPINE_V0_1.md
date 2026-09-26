@@ -2,7 +2,7 @@
 
 ## Working title
 
-**Recent rainfall expands frog active communities across spatial and taxonomic dimensions without detectable change in beta diversity**
+**Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry**
 
 Alternative:
 **Rainfall expands the behaviourally realized frog community without detectable change in spatial beta diversity or measured functional centroid and dispersion**
