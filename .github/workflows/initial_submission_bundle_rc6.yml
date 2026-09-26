@@ -94,6 +94,7 @@ jobs:
           cp NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json "$out/"
           cp NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json "$out/"
           cp NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_MATRIX_DENSITY_INVARIANCE_SUMMARY_V0_1.json "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
           Canonical initial JAE submission: RC6 / ecological v0.8 metacommunity synthesis.
