@@ -17,6 +17,7 @@ depth=load("NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json")
 func=load("NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json")
 resp=load("NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json")
 buff=load("NAAMP_RESPONSE_DIVERSITY_BUFFERING_SUMMARY_V0_1.json")
+geometry=load("NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json")
 det=load("NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json")
 spatial=load("NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_SUMMARY_V0_1.json")
 
@@ -165,14 +166,23 @@ ax.text(.05,.80,
 ax.set_title("B  Functional vs response diversity")
 
 ax=axs[2]
-b=buff["primary"]["beta"];ci=buff["primary"]["ci95"]
-ax.errorbar(b,0,xerr=err(b,ci),fmt="o",capsize=3)
-ax.axvline(0,linewidth=1)
-ax.set_yticks([0],["Rain × response-sign\ndiversity"])
-ax.set_xlabel("Held-out richness-buffering interaction")
-ax.text(.05,.78,f"P = {buff['primary']['p_value']:.3f}\nPrediction: negative\nSupport: no",transform=ax.transAxes)
-ax.set_title("C  Response-diversity buffering")
-fig.suptitle("Taxonomic, functional and rainfall-response dimensions are partly decoupled",fontsize=14)
+xs=np.array([r["early"] for r in geometry["species_table"]],float)
+ys=np.array([r["late"] for r in geometry["species_table"]],float)
+lims=[min(xs.min(),ys.min())-.15,max(xs.max(),ys.max())+.15]
+ax.scatter(xs,ys)
+ax.plot(lims,lims,linewidth=1)
+ax.axhline(0,linewidth=.8)
+ax.axvline(0,linewidth=.8)
+ax.set_xlim(lims);ax.set_ylim(lims)
+ax.set_xlabel("Early activation geometry")
+ax.set_ylabel("Late activation geometry")
+ax.text(.04,.96,
+        f"ρ = {geometry['primary']['spearman_rho']:.3f}\n"
+        f"P = {geometry['primary']['p_value']:.4f}\n"
+        f"same sign = {geometry['sign_concordance']['same_sign']}/{geometry['sign_concordance']['n_species']}",
+        transform=ax.transAxes,va="top")
+ax.set_title("C  Repeatable activation geometry")
+fig.suptitle("Conventional functional traits and response geometry describe different dimensions",fontsize=14)
 fig.tight_layout(rect=[0,0,1,.94])
 save(fig,"FIGURE_3_FUNCTIONAL_RESPONSE_DIVERSITY_V0_1.svg")
 
