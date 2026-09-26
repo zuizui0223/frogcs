@@ -1,0 +1,42 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_response_geometry_vs_magnitude_holdout_v0_1",
+  "status": "post-opening cross-axis diagnostic frozen before readback",
+  "ecological_question": "Does a species' early-period activation geometry predict the magnitude of its later wet-versus-dry acoustic response?",
+  "predictor": {
+    "source": "NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json",
+    "period": [2001, 2007],
+    "variable": "early activation_geometry_log_odds",
+    "meaning": "opportunity-corrected tendency for wetter-run gain incidences to enter newly active versus already-active stops"
+  },
+  "outcome": {
+    "source": "NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_SUMMARY_V0_1.json",
+    "period": [2008, 2015],
+    "variable": "late_adjusted_log_odds",
+    "meaning": "adjusted wet-only versus dry-only species response magnitude"
+  },
+  "species_family": {
+    "rule": "intersection of species present in both frozen summaries",
+    "minimum_species": 15,
+    "no_refitting": true
+  },
+  "primary_diagnostic": {
+    "metric": "Spearman rank correlation",
+    "alternative": "two-sided",
+    "no_directional_prediction": true,
+    "interpretation": {
+      "strong_association": "|rho| >= 0.6 and P < 0.05 suggests response magnitude and activation geometry are strongly coupled",
+      "otherwise": "do not claim statistical independence; describe magnitude and geometry as conceptually distinct response coordinates with no strong detected cross-axis coupling"
+    }
+  },
+  "secondary": {
+    "weighted_regression": "WLS late_adjusted_log_odds ~ early_geometry weighted by inverse late-response variance with HC3 covariance",
+    "sign_groups": "compare weighted mean late response magnitude for early spatial-edge activators (>0) versus local deepeners (<0), descriptive only"
+  },
+  "boundaries": [
+    "This diagnostic does not test statistical independence or equivalence.",
+    "Predictor and outcome are estimated in non-overlapping periods but from the same species set.",
+    "No phylogenetic-independence claim.",
+    "No alternative time split, magnitude estimator or geometry definition may replace the frozen specification after readback."
+  ]
+}
