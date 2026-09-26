@@ -39,7 +39,7 @@
 - [x] traffic-count and Massachusetts noise-index sensitivities agree
 - [x] trait-covered taxonomic richness expands without detectable functional MPD/CWM shift
 - [x] functional distance does not predict rainfall-response distance
-- [x] species activation geometry repeats across non-overlapping periods (rho=0.774; 15/16 same sign)
+- [x] species activation geometry repeats across non-overlapping periods (rho=0.774; 15/16 same sign) and transfers across disjoint route sets (rho=0.785; 21/26 same sign)
 - [x] held-out response-diversity buffering prediction unsupported and reported as such
 
 ## Secondary only
