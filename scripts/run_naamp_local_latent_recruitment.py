@@ -156,11 +156,23 @@ def main():
     secondary=fit_interaction(x)
 
     exact=x[x["year_gap"]==1].copy()
-    exact_primary=fit_primary(exact) if len(exact)>0 else None
+    if len(exact)>0:
+        try:
+            exact_primary=fit_primary(exact)
+        except Exception as e:
+            exact_primary={
+                "estimable":False,
+                "n_events":int(len(exact)),
+                "reason":"frozen exact-year specification nonestimable",
+                "error":repr(e),
+            }
+    else:
+        exact_primary=None
 
     result={
         "analysis":"naamp_local_latent_recruitment_v0_1",
         "contract":"NAAMP_LOCAL_LATENT_RECRUITMENT_CONTRACT_V0_1.json",
+        "repair_contract":"NAAMP_LOCAL_LATENT_RECRUITMENT_REPAIR_V0_1_1.json",
         "time_split":{"baseline":[2001,2007],"validation":[2008,2015]},
         "baseline":{
             "eligible_routes":int(len(route_summary)),
