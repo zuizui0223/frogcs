@@ -1,0 +1,74 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_two_phase_community_memory_v0_1",
+  "status": "post_opening_timescale_followup_frozen_before_dry_dry_background_readback",
+  "motivation": "The frozen rainfall-timescale analysis showed elevated active richness through days 4–7 versus >=8-day runs, while matched recent-vs-dry net richness was no longer clearly positive at days 4–7. The unopened question is whether compositional turnover at days 4–7 remains elevated above ordinary dry-vs-dry year-to-year turnover.",
+  "ecological_question": "After the short-lived richness expansion wanes, does a rainfall pulse leave a detectable compositional memory in the acoustically active frog assemblage?",
+  "source": {
+    "runs": "Reuse complete 10-stop, temperature-qualified NAAMP runs from NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json.",
+    "species_sets": "CallingIndex 1–3 presence anywhere in the 10-stop run.",
+    "rain_recency_bins": {
+      "day0": [
+        0,
+        0
+      ],
+      "day1": [
+        1,
+        1
+      ],
+      "days2_3": [
+        2,
+        3
+      ],
+      "days4_7": [
+        4,
+        7
+      ],
+      "dry": [
+        8,
+        180
+      ]
+    }
+  },
+  "pairing": {
+    "stratum": "State × RouteNumber × RunNumber",
+    "rule": "Sort eligible runs by SurveyYear and pair adjacent observed years, exactly as in the ecological-pulse analysis.",
+    "eligible_pair_classes": [
+      "dry_dry: both members DaysSinceRain >=8",
+      "day0/day1/days2_3/days4_7: exactly one member is <8 days and the other is >=8 days; class is the recent member's bin"
+    ],
+    "ignored": "Pairs with both members <8 days or equal classification outside the specified dry-dry comparison."
+  },
+  "primary_endpoint": {
+    "response": "Simpson turnover between the two active species sets",
+    "model": "simpson_turnover ~ C(pair_class, Treatment(reference='dry_dry')) + abs_temp_difference + abs_doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster robust by State:RouteNumber",
+    "focal_term": "days4_7 versus dry_dry",
+    "expected_sign": "positive",
+    "minimum_pairs": {
+      "dry_dry": 100,
+      "days4_7": 50
+    },
+    "hypothesis": "If active-community composition retains a rainfall memory after richness expansion weakens, turnover at 4–7 days should exceed dry-dry background turnover."
+  },
+  "secondary_endpoints": {
+    "sorensen": "Same model using Sørensen dissimilarity; supportive only.",
+    "discordant_species_count": "Same model using b+c, the total number of species present in only one member; supportive only.",
+    "recent_minus_dry_richness": "For recent-vs-dry pairs only, estimate adjusted mean richness_recent - richness_dry by recent bin using signed temp/doy differences, year gap, State and RunNumber. This describes expansion decay but is not the primary memory test."
+  },
+  "sensitivity": {
+    "exact_consecutive_year": "Repeat all primary/secondary models using year_gap=1 only.",
+    "no_rescue": "Sensitivity cannot rescue a failed primary endpoint."
+  },
+  "interpretation": {
+    "supported_memory": "Primary days4_7 turnover contrast >0 with 95% CI excluding 0 supports compositional memory beyond dry-dry temporal background.",
+    "two_phase_language": "Use 'two-phase pulse' only if days4_7 turnover exceeds dry-dry background and the adjusted days4_7 recent-minus-dry richness CI includes 0 in the same analysis family. This is descriptive phase separation, not a formal changepoint.",
+    "unsupported": "If days4_7 turnover does not exceed dry-dry background, retain the one-week richness timescale but do not claim compositional memory."
+  },
+  "boundaries": [
+    "Dry-dry turnover is background temporal turnover of acoustically active assemblages, not occupancy turnover.",
+    "This is a post-opening follow-up motivated by the already-opened timescale curve; only the dry-dry background contrast is newly unopened.",
+    "No new rain-recency cutpoints are allowed.",
+    "No causal rainfall, colonization, extinction, or breeding-success claim."
+  ]
+}
