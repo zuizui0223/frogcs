@@ -1,0 +1,31 @@
+name: frogcs NAAMP source manifest audit
+
+on:
+  push:
+    branches:
+      - revision/community-metacommunity-synthesis-v1
+    paths:
+      - "scripts/audit_naamp_sciencebase_file_manifest.py"
+      - ".github/workflows/naamp_source_manifest_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit ScienceBase file manifest
+        run: python scripts/audit_naamp_sciencebase_file_manifest.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-source-manifest-v0-1
+          path: NAAMP_SCIENCEBASE_FILE_MANIFEST_AUDIT_V0_1.json
+          if-no-files-found: error
