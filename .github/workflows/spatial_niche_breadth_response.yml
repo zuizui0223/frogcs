@@ -1,0 +1,34 @@
+name: frogcs spatial niche breadth response
+
+on:
+  push:
+    branches:
+      - revision/spatial-niche-breadth-response-v1
+    paths:
+      - "NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_spatial_niche_breadth_response.py"
+      - ".github/workflows/spatial_niche_breadth_response.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Run frozen held-out spatial breadth test
+        run: python scripts/run_naamp_spatial_niche_breadth_response.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-spatial-niche-breadth-response-v0-1
+          path: NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_RECEIPT_V0_1.json
+          if-no-files-found: error

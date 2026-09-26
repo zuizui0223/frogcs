@@ -1,0 +1,50 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_spatial_niche_breadth_response_v0_1_summary",
+  "workflow_run": 36228098917,
+  "head_sha": "7d0136113053db3515e29ba4fbc1a0b59c3312af",
+  "time_split": {
+    "trait_period": [
+      2001,
+      2007
+    ],
+    "validation_period": [
+      2008,
+      2015
+    ]
+  },
+  "early": {
+    "eligible_breadth_species": 35
+  },
+  "late": {
+    "estimable_response_species": 36,
+    "matched_pairs": 2459
+  },
+  "intersection_species": 29,
+  "frozen_prediction": "negative: spatially narrower early species should show stronger later wet recruitment",
+  "primary": {
+    "beta": 0.13068116038043393,
+    "ci95": [
+      0.014011870345570637,
+      0.2473504504152972
+    ],
+    "p_value": 0.028138229316157733,
+    "predicted_direction_supported": false,
+    "observed_direction": "positive"
+  },
+  "active_footprint_fraction_sensitivity": {
+    "beta": 0.09585539720053585,
+    "ci95": [
+      -0.0004083387860678023,
+      0.1921191331871395
+    ],
+    "p_value": 0.05097976536418979
+  },
+  "family_permutation": {
+    "observed_weighted_slope": 0.13383833404113915,
+    "permutations": 100000,
+    "two_sided_p": 0.2626273737262627,
+    "negative_tail_p": 0.7407625923740763
+  },
+  "interpretation": "The prespecified specialist-recruitment hypothesis is falsified. A pooled WLS association appears in the opposite direction, with spatially broader early-period species tending toward more positive later rainfall responses, but this opposite-direction pattern is not supported by the family-stratified permutation and is not authorized as a mechanism or headline species trait."
+}
