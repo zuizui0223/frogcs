@@ -14,6 +14,7 @@
     "Local taxonomic deepening occurs within the same numbered stops active in both surveys and is mostly carried by multiplicity beyond the second species.",
     "Trait-covered taxonomic richness increases with rainfall contrast, but the centroid and mean pairwise dispersion of a frozen four-axis life-history/reproductive trait space show no detectable shift.",
     "Pairwise functional similarity in that trait space does not predict pairwise similarity of species-specific rainfall responses.",
+    "Species differ in a temporally repeatable activation geometry: an opportunity-corrected tendency for wetter-condition gain incidences to enter newly active versus already-active stops.",
     "A temporally held-out test does not support the hypothesis that early-period rainfall response-sign diversity buffers later route-level richness responses."
   ],
   "key_numbers": {
@@ -107,12 +108,27 @@
         0.004356641673247967
       ],
       "primary_and_exact_equivalent": true
+    },
+    "activation_geometry_repeatability": {
+      "early_estimable_species": 17,
+      "late_estimable_species": 31,
+      "overlap_species": 16,
+      "spearman_rho": 0.7735294117647058,
+      "spearman_p": 0.00043935565171172104,
+      "weighted_slope": 0.9096523301526751,
+      "weighted_ci95": [
+        0.8159752937817172,
+        1.003329366523633
+      ],
+      "same_sign_species": 15,
+      "sign_concordance_fraction": 0.9375,
+      "sign_concordance_p": 0.0002593994140625
     }
   },
-  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while the measured among-active-site beta metrics show no detectable change. Taxonomic expansion is therefore not accompanied by detectable spatial homogenization in these acoustic data, and the measured life-history functional centroid and dispersion show no detectable shift.",
+  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while measured among-active-site beta metrics show no detectable shift and active-matrix fill remains practically equivalent within a frozen margin. Species also show a temporally repeatable activation geometry describing whether wetter-condition gains preferentially open new active sites or deepen sites that were already active; this response trait is not strongly represented by the measured conventional life-history traits.",
   "functional_response_boundary": {
-    "supported": "The measured four-axis AmphiBIO functional space does not predict rainfall-response similarity among species.",
-    "not_supported": "This does not establish that all functional traits are irrelevant; unmeasured traits such as developmental timing, breeding microhabitat, call energetics, or fine hydroperiod dependence may encode response differences.",
+    "supported": "The measured four-axis AmphiBIO functional space does not predict rainfall-response similarity among species, while activation geometry itself is temporally repeatable across non-overlapping periods.",
+    "not_supported": "This does not establish phylogenetic independence of activation geometry or that all functional traits are irrelevant; family-adjusted activation-geometry validation was not estimable and unmeasured traits may encode this response mode.",
     "no_buffering_claim": "Held-out response-sign diversity does not demonstrably buffer route-level richness responses."
   },
   "timescale_boundary": {
@@ -138,7 +154,9 @@
     "causal mediation from newly active sites to richness gain",
     "beta diversity is proven unchanged or equivalent across rainfall contrasts",
     "all acoustic detectability or masking explanations have been eliminated",
-    "active-matrix fill is exactly invariant across rainfall conditions"
+    "active-matrix fill is exactly invariant across rainfall conditions",
+    "activation geometry is a dispersal, colonization or occupancy-niche trait",
+    "activation geometry is independent of phylogeny or family structure"
   ],
   "preferred_terms": [
     "behaviourally realized active community",
@@ -152,6 +170,9 @@
     "species × site incidence matrix",
     "conventional functional trait space",
     "rainfall response diversity",
-    "practical equivalence of active-matrix fill within the frozen margin"
+    "practical equivalence of active-matrix fill within the frozen margin",
+    "species activation geometry",
+    "spatial-edge activator",
+    "local taxonomic deepener"
   ]
 }
