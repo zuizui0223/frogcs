@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import argparse
 import json
 import re
 
-MAN=Path("MANUSCRIPT_JAE_V0_8.md")
+parser=argparse.ArgumentParser()
+parser.add_argument("--manuscript", default="MANUSCRIPT_JAE_V0_8.md")
+args=parser.parse_args()
+
+MAN=Path(args.manuscript)
 CLAIM=Path("ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json")
 SPINE=Path("COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md")
 
