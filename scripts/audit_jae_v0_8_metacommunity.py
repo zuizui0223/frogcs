@@ -73,6 +73,7 @@ required_body=[
     "metacommunity-scale",
     "species × stop incidence matrix",
     "activation geometry",
+    "partially coupled coordinates",
     "response-sign diversity",
     "does not assume or demonstrate that all stops form a demographic metacommunity"
 ]
@@ -91,7 +92,7 @@ for phrase in [
     if phrase not in claim.get("prohibited",[]):
         raise SystemExit(f"claim boundary missing prohibition: {phrase}")
 
-for doi in ["10.1038/s41467-026-70192-x","10.1111/ele.70299","10.1111/j.1466-8238.2011.00662.x"]:
+for doi in ["10.1038/s41467-026-70192-x","10.1111/ele.70299","10.1111/j.1466-8238.2011.00662.x","10.1111/2041-210X.14087"]:
     if doi not in text:
         raise SystemExit(f"missing verified response-diversity reference DOI: {doi}")
 
