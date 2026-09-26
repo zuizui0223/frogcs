@@ -1,0 +1,63 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_spatial_niche_breadth_response_v0_1",
+  "status": "post-opening held-out response-trait hypothesis frozen before validation readback",
+  "ecological_question": "Does a species' baseline spatial breadth across route stops predict its later wet-versus-dry active-community response?",
+  "motivation": "Conventional life-history functional distance did not predict rainfall-response similarity. A more proximal response trait may be the spatial breadth with which a species is acoustically active across local sites before the validation period.",
+  "time_split": {
+    "trait_period": [2001, 2007],
+    "validation_period": [2008, 2015],
+    "non_overlap": true
+  },
+  "trait_period_spatial_breadth": {
+    "eligible_runs": "same complete 10-stop, temperature-qualified NAAMP runs used in the ecological community analyses",
+    "per_run_measure": "for each species detected somewhere in a run, number of the 10 stops at which the species is detected divided by 10",
+    "species_trait": "mean per-run stop fraction across all early-period runs in which the species is route-present",
+    "eligibility": {
+      "min_presence_runs": 20,
+      "min_distinct_routes": 10
+    },
+    "direction_blind": true,
+    "primary_name": "early_spatial_breadth"
+  },
+  "validation_species_response": {
+    "pairing": "within 2008-2015 only; State x RouteNumber x RunNumber, adjacent observed years, equal-rain pairs removed, lower DaysSinceRain oriented wetter",
+    "event": "for each species present in exactly one member of a pair, y=1 if wet-only and y=0 if dry-only",
+    "eligibility": {
+      "min_discordant_events": 25,
+      "min_distinct_routes": 8
+    },
+    "model": "binomial-logit y ~ centered rain_contrast + centered temp_difference + centered doy_difference + centered year_gap with route-clustered covariance",
+    "response": "adjusted species intercept log odds and cluster-robust SE"
+  },
+  "primary_test": {
+    "intersection_min_species": 15,
+    "model": "inverse-variance weighted least squares: late_adjusted_log_odds ~ z_early_spatial_breadth with HC3 covariance",
+    "prediction": "negative",
+    "rationale": "Species that are normally active at fewer stops are hypothesized to be more condition-limited and to show stronger recruitment into the active pool under recent-rain conditions; broadly active species should have less activation headroom.",
+    "support_rule": "beta < 0 and 95% CI excludes 0"
+  },
+  "prespecified_sensitivity": {
+    "trait": "mean fraction of active stops occupied by the species within early-period runs where it is present",
+    "name": "early_active_footprint_fraction",
+    "model": "same weighted late-response regression",
+    "direction": "negative"
+  },
+  "family_structure_sensitivity": {
+    "method": "100000 permutations of late response labels within AmphiBIO family while early spatial breadth remains fixed",
+    "seed": 2026092601,
+    "test_statistic": "inverse-variance weighted slope",
+    "status": "secondary robustness"
+  },
+  "secondary_descriptives": [
+    "Spearman correlation between early spatial breadth and late adjusted response",
+    "weighted mean late response in lower versus upper spatial-breadth tertiles",
+    "correlation of early spatial breadth with log body size among matched species"
+  ],
+  "boundaries": [
+    "Spatial breadth is acoustic stop use during surveys, not occupancy niche breadth or dispersal ability.",
+    "The trait is estimated in an earlier non-overlapping period and does not use validation outcomes.",
+    "A supported association would identify a proximal response trait but not rainfall causality or a physiological mechanism.",
+    "No alternative time split, breadth metric, threshold, or direction may replace the frozen specification after readback."
+  ]
+}
