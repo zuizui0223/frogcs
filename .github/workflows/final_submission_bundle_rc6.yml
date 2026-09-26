@@ -100,6 +100,7 @@ jobs:
           cp NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json "$out/"
           cp NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
           cp NAAMP_MATRIX_DENSITY_INVARIANCE_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json "$out/"
 
           python - <<'PY'
           import hashlib,json

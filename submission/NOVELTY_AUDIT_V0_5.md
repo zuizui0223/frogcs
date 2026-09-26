@@ -79,7 +79,20 @@ Among 24 species, functional distance does not predict rainfall-response dissimi
 
 Thus conventional life-history functional similarity is not a proxy for rainfall-response similarity in this species set.
 
-### 6. A tempting response-diversity mechanism was tested and retained as a negative result
+### 6. A repeatable species-level response trait emerges from matrix geometry
+
+Species differ consistently in **where** wetter-condition gain incidences enter the community matrix after correcting for the number of inactive stops available in each paired survey.
+
+Across 2001–2007 versus 2008–2015:
+- early–late activation-geometry rho = 0.774 (P = .00044);
+- weighted late-on-early slope = 0.910;
+- 15/16 species retain the same spatial-edge versus local-deepening sign.
+
+This is substantially stronger temporal structure than the previously tested rank repeatability of overall wet/dry response magnitude. It provides a proximal response trait derived from how species participate in community expansion.
+
+The four conventional life-history traits do not strongly correlate with this response geometry, although family-adjusted validation is not estimable and phylogenetic independence is not claimed.
+
+### 7. A tempting response-diversity mechanism was tested and retained as a negative result
 
 A non-overlapping temporal holdout asked whether early-period wet/dry response-sign diversity buffers later route-richness sensitivity. It did not.
 
@@ -112,7 +125,7 @@ Recent response-diversity work emphasizes that:
 - species responses can be context dependent rather than fixed;
 - response diversity is not universally stabilizing under pulse disturbances.
 
-RC6 is consistent with that distinction: rainfall responses differ among species, but the tested life-history space does not encode those differences and the held-out buffering prediction fails.
+RC6 is consistent with that distinction: rainfall responses differ among species, the tested life-history space does not encode those differences, yet an opportunity-corrected **activation geometry** is strongly repeatable within species across non-overlapping periods. The held-out buffering prediction still fails, so repeatable response traits do not automatically imply aggregate insurance.
 
 ## Remaining novelty risks
 
@@ -138,4 +151,4 @@ RC6 is consistent with that distinction: rainfall responses differ among species
 
 ## Preferred one-sentence novelty statement
 
-> **We resolve a familiar rainfall–calling association into the geometry of a spatial community response: recent-rain surveys add both active sites and active species, largely at the boundaries of the species × site matrix, while measured beta diversity and broad life-history functional structure show no detectable corresponding shift.**
+> **We resolve a familiar rainfall–calling association into the geometry of a spatial community response: recent-rain surveys add both active sites and active species, largely at matrix boundaries, while species show a repeatable activation geometry that is not captured by conventional life-history traits.**

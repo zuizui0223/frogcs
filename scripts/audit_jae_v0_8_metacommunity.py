@@ -59,8 +59,9 @@ required_abstract=[
     "P = 0.937",
     "36.9%",
     "39.9%",
-    "P = 0.797",
-    "P = 0.739",
+    "ρ = 0.774",
+    "P = 0.00044",
+    "15 of 16",
     "±0.05 practical-equivalence"
 ]
 for x in required_abstract:
@@ -71,6 +72,7 @@ required_body=[
     "The original rainfall endpoint in the broader analysis programme was frozen before effect readback.",
     "metacommunity-scale",
     "species × stop incidence matrix",
+    "activation geometry",
     "response-sign diversity",
     "does not assume or demonstrate that all stops form a demographic metacommunity"
 ]

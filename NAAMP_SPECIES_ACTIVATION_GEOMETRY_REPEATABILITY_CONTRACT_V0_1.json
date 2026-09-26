@@ -1,0 +1,70 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_species_activation_geometry_repeatability_v0_1",
+  "status": "post-opening response-trait hypothesis frozen before temporal validation readback",
+  "ecological_question": "Do frog species have temporally repeatable activation geometry—i.e., when they gain acoustic incidences under wetter conditions, do they consistently favor newly active sites versus sites that were already active?",
+  "time_split": {
+    "early": [2001, 2007],
+    "late": [2008, 2015],
+    "non_overlap": true
+  },
+  "gain_event": {
+    "unit": "species x matched wet-dry pair",
+    "wet_gain_incidence": "species detected at a stop in the wetter run but not at that same stop in the drier run",
+    "success": "wet-gain incidence occurs at a stop with zero calling species in the drier run",
+    "failure": "wet-gain incidence occurs at a stop that already contains >=1 calling species in the drier run"
+  },
+  "opportunity_correction": {
+    "q_pair": "fraction of the ten drier-run stops that are acoustically inactive",
+    "model_offset": "logit(q_pair)",
+    "informative_pair_rule": "use only 0 < q_pair < 1; q_pair=0 or 1 contains no spatial-choice information and is excluded structurally before fitting",
+    "interpretation": "species intercept >0 means wet gains occur at newly active sites more often than expected from their availability; intercept <0 means gains are concentrated in already-active sites"
+  },
+  "species_trait_name": "activation_geometry_log_odds",
+  "species_trait_labels": {
+    "positive": "spatial-edge activator",
+    "negative": "local taxonomic deepener",
+    "zero": "gain placement proportional to available inactive versus active stops"
+  },
+  "period_eligibility": {
+    "min_informative_wet_gain_incidences": 30,
+    "min_distinct_routes": 10,
+    "min_informative_pairs": 15,
+    "direction_blind": true
+  },
+  "species_model": {
+    "family": "binomial",
+    "response": "new-site successes versus already-active-site failures",
+    "predictors": "intercept only",
+    "offset": "logit(q_pair)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "trait": "cluster-robust intercept log odds"
+  },
+  "overlap_family": {
+    "rule": "intersection of species with finite activation_geometry_log_odds and SE in both periods",
+    "minimum_species": 15
+  },
+  "primary_test": {
+    "metric": "Spearman rank correlation between early and late activation_geometry_log_odds",
+    "prediction": "positive",
+    "support_rule": "rho > 0 and two-sided P < 0.05"
+  },
+  "prespecified_sensitivities": {
+    "weighted_regression": "WLS late_geometry ~ early_geometry weighted by inverse late-period variance with HC3 covariance; expected positive slope",
+    "sign_concordance": "fraction of species retaining edge-activator versus local-deepener sign; one-sided exact binomial test against 0.5",
+    "family_adjusted": "WLS late_geometry ~ early_geometry + C(Family) when coverage and residual df permit"
+  },
+  "secondary_descriptives": [
+    "species-level early and late geometry estimates with 95% CIs",
+    "fraction of wet-gain incidences at newly active sites by species before opportunity correction",
+    "correlation of activation geometry with conventional four-axis functional traits; descriptive only and not used to redefine the trait"
+  ],
+  "interpretation_if_supported": "Species possess a repeatable response trait describing how rainfall-associated acoustic gains enter the spatial community matrix, even if conventional life-history traits do not predict rainfall-response magnitude.",
+  "interpretation_if_null": "Do not promote activation geometry as a stable species trait; retain the community-level four-quadrant decomposition only.",
+  "boundaries": [
+    "This is a response trait of observed acoustic activation geometry, not occupancy niche, dispersal ability, colonization strategy or demographic life history.",
+    "The same species occur in both temporal periods; this is temporal validation, not independent-species replication.",
+    "No rainfall causality or physiological mechanism claim.",
+    "No alternative time split, eligibility threshold, opportunity correction or spatial-edge definition may replace the frozen specification after readback."
+  ]
+}
