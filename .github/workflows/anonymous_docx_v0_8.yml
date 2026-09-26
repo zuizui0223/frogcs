@@ -1,0 +1,61 @@
+name: frogcs JAE v0.8 anonymous DOCX
+
+on:
+  push:
+    branches:
+      - revision/community-metacommunity-synthesis-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_8.md"
+      - "scripts/audit_jae_v0_8_metacommunity.py"
+      - "scripts/build_jae_anonymous_docx.py"
+      - ".github/workflows/anonymous_docx_v0_8.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-jae-v0-8-anonymous-docx
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install DOCX dependency
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - name: Audit current v0.8 manuscript
+        run: python scripts/audit_jae_v0_8_metacommunity.py --manuscript MANUSCRIPT_JAE_V0_8.md
+      - name: Build anonymous v0.8 DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V0_8.md             --output build/FROG_JAE_ANON_MAIN_V0_8.docx
+      - name: Verify anonymity, numbering and title metadata
+        run: |
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          import re
+          p=Path("build/FROG_JAE_ANON_MAIN_V0_8.docx")
+          assert p.is_file() and p.stat().st_size>10000
+          with ZipFile(p) as z:
+              document=z.read("word/document.xml").decode("utf-8")
+              footer=z.read("word/footer1.xml").decode("utf-8")
+              core=z.read("docProps/core.xml").decode("utf-8")
+          expected="Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+          assert "<w:lnNumType" in document
+          assert 'w:restart="continuous"' in document
+          assert "PAGE" in footer
+          assert expected in core
+          assert not re.search(r"<dc:creator>[^<]+</dc:creator>", core)
+          print("DOCX structural/anonymity QA PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v0-8-anonymous-main-docx
+          path: build/FROG_JAE_ANON_MAIN_V0_8.docx
+          if-no-files-found: error
