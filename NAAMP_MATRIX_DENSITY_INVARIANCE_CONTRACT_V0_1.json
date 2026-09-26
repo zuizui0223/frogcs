@@ -1,0 +1,50 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_matrix_density_invariance_v0_1",
+  "status": "post-opening structure-preservation test frozen before endpoint readback",
+  "ecological_question": "When recent rainfall expands the active species-by-site matrix by adding species and active sites, does the internal density of realized species-site associations change?",
+  "sample": "same matched wetter-drier route x seasonal-window family used by the RC6 metacommunity synthesis, restricted structurally to pairs in which both runs have at least one acoustically active stop and at least one active species so matrix connectance is defined; exact-consecutive-year sensitivity prespecified",
+  "matrix_definition": {
+    "rows": "route-level acoustically active species in a run",
+    "columns": "acoustically active stops in that run",
+    "incidence": "species detected calling at a stop",
+    "connectance": "species-stop incidences / (route gamma richness * number of active stops), defined when gamma>=1 and active_stops>=1",
+    "identity": "connectance = alpha_active / gamma"
+  },
+  "primary_endpoint": {
+    "name": "delta_connectance",
+    "definition": "wet minus dry matrix connectance",
+    "model": "delta_connectance ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "estimand": "rain_contrast coefficient"
+  },
+  "equivalence_test": {
+    "margin": 0.05,
+    "scale": "absolute connectance units per one-unit rain_contrast",
+    "rationale": "Typical active-matrix connectance is near 0.5; a +/-0.05 slope corresponds to roughly a 10% relative change in matrix density per unit log-rainfall-recency contrast and is treated as the smallest change large enough to contradict structure-preserving expansion.",
+    "method": "90% confidence interval / two one-sided tests at alpha=0.05",
+    "support_rule": "the entire 90% CI for the rain_contrast coefficient lies within [-0.05,+0.05]"
+  },
+  "secondary_descriptives": [
+    "mean wet and dry connectance",
+    "wet-minus-dry connectance mean",
+    "correlation of delta_connectance with delta_alpha_active and richness_gain"
+  ],
+  "sensitivity": {
+    "sample": "exact consecutive-year pairs only",
+    "same_model_and_equivalence_margin": true
+  },
+  "interpretation_if_equivalent": "Rainfall-associated community expansion adds rows and columns without a material change in average fill of the active species-by-site matrix, consistent with approximately self-similar structure-preserving expansion.",
+  "interpretation_if_not_equivalent": "Do not claim matrix-density preservation; retain the existing alpha-gamma-beta and boundary-expansion results without a self-similarity claim.",
+  "boundaries": [
+    "Connectance is a property of the observed acoustic incidence matrix, not an interaction-network connectance measure.",
+    "Equivalence applies only to the prespecified +/-0.05 slope margin and does not prove exact invariance.",
+    "No occupancy, dispersal, colonization, extinction or rainfall-causality claim.",
+    "No alternative connectance transform, margin or subgroup may replace the frozen specification after readback."
+  ],
+  "missingness": {
+    "rule": "Exclude a pair only when wet or dry connectance is mathematically undefined because gamma=0 or active_stops=0.",
+    "rationale": "This restriction is determined by the frozen connectance definition and was added after the first execution failed before any endpoint readback.",
+    "report_excluded_pairs": true
+  }
+}

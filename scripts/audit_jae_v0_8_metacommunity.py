@@ -60,7 +60,8 @@ required_abstract=[
     "36.9%",
     "39.9%",
     "P = 0.797",
-    "P = 0.739"
+    "P = 0.739",
+    "±0.05 practical-equivalence"
 ]
 for x in required_abstract:
     if x not in abstract:
@@ -88,7 +89,7 @@ for phrase in [
     if phrase not in claim.get("prohibited",[]):
         raise SystemExit(f"claim boundary missing prohibition: {phrase}")
 
-for doi in ["10.1038/s41467-026-70192-x","10.1111/ele.70299"]:
+for doi in ["10.1038/s41467-026-70192-x","10.1111/ele.70299","10.1111/j.1466-8238.2011.00662.x"]:
     if doi not in text:
         raise SystemExit(f"missing verified response-diversity reference DOI: {doi}")
 

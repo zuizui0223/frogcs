@@ -8,7 +8,7 @@
 
 3. **Rainfall contrast was associated with expansion at both spatial and taxonomic scales.** Greater contrast predicted more active stops (β = 0.384, 95% CI 0.240–0.528), higher richness per active stop (β = 0.079, 0.023–0.136) and higher route richness (β = 0.286, 0.165–0.407). Richness also increased within the same stops active in both surveys. These three signals persisted after adjustment for recorded hearing impairment, major-noise interruptions and wind.
 
-4. **Expansion occurred without detectable change in measured beta diversity.** Rainfall effects on pairwise Sørensen (P = 0.937) and normalized Whittaker beta were near zero. Of the total species × stop incidence slope, 36.9% was route-new species at newly active sites, 15.2% existing species at newly active sites, 39.9% route-new species at already-active sites and 8.0% rearrangement within the existing active core. Trait-covered richness increased, whereas functional dispersion and community-weighted means showed no supported shift; functional distance also failed to predict rainfall-response dissimilarity (P = 0.797; within-family P = 0.739).
+4. **Expansion occurred without detectable change in measured beta diversity.** Rainfall effects on pairwise Sørensen (P = 0.937) and normalized Whittaker beta were near zero, and active-matrix fill met a prespecified ±0.05 practical-equivalence criterion. Of the total species × stop incidence slope, 36.9% was route-new species at newly active sites, 15.2% existing species at newly active sites, 39.9% route-new species at already-active sites and 8.0% rearrangement within the existing active core. Trait-covered richness increased, whereas functional dispersion and community-weighted means showed no supported shift; functional distance also failed to predict rainfall-response dissimilarity (P = 0.797; within-family P = 0.739).
 
 5. **Recent rainfall therefore expands the behaviourally realized frog community across both sites and species rather than simply intensifying an unchanged chorus.** Taxonomic, functional and environmental-response dimensions are partly decoupled, and a held-out response-diversity buffering prediction was unsupported. These are acoustic-activity patterns, not evidence of occupancy change or rainfall causality.
 
@@ -105,6 +105,16 @@ For every matched pair,
 
 exactly. Identical covariates across the four component regressions ensure that the rainfall-contrast coefficients also sum exactly to the coefficient for total species-stop incidence change.
 
+### Active-matrix fill and practical-equivalence test
+
+We quantified the proportional fill of each observed active species × active-stop incidence matrix as
+
+`connectance = incidences / (gamma × n_active) = alpha_active / gamma`.
+
+This quantity is the mean fraction of the active species pool represented at an active site and, equivalently, the mean fraction of active sites occupied by an active species; in binary species × site matrices it is directly related to multiplicative Whittaker beta diversity (Arita et al., 2012). Because fill is undefined when a run contains no active species or active stops, this analysis structurally excluded matched pairs in which either member was completely acoustically inactive.
+
+To distinguish practical invariance from a non-significant difference, we froze an equivalence margin before endpoint readback. We modelled wet-minus-dry connectance with the same matched-pair covariates and route-clustered covariance as the other community metrics. The smallest change considered large enough to contradict structure-preserving expansion was an absolute rainfall-contrast slope of ±0.05 connectance units, approximately 10% of the typical active-matrix fill near 0.5. Practical equivalence required the complete 90% confidence interval for the rainfall-contrast coefficient to lie within [-0.05, +0.05], equivalent to two one-sided tests at α = 0.05. The same margin and model were prespecified for exact consecutive-year pairs. This test concerns observed acoustic matrix fill and does not imply exact invariance.
+
 ### Functional community structure
 
 We used AmphiBIO v1 (Oliveira et al., 2017) to define a finite functional trait space before community-level functional outcomes were read. An outcome-blind coverage audit identified 42 species with complete values for body size, litter-size minimum and maximum, offspring-size minimum and maximum, and reproductive output; these species represented 93.2% of eligible run × species incidences.
@@ -179,6 +189,12 @@ Despite increases in active-stop number, local alpha richness and route gamma ri
 
 The two components of pairwise Sørensen were likewise stable: turnover β = -0.00097 (P = 0.885) and nestedness-resultant dissimilarity β = +0.00048 (P = 0.877). Exact consecutive-year sensitivities were also near zero for all beta metrics. Thus the observed active community expanded in spatial footprint, alpha richness and gamma richness without detectable homogenization or differentiation among already-active local assemblages.
 
+### Active-matrix fill is practically equivalent across rainfall contrast
+
+Of the 4,236 matched comparisons, 116 contained a completely inactive run and therefore had undefined active-matrix fill, leaving 4,120 pairs from 582 routes. Mean matrix fill was 0.5552 in drier surveys and 0.5534 in wetter surveys. The rainfall-contrast coefficient was -0.00936 connectance units (95% CI -0.0214–0.00263).
+
+More importantly, the prespecified 90% equivalence interval was -0.0194 to 0.00070, entirely inside the frozen practical-equivalence margin of ±0.05. The exact consecutive-year subset gave the same conclusion (β = -0.00739; 90% equivalence interval -0.0191–0.00436). Thus, within the prespecified margin, the active incidence matrix added species and sites without a material change in its average proportional fill. Because matrix fill equals local alpha divided by route gamma, this is a direct matrix-geometric restatement of their joint scaling rather than an independent diversity axis.
+
 ### The species × stop matrix expands mainly at spatial and taxonomic boundaries
 
 Rainfall contrast predicted an increase of 1.365 species × stop incidences in the wetter survey (95% CI 0.757–1.974, P = 1.10 × 10^-5). Exact algebraic decomposition showed that almost all of this increase involved opening at least one boundary of the observed matrix.
@@ -227,7 +243,7 @@ Our results resolve a familiar rainfall–calling association into a substantial
 
 The species × stop decomposition shows why. Approximately 92% of the rainfall-associated incidence slope involved crossing at least one boundary of the observed matrix. New route-level participants occurred at both newly active and previously active stops, while species already present at route scale also expanded into newly active stops. Only about 8% of the slope was attributable to rearrangement of existing route species among sites that were already active. The response is therefore best described as **two-dimensional expansion**: spatial dilation of the active footprint together with taxonomic deepening of the local and landscape active assemblage.
 
-The alpha–beta–gamma result adds an important constraint. Increasing alpha and gamma do not by themselves imply any particular change in spatial organization. Here multiple beta metrics, including a form normalized for alpha and active-site number, remained close to zero across the rainfall contrast. The additional local richness therefore did not measurably collapse site-to-site differences into a common wet-weather assemblage. At the temporal resolution of NAAMP surveys, recent rain appears to expand participation while preserving the relative spatial differentiation of active communities.
+The alpha–beta–gamma result adds an important constraint. Increasing alpha and gamma do not by themselves imply any particular change in spatial organization. Here multiple beta metrics, including a form normalized for alpha and active-site number, remained close to zero across the rainfall contrast. In addition, proportional fill of the active species × site matrix passed a prespecified practical-equivalence test: its 90% interval lay well inside ±0.05 connectance units per unit rainfall contrast in both the primary and exact-year samples. Because matrix fill is mathematically linked to alpha/gamma, this is not an independent fourth diversity component; instead, it makes the geometry of the expansion explicit. Rows and columns of the active matrix increased while average fill remained materially stable within the frozen margin. The additional local richness therefore did not measurably collapse site-to-site differences into a common wet-weather assemblage.
 
 This structure-preserving expansion is also visible in the functional analysis. The taxonomic pool represented by the frozen AmphiBIO panel increased, yet mean pairwise functional distance and all four community-weighted trait means remained stable. The safest interpretation is not that wet additions are functionally equivalent, but that the measured life-history centroid and dispersion are comparatively conserved while taxonomic richness expands. The weak positive novelty balance suggests that some wet-only species occupy previously underrepresented positions in trait space, but this signal is not sufficiently robust to support a headline claim of functional expansion.
 
@@ -248,6 +264,8 @@ More generally, short environmental pulses may reorganize observed communities w
 NAAMP source data are publicly available from the U.S. Geological Survey data release (Foreman et al., 2017; DOI 10.5066/F7G44NG0). Functional traits are from AmphiBIO v1 (Oliveira et al., 2017; DOI 10.1038/sdata.2017.123; data DOI 10.6084/m9.figshare.4644424.v5). The analysis repository preserves source digests, versioned contracts, deterministic scripts, workflow receipts and derived summaries. Raw third-party source datasets are not redistributed. A persistent archive identifier will be added at finalization.
 
 ## References
+
+Arita, H. T., Christen, A., Rodríguez, P., & Soberón, J. (2012). The presence–absence matrix reloaded: the use and interpretation of range–diversity plots. *Global Ecology and Biogeography*, 21, 282–292. https://doi.org/10.1111/j.1466-8238.2011.00662.x
 
 Brodie, S., Allen-Ankins, S., & Schwarzkopf, L. (2025). Environmental influences on chorusing patterns in an Australian tropical savanna frog community. *Ecosphere*, 16, e70153. https://doi.org/10.1002/ecs2.70153
 
