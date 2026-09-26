@@ -1,0 +1,37 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_crossperiod_episodic_recruitment_v0_1_summary",
+  "contract": "NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json",
+  "workflow_run": 36211361435,
+  "artifact_id": 10896240410,
+  "artifact_digest": "sha256:3fb759090dec0612f0790ec5017db51559a5add769f364b88aaff35af1a6486c",
+  "head_sha": "3260850683ae3cae593ec32cf31ef2cd2c87f763",
+  "crossperiod_matched_species": 28,
+  "primary_baseline_recurrence": {
+    "beta": 0.06392693597057299,
+    "ci95": [
+      -0.2590011064625383,
+      0.38685497840368427
+    ],
+    "p_value": 0.6980196734442985,
+    "spearman_rho": -0.01696770662287904,
+    "spearman_p": 0.9317071794908974
+  },
+  "secondary_seasonal_concentration": {
+    "beta": -0.007150329991803303,
+    "ci95": [
+      -1.0865021466561156,
+      1.0722014866725091
+    ],
+    "p_value": 0.9896404949051196,
+    "spearman_rho": 0.09031198686371099,
+    "spearman_p": 0.6476464848801653
+  },
+  "combined_episodicity": {
+    "spearman_rho": 0.07991242474001095,
+    "p_value": 0.6860469937204364,
+    "authorized_as_inferential": false
+  },
+  "interpretation": "Early-period acoustic recurrence and seasonal concentration do not explain later wet-recruitment differences among species. The episodic-participation hypothesis is unsupported.",
+  "headline_authorized": false
+}
