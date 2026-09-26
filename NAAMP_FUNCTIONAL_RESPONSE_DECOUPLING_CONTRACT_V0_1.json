@@ -1,0 +1,45 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_functional_response_decoupling_v0_1",
+  "status": "post-opening finite trait-response alignment test frozen before endpoint readback",
+  "question": "Does conventional amphibian life-history functional distance predict how differently species respond to rainfall?",
+  "species_response": {
+    "universe": "the 29 direction-blind response-eligible species fixed by the species-pulse analysis",
+    "response": "pair-covariate-adjusted wet-versus-dry log-odds intercept fitted from all matched pairs",
+    "eligibility": "the original >=40 discordant events across >=10 routes; no species added by response direction"
+  },
+  "functional_space": {
+    "source": "AmphiBIO v1 pinned at c437acbc65b51b66e3dc4abd821ebe1cb06b200c",
+    "same_definition_as": "NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_CONTRACT_V0_1.json",
+    "axes": [
+      "log body size",
+      "mean log clutch size from litter-size minimum and maximum",
+      "mean log offspring size from offspring-size minimum and maximum",
+      "log reproductive output per year"
+    ],
+    "scaling": "z-score across the 42 complete species in the frozen active-community functional panel",
+    "distance": "Euclidean distance divided by sqrt(4)"
+  },
+  "primary_test": {
+    "metric": "Mantel-style Pearson correlation between pairwise functional distance and absolute pairwise adjusted rainfall-response difference",
+    "permutation": "100000 unrestricted permutations of response labels across species; deterministic seed 2842026",
+    "alternative": "two-sided",
+    "interpretation_positive": "functional dissimilarity predicts rainfall-response dissimilarity",
+    "interpretation_null": "rainfall response diversity is largely hidden from this conventional functional trait space"
+  },
+  "taxonomy_sensitivity": {
+    "permutation": "100000 response-label permutations within AmphiBIO family; deterministic seed 2842027",
+    "purpose": "test alignment beyond broad family structure"
+  },
+  "secondary_descriptives": [
+    "fraction of opposite-sign species pairs in lowest versus highest functional-distance quartile",
+    "within-family versus between-family mean response dissimilarity",
+    "number of response-eligible species with complete functional traits"
+  ],
+  "boundaries": [
+    "A null result applies only to the four frozen life-history/reproductive axes, not all possible traits.",
+    "Pairwise entries are non-independent; inference comes from label permutation, not naive pairwise regression P values.",
+    "No rainfall causality, phylogenetic mechanism, or evolutionary adaptation claim.",
+    "No alternative trait axes or distance metric may replace the frozen panel after readback."
+  ]
+}

@@ -13,22 +13,22 @@ DOI_RE = re.compile(r"^10\.\d{4,9}/\S+$")
 ORCID_RE = re.compile(r"^(?:https://orcid\.org/)?\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
 
 KEYWORDS = [
-    "acoustic community",
-    "anurans",
-    "ecoacoustics",
-    "environmental cue",
+    "active community",
+    "alpha diversity",
+    "beta diversity",
+    "environmental pulse",
+    "functional diversity",
+    "metacommunity",
     "rainfall",
-    "temporal niche",
-    "synchrony",
-    "weather",
+    "response diversity",
 ]
 
 DESCRIPTION = (
-    "Reproducibility package for a Journal of Animal Ecology Research Article testing whether "
-    "recent rainfall is associated with greater short-window multispecies frog co-calling across "
-    "independent North American and Australian acoustic monitoring systems. The archive contains "
-    "the anonymized scientific manuscript, frozen analysis contracts, result receipts, deterministic "
-    "figure-generation code and analysis scripts. Raw third-party datasets are not redistributed."
+    "Reproducibility package for a Journal of Animal Ecology Research Article analysing how recent "
+    "rainfall is associated with the spatial and taxonomic organization of acoustically active frog "
+    "communities in standardized North American monitoring. The archive contains the anonymized "
+    "scientific manuscript, versioned analysis contracts, result receipts, deterministic figure-generation "
+    "code and analysis scripts. Raw third-party datasets are not redistributed."
 )
 
 def load(path: Path) -> dict:

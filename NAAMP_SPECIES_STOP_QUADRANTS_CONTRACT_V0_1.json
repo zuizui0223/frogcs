@@ -1,0 +1,38 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_species_stop_incidence_quadrants_v0_1",
+  "status": "post-opening matrix decomposition frozen before endpoint readback",
+  "parent": "NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
+  "sample": "same 4,236 matched wet-dry route x RunNumber pairs; exact-consecutive-year sensitivity prespecified",
+  "question": "Which species x stop incidence processes account for rainfall-associated expansion of the active community?",
+  "quadrants": {
+    "corner_expansion": "wet-gain incidences from route-new species at stops inactive in dry minus the symmetric dry-loss incidences from route-lost species at stops inactive in wet",
+    "spatial_spread": "wet-gain incidences from route-existing species at stops inactive in dry minus the symmetric dry-loss incidences from route-existing species at stops inactive in wet",
+    "taxonomic_deepening": "wet-gain incidences from route-new species at stops already active in dry minus the symmetric dry-loss incidences from route-lost species at stops active in wet",
+    "within_core_rearrangement": "wet-gain incidences from route-existing species at stops already active in dry minus symmetric dry-loss incidences from route-existing species at stops active in wet"
+  },
+  "exact_identity": "delta_species_stop_incidences = corner_expansion + spatial_spread + taxonomic_deepening + within_core_rearrangement for every pair",
+  "primary_endpoints": [
+    "corner_expansion",
+    "spatial_spread",
+    "taxonomic_deepening",
+    "within_core_rearrangement"
+  ],
+  "model": {
+    "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "sensitivity": "exact consecutive-year pairs"
+  },
+  "secondary_synthesis": [
+    "fraction of total rain-contrast incidence beta attributable to each quadrant when total beta and component sum are positive",
+    "sum of spatial-axis components = corner_expansion + spatial_spread",
+    "sum of taxonomic-axis components = corner_expansion + taxonomic_deepening"
+  ],
+  "interpretation_boundary": {
+    "incidence": "binary acoustic species detection at a stop, not abundance",
+    "new_or_existing": "relative to the paired comparison run, not colonization or extinction",
+    "active_or_inactive_stop": "relative to the paired comparison run, not habitat creation",
+    "causal_claim": false,
+    "retuning_after_readback": false
+  }
+}

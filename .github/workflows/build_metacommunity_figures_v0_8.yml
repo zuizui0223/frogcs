@@ -1,0 +1,68 @@
+name: build JAE v0.8 metacommunity figures
+
+on:
+  push:
+    branches:
+      - revision/community-metacommunity-synthesis-v1
+    paths:
+      - "scripts/build_metacommunity_figures_v0_8.py"
+      - "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json"
+      - "NAAMP_SPECIES_STOP_QUADRANTS_SUMMARY_V0_1.json"
+      - "NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json"
+      - "NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json"
+      - "NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json"
+      - "NAAMP_RESPONSE_DIVERSITY_BUFFERING_SUMMARY_V0_1.json"
+      - "NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json"
+      - ".github/workflows/build_metacommunity_figures_v0_8.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: revision/community-metacommunity-synthesis-v1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install figure dependencies
+        run: python -m pip install --disable-pip-version-check -q matplotlib numpy
+      - name: Build deterministic figures
+        run: python scripts/build_metacommunity_figures_v0_8.py
+      - name: Freeze figure hashes
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          paths=sorted(Path("figures_ecology_v0_8").glob("*.svg"))
+          assert len(paths)==3, paths
+          obj={
+            "project":"frog-chorus-synchrony",
+            "figure_package":"JAE_v0_8_metacommunity",
+            "source_workflow_run":int(os.environ["GITHUB_RUN_ID"]),
+            "source_head_sha":os.environ["GITHUB_SHA"],
+            "figures":{str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
+            "builder":"scripts/build_metacommunity_figures_v0_8.py"
+          }
+          Path("ECOLOGICAL_FIGURE_HASHES_V0_3.json").write_text(
+            json.dumps(obj,indent=2,sort_keys=True)+"\n",encoding="utf-8"
+          )
+          print(json.dumps(obj,indent=2))
+          PY
+      - name: Commit synchronized figures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add figures_ecology_v0_8/*.svg ECOLOGICAL_FIGURE_HASHES_V0_3.json
+          if git diff --cached --quiet; then
+            echo "figures already synchronized"
+            exit 0
+          fi
+          git commit -m "Sync deterministic JAE v0.8 metacommunity figures"
+          git push origin HEAD:revision/community-metacommunity-synthesis-v1

@@ -1,0 +1,34 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_response_diversity_buffering_v0_1_summary",
+  "workflow_run": 36225142110,
+  "head_sha": "83a995ee2a823b08123146620364264a1118cbf1",
+  "early": {
+    "estimable_species": 16,
+    "eligible_route_season_pools": 846
+  },
+  "validation": {
+    "pairs": 779,
+    "routes": 177
+  },
+  "primary": {
+    "beta": -0.9536587713560999,
+    "ci95": [
+      -3.2666006663827627,
+      1.3592831236705631
+    ],
+    "p_value": 0.4190209475187544,
+    "supported": false
+  },
+  "exact_consecutive_year": {
+    "pairs": 509,
+    "routes": 144,
+    "beta": 0.21870706181487426,
+    "ci95": [
+      -2.351697269628052,
+      2.7891113932578007
+    ],
+    "p_value": 0.8675535856591665
+  },
+  "interpretation": "Held-out early-period response-sign diversity does not predict buffering of later route-level active richness responses to rainfall contrast. Do not use response-diversity insurance as a headline mechanism."
+}

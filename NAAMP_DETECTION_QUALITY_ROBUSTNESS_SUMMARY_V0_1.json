@@ -1,0 +1,62 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_detection_quality_robustness_v0_1_summary",
+  "workflow_run": 36228383194,
+  "head_sha": "8a9e96966b7e04f6c89e18373494e0e747dd24b6",
+  "primary_sample": {
+    "pairs": 4024,
+    "routes": 576
+  },
+  "primary": {
+    "active_stops": {
+      "beta": 0.3771673969977525,
+      "ci95": [
+        0.22701227394233148,
+        0.5273225200531735
+      ],
+      "p": 8.51669942923938e-7
+    },
+    "alpha_active": {
+      "beta": 0.08378717293962946,
+      "ci95": [
+        0.02536773137332067,
+        0.14220661450593824
+      ],
+      "p": 0.004938045277174574
+    },
+    "gamma_richness": {
+      "beta": 0.29682769653891444,
+      "ci95": [
+        0.17097428388781316,
+        0.4226811091900157
+      ],
+      "p": 0.00000378936655288764
+    },
+    "all_three_positive_ci": true
+  },
+  "exact_consecutive_year": {
+    "pairs": 2568,
+    "routes": 492,
+    "active_stops_beta": 0.2817533132778383,
+    "alpha_beta": 0.09057101921938049,
+    "gamma_beta": 0.3202603444080729,
+    "all_three_positive_ci": true
+  },
+  "car_count_sensitivity": {
+    "pairs": 2968,
+    "routes": 479,
+    "active_stops_beta": 0.44819917083865723,
+    "alpha_beta": 0.08449817185727276,
+    "gamma_beta": 0.30744188688030705,
+    "all_three_positive_ci": true
+  },
+  "mass_noise_index_sensitivity": {
+    "pairs": 1444,
+    "routes": 218,
+    "active_stops_beta": 0.24773528106373027,
+    "alpha_beta": 0.1577921831183231,
+    "gamma_beta": 0.4279344698766332,
+    "all_three_positive_ci": true
+  },
+  "interpretation": "Rainfall-associated expansion of the active spatial footprint, local alpha richness and route gamma richness persists after adjustment for recorded hearing impairment, major-noise timeouts and wind differences. The same qualitative result persists after adding traffic counts and in the Massachusetts noise-index subset. This constrains recorded acoustic detection conditions as an explanation but is not a complete detectability model."
+}

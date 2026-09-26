@@ -1,0 +1,35 @@
+name: frogcs functional-response decoupling
+
+on:
+  push:
+    branches:
+      - revision/functional-response-decoupling-v1
+    paths:
+      - "NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_CONTRACT_V0_1.json"
+      - "NAAMP_RESPONSE_ELIGIBLE_SPECIES_UNIVERSE_V0_1.json"
+      - "scripts/run_naamp_functional_response_decoupling.py"
+      - ".github/workflows/functional_response_decoupling.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Run frozen functional-response alignment test
+        run: python scripts/run_naamp_functional_response_decoupling.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-functional-response-decoupling-v0-1
+          path: NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_RECEIPT_V0_1.json
+          if-no-files-found: error

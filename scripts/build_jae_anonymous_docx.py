@@ -14,8 +14,8 @@ from docx.shared import Inches, Mm, Pt
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT
 parser = argparse.ArgumentParser()
-parser.add_argument("--source", default=str(BASE / "MANUSCRIPT_JAE_V0_6.md"))
-parser.add_argument("--output", default=str(ROOT / "build" / "FROG_JAE_ANON_MAIN_V0_6.docx"))
+parser.add_argument("--source", default=str(BASE / "MANUSCRIPT_JAE_V0_8.md"))
+parser.add_argument("--output", default=str(ROOT / "build" / "FROG_JAE_ANON_MAIN_V0_8.docx"))
 args = parser.parse_args()
 SRC = Path(args.source)
 OUT = Path(args.output)
@@ -87,6 +87,9 @@ def add_page_field(paragraph):
 
 def build():
     source = SRC.read_text(encoding="utf-8")
+    title_line = next((x[2:].strip() for x in source.splitlines() if x.startswith("# ")), "")
+    if not title_line:
+        raise SystemExit("manuscript title heading not found")
     doc = Document()
     section = doc.sections[0]
     section.page_width = Mm(210)
@@ -179,7 +182,7 @@ def build():
                 set_run_font(run)
 
     props = doc.core_properties
-    props.title = "Recent rainfall predicts broader frog acoustic participation without stronger residual co-calling associations"
+    props.title = title_line
     props.author = ""
     props.last_modified_by = ""
     props.subject = "Journal of Animal Ecology anonymous main manuscript"

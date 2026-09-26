@@ -1,0 +1,90 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_spatial_taxonomic_activation_decomposition_v0_1_summary",
+  "contract": "NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
+  "workflow_run": 36220426232,
+  "head_sha": "cac2e4868155cb119f1766cb68f02fe4ae81ca22",
+  "matched_pairs": 4236,
+  "matched_routes": 585,
+  "primary": {
+    "delta_active_stops": {
+      "beta": 0.3837077298509826,
+      "ci95": [0.23961023098254844, 0.5278052287194168],
+      "p_value": 1.798345898310937e-7
+    },
+    "shared_species_delta_stops_mean": {
+      "beta": 0.15334254296378738,
+      "ci95": [0.032376868700537895, 0.27430821722703685],
+      "p_value": 0.012971349705084706
+    },
+    "richness_gain": {
+      "beta": 0.28590196650411864,
+      "ci95": [0.16464925199938032, 0.407154681008857],
+      "p_value": 3.8115507171919626e-6
+    },
+    "footprint_dependent_net_species": {
+      "beta": 0.0977024663699687,
+      "ci95": [0.051599406743116465, 0.14380552599682092],
+      "p_value": 3.272960484706246e-5,
+      "fraction_of_richness_beta": 0.3417341514117097
+    },
+    "within_footprint_net_species": {
+      "beta": 0.18819950013414996,
+      "ci95": [0.07473274664805972, 0.3016662536202402],
+      "p_value": 0.0011505752691053132,
+      "fraction_of_richness_beta": 0.6582658485882903
+    },
+    "delta_species_stop_incidences": {
+      "beta": 1.3654039134019618,
+      "ci95": [0.7567299123023005, 1.9740779145016232],
+      "p_value": 1.0992113420495534e-5
+    },
+    "delta_mean_species_per_active_stop": {
+      "beta": 0.07941491576879714,
+      "ci95": [0.02311981909108013, 0.13571001244651415],
+      "p_value": 0.005694005637618394
+    },
+    "delta_mean_stops_per_route_species": {
+      "beta": 0.1256998625871371,
+      "ci95": [0.027824285419184552, 0.22357543975508967],
+      "p_value": 0.01183094973722617
+    }
+  },
+  "exact_consecutive_year": {
+    "n_pairs": 2693,
+    "delta_active_stops_beta": 0.2922510458171842,
+    "shared_species_delta_stops_mean_beta": 0.16176843276997732,
+    "richness_gain_beta": 0.300918355273146,
+    "footprint_dependent_net_species_beta": 0.10200181998186449,
+    "within_footprint_net_species_beta": 0.1989165352912815,
+    "footprint_fraction_of_richness_beta": 0.3389724032441959,
+    "within_footprint_fraction_of_richness_beta": 0.6610275967558041
+  },
+  "descriptive": {
+    "mean_wet_active_stops": 7.682247403210576,
+    "mean_dry_active_stops": 7.512275731822474,
+    "wet_only_species_total": 4726,
+    "dry_only_species_total": 4295,
+    "wet_footprint_dependent_species_total": 622,
+    "dry_footprint_dependent_species_total": 523,
+    "wet_footprint_dependent_fraction_of_wet_only": 0.13161235717308506,
+    "dry_footprint_dependent_fraction_of_dry_only": 0.12176949941792782,
+    "wet_incidence_gain_2x2": {
+      "route_new__dry_inactive_stop": 3214,
+      "route_existing__dry_inactive_stop": 5086,
+      "route_new__dry_active_stop": 9366,
+      "route_existing__dry_active_stop": 11088
+    }
+  },
+  "identity_check": {
+    "richness_beta_equals_component_sum": true,
+    "beta_error": 0.0
+  },
+  "interpretation": "Rainfall-associated community expansion has two separable components. The active spatial footprint expands and species already participating at route scale occupy more stops, but only about one third of the route-level richness slope is structurally dependent on newly active stops. About two thirds arises within the pre-existing active footprint. Spatial activation and taxonomic participation therefore co-occur but are not the same process.",
+  "boundaries": {
+    "post_opening": true,
+    "frozen_before_endpoint_readback": true,
+    "causal_mediation_claim": false,
+    "occupancy_claim": false
+  }
+}

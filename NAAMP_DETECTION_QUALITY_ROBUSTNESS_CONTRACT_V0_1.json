@@ -1,0 +1,76 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_detection_quality_robustness_v0_1",
+  "status": "reviewer-robustness frozen before endpoint readback",
+  "question": "Can recorded hearing impairment, major-noise interruptions, or wind differences explain the rainfall-associated expansion of the active frog community?",
+  "sample": "same complete 10-stop matched wetter-drier route x RunNumber pairs as the metacommunity synthesis, restricted only by prespecified detection-covariate availability",
+  "recorded_detection_covariates": {
+    "stop_hearing_impairment": {
+      "definition": "If Massachusetts MassNoiseIndex is present, impaired=1 for index >=2 and 0 for index 0-1; otherwise use the regional Noise yes/no field when valid (1=yes, 0=no).",
+      "protocol_basis": "NAAMP regional programs could record ambient noise as yes/no or with the Massachusetts noise index; index >=2 corresponds to moderately or more strongly affecting sampling."
+    },
+    "stop_timeout": {
+      "definition": "TimeOut==1 if a major noise disturbance caused the observer to break the 5-minute listening period; otherwise 0."
+    },
+    "run_wind": {
+      "definition": "mean of numeric StartWind and EndWind Beaufort codes when both are available and within 0-5"
+    }
+  },
+  "run_level_derivation": {
+    "hearing_impairment_fraction": "mean standardized impairment indicator across the 10 sampled stops; require >=8 valid stops",
+    "timeout_fraction": "mean TimeOut across 10 sampled stops; require >=8 valid stops",
+    "mean_wind": "mean(StartWind, EndWind); require both valid",
+    "pair_covariates": "wet minus dry for each run-level quantity"
+  },
+  "primary_models": [
+    {
+      "response": "delta_active_stops",
+      "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + hearing_impairment_difference + timeout_difference + wind_difference + C(State) + C(RunNumber)",
+      "support": "rain_contrast beta > 0 and 95% CI excludes 0"
+    },
+    {
+      "response": "delta_alpha_active",
+      "same_formula": true,
+      "support": "rain_contrast beta > 0 and 95% CI excludes 0"
+    },
+    {
+      "response": "richness_gain",
+      "same_formula": true,
+      "support": "rain_contrast beta > 0 and 95% CI excludes 0"
+    }
+  ],
+  "covariance": "cluster-robust by State x RouteNumber",
+  "minimum_primary_gate": {
+    "pairs": 1500,
+    "routes": 300
+  },
+  "prespecified_sensitivities": {
+    "exact_consecutive_year": "same primary models on year_gap==1",
+    "car_count_2006plus": {
+      "run_metric": "mean numeric CarCount across sampled stops; require >=8 valid stops",
+      "minimum_gate": {
+        "pairs": 750,
+        "routes": 200
+      },
+      "model": "add wet-minus-dry mean car count to all three primary formulas"
+    },
+    "mass_noise_index": {
+      "run_metric": "mean MassNoiseIndex among valid 0-4 values; require >=8 valid stops",
+      "minimum_gate": {
+        "pairs": 300,
+        "routes": 75
+      },
+      "model": "replace standardized hearing-impairment fraction with wet-minus-dry mean MassNoiseIndex while retaining timeout and wind"
+    }
+  },
+  "interpretation": {
+    "if_supported": "The rainfall-associated spatial, local-alpha and route-gamma signals are not explained by recorded survey hearing impairment, noise interruptions or wind differences.",
+    "boundary": "This is a measured-detection-condition robustness test, not proof that all acoustic detectability differences are absent."
+  },
+  "prohibited": [
+    "no outcome-dependent choice among noise encodings",
+    "no changing MassNoiseIndex threshold after readback",
+    "no excluding noisy surveys based on observed effect direction",
+    "no causal rainfall claim"
+  ]
+}

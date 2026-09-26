@@ -1,0 +1,61 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_species_stop_incidence_quadrants_v0_1_summary",
+  "contract": "NAAMP_SPECIES_STOP_QUADRANTS_CONTRACT_V0_1.json",
+  "workflow_run": 36220946247,
+  "head_sha": "6349ebcfd62a846f0a43f48125851de765af399b",
+  "matched_pairs": 4236,
+  "matched_routes": 585,
+  "total_incidence_beta": 1.3654039134019618,
+  "components": {
+    "corner_expansion": {
+      "beta": 0.5039964764047035,
+      "ci95": [0.3073569093939917, 0.7006360434154153],
+      "p_value": 5.074349776611201e-7,
+      "fraction_total_beta": 0.36911896286350526
+    },
+    "spatial_spread": {
+      "beta": 0.2080305999098008,
+      "ci95": [0.05898778237197988, 0.3570734174476217],
+      "p_value": 0.0062252762790193025,
+      "fraction_total_beta": 0.1523582859752348
+    },
+    "taxonomic_deepening": {
+      "beta": 0.5443545384491266,
+      "ci95": [0.20651266048583583, 0.8821964164124174],
+      "p_value": 0.0015883839751625742,
+      "fraction_total_beta": 0.3986765623754836
+    },
+    "within_core_rearrangement": {
+      "beta": 0.10902229863833068,
+      "ci95": [-0.0774463565011847, 0.29549095377784607],
+      "p_value": 0.251824665438833,
+      "fraction_total_beta": 0.07984618878577622
+    }
+  },
+  "axis_summaries": {
+    "incidences_involving_newly_active_locations_beta": 0.7120270763145043,
+    "incidences_involving_route_new_species_beta": 1.04835101485383
+  },
+  "exact_consecutive_year": {
+    "n_pairs": 2693,
+    "total_beta": 1.3458590641005572,
+    "component_fraction_total_beta": {
+      "corner_expansion": 0.333047693585348,
+      "spatial_spread": 0.11189909944545258,
+      "taxonomic_deepening": 0.46909733853701097,
+      "within_core_rearrangement": 0.08595586843218818
+    }
+  },
+  "identity": {
+    "component_betas_sum_to_total": true,
+    "error": 2.220446049250313e-16
+  },
+  "interpretation": "Rainfall-associated growth of the species x stop incidence matrix is dominated by two boundary-expansion processes: route-new species appearing at newly active stops and route-new species entering stops that were already active. Spatial spread of route-existing species into newly active stops is smaller but positive. Pure rearrangement of route-existing species among already-active stops is weak. The observed active community therefore expands mainly by adding rows and columns to the active matrix, not by reshuffling an unchanged core.",
+  "boundaries": {
+    "route_new": "new relative to paired survey, not colonization",
+    "newly_active_stop": "inactive in paired survey, not habitat creation",
+    "causal_rainfall_claim": false,
+    "post_opening_frozen_before_endpoint_readback": true
+  }
+}

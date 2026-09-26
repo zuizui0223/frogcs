@@ -1,0 +1,29 @@
+# v0.8 synthesis QA
+name: frogcs JAE v0.8 metacommunity QA
+
+on:
+  push:
+    branches:
+      - revision/community-metacommunity-synthesis-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_8.md"
+      - "ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json"
+      - "COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md"
+      - "scripts/audit_jae_v0_8_metacommunity.py"
+      - ".github/workflows/jae_v0_8_metacommunity_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit v0.8 scientific claims
+        run: python scripts/audit_jae_v0_8_metacommunity.py

@@ -1,0 +1,51 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_within_active_depth_decomposition_v0_1",
+  "status": "post-opening depth decomposition frozen before endpoint readback",
+  "parent": "NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
+  "sample": "same 4,236 adjacent-observed-year matched wet-dry route x RunNumber pairs; exact-consecutive-year sensitivity prespecified",
+  "question": "When active-stop mean species richness rises with rainfall contrast, is that due to crossing from one to at least two species, or to additional species beyond the second within already multispecies stops?",
+  "exact_decomposition": {
+    "per_run": "mean_species_per_active_stop = 1 + fraction_active_stops_with_2plus_species + mean_excess_species_beyond_two_per_active_stop",
+    "per_pair": "delta_mean_species_per_active_stop = delta_fraction_2plus + delta_excess_beyond_two",
+    "coefficient_identity": "OLS rain-contrast beta for delta mean richness must equal the sum of component betas under identical rows/covariates"
+  },
+  "primary_endpoints": [
+    {
+      "name": "delta_fraction_2plus_active",
+      "definition": "wet minus dry fraction of active stops containing >=2 species",
+      "role": "threshold-crossing component",
+      "direction": "estimate and CI; no directional gate because prior all-run decomposition was null"
+    },
+    {
+      "name": "delta_excess_beyond_two_active",
+      "definition": "wet minus dry sum(max(K-2,0)) / number of active stops",
+      "role": "deep-multiplicity component",
+      "prediction": "beta_rain_contrast > 0"
+    },
+    {
+      "name": "shared_active_stop_delta_species_mean",
+      "definition": "within each matched pair, mean wet-minus-dry species count across StopNumbers active in both runs",
+      "role": "local taxonomic deepening holding active-stop membership fixed",
+      "prediction": "beta_rain_contrast > 0"
+    }
+  ],
+  "secondary_diagnostics": [
+    "delta_fraction_3plus_active",
+    "delta_excess_beyond_three_active",
+    "same-stop transition counts among shared-active stops: 1->1, 1->2, 1->3plus, 2plus->1, 2->2, 2->3plus, 3plus->lower, 3plus->same_or_higher",
+    "newly-active-stop mean species count in wet run",
+    "lost-active-stop mean species count in dry run"
+  ],
+  "models": {
+    "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "sensitivity": "exact consecutive-year pairs"
+  },
+  "interpretation_boundary": {
+    "active_stop": "acoustic detection, not occupancy or abundance",
+    "shared_active_stop": "same numbered route stop active in both surveys; not repeated-measures proof of local population change",
+    "causal_claim": false,
+    "retuning_after_readback": false
+  }
+}

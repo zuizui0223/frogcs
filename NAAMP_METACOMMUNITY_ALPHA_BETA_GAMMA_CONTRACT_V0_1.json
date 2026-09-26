@@ -1,0 +1,49 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_metacommunity_alpha_beta_gamma_v0_1",
+  "status": "post-opening metacommunity decomposition frozen before endpoint readback",
+  "sample": "same 4,236 matched wet-dry route x seasonal-window pairs; exact-consecutive-year sensitivity prespecified",
+  "conceptual_unit": {
+    "local_community": "one standardized NAAMP stop",
+    "metacommunity": "the ten-stop route-run",
+    "activity_boundary": "beta metrics are calculated among stops containing at least one calling species in each run"
+  },
+  "primary_endpoints": [
+    {
+      "name": "delta_alpha_active",
+      "definition": "wet minus dry mean species richness per active stop",
+      "prediction": "positive; replication of within-active depth result"
+    },
+    {
+      "name": "delta_gamma",
+      "definition": "wet minus dry route-level active species richness",
+      "prediction": "positive; replication of ecological pulse result"
+    },
+    {
+      "name": "delta_mean_pairwise_sorensen_active",
+      "definition": "wet minus dry mean pairwise Sorensen dissimilarity across all pairs of active stops within a run",
+      "prediction": "two-sided; negative indicates spatial homogenization, positive indicates differentiation"
+    },
+    {
+      "name": "delta_whittaker_beta_normalized_active",
+      "definition": "wet minus dry normalized Whittaker beta among active stops: ((gamma/alpha_active)-1)/(n_active-1), defined for n_active>=2",
+      "prediction": "two-sided; sign interpreted as homogenization/differentiation"
+    }
+  ],
+  "secondary": [
+    "mean pairwise Simpson turnover among active stops",
+    "mean pairwise nestedness-resultant dissimilarity among active stops",
+    "delta active-stop count"
+  ],
+  "model": {
+    "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "sensitivity": "exact consecutive-year pairs"
+  },
+  "interpretation_boundary": {
+    "metacommunity": "behaviourally realized acoustic metacommunity, not occupancy metacommunity",
+    "homogenization": "greater similarity of detected active assemblages among stops, not biotic homogenization through colonization/extinction",
+    "causal_claim": false,
+    "retuning_after_readback": false
+  }
+}

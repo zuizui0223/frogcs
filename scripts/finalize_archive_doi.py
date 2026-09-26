@@ -8,6 +8,14 @@ from pathlib import Path
 PLACEHOLDERS = [
     (
         "NAAMP source data are publicly available from the U.S. Geological Survey data release "
+        "(Foreman et al., 2017; DOI 10.5066/F7G44NG0). Functional traits are from AmphiBIO v1 "
+        "(Oliveira et al., 2017; DOI 10.1038/sdata.2017.123; data DOI 10.6084/m9.figshare.4644424.v5). "
+        "The analysis repository preserves source digests, versioned contracts, deterministic scripts, "
+        "workflow receipts and derived summaries. Raw third-party source datasets are not redistributed. "
+        "A persistent archive identifier will be added at finalization."
+    ),
+    (
+        "NAAMP source data are publicly available from the U.S. Geological Survey data release "
         "(Foreman et al., 2017; DOI 10.5066/F7G44NG0). Trait analyses use AmphiBIO v1 "
         "(Oliveira et al., 2017), distributed under CC BY 4.0. The standalone analysis repository "
         "preserves versioned contracts, source digests, result receipts and analysis scripts. Raw "
@@ -30,10 +38,11 @@ PLACEHOLDERS = [
 
 NEW_TEMPLATE = (
     "NAAMP source data are publicly available from the U.S. Geological Survey data release "
-    "(Foreman et al., 2017; DOI 10.5066/F7G44NG0). Trait analyses use AmphiBIO v1 "
-    "(Oliveira et al., 2017), distributed under CC BY 4.0. The standalone analysis repository "
-    "preserves versioned contracts, source digests, result receipts and analysis scripts. Raw third-party "
-    "source datasets are not redistributed. The finalized reproducibility archive is available at DOI {doi}."
+    "(Foreman et al., 2017; DOI 10.5066/F7G44NG0). Functional traits are from AmphiBIO v1 "
+    "(Oliveira et al., 2017; DOI 10.1038/sdata.2017.123; data DOI 10.6084/m9.figshare.4644424.v5). "
+    "The analysis repository preserves source digests, versioned contracts, deterministic scripts, workflow "
+    "receipts and derived summaries. Raw third-party source datasets are not redistributed. "
+    "The finalized reproducibility archive is available at DOI {doi}."
 )
 
 def normalize_doi(raw: str) -> str:
@@ -47,7 +56,7 @@ def normalize_doi(raw: str) -> str:
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--doi", required=True)
-    p.add_argument("--input", default="MANUSCRIPT_JAE_V0_6.md")
+    p.add_argument("--input", default="MANUSCRIPT_JAE_V0_8.md")
     p.add_argument("--output", default="build/MANUSCRIPT_JAE_FINAL.md")
     args = p.parse_args()
 

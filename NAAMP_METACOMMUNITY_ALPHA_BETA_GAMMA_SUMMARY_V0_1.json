@@ -1,0 +1,21 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_metacommunity_alpha_beta_gamma_v0_1_summary",
+  "workflow_run": 36222547139,
+  "matched_pairs": 4236,
+  "primary": {
+    "alpha_active": {"beta":0.07941491576879688,"ci95":[0.023119819091079956,0.1357100124465138],"p":0.005694005637618469},
+    "gamma": {"beta":0.2859019665041188,"ci95":[0.16464925199938044,0.4071546810088572],"p":3.811550717191942e-06},
+    "pairwise_sorensen_beta": {"beta":-0.0004916260102541838,"ci95":[-0.012614541544767262,0.011631289524258896],"p":0.9366482180820508},
+    "normalized_whittaker_beta": {"beta":-0.004823886957420518,"ci95":[-0.014721689988399372,0.005073916073558335],"p":0.33946311861718004}
+  },
+  "exact_consecutive_year": {
+    "n_pairs":2693,
+    "alpha_beta":0.08801921660180648,
+    "gamma_beta":0.3009183552731458,
+    "sorensen_beta":0.002146490573990743,
+    "whittaker_beta":-0.0009876045664197997
+  },
+  "interpretation": "Rainfall contrast increases local alpha diversity within active stops and route-scale gamma diversity while leaving among-active-stop beta diversity essentially unchanged. The acoustically realized metacommunity expands in parallel across local and route scales without detectable spatial homogenization or differentiation.",
+  "boundaries": {"acoustic_metacommunity":true,"occupancy_claim":false,"causal_claim":false}
+}

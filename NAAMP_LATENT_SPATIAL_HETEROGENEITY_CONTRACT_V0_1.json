@@ -1,0 +1,66 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_latent_spatial_heterogeneity_v0_1",
+  "status": "post-opening held-out metacommunity hypothesis frozen before validation readback",
+  "ecological_question": "Does pre-existing among-stop compositional heterogeneity determine how strongly a later rainfall contrast expands route-level active richness?",
+  "time_split": {
+    "baseline_period": [2001, 2007],
+    "validation_period": [2008, 2015],
+    "non_overlap": true
+  },
+  "baseline_template": {
+    "unit": "State x RouteNumber x RunNumber",
+    "per_run_beta": "normalized Whittaker beta among acoustically active stops: ((gamma/alpha_active)-1)/(n_active-1), requiring >=2 active stops",
+    "baseline_beta": "mean per-run normalized Whittaker beta across baseline years",
+    "minimum_estimable_runs": 3,
+    "baseline_controls": [
+      "mean route gamma richness",
+      "mean active-stop count"
+    ],
+    "no_validation_data_used": true
+  },
+  "validation_pairs": {
+    "construction": "within 2008-2015 only, same adjacent-observed-year matched wetter-drier rule as the ecological pulse analysis",
+    "minimum_gate": {
+      "pairs": 300,
+      "routes": 100
+    }
+  },
+  "primary_model": {
+    "response": "wet-minus-dry route gamma richness",
+    "formula": "richness_gain ~ rain_contrast * z_baseline_beta + rain_contrast * z_baseline_gamma + rain_contrast * z_baseline_active_stops + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "primary_term": "rain_contrast:z_baseline_beta",
+    "prediction": "positive",
+    "support_rule": "beta > 0 and 95% CI excludes 0",
+    "interpretation": "Higher pre-existing spatial differentiation exposes more distinct latent active-species pools as rainfall conditions change."
+  },
+  "mechanistic_secondary": {
+    "response": "corner expansion: net route-new species x newly active stop incidences",
+    "formula": "corner_expansion ~ rain_contrast * z_baseline_beta + rain_contrast * z_baseline_gamma + rain_contrast * z_baseline_active_stops + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "term": "rain_contrast:z_baseline_beta",
+    "prediction": "positive",
+    "status": "secondary mechanism test fixed before readback"
+  },
+  "additional_secondary": [
+    {
+      "response": "delta_active_stops",
+      "term": "rain_contrast:z_baseline_beta",
+      "direction": "two-sided"
+    },
+    {
+      "response": "delta_alpha_active",
+      "term": "rain_contrast:z_baseline_beta",
+      "direction": "two-sided"
+    }
+  ],
+  "sensitivity": {
+    "sample": "exact consecutive-year validation pairs only",
+    "same_models": true
+  },
+  "boundaries": [
+    "Baseline beta diversity is acoustic compositional differentiation, not measured habitat heterogeneity.",
+    "The test does not demonstrate dispersal, source-sink dynamics, or spatial insurance in the demographic sense.",
+    "A positive interaction would support latent spatial community heterogeneity as a moderator of active gamma expansion, not rainfall causality.",
+    "No alternative time split, beta metric, minimum-run gate, or moderator model may replace the frozen specification after readback."
+  ]
+}
