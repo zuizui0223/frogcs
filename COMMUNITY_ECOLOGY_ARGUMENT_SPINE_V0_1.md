@@ -159,6 +159,16 @@ Across non-overlapping periods:
 - WLS late ~ early slope = **0.910**, 95% CI 0.816–1.003;
 - **15/16 species retain the same sign**, exact one-sided P = **0.000259**.
 
+Across deterministic, completely disjoint route sets:
+- split A = **295 routes / 2,185 pairs**;
+- split B = **290 routes / 2,051 pairs**;
+- overlap family = **26** species;
+- A–B Spearman ρ = **0.785**, P = **2.09e-6**;
+- WLS B ~ A slope = **0.832**, 95% CI 0.542–1.122;
+- **21/26 species retain the same sign**, exact one-sided P = **0.00125**.
+
+Together these tests show transfer across **time** and across **route identities**. The route split is not independent-species replication and is not a named geographic-gradient test.
+
 Interpretation:
 - positive geometry = **spatial-edge activator**;
 - negative geometry = **local taxonomic deepener**.
@@ -305,7 +315,7 @@ Visual message: ~92% of the slope involves opening at least one matrix boundary;
 ### Figure 3 — functional traits versus response geometry
 Panel A: taxonomic richness gain vs functional MPD/CWM change.
 Panel B: pairwise functional distance vs rainfall-response dissimilarity with permutation result.
-Panel C: early-versus-late activation geometry for the 16 overlap species, with the 1:1 line and spatial-edge/local-deepening quadrants.
+Panel C: early-versus-late activation geometry for the 16 temporal-overlap species, with the 1:1 line and spatial-edge/local-deepening quadrants; annotate the disjoint-route transfer result (ρ = 0.785 across 26 species).
 
 Timescale, species forest plots, turnover/nestedness between years, and failed simple trait mechanisms move to Supplement.
 

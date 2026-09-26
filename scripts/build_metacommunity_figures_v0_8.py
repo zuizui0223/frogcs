@@ -18,6 +18,7 @@ func=load("NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json")
 resp=load("NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json")
 buff=load("NAAMP_RESPONSE_DIVERSITY_BUFFERING_SUMMARY_V0_1.json")
 geometry=load("NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json")
+routegeom=load("NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json")
 det=load("NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json")
 spatial=load("NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_SUMMARY_V0_1.json")
 
@@ -205,7 +206,8 @@ ax.set_ylabel("Late activation geometry")
 ax.text(.04,.96,
         f"ρ = {geometry['primary']['spearman_rho']:.3f}\n"
         f"P = {geometry['primary']['p_value']:.4f}\n"
-        f"same sign = {geometry['sign_concordance']['same_sign']}/{geometry['sign_concordance']['n_species']}",
+        f"same sign = {geometry['sign_concordance']['same_sign']}/{geometry['sign_concordance']['n_species']}\n"
+        f"disjoint routes: ρ = {routegeom['primary']['spearman_rho']:.3f}, n = {routegeom['estimable_species']['overlap']}",
         transform=ax.transAxes,va="top")
 ax.set_title("C  Repeatable activation geometry")
 fig.suptitle("Conventional functional traits and response geometry describe different dimensions",fontsize=14)
