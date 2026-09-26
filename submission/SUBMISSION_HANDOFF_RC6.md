@@ -2,11 +2,14 @@
 
 ## RC6 scientific package status
 
-The RC6/v0.8 metacommunity synthesis has passed the branch-level scientific package QA, anonymous-DOCX QA and deterministic figure/hash QA. The tested scientific authority before promotion is:
+The RC6/v0.8 metacommunity synthesis has passed scientific-package QA, anonymous-DOCX QA and deterministic figure/hash QA and has now been promoted.
 
-`revision/community-metacommunity-synthesis-v1`
+Current submission authority is aligned across:
+- `main`
+- `release/jae-v1-rc6`
+- `submission/jae-v1`
 
-The tested commit may now be promoted to `release/jae-v1-rc6` and `main`. Human author metadata and the final archive DOI remain intentionally external/finalization-stage inputs.
+The original synthesis branch `revision/community-metacommunity-synthesis-v1` remains the pre-promotion development record. Human author metadata and the final archive DOI remain intentionally external/finalization-stage inputs.
 
 ## Article
 
@@ -85,7 +88,7 @@ Figure hashes: `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
 
 ## Promotion gate
 
-Completed on the tested synthesis head:
+Completed and promoted:
 
 1. [x] deterministic figure build/hash workflow passes;
 2. [x] v0.8 metacommunity QA passes;
