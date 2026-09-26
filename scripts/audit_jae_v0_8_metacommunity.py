@@ -20,7 +20,7 @@ text=MAN.read_text(encoding="utf-8")
 claim=json.loads(CLAIM.read_text(encoding="utf-8"))
 spine=SPINE.read_text(encoding="utf-8")
 
-expected_title="# Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity"
+expected_title="# Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
 if not text.startswith(expected_title+"\n"):
     raise SystemExit("v0.8 title drift")
 
