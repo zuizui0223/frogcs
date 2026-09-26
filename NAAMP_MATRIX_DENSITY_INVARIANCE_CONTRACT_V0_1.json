@@ -3,7 +3,7 @@
   "analysis": "naamp_matrix_density_invariance_v0_1",
   "status": "post-opening structure-preservation test frozen before endpoint readback",
   "ecological_question": "When recent rainfall expands the active species-by-site matrix by adding species and active sites, does the internal density of realized species-site associations change?",
-  "sample": "same 4,236 matched wetter-drier route x seasonal-window pairs used by the RC6 metacommunity synthesis; exact-consecutive-year sensitivity prespecified",
+  "sample": "same matched wetter-drier route x seasonal-window family used by the RC6 metacommunity synthesis, restricted structurally to pairs in which both runs have at least one acoustically active stop and at least one active species so matrix connectance is defined; exact-consecutive-year sensitivity prespecified",
   "matrix_definition": {
     "rows": "route-level acoustically active species in a run",
     "columns": "acoustically active stops in that run",
@@ -41,5 +41,10 @@
     "Equivalence applies only to the prespecified +/-0.05 slope margin and does not prove exact invariance.",
     "No occupancy, dispersal, colonization, extinction or rainfall-causality claim.",
     "No alternative connectance transform, margin or subgroup may replace the frozen specification after readback."
-  ]
+  ],
+  "missingness": {
+    "rule": "Exclude a pair only when wet or dry connectance is mathematically undefined because gamma=0 or active_stops=0.",
+    "rationale": "This restriction is determined by the frozen connectance definition and was added after the first execution failed before any endpoint readback.",
+    "report_excluded_pairs": true
+  }
 }
