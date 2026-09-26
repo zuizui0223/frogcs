@@ -1,0 +1,25 @@
+{
+  "project": "frog-chorus-synchrony",
+  "audit": "dry_dry_background_estimability_audit_v0_1",
+  "status": "outcome_blind_pair_count_audit_after_fail_closed_minimum_only",
+  "reason": "The original two-phase contract failed before effect readback because adjacent-observed-year dry-dry pairs numbered only 23, below the prespecified minimum of 100.",
+  "prohibited_outputs": [
+    "no richness values",
+    "no turnover/nestedness/Sorensen values",
+    "no species identities",
+    "no effect estimates or p-values"
+  ],
+  "candidate_background_rules": {
+    "A": "Within State×RouteNumber×RunNumber, sort only runs with DaysSinceRain>=8 by year and pair adjacent dry observations, regardless of intervening recent-rain years.",
+    "B": "Rule A plus require year_gap<=3.",
+    "C": "All unique dry-dry run pairs within stratum with year_gap<=3.",
+    "D": "Greedy non-overlapping dry-dry pairs within stratum, pairing adjacent dry observations."
+  },
+  "allowed_outputs": [
+    "total dry runs",
+    "number of strata with >=2 dry runs",
+    "pair counts by candidate rule",
+    "route counts and year-gap summaries by candidate rule"
+  ],
+  "decision_rule": "Choose the most conservative candidate in order B, D, A, C that yields >=100 pairs and >=50 routes. Freeze that rule in a separate repair contract before any turnover values are opened."
+}
