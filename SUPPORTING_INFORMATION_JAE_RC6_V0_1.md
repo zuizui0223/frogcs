@@ -122,28 +122,98 @@ RC6 therefore does not claim that body size explains species rainfall responses.
 
 ### S5.2 Coarse hydroperiod coding
 
-A prespecified ATraiU hydroperiod test was nonestimable because all 23 covered species were coded as using both temporary and permanent breeding waters. The available coarse binary coding did not generate informative among-species contrast.
+A prespecified ATraiU hydroperiod test was nonestimable because all 23 covered species were coded as using both temporary and permanent breeding waters. The available coarse binary coding therefore generated no among-species contrast.
+
+Authoritative files:
+- `NAAMP_HYDROPERIOD_FILTER_CONTRACT_V0_1.json`
+- `NAAMP_HYDROPERIOD_FILTER_SUMMARY_V0_1.json`
+- `scripts/run_naamp_hydroperiod_filter.py`
+
+The full receipt was produced in workflow run 36149886621 and is traceable through the artifact ID and digest stored in the summary.
 
 ### S5.3 Breeding-season breadth
 
-A prespecified breeding-season breadth test was unsupported (P = .823).
+Two separately versioned breeding-season encodings were evaluated and neither supported a mechanism.
+
+**Phenology-filter encoding**
+- n = 22 species;
+- beta per month = +0.0262;
+- 95% CI = -0.204 to 0.256;
+- P = **.823**.
+
+**Alternate continuous breadth encoding**
+- n = 20 species;
+- beta = -0.00123;
+- 95% CI = -0.144 to 0.141;
+- P = **.986**;
+- Spearman rho = 0.168, P = .479.
+
+The two null implementations reinforce the conclusion that breeding-season breadth, as available in the frozen transport, does not explain species rainfall-response differences.
+
+Authoritative files:
+- `NAAMP_BREEDING_SEASON_FILTER_CONTRACT_V0_1.json`
+- `NAAMP_BREEDING_SEASON_FILTER_SUMMARY_V0_1.json`
+- `scripts/run_naamp_breeding_season_filter.py`
+- `NAAMP_BREEDING_SEASON_BREADTH_CONTRACT_V0_1.json`
+- `NAAMP_BREEDING_SEASON_BREADTH_SUMMARY_V0_1.json`
+- `scripts/run_naamp_breeding_season_breadth.py`
 
 ### S5.4 Baseline recurrence and seasonal concentration
 
-Temporally held-out tests asked whether species that were more recurrent locally or more seasonally concentrated in the early period showed stronger later rainfall responses.
+A temporally held-out episodic-participation test asked whether early-period acoustic recurrence or seasonal concentration predicted later wet-recruitment differences among species.
 
-- baseline recurrence: P = .698;
-- seasonal concentration: P = .990.
+Across 28 cross-period matched species:
+- baseline recurrence beta = +0.0639, 95% CI -0.259 to 0.387, P = **.698**;
+- seasonal concentration beta = -0.00715, 95% CI -1.087 to 1.072, P = **.990**;
+- combined episodicity Spearman rho = 0.080, P = .686.
 
 Neither supplied a supported mechanism.
 
+Authoritative files:
+- `NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json`
+- `NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_SUMMARY_V0_1.json`
+- `scripts/run_naamp_crossperiod_episodic_recruitment.py`
+
 ### S5.5 Historical route dryness
 
-A historical route-dryness interaction was unsupported (P = .855).
+A held-out context analysis used 2001–2007 to define route-level baseline rainfall context and 2008–2015 for validation.
+
+Primary rainfall-contrast × baseline-dryness interaction:
+- n = 702 matched pairs across 117 routes;
+- beta = +0.0247;
+- 95% CI = -0.241 to 0.290;
+- P = **.855**.
+
+Exact-consecutive-year sensitivity:
+- n = 480 pairs;
+- beta = +0.148;
+- P = .334.
+
+The prespecified context-dependent amplification hypothesis was unsupported.
+
+Authoritative files:
+- `NAAMP_CONTEXT_DEPENDENT_PULSE_CONTRACT_V0_1.json`
+- `NAAMP_CONTEXT_DEPENDENT_PULSE_SUMMARY_V0_1.json`
+- `scripts/run_naamp_context_dependent_pulse.py`
 
 ### S5.6 Compositional memory
 
-A planned dry–dry background comparison for compositional memory was nonestimable because no candidate design passed the frozen dry–dry sample-size gate. No memory-above-background claim is authorized.
+A planned two-phase community-memory analysis required a dry–dry background family large enough to estimate ordinary compositional drift.
+
+The separate frozen estimability audit found only:
+- 338 total dry runs;
+- 46 route-season strata with at least two dry runs;
+- 40–53 candidate dry–dry pairs across 32–41 routes, depending on the frozen construction rule.
+
+No candidate construction reached the required background gate. The memory-above-background endpoint is therefore **nonestimable**, not a negative effect estimate.
+
+Authoritative files:
+- `NAAMP_TWO_PHASE_COMMUNITY_MEMORY_CONTRACT_V0_1.json`
+- `NAAMP_TWO_PHASE_COMMUNITY_MEMORY_SUMMARY_V0_1.json`
+- `scripts/run_naamp_two_phase_community_memory.py`
+- `DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_CONTRACT_V0_1.json`
+- `DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_SUMMARY_V0_1.json`
+- `scripts/audit_dry_dry_background_estimability.py`
 
 ### S5.7 Early spatial niche breadth
 
@@ -167,7 +237,24 @@ Authoritative files:
 
 ### S5.8 Baseline spatial heterogeneity
 
-A separate held-out hypothesis predicted that greater baseline among-site heterogeneity would expose more latent diversity under recent-rain conditions. The frozen positive-moderation support rule failed. Opposite-direction secondary patterns were therefore not promoted to the main mechanism.
+A separate held-out hypothesis predicted that greater baseline among-stop acoustic beta diversity would strengthen later rainfall-associated gamma expansion.
+
+The frozen positive-moderation support rule failed. In the full validation set (532 pairs, 106 routes), the interaction was actually opposite to prediction:
+- gamma interaction beta = **-0.513**;
+- 95% CI = -0.938 to -0.087;
+- P = .018.
+
+In the exact-consecutive-year sensitivity (365 pairs, 91 routes), the gamma interaction remained negative but was imprecise:
+- beta = -0.354;
+- 95% CI = -0.854 to 0.145;
+- P = .165.
+
+A secondary alpha interaction was negative in both the full validation (beta = -0.232, P = .0083) and exact-year subset (beta = -0.226, P = .0284). Because these directions were opposite to the frozen primary prediction, they are retained as secondary observations rather than promoted as a mechanism.
+
+Authoritative files:
+- `NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json`
+- `NAAMP_LATENT_SPATIAL_HETEROGENEITY_SUMMARY_V0_1.json`
+- `scripts/run_naamp_latent_spatial_heterogeneity.py`
 
 
 ### S5.9 Functional trait space and rainfall-response alignment
