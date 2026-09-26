@@ -60,7 +60,7 @@ def build():
         W=run_matrix_metrics(w,stops,ss)
         D=run_matrix_metrics(d,stops,ss)
         if not (np.isfinite(W["connectance"]) and np.isfinite(D["connectance"])):
-            raise RuntimeError(f"eligible run lacks finite active matrix: wet={w} dry={d}")
+            continue
         row=p._asdict()
         row.update({
             "wet_connectance":float(W["connectance"]),
@@ -74,7 +74,10 @@ def build():
         if abs(row["delta_gamma_check"]-float(row["richness_gain"]))>1e-12:
             raise RuntimeError("gamma/richness identity drift")
         rows.append(row)
-    return pd.DataFrame(rows)
+    out=pd.DataFrame(rows)
+    out.attrs["source_pair_count"]=int(len(pairs))
+    out.attrs["excluded_undefined_connectance"]=int(len(pairs)-len(out))
+    return out
 
 def fit(d):
     x=d[np.isfinite(d["delta_connectance"])].copy()
@@ -136,6 +139,8 @@ def main():
     result={
         "analysis":"naamp_matrix_density_invariance_v0_1",
         "contract":"NAAMP_MATRIX_DENSITY_INVARIANCE_CONTRACT_V0_1.json",
+        "source_pair_count":int(d.attrs.get("source_pair_count",len(d))),
+        "excluded_undefined_connectance":int(d.attrs.get("excluded_undefined_connectance",0)),
         "descriptive":desc(d),
         "primary":primary,
         "exact_consecutive_year":{
