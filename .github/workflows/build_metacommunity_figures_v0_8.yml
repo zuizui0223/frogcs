@@ -6,16 +6,12 @@ on:
       - revision/community-metacommunity-synthesis-v1
       - revision/species-activation-geometry-repeatability-v1
       - revision/activation-geometry-hierarchical-framework-v1
+      - revision/activation-geometry-placebo-gate-v1
     paths:
       - "scripts/build_metacommunity_figures_v0_8.py"
       - "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json"
       - "NAAMP_SPECIES_STOP_QUADRANTS_SUMMARY_V0_1.json"
       - "NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json"
-      - "NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json"
-      - "NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json"
-      - "NAAMP_RESPONSE_DIVERSITY_BUFFERING_SUMMARY_V0_1.json"
-      - "NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json"
-      - "NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json"
       - "NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json"
       - ".github/workflows/build_metacommunity_figures_v0_8.yml"
   workflow_dispatch:
@@ -45,7 +41,7 @@ jobs:
           import hashlib, json, os
           from pathlib import Path
           paths=sorted(Path("figures_ecology_v0_8").glob("*.svg"))
-          assert len(paths)==3, paths
+          assert len(paths)==2, paths
           obj={
             "project":"frog-chorus-synchrony",
             "figure_package":"JAE_v0_8_metacommunity",
