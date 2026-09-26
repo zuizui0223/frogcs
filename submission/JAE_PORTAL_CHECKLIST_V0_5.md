@@ -12,6 +12,7 @@
 - [x] within-active-site depth decomposition
 - [x] functional-community expansion
 - [x] functional-response decoupling
+- [x] species activation-geometry temporal validation
 - [x] detection-quality robustness
 - [x] response-diversity buffering falsification
 - [x] exact ecological Figure 1–3 hashes
@@ -36,6 +37,7 @@
 - [x] traffic-count and Massachusetts noise-index sensitivities agree
 - [x] trait-covered taxonomic richness expands without detectable functional MPD/CWM shift
 - [x] functional distance does not predict rainfall-response distance
+- [x] species activation geometry repeats across non-overlapping periods (rho=0.774; 15/16 same sign)
 - [x] held-out response-diversity buffering prediction unsupported and reported as such
 
 ## Secondary only
