@@ -3,7 +3,7 @@
 This repository contains the reproducibility and submission package for the current
 Journal of Animal Ecology candidate:
 
-**Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry**
+**Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change**
 
 ## Current scientific authority
 
