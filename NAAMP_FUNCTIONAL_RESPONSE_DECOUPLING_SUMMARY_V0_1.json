@@ -1,0 +1,24 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_functional_response_decoupling_v0_1_summary",
+  "workflow_run": 36225386732,
+  "head_sha": "a03bf9d6db3ddcf6cc92c7ba8b61ced14ac0416e",
+  "species": 24,
+  "species_pairs": 276,
+  "primary": {
+    "correlation": -0.03278889427137519,
+    "permutations": 100000,
+    "two_sided_p": 0.7972420275797242
+  },
+  "family_stratified": {
+    "permutations": 100000,
+    "two_sided_p": 0.7391626083739162
+  },
+  "secondary": {
+    "opposite_sign_fraction_low_functional_distance": 0.36231884057971014,
+    "opposite_sign_fraction_high_functional_distance": 0.4057971014492754,
+    "mean_response_dissimilarity_within_family": 0.3738442746726335,
+    "mean_response_dissimilarity_between_family": 0.5114829300427742
+  },
+  "interpretation": "Rainfall-response dissimilarity is not aligned with the frozen four-axis AmphiBIO life-history/reproductive functional distance. Conventional functional similarity does not proxy rainfall response similarity in this species set."
+}
