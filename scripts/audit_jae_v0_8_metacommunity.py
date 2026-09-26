@@ -28,6 +28,18 @@ if text.count("## Materials and Methods") != 1:
     raise SystemExit(f"Materials and Methods heading count = {text.count('## Materials and Methods')}")
 
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
+keyword_block=text.split("## Keywords",1)[1].split("## Introduction",1)[0].strip()
+
+word_re=re.compile(r"[A-Za-z0-9À-ÖØ-öø-ÿ]+(?:[-’\'][A-Za-z0-9À-ÖØ-öø-ÿ]+)*")
+abstract_words=len(word_re.findall(abstract))
+if abstract_words>350:
+    raise SystemExit(f"abstract exceeds JAE 350-word limit: {abstract_words}")
+
+keywords=[x.strip() for x in keyword_block.split(";") if x.strip()]
+if len(keywords)>8:
+    raise SystemExit(f"keywords exceed JAE maximum of 8: {len(keywords)}")
+if keywords != sorted(keywords,key=lambda x:x.casefold()):
+    raise SystemExit("keywords are not alphabetical")
 for bad in [
     "week-long richness elevation",
     "week-long community",
