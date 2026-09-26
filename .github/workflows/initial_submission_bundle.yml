@@ -9,10 +9,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -30,80 +29,74 @@ jobs:
           }
           printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-initial.yml
 
-      - name: Validate initial-submission metadata
+      - name: Validate initial metadata
         run: |
           python scripts/render_submission_metadata.py \
             --metadata /tmp/metadata-initial.yml \
-            --strict \
-            --stage initial \
+            --strict --stage initial \
             --outdir build/submission-metadata
 
-      - name: Guard metadata title
+      - name: Guard current title
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Rainfall-associated richness gains accompany species-selective reassembly of active frog communities"
-          text=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
-          assert expected in text, "JAE_SUBMISSION_METADATA_YAML still contains a superseded manuscript title"
+          expected="Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
+          x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          assert expected in x, "JAE_SUBMISSION_METADATA_YAML contains a superseded title"
           print("metadata title PASS")
           PY
 
-      - name: Audit ecological initial-review manuscript
-        run: python scripts/audit_ecological_manuscript.py --manuscript MANUSCRIPT_JAE_V0_5.md --review-stage initial
+      - name: Audit anonymous v0.6 manuscript
+        run: python scripts/audit_ecological_manuscript_v0_6.py --manuscript MANUSCRIPT_JAE_V0_6.md --review-stage initial
 
-      - name: Build anonymous initial-review DOCX
+      - name: Build anonymous v0.6 DOCX
         run: |
           python scripts/build_jae_anonymous_docx.py \
-            --source MANUSCRIPT_JAE_V0_5.md \
-            --output build/FROG_JAE_ECOLOGY_ANON_MAIN_INITIAL.docx
+            --source MANUSCRIPT_JAE_V0_6.md \
+            --output build/FROG_JAE_ECOLOGY_ANON_MAIN_V0_6.docx
 
-      - name: Rebuild and verify ecological figures
+      - name: Rebuild and verify v0.6 figures
         run: |
-          python scripts/build_ecological_figures.py
-          python scripts/verify_ecological_figure_hashes.py
+          python scripts/build_ecological_figures_v0_6.py
+          python scripts/verify_ecological_figure_hashes_v0_2.py
 
-      - name: Assemble initial-submission bundle
+      - name: Assemble initial bundle
         run: |
           set -eu
           out=build/initial-submission
           mkdir -p "$out"
-
-          cp MANUSCRIPT_JAE_V0_5.md "$out/"
-          cp build/FROG_JAE_ECOLOGY_ANON_MAIN_INITIAL.docx "$out/"
+          cp MANUSCRIPT_JAE_V0_6.md "$out/"
+          cp build/FROG_JAE_ECOLOGY_ANON_MAIN_V0_6.docx "$out/"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
-          cp figures_ecology_v0_5/FIGURE_1_ECO_RICHNESS_V0_1.svg "$out/"
-          cp figures_ecology_v0_5/FIGURE_2_ECO_SPECIES_V0_1.svg "$out/"
-          cp figures_ecology_v0_5/FIGURE_3_ECO_BETA_V0_1.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_4.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_3.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_RC4.md "$out/"
-          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_1.json "$out/"
-          cp ECOLOGICAL_ARGUMENT_SPINE_V0_1.md "$out/"
+          cp figures_ecology_v0_6/*.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_5.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_4.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_RC5.md "$out/"
+          cp ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json "$out/"
+          cp ECOLOGICAL_ARGUMENT_SPINE_V0_2.md "$out/"
+          cp ECOLOGICAL_MECHANISM_FOLLOWUP_LEDGER_V0_1.json "$out/"
+          cp NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
-          This is the ecological v0.5 double-anonymized Journal of Animal Ecology submission bundle.
-          Submission authority is MANUSCRIPT_JAE_V0_5.md + ECOLOGICAL_CLAIM_BOUNDARY_V0_1.json.
-          Older v0.3/v0.4 activation/conditioning manuscripts are superseded and must not be submitted.
-          The reviewer-facing manuscript intentionally contains only an archive-intent statement; a public archive DOI is deferred.
+          Canonical initial JAE submission: ecological v0.6.
+          Submission authority: MANUSCRIPT_JAE_V0_6.md + ECOLOGICAL_CLAIM_BOUNDARY_V0_2.json.
+          v0.3-v0.5 are superseded submission surfaces and remain audit history only.
+          Archive DOI is intentionally deferred during double-anonymized review.
           TXT
 
           python - <<'PY'
-          import hashlib, json
+          import hashlib,json
           from pathlib import Path
           out=Path("build/initial-submission")
-          rows={}
-          for p in sorted(out.iterdir()):
-              if p.is_file():
-                  rows[p.name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
           (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2)+"\n",encoding="utf-8")
           print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
           PY
 
-      - name: Upload initial JAE bundle
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-v0-5-initial-submission-bundle
+          name: frogcs-jae-v0-6-initial-submission-bundle
           path: build/initial-submission/
           if-no-files-found: error
