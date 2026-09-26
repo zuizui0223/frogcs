@@ -1,0 +1,77 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_within_active_depth_decomposition_v0_1_summary",
+  "contract": "NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
+  "workflow_run": 36220799943,
+  "head_sha": "420214c6b1abe97b724629051241270288e97e1a",
+  "matched_pairs": 4236,
+  "matched_routes": 585,
+  "primary": {
+    "delta_mean_species_per_active_stop": {
+      "beta": 0.07941491576879688,
+      "ci95": [0.023119819091079956, 0.1357100124465138],
+      "p_value": 0.005694005637618469
+    },
+    "threshold_2plus_component": {
+      "beta": 0.022959639294544604,
+      "ci95": [0.004608736807674502, 0.0413105417814147],
+      "p_value": 0.014198608467424453,
+      "fraction_of_mean_beta": 0.2891123801692067
+    },
+    "deep_excess_beyond_two_component": {
+      "beta": 0.05645527647425228,
+      "ci95": [0.01109423108082136, 0.1018163218676832],
+      "p_value": 0.014714748833336141,
+      "fraction_of_mean_beta": 0.7108876198307933
+    },
+    "fraction_3plus_component": {
+      "beta": 0.02260786354824242,
+      "ci95": [0.006264959743707294, 0.03895076735277754],
+      "p_value": 0.006701892915898446
+    },
+    "excess_beyond_three_component": {
+      "beta": 0.03384741292600986,
+      "ci95": [0.001554635460719954, 0.06614019039129976],
+      "p_value": 0.039944695205685124
+    },
+    "shared_active_stop_delta_species_mean": {
+      "beta": 0.09531215874630877,
+      "ci95": [0.0347327766076312, 0.15589154088498636],
+      "p_value": 0.0020444638876272194
+    }
+  },
+  "exact_consecutive_year": {
+    "n_pairs": 2693,
+    "mean_beta": 0.08801921660180648,
+    "threshold_2plus_beta": 0.021611145362532613,
+    "threshold_2plus_p": 0.04955995655304386,
+    "deep_excess_beyond_two_beta": 0.06640807123927382,
+    "deep_excess_beyond_two_p": 0.04021261326645853,
+    "shared_active_stop_beta": 0.0937554823217911,
+    "shared_active_stop_p": 0.024479024659350927
+  },
+  "descriptive": {
+    "mean_delta_species_per_active_stop": 0.03356699799660965,
+    "mean_delta_fraction_2plus_active": 0.00646507551240561,
+    "mean_delta_excess_beyond_two_active": 0.027101922484204035,
+    "mean_shared_active_stop_delta_species": 0.047026584867075664,
+    "total_shared_active_stops": 27338,
+    "total_newly_active_stops": 5204,
+    "total_lost_active_stops": 4484,
+    "mean_species_newly_active_stops": 1.5949269792467333,
+    "mean_species_lost_active_stops": 1.5298840321141838
+  },
+  "identity": {
+    "mean_beta_equals_threshold_plus_deep": true,
+    "mean_beta_error": -1.3877787807814457e-17,
+    "deep_beta_equals_3plus_plus_beyond3": true,
+    "deep_beta_error": 6.938893903907228e-18
+  },
+  "interpretation": "Rainfall-associated local taxonomic deepening is not limited to converting single-species active stops into multispecies stops. About 71% of the matched-pair increase in mean species per active stop is carried by multiplicity beyond the second species. Richness also increases within the same numbered stops that are active in both wet and dry surveys, supporting genuine within-footprint taxonomic deepening of the observed acoustic community.",
+  "boundaries": {
+    "post_opening": true,
+    "frozen_before_endpoint_readback": true,
+    "causal_rainfall_claim": false,
+    "occupancy_claim": false
+  }
+}
