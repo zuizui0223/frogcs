@@ -74,6 +74,8 @@
 
 ## JAE formatting / package
 
+- [x] Supporting Information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
+- [x] submission workflows build a separate anonymous Supporting Information DOCX
 - [x] Research Article route
 - [x] five-point abstract
 - [x] double-anonymized main-manuscript workflow prepared

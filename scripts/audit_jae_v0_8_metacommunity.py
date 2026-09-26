@@ -27,6 +27,15 @@ if not text.startswith(expected_title+"\n"):
 if text.count("## Materials and Methods") != 1:
     raise SystemExit(f"Materials and Methods heading count = {text.count('## Materials and Methods')}")
 
+for forbidden_heading in [
+    "### Temporally held-out response-diversity buffering test",
+    "### Secondary rainfall timescale and species-composition analyses",
+    "### A held-out response-diversity buffering prediction is unsupported",
+    "### Secondary timing and between-year composition results",
+]:
+    if forbidden_heading in text:
+        raise SystemExit(f"secondary detail leaked back into main text: {forbidden_heading}")
+
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
 keyword_block=text.split("## Keywords",1)[1].split("## Introduction",1)[0].strip()
 
