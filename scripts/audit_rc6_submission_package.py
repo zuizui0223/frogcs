@@ -53,6 +53,18 @@ for rel in surfaces:
     if OLD_TITLE in text:
         raise SystemExit(f"superseded RC5 title leaked into {rel}")
 
+si=(ROOT/"SUPPORTING_INFORMATION_JAE_RC6_V0_1.md").read_text(encoding="utf-8")
+for anchor_text in [
+    "## S2. Rain-recency timescale",
+    "## S4. Held-out response-diversity buffering test",
+    "## S5. Alternative species-trait and context mechanisms",
+    "## S6. Response magnitude versus activation geometry",
+    "P = **.419**",
+    "family-stratified permutation was unsupported",
+]:
+    if anchor_text not in si:
+        raise SystemExit(f"supporting-information anchor missing: {anchor_text}")
+
 claim=json.loads((ROOT/"ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json").read_text(encoding="utf-8"))
 if claim.get("working_title")!=EXPECTED_TITLE:
     raise SystemExit("claim-boundary title drift")
