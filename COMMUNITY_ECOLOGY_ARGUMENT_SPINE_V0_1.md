@@ -2,10 +2,10 @@
 
 ## Working title
 
-**Recent rainfall expands frog active metacommunities across spatial and taxonomic dimensions without erasing beta diversity**
+**Recent rainfall expands frog active communities across spatial and taxonomic dimensions without detectable change in beta diversity**
 
 Alternative:
-**Rainfall expands the behaviourally realized frog metacommunity while preserving spatial and functional structure**
+**Rainfall expands the behaviourally realized frog community without detectable change in spatial beta diversity or measured functional centroid and dispersion**
 
 ## Biological question
 
@@ -62,7 +62,7 @@ Within the exact same StopNumber active in both paired surveys, local richness a
 
 Therefore the alpha increase is not produced only by adding newly active sites.
 
-## Claim 3 — active-site beta diversity is preserved
+## Claim 3 — active-site beta diversity shows no detectable shift
 
 Rain-contrast effects on among-active-stop beta structure are near zero:
 
@@ -111,7 +111,7 @@ The >=3-species fraction also rises (beta = +0.0226, P = .00670).
 
 Thus local deepening is not merely a binary single-species to multispecies transition.
 
-## Claim 6 — taxonomic expansion largely preserves conventional functional structure
+## Claim 6 — taxonomic expansion shows no detectable shift in conventional functional centroid or dispersion
 
 Frozen four-axis AmphiBIO functional space:
 - log body size;
@@ -132,7 +132,7 @@ Functional novelty balance is weakly positive:
 - beta = +0.0419, P = .0422;
 - exact-consecutive sensitivity beta = +0.0483, P = .0640.
 
-Interpret conservatively: taxonomic additions are not confined to identical trait values, but the overall functional centroid and dispersion remain approximately stable.
+Interpret conservatively: taxonomic additions are not confined to identical trait values, but the measured functional centroid and dispersion show no detectable shift.
 
 ## Claim 7 — conventional functional similarity does not predict rainfall-response similarity
 
@@ -175,14 +175,14 @@ Body size, coarse hydroperiod flags, breeding-season breadth, baseline recurrenc
 
 ## Central ecological interpretation
 
-> **Recent rainfall expands the behaviourally realized frog metacommunity in two dimensions: more sites become acoustically active and more species participate within both new and already-active sites. Local alpha and route gamma increase without detectable change in among-site beta diversity, so the active metacommunity expands without measurable spatial homogenization. Conventional life-history functional structure is largely retained, while species-specific rainfall responses remain poorly represented by those traits.**
+> **Recent rainfall expands the behaviourally realized frog metacommunity in two dimensions: more sites become acoustically active and more species participate within both new and already-active sites. Local alpha and route gamma increase without detectable change in among-site beta diversity, so the active community expands without detectable spatial homogenization in the measured beta metrics. Conventional life-history functional structure is largely retained, while species-specific rainfall responses remain poorly represented by those traits.**
 
 ## Conceptual contribution
 
 The paper should distinguish three diversity objects:
 
 1. **taxonomic diversity** — alpha and gamma richness increase;
-2. **spatial metacommunity structure** — beta diversity remains approximately stable;
+2. **spatial metacommunity structure** — measured beta diversity shows no detectable rainfall-associated shift;
 3. **response diversity** — species differ in rainfall response, but this difference is not predicted by the measured functional trait space and does not demonstrably buffer richness.
 
 This is stronger than a generic rainfall-calling result because it asks **where in the metacommunity matrix an environmental pulse enters**.
@@ -232,7 +232,7 @@ Use:
 - spatial dilation;
 - local taxonomic deepening;
 - alpha-gamma expansion;
-- preserved among-active-site beta structure;
+- no detectable change in among-active-site beta structure;
 - species x site incidence matrix;
 - conventional functional trait space;
 - cryptic rainfall response diversity.
