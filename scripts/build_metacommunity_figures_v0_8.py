@@ -98,11 +98,36 @@ fig.tight_layout(rect=[0,0,1,.96])
 save(fig,"FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg")
 
 # Figure 2: incidence quadrants + local depth
-fig,axs=plt.subplots(1,2,figsize=(11,5.2))
+fig,axs=plt.subplots(1,3,figsize=(14,5.2))
+
+# A: conceptual 2 x 2 incidence matrix, aligned with species activation geometry.
 ax=axs[0]
-keys=["corner_expansion","spatial_spread","taxonomic_deepening","within_core_rearrangement"]
+keys=[
+    ["corner_expansion","taxonomic_deepening"],
+    ["spatial_spread","within_core_rearrangement"],
+]
+share_matrix=np.array([
+    [100*quad["components"][keys[0][0]]["fraction_total_beta"],
+     100*quad["components"][keys[0][1]]["fraction_total_beta"]],
+    [100*quad["components"][keys[1][0]]["fraction_total_beta"],
+     100*quad["components"][keys[1][1]]["fraction_total_beta"]],
+])
+im=ax.imshow(share_matrix)
+ax.set_xticks([0,1],["Dry-inactive stop","Dry-active stop"],rotation=15,ha="right")
+ax.set_yticks([0,1],["Route-new species","Route-existing species"])
+for i in range(2):
+    for j in range(2):
+        ax.text(j,i,f"{share_matrix[i,j]:.1f}%",ha="center",va="center")
+ax.text(0,-0.78,"spatial-edge\nactivation geometry",ha="center",va="bottom",fontsize=9)
+ax.text(1,-0.78,"local-deepening\nactivation geometry",ha="center",va="bottom",fontsize=9)
+ax.set_title("A  Where wet-gain incidences enter")
+fig.colorbar(im,ax=ax,fraction=.046,pad=.04,label="Share of total incidence slope (%)")
+
+# B: coefficient shares of the exact four-way community decomposition.
+ax=axs[1]
+flat_keys=["corner_expansion","spatial_spread","taxonomic_deepening","within_core_rearrangement"]
 labs=["New species ×\nnew sites","Existing species ×\nnew sites","New species ×\nactive sites","Existing species ×\nactive sites"]
-shares=[100*quad["components"][k]["fraction_total_beta"] for k in keys]
+shares=[100*quad["components"][k]["fraction_total_beta"] for k in flat_keys]
 bars=ax.barh(np.arange(4),shares)
 ax.set_yticks(np.arange(4),labs)
 ax.invert_yaxis()
@@ -110,9 +135,10 @@ ax.set_xlabel("Share of total rain-associated incidence slope (%)")
 ax.set_xlim(0,max(shares)*1.25)
 for b,v in zip(bars,shares):
     ax.text(v+0.8,b.get_y()+b.get_height()/2,f"{v:.1f}%",va="center")
-ax.set_title("A  Exact species × site decomposition")
+ax.set_title("B  Exact community decomposition")
 
-ax=axs[1]
+# C: local taxonomic depth.
+ax=axs[2]
 vals=[
     100*depth["primary"]["threshold_2plus_component"]["fraction_of_mean_beta"],
     100*depth["primary"]["deep_excess_beyond_two_component"]["fraction_of_mean_beta"],
@@ -129,8 +155,8 @@ ax.text(.02,.04,
         f"Same-stop alpha: β = {depth['primary']['shared_active_stop_delta_species_mean']['beta']:.3f}\n"
         f"P = {depth['primary']['shared_active_stop_delta_species_mean']['p_value']:.3g}",
         transform=ax.transAxes,va="bottom")
-ax.set_title("B  Local taxonomic depth")
-fig.suptitle("Rainfall-associated expansion occurs mainly at matrix boundaries",fontsize=14)
+ax.set_title("C  Local taxonomic depth")
+fig.suptitle("Community expansion and species activation geometry use the same matrix pathways",fontsize=14)
 fig.tight_layout(rect=[0,0,1,.94])
 save(fig,"FIGURE_2_MATRIX_EXPANSION_V0_1.svg")
 

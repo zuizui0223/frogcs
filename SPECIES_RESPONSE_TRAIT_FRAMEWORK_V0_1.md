@@ -88,7 +88,41 @@ Repeatable response traits therefore need not imply a community-level insurance 
 
 ## Community-level interpretation
 
-The community-wide four-way matrix decomposition can be viewed as the aggregate outcome of species with different response geometries.
+The species response trait and the community-wide matrix decomposition are two levels of the **same incidence accounting**, not separate stories.
+
+For matched pair \(i\) and species \(s\), let:
+
+- \(G^{edge}_{si}\) = wetter-run gain incidences at stops that were inactive in the paired drier run;
+- \(G^{deep}_{si}\) = wetter-run gain incidences at stops that were already active in the paired drier run;
+- \(q_i\) = fraction of drier-run stops available in the inactive state.
+
+Activation geometry estimates whether the ratio \(G^{edge}_{si}:G^{deep}_{si}\) is shifted relative to the opportunity ratio \(q_i:(1-q_i)\).
+
+Summing wet-gain incidences over species gives the two positive-entry sides of the community matrix:
+
+\[
+\sum_s G^{edge}_{si}
+=
+\text{corner gains}_i + \text{spatial-spread gains}_i
+\]
+
+and
+
+\[
+\sum_s G^{deep}_{si}
+=
+\text{taxonomic-deepening gains}_i + \text{within-core gains}_i.
+\]
+
+The published four-way decomposition is symmetric and subtracts corresponding dry-loss incidences, so species geometry estimates alone do not reconstruct the **net** community coefficients. However, they identify which species disproportionately load onto the spatial-edge versus local-deepening gain pathways whose aggregate balance generates the observed community expansion.
+
+This creates a hierarchical interpretation:
+
+1. **community scale** — rainfall-associated incidence growth is dominated by opening spatial and/or taxonomic matrix boundaries rather than rearranging an unchanged core;
+2. **species scale** — taxa differ repeatably in which boundary they disproportionately use when they gain incidences;
+3. **trait scale** — this gain-placement geometry is not strongly encoded by the tested conventional life-history traits.
+
+Activation geometry is therefore best described as a **species-level response coordinate of community-matrix expansion**.
 
 At the community level, rainfall-associated incidence growth is dominated by:
 - new species × newly active sites;
