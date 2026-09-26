@@ -8,6 +8,7 @@
     "Within matched route × seasonal-window comparisons, greater rainfall contrast is associated with a larger acoustically active spatial footprint.",
     "Rainfall contrast is associated with higher local richness among active stops (alpha) and higher route-level active richness (gamma).",
     "Among-active-stop compositional differentiation (beta diversity) shows no detectable change with rainfall contrast under pairwise Sorensen, turnover, nestedness, or normalized Whittaker metrics.",
+    "Proportional fill of the active species × active-site matrix is practically equivalent across rainfall contrast within a prespecified +/-0.05 connectance-slope margin in both the primary and exact-consecutive-year samples.",
     "The positive rainfall-contrast coefficients for active spatial footprint, local alpha richness and route gamma richness persist after adjustment for recorded hearing impairment, major-noise timeouts and wind, and in sensitivities adding traffic counts or using the Massachusetts noise index.",
     "The rainfall-associated increase in species × stop incidences is dominated by expansion at spatial and taxonomic matrix boundaries rather than rearrangement of an unchanged active core.",
     "Local taxonomic deepening occurs within the same numbered stops active in both surveys and is mostly carried by multiplicity beyond the second species.",
@@ -84,6 +85,28 @@
       "exact_all_three_positive_ci": true,
       "car_count_all_three_positive_ci": true,
       "mass_noise_all_three_positive_ci": true
+    },
+    "matrix_density_equivalence": {
+      "source_pairs": 4236,
+      "analysed_pairs": 4120,
+      "excluded_undefined_connectance": 116,
+      "dry_connectance": 0.5551973411075064,
+      "wet_connectance": 0.5534253783576123,
+      "beta": -0.009359884824000344,
+      "ci95": [
+        -0.021352878318837053,
+        0.0026331086708363625
+      ],
+      "equivalence_margin": 0.05,
+      "ci90": [
+        -0.01942472224121281,
+        0.0007049525932121201
+      ],
+      "exact_ci90": [
+        -0.019129069228023106,
+        0.004356641673247967
+      ],
+      "primary_and_exact_equivalent": true
     }
   },
   "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while the measured among-active-site beta metrics show no detectable change. Taxonomic expansion is therefore not accompanied by detectable spatial homogenization in these acoustic data, and the measured life-history functional centroid and dispersion show no detectable shift.",
@@ -114,7 +137,8 @@
     "a physiological rainfall-response half-life",
     "causal mediation from newly active sites to richness gain",
     "beta diversity is proven unchanged or equivalent across rainfall contrasts",
-    "all acoustic detectability or masking explanations have been eliminated"
+    "all acoustic detectability or masking explanations have been eliminated",
+    "active-matrix fill is exactly invariant across rainfall conditions"
   ],
   "preferred_terms": [
     "behaviourally realized active community",
@@ -127,6 +151,7 @@
     "taxonomic deepening",
     "species × site incidence matrix",
     "conventional functional trait space",
-    "rainfall response diversity"
+    "rainfall response diversity",
+    "practical equivalence of active-matrix fill within the frozen margin"
   ]
 }
