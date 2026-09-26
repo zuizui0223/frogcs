@@ -29,10 +29,8 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 - functional-response decoupling: `NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json`
 - detection robustness: `NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json`
 - matrix-density equivalence: `NAAMP_MATRIX_DENSITY_INVARIANCE_SUMMARY_V0_1.json`
-- species activation geometry: `NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json`
-- disjoint-route activation geometry: `NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json`
-- response magnitude vs geometry diagnostic: `NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_SUMMARY_V0_1.json`
-- response-trait framework: `SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md`
+- activation-geometry placebo decision: `NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json`
+- activation-geometry audit history: `NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json`, `NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json`, `SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md`
 - supporting information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
 
 ## Core ecological story
@@ -43,11 +41,9 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 4. **Beta metrics do not detectably shift:** pairwise Sørensen beta=-0.00049 (P=.937); normalized Whittaker beta=-0.00482 (P=.339); turnover and nestedness are likewise null.
 5. **Active-matrix fill is practically equivalent:** beta=-0.00936; 90% equivalence interval -0.0194 to 0.00070 lies within the frozen ±0.05 margin; exact-year sensitivity also passes.
 6. **Expansion is two-dimensional:** species × stop incidence slope partitions into 36.9% new species × new sites, 15.2% existing species × new sites, 39.9% new species × already-active sites and 8.0% within-core rearrangement.
-7. **Local deepening is real:** the same numbered stops active in both runs gain richness; 71.1% of the active-stop alpha slope comes from multiplicity beyond the second species.
+7. **Local deepening occurs within existing active sites:** same-StopNumber richness increases; 71.1% of the active-stop alpha slope is multiplicity beyond the second species.
 8. **Recorded detection conditions do not explain the pattern:** hearing impairment + timeout + wind adjustment retains all three positive CIs; traffic and MassNoiseIndex sensitivities agree.
-9. **Species activation geometry transfers across time and route identity:** early–late rho=.774 (P=.00044; 15/16 same sign; WLS slope=.910) and disjoint-route A/B rho=.785 (P=2.1e-6; 21/26 same sign; WLS slope=.832). Geometry and later wet/dry response magnitude are best treated as partially coupled response coordinates (cross-period rho=.415, P=.110; weighted slope=.354).
-10. **Functional and response dimensions are partly decoupled:** taxonomic richness expands without detectable MPD/CWM shift; functional distance does not predict rainfall-response distance (P=.797; within-family P=.739), and the four tested life-history traits do not strongly encode activation geometry.
-11. **Response-diversity buffering is unsupported:** held-out interaction P=.419.
+9. **No species-level mechanism is authorized:** activation geometry failed the frozen placebo gate (reverse-direction rho=.929; low-contrast rho=.953; baseline-solitude rho=.782) and is demoted to Supporting Information.
 
 ## Secondary only
 
@@ -80,9 +76,8 @@ Preferred wording:
 
 - `figures_ecology_v0_8/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg`
 - `figures_ecology_v0_8/FIGURE_2_MATRIX_EXPANSION_V0_1.svg`
-  - Panel A maps the community 2×2 incidence pathways onto spatial-edge versus local-deepening species activation geometry.
-- `figures_ecology_v0_8/FIGURE_3_FUNCTIONAL_RESPONSE_DIVERSITY_V0_1.svg`
-  - Panel C: early-versus-late species activation geometry (rho=.774; 15/16 same sign), annotated with disjoint-route transfer (rho=.785; 21/26 same sign).
+
+Activation-geometry and functional-trait diagnostics are Supporting Information only.
 
 Figure hashes: `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
 
@@ -110,4 +105,4 @@ Still intentionally unresolved because they require human/final archive input:
 
 ## Endpoint policy
 
-No additional endpoint hunting should be used to rescue the manuscript. New analyses are justified only for a specific mechanistic question or reviewer-grade alternative explanation, with a frozen specification before readback.
+The activation-geometry placebo gate is final and failed. No additional endpoint hunting, residualization or replacement species trait is authorized for RC6. New mechanistic work belongs to a separate future hypothesis family.
