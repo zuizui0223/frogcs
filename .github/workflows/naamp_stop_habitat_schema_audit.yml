@@ -1,0 +1,33 @@
+name: frogcs NAAMP stop habitat schema audit
+
+on:
+  push:
+    branches:
+      - revision/naamp-stop-habitat-schema-audit-v1
+    paths:
+      - "scripts/audit_naamp_stop_habitat_schema.py"
+      - ".github/workflows/naamp_stop_habitat_schema_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Audit stop and run schemas
+        run: python scripts/audit_naamp_stop_habitat_schema.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-stop-habitat-schema-v0-1
+          path: NAAMP_STOP_HABITAT_SCHEMA_AUDIT_V0_1.json
+          if-no-files-found: error
