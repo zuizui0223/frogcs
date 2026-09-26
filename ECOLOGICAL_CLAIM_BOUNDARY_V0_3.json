@@ -1,0 +1,119 @@
+{
+  "project": "frog-chorus-synchrony",
+  "version": "ecology-0.5",
+  "status": "community_metacommunity_synthesis_candidate",
+  "working_title": "Recent rainfall expands frog active metacommunities across sites and species while preserving beta diversity",
+  "primary_system": "NAAMP",
+  "central_claims": [
+    "Within matched route × seasonal-window comparisons, greater rainfall contrast is associated with a larger acoustically active spatial footprint.",
+    "Rainfall contrast is associated with higher local richness among active stops (alpha) and higher route-level active richness (gamma).",
+    "Among-active-stop compositional differentiation (beta diversity) shows no detectable change with rainfall contrast under pairwise Sorensen, turnover, nestedness, or normalized Whittaker metrics.",
+    "The rainfall-associated increase in species × stop incidences is dominated by expansion at spatial and taxonomic matrix boundaries rather than rearrangement of an unchanged active core.",
+    "Local taxonomic deepening occurs within the same numbered stops active in both surveys and is mostly carried by multiplicity beyond the second species.",
+    "Trait-covered taxonomic richness increases with rainfall contrast, but the centroid and mean pairwise dispersion of a frozen four-axis life-history/reproductive trait space show no detectable shift.",
+    "Pairwise functional similarity in that trait space does not predict pairwise similarity of species-specific rainfall responses.",
+    "A temporally held-out test does not support the hypothesis that early-period rainfall response-sign diversity buffers later route-level richness responses."
+  ],
+  "key_numbers": {
+    "matched_pairs": 4236,
+    "matched_routes": 585,
+    "active_stop_beta": 0.38370772985098334,
+    "active_stop_ci95": [
+      0.23961023098254927,
+      0.5278052287194174
+    ],
+    "active_stop_p": 1.7983458983107986e-7,
+    "alpha_beta": 0.07941491576879688,
+    "alpha_ci95": [
+      0.023119819091079956,
+      0.1357100124465138
+    ],
+    "alpha_p": 0.005694005637618469,
+    "gamma_beta": 0.2859019665041188,
+    "gamma_ci95": [
+      0.16464925199938044,
+      0.4071546810088572
+    ],
+    "gamma_p": 0.000003811550717191942,
+    "beta_sorensen_beta": -0.0004916260102541838,
+    "beta_sorensen_p": 0.9366482180820508,
+    "beta_whittaker_beta": -0.004823886957420518,
+    "beta_whittaker_p": 0.33946311861718004,
+    "incidence_total_beta": 1.3654039134019618,
+    "incidence_components": {
+      "corner_expansion": {
+        "beta": 0.5039964764047035,
+        "fraction": 0.36911896286350526,
+        "p": 5.074349776611201e-7
+      },
+      "spatial_spread": {
+        "beta": 0.2080305999098008,
+        "fraction": 0.1523582859752348,
+        "p": 0.0062252762790193025
+      },
+      "taxonomic_deepening": {
+        "beta": 0.5443545384491266,
+        "fraction": 0.3986765623754836,
+        "p": 0.0015883839751625742
+      },
+      "within_core_rearrangement": {
+        "beta": 0.10902229863833068,
+        "fraction": 0.07984618878577622,
+        "p": 0.251824665438833
+      }
+    },
+    "same_stop_alpha_beta": 0.09531215874630877,
+    "same_stop_alpha_p": 0.0020444638876272194,
+    "deep_multiplicity_fraction": 0.7108876198307933,
+    "functional_mpd_beta": -0.015333226505653663,
+    "functional_mpd_p": 0.2850913591905545,
+    "functional_novelty_beta": 0.04193502796919546,
+    "functional_novelty_p": 0.04220161274011015,
+    "functional_response_correlation": -0.03278889427137519,
+    "functional_response_permutation_p": 0.7972420275797242,
+    "functional_response_family_permutation_p": 0.7391626083739162,
+    "response_diversity_buffer_beta": -0.9536587713560999,
+    "response_diversity_buffer_p": 0.4190209475187544
+  },
+  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise without detectable change in among-active-site beta diversity. Taxonomic expansion is therefore not equivalent to spatial homogenization, and conventional life-history functional structure remains comparatively stable.",
+  "functional_response_boundary": {
+    "supported": "The measured four-axis AmphiBIO functional space does not predict rainfall-response similarity among species.",
+    "not_supported": "This does not establish that all functional traits are irrelevant; unmeasured traits such as developmental timing, breeding microhabitat, call energetics, or fine hydroperiod dependence may encode response differences.",
+    "no_buffering_claim": "Held-out response-sign diversity does not demonstrably buffer route-level richness responses."
+  },
+  "timescale_boundary": {
+    "status": "secondary_exploratory",
+    "supported": "Run-level richness differs from the >=8-day rain-recency reference across 0-7 day bins, and matched support is clear through 2-3 days.",
+    "not_headline": "Do not title or conclude that a week-long pulse has been identified because the >=8-day reference is sparse and the exact-consecutive matched 4-7-day contrast is imprecise."
+  },
+  "provenance_boundary": {
+    "original_rainfall_endpoint": "pre-readback frozen primary programme endpoint",
+    "community_extensions": "post-opening analyses, each separately versioned/frozen before its own endpoint readback",
+    "no_preregistration_claim": "Do not describe the alpha-beta-gamma, matrix, functional or response-diversity analyses as original preregistered hypotheses."
+  },
+  "prohibited": [
+    "rainfall causes occupancy, abundance, colonization or extinction change",
+    "NAAMP routes are proven demographic metacommunities linked by dispersal",
+    "rainfall causes biotic homogenization or prevents it in an occupancy sense",
+    "functional equivalence of added species",
+    "the four measured traits exhaust ecological function",
+    "functional traits explain species-specific rainfall response",
+    "response diversity provides an insurance effect in these data",
+    "week-long compositional reassembly",
+    "a physiological rainfall-response half-life",
+    "causal mediation from newly active sites to richness gain"
+  ],
+  "preferred_terms": [
+    "behaviourally realized active community",
+    "metacommunity-scale organization",
+    "active spatial footprint",
+    "local alpha richness",
+    "route gamma richness",
+    "among-active-site beta diversity",
+    "spatial dilation",
+    "taxonomic deepening",
+    "species × site incidence matrix",
+    "conventional functional trait space",
+    "rainfall response diversity"
+  ]
+}
