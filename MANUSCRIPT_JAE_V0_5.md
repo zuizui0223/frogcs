@@ -8,7 +8,7 @@
 
 3. **Greater rainfall contrast predicted higher active-community richness.** Wet-minus-dry richness increased by 0.286 species per unit log-rain contrast (95% CI 0.165–0.407, P = 3.81 × 10^-6), with a similar effect in exact consecutive-year pairs (β = 0.301, P = 1.60 × 10^-4).
 
-4. **The richer wet assemblage was not a simple nested extension of the dry assemblage.** Nestedness did not increase with rainfall contrast, whereas turnover increased in the consecutive-year sensitivity (β = 0.0184, 95% CI 0.00470–0.0321, P = 0.00850). Species wet-versus-dry responses were strongly heterogeneous after environmental adjustment (Q = 144.0, df = 28, P = 1.46 × 10^-17), and 52.1% of heterogeneity among family-matched species remained within families (P = 8.28 × 10^-8).
+4. **The richer wet assemblage was not a simple nested extension of the dry assemblage.** Nestedness did not increase with rainfall contrast, whereas turnover increased in the consecutive-year sensitivity (β = 0.0184, 95% CI 0.00470–0.0321, P = 0.00850). Species wet-versus-dry responses were strongly heterogeneous after environmental adjustment (Q = 144.0, df = 28, P = 1.46 × 10^-17), and 46.9% of heterogeneity among exact-binomial species remained within operational genera (Q = 66.41, df = 19, P = 3.59 × 10^-7).
 
 5. **Rainfall was therefore associated with transient, species-selective reassembly of the acoustically active frog community rather than a uniform increase in activity by an unchanged assemblage.** A secondary body-size correlation was strong across species but did not survive family-stratified permutation, indicating that the species selectivity is biologically structured but its trait mechanism remains unresolved.
 
@@ -84,6 +84,22 @@ The initial species-level screen compared wet gains with dry losses using a two-
 
 All four continuous predictors were centered within species, and standard errors were cluster-robust by State × RouteNumber. The model intercept therefore estimates each species' adjusted wet-versus-dry log odds at that species' mean pair conditions. We applied Benjamini–Hochberg FDR across adjusted species intercept tests, quantified residual heterogeneity with inverse-variance Cochran's Q, and measured raw-versus-adjusted rank concordance with Spearman correlation.
 
+### Taxonomic scale of species-response heterogeneity
+
+To ask whether species selectivity was explained only by broad taxonomic groups, we decomposed inverse-variance heterogeneity in the adjusted species responses at two nested taxonomic scales. Family assignments came from the frozen AmphiBIO taxonomy matching used elsewhere in the analysis. For genus-level decomposition, we used the first token of exact two-token NAAMP binomials as an **operational genus** and excluded three survey labels representing species complexes; no post-readback synonym remapping was introduced.
+
+At each level, the total Cochran heterogeneity was
+
+`Q_total = Σ_i w_i(θ_i - θ̄)^2`,
+
+where `θ_i` is the adjusted wet-versus-dry log odds and `w_i` its inverse variance. We calculated the weighted mean response within each family or genus and partitioned
+
+`Q_total = Q_between + Q_within`,
+
+where `Q_within` is the sum of species deviations from their group-specific weighted means. Chi-square reference distributions used `N-K` degrees of freedom for within-group heterogeneity and `K-1` for between-group heterogeneity. For each genus represented by at least three species, we also reported its internal Cochran Q and the numbers of positive and negative adjusted responses.
+
+These are hierarchical taxonomic decompositions, not branch-length phylogenetic comparative analyses. In particular, the operational genus labels reflect the monitoring dataset taxonomy and are used only to ask whether broad taxonomic identity exhausts the observed species-response differences.
+
 ### Secondary trait analysis
 
 Species-specific responses were highly heterogeneous, motivating a separately frozen finite trait screen using AmphiBIO v1 (Oliveira et al., 2017). This trait analysis was conducted after the community and species-response results had been opened and is therefore secondary.
@@ -128,7 +144,9 @@ Across 29 eligible species, raw wet-gain versus dry-loss responses were strongly
 
 This heterogeneity persisted after species-specific adjustment for rain-contrast magnitude, temperature difference, survey-date difference and year gap. All 29 species remained estimable, and adjusted responses were still highly heterogeneous (Q = 144.01, df = 28, P = 1.46 × 10^-17). Species rankings were almost unchanged by adjustment (raw versus adjusted Spearman ρ = 0.997, P = 1.24 × 10^-31).
 
-The heterogeneity was not reducible to broad family differences. Among 26 species with unambiguous AmphiBIO family assignments, 52.1% of the inverse-variance heterogeneity remained **within families** (Q_within = 73.88, df = 21, P = 8.28 × 10^-8), while between-family heterogeneity was also strong (Q_between = 67.80, df = 4, P = 6.62 × 10^-14). Hylidae alone remained highly heterogeneous (Q = 44.97, df = 13, P = 2.12 × 10^-5), as did Ranidae (Q = 23.81, df = 6, P = 5.65 × 10^-4). Taxonomic family therefore captures part, but not most, of the species-selective response structure.
+The heterogeneity was not reducible to broad taxonomic differences. Among 26 species with unambiguous AmphiBIO family assignments, 52.1% of inverse-variance heterogeneity remained **within families** (Q_within = 73.88, df = 21, P = 8.28 × 10^-8), while between-family heterogeneity was also strong (Q_between = 67.80, df = 4, P = 6.62 × 10^-14).
+
+The pattern persisted one taxonomic level lower. After excluding three species-complex labels, 26 exact-binomial species occupied seven operational genera; 46.9% of total heterogeneity remained **within genera** (Q_within = 66.41, df = 19, P = 3.59 × 10^-7), while between-genus heterogeneity was also strong (Q_between = 75.26, df = 6, P = 3.39 × 10^-14). *Hyla* showed marked internal heterogeneity (6 species; Q = 33.61, df = 5, P = 2.84 × 10^-6), with four positive and two negative adjusted responses. *Lithobates* was likewise heterogeneous (7 species; Q = 23.81, df = 6, P = 5.65 × 10^-4), with three positive and four negative responses. By contrast, all six *Pseudacris* species had positive adjusted responses and showed no detectable internal heterogeneity (Q = 3.89, df = 5, P = 0.566). Broad family or genus identity therefore captures only part of the species-selective response structure.
 
 At FDR 5%, adjusted wet-associated taxa included *Gastrophryne carolinensis*, *Hyla squirella*, *Hyla chrysoscelis*, *Pseudacris crucifer* and *Pseudacris maculata*. Adjusted dry-associated taxa included *Hyla cinerea*, *Lithobates catesbeianus* and *Lithobates palustris*.
 
@@ -152,7 +170,7 @@ These findings place the compositional result at the level of **active-community
 
 Rainfall was associated with more than the familiar increase in frog calling. Within the same standardized routes and the same seasonal survey windows, wetter conditions contained more acoustically active species, and richness gain increased with the magnitude of the rainfall contrast. At the same time, the wetter assemblage was not simply the drier assemblage plus extra species: nestedness did not increase, turnover increased in exact consecutive-year comparisons, and species differed sharply in whether they appeared preferentially on the wet or dry side of matched pairs.
 
-The central ecological result is therefore **species-selective short-term reassembly of the active community**. This is distinct from a uniform activity response. If rainfall merely amplified the same species set, wet-versus-dry responses should have been comparatively homogeneous. Instead, adjusted species effects remained extremely heterogeneous after accounting for temperature differences, survey timing, rain-contrast magnitude and year gap (Q = 144.0, P = 1.46 × 10^-17), while raw and adjusted species rankings were almost identical (ρ = 0.997). Importantly, more than half of the heterogeneity among family-matched species remained within families, and both Hylidae and Ranidae retained significant internal heterogeneity. The response is therefore organized more finely than a simple broad-clade contrast and reaches the level of species identity.
+The central ecological result is therefore **species-selective short-term reassembly of the active community**. This is distinct from a uniform activity response. If rainfall merely amplified the same species set, wet-versus-dry responses should have been comparatively homogeneous. Instead, adjusted species effects remained extremely heterogeneous after accounting for temperature differences, survey timing, rain-contrast magnitude and year gap (Q = 144.0, P = 1.46 × 10^-17), while raw and adjusted species rankings were almost identical (ρ = 0.997). The selectivity also survived progressively finer taxonomic grouping: 52.1% of family-matched heterogeneity remained within families and 46.9% of exact-binomial heterogeneity remained within operational genera. *Hyla* and *Lithobates* each contained species on both sides of the wet–dry response, whereas all six sampled *Pseudacris* species were wet-associated. Rainfall response is therefore structured more finely than a simple broad-clade or genus contrast, although this taxonomic decomposition is not a formal phylogenetic analysis.
 
 The turnover result further distinguishes this pattern from simple nested recruitment. A recent three-year study of a tropical frog community found relatively stable composition and temporal beta diversity dominated by nestedness, consistent with species dropping in and out around a persistent community structure (Severgnini et al., 2024). Here, rainfall contrast did not increase nestedness, and exact consecutive-year comparisons instead showed increasing turnover. The ecological picture is one of **richness gain plus compositional replacement** over short temporal contrasts.
 
