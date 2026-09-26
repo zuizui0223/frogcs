@@ -1,12 +1,12 @@
 # JAE submission handoff — RC6 metacommunity synthesis candidate
 
-## Do not submit from main yet
+## RC6 scientific package status
 
-As of this handoff, `main` still points to the RC5/v0.6 week-scale manuscript lineage. The current scientific authority is the branch:
+The RC6/v0.8 metacommunity synthesis has passed the branch-level scientific package QA, anonymous-DOCX QA and deterministic figure/hash QA. The tested scientific authority before promotion is:
 
 `revision/community-metacommunity-synthesis-v1`
 
-Promote only after final manuscript/figure/package QA.
+The tested commit may now be promoted to `release/jae-v1-rc6` and `main`. Human author metadata and the final archive DOI remain intentionally external/finalization-stage inputs.
 
 ## Article
 
@@ -83,14 +83,21 @@ Figure hashes: `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
 - `submission/COVER_LETTER_JAE_V0_6.md`
 - existing title-page/author metadata templates after title synchronization
 
-## Remaining before promotion to main
+## Promotion gate
 
-1. figure build/hash workflow must pass;
-2. v0.8 metacommunity QA must pass at final branch head;
-3. update title-page template and portal checklist from RC5 title;
-4. ensure all summaries/scripts/contracts cited by v0.8 are present on the promoted commit;
-5. generate anonymous DOCX from v0.8 rather than v0.6;
-6. human author metadata and archive DOI remain final submission tasks.
+Completed on the tested synthesis head:
+
+1. [x] deterministic figure build/hash workflow passes;
+2. [x] v0.8 metacommunity QA passes;
+3. [x] title-page template, portal checklist, metadata and citation templates use the RC6 title;
+4. [x] all core summaries/scripts/contracts cited by v0.8 are present;
+5. [x] anonymous DOCX builds from v0.8 and passes structural/anonymity QA;
+6. [x] RC6 scientific submission-package QA passes.
+
+Still intentionally unresolved because they require human/final archive input:
+
+- [ ] final author metadata / affiliations / CRediT / approvals;
+- [ ] published archive DOI and repository license confirmation.
 
 ## Endpoint policy
 
