@@ -1,0 +1,75 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_species_rain_response_temporal_repeatability_v0_1",
+  "status": "temporal_validation_hypothesis_frozen_before_crossperiod_readback",
+  "ecological_question": "Are species-specific wet-versus-dry active-community responses temporally repeatable across non-overlapping monitoring periods?",
+  "motivation": "If species-selective reassembly reflects stable ecological differences among species rather than transient sampling noise, species rain responses estimated in an early period should predict the same species' responses in a later period.",
+  "source_pins": {
+    "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "time_split": {
+    "early": [
+      2001,
+      2007
+    ],
+    "late": [
+      2008,
+      2015
+    ],
+    "non_overlap": true
+  },
+  "common_eligibility": {
+    "unified_protocol": "1",
+    "complete_stops": 10,
+    "temperature": ">=8 valid stop temperatures and run mean [-10,45] C",
+    "survey_date": "parseable",
+    "DaysSinceRain": "numeric within [0,180]",
+    "calling_presence": "CallingIndex in {1,2,3}"
+  },
+  "pair_construction": {
+    "stratum": "State × RouteNumber × RunNumber",
+    "within_each_period": "sort by SurveyYear, pair adjacent observed years, exclude equal-rain pairs, orient lower DaysSinceRain as wetter",
+    "no_pair_crosses_period_boundary": true
+  },
+  "species_response": {
+    "event": "for each species present in exactly one member of a matched pair, y=1 if wetter-only and y=0 if drier-only",
+    "eligibility_per_period": {
+      "min_discordant_events": 25,
+      "min_distinct_routes": 8,
+      "direction_blind": true
+    },
+    "model": "binomial-logit y ~ centered rain_contrast + centered temp_difference + centered doy_difference + centered year_gap with route-clustered covariance",
+    "response": "centered intercept log odds = adjusted wet-versus-dry species response"
+  },
+  "overlap_family": {
+    "rule": "Primary repeatability family is the intersection of species that meet eligibility and have finite adjusted intercept/SE in both periods.",
+    "minimum_species": 15
+  },
+  "primary_test": {
+    "metric": "Spearman rank correlation between early-period and late-period adjusted species log odds",
+    "expected_sign": "positive",
+    "support": "rho > 0 and two-sided P < 0.05",
+    "rationale": "Rank repeatability is robust to scale differences and attenuation from period-specific effect magnitudes."
+  },
+  "sensitivities": {
+    "weighted_regression": "WLS late_log_odds ~ early_log_odds using inverse late-period variance weights with HC3 covariance; expected slope >0.",
+    "sign_concordance": "Fraction of species with the same sign in both periods; exact binomial test versus 0.5.",
+    "leave_one_family_out": "Repeat Spearman after excluding each AmphiBIO family represented by >=2 overlap species; descriptive only.",
+    "family_adjusted": "OLS/WLS late ~ early + C(Family) if residual df >=10."
+  },
+  "predictions": {
+    "P1": "Primary Spearman rho is positive and significant.",
+    "P2": "Weighted slope is positive.",
+    "P3": "Same-sign fraction exceeds 0.5.",
+    "interpretation_if_supported": "Species differ in a temporally repeatable rainfall-response tendency, consistent with stable species-specific ecological strategy.",
+    "interpretation_if_null": "Species selectivity exists in the pooled period but is not demonstrably temporally repeatable at this resolution."
+  },
+  "boundaries": [
+    "Temporal repeatability does not identify the underlying trait or physiological mechanism.",
+    "The same species appear in both periods; this is temporal validation, not independent-species replication.",
+    "No rainfall causality, occupancy, abundance, colonization, extinction, or breeding-success claim.",
+    "No alternative time split or eligibility threshold may be opened after readback within this family."
+  ]
+}
