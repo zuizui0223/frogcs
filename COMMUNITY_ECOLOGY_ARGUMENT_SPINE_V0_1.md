@@ -170,6 +170,25 @@ Examples:
 
 This is the strongest species-level response trait currently identified. It is an acoustic gain-placement trait, not a dispersal, colonization or occupancy-niche trait. Family-adjusted validation was not estimable, so do not claim phylogenetic independence.
 
+## Claim 5c — response magnitude and response geometry are distinct but partially coupled
+
+A frozen cross-axis holdout used:
+- predictor: early activation geometry, 2001–2007;
+- outcome: adjusted wet-versus-dry response magnitude, 2008–2015;
+- overlap: 16 species.
+
+Primary rank diagnostic:
+- Spearman rho = **0.415**;
+- P = **0.110**;
+- frozen strong-coupling rule (|rho| >= 0.6 and P < .05): **not met**.
+
+Precision-weighted regression:
+- beta = **+0.354**;
+- 95% CI 0.204–0.503;
+- P = 3.36e-6.
+
+Interpretation: magnitude and geometry are not redundant, but they are not statistically independent. Species response is represented most safely as **partially coupled coordinates**: how strongly participation changes and where wetter-condition gains enter the matrix.
+
 ## Claim 6 — taxonomic expansion shows no detectable shift in conventional functional centroid or dispersion
 
 Frozen four-axis AmphiBIO functional space:
