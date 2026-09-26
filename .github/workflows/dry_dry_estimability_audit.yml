@@ -1,0 +1,25 @@
+name: frogcs dry-dry background estimability audit
+on:
+  push:
+    branches: [revision/two-phase-community-memory-v1]
+    paths:
+      - "DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_CONTRACT_V0_1.json"
+      - "scripts/audit_dry_dry_background_estimability.py"
+      - ".github/workflows/dry_dry_estimability_audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python scripts/audit_dry_dry_background_estimability.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-dry-dry-estimability-v0-1
+          path: DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_RECEIPT_V0_1.json
