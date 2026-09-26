@@ -62,6 +62,22 @@ Within the exact same StopNumber active in both paired surveys, local richness a
 
 Therefore the alpha increase is not produced only by adding newly active sites.
 
+## Robustness — recorded acoustic detection conditions do not explain the expansion
+
+Primary detection-quality adjustment (hearing impairment fraction + timeout fraction + wind difference):
+- n = **4,024 pairs / 576 routes**;
+- active-stop beta = **+0.377**, 95% CI 0.227–0.527;
+- local-alpha beta = **+0.0838**, 95% CI 0.0254–0.1422;
+- gamma beta = **+0.2968**, 95% CI 0.1710–0.4227.
+
+All three remain CI-positive in exact consecutive-year pairs.
+
+Additional sensitivities:
+- add mean car count: all three remain positive with CIs excluding zero (2,968 pairs);
+- Massachusetts noise-index subset: all three remain positive with CIs excluding zero (1,444 pairs).
+
+Interpretation: **recorded hearing impairment, major-noise interruptions, wind and traffic do not explain the multiscale rainfall association.** Do not claim that all unmeasured detectability or species-specific masking is excluded.
+
 ## Claim 3 — active-site beta diversity shows no detectable shift
 
 Rain-contrast effects on among-active-stop beta structure are near zero:
