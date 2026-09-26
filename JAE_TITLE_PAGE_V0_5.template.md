@@ -1,6 +1,6 @@
 # Journal of Animal Ecology title page — human metadata template v0.5
 
-**Manuscript title:** Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity
+**Manuscript title:** Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry
 
 **Article type:** Research Article
 
