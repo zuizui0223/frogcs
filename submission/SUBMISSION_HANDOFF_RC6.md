@@ -32,6 +32,7 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 - species activation geometry: `NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json`
 - response magnitude vs geometry diagnostic: `NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_SUMMARY_V0_1.json`
 - response-trait framework: `SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md`
+- supporting information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
 
 ## Core ecological story
 
@@ -49,11 +50,7 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 
 ## Secondary only
 
-- rain-recency curve: evidence that the association is not strictly same-day; do not use “week-long pulse” as headline;
-- between-year turnover: primary P=.104; exact-year sensitivity positive;
-- species-specific wet/dry forest plot and simple trait follow-ups;
-- latent spatial heterogeneity moderator: frozen positive prediction failed; opposite-sign full-validation association is secondary only;
-- early spatial niche breadth: frozen specialist prediction failed; opposite pooled direction is not family-robust.
+Detailed falsification and secondary analyses are consolidated in `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`, including rain-recency, between-year turnover/nestedness, response-diversity buffering, static trait candidates, latent spatial heterogeneity and the rejected spatial-specialist hypothesis.
 
 ## Hard wording boundaries
 
