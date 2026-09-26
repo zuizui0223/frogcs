@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: frogcs-materialize-rc6-falsification-receipts
@@ -29,6 +30,25 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Restore full species-heterogeneity receipt from frozen workflow artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-naamp-species-pulse-heterogeneity-v0-1
+          path: /tmp/species-heterogeneity
+          github-token: ${{ github.token }}
+          repository: zuizui0223/frogcs
+          run-id: 36122085505
+      - name: Install full species-heterogeneity receipt
+        run: |
+          cp /tmp/species-heterogeneity/NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json .
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o=json.loads(Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json").read_text())
+          assert len(o.get("species_results",[]))==29
+          assert o["global"]["eligible_species"]==29
+          print("full heterogeneity receipt restored")
+          PY
       - name: Re-run frozen falsification analyses
         run: |
           set -eu
@@ -47,6 +67,7 @@ jobs:
           from pathlib import Path
           import json
           expected=[
+            "NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json",
             "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_RECEIPT_V0_1.json",
             "NAAMP_HYDROPERIOD_FILTER_RECEIPT_V0_1.json",
             "NAAMP_BREEDING_SEASON_FILTER_RECEIPT_V0_1.json",
