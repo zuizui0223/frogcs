@@ -37,7 +37,9 @@ assert "compositional memory" not in lower
 assert "rainfall causes" not in lower
 assert "colonization" in lower  # present only as a boundary/negation
 assert "occupancy" in lower
-assert "does not follow individual storms daily" in lower
+assert "days 4–7" in text
+assert "precise physiological recovery time" in lower
+assert "compositional memory" not in lower
 
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
 abstract_words=len(re.findall(r"\b[\wÀ-ÿα-ωΑ-Ω≥≤×−–]+\b",abstract))
