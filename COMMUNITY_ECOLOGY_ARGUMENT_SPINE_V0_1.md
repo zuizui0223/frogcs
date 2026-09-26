@@ -91,6 +91,24 @@ Exact consecutive-year results are likewise null.
 
 Thus alpha and gamma expansion do **not** come with detectable spatial homogenization or differentiation among active sites.
 
+## Claim 3b — active-matrix fill is practically equivalent
+
+Among 4,120 matched pairs with a defined active matrix:
+- dry mean connectance = **0.5552**;
+- wet mean connectance = **0.5534**;
+- rain-contrast beta = **-0.00936**;
+- 95% CI = -0.0214 to 0.00263.
+
+A practical-equivalence margin of ±0.05 connectance units per unit rainfall contrast was frozen before endpoint readback. The 90% equivalence interval was **-0.0194 to 0.00070**, entirely within that margin.
+
+Exact consecutive-year pairs also passed equivalence:
+- beta = -0.00739;
+- 90% interval = -0.0191 to 0.00436.
+
+Because matrix fill equals alpha_active/gamma for the defined active matrix, this is **not an independent fourth diversity axis**. It is a direct incidence-matrix expression of the alpha–gamma scaling and supports an approximately structure-preserving expansion within the frozen practical margin.
+
+Do not translate this into exact invariance.
+
 ## Claim 4 — the species x site incidence matrix expands at its boundaries
 
 Total rainfall-associated increase in species-stop incidence:

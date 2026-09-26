@@ -1,0 +1,45 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_matrix_density_invariance_v0_1_summary",
+  "workflow_run": 36238138268,
+  "head_sha": "e968f91866a3880f36409abfd118333ba4748a36",
+  "source_pairs": 4236,
+  "excluded_undefined_connectance": 116,
+  "analysed_pairs": 4120,
+  "routes": 582,
+  "descriptive": {
+    "dry_connectance": 0.5551973411075064,
+    "wet_connectance": 0.5534253783576123,
+    "mean_delta": -0.0017719627498941533
+  },
+  "primary": {
+    "beta": -0.009359884824000344,
+    "ci95": [
+      -0.021352878318837053,
+      0.0026331086708363625
+    ],
+    "equivalence_margin": 0.05,
+    "ci90": [
+      -0.01942472224121281,
+      0.0007049525932121201
+    ],
+    "equivalence_supported": true
+  },
+  "exact_consecutive_year": {
+    "pairs": 2626,
+    "routes": 496,
+    "beta": -0.007386213777387568,
+    "ci95": [
+      -0.021378689084483413,
+      0.006606261529708278
+    ],
+    "ci90": [
+      -0.019129069228023106,
+      0.004356641673247967
+    ],
+    "equivalence_supported": true
+  },
+  "frozen_support_rule_pass": true,
+  "interpretation": "The active species-by-active-site matrix expands in its number of rows and columns while average matrix fill remains within the prespecified practical-equivalence range. This supports approximately structure-preserving expansion of the observed acoustic incidence matrix within a +/-0.05 connectance-slope margin; it does not imply exact invariance.",
+  "boundary": "Connectance is observed acoustic species-by-active-site matrix fill and equals alpha_active/gamma for the defined active matrix; it is not ecological interaction-network connectance."
+}

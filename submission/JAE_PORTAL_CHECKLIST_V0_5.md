@@ -31,6 +31,7 @@
 - [x] exact species × stop decomposition sums to total incidence coefficient
 - [x] ~92% of incidence slope crosses at least one spatial/taxonomic matrix boundary
 - [x] pairwise Sørensen and normalized Whittaker beta show no detectable rainfall-associated shift
+- [x] active-matrix fill passes the prespecified ±0.05 practical-equivalence margin in primary and exact-year samples
 - [x] recorded hearing impairment / timeout / wind robustness passes
 - [x] traffic-count and Massachusetts noise-index sensitivities agree
 - [x] trait-covered taxonomic richness expands without detectable functional MPD/CWM shift
