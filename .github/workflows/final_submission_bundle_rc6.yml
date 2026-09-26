@@ -75,6 +75,12 @@ jobs:
         run: |
           python scripts/build_jae_anonymous_docx.py             --source build/MANUSCRIPT_JAE_FINAL.md             --output build/FROG_JAE_ANON_MAIN_FINAL_RC6.docx
 
+      - name: Build Supporting Information DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py \
+            --source SUPPORTING_INFORMATION_JAE_RC6_V0_1.md \
+            --output build/FROG_JAE_SUPPORTING_INFORMATION_RC6.docx
+
       - name: Verify frozen figures
         run: python scripts/verify_metacommunity_figure_hashes_v0_3.py
 
@@ -85,6 +91,8 @@ jobs:
           mkdir -p "$out"
           cp build/MANUSCRIPT_JAE_FINAL.md "$out/"
           cp build/FROG_JAE_ANON_MAIN_FINAL_RC6.docx "$out/"
+          cp SUPPORTING_INFORMATION_JAE_RC6_V0_1.md "$out/"
+          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC6.docx "$out/"
           cp build/submission-metadata/* "$out/"
           cp figures_ecology_v0_8/*.svg "$out/"
           cp ECOLOGICAL_FIGURE_HASHES_V0_3.json "$out/"
