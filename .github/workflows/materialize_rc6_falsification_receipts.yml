@@ -32,6 +32,7 @@ jobs:
       - name: Re-run frozen falsification analyses
         run: |
           set -eu
+          python scripts/run_naamp_species_pulse_adjusted_robustness.py > /tmp/adjusted-species.log
           python scripts/run_naamp_hydroperiod_filter.py > /tmp/hydro.log
           python scripts/run_naamp_breeding_season_filter.py > /tmp/breeding-filter.log
           python scripts/run_naamp_breeding_season_breadth.py > /tmp/breeding-breadth.log
@@ -46,6 +47,7 @@ jobs:
           from pathlib import Path
           import json
           expected=[
+            "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_RECEIPT_V0_1.json",
             "NAAMP_HYDROPERIOD_FILTER_RECEIPT_V0_1.json",
             "NAAMP_BREEDING_SEASON_FILTER_RECEIPT_V0_1.json",
             "NAAMP_BREEDING_SEASON_BREADTH_RECEIPT_V0_1.json",
@@ -60,6 +62,8 @@ jobs:
               assert p.is_file() and p.stat().st_size>100, name
               json.loads(p.read_text(encoding="utf-8"))
           # Frozen headline checks against audit summaries / known endpoints.
+          adjusted=json.loads(Path("NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_RECEIPT_V0_1.json").read_text())
+          assert adjusted["fixed_species_family"]==29 and adjusted["estimable_species"]==29
           assert json.loads(Path("NAAMP_HYDROPERIOD_FILTER_RECEIPT_V0_1.json").read_text())["primary"]["estimable"] is False
           assert abs(json.loads(Path("NAAMP_BREEDING_SEASON_FILTER_RECEIPT_V0_1.json").read_text())["primary"]["p_value"]-0.8233808701505375)<1e-12
           assert abs(json.loads(Path("NAAMP_BREEDING_SEASON_BREADTH_RECEIPT_V0_1.json").read_text())["primary"]["p_value"]-0.9864546047783768)<1e-12
