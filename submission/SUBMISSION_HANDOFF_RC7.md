@@ -40,6 +40,7 @@ RC6 remains preserved as the frozen fallback on:
 - novelty audit: `submission/NOVELTY_AUDIT_V0_6.md`
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_6.md`
 - post-freeze novelty-positioning receipt: `submission/RC7_POSTFREEZE_NOVELTY_POSITIONING_RECEIPT_V0_1.json`
+- post-freeze abstract-robustness receipt: `submission/RC7_POSTFREEZE_ABSTRACT_ROBUSTNESS_RECEIPT_V0_1.json`
 
 ## Core ecological result retained from RC6
 
