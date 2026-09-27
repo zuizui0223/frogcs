@@ -67,6 +67,10 @@ for x in [
     if x not in rev:
         raise SystemExit(f"RC8 reviewer matrix missing: {x}")
 
+fig1=(root/"figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg").read_text(encoding="utf-8")
+if "without practical Sørensen homogenization" not in fig1:
+    raise SystemExit("RC8 Figure 1 wording drift")
+
 fig=(root/"figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg").read_text(encoding="utf-8")
 for x in ["Obs 36.9%","Null 27.4%","Obs 8.0%","Null 19.1%","Monte Carlo P = 0.001"]:
     if x not in fig:
