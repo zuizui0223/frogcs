@@ -131,11 +131,17 @@ Therefore RC8 does not claim that an unusual beta response rejects uniform activ
 - [x] RC8 cover letter created
 - [x] RC8 novelty and reviewer audits created
 - [x] RC8 Figure 2 created
-- [ ] RC8 scientific-package QA passes
-- [ ] RC8 anonymous DOCX QA passes
+- [x] RC8 scientific-package QA passes
+- [x] RC8 anonymous DOCX QA passes
 - [x] merge RC8 candidate to main
 - [x] create `release/jae-v1-rc8` and promote `submission/jae-v1`
 - [x] freeze RC8 story after promotion
+
+Final promoted QA:
+- RC8 scientific-package QA: success on main, release/jae-v1-rc8 and submission/jae-v1;
+- canonical submission QA: success on submission/jae-v1;
+- anonymous v1.0 DOCX QA: success;
+- anonymous DOCX artifact: `frogcs-jae-v1-0-rc8-anonymous-docx`, artifact ID **10934299144**.
 
 ## Human metadata still unresolved
 
