@@ -62,6 +62,8 @@ jobs:
           assert "NAAMP sampling was not exposure-randomized" in document
           assert "DaysSinceRain therefore reflects both weather history and programme scheduling" in document
           assert "plausible activation-threshold interpretation" in document
+          assert "The headline expansion persists beyond the protocol-target three-day window" in document
+          assert "1,769 comparisons from 425 routes in 20 states" in document
           print("RC7 DOCX structural/anonymity QA PASS")
           PY
       - uses: actions/upload-artifact@v4
