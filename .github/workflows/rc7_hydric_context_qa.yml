@@ -1,0 +1,21 @@
+name: RC7 hydric mechanistic-context QA
+
+on:
+  push:
+    branches:
+      - revision/rc7-hydric-mechanistic-context-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_9.md"
+      - "scripts/audit_rc7_hydric_context.py"
+      - ".github/workflows/rc7_hydric_context_qa.yml"
+  workflow_dispatch:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/audit_rc7_hydric_context.py
