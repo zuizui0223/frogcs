@@ -10,7 +10,7 @@ on:
       - ".github/workflows/rc8_uniform_activation_null.yml"
   workflow_dispatch:
 jobs:
-  null:
+  uniform_null:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
