@@ -63,6 +63,7 @@ required=[
     "submission/SUBMISSION_HANDOFF_RC6.md",
     "submission/SUBMISSION_METADATA_TEMPLATE_V0_3.yml",
     "submission/CITATION_V0_2.cff.template",
+    "submission/RC6_STORY_FREEZE_V0_1.json",
 ]
 for rel in required:
     if not (ROOT/rel).is_file():
@@ -103,6 +104,16 @@ for anchor_text in [
 claim=json.loads((ROOT/"ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json").read_text(encoding="utf-8"))
 if claim.get("working_title")!=EXPECTED_TITLE:
     raise SystemExit("claim-boundary title drift")
+
+freeze=json.loads((ROOT/"submission/RC6_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
+if freeze.get("status")!="frozen_for_submission":
+    raise SystemExit("RC6 story freeze is not active")
+if freeze.get("title")!=EXPECTED_TITLE:
+    raise SystemExit("RC6 story-freeze title drift")
+if "Expansion without detectable homogenization" not in freeze.get("frozen_interpretation",""):
+    raise SystemExit("RC6 story-freeze interpretation drift")
+if len(freeze.get("frozen_core_claims") or [])!=5:
+    raise SystemExit("RC6 story-freeze core-claim count drift")
 
 subprocess.run(
     [sys.executable,str(ROOT/"scripts/audit_jae_v0_8_metacommunity.py"),
