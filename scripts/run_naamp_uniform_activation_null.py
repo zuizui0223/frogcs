@@ -275,7 +275,7 @@ def baseline_probs(kappa, pools, dry_ids, stops_by_key, ss):
         out[key] = np.clip(p, 1e-8, 1 - 1e-8)
     return out
 
-def null_for_kappa(kappa, pairs, pair_data, pools, dry_ids, ss, r_all, den_all, obs_betas, beta_mask, r_beta, den_beta, obs_sor_beta):
+def null_for_kappa(kappa, pairs, pair_data, pools, dry_ids, ss, r_all, den_all, obs_betas, beta_mask, r_beta, den_beta, obs_sor_beta, simulate_sorensen=False):
     stops_by_key = {d["key"]: d["stops"] for d in pair_data}
     probs = baseline_probs(kappa, pools, dry_ids, stops_by_key, ss)
     rng = np.random.default_rng(SEED + int(kappa * 1000))
@@ -291,7 +291,7 @@ def null_for_kappa(kappa, pairs, pair_data, pools, dry_ids, ss, r_all, den_all, 
         comps = simulated_components(wsim, dct["dry"])
         numer += r_all[i] * comps
 
-        if i in beta_position:
+        if simulate_sorensen and i in beta_position:
             # Keep the beta-diversity estimand on the same fixed eligible pair set.
             active_n = wsim.any(axis=1).sum(axis=1)
             bad = active_n < 2
@@ -310,7 +310,7 @@ def null_for_kappa(kappa, pairs, pair_data, pools, dry_ids, ss, r_all, den_all, 
             sor_num += r_beta[j] * (sw - ds)
 
     betas = numer / den_all
-    sor_betas = sor_num / den_beta
+    sor_betas = (sor_num / den_beta) if simulate_sorensen else None
 
     mean = betas.mean(axis=0)
     cov = np.cov(betas, rowvar=False, ddof=1)
@@ -353,7 +353,7 @@ def null_for_kappa(kappa, pairs, pair_data, pools, dry_ids, ss, r_all, den_all, 
         },
         "component_shares": share_report,
         "boundary_crossing_share": stat(boundary, obs_boundary),
-        "sorensen_beta_secondary": stat(sor_betas, obs_sor_beta),
+        "sorensen_beta_secondary": stat(sor_betas, obs_sor_beta) if simulate_sorensen else None,
         "valid_share_replicates": int(valid.sum()),
     }
 
@@ -364,7 +364,8 @@ def main():
     for kappa in KAPPAS:
         results[str(int(kappa))] = null_for_kappa(
             kappa, pairs, pair_data, pools, dry_ids, ss,
-            r_all, den_all, obs_betas, beta_mask, r_beta, den_beta, obs_sor_beta
+            r_all, den_all, obs_betas, beta_mask, r_beta, den_beta, obs_sor_beta,
+            simulate_sorensen=(kappa == 2.0)
         )
 
     p2 = results["2"]["primary_omnibus"]["monte_carlo_p"]
