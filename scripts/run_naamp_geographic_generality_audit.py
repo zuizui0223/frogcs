@@ -27,8 +27,25 @@ def fit_ols(d,response,include_state=True):
 def state_specific(d,response):
     out=[]
     for state,g in d.groupby("State",sort=True):
-        z=fit_ols(g,response,include_state=False)
-        z["state"]=str(state); out.append(z)
+        x=g[np.isfinite(pd.to_numeric(g[response],errors="coerce"))].copy()
+        row={"state":str(state),"n_pairs":int(len(x)),"n_routes":int(x.route_cluster.nunique())}
+        try:
+            form=f"{response} ~ rain_contrast + temp_difference + doy_difference + year_gap + C(RunNumber)"
+            basefit=smf.ols(form,data=x).fit()
+            if x.route_cluster.nunique() < 2 or basefit.df_resid <= 0:
+                raise RuntimeError("cluster_inference_not_estimable")
+            f=basefit.get_robustcov_results(cov_type="cluster",groups=x.route_cluster)
+            names=list(basefit.params.index); j=names.index("rain_contrast")
+            b=float(f.params[j]); se=float(f.bse[j])
+            row.update({"estimable":True,"beta":b,"se":se,"ci95":[b-Q*se,b+Q*se],
+                        "p":float(f.pvalues[j]),"estimator":"adjusted_route_cluster"})
+        except Exception as e:
+            row.update({"estimable":False,"reason":str(e)})
+            if len(x)>=3 and pd.to_numeric(x["rain_contrast"],errors="coerce").nunique()>1:
+                dfit=smf.ols(f"{response} ~ rain_contrast",data=x).fit()
+                row.update({"descriptive_beta":float(dfit.params["rain_contrast"]),
+                            "estimator":"descriptive_unadjusted"})
+        out.append(row)
     return out
 
 def loso(d,response):
@@ -65,7 +82,8 @@ def main():
         ss=state_specific(d,response); lo=loso(d,response); mx=mixed(d,response)
         result["responses"][response]={
             "state_specific":ss,"leave_one_state_out":lo,"random_slope":mx,
-            "state_positive_fraction":float(np.mean([z["beta"]>0 for z in ss])),
+            "state_positive_fraction_estimable":float(np.mean([z["beta"]>0 for z in ss if z.get("estimable")])) if any(z.get("estimable") for z in ss) else None,
+            "n_state_specific_estimable":int(sum(bool(z.get("estimable")) for z in ss)),
             "loso_all_positive":bool(all(z["beta"]>0 for z in lo)),
             "loso_all_ci_positive":bool(all(z["ci95"][0]>0 for z in lo)),
             "loso_beta_range":[float(min(z["beta"] for z in lo)),float(max(z["beta"] for z in lo))]
