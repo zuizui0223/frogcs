@@ -1,14 +1,14 @@
-# Supporting Information — JAE RC6 v0.2
+# Supporting Information — JAE RC8 v1.0
 
-## Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization
+## Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization
 
 This Supporting Information preserves secondary, falsification and alternative-mechanism analyses that are important for transparency but are not part of the main inferential spine.
 
 The main article now focuses on:
 1. multiscale expansion of the acoustically active community;
-2. practical equivalence of active-matrix fill;
-3. exact species × stop boundary decomposition;
-4. robustness to recorded acoustic detection conditions.
+2. exact species × stop incidence allocation benchmarked against a magnitude-matched uniform-activation null;
+3. practical stability of pairwise Sørensen within the fixed ±0.025 slope margin;
+4. geographic, protocol-window and recorded acoustic-detection robustness.
 
 Species-trait and response-trait analyses are retained here as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait.
 
@@ -60,7 +60,7 @@ A stricter exact-consecutive-year dry-anchor sensitivity contained 289 pairs:
 | days 2–3 | +0.416 | 0.091–0.741 | .012 |
 | days 4–7 | +0.257 | -0.197–0.710 | .267 |
 
-Therefore the association is not restricted to the calendar day of rain, but the data do not cleanly distinguish gradual post-rain decay from a contrast between recent-rain conditions and a sparse long-dry reference. RC6 does not use “week-long pulse” as a headline inference.
+Therefore the association is not restricted to the calendar day of rain, but the data do not cleanly distinguish gradual post-rain decay from a contrast between recent-rain conditions and a sparse long-dry reference. RC8 does not use “week-long pulse” as a headline inference.
 
 Authoritative files:
 - `NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json`
@@ -75,7 +75,7 @@ Matched wet–dry comparisons were also used to ask whether route-level composit
 
 The primary turnover coefficient was positive but imprecise (P = .104). In the exact-consecutive-year sensitivity, turnover increased with rainfall contrast (P = .0085). Nestedness-resultant change was unsupported in both the primary and exact-year analyses.
 
-Because the primary turnover endpoint was not supported, RC6 does not headline compositional reassembly. These results are secondary to the within-run spatial decomposition of active stops, alpha, gamma and species × stop incidences.
+Because the primary turnover endpoint was not supported, RC8 does not headline compositional reassembly. These results are secondary to the within-run spatial decomposition of active stops, alpha, gamma and species × stop incidences.
 
 ---
 
@@ -103,7 +103,7 @@ Exact-consecutive-year sensitivity:
 - 95% CI = -2.352 to 2.789;
 - P = .868.
 
-The prespecified buffering prediction was therefore unsupported. Response diversity is present at the species level, but RC6 does not claim that it stabilizes route-level active richness.
+The prespecified buffering prediction was therefore unsupported. Response diversity is present at the species level, but RC8 does not claim that it stabilizes route-level active richness.
 
 Authoritative files:
 - `NAAMP_RESPONSE_DIVERSITY_BUFFERING_CONTRACT_V0_1.json`
@@ -118,7 +118,7 @@ Authoritative files:
 
 An initial pooled post-opening analysis suggested that smaller-bodied species had more positive wet-associated responses. Because body size is phylogenetically structured and the family-adjusted model was unstable, subsequent family-aware validation was treated as the stronger gate. The final family-stratified permutation did not authorize body size as the mechanism (P = .314).
 
-RC6 therefore does not claim that body size explains species rainfall responses.
+RC8 therefore does not claim that body size explains species rainfall responses.
 
 ### S5.2 Coarse hydroperiod coding
 
@@ -465,7 +465,7 @@ The frozen AmphiBIO functional panel covers body size, clutch size, offspring si
 
 ## S9. Endpoint policy
 
-The activation-geometry placebo gate is the final species-trait falsification for RC6. It failed, so activation geometry is demoted rather than redefined.
+The activation-geometry placebo gate remains the final species-trait falsification for RC8. It failed, so activation geometry is demoted rather than redefined.
 
 No additional endpoint search is authorized to rescue activation geometry or replace it with another post-opening species trait in this manuscript.
 
