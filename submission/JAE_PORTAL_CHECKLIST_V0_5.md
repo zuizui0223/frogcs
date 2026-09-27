@@ -82,7 +82,7 @@
 - [x] RC6 handoff
 - [x] build and inspect v0.8 anonymous DOCX artifact
 - [x] run RC6 initial-submission package QA at final branch head
-- [ ] promote placebo-gated fallback commit to main / release / submission after final QA
+- [x] promote placebo-gated fallback commit to main / release / submission after final QA
 
 ## Human metadata still required
 
