@@ -33,6 +33,7 @@ RC6 remains preserved as the frozen fallback on:
 - cover letter: `submission/COVER_LETTER_JAE_V0_7.md`
 - causal/mechanistic triangulation: `RC7_CAUSAL_MECHANISM_TRIANGULATION_V0_1.md`
 - post-freeze protocol-transparency receipt: `submission/RC7_POSTFREEZE_PROTOCOL_TRANSPARENCY_RECEIPT_V0_1.json`
+- post-freeze mechanistic-context receipt: `submission/RC7_POSTFREEZE_MECHANISTIC_CONTEXT_RECEIPT_V0_1.json`
 
 ## Core ecological result retained from RC6
 
@@ -74,7 +75,7 @@ Forbidden wording: **positive in every state**, **uniform across states**, **con
 
 RC7 adds no new tested species-level mechanism. Discussion now connects the observed pattern to independent anuran literature showing species-specific meteorological responses, rainfall-dependent opportunistic breeding, rain-triggered chorusing thresholds/lags and inundation-associated richness/chorusing responses.
 
-Authorized interpretation: heterogeneous species/site activation thresholds are a **plausible hypothesis** that could generate spatial + taxonomic expansion without homogenization.
+Authorized interpretation: heterogeneous species/site activation thresholds are a **plausible hypothesis** that could generate spatial + taxonomic expansion without homogenization. Moisture/hydration is one literature-supported proximal route within that hypothesis, but it is not an identified mediator.
 
 Not authorized: a causal pathway identified by these data.
 
