@@ -2,7 +2,7 @@
 
 ## Working title
 
-**Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change**
+**Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization**
 
 ## Biological question
 
