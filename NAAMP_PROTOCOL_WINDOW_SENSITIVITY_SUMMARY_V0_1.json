@@ -1,0 +1,65 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "rc7_protocol_window_sensitivity_v0_1_summary",
+  "contract": "NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json",
+  "workflow_run": 36319177511,
+  "source_pairs": 4236,
+  "decision": {
+    "pass": true,
+    "strong_pass": true
+  },
+  "primary_crosses_three_day_window": {
+    "rule": "dry_days_since_rain >= 4",
+    "n_pairs": 1769,
+    "n_routes": 425,
+    "n_states": 20,
+    "active_stops": {
+      "beta": 0.3743640044391113,
+      "ci95": [0.19767654834667994, 0.5510514605315426],
+      "p": 0.00003284943556874369
+    },
+    "alpha_active": {
+      "n_pairs": 1729,
+      "n_routes": 419,
+      "beta": 0.08385863251513427,
+      "ci95": [0.01404121911785701, 0.15367604591241152],
+      "p": 0.018565664510243104
+    },
+    "gamma": {
+      "beta": 0.2890486718608136,
+      "ci95": [0.13250605014251074, 0.44559129357911653],
+      "p": 0.0002957637958453629
+    },
+    "interpretation": "All three headline associations remain confidence-interval positive when the drier survey lies outside the NAAMP 0-3 day rain-target window."
+  },
+  "secondary_both_outside_three_day_window": {
+    "rule": "wet_days_since_rain >= 4",
+    "n_pairs": 178,
+    "n_routes": 111,
+    "n_states": 18,
+    "active_stops": {
+      "beta": 1.3332035267496907,
+      "ci95": [0.4936565651490945, 2.172750488350287],
+      "p": 0.0018555420196209923
+    },
+    "alpha_active": {
+      "n_pairs": 175,
+      "n_routes": 108,
+      "beta": 0.0861331820987691,
+      "ci95": [-0.10570810522731808, 0.27797446942485626],
+      "p": 0.3788660813126531
+    },
+    "gamma": {
+      "beta": 0.19558618117547374,
+      "ci95": [-0.4407513274593855, 0.831923689810333],
+      "p": 0.5468951974496701
+    },
+    "interpretation": "All three point estimates remain positive when both surveys lie outside the 0-3 day window, but local alpha and gamma are imprecise in the much smaller subset; this diagnostic is not a PASS criterion."
+  },
+  "authorized_conclusion": "The RC7 multiscale association is not confined to comparisons entirely within the NAAMP 0-3 day protocol-target window. This does not eliminate scheduling selection or establish rainfall causality.",
+  "prohibited": [
+    "protocol selection is eliminated",
+    "rainfall causality is established",
+    "the both-outside subset proves persistence at long lags"
+  ]
+}
