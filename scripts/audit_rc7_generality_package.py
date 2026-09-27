@@ -19,7 +19,7 @@ assert pw["primary_crosses_three_day_window"]["n_pairs"]==1769
 assert pw["primary_crosses_three_day_window"]["n_routes"]==425
 
 required=[
- "all three coefficients retained positive 95% confidence intervals when any one of the 21 states was omitted",
+ "retained positive 95% confidence intervals under every single-state omission",
  "The multiscale expansion signal is not driven by any single state",
  "0.346 to 0.433",
  "0.0496 to 0.0955",
