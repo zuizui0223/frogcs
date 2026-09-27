@@ -35,6 +35,8 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 
 ## Core ecological story
 
+**Current framing:** expansion without detectable homogenization.
+
 1. **Spatial footprint expands:** rain contrast predicts +0.384 active stops.
 2. **Local alpha rises:** +0.079 species per active stop.
 3. **Route gamma rises:** +0.286 active species.
