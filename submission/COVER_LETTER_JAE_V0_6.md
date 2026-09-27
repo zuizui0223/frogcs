@@ -4,7 +4,7 @@ Dear Editors,
 
 Please consider our Research Article, **“Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change,”** for publication in *Journal of Animal Ecology*.
 
-Rainfall effects on frog calling are well known. We therefore ask a different community-ecological question: **where does a short rainfall pulse enter a spatially replicated animal community?** Does recent rain simply intensify calling at the same sites, activate additional local communities, deepen diversity within already-active sites, homogenize communities across space, or expand several dimensions simultaneously?
+Rainfall effects on frog calling are well known, and previous anuran studies have already examined short-term calling-assemblage composition, beta diversity and wetting-associated richness change. We therefore ask a narrower community-ecological question: **where does a short rainfall-associated increase enter a spatially replicated animal community?** Does it simply intensify activity at the same sites, activate additional local communities, deepen diversity within already-active sites, homogenize communities across space, or expand several dimensions simultaneously?
 
 We analysed 15 years of standardized North American Amphibian Monitoring Program surveys using 4,236 wetter–drier comparisons from the same route and seasonal sampling window. Each complete route contains ten aligned local sampling stops, allowing the observed acoustic community to be resolved into active spatial footprint, local alpha richness, route gamma richness, among-active-site beta diversity and the underlying species × stop incidence matrix.
 
@@ -16,7 +16,7 @@ Species-level follow-ups were used as falsification tests rather than promoted i
 
 The manuscript is explicitly limited to the **behaviourally realized acoustic community**. We do not infer occupancy change, colonization, extinction, demographic connectivity among stops or rainfall causality. The original programme-level rainfall endpoint was frozen before readback; the community-scale decompositions were developed subsequently, and each was separately versioned and frozen before its own endpoint readback. Secondary and rejected mechanism tests are retained transparently in Supporting Information rather than used to retune the main story.
 
-We believe the study fits *Journal of Animal Ecology* because it uses a familiar environmental cue to reveal a less familiar multiscale community response: recent-rain conditions are associated with simultaneous expansion across sites and species without a detectable collapse of spatial beta diversity.
+We believe the study fits *Journal of Animal Ecology* because it moves beyond the established rainfall–calling and short-term acoustic-composition literature to localize a familiar environmental association within a spatial community matrix: recent-rain conditions are associated with simultaneous expansion across sites and species, while measured among-site compositional differentiation does not detectably collapse.
 
 Sincerely,
 

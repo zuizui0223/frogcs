@@ -4,7 +4,7 @@
 
 Rainfall effects on anuran calling are established and are **not** the novelty claim.
 
-The current manuscript asks a different community-ecological question:
+The current manuscript asks a narrower community-ecological question than prior rainfall/calling, inundation/richness and short-term acoustic-composition studies:
 
 > **When a short environmental pulse increases observed animal diversity, where does that increase enter the spatial community matrix?**
 
@@ -26,6 +26,25 @@ The manuscript therefore contributes a **multiscale localization of a behavioura
 5. Response diversity does not necessarily stabilize communities under pulse disturbances.
 
 These established ideas set the comparison class; none is claimed as newly invented here.
+
+## Nearest published comparison class
+
+The novelty claim should be evaluated against work that already studies short-term anuran community activity rather than against single-species rainfall studies.
+
+Two especially close precedents are:
+
+- **Sugai et al. (2021, Journal of Animal Ecology; DOI 10.1111/1365-2656.13399)** quantified short-term changes in calling-assemblage composition and temporal beta diversity across night periods in tropical anurans. This establishes that short-timescale acoustic community composition and beta diversity are not themselves novel objects.
+- **Sarker et al. (2022, Ecological Indicators; DOI 10.1016/j.ecolind.2022.109640)** showed that wetland inundation can increase frog richness and abundance and alter community composition, and also compared chorusing before and after flow arrival. This establishes that wetting-driven richness and community-composition responses are not themselves novel.
+
+RC6 therefore does **not** claim novelty for:
+- rainfall/wetting effects on calling;
+- increases in frog richness after wetting;
+- short-term changes in calling-assemblage composition;
+- use of beta diversity in anuran community ecology.
+
+The narrower contribution is the **joint localization of one short-term rainfall-associated response within the same standardized spatial sampling unit**: active spatial footprint, conditional local alpha, route gamma, among-active-site beta, proportional species × site matrix fill, and the exact incidence pathways by which new detections cross spatial and/or taxonomic matrix boundaries.
+
+The literature audit did not identify a directly comparable anuran study that combines those quantities into the same matched short-term matrix decomposition. This should be phrased as a scoped literature-positioning statement, not as a universal priority claim.
 
 ## What RC6 adds
 
