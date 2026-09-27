@@ -1,0 +1,28 @@
+name: frogcs RC8 scientific package QA
+on:
+  push:
+    branches:
+      - revision/rc8-uniform-null-equivalence-v1
+    paths:
+      - "MANUSCRIPT_JAE_V1_0.md"
+      - "SUPPORTING_INFORMATION_JAE_RC8_V0_1.md"
+      - "submission/COVER_LETTER_JAE_V0_9.md"
+      - "submission/NOVELTY_AUDIT_V0_7.md"
+      - "submission/REVIEWER_ATTACK_MATRIX_V0_7.md"
+      - "submission/SUBMISSION_HANDOFF_RC8.md"
+      - "submission/JAE_PORTAL_CHECKLIST_V0_7.md"
+      - "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json"
+      - "NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json"
+      - "figures_ecology_v1_0/**"
+      - "scripts/audit_rc8_submission_package.py"
+      - ".github/workflows/rc8_submission_package_qa.yml"
+  workflow_dispatch:
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/audit_rc8_submission_package.py
