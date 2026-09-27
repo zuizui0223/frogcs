@@ -9,6 +9,10 @@ on:
       - "scripts/run_naamp_uniform_activation_null.py"
       - ".github/workflows/rc8_uniform_activation_null.yml"
   workflow_dispatch:
+
+concurrency:
+  group: rc8-uniform-activation-null
+  cancel-in-progress: true
 jobs:
   uniform_null:
     runs-on: ubuntu-latest
