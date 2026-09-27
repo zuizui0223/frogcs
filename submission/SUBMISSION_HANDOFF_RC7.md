@@ -34,6 +34,9 @@ RC6 remains preserved as the frozen fallback on:
 - causal/mechanistic triangulation: `RC7_CAUSAL_MECHANISM_TRIANGULATION_V0_1.md`
 - post-freeze protocol-transparency receipt: `submission/RC7_POSTFREEZE_PROTOCOL_TRANSPARENCY_RECEIPT_V0_1.json`
 - post-freeze mechanistic-context receipt: `submission/RC7_POSTFREEZE_MECHANISTIC_CONTEXT_RECEIPT_V0_1.json`
+- protocol-window sensitivity contract: `NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json`
+- protocol-window sensitivity summary: `NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json`
+- post-freeze protocol-window receipt: `submission/RC7_POSTFREEZE_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json`
 
 ## Core ecological result retained from RC6
 
@@ -78,6 +81,16 @@ RC7 adds no new tested species-level mechanism. Discussion now connects the obse
 Authorized interpretation: heterogeneous species/site activation thresholds are a **plausible hypothesis** that could generate spatial + taxonomic expansion without homogenization. Moisture/hydration is one literature-supported proximal route within that hypothesis, but it is not an identified mediator.
 
 Not authorized: a causal pathway identified by these data.
+
+## Protocol-window robustness
+
+The frozen design sensitivity excluding comparisons entirely inside the NAAMP 0–3 day rain-target window achieved **strong PASS**. With the drier survey required to occur at least four days after rain, 1,769 pairs from 425 routes in 20 states remained; active-footprint (β=0.374, 95% CI 0.198–0.551), local-alpha (β=0.0839, 0.0140–0.154) and route-gamma (β=0.289, 0.133–0.446) effects all remained confidence-interval positive.
+
+A stricter both-outside subset retained only 178 pairs. All point estimates were positive, but alpha and gamma were imprecise. This is diagnostic only and does not authorize a long-duration pulse claim.
+
+Authorized wording: **the headline association is not confined to comparisons entirely within the 0–3 day protocol-target window**.
+
+Not authorized: **protocol selection is eliminated** or **rainfall causality is established**.
 
 ## Promotion gate
 
