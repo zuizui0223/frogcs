@@ -1,0 +1,23 @@
+name: RC7 novelty positioning QA
+
+on:
+  push:
+    branches:
+      - revision/rc7-novelty-positioning-v1
+    paths:
+      - "submission/NOVELTY_AUDIT_V0_6.md"
+      - "submission/REVIEWER_ATTACK_MATRIX_V0_6.md"
+      - "submission/COVER_LETTER_JAE_V0_8.md"
+      - "scripts/audit_rc7_novelty_positioning.py"
+      - ".github/workflows/rc7_novelty_positioning_qa.yml"
+  workflow_dispatch:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/audit_rc7_novelty_positioning.py
