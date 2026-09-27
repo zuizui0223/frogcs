@@ -21,6 +21,10 @@ citation_template=(root/"submission/CITATION_V0_3.cff.template").read_text(encod
 handoff=(root/"submission/SUBMISSION_HANDOFF_RC8.md").read_text(encoding="utf-8")
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_7.md").read_text(encoding="utf-8")
 
+generic_docx=(root/".github/workflows/anonymous_docx.yml").read_text(encoding="utf-8")
+docx_builder=(root/"scripts/build_jae_anonymous_docx.py").read_text(encoding="utf-8")
+doi_finalizer=(root/"scripts/finalize_archive_doi.py").read_text(encoding="utf-8")
+
 title="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
 assert m.startswith("# "+title)
 assert title in cl
@@ -47,6 +51,8 @@ for x in [
         raise SystemExit(f"RC8 manuscript missing: {x}")
 
 for x in [
+  "# Supporting Information — JAE RC8 v1.0",
+  "Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization",
   "| 2 | .000999 | 80.9% | 74.2–87.4% | 92.0% |",
   "The null was strongly rejected under all three specifications",
   "The equivalence claim applies only to the pairwise Sørensen",
@@ -125,6 +131,20 @@ for x in [
 ]:
     if x not in checklist:
         raise SystemExit(f"RC8 checklist drift: {x}")
+
+
+for x in [
+  "canonical RC8/v1.0 anonymous-DOCX workflow",
+  "MANUSCRIPT_JAE_V1_0.md",
+  "SUPPORTING_INFORMATION_JAE_RC8_V0_1.md"
+]:
+    if x not in generic_docx:
+        raise SystemExit(f"generic anonymous-DOCX alias drift: {x}")
+
+if 'default=str(BASE / "MANUSCRIPT_JAE_V1_0.md")' not in docx_builder:
+    raise SystemExit("anonymous-DOCX default source is not RC8 v1.0")
+if 'default="MANUSCRIPT_JAE_V1_0.md"' not in doi_finalizer:
+    raise SystemExit("archive-finalization default source is not RC8 v1.0")
 
 forbidden=[
   "rainfall caused the expansion",
