@@ -35,7 +35,7 @@ for x in [
         raise SystemExit(f"RC8 manuscript missing: {x}")
 
 for x in [
-  "uniform activation produced a mean boundary-crossing share of 80.9%",
+  "| 2 | .000999 | 80.9% | 74.2–87.4% | 92.0% |",
   "The null was strongly rejected under all three specifications",
   "The equivalence claim applies only to the pairwise Sørensen",
   "implementation repairs were versioned before successful endpoint readback"
