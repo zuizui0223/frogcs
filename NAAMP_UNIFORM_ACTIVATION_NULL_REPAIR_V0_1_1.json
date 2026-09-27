@@ -20,7 +20,9 @@
       "sample": "the same fixed pair set on which the observed Sørensen wet-minus-dry response is defined",
       "simulation": "simulate under the same uniform-activation probabilities; for each eligible pair, resample simulated wet matrices until at least two stops are active so the beta-diversity estimand remains defined",
       "report": "null mean, 95% interval and observed percentile for the Sørensen rain-contrast beta",
-      "decision_role": "descriptive secondary comparator only"
+      "decision_role": "descriptive secondary comparator only",
+      "primary_kappa": 2,
+      "note": "The secondary Sørensen null is simulated only for the primary smoothing specification kappa=2; kappa=1 and 5 are reserved for the four-component geometry sensitivity."
     },
     "headline_homogenization_decision": "Use the separately frozen Sørensen practical-equivalence analysis, not the uniform-null omnibus."
   },
