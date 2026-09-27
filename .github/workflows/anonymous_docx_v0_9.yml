@@ -1,0 +1,67 @@
+name: frogcs JAE v0.9 anonymous DOCX
+
+on:
+  push:
+    branches:
+      - revision/rc6-geographic-generality-audit-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_9.md"
+      - "SUPPORTING_INFORMATION_JAE_RC7_V0_1.md"
+      - "scripts/build_jae_anonymous_docx.py"
+      - "scripts/audit_rc7_generality_package.py"
+      - ".github/workflows/anonymous_docx_v0_9.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-jae-v0-9-anonymous-docx
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - name: Audit RC7 scientific integration
+        run: python scripts/audit_rc7_generality_package.py
+      - name: Build anonymous v0.9 DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V0_9.md             --output build/FROG_JAE_ANON_MAIN_V0_9.docx
+      - name: Build anonymous RC7 Supporting Information DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC7_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC7.docx
+      - name: Verify anonymity, numbering and title metadata
+        run: |
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          import re
+          p=Path("build/FROG_JAE_ANON_MAIN_V0_9.docx")
+          assert p.is_file() and p.stat().st_size>10000
+          with ZipFile(p) as z:
+              document=z.read("word/document.xml").decode("utf-8")
+              footer=z.read("word/footer1.xml").decode("utf-8")
+              core=z.read("docProps/core.xml").decode("utf-8")
+          expected="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization"
+          assert "<w:lnNumType" in document
+          assert 'w:restart="continuous"' in document
+          assert "PAGE" in footer
+          assert expected in core
+          assert not re.search(r"<dc:creator>[^<]+</dc:creator>", core)
+          assert "The multiscale expansion signal is not driven by any single state" in document
+          print("RC7 DOCX structural/anonymity QA PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v0-9-rc7-anonymous-docx
+          path: |
+            build/FROG_JAE_ANON_MAIN_V0_9.docx
+            build/FROG_JAE_SUPPORTING_INFORMATION_RC7.docx
+          if-no-files-found: error
