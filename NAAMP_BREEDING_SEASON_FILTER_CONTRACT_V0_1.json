@@ -1,0 +1,137 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_breeding_season_filter_v0_1",
+  "status": "post_opening_mechanistic_followup_frozen_before_full_breeding_season_join_readback",
+  "ecological_question": "Are species that are more strongly recruited into wetter active assemblages characterized by shorter, more concentrated breeding seasons?",
+  "response_source": {
+    "contract": "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "fixed_species_family": 29,
+    "response": "pair-covariate-adjusted per-species wet-versus-dry intercept log odds",
+    "variance": "cluster-robust intercept SE squared"
+  },
+  "trait_source": {
+    "scientific_source": "ATraiU (Moore et al. 2021, Ecology 102:e03261)",
+    "doi": "10.1002/ecy.3261",
+    "trait": "breeding_season",
+    "source_definition": "Description from contributing natural-history references of the times of year when a species breeds; ATraiU also stores month modalities.",
+    "computational_transport": {
+      "repository": "panpipiens/amphibian-vulnerability-analysis",
+      "commit": "a7be17ae44b8a81349c37b3b38c767e6db5958f2",
+      "file": "processed_data/master_iucn_spine_nearctic_anura.csv",
+      "git_blob_sha1": "4a1fd99f9b815cc512ce3e680497b34e8c9c93e6",
+      "field": "atraiu_breeding_season",
+      "provenance": "Species-level text carried from the ATraiU reference-level database by deterministic mode_nonnull collapse in the transport repository. Scientific attribution remains ATraiU."
+    }
+  },
+  "taxonomy": {
+    "key": "sci_clean",
+    "normalization": "first two binomial tokens after whitespace trim",
+    "frozen_genus_aliases": {
+      "Hyla": "Dryophytes",
+      "Dryophytes": "Hyla",
+      "Lithobates": "Rana",
+      "Rana": "Lithobates"
+    },
+    "match_order": [
+      "exact sci_clean",
+      "frozen genus alias only if exact fails"
+    ],
+    "prohibited": [
+      "no fuzzy matching",
+      "no effect-informed alias additions"
+    ]
+  },
+  "frozen_parser": {
+    "month_names": {
+      "Jan": 1,
+      "January": 1,
+      "Feb": 2,
+      "February": 2,
+      "Mar": 3,
+      "March": 3,
+      "Apr": 4,
+      "April": 4,
+      "May": 5,
+      "Jun": 6,
+      "June": 6,
+      "Jul": 7,
+      "July": 7,
+      "Aug": 8,
+      "August": 8,
+      "Sep": 9,
+      "Sept": 9,
+      "September": 9,
+      "Oct": 10,
+      "October": 10,
+      "Nov": 11,
+      "November": 11,
+      "Dec": 12,
+      "December": 12
+    },
+    "season_words": {
+      "spring": [
+        3,
+        4,
+        5
+      ],
+      "summer": [
+        6,
+        7,
+        8
+      ],
+      "fall": [
+        9,
+        10,
+        11
+      ],
+      "autumn": [
+        9,
+        10,
+        11
+      ],
+      "winter": [
+        12,
+        1,
+        2
+      ]
+    },
+    "year_round_phrases": [
+      "year round",
+      "year-round",
+      "throughout the year",
+      "all year"
+    ],
+    "range_rule": "MonthA followed by '-', 'to', or 'through' and MonthB expands inclusively; ranges crossing December wrap through January.",
+    "union_rule": "Final breeding-season months are the union of expanded month ranges, standalone month tokens, mapped season words, or all 12 months for year-round phrases.",
+    "missing_rule": "If no month, season word, or year-round phrase is recognized, breadth is missing.",
+    "output": "breeding_season_breadth_months = number of unique recognized months, range 1-12."
+  },
+  "primary_model": {
+    "formula": "adjusted_log_odds ~ breeding_season_breadth_months",
+    "estimator": "inverse-variance weighted least squares with HC3 covariance across species",
+    "expected_sign": "negative",
+    "hypothesis": "Shorter breeding seasons predict more positive wet-recruitment responses.",
+    "minimum_species": 15
+  },
+  "family_structure_sensitivity": {
+    "method": "weighted within-family slope after subtracting weighted family means from breeding-season breadth and adjusted response",
+    "permutation": "permute breeding-season breadth among species within family",
+    "permutations": 100000,
+    "seed": 20260925,
+    "expected_sign": "negative",
+    "inference": "two-sided Monte Carlo P plus negative-tail P"
+  },
+  "descriptive_groups": {
+    "short": "1-3 parsed months",
+    "intermediate": "4-5 parsed months",
+    "long": "6-12 parsed months",
+    "status": "descriptive only; no threshold-based confirmatory test"
+  },
+  "boundaries": [
+    "This is a post-opening mechanistic follow-up, not an original preregistered hypothesis.",
+    "ATraiU breeding-season text may summarize geographically variable literature and is not a local NAAMP phenology measurement.",
+    "Breeding-season breadth is a proxy for temporal reproductive strategy and is not identical to the classical explosive/prolonged classification.",
+    "A supported relationship would motivate a pulse-tracking breeding-strategy interpretation but would not establish rainfall causality or reproductive success.",
+    "No additional ATraiU traits may be promoted within this analysis family after readback."
+  ]
+}

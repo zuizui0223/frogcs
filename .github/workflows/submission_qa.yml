@@ -38,7 +38,7 @@ jobs:
         run: |
           cat > /tmp/frogcs-submission-metadata.yml <<'YAML'
           manuscript:
-            title: "Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+            title: "Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change"
             target_journal: "Journal of Animal Ecology"
             article_type: "Research Article"
           authors:
@@ -87,7 +87,7 @@ jobs:
           python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage archive --outdir /tmp/rendered-archive
           python - <<'PY'
           from pathlib import Path
-          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+          expected="Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change"
           for p in [
               Path("/tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md"),
               Path("/tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md")
@@ -136,7 +136,7 @@ jobs:
           with ZipFile(p) as z:
               core=z.read("docProps/core.xml").decode("utf-8")
               document=z.read("word/document.xml").decode("utf-8")
-          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+          expected="Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change"
           assert expected in core
           assert "<w:lnNumType" in document
           print("anonymous DOCX PASS")
@@ -156,6 +156,8 @@ jobs:
             ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json
             COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md
             SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md
+            NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json
+            NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json
             NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json
             submission/COVER_LETTER_JAE_V0_6.md
             submission/JAE_PORTAL_CHECKLIST_V0_5.md

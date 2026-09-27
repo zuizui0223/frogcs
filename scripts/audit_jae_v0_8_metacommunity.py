@@ -20,7 +20,7 @@ text=MAN.read_text(encoding="utf-8")
 claim=json.loads(CLAIM.read_text(encoding="utf-8"))
 spine=SPINE.read_text(encoding="utf-8")
 
-expected_title="# Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+expected_title="# Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change"
 if not text.startswith(expected_title+"\n"):
     raise SystemExit("v0.8 title drift")
 
@@ -68,9 +68,6 @@ required_abstract=[
     "P = 0.937",
     "36.9%",
     "39.9%",
-    "ρ = 0.774",
-    "ρ = 0.785",
-    "P = 0.00044",
     "±0.05 practical-equivalence"
 ]
 for x in required_abstract:
@@ -81,9 +78,8 @@ required_body=[
     "The original rainfall endpoint in the broader analysis programme was frozen before effect readback.",
     "metacommunity-scale",
     "species × stop incidence matrix",
-    "activation geometry",
-    "partially coupled coordinates",
-    "response-sign diversity",
+    "activation geometry is not interpreted as a rainfall-specific response trait",
+    "An earlier repository version emphasized a null rain effect",
     "does not assume or demonstrate that all stops form a demographic metacommunity"
 ]
 for x in required_body:
@@ -96,13 +92,14 @@ if claim.get("working_title") != expected_title[2:]:
 for phrase in [
     "beta diversity is proven unchanged or equivalent across rainfall contrasts",
     "week-long compositional reassembly",
-    "response diversity provides an insurance effect in these data"
+    "response diversity provides an insurance effect in these data",
+    "activation geometry is a rainfall-specific response trait"
 ]:
     if phrase not in claim.get("prohibited",[]):
         raise SystemExit(f"claim boundary missing prohibition: {phrase}")
 
-for doi in ["10.1038/s41467-026-70192-x","10.1111/ele.70299","10.1111/j.1466-8238.2011.00662.x","10.1111/2041-210X.14087"]:
+for doi in ["10.1111/j.1466-8238.2011.00662.x"]:
     if doi not in text:
-        raise SystemExit(f"missing verified response-diversity reference DOI: {doi}")
+        raise SystemExit(f"missing required matrix reference DOI: {doi}")
 
 print("JAE v0.8 metacommunity QA PASS")

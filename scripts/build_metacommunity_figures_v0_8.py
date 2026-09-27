@@ -7,6 +7,8 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"figures_ecology_v0_8"
 OUT.mkdir(exist_ok=True)
+for old in OUT.glob("*.svg"):
+    old.unlink()
 
 def load(name):
     return json.loads((ROOT/name).read_text(encoding="utf-8"))
@@ -14,11 +16,6 @@ def load(name):
 meta=load("NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json")
 quad=load("NAAMP_SPECIES_STOP_QUADRANTS_SUMMARY_V0_1.json")
 depth=load("NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json")
-func=load("NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json")
-resp=load("NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json")
-buff=load("NAAMP_RESPONSE_DIVERSITY_BUFFERING_SUMMARY_V0_1.json")
-geometry=load("NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json")
-routegeom=load("NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json")
 det=load("NAAMP_DETECTION_QUALITY_ROBUSTNESS_SUMMARY_V0_1.json")
 spatial=load("NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_SUMMARY_V0_1.json")
 
@@ -119,8 +116,6 @@ ax.set_yticks([0,1],["Route-new species","Route-existing species"])
 for i in range(2):
     for j in range(2):
         ax.text(j,i,f"{share_matrix[i,j]:.1f}%",ha="center",va="center")
-ax.text(0,-0.78,"spatial-edge\nactivation geometry",ha="center",va="bottom",fontsize=9)
-ax.text(1,-0.78,"local-deepening\nactivation geometry",ha="center",va="bottom",fontsize=9)
 ax.set_title("A  Where wet-gain incidences enter")
 fig.colorbar(im,ax=ax,fraction=.046,pad=.04,label="Share of total incidence slope (%)")
 
@@ -157,61 +152,8 @@ ax.text(.02,.04,
         f"P = {depth['primary']['shared_active_stop_delta_species_mean']['p_value']:.3g}",
         transform=ax.transAxes,va="bottom")
 ax.set_title("C  Local taxonomic depth")
-fig.suptitle("Community expansion and species activation geometry use the same matrix pathways",fontsize=14)
+fig.suptitle("Rainfall-associated community expansion occurs at matrix boundaries",fontsize=14)
 fig.tight_layout(rect=[0,0,1,.94])
 save(fig,"FIGURE_2_MATRIX_EXPANSION_V0_1.svg")
-
-# Figure 3: taxonomic, functional, response dimensions
-fig,axs=plt.subplots(1,3,figsize=(12,4.8))
-ax=axs[0]
-items=[
-    ("Trait-covered\nrichness",func["primary"]["trait_covered_richness"]),
-    ("Functional MPD",func["primary"]["functional_mpd"]),
-    ("Novelty balance",func["primary"]["functional_novelty_balance"]),
-]
-for y,(lab,o) in enumerate(items):
-    b=o["beta"];ci=o["ci95"]
-    ax.errorbar(b,y,xerr=err(b,ci),fmt="o",capsize=3)
-ax.axvline(0,linewidth=1)
-ax.set_yticks(range(3),[x[0] for x in items])
-ax.invert_yaxis()
-ax.set_xlabel("Rain-contrast coefficient")
-ax.set_title("A  Functional community")
-
-ax=axs[1]
-ax.axvline(0,linewidth=1)
-r=resp["primary"]["correlation"]
-ax.scatter([r],[0])
-ax.set_xlim(-.5,.5)
-ax.set_ylim(-1,1)
-ax.set_yticks([])
-ax.set_xlabel("Correlation: functional distance\nvs rainfall-response difference")
-ax.text(.05,.80,
-        f"r = {r:.3f}\nPermutation P = {resp['primary']['two_sided_p']:.3f}\n"
-        f"Within-family P = {resp['family_stratified']['two_sided_p']:.3f}",
-        transform=ax.transAxes)
-ax.set_title("B  Functional vs response diversity")
-
-ax=axs[2]
-xs=np.array([r["early"] for r in geometry["species_table"]],float)
-ys=np.array([r["late"] for r in geometry["species_table"]],float)
-lims=[min(xs.min(),ys.min())-.15,max(xs.max(),ys.max())+.15]
-ax.scatter(xs,ys)
-ax.plot(lims,lims,linewidth=1)
-ax.axhline(0,linewidth=.8)
-ax.axvline(0,linewidth=.8)
-ax.set_xlim(lims);ax.set_ylim(lims)
-ax.set_xlabel("Early activation geometry")
-ax.set_ylabel("Late activation geometry")
-ax.text(.04,.96,
-        f"ρ = {geometry['primary']['spearman_rho']:.3f}\n"
-        f"P = {geometry['primary']['p_value']:.4f}\n"
-        f"same sign = {geometry['sign_concordance']['same_sign']}/{geometry['sign_concordance']['n_species']}\n"
-        f"disjoint routes: ρ = {routegeom['primary']['spearman_rho']:.3f}, n = {routegeom['estimable_species']['overlap']}",
-        transform=ax.transAxes,va="top")
-ax.set_title("C  Repeatable activation geometry")
-fig.suptitle("Conventional functional traits and response geometry describe different dimensions",fontsize=14)
-fig.tight_layout(rect=[0,0,1,.94])
-save(fig,"FIGURE_3_FUNCTIONAL_RESPONSE_DIVERSITY_V0_1.svg")
 
 print("built",len(list(OUT.glob("*.svg"))),"figures")

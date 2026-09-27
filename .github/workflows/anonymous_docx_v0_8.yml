@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - revision/community-metacommunity-synthesis-v1
+      - revision/activation-geometry-placebo-gate-v1
     paths:
       - "MANUSCRIPT_JAE_V0_8.md"
       - "SUPPORTING_INFORMATION_JAE_RC6_V0_1.md"
@@ -54,7 +55,7 @@ jobs:
               document=z.read("word/document.xml").decode("utf-8")
               footer=z.read("word/footer1.xml").decode("utf-8")
               core=z.read("docProps/core.xml").decode("utf-8")
-          expected="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+          expected="Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change"
           assert "<w:lnNumType" in document
           assert 'w:restart="continuous"' in document
           assert "PAGE" in footer

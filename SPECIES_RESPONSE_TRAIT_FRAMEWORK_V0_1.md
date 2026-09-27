@@ -1,180 +1,109 @@
-# Species response-trait framework v0.1 — magnitude versus activation geometry
+# Species response-trait framework v0.1 — falsified activation-geometry candidate
 
-## Purpose
+## Status
 
-RC6 now resolves species responses to recent-rain conditions along two conceptually distinct coordinates.
+**Superseded as a main-text response-trait interpretation by the frozen activation-geometry placebo gate.**
 
-The framework is descriptive and observational. It does not infer occupancy, dispersal, colonization, demographic connectivity or rainfall causality.
+Activation geometry showed strong temporal and route-set repeatability, but those same species rankings were reproduced by reverse-direction gains, low-rain-contrast gains and baseline acoustic solitude tendency. RC6 therefore does **not** treat activation geometry as a rainfall-specific response trait.
 
-## Coordinate 1 — response magnitude
+This file is retained as an audit record of the concept that was tested and falsified.
 
-**Question:** Is a species more likely to appear only in the wetter or only in the drier member of a matched route × seasonal-window comparison?
+## Candidate definition
 
-Operational quantity:
-- adjusted wet-versus-dry species log odds from discordant matched pairs;
-- positive values indicate wetter-associated acoustic participation;
-- negative values indicate drier-associated acoustic participation.
+The proposed coordinate asked:
 
-This coordinate describes **how much / in which direction** a species' acoustic participation changes.
-
-## Coordinate 2 — activation geometry
-
-**Question:** Conditional on a species gaining a species × stop incidence in the wetter run, where does that gain enter the spatial matrix?
+> Conditional on a species gaining a species × stop incidence in the wetter run, does that gain enter a stop that was inactive in the paired drier run or a stop that was already active?
 
 Operational quantity:
 - success = wet-gain incidence at a stop inactive in the paired drier run;
 - failure = wet-gain incidence at a stop already active in the paired drier run;
-- opportunity correction = offset logit(q_pair), where q_pair is the fraction of drier-run stops available in the inactive state.
+- opportunity correction = offset `logit(q_pair)`, where `q_pair` is the fraction of drier-run stops available in the inactive state.
 
-Interpretation:
-- geometry > 0: **spatial-edge activator** — gains disproportionately open newly active sites;
-- geometry < 0: **local taxonomic deepener** — gains disproportionately add species to already-active sites;
-- geometry = 0: gain placement proportional to available inactive versus active stops.
+The fitted species intercept was called activation geometry.
 
-This coordinate describes **where** a species' wetter-condition gains enter the matrix.
+## Why the candidate initially looked compelling
 
-## Why these are different response traits
+### Temporal repeatability
 
-A single wet-versus-dry response coefficient cannot tell whether a positive responder:
-1. spreads into sites that were acoustically inactive;
-2. joins sites already containing other callers;
-3. does a mixture of both.
+Across 2001–2007 versus 2008–2015:
+- overlap species = 16;
+- Spearman rho = **0.774**;
+- P = **0.000439**;
+- WLS late-on-early slope = **0.910**, 95% CI 0.816–1.003;
+- 15/16 species retained sign.
 
-Conversely, two species with similar activation geometry can differ in the overall frequency with which they are wetter-associated.
+### Disjoint-route transfer
 
-The coordinates should therefore be interpreted as a response plane rather than automatically collapsed.
-
-A frozen cross-axis holdout test used early activation geometry (2001–2007) to predict independently estimated late wet-versus-dry response magnitude (2008–2015). The rank association was moderate (Spearman rho = 0.415, P = 0.110) and did not meet the frozen strong-coupling rule of |rho| >= 0.6 with P < 0.05. However, inverse-variance weighted regression was positive (beta = 0.354, 95% CI 0.204–0.503). Response magnitude and activation geometry are therefore **conceptually distinct but partially coupled**; RC6 must not describe them as statistically independent.
-
-## Temporal evidence for activation geometry
-
-Non-overlapping temporal validation:
-- early period: 2001–2007;
-- late period: 2008–2015;
-- overlap species: 16;
-- Spearman early–late rho = 0.774;
-- P = 0.000439;
-- inverse-variance weighted late-on-early slope = 0.910, 95% CI 0.816–1.003;
-- sign concordance = 15/16, one-sided exact P = 0.000259.
-
-Thus activation geometry has substantial within-species temporal repeatability.
-
-## Transfer across disjoint route identities
-
-A separate deterministic route split tested whether the trait was driven by persistent properties of particular routes. State × RouteNumber clusters were assigned by SHA-256 to non-overlapping route sets A and B before split-specific geometry readback.
-
-The two route sets contained:
-- split A: 295 routes, 2,185 matched pairs;
-- split B: 290 routes, 2,051 matched pairs.
-
-Activation geometry was estimable for 28 species in A and 27 in B; 26 species overlapped.
-
-Route-set validation:
-- Spearman A–B rho = **0.785**;
+Across deterministic, completely non-overlapping route sets:
+- overlap species = 26;
+- Spearman rho = **0.785**;
 - P = **2.09e-6**;
-- inverse-variance weighted B-on-A slope = **0.832**, 95% CI 0.542–1.122;
-- sign concordance = **21/26**, one-sided exact P = **0.00125**.
+- WLS B-on-A slope = **0.832**, 95% CI 0.542–1.122;
+- 21/26 species retained sign.
 
-Thus activation geometry is supported by two complementary transfer tests:
-1. **temporal transfer** across non-overlapping years;
-2. **route-identity transfer** across non-overlapping route sets.
+These validations established that the quantity was stable. They did not establish that the stability was rainfall-specific.
 
-This strengthens the response-trait interpretation but does not constitute independent-species replication or a test along a named geographic/climatic gradient.
+## Frozen placebo gate
 
-## Relation to conventional functional traits
+Before placebo endpoint readback, RC6 specified that geometry would remain in the title only if the wet-gain species ranking was not strongly reproduced by three rain-independent or direction-reversed comparators.
 
-For the overlap species, descriptive correlations between early activation geometry and:
-- log body size;
-- log clutch size;
-- log offspring size;
-- log reproductive output
+The pre-existing strong-coupling rule was reused:
+- Spearman rho >= 0.60;
+- two-sided P < .05.
 
-are all weak to moderate and imprecise (absolute rho <= 0.31; all P >= 0.287).
+All three primary placebo comparisons exceeded that threshold:
 
-This does not establish independence from morphology, life history, family or phylogeny. It does establish that the frozen four-axis trait panel does not provide an obvious proxy for activation geometry.
+| Comparator | rho with wet geometry | P |
+|---|---:|---:|
+| reverse dry-gain geometry | **0.929** | 1.94e-7 |
+| bottom-quartile low-rain-contrast geometry | **0.953** | 1.21e-8 |
+| opportunity-corrected baseline solitude geometry | **0.782** | 0.000341 |
 
-## Relation to response-diversity theory
+Raw singleton-calling fraction was also strongly correlated:
+- rho = **0.876**;
+- P = 8.44e-6.
 
-Response-diversity methodology distinguishes:
-- low-level traits used as proxies for environmental sensitivity; and
-- higher-level empirically measured species–environment responses.
+## Revised interpretation
 
-Activation geometry belongs to the second category: it is estimated directly from the spatial placement of a species' observed response under a defined environmental contrast.
+The stable species ordering is better interpreted as a persistent **acoustic co-occurrence / gain-placement tendency** than as a rainfall-specific response geometry.
 
-This is useful because the RC6 data show that:
-- conventional functional distance does not predict rainfall-response dissimilarity;
-- activation geometry itself is strongly repeatable;
-- a separate held-out response-diversity buffering hypothesis is unsupported.
+For example, species that commonly occur in singleton calling contexts tend to place both wetter-direction and drier-direction gain incidences at stops that are otherwise inactive. Conversely, species associated with multispecies calling contexts tend to place gains within already-active stops.
 
-Repeatable response traits therefore need not imply a community-level insurance effect under a pulse disturbance.
+This explains why the ranking can transfer across time and route identities without requiring a rainfall-specific response mechanism.
 
-## Community-level interpretation
+## Relation to community matrix expansion
 
-The species response trait and the community-wide matrix decomposition are two levels of the **same incidence accounting**, not separate stories.
+The community-level four-way incidence decomposition remains valid because it is an exact accounting identity applied to observed wet-minus-dry changes.
 
-For matched pair \(i\) and species \(s\), let:
+The placebo failure changes the **species-trait interpretation**, not the community-level decomposition.
 
-- \(G^{edge}_{si}\) = wetter-run gain incidences at stops that were inactive in the paired drier run;
-- \(G^{deep}_{si}\) = wetter-run gain incidences at stops that were already active in the paired drier run;
-- \(q_i\) = fraction of drier-run stops available in the inactive state.
+RC6 may still say:
+- rainfall-associated incidence growth crosses spatial and taxonomic matrix boundaries;
+- more stops become active;
+- local alpha and route gamma increase;
+- matrix fill remains practically equivalent within the frozen margin.
 
-Activation geometry estimates whether the ratio \(G^{edge}_{si}:G^{deep}_{si}\) is shifted relative to the opportunity ratio \(q_i:(1-q_i)\).
+RC6 must not say:
+- species have a rainfall-specific activation geometry;
+- repeatable geometry explains the rainfall effect;
+- “spatial-edge activator” or “local taxonomic deepener” are validated rainfall-response trait categories;
+- temporal or route-set repeatability rescues geometry after the placebo gate.
 
-Summing wet-gain incidences over species gives the two positive-entry sides of the community matrix:
+## Response magnitude comparison
 
-\[
-\sum_s G^{edge}_{si}
-=
-\text{corner gains}_i + \text{spatial-spread gains}_i
-\]
+A frozen cross-period diagnostic previously showed moderate rank coupling between early geometry and later wet-versus-dry response magnitude:
+- rho = 0.415;
+- P = .110;
+- weighted slope = +0.354.
 
-and
-
-\[
-\sum_s G^{deep}_{si}
-=
-\text{taxonomic-deepening gains}_i + \text{within-core gains}_i.
-\]
-
-The published four-way decomposition is symmetric and subtracts corresponding dry-loss incidences, so species geometry estimates alone do not reconstruct the **net** community coefficients. However, they identify which species disproportionately load onto the spatial-edge versus local-deepening gain pathways whose aggregate balance generates the observed community expansion.
-
-This creates a hierarchical interpretation:
-
-1. **community scale** — rainfall-associated incidence growth is dominated by opening spatial and/or taxonomic matrix boundaries rather than rearranging an unchanged core;
-2. **species scale** — taxa differ repeatably in which boundary they disproportionately use when they gain incidences;
-3. **trait scale** — this gain-placement geometry is not strongly encoded by the tested conventional life-history traits.
-
-Activation geometry is therefore best described as a **species-level response coordinate of community-matrix expansion**.
-
-At the community level, rainfall-associated incidence growth is dominated by:
-- new species × newly active sites;
-- new species × already-active sites;
-- existing species × newly active sites;
-
-with little pure within-core rearrangement.
-
-At the species level, repeatable activation geometry identifies which taxa disproportionately contribute to the **spatial-edge** versus **local-deepening** pathways.
-
-## What RC6 may say
-
-> Species differ not only in the magnitude of their rainfall-associated acoustic response, but also in a temporally repeatable response geometry describing where their gains enter the species × site matrix.
-
-> Activation geometry is an empirically derived response trait of the behaviourally realized community.
-
-> Conventional life-history functional traits do not strongly encode this response geometry in the tested species set.
-
-## What RC6 must not say
-
-- activation geometry is a dispersal trait;
-- activation geometry measures colonization tendency;
-- activation geometry is an occupancy niche;
-- activation geometry is phylogenetically independent;
-- activation geometry is a physiological rainfall-sensitivity trait;
-- response magnitude and response geometry are statistically independent unless explicitly supported;
-- repeatable activation geometry demonstrates community stability or an insurance effect.
+After the placebo failure this result is retained only as audit history. It does not rescue the rainfall-specific interpretation.
 
 ## Endpoint policy
 
-The temporal-repeatability test is the primary gate for promoting activation geometry as a response trait within the post-opening RC6 extension; the independently frozen disjoint-route split provides a second transfer check against route-specific artefacts.
+The placebo gate is the final decision rule for activation geometry in RC6.
 
-Additional trait fishing is not authorized to redefine or rescue activation geometry. Future mechanistic work should use independently sourced, proximal traits or independent monitoring systems.
+It failed.
+
+No residualization, redefinition, alternative baseline correction, new threshold, or replacement species trait is authorized within the current manuscript.
+
+Future work can revisit species-specific mechanism only with a new hypothesis family, preferably using independent data or independently sourced proximal traits.

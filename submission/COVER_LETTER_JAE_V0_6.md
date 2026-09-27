@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-Please consider our Research Article, **“Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry,”** for publication in *Journal of Animal Ecology*.
+Please consider our Research Article, **“Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change,”** for publication in *Journal of Animal Ecology*.
 
 Rainfall effects on frog calling are well known. We therefore ask a different community-ecological question: **where does a short rainfall pulse enter a spatially replicated animal community?** Does recent rain simply intensify calling at the same sites, activate additional local communities, deepen diversity within already-active sites, homogenize communities across space, or expand several dimensions simultaneously?
 
@@ -12,11 +12,11 @@ Rainfall contrast predicted **more active stops, higher richness within active s
 
 The multiscale result was robust to recorded survey conditions. Adjusting for hearing impairment, major-noise timeouts and wind retained positive coefficients for active-stop number, local alpha and route gamma; the same conclusion held after adding traffic counts and in the Massachusetts noise-index subset. We therefore constrain recorded acoustic detection conditions as an explanation without claiming that all detectability differences are eliminated.
 
-Species-level analyses added a response-trait dimension. We defined an opportunity-corrected **activation geometry** describing whether wetter-condition gain incidences enter newly active sites or sites that were already active. Geometry was strongly repeatable across non-overlapping periods (Spearman rho = 0.774, P = 0.00044; 15/16 species retained sign; weighted slope = 0.910) and transferred across completely disjoint deterministic route sets (rho = 0.785, P = 2.1 × 10^-6; 21/26 species retained sign; weighted slope = 0.832). By contrast, a frozen four-axis life-history trait space did not predict rainfall-response dissimilarity and did not strongly encode activation geometry. A temporally held-out test also did not support a simple response-diversity insurance effect. These results distinguish conventional functional traits from a response geometry that transfers across both time and route identity.
+Species-level follow-ups were used as falsification tests rather than promoted into the main mechanism. A proposed “activation geometry” was highly repeatable across time and disjoint route sets, but a separately frozen placebo gate showed nearly the same species ranking for reverse-direction gains (rho = 0.929), low-rain-contrast pairs (rho = 0.953) and baseline solitude tendency (rho = 0.782). We therefore removed geometry from the title and main novelty claim rather than residualizing or retuning it. Functional and other static-trait analyses likewise remain secondary.
 
 The manuscript is explicitly limited to the **behaviourally realized acoustic community**. We do not infer occupancy change, colonization, extinction, demographic connectivity among stops or rainfall causality. The original programme-level rainfall endpoint was frozen before readback; the community-scale decompositions were developed subsequently, and each was separately versioned and frozen before its own endpoint readback. Secondary and rejected mechanism tests are retained transparently in Supporting Information rather than used to retune the main story.
 
-We believe the study fits *Journal of Animal Ecology* because it uses a familiar environmental cue to reveal a less familiar multiscale community response: a short pulse can expand the observed animal community across both sites and species without a detectable collapse of spatial beta diversity or a simple shift in conventional life-history structure.
+We believe the study fits *Journal of Animal Ecology* because it uses a familiar environmental cue to reveal a less familiar multiscale community response: a short pulse can expand the observed animal community across both sites and species across both sites and species without a detectable collapse of spatial beta diversity.
 
 Sincerely,
 

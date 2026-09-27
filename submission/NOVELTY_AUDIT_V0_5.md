@@ -79,23 +79,20 @@ Among 24 species, functional distance does not predict rainfall-response dissimi
 
 Thus conventional life-history functional similarity is not a proxy for rainfall-response similarity in this species set.
 
-### 6. A repeatable species-level response trait emerges from matrix geometry
+### 6. A promising species-level response trait was falsified rather than rescued
 
-Species differ consistently in **where** wetter-condition gain incidences enter the community matrix after correcting for the number of inactive stops available in each paired survey.
+Activation geometry initially appeared unusually strong because species rankings repeated across non-overlapping years (rho = .774) and completely disjoint route sets (rho = .785).
 
-Across 2001–2007 versus 2008–2015:
-- early–late activation-geometry rho = 0.774 (P = .00044);
-- weighted late-on-early slope = 0.910;
-- 15/16 species retain the same spatial-edge versus local-deepening sign.
+A separately frozen placebo gate then tested whether that ranking was actually rainfall-specific. It was not:
 
-Across completely disjoint deterministic route sets:
-- A–B rho = 0.785 (P = 2.1e-6);
-- weighted B-on-A slope = 0.832;
-- 21/26 species retain the same sign.
+- reverse-direction dry gains: rho = **.929** with wet geometry;
+- low-rain-contrast gains: rho = **.953**;
+- opportunity-corrected baseline solitude tendency: rho = **.782**;
+- raw singleton-calling fraction: rho = **.876**.
 
-This is substantially stronger structure than the previously tested rank repeatability of overall wet/dry response magnitude. It provides a proximal response trait derived from how species participate in community expansion and shows transfer across both time and route identity. A separate cross-period diagnostic shows that geometry is not merely a rescaled magnitude axis: rank coupling with later response magnitude is moderate (rho=.415, P=.110), although precision-weighted regression is positive. The defensible interpretation is **partially coupled response coordinates**, not statistical independence.
+The gate therefore required geometry to be removed from the title and main novelty claim.
 
-The four conventional life-history traits do not strongly correlate with this response geometry, although family-adjusted validation is not estimable and phylogenetic independence is not claimed.
+This falsification is important to the evidence hierarchy: RC6 does not convert repeatability into mechanism when a stable rain-independent species property explains the same ranking.
 
 ### 7. A tempting response-diversity mechanism was tested and retained as a negative result
 
@@ -130,7 +127,7 @@ Recent response-diversity work emphasizes that:
 - species responses can be context dependent rather than fixed;
 - response diversity is not universally stabilizing under pulse disturbances.
 
-RC6 is consistent with that distinction: rainfall responses differ among species, the tested life-history space does not encode those differences, yet an opportunity-corrected **activation geometry** is strongly repeatable within species across non-overlapping periods and transfers across non-overlapping route sets. The held-out buffering prediction still fails, so repeatable response traits do not automatically imply aggregate insurance.
+RC6 retains species-response heterogeneity and conventional-trait nulls as Supporting Information, but does not claim a validated response trait. The most promising candidate, activation geometry, was highly repeatable yet failed its frozen rain-specificity placebo gate.
 
 ## Remaining novelty risks
 
@@ -138,7 +135,7 @@ RC6 is consistent with that distinction: rainfall responses differ among species
 2. **“Metacommunity” can sound too demographic.** The manuscript must repeatedly qualify this as behaviourally realized / metacommunity-scale spatial organization.
 3. **Most structural analyses are post-opening.** Transparency is essential; their value is convergence across frozen decompositions, not confirmatory status.
 4. **Null beta results are not proof of exact invariance.** Use “no detectable shift” unless a separately frozen equivalence test supports a prespecified practical margin.
-5. **The functional panel is finite.** Do not generalize the trait-response decoupling result to unmeasured physiology, developmental timing or breeding microhabitat.
+5. **The remaining main result is structural rather than a species-level mechanism.** Editors may ask whether matrix decomposition is descriptive; RC6 should answer with the matched multiscale pattern, practical-equivalence test, same-stop deepening and detection-condition robustness, not by reviving a failed trait story.
 
 ## Phrases to avoid
 
@@ -150,10 +147,12 @@ RC6 is consistent with that distinction: rainfall responses differ among species
 - functional traits are irrelevant
 - wet-only species are functionally redundant
 - response diversity stabilizes the community
+- activation geometry is a rainfall-specific response trait
+- temporal or route repeatability rescues activation geometry after the placebo failure
 - the active route is a proven dispersal-connected metacommunity
 - week-long reassembly
 - preregistered metacommunity hypotheses
 
 ## Preferred one-sentence novelty statement
 
-> **We resolve a familiar rainfall–calling association into the geometry of a spatial community response: recent-rain surveys add both active sites and active species, largely at matrix boundaries, while species show an activation geometry that repeats across time and disjoint route sets and is not captured by conventional life-history traits.**
+> **We resolve a familiar rainfall–calling association into the geometry of a spatial community response: recent-rain surveys add both active sites and active species, most additional incidences cross spatial and/or taxonomic matrix boundaries, and measured beta diversity does not detectably collapse as the active community expands.**

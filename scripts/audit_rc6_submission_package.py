@@ -5,8 +5,9 @@ import subprocess
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
-EXPECTED_TITLE="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
+EXPECTED_TITLE="Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change"
 OLD_TITLE="Recent rainfall predicts week-long richness elevation and species-selective reassembly in active frog communities"
+SUPERSEDED_GEOMETRY_TITLE="Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry"
 
 required=[
     "MANUSCRIPT_JAE_V0_8.md",
@@ -24,6 +25,35 @@ required=[
     "NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json",
     "NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json",
     "NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_SUMMARY_V0_1.json",
+    "NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json",
+    "NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json",
+    "NAAMP_HYDROPERIOD_FILTER_CONTRACT_V0_1.json",
+    "NAAMP_HYDROPERIOD_FILTER_SUMMARY_V0_1.json",
+    "scripts/run_naamp_hydroperiod_filter.py",
+    "NAAMP_BREEDING_SEASON_FILTER_CONTRACT_V0_1.json",
+    "NAAMP_BREEDING_SEASON_FILTER_SUMMARY_V0_1.json",
+    "scripts/run_naamp_breeding_season_filter.py",
+    "NAAMP_BREEDING_SEASON_BREADTH_CONTRACT_V0_1.json",
+    "NAAMP_BREEDING_SEASON_BREADTH_SUMMARY_V0_1.json",
+    "scripts/run_naamp_breeding_season_breadth.py",
+    "NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json",
+    "NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_SUMMARY_V0_1.json",
+    "scripts/run_naamp_crossperiod_episodic_recruitment.py",
+    "NAAMP_CONTEXT_DEPENDENT_PULSE_CONTRACT_V0_1.json",
+    "NAAMP_CONTEXT_DEPENDENT_PULSE_SUMMARY_V0_1.json",
+    "scripts/run_naamp_context_dependent_pulse.py",
+    "NAAMP_TWO_PHASE_COMMUNITY_MEMORY_CONTRACT_V0_1.json",
+    "NAAMP_TWO_PHASE_COMMUNITY_MEMORY_SUMMARY_V0_1.json",
+    "scripts/run_naamp_two_phase_community_memory.py",
+    "DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_CONTRACT_V0_1.json",
+    "DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_SUMMARY_V0_1.json",
+    "scripts/audit_dry_dry_background_estimability.py",
+    "NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json",
+    "NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_SUMMARY_V0_1.json",
+    "scripts/run_naamp_species_response_within_genus.py",
+    "NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json",
+    "NAAMP_LATENT_SPATIAL_HETEROGENEITY_SUMMARY_V0_1.json",
+    "scripts/run_naamp_latent_spatial_heterogeneity.py",
     "SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md",
     "SUPPORTING_INFORMATION_JAE_RC6_V0_1.md",
     "ECOLOGICAL_FIGURE_HASHES_V0_3.json",
@@ -53,14 +83,18 @@ for rel in surfaces:
         raise SystemExit(f"current title missing from {rel}")
     if OLD_TITLE in text:
         raise SystemExit(f"superseded RC5 title leaked into {rel}")
+    if SUPERSEDED_GEOMETRY_TITLE in text:
+        raise SystemExit(f"superseded geometry title leaked into {rel}")
 
 si=(ROOT/"SUPPORTING_INFORMATION_JAE_RC6_V0_1.md").read_text(encoding="utf-8")
 for anchor_text in [
     "## S2. Rain-recency timescale",
     "## S4. Held-out response-diversity buffering test",
     "## S5. Alternative species-trait and context mechanisms",
-    "## S6. Response magnitude versus activation geometry",
+    "## S6. Activation geometry: repeatability followed by placebo falsification",
+    "## S7. Reconciliation with the earlier v0.4 conditional-multispecies result",
     "P = **.419**",
+    "reverse dry-gain geometry",
     "family-stratified permutation was unsupported",
 ]:
     if anchor_text not in si:

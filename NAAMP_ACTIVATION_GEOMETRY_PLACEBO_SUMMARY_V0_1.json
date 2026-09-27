@@ -1,0 +1,42 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "naamp_activation_geometry_placebo_gate_v0_1_summary",
+  "workflow_run": 36272092220,
+  "head_sha": "30c34f9c0f04649793bfb42b303f02bf35c6bcec",
+  "headline_family_species": 16,
+  "decision": "demote_activation_geometry_from_title",
+  "headline_gate_pass": false,
+  "primary_placebos": {
+    "reverse_dry_geometry": {
+      "rho": 0.9294117647058824,
+      "p": 1.9401189481036708e-7,
+      "strong_same_rank": true
+    },
+    "low_contrast_geometry": {
+      "rho": 0.9529411764705882,
+      "p": 1.2096579348828995e-8,
+      "strong_same_rank": true
+    },
+    "baseline_solitude_geometry": {
+      "rho": 0.7823529411764706,
+      "p": 0.00034122076396497244,
+      "strong_same_rank": true
+    }
+  },
+  "raw_singleton_fraction": {
+    "rho": 0.8764705882352942,
+    "p": 0.000008439118583861077,
+    "strong_same_rank_descriptive": true
+  },
+  "low_contrast": {
+    "q25_cutpoint": 0.5596157879354227,
+    "pairs": 1065
+  },
+  "interpretation": "Activation geometry is strongly reproduced by reverse-direction gains, low-rain-contrast gains, and a baseline acoustic solitude/co-occurrence tendency. Its temporal and disjoint-route repeatability therefore does not establish a rainfall-specific response geometry. Treat geometry as a stable species co-occurrence/gain-placement property and remove it from the title and main novelty claim.",
+  "boundaries": {
+    "rainfall_specific_response_trait_authorized": false,
+    "stable_species_cooccurrence_property_compatible": true,
+    "causal_claim": false,
+    "retuning_after_readback": false
+  }
+}

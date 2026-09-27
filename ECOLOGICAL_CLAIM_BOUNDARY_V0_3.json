@@ -2,23 +2,17 @@
   "project": "frog-chorus-synchrony",
   "version": "ecology-0.5",
   "status": "community_metacommunity_synthesis_candidate",
-  "working_title": "Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry",
+  "working_title": "Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change",
   "primary_system": "NAAMP",
   "central_claims": [
     "Within matched route × seasonal-window comparisons, greater rainfall contrast is associated with a larger acoustically active spatial footprint.",
     "Rainfall contrast is associated with higher local richness among active stops (alpha) and higher route-level active richness (gamma).",
-    "Among-active-stop compositional differentiation (beta diversity) shows no detectable change with rainfall contrast under pairwise Sorensen, turnover, nestedness, or normalized Whittaker metrics.",
+    "Among-active-stop compositional differentiation shows no detectable rainfall-associated change under pairwise Sørensen, turnover, nestedness-resultant, or normalized Whittaker metrics.",
     "Proportional fill of the active species × active-site matrix is practically equivalent across rainfall contrast within a prespecified +/-0.05 connectance-slope margin in both the primary and exact-consecutive-year samples.",
-    "The positive rainfall-contrast coefficients for active spatial footprint, local alpha richness and route gamma richness persist after adjustment for recorded hearing impairment, major-noise timeouts and wind, and in sensitivities adding traffic counts or using the Massachusetts noise index.",
-    "The rainfall-associated increase in species × stop incidences is dominated by expansion at spatial and taxonomic matrix boundaries rather than rearrangement of an unchanged active core.",
+    "The rainfall-associated increase in species × stop incidences is dominated by expansion at spatial and/or taxonomic matrix boundaries rather than rearrangement of an unchanged active core.",
     "Local taxonomic deepening occurs within the same numbered stops active in both surveys and is mostly carried by multiplicity beyond the second species.",
-    "Trait-covered taxonomic richness increases with rainfall contrast, but the centroid and mean pairwise dispersion of a frozen four-axis life-history/reproductive trait space show no detectable shift.",
-    "Pairwise functional similarity in that trait space does not predict pairwise similarity of species-specific rainfall responses.",
-    "Species differ in a temporally repeatable activation geometry: an opportunity-corrected tendency for wetter-condition gain incidences to enter newly active versus already-active stops.",
-    "Species activation geometry transfers across completely disjoint deterministic route sets as well as across non-overlapping time periods, reducing the plausibility that the species ordering is driven only by persistent properties of particular routes.",
-    "Species activation geometry and the four-way community matrix decomposition are hierarchical views of the same wet-gain incidence accounting: species differ in whether gains disproportionately enter previously inactive versus already-active stops, and aggregating those gains over taxa loads the spatial-edge versus local-deepening sides of community expansion.",
-    "Activation geometry and overall wet-versus-dry response magnitude are conceptually distinct but partially coupled: their cross-period rank association is moderate and below the frozen strong-coupling rule, while precision-weighted regression is positive.",
-    "A temporally held-out test does not support the hypothesis that early-period rainfall response-sign diversity buffers later route-level richness responses."
+    "The positive rainfall-contrast coefficients for active spatial footprint, local alpha richness and route gamma richness persist after adjustment for recorded hearing impairment, major-noise timeouts and wind, and in sensitivities adding traffic counts or using the Massachusetts noise index.",
+    "Post-opening species-trait analyses do not provide an authorized rainfall-specific mechanism: activation geometry is repeatable but fails a frozen placebo gate because reverse-direction, low-contrast and baseline-solitude rankings strongly reproduce it."
   ],
   "key_numbers": {
     "matched_pairs": 4236,
@@ -157,10 +151,10 @@
       "sign_concordance_p": 0.0012469589710235596
     }
   },
-  "interpretation": "Recent rainfall is associated with two-dimensional expansion of the behaviourally realized frog active community: more landscape sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while measured among-active-site beta metrics show no detectable shift and active-matrix fill remains practically equivalent within a frozen margin. Species also show an activation geometry that is repeatable across non-overlapping years and transferable across disjoint route sets describing whether wetter-condition gains preferentially open new active sites or deepen sites that were already active; this response trait is not strongly represented by the measured conventional life-history traits.",
+  "interpretation": "Recent-rain conditions are associated with two-dimensional expansion of the behaviourally realized frog active community: more sampling sites become acoustically active and more species participate within both newly active and already-active sites. Local alpha and route gamma rise while measured beta-diversity metrics show no detectable shift and active-matrix fill remains practically equivalent within a frozen margin. Species-level mechanism remains unresolved; a repeatable activation-geometry candidate was demoted after reverse-direction, low-contrast and baseline-solitude placebo tests reproduced the same species ordering.",
   "functional_response_boundary": {
-    "supported": "The measured four-axis AmphiBIO functional space does not predict rainfall-response similarity among species, while activation geometry itself is temporally repeatable across non-overlapping periods.",
-    "not_supported": "This does not establish phylogenetic independence of activation geometry or that all functional traits are irrelevant; family-adjusted activation-geometry validation was not estimable and unmeasured traits may encode this response mode.",
+    "supported": "The tested conventional life-history trait space does not supply a robust mechanism for the rainfall-associated community expansion.",
+    "not_supported": "Activation geometry is not authorized as a rainfall-specific response trait because it failed the frozen placebo gate. Null or weak conventional-trait results do not establish that all unmeasured ecological or physiological traits are irrelevant.",
     "no_buffering_claim": "Held-out response-sign diversity does not demonstrably buffer route-level richness responses."
   },
   "timescale_boundary": {
@@ -187,32 +181,48 @@
     "beta diversity is proven unchanged or equivalent across rainfall contrasts",
     "all acoustic detectability or masking explanations have been eliminated",
     "active-matrix fill is exactly invariant across rainfall conditions",
-    "activation geometry is a dispersal, colonization or occupancy-niche trait",
-    "activation geometry is independent of phylogeny or family structure",
-    "response magnitude and activation geometry are statistically independent",
-    "activation geometry is merely a rescaled wet-versus-dry response magnitude",
-    "species activation geometry causally mediates the community-level rainfall response",
     "disjoint-route activation-geometry validation is independent-species replication",
-    "the hash route split establishes a specific geographic or climatic gradient"
+    "the hash route split establishes a specific geographic or climatic gradient",
+    "rainfall causes occupancy, abundance, colonization or extinction change",
+    "NAAMP routes are proven demographic metacommunities linked by dispersal",
+    "beta diversity is proven unchanged or equivalent across rainfall contrasts",
+    "all acoustic detectability or masking explanations have been eliminated",
+    "activation geometry is a rainfall-specific response trait",
+    "temporal or route repeatability rescues activation geometry after the placebo gate failed",
+    "functional traits explain the rainfall-associated community expansion",
+    "response diversity provides an insurance effect in these data",
+    "week-long compositional reassembly",
+    "a physiological rainfall-response half-life"
   ],
   "preferred_terms": [
-    "behaviourally realized active community",
-    "metacommunity-scale organization",
+    "behaviourally realized acoustic community",
+    "metacommunity-scale spatial organization",
     "active spatial footprint",
     "local alpha richness",
     "route gamma richness",
     "among-active-site beta diversity",
-    "spatial dilation",
-    "taxonomic deepening",
+    "two-dimensional spatial and taxonomic expansion",
     "species × site incidence matrix",
-    "conventional functional trait space",
-    "rainfall response diversity",
     "practical equivalence of active-matrix fill within the frozen margin",
-    "species activation geometry",
-    "spatial-edge activator",
-    "local taxonomic deepener",
-    "partially coupled response coordinates",
-    "species-level response coordinate of community-matrix expansion",
-    "disjoint-route transfer of activation geometry"
-  ]
+    "no authorized species-trait mechanism"
+  ],
+  "activation_geometry_placebo_gate": {
+    "decision": "demote_activation_geometry_from_title",
+    "wet_vs_reverse_dry": {
+      "rho": 0.9294117647058824,
+      "p": 1.9401189481036708e-7
+    },
+    "wet_vs_low_contrast": {
+      "rho": 0.9529411764705882,
+      "p": 1.2096579348828995e-8
+    },
+    "wet_vs_baseline_solitude": {
+      "rho": 0.7823529411764706,
+      "p": 0.00034122076396497244
+    },
+    "raw_singleton_fraction": {
+      "rho": 0.8764705882352942,
+      "p": 0.000008439118583861077
+    }
+  }
 }

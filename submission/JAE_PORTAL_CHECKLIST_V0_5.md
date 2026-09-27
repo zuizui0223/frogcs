@@ -1,8 +1,7 @@
 # JAE initial-submission checklist v0.5 — metacommunity expansion paper
 
-**Current manuscript title:** Rainfall-associated expansion of frog active communities has repeatable species-specific spatial geometry
+**Current manuscript title:** Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change
 
-**Manuscript title:** Recent rainfall expands frog active communities across sites and species without detectable change in beta diversity
 
 ## Scientific authority
 
@@ -12,12 +11,10 @@
 - [x] metacommunity alpha–beta–gamma summary
 - [x] species × stop matrix decomposition
 - [x] within-active-site depth decomposition
-- [x] functional-community expansion
-- [x] functional-response decoupling
-- [x] species activation-geometry temporal validation
 - [x] detection-quality robustness
-- [x] response-diversity buffering falsification
-- [x] exact ecological Figure 1–3 hashes
+- [x] activation-geometry placebo falsification
+- [x] functional / response-diversity analyses retained in Supporting Information
+- [x] exact ecological Figure 1–2 hashes
 - [x] JAE v0.8 scientific-claim QA
 
 ## Current article claim
@@ -37,10 +34,11 @@
 - [x] active-matrix fill passes the prespecified ±0.05 practical-equivalence margin in primary and exact-year samples
 - [x] recorded hearing impairment / timeout / wind robustness passes
 - [x] traffic-count and Massachusetts noise-index sensitivities agree
-- [x] trait-covered taxonomic richness expands without detectable functional MPD/CWM shift
-- [x] functional distance does not predict rainfall-response distance
-- [x] species activation geometry repeats across non-overlapping periods (rho=0.774; 15/16 same sign) and transfers across disjoint route sets (rho=0.785; 21/26 same sign)
-- [x] held-out response-diversity buffering prediction unsupported and reported as such
+- [x] activation geometry fails the frozen placebo gate and is removed from the main mechanism
+- [x] reverse-direction geometry reproduces wet geometry (rho=0.929)
+- [x] low-rain-contrast geometry reproduces wet geometry (rho=0.953)
+- [x] baseline solitude tendency reproduces wet geometry (rho=0.782)
+- [x] functional and response-diversity follow-ups are reported as secondary/falsification analyses
 
 ## Secondary only
 
@@ -69,7 +67,6 @@
 
 - [x] `figures_ecology_v0_8/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg`
 - [x] `figures_ecology_v0_8/FIGURE_2_MATRIX_EXPANSION_V0_1.svg`
-- [x] `figures_ecology_v0_8/FIGURE_3_FUNCTIONAL_RESPONSE_DIVERSITY_V0_1.svg`
 - [x] exact hashes in `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
 
 ## JAE formatting / package
@@ -83,9 +80,9 @@
 - [x] versioned metadata template v0.3
 - [x] versioned cover letter v0.6
 - [x] RC6 handoff
-- [ ] build and inspect v0.8 anonymous DOCX artifact
-- [ ] run RC6 initial-submission package QA at final branch head
-- [ ] promote tested synthesis commit to main / release branch before archive or submission
+- [x] build and inspect v0.8 anonymous DOCX artifact
+- [x] run RC6 initial-submission package QA at final branch head
+- [ ] promote placebo-gated fallback commit to main / release / submission after final QA
 
 ## Human metadata still required
 
@@ -103,12 +100,9 @@
 
 ## Submission-source guard
 
-**Do not use RC5/main submission workflows while main still points to the v0.6 week-scale manuscript.**
+Current submission authority must be aligned across `main`, `release/jae-v1-rc6` and `submission/jae-v1`.
 
-The submission authority is currently:
-`revision/community-metacommunity-synthesis-v1`
-
-Only after RC6 package QA passes should that tested commit be promoted to a release branch / main.
+Older RC1–RC5 manuscripts and the superseded activation-geometry title are audit history only.
 
 ## Final archive stage
 
