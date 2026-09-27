@@ -13,6 +13,14 @@ eq=json.loads((root/"NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json").read_text(en
 tree=json.loads((root/"submission/RC8_STORY_DECISION_TREE_V0_1.json").read_text(encoding="utf-8"))
 scope=json.loads((root/"submission/RC8_SCOPE_UNFREEZE_V0_1.json").read_text(encoding="utf-8"))
 
+freeze=json.loads((root/"submission/RC8_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
+readme=(root/"README.md").read_text(encoding="utf-8")
+title_page=(root/"JAE_TITLE_PAGE_V0_6.template.md").read_text(encoding="utf-8")
+metadata_template=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_4.yml").read_text(encoding="utf-8")
+citation_template=(root/"submission/CITATION_V0_3.cff.template").read_text(encoding="utf-8")
+handoff=(root/"submission/SUBMISSION_HANDOFF_RC8.md").read_text(encoding="utf-8")
+checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_7.md").read_text(encoding="utf-8")
+
 title="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
 assert m.startswith("# "+title)
 assert title in cl
@@ -21,6 +29,10 @@ assert null["primary_omnibus"]["monte_carlo_p"] < 0.05
 assert eq["decision"]["title_level_equivalence_support"] is True
 assert tree["status"]=="frozen_before_uniform_null_readback"
 assert scope["status"]=="author_directed_inferential_repair"
+
+assert freeze["status"]=="frozen_for_submission"
+assert freeze["manuscript"]=="MANUSCRIPT_JAE_V1_0.md"
+assert freeze["title"]==title
 
 for x in [
   "80.9% boundary crossing",
@@ -75,6 +87,44 @@ fig=(root/"figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg").read
 for x in ["Obs 36.9%","Null 27.4%","Obs 8.0%","Null 19.1%","Monte Carlo P = 0.001"]:
     if x not in fig:
         raise SystemExit(f"RC8 Figure 2 missing: {x}")
+
+
+for x in [
+  "JAE RC8 reproducibility package",
+  "release/jae-v1-rc8",
+  "MANUSCRIPT_JAE_V1_0.md",
+  "SUPPORTING_INFORMATION_JAE_RC8_V0_1.md",
+  "92.0% observed",
+  "80.9%"
+]:
+    if x not in readme:
+        raise SystemExit(f"RC8 README authority drift: {x}")
+
+for name,surface in [
+    ("title page",title_page),
+    ("metadata template",metadata_template),
+    ("citation template",citation_template)
+]:
+    if title not in surface:
+        raise SystemExit(f"RC8 title missing from {name}")
+
+for x in [
+  "release/jae-v1-rc8",
+  "submission/jae-v1",
+  "RC8_STORY_FREEZE_V0_1.json",
+  "MANUSCRIPT_JAE_V1_0.md"
+]:
+    if x not in handoff:
+        raise SystemExit(f"RC8 handoff drift: {x}")
+
+for x in [
+  "RC8_STORY_FREEZE_V0_1.json",
+  "MANUSCRIPT_JAE_V1_0.md",
+  "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
+  "NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json"
+]:
+    if x not in checklist:
+        raise SystemExit(f"RC8 checklist drift: {x}")
 
 forbidden=[
   "rainfall caused the expansion",
