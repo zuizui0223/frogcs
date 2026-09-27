@@ -55,12 +55,13 @@
 - [x] `submission/COVER_LETTER_JAE_V0_9.md`
 - [x] `submission/NOVELTY_AUDIT_V0_7.md`
 - [x] `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
+- [x] `submission/RC8_STORY_FREEZE_V0_1.json`
 - [x] `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
 - [x] `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
 - [x] `figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg`
 - [ ] RC8 scientific-package QA
 - [ ] anonymous v1.0 DOCX QA
-- [ ] promoted RC8 release/submission authority
+- [x] promoted RC8 release/submission authority
 
 ## Human metadata
 
