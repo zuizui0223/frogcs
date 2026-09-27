@@ -10,7 +10,7 @@
 
 4. **Expansion occurred without detectable change in measured beta diversity or material change in active-matrix fill.** Pairwise Sørensen showed no rainfall-associated shift (P = 0.937), while proportional matrix fill met a prespecified ±0.05 practical-equivalence criterion. Of the total species × stop incidence slope, 36.9% was route-new species at newly active sites, 15.2% existing species at newly active sites, 39.9% route-new species at already-active sites and 8.0% rearrangement within the existing active core.
 
-5. **Recent-rain conditions therefore enlarge the behaviourally realized frog community along both spatial and taxonomic dimensions without detectable spatial homogenization.** The result concerns acoustic activity rather than occupancy, abundance or colonization, and secondary species-trait analyses are treated as falsification evidence rather than as the mechanism of the community response.
+5. **Recent-rain conditions were associated with a larger active community, not a detectably more homogeneous one.** Expansion occurred by adding active sites and taxonomic depth while most additional incidences crossed a spatial and/or taxonomic matrix boundary. The result concerns acoustic activity rather than occupancy, abundance or colonization; species-level mechanism remains unresolved.
 
 ## Keywords
 
@@ -185,7 +185,7 @@ Several limits define the inference. The study concerns **acoustic activity**, n
 
 The evidential hierarchy is also important. **The original rainfall endpoint in the broader analysis programme was frozen before effect readback.** The alpha–beta–gamma, matrix and trait extensions arose during subsequent interpretation and were frozen before their own endpoint readback. That procedure limits within-analysis flexibility but does not make post-opening questions preregistered. Supporting Information retains failed and non-headline mechanism tests—including rain-recency, turnover, response-diversity, trait and activation-geometry analyses—so the development path remains auditable. The rain-recency analysis supports an association beyond the day of rain but does not identify a clean pulse duration; the main spatial and taxonomic conclusions do not depend on one.
 
-More generally, short environmental pulses can alter the dimensions of an observed community without requiring demographic turnover or wholesale replacement of spatial structure. In this system, recent rainfall was associated with an active-community matrix that became larger in both sites and species while measured compositional differentiation remained detectably similar and matrix fill stayed within a prespecified practical-equivalence range. That distinction would be missed by analyses focused only on chorus intensity or total richness, and provides the main community-ecological contribution of the study.
+More generally, short environmental pulses need not reorganize an observed community in the same way that they enlarge it. In this system, recent-rain conditions were associated with a community matrix that expanded across sites and species while measured among-site compositional differentiation showed no detectable shift and matrix fill remained within a prespecified practical-equivalence range. The ecological contrast is therefore **expansion without detectable homogenization**: the active community became larger chiefly by opening matrix boundaries rather than by reshuffling an unchanged core.
 
 ## Data Availability
 
@@ -229,8 +229,8 @@ Yang, L. H., Bastow, J. L., Spence, K. O., & Wright, A. N. (2008). What can we l
 
 ## Figure concepts
 
-**Figure 1. Recent-rain conditions expand the active community at local and landscape scales without detectable beta-diversity change.** Panel A shows rain-contrast coefficients for active-stop count, local alpha and route gamma. Panel B shows near-zero pairwise Sørensen and normalized Whittaker beta effects. Panel C compares the core coefficients before and after recorded hearing/noise/wind adjustment. Panel D summarizes the matched design and exact-year sensitivity.
+**Figure 1. Recent-rain conditions enlarge the active community without detectable spatial homogenization.** Panel A shows rain-contrast coefficients for active-stop count, local alpha and route gamma. Panel B shows near-zero pairwise Sørensen and normalized Whittaker beta effects. Panel C compares the core coefficients before and after recorded hearing/noise/wind adjustment. Panel D summarizes the matched design and exact-year sensitivity.
 
-**Figure 2. Rainfall-associated expansion occurs at the boundaries of the species × stop matrix.** Panel A shows the 2 × 2 matrix defined by route-new versus route-existing species and previously inactive versus already-active stops. Panel B presents the exact four-way coefficient shares: 36.9% corner expansion, 15.2% spatial spread, 39.9% taxonomic deepening and 8.0% within-core rearrangement. Panel C decomposes local alpha increase into the ≥2-species threshold component and multiplicity beyond the second species.
+**Figure 2. Most rainfall-associated incidence growth crosses a spatial or taxonomic matrix boundary.** Panel A shows the 2 × 2 matrix defined by route-new versus route-existing species and previously inactive versus already-active stops. Panel B presents the exact four-way coefficient shares: 36.9% corner expansion, 15.2% spatial spread, 39.9% taxonomic deepening and 8.0% within-core rearrangement. Panel C decomposes local alpha increase into the ≥2-species threshold component and multiplicity beyond the second species.
 
 Rain-recency, turnover/nestedness, functional-trait analyses, response-diversity tests, activation-geometry repeatability and its placebo falsification are reported in Supporting Information.
