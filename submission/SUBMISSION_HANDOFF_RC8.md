@@ -1,12 +1,20 @@
-# JAE submission handoff — RC8 uniform-null benchmark candidate
+# JAE submission handoff — RC8 uniform-null benchmark release
 
-## Candidate status
+## Release status
 
 RC8 is an inferential repair of RC7 prompted by pre-submission review. It adds exactly two headline analyses:
 1. a magnitude-matched uniform-activation null for the four incidence components;
 2. a fixed-margin practical-equivalence test for pairwise Sørensen.
 
 No new species trait or replacement mechanism is authorized.
+
+Current RC8 authority:
+- `main`
+- `release/jae-v1-rc8`
+- `submission/jae-v1`
+
+RC7 remains preserved as the frozen fallback on:
+- `release/jae-v1-rc7`
 
 ## Article
 
@@ -23,6 +31,7 @@ No new species trait or replacement mechanism is authorized.
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
 - RC8 scope: `submission/RC8_SCOPE_UNFREEZE_V0_1.json`
 - story decision tree: `submission/RC8_STORY_DECISION_TREE_V0_1.json`
+- RC8 story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
 - uniform-null contract: `NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
 - uniform-null repairs: `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`, `_V0_1_2.json`, `_V0_1_3.json`
 - uniform-null summary: `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
@@ -121,9 +130,9 @@ Therefore RC8 does not claim that an unusual beta response rejects uniform activ
 - [x] RC8 Figure 2 created
 - [ ] RC8 scientific-package QA passes
 - [ ] RC8 anonymous DOCX QA passes
-- [ ] merge RC8 candidate to main
-- [ ] create release/jae-v1-rc8 and promote submission/jae-v1
-- [ ] freeze RC8 story after promotion
+- [x] merge RC8 candidate to main
+- [x] create `release/jae-v1-rc8` and promote `submission/jae-v1`
+- [x] freeze RC8 story after promotion
 
 ## Human metadata still unresolved
 
