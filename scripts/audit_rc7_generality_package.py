@@ -20,7 +20,10 @@ required=[
  "0.218 to 0.329",
  "broad geographic robustness of the pooled expansion signal with genuine local heterogeneity",
  "plausible activation-threshold interpretation",
- "not a causal pathway identified by the present observational analysis",
+ "Hydration is one candidate proximal route within this interpretation, not a mediator identified by the present analysis.",
+ "NAAMP sampling was not exposure-randomized",
+ "DaysSinceRain therefore reflects both weather history and programme scheduling",
+ "Tracy et al., 2014; Lemenager et al., 2022",
  "Oseen, K. L., & Wassersug, R. J. (2002)",
  "Saenz, D., Fitzgerald, L. A., Baum, K. A., & Conner, R. N. (2006)"
 ]
@@ -52,8 +55,13 @@ assert "single sampled state" in freeze["frozen_geographic_interpretation"]
 assert "not a causal mechanism identified" in freeze["frozen_mechanistic_interpretation"]
 
 handoff=(root/"submission/SUBMISSION_HANDOFF_RC7.md").read_text(encoding="utf-8")
-for x in ["release/jae-v1-rc7","submission/jae-v1","RC7 story freeze"]:
+for x in ["release/jae-v1-rc7","submission/jae-v1","RC7 story freeze","post-freeze mechanistic-context receipt"]:
     if x not in handoff: raise SystemExit(f"RC7 handoff drift: {x}")
+
+
+mech_receipt=json.loads((root/"submission/RC7_POSTFREEZE_MECHANISTIC_CONTEXT_RECEIPT_V0_1.json").read_text(encoding="utf-8"))
+assert mech_receipt["scientific_unfreeze"] is False
+assert "not identified as a mediator" in mech_receipt["explicit_boundary"]
 
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_6.md").read_text(encoding="utf-8")
 for x in ["RC7_STORY_FREEZE_V0_1.json","[x] RC7 scientific-package QA","[x] anonymous v0.9 DOCX QA"]:
