@@ -40,9 +40,11 @@
 - [x] `submission/COVER_LETTER_JAE_V0_7.md`
 - [x] `NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_SUMMARY_V0_1.json`
 - [x] `submission/RC7_SCOPE_UNFREEZE_V0_1.json`
-- [ ] RC7 scientific-package QA
-- [ ] anonymous v0.9 DOCX QA
-- [ ] final RC7 submission-bundle QA
+- [x] `submission/RC7_STORY_FREEZE_V0_1.json`
+- [x] RC7 scientific-package QA
+- [x] anonymous v0.9 DOCX QA
+- [x] RC7 submission-package QA
+- [ ] final metadata-bearing submission bundle after human metadata are supplied
 
 ## Mechanistic boundary
 
