@@ -62,8 +62,10 @@
 - [x] `JAE_TITLE_PAGE_V0_6.template.md`
 - [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_4.yml`
 - [x] `submission/CITATION_V0_3.cff.template`
-- [ ] RC8 scientific-package QA
-- [ ] anonymous v1.0 DOCX QA
+- [x] canonical submission QA
+- [x] anonymous artifact `frogcs-jae-v1-0-rc8-anonymous-docx` (ID 10934299144)
+- [x] RC8 scientific-package QA
+- [x] anonymous v1.0 DOCX QA
 - [x] promoted RC8 release/submission authority
 
 ## Human metadata
