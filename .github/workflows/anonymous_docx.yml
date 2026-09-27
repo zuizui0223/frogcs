@@ -1,71 +1,55 @@
-# Compatibility alias: canonical RC6/v0.8 workflow. Do not restore RC5/v0.6 targets.
-name: frogcs JAE anonymous DOCX (v0.8 alias)
+# Compatibility alias: canonical RC8/v1.0 anonymous-DOCX workflow.
+name: frogcs JAE anonymous DOCX (RC8 alias)
 
 on:
-  push:
-    branches:
-      - revision/community-metacommunity-synthesis-v1
-    paths:
-      - "MANUSCRIPT_JAE_V0_8.md"
-      - "SUPPORTING_INFORMATION_JAE_RC6_V0_1.md"
-      - "scripts/audit_jae_v0_8_metacommunity.py"
-      - "scripts/build_jae_anonymous_docx.py"
-      - ".github/workflows/anonymous_docx_v0_8.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: frogcs-jae-v0-8-anonymous-docx
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install DOCX dependency
-        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
-      - name: Audit current v0.8 manuscript
-        run: python scripts/audit_jae_v0_8_metacommunity.py --manuscript MANUSCRIPT_JAE_V0_8.md
-      - name: Build anonymous v0.8 DOCX
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - name: Audit RC8 scientific package
+        run: python scripts/audit_rc8_submission_package.py
+      - name: Build anonymous RC8 main DOCX
         run: |
-          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V0_8.md             --output build/FROG_JAE_ANON_MAIN_V0_8.docx
-      - name: Build anonymous Supporting Information DOCX
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_0.md             --output build/FROG_JAE_ANON_MAIN_V1_0.docx
+      - name: Build anonymous RC8 Supporting Information DOCX
         run: |
-          python scripts/build_jae_anonymous_docx.py \
-            --source SUPPORTING_INFORMATION_JAE_RC6_V0_1.md \
-            --output build/FROG_JAE_SUPPORTING_INFORMATION_RC6.docx
-
-      - name: Verify anonymity, numbering and title metadata
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC8_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC8.docx
+      - name: Verify RC8 anonymous main DOCX
         run: |
           python - <<'PY'
           from zipfile import ZipFile
           from pathlib import Path
           import re
-          p=Path("build/FROG_JAE_ANON_MAIN_V0_8.docx")
+          p=Path("build/FROG_JAE_ANON_MAIN_V1_0.docx")
           assert p.is_file() and p.stat().st_size>10000
           with ZipFile(p) as z:
               document=z.read("word/document.xml").decode("utf-8")
               footer=z.read("word/footer1.xml").decode("utf-8")
               core=z.read("docProps/core.xml").decode("utf-8")
-          expected="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization"
+          expected="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
+          assert expected in core
           assert "<w:lnNumType" in document
           assert 'w:restart="continuous"' in document
           assert "PAGE" in footer
-          assert expected in core
+          assert "80.9% boundary crossing" in document
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>", core)
-          print("DOCX structural/anonymity QA PASS")
+          print("RC8 anonymous DOCX alias PASS")
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-v0-8-anonymous-main-docx
+          name: frogcs-jae-v1-0-rc8-anonymous-docx-alias
           path: |
-            build/FROG_JAE_ANON_MAIN_V0_8.docx
-            build/FROG_JAE_SUPPORTING_INFORMATION_RC6.docx
+            build/FROG_JAE_ANON_MAIN_V1_0.docx
+            build/FROG_JAE_SUPPORTING_INFORMATION_RC8.docx
           if-no-files-found: error
