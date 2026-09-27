@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - revision/rc6-geographic-generality-audit-v1
+      - main
+      - release/jae-v1-rc7
+      - submission/jae-v1
     paths:
       - "MANUSCRIPT_JAE_V0_9.md"
       - "SUPPORTING_INFORMATION_JAE_RC7_V0_1.md"
@@ -56,6 +59,9 @@ jobs:
           assert expected in core
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>", core)
           assert "The multiscale expansion signal is not driven by any single state" in document
+          assert "NAAMP sampling was not exposure-randomized" in document
+          assert "DaysSinceRain therefore reflects both weather history and programme scheduling" in document
+          assert "plausible activation-threshold interpretation" in document
           print("RC7 DOCX structural/anonymity QA PASS")
           PY
       - uses: actions/upload-artifact@v4
