@@ -1,18 +1,18 @@
-# JAE submission handoff — RC7 geographic-generality candidate
+# JAE submission handoff — RC7 geographic-generality release
 
-## Candidate status
+## Release status
 
 RC7 preserves the RC6 headline — **expansion without detectable homogenization** — and adds one author-directed pre-submission extension: a frozen geographic-generality audit of the three already-authorized headline responses.
 
-Current candidate branch:
-- `revision/rc6-geographic-generality-audit-v1`
+RC7 has passed scientific-package QA, anonymous v0.9 DOCX QA and submission-package QA and has been promoted.
 
-RC6 remains the frozen submission fallback on:
+Current RC7 authority:
 - `main`
-- `release/jae-v1-rc6`
+- `release/jae-v1-rc7`
 - `submission/jae-v1`
 
-Do not promote RC7 until its scientific-package QA passes.
+RC6 remains preserved as the frozen fallback on:
+- `release/jae-v1-rc6`
 
 ## Article
 
@@ -28,6 +28,7 @@ Do not promote RC7 until its scientific-package QA passes.
 - estimability repair: `NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_REPAIR_V0_1_1.json`
 - geographic audit summary: `NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_SUMMARY_V0_1.json`
 - RC7 scope record: `submission/RC7_SCOPE_UNFREEZE_V0_1.json`
+- RC7 story freeze: `submission/RC7_STORY_FREEZE_V0_1.json`
 - Supporting Information: `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md`
 - cover letter: `submission/COVER_LETTER_JAE_V0_7.md`
 
@@ -84,10 +85,12 @@ Not authorized: a causal pathway identified by these data.
 - [x] v0.9 manuscript created;
 - [x] RC7 Supporting Information created;
 - [x] RC7 cover letter created;
-- [ ] RC7 scientific-package QA passes;
-- [ ] merge candidate to main;
-- [ ] promote to a new release branch and submission branch only after QA;
-- [ ] rebuild anonymous DOCX / submission bundle against v0.9.
+- [x] RC7 scientific-package QA passes;
+- [x] merge candidate to main;
+- [x] promote to `release/jae-v1-rc7` and `submission/jae-v1`;
+- [x] rebuild anonymous DOCX against v0.9;
+- [x] RC7 submission-package QA passes;
+- [ ] materialize final metadata-bearing initial-submission bundle after human metadata are supplied.
 
 ## Human metadata still unresolved
 
