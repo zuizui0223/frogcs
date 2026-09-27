@@ -44,4 +44,18 @@ for x in forbidden:
 assert "92.0% crossed at least one spatial or taxonomic matrix boundary" in m
 assert "only 8.0% was rearrangement within the existing active core" in m
 assert "species-level mechanism remains unresolved" in m.lower()
+
+freeze=json.loads((root/"submission/RC7_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
+assert freeze["status"]=="frozen_for_submission"
+assert freeze["manuscript"]=="MANUSCRIPT_JAE_V0_9.md"
+assert "single sampled state" in freeze["frozen_geographic_interpretation"]
+assert "not a causal mechanism identified" in freeze["frozen_mechanistic_interpretation"]
+
+handoff=(root/"submission/SUBMISSION_HANDOFF_RC7.md").read_text(encoding="utf-8")
+for x in ["release/jae-v1-rc7","submission/jae-v1","RC7 story freeze"]:
+    if x not in handoff: raise SystemExit(f"RC7 handoff drift: {x}")
+
+checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_6.md").read_text(encoding="utf-8")
+for x in ["RC7_STORY_FREEZE_V0_1.json","[x] RC7 scientific-package QA","[x] anonymous v0.9 DOCX QA"]:
+    if x not in checklist: raise SystemExit(f"RC7 checklist drift: {x}")
 print("RC7 geographic-generality scientific package QA: PASS")
