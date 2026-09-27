@@ -57,6 +57,7 @@
 - [x] `submission/NOVELTY_AUDIT_V0_6.md`
 - [x] `submission/REVIEWER_ATTACK_MATRIX_V0_6.md`
 - [x] `submission/RC7_POSTFREEZE_NOVELTY_POSITIONING_RECEIPT_V0_1.json`
+- [x] `submission/RC7_POSTFREEZE_ABSTRACT_ROBUSTNESS_RECEIPT_V0_1.json`
 - [x] `submission/RC7_SCOPE_UNFREEZE_V0_1.json`
 - [x] `submission/RC7_STORY_FREEZE_V0_1.json`
 - [x] RC7 scientific-package QA
