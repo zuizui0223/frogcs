@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - revision/community-metacommunity-synthesis-v1
+      - chore/rc6-story-freeze-v1
       - revision/rc6-accounting-objection-v1
       - revision/rc6-editorial-tightening-v1
       - revision/activation-geometry-placebo-gate-v1
@@ -26,6 +27,7 @@ on:
       - "submission/COVER_LETTER_JAE_V0_6.md"
       - "submission/JAE_PORTAL_CHECKLIST_V0_5.md"
       - "submission/SUBMISSION_HANDOFF_RC6.md"
+      - "submission/RC6_STORY_FREEZE_V0_1.json"
       - "submission/SUBMISSION_METADATA_TEMPLATE_V0_3.yml"
       - "submission/CITATION_V0_2.cff.template"
       - "scripts/audit_rc6_submission_package.py"
