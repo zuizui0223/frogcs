@@ -235,7 +235,7 @@ Ross, S. R. P.-J., Petchey, O. L., Sasaki, T., & Armitage, D. W. (2023). How to 
 
 Royle, J. A., & Link, W. A. (2005). A general class of multinomial mixture models for anuran calling survey data. *Ecology*, 86, 2505–2512. https://doi.org/10.1890/04-1802
 
-U.S. Geological Survey. (2016). *North American Amphibian Monitoring Program: Protocol description*. Eastern Ecological Science Center.
+U.S. Geological Survey. (2016). *North American Amphibian Monitoring Program*. Eastern Ecological Science Center.
 
 
 
