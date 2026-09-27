@@ -1,4 +1,4 @@
-# Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change
+# Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change
 
 ## Abstract
 
