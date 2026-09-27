@@ -1,6 +1,6 @@
 # Supporting Information — JAE RC6 v0.2
 
-## Rainfall-associated expansion of frog active communities adds sites and species without detectable beta-diversity change
+## Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change
 
 This Supporting Information preserves secondary, falsification and alternative-mechanism analyses that are important for transparency but are not part of the main inferential spine.
 
