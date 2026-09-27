@@ -139,6 +139,8 @@ RC6 separates these processes exactly.
 
 The matrix framing also prevents “route richness increased” from being overinterpreted as reassembly, colonization or occupancy change.
 
+The exact summation itself is not the novelty: by construction, the four incidence components equal total species × stop incidence change. The empirical content is **where the rainfall-associated slope falls**. Nothing in the identity requires ~92% of that slope to cross at least one matrix boundary or only ~8% to remain within the pre-existing active core.
+
 ## Contemporary response-diversity relevance
 
 Recent response-diversity work emphasizes that:
