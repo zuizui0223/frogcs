@@ -50,10 +50,13 @@
 
 - [x] `MANUSCRIPT_JAE_V0_9.md`
 - [x] `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md`
-- [x] `submission/COVER_LETTER_JAE_V0_7.md`
+- [x] `submission/COVER_LETTER_JAE_V0_8.md`
 - [x] `NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_SUMMARY_V0_1.json`
 - [x] `NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json`
 - [x] `submission/RC7_POSTFREEZE_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json`
+- [x] `submission/NOVELTY_AUDIT_V0_6.md`
+- [x] `submission/REVIEWER_ATTACK_MATRIX_V0_6.md`
+- [x] `submission/RC7_POSTFREEZE_NOVELTY_POSITIONING_RECEIPT_V0_1.json`
 - [x] `submission/RC7_SCOPE_UNFREEZE_V0_1.json`
 - [x] `submission/RC7_STORY_FREEZE_V0_1.json`
 - [x] RC7 scientific-package QA
