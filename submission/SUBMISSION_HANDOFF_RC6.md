@@ -32,6 +32,7 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 - activation-geometry placebo decision: `NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json`
 - activation-geometry audit history: `NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json`, `NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json`, `SPECIES_RESPONSE_TRAIT_FRAMEWORK_V0_1.md`
 - supporting information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
+- story freeze: `submission/RC6_STORY_FREEZE_V0_1.json`
 
 ## Core ecological story
 
@@ -108,3 +109,7 @@ Still intentionally unresolved because they require human/final archive input:
 ## Endpoint policy
 
 The activation-geometry placebo gate is final and failed. No additional endpoint hunting, residualization or replacement species trait is authorized for RC6. New mechanistic work belongs to a separate future hypothesis family.
+
+## Story freeze
+
+The RC6 scientific story is frozen for submission. Editorial, metadata and reproducibility-defect fixes remain allowed. New ecological endpoints, replacement species traits, or changes to the headline interpretation require an explicit versioned unfreeze justified by an editor/reviewer request or documented defect.
