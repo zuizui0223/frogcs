@@ -539,3 +539,34 @@ State-specific adjusted slopes were descriptive and were not part of the PASS ru
 A secondary State random-intercept/random-slope model converged for active stops (population slope 0.381; state-slope SD 0.217) and local alpha (population slope 0.0760; state-slope SD 0.143, with a boundary warning). The route-gamma random-slope model did not converge and is therefore not used as inferential support. The leave-one-state-out gate remains the primary geographic-generality result.
 
 **Interpretive boundary:** the audit establishes robustness to omission of any single sampled state, not a positive effect in every state, not equal effect sizes among states and not continental universality.
+
+
+## Protocol-window sensitivity
+
+The NAAMP national protocol specified that Gulf Coast and Great Plains routes should be conducted within three days of rainfall. After identifying this design feature, we froze a sensitivity contract before endpoint readback to test whether the three RC7 headline associations were confined to comparisons entirely within that 0–3 day target window.
+
+### Primary sensitivity: drier survey at least four days after rain
+
+We required `dry_days_since_rain >= 4`, leaving 1,769 matched comparisons from 425 routes in 20 states. The original matched model and route-clustered covariance were unchanged.
+
+| Response | n pairs | n routes | Rain-contrast β | 95% CI | P |
+|---|---:|---:|---:|---:|---:|
+| Active stops | 1,769 | 425 | 0.374 | 0.198 to 0.551 | 3.28 × 10^-5 |
+| Local alpha | 1,729 | 419 | 0.0839 | 0.0140 to 0.154 | 0.0186 |
+| Route gamma | 1,769 | 425 | 0.289 | 0.133 to 0.446 | 2.96 × 10^-4 |
+
+The prespecified primary gate therefore achieved **strong PASS**: all three coefficients and all three 95% confidence intervals were positive.
+
+### Secondary diagnostic: both surveys at least four days after rain
+
+We next required `wet_days_since_rain >= 4`; because the wetter member necessarily has the smaller DaysSinceRain value, this places both members outside the 0–3 day window. Only 178 pairs from 111 routes in 18 states remained.
+
+| Response | n pairs | n routes | Rain-contrast β | 95% CI | P |
+|---|---:|---:|---:|---:|---:|
+| Active stops | 178 | 111 | 1.333 | 0.494 to 2.173 | 0.00186 |
+| Local alpha | 175 | 108 | 0.0861 | -0.106 to 0.278 | 0.379 |
+| Route gamma | 178 | 111 | 0.196 | -0.441 to 0.832 | 0.547 |
+
+All point estimates remained positive, but alpha and gamma were imprecise in this much smaller subset. This diagnostic was not assigned a PASS criterion and is not used to infer a long-duration rainfall effect.
+
+**Interpretive boundary.** The primary sensitivity shows that the multiscale RC7 association is not confined to comparisons occurring entirely inside the national protocol's 0–3 day rain-target window. It does not eliminate programme scheduling, time-varying confounding, imperfect detection or other observational limitations, and it does not establish rainfall causality.
