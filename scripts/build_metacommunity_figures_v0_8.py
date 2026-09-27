@@ -40,7 +40,8 @@ ax.axvline(0,linewidth=1)
 ax.set_yticks(range(len(items)),[x[0] for x in items])
 ax.invert_yaxis()
 ax.set_xlabel("Rain-contrast coefficient (native units)")
-ax.set_title("A  Spatial footprint, alpha and gamma")
+ax.set_title("A  Expansion across space and richness")
+ax.text(.98,.04,"All three increase",transform=ax.transAxes,ha="right",va="bottom",fontsize=9)
 
 ax=axs[0,1]
 items=[
@@ -53,7 +54,8 @@ ax.axvline(0,linewidth=1)
 ax.set_yticks(range(len(items)),[x[0] for x in items])
 ax.invert_yaxis()
 ax.set_xlabel("Wet-minus-dry beta-diversity coefficient")
-ax.set_title("B  Among-active-site beta diversity")
+ax.set_title("B  Among-site differentiation")
+ax.text(.98,.04,"No detectable shift",transform=ax.transAxes,ha="right",va="bottom",fontsize=9)
 
 ax=axs[1,0]
 labels=["Active stops","Local alpha","Route gamma"]
@@ -87,10 +89,13 @@ txt=(
     "hearing impairment + timeout + wind\n"
     "all three 95% CIs remain > 0\n\n"
     "Exact consecutive-year sensitivity\n"
-    f"n = {meta['exact_consecutive_year']['n_pairs']:,}"
+    f"n = {meta['exact_consecutive_year']['n_pairs']:,}\n\n"
+    "Ecological contrast\n"
+    "larger active community\n"
+    "without detectable homogenization"
 )
 ax.text(.04,.94,txt,va="top",ha="left",fontsize=11)
-ax.set_title("D  Design and robustness")
+ax.set_title("D  Design and interpretation")
 fig.suptitle("Rainfall-associated expansion enlarges the active community without detectable homogenization",fontsize=14)
 fig.tight_layout(rect=[0,0,1,.96])
 save(fig,"FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg")
