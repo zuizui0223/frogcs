@@ -37,7 +37,7 @@ assert freeze["title"]==title
 for x in [
   "80.9% boundary crossing",
   "95% null interval 74.2–87.4%",
-  "92.0% observed",
+  "observed: **92.0%**",
   "Monte Carlo P = 0.001",
   "Within-core rearrangement was 8.0% observed versus 19.1% expected",
   "90% CI -0.0107 to 0.00968",
