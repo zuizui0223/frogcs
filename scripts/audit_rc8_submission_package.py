@@ -37,7 +37,7 @@ assert freeze["title"]==title
 for x in [
   "80.9% boundary crossing",
   "95% null interval 74.2–87.4%",
-  "observed: **92.0%**",
+  "92.0% observed",
   "Monte Carlo P = 0.001",
   "Within-core rearrangement was 8.0% observed versus 19.1% expected",
   "90% CI -0.0107 to 0.00968",
@@ -94,7 +94,7 @@ for x in [
   "release/jae-v1-rc8",
   "MANUSCRIPT_JAE_V1_0.md",
   "SUPPORTING_INFORMATION_JAE_RC8_V0_1.md",
-  "92.0% observed",
+  "observed: **92.0%**",
   "80.9%"
 ]:
     if x not in readme:
