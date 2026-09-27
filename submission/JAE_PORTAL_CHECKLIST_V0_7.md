@@ -59,6 +59,9 @@
 - [x] `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
 - [x] `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
 - [x] `figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg`
+- [x] `JAE_TITLE_PAGE_V0_6.template.md`
+- [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_4.yml`
+- [x] `submission/CITATION_V0_3.cff.template`
 - [ ] RC8 scientific-package QA
 - [ ] anonymous v1.0 DOCX QA
 - [x] promoted RC8 release/submission authority
