@@ -1,0 +1,32 @@
+name: RC8 uniform activation null
+on:
+  push:
+    branches:
+      - revision/rc8-uniform-null-equivalence-v1
+    paths:
+      - "NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json"
+      - "NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json"
+      - "scripts/run_naamp_uniform_activation_null.py"
+      - ".github/workflows/rc8_uniform_activation_null.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: rc8-uniform-activation-null
+  cancel-in-progress: true
+jobs:
+  uniform_null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install numpy pandas statsmodels
+      - name: Run frozen uniform-activation null
+        run: python scripts/run_naamp_uniform_activation_null.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rc8-uniform-activation-null
+          path: NAAMP_UNIFORM_ACTIVATION_NULL_RECEIPT_V0_1.json
+          if-no-files-found: error

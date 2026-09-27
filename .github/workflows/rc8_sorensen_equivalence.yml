@@ -1,0 +1,27 @@
+name: RC8 Sorensen equivalence
+on:
+  push:
+    branches:
+      - revision/rc8-uniform-null-equivalence-v1
+    paths:
+      - "NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json"
+      - "scripts/run_naamp_sorensen_equivalence.py"
+      - ".github/workflows/rc8_sorensen_equivalence.yml"
+  workflow_dispatch:
+jobs:
+  equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install numpy pandas statsmodels
+      - name: Run frozen Sorensen equivalence test
+        run: python scripts/run_naamp_sorensen_equivalence.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rc8-sorensen-equivalence
+          path: NAAMP_SORENSEN_EQUIVALENCE_RECEIPT_V0_1.json
+          if-no-files-found: error

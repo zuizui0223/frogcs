@@ -1,0 +1,39 @@
+{
+  "project": "frog-chorus-synchrony",
+  "artifact": "RC8_STORY_DECISION_TREE_V0_1",
+  "status": "frozen_before_uniform_null_readback",
+  "inputs": [
+    "NAAMP_UNIFORM_ACTIVATION_NULL_RECEIPT_V0_1.json",
+    "NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json"
+  ],
+  "branches": {
+    "strong_rejection_of_uniform_activation": {
+      "condition": "uniform-null four-component omnibus p<0.05 for kappa=1,2,5",
+      "headline": "The observed spatial/taxonomic allocation is not reproduced by a common activation shift applied to dry-side species x stop propensities.",
+      "title_candidate": "Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization",
+      "interpretation": "Boundary-crossing expansion is an empirical structural departure from the frozen uniform-activation null. This does not identify a unique biological mechanism."
+    },
+    "consistent_with_uniform_activation": {
+      "condition": "primary kappa=2 four-component omnibus p>=0.05",
+      "headline": "The observed incidence allocation is statistically consistent with a simple uniform activation process.",
+      "title_candidate": "Rainfall-associated expansion of frog active communities is consistent with uniform activation across a spatial community matrix",
+      "interpretation": "The 92% boundary-crossing share is descriptive rather than evidence for structure beyond uniform activation. The ecological contribution becomes the multiscale realization of a familiar activation process."
+    },
+    "inconclusive_smoothing_sensitivity": {
+      "condition": "kappa=2 rejects but kappa=1 or 5 does not",
+      "headline": "Evidence for departure from uniform activation depends on baseline-propensity smoothing.",
+      "title_candidate": "Rainfall-associated expansion of frog active communities spans spatial and taxonomic scales",
+      "interpretation": "Do not use the 92% allocation as evidence against simple uniform activation."
+    }
+  },
+  "sorensen_rule": {
+    "equivalence_pass_primary_and_exact": "May replace 'without detectable homogenization' with the narrower stronger wording 'without practical homogenization' explicitly for pairwise Sørensen within the fixed +/-0.025 slope margin.",
+    "equivalence_fail": "Retain only 'no detectable shift' wording; no practical-equivalence claim for Sørensen."
+  },
+  "prohibited": [
+    "changing the branch thresholds after readback",
+    "adding a replacement null if the frozen null gives an inconvenient answer",
+    "claiming a unique mechanism from null rejection",
+    "retaining the 92% novelty claim if the null is not rejected"
+  ]
+}

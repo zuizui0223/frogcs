@@ -1,0 +1,74 @@
+name: frogcs JAE v1.0 RC8 anonymous DOCX
+
+on:
+  push:
+    branches:
+      - revision/rc8-uniform-null-equivalence-v1
+    paths:
+      - "MANUSCRIPT_JAE_V1_0.md"
+      - "SUPPORTING_INFORMATION_JAE_RC8_V0_1.md"
+      - "scripts/build_jae_anonymous_docx.py"
+      - "scripts/audit_rc8_submission_package.py"
+      - ".github/workflows/anonymous_docx_v1_0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-jae-v1-0-rc8-anonymous-docx
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - name: Audit RC8 scientific package
+        run: python scripts/audit_rc8_submission_package.py
+      - name: Build anonymous RC8 main DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_0.md             --output build/FROG_JAE_ANON_MAIN_V1_0.docx
+      - name: Build anonymous RC8 SI DOCX
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC8_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC8.docx
+      - name: Verify title, anonymity and RC8 result
+        run: |
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          import re
+          p=Path("build/FROG_JAE_ANON_MAIN_V1_0.docx")
+          assert p.is_file() and p.stat().st_size>10000
+          with ZipFile(p) as z:
+              document=z.read("word/document.xml").decode("utf-8")
+              footer=z.read("word/footer1.xml").decode("utf-8")
+              core=z.read("docProps/core.xml").decode("utf-8")
+          title="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
+          assert title in core
+          assert "<w:lnNumType" in document
+          assert 'w:restart="continuous"' in document
+          assert "PAGE" in footer
+          assert not re.search(r"<dc:creator>[^<]+</dc:creator>", core)
+          for x in [
+              "80.9% boundary crossing",
+              "92.0% observed",
+              "Monte Carlo P = 0.001",
+              "90% CI -0.0107 to 0.00968",
+              "uniform amplification of baseline acoustic propensities"
+          ]:
+              assert x in document, x
+          print("RC8 anonymous DOCX QA PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-v1-0-rc8-anonymous-docx
+          path: |
+            build/FROG_JAE_ANON_MAIN_V1_0.docx
+            build/FROG_JAE_SUPPORTING_INFORMATION_RC8.docx
+          if-no-files-found: error
