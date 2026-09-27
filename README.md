@@ -1,113 +1,262 @@
-# Frog active-community response to rainfall — JAE RC6 reproducibility package
+# Frog active-community response to rainfall — JAE RC8 reproducibility package
 
 Current Journal of Animal Ecology candidate:
 
-**Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization**
+**Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization**
 
 ## Current scientific authority
 
-The canonical submission state is intended to be aligned across:
+The canonical submission state is aligned across:
 
 - `main`
-- `release/jae-v1-rc6`
+- `release/jae-v1-rc8`
 - `submission/jae-v1`
 
-Current article files:
+Current article surfaces:
 
-- manuscript: `MANUSCRIPT_JAE_V0_8.md`
-- claim boundary: `ECOLOGICAL_CLAIM_BOUNDARY_V0_3.json`
-- community-ecology spine: `COMMUNITY_ECOLOGY_ARGUMENT_SPINE_V0_1.md`
-- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
-- activation-geometry falsification: `NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json`
-- submission handoff: `submission/SUBMISSION_HANDOFF_RC6.md`
-- main figures: `figures_ecology_v0_8/`
-- figure hashes: `ECOLOGICAL_FIGURE_HASHES_V0_3.json`
+- manuscript: `MANUSCRIPT_JAE_V1_0.md`
+- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`
+- cover letter: `submission/COVER_LETTER_JAE_V0_9.md`
+- novelty audit: `submission/NOVELTY_AUDIT_V0_7.md`
+- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
+- submission handoff: `submission/SUBMISSION_HANDOFF_RC8.md`
+- story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
+- main figures: `figures_ecology_v1_0/`
 
-Older RC1–RC5 manuscripts, figures and handoffs remain audit history only.
+**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`.
+
+`SUPPORTING_INFORMATION_JAE_RC6_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` remain repository audit history only and are not current submission authority.
+
+RC1–RC7 release branches are intentionally retained as immutable audit/fallback history.
 
 ## Main ecological result
 
-Across 4,236 matched wetter–drier route × seasonal-window comparisons:
+Across 4,236 matched wetter–drier route × seasonal-window comparisons from 585 routes in 21 states:
 
-- active spatial footprint increases;
+- active spatial footprint increases with rainfall contrast;
 - local alpha richness among active stops increases;
 - route gamma richness increases;
-- measured among-active-site beta-diversity metrics show no detectable shift;
-- active species × active-site matrix fill is practically equivalent within a frozen ±0.05 connectance-slope margin;
-- most rainfall-associated species × stop incidence growth crosses a spatial and/or taxonomic matrix boundary rather than rearranging an unchanged core.
+- richness also increases at the same numbered stops that are acoustically active in both paired surveys.
 
-Exact incidence coefficient shares:
+Headline coefficients:
 
-- new species × newly active sites: **36.9%**;
-- existing species × newly active sites: **15.2%**;
-- new species × already-active sites: **39.9%**;
-- existing species × already-active sites: **8.0%**.
+- active stops: **β = +0.384**;
+- local alpha: **β = +0.0794 species per active stop**;
+- route gamma: **β = +0.2859 species**.
+
+The study concerns the **behaviourally realized acoustic community**. It does not infer occupancy, abundance, colonization, extinction, dispersal or reproductive success.
+
+## RC8 inferential repair: uniform activation is not enough
+
+The exact species × stop decomposition contains four components:
+
+- corner expansion — route-new species at newly active stops;
+- spatial spread — route-existing species at newly active stops;
+- taxonomic deepening — route-new species at already-active stops;
+- within-core rearrangement — route-existing species at already-active stops.
+
+Observed coefficient shares are:
+
+- corner expansion: **36.9%**;
+- spatial spread: **15.2%**;
+- taxonomic deepening: **39.9%**;
+- within-core rearrangement: **8.0%**.
+
+Thus **92.0%** of the rainfall-associated incidence slope crosses at least one spatial or taxonomic boundary.
+
+RC8 no longer treats 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
+
+The null:
+
+- preserves observed dry matrices;
+- estimates dry-side species × StopNumber acoustic propensities from unique drier-member runs;
+- applies one common additive log-odds activation shift to all candidate cells;
+- calibrates that shift for each pair so expected wet incidence count equals the observed wet incidence count;
+- recomputes all four components in 1,000 simulations.
+
+Primary κ = 2 result:
+
+- null mean boundary crossing: **80.9%**;
+- 95% null interval: **74.2–87.4%**;
+- observed: **92.0%**;
+- four-component omnibus Monte Carlo **P = .000999**.
+
+The same omnibus decision holds under the frozen κ = 1 and κ = 5 smoothing sensitivities (**P = .000999** each).
+
+The departure is structured:
+
+- corner expansion: **36.9% observed vs 27.4% null mean**;
+- spatial spread: **15.2% vs 22.9%**;
+- taxonomic deepening: **39.9% vs 30.5%**;
+- within-core rearrangement: **8.0% vs 19.1%**.
+
+The authorized interpretation is therefore:
+
+> **Rainfall-associated acoustic-community growth is more taxonomically recruiting and less core-rearranging than a magnitude-matched uniform increase in baseline species × site activation predicts.**
+
+Rejecting the null does **not** identify a unique biological mechanism.
+
+Authoritative null files:
+
+- `NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
+- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`
+- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json`
+- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_3.json`
+- `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
+- `scripts/run_naamp_uniform_activation_null.py`
+
+## Practical non-homogenization
+
+Pairwise Sørensen differentiation is tested with a fixed post hoc practical-equivalence margin of **±0.025 rainfall-slope units**.
+
+Primary:
+- β = **-0.000492**;
+- 90% CI = **-0.0107 to +0.00968**;
+- practical-equivalence PASS.
+
+Exact consecutive-year:
+- β = **+0.00215**;
+- 90% CI = **-0.00973 to +0.0140**;
+- practical-equivalence PASS.
+
+This supports **practical stability of the pairwise Sørensen slope within the fixed margin**. It does not establish exact invariance or equivalence of every beta-diversity metric.
+
+Active-matrix fill separately remains within its previously frozen ±0.05 practical-equivalence margin, but fill is mathematically linked to alpha/gamma and is not treated as an independent diversity axis.
+
+## Important separation
+
+The uniform-activation null is rejected because of **incidence allocation**, not because Sørensen beta diversity behaves unusually.
+
+Under the primary uniform null:
+- Sørensen slope null mean = **-0.00615**;
+- 95% null interval = **-0.0130 to +0.00178**;
+- observed = **-0.00049**.
+
+The observed Sørensen slope lies within that null distribution.
+
+Thus RC8 separates two claims:
+
+1. **where additional incidences enter the matrix differs strongly from uniform activation**;
+2. **pairwise Sørensen differentiation remains practically stable within a fixed margin**.
+
+## Geographic and design robustness
+
+### Geographic generality
+
+Every one of 21 leave-one-state-out refits retains positive, 95%-CI-supported coefficients for:
+
+- active spatial footprint;
+- local alpha;
+- route gamma.
+
+This establishes robustness to omission of any single sampled state, not a uniformly positive response in every state. State-specific slopes remain heterogeneous.
+
+### NAAMP rain-targeting protocol
+
+The national NAAMP protocol targeted surveys within three days of rain in some regions. DaysSinceRain is therefore partly conditioned by programme scheduling and is not a randomized exposure.
+
+A frozen sensitivity requiring the **drier survey to occur at least four days after rain** retained:
+
+- 1,769 pairs;
+- 425 routes;
+- 20 states.
+
+All three headline coefficients remained 95%-CI positive:
+
+- active stops: **0.374 [0.198, 0.551]**;
+- local alpha: **0.0839 [0.0140, 0.154]**;
+- route gamma: **0.289 [0.133, 0.446]**.
+
+This shows the headline is not confined to comparisons entirely within the 0–3 day target window. It does not establish rainfall causality or eliminate protocol selection.
+
+### Recorded detection conditions
+
+Footprint, alpha and gamma effects remain positive after adjustment for recorded hearing impairment, major-noise timeouts and wind; traffic and Massachusetts noise-index sensitivities agree.
+
+Unmeasured species-specific detectability and masking remain possible.
 
 ## Species-level mechanism: falsified rather than rescued
 
-A post-opening “activation geometry” candidate was highly repeatable across time and disjoint route sets, but it failed a separately frozen placebo gate.
+A proposed post-opening “activation geometry” was highly repeatable across non-overlapping years and disjoint route sets but failed a separately frozen rain-specificity placebo gate.
 
 Wet-gain geometry was strongly reproduced by:
 
-- reverse dry-gain geometry: rho = **0.929**;
-- low-rain-contrast geometry: rho = **0.953**;
-- opportunity-corrected baseline solitude geometry: rho = **0.782**;
-- raw singleton-calling fraction: rho = **0.876**.
+- reverse-direction dry gains: ρ = **0.929**;
+- low-rain-contrast gains: ρ = **0.953**;
+- opportunity-corrected baseline solitude tendency: ρ = **0.782**;
+- raw singleton-calling fraction: ρ = **0.876**.
 
-Therefore activation geometry is **not** treated as a rainfall-specific response trait. Its repeatability is more compatible with a stable acoustic co-occurrence / solitude tendency.
+Activation geometry is therefore **not** treated as a rainfall-specific response trait.
 
-The manuscript does not residualize, redefine or replace geometry after this failed gate.
+The RC8 uniform-null rejection does not rescue this failed trait.
+
+Independent anuran literature supports heterogeneous activation thresholds, breeding/inundation cues and hydric physiology as plausible discussion-level pathways. None is identified as the causal mediator of the NAAMP result.
 
 ## Historical v0.4 reconciliation
 
-The earlier v0.4 manuscript reported a null pooled stop-level rain effect on multispecies probability conditional on acoustic activity (OR = 0.988, P = .402).
+An earlier manuscript version reported a null pooled active-stop conditional-multispecies effect:
 
-RC6 instead analyses wet-minus-dry changes in run-level alpha and in the fraction of active stops with >=2 species under matched route × seasonal-window comparisons. The small >=2 component is positive, but ~71% of the alpha slope comes from multiplicity beyond the second species.
+- OR = **0.988**;
+- 95% CI = **0.959–1.017**;
+- P = **.402**.
 
-These are different estimands and weightings. Supporting Information Section S7 preserves the explicit comparison.
+The current matched analysis estimates wet-minus-dry changes in run-level active-stop depth under a different weighting, exposure scale and matched design. The ≥2-species threshold component is positive but contributes only ~28.9% of the local-alpha slope; ~71.1% lies beyond the second species.
+
+The explicit reconciliation remains in current Supporting Information. The earlier result is retained rather than hidden.
+
+## Inferential boundaries
+
+RC8 does **not** claim:
+
+- rainfall causality;
+- occupancy or abundance change;
+- colonization or extinction;
+- demographic connectivity among route stops;
+- uniform response across states;
+- exact beta-diversity invariance;
+- equivalence of every beta metric;
+- a validated rainfall-specific species trait;
+- a unique mechanism from uniform-null rejection;
+- hydration or inundation mediation;
+- a week-long response endpoint;
+- a physiological rainfall-response half-life.
+
+## Submission QA
+
+The RC8 submission package checks:
+
+- the v1.0 scientific package;
+- uniform-null decision and all three smoothing sensitivities;
+- Sørensen practical-equivalence bounds;
+- title and inferential-boundary consistency;
+- RC8 Figure 1/2 content;
+- anonymous v1.0 main-manuscript DOCX;
+- anonymous RC8 Supporting Information DOCX.
+
+## Repository history and branch policy
+
+Release branches `release/jae-v1-rc1` through `release/jae-v1-rc8` are retained as versioned audit history.
+
+The repository also contains historical `revision/*`, `fix/*`, `chore/*` and `cleanup/*` branches created during the analysis/falsification path. They are **not current scientific authority**. Current authority is defined only by the branches and files listed at the top of this README.
+
+Historical manuscripts, SI versions, workflows and failed/falsified analyses are preserved deliberately for auditability and should not be used as current submission surfaces.
 
 ## Data sources
 
 - NAAMP: DOI **10.5066/F7G44NG0**
 - AmphiBIO v1: article DOI **10.1038/sdata.2017.123**; data DOI **10.6084/m9.figshare.4644424.v5**
 
-Raw third-party datasets are not redistributed.
-
-## Inferential boundaries
-
-RC6 concerns acoustic activity. It does not infer:
-
-- occupancy or abundance change;
-- colonization or extinction;
-- dispersal or demographic connectivity;
-- rainfall causality;
-- exact invariance of beta diversity;
-- elimination of all acoustic detectability or masking;
-- a validated rainfall-specific species trait;
-- response-diversity insurance;
-- a physiological rainfall-response half-life.
-
-## Submission QA
-
-The submission pipeline checks:
-
-- RC6 scientific package;
-- current title and metadata rendering;
-- archive-DOI finalization dry-run;
-- deterministic hashes for the two main figures;
-- anonymous main-manuscript DOCX;
-- anonymous Supporting Information DOCX.
+Raw third-party source datasets are not redistributed.
 
 ## Development policy
 
-The RC6 story is now frozen around:
+The RC8 story is frozen around:
 
 1. multiscale active-community expansion;
-2. species × site matrix boundary expansion;
-3. practical equivalence of active-matrix fill;
-4. no detectable beta-diversity shift;
-5. recorded detection-condition robustness.
+2. four-component incidence allocation that strongly rejects the frozen uniform-activation null;
+3. excess route-new taxonomic participation relative to that null;
+4. pairwise Sørensen practical stability within the fixed ±0.025 slope margin;
+5. geographic, protocol-window and recorded-detection robustness;
+6. no identified species-level or causal mechanism.
 
-Activation geometry failed its final placebo gate. No additional endpoint search, residualization, or replacement post-opening species trait is authorized for this manuscript.
-
-Future mechanistic work should start a new hypothesis family using independent data or independently sourced proximal traits.
+No additional endpoint search, replacement null model, Sørensen-margin retuning, residualized activation-geometry rescue or replacement post-opening species trait is authorized for this submission without an explicit versioned unfreeze justified by an editor/reviewer request or documented defect.
