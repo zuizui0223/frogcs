@@ -30,13 +30,16 @@ RC6 remains preserved as the frozen fallback on:
 - RC7 scope record: `submission/RC7_SCOPE_UNFREEZE_V0_1.json`
 - RC7 story freeze: `submission/RC7_STORY_FREEZE_V0_1.json`
 - Supporting Information: `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md`
-- cover letter: `submission/COVER_LETTER_JAE_V0_7.md`
+- cover letter: `submission/COVER_LETTER_JAE_V0_8.md`
 - causal/mechanistic triangulation: `RC7_CAUSAL_MECHANISM_TRIANGULATION_V0_1.md`
 - post-freeze protocol-transparency receipt: `submission/RC7_POSTFREEZE_PROTOCOL_TRANSPARENCY_RECEIPT_V0_1.json`
 - post-freeze mechanistic-context receipt: `submission/RC7_POSTFREEZE_MECHANISTIC_CONTEXT_RECEIPT_V0_1.json`
 - protocol-window sensitivity contract: `NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json`
 - protocol-window sensitivity summary: `NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json`
 - post-freeze protocol-window receipt: `submission/RC7_POSTFREEZE_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json`
+- novelty audit: `submission/NOVELTY_AUDIT_V0_6.md`
+- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_6.md`
+- post-freeze novelty-positioning receipt: `submission/RC7_POSTFREEZE_NOVELTY_POSITIONING_RECEIPT_V0_1.json`
 
 ## Core ecological result retained from RC6
 
