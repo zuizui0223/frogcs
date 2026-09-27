@@ -5,9 +5,11 @@ import json, sys
 root=Path(__file__).resolve().parents[1]
 m=(root/"MANUSCRIPT_JAE_V0_9.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC7_V0_1.md").read_text(encoding="utf-8")
-cl=(root/"submission/COVER_LETTER_JAE_V0_7.md").read_text(encoding="utf-8")
+cl=(root/"submission/COVER_LETTER_JAE_V0_8.md").read_text(encoding="utf-8")
 s=json.loads((root/"NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
 pw=json.loads((root/"NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+nov=(root/"submission/NOVELTY_AUDIT_V0_6.md").read_text(encoding="utf-8")
+rev=(root/"submission/REVIEWER_ATTACK_MATRIX_V0_6.md").read_text(encoding="utf-8")
 
 assert s["decision"]["pass"] is True
 assert s["decision"]["strong_pass"] is True
@@ -44,7 +46,7 @@ for x in required:
 for x in ["strong PASS","Vermont","Massachusetts","route-gamma random-slope model did not converge","The prespecified primary gate therefore achieved **strong PASS**","Active stops | 1,769 | 425 | 0.374","All point estimates remained positive, but alpha and gamma were imprecise"]:
     if x not in si: raise SystemExit(f"missing SI requirement: {x}")
 
-for x in ["every one of 21 leave-one-state-out refits","State-specific slopes remained heterogeneous","retained 1,769 pairs whose drier survey occurred at least four days after rain","rather than as causal evidence"]:
+for x in ["We do not claim any of those phenomena as new.","localization of that response within a fixed spatial incidence matrix","every one of 21 leave-one-state-out refits","State-specific slopes remained heterogeneous","retained 1,769 pairs whose drier survey occurred at least four days after rain","rather than as causal evidence"]:
     if x not in cl: raise SystemExit(f"missing cover-letter requirement: {x}")
 
 forbidden=[
@@ -66,7 +68,7 @@ assert "single sampled state" in freeze["frozen_geographic_interpretation"]
 assert "not a causal mechanism identified" in freeze["frozen_mechanistic_interpretation"]
 
 handoff=(root/"submission/SUBMISSION_HANDOFF_RC7.md").read_text(encoding="utf-8")
-for x in ["release/jae-v1-rc7","submission/jae-v1","RC7 story freeze","post-freeze mechanistic-context receipt","protocol-window sensitivity summary","Protocol-window robustness"]:
+for x in ["release/jae-v1-rc7","submission/jae-v1","RC7 story freeze","post-freeze mechanistic-context receipt","protocol-window sensitivity summary","Protocol-window robustness","NOVELTY_AUDIT_V0_6.md","REVIEWER_ATTACK_MATRIX_V0_6.md","COVER_LETTER_JAE_V0_8.md"]:
     if x not in handoff: raise SystemExit(f"RC7 handoff drift: {x}")
 
 
@@ -79,7 +81,28 @@ assert pw_receipt["scientific_unfreeze"] is False
 assert pw_receipt["primary_result"]["decision"]=="strong_pass"
 assert "not confined" in pw_receipt["authorized_interpretation"]
 
+nov_receipt=json.loads((root/"submission/RC7_POSTFREEZE_NOVELTY_POSITIONING_RECEIPT_V0_1.json").read_text(encoding="utf-8"))
+assert nov_receipt["scientific_unfreeze"] is False
+
+for x in [
+    "Xie et al. (2017",
+    "Sugai et al. (2021",
+    "Sarker et al. (2022",
+    "Zhang et al. (2014",
+    "approximately **92% crosses at least one spatial and/or taxonomic matrix boundary**"
+]:
+    if x not in nov:
+        raise SystemExit(f"RC7 novelty audit drift: {x}")
+
+for x in [
+    "Xie et al. (2017) already showed lagged rainfall associations",
+    "The paper's novelty depends on a null beta-diversity result.",
+    "The rainfall signal could still be created entirely by the programme's 0–3 day rain-target scheduling."
+]:
+    if x not in rev:
+        raise SystemExit(f"RC7 reviewer matrix drift: {x}")
+
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_6.md").read_text(encoding="utf-8")
-for x in ["RC7_STORY_FREEZE_V0_1.json","[x] RC7 scientific-package QA","[x] anonymous v0.9 DOCX QA","## RC7 protocol-window robustness","NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json"]:
+for x in ["RC7_STORY_FREEZE_V0_1.json","[x] RC7 scientific-package QA","[x] anonymous v0.9 DOCX QA","## RC7 protocol-window robustness","NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json","NOVELTY_AUDIT_V0_6.md","REVIEWER_ATTACK_MATRIX_V0_6.md","COVER_LETTER_JAE_V0_8.md"]:
     if x not in checklist: raise SystemExit(f"RC7 checklist drift: {x}")
 print("RC7 geographic-generality scientific package QA: PASS")
