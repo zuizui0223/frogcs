@@ -1,0 +1,38 @@
+name: frogcs RC7 submission package QA
+
+on:
+  push:
+    branches:
+      - revision/rc6-geographic-generality-audit-v1
+    paths:
+      - "MANUSCRIPT_JAE_V0_9.md"
+      - "SUPPORTING_INFORMATION_JAE_RC7_V0_1.md"
+      - "NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json"
+      - "NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_REPAIR_V0_1_1.json"
+      - "NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_SUMMARY_V0_1.json"
+      - "submission/RC7_SCOPE_UNFREEZE_V0_1.json"
+      - "submission/COVER_LETTER_JAE_V0_7.md"
+      - "submission/JAE_PORTAL_CHECKLIST_V0_6.md"
+      - "submission/SUBMISSION_HANDOFF_RC7.md"
+      - "scripts/audit_rc7_generality_package.py"
+      - ".github/workflows/rc7_submission_package_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify frozen RC6 fallback remains valid
+        run: python scripts/audit_rc6_submission_package.py
+      - name: Verify RC7 geographic-generality package
+        run: python scripts/audit_rc7_generality_package.py
+      - name: Verify unchanged core figures
+        run: python scripts/verify_metacommunity_figure_hashes_v0_3.py
