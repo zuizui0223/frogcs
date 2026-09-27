@@ -197,8 +197,8 @@ def prepare():
                 raise RuntimeError(f"stop labels drift within stratum {key}")
             for st in rs:
                 pool.update(ss.get((rid, st), set()))
-        if not pool or stops is None:
-            raise RuntimeError(f"empty candidate pool {key}")
+        if stops is None:
+            raise RuntimeError(f"missing aligned stops {key}")
         pools[key] = sorted(pool)
         stops_by_stratum[key] = stops
 
@@ -261,6 +261,9 @@ def baseline_probs(kappa, pools, dry_ids, stops_by_key, ss):
         if n < 1:
             raise RuntimeError(f"no dry history {key}")
         stops = stops_by_key[key]
+        if len(species) == 0:
+            out[key] = np.zeros((0, 10), float)
+            continue
         idx = {sp:i for i,sp in enumerate(species)}
         y = np.zeros((len(species), 10), float)
         for rid in runs:
