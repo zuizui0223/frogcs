@@ -91,14 +91,14 @@ txt=(
 )
 ax.text(.04,.94,txt,va="top",ha="left",fontsize=11)
 ax.set_title("D  Design and robustness")
-fig.suptitle("Recent rainfall expands the acoustically active community across scales",fontsize=14)
+fig.suptitle("Rainfall-associated expansion enlarges the active community without detectable homogenization",fontsize=14)
 fig.tight_layout(rect=[0,0,1,.96])
 save(fig,"FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg")
 
 # Figure 2: incidence quadrants + local depth
 fig,axs=plt.subplots(1,3,figsize=(14,5.2))
 
-# A: conceptual 2 x 2 incidence matrix, aligned with species activation geometry.
+# A: conceptual 2 x 2 incidence matrix for the exact community decomposition.
 ax=axs[0]
 keys=[
     ["corner_expansion","taxonomic_deepening"],
@@ -152,7 +152,7 @@ ax.text(.02,.04,
         f"P = {depth['primary']['shared_active_stop_delta_species_mean']['p_value']:.3g}",
         transform=ax.transAxes,va="bottom")
 ax.set_title("C  Local taxonomic depth")
-fig.suptitle("Rainfall-associated community expansion occurs at matrix boundaries",fontsize=14)
+fig.suptitle("Most rainfall-associated incidence growth crosses matrix boundaries",fontsize=14)
 fig.tight_layout(rect=[0,0,1,.94])
 save(fig,"FIGURE_2_MATRIX_EXPANSION_V0_1.svg")
 

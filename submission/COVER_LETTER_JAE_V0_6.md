@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-Please consider our Research Article, **“Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change,”** for publication in *Journal of Animal Ecology*.
+Please consider our Research Article, **“Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization,”** for publication in *Journal of Animal Ecology*.
 
 Rainfall effects on frog calling are well known, and previous anuran studies have already examined short-term calling-assemblage composition, beta diversity and wetting-associated richness change. We therefore ask a narrower community-ecological question: **where does a short rainfall-associated increase enter a spatially replicated animal community?** Does it simply intensify activity at the same sites, activate additional local communities, deepen diversity within already-active sites, homogenize communities across space, or expand several dimensions simultaneously?
 

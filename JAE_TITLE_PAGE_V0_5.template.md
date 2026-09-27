@@ -1,6 +1,6 @@
 # Journal of Animal Ecology title page — human metadata template v0.5
 
-**Manuscript title:** Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change
+**Manuscript title:** Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization
 
 **Article type:** Research Article
 

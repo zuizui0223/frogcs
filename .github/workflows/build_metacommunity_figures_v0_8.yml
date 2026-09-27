@@ -1,3 +1,4 @@
+# final expansion framing rebuild
 # post-placebo two-figure package
 name: build JAE v0.8 metacommunity figures
 
@@ -8,6 +9,7 @@ on:
       - revision/species-activation-geometry-repeatability-v1
       - revision/activation-geometry-hierarchical-framework-v1
       - revision/activation-geometry-placebo-gate-v1
+      - revision/rc6-expansion-without-homogenization-framing-v1
     paths:
       - "scripts/build_metacommunity_figures_v0_8.py"
       - "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json"

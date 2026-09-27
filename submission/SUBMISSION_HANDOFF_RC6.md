@@ -13,7 +13,7 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 
 ## Article
 
-**Title:** Rainfall-associated expansion of frog active communities spans spatial and taxonomic dimensions without detectable beta-diversity change
+**Title:** Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without detectable homogenization
 
 **Target:** Journal of Animal Ecology — Research Article
 
@@ -34,6 +34,8 @@ The original synthesis branch `revision/community-metacommunity-synthesis-v1` re
 - supporting information: `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`
 
 ## Core ecological story
+
+**Current framing:** expansion without detectable homogenization.
 
 1. **Spatial footprint expands:** rain contrast predicts +0.384 active stops.
 2. **Local alpha rises:** +0.079 species per active stop.
