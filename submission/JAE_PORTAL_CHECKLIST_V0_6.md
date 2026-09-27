@@ -33,12 +33,27 @@
 - [x] no claim of positive effect in every state
 - [x] no claim of continental universality
 
+## RC7 protocol-window robustness
+
+- [x] protocol-window contract frozen before endpoint readback
+- [x] primary subset: drier survey >=4 days since rain
+- [x] primary strong PASS
+- [x] 1,769 pairs / 425 routes / 20 states retained
+- [x] active-stop 95% CI remains positive
+- [x] local-alpha 95% CI remains positive
+- [x] route-gamma 95% CI remains positive
+- [x] stricter both-outside subset reported as diagnostic only
+- [x] no claim that protocol selection is eliminated
+- [x] no rainfall-causality claim
+
 ## Current RC7 files
 
 - [x] `MANUSCRIPT_JAE_V0_9.md`
 - [x] `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md`
 - [x] `submission/COVER_LETTER_JAE_V0_7.md`
 - [x] `NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_SUMMARY_V0_1.json`
+- [x] `NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json`
+- [x] `submission/RC7_POSTFREEZE_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json`
 - [x] `submission/RC7_SCOPE_UNFREEZE_V0_1.json`
 - [x] `submission/RC7_STORY_FREEZE_V0_1.json`
 - [x] RC7 scientific-package QA
