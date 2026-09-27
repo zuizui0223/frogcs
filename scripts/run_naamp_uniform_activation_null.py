@@ -174,13 +174,18 @@ def prepare():
     sampled, ss = spatial.stop_matrix(raw, eligible)
     pairs = base.pair_runs(runs, route_sets).copy().reset_index(drop=True)
 
+    pair_keys = {
+        (str(p.State), str(p.RouteNumber), str(p.RunNumber))
+        for p in pairs.itertuples(index=False)
+    }
     run_rows = {}
     strata_runs = defaultdict(list)
     for r in runs.itertuples(index=False):
         rid = str(r.RunID)
         key = (str(r.State), str(r.RouteNumber), str(r.RunNumber))
         run_rows[rid] = key
-        strata_runs[key].append(rid)
+        if key in pair_keys:
+            strata_runs[key].append(rid)
 
     pools = {}
     stops_by_stratum = {}
