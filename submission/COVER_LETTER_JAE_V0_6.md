@@ -16,7 +16,7 @@ Species-level follow-ups were used as falsification tests rather than promoted i
 
 The manuscript is explicitly limited to the **behaviourally realized acoustic community**. We do not infer occupancy change, colonization, extinction, demographic connectivity among stops or rainfall causality. The original programme-level rainfall endpoint was frozen before readback; the community-scale decompositions were developed subsequently, and each was separately versioned and frozen before its own endpoint readback. Secondary and rejected mechanism tests are retained transparently in Supporting Information rather than used to retune the main story.
 
-We believe the study fits *Journal of Animal Ecology* because it uses a familiar environmental cue to reveal a less familiar multiscale community response: a short pulse can expand the observed animal community across both sites and species across both sites and species without a detectable collapse of spatial beta diversity.
+We believe the study fits *Journal of Animal Ecology* because it uses a familiar environmental cue to reveal a less familiar multiscale community response: recent-rain conditions are associated with simultaneous expansion across sites and species without a detectable collapse of spatial beta diversity.
 
 Sincerely,
 
