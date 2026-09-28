@@ -8,12 +8,12 @@ This audit covers requirements that can be verified before final human author me
 ## Automated requirements
 
 - [x] Research Article main-document proxy remains below the 8,500-word limit.
-  - current manuscript markdown: ~6,982 words
+  - current manuscript markdown: ~6,935 words
   - separate title-page template: ~113 words
-  - combined current proxy: ~7,095 words
+  - combined current proxy: ~7,048 words
   - Supporting Information excluded from the journal word count
 - [x] English abstract <=350 words.
-  - current: ~340 words
+  - current: ~293 words
 - [x] Abstract uses numbered factual statements.
   - current: 5 numbered statements
 - [x] Keywords <=8 and alphabetically ordered.
