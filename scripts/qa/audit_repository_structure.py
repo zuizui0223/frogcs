@@ -147,14 +147,17 @@ for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
         if bad:stale[str(p.relative_to(ROOT))]=sorted(bad)
 assert not stale,stale
 
-# Active workflows may not reference archived filenames.
-archived_names={p.name for p in archive.rglob("*") if p.is_file()}
-bad_archive_refs={}
+# Active workflow file references must resolve to live paths.
+missing_refs={}
 for wf in active_workflows.glob("*.yml"):
     text=wf.read_text(encoding="utf-8")
-    hits=sorted(name for name in archived_names if name in text)
-    if hits:bad_archive_refs[wf.name]=hits
-assert not bad_archive_refs,bad_archive_refs
+    refs=set()
+    refs.update(re.findall(r'(scripts/[A-Za-z0-9_./-]+\.py)',text))
+    refs.update(re.findall(r'(provenance/[A-Za-z0-9_./-]+\.json)',text))
+    refs.update(re.findall(r'(figures_ecology_v[0-9_]+/[A-Za-z0-9_./-]+\.svg)',text))
+    bad=sorted(ref for ref in refs if not (ROOT/ref).exists())
+    if bad:missing_refs[wf.name]=bad
+assert not missing_refs,missing_refs
 
 # Active code/workflows may not use bare uppercase JSON paths (repo-root provenance).
 pat=re.compile(r'(?<![/A-Za-z0-9_.-])([A-Z][A-Z0-9_]*(?:_V[0-9_]+)?\.json)')
