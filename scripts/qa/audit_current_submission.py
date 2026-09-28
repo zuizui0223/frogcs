@@ -86,6 +86,8 @@ legacy_patterns=[
 for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
     paths=[base] if base.is_file() else list(base.rglob("*"))
     for p in paths:
+        if p.resolve()==Path(__file__).resolve():
+            continue
         if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml",".md",".json",".txt",".cff"}: continue
         text=p.read_text(encoding="utf-8")
         hits=sorted({m.group(0) for pat in legacy_patterns for m in pat.finditer(text)})
@@ -106,6 +108,8 @@ bare_pat=re.compile(r'(?<![/A-Za-z0-9_.-])([A-Z][A-Z0-9_]*(?:CONTRACT|SUMMARY|RE
 bare={}
 for base in [scripts,active_workflows]:
     for p in base.rglob("*"):
+        if p.resolve()==Path(__file__).resolve():
+            continue
         if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml"}: continue
         hits=sorted(set(bare_pat.findall(p.read_text(encoding="utf-8"))))
         if hits: bare[str(p.relative_to(ROOT))]=hits
