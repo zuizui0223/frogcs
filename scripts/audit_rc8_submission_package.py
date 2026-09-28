@@ -16,7 +16,7 @@ scope=json.loads((root/"submission/RC8_SCOPE_UNFREEZE_V0_1.json").read_text(enco
 freeze=json.loads((root/"submission/RC8_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
 readme=(root/"README.md").read_text(encoding="utf-8")
 title_page=(root/"JAE_TITLE_PAGE_V0_6.template.md").read_text(encoding="utf-8")
-metadata_template=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_4.yml").read_text(encoding="utf-8")
+metadata_template=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml").read_text(encoding="utf-8")
 citation_template=(root/"submission/CITATION_V0_3.cff.template").read_text(encoding="utf-8")
 handoff=(root/"submission/SUBMISSION_HANDOFF_RC8.md").read_text(encoding="utf-8")
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_7.md").read_text(encoding="utf-8")
