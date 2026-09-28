@@ -1,4 +1,4 @@
-# Supporting Information — JAE RC11 v1.3
+# Supporting Information
 
 ## Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts
 
@@ -14,16 +14,16 @@ Pairwise Sørensen stability is retained as secondary bounded context rather tha
 
 Species-trait and response-trait analyses are retained here as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait.
 
-The analyses below were frozen and versioned before their own endpoint readback where applicable. Their negative or non-headline results are retained explicitly to prevent outcome-dependent mechanism switching.
+The analyses below were frozen and versioned before their own results were inspected where applicable. Their negative or non-headline results are retained explicitly to prevent outcome-dependent mechanism switching.
 
 ---
 
 ## S1. Analysis hierarchy and provenance
 
-The original programme-level rainfall endpoint was frozen before effect readback. The metacommunity, matrix, functional and response-trait analyses were developed subsequently as post-opening mechanistic/community extensions.
+The original programme-level rainfall endpoint was frozen before the effect estimate was inspected. The metacommunity, matrix, functional and response-trait analyses were developed subsequently as post-opening mechanistic/community extensions.
 
 For those extensions, the repository preserves:
-- versioned contracts written before endpoint readback;
+- versioned contracts written before results were inspected;
 - deterministic source hashes or pinned source versions;
 - exact-consecutive-year sensitivities where applicable;
 - exact algebraic identities for matrix decompositions;
@@ -62,12 +62,8 @@ A stricter exact-consecutive-year dry-anchor sensitivity contained 289 pairs:
 | days 2–3 | +0.416 | 0.091–0.741 | .012 |
 | days 4–7 | +0.257 | -0.197–0.710 | .267 |
 
-Therefore the association is not restricted to the calendar day of rain, but the data do not cleanly distinguish gradual post-rain decay from a contrast between recent-rain conditions and a sparse long-dry reference. RC10 does not use “week-long pulse” as a headline inference.
+Therefore the association is not restricted to the calendar day of rain, but the data do not cleanly distinguish gradual post-rain decay from a contrast between recent-rain conditions and a sparse long-dry reference. We do not use “week-long pulse” as a headline inference.
 
-Authoritative files:
-- `NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json`
-- `NAAMP_RAINFALL_PULSE_TIMESCALE_SUMMARY_V0_1.json`
-- `scripts/run_naamp_rainfall_pulse_timescale.py`
 
 ---
 
@@ -77,7 +73,7 @@ Matched wet–dry comparisons were also used to ask whether route-level composit
 
 The primary turnover coefficient was positive but imprecise (P = .104). In the exact-consecutive-year sensitivity, turnover increased with rainfall contrast (P = .0085). Nestedness-resultant change was unsupported in both the primary and exact-year analyses.
 
-Because the primary turnover endpoint was not supported, RC10 does not headline compositional reassembly. These results are secondary to the within-run spatial decomposition of active stops, alpha, gamma and species × stop incidences.
+Because the primary turnover endpoint was not supported, We therefore do not headline compositional reassembly. These results are secondary to the within-run spatial decomposition of active stops, alpha, gamma and species × stop incidences.
 
 ---
 
@@ -105,12 +101,8 @@ Exact-consecutive-year sensitivity:
 - 95% CI = -2.352 to 2.789;
 - P = .868.
 
-The prespecified buffering prediction was therefore unsupported. Response diversity is present at the species level, but RC10 does not claim that it stabilizes route-level active richness.
+The prespecified buffering prediction was therefore unsupported. Response diversity is present at the species level, but We do not claim that it stabilizes route-level active richness.
 
-Authoritative files:
-- `NAAMP_RESPONSE_DIVERSITY_BUFFERING_CONTRACT_V0_1.json`
-- `NAAMP_RESPONSE_DIVERSITY_BUFFERING_SUMMARY_V0_1.json`
-- `scripts/run_naamp_response_diversity_buffering.py`
 
 ---
 
@@ -120,16 +112,12 @@ Authoritative files:
 
 An initial pooled post-opening analysis suggested that smaller-bodied species had more positive wet-associated responses. Because body size is phylogenetically structured and the family-adjusted model was unstable, subsequent family-aware validation was treated as the stronger gate. The final family-stratified permutation did not authorize body size as the mechanism (P = .314).
 
-RC9 therefore does not claim that body size explains species rainfall responses.
+We therefore do not claim that body size explains species rainfall responses.
 
 ### S5.2 Coarse hydroperiod coding
 
 A prespecified ATraiU hydroperiod test was nonestimable because all 23 covered species were coded as using both temporary and permanent breeding waters. The available coarse binary coding therefore generated no among-species contrast.
 
-Authoritative files:
-- `NAAMP_HYDROPERIOD_FILTER_CONTRACT_V0_1.json`
-- `NAAMP_HYDROPERIOD_FILTER_SUMMARY_V0_1.json`
-- `scripts/run_naamp_hydroperiod_filter.py`
 
 The full receipt was produced in workflow run 36149886621 and is traceable through the artifact ID and digest stored in the summary.
 
@@ -152,13 +140,6 @@ Two separately versioned breeding-season encodings were evaluated and neither su
 
 The two null implementations reinforce the conclusion that breeding-season breadth, as available in the frozen transport, does not explain species rainfall-response differences.
 
-Authoritative files:
-- `NAAMP_BREEDING_SEASON_FILTER_CONTRACT_V0_1.json`
-- `NAAMP_BREEDING_SEASON_FILTER_SUMMARY_V0_1.json`
-- `scripts/run_naamp_breeding_season_filter.py`
-- `NAAMP_BREEDING_SEASON_BREADTH_CONTRACT_V0_1.json`
-- `NAAMP_BREEDING_SEASON_BREADTH_SUMMARY_V0_1.json`
-- `scripts/run_naamp_breeding_season_breadth.py`
 
 ### S5.4 Baseline recurrence and seasonal concentration
 
@@ -171,10 +152,6 @@ Across 28 cross-period matched species:
 
 Neither supplied a supported mechanism.
 
-Authoritative files:
-- `NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json`
-- `NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_SUMMARY_V0_1.json`
-- `scripts/run_naamp_crossperiod_episodic_recruitment.py`
 
 ### S5.5 Historical route dryness
 
@@ -193,10 +170,6 @@ Exact-consecutive-year sensitivity:
 
 The prespecified context-dependent amplification hypothesis was unsupported.
 
-Authoritative files:
-- `NAAMP_CONTEXT_DEPENDENT_PULSE_CONTRACT_V0_1.json`
-- `NAAMP_CONTEXT_DEPENDENT_PULSE_SUMMARY_V0_1.json`
-- `scripts/run_naamp_context_dependent_pulse.py`
 
 ### S5.6 Compositional memory
 
@@ -209,13 +182,6 @@ The separate frozen estimability audit found only:
 
 No candidate construction reached the required background gate. The memory-above-background endpoint is therefore **nonestimable**, not a negative effect estimate.
 
-Authoritative files:
-- `NAAMP_TWO_PHASE_COMMUNITY_MEMORY_CONTRACT_V0_1.json`
-- `NAAMP_TWO_PHASE_COMMUNITY_MEMORY_SUMMARY_V0_1.json`
-- `scripts/run_naamp_two_phase_community_memory.py`
-- `DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_CONTRACT_V0_1.json`
-- `DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_SUMMARY_V0_1.json`
-- `scripts/audit_dry_dry_background_estimability.py`
 
 ### S5.7 Early spatial niche breadth
 
@@ -232,10 +198,6 @@ The observed pooled direction was opposite to the prediction, and the family-str
 
 The opposite-direction pooled association is therefore not promoted as a mechanism.
 
-Authoritative files:
-- `NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_CONTRACT_V0_1.json`
-- `NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_SUMMARY_V0_1.json`
-- `scripts/run_naamp_spatial_niche_breadth_response.py`
 
 ### S5.8 Baseline spatial heterogeneity
 
@@ -252,11 +214,6 @@ In the exact-consecutive-year sensitivity (365 pairs, 91 routes), the gamma inte
 - P = .165.
 
 A secondary alpha interaction was negative in both the full validation (beta = -0.232, P = .0083) and exact-year subset (beta = -0.226, P = .0284). Because these directions were opposite to the frozen primary prediction, they are retained as secondary observations rather than promoted as a mechanism.
-
-Authoritative files:
-- `NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json`
-- `NAAMP_LATENT_SPATIAL_HETEROGENEITY_SUMMARY_V0_1.json`
-- `scripts/run_naamp_latent_spatial_heterogeneity.py`
 
 
 ### S5.9 Functional trait space and rainfall-response alignment
@@ -291,11 +248,6 @@ Among 24 response-eligible species with complete functional vectors, pairwise fu
 
 These analyses do not identify a conventional life-history trait mechanism for the rainfall-associated community expansion.
 
-Authoritative files:
-- `NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_SUMMARY_V0_1.json`
-- `NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_SUMMARY_V0_1.json`
-- `scripts/run_naamp_functional_community_expansion.py`
-- `scripts/run_naamp_functional_response_decoupling.py`
 
 ### S5.10 Within-genus response heterogeneity
 
@@ -314,10 +266,6 @@ Examples:
 
 Broad genus identity therefore does not fully explain species-response heterogeneity. This is an operational genus decomposition rather than a phylogenetic comparative analysis.
 
-Authoritative files:
-- `NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json`
-- `NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_SUMMARY_V0_1.json`
-- `scripts/run_naamp_species_response_within_genus.py`
 
 ---
 
@@ -396,13 +344,6 @@ Accordingly:
 - geometry repeatability, route transfer and magnitude comparisons are retained here for auditability;
 - no attempt is made to residualize, retune or redefine geometry after the failed gate.
 
-Authoritative files:
-- `NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json`
-- `NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_SUMMARY_V0_1.json`
-- `NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_SUMMARY_V0_1.json`
-- `NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json`
-- `NAAMP_ACTIVATION_GEOMETRY_PLACEBO_SUMMARY_V0_1.json`
-- `scripts/run_naamp_activation_geometry_placebo_gate.py`
 
 ---
 
@@ -439,12 +380,6 @@ Thus the main current result is broader than “more active stops become multisp
 
 Both results should be retained because they answer different estimands. The repository history makes that distinction auditable rather than treating the earlier null as if it never existed.
 
-Authoritative files:
-- `MANUSCRIPT_JAE_V0_4.md`
-- `NAAMP_MECHANISM_DECOMPOSITION_RECEIPT_V0_1.json`
-- `NAAMP_WITHIN_ACTIVE_DEPTH_SUMMARY_V0_1.json`
-- `scripts/run_naamp_mechanism_decomposition.py`
-- `scripts/run_naamp_within_active_depth_decomposition.py`
 
 ---
 
@@ -467,16 +402,15 @@ The frozen AmphiBIO functional panel covers body size, clutch size, offspring si
 
 ## S9. Endpoint policy
 
-The activation-geometry placebo gate remains the final species-trait falsification for RC10. It failed, so activation geometry is demoted rather than redefined.
+The activation-geometry placebo gate remains the final species-trait falsification for the species-trait analyses. It failed, so activation geometry is demoted rather than redefined.
 
 No additional endpoint search is authorized to rescue activation geometry or replace it with another post-opening species trait in this manuscript.
 
 Future mechanistic work should use independent data or independently sourced proximal traits and begin from a new frozen hypothesis family. The current article remains focused on the multiscale geometry of community expansion, matrix fill and beta diversity.
 
 
-## Geographic generality audit (RC7 pre-submission extension)
+## Geographic generality audit
 
-This audit was added after the RC6 story freeze in response to an explicit pre-submission request to test geographic generality. The contract was frozen before endpoint readback. It did not search for a new ecological response; it tested whether the three existing headline responses depended on a single state.
 
 ### Decision rule
 
@@ -545,7 +479,7 @@ A secondary State random-intercept/random-slope model converged for active stops
 
 ## Protocol-window sensitivity
 
-The NAAMP national protocol specified that Gulf Coast and Great Plains routes should be conducted within three days of rainfall. After identifying this design feature, we froze a sensitivity contract before endpoint readback to test whether the three RC7 headline associations were confined to comparisons entirely within that 0–3 day target window.
+The NAAMP national protocol specified that Gulf Coast and Great Plains routes should be conducted within three days of rainfall. After identifying this design feature, we froze a sensitivity contract before results were inspected to test whether the three headline associations were confined to comparisons entirely within that 0–3 day target window.
 
 ### Primary sensitivity: drier survey at least four days after rain
 
@@ -571,14 +505,14 @@ We next required `wet_days_since_rain >= 4`; because the wetter member necessari
 
 All point estimates remained positive, but alpha and gamma were imprecise in this much smaller subset. This diagnostic was not assigned a PASS criterion and is not used to infer a long-duration rainfall effect.
 
-**Interpretive boundary.** The primary sensitivity shows that the multiscale RC7 association is not confined to comparisons occurring entirely inside the national protocol's 0–3 day rain-target window. It does not eliminate programme scheduling, time-varying confounding, imperfect detection or other observational limitations, and it does not establish rainfall causality.
+**Interpretive boundary.** The primary sensitivity shows that the multiscale association is not confined to comparisons occurring entirely inside the national protocol's 0–3 day rain-target window. It does not eliminate programme scheduling, time-varying confounding, imperfect detection or other observational limitations, and it does not establish rainfall causality.
 
 
-## RC8 inferential repair: uniform-activation null and Sørensen practical equivalence
+## Pre-submission inferential repair: uniform-activation null and Sørensen practical equivalence
 
 ### Uniform-activation null
 
-The four-way incidence decomposition is an accounting identity, and a high boundary-crossing fraction can arise mechanically whenever overall activation increases. To provide an explicit comparator, RC8 froze a uniform-activation null before successful endpoint readback.
+The four-way incidence decomposition is an accounting identity, and a high boundary-crossing fraction can arise mechanically whenever overall activation increases. To provide an explicit comparator, we defined a uniform-activation null before final results were inspected.
 
 Within each matched State × RouteNumber × RunNumber stratum, the candidate species pool was the union of species detected in any eligible run. Baseline species × StopNumber acoustic-detection propensities were estimated from unique drier-member runs only, with hierarchical shrinkage from the stratum mean to species means and then to species × stop cells. The primary shrinkage strength was κ = 2; κ = 1 and 5 were fixed sensitivities.
 
@@ -608,24 +542,17 @@ Thus the important result is not that most gains lie outside the pre-existing co
 
 A secondary κ = 2 simulation compared pairwise Sørensen slopes. Uniform activation produced a mean rainfall-contrast slope of -0.00615 with a 95% null interval of -0.0130 to +0.00178. The observed slope was -0.00049, at the 91.5th percentile of that null distribution and still inside its 95% interval. Therefore the uniform-null rejection comes from incidence allocation, not from an unusual beta-diversity response.
 
-Three implementation repairs were versioned before successful endpoint readback:
+Three implementation repairs were versioned before final results were inspected:
 1. separation of the four-component geometry gate from the conditional Sørensen estimand;
 2. retention of matched strata with empty candidate pools as exact zero-incidence matrices;
 3. restriction of candidate-pool construction to strata represented in the frozen 4,236-pair dataset.
 
 None changed the decision threshold or endpoint family.
 
-Authoritative files:
-- `NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_3.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
-- `scripts/run_naamp_uniform_activation_null.py`
 
 ### Pairwise Sørensen practical equivalence
 
-Because the conventional Sørensen coefficient had already been opened in RC7, this was explicitly defined as a **post hoc bounded robustness test**, not a preregistered equivalence analysis. Before the equivalence endpoint was read, the practical-equivalence margin was fixed at ±0.025 dissimilarity units per unit log-rainfall contrast.
+Because the conventional Sørensen coefficient had already been inspected, this was explicitly defined as a **post hoc bounded robustness test**, not a preregistered equivalence analysis. Before the equivalence endpoint was read, the practical-equivalence margin was fixed at ±0.025 dissimilarity units per unit log-rainfall contrast.
 
 Primary analysis:
 - n = 4,007 pairs / 576 routes;
@@ -641,17 +568,12 @@ Exact-consecutive-year sensitivity:
 
 The equivalence claim applies only to the pairwise Sørensen rainfall-contrast slope within this fixed margin. It does not imply exact invariance or equivalence of every beta-diversity metric.
 
-Authoritative files:
-- `NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json`
-- `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
-- `scripts/run_naamp_sorensen_equivalence.py`
-
 
 ## Cross-dataset consistency of active-unit taxonomic depth
 
 ### Rationale and frozen decision rule
 
-After RC8 had been frozen, we explicitly reopened one response component for an estimand-aligned comparison: **taxonomic depth within an acoustic sampling unit that was already active**. This was chosen because it has the same ecological interpretation in standardized NAAMP route stops and FrogID recordings. Earlier FrogID analyses had already shown a rain-associated ≥2-species signal, so the continuous-depth analysis is treated as a **cross-dataset consistency check**, not an independent or blinded validation. The unfreeze, endpoint definition and decision tree were versioned before the Australian continuous-depth endpoint was read.
+After the matrix analyses had been defined, we explicitly reopened one response component for an estimand-aligned comparison: **taxonomic depth within an acoustic sampling unit that was already active**. This was chosen because it has the same ecological interpretation in standardized NAAMP route stops and FrogID recordings. Earlier FrogID analyses had already shown a rain-associated ≥2-species signal, so the continuous-depth analysis is treated as a **cross-dataset consistency check**, not an independent or blinded validation. The unfreeze, endpoint definition and decision tree were versioned before the Australian continuous-depth endpoint was read.
 
 The North American side was not refit. Its already-authorized result was the rainfall-contrast coefficient for mean species richness per active NAAMP stop:
 
@@ -712,7 +634,7 @@ The frozen cross-system decision therefore achieved **STRONG PASS**.
 
 ### Deeper multiplicity endpoints
 
-Two secondary endpoints were specified before readback but had no role in the pass/fail gate.
+Two secondary endpoints were specified before results were inspected but had no role in the pass/fail gate.
 
 For recordings containing at least three species:
 
@@ -744,24 +666,16 @@ Not authorized:
 - demographic recruitment, occupancy change or abundance change;
 - replication of the North American four-component spatial matrix geometry in FrogID.
 
-FrogID lacks fixed ten-stop spatial matrices, so the uniform-activation geometry test introduced in RC8 remains a specifically North American analysis.
-
-Authoritative files:
-
-- `submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json`
-- `CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json`
-- `submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json`
-- `CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
-- `scripts/run_crosscontinental_active_depth.py`
+FrogID lacks fixed ten-stop spatial matrices, so the uniform-activation geometry test described above remains a specifically North American analysis.
 
 
 ---
 
-## RC10 persistence-preserving uniform-activation stress test
+## Persistence-preserving uniform-activation stress test
 
 ### Motivation
 
-The primary uniform-activation null estimates dry-history species × stop probabilities with hierarchical shrinkage toward species means. A reviewer-facing concern is that this may make stable cells too exchangeable and thereby inflate expected within-core rearrangement. RC10 therefore added one separately frozen stress test before endpoint readback. No observed component definition, matched sample, covariate specification or magnitude-matching target was changed.
+The primary uniform-activation null estimates dry-history species × stop probabilities with hierarchical shrinkage toward species means. A reviewer-facing concern is that this may make stable cells too exchangeable and thereby inflate expected within-core rearrangement. We therefore added one separately specified stress test before results were inspected. No observed component definition, matched sample, covariate specification or magnitude-matching target was changed.
 
 ### Frozen construction
 
@@ -798,13 +712,6 @@ Thus stronger preservation of pair-specific dry cell identity does not explain t
 
 **Interpretive boundary:** rejection shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. It does not identify a unique biological mechanism. Preferential recruitment of combinations rare under dry conditions, including activation of temporary or intermittently suitable wet sites, is a plausible discussion-level hypothesis only.
 
-Authoritative files:
-
-- `submission/RC10_SCOPE_UNFREEZE_V0_1.json`
-- `NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json`
-- `NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
-- `submission/RC10_STORY_DECISION_TREE_V0_1.json`
-- `scripts/run_naamp_persistence_preserving_null.py`
 
 ---
 
@@ -812,7 +719,7 @@ Authoritative files:
 
 ### Geographic generality audit
 
-After the RC6 scientific story had been frozen, we conducted an explicitly versioned pre-submission audit of geographic generality because broad spatial coverage does not by itself establish that a pooled effect is independent of one influential region. The audit contract and an estimability repair were committed before endpoint readback. The three already-authorized headline responses—active-stop number, local alpha richness and route gamma richness—were refit 21 times, each time omitting one state while retaining the original covariates, State and RunNumber fixed effects for the remaining observations, and route-clustered covariance. The prespecified PASS criterion required all leave-one-state-out rainfall-contrast coefficients to remain positive for all three responses; strong PASS required every corresponding 95% confidence interval to remain above zero.
+After the primary scientific story had been defined, we conducted an explicitly versioned pre-submission audit of geographic generality because broad spatial coverage does not by itself establish that a pooled effect is independent of one influential region. The audit contract and an estimability repair were committed before results were inspected. The three already-authorized headline responses—active-stop number, local alpha richness and route gamma richness—were refit 21 times, each time omitting one state while retaining the original covariates, State and RunNumber fixed effects for the remaining observations, and route-clustered covariance. The prespecified PASS criterion required all leave-one-state-out rainfall-contrast coefficients to remain positive for all three responses; strong PASS required every corresponding 95% confidence interval to remain above zero.
 
 We also estimated state-specific slopes using the same covariates except the State term. These slopes were descriptive and were not used for the PASS decision; states for which route-clustered inference was not estimable were explicitly flagged. A secondary State random-intercept/random-slope model quantified heterogeneity where it converged. No state-specific significance threshold was used as a criterion for generality.
 
@@ -828,16 +735,12 @@ For each eligible run we calculated the fraction of sampled stops with recorded 
 
 ### Same-observer sensitivity
 
-Observer turnover could in principle create apparent recruitment if different observers differ in their ability to detect infrequently calling species. We therefore first audited the frozen public NAAMP run schema without inspecting outcome contrasts. The field `ObserverTrackingID` was nonempty in all 21,934 run records and contained 2,301 unique identifiers. We then froze a same-observer reviewer-robustness contract before endpoint readback and restricted the existing wetter–drier matched design to pairs in which both runs had the same nonempty `ObserverTrackingID`.
+Observer turnover could in principle create apparent recruitment if different observers differ in their ability to detect infrequently calling species. We therefore first audited the frozen public NAAMP run schema without inspecting outcome contrasts. The field `ObserverTrackingID` was nonempty in all 21,934 run records and contained 2,301 unique identifiers. We then froze a same-observer reviewer-robustness contract before results were inspected and restricted the existing wetter–drier matched design to pairs in which both runs had the same nonempty `ObserverTrackingID`.
 
 The restriction retained **3,152 of 4,236 pairs (74.4%)**, spanning **500 routes and 542 observer identifiers**. All three headline rainfall-contrast coefficients remained positive with 95% confidence intervals excluding zero: active-stop number β = **0.352** (95% CI 0.179–0.525), richness per active stop β = **0.098** (0.028–0.169; 3,071 estimable pairs), and route richness β = **0.319** (0.171–0.466).
 
 The matrix geometry was also retained. The observed component shares were **34.6% corner expansion, 12.8% spatial spread, 44.6% taxonomic deepening and 8.0% within-core rearrangement**, giving **92.0% boundary crossing**. Under the primary magnitude-matched uniform-activation null (κ = 2), expected boundary crossing was **80.3%** (95% interval 73.0–87.1%) and the four-component omnibus was rejected (Monte Carlo P = 0.001). The same conclusion held at κ = 1 and 5 (both P = 0.001); observed boundary crossing remained above every frozen 95% interval.
 
-The persistence-preserving stress test gave the same result. At the primary 0.75 dry-state anchor, expected boundary crossing was **79.1%** (73.3–84.9%) versus 92.0% observed, with omnibus P = 0.001. Anchors 0.50, 0.75 and 0.90 all rejected the comparator (P ≤ 0.002), and the observed boundary share exceeded every corresponding 95% interval. The prefrozen classification was therefore **observer robust**. This analysis does not establish that observers are interchangeable, but it shows that between-observer turnover is not required to generate the RC10 expansion or boundary-allocation result within the large same-observer subset.
+The persistence-preserving stress test gave the same result. At the primary 0.75 dry-state anchor, expected boundary crossing was **79.1%** (73.3–84.9%) versus 92.0% observed, with omnibus P = 0.001. Anchors 0.50, 0.75 and 0.90 all rejected the comparator (P ≤ 0.002), and the observed boundary share exceeded every corresponding 95% interval. The prefrozen classification was therefore **observer robust**. This analysis does not establish that observers are interchangeable, but it shows that between-observer turnover is not required to generate the expansion or boundary-allocation result within the large same-observer subset.
 
-Frozen and durable records:
-- `NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
-- `NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
-- `scripts/run_naamp_same_observer_robustness.py`
 
