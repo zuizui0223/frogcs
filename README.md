@@ -1,4 +1,4 @@
-# Frog active-community response to rainfall — JAE RC8 reproducibility package
+# Frog active-community response to rainfall — JAE RC9 reproducibility package
 
 Current Journal of Animal Ecology candidate:
 
@@ -9,38 +9,73 @@ Current Journal of Animal Ecology candidate:
 The canonical submission state is aligned across:
 
 - `main`
-- `release/jae-v1-rc8`
+- `release/jae-v1-rc9`
 - `submission/jae-v1`
 
 Current article surfaces:
 
-- manuscript: `MANUSCRIPT_JAE_V1_0.md`
-- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`
-- cover letter: `submission/COVER_LETTER_JAE_V0_10.md`
-- novelty audit: `submission/NOVELTY_AUDIT_V0_7.md`
-- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
-- submission handoff: `submission/SUBMISSION_HANDOFF_RC8.md`
-- story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
+- manuscript: `MANUSCRIPT_JAE_V1_1.md`
+- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC9_V0_1.md`
+- cover letter: `submission/COVER_LETTER_JAE_V0_12.md`
+- novelty audit: `submission/NOVELTY_AUDIT_V0_9.md`
+- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_9.md`
+- submission handoff: `submission/SUBMISSION_HANDOFF_RC9.md`
+- story freeze: `submission/RC9_STORY_FREEZE_V0_1.json`
 - current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md`
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
 
-**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`.
+**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC9_V0_1.md`.
 
-`SUPPORTING_INFORMATION_JAE_RC6_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` remain repository audit history only and are not current submission authority.
+`SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`, `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md` remain repository audit history only and are not current submission authority.
 
-RC1–RC7 release branches are intentionally retained as immutable audit/fallback history.
+RC1–RC8 release branches are intentionally retained as immutable audit/fallback history.
 
 ## Question spine
 
-RC8 is organized around three linked questions:
+RC9 is organized around three linked questions:
 
-1. **Q1 — expansion:** do recent-rain conditions expand the behaviourally realized community along both spatial and taxonomic axes?
+1. **Q1 — expansion and external consistency:** do recent-rain conditions expand the behaviourally realized community, and is taxonomic deepening within already-active units directionally consistent in independent North American and Australian systems?
 2. **Q2 — structure:** is the resulting species × site allocation distinguishable from a magnitude-matched uniform activation process? This is the central structural test.
 3. **Q3 — differentiation:** does expansion materially erode local pairwise-Sørensen differentiation?
 
 The general distinction is **community amplification versus community recruitment**: environmental pulses can recruit previously inactive spatial and taxonomic participation beyond what uniform amplification predicts while retaining local differentiation.
+
+
+## Cross-continental active-unit taxonomic deepening
+
+RC9 adds a frozen external validation of the most transportable response component: **species richness beyond the first species within an acoustic unit that is already active**.
+
+North America:
+- NAAMP active-stop richness rainfall-contrast β = **+0.0794**;
+- 95% CI = **+0.0231 to +0.1357**.
+
+Australia:
+- **40,754** expert-validated FrogID recordings;
+- excess richness = species richness − 1;
+- β per 1 SD increasing log dry-spell exposure = **−0.0818**;
+- 95% CI = **−0.0982 to −0.0654**;
+- recorder-clustered and within-ERA5-cell sensitivities are also fully negative.
+
+Secondary Australian depth endpoints agree:
+- ≥3-species recording OR = **0.846** per 1 SD increasing dry-spell exposure;
+- excess richness beyond two species β = **−0.0483**.
+
+Frozen decision: **STRONG PASS**.
+
+Authorized interpretation:
+
+> **Rainfall-associated taxonomic deepening within already-active acoustic units is directionally consistent across independent North American and Australian monitoring systems.**
+
+This does **not** authorize worldwide universality, pooled effect sizes, identical mechanisms across continents or replication of the fixed ten-stop NAAMP matrix geometry in FrogID.
+
+Authoritative files:
+- `submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json`
+- `CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json`
+- `submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json`
+- `CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
+- `scripts/run_crosscontinental_active_depth.py`
 
 ## Main ecological result
 
@@ -59,7 +94,7 @@ Headline coefficients:
 
 The study concerns the **behaviourally realized acoustic community**. It does not infer occupancy, abundance, colonization, extinction, dispersal or reproductive success.
 
-## RC8 inferential repair: uniform activation is not enough
+## North American matrix geometry: uniform activation is not enough
 
 The exact species × stop decomposition contains four components:
 
@@ -77,7 +112,7 @@ Observed coefficient shares are:
 
 Thus **92.0%** of the rainfall-associated incidence slope crosses at least one spatial or taxonomic boundary.
 
-RC8 no longer treats 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
+RC9 does not treat 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
 
 The null:
 
@@ -201,7 +236,7 @@ Wet-gain geometry was strongly reproduced by:
 
 Activation geometry is therefore **not** treated as a rainfall-specific response trait.
 
-The RC8 uniform-null rejection does not rescue this failed trait.
+The North American uniform-null rejection does not rescue this failed trait.
 
 Independent anuran literature supports heterogeneous activation thresholds, breeding/inundation cues and hydric physiology as plausible discussion-level pathways. None is identified as the causal mediator of the NAAMP result.
 
@@ -219,7 +254,7 @@ The explicit reconciliation remains in current Supporting Information. The earli
 
 ## Inferential boundaries
 
-RC8 does **not** claim:
+RC9 does **not** claim:
 
 - rainfall causality;
 - occupancy or abundance change;
@@ -236,19 +271,19 @@ RC8 does **not** claim:
 
 ## Submission QA
 
-The RC8 submission package checks:
+The RC9 submission package checks:
 
-- the v1.0 scientific package;
+- the v1.1 scientific package;
 - uniform-null decision and all three smoothing sensitivities;
 - Sørensen practical-equivalence bounds;
 - title and inferential-boundary consistency;
 - RC8 Figure 1/2 content;
-- anonymous v1.0 main-manuscript DOCX;
-- anonymous RC8 Supporting Information DOCX.
+- anonymous v1.1 main-manuscript DOCX;
+- anonymous RC9 Supporting Information DOCX.
 
 ## Repository history and branch policy
 
-Release branches `release/jae-v1-rc1` through `release/jae-v1-rc8` are retained as versioned audit history.
+Release branches `release/jae-v1-rc1` through `release/jae-v1-rc9` are retained as versioned audit history.
 
 The repository also contains historical `revision/*`, `fix/*`, `chore/*` and `cleanup/*` branches created during the analysis/falsification path. They are **not current scientific authority**. Current authority is defined only by the branches and files listed at the top of this README.
 
@@ -263,13 +298,14 @@ Raw third-party source datasets are not redistributed.
 
 ## Development policy
 
-The RC8 story is frozen around:
+The RC9 story is frozen around:
 
-1. multiscale active-community expansion;
-2. four-component incidence allocation that strongly rejects the frozen uniform-activation null;
-3. excess route-new taxonomic participation relative to that null;
-4. pairwise Sørensen practical stability within the fixed ±0.025 slope margin;
-5. geographic, protocol-window and recorded-detection robustness;
-6. no identified species-level or causal mechanism.
+1. cross-continentally consistent taxonomic deepening within already-active acoustic units across North America and Australia;
+2. multiscale active-community expansion in standardized NAAMP routes;
+3. four-component North American incidence allocation that strongly rejects the frozen uniform-activation null;
+4. excess route-new taxonomic participation relative to that null;
+5. pairwise Sørensen practical stability within the fixed ±0.025 slope margin;
+6. geographic, protocol-window and recorded-detection robustness;
+7. no worldwide-universality, pooled-effect-size, species-level-mechanism or causal-rainfall claim.
 
-No additional endpoint search, replacement null model, Sørensen-margin retuning, residualized activation-geometry rescue or replacement post-opening species trait is authorized for this submission without an explicit versioned unfreeze justified by an editor/reviewer request or documented defect.
+No additional endpoint search, new continent, replacement null model, Sørensen-margin retuning, residualized activation-geometry rescue or replacement post-opening species trait is authorized for this submission without an explicit versioned unfreeze justified by an editor/reviewer request or documented defect.
