@@ -1,0 +1,55 @@
+{
+  "project": "frog-chorus-synchrony",
+  "artifact": "RC10_STORY_FREEZE_V0_1",
+  "status": "frozen_for_submission",
+  "base_commit": "2acc94a14d8fc4b22bce29d3a5cbd6e60699dd48",
+  "manuscript": "MANUSCRIPT_JAE_V1_2.md",
+  "supporting_information": "SUPPORTING_INFORMATION_JAE_RC10_V0_1.md",
+  "title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts",
+  "frozen_core_claims": [
+    "Recent-rain conditions are associated with expansion of the behaviourally realized acoustic community across active spatial footprint, local alpha richness and route gamma richness in NAAMP.",
+    "Active-unit taxonomic depth has the same recent-rain direction in the aligned NAAMP and FrogID analyses; this is cross-dataset consistency, not independent validation or a pooled effect-size claim.",
+    "The North American four-component incidence allocation strongly rejects the original magnitude-matched uniform-activation null under kappa 1, 2 and 5.",
+    "The allocation also strongly rejects a separately frozen persistence-preserving uniform-activation stress test at dry-state anchor weights 0.50, 0.75 and 0.90.",
+    "Under the primary persistence-preserving anchor a=0.75, boundary crossing is 92.0 percent observed versus 77.9 percent expected with a 73.4-82.8 percent 95 percent null interval; within-core rearrangement is 8.0 percent observed versus 22.1 percent expected.",
+    "Pairwise Sorensen change is small and lies within a post hoc +/-0.025 practical bound, but this is secondary context because the margin was selected after the conventional coefficient was known and the observed Sorensen slope lies inside the uniform-activation null distribution."
+  ],
+  "frozen_interpretation": "Rainfall-associated expansion enters the behaviourally realized frog community more strongly across spatial and taxonomic boundaries than uniform activation predicts, and this departure survives a null that strongly preserves pair-specific dry species x stop identity.",
+  "frozen_negative_boundaries": [
+    "No independent-validation or independent-replication claim for FrogID.",
+    "No worldwide or universal rainfall-response claim.",
+    "No pooled North America-Australia effect size and no equality-of-effect-size claim.",
+    "No claim that FrogID replicates the fixed ten-stop species x stop geometry.",
+    "No claim of identical mechanism across datasets or continents.",
+    "No rainfall causality, occupancy, abundance, colonization, extinction or demographic-recruitment claim.",
+    "No claim that temporary wetlands or heterogeneous activation thresholds are identified mechanisms.",
+    "Activation geometry remains falsified as a rainfall-specific species trait.",
+    "No title-level homogenization claim and no claim of confirmatory Sorensen equivalence."
+  ],
+  "inferential_history": {
+    "rc9_parent_freeze": "submission/RC9_STORY_FREEZE_V0_1.json",
+    "rc10_scope": "submission/RC10_SCOPE_UNFREEZE_V0_1.json",
+    "persistence_null_contract": "NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
+    "persistence_null_summary": "NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json",
+    "rc10_decision_tree": "submission/RC10_STORY_DECISION_TREE_V0_1.json",
+    "original_uniform_null": "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
+    "cross_dataset_summary": "CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json"
+  },
+  "permitted_pre_submission_changes": [
+    "copyediting and prose compression that do not alter scientific meaning",
+    "citation formatting and literature-positioning edits",
+    "figure typography or layout changes that do not alter plotted quantities or interpretations",
+    "README and repository-authority cleanup",
+    "author metadata, affiliations, CRediT roles, acknowledgements, funding and approvals",
+    "archive DOI, repository license and final submission metadata",
+    "correction of implementation, transcription or reproducibility defects"
+  ],
+  "changes_requiring_explicit_unfreeze": [
+    "new ecological endpoint or hypothesis family",
+    "new continent or external monitoring system",
+    "change to the FrogID active-depth estimand or weather exposure",
+    "new null family or retuning of persistence anchor weights",
+    "change to the Sorensen post hoc bound",
+    "new species trait or causal mechanism promoted into the main claim"
+  ]
+}
