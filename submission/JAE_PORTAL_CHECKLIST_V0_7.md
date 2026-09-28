@@ -58,6 +58,7 @@
 - [x] `submission/RC8_STORY_FREEZE_V0_1.json`
 - [x] `submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md`
 - [x] `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
+- [x] `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - [x] `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
 - [x] `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
 - [x] `figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg`
@@ -73,7 +74,7 @@
 
 ## JAE 2026 initial-submission compliance
 
-- [x] Research Article package below 8,500-word limit (current proxy ~7,048)
+- [x] Research Article package below 8,500-word limit (current proxy ~7,204)
 - [x] abstract <=350 words (current ~293)
 - [x] five numbered abstract statements
 - [x] <=8 alphabetical keywords (current 8)
