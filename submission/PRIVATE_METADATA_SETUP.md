@@ -6,7 +6,7 @@ The final submission workflow is designed so that names, postal address and emai
 
 Copy:
 
-`submission/SUBMISSION_METADATA_TEMPLATE_V0_2.yml`
+`submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
 
 Fill every human field locally.
 
@@ -44,9 +44,9 @@ Do not commit the completed private YAML to a public branch.
 
 ## Final DOI workflow
 
-After the archive DOI is minted, run:
+For the private-metadata submission bundle, run:
 
-**Actions → frogcs final JAE submission bundle → Run workflow**
+**Actions → frogcs initial JAE submission bundle → Run workflow**
 
 Enter the published DOI.
 
