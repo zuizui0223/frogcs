@@ -178,8 +178,8 @@ def main():
     output = {
         "analysis": "naamp_persistence_preserving_uniform_activation_null_v0_1",
         "contract": "provenance/contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
-        "scope": "submission/RC10_SCOPE_UNFREEZE_V0_1.json",
-        "decision_tree": "submission/RC10_STORY_DECISION_TREE_V0_1.json",
+        "scope": "provenance/submission/RC10_SCOPE_UNFREEZE_V0_1.json",
+        "decision_tree": "provenance/submission/RC10_STORY_DECISION_TREE_V0_1.json",
         "n_pairs": int(len(pairs)),
         "simulation_replicates": B,
         "seed": SEED,

@@ -626,7 +626,7 @@ def main():
     result={
         "analysis":"crosscontinental_active_unit_taxonomic_depth_v0_1",
         "contract":"provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
-        "unfreeze":"submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json",
+        "unfreeze":"provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json",
         "frogid_source_sha256":FROGID_SHA,
         "era5_source":{
             "provider":"Earthmover public Icechunk ERA5",

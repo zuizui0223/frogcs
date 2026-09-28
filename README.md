@@ -20,11 +20,11 @@ Current article surfaces:
 - novelty audit: `submission/NOVELTY_AUDIT_V0_11.md`
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_11.md`
 - submission handoff: `submission/SUBMISSION_HANDOFF_RC11.md`
-- story freeze: `submission/RC11_STORY_FREEZE_V0_1.json`
+- story freeze: `provenance/submission/RC11_STORY_FREEZE_V0_1.json`
 - pre-submission review disposition: `submission/RC10_PRE_SUBMISSION_REVIEW_DISPOSITION_V0_1.md`
 - current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md`
-- post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
-- post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
+- post-freeze compliance receipt: `provenance/submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
+- post-freeze hypothesis-spine receipt: `provenance/submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
 - title-page template: `JAE_TITLE_PAGE_V0_8.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
@@ -91,9 +91,9 @@ Authorized interpretation:
 This is cross-dataset consistency, not independent validation. It does **not** authorize worldwide universality, pooled effect sizes, identical mechanisms or replication of the fixed ten-stop NAAMP matrix geometry in FrogID.
 
 Authoritative files:
-- `submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json`
+- `provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json`
 - `provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json`
-- `submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json`
+- `provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json`
 - `provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
 - `scripts/run_crosscontinental_active_depth.py`
 
@@ -189,10 +189,10 @@ The same omnibus result holds at a = 0.50 and 0.90 (**P = .000999** each). At a 
 Therefore the observed allocation is not explained by a null model that makes stable species × stop identities too exchangeable.
 
 Authoritative files:
-- `submission/RC10_SCOPE_UNFREEZE_V0_1.json`
+- `provenance/submission/RC10_SCOPE_UNFREEZE_V0_1.json`
 - `provenance/contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json`
 - `provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
-- `submission/RC10_STORY_DECISION_TREE_V0_1.json`
+- `provenance/submission/RC10_STORY_DECISION_TREE_V0_1.json`
 
 ## Secondary Sørensen context
 

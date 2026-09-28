@@ -133,7 +133,7 @@ Status: **closed**.
 **RC10 is frozen for submission. No further ecological endpoint search is authorized without an editor/reviewer request or a documented implementation defect.**
 
 Authoritative story freeze:
-- `submission/RC10_STORY_FREEZE_V0_1.json`
+- `provenance/submission/RC10_STORY_FREEZE_V0_1.json`
 
 Key robustness result:
 - `provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`

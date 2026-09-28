@@ -36,7 +36,7 @@ RC11 initial-submission QA passes:
 
 - `MANUSCRIPT_JAE_V1_3.md`
 - `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
-- `submission/RC11_STORY_FREEZE_V0_1.json`
+- `provenance/submission/RC11_STORY_FREEZE_V0_1.json`
 - `provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
 - `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
 - `submission/NOVELTY_AUDIT_V0_11.md`
