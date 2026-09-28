@@ -84,10 +84,10 @@ def mapx(v,lo,hi,x0,x1):
     return x0+(v-lo)/(hi-lo)*(x1-x0)
 
 def fig2():
-    naamp=read("NAAMP_PRIMARY_RECEIPT_V0_1.json")["primary"]
-    frog_rep=read("FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json")
+    naamp=read("provenance/receipts/NAAMP_PRIMARY_RECEIPT_V0_1.json")["primary"]
+    frog_rep=read("provenance/receipts/FROGID_TIMEZONE_REPAIR_RECEIPT_V0_1.json")
     frog=frog_rep["primary"]
-    rob=read("SPATIAL_CONFOUNDING_ROBUSTNESS_RECEIPT_V0_1.json")["artifacts"]
+    rob=read("provenance/receipts/SPATIAL_CONFOUNDING_ROBUSTNESS_RECEIPT_V0_1.json")["artifacts"]
     el=[]
     el.append('<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="115mm" viewBox="0 0 1200 770">')
     el.append('<rect width="1200" height="770" fill="white"/>')
@@ -141,9 +141,9 @@ def fig2():
 
 
 def fig3():
-    mech=read("NAAMP_MECHANISM_DECOMPOSITION_RECEIPT_V0_1.json")
-    rep=read("NAAMP_REVIEW_REPAIR_RECEIPT_V0_1.json")
-    net=read("NAAMP_NETWORK_RECEIPT_V0_1.json")
+    mech=read("provenance/receipts/NAAMP_MECHANISM_DECOMPOSITION_RECEIPT_V0_1.json")
+    rep=read("provenance/receipts/NAAMP_REVIEW_REPAIR_RECEIPT_V0_1.json")
+    net=read("provenance/receipts/NAAMP_NETWORK_RECEIPT_V0_1.json")
 
     act=mech["activation"]["rain_z"]
     cond=mech["conditional_multispecies_given_active"]["rain_z"]
@@ -187,7 +187,7 @@ def fig3():
     el.append(text(880,420,f"β = {ind['beta_rain_z']:.5f} · P = {ind['p_value']:.3f}",18,"normal","middle"))
     el.append(text(880,465,"Mean pairwise excess covariance",20,"bold","middle"))
     el.append(text(880,495,f"β = {cov['beta_rain_z']:.5f} · P = {cov['p_value']:.3f}",18,"normal","middle"))
-    sh=read("NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json")["rain_effect_on_shuffle_residual"]
+    sh=read("provenance/receipts/NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json")["rain_effect_on_shuffle_residual"]
     el.append(text(880,530,"Fixed-marginal shuffle residual",19,"bold","middle"))
     el.append(text(880,558,f"β = {sh['beta_rain_z']:.5f} · P = {sh['p_value']:.3f}",17,"normal","middle"))
     el.append(text(880,592,"Pairwise network density",19,"bold","middle"))

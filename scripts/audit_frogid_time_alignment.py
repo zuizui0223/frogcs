@@ -96,7 +96,7 @@ def main():
     denom=parse_n-tz_fail
     result={
       "audit":"frogid_time_alignment_v0_2",
-      "contract":"FROGID_TIME_ALIGNMENT_CONTRACT_V0_2.json",
+      "contract":"provenance/contracts/FROGID_TIME_ALIGNMENT_CONTRACT_V0_2.json",
       "source_sha256":SHA,
       "retained_deterministic_events":parse_n,
       "timezone_resolution_failures":tz_fail,

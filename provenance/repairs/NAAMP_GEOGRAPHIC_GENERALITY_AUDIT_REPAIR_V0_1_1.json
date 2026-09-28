@@ -1,0 +1,19 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "rc6_geographic_generality_audit_v0_1_1_estimability_repair",
+  "parent_contract": "provenance/contracts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json",
+  "status": "frozen_before_endpoint_readback",
+  "trigger": "Workflow run 36316682817 failed before endpoint output because at least one state had only one route cluster, making cluster-robust covariance undefined.",
+  "repair": {
+    "state_specific_slopes": {
+      "primary_fit": "Use the frozen state-specific model and route-cluster covariance when >=2 route clusters and residual degrees of freedom are positive.",
+      "nonestimable_rule": "If cluster-robust covariance is undefined or the fitted model has non-positive residual degrees of freedom, mark inferential state-specific slope as nonestimable rather than changing the model.",
+      "descriptive_fallback": "For direction-only display, fit response ~ rain_contrast when >=3 observations and rain_contrast varies; label this explicitly descriptive_unadjusted and do not use its CI/P value.",
+      "pass_role": "None. State-specific estimates remain descriptive and never determine PASS/FAIL."
+    },
+    "leave_one_state_out": "Unchanged from V0_1 and remains the primary PASS/strong-PASS criterion.",
+    "state_random_slope": "Unchanged from V0_1."
+  },
+  "decision_rules_changed": false,
+  "endpoint_retuning_after_readback_authorized": false
+}

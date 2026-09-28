@@ -107,7 +107,7 @@ def main():
 
     result={
         "analysis":"naamp_context_dependent_rainfall_pulse_v0_1",
-        "contract":"NAAMP_CONTEXT_DEPENDENT_PULSE_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_CONTEXT_DEPENDENT_PULSE_CONTRACT_V0_1.json",
         "time_split":{"baseline":[2001,2007],"validation":[2008,2015]},
         "baseline_context":{
             "eligible_routes":int(len(context)),
@@ -146,7 +146,7 @@ def main():
         }
     }
 
-    Path("NAAMP_CONTEXT_DEPENDENT_PULSE_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_CONTEXT_DEPENDENT_PULSE_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

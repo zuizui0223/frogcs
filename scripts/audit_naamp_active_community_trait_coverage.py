@@ -92,7 +92,7 @@ def main():
     panel_incid=sum(freq[s] for s in panel_spp)
     result={
       "analysis":"naamp_active_community_functional_trait_coverage_audit_v0_1",
-      "contract":"NAAMP_ACTIVE_COMMUNITY_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_ACTIVE_COMMUNITY_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json",
       "eligible_runs":int(len(runs)),
       "active_species_unique":int(n),
       "active_run_species_incidences":int(sum(freq.values())),

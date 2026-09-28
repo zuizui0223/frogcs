@@ -291,7 +291,7 @@ def main():
 
     result={
         "analysis":"naamp_breeding_season_breadth_v0_1",
-        "contract":"NAAMP_BREEDING_SEASON_BREADTH_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_BREEDING_SEASON_BREADTH_CONTRACT_V0_1.json",
         "response_source":{
             "contract":adj.get("contract"),
             "fixed_species_family":adj.get("fixed_species_family"),
@@ -333,7 +333,7 @@ def main():
             "causal_claim_authorized":False
         }
     }
-    Path("NAAMP_BREEDING_SEASON_BREADTH_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_BREEDING_SEASON_BREADTH_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

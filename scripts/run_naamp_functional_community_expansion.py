@@ -127,7 +127,7 @@ def main():
     d=build();p,c,s=pack(d);exact=d[d.year_gap==1].copy();pe,ce,se=pack(exact)
     result={
       "analysis":"naamp_functional_community_expansion_v0_1",
-      "contract":"NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_CONTRACT_V0_1.json",
       "primary_models":p,"cwm_trait_shift_models":c,"mpd_richness_adjusted_sensitivity":s,
       "exact_consecutive_year":{"n_pairs":int(len(exact)),"primary_models":pe,"cwm_trait_shift_models":ce,
                                 "mpd_richness_adjusted_sensitivity":se},

@@ -154,7 +154,7 @@ def main():
     df=build_frame(load())
     result={
       "analysis":"naamp_chorus_synchrony_primary_v0_1",
-      "contract":"NAAMP_MODEL_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_MODEL_CONTRACT_V0_1.json",
       "formula":FORMULA,
       "primary":fit_one(df),
       "sensitivity_complete_10_stops":fit_one(df[df["trials"]==10].copy()),

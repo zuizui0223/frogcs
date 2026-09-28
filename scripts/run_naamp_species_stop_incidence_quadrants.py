@@ -171,7 +171,7 @@ def main():
 
     result = {
         "analysis": "naamp_species_stop_incidence_quadrants_v0_1",
-        "contract": "NAAMP_SPECIES_STOP_QUADRANTS_CONTRACT_V0_1.json",
+        "contract": "provenance/contracts/NAAMP_SPECIES_STOP_QUADRANTS_CONTRACT_V0_1.json",
         "status": "post-opening matrix decomposition frozen before endpoint readback",
         "descriptive": summarize_counts(df),
         "primary_models": primary,

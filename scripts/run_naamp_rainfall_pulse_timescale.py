@@ -229,7 +229,7 @@ def main():
 
     result={
         "analysis":"naamp_rainfall_pulse_timescale_v0_1",
-        "contract":"NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json",
         "recency_bins":{
             "day0":"0 days since rain",
             "day1":"1 day",

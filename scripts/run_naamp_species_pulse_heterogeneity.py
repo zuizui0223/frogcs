@@ -135,8 +135,8 @@ def main():
 
     result={
         "analysis":"naamp_species_pulse_heterogeneity_v0_1",
-        "contract":"NAAMP_SPECIES_PULSE_HETEROGENEITY_CONTRACT_V0_1.json",
-        "pair_source":"NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_SPECIES_PULSE_HETEROGENEITY_CONTRACT_V0_1.json",
+        "pair_source":"provenance/contracts/NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
         "species_metadata":{
             "source_sha256":SPECIES_SHA,
             "fields":fields,
@@ -164,7 +164,7 @@ def main():
         }
     }
 
-    Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

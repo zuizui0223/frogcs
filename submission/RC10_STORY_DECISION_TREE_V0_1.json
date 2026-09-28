@@ -3,9 +3,9 @@
   "artifact": "RC10_STORY_DECISION_TREE_V0_1",
   "status": "frozen_before_persistence_null_readback",
   "inputs": [
-    "NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
-    "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
-    "CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json"
+    "provenance/contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
+    "provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
+    "provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json"
   ],
   "always": {
     "frogid_wording": "Use cross-dataset consistency / directional agreement across two monitoring datasets. Do not call the continuous-depth analysis an independent test or external validation.",

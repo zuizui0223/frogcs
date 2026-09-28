@@ -135,7 +135,7 @@ def main():
 
     result={
         "analysis":"naamp_species_activation_geometry_route_split_v0_1",
-        "contract":"NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_CONTRACT_V0_1.json",
         "route_split":{
             "algorithm":"SHA-256 route_cluster first byte <128 => A, else B",
             "disjoint_routes":True,

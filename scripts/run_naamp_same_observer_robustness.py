@@ -223,7 +223,7 @@ def main():
 
     output = {
         "analysis": "naamp_same_observer_robustness_v0_1",
-        "contract": "NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json",
+        "contract": "provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json",
         "coverage": {
             "all_matched_pairs": int(len(all_pairs)),
             "same_observer_pairs": int(len(selected)),

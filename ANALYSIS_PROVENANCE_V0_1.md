@@ -91,7 +91,7 @@ The following are **not** described as original prospective tests:
 - DaysSinceRain range/sentinel audit;
 - FrogID eventTime/timezone semantics audits.
 
-For the NAAMP reviewer repair, `NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json` was committed before Actions run `36112049537`; the replacement H3 sensitivity was separately frozen before Actions run `36112267989`.
+For the NAAMP reviewer repair, `provenance/contracts/NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json` was committed before Actions run `36112049537`; the replacement H3 sensitivity was separately frozen before Actions run `36112267989`.
 
 These analyses are labelled “reviewer-motivated post-opening diagnostics” or “specification repair” throughout the revised manuscript and cannot replace the original endpoint decisions.
 

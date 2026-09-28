@@ -1,0 +1,42 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "rc6_geographic_generality_audit_v0_1",
+  "status": "frozen_before_endpoint_readback",
+  "purpose": "Audit geographic transportability of the already-authorized RC6 headline; not a new ecological endpoint or mechanism search.",
+  "source_analysis": "provenance/contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
+  "population": "The existing 4,236 matched wetter-drier NAAMP comparisons from 585 routes in 21 states.",
+  "headline_responses": ["delta_active_stops", "delta_alpha_active", "delta_gamma"],
+  "exposure": "rain_contrast",
+  "covariates": ["temp_difference", "doy_difference", "year_gap", "RunNumber"],
+  "audits": {
+    "state_specific_slopes": {
+      "model": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(RunNumber)",
+      "cluster": "route_cluster",
+      "report": ["n_pairs", "n_routes", "beta_rain_contrast", "ci95", "p_value"],
+      "interpretation": "Direction and effect-size distribution; individual-state significance is not a pass criterion."
+    },
+    "leave_one_state_out": {
+      "model": "original RC6 model response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+      "cluster": "route_cluster",
+      "report": ["omitted_state", "beta_rain_contrast", "ci95"],
+      "pass_rule": "For each of the three headline responses, all leave-one-state-out rain_contrast coefficients remain positive.",
+      "strong_pass_rule": "All leave-one-state-out 95% confidence intervals remain above zero for all three headline responses."
+    },
+    "state_random_slope": {
+      "model_family": "linear mixed model with State random intercept and rain_contrast random slope; fixed rain_contrast + temperature difference + day-of-year difference + year gap + RunNumber",
+      "report": ["population_rain_slope", "state_slope_sd", "state_BLUP_slopes", "convergence"],
+      "role": "Quantify geographic heterogeneity; no requirement that every state-specific slope is positive."
+    }
+  },
+  "decision_language": {
+    "pass": "The RC6 expansion signal is not driven by any single state and is geographically transportable across the sampled NAAMP region, while allowing state-level effect heterogeneity.",
+    "fail": "The continent-scale association remains supported in the pooled matched analysis, but geographic consistency is limited because at least one state materially controls a headline coefficient.",
+    "prohibited": [
+      "the effect occurs in every state",
+      "continental universality",
+      "causal rainfall effect",
+      "state-specific P<0.05 as a requirement for generality"
+    ]
+  },
+  "endpoint_retuning_after_readback_authorized": false
+}

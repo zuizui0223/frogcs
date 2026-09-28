@@ -128,7 +128,7 @@ def main():
     d2=make_frame(raw,2)
     result={
       "analysis":"naamp_chorus_network_H4_v0_1",
-      "contract":"NAAMP_NETWORK_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_NETWORK_CONTRACT_V0_1.json",
       "primary":fit(d1),
       "repeat_edge_sensitivity":fit(d2),
       "formula":FORM,

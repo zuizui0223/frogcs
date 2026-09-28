@@ -178,7 +178,7 @@ def main():
 
     result={
         "analysis":"naamp_response_diversity_buffering_v0_1",
-        "contract":"NAAMP_RESPONSE_DIVERSITY_BUFFERING_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_RESPONSE_DIVERSITY_BUFFERING_CONTRACT_V0_1.json",
         "time_split":{"trait_period":[2001,2007],"validation_period":[2008,2015]},
         "early":{
             "eligible_runs":int(len(early_runs)),

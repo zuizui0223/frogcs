@@ -136,7 +136,7 @@ Authoritative story freeze:
 - `submission/RC10_STORY_FREEZE_V0_1.json`
 
 Key robustness result:
-- `NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
+- `provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
 
 Current manuscript:
 - `MANUSCRIPT_JAE_V1_2.md`

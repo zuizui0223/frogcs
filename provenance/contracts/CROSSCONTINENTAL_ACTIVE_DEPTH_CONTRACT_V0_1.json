@@ -1,0 +1,63 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "crosscontinental_active_unit_taxonomic_depth_v0_1",
+  "status": "frozen_before_australian_continuous_depth_readback",
+  "north_america": {
+    "system": "NAAMP",
+    "sampling_unit": "standardized route stop conditional on at least one calling species",
+    "response": "mean species richness per active stop; excess richness equals alpha_active - 1",
+    "existing_authorized_result": {
+      "source": "provenance/summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
+      "rainfall_contrast_beta": 0.07941491576879688,
+      "ci95": [0.023119819091079956, 0.1357100124465138],
+      "direction": "wetter member has greater active-unit taxonomic depth"
+    },
+    "new_naamp_model_authorized": false
+  },
+  "australia": {
+    "system": "FrogID",
+    "sample": {
+      "source_pipeline": "scripts/run_frogid_rain_validation_timezone_repair.py",
+      "frogid_source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+      "selection": "first byte SHA256(eventID) < 16",
+      "expected_recordings": 40754,
+      "expected_weather_cells": 1623,
+      "coordinate_uncertainty_max_m": 25000
+    },
+    "rainfall_exposure": {
+      "definition": "zscore(log1p(number of complete coordinate-local calendar days immediately preceding the repaired event date until the first day with >=1 mm precipitation, capped at 30 days))",
+      "higher_value": "drier / farther from recent rainfall",
+      "unchanged_from": "provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json"
+    },
+    "primary_response": "excess_richness = species_richness - 1; all retained FrogID recordings already have richness >= 1",
+    "primary_model": {
+      "estimator": "OLS with cluster-robust covariance",
+      "formula": "excess_richness ~ dry_z + C(state) * C(month) + year_z + sin_hour + cos_hour",
+      "cluster": "0.25-degree ERA5 cell",
+      "support": "beta_dry_z < 0 and complete 95% CI < 0"
+    },
+    "sensitivities": {
+      "recorder_cluster": "same primary OLS formula clustered by recorder",
+      "within_cell": "demeaned within-ERA5-cell OLS using dry_z, year_z, month indicators, sin_hour and cos_hour; support if beta_dry_z < 0 and complete 95% CI < 0"
+    },
+    "secondary_endpoints_no_gate": [
+      "threeplus = I(species_richness >= 3), logistic model with the same covariates and ERA5-cell clustering",
+      "excess_beyond_two = max(species_richness - 2, 0), OLS with the same covariates and ERA5-cell clustering"
+    ]
+  },
+  "cross_system_decision": {
+    "pass": "Australian primary continuous-depth support AND frozen NAAMP active-alpha 95% CI > 0.",
+    "strong_pass": "PASS plus both Australian continuous-depth sensitivities have 95% CIs below zero.",
+    "no_meta_analysis": true,
+    "reason": "The systems use different rainfall-exposure scales and observation designs; comparison is directional on a shared active-unit taxonomic-depth estimand."
+  },
+  "interpretation_boundaries": [
+    "Cross-continental consistency is not worldwide universality.",
+    "FrogID recordings and NAAMP stops are different observation systems.",
+    "The result concerns behaviourally realized acoustic richness conditional on acoustic activity, not occupancy or abundance.",
+    "No causal rainfall claim.",
+    "The North American four-component species x stop matrix geometry cannot be replicated in FrogID because FrogID lacks fixed ten-stop route matrices.",
+    "The historical >=2-species conditional discrepancy remains part of the record and is not overwritten."
+  ],
+  "endpoint_retuning_after_readback_authorized": false
+}

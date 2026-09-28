@@ -249,7 +249,7 @@ def main():
 
     result={
         "analysis":"naamp_species_activation_geometry_repeatability_v0_1",
-        "contract":"NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_CONTRACT_V0_1.json",
         "time_split":{"early":[2001,2007],"late":[2008,2015]},
         "early":{
             "eligible_runs":int(len(eruns)),"matched_pairs":int(len(epairs)),

@@ -28,7 +28,7 @@ base=geom.base
 spatial=geom.spatial
 
 def headline_species():
-    obj=json.loads(Path("NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json").read_text())
+    obj=json.loads(Path("provenance/summaries/NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json").read_text())
     spp=[str(x["species"]) for x in obj["species_table"]]
     if len(spp)!=16 or len(set(spp))!=16:
         raise RuntimeError(f"headline family drift: n={len(spp)} unique={len(set(spp))}")
@@ -253,7 +253,7 @@ def main():
 
     result={
         "analysis":"naamp_activation_geometry_placebo_gate_v0_1",
-        "contract":"NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json",
         "headline_family_species":family,
         "sample":{
             "eligible_runs":int(len(runs)),

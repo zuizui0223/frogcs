@@ -140,7 +140,7 @@ def main():
     loo=leave_family(y)
     result={
       "analysis":"naamp_body_size_adjusted_species_robustness_v0_1",
-      "contract":"NAAMP_BODY_SIZE_ADJUSTED_SPECIES_ROBUSTNESS_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_BODY_SIZE_ADJUSTED_SPECIES_ROBUSTNESS_CONTRACT_V0_1.json",
       "trait_source":{
         "dataset":"AmphiBIO v1",
         "mirror_commit":"c437acbc65b51b66e3dc4abd821ebe1cb06b200c",

@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-09-25  
 **Scientific source:** `MANUSCRIPT_V0_2.md`  
-**Claim source:** `CLAIM_BOUNDARY_V1_1.json`
+**Claim source:** `provenance/metadata/CLAIM_BOUNDARY_V1_1.json`
 
 ## Primary target — Journal of Animal Ecology, Research Article
 
@@ -87,4 +87,4 @@ generalization is ecological rather than behavioural-mechanistic.
 4. **Ecosphere — Animal Ecology / Climate Ecology / General Ecology**
 
 No journal-specific reframing may strengthen causal or interaction claims beyond
-`CLAIM_BOUNDARY_V1_1.json`.
+`provenance/metadata/CLAIM_BOUNDARY_V1_1.json`.

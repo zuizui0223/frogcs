@@ -282,7 +282,7 @@ def main():
 
     result={
         "analysis":"naamp_hydroperiod_filter_v0_1",
-        "contract":"NAAMP_HYDROPERIOD_FILTER_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_HYDROPERIOD_FILTER_CONTRACT_V0_1.json",
         "response_source":{
             "contract":adj.get("contract"),
             "fixed_species_family":adj.get("fixed_species_family"),
@@ -323,7 +323,7 @@ def main():
             "other_atraiu_traits_opened_for_inference":False
         }
     }
-    Path("NAAMP_HYDROPERIOD_FILTER_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_HYDROPERIOD_FILTER_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

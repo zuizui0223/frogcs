@@ -178,7 +178,7 @@ def main():
 
     result={
         "analysis":"naamp_latent_spatial_heterogeneity_v0_1",
-        "contract":"NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json",
         "time_split":{"baseline":[2001,2007],"validation":[2008,2015]},
         "baseline":{
             "eligible_templates":int(len(templates)),
@@ -210,7 +210,7 @@ def main():
             "endpoint_retuning_after_readback_authorized":False,
         }
     }
-    Path("NAAMP_LATENT_SPATIAL_HETEROGENEITY_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_LATENT_SPATIAL_HETEROGENEITY_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

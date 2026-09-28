@@ -91,9 +91,9 @@ This is cross-dataset consistency, not independent validation. It does **not** a
 
 Authoritative files:
 - `submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json`
-- `CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json`
+- `provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json`
 - `submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json`
-- `CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
+- `provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
 - `scripts/run_crosscontinental_active_depth.py`
 
 ## Main ecological result
@@ -165,11 +165,11 @@ Rejecting the null does **not** identify a unique biological mechanism.
 
 Authoritative null files:
 
-- `NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_3.json`
-- `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
+- `provenance/contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
+- `provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`
+- `provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json`
+- `provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_3.json`
+- `provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
 - `scripts/run_naamp_uniform_activation_null.py`
 
 ## Persistence-preserving null: the allocation result survives strong dry-state anchoring
@@ -189,8 +189,8 @@ Therefore the observed allocation is not explained by a null model that makes st
 
 Authoritative files:
 - `submission/RC10_SCOPE_UNFREEZE_V0_1.json`
-- `NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json`
-- `NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
+- `provenance/contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json`
+- `provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
 - `submission/RC10_STORY_DECISION_TREE_V0_1.json`
 
 ## Secondary Sørensen context
@@ -236,8 +236,8 @@ All three headline coefficients remained 95%-CI positive: active stops **0.352 [
 This shows that between-observer turnover is not required for the headline pattern in the large same-observer subset. It does not prove observer equivalence or eliminate all detectability bias.
 
 Authoritative files:
-- `NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
-- `NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
+- `provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
+- `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
 - `scripts/run_naamp_same_observer_robustness.py`
 
 ## Explicit remaining null boundary

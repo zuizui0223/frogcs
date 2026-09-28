@@ -36,7 +36,7 @@ def norm_binomial(x):
     return " ".join(toks[:2]) if len(toks)>=2 else str(x or "").strip()
 
 def load_effects():
-    p=Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
+    p=Path("provenance/receipts/NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
     obj=json.loads(p.read_text(encoding="utf-8"))
     g=obj["global"]
     if int(g["eligible_species"])!=EXPECTED_N or int(g["eligible_wet_gains"])!=EXPECTED_WET or int(g["eligible_dry_losses"])!=EXPECTED_DRY:
@@ -181,8 +181,8 @@ def main():
 
     result={
       "analysis":"naamp_body_size_filter_independent_validation_v0_1",
-      "contract":"NAAMP_BODY_SIZE_FILTER_VALIDATION_CONTRACT_V0_1.json",
-      "repair_contract":"NAAMP_BODY_SIZE_FILTER_VALIDATION_REPAIR_V0_1_1.json",
+      "contract":"provenance/contracts/NAAMP_BODY_SIZE_FILTER_VALIDATION_CONTRACT_V0_1.json",
+      "repair_contract":"provenance/repairs/NAAMP_BODY_SIZE_FILTER_VALIDATION_REPAIR_V0_1_1.json",
       "source":{
         "dataset":"Huang et al. Amphibian traits database",
         "paper_doi":"10.1111/geb.13656",
