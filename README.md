@@ -1,4 +1,4 @@
-# Frog active-community response to rainfall — JAE RC10 reproducibility package
+# Frog active-community response to rainfall — JAE RC11 reproducibility package
 
 Current Journal of Animal Ecology candidate:
 
@@ -9,37 +9,37 @@ Current Journal of Animal Ecology candidate:
 The canonical submission state is aligned across:
 
 - `main`
-- `release/jae-v1-rc10`
-- `submission/jae-v1`
+- `release/jae-v1-rc11` (to be cut from the approved RC11 merge)
+- `submission/jae-v1` (to be advanced after RC11 merge)
 
 Current article surfaces:
 
-- manuscript: `MANUSCRIPT_JAE_V1_2.md`
-- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC10_V0_1.md`
+- manuscript: `MANUSCRIPT_JAE_V1_3.md`
+- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
 - cover letter: `submission/COVER_LETTER_JAE_V0_13.md`
-- novelty audit: `submission/NOVELTY_AUDIT_V0_10.md`
-- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_10.md`
-- submission handoff: `submission/SUBMISSION_HANDOFF_RC10.md`
-- story freeze: `submission/RC10_STORY_FREEZE_V0_1.json`
+- novelty audit: `submission/NOVELTY_AUDIT_V0_11.md`
+- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_11.md`
+- submission handoff: `submission/SUBMISSION_HANDOFF_RC11.md`
+- story freeze: `submission/RC11_STORY_FREEZE_V0_1.json`
 - pre-submission review disposition: `submission/RC10_PRE_SUBMISSION_REVIEW_DISPOSITION_V0_1.md`
-- current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC10_2026_09_28.md`
+- current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md`
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
 - title-page template: `JAE_TITLE_PAGE_V0_8.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
 - citation template: `submission/CITATION_V0_5.cff.template`
-- human-finalization guide: `submission/HUMAN_FINALIZATION_RC10.md`
+- human-finalization guide: `submission/HUMAN_FINALIZATION_RC10.md` (administrative template retained; scientific authority is RC11)
 
-**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC10_V0_1.md`.
+**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`.
 
 `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`, `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md` remain repository audit history only and are not current submission authority.
 
-RC1–RC8 release branches are intentionally retained as immutable audit/fallback history.
+RC1–RC10 release branches are intentionally retained as immutable audit/fallback history.
 
 ## Question spine
 
-RC10 is organized around three linked questions:
+RC11 retains the RC10 three-question scientific spine:
 
 1. **Q1 — expansion:** do recent-rain conditions expand spatial and taxonomic participation?
 2. **Q2 — allocation:** is the species × site allocation more boundary-biased than uniform activation predicts, including under strong dry-state persistence?
@@ -50,7 +50,7 @@ The general distinction is **community amplification versus community recruitmen
 
 ## Cross-dataset active-unit taxonomic deepening
 
-RC10 retains an estimand-aligned cross-dataset comparison of the most transportable response component: **species richness beyond the first species within an acoustic unit that is already active**.
+RC11 retains the RC10 estimand-aligned cross-dataset comparison of the most transportable response component: **species richness beyond the first species within an acoustic unit that is already active**.
 
 North America:
 - NAAMP active-stop richness rainfall-contrast β = **+0.0794**;
@@ -117,7 +117,7 @@ Observed coefficient shares are:
 
 Thus **92.0%** of the rainfall-associated incidence slope crosses at least one spatial or taxonomic boundary.
 
-RC10 does not treat 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
+RC11 does not treat 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
 
 The null:
 
@@ -160,7 +160,7 @@ Authoritative null files:
 
 ## Persistence-preserving null: the allocation result survives strong dry-state anchoring
 
-RC10 adds a reviewer-facing stress test that removes hierarchical species-level shrinkage and directly anchors each pair to its observed dry species × stop state before applying the common activation shift.
+RC11 retains the RC10 reviewer-facing persistence stress test that removes hierarchical species-level shrinkage and directly anchors each pair to its observed dry species × stop state before applying the common activation shift.
 
 Primary a = 0.75:
 - boundary null mean: **77.9%**
@@ -208,10 +208,27 @@ Under the primary uniform null:
 
 The observed Sørensen slope lies within that null distribution.
 
-Thus RC10 separates two claims:
+Thus RC11 separates two claims:
 
 1. **where additional incidences enter the matrix differs strongly from uniform activation**;
 2. **pairwise Sørensen differentiation remains practically stable within a fixed margin**.
+
+## Same-observer robustness
+
+RC11 adds a prefrozen reviewer-defense analysis using the public NAAMP `ObserverTrackingID`. Restricting the matched design to the same observer in both wetter and drier surveys retained **3,152 of 4,236 pairs (74.4%)**, spanning **500 routes and 542 observer identifiers**.
+
+All three headline coefficients remained 95%-CI positive: active stops **0.352 [0.179, 0.525]**, active-stop alpha **0.098 [0.028, 0.169]**, and route gamma **0.319 [0.171, 0.466]**. Observed boundary crossing remained **92.0%**. The same-observer primary uniform null expected **80.3% [73.0, 87.1%]** and the primary persistence-preserving null expected **79.1% [73.3, 84.9%]**; both four-component omnibus tests gave **P=.001**.
+
+This shows that between-observer turnover is not required for the headline pattern in the large same-observer subset. It does not prove observer equivalence or eliminate all detectability bias.
+
+Authoritative files:
+- `NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
+- `NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
+- `scripts/run_naamp_same_observer_robustness.py`
+
+## Explicit remaining null boundary
+
+Both tested null families impose a common activation shift. RC11 explicitly states that a null allowing **species-specific rainfall-response shifts** remains untested. The present analysis therefore does not distinguish species-level response heterogeneity from site-level activation as the unique source of excess boundary allocation. This analysis is reserved for editor/reviewer request rather than searched pre-submission.
 
 ## Geographic and design robustness
 
@@ -280,7 +297,7 @@ The explicit reconciliation remains in current Supporting Information. The earli
 
 ## Inferential boundaries
 
-RC10 does **not** claim:
+RC11 does **not** claim:
 
 - rainfall causality;
 - occupancy or abundance change;
@@ -291,25 +308,27 @@ RC10 does **not** claim:
 - equivalence of every beta metric;
 - a validated rainfall-specific species trait;
 - a unique mechanism from uniform-null rejection;
+- exclusion of species-specific rainfall-response heterogeneity;
 - hydration or inundation mediation;
 - a week-long response endpoint;
 - a physiological rainfall-response half-life.
 
 ## Submission QA
 
-The RC10 submission package checks:
+The RC11 submission package checks:
 
-- the v1.2 scientific package;
+- the v1.3 scientific package;
 - uniform-null decision and all three smoothing sensitivities;
 - Sørensen practical-equivalence bounds;
 - title and inferential-boundary consistency;
 - current Figure 1/2 content;
-- anonymous v1.2 main-manuscript DOCX;
-- anonymous RC10 Supporting Information DOCX.
+- same-observer reviewer robustness and explicit species-specific-null boundary;
+- anonymous v1.3 main-manuscript DOCX;
+- anonymous RC11 Supporting Information DOCX.
 
 ## Repository history and branch policy
 
-Release branches `release/jae-v1-rc1` through `release/jae-v1-rc10` are retained as versioned audit history.
+Release branches `release/jae-v1-rc1` through `release/jae-v1-rc10` are retained as versioned audit history; `release/jae-v1-rc11` will be cut from the approved RC11 merge.
 
 The repository also contains historical `revision/*`, `fix/*`, `chore/*` and `cleanup/*` branches created during the analysis/falsification path. They are **not current scientific authority**. Current authority is defined only by the branches and files listed at the top of this README.
 
@@ -325,14 +344,15 @@ Raw third-party source datasets are not redistributed.
 
 ## Development policy
 
-The RC10 story is frozen around:
+The RC11 story is frozen around:
 
 1. multiscale active-community expansion in standardized NAAMP routes;
 2. four-component incidence allocation that strongly rejects the original uniform-activation null;
 3. the same allocation departure under a persistence-preserving null with 50–90% pair-specific dry-state anchoring;
 4. directional cross-dataset consistency of active-unit taxonomic deepening in NAAMP and FrogID;
 5. pairwise Sørensen retained only as secondary bounded context;
-6. geographic, protocol-window and recorded-detection robustness;
-7. no independent-validation, worldwide-universality, pooled-effect-size, species-level-mechanism or causal-rainfall claim.
+6. geographic, protocol-window, recorded-detection and same-observer robustness;
+7. explicit acknowledgement that species-specific activation shifts remain untested;
+8. no independent-validation, worldwide-universality, pooled-effect-size, species-level-mechanism or causal-rainfall claim.
 
 No additional endpoint search, new continent, replacement null model, Sørensen-margin retuning, residualized activation-geometry rescue or replacement post-opening species trait is authorized for this submission without an explicit versioned unfreeze justified by an editor/reviewer request or documented defect.
