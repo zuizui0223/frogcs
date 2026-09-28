@@ -39,8 +39,7 @@ RC11 initial-submission QA passes:
 - `provenance/submission/RC11_STORY_FREEZE_V0_1.json`
 - `provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
 - `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
-- `submission/NOVELTY_AUDIT_V0_11.md`
-- `submission/REVIEWER_ATTACK_MATRIX_V0_11.md`
-- `submission/JAE_PORTAL_CHECKLIST_V0_10.md`
+- `provenance/submission_docs/NOVELTY_AUDIT_V0_11.md`
+- `provenance/submission_docs/REVIEWER_ATTACK_MATRIX_V0_11.md`
 
-Administrative author/title-page/archive fields remain human-completion items.
+Administrative author/title-page/archive fields are supplied through the private metadata workflow documented in the top-level README.

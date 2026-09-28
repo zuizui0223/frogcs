@@ -15,10 +15,9 @@ CURRENT_ROOT_DIRS={
     "provenance","scripts","submission",
 }
 CURRENT_SUBMISSION_FILES={
-    "CITATION.cff.template","COVER_LETTER_JAE_V0_13.md",
-    "HUMAN_FINALIZATION_RC11.md","JAE_PORTAL_CHECKLIST_V0_10.md",
-    "PRIVATE_METADATA_SETUP.md","SUBMISSION_METADATA_TEMPLATE_V0_7.yml",
-    "ZENODO_METADATA_TEMPLATE.json",
+    "CITATION.cff.template",
+    "COVER_LETTER_JAE_V0_13.md",
+    "SUBMISSION_METADATA_TEMPLATE_V0_7.yml",
 }
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":4,"submission":2}
 CURRENT_WORKFLOWS={
@@ -130,10 +129,7 @@ assert prov_files==CURRENT_PROVENANCE_FILES, {
 # Current templates must describe the current paper and contain no superseded story.
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
 meta=(submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
-zenodo=json.loads((submission/"ZENODO_METADATA_TEMPLATE.json").read_text(encoding="utf-8"))
-private=(submission/"PRIVATE_METADATA_SETUP.md").read_text(encoding="utf-8")
-assert TITLE in citation and TITLE in meta and zenodo["title"]==TITLE
-assert "SUBMISSION_METADATA_TEMPLATE_V0_7.yml" in private
+assert TITLE in citation and TITLE in meta
 for phrase in [
     "Recent rainfall predicts week-long richness elevation",
     "species-selective reassembly",

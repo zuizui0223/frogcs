@@ -15,7 +15,6 @@ pers=json.loads((root/"provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SU
 orig=json.loads((root/"provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
 readme=(root/"README.md").read_text(encoding="utf-8")
 handoff=(root/"provenance/submission_docs/SUBMISSION_HANDOFF_RC11.md").read_text(encoding="utf-8")
-checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_10.md").read_text(encoding="utf-8")
 title_page=(root/"JAE_TITLE_PAGE_V0_8.template.md").read_text(encoding="utf-8")
 meta=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
 citation=(root/"submission/CITATION.cff.template").read_text(encoding="utf-8")
@@ -90,7 +89,7 @@ for x in [
     assert x in readme, x
 
 for x in ["MANUSCRIPT_JAE_V1_3.md","SUPPORTING_INFORMATION_JAE_RC11_V0_1.md","provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"]:
-    assert x in handoff and x in checklist
+    assert x in handoff
 
 for x in ["Persistence null","Observed 92.0%","Anchor a=.90"]:
     assert x in fig2
