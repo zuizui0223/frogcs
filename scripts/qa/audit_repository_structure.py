@@ -22,8 +22,6 @@ CURRENT_SUBMISSION_FILES={
 }
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":4,"submission":2}
 CURRENT_WORKFLOWS={
-    "initial_submission_bundle.yml",
-    "repository_structure_qa.yml",
     "reproduce_current_results.yml",
     "submission_pipeline.yml",
 }
