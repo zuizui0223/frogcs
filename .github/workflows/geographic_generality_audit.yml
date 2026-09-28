@@ -24,4 +24,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: geographic-generality-audit
-          path: NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_RECEIPT_V0_1.json
