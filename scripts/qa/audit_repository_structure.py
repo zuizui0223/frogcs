@@ -11,7 +11,7 @@ CURRENT_ROOT_FILES={
     "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md","JAE_TITLE_PAGE_V0_8.template.md",
 }
 CURRENT_ROOT_DIRS={
-    ".github","archive","figures_ecology_v1_0","figures_ecology_v1_2",
+    ".github","figures_ecology_v1_0","figures_ecology_v1_2",
     "provenance","scripts","submission",
 }
 CURRENT_SUBMISSION_FILES={
@@ -77,13 +77,8 @@ required=[
 for p in required:
     assert p.exists(),f"missing current file: {p.relative_to(ROOT)}"
 
-archive=ROOT/"archive"
-assert archive.is_dir()
-assert {p.name for p in archive.iterdir()} == {"README.md"}, [p.name for p in archive.iterdir()]
-
 prov=ROOT/"provenance"
 CURRENT_PROVENANCE_FILES={
-    "README.md",
     "contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
     "contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
     "contracts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json",
@@ -186,6 +181,5 @@ report={
     "active_scripts_recursive":len(list(scripts.rglob("*.py"))),
     "script_layout":SCRIPT_LAYOUT,
     "provenance_json_files":len(list(prov.rglob("*.json"))),
-    "archive_files":len([p for p in archive.rglob("*") if p.is_file()]),
 }
 print(json.dumps(report,indent=2,sort_keys=True))

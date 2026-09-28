@@ -35,7 +35,6 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `provenance/repairs/` — implementation/estimability repairs
 - `provenance/submission/` — story-freeze and scope decision records
 - `submission/` — cover letter plus current metadata/citation templates only
-- `archive/` — history pointer; full historical payload lives on the history/release branches
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
 
@@ -65,3 +64,12 @@ Human-identifying submission fields are kept out of the public repository. Copy 
 Before building the private bundle, confirm author order, affiliations, corresponding-author contact details, CRediT roles, funding/acknowledgements, Conflict of Interest, Statement on Inclusion, approvals, repository license, and (when available) archive DOI.
 
 To build the private-metadata bundle, run **Actions → submission pipeline → Run workflow** with **build_private_bundle = true**. The workflow validates the private YAML, renders the title page/portal metadata/CITATION/Zenodo metadata, and assembles the submission artifact without committing private contact details.
+
+
+## Historical material
+
+Superseded manuscripts, analyses, workflows, figures, and submission versions are intentionally absent from the current branch. Exact history remains available in:
+
+- `history/pre-deep-cleanup-2026-09-28`;
+- `release/jae-v1-rc1` through `release/jae-v1-rc11`;
+- ordinary Git history.
