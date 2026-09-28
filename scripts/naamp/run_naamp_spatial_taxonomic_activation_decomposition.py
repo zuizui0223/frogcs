@@ -300,7 +300,7 @@ def main():
         },
     }
 
-    Path("NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_RECEIPT_V0_1.json").write_text(
         json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     print(json.dumps(result, indent=2, sort_keys=True))
