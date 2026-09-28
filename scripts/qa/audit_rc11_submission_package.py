@@ -18,7 +18,7 @@ handoff=(root/"submission/SUBMISSION_HANDOFF_RC11.md").read_text(encoding="utf-8
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_10.md").read_text(encoding="utf-8")
 title_page=(root/"JAE_TITLE_PAGE_V0_8.template.md").read_text(encoding="utf-8")
 meta=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
-citation=(root/"submission/CITATION_V0_5.cff.template").read_text(encoding="utf-8")
+citation=(root/"submission/CITATION.cff.template").read_text(encoding="utf-8")
 fig2=(root/"figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg").read_text(encoding="utf-8")
 fig3=(root/"figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg").read_text(encoding="utf-8")
 
