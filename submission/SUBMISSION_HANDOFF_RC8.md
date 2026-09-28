@@ -42,6 +42,7 @@ RC7 remains preserved as the frozen fallback on:
 - figures: `figures_ecology_v1_0/`
 - title-page template: `JAE_TITLE_PAGE_V0_6.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml`
+- private human-finalization guide: `submission/HUMAN_FINALIZATION_RC8.md`
 - citation template: `submission/CITATION_V0_3.cff.template`
 
 ## Core empirical result
@@ -168,4 +169,4 @@ Current measured package:
 
 ## Human metadata still unresolved
 
-Final authors, affiliations, corresponding author details, CRediT, funding, acknowledgements, Conflict of Interest, Statement on Inclusion, all-author approval, archive license and DOI remain finalization-stage inputs.
+Final authors/order, full institutional addresses, corresponding-author contact details, multi-author contributions where applicable, funding, acknowledgements, Conflict of Interest, Statement on Inclusion, all-author approval, relevant-institution approval, authorship/originality/legal confirmations, archive license and DOI remain finalization-stage inputs. These are now collected through the single private `SUBMISSION_METADATA_TEMPLATE_V0_5.yml` path described in `submission/HUMAN_FINALIZATION_RC8.md`.
