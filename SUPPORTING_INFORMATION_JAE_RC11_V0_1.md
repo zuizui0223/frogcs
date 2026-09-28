@@ -710,7 +710,7 @@ Under the primary a = 0.75 stress test:
 
 Thus stronger preservation of pair-specific dry cell identity does not explain the observed allocation. If anything, the persistence-favouring null predicts slightly less boundary crossing and more within-core rearrangement than the original κ = 2 null.
 
-**Interpretive boundary:** rejection shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. It does not identify a unique biological mechanism. Preferential recruitment of combinations rare under dry conditions, including activation of temporary or intermittently suitable wet sites, is a plausible discussion-level hypothesis only.
+**Interpretive boundary:** rejection shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. These comparators still apply one common activation shift; we did not fit a null with species-specific shifts, which would test whether species-level response heterogeneity alone can reproduce the boundary allocation. The analyses therefore do not identify a unique biological mechanism. Preferential recruitment of combinations rare under dry conditions, including activation of temporary or intermittently suitable wet sites, is a plausible discussion-level hypothesis only.
 
 
 ---
