@@ -72,8 +72,8 @@
 
 ## JAE 2026 initial-submission compliance
 
-- [x] Research Article package below 8,500-word limit (current proxy ~7,095)
-- [x] abstract <=350 words (current ~340)
+- [x] Research Article package below 8,500-word limit (current proxy ~7,048)
+- [x] abstract <=350 words (current ~293)
 - [x] five numbered abstract statements
 - [x] <=8 alphabetical keywords (current 8)
 - [x] separate title-page template
