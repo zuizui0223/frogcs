@@ -5,7 +5,7 @@ on:
     branches:
       - revision/activation-decomposition-v1
     paths:
-      - "FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json"
+      - "provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json"
       - "scripts/run_frogid_rain_validation_timezone_repair.py"
       - ".github/workflows/frogid_timezone_repair_validation.yml"
   workflow_dispatch:
