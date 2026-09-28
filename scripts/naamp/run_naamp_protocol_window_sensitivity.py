@@ -40,7 +40,7 @@ def main():
 
     result={
       "analysis":"rc7_protocol_window_sensitivity_v0_1",
-      "contract":"provenance/contracts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json",
+      "contract":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1",
       "source_pairs":int(len(d)),
       "primary_crosses_three_day_window":p,
       "secondary_both_outside_three_day_window":b,
