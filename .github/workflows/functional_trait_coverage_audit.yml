@@ -6,7 +6,7 @@ on:
       - revision/functional-response-diversity-audit-v1
     paths:
       - "provenance/contracts/AMPHIBIO_FUNCTIONAL_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json"
-      - "scripts/audit_amphibio_functional_trait_coverage.py"
+      - "scripts/qa/audit_amphibio_functional_trait_coverage.py"
       - ".github/workflows/functional_trait_coverage_audit.yml"
   workflow_dispatch:
 
@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -q numpy pandas
       - name: Run outcome-blind trait coverage audit
-        run: python scripts/audit_amphibio_functional_trait_coverage.py
+        run: python scripts/qa/audit_amphibio_functional_trait_coverage.py
       - name: Upload receipt
         uses: actions/upload-artifact@v4
         with:
