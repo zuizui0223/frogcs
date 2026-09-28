@@ -41,7 +41,7 @@
 - [x] `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md`
 - [x] `JAE_TITLE_PAGE_V0_8.template.md`
 - [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
-- [x] `submission/CITATION_V0_5.cff.template`
+- [x] `submission/CITATION.cff.template`
 
 ## JAE format
 
