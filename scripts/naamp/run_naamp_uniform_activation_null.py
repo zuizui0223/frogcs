@@ -387,8 +387,8 @@ def main():
 
     output = {
         "analysis": "naamp_uniform_activation_null_v0_1",
-        "contract": "provenance/contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json",
-        "repair": "provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json",
+        "contract": "provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1",
+        "repair": "provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1",
         "n_pairs": int(len(pairs)),
         "n_beta_pairs": int(beta_mask.sum()),
         "simulation_replicates": B,

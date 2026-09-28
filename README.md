@@ -29,11 +29,10 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `scripts/frogid/` — FrogID and cross-dataset analyses
 - `scripts/qa/` — repository and submission audits
 - `scripts/submission/` — DOCX, metadata and submission-build utilities
-- `provenance/contracts/` — frozen analysis definitions
+- `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json` — bundled frozen analysis definitions, repair record, and scope decisions
 - `provenance/summaries/` — compact durable results
 - `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
-- `provenance/repairs/` — implementation/estimability repairs
-- `provenance/submission/` — story-freeze and scope decision records
+- `provenance/submission/` — current RC11 story freeze
 - `submission/` — cover letter plus current metadata/citation templates only
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.

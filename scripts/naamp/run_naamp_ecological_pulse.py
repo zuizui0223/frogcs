@@ -287,7 +287,7 @@ def main():
 
     result={
         "analysis":"naamp_pulse_nested_recruitment_v0_1",
-        "contract":"provenance/contracts/NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+        "contract":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1",
         "eligible_runs":int(len(d)),
         "primary_pair_summary":summaries(pairs),
         "primary_models":primary,

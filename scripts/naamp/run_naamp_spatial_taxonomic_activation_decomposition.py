@@ -275,7 +275,7 @@ def main():
 
     result = {
         "analysis": "naamp_spatial_taxonomic_activation_decomposition_v0_1",
-        "contract": "provenance/contracts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
+        "contract": "provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1",
         "status": "post-opening mechanistic decomposition frozen before endpoint readback",
         "descriptive": descriptive(pairs),
         "primary_models": primary,

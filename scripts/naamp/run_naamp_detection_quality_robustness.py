@@ -233,7 +233,7 @@ def main():
 
     result={
         "analysis":"naamp_detection_quality_robustness_v0_1",
-        "contract":"provenance/contracts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json",
+        "contract":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1",
         "run_covariate_coverage":run_cov,
         "primary_sample":{
             "n_pairs":int(len(primary)),
