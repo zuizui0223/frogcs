@@ -25,5 +25,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: protocol-window-sensitivity
-          path: NAAMP_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json
           if-no-files-found: error
