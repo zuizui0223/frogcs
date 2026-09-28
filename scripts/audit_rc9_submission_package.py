@@ -116,8 +116,8 @@ for x in [
 forbidden=[
   "worldwide universality is demonstrated",
   "universal rainfall response across frogs",
-  "same effect size across continents",
-  "identical mechanism across continents",
+  "results demonstrate the same effect size across continents",
+  "results demonstrate an identical mechanism across continents",
   "FrogID replicates the four-component matrix geometry",
   "rainfall caused"
 ]
