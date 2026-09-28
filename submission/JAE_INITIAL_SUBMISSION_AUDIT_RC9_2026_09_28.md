@@ -10,8 +10,8 @@ Current scientific package:
 
 - [x] Research Article proxy below 8,500 words
   - manuscript ~7,759
-  - title page ~113
-  - combined ~7,872
+  - title page ~131
+  - combined ~7,890
 - [x] abstract <=350 words
   - current ~322
 - [x] 5 numbered abstract statements
