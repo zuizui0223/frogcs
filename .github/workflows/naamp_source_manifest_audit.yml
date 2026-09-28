@@ -27,5 +27,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-naamp-source-manifest-v0-1
-          path: NAAMP_SCIENCEBASE_FILE_MANIFEST_AUDIT_V0_1.json
+          path: provenance/receipts/NAAMP_SCIENCEBASE_FILE_MANIFEST_AUDIT_V0_1.json
           if-no-files-found: error
