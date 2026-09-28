@@ -3,32 +3,45 @@ name: submission pipeline
 on:
   push:
     branches:
+      - cleanup/two-workflows-v1
       - main
       - release/jae-v1-rc11
       - submission/jae-v1
     paths:
       - "README.md"
+      - "archive/**"
+      - "provenance/**"
+      - "scripts/**"
+      - "submission/**"
+      - "figures_ecology_v1_0/**"
+      - "figures_ecology_v1_2/**"
+      - ".github/workflows/**"
       - "MANUSCRIPT_JAE_V1_3.md"
       - "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md"
       - "JAE_TITLE_PAGE_V0_8.template.md"
-      - "figures_ecology_v1_0/**"
-      - "figures_ecology_v1_2/**"
-      - "submission/**"
-      - "provenance/contracts/**"
-      - "provenance/summaries/**"
-      - "provenance/submission/**"
-      - "provenance/submission_docs/**"
-      - "scripts/qa/audit_rc11_submission_package.py"
-      - "scripts/qa/audit_jae_initial_submission_rc11_2026.py"
-      - "scripts/submission/build_jae_anonymous_docx.py"
-      - ".github/workflows/submission_pipeline.yml"
   workflow_dispatch:
+    inputs:
+      build_private_bundle:
+        description: Build the private-metadata initial submission bundle
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
 
 jobs:
-  validate-and-build:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/qa/audit_repository_structure.py
+
+  submission:
+    needs: structure
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -114,4 +127,86 @@ jobs:
         with:
           name: frogcs-jae-scientific-submission
           path: build/scientific-submission/
+          if-no-files-found: error
+
+  private-bundle:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_private_bundle }}
+    needs: [structure, submission]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install private-bundle dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+      - name: Materialize private submission metadata
+        env:
+          JAE_SUBMISSION_METADATA_YAML: ${{ secrets.JAE_SUBMISSION_METADATA_YAML }}
+        run: |
+          test -n "$JAE_SUBMISSION_METADATA_YAML" || {
+            echo "Missing repository secret JAE_SUBMISSION_METADATA_YAML" >&2
+            exit 2
+          }
+          printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-initial.yml
+      - name: Validate and render private metadata
+        run: |
+          python scripts/submission/render_submission_metadata.py             --metadata /tmp/metadata-initial.yml             --strict --stage initial             --outdir build/submission-metadata
+      - name: Guard current title
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          expected="Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+          x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          assert expected in x
+          PY
+      - name: Build anonymous DOCX files
+        run: |
+          python scripts/submission/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/Supporting_Information.docx
+      - name: Assemble private-metadata submission bundle
+        run: |
+          set -eu
+          out=build/initial-submission
+          sub="$out/submission_files"
+          audit="$out/audit"
+          mkdir -p "$sub" "$audit"
+          cp MANUSCRIPT_JAE_V1_3.md "$sub/Manuscript.md"
+          cp build/Manuscript.docx "$sub/Manuscript.docx"
+          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$sub/Supporting_Information.md"
+          cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
+          cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$sub/Title_Page.md"
+          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$sub/Figure1.svg"
+          cp figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg "$sub/Figure2.svg"
+          cp figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg "$sub/Figure3.svg"
+          cp submission/COVER_LETTER_JAE_V0_13.md "$sub/Cover_Letter.md"
+          cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$audit/"
+          cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
+          cp provenance/submission_docs/NOVELTY_AUDIT_V0_11.md "$audit/"
+          cp provenance/submission_docs/REVIEWER_ATTACK_MATRIX_V0_11.md "$audit/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$audit/"
+          cp provenance/submission_docs/SUBMISSION_HANDOFF_RC11.md "$audit/"
+          cp provenance/submission/RC11_STORY_FREEZE_V0_1.json "$audit/"
+          cp provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json "$audit/"
+          cp provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$audit/"
+          cp provenance/summaries/NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$audit/"
+          cp provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json "$audit/"
+          cp provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$audit/"
+          cp submission/CITATION.cff.template "$audit/"
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          out=Path("build/initial-submission")
+          sub=out/"submission_files"
+          for p in sub.iterdir():
+              assert not re.search(r"(RC\d+|V\d+[_\.-]?\d*)",p.name,re.I),p.name
+          rows={str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.rglob("*")) if p.is_file()}
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print({"status":"PASS","files":len(rows)})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-initial-submission
+          path: build/initial-submission/
           if-no-files-found: error
