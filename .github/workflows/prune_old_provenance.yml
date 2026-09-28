@@ -1,0 +1,38 @@
+name: prune old provenance files
+on:
+  push:
+    branches:
+      - cleanup/provenance-registry-v2
+    paths:
+      - ".github/workflows/prune_old_provenance.yml"
+permissions:
+  contents: write
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify registry and remove old per-analysis JSON
+        run: |
+          python - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          x=json.loads(Path("provenance/current.json").read_text(encoding="utf-8"))
+          counts={k:len(x[k]) for k in ["contracts","summaries","repairs","story"]}
+          assert counts=={"contracts":13,"summaries":6,"repairs":1,"story":4},counts
+          for d in ["provenance/contracts","provenance/summaries","provenance/repairs","provenance/submission"]:
+              shutil.rmtree(d)
+          print({"status":"PASS","counts":counts})
+          PY
+      - name: Commit provenance-only prune
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A provenance
+          git commit -m "replace per-analysis provenance with current registry"
+          git push origin HEAD:cleanup/provenance-registry-v2
