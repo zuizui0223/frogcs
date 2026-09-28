@@ -31,7 +31,7 @@ CURRENT_WORKFLOWS={
     "scientific_submission_bundle.yml","sorensen_equivalence.yml",
     "spatial_taxonomic_activation_decomposition.yml","submission_anonymous_docx.yml",
     "submission_package_qa.yml","uniform_activation_null.yml",
-    "within_active_depth_decomposition.yml",
+    "within_active_depth_decomposition.yml","prune_current_provenance.yml",
 }
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
