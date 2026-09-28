@@ -116,6 +116,8 @@ for phrase in [
             continue
         assert phrase not in text, (p.name, phrase)
 
+active_workflows=ROOT/".github/workflows"
+
 # Fail on stale pre-migration paths.
 mappings={}
 mappings.update(root_manifest["mapping"])
