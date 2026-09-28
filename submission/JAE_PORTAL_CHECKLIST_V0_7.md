@@ -52,7 +52,7 @@
 
 - [x] `MANUSCRIPT_JAE_V1_0.md`
 - [x] `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`
-- [x] `submission/COVER_LETTER_JAE_V0_9.md`
+- [x] `submission/COVER_LETTER_JAE_V0_10.md`
 - [x] `submission/NOVELTY_AUDIT_V0_7.md`
 - [x] `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
 - [x] `submission/RC8_STORY_FREEZE_V0_1.json`
