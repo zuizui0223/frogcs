@@ -1,0 +1,1372 @@
+{
+  "contracts": {
+    "CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json": {
+      "analysis": "crosscontinental_active_unit_taxonomic_depth_v0_1",
+      "australia": {
+        "primary_model": {
+          "cluster": "0.25-degree ERA5 cell",
+          "estimator": "OLS with cluster-robust covariance",
+          "formula": "excess_richness ~ dry_z + C(state) * C(month) + year_z + sin_hour + cos_hour",
+          "support": "beta_dry_z < 0 and complete 95% CI < 0"
+        },
+        "primary_response": "excess_richness = species_richness - 1; all retained FrogID recordings already have richness >= 1",
+        "rainfall_exposure": {
+          "definition": "zscore(log1p(number of complete coordinate-local calendar days immediately preceding the repaired event date until the first day with >=1 mm precipitation, capped at 30 days))",
+          "higher_value": "drier / farther from recent rainfall",
+          "unchanged_from": "provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json"
+        },
+        "sample": {
+          "coordinate_uncertainty_max_m": 25000,
+          "expected_recordings": 40754,
+          "expected_weather_cells": 1623,
+          "frogid_source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+          "selection": "first byte SHA256(eventID) < 16",
+          "source_pipeline": "scripts/frogid/run_frogid_rain_validation_timezone_repair.py"
+        },
+        "secondary_endpoints_no_gate": [
+          "threeplus = I(species_richness >= 3), logistic model with the same covariates and ERA5-cell clustering",
+          "excess_beyond_two = max(species_richness - 2, 0), OLS with the same covariates and ERA5-cell clustering"
+        ],
+        "sensitivities": {
+          "recorder_cluster": "same primary OLS formula clustered by recorder",
+          "within_cell": "demeaned within-ERA5-cell OLS using dry_z, year_z, month indicators, sin_hour and cos_hour; support if beta_dry_z < 0 and complete 95% CI < 0"
+        },
+        "system": "FrogID"
+      },
+      "cross_system_decision": {
+        "no_meta_analysis": true,
+        "pass": "Australian primary continuous-depth support AND frozen NAAMP active-alpha 95% CI > 0.",
+        "reason": "The systems use different rainfall-exposure scales and observation designs; comparison is directional on a shared active-unit taxonomic-depth estimand.",
+        "strong_pass": "PASS plus both Australian continuous-depth sensitivities have 95% CIs below zero."
+      },
+      "endpoint_retuning_after_readback_authorized": false,
+      "interpretation_boundaries": [
+        "Cross-continental consistency is not worldwide universality.",
+        "FrogID recordings and NAAMP stops are different observation systems.",
+        "The result concerns behaviourally realized acoustic richness conditional on acoustic activity, not occupancy or abundance.",
+        "No causal rainfall claim.",
+        "The North American four-component species x stop matrix geometry cannot be replicated in FrogID because FrogID lacks fixed ten-stop route matrices.",
+        "The historical >=2-species conditional discrepancy remains part of the record and is not overwritten."
+      ],
+      "north_america": {
+        "existing_authorized_result": {
+          "ci95": [
+            0.023119819091079956,
+            0.1357100124465138
+          ],
+          "direction": "wetter member has greater active-unit taxonomic depth",
+          "rainfall_contrast_beta": 0.07941491576879688,
+          "source": "provenance/summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json"
+        },
+        "new_naamp_model_authorized": false,
+        "response": "mean species richness per active stop; excess richness equals alpha_active - 1",
+        "sampling_unit": "standardized route stop conditional on at least one calling species",
+        "system": "NAAMP"
+      },
+      "project": "frog-chorus-synchrony",
+      "status": "frozen_before_australian_continuous_depth_readback"
+    },
+    "FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json": {
+      "frogid_effect_values_read_after_freeze": false,
+      "interpretation_rule": "Report repaired result regardless of direction or significance. Original result remains historical; repaired result becomes the submission value if the implementation passes frozen structural checks.",
+      "prohibited": [
+        "no sample changes",
+        "no wet-day threshold changes",
+        "no cap changes",
+        "no alternative weather source",
+        "no subset selection by repaired effect",
+        "no model-term changes"
+      ],
+      "project": "frog-chorus-synchrony",
+      "repair_version": "timezone_alignment_v0.1",
+      "status": "frozen_after_outcome_blind_time_audits_before_repaired_weather_effect_readback",
+      "timing_repair": {
+        "coordinate_timezone": "timezonefinder timezone_at(original coordinates)",
+        "no_offset_inference": "do not infer or overwrite the supplied offset before conversion",
+        "rainfall_exposure": "count complete coordinate-local calendar days immediately before repaired_event_date; event day remains excluded",
+        "repaired_event_date": "calendar date after converting the aware event instant to the coordinate timezone",
+        "repaired_event_hour": "fractional clock hour after the same conversion",
+        "timestamp": "combine eventDate with offset-bearing eventTime and parse as an aware ISO-8601 instant"
+      },
+      "transport_rule": {
+        "previous_required_unique_tp_chunks": 470,
+        "rationale": "a few local-date corrections may move boundary hours by one day; this is transport-only and may not be tuned to the effect",
+        "repaired_max_allowed_unique_chunks": 480
+      },
+      "triggers": {
+        "deterministic_sample_alignment": {
+          "comparable_events": 40754,
+          "local_date_match_fraction": 0.9998527751877117,
+          "local_hour_match_fraction": 0.9962948422240762,
+          "offset_match_fraction": 0.9962948422240762
+        },
+        "eventtime_semantics_audit": "all 655,502 events carry explicit UTC offsets"
+      },
+      "unchanged": {
+        "coordinate_uncertainty_max_m": 25000,
+        "dry_spell_cap_days": 30,
+        "era5_source": "Earthmover public Icechunk ERA5 single/temporal tp",
+        "frogid_source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
+        "primary_cluster": "0.25-degree ERA5 cell",
+        "primary_formula": "multi ~ dry_z + C(state) * C(month) + year_z + sin_hour + cos_hour",
+        "sample_selection": "first byte SHA256(eventID) < 16",
+        "sensitivities": [
+          "recorder clustering",
+          "within-ERA5-cell fixed-effect probability-scale diagnostic"
+        ],
+        "transform": "zscore(log1p(antecedent_dry_days))",
+        "wet_day_threshold_mm": 1
+      }
+    },
+    "NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json": {
+      "analysis": "naamp_detection_quality_robustness_v0_1",
+      "covariance": "cluster-robust by State x RouteNumber",
+      "interpretation": {
+        "boundary": "This is a measured-detection-condition robustness test, not proof that all acoustic detectability differences are absent.",
+        "if_supported": "The rainfall-associated spatial, local-alpha and route-gamma signals are not explained by recorded survey hearing impairment, noise interruptions or wind differences."
+      },
+      "minimum_primary_gate": {
+        "pairs": 1500,
+        "routes": 300
+      },
+      "prespecified_sensitivities": {
+        "car_count_2006plus": {
+          "minimum_gate": {
+            "pairs": 750,
+            "routes": 200
+          },
+          "model": "add wet-minus-dry mean car count to all three primary formulas",
+          "run_metric": "mean numeric CarCount across sampled stops; require >=8 valid stops"
+        },
+        "exact_consecutive_year": "same primary models on year_gap==1",
+        "mass_noise_index": {
+          "minimum_gate": {
+            "pairs": 300,
+            "routes": 75
+          },
+          "model": "replace standardized hearing-impairment fraction with wet-minus-dry mean MassNoiseIndex while retaining timeout and wind",
+          "run_metric": "mean MassNoiseIndex among valid 0-4 values; require >=8 valid stops"
+        }
+      },
+      "primary_models": [
+        {
+          "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + hearing_impairment_difference + timeout_difference + wind_difference + C(State) + C(RunNumber)",
+          "response": "delta_active_stops",
+          "support": "rain_contrast beta > 0 and 95% CI excludes 0"
+        },
+        {
+          "response": "delta_alpha_active",
+          "same_formula": true,
+          "support": "rain_contrast beta > 0 and 95% CI excludes 0"
+        },
+        {
+          "response": "richness_gain",
+          "same_formula": true,
+          "support": "rain_contrast beta > 0 and 95% CI excludes 0"
+        }
+      ],
+      "prohibited": [
+        "no outcome-dependent choice among noise encodings",
+        "no changing MassNoiseIndex threshold after readback",
+        "no excluding noisy surveys based on observed effect direction",
+        "no causal rainfall claim"
+      ],
+      "project": "frog-chorus-synchrony",
+      "question": "Can recorded hearing impairment, major-noise interruptions, or wind differences explain the rainfall-associated expansion of the active frog community?",
+      "recorded_detection_covariates": {
+        "run_wind": {
+          "definition": "mean of numeric StartWind and EndWind Beaufort codes when both are available and within 0-5"
+        },
+        "stop_hearing_impairment": {
+          "definition": "If Massachusetts MassNoiseIndex is present, impaired=1 for index >=2 and 0 for index 0-1; otherwise use the regional Noise yes/no field when valid (1=yes, 0=no).",
+          "protocol_basis": "NAAMP regional programs could record ambient noise as yes/no or with the Massachusetts noise index; index >=2 corresponds to moderately or more strongly affecting sampling."
+        },
+        "stop_timeout": {
+          "definition": "TimeOut==1 if a major noise disturbance caused the observer to break the 5-minute listening period; otherwise 0."
+        }
+      },
+      "run_level_derivation": {
+        "hearing_impairment_fraction": "mean standardized impairment indicator across the 10 sampled stops; require >=8 valid stops",
+        "mean_wind": "mean(StartWind, EndWind); require both valid",
+        "pair_covariates": "wet minus dry for each run-level quantity",
+        "timeout_fraction": "mean TimeOut across 10 sampled stops; require >=8 valid stops"
+      },
+      "sample": "same complete 10-stop matched wetter-drier route x RunNumber pairs as the metacommunity synthesis, restricted only by prespecified detection-covariate availability",
+      "status": "reviewer-robustness frozen before endpoint readback"
+    },
+    "NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json": {
+      "analysis": "naamp_pulse_nested_recruitment_v0_1",
+      "biological_hypothesis": "Rainfall acts as a short environmental pulse that relaxes constraints on reproductive acoustic activity, producing nested expansion of the active community rather than wholesale compositional turnover.",
+      "community_metrics": {
+        "dry_core_retention": "shared/(shared + dry_only), defined when drier-run richness >0",
+        "dry_only": "number active only in drier run",
+        "gain_share": "wet_only/(wet_only + dry_only), defined when discordant species >0",
+        "nestedness_component": "sorensen_dissimilarity - simpson_turnover",
+        "richness_gain": "active_species_richness_wetter - active_species_richness_drier",
+        "shared": "number of species active in both runs",
+        "simpson_turnover": "min(wet_only,dry_only)/(shared + min(wet_only,dry_only))",
+        "sorensen_dissimilarity": "(wet_only + dry_only)/(2*shared + wet_only + dry_only)",
+        "wet_only": "number active only in wetter run"
+      },
+      "descriptive_support": {
+        "dry_core_retention": "Report mean and median retention of drier-run active species in wetter runs.",
+        "gain_loss_balance": "Report total wet_only and dry_only counts across pairs and mean gain_share. This is descriptive because species discordances are not independent."
+      },
+      "ecological_question": "Does recent rainfall expand the acoustically active frog community by recruiting additional species around a persistent route-level core, or by replacing species through turnover?",
+      "eligibility": {
+        "rain": "numeric DaysSinceRain within publisher range [0,180]",
+        "sampled_stops": "exactly 10 non-skipped stops",
+        "species_presence": "CallingIndex in {1,2,3}",
+        "survey_date": "parseable",
+        "temperature": ">=8 valid stop temperatures and run mean in [-10,45] C",
+        "unified_protocol": "1",
+        "years": [
+          2001,
+          2015
+        ]
+      },
+      "interpretation_boundary": [
+        "This analysis concerns acoustically active community composition, not census abundance or occupancy.",
+        "Calling activity is a reproductive-behaviour proxy and does not by itself establish breeding success.",
+        "The ecological extension is post-opening relative to the original rain endpoint and is not part of the original confirmatory family.",
+        "No causal rainfall claim is authorized."
+      ],
+      "pairing": {
+        "orientation": "For pairs with unequal DaysSinceRain, define the run with lower DaysSinceRain as the wetter run and the other as the drier run. Equal-rain pairs are excluded.",
+        "primary_pairs": "all adjacent observed-year pairs",
+        "rule": "Within each stratum, sort eligible runs by SurveyYear and pair adjacent observed years. A run may contribute to at most two adjacent pairs.",
+        "sensitivity": "pairs with SurveyYear gap exactly 1",
+        "stratum": "State \u00d7 RouteNumber \u00d7 RunNumber"
+      },
+      "prediction": {
+        "P1": "Greater rainfall contrast predicts positive richness_gain.",
+        "P2": "Greater rainfall contrast predicts increased nestedness_component.",
+        "P3": "Greater rainfall contrast does not require increased simpson_turnover; a null or weaker turnover slope together with P1/P2 supports nested expansion.",
+        "P4": "Across matched pairs, wetter runs retain a large fraction of the drier-run active species while adding more species than they lose."
+      },
+      "predictors": {
+        "doy_difference": "doy_wetter - doy_drier",
+        "rain_contrast": "log1p(DaysSinceRain_drier) - log1p(DaysSinceRain_wetter), always >0",
+        "temp_difference": "mean_temp_c_wetter - mean_temp_c_drier",
+        "year_gap": "SurveyYear_later - SurveyYear_earlier"
+      },
+      "primary_models": {
+        "nestedness_component": "OLS with same predictors and clustering",
+        "richness_gain": "OLS with cluster-robust SE by State:RouteNumber; richness_gain ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+        "simpson_turnover": "OLS with same predictors and clustering"
+      },
+      "project": "frog-chorus-synchrony",
+      "source_pins": {
+        "Counts": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086",
+        "Runs": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+        "Stops": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f"
+      },
+      "status": "ecological_extension_frozen_before_effect_readback"
+    },
+    "NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json": {
+      "analysis": "rc6_geographic_generality_audit_v0_1",
+      "audits": {
+        "leave_one_state_out": {
+          "cluster": "route_cluster",
+          "model": "original RC6 model response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+          "pass_rule": "For each of the three headline responses, all leave-one-state-out rain_contrast coefficients remain positive.",
+          "report": [
+            "omitted_state",
+            "beta_rain_contrast",
+            "ci95"
+          ],
+          "strong_pass_rule": "All leave-one-state-out 95% confidence intervals remain above zero for all three headline responses."
+        },
+        "state_random_slope": {
+          "model_family": "linear mixed model with State random intercept and rain_contrast random slope; fixed rain_contrast + temperature difference + day-of-year difference + year gap + RunNumber",
+          "report": [
+            "population_rain_slope",
+            "state_slope_sd",
+            "state_BLUP_slopes",
+            "convergence"
+          ],
+          "role": "Quantify geographic heterogeneity; no requirement that every state-specific slope is positive."
+        },
+        "state_specific_slopes": {
+          "cluster": "route_cluster",
+          "interpretation": "Direction and effect-size distribution; individual-state significance is not a pass criterion.",
+          "model": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(RunNumber)",
+          "report": [
+            "n_pairs",
+            "n_routes",
+            "beta_rain_contrast",
+            "ci95",
+            "p_value"
+          ]
+        }
+      },
+      "covariates": [
+        "temp_difference",
+        "doy_difference",
+        "year_gap",
+        "RunNumber"
+      ],
+      "decision_language": {
+        "fail": "The continent-scale association remains supported in the pooled matched analysis, but geographic consistency is limited because at least one state materially controls a headline coefficient.",
+        "pass": "The RC6 expansion signal is not driven by any single state and is geographically transportable across the sampled NAAMP region, while allowing state-level effect heterogeneity.",
+        "prohibited": [
+          "the effect occurs in every state",
+          "continental universality",
+          "causal rainfall effect",
+          "state-specific P<0.05 as a requirement for generality"
+        ]
+      },
+      "endpoint_retuning_after_readback_authorized": false,
+      "exposure": "rain_contrast",
+      "headline_responses": [
+        "delta_active_stops",
+        "delta_alpha_active",
+        "delta_gamma"
+      ],
+      "population": "The existing 4,236 matched wetter-drier NAAMP comparisons from 585 routes in 21 states.",
+      "programme": "frog-chorus-synchrony",
+      "purpose": "Audit geographic transportability of the already-authorized RC6 headline; not a new ecological endpoint or mechanism search.",
+      "source_analysis": "provenance/contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
+      "status": "frozen_before_endpoint_readback"
+    },
+    "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json": {
+      "analysis": "naamp_metacommunity_alpha_beta_gamma_v0_1",
+      "conceptual_unit": {
+        "activity_boundary": "beta metrics are calculated among stops containing at least one calling species in each run",
+        "local_community": "one standardized NAAMP stop",
+        "metacommunity": "the ten-stop route-run"
+      },
+      "interpretation_boundary": {
+        "causal_claim": false,
+        "homogenization": "greater similarity of detected active assemblages among stops, not biotic homogenization through colonization/extinction",
+        "metacommunity": "behaviourally realized acoustic metacommunity, not occupancy metacommunity",
+        "retuning_after_readback": false
+      },
+      "model": {
+        "covariance": "cluster-robust by State x RouteNumber",
+        "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+        "sensitivity": "exact consecutive-year pairs"
+      },
+      "primary_endpoints": [
+        {
+          "definition": "wet minus dry mean species richness per active stop",
+          "name": "delta_alpha_active",
+          "prediction": "positive; replication of within-active depth result"
+        },
+        {
+          "definition": "wet minus dry route-level active species richness",
+          "name": "delta_gamma",
+          "prediction": "positive; replication of ecological pulse result"
+        },
+        {
+          "definition": "wet minus dry mean pairwise Sorensen dissimilarity across all pairs of active stops within a run",
+          "name": "delta_mean_pairwise_sorensen_active",
+          "prediction": "two-sided; negative indicates spatial homogenization, positive indicates differentiation"
+        },
+        {
+          "definition": "wet minus dry normalized Whittaker beta among active stops: ((gamma/alpha_active)-1)/(n_active-1), defined for n_active>=2",
+          "name": "delta_whittaker_beta_normalized_active",
+          "prediction": "two-sided; sign interpreted as homogenization/differentiation"
+        }
+      ],
+      "project": "frog-chorus-synchrony",
+      "sample": "same 4,236 matched wet-dry route x seasonal-window pairs; exact-consecutive-year sensitivity prespecified",
+      "secondary": [
+        "mean pairwise Simpson turnover among active stops",
+        "mean pairwise nestedness-resultant dissimilarity among active stops",
+        "delta active-stop count"
+      ],
+      "status": "post-opening metacommunity decomposition frozen before endpoint readback"
+    },
+    "NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json": {
+      "analysis": "naamp_persistence_preserving_uniform_activation_null_v0_1",
+      "candidate_species_pool": "For each State x RouteNumber x RunNumber stratum, use the same full eligible-run union of species as the existing uniform-activation null. This retains nonzero opportunity for combinations seen only outside dry history.",
+      "historical_cell_probability": {
+        "data": "unique drier-member runs within the matched dataset, each RunID counted once",
+        "estimator": "cell-only Jeffreys-smoothed frequency p_hist=(y_cell+0.5)/(n_dry_runs+1.0)",
+        "hierarchical_species_shrinkage": false,
+        "rationale": "Avoid the reviewer concern that shrinkage toward species means weakens stable species x stop identity."
+      },
+      "interpretation_boundary": {
+        "causal_claim": false,
+        "ecological_hypothesis_if_rejected": "Low-dry-frequency species x stop combinations may be disproportionately recruited under recent-rain conditions; temporary or intermittently suitable wet sites are one plausible discussion-level explanation, not an identified mechanism.",
+        "rejection": "Evidence that the observed allocation is not captured even by a uniform-activation process that strongly favours persistence of pair-specific dry cells. It does not identify a unique mechanism.",
+        "retuning_after_readback": false
+      },
+      "pair_specific_persistence": {
+        "formula": "p_anchor=(1-a)*p_hist + a*I(cell present in the observed drier member)",
+        "interpretation": "At a=0.90, dry-present cells start near one and dry-absent cells near zero before the common shift, providing an intentionally persistence-favouring stress test.",
+        "primary_anchor_weight": 0.75,
+        "sensitivity_anchor_weights": [
+          0.5,
+          0.9
+        ]
+      },
+      "primary_test": {
+        "reject_rule": "Monte Carlo p < 0.05 at anchor weight a=0.75",
+        "statistic": "Mahalanobis distance of the observed four-component rainfall-contrast coefficient vector from the simulated-null mean using simulated covariance"
+      },
+      "project": "frog-chorus-synchrony",
+      "question": "Does the observed incidence allocation still depart from uniform activation when the null strongly preserves pair-specific dry species x stop occupancy and removes hierarchical shrinkage toward species means?",
+      "robustness_rule": {
+        "consistent_with_persistence_preserving_uniform_activation": "primary a=0.75 does not reject",
+        "inconclusive": "primary a=0.75 rejects but either a=0.50 or a=0.90 does not",
+        "strong_rejection": "omnibus p < 0.05 at a=0.50, 0.75 and 0.90"
+      },
+      "sample": "the existing 4,236 matched wet-dry route x RunNumber pairs used by the RC9 four-component decomposition",
+      "secondary_reports": [
+        "null mean and 95% interval for each four-component coefficient share",
+        "null mean and 95% interval for boundary crossing",
+        "observed percentile for each share",
+        "comparison of expected within-core share with the existing kappa=2 null"
+      ],
+      "simulation": {
+        "quadrants": "the exact corner-expansion, spatial-spread, taxonomic-deepening and within-core-rearrangement net components against the fixed observed dry matrix",
+        "replicates": 1000,
+        "seed": 2840223,
+        "wet_cells": "independent Bernoulli draws from the shifted anchored probabilities"
+      },
+      "status": "frozen_before_endpoint_readback",
+      "title_support_rule": {
+        "boundary_biased_title_authorized": "strong_rejection AND observed boundary-crossing share exceeds the upper 95% null bound at a=0.75",
+        "candidate_title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+      },
+      "uniform_activation": "For each matched pair, apply one common additive log-odds shift delta to all anchored cell probabilities and solve delta so expected wet incidence count equals that pair's observed wet incidence count."
+    },
+    "NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json": {
+      "analysis": "rc7_protocol_window_sensitivity_v0_1",
+      "authorized_interpretation": {
+        "primary_fail": "The pooled RC7 association remains the headline, but evidence outside the protocol-target window is insufficient or directionally inconsistent.",
+        "primary_pass": "The multiscale association is not confined to comparisons entirely within the 0-3 day protocol-target window.",
+        "primary_strong_pass": "The footprint, alpha and gamma associations remain confidence-interval positive when the drier survey lies outside the 0-3 day protocol-target window."
+      },
+      "endpoint_retuning_after_readback_authorized": false,
+      "model": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance",
+      "programme": "frog-chorus-synchrony",
+      "prohibited": [
+        "protocol selection is eliminated",
+        "rainfall causality is established",
+        "the sensitivity identifies which states followed the rainfall-targeting protocol",
+        "a failed both-outside diagnostic invalidates the primary matched result"
+      ],
+      "reason": "The NAAMP national protocol states that Gulf Coast and Great Plains routes should have been conducted within three days of rainfall. This sensitivity asks whether the existing RC7 footprint/alpha/gamma associations remain when rainfall contrast extends beyond that protocol-target window.",
+      "responses": [
+        "delta_active_stops",
+        "delta_alpha_active",
+        "delta_gamma"
+      ],
+      "sensitivities": {
+        "primary_crosses_three_day_window": {
+          "meaning": "At least the drier member lies outside the protocol-target 0-3 day post-rain window.",
+          "pass_rule": "All three rainfall-contrast coefficients are positive.",
+          "strong_pass_rule": "All three 95% confidence intervals are entirely above zero.",
+          "subset": "dry_days_since_rain >= 4"
+        },
+        "secondary_both_outside_three_day_window": {
+          "decision_role": "descriptive diagnostic only; report n, slopes and confidence intervals without a PASS requirement because this subset may remove the biologically strongest immediate-rain contrasts.",
+          "meaning": "Both members lie outside the protocol-target 0-3 day post-rain window.",
+          "subset": "wet_days_since_rain >= 4"
+        }
+      },
+      "source_analysis": "provenance/contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
+      "status": "frozen_before_endpoint_readback"
+    },
+    "NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json": {
+      "analysis": "naamp_same_observer_robustness_v0_1",
+      "classification": {
+        "directionally_consistent_qualified": "minimum gate passes and all three headline coefficients are positive, while observed boundary crossing exceeds both primary null means, but one or more strong-support conditions above fail",
+        "mixed": "minimum gate passes but headline signs differ or observed boundary crossing does not exceed one or both primary null means",
+        "observer_robust": "minimum gate passes; all three headline rain-contrast coefficients are positive with 95% CIs excluding zero; the four-component omnibus rejects at P<0.05 for primary kappa=2 and primary anchor=0.75; and observed boundary crossing lies above the 95% null interval for both primary nulls",
+        "underpowered": "minimum gate fails"
+      },
+      "headline_endpoints": [
+        "delta_active_stops",
+        "delta_mean_species_per_active_stop",
+        "richness_gain"
+      ],
+      "headline_models": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), cluster-robust by State x RouteNumber",
+      "interpretation_boundary": {
+        "causal_rainfall_claim_authorized": false,
+        "observer_equivalence_proven": false,
+        "post_readback_retuning_authorized": false,
+        "purpose": "address observer-turnover detectability as a reviewer robustness concern without changing the frozen RC10 story",
+        "unique_mechanism_identified": false
+      },
+      "matrix_test": {
+        "components": [
+          "corner_expansion",
+          "spatial_spread",
+          "taxonomic_deepening",
+          "within_core_rearrangement"
+        ],
+        "persistence_preserving_null": {
+          "anchor_sensitivity": [
+            0.5,
+            0.75,
+            0.9
+          ],
+          "primary_anchor": 0.75,
+          "replicates": 1000,
+          "seed": 2840223,
+          "species_level_shrinkage": false
+        },
+        "primary_uniform_null": {
+          "kappa": 2.0,
+          "magnitude_matching": "match each wetter run's observed species x stop incidence count",
+          "replicates": 1000,
+          "seed": 2840223
+        },
+        "uniform_smoothing_sensitivity": [
+          1.0,
+          2.0,
+          5.0
+        ]
+      },
+      "minimum_gate": {
+        "action_if_failed": "report coverage and retain observer turnover as a limitation; do not interpret inferential endpoints",
+        "pairs": 750,
+        "routes": 200
+      },
+      "project": "frog-chorus-synchrony",
+      "question": "Does the RC10 rainfall-associated expansion and boundary-biased incidence allocation persist when wetter-drier comparisons are restricted to the same recorded NAAMP observer?",
+      "sample": {
+        "base": "same complete 10-stop matched wetter-drier route x RunNumber pairs as RC10",
+        "observer_field": "Runs.csv:ObserverTrackingID",
+        "restriction": "ObserverTrackingID must be nonempty and identical for the wetter and drier run"
+      },
+      "status": "reviewer-robustness frozen before endpoint readback"
+    },
+    "NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json": {
+      "analysis": "naamp_sorensen_equivalence_v0_1",
+      "context": "The conventional S\u00f8rensen coefficient and 95% CI were already known in RC7; this is therefore a bounded robustness test, not a preregistered equivalence analysis.",
+      "decision_rule": "practical equivalence if the complete 90% confidence interval for the rainfall-contrast coefficient lies within [-0.025,+0.025]",
+      "margin_rationale": "2.5 percentage points on the bounded 0-1 S\u00f8rensen dissimilarity scale per unit log-rainfall contrast; deliberately tighter than the existing +/-0.05 matrix-fill margin.",
+      "model": "delta_sorensen ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), cluster-robust by State x RouteNumber",
+      "primary_margin": [
+        -0.025,
+        0.025
+      ],
+      "prohibited": [
+        "exact invariance",
+        "equivalence of every beta-diversity metric",
+        "changing the margin after readback"
+      ],
+      "project": "frog-chorus-synchrony",
+      "response": "wet-minus-dry mean pairwise S\u00f8rensen dissimilarity among active stops",
+      "sensitivity": "apply the identical margin and rule to exact consecutive-year pairs",
+      "status": "post_hoc_margin_frozen_before_equivalence_readback",
+      "title_support_rule": "equivalence wording for S\u00f8rensen is authorized only if both the primary and exact-consecutive-year analyses pass"
+    },
+    "NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json": {
+      "analysis": "naamp_spatial_taxonomic_activation_decomposition_v0_1",
+      "ecological_question": "Does rainfall-associated expansion of route-level active species richness arise because the active spatial footprint expands, because species composition changes within already-active stops, or both?",
+      "exact_identity": "richness_gain = footprint_dependent_net_species + within_footprint_net_species for every matched pair",
+      "frozen_primary_endpoints": [
+        {
+          "definition": "number of stops with >=1 calling species in wet run minus dry run",
+          "meaning": "spatial activation breadth",
+          "name": "delta_active_stops",
+          "prediction": "beta_rain_contrast > 0"
+        },
+        {
+          "definition": "within each pair, mean wet-minus-dry number of occupied stops among species present somewhere in both runs",
+          "meaning": "spatial spreading of already-participating species",
+          "name": "shared_species_delta_stops_mean",
+          "prediction": "beta_rain_contrast > 0"
+        },
+        {
+          "definition": "wet-only route species detected exclusively at stops inactive in the dry run, minus dry-only route species detected exclusively at stops inactive in the wet run",
+          "meaning": "conservative component of route richness change structurally dependent on expansion/contraction of the active-stop footprint",
+          "name": "footprint_dependent_net_species",
+          "prediction": "beta_rain_contrast > 0"
+        },
+        {
+          "definition": "remaining wet-only route species minus remaining dry-only route species after footprint-dependent species are removed",
+          "meaning": "route richness change occurring at least partly within stops already active in the comparison run",
+          "name": "within_footprint_net_species",
+          "prediction": "reported without a directional support gate"
+        }
+      ],
+      "interpretation_boundary": {
+        "active": "acoustically detected calling activity, not occupancy or abundance",
+        "footprint_dependent": "structural dependence in the observed stop x species matrix, not causal proof that spatial activation caused species recruitment",
+        "multiplicity": "finite decomposition family fixed before endpoint readback; no outcome-dependent retuning",
+        "rainfall": "observational association; no causal rainfall claim"
+      },
+      "model": {
+        "covariance": "cluster-robust by State x RouteNumber",
+        "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+        "sensitivity": "exact consecutive-year pairs only"
+      },
+      "parent_analysis": "provenance/contracts/NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+      "project": "frog-chorus-synchrony",
+      "sample": {
+        "pair_orientation": "lower DaysSinceRain = wet; higher DaysSinceRain = dry",
+        "source": "same complete 10-stop, temperature-qualified NAAMP runs and adjacent-observed-year route x RunNumber matched pairs as the ecological pulse analysis",
+        "stop_alignment": "same StopNumber within matched route; fail closed unless all 10 stop numbers align"
+      },
+      "secondary_diagnostics": [
+        "delta_species_stop_incidences",
+        "delta_mean_species_per_active_stop",
+        "delta_mean_stops_per_route_species",
+        "2x2 counts of wet incidence gains: route-new versus route-existing species x dry-inactive versus dry-active stop"
+      ],
+      "status": "post-opening_mechanistic_decomposition_frozen_before_readback"
+    },
+    "NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json": {
+      "analysis": "naamp_uniform_activation_null_v0_1",
+      "interpretation_boundary": {
+        "causal_claim": false,
+        "failing_to_reject": "the matrix allocation is statistically consistent with simple uniform activation and must not be sold as a distinct structured mechanism",
+        "rejecting_null": "evidence that the observed allocation is not captured by this simple uniform-activation model; not proof of a unique biological mechanism",
+        "retuning_after_readback": false,
+        "uniform_activation": "a common log-odds activation shift on dry-side acoustic detection propensities; not a demographic model"
+      },
+      "null_model": {
+        "baseline_probability": {
+          "formula": "mu0=(all dry incidences + 0.5)/(n_dry_runs*10*n_species + 1); mu_species=(species dry incidences + kappa*mu0)/(n_dry_runs*10 + kappa); p_cell=(cell dry detections + kappa*mu_species)/(n_dry_runs + kappa)",
+          "hierarchy": "For each stratum, estimate a stratum incidence mean, then a species mean, then a species x StopNumber probability from dry-side detections only.",
+          "primary_shrinkage_strength": 2.0,
+          "sensitivity_shrinkage_strengths": [
+            1.0,
+            5.0
+          ]
+        },
+        "candidate_species_pool": "For each State x RouteNumber x RunNumber stratum, use the union of species detected in any eligible run in that stratum. Using the full long-term stratum pool is conservative because the null is allowed to generate species seen only in wetter surveys.",
+        "dry_history": "Use unique drier-member RunIDs from the matched-pair dataset within each stratum. Each unique dry run contributes once.",
+        "simulation": {
+          "beta": "recompute mean pairwise S\u00f8rensen dissimilarity among active stops and fit the same wet-minus-dry rainfall-contrast slope",
+          "quadrants": "recompute the exact RC7 corner-expansion, spatial-spread, taxonomic-deepening and within-core-rearrangement net components against the fixed observed dry matrix",
+          "replicates": 1000,
+          "seed": 2840223,
+          "wet_cells": "independent Bernoulli draws from the shifted probabilities"
+        },
+        "uniform_activation": "For each matched pair, hold the observed dry matrix fixed. Apply one common additive log-odds shift delta to every candidate species x stop cell. Solve delta so that the expected number of simulated wet incidences equals that pair's observed wet incidence count. This conditions the null on response magnitude in expectation and tests allocation/geometry rather than total activation."
+      },
+      "primary_observed_vector": [
+        "corner_expansion rain-contrast beta",
+        "spatial_spread rain-contrast beta",
+        "taxonomic_deepening rain-contrast beta",
+        "within_core_rearrangement rain-contrast beta",
+        "pairwise_Sorensen rain-contrast beta"
+      ],
+      "primary_test": {
+        "p_value": "Monte Carlo upper-tail fraction of simulated Mahalanobis distances at least as large as the observed distance",
+        "reject_rule": "p < 0.05 under kappa=2",
+        "statistic": "Mahalanobis distance of the observed five-element vector from the simulated-null mean using the simulated covariance matrix"
+      },
+      "project": "frog-chorus-synchrony",
+      "question": "Are the observed four incidence-component slopes and near-zero S\u00f8rensen slope distinguishable from a simple uniform activation process that preserves dry-side species x stop propensities?",
+      "robustness_rule": {
+        "consistent_with_uniform_activation": "kappa=2 does not reject",
+        "inconclusive": "kappa=2 rejects but either kappa=1 or kappa=5 does not",
+        "strong_rejection": "primary omnibus p < 0.05 under kappa=1,2,5"
+      },
+      "sample": "the existing 4,236 matched wet-dry route x RunNumber pairs",
+      "secondary_reports": [
+        "null mean and 95% interval for each of the four coefficient shares",
+        "null mean and 95% interval for the boundary-crossing share = 1 - within-core share",
+        "null mean and 95% interval for the S\u00f8rensen rain-contrast beta",
+        "observed percentile for each statistic"
+      ],
+      "status": "frozen_before_endpoint_readback"
+    },
+    "NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json": {
+      "analysis": "naamp_within_active_depth_decomposition_v0_1",
+      "exact_decomposition": {
+        "coefficient_identity": "OLS rain-contrast beta for delta mean richness must equal the sum of component betas under identical rows/covariates",
+        "per_pair": "delta_mean_species_per_active_stop = delta_fraction_2plus + delta_excess_beyond_two",
+        "per_run": "mean_species_per_active_stop = 1 + fraction_active_stops_with_2plus_species + mean_excess_species_beyond_two_per_active_stop"
+      },
+      "interpretation_boundary": {
+        "active_stop": "acoustic detection, not occupancy or abundance",
+        "causal_claim": false,
+        "retuning_after_readback": false,
+        "shared_active_stop": "same numbered route stop active in both surveys; not repeated-measures proof of local population change"
+      },
+      "models": {
+        "covariance": "cluster-robust by State x RouteNumber",
+        "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+        "sensitivity": "exact consecutive-year pairs"
+      },
+      "parent": "provenance/contracts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
+      "primary_endpoints": [
+        {
+          "definition": "wet minus dry fraction of active stops containing >=2 species",
+          "direction": "estimate and CI; no directional gate because prior all-run decomposition was null",
+          "name": "delta_fraction_2plus_active",
+          "role": "threshold-crossing component"
+        },
+        {
+          "definition": "wet minus dry sum(max(K-2,0)) / number of active stops",
+          "name": "delta_excess_beyond_two_active",
+          "prediction": "beta_rain_contrast > 0",
+          "role": "deep-multiplicity component"
+        },
+        {
+          "definition": "within each matched pair, mean wet-minus-dry species count across StopNumbers active in both runs",
+          "name": "shared_active_stop_delta_species_mean",
+          "prediction": "beta_rain_contrast > 0",
+          "role": "local taxonomic deepening holding active-stop membership fixed"
+        }
+      ],
+      "project": "frog-chorus-synchrony",
+      "question": "When active-stop mean species richness rises with rainfall contrast, is that due to crossing from one to at least two species, or to additional species beyond the second within already multispecies stops?",
+      "sample": "same 4,236 adjacent-observed-year matched wet-dry route x RunNumber pairs; exact-consecutive-year sensitivity prespecified",
+      "secondary_diagnostics": [
+        "delta_fraction_3plus_active",
+        "delta_excess_beyond_three_active",
+        "same-stop transition counts among shared-active stops: 1->1, 1->2, 1->3plus, 2plus->1, 2->2, 2->3plus, 3plus->lower, 3plus->same_or_higher",
+        "newly-active-stop mean species count in wet run",
+        "lost-active-stop mean species count in dry run"
+      ],
+      "status": "post-opening depth decomposition frozen before endpoint readback"
+    }
+  },
+  "description": "Lossless registry of current-paper provenance formerly stored as per-analysis JSON files.",
+  "repairs": {
+    "NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json": {
+      "artifact": "NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1",
+      "decision_rules_weakened": false,
+      "endpoint_retuning_after_readback_authorized": false,
+      "parent_contract": "provenance/contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json",
+      "project": "frog-chorus-synchrony",
+      "reason": "The four incidence components are defined for all 4,236 matched pairs, whereas pairwise S\u00f8rensen is conditional on both runs having at least two active stops. A single joint Mahalanobis vector would mix different estimands or require conditioning the incidence null on beta-diversity eligibility.",
+      "repair": {
+        "headline_homogenization_decision": "Use the separately frozen S\u00f8rensen practical-equivalence analysis, not the uniform-null omnibus.",
+        "primary_uniform_activation_test": {
+          "decision_rules": "unchanged p<0.05 primary; strong rejection requires p<0.05 for kappa=1,2,5",
+          "sample": "all 4,236 matched pairs",
+          "statistic": "Mahalanobis distance from the simulated four-component null",
+          "vector": [
+            "corner_expansion rain-contrast beta",
+            "spatial_spread rain-contrast beta",
+            "taxonomic_deepening rain-contrast beta",
+            "within_core_rearrangement rain-contrast beta"
+          ]
+        },
+        "secondary_sorensen_null": {
+          "decision_role": "descriptive secondary comparator only",
+          "note": "The secondary S\u00f8rensen null is simulated only for the primary smoothing specification kappa=2; kappa=1 and 5 are reserved for the four-component geometry sensitivity.",
+          "primary_kappa": 2,
+          "report": "null mean, 95% interval and observed percentile for the S\u00f8rensen rain-contrast beta",
+          "sample": "the same fixed pair set on which the observed S\u00f8rensen wet-minus-dry response is defined",
+          "simulation": "simulate under the same uniform-activation probabilities; for each eligible pair, resample simulated wet matrices until at least two stops are active so the beta-diversity estimand remains defined"
+        }
+      },
+      "status": "frozen_before_endpoint_readback"
+    }
+  },
+  "schema": "frogcs-current-provenance-v1",
+  "story": {
+    "RC10_SCOPE_UNFREEZE_V0_1.json": {
+      "artifact": "RC10_SCOPE_UNFREEZE_V0_1",
+      "authorized_changes": [
+        "Add one persistence-preserving uniform-activation sensitivity family, frozen before endpoint readback.",
+        "Demote FrogID wording from independent/external validation to cross-dataset directional consistency while retaining the already frozen estimates.",
+        "Move practical Sorensen non-homogenization out of the title and make incidence allocation versus uniform activation the title-level result.",
+        "Compress robustness-method prose to Supporting Information if needed for JAE word count."
+      ],
+      "causal_claim_authorized": false,
+      "not_authorized": [
+        "new species traits",
+        "new continent or monitoring system",
+        "new FrogID endpoint",
+        "new Sorensen equivalence margin",
+        "new mechanism endpoint",
+        "post-readback retuning of the persistence null"
+      ],
+      "parent_freeze": "provenance/submission/RC9_STORY_FREEZE_V0_1.json",
+      "project": "frog-chorus-synchrony",
+      "reason": "Pre-submission review identified three remaining risks: the title overweights post hoc Sorensen equivalence, FrogID wording can sound like blinded external validation despite earlier positive FrogID multiplicity results, and the uniform-activation null may underrepresent strong species x stop persistence because historical cell probabilities are hierarchically shrunk.",
+      "scientific_goal": "Test whether the observed four-component allocation remains unusual when the null strongly preserves the pair-specific dry species x stop state.",
+      "status": "author_directed_final_inferential_repair"
+    },
+    "RC10_STORY_DECISION_TREE_V0_1.json": {
+      "always": {
+        "frogid_wording": "Use cross-dataset consistency / directional agreement across two monitoring datasets. Do not call the continuous-depth analysis an independent test or external validation.",
+        "sorensen_title": "Remove without practical homogenization from the title. Keep post hoc practical-equivalence as a secondary bounded result in Results/Discussion.",
+        "worldwide_wording": "Do not claim worldwide, universal or global generality."
+      },
+      "artifact": "RC10_STORY_DECISION_TREE_V0_1",
+      "if_primary_does_not_reject": {
+        "main_interpretation": "Do not claim allocation beyond uniform activation as a robust headline; retain original null as model-dependent evidence.",
+        "title": "Rainfall-associated expansion of frog active communities across spatial and taxonomic scales"
+      },
+      "if_primary_rejects_but_not_strong": {
+        "main_interpretation": "Structured departure is retained but persistence sensitivity is qualified.",
+        "title": "Rainfall-associated expansion of frog active communities departs from uniform activation"
+      },
+      "if_strong_rejection_and_boundary_above_primary_95pct": {
+        "discussion": "May discuss preferential recruitment of combinations rare in dry conditions and temporary/intermittent wet-site activation as plausible hypotheses, explicitly non-causal.",
+        "main_interpretation": "The allocation departure survives a persistence-favouring null, strengthening the claim that uniform amplification does not reproduce where additional participation enters the matrix.",
+        "title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+      },
+      "inputs": [
+        "provenance/contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
+        "provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
+        "provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json"
+      ],
+      "project": "frog-chorus-synchrony",
+      "status": "frozen_before_persistence_null_readback"
+    },
+    "RC11_STORY_FREEZE_V0_1.json": {
+      "artifact": "RC11_STORY_FREEZE_V0_1",
+      "changes_requiring_explicit_unfreeze": [
+        "new ecological endpoint or hypothesis family",
+        "new continent or monitoring system",
+        "new null family including the reserved species-specific activation null",
+        "retuning existing null parameters after readback",
+        "change to the Sorensen post hoc bound",
+        "new causal mechanism promoted into the main claim"
+      ],
+      "frozen_core_claims": [
+        "Recent-rain conditions are associated with expansion of the behaviourally realized acoustic community across active spatial footprint, local alpha richness and route gamma richness in NAAMP.",
+        "Active-unit taxonomic depth has the same recent-rain direction in the aligned NAAMP and FrogID analyses; this is cross-dataset consistency, not independent validation or a pooled effect-size claim.",
+        "The North American four-component incidence allocation strongly rejects the original magnitude-matched uniform-activation null under kappa 1, 2 and 5.",
+        "The allocation also strongly rejects the persistence-preserving uniform-activation stress test at dry-state anchor weights 0.50, 0.75 and 0.90.",
+        "The boundary-biased allocation and all three headline expansion coefficients persist in the large same-observer subset.",
+        "Pairwise Sorensen change remains secondary bounded context rather than the structural discovery."
+      ],
+      "frozen_interpretation": "Rainfall-associated expansion enters the behaviourally realized frog community more strongly across spatial and taxonomic boundaries than uniform activation predicts; the pattern survives strong dry-state persistence and restriction to surveys made by the same recorded observer.",
+      "frozen_negative_boundaries": [
+        "No rainfall causality, occupancy, abundance, colonization, extinction or demographic-recruitment claim.",
+        "No independent-validation or worldwide-universality claim from FrogID.",
+        "No unique biological mechanism identified by uniform-null rejection.",
+        "No claim that observers are interchangeable.",
+        "No claim that the same-observer restriction removes all detectability bias.",
+        "No claim that species-specific activation heterogeneity has been excluded.",
+        "The species-specific activation-shift null is explicitly reserved and untested.",
+        "Activation geometry remains falsified as a rainfall-specific species trait.",
+        "No title-level homogenization claim and no confirmatory Sorensen-equivalence claim."
+      ],
+      "manuscript": "MANUSCRIPT_JAE_V1_3.md",
+      "observer_robustness": {
+        "all_pairs": 4236,
+        "classification": "observer_robust",
+        "contract": "provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json",
+        "observed_boundary_crossing": 0.9199892686735612,
+        "observer_ids": 542,
+        "primary_persistence_null_ci95": [
+          0.7333562369699016,
+          0.8488308557997452
+        ],
+        "primary_persistence_null_mean": 0.7910527639160703,
+        "primary_persistence_omnibus_p": 0.000999000999000999,
+        "primary_uniform_null_ci95": [
+          0.7295017797725369,
+          0.8714121418209047
+        ],
+        "primary_uniform_null_mean": 0.8032770310460358,
+        "primary_uniform_omnibus_p": 0.000999000999000999,
+        "routes": 500,
+        "same_observer_fraction": 0.7440982058545798,
+        "same_observer_pairs": 3152,
+        "summary": "provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"
+      },
+      "parent_commit": "7b833916ca19423ec6ce172503d464ed7bec3026",
+      "parent_release": "RC10",
+      "permitted_pre_submission_changes": [
+        "copyediting and prose compression without scientific change",
+        "citation formatting",
+        "figure typography or layout changes without quantity changes",
+        "repository-authority and bundle cleanup",
+        "author metadata, affiliations, CRediT roles, acknowledgements, funding and approvals",
+        "archive DOI, license and final portal metadata",
+        "correction of implementation, transcription or reproducibility defects"
+      ],
+      "project": "frog-chorus-synchrony",
+      "rc11_additions": [
+        "A prefrozen same-observer robustness analysis using public NAAMP ObserverTrackingID.",
+        "An explicit limitation that a species-specific activation-shift null remains untested."
+      ],
+      "release_kind": "reviewer-defense-only",
+      "reserved_revision_analysis": {
+        "species_specific_activation_null": {
+          "authorized_pre_submission": false,
+          "purpose": "Test whether allowing species-specific rainfall-response shifts alone can reproduce the observed boundary allocation.",
+          "status": "not_run",
+          "trigger": "editor/reviewer request or documented inferential defect"
+        }
+      },
+      "scientific_story_changed_from_rc10": false,
+      "status": "frozen_for_submission",
+      "supporting_information": "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
+      "title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+    },
+    "RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json": {
+      "artifact": "RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1",
+      "authorized_new_endpoint_family": [
+        "Australian FrogID continuous taxonomic depth within already-active recordings, using the already frozen FrogID sample and timezone-repaired ERA5 dry-spell exposure.",
+        "Cross-system directional comparison against the already authorized NAAMP local-alpha result among active stops."
+      ],
+      "not_authorized": [
+        "new species traits",
+        "new FrogID sample selection",
+        "new weather exposure definitions",
+        "pooled North America-Australia effect sizes",
+        "claim of worldwide universality",
+        "replacement of the RC8 North American matrix-geometry test"
+      ],
+      "parent_freeze": "provenance/submission/RC8_STORY_FREEZE_V0_1.json",
+      "project": "frog-chorus-synchrony",
+      "promotion_rule": {
+        "cross_continental_consistency": "Authorized only if the Australian primary continuous-depth coefficient is negative with its complete 95% CI below zero, while the already frozen NAAMP active-alpha coefficient remains positive with its complete 95% CI above zero.",
+        "failure": "If the Australian primary gate fails, retain FrogID as a historical differently conditioned contrast and do not add cross-continental generality to the RC8 headline.",
+        "strong_cross_continental_consistency": "Additionally requires the Australian recorder-clustered and within-ERA5-cell continuous-depth sensitivities to have negative coefficients with complete 95% CIs below zero."
+      },
+      "reason": "Test whether the most generalizable component of RC8\u2014taxonomic deepening within already-active sampling units\u2014shows the same rainfall-associated direction in independent North American and Australian monitoring systems.",
+      "status": "author_directed_external_validation_unfreeze",
+      "wording_boundary": "Even a strong pass authorizes cross-continental consistency across independent North American and Australian monitoring systems, not a world-wide or universal response."
+    }
+  },
+  "summaries": {
+    "CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json": {
+      "analysis": "crosscontinental_active_unit_taxonomic_depth_v0_1_summary",
+      "artifact_id": 10954474477,
+      "australia": {
+        "mean_species_richness": 1.799013593757668,
+        "n_recordings": 40754,
+        "primary_excess_richness": {
+          "beta_per_sd_log1p_dry_days": -0.08175916880959841,
+          "ci95": [
+            -0.09816413332872502,
+            -0.0653542042904718
+          ],
+          "p_value": 1.5434742870409294e-22
+        },
+        "recorder_cluster_sensitivity": {
+          "beta": -0.08175916880959841,
+          "ci95": [
+            -0.09490292341051097,
+            -0.06861541420868585
+          ],
+          "p_value": 3.4406528241558727e-34
+        },
+        "recorders": 13148,
+        "secondary_no_gate": {
+          "excess_beyond_two": {
+            "beta": -0.04832670412047247,
+            "ci95": [
+              -0.059971835835259224,
+              -0.03668157240568572
+            ],
+            "p_value": 4.1620764775043365e-16
+          },
+          "threeplus": {
+            "ci95_or": [
+              0.8114699272697597,
+              0.8814921514223316
+            ],
+            "n_recordings": 8327,
+            "odds_ratio_per_sd_log1p_dry_days": 0.8457566860531127,
+            "p_value": 2.123450063528658e-15
+          }
+        },
+        "system": "FrogID",
+        "weather_cells": 1623,
+        "within_era5_cell_sensitivity": {
+          "beta": -0.0998361895066961,
+          "ci95": [
+            -0.11821647082479571,
+            -0.08145590818859648
+          ],
+          "informative_cells": 1071,
+          "n_recordings": 40020,
+          "p_value": 1.8214042491900606e-26
+        }
+      },
+      "authorized_wording": "cross-continental consistency in rainfall-associated taxonomic deepening within already-active acoustic units",
+      "decision": "STRONG_PASS",
+      "generalization_boundary": {
+        "cross_continental_consistency_authorized": true,
+        "frogid_matrix_geometry_replication_authorized": false,
+        "pooled_effect_size_authorized": false,
+        "same_mechanism_authorized": false,
+        "worldwide_universality_authorized": false
+      },
+      "historical_two_plus_context": {
+        "interpretation": "The earlier binary >=2-species threshold was null in NAAMP. The new cross-system result concerns continuous active-unit taxonomic depth, and the existing NAAMP decomposition places about 71% of its alpha slope beyond the second species. Australian >=3 and excess-beyond-two endpoints also support deeper multiplicity.",
+        "naamp_activity_conditioned_or": 0.988
+      },
+      "north_america": {
+        "ci95": [
+          0.023119819091079956,
+          0.1357100124465138
+        ],
+        "interpretation": "greater wetter-drier rainfall contrast predicts greater taxonomic depth among active stops",
+        "p_value": 0.005694005637618469,
+        "rainfall_contrast_beta": 0.07941491576879688,
+        "response": "mean species richness per active stop; excess richness = alpha_active - 1",
+        "sampling_unit": "active standardized route stop",
+        "system": "NAAMP"
+      },
+      "project": "frog-chorus-synchrony",
+      "workflow_run": 36388273135
+    },
+    "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json": {
+      "analysis": "naamp_metacommunity_alpha_beta_gamma_v0_1_summary",
+      "boundaries": {
+        "acoustic_metacommunity": true,
+        "causal_claim": false,
+        "occupancy_claim": false
+      },
+      "exact_consecutive_year": {
+        "alpha_beta": 0.08801921660180648,
+        "gamma_beta": 0.3009183552731458,
+        "n_pairs": 2693,
+        "sorensen_beta": 0.002146490573990743,
+        "whittaker_beta": -0.0009876045664197997
+      },
+      "interpretation": "Rainfall contrast increases local alpha diversity within active stops and route-scale gamma diversity while leaving among-active-stop beta diversity essentially unchanged. The acoustically realized metacommunity expands in parallel across local and route scales without detectable spatial homogenization or differentiation.",
+      "matched_pairs": 4236,
+      "primary": {
+        "alpha_active": {
+          "beta": 0.07941491576879688,
+          "ci95": [
+            0.023119819091079956,
+            0.1357100124465138
+          ],
+          "p": 0.005694005637618469
+        },
+        "gamma": {
+          "beta": 0.2859019665041188,
+          "ci95": [
+            0.16464925199938044,
+            0.4071546810088572
+          ],
+          "p": 3.811550717191942e-06
+        },
+        "normalized_whittaker_beta": {
+          "beta": -0.004823886957420518,
+          "ci95": [
+            -0.014721689988399372,
+            0.005073916073558335
+          ],
+          "p": 0.33946311861718004
+        },
+        "pairwise_sorensen_beta": {
+          "beta": -0.0004916260102541838,
+          "ci95": [
+            -0.012614541544767262,
+            0.011631289524258896
+          ],
+          "p": 0.9366482180820508
+        }
+      },
+      "programme": "frog-chorus-synchrony",
+      "workflow_run": 36222547139
+    },
+    "NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json": {
+      "analysis": "naamp_persistence_preserving_uniform_activation_null_v0_1_summary",
+      "anchor_0_50": {
+        "boundary_ci95": [
+          0.7317950614783426,
+          0.8425392287949822
+        ],
+        "boundary_null_mean": 0.7867949641913364,
+        "omnibus_p": 0.000999000999000999,
+        "within_core_null_mean": 0.21320503580866365
+      },
+      "anchor_0_75_primary": {
+        "boundary_ci95": [
+          0.7338269009739914,
+          0.8280786787632431
+        ],
+        "boundary_null_mean": 0.7793754294928684,
+        "corner_null_mean": 0.2862357580209283,
+        "omnibus_p": 0.000999000999000999,
+        "spatial_spread_null_mean": 0.19257719694126693,
+        "taxonomic_deepening_null_mean": 0.3005624745306732,
+        "within_core_null_mean": 0.22062457050713152
+      },
+      "anchor_0_90": {
+        "boundary_ci95": [
+          0.7291396285750618,
+          0.8231622254659892
+        ],
+        "boundary_null_mean": 0.775962568639588,
+        "omnibus_p": 0.000999000999000999,
+        "within_core_null_mean": 0.2240374313604119
+      },
+      "artifact_id": 10957954308,
+      "causal_claim_authorized": false,
+      "decision": "strong_rejection_under_persistence_anchoring",
+      "ecological_hypothesis_boundary": "Preferential recruitment of combinations rare in dry conditions, including temporary or intermittently suitable wet sites, is a plausible discussion-level explanation only; no unique mechanism or causal rainfall effect is identified.",
+      "interpretation": "The observed four-component allocation remains strongly inconsistent with uniform activation even when the null uses cell-only historical frequencies and strongly anchors each pair to its observed dry species x stop state. The result therefore cannot be attributed simply to hierarchical shrinkage weakening persistent species x stop identity.",
+      "observed": {
+        "boundary_crossing_share": 0.9201538112142242,
+        "corner_share": 0.3691189628635065,
+        "spatial_spread_share": 0.152358285975235,
+        "taxonomic_deepening_share": 0.39867656237548255,
+        "within_core_share": 0.07984618878577582
+      },
+      "post_readback_retuning_authorized": false,
+      "project": "frog-chorus-synchrony",
+      "title_support": {
+        "boundary_biased_title_authorized": true,
+        "candidate_title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+      },
+      "workflow_run": 36396060661,
+      "worldwide_generality_authorized": false
+    },
+    "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json": {
+      "analysis": "naamp_same_observer_robustness_v0_1",
+      "artifact_id": 10960639304,
+      "contract_commit": "ef857c5a291a57a447d8144412b225f1c54488dc",
+      "coverage": {
+        "all_matched_pairs": 4236,
+        "same_observer_fraction": 0.7440982058545798,
+        "same_observer_pairs": 3152,
+        "same_observer_routes": 500,
+        "same_observer_unique_observers": 542
+      },
+      "headline_models": {
+        "delta_active_stops": {
+          "beta": 0.35218867849593266,
+          "ci95": [
+            0.1791534487967202,
+            0.5252239081951451
+          ],
+          "p": 6.628845298245026e-05
+        },
+        "delta_mean_species_per_active_stop": {
+          "beta": 0.0981467252047551,
+          "ci95": [
+            0.027608122756369702,
+            0.1686853276531405
+          ],
+          "n_pairs": 3071,
+          "n_routes": 497,
+          "p": 0.00638985482318909
+        },
+        "richness_gain": {
+          "beta": 0.31856652878467223,
+          "ci95": [
+            0.17074305139906298,
+            0.4663900061702815
+          ],
+          "p": 2.402019536432399e-05
+        }
+      },
+      "interpretation": "Observer turnover does not explain the RC10 headline expansion or boundary-biased allocation within the same-observer subset. This is a robustness result, not proof of observer equivalence or a causal rainfall effect.",
+      "observed_matrix": {
+        "boundary_crossing_share": 0.9199892686735612,
+        "component_betas": {
+          "corner_expansion": 0.49825996755912555,
+          "spatial_spread": 0.18516283200858877,
+          "taxonomic_deepening": 0.6423903223737513,
+          "within_core_rearrangement": 0.11530490746013863
+        },
+        "component_shares": {
+          "corner_expansion": 0.34574542639371336,
+          "spatial_spread": 0.1284855426348902,
+          "taxonomic_deepening": 0.4457582996449577,
+          "within_core_rearrangement": 0.08001073132643877
+        }
+      },
+      "observer_schema": {
+        "field": "Runs.csv:ObserverTrackingID",
+        "raw_runs_nonempty": 21934,
+        "raw_runs_total": 21934,
+        "raw_unique_ids": 2301
+      },
+      "persistence_preserving_null": {
+        "anchor_0_50": {
+          "ci95": [
+            0.7418605256885795,
+            0.8638378816564605
+          ],
+          "mean_boundary": 0.7991461390833217,
+          "omnibus_p": 0.001998001998001998
+        },
+        "anchor_0_75": {
+          "ci95": [
+            0.7333562369699016,
+            0.8488308557997452
+          ],
+          "mean_boundary": 0.7910527639160703,
+          "omnibus_p": 0.000999000999000999
+        },
+        "anchor_0_90": {
+          "ci95": [
+            0.7421791712922773,
+            0.8422696277748211
+          ],
+          "mean_boundary": 0.7911836932593955,
+          "omnibus_p": 0.000999000999000999
+        }
+      },
+      "prefrozen_classification": "observer_robust",
+      "status": "completed_under_prefrozen_contract",
+      "uniform_null": {
+        "kappa_1": {
+          "ci95": [
+            0.7219939789391859,
+            0.8565341147361692
+          ],
+          "mean_boundary": 0.7885053315726064,
+          "omnibus_p": 0.000999000999000999
+        },
+        "kappa_2": {
+          "ci95": [
+            0.7295017797725369,
+            0.8714121418209047
+          ],
+          "mean_boundary": 0.8032770310460358,
+          "omnibus_p": 0.000999000999000999
+        },
+        "kappa_5": {
+          "ci95": [
+            0.7466875534249181,
+            0.9027595893187716
+          ],
+          "mean_boundary": 0.8255522256188292,
+          "omnibus_p": 0.000999000999000999
+        }
+      },
+      "workflow_run_id": 36402387051
+    },
+    "NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json": {
+      "analysis": "naamp_sorensen_equivalence_v0_1_summary",
+      "authorized_interpretation": "The rainfall-contrast slope of mean pairwise S\u00f8rensen dissimilarity is practically equivalent to zero within the fixed +/-0.025 margin in both the primary and exact-consecutive-year samples.",
+      "boundaries": {
+        "applies_only_to_pairwise_sorensen": true,
+        "conventional_coefficient_known_before_equivalence_test": true,
+        "exact_invariance_claim": false,
+        "post_hoc_margin": true
+      },
+      "contract": "provenance/contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
+      "decision": {
+        "exact_year_pass": true,
+        "primary_pass": true,
+        "title_level_equivalence_support": true
+      },
+      "exact_consecutive_year": {
+        "beta": 0.0021464905739907213,
+        "ci90": [
+          -0.009730127270933173,
+          0.014023108418914614
+        ],
+        "equivalent": true,
+        "margin": [
+          -0.025,
+          0.025
+        ],
+        "n_pairs": 2562,
+        "n_routes": 491,
+        "se_cluster": 0.007220470958826713
+      },
+      "primary": {
+        "beta": -0.0004916260102542231,
+        "ci90": [
+          -0.010665497440269098,
+          0.009682245419760652
+        ],
+        "equivalent": true,
+        "margin": [
+          -0.025,
+          0.025
+        ],
+        "n_pairs": 4007,
+        "n_routes": 576,
+        "se_cluster": 0.006185274642869504
+      },
+      "project": "frog-chorus-synchrony",
+      "status": "completed",
+      "workflow_run": 36324170352
+    },
+    "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json": {
+      "analysis": "naamp_uniform_activation_null_v0_1_summary",
+      "authorized_interpretation": "The observed incidence allocation is not captured by a common log-odds increase applied uniformly to dry-side acoustic detection propensities. Boundary crossing, especially corner expansion and taxonomic deepening, is overrepresented and within-core rearrangement is underrepresented relative to that null.",
+      "boundary": "Rejecting the null does not identify a unique causal mechanism or validate a species-level response trait.",
+      "decision": "strong_rejection_of_uniform_activation",
+      "n_beta_pairs": 4007,
+      "n_pairs": 4236,
+      "observed_shares": {
+        "boundary_crossing": 0.9201538112142248,
+        "corner_expansion": 0.3691189628635062,
+        "spatial_spread": 0.15235828597523526,
+        "taxonomic_deepening": 0.3986765623754833,
+        "within_core_rearrangement": 0.07984618878577525
+      },
+      "primary_kappa": 2,
+      "primary_null_shares_kappa2": {
+        "boundary_crossing": {
+          "ci95": [
+            0.7415069554812705,
+            0.874417705627325
+          ],
+          "mean": 0.8086721491338232,
+          "observed_percentile": 0.999000999000999
+        },
+        "corner_expansion": {
+          "ci95": [
+            0.23300695483399622,
+            0.31618764126035054
+          ],
+          "mean": 0.2739349209260668,
+          "observed_percentile": 1.0
+        },
+        "spatial_spread": {
+          "ci95": [
+            0.17437678543535517,
+            0.2844397226725805
+          ],
+          "mean": 0.22946689383201496,
+          "observed_percentile": 0.003996003996003996
+        },
+        "taxonomic_deepening": {
+          "ci95": [
+            0.25400041403241347,
+            0.36245436968095374
+          ],
+          "mean": 0.3052703343757415,
+          "observed_percentile": 0.998001998001998
+        },
+        "within_core_rearrangement": {
+          "ci95": [
+            0.125582294372675,
+            0.2584930445187294
+          ],
+          "mean": 0.19132785086617676,
+          "observed_percentile": 0.001998001998001998
+        }
+      },
+      "primary_omnibus": {
+        "monte_carlo_p": 0.000999000999000999,
+        "observed_mahalanobis": 33.64651967939196
+      },
+      "programme": "frog-chorus-synchrony",
+      "secondary_sorensen_null_kappa2": {
+        "null_ci95": [
+          -0.01296235971706429,
+          0.0017827751090189717
+        ],
+        "null_mean": -0.006147078988499254,
+        "observed": -0.000491626010254413,
+        "observed_percentile": 0.9150849150849151
+      },
+      "simulation_replicates": 1000,
+      "smoothing_sensitivity": {
+        "kappa1": {
+          "boundary_null_ci95": [
+            0.7376799525405177,
+            0.863295563465733
+          ],
+          "boundary_null_mean": 0.7993952278528977,
+          "omnibus_p": 0.000999000999000999
+        },
+        "kappa5": {
+          "boundary_null_ci95": [
+            0.759383869383804,
+            0.897820929028562
+          ],
+          "boundary_null_mean": 0.8272594022161107,
+          "omnibus_p": 0.000999000999000999
+        }
+      },
+      "workflow_run": 36324674755
+    }
+  }
+}
