@@ -58,10 +58,19 @@
 - [x] references alphabetical
 - [x] robustness-method details moved to SI
 - [x] main/SI anonymous
-- [ ] RC10 compliance workflow PASS
-- [ ] RC10 anonymous v1.2 DOCX PASS
-- [ ] RC10 canonical submission QA PASS
-- [ ] final review-package artifact recorded
+- [x] RC10 compliance workflow PASS
+- [x] RC10 anonymous v1.2 DOCX PASS
+- [x] RC10 canonical submission QA PASS
+- [x] final review-package artifact recorded
+
+## Verified final RC10 QA
+
+- [x] persistence-null run 36396060661 / artifact 10957954308
+- [x] scientific-package run 36398245492
+- [x] JAE compliance run 36398245550
+- [x] anonymous v1.2 DOCX run 36398245608 / artifact 10959337221
+- [x] canonical submission QA run 36398245570
+- [x] review package artifact 10958853754
 
 ## Human metadata
 
