@@ -92,11 +92,8 @@ for p in required:
     assert p.exists(),f"missing current file: {p.relative_to(ROOT)}"
 
 archive=ROOT/"archive"
-for name in [
-    "manuscripts","supporting_information","title_pages","submission_history",
-    "workflows","scripts","figures_history","research_notes",
-]:
-    assert (archive/name).exists(),f"missing archive section: {name}"
+assert archive.is_dir()
+assert {p.name for p in archive.iterdir()} == {"README.md"}, [p.name for p in archive.iterdir()]
 
 prov=ROOT/"provenance"
 for name in [
@@ -185,6 +182,6 @@ report={
     "active_scripts_recursive":len(list(scripts.rglob("*.py"))),
     "script_layout":SCRIPT_LAYOUT,
     "provenance_json_files":len(list(prov.rglob("*.json"))),
-    "archived_files":len([p for p in archive.rglob("*") if p.is_file()]),
+    "archive_files":len([p for p in archive.rglob("*") if p.is_file()]),
 }
 print(json.dumps(report,indent=2,sort_keys=True))
