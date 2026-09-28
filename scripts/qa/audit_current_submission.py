@@ -19,7 +19,6 @@ CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
     "CURRENT_ANALYSIS_SPECIFICATIONS.json",
     "CURRENT_RESULTS.json",
-    "receipts/README.md",
 }
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
@@ -120,6 +119,7 @@ for wf in active_workflows.glob("*.yml"):
     refs=set(re.findall(r'(scripts/[A-Za-z0-9_./-]+\.py)',text))
     refs.update(re.findall(r'(provenance/[A-Za-z0-9_./-]+\.json)',text))
     refs.update(re.findall(r'(paper/[A-Za-z0-9_./-]+\.(?:md|svg))',text))
+    refs.update(re.findall(r'(submission/[A-Za-z0-9_./-]+\.(?:md|ya?ml|json|cff))',text))
     bad=sorted(ref for ref in refs if "/receipts/" not in ref and not (ROOT/ref).exists())
     if bad: missing_refs[wf.name]=bad
 assert not missing_refs,missing_refs

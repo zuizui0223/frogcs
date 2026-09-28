@@ -36,7 +36,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/qa/audit_naamp_sciencebase_file_manifest.py
+      - run: mkdir -p provenance/receipts && python scripts/qa/audit_naamp_sciencebase_file_manifest.py
       - uses: actions/upload-artifact@v4
         with:
           name: source-manifest-receipt
@@ -53,6 +53,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: mkdir -p provenance/receipts
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'ecological_pulse' }}
         run: python scripts/naamp/run_naamp_ecological_pulse.py
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'metacommunity' }}
@@ -83,6 +84,7 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install --disable-pip-version-check -q numpy pandas statsmodels
+      - run: mkdir -p provenance/receipts
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'uniform_null' }}
         run: python scripts/naamp/run_naamp_uniform_activation_null.py
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'sorensen' }}
@@ -107,6 +109,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - run: mkdir -p provenance/receipts
       - run: python scripts/frogid/run_crosscontinental_active_depth.py
       - name: Guard frozen cross-dataset boundaries
         run: |

@@ -157,7 +157,6 @@ jobs:
           cp submission/cover_letter.md "$sub/Cover_Letter.md"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$audit/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$audit/"
           cp provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json "$audit/"
           cp provenance/CURRENT_RESULTS.json "$audit/"
           cp build/submission-metadata/CITATION.cff "$audit/"
