@@ -1,0 +1,53 @@
+name: RC8 cross-continental active-unit depth validation
+
+on:
+  push:
+    branches:
+      - revision/rc8-crosscontinental-depth-v1
+    paths:
+      - "submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json"
+      - "CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json"
+      - "scripts/run_crosscontinental_active_depth.py"
+      - ".github/workflows/rc8_crosscontinental_active_depth.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frogcs-rc8-crosscontinental-active-depth
+  cancel-in-progress: true
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run frozen cross-continental active-unit depth validation
+        run: python scripts/run_crosscontinental_active_depth.py
+      - name: Guard decision boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text(encoding="utf-8"))
+          assert x["analysis"]=="crosscontinental_active_unit_taxonomic_depth_v0_1"
+          assert x["frozen_sample"]["recordings"]==40754
+          assert x["frozen_sample"]["weather_cells"]==1623
+          assert x["north_america_frozen"]["support_positive_ci"] is True
+          assert x["cross_system_decision"]["worldwide_universality_authorized"] is False
+          assert x["cross_system_decision"]["pooled_effect_size_authorized"] is False
+          print(json.dumps(x["cross_system_decision"],indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rc8-crosscontinental-active-depth
+          path: CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json
+          if-no-files-found: error
