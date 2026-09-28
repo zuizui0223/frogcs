@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-community-filter-v1
     paths:
-      - "AMADO2018_SVL_SOURCE_AUDIT_CONTRACT_V0_1.json"
+      - "provenance/contracts/AMADO2018_SVL_SOURCE_AUDIT_CONTRACT_V0_1.json"
       - "scripts/audit_amado2018_svl_source.py"
       - ".github/workflows/amado_svl_source_audit.yml"
   workflow_dispatch:
