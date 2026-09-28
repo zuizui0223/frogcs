@@ -26,7 +26,7 @@ RC7 remains preserved as the frozen fallback on:
 
 - manuscript: `MANUSCRIPT_JAE_V1_0.md`
 - Supporting Information: `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`
-- cover letter: `submission/COVER_LETTER_JAE_V0_9.md`
+- cover letter: `submission/COVER_LETTER_JAE_V0_10.md`
 - novelty audit: `submission/NOVELTY_AUDIT_V0_7.md`
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
 - RC8 scope: `submission/RC8_SCOPE_UNFREEZE_V0_1.json`
