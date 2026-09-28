@@ -23,5 +23,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: sorensen-equivalence
-          path: NAAMP_SORENSEN_EQUIVALENCE_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_SORENSEN_EQUIVALENCE_RECEIPT_V0_1.json
           if-no-files-found: error
