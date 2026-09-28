@@ -84,6 +84,35 @@ for wf in active_workflows.glob("*.yml"):
         bad_refs[wf.name] = hits
 assert not bad_refs, bad_refs
 
+
+# Root JSON provenance must stay organized under provenance/.
+assert not list(root.glob("*.json")), [p.name for p in root.glob("*.json")]
+prov = root / "provenance"
+for name in ["contracts", "summaries", "receipts", "repairs", "metadata"]:
+    assert (prov / name).is_dir(), f"missing provenance section: {name}"
+manifest_path = prov / "ROOT_JSON_MIGRATION_MANIFEST.json"
+assert manifest_path.is_file()
+migration = json.loads(manifest_path.read_text(encoding="utf-8"))
+assert migration["moved_json_files"] == 141
+assert sum(migration["categories"].values()) == 141
+
+# No active text surface may refer to a moved JSON by its old root-only path.
+mapping = migration["mapping"]
+stale = {}
+for base in [root / "scripts", root / ".github" / "workflows", root / "submission"]:
+    for p in base.rglob("*"):
+        if not p.is_file() or p.suffix.lower() not in {".py", ".yml", ".yaml", ".md", ".json", ".txt"}:
+            continue
+        text = p.read_text(encoding="utf-8")
+        bad = []
+        for old, target in mapping.items():
+            # A basename is acceptable only when it is part of the mapped provenance path.
+            if old in text and target not in text:
+                bad.append(old)
+        if bad:
+            stale[str(p.relative_to(root))] = sorted(bad)
+assert not stale, stale
+
 # Superseded figure trees should not remain at repository root.
 for name in ["figures", "figures_ecology_v0_5", "figures_ecology_v0_6", "figures_ecology_v0_8"]:
     assert not (root / name).exists(), name
@@ -102,5 +131,7 @@ report = {
     "archived_submission_files": len(list((archive / "submission_history").iterdir())),
     "archived_workflows": len(list((archive / "workflows").iterdir())),
     "archived_scripts": len(list((archive / "scripts").iterdir())),
+    "root_json_files": len(list(root.glob("*.json"))),
+    "provenance_json_files": len(list(prov.rglob("*.json"))),
 }
 print(json.dumps(report, indent=2, sort_keys=True))
