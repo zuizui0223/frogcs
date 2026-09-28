@@ -899,6 +899,94 @@
         },
         "wording_boundary": "Even a strong pass authorizes cross-continental consistency across independent North American and Australian monitoring systems, not a world-wide or universal response."
       }
+    },
+    "RC11_STORY_FREEZE_V0_1": {
+      "source_path": "provenance/submission/RC11_STORY_FREEZE_V0_1.json",
+      "role": "story_freeze",
+      "payload": {
+        "project": "frog-chorus-synchrony",
+        "artifact": "RC11_STORY_FREEZE_V0_1",
+        "status": "frozen_for_submission",
+        "parent_release": "RC10",
+        "parent_commit": "7b833916ca19423ec6ce172503d464ed7bec3026",
+        "manuscript": "MANUSCRIPT_JAE_V1_3.md",
+        "supporting_information": "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
+        "title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts",
+        "release_kind": "reviewer-defense-only",
+        "scientific_story_changed_from_rc10": false,
+        "rc11_additions": [
+          "A prefrozen same-observer robustness analysis using public NAAMP ObserverTrackingID.",
+          "An explicit limitation that a species-specific activation-shift null remains untested."
+        ],
+        "observer_robustness": {
+          "contract": "provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json",
+          "summary": "provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
+          "classification": "observer_robust",
+          "same_observer_pairs": 3152,
+          "all_pairs": 4236,
+          "same_observer_fraction": 0.7440982058545798,
+          "routes": 500,
+          "observer_ids": 542,
+          "observed_boundary_crossing": 0.9199892686735612,
+          "primary_uniform_null_mean": 0.8032770310460358,
+          "primary_uniform_null_ci95": [
+            0.7295017797725369,
+            0.8714121418209047
+          ],
+          "primary_uniform_omnibus_p": 0.000999000999000999,
+          "primary_persistence_null_mean": 0.7910527639160703,
+          "primary_persistence_null_ci95": [
+            0.7333562369699016,
+            0.8488308557997452
+          ],
+          "primary_persistence_omnibus_p": 0.000999000999000999
+        },
+        "frozen_core_claims": [
+          "Recent-rain conditions are associated with expansion of the behaviourally realized acoustic community across active spatial footprint, local alpha richness and route gamma richness in NAAMP.",
+          "Active-unit taxonomic depth has the same recent-rain direction in the aligned NAAMP and FrogID analyses; this is cross-dataset consistency, not independent validation or a pooled effect-size claim.",
+          "The North American four-component incidence allocation strongly rejects the original magnitude-matched uniform-activation null under kappa 1, 2 and 5.",
+          "The allocation also strongly rejects the persistence-preserving uniform-activation stress test at dry-state anchor weights 0.50, 0.75 and 0.90.",
+          "The boundary-biased allocation and all three headline expansion coefficients persist in the large same-observer subset.",
+          "Pairwise Sorensen change remains secondary bounded context rather than the structural discovery."
+        ],
+        "frozen_interpretation": "Rainfall-associated expansion enters the behaviourally realized frog community more strongly across spatial and taxonomic boundaries than uniform activation predicts; the pattern survives strong dry-state persistence and restriction to surveys made by the same recorded observer.",
+        "frozen_negative_boundaries": [
+          "No rainfall causality, occupancy, abundance, colonization, extinction or demographic-recruitment claim.",
+          "No independent-validation or worldwide-universality claim from FrogID.",
+          "No unique biological mechanism identified by uniform-null rejection.",
+          "No claim that observers are interchangeable.",
+          "No claim that the same-observer restriction removes all detectability bias.",
+          "No claim that species-specific activation heterogeneity has been excluded.",
+          "The species-specific activation-shift null is explicitly reserved and untested.",
+          "Activation geometry remains falsified as a rainfall-specific species trait.",
+          "No title-level homogenization claim and no confirmatory Sorensen-equivalence claim."
+        ],
+        "reserved_revision_analysis": {
+          "species_specific_activation_null": {
+            "status": "not_run",
+            "purpose": "Test whether allowing species-specific rainfall-response shifts alone can reproduce the observed boundary allocation.",
+            "trigger": "editor/reviewer request or documented inferential defect",
+            "authorized_pre_submission": false
+          }
+        },
+        "permitted_pre_submission_changes": [
+          "copyediting and prose compression without scientific change",
+          "citation formatting",
+          "figure typography or layout changes without quantity changes",
+          "repository-authority and bundle cleanup",
+          "author metadata, affiliations, CRediT roles, acknowledgements, funding and approvals",
+          "archive DOI, license and final portal metadata",
+          "correction of implementation, transcription or reproducibility defects"
+        ],
+        "changes_requiring_explicit_unfreeze": [
+          "new ecological endpoint or hypothesis family",
+          "new continent or monitoring system",
+          "new null family including the reserved species-specific activation null",
+          "retuning existing null parameters after readback",
+          "change to the Sorensen post hoc bound",
+          "new causal mechanism promoted into the main claim"
+        ]
+      }
     }
   }
 }
