@@ -85,6 +85,7 @@ jobs:
           assert "Same-observer sensitivity".lower() in sidoc.lower()
           assert not re.search(r"\\bRC\\d+\\b",doc+sidoc)
           assert "readback" not in (doc+sidoc).lower()
+          assert "`" not in doc+sidoc
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",core)
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",sicore)
           print({"status":"PASS","main_bytes":main.stat().st_size,"si_bytes":si.stat().st_size})
