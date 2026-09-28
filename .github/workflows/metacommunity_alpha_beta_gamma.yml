@@ -30,5 +30,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-metacommunity-alpha-beta-gamma-v0-1
-          path: NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_RECEIPT_V0_1.json
           if-no-files-found: error
