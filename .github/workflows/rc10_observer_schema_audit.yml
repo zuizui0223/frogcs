@@ -1,0 +1,33 @@
+name: frogcs RC10 observer schema audit
+
+on:
+  push:
+    branches:
+      - revision/rc10-reviewer-defense-v1
+    paths:
+      - "scripts/audit_naamp_observer_schema.py"
+      - ".github/workflows/rc10_observer_schema_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas statsmodels patsy
+      - name: Audit public NAAMP observer fields
+        run: python scripts/audit_naamp_observer_schema.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-observer-schema-audit-v0-1
+          path: NAAMP_OBSERVER_SCHEMA_AUDIT_RECEIPT_V0_1.json
+          if-no-files-found: error

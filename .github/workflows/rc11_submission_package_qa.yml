@@ -1,0 +1,30 @@
+name: frogcs RC11 scientific package QA
+on:
+  push:
+    branches:
+      - revision/rc10-reviewer-defense-v1
+      - release/jae-v1-rc11
+      - main
+      - submission/jae-v1
+    paths:
+      - "MANUSCRIPT_JAE_V1_3.md"
+      - "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md"
+      - "submission/RC11_STORY_FREEZE_V0_1.json"
+      - "submission/NOVELTY_AUDIT_V0_11.md"
+      - "submission/REVIEWER_ATTACK_MATRIX_V0_11.md"
+      - "submission/JAE_PORTAL_CHECKLIST_V0_10.md"
+      - "submission/SUBMISSION_HANDOFF_RC11.md"
+      - "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"
+      - "README.md"
+      - "scripts/audit_rc11_submission_package.py"
+      - ".github/workflows/rc11_submission_package_qa.yml"
+  workflow_dispatch:
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/audit_rc11_submission_package.py
