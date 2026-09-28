@@ -153,16 +153,19 @@ Final promoted QA:
 - RC8 scientific-package QA: success on main, release/jae-v1-rc8 and submission/jae-v1;
 - canonical submission QA: success on submission/jae-v1;
 - anonymous v1.0 DOCX QA: success;
-- anonymous DOCX artifact: `frogcs-jae-v1-0-rc8-anonymous-docx`, artifact ID **10948575967**.
+- anonymous DOCX artifact: `frogcs-jae-v1-0-rc8-anonymous-docx`, artifact ID **10953626928**.
 
 ## JAE initial-submission compliance
 
 Automated audit status: **PASS**.
 
 Latest verified runs:
-- JAE initial-submission compliance: run **36368104791** — success;
-- canonical JAE submission QA: run **36368104788** — success;
-- anonymous v1.0 DOCX: run **36368104850** — success; artifact ID **10948575967**.
+- JAE initial-submission compliance: run **36383407794** — success;
+- canonical JAE submission QA: run **36383407828** — success;
+- anonymous v1.0 DOCX: run **36383407826** — success; artifact ID **10953626928**.
+
+Latest canonical review-package artifact:
+- `frogcs-jae-rc8-review-package`, artifact ID **10953068370**.
 
 Current measured package:
 - manuscript markdown: ~7,091 words;
