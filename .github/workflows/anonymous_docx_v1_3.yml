@@ -2,6 +2,7 @@ name: frogcs JAE v1.3 RC11 anonymous DOCX
 on:
   push:
     branches:
+      - fix/rc11-submission-clean-copyedit-v1
       - revision/rc10-reviewer-defense-v1
       - release/jae-v1-rc11
       - main
@@ -25,17 +26,17 @@ jobs:
       - run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
       - run: python scripts/audit_rc11_submission_package.py
       - name: Build anonymous RC11 main DOCX
-        run: python scripts/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/FROG_JAE_ANON_MAIN_V1_3.docx
+        run: python scripts/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/FROG_JAE_ANON_MAIN.docx
       - name: Build anonymous RC11 SI DOCX
-        run: python scripts/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx
+        run: python scripts/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/FROG_JAE_SUPPORTING_INFORMATION.docx
       - name: Verify RC11 anonymous DOCX
         run: |
           python - <<'PY'
           from pathlib import Path
           from zipfile import ZipFile
           import re
-          p=Path("build/FROG_JAE_ANON_MAIN_V1_3.docx")
-          s=Path("build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx")
+          p=Path("build/FROG_JAE_ANON_MAIN.docx")
+          s=Path("build/FROG_JAE_SUPPORTING_INFORMATION.docx")
           assert p.is_file() and p.stat().st_size>10000
           assert s.is_file() and s.stat().st_size>10000
           with ZipFile(p) as z:
@@ -47,13 +48,15 @@ jobs:
               sicore=z.read("docProps/core.xml").decode("utf-8")
           for x in [
               "more boundary-biased than uniform activation predicts",
-              "3,152 wetter",
-              "each species its own rainfall-response shift remains untested",
+              "3,152 same-observer pairs",
+              "a null allowing species-specific shifts",
               "92.0% boundary crossing",
           ]:
               assert x in doc,x
           for x in ["Same-observer sensitivity","3,152 of 4,236 pairs","observer robust"]:
               assert x.lower() in sidoc.lower(),x
+          assert not re.search(r"\\bRC\\d+\\b",doc+sidoc)
+          assert "readback" not in (doc+sidoc).lower()
           assert "<w:lnNumType" in doc
           assert "PAGE" in footer
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",core)
@@ -62,8 +65,8 @@ jobs:
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-v1-3-rc11-anonymous-docx
+          name: frogcs-jae-anonymous-docx
           path: |
-            build/FROG_JAE_ANON_MAIN_V1_3.docx
-            build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx
+            build/FROG_JAE_ANON_MAIN.docx
+            build/FROG_JAE_SUPPORTING_INFORMATION.docx
           if-no-files-found: error

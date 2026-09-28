@@ -11,9 +11,9 @@ Current candidate package:
 ## Automated requirements
 
 - [x] Research Article proxy below 8,500 words
-  - manuscript ~8,087
-  - title page ~130
-  - combined ~8,217
+  - manuscript ~7,274
+  - title page ~129
+  - combined ~7,403
 - [x] abstract <=350 words
   - current ~317
 - [x] five numbered abstract statements
@@ -24,7 +24,7 @@ Current candidate package:
 - [x] NAAMP, FrogID and AmphiBIO sources identified
 - [x] no new animal capture/handling/field sampling
 - [x] anonymous cover <=500 words
-  - current ~369
+  - current ~368
 - [x] main/SI contain no email or direct repository URL
 - [x] observer-turnover reviewer defense integrated
 - [x] species-specific activation null explicitly bounded as untested

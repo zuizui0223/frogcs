@@ -2,12 +2,19 @@ name: frogcs RC11 scientific submission bundle
 on:
   push:
     branches:
+      - fix/rc11-submission-clean-copyedit-v1
       - revision/rc10-reviewer-defense-v1
       - main
       - release/jae-v1-rc11
       - submission/jae-v1
     paths:
       - ".github/workflows/review_submission_bundle_rc11.yml"
+      - "MANUSCRIPT_JAE_V1_3.md"
+      - "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md"
+      - "submission/COVER_LETTER_JAE_V0_13.md"
+      - "JAE_TITLE_PAGE_V0_8.template.md"
+      - "scripts/audit_rc11_submission_package.py"
+      - "scripts/audit_jae_initial_submission_rc11_2026.py"
       - "submission/HUMAN_FINALIZATION_RC11.md"
   workflow_dispatch:
 
@@ -31,66 +38,83 @@ jobs:
           python scripts/audit_jae_initial_submission_rc11_2026.py
       - name: Build anonymous DOCX files
         run: |
-          python scripts/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/FROG_JAE_ANON_MAIN_V1_3.docx
-          python scripts/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx
+          python scripts/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/FROG_JAE_ANON_MAIN.docx
+          python scripts/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/FROG_JAE_SUPPORTING_INFORMATION.docx
       - name: Assemble scientific review bundle
         run: |
           set -eu
           out=build/rc11-scientific-submission-bundle
-          mkdir -p "$out"
-          cp MANUSCRIPT_JAE_V1_3.md "$out/"
-          cp build/FROG_JAE_ANON_MAIN_V1_3.docx "$out/"
-          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$out/"
-          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx "$out/"
-          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$out/"
-          cp figures_ecology_v1_2/*.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_13.md "$out/"
-          cp submission/NOVELTY_AUDIT_V0_11.md "$out/"
-          cp submission/REVIEWER_ATTACK_MATRIX_V0_11.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_RC11.md "$out/"
-          cp submission/HUMAN_FINALIZATION_RC11.md "$out/"
-          cp submission/RC11_STORY_FREEZE_V0_1.json "$out/"
-          cp submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md "$out/"
-          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json "$out/"
-          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
-          cp NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$out/"
-          cp NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$out/"
-          cp NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json "$out/"
-          cp CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$out/"
-          cp JAE_TITLE_PAGE_V0_8.template.md "$out/"
-          cp submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml "$out/"
-          cp submission/CITATION_V0_5.cff.template "$out/"
+          sub="$out/submission_files"
+          audit="$out/audit"
+          mkdir -p "$sub" "$audit"
+
+          # Reviewer-facing files: generic names, no internal release/version labels.
+          cp MANUSCRIPT_JAE_V1_3.md "$sub/Manuscript.md"
+          cp build/FROG_JAE_ANON_MAIN.docx "$sub/Manuscript.docx"
+          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$sub/Supporting_Information.md"
+          cp build/FROG_JAE_SUPPORTING_INFORMATION.docx "$sub/Supporting_Information.docx"
+          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$sub/Figure1.svg"
+          cp figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg "$sub/Figure2.svg"
+          cp figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg "$sub/Figure3.svg"
+          cp submission/COVER_LETTER_JAE_V0_13.md "$sub/Cover_Letter.md"
+
+          # Internal audit/provenance files are separated from journal-facing uploads.
+          cp submission/NOVELTY_AUDIT_V0_11.md "$audit/"
+          cp submission/REVIEWER_ATTACK_MATRIX_V0_11.md "$audit/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$audit/"
+          cp submission/SUBMISSION_HANDOFF_RC11.md "$audit/"
+          cp submission/HUMAN_FINALIZATION_RC11.md "$audit/"
+          cp submission/RC11_STORY_FREEZE_V0_1.json "$audit/"
+          cp submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md "$audit/"
+          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json "$audit/"
+          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json "$audit/"
+          cp NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$audit/"
+          cp NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$audit/"
+          cp NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json "$audit/"
+          cp CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$audit/"
+          cp JAE_TITLE_PAGE_V0_8.template.md "$audit/"
+          cp submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml "$audit/"
+          cp submission/CITATION_V0_5.cff.template "$audit/"
+
           cat > "$out/BUNDLE_STATUS.txt" <<'TXT'
-          RC11 scientific submission bundle: PASS.
-          Scientific content and anonymity are machine-validated.
-          Private author metadata is intentionally not materialized in this bundle.
-          Final human metadata must be completed using submission/HUMAN_FINALIZATION_RC11.md.
+          Scientific submission bundle: PASS.
+          Journal-facing files are under submission_files/ with generic names.
+          Internal provenance is isolated under audit/ and should not be uploaded as manuscript files.
+          Private author metadata is intentionally not materialized here.
           TXT
+
           python - <<'PY'
           from pathlib import Path
           from zipfile import ZipFile
           import hashlib,json,re
           out=Path("build/rc11-scientific-submission-bundle")
-          main=out/"FROG_JAE_ANON_MAIN_V1_3.docx"
-          si=out/"FROG_JAE_SUPPORTING_INFORMATION_RC11.docx"
+          sub=out/"submission_files"
+          main=sub/"Manuscript.docx"
+          si=sub/"Supporting_Information.docx"
           with ZipFile(main) as z:
               doc=z.read("word/document.xml").decode("utf-8")
               core=z.read("docProps/core.xml").decode("utf-8")
           with ZipFile(si) as z:
               sidoc=z.read("word/document.xml").decode("utf-8")
               sicore=z.read("docProps/core.xml").decode("utf-8")
-          assert "3,152 wetter" in doc
-          assert "each species its own rainfall-response shift remains untested" in doc
+          assert "3,152 same-observer pairs" in doc
+          assert "a null allowing species-specific shifts" in doc
           assert "Same-observer sensitivity".lower() in sidoc.lower()
+          assert not re.search(r"\\bRC\\d+\\b",doc+sidoc)
+          assert "readback" not in (doc+sidoc).lower()
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",core)
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",sicore)
-          rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
+          for p in sub.iterdir():
+              assert not re.search(r"(RC\\d+|V\\d+[_\\.-]?\\d*)",p.name,re.I),p.name
+          rows={}
+          for p in sorted(out.rglob("*")):
+              if p.is_file():
+                  rows[str(p.relative_to(out))]=hashlib.sha256(p.read_bytes()).hexdigest()
           (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print({"status":"PASS","bundle_files_before_manifest":len(rows)})
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-rc11-v1-3-scientific-submission-bundle
+          name: frogcs-jae-scientific-submission-bundle
           path: build/rc11-scientific-submission-bundle/
           if-no-files-found: error

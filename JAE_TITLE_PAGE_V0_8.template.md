@@ -1,4 +1,4 @@
-# Journal of Animal Ecology title page — human metadata template v0.8
+# Journal of Animal Ecology title page — human metadata template
 
 **Manuscript title:** Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts
 

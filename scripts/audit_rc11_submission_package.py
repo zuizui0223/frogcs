@@ -4,7 +4,6 @@ import json
 import re
 
 root=Path(__file__).resolve().parents[1]
-m10=(root/"MANUSCRIPT_JAE_V1_2.md").read_text(encoding="utf-8")
 m=(root/"MANUSCRIPT_JAE_V1_3.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC11_V0_1.md").read_text(encoding="utf-8")
 cl=(root/"submission/COVER_LETTER_JAE_V0_13.md").read_text(encoding="utf-8")
@@ -48,14 +47,23 @@ for v in obs["headline_models"].values():
 assert pers["decision"]=="strong_rejection_under_persistence_anchoring"
 assert orig["decision"]=="strong_rejection_of_uniform_activation"
 
-# RC11 scientific main-text delta must be restricted to the single limitations paragraph.
-a=m10.splitlines()
-b=m.splitlines()
-assert len(a)==len(b)
-diff=[i for i,(x,y) in enumerate(zip(a,b),1) if x!=y]
-assert diff==[271], diff
-assert "3,152 wetter–drier pairs" in b[270]
-assert "each species its own rainfall-response shift remains untested" in b[270]
+# Submission-facing scientific checks after copyediting.
+assert not re.search(r"\bRC\d+\b",m+"\n"+si)
+assert "readback" not in (m+"\n"+si).lower()
+for x in [
+    "β = 0.384",
+    "β = 0.0794",
+    "0.2859",
+    "92.0% observed",
+    "80.9%",
+    "77.9%",
+    "3,152 same-observer pairs",
+    "cross-dataset consistency",
+    "not as a replication claim",
+    "a null allowing species-specific shifts",
+    "not a unique causal pathway",
+]:
+    assert x.lower() in m.lower(), x
 
 for x in [
     "### Same-observer sensitivity",
@@ -104,7 +112,7 @@ for surface,name in [(m,"manuscript"),(cl,"cover"),(nov,"novelty")]:
 print({
     "status":"PASS",
     "release":"RC11",
-    "main_text_changed_lines_from_rc10":diff,
+    "submission_surface_internal_labels_removed": True,
     "same_observer_pairs":obs["coverage"]["same_observer_pairs"],
     "same_observer_classification":obs["prefrozen_classification"],
     "species_specific_null":"reserved_not_run",

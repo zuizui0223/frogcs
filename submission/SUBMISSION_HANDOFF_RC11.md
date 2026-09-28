@@ -27,9 +27,9 @@ The species-specific activation null was not run. It remains a clearly identifie
 ## Compliance
 
 RC11 initial-submission QA passes:
-- combined manuscript + title-page proxy: 8,217 / 8,500 words
+- combined manuscript + title-page proxy: 7,403 / 8,500 words
 - abstract: 317 / 350 words
-- anonymous cover: 369 / 500 words
+- anonymous cover: 368 / 500 words
 - required structural/anonymization checks: PASS
 
 ## Authoritative RC11 files
