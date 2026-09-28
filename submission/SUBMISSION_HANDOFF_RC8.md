@@ -41,7 +41,7 @@ RC7 remains preserved as the frozen fallback on:
 - Sørensen-equivalence summary: `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
 - figures: `figures_ecology_v1_0/`
 - title-page template: `JAE_TITLE_PAGE_V0_6.template.md`
-- metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_4.yml`
+- metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml`
 - citation template: `submission/CITATION_V0_3.cff.template`
 
 ## Core empirical result
