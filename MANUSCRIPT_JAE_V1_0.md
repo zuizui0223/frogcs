@@ -289,10 +289,10 @@ Xie, J., Towsey, M., Zhu, M., Zhang, J., & Roe, P. (2017). An intelligent system
 
 Yang, L. H., Bastow, J. L., Spence, K. O., & Wright, A. N. (2008). What can we learn from resource pulses? *Ecology*, 89, 621–634. https://doi.org/10.1890/07-0175.1
 
-## Figure concepts
+## Figure legends
 
 **Figure 1. Recent-rain conditions enlarge the active community without practical spatial homogenization.** Panel A shows rain-contrast coefficients for active-stop count, local alpha and route gamma. Panel B shows near-zero pairwise Sørensen and normalized Whittaker beta effects. Panel C compares the core coefficients before and after recorded hearing/noise/wind adjustment. Panel D summarizes the matched design and exact-year sensitivity.
 
-**Figure 2. Rainfall-associated incidence growth is more boundary-biased than expected under uniform activation.** Panel A shows the 2 × 2 matrix defined by route-new versus route-existing species and previously inactive versus already-active stops. Panel B compares observed four-way coefficient shares with the κ = 2 uniform-activation null distributions, including 92.0% observed versus 80.9% expected boundary crossing and 8.0% observed versus 19.1% expected within-core rearrangement. Panel C shows smoothing sensitivity and the exact-consecutive-year observed decomposition.
+**Figure 2. Rainfall-associated incidence growth is more boundary-biased than expected under uniform activation.** Panel A shows the 2 × 2 matrix defined by route-new versus route-existing species and newly active versus already-active stops. Panel B compares observed four-way coefficient shares with the κ = 2 uniform-activation null distributions, including 92.0% observed versus 80.9% expected boundary crossing and 8.0% observed versus 19.1% expected within-core rearrangement. Panel C shows the fixed ±0.025 practical-equivalence margin and 90% confidence interval for the pairwise Sørensen slope, together with the κ = 2 uniform-null Sørensen expectation; the uniform-activation rejection is driven by incidence allocation rather than an exceptional beta-diversity response.
 
 Rain-recency, turnover/nestedness, functional-trait analyses, response-diversity tests, activation-geometry repeatability and its placebo falsification are reported in Supporting Information.
