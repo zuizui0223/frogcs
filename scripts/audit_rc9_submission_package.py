@@ -17,6 +17,9 @@ handoff=(root/"submission/SUBMISSION_HANDOFF_RC9.md").read_text(encoding="utf-8"
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_8.md").read_text(encoding="utf-8")
 meta=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml").read_text(encoding="utf-8")
 guide=(root/"submission/HUMAN_FINALIZATION_RC9.md").read_text(encoding="utf-8")
+title_page=(root/"JAE_TITLE_PAGE_V0_7.template.md").read_text(encoding="utf-8")
+citation_template=(root/"submission/CITATION_V0_4.cff.template").read_text(encoding="utf-8")
+jae_audit=(root/"submission/JAE_INITIAL_SUBMISSION_AUDIT_RC9_2026_09_28.md").read_text(encoding="utf-8")
 
 title="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
 assert m.startswith("# "+title)
@@ -104,6 +107,52 @@ for x in [
 ]:
     if x not in meta:
         raise SystemExit(f"RC9 metadata template missing FrogID source: {x}")
+
+for x in [
+  "# Supporting Information — JAE RC9 v1.1",
+  "Cross-continental external validation of active-unit taxonomic depth",
+]:
+    if x not in si:
+        raise SystemExit(f"RC9 SI authority drift: {x}")
+
+for x in [
+  "JAE_TITLE_PAGE_V0_7.template.md",
+  "SUBMISSION_METADATA_TEMPLATE_V0_6.yml",
+  "CITATION_V0_4.cff.template",
+  "JAE_INITIAL_SUBMISSION_AUDIT_RC9_2026_09_28.md",
+]:
+    if x not in readme:
+        raise SystemExit(f"RC9 README current-authority drift: {x}")
+
+for x in [
+  "relevant institutions approve submission",
+  "work is original and necessary acknowledgements are made",
+  "legal / conservation / welfare requirements are confirmed",
+]:
+    if x not in title_page:
+        raise SystemExit(f"RC9 title-page approval drift: {x}")
+
+for x in [
+  "metacommunity",
+  "species richness",
+]:
+    if x not in citation_template:
+        raise SystemExit(f"RC9 citation-template drift: {x}")
+
+for x in [
+  "/PRIVATE/PATH/rc9_submission_metadata.yml",
+  "anonymous v1.1 main DOCX",
+]:
+    if x not in guide:
+        raise SystemExit(f"RC9 human-finalization guide drift: {x}")
+
+for x in [
+  "combined ~7,890",
+  "abstract <=350 words",
+]:
+    if x not in jae_audit:
+        raise SystemExit(f"RC9 JAE audit drift: {x}")
+
 
 for x in [
   "SUBMISSION_METADATA_TEMPLATE_V0_6.yml",
