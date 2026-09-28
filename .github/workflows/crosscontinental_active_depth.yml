@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rc8-crosscontinental-depth-v1
     paths:
-      - "submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json"
+      - "provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json"
       - "provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json"
       - "scripts/frogid/run_crosscontinental_active_depth.py"
       - ".github/workflows/crosscontinental_active_depth.yml"
