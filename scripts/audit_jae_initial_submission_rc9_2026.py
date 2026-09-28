@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parents[1]
 m=(root/"MANUSCRIPT_JAE_V1_1.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC9_V0_1.md").read_text(encoding="utf-8")
 cl=(root/"submission/COVER_LETTER_JAE_V0_12.md").read_text(encoding="utf-8")
-title=(root/"JAE_TITLE_PAGE_V0_6.template.md").read_text(encoding="utf-8")
+title=(root/"JAE_TITLE_PAGE_V0_7.template.md").read_text(encoding="utf-8")
 
 WORD_RE=re.compile(r"\b[\wÀ-ÖØ-öø-ÿĀ-ž’'–—+./×βρκΔ≥≤%-]+\b",re.UNICODE)
 wc=lambda s:len(WORD_RE.findall(s))
