@@ -1,0 +1,65 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "crosscontinental_active_unit_taxonomic_depth_v0_1_summary",
+  "workflow_run": 36388273135,
+  "artifact_id": 10954474477,
+  "decision": "STRONG_PASS",
+  "authorized_wording": "cross-continental consistency in rainfall-associated taxonomic deepening within already-active acoustic units",
+  "north_america": {
+    "system": "NAAMP",
+    "sampling_unit": "active standardized route stop",
+    "response": "mean species richness per active stop; excess richness = alpha_active - 1",
+    "rainfall_contrast_beta": 0.07941491576879688,
+    "ci95": [0.023119819091079956, 0.1357100124465138],
+    "p_value": 0.005694005637618469,
+    "interpretation": "greater wetter-drier rainfall contrast predicts greater taxonomic depth among active stops"
+  },
+  "australia": {
+    "system": "FrogID",
+    "n_recordings": 40754,
+    "weather_cells": 1623,
+    "recorders": 13148,
+    "mean_species_richness": 1.799013593757668,
+    "primary_excess_richness": {
+      "beta_per_sd_log1p_dry_days": -0.08175916880959841,
+      "ci95": [-0.09816413332872502, -0.0653542042904718],
+      "p_value": 1.5434742870409294e-22
+    },
+    "recorder_cluster_sensitivity": {
+      "beta": -0.08175916880959841,
+      "ci95": [-0.09490292341051097, -0.06861541420868585],
+      "p_value": 3.4406528241558727e-34
+    },
+    "within_era5_cell_sensitivity": {
+      "n_recordings": 40020,
+      "informative_cells": 1071,
+      "beta": -0.0998361895066961,
+      "ci95": [-0.11821647082479571, -0.08145590818859648],
+      "p_value": 1.8214042491900606e-26
+    },
+    "secondary_no_gate": {
+      "threeplus": {
+        "n_recordings": 8327,
+        "odds_ratio_per_sd_log1p_dry_days": 0.8457566860531127,
+        "ci95_or": [0.8114699272697597, 0.8814921514223316],
+        "p_value": 2.123450063528658e-15
+      },
+      "excess_beyond_two": {
+        "beta": -0.04832670412047247,
+        "ci95": [-0.059971835835259224, -0.03668157240568572],
+        "p_value": 4.1620764775043365e-16
+      }
+    }
+  },
+  "historical_two_plus_context": {
+    "naamp_activity_conditioned_or": 0.988,
+    "interpretation": "The earlier binary >=2-species threshold was null in NAAMP. The new cross-system result concerns continuous active-unit taxonomic depth, and the existing NAAMP decomposition places about 71% of its alpha slope beyond the second species. Australian >=3 and excess-beyond-two endpoints also support deeper multiplicity."
+  },
+  "generalization_boundary": {
+    "cross_continental_consistency_authorized": true,
+    "worldwide_universality_authorized": false,
+    "pooled_effect_size_authorized": false,
+    "same_mechanism_authorized": false,
+    "frogid_matrix_geometry_replication_authorized": false
+  }
+}
