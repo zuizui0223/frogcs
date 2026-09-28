@@ -625,8 +625,8 @@ def main():
 
     result={
         "analysis":"crosscontinental_active_unit_taxonomic_depth_v0_1",
-        "contract":"provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
-        "unfreeze":"provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json",
+        "contract":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1",
+        "unfreeze":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1",
         "frogid_source_sha256":FROGID_SHA,
         "era5_source":{
             "provider":"Earthmover public Icechunk ERA5",
@@ -684,7 +684,7 @@ def main():
             "pooled_effect_size_authorized":False,
         },
         "time_alignment_repair":{
-            "contract":"provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+            "contract":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1",
             "events_with_hour_changed":hour_changed,
             "events_with_date_changed":date_changed,
             "required_unique_tp_chunks":len(chunk_requirements),
