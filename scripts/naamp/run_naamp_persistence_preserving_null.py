@@ -208,7 +208,7 @@ def main():
         },
     }
 
-    Path("NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json").write_text(
         json.dumps(output, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
