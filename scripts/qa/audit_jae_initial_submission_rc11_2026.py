@@ -8,7 +8,8 @@ m=(root/"MANUSCRIPT_JAE_V1_3.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC11_V0_1.md").read_text(encoding="utf-8")
 cl=(root/"submission/COVER_LETTER_JAE_V0_13.md").read_text(encoding="utf-8")
 title=(root/"JAE_TITLE_PAGE_V0_8.template.md").read_text(encoding="utf-8")
-obs=json.loads((root/"provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+prov=json.loads((root/"provenance/current.json").read_text(encoding="utf-8"))
+obs=prov["summaries"]["NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"]
 
 WORD_RE=re.compile(r"\b[\wÀ-ÖØ-öø-ÿĀ-ž’'–—+./×βρκΔ≥≤%-]+\b",re.UNICODE)
 wc=lambda s:len(WORD_RE.findall(s))
