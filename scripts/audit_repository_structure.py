@@ -54,7 +54,7 @@ for prefix, expected in expected_singular.items():
 retired_workflows = {
     "anonymous_docx.yml", "anonymous_docx_v0_8.yml", "anonymous_docx_v0_9.yml",
     "anonymous_docx_v1_0.yml", "anonymous_docx_v1_1.yml", "anonymous_docx_v1_2.yml",
-    "initial_submission_bundle.yml", "initial_submission_bundle_rc6.yml",
+    "initial_submission_bundle_rc6.yml",
     "final_submission_bundle.yml", "final_submission_bundle_rc6.yml",
     "rc10_candidate_qa.yml", "rc10_submission_package_qa.yml",
     "rc6_submission_package_qa.yml", "rc7_submission_package_qa.yml",
