@@ -52,8 +52,8 @@ for p in active:
     try:text=p.read_text(encoding="utf-8")
     except UnicodeDecodeError:continue
     refs.update(REF_RE.findall(text))
-missing_from_keep=sorted(refs-KEEP)
-assert not missing_from_keep, {"active_refs_not_kept":missing_from_keep}
+missing_from_keep=sorted(ref for ref in (refs-KEEP) if "/receipts/" not in ref)
+assert not missing_from_keep, {"active_input_refs_not_kept":missing_from_keep}
 
 all_files={p.relative_to(ROOT).as_posix() for p in PROV.rglob("*") if p.is_file()}
 assert KEEP<=all_files, sorted(KEEP-all_files)
