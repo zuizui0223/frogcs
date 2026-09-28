@@ -28,5 +28,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: uniform-activation-null
-          path: NAAMP_UNIFORM_ACTIVATION_NULL_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_UNIFORM_ACTIVATION_NULL_RECEIPT_V0_1.json
           if-no-files-found: error
