@@ -34,8 +34,6 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
 - `provenance/repairs/` — implementation/estimability repairs
 - `provenance/submission/` — story-freeze and scope decision records
-- `provenance/submission_docs/` — internal reviewer/submission audits
-- `provenance/docs/` — human-readable project provenance
 - `submission/` — cover letter plus current metadata/citation templates only
 - `archive/` — history pointer; full historical payload lives on the history/release branches
 
@@ -48,7 +46,7 @@ Root-level JSON provenance and root-level analysis scripts are intentionally pro
 - same-observer robustness: `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
 - cross-dataset depth: `provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
 
-Detailed scientific history and all inferential boundaries are documented in `provenance/docs/CURRENT_PAPER_OVERVIEW.md`, the Supporting Information and historical release branches.
+Detailed inferential boundaries are documented in the Supporting Information; historical development remains available on the history/release branches.
 
 ## Workflows
 
