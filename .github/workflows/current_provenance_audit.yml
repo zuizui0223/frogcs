@@ -1,0 +1,27 @@
+name: current provenance prune audit
+on:
+  push:
+    branches:
+      - cleanup/provenance-prune-v2
+    paths:
+      - "scripts/qa/audit_current_provenance.py"
+      - ".github/workflows/current_provenance_audit.yml"
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/qa/audit_current_provenance.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "418982+github-actions[bot]@users.noreply.github.com"
+          git add provenance/CURRENT_PROVENANCE_PRUNE_PLAN.json
+          git commit -m "audit direct current provenance dependencies"
+          git push origin HEAD:cleanup/provenance-prune-v2
