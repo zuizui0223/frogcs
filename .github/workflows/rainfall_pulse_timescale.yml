@@ -6,7 +6,7 @@ on:
       - revision/rainfall-pulse-timescale-v1
     paths:
       - "provenance/contracts/NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json"
-      - "scripts/run_naamp_rainfall_pulse_timescale.py"
+      - "scripts/naamp/run_naamp_rainfall_pulse_timescale.py"
       - ".github/workflows/rainfall_pulse_timescale.yml"
   workflow_dispatch:
 
@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
       - name: Run frozen rainfall-pulse timescale analysis
-        run: python scripts/run_naamp_rainfall_pulse_timescale.py
+        run: python scripts/naamp/run_naamp_rainfall_pulse_timescale.py
       - name: Upload receipt
         uses: actions/upload-artifact@v4
         with:
