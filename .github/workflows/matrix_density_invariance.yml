@@ -5,7 +5,7 @@ on:
     branches:
       - revision/matrix-density-invariance-v1
     paths:
-      - "NAAMP_MATRIX_DENSITY_INVARIANCE_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_MATRIX_DENSITY_INVARIANCE_CONTRACT_V0_1.json"
       - "scripts/run_naamp_matrix_density_invariance.py"
       - ".github/workflows/matrix_density_invariance.yml"
   workflow_dispatch:
