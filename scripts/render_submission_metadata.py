@@ -26,7 +26,7 @@ KEYWORDS = [
 DESCRIPTION = (
     "Reproducibility package for a Journal of Animal Ecology Research Article analysing how recent "
     "rainfall is associated with the spatial and taxonomic organization of acoustically active frog "
-    "communities in standardized North American monitoring. The archive contains the anonymized "
+    "communities in North American NAAMP surveys and Australian FrogID recordings. The archive contains the anonymized "
     "scientific manuscript, versioned analysis contracts, result receipts, deterministic figure-generation "
     "code and analysis scripts. Raw third-party datasets are not redistributed."
 )
