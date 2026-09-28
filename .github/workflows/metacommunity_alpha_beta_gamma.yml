@@ -5,7 +5,7 @@ on:
     branches:
       - revision/metacommunity-alpha-beta-gamma-v1
     paths:
-      - "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json"
       - "scripts/run_naamp_metacommunity_alpha_beta_gamma.py"
       - ".github/workflows/metacommunity_alpha_beta_gamma.yml"
   workflow_dispatch:
