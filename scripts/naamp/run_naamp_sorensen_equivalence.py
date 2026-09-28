@@ -37,7 +37,7 @@ def main():
     exact=one(d[d.year_gap==1].copy())
     result={
       "analysis":"naamp_sorensen_equivalence_v0_1",
-      "contract":"provenance/contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
+      "contract":"provenance/current.json#contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
       "status":"post-hoc margin frozen before equivalence readback; conventional coefficient already known",
       "primary":primary,
       "exact_consecutive_year":exact,
