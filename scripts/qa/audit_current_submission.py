@@ -9,6 +9,10 @@ TITLE="Rainfall-associated expansion of frog active communities is more boundary
 # ---------- repository structure ----------
 CURRENT_ROOT_FILES={"README.md"}
 CURRENT_ROOT_DIRS={".github","paper","provenance","scripts","submission"}
+CURRENT_PAPER_FILES={
+    "manuscript.md","supporting_information.md","title_page.template.md",
+    "figures/Figure1.svg","figures/Figure2.svg","figures/Figure3.svg",
+}
 CURRENT_SUBMISSION_FILES={"CITATION.cff.template","cover_letter.md","metadata.template.yml"}
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
@@ -23,6 +27,14 @@ root_dirs={p.name for p in ROOT.iterdir() if p.is_dir() and p.name!=".git"}
 assert root_files==CURRENT_ROOT_FILES,{"unexpected_root_files":sorted(root_files-CURRENT_ROOT_FILES),"missing":sorted(CURRENT_ROOT_FILES-root_files)}
 assert root_dirs==CURRENT_ROOT_DIRS,{"unexpected_root_dirs":sorted(root_dirs-CURRENT_ROOT_DIRS),"missing":sorted(CURRENT_ROOT_DIRS-root_dirs)}
 assert not list(ROOT.glob("*.json"))
+
+paper=ROOT/"paper"
+paper_files={p.relative_to(paper).as_posix() for p in paper.rglob("*") if p.is_file()}
+assert paper_files==CURRENT_PAPER_FILES,{
+    "unexpected_paper_files":sorted(paper_files-CURRENT_PAPER_FILES),
+    "missing_paper_files":sorted(CURRENT_PAPER_FILES-paper_files),
+}
+
 
 submission=ROOT/"submission"
 submission_files={p.name for p in submission.iterdir() if p.is_file()}
@@ -89,8 +101,9 @@ legacy={}
 legacy_patterns=[
     re.compile(r'(?<![A-Za-z0-9_./-])scripts/(?:run_|audit_|build_|render_|finalize_)[A-Za-z0-9_.-]+\.py'),
     re.compile(r'(?<![A-Za-z0-9_./-])submission/RC[0-9][A-Za-z0-9_.-]*\.json'),
+    re.compile(r'(?<![A-Za-z0-9_./-])(?:MANUSCRIPT_JAE_|SUPPORTING_INFORMATION_JAE_|JAE_TITLE_PAGE_|figures_ecology_v|submission/COVER_LETTER_JAE_|submission/SUBMISSION_METADATA_TEMPLATE_V)[A-Za-z0-9_./-]*'),
 ]
-for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
+for base in [paper,scripts,active_workflows,submission,ROOT/"README.md"]:
     paths=[base] if base.is_file() else list(base.rglob("*"))
     for p in paths:
         if p.resolve()==Path(__file__).resolve():
@@ -106,7 +119,7 @@ for wf in active_workflows.glob("*.yml"):
     text=wf.read_text(encoding="utf-8")
     refs=set(re.findall(r'(scripts/[A-Za-z0-9_./-]+\.py)',text))
     refs.update(re.findall(r'(provenance/[A-Za-z0-9_./-]+\.json)',text))
-    refs.update(re.findall(r'(figures_ecology_v[0-9_]+/[A-Za-z0-9_./-]+\.svg)',text))
+    refs.update(re.findall(r'(paper/[A-Za-z0-9_./-]+\.(?:md|svg))',text))
     bad=sorted(ref for ref in refs if "/receipts/" not in ref and not (ROOT/ref).exists())
     if bad: missing_refs[wf.name]=bad
 assert not missing_refs,missing_refs
