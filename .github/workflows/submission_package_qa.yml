@@ -1,4 +1,4 @@
-name: frogcs RC11 scientific package QA
+name: frogcs scientific submission package QA
 on:
   push:
     branches:
@@ -18,7 +18,7 @@ on:
       - "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"
       - "README.md"
       - "scripts/audit_rc11_submission_package.py"
-      - ".github/workflows/rc11_submission_package_qa.yml"
+      - ".github/workflows/submission_package_qa.yml"
   workflow_dispatch:
 jobs:
   qa:

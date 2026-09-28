@@ -1,4 +1,4 @@
-name: JAE 2026 initial-submission compliance audit RC11
+name: JAE initial-submission compliance audit
 on:
   push:
     branches:
@@ -13,7 +13,7 @@ on:
       - "submission/COVER_LETTER_JAE_V0_13.md"
       - "JAE_TITLE_PAGE_V0_8.template.md"
       - "scripts/audit_jae_initial_submission_rc11_2026.py"
-      - ".github/workflows/jae_2026_initial_submission_compliance_rc11.yml"
+      - ".github/workflows/jae_initial_submission_compliance.yml"
   workflow_dispatch:
 jobs:
   audit:

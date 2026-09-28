@@ -1,4 +1,4 @@
-name: frogcs JAE v1.3 RC11 anonymous DOCX
+name: frogcs JAE anonymous DOCX
 on:
   push:
     branches:
@@ -12,7 +12,7 @@ on:
       - "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md"
       - "scripts/build_jae_anonymous_docx.py"
       - "scripts/audit_rc11_submission_package.py"
-      - ".github/workflows/anonymous_docx_v1_3.yml"
+      - ".github/workflows/submission_anonymous_docx.yml"
   workflow_dispatch:
 jobs:
   build:

@@ -1,4 +1,4 @@
-name: RC10 persistence-preserving uniform activation null
+name: persistence-preserving uniform activation null
 
 on:
   push:
@@ -9,14 +9,14 @@ on:
       - "NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json"
       - "submission/RC10_STORY_DECISION_TREE_V0_1.json"
       - "scripts/run_naamp_persistence_preserving_null.py"
-      - ".github/workflows/rc10_persistence_preserving_null.yml"
+      - ".github/workflows/persistence_preserving_null.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: frogcs-rc10-persistence-null
+  group: frogcs-persistence-null
   cancel-in-progress: true
 
 jobs:
@@ -52,6 +52,6 @@ jobs:
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: rc10-persistence-preserving-null
+          name: persistence-preserving-null
           path: NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json
           if-no-files-found: error
