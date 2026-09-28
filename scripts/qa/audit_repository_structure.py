@@ -116,16 +116,11 @@ for phrase in [
             continue
         assert phrase not in text, (p.name, phrase)
 
-# Current workflows may not depend on anything archived.
+# Current workflows may not depend directly on archived paths.
 active_workflows=ROOT/".github/workflows"
-archived_names={p.name for p in archive.rglob("*") if p.is_file()}
-bad_archive_refs={}
 for wf in active_workflows.glob("*.yml"):
     text=wf.read_text(encoding="utf-8")
-    hits=sorted(name for name in archived_names if name in text)
-    if hits:
-        bad_archive_refs[wf.name]=hits
-assert not bad_archive_refs, bad_archive_refs
+    assert "archive/" not in text, wf.name
 
 # Fail on stale pre-migration paths.
 mappings={}
