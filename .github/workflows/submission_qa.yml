@@ -81,6 +81,8 @@ jobs:
           source_data:
             - name: "North American Amphibian Monitoring Program (NAAMP)"
               doi: "10.5066/F7G44NG0"
+            - name: "FrogID dataset"
+              doi: "10.3897/zookeys.912.38253"
             - name: "AmphiBIO v1"
               doi: "10.6084/m9.figshare.4644424.v5"
           YAML
@@ -115,6 +117,7 @@ jobs:
           assert "Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization" in x
           assert "10.9999/frogcs.test" in x
           assert "80.9% boundary crossing" in x
+          assert "10.3897/zookeys.912.38253" in x
           print("RC9 DOI finalization PASS")
           PY
 
