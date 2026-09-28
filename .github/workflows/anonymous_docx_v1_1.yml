@@ -2,9 +2,7 @@ name: frogcs JAE v1.1 RC9 anonymous DOCX
 on:
   push:
     branches:
-      - main
-      - release/jae-v1-rc9
-      - submission/jae-v1
+      - revision/rc8-crosscontinental-depth-v1
     paths:
       - "MANUSCRIPT_JAE_V1_1.md"
       - "SUPPORTING_INFORMATION_JAE_RC9_V0_1.md"
