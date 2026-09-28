@@ -56,7 +56,7 @@ jobs:
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'ecological_pulse' }}
         run: python scripts/naamp/run_naamp_ecological_pulse.py
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'metacommunity' }}
-        run: python scripts/naamp/run_naamp_metacommunity_alpha_beta_gamma.py
+        run: python scripts/naamp/run_naamp_metacommunity_suite.py --analysis metacommunity
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'spatial_taxonomic' }}
         run: python scripts/naamp/run_naamp_spatial_taxonomic_activation_decomposition.py
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'persistence_null' }}
@@ -86,11 +86,11 @@ jobs:
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'uniform_null' }}
         run: python scripts/naamp/run_naamp_uniform_activation_null.py
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'sorensen' }}
-        run: python scripts/naamp/run_naamp_sorensen_equivalence.py
+        run: python scripts/naamp/run_naamp_metacommunity_suite.py --analysis sorensen
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'geographic' }}
-        run: python scripts/naamp/run_naamp_geographic_generality_audit.py
+        run: python scripts/naamp/run_naamp_metacommunity_suite.py --analysis geographic
       - if: ${{ inputs.analysis == 'all' || inputs.analysis == 'protocol_window' }}
-        run: python scripts/naamp/run_naamp_protocol_window_sensitivity.py
+        run: python scripts/naamp/run_naamp_metacommunity_suite.py --analysis protocol_window
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-py311-receipts
