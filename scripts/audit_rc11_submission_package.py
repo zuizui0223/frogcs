@@ -112,7 +112,7 @@ for surface,name in [(m,"manuscript"),(cl,"cover"),(nov,"novelty")]:
 print({
     "status":"PASS",
     "release":"RC11",
-    "main_text_changed_lines_from_rc10":diff,
+    "submission_surface_internal_labels_removed": True,
     "same_observer_pairs":obs["coverage"]["same_observer_pairs"],
     "same_observer_classification":obs["prefrozen_classification"],
     "species_specific_null":"reserved_not_run",
