@@ -1,5 +1,5 @@
-# Canonical RC8/v1.0 initial-submission bundle.
-name: frogcs initial JAE submission bundle (RC8)
+# Canonical RC9/v1.1 initial-submission bundle.
+name: frogcs initial JAE submission bundle (RC9)
 
 on:
   workflow_dispatch:
@@ -20,8 +20,8 @@ jobs:
       - name: Install build dependencies
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
 
-      - name: Audit RC8 scientific package
-        run: python scripts/audit_rc8_submission_package.py
+      - name: Audit RC9 scientific package
+        run: python scripts/audit_rc9_submission_package.py
 
       - name: Materialize private submission metadata
         env:
@@ -37,7 +37,7 @@ jobs:
         run: |
           python scripts/render_submission_metadata.py             --metadata /tmp/metadata-initial.yml             --strict --stage initial             --outdir build/submission-metadata
 
-      - name: Guard RC8 title
+      - name: Guard RC9 title
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -45,20 +45,20 @@ jobs:
           x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           if expected not in x:
               raise SystemExit("JAE_SUBMISSION_METADATA_YAML contains a superseded title")
-          print("RC8 metadata title PASS")
+          print("RC9 metadata title PASS")
           PY
 
-      - name: Build anonymous RC8 DOCX files
+      - name: Build anonymous RC9 DOCX files
         run: |
-          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_0.md             --output build/FROG_JAE_ANON_MAIN_V1_0.docx
-          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC8_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC8.docx
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_1.md             --output build/FROG_JAE_ANON_MAIN_V1_1.docx
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC9_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC9.docx
 
-      - name: Verify RC8 DOCX
+      - name: Verify RC9 DOCX
         run: |
           python - <<'PY'
           from zipfile import ZipFile
           from pathlib import Path
-          p=Path("build/FROG_JAE_ANON_MAIN_V1_0.docx")
+          p=Path("build/FROG_JAE_ANON_MAIN_V1_1.docx")
           with ZipFile(p) as z:
               document=z.read("word/document.xml").decode("utf-8")
               footer=z.read("word/footer1.xml").decode("utf-8")
@@ -69,37 +69,41 @@ jobs:
           assert "PAGE" in footer
           assert expected in core
           assert "80.9% boundary crossing" in document
-          print("RC8 DOCX structure PASS")
+          print("RC9 DOCX structure PASS")
           PY
 
-      - name: Assemble RC8 initial bundle
+      - name: Assemble RC9 initial bundle
         run: |
           set -eu
-          out=build/initial-submission-rc8
+          out=build/initial-submission-rc9
           mkdir -p "$out"
-          cp MANUSCRIPT_JAE_V1_0.md "$out/"
-          cp build/FROG_JAE_ANON_MAIN_V1_0.docx "$out/"
-          cp SUPPORTING_INFORMATION_JAE_RC8_V0_1.md "$out/"
-          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC8.docx "$out/"
+          cp MANUSCRIPT_JAE_V1_1.md "$out/"
+          cp build/FROG_JAE_ANON_MAIN_V1_1.docx "$out/"
+          cp SUPPORTING_INFORMATION_JAE_RC9_V0_1.md "$out/"
+          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC9.docx "$out/"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
           cp figures_ecology_v1_0/*.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_10.md "$out/"
-          cp submission/NOVELTY_AUDIT_V0_7.md "$out/"
-          cp submission/REVIEWER_ATTACK_MATRIX_V0_7.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_7.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_RC8.md "$out/"
-          cp submission/RC8_STORY_FREEZE_V0_1.json "$out/"
+          cp submission/COVER_LETTER_JAE_V0_12.md "$out/"
+          cp submission/NOVELTY_AUDIT_V0_9.md "$out/"
+          cp submission/REVIEWER_ATTACK_MATRIX_V0_9.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_8.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_RC9.md "$out/"
+          cp submission/RC9_STORY_FREEZE_V0_1.json "$out/"
           cp NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$out/"
           cp NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$out/"
-          cp submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml "$out/"
+          cp CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json "$out/"
+          cp CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$out/"
+          cp submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json "$out/"
+          cp submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json "$out/"
+          cp submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml "$out/"
           cp submission/CITATION_V0_3.cff.template "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
-          Canonical initial JAE submission: RC8 / ecological v1.0.
-          Scientific authority: MANUSCRIPT_JAE_V1_0.md + submission/RC8_STORY_FREEZE_V0_1.json.
-          Canonical Supporting Information: SUPPORTING_INFORMATION_JAE_RC8_V0_1.md.
+          Canonical initial JAE submission: RC9 / ecological v1.1.
+          Scientific authority: MANUSCRIPT_JAE_V1_1.md + submission/RC9_STORY_FREEZE_V0_1.json.
+          Canonical Supporting Information: SUPPORTING_INFORMATION_JAE_RC9_V0_1.md.
           Main figures: figures_ecology_v1_0/.
           RC1-RC7 surfaces remain audit history only.
           Archive DOI is intentionally deferred during double-anonymized review.
@@ -108,7 +112,7 @@ jobs:
           python - <<'PY'
           import hashlib,json
           from pathlib import Path
-          out=Path("build/initial-submission-rc8")
+          out=Path("build/initial-submission-rc9")
           rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
           (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
@@ -116,6 +120,6 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-rc8-v1-0-initial-submission-bundle
-          path: build/initial-submission-rc8/
+          name: frogcs-jae-rc9-v1-1-initial-submission-bundle
+          path: build/initial-submission-rc9/
           if-no-files-found: error
