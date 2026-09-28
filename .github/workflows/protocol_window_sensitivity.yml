@@ -6,7 +6,7 @@ on:
       - revision/protocol-window-sensitivity-v1
     paths:
       - "provenance/contracts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json"
-      - "scripts/run_naamp_protocol_window_sensitivity.py"
+      - "scripts/naamp/run_naamp_protocol_window_sensitivity.py"
       - ".github/workflows/protocol_window_sensitivity.yml"
   workflow_dispatch:
 
@@ -21,7 +21,7 @@ jobs:
           python-version: "3.11"
       - run: pip install numpy pandas statsmodels
       - name: Run frozen protocol-window sensitivity
-        run: python scripts/run_naamp_protocol_window_sensitivity.py
+        run: python scripts/naamp/run_naamp_protocol_window_sensitivity.py
       - uses: actions/upload-artifact@v4
         with:
           name: protocol-window-sensitivity
