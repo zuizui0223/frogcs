@@ -5,7 +5,7 @@ import json
 root=Path(__file__).resolve().parents[1]
 m=(root/"MANUSCRIPT_JAE_V1_0.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC8_V0_1.md").read_text(encoding="utf-8")
-cl=(root/"submission/COVER_LETTER_JAE_V0_9.md").read_text(encoding="utf-8")
+cl=(root/"submission/COVER_LETTER_JAE_V0_10.md").read_text(encoding="utf-8")
 nov=(root/"submission/NOVELTY_AUDIT_V0_7.md").read_text(encoding="utf-8")
 rev=(root/"submission/REVIEWER_ATTACK_MATRIX_V0_7.md").read_text(encoding="utf-8")
 null=json.loads((root/"NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
