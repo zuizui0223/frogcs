@@ -52,11 +52,9 @@ Detailed scientific history and all inferential boundaries are documented in `pr
 
 ## Workflows
 
-The current branch uses four workflows only:
+The current branch uses two workflows only:
 
 - `reproduce_current_results.yml` — manual reproduction of the current analysis endpoints;
-- `submission_pipeline.yml` — scientific package audit, JAE compliance, anonymous DOCX, and scientific bundle;
-- `initial_submission_bundle.yml` — manual private-metadata submission bundle;
-- `repository_structure_qa.yml` — repository-layout guard.
+- `submission_pipeline.yml` — repository structure, scientific package QA, JAE compliance, anonymous DOCX, scientific bundle, and optional private-metadata bundle.
 
 Historical release branches preserve exact earlier layouts and are not current authority.
