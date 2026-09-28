@@ -168,6 +168,12 @@ assert uniform["decision"]=="strong_rejection_of_uniform_activation"
 
 assert not re.search(r"\bRC\d+\b",m+"\n"+si)
 assert "readback" not in (m+"\n"+si).lower()
+assert "a frozen ERA5 dry-spell exposure" not in m
+assert "all frozen smoothing and persistence specifications" not in m
+assert "an ERA5 dry-spell exposure" in m
+assert "all prespecified smoothing and persistence settings" in m
+assert "history/pre-deep-cleanup-2026-09-28" in si
+assert "cc6a71dfb3930af9f08b47311295806584abaeb1" in si
 for x in [
     "β = 0.384","β = 0.0794","0.2859","92.0% observed","80.9%","77.9%",
     "3,152 same-observer pairs","cross-dataset consistency","not as a replication claim",
