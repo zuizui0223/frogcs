@@ -64,9 +64,10 @@ for x in [
         raise SystemExit(f"RC9 cover missing: {x}")
 
 for x in [
-  "cross-continentally consistent",
+  "cross-continental component",
   "uniform amplification",
   "worldwide universality",
+  "independent north american and australian monitoring systems",
 ]:
     if x not in nov.lower():
         raise SystemExit(f"RC9 novelty drift: {x}")
