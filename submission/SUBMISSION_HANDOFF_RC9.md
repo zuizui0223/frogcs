@@ -131,9 +131,12 @@ RC9 does not erase it. The common US–Australia signal is **continuous/deeper t
 
 ## Latest verified RC9 artifacts
 
-- canonical review package: `frogcs-jae-rc9-review-package`, artifact ID **10956272327**
-- anonymous v1.1 DOCX package: `frogcs-jae-v1-1-rc9-anonymous-docx`, artifact ID **10955682513**
-- canonical submission QA run: **36390487764** — success
+- canonical review package: `frogcs-jae-rc9-review-package`, artifact ID **10958085033**
+- anonymous v1.1 DOCX package: `frogcs-jae-v1-1-rc9-anonymous-docx`, artifact ID **10957566882**
+- canonical submission QA run: **36394329346** — success
+- JAE compliance run: **36394329116** — success
+- anonymous v1.1 DOCX run: **36394329174** — success
+- RC9 scientific package run on submission authority: **36394329136** — success
 - RC9 scientific package QA runs on main/release/submission: **success**
 
 ## Human metadata still unresolved
