@@ -21,7 +21,7 @@ title=TITLE.read_text(encoding="utf-8")
 
 am=re.search(r"## Abstract\s*(.*?)\n## Keywords",m,re.S)
 km=re.search(r"## Keywords\s*(.*?)\n## Introduction",m,re.S)
-rm=re.search(r"## References\s*(.*?)\n## Figure concepts",m,re.S)
+rm=re.search(r"## References\s*(.*?)\n## Figure legends",m,re.S)
 assert am and km and rm
 
 abstract=am.group(1)
