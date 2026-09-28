@@ -69,7 +69,7 @@ for x in [
 
 for x in ["species-specific activation-shift null remains untested","3,152/4,236 pairs","ObserverTrackingID"]:
     assert x.lower() in rev.lower(), x
-for x in ["observer turnover is not required","species-specific activation-shift null","remains untested"]:
+for x in ["observer turnover is not required","null allowing each species its own rainfall-response shift remains untested"]:
     assert x.lower() in nov.lower(), x
 
 for x in [
