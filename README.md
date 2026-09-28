@@ -50,14 +50,13 @@ Root-level JSON provenance and root-level analysis scripts are intentionally pro
 
 Detailed scientific history and all inferential boundaries are documented in `provenance/docs/CURRENT_PAPER_OVERVIEW.md`, the Supporting Information and historical release branches.
 
-## Submission QA
+## Workflows
 
-The active workflows build and verify:
+The current branch uses four workflows only:
 
-- anonymous manuscript/SI DOCX;
-- scientific submission bundle;
-- JAE format compliance;
-- scientific package consistency;
-- repository structure.
+- `reproduce_current_results.yml` — manual reproduction of the current analysis endpoints;
+- `submission_pipeline.yml` — scientific package audit, JAE compliance, anonymous DOCX, and scientific bundle;
+- `initial_submission_bundle.yml` — manual private-metadata submission bundle;
+- `repository_structure_qa.yml` — repository-layout guard.
 
 Historical release branches preserve exact earlier layouts and are not current authority.
