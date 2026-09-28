@@ -1,0 +1,44 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_persistence_preserving_uniform_activation_null_v0_1_summary",
+  "workflow_run": 36396060661,
+  "artifact_id": 10957954308,
+  "decision": "strong_rejection_under_persistence_anchoring",
+  "title_support": {
+    "boundary_biased_title_authorized": true,
+    "candidate_title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+  },
+  "observed": {
+    "boundary_crossing_share": 0.9201538112142242,
+    "corner_share": 0.3691189628635065,
+    "spatial_spread_share": 0.152358285975235,
+    "taxonomic_deepening_share": 0.39867656237548255,
+    "within_core_share": 0.07984618878577582
+  },
+  "anchor_0_50": {
+    "omnibus_p": 0.000999000999000999,
+    "boundary_null_mean": 0.7867949641913364,
+    "boundary_ci95": [0.7317950614783426, 0.8425392287949822],
+    "within_core_null_mean": 0.21320503580866365
+  },
+  "anchor_0_75_primary": {
+    "omnibus_p": 0.000999000999000999,
+    "boundary_null_mean": 0.7793754294928684,
+    "boundary_ci95": [0.7338269009739914, 0.8280786787632431],
+    "corner_null_mean": 0.2862357580209283,
+    "spatial_spread_null_mean": 0.19257719694126693,
+    "taxonomic_deepening_null_mean": 0.3005624745306732,
+    "within_core_null_mean": 0.22062457050713152
+  },
+  "anchor_0_90": {
+    "omnibus_p": 0.000999000999000999,
+    "boundary_null_mean": 0.775962568639588,
+    "boundary_ci95": [0.7291396285750618, 0.8231622254659892],
+    "within_core_null_mean": 0.2240374313604119
+  },
+  "interpretation": "The observed four-component allocation remains strongly inconsistent with uniform activation even when the null uses cell-only historical frequencies and strongly anchors each pair to its observed dry species x stop state. The result therefore cannot be attributed simply to hierarchical shrinkage weakening persistent species x stop identity.",
+  "ecological_hypothesis_boundary": "Preferential recruitment of combinations rare in dry conditions, including temporary or intermittently suitable wet sites, is a plausible discussion-level explanation only; no unique mechanism or causal rainfall effect is identified.",
+  "worldwide_generality_authorized": false,
+  "causal_claim_authorized": false,
+  "post_readback_retuning_authorized": false
+}
