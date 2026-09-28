@@ -52,8 +52,8 @@ jobs:
 
       - name: Build anonymous RC11 DOCX files
         run: |
-          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_3.md             --output build/FROG_JAE_ANON_MAIN_V1_3.docx
-          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_3.md             --output build/FROG_JAE_ANON_MAIN.docx
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION.docx
 
       - name: Verify RC11 DOCX
         run: |
@@ -61,8 +61,8 @@ jobs:
           from zipfile import ZipFile
           from pathlib import Path
           import re
-          p=Path("build/FROG_JAE_ANON_MAIN_V1_3.docx")
-          s=Path("build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx")
+          p=Path("build/FROG_JAE_ANON_MAIN.docx")
+          s=Path("build/FROG_JAE_SUPPORTING_INFORMATION.docx")
           with ZipFile(p) as z:
               document=z.read("word/document.xml").decode("utf-8")
               footer=z.read("word/footer1.xml").decode("utf-8")
@@ -74,75 +74,74 @@ jobs:
           assert "<w:lnNumType" in document
           assert "PAGE" in footer
           assert expected in core
-          assert "3,152 wetter" in document
-          assert "each species its own rainfall-response shift remains untested" in document
+          assert "3,152 same-observer pairs" in document
+          assert "a null allowing species-specific shifts" in document
           assert "Same-observer sensitivity".lower() in sidoc.lower()
+          assert not re.search(r"\\bRC\\d+\\b",document+sidoc)
+          assert "readback" not in (document+sidoc).lower()
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",core)
           assert not re.search(r"<dc:creator>[^<]+</dc:creator>",sicore)
           print("RC11 DOCX structure PASS")
           PY
 
-      - name: Assemble RC11 initial bundle
+      - name: Assemble initial submission bundle
         run: |
           set -eu
-          out=build/initial-submission-rc11
-          mkdir -p "$out"
-          cp MANUSCRIPT_JAE_V1_3.md "$out/"
-          cp build/FROG_JAE_ANON_MAIN_V1_3.docx "$out/"
-          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$out/"
-          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx "$out/"
-          cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
-          cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
-          cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
-          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$out/"
-          cp figures_ecology_v1_2/*.svg "$out/"
-          cp submission/COVER_LETTER_JAE_V0_13.md "$out/"
-          cp submission/NOVELTY_AUDIT_V0_11.md "$out/"
-          cp submission/REVIEWER_ATTACK_MATRIX_V0_11.md "$out/"
-          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$out/"
-          cp submission/SUBMISSION_HANDOFF_RC11.md "$out/"
-          cp submission/RC11_STORY_FREEZE_V0_1.json "$out/"
-          cp submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md "$out/"
-          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json "$out/"
-          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
-          cp NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$out/"
-          cp NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$out/"
-          cp CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json "$out/"
-          cp CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$out/"
-          cp NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json "$out/"
-          cp NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json "$out/"
-          cp submission/RC10_SCOPE_UNFREEZE_V0_1.json "$out/"
-          cp submission/RC10_STORY_DECISION_TREE_V0_1.json "$out/"
-          cp submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json "$out/"
-          cp submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json "$out/"
-          cp submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml "$out/"
-          cp submission/CITATION_V0_5.cff.template "$out/"
+          out=build/initial-submission
+          sub="$out/submission_files"
+          audit="$out/audit"
+          mkdir -p "$sub" "$audit"
 
-          cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
-          Canonical initial JAE submission candidate: RC11 / ecological v1.3.
-          Scientific authority: MANUSCRIPT_JAE_V1_3.md + submission/RC11_STORY_FREEZE_V0_1.json.
-          Canonical Supporting Information: SUPPORTING_INFORMATION_JAE_RC11_V0_1.md.
-          RC11 is a reviewer-defense release over RC10: same-observer robustness plus explicit species-specific-null limitation.
-          The species-specific activation-shift null is reserved and was not run pre-submission.
-          RC1-RC10 surfaces remain immutable audit/fallback history.
+          cp MANUSCRIPT_JAE_V1_3.md "$sub/Manuscript.md"
+          cp build/FROG_JAE_ANON_MAIN.docx "$sub/Manuscript.docx"
+          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$sub/Supporting_Information.md"
+          cp build/FROG_JAE_SUPPORTING_INFORMATION.docx "$sub/Supporting_Information.docx"
+          cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$sub/Title_Page.md"
+          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$sub/Figure1.svg"
+          cp figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg "$sub/Figure2.svg"
+          cp figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg "$sub/Figure3.svg"
+          cp submission/COVER_LETTER_JAE_V0_13.md "$sub/Cover_Letter.md"
+
+          cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$audit/"
+          cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
+          cp submission/NOVELTY_AUDIT_V0_11.md "$audit/"
+          cp submission/REVIEWER_ATTACK_MATRIX_V0_11.md "$audit/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$audit/"
+          cp submission/SUBMISSION_HANDOFF_RC11.md "$audit/"
+          cp submission/RC11_STORY_FREEZE_V0_1.json "$audit/"
+          cp submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md "$audit/"
+          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json "$audit/"
+          cp NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$audit/"
+          cp NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$audit/"
+          cp CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$audit/"
+          cp NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json "$audit/"
+
+          cat > "$out/README.txt" <<'TXT'
+          Journal-facing upload files are under submission_files/ and use generic filenames.
+          Internal provenance/portal validation is isolated under audit/ and should not be uploaded as manuscript content.
           Archive DOI is intentionally deferred during double-anonymized review.
           TXT
 
           python - <<'PY'
-          import hashlib,json
+          import hashlib,json,re
           from pathlib import Path
-          out=Path("build/initial-submission-rc11")
-          rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
+          out=Path("build/initial-submission")
+          sub=out/"submission_files"
+          for p in sub.iterdir():
+              assert not re.search(r"(RC\d+|V\d+[_\.-]?\d*)",p.name,re.I),p.name
+          rows={}
+          for p in sorted(out.rglob("*")):
+              if p.is_file():
+                  rows[str(p.relative_to(out))]=hashlib.sha256(p.read_bytes()).hexdigest()
           (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           required={
-              "MANUSCRIPT_JAE_V1_3.md",
-              "FROG_JAE_ANON_MAIN_V1_3.docx",
-              "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
-              "FROG_JAE_SUPPORTING_INFORMATION_RC11.docx",
-              "RC11_STORY_FREEZE_V0_1.json",
-              "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
-              "JAE_TITLE_PAGE_FINAL.md",
-              "JAE_PORTAL_FIELDS.json",
+              "submission_files/Manuscript.docx",
+              "submission_files/Supporting_Information.docx",
+              "submission_files/Title_Page.md",
+              "submission_files/Figure1.svg",
+              "submission_files/Figure2.svg",
+              "submission_files/Figure3.svg",
+              "submission_files/Cover_Letter.md",
           }
           missing=required-set(rows)
           assert not missing,missing
@@ -151,6 +150,6 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-rc11-v1-3-initial-submission-bundle
-          path: build/initial-submission-rc11/
+          name: frogcs-jae-initial-submission-bundle
+          path: build/initial-submission/
           if-no-files-found: error
