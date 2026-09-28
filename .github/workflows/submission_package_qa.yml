@@ -17,7 +17,7 @@ on:
       - "submission/SUBMISSION_HANDOFF_RC11.md"
       - "provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"
       - "README.md"
-      - "scripts/audit_rc11_submission_package.py"
+      - "scripts/qa/audit_rc11_submission_package.py"
       - ".github/workflows/submission_package_qa.yml"
   workflow_dispatch:
 jobs:
@@ -28,4 +28,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/audit_rc11_submission_package.py
+      - run: python scripts/qa/audit_rc11_submission_package.py
