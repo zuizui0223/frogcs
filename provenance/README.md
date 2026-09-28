@@ -1,13 +1,13 @@
 # Current provenance
 
-This directory contains only provenance needed by the current paper and its active reproducibility/submission code.
+This directory contains only provenance required by the current paper and active reproducibility workflows.
 
-- `contracts/` — frozen definitions for active analyses.
-- `summaries/` — durable results used by the manuscript, SI, README, or submission QA.
-- `repairs/` — the current uniform-null implementation repair record.
-- `submission/` — current story-freeze / scope decision records still used by active workflows.
-- `submission_docs/` — current internal submission and reviewer audits.
-- `docs/` — concise human-readable overview of the current paper.
-- `receipts/` — runtime destination for detailed workflow receipts; historical receipts are not duplicated on the current branch.
+- `contracts/` — current frozen analysis definitions and decision rules.
+- `summaries/` — current compact results used by the manuscript, README, SI or submission QA.
+- `receipts/` — retained machine-readable outputs needed by active analyses.
+- `repairs/` — retained implementation repair records needed by active analyses.
+- `submission/` — current scope/freeze records still required by active workflows.
+- `submission_docs/` — current reviewer-facing internal audits and handoff.
+- `docs/` — concise human-readable provenance map.
 
-Superseded contracts, summaries, receipts, trait/mechanism explorations, and migration manifests are preserved in `history/pre-deep-cleanup-2026-09-28`, historical release branches, and Git history.
+Superseded provenance is available from `history/pre-deep-cleanup-2026-09-28`, RC release branches, and Git history rather than being duplicated on the current branch.
