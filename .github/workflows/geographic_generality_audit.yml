@@ -6,7 +6,7 @@ on:
     branches:
       - revision/geographic-generality-audit-v1
     paths:
-      - "NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json"
       - "scripts/run_naamp_geographic_generality_audit.py"
       - ".github/workflows/geographic_generality_audit.yml"
 
