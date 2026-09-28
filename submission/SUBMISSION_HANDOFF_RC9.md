@@ -32,6 +32,7 @@ RC8 remains the frozen fallback on `release/jae-v1-rc8`.
 - title-page template: `JAE_TITLE_PAGE_V0_7.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml`
 - human-finalization guide: `submission/HUMAN_FINALIZATION_RC9.md`
+- citation template: `submission/CITATION_V0_4.cff.template`
 
 ## Question spine
 
@@ -103,8 +104,8 @@ RC9 does not erase it. The common US–Australia signal is **continuous/deeper t
 ## JAE package metrics
 
 - manuscript: ~**7,759 words**
-- title-page template: ~113 words
-- combined proxy: ~**7,872 / 8,500**
+- title-page template: ~131 words
+- combined proxy: ~**7,890 / 8,500**
 - abstract: ~**322 / 350**
 - cover letter v0.12: ~**355 / 500**
 - keywords: 8
