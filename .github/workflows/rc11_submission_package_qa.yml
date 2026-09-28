@@ -2,6 +2,7 @@ name: frogcs RC11 scientific package QA
 on:
   push:
     branches:
+      - fix/rc11-submission-clean-copyedit-v1
       - revision/rc10-reviewer-defense-v1
       - release/jae-v1-rc11
       - main
