@@ -1,13 +1,13 @@
-# Submission handoff — JAE RC11 reviewer-defense candidate
+# Submission handoff — JAE RC11 release
 
 ## State
 
-- frozen baseline: RC10 at `main` / `release/jae-v1-rc10` / `submission/jae-v1`
-- reviewer-defense branch: `revision/rc10-reviewer-defense-v1`
-- draft PR: #54
-- candidate manuscript: `MANUSCRIPT_JAE_V1_3.md`
-- candidate SI: `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
-- RC10 files remain unchanged.
+- parent baseline: RC10 retained at `release/jae-v1-rc10`
+- merged reviewer-defense PR: #54
+- canonical manuscript: `MANUSCRIPT_JAE_V1_3.md`
+- canonical SI: `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
+- current authority: `main` / `release/jae-v1-rc11` / `submission/jae-v1`
+- RC10 files remain unchanged as audit history.
 
 ## What RC11 changes
 
