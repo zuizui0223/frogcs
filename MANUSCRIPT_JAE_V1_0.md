@@ -32,7 +32,7 @@ We used the U.S. Geological Survey North American Amphibian Monitoring Program d
 
 For the community analyses we retained complete ten-stop runs with at least eight valid stop temperatures, mean converted temperature between -10 and 45 °C, a parseable survey date, and numeric DaysSinceRain within the publisher-documented 0–180 day range. This yielded 7,848 eligible runs. At each run we represented the observations as a binary species × stop incidence matrix. A stop was **active** if at least one species was detected calling. Local richness was the number of calling species at a stop. Route-level active richness was the number of distinct calling species detected across all ten stops.
 
-These quantities describe the behaviourally realized acoustic community during the survey. They do not measure abundance, occupancy, colonization, extinction or reproductive success.
+These quantities describe the behaviourally realized acoustic community during the survey. They do not measure abundance, occupancy, colonization, extinction or reproductive success. This study was a secondary analysis of publicly released acoustic-monitoring and trait data and involved no new animal capture, handling or field sampling.
 
 ### Matched wetter–drier comparisons
 
@@ -151,7 +151,7 @@ All rainfall results are observational associations. Terms such as “new specie
 
 ### Recent rain expands both the active spatial footprint and taxonomic richness
 
-The 4,236 matched wetter–drier comparisons represented 585 routes. Wetter surveys contained slightly more active stops on average, and the difference increased strongly with rainfall contrast. Each unit increase in log-rainfall contrast predicted a wet-minus-dry increase of 0.384 active stops (95% CI 0.240–0.528, P = 1.80 × 10^-7). The exact consecutive-year sensitivity remained positive (β = 0.292, P = 5.77 × 10^-4).
+The 4,236 matched wetter–drier comparisons represented 585 routes. Wetter surveys contained slightly more active stops on average, and the difference increased strongly with rainfall contrast. Each unit increase in log-rainfall contrast predicted a wet-minus-dry increase of 0.384 active stops (95% CI 0.240–0.528, P = 1.80 × 10^-7). The exact consecutive-year sensitivity remained positive (β = 0.292, P = 5.77 × 10^-4) (Fig. 1).
 
 Taxonomic richness increased at both local and route scales. Mean richness among active stops increased with rainfall contrast (β = 0.0794 species per active stop, 95% CI 0.0231–0.1357, P = 0.00569), while route-level gamma richness increased by 0.2859 species per unit contrast (95% CI 0.1646–0.4072, P = 3.81 × 10^-6). Both results persisted in exact consecutive-year pairs.
 
@@ -199,7 +199,7 @@ Exact consecutive-year pairs gave a similar partition: 33.3% corner expansion, 1
 
 ### Boundary-crossing expansion exceeds the uniform-activation expectation
 
-A high boundary-crossing fraction was expected even under simple uniform activation, but the observed allocation was substantially more boundary-biased than that null. Under the primary κ = 2 specification, uniform activation produced a mean boundary-crossing share of 80.9% with a 95% null interval of 74.2–87.4%, compared with 92.0% observed. The four-component omnibus test strongly rejected the null (Monte Carlo P = 0.001; 1,000 simulations).
+A high boundary-crossing fraction was expected even under simple uniform activation, but the observed allocation was substantially more boundary-biased than that null. Under the primary κ = 2 specification, uniform activation produced a mean boundary-crossing share of 80.9% with a 95% null interval of 74.2–87.4%, compared with 92.0% observed. The four-component omnibus test strongly rejected the null (Monte Carlo P = 0.001; 1,000 simulations) (Fig. 2).
 
 The deviation was structured rather than a uniform excess across all components. Corner expansion accounted for 36.9% of the observed rainfall-associated incidence slope versus a null mean of 27.4% (95% interval 23.3–31.6%), and taxonomic deepening accounted for 39.9% versus 30.5% (25.4–36.2%). By contrast, spatial spread of route-existing species into newly active stops was lower than expected (15.2% observed versus 22.9%, 17.4–28.4%), and within-core rearrangement was less than half the null expectation (8.0% observed versus 19.1%, 12.6–25.8%). The same omnibus decision held under both smoothing sensitivities (κ = 1 and 5; Monte Carlo P = 0.001 in each), with the upper 95% null bound for total boundary crossing remaining below the observed 92.0%.
 
@@ -263,29 +263,27 @@ Kunze, C., et al. (2026). Species interactions determine the importance of respo
 
 Leibold, M. A., Holyoak, M., Mouquet, N., Amarasekare, P., Chase, J. M., Hoopes, M. F., Holt, R. D., Shurin, J. B., Law, R., Tilman, D., Loreau, M., & Gonzalez, A. (2004). The metacommunity concept: a framework for multi-scale community ecology. *Ecology Letters*, 7, 601–613. https://doi.org/10.1111/j.1461-0248.2004.00608.x
 
+Lemenager, L. A., Tracy, C. R., Christian, K. A., & Tracy, C. R. (2022). Physiological control of water exchange in anurans. *Ecology and Evolution*, 12, e8597. https://doi.org/10.1002/ece3.8597
+
 Mori, A. S., Furukawa, T., & Sasaki, T. (2013). Response diversity determines the resilience of ecosystems to environmental change. *Biological Reviews*, 88, 349–364. https://doi.org/10.1111/brv.12004
-
-Ross, S. R. P.-J., Petchey, O. L., Sasaki, T., & Armitage, D. W. (2023). How to measure response diversity. *Methods in Ecology and Evolution*, 14, 1150–1167. https://doi.org/10.1111/2041-210X.14087
-
-Royle, J. A., & Link, W. A. (2005). A general class of multinomial mixture models for anuran calling survey data. *Ecology*, 86, 2505–2512. https://doi.org/10.1890/04-1802
-
-U.S. Geological Survey. (2016). *North American Amphibian Monitoring Program*. Eastern Ecological Science Center.
-
-
-
-Sarker, M. A. R., McKnight, D. T., Ryder, D., Walcott, A., Ocock, J. F., Spencer, J. A., Preston, D., Brodie, S., & Bower, D. S. (2022). The effect of inundation on frog communities and chorusing behaviour. *Ecological Indicators*, 145, 109640. https://doi.org/10.1016/j.ecolind.2022.109640
-
-Sugai, L. S. M., Silva, T. S. F., Llusia, D., & Siqueira, T. (2021). Drivers of assemblage-wide calling activity in tropical anurans and the role of temporal resolution. *Journal of Animal Ecology*, 90, 673–684. https://doi.org/10.1111/1365-2656.13399
 
 Oliveira, B. F., São-Pedro, V. A., Santos-Barrera, G., Penone, C., & Costa, G. C. (2017). AmphiBIO, a global database for amphibian ecological traits. *Scientific Data*, 4, 170123. https://doi.org/10.1038/sdata.2017.123
 
 Oseen, K. L., & Wassersug, R. J. (2002). Environmental factors influencing calling in sympatric anurans. *Oecologia*, 133, 616–625. https://doi.org/10.1007/s00442-002-1067-5
 
+Ross, S. R. P.-J., Petchey, O. L., Sasaki, T., & Armitage, D. W. (2023). How to measure response diversity. *Methods in Ecology and Evolution*, 14, 1150–1167. https://doi.org/10.1111/2041-210X.14087
+
+Royle, J. A., & Link, W. A. (2005). A general class of multinomial mixture models for anuran calling survey data. *Ecology*, 86, 2505–2512. https://doi.org/10.1890/04-1802
+
 Saenz, D., Fitzgerald, L. A., Baum, K. A., & Conner, R. N. (2006). Abiotic correlates of anuran calling phenology: the importance of rain, temperature, and season. *Herpetological Monographs*, 20, 64–82. https://doi.org/10.1655/0733-1347(2007)20[64:ACOACP]2.0.CO;2
+
+Sarker, M. A. R., McKnight, D. T., Ryder, D., Walcott, A., Ocock, J. F., Spencer, J. A., Preston, D., Brodie, S., & Bower, D. S. (2022). The effect of inundation on frog communities and chorusing behaviour. *Ecological Indicators*, 145, 109640. https://doi.org/10.1016/j.ecolind.2022.109640
+
+Sugai, L. S. M., Silva, T. S. F., Llusia, D., & Siqueira, T. (2021). Drivers of assemblage-wide calling activity in tropical anurans and the role of temporal resolution. *Journal of Animal Ecology*, 90, 673–684. https://doi.org/10.1111/1365-2656.13399
 
 Tracy, C. R., Tixier, T., Le Nöene, C., & Christian, K. A. (2014). Field hydration state varies among tropical frog species with different habitat use. *Physiological and Biochemical Zoology*, 87, 197–202. https://doi.org/10.1086/674537
 
-Lemenager, L. A., Tracy, C. R., Christian, K. A., & Tracy, C. R. (2022). Physiological control of water exchange in anurans. *Ecology and Evolution*, 12, e8597. https://doi.org/10.1002/ece3.8597
+U.S. Geological Survey. (2016). *North American Amphibian Monitoring Program*. Eastern Ecological Science Center.
 
 Xie, J., Towsey, M., Zhu, M., Zhang, J., & Roe, P. (2017). An intelligent system for estimating frog community calling activity and species richness. *Ecological Indicators*, 82, 13–22. https://doi.org/10.1016/j.ecolind.2017.06.015
 
