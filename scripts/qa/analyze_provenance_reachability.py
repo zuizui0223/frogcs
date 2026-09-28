@@ -56,19 +56,14 @@ for rel in [
 ]:
     if rel in all_rel: seed.add(rel)
 
+# Current-main policy: keep only provenance directly referenced by active
+# scripts/workflows/submission surfaces plus the two human navigation files.
+# References among provenance files are historical context, not a reason to
+# duplicate their targets on the current branch; history branches retain them.
 keep=set(seed)
-q=deque(sorted(seed))
-edges={}
-while q:
-    rel=q.popleft()
-    text=read_text(all_rel[rel])
-    refs=refs_from_text(text)
-    if refs: edges[rel]=sorted(refs)
-    for r in refs:
-        if r not in keep:
-            keep.add(r);q.append(r)
-
 candidates=sorted(set(all_rel)-keep)
+edges={}
+
 report={
     "status":"PASS",
     "total_provenance_files":len(all_rel),
