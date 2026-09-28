@@ -5,7 +5,7 @@ on:
     branches:
       - revision/species-activation-geometry-repeatability-v1
     paths:
-      - "NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_CONTRACT_V0_1.json"
       - "scripts/run_naamp_species_activation_geometry_repeatability.py"
       - ".github/workflows/species_activation_geometry_repeatability.yml"
   workflow_dispatch:
