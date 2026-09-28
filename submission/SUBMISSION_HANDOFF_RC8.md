@@ -150,10 +150,10 @@ Final promoted QA:
 Automated audit status: **PASS**.
 
 Current measured package:
-- manuscript markdown: ~6,982 words;
+- manuscript markdown: ~6,935 words;
 - title-page template: ~113 words;
-- combined proxy: ~7,095 words vs 8,500-word Research Article limit;
-- abstract: ~340 words vs 350-word limit;
+- combined proxy: ~7,048 words vs 8,500-word Research Article limit;
+- abstract: ~293 words vs 350-word limit;
 - keywords: 8, alphabetically ordered;
 - anonymous cover letter v0.10: ~347 words vs 500-word limit;
 - references: alphabetically ordered;
