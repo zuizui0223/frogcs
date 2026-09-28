@@ -16,31 +16,8 @@ CURRENT_SUBMISSION_FILES={"CITATION.cff.template","COVER_LETTER_JAE_V0_13.md","S
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
-    "contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
-    "contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
-    "contracts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json",
-    "contracts/NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
-    "contracts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json",
-    "contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
-    "contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
-    "contracts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json",
-    "contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json",
-    "contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
-    "contracts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
-    "contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json",
-    "contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
-    "repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json",
+    "current.json",
     "receipts/README.md",
-    "submission/RC10_SCOPE_UNFREEZE_V0_1.json",
-    "submission/RC10_STORY_DECISION_TREE_V0_1.json",
-    "submission/RC11_STORY_FREEZE_V0_1.json",
-    "submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json",
-    "summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json",
-    "summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
-    "summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json",
-    "summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
-    "summaries/NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json",
-    "summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
 }
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
@@ -73,7 +50,7 @@ required=[
     ROOT/"scripts/qa/audit_naamp_sciencebase_file_manifest.py",
     ROOT/"scripts/submission/build_jae_anonymous_docx.py",
     ROOT/"scripts/submission/render_submission_metadata.py",
-    prov/"submission/RC11_STORY_FREEZE_V0_1.json",
+    prov/"current.json",
 ]
 for p in required: assert p.exists(),f"missing current file: {p.relative_to(ROOT)}"
 
@@ -126,10 +103,11 @@ readme=(ROOT/"README.md").read_text(encoding="utf-8")
 fig2=(ROOT/"figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg").read_text(encoding="utf-8")
 fig3=(ROOT/"figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg").read_text(encoding="utf-8")
 
-freeze=json.loads((prov/"submission/RC11_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
-obs=json.loads((prov/"summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
-pers=json.loads((prov/"summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
-uniform=json.loads((prov/"summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+current=json.loads((prov/"current.json").read_text(encoding="utf-8"))
+freeze=current["story"]["RC11_STORY_FREEZE_V0_1.json"]
+obs=current["summaries"]["NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"]
+pers=current["summaries"]["NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json"]
+uniform=current["summaries"]["NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json"]
 
 assert m.startswith("# "+TITLE)
 for surface in (cl,title_page,meta,citation): assert TITLE in surface
