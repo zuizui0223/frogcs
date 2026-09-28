@@ -275,7 +275,7 @@ def main():
 
     result={
         "analysis":"naamp_spatial_niche_breadth_response_v0_1",
-        "contract":"NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_CONTRACT_V0_1.json",
         "time_split":{"trait_period":[2001,2007],"validation_period":[2008,2015]},
         "early":{
             "eligible_runs":int(len(early)),

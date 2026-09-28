@@ -5,7 +5,7 @@ on:
     branches:
       - revision/activation-decomposition-v1
     paths:
-      - "FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json"
+      - "provenance/contracts/FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json"
       - "scripts/audit_frogid_eventtime.py"
       - ".github/workflows/frogid_eventtime_audit.yml"
   workflow_dispatch:

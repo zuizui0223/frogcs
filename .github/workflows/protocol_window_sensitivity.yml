@@ -5,7 +5,7 @@ on:
     branches:
       - revision/protocol-window-sensitivity-v1
     paths:
-      - "NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json"
       - "scripts/run_naamp_protocol_window_sensitivity.py"
       - ".github/workflows/protocol_window_sensitivity.yml"
   workflow_dispatch:

@@ -85,7 +85,7 @@ def main():
     payload=json.loads(raw)
     result={
       "analysis":"frogid_within_weather_cell_spatial_confounding_v0_1_1",
-      "contract":"SPATIAL_CONFOUNDING_ROBUSTNESS_CONTRACT_V0_1_1.json",
+      "contract":"provenance/contracts/SPATIAL_CONFOUNDING_ROBUSTNESS_CONTRACT_V0_1_1.json",
       "repair":"SPATIAL_CONFOUNDING_REPAIR_V0_1.md",
       "source_validation_contract":payload.get("contract"),
       "primary_within_cell":payload["primary"],

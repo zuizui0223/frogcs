@@ -309,7 +309,7 @@ def main():
 
     result={
         "analysis":"naamp_crossperiod_episodic_recruitment_v0_1",
-        "contract":"NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json",
         "time_split":{"baseline":[2001,2007],"validation":[2008,2015]},
         "baseline":{
             "eligible_runs":int(len(d[d["SurveyYear"].isin(BASELINE_YEARS)])),
@@ -360,7 +360,7 @@ def main():
         }
     }
 
-    Path("NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

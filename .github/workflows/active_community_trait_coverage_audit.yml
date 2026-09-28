@@ -5,7 +5,7 @@ on:
     branches:
       - revision/functional-response-diversity-audit-v1
     paths:
-      - "NAAMP_ACTIVE_COMMUNITY_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_ACTIVE_COMMUNITY_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json"
       - "scripts/audit_naamp_active_community_trait_coverage.py"
       - ".github/workflows/active_community_trait_coverage_audit.yml"
   workflow_dispatch:

@@ -1,0 +1,34 @@
+{
+  "programme": "frog-chorus-synchrony",
+  "analysis": "rc7_protocol_window_sensitivity_v0_1",
+  "status": "frozen_before_endpoint_readback",
+  "reason": "The NAAMP national protocol states that Gulf Coast and Great Plains routes should have been conducted within three days of rainfall. This sensitivity asks whether the existing RC7 footprint/alpha/gamma associations remain when rainfall contrast extends beyond that protocol-target window.",
+  "source_analysis": "provenance/contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
+  "responses": ["delta_active_stops", "delta_alpha_active", "delta_gamma"],
+  "model": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance",
+  "sensitivities": {
+    "primary_crosses_three_day_window": {
+      "subset": "dry_days_since_rain >= 4",
+      "meaning": "At least the drier member lies outside the protocol-target 0-3 day post-rain window.",
+      "pass_rule": "All three rainfall-contrast coefficients are positive.",
+      "strong_pass_rule": "All three 95% confidence intervals are entirely above zero."
+    },
+    "secondary_both_outside_three_day_window": {
+      "subset": "wet_days_since_rain >= 4",
+      "meaning": "Both members lie outside the protocol-target 0-3 day post-rain window.",
+      "decision_role": "descriptive diagnostic only; report n, slopes and confidence intervals without a PASS requirement because this subset may remove the biologically strongest immediate-rain contrasts."
+    }
+  },
+  "authorized_interpretation": {
+    "primary_pass": "The multiscale association is not confined to comparisons entirely within the 0-3 day protocol-target window.",
+    "primary_strong_pass": "The footprint, alpha and gamma associations remain confidence-interval positive when the drier survey lies outside the 0-3 day protocol-target window.",
+    "primary_fail": "The pooled RC7 association remains the headline, but evidence outside the protocol-target window is insufficient or directionally inconsistent."
+  },
+  "prohibited": [
+    "protocol selection is eliminated",
+    "rainfall causality is established",
+    "the sensitivity identifies which states followed the rainfall-targeting protocol",
+    "a failed both-outside diagnostic invalidates the primary matched result"
+  ],
+  "endpoint_retuning_after_readback_authorized": false
+}

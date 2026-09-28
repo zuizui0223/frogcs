@@ -107,7 +107,7 @@ def main():
 
     result={
       "analysis":"naamp_body_size_within_family_permutation_v0_1",
-      "contract":"NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_CONTRACT_V0_1.json",
       "implementation":"vectorized exact-contract implementation",
       "n_species":int(len(d)),
       "n_families":int(d.Family.nunique()),
@@ -132,7 +132,7 @@ def main():
         "causal_claim_authorized":False
       }
     }
-    Path("NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_RECEIPT_V0_1.json").write_text(
       json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

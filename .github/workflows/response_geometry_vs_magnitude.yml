@@ -5,7 +5,7 @@ on:
     branches:
       - revision/response-magnitude-geometry-orthogonality-v1
     paths:
-      - "NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_CONTRACT_V0_1.json"
       - "scripts/run_naamp_response_geometry_vs_magnitude.py"
       - ".github/workflows/response_geometry_vs_magnitude.yml"
   workflow_dispatch:

@@ -497,7 +497,7 @@ def main():
 
     result={
         "analysis":"frogid_rain_synchrony_timezone_repair_v0_3",
-        "contract":"FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
         "frogid_source_sha256":FROGID_SHA,
         "era5_source":{
             "provider":"Earthmover public Icechunk ERA5",
@@ -536,7 +536,7 @@ def main():
             "within_cell":fit_within_cell(df),
         },
         "time_alignment_repair":{
-            "contract":"FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+            "contract":"provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
             "events_with_hour_changed":hour_changed,
             "events_with_date_changed":date_changed,
             "required_unique_tp_chunks":len(chunk_requirements),

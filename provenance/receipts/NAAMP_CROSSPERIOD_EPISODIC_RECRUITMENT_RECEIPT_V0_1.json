@@ -1,0 +1,751 @@
+{
+  "analysis": "naamp_crossperiod_episodic_recruitment_v0_1",
+  "baseline": {
+    "eligible_runs": 2888,
+    "trait_species": 37
+  },
+  "combined_episodicity_descriptive": {
+    "authorized_as_inferential": false,
+    "n_species": 28,
+    "p_value": 0.6860469937204364,
+    "spearman_rho": 0.07991242474001095
+  },
+  "contract": "provenance/contracts/NAAMP_CROSSPERIOD_EPISODIC_RECRUITMENT_CONTRACT_V0_1.json",
+  "crossperiod_matched_species": 28,
+  "family_sensitivities": {
+    "family_source": {
+      "dataset": "AmphiBIO v1",
+      "git_blob_sha1": "f98650972f3266c24962f70738799a39a8310e87"
+    },
+    "primary_family_adjusted": {
+      "beta": 0.026372025292643392,
+      "ci95_beta": [
+        -Infinity,
+        Infinity
+      ],
+      "df_resid": 19.0,
+      "estimable": true,
+      "n_families": 5,
+      "n_species": 25,
+      "p_value": 1.0,
+      "se_hc3": Infinity
+    },
+    "primary_within_family_permutation": {
+      "estimable": true,
+      "n_families": 5,
+      "n_species": 25,
+      "negative_tail_p": 0.5515944840551594,
+      "observed_weighted_within_family_slope": 0.026372025292642775,
+      "permutation_mean": -0.002609171082216623,
+      "permutation_sd": 0.18365132437637013,
+      "permutations": 100000,
+      "positive_tail_p": 0.4484155158448416,
+      "q025": -0.3652910281069343,
+      "q975": 0.33987527954661895,
+      "seed": 20260926,
+      "two_sided_p": 0.8933810661893381
+    },
+    "secondary_family_adjusted": {
+      "beta": 0.4124415983988776,
+      "ci95_beta": [
+        -1.9067649553007373,
+        2.7316481520984928
+      ],
+      "df_resid": 19.0,
+      "estimable": true,
+      "n_families": 5,
+      "n_species": 25,
+      "p_value": 0.7274235332638508,
+      "se_hc3": 1.1832903930853935
+    },
+    "secondary_within_family_permutation": {
+      "estimable": true,
+      "n_families": 5,
+      "n_species": 25,
+      "negative_tail_p": 0.6948930510694893,
+      "observed_weighted_within_family_slope": 0.4124415983988772,
+      "permutation_mean": 0.009568615614383545,
+      "permutation_sd": 0.7428733172115142,
+      "permutations": 100000,
+      "positive_tail_p": 0.3051169488305117,
+      "q025": -1.3946715117722415,
+      "q975": 1.4300831930595823,
+      "seed": 20260926,
+      "two_sided_p": 0.6047439525604744
+    },
+    "taxonomy_audit": [
+      {
+        "amphibio_species": "Acris crepitans",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Acris crepitans"
+      },
+      {
+        "amphibio_species": null,
+        "family": "",
+        "matched": false,
+        "species": "Acris crepitans/gryllus complex"
+      },
+      {
+        "amphibio_species": "Acris gryllus",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Acris gryllus"
+      },
+      {
+        "amphibio_species": "Anaxyrus americanus",
+        "family": "Bufonidae",
+        "matched": true,
+        "species": "Anaxyrus americanus"
+      },
+      {
+        "amphibio_species": "Anaxyrus fowleri",
+        "family": "Bufonidae",
+        "matched": true,
+        "species": "Anaxyrus fowleri"
+      },
+      {
+        "amphibio_species": "Anaxyrus terrestris",
+        "family": "Bufonidae",
+        "matched": true,
+        "species": "Anaxyrus terrestris"
+      },
+      {
+        "amphibio_species": "Gastrophryne carolinensis",
+        "family": "Microhylidae",
+        "matched": true,
+        "species": "Gastrophryne carolinensis"
+      },
+      {
+        "amphibio_species": "Hyla chrysoscelis",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Hyla chrysoscelis"
+      },
+      {
+        "amphibio_species": null,
+        "family": "",
+        "matched": false,
+        "species": "Hyla chrysoscelis/versicolor complex"
+      },
+      {
+        "amphibio_species": "Hyla cinerea",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Hyla cinerea"
+      },
+      {
+        "amphibio_species": "Hyla femoralis",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Hyla femoralis"
+      },
+      {
+        "amphibio_species": "Hyla gratiosa",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Hyla gratiosa"
+      },
+      {
+        "amphibio_species": "Hyla squirella",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Hyla squirella"
+      },
+      {
+        "amphibio_species": "Hyla versicolor",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Hyla versicolor"
+      },
+      {
+        "amphibio_species": "Lithobates catesbeianus",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates catesbeianus"
+      },
+      {
+        "amphibio_species": "Lithobates clamitans",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates clamitans"
+      },
+      {
+        "amphibio_species": "Lithobates palustris",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates palustris"
+      },
+      {
+        "amphibio_species": "Lithobates pipiens",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates pipiens"
+      },
+      {
+        "amphibio_species": "Lithobates sphenocephalus",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates sphenocephalus"
+      },
+      {
+        "amphibio_species": "Lithobates sylvaticus",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates sylvaticus"
+      },
+      {
+        "amphibio_species": "Lithobates virgatipes",
+        "family": "Ranidae",
+        "matched": true,
+        "species": "Lithobates virgatipes"
+      },
+      {
+        "amphibio_species": "Pseudacris crucifer",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Pseudacris crucifer"
+      },
+      {
+        "amphibio_species": "Pseudacris feriarum",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Pseudacris feriarum"
+      },
+      {
+        "amphibio_species": "Pseudacris kalmi",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Pseudacris kalmi"
+      },
+      {
+        "amphibio_species": null,
+        "family": "",
+        "matched": false,
+        "species": "Pseudacris maculata/triseriata complex"
+      },
+      {
+        "amphibio_species": "Pseudacris nigrita",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Pseudacris nigrita"
+      },
+      {
+        "amphibio_species": "Pseudacris ocularis",
+        "family": "Hylidae",
+        "matched": true,
+        "species": "Pseudacris ocularis"
+      },
+      {
+        "amphibio_species": "Scaphiopus holbrookii",
+        "family": "Scaphiopodidae",
+        "matched": true,
+        "species": "Scaphiopus holbrookii"
+      }
+    ]
+  },
+  "interpretation_boundary": {
+    "baseline_traits_use_validation_years": false,
+    "causal_claim_authorized": false,
+    "occupancy_claim": false,
+    "same_species_temporal_holdout": true,
+    "validation_response_uses_baseline_years": false
+  },
+  "primary_baseline_recurrence": {
+    "beta": 0.06392693597057296,
+    "ci95_beta": [
+      -0.259001106462538,
+      0.38685497840368394
+    ],
+    "directional_ci_support": false,
+    "estimable": true,
+    "expected_sign": "negative",
+    "n_species": 28,
+    "p_value": 0.6980196734442983,
+    "predictor": "baseline_recurrence_logit",
+    "se_hc3": 0.16476223286770889,
+    "spearman_p": 0.9317071794908974,
+    "spearman_rho": -0.01696770662287904
+  },
+  "secondary_seasonal_concentration": {
+    "beta": -0.007150329991803456,
+    "ci95_beta": [
+      -1.086502146656116,
+      1.0722014866725091
+    ],
+    "directional_ci_support": false,
+    "estimable": true,
+    "expected_sign": "positive",
+    "n_species": 28,
+    "p_value": 0.9896404949051194,
+    "predictor": "baseline_seasonal_concentration",
+    "se_hc3": 0.5506998216182042,
+    "spearman_p": 0.6476464848801653,
+    "spearman_rho": 0.09031198686371099
+  },
+  "species_table": [
+    {
+      "baseline_active_runs": 275,
+      "baseline_eligible_runs": 753,
+      "baseline_recurrence": 0.3652058432934927,
+      "baseline_recurrence_logit": -0.5520685823000397,
+      "baseline_routes": 120,
+      "baseline_seasonal_concentration": 0.1790973298525994,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Acris crepitans",
+      "validation_adjusted_log_odds": 0.10570729531128503,
+      "validation_adjusted_wet_probability": 0.526402243445108,
+      "validation_events": 164,
+      "validation_routes": 101,
+      "validation_se": 0.19330401699543312
+    },
+    {
+      "baseline_active_runs": 71,
+      "baseline_eligible_runs": 186,
+      "baseline_recurrence": 0.3817204301075269,
+      "baseline_recurrence_logit": -0.4795730802618862,
+      "baseline_routes": 35,
+      "baseline_seasonal_concentration": 0.255068952751464,
+      "baseline_windows_with_effort": 3,
+      "family": "",
+      "species": "Acris crepitans/gryllus complex",
+      "validation_adjusted_log_odds": -0.16737755927413167,
+      "validation_adjusted_wet_probability": 0.45825302735153123,
+      "validation_events": 86,
+      "validation_routes": 45,
+      "validation_se": 0.2754754650342287
+    },
+    {
+      "baseline_active_runs": 92,
+      "baseline_eligible_runs": 182,
+      "baseline_recurrence": 0.5054945054945055,
+      "baseline_recurrence_logit": 0.021858793812499017,
+      "baseline_routes": 53,
+      "baseline_seasonal_concentration": 0.09509540240753789,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Acris gryllus",
+      "validation_adjusted_log_odds": 0.1129839167713122,
+      "validation_adjusted_wet_probability": 0.5282159699795317,
+      "validation_events": 95,
+      "validation_routes": 40,
+      "validation_se": 0.28290350306692164
+    },
+    {
+      "baseline_active_runs": 988,
+      "baseline_eligible_runs": 2218,
+      "baseline_recurrence": 0.4454463480613165,
+      "baseline_recurrence_logit": -0.21898722722043898,
+      "baseline_routes": 297,
+      "baseline_seasonal_concentration": 0.1352384171290434,
+      "baseline_windows_with_effort": 4,
+      "family": "Bufonidae",
+      "species": "Anaxyrus americanus",
+      "validation_adjusted_log_odds": -0.03825889071857603,
+      "validation_adjusted_wet_probability": 0.4904364438407062,
+      "validation_events": 549,
+      "validation_routes": 221,
+      "validation_se": 0.10536124483704717
+    },
+    {
+      "baseline_active_runs": 463,
+      "baseline_eligible_runs": 1154,
+      "baseline_recurrence": 0.40121317157712305,
+      "baseline_recurrence_logit": -0.4000567660989031,
+      "baseline_routes": 181,
+      "baseline_seasonal_concentration": 0.24690024330064364,
+      "baseline_windows_with_effort": 4,
+      "family": "Bufonidae",
+      "species": "Anaxyrus fowleri",
+      "validation_adjusted_log_odds": 0.3690245402331387,
+      "validation_adjusted_wet_probability": 0.5912232519514735,
+      "validation_events": 237,
+      "validation_routes": 119,
+      "validation_se": 0.17564768373955192
+    },
+    {
+      "baseline_active_runs": 71,
+      "baseline_eligible_runs": 145,
+      "baseline_recurrence": 0.4896551724137931,
+      "baseline_recurrence_logit": -0.04110167568555192,
+      "baseline_routes": 43,
+      "baseline_seasonal_concentration": 0.022723987557662362,
+      "baseline_windows_with_effort": 3,
+      "family": "Bufonidae",
+      "species": "Anaxyrus terrestris",
+      "validation_adjusted_log_odds": 0.40759139051032695,
+      "validation_adjusted_wet_probability": 0.6005101991015611,
+      "validation_events": 138,
+      "validation_routes": 53,
+      "validation_se": 0.2086006488132455
+    },
+    {
+      "baseline_active_runs": 54,
+      "baseline_eligible_runs": 152,
+      "baseline_recurrence": 0.35526315789473684,
+      "baseline_recurrence_logit": -0.5918558465088448,
+      "baseline_routes": 40,
+      "baseline_seasonal_concentration": 0.302160764150628,
+      "baseline_windows_with_effort": 4,
+      "family": "Microhylidae",
+      "species": "Gastrophryne carolinensis",
+      "validation_adjusted_log_odds": 1.3851530595090367,
+      "validation_adjusted_wet_probability": 0.7998173292173543,
+      "validation_events": 121,
+      "validation_routes": 67,
+      "validation_se": 0.2798592275624802
+    },
+    {
+      "baseline_active_runs": 390,
+      "baseline_eligible_runs": 1036,
+      "baseline_recurrence": 0.3764478764478765,
+      "baseline_recurrence_logit": -0.5041452289321715,
+      "baseline_routes": 162,
+      "baseline_seasonal_concentration": 0.22903484122915252,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Hyla chrysoscelis",
+      "validation_adjusted_log_odds": 0.47665259043572095,
+      "validation_adjusted_wet_probability": 0.6169571218084745,
+      "validation_events": 361,
+      "validation_routes": 160,
+      "validation_se": 0.13493671345720348
+    },
+    {
+      "baseline_active_runs": 133,
+      "baseline_eligible_runs": 652,
+      "baseline_recurrence": 0.20398773006134968,
+      "baseline_recurrence_logit": -1.358765332698978,
+      "baseline_routes": 80,
+      "baseline_seasonal_concentration": 0.44109000932684117,
+      "baseline_windows_with_effort": 4,
+      "family": "",
+      "species": "Hyla chrysoscelis/versicolor complex",
+      "validation_adjusted_log_odds": 0.17017232006180621,
+      "validation_adjusted_wet_probability": 0.5424407107171947,
+      "validation_events": 167,
+      "validation_routes": 80,
+      "validation_se": 0.16469805312926514
+    },
+    {
+      "baseline_active_runs": 211,
+      "baseline_eligible_runs": 561,
+      "baseline_recurrence": 0.3761140819964349,
+      "baseline_recurrence_logit": -0.5051357079883121,
+      "baseline_routes": 98,
+      "baseline_seasonal_concentration": 0.2614779475693555,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Hyla cinerea",
+      "validation_adjusted_log_odds": -0.7948307637950224,
+      "validation_adjusted_wet_probability": 0.31113235309221704,
+      "validation_events": 137,
+      "validation_routes": 75,
+      "validation_se": 0.23404945726830914
+    },
+    {
+      "baseline_active_runs": 29,
+      "baseline_eligible_runs": 104,
+      "baseline_recurrence": 0.27884615384615385,
+      "baseline_recurrence_logit": -0.9397423929092049,
+      "baseline_routes": 22,
+      "baseline_seasonal_concentration": 0.3639777828378786,
+      "baseline_windows_with_effort": 3,
+      "family": "Hylidae",
+      "species": "Hyla femoralis",
+      "validation_adjusted_log_odds": 0.5719269493433395,
+      "validation_adjusted_wet_probability": 0.6392076896573919,
+      "validation_events": 95,
+      "validation_routes": 37,
+      "validation_se": 0.30614572887171565
+    },
+    {
+      "baseline_active_runs": 43,
+      "baseline_eligible_runs": 113,
+      "baseline_recurrence": 0.3805309734513274,
+      "baseline_recurrence_logit": -0.48285177172358457,
+      "baseline_routes": 33,
+      "baseline_seasonal_concentration": 0.16396426289527477,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Hyla gratiosa",
+      "validation_adjusted_log_odds": -0.07286183458818651,
+      "validation_adjusted_wet_probability": 0.4817925956672259,
+      "validation_events": 118,
+      "validation_routes": 56,
+      "validation_se": 0.19965717557258397
+    },
+    {
+      "baseline_active_runs": 53,
+      "baseline_eligible_runs": 121,
+      "baseline_recurrence": 0.4380165289256198,
+      "baseline_recurrence_logit": -0.24715209136621868,
+      "baseline_routes": 37,
+      "baseline_seasonal_concentration": 0.43195255187435844,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Hyla squirella",
+      "validation_adjusted_log_odds": 0.9974922065072779,
+      "validation_adjusted_wet_probability": 0.730565230892822,
+      "validation_events": 131,
+      "validation_routes": 62,
+      "validation_se": 0.24578582257422601
+    },
+    {
+      "baseline_active_runs": 793,
+      "baseline_eligible_runs": 1937,
+      "baseline_recurrence": 0.40939597315436244,
+      "baseline_recurrence_logit": -0.36626959942615767,
+      "baseline_routes": 233,
+      "baseline_seasonal_concentration": 0.20288437872806098,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Hyla versicolor",
+      "validation_adjusted_log_odds": 0.22876730416026622,
+      "validation_adjusted_wet_probability": 0.5569436991479865,
+      "validation_events": 309,
+      "validation_routes": 146,
+      "validation_se": 0.13222032485017468
+    },
+    {
+      "baseline_active_runs": 1030,
+      "baseline_eligible_runs": 2424,
+      "baseline_recurrence": 0.4249174917491749,
+      "baseline_recurrence_logit": -0.30249180673702986,
+      "baseline_routes": 339,
+      "baseline_seasonal_concentration": 0.2538290055213801,
+      "baseline_windows_with_effort": 4,
+      "family": "Ranidae",
+      "species": "Lithobates catesbeianus",
+      "validation_adjusted_log_odds": -0.33186911596014085,
+      "validation_adjusted_wet_probability": 0.41778590807356286,
+      "validation_events": 437,
+      "validation_routes": 236,
+      "validation_se": 0.10053418010451137
+    },
+    {
+      "baseline_active_runs": 1339,
+      "baseline_eligible_runs": 2620,
+      "baseline_recurrence": 0.5110687022900763,
+      "baseline_recurrence_logit": 0.044265143180537675,
+      "baseline_routes": 381,
+      "baseline_seasonal_concentration": 0.23710585240047688,
+      "baseline_windows_with_effort": 4,
+      "family": "Ranidae",
+      "species": "Lithobates clamitans",
+      "validation_adjusted_log_odds": -0.11117431491918763,
+      "validation_adjusted_wet_probability": 0.4722350126892993,
+      "validation_events": 378,
+      "validation_routes": 190,
+      "validation_se": 0.12263363598648085
+    },
+    {
+      "baseline_active_runs": 412,
+      "baseline_eligible_runs": 1570,
+      "baseline_recurrence": 0.2624203821656051,
+      "baseline_recurrence_logit": -1.032645138097695,
+      "baseline_routes": 189,
+      "baseline_seasonal_concentration": 0.3145236979315612,
+      "baseline_windows_with_effort": 4,
+      "family": "Ranidae",
+      "species": "Lithobates palustris",
+      "validation_adjusted_log_odds": -0.3136693880585984,
+      "validation_adjusted_wet_probability": 0.4222193364833676,
+      "validation_events": 291,
+      "validation_routes": 148,
+      "validation_se": 0.12470366000863592
+    },
+    {
+      "baseline_active_runs": 58,
+      "baseline_eligible_runs": 317,
+      "baseline_recurrence": 0.1829652996845426,
+      "baseline_recurrence_logit": -1.4897299483681326,
+      "baseline_routes": 32,
+      "baseline_seasonal_concentration": 0.367026358909452,
+      "baseline_windows_with_effort": 4,
+      "family": "Ranidae",
+      "species": "Lithobates pipiens",
+      "validation_adjusted_log_odds": 0.21023364336788408,
+      "validation_adjusted_wet_probability": 0.5523656804343077,
+      "validation_events": 98,
+      "validation_routes": 52,
+      "validation_se": 0.1940877970296719
+    },
+    {
+      "baseline_active_runs": 340,
+      "baseline_eligible_runs": 861,
+      "baseline_recurrence": 0.3948896631823461,
+      "baseline_recurrence_logit": -0.4262941488512601,
+      "baseline_routes": 161,
+      "baseline_seasonal_concentration": 0.15540228681110402,
+      "baseline_windows_with_effort": 4,
+      "family": "Ranidae",
+      "species": "Lithobates sphenocephalus",
+      "validation_adjusted_log_odds": 0.3044397557596505,
+      "validation_adjusted_wet_probability": 0.5755274916354501,
+      "validation_events": 326,
+      "validation_routes": 138,
+      "validation_se": 0.129820179616809
+    },
+    {
+      "baseline_active_runs": 476,
+      "baseline_eligible_runs": 1782,
+      "baseline_recurrence": 0.2671156004489338,
+      "baseline_recurrence_logit": -1.0086393618664105,
+      "baseline_routes": 201,
+      "baseline_seasonal_concentration": 0.5437316994865288,
+      "baseline_windows_with_effort": 4,
+      "family": "Ranidae",
+      "species": "Lithobates sylvaticus",
+      "validation_adjusted_log_odds": 0.2130837670631671,
+      "validation_adjusted_wet_probability": 0.553070290211103,
+      "validation_events": 169,
+      "validation_routes": 101,
+      "validation_se": 0.17499105198318887
+    },
+    {
+      "baseline_active_runs": 45,
+      "baseline_eligible_runs": 131,
+      "baseline_recurrence": 0.3435114503816794,
+      "baseline_recurrence_logit": -0.6424320879809289,
+      "baseline_routes": 23,
+      "baseline_seasonal_concentration": 0.3514426710559141,
+      "baseline_windows_with_effort": 3,
+      "family": "Ranidae",
+      "species": "Lithobates virgatipes",
+      "validation_adjusted_log_odds": -0.8061837188437766,
+      "validation_adjusted_wet_probability": 0.30870431774061097,
+      "validation_events": 33,
+      "validation_routes": 14,
+      "validation_se": 0.28207143701170845
+    },
+    {
+      "baseline_active_runs": 1971,
+      "baseline_eligible_runs": 2805,
+      "baseline_recurrence": 0.7026737967914438,
+      "baseline_recurrence_logit": 0.8597172102157922,
+      "baseline_routes": 437,
+      "baseline_seasonal_concentration": 0.1641706528195206,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Pseudacris crucifer",
+      "validation_adjusted_log_odds": 0.4417677212933556,
+      "validation_adjusted_wet_probability": 0.6086801626425086,
+      "validation_events": 340,
+      "validation_routes": 198,
+      "validation_se": 0.14113294883977812
+    },
+    {
+      "baseline_active_runs": 114,
+      "baseline_eligible_runs": 343,
+      "baseline_recurrence": 0.3323615160349854,
+      "baseline_recurrence_logit": -0.6953282065063056,
+      "baseline_routes": 63,
+      "baseline_seasonal_concentration": 0.26482790919033383,
+      "baseline_windows_with_effort": 4,
+      "family": "Hylidae",
+      "species": "Pseudacris feriarum",
+      "validation_adjusted_log_odds": 0.5890688720538699,
+      "validation_adjusted_wet_probability": 0.6431514731986533,
+      "validation_events": 47,
+      "validation_routes": 35,
+      "validation_se": 0.36474391895267744
+    },
+    {
+      "baseline_active_runs": 83,
+      "baseline_eligible_runs": 232,
+      "baseline_recurrence": 0.3577586206896552,
+      "baseline_recurrence_logit": -0.5824497609739314,
+      "baseline_routes": 37,
+      "baseline_seasonal_concentration": 0.21730276020100747,
+      "baseline_windows_with_effort": 3,
+      "family": "Hylidae",
+      "species": "Pseudacris kalmi",
+      "validation_adjusted_log_odds": 0.15533945564038767,
+      "validation_adjusted_wet_probability": 0.5387569603286061,
+      "validation_events": 47,
+      "validation_routes": 25,
+      "validation_se": 0.4399653941026435
+    },
+    {
+      "baseline_active_runs": 89,
+      "baseline_eligible_runs": 177,
+      "baseline_recurrence": 0.5028248587570622,
+      "baseline_recurrence_logit": 0.011236073266925752,
+      "baseline_routes": 36,
+      "baseline_seasonal_concentration": 0.3033435219743197,
+      "baseline_windows_with_effort": 3,
+      "family": "",
+      "species": "Pseudacris maculata/triseriata complex",
+      "validation_adjusted_log_odds": 0.3146169128811546,
+      "validation_adjusted_wet_probability": 0.5780117953051425,
+      "validation_events": 49,
+      "validation_routes": 23,
+      "validation_se": 0.26117015828787493
+    },
+    {
+      "baseline_active_runs": 18,
+      "baseline_eligible_runs": 39,
+      "baseline_recurrence": 0.46153846153846156,
+      "baseline_recurrence_logit": -0.150282203049338,
+      "baseline_routes": 12,
+      "baseline_seasonal_concentration": 0.220089978128701,
+      "baseline_windows_with_effort": 3,
+      "family": "Hylidae",
+      "species": "Pseudacris nigrita",
+      "validation_adjusted_log_odds": 0.08658276176464616,
+      "validation_adjusted_wet_probability": 0.5216321781928028,
+      "validation_events": 53,
+      "validation_routes": 27,
+      "validation_se": 0.39490957830388285
+    },
+    {
+      "baseline_active_runs": 25,
+      "baseline_eligible_runs": 46,
+      "baseline_recurrence": 0.5434782608695652,
+      "baseline_recurrence_logit": 0.17062551703076345,
+      "baseline_routes": 22,
+      "baseline_seasonal_concentration": 0.039909877059728704,
+      "baseline_windows_with_effort": 3,
+      "family": "Hylidae",
+      "species": "Pseudacris ocularis",
+      "validation_adjusted_log_odds": 0.5812308124348577,
+      "validation_adjusted_wet_probability": 0.6413505670596767,
+      "validation_events": 64,
+      "validation_routes": 32,
+      "validation_se": 0.3435671714313483
+    },
+    {
+      "baseline_active_runs": 19,
+      "baseline_eligible_runs": 153,
+      "baseline_recurrence": 0.12418300653594772,
+      "baseline_recurrence_logit": -1.9311497334721928,
+      "baseline_routes": 17,
+      "baseline_seasonal_concentration": 0.4146959491294785,
+      "baseline_windows_with_effort": 4,
+      "family": "Scaphiopodidae",
+      "species": "Scaphiopus holbrookii",
+      "validation_adjusted_log_odds": 1.0959167355639483,
+      "validation_adjusted_wet_probability": 0.7494942432756787,
+      "validation_events": 47,
+      "validation_routes": 31,
+      "validation_se": 0.44812738546649733
+    }
+  ],
+  "time_split": {
+    "baseline": [
+      2001,
+      2007
+    ],
+    "validation": [
+      2008,
+      2015
+    ]
+  },
+  "validation": {
+    "eligible_runs": 4960,
+    "estimable_species_responses": 32,
+    "matched_pairs": 2459
+  }
+}

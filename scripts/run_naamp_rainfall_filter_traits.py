@@ -51,7 +51,7 @@ def parse_binary(v):
     return np.nan
 
 def load_effects():
-    p=Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
+    p=Path("provenance/receipts/NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
     if not p.is_file():
         raise SystemExit("species-response receipt missing; run species-pulse analysis first")
     obj=json.loads(p.read_text(encoding="utf-8"))
@@ -212,7 +212,7 @@ def main():
 
     result={
         "analysis":"naamp_rainfall_filter_trait_test_v0_1",
-        "contract":"NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1.json",
         "trait_source":{
             "dataset":"AmphiBIO v1",
             "mirror_commit":"c437acbc65b51b66e3dc4abd821ebe1cb06b200c",

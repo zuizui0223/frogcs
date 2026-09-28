@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-community-filter-v1
     paths:
-      - "NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_RAINFALL_FILTER_TRAIT_CONTRACT_V0_1.json"
       - "scripts/run_naamp_rainfall_filter_traits.py"
       - ".github/workflows/rainfall_filter_traits.yml"
   workflow_dispatch:

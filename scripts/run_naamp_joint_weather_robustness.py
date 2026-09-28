@@ -103,7 +103,7 @@ def main():
     d=frame(load())
     joint="prop ~ rain_z + temp_z + C(State) + C(RunNumber) + C(RouteType) + year_z"
     date="prop ~ rain_z + temp_z + bs(doy, df=5, degree=3) + C(State) + C(RunNumber) + C(RouteType) + year_z"
-    result={"analysis":"naamp_joint_weather_robustness_v0_1","contract":"NAAMP_JOINT_WEATHER_ROBUSTNESS_CONTRACT_V0_1.json","joint_readback":fit(d,joint),"doy_spline_robustness":fit(d,date),"causal_claim_authorized":False}
+    result={"analysis":"naamp_joint_weather_robustness_v0_1","contract":"provenance/contracts/NAAMP_JOINT_WEATHER_ROBUSTNESS_CONTRACT_V0_1.json","joint_readback":fit(d,joint),"doy_spline_robustness":fit(d,date),"causal_claim_authorized":False}
     Path("frog_naamp_joint_weather_robustness_v0_1.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
     print(json.dumps(result,indent=2,sort_keys=True))
 if __name__=="__main__":main()

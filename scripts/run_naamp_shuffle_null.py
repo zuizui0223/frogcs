@@ -176,7 +176,7 @@ def main():
 
     result={
       "analysis":"naamp_fixed_marginal_shuffle_null_v0_1",
-      "contract":"NAAMP_SHUFFLE_NULL_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_SHUFFLE_NULL_CONTRACT_V0_1.json",
       "permutations_per_run":B,
       "subset":{"n_runs":int(len(d)),"n_routes":int(d.route_cluster.nunique()),
                 "pool_richness_mean":float(d.pool_richness.mean()),
@@ -194,7 +194,7 @@ def main():
       "existing_independence_residual_replaced":False,
       "original_primary_replaced":False
     }
-    Path("NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    Path("provenance/receipts/NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,indent=2,sort_keys=True))
 
 if __name__=="__main__":

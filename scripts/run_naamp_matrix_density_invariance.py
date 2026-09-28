@@ -138,7 +138,7 @@ def main():
     sens=fit(exact)
     result={
         "analysis":"naamp_matrix_density_invariance_v0_1",
-        "contract":"NAAMP_MATRIX_DENSITY_INVARIANCE_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_MATRIX_DENSITY_INVARIANCE_CONTRACT_V0_1.json",
         "source_pair_count":int(d.attrs.get("source_pair_count",len(d))),
         "excluded_undefined_connectance":int(d.attrs.get("excluded_undefined_connectance",0)),
         "descriptive":desc(d),

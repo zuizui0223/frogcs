@@ -5,7 +5,7 @@ on:
     branches:
       - revision/spatial-niche-breadth-response-v1
     paths:
-      - "NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPATIAL_NICHE_BREADTH_RESPONSE_CONTRACT_V0_1.json"
       - "scripts/run_naamp_spatial_niche_breadth_response.py"
       - ".github/workflows/spatial_niche_breadth_response.yml"
   workflow_dispatch:

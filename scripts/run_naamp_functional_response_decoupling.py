@@ -31,7 +31,7 @@ SEED_ALL=2842026
 SEED_FAMILY=2842027
 
 def species_universe():
-    obj=json.loads(Path("NAAMP_RESPONSE_ELIGIBLE_SPECIES_UNIVERSE_V0_1.json").read_text())
+    obj=json.loads(Path("provenance/metadata/NAAMP_RESPONSE_ELIGIBLE_SPECIES_UNIVERSE_V0_1.json").read_text())
     spp=[str(x) for x in obj["species"]]
     if len(spp)!=29 or len(set(spp))!=29:
         raise RuntimeError("species universe drift")
@@ -181,7 +181,7 @@ def main():
 
     result={
       "analysis":"naamp_functional_response_decoupling_v0_1",
-      "contract":"NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_CONTRACT_V0_1.json",
       "n_response_eligible_species":29,
       "n_adjusted_response_estimable":int(len(responses)),
       "n_complete_functional_response_species":int(len(species)),

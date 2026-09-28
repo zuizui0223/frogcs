@@ -53,7 +53,7 @@ def candidates(sp):
     return out
 
 def main():
-    source=Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
+    source=Path("provenance/receipts/NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json")
     if not source.is_file():
         raise SystemExit("species response receipt missing")
     obj=json.loads(source.read_text(encoding="utf-8"))
@@ -116,8 +116,8 @@ def main():
     )
     result={
         "audit":"amado2018_svl_source_audit_v0_1",
-        "contract":"AMADO2018_SVL_SOURCE_AUDIT_CONTRACT_V0_1.json",
-        "transport_repair_contract":"AMADO2018_SVL_SOURCE_AUDIT_REPAIR_V0_1_1.json",
+        "contract":"provenance/contracts/AMADO2018_SVL_SOURCE_AUDIT_CONTRACT_V0_1.json",
+        "transport_repair_contract":"provenance/repairs/AMADO2018_SVL_SOURCE_AUDIT_REPAIR_V0_1_1.json",
         "download_url_used":url,
         "archive_members":archive_members,
         "selected_archive_member":selected_member,

@@ -24,7 +24,7 @@ breadth=loadmod("breadth_response",ROOT/"run_naamp_spatial_niche_breadth_respons
 base=breadth.base
 
 def main():
-    geom=json.loads(Path("NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json").read_text())
+    geom=json.loads(Path("provenance/summaries/NAAMP_SPECIES_ACTIVATION_GEOMETRY_REPEATABILITY_SUMMARY_V0_1.json").read_text())
     early=pd.DataFrame([
         {"species":r["species"],"early_geometry":float(r["early"])}
         for r in geom["species_table"]
@@ -51,7 +51,7 @@ def main():
         return float(np.sum(ww*d["late_adjusted_log_odds"])/np.sum(ww))
     result={
       "analysis":"naamp_response_geometry_vs_magnitude_holdout_v0_1",
-      "contract":"NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_RESPONSE_GEOMETRY_VS_MAGNITUDE_CONTRACT_V0_1.json",
       "time_split":{"predictor":[2001,2007],"outcome":[2008,2015]},
       "late_response_rebuild":{
         "eligible_runs":int(len(late_runs)),

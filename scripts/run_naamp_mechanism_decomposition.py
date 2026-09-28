@@ -107,7 +107,7 @@ def main():
     d=frame(load())
     result={
       "analysis":"naamp_activation_overlap_decomposition_v0_1",
-      "contract":"NAAMP_MECHANISM_DECOMPOSITION_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_MECHANISM_DECOMPOSITION_CONTRACT_V0_1.json",
       "activation":fit(d,"active","trials"),
       "conditional_multispecies_given_active":fit(d,"multi","active"),
       "conditional_sensitivity_active_ge5":fit(d[d.active>=5].copy(),"multi","active"),

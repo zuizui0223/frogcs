@@ -4,7 +4,7 @@ on:
     branches:
       - revision/rc8-uniform-null-equivalence-v1
     paths:
-      - "NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json"
       - "scripts/run_naamp_sorensen_equivalence.py"
       - ".github/workflows/sorensen_equivalence.yml"
   workflow_dispatch:

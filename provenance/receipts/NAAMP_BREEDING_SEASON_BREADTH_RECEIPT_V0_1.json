@@ -1,0 +1,801 @@
+{
+  "analysis": "naamp_breeding_season_breadth_v0_1",
+  "contract": "provenance/contracts/NAAMP_BREEDING_SEASON_BREADTH_CONTRACT_V0_1.json",
+  "coverage": {
+    "matched_transport": 23,
+    "parsed_breeding_season_species": 20,
+    "response_species": 29
+  },
+  "interpretation_boundary": {
+    "causal_claim_authorized": false,
+    "post_opening": true,
+    "proxy": "breeding-season breadth is a phenological proxy, not direct explosive-breeding classification"
+  },
+  "primary": {
+    "beta": -0.0012343398026369162,
+    "breadth_summary": {
+      "max": 9.0,
+      "median": 4.0,
+      "min": 1.0
+    },
+    "ci95_beta": [
+      -0.14373285599680313,
+      0.14126417639152927
+    ],
+    "estimable": true,
+    "n_species": 20,
+    "negative_ci_support": false,
+    "p_value": 0.9864546047783768,
+    "se_hc3": 0.07270466055405932,
+    "spearman_p": 0.4793525446139058,
+    "spearman_rho": 0.1678468941840094
+  },
+  "response_source": {
+    "contract": "provenance/contracts/NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "estimable_species": 29,
+    "fixed_species_family": 29
+  },
+  "short_vs_long_descriptive": {
+    "estimable": true,
+    "long_n": 3,
+    "long_species": [
+      "Gastrophryne carolinensis",
+      "Lithobates clamitans",
+      "Pseudacris ocularis"
+    ],
+    "long_weighted_mean_log_odds": 0.04777030695776718,
+    "short_minus_long": -0.03125372377164889,
+    "short_n": 9,
+    "short_species": [
+      "Anaxyrus americanus",
+      "Anaxyrus terrestris",
+      "Hyla chrysoscelis",
+      "Lithobates catesbeianus",
+      "Lithobates palustris",
+      "Lithobates pipiens",
+      "Lithobates sylvaticus",
+      "Pseudacris crucifer",
+      "Pseudacris feriarum"
+    ],
+    "short_weighted_mean_log_odds": 0.01651658318611829
+  },
+  "species_table": [
+    {
+      "adjusted_log_odds": 0.17771727493545691,
+      "adjusted_wet_probability": 0.5443127510250183,
+      "breeding_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "breeding_season_months": 5.0,
+      "breeding_season_text": "April - August",
+      "family": "Hylidae",
+      "species": "Acris crepitans",
+      "trait_species": "Acris crepitans"
+    },
+    {
+      "adjusted_log_odds": -0.14989916685819554,
+      "adjusted_wet_probability": 0.4625952217697295,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": null,
+      "family": "",
+      "species": "Acris crepitans/gryllus",
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.17388227644020715,
+      "adjusted_wet_probability": 0.5433613713697678,
+      "breeding_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "breeding_season_months": 5.0,
+      "breeding_season_text": "April- August",
+      "family": "Hylidae",
+      "species": "Acris gryllus",
+      "trait_species": "Acris gryllus"
+    },
+    {
+      "adjusted_log_odds": -0.03571066727218263,
+      "adjusted_wet_probability": 0.4910732818128798,
+      "breeding_months": [
+        3,
+        4,
+        5
+      ],
+      "breeding_season_months": 3.0,
+      "breeding_season_text": "March - May",
+      "family": "Bufonidae",
+      "species": "Anaxyrus americanus",
+      "trait_species": "Anaxyrus americanus"
+    },
+    {
+      "adjusted_log_odds": 0.05739289252673034,
+      "adjusted_wet_probability": 0.5143442859081511,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": "late spring",
+      "family": "Bufonidae",
+      "species": "Anaxyrus fowleri",
+      "trait_species": "Anaxyrus fowleri"
+    },
+    {
+      "adjusted_log_odds": 0.417717716765165,
+      "adjusted_wet_probability": 0.6029369907546122,
+      "breeding_months": [
+        2,
+        5,
+        10
+      ],
+      "breeding_season_months": 3.0,
+      "breeding_season_text": "Feb to early summer but may last until Oct",
+      "family": "Bufonidae",
+      "species": "Anaxyrus terrestris",
+      "trait_species": "Anaxyrus terrestris"
+    },
+    {
+      "adjusted_log_odds": 1.2316431688569685,
+      "adjusted_wet_probability": 0.7741060378472782,
+      "breeding_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "breeding_season_months": 9.0,
+      "breeding_season_text": "Apr to Oct, a Coastal Plain population Mar to Nov",
+      "family": "Microhylidae",
+      "species": "Gastrophryne carolinensis",
+      "trait_species": "Gastrophryne carolinensis"
+    },
+    {
+      "adjusted_log_odds": 0.3605385113123381,
+      "adjusted_wet_probability": 0.589170786208515,
+      "breeding_months": [
+        3,
+        8
+      ],
+      "breeding_season_months": 2.0,
+      "breeding_season_text": "1st relatively warm, rainy nights of the year, as early as March and as late as August",
+      "family": "Hylidae",
+      "species": "Hyla chrysoscelis",
+      "trait_species": "Dryophytes chrysoscelis"
+    },
+    {
+      "adjusted_log_odds": 0.16977413121361104,
+      "adjusted_wet_probability": 0.542341879059553,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": null,
+      "family": "",
+      "species": "Hyla chrysoscelis/versicolor",
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": -0.48197160182872306,
+      "adjusted_wet_probability": 0.3817866683768712,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": null,
+      "family": "",
+      "species": "Hyla cinerea",
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.6404184237594156,
+      "adjusted_wet_probability": 0.6548480397432643,
+      "breeding_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "breeding_season_months": 5.0,
+      "breeding_season_text": "April - August",
+      "family": "Hylidae",
+      "species": "Hyla femoralis",
+      "trait_species": "Dryophytes femoralis"
+    },
+    {
+      "adjusted_log_odds": -0.013550088324046382,
+      "adjusted_wet_probability": 0.496612529748506,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": null,
+      "family": "",
+      "species": "Hyla gratiosa",
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.9633234854392891,
+      "adjusted_wet_probability": 0.7237867285980955,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": null,
+      "family": "",
+      "species": "Hyla squirella",
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.15363490165276086,
+      "adjusted_wet_probability": 0.5383333543633533,
+      "breeding_months": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "breeding_season_months": 4.0,
+      "breeding_season_text": "May-August",
+      "family": "Hylidae",
+      "species": "Hyla versicolor",
+      "trait_species": "Dryophytes versicolor"
+    },
+    {
+      "adjusted_log_odds": -0.2921346886985765,
+      "adjusted_wet_probability": 0.42748134043655805,
+      "breeding_months": [
+        5,
+        6,
+        7
+      ],
+      "breeding_season_months": 3.0,
+      "breeding_season_text": "May - July",
+      "family": "Ranidae",
+      "species": "Lithobates catesbeianus",
+      "trait_species": "Lithobates catesbeianus"
+    },
+    {
+      "adjusted_log_odds": -0.16761528271094464,
+      "adjusted_wet_probability": 0.4581940113850118,
+      "breeding_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "breeding_season_months": 9.0,
+      "breeding_season_text": "Jan - Sep",
+      "family": "Ranidae",
+      "species": "Lithobates clamitans",
+      "trait_species": "Lithobates clamitans"
+    },
+    {
+      "adjusted_log_odds": -0.2853711528405743,
+      "adjusted_wet_probability": 0.4291374612487221,
+      "breeding_months": [
+        4,
+        5
+      ],
+      "breeding_season_months": 2.0,
+      "breeding_season_text": "April - May",
+      "family": "Ranidae",
+      "species": "Lithobates palustris",
+      "trait_species": "Lithobates palustris"
+    },
+    {
+      "adjusted_log_odds": 0.07821164831031932,
+      "adjusted_wet_probability": 0.5195429509729617,
+      "breeding_months": [
+        3,
+        4,
+        5
+      ],
+      "breeding_season_months": 3.0,
+      "breeding_season_text": "March-May",
+      "family": "Ranidae",
+      "species": "Lithobates pipiens",
+      "trait_species": "Lithobates pipiens"
+    },
+    {
+      "adjusted_log_odds": 0.23120364905431817,
+      "adjusted_wet_probability": 0.5575448016254212,
+      "breeding_months": [
+        1,
+        2,
+        4,
+        10,
+        11
+      ],
+      "breeding_season_months": 5.0,
+      "breeding_season_text": "April, farther south have 2 seasons, October - November and January - February",
+      "family": "Ranidae",
+      "species": "Lithobates sphenocephalus",
+      "trait_species": "Lithobates sphenocephalus"
+    },
+    {
+      "adjusted_log_odds": 0.05269329687657905,
+      "adjusted_wet_probability": 0.5131702769956342,
+      "breeding_months": [
+        2,
+        3,
+        4
+      ],
+      "breeding_season_months": 3.0,
+      "breeding_season_text": "February - April",
+      "family": "Ranidae",
+      "species": "Lithobates sylvaticus",
+      "trait_species": "Lithobates sylvaticus"
+    },
+    {
+      "adjusted_log_odds": -0.21549191215970245,
+      "adjusted_wet_probability": 0.4463345323006356,
+      "breeding_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "breeding_season_months": 5.0,
+      "breeding_season_text": "April - August",
+      "family": "Ranidae",
+      "species": "Lithobates virgatipes",
+      "trait_species": "Lithobates virgatipes"
+    },
+    {
+      "adjusted_log_odds": 0.4467339275282041,
+      "adjusted_wet_probability": 0.6098624159382148,
+      "breeding_months": [
+        11
+      ],
+      "breeding_season_months": 1.0,
+      "breeding_season_text": "Late November to very early spring",
+      "family": "Hylidae",
+      "species": "Pseudacris crucifer",
+      "trait_species": "Pseudacris crucifer"
+    },
+    {
+      "adjusted_log_odds": 0.41939343165810894,
+      "adjusted_wet_probability": 0.6033380942810864,
+      "breeding_months": [
+        12
+      ],
+      "breeding_season_months": 1.0,
+      "breeding_season_text": "December in the south,\nafter winter temperatures moderate somewhat in the north",
+      "family": "Hylidae",
+      "species": "Pseudacris feriarum",
+      "trait_species": "Pseudacris feriarum"
+    },
+    {
+      "adjusted_log_odds": 0.37655549152521905,
+      "adjusted_wet_probability": 0.5930420614805262,
+      "breeding_months": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "breeding_season_months": 4.0,
+      "breeding_season_text": "February - May",
+      "family": "Hylidae",
+      "species": "Pseudacris kalmi",
+      "trait_species": "Pseudacris kalmi"
+    },
+    {
+      "adjusted_log_odds": 1.0681312181270177,
+      "adjusted_wet_probability": 0.7442413627701407,
+      "breeding_months": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "breeding_season_months": 4.0,
+      "breeding_season_text": "April-July",
+      "family": "Hylidae",
+      "species": "Pseudacris maculata",
+      "trait_species": "Pseudacris maculata"
+    },
+    {
+      "adjusted_log_odds": 0.2782186084683852,
+      "adjusted_wet_probability": 0.5691094380747636,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": null,
+      "family": "",
+      "species": "Pseudacris maculata/triseriata",
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.16690253852547265,
+      "adjusted_wet_probability": 0.541629042995677,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": "winter and into warmer months",
+      "family": "Hylidae",
+      "species": "Pseudacris nigrita",
+      "trait_species": "Pseudacris nigrita"
+    },
+    {
+      "adjusted_log_odds": 0.6513559162903827,
+      "adjusted_wet_probability": 0.6573159502277616,
+      "breeding_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "breeding_season_months": 9.0,
+      "breeding_season_text": "Jan to Sept",
+      "family": "Hylidae",
+      "species": "Pseudacris ocularis",
+      "trait_species": "Pseudacris ocularis"
+    },
+    {
+      "adjusted_log_odds": 0.7073417535242692,
+      "adjusted_wet_probability": 0.6698135186738747,
+      "breeding_months": [],
+      "breeding_season_months": null,
+      "breeding_season_text": "Almost any time of year, often skip years when weather is unsuitable",
+      "family": "Scaphiopodidae",
+      "species": "Scaphiopus holbrookii",
+      "trait_species": "Scaphiopus holbrookii"
+    }
+  ],
+  "taxonomy_and_parser_audit": [
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Acris crepitans",
+      "parsed_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "parsed_n_months": 5,
+      "trait_species": "Acris crepitans"
+    },
+    {
+      "matched": false,
+      "naamp_species": "Acris crepitans/gryllus",
+      "trait_species": null
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Acris gryllus",
+      "parsed_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "parsed_n_months": 5,
+      "trait_species": "Acris gryllus"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Anaxyrus americanus",
+      "parsed_months": [
+        3,
+        4,
+        5
+      ],
+      "parsed_n_months": 3,
+      "trait_species": "Anaxyrus americanus"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Anaxyrus fowleri",
+      "parsed_months": [],
+      "parsed_n_months": 0,
+      "trait_species": "Anaxyrus fowleri"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Anaxyrus terrestris",
+      "parsed_months": [
+        2,
+        5,
+        10
+      ],
+      "parsed_n_months": 3,
+      "trait_species": "Anaxyrus terrestris"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Gastrophryne carolinensis",
+      "parsed_months": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "parsed_n_months": 9,
+      "trait_species": "Gastrophryne carolinensis"
+    },
+    {
+      "match_type": "frozen_genus_alias",
+      "matched": true,
+      "naamp_species": "Hyla chrysoscelis",
+      "parsed_months": [
+        3,
+        8
+      ],
+      "parsed_n_months": 2,
+      "trait_species": "Dryophytes chrysoscelis"
+    },
+    {
+      "matched": false,
+      "naamp_species": "Hyla chrysoscelis/versicolor",
+      "trait_species": null
+    },
+    {
+      "matched": false,
+      "naamp_species": "Hyla cinerea",
+      "trait_species": null
+    },
+    {
+      "match_type": "frozen_genus_alias",
+      "matched": true,
+      "naamp_species": "Hyla femoralis",
+      "parsed_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "parsed_n_months": 5,
+      "trait_species": "Dryophytes femoralis"
+    },
+    {
+      "matched": false,
+      "naamp_species": "Hyla gratiosa",
+      "trait_species": null
+    },
+    {
+      "matched": false,
+      "naamp_species": "Hyla squirella",
+      "trait_species": null
+    },
+    {
+      "match_type": "frozen_genus_alias",
+      "matched": true,
+      "naamp_species": "Hyla versicolor",
+      "parsed_months": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "parsed_n_months": 4,
+      "trait_species": "Dryophytes versicolor"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates catesbeianus",
+      "parsed_months": [
+        5,
+        6,
+        7
+      ],
+      "parsed_n_months": 3,
+      "trait_species": "Lithobates catesbeianus"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates clamitans",
+      "parsed_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "parsed_n_months": 9,
+      "trait_species": "Lithobates clamitans"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates palustris",
+      "parsed_months": [
+        4,
+        5
+      ],
+      "parsed_n_months": 2,
+      "trait_species": "Lithobates palustris"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates pipiens",
+      "parsed_months": [
+        3,
+        4,
+        5
+      ],
+      "parsed_n_months": 3,
+      "trait_species": "Lithobates pipiens"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates sphenocephalus",
+      "parsed_months": [
+        1,
+        2,
+        4,
+        10,
+        11
+      ],
+      "parsed_n_months": 5,
+      "trait_species": "Lithobates sphenocephalus"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates sylvaticus",
+      "parsed_months": [
+        2,
+        3,
+        4
+      ],
+      "parsed_n_months": 3,
+      "trait_species": "Lithobates sylvaticus"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates virgatipes",
+      "parsed_months": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "parsed_n_months": 5,
+      "trait_species": "Lithobates virgatipes"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris crucifer",
+      "parsed_months": [
+        11
+      ],
+      "parsed_n_months": 1,
+      "trait_species": "Pseudacris crucifer"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris feriarum",
+      "parsed_months": [
+        12
+      ],
+      "parsed_n_months": 1,
+      "trait_species": "Pseudacris feriarum"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris kalmi",
+      "parsed_months": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "parsed_n_months": 4,
+      "trait_species": "Pseudacris kalmi"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris maculata",
+      "parsed_months": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "parsed_n_months": 4,
+      "trait_species": "Pseudacris maculata"
+    },
+    {
+      "matched": false,
+      "naamp_species": "Pseudacris maculata/triseriata",
+      "trait_species": null
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris nigrita",
+      "parsed_months": [],
+      "parsed_n_months": 0,
+      "trait_species": "Pseudacris nigrita"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris ocularis",
+      "parsed_months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "parsed_n_months": 9,
+      "trait_species": "Pseudacris ocularis"
+    },
+    {
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Scaphiopus holbrookii",
+      "parsed_months": [],
+      "parsed_n_months": 0,
+      "trait_species": "Scaphiopus holbrookii"
+    }
+  ],
+  "trait_source": {
+    "doi": "10.1002/ecy.3261",
+    "field": "atraiu_breeding_season",
+    "scientific_source": "ATraiU",
+    "transport_commit": "a7be17ae44b8a81349c37b3b38c767e6db5958f2",
+    "transport_git_blob_sha1": "4a1fd99f9b815cc512ce3e680497b34e8c9c93e6",
+    "transport_repository": "panpipiens/amphibian-vulnerability-analysis"
+  },
+  "within_family_permutation": {
+    "estimable": true,
+    "n_families": 4,
+    "n_species": 20,
+    "negative_support": false,
+    "negative_tail_p": 0.5621743782562174,
+    "observed_weighted_within_family_slope": 0.003961586185513025,
+    "permutations": 100000,
+    "q025": -0.0469528388571501,
+    "q975": 0.05838281515935695,
+    "seed": 20260926,
+    "two_sided_p": 0.9061409385906141
+  }
+}

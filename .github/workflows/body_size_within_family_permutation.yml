@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-community-filter-v1
     paths:
-      - "NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_CONTRACT_V0_1.json"
       - "scripts/run_naamp_body_size_within_family_permutation.py"
       - ".github/workflows/body_size_within_family_permutation.yml"
   workflow_dispatch:
@@ -36,5 +36,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-body-size-within-family-permutation-v0-1
-          path: NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_BODY_SIZE_WITHIN_FAMILY_PERMUTATION_RECEIPT_V0_1.json
           if-no-files-found: error

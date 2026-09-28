@@ -609,7 +609,7 @@ def main():
     naamp={
         "system":"NAAMP",
         "response":"mean species richness per active stop; excess richness = alpha_active - 1",
-        "source":"NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
+        "source":"provenance/summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
         "rainfall_contrast_beta":0.07941491576879688,
         "ci95":[0.023119819091079956,0.1357100124465138],
         "support_positive_ci":True,
@@ -625,7 +625,7 @@ def main():
 
     result={
         "analysis":"crosscontinental_active_unit_taxonomic_depth_v0_1",
-        "contract":"CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
         "unfreeze":"submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json",
         "frogid_source_sha256":FROGID_SHA,
         "era5_source":{
@@ -684,7 +684,7 @@ def main():
             "pooled_effect_size_authorized":False,
         },
         "time_alignment_repair":{
-            "contract":"FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+            "contract":"provenance/contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
             "events_with_hour_changed":hour_changed,
             "events_with_date_changed":date_changed,
             "required_unique_tp_chunks":len(chunk_requirements),

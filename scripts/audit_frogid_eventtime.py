@@ -85,7 +85,7 @@ def main():
     n=len(seen)
     result={
       "audit":"frogid_eventtime_semantics_v0_1",
-      "contract":"FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json",
       "source_sha256":SHA,
       "distinct_events":n,
       "format_counts":dict(sorted(classes.items())),

@@ -5,7 +5,7 @@ on:
     branches:
       - revision/response-diversity-buffering-v1
     paths:
-      - "NAAMP_RESPONSE_DIVERSITY_BUFFERING_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_RESPONSE_DIVERSITY_BUFFERING_CONTRACT_V0_1.json"
       - "scripts/run_naamp_response_diversity_buffering.py"
       - ".github/workflows/response_diversity_buffering.yml"
   workflow_dispatch:

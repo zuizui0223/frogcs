@@ -33,7 +33,7 @@ def bh(results):
     return results
 
 def load_species_family():
-    obj=json.loads(Path("NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json").read_text())
+    obj=json.loads(Path("provenance/receipts/NAAMP_SPECIES_PULSE_HETEROGENEITY_RECEIPT_V0_1.json").read_text())
     if int(obj["global"]["eligible_species"])!=29:
         raise SystemExit("eligible species family drift")
     raw={}
@@ -124,7 +124,7 @@ def main():
 
     result={
       "analysis":"naamp_species_pulse_adjusted_robustness_v0_1",
-      "contract":"NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
       "fixed_species_family":29,
       "estimable_species":len(est),
       "fdr_positive_species":int(sum(r.get("estimable") and r.get("fdr_bh",1)<=.05 and r["intercept_log_odds"]>0 for r in results)),

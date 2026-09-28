@@ -107,7 +107,7 @@ def main():
 
     result={
         "analysis":"naamp_species_response_within_genus_heterogeneity_v0_1",
-        "contract":"NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_CONTRACT_V0_1.json",
         "response_source":{
             "contract":obj.get("contract"),
             "fixed_species_family":obj.get("fixed_species_family"),
@@ -133,7 +133,7 @@ def main():
         }
     }
 
-    Path("NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_SPECIES_RESPONSE_WITHIN_GENUS_RECEIPT_V0_1.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))

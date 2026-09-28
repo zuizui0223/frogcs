@@ -5,7 +5,7 @@ on:
     branches:
       - revision/spatial-taxonomic-activation-decomposition-v1
     paths:
-      - "NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json"
       - "scripts/run_naamp_spatial_taxonomic_activation_decomposition.py"
       - ".github/workflows/spatial_taxonomic_activation_decomposition.yml"
   workflow_dispatch:

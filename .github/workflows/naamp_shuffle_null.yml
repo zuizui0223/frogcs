@@ -5,7 +5,7 @@ on:
     branches:
       - revision/activation-decomposition-v1
     paths:
-      - "NAAMP_SHUFFLE_NULL_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SHUFFLE_NULL_CONTRACT_V0_1.json"
       - "scripts/run_naamp_shuffle_null.py"
       - ".github/workflows/naamp_shuffle_null.yml"
   workflow_dispatch:
@@ -28,5 +28,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: frogcs-naamp-shuffle-null-v0-1
-          path: NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_SHUFFLE_NULL_RECEIPT_V0_1.json
           if-no-files-found: error

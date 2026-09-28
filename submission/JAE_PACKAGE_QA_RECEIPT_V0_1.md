@@ -33,8 +33,8 @@ The clean export builder completed with **0 missing core files**.
 - artifact ID: `10845137590`
 - artifact digest: `sha256:eea2e3b783bef5f7d0168d225ed1f88ed5e3f6373c18488d019c9c369b410a70`
 - hashed content entries: **48**
-- artifact files including `FILE_SHA256.json`: **49**
-- `FILE_SHA256.json` SHA-256: `099b17cfba2625b1e9eb67cba31908f2cdd26eff0be1a20d6f592387251aa475`
+- artifact files including `provenance/metadata/FILE_SHA256.json`: **49**
+- `provenance/metadata/FILE_SHA256.json` SHA-256: `099b17cfba2625b1e9eb67cba31908f2cdd26eff0be1a20d6f592387251aa475`
 - canonical content identity: `16960cbf4f5f5f3aa9175115b108125409acfe9c7e2ef013e23d90a9b4cd27da`
 - missing files: **0**
 - hash mismatches: **0**

@@ -10,9 +10,9 @@ cl=(root/"submission/COVER_LETTER_JAE_V0_13.md").read_text(encoding="utf-8")
 nov=(root/"submission/NOVELTY_AUDIT_V0_11.md").read_text(encoding="utf-8")
 rev=(root/"submission/REVIEWER_ATTACK_MATRIX_V0_11.md").read_text(encoding="utf-8")
 freeze=json.loads((root/"submission/RC11_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
-obs=json.loads((root/"NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
-pers=json.loads((root/"NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
-orig=json.loads((root/"NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+obs=json.loads((root/"provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+pers=json.loads((root/"provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+orig=json.loads((root/"provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
 readme=(root/"README.md").read_text(encoding="utf-8")
 handoff=(root/"submission/SUBMISSION_HANDOFF_RC11.md").read_text(encoding="utf-8")
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_10.md").read_text(encoding="utf-8")
@@ -84,12 +84,12 @@ for x in [
     "JAE RC11 reproducibility package",
     "MANUSCRIPT_JAE_V1_3.md",
     "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
-    "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
+    "provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
     "species-specific rainfall-response shifts",
 ]:
     assert x in readme, x
 
-for x in ["MANUSCRIPT_JAE_V1_3.md","SUPPORTING_INFORMATION_JAE_RC11_V0_1.md","NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"]:
+for x in ["MANUSCRIPT_JAE_V1_3.md","SUPPORTING_INFORMATION_JAE_RC11_V0_1.md","provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"]:
     assert x in handoff and x in checklist
 
 for x in ["Persistence null","Observed 92.0%","Anchor a=.90"]:

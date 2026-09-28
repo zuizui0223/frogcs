@@ -168,7 +168,7 @@ def main():
 
     result={
       "analysis":"naamp_chorus_synchrony_secondary_v0_1",
-      "contract":"NAAMP_SECONDARY_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_SECONDARY_CONTRACT_V0_1.json",
       "temperature":{
         "formula":tf,
         "mean_temp_c_summary":{

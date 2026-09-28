@@ -187,7 +187,7 @@ def main():
 
     result={
         "analysis":"naamp_two_phase_community_memory_v0_1",
-        "contract":"NAAMP_TWO_PHASE_COMMUNITY_MEMORY_CONTRACT_V0_1.json",
+        "contract":"provenance/contracts/NAAMP_TWO_PHASE_COMMUNITY_MEMORY_CONTRACT_V0_1.json",
         "all_adjacent_year_pairs":primary,
         "exact_consecutive_year_sensitivity":sensitivity,
         "overall_pair_counts":{str(k):int(v) for k,v in d.pair_class.value_counts().to_dict().items()},

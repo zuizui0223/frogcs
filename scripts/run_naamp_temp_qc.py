@@ -146,7 +146,7 @@ def main():
     qc=base[(base.mean_temp_c>=LO)&(base.mean_temp_c<=HI)].copy()
     result={
       "analysis":"naamp_temperature_qc_v0_1",
-      "contract":"NAAMP_TEMP_QC_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/NAAMP_TEMP_QC_CONTRACT_V0_1.json",
       "raw_temperature_distribution":{"n_runs":int(len(base)),"quantiles_c":quantiles,"extreme_counts":extremes,"by_scale":byscale},
       "plausibility_filtered":{"bounds_c":[LO,HI],"excluded_runs":int(len(base)-len(qc)),"effect":fit(qc)},
       "scale_stratified":{},

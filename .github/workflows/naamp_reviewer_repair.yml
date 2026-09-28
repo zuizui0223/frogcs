@@ -5,7 +5,7 @@ on:
     branches:
       - revision/activation-decomposition-v1
     paths:
-      - "NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json"
       - "scripts/run_naamp_reviewer_repair.py"
       - ".github/workflows/naamp_reviewer_repair.yml"
   workflow_dispatch:

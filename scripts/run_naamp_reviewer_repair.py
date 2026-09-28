@@ -307,8 +307,8 @@ def main():
 
     result={
         "analysis":"naamp_reviewer_repair_v0_1",
-        "contract":"NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json",
-        "sensitivity_repair_contract":"NAAMP_REVIEW_REPAIR_CONTRACT_V0_1_1.json",
+        "contract":"provenance/contracts/NAAMP_REVIEW_REPAIR_CONTRACT_V0_1.json",
+        "sensitivity_repair_contract":"provenance/contracts/NAAMP_REVIEW_REPAIR_CONTRACT_V0_1_1.json",
         "days_since_rain_audit":audit,
         "h3_hierarchy_repair":{
             "hierarchy_corrected":h3_primary,

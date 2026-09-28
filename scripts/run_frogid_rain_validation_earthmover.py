@@ -419,7 +419,7 @@ def main():
 
     result={
         "analysis":"frogid_rain_synchrony_external_validation_v0_2",
-        "contract":"FROGID_VALIDATION_MODEL_CONTRACT_V0_4.json",
+        "contract":"provenance/contracts/FROGID_VALIDATION_MODEL_CONTRACT_V0_4.json",
         "frogid_source_sha256":FROGID_SHA,
         "era5_source":{
             "provider":"Earthmover public Icechunk ERA5",

@@ -45,7 +45,7 @@ def main():
     q=1.959963984540054; lo=b-q*se; hi=b+q*se
     result={
       "analysis":"naamp_within_route_spatial_confounding_v0_1",
-      "contract":"SPATIAL_CONFOUNDING_ROBUSTNESS_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/SPATIAL_CONFOUNDING_ROBUSTNESS_CONTRACT_V0_1.json",
       "n_runs":int(len(d)),
       "n_routes":int(d.route_cluster.nunique()),
       "sampled_stops":int(d.trials.sum()),

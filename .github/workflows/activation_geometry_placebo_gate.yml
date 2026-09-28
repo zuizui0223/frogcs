@@ -5,7 +5,7 @@ on:
     branches:
       - revision/activation-geometry-placebo-gate-v1
     paths:
-      - "NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_ACTIVATION_GEOMETRY_PLACEBO_CONTRACT_V0_1.json"
       - "scripts/run_naamp_activation_geometry_placebo_gate.py"
       - ".github/workflows/activation_geometry_placebo_gate.yml"
   workflow_dispatch:

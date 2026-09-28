@@ -49,5 +49,5 @@ out["rules"]["B_adjacent_dry_yeargap_le3"]=summarize(pairsB)
 out["rules"]["C_all_unique_yeargap_le3"]=summarize(pairsC)
 out["rules"]["D_greedy_nonoverlap_adjacent_dry"]=summarize(pairsD)
 
-Path("DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_RECEIPT_V0_1.json").write_text(json.dumps(out,indent=2)+"\n")
+Path("provenance/receipts/DRY_DRY_BACKGROUND_ESTIMABILITY_AUDIT_RECEIPT_V0_1.json").write_text(json.dumps(out,indent=2)+"\n")
 print(json.dumps(out,indent=2))

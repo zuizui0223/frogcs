@@ -95,7 +95,7 @@ def main():
                    "eligible":bool(eligible)}
     result={
       "analysis":"amphibio_functional_trait_coverage_audit_v0_1",
-      "contract":"AMPHIBIO_FUNCTIONAL_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json",
+      "contract":"provenance/contracts/AMPHIBIO_FUNCTIONAL_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json",
       "species_universe_provenance":{
         "source_workflow_run":36123858918,
         "rule":"29 response-eligible species from frozen species-pulse workflow; copied literally after repository summary was found to omit non-significant species"

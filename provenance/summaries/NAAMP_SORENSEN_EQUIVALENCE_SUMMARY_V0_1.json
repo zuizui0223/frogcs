@@ -1,0 +1,37 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "naamp_sorensen_equivalence_v0_1_summary",
+  "contract": "provenance/contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
+  "workflow_run": 36324170352,
+  "status": "completed",
+  "primary": {
+    "n_pairs": 4007,
+    "n_routes": 576,
+    "beta": -0.0004916260102542231,
+    "se_cluster": 0.006185274642869504,
+    "ci90": [-0.010665497440269098, 0.009682245419760652],
+    "margin": [-0.025, 0.025],
+    "equivalent": true
+  },
+  "exact_consecutive_year": {
+    "n_pairs": 2562,
+    "n_routes": 491,
+    "beta": 0.0021464905739907213,
+    "se_cluster": 0.007220470958826713,
+    "ci90": [-0.009730127270933173, 0.014023108418914614],
+    "margin": [-0.025, 0.025],
+    "equivalent": true
+  },
+  "decision": {
+    "primary_pass": true,
+    "exact_year_pass": true,
+    "title_level_equivalence_support": true
+  },
+  "authorized_interpretation": "The rainfall-contrast slope of mean pairwise Sørensen dissimilarity is practically equivalent to zero within the fixed +/-0.025 margin in both the primary and exact-consecutive-year samples.",
+  "boundaries": {
+    "post_hoc_margin": true,
+    "conventional_coefficient_known_before_equivalence_test": true,
+    "applies_only_to_pairwise_sorensen": true,
+    "exact_invariance_claim": false
+  }
+}

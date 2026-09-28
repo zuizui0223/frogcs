@@ -1,0 +1,600 @@
+{
+  "analysis": "naamp_hydroperiod_filter_v0_1",
+  "contract": "provenance/contracts/NAAMP_HYDROPERIOD_FILTER_CONTRACT_V0_1.json",
+  "coverage": {
+    "atraiu_records_present": 23,
+    "hydroperiod_class_counts": {
+      "flexible_both": 23,
+      "undocumented": 6
+    },
+    "matched_trait_transport": 23,
+    "primary_hydroperiod_species": 23,
+    "response_species": 29
+  },
+  "interpretation_boundary": {
+    "causal_claim_authorized": false,
+    "local_hydroperiod_measured": false,
+    "other_atraiu_traits_opened_for_inference": false,
+    "status": "post-opening mechanistic follow-up frozen before full trait join readback"
+  },
+  "primary": {
+    "estimable": false,
+    "n_species": 23,
+    "reason": "insufficient_coverage_or_variation"
+  },
+  "response_source": {
+    "contract": "provenance/contracts/NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json",
+    "estimable_species": 29,
+    "fixed_species_family": 29,
+    "heterogeneity_test": {
+      "Q": 144.014669045494,
+      "df": 28,
+      "p_value": 1.4592981930238995e-17,
+      "weighted_mean_log_odds": 0.0781395563214971
+    }
+  },
+  "species_table": [
+    {
+      "adjusted_log_odds": 0.17771727493545691,
+      "adjusted_se": 0.14287614538358862,
+      "adjusted_wet_probability": 0.5443127510250183,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Acris crepitans",
+      "temp_any": 1.0,
+      "trait_species": "Acris crepitans"
+    },
+    {
+      "adjusted_log_odds": -0.14989916685819554,
+      "adjusted_se": 0.20707849070865972,
+      "adjusted_wet_probability": 0.4625952217697295,
+      "family": "",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "undocumented",
+      "perm_any": null,
+      "species": "Acris crepitans/gryllus",
+      "temp_any": null,
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.17388227644020715,
+      "adjusted_se": 0.24237741995031672,
+      "adjusted_wet_probability": 0.5433613713697678,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Acris gryllus",
+      "temp_any": 1.0,
+      "trait_species": "Acris gryllus"
+    },
+    {
+      "adjusted_log_odds": -0.03571066727218263,
+      "adjusted_se": 0.07618126570663913,
+      "adjusted_wet_probability": 0.4910732818128798,
+      "family": "Bufonidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Anaxyrus americanus",
+      "temp_any": 1.0,
+      "trait_species": "Anaxyrus americanus"
+    },
+    {
+      "adjusted_log_odds": 0.05739289252673034,
+      "adjusted_se": 0.12663200496710247,
+      "adjusted_wet_probability": 0.5143442859081511,
+      "family": "Bufonidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Anaxyrus fowleri",
+      "temp_any": 1.0,
+      "trait_species": "Anaxyrus fowleri"
+    },
+    {
+      "adjusted_log_odds": 0.417717716765165,
+      "adjusted_se": 0.18659275312113066,
+      "adjusted_wet_probability": 0.6029369907546122,
+      "family": "Bufonidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Anaxyrus terrestris",
+      "temp_any": 1.0,
+      "trait_species": "Anaxyrus terrestris"
+    },
+    {
+      "adjusted_log_odds": 1.2316431688569685,
+      "adjusted_se": 0.25260434162371354,
+      "adjusted_wet_probability": 0.7741060378472782,
+      "family": "Microhylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Gastrophryne carolinensis",
+      "temp_any": 1.0,
+      "trait_species": "Gastrophryne carolinensis"
+    },
+    {
+      "adjusted_log_odds": 0.3605385113123381,
+      "adjusted_se": 0.10446414367632899,
+      "adjusted_wet_probability": 0.589170786208515,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Hyla chrysoscelis",
+      "temp_any": 1.0,
+      "trait_species": "Dryophytes chrysoscelis"
+    },
+    {
+      "adjusted_log_odds": 0.16977413121361104,
+      "adjusted_se": 0.12417069994819903,
+      "adjusted_wet_probability": 0.542341879059553,
+      "family": "",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "undocumented",
+      "perm_any": null,
+      "species": "Hyla chrysoscelis/versicolor",
+      "temp_any": null,
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": -0.48197160182872306,
+      "adjusted_se": 0.17312250059581225,
+      "adjusted_wet_probability": 0.3817866683768712,
+      "family": "",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "undocumented",
+      "perm_any": null,
+      "species": "Hyla cinerea",
+      "temp_any": null,
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.6404184237594156,
+      "adjusted_se": 0.28260055117753985,
+      "adjusted_wet_probability": 0.6548480397432643,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Hyla femoralis",
+      "temp_any": 1.0,
+      "trait_species": "Dryophytes femoralis"
+    },
+    {
+      "adjusted_log_odds": -0.013550088324046382,
+      "adjusted_se": 0.19330142395599606,
+      "adjusted_wet_probability": 0.496612529748506,
+      "family": "",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "undocumented",
+      "perm_any": null,
+      "species": "Hyla gratiosa",
+      "temp_any": null,
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.9633234854392891,
+      "adjusted_se": 0.22169441847374635,
+      "adjusted_wet_probability": 0.7237867285980955,
+      "family": "",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "undocumented",
+      "perm_any": null,
+      "species": "Hyla squirella",
+      "temp_any": null,
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.15363490165276086,
+      "adjusted_se": 0.09420247863012539,
+      "adjusted_wet_probability": 0.5383333543633533,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Hyla versicolor",
+      "temp_any": 1.0,
+      "trait_species": "Dryophytes versicolor"
+    },
+    {
+      "adjusted_log_odds": -0.2921346886985765,
+      "adjusted_se": 0.0810840943521029,
+      "adjusted_wet_probability": 0.42748134043655805,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates catesbeianus",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates catesbeianus"
+    },
+    {
+      "adjusted_log_odds": -0.16761528271094464,
+      "adjusted_se": 0.0948551949039531,
+      "adjusted_wet_probability": 0.4581940113850118,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates clamitans",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates clamitans"
+    },
+    {
+      "adjusted_log_odds": -0.2853711528405743,
+      "adjusted_se": 0.09166388625543802,
+      "adjusted_wet_probability": 0.4291374612487221,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates palustris",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates palustris"
+    },
+    {
+      "adjusted_log_odds": 0.07821164831031932,
+      "adjusted_se": 0.16666334184641385,
+      "adjusted_wet_probability": 0.5195429509729617,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates pipiens",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates pipiens"
+    },
+    {
+      "adjusted_log_odds": 0.23120364905431817,
+      "adjusted_se": 0.1002232678228356,
+      "adjusted_wet_probability": 0.5575448016254212,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates sphenocephalus",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates sphenocephalus"
+    },
+    {
+      "adjusted_log_odds": 0.05269329687657905,
+      "adjusted_se": 0.12165829344732754,
+      "adjusted_wet_probability": 0.5131702769956342,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates sylvaticus",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates sylvaticus"
+    },
+    {
+      "adjusted_log_odds": -0.21549191215970245,
+      "adjusted_se": 0.3087443683345618,
+      "adjusted_wet_probability": 0.4463345323006356,
+      "family": "Ranidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Lithobates virgatipes",
+      "temp_any": 1.0,
+      "trait_species": "Lithobates virgatipes"
+    },
+    {
+      "adjusted_log_odds": 0.4467339275282041,
+      "adjusted_se": 0.10672451907626047,
+      "adjusted_wet_probability": 0.6098624159382148,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Pseudacris crucifer",
+      "temp_any": 1.0,
+      "trait_species": "Pseudacris crucifer"
+    },
+    {
+      "adjusted_log_odds": 0.41939343165810894,
+      "adjusted_se": 0.25109631944512795,
+      "adjusted_wet_probability": 0.6033380942810864,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Pseudacris feriarum",
+      "temp_any": 1.0,
+      "trait_species": "Pseudacris feriarum"
+    },
+    {
+      "adjusted_log_odds": 0.37655549152521905,
+      "adjusted_se": 0.2791450200533241,
+      "adjusted_wet_probability": 0.5930420614805262,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Pseudacris kalmi",
+      "temp_any": 1.0,
+      "trait_species": "Pseudacris kalmi"
+    },
+    {
+      "adjusted_log_odds": 1.0681312181270177,
+      "adjusted_se": 0.35644632372498886,
+      "adjusted_wet_probability": 0.7442413627701407,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Pseudacris maculata",
+      "temp_any": 1.0,
+      "trait_species": "Pseudacris maculata"
+    },
+    {
+      "adjusted_log_odds": 0.2782186084683852,
+      "adjusted_se": 0.26460518590357335,
+      "adjusted_wet_probability": 0.5691094380747636,
+      "family": "",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "undocumented",
+      "perm_any": null,
+      "species": "Pseudacris maculata/triseriata",
+      "temp_any": null,
+      "trait_species": null
+    },
+    {
+      "adjusted_log_odds": 0.16690253852547265,
+      "adjusted_se": 0.39818483492630663,
+      "adjusted_wet_probability": 0.541629042995677,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Pseudacris nigrita",
+      "temp_any": 1.0,
+      "trait_species": "Pseudacris nigrita"
+    },
+    {
+      "adjusted_log_odds": 0.6513559162903827,
+      "adjusted_se": 0.33479431072822075,
+      "adjusted_wet_probability": 0.6573159502277616,
+      "family": "Hylidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Pseudacris ocularis",
+      "temp_any": 1.0,
+      "trait_species": "Pseudacris ocularis"
+    },
+    {
+      "adjusted_log_odds": 0.7073417535242692,
+      "adjusted_se": 0.31905363306043644,
+      "adjusted_wet_probability": 0.6698135186738747,
+      "family": "Scaphiopodidae",
+      "hydroperiod_axis": 0.0,
+      "hydroperiod_class": "flexible_both",
+      "perm_any": 1.0,
+      "species": "Scaphiopus holbrookii",
+      "temp_any": 1.0,
+      "trait_species": "Scaphiopus holbrookii"
+    }
+  ],
+  "taxonomy_audit": [
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Acris crepitans",
+      "trait_species": "Acris crepitans"
+    },
+    {
+      "match_type": null,
+      "matched": false,
+      "naamp_species": "Acris crepitans/gryllus",
+      "trait_species": null
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Acris gryllus",
+      "trait_species": "Acris gryllus"
+    },
+    {
+      "family": "Bufonidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Anaxyrus americanus",
+      "trait_species": "Anaxyrus americanus"
+    },
+    {
+      "family": "Bufonidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Anaxyrus fowleri",
+      "trait_species": "Anaxyrus fowleri"
+    },
+    {
+      "family": "Bufonidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Anaxyrus terrestris",
+      "trait_species": "Anaxyrus terrestris"
+    },
+    {
+      "family": "Microhylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Gastrophryne carolinensis",
+      "trait_species": "Gastrophryne carolinensis"
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "frozen_genus_alias",
+      "matched": true,
+      "naamp_species": "Hyla chrysoscelis",
+      "trait_species": "Dryophytes chrysoscelis"
+    },
+    {
+      "match_type": null,
+      "matched": false,
+      "naamp_species": "Hyla chrysoscelis/versicolor",
+      "trait_species": null
+    },
+    {
+      "match_type": null,
+      "matched": false,
+      "naamp_species": "Hyla cinerea",
+      "trait_species": null
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "frozen_genus_alias",
+      "matched": true,
+      "naamp_species": "Hyla femoralis",
+      "trait_species": "Dryophytes femoralis"
+    },
+    {
+      "match_type": null,
+      "matched": false,
+      "naamp_species": "Hyla gratiosa",
+      "trait_species": null
+    },
+    {
+      "match_type": null,
+      "matched": false,
+      "naamp_species": "Hyla squirella",
+      "trait_species": null
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "frozen_genus_alias",
+      "matched": true,
+      "naamp_species": "Hyla versicolor",
+      "trait_species": "Dryophytes versicolor"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates catesbeianus",
+      "trait_species": "Lithobates catesbeianus"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates clamitans",
+      "trait_species": "Lithobates clamitans"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates palustris",
+      "trait_species": "Lithobates palustris"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates pipiens",
+      "trait_species": "Lithobates pipiens"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates sphenocephalus",
+      "trait_species": "Lithobates sphenocephalus"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates sylvaticus",
+      "trait_species": "Lithobates sylvaticus"
+    },
+    {
+      "family": "Ranidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Lithobates virgatipes",
+      "trait_species": "Lithobates virgatipes"
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris crucifer",
+      "trait_species": "Pseudacris crucifer"
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris feriarum",
+      "trait_species": "Pseudacris feriarum"
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris kalmi",
+      "trait_species": "Pseudacris kalmi"
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris maculata",
+      "trait_species": "Pseudacris maculata"
+    },
+    {
+      "match_type": null,
+      "matched": false,
+      "naamp_species": "Pseudacris maculata/triseriata",
+      "trait_species": null
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris nigrita",
+      "trait_species": "Pseudacris nigrita"
+    },
+    {
+      "family": "Hylidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Pseudacris ocularis",
+      "trait_species": "Pseudacris ocularis"
+    },
+    {
+      "family": "Scaphiopodidae",
+      "match_type": "exact",
+      "matched": true,
+      "naamp_species": "Scaphiopus holbrookii",
+      "trait_species": "Scaphiopus holbrookii"
+    }
+  ],
+  "temporary_vs_permanent_descriptive": {
+    "estimable": false,
+    "reason": "primary_nonestimable"
+  },
+  "trait_source": {
+    "doi": "10.1002/ecy.3261",
+    "scientific_source": "ATraiU",
+    "transport_commit": "a7be17ae44b8a81349c37b3b38c767e6db5958f2",
+    "transport_git_blob_sha1": "4a1fd99f9b815cc512ce3e680497b34e8c9c93e6",
+    "transport_repository": "panpipiens/amphibian-vulnerability-analysis"
+  },
+  "within_family_permutation": {
+    "estimable": false,
+    "reason": "primary_nonestimable"
+  }
+}
