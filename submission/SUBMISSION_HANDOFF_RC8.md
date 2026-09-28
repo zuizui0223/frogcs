@@ -34,6 +34,7 @@ RC7 remains preserved as the frozen fallback on:
 - RC8 story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
 - JAE initial-submission compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md`
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
+- post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - uniform-null contract: `NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
 - uniform-null repairs: `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`, `_V0_1_2.json`, `_V0_1_3.json`
 - uniform-null summary: `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
@@ -44,6 +45,14 @@ RC7 remains preserved as the frozen fallback on:
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml`
 - private human-finalization guide: `submission/HUMAN_FINALIZATION_RC8.md`
 - citation template: `submission/CITATION_V0_3.cff.template`
+
+## Question spine
+
+- **Q1:** does recent-rain activity expand the realized community along both spatial and taxonomic axes?
+- **Q2:** is the matrix allocation distinguishable from magnitude-matched uniform activation? **This is the central structural test.**
+- **Q3:** does expansion materially erode local pairwise-Sørensen differentiation?
+
+General principle: **environmental pulses can recruit previously inactive participation beyond uniform amplification without practical homogenization.**
 
 ## Core empirical result
 
@@ -156,9 +165,9 @@ Latest verified runs:
 - anonymous v1.0 DOCX: run **36368104850** — success; artifact ID **10948575967**.
 
 Current measured package:
-- manuscript markdown: ~6,935 words;
+- manuscript markdown: ~7,091 words;
 - title-page template: ~113 words;
-- combined proxy: ~7,048 words vs 8,500-word Research Article limit;
+- combined proxy: ~7,204 words vs 8,500-word Research Article limit;
 - abstract: ~293 words vs 350-word limit;
 - keywords: 8, alphabetically ordered;
 - anonymous cover letter v0.10: ~347 words vs 500-word limit;
