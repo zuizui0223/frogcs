@@ -24,6 +24,7 @@ handoff=(root/"submission/SUBMISSION_HANDOFF_RC8.md").read_text(encoding="utf-8"
 checklist=(root/"submission/JAE_PORTAL_CHECKLIST_V0_7.md").read_text(encoding="utf-8")
 jae_audit=(root/"submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md").read_text(encoding="utf-8")
 compliance_receipt=json.loads((root/"submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json").read_text(encoding="utf-8"))
+hypothesis_receipt=json.loads((root/"submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json").read_text(encoding="utf-8"))
 
 generic_docx=(root/".github/workflows/anonymous_docx.yml").read_text(encoding="utf-8")
 docx_builder=(root/"scripts/build_jae_anonymous_docx.py").read_text(encoding="utf-8")
@@ -183,7 +184,7 @@ if 'default="MANUSCRIPT_JAE_V1_0.md"' not in doi_finalizer:
 
 
 for x in [
-  "combined current proxy: ~7,048 words",
+  "combined current proxy: ~7,204 words",
   "current: ~293 words",
   "current `submission/COVER_LETTER_JAE_V0_10.md`: ~347 words",
   "References are alphabetically ordered",
@@ -193,10 +194,20 @@ for x in [
         raise SystemExit(f"JAE compliance audit drift: {x}")
 
 assert compliance_receipt["scientific_unfreeze"] is False
-assert compliance_receipt["verified_current_metrics"]["manuscript_words_approx"] == 6935
-assert compliance_receipt["verified_current_metrics"]["combined_proxy_words_approx"] == 7048
+assert compliance_receipt["verified_current_metrics"]["manuscript_words_approx"] == 7091
+assert compliance_receipt["verified_current_metrics"]["combined_proxy_words_approx"] == 7204
 assert compliance_receipt["verified_current_metrics"]["abstract_words_approx"] == 293
 assert compliance_receipt["verified_current_metrics"]["cover_letter_words_approx"] == 347
+
+assert hypothesis_receipt["scientific_unfreeze"] is False
+for x in [
+  "**Q1: Does recent-rain activity expand the realized community along both spatial and taxonomic axes?**",
+  "**Q2: Is the resulting matrix geometry distinguishable from simple uniform amplification?**",
+  "**Q3: Does expansion materially erode local compositional differentiation?**",
+  "**community amplification** and **community recruitment**"
+]:
+    if x not in m:
+        raise SystemExit(f"RC8 question-spine drift: {x}")
 
 forbidden=[
   "rainfall caused the expansion",
