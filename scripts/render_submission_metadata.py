@@ -141,9 +141,12 @@ def render_title_page(m: dict) -> str:
             funding_lines.append(f"- {f.get('funder')}" + (f" — {grant}" if grant else ""))
 
     credits=[]
-    for a in authors:
-        roles=", ".join(a.get("credit_roles") or [])
-        credits.append(f"- **{author_name(a)}:** {roles}")
+    if len(authors) > 1 or any(a.get("credit_roles") for a in authors):
+        for a in authors:
+            roles=", ".join(a.get("credit_roles") or [])
+            credits.append(f"- **{author_name(a)}:** {roles}")
+    else:
+        credits.append("Not required for a single-author submission.")
 
     return "\n".join([
         "# Journal of Animal Ecology title page",
