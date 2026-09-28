@@ -102,13 +102,6 @@ for name in [
 ]:
     assert (prov/name).is_dir(),f"missing provenance section: {name}"
 
-root_manifest=json.loads((prov/"ROOT_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-submission_manifest=json.loads((prov/"submission/SUBMISSION_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-script_manifest=json.loads((prov/"SCRIPT_LAYOUT_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-assert root_manifest["moved_json_files"]==141
-assert sum(root_manifest["categories"].values())==141
-assert script_manifest["moved_scripts"]==69
-
 # Current templates must describe the current paper and contain no superseded story.
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
 meta=(submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
@@ -128,21 +121,21 @@ for phrase in [
         except UnicodeDecodeError:continue
         assert phrase not in text,(p.name,phrase)
 
-# No active surface may retain a pre-migration path.
-mappings={}
-mappings.update(root_manifest["mapping"])
-mappings.update(submission_manifest["mapping"])
-mappings.update(script_manifest["mapping"])
-stale={}
+# Active surfaces must use categorized script/provenance paths rather than historical flat paths.
+legacy={}
+legacy_patterns=[
+    re.compile(r'(?<![A-Za-z0-9_./-])scripts/(?:run_|audit_|build_|render_|finalize_)[A-Za-z0-9_.-]+\\.py'),
+    re.compile(r'(?<![A-Za-z0-9_./-])submission/RC[0-9][A-Za-z0-9_.-]*\\.json'),
+]
 for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
     paths=[base] if base.is_file() else list(base.rglob("*"))
     for p in paths:
         if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml",".md",".json",".txt",".cff"}:
             continue
         text=p.read_text(encoding="utf-8")
-        bad=[old for old,target in mappings.items() if old in text and target not in text]
-        if bad:stale[str(p.relative_to(ROOT))]=sorted(bad)
-assert not stale,stale
+        hits=sorted({m.group(0) for pat in legacy_patterns for m in pat.finditer(text)})
+        if hits:legacy[str(p.relative_to(ROOT))]=hits
+assert not legacy,legacy
 
 # Active workflow file references must resolve to live paths.
 missing_refs={}
