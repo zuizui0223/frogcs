@@ -1,0 +1,54 @@
+name: build consolidated current provenance registry
+on:
+  push:
+    branches:
+      - cleanup/provenance-registry-v1
+    paths:
+      - ".github/workflows/build_current_provenance_registry.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build lossless registry
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("provenance")
+          sections={
+            "contracts":root/"contracts",
+            "summaries":root/"summaries",
+            "repairs":root/"repairs",
+            "story":root/"submission",
+          }
+          out={
+            "schema":"frogcs-current-provenance-v1",
+            "description":"Lossless registry of current-paper provenance formerly stored as per-analysis JSON files.",
+          }
+          counts={}
+          for key,d in sections.items():
+            items={}
+            for p in sorted(d.glob("*.json")):
+              items[p.name]=json.loads(p.read_text(encoding="utf-8"))
+            out[key]=items
+            counts[key]=len(items)
+          Path("provenance/current.json").write_text(json.dumps(out,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          assert sum(counts.values())==24,counts
+          print({"status":"PASS","counts":counts,"total":sum(counts.values())})
+          PY
+      - name: Commit registry
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add provenance/current.json
+          git commit -m "build consolidated current provenance registry"
+          git push origin HEAD:cleanup/provenance-registry-v1
