@@ -75,7 +75,7 @@ def mixed(d,response):
 def main():
     d=meta.build()
     result={"analysis":"rc6_geographic_generality_audit_v0_1",
-            "contract":"provenance/contracts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json",
+            "contract":"provenance/current.json#contracts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json",
             "n_pairs":int(len(d)),"n_routes":int(d.route_cluster.nunique()),
             "n_states":int(d.State.nunique()),"responses":{}}
     for response in RESPONSES:
