@@ -39,6 +39,8 @@ assert len(keywords) <= 8, keywords
 assert keywords == sorted(keywords,key=str.casefold), keywords
 assert refs == sorted(refs,key=refkey), [refkey(x) for x in refs]
 assert "(Fig. 1)" in m and "(Fig. 2)" in m
+assert "## Figure legends" in m
+assert "uniform-activation rejection is driven by incidence allocation rather than an exceptional beta-diversity response" in m
 assert "## Data Availability" in m
 assert "10.5066/F7G44NG0" in m
 assert "persistent archive identifier will be added at finalization" in m
