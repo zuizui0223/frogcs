@@ -18,12 +18,8 @@ CURRENT_SUBMISSION_FILES = {
     "CITATION.cff.template",
     "COVER_LETTER_JAE_V0_13.md",
     "HUMAN_FINALIZATION_RC11.md",
-    "JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md",
     "JAE_PORTAL_CHECKLIST_V0_10.md",
-    "NOVELTY_AUDIT_V0_11.md",
     "PRIVATE_METADATA_SETUP.md",
-    "REVIEWER_ATTACK_MATRIX_V0_11.md",
-    "SUBMISSION_HANDOFF_RC11.md",
     "SUBMISSION_METADATA_TEMPLATE_V0_7.yml",
     "ZENODO_METADATA_TEMPLATE.json",
 }
@@ -58,6 +54,10 @@ required=[
     submission/"CITATION.cff.template",
     submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml",
     ROOT/"provenance/submission/RC11_STORY_FREEZE_V0_1.json",
+    ROOT/"provenance/submission_docs/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md",
+    ROOT/"provenance/submission_docs/NOVELTY_AUDIT_V0_11.md",
+    ROOT/"provenance/submission_docs/REVIEWER_ATTACK_MATRIX_V0_11.md",
+    ROOT/"provenance/submission_docs/SUBMISSION_HANDOFF_RC11.md",
     ROOT/"scripts/qa/audit_rc11_submission_package.py",
     ROOT/"scripts/qa/audit_jae_initial_submission_rc11_2026.py",
     ROOT/"scripts/submission/build_jae_anonymous_docx.py",
@@ -78,7 +78,7 @@ for name in [
     assert (archive/name).exists(), f"missing archive section: {name}"
 
 prov=ROOT/"provenance"
-for name in ["contracts","summaries","receipts","repairs","metadata","submission","docs"]:
+for name in ["contracts","summaries","receipts","repairs","metadata","submission","submission_docs","docs"]:
     assert (prov/name).is_dir(), f"missing provenance section: {name}"
 assert not list(ROOT.glob("*.json"))
 
