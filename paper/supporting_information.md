@@ -301,6 +301,8 @@ These results established that the species ordering was stable across time and r
 
 ### S6.2 Frozen placebo gate
 
+**Reproducibility anchor.** Historical code supporting the falsification record, including the activation-geometry placebo, disjoint-route validation and AmphiBIO trait-audit scripts, is preserved on branch `history/pre-deep-cleanup-2026-09-28` at commit `cc6a71dfb3930af9f08b47311295806584abaeb1`.
+
 Before reading placebo endpoints, a separate contract specified that activation geometry would remain in the title only if the wet-gain species ranking was **not** strongly reproduced by:
 
 1. a reverse-direction dry-gain geometry;
