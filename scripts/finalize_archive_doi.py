@@ -60,7 +60,7 @@ def normalize_doi(raw: str) -> str:
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--doi", required=True)
-    p.add_argument("--input", default="MANUSCRIPT_JAE_V1_1.md")
+    p.add_argument("--input", default="MANUSCRIPT_JAE_V1_2.md")
     p.add_argument("--output", default="build/MANUSCRIPT_JAE_FINAL.md")
     args = p.parse_args()
 
