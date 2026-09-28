@@ -101,7 +101,7 @@ legacy={}
 legacy_patterns=[
     re.compile(r'(?<![A-Za-z0-9_./-])scripts/(?:run_|audit_|build_|render_|finalize_)[A-Za-z0-9_.-]+\.py'),
     re.compile(r'(?<![A-Za-z0-9_./-])submission/RC[0-9][A-Za-z0-9_.-]*\.json'),
-    re.compile(r'(?<![A-Za-z0-9_./-])(?:MANUSCRIPT_JAE_|SUPPORTING_INFORMATION_JAE_|JAE_TITLE_PAGE_|figures_ecology_v|submission/COVER_LETTER_JAE_|submission/SUBMISSION_METADATA_TEMPLATE_V)[A-Za-z0-9_./-]*'),
+    re.compile(r'(?<![A-Za-z0-9_./-])(?:MANUSCRIPT_JAE_V1_3\\.md|SUPPORTING_INFORMATION_JAE_RC11_V0_1\\.md|JAE_TITLE_PAGE_V0_8\\.template\\.md|figures_ecology_v1_(?:0|2)/[A-Za-z0-9_./-]*|submission/COVER_LETTER_JAE_V0_13\\.md|submission/SUBMISSION_METADATA_TEMPLATE_V0_7\\.yml)'),
 ]
 for base in [paper,scripts,active_workflows,submission,ROOT/"README.md"]:
     paths=[base] if base.is_file() else list(base.rglob("*"))
