@@ -63,6 +63,7 @@
 - [x] `figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg`
 - [x] `JAE_TITLE_PAGE_V0_6.template.md`
 - [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml`
+- [x] `submission/HUMAN_FINALIZATION_RC8.md`
 - [x] `submission/CITATION_V0_3.cff.template`
 - [x] canonical submission QA
 - [x] anonymous artifact `frogcs-jae-v1-0-rc8-anonymous-docx` (ID 10947563991)
@@ -91,11 +92,14 @@
 ## Human metadata
 
 - [ ] final author set/order
-- [ ] affiliations
+- [ ] affiliations + full institutional addresses
 - [ ] corresponding author details
-- [ ] CRediT
+- [ ] contribution statement / CRediT if multi-author
 - [ ] funding / acknowledgements
 - [ ] Conflict of Interest
 - [ ] Statement on Inclusion
 - [ ] all-author approval
+- [ ] relevant-institution approval
+- [ ] originality / acknowledgement confirmation
+- [ ] legal / conservation / welfare confirmation
 - [ ] archive license / DOI
