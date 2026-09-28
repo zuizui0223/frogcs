@@ -5,7 +5,7 @@ on:
     branches:
       - revision/species-activation-geometry-route-split-v1
     paths:
-      - "NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPECIES_ACTIVATION_GEOMETRY_ROUTE_SPLIT_CONTRACT_V0_1.json"
       - "scripts/run_naamp_species_activation_geometry_route_split.py"
       - ".github/workflows/species_activation_geometry_route_split.yml"
   workflow_dispatch:
