@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rc10-reviewer-defense-v1
     paths:
-      - "NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json"
       - "scripts/run_naamp_same_observer_robustness.py"
       - ".github/workflows/same_observer_robustness.yml"
   workflow_dispatch:
