@@ -5,7 +5,7 @@ on:
     branches:
       - revision/species-stop-incidence-quadrants-v1
     paths:
-      - "NAAMP_SPECIES_STOP_QUADRANTS_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPECIES_STOP_QUADRANTS_CONTRACT_V0_1.json"
       - "scripts/run_naamp_species_stop_incidence_quadrants.py"
       - ".github/workflows/species_stop_incidence_quadrants.yml"
   workflow_dispatch:
