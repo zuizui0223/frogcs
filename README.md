@@ -37,7 +37,8 @@ Current article surfaces:
 
 The default branch is intentionally split into current authority, reproducibility code and archived submission history.
 
-- repository root: current manuscript/SI/title-page surfaces plus scientific contracts, receipts and summaries used by active analyses;
+- repository root: current manuscript/SI/title-page surfaces only; root-level JSON provenance is prohibited;
+- `provenance/`: scientific JSON provenance grouped into `contracts/`, `summaries/`, `receipts/`, `repairs/` and `metadata/`;
 - `scripts/`: current analysis and reproducibility scripts only;
 - `.github/workflows/`: current submission QA plus analysis workflows that remain useful for reproducibility;
 - `submission/`: current submission surfaces and provenance files still referenced by the present paper;
