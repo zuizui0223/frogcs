@@ -5,7 +5,7 @@ on:
     branches:
       - revision/functional-response-diversity-audit-v1
     paths:
-      - "AMPHIBIO_FUNCTIONAL_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json"
+      - "provenance/contracts/AMPHIBIO_FUNCTIONAL_TRAIT_COVERAGE_AUDIT_CONTRACT_V0_1.json"
       - "scripts/audit_amphibio_functional_trait_coverage.py"
       - ".github/workflows/functional_trait_coverage_audit.yml"
   workflow_dispatch:
