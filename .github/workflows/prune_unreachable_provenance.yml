@@ -1,0 +1,27 @@
+name: prune unreachable current provenance
+on:
+  push:
+    branches:
+      - cleanup/provenance-prune-v1
+    paths:
+      - "scripts/qa/prune_unreachable_provenance.py"
+      - ".github/workflows/prune_unreachable_provenance.yml"
+permissions:
+  contents: write
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/qa/prune_unreachable_provenance.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A provenance
+          git commit -m "prune unreachable historical provenance"
+          git push origin HEAD:cleanup/provenance-prune-v1
