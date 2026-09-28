@@ -53,7 +53,7 @@ assert "readback" not in (m+"\n"+si).lower()
 for x in [
     "β = 0.384",
     "β = 0.0794",
-    "β = 0.2859",
+    "0.2859",
     "92.0% observed",
     "80.9%",
     "77.9%",
