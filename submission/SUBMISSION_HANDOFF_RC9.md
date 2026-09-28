@@ -29,7 +29,7 @@ RC8 remains the frozen fallback on `release/jae-v1-rc8`.
 - North American uniform-null summary: `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
 - Sørensen-equivalence summary: `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
 - figures: `figures_ecology_v1_0/`
-- title-page template: `JAE_TITLE_PAGE_V0_6.template.md`
+- title-page template: `JAE_TITLE_PAGE_V0_7.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml`
 - human-finalization guide: `submission/HUMAN_FINALIZATION_RC9.md`
 
