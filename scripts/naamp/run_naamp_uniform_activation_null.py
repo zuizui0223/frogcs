@@ -404,7 +404,7 @@ def main():
             "retuning_after_readback_authorized": False,
         },
     }
-    Path("NAAMP_UNIFORM_ACTIVATION_NULL_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_UNIFORM_ACTIVATION_NULL_RECEIPT_V0_1.json").write_text(
         json.dumps(output, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     print(json.dumps(output, indent=2, sort_keys=True))
