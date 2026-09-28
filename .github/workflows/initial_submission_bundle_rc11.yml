@@ -2,11 +2,6 @@
 name: frogcs initial JAE submission bundle (RC11)
 
 on:
-  push:
-    branches:
-      - revision/rc10-reviewer-defense-v1
-    paths:
-      - ".github/workflows/initial_submission_bundle_rc11.yml"
   workflow_dispatch:
 
 permissions:
