@@ -31,7 +31,7 @@ SCRIPT_LAYOUT = {"naamp": 46, "frogid": 7, "qa": 11, "submission": 5}
 TITLE = "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
-root_dirs={p.name for p in ROOT.iterdir() if p.is_dir()}
+root_dirs={p.name for p in ROOT.iterdir() if p.is_dir() and p.name != ".git"}
 assert root_files == CURRENT_ROOT_FILES, {"unexpected_root_files": sorted(root_files-CURRENT_ROOT_FILES), "missing": sorted(CURRENT_ROOT_FILES-root_files)}
 assert root_dirs == CURRENT_ROOT_DIRS, {"unexpected_root_dirs": sorted(root_dirs-CURRENT_ROOT_DIRS), "missing": sorted(CURRENT_ROOT_DIRS-root_dirs)}
 
