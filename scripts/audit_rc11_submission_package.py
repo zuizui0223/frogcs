@@ -67,7 +67,7 @@ for x in [
 ]:
     assert x.lower() in si.lower(), x
 
-for x in ["species-specific activation-shift null remains untested","3,152/4,236 pairs","same observer"]:
+for x in ["species-specific activation-shift null remains untested","3,152/4,236 pairs","ObserverTrackingID"]:
     assert x.lower() in rev.lower(), x
 for x in ["observer turnover is not required","species-specific activation-shift null remains untested"]:
     assert x.lower() in nov.lower(), x
