@@ -211,6 +211,7 @@ assert len(re.findall(r"(?m)^\d+\. ",abstract))==5
 assert len(keywords)<=8 and keywords==sorted(keywords,key=str.casefold)
 assert refs==sorted(refs,key=key)
 assert all(x in m for x in ["(Fig. 1)","(Fig. 2)","(Fig. 3)","## Data Availability"])
+assert "will be archived in Zenodo at finalization" in m
 for x in ["10.5066/F7G44NG0","10.3897/zookeys.912.38253","10.6084/m9.figshare.4644424.v5"]: assert x in m
 assert "involved no new animal capture, handling or field sampling" in m
 assert wc(cl)<=500
