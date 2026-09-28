@@ -57,7 +57,7 @@ def main():
         "endpoint_retuning_after_readback_authorized":False
       }
     }
-    Path("NAAMP_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json").write_text(
       json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8"
     )
     print(json.dumps(result,indent=2,sort_keys=True))
