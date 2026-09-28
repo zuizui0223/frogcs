@@ -31,7 +31,7 @@ CURRENT_WORKFLOWS={
     "scientific_submission_bundle.yml","sorensen_equivalence.yml",
     "spatial_taxonomic_activation_decomposition.yml","submission_anonymous_docx.yml",
     "submission_package_qa.yml","uniform_activation_null.yml",
-    "within_active_depth_decomposition.yml","prune_current_provenance.yml",
+    "within_active_depth_decomposition.yml",
 }
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
@@ -172,8 +172,6 @@ assert not legacy,legacy
 # Active workflow file references must resolve to live paths.
 missing_refs={}
 for wf in active_workflows.glob("*.yml"):
-    if wf.name=="prune_current_provenance.yml":
-        continue
     text=wf.read_text(encoding="utf-8")
     refs=set()
     refs.update(re.findall(r'(scripts/[A-Za-z0-9_./-]+\.py)',text))
