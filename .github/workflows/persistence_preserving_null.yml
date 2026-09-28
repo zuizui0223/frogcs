@@ -37,7 +37,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          x=json.loads(Path("NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json").read_text())
+          x=json.loads(Path("provenance/receipts/NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json").read_text())
           assert x["n_pairs"]==4236
           assert x["simulation_replicates"]==1000
           assert x["primary_anchor_weight"]==0.75
@@ -53,5 +53,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: persistence-preserving-null
-          path: NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_PERSISTENCE_PRESERVING_NULL_RECEIPT_V0_1.json
           if-no-files-found: error
