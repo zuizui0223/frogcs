@@ -32,6 +32,8 @@ RC7 remains preserved as the frozen fallback on:
 - RC8 scope: `submission/RC8_SCOPE_UNFREEZE_V0_1.json`
 - story decision tree: `submission/RC8_STORY_DECISION_TREE_V0_1.json`
 - RC8 story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
+- JAE initial-submission compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md`
+- post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - uniform-null contract: `NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json`
 - uniform-null repairs: `NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json`, `_V0_1_2.json`, `_V0_1_3.json`
 - uniform-null summary: `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
@@ -142,6 +144,22 @@ Final promoted QA:
 - canonical submission QA: success on submission/jae-v1;
 - anonymous v1.0 DOCX QA: success;
 - anonymous DOCX artifact: `frogcs-jae-v1-0-rc8-anonymous-docx`, artifact ID **10934299144**.
+
+## JAE initial-submission compliance
+
+Automated audit status: **PASS**.
+
+Current measured package:
+- manuscript markdown: ~6,982 words;
+- title-page template: ~113 words;
+- combined proxy: ~7,095 words vs 8,500-word Research Article limit;
+- abstract: ~340 words vs 350-word limit;
+- keywords: 8, alphabetically ordered;
+- anonymous cover letter v0.10: ~347 words vs 500-word limit;
+- references: alphabetically ordered;
+- main/SI: no e-mail address or direct GitHub repository URL;
+- Fig. 1 and Fig. 2 cited in Results;
+- Data Availability statement and secondary-data/no-new-handling statement present.
 
 ## Human metadata still unresolved
 
