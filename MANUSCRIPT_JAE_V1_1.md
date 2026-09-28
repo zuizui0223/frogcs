@@ -261,7 +261,7 @@ More generally, the results suggest a distinction between **community amplificat
 
 ## Data Availability
 
-NAAMP source data are publicly available from the U.S. Geological Survey data release (Foreman et al., 2017; DOI 10.5066/F7G44NG0). Functional traits are from AmphiBIO v1 (Oliveira et al., 2017; DOI 10.1038/sdata.2017.123; data DOI 10.6084/m9.figshare.4644424.v5). The analysis repository preserves source digests, versioned contracts, deterministic scripts, workflow receipts and derived summaries. Raw third-party source datasets are not redistributed. A persistent archive identifier will be added at finalization.
+NAAMP source data are publicly available from the U.S. Geological Survey data release (Foreman et al., 2017; DOI 10.5066/F7G44NG0). Australian FrogID occurrence data are publicly available through the Atlas of Living Australia; the dataset is described by Rowley and Callaghan (2020; DOI 10.3897/zookeys.912.38253), and the analysis preserves the exact source digest used for the frozen sample. Functional traits are from AmphiBIO v1 (Oliveira et al., 2017; DOI 10.1038/sdata.2017.123; data DOI 10.6084/m9.figshare.4644424.v5). The analysis repository preserves source digests, versioned contracts, deterministic scripts, workflow receipts and derived summaries. Raw third-party source datasets are not redistributed. A persistent archive identifier will be added at finalization.
 
 ## References
 
