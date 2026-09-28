@@ -2,6 +2,7 @@ name: frogcs repository structure QA
 on:
   push:
     branches:
+      - cleanup/workflow-consolidation-v1
       - cleanup/deep-structure-v1
       - cleanup/repository-structure-v1
       - main
