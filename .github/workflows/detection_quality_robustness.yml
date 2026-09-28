@@ -5,7 +5,7 @@ on:
     branches:
       - revision/detection-quality-robustness-v1
     paths:
-      - "NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json"
       - "scripts/run_naamp_detection_quality_robustness.py"
       - ".github/workflows/detection_quality_robustness.yml"
   workflow_dispatch:
