@@ -609,7 +609,7 @@ def main():
     naamp={
         "system":"NAAMP",
         "response":"mean species richness per active stop; excess richness = alpha_active - 1",
-        "source":"provenance/summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
+        "source":"provenance/CURRENT_RESULTS.json#items/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1",
         "rainfall_contrast_beta":0.07941491576879688,
         "ci95":[0.023119819091079956,0.1357100124465138],
         "support_positive_ci":True,

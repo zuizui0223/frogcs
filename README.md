@@ -30,19 +30,16 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `scripts/qa/` — repository and submission audits
 - `scripts/submission/` — DOCX, metadata and submission-build utilities
 - `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json` — bundled frozen analysis definitions, repair record, and scope decisions
-- `provenance/summaries/` — compact durable results
+- `provenance/CURRENT_RESULTS.json` — bundled durable result summaries
 - `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
-- `provenance/submission/` — current RC11 story freeze
 - `submission/` — cover letter plus current metadata/citation templates only
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
 
 ## Current reproducibility anchors
 
-- uniform activation: `provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
-- persistence-preserving null: `provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
-- same-observer robustness: `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
-- cross-dataset depth: `provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
+- analysis specifications and story freeze: `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json`
+- current durable results: `provenance/CURRENT_RESULTS.json`
 
 Detailed inferential boundaries are documented in the Supporting Information; historical development remains available on the history/release branches.
 

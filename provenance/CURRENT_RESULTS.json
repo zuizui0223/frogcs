@@ -1,0 +1,472 @@
+{
+  "schema_version": 1,
+  "purpose": "Current-paper durable result summaries bundled to minimize current-branch provenance surface. Historical standalone files remain in Git history and release/history branches.",
+  "manuscript": "MANUSCRIPT_JAE_V1_3.md",
+  "items": {
+    "CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1": {
+      "source_path": "provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json",
+      "payload": {
+        "project": "frog-chorus-synchrony",
+        "analysis": "crosscontinental_active_unit_taxonomic_depth_v0_1_summary",
+        "workflow_run": 36388273135,
+        "artifact_id": 10954474477,
+        "decision": "STRONG_PASS",
+        "authorized_wording": "cross-continental consistency in rainfall-associated taxonomic deepening within already-active acoustic units",
+        "north_america": {
+          "system": "NAAMP",
+          "sampling_unit": "active standardized route stop",
+          "response": "mean species richness per active stop; excess richness = alpha_active - 1",
+          "rainfall_contrast_beta": 0.07941491576879688,
+          "ci95": [
+            0.023119819091079956,
+            0.1357100124465138
+          ],
+          "p_value": 0.005694005637618469,
+          "interpretation": "greater wetter-drier rainfall contrast predicts greater taxonomic depth among active stops"
+        },
+        "australia": {
+          "system": "FrogID",
+          "n_recordings": 40754,
+          "weather_cells": 1623,
+          "recorders": 13148,
+          "mean_species_richness": 1.799013593757668,
+          "primary_excess_richness": {
+            "beta_per_sd_log1p_dry_days": -0.08175916880959841,
+            "ci95": [
+              -0.09816413332872502,
+              -0.0653542042904718
+            ],
+            "p_value": 1.5434742870409294e-22
+          },
+          "recorder_cluster_sensitivity": {
+            "beta": -0.08175916880959841,
+            "ci95": [
+              -0.09490292341051097,
+              -0.06861541420868585
+            ],
+            "p_value": 3.4406528241558727e-34
+          },
+          "within_era5_cell_sensitivity": {
+            "n_recordings": 40020,
+            "informative_cells": 1071,
+            "beta": -0.0998361895066961,
+            "ci95": [
+              -0.11821647082479571,
+              -0.08145590818859648
+            ],
+            "p_value": 1.8214042491900606e-26
+          },
+          "secondary_no_gate": {
+            "threeplus": {
+              "n_recordings": 8327,
+              "odds_ratio_per_sd_log1p_dry_days": 0.8457566860531127,
+              "ci95_or": [
+                0.8114699272697597,
+                0.8814921514223316
+              ],
+              "p_value": 2.123450063528658e-15
+            },
+            "excess_beyond_two": {
+              "beta": -0.04832670412047247,
+              "ci95": [
+                -0.059971835835259224,
+                -0.03668157240568572
+              ],
+              "p_value": 4.1620764775043365e-16
+            }
+          }
+        },
+        "historical_two_plus_context": {
+          "naamp_activity_conditioned_or": 0.988,
+          "interpretation": "The earlier binary >=2-species threshold was null in NAAMP. The new cross-system result concerns continuous active-unit taxonomic depth, and the existing NAAMP decomposition places about 71% of its alpha slope beyond the second species. Australian >=3 and excess-beyond-two endpoints also support deeper multiplicity."
+        },
+        "generalization_boundary": {
+          "cross_continental_consistency_authorized": true,
+          "worldwide_universality_authorized": false,
+          "pooled_effect_size_authorized": false,
+          "same_mechanism_authorized": false,
+          "frogid_matrix_geometry_replication_authorized": false
+        }
+      }
+    },
+    "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1": {
+      "source_path": "provenance/summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
+      "payload": {
+        "programme": "frog-chorus-synchrony",
+        "analysis": "naamp_metacommunity_alpha_beta_gamma_v0_1_summary",
+        "workflow_run": 36222547139,
+        "matched_pairs": 4236,
+        "primary": {
+          "alpha_active": {
+            "beta": 0.07941491576879688,
+            "ci95": [
+              0.023119819091079956,
+              0.1357100124465138
+            ],
+            "p": 0.005694005637618469
+          },
+          "gamma": {
+            "beta": 0.2859019665041188,
+            "ci95": [
+              0.16464925199938044,
+              0.4071546810088572
+            ],
+            "p": 0.000003811550717191942
+          },
+          "pairwise_sorensen_beta": {
+            "beta": -0.0004916260102541838,
+            "ci95": [
+              -0.012614541544767262,
+              0.011631289524258896
+            ],
+            "p": 0.9366482180820508
+          },
+          "normalized_whittaker_beta": {
+            "beta": -0.004823886957420518,
+            "ci95": [
+              -0.014721689988399372,
+              0.005073916073558335
+            ],
+            "p": 0.33946311861718004
+          }
+        },
+        "exact_consecutive_year": {
+          "n_pairs": 2693,
+          "alpha_beta": 0.08801921660180648,
+          "gamma_beta": 0.3009183552731458,
+          "sorensen_beta": 0.002146490573990743,
+          "whittaker_beta": -0.0009876045664197997
+        },
+        "interpretation": "Rainfall contrast increases local alpha diversity within active stops and route-scale gamma diversity while leaving among-active-stop beta diversity essentially unchanged. The acoustically realized metacommunity expands in parallel across local and route scales without detectable spatial homogenization or differentiation.",
+        "boundaries": {
+          "acoustic_metacommunity": true,
+          "occupancy_claim": false,
+          "causal_claim": false
+        }
+      }
+    },
+    "NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1": {
+      "source_path": "provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json",
+      "payload": {
+        "project": "frog-chorus-synchrony",
+        "analysis": "naamp_persistence_preserving_uniform_activation_null_v0_1_summary",
+        "workflow_run": 36396060661,
+        "artifact_id": 10957954308,
+        "decision": "strong_rejection_under_persistence_anchoring",
+        "title_support": {
+          "boundary_biased_title_authorized": true,
+          "candidate_title": "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+        },
+        "observed": {
+          "boundary_crossing_share": 0.9201538112142242,
+          "corner_share": 0.3691189628635065,
+          "spatial_spread_share": 0.152358285975235,
+          "taxonomic_deepening_share": 0.39867656237548255,
+          "within_core_share": 0.07984618878577582
+        },
+        "anchor_0_50": {
+          "omnibus_p": 0.000999000999000999,
+          "boundary_null_mean": 0.7867949641913364,
+          "boundary_ci95": [
+            0.7317950614783426,
+            0.8425392287949822
+          ],
+          "within_core_null_mean": 0.21320503580866365
+        },
+        "anchor_0_75_primary": {
+          "omnibus_p": 0.000999000999000999,
+          "boundary_null_mean": 0.7793754294928684,
+          "boundary_ci95": [
+            0.7338269009739914,
+            0.8280786787632431
+          ],
+          "corner_null_mean": 0.2862357580209283,
+          "spatial_spread_null_mean": 0.19257719694126693,
+          "taxonomic_deepening_null_mean": 0.3005624745306732,
+          "within_core_null_mean": 0.22062457050713152
+        },
+        "anchor_0_90": {
+          "omnibus_p": 0.000999000999000999,
+          "boundary_null_mean": 0.775962568639588,
+          "boundary_ci95": [
+            0.7291396285750618,
+            0.8231622254659892
+          ],
+          "within_core_null_mean": 0.2240374313604119
+        },
+        "interpretation": "The observed four-component allocation remains strongly inconsistent with uniform activation even when the null uses cell-only historical frequencies and strongly anchors each pair to its observed dry species x stop state. The result therefore cannot be attributed simply to hierarchical shrinkage weakening persistent species x stop identity.",
+        "ecological_hypothesis_boundary": "Preferential recruitment of combinations rare in dry conditions, including temporary or intermittently suitable wet sites, is a plausible discussion-level explanation only; no unique mechanism or causal rainfall effect is identified.",
+        "worldwide_generality_authorized": false,
+        "causal_claim_authorized": false,
+        "post_readback_retuning_authorized": false
+      }
+    },
+    "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1": {
+      "source_path": "provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
+      "payload": {
+        "analysis": "naamp_same_observer_robustness_v0_1",
+        "status": "completed_under_prefrozen_contract",
+        "contract_commit": "ef857c5a291a57a447d8144412b225f1c54488dc",
+        "workflow_run_id": 36402387051,
+        "artifact_id": 10960639304,
+        "observer_schema": {
+          "field": "Runs.csv:ObserverTrackingID",
+          "raw_runs_nonempty": 21934,
+          "raw_runs_total": 21934,
+          "raw_unique_ids": 2301
+        },
+        "coverage": {
+          "all_matched_pairs": 4236,
+          "same_observer_pairs": 3152,
+          "same_observer_fraction": 0.7440982058545798,
+          "same_observer_routes": 500,
+          "same_observer_unique_observers": 542
+        },
+        "headline_models": {
+          "delta_active_stops": {
+            "beta": 0.35218867849593266,
+            "ci95": [
+              0.1791534487967202,
+              0.5252239081951451
+            ],
+            "p": 0.00006628845298245026
+          },
+          "delta_mean_species_per_active_stop": {
+            "beta": 0.0981467252047551,
+            "ci95": [
+              0.027608122756369702,
+              0.1686853276531405
+            ],
+            "p": 0.00638985482318909,
+            "n_pairs": 3071,
+            "n_routes": 497
+          },
+          "richness_gain": {
+            "beta": 0.31856652878467223,
+            "ci95": [
+              0.17074305139906298,
+              0.4663900061702815
+            ],
+            "p": 0.00002402019536432399
+          }
+        },
+        "observed_matrix": {
+          "component_betas": {
+            "corner_expansion": 0.49825996755912555,
+            "spatial_spread": 0.18516283200858877,
+            "taxonomic_deepening": 0.6423903223737513,
+            "within_core_rearrangement": 0.11530490746013863
+          },
+          "component_shares": {
+            "corner_expansion": 0.34574542639371336,
+            "spatial_spread": 0.1284855426348902,
+            "taxonomic_deepening": 0.4457582996449577,
+            "within_core_rearrangement": 0.08001073132643877
+          },
+          "boundary_crossing_share": 0.9199892686735612
+        },
+        "uniform_null": {
+          "kappa_1": {
+            "mean_boundary": 0.7885053315726064,
+            "ci95": [
+              0.7219939789391859,
+              0.8565341147361692
+            ],
+            "omnibus_p": 0.000999000999000999
+          },
+          "kappa_2": {
+            "mean_boundary": 0.8032770310460358,
+            "ci95": [
+              0.7295017797725369,
+              0.8714121418209047
+            ],
+            "omnibus_p": 0.000999000999000999
+          },
+          "kappa_5": {
+            "mean_boundary": 0.8255522256188292,
+            "ci95": [
+              0.7466875534249181,
+              0.9027595893187716
+            ],
+            "omnibus_p": 0.000999000999000999
+          }
+        },
+        "persistence_preserving_null": {
+          "anchor_0_50": {
+            "mean_boundary": 0.7991461390833217,
+            "ci95": [
+              0.7418605256885795,
+              0.8638378816564605
+            ],
+            "omnibus_p": 0.001998001998001998
+          },
+          "anchor_0_75": {
+            "mean_boundary": 0.7910527639160703,
+            "ci95": [
+              0.7333562369699016,
+              0.8488308557997452
+            ],
+            "omnibus_p": 0.000999000999000999
+          },
+          "anchor_0_90": {
+            "mean_boundary": 0.7911836932593955,
+            "ci95": [
+              0.7421791712922773,
+              0.8422696277748211
+            ],
+            "omnibus_p": 0.000999000999000999
+          }
+        },
+        "prefrozen_classification": "observer_robust",
+        "interpretation": "Observer turnover does not explain the RC10 headline expansion or boundary-biased allocation within the same-observer subset. This is a robustness result, not proof of observer equivalence or a causal rainfall effect."
+      }
+    },
+    "NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1": {
+      "source_path": "provenance/summaries/NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json",
+      "payload": {
+        "project": "frog-chorus-synchrony",
+        "analysis": "naamp_sorensen_equivalence_v0_1_summary",
+        "contract": "provenance/contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
+        "workflow_run": 36324170352,
+        "status": "completed",
+        "primary": {
+          "n_pairs": 4007,
+          "n_routes": 576,
+          "beta": -0.0004916260102542231,
+          "se_cluster": 0.006185274642869504,
+          "ci90": [
+            -0.010665497440269098,
+            0.009682245419760652
+          ],
+          "margin": [
+            -0.025,
+            0.025
+          ],
+          "equivalent": true
+        },
+        "exact_consecutive_year": {
+          "n_pairs": 2562,
+          "n_routes": 491,
+          "beta": 0.0021464905739907213,
+          "se_cluster": 0.007220470958826713,
+          "ci90": [
+            -0.009730127270933173,
+            0.014023108418914614
+          ],
+          "margin": [
+            -0.025,
+            0.025
+          ],
+          "equivalent": true
+        },
+        "decision": {
+          "primary_pass": true,
+          "exact_year_pass": true,
+          "title_level_equivalence_support": true
+        },
+        "authorized_interpretation": "The rainfall-contrast slope of mean pairwise Sørensen dissimilarity is practically equivalent to zero within the fixed +/-0.025 margin in both the primary and exact-consecutive-year samples.",
+        "boundaries": {
+          "post_hoc_margin": true,
+          "conventional_coefficient_known_before_equivalence_test": true,
+          "applies_only_to_pairwise_sorensen": true,
+          "exact_invariance_claim": false
+        }
+      }
+    },
+    "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1": {
+      "source_path": "provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
+      "payload": {
+        "programme": "frog-chorus-synchrony",
+        "analysis": "naamp_uniform_activation_null_v0_1_summary",
+        "workflow_run": 36324674755,
+        "n_pairs": 4236,
+        "n_beta_pairs": 4007,
+        "simulation_replicates": 1000,
+        "primary_kappa": 2,
+        "decision": "strong_rejection_of_uniform_activation",
+        "primary_omnibus": {
+          "monte_carlo_p": 0.000999000999000999,
+          "observed_mahalanobis": 33.64651967939196
+        },
+        "observed_shares": {
+          "corner_expansion": 0.3691189628635062,
+          "spatial_spread": 0.15235828597523526,
+          "taxonomic_deepening": 0.3986765623754833,
+          "within_core_rearrangement": 0.07984618878577525,
+          "boundary_crossing": 0.9201538112142248
+        },
+        "primary_null_shares_kappa2": {
+          "corner_expansion": {
+            "mean": 0.2739349209260668,
+            "ci95": [
+              0.23300695483399622,
+              0.31618764126035054
+            ],
+            "observed_percentile": 1
+          },
+          "spatial_spread": {
+            "mean": 0.22946689383201496,
+            "ci95": [
+              0.17437678543535517,
+              0.2844397226725805
+            ],
+            "observed_percentile": 0.003996003996003996
+          },
+          "taxonomic_deepening": {
+            "mean": 0.3052703343757415,
+            "ci95": [
+              0.25400041403241347,
+              0.36245436968095374
+            ],
+            "observed_percentile": 0.998001998001998
+          },
+          "within_core_rearrangement": {
+            "mean": 0.19132785086617676,
+            "ci95": [
+              0.125582294372675,
+              0.2584930445187294
+            ],
+            "observed_percentile": 0.001998001998001998
+          },
+          "boundary_crossing": {
+            "mean": 0.8086721491338232,
+            "ci95": [
+              0.7415069554812705,
+              0.874417705627325
+            ],
+            "observed_percentile": 0.999000999000999
+          }
+        },
+        "smoothing_sensitivity": {
+          "kappa1": {
+            "omnibus_p": 0.000999000999000999,
+            "boundary_null_mean": 0.7993952278528977,
+            "boundary_null_ci95": [
+              0.7376799525405177,
+              0.863295563465733
+            ]
+          },
+          "kappa5": {
+            "omnibus_p": 0.000999000999000999,
+            "boundary_null_mean": 0.8272594022161107,
+            "boundary_null_ci95": [
+              0.759383869383804,
+              0.897820929028562
+            ]
+          }
+        },
+        "secondary_sorensen_null_kappa2": {
+          "null_mean": -0.006147078988499254,
+          "null_ci95": [
+            -0.01296235971706429,
+            0.0017827751090189717
+          ],
+          "observed": -0.000491626010254413,
+          "observed_percentile": 0.9150849150849151
+        },
+        "authorized_interpretation": "The observed incidence allocation is not captured by a common log-odds increase applied uniformly to dry-side acoustic detection propensities. Boundary crossing, especially corner expansion and taxonomic deepening, is overrepresented and within-core rearrangement is underrepresented relative to that null.",
+        "boundary": "Rejecting the null does not identify a unique causal mechanism or validate a species-level response trait."
+      }
+    }
+  }
+}

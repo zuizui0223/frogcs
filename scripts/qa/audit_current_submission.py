@@ -17,14 +17,8 @@ SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
     "CURRENT_ANALYSIS_SPECIFICATIONS.json",
+    "CURRENT_RESULTS.json",
     "receipts/README.md",
-    "submission/RC11_STORY_FREEZE_V0_1.json",
-    "summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json",
-    "summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
-    "summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json",
-    "summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
-    "summaries/NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json",
-    "summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
 }
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
@@ -68,8 +62,19 @@ EXPECTED_SPEC_KEYS={
     "RC10_SCOPE_UNFREEZE_V0_1",
     "RC10_STORY_DECISION_TREE_V0_1",
     "RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1",
+    "RC11_STORY_FREEZE_V0_1",
 }
 assert set(spec_bundle["items"])==EXPECTED_SPEC_KEYS
+results_bundle=json.loads((prov/"CURRENT_RESULTS.json").read_text(encoding="utf-8"))
+EXPECTED_RESULT_KEYS={
+    "CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1",
+    "NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1",
+    "NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1",
+    "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1",
+    "NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1",
+    "NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1",
+}
+assert set(results_bundle["items"])==EXPECTED_RESULT_KEYS
 
 prov_files={p.relative_to(prov).as_posix() for p in prov.rglob("*") if p.is_file()}
 assert prov_files==CURRENT_PROVENANCE_FILES,{"unexpected_provenance":sorted(prov_files-CURRENT_PROVENANCE_FILES),"missing":sorted(CURRENT_PROVENANCE_FILES-prov_files)}
@@ -79,7 +84,6 @@ required=[
     ROOT/"scripts/qa/audit_naamp_sciencebase_file_manifest.py",
     ROOT/"scripts/submission/build_jae_anonymous_docx.py",
     ROOT/"scripts/submission/render_submission_metadata.py",
-    prov/"submission/RC11_STORY_FREEZE_V0_1.json",
 ]
 for p in required: assert p.exists(),f"missing current file: {p.relative_to(ROOT)}"
 
@@ -132,10 +136,10 @@ readme=(ROOT/"README.md").read_text(encoding="utf-8")
 fig2=(ROOT/"figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg").read_text(encoding="utf-8")
 fig3=(ROOT/"figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg").read_text(encoding="utf-8")
 
-freeze=json.loads((prov/"submission/RC11_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
-obs=json.loads((prov/"summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
-pers=json.loads((prov/"summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
-uniform=json.loads((prov/"summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
+freeze=spec_bundle["items"]["RC11_STORY_FREEZE_V0_1"]["payload"]
+obs=results_bundle["items"]["NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1"]["payload"]
+pers=results_bundle["items"]["NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1"]["payload"]
+uniform=results_bundle["items"]["NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1"]["payload"]
 
 assert m.startswith("# "+TITLE)
 for surface in (cl,title_page,meta,citation): assert TITLE in surface
