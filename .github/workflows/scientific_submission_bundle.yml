@@ -74,7 +74,7 @@ jobs:
           cp provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$audit/"
           cp JAE_TITLE_PAGE_V0_8.template.md "$audit/"
           cp submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml "$audit/"
-          cp submission/CITATION_V0_5.cff.template "$audit/"
+          cp submission/CITATION.cff.template "$audit/"
 
           cat > "$out/BUNDLE_STATUS.txt" <<'TXT'
           Scientific submission bundle: PASS.
