@@ -32,4 +32,15 @@ RC11 initial-submission QA passes:
 - anonymous cover: 369 / 500 words
 - required structural/anonymization checks: PASS
 
+## Authoritative RC11 files
+
+- `MANUSCRIPT_JAE_V1_3.md`
+- `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
+- `submission/RC11_STORY_FREEZE_V0_1.json`
+- `NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
+- `NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
+- `submission/NOVELTY_AUDIT_V0_11.md`
+- `submission/REVIEWER_ATTACK_MATRIX_V0_11.md`
+- `submission/JAE_PORTAL_CHECKLIST_V0_10.md`
+
 Administrative author/title-page/archive fields remain human-completion items.
