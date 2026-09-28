@@ -23,6 +23,7 @@ Current article surfaces:
 - story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
 - current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md`
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
+- post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
 
 **Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`.
@@ -30,6 +31,16 @@ Current article surfaces:
 `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` remain repository audit history only and are not current submission authority.
 
 RC1–RC7 release branches are intentionally retained as immutable audit/fallback history.
+
+## Question spine
+
+RC8 is organized around three linked questions:
+
+1. **Q1 — expansion:** do recent-rain conditions expand the behaviourally realized community along both spatial and taxonomic axes?
+2. **Q2 — structure:** is the resulting species × site allocation distinguishable from a magnitude-matched uniform activation process? This is the central structural test.
+3. **Q3 — differentiation:** does expansion materially erode local pairwise-Sørensen differentiation?
+
+The general distinction is **community amplification versus community recruitment**: environmental pulses can recruit previously inactive spatial and taxonomic participation beyond what uniform amplification predicts while retaining local differentiation.
 
 ## Main ecological result
 
