@@ -1,36 +1,36 @@
-# Frog active-community response to rainfall — JAE RC9 reproducibility package
+# Frog active-community response to rainfall — JAE RC10 reproducibility package
 
 Current Journal of Animal Ecology candidate:
 
-**Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization**
+**Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts**
 
 ## Current scientific authority
 
 The canonical submission state is aligned across:
 
 - `main`
-- `release/jae-v1-rc9`
+- `release/jae-v1-rc10`
 - `submission/jae-v1`
 
 Current article surfaces:
 
-- manuscript: `MANUSCRIPT_JAE_V1_1.md`
-- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC9_V0_1.md`
-- cover letter: `submission/COVER_LETTER_JAE_V0_12.md`
-- novelty audit: `submission/NOVELTY_AUDIT_V0_9.md`
-- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_9.md`
-- submission handoff: `submission/SUBMISSION_HANDOFF_RC9.md`
-- story freeze: `submission/RC9_STORY_FREEZE_V0_1.json`
-- current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC9_2026_09_28.md`
+- manuscript: `MANUSCRIPT_JAE_V1_2.md`
+- Supporting Information: `SUPPORTING_INFORMATION_JAE_RC10_V0_1.md`
+- cover letter: `submission/COVER_LETTER_JAE_V0_13.md`
+- novelty audit: `submission/NOVELTY_AUDIT_V0_10.md`
+- reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_10.md`
+- submission handoff: `submission/SUBMISSION_HANDOFF_RC10.md`
+- story freeze: `submission/RC10_STORY_FREEZE_V0_1.json`
+- current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC10_2026_09_28.md`
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
-- title-page template: `JAE_TITLE_PAGE_V0_7.template.md`
-- metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml`
-- citation template: `submission/CITATION_V0_4.cff.template`
-- human-finalization guide: `submission/HUMAN_FINALIZATION_RC9.md`
+- title-page template: `JAE_TITLE_PAGE_V0_8.template.md`
+- metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
+- citation template: `submission/CITATION_V0_5.cff.template`
+- human-finalization guide: `submission/HUMAN_FINALIZATION_RC10.md`
 
-**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC9_V0_1.md`.
+**Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC10_V0_1.md`.
 
 `SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`, `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md` remain repository audit history only and are not current submission authority.
 
@@ -38,18 +38,18 @@ RC1–RC8 release branches are intentionally retained as immutable audit/fallbac
 
 ## Question spine
 
-RC9 is organized around three linked questions:
+RC10 is organized around three linked questions:
 
-1. **Q1 — expansion and external consistency:** do recent-rain conditions expand the behaviourally realized community, and is taxonomic deepening within already-active units directionally consistent in independent North American and Australian systems?
-2. **Q2 — structure:** is the resulting species × site allocation distinguishable from a magnitude-matched uniform activation process? This is the central structural test.
-3. **Q3 — differentiation:** does expansion materially erode local pairwise-Sørensen differentiation?
+1. **Q1 — expansion:** do recent-rain conditions expand spatial and taxonomic participation?
+2. **Q2 — allocation:** is the species × site allocation more boundary-biased than uniform activation predicts, including under strong dry-state persistence?
+3. **Q3 — consistency/context:** does active-unit taxonomic depth point in the same recent-rain direction in NAAMP and FrogID, and what happens to pairwise composition?
 
 The general distinction is **community amplification versus community recruitment**: environmental pulses can recruit previously inactive spatial and taxonomic participation beyond what uniform amplification predicts while retaining local differentiation.
 
 
-## Cross-continental active-unit taxonomic deepening
+## Cross-dataset active-unit taxonomic deepening
 
-RC9 adds a frozen external validation of the most transportable response component: **species richness beyond the first species within an acoustic unit that is already active**.
+RC10 retains an estimand-aligned cross-dataset comparison of the most transportable response component: **species richness beyond the first species within an acoustic unit that is already active**.
 
 North America:
 - NAAMP active-stop richness rainfall-contrast β = **+0.0794**;
@@ -70,9 +70,9 @@ Frozen decision: **STRONG PASS**.
 
 Authorized interpretation:
 
-> **Rainfall-associated taxonomic deepening within already-active acoustic units is directionally consistent across independent North American and Australian monitoring systems.**
+> **Active-unit taxonomic deepening has the same recent-rain direction in the aligned NAAMP and FrogID analyses.**
 
-This does **not** authorize worldwide universality, pooled effect sizes, identical mechanisms across continents or replication of the fixed ten-stop NAAMP matrix geometry in FrogID.
+This is cross-dataset consistency, not independent validation. It does **not** authorize worldwide universality, pooled effect sizes, identical mechanisms or replication of the fixed ten-stop NAAMP matrix geometry in FrogID.
 
 Authoritative files:
 - `submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json`
@@ -116,7 +116,7 @@ Observed coefficient shares are:
 
 Thus **92.0%** of the rainfall-associated incidence slope crosses at least one spatial or taxonomic boundary.
 
-RC9 does not treat 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
+RC10 does not treat 92% alone as surprising. A high boundary-crossing fraction is expected whenever overall activation increases. The paper therefore compares the observed decomposition with a frozen magnitude-matched **uniform-activation null**.
 
 The null:
 
@@ -157,7 +157,28 @@ Authoritative null files:
 - `NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
 - `scripts/run_naamp_uniform_activation_null.py`
 
-## Practical non-homogenization
+## Persistence-preserving null: the allocation result survives strong dry-state anchoring
+
+RC10 adds a reviewer-facing stress test that removes hierarchical species-level shrinkage and directly anchors each pair to its observed dry species × stop state before applying the common activation shift.
+
+Primary a = 0.75:
+- boundary null mean: **77.9%**
+- 95% null interval: **73.4–82.8%**
+- observed boundary crossing: **92.0%**
+- expected within-core: **22.1%** vs **8.0% observed**
+- four-component omnibus **P = .000999**
+
+The same omnibus result holds at a = 0.50 and 0.90 (**P = .000999** each). At a = 0.90, the upper 95% boundary-crossing null bound is **82.3%**.
+
+Therefore the observed allocation is not explained by a null model that makes stable species × stop identities too exchangeable.
+
+Authoritative files:
+- `submission/RC10_SCOPE_UNFREEZE_V0_1.json`
+- `NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json`
+- `NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
+- `submission/RC10_STORY_DECISION_TREE_V0_1.json`
+
+## Secondary Sørensen context
 
 Pairwise Sørensen differentiation is tested with a fixed post hoc practical-equivalence margin of **±0.025 rainfall-slope units**.
 
@@ -171,7 +192,7 @@ Exact consecutive-year:
 - 90% CI = **-0.00973 to +0.0140**;
 - practical-equivalence PASS.
 
-This supports **practical stability of the pairwise Sørensen slope within the fixed margin**. It does not establish exact invariance or equivalence of every beta-diversity metric.
+The 90% interval lies within the post hoc ±0.025 bound, but this is secondary context rather than a headline discovery because the bound was selected after the conventional coefficient was known and the observed slope is ordinary under the uniform-activation null.
 
 Active-matrix fill separately remains within its previously frozen ±0.05 practical-equivalence margin, but fill is mathematically linked to alpha/gamma and is not treated as an independent diversity axis.
 
@@ -186,7 +207,7 @@ Under the primary uniform null:
 
 The observed Sørensen slope lies within that null distribution.
 
-Thus RC9 separates two claims:
+Thus RC10 separates two claims:
 
 1. **where additional incidences enter the matrix differs strongly from uniform activation**;
 2. **pairwise Sørensen differentiation remains practically stable within a fixed margin**.
@@ -258,7 +279,7 @@ The explicit reconciliation remains in current Supporting Information. The earli
 
 ## Inferential boundaries
 
-RC9 does **not** claim:
+RC10 does **not** claim:
 
 - rainfall causality;
 - occupancy or abundance change;
@@ -275,19 +296,19 @@ RC9 does **not** claim:
 
 ## Submission QA
 
-The RC9 submission package checks:
+The RC10 submission package checks:
 
-- the v1.1 scientific package;
+- the v1.2 scientific package;
 - uniform-null decision and all three smoothing sensitivities;
 - Sørensen practical-equivalence bounds;
 - title and inferential-boundary consistency;
 - current Figure 1/2 content;
-- anonymous v1.1 main-manuscript DOCX;
-- anonymous RC9 Supporting Information DOCX.
+- anonymous v1.2 main-manuscript DOCX;
+- anonymous RC10 Supporting Information DOCX.
 
 ## Repository history and branch policy
 
-Release branches `release/jae-v1-rc1` through `release/jae-v1-rc9` are retained as versioned audit history.
+Release branches `release/jae-v1-rc1` through `release/jae-v1-rc10` are retained as versioned audit history.
 
 The repository also contains historical `revision/*`, `fix/*`, `chore/*` and `cleanup/*` branches created during the analysis/falsification path. They are **not current scientific authority**. Current authority is defined only by the branches and files listed at the top of this README.
 
@@ -303,14 +324,14 @@ Raw third-party source datasets are not redistributed.
 
 ## Development policy
 
-The RC9 story is frozen around:
+The RC10 story is frozen around:
 
-1. cross-continentally consistent taxonomic deepening within already-active acoustic units across North America and Australia;
-2. multiscale active-community expansion in standardized NAAMP routes;
-3. four-component North American incidence allocation that strongly rejects the frozen uniform-activation null;
-4. excess route-new taxonomic participation relative to that null;
-5. pairwise Sørensen practical stability within the fixed ±0.025 slope margin;
+1. multiscale active-community expansion in standardized NAAMP routes;
+2. four-component incidence allocation that strongly rejects the original uniform-activation null;
+3. the same allocation departure under a persistence-preserving null with 50–90% pair-specific dry-state anchoring;
+4. directional cross-dataset consistency of active-unit taxonomic deepening in NAAMP and FrogID;
+5. pairwise Sørensen retained only as secondary bounded context;
 6. geographic, protocol-window and recorded-detection robustness;
-7. no worldwide-universality, pooled-effect-size, species-level-mechanism or causal-rainfall claim.
+7. no independent-validation, worldwide-universality, pooled-effect-size, species-level-mechanism or causal-rainfall claim.
 
 No additional endpoint search, new continent, replacement null model, Sørensen-margin retuning, residualized activation-geometry rescue or replacement post-opening species trait is authorized for this submission without an explicit versioned unfreeze justified by an editor/reviewer request or documented defect.
