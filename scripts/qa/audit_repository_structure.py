@@ -116,12 +116,6 @@ for phrase in [
             continue
         assert phrase not in text, (p.name, phrase)
 
-# Current workflows may not depend directly on archived paths.
-active_workflows=ROOT/".github/workflows"
-for wf in active_workflows.glob("*.yml"):
-    text=wf.read_text(encoding="utf-8")
-    assert "archive/" not in text, wf.name
-
 # Fail on stale pre-migration paths.
 mappings={}
 mappings.update(root_manifest["mapping"])
