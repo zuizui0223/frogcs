@@ -22,16 +22,10 @@ CURRENT_SUBMISSION_FILES={
 }
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":4,"submission":2}
 CURRENT_WORKFLOWS={
-    "crosscontinental_active_depth.yml","detection_quality_robustness.yml",
-    "geographic_generality_audit.yml","initial_submission_bundle.yml",
-    "jae_initial_submission_compliance.yml","metacommunity_alpha_beta_gamma.yml",
-    "naamp_ecological_pulse.yml","naamp_source_manifest_audit.yml",
-    "persistence_preserving_null.yml","protocol_window_sensitivity.yml",
-    "repository_structure_qa.yml","same_observer_robustness.yml",
-    "scientific_submission_bundle.yml","sorensen_equivalence.yml",
-    "spatial_taxonomic_activation_decomposition.yml","submission_anonymous_docx.yml",
-    "submission_package_qa.yml","uniform_activation_null.yml",
-    "within_active_depth_decomposition.yml",
+    "initial_submission_bundle.yml",
+    "repository_structure_qa.yml",
+    "reproduce_current_results.yml",
+    "submission_pipeline.yml",
 }
 
 root_files={p.name for p in ROOT.iterdir() if p.is_file()}
