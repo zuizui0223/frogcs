@@ -15,5 +15,5 @@ for f in obj.get("files") or []:
       "downloadUri":f.get("downloadUri")
     })
 out={"analysis":"naamp_sciencebase_file_manifest_audit_v0_1","n_files":len(rows),"files":rows}
-Path("NAAMP_SCIENCEBASE_FILE_MANIFEST_AUDIT_V0_1.json").write_text(json.dumps(out,indent=2)+"\n")
+Path("provenance/receipts/NAAMP_SCIENCEBASE_FILE_MANIFEST_AUDIT_V0_1.json").write_text(json.dumps(out,indent=2)+"\n")
 print(json.dumps(out,indent=2))
