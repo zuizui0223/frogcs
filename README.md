@@ -9,8 +9,8 @@ Current Journal of Animal Ecology candidate:
 The canonical submission state is aligned across:
 
 - `main`
-- `release/jae-v1-rc11` (to be cut from the approved RC11 merge)
-- `submission/jae-v1` (to be advanced after RC11 merge)
+- `release/jae-v1-rc11`
+- `submission/jae-v1`
 
 Current article surfaces:
 
@@ -328,7 +328,7 @@ The RC11 submission package checks:
 
 ## Repository history and branch policy
 
-Release branches `release/jae-v1-rc1` through `release/jae-v1-rc10` are retained as versioned audit history; `release/jae-v1-rc11` will be cut from the approved RC11 merge.
+Release branches `release/jae-v1-rc1` through `release/jae-v1-rc11` are retained as versioned audit history.
 
 The repository also contains historical `revision/*`, `fix/*`, `chore/*` and `cleanup/*` branches created during the analysis/falsification path. They are **not current scientific authority**. Current authority is defined only by the branches and files listed at the top of this README.
 
