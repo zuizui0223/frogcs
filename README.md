@@ -21,6 +21,7 @@ Current article surfaces:
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_10.md`
 - submission handoff: `submission/SUBMISSION_HANDOFF_RC10.md`
 - story freeze: `submission/RC10_STORY_FREEZE_V0_1.json`
+- pre-submission review disposition: `submission/RC10_PRE_SUBMISSION_REVIEW_DISPOSITION_V0_1.md`
 - current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC10_2026_09_28.md`
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
