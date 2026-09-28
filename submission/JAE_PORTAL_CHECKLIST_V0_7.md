@@ -67,7 +67,8 @@
 - [x] `submission/HUMAN_FINALIZATION_RC8.md`
 - [x] `submission/CITATION_V0_3.cff.template`
 - [x] canonical submission QA
-- [x] anonymous artifact `frogcs-jae-v1-0-rc8-anonymous-docx` (ID 10948575967)
+- [x] review package artifact 10953068370
+- [x] anonymous artifact `frogcs-jae-v1-0-rc8-anonymous-docx` (ID 10953626928)
 - [x] RC8 scientific-package QA
 - [x] anonymous v1.0 DOCX QA
 - [x] promoted RC8 release/submission authority
@@ -86,9 +87,9 @@
 - [x] no-new-animal-handling statement
 - [x] anonymous cover letter <=500 words (current ~347)
 - [x] automated JAE compliance workflow PASS
-- [x] JAE compliance run 36368104791
-- [x] canonical submission QA run 36368104788
-- [x] latest anonymous v1.0 DOCX run 36368104850 / artifact 10948575967
+- [x] JAE compliance run 36383407794
+- [x] canonical submission QA run 36383407828
+- [x] latest anonymous v1.0 DOCX run 36383407826 / artifact 10953626928
 
 ## Human metadata
 
