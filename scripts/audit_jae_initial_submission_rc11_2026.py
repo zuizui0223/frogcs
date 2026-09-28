@@ -36,7 +36,7 @@ assert wc(cl)<=500
 assert not re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}",m+"\n"+si)
 assert "https://github.com/" not in m+si
 
-assert "3,152 wetter–drier pairs" in m
+assert "3,152 same-observer pairs" in m
 assert "a null allowing species-specific shifts" in m
 assert not re.search(r"\\bRC\\d+\\b",m+"\\n"+si)
 assert "readback" not in (m+"\\n"+si).lower()
