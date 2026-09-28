@@ -28,7 +28,7 @@ Current article surfaces:
 - main figures: `figures_ecology_v1_0/`
 - title-page template: `JAE_TITLE_PAGE_V0_8.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
-- citation template: `submission/CITATION_V0_5.cff.template`
+- citation template: `submission/CITATION.cff.template`
 - human-finalization guide: `submission/HUMAN_FINALIZATION_RC11.md`
 
 **Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`.
