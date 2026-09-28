@@ -51,7 +51,7 @@ Give a complete statement. If there is no conflict, state that explicitly rather
 ### Statement on Inclusion
 This is required during JAE submission.
 
-Because this project is a secondary analysis of existing North American monitoring data, the statement should truthfully describe:
+Because this project is a secondary analysis of existing North American and Australian public acoustic-monitoring data, the statement should truthfully describe:
 - whether there was any new local data collection (there was not in RC9);
 - whether scientists or stakeholders based in the study region contributed intellectually;
 - how regional literature and contextual interpretation were considered;
@@ -76,7 +76,7 @@ Run:
 
 ```bash
 python scripts/render_submission_metadata.py \
-  --metadata /PRIVATE/PATH/rc8_submission_metadata.yml \
+  --metadata /PRIVATE/PATH/rc9_submission_metadata.yml \
   --strict \
   --stage initial \
   --outdir build/submission-metadata-check
@@ -112,7 +112,7 @@ It will:
 1. run the frozen RC9 scientific-package audit;
 2. validate the private metadata in strict initial mode;
 3. render the title page and portal fields;
-4. build the anonymous v1.0 main DOCX and RC9 SI DOCX;
+4. build the anonymous v1.1 main DOCX and RC9 SI DOCX;
 5. assemble the RC9 initial-submission bundle;
 6. write SHA-256 hashes for the bundle.
 
