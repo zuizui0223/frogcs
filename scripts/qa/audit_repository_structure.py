@@ -2,136 +2,157 @@
 from pathlib import Path
 import json
 
-root = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[2]
 
-required = [
-    root / "MANUSCRIPT_JAE_V1_3.md",
-    root / "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
-    root / "JAE_TITLE_PAGE_V0_8.template.md",
-    root / "submission" / "COVER_LETTER_JAE_V0_13.md",
-    root / "submission" / "NOVELTY_AUDIT_V0_11.md",
-    root / "submission" / "REVIEWER_ATTACK_MATRIX_V0_11.md",
-    root / "submission" / "JAE_PORTAL_CHECKLIST_V0_10.md",
-    root / "submission" / "SUBMISSION_HANDOFF_RC11.md",
-    root / "submission" / "HUMAN_FINALIZATION_RC11.md",
-    root / "submission" / "RC11_STORY_FREEZE_V0_1.json",
-    root / "scripts" / "audit_rc11_submission_package.py",
-    root / "scripts" / "audit_jae_initial_submission_rc11_2026.py",
-    root / ".github" / "workflows" / "submission_anonymous_docx.yml",
-    root / ".github" / "workflows" / "initial_submission_bundle.yml",
-    root / ".github" / "workflows" / "jae_initial_submission_compliance.yml",
-    root / ".github" / "workflows" / "submission_package_qa.yml",
-    root / ".github" / "workflows" / "scientific_submission_bundle.yml",
+CURRENT_ROOT_FILES = {
+    "README.md",
+    "MANUSCRIPT_JAE_V1_3.md",
+    "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
+    "JAE_TITLE_PAGE_V0_8.template.md",
+}
+CURRENT_ROOT_DIRS = {
+    ".github", "archive", "figures_ecology_v1_0", "figures_ecology_v1_2",
+    "provenance", "scripts", "submission",
+}
+CURRENT_SUBMISSION_FILES = {
+    "CITATION.cff.template",
+    "COVER_LETTER_JAE_V0_13.md",
+    "HUMAN_FINALIZATION_RC11.md",
+    "JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md",
+    "JAE_PORTAL_CHECKLIST_V0_10.md",
+    "NOVELTY_AUDIT_V0_11.md",
+    "PRIVATE_METADATA_SETUP.md",
+    "REVIEWER_ATTACK_MATRIX_V0_11.md",
+    "SUBMISSION_HANDOFF_RC11.md",
+    "SUBMISSION_METADATA_TEMPLATE_V0_7.yml",
+    "ZENODO_METADATA_TEMPLATE.json",
+}
+SCRIPT_LAYOUT = {"naamp": 46, "frogid": 7, "qa": 11, "submission": 5}
+TITLE = "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+
+root_files={p.name for p in ROOT.iterdir() if p.is_file()}
+root_dirs={p.name for p in ROOT.iterdir() if p.is_dir()}
+assert root_files == CURRENT_ROOT_FILES, {"unexpected_root_files": sorted(root_files-CURRENT_ROOT_FILES), "missing": sorted(CURRENT_ROOT_FILES-root_files)}
+assert root_dirs == CURRENT_ROOT_DIRS, {"unexpected_root_dirs": sorted(root_dirs-CURRENT_ROOT_DIRS), "missing": sorted(CURRENT_ROOT_DIRS-root_dirs)}
+
+submission=ROOT/"submission"
+submission_files={p.name for p in submission.iterdir() if p.is_file()}
+assert submission_files == CURRENT_SUBMISSION_FILES, {
+    "unexpected_submission_files": sorted(submission_files-CURRENT_SUBMISSION_FILES),
+    "missing": sorted(CURRENT_SUBMISSION_FILES-submission_files),
+}
+
+scripts=ROOT/"scripts"
+assert not list(scripts.glob("*.py")), [p.name for p in scripts.glob("*.py")]
+script_dirs={p.name for p in scripts.iterdir() if p.is_dir()}
+assert script_dirs == set(SCRIPT_LAYOUT), script_dirs
+for name, expected in SCRIPT_LAYOUT.items():
+    got=len(list((scripts/name).glob("*.py")))
+    assert got == expected, (name, got, expected)
+
+required=[
+    ROOT/"MANUSCRIPT_JAE_V1_3.md",
+    ROOT/"SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
+    ROOT/"JAE_TITLE_PAGE_V0_8.template.md",
+    submission/"COVER_LETTER_JAE_V0_13.md",
+    submission/"CITATION.cff.template",
+    submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml",
+    ROOT/"provenance/submission/RC11_STORY_FREEZE_V0_1.json",
+    ROOT/"scripts/qa/audit_rc11_submission_package.py",
+    ROOT/"scripts/qa/audit_jae_initial_submission_rc11_2026.py",
+    ROOT/"scripts/submission/build_jae_anonymous_docx.py",
+    ROOT/".github/workflows/submission_anonymous_docx.yml",
+    ROOT/".github/workflows/initial_submission_bundle.yml",
+    ROOT/".github/workflows/jae_initial_submission_compliance.yml",
+    ROOT/".github/workflows/submission_package_qa.yml",
+    ROOT/".github/workflows/scientific_submission_bundle.yml",
 ]
 for p in required:
-    assert p.exists(), f"missing current authority file: {p.relative_to(root)}"
+    assert p.exists(), f"missing current authority file: {p.relative_to(ROOT)}"
 
-assert [p.name for p in root.glob("MANUSCRIPT_JAE_*.md")] == ["MANUSCRIPT_JAE_V1_3.md"]
-assert [p.name for p in root.glob("SUPPORTING_INFORMATION_JAE_*.md")] == ["SUPPORTING_INFORMATION_JAE_RC11_V0_1.md"]
-assert [p.name for p in root.glob("JAE_TITLE_PAGE_*.template.md")] == ["JAE_TITLE_PAGE_V0_8.template.md"]
-
-archive = root / "archive"
+archive=ROOT/"archive"
 for name in [
-    "manuscripts", "supporting_information", "title_pages",
-    "submission_history", "workflows", "scripts", "figures_history"
+    "manuscripts","supporting_information","title_pages","submission_history",
+    "workflows","scripts","figures_history","research_notes",
 ]:
-    assert (archive / name).exists(), f"missing archive section: {name}"
+    assert (archive/name).exists(), f"missing archive section: {name}"
 
-# Current submission surfaces should be singular, not a stack of historical versions.
-submission = root / "submission"
-expected_singular = {
-    "COVER_LETTER_JAE_": "COVER_LETTER_JAE_V0_13.md",
-    "JAE_PORTAL_CHECKLIST_": "JAE_PORTAL_CHECKLIST_V0_10.md",
-    "NOVELTY_AUDIT_": "NOVELTY_AUDIT_V0_11.md",
-    "REVIEWER_ATTACK_MATRIX_": "REVIEWER_ATTACK_MATRIX_V0_11.md",
-    "SUBMISSION_HANDOFF_": "SUBMISSION_HANDOFF_RC11.md",
-    "HUMAN_FINALIZATION_": "HUMAN_FINALIZATION_RC11.md",
-}
-for prefix, expected in expected_singular.items():
-    got = sorted(p.name for p in submission.iterdir() if p.is_file() and p.name.startswith(prefix))
-    assert got == [expected], (prefix, got)
+prov=ROOT/"provenance"
+for name in ["contracts","summaries","receipts","repairs","metadata","submission","docs"]:
+    assert (prov/name).is_dir(), f"missing provenance section: {name}"
+assert not list(ROOT.glob("*.json"))
 
-retired_workflows = {
-    "anonymous_docx.yml", "anonymous_docx_v0_8.yml", "anonymous_docx_v0_9.yml",
-    "anonymous_docx_v1_0.yml", "anonymous_docx_v1_1.yml", "anonymous_docx_v1_2.yml",
-    "initial_submission_bundle_rc6.yml",
-    "final_submission_bundle.yml", "final_submission_bundle_rc6.yml",
-    "rc10_candidate_qa.yml", "rc10_submission_package_qa.yml",
-    "rc6_submission_package_qa.yml", "rc7_submission_package_qa.yml",
-    "rc8_submission_package_qa.yml", "rc9_submission_package_qa.yml",
-    "submission_qa.yml", "revision_manuscript_qa.yml",
-}
-active_workflows = root / ".github" / "workflows"
-active_names = {p.name for p in active_workflows.glob("*.yml")}
-assert not (retired_workflows & active_names), sorted(retired_workflows & active_names)
+root_manifest=json.loads((prov/"ROOT_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
+assert root_manifest["moved_json_files"] == 141
+assert sum(root_manifest["categories"].values()) == 141
+submission_manifest=json.loads((prov/"submission/SUBMISSION_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
+script_manifest=json.loads((prov/"SCRIPT_LAYOUT_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
+assert script_manifest["moved_scripts"] == 69
+assert script_manifest["categories"] == SCRIPT_LAYOUT
 
-# Active workflows must not depend on paths that were archived.
-archived_dependency_names = set()
-for d in [
-    archive / "manuscripts",
-    archive / "supporting_information",
-    archive / "title_pages",
-    archive / "scripts",
-    archive / "submission_history",
+# Current templates must all describe the current paper.
+citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
+meta=(submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
+zenodo=json.loads((submission/"ZENODO_METADATA_TEMPLATE.json").read_text(encoding="utf-8"))
+private=(submission/"PRIVATE_METADATA_SETUP.md").read_text(encoding="utf-8")
+assert TITLE in citation and TITLE in meta and zenodo["title"] == TITLE
+assert "SUBMISSION_METADATA_TEMPLATE_V0_7.yml" in private
+for phrase in [
+    "Recent rainfall predicts week-long richness elevation",
+    "species-selective reassembly",
+    "SUBMISSION_METADATA_TEMPLATE_V0_2.yml",
 ]:
-    archived_dependency_names.update(p.name for p in d.iterdir() if p.is_file())
-
-bad_refs = {}
-for wf in active_workflows.glob("*.yml"):
-    text = wf.read_text(encoding="utf-8")
-    hits = sorted(name for name in archived_dependency_names if name in text)
-    if hits:
-        bad_refs[wf.name] = hits
-assert not bad_refs, bad_refs
-
-
-# Root JSON provenance must stay organized under provenance/.
-assert not list(root.glob("*.json")), [p.name for p in root.glob("*.json")]
-prov = root / "provenance"
-for name in ["contracts", "summaries", "receipts", "repairs", "metadata"]:
-    assert (prov / name).is_dir(), f"missing provenance section: {name}"
-manifest_path = prov / "ROOT_JSON_MIGRATION_MANIFEST.json"
-assert manifest_path.is_file()
-migration = json.loads(manifest_path.read_text(encoding="utf-8"))
-assert migration["moved_json_files"] == 141
-assert sum(migration["categories"].values()) == 141
-
-# No active text surface may refer to a moved JSON by its old root-only path.
-mapping = migration["mapping"]
-stale = {}
-for base in [root / "scripts", root / ".github" / "workflows", root / "submission"]:
-    for p in base.rglob("*"):
-        if not p.is_file() or p.suffix.lower() not in {".py", ".yml", ".yaml", ".md", ".json", ".txt"}:
+    for p in submission.iterdir():
+        if not p.is_file():
             continue
-        text = p.read_text(encoding="utf-8")
-        bad = []
-        for old, target in mapping.items():
-            # A basename is acceptable only when it is part of the mapped provenance path.
-            if old in text and target not in text:
-                bad.append(old)
+        try:
+            text=p.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        assert phrase not in text, (p.name, phrase)
+
+# Current workflows may not depend on anything archived.
+active_workflows=ROOT/".github/workflows"
+archived_names={p.name for p in archive.rglob("*") if p.is_file()}
+bad_archive_refs={}
+for wf in active_workflows.glob("*.yml"):
+    text=wf.read_text(encoding="utf-8")
+    hits=sorted(name for name in archived_names if name in text)
+    if hits:
+        bad_archive_refs[wf.name]=hits
+assert not bad_archive_refs, bad_archive_refs
+
+# Fail on stale pre-migration paths.
+mappings={}
+mappings.update(root_manifest["mapping"])
+mappings.update(submission_manifest["mapping"])
+mappings.update(script_manifest["mapping"])
+stale={}
+scan_roots=[ROOT/"scripts", ROOT/".github/workflows", ROOT/"submission", ROOT/"README.md"]
+for base in scan_roots:
+    paths=[base] if base.is_file() else list(base.rglob("*"))
+    for p in paths:
+        if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml",".md",".json",".txt",".cff"}:
+            continue
+        text=p.read_text(encoding="utf-8")
+        bad=[old for old,target in mappings.items() if old in text and target not in text]
         if bad:
-            stale[str(p.relative_to(root))] = sorted(bad)
+            stale[str(p.relative_to(ROOT))]=sorted(bad)
 assert not stale, stale
 
-# Superseded figure trees should not remain at repository root.
-for name in ["figures", "figures_ecology_v0_5", "figures_ecology_v0_6", "figures_ecology_v0_8"]:
-    assert not (root / name).exists(), name
-for name in ["figures_ecology_v1_0", "figures_ecology_v1_2"]:
-    assert (root / name).is_dir(), name
+# Superseded figure trees may not reappear at root.
+for name in ["figures","figures_ecology_v0_5","figures_ecology_v0_6","figures_ecology_v0_8"]:
+    assert not (ROOT/name).exists(), name
 
-report = {
-    "status": "PASS",
-    "root_manuscripts": len(list(root.glob("MANUSCRIPT_JAE_*.md"))),
-    "root_supporting_information": len(list(root.glob("SUPPORTING_INFORMATION_JAE_*.md"))),
-    "root_title_pages": len(list(root.glob("JAE_TITLE_PAGE_*.template.md"))),
-    "active_workflows": len(list(active_workflows.glob("*.yml"))),
-    "active_scripts": len(list((root / "scripts").glob("*.py"))),
-    "current_submission_files": len([p for p in submission.iterdir() if p.is_file()]),
-    "archived_manuscripts": len(list((archive / "manuscripts").iterdir())),
-    "archived_submission_files": len(list((archive / "submission_history").iterdir())),
-    "archived_workflows": len(list((archive / "workflows").iterdir())),
-    "archived_scripts": len(list((archive / "scripts").iterdir())),
-    "root_json_files": len(list(root.glob("*.json"))),
-    "provenance_json_files": len(list(prov.rglob("*.json"))),
+report={
+    "status":"PASS",
+    "root_files":len(root_files),
+    "root_json_files":len(list(ROOT.glob("*.json"))),
+    "submission_files":len(submission_files),
+    "active_workflows":len(list(active_workflows.glob("*.yml"))),
+    "active_scripts_recursive":len(list(scripts.rglob("*.py"))),
+    "script_layout":SCRIPT_LAYOUT,
+    "provenance_json_files":len(list(prov.rglob("*.json"))),
+    "archived_files":len([p for p in archive.rglob("*") if p.is_file()]),
 }
-print(json.dumps(report, indent=2, sort_keys=True))
+print(json.dumps(report,indent=2,sort_keys=True))
