@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-community-filter-v1
     paths:
-      - "NAAMP_BODY_SIZE_FILTER_VALIDATION_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_BODY_SIZE_FILTER_VALIDATION_CONTRACT_V0_1.json"
       - "scripts/run_naamp_body_size_filter_validation.py"
       - ".github/workflows/body_size_filter_validation.yml"
   workflow_dispatch:
