@@ -2,6 +2,7 @@ name: frogcs repository structure QA
 on:
   push:
     branches:
+      - cleanup/provenance-prune-v3
       - cleanup/deep-structure-v1
       - cleanup/repository-structure-v1
       - main
