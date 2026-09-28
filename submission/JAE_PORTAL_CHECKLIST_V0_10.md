@@ -45,9 +45,9 @@
 
 ## JAE format
 
-- [x] combined manuscript + title-page proxy = **8,217 < 8,500**
+- [x] combined manuscript + title-page proxy = **7,403 < 8,500**
 - [x] abstract = **317 < 350**
-- [x] cover = **369 < 500**
+- [x] cover = **368 < 500**
 - [x] 8 alphabetical keywords
 - [x] references alphabetical
 - [x] main/SI anonymous
