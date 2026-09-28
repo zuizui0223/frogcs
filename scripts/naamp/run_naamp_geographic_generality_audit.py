@@ -93,6 +93,6 @@ def main():
         "strong_pass":bool(all(result["responses"][r]["loso_all_ci_positive"] for r in RESPONSES)),
         "no_retuning":True
     }
-    Path("NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_RECEIPT_V0_1.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    Path("provenance/receipts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_RECEIPT_V0_1.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,indent=2,sort_keys=True))
 if __name__=="__main__": main()
