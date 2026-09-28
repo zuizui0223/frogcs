@@ -1,0 +1,30 @@
+name: RC10 final candidate QA
+
+on:
+  push:
+    branches:
+      - revision/rc10-persistence-null-title-v1
+    paths:
+      - "MANUSCRIPT_JAE_V1_2.md"
+      - "SUPPORTING_INFORMATION_JAE_RC10_V0_1.md"
+      - "submission/COVER_LETTER_JAE_V0_13.md"
+      - "submission/NOVELTY_AUDIT_V0_10.md"
+      - "submission/REVIEWER_ATTACK_MATRIX_V0_10.md"
+      - "submission/RC10_SCOPE_UNFREEZE_V0_1.json"
+      - "submission/RC10_STORY_DECISION_TREE_V0_1.json"
+      - "NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json"
+      - "NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json"
+      - "figures_ecology_v1_2/**"
+      - "scripts/audit_rc10_candidate.py"
+      - ".github/workflows/rc10_candidate_qa.yml"
+  workflow_dispatch:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/audit_rc10_candidate.py
