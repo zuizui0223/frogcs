@@ -70,7 +70,9 @@
 - [x] RC9 canonical compliance workflow PASS
 - [x] RC9 anonymous v1.1 DOCX PASS
 - [x] RC9 canonical submission QA PASS
-- [x] review package artifact generated
+- [x] review package artifact generated — ID 10956272327
+- [x] anonymous v1.1 DOCX artifact generated — ID 10955682513
+- [x] canonical submission QA run 36390487764 success
 
 ## Human metadata
 
