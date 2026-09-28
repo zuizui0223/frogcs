@@ -248,7 +248,7 @@ def main():
 
     result = {
         "analysis": "naamp_within_active_depth_decomposition_v0_1",
-        "contract": "provenance/contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
+        "contract": "provenance/current.json#contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
         "status": "post-opening depth decomposition frozen before endpoint readback",
         "descriptive": descriptives(pairs),
         "primary_models": primary,
