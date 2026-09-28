@@ -47,7 +47,7 @@ for x in [
   "Monte Carlo P = 0.001",
   "Within-core rearrangement was 8.0% observed versus 19.1% expected",
   "90% CI -0.0107 to 0.00968",
-  "rejection of the uniform-activation null does not identify a unique species-level mechanism"
+  "null rejection does not identify a unique species-level mechanism"
 ]:
     if x not in m:
         raise SystemExit(f"RC8 manuscript missing: {x}")
