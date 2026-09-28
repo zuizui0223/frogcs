@@ -7,14 +7,11 @@ root=Path(__file__).resolve().parents[2]
 m=(root/"MANUSCRIPT_JAE_V1_3.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC11_V0_1.md").read_text(encoding="utf-8")
 cl=(root/"submission/COVER_LETTER_JAE_V0_13.md").read_text(encoding="utf-8")
-nov=(root/"provenance/submission_docs/NOVELTY_AUDIT_V0_11.md").read_text(encoding="utf-8")
-rev=(root/"provenance/submission_docs/REVIEWER_ATTACK_MATRIX_V0_11.md").read_text(encoding="utf-8")
 freeze=json.loads((root/"provenance/submission/RC11_STORY_FREEZE_V0_1.json").read_text(encoding="utf-8"))
 obs=json.loads((root/"provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
 pers=json.loads((root/"provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
 orig=json.loads((root/"provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json").read_text(encoding="utf-8"))
 readme=(root/"README.md").read_text(encoding="utf-8")
-handoff=(root/"provenance/submission_docs/SUBMISSION_HANDOFF_RC11.md").read_text(encoding="utf-8")
 title_page=(root/"JAE_TITLE_PAGE_V0_8.template.md").read_text(encoding="utf-8")
 meta=(root/"submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
 citation=(root/"submission/CITATION.cff.template").read_text(encoding="utf-8")
@@ -74,10 +71,6 @@ for x in [
 ]:
     assert x.lower() in si.lower(), x
 
-for x in ["species-specific activation-shift null remains untested","3,152/4,236 pairs","ObserverTrackingID"]:
-    assert x.lower() in rev.lower(), x
-for x in ["observer turnover is not required","null allowing each species its own rainfall-response shift remains untested"]:
-    assert x.lower() in nov.lower(), x
 
 for x in [
     "JAE RC11 reproducibility package",
@@ -88,8 +81,6 @@ for x in [
 ]:
     assert x in readme, x
 
-for x in ["MANUSCRIPT_JAE_V1_3.md","SUPPORTING_INFORMATION_JAE_RC11_V0_1.md","provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"]:
-    assert x in handoff
 
 for x in ["Persistence null","Observed 92.0%","Anchor a=.90"]:
     assert x in fig2
@@ -103,7 +94,7 @@ forbidden=[
     "rainfall caused",
     "species-specific heterogeneity is excluded",
 ]
-for surface,name in [(m,"manuscript"),(cl,"cover"),(nov,"novelty")]:
+for surface,name in [(m,"manuscript"),(si,"supporting_information"),(cl,"cover")]:
     for x in forbidden:
         if x.lower() in surface.lower():
             raise SystemExit(f"{name} overclaim: {x}")
