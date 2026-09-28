@@ -62,7 +62,7 @@ for x in [
         raise SystemExit(f"RC8 SI missing: {x}")
 
 for x in [
-  "predicted a mean boundary-crossing share of 80.9%",
+  "It predicted 80.9% boundary crossing",
   "four-component allocation rejected uniform activation",
   "without practical homogenization"
 ]:
