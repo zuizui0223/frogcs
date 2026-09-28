@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-pulse-timescale-v1
     paths:
-      - "NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_RAINFALL_PULSE_TIMESCALE_CONTRACT_V0_1.json"
       - "scripts/run_naamp_rainfall_pulse_timescale.py"
       - ".github/workflows/rainfall_pulse_timescale.yml"
   workflow_dispatch:
