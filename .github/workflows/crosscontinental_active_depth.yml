@@ -36,7 +36,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          p=Path("CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
+          p=Path("provenance/receipts/CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
           x=json.loads(p.read_text(encoding="utf-8"))
           assert x["analysis"]=="crosscontinental_active_unit_taxonomic_depth_v0_1"
           assert x["frozen_sample"]["recordings"]==40754
@@ -49,5 +49,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: crossdataset-active-depth
-          path: CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json
+          path: provenance/receipts/CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json
           if-no-files-found: error
