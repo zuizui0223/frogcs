@@ -160,7 +160,7 @@ jobs:
           cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$audit/"
           cp provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json "$audit/"
           cp provenance/CURRENT_RESULTS.json "$audit/"
-          cp submission/CITATION.cff.template "$audit/"
+          cp build/submission-metadata/CITATION.cff "$audit/"
           python - <<'PY'
           import hashlib,json,re
           from pathlib import Path
