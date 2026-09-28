@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-community-filter-v1
     paths:
-      - "NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_CONTRACT_V0_1.json"
       - "scripts/run_naamp_species_response_within_family.py"
       - ".github/workflows/species_response_within_family.yml"
   workflow_dispatch:
@@ -34,5 +34,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-species-response-within-family-v0-1
-          path: NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_SPECIES_RESPONSE_WITHIN_FAMILY_RECEIPT_V0_1.json
           if-no-files-found: error
