@@ -45,6 +45,8 @@ These cannot be completed safely from repository evidence alone:
 - [ ] all-author and relevant-institution approval
 - [ ] confirmation all entitled authors are included
 - [ ] confirmation the manuscript is not under consideration elsewhere
+- [ ] originality / acknowledgements confirmation
+- [ ] legal / conservation / welfare confirmation
 - [ ] repository/archive license
 - [ ] final persistent archive DOI
 
