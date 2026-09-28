@@ -95,7 +95,7 @@ Authoritative files:
 - `provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json`
 - `provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json`
 - `provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
-- `scripts/run_crosscontinental_active_depth.py`
+- `scripts/frogid/run_crosscontinental_active_depth.py`
 
 ## Main ecological result
 
@@ -171,7 +171,7 @@ Authoritative null files:
 - `provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json`
 - `provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_3.json`
 - `provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
-- `scripts/run_naamp_uniform_activation_null.py`
+- `scripts/naamp/run_naamp_uniform_activation_null.py`
 
 ## Persistence-preserving null: the allocation result survives strong dry-state anchoring
 
@@ -239,7 +239,7 @@ This shows that between-observer turnover is not required for the headline patte
 Authoritative files:
 - `provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
 - `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
-- `scripts/run_naamp_same_observer_robustness.py`
+- `scripts/naamp/run_naamp_same_observer_robustness.py`
 
 ## Explicit remaining null boundary
 

@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 import re
 
-root=Path(__file__).resolve().parents[1]
+root=Path(__file__).resolve().parents[2]
 m=(root/"MANUSCRIPT_JAE_V1_3.md").read_text(encoding="utf-8")
 si=(root/"SUPPORTING_INFORMATION_JAE_RC11_V0_1.md").read_text(encoding="utf-8")
 cl=(root/"submission/COVER_LETTER_JAE_V0_13.md").read_text(encoding="utf-8")

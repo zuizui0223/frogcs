@@ -28,7 +28,7 @@ The archive DOI can be left blank in the secret because the final workflow overw
 
 Install PyYAML and run:
 
-`python scripts/render_submission_metadata.py --metadata <your-private-file.yml> --strict --outdir build/submission-metadata`
+`python scripts/submission/render_submission_metadata.py --metadata <your-private-file.yml> --strict --outdir build/submission-metadata`
 
 Strict mode refuses unresolved placeholders, false approval declarations, invalid author/affiliation references, an invalid DOI, missing license, or missing required JAE submission statements.
 

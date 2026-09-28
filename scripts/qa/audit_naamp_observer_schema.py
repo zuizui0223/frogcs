@@ -7,7 +7,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1] / "naamp"
 
 def loadmod(name, path):
     spec = importlib.util.spec_from_file_location(name, path)

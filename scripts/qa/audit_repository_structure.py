@@ -2,7 +2,7 @@
 from pathlib import Path
 import json
 
-root = Path(__file__).resolve().parents[1]
+root = Path(__file__).resolve().parents[2]
 
 required = [
     root / "MANUSCRIPT_JAE_V1_3.md",

@@ -11,7 +11,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Mm, Pt
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT
 parser = argparse.ArgumentParser()
 parser.add_argument("--source", default=str(BASE / "MANUSCRIPT_JAE_V1_2.md"))
