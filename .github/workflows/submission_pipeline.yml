@@ -8,15 +8,11 @@ on:
       - submission/jae-v1
     paths:
       - "README.md"
+      - "paper/**"
       - "provenance/**"
       - "scripts/**"
       - "submission/**"
-      - "figures_ecology_v1_0/**"
-      - "figures_ecology_v1_2/**"
       - ".github/workflows/**"
-      - "MANUSCRIPT_JAE_V1_3.md"
-      - "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md"
-      - "JAE_TITLE_PAGE_V0_8.template.md"
   workflow_dispatch:
     inputs:
       build_private_bundle:
@@ -45,8 +41,8 @@ jobs:
         run: python scripts/qa/audit_current_submission.py
       - name: Build anonymous manuscript and SI
         run: |
-          python scripts/submission/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/Manuscript.docx
-          python scripts/submission/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/Supporting_Information.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information.md --output build/Supporting_Information.docx
       - name: Verify anonymous DOCX
         run: |
           python - <<'PY'
@@ -80,14 +76,14 @@ jobs:
           sub="$out/submission_files"
           audit="$out/audit"
           mkdir -p "$sub" "$audit"
-          cp MANUSCRIPT_JAE_V1_3.md "$sub/Manuscript.md"
+          cp paper/manuscript.md "$sub/Manuscript.md"
           cp build/Manuscript.docx "$sub/Manuscript.docx"
-          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$sub/Supporting_Information.md"
+          cp paper/supporting_information.md "$sub/Supporting_Information.md"
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
-          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$sub/Figure1.svg"
-          cp figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg "$sub/Figure2.svg"
-          cp figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg "$sub/Figure3.svg"
-          cp submission/COVER_LETTER_JAE_V0_13.md "$sub/Cover_Letter.md"
+          cp paper/figures/Figure1.svg "$sub/Figure1.svg"
+          cp paper/figures/Figure2.svg "$sub/Figure2.svg"
+          cp paper/figures/Figure3.svg "$sub/Figure3.svg"
+          cp submission/cover_letter.md "$sub/Cover_Letter.md"
           cp provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json "$audit/"
           cp provenance/CURRENT_RESULTS.json "$audit/"
           python - <<'PY'
@@ -141,8 +137,8 @@ jobs:
           PY
       - name: Build anonymous DOCX files
         run: |
-          python scripts/submission/build_jae_anonymous_docx.py --source MANUSCRIPT_JAE_V1_3.md --output build/Manuscript.docx
-          python scripts/submission/build_jae_anonymous_docx.py --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md --output build/Supporting_Information.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information.md --output build/Supporting_Information.docx
       - name: Assemble private-metadata submission bundle
         run: |
           set -eu
@@ -150,15 +146,15 @@ jobs:
           sub="$out/submission_files"
           audit="$out/audit"
           mkdir -p "$sub" "$audit"
-          cp MANUSCRIPT_JAE_V1_3.md "$sub/Manuscript.md"
+          cp paper/manuscript.md "$sub/Manuscript.md"
           cp build/Manuscript.docx "$sub/Manuscript.docx"
-          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$sub/Supporting_Information.md"
+          cp paper/supporting_information.md "$sub/Supporting_Information.md"
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
           cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$sub/Title_Page.md"
-          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$sub/Figure1.svg"
-          cp figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg "$sub/Figure2.svg"
-          cp figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg "$sub/Figure3.svg"
-          cp submission/COVER_LETTER_JAE_V0_13.md "$sub/Cover_Letter.md"
+          cp paper/figures/Figure1.svg "$sub/Figure1.svg"
+          cp paper/figures/Figure2.svg "$sub/Figure2.svg"
+          cp paper/figures/Figure3.svg "$sub/Figure3.svg"
+          cp submission/cover_letter.md "$sub/Cover_Letter.md"
           cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$audit/"
           cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
           cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$audit/"
