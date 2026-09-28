@@ -7,12 +7,13 @@ ROOT=Path(__file__).resolve().parents[2]
 TITLE="Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
 
 # ---------- repository structure ----------
-CURRENT_ROOT_FILES={
-    "README.md","MANUSCRIPT_JAE_V1_3.md",
-    "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md","JAE_TITLE_PAGE_V0_8.template.md",
+CURRENT_ROOT_FILES={"README.md"}
+CURRENT_ROOT_DIRS={".github","paper","provenance","scripts","submission"}
+CURRENT_PAPER_FILES={
+    "manuscript.md","supporting_information.md","title_page.template.md",
+    "figures/Figure1.svg","figures/Figure2.svg","figures/Figure3.svg",
 }
-CURRENT_ROOT_DIRS={".github","figures_ecology_v1_0","figures_ecology_v1_2","provenance","scripts","submission"}
-CURRENT_SUBMISSION_FILES={"CITATION.cff.template","COVER_LETTER_JAE_V0_13.md","SUBMISSION_METADATA_TEMPLATE_V0_7.yml"}
+CURRENT_SUBMISSION_FILES={"CITATION.cff.template","cover_letter.md","metadata.template.yml"}
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
@@ -26,6 +27,14 @@ root_dirs={p.name for p in ROOT.iterdir() if p.is_dir() and p.name!=".git"}
 assert root_files==CURRENT_ROOT_FILES,{"unexpected_root_files":sorted(root_files-CURRENT_ROOT_FILES),"missing":sorted(CURRENT_ROOT_FILES-root_files)}
 assert root_dirs==CURRENT_ROOT_DIRS,{"unexpected_root_dirs":sorted(root_dirs-CURRENT_ROOT_DIRS),"missing":sorted(CURRENT_ROOT_DIRS-root_dirs)}
 assert not list(ROOT.glob("*.json"))
+
+paper=ROOT/"paper"
+paper_files={p.relative_to(paper).as_posix() for p in paper.rglob("*") if p.is_file()}
+assert paper_files==CURRENT_PAPER_FILES,{
+    "unexpected_paper_files":sorted(paper_files-CURRENT_PAPER_FILES),
+    "missing_paper_files":sorted(CURRENT_PAPER_FILES-paper_files),
+}
+
 
 submission=ROOT/"submission"
 submission_files={p.name for p in submission.iterdir() if p.is_file()}
@@ -92,8 +101,9 @@ legacy={}
 legacy_patterns=[
     re.compile(r'(?<![A-Za-z0-9_./-])scripts/(?:run_|audit_|build_|render_|finalize_)[A-Za-z0-9_.-]+\.py'),
     re.compile(r'(?<![A-Za-z0-9_./-])submission/RC[0-9][A-Za-z0-9_.-]*\.json'),
+    re.compile(r'(?<![A-Za-z0-9_./-])(?:MANUSCRIPT_JAE_V1_3\\.md|SUPPORTING_INFORMATION_JAE_RC11_V0_1\\.md|JAE_TITLE_PAGE_V0_8\\.template\\.md|figures_ecology_v1_(?:0|2)/[A-Za-z0-9_./-]*|submission/COVER_LETTER_JAE_V0_13\\.md|submission/SUBMISSION_METADATA_TEMPLATE_V0_7\\.yml)'),
 ]
-for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
+for base in [paper,scripts,active_workflows,submission,ROOT/"README.md"]:
     paths=[base] if base.is_file() else list(base.rglob("*"))
     for p in paths:
         if p.resolve()==Path(__file__).resolve():
@@ -109,7 +119,7 @@ for wf in active_workflows.glob("*.yml"):
     text=wf.read_text(encoding="utf-8")
     refs=set(re.findall(r'(scripts/[A-Za-z0-9_./-]+\.py)',text))
     refs.update(re.findall(r'(provenance/[A-Za-z0-9_./-]+\.json)',text))
-    refs.update(re.findall(r'(figures_ecology_v[0-9_]+/[A-Za-z0-9_./-]+\.svg)',text))
+    refs.update(re.findall(r'(paper/[A-Za-z0-9_./-]+\.(?:md|svg))',text))
     bad=sorted(ref for ref in refs if "/receipts/" not in ref and not (ROOT/ref).exists())
     if bad: missing_refs[wf.name]=bad
 assert not missing_refs,missing_refs
@@ -126,15 +136,15 @@ for base in [scripts,active_workflows]:
 assert not bare,bare
 
 # ---------- current scientific package ----------
-m=(ROOT/"MANUSCRIPT_JAE_V1_3.md").read_text(encoding="utf-8")
-si=(ROOT/"SUPPORTING_INFORMATION_JAE_RC11_V0_1.md").read_text(encoding="utf-8")
-cl=(submission/"COVER_LETTER_JAE_V0_13.md").read_text(encoding="utf-8")
-title_page=(ROOT/"JAE_TITLE_PAGE_V0_8.template.md").read_text(encoding="utf-8")
-meta=(submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
+m=(ROOT/"paper/manuscript.md").read_text(encoding="utf-8")
+si=(ROOT/"paper/supporting_information.md").read_text(encoding="utf-8")
+cl=(submission/"cover_letter.md").read_text(encoding="utf-8")
+title_page=(ROOT/"paper/title_page.template.md").read_text(encoding="utf-8")
+meta=(submission/"metadata.template.yml").read_text(encoding="utf-8")
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
 readme=(ROOT/"README.md").read_text(encoding="utf-8")
-fig2=(ROOT/"figures_ecology_v1_2/FIGURE_2_ALLOCATION_NULLS_V0_1.svg").read_text(encoding="utf-8")
-fig3=(ROOT/"figures_ecology_v1_2/FIGURE_3_CROSS_DATASET_DEPTH_V0_1.svg").read_text(encoding="utf-8")
+fig2=(ROOT/"paper/figures/Figure2.svg").read_text(encoding="utf-8")
+fig3=(ROOT/"paper/figures/Figure3.svg").read_text(encoding="utf-8")
 
 freeze=spec_bundle["items"]["RC11_STORY_FREEZE_V0_1"]["payload"]
 obs=results_bundle["items"]["NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1"]["payload"]

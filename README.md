@@ -14,10 +14,10 @@ The synchronized submission state is:
 
 Journal-facing source files:
 
-- `MANUSCRIPT_JAE_V1_3.md`
-- `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
-- `JAE_TITLE_PAGE_V0_8.template.md`
-- `submission/COVER_LETTER_JAE_V0_13.md`
+- `paper/manuscript.md`
+- `paper/supporting_information.md`
+- `paper/title_page.template.md`
+- `submission/cover_letter.md`
 
 ## Result in one paragraph
 
@@ -55,7 +55,7 @@ Historical release branches preserve exact earlier layouts and are not current a
 
 ## Private submission metadata
 
-Human-identifying submission fields are kept out of the public repository. Copy `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`, fill it locally, and store the completed YAML in the GitHub Actions secret `JAE_SUBMISSION_METADATA_YAML`.
+Human-identifying submission fields are kept out of the public repository. Copy `submission/metadata.template.yml`, fill it locally, and store the completed YAML in the GitHub Actions secret `JAE_SUBMISSION_METADATA_YAML`.
 
 Before building the private bundle, confirm author order, affiliations, corresponding-author contact details, CRediT roles, funding/acknowledgements, Conflict of Interest, Statement on Inclusion, approvals, repository license, and (when available) archive DOI.
 
