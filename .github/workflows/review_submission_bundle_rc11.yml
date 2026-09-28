@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - revision/rc10-reviewer-defense-v1
+      - main
+      - release/jae-v1-rc11
+      - submission/jae-v1
     paths:
       - ".github/workflows/review_submission_bundle_rc11.yml"
       - "submission/HUMAN_FINALIZATION_RC11.md"
