@@ -1,11 +1,6 @@
 name: reproduce current results
 
 on:
-  push:
-    branches:
-      - cleanup/workflow-consolidation-v1
-    paths:
-      - ".github/workflows/reproduce_current_results.yml"
   workflow_dispatch:
     inputs:
       analysis:
@@ -34,7 +29,7 @@ permissions:
 
 jobs:
   source-manifest:
-    if: ${{ github.event_name == 'push' || inputs.analysis == 'all' || inputs.analysis == 'source_manifest' }}
+    if: ${{ inputs.analysis == 'all' || inputs.analysis == 'source_manifest' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
