@@ -31,14 +31,13 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `scripts/submission/` — DOCX, metadata and submission-build utilities
 - `provenance/contracts/` — frozen analysis definitions
 - `provenance/summaries/` — compact durable results
-- `provenance/receipts/` — detailed machine-readable outputs
+- `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
 - `provenance/repairs/` — implementation/estimability repairs
-- `provenance/metadata/` — manifests, identities and claim metadata
 - `provenance/submission/` — story-freeze and scope decision records
 - `provenance/submission_docs/` — internal reviewer/submission audits
 - `provenance/docs/` — human-readable project provenance
 - `submission/` — current practical submission templates/checklists only
-- `archive/` — superseded manuscripts, figures, workflows, scripts and notes
+- `archive/` — history pointer; full historical payload lives on the history/release branches
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
 

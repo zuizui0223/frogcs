@@ -1,11 +1,13 @@
-# Provenance JSON
+# Current provenance
 
-Root-level JSON files are intentionally prohibited. Scientific provenance is grouped here by role.
+This directory contains only provenance needed by the current paper and its active reproducibility/submission code.
 
-- contracts/: frozen analysis definitions and decision rules.
-- summaries/: durable compact outputs used by the manuscript, SI, README or submission audits.
-- receipts/: detailed machine-readable run outputs and audit receipts.
-- repairs/: versioned implementation or estimability repairs.
-- metadata/: claim boundaries, source identities, manifests, ledgers and other provenance metadata.
+- `contracts/` — frozen definitions for active analyses.
+- `summaries/` — durable results used by the manuscript, SI, README, or submission QA.
+- `repairs/` — the current uniform-null implementation repair record.
+- `submission/` — current story-freeze / scope decision records still used by active workflows.
+- `submission_docs/` — current internal submission and reviewer audits.
+- `docs/` — concise human-readable overview of the current paper.
+- `receipts/` — runtime destination for detailed workflow receipts; historical receipts are not duplicated on the current branch.
 
-Active scripts and workflows reference these paths directly. Historical release branches preserve the old root-level layout.
+Superseded contracts, summaries, receipts, trait/mechanism explorations, and migration manifests are preserved in `history/pre-deep-cleanup-2026-09-28`, historical release branches, and Git history.
