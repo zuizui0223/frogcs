@@ -1,0 +1,161 @@
+# Canonical RC11/v1.3 initial-submission bundle.
+name: frogcs initial JAE submission bundle (RC11)
+
+on:
+  push:
+    branches:
+      - revision/rc10-reviewer-defense-v1
+    paths:
+      - ".github/workflows/initial_submission_bundle_rc11.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+
+      - name: Audit RC11 scientific package
+        run: |
+          python scripts/audit_rc11_submission_package.py
+          python scripts/audit_jae_initial_submission_rc11_2026.py
+
+      - name: Materialize private submission metadata
+        env:
+          JAE_SUBMISSION_METADATA_YAML: ${{ secrets.JAE_SUBMISSION_METADATA_YAML }}
+        run: |
+          test -n "$JAE_SUBMISSION_METADATA_YAML" || {
+            echo "Missing repository secret JAE_SUBMISSION_METADATA_YAML" >&2
+            exit 2
+          }
+          printf '%s' "$JAE_SUBMISSION_METADATA_YAML" > /tmp/metadata-initial.yml
+
+      - name: Validate and render initial metadata
+        run: |
+          python scripts/render_submission_metadata.py             --metadata /tmp/metadata-initial.yml             --strict --stage initial             --outdir build/submission-metadata
+
+      - name: Guard RC11 title
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          expected="Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+          x=Path("build/submission-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          if expected not in x:
+              raise SystemExit("JAE_SUBMISSION_METADATA_YAML contains a superseded title")
+          print("RC11 metadata title PASS")
+          PY
+
+      - name: Build anonymous RC11 DOCX files
+        run: |
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_3.md             --output build/FROG_JAE_ANON_MAIN_V1_3.docx
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC11_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx
+
+      - name: Verify RC11 DOCX
+        run: |
+          python - <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          import re
+          p=Path("build/FROG_JAE_ANON_MAIN_V1_3.docx")
+          s=Path("build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx")
+          with ZipFile(p) as z:
+              document=z.read("word/document.xml").decode("utf-8")
+              footer=z.read("word/footer1.xml").decode("utf-8")
+              core=z.read("docProps/core.xml").decode("utf-8")
+          with ZipFile(s) as z:
+              sidoc=z.read("word/document.xml").decode("utf-8")
+              sicore=z.read("docProps/core.xml").decode("utf-8")
+          expected="Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+          assert "<w:lnNumType" in document
+          assert "PAGE" in footer
+          assert expected in core
+          assert "3,152 wetter" in document
+          assert "each species its own rainfall-response shift remains untested" in document
+          assert "Same-observer sensitivity".lower() in sidoc.lower()
+          assert not re.search(r"<dc:creator>[^<]+</dc:creator>",core)
+          assert not re.search(r"<dc:creator>[^<]+</dc:creator>",sicore)
+          print("RC11 DOCX structure PASS")
+          PY
+
+      - name: Assemble RC11 initial bundle
+        run: |
+          set -eu
+          out=build/initial-submission-rc11
+          mkdir -p "$out"
+          cp MANUSCRIPT_JAE_V1_3.md "$out/"
+          cp build/FROG_JAE_ANON_MAIN_V1_3.docx "$out/"
+          cp SUPPORTING_INFORMATION_JAE_RC11_V0_1.md "$out/"
+          cp build/FROG_JAE_SUPPORTING_INFORMATION_RC11.docx "$out/"
+          cp build/submission-metadata/JAE_TITLE_PAGE_FINAL.md "$out/"
+          cp build/submission-metadata/JAE_PORTAL_FIELDS.json "$out/"
+          cp build/submission-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
+          cp figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg "$out/"
+          cp figures_ecology_v1_2/*.svg "$out/"
+          cp submission/COVER_LETTER_JAE_V0_13.md "$out/"
+          cp submission/NOVELTY_AUDIT_V0_11.md "$out/"
+          cp submission/REVIEWER_ATTACK_MATRIX_V0_11.md "$out/"
+          cp submission/JAE_PORTAL_CHECKLIST_V0_10.md "$out/"
+          cp submission/SUBMISSION_HANDOFF_RC11.md "$out/"
+          cp submission/RC11_STORY_FREEZE_V0_1.json "$out/"
+          cp submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md "$out/"
+          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json "$out/"
+          cp NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json "$out/"
+          cp CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json "$out/"
+          cp CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json "$out/"
+          cp NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json "$out/"
+          cp NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json "$out/"
+          cp submission/RC10_SCOPE_UNFREEZE_V0_1.json "$out/"
+          cp submission/RC10_STORY_DECISION_TREE_V0_1.json "$out/"
+          cp submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json "$out/"
+          cp submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json "$out/"
+          cp submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml "$out/"
+          cp submission/CITATION_V0_5.cff.template "$out/"
+
+          cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
+          Canonical initial JAE submission candidate: RC11 / ecological v1.3.
+          Scientific authority: MANUSCRIPT_JAE_V1_3.md + submission/RC11_STORY_FREEZE_V0_1.json.
+          Canonical Supporting Information: SUPPORTING_INFORMATION_JAE_RC11_V0_1.md.
+          RC11 is a reviewer-defense release over RC10: same-observer robustness plus explicit species-specific-null limitation.
+          The species-specific activation-shift null is reserved and was not run pre-submission.
+          RC1-RC10 surfaces remain immutable audit/fallback history.
+          Archive DOI is intentionally deferred during double-anonymized review.
+          TXT
+
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          out=Path("build/initial-submission-rc11")
+          rows={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          required={
+              "MANUSCRIPT_JAE_V1_3.md",
+              "FROG_JAE_ANON_MAIN_V1_3.docx",
+              "SUPPORTING_INFORMATION_JAE_RC11_V0_1.md",
+              "FROG_JAE_SUPPORTING_INFORMATION_RC11.docx",
+              "RC11_STORY_FREEZE_V0_1.json",
+              "NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
+              "JAE_TITLE_PAGE_FINAL.md",
+              "JAE_PORTAL_FIELDS.json",
+          }
+          missing=required-set(rows)
+          assert not missing,missing
+          print({"bundle_files_before_manifest":len(rows),"status":"PASS"})
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-rc11-v1-3-initial-submission-bundle
+          path: build/initial-submission-rc11/
+          if-no-files-found: error
