@@ -64,11 +64,13 @@
 - [x] 8 alphabetical keywords
 - [x] references alphabetical
 - [x] FrogID added to Data Availability
+- [x] FrogID added to archive metadata source list
+- [x] archive DOI finalizer retains FrogID provenance
 - [x] main/SI remain anonymous
-- [ ] RC9 canonical compliance workflow PASS
-- [ ] RC9 anonymous v1.1 DOCX PASS
-- [ ] RC9 canonical submission QA PASS
-- [ ] review package artifact recorded
+- [x] RC9 canonical compliance workflow PASS
+- [x] RC9 anonymous v1.1 DOCX PASS
+- [x] RC9 canonical submission QA PASS
+- [x] review package artifact generated
 
 ## Human metadata
 
