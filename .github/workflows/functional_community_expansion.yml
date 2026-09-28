@@ -5,7 +5,7 @@ on:
     branches:
       - revision/functional-community-expansion-v1
     paths:
-      - "NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_FUNCTIONAL_COMMUNITY_EXPANSION_CONTRACT_V0_1.json"
       - "scripts/run_naamp_functional_community_expansion.py"
       - ".github/workflows/functional_community_expansion.yml"
   workflow_dispatch:
