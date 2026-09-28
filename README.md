@@ -182,7 +182,7 @@ Under the primary uniform null:
 
 The observed Sørensen slope lies within that null distribution.
 
-Thus RC8 separates two claims:
+Thus RC9 separates two claims:
 
 1. **where additional incidences enter the matrix differs strongly from uniform activation**;
 2. **pairwise Sørensen differentiation remains practically stable within a fixed margin**.
@@ -277,7 +277,7 @@ The RC9 submission package checks:
 - uniform-null decision and all three smoothing sensitivities;
 - Sørensen practical-equivalence bounds;
 - title and inferential-boundary consistency;
-- RC8 Figure 1/2 content;
+- current Figure 1/2 content;
 - anonymous v1.1 main-manuscript DOCX;
 - anonymous RC9 Supporting Information DOCX.
 
@@ -292,6 +292,7 @@ Historical manuscripts, SI versions, workflows and failed/falsified analyses are
 ## Data sources
 
 - NAAMP: DOI **10.5066/F7G44NG0**
+- FrogID dataset: DOI **10.3897/zookeys.912.38253**
 - AmphiBIO v1: article DOI **10.1038/sdata.2017.123**; data DOI **10.6084/m9.figshare.4644424.v5**
 
 Raw third-party source datasets are not redistributed.
