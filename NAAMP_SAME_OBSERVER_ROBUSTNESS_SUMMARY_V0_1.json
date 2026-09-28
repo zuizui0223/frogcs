@@ -1,0 +1,66 @@
+{
+  "analysis": "naamp_same_observer_robustness_v0_1",
+  "status": "completed_under_prefrozen_contract",
+  "contract_commit": "ef857c5a291a57a447d8144412b225f1c54488dc",
+  "workflow_run_id": 36402387051,
+  "artifact_id": 10960639304,
+  "observer_schema": {
+    "field": "Runs.csv:ObserverTrackingID",
+    "raw_runs_nonempty": 21934,
+    "raw_runs_total": 21934,
+    "raw_unique_ids": 2301
+  },
+  "coverage": {
+    "all_matched_pairs": 4236,
+    "same_observer_pairs": 3152,
+    "same_observer_fraction": 0.7440982058545798,
+    "same_observer_routes": 500,
+    "same_observer_unique_observers": 542
+  },
+  "headline_models": {
+    "delta_active_stops": {
+      "beta": 0.35218867849593266,
+      "ci95": [0.1791534487967202, 0.5252239081951451],
+      "p": 0.00006628845298245026
+    },
+    "delta_mean_species_per_active_stop": {
+      "beta": 0.0981467252047551,
+      "ci95": [0.027608122756369702, 0.1686853276531405],
+      "p": 0.00638985482318909,
+      "n_pairs": 3071,
+      "n_routes": 497
+    },
+    "richness_gain": {
+      "beta": 0.31856652878467223,
+      "ci95": [0.17074305139906298, 0.4663900061702815],
+      "p": 0.00002402019536432399
+    }
+  },
+  "observed_matrix": {
+    "component_betas": {
+      "corner_expansion": 0.49825996755912555,
+      "spatial_spread": 0.18516283200858877,
+      "taxonomic_deepening": 0.6423903223737513,
+      "within_core_rearrangement": 0.11530490746013863
+    },
+    "component_shares": {
+      "corner_expansion": 0.34574542639371336,
+      "spatial_spread": 0.1284855426348902,
+      "taxonomic_deepening": 0.4457582996449577,
+      "within_core_rearrangement": 0.08001073132643877
+    },
+    "boundary_crossing_share": 0.9199892686735612
+  },
+  "uniform_null": {
+    "kappa_1": {"mean_boundary": 0.7885053315726064, "ci95": [0.7219939789391859, 0.8565341147361692], "omnibus_p": 0.000999000999000999},
+    "kappa_2": {"mean_boundary": 0.8032770310460358, "ci95": [0.7295017797725369, 0.8714121418209047], "omnibus_p": 0.000999000999000999},
+    "kappa_5": {"mean_boundary": 0.8255522256188292, "ci95": [0.7466875534249181, 0.9027595893187716], "omnibus_p": 0.000999000999000999}
+  },
+  "persistence_preserving_null": {
+    "anchor_0_50": {"mean_boundary": 0.7991461390833217, "ci95": [0.7418605256885795, 0.8638378816564605], "omnibus_p": 0.001998001998001998},
+    "anchor_0_75": {"mean_boundary": 0.7910527639160703, "ci95": [0.7333562369699016, 0.8488308557997452], "omnibus_p": 0.000999000999000999},
+    "anchor_0_90": {"mean_boundary": 0.7911836932593955, "ci95": [0.7421791712922773, 0.8422696277748211], "omnibus_p": 0.000999000999000999}
+  },
+  "prefrozen_classification": "observer_robust",
+  "interpretation": "Observer turnover does not explain the RC10 headline expansion or boundary-biased allocation within the same-observer subset. This is a robustness result, not proof of observer equivalence or a causal rainfall effect."
+}
