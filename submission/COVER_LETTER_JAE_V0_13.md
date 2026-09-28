@@ -1,4 +1,4 @@
-# Anonymous cover letter — Journal of Animal Ecology v0.13
+# Anonymous cover letter — Journal of Animal Ecology
 
 Dear Editors,
 
