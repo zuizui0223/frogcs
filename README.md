@@ -36,7 +36,7 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `provenance/submission/` — story-freeze and scope decision records
 - `provenance/submission_docs/` — internal reviewer/submission audits
 - `provenance/docs/` — human-readable project provenance
-- `submission/` — current practical submission templates/checklists only
+- `submission/` — cover letter plus current metadata/citation templates only
 - `archive/` — history pointer; full historical payload lives on the history/release branches
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
@@ -58,3 +58,12 @@ The current branch uses two workflows only:
 - `submission_pipeline.yml` — repository structure, scientific package QA, JAE compliance, anonymous DOCX, scientific bundle, and optional private-metadata bundle.
 
 Historical release branches preserve exact earlier layouts and are not current authority.
+
+
+## Private submission metadata
+
+Human-identifying submission fields are kept out of the public repository. Copy `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`, fill it locally, and store the completed YAML in the GitHub Actions secret `JAE_SUBMISSION_METADATA_YAML`.
+
+Before building the private bundle, confirm author order, affiliations, corresponding-author contact details, CRediT roles, funding/acknowledgements, Conflict of Interest, Statement on Inclusion, approvals, repository license, and (when available) archive DOI.
+
+To build the private-metadata bundle, run **Actions → submission pipeline → Run workflow** with **build_private_bundle = true**. The workflow validates the private YAML, renders the title page/portal metadata/CITATION/Zenodo metadata, and assembles the submission artifact without committing private contact details.
