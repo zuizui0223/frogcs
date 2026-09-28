@@ -98,7 +98,7 @@ jobs:
           cp submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json "$out/"
           cp submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json "$out/"
           cp submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml "$out/"
-          cp submission/CITATION_V0_3.cff.template "$out/"
+          cp submission/CITATION_V0_4.cff.template "$out/"
 
           cat > "$out/INITIAL_SUBMISSION_README.txt" <<'TXT'
           Canonical initial JAE submission: RC9 / ecological v1.1.
