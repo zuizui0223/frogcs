@@ -120,11 +120,13 @@ RC9 does not erase it. The common US–Australia signal is **continuous/deeper t
 - [x] RC9 candidate QA run 36389086419 success
 - [x] v1.1 manuscript and RC9 SI created
 - [x] RC9 story freeze created
-- [ ] RC9 canonical package QA on main/release/submission
-- [ ] RC9 anonymous v1.1 DOCX QA
-- [ ] RC9 canonical submission QA
-- [ ] RC9 JAE compliance QA
-- [ ] final RC9 review-package artifact recorded
+- [x] main / release/jae-v1-rc9 / submission/jae-v1 aligned on the same scientific authority
+- [x] archive-DOI finalization preserves NAAMP, FrogID and AmphiBIO provenance
+- [x] RC9 canonical package QA on main/release/submission
+- [x] RC9 anonymous v1.1 DOCX QA
+- [x] RC9 canonical submission QA
+- [x] RC9 JAE compliance QA
+- [x] final RC9 review-package artifact generated
 
 ## Human metadata still unresolved
 
