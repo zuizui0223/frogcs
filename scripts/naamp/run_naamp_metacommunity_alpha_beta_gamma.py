@@ -99,7 +99,7 @@ def main():
     d=build();primary=package(d);exact=d[d.year_gap==1].copy()
     result={
       "analysis":"naamp_metacommunity_alpha_beta_gamma_v0_1",
-      "contract":"provenance/contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
+      "contract":"provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json#items/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1",
       "descriptive":desc(d),"primary_models":primary,
       "exact_consecutive_year":{"descriptive":desc(exact),"models":package(exact)},
       "interpretation_boundary":{
