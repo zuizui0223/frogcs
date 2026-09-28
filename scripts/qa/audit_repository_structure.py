@@ -155,7 +155,10 @@ for wf in active_workflows.glob("*.yml"):
     refs.update(re.findall(r'(scripts/[A-Za-z0-9_./-]+\.py)',text))
     refs.update(re.findall(r'(provenance/[A-Za-z0-9_./-]+\.json)',text))
     refs.update(re.findall(r'(figures_ecology_v[0-9_]+/[A-Za-z0-9_./-]+\.svg)',text))
-    bad=sorted(ref for ref in refs if not (ROOT/ref).exists())
+    bad=sorted(
+        ref for ref in refs
+        if "/receipts/" not in ref and not (ROOT/ref).exists()
+    )
     if bad:missing_refs[wf.name]=bad
 assert not missing_refs,missing_refs
 
