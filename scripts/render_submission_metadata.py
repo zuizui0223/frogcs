@@ -17,10 +17,10 @@ KEYWORDS = [
     "alpha diversity",
     "beta diversity",
     "environmental pulse",
-    "functional diversity",
+    "incidence matrix",
     "metacommunity",
     "rainfall",
-    "response diversity",
+    "species richness",
 ]
 
 DESCRIPTION = (
@@ -58,7 +58,7 @@ def author_name(a: dict) -> str:
 
 def affiliation_text(aid: str, affiliations: dict) -> str:
     a=affiliations[aid]
-    bits=[a.get("department",""), a.get("institution",""), a.get("city",""), a.get("country","")]
+    bits=[a.get("department",""), a.get("institution",""), a.get("address",""), a.get("city",""), a.get("country","")]
     return ", ".join(x for x in bits if x)
 
 def validate(m: dict, strict: bool, stage: str) -> dict:
@@ -69,6 +69,11 @@ def validate(m: dict, strict: bool, stage: str) -> dict:
 
     affiliations=m.get("affiliations") or {}
     require(affiliations, "at least one affiliation is required")
+    for aid,av in affiliations.items():
+        require(av.get("institution"), f"affiliation {aid} institution missing")
+        require(av.get("address"), f"affiliation {aid} institutional address missing")
+        require(av.get("city"), f"affiliation {aid} city missing")
+        require(av.get("country"), f"affiliation {aid} country missing")
     for a in authors:
         require(a.get("given_names"), f"author {a.get('order')} given_names missing")
         require(a.get("family_names"), f"author {a.get('order')} family_names missing")
@@ -78,6 +83,8 @@ def validate(m: dict, strict: bool, stage: str) -> dict:
         orcid=(a.get("orcid") or "").strip()
         if orcid:
             require(bool(ORCID_RE.fullmatch(orcid)), f"invalid ORCID for author {a.get('order')}: {orcid}")
+        if len(authors) > 1:
+            require(bool(a.get("credit_roles")), f"author {a.get('order')} credit_roles required for multi-author submission")
 
     ca=m.get("corresponding_author") or {}
     require(ca.get("author_order") in orders, "corresponding_author.author_order must identify an author")
@@ -99,11 +106,19 @@ def validate(m: dict, strict: bool, stage: str) -> dict:
         require(bool(ca.get("email")), "corresponding author email required")
         require("@" in ca.get("email",""), "corresponding author email is invalid")
         require(bool(ca.get("postal_address")), "corresponding author postal address required")
+        require(bool(m.get("conflict_of_interest")), "conflict_of_interest statement required for JAE submission")
         require(bool(m.get("statement_on_inclusion")), "statement_on_inclusion required for JAE submission")
         if stage == "archive":
             require(bool(repo.get("license")), "repository license required for archive stage")
             require(bool(repo.get("archive_doi")), "archive DOI required for archive stage")
-        for k in ("all_authors_approve_submission","all_entitled_authors_included","not_under_consideration_elsewhere"):
+        for k in (
+            "all_authors_approve_submission",
+            "relevant_institutions_approve_submission",
+            "all_entitled_authors_included",
+            "not_under_consideration_elsewhere",
+            "work_original_and_acknowledged",
+            "legal_requirements_confirmed",
+        ):
             require(approvals.get(k) is True, f"approval must be true: {k}")
 
     return m
@@ -135,6 +150,8 @@ def render_title_page(m: dict) -> str:
         "",
         f"**Manuscript title:** {m['manuscript']['title']}",
         "",
+        f"**Article type:** {m['manuscript']['article_type']}",
+        "",
         f"**Authors:** {author_line}",
         "",
         "**Affiliations:**",
@@ -165,8 +182,11 @@ def render_title_page(m: dict) -> str:
         "## Approval",
         "",
         f"- all authors approve the submitted version: {m['approvals'].get('all_authors_approve_submission')}",
+        f"- relevant institutions approve submission: {m['approvals'].get('relevant_institutions_approve_submission')}",
         f"- all entitled authors are included: {m['approvals'].get('all_entitled_authors_included')}",
         f"- manuscript is not under consideration elsewhere: {m['approvals'].get('not_under_consideration_elsewhere')}",
+        f"- work is original and necessary acknowledgements are made: {m['approvals'].get('work_original_and_acknowledged')}",
+        f"- legal/conservation/welfare requirements are confirmed: {m['approvals'].get('legal_requirements_confirmed')}",
         "",
     ])
 
@@ -255,8 +275,11 @@ def main():
         "data_archive_doi": m["repository"].get("archive_doi",""),
         "repository_license": m["repository"].get("license",""),
         "all_authors_approve_submission": m["approvals"].get("all_authors_approve_submission"),
+        "relevant_institutions_approve_submission": m["approvals"].get("relevant_institutions_approve_submission"),
         "all_entitled_authors_included": m["approvals"].get("all_entitled_authors_included"),
         "not_under_consideration_elsewhere": m["approvals"].get("not_under_consideration_elsewhere"),
+        "work_original_and_acknowledged": m["approvals"].get("work_original_and_acknowledged"),
+        "legal_requirements_confirmed": m["approvals"].get("legal_requirements_confirmed"),
         "ethics_and_permits": m.get("ethics_and_permits",{}),
     }
     (out/"JAE_PORTAL_FIELDS.json").write_text(json.dumps(portal,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
