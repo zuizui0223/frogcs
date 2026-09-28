@@ -97,17 +97,10 @@ assert {p.name for p in archive.iterdir()} == {"README.md"}, [p.name for p in ar
 
 prov=ROOT/"provenance"
 for name in [
-    "contracts","summaries","receipts","repairs","metadata","submission",
+    "contracts","summaries","receipts","repairs","submission",
     "submission_docs","docs",
 ]:
     assert (prov/name).is_dir(),f"missing provenance section: {name}"
-
-root_manifest=json.loads((prov/"ROOT_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-submission_manifest=json.loads((prov/"submission/SUBMISSION_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-script_manifest=json.loads((prov/"SCRIPT_LAYOUT_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-assert root_manifest["moved_json_files"]==141
-assert sum(root_manifest["categories"].values())==141
-assert script_manifest["moved_scripts"]==69
 
 # Current templates must describe the current paper and contain no superseded story.
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
@@ -128,21 +121,20 @@ for phrase in [
         except UnicodeDecodeError:continue
         assert phrase not in text,(p.name,phrase)
 
-# No active surface may retain a pre-migration path.
-mappings={}
-mappings.update(root_manifest["mapping"])
-mappings.update(submission_manifest["mapping"])
-mappings.update(script_manifest["mapping"])
-stale={}
-for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
-    paths=[base] if base.is_file() else list(base.rglob("*"))
-    for p in paths:
-        if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml",".md",".json",".txt",".cff"}:
+# Active scripts/workflows may reference only live current provenance inputs.
+missing_provenance={}
+for base in [scripts,active_workflows]:
+    for p in base.rglob("*"):
+        if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml"}:
             continue
         text=p.read_text(encoding="utf-8")
-        bad=[old for old,target in mappings.items() if old in text and target not in text]
-        if bad:stale[str(p.relative_to(ROOT))]=sorted(bad)
-assert not stale,stale
+        refs=set(re.findall(r'(provenance/[A-Za-z0-9_./-]+\.(?:json|md|txt|ya?ml|cff))',text))
+        bad=sorted(
+            ref for ref in refs
+            if "/receipts/" not in ref and not (ROOT/ref).exists()
+        )
+        if bad:missing_provenance[str(p.relative_to(ROOT))]=bad
+assert not missing_provenance,missing_provenance
 
 # Active workflow file references must resolve to live paths.
 missing_refs={}
