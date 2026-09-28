@@ -13,7 +13,7 @@ CURRENT_PAPER_FILES={
     "manuscript.md","supporting_information.md","title_page.template.md",
     "figures/Figure1.svg","figures/Figure2.svg","figures/Figure3.svg",
 }
-CURRENT_SUBMISSION_FILES={"CITATION.cff.template","cover_letter.md","metadata.template.yml"}
+CURRENT_SUBMISSION_FILES={"cover_letter.md","metadata.template.yml"}
 SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
@@ -141,7 +141,6 @@ si=(ROOT/"paper/supporting_information.md").read_text(encoding="utf-8")
 cl=(submission/"cover_letter.md").read_text(encoding="utf-8")
 title_page=(ROOT/"paper/title_page.template.md").read_text(encoding="utf-8")
 meta=(submission/"metadata.template.yml").read_text(encoding="utf-8")
-citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
 readme=(ROOT/"README.md").read_text(encoding="utf-8")
 fig2=(ROOT/"paper/figures/Figure2.svg").read_text(encoding="utf-8")
 fig3=(ROOT/"paper/figures/Figure3.svg").read_text(encoding="utf-8")
@@ -152,7 +151,7 @@ pers=results_bundle["items"]["NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1"]["
 uniform=results_bundle["items"]["NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1"]["payload"]
 
 assert m.startswith("# "+TITLE)
-for surface in (cl,title_page,meta,citation): assert TITLE in surface
+for surface in (cl,title_page,meta): assert TITLE in surface
 assert freeze["status"]=="frozen_for_submission"
 assert freeze["scientific_story_changed_from_rc10"] is False
 assert freeze["reserved_revision_analysis"]["species_specific_activation_null"]["status"]=="not_run"

@@ -32,7 +32,7 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json` — bundled frozen analysis definitions, repair record, and scope decisions
 - `provenance/CURRENT_RESULTS.json` — bundled durable result summaries
 - `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
-- `submission/` — cover letter plus current metadata/citation templates only
+- `submission/` — cover letter plus the current metadata template only
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
 
