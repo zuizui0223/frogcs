@@ -5,7 +5,7 @@ on:
     branches:
       - revision/rainfall-community-filter-v1
     paths:
-      - "NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_SPECIES_PULSE_ADJUSTED_ROBUSTNESS_CONTRACT_V0_1.json"
       - "scripts/run_naamp_species_pulse_adjusted_robustness.py"
       - ".github/workflows/species_pulse_adjusted_robustness.yml"
   workflow_dispatch:
