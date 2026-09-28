@@ -23,6 +23,8 @@ OUT.parent.mkdir(parents=True, exist_ok=True)
 
 
 def add_inline(paragraph, text):
+    # Render Markdown inline-code markers as ordinary manuscript text.
+    text = text.replace("`", "")
     pattern = re.compile(r"(\*\*.+?\*\*|\*[^*]+?\*)")
     pos = 0
     for match in pattern.finditer(text):
@@ -120,6 +122,10 @@ def build():
         line = raw_line.rstrip()
         if not line:
             continue
+        if line.strip() == "---":
+            continue
+        if line.startswith("> "):
+            line = line[2:].lstrip()
 
         if line.startswith("# "):
             p = doc.add_paragraph()
@@ -172,7 +178,7 @@ def build():
         p = doc.add_paragraph()
         add_inline(p, line)
         first_line = 0.3
-        if line.startswith("acoustic community;") or line.startswith("**Figure ") or line.startswith("Figure "):
+        if line.startswith("acoustic community;") or line.startswith("**Figure ") or line.startswith("Figure ") or line.startswith("|"):
             first_line = 0
         format_paragraph(p, first_line=first_line)
 
