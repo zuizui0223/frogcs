@@ -3,7 +3,6 @@ name: submission pipeline
 on:
   push:
     branches:
-      - cleanup/qa-consolidation-v1
       - main
       - release/jae-v1-rc11
       - submission/jae-v1
