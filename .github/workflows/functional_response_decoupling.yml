@@ -5,8 +5,8 @@ on:
     branches:
       - revision/functional-response-decoupling-v1
     paths:
-      - "NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_CONTRACT_V0_1.json"
-      - "NAAMP_RESPONSE_ELIGIBLE_SPECIES_UNIVERSE_V0_1.json"
+      - "provenance/contracts/NAAMP_FUNCTIONAL_RESPONSE_DECOUPLING_CONTRACT_V0_1.json"
+      - "provenance/metadata/NAAMP_RESPONSE_ELIGIBLE_SPECIES_UNIVERSE_V0_1.json"
       - "scripts/run_naamp_functional_response_decoupling.py"
       - ".github/workflows/functional_response_decoupling.yml"
   workflow_dispatch:
