@@ -81,6 +81,7 @@ required=[
     ROOT/"provenance/submission_docs/REVIEWER_ATTACK_MATRIX_V0_11.md",
     ROOT/"provenance/submission_docs/SUBMISSION_HANDOFF_RC11.md",
     ROOT/"provenance/docs/CURRENT_PAPER_OVERVIEW.md",
+    ROOT/"provenance/receipts/README.md",
     ROOT/"scripts/qa/audit_rc11_submission_package.py",
     ROOT/"scripts/qa/audit_jae_initial_submission_rc11_2026.py",
     ROOT/"scripts/qa/audit_repository_structure.py",
@@ -102,7 +103,7 @@ for name in [
 ]:
     assert (prov/name).is_dir(),f"missing provenance section: {name}"
 
-assert len([p for p in prov.rglob("*") if p.is_file()])==30, len([p for p in prov.rglob("*") if p.is_file()])
+assert len([p for p in prov.rglob("*") if p.is_file()])==31, len([p for p in prov.rglob("*") if p.is_file()])
 
 # Current templates must describe the current paper and contain no superseded story.
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
