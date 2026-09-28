@@ -37,7 +37,9 @@ assert not re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}",m+"\n"+si)
 assert "https://github.com/" not in m+si
 
 assert "3,152 wetter–drier pairs" in m
-assert "each species its own rainfall-response shift remains untested" in m
+assert "a null allowing species-specific shifts" in m
+assert not re.search(r"\\bRC\\d+\\b",m+"\\n"+si)
+assert "readback" not in (m+"\\n"+si).lower()
 assert "### Same-observer sensitivity" in si
 assert obs["prefrozen_classification"]=="observer_robust"
 assert obs["coverage"]["same_observer_pairs"]==3152
@@ -46,7 +48,7 @@ assert obs["observed_matrix"]["boundary_crossing_share"] > obs["persistence_pres
 
 print({
  "status":"PASS",
- "release_candidate":"RC11",
+ "release_candidate":"submission-clean RC11",
  "manuscript_words":wc(m),
  "title_words":wc(title),
  "combined_proxy_words":wc(m)+wc(title),
