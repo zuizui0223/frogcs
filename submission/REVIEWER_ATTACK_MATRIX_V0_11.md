@@ -14,7 +14,7 @@
 | The title's older homogenization wording relied on a post hoc margin. | Removed. Sørensen remains secondary bounded context and is ordinary under the uniform null. | Corrected |
 | The matrix decomposition is an identity. | The sum is algebraic; the observed coefficient allocation relative to null distributions is not. | Addressed |
 | The result proves temporary wetlands or heterogeneous thresholds are the mechanism. | No. Those remain discussion-level hypotheses without site hydrology or a validated rainfall-specific species trait. | Hard boundary |
-| The manuscript is too long. | RC11 combined manuscript + title-page proxy is 8,217 words, below the 8,500-word Research Article limit used by the submission audit. | Addressed |
+| The manuscript is too long. | RC11 combined manuscript + title-page proxy is 7,403 words, below the 8,500-word Research Article limit used by the submission audit. | Addressed |
 | Two continents establish a global rule. | No. FrogID supplies directional cross-dataset consistency only. | Hard boundary |
 
 ## Strongest current claim
