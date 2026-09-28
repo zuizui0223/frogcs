@@ -21,7 +21,6 @@ KEEP={
 "provenance/contracts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
 "provenance/contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json",
 "provenance/contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
-"provenance/receipts/NAAMP_ECOLOGICAL_PULSE_RECEIPT_V0_1.json",
 "provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json",
 "provenance/submission/RC10_SCOPE_UNFREEZE_V0_1.json",
 "provenance/submission/RC10_STORY_DECISION_TREE_V0_1.json",
@@ -38,7 +37,7 @@ KEEP={
 "provenance/summaries/NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json",
 "provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
 }
-assert len(KEEP)==31
+assert len(KEEP)==30
 
 REF_RE=re.compile(r'(provenance/[A-Za-z0-9_./-]+\.(?:json|md|txt|ya?ml|cff))')
 active=[]
@@ -58,7 +57,7 @@ assert not missing_from_keep, {"active_input_refs_not_kept":missing_from_keep}
 all_files={p.relative_to(ROOT).as_posix() for p in PROV.rglob("*") if p.is_file()}
 assert KEEP<=all_files, sorted(KEEP-all_files)
 candidates=sorted(all_files-KEEP)
-assert len(candidates)==150, len(candidates)
+assert len(candidates)==151, len(candidates)
 
 for rel in candidates:
     (ROOT/rel).unlink()
