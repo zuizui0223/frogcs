@@ -29,11 +29,25 @@ Current article surfaces:
 - title-page template: `JAE_TITLE_PAGE_V0_8.template.md`
 - metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
 - citation template: `submission/CITATION_V0_5.cff.template`
-- human-finalization guide: `submission/HUMAN_FINALIZATION_RC10.md` (administrative template retained; scientific authority is RC11)
+- human-finalization guide: `submission/HUMAN_FINALIZATION_RC11.md`
 
 **Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`.
 
-`SUPPORTING_INFORMATION_JAE_RC6_V0_1.md`, `SUPPORTING_INFORMATION_JAE_RC7_V0_1.md` and `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md` remain repository audit history only and are not current submission authority.
+## Repository layout
+
+The default branch is intentionally split into current authority, reproducibility code and archived submission history.
+
+- repository root: current manuscript/SI/title-page surfaces plus scientific contracts, receipts and summaries used by active analyses;
+- `scripts/`: current analysis and reproducibility scripts only;
+- `.github/workflows/`: current submission QA plus analysis workflows that remain useful for reproducibility;
+- `submission/`: current submission surfaces and provenance files still referenced by the present paper;
+- `figures_ecology_v1_0/` and `figures_ecology_v1_2/`: current figures;
+- `archive/`: superseded manuscripts, SI, title pages, submission documents, workflows, QA/build scripts and old figure directories.
+
+Files under `archive/` are audit history, not current authority. Exact historical states also remain available on release branches.
+
+
+Superseded manuscripts, Supporting Information, title-page templates and submission-facing documents are retained under `archive/` and on immutable historical release branches.
 
 RC1–RC10 release branches are intentionally retained as immutable audit/fallback history.
 

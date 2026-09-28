@@ -1,14 +1,14 @@
-name: RC6 geographic generality audit
+name: NAAMP geographic generality audit
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - revision/rc6-geographic-generality-audit-v1
+      - revision/geographic-generality-audit-v1
     paths:
       - "NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json"
       - "scripts/run_naamp_geographic_generality_audit.py"
-      - ".github/workflows/rc6_geographic_generality_audit.yml"
+      - ".github/workflows/geographic_generality_audit.yml"
 
 jobs:
   audit:
@@ -23,5 +23,5 @@ jobs:
         run: python scripts/run_naamp_geographic_generality_audit.py
       - uses: actions/upload-artifact@v4
         with:
-          name: rc6-geographic-generality-audit
+          name: geographic-generality-audit
           path: NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_RECEIPT_V0_1.json

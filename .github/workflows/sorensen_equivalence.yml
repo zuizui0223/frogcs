@@ -1,4 +1,4 @@
-name: RC8 Sorensen equivalence
+name: NAAMP Sorensen equivalence
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
     paths:
       - "NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json"
       - "scripts/run_naamp_sorensen_equivalence.py"
-      - ".github/workflows/rc8_sorensen_equivalence.yml"
+      - ".github/workflows/sorensen_equivalence.yml"
   workflow_dispatch:
 jobs:
   equivalence:
@@ -22,6 +22,6 @@ jobs:
         run: python scripts/run_naamp_sorensen_equivalence.py
       - uses: actions/upload-artifact@v4
         with:
-          name: rc8-sorensen-equivalence
+          name: sorensen-equivalence
           path: NAAMP_SORENSEN_EQUIVALENCE_RECEIPT_V0_1.json
           if-no-files-found: error
