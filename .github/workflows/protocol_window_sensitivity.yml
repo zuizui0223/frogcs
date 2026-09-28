@@ -1,13 +1,13 @@
-name: RC7 three-day protocol-window sensitivity
+name: NAAMP protocol-window sensitivity
 
 on:
   push:
     branches:
-      - revision/rc7-protocol-window-sensitivity-v1
+      - revision/protocol-window-sensitivity-v1
     paths:
       - "NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json"
       - "scripts/run_naamp_protocol_window_sensitivity.py"
-      - ".github/workflows/rc7_protocol_window_sensitivity.yml"
+      - ".github/workflows/protocol_window_sensitivity.yml"
   workflow_dispatch:
 
 jobs:
@@ -24,6 +24,6 @@ jobs:
         run: python scripts/run_naamp_protocol_window_sensitivity.py
       - uses: actions/upload-artifact@v4
         with:
-          name: rc7-protocol-window-sensitivity
+          name: protocol-window-sensitivity
           path: NAAMP_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1.json
           if-no-files-found: error

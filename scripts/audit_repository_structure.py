@@ -17,11 +17,11 @@ required = [
     root / "submission" / "RC11_STORY_FREEZE_V0_1.json",
     root / "scripts" / "audit_rc11_submission_package.py",
     root / "scripts" / "audit_jae_initial_submission_rc11_2026.py",
-    root / ".github" / "workflows" / "anonymous_docx_v1_3.yml",
-    root / ".github" / "workflows" / "initial_submission_bundle_rc11.yml",
-    root / ".github" / "workflows" / "jae_2026_initial_submission_compliance_rc11.yml",
-    root / ".github" / "workflows" / "rc11_submission_package_qa.yml",
-    root / ".github" / "workflows" / "review_submission_bundle_rc11.yml",
+    root / ".github" / "workflows" / "submission_anonymous_docx.yml",
+    root / ".github" / "workflows" / "initial_submission_bundle.yml",
+    root / ".github" / "workflows" / "jae_initial_submission_compliance.yml",
+    root / ".github" / "workflows" / "submission_package_qa.yml",
+    root / ".github" / "workflows" / "scientific_submission_bundle.yml",
 ]
 for p in required:
     assert p.exists(), f"missing current authority file: {p.relative_to(root)}"

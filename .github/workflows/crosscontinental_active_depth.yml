@@ -1,4 +1,4 @@
-name: RC8 cross-continental active-unit depth validation
+name: cross-dataset active-unit depth validation
 
 on:
   push:
@@ -8,14 +8,14 @@ on:
       - "submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json"
       - "CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json"
       - "scripts/run_crosscontinental_active_depth.py"
-      - ".github/workflows/rc8_crosscontinental_active_depth.yml"
+      - ".github/workflows/crosscontinental_active_depth.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: frogcs-rc8-crosscontinental-active-depth
+  group: frogcs-crossdataset-active-depth
   cancel-in-progress: true
 
 jobs:
@@ -48,6 +48,6 @@ jobs:
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: rc8-crosscontinental-active-depth
+          name: crossdataset-active-depth
           path: CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json
           if-no-files-found: error
