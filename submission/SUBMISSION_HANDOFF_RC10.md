@@ -119,11 +119,21 @@ This is **secondary bounded context**, not a title-level discovery, because the 
 - [x] RC10 candidate QA success
 - [x] RC10 merged to main
 - [x] RC10 story freeze created
-- [ ] RC10 scientific package QA on main/release/submission
-- [ ] RC10 anonymous v1.2 DOCX QA
-- [ ] RC10 canonical submission QA
-- [ ] RC10 JAE compliance QA
-- [ ] final review package artifact recorded
+- [x] RC10 scientific package QA on main/release/submission
+- [x] RC10 anonymous v1.2 DOCX QA
+- [x] RC10 canonical submission QA
+- [x] RC10 JAE compliance QA
+- [x] final review package artifact recorded
+
+## Latest verified RC10 runs and artifacts
+
+- persistence-preserving null: run **36396060661** — success; artifact **10957954308**
+- scientific package QA on submission authority: run **36398245492** — success
+- anonymous v1.2 DOCX: run **36398245608** — success; artifact **10959337221**
+- JAE compliance: run **36398245550** — success
+- canonical submission QA: run **36398245570** — success
+- canonical review package: `frogcs-jae-rc10-review-package`, artifact **10958853754**
+- release-branch scientific package / DOCX / compliance runs also passed on the same authority HEAD
 
 ## Human metadata still unresolved
 
