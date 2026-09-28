@@ -128,6 +128,13 @@ RC9 does not erase it. The common US–Australia signal is **continuous/deeper t
 - [x] RC9 JAE compliance QA
 - [x] final RC9 review-package artifact generated
 
+## Latest verified RC9 artifacts
+
+- canonical review package: `frogcs-jae-rc9-review-package`, artifact ID **10956272327**
+- anonymous v1.1 DOCX package: `frogcs-jae-v1-1-rc9-anonymous-docx`, artifact ID **10955682513**
+- canonical submission QA run: **36390487764** — success
+- RC9 scientific package QA runs on main/release/submission: **success**
+
 ## Human metadata still unresolved
 
 Final authors/order, full institutional addresses, corresponding-author contact details, multi-author contributions where applicable, funding, acknowledgements, Conflict of Interest, Statement on Inclusion, all-author and relevant-institution approval, originality/legal confirmations, archive license and final DOI remain human finalization inputs.
