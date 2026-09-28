@@ -48,17 +48,38 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           from zipfile import ZipFile
+          from xml.etree import ElementTree as ET
           import re
           main=Path("build/Manuscript.docx")
           si=Path("build/Supporting_Information.docx")
           assert main.stat().st_size>10000 and si.stat().st_size>10000
-          with ZipFile(main) as z:
-              doc=z.read("word/document.xml").decode("utf-8")
-              core=z.read("docProps/core.xml").decode("utf-8")
-              footer=z.read("word/footer1.xml").decode("utf-8")
-          with ZipFile(si) as z:
-              sidoc=z.read("word/document.xml").decode("utf-8")
-              sicore=z.read("docProps/core.xml").decode("utf-8")
+          W="{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+          def inspect_docx(path):
+              with ZipFile(path) as z:
+                  docb=z.read("word/document.xml")
+                  stylesb=z.read("word/styles.xml")
+                  core=z.read("docProps/core.xml").decode("utf-8")
+                  footer=z.read("word/footer1.xml").decode("utf-8")
+              root=ET.fromstring(docb)
+              styles=ET.fromstring(stylesb)
+              sect=root.find(".//"+W+"sectPr")
+              assert sect is not None
+              ln=sect.find(W+"lnNumType")
+              assert ln is not None and ln.get(W+"countBy")=="1" and ln.get(W+"restart")=="continuous"
+              cols=sect.find(W+"cols")
+              assert cols is None or cols.get(W+"num") in (None,"1")
+              normal=None
+              for st in styles.findall(W+"style"):
+                  if st.get(W+"styleId")=="Normal":
+                      normal=st
+                      break
+              assert normal is not None
+              spacing=normal.find(W+"pPr/"+W+"spacing")
+              assert spacing is not None and spacing.get(W+"line")=="480"
+              assert "PAGE" in footer
+              return docb.decode("utf-8"),core
+          doc,core=inspect_docx(main)
+          sidoc,sicore=inspect_docx(si)
           for x in ["more boundary-biased than uniform activation predicts","3,152 same-observer pairs","a null allowing species-specific shifts","92.0% boundary crossing"]:
               assert x in doc,x
           assert "Same-observer sensitivity".lower() in sidoc.lower()
