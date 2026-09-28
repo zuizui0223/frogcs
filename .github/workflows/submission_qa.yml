@@ -28,14 +28,14 @@ jobs:
       - name: Install submission QA dependencies
         run: python -m pip install --disable-pip-version-check -q PyYAML==6.0.2 python-docx==1.2.0
 
-      - name: Audit canonical RC9 scientific package
-        run: python scripts/audit_rc9_submission_package.py
+      - name: Audit canonical RC10 scientific package
+        run: python scripts/audit_rc10_submission_package.py
 
       - name: Strict-test canonical submission metadata pipeline
         run: |
           cat > /tmp/frogcs-submission-metadata.yml <<'YAML'
           manuscript:
-            title: "Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
+            title: "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
             target_journal: "Journal of Animal Ecology"
             article_type: "Research Article"
           authors:
@@ -90,7 +90,7 @@ jobs:
           python scripts/render_submission_metadata.py --metadata /tmp/frogcs-submission-metadata.yml --strict --stage archive --outdir /tmp/rendered-archive
           python - <<'PY'
           from pathlib import Path
-          expected="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
+          expected="Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
           for p in [
               Path("/tmp/rendered-initial/JAE_TITLE_PAGE_FINAL.md"),
               Path("/tmp/rendered-archive/JAE_TITLE_PAGE_FINAL.md")
@@ -104,56 +104,58 @@ jobs:
               "/tmp/rendered-initial/SUBMISSION_METADATA_VALIDATION.json"
           ]:
               assert Path(p).is_file() and Path(p).stat().st_size>0
-          print("RC9 metadata pipeline PASS")
+          print("RC10 metadata pipeline PASS")
           PY
 
       - name: Dry-run archive DOI finalization
         run: |
-          python scripts/finalize_archive_doi.py             --doi 10.9999/frogcs.test             --input MANUSCRIPT_JAE_V1_1.md             --output build/MANUSCRIPT_JAE_FINAL_TEST.md
+          python scripts/finalize_archive_doi.py             --doi 10.9999/frogcs.test             --input MANUSCRIPT_JAE_V1_2.md             --output build/MANUSCRIPT_JAE_FINAL_TEST.md
           python - <<'PY'
           from pathlib import Path
           p=Path("build/MANUSCRIPT_JAE_FINAL_TEST.md")
           x=p.read_text(encoding="utf-8")
-          assert "Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization" in x
+          assert "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts" in x
           assert "10.9999/frogcs.test" in x
+          assert "77.9%" in x
           assert "80.9% boundary crossing" in x
           assert "10.3897/zookeys.912.38253" in x
-          print("RC9 DOI finalization PASS")
+          print("RC10 DOI finalization PASS")
           PY
 
-      - name: Build and inspect anonymous RC9 DOCX files
+      - name: Build and inspect anonymous RC10 DOCX files
         run: |
-          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_1.md             --output build/FROG_JAE_ANON_MAIN_V1_1_SUBMISSION_QA.docx
-          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC9_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC9.docx
+          python scripts/build_jae_anonymous_docx.py             --source MANUSCRIPT_JAE_V1_2.md             --output build/FROG_JAE_ANON_MAIN_V1_2_SUBMISSION_QA.docx
+          python scripts/build_jae_anonymous_docx.py             --source SUPPORTING_INFORMATION_JAE_RC10_V0_1.md             --output build/FROG_JAE_SUPPORTING_INFORMATION_RC10.docx
           python - <<'PY'
           from zipfile import ZipFile
           from pathlib import Path
-          p=Path("build/FROG_JAE_ANON_MAIN_V1_1_SUBMISSION_QA.docx")
+          p=Path("build/FROG_JAE_ANON_MAIN_V1_2_SUBMISSION_QA.docx")
           assert p.is_file() and p.stat().st_size>10000
           with ZipFile(p) as z:
               core=z.read("docProps/core.xml").decode("utf-8")
               document=z.read("word/document.xml").decode("utf-8")
-          expected="Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization"
+          expected="Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
           assert expected in core
           assert "<w:lnNumType" in document
           assert "80.9% boundary crossing" in document
           assert "Monte Carlo P = 0.001" in document
-          si=Path("build/FROG_JAE_SUPPORTING_INFORMATION_RC9.docx")
+          si=Path("build/FROG_JAE_SUPPORTING_INFORMATION_RC10.docx")
           assert si.is_file() and si.stat().st_size>10000
-          print("RC9 anonymous DOCX PASS")
+          print("RC10 anonymous DOCX PASS")
           PY
 
-      - name: Upload RC9 review package
+      - name: Upload RC10 review package
         uses: actions/upload-artifact@v4
         with:
-          name: frogcs-jae-rc9-review-package
+          name: frogcs-jae-rc10-review-package
           path: |
-            MANUSCRIPT_JAE_V1_1.md
-            SUPPORTING_INFORMATION_JAE_RC9_V0_1.md
-            build/FROG_JAE_ANON_MAIN_V1_1_SUBMISSION_QA.docx
-            build/FROG_JAE_SUPPORTING_INFORMATION_RC9.docx
-            JAE_TITLE_PAGE_V0_7.template.md
-            figures_ecology_v1_0/*.svg
+            MANUSCRIPT_JAE_V1_2.md
+            SUPPORTING_INFORMATION_JAE_RC10_V0_1.md
+            build/FROG_JAE_ANON_MAIN_V1_2_SUBMISSION_QA.docx
+            build/FROG_JAE_SUPPORTING_INFORMATION_RC10.docx
+            JAE_TITLE_PAGE_V0_8.template.md
+            figures_ecology_v1_0/FIGURE_1_METACOMMUNITY_EXPANSION_V0_1.svg
+            figures_ecology_v1_2/*.svg
             NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json
             NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json
             NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json
@@ -163,14 +165,18 @@ jobs:
             NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json
             CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json
             CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json
+            NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json
+            NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json
+            submission/RC10_SCOPE_UNFREEZE_V0_1.json
+            submission/RC10_STORY_DECISION_TREE_V0_1.json
             submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json
             submission/RC8_CROSSCONTINENTAL_DEPTH_DECISION_TREE_V0_1.json
-            submission/COVER_LETTER_JAE_V0_12.md
-            submission/NOVELTY_AUDIT_V0_9.md
-            submission/REVIEWER_ATTACK_MATRIX_V0_9.md
-            submission/JAE_PORTAL_CHECKLIST_V0_8.md
-            submission/SUBMISSION_HANDOFF_RC9.md
-            submission/RC9_STORY_FREEZE_V0_1.json
-            submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml
-            submission/CITATION_V0_4.cff.template
+            submission/COVER_LETTER_JAE_V0_13.md
+            submission/NOVELTY_AUDIT_V0_10.md
+            submission/REVIEWER_ATTACK_MATRIX_V0_10.md
+            submission/JAE_PORTAL_CHECKLIST_V0_9.md
+            submission/SUBMISSION_HANDOFF_RC10.md
+            submission/RC10_STORY_FREEZE_V0_1.json
+            submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml
+            submission/CITATION_V0_5.cff.template
           if-no-files-found: error
