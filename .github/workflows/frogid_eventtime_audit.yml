@@ -6,7 +6,7 @@ on:
       - revision/activation-decomposition-v1
     paths:
       - "provenance/contracts/FROGID_TIME_SEMANTICS_CONTRACT_V0_1.json"
-      - "scripts/audit_frogid_eventtime.py"
+      - "scripts/qa/audit_frogid_eventtime.py"
       - ".github/workflows/frogid_eventtime_audit.yml"
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/audit_frogid_eventtime.py
+      - run: python scripts/qa/audit_frogid_eventtime.py
       - uses: actions/upload-artifact@v4
         with:
           name: frogid-eventtime-semantics-v0-1
