@@ -697,7 +697,7 @@ def main():
     }
 
     ds.close()
-    out=Path("CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
+    out=Path("provenance/receipts/CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
     out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,indent=2,sort_keys=True))
 
