@@ -102,6 +102,8 @@ for name in [
 ]:
     assert (prov/name).is_dir(),f"missing provenance section: {name}"
 
+assert len([p for p in prov.rglob("*") if p.is_file()])==31, len([p for p in prov.rglob("*") if p.is_file()])
+
 # Current templates must describe the current paper and contain no superseded story.
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
 meta=(submission/"SUBMISSION_METADATA_TEMPLATE_V0_7.yml").read_text(encoding="utf-8")
