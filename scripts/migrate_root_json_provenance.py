@@ -11,7 +11,7 @@ PROV = ROOT / "provenance"
 TEXT_SUFFIXES = {
     ".py", ".yml", ".yaml", ".md", ".json", ".txt", ".toml", ".cff", ".template"
 }
-SKIP_TOP = {".git", "archive"}
+SKIP_TOP = {".git", "archive", ".github"}
 
 
 def classify(name: str) -> Path:
