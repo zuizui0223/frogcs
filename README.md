@@ -29,23 +29,15 @@ Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions we
 - `scripts/frogid/` — FrogID and cross-dataset analyses
 - `scripts/qa/` — repository and submission audits
 - `scripts/submission/` — DOCX, metadata and submission-build utilities
-- `provenance/contracts/` — frozen analysis definitions
-- `provenance/summaries/` — compact durable results
+- `provenance/current.json` — consolidated current contracts, durable summaries, repair record, and story decisions
 - `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
-- `provenance/repairs/` — implementation/estimability repairs
-- `provenance/submission/` — story-freeze and scope decision records
 - `submission/` — cover letter plus current metadata/citation templates only
 
 Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
 
 ## Current reproducibility anchors
 
-- uniform activation: `provenance/summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json`
-- persistence-preserving null: `provenance/summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
-- same-observer robustness: `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
-- cross-dataset depth: `provenance/summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
-
-Detailed inferential boundaries are documented in the Supporting Information; historical development remains available on the history/release branches.
+All current frozen analysis definitions, durable results, and submission decision records are stored losslessly in `provenance/current.json`. Runtime workflows write detailed receipts under `provenance/receipts/`.
 
 ## Workflows
 
