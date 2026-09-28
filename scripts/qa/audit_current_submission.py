@@ -14,7 +14,7 @@ CURRENT_PAPER_FILES={
     "figures/Figure1.svg","figures/Figure2.svg","figures/Figure3.svg",
 }
 CURRENT_SUBMISSION_FILES={"cover_letter.md","metadata.template.yml"}
-SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
+SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":1,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
     "CURRENT_ANALYSIS_SPECIFICATIONS.json",
@@ -89,7 +89,6 @@ assert prov_files==CURRENT_PROVENANCE_FILES,{"unexpected_provenance":sorted(prov
 
 required=[
     ROOT/"scripts/qa/audit_current_submission.py",
-    ROOT/"scripts/qa/audit_naamp_sciencebase_file_manifest.py",
     ROOT/"scripts/submission/build_jae_anonymous_docx.py",
     ROOT/"scripts/submission/render_submission_metadata.py",
 ]
