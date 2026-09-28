@@ -55,10 +55,12 @@
 - [x] `CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json`
 - [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml`
 - [x] `submission/HUMAN_FINALIZATION_RC9.md`
+- [x] `submission/CITATION_V0_4.cff.template`
+- [x] `JAE_TITLE_PAGE_V0_7.template.md`
 
 ## JAE format
 
-- [x] combined main/title-page proxy ~7,872 < 8,500
+- [x] combined main/title-page proxy ~7,890 < 8,500
 - [x] abstract ~322 < 350
 - [x] cover ~355 < 500
 - [x] 8 alphabetical keywords
