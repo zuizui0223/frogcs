@@ -5,7 +5,7 @@ on:
     branches:
       - revision/latent-spatial-heterogeneity-v1
     paths:
-      - "NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_LATENT_SPATIAL_HETEROGENEITY_CONTRACT_V0_1.json"
       - "scripts/run_naamp_latent_spatial_heterogeneity.py"
       - ".github/workflows/latent_spatial_heterogeneity.yml"
   workflow_dispatch:
@@ -30,5 +30,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-latent-spatial-heterogeneity-v0-1
-          path: NAAMP_LATENT_SPATIAL_HETEROGENEITY_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_LATENT_SPATIAL_HETEROGENEITY_RECEIPT_V0_1.json
           if-no-files-found: error
