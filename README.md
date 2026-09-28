@@ -25,6 +25,10 @@ Current article surfaces:
 - post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - post-freeze hypothesis-spine receipt: `submission/RC8_POSTFREEZE_HYPOTHESIS_SPINE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
+- title-page template: `JAE_TITLE_PAGE_V0_7.template.md`
+- metadata template: `submission/SUBMISSION_METADATA_TEMPLATE_V0_6.yml`
+- citation template: `submission/CITATION_V0_4.cff.template`
+- human-finalization guide: `submission/HUMAN_FINALIZATION_RC9.md`
 
 **Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC9_V0_1.md`.
 
