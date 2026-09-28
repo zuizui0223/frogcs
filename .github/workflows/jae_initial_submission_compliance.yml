@@ -2,6 +2,7 @@ name: JAE initial-submission compliance audit
 on:
   push:
     branches:
+      - cleanup/provenance-prune-v1
       - cleanup/deep-structure-v1
       - fix/rc11-submission-clean-copyedit-v1
       - main
