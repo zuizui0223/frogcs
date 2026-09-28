@@ -13,7 +13,7 @@ CURRENT_ROOT_FILES={
 }
 CURRENT_ROOT_DIRS={".github","figures_ecology_v1_0","figures_ecology_v1_2","provenance","scripts","submission"}
 CURRENT_SUBMISSION_FILES={"CITATION.cff.template","COVER_LETTER_JAE_V0_13.md","SUBMISSION_METADATA_TEMPLATE_V0_7.yml"}
-SCRIPT_LAYOUT={"naamp":11,"frogid":1,"qa":2,"submission":2}
+SCRIPT_LAYOUT={"naamp":8,"frogid":1,"qa":2,"submission":2}
 CURRENT_WORKFLOWS={"reproduce_current_results.yml","submission_pipeline.yml"}
 CURRENT_PROVENANCE_FILES={
     "CURRENT_ANALYSIS_SPECIFICATIONS.json",
