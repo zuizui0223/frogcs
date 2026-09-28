@@ -62,7 +62,7 @@
 - [x] `NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json`
 - [x] `figures_ecology_v1_0/FIGURE_2_UNIFORM_NULL_COMPARISON_V0_1.svg`
 - [x] `JAE_TITLE_PAGE_V0_6.template.md`
-- [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_4.yml`
+- [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_5.yml`
 - [x] `submission/CITATION_V0_3.cff.template`
 - [x] canonical submission QA
 - [x] anonymous artifact `frogcs-jae-v1-0-rc8-anonymous-docx` (ID 10947563991)
