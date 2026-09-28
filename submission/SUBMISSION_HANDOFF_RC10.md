@@ -22,6 +22,7 @@ RC9 remains the frozen fallback on `release/jae-v1-rc9`.
 - novelty audit: `submission/NOVELTY_AUDIT_V0_10.md`
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_10.md`
 - story freeze: `submission/RC10_STORY_FREEZE_V0_1.json`
+- pre-submission review disposition: `submission/RC10_PRE_SUBMISSION_REVIEW_DISPOSITION_V0_1.md`
 - RC10 scope: `submission/RC10_SCOPE_UNFREEZE_V0_1.json`
 - persistence-null contract: `NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json`
 - persistence-null summary: `NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json`
