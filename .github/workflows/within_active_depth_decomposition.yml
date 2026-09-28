@@ -5,7 +5,7 @@ on:
     branches:
       - revision/within-active-depth-decomposition-v1
     paths:
-      - "NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json"
+      - "provenance/contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json"
       - "scripts/run_naamp_within_active_depth_decomposition.py"
       - ".github/workflows/within_active_depth_decomposition.yml"
   workflow_dispatch:
