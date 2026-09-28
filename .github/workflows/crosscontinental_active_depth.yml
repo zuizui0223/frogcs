@@ -5,9 +5,9 @@ on:
     branches:
       - revision/rc8-crosscontinental-depth-v1
     paths:
-      - "submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json"
+      - "provenance/submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json"
       - "provenance/contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json"
-      - "scripts/run_crosscontinental_active_depth.py"
+      - "scripts/frogid/run_crosscontinental_active_depth.py"
       - ".github/workflows/crosscontinental_active_depth.yml"
   workflow_dispatch:
 
@@ -30,13 +30,13 @@ jobs:
       - name: Install validation dependencies
         run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
       - name: Run frozen cross-continental active-unit depth validation
-        run: python scripts/run_crosscontinental_active_depth.py
+        run: python scripts/frogid/run_crosscontinental_active_depth.py
       - name: Guard decision boundaries
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          p=Path("CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
+          p=Path("provenance/receipts/CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json")
           x=json.loads(p.read_text(encoding="utf-8"))
           assert x["analysis"]=="crosscontinental_active_unit_taxonomic_depth_v0_1"
           assert x["frozen_sample"]["recordings"]==40754
@@ -49,5 +49,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: crossdataset-active-depth
-          path: CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json
+          path: provenance/receipts/CROSSCONTINENTAL_ACTIVE_DEPTH_RECEIPT_V0_1.json
           if-no-files-found: error

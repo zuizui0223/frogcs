@@ -6,7 +6,7 @@ on:
       - revision/detection-quality-robustness-v1
     paths:
       - "provenance/contracts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json"
-      - "scripts/run_naamp_detection_quality_robustness.py"
+      - "scripts/naamp/run_naamp_detection_quality_robustness.py"
       - ".github/workflows/detection_quality_robustness.yml"
   workflow_dispatch:
 
@@ -25,10 +25,10 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
       - name: Run frozen detection-quality robustness
-        run: python scripts/run_naamp_detection_quality_robustness.py
+        run: python scripts/naamp/run_naamp_detection_quality_robustness.py
       - name: Upload receipt
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-detection-quality-robustness-v0-1
-          path: NAAMP_DETECTION_QUALITY_ROBUSTNESS_RECEIPT_V0_1.json
+          path: provenance/receipts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_RECEIPT_V0_1.json
           if-no-files-found: error

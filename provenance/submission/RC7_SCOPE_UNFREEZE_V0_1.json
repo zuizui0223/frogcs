@@ -1,0 +1,20 @@
+{
+  "project": "frog-chorus-synchrony",
+  "artifact": "RC7_SCOPE_UNFREEZE_V0_1",
+  "status": "author_directed_scientific_update",
+  "parent_freeze": "provenance/submission/RC6_STORY_FREEZE_V0_1.json",
+  "reason": "Before submission, the author explicitly requested direct evaluation of geographic generality as the highest-priority remaining weakness.",
+  "authorized_change": [
+    "Add the frozen geographic-generality audit to Results, Discussion and Supporting Information.",
+    "Update wording from broad geographic coverage to robustness to omission of any single sampled state.",
+    "Add literature-based mechanistic interpretation without promoting a new tested species-level mechanism."
+  ],
+  "not_authorized": [
+    "new species-trait endpoint search",
+    "retuning geographic generality after readback",
+    "causal rainfall claim",
+    "claim of uniformly positive state-specific effects",
+    "change to the expansion-without-detectable-homogenization headline"
+  ],
+  "versioning": "Preserve MANUSCRIPT_JAE_V0_8.md as the RC6 frozen record; scientific integration proceeds as MANUSCRIPT_JAE_V0_9.md / RC7 candidate."
+}

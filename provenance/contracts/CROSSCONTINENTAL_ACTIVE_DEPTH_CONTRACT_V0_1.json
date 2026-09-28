@@ -17,7 +17,7 @@
   "australia": {
     "system": "FrogID",
     "sample": {
-      "source_pipeline": "scripts/run_frogid_rain_validation_timezone_repair.py",
+      "source_pipeline": "scripts/frogid/run_frogid_rain_validation_timezone_repair.py",
       "frogid_source_sha256": "f5dd70ed07956e3e37de4fb04692b83a9d726eae2312767c9eda2dcbf61f759d",
       "selection": "first byte SHA256(eventID) < 16",
       "expected_recordings": 40754,

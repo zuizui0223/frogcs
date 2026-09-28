@@ -6,7 +6,7 @@ The final submission workflow is designed so that names, postal address and emai
 
 Copy:
 
-`submission/SUBMISSION_METADATA_TEMPLATE_V0_2.yml`
+`submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
 
 Fill every human field locally.
 
@@ -28,7 +28,7 @@ The archive DOI can be left blank in the secret because the final workflow overw
 
 Install PyYAML and run:
 
-`python scripts/render_submission_metadata.py --metadata <your-private-file.yml> --strict --outdir build/submission-metadata`
+`python scripts/submission/render_submission_metadata.py --metadata <your-private-file.yml> --strict --outdir build/submission-metadata`
 
 Strict mode refuses unresolved placeholders, false approval declarations, invalid author/affiliation references, an invalid DOI, missing license, or missing required JAE submission statements.
 
@@ -42,25 +42,21 @@ Paste the complete YAML contents as the secret value.
 
 Do not commit the completed private YAML to a public branch.
 
-## Final DOI workflow
+## Build the private-metadata initial-submission bundle
 
-After the archive DOI is minted, run:
+After populating `JAE_SUBMISSION_METADATA_YAML`, run:
 
-**Actions → frogcs final JAE submission bundle → Run workflow**
+**Actions → frogcs initial JAE submission bundle → Run workflow**
 
-Enter the published DOI.
-
-The workflow then:
+The active initial-submission workflow:
 
 1. materializes the private metadata only inside the temporary runner;
-2. inserts the real DOI into that private metadata;
-3. validates all human submission fields in strict mode;
-4. generates the final JAE title page, Zenodo metadata, CITATION.cff, archive citation and portal-field summary;
-5. inserts the DOI into a generated copy of the manuscript Data Availability section;
-6. reruns the scientific manuscript guard;
-7. regenerates the anonymous DOCX;
-8. regenerates and verifies both figures;
-9. creates SHA-256 checksums;
-10. uploads one final submission artifact.
+2. validates required human submission fields in strict mode;
+3. renders the title page and portal-field summary;
+4. rebuilds the anonymous manuscript and Supporting Information DOCX files;
+5. assembles generic journal-facing filenames plus a separate internal audit folder;
+6. creates SHA-256 checksums and uploads one bundle artifact.
+
+The archive DOI may remain blank for the initial double-anonymized submission. DOI insertion and public archive finalization should be done only when the archive is actually minted.
 
 The secret contents are not intentionally printed to logs.

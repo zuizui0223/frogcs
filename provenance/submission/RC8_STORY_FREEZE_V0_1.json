@@ -1,0 +1,53 @@
+{
+  "project": "frog-chorus-synchrony",
+  "artifact": "RC8_STORY_FREEZE_V0_1",
+  "status": "frozen_for_submission",
+  "base_commit": "a7d85ec3c38313ca0a1f0b69b64f560ab8c3325d",
+  "manuscript": "MANUSCRIPT_JAE_V1_0.md",
+  "supporting_information": "SUPPORTING_INFORMATION_JAE_RC8_V0_1.md",
+  "title": "Rainfall-associated expansion of frog active communities crosses spatial and taxonomic boundaries without practical homogenization",
+  "frozen_core_claims": [
+    "Recent-rain conditions are associated with expansion of the behaviourally realized acoustic community across active spatial footprint, local alpha richness and route gamma richness.",
+    "The exact species x stop incidence allocation strongly rejects a magnitude-matched uniform-activation null that applies one common log-odds shift to dry-side acoustic propensities; the omnibus Monte Carlo p-value is 0.000999 under kappa 1, 2 and 5.",
+    "Under the primary kappa=2 null, boundary crossing is 92.0 percent observed versus an 80.9 percent null mean and a 74.2-87.4 percent 95 percent null interval.",
+    "Corner expansion and taxonomic deepening are overrepresented relative to uniform activation, whereas spatial spread and within-core rearrangement are underrepresented; within-core rearrangement is 8.0 percent observed versus 19.1 percent expected.",
+    "The rainfall-contrast slope of mean pairwise Sorensen dissimilarity is practically equivalent to zero within the fixed post hoc +/-0.025 slope margin in both the primary and exact-consecutive-year samples.",
+    "The multiscale footprint/alpha/gamma signal is robust to omission of any single sampled state, recorded detection-condition adjustment and the primary three-day protocol-window sensitivity."
+  ],
+  "frozen_interpretation": "Boundary-biased expansion without practical homogenization: recent-rain acoustic-community growth is more taxonomically recruiting and less core-rearranging than a magnitude-matched uniform activation process predicts, while pairwise Sorensen differentiation remains practically stable within a fixed margin.",
+  "frozen_negative_boundaries": [
+    "Uniform-null rejection does not identify a unique biological mechanism.",
+    "Heterogeneous activation thresholds remain a literature-supported Discussion hypothesis, not an identified mechanism.",
+    "Activation geometry remains falsified as a rainfall-specific species trait.",
+    "No rainfall causality, occupancy, abundance, colonization, extinction or demographic-connectivity claim.",
+    "No claim that every state has the same response.",
+    "No claim of exact beta-diversity invariance or equivalence of every beta metric.",
+    "No long-duration rainfall-pulse or physiological half-life claim."
+  ],
+  "inferential_history": {
+    "uniform_null_contract": "provenance/contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json",
+    "uniform_null_repairs": [
+      "provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json",
+      "provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_2.json",
+      "provenance/repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_3.json"
+    ],
+    "story_decision_tree": "provenance/submission/RC8_STORY_DECISION_TREE_V0_1.json",
+    "sorensen_equivalence_contract": "provenance/contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json"
+  },
+  "permitted_pre_submission_changes": [
+    "copyediting and prose compression that do not alter scientific meaning",
+    "citation formatting and literature-positioning edits",
+    "figure typography or layout changes that do not alter plotted quantities or interpretations",
+    "README and repository-authority cleanup",
+    "author metadata, affiliations, CRediT roles, acknowledgements, funding and approvals",
+    "archive DOI, repository license and final submission metadata",
+    "correction of implementation, transcription or reproducibility defects"
+  ],
+  "changes_requiring_explicit_unfreeze": [
+    "new ecological endpoint or hypothesis family",
+    "new null model replacing or supplementing the frozen uniform-activation comparator",
+    "change to the +/-0.025 Sorensen equivalence margin",
+    "new species trait or causal mechanism promoted into the main claim",
+    "change to the title's boundary-biased/practical-homogenization interpretation"
+  ]
+}

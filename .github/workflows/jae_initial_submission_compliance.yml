@@ -2,6 +2,7 @@ name: JAE initial-submission compliance audit
 on:
   push:
     branches:
+      - cleanup/deep-structure-v1
       - fix/rc11-submission-clean-copyedit-v1
       - main
       - release/jae-v1-rc11
@@ -12,7 +13,7 @@ on:
       - "provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json"
       - "submission/COVER_LETTER_JAE_V0_13.md"
       - "JAE_TITLE_PAGE_V0_8.template.md"
-      - "scripts/audit_jae_initial_submission_rc11_2026.py"
+      - "scripts/qa/audit_jae_initial_submission_rc11_2026.py"
       - ".github/workflows/jae_initial_submission_compliance.yml"
   workflow_dispatch:
 jobs:
@@ -23,4 +24,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/audit_jae_initial_submission_rc11_2026.py
+      - run: python scripts/qa/audit_jae_initial_submission_rc11_2026.py

@@ -32,7 +32,7 @@
 
 - [x] `MANUSCRIPT_JAE_V1_3.md`
 - [x] `SUPPORTING_INFORMATION_JAE_RC11_V0_1.md`
-- [x] `submission/RC11_STORY_FREEZE_V0_1.json`
+- [x] `provenance/submission/RC11_STORY_FREEZE_V0_1.json`
 - [x] `provenance/contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json`
 - [x] `provenance/summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json`
 - [x] `submission/NOVELTY_AUDIT_V0_11.md`
@@ -41,7 +41,7 @@
 - [x] `submission/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md`
 - [x] `JAE_TITLE_PAGE_V0_8.template.md`
 - [x] `submission/SUBMISSION_METADATA_TEMPLATE_V0_7.yml`
-- [x] `submission/CITATION_V0_5.cff.template`
+- [x] `submission/CITATION.cff.template`
 
 ## JAE format
 

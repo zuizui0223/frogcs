@@ -1,0 +1,35 @@
+{
+  "project": "frog-chorus-synchrony",
+  "artifact": "RC7_POSTFREEZE_PROTOCOL_WINDOW_SENSITIVITY_RECEIPT_V0_1",
+  "status": "documented_design_caveat_robustness_repair",
+  "parent_freeze": "provenance/submission/RC7_STORY_FREEZE_V0_1.json",
+  "trigger": "Post-freeze literature/protocol review identified that Gulf Coast and Great Plains NAAMP programmes targeted surveys within three days of rainfall.",
+  "contract": "provenance/contracts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json",
+  "summary": "provenance/summaries/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_SUMMARY_V0_1.json",
+  "merged_pr": 47,
+  "merge_commit": "bc2dd79cd4359708120d818e4cc7997e2250979b",
+  "primary_result": {
+    "rule": "dry_days_since_rain >= 4",
+    "n_pairs": 1769,
+    "n_routes": 425,
+    "n_states": 20,
+    "decision": "strong_pass",
+    "active_stops_beta": 0.3743640044391113,
+    "alpha_beta": 0.08385863251513427,
+    "gamma_beta": 0.2890486718608136
+  },
+  "secondary_result": {
+    "rule": "wet_days_since_rain >= 4",
+    "n_pairs": 178,
+    "decision_role": "diagnostic_only",
+    "interpretation": "All point estimates positive; alpha and gamma imprecise."
+  },
+  "authorized_interpretation": "The headline multiscale association is not confined to comparisons entirely inside the NAAMP 0-3 day rain-target window.",
+  "unchanged_boundaries": [
+    "rainfall causality is not established",
+    "programme scheduling and time-varying confounding are not eliminated",
+    "no long-duration rainfall endpoint is authorized",
+    "title and expansion-without-detectable-homogenization headline remain unchanged"
+  ],
+  "scientific_unfreeze": false
+}
