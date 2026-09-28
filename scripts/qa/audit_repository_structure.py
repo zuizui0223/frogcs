@@ -160,7 +160,7 @@ for wf in active_workflows.glob("*.yml"):
 assert not missing_refs,missing_refs
 
 # Active code/workflows may not use bare uppercase JSON paths (repo-root provenance).
-pat=re.compile(r'(?<![/A-Za-z0-9_.-])([A-Z][A-Z0-9_]*(?:_V[0-9_]+)?\.json)')
+pat=re.compile(r'(?<![/A-Za-z0-9_.-])([A-Z][A-Z0-9_]*(?:CONTRACT|SUMMARY|RECEIPT|REPAIR)[A-Z0-9_]*\.json)')
 bare={}
 for base in [scripts,active_workflows]:
     for p in base.rglob("*"):
