@@ -182,6 +182,13 @@ def build():
             first_line = 0
         format_paragraph(p, first_line=first_line)
 
+        # Keep a pipe-delimited Markdown table header and separator with the
+        # first data row, avoiding orphaned headers at the bottom of a page.
+        if line.startswith("|") and re.match(r"^\|\s*:?-{2,}", line):
+            if len(doc.paragraphs) >= 2:
+                doc.paragraphs[-2].paragraph_format.keep_with_next = True
+            p.paragraph_format.keep_with_next = True
+
     for paragraph in doc.paragraphs:
         for run in paragraph.runs:
             if run.font.size is None:
