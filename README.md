@@ -21,6 +21,8 @@ Current article surfaces:
 - reviewer attack matrix: `submission/REVIEWER_ATTACK_MATRIX_V0_7.md`
 - submission handoff: `submission/SUBMISSION_HANDOFF_RC8.md`
 - story freeze: `submission/RC8_STORY_FREEZE_V0_1.json`
+- current JAE compliance audit: `submission/JAE_INITIAL_SUBMISSION_AUDIT_2026_09_28.md`
+- post-freeze compliance receipt: `submission/RC8_POSTFREEZE_JAE_INITIAL_SUBMISSION_COMPLIANCE_RECEIPT_V0_1.json`
 - main figures: `figures_ecology_v1_0/`
 
 **Canonical SI:** `SUPPORTING_INFORMATION_JAE_RC8_V0_1.md`.
