@@ -96,18 +96,43 @@ assert archive.is_dir()
 assert {p.name for p in archive.iterdir()} == {"README.md"}, [p.name for p in archive.iterdir()]
 
 prov=ROOT/"provenance"
-for name in [
-    "contracts","summaries","receipts","repairs","metadata","submission",
-    "submission_docs","docs",
-]:
-    assert (prov/name).is_dir(),f"missing provenance section: {name}"
-
-root_manifest=json.loads((prov/"ROOT_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-submission_manifest=json.loads((prov/"submission/SUBMISSION_JSON_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-script_manifest=json.loads((prov/"SCRIPT_LAYOUT_MIGRATION_MANIFEST.json").read_text(encoding="utf-8"))
-assert root_manifest["moved_json_files"]==141
-assert sum(root_manifest["categories"].values())==141
-assert script_manifest["moved_scripts"]==69
+CURRENT_PROVENANCE_FILES={
+    "README.md",
+    "contracts/CROSSCONTINENTAL_ACTIVE_DEPTH_CONTRACT_V0_1.json",
+    "contracts/FROGID_TIMEZONE_REPAIR_CONTRACT_V0_1.json",
+    "contracts/NAAMP_DETECTION_QUALITY_ROBUSTNESS_CONTRACT_V0_1.json",
+    "contracts/NAAMP_ECOLOGICAL_PULSE_CONTRACT_V0_1.json",
+    "contracts/NAAMP_GEOGRAPHIC_GENERALITY_AUDIT_CONTRACT_V0_1.json",
+    "contracts/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_CONTRACT_V0_1.json",
+    "contracts/NAAMP_PERSISTENCE_PRESERVING_NULL_CONTRACT_V0_1.json",
+    "contracts/NAAMP_PROTOCOL_WINDOW_SENSITIVITY_CONTRACT_V0_1.json",
+    "contracts/NAAMP_SAME_OBSERVER_ROBUSTNESS_CONTRACT_V0_1.json",
+    "contracts/NAAMP_SORENSEN_EQUIVALENCE_CONTRACT_V0_1.json",
+    "contracts/NAAMP_SPATIAL_TAXONOMIC_ACTIVATION_CONTRACT_V0_1.json",
+    "contracts/NAAMP_UNIFORM_ACTIVATION_NULL_CONTRACT_V0_1.json",
+    "contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
+    "docs/CURRENT_PAPER_OVERVIEW.md",
+    "repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json",
+    "submission/RC10_SCOPE_UNFREEZE_V0_1.json",
+    "submission/RC10_STORY_DECISION_TREE_V0_1.json",
+    "submission/RC11_STORY_FREEZE_V0_1.json",
+    "submission/RC8_CROSSCONTINENTAL_DEPTH_UNFREEZE_V0_1.json",
+    "submission_docs/JAE_INITIAL_SUBMISSION_AUDIT_RC11_2026_09_28.md",
+    "submission_docs/NOVELTY_AUDIT_V0_11.md",
+    "submission_docs/REVIEWER_ATTACK_MATRIX_V0_11.md",
+    "submission_docs/SUBMISSION_HANDOFF_RC11.md",
+    "summaries/CROSSCONTINENTAL_ACTIVE_DEPTH_SUMMARY_V0_1.json",
+    "summaries/NAAMP_METACOMMUNITY_ALPHA_BETA_GAMMA_SUMMARY_V0_1.json",
+    "summaries/NAAMP_PERSISTENCE_PRESERVING_NULL_SUMMARY_V0_1.json",
+    "summaries/NAAMP_SAME_OBSERVER_ROBUSTNESS_SUMMARY_V0_1.json",
+    "summaries/NAAMP_SORENSEN_EQUIVALENCE_SUMMARY_V0_1.json",
+    "summaries/NAAMP_UNIFORM_ACTIVATION_NULL_SUMMARY_V0_1.json",
+}
+prov_files={p.relative_to(prov).as_posix() for p in prov.rglob("*") if p.is_file()}
+assert prov_files==CURRENT_PROVENANCE_FILES, {
+    "unexpected_provenance_files":sorted(prov_files-CURRENT_PROVENANCE_FILES),
+    "missing_provenance_files":sorted(CURRENT_PROVENANCE_FILES-prov_files),
+}
 
 # Current templates must describe the current paper and contain no superseded story.
 citation=(submission/"CITATION.cff.template").read_text(encoding="utf-8")
@@ -128,21 +153,21 @@ for phrase in [
         except UnicodeDecodeError:continue
         assert phrase not in text,(p.name,phrase)
 
-# No active surface may retain a pre-migration path.
-mappings={}
-mappings.update(root_manifest["mapping"])
-mappings.update(submission_manifest["mapping"])
-mappings.update(script_manifest["mapping"])
-stale={}
+# Active surfaces must use categorized script/provenance paths rather than historical flat paths.
+legacy={}
+legacy_patterns=[
+    re.compile(r'(?<![A-Za-z0-9_./-])scripts/(?:run_|audit_|build_|render_|finalize_)[A-Za-z0-9_.-]+\\.py'),
+    re.compile(r'(?<![A-Za-z0-9_./-])submission/RC[0-9][A-Za-z0-9_.-]*\\.json'),
+]
 for base in [scripts,active_workflows,submission,ROOT/"README.md"]:
     paths=[base] if base.is_file() else list(base.rglob("*"))
     for p in paths:
         if not p.is_file() or p.suffix.lower() not in {".py",".yml",".yaml",".md",".json",".txt",".cff"}:
             continue
         text=p.read_text(encoding="utf-8")
-        bad=[old for old,target in mappings.items() if old in text and target not in text]
-        if bad:stale[str(p.relative_to(ROOT))]=sorted(bad)
-assert not stale,stale
+        hits=sorted({m.group(0) for pat in legacy_patterns for m in pat.finditer(text)})
+        if hits:legacy[str(p.relative_to(ROOT))]=hits
+assert not legacy,legacy
 
 # Active workflow file references must resolve to live paths.
 missing_refs={}
