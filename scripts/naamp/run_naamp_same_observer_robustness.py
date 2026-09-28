@@ -261,7 +261,7 @@ def main():
         output["persistence_results_by_anchor"] = persistence_results
         output["decision"] = classify(models, uniform_results, persistence_results)
 
-    Path("NAAMP_SAME_OBSERVER_ROBUSTNESS_RECEIPT_V0_1.json").write_text(
+    Path("provenance/receipts/NAAMP_SAME_OBSERVER_ROBUSTNESS_RECEIPT_V0_1.json").write_text(
         json.dumps(output, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     print(json.dumps(output, indent=2, sort_keys=True))
