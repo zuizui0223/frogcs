@@ -113,6 +113,7 @@ CURRENT_PROVENANCE_FILES={
     "contracts/NAAMP_WITHIN_ACTIVE_DEPTH_CONTRACT_V0_1.json",
     "docs/CURRENT_PAPER_OVERVIEW.md",
     "repairs/NAAMP_UNIFORM_ACTIVATION_NULL_REPAIR_V0_1_1.json",
+    "receipts/README.md",
     "submission/RC10_SCOPE_UNFREEZE_V0_1.json",
     "submission/RC10_STORY_DECISION_TREE_V0_1.json",
     "submission/RC11_STORY_FREEZE_V0_1.json",
