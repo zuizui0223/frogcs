@@ -1,0 +1,37 @@
+name: NWI multipoint smoke
+on:
+  push:
+    branches: [exploration/nwi-multipoint-smoke-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Query multipoint 500m
+        run: |
+          python - <<'PY'
+          import json, urllib.parse, urllib.request
+          Q="https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query"
+          pts={"points":[[-86.82,34.55],[-86.80,34.56],[-86.78,34.57]],"spatialReference":{"wkid":4326}}
+          p={
+            "f":"json","where":"1=1",
+            "geometry":json.dumps(pts,separators=(",",":")),
+            "geometryType":"esriGeometryMultipoint","inSR":"4326",
+            "spatialRel":"esriSpatialRelIntersects",
+            "distance":"500","units":"esriSRUnit_Meter",
+            "returnIdsOnly":"true","returnGeometry":"false"
+          }
+          u=Q+"?"+urllib.parse.urlencode(p)
+          req=urllib.request.Request(u,headers={"User-Agent":"frogcs-nwi-multipoint-smoke/0.1"})
+          with urllib.request.urlopen(req,timeout=60) as r:
+              obj=json.loads(r.read().decode())
+          print(json.dumps(obj)[:5000])
+          if "error" in obj: raise SystemExit(obj["error"])
+          ids=obj.get("objectIds") or []
+          print("N_IDS",len(ids))
+          if not ids: raise SystemExit("zero ids")
+          PY
