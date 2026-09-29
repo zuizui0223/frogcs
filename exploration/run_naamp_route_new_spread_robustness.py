@@ -89,10 +89,12 @@ def main():
     for p in psub.itertuples(index=False):
         key=(str(p.State),str(p.RouteNumber),str(p.RunNumber))
         dry_ids[key].add(str(p.dry_RunID))
+    selected_keys={d["key"] for d in dsub}
+    pools_selected={k:pools[k] for k in selected_keys}
     stops={d["key"]:d["stops"] for d in dsub}
-    probs=uniform.baseline_probs(KAPPA,pools,dry_ids,stops,ss)
+    probs=uniform.baseline_probs(KAPPA,pools_selected,dry_ids,stops,ss)
     def qu(d): return uniform.solve_shift(probs[d["key"]],d["wet_k"])
-    hist=persistence.historical_cell_probs(pools,dry_ids,stops,ss)
+    hist=persistence.historical_cell_probs(pools_selected,dry_ids,stops,ss)
     def qp(d):
         p=(1-ANCHOR)*hist[d["key"]]+ANCHOR*d["dry"].astype(float)
         p=np.clip(p,1e-8,1-1e-8)
