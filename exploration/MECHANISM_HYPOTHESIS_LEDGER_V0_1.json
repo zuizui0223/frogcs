@@ -1,0 +1,96 @@
+{
+  "analysis": "rainfall_calling_mechanism_hypothesis_ledger_v0_1",
+  "status": "living_exploration_ledger_non_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "hypotheses": {
+    "H1_uniform_amplification": {
+      "hypothesis": "Rain simply raises calling/detection probability uniformly across already available species x stop cells.",
+      "status": "rejected_by_current_RC11_nulls",
+      "evidence": [
+        "Observed four-component allocation rejects magnitude-matched uniform activation.",
+        "Observed allocation also rejects a 75% dry-state persistence-preserving uniform activation null."
+      ]
+    },
+    "H2_weak_call_detection_threshold_only": {
+      "hypothesis": "The apparent recruitment is mainly weak CallingIndex-1 calls crossing the observer detection threshold after rain.",
+      "status": "substantially_weakened",
+      "evidence": [
+        "Full-sample strong 0->CallingIndex 2/3 activation score has positive rainfall slope with 95% CI above zero.",
+        "Strong CI2/3 activation contributes ~87.1% of the new-activation rainfall coefficient.",
+        "The result persists in same-observer pairs (~86.4% of activation coefficient).",
+        "Recorded hearing/noise/wind adjustments and same-observer analyses already retain headline expansion."
+      ],
+      "residual_uncertainty": "CallingIndex is ordinal and all unmeasured acoustic detectability cannot be eliminated."
+    },
+    "H3_simple_interspecific_social_cue": {
+      "hypothesis": "Rain starts some callers, and route-new species preferentially join stops where a chorus was already present.",
+      "status": "not_supported_by_coarse_matrix_prediction",
+      "evidence": [
+        "Observed fraction of route-new rainfall slope entering dry-active stops is ~0.519.",
+        "This lies inside both uniform and persistence null 95% intervals and is near their means."
+      ],
+      "residual_uncertainty": "Dry-active status is only a coarse proxy; species-specific or within-night social facilitation remains possible."
+    },
+    "H4_simple_new_site_opening": {
+      "hypothesis": "Rain primarily creates new usable wet locations, so route-new species disproportionately enter previously inactive stops.",
+      "status": "not_supported_as_sole_allocation_rule",
+      "evidence": [
+        "Route-new recruitment is not shifted below the null expectation for dry-active allocation.",
+        "Taxonomic recruitment excess is much larger than the spatial-axis excess."
+      ],
+      "residual_uncertainty": "Mapped or survey-night hydrology has not yet been tested directly."
+    },
+    "H5_stable_species_rain_trait": {
+      "hypothesis": "Species have transferable rainfall sensitivities that by themselves explain boundary-biased recruitment.",
+      "status": "insufficient_in_full_sample",
+      "evidence": [
+        "Route-cross-fit species-specific shift null is rejected in all 4,236 pairs.",
+        "Adding strong dry-state persistence remains rejected."
+      ],
+      "caution": "An earlier activation-geometry species ranking failed placebo tests and is not a rainfall-specific trait."
+    },
+    "H6_stable_physical_stop_rain_trait": {
+      "hypothesis": "Some physical listening stops are consistently more rainfall-responsive than others.",
+      "status": "not_supported",
+      "evidence": [
+        "Temporally cross-fit site shifts have near-zero early/late correlation and ~50.8% sign agreement.",
+        "Permuting stop-specific shifts within route does not destroy additive-null fit on the reduced temporal subset."
+      ]
+    },
+    "H7_event_contingent_breeding_activation": {
+      "hypothesis": "Rain-associated conditions move species and local breeding contexts across behavioural/reproductive activation thresholds; the relevant combination varies among events rather than being a fixed species or fixed-site trait.",
+      "status": "best_current_working_hypothesis_not_unique_mechanism",
+      "supporting_evidence": [
+        "New participation dominates CallingIndex change.",
+        "Most new-participation slope is direct CI2/3 activation.",
+        "Taxonomic recruitment exceeds spatial recruitment relative to nulls.",
+        "Stable species-only and stable-site-only explanations are inadequate in the strongest full-sample comparisons.",
+        "Physical stop relocation and simple chorus-attraction allocation do not explain the result."
+      ],
+      "unresolved_components": [
+        "Hydration/moisture physiology",
+        "Temporary breeding-site inundation or hydroperiod",
+        "Atmospheric cues such as humidity/barometric pressure",
+        "Species-specific reproductive phenology",
+        "Non-additive local environmental context"
+      ]
+    },
+    "H8_universal_threshold_recruitment": {
+      "hypothesis": "Threshold-dominated recruitment after rain is a general rule across frog communities and continents.",
+      "status": "not_established",
+      "evidence_against_overclaim": [
+        "Strict disjoint-route two-fold NAAMP gate fails narrowly.",
+        "AnuraSet INCT20955 does not show threshold dominance.",
+        "AnuraSet INCT41 has recent-rain-direction slopes but does not meet threshold-dominance gate.",
+        "External effort-complete multi-site matrix replication is still missing."
+      ],
+      "broader_pattern_still_supported": "Rain-associated active-unit taxonomic deepening has cross-dataset consistency in NAAMP and Australian FrogID."
+    }
+  },
+  "active_next_tests": {
+    "measured_hydrology": "NWI water-regime linkage to physical NAAMP SiteIDs; prefixed eligibility gate and pair-fixed-effect hydroperiod interaction.",
+    "atmospheric_cues": "Raw NAAMP schema audit for survey-time/weather fields; only proceed if temporal fields support reproducible ERA5 alignment.",
+    "taxonomic_breadth": "Quantify whether strong threshold recruitment is spread across species or driven by a few contributors.",
+    "geographic_breadth": "Leave-one-state-out CallingIndex threshold-recruitment audit."
+  }
+}
