@@ -1,0 +1,182 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_3",
+  "status": "exploratory_evidence_summary_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "headline": {
+    "naamp_process": "Within NAAMP, rainfall-associated acoustic change is threshold/recruitment dominated rather than primarily intensification among species x stop cells already active in both surveys.",
+    "naamp_geometry": "Within the full NAAMP sample, incidence allocation is disproportionately taxonomic: route-new species recruitment exceeds new-stop recruitment relative to both current null families.",
+    "deeper_cause": "Not uniquely identified. Full-sample cross-route species-specific nulls reject, but stable physical-stop response is unsupported and species-only is nonrejected on the temporally restricted subset.",
+    "universality": "Not established. Strict disjoint-route replication fails narrowly, and two independent Neotropical AnuraSet site tests do not satisfy the prefixed threshold-dominance replication rule."
+  },
+  "naamp": {
+    "calling_index_full": {
+      "pairs": 4236,
+      "routes": 585,
+      "total_beta": 2.8410419576031223,
+      "activation_beta": 1.8548575453289868,
+      "shared_positive_intensity_beta": 0.19648401136771304,
+      "activation_share": 0.6528793213930071,
+      "shared_intensity_share": 0.06915913749245683,
+      "threshold_dominant": true
+    },
+    "calling_index_same_observer": {
+      "pairs": 3152,
+      "routes": 500,
+      "observers": 542,
+      "total_beta": 3.020139820510419,
+      "activation_beta": 2.0550228046574146,
+      "shared_positive_intensity_beta": 0.18852361498490422,
+      "activation_share": 0.6804396242522657,
+      "shared_intensity_share": 0.06242214804248459,
+      "threshold_dominant": true
+    },
+    "taxonomic_vs_spatial": {
+      "route_new_species_share": 0.767795525238989,
+      "new_stop_share": 0.5214772488387415,
+      "taxonomic_minus_spatial": 0.24631827640024753,
+      "uniform_null_ci95": [
+        -0.006746402955157603,
+        0.162324736209154
+      ],
+      "persistence_null_ci95": [
+        0.03933771858952059,
+        0.18098284331686865
+      ],
+      "p_uniform": 0.000999000999000999,
+      "p_persistence": 0.000999000999000999,
+      "classification": "taxonomic_axis_excess_supported_under_both_nulls"
+    },
+    "full_sample_species_shift_null": {
+      "crossfit_species_p": 0.001998001998001998,
+      "species_plus_persistence_p": 0.001998001998001998,
+      "decision": "transferable species-level rainfall response alone, even with strong dry-state persistence, is insufficient in the full 4,236-pair sample"
+    },
+    "disjoint_route_replication": {
+      "strict_both_folds_pass": false,
+      "fold_A": {
+        "pairs": 2185,
+        "activation_share": 0.6649360264150784,
+        "activation_beta": 1.0052163887823544,
+        "activation_ci95": [
+          -0.07397393244725614,
+          2.084406710011965
+        ],
+        "threshold_gate": false,
+        "taxonomic_axis_gate": true
+      },
+      "fold_B": {
+        "pairs": 2051,
+        "activation_share": 0.647645134246018,
+        "activation_beta": 2.5906141381151917,
+        "activation_ci95": [
+          0.5060228901214927,
+          4.675205386108891
+        ],
+        "threshold_gate": true,
+        "taxonomic_axis_persistence_p": 0.04095904095904096,
+        "taxonomic_axis_gate": false
+      },
+      "interpretation": "Both disjoint route sets point in the same direction, but each narrowly fails a different strict prefixed criterion."
+    },
+    "temporal_site_diagnostics": {
+      "pairs": 3437,
+      "routes": 534,
+      "site_only_p": 0.023976023976023976,
+      "additive_species_site_p": 0.5104895104895105,
+      "species_only_same_subset_p": 0.11288711288711288,
+      "site_shift_temporal_pearson": -0.00525557116144499,
+      "site_shift_temporal_spearman": 0.008542597350542665,
+      "site_shift_sign_agreement": 0.5082872928176796,
+      "permuted_site_identity_p": [
+        0.20279720279720279,
+        0.19080919080919082
+      ],
+      "conclusion": "The nonrejected additive null does not identify a stable physical-site mechanism: site shifts are temporally unstable, site-label permutation does not destroy fit, and species-only is already nonrejected on this reduced subset."
+    },
+    "independent_site_context_available": {
+      "coordinates_file": "NAAMP ScienceBase Coordinates.csv",
+      "coordinate_rows": 12064,
+      "columns": [
+        "RouteNumber",
+        "SiteID",
+        "lat",
+        "lon"
+      ],
+      "implication": "Measured environmental context can now be attached to physical stops instead of interpreting unstable empirical site shifts as mechanism."
+    }
+  },
+  "external_tests": {
+    "australia_hoefer_2026": {
+      "matrix_replication_eligible": false,
+      "reason": "Public positive-detection table lacks a complete plot-day effort frame, so missing rows cannot be treated as sampled absences."
+    },
+    "nps_secn": {
+      "explicit_location_season_notdetected": true,
+      "nightly_matrix_reconstructable": false,
+      "reason": "Location-season NotDetected and effort counts are available, but SignalDate is a representative species-signal date rather than a complete nightly species x site state table."
+    },
+    "anuraset_inct20955": {
+      "biome": "Atlantic Forest",
+      "recordings": 470,
+      "dates": 111,
+      "active_richness_beta_dry": -0.05896952583661644,
+      "active_richness_ci95": [
+        -0.22330898847887035,
+        0.10536993680563747
+      ],
+      "excess_intensity_beta_dry": 0.15482163534673504,
+      "excess_intensity_ci95": [
+        0.028233069572471875,
+        0.28141020112099824
+      ],
+      "total_ci_beta_dry": 0.09585210951011842,
+      "threshold_dominant": false,
+      "conclusion": "No prefixed threshold-dominance replication; annotated active richness points weakly toward recent-rain recruitment but is imprecise, while excess intensity is higher on drier observations."
+    },
+    "anuraset_inct41": {
+      "biome": "Cerrado",
+      "recordings": 366,
+      "dates": 61,
+      "coordinate_handling": "Public locality bounding box propagated to both feasible ERA5 0.25-degree cells.",
+      "both_cells_slope_signs": {
+        "total_ci": "negative_dryness",
+        "active_richness": "negative_dryness",
+        "excess_intensity": "negative_dryness"
+      },
+      "threshold_dominant_all_cells": false,
+      "cell_west": {
+        "active_richness_beta_dry": -0.15884631286131773,
+        "active_richness_p": 0.05886449029105335,
+        "excess_intensity_beta_dry": -0.028457479333960947
+      },
+      "cell_east": {
+        "active_richness_beta_dry": -0.13376998835270856,
+        "active_richness_p": 0.16820831055037888,
+        "excess_intensity_beta_dry": -0.15157143041120827,
+        "excess_intensity_p": 0.03553963792782629
+      },
+      "conclusion": "Direction of recent-rain increase is coordinate-robust, but the prefixed threshold-dominance rule is not met; the relative recruitment-versus-intensification contribution is coordinate-sensitive."
+    },
+    "anuraset_design_boundary": "Weak labels are a stratified ML annotation sample chosen across breeding-season months and nighttime calling periods, not continuous unbiased monitoring effort."
+  },
+  "current_ecological_read": {
+    "strongest_supported": [
+      "Within NAAMP, rainfall-associated acoustic change is mainly entry across activity thresholds rather than stronger CallingIndex among already-active species x stop cells.",
+      "Within the full NAAMP sample, the boundary excess is more taxonomic than spatial.",
+      "These NAAMP conclusions survive same-observer restriction and full-sample nulls allowing cross-fit species-specific response."
+    ],
+    "not_supported": [
+      "A stable rainfall-response trait for species.",
+      "A stable physical-stop rainfall sensitivity.",
+      "A unique hydrological, hydration, social-cue, or breeding-site mediator.",
+      "A required species x site interaction.",
+      "A continent-general or worldwide threshold-recruitment law."
+    ],
+    "external_pattern": "Neotropical tests are heterogeneous: one Atlantic Forest site does not show a recent-rain total-activity effect, whereas one Cerrado site has recent-rain-direction slopes but does not meet the threshold-dominance gate.",
+    "next_decisive_tests": [
+      "Join NAAMP physical stop coordinates to independent wetland/hydrological covariates and test measured context rather than empirical site slopes.",
+      "Expand AnuraSet only where site coordinates are independently documented, propagating location uncertainty rather than guessing points.",
+      "Find an external effort-complete multi-location acoustic dataset for direct species x site boundary replication."
+    ]
+  }
+}
