@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_prior_site_memory_within_species_v0_1",
+  "status": "post_readback_species_control_fixed_before_endpoint",
+  "question": "Holding both the matched pair and species identity fixed, does increasing rainfall contrast preferentially reactivate full choruses at physical sites that the same species used in earlier years?",
+  "population": "Physically stable matched pairs. Candidate species must have been detected in the same State x RouteNumber x RunNumber stratum strictly before the earlier year of the pair and must be absent from the focal dry route.",
+  "cell_unit": "Candidate species x one of the ten physical SiteIDs in the wet run.",
+  "exposure": "prior_same_site=1 if the same species was detected at that SiteID in an eligible run strictly before the earlier survey year, else 0.",
+  "outcome": {
+    "primary": "wet_ci3 indicator",
+    "sensitivity": "wet_ci2plus indicator"
+  },
+  "fixed_effect_design": {
+    "group": "matched pair x species",
+    "eligibility": "Group must contain both prior_same_site=1 and prior_same_site=0 cells.",
+    "transformation": "Demean outcome, prior_same_site and prior_same_site*rain_contrast within pair x species.",
+    "model": "demeaned outcome ~ demeaned prior_same_site + demeaned(prior_same_site*rain_contrast), no intercept.",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "interpretation": "The interaction coefficient compares sites for the same species in the same matched comparison, removing all pair-level conditions and species-level propensity."
+  },
+  "primary_prediction": "Coefficient on demeaned(prior_same_site*rain_contrast) >0 with complete 95% CI >0.",
+  "gate": ">=500 informative pair x species groups, >=5000 cells and >=200 routes.",
+  "sensitivity": "Repeat on same-observer pairs; gate >=350 groups, >=3500 cells and >=150 routes.",
+  "interpretation": [
+    "Support is direct evidence of rainfall-dependent reactivation of previously used species-site combinations, independent of species identity and pair-level conditions.",
+    "The analysis still does not identify individual frogs, continuous occupancy, reproductive success, or the proximal physiological trigger.",
+    "No causal rainfall claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
