@@ -1,0 +1,40 @@
+name: NWI API minimal smoke
+on:
+  push:
+    branches: [exploration/nwi-api-smoke-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Query NWI IDs and features
+        run: |
+          python - <<'PY'
+          import json, urllib.parse, urllib.request
+          Q="https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query"
+          bbox=(-86.87,34.53,-86.70,34.58)
+          p={
+            "f":"json","where":"1=1",
+            "geometry":",".join(map(str,bbox)),
+            "geometryType":"esriGeometryEnvelope","inSR":"4326",
+            "spatialRel":"esriSpatialRelIntersects",
+            "returnIdsOnly":"true","returnGeometry":"false",
+          }
+          u=Q+"?"+urllib.parse.urlencode(p)
+          with urllib.request.urlopen(urllib.request.Request(u,headers={"User-Agent":"frogcs-nwi-api-smoke/0.1"}),timeout=60) as r:
+              ids=json.loads(r.read().decode())
+          print("IDS",json.dumps(ids)[:1000])
+          xs=ids.get("objectIds") or []
+          if not xs:
+              raise SystemExit("no objectIds")
+          p2={"f":"geojson","objectIds":",".join(str(x) for x in xs[:10]),"outSR":"4326","outFields":"*","returnGeometry":"true"}
+          u2=Q+"?"+urllib.parse.urlencode(p2)
+          with urllib.request.urlopen(urllib.request.Request(u2,headers={"User-Agent":"frogcs-nwi-api-smoke/0.1"}),timeout=60) as r:
+              feat=json.loads(r.read().decode())
+          print("FEATURES",len(feat.get("features") or []))
+          print(json.dumps((feat.get("features") or [])[:1])[:2000])
+          PY
