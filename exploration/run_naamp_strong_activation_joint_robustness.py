@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import importlib.util,json
+import importlib.util,json,time,urllib.error
 from collections import defaultdict
 from pathlib import Path
 import numpy as np,pandas as pd,statsmodels.formula.api as smf
@@ -63,8 +63,20 @@ def fit(df,response):
     b=float(m.params["rain_contrast"]); se=float(m.bse["rain_contrast"])
     return {"beta":b,"se":se,"ci95":[b-Q*se,b+Q*se],"p":float(m.pvalues["rain_contrast"]),"n_pairs":int(len(df)),"n_routes":int(df.route_cluster.nunique())}
 
+def load_with_retry():
+    last=None
+    for i in range(6):
+        try:
+            return base.load()
+        except urllib.error.HTTPError as e:
+            last=e
+            if getattr(e,"code",None) not in (403,429,500,502,503,504):
+                raise
+            time.sleep(2*(i+1))
+    raise RuntimeError(f"ScienceBase load failed after retries: {last}")
+
 def main():
-    raw=base.load(); runs,sets=base.build_runs(raw); eligible=set(runs["RunID"].astype(str))
+    raw=load_with_retry(); runs,sets=base.build_runs(raw); eligible=set(runs["RunID"].astype(str))
     sampled,_=spatial.stop_matrix(raw,eligible)
     allpairs,same=sameobs.same_observer_pairs(raw,runs,sets)
     site=site_map(raw,eligible)
