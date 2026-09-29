@@ -1,0 +1,28 @@
+{
+  "analysis": "naamp_route_new_context_allocation_v0_1",
+  "status": "post_readback_mechanism_diagnostic_fixed_before_endpoint",
+  "question": "Among rainfall-associated route-new species recruitment, is entry preferentially allocated to stops where other species were already calling in the dry survey, as expected under a simple chorus/social-cue facilitation hypothesis?",
+  "estimand": {
+    "observed": "taxonomic_deepening_beta / (corner_expansion_beta + taxonomic_deepening_beta)",
+    "meaning": "Fraction of the route-new incidence rainfall slope allocated to dry-active rather than dry-inactive stops.",
+    "social_cue_prediction": "Observed fraction above the upper 95% null bound under both primary null families.",
+    "new_site_opening_prediction": "Observed fraction below the lower 95% null bound under both primary null families.",
+    "neutral": "Observed fraction inside either null interval."
+  },
+  "nulls": [
+    "uniform activation kappa=2",
+    "persistence-preserving activation anchor=0.75"
+  ],
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "interpretation_boundary": [
+    "Dry-active stop status is a coarse proxy for presence of an acoustic chorus, not measured playback or social attraction.",
+    "A null result does not rule out species-specific social cues.",
+    "A low fraction is not direct proof of inundation or new breeding-site formation.",
+    "No causal rainfall claim.",
+    "No RC11 submission change authorized."
+  ],
+  "retuning_after_readback": false
+}
