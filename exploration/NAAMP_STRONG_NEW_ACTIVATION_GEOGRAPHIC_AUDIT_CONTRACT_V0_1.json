@@ -1,0 +1,21 @@
+{
+  "analysis": "naamp_strong_new_activation_geographic_audit_v0_1",
+  "status": "post_readback_generality_audit_fixed_before_endpoint",
+  "endpoint": "strong_new_score (dry=0 -> wet CallingIndex 2-3 weighted by wet CallingIndex).",
+  "sample": "Frozen 4,236 matched NAAMP pairs.",
+  "leave_one_state_out": {
+    "model": "Original strong_new_score matched model with State and RunNumber fixed effects, route-clustered covariance after excluding one state.",
+    "pass_rule": "All leave-one-state-out rain_contrast coefficients remain >0.",
+    "strong_rule": "Descriptive only: report whether all leave-one-state-out 95% CIs remain >0; this is not required for geographic robustness."
+  },
+  "state_specific": {
+    "eligibility": ">=50 pairs and >=8 routes in a state.",
+    "model": "strong_new_score ~ rain_contrast + temp_difference + doy_difference + year_gap + RunNumber, clustered by route.",
+    "use": "Report effect-size directions and intervals only. No per-state significance gate."
+  },
+  "interpretation": {
+    "pass": "Strong new chorus activation is not controlled by any single sampled state.",
+    "boundary": "This does not mean every state has the same effect or establish continental universality."
+  },
+  "retuning_after_readback": false
+}
