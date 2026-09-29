@@ -1,0 +1,15 @@
+{
+  "analysis": "naamp_route_new_species_compactness_v0_1",
+  "status": "post_distance_readback_directional_diagnostic_fixed_before_exact_lower_tail_p",
+  "parent": "NAAMP_ROUTE_NEW_SPECIES_DISTANCE_RECEIPT_V0_1",
+  "observation_motivating_test": "The prefixed broad-span prediction failed because observed total and mean route-new spans lay below both null 95% intervals, despite the separately prefixed extra-stop incidence excess.",
+  "question": "Is the rainfall-associated multi-stop expression of route-new species unusually geographically compact?",
+  "criteria": {
+    "spread_excess": "Use the already frozen route-new extra-stop incidence result: observed beta above upper 95% bounds under both kappa=2 uniform and a=.75 persistence nulls.",
+    "compactness": "In the complete-coordinate physically stable pair set, both total_route_new_span_km and mean_route_new_span_km observed betas must be below the lower 95% null bound under both null families.",
+    "p_values": "Report plus-one lower-tail Monte Carlo p for each span statistic; no threshold was selected after seeing the exact p values."
+  },
+  "classification": "compact_multi_stop_activation if spread_excess and compactness both hold.",
+  "interpretation": "Support indicates recruited species occupy more stops than expected but within more spatially compact clusters than expected. It does not identify wetland connectivity, individuals, or the causal environmental cue.",
+  "retuning_after_readback": false
+}
