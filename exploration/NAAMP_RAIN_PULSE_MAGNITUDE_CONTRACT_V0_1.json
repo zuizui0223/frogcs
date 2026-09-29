@@ -1,0 +1,56 @@
+{
+  "analysis": "naamp_rain_pulse_magnitude_test_v0_1",
+  "status": "fixed_before_weather_endpoint_readback",
+  "question": "Beyond rainfall recency, does the magnitude of the most recent rain event predict entry into strong CallingIndex 2-3 activity, consistent with a hydrological activation-threshold mechanism?",
+  "population": "Frozen NAAMP matched wetter-drier pairs with complete 10-stop data and route coordinates.",
+  "event_date": {
+    "definition": "For each run, event_day = local SurveyDate - integer DaysSinceRain.",
+    "primary_temporal_safety": "Require DaysSinceRain >= 1 in both pair members so event-day ERA5 totals cannot include rainfall occurring after the survey on the same calendar day.",
+    "integer_gate": "DaysSinceRain must be integer-valued to within 1e-9."
+  },
+  "weather": {
+    "source": "Earthmover public Icechunk ERA5 single/temporal tp, same source semantics as the frozen FrogID rainfall pipeline.",
+    "coordinate": "Centroid of the ten physical NAAMP SiteID coordinates for State x RouteNumber; nearest ERA5 0.25-degree cell.",
+    "timezone": "Coordinate-derived IANA timezone.",
+    "event_amount": "Coordinate-local calendar-day total precipitation on event_day, mm.",
+    "event_concordance": "Primary concordance requires ERA5 event_amount >=1.0 mm on the NAAMP-implied rain day.",
+    "antecedent_dryness": "Number of complete local days immediately before event_day with precipitation <1.0 mm, capped at 30 days."
+  },
+  "feasibility_gate": {
+    "primary_pairs": ">=1000 matched pairs and >=250 routes with both members DaysSinceRain>=1 and ERA5 event-day precipitation >=1 mm.",
+    "run_concordance_report": "Report fraction of eligible runs whose implied rain day has >=1 mm ERA5 precipitation; no post-readback threshold change.",
+    "fail": "If primary pair gate fails, do not interpret event magnitude as a mechanism test."
+  },
+  "response": {
+    "strong_gain_score": "Sum wet CallingIndex for cells dry=0 and wet in {2,3}.",
+    "strong_loss_score": "Sum dry CallingIndex for cells dry in {2,3} and wet=0.",
+    "strong_activation_net": "strong_gain_score - strong_loss_score.",
+    "weak_activation_net": "Count 0->1 minus count 1->0.",
+    "binary_activation_net": "Count 0->positive minus count positive->0."
+  },
+  "predictors": {
+    "rain_contrast": "Existing log1p(DaysSinceRain_dry)-log1p(DaysSinceRain_wet).",
+    "event_amount_contrast": "log1p(event_mm_wet)-log1p(event_mm_dry).",
+    "antecedent_dryness_contrast": "log1p(antecedent_dry_days_wet)-log1p(antecedent_dry_days_dry)."
+  },
+  "model": "response ~ rain_contrast + event_amount_contrast + antecedent_dryness_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber; cluster-robust by route.",
+  "primary_prediction": "For strong_activation_net, event_amount_contrast beta > 0 with complete 95% CI > 0.",
+  "secondary": [
+    "Repeat for binary_activation_net and weak_activation_net.",
+    "Exact consecutive-year sensitivity.",
+    "Report the event-amount coefficient after omitting antecedent_dryness_contrast to show dependence on that adjustment.",
+    "A ≥0.2 mm concordance threshold may be reported as a prefixed sensitivity only; it does not replace the 1 mm primary gate."
+  ],
+  "interpretation": {
+    "support": "Larger recent rainfall events are associated with stronger crossing into overlapping/full-chorus activity independently of recency, consistent with but not proving a hydrological activation threshold.",
+    "no_support": "The threshold-recruitment pattern remains real, but event magnitude is not identified as its driver.",
+    "boundaries": [
+      "ERA5 is gridded rainfall and may miss local convective events.",
+      "Self-reported DaysSinceRain locates the candidate rain day.",
+      "No survey-night inundation is observed.",
+      "No causal rainfall claim.",
+      "No RC11 submission change is authorized."
+    ]
+  },
+  "retuning_after_readback": false
+}
