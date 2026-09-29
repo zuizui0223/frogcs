@@ -35,7 +35,8 @@
         "fail_to_reject": "Cross-route species-level response heterogeneity is sufficient to reproduce the observed allocation under this null family; do not attribute the residual pattern to site-specific recruitment.",
         "reject": "Species-level rainfall-response heterogeneity alone is insufficient; additional site or species x site structure is required.",
         "causal_claim": false
-      }
+      },
+      "estimability": "A species-specific dryness slope is learned only with at least 20 positive stop-cells distributed across at least 5 training routes; otherwise its differential shift is fixed to zero. This rule is fixed before endpoint readback."
     },
     "australian_fixed_pam_eligibility": {
       "source": "Hoefer et al. 2026 fixed PAM dataset, GitHub/Zenodo v2.0",
