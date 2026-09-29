@@ -7,17 +7,21 @@ permissions: {contents: read}
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
       - run: python exploration/audit_naamp_atmospheric_cue_eligibility.py
+      - name: Test atmospheric cues on strong activation
+        run: python exploration/run_naamp_atmospheric_cue_strong_activation.py
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-atmospheric-cue-eligibility-v0-1
           path: |
             exploration/NAAMP_ATMOSPHERIC_CUE_ELIGIBILITY_CONTRACT_V0_1.json
             exploration/NAAMP_ATMOSPHERIC_CUE_ELIGIBILITY_RECEIPT_V0_1.json
+            exploration/NAAMP_ATMOSPHERIC_CUE_STRONG_ACTIVATION_CONTRACT_V0_1.json
+            exploration/NAAMP_ATMOSPHERIC_CUE_STRONG_ACTIVATION_RECEIPT_V0_1.json
           if-no-files-found: error
