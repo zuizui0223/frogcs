@@ -1,0 +1,12 @@
+{
+  "analysis": "naamp_physical_stop_identity_audit_v0_1",
+  "status": "audit_defined_before_readback",
+  "question": "Could apparent spatial/taxonomic boundary recruitment be created by stop relocation rather than rainfall-associated acoustic change?",
+  "population": "Exactly the frozen 4,236 NAAMP matched pairs.",
+  "physical_identity": "Compare SiteID for the same StopNumber in wet and dry runs. A pair is physically stable only if all ten StopNumbers have nonmissing identical SiteID.",
+  "coordinates": "Use pinned Coordinates.csv only to quantify displacement when SiteID changes.",
+  "sensitivity": "Re-run the observed four-component allocation and primary kappa=2 uniform and a=.75 persistence nulls after excluding every pair with any SiteID mismatch/missingness.",
+  "pass_rule": ">=95% pairs physically stable; stable subset observed boundary share >90%; both primary omnibus P<.05.",
+  "interpretation_boundary": "This audits listening-station identity, not habitat constancy or causal hydrology.",
+  "retuning_after_readback": false
+}
