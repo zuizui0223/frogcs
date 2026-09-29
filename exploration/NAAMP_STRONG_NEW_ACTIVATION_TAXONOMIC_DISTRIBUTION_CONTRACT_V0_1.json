@@ -1,0 +1,21 @@
+{
+  "analysis": "naamp_strong_new_activation_taxonomic_distribution_v0_1",
+  "status": "post_readback_generality_audit_fixed_before_species_contributions",
+  "question": "Is the rainfall-associated strong 0-to-CallingIndex-2/3 recruitment coefficient broadly distributed across species or concentrated in a few taxa?",
+  "endpoint": "Species-specific additive contribution to strong_new_score. For each pair and species, response equals wet CallingIndex when dry=0 and wet in {2,3}, otherwise zero.",
+  "estimator": "Residualize rain_contrast against the exact full-sample nuisance design (temperature_difference, day_of_year_difference, year_gap, State, RunNumber). Species coefficient = residualized_rain dot species_response / residualized_rain sum-of-squares. By linearity, species coefficients must sum to the full strong_new_score coefficient.",
+  "reports": [
+    "Number of species with positive and negative coefficient contributions.",
+    "Top 1 and top 5 shares of total positive contribution.",
+    "Number of positive-contributing species needed for 50% and 80% of positive contribution.",
+    "Inverse-Simpson effective number based on normalized positive coefficient contributions.",
+    "Top contributors as species codes, descriptive only."
+  ],
+  "route_split": "Repeat the coefficient decomposition independently in the existing deterministic route folds A/B and report correlation of species contributions for species observed in both; no pass gate.",
+  "interpretation": {
+    "broad": "Low concentration supports taxonomic breadth within NAAMP but does not imply equal response among species.",
+    "concentrated": "High concentration means the community-level pattern may be carried by a small subset of taxa.",
+    "prohibited": "Do not reinterpret species contribution rank as a rainfall-specific trait or causal physiological mechanism."
+  },
+  "retuning_after_readback": false
+}
