@@ -1,0 +1,177 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_2",
+  "status": "exploratory_evidence_summary_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "headline": {
+    "process": "Rainfall-associated acoustic change is dominated by recruitment into activity rather than intensification among species x stop cells already active in both surveys.",
+    "geometry": "The excess allocation is more strongly taxonomic than spatial under the full NAAMP null comparisons.",
+    "deeper_cause": "Not uniquely identified. Full-sample cross-route species-specific nulls reject, but the temporally restricted 3,437-pair subset does not reject species-only; stable physical-stop response is not supported.",
+    "universality": "Not established. Internal route-split directions are concordant but fail the strict two-fold gate; external spatial-matrix replication remains unavailable."
+  },
+  "calling_index": {
+    "full": {
+      "n_pairs": 4236,
+      "total_beta": 2.84104,
+      "activation_beta": 1.85486,
+      "shared_positive_intensity_beta": 0.196484,
+      "activation_share_of_total": 0.65288,
+      "shared_intensity_share_of_total": 0.06916,
+      "threshold_dominant_prefixed_rule": true
+    },
+    "same_observer": {
+      "n_pairs": 3152,
+      "total_beta": 3.02014,
+      "activation_beta": 2.05502,
+      "shared_positive_intensity_beta": 0.18852,
+      "activation_share_of_total": 0.68044,
+      "shared_intensity_share_of_total": 0.06242,
+      "threshold_dominant_prefixed_rule": true
+    },
+    "interpretation": "Direct 0-to-positive recruitment contributes about two-thirds of the rainfall slope in ordinal CallingIndex. The contribution from intensity change among cells already positive in both surveys is small."
+  },
+  "taxonomic_vs_spatial_axis": {
+    "observed_route_new_species_share": 0.7678,
+    "observed_new_stop_share": 0.52148,
+    "taxonomic_minus_spatial": 0.246318,
+    "uniform_null": {
+      "mean": 0.07562,
+      "ci95": [
+        -0.00675,
+        0.16232
+      ],
+      "upper_tail_p": 0.000999
+    },
+    "persistence_null": {
+      "mean": 0.10799,
+      "ci95": [
+        0.03934,
+        0.18098
+      ],
+      "upper_tail_p": 0.000999
+    },
+    "conclusion": "The full-sample incidence gain is disproportionately taxonomic relative to both tested null families."
+  },
+  "species_specific_null_full_sample": {
+    "design": "SHA256 route cross-fit; species rainfall shifts are learned only on the opposite route fold.",
+    "estimable_species_both_folds": 42,
+    "crossfold_gamma_correlation": 0.23993,
+    "omnibus_p": 0.001998,
+    "observed_boundary": 0.92015,
+    "null_boundary_mean": 0.85252,
+    "null_boundary_ci95": [
+      0.79038,
+      0.9182
+    ],
+    "decision": "reject_species_shift_null",
+    "persistence_anchor_0_75": {
+      "omnibus_p": 0.001998,
+      "null_boundary_mean": 0.82439,
+      "null_boundary_ci95": [
+        0.77492,
+        0.87564
+      ],
+      "decision": "reject_species_plus_persistence_null"
+    }
+  },
+  "disjoint_route_internal_replication": {
+    "strict_both_folds_pass": false,
+    "fold_A": {
+      "n_pairs": 2185,
+      "activation_share": 0.66494,
+      "activation_beta": 1.00522,
+      "activation_ci95": [
+        -0.07397,
+        2.08441
+      ],
+      "taxonomic_minus_spatial": 0.27456,
+      "taxonomic_axis_exceeds_uniform": true,
+      "taxonomic_axis_exceeds_persistence": true,
+      "threshold_gate": false
+    },
+    "fold_B": {
+      "n_pairs": 2051,
+      "activation_share": 0.64765,
+      "activation_beta": 2.59061,
+      "activation_ci95": [
+        0.506,
+        4.675
+      ],
+      "taxonomic_minus_spatial": 0.23561,
+      "persistence_upper_tail_p": 0.04096,
+      "taxonomic_axis_exceeds_uniform": true,
+      "taxonomic_axis_exceeds_persistence": false,
+      "threshold_gate": true
+    },
+    "interpretation": "Both folds point in the same biological direction, but each narrowly fails a different prefixed strict criterion; this does not establish a universal rule."
+  },
+  "temporal_site_hierarchy": {
+    "population": {
+      "n_pairs": 3437,
+      "n_routes": 534,
+      "early_pairs": 1276,
+      "late_pairs": 2161,
+      "buffer_year": 2008
+    },
+    "site_only": {
+      "omnibus_p": 0.023976,
+      "observed_boundary": 0.910263,
+      "null_boundary_mean": 0.796998,
+      "null_boundary_ci95": [
+        0.722216,
+        0.873252
+      ],
+      "decision": "reject_site_only"
+    },
+    "true_species_plus_site_additive": {
+      "omnibus_p": 0.51049,
+      "observed_boundary": 0.910263,
+      "null_boundary_mean": 0.844718,
+      "null_boundary_ci95": [
+        0.775693,
+        0.915282
+      ],
+      "decision": "fail_to_reject"
+    },
+    "identity_diagnostics": {
+      "species_only_same_subset_p": 0.112887,
+      "species_only_same_subset_reject": false,
+      "site_shift_stability": {
+        "n_sites_estimable_both_blocks": 362,
+        "pearson": -0.005256,
+        "spearman": 0.008543,
+        "spearman_p": 0.871326,
+        "sign_agreement": 0.508287
+      },
+      "permuted_site_identity": {
+        "perm1_p": 0.202797,
+        "perm2_p": 0.190809,
+        "both_reject": false
+      },
+      "classification": "generic_site_level_heterogeneity_sufficient_under_at_least_one_permutation"
+    },
+    "interpretation": "The apparent success of the additive species+site null does not identify a stable physical-site mechanism. Site shifts have no temporal stability, permuting site identity does not destroy fit, and species-only is already nonrejected on this reduced temporal subset. Therefore the hierarchy is not evidence that measured or persistent site properties cause the pattern."
+  },
+  "external_replication_eligibility": {
+    "hoefer_2026_australia_fixed_pam": "Not eligible for NAAMP-style daily spatial matrix because the public positive-detection table lacks a complete plot-day effort frame.",
+    "nps_secn": {
+      "explicit_location_season_zero": true,
+      "nightly_detection_nondetection_frame_reconstructable": false,
+      "reason": "NotDetected is valid at location-season scale, but SignalDate is only a representative species signal date; complete nightly species x site states cannot be reconstructed."
+    }
+  },
+  "current_ecological_read": {
+    "supported": "Recent rain is associated primarily with recruitment across acoustic participation thresholds. In the full NAAMP system this recruitment is especially taxonomic: species absent from the dry route disproportionately enter the wet active community.",
+    "not_supported": [
+      "A stable species activation-geometry trait",
+      "A stable physical-stop rainfall sensitivity",
+      "A uniquely identified hydrological or physiological mediator",
+      "Species x site interaction as necessary mechanism",
+      "Worldwide or continent-general boundary-biased recruitment"
+    ],
+    "next_decisive_tests": [
+      "Use NAAMP Coordinates.csv to attach independent site/environment context, but test measured covariates rather than reuse unstable empirical site shifts.",
+      "Independent Neotropical CallingIndex replication with AnuraSet and ERA5 rainfall where coordinates are independently documented.",
+      "Seek an external multi-site effort-complete acoustic dataset for direct spatial-boundary replication."
+    ]
+  }
+}
