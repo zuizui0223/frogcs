@@ -1,0 +1,26 @@
+{
+  "analysis": "naamp_threshold_recruitment_taxonomic_breadth_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Is the rainfall-associated strong 0-to-CallingIndex-2/3 recruitment signal distributed across the frog assemblage or driven by one/few species?",
+  "sample": "Exactly the frozen 4,236 NAAMP matched pairs.",
+  "response": {
+    "species_component": "For each species and pair, sum wet CallingIndex for species x stop cells with dry CallingIndex=0 and wet CallingIndex in {2,3}.",
+    "identity": "Summing species components gives the already-tested pair-level strong_new_score exactly.",
+    "coefficient": "Because all species use the same linear model/design, species rainfall coefficients must sum to the global strong_new_score rainfall coefficient."
+  },
+  "reports": [
+    "Number of species with positive, negative and zero rainfall-coefficient contributions.",
+    "Top 1, top 5 and top 10 positive-contribution shares.",
+    "Hill/effective number 1/sum(w_i^2) using positive coefficient contributions normalized to sum 1.",
+    "Spearman correlation of species contribution with baseline acoustic prevalence, descriptive only.",
+    "Leave-one-species-out global strong_new_score rainfall beta and 95% CI for every species."
+  ],
+  "robustness_rule": "No-single-species robustness passes if every leave-one-species-out global strong_new_score coefficient remains positive with complete 95% CI above zero.",
+  "interpretation_boundary": [
+    "This tests breadth/concentration, not a species-specific rainfall-response trait.",
+    "Contribution rank must not be interpreted causally because baseline prevalence and detectability differ among species.",
+    "The earlier activation-geometry placebo failure remains binding.",
+    "No RC11 submission change is authorized."
+  ],
+  "retuning_after_readback": false
+}
