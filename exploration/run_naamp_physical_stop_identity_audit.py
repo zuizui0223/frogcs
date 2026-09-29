@@ -105,7 +105,10 @@ def subset_nulls(pairs,pair_data,keep,pools,dry_ids,ss):
     # layouts belonging to excluded strata.
     keys={d["key"] for d in dsub}
     pools_sub={k:pools[k] for k in keys}
-    dry_ids_sub={k:dry_ids[k] for k in keys}
+    dry_ids_sub=defaultdict(set)
+    for p in psub.itertuples(index=False):
+        key=(str(p.State),str(p.RouteNumber),str(p.RunNumber))
+        dry_ids_sub[key].add(str(p.dry_RunID))
 
     # Primary uniform comparator. Sørensen is not part of this audit.
     un=uniform.null_for_kappa(
