@@ -1,378 +1,198 @@
 {
   "analysis": "mechanism_and_transportability_exploration_summary_v0_5",
-  "status": "exploratory_evidence_summary_not_submission_authority",
+  "status": "exploratory_not_submission_authority",
   "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
   "headline": {
-    "process": "Within NAAMP, rainfall-associated acoustic change is dominated by recruitment across activity thresholds rather than intensification among cells already active in both surveys.",
-    "strong_chorus": "About 87% of the new-activation CallingIndex slope is entry directly at CallingIndex 2-3, not weak CallingIndex-1 detections.",
-    "robustness": "Strong new activation persists under same-observer restriction, identical physical SiteID at all ten stops, their intersection, and adjustment for measured hearing impairment, timeout and wind.",
-    "geometry": "Route-new species recruitment is taxonomically diffuse but spatially compact: recruited species accumulate excess stop incidence while occupying geographically tighter stop clusters than expected.",
-    "wetland_context": "Mapped NWI hydroperiod shows a weak directional signal for route-new gain and 500-m net recruitment, but the 200-m primary net interaction and strong-chorus interaction are not supported.",
-    "universality": "Strong activation is robust to leaving out each of 21 NAAMP states, but strict disjoint-route replication is incomplete and Neotropical AnuraSet does not satisfy the threshold-dominance rule. NAAMP-region generality is supported; worldwide universality is not."
+    "ecological_process": "Recent rain is associated with reactivation of a latent local acoustic community: species already documented on the same routes and often the same physical sites re-enter substantial chorusing, including full CallingIndex-3 choruses.",
+    "not_colonization": "The rainfall-associated route-new incidence slope is almost entirely recurrent across monitoring years; one-off stratum records contribute essentially no rain slope.",
+    "not_weak_detection": "Most activation slope is CallingIndex 2-3, and CI3 alone increases; the signal survives same-observer, physical-stop, hearing/noise/wind and traffic sensitivities.",
+    "spatial_form": "Rain does not primarily increase the number of route-new species or the number merely reaching a second stop. The excess is concentrated at third-and-later occupied stops, and ~97% of that spatial-depth slope is carried by CI2-3 species, especially CI3.",
+    "geography": "The aggregate effect is geographically robust to omitting any one state, but state-specific slopes are heterogeneous; it is not a universal state-by-state law.",
+    "proximal_mediator": "Unresolved. NWI hydroperiod, Palustrine versus Riverine/Lacustrine context, simple chorus-social-cue allocation, simple thermal context and survey-window gating do not explain the robust full-chorus signal."
   },
-  "activation_process": {
-    "calling_index_full": {
-      "pairs": 4236,
-      "routes": 585,
-      "total_beta": 2.8410419576031223,
-      "activation_beta": 1.8548575453289868,
-      "activation_share": 0.6528793213930071,
+  "evidence": {
+    "activation_decomposition": {
+      "total_calling_index_beta": 2.8410419576031223,
+      "new_activation_beta": 1.8548575453289868,
+      "new_activation_share": 0.6528793213930071,
       "shared_positive_intensity_beta": 0.19648401136771304,
       "shared_positive_intensity_share": 0.06915913749245683
     },
-    "strength_split": {
-      "strong_ci23_beta": 1.6150398249522895,
-      "strong_ci23_ci95": [
+    "strong_and_full_chorus": {
+      "strong_ci2_3_score_beta": 1.6150398249522895,
+      "strong_ci2_3_ci95": [
         0.49343778495183677,
         2.736641864952742
       ],
-      "strong_ci23_count_beta": 0.5868627247155945,
-      "strong_ci23_count_ci95": [
-        0.18357108304575287,
-        0.9901543663854362
+      "strong_share_of_activation_beta": 0.8707082810857251,
+      "new_ci3_count_beta": 0.4413143755210998,
+      "new_ci3_count_ci95": [
+        0.11436200385886863,
+        0.768266747183331
       ],
-      "weak_ci1_beta": 0.2398177203766975,
-      "strong_share_of_activation_beta": 0.8707082810857251
+      "robust_new_ci3_beta": 0.5140603333339898,
+      "robust_new_ci3_ci95": [
+        0.10081588098938049,
+        0.9273047856785992
+      ]
     },
-    "same_observer": {
-      "pairs": 3152,
-      "strong_ci23_beta": 1.7749534283517359,
-      "strong_ci23_ci95": [
-        0.3708608268229865,
-        3.1790460298804852
-      ],
-      "strong_share_of_activation_beta": 0.8637147112572465
-    },
-    "same_observer_and_identical_physical_stops": {
-      "pairs": 3115,
-      "routes": 499,
-      "observers": 540,
-      "strong_ci23_beta": 1.7428002577104516,
-      "strong_ci23_ci95": [
+    "detection_and_identity_robustness": {
+      "same_observer_physical_pairs": 3115,
+      "joint_strong_score_beta": 1.7428002577104516,
+      "joint_strong_score_ci95": [
         0.3270455434761059,
         3.158554971944797
       ],
-      "strong_ci23_count_beta": 0.6143699621882305,
-      "strong_ci23_count_ci95": [
-        0.10728385130839779,
-        1.1214560730680632
-      ],
-      "pass": true
-    },
-    "measured_detection_adjustment": {
-      "pairs": 4024,
-      "routes": 576,
-      "covariates": [
-        "hearing impairment",
-        "major-noise timeout",
-        "wind"
-      ],
-      "strong_ci23_beta": 1.6225420695541188,
-      "strong_ci23_ci95": [
+      "physical_site_stable_pairs": 4172,
+      "physical_site_stable_fraction": 0.9848914069877243,
+      "detection_adjusted_pairs": 4024,
+      "detection_adjusted_strong_score_beta": 1.6225420695541188,
+      "detection_adjusted_strong_score_ci95": [
         0.4587043993545672,
         2.7863797397536705
-      ],
-      "strong_count_beta": 0.5972855657100444,
-      "strong_count_ci95": [
-        0.17886050204764242,
-        1.0157106293724465
-      ],
-      "traffic_sensitivity_pass": true,
-      "mass_noise_small_sample_direction_same_but_ci_crosses_zero": true
-    },
-    "geographic_generality": {
-      "states": 21,
-      "leave_one_state_out_all_positive": true,
-      "leave_one_state_out_all_ci_positive": true,
-      "minimum_beta": 0.8940439534535248,
-      "minimum_ci_lower": 0.2912197317182954,
-      "interpretation": "No single NAAMP state is required for the strong 0-to-2/3 activation signal."
-    },
-    "recency": {
-      "prefixed_immediate_vs_delayed_gate_pass": false,
-      "reason": "Only 178 delayed (wet DaysSinceRain >=4) pairs, below the 300-pair gate.",
-      "bin_betas": {
-        "0-1_days": {
-          "beta": 1.786908673201261,
-          "ci95": [
-            0.566908969490153,
-            3.006908376912369
-          ]
-        },
-        "2-3_days": {
-          "beta": 2.15241496647472,
-          "ci95": [
-            0.32485331388911254,
-            3.9799766190603276
-          ]
-        },
-        "4-7_days": {
-          "beta": 3.1427166674018236,
-          "ci95": [
-            -0.6114155495208964,
-            6.896848884324544
-          ]
-        },
-        ">=8_days": "not_estimable"
-      },
-      "conclusion": "No evidence that strong recruitment is confined to the night immediately after rain; a multi-day opportunity window remains plausible."
-    }
-  },
-  "geometry": {
-    "taxonomic_vs_spatial": {
-      "route_new_species_share": 0.767795525238989,
-      "new_stop_share": 0.5214772488387415,
-      "taxonomic_minus_spatial": 0.24631827640024753,
-      "uniform_p": 0.000999000999000999,
-      "persistence_p": 0.000999000999000999
-    },
-    "physical_stop_identity": {
-      "stable_pairs": 4172,
-      "total_pairs": 4236,
-      "stable_fraction": 0.9848914069877243,
-      "stable_subset_boundary_share": 0.9304964895167589,
-      "uniform_p": 0.000999000999000999,
-      "persistence_p": 0.000999000999000999
-    },
-    "social_cue_proxy": {
-      "route_new_fraction_into_dry_active_stops": 0.5192483535917819,
-      "uniform_ci95": [
-        0.4649129950912414,
-        0.585954845963247
-      ],
-      "persistence_ci95": [
-        0.45397243913515717,
-        0.5660048947434544
-      ],
-      "simple_social_cue_excess": false,
-      "simple_new_site_opening_excess": false
-    },
-    "route_new_spread": {
-      "route_new_species_gain_beta": 0.1846754325853956,
-      "multi_stop_route_new_species_beta": 0.13170590853393746,
-      "extra_stop_incidence_beta": 0.6042952999648085,
-      "extra_stop_uniform_ci95": [
-        0.3826640032537967,
-        0.4973885062998129
-      ],
-      "extra_stop_persistence_ci95": [
-        0.35157294479386686,
-        0.47806878517834517
-      ],
-      "extra_stop_p_both": 0.000999000999000999,
-      "read": "The number of newly recruited species is not exceptional, but once recruited, selected species accumulate unusually many additional occupied stops."
-    },
-    "geographic_compactness": {
-      "coordinate_complete_stable_pairs": 4059,
-      "routes": 563,
-      "total_span_beta_km": -14.058649245829269,
-      "mean_span_beta_km": -4.64266004025349,
-      "total_span_uniform_lower_p": 0.000999000999000999,
-      "total_span_persistence_lower_p": 0.003996003996003996,
-      "mean_span_uniform_lower_p": 0.000999000999000999,
-      "mean_span_persistence_lower_p": 0.000999000999000999,
-      "observed_route_new_species_instances": 4578,
-      "observed_multi_stop_instances": 2518,
-      "observed_multi_stop_fraction": 0.5500218435998252,
-      "multi_stop_span_median_km": 7.709659996800701,
-      "multi_stop_span_iqr_km": [
-        4.29211665963678,
-        12.012126046879587
-      ],
-      "classification": "compact multi-stop activation supported (post-readback directional diagnostic)",
-      "read": "Recruited species occupy more stops than expected, but those stops are geographically more compact than expected."
-    },
-    "taxonomic_concentration": {
-      "species_total": 53,
-      "species_positive_beta": 26,
-      "species_positive_share_ge_1pct": 19,
-      "top1_share": 0.15552747841219575,
-      "top5_share": 0.49969041912099676,
-      "hhi": 0.07611533372841944,
-      "all_leave_one_species_out_total_betas_positive": true,
-      "diffuse_under_prefixed_rule": true,
-      "top_species": "Pseudacris crucifer",
-      "read": "The multi-stop recruitment excess is distributed across many taxa rather than being driven by one dominant species."
-    }
-  },
-  "measured_context": {
-    "nwi_eligibility": {
-      "pair_used_siteids": 5972,
-      "with_coordinates": 5778,
-      "within_200m_sites": 4991,
-      "coverage_200m": 0.8637937002422984,
-      "within_500m_sites": 5583,
-      "coverage_500m": 0.9662512980269989,
-      "water_regime_nonempty_fraction_200m": 0.9983971148066519,
-      "feasibility_gate": true
-    },
-    "nwi_route_new_hydroperiod": {
-      "primary_200m_net": {
-        "interaction_beta": 0.027904459457952124,
-        "ci95": [
-          -0.005898606369149986,
-          0.06170752528505423
-        ],
-        "p": 0.105672957892174,
-        "supported": false
-      },
-      "gain_only_200m": {
-        "interaction_beta": 0.02942829471116059,
-        "ci95": [
-          0.003086535481790477,
-          0.0557700539405307
-        ],
-        "p": 0.02855193153833466
-      },
-      "net_500m": {
-        "interaction_beta": 0.03453198895964403,
-        "ci95": [
-          0.001860161592218676,
-          0.06720381632706939
-        ],
-        "p": 0.038307053558125054
-      },
-      "interpretation": "Pulse-limited wetlands show a directional tendency toward greater route-new recruitment, but the pre-fixed 200-m net-response primary test does not pass."
-    },
-    "nwi_strong_chorus": {
-      "strong_score_200m": {
-        "interaction_beta": 0.04099316980148064,
-        "ci95": [
-          -0.038210379851059365,
-          0.12019671945402065
-        ],
-        "p": 0.3103855670774971
-      },
-      "strong_score_500m": {
-        "interaction_beta": 0.051245022824895535,
-        "ci95": [
-          -0.021813927814692165,
-          0.12430397346448324
-        ],
-        "p": 0.16920638862937898
-      },
-      "same_observer_200m": {
-        "interaction_beta": 0.04673447893794794,
-        "ci95": [
-          -0.04239878638039915,
-          0.13586774425629503
-        ],
-        "p": 0.3041139915077279
-      },
-      "weak_new_score_200m": {
-        "interaction_beta": 0.037441131447244466,
-        "ci95": [
-          0.0045066117540669415,
-          0.07037565114042199
-        ],
-        "p": 0.025870070484814642
-      },
-      "conclusion": "Mapped hydroperiod differentiates weak new detections more clearly than strong new choruses; it does not explain the strong-chorus activation signal."
-    },
-    "jrc_surface_water": {
-      "coverage_200m": 0.21754932502596053,
-      "eligibility_pass": false,
-      "response_endpoints_read": false,
-      "reason": "Insufficient 200-m water-pixel coverage and <300 informative routes under the pre-fixed gate."
-    }
-  },
-  "null_hierarchy": {
-    "full_sample_crossfit_species": {
-      "species_shift_p": 0.001998001998001998,
-      "species_plus_persistence_p": 0.001998001998001998,
-      "conclusion": "Transferable species-specific rainfall response alone is insufficient in the full sample."
-    },
-    "temporal_subset": {
-      "pairs": 3437,
-      "site_only_p": 0.023976023976023976,
-      "species_plus_site_additive_p": 0.5104895104895105,
-      "species_only_same_subset_p": 0.11288711288711288,
-      "site_shift_early_late_pearson": -0.00525557116144499,
-      "site_shift_early_late_spearman": 0.008542597350542665,
-      "site_shift_sign_agreement": 0.5082872928176796,
-      "permuted_site_p": [
-        0.20279720279720279,
-        0.19080919080919082
-      ],
-      "conclusion": "The reduced temporal subset cannot identify a stable physical-site mechanism; generic heterogeneity and lower discrimination suffice."
-    }
-  },
-  "external_replication": {
-    "disjoint_routes": {
-      "strict_both_folds_pass": false,
-      "interpretation": "Both folds have the same broad direction, but each narrowly misses a different pre-fixed criterion."
-    },
-    "frogid_australia": {
-      "authorized": "cross-dataset consistency for active-unit taxonomic depth",
-      "not_authorized": [
-        "same mechanism",
-        "matrix geometry replication",
-        "worldwide universality"
       ]
     },
-    "anuraset_brazil": {
-      "INCT20955": {
-        "biome": "Atlantic Forest",
-        "recordings": 470,
-        "dates": 111,
-        "active_richness_beta_dry": -0.05896952583661644,
-        "active_richness_ci95": [
-          -0.22330898847887035,
-          0.10536993680563747
-        ],
-        "excess_intensity_beta_dry": 0.15482163534673504,
-        "threshold_dominant": false
-      },
-      "INCT41": {
-        "biome": "Cerrado",
-        "recordings": 366,
-        "dates": 61,
-        "coordinate_uncertainty_propagated": true,
-        "recent_rain_direction_for_all_three_endpoints_in_both_candidate_cells": true,
-        "threshold_dominant_all_cells": false
-      },
-      "boundary": "AnuraSet weak labels are a stratified machine-learning annotation sample, not continuous effort."
+    "recurrent_activation": {
+      "stable_pairs": 4172,
+      "route_new_wet_incidence_beta": 0.8115181449906186,
+      "recurrent_sum_beta": 0.7960401311507209,
+      "recurrent_share": 0.9809270884016074,
+      "same_site_recurrent_beta": 0.7105568402194625,
+      "one_off_beta": 0.015478013839897789,
+      "prior_only_pairs": 2940,
+      "prior_only_route_new_incidence_beta": 0.8852494408737382,
+      "prior_only_recurrent_beta": 0.8758097551004488,
+      "prior_only_recurrent_share": 0.9893366938882531,
+      "prior_only_one_off_beta": 0.009439685773289727
+    },
+    "full_chorus_site_memory": {
+      "new_ci3_beta_stable_pairs": 0.4396911581301782,
+      "same_site_recurrent_beta": 0.39748080725666757,
+      "same_site_recurrent_share": 0.9040000006981866,
+      "prior_full_chorus_same_site_beta": 0.30835577574102463,
+      "same_site_other_call_beta": 0.0891250315156428,
+      "one_off_beta": 0.00855497880425171,
+      "prior_only_new_ci3_beta": 0.4571163983344871,
+      "prior_only_any_recurrent_beta": 0.45859618611634645,
+      "prior_only_one_off_beta": -0.0014797877818591909,
+      "prior_only_same_site_ci95": [
+        -0.0066026588454159985,
+        0.7617260149216112
+      ],
+      "prior_only_same_site_prefixed_pass": false
+    },
+    "opportunity_normalized_site_memory": {
+      "eligible_pairs": 2078,
+      "eligible_routes": 352,
+      "ci3_rate_difference_rain_beta": 0.016829111731873004,
+      "ci3_rate_difference_ci95": [
+        0.0028365770275316175,
+        0.030821646436214392
+      ],
+      "same_observer_pairs": 1559,
+      "same_observer_ci3_beta": 0.016287333264003598,
+      "same_observer_ci3_ci95": [
+        0.0013086230550534376,
+        0.03126604347295376
+      ],
+      "interpretation": "Increasing rain contrast selectively raises CI3 activation probability at previously used species-site cells beyond their numerical opportunity."
+    },
+    "spatial_depth": {
+      "route_new_species_beta": 0.1846754325853956,
+      "second_stop_beta": 0.13170590853393746,
+      "third_plus_beta": 0.4725893914308725,
+      "third_plus_uniform_ci95": [
+        0.2628759555857566,
+        0.3552224768706642
+      ],
+      "third_plus_persistence_ci95": [
+        0.1794736101129831,
+        0.27736088366011774
+      ],
+      "fourth_plus_beta": 0.3628430638358824,
+      "third_plus_strong_beta": 0.4598290241532527,
+      "third_plus_strong_share": 0.9729990399510237,
+      "third_plus_ci3_beta": 0.36305644282539035,
+      "robust_third_plus_strong_share": 0.9543102422904208,
+      "robust_third_plus_ci3_beta": 0.4524521782469139
+    },
+    "spatial_placement": {
+      "k_conditioned_cluster_support": false,
+      "mpd_compactness_beta": 0.017352282661650818,
+      "mpd_uniform_p": 0.06893106893106893,
+      "mpd_persistence_p": 0.1068931068931069,
+      "mst_compactness_beta": 0.01942623912129594,
+      "mst_uniform_p": 0.04695304695304695,
+      "mst_persistence_p": 0.07992007992007992,
+      "adjacency_excess_beta": 0.0034242330987423113,
+      "conclusion": "Occupied-stop number changes, but unusual spatial clustering conditional on k is not established."
+    },
+    "taxonomic_generality": {
+      "strong_activation_species_total": 57,
+      "strong_activation_positive_species": 28,
+      "strong_top1_share": 0.138781580735396,
+      "strong_top5_share": 0.4917813568649047,
+      "strong_hhi": 0.07445721047263541,
+      "robust_positive_species": 27,
+      "robust_top1_share": 0.13850879719542133,
+      "robust_top5_share": 0.5451503519550087,
+      "robust_hhi": 0.08142688058401427,
+      "diffuse_rule_pass_full": true,
+      "diffuse_rule_pass_robust": true
+    },
+    "geographic_heterogeneity": {
+      "leave_one_state_out_all_positive": true,
+      "leave_one_state_out_all_ci_positive": true,
+      "estimable_state_specific": 19,
+      "state_positive_fraction": 0.6842105263157895,
+      "state_ci_positive_fraction": 0.3157894736842105,
+      "state_beta_range": [
+        -4.002747196598834,
+        11.414108485374848
+      ],
+      "state_median_beta": 1.1267103619561687,
+      "mixed_population_beta": 1.654511396413927,
+      "mixed_state_slope_sd": 3.4605301334379646
+    },
+    "multicue_and_habitat_tests": {
+      "thermal_joint_p": 0.2969777633390392,
+      "seasonal_window_joint_p": 0.11043418364941408,
+      "nwi_hydroperiod_strong_ci95": [
+        -0.038210379851059365,
+        0.12019671945402065
+      ],
+      "nwi_palustrine_vs_river_lake_strong_ci95": [
+        -0.048754426596313544,
+        0.06979380518871862
+      ],
+      "simple_social_cue_supported": false,
+      "immediate_0_1_day_decay_gate_supported": false
+    },
+    "external_generality": {
+      "anuraset_atlantic_forest_threshold_rule": false,
+      "anuraset_cerrado_threshold_rule": false,
+      "effort_complete_external_species_site_matrix_found": false,
+      "conclusion": "Cross-continental universality remains unestablished."
     }
   },
-  "mediator_hierarchy": {
-    "strongly_weakened": [
-      "Stop relocation or StopNumber remapping",
-      "Observer turnover",
-      "Weak-call-only acoustic detection threshold",
-      "Measured hearing/noise/wind conditions as the main explanation",
-      "Simple attraction specifically toward already-chorusing stops",
-      "A stable empirical physical-stop rainfall-sensitivity trait",
-      "A single-state or single-species driver"
-    ],
-    "partly_supported_but_not_primary_confirmatory": [
-      "Mapped pulse-limited wetland context for route-new gain (gain-only 200 m and net 500 m positive, 200 m primary net test nonsignificant)"
-    ],
-    "still_plausible": [
-      "Local/mesoscale breeding-opportunity activation",
-      "Local rainfall/hydric conditions not captured by long-term NWI hydroperiod",
-      "Hydration/moisture constraints",
-      "Species-specific weather thresholds that operate across many taxa",
-      "Mesoscale wetland complexes or habitat patches producing compact multi-stop activation"
-    ],
-    "weakened_by_new_geometry": [
-      "A purely route-wide uniform atmospheric switch, because recruited stop sets are more geographically compact than null expectations",
-      "A purely single-stop site-opening model, because selected route-new species accumulate excess additional stop incidence"
-    ],
-    "current_best_description": "Rain is associated with strong recruitment of previously inactive taxa into dense, mesoscale multi-stop activation clusters. The pattern is broad across taxa and NAAMP geography, robust to measured observation artifacts, and only weakly related to long-term mapped hydroperiod. The proximate physiological or hydrological mediator remains unidentified."
-  },
-  "universality": {
-    "within_naamp": "Strong: same-observer, physical-stop, measured-detection and leave-one-state-out robustness all support the strong recruitment signal.",
-    "disjoint_route_gate": "Not fully passed under the earlier strict two-fold combined mechanism gate.",
-    "frogid": "Supports recent-rain taxonomic depth in a different Australian citizen-science system, but not the same matrix/CallingIndex mechanism.",
-    "anuraset": "Two Brazilian site tests do not meet the prefixed threshold-dominance replication rule; annotation design is stratified for machine learning.",
-    "verdict": "NAAMP-region generality is well supported; cross-continental universality of the threshold/cluster geometry is not established."
-  },
-  "interpretation_boundary": [
-    "Acoustic activity is not abundance, occupancy, colonization or reproductive success.",
-    "CallingIndex is ordinal chorus intensity, not individual calling effort.",
-    "Compact multi-stop patterns do not imply movement of individuals among stops.",
-    "NWI hydroperiod is long-term mapped context, not survey-night inundation.",
-    "No unique physiological mediator or causal rainfall effect is identified.",
-    "RC11 remains frozen and is not altered by these exploratory analyses."
+  "rejected_or_not_established": [
+    "Uniform amplification of already-active callers.",
+    "A weak-call-only detection explanation.",
+    "Observer turnover or stop relocation as required explanations.",
+    "Measured hearing/noise/wind differences as the explanation.",
+    "Literal first appearance/colonization as the main route-new process.",
+    "Simple attraction to already-active chorus stops.",
+    "A sharply immediate one-day pulse.",
+    "NWI hydroperiod as the mediator of strong chorus activation.",
+    "Palustrine versus Riverine/Lacustrine system as the mediator of strong chorus activation.",
+    "Simple local temperature-background or survey-window gating.",
+    "Unusual geographic clustering of occupied stops conditional on occupied-stop count.",
+    "A one- or few-species explanation.",
+    "Uniform positive state-specific effects.",
+    "Cross-continental universality."
+  ],
+  "current_ecological_interpretation": "Rain and associated wet conditions reorganize the realized acoustic metacommunity mainly by reactivating previously documented local species-site combinations. These reactivations frequently reach overlapping or full chorus intensity and deepen spatial participation to third and later listening sites. The phenomenon is taxonomically diffuse within NAAMP and robust to observer, physical-site and measured detection controls, but its magnitude is regionally heterogeneous and is not explained by coarse wetland hydroperiod/system, simple social facilitation, or simple temperature/season gating. The most defensible mechanism is recurrent behavioural/reproductive activation of a latent local acoustic community; the exact proximal physiological or hydrological trigger remains unresolved.",
+  "pending_strict_sensitivity": [
+    "NAAMP_PRIOR_SITE_MEMORY_OPPORTUNITY_CONTRACT_V0_1: opportunity-normalized site-memory test using only pre-pair years."
   ]
 }
