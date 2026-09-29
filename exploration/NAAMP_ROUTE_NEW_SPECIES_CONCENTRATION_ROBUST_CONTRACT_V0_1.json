@@ -1,0 +1,11 @@
+{
+  "analysis": "naamp_route_new_species_concentration_robust_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "question": "Is the diffuse taxonomic contribution to route-new multi-stop recruitment retained when observer identity and physical stop identity are simultaneously held constant?",
+  "sample": "Intersection of the existing same-observer matched pairs and pairs with all ten nonmissing identical SiteID values between wet and dry runs.",
+  "response_per_species": "Same extra_stop_incidence_gain definition as NAAMP_ROUTE_NEW_SPECIES_CONCENTRATION_V0_1.",
+  "decomposition": "Use the same residualized matched-pair design on the restricted sample; sum species betas to recover the total restricted-sample extra-stop beta.",
+  "prefixed_rule": "Diffuse if top1 positive share <=0.25, top5 <=0.60, HHI <=0.10, and all leave-one-species-out total betas remain >0.",
+  "interpretation": "Pass supports broad taxonomic participation within this robust subset; it does not imply every species responds or identify a shared physiological trait.",
+  "retuning_after_readback": false
+}
