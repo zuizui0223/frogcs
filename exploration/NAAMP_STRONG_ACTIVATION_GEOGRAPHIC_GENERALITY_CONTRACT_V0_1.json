@@ -1,0 +1,13 @@
+{
+  "analysis": "naamp_strong_activation_geographic_generality_v0_1",
+  "status": "post_readback_geographic_audit_fixed_before_endpoint",
+  "question": "Is the rainfall-associated 0-to-CallingIndex-2/3 recruitment signal controlled by any single NAAMP state?",
+  "sample": "Frozen 4,236 matched NAAMP pairs.",
+  "endpoint": "strong_new_score = sum wet CallingIndex for cells dry=0 and wet in {2,3}.",
+  "model": "Existing matched-pair model with rain_contrast, temperature_difference, day_of_year_difference, year_gap, State and RunNumber; route-clustered covariance.",
+  "audit": "Refit after omitting each of the 21 states in turn.",
+  "pass_rule": "All 21 leave-one-state-out rain_contrast coefficients remain >0.",
+  "strong_pass_rule": "All 21 leave-one-state-out 95% confidence intervals remain entirely >0.",
+  "interpretation": "Pass supports geographic robustness across the sampled NAAMP region, not universality or occurrence in every state.",
+  "retuning_after_readback": false
+}
