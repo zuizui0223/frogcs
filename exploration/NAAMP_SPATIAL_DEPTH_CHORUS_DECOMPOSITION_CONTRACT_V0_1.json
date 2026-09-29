@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_spatial_depth_chorus_decomposition_v0_1",
+  "status": "post_readback_mechanistic_decomposition_fixed_before_endpoint",
+  "question": "Is the excess third-and-later-stop spatial deepening of route-new species carried mainly by taxa that reach overlapping/full chorus intensity (CallingIndex 2-3) in the wet survey?",
+  "samples": {
+    "full": "Frozen 4,236 matched pairs.",
+    "robust": "Intersection of same-observer pairs and pairs with all ten identical nonmissing SiteID values."
+  },
+  "species_definition": "For each route-new species absent from the entire dry route, let k be its number of occupied wet stops and m be its maximum wet CallingIndex across those stops.",
+  "exact_components": {
+    "third_plus_total": "max(k-2,0)",
+    "third_plus_ci1_only": "max(k-2,0) when m=1",
+    "third_plus_ci2_max": "max(k-2,0) when m=2",
+    "third_plus_ci3_present": "max(k-2,0) when m=3",
+    "identity": "third_plus_total = ci1_only + ci2_max + ci3_present",
+    "third_plus_strong": "ci2_max + ci3_present"
+  },
+  "model": "Each pair-level component uses the existing matched-pair model with rain_contrast, temperature_difference, day_of_year_difference, year_gap, State and RunNumber; route-clustered covariance.",
+  "primary_rule": "Strong-chorus spatial deepening is supported if third_plus_strong has a positive rain_contrast coefficient with complete 95% CI >0 and contributes >50% of the total third_plus rain coefficient.",
+  "robustness_rule": "The same primary rule must hold in the same-observer + physical-stop subset for joint robustness.",
+  "secondary": "Report CI3-present component separately; no additional pass gate.",
+  "interpretation": [
+    "Support links the spatial-depth excess to substantial chorus activation rather than to CI1-only marginal detections.",
+    "This is an observed-component decomposition, not a new null-model family.",
+    "CallingIndex is ordinal acoustic intensity, not exact abundance or reproductive success.",
+    "No causal rainfall or physiological mediator is identified."
+  ],
+  "retuning_after_readback": false
+}
