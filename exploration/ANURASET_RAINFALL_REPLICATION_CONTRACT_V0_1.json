@@ -62,5 +62,35 @@
     "No claim that annotation sampling represents continuous effort.",
     "No retuning after endpoint readback.",
     "No RC11 manuscript modification based on this exploration."
-  ]
+  ],
+  "inct41_coordinate_uncertainty_replication": {
+    "status": "fixed_before_endpoint_readback",
+    "site": "INCT41",
+    "biome": "Cerrado",
+    "locality": "Bifurcacao, Goias, Brazil",
+    "coordinate_evidence": {
+      "source": "Humboldt I2D resource sonidos_anf_audioclim_2022 v2.0",
+      "bounding_box": {
+        "south": -17.87,
+        "west": -48.78,
+        "north": -17.7,
+        "east": -48.61
+      },
+      "rationale": "Do not invent a point coordinate; propagate the public locality bounding box to all feasible nearest ERA5 0.25-degree cells."
+    },
+    "era5_candidate_cells": [
+      {
+        "latitude": -17.75,
+        "longitude": -48.75
+      },
+      {
+        "latitude": -17.75,
+        "longitude": -48.5
+      }
+    ],
+    "analysis": "Exactly the same weak-label CallingIndex decomposition, dryness definition, covariates, date clustering, and threshold-dominance rule as the prefixed INCT20955 test.",
+    "robust_replication_rule": "A Cerrado site conclusion is called coordinate-robust only if both candidate ERA5 cells give the same threshold-dominance classification and the same signs for total_ci, active_richness and excess_intensity dryness slopes.",
+    "interpretation": "Independent site/biome test of recruitment-versus-intensification; still not a spatial-boundary matrix replication.",
+    "retuning_after_readback": false
+  }
 }
