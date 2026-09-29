@@ -72,6 +72,23 @@
       },
       "decision": "Report the observed contrast, null mean and 95% interval, and plus-one upper-tail Monte Carlo p for each null. A taxonomic-axis excess is supported only if the observed contrast exceeds the upper 95% interval under both null families.",
       "interpretation_boundary": "This distinguishes where recruitment is disproportionately allocated; it does not identify the physiological cause of calling."
+    },
+    "crossfit_species_shift_plus_persistence_null": {
+      "status": "post_readback_extension_fixed_before_its_endpoint",
+      "reason": "The cross-fit species-shift null was rejected, but a stronger alternative should jointly allow transferable species-specific rainfall response and strong persistence of each pair's observed dry species x stop state.",
+      "species_shifts": "Exactly the same deterministic cross-route folds, estimability gate, and per-species training model as crossfit_species_shift_null.",
+      "persistence": "Cell-only historical dry probabilities anchored 75% to the observed dry matrix, matching the primary persistence-preserving null.",
+      "pair_shift": "Apply gamma_species * rain_contrast to the anchored logit probabilities, then solve one common pair delta so expected wet incidence count matches the observed wet total.",
+      "simulation": {
+        "replicates": 1000,
+        "seed": 2840223
+      },
+      "primary_test": "Same four-component Mahalanobis omnibus; plus-one Monte Carlo p.",
+      "interpretation": {
+        "fail_to_reject": "Species-specific response heterogeneity plus pair-specific persistence is sufficient under this stronger additive null.",
+        "reject": "Even transferable species-specific response plus strong dry-state persistence is insufficient; additional context dependence or non-additive species x site structure is required.",
+        "causal_claim": false
+      }
     }
   },
   "prohibited": [
