@@ -1,0 +1,18 @@
+{
+  "analysis": "naamp_cluster_route_split_replication_v0_1",
+  "status": "post_readback_internal_replication_fixed_before_fold_endpoints",
+  "question": "Does the conditional local-contiguity excess of route-new species replicate in two completely disjoint deterministic route sets?",
+  "split": "SHA256(State:RouteNumber), first byte <128 = A, otherwise B; identical to the existing cross-fit route split.",
+  "endpoint": "Adjacent-stop rain coefficient conditional on extra-stop incidence rain coefficient, using the same null-regression residual statistic as NAAMP_ROUTE_NEW_CONTIGUITY_V0_1.",
+  "nulls": [
+    "fold-specific uniform activation kappa=2",
+    "fold-specific persistence-preserving activation anchor=0.75"
+  ],
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "pass_rule": "Each fold must have observed conditional residual above the upper 95% residual interval under both null families. Overall replication passes only if both folds pass.",
+  "interpretation": "Pass establishes internal replication across disjoint NAAMP route sets, not cross-continental universality or a causal hydrological mechanism.",
+  "retuning_after_readback": false
+}
