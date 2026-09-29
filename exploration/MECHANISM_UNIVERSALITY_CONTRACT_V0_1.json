@@ -131,6 +131,54 @@
       ],
       "next_if_eligible": "Attach reproducible rainfall exposure and run a fixed-site matrix recruitment analysis separate from RC11.",
       "interpretation": "Independent monitoring-system replication, not evidence of worldwide universality by itself."
+    },
+    "crossfit_site_shift_null": {
+      "question": "Can stable site-specific rainfall-response shifts, learned only from disjoint years at the same route stops, reproduce the observed four-component allocation?",
+      "temporal_split": {
+        "early_training_or_test": "2001-2007",
+        "buffer_year": "2008 excluded from training and test pairs",
+        "late_training_or_test": "2009-2015",
+        "test_pairs": "Both member years must lie wholly within early or late block; each test block uses site shifts learned only from the opposite block."
+      },
+      "site_identity": "State x RouteNumber x StopNumber; physical route-stop identity used only after verifying ten-stop alignment as in the current analysis.",
+      "site_response_estimator": {
+        "response": "Jeffreys-smoothed logit of number of calling species at the stop divided by the route-wide candidate species pool for each eligible run.",
+        "covariates": "Residualize log1p(DaysSinceRain) and response against mean temperature, cyclic day of year, and RunNumber indicators within each physical site.",
+        "coefficient": "OLS slope on residualized dryness; wet-shift gamma is minus the dryness slope.",
+        "estimability": "At least 8 training runs, route candidate pool >=3 species, at least 10 positive and 10 negative species-cell opportunities, nonzero residualized dryness variance; otherwise gamma_site=0. Absolute fitted dryness slope >5 is treated as unstable and gamma_site=0.",
+        "no_test_outcomes_in_training": true
+      },
+      "simulation": {
+        "baseline": "Current kappa=2 dry-history species x stop probabilities for the test pair's stratum.",
+        "shift": "logit(q_cell)=logit(p_baseline_cell)+gamma_site*rain_contrast+delta_pair; one common delta_pair is solved to match observed wet incidence count in expectation.",
+        "replicates": 1000,
+        "seed": 2840223,
+        "test": "Same four-component Mahalanobis omnibus with plus-one Monte Carlo p."
+      },
+      "interpretation": {
+        "reject": "Stable site-specific rainfall sensitivity alone is insufficient.",
+        "fail_to_reject": "Stable site-specific rainfall sensitivity is sufficient under this tested null family.",
+        "causal_claim": false
+      }
+    },
+    "crossfit_species_plus_site_additive_null": {
+      "question": "Can additive stable species-specific and stable site-specific rainfall shifts jointly reproduce the observed allocation?",
+      "population": "Same temporally cross-fit test-pair subset as the site-shift null.",
+      "species_component": "Use route-cross-fit species wet-shift gammas from the existing crossfit_species_shift_null: every test route receives species shifts learned only on the opposite route fold.",
+      "site_component": "Use temporal-cross-fit site wet-shift gammas from crossfit_site_shift_null: every test pair receives site shifts learned only from the opposite temporal block.",
+      "shift": "logit(q_cell)=logit(p_baseline_cell)+(gamma_species+gamma_site)*rain_contrast+delta_pair; solve common delta_pair to match wet incidence count.",
+      "simulation": {
+        "replicates": 1000,
+        "seed": 2840223
+      },
+      "primary_test": "Same four-component Mahalanobis omnibus.",
+      "interpretation": {
+        "reject": "Additive transferable species and stable site rainfall sensitivity are jointly insufficient; non-additive species x site response or another contextual process is required by this hierarchy.",
+        "fail_to_reject": "Additive species and site heterogeneity is sufficient under this tested null family; no species x site interaction claim is authorized.",
+        "direct_interaction_estimated": false,
+        "causal_claim": false
+      },
+      "retuning_after_readback": false
     }
   },
   "prohibited": [
