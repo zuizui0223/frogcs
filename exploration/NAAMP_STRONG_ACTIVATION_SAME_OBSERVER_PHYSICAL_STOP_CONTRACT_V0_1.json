@@ -1,0 +1,11 @@
+{
+  "analysis": "naamp_strong_activation_same_observer_physical_stop_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "question": "Does rainfall-associated 0-to-CallingIndex-2/3 recruitment persist when observer identity and physical stop identity are simultaneously held constant?",
+  "sample": "Intersection of the existing same-observer pair set and pairs with all ten nonmissing identical SiteID values between wet and dry runs.",
+  "response": "strong_new_score = sum wet CallingIndex for species x stop cells with dry=0 and wet in {2,3}; strong_new_count = number of such cells.",
+  "model": "Existing matched-pair model: response ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber, cluster-robust by route.",
+  "pass_rule": "Strong recruitment robustness passes if both strong_new_score and strong_new_count have positive rain_contrast coefficients with complete 95% CIs >0.",
+  "interpretation": "A pass makes simple observer turnover, stop relocation, and weak-call-only detection explanations jointly insufficient. It does not eliminate all detectability or identify hydration/hydrology.",
+  "retuning_after_readback": false
+}
