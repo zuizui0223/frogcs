@@ -1,0 +1,32 @@
+name: NWI context eligibility audit
+
+on:
+  push:
+    branches:
+      - exploration/nwi-context-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy shapely pyproj
+      - name: Compile
+        run: python -m compileall -q exploration scripts
+      - name: Audit NWI context coverage
+        run: python exploration/audit_naamp_nwi_context_eligibility.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-context-eligibility-v0-1
+          path: |
+            exploration/NAAMP_NWI_CONTEXT_ELIGIBILITY_CONTRACT_V0_1.json
+            exploration/NAAMP_NWI_CONTEXT_ELIGIBILITY_RECEIPT_V0_1.json
+          if-no-files-found: error
