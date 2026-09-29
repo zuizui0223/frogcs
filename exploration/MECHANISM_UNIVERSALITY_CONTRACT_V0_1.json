@@ -102,6 +102,17 @@
         "No claim that same-observer restriction eliminates all detection bias.",
         "No abundance interpretation of CallingIndex."
       ]
+    },
+    "route_split_mechanism_replication": {
+      "question": "Do the two mechanism-level patterns replicate in two disjoint deterministic route sets?",
+      "split": "Use the same SHA256 State:RouteNumber A/B split as the cross-fit species-shift null.",
+      "endpoints": {
+        "calling_index": "Within each fold, apply the existing threshold-dominant rule: total beta >0, activation 95% CI >0, activation share >0.5, activation beta > shared-intensity beta.",
+        "taxonomic_axis": "Within each fold, recompute the four component rainfall betas and taxonomic-minus-spatial share contrast. Simulate fold-specific kappa=2 uniform and a=0.75 persistence nulls with 1,000 replicates. Support requires the observed contrast above the upper 95% interval under both nulls."
+      },
+      "pass_rule": "Both CallingIndex threshold dominance and taxonomic-axis excess must pass independently in fold A and fold B.",
+      "interpretation": "A pass establishes internal replication across disjoint route sets, not cross-continental universality.",
+      "retuning_after_readback": false
     }
   },
   "prohibited": [
