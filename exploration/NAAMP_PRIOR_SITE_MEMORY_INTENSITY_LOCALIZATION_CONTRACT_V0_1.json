@@ -1,0 +1,20 @@
+{
+  "analysis": "naamp_prior_site_memory_intensity_localization_v0_1",
+  "status": "post_readback_intensity_localization_fixed_before_endpoint",
+  "motivation": "Within pair x species, prior same-site memory increased CI>=2 reactivation but not CI3 alone. Localize the interaction across mutually exclusive wet CallingIndex levels.",
+  "population": "Exactly the informative cells from NAAMP_PRIOR_SITE_MEMORY_WITHIN_SPECIES_V0_1: prior-known route species absent from the focal dry route, physically stable pairs, and pair x species groups with both prior-used and prior-unused SiteIDs.",
+  "outcomes": {
+    "wet_ci1_only": "1 when wet CallingIndex=1, else 0",
+    "wet_ci2_only": "1 when wet CallingIndex=2, else 0",
+    "wet_ci3_only": "1 when wet CallingIndex=3, else 0"
+  },
+  "model": "For each outcome, use the same pair x species fixed-effect demeaning and cluster-robust regression: demeaned outcome ~ demeaned prior_same_site + demeaned(prior_same_site*rain_contrast), no intercept.",
+  "primary_localization": "Report the three interaction coefficients and 95% CIs. No new omnibus success gate is created; this diagnostic localizes the already-supported CI>=2 interaction.",
+  "sensitivity": "Repeat CI2-only in same-observer pairs.",
+  "interpretation": [
+    "Positive CI2-only with unsupported CI3-only means site-memory selectivity is strongest at overlapping-call chorus intensity rather than specifically at full chorus.",
+    "The full population-level CI3 rainfall association remains a separate result.",
+    "This is post-readback localization and not a new confirmatory family."
+  ],
+  "retuning_after_readback": false
+}
