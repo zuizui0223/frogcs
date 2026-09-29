@@ -125,7 +125,7 @@ def prop(props,suffix):
 
 
 def query_envelope(minlon,minlat,maxlon,maxlat):
-    params={
+    base_params={
         "f":"geojson",
         "where":"1=1",
         "geometry":f"{minlon},{minlat},{maxlon},{maxlat}",
@@ -135,13 +135,41 @@ def query_envelope(minlon,minlat,maxlon,maxlat):
         "outSR":"4326",
         "outFields":"*",
         "returnGeometry":"true",
+        "orderByFields":"OBJECTID ASC",
+        "resultRecordCount":"1000",
     }
-    url=NWI_QUERY+"?"+urllib.parse.urlencode(params)
-    raw=fetch(url,timeout=120)
-    obj=json.loads(raw.decode("utf-8"))
-    if "error" in obj:
-        raise RuntimeError(f"NWI query error: {obj['error']}")
-    return obj.get("features") or []
+    features=[]
+    seen=set()
+    offset=0
+    for page in range(50):
+        params=dict(base_params)
+        params["resultOffset"]=str(offset)
+        url=NWI_QUERY+"?"+urllib.parse.urlencode(params)
+        raw=fetch(url,timeout=120)
+        obj=json.loads(raw.decode("utf-8"))
+        if "error" in obj:
+            raise RuntimeError(f"NWI query error: {obj['error']}")
+        fs=obj.get("features") or []
+        newn=0
+        for f in fs:
+            pp=f.get("properties") or {}
+            key=prop(pp,"OBJECTID") or prop(pp,"GLOBALID") or hashlib.sha1(
+                json.dumps(f,sort_keys=True,separators=(",",":")).encode()
+            ).hexdigest()
+            key=str(key)
+            if key in seen:
+                continue
+            seen.add(key)
+            features.append(f)
+            newn+=1
+        if len(fs)<1000:
+            break
+        if newn==0:
+            raise RuntimeError("NWI pagination made no progress at full page")
+        offset += len(fs)
+    else:
+        raise RuntimeError("NWI pagination exceeded 50 pages for one route envelope")
+    return features
 
 
 def projected_distance(point_lonlat,geom,lat0,lon0):
@@ -164,22 +192,6 @@ def route_features(site_ids,coords):
     dlat=0.012
     dlon=0.012/max(0.25,math.cos(math.radians(lat0)))
     features=query_envelope(min(lons)-dlon,min(lats)-dlat,max(lons)+dlon,max(lats)+dlat)
-    # A route-sized envelope should normally be far below the service limit.
-    # If exactly at limit, use per-site small envelopes to avoid silent truncation.
-    if len(features)>=1000:
-        merged={}
-        for sid in site_ids:
-            if sid not in coords:
-                continue
-            lat,lon=coords[sid]
-            dlat2=0.006
-            dlon2=0.006/max(0.25,math.cos(math.radians(lat)))
-            fs=query_envelope(lon-dlon2,lat-dlat2,lon+dlon2,lat+dlat2)
-            for f in fs:
-                pp=f.get("properties") or {}
-                key=prop(pp,"GLOBALID") or prop(pp,"OBJECTID") or json.dumps(pp,sort_keys=True)
-                merged[str(key)]=f
-        features=list(merged.values())
     return features
 
 
