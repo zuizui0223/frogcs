@@ -1,0 +1,12 @@
+{
+  "analysis": "naamp_route_new_contiguity_robust_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "question": "Does the excess adjacency of route-new recruitment persist when observer identity and physical stop identity are simultaneously held constant?",
+  "sample": "Intersection of the existing same-observer matched pairs and pairs with identical nonmissing SiteID at all ten StopNumbers.",
+  "endpoint": "Same extra-stop and adjacent-stop incidence definitions as NAAMP_ROUTE_NEW_CONTIGUITY_V0_1.",
+  "nulls": "Rebuild the kappa=2 uniform and a=0.75 persistence null histories using only the restricted sample's dry runs.",
+  "conditional_test": "Within each simulated null family regress adjacent-stop beta on extra-stop beta across 1,000 replicates; compare the observed conditional residual with the null residual distribution.",
+  "pass_rule": "Conditional adjacent-stop residual exceeds the upper 95% null bound under both null families.",
+  "interpretation": "Pass shows the local contiguity geometry does not require observer turnover or physical-stop relocation. It does not identify wetland connectivity or individual movement.",
+  "retuning_after_readback": false
+}
