@@ -4,6 +4,9 @@ on:
     branches: [exploration/route-new-distance-v1]
   workflow_dispatch:
 permissions: {contents: read}
+concurrency:
+  group: route-new-distance-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   analyse:
     runs-on: ubuntu-latest
