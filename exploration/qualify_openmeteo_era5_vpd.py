@@ -209,7 +209,7 @@ def main():
         "latitude":latlist,"longitude":lonlist,
         "start_date":d.isoformat(),"end_date":d.isoformat(),
         "hourly":"vapour_pressure_deficit",
-        "models":"era5","cell_selection":"nearest","elevation":"nan","timezone":"GMT",
+        "models":"era5","cell_selection":"nearest","timezone":"GMT",
     }
     multi=json.loads(fetch(API+"?"+urllib.parse.urlencode(params)).decode("utf-8"))
     multi_shape_pass=bool(isinstance(multi,list) and len(multi)==2 and all("hourly" in x for x in multi))
