@@ -13,7 +13,7 @@ def loadmod(name,path):
 
 base=loadmod("base",NAAMP/"run_naamp_ecological_pulse.py")
 raw=base.load()
-terms=("humid","dew","press","baro","weather","sky","cloud","wind","temp","rain","precip","moist")
+terms=("humid","dew","press","baro","weather","sky","cloud","wind","temp","rain","precip","moist","time")
 out={"analysis":"naamp_weather_schema_audit_v0_1","response_data_read":False,"files":{}}
 for name,rows in raw.items():
     cols=list(rows[0].keys()) if rows else []
