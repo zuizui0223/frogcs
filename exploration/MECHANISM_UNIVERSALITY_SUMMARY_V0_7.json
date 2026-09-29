@@ -1,0 +1,165 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_7",
+  "status": "exploratory_evidence_summary_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "process_inference": {
+    "statement": "Within NAAMP, rainfall-associated acoustic change is primarily recruitment across behavioural activity thresholds, including direct entry at CallingIndex 2-3, rather than mere intensification of already-calling cells.",
+    "evidence": {
+      "activation_share_of_total_callingindex_slope": 0.6528793213930071,
+      "strong_ci23_share_of_activation_slope": 0.8707082810857251,
+      "shared_positive_intensity_share_of_total": 0.06915913749245683,
+      "full_strong_ci23_beta": 1.6150398249522895,
+      "full_strong_ci23_ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ]
+    }
+  },
+  "robustness": {
+    "same_observer_and_physical_stop": {
+      "pairs": 3115,
+      "strong_score_beta": 1.7428002577104516,
+      "strong_score_ci95": [
+        0.3270455434761059,
+        3.158554971944797
+      ],
+      "strong_count_beta": 0.6143699621882305,
+      "strong_count_ci95": [
+        0.10728385130839779,
+        1.1214560730680632
+      ]
+    },
+    "measured_detection_conditions": {
+      "pairs": 4024,
+      "adjusted_strong_score_beta": 1.6225420695541188,
+      "adjusted_strong_score_ci95": [
+        0.4587043993545672,
+        2.7863797397536705
+      ],
+      "adjusted_strong_count_beta": 0.5972855657100444,
+      "adjusted_strong_count_ci95": [
+        0.17886050204764242,
+        1.0157106293724465
+      ]
+    },
+    "protocol_window": {
+      "pairs_crossing_outside_0_3_day_window": 1769,
+      "strong_score_beta": 1.7317228632197144,
+      "strong_score_ci95": [
+        0.37189243470675537,
+        3.0915532917326733
+      ]
+    },
+    "geography": {
+      "states": 21,
+      "leave_one_state_out_all_beta_positive": true,
+      "leave_one_state_out_all_ci_positive": true,
+      "minimum_beta": 0.8940439534535248,
+      "minimum_ci_lower": 0.2912197317182954
+    },
+    "physical_stop_boundary": {
+      "stable_all_ten_siteid_pairs": 4172,
+      "fraction": 0.9848914069877243,
+      "observed_boundary_share": 0.9304964895167589,
+      "uniform_p": 0.000999000999000999,
+      "persistence_p": 0.000999000999000999
+    }
+  },
+  "mechanism_discrimination": {
+    "uniform_amplification": "rejected",
+    "weak_call_detection_only": "substantially_weakened_by_direct_CI2_3_recruitment",
+    "observer_turnover": "not_required",
+    "physical_stop_relocation": "not_required",
+    "measured_noise_wind_hearing": "insufficient_as_sole_explanation",
+    "survey_0_3_day_targeting": "insufficient_as_sole_explanation",
+    "simple_social_cue_attraction": {
+      "status": "not_supported",
+      "observed_route_new_to_dry_active_fraction": 0.5192483535917819,
+      "uniform_null_ci95": [
+        0.4649129950912414,
+        0.585954845963247
+      ],
+      "persistence_null_ci95": [
+        0.45397243913515717,
+        0.5660048947434544
+      ]
+    },
+    "stable_species_only": {
+      "full_sample_crossfit_p": 0.001998001998001998,
+      "conclusion": "insufficient in the full 4,236-pair sample"
+    },
+    "stable_physical_site_only": "not_supported_by_temporal_stability_diagnostics",
+    "survey_time_atmospheric_state": {
+      "eligibility": {
+        "valid_runs_fraction": 0.9631753312945973,
+        "valid_pairs": 4108,
+        "valid_pair_fraction": 0.9697828139754485
+      },
+      "full_model": {
+        "rain_beta": 1.5229876376233804,
+        "rain_ci95": [
+          0.34701078815568565,
+          2.698964487091075
+        ],
+        "humidity_beta_per_sd": 0.268393763281843,
+        "humidity_ci95": [
+          -0.06696561404892976,
+          0.6037531406126158
+        ],
+        "pressure_beta_per_sd": -0.29375252045423106,
+        "pressure_ci95": [
+          -0.6312380531388623,
+          0.04373301223040016
+        ],
+        "joint_rh_pressure_p": 0.03656176378793355
+      },
+      "diagnostics": {
+        "humidity_only_p": 0.07505868802329492,
+        "pressure_only_p": 0.0572403613717762,
+        "same_observer_joint_p": 0.29492780154575104,
+        "exact_consecutive_year_joint_p": 0.25231426817369385
+      },
+      "conclusion": "Survey-time RH and surface pressure carry weak joint information in the full sample, but neither is individually CI-supported, joint support is not robust in same-observer or exact-year diagnostics, and the rain-recency coefficient remains CI-positive. Contemporaneous atmospheric state does not replace rainfall history."
+    }
+  },
+  "geometry": {
+    "route_new_species_share": 0.767795525238989,
+    "new_stop_share": 0.5214772488387415,
+    "taxonomic_minus_spatial": 0.24631827640024753,
+    "uniform_p": 0.000999000999000999,
+    "persistence_p": 0.000999000999000999,
+    "conclusion": "The full-sample boundary excess is more taxonomic than spatial."
+  },
+  "generality": {
+    "naamp_region": "Strong pooled robustness across 21 states and multiple taxa; no single state or species controls the signal.",
+    "local_heterogeneity": "State-specific and species-specific effects are heterogeneous; not every state or species is positive.",
+    "strict_disjoint_route_replication": "narrowly fails the prefixed both-fold gate despite concordant broad direction.",
+    "frogid_australia": "supports only cross-dataset active-unit taxonomic deepening, not the same matrix mechanism.",
+    "anuraset_brazil": "two Neotropical site tests do not satisfy the prefixed threshold-dominance rule.",
+    "worldwide_universality": false
+  },
+  "best_current_working_hypothesis": {
+    "label": "event-contingent reproductive activation opportunity",
+    "wording": "Recent rain changes the opportunity for calling/breeding so that previously acoustically inactive species x site combinations cross behavioural thresholds, often entering at substantial chorus intensity. The relevant context is not captured by a fixed species trait, a stable stop trait, simple social attraction, or contemporaneous RH/pressure alone.",
+    "still_plausible_components": [
+      "cumulative hydration/moisture state",
+      "rainfall-created or rainfall-improved breeding-site conditions",
+      "hydroperiod-dependent breeding opportunity",
+      "species-specific reproductive phenology",
+      "other weather cues and event-contingent local context"
+    ],
+    "unique_mechanism_identified": false
+  },
+  "active_measured_context_test": {
+    "test": "Official National Wetlands Inventory water-regime linkage",
+    "hypothesis": "route-new recruitment should be more rain-sensitive at temporarily/seasonally/intermittently flooded wetlands than at semipermanent/permanent surface-water wetlands.",
+    "status": "running under a response-blind eligibility gate; API query method validated with returnIdsOnly and 500 m multipoint smoke tests."
+  },
+  "interpretation_boundary": [
+    "Acoustic activity is not abundance, occupancy, colonization, or reproductive success.",
+    "CallingIndex is ordinal acoustic intensity, not individual calling effort.",
+    "Atmospheric associations are observational and are not causal mediation.",
+    "No worldwide universal threshold-recruitment law is established.",
+    "RC11 remains frozen."
+  ]
+}
