@@ -1,0 +1,27 @@
+{
+  "analysis": "naamp_full_chorus_site_memory_v0_1",
+  "status": "post_readback_ecological_memory_decomposition_fixed_before_endpoint",
+  "question": "When a species x stop cell jumps from silence to CallingIndex 3 after recent rain, is that full chorus mainly a reactivation of a physical site where the same species was recorded in other years?",
+  "population": "Frozen NAAMP matched pairs restricted to pairs with identical nonmissing SiteID at all ten StopNumbers.",
+  "focal_units": "Cells with dry CallingIndex=0 and wet CallingIndex=3.",
+  "leave_pair_out_memory": {
+    "same_site_prior_full_chorus": "In another eligible run of the same State x RouteNumber x RunNumber stratum, excluding the focal wet/dry runs, the same species reached CallingIndex 3 at the same SiteID.",
+    "same_site_other_call": "The species was detected at the same SiteID in another eligible run, but never at CallingIndex 3 there outside the pair.",
+    "route_only_recurrent": "The species was detected in another eligible run of the same stratum but not at the focal SiteID.",
+    "one_off_stratum_record": "The species was never detected in any other eligible run of the same stratum outside the pair."
+  },
+  "exact_identity": "new_ci3_count = same_site_prior_full_chorus + same_site_other_call + route_only_recurrent + one_off_stratum_record.",
+  "primary_models": "Each pair-level component uses the existing matched-pair model with rain_contrast, temperature_difference, day_of_year_difference, year_gap, State and RunNumber; route-clustered covariance.",
+  "primary_rule": "Known-site chorus reactivation is supported if (same_site_prior_full_chorus + same_site_other_call) has complete 95% CI >0 and contributes >50% of the total new_ci3_count rain coefficient.",
+  "prior_only_sensitivity": {
+    "definition": "Repeat memory classification using only eligible runs strictly earlier than the earlier survey year of the matched pair.",
+    "gate": ">=1500 pairs and >=300 routes with at least one prior eligible run in the same stratum."
+  },
+  "interpretation": [
+    "Support means rainfall-associated full choruses recur primarily at sites where the species has been acoustically recorded in other years.",
+    "A prior full chorus at the same site is stronger evidence of recurrent chorus-site use than a prior lower CallingIndex.",
+    "Repeated acoustic detection does not prove continuous occupancy or reproductive success between surveys.",
+    "No causal rainfall or physiological mechanism is identified."
+  ],
+  "retuning_after_readback": false
+}
