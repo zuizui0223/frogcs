@@ -89,6 +89,19 @@
         "reject": "Even transferable species-specific response plus strong dry-state persistence is insufficient; additional context dependence or non-additive species x site structure is required.",
         "causal_claim": false
       }
+    },
+    "calling_index_same_observer_sensitivity": {
+      "status": "post_readback_robustness_fixed_before_its_endpoint",
+      "reason": "CallingIndex levels are observer-scored. Test whether the threshold-recruitment decomposition persists when both surveys in each wetter-drier pair were scored by the same ObserverTrackingID.",
+      "sample": "Use the existing prefrozen same-observer restriction: nonempty identical ObserverTrackingID in both runs; expected 3,152 of 4,236 pairs.",
+      "decomposition": "Exactly the CallingIndex activation, deactivation, shared-intensity, and total definitions from calling_index_decomposition.",
+      "models": "Exactly the same pair-level formula and route-clustered covariance.",
+      "decision": "Apply the same threshold-dominant rule as the full sample: total beta >0; activation 95% CI >0; activation >50% of total beta; activation beta > shared-intensity beta.",
+      "prohibited": [
+        "No observer-specific retuning.",
+        "No claim that same-observer restriction eliminates all detection bias.",
+        "No abundance interpretation of CallingIndex."
+      ]
     }
   },
   "prohibited": [
