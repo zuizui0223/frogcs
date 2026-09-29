@@ -1,0 +1,27 @@
+{
+  "analysis": "naamp_recurrent_activation_memory_v0_1",
+  "status": "post_readback_ecological_decomposition_fixed_before_endpoint",
+  "question": "Are rainfall-associated route-new species incidences mainly recurrent activation of taxa/sites observed in other monitoring years, rather than one-off first records within the route-season stratum?",
+  "population": "Frozen NAAMP matched pairs restricted to pairs with identical nonmissing SiteID at all ten StopNumbers.",
+  "focal_units": "Wet incidences belonging to species absent from the entire dry route but present in the wet route.",
+  "leave_pair_out_memory": {
+    "same_site_recurrent": "Species was detected at the same physical SiteID in any other eligible run of the same State x RouteNumber x RunNumber stratum, excluding the wet and dry runs of the focal pair.",
+    "route_only_recurrent": "Species was detected in another eligible run of the same stratum, but never at the focal SiteID outside the pair.",
+    "one_off_stratum_record": "Species had no detection in any other eligible run of the same stratum outside the focal pair."
+  },
+  "exact_identity": "route_new_wet_incidence = same_site_recurrent + route_only_recurrent + one_off_stratum_record.",
+  "primary_models": "Fit each pair-level component and their recurrent sum with the existing matched-pair model: rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber; route-clustered covariance.",
+  "primary_rule": "Recurrent activation is supported if the recurrent-sum rain coefficient has complete 95% CI >0 and contributes >50% of the total route-new wet-incidence rain coefficient.",
+  "temporal_sensitivity": {
+    "definition": "Repeat classification using only eligible runs strictly earlier than the earlier survey year in the matched pair.",
+    "gate": ">=1500 pairs and >=300 routes with at least one prior eligible run in the same stratum.",
+    "interpretation": "Prior-only support strengthens the reading of reactivation of a previously observed local acoustic pool; failure does not invalidate leave-pair-out recurrence because early programme years have little prior history."
+  },
+  "interpretation": [
+    "Recurrent detection across years supports behavioural/acoustic reactivation more than literal colonization, but does not prove continuous occupancy between surveys.",
+    "Route-only recurrence does not identify movement during the focal rain event.",
+    "One-off records can reflect true rarity, detection limits, or transient occurrence.",
+    "No causal rainfall or reproductive-success claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
