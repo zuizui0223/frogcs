@@ -1,0 +1,15 @@
+{
+  "analysis": "naamp_strong_new_activation_seasonal_window_audit_v0_1",
+  "status": "post_readback_ecological_generality_audit_fixed_before_endpoint",
+  "question": "Is strong 0-to-CallingIndex-2/3 rainfall-associated recruitment confined to one NAAMP seasonal survey window or directionally shared across breeding-season windows?",
+  "endpoint": "strong_new_score.",
+  "window_models": "Within each RunNumber 1-4, strong_new_score ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State, route-clustered covariance.",
+  "eligibility": "A window is estimable for the directional audit if it has >=300 pairs and >=75 routes.",
+  "interaction_model": "Pooled strong_new_score ~ rain_contrast * RunNumber + temperature_difference + day_of_year_difference + year_gap + State, route-clustered covariance; report joint Wald test of rain_contrast:RunNumber interactions.",
+  "classification": {
+    "directional_generality": "All eligible seasonal-window rain_contrast coefficients >0.",
+    "strong_generality": "All eligible seasonal-window 95% CIs entirely >0.",
+    "interpretation": "Directional generality means the mechanism is not restricted to a single survey window; it does not imply identical species or breeding strategies across windows."
+  },
+  "retuning_after_readback": false
+}
