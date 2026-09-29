@@ -1,0 +1,48 @@
+{
+  "analysis": "naamp_strong_new_activation_detection_quality_v0_1",
+  "status": "post_readback_detection_robustness_fixed_before_endpoint",
+  "question": "Does the rainfall-associated increase in new CallingIndex 2-3 chorus cells remain after directly adjusting the strong-new endpoint for recorded acoustic detection conditions?",
+  "endpoint": "strong_new_score = sum wet CallingIndex for dry=0 -> wet in {2,3} cells.",
+  "primary": {
+    "covariates": [
+      "rain_contrast",
+      "temperature_difference",
+      "day_of_year_difference",
+      "year_gap",
+      "hearing_impairment_difference",
+      "timeout_difference",
+      "wind_difference",
+      "State",
+      "RunNumber"
+    ],
+    "sample_gate": {
+      "pairs": 1500,
+      "routes": 300
+    },
+    "pass_rule": "rain_contrast beta >0 and complete 95% CI >0"
+  },
+  "sensitivities": {
+    "traffic": {
+      "additional": "wet-minus-dry mean CarCount",
+      "gate": {
+        "pairs": 750,
+        "routes": 200
+      },
+      "interpretation": "Report if gate passes; same positive-CI criterion."
+    },
+    "mass_noise": {
+      "replace": "hearing impairment difference with wet-minus-dry mean Massachusetts MassNoiseIndex",
+      "gate": {
+        "pairs": 300,
+        "routes": 75
+      },
+      "interpretation": "Report if gate passes; same positive-CI criterion."
+    },
+    "exact_year": "Repeat primary on year_gap==1; directional/CI diagnostic."
+  },
+  "interpretation": {
+    "support": "Recorded hearing impairment, major-noise interruptions, wind and available traffic/noise indices do not explain strong new chorus recruitment.",
+    "boundary": "This does not eliminate unmeasured masking, distance-to-caller effects, or species-specific detection."
+  },
+  "retuning_after_readback": false
+}
