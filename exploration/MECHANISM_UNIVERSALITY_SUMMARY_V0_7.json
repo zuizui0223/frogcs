@@ -1,0 +1,182 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_7",
+  "status": "exploratory_snapshot_complete_pause_additional_analysis",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "headline": {
+    "process": "Rain-associated acoustic expansion is best explained at the ecological-process level as recurrent activation of a latent local acoustic metacommunity, not uniform amplification, weak-call detectability, stop relocation, observer turnover, or literal first appearance.",
+    "chorus_transition": "The site-memory x rain interaction localizes most clearly to CallingIndex 2: previously used species-site combinations are preferentially pushed from silence into overlapping-call chorus onset as rainfall contrast increases. CI1-only and CI3-only site-memory interactions are not individually supported after pair x species fixed effects.",
+    "full_chorus_population_effect": "Despite the CI3-specific site-memory interaction being imprecise after species control, the population-level 0-to-CI3 full-chorus rainfall association itself is robust in the full and same-observer+physical-site samples.",
+    "spatial_depth": "Once route-new taxa activate, the unusual spatial signal is excess third-and-later-stop participation, overwhelmingly carried by CI2-3 taxa; unusual geographic clustering conditional on occupied-stop count is not established.",
+    "taxonomic_scope": "Strong activation is diffuse across many taxa rather than dominated by one or a few species.",
+    "geographic_scope": "Aggregate NAAMP generality is strong to leave-one-state-out analyses, but state-specific effects are heterogeneous and cross-continental universality is not established.",
+    "proximal_cause": "The exact physiological/environmental trigger remains unresolved; coarse wetland hydroperiod/system, simple chorus facilitation, simple thermal background, survey round, and an acute one-day window do not explain the robust process."
+  },
+  "core_results": {
+    "calling_index_decomposition": {
+      "total_beta": 2.8410419576031223,
+      "activation_beta": 1.8548575453289868,
+      "activation_share": 0.6528793213930071,
+      "shared_active_intensity_beta": 0.19648401136771304,
+      "shared_active_intensity_share": 0.06915913749245683
+    },
+    "strong_chorus": {
+      "ci2_3_score_beta": 1.6150398249522895,
+      "ci2_3_score_ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ],
+      "ci2_3_share_of_activation": 0.8707082810857251,
+      "full_ci3_count_beta": 0.4413143755210998,
+      "full_ci3_count_ci95": [
+        0.11436200385886863,
+        0.768266747183331
+      ],
+      "robust_ci3_beta": 0.5140603333339898,
+      "robust_ci3_ci95": [
+        0.10081588098938049,
+        0.9273047856785992
+      ]
+    },
+    "recurrent_memory": {
+      "stable_pairs": 4172,
+      "route_new_incidence_beta": 0.8115181449906186,
+      "recurrent_share": 0.9809270884016074,
+      "prior_only_recurrent_share": 0.9893366938882531,
+      "one_off_beta": 0.015478013839897789,
+      "prior_only_one_off_beta": 0.009439685773289727
+    },
+    "site_memory_opportunity": {
+      "leave_pair_out_ci3_beta": 0.016829111731873004,
+      "leave_pair_out_ci95": [
+        0.0028365770275316175,
+        0.030821646436214392
+      ],
+      "prior_only_ci3_beta": 0.02448895976609234,
+      "prior_only_ci95": [
+        0.007001673669270292,
+        0.04197624586291439
+      ],
+      "prior_only_same_observer_beta": 0.030674732734838797,
+      "prior_only_same_observer_ci95": [
+        0.013306013566328205,
+        0.04804345190334939
+      ]
+    },
+    "within_pair_species_site_memory": {
+      "cells": 55710,
+      "pair_species_groups": 5571,
+      "pairs": 2195,
+      "routes": 392,
+      "ci1_only_interaction_beta": 0.004373040437359784,
+      "ci1_only_ci95": [
+        -0.004462425092875793,
+        0.01320850596759536
+      ],
+      "ci2_only_interaction_beta": 0.009860867409355545,
+      "ci2_only_ci95": [
+        0.0018206665360493476,
+        0.01790106828266174
+      ],
+      "ci3_only_interaction_beta": 0.004868309531942166,
+      "ci3_only_ci95": [
+        -0.0017281349164546935,
+        0.011464753980339026
+      ],
+      "ci2plus_interaction_beta": 0.014729176941297717,
+      "ci2plus_ci95": [
+        0.0029320217537971253,
+        0.02652633212879831
+      ],
+      "same_observer_ci2_only_beta": 0.01150038982972996,
+      "same_observer_ci2_only_ci95": [
+        0.0022496724398742805,
+        0.02075110721958564
+      ],
+      "interpretation": "With pair and species fixed, prior same-site use selectively amplifies the rain response at CI2 overlapping-call onset; CI1-only and CI3-only interactions are individually imprecise."
+    },
+    "full_chorus_raw_site_memory": {
+      "same_site_recurrent_share_of_ci3_beta": 0.9040000006981866,
+      "any_recurrent_share_of_ci3_beta": 0.980543209373069,
+      "same_site_prior_full_chorus_beta": 0.30835577574102463,
+      "same_site_prior_full_chorus_ci95": [
+        0.014473194712560977,
+        0.6022383567694882
+      ],
+      "boundary": "These raw memory shares are composition-sensitive; pair x species fixed-effect results above are the stronger site-specific inference."
+    },
+    "spatial_depth": {
+      "route_new_species_beta": 0.1846754325853956,
+      "second_stop_beta": 0.13170590853393746,
+      "third_plus_beta": 0.4725893914308725,
+      "third_plus_uniform_ci95": [
+        0.2628759555857566,
+        0.3552224768706642
+      ],
+      "third_plus_persistence_ci95": [
+        0.1794736101129831,
+        0.27736088366011774
+      ],
+      "fourth_plus_beta": 0.3628430638358824,
+      "third_plus_ci2_3_beta": 0.4598290241532527,
+      "ci2_3_share_of_third_plus": 0.9729990399510237,
+      "third_plus_ci3_beta": 0.36305644282539035,
+      "robust_ci2_3_share": 0.9543102422904208
+    },
+    "conditional_spatial_structure": {
+      "convergent_cluster_support": false,
+      "mpd_compactness_beta": 0.017352282661650818,
+      "mpd_uniform_p": 0.06893106893106893,
+      "mpd_persistence_p": 0.1068931068931069,
+      "mst_compactness_beta": 0.01942623912129594,
+      "mst_uniform_p": 0.04695304695304695,
+      "mst_persistence_p": 0.07992007992007992,
+      "adjacency_beta": 0.0034242330987423113
+    },
+    "taxonomic_diffusion": {
+      "full_species": 57,
+      "positive_species": 28,
+      "top1_share": 0.138781580735396,
+      "top5_share": 0.4917813568649047,
+      "hhi": 0.07445721047263541,
+      "robust_positive_species": 27,
+      "robust_top5_share": 0.5451503519550087,
+      "robust_hhi": 0.08142688058401427
+    },
+    "geography": {
+      "leave_one_state_out_all_ci_positive": true,
+      "state_estimable": 19,
+      "state_positive_fraction": 0.6842105263157895,
+      "state_ci_positive_fraction": 0.3157894736842105,
+      "state_beta_range": [
+        -4.002747196598834,
+        11.414108485374848
+      ],
+      "mixed_population_beta": 1.654511396413927,
+      "mixed_state_slope_sd": 3.4605301334379646
+    },
+    "failed_simple_mediators": {
+      "thermal_joint_p": 0.2969777633390392,
+      "seasonal_window_joint_p": 0.11043418364941408,
+      "nwi_hydroperiod_strong_chorus_p": 0.3103855670774971,
+      "nwi_palustrine_strong_chorus_p": 0.727956499785547,
+      "simple_social_cue_excess": false,
+      "acute_0_1_day_decay_gate": false
+    },
+    "external_scope": {
+      "anuraset_atlantic_forest_threshold_gate": false,
+      "anuraset_cerrado_threshold_gate": false,
+      "effort_complete_external_spatial_matrix_found": false
+    }
+  },
+  "safest_ecological_conclusion": "Recent rain does not simply make an existing frog chorus louder. It preferentially reactivates previously used local species-site combinations from acoustic silence into overlapping-call chorus activity, while recurrent resident taxa deepen participation across multiple sites. Full choruses also increase at the population level, but the site-memory interaction itself is most clearly localized to CI2 chorus onset after species identity is controlled. This is a behavioural/reproductive activation mechanism at the ecological-process level; the proximal hydrological or physiological trigger is not identified.",
+  "do_not_claim": [
+    "Rain causes demographic colonization.",
+    "All states or continents show the same effect.",
+    "Temporary wetlands are the identified mediator.",
+    "Palustrine habitat is the identified mediator.",
+    "Full CI3 chorus site-memory is independently proven after species control.",
+    "A specific hydration, endocrine, humidity or pressure pathway is identified.",
+    "Reproductive success or abundance increased."
+  ],
+  "analysis_pause_reason": "The main mechanistic alternatives accessible with the current public NAAMP data have now been tested. Additional post hoc analyses risk diminishing interpretability; further proximal-cause resolution would require independent hydrology/microclimate or continuous acoustic data."
+}
