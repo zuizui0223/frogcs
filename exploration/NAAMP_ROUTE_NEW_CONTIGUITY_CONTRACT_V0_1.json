@@ -1,0 +1,27 @@
+{
+  "analysis": "naamp_route_new_contiguity_v0_1",
+  "status": "post_readback_mechanism_diagnostic_fixed_before_endpoint",
+  "question": "Do route-new species recruited after recent rain occupy locally contiguous stretches of the route more than expected after accounting for how many extra stops they occupy?",
+  "sample": "Frozen 4,236 NAAMP matched pairs with the existing ten ordered StopNumbers.",
+  "endpoints": {
+    "extra_stop_incidence_gain": "Sum over route-new wet species of max(number of occupied wet stops - 1, 0).",
+    "adjacent_stop_links": "For each route-new wet species, count occupied adjacent StopNumber pairs (1-2,...,9-10); sum across route-new species."
+  },
+  "nulls": [
+    "uniform activation kappa=2",
+    "persistence-preserving activation anchor=0.75"
+  ],
+  "primary_conditional_test": {
+    "construction": "For each null family and 1,000 simulations, compute the rain-contrast coefficients for extra_stop_incidence_gain and adjacent_stop_links. Regress adjacent_beta on extra_beta across null simulations.",
+    "statistic": "Observed adjacent-stop coefficient minus null-predicted adjacent coefficient at the observed extra-stop coefficient.",
+    "prediction": "Observed conditional residual above the upper 95% simulated residual interval under both null families."
+  },
+  "secondary": "Report unconditioned adjacent-stop beta against both null intervals.",
+  "interpretation": [
+    "Support means recruited species are not only on more stops, but on more locally contiguous stop sequences than expected for that amount of spread.",
+    "StopNumber adjacency is route topology, not exact geographic distance; the separate coordinate-span analysis supplies physical scale.",
+    "No individual movement, hydrological connectivity, or causal rainfall mechanism is inferred.",
+    "No RC11 submission change is authorized."
+  ],
+  "retuning_after_readback": false
+}
