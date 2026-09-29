@@ -207,6 +207,25 @@ def main():
     ],float)
     obs=(r[:,None]*obs_rows).sum(axis=0)/den
 
+    # Descriptive physical scale of observed route-new species activations.
+    species_spans=[]
+    multi_spans=[]
+    n_route_new_species=0
+    n_multi_species=0
+    for d,dm in zip(dsub,dmsub):
+        dry_route=d["dry"].any(axis=1)
+        route_new=(~dry_route)&d["wet"].any(axis=1)
+        for s in np.flatnonzero(route_new):
+            occ=np.flatnonzero(d["wet"][s])
+            n_route_new_species+=1
+            if len(occ)>=2:
+                span=float(np.max(dm[np.ix_(occ,occ)]))
+                n_multi_species+=1
+                species_spans.append(span)
+                multi_spans.append(span)
+            else:
+                species_spans.append(0.0)
+
     keys={d["key"] for d in dsub}
     pools_sub={k:pools[k] for k in keys}
     dry_ids_sub=defaultdict(set)
@@ -261,7 +280,16 @@ def main():
       },
       "descriptive":{
         "median_route_max_stop_distance_km":float(np.median([np.max(dm) for dm in dmsub])),
-        "q90_route_max_stop_distance_km":float(np.quantile([np.max(dm) for dm in dmsub],.90))
+        "q90_route_max_stop_distance_km":float(np.quantile([np.max(dm) for dm in dmsub],.90)),
+        "observed_route_new_species_instances":int(n_route_new_species),
+        "observed_multi_stop_route_new_species_instances":int(n_multi_species),
+        "observed_multi_stop_fraction":float(n_multi_species/n_route_new_species) if n_route_new_species else None,
+        "route_new_species_span_km_all_median":float(np.median(species_spans)) if species_spans else None,
+        "route_new_species_span_km_all_mean":float(np.mean(species_spans)) if species_spans else None,
+        "multi_stop_span_km_median":float(np.median(multi_spans)) if multi_spans else None,
+        "multi_stop_span_km_q25":float(np.quantile(multi_spans,.25)) if multi_spans else None,
+        "multi_stop_span_km_q75":float(np.quantile(multi_spans,.75)) if multi_spans else None,
+        "multi_stop_span_km_q90":float(np.quantile(multi_spans,.90)) if multi_spans else None
       },
       "interpretation_boundary":{
         "individual_movement_inferred":False,
