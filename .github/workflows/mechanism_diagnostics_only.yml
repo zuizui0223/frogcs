@@ -1,0 +1,32 @@
+name: mechanism diagnostics only
+
+on:
+  push:
+    branches:
+      - exploration/mechanism-diagnostics-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Corrected NPS replication eligibility audit
+        run: python exploration/audit_nps_secn_replication_eligibility.py
+      - name: Additive-null identity diagnostics
+        run: python exploration/run_naamp_additive_null_identity_diagnostics.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-mechanism-diagnostics-v0-1
+          path: |
+            exploration/NPS_SECN_REPLICATION_ELIGIBILITY_RECEIPT_V0_1.json
+            exploration/NAAMP_ADDITIVE_NULL_IDENTITY_DIAGNOSTICS_RECEIPT_V0_1.json
+          if-no-files-found: error
