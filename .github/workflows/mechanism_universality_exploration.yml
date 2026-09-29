@@ -1,0 +1,41 @@
+name: mechanism and universality exploration
+
+on:
+  push:
+    branches:
+      - exploration/mechanism-universality-v1
+    paths:
+      - "exploration/**"
+      - ".github/workflows/mechanism_universality_exploration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Compile exploration scripts
+        run: python -m compileall -q exploration
+      - name: Audit Australian fixed-PAM eligibility
+        run: python exploration/audit_australian_fixed_pam_eligibility.py
+      - name: Decompose CallingIndex recruitment vs intensification
+        run: python exploration/run_naamp_calling_index_decomposition.py
+      - name: Test cross-fit species-shift null
+        run: python exploration/run_naamp_crossfit_species_shift_null.py
+      - name: Upload exploration receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-mechanism-universality-exploration-v0-1
+          path: |
+            exploration/*RECEIPT_V0_1.json
+            exploration/MECHANISM_UNIVERSALITY_CONTRACT_V0_1.json
+          if-no-files-found: error
