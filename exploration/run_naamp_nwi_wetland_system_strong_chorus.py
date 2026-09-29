@@ -200,7 +200,7 @@ def fit_within_pair(df,response):
         return None
     for col in (response,"palustrine","inter"):
         d[col+"_w"]=d[col].astype(float)-d.groupby("pair_id")[col].transform("mean").astype(float)
-    X=d[["pulse_w","inter_w"]].astype(float)
+    X=d[["palustrine_w","inter_w"]].astype(float)
     y=d[response+"_w"].astype(float)
     fit=sm.OLS(y,X).fit(cov_type="cluster",cov_kwds={"groups":d["route_cluster"].astype(str)})
     b=float(fit.params["inter_w"])
@@ -212,7 +212,7 @@ def fit_within_pair(df,response):
         "n_routes":int(d["route_cluster"].nunique()),
         "palustrine_sites":int(d.loc[d["palustrine"]==1,"SiteID"].nunique()),
         "riverine_lacustrine_sites":int(d.loc[d["palustrine"]==0,"SiteID"].nunique()),
-        "context_main_beta":float(fit.params["pulse_w"]),
+        "context_main_beta":float(fit.params["palustrine_w"]),
         "interaction_beta":b,
         "interaction_se_cluster":se,
         "interaction_ci95":[b-Q*se,b+Q*se],
@@ -247,6 +247,20 @@ def main():
         return
 
     d200,audit200=build_rows(raw,runs,route_sets,matches,200,same_keys)
+    informative200=d200.groupby("pair_id")["palustrine"].nunique()
+    n_informative200=int((informative200>=2).sum())
+    if n_informative200 < 2000:
+        output={
+            "analysis":"naamp_nwi_wetland_system_strong_chorus_v0_1",
+            "contract":"exploration/NAAMP_NWI_WETLAND_SYSTEM_STRONG_CHORUS_CONTRACT_V0_1.json",
+            "status":"not_run_due_to_prefixed_within_pair_gate",
+            "gate":{**gate,"informative_pairs_200m":n_informative200},
+            "response_endpoints_read":False,
+        }
+        OUT.write_text(json.dumps(output,indent=2,sort_keys=True)+"\n")
+        print(json.dumps(output,indent=2,sort_keys=True))
+        return
+    gate["informative_pairs_200m"]=n_informative200
     primary=fit_within_pair(d200,"strong_new_score")
     count=fit_within_pair(d200,"strong_new_count")
     weak=fit_within_pair(d200,"weak_new_score")
