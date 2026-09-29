@@ -1,0 +1,66 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "anuraset_inct20955_rainfall_threshold_replication_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "relation_to_submission": "Independent exploratory cross-continental mechanism test; no RC11 story change is authorized.",
+  "source": {
+    "weak_labels_url": "https://zenodo.org/records/8342596/files/weak_labels.csv?download=1",
+    "weak_labels_md5": "3806a76cc7e6d6b9186a5c7bef442723",
+    "zenodo_doi": "10.5281/zenodo.8342596",
+    "paper_doi": "10.1038/s41597-023-02666-2",
+    "site": "INCT20955",
+    "site_location": "Orleans, Santa Catarina, Brazil",
+    "coordinate": {
+      "latitude": -28.163,
+      "longitude": -49.47
+    },
+    "coordinate_source": "http://i2d.humboldt.org.co/resource?r=anfibios_sonidos_2023",
+    "timezone": "America/Sao_Paulo"
+  },
+  "sample": {
+    "records": "All weak-label rows with MONITORING_SITE == INCT20955 and a parseable AUDIO_FILE_ID date/time.",
+    "annotation": "42 species Calling Index columns coded 0 absence, 1 low, 2 moderate, 3 high.",
+    "note": "Weak-label files were stratified by breeding-season months and nighttime calling periods in the source study; month/year/hour adjustment is therefore required."
+  },
+  "exposure": {
+    "source": "Earthmover public Icechunk ERA5, single/temporal tp",
+    "definition": "Number of complete coordinate-local calendar days immediately preceding the recording date until first day with >=1 mm precipitation, capped at 30; analyze zscore(log1p(dry_days)).",
+    "higher_value": "drier / farther from recent rain",
+    "wet_threshold_mm": 1,
+    "cap_days": 30,
+    "coordinate_grid": "nearest ERA5 0.25-degree cell to the fixed site coordinate"
+  },
+  "exact_decomposition": {
+    "total_ci": "sum of the 42 species Calling Index values in a 1-minute recording",
+    "active_richness": "count of species with Calling Index > 0",
+    "excess_intensity": "sum over species of max(CallingIndex - 1, 0)",
+    "identity": "total_ci = active_richness + excess_intensity for every recording"
+  },
+  "model": {
+    "formula": "response ~ dry_z + C(month) + year_z + sin_hour + cos_hour",
+    "estimator": "OLS with covariance clustered by local recording date",
+    "endpoints": [
+      "total_ci",
+      "active_richness",
+      "excess_intensity"
+    ],
+    "same_design_required_for_identity": true
+  },
+  "prefixed_replication_rule": {
+    "recent_rain_total_activity": "total_ci dry_z beta < 0 and complete 95% CI < 0",
+    "recruitment_component": "active_richness dry_z beta < 0 and complete 95% CI < 0",
+    "threshold_dominant": "recent_rain_total_activity AND recruitment_component AND active_richness beta / total_ci beta > 0.5 AND abs(active_richness beta) > abs(excess_intensity beta)",
+    "interpretation": "If passed, the North American conclusion that rainfall-associated acoustic change is dominated by crossing from inactive to active participation rather than only greater intensity among already-active taxa gains an independent Neotropical analogue. This is not a replication of NAAMP spatial boundary geometry."
+  },
+  "sensitivities": {
+    "no_zero_anuran_recordings": "Repeat on recordings with total_ci > 0 to show whether recent-rain richness deepening persists among already-active recordings; no threshold-dominance gate because zeros are conditioned away.",
+    "one_recording_per_date_hour_bin": "Deterministically retain first AUDIO_FILE_ID within local date x integer hour to reduce duplicate temporal weighting; directional diagnostic only."
+  },
+  "prohibited": [
+    "No spatial-boundary universality claim from one recorder at this site.",
+    "No causal rainfall claim.",
+    "No claim that annotation sampling represents continuous effort.",
+    "No retuning after endpoint readback.",
+    "No RC11 manuscript modification based on this exploration."
+  ]
+}
