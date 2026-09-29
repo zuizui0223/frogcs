@@ -1,0 +1,23 @@
+name: route-new species concentration
+on:
+  push:
+    branches: [exploration/route-new-species-concentration-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python exploration/run_naamp_route_new_species_concentration.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-route-new-species-concentration-v0-1
+          path: |
+            exploration/NAAMP_ROUTE_NEW_SPECIES_CONCENTRATION_CONTRACT_V0_1.json
+            exploration/NAAMP_ROUTE_NEW_SPECIES_CONCENTRATION_RECEIPT_V0_1.json
+          if-no-files-found: error
