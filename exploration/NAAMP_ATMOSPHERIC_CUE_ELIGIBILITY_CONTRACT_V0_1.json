@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_atmospheric_cue_eligibility_v0_1",
+  "status": "fixed_before_atmospheric_weather_or_response_readback",
+  "question": "Can NAAMP surveys be aligned reproducibly to hourly atmospheric humidity and pressure without using frog-response endpoints?",
+  "population": "The same eligible runs and 4,236 matched wetter-drier pairs used by the frozen NAAMP analysis.",
+  "sources": {
+    "runs": "Pinned NAAMP Runs.csv; use SurveyDate plus StartTime/EndTime.",
+    "coordinates": "Pinned Coordinates.csv; route-run coordinate is the mean latitude/longitude of the ten sampled physical SiteIDs.",
+    "timezone": "TimezoneFinder coordinate-derived IANA timezone; NAAMP clock times are interpreted as local wall time.",
+    "era5": "Earthmover public Icechunk ERA5 single/temporal; candidate variables t2m, d2m, sp."
+  },
+  "time_rule": {
+    "parse": "Accept 24-hour or AM/PM clock forms with optional seconds; no outcome-dependent repair.",
+    "midpoint": "Run atmospheric timestamp is midpoint between StartTime and EndTime; if EndTime is earlier than StartTime, add one day.",
+    "plausible_duration_hours": [
+      0.25,
+      6
+    ],
+    "dst": "Localize using zoneinfo; ambiguous/nonexistent local datetimes are marked ineligible rather than guessed."
+  },
+  "eligibility_gate": {
+    "eligible_run_fraction": ">=0.90 of frozen eligible runs have valid coordinate-derived timezone and plausible midpoint datetime.",
+    "eligible_pair_fraction": ">=0.90 of the 4,236 matched pairs have valid midpoint datetimes in both members.",
+    "era5_variables": "t2m, d2m, and sp all present with finite metadata and hourly semantics.",
+    "pass": "All conditions."
+  },
+  "interpretation_boundary": [
+    "This audit reads no frog-response endpoint.",
+    "Hourly ERA5 is gridded atmospheric context, not on-site sensor data.",
+    "Passing the gate authorizes an atmospheric-cue association test, not causal mediation."
+  ],
+  "retuning_after_readback": false
+}
