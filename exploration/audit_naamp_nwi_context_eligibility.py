@@ -245,7 +245,61 @@ def main():
     def work(item):
         key,sids=item
         fs=route_features(sids,coords)
-        local={sid:classify_site(sid,coords,fs) for sid in sids}
+
+        # Contract-matched route-centred local projection. Transform each NWI
+        # polygon once per route instead of rebuilding a projection for every
+        # site x polygon distance calculation.
+        pts=[coords[s] for s in sids if s in coords]
+        lat0=float(np.mean([x[0] for x in pts]))
+        lon0=float(np.mean([x[1] for x in pts]))
+        crs=CRS.from_proj4(
+            f"+proj=aeqd +lat_0={lat0:.8f} +lon_0={lon0:.8f} +datum=WGS84 +units=m +no_defs"
+        )
+        tr=Transformer.from_crs("EPSG:4326",crs,always_xy=True).transform
+        projected=[]
+        for feature in fs:
+            gj=feature.get("geometry")
+            if not gj:
+                continue
+            try:
+                geom=transform(tr,shape(gj))
+            except Exception:
+                continue
+            pp=feature.get("properties") or {}
+            projected.append((geom,{
+                "ATTRIBUTE":prop(pp,"ATTRIBUTE"),
+                "WETLAND_TYPE":prop(pp,"WETLAND_TYPE"),
+                "WATER_REGIME":prop(pp,"WATER_REGIME"),
+                "WATER_REGIME_NAME":prop(pp,"WATER_REGIME_NAME"),
+            }))
+
+        local={}
+        for sid in sids:
+            lat,lon=coords[sid]
+            point=transform(tr,Point(lon,lat))
+            best=None
+            ties=[]
+            for geom,props in projected:
+                d=float(point.distance(geom))
+                rec={"distance_m":d,**props}
+                if best is None or d<best["distance_m"]-1e-6:
+                    best=rec
+                    ties=[rec]
+                elif abs(d-best["distance_m"])<=1.0:
+                    ties.append(rec)
+            if best is None:
+                local[sid]={
+                    "distance_m":None,"within_200m":False,"within_500m":False,
+                    "ambiguous_tie":False,
+                    "ATTRIBUTE":None,"WETLAND_TYPE":None,
+                    "WATER_REGIME":None,"WATER_REGIME_NAME":None,
+                }
+            else:
+                best=dict(best)
+                best["within_200m"]=bool(best["distance_m"]<=PRIMARY_M)
+                best["within_500m"]=bool(best["distance_m"]<=SENS_M)
+                best["ambiguous_tie"]=bool(len(ties)>1)
+                local[sid]=best
         return key,sids,local
 
     completed=0
