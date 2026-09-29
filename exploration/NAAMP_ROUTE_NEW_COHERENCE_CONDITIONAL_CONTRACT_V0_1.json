@@ -1,0 +1,28 @@
+{
+  "analysis": "naamp_route_new_coherence_conditional_v0_1",
+  "status": "post_readback_mechanism_diagnostic_fixed_before_conditional_endpoint",
+  "question": "Does rainfall-associated extra-stop spread of route-new species exceed what is expected solely from the number of route-new species recruited?",
+  "sample": "Frozen 4,236 NAAMP matched pairs.",
+  "base_endpoints": {
+    "route_new_species_gain": "Number of species absent from dry route and present somewhere in wet route.",
+    "extra_stop_incidence_gain": "For each route-new wet species, max(number of wet stops occupied - 1, 0), summed across route-new species."
+  },
+  "nulls": [
+    "uniform activation kappa=2",
+    "persistence-preserving activation anchor=0.75"
+  ],
+  "conditional_test": {
+    "construction": "For each null family, use 1,000 simulated rain-contrast coefficient pairs (route_new_species_gain beta, extra_stop_incidence_gain beta). Fit OLS extra_beta = a + b * new_species_beta across the 1,000 null replicates.",
+    "statistic": "Conditional residual = observed extra-stop beta minus the null regression prediction at the observed route-new-species beta.",
+    "null_distribution": "Residuals of the 1,000 simulated points around their fitted null regression.",
+    "p_value": "Plus-one upper-tail Monte Carlo p comparing simulated residuals with observed conditional residual."
+  },
+  "prediction": "Spatial-coherence excess is supported if observed conditional residual is above the upper 95% residual interval under both null families.",
+  "interpretation": [
+    "Support means the observed spread cannot be reduced to recruiting more distinct route-new species.",
+    "It indicates unusually repeated spatial expression of recruited species across stops.",
+    "It does not identify atmospheric versus hydrological forcing or individual movement.",
+    "No causal rainfall claim and no RC11 submission change are authorized."
+  ],
+  "retuning_after_readback": false
+}
