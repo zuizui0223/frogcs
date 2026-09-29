@@ -1,0 +1,83 @@
+{
+  "analysis": "naamp_nwi_hydroperiod_recruitment_test_v0_1",
+  "status": "fixed_before_nwi_coverage_and_response_readback",
+  "run_condition": "Run only if NAAMP_NWI_CONTEXT_ELIGIBILITY_CONTRACT_V0_1 overall feasibility gate passes and both hydroperiod contrast groups have >=200 physically stable unique SiteIDs represented on >=75 routes.",
+  "ecological_hypothesis": "Rainfall-associated recruitment of route-new calling species is stronger at pulse-limited wetlands than at wetlands with persistent surface water.",
+  "context_groups": {
+    "pulse_limited": {
+      "water_regime_codes": [
+        "A",
+        "C",
+        "J"
+      ],
+      "meanings": [
+        "Temporarily Flooded",
+        "Seasonally Flooded",
+        "Intermittently Flooded"
+      ]
+    },
+    "persistent_surface_water": {
+      "water_regime_codes": [
+        "F",
+        "G",
+        "H"
+      ],
+      "meanings": [
+        "Semipermanently Flooded",
+        "Intermittently Exposed",
+        "Permanently Flooded"
+      ]
+    },
+    "excluded_from_primary_contrast": {
+      "codes": [
+        "B",
+        "D",
+        "E",
+        "K",
+        "L",
+        "M",
+        "N",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "V"
+      ],
+      "reason": "Saturated/mixed, artificial, or tidal regimes do not form the prefixed short-hydroperiod versus persistent-surface-water contrast."
+    }
+  },
+  "physical_identity": "Use only pair x StopNumber rows where wet and dry Runs.csv/Stops.csv records have the same nonmissing SiteID.",
+  "response": {
+    "name": "net_route_new_incidence_at_stop",
+    "gain": "Wet-run species present at this stop but not in the dry stop AND absent from the entire dry route.",
+    "loss": "Dry-run species present at this stop but not in the wet stop AND absent from the entire wet route.",
+    "value": "gain count minus loss count.",
+    "identity": "Summed over ten stops this equals the route-new portion of the four-component net incidence allocation (corner + taxonomic components)."
+  },
+  "model": {
+    "unit": "matched pair x physical stop",
+    "design": "Within-pair fixed-effects linear model implemented by demeaning outcome and predictors within pair.",
+    "predictors": [
+      "hydroperiod_group (pulse=1, persistent=0)",
+      "hydroperiod_group * rain_contrast"
+    ],
+    "target": "interaction coefficient on hydroperiod_group * rain_contrast",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "rationale": "Pair fixed effects absorb all pair-level conditions including overall rainfall contrast, temperature/date/year differences and route-season context; the interaction tests whether within the same wet-dry comparison route-new recruitment is preferentially allocated to pulse-limited wetland stops as rainfall contrast increases."
+  },
+  "primary_prediction": "interaction coefficient > 0 with complete 95% CI > 0.",
+  "sensitivities": {
+    "radius_500m": "Repeat using nearest NWI polygon within 500m, retaining the same regime groups.",
+    "gain_only": "Replace net response by wet route-new gain count only; directional diagnostic, not a second pass gate.",
+    "exact_consecutive_year": "Repeat primary model on year_gap==1; directional diagnostic."
+  },
+  "interpretation_boundary": [
+    "A positive interaction links recruitment to mapped hydroperiod context; it does not prove survey-night inundation or a physiological hydration mediator.",
+    "NWI map vintage can differ from NAAMP survey years.",
+    "Nearest wetland polygon is a context proxy, not proven call origin.",
+    "No causal rainfall claim.",
+    "No RC11 submission change is authorized from this exploration."
+  ],
+  "retuning_after_readback": false
+}
