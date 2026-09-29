@@ -1,0 +1,21 @@
+{
+  "analysis": "naamp_route_new_cluster_density_v0_1",
+  "status": "post_readback_compactness_diagnostic_fixed_before_endpoint",
+  "question": "Conditional on how many stops a route-new species occupies, are those occupied stops more spatially clustered than expected under the existing activation nulls?",
+  "population": "Frozen NAAMP matched pairs restricted to physically stable pairs with complete coordinates for all ten stops.",
+  "geometry": {
+    "expected_span_k": "For each route and k=2..10, enumerate all k-stop subsets and compute the mean maximum great-circle span. This is the route-specific random-k reference.",
+    "species_compactness": "For each route-new species occupying k>=2 wet stops, 1 - observed_span/expected_span_k. Positive means more compact than a random k-stop subset on that route.",
+    "pair_total_compactness": "Sum species_compactness over route-new multi-stop species; zero if none.",
+    "pair_mean_compactness": "Mean species_compactness over route-new multi-stop species; zero if none."
+  },
+  "model": "Use the frozen matched-pair residualized rain design. Compare observed rain-contrast coefficients with 1,000 simulations from the kappa=2 uniform activation null and a=0.75 persistence-preserving null.",
+  "prefixed_diagnostic_rule": "Cluster-density excess is supported if the observed pair_total_compactness coefficient is above the upper 95% bound under both nulls and pair_mean_compactness is above the upper 95% bound under both nulls.",
+  "interpretation": [
+    "This is post-readback after the geographic-span analysis indicated compactness; it is diagnostic, not confirmatory.",
+    "A positive result supports dense local recruitment clusters conditional on occupied-stop count.",
+    "It does not identify whether clustering is caused by wetland complexes, local rainfall cells, habitat continuity or another mesoscale cue.",
+    "No individual movement or causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
