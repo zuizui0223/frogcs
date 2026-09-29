@@ -1,0 +1,110 @@
+name: Daymet local-weather eligibility audit
+on:
+  push:
+    branches: [exploration/daymet-local-weather-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q pystac-client planetary-computer xarray zarr fsspec adlfs numpy pandas pyproj
+      - name: Inspect Daymet cloud schema
+        run: |
+          mkdir -p exploration
+          python - <<'PY'
+          import csv, hashlib, io, json, urllib.request
+          from pathlib import Path
+          import numpy as np
+          import xarray as xr
+          from pyproj import Transformer
+          from pystac_client import Client
+          import planetary_computer
+          
+          COORD_URL="https://www.sciencebase.gov/catalog/file/get/583dc314e4b0d1899f9dea8d?f=__disk__77%2F22%2F7e%2F77227ec46ac1c01592cd7d158d442cd8343a7536"
+          COORD_SHA="f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
+          
+          cat=Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
+          coll=cat.get_collection("daymet-daily-na")
+          if coll is None:
+              raise RuntimeError("missing daymet-daily-na collection")
+          search=cat.search(collections=["daymet-daily-na"],datetime="2005-06-15/2005-06-15")
+          items=list(search.items())
+          if not items:
+              raise RuntimeError("no Daymet item for representative date")
+          item=planetary_computer.sign(items[0])
+          assets={k:{"href":v.href,"type":v.media_type,"roles":v.roles} for k,v in item.assets.items()}
+          
+          req=urllib.request.Request(COORD_URL,headers={"User-Agent":"frogcs-daymet-audit/0.1"})
+          with urllib.request.urlopen(req,timeout=180) as r: raw=r.read()
+          if hashlib.sha256(raw).hexdigest()!=COORD_SHA:
+              raise RuntimeError("Coordinates hash drift")
+          rows=list(csv.DictReader(io.StringIO(raw.decode("utf-8-sig"))))
+          coords={}
+          for r in rows:
+              sid=(r.get("SiteID") or "").strip()
+              if sid:
+                  coords[sid]=(float(r["lat"]),float(r["lon"]))
+          sample=sorted(coords,key=lambda s:hashlib.sha256(s.encode()).hexdigest())[:20]
+          
+          # Identify a Zarr-like cloud asset. Planetary Computer Daymet exposes
+          # a zarr-abfs asset; fail closed if its naming changes.
+          zkeys=[k for k in assets if "zarr" in k.lower()]
+          if not zkeys:
+              raise RuntimeError(f"no zarr asset; assets={sorted(assets)}")
+          zkey=sorted(zkeys)[0]
+          href=item.assets[zkey].href
+          ds=xr.open_zarr(href,consolidated=False)
+          required={"prcp","vp","tmin","tmax"}
+          missing=sorted(required-set(ds.data_vars))
+          if missing:
+              raise RuntimeError(f"missing Daymet vars {missing}; vars={list(ds.data_vars)}")
+          if not {"time","x","y"}.issubset(ds.coords):
+              raise RuntimeError(f"missing expected coords: {list(ds.coords)}")
+          
+          # Daymet standard CRS is North America Lambert Conformal Conic.
+          proj="+proj=lcc +lat_1=25 +lat_2=60 +lat_0=42.5 +lon_0=-100 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs"
+          tr=Transformer.from_crs("EPSG:4326",proj,always_xy=True)
+          audit=[]
+          t=np.datetime64("2005-06-15")
+          for sid in sample:
+              lat,lon=coords[sid]
+              x,y=tr.transform(lon,lat)
+              rec={"SiteID":sid,"lat":lat,"lon":lon,"x":x,"y":y}
+              for v in sorted(required):
+                  da=ds[v].sel(time=t,x=x,y=y,method="nearest")
+                  val=float(np.asarray(da.values))
+                  rec[v]=val
+              audit.append(rec)
+          vals_ok=all(all(np.isfinite(r[v]) for v in required) for r in audit)
+          
+          times=np.asarray(ds.time.values)
+          output={
+            "analysis":"naamp_daymet_local_weather_eligibility_v0_1",
+            "contract":"exploration/NAAMP_DAYMET_LOCAL_WEATHER_ELIGIBILITY_CONTRACT_V0_1.json",
+            "collection_id":coll.id,
+            "representative_item_id":item.id,
+            "assets":assets,
+            "chosen_zarr_asset":zkey,
+            "data_vars":list(ds.data_vars),
+            "coords":list(ds.coords),
+            "time_range":[str(times.min())[:10],str(times.max())[:10]],
+            "sample_sites":audit,
+            "all_sample_values_finite":bool(vals_ok),
+            "eligibility_pass":bool(not missing and vals_ok and times.min()<=np.datetime64("2001-01-01") and times.max()>=np.datetime64("2015-12-01")),
+            "response_endpoints_read":False
+          }
+          Path("exploration/NAAMP_DAYMET_LOCAL_WEATHER_ELIGIBILITY_RECEIPT_V0_1.json").write_text(json.dumps(output,indent=2)+"\n")
+          print(json.dumps({k:v for k,v in output.items() if k!="assets"},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-daymet-local-weather-eligibility-v0-1
+          path: |
+            exploration/NAAMP_DAYMET_LOCAL_WEATHER_ELIGIBILITY_CONTRACT_V0_1.json
+            exploration/NAAMP_DAYMET_LOCAL_WEATHER_ELIGIBILITY_RECEIPT_V0_1.json
+          if-no-files-found: error
