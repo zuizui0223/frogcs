@@ -1,0 +1,17 @@
+{
+  "analysis": "naamp_strong_activation_protocol_window_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "question": "Is rainfall-associated 0-to-CallingIndex-2/3 recruitment confined to comparisons inside the NAAMP 0-3 day post-rain target window?",
+  "sample": "Frozen 4,236 matched NAAMP pairs.",
+  "response": "strong_new_score = sum wet CallingIndex for cells dry=0 and wet in {2,3}; strong_new_count likewise counts such cells.",
+  "subsets": {
+    "primary": "dry_days_since_rain >= 4, so at least the drier survey lies outside the 0-3 day target window.",
+    "secondary": "wet_days_since_rain >= 4, so both wetter and drier surveys lie outside the 0-3 day target window."
+  },
+  "model": "Existing matched-pair model with rain_contrast, temperature_difference, day_of_year_difference, year_gap, State and RunNumber; route-clustered covariance.",
+  "primary_pass": "Both strong_new_score and strong_new_count rain_contrast coefficients >0.",
+  "primary_strong_pass": "Both 95% confidence intervals entirely >0.",
+  "secondary_role": "Descriptive only because conditioning both surveys outside the immediate window removes many biologically strongest contrasts.",
+  "interpretation": "Primary pass shows strong recruitment is not confined to comparisons entirely within the protocol-target window; no causal rainfall claim.",
+  "retuning_after_readback": false
+}
