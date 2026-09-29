@@ -179,6 +179,60 @@ def query_envelope(minlon,minlat,maxlon,maxlat):
     return features
 
 
+def query_near_points(points_lonlat,distance_m=500.0):
+    if not points_lonlat:
+        return []
+    geom={
+        "points":[[float(lon),float(lat)] for lon,lat in points_lonlat],
+        "spatialReference":{"wkid":4326},
+    }
+    id_params={
+        "f":"json",
+        "where":"1=1",
+        "geometry":json.dumps(geom,separators=(",",":")),
+        "geometryType":"esriGeometryMultipoint",
+        "inSR":"4326",
+        "spatialRel":"esriSpatialRelIntersects",
+        "distance":str(float(distance_m)),
+        "units":"esriSRUnit_Meter",
+        "returnIdsOnly":"true",
+        "returnGeometry":"false",
+    }
+    raw=fetch(NWI_QUERY+"?"+urllib.parse.urlencode(id_params),timeout=120)
+    obj=json.loads(raw.decode("utf-8"))
+    if "error" in obj:
+        raise RuntimeError(f"NWI multipoint ID query error: {obj['error']}")
+    ids=[int(x) for x in (obj.get("objectIds") or [])]
+    if not ids:
+        return []
+    features=[]
+    seen=set()
+    for i in range(0,len(ids),500):
+        chunk=ids[i:i+500]
+        params={
+            "f":"geojson",
+            "objectIds":",".join(str(x) for x in chunk),
+            "outSR":"4326",
+            "outFields":"*",
+            "returnGeometry":"true",
+        }
+        raw=fetch(NWI_QUERY+"?"+urllib.parse.urlencode(params),timeout=120)
+        page=json.loads(raw.decode("utf-8"))
+        if "error" in page:
+            raise RuntimeError(f"NWI feature query error: {page['error']}")
+        for feat in page.get("features") or []:
+            pp=feat.get("properties") or {}
+            key=prop(pp,"OBJECTID") or prop(pp,"GLOBALID") or hashlib.sha1(
+                json.dumps(feat,sort_keys=True,separators=(",",":")).encode()
+            ).hexdigest()
+            key=str(key)
+            if key in seen:
+                continue
+            seen.add(key)
+            features.append(feat)
+    return features
+
+
 def projected_distance(point_lonlat,geom,lat0,lon0):
     crs=CRS.from_proj4(
         f"+proj=aeqd +lat_0={lat0:.8f} +lon_0={lon0:.8f} +datum=WGS84 +units=m +no_defs"
@@ -193,13 +247,11 @@ def route_features(site_ids,coords):
     pts=[coords[s] for s in site_ids if s in coords]
     if not pts:
         return []
-    lats=[x[0] for x in pts]; lons=[x[1] for x in pts]
-    lat0=float(np.mean(lats)); lon0=float(np.mean(lons))
-    # >=1 km search margin, larger than the 500 m sensitivity radius.
-    dlat=0.012
-    dlon=0.012/max(0.25,math.cos(math.radians(lat0)))
-    features=query_envelope(min(lons)-dlon,min(lats)-dlat,max(lons)+dlon,max(lats)+dlat)
-    return features
+    # Query only wetlands within the largest contracted sensitivity radius.
+    # ArcGIS distance queries support multipoint geometry, so one route request
+    # covers all physical listening sites without downloading distant polygons.
+    points_lonlat=[(lon,lat) for lat,lon in pts]
+    return query_near_points(points_lonlat,SENS_M)
 
 
 def classify_site(sid,coords,features):
