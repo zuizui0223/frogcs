@@ -100,15 +100,22 @@ def subset_nulls(pairs,pair_data,keep,pools,dry_ids,ss):
     obs_shares=obs/float(obs.sum())
     observed_boundary=float(1-obs_shares[3])
 
+    # Restrict historical-null dictionaries to strata represented in the
+    # stable physical-site subset; null_for_kappa otherwise asks for stop
+    # layouts belonging to excluded strata.
+    keys={d["key"] for d in dsub}
+    pools_sub={k:pools[k] for k in keys}
+    dry_ids_sub={k:dry_ids[k] for k in keys}
+
     # Primary uniform comparator. Sørensen is not part of this audit.
     un=uniform.null_for_kappa(
-        2.0,psub,dsub,pools,dry_ids,ss,r,den,obs,
+        2.0,psub,dsub,pools_sub,dry_ids_sub,ss,r,den,obs,
         np.zeros(len(psub),dtype=bool),np.asarray([],float),1.0,0.0,
         simulate_sorensen=False,
     )
 
-    stops_by_key={d["key"]:d["stops"] for d in pair_data}
-    hist=persistence.historical_cell_probs(pools,dry_ids,stops_by_key,ss)
+    stops_by_key={d["key"]:d["stops"] for d in dsub}
+    hist=persistence.historical_cell_probs(pools_sub,dry_ids_sub,stops_by_key,ss)
     pn=persistence.null_for_anchor(0.75,dsub,hist,r,den,obs)
 
     names=["corner_expansion","spatial_spread","taxonomic_deepening","within_core_rearrangement"]
