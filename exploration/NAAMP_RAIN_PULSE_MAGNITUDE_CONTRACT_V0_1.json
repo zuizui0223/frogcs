@@ -2,7 +2,7 @@
   "analysis": "naamp_rain_pulse_magnitude_test_v0_1",
   "status": "fixed_before_weather_endpoint_readback",
   "question": "Beyond rainfall recency, does the magnitude of the most recent rain event predict entry into strong CallingIndex 2-3 activity, consistent with a hydrological activation-threshold mechanism?",
-  "population": "Frozen NAAMP matched wetter-drier pairs with complete 10-stop data and route coordinates.",
+  "population": "Frozen NAAMP matched wetter-drier pairs with complete 10-stop data, restricted to pairs in which all ten StopNumbers retain the same nonmissing SiteID in both runs.",
   "event_date": {
     "definition": "For each run, event_day = local SurveyDate - integer DaysSinceRain.",
     "primary_temporal_safety": "Require DaysSinceRain >= 1 in both pair members so event-day ERA5 totals cannot include rainfall occurring after the survey on the same calendar day.",
@@ -52,5 +52,6 @@
       "No RC11 submission change is authorized."
     ]
   },
-  "retuning_after_readback": false
+  "retuning_after_readback": false,
+  "physical_identity": "Use the same prefixed physical-stop rule as NAAMP_PHYSICAL_STOP_IDENTITY_AUDIT_V0_1; no pair with any SiteID mismatch or missing SiteID enters the primary weather mechanism test."
 }
