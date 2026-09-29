@@ -1,0 +1,55 @@
+{
+  "analysis": "naamp_jrc_surface_water_context_v0_1",
+  "status": "fixed_before_surface_water_match_and_response_readback",
+  "question": "Is rainfall-associated recruitment of route-new calling species preferentially allocated to physical stops near lower-persistence surface water?",
+  "population": "The frozen 4,236 matched NAAMP pairs, restricted at the response stage to pair x StopNumber rows with identical nonmissing SiteID in wet and dry runs.",
+  "sources": {
+    "coordinates": "Pinned NAAMP Coordinates.csv, SHA256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83.",
+    "water": "Microsoft Planetary Computer collection jrc-gsw; JRC Global Surface Water occurrence asset, 1984-2020.",
+    "citation": "Pekel et al. 2016, Nature 540:418-422"
+  },
+  "context_definition": {
+    "primary_radius_m": 200,
+    "sensitivity_radius_m": 500,
+    "water_pixel": "Occurrence value 1-100; 0 and nodata are not water pixels.",
+    "primary_site_metric": "Mean occurrence (%) among water pixels whose pixel centres fall within 200 m of the SiteID coordinate.",
+    "pulse_index": "100 - mean occurrence, so larger values indicate more intermittently observed surface water.",
+    "sensitivity_metric": "100 - 90th percentile occurrence among water pixels within 200 m; repeat primary metric at 500 m.",
+    "no_water": "Site is unclassified for a radius if no occurrence 1-100 pixel falls within the radius."
+  },
+  "feasibility_gate": {
+    "coverage": ">=50% of pair-used SiteIDs with coordinates have >=1 water pixel within 200 m.",
+    "variation": "SD of primary pulse_index across classified SiteIDs >=10 percentage points.",
+    "response_design": ">=1000 matched pairs and >=300 routes have at least two classified physically stable stops with nonzero within-pair pulse-index variation.",
+    "pass": "All three conditions must pass before any frog-response model is fitted."
+  },
+  "response": {
+    "unit": "matched pair x physically stable stop",
+    "net_route_new": "wet route-new gain count at the stop minus dry route-new loss count at the stop; summed over stops equals corner + taxonomic net incidence.",
+    "gain_only": "wet route-new gain count at the stop, sensitivity only"
+  },
+  "model": {
+    "design": "Pair fixed-effects OLS by within-pair demeaning.",
+    "predictors": [
+      "pulse_index_z",
+      "pulse_index_z * rain_contrast"
+    ],
+    "target": "positive interaction: as rain contrast increases, route-new recruitment is preferentially allocated to lower-persistence water contexts.",
+    "covariance": "cluster-robust by State x RouteNumber"
+  },
+  "primary_prediction": "interaction coefficient >0 with complete 95% CI >0.",
+  "sensitivities": [
+    "500 m radius",
+    "p90-based pulse index at 200 m",
+    "gain-only response",
+    "exact-consecutive-year pairs"
+  ],
+  "interpretation_boundary": [
+    "JRC water occurrence is long-term mapped context, not survey-night inundation.",
+    "The 1984-2020 occurrence product extends beyond the 2001-2015 NAAMP survey years and is used only as a habitat-persistence proxy.",
+    "A water pixel within 200 m is not proven call origin.",
+    "No physiological hydration mediator is identified.",
+    "No causal rainfall claim and no RC11 submission change are authorized."
+  ],
+  "retuning_after_readback": false
+}
