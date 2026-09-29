@@ -1,0 +1,36 @@
+{
+  "analysis": "naamp_latent_site_reactivation_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "When recent rain recruits route-new calling species, are those species x physical-site combinations mostly recurrent members observed at the same SiteID in other years, or combinations never observed elsewhere in the eligible time series?",
+  "population": "Frozen NAAMP matched-pair design, restricted to pairs in which all ten StopNumbers retain the same nonmissing SiteID between wet and dry runs.",
+  "unit": "Matched pair x physical SiteID x species incidence transition.",
+  "route_new_definition": {
+    "gain": "Species detected at a SiteID in the wetter run, absent from that SiteID in the drier run, and absent from the entire drier route.",
+    "loss": "Species detected at a SiteID in the drier run, absent from that SiteID in the wetter run, and absent from the entire wetter route."
+  },
+  "recurrence_primary": {
+    "stratum": "State x RouteNumber x RunNumber",
+    "leave_pair_out": true,
+    "recurrent": "The same species was detected at the same physical SiteID in at least one other eligible run in the same seasonal-window stratum, excluding both runs in the focal pair.",
+    "novel": "No such leave-pair-out detection exists.",
+    "rationale": "Same RunNumber keeps recurrence within the same broad seasonal sampling window and exact SiteID preserves physical place identity."
+  },
+  "pair_level_endpoints": {
+    "recurrent_net": "recurrent route-new gains minus recurrent route-new losses, summed across ten sites",
+    "novel_net": "novel route-new gains minus novel route-new losses, summed across ten sites",
+    "total_route_new_net": "all route-new gains minus all route-new losses; must equal recurrent_net + novel_net"
+  },
+  "model": "Each pair-level endpoint ~ rain_contrast + temp_difference + doy_difference + year_gap + State + RunNumber, cluster-robust by State x RouteNumber, exactly matching the current pair model.",
+  "prefixed_support_rule": "Latent-site reactivation is supported if recurrent_net rainfall beta >0 with complete 95% CI >0, recurrent_net beta / total_route_new_net beta >0.5, and recurrent_net beta > novel_net beta.",
+  "sensitivities": {
+    "prior_only": "Classify recurrent only when same species x SiteID was observed in an eligible same-RunNumber run strictly before both focal pair years; report direction without a pass requirement because early pairs have less history.",
+    "any_season_window": "Allow recurrence at the same SiteID in any RunNumber of the same route; directional diagnostic only."
+  },
+  "interpretation_boundary": [
+    "Recurrence of a species x SiteID supports repeated acoustic use, not continuous occupancy of that exact wetland.",
+    "A never-observed combination may be a detection-history limitation rather than true ecological novelty.",
+    "This distinguishes recurrent activation from apparent novelty; it does not identify hydration, inundation, social cues, or breeding success.",
+    "No causal rainfall claim and no RC11 submission change authorized."
+  ],
+  "retuning_after_readback": false
+}
