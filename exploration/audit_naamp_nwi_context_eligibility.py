@@ -389,7 +389,7 @@ def main():
         return key,sids,local
 
     completed=0
-    with ThreadPoolExecutor(max_workers=10) as ex:
+    with ThreadPoolExecutor(max_workers=16) as ex:
         futs={ex.submit(work,item):item for item in route_items}
         for fut in as_completed(futs):
             key,sids=futs[fut]
