@@ -29,6 +29,8 @@ jobs:
         run: python exploration/audit_australian_fixed_pam_eligibility.py
       - name: Decompose CallingIndex recruitment vs intensification
         run: python exploration/run_naamp_calling_index_decomposition.py
+      - name: Test same-observer CallingIndex decomposition
+        run: python exploration/run_naamp_calling_index_same_observer.py
       - name: Test taxonomic-versus-spatial recruitment contrast
         run: python exploration/run_naamp_species_vs_site_axis_contrast.py
       - name: Test cross-fit species-shift null
