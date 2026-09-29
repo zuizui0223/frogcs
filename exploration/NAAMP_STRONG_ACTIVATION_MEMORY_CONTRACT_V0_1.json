@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_strong_activation_memory_v0_1",
+  "status": "post_readback_ecological_memory_test_fixed_before_endpoint",
+  "question": "Are rainfall-associated new strong choruses (dry CallingIndex 0 -> wet CallingIndex 2-3) mainly reactivation of species already recorded at the same physical site or route in years before the focal pair?",
+  "population": "Frozen matched NAAMP pairs restricted to pairs with identical nonmissing SiteID at all ten StopNumbers.",
+  "history": "Primary history uses only eligible runs in the same State x RouteNumber x RunNumber stratum with SurveyYear strictly earlier than the earlier year of the focal pair.",
+  "focal_cells": "Species x physical SiteID cells with dry CallingIndex=0 and wet CallingIndex in {2,3}.",
+  "categories": {
+    "same_site_prior_strong": "Species had CallingIndex 2 or 3 at the same SiteID in at least one prior eligible run.",
+    "same_site_prior_weak_only": "Species was previously recorded at the same SiteID, but only at CallingIndex 1.",
+    "route_only_prior": "Species occurred in a prior run of the same route-season stratum, but never at the focal SiteID.",
+    "no_prior_stratum_record": "Species had no prior record anywhere in the route-season stratum."
+  },
+  "exact_decompositions": {
+    "strong_new_score": "Sum wet CallingIndex over focal cells = same-site-prior-strong + same-site-prior-weak-only + route-only-prior + no-prior, each weighted by wet CallingIndex.",
+    "strong_new_count": "Count focal cells partitioned by the same four categories.",
+    "new_ci3_count": "Count dry=0, wet=3 cells partitioned by the same four categories."
+  },
+  "models": "Fit every pair-level component with the existing matched-pair model: rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber, route-clustered covariance.",
+  "gate": "At least 1500 physically stable pairs and 300 routes with >=1 prior eligible run in the same stratum.",
+  "primary_rule": "Prior-memory strong activation is supported if the recurrent strong_new_score component (all categories except no_prior) has complete 95% CI >0 and contributes >50% of the total strong_new_score rainfall coefficient.",
+  "secondary_rule": "Same-site strong-memory concentration is descriptive: report the fraction of the total strong_new_score rainfall coefficient assigned to same_site_prior_strong; no pass threshold.",
+  "interpretation": [
+    "Prior same-site records support acoustic/behavioural reactivation of a previously observed local population more than literal new colonization.",
+    "Prior CallingIndex 2-3 at the same site is a stronger 'chorus memory' marker but does not prove continuous local occupancy.",
+    "No prior record can reflect rarity or imperfect historical detection as well as genuine arrival.",
+    "No causal rainfall, movement, abundance, or reproductive-success claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
