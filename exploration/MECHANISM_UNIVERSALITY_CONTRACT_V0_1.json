@@ -57,6 +57,21 @@
         "Rainfall exposure must be linkable by site/date from a reproducible gridded source.",
         "If effort zeros cannot be reconstructed, no NAAMP-style boundary-replication claim is authorized."
       ]
+    },
+    "species_vs_site_axis_contrast": {
+      "question": "Is the excess boundary recruitment stronger along the taxonomic axis (route-new species) than along the spatial axis (newly active stops)?",
+      "statistic": "taxonomic_deepening coefficient share minus spatial_spread coefficient share; equivalently route-new boundary share minus new-stop boundary share because corner expansion cancels.",
+      "observed_reference": "Use the frozen four-component NAAMP rainfall coefficients.",
+      "nulls": [
+        "Primary uniform-activation null at kappa=2.",
+        "Primary persistence-preserving null at anchor a=0.75."
+      ],
+      "simulation": {
+        "replicates": 1000,
+        "seed": 2840223
+      },
+      "decision": "Report the observed contrast, null mean and 95% interval, and plus-one upper-tail Monte Carlo p for each null. A taxonomic-axis excess is supported only if the observed contrast exceeds the upper 95% interval under both null families.",
+      "interpretation_boundary": "This distinguishes where recruitment is disproportionately allocated; it does not identify the physiological cause of calling."
     }
   },
   "prohibited": [
