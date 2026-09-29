@@ -44,5 +44,6 @@
       "No RC11 submission change is authorized."
     ]
   },
-  "retuning_after_readback": false
+  "retuning_after_readback": false,
+  "run_gate": "Run only if the existing NWI eligibility overall gate passes and pulse-limited and persistent groups each contain >=200 unique SiteIDs represented on >=75 routes at 200 m; otherwise do not inspect strong-chorus response."
 }
