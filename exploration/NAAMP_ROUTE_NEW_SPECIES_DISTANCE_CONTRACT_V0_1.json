@@ -1,0 +1,25 @@
+{
+  "analysis": "naamp_route_new_species_distance_v0_1",
+  "status": "post_readback_mechanism_diagnostic_fixed_before_endpoint",
+  "question": "When species newly enter the wet active route, do they appear across larger geographic spans within the route than expected under the existing activation nulls?",
+  "population": "Frozen NAAMP matched pairs restricted to pairs with identical nonmissing SiteID at all ten StopNumbers and valid pinned Coordinates.csv coordinates for all ten physical stops.",
+  "source": {
+    "coordinates": "NAAMP Coordinates.csv",
+    "sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
+  },
+  "endpoints": {
+    "total_route_new_span_km": "For each species absent from the entire dry route but present in the wet route, calculate maximum great-circle distance between its occupied wet stops; single-stop species have span 0. Sum spans across route-new species.",
+    "mean_route_new_span_km": "Mean of the same species-level spans across all route-new species in the pair; 0 if no route-new species.",
+    "multi_stop_route_new_species": "Number of route-new species detected at >=2 wet stops, reported as a link to the previous spread diagnostic."
+  },
+  "model": "Use the frozen matched-pair design residual for each endpoint; compare observed rain-contrast coefficients with 1,000 simulations under the same kappa=2 uniform activation null and a=0.75 persistence-preserving null.",
+  "primary_prediction": "Broad route-scale activation is supported only if total_route_new_span_km exceeds the upper 95% null bound under both nulls AND mean_route_new_span_km exceeds the upper 95% null bound under both nulls.",
+  "coverage_gate": ">=3500 physically stable pairs with complete ten-stop coordinates and >=450 routes; otherwise no primary classification.",
+  "interpretation": [
+    "A positive result supports route-scale synchronous activation, not movement of individuals among stops.",
+    "Large spans can reflect broad atmospheric, reproductive or hydrological cues; this test does not distinguish among them.",
+    "Failure does not prove purely local recruitment.",
+    "No causal rainfall claim and no RC11 submission change are authorized."
+  ],
+  "retuning_after_readback": false
+}
