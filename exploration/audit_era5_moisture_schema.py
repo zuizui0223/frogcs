@@ -31,6 +31,20 @@ except Exception as e:
     hierarchy_error=repr(e)
 
 ds=xr.open_zarr(session.store,group="single/temporal",consolidated=False,chunks=None)
+spatial_ds=xr.open_zarr(session.store,group="single/spatial",consolidated=False,chunks=None)
+spatial_layout={}
+for name in ("t2m","d2m","swvl1"):
+    if name in spatial_ds:
+        var=spatial_ds[name]
+        chunks=var.encoding.get("chunks")
+        spatial_layout[name]={
+            "dims":list(var.dims),
+            "shape":[int(x) for x in var.shape],
+            "encoding_chunks":None if chunks is None else [int(x) for x in chunks],
+            "preferred_chunks":var.encoding.get("preferred_chunks"),
+            "units":str(var.attrs.get("units","")),
+            "GRIB_paramId":str(var.attrs.get("GRIB_paramId","")),
+        }
 terms=("temp","dew","humid","pressure","vapor","vapour","precip","soil","evap")
 hits={}
 for name,var in ds.data_vars.items():
@@ -62,7 +76,7 @@ out={
     "n_data_vars":len(ds.data_vars),
     "candidate_variables":hits,
     "hierarchy":hierarchy,
-    "hierarchy_error":hierarchy_error,
+    "hierarchy_error":hierarchy_error,\n    "spatial_layout":spatial_layout,
     "response_data_read":False
 }
 OUT.parent.mkdir(parents=True,exist_ok=True)
