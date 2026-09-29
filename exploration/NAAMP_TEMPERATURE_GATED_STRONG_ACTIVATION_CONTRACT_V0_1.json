@@ -1,0 +1,22 @@
+{
+  "analysis": "naamp_temperature_gated_strong_activation_v0_1",
+  "status": "post_readback_multicue_hypothesis_fixed_before_interaction_readback",
+  "ecological_hypothesis": "Rainfall-associated chorus activation is thermally gated: recent-rain contrasts should produce stronger dry=0 -> wet CallingIndex 2-3 activation when the two matched surveys occur under warmer overall thermal conditions.",
+  "sample": "Frozen 4,236 matched pairs.",
+  "thermal_context": "pair_mean_temp_c = mean of the wet-run and dry-run mean stop temperatures; z-score across the frozen pair sample.",
+  "primary_response": "strong_new_score = sum wet CallingIndex for cells dry=0 and wet in {2,3}.",
+  "primary_model": "strong_new_score ~ rain_contrast * pair_mean_temp_z + temp_difference + doy_difference + year_gap + State + RunNumber, route-clustered covariance.",
+  "primary_prediction": "rain_contrast:pair_mean_temp_z >0 with complete 95% CI >0.",
+  "sensitivities": [
+    "Repeat on new_ci3_count (dry=0 -> wet CI3 full chorus).",
+    "Repeat the primary model on same-observer + physical-stop stable pairs.",
+    "Fit descriptive State random-rain-slope models with and without the interaction and report change in state-slope SD; no reduction threshold is a pass gate."
+  ],
+  "interpretation": [
+    "Support would identify temperature as a moderator of the rainfall association, not a physiological mediator.",
+    "A null interaction would weaken a simple warm-gated explanation for state heterogeneity.",
+    "Pair mean temperature is observational and can covary with seasonal ecology despite State and RunNumber adjustment.",
+    "No causal rainfall or temperature claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
