@@ -1,0 +1,37 @@
+name: strong activation seasonal only
+on:
+  push:
+    branches:
+      - exploration/calling-strength-v1
+    paths:
+      - ".github/workflows/strong_activation_seasonal_only.yml"
+      - "exploration/NAAMP_STRONG_NEW_ACTIVATION_SEASONAL_WINDOW_CONTRACT_V0_1.json"
+      - "exploration/run_naamp_strong_new_activation_seasonal_window.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python -m compileall -q exploration scripts
+      - name: Run seasonal audit with source retry
+        shell: bash
+        run: |
+          for i in 1 2 3 4; do
+            python exploration/run_naamp_strong_new_activation_seasonal_window.py && exit 0
+            sleep $((i*5))
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-strong-activation-seasonal-v0-1
+          path: |
+            exploration/NAAMP_STRONG_NEW_ACTIVATION_SEASONAL_WINDOW_CONTRACT_V0_1.json
+            exploration/NAAMP_STRONG_NEW_ACTIVATION_SEASONAL_WINDOW_RECEIPT_V0_1.json
+          if-no-files-found: error
