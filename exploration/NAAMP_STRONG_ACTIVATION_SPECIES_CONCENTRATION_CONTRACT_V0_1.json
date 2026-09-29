@@ -1,0 +1,20 @@
+{
+  "analysis": "naamp_strong_activation_species_concentration_v0_1",
+  "status": "post_readback_generality_diagnostic_fixed_before_species_endpoint",
+  "question": "Is the rainfall-associated emergence of CallingIndex 2-3 in previously silent species x stop cells broadly distributed across taxa, or dominated by a few species?",
+  "samples": {
+    "full": "Frozen 4,236 matched pairs.",
+    "robust": "Intersection of same-observer pairs and pairs with all ten identical nonmissing SiteID values."
+  },
+  "response_per_species": "Sum wet CallingIndex across cells for that species with dry=0 and wet in {2,3}; apply the same residualized matched-pair rain design species by species.",
+  "decomposition": "Sum of species-specific rain coefficients must equal the total strong_new_score coefficient on the same sample.",
+  "diagnostics": [
+    "top-1 and top-5 positive contribution shares",
+    "HHI of positive contribution shares",
+    "number of positive species",
+    "leave-one-species-out total coefficient"
+  ],
+  "diffuse_rule": "top1 <=0.25, top5 <=0.60, HHI <=0.10, and all leave-one-species-out totals remain >0.",
+  "interpretation": "Diffuse support means strong chorus-level recruitment is not attributable to one or a few taxa within NAAMP. It does not imply every species responds or identify a common physiological pathway.",
+  "retuning_after_readback": false
+}
