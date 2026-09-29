@@ -73,9 +73,11 @@ def rows_for_pair(pid,p,sampled,site,ci,md,by,route,sitehist):
   mems=[x[1] for x in tmp]
   if min(mems)==max(mems):continue
   gid=f"{pid}|{sp}"
-  for sid,mem,y3,y2 in tmp:
+  for sid,mem,y1,y2only,y3,y2plus in tmp:
    out.append({"group_id":gid,"pair_id":pid,"species":sp,"SiteID":sid,"prior_same_site":float(mem),
-               "wet_ci3":float(y3),"wet_ci2plus":float(y2),"rain_contrast":float(p.rain_contrast),
+               "wet_ci1_only":float(y1),"wet_ci2_only":float(y2only),
+               "wet_ci3_only":float(y3),"wet_ci2plus":float(y2plus),
+               "rain_contrast":float(p.rain_contrast),
                "route_cluster":str(p.route_cluster),"wet_RunID":w,"dry_RunID":d})
  return out
 
