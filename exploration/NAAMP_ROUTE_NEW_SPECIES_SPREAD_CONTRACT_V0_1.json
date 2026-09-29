@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_route_new_species_spread_v0_1",
+  "status": "post_readback_mechanism_diagnostic_fixed_before_endpoint",
+  "question": "When species newly enter the wet active route, do they simultaneously occupy multiple stops more often than expected under the existing null processes?",
+  "sample": "Frozen 4,236 matched NAAMP pairs.",
+  "endpoints": {
+    "route_new_species_gain": "Number of species absent from the entire dry route but present somewhere in the wet route.",
+    "extra_stop_incidence_gain": "For each route-new wet species, max(number of wet stops occupied - 1, 0), summed across route-new species.",
+    "multi_stop_route_new_species": "Number of route-new wet species detected at >=2 wet stops."
+  },
+  "primary_statistic": "Rain-contrast coefficient for extra_stop_incidence_gain compared with its simulated null distribution.",
+  "secondary_statistic": "Rain-contrast coefficient for multi_stop_route_new_species compared with simulated null distribution.",
+  "nulls": [
+    "uniform activation kappa=2",
+    "persistence-preserving activation anchor=0.75"
+  ],
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "decision": {
+    "broad_species_activation": "Observed extra-stop coefficient above upper 95% interval under both nulls.",
+    "localized_recruitment": "Observed coefficient not above both nulls; this does not prove local hydrology but gives no excess species-wide spatial spread."
+  },
+  "interpretation_boundary": [
+    "Multiple stop detections do not imply individual movement between stops.",
+    "Failure to show excess spread does not identify wetland hydrology.",
+    "No causal rainfall claim and no RC11 change authorized."
+  ],
+  "retuning_after_readback": false
+}
