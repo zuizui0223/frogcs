@@ -1,0 +1,37 @@
+{
+  "analysis": "naamp_nwi_context_eligibility_v0_1",
+  "status": "fixed_before_nwi_match_readback",
+  "question": "Can independently mapped wetland context be assigned to enough NAAMP physical listening sites to test whether rainfall recruitment depends on wetland hydrology?",
+  "population": "Unique SiteID values used by the frozen 4,236 matched NAAMP wetter-drier pairs.",
+  "sources": {
+    "coordinates": "Pinned NAAMP Coordinates.csv, SHA256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83.",
+    "wetlands": "Official U.S. Fish & Wildlife Service National Wetlands Inventory Wetlands MapServer layer 0.",
+    "wetland_fields": [
+      "ATTRIBUTE",
+      "WETLAND_TYPE",
+      "WATER_REGIME",
+      "WATER_REGIME_NAME"
+    ]
+  },
+  "spatial_linkage": {
+    "primary_radius_m": 200,
+    "sensitivity_radius_m": 500,
+    "rule": "For each SiteID, choose the nearest NWI polygon. A site is classified at a radius only when nearest polygon distance is <= that radius. Distance is computed in a route-centered local azimuthal equidistant projection.",
+    "multiple_polygons": "Nearest polygon wins; ties within 1 m are reported as ambiguous rather than outcome-selected.",
+    "rationale": "NAAMP wetland-associated stops were selected near potential wetland habitat; prior NAAMP landscape work describes water bodies visible within 200 m of the road."
+  },
+  "feasibility_gate": {
+    "site_coverage_primary": ">= 0.50 of pair-used SiteIDs have a nearest NWI polygon within 200 m",
+    "hydrology_field_coverage": ">= 0.80 of primary-matched sites have nonempty WATER_REGIME_NAME",
+    "variation": "At least two WATER_REGIME_NAME categories each contain >=250 unique matched SiteIDs.",
+    "pass": "All three conditions.",
+    "consequence_if_fail": "Do not use NWI water regime as the primary measured-context mechanism test; retain it only as descriptive context."
+  },
+  "interpretation_boundary": [
+    "NWI is mapped wetland habitat, not water level on the NAAMP survey night.",
+    "NWI mapping dates can differ from NAAMP survey dates.",
+    "A nearby NWI polygon does not prove that the detected frog called from that polygon.",
+    "This eligibility audit does not inspect frog-response endpoints."
+  ],
+  "retuning_after_readback": false
+}
