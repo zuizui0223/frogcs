@@ -2,7 +2,7 @@
 from __future__ import annotations
 import json
 from pathlib import Path
-import icechunk,xarray as xr
+import icechunk,xarray as xr,zarr
 
 OUT=Path("exploration/ERA5_MOISTURE_SCHEMA_AUDIT_V0_1.json")
 
@@ -14,6 +14,21 @@ storage=icechunk.s3_storage(
 )
 repo=icechunk.Repository.open(storage)
 session=repo.readonly_session("main")
+root=zarr.open_group(session.store,mode="r")
+hierarchy={
+    "root_groups":sorted(list(root.group_keys())),
+}
+if "single" in root:
+    hierarchy["single_groups"]=sorted(list(root["single"].group_keys()))
+    hierarchy["single_arrays"]=sorted(list(root["single"].array_keys()))
+    for gname in hierarchy["single_groups"]:
+        try:
+            g=root["single"][gname]
+            hierarchy[f"single/{gname}_groups"]=sorted(list(g.group_keys()))
+            hierarchy[f"single/{gname}_arrays"]=sorted(list(g.array_keys()))
+        except Exception:
+            pass
+
 ds=xr.open_zarr(session.store,group="single/temporal",consolidated=False,chunks=None)
 
 terms=("temp","dew","humid","pressure","vapor","vapour","precip","soil","evap")
@@ -40,7 +55,7 @@ out={
     "analysis":"era5_moisture_schema_audit_v0_1",
     "group":"single/temporal",
     "n_data_vars":len(ds.data_vars),
-    "candidate_variables":hits,
+    "candidate_variables":hits,\n    "hierarchy":hierarchy,
     "response_data_read":False
 }
 OUT.parent.mkdir(parents=True,exist_ok=True)
