@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+
 import json
 from pathlib import Path
-import icechunk,xarray as xr,zarr
+import icechunk
+import xarray as xr
+import zarr
 
 OUT=Path("exploration/ERA5_MOISTURE_SCHEMA_AUDIT_V0_1.json")
 
@@ -14,23 +17,20 @@ storage=icechunk.s3_storage(
 )
 repo=icechunk.Repository.open(storage)
 session=repo.readonly_session("main")
-root=zarr.open_group(session.store,mode="r")
-hierarchy={
-    "root_groups":sorted(list(root.group_keys())),
-}
-if "single" in root:
-    hierarchy["single_groups"]=sorted(list(root["single"].group_keys()))
-    hierarchy["single_arrays"]=sorted(list(root["single"].array_keys()))
-    for gname in hierarchy["single_groups"]:
-        try:
-            g=root["single"][gname]
-            hierarchy[f"single/{gname}_groups"]=sorted(list(g.group_keys()))
-            hierarchy[f"single/{gname}_arrays"]=sorted(list(g.array_keys()))
-        except Exception:
-            pass
+
+hierarchy={}
+hierarchy_error=None
+try:
+    root=zarr.open_group(session.store,mode="r")
+    hierarchy["root_groups"]=sorted(list(root.group_keys()))
+    if "single" in hierarchy["root_groups"]:
+        single=root["single"]
+        hierarchy["single_groups"]=sorted(list(single.group_keys()))
+        hierarchy["single_arrays"]=sorted(list(single.array_keys()))
+except Exception as e:
+    hierarchy_error=repr(e)
 
 ds=xr.open_zarr(session.store,group="single/temporal",consolidated=False,chunks=None)
-
 terms=("temp","dew","humid","pressure","vapor","vapour","precip","soil","evap")
 hits={}
 for name,var in ds.data_vars.items():
@@ -42,9 +42,14 @@ for name,var in ds.data_vars.items():
         str(var.attrs.get("units","")),
     ]).lower()
     if any(t in blob for t in terms):
+        enc_chunks=var.encoding.get("chunks")
+        pref=var.encoding.get("preferred_chunks")
         hits[name]={
             "dims":list(var.dims),
+            "shape":[int(x) for x in var.shape],
             "dtype":str(var.dtype),
+            "encoding_chunks":None if enc_chunks is None else [int(x) for x in enc_chunks],
+            "preferred_chunks":pref,
             "attrs":{k:str(v) for k,v in var.attrs.items() if k in (
                 "long_name","standard_name","units","GRIB_name","GRIB_shortName","GRIB_paramId",
                 "accumulation_comment"
@@ -52,10 +57,12 @@ for name,var in ds.data_vars.items():
         }
 
 out={
-    "analysis":"era5_moisture_schema_audit_v0_1",
+    "analysis":"era5_moisture_schema_audit_v0_2",
     "group":"single/temporal",
     "n_data_vars":len(ds.data_vars),
-    "candidate_variables":hits,\n    "hierarchy":hierarchy,
+    "candidate_variables":hits,
+    "hierarchy":hierarchy,
+    "hierarchy_error":hierarchy_error,
     "response_data_read":False
 }
 OUT.parent.mkdir(parents=True,exist_ok=True)
