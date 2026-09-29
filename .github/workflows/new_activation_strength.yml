@@ -18,6 +18,7 @@ jobs:
       - run: python -m compileall -q exploration scripts
       - run: python exploration/run_naamp_new_activation_strength.py
       - run: python exploration/run_naamp_strong_new_activation_route_split.py
+      - run: python exploration/run_naamp_strong_new_activation_geographic_audit.py
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-new-activation-strength-v0-1
@@ -26,4 +27,6 @@ jobs:
             exploration/NAAMP_NEW_ACTIVATION_STRENGTH_RECEIPT_V0_1.json
             exploration/NAAMP_STRONG_NEW_ACTIVATION_ROUTE_SPLIT_CONTRACT_V0_1.json
             exploration/NAAMP_STRONG_NEW_ACTIVATION_ROUTE_SPLIT_RECEIPT_V0_1.json
+            exploration/NAAMP_STRONG_NEW_ACTIVATION_GEOGRAPHIC_AUDIT_CONTRACT_V0_1.json
+            exploration/NAAMP_STRONG_NEW_ACTIVATION_GEOGRAPHIC_AUDIT_RECEIPT_V0_1.json
           if-no-files-found: error
