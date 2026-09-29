@@ -180,6 +180,26 @@
         "causal_claim": false
       },
       "retuning_after_readback": false
+    },
+    "additive_null_identity_diagnostics": {
+      "status": "post_readback_diagnostic_fixed_before_its_endpoints",
+      "reason": "The temporally cross-fit additive species+site null was not rejected. Diagnose whether this reflects complementary transferable species and physical-site information, or merely added heterogeneity/flexibility.",
+      "population": "Exactly the 3,437 temporally cross-fit test pairs used by crossfit_site_shift_null and crossfit_species_plus_site_additive_null.",
+      "diagnostics": {
+        "species_only_same_subset": "Apply the existing route-cross-fit species shifts on the same temporal test subset with no site shift. Use the same kappa=2 baseline, magnitude matching, 1,000 simulations and four-component Mahalanobis test.",
+        "site_shift_temporal_stability": "Among physical State:RouteNumber:StopNumber sites estimable in both early and late training blocks, report Pearson and Spearman correlations and sign agreement of wet-shift gamma. This is descriptive and does not gate the null tests.",
+        "permuted_site_identity": {
+          "construction": "Within each route and training block, deterministically permute the learned stop-specific gammas among the ten StopNumber labels, preserving the route-specific multiset of site shifts but breaking physical stop identity.",
+          "permutations": [
+            "perm1: SHA256(route + '|perm1') seeded permutation",
+            "perm2: SHA256(route + '|perm2') seeded permutation"
+          ],
+          "test": "For each permutation, combine the permuted site shifts with the same route-cross-fit species shifts and run the same 1,000-replicate four-component Mahalanobis test.",
+          "interpretation": "If the true additive null fits but both identity-permuted controls reject, stable physical-site identity adds predictive information. If a permuted control also fits, the evidence supports generic additive site-level heterogeneity rather than identified stop-specific response."
+        }
+      },
+      "retuning_after_readback": false,
+      "submission_story_change_authorized": false
     }
   },
   "prohibited": [
