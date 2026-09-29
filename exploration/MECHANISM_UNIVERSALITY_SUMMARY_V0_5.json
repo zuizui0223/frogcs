@@ -3,73 +3,119 @@
   "status": "exploratory_evidence_summary_not_submission_authority",
   "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
   "headline": {
-    "process": "Within NAAMP, rainfall-associated acoustic change is dominated by recruitment across activity thresholds, not merely stronger calling among cells already active in both surveys.",
-    "strength": "Most of the rainfall-associated new-activation slope is direct entry at CallingIndex 2-3, so the pattern is not confined to marginal CallingIndex-1 detections.",
-    "geometry": "Within the full NAAMP sample, the excess allocation is disproportionately taxonomic (route-new species) rather than spatial (new stops).",
-    "physical_design": "Both boundary geometry and CallingIndex threshold recruitment persist after restricting to pairs with identical physical SiteID at all ten StopNumbers.",
-    "simple_social_cue": "Not supported: route-new recruitment is not disproportionately allocated to stops that already contained calling species in the dry survey relative to either null.",
-    "deeper_cause": "Still unresolved at the mediator level. Stable physical-stop response is unsupported; measured mapped wetland context is the next active test.",
-    "universality": "Hierarchical: species-level breadth and leave-one-state-out robustness are strong within NAAMP; state-specific effects are heterogeneous; strict disjoint-route two-fold replication is not a full pass; external Neotropical AnuraSet sites do not reproduce the prefixed threshold-dominance rule. Worldwide universality is not established."
+    "process": "Within NAAMP, rainfall-associated acoustic change is dominated by recruitment across activity thresholds rather than intensification among cells already active in both surveys.",
+    "strong_chorus": "About 87% of the new-activation CallingIndex slope is entry directly at CallingIndex 2-3, not weak CallingIndex-1 detections.",
+    "robustness": "Strong new activation persists under same-observer restriction, identical physical SiteID at all ten stops, their intersection, and adjustment for measured hearing impairment, timeout and wind.",
+    "geometry": "Route-new species recruitment is taxonomically diffuse but spatially compact: recruited species accumulate excess stop incidence while occupying geographically tighter stop clusters than expected.",
+    "wetland_context": "Mapped NWI hydroperiod shows a weak directional signal for route-new gain and 500-m net recruitment, but the 200-m primary net interaction and strong-chorus interaction are not supported.",
+    "universality": "Strong activation is robust to leaving out each of 21 NAAMP states, but strict disjoint-route replication is incomplete and Neotropical AnuraSet does not satisfy the threshold-dominance rule. NAAMP-region generality is supported; worldwide universality is not."
   },
-  "calling_index": {
-    "full": {
+  "activation_process": {
+    "calling_index_full": {
       "pairs": 4236,
+      "routes": 585,
       "total_beta": 2.8410419576031223,
       "activation_beta": 1.8548575453289868,
       "activation_share": 0.6528793213930071,
       "shared_positive_intensity_beta": 0.19648401136771304,
-      "shared_positive_intensity_share": 0.06915913749245683,
-      "threshold_dominant": true
+      "shared_positive_intensity_share": 0.06915913749245683
+    },
+    "strength_split": {
+      "strong_ci23_beta": 1.6150398249522895,
+      "strong_ci23_ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ],
+      "strong_ci23_count_beta": 0.5868627247155945,
+      "strong_ci23_count_ci95": [
+        0.18357108304575287,
+        0.9901543663854362
+      ],
+      "weak_ci1_beta": 0.2398177203766975,
+      "strong_share_of_activation_beta": 0.8707082810857251
     },
     "same_observer": {
       "pairs": 3152,
-      "total_beta": 3.020139820510419,
-      "activation_beta": 2.0550228046574146,
-      "activation_share": 0.6804396242522657,
-      "shared_positive_intensity_beta": 0.18852361498490422,
-      "shared_positive_intensity_share": 0.06242214804248459,
-      "threshold_dominant": true
+      "strong_ci23_beta": 1.7749534283517359,
+      "strong_ci23_ci95": [
+        0.3708608268229865,
+        3.1790460298804852
+      ],
+      "strong_share_of_activation_beta": 0.8637147112572465
     },
-    "physical_stop_stable": {
-      "pairs": 4172,
-      "routes": 584,
-      "total_beta": 2.837381148449544,
-      "activation_beta": 1.861602543131414,
-      "activation_share": 0.6560988622020931,
-      "shared_positive_intensity_beta": 0.1979722893923276,
-      "shared_positive_intensity_share": 0.06976935459769441,
-      "threshold_dominant": true
+    "same_observer_and_identical_physical_stops": {
+      "pairs": 3115,
+      "routes": 499,
+      "observers": 540,
+      "strong_ci23_beta": 1.7428002577104516,
+      "strong_ci23_ci95": [
+        0.3270455434761059,
+        3.158554971944797
+      ],
+      "strong_ci23_count_beta": 0.6143699621882305,
+      "strong_ci23_count_ci95": [
+        0.10728385130839779,
+        1.1214560730680632
+      ],
+      "pass": true
     },
-    "new_activation_strength": {
-      "full": {
-        "activation_beta": 1.8548575453289868,
-        "strong_ci23_beta": 1.6150398249522895,
-        "strong_ci23_ci95": [
-          0.49343778495183677,
-          2.736641864952742
-        ],
-        "strong_ci23_p": 0.004769,
-        "strong_ci23_share_of_activation": 0.8707082810857251,
-        "strong_ci23_count_beta": 0.5868627247155945,
-        "strong_ci23_count_ci95": [
-          0.18357108304575287,
-          0.9901543663854362
-        ],
-        "weak_ci1_beta": 0.23981772037669724
+    "measured_detection_adjustment": {
+      "pairs": 4024,
+      "routes": 576,
+      "covariates": [
+        "hearing impairment",
+        "major-noise timeout",
+        "wind"
+      ],
+      "strong_ci23_beta": 1.6225420695541188,
+      "strong_ci23_ci95": [
+        0.4587043993545672,
+        2.7863797397536705
+      ],
+      "strong_count_beta": 0.5972855657100444,
+      "strong_count_ci95": [
+        0.17886050204764242,
+        1.0157106293724465
+      ],
+      "traffic_sensitivity_pass": true,
+      "mass_noise_small_sample_direction_same_but_ci_crosses_zero": true
+    },
+    "geographic_generality": {
+      "states": 21,
+      "leave_one_state_out_all_positive": true,
+      "leave_one_state_out_all_ci_positive": true,
+      "minimum_beta": 0.8940439534535248,
+      "minimum_ci_lower": 0.2912197317182954,
+      "interpretation": "No single NAAMP state is required for the strong 0-to-2/3 activation signal."
+    },
+    "recency": {
+      "prefixed_immediate_vs_delayed_gate_pass": false,
+      "reason": "Only 178 delayed (wet DaysSinceRain >=4) pairs, below the 300-pair gate.",
+      "bin_betas": {
+        "0-1_days": {
+          "beta": 1.786908673201261,
+          "ci95": [
+            0.566908969490153,
+            3.006908376912369
+          ]
+        },
+        "2-3_days": {
+          "beta": 2.15241496647472,
+          "ci95": [
+            0.32485331388911254,
+            3.9799766190603276
+          ]
+        },
+        "4-7_days": {
+          "beta": 3.1427166674018236,
+          "ci95": [
+            -0.6114155495208964,
+            6.896848884324544
+          ]
+        },
+        ">=8_days": "not_estimable"
       },
-      "same_observer": {
-        "activation_beta": 2.0550228046574146,
-        "strong_ci23_beta": 1.7749534283517359,
-        "strong_ci23_ci95": [
-          0.3708608268229865,
-          3.1790460298804852
-        ],
-        "strong_ci23_p": 0.01323,
-        "strong_ci23_share_of_activation": 0.8637147112572465,
-        "strong_ci23_count_beta": 0.6282,
-        "weak_ci1_beta": 0.28007
-      },
-      "ecological_read": "Rainfall-associated recruitment is not just weak calls becoming detectable: most of the activation slope is new cells immediately scored as overlapping/full-chorus CallingIndex 2-3."
+      "conclusion": "No evidence that strong recruitment is confined to the night immediately after rain; a multi-day opportunity window remains plausible."
     }
   },
   "geometry": {
@@ -78,34 +124,156 @@
       "new_stop_share": 0.5214772488387415,
       "taxonomic_minus_spatial": 0.24631827640024753,
       "uniform_p": 0.000999000999000999,
-      "persistence_p": 0.000999000999000999,
-      "supported": true
+      "persistence_p": 0.000999000999000999
     },
     "physical_stop_identity": {
-      "all_pairs": 4236,
-      "all_ten_siteid_stable_pairs": 4172,
+      "stable_pairs": 4172,
+      "total_pairs": 4236,
       "stable_fraction": 0.9848914069877243,
-      "stable_pair_boundary_share": 0.9304964895167589,
-      "uniform_stable_history_p": 0.000999000999000999,
-      "persistence_stable_history_p": 0.000999000999000999,
-      "strong_pass": true,
-      "read": "Boundary recruitment does not depend on relocation or renumbering of listening stops."
+      "stable_subset_boundary_share": 0.9304964895167589,
+      "uniform_p": 0.000999000999000999,
+      "persistence_p": 0.000999000999000999
     },
-    "route_new_context": {
-      "observed_dry_active_fraction": 0.5192483535917819,
-      "uniform_null_mean": 0.5257903329527602,
+    "social_cue_proxy": {
+      "route_new_fraction_into_dry_active_stops": 0.5192483535917819,
       "uniform_ci95": [
         0.4649129950912414,
         0.585954845963247
       ],
-      "persistence_null_mean": 0.5121749164574608,
       "persistence_ci95": [
         0.45397243913515717,
         0.5660048947434544
       ],
       "simple_social_cue_excess": false,
-      "simple_new_site_opening_excess": false,
-      "read": "Route-new recruitment is neither preferentially targeted to already-chorusing stops nor preferentially targeted to previously inactive stops beyond the null expectation."
+      "simple_new_site_opening_excess": false
+    },
+    "route_new_spread": {
+      "route_new_species_gain_beta": 0.1846754325853956,
+      "multi_stop_route_new_species_beta": 0.13170590853393746,
+      "extra_stop_incidence_beta": 0.6042952999648085,
+      "extra_stop_uniform_ci95": [
+        0.3826640032537967,
+        0.4973885062998129
+      ],
+      "extra_stop_persistence_ci95": [
+        0.35157294479386686,
+        0.47806878517834517
+      ],
+      "extra_stop_p_both": 0.000999000999000999,
+      "read": "The number of newly recruited species is not exceptional, but once recruited, selected species accumulate unusually many additional occupied stops."
+    },
+    "geographic_compactness": {
+      "coordinate_complete_stable_pairs": 4059,
+      "routes": 563,
+      "total_span_beta_km": -14.058649245829269,
+      "mean_span_beta_km": -4.64266004025349,
+      "total_span_uniform_lower_p": 0.000999000999000999,
+      "total_span_persistence_lower_p": 0.003996003996003996,
+      "mean_span_uniform_lower_p": 0.000999000999000999,
+      "mean_span_persistence_lower_p": 0.000999000999000999,
+      "observed_route_new_species_instances": 4578,
+      "observed_multi_stop_instances": 2518,
+      "observed_multi_stop_fraction": 0.5500218435998252,
+      "multi_stop_span_median_km": 7.709659996800701,
+      "multi_stop_span_iqr_km": [
+        4.29211665963678,
+        12.012126046879587
+      ],
+      "classification": "compact multi-stop activation supported (post-readback directional diagnostic)",
+      "read": "Recruited species occupy more stops than expected, but those stops are geographically more compact than expected."
+    },
+    "taxonomic_concentration": {
+      "species_total": 53,
+      "species_positive_beta": 26,
+      "species_positive_share_ge_1pct": 19,
+      "top1_share": 0.15552747841219575,
+      "top5_share": 0.49969041912099676,
+      "hhi": 0.07611533372841944,
+      "all_leave_one_species_out_total_betas_positive": true,
+      "diffuse_under_prefixed_rule": true,
+      "top_species": "Pseudacris crucifer",
+      "read": "The multi-stop recruitment excess is distributed across many taxa rather than being driven by one dominant species."
+    }
+  },
+  "measured_context": {
+    "nwi_eligibility": {
+      "pair_used_siteids": 5972,
+      "with_coordinates": 5778,
+      "within_200m_sites": 4991,
+      "coverage_200m": 0.8637937002422984,
+      "within_500m_sites": 5583,
+      "coverage_500m": 0.9662512980269989,
+      "water_regime_nonempty_fraction_200m": 0.9983971148066519,
+      "feasibility_gate": true
+    },
+    "nwi_route_new_hydroperiod": {
+      "primary_200m_net": {
+        "interaction_beta": 0.027904459457952124,
+        "ci95": [
+          -0.005898606369149986,
+          0.06170752528505423
+        ],
+        "p": 0.105672957892174,
+        "supported": false
+      },
+      "gain_only_200m": {
+        "interaction_beta": 0.02942829471116059,
+        "ci95": [
+          0.003086535481790477,
+          0.0557700539405307
+        ],
+        "p": 0.02855193153833466
+      },
+      "net_500m": {
+        "interaction_beta": 0.03453198895964403,
+        "ci95": [
+          0.001860161592218676,
+          0.06720381632706939
+        ],
+        "p": 0.038307053558125054
+      },
+      "interpretation": "Pulse-limited wetlands show a directional tendency toward greater route-new recruitment, but the pre-fixed 200-m net-response primary test does not pass."
+    },
+    "nwi_strong_chorus": {
+      "strong_score_200m": {
+        "interaction_beta": 0.04099316980148064,
+        "ci95": [
+          -0.038210379851059365,
+          0.12019671945402065
+        ],
+        "p": 0.3103855670774971
+      },
+      "strong_score_500m": {
+        "interaction_beta": 0.051245022824895535,
+        "ci95": [
+          -0.021813927814692165,
+          0.12430397346448324
+        ],
+        "p": 0.16920638862937898
+      },
+      "same_observer_200m": {
+        "interaction_beta": 0.04673447893794794,
+        "ci95": [
+          -0.04239878638039915,
+          0.13586774425629503
+        ],
+        "p": 0.3041139915077279
+      },
+      "weak_new_score_200m": {
+        "interaction_beta": 0.037441131447244466,
+        "ci95": [
+          0.0045066117540669415,
+          0.07037565114042199
+        ],
+        "p": 0.025870070484814642
+      },
+      "conclusion": "Mapped hydroperiod differentiates weak new detections more clearly than strong new choruses; it does not explain the strong-chorus activation signal."
+    },
+    "jrc_surface_water": {
+      "coverage_200m": 0.21754932502596053,
+      "eligibility_pass": false,
+      "response_endpoints_read": false,
+      "reason": "Insufficient 200-m water-pixel coverage and <300 informative routes under the pre-fixed gate."
     }
   },
   "null_hierarchy": {
@@ -129,7 +297,7 @@
       "conclusion": "The reduced temporal subset cannot identify a stable physical-site mechanism; generic heterogeneity and lower discrimination suffice."
     }
   },
-  "replication": {
+  "external_replication": {
     "disjoint_routes": {
       "strict_both_folds_pass": false,
       "interpretation": "Both folds have the same broad direction, but each narrowly misses a different pre-fixed criterion."
@@ -166,102 +334,45 @@
       "boundary": "AnuraSet weak labels are a stratified machine-learning annotation sample, not continuous effort."
     }
   },
-  "mediator_status": {
-    "weakened": [
-      "Stop relocation artifact",
-      "Simple weak-call-only detection-threshold explanation",
-      "Simple chorus/social-cue attraction as the sole allocation mechanism",
-      "Stable empirical physical-stop rainfall sensitivity"
+  "mediator_hierarchy": {
+    "strongly_weakened": [
+      "Stop relocation or StopNumber remapping",
+      "Observer turnover",
+      "Weak-call-only acoustic detection threshold",
+      "Measured hearing/noise/wind conditions as the main explanation",
+      "Simple attraction specifically toward already-chorusing stops",
+      "A stable empirical physical-stop rainfall-sensitivity trait",
+      "A single-state or single-species driver"
     ],
-    "still_plausible_but_unidentified": [
-      "Breeding/reproductive activation thresholds",
-      "Hydration or moisture constraints",
-      "Rainfall-created or rainfall-improved breeding-site conditions",
-      "Species-specific atmospheric/weather cues",
-      "Context-dependent combinations of species biology and local environment"
+    "partly_supported_but_not_primary_confirmatory": [
+      "Mapped pulse-limited wetland context for route-new gain (gain-only 200 m and net 500 m positive, 200 m primary net test nonsignificant)"
     ],
-    "active_test": "Official National Wetlands Inventory hydroperiod linkage is in progress under a prefixed eligibility gate; implementation was corrected before readback to use the contracted route-centred projection and exclude ambiguous nearest-polygon ties."
+    "still_plausible": [
+      "Local/mesoscale breeding-opportunity activation",
+      "Local rainfall/hydric conditions not captured by long-term NWI hydroperiod",
+      "Hydration/moisture constraints",
+      "Species-specific weather thresholds that operate across many taxa",
+      "Mesoscale wetland complexes or habitat patches producing compact multi-stop activation"
+    ],
+    "weakened_by_new_geometry": [
+      "A purely route-wide uniform atmospheric switch, because recruited stop sets are more geographically compact than null expectations",
+      "A purely single-stop site-opening model, because selected route-new species accumulate excess additional stop incidence"
+    ],
+    "current_best_description": "Rain is associated with strong recruitment of previously inactive taxa into dense, mesoscale multi-stop activation clusters. The pattern is broad across taxa and NAAMP geography, robust to measured observation artifacts, and only weakly related to long-term mapped hydroperiod. The proximate physiological or hydrological mediator remains unidentified."
+  },
+  "universality": {
+    "within_naamp": "Strong: same-observer, physical-stop, measured-detection and leave-one-state-out robustness all support the strong recruitment signal.",
+    "disjoint_route_gate": "Not fully passed under the earlier strict two-fold combined mechanism gate.",
+    "frogid": "Supports recent-rain taxonomic depth in a different Australian citizen-science system, but not the same matrix/CallingIndex mechanism.",
+    "anuraset": "Two Brazilian site tests do not meet the prefixed threshold-dominance replication rule; annotation design is stratified for machine learning.",
+    "verdict": "NAAMP-region generality is well supported; cross-continental universality of the threshold/cluster geometry is not established."
   },
   "interpretation_boundary": [
     "Acoustic activity is not abundance, occupancy, colonization or reproductive success.",
-    "CallingIndex is ordinal acoustic intensity, not individual calling effort.",
-    "No unique physiological mediator has been identified.",
-    "No worldwide or continent-general boundary-recruitment law has been established.",
+    "CallingIndex is ordinal chorus intensity, not individual calling effort.",
+    "Compact multi-stop patterns do not imply movement of individuals among stops.",
+    "NWI hydroperiod is long-term mapped context, not survey-night inundation.",
+    "No unique physiological mediator or causal rainfall effect is identified.",
     "RC11 remains frozen and is not altered by these exploratory analyses."
-  ],
-  "taxonomic_breadth": {
-    "strong_new_species_with_any_event": 50,
-    "positive_beta_species": 28,
-    "negative_beta_species": 22,
-    "effective_number_positive_contributors": 13.430532699952824,
-    "top1_positive_share": 0.13878158073539598,
-    "top5_positive_share": 0.49178135686490515,
-    "top10_positive_share": 0.7891827363822626,
-    "leave_one_species_out": {
-      "all_ci_positive": true,
-      "minimum_remaining_beta": 1.3709170881085773,
-      "minimum_remaining_ci_lower": 0.2657382640148356
-    },
-    "top_contributors": [
-      [
-        "Pseudacris crucifer",
-        0.24412273684374233
-      ],
-      [
-        "Acris gryllus",
-        0.20261386443157886
-      ],
-      [
-        "Hyla cinerea",
-        0.1508547400828015
-      ],
-      [
-        "Hyla femoralis",
-        0.14167927727450827
-      ],
-      [
-        "Hyla chrysoscelis",
-        0.12579382385624152
-      ],
-      [
-        "Anaxyrus quercicus",
-        0.12476574682892815
-      ],
-      [
-        "Hyla chrysoscelis/versicolor complex",
-        0.12346800309007226
-      ],
-      [
-        "Anaxyrus americanus",
-        0.09618423892306802
-      ],
-      [
-        "Anaxyrus terrestris",
-        0.09452994359986346
-      ],
-      [
-        "Hyla squirella",
-        0.08419381536181442
-      ]
-    ],
-    "interpretation": "Strong threshold recruitment is distributed across the assemblage and is not driven by any single species. Contribution ranking is descriptive and is not a rainfall-specific trait."
-  },
-  "geographic_breadth": {
-    "states": 21,
-    "leave_one_state_out": {
-      "all_threshold_dominant": true,
-      "all_strong_new_ci_positive": true,
-      "minimum_activation_share": 0.5293236536081555,
-      "minimum_activation_ci_lower": 0.39434024612586294,
-      "minimum_strong_new_ci_lower": 0.2912197317182954,
-      "strong_pass": true
-    },
-    "state_specific": {
-      "estimable_states": 17,
-      "positive_activation_fraction": 0.7058823529411765,
-      "positive_strong_new_fraction": 0.7058823529411765,
-      "threshold_dominant_fraction": 0.29411764705882354
-    },
-    "interpretation": "No single state controls the pooled threshold-recruitment result, but local state-specific responses are heterogeneous. This supports regional robustness, not occurrence in every state."
-  }
+  ]
 }
