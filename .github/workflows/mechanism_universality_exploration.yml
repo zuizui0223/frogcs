@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: mechanism-universality-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   analyse:
     runs-on: ubuntu-latest
