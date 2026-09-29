@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import importlib.util
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import io
 import json
 import math
@@ -239,15 +240,27 @@ def main():
 
     matched={}
     route_failures=[]
-    for n,(key,sids) in enumerate(sorted(by_route.items()),start=1):
-        try:
-            fs=route_features(sids,coords)
-            for sid in sids:
-                matched[sid]=classify_site(sid,coords,fs)
-        except Exception as e:
-            route_failures.append({"route":list(key),"n_sites":len(sids),"error":str(e)[:500]})
-        if n%50==0:
-            print(json.dumps({"routes_processed":n,"routes_total":len(by_route),"sites_matched":len(matched)}))
+    route_items=sorted(by_route.items())
+
+    def work(item):
+        key,sids=item
+        fs=route_features(sids,coords)
+        local={sid:classify_site(sid,coords,fs) for sid in sids}
+        return key,sids,local
+
+    completed=0
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        futs={ex.submit(work,item):item for item in route_items}
+        for fut in as_completed(futs):
+            key,sids=futs[fut]
+            try:
+                _,_,local=fut.result()
+                matched.update(local)
+            except Exception as e:
+                route_failures.append({"route":list(key),"n_sites":len(sids),"error":str(e)[:500]})
+            completed+=1
+            if completed%50==0:
+                print(json.dumps({"routes_processed":completed,"routes_total":len(route_items),"sites_matched":len(matched)}),flush=True)
 
     used_with_coord=[s for s in used if s in coords]
     primary=[s for s in used_with_coord if matched.get(s,{}).get("within_200m")]
