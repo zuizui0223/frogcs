@@ -1,0 +1,61 @@
+name: exploration mechanism and universality
+
+on:
+  push:
+    branches:
+      - exploration/mechanism-universality-v1
+    paths:
+      - "exploration/**"
+      - ".github/workflows/exploration_mechanism_universality.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  naamp-mechanism:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Compile exploration
+        run: python -m compileall -q exploration
+      - name: Run CallingIndex decomposition
+        run: python exploration/run_naamp_calling_index_decomposition.py
+      - name: Run cross-fit species-shift null
+        run: python exploration/run_naamp_crossfit_species_shift_null.py
+      - name: Summarize results
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("exploration/NAAMP_CALLING_INDEX_DECOMPOSITION_RECEIPT_V0_1.json").read_text())
+          b=json.loads(Path("exploration/NAAMP_CROSSFIT_SPECIES_SHIFT_NULL_RECEIPT_V0_1.json").read_text())
+          print(json.dumps({
+            "calling_index":{
+              "classification":a["classification"],
+              "shares":a["component_beta_shares_of_total"],
+              "models":{k:v["beta_rain_contrast"] for k,v in a["primary_models"].items()
+                        if k in ("ci_total","ci_activation","ci_deactivation","ci_shared_intensity")}
+            },
+            "species_shift_null":{
+              "decision":b["decision"],
+              "p":b["null_result"]["primary_omnibus"]["monte_carlo_p"],
+              "boundary":b["null_result"]["boundary_crossing_share"],
+              "crossfold":b["species_shift_crossfold"],
+            }
+          },indent=2,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-mechanism-universality-v0-1
+          path: |
+            exploration/MECHANISM_UNIVERSALITY_CONTRACT_V0_1.json
+            exploration/NAAMP_CALLING_INDEX_DECOMPOSITION_RECEIPT_V0_1.json
+            exploration/NAAMP_CROSSFIT_SPECIES_SHIFT_NULL_RECEIPT_V0_1.json
+          if-no-files-found: error
