@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_prior_site_memory_opportunity_v0_1",
+  "status": "post_readback_strict_temporal_sensitivity_fixed_before_endpoint",
+  "question": "Using only information available before the matched surveys, does rainfall preferentially activate full choruses at species x SiteID combinations already observed at that same site, relative to species known previously from the route but not that site?",
+  "population": "Physically stable NAAMP matched pairs with at least one eligible run in the same State x RouteNumber x RunNumber stratum strictly before the earlier survey year.",
+  "prior_candidate_pool": "Species detected in eligible runs of the same stratum strictly before the earlier year of the focal pair. Species present in the focal dry route are excluded because the outcome concerns route-new activation.",
+  "comparison": {
+    "prior_same_site": "Candidate species had been detected at the focal SiteID in a prior eligible run.",
+    "prior_route_only": "Candidate species had been detected previously somewhere in the stratum but never at the focal SiteID."
+  },
+  "outcome": "wet_ci3 = 1 if the focal wet run reaches CallingIndex 3 for the candidate species at that SiteID, else 0.",
+  "pair_summary": "Compute CI3 rates for prior_same_site and prior_route_only candidates; response is same_site_rate - route_only_rate.",
+  "model": {
+    "estimator": "Weighted least squares",
+    "weight": "n_same_site * n_route_only / (n_same_site + n_route_only)",
+    "formula": "rate_difference ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber",
+    "covariance": "cluster-robust by route",
+    "minimum_opportunity": "At least 5 candidate cells in both groups."
+  },
+  "primary_prediction": "rain_contrast coefficient >0 with complete 95% CI >0.",
+  "gate": ">=1000 eligible pairs and >=250 routes.",
+  "sensitivity": "Same-observer subset with >=750 pairs and >=200 routes.",
+  "interpretation": [
+    "This test uses no future monitoring years in either the candidate pool or the site-memory classification.",
+    "A positive coefficient supports site-specific reactivation beyond route-level prior occurrence.",
+    "It does not prove continuous occupancy, individual identity, reproductive success, or a physiological mediator."
+  ],
+  "retuning_after_readback": false
+}
