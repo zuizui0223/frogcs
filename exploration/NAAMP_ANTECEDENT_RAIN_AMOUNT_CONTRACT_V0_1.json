@@ -1,0 +1,41 @@
+{
+  "analysis": "naamp_antecedent_rain_amount_strong_activation_v0_1",
+  "status": "fixed_before_antecedent_precipitation_or_response_model_readback",
+  "ecological_question": "Does the amount of rain in the preceding 72 hours predict strong 0-to-CallingIndex-2/3 recruitment beyond the existing DaysSinceRain contrast?",
+  "population": "Frozen NAAMP eligible runs and matched wetter-drier pairs with valid physical coordinates and survey midpoint times under the atmospheric eligibility rules.",
+  "rainfall_amount": {
+    "source": "Earthmover public Icechunk ERA5 single/temporal variable tp, units m, 1-hour accumulation.",
+    "route_coordinate": "Mean coordinate of sampled physical SiteIDs for each run.",
+    "primary_window": "72 complete ERA5 hours ending at the greatest hourly valid_time <= the coordinate-local survey midpoint converted to UTC.",
+    "secondary_window": "24 complete ERA5 hours defined analogously.",
+    "transform": "For each run use log1p(total precipitation in mm); pair amount contrast is wetter-run transformed amount minus drier-run transformed amount; standardize the pair contrast across the fixed eligible sample.",
+    "rationale": "72 h aligns with the programme's 0-3 day rainfall window and tests pulse magnitude rather than only recency."
+  },
+  "response": {
+    "primary": "strong_new_score = sum wet CallingIndex for cells dry=0 and wet CallingIndex in {2,3}",
+    "secondary": "strong_new_count = number of such cells"
+  },
+  "primary_model": {
+    "formula": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + temp_difference + doy_difference + year_gap + State + RunNumber",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "pulse_magnitude_support": "rain72_amount_difference_z coefficient >0 with complete 95% CI >0",
+    "recency_robustness": "rain_contrast coefficient remains >0 with complete 95% CI >0"
+  },
+  "sensitivities": {
+    "rain24": "Replace 72 h amount contrast with 24 h amount contrast.",
+    "strong_new_count": "Repeat the 72 h model on strong_new_count.",
+    "exact_consecutive_year": "Repeat primary model on year_gap==1.",
+    "same_observer": "Repeat primary model on existing same-observer pairs intersected with weather eligibility."
+  },
+  "interpretation": {
+    "positive_amount_and_recency": "Both event magnitude and recency carry information, consistent with a rainfall-pulse opportunity such as breeding-site wetting/inundation or cumulative hydration.",
+    "positive_amount_rain_loses_support": "Consistent with pulse magnitude accounting for part of the recency association, but not causal mediation.",
+    "amount_not_supported_rain_remains": "Recency/history is more informative than 72 h amount at ERA5 scale; static hydroperiod, moisture history, phenology, or other cues remain plausible."
+  },
+  "prohibited": [
+    "No causal hydrological mediation claim.",
+    "No changing the 72 h primary window after readback.",
+    "No RC11 manuscript modification from this exploration."
+  ],
+  "retuning_after_readback": false
+}
