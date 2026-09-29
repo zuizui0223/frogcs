@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_jrc_surface_water_context_500m_v0_1",
+  "status": "coverage_driven_extension_fixed_before_response_readback",
+  "trigger": "The prefixed 200 m JRC context eligibility gate failed on context coverage only; no frog-response endpoint was read. This extension uses the already-prespecified 500 m sensitivity radius as a new primary linkage.",
+  "question": "At the broader roadside listening-context scale, is rainfall-associated recruitment of route-new calling species preferentially allocated to lower-persistence surface water?",
+  "population": "Frozen 4,236 NAAMP matched pairs; response rows require identical nonmissing SiteID at the same StopNumber in wet and dry runs.",
+  "context": {
+    "source": "Planetary Computer jrc-gsw occurrence, 1984-2020",
+    "radius_m": 500,
+    "primary_metric": "100 - mean JRC water occurrence among water pixels within 500 m",
+    "water_pixel": "Occurrence 1-100",
+    "no_water": "unclassified"
+  },
+  "feasibility_gate": {
+    "coverage": ">=50% pair-used SiteIDs with coordinates classified within 500 m",
+    "variation": "pulse-index SD >=10 percentage points",
+    "design": ">=1000 informative matched pairs and >=300 routes with within-pair pulse-index variation",
+    "pass": "all conditions"
+  },
+  "response": "net route-new incidence at each physical stop, identical to the 200 m contract",
+  "model": "Pair fixed-effects OLS: within-pair net_route_new ~ pulse_index_z + pulse_index_z:rain_contrast; route-clustered covariance.",
+  "primary_prediction": "positive interaction with complete 95% CI >0",
+  "sensitivity": "Use p90 occurrence instead of mean occurrence at the same 500 m radius.",
+  "interpretation_boundary": [
+    "This extension was triggered only by context coverage; the 200 m frog-response endpoint was never read.",
+    "500 m is a listening-context buffer, not proven call origin.",
+    "JRC occurrence is long-term context, not survey-night inundation.",
+    "No causal rainfall claim, hydration claim, or RC11 manuscript change."
+  ],
+  "retuning_after_readback": false
+}
