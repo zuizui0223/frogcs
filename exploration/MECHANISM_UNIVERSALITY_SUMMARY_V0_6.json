@@ -1,0 +1,230 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_6",
+  "status": "exploratory_evidence_summary_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "headline": {
+    "process": "Within NAAMP, rainfall-associated acoustic change is dominated by recruitment across activity thresholds rather than stronger calling among cells already active in both surveys.",
+    "strength": "The recruitment is not confined to weak CallingIndex-1 detections: roughly 87% of the new-activation rainfall slope is direct entry at CallingIndex 2-3.",
+    "robustness": "Strong new activation persists under same-observer restriction, identical physical stop identity, their intersection, measured hearing/noise/wind adjustment, traffic-count adjustment, leave-one-state-out deletion, and comparisons extending beyond the 0-3 day survey-target window.",
+    "geometry": "Full-sample boundary recruitment is disproportionately taxonomic (route-new species) relative to spatial (newly active stops).",
+    "simple_social_cue": "Not supported by the coarse matrix prediction: route-new species are not preferentially allocated to already-chorusing dry-active stops beyond either null expectation.",
+    "deeper_cause": "A specific mediator remains unresolved. Official NWI hydroperiod linkage is the active measured-context test; physiological hydration/moisture and broader reproductive activation remain plausible.",
+    "universality": "Regional robustness is strong within NAAMP, but strict disjoint-route replication and independent Neotropical tests do not establish a worldwide threshold-recruitment law."
+  },
+  "threshold_recruitment": {
+    "full": {
+      "pairs": 4236,
+      "routes": 585,
+      "ci_total_beta": 2.8410419576031223,
+      "ci_activation_beta": 1.8548575453289868,
+      "activation_share": 0.6528793213930071,
+      "shared_positive_intensity_beta": 0.19648401136771304,
+      "shared_positive_intensity_share": 0.06915913749245683
+    },
+    "strong_new_ci23": {
+      "beta": 1.6150398249522895,
+      "ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ],
+      "p": 0.004769083284018835,
+      "count_beta": 0.5868627247155945,
+      "count_ci95": [
+        0.18357108304575287,
+        0.9901543663854362
+      ],
+      "share_of_activation_beta": 0.8707082810857251
+    },
+    "same_observer": {
+      "pairs": 3152,
+      "routes": 500,
+      "observers": 542,
+      "strong_beta": 1.7749534283517359,
+      "strong_ci95": [
+        0.3708608268229865,
+        3.1790460298804852
+      ],
+      "strong_share_of_activation": 0.8637147112572465
+    },
+    "physical_stop_stable": {
+      "pairs": 4172,
+      "routes": 584,
+      "activation_beta": 1.861602543131414,
+      "activation_share": 0.6560988622020931,
+      "shared_intensity_beta": 0.1979722893923276,
+      "threshold_dominant": true
+    },
+    "same_observer_and_physical_stop": {
+      "pairs": 3115,
+      "routes": 499,
+      "observers": 540,
+      "strong_beta": 1.7428002577104516,
+      "strong_ci95": [
+        0.3270455434761059,
+        3.158554971944797
+      ],
+      "strong_count_beta": 0.6143699621882305,
+      "strong_count_ci95": [
+        0.10728385130839779,
+        1.1214560730680632
+      ],
+      "joint_robust": true
+    }
+  },
+  "detection_and_design_robustness": {
+    "measured_detection_conditions": {
+      "primary_pairs": 4024,
+      "routes": 576,
+      "strong_beta": 1.6225420695541188,
+      "strong_ci95": [
+        0.4587043993545672,
+        2.7863797397536705
+      ],
+      "strong_count_beta": 0.5972855657100444,
+      "strong_count_ci95": [
+        0.17886050204764242,
+        1.0157106293724465
+      ],
+      "traffic_sensitivity_pairs": 2968,
+      "traffic_strong_beta": 1.394418310426027,
+      "traffic_strong_ci95": [
+        0.612690043358189,
+        2.1761465774938653
+      ],
+      "mass_noise_pairs": 1444,
+      "mass_noise_strong_beta": 2.7719249386233655,
+      "mass_noise_strong_ci95": [
+        -0.0787257541318116,
+        5.622575631378543
+      ],
+      "interpretation": "Primary hearing-impairment/timeout/wind and traffic-adjusted analyses retain CI-positive strong recruitment. The smaller MassNoiseIndex subset remains directionally positive but imprecise."
+    },
+    "protocol_window": {
+      "crosses_three_day_pairs": 1769,
+      "routes": 425,
+      "strong_beta": 1.7317228632197144,
+      "strong_ci95": [
+        0.37189243470675537,
+        3.0915532917326733
+      ],
+      "strong_count_beta": 0.6136558955911425,
+      "strong_count_ci95": [
+        0.1301271714245037,
+        1.0971846197577815
+      ],
+      "both_surveys_outside_pairs": 178,
+      "both_surveys_outside_strong_beta": 2.5068738347748485,
+      "both_surveys_outside_strong_ci95": [
+        -1.1785224552027418,
+        6.192270124752438
+      ],
+      "interpretation": "Strong recruitment is not confined to comparisons entirely inside the programme's 0-3 day rain-target window; the both-outside subset is small and imprecise."
+    }
+  },
+  "geometry_and_physical_identity": {
+    "taxonomic_vs_spatial": {
+      "route_new_species_share": 0.767795525238989,
+      "new_stop_share": 0.5214772488387415,
+      "taxonomic_minus_spatial": 0.24631827640024753,
+      "uniform_p": 0.000999000999000999,
+      "persistence_p": 0.000999000999000999
+    },
+    "physical_stop_identity": {
+      "stable_pairs": 4172,
+      "stable_fraction": 0.9848914069877243,
+      "boundary_share": 0.9304964895167589,
+      "uniform_p": 0.000999000999000999,
+      "persistence_p": 0.000999000999000999,
+      "conclusion": "Boundary recruitment does not require stop relocation."
+    },
+    "route_new_context": {
+      "dry_active_fraction": 0.5192483535917819,
+      "uniform_mean": 0.5257903329527602,
+      "uniform_ci95": [
+        0.4649129950912414,
+        0.585954845963247
+      ],
+      "persistence_mean": 0.5121749164574608,
+      "persistence_ci95": [
+        0.45397243913515717,
+        0.5660048947434544
+      ],
+      "simple_social_cue_supported": false,
+      "simple_new_site_opening_supported": false
+    }
+  },
+  "breadth": {
+    "geographic": {
+      "states": 21,
+      "leave_one_state_out_all_positive": true,
+      "leave_one_state_out_all_ci_positive": true,
+      "min_beta": 0.8940439534535248,
+      "min_ci_lower": 0.2912197317182954,
+      "interpretation": "No single state controls the pooled strong recruitment signal; this is regional robustness, not proof of every-state effects."
+    },
+    "taxonomic": {
+      "species_with_any_strong_event": 50,
+      "positive_beta_species": 28,
+      "negative_beta_species": 22,
+      "effective_positive_contributors": 13.430532699952824,
+      "top1_positive_share": 0.13878158073539598,
+      "top5_positive_share": 0.49178135686490515,
+      "leave_one_species_out_all_ci_positive": true,
+      "interpretation": "The pooled signal is distributed across multiple taxa and not driven by one species, but species responses are heterogeneous."
+    }
+  },
+  "null_hierarchy": {
+    "full_sample": {
+      "crossfit_species_shift_p": 0.001998001998001998,
+      "crossfit_species_plus_persistence_p": 0.001998001998001998,
+      "conclusion": "Transferable species-specific rainfall response alone is insufficient in the full sample."
+    },
+    "reduced_temporal_subset": {
+      "pairs": 3437,
+      "species_only_p": 0.11288711288711288,
+      "site_only_p": 0.023976023976023976,
+      "species_plus_site_additive_p": 0.5104895104895105,
+      "site_shift_early_late_pearson": -0.00525557116144499,
+      "site_shift_sign_agreement": 0.5082872928176796,
+      "permuted_site_p": [
+        0.20279720279720279,
+        0.19080919080919082
+      ],
+      "conclusion": "The reduced temporal subset cannot identify a stable physical-site mechanism; generic heterogeneity and weaker discrimination suffice."
+    }
+  },
+  "external_generality": {
+    "frogid_australia": "Active-unit taxonomic depth has cross-dataset consistency, but FrogID cannot replicate NAAMP matrix geometry.",
+    "anuraset_inct20955": "No prefixed threshold-dominance replication at the Atlantic Forest site.",
+    "anuraset_inct41": "Recent-rain-direction slopes are coordinate-robust at the Cerrado site, but the prefixed threshold-dominance rule is not met.",
+    "conclusion": "Worldwide or continent-general threshold recruitment is not established."
+  },
+  "mechanism_ledger": {
+    "substantially_weakened": [
+      "uniform amplification",
+      "weak-CallingIndex-1-only detection threshold",
+      "observer turnover",
+      "physical stop relocation",
+      "measured hearing/noise/wind conditions as sole explanation",
+      "survey scheduling entirely within the 0-3 day target window",
+      "simple interspecific social-cue attraction as the sole allocation rule",
+      "stable transferable species response as the sole full-sample mechanism",
+      "stable empirical physical-stop rainfall sensitivity"
+    ],
+    "still_plausible": [
+      "event-contingent reproductive activation thresholds",
+      "hydration or moisture constraints",
+      "rainfall-created or rainfall-improved breeding-site conditions",
+      "species-specific atmospheric cues",
+      "context-dependent combinations of species biology and local environment"
+    ],
+    "active_measured_context_test": "Official NWI hydroperiod linkage is running under a response-blind feasibility gate. Earlier API-pagination result was invalid because all route queries failed; object-ID batching is the corrected source-retrieval path."
+  },
+  "interpretation_boundary": [
+    "Acoustic activity is not abundance, occupancy, colonization, or reproductive success.",
+    "CallingIndex is ordinal acoustic intensity, not individual calling effort.",
+    "No unique physiological or hydrological mediator has yet been identified.",
+    "No worldwide universality claim is authorized.",
+    "RC11 remains frozen and is not altered by these exploratory analyses."
+  ]
+}
