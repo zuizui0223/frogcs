@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_strong_activation_recency_v0_1",
+  "status": "post_readback_mechanism_test_fixed_before_endpoint",
+  "question": "Does strong 0-to-CallingIndex-2/3 recruitment decay with time since rain, as expected for a transient reproductive-activation pulse?",
+  "sample": "Frozen 4,236 NAAMP wetter-drier matched pairs.",
+  "response": "strong_new_score = sum wet CallingIndex for species x stop cells with dry=0 and wet in {2,3}.",
+  "wet_recency_bins": [
+    "0-1 days",
+    "2-3 days",
+    "4-7 days",
+    ">=8 days"
+  ],
+  "primary_test": {
+    "subset": "Pairs with wet DaysSinceRain <=1 (immediate) or >=4 (delayed); exclude 2-3 day wet members.",
+    "model": "strong_new_score ~ rain_contrast * immediate + temp_difference + doy_difference + year_gap + State + RunNumber",
+    "covariance": "cluster-robust by route",
+    "prediction": "rain_contrast:immediate interaction >0 with complete 95% CI >0",
+    "minimum_gate": "each group >=300 pairs and >=100 routes"
+  },
+  "secondary": [
+    "Fit the existing strong_new_score pair model separately within all four wet-recency bins.",
+    "Report stratum beta and CI without a multiple-bin pass criterion.",
+    "Repeat the primary immediate-vs-delayed interaction on exact-consecutive-year pairs as a directional sensitivity."
+  ],
+  "interpretation": {
+    "support": "Strong chorus-level recruitment is concentrated closer to rainfall, consistent with a transient activation window.",
+    "no_support": "A strong-recruitment signal exists but its decay timescale is not resolved by this matched design.",
+    "boundary": "DaysSinceRain is a coarse recency measure and does not identify hydration, inundation, or endocrine mechanisms."
+  },
+  "retuning_after_readback": false
+}
