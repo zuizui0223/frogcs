@@ -142,11 +142,12 @@
       },
       "site_identity": "State x RouteNumber x StopNumber; physical route-stop identity used only after verifying ten-stop alignment as in the current analysis.",
       "site_response_estimator": {
-        "response": "Jeffreys-smoothed logit of number of calling species at the stop divided by the route-wide candidate species pool for each eligible run.",
+        "response": "Jeffreys-smoothed logit of number of calling species at the stop divided by a route candidate species pool constructed only from the opposite temporal training block for that route.",
         "covariates": "Residualize log1p(DaysSinceRain) and response against mean temperature, cyclic day of year, and RunNumber indicators within each physical site.",
         "coefficient": "OLS slope on residualized dryness; wet-shift gamma is minus the dryness slope.",
         "estimability": "At least 8 training runs, route candidate pool >=3 species, at least 10 positive and 10 negative species-cell opportunities, nonzero residualized dryness variance; otherwise gamma_site=0. Absolute fitted dryness slope >5 is treated as unstable and gamma_site=0.",
-        "no_test_outcomes_in_training": true
+        "no_test_outcomes_in_training": true,
+        "training_pool_leakage": "No species occurrence from the test temporal block is used to define the site-response training pool."
       },
       "simulation": {
         "baseline": "Current kappa=2 dry-history species x stop probabilities for the test pair's stratum.",
