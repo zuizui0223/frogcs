@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_full_chorus_multicue_gating_v0_1",
+  "status": "post_readback_multicue_hypothesis_fixed_before_interaction_endpoints",
+  "question": "Does rainfall-associated emergence of new full choruses depend on thermal background or seasonal survey window, potentially explaining geographic heterogeneity?",
+  "sample": {
+    "full": "Frozen 4,236 matched pairs.",
+    "robust": "Intersection of same-observer pairs and pairs with all ten identical nonmissing SiteID values."
+  },
+  "response": "new_ci3_count = number of species x stop cells with dry CallingIndex=0 and wet CallingIndex=3.",
+  "thermal_context": {
+    "construction": "pair_mean_temp = mean of wet and dry run mean air temperatures. Residualize pair_mean_temp on State and RunNumber without using the response, then z-score the residual. Include both z and z^2 interactions with rain_contrast.",
+    "model": "new_ci3_count ~ rain_contrast * temp_context_z + rain_contrast * temp_context_z2 + temp_difference + doy_difference + year_gap + State + RunNumber",
+    "primary_test": "2-df cluster-robust Wald test jointly testing both rain x thermal-context coefficients = 0."
+  },
+  "seasonal_context": {
+    "model": "new_ci3_count ~ rain_contrast * RunNumber + temp_difference + doy_difference + year_gap + State",
+    "primary_test": "Cluster-robust Wald test jointly testing all rain_contrast x RunNumber interaction coefficients = 0."
+  },
+  "multiplicity": "Two primary gating families; use alpha=0.025 for each (Bonferroni).",
+  "sensitivities": [
+    "Repeat both primary tests in the same-observer + physical-stop subset.",
+    "Report rain slopes by RunNumber and by thermal-context tertile descriptively; these do not create extra pass gates."
+  ],
+  "interpretation": [
+    "Thermal or seasonal interaction support indicates context-dependent rainfall activation, not a unique physiological mediator.",
+    "Temperature is route-run mean air temperature, not body temperature or microhabitat water temperature.",
+    "RunNumber is a programme seasonal sampling window and is not identical across all states.",
+    "No causal rainfall or reproductive-success claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
