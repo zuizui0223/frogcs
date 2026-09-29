@@ -23,10 +23,14 @@ jobs:
         run: python -m compileall -q exploration scripts
       - name: Audit NWI context coverage
         run: python exploration/audit_naamp_nwi_context_eligibility.py
+      - name: Test NWI hydroperiod recruitment if eligible
+        run: python exploration/run_naamp_nwi_hydroperiod_recruitment.py
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-nwi-context-eligibility-v0-1
           path: |
             exploration/NAAMP_NWI_CONTEXT_ELIGIBILITY_CONTRACT_V0_1.json
             exploration/NAAMP_NWI_CONTEXT_ELIGIBILITY_RECEIPT_V0_1.json
+            exploration/NAAMP_NWI_HYDROPERIOD_RECRUITMENT_CONTRACT_V0_1.json
+            exploration/NAAMP_NWI_HYDROPERIOD_RECRUITMENT_RECEIPT_V0_1.json
           if-no-files-found: error
