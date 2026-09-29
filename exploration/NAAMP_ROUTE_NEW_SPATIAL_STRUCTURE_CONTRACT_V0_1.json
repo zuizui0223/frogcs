@@ -1,0 +1,26 @@
+{
+  "analysis": "naamp_route_new_spatial_structure_v0_1",
+  "status": "post_readback_spatial_diagnostic_fixed_before_new_metrics",
+  "motivation": "The geographic-span analysis showed shorter rainfall-associated span, but max-span compactness conditional on occupied-stop count was not supported. Test whether that result reflects finer spatial structure missed by maximum span.",
+  "population": "Frozen NAAMP matched pairs restricted to physically stable pairs with complete coordinates for all ten stops.",
+  "species_unit": "Route-new species absent from the entire dry route and present at >=2 stops in the wet route.",
+  "conditional_reference": "For each physical route and occupied-stop count k=2..10, enumerate all k-of-10 stop subsets. All spatial scores are compared with this route- and k-specific exact reference, so occupied-stop count and route geometry are held fixed.",
+  "metrics": {
+    "mpd_compactness": "1 - observed mean pairwise geographic distance / exact mean across all random k-stop subsets. Positive means closer together than random k stops.",
+    "mst_compactness": "1 - observed minimum-spanning-tree length / exact mean across all random k-stop subsets. Positive means a shorter connecting network than random k stops.",
+    "adjacency_excess": "Observed fraction of occupied StopNumber-neighbor links among the k-1 maximum possible adjacent links, minus its exact random-k expectation. Positive means more route-adjacent clustering."
+  },
+  "pair_endpoints": "For each metric, sum species-level scores across route-new multi-stop species within a matched pair. Zero if none.",
+  "inference": "Use the frozen residualized rainfall design and compare each observed rain-contrast coefficient with 1,000 simulations under kappa=2 uniform activation and a=0.75 persistence-preserving activation.",
+  "prefixed_rule": {
+    "convergent_cluster_support": "Both total_mpd_compactness and total_mst_compactness must exceed the upper 95% null bound under both nulls. adjacency_excess is secondary corroboration and does not alter the gate.",
+    "no_cluster_support": "Otherwise spatial clustering beyond occupied-stop count is not established."
+  },
+  "interpretation": [
+    "This is explicitly post-readback and diagnostic.",
+    "A positive result would support local spatial clustering beyond the number of occupied stops.",
+    "A null result means the earlier shorter span is attributable to composition/occupancy-count structure rather than unusual placement of occupied stops conditional on k.",
+    "No wetland, movement, atmospheric-cue, or causal rainfall mechanism is identified."
+  ],
+  "retuning_after_readback": false
+}
