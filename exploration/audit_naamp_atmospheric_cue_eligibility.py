@@ -85,12 +85,11 @@ def main():
     eligible=set(runs["RunID"].astype(str));cmap=coords();cent=route_midpoints(raw,eligible,cmap)
     tf=TimezoneFinder(in_memory=True)
     run_raw={str(r.get("RunID") or "").strip():r for r in raw["Runs.csv"]}
-    date_by={str(r.RunID):date.fromisoformat(str(r.SurveyDate)[:10]) if re.match(r"\d{4}-\d{2}-\d{2}",str(r.SurveyDate)) else None for r in runs.itertuples(index=False)}
-    # build date robustly from already validated year/doy if raw format is not ISO
-    for rr in runs.itertuples(index=False):
-        rid=str(rr.RunID)
-        if date_by.get(rid) is None:
-            date_by[rid]=date(int(rr.SurveyYear),1,1)+timedelta(days=int(rr.doy)-1)
+    # build date from the already validated SurveyYear + day-of-year retained by build_runs()
+    date_by={
+        str(rr.RunID): date(int(rr.SurveyYear),1,1)+timedelta(days=int(rr.doy)-1)
+        for rr in runs.itertuples(index=False)
+    }
 
     records={};fmt_start=Counter();fmt_end=Counter();raw_examples=[];tz_fail=0;coord_fail=0;time_fail=0;duration_fail=0
     for rid in sorted(eligible):
