@@ -9,12 +9,14 @@
     "integer_gate": "DaysSinceRain must be integer-valued to within 1e-9."
   },
   "weather": {
-    "source": "Earthmover public Icechunk ERA5 single/temporal tp, same source semantics as the frozen FrogID rainfall pipeline.",
-    "coordinate": "Centroid of the ten physical NAAMP SiteID coordinates for State x RouteNumber; nearest ERA5 0.25-degree cell.",
-    "timezone": "Coordinate-derived IANA timezone.",
-    "event_amount": "Coordinate-local calendar-day total precipitation on event_day, mm.",
-    "event_concordance": "Primary concordance requires ERA5 event_amount >=1.0 mm on the NAAMP-implied rain day.",
-    "antecedent_dryness": "Number of complete local days immediately before event_day with precipitation <1.0 mm, capped at 30 days."
+    "source_model": "Copernicus ERA5 0.25-degree reanalysis.",
+    "retrieval": "Open-Meteo Historical Weather API with models=era5, daily=precipitation_sum, precipitation_unit=mm, cell_selection=nearest, timezone=auto.",
+    "source_rationale": "Use an API retrieval layer for exact daily point-series extraction while retaining a single consistent ERA5 model across 2001-2015. The API response coordinates, timezone, model identifier and normalized daily values are hashed into the receipt.",
+    "coordinate": "Centroid of the ten physical NAAMP SiteID coordinates for each run; primary pairs have identical SiteIDs across wet and dry members.",
+    "event_amount": "Local-calendar-day ERA5 precipitation_sum on event_day, mm.",
+    "event_concordance": "Primary concordance requires event_amount >=1.0 mm on the NAAMP-implied rain day.",
+    "antecedent_dryness": "Number of complete local days immediately before event_day with precipitation <1.0 mm, capped at 30 days.",
+    "retrieval_validation": "Before endpoint models, require nonmissing daily values for every retained run and verify returned ERA5 grid coordinates remain within 0.20 degrees of requested centroids. No response endpoint is read if this fails."
   },
   "feasibility_gate": {
     "primary_pairs": ">=1000 matched pairs and >=250 routes with both members DaysSinceRain>=1 and ERA5 event-day precipitation >=1 mm.",
@@ -49,7 +51,8 @@
       "Self-reported DaysSinceRain locates the candidate rain day.",
       "No survey-night inundation is observed.",
       "No causal rainfall claim.",
-      "No RC11 submission change is authorized."
+      "No RC11 submission change is authorized.",
+      "Open-Meteo is used only as an ERA5 retrieval/aggregation layer; the weather model remains ERA5."
     ]
   },
   "retuning_after_readback": false,
