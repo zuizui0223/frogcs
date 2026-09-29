@@ -1,0 +1,24 @@
+{
+  "analysis": "naamp_threshold_recruitment_geographic_generality_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Is the NAAMP threshold-recruitment pattern geographically broad within the sampled 21-state region, or dependent on one state?",
+  "sample": "Exactly the frozen 4,236 wetter-drier pairs.",
+  "endpoints": "Existing CallingIndex total, activation, shared-positive intensity, plus strong_new_score for 0->CallingIndex 2/3.",
+  "audits": {
+    "leave_one_state_out": "For each omitted state, refit the existing CallingIndex decomposition and unchanged threshold-dominant rule on all remaining pairs.",
+    "state_specific": "Within each state with >=50 pairs and >=10 routes, fit the same covariate model without State fixed effects; report direction and CI descriptively, not as a significance gate.",
+    "strong_activation_leave_one_state_out": "For each omitted state, refit strong_new_score; report beta and 95% CI."
+  },
+  "pass_rules": {
+    "no_single_state_threshold_dependence": "All leave-one-state-out subsets satisfy the existing threshold-dominant rule.",
+    "strong_pass": "Above AND every leave-one-state-out strong_new_score beta has complete 95% CI >0.",
+    "state_specific_significance_not_required": true
+  },
+  "interpretation_boundary": [
+    "A pass supports geographic robustness across the sampled NAAMP region, not occurrence in every state.",
+    "It does not establish cross-continental universality.",
+    "State-specific non-significance is expected for small samples and is not a failure criterion.",
+    "No causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
