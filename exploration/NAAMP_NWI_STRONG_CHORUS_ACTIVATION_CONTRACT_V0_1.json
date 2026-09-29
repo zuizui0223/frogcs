@@ -1,0 +1,48 @@
+{
+  "analysis": "naamp_nwi_strong_chorus_activation_v0_1",
+  "status": "post_context_readback_endpoint_fixed_before_strong_activation_readback",
+  "context_source": "Use exactly the prefrozen NWI site_matches produced by NAAMP_NWI_CONTEXT_ELIGIBILITY_CONTRACT_V0_1; no rematching or category retuning.",
+  "ecological_question": "Is rainfall-associated emergence of overlapping/full choruses (CallingIndex 0 to 2-3) preferentially allocated to pulse-limited wetlands rather than persistent-surface-water wetlands within the same matched route comparison?",
+  "population": "Frozen 4,236 NAAMP matched wetter-drier pairs; pair x StopNumber rows require identical nonmissing SiteID in wet and dry runs.",
+  "context_groups": {
+    "pulse_limited": [
+      "A Temporarily Flooded",
+      "C Seasonally Flooded",
+      "J Intermittently Flooded"
+    ],
+    "persistent_surface_water": [
+      "F Semipermanently Flooded",
+      "G Intermittently Exposed",
+      "H Permanently Flooded"
+    ]
+  },
+  "response": {
+    "primary": "strong_new_score_at_stop = sum wet CallingIndex over species with dry CallingIndex=0 and wet CallingIndex in {2,3} at that stop.",
+    "secondary": "strong_new_count_at_stop = count of those species x stop cells.",
+    "weak_diagnostic": "weak_new_score_at_stop = count of 0->1 cells."
+  },
+  "model": {
+    "unit": "matched pair x physically stable classified stop",
+    "design": "Pair fixed-effects OLS implemented by demeaning response, pulse indicator, and pulse*rain_contrast within pair.",
+    "target": "interaction coefficient on pulse*rain_contrast",
+    "covariance": "cluster-robust by State x RouteNumber"
+  },
+  "primary_prediction": "strong_new_score interaction >0 with complete 95% CI >0 at 200 m.",
+  "sensitivities": {
+    "radius_500m": "Repeat the same primary model using the nearest nonambiguous NWI polygon within 500 m.",
+    "strong_count": "Repeat at 200 m with strong_new_count_at_stop.",
+    "same_observer": "Repeat the 200 m strong_new_score model among the existing same-observer pairs; directional/CI robustness diagnostic."
+  },
+  "interpretation": {
+    "pass": "Mapped short-hydroperiod context preferentially receives rainfall-associated emergence of overlapping/full choruses, strengthening a breeding-site opportunity interpretation.",
+    "fail": "The strong chorus activation pattern is real, but NWI hydroperiod does not resolve where it is allocated.",
+    "boundary": [
+      "NWI regime is long-term mapped wetland context, not survey-night inundation.",
+      "Nearest polygon is not proven call origin.",
+      "CallingIndex 2-3 indicates overlapping/full chorus under NAAMP scoring, but not breeding success.",
+      "No physiological hydration mediator or causal rainfall effect is identified.",
+      "No RC11 submission change is authorized."
+    ]
+  },
+  "retuning_after_readback": false
+}
