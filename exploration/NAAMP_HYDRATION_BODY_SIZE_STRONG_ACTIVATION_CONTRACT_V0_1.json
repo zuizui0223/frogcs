@@ -1,0 +1,38 @@
+{
+  "analysis": "naamp_hydration_body_size_strong_activation_v0_1",
+  "status": "post_readback_mechanism_hypothesis_fixed_before_trait_association_readback",
+  "ecological_hypothesis": "If relief of evaporative water-balance constraint is an important proximal driver of rainfall-associated chorus activation, smaller-bodied species should show stronger dry=0 -> wet CallingIndex 2-3 activation because surface-area-to-volume scaling generally increases relative water-loss vulnerability at smaller body size.",
+  "response": {
+    "focal_event": "dry CallingIndex=0 and wet CallingIndex in {2,3} at a species x stop cell",
+    "pair_species_score": "Sum wet CallingIndex over focal cells for each species within each matched pair.",
+    "species_beta": "For each species, fit pair_species_score ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber with route-clustered covariance.",
+    "response_eligibility": "Species must have >=20 focal cells distributed across >=5 routes in the full sample."
+  },
+  "trait": {
+    "source": "AmphiBIO v1 pinned raw snapshot used by the existing frogcs trait audit.",
+    "primary": "log(Body_size_mm)",
+    "taxonomy": "Exact binomial matching plus frozen Hyla<->Dryophytes and Lithobates<->Rana genus aliases; ambiguous complex labels are excluded unless an exact AmphiBIO row exists.",
+    "no_additional_trait_search": true
+  },
+  "coverage_gate": "At least 20 response-eligible species must have finite positive Body_size_mm and body-size SD >0; otherwise the mechanism test is not run.",
+  "primary_test": {
+    "statistic": "Rain-contrast coefficient of a pair-level size-load endpoint: sum(focal wet CallingIndex * z_log_body_size) over trait-matched species. Body size is z-scored across matched response-eligible species.",
+    "null": "10,000 deterministic species-label permutations of z_log_body_size, leaving all acoustic responses, pair structure and covariates fixed.",
+    "seed": 2840223,
+    "prediction": "Observed size-load beta <0.",
+    "decision": "One-sided permutation P<0.05 in the negative direction."
+  },
+  "supporting_outputs": [
+    "OLS species-beta ~ z_log_body_size slope with HC3 SE.",
+    "Inverse-variance weighted species-beta ~ z_log_body_size sensitivity.",
+    "Spearman correlation between species beta and log body size.",
+    "Repeat the size-load statistic in the same-observer + physical-stop robust pair subset; sign concordance is a robustness check, not a second primary gate."
+  ],
+  "interpretation": [
+    "A negative association would be consistent with a hydration/water-balance pathway but would not establish mediation; body size covaries with many life-history and phylogenetic traits.",
+    "A null association would weaken simple body-size-mediated hydration as a general explanation but would not exclude hydration physiology.",
+    "No new trait may be promoted after readback under this contract.",
+    "No causal rainfall, abundance, occupancy, or reproductive-success claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
