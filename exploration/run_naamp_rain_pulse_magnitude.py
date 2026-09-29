@@ -145,10 +145,9 @@ def run_metadata(raw):
     return out
 
 
-def open_meteo_batch(year,items):
-    # items: list[(coord_key, lat, lon)]
-    start=date(year,1,1)-timedelta(days=DRY_CAP+2)
-    end=date(year,12,31)
+def open_meteo_batch(items,start,end):
+    # items: list[(coord_key, lat, lon)]. One full-period request per route
+    # coordinate avoids re-downloading the same ERA5 series separately by year.
     lats=",".join(f"{x[1]:.6f}" for x in items)
     lons=",".join(f"{x[2]:.6f}" for x in items)
     params={
@@ -201,34 +200,37 @@ def open_meteo_batch(year,items):
 
 
 def retrieve_weather(run_need):
-    # run_need rid -> {coord,event_day}; group unique coordinate-year series
-    groups=defaultdict(dict)
+    # Fetch one complete daily ERA5 series per unique route centroid over the
+    # full required period. This is algebraically identical to year-batched
+    # retrieval but avoids hundreds of duplicate API calls.
+    unique={}
+    event_days=[]
     for rec in run_need.values():
         lat,lon=rec["coord"]
-        key=f"{lat:.6f},{lon:.6f},{rec['event_day'].year}"
-        groups[rec["event_day"].year][key]=(key,lat,lon)
+        key=f"{lat:.6f},{lon:.6f}"
+        unique[key]=(key,lat,lon)
+        event_days.append(rec["event_day"])
+    start=min(event_days)-timedelta(days=DRY_CAP+2)
+    end=max(event_days)
 
-    tasks=[]
-    for year,mp in sorted(groups.items()):
-        vals=list(mp.values())
-        for i in range(0,len(vals),BATCH):
-            tasks.append((year,vals[i:i+BATCH]))
+    vals=list(unique.values())
+    tasks=[vals[i:i+BATCH] for i in range(0,len(vals),BATCH)]
 
     weather={}
     raw_hashes=[]
     failures=[]
     with ThreadPoolExecutor(max_workers=4) as ex:
-        futs={ex.submit(open_meteo_batch,y,it):(y,it) for y,it in tasks}
+        futs={ex.submit(open_meteo_batch,it,start,end):it for it in tasks}
         done=0
         for fut in as_completed(futs):
-            y,it=futs[fut]
+            it=futs[fut]
             try:
                 res,h=fut.result()
                 weather.update(res); raw_hashes.append(h)
             except Exception as e:
-                failures.append({"year":y,"n":len(it),"error":str(e)[:500]})
+                failures.append({"n":len(it),"error":str(e)[:500]})
             done+=1
-            if done%25==0:
+            if done%10==0:
                 print(json.dumps({"weather_batches_done":done,"weather_batches_total":len(tasks),"series":len(weather),"failures":len(failures)}),flush=True)
     if failures:
         raise RuntimeError(f"weather batch failures: {failures[:5]}")
@@ -239,8 +241,9 @@ def retrieve_weather(run_need):
         for d in sorted(rec["series"]):
             normalized.update(f"{key}|{d.isoformat()}|{rec['series'][d]:.6f}\n".encode())
     return weather,{
-        "n_coordinate_year_series":len(weather),
+        "n_coordinate_series":len(weather),
         "n_api_batches":len(tasks),
+        "series_date_range":[start.isoformat(),end.isoformat()],
         "normalized_daily_sha256":normalized.hexdigest(),
         "raw_response_hashes_sha256":hashlib.sha256("".join(sorted(raw_hashes)).encode()).hexdigest(),
     }
@@ -250,7 +253,7 @@ def weather_for_runs(run_need,weather):
     out={}
     for rid,rec in run_need.items():
         lat,lon=rec["coord"]; ed=rec["event_day"]
-        key=f"{lat:.6f},{lon:.6f},{ed.year}"
+        key=f"{lat:.6f},{lon:.6f}"
         w=weather.get(key)
         if w is None:
             raise RuntimeError(f"missing weather series {key}")
