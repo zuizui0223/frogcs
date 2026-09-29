@@ -1,0 +1,267 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_5",
+  "status": "exploratory_evidence_summary_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "headline": {
+    "process": "Within NAAMP, rainfall-associated acoustic change is dominated by recruitment across activity thresholds, not merely stronger calling among cells already active in both surveys.",
+    "strength": "Most of the rainfall-associated new-activation slope is direct entry at CallingIndex 2-3, so the pattern is not confined to marginal CallingIndex-1 detections.",
+    "geometry": "Within the full NAAMP sample, the excess allocation is disproportionately taxonomic (route-new species) rather than spatial (new stops).",
+    "physical_design": "Both boundary geometry and CallingIndex threshold recruitment persist after restricting to pairs with identical physical SiteID at all ten StopNumbers.",
+    "simple_social_cue": "Not supported: route-new recruitment is not disproportionately allocated to stops that already contained calling species in the dry survey relative to either null.",
+    "deeper_cause": "Still unresolved at the mediator level. Stable physical-stop response is unsupported; measured mapped wetland context is the next active test.",
+    "universality": "Hierarchical: species-level breadth and leave-one-state-out robustness are strong within NAAMP; state-specific effects are heterogeneous; strict disjoint-route two-fold replication is not a full pass; external Neotropical AnuraSet sites do not reproduce the prefixed threshold-dominance rule. Worldwide universality is not established."
+  },
+  "calling_index": {
+    "full": {
+      "pairs": 4236,
+      "total_beta": 2.8410419576031223,
+      "activation_beta": 1.8548575453289868,
+      "activation_share": 0.6528793213930071,
+      "shared_positive_intensity_beta": 0.19648401136771304,
+      "shared_positive_intensity_share": 0.06915913749245683,
+      "threshold_dominant": true
+    },
+    "same_observer": {
+      "pairs": 3152,
+      "total_beta": 3.020139820510419,
+      "activation_beta": 2.0550228046574146,
+      "activation_share": 0.6804396242522657,
+      "shared_positive_intensity_beta": 0.18852361498490422,
+      "shared_positive_intensity_share": 0.06242214804248459,
+      "threshold_dominant": true
+    },
+    "physical_stop_stable": {
+      "pairs": 4172,
+      "routes": 584,
+      "total_beta": 2.837381148449544,
+      "activation_beta": 1.861602543131414,
+      "activation_share": 0.6560988622020931,
+      "shared_positive_intensity_beta": 0.1979722893923276,
+      "shared_positive_intensity_share": 0.06976935459769441,
+      "threshold_dominant": true
+    },
+    "new_activation_strength": {
+      "full": {
+        "activation_beta": 1.8548575453289868,
+        "strong_ci23_beta": 1.6150398249522895,
+        "strong_ci23_ci95": [
+          0.49343778495183677,
+          2.736641864952742
+        ],
+        "strong_ci23_p": 0.004769,
+        "strong_ci23_share_of_activation": 0.8707082810857251,
+        "strong_ci23_count_beta": 0.5868627247155945,
+        "strong_ci23_count_ci95": [
+          0.18357108304575287,
+          0.9901543663854362
+        ],
+        "weak_ci1_beta": 0.23981772037669724
+      },
+      "same_observer": {
+        "activation_beta": 2.0550228046574146,
+        "strong_ci23_beta": 1.7749534283517359,
+        "strong_ci23_ci95": [
+          0.3708608268229865,
+          3.1790460298804852
+        ],
+        "strong_ci23_p": 0.01323,
+        "strong_ci23_share_of_activation": 0.8637147112572465,
+        "strong_ci23_count_beta": 0.6282,
+        "weak_ci1_beta": 0.28007
+      },
+      "ecological_read": "Rainfall-associated recruitment is not just weak calls becoming detectable: most of the activation slope is new cells immediately scored as overlapping/full-chorus CallingIndex 2-3."
+    }
+  },
+  "geometry": {
+    "taxonomic_vs_spatial": {
+      "route_new_species_share": 0.767795525238989,
+      "new_stop_share": 0.5214772488387415,
+      "taxonomic_minus_spatial": 0.24631827640024753,
+      "uniform_p": 0.000999000999000999,
+      "persistence_p": 0.000999000999000999,
+      "supported": true
+    },
+    "physical_stop_identity": {
+      "all_pairs": 4236,
+      "all_ten_siteid_stable_pairs": 4172,
+      "stable_fraction": 0.9848914069877243,
+      "stable_pair_boundary_share": 0.9304964895167589,
+      "uniform_stable_history_p": 0.000999000999000999,
+      "persistence_stable_history_p": 0.000999000999000999,
+      "strong_pass": true,
+      "read": "Boundary recruitment does not depend on relocation or renumbering of listening stops."
+    },
+    "route_new_context": {
+      "observed_dry_active_fraction": 0.5192483535917819,
+      "uniform_null_mean": 0.5257903329527602,
+      "uniform_ci95": [
+        0.4649129950912414,
+        0.585954845963247
+      ],
+      "persistence_null_mean": 0.5121749164574608,
+      "persistence_ci95": [
+        0.45397243913515717,
+        0.5660048947434544
+      ],
+      "simple_social_cue_excess": false,
+      "simple_new_site_opening_excess": false,
+      "read": "Route-new recruitment is neither preferentially targeted to already-chorusing stops nor preferentially targeted to previously inactive stops beyond the null expectation."
+    }
+  },
+  "null_hierarchy": {
+    "full_sample_crossfit_species": {
+      "species_shift_p": 0.001998001998001998,
+      "species_plus_persistence_p": 0.001998001998001998,
+      "conclusion": "Transferable species-specific rainfall response alone is insufficient in the full sample."
+    },
+    "temporal_subset": {
+      "pairs": 3437,
+      "site_only_p": 0.023976023976023976,
+      "species_plus_site_additive_p": 0.5104895104895105,
+      "species_only_same_subset_p": 0.11288711288711288,
+      "site_shift_early_late_pearson": -0.00525557116144499,
+      "site_shift_early_late_spearman": 0.008542597350542665,
+      "site_shift_sign_agreement": 0.5082872928176796,
+      "permuted_site_p": [
+        0.20279720279720279,
+        0.19080919080919082
+      ],
+      "conclusion": "The reduced temporal subset cannot identify a stable physical-site mechanism; generic heterogeneity and lower discrimination suffice."
+    }
+  },
+  "replication": {
+    "disjoint_routes": {
+      "strict_both_folds_pass": false,
+      "interpretation": "Both folds have the same broad direction, but each narrowly misses a different pre-fixed criterion."
+    },
+    "frogid_australia": {
+      "authorized": "cross-dataset consistency for active-unit taxonomic depth",
+      "not_authorized": [
+        "same mechanism",
+        "matrix geometry replication",
+        "worldwide universality"
+      ]
+    },
+    "anuraset_brazil": {
+      "INCT20955": {
+        "biome": "Atlantic Forest",
+        "recordings": 470,
+        "dates": 111,
+        "active_richness_beta_dry": -0.05896952583661644,
+        "active_richness_ci95": [
+          -0.22330898847887035,
+          0.10536993680563747
+        ],
+        "excess_intensity_beta_dry": 0.15482163534673504,
+        "threshold_dominant": false
+      },
+      "INCT41": {
+        "biome": "Cerrado",
+        "recordings": 366,
+        "dates": 61,
+        "coordinate_uncertainty_propagated": true,
+        "recent_rain_direction_for_all_three_endpoints_in_both_candidate_cells": true,
+        "threshold_dominant_all_cells": false
+      },
+      "boundary": "AnuraSet weak labels are a stratified machine-learning annotation sample, not continuous effort."
+    }
+  },
+  "mediator_status": {
+    "weakened": [
+      "Stop relocation artifact",
+      "Simple weak-call-only detection-threshold explanation",
+      "Simple chorus/social-cue attraction as the sole allocation mechanism",
+      "Stable empirical physical-stop rainfall sensitivity"
+    ],
+    "still_plausible_but_unidentified": [
+      "Breeding/reproductive activation thresholds",
+      "Hydration or moisture constraints",
+      "Rainfall-created or rainfall-improved breeding-site conditions",
+      "Species-specific atmospheric/weather cues",
+      "Context-dependent combinations of species biology and local environment"
+    ],
+    "active_test": "Official National Wetlands Inventory hydroperiod linkage is in progress under a prefixed eligibility gate; implementation was corrected before readback to use the contracted route-centred projection and exclude ambiguous nearest-polygon ties."
+  },
+  "interpretation_boundary": [
+    "Acoustic activity is not abundance, occupancy, colonization or reproductive success.",
+    "CallingIndex is ordinal acoustic intensity, not individual calling effort.",
+    "No unique physiological mediator has been identified.",
+    "No worldwide or continent-general boundary-recruitment law has been established.",
+    "RC11 remains frozen and is not altered by these exploratory analyses."
+  ],
+  "taxonomic_breadth": {
+    "strong_new_species_with_any_event": 50,
+    "positive_beta_species": 28,
+    "negative_beta_species": 22,
+    "effective_number_positive_contributors": 13.430532699952824,
+    "top1_positive_share": 0.13878158073539598,
+    "top5_positive_share": 0.49178135686490515,
+    "top10_positive_share": 0.7891827363822626,
+    "leave_one_species_out": {
+      "all_ci_positive": true,
+      "minimum_remaining_beta": 1.3709170881085773,
+      "minimum_remaining_ci_lower": 0.2657382640148356
+    },
+    "top_contributors": [
+      [
+        "Pseudacris crucifer",
+        0.24412273684374233
+      ],
+      [
+        "Acris gryllus",
+        0.20261386443157886
+      ],
+      [
+        "Hyla cinerea",
+        0.1508547400828015
+      ],
+      [
+        "Hyla femoralis",
+        0.14167927727450827
+      ],
+      [
+        "Hyla chrysoscelis",
+        0.12579382385624152
+      ],
+      [
+        "Anaxyrus quercicus",
+        0.12476574682892815
+      ],
+      [
+        "Hyla chrysoscelis/versicolor complex",
+        0.12346800309007226
+      ],
+      [
+        "Anaxyrus americanus",
+        0.09618423892306802
+      ],
+      [
+        "Anaxyrus terrestris",
+        0.09452994359986346
+      ],
+      [
+        "Hyla squirella",
+        0.08419381536181442
+      ]
+    ],
+    "interpretation": "Strong threshold recruitment is distributed across the assemblage and is not driven by any single species. Contribution ranking is descriptive and is not a rainfall-specific trait."
+  },
+  "geographic_breadth": {
+    "states": 21,
+    "leave_one_state_out": {
+      "all_threshold_dominant": true,
+      "all_strong_new_ci_positive": true,
+      "minimum_activation_share": 0.5293236536081555,
+      "minimum_activation_ci_lower": 0.39434024612586294,
+      "minimum_strong_new_ci_lower": 0.2912197317182954,
+      "strong_pass": true
+    },
+    "state_specific": {
+      "estimable_states": 17,
+      "positive_activation_fraction": 0.7058823529411765,
+      "positive_strong_new_fraction": 0.7058823529411765,
+      "threshold_dominant_fraction": 0.29411764705882354
+    },
+    "interpretation": "No single state controls the pooled threshold-recruitment result, but local state-specific responses are heterogeneous. This supports regional robustness, not occurrence in every state."
+  }
+}
