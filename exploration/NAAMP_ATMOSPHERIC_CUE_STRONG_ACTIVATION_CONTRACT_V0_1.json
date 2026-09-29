@@ -1,0 +1,54 @@
+{
+  "analysis": "naamp_atmospheric_cue_strong_activation_v0_1",
+  "status": "fixed_after_eligibility_pass_before_hourly_weather_or_response_model_readback",
+  "eligibility_source": "NAAMP_ATMOSPHERIC_CUE_ELIGIBILITY_RECEIPT_V0_1.json",
+  "eligible_pairs_expected": 4108,
+  "ecological_question": "Do survey-time atmospheric moisture and pressure carry information about strong 0-to-CallingIndex-2/3 recruitment beyond rainfall recency, seasonal timing, and temperature?",
+  "response": {
+    "primary": "strong_new_score = sum wet CallingIndex for species x stop cells with dry=0 and wet CallingIndex in {2,3}",
+    "secondary": "strong_new_count = number of such cells"
+  },
+  "atmospheric_exposure": {
+    "source": "Earthmover public Icechunk ERA5 single/temporal at the nearest 0.25-degree cell to the mean coordinate of sampled physical SiteIDs in each run.",
+    "time": "Nearest hourly ERA5 valid_time to the coordinate-local survey midpoint, converted to UTC.",
+    "variables": {
+      "relative_humidity": "Calculated from ERA5 2-m temperature (t2m) and 2-m dewpoint (d2m) with the standard Magnus formula; clipped only for tiny numerical excursions to [0,100].",
+      "surface_pressure": "ERA5 sp in Pa."
+    },
+    "pair_differences": {
+      "rh_difference": "wetter-run RH minus drier-run RH; positive means more humid during the recent-rain survey.",
+      "pressure_difference": "wetter-run surface pressure minus drier-run surface pressure."
+    }
+  },
+  "model": {
+    "formula": "response ~ rain_contrast + temp_difference + doy_difference + year_gap + rh_difference_z + pressure_difference_z + State + RunNumber",
+    "standardization": "RH and pressure pair differences z-scored across the fixed eligible-pair sample; existing rain_contrast remains on its frozen scale.",
+    "covariance": "cluster-robust by State x RouteNumber"
+  },
+  "primary_decisions": {
+    "rainfall_robustness": "rain_contrast coefficient remains >0 with complete 95% CI >0 for strong_new_score.",
+    "humidity_support": "rh_difference_z coefficient >0 with complete 95% CI >0 for strong_new_score.",
+    "atmospheric_joint_information": "two-degree-of-freedom Wald test of rh_difference_z = pressure_difference_z = 0 has P < 0.05.",
+    "pressure_direction": "two-sided descriptive because biological pressure responses can differ among breeding strategies."
+  },
+  "secondary": {
+    "strong_new_count": "Repeat identical model; directional corroboration only.",
+    "humidity_only": "Model excluding pressure; diagnostic for collinearity.",
+    "pressure_only": "Model excluding RH; diagnostic for collinearity.",
+    "exact_consecutive_year": "Repeat full model on year_gap==1; directional diagnostic.",
+    "same_observer": "Repeat full model on the existing same-observer pair subset intersected with atmospheric eligibility; directional diagnostic."
+  },
+  "interpretation": {
+    "humidity_support_and_rain_remains": "Survey-time moisture is an additional proximate cue/context consistent with behavioural activation, but not a causal mediator.",
+    "joint_support_but_rain_remains": "Atmospheric state adds information but does not replace the rainfall-recency association.",
+    "rain_loses_support": "Consistent with atmospheric state accounting for part of the association; still not formal causal mediation because weather variables are observational and contemporaneous.",
+    "no_atmospheric_support": "Recent-rain recruitment is not explained by these two survey-time atmospheric variables; hydrology, hydration history, phenology, or other cues remain plausible."
+  },
+  "prohibited": [
+    "No causal mediation claim.",
+    "No choosing weather variables after response readback.",
+    "No dropping rain_contrast from the primary model.",
+    "No RC11 manuscript modification from this exploration."
+  ],
+  "retuning_after_readback": false
+}
