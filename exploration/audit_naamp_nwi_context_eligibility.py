@@ -18,6 +18,7 @@ import numpy as np
 from pyproj import CRS, Transformer
 from shapely.geometry import Point, shape
 from shapely.ops import transform
+from shapely.strtree import STRtree
 
 ROOT=Path(__file__).resolve().parents[1]
 NAAMP=ROOT/"scripts"/"naamp"
@@ -274,32 +275,46 @@ def main():
             }))
 
         local={}
+        geoms=[x[0] for x in projected]
+        props_by_index=[x[1] for x in projected]
+        tree=STRtree(geoms) if geoms else None
         for sid in sids:
             lat,lon=coords[sid]
             point=transform(tr,Point(lon,lat))
-            best=None
-            ties=[]
-            for geom,props in projected:
-                d=float(point.distance(geom))
-                rec={"distance_m":d,**props}
-                if best is None or d<best["distance_m"]-1e-6:
-                    best=rec
-                    ties=[rec]
-                elif abs(d-best["distance_m"])<=1.0:
-                    ties.append(rec)
-            if best is None:
+            if tree is None:
                 local[sid]={
                     "distance_m":None,"within_200m":False,"within_500m":False,
                     "ambiguous_tie":False,
                     "ATTRIBUTE":None,"WETLAND_TYPE":None,
                     "WATER_REGIME":None,"WATER_REGIME_NAME":None,
                 }
-            else:
-                best=dict(best)
-                best["within_200m"]=bool(best["distance_m"]<=PRIMARY_M)
-                best["within_500m"]=bool(best["distance_m"]<=SENS_M)
-                best["ambiguous_tie"]=bool(len(ties)>1)
-                local[sid]=best
+                continue
+
+            nearest_idx=int(tree.nearest(point))
+            nearest_geom=geoms[nearest_idx]
+            nearest_d=float(point.distance(nearest_geom))
+            candidate_idx=np.asarray(tree.query(point.buffer(nearest_d+1.000001)),dtype=int)
+            tie_idx=[]
+            best_idx=nearest_idx
+            best_d=nearest_d
+            for idx in candidate_idx:
+                d=float(point.distance(geoms[int(idx)]))
+                if d<best_d-1e-6:
+                    best_d=d
+                    best_idx=int(idx)
+            for idx in candidate_idx:
+                d=float(point.distance(geoms[int(idx)]))
+                if abs(d-best_d)<=1.0:
+                    tie_idx.append(int(idx))
+
+            best={
+                "distance_m":best_d,
+                **props_by_index[best_idx],
+            }
+            best["within_200m"]=bool(best_d<=PRIMARY_M)
+            best["within_500m"]=bool(best_d<=SENS_M)
+            best["ambiguous_tie"]=bool(len(set(tie_idx))>1)
+            local[sid]=best
         return key,sids,local
 
     completed=0
