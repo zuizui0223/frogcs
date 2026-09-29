@@ -1,0 +1,18 @@
+{
+  "analysis": "naamp_strong_activation_state_heterogeneity_v0_1",
+  "status": "post_readback_geographic_description_fixed_before_state_specific_endpoint",
+  "question": "How geographically shared is the strong 0-to-CallingIndex-2/3 rainfall response across NAAMP states?",
+  "sample": "Frozen 4,236 matched pairs.",
+  "endpoint": "strong_new_score.",
+  "state_models": "Within each state, fit strong_new_score ~ rain_contrast + temp_difference + doy_difference + year_gap + RunNumber with route-clustered covariance when >=30 pairs and >=5 routes.",
+  "random_slope": "Fit a state random-intercept/random-rain-slope mixed model as descriptive heterogeneity context; state-specific cluster models remain the transparent primary geography summary.",
+  "summaries": [
+    "fraction of estimable states with beta>0",
+    "fraction with CI entirely >0",
+    "median beta",
+    "beta range",
+    "population mixed-model slope and state-slope SD if converged"
+  ],
+  "interpretation": "This describes generality within sampled NAAMP states. It is not a continent-wide or universal law, and state-specific precision varies.",
+  "retuning_after_readback": false
+}
