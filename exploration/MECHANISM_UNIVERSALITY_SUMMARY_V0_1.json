@@ -1,0 +1,111 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_v0_1_summary",
+  "source_workflow_run": 36518276703,
+  "source_commit": "19d0ee786efd7be6e3817b577b1bd9a0312a3075",
+  "status": "exploratory_results_frozen_outside_rc11_submission",
+  "naamp_calling_index": {
+    "n_pairs": 4236,
+    "n_routes": 585,
+    "total_beta": 2.8410419576031223,
+    "activation_beta": 1.8548575453289868,
+    "deactivation_beta": 0.7897004009064232,
+    "shared_intensity_beta": 0.19648401136771304,
+    "component_shares_of_total": {
+      "activation": 0.6528793213930071,
+      "deactivation": 0.2779615411145364,
+      "shared_intensity": 0.06915913749245683
+    },
+    "shared_intensity_ci95": [
+      -0.019261695211855834,
+      0.4122297179472819
+    ],
+    "threshold_dominant_under_prefixed_rule": true,
+    "exact_consecutive_year_threshold_dominant": true,
+    "interpretation": "Most of the rainfall-associated CallingIndex slope is allocated to cells crossing from zero to positive or the reverse, while intensity change among cells positive in both surveys is small and imprecise. This supports a threshold/recruitment pattern, not a direct physiological mechanism."
+  },
+  "same_observer_calling_index": {
+    "n_pairs": 3152,
+    "n_routes": 500,
+    "n_observers": 542,
+    "total_beta": 3.020139820510419,
+    "activation_beta": 2.0550228046574146,
+    "shared_intensity_beta": 0.18852361498490422,
+    "activation_share": 0.6804396242522657,
+    "shared_intensity_share": 0.06242214804248459,
+    "threshold_dominant_under_same_rule": true
+  },
+  "species_vs_site_axis": {
+    "observed_route_new_species_share": 0.767795525238989,
+    "observed_new_stop_share": 0.5214772488387415,
+    "observed_taxonomic_minus_spatial": 0.24631827640024753,
+    "uniform_kappa2": {
+      "null_mean": 0.0756211021577042,
+      "ci95": [
+        -0.006746402955157603,
+        0.162324736209154
+      ],
+      "upper_tail_p": 0.000999000999000999
+    },
+    "persistence_anchor_0_75": {
+      "null_mean": 0.10798527758940628,
+      "ci95": [
+        0.03933771858952059,
+        0.18098284331686865
+      ],
+      "upper_tail_p": 0.000999000999000999
+    },
+    "classification": "taxonomic_axis_excess_supported_under_both_nulls"
+  },
+  "crossfit_species_shift_null": {
+    "n_pairs": 4236,
+    "n_routes": 585,
+    "training_routes_A": 398,
+    "training_routes_B": 409,
+    "estimable_species_both_folds": 42,
+    "crossfold_species_shift_correlation": 0.23992728281112266,
+    "monte_carlo_p": 0.001998001998001998,
+    "observed_boundary_share": 0.9201538112142242,
+    "null_boundary_mean": 0.8525235113368571,
+    "null_boundary_ci95": [
+      0.7903823168587677,
+      0.918204538154823
+    ],
+    "decision": "species_level_heterogeneity_insufficient"
+  },
+  "crossfit_species_plus_persistence_null": {
+    "dry_state_anchor": 0.75,
+    "monte_carlo_p": 0.001998001998001998,
+    "observed_boundary_share": 0.9201538112142242,
+    "null_boundary_mean": 0.8243877900337888,
+    "null_boundary_ci95": [
+      0.7749206235850009,
+      0.8756353827121985
+    ],
+    "decision": "species_plus_persistence_insufficient",
+    "interpretation": "Transferable species-level rainfall response plus strong persistence of the observed dry species x stop state still does not reproduce the observed allocation. Additional contextual or non-additive species x site structure is required by this null comparison, but species x site interaction has not been directly estimated."
+  },
+  "australian_fixed_pam": {
+    "source": "Hoefer et al. 2026, v2.0, Zenodo 10.5281/zenodo.21634473",
+    "sites": 6,
+    "expected_plots_per_site": 4,
+    "detection_rows_pam_all": 13577,
+    "matrix_replication_eligible": false,
+    "reason": "The public file is a positive-detection event table and lacks a plot-day effort frame that identifies sampled zero-frog days. Missing detections cannot safely be treated as absences.",
+    "authorized_use": "Positive-detection/active-unit analyses remain possible; NAAMP-style active/inactive plot matrix replication requires an effort table."
+  },
+  "current_inference": {
+    "supported": [
+      "Rain-associated acoustic change is recruitment/threshold-dominated rather than primarily intensification of already-calling cells.",
+      "The allocation is disproportionately taxonomic: recruitment of route-new species exceeds recruitment of new stops relative to both tested null families.",
+      "Cross-route species-specific rainfall response heterogeneity alone is insufficient to explain the observed four-component allocation.",
+      "Adding strong dry-state persistence to the cross-fit species-shift null remains insufficient."
+    ],
+    "not_established": [
+      "A unique physiological cause such as hydration.",
+      "Direct species x site rainfall interaction.",
+      "Worldwide or cross-continental replication of boundary-biased matrix recruitment.",
+      "Demographic occupancy, abundance, colonization, or breeding-success effects."
+    ],
+    "next_test": "Fit a cross-fit site-shift null, then a cross-fit additive species+site null. Only if the additive null is also rejected is a non-additive species x site response specifically required by the hierarchy."
+  }
+}
