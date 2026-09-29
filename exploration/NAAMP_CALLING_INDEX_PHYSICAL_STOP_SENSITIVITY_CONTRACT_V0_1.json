@@ -1,0 +1,11 @@
+{
+  "analysis": "naamp_calling_index_physical_stop_sensitivity_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "parent_audit": "NAAMP_PHYSICAL_STOP_IDENTITY_AUDIT_V0_1",
+  "sample": "Matched NAAMP pairs in which all ten StopNumbers have nonmissing identical SiteID in wet and dry runs.",
+  "decomposition": "Exactly the existing CallingIndex total = activation + deactivation + shared-positive intensity decomposition.",
+  "model": "Exactly the existing rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber model with route-clustered covariance.",
+  "pass_rule": "Use the existing threshold-dominant rule unchanged: total beta >0; activation beta 95% CI entirely >0; activation contribution >50% of total beta; activation beta > shared-positive intensity beta.",
+  "interpretation": "A pass shows the CallingIndex recruitment pattern does not require stop relocation. It does not identify the physiological mediator.",
+  "retuning_after_readback": false
+}
