@@ -49,6 +49,8 @@ jobs:
         run: python exploration/run_naamp_route_split_mechanism_replication.py
       - name: Test temporal cross-fit site and additive nulls
         run: python exploration/run_naamp_crossfit_site_and_additive_null.py
+      - name: Diagnose additive-null site identity
+        run: python exploration/run_naamp_additive_null_identity_diagnostics.py
       - name: Upload exploration receipts
         uses: actions/upload-artifact@v4
         with:
