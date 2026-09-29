@@ -1,0 +1,32 @@
+{
+  "analysis": "naamp_nwi_wetland_system_strong_chorus_v0_1",
+  "status": "post_context_readback_hypothesis_fixed_before_wetland_system_response_readback",
+  "ecological_question": "Is rainfall-associated emergence of CallingIndex 2-3 in previously silent cells stronger at Palustrine wetland contexts than at Riverine/Lacustrine contexts within the same matched route comparison?",
+  "context_source": "Use exactly the frozen NWI site_matches already produced; do not rematch or alter radii.",
+  "groups": {
+    "palustrine": "Cowardin ATTRIBUTE begins with P; includes freshwater ponds, emergent wetlands and forested/shrub wetlands.",
+    "riverine_lacustrine": "ATTRIBUTE begins with R or L.",
+    "excluded": "Estuarine/marine and records without a classified ATTRIBUTE."
+  },
+  "radius_m": 200,
+  "response": {
+    "primary": "strong_new_score_at_stop = sum wet CallingIndex for cells dry=0 and wet in {2,3}.",
+    "secondary": "strong_new_count_at_stop.",
+    "weak_diagnostic": "weak_new_score_at_stop = count dry=0, wet=1."
+  },
+  "model": "Pair fixed-effects OLS by within-pair demeaning of response, Palustrine indicator, and Palustrine*rain_contrast; cluster-robust by State x RouteNumber.",
+  "run_gate": "Each group >=500 unique SiteIDs and >=150 routes at 200 m, and >=2000 matched pairs with within-pair group variation.",
+  "primary_prediction": "Palustrine*rain_contrast interaction >0 with complete 95% CI >0 for strong_new_score.",
+  "sensitivities": [
+    "strong_new_count",
+    "same-observer subset",
+    "500 m radius using unchanged group definitions"
+  ],
+  "interpretation": [
+    "Support would implicate mapped wetland system context, not survey-night inundation.",
+    "Failure would mean hydroperiod and broad NWI system type do not explain where strong chorus activation occurs.",
+    "Nearest polygon is a context proxy, not proven call origin.",
+    "No physiological mediator or causal rainfall effect is identified."
+  ],
+  "retuning_after_readback": false
+}
