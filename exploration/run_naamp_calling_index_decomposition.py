@@ -45,6 +45,7 @@ def build_calling_index(raw, eligible_run_ids, sampled):
         values[(rid, st, sp)].append(ci)
 
     out = {}
+    by_run_stop = defaultdict(dict)
     duplicate_cells = 0
     conflicting_duplicate_cells = 0
     duplicate_rows_excess = 0
@@ -54,9 +55,12 @@ def build_calling_index(raw, eligible_run_ids, sampled):
             duplicate_rows_excess += len(vals) - 1
             if len(set(vals)) > 1:
                 conflicting_duplicate_cells += 1
-        out[key] = max(vals)
+        value = max(vals)
+        out[key] = value
+        rid, st, sp = key
+        by_run_stop[(rid, st)][sp] = value
 
-    return out, {
+    return out, by_run_stop, {
         "positive_cells": int(len(out)),
         "duplicate_cells": int(duplicate_cells),
         "conflicting_duplicate_cells": int(conflicting_duplicate_cells),
@@ -65,7 +69,7 @@ def build_calling_index(raw, eligible_run_ids, sampled):
     }
 
 
-def pair_components(pair, sampled, ci):
+def pair_components(pair, sampled, ci_by_run_stop):
     wet = str(pair.wet_RunID)
     dry = str(pair.dry_RunID)
     wet_stops = set(sampled[wet])
@@ -85,13 +89,12 @@ def pair_components(pair, sampled, ci):
     n_shared_down = 0
 
     for st in stops:
-        species = {
-            sp for (rid, s, sp) in ci.keys()
-            if s == st and rid in (wet, dry)
-        }
+        wet_map = ci_by_run_stop.get((wet, st), {})
+        dry_map = ci_by_run_stop.get((dry, st), {})
+        species = set(wet_map) | set(dry_map)
         for sp in species:
-            w = int(ci.get((wet, st, sp), 0))
-            d = int(ci.get((dry, st, sp), 0))
+            w = int(wet_map.get(sp, 0))
+            d = int(dry_map.get(sp, 0))
             diff = w - d
             total += diff
             if d == 0 and w > 0:
@@ -154,12 +157,12 @@ def main():
     sampled, _ = spatial.stop_matrix(raw, eligible)
     pairs = base.pair_runs(runs, route_sets).copy().reset_index(drop=True)
 
-    ci, duplicate_audit = build_calling_index(raw, eligible, sampled)
+    ci, ci_by_run_stop, duplicate_audit = build_calling_index(raw, eligible, sampled)
 
     rows = []
     for pair in pairs.itertuples(index=False):
         row = pair._asdict()
-        row.update(pair_components(pair, sampled, ci))
+        row.update(pair_components(pair, sampled, ci_by_run_stop))
         rows.append(row)
     df = pd.DataFrame(rows)
 
