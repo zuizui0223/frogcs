@@ -113,6 +113,24 @@
       "pass_rule": "Both CallingIndex threshold dominance and taxonomic-axis excess must pass independently in fold A and fold B.",
       "interpretation": "A pass establishes internal replication across disjoint route sets, not cross-continental universality.",
       "retuning_after_readback": false
+    },
+    "nps_secn_replication_eligibility": {
+      "source": "National Park Service Southeast Coast Network anuran monitoring cumulative package, 2012-2023, DataStore reference 2307457",
+      "design": "Automated recording devices: 1-min recordings every 20 min overnight, every fourth night March-June, up to 30 spatially balanced locations per park.",
+      "public_files": {
+        "classifications": "https://irma.nps.gov/DataStore/DownloadFile/713859?Reference=2307457",
+        "equipment_failures": "https://irma.nps.gov/DataStore/DownloadFile/713861?Reference=2307457",
+        "metadata": "https://irma.nps.gov/DataStore/DownloadFile/713862?Reference=2307457"
+      },
+      "gate": [
+        "A recording-level identifier or location x datetime key must be recoverable.",
+        "Sampled recordings with zero anuran detections must be explicitly represented, or reconstructable from a deterministic schedule plus deployment/effort information and equipment failures.",
+        "At least three concurrently sampled locations within a park-season must be recoverable on repeated nights.",
+        "Species labels must map to recording-level detections without treating missing classification rows as absences unless the effort gate passes.",
+        "If the zero-effort frame cannot be reconstructed, no species x site matrix replication is authorized."
+      ],
+      "next_if_eligible": "Attach reproducible rainfall exposure and run a fixed-site matrix recruitment analysis separate from RC11.",
+      "interpretation": "Independent monitoring-system replication, not evidence of worldwide universality by itself."
     }
   },
   "prohibited": [
