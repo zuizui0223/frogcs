@@ -31,6 +31,8 @@ jobs:
         run: python -m compileall -q exploration
       - name: Audit Australian fixed-PAM eligibility
         run: python exploration/audit_australian_fixed_pam_eligibility.py
+      - name: Audit NPS SECN replication eligibility
+        run: python exploration/audit_nps_secn_replication_eligibility.py
       - name: Audit NAAMP stop context schema
         run: python exploration/audit_naamp_stop_context_schema.py
       - name: Decompose CallingIndex recruitment vs intensification
