@@ -263,8 +263,16 @@ def main():
                 print(json.dumps({"routes_processed":completed,"routes_total":len(route_items),"sites_matched":len(matched)}),flush=True)
 
     used_with_coord=[s for s in used if s in coords]
-    primary=[s for s in used_with_coord if matched.get(s,{}).get("within_200m")]
-    sens=[s for s in used_with_coord if matched.get(s,{}).get("within_500m")]
+    primary=[
+        s for s in used_with_coord
+        if matched.get(s,{}).get("within_200m")
+        and not matched.get(s,{}).get("ambiguous_tie",False)
+    ]
+    sens=[
+        s for s in used_with_coord
+        if matched.get(s,{}).get("within_500m")
+        and not matched.get(s,{}).get("ambiguous_tie",False)
+    ]
     regime=[s for s in primary if str(matched[s].get("WATER_REGIME_NAME") or "").strip()]
     wettype=[s for s in primary if str(matched[s].get("WETLAND_TYPE") or "").strip()]
 
@@ -284,7 +292,11 @@ def main():
         ids=[s for s in rec["wet_sites"]+rec["dry_sites"] if s]
         if not ids:
             continue
-        n=sum(bool(matched.get(s,{}).get("within_200m")) for s in ids)
+        n=sum(
+            bool(matched.get(s,{}).get("within_200m"))
+            and not bool(matched.get(s,{}).get("ambiguous_tie",False))
+            for s in ids
+        )
         pair_cov.append(n/len(ids))
 
     dists=[float(matched[s]["distance_m"]) for s in matched if matched[s].get("distance_m") is not None]
