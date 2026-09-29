@@ -60,7 +60,7 @@ def csv_report(b):
 
     zero_like=[]
     blank_taxon_rows=0
-    tax_cols=[c for c in cols if any(tok in c.lower() for tok in ("species","taxon","scientific","common","class"))]
+    tax_cols=[c for c in cols if any(tok in c.lower() for tok in ("species","taxon","scientific","common"))]
     for i,r in enumerate(rows):
         joined=" | ".join((r.get(c) or "") for c in cols)
         if ZERO_PAT.search(joined):
@@ -79,6 +79,16 @@ def csv_report(b):
             "unique":len(set(non)),
         }
 
+    status_col="AnuransDetectedAtSampLoc" if "AnuransDetectedAtSampLoc" in cols else None
+    status_counts=Counter((r.get(status_col) or "").strip() for r in rows) if status_col else Counter()
+    notdet=[r for r in rows if status_col and (r.get(status_col) or "").strip().lower()=="notdetected"]
+    locyear={(r.get("ParkSL") or "").strip()+"|"+(r.get("SurvYear") or "").strip() for r in rows if (r.get("ParkSL") or "").strip()}
+    locyear_notdet={(r.get("ParkSL") or "").strip()+"|"+(r.get("SurvYear") or "").strip() for r in notdet if (r.get("ParkSL") or "").strip()}
+    notdet_examples=[
+        {k:r.get(k) for k in ("SurvYear","ParkCode","ParkSL","AnuransDetectedAtSampLoc","SpeciesCode","ScientificName","CommonName","FileCount","DateStart","DateEnd","SignalDate","SignalTime")}
+        for r in notdet[:20]
+    ]
+
     return {
         "n_rows":len(rows),
         "columns":cols,
@@ -89,6 +99,11 @@ def csv_report(b):
         "zero_like_examples":zero_like,
         "taxon_candidate_columns":tax_cols,
         "blank_taxon_rows":blank_taxon_rows,
+        "detection_status_counts":dict(status_counts),
+        "not_detected_rows":int(len(notdet)),
+        "not_detected_examples":notdet_examples,
+        "location_year_groups":int(len(locyear)),
+        "location_year_groups_with_not_detected":int(len(locyear_notdet)),
     }
 
 
@@ -126,7 +141,18 @@ def main():
     fail_rep=csv_report(blobs["equipment_failures"])
     meta_rep=metadata_report(blobs["metadata"])
 
-    explicit_zero=bool(class_rep["zero_like_rows_count"]>0 or class_rep["blank_taxon_rows"]>0)
+    explicit_location_zero=bool(class_rep.get("not_detected_rows",0)>0)
+    signal_defs=[
+        a.get("definition","") or "" for a in meta_rep["interesting_attribute_definitions"]
+        if a.get("name")=="SignalDate"
+    ]
+    representative_signal_only=any("representative signal" in x.lower() for x in signal_defs)
+    has_filecount="FileCount" in class_rep["columns"]
+    has_deployment_window=all(x in class_rep["columns"] for x in ("DateStart","DateEnd"))
+    nightly_detection_frame=bool(
+        explicit_location_zero and not representative_signal_only
+        and any(x in class_rep["columns"] for x in ("RecordingDate","RecordingDateTime","FileName","RecordingID"))
+    )
     result={
         "analysis":"nps_secn_replication_eligibility_v0_1",
         "contract":"exploration/MECHANISM_UNIVERSALITY_CONTRACT_V0_1.json#nps_secn_replication_eligibility",
@@ -138,9 +164,19 @@ def main():
         "equipment_failures":fail_rep,
         "metadata":meta_rep,
         "screen":{
-            "explicit_zero_or_blank_taxon_rows_present":explicit_zero,
-            "automatic_matrix_eligibility":False,
-            "reason":"Schema audit only. Matrix eligibility requires proof that reviewed/sampled recordings with zero anuran detections are represented, or a complete effort frame can be reconstructed after equipment failures."
+            "explicit_location_season_zero_present":explicit_location_zero,
+            "file_count_effort_summary_present":has_filecount,
+            "deployment_window_present":has_deployment_window,
+            "signal_date_is_representative_signal_only":representative_signal_only,
+            "nightly_detection_nondetection_frame_reconstructable":nightly_detection_frame,
+            "automatic_matrix_eligibility":nightly_detection_frame,
+            "reason":(
+                "The package explicitly records NotDetected at the sampling-location/year level and summarizes "
+                "recording effort with FileCount and deployment dates. However SignalDate is defined as the date "
+                "of a recording containing a representative species signal, not a complete recording-by-recording "
+                "classification table. Therefore location-season zeroes are valid, but nightly species x site "
+                "detection/nondetection states cannot be reconstructed for a rainfall-pulse matrix analysis."
+            )
         }
     }
     OUT.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
