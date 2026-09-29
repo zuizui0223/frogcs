@@ -1,0 +1,51 @@
+name: NWI strong chorus fast endpoint
+
+on:
+  push:
+    branches:
+      - exploration/nwi-strong-chorus-fast-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Reuse frozen successful NWI context receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-context-eligibility-v0-1
+          path: exploration
+          repository: zuizui0223/frogcs
+          run-id: 36539807835
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify context receipt precedes endpoint contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_NWI_CONTEXT_ELIGIBILITY_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["feasibility_gate"]["overall_pass"] is True
+          assert x["interpretation_boundary"]["response_endpoints_read"] is False
+          assert len(x["site_matches"]) > 5000
+          print("frozen NWI context receipt verified", len(x["site_matches"]))
+          PY
+      - name: Run strong-chorus endpoint only
+        run: python exploration/run_naamp_nwi_strong_chorus_activation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-strong-chorus-v0-1
+          path: |
+            exploration/NAAMP_NWI_STRONG_CHORUS_ACTIVATION_CONTRACT_V0_1.json
+            exploration/NAAMP_NWI_STRONG_CHORUS_ACTIVATION_RECEIPT_V0_1.json
+          if-no-files-found: error
