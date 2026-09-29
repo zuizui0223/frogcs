@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_current_light_rain_strong_activation_v0_1",
+  "status": "post_readback_proximal_cue_test_fixed_before_endpoint",
+  "ecological_question": "Is rainfall-associated strong chorus activation explained by light rain occurring during the survey itself, rather than by antecedent wet conditions?",
+  "protocol_semantics": {
+    "sky_code_5": "Drizzle or light rain not affecting hearing ability.",
+    "sky_code_8": "Showers affecting hearing ability; surveys were not to be conducted under this condition.",
+    "source": "NAAMP unified datasheet/protocol."
+  },
+  "run_metric": "current_light_rain = 1 if StartSky==5 or EndSky==5; 0 only when both StartSky and EndSky are valid protocol sky codes {0,1,2,4,5,7,8} and neither is 5; otherwise missing.",
+  "pair_metric": "current_light_rain_advantage = wet current_light_rain - dry current_light_rain.",
+  "sample_gate": ">=2500 matched pairs and >=400 routes with nonmissing current_light_rain in both runs.",
+  "primary_response": "strong_new_score = sum wet CallingIndex for dry=0 -> wet CI2/3 cells.",
+  "primary_model": "strong_new_score ~ rain_contrast + current_light_rain_advantage + temp_difference + doy_difference + year_gap + State + RunNumber, route-clustered covariance.",
+  "predictions": {
+    "immediate_rain_cue": "current_light_rain_advantage coefficient >0 with complete 95% CI >0.",
+    "antecedent_signal_beyond_current_rain": "rain_contrast coefficient remains >0 with complete 95% CI >0."
+  },
+  "sensitivities": [
+    "new_ci3_count as full-chorus endpoint.",
+    "same-observer + physical-stop stable subset.",
+    "exclude every run with sky code 8 even though such surveys were protocol-inappropriate."
+  ],
+  "interpretation": [
+    "A null current-light-rain coefficient with retained rain_contrast weakens a purely immediate precipitation-cue explanation.",
+    "Sky code is categorical and does not measure humidity, rainfall intensity, or water level.",
+    "No causal mediation claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
