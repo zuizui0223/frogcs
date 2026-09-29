@@ -1,0 +1,39 @@
+name: NWI query smoke test
+on:
+  push:
+    branches: [exploration/nwi-query-smoke-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy shapely pyproj
+      - name: Query three routes
+        run: |
+          python - <<'PY'
+          import importlib.util, json
+          from pathlib import Path
+          p=Path("exploration/audit_naamp_nwi_context_eligibility.py")
+          s=importlib.util.spec_from_file_location("nwi",p); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+          raw=m.base.load(); runs,sets=m.base.build_runs(raw)
+          pairs,used,site_route,pair_sites=m.pair_used_siteids(raw,runs,sets)
+          coords,coord_route,sha,nrows=m.load_coordinates()
+          by={}
+          for sid in sorted(used):
+              if sid not in coords: continue
+              key=site_route.get(sid)
+              if key is None:
+                  key=("UNKNOWN",coord_route.get(sid) or "UNKNOWN")
+              by.setdefault(key,[]).append(sid)
+          rows=[]
+          for key,sids in list(sorted(by.items()))[:3]:
+              fs=m.route_features(sids,coords)
+              cls={sid:m.classify_site(sid,coords,fs) for sid in sids[:3]}
+              rows.append({"route":key,"n_sites":len(sids),"n_features":len(fs),"sample":cls})
+          print(json.dumps(rows,indent=2))
+          PY
