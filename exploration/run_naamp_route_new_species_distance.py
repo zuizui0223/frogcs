@@ -158,7 +158,8 @@ def stat(v,obs):
         "null_mean":float(np.mean(v)),
         "null_ci95":[float(lo),float(hi)],
         "observed":float(obs),
-        "upper_tail_p":float((1+np.sum(v>=obs))/(len(v)+1))
+        "upper_tail_p":float((1+np.sum(v>=obs))/(len(v)+1)),
+        "lower_tail_p":float((1+np.sum(v<=obs))/(len(v)+1))
     }
 
 
@@ -242,12 +243,22 @@ def main():
         and obs[1]>us[names[1]]["null_ci95"][1]
         and obs[1]>ps[names[1]]["null_ci95"][1]
     )
+    compact=bool(
+        obs[0]<us[names[0]]["null_ci95"][0]
+        and obs[0]<ps[names[0]]["null_ci95"][0]
+        and obs[1]<us[names[1]]["null_ci95"][0]
+        and obs[1]<ps[names[1]]["null_ci95"][0]
+    )
     out.update({
       "response_endpoints_read":True,
       "observed_betas":{names[j]:float(obs[j]) for j in range(3)},
       "uniform_kappa2":us,
       "persistence_anchor_0_75":ps,
-      "classification":{"broad_route_scale_activation_supported":broad},
+      "classification":{
+        "broad_route_scale_activation_supported":broad,
+        "compact_route_new_activation_supported_post_readback":compact,
+        "compactness_contract":"exploration/NAAMP_ROUTE_NEW_SPECIES_COMPACTNESS_DIAGNOSTIC_V0_1.json"
+      },
       "descriptive":{
         "median_route_max_stop_distance_km":float(np.median([np.max(dm) for dm in dmsub])),
         "q90_route_max_stop_distance_km":float(np.quantile([np.max(dm) for dm in dmsub],.90))
