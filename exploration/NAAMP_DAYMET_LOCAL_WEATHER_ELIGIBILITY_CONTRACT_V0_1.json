@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_daymet_local_weather_eligibility_v0_1",
+  "status": "source_and_compute_audit_before_response_readback",
+  "purpose": "Determine whether 1-km daily Daymet precipitation and atmospheric-moisture variables can be extracted reproducibly for NAAMP physical stops at matched survey dates before defining or reading any frog-response endpoint.",
+  "source": {
+    "dataset": "Daymet daily North America Version 4 / R1",
+    "resolution": "1 km daily",
+    "variables": [
+      "prcp",
+      "vp",
+      "tmin",
+      "tmax"
+    ],
+    "period_needed": "2001-2015",
+    "access": "Microsoft Planetary Computer STAC collection daymet-daily-na",
+    "references": [
+      "10.3334/ORNLDAAC/1840",
+      "10.3334/ORNLDAAC/2129"
+    ]
+  },
+  "eligibility_checks": [
+    "STAC collection exists and exposes a cloud-native asset suitable for random/point access.",
+    "Variables prcp, vp, tmin, tmax and time/x/y coordinates are present.",
+    "2001-2015 dates are represented.",
+    "NAAMP coordinates can be transformed into the Daymet Lambert Conformal Conic grid.",
+    "A deterministic 20-site audit sample can retrieve all four variables for a representative 2005 date without full-domain reads."
+  ],
+  "deterministic_audit_sample": "First 20 SiteIDs by SHA256(SiteID), independent of frog outcomes.",
+  "response_endpoints_read": false,
+  "retuning_after_readback": false
+}
