@@ -52,6 +52,8 @@ def site_map(raw,eligible):
 def group_for(site_match,radius):
     if site_match is None:
         return None
+    if bool(site_match.get("ambiguous_tie",False)):
+        return None
     d=site_match.get("distance_m")
     if d is None or float(d)>float(radius):
         return None
