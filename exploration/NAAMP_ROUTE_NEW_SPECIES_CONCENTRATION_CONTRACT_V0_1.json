@@ -1,0 +1,21 @@
+{
+  "analysis": "naamp_route_new_species_concentration_v0_1",
+  "status": "post_readback_generality_diagnostic_fixed_before_species_contribution_readback",
+  "question": "Is the rainfall-associated multi-stop spread of route-new species broadly distributed across taxa, or dominated by one/few species?",
+  "sample": "Frozen 4,236 NAAMP matched pairs.",
+  "response_per_species": "For each pair and species, extra_stop_incidence_gain = max(number of wet stops occupied - 1, 0) if the species is absent from the entire dry route and present in the wet route; otherwise 0.",
+  "decomposition": "Because the matched model is linear, the full extra-stop rain-contrast coefficient equals the sum of species-specific coefficients computed with the same residualized design.",
+  "diagnostics": {
+    "positive_share": "For species with positive coefficients, report each beta divided by the sum of positive species betas.",
+    "top1_top5": "Report top-1 and top-5 positive contribution shares.",
+    "hhi": "Herfindahl index of positive contribution shares.",
+    "leave_one_species_out": "For every species, subtract its beta from the total extra-stop coefficient; report minimum remaining beta and whether all remain >0.",
+    "contributing_taxa": "Count species with positive beta and with positive beta >=1% of the total positive mass."
+  },
+  "prefixed_interpretation": {
+    "diffuse": "top1 <=0.25 AND top5 <=0.60 AND HHI <=0.10 AND all leave-one-species-out total betas remain >0",
+    "concentrated": "Any diffuse condition fails.",
+    "boundary": "This is a taxonomic concentration diagnostic, not a null-model test of species traits or a claim that every species responds positively."
+  },
+  "retuning_after_readback": false
+}
