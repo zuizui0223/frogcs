@@ -1,0 +1,67 @@
+{
+  "project": "frog-chorus-synchrony",
+  "analysis": "mechanism_and_transportability_exploration_v0_1",
+  "status": "fixed_before_new_endpoint_readback",
+  "parent_submission_commit": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "purpose": "Separate threshold recruitment from calling intensification, test whether cross-route species-specific rainfall response heterogeneity can explain the NAAMP allocation, and audit an independent Australian fixed-PAM dataset for matrix-replication eligibility.",
+  "analyses": {
+    "calling_index_decomposition": {
+      "question": "Does recent-rain change in calling intensity arise mainly from 0-to-positive recruitment of species x stop cells or from stronger CallingIndex among cells already positive in both surveys?",
+      "sample": "Exactly the current 4,236 NAAMP wetter-drier matched pairs and aligned ten stops.",
+      "cell_score": "CallingIndex 0,1,2,3; if duplicate Count records occur for the same RunID x StopNumber x Species, use the maximum index and report duplicate/conflict counts.",
+      "exact_components": {
+        "activation": "sum wet CallingIndex for cells with dry=0 and wet>0",
+        "deactivation": "negative sum dry CallingIndex for cells with dry>0 and wet=0",
+        "shared_intensity": "sum(wet-dry) for cells positive in both runs",
+        "total": "sum(wet-dry) over all cells; must equal activation + deactivation + shared_intensity"
+      },
+      "models": "Each pair-level component ~ rain_contrast + temp_difference + doy_difference + year_gap + State + RunNumber, route-clustered covariance, matching the current analysis.",
+      "prediction": "Threshold recruitment is supported if activation contributes a positive majority of the total CallingIndex rainfall slope and exceeds the shared-intensity contribution. Shared-intensity is reported regardless of sign; no equivalence claim is authorized.",
+      "interpretation_boundary": "CallingIndex is ordinal acoustic intensity, not abundance, mating success, or individual calling effort."
+    },
+    "crossfit_species_shift_null": {
+      "question": "Can species-specific rainfall-response shifts learned on different routes reproduce the observed four-component boundary allocation?",
+      "split": "Deterministic SHA256 split of State:RouteNumber into route folds A/B; learn species response on the opposite fold and apply only to held-out routes.",
+      "training_response": "For every eligible run x species, number of positive stops out of 10.",
+      "training_model": "Per-species binomial GLM of stop-positive proportion on log1p(DaysSinceRain), mean temperature, cyclic day of year, State and RunNumber; regularized fallback allowed only for separation. Differential wet shift is minus the learned dryness coefficient. Species not estimable in the opposite fold receive zero differential shift.",
+      "test_baseline": "Current kappa=2 dry-history species x stop probabilities in the held-out stratum.",
+      "pair_shift": "q=logit^-1(logit(p_baseline)+gamma_species*rain_contrast+delta_pair), with one common delta_pair solved to match the pair's observed wet incidence count in expectation.",
+      "simulation": {
+        "replicates": 1000,
+        "seed": 2840223
+      },
+      "primary_test": "Same four-component Mahalanobis omnibus as the current uniform null; Monte Carlo plus-one p.",
+      "interpretation": {
+        "fail_to_reject": "Cross-route species-level response heterogeneity is sufficient to reproduce the observed allocation under this null family; do not attribute the residual pattern to site-specific recruitment.",
+        "reject": "Species-level rainfall-response heterogeneity alone is insufficient; additional site or species x site structure is required.",
+        "causal_claim": false
+      }
+    },
+    "australian_fixed_pam_eligibility": {
+      "source": "Hoefer et al. 2026 fixed PAM dataset, GitHub/Zenodo v2.0",
+      "source_version": "v.2.0 / Zenodo 10.5281/zenodo.21634473",
+      "sites": [
+        "Rinyirru",
+        "Undara",
+        "Wambiana",
+        "Mourachan",
+        "Duval",
+        "Tarcutta"
+      ],
+      "design": "Six eastern Australian open-eucalypt woodland sites, four fixed plots per site (WetA, WetB, DryA, DryB).",
+      "gate": [
+        "Species detections must retain plot and date.",
+        "A plot-day effort frame including zero-frog days must be reconstructable without assuming that missing detection rows imply sampling.",
+        "At least three plots must be concurrently sampled on enough days to form a spatial incidence matrix.",
+        "Rainfall exposure must be linkable by site/date from a reproducible gridded source.",
+        "If effort zeros cannot be reconstructed, no NAAMP-style boundary-replication claim is authorized."
+      ]
+    }
+  },
+  "prohibited": [
+    "No edits to the frozen RC11 submission claim based on these exploratory results.",
+    "No universal-law wording from NAAMP plus FrogID alone.",
+    "No treating missing Australian detection rows as sampled absences without an effort audit.",
+    "No retuning gates after endpoint readback."
+  ]
+}
