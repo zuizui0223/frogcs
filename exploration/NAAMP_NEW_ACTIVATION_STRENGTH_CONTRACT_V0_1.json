@@ -1,0 +1,20 @@
+{
+  "analysis": "naamp_new_activation_strength_v0_1",
+  "status": "post_readback_detection_diagnostic_fixed_before_endpoint",
+  "question": "Are rainfall-associated 0-to-positive activations confined to weak CallingIndex=1 detections, or do new species x stop cells also enter directly at CallingIndex 2-3?",
+  "sample": "Frozen 4,236 NAAMP matched pairs; same-observer 3,152-pair sensitivity uses the existing ObserverTrackingID rule.",
+  "components": {
+    "weak_new_score": "sum of wet CallingIndex for cells dry=0, wet=1 (equivalent to count 0->1)",
+    "strong_new_score": "sum of wet CallingIndex for cells dry=0, wet in {2,3}",
+    "activation_identity": "ci_activation = weak_new_score + strong_new_score",
+    "strong_new_count": "count of cells dry=0, wet in {2,3}"
+  },
+  "model": "Each response uses the existing pair model with rain_contrast, temperature_difference, day_of_year_difference, year_gap, State and RunNumber; cluster-robust by route.",
+  "primary_rule": "Strong new activation is supported if strong_new_score rain_contrast beta >0 and its complete 95% CI is >0 in the full sample.",
+  "robustness_rule": "Observer-robust strong activation if the same criterion also holds in same-observer pairs.",
+  "interpretation": {
+    "support": "Rainfall-associated recruitment is not confined to marginal CallingIndex=1 detections; newly active cells also appear at overlapping/full-chorus CallingIndex 2-3.",
+    "boundary": "This weakens a simple weak-call detection-threshold explanation but does not eliminate all acoustic detectability or identify a physiological cause."
+  },
+  "retuning_after_readback": false
+}
