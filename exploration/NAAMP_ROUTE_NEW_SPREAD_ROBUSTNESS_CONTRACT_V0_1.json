@@ -1,0 +1,20 @@
+{
+  "analysis": "naamp_route_new_spread_same_observer_physical_stop_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "question": "Does excess multi-stop spread of route-new species persist when observer identity and physical stop identity are simultaneously held constant?",
+  "sample": "Intersection of same-observer matched pairs and pairs with all ten nonmissing identical SiteID values between wet and dry runs.",
+  "endpoint": "extra_stop_incidence_gain = sum over wet route-new species of max(number of wet stops occupied - 1, 0).",
+  "secondary": "multi_stop_route_new_species count.",
+  "nulls": [
+    "uniform activation kappa=2",
+    "persistence-preserving activation anchor=0.75"
+  ],
+  "null_training": "Dry-history probabilities use only dry runs from the selected robustness subset; candidate species pools retain the existing eligible-run union.",
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "pass_rule": "Observed rain-contrast coefficient for extra_stop_incidence_gain exceeds the upper 95% interval under both null families.",
+  "interpretation": "A pass supports coordinated multi-stop recruitment beyond observer turnover and stop relocation; it does not identify individual movement or hydrological cause.",
+  "retuning_after_readback": false
+}
