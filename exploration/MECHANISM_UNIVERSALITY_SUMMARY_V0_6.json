@@ -1,0 +1,143 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_6",
+  "status": "exploratory_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "current_mechanistic_read": {
+    "strongest_supported": "Rain-associated acoustic expansion is best described as recurrent behavioural activation of a latent local acoustic community. Previously documented species-site combinations are preferentially reactivated, often to overlapping or full chorus intensity, and activated route-new species deepen participation to third and later stops.",
+    "strongest_site_memory_statement": "Using only pre-pair observations and normalizing by candidate-cell opportunity, increasing rain contrast selectively increases CI3 activation at previously used SiteIDs relative to route-known but previously unused SiteIDs. This remains positive in same-observer pairs.",
+    "species_control_boundary": "When pair and species identity are both fixed exactly, prior same-site memory still shows rainfall-dependent reactivation for CI>=2, but CI3 alone is imprecise and does not pass its prefixed gate. Therefore site-memory evidence is strongest for substantial overlapping chorus activation, not uniquely for full chorus.",
+    "spatial_statement": "The special spatial signal is depth, not unusual geographic clustering conditional on occupied-stop count: route-new species are not exceptionally numerous and are not exceptionally likely merely to reach a second stop, but they contribute excess third-and-later-stop incidence.",
+    "proximal_trigger": "Still unresolved. Coarse hydroperiod, wetland system, simple social facilitation, simple temperature context, survey window and an acute one-day decay model do not explain the robust signal.",
+    "generality": "Strong within NAAMP across observers, physical stops, many taxa and leave-one-state-out analyses, but state-specific slopes are heterogeneous and cross-continental universality is not established."
+  },
+  "decisive_results": {
+    "new_full_chorus": {
+      "beta_ci3_count": 0.4413143755210998,
+      "ci95": [
+        0.11436200385886863,
+        0.768266747183331
+      ],
+      "robust_beta": 0.5140603333339898,
+      "robust_ci95": [
+        0.10081588098938049,
+        0.9273047856785992
+      ]
+    },
+    "recurrent_route_new_incidence": {
+      "stable_pairs": 4172,
+      "recurrent_share_of_rain_slope": 0.9809270884016074,
+      "prior_only_share": 0.9893366938882531,
+      "one_off_beta": 0.015478013839897789,
+      "prior_only_one_off_beta": 0.009439685773289727
+    },
+    "full_chorus_memory_raw": {
+      "same_site_recurrent_share_of_ci3_beta": 0.9040000006981866,
+      "any_recurrent_share": 0.980543209373069,
+      "prior_same_site_full_chorus_beta": 0.30835577574102463,
+      "prior_same_site_full_chorus_ci95": [
+        0.014473194712560977,
+        0.6022383567694882
+      ],
+      "prior_only_same_site_share": 0.825963976382714,
+      "prior_only_same_site_ci95": [
+        -0.0066026588454159985,
+        0.7617260149216112
+      ]
+    },
+    "opportunity_normalized_memory": {
+      "leave_pair_out_ci3_beta": 0.016829111731873004,
+      "leave_pair_out_ci95": [
+        0.0028365770275316175,
+        0.030821646436214392
+      ],
+      "same_observer_ci3_beta": 0.016287333264003598,
+      "same_observer_ci95": [
+        0.0013086230550534376,
+        0.03126604347295376
+      ],
+      "prior_only_ci3_beta": 0.02448895976609234,
+      "prior_only_ci95": [
+        0.007001673669270292,
+        0.04197624586291439
+      ],
+      "prior_only_same_observer_beta": 0.030674732734838797,
+      "prior_only_same_observer_ci95": [
+        0.013306013566328205,
+        0.04804345190334939
+      ]
+    },
+    "within_pair_species_memory": {
+      "cells": 55710,
+      "pair_species_groups": 5571,
+      "ci2plus_interaction_beta": 0.014729176941297708,
+      "ci2plus_ci95": [
+        0.002932021753797127,
+        0.02652633212879829
+      ],
+      "ci3_interaction_beta": 0.004868309531942166,
+      "ci3_ci95": [
+        -0.001728134916454697,
+        0.01146475398033903
+      ],
+      "same_observer_ci3_ci95": [
+        -0.0004502209328292369,
+        0.013873582249925803
+      ]
+    },
+    "spatial_depth": {
+      "total_third_plus_beta": 0.4725893914308725,
+      "uniform_ci95": [
+        0.2628759555857566,
+        0.3552224768706642
+      ],
+      "persistence_ci95": [
+        0.1794736101129831,
+        0.27736088366011774
+      ],
+      "strong_ci2_3_share": 0.9729990399510237,
+      "ci3_component_beta": 0.36305644282539035,
+      "ci3_component_ci95": [
+        0.10094942944125052,
+        0.6251634562095302
+      ],
+      "robust_strong_share": 0.9543102422904208
+    },
+    "taxon_diffusion": {
+      "full_positive_species": 28,
+      "full_total_species": 57,
+      "full_top1_share": 0.138781580735396,
+      "full_top5_share": 0.4917813568649047,
+      "full_hhi": 0.07445721047263541,
+      "robust_positive_species": 27,
+      "robust_top5_share": 0.5451503519550087,
+      "robust_hhi": 0.08142688058401427
+    },
+    "geography": {
+      "leave_one_state_out_all_ci_positive": true,
+      "state_specific_estimable": 19,
+      "state_specific_positive_fraction": 0.6842105263157895,
+      "state_specific_ci_positive_fraction": 0.3157894736842105,
+      "mixed_population_beta": 1.654511396413927,
+      "mixed_state_slope_sd": 3.4605301334379646
+    }
+  },
+  "alternatives_not_supported": [
+    "Uniform amplification of already-active cells.",
+    "Weak CI1 detectability alone.",
+    "Observer turnover or physical stop relocation.",
+    "Measured hearing impairment, timeout, wind or traffic as the explanation.",
+    "One-off/first-record species as the main source of route-new incidence.",
+    "Simple recruitment into already-active chorus stops.",
+    "An effect confined to the first day after rain.",
+    "NWI short-hydroperiod context as the strong-chorus mediator.",
+    "Palustrine versus Riverine/Lacustrine wetland system as the strong-chorus mediator.",
+    "Simple thermal-background or survey-window gating.",
+    "Unusual geographic clustering after conditioning on occupied-stop count.",
+    "One or a few species dominating the strong activation signal.",
+    "Uniform state-by-state effects.",
+    "Cross-continental universality."
+  ],
+  "pending": [
+    "NAAMP_PRIOR_SITE_MEMORY_INTENSITY_LOCALIZATION_CONTRACT_V0_1: localize the within-species memory interaction to CI1, CI2 or CI3."
+  ]
+}
