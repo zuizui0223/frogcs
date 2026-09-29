@@ -21,8 +21,12 @@ jobs:
       - run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy 'numcodecs[pcodec]'
       - name: Run frozen AnuraSet replication
         run: python exploration/run_anuraset_rainfall_threshold_replication.py
+      - name: Run INCT41 coordinate-uncertainty replication
+        run: python exploration/run_anuraset_inct41_coordinate_uncertainty.py
       - uses: actions/upload-artifact@v4
         with:
           name: anuraset-rainfall-threshold-replication-v0-1
-          path: exploration/ANURASET_RAINFALL_REPLICATION_RECEIPT_V0_1.json
+          path: |
+            exploration/ANURASET_RAINFALL_REPLICATION_RECEIPT_V0_1.json
+            exploration/ANURASET_INCT41_COORDINATE_UNCERTAINTY_RECEIPT_V0_1.json
           if-no-files-found: error
