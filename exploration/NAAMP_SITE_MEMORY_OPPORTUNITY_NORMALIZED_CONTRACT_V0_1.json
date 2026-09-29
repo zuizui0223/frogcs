@@ -1,0 +1,32 @@
+{
+  "analysis": "naamp_site_memory_opportunity_normalized_v0_1",
+  "status": "post_readback_opportunity_normalization_fixed_before_endpoint",
+  "question": "After accounting for the number of candidate species x site cells, does rainfall preferentially reactivate full choruses at physical sites where the same species has been recorded in other years?",
+  "population": "Frozen NAAMP matched pairs restricted to pairs with identical nonmissing SiteID at all ten StopNumbers.",
+  "candidate_cells": "Within each State x RouteNumber x RunNumber stratum, use the historical species pool represented in eligible runs. For a focal pair, candidate cells are candidate species absent from the entire dry route crossed with the ten stable physical SiteIDs.",
+  "memory_exposure": {
+    "recurrent_cell": "The same species was detected at the same SiteID in any other eligible run of the stratum, excluding the focal wet and dry runs.",
+    "nonrecurrent_cell": "No such leave-pair-out same-SiteID detection."
+  },
+  "outcome": "wet_ci3 = 1 when the focal wet run has CallingIndex 3 for that candidate species at that SiteID, else 0.",
+  "pair_summary": "For each pair, compute wet_ci3 rates separately among recurrent and nonrecurrent candidate cells; primary response is recurrent_rate - nonrecurrent_rate.",
+  "model": {
+    "estimator": "Weighted least squares on pair-level rate difference.",
+    "weight": "n_recurrent * n_nonrecurrent / (n_recurrent + n_nonrecurrent), the effective two-group opportunity size.",
+    "formula": "rate_difference ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "minimum_pair_opportunity": "At least 5 candidate cells in each memory group."
+  },
+  "primary_prediction": "rain_contrast coefficient >0 with complete 95% CI >0.",
+  "minimum_gate": ">=1500 eligible pairs and >=300 routes after the opportunity requirement.",
+  "sensitivities": [
+    "Same-observer subset with the identical opportunity and model rules.",
+    "Repeat outcome as wet CallingIndex >=2 rather than exactly 3; directional diagnostic only."
+  ],
+  "interpretation": [
+    "A positive rain coefficient means increasing rainfall contrast selectively increases chorus activation at previously used species-site combinations beyond their numerical availability.",
+    "This is stronger evidence for site-memory reactivation than a raw recurrent share alone.",
+    "It still does not prove continuous occupancy, individual identity, reproductive success, or a physiological mediator."
+  ],
+  "retuning_after_readback": false
+}
