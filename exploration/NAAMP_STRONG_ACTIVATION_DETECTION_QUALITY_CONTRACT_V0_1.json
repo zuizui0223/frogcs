@@ -1,0 +1,19 @@
+{
+  "analysis": "naamp_strong_activation_detection_quality_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Does rainfall-associated direct 0-to-CallingIndex-2/3 activation persist after adjustment for measured acoustic detection conditions?",
+  "sample": "Same pair eligibility and detection-quality coverage gates as the frozen NAAMP detection-quality robustness analysis.",
+  "response": "strong_new_score: sum of wet CallingIndex for species x stop cells with dry=0 and wet CallingIndex in {2,3}.",
+  "primary_model": "strong_new_score ~ rain_contrast + temp_difference + doy_difference + year_gap + hearing_impairment_difference + timeout_difference + wind_difference + State + RunNumber; route-clustered covariance.",
+  "sensitivities": {
+    "exact_consecutive_year": "Same primary model on year_gap==1.",
+    "car_count": "Add wet-minus-dry mean car count if existing >=750 pairs and >=200 routes gate passes.",
+    "mass_noise": "Replace binary impairment with MassNoiseIndex if existing >=300 pairs and >=75 routes gate passes."
+  },
+  "support_rule": "Rainfall coefficient >0 and complete 95% CI >0 in the primary adjusted sample.",
+  "interpretation": {
+    "support": "Strong new chorus-level recruitment is not explained by the measured hearing/noise/wind conditions.",
+    "boundary": "Does not eliminate all acoustic detection bias or establish a physiological rainfall mechanism."
+  },
+  "retuning_after_readback": false
+}
