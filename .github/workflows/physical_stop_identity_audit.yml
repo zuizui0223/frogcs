@@ -1,0 +1,32 @@
+name: physical stop identity audit
+
+on:
+  push:
+    branches:
+      - exploration/physical-stop-audit-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Compile
+        run: python -m compileall -q exploration scripts
+      - name: Audit physical stop identity
+        run: python exploration/run_naamp_physical_stop_identity_audit.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-physical-stop-identity-audit-v0-1
+          path: |
+            exploration/NAAMP_PHYSICAL_STOP_IDENTITY_AUDIT_CONTRACT_V0_1.json
+            exploration/NAAMP_PHYSICAL_STOP_IDENTITY_AUDIT_RECEIPT_V0_1.json
+          if-no-files-found: error
