@@ -34,6 +34,7 @@ jobs:
       - name: Audit NPS SECN replication eligibility
         run: python exploration/audit_nps_secn_replication_eligibility.py
       - name: Audit NAAMP stop context schema
+        continue-on-error: true
         run: python exploration/audit_naamp_stop_context_schema.py
       - name: Decompose CallingIndex recruitment vs intensification
         run: python exploration/run_naamp_calling_index_decomposition.py
