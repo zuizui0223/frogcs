@@ -125,50 +125,57 @@ def prop(props,suffix):
 
 
 def query_envelope(minlon,minlat,maxlon,maxlat):
-    base_params={
-        "f":"geojson",
+    # First ask ArcGIS only for intersecting object IDs. returnIdsOnly is not
+    # subject to the feature-page MaxRecordCount and avoids pagination order issues.
+    id_params={
+        "f":"json",
         "where":"1=1",
         "geometry":f"{minlon},{minlat},{maxlon},{maxlat}",
         "geometryType":"esriGeometryEnvelope",
         "inSR":"4326",
         "spatialRel":"esriSpatialRelIntersects",
-        "outSR":"4326",
-        "outFields":"*",
-        "returnGeometry":"true",
-        "orderByFields":"OBJECTID ASC",
-        "resultRecordCount":"1000",
+        "returnIdsOnly":"true",
+        "returnGeometry":"false",
     }
+    raw=fetch(NWI_QUERY+"?"+urllib.parse.urlencode(id_params),timeout=120)
+    obj=json.loads(raw.decode("utf-8"))
+    if "error" in obj:
+        raise RuntimeError(f"NWI ID query error: {obj['error']}")
+    ids=[int(x) for x in (obj.get("objectIds") or [])]
+    if not ids:
+        return []
+
     features=[]
     seen=set()
-    offset=0
-    for page in range(50):
-        params=dict(base_params)
-        params["resultOffset"]=str(offset)
-        url=NWI_QUERY+"?"+urllib.parse.urlencode(params)
-        raw=fetch(url,timeout=120)
-        obj=json.loads(raw.decode("utf-8"))
-        if "error" in obj:
-            raise RuntimeError(f"NWI query error: {obj['error']}")
-        fs=obj.get("features") or []
-        newn=0
-        for f in fs:
-            pp=f.get("properties") or {}
+    for i in range(0,len(ids),500):
+        chunk=ids[i:i+500]
+        params={
+            "f":"geojson",
+            "objectIds":",".join(str(x) for x in chunk),
+            "outSR":"4326",
+            "outFields":"*",
+            "returnGeometry":"true",
+        }
+        raw=fetch(NWI_QUERY+"?"+urllib.parse.urlencode(params),timeout=120)
+        page=json.loads(raw.decode("utf-8"))
+        if "error" in page:
+            raise RuntimeError(f"NWI feature query error: {page['error']}")
+        for feat in page.get("features") or []:
+            pp=feat.get("properties") or {}
             key=prop(pp,"OBJECTID") or prop(pp,"GLOBALID") or hashlib.sha1(
-                json.dumps(f,sort_keys=True,separators=(",",":")).encode()
+                json.dumps(feat,sort_keys=True,separators=(",",":")).encode()
             ).hexdigest()
             key=str(key)
             if key in seen:
                 continue
             seen.add(key)
-            features.append(f)
-            newn+=1
-        if len(fs)<1000:
-            break
-        if newn==0:
-            raise RuntimeError("NWI pagination made no progress at full page")
-        offset += len(fs)
-    else:
-        raise RuntimeError("NWI pagination exceeded 50 pages for one route envelope")
+            features.append(feat)
+    if len(features) < len(set(ids)):
+        # Geometry-less or otherwise omitted records are allowed, but large losses
+        # would make nearest-wetland assignment unsafe.
+        missing=len(set(ids))-len(features)
+        if missing > max(5,int(0.01*len(set(ids)))):
+            raise RuntimeError(f"NWI feature retrieval lost {missing}/{len(set(ids))} object IDs")
     return features
 
 
