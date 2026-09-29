@@ -1,0 +1,34 @@
+{
+  "analysis": "openmeteo_era5_vpd_qualification_v0_1",
+  "status": "source_qualification_fixed_before_vpd_response_analysis",
+  "purpose": "Qualify Open-Meteo Historical Weather API as a point-query transport for ERA5 2m temperature/dewpoint/VPD, before reading any frog response endpoint.",
+  "source": {
+    "api": "https://archive-api.open-meteo.com/v1/archive",
+    "model": "ERA5",
+    "settings": [
+      "models=era5",
+      "cell_selection=nearest",
+      "elevation=nan",
+      "timezone=GMT"
+    ],
+    "hourly": [
+      "temperature_2m",
+      "dew_point_2m",
+      "vapour_pressure_deficit"
+    ],
+    "reference": "Earthmover public Icechunk ERA5 single/temporal t2m and d2m"
+  },
+  "sample": "12 deterministic eligible NAAMP runs selected by the smallest SHA256(RunID) values among runs with complete ten stops, valid survey date and parseable StartTime/EndTime.",
+  "location": "Mean latitude/longitude of the run's ten physical SiteID coordinates, mapped to the nearest 0.25-degree ERA5 cell for the Earthmover reference.",
+  "time": "Local survey midpoint converted to UTC with timezonefinder; compare nearest ERA5 valid_time hour. If midpoint is exactly half-hour, ties round to the earlier hour.",
+  "validation": {
+    "openmeteo_multi_coordinate_shape": "A two-coordinate, one-day request must return two point responses with hourly arrays.",
+    "grid_cell": "Open-Meteo returned grid coordinate must be within 0.13 degrees of the Earthmover nearest ERA5 cell.",
+    "temperature_tolerance_C": 0.5,
+    "dewpoint_tolerance_C": 0.5,
+    "vpd_recalculation_tolerance_kPa": 0.03,
+    "pass": "All 12 comparisons pass temperature, dewpoint and cell tolerances; API VPD agrees with VPD recalculated from Open-Meteo temperature/dewpoint within tolerance."
+  },
+  "response_data_read": false,
+  "retuning_after_readback": false
+}
