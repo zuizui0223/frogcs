@@ -1,0 +1,23 @@
+name: current light rain strong activation
+on:
+  push:
+    branches: [exploration/current-light-rain-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python exploration/run_naamp_current_light_rain_strong_activation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-current-light-rain-v0-1
+          path: |
+            exploration/NAAMP_CURRENT_LIGHT_RAIN_STRONG_ACTIVATION_CONTRACT_V0_1.json
+            exploration/NAAMP_CURRENT_LIGHT_RAIN_STRONG_ACTIVATION_RECEIPT_V0_1.json
+          if-no-files-found: error
