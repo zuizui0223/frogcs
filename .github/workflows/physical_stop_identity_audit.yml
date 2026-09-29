@@ -23,10 +23,14 @@ jobs:
         run: python -m compileall -q exploration scripts
       - name: Audit physical stop identity
         run: python exploration/run_naamp_physical_stop_identity_audit.py
+      - name: Test CallingIndex on physically stable pairs
+        run: python exploration/run_naamp_calling_index_physical_stop_sensitivity.py
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-physical-stop-identity-audit-v0-1
           path: |
             exploration/NAAMP_PHYSICAL_STOP_IDENTITY_AUDIT_CONTRACT_V0_1.json
             exploration/NAAMP_PHYSICAL_STOP_IDENTITY_AUDIT_RECEIPT_V0_1.json
+            exploration/NAAMP_CALLING_INDEX_PHYSICAL_STOP_SENSITIVITY_CONTRACT_V0_1.json
+            exploration/NAAMP_CALLING_INDEX_PHYSICAL_STOP_SENSITIVITY_RECEIPT_V0_1.json
           if-no-files-found: error
