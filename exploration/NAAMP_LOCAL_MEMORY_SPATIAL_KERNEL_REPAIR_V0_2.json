@@ -1,0 +1,19 @@
+{
+  "analysis": "naamp_local_memory_spatial_kernel_v0_2_repair",
+  "status": "repair frozen after v0.1 numerical nonidentifiability and before repaired endpoint readback",
+  "defect": "The v0.1 full-sample simultaneous same/adjacent/distant dummy model became rank-deficient in informative pair x species groups where those categories exhausted all ten stops, producing non-finite standard errors and absurd coefficients. The biological contrast itself was prespecified and is unchanged.",
+  "unchanged_question": "Is species-specific prior strong-chorus memory more localized to the exact physical SiteID than to immediately adjacent StopNumbers?",
+  "repaired_primary_design": "Restrict to pair x species groups containing at least one same-site-memory stop AND at least one adjacent-site-only-memory stop. Within each such group, retain only those two stop classes. Regress demeaned wet_strong on demeaned same-site indicator, log1p(other-species prior strong richness), and prior site effort; no intercept; route-clustered covariance. The same-site coefficient is exactly the prespecified same-minus-adjacent contrast.",
+  "primary_prediction": "Repaired same-minus-adjacent coefficient >0 with complete 95% CI >0.",
+  "secondary": [
+    "Repeat for wet_full (CI3).",
+    "Repeat wet_strong in same-observer pairs.",
+    "Separately compare adjacent-site-only versus distant-route-site-only groups using the same pairwise contrast construction; descriptive only."
+  ],
+  "gate": "At least 300 pair x species groups for the same-vs-adjacent primary contrast, >=200 routes and >=20 species.",
+  "prohibited": [
+    "No use of v0.1 divergent full-sample coefficients.",
+    "No change to the biological endpoint or category definitions.",
+    "No interpretation of the repair as confirmatory beyond this post-readback exploration."
+  ]
+}
