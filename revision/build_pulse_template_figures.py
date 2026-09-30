@@ -10,6 +10,13 @@ DATA=json.loads((ROOT/"revision"/"PULSE_TEMPLATE_FIGURE_DATA_V0_1.json").read_te
 OUT=ROOT/"figures_pulse_template"
 OUT.mkdir(exist_ok=True)
 
+# Remove legacy public figure names that used exploratory "higher-order" terminology.
+for legacy in (
+    "fig3_higher_order_null_ladder.svg",
+    "fig3_higher_order_null_ladder.png",
+):
+    (OUT/legacy).unlink(missing_ok=True)
+
 def save(fig,name):
     fig.tight_layout()
     fig.savefig(OUT/f"{name}.svg",bbox_inches="tight")
