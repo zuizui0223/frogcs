@@ -1,0 +1,69 @@
+{
+  "schema": "wfts_canonical_replication_v0_1",
+  "status": "frozen_before_WFTS_response_data_access",
+  "runs_file": {
+    "required_columns": [
+      "route_id",
+      "survey_period",
+      "survey_year",
+      "survey_date",
+      "rain_recency",
+      "tmean_run"
+    ],
+    "survey_period_levels": ["early_spring", "late_spring", "summer"],
+    "grain": "one row per traditional route x survey period x year"
+  },
+  "matrix_file": {
+    "required_columns": [
+      "route_id",
+      "survey_period",
+      "survey_year",
+      "survey_date",
+      "station_order",
+      "physical_site_id",
+      "taxon_key",
+      "call_index"
+    ],
+    "grain": "complete route-run x 10 physical stations x fixed WFTS taxon list",
+    "call_index_allowed": [0, 1, 2, 3],
+    "station_order_allowed": [1,2,3,4,5,6,7,8,9,10]
+  },
+  "taxa": [
+    "american_toad",
+    "blanchards_cricket_frog",
+    "boreal_chorus_frog",
+    "spring_peeper",
+    "gray_treefrog",
+    "copes_gray_treefrog",
+    "wood_frog",
+    "northern_leopard_frog",
+    "pickerel_frog",
+    "green_frog",
+    "mink_frog",
+    "american_bullfrog"
+  ],
+  "primary_weather": {
+    "product": "Daymet Version 4 R1",
+    "doi": "10.3334/ORNLDAAC/2129",
+    "dry_day_threshold_mm": 1.0,
+    "dry_day_cap": 30,
+    "survey_day_precipitation_used": false,
+    "route_run_rain_recency": "mean over 10 stations of log(1 + consecutive prior dry days)"
+  },
+  "principal_comparator": {
+    "crossfit_route_folds": true,
+    "minimum_positive_stop_cells_species_slope": 20,
+    "minimum_positive_routes_species_slope": 5,
+    "strictly_prior_site_history": true,
+    "history_kappa": 2.0,
+    "dry_state_anchor": 0.75,
+    "pair_magnitude_matching": true,
+    "simulations": 1000,
+    "seed": 2840223
+  },
+  "coverage_gate": {
+    "minimum_routes": 30,
+    "minimum_principal_pairs": 300,
+    "minimum_routes_per_fold": 10
+  }
+}
