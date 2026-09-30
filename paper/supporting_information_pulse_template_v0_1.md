@@ -814,130 +814,121 @@ CI1-only spatial deepening was not supported.
 
 After the existing conditional-spread and third-and-later results were known, we fixed a distinct higher-order test before reading its endpoint in `NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_CONTRACT_V0_1.json`. The interpretation for both PASS and FAIL outcomes was also frozen before endpoint readback in `HIGHER_ORDER_SPATIAL_COHERENCE_DECISION_NOTE_V0_1.md`.
 
-For each route-new species occupying (k) wet stops, define (e=max(k-1,0)). We calculated
+For each route-new species occupying (k) wet stops, define (e=\max(k-1,0)). We calculated
 
 `higher_order_within_species_mass = choose(e,2) = e(e-1)/2`.
 
 This statistic is zero for (k≤2) and grows convexly for (k≥3). For example, if three recruited taxa collectively contribute three extra-stop incidences, allocating them as one extra stop to each taxon gives mass 0, whereas allocating all three extra incidences to one taxon gives mass 3. Thus it distinguishes deep within-taxon concentration from the amount of recruitment or spread itself.
 
-For each primary null family, 1,000 simulated coefficient triplets were generated:
-
-1. route-new-species gain;
-2. total extra-stop incidence;
-3. higher-order within-species mass.
-
-Across the 1,000 simulations we fitted
+For each primary null family, 1,000 simulated coefficient triplets were generated: route-new-species gain, total extra-stop incidence, and higher-order within-species mass. Across the simulations we fitted
 
 `higher_beta = intercept + b1 * new_species_beta + b2 * extra_stop_beta`.
 
-The primary statistic was the observed higher-order coefficient minus the null prediction evaluated at the observed route-new-species and extra-stop coefficients. Support required this conditional residual to exceed the upper 95% simulated residual bound under **both** null families.
+The primary statistic was the observed higher-order coefficient minus the null prediction evaluated at the observed route-new-species and extra-stop coefficients. Support required this conditional residual to exceed the upper 95% simulated residual bound under both null families.
 
 Observed first-order coefficients were:
-
 - route-new-species gain: **β = 0.1847**;
-- extra-stop incidence gain: **β = 0.6043**.
+- extra-stop incidence gain: **β = 0.6043**;
+- higher-order coefficient: **β = 1.5240**.
 
-The observed higher-order coefficient was **β = 1.5240**.
+Uniform κ=2:
+- predicted higher-order β = **1.1384**;
+- conditional residual = **0.3856**;
+- null residual 95% interval = **−0.0984–0.0959**;
+- **P = 0.000999**.
 
-Under the κ=2 uniform-activation null:
+Persistence a=0.75:
+- predicted higher-order β = **0.7836**;
+- conditional residual = **0.7404**;
+- null residual 95% interval = **−0.0805–0.0824**;
+- **P = 0.000999**.
 
-- predicted higher-order β at the observed first-order coefficients: **1.1384**;
-- observed conditional residual: **0.3856**;
-- null residual 95% interval: **−0.0984 to 0.0959**;
-- plus-one upper-tail **P = 0.000999**.
+The prefixed classification was **higher-order spatial coherence supported**.
 
-Under the a=0.75 persistence-preserving null:
-
-- predicted higher-order β: **0.7836**;
-- observed conditional residual: **0.7404**;
-- null residual 95% interval: **−0.0805 to 0.0824**;
-- plus-one upper-tail **P = 0.000999**.
-
-The prefixed classification was therefore **higher-order spatial coherence supported**.
-
-A separate conditional route-topology analysis had already shown that adjacent-stop links increased with rainfall contrast (**β = 0.4194**) and remained above the upper conditional residual range under both primary nulls after conditioning on total extra-stop spread (both **P = 0.000999**).
+A separate route-topology analysis showed that adjacent-stop links increased with rainfall contrast (**β = 0.4194**) and remained above the upper conditional residual range under both primary nulls after conditioning on total extra-stop spread (both **P = 0.000999**).
 
 These tests establish non-independent spatial expression at the route scale. They do **not** establish literal simultaneity because stops were surveyed sequentially, nor do they identify movement, hydrological connectivity, social facilitation or a causal rainfall mechanism.
 
-### S11.4 Cross-fit species-response and strictly-prior-history falsification
+### S11.4 Exact conditional directional validation
 
-After the initial higher-order endpoint was supported, a separate falsification was fixed before its endpoint readback in `NAAMP_HIGHER_ORDER_CROSSFIT_SPECIES_HISTORY_CONTRACT_V0_1.json`. The endpoint and conditional-regression statistic were unchanged.
+A methodological validation was fixed before endpoint readback to avoid any concern that the regression-conditioned test extrapolated from the simulated cloud of first-order coefficients.
 
-Two stronger null families were tested.
+For every matched pair, the endpoint was computed in both directions: wet survey as target versus dry reference, and dry survey as target versus wet reference. For each direction:
+- (N) = number of target-new taxa;
+- (K) = total target incidences across those taxa;
+- (H = \sum_i {k_i-1 \choose 2}).
 
-**Cross-fit species-specific rainfall response, full sample (4,236 pairs).** Species rainfall shifts were estimated only on routes in the opposite deterministic fold and applied to held-out routes. At the observed route-new-species and extra-stop coefficients, this null predicted higher-order β = **1.1979** versus **1.5240** observed. The observed conditional residual was **0.3261**, compared with a null 95% residual interval of **−0.1006 to 0.1086**; plus-one **P = 0.000999**.
+Dynamic programming gave the exact exchangeable distribution of (H) across all (N \times 10) binary matrices with every row occupied at least once and exactly (K) incidences. We calculated raw excess (H-E(H\mid N,K)) and standardized excess. The directional predictor was +rain_contrast for wet-as-target and −rain_contrast for dry-as-target, with predictor and response demeaned within pair.
 
-**Joint cross-fit species response + strictly-prior species × SiteID history + dry persistence (2,916 pairs, 439 routes).** This null combined the opposite-fold species rainfall shifts with species × physical-SiteID probabilities estimated strictly before the focal pair and an a=0.75 dry-state anchor. The observed higher-order coefficient in this subset was **1.6503**; the null predicted **1.3535** at the observed first-order coefficients. The conditional residual was **0.2969**, compared with **−0.1319 to 0.1187**, again **P = 0.000999**.
+Full 4,236 pairs:
+- raw excess: **β = 0.2439**, 95% CI **0.1474–0.3404**, **P = 7.33 × 10^-7**;
+- standardized excess: **β = 0.09075**, 95% CI **0.05946–0.12203**, **P = 1.31 × 10^-8**.
 
-The prefixed classification was therefore **higher-order dependence beyond species response and prior local history supported**. This means the tested additive combination of transferable species rainfall sensitivity, historical local propensity and dry-state persistence does not reproduce the concentration of extra spatial participation within the same recruited taxa. It does not require or identify an additional causal factor.
+Same-observer + same-physical-site subset (3,115 pairs, 499 routes):
+- raw excess: **β = 0.2543**, 95% CI **0.1375–0.3712**, **P = 1.98 × 10^-5**;
+- standardized excess: **β = 0.09032**, 95% CI **0.05604–0.12460**, **P = 2.42 × 10^-7**.
 
-### S11.4 Same-observer + same-physical-site robustness
+The prefixed classification was **strong support**. This validation conditions exactly on the first-order number of recruited taxa and total route-new incidence. It does not make taxa biologically exchangeable; cross-fitted species-response and prior-site-history falsifications address that separate issue.
 
-We repeated the **unchanged** higher-order endpoint and unchanged conditional-null procedure in the intersection of same-observer pairs and pairs retaining identical nonmissing SiteID at all ten stops. The robustness contract was fixed before this restricted-sample endpoint was read.
+### S11.5 Same-observer + same-physical-site robustness
+
+We repeated the unchanged higher-order endpoint and conditional-null procedure in the intersection of same-observer pairs and pairs retaining identical nonmissing SiteID at all ten stops. The robustness contract was fixed before this restricted-sample endpoint was read.
 
 Coverage:
 - 3,115 pairs;
 - 499 routes;
 - 540 observer identifiers.
 
-Observed coefficients:
+Observed:
 - route-new-species gain: **β = 0.2263**;
 - extra-stop incidence: **β = 0.7338**;
 - higher-order within-species mass: **β = 1.8173**.
 
 Uniform κ=2:
-- predicted higher-order β at observed first-order quantities: **1.4002**;
-- conditional residual: **0.4171**;
-- null residual 95% interval: **−0.1116–0.1106**;
+- predicted higher-order β = **1.4002**;
+- conditional residual = **0.4171**;
+- null residual 95% interval = **−0.1116–0.1106**;
 - **P = 0.000999**.
 
 Persistence a=0.75:
-- predicted higher-order β: **0.9184**;
-- conditional residual: **0.8989**;
-- null residual 95% interval: **−0.0972–0.0989**;
+- predicted higher-order β = **0.9184**;
+- conditional residual = **0.8989**;
+- null residual 95% interval = **−0.0972–0.0989**;
 - **P = 0.000999**.
 
 The prefixed joint-robustness classification passed. Observer turnover and physical-stop relocation are therefore not required to generate the higher-order concentration.
 
-### S11.5 Cross-fit species-response and strictly-prior-history falsification
+### S11.6 Cross-fit species-response and strictly-prior-history falsification
 
-A separate falsification asked whether the higher-order concentration can be generated by transferable species-specific rainfall sensitivity, and then by its additive combination with strictly-prior local site history and dry persistence.
+A separate falsification asked whether the higher-order concentration can be generated by transferable species-specific rainfall sensitivity, and then by its additive combination with strictly-prior local site history and dry persistence. The endpoint and conditional statistic were unchanged.
 
 Species-specific rainfall slopes were learned only from the opposite deterministic route fold. Forty-two species were estimable in both training folds; cross-fold correlation of the estimated rainfall shifts was **0.240**.
 
 **Full 4,236-pair cross-fit species-response null**
-
-Observed:
-- route-new-species β = **0.1847**;
-- extra-stop β = **0.6043**;
-- higher-order β = **1.5240**.
-
-Cross-fit species null:
+- observed route-new-species β = **0.1847**;
+- observed extra-stop β = **0.6043**;
+- observed higher-order β = **1.5240**;
 - predicted higher-order β = **1.1979**;
 - conditional residual = **0.3261**;
 - null residual 95% interval = **−0.1006–0.1086**;
 - **P = 0.000999**.
 
 **Strictly-prior 2,916-pair joint species + site-history + dry-persistence null**
-
-Observed:
-- route-new-species β = **0.1982**;
-- extra-stop β = **0.6809**;
-- higher-order β = **1.6503**.
-
-Joint null:
+- observed route-new-species β = **0.1982**;
+- observed extra-stop β = **0.6809**;
+- observed higher-order β = **1.6503**;
 - predicted higher-order β = **1.3535**;
 - conditional residual = **0.2969**;
 - null residual 95% interval = **−0.1319–0.1187**;
 - **P = 0.000999**.
 
-The prefixed classification therefore supported higher-order dependence beyond both transferable species rainfall response and its additive combination with strictly-prior local site propensity and dry persistence.
+The prefixed classification supported higher-order dependence beyond both transferable species rainfall response and its additive combination with strictly-prior local site propensity and dry persistence.
 
-This result should not be paraphrased as "site history does not matter" or "species differ little". Both species response and historical site use contain information. The narrower inference is that **their tested first-order combination does not generate the observed within-taxon concentration of multi-site activation**.
+This result should not be paraphrased as “site history does not matter” or “species differ little”. Both species response and historical site use contain information. The narrower inference is that **their tested first-order combination does not generate the observed within-taxon concentration of multi-site activation**.
 
-### S11.6 Taxonomic generality of the higher-order coefficient
+### S11.7 Taxonomic generality of the higher-order coefficient
 
-We decomposed the higher-order rainfall coefficient by taxon using the same linear matched design. The generality audit reused, without modification, the concentration thresholds previously fixed for route-new spread: top-1 positive share ≤0.25, top-5 ≤0.60, HHI ≤0.10 and all leave-one-taxon-out total coefficients >0.
+We decomposed the higher-order rainfall coefficient by taxon using the same linear matched design. The audit reused, without modification, the concentration thresholds previously fixed for route-new spread: top-1 positive share ≤0.25, top-5 ≤0.60, HHI ≤0.10 and all leave-one-taxon-out total coefficients >0.
 
 Results:
 - taxa represented: **53**;
@@ -951,9 +942,9 @@ Results:
 
 The prefixed classification was **diffuse taxonomic contribution**. This does not imply that every species responds positively or through the same mechanism; it shows that no single taxon or small set of taxa is required for the pooled higher-order coefficient.
 
-### S11.7 Geographic generality of the higher-order endpoint
+### S11.8 Geographic generality of the higher-order endpoint
 
-We applied the same leave-one-state-out decision rule used in the frozen RC11 geographic audit to the unchanged higher-order endpoint.
+We applied the same leave-one-state-out decision rule used in the frozen pre-integration geographic audit to the unchanged higher-order endpoint.
 
 Full pooled higher-order model:
 - **β = 1.5240**;
@@ -966,14 +957,14 @@ Across all 21 leave-one-state-out refits:
 - every 95% CI remained entirely positive;
 - minimum leave-one-state-out 95% CI lower bound = **0.3973**.
 
-The prefixed classification was therefore **strong PASS**.
+The prefixed classification was **strong PASS**.
 
 State-specific models were descriptive and heterogeneous:
 - estimable states = **17**;
 - positive point estimates = **14/17**;
 - wholly positive 95% CIs = **2/17**.
 
-This distinction is important: higher-order coherence is not dependent on any single state, but its strength is not geographically homogeneous.
+Higher-order coherence is therefore not dependent on any single state, but its strength is not geographically homogeneous.
 
 ## S12. Historical recurrence of apparent wet-state recruitment
 
