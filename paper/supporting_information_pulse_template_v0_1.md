@@ -859,6 +859,18 @@ A separate conditional route-topology analysis had already shown that adjacent-s
 
 These tests establish non-independent spatial expression at the route scale. They do **not** establish literal simultaneity because stops were surveyed sequentially, nor do they identify movement, hydrological connectivity, social facilitation or a causal rainfall mechanism.
 
+### S11.4 Cross-fit species-response and strictly-prior-history falsification
+
+After the initial higher-order endpoint was supported, a separate falsification was fixed before its endpoint readback in `NAAMP_HIGHER_ORDER_CROSSFIT_SPECIES_HISTORY_CONTRACT_V0_1.json`. The endpoint and conditional-regression statistic were unchanged.
+
+Two stronger null families were tested.
+
+**Cross-fit species-specific rainfall response, full sample (4,236 pairs).** Species rainfall shifts were estimated only on routes in the opposite deterministic fold and applied to held-out routes. At the observed route-new-species and extra-stop coefficients, this null predicted higher-order β = **1.1979** versus **1.5240** observed. The observed conditional residual was **0.3261**, compared with a null 95% residual interval of **−0.1006 to 0.1086**; plus-one **P = 0.000999**.
+
+**Joint cross-fit species response + strictly-prior species × SiteID history + dry persistence (2,916 pairs, 439 routes).** This null combined the opposite-fold species rainfall shifts with species × physical-SiteID probabilities estimated strictly before the focal pair and an a=0.75 dry-state anchor. The observed higher-order coefficient in this subset was **1.6503**; the null predicted **1.3535** at the observed first-order coefficients. The conditional residual was **0.2969**, compared with **−0.1319 to 0.1187**, again **P = 0.000999**.
+
+The prefixed classification was therefore **higher-order dependence beyond species response and prior local history supported**. This means the tested additive combination of transferable species rainfall sensitivity, historical local propensity and dry-state persistence does not reproduce the concentration of extra spatial participation within the same recruited taxa. It does not require or identify an additional causal factor.
+
 ### S11.4 Same-observer + same-physical-site robustness
 
 We repeated the **unchanged** higher-order endpoint and unchanged conditional-null procedure in the intersection of same-observer pairs and pairs retaining identical nonmissing SiteID at all ten stops. The robustness contract was fixed before this restricted-sample endpoint was read.
