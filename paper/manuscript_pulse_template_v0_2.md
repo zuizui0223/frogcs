@@ -248,9 +248,11 @@ The higher-order spatial signal itself was not carried by one dominant taxon. Ac
 
 Strong chorus activation showed the same qualitative breadth. Of 57 species represented in that decomposition, 28 had positive contributions; the largest contributor accounted for 13.9% of positive mass and the top five for 49.2%, with HHI = 0.074.
 
-Nor did one state determine the programme-scale result: leaving out each state in turn left the strong-activation coefficient positive with a positive 95% confidence interval. This robustness did not imply geographic homogeneity. Among 19 states with estimable state-specific strong-activation slopes, 13 had positive point estimates and only six had wholly positive 95% confidence intervals. The random-slope population estimate was 1.65, while the among-state slope SD was 3.46.
+The higher-order endpoint itself was also insensitive to any one state. Across all 21 leave-one-state-out refits, higher-order rainfall coefficients ranged from **0.967 to 1.775**, and every 95% confidence interval remained above zero; the smallest lower bound was **0.397**. Thus no single sampled state was required for the pooled higher-order association.
 
-The appropriate interpretation is therefore broad programme-scale support with substantial regional heterogeneity in response strength.
+This robustness did not imply geographic homogeneity. Among 17 states with estimable state-specific higher-order models, 14 had positive point estimates but only two had wholly positive 95% confidence intervals. The broader strong-activation analysis showed the same pattern of heterogeneity: among 19 estimable states, 13 had positive point estimates and six had wholly positive intervals; its random-slope population estimate was 1.65 with state-slope SD 3.46.
+
+The appropriate interpretation is therefore **broad programme-scale robustness with substantial regional heterogeneity in response strength**.
 
 ### Taxonomic deepening has the same recent-rain direction in Australian FrogID
 
@@ -302,7 +304,7 @@ Potential lower-level generators remain numerous. Fine-scale hydroperiod, vegeta
 
 ### Broad within-programme support does not mean uniformity
 
-The higher-order pattern was distributed across many taxa, and the broader strong-activation signal was robust to deleting any one state, which already argues against a single taxon dominating the result. Yet state-specific effects were highly heterogeneous, with the estimated among-state slope variation exceeding the population mean. Regional differences in species pools, rainfall regimes, hydrology, seasonal timing and programme design may therefore modulate how strongly the fast gate is expressed.
+The higher-order pattern was distributed across many taxa and retained a positive, CI-supported rainfall coefficient after deleting each state in turn, arguing against either a single taxon or a single sampled state driving the result. Yet state-specific effects were highly heterogeneous, with the estimated among-state slope variation exceeding the population mean. Regional differences in species pools, rainfall regimes, hydrology, seasonal timing and programme design may therefore modulate how strongly the fast gate is expressed.
 
 This distinction matters for generalization. The NAAMP evidence supports a broad North American programme-scale pattern, not a spatially invariant response. FrogID adds directional consistency for wet-condition taxonomic deepening in Australia, but lacks the repeated physical-site structure needed to test the fast-gate × slow-template mechanism. Universality of the full mechanism remains unestablished.
 
