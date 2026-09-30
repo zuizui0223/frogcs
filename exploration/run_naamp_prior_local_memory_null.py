@@ -229,6 +229,10 @@ def main():
     runs,sets=base.build_runs(raw)
     eligible=set(runs.RunID.astype(str))
 
+    # Reuse the already fetched, pinned source tables inside uniform.prepare()
+    # to avoid a second network fetch and guarantee byte-identical input.
+    uniform.base.load=lambda: raw
+
     (
         pairs,pair_data,pools,dry_ids,sampled,ss,r0,den0,obs0,
         beta_mask,r_beta,den_beta,obs_sor
