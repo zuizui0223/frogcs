@@ -1,6 +1,6 @@
 # Journal of Animal Ecology title page — integrated revision metadata template
 
-**Manuscript title:** Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence
+**Manuscript title:** Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence
 
 **Article type:** Research Article
 
@@ -10,7 +10,7 @@
 
 **Corresponding author:** [CONFIRM NAME, POSTAL ADDRESS, EMAIL]
 
-**Main-manuscript word count:** [RECALCULATE AFTER FINAL METADATA / FORMATTING; current anonymized Markdown ≈ 7,486 words including title, abstract, references and figure legends]
+**Main-manuscript word count:** [RECALCULATE AFTER FINAL METADATA / FORMATTING]
 
 ## Acknowledgements
 
@@ -26,7 +26,7 @@
 
 ## Statement on Inclusion
 
-[REQUIRED DURING JAE SUBMISSION: describe regional collaboration, opportunities for intellectual input, and sharing of outcomes with stakeholders as applicable. This study uses secondary public monitoring data and contains no new local field collection by the authors; tailor the final statement accordingly.]
+[REQUIRED DURING JAE SUBMISSION: tailor to secondary public monitoring data and regional intellectual/stakeholder context.]
 
 ## Ethics and permits
 
