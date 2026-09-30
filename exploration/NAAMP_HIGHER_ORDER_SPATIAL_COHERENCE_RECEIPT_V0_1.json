@@ -1,0 +1,54 @@
+{
+  "analysis": "naamp_higher_order_spatial_coherence_v0_1",
+  "classification": {
+    "higher_order_spatial_coherence_supported": true
+  },
+  "contract": "exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_CONTRACT_V0_1.json",
+  "interpretation_boundary": {
+    "causal_rainfall_claim": false,
+    "hydrological_connectivity_inferred": false,
+    "individual_movement_inferred": false,
+    "literal_simultaneity_inferred": false
+  },
+  "n_pairs": 4236,
+  "observed": {
+    "extra_stop_incidence_gain_beta": 0.6042952999648085,
+    "higher_order_within_species_mass_beta": 1.52397912912372,
+    "route_new_species_gain_beta": 0.1846754325853956,
+    "threeplus_species_count_beta": 0.10974632759498934
+  },
+  "persistence_anchor_0_75": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_extra_stop_slope": 1.4858791260034097,
+    "null_regression_intercept": -0.018593959520945617,
+    "null_regression_new_species_slope": -0.5181653315509716,
+    "null_regression_r2": 0.5783674551163559,
+    "null_residual_ci95": [-0.08051738365150705, 0.08235444072292973],
+    "observed_conditional_residual": 0.7403557232399183,
+    "observed_extra_stop_beta": 0.6042952999648085,
+    "observed_higher_order_beta": 1.52397912912372,
+    "observed_new_species_beta": 0.1846754325853956,
+    "observed_threeplus_species_beta": 0.10974632759498934,
+    "predicted_higher_order_beta_at_observed_first_order": 0.7836234058838016,
+    "unconditioned_percentile": 1.0,
+    "unconditioned_upper_tail_p": 0.000999000999000999
+  },
+  "uniform_kappa2": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_extra_stop_slope": 1.9553851876760646,
+    "null_regression_intercept": 0.059733223055232834,
+    "null_regression_new_species_slope": -0.5575603692636266,
+    "null_regression_r2": 0.5707681230929273,
+    "null_residual_ci95": [-0.09840174811232802, 0.0959329688941465],
+    "observed_conditional_residual": 0.3855835299212693,
+    "observed_extra_stop_beta": 0.6042952999648085,
+    "observed_higher_order_beta": 1.52397912912372,
+    "observed_new_species_beta": 0.1846754325853956,
+    "observed_threeplus_species_beta": 0.10974632759498934,
+    "predicted_higher_order_beta_at_observed_first_order": 1.1383955992024506,
+    "unconditioned_percentile": 1.0,
+    "unconditioned_upper_tail_p": 0.000999000999000999
+  }
+}
