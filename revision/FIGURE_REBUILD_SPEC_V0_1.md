@@ -189,7 +189,7 @@ Visually mark every rejection identically; do **not** make later nulls look like
 - `exploration/crossfit-memory-gating-null-v1/exploration/FINAL_MECHANISM_SYNTHESIS_V0_1.json`
 
 ### Message printed in figure
-**Adding transferable species sensitivity, local history and a held-out rain × history gate improves biological realism but still does not reproduce the observed chorus-state allocation.**
+**Adding transferable species sensitivity, local history and the held-out rain × history gate still underpredicts higher-order within-taxon concentration and the full chorus-state allocation.**
 
 ---
 
