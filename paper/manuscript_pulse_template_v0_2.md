@@ -242,9 +242,11 @@ Finally, a held-out cross-fit rain × local-history gate was still rejected (P =
 
 The prefixed decision tree therefore stopped mechanism escalation. These rejections do not identify a unique missing mechanism; they show that the observed chorus-state geometry is not reproduced by independent species rainfall sensitivity, static local historical propensity, dry persistence, or one transferable rain × history interaction.
 
-### The chorus-state response is taxonomically broad but geographically heterogeneous
+### Higher-order coherence is taxonomically diffuse but geographically heterogeneous
 
-Strong activation was not carried by one dominant species. Of 57 species represented in the strong-chorus decomposition, 28 had positive contributions. The largest contributor accounted for 13.9% of positive mass and the top five for 49.2%; the HHI of positive contribution shares was 0.074. Removing any single species left the total strong-activation coefficient positive.
+The higher-order spatial signal itself was not carried by one dominant taxon. Across 53 taxa in the higher-order decomposition, 25 had positive contributions and 19 contributed at least 1% of positive mass. The largest contributor accounted for **18.8%** of positive mass, the top five for **54.2%**, and HHI was **0.0855**, meeting the previously defined diffuse-contribution rule. Removing any single taxon left the total higher-order coefficient positive; the smallest leave-one-taxon-out coefficient was **1.209**.
+
+Strong chorus activation showed the same qualitative breadth. Of 57 species represented in that decomposition, 28 had positive contributions; the largest contributor accounted for 13.9% of positive mass and the top five for 49.2%, with HHI = 0.074.
 
 Nor did one state determine the programme-scale result: leaving out each state in turn left the strong-activation coefficient positive with a positive 95% confidence interval. This robustness did not imply geographic homogeneity. Among 19 states with estimable state-specific strong-activation slopes, 13 had positive point estimates and only six had wholly positive 95% confidence intervals. The random-slope population estimate was 1.65, while the among-state slope SD was 3.46.
 
@@ -300,7 +302,7 @@ Potential lower-level generators remain numerous. Fine-scale hydroperiod, vegeta
 
 ### Broad within-programme support does not mean uniformity
 
-The pattern was distributed across many species and robust to deleting any one state, which argues against a single taxon or region driving the result. Yet state-specific effects were highly heterogeneous, with the estimated among-state slope variation exceeding the population mean. Regional differences in species pools, rainfall regimes, hydrology, seasonal timing and programme design may therefore modulate how strongly the fast gate is expressed.
+The higher-order pattern was distributed across many taxa, and the broader strong-activation signal was robust to deleting any one state, which already argues against a single taxon dominating the result. Yet state-specific effects were highly heterogeneous, with the estimated among-state slope variation exceeding the population mean. Regional differences in species pools, rainfall regimes, hydrology, seasonal timing and programme design may therefore modulate how strongly the fast gate is expressed.
 
 This distinction matters for generalization. The NAAMP evidence supports a broad North American programme-scale pattern, not a spatially invariant response. FrogID adds directional consistency for wet-condition taxonomic deepening in Australia, but lacks the repeated physical-site structure needed to test the fast-gate × slow-template mechanism. Universality of the full mechanism remains unestablished.
 
