@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_higher_order_crossfit_species_history_v0_1",
+  "status": "post_readback_falsification_fixed_before_endpoint",
+  "question": "Can transferable species-specific rainfall sensitivity, and then species sensitivity plus strictly-prior local site history and dry-state persistence, generate the observed higher-order within-taxon concentration of multi-site activation?",
+  "endpoint": "Exactly the previously frozen higher_order_within_species_mass = sum choose(max(k-1,0),2) across route-new taxa.",
+  "conditioning": "For each null family separately, condition the higher-order coefficient on both the simulated route-new-species coefficient and simulated total extra-stop coefficient using the same null-regression residual method fixed in NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_CONTRACT_V0_1.",
+  "null_families": {
+    "crossfit_species_full": {
+      "population": "Frozen full 4,236-pair sample.",
+      "baseline": "Existing kappa=2 historical species x stop probabilities from the uniform null.",
+      "species_response": "Route-cross-fit species-specific rainfall gamma learned only from the opposite deterministic route fold.",
+      "magnitude": "One pair-level common shift solved so expected wet incidence count equals observed."
+    },
+    "joint_species_prior_history": {
+      "population": "Exactly the 2,916-pair strictly-prior physical-SiteID subset used by the existing joint species-memory null.",
+      "baseline": "Strictly-prior species x physical-SiteID probabilities.",
+      "dry_persistence": "a=0.75 dry-state anchor.",
+      "species_response": "Same route-cross-fit species-specific rainfall gamma.",
+      "magnitude": "One pair-level common shift solved so expected wet incidence count equals observed."
+    }
+  },
+  "simulation": {"replicates": 1000, "seed_family": 2840223},
+  "primary_rule": "Higher-order dependence beyond species response and history is supported only if the observed conditional residual exceeds the upper 95% residual bound under BOTH the cross-fit species-only null and the joint species + strictly-prior local-history + dry-persistence null.",
+  "interpretation": [
+    "Pass means the observed concentration of extra spatial participation within the same recruited taxa is not reproduced by transferable species rainfall sensitivity or by its additive combination with prior local site propensity and dry persistence.",
+    "Failure under either family means higher-order concentration should not be presented as structure beyond that family.",
+    "No literal synchrony, movement, social facilitation, hydrological connectivity, causal rainfall, or universal mechanism is inferred.",
+    "No statistic, subset, cross-fit rule, null family, tail, or threshold may change after endpoint readback."
+  ],
+  "retuning_after_readback": false
+}
