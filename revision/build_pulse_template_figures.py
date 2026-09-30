@@ -13,7 +13,7 @@ OUT.mkdir(exist_ok=True)
 def save(fig,name):
     fig.tight_layout()
     fig.savefig(OUT/f"{name}.svg",bbox_inches="tight")
-    fig.savefig(OUT/f"{name}.png",dpi=240,bbox_inches="tight")
+    fig.savefig(OUT/f"{name}.png",dpi=300,bbox_inches="tight")
     plt.close(fig)
 
 # Figure 1: calling-state switch
