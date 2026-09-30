@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_rain_selective_memory_bootstrap_v0_1",
+  "status": "post-readback directional coefficient contrast fixed before endpoint",
+  "question": "Using all direction-eligible pairs, is the rainfall-contrast slope of local-memory targeting stronger when the target survey is the wetter member than when the target is the drier member?",
+  "source_definition": "Mirror exactly NAAMP_PRIOR_SITE_MEMORY_OPPORTUNITY_V0_1 using only eligible runs strictly before the earlier focal-pair year.",
+  "directional_models": {
+    "wet_target": "Candidate species were previously known from the route but absent from the focal dry route; response is CI3 rate at prior-same-SiteID candidates minus route-only candidates in the wet survey.",
+    "dry_target": "Exact mirror: candidate species previously known from the route but absent from the focal wet route; response is CI3 rate difference in the dry survey.",
+    "formula": "rate_difference ~ rain_contrast + temp_difference + doy_difference + year_gap + State + RunNumber",
+    "estimator": "Weighted least squares using n_same*n_route_only/(n_same+n_route_only); base-model covariance clustered by State:RouteNumber."
+  },
+  "primary_contrast": {
+    "estimand": "beta_rain(wet_target) - beta_rain(dry_target)",
+    "bootstrap": "Resample State:RouteNumber clusters with replacement, independently preserving all rows for sampled clusters in both direction datasets; 1000 replicates, seed 2840223.",
+    "rule": "Support rain-selective memory if observed difference >0 and percentile bootstrap 95% CI is entirely >0."
+  },
+  "gate": "Each directional dataset must contain >=750 pairs and >=200 routes.",
+  "secondary": [
+    "Report each directional beta with cluster-robust 95% CI.",
+    "Repeat coefficient contrast for CI2plus rate difference using the identical opportunity definition.",
+    "Report same-observer directional betas descriptively if both directions retain >=500 pairs and >=150 routes; no extra gate."
+  ],
+  "interpretation": [
+    "A positive forward-minus-reverse contrast supports rain-specific selective reactivation beyond generic site recurrence.",
+    "Failure means local memory is robust but its selective amplification by rainfall is not demonstrated.",
+    "No continuous occupancy, biological memory, individual fidelity, or causal rainfall effect is proven."
+  ],
+  "retuning_after_readback": false
+}
