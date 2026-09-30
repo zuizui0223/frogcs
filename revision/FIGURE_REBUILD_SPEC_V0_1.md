@@ -77,6 +77,10 @@ Add a robustness inset:
 Annotate prominently:
 **conditions on both recruited-taxon count and total extra-stop spread.**
 
+Add two stronger-null markers:
+- cross-fit species-response null: observed 1.524 vs predicted 1.198; conditional residual 0.326, P=0.000999;
+- joint cross-fit species + strictly-prior SiteID history + dry persistence (2,916-pair subset): observed 1.650 vs predicted 1.353; residual 0.297, P=0.000999.
+
 **C. Route-topology corroboration.**
 Show adjacent-stop-link rainfall coefficient:
 - β = 0.419
