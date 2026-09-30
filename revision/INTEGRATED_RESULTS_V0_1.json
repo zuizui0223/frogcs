@@ -1,0 +1,178 @@
+{
+  "analysis": "frogcs_integrated_pulse_template_results_v0_1",
+  "status": "post_freeze_integrated_synthesis",
+  "frozen_submission_authority": {
+    "branch": "main",
+    "commit": "015a675324800f2e5ac9ab0985b080fe88adc375"
+  },
+  "population": {
+    "matched_pairs": 4236,
+    "routes": 585,
+    "states": 21,
+    "strictly_prior_history_pairs": 2916,
+    "strictly_prior_history_routes": 439,
+    "same_observer_same_site_pairs": 3115,
+    "same_observer_same_site_routes": 499,
+    "same_observer_same_site_observers": 540
+  },
+  "baseline_active_community": {
+    "active_stops_beta": 0.384,
+    "active_stops_ci95": [0.240, 0.528],
+    "active_stop_alpha_beta": 0.0794,
+    "active_stop_alpha_ci95": [0.0231, 0.1357],
+    "route_gamma_beta": 0.2859,
+    "route_gamma_ci95": [0.1646, 0.4072]
+  },
+  "calling_state_transition": {
+    "total_calling_index_beta": 2.8410419576031223,
+    "zero_to_positive_beta": 1.8548575453289868,
+    "activation_share_of_total": 0.6528793213930071,
+    "zero_to_ci2_ci3_beta": 1.6150398249522895,
+    "strong_share_of_activation": 0.8707082810857251,
+    "zero_to_ci3_beta": 0.4405530685436047,
+    "zero_to_ci3_ci95": [0.11357271335451931, 0.7675334237326901],
+    "same_observer_same_site_zero_to_ci3_beta": 0.5140603333339898,
+    "same_observer_same_site_zero_to_ci3_ci95": [0.10081588098938049, 0.9273047856785992]
+  },
+  "spatial_depth": {
+    "route_new_species_beta": 0.1846754325853956,
+    "extra_stop_beta": 0.6042952999648085,
+    "second_stop_beta": 0.132,
+    "third_plus_beta": 0.473,
+    "fourth_plus_beta": 0.363,
+    "third_plus_ci2_ci3_share": 0.973,
+    "robust_third_plus_ci2_ci3_share": 0.954,
+    "adjacent_stop_beta": 0.4194242514527655,
+    "adjacent_conditional_uniform_p": 0.000999000999000999,
+    "adjacent_conditional_persistence_p": 0.000999000999000999
+  },
+  "higher_order_exact_directional": {
+    "definition": "H=sum_i choose(k_i-1,2), exactly conditioned on target-new taxon number N and total target incidence K within pair and direction",
+    "wet_direction_totals": {"N": 4726, "K": 12580, "H": 14289.0},
+    "dry_direction_totals": {"N": 4295, "K": 10652, "H": 10655.0},
+    "raw_excess_beta": 0.24387549076645898,
+    "raw_excess_ci95": [0.14735888407119993, 0.34039209746171806],
+    "raw_excess_p": 7.33102269555317e-07,
+    "z_excess_beta": 0.09074638789118894,
+    "z_excess_ci95": [0.059458093200620045, 0.12203468258175784],
+    "z_excess_p": 1.311630314276558e-08,
+    "robust_raw_excess_beta": 0.2543389727408656,
+    "robust_raw_excess_ci95": [0.13750694389286322, 0.37117100158886795],
+    "robust_raw_excess_p": 1.983247236045324e-05,
+    "robust_z_excess_beta": 0.0903208316394494,
+    "robust_z_excess_ci95": [0.05603843177463552, 0.12460323150426328]
+  },
+  "higher_order_simulation_falsification": {
+    "full_observed_beta": 1.52397912912372,
+    "uniform": {
+      "predicted_beta": 1.1383955992024506,
+      "conditional_residual": 0.3855835299212693,
+      "residual_ci95": [-0.09840174811232802, 0.0959329688941465],
+      "p": 0.000999000999000999
+    },
+    "persistence": {
+      "predicted_beta": 0.7836234058838016,
+      "conditional_residual": 0.7403557232399183,
+      "residual_ci95": [-0.08051738365150705, 0.08235444072292973],
+      "p": 0.000999000999000999
+    },
+    "crossfit_species": {
+      "predicted_beta": 1.1978990482443808,
+      "conditional_residual": 0.32608008087933915,
+      "residual_ci95": [-0.10061193256118715, 0.10857096591064383],
+      "p": 0.000999000999000999
+    },
+    "prior_history_subset_observed_beta": 1.6503201354367818,
+    "joint_species_prior_history_persistence": {
+      "predicted_beta": 1.3534664037854447,
+      "conditional_residual": 0.2968537316513371,
+      "residual_ci95": [-0.13185369117339027, 0.11870819192117488],
+      "p": 0.000999000999000999
+    },
+    "final_crossfit_rain_by_history_gate": {
+      "predicted_beta": 1.3322893659679573,
+      "conditional_residual": 0.31803076946882447,
+      "residual_ci95": [-0.11722907299037132, 0.1255263141419511],
+      "p": 0.000999000999000999
+    },
+    "same_observer_same_site_observed_beta": 1.8173109334124364,
+    "same_observer_same_site_uniform": {
+      "predicted_beta": 1.4002328604300909,
+      "conditional_residual": 0.41707807298234556,
+      "residual_ci95": [-0.11164351285518803, 0.11059677191247574],
+      "p": 0.000999000999000999
+    },
+    "same_observer_same_site_persistence": {
+      "predicted_beta": 0.9183901805129007,
+      "conditional_residual": 0.8989207528995358,
+      "residual_ci95": [-0.09720012901768807, 0.09885937972847914],
+      "p": 0.000999000999000999
+    }
+  },
+  "higher_order_generality": {
+    "taxonomic": {
+      "n_taxa": 53,
+      "positive_taxa": 25,
+      "taxa_at_least_1pct_positive_mass": 19,
+      "top1_positive_share": 0.1877943000389063,
+      "top5_positive_share": 0.5416311941214678,
+      "hhi_positive_shares": 0.08551024929666419,
+      "minimum_leave_one_taxon_out_beta": 1.2086640148192165,
+      "all_leave_one_taxon_out_positive": true
+    },
+    "geographic": {
+      "full_beta": 1.5239791291236486,
+      "full_ci95": [0.5351094383557762, 2.512848819891521],
+      "full_p": 0.0025230436562143944,
+      "leave_one_state_out_beta_range": [0.9669803992111705, 1.7752639854189354],
+      "minimum_leave_one_state_out_ci_lower": 0.3973148198503791,
+      "all_leave_one_state_out_ci_positive": true,
+      "state_specific_estimable": 17,
+      "state_specific_positive": 14,
+      "state_specific_ci_positive": 2
+    }
+  },
+  "historical_site_structure": {
+    "route_new_recurrent_share_leave_pair_out": 0.9809270884016074,
+    "route_new_recurrent_share_prior_only": 0.9893366938882531,
+    "new_ci3_any_recurrent_share": 0.980543209373069,
+    "new_ci3_same_site_share_leave_pair_out": 0.9040000006981866,
+    "new_ci3_same_site_share_prior_only": 0.825963976382714,
+    "within_pair_taxon_prior_strong_site_beta": 0.1510940272028386,
+    "within_pair_taxon_prior_strong_site_ci95": [0.12912743790722594, 0.17306061649845125],
+    "wet_ci3_prior_strong_site_beta": 0.07776463630987582,
+    "wet_ci3_prior_strong_site_ci95": [0.06186518697082746, 0.09366408564892417],
+    "rain_selective_ci3_targeting_beta": 0.02448895976609234,
+    "rain_selective_ci3_targeting_ci95": [0.007001673669270292, 0.04197624586291439],
+    "same_observer_rain_selective_beta": 0.030674732734838797,
+    "same_observer_rain_selective_ci95": [0.013306013566328205, 0.04804345190334939]
+  },
+  "matrix_allocation_context": {
+    "observed_boundary_share": 0.92,
+    "uniform_boundary_mean": 0.809,
+    "persistence_boundary_mean": 0.779,
+    "final_prior_subset_observed_boundary_share": 0.9212870182810022,
+    "final_null_boundary_mean": 0.8138096195997282,
+    "final_prior_subset_observed_taxonomic_deepening_share": 0.39882477460949567,
+    "final_null_taxonomic_deepening_mean": 0.3158372328069739,
+    "final_prior_subset_observed_within_core_share": 0.07871298171899774,
+    "final_null_within_core_mean": 0.18619038040027186
+  },
+  "cross_dataset_scope": {
+    "frogid_n_recordings": 40754,
+    "frogid_dry_z_beta": -0.0818,
+    "frogid_dry_z_ci95": [-0.0982, -0.0654],
+    "interpretation": "directional consistency of active-unit taxonomic depth only; not replication of higher-order species x site geometry"
+  },
+  "authorized_integrated_claim": "Recent-rain conditions are associated with silent-to-strong chorus transitions and higher-order within-taxon spatial coherence across repeated route sites, with strong chorus activity preferentially reappearing at historically strong species-specific physical sites. The higher-order concentration persists after exact first-order conditioning, observer/site controls, cross-fitted species rainfall sensitivity, strictly-prior local site history, dry persistence and the pre-existing final rain-by-history gate. The lower-level biological generator remains unresolved.",
+  "not_authorized": [
+    "causal rainfall forcing",
+    "literal synchrony among sequentially surveyed route stops",
+    "individual movement among sites",
+    "individual memory or philopatry as the identified mechanism",
+    "hydrological connectivity or social facilitation as identified mechanisms",
+    "successful spawning or reproductive success",
+    "worldwide or universal anuran response",
+    "unique lower-level mechanism identification"
+  ]
+}
