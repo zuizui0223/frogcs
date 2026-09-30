@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_local_memory_spatial_kernel_v0_1",
+  "status": "post_readback_spatial-localization test fixed before endpoint",
+  "question": "How spatially localized is species-specific prior strong-chorus memory within a NAAMP route?",
+  "population": "Physically stable matched pairs with at least one prior eligible run in the same State x RouteNumber x RunNumber stratum. Focal species are route-new in the wet survey and had occurred somewhere on the route before the focal pair.",
+  "unit": "pair x focal species x focal physical stop",
+  "memory_categories": {
+    "same_site": "The focal species had CallingIndex 2-3 at this same physical SiteID in a prior eligible run.",
+    "adjacent_site_only": "No same-site prior strong chorus, but the focal species had prior CallingIndex 2-3 at one of the focal route's immediately adjacent StopNumbers (absolute StopNumber difference = 1).",
+    "distant_route_site_only": "No same-site or adjacent-site prior strong chorus, but the focal species had prior CallingIndex 2-3 at another physical SiteID among the focal route's ten stops.",
+    "no_current_route_site_memory": "No prior CallingIndex 2-3 at any of the focal route's current ten physical SiteIDs."
+  },
+  "nuisance_adjustment": [
+    "log1p(number of other species with prior CallingIndex 2-3 at the focal SiteID)",
+    "number of prior eligible runs in which the focal SiteID was sampled"
+  ],
+  "primary_design": "Within pair x species, demean wet_strong and all memory/nuisance predictors. Fit OLS without intercept with route-clustered covariance, using no-current-route-site-memory as the implicit reference.",
+  "primary_prediction": "Same-site memory coefficient >0 with complete 95% CI >0 AND the same-site minus adjacent-site coefficient >0 with complete 95% CI >0.",
+  "secondary": [
+    "Adjacent-site coefficient >0 with complete 95% CI >0 is interpreted as neighborhood propagation.",
+    "Report distant-route-site coefficient.",
+    "Repeat outcome for wet_full (CallingIndex 3).",
+    "Repeat primary model in same-observer pairs."
+  ],
+  "minimum_gate": "At least 500 informative pair x species groups with >=2 memory categories represented among their ten stops, >=250 routes, and >=20 species.",
+  "interpretation": [
+    "A same-site > adjacent contrast supports fine-scale species-specific localization rather than a generic route-wide species effect.",
+    "Positive adjacent memory would indicate a broader local neighborhood template.",
+    "StopNumber adjacency is route order, not a direct metric distance; no dispersal or individual movement is inferred.",
+    "No causal biological-memory or rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
