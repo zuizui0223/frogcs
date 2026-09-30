@@ -38,9 +38,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install build dependencies
-        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 matplotlib numpy
       - name: Run integrated manuscript QA
         run: python revision/audit_pulse_template_manuscript.py
+
+      - name: Render canonical RC3 figures from frozen inputs
+        run: python revision/build_pulse_template_figures.py
 
       - name: Smoke-test private metadata renderer with dummy fixture
         run: |
