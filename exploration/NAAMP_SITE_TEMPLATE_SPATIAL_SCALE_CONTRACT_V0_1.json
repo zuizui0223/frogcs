@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_site_template_spatial_scale_v0_1",
+  "status": "post_readback_spatial-scale test fixed before endpoint",
+  "question": "Is species-specific chorus memory localized to the exact physical SiteID, or does prior strong use of nearby route sites predict reactivation equally well?",
+  "population": "Physically stable matched pairs with prior history; focal species are route-new in the wet survey and had CallingIndex 2-3 at >=1 physical SiteID somewhere on the same route-season stratum strictly before the focal pair.",
+  "source": {
+    "coordinates": "Pinned NAAMP Coordinates.csv",
+    "sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
+  },
+  "unit": "pair x focal species x physical SiteID",
+  "predictors": {
+    "exact_prior_strong": "1 when focal species had prior CI2-3 at the exact SiteID.",
+    "nearest_prior_strong_distance": "Great-circle distance from focal SiteID to the nearest SiteID on the same route-season with prior focal-species CI2-3; exact memory has distance 0.",
+    "route_spacing_normalization": "Divide distance by that route's median geographic distance between consecutive StopNumbers, then use log1p."
+  },
+  "primary_design": "Within each pair x species, demean wet_strong, exact_prior_strong, and normalized log-distance. Regress demeaned wet_strong on both predictors without intercept; cluster covariance by State x RouteNumber.",
+  "primary_prediction": "Exact-site coefficient >0 with complete 95% CI >0 after the distance gradient is included.",
+  "secondary": [
+    "Distance coefficient <0 indicates spatial decay away from prior strong-chorus sites.",
+    "Repeat with wet_full (CI3).",
+    "Repeat wet_strong in same-observer pairs."
+  ],
+  "minimum_gate": "At least 500 informative pair x species groups, >=250 routes and >=20 species, with within-group exact-memory variation and finite route spacing.",
+  "interpretation": [
+    "Support identifies an exact-site component beyond neighborhood proximity.",
+    "It does not distinguish persistent local population from species-specific microhabitat preference.",
+    "No individual site fidelity, continuous occupancy, breeding success or causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
