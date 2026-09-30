@@ -270,3 +270,33 @@ Avoid:
 ## 10. One-sentence take-home
 
 > **Across 15 years of standardized frog surveys, recent-rain conditions did not merely increase calling: they repeatedly switched historically favoured species × sites from silence into strong, spatially deep choruses, revealing a persistent chorus landscape whose full organization cannot be reduced to uniform activation, species-specific rain sensitivity or static site history.**
+
+
+## 11. Higher-order spatial coherence update
+
+A new post-freeze endpoint-fixed test directly evaluated whether multi-site spread contains higher-order dependence beyond first-order recruitment and spread.
+
+For each route-new taxon with k occupied wet stops, e=max(k-1,0) and higher-order mass=choose(e,2). The statistic is therefore zero through the second occupied stop and grows when extra-stop incidences accumulate within the same taxon at third-and-later sites.
+
+Observed:
+- route-new-species β = 0.1847;
+- extra-stop β = 0.6043;
+- higher-order within-taxon β = 1.5240.
+
+At the observed first-order coefficients:
+- uniform null predicted higher-order β = 1.1384; conditional residual 0.3856 vs null 95% −0.0984–0.0959; P=0.000999;
+- persistence null predicted 0.7836; conditional residual 0.7404 vs −0.0805–0.0824; P=0.000999.
+
+The prefixed PASS rule was met under both nulls.
+
+This materially strengthens the ecological interpretation. The key result is no longer only that recruited taxa occupy more sites. **At the same number of recruited taxa and the same total amount of extra-stop spread, the extra spatial participation is too concentrated within the same taxa for the tested independent-cell activation processes.**
+
+The preferred general principle is now:
+
+> **A fast environmental gate can expose higher-order spatial coherence on a slow species × site template.**
+
+For frogs, the biological discovery is:
+
+> **Recent-rain conditions are associated with silent-to-strong chorus transitions that deepen disproportionately within the same taxa across several sites and preferentially reappear at historically strong species-specific sites.**
+
+Do not replace "coherence" with "synchrony": route stops were surveyed sequentially.
