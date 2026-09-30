@@ -1,0 +1,41 @@
+{
+  "analysis": "naamp_soil_template_depth_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Among species recruited into the wetter route, do dynamic soil wetness and historical local strong-chorus template breadth independently predict how deeply the species spreads across stops?",
+  "population": "Physically stable NAAMP matched pairs with valid ERA5 swvl1/swvl2 and 72 h precipitation for both runs. Focal species are absent from the dry route, present in the wet route, and recorded somewhere in the same route-season stratum strictly before the earlier focal-pair year.",
+  "unit": "matched pair x recruited species",
+  "predictors": {
+    "prior_strong_breadth": "Fraction of currently sampled physical SiteIDs with prior sampling opportunity at which the species had CallingIndex 2-3 before the focal pair; require >=8 opportunity SiteIDs.",
+    "soil1_gain_z": "z-scored wet-run minus dry-run ERA5 swvl1 at survey midpoint.",
+    "rain72_z": "z-scored wet-minus-dry log1p 72 h precipitation amount.",
+    "prior_route_frequency": "Fraction of prior eligible runs in which species occurred anywhere on route; nuisance control."
+  },
+  "primary_outcome": "third_plus_depth = max(wet occupied-stop count - 2, 0).",
+  "secondary_outcomes": [
+    "wet occupied-stop count",
+    "wet strong-stop count (CI2-3)",
+    "spatial_depth = wet_k-1"
+  ],
+  "primary_model": "third_plus_depth ~ z_prior_strong_breadth + soil1_gain_z + z_prior_strong_breadth:soil1_gain_z + rain72_z + rain_contrast + prior_route_frequency + temp_difference + doy_difference + year_gap + C(species) + C(State) + C(RunNumber), route-clustered covariance.",
+  "prefixed_interpretation": {
+    "additive_two_axis": "Both z_prior_strong_breadth and soil1_gain_z have positive complete 95% CIs, while their interaction CI includes zero.",
+    "coupled_gate_template": "Both main effects and their interaction have positive complete 95% CIs.",
+    "template_only": "Breadth supported but soil1 not.",
+    "soil_only": "Soil1 supported but breadth not.",
+    "neither": "Neither main effect has complete positive CI."
+  },
+  "secondary": [
+    "Replace swvl1 with swvl2.",
+    "Repeat for wet_strong_k.",
+    "Repeat primary in same-observer pairs if >=1000 focal pair-species, >=250 routes and >=20 species.",
+    "Report rain72 after soil1 as a nuisance hydric comparison."
+  ],
+  "minimum_gate": "At least 1500 focal pair-species, >=300 routes, >=20 species, SD(prior_strong_breadth)>=0.10.",
+  "interpretation": [
+    "This conditions on wet-route recruitment and therefore models spatial depth, not initial activation probability.",
+    "Support for both main effects would connect a dynamic hydric gate with a persistent species-specific spatial template.",
+    "An absent interaction means the two axes are approximately separable rather than soil wetness selectively amplifying remembered sites.",
+    "No continuous occupancy, individual movement, body hydration, pond-depth, breeding-success or causal mediation claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
