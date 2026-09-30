@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Prospectively test whether the NAAMP finding of **within-taxon multi-site concentration** generalizes to an independent frog monitoring network.
+Prospectively test whether the NAAMP finding of **within-taxon multi-site concentration** generalizes to a frog monitoring dataset external to the 21-state discovery sample.
 
 The external study is confirmation only if its outcome data were not used to develop the NAAMP concentration endpoint or choose the comparator.
 
@@ -91,9 +91,9 @@ WFTS is the first external network selected for eligibility assessment because p
 
 These properties match the structural requirements of the frozen external-replication design unusually well.
 
-The WFTS programme is independent of the 21-state NAAMP analysis used for discovery in this repository. Similarity of protocol is treated as an advantage for estimand alignment, not as statistical independence of methods.
+The WFTS response data are external to the 21-state NAAMP discovery sample used in this repository; Wisconsin is not one of those discovery states. However, WFTS is historically coordinated in cooperation with USGS/NAAMP, so protocol similarity must not be described as methodological independence. It is an external dataset with unusually close estimand alignment.
 
-**Outcome data have not been inspected for this selection decision.**
+**Outcome data have not been inspected for this selection decision. Public design documentation has been inspected; row-level response-data access remains unresolved. WFTS is therefore classified `DESIGN_ELIGIBLE / DATA_ACCESS_PENDING`, not yet `CONFIRMATORY_DATASET_READY`.**
 
 ### Secondary candidate: Iowa Frog and Toad Call Survey
 
