@@ -966,7 +966,7 @@ State-specific models were descriptive and heterogeneous:
 
 Higher-order coherence is therefore not dependent on any single state, but its strength is not geographically homogeneous.
 
-### S11.7 Existing final rain × local-history gate: higher-order endpoint audit
+### S11.9 Existing final rain × local-history gate: higher-order endpoint audit
 
 After the higher-order endpoint had been established under the simpler null families, we applied the **unchanged endpoint and unchanged conditional-residual statistic** to the already-existing final held-out rain × local-history gating null. No new mechanism term was introduced.
 
