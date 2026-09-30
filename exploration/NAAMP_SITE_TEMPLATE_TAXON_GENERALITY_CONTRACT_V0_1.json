@@ -1,0 +1,23 @@
+{
+  "analysis": "naamp_site_template_taxon_generality_v0_1",
+  "status": "post_readback_taxonomic-generality test fixed before species-specific endpoints",
+  "question": "Is the species-specific exact-site chorus template shared across many frog taxa, or driven by a small subset?",
+  "population": "Exactly the prior-only, physically stable focal-cell population used by NAAMP_SPECIES_SPECIFIC_SITE_TEMPLATE_V0_1.",
+  "species_model": "Within each species, retain pair x species groups with both own_prior_strong=1 and 0. Demean wet_strong, own_prior_strong, generic_other_strong_rate and their rain interactions within pair x species; fit the same no-intercept route-clustered model used in the pooled template analysis.",
+  "species_estimability": "A species is estimable with >=20 informative pair x species groups and >=10 routes.",
+  "summaries": [
+    "Number and fraction of estimable species with positive own-memory coefficient.",
+    "Number and fraction with complete 95% CI >0.",
+    "One-sided exact sign test against 50% positive.",
+    "Median and interquartile range of species-specific own-memory coefficients.",
+    "Pooled leave-one-species-out own-memory coefficient for every species."
+  ],
+  "primary_rule": "Broad taxonomic template generality is supported if >=15 species are estimable, the one-sided sign test is P<0.05, and every leave-one-species-out pooled own-memory coefficient remains >0.",
+  "sensitivity": "Repeat the sign summary in same-observer pairs when >=12 species are estimable.",
+  "interpretation": [
+    "Support means the exact-site template is distributed across taxa in the NAAMP species pool, not that every species shows a significant effect.",
+    "Species-specific precision differs with occurrence frequency.",
+    "This does not establish cross-continental universality or a shared physiological mechanism."
+  ],
+  "retuning_after_readback": false
+}
