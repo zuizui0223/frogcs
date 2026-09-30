@@ -1,0 +1,24 @@
+{
+  "analysis": "korea_suweon_treefrog_external_eligibility_v0_1",
+  "status": "eligibility_frozen_before_external_response_analysis",
+  "source": {
+    "article_doi": "10.7717/peerj.5568",
+    "supplement_doi": "10.7717/peerj.5568/supp-1",
+    "description": "Raw field-survey data for Dryophytes suweonensis, 2014-2017."
+  },
+  "purpose": "Audit whether the independent Korean multi-site time series can test temporal gating and persistent local acoustic templates outside NAAMP.",
+  "eligibility": {
+    "download": "Supplementary XLSX must resolve from the DOI without credentials and receive a fixed SHA-256.",
+    "temporal": "A site identifier and survey year/date must permit repeated-site histories spanning at least 2014-2017.",
+    "response": "A focal D. suweonensis calling count or intensity field must be identifiable without reconstructing it from publication figures.",
+    "site_memory_gate": "At least 100 sites must have observations in >=3 years, with at least 15 site-year zero/absent calling records and at least 100 positive site-year records.",
+    "rain_gate": "For a rainfall replication, the raw file must contain either coordinates per site or an unambiguous site-coordinate key, plus survey date. If not, no new ERA5 rainfall analysis is authorized."
+  },
+  "phase2_rule": "No response model is fit in this audit. If a gate passes, freeze a separate phase-2 contract before inspecting the corresponding association.",
+  "boundaries": [
+    "One focal species cannot replicate NAAMP community boundary geometry.",
+    "Field-survey calling counts are not identical to NAAMP CallingIndex.",
+    "Existing publication results on population trend and encroachment are not treated as blind validation.",
+    "No RC11 manuscript change is authorized."
+  ]
+}
