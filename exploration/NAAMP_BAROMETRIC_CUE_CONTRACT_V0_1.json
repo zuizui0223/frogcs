@@ -1,0 +1,39 @@
+{
+  "analysis": "naamp_barometric_cue_discrimination_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Does a falling-pressure storm cue explain strong chorus activation beyond antecedent rainfall amount and rainfall recency?",
+  "sample": "Same midpoint-qualified NAAMP matched pairs used by the hydric-cue analysis.",
+  "weather_source": {
+    "provider": "Earthmover public ERA5 Icechunk repository",
+    "group": "single/temporal",
+    "pressure": "msl / GRIB paramId 151, Pa",
+    "rain72": "tp hourly accumulation",
+    "spatial_link": "nearest ERA5 0.25 degree grid cell to route centroid",
+    "temporal_link": "survey-midpoint UTC hour"
+  },
+  "cues": {
+    "pressure_drop_6h": "MSL pressure at t-6h minus MSL pressure at t, in hPa; positive means falling pressure into the survey.",
+    "pressure_drop_24h": "MSL pressure at t-24h minus MSL pressure at t; secondary.",
+    "pressure_fall_advantage": "wet-run pressure drop minus dry-run pressure drop; positive means the wetter survey experienced a stronger pressure fall."
+  },
+  "primary_model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + pressure6_advantage_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_predictions": {
+    "barometric_support": "pressure6_advantage_z beta >0 with complete 95% CI >0.",
+    "accumulated_rain_independent": "rain72_amount_difference_z beta >0 with complete 95% CI >0 after pressure adjustment.",
+    "accumulated_over_barometric": "rain72 supported while pressure6 is not supported.",
+    "mixed": "both supported."
+  },
+  "secondary": [
+    "Replace 6h pressure drop with 24h pressure drop.",
+    "Use new_ci3_count as full-chorus endpoint.",
+    "Repeat primary in same-observer + physically stable pairs.",
+    "Report rain72-pressure correlations."
+  ],
+  "minimum_gate": "At least 3500 pairs and 500 routes; MSL pressure variable identity, units and finite-range audit must pass.",
+  "interpretation": [
+    "Pressure tendency is an atmospheric storm cue, not a direct hydrological state.",
+    "Non-support does not rule out pressure cues at other temporal scales.",
+    "No causal mediation or RC11 manuscript change is authorized."
+  ],
+  "retuning_after_readback": false
+}
