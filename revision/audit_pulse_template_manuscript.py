@@ -30,7 +30,7 @@ required=[
     "higher-order spatial organization",
     "recurrent species × site",
     "(Fig. 1)",
-    "(Figs. 2–3)",
+    "(Figs 2–3)",
     "(Fig. 4)",
     "(Fig. 5)",
 ]
