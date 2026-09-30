@@ -1,0 +1,43 @@
+{
+  "analysis": "naamp_prior_spatial_template_depth_v0_1",
+  "status": "post_readback_depth-mechanism test fixed before endpoint",
+  "question": "Among species that are newly active at the route in the wetter survey, does the breadth of that species' previously used physical SiteID template predict how many stops it activates now?",
+  "population": "Physically stable NAAMP matched pairs. Focal species are absent from the entire dry route, present at >=1 wet stop, and recorded somewhere in the same State x RouteNumber x RunNumber stratum strictly before the earlier focal-pair year.",
+  "unit": "matched pair x recruited species",
+  "prior_history": {
+    "source": "Eligible runs in the same route-season stratum with SurveyYear strictly earlier than the earlier focal-pair year.",
+    "opportunity_sites": "Among the focal pair's ten current physical SiteIDs, SiteIDs sampled in at least one prior eligible run.",
+    "minimum_opportunity": "At least 8 of the ten current SiteIDs must have prior sampling opportunity.",
+    "prior_any_breadth": "Fraction of opportunity SiteIDs at which the species had any prior CallingIndex >0.",
+    "prior_strong_breadth": "Fraction of opportunity SiteIDs at which the species had prior CallingIndex 2-3.",
+    "prior_route_frequency": "Fraction of prior eligible runs in which the species occurred anywhere on the route; nuisance control for route-level commonness."
+  },
+  "outcomes": {
+    "wet_k": "Number of the ten wet-survey stops at which the recruited species is active.",
+    "spatial_depth": "wet_k - 1.",
+    "third_plus_depth": "max(wet_k - 2, 0), primary.",
+    "wet_strong_k": "Number of wet-survey stops at which the species reaches CallingIndex 2-3, secondary."
+  },
+  "primary_model": {
+    "estimator": "OLS with route-clustered covariance",
+    "formula": "third_plus_depth ~ z_prior_strong_breadth + rain_contrast + z_prior_strong_breadth:rain_contrast + prior_route_frequency + temperature_difference + day_of_year_difference + year_gap + C(species) + C(State) + C(RunNumber)",
+    "primary_estimand": "z_prior_strong_breadth main-effect coefficient",
+    "rationale": "Species fixed effects remove stable among-species breadth differences; prior_route_frequency controls route-level historical commonness. The remaining estimand asks whether a species activates more deeply on routes where its previously used local strong-chorus template was broader.",
+    "prediction": "positive coefficient with complete 95% CI >0"
+  },
+  "secondary": [
+    "Repeat primary model with spatial_depth and wet_k.",
+    "Replace prior_strong_breadth with prior_any_breadth.",
+    "Report prior_strong_breadth x rain_contrast interaction without a separate pass gate.",
+    "Repeat primary third_plus_depth model in same-observer pairs.",
+    "Repeat in exact-consecutive-year pairs."
+  ],
+  "minimum_gate": "Before endpoint interpretation require >=1000 focal pair-species observations, >=300 routes, >=20 species, and SD(prior_strong_breadth)>=0.10.",
+  "interpretation": [
+    "This is a post-activation depth model: it conditions on the species having been recruited in the wet survey and cannot explain activation probability itself.",
+    "Support would connect historical route-scale species-site footprint to the activation-depth k that is sufficient to reproduce the original matrix geometry.",
+    "It would not distinguish persistent local populations from species-specific habitat template or prove movement among stops.",
+    "No abundance, occupancy, breeding-success or causal rainfall claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
