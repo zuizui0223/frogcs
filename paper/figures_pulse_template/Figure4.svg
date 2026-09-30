@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="940" viewBox="0 0 1500 940">
+<rect width="1500" height="940" fill="white"/>
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:29px;font-weight:700}.panel{font-size:23px;font-weight:700}.sub{font-size:16px}.lab{font-size:17px;font-weight:600}.small{font-size:14px}.num{font-size:20px;font-weight:700}.axis{stroke:#222;stroke-width:2}.dark{fill:#333}.mid{fill:#888}.light{fill:#ddd}.box{fill:#f7f7f7;stroke:#999;stroke-width:1.5}
+</style>
+<text x="50" y="50" class="title">Figure 4. Increasingly structured nulls still fail to generate the observed chorus-state geometry</text>
+<text x="50" y="80" class="sub">Each row adds ecological structure while preserving the observed wet-incidence magnitude; later rows are not independent replications.</text>
+
+<text x="55" y="130" class="panel">A  Null ladder</text>
+<text x="70" y="175" class="lab">Allowed structure</text><text x="850" y="175" class="lab">Matrix allocation</text><text x="1110" y="175" class="lab">Higher-order concentration</text>
+
+<line x1="65" y1="192" x2="1430" y2="192" stroke="#777"/>
+<text x="70" y="235" class="lab">1  Common uniform activation</text>
+<text x="850" y="235" class="num">P = 0.000999</text>
+<text x="1110" y="235" class="num">P = 0.000999</text>
+
+<text x="70" y="295" class="lab">2  + strong dry-state persistence</text>
+<text x="850" y="295" class="num">P = 0.000999</text>
+<text x="1110" y="295" class="num">P = 0.000999</text>
+
+<text x="70" y="355" class="lab">3  + route-cross-fit species-specific rain response</text>
+<text x="850" y="355" class="num">P = 0.001998</text>
+<text x="1110" y="355" class="num">P = 0.000999</text>
+
+<text x="70" y="415" class="lab">4  + strictly-prior species × physical-SiteID history</text>
+<text x="850" y="415" class="num">P = 0.000999</text>
+<text x="1110" y="415" class="small">tested jointly below</text>
+
+<text x="70" y="475" class="lab">5  Species response + prior history + dry persistence</text>
+<text x="850" y="475" class="num">P = 0.000999</text>
+<text x="1110" y="475" class="num">P = 0.000999</text>
+
+<text x="70" y="535" class="lab">6  + held-out rain × local-history gate</text>
+<text x="850" y="535" class="num">P = 0.000999</text>
+<text x="1110" y="535" class="num">P = 0.000999</text>
+
+<line x1="65" y1="560" x2="1430" y2="560" stroke="#777"/>
+<text x="70" y="595" class="sub" font-weight="700">Stopping rule reached: no additional trait fishing, same-data site-specific rain coefficients, relaxed gates or new lower-level mechanism families.</text>
+
+<text x="55" y="650" class="panel">B  What remains wrong even in the final held-out null</text>
+<rect x="70" y="690" width="410" height="150" rx="8" class="box"/>
+<text x="275" y="725" class="lab" text-anchor="middle">Boundary crossing</text>
+<text x="160" y="775" class="small">Observed</text><text x="160" y="810" class="num">0.921</text>
+<text x="350" y="775" class="small">Final null</text><text x="350" y="810" class="num">0.814</text>
+
+<rect x="535" y="690" width="410" height="150" rx="8" class="box"/>
+<text x="740" y="725" class="lab" text-anchor="middle">Taxonomic deepening</text>
+<text x="625" y="775" class="small">Observed</text><text x="625" y="810" class="num">0.399</text>
+<text x="815" y="775" class="small">Final null</text><text x="815" y="810" class="num">0.316</text>
+
+<rect x="1000" y="690" width="410" height="150" rx="8" class="box"/>
+<text x="1205" y="725" class="lab" text-anchor="middle">Within-core share</text>
+<text x="1090" y="775" class="small">Observed</text><text x="1090" y="810" class="num">0.079</text>
+<text x="1280" y="775" class="small">Final null</text><text x="1280" y="810" class="num">0.186</text>
+
+<text x="55" y="890" class="sub" font-weight="700">Interpretation: the tested species/history/gating processes contain real information, but their first-order combination does not generate either the full taxonomic-versus-spatial allocation or the higher-order within-taxon concentration.</text>
+<text x="55" y="918" class="small">This does not identify a unique missing biological mechanism.</text>
+</svg>
