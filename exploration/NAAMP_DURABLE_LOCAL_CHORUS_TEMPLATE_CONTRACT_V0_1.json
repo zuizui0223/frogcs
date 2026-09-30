@@ -1,0 +1,32 @@
+{
+  "analysis": "naamp_durable_local_chorus_template_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Among historically known route species that are silent at a focal dry-survey SiteID, does a strong chorus recorded at that same SiteID four or more years earlier predict strong reactivation in the paired wetter survey?",
+  "population": "Physically stable matched NAAMP pairs with at least one eligible run in the same State x RouteNumber x RunNumber stratum before the earlier focal-pair year.",
+  "candidate_species": "Defined without wet-survey outcomes: all species recorded anywhere on the same route-season stratum strictly before the earlier focal-pair year.",
+  "unit": "pair x candidate species x physical SiteID, restricted to dry CallingIndex=0 at the focal stop.",
+  "memory_age": {
+    "recent": "Most recent prior CallingIndex 2-3 at the same SiteID occurred 1-3 years before the earlier focal-pair year.",
+    "old": "Most recent prior CallingIndex 2-3 at the same SiteID occurred >=4 years before the earlier focal-pair year.",
+    "none": "No prior CallingIndex 2-3 at that SiteID for the candidate species."
+  },
+  "outcomes": {
+    "primary": "wet_strong = 1 if wet CallingIndex is 2 or 3.",
+    "secondary_full": "wet_full = 1 if wet CallingIndex is 3.",
+    "secondary_presence": "wet_presence = 1 if wet CallingIndex >0."
+  },
+  "primary_design": "Use only pair x species groups containing at least one old-memory SiteID and one no-memory SiteID. Demean outcome, old-memory and recent-memory indicators exactly within pair x species; OLS without intercept; route-clustered covariance. The old-memory coefficient is the primary estimand.",
+  "minimum_gate": "Before reading outcomes, require >=500 informative pair x species groups, >=250 routes and >=20 species based only on history/memory predictors.",
+  "primary_prediction": "old-memory coefficient >0 with complete 95% CI >0 for wet_strong.",
+  "sensitivities": [
+    "Repeat primary in same-observer pairs.",
+    "Repeat for wet_full and wet_presence.",
+    "Among SiteIDs with prior strong memory, estimate continuous log1p(years-since-last-strong) slope after pair x species demeaning; descriptive only."
+  ],
+  "interpretation": [
+    "Support indicates a durable species-specific local acoustic template: sites used for strong chorus >=4 years earlier are preferentially reactivated when the same species is silent in the paired dry survey.",
+    "It does not prove continuous occupancy, survival of the same individuals, philopatry, biological memory, or unchanged habitat.",
+    "No causal rainfall or reproductive-success claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
