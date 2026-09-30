@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+import hashlib, io, json
+from pathlib import Path
+import pandas as pd
+import requests
+
+OUT=Path("exploration/KOREA_EXTERNAL_ELIGIBILITY_RECEIPT_V0_1.json")
+URLS=[
+  "https://doi.org/10.7717/peerj.5568/supp-1",
+  "https://peerj.com/articles/5568/supp-1/",
+  "https://peerj.com/articles/5568/supp-1",
+]
+TOKENS=("site","year","date","time","lat","lon","coord","rain","precip","temperature","humidity","pressure","suweon","dryophytes","individual","count","number","calling","index","encroach")
+
+def fetch():
+    errors=[]
+    for url in URLS:
+        try:
+            r=requests.get(url,headers={"User-Agent":"Mozilla/5.0 frogcs-korea-audit/0.1"},timeout=90,allow_redirects=True)
+            b=r.content
+            if r.status_code==200 and (b[:2]==b"PK" or "spreadsheet" in (r.headers.get("content-type") or "").lower() or "excel" in (r.headers.get("content-type") or "").lower()):
+                return b,url,r.url,r.headers.get("content-type")
+            errors.append({"url":url,"status":r.status_code,"final":r.url,"content_type":r.headers.get("content-type"),"bytes":len(b)})
+        except Exception as e:
+            errors.append({"url":url,"error":f"{type(e).__name__}: {e}"})
+    raise RuntimeError("supplement download failed: "+json.dumps(errors))
+
+def norm(x):
+    return str(x).strip().lower().replace("_"," ").replace("-"," ")
+
+def main():
+    b,source,final,ctype=fetch()
+    sha=hashlib.sha256(b).hexdigest()
+    xl=pd.ExcelFile(io.BytesIO(b))
+    sheets=[]
+    all_candidates=[]
+    for sheet in xl.sheet_names:
+        d=xl.parse(sheet)
+        cols=[str(c) for c in d.columns]
+        candidates=[]
+        for c in cols:
+            n=norm(c)
+            if any(t in n for t in TOKENS):
+                s=d[c]
+                rec={"column":c,"nonmissing":int(s.notna().sum()),"unique_nonmissing":int(s.dropna().astype(str).nunique())}
+                num=pd.to_numeric(s,errors="coerce")
+                if int(num.notna().sum())>0:
+                    rec["numeric_nonmissing"]=int(num.notna().sum())
+                    rec["numeric_min"]=float(num.min())
+                    rec["numeric_max"]=float(num.max())
+                    rec["numeric_zero_count"]=int((num==0).sum())
+                    rec["numeric_positive_count"]=int((num>0).sum())
+                candidates.append(rec)
+                all_candidates.append({"sheet":sheet,**rec})
+        sheets.append({"sheet":sheet,"rows":int(len(d)),"columns":cols,"candidate_columns":candidates})
+    names=[norm(x["column"]) for x in all_candidates]
+    has_site=any("site" in x for x in names)
+    has_time=any(("year" in x or "date" in x) for x in names)
+    has_response=any(any(t in x for t in ("suweon","dryophytes","count","number","individual")) for x in names)
+    has_coord=any(("lat" in x or "lon" in x or "coord" in x) for x in names)
+    out={
+      "analysis":"korea_suweon_treefrog_external_eligibility_v0_1",
+      "contract":"exploration/KOREA_EXTERNAL_ELIGIBILITY_CONTRACT_V0_1.json",
+      "source":{"requested_url":source,"resolved_url":final,"content_type":ctype,"sha256":sha,"bytes":len(b)},
+      "sheets":sheets,
+      "schema_screen":{"has_site_candidate":has_site,"has_date_or_year_candidate":has_time,"has_response_candidate":has_response,"has_coordinate_candidate":has_coord},
+      "response_models_fit":False
+    }
+    OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
+    print(json.dumps(out,indent=2,sort_keys=True))
+
+if __name__=="__main__":
+    main()
