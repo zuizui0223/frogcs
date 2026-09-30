@@ -64,7 +64,7 @@ for x in [
     assert x in abstract, f"abstract missing: {x}"
 
 # Every bibliography item remains represented once at minimum.
-for surname in ["Brooke","Brodie","Kusano","Oseen","Ospina","Saenz","Sugai","Switzer","Trenham","Yang"]:
+for surname in ["Brooke","Brodie","Kusano","Oseen","Ospina","Rush","Saenz","Sugai","Switzer","Trenham","Yang"]:
     assert re.search(rf"^{surname},", text, flags=re.M), f"missing reference: {surname}"
 
 print("pulse-template manuscript QA: PASS")
