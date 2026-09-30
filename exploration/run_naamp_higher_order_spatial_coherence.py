@@ -66,7 +66,7 @@ def simulate(pair_data, probmaker, r, den, seed):
     for i, d in enumerate(pair_data):
         q = probmaker(d)
         w = rng.random((B,) + q.shape) < q[None, :, :]
-        num += r[i] * sim_metrics(w, d)
+        num += r[i] * sim_metrics(w, d["dry"])
     return num / den
 
 
