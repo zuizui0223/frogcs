@@ -22,6 +22,14 @@ MIN_POSITIVE_CELLS=20
 MIN_POSITIVE_ROUTES=5
 
 
+def sha256_file(path: Path) -> str:
+    h=hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda:fh.read(1024*1024),b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def expit(x):
     x=np.asarray(x,float)
     out=np.empty_like(x)
@@ -387,10 +395,34 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--runs",required=True)
     ap.add_argument("--matrix",required=True)
+    ap.add_argument("--preflight-receipt",required=True)
     ap.add_argument("--output",required=True)
     args=ap.parse_args()
 
-    schema,runs,matrix,taxa=load_inputs(args.runs,args.matrix)
+    runs_path=Path(args.runs)
+    matrix_path=Path(args.matrix)
+    preflight_path=Path(args.preflight_receipt)
+    preflight=json.loads(preflight_path.read_text())
+
+    if preflight.get("response_columns_read") is not False:
+        raise RuntimeError("preflight receipt does not certify outcome-blind structural parsing")
+    if preflight.get("call_index_read") is not False or preflight.get("taxon_key_read") is not False:
+        raise RuntimeError("preflight receipt indicates response columns were read")
+    if preflight.get("coverage",{}).get("gate_pass") is not True:
+        raise RuntimeError("preflight structural/coverage gate did not pass")
+
+    expected_hashes=preflight.get("input_sha256",{})
+    current_hashes={
+        "runs":sha256_file(runs_path),
+        "matrix":sha256_file(matrix_path),
+    }
+    if expected_hashes!=current_hashes:
+        raise RuntimeError(
+            f"input files differ from frozen preflight receipt: "
+            f"{current_hashes} vs {expected_hashes}"
+        )
+
+    schema,runs,matrix,taxa=load_inputs(runs_path,matrix_path)
     run_mats_ci,sites,dates=build_run_matrices(runs,matrix,taxa)
     run_mats={k:(v>0) for k,v in run_mats_ci.items()}
 
@@ -411,6 +443,12 @@ def main():
     out={
         "analysis":"wfts_prospective_within_taxon_concentration_v0_1",
         "schema":"revision/WFTS_CANONICAL_SCHEMA_V0_1.json",
+        "weather_analysis_spec":"revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md",
+        "preflight_receipt":str(preflight_path),
+        "preflight_verified":True,
+        "input_sha256":current_hashes,
+        "simulation_replicates":B,
+        "seed":SEED,
         "coverage":{
             "eligible_runs":int(len(runs)),
             "all_matched_pairs":int(len(pairs)),
