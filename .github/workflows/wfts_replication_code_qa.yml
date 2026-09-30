@@ -5,7 +5,7 @@ on:
     branches: [revision/pulse-template-synthesis-v1]
     paths:
       - revision/WFTS_CANONICAL_SCHEMA_V0_1.json
-      - revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_2.md
+      - revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_3.md
       - scripts/wfts/**
       - .github/workflows/wfts_replication_code_qa.yml
   pull_request:
@@ -31,7 +31,7 @@ jobs:
         run: python scripts/wfts/generate_synthetic_wfts_fixture.py --outdir build/wfts-synthetic
       - name: Run frozen confirmatory analysis code on synthetic data
         run: |
-          python scripts/wfts/run_wfts_confirmatory_analysis_v0_2.py             --runs build/wfts-synthetic/runs.csv             --matrix build/wfts-synthetic/matrix.csv             --output build/wfts-synthetic/receipt.json
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_3.py             --runs build/wfts-synthetic/runs.csv             --matrix build/wfts-synthetic/matrix.csv             --output build/wfts-synthetic/receipt.json
       - name: Audit synthetic receipt
         run: |
           python - <<'PY'
