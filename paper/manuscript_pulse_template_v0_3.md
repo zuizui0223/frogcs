@@ -14,7 +14,7 @@
 
 ## Keywords
 
-anuran breeding behaviour; calling activity; chorus; environmental pulse; rainfall; site recurrence; spatial ecology; behavioural community
+anuran breeding behaviour; behavioural community; calling activity; chorus; environmental pulse; rainfall; site recurrence; spatial ecology
 
 ## Introduction
 
