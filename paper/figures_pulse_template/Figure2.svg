@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<rect width="1600" height="1050" fill="white"/>
+<style>
+  text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
+  .title { font-size:30px; font-weight:700; }
+  .panel { font-size:24px; font-weight:700; }
+  .sub { font-size:17px; }
+  .lab { font-size:17px; font-weight:600; }
+  .small { font-size:14px; }
+  .num { font-size:20px; font-weight:700; }
+  .axis { stroke:#222; stroke-width:2; }
+  .light { stroke:#aaa; stroke-width:2; }
+  .darkfill { fill:#333; }
+  .midfill { fill:#888; }
+  .lightfill { fill:#d9d9d9; }
+  .box { fill:#f7f7f7; stroke:#999; stroke-width:1.5; }
+</style>
+
+<text x="55" y="52" class="title">Figure 2. Rainfall-associated recruitment shows higher-order route-scale spatial coherence</text>
+<text x="55" y="82" class="sub">Higher-order concentration is tested after fixing first-order recruitment and total route-new incidence; route stops were surveyed sequentially, so “coherence” does not mean literal synchrony.</text>
+
+<!-- Panel A -->
+<text x="55" y="132" class="panel">A  Spatial depth emerges after the second occupied site</text>
+<text x="55" y="160" class="sub">Rainfall-contrast coefficients for route-new taxa</text>
+<line x1="205" y1="330" x2="690" y2="330" class="axis"/>
+<line x1="205" y1="195" x2="205" y2="330" class="axis"/>
+<text x="205" y="354" class="small" text-anchor="middle">0</text>
+<text x="366" y="354" class="small" text-anchor="middle">0.2</text>
+<text x="528" y="354" class="small" text-anchor="middle">0.4</text>
+<text x="690" y="354" class="small" text-anchor="middle">0.6</text>
+
+<text x="55" y="220" class="lab">Second site</text>
+<rect x="205" y="201" width="107" height="28" class="midfill"/>
+<text x="324" y="221" class="num">β = 0.132</text>
+<text x="520" y="221" class="small">within both primary null ranges</text>
+
+<text x="55" y="270" class="lab">Third + sites</text>
+<rect x="205" y="251" width="383" height="28" class="darkfill"/>
+<text x="600" y="271" class="num">β = 0.473</text>
+<text x="520" y="295" class="small">above both null 95% ranges · P = 0.000999</text>
+
+<text x="55" y="320" class="lab">Fourth + sites</text>
+<rect x="205" y="301" width="294" height="28" class="midfill"/>
+<text x="511" y="321" class="num">β = 0.363</text>
+
+<!-- Panel B -->
+<text x="820" y="132" class="panel">B  Exact first-order conditioning: same N and K, different higher-order structure</text>
+<text x="820" y="160" class="sub">H = Σ choose(kᵢ−1, 2) · exact expectation conditioned on target-new taxa N and total incidence K</text>
+
+<rect x="835" y="188" width="300" height="195" rx="8" class="box"/>
+<text x="985" y="215" class="lab" text-anchor="middle">Shallow allocation</text>
+<text x="985" y="240" class="small" text-anchor="middle">N = 3 taxa · K = 6 incidences · H = 0</text>
+<text x="865" y="276" class="small">Taxon A</text>
+<rect x="945" y="260" width="24" height="24" class="darkfill"/><rect x="973" y="260" width="24" height="24" class="darkfill"/>
+<text x="865" y="312" class="small">Taxon B</text>
+<rect x="1001" y="296" width="24" height="24" class="darkfill"/><rect x="1029" y="296" width="24" height="24" class="darkfill"/>
+<text x="865" y="348" class="small">Taxon C</text>
+<rect x="1057" y="332" width="24" height="24" class="darkfill"/><rect x="1085" y="332" width="24" height="24" class="darkfill"/>
+
+<rect x="1160" y="188" width="365" height="195" rx="8" class="box"/>
+<text x="1342" y="215" class="lab" text-anchor="middle">Concentrated allocation</text>
+<text x="1342" y="240" class="small" text-anchor="middle">N = 3 taxa · K = 6 incidences · H = 3</text>
+<text x="1185" y="276" class="small">Taxon A</text>
+<rect x="1265" y="260" width="24" height="24" class="darkfill"/><rect x="1293" y="260" width="24" height="24" class="darkfill"/><rect x="1321" y="260" width="24" height="24" class="darkfill"/><rect x="1349" y="260" width="24" height="24" class="darkfill"/>
+<text x="1185" y="312" class="small">Taxon B</text><rect x="1377" y="296" width="24" height="24" class="darkfill"/>
+<text x="1185" y="348" class="small">Taxon C</text><rect x="1405" y="332" width="24" height="24" class="darkfill"/>
+
+<text x="820" y="420" class="lab">Within-pair directional excess after exact N,K conditioning</text>
+<line x1="960" y1="510" x2="1505" y2="510" class="axis"/>
+<line x1="960" y1="454" x2="960" y2="530" class="light"/>
+<text x="960" y="550" class="small" text-anchor="middle">0</text>
+<text x="1096" y="550" class="small" text-anchor="middle">0.1</text>
+<text x="1232" y="550" class="small" text-anchor="middle">0.2</text>
+<text x="1368" y="550" class="small" text-anchor="middle">0.3</text>
+<text x="1504" y="550" class="small" text-anchor="middle">0.4</text>
+<text x="820" y="465" class="small">Full sample</text>
+<line x1="1160" y1="460" x2="1423" y2="460" stroke="#222" stroke-width="5"/>
+<circle cx="1292" cy="460" r="10" class="darkfill"/>
+<text x="1440" y="466" class="small">β = 0.244 (0.147–0.340)</text>
+<text x="820" y="500" class="small">Same observer + SiteID</text>
+<line x1="1147" y1="495" x2="1465" y2="495" stroke="#777" stroke-width="5"/>
+<circle cx="1306" cy="495" r="10" class="midfill"/>
+<text x="1440" y="501" class="small">β = 0.254 (0.138–0.371)</text>
+
+<!-- Panel C -->
+<text x="55" y="615" class="panel">C  Stronger first-order models still underpredict within-taxon concentration</text>
+<text x="55" y="643" class="sub">Observed higher-order β versus prediction at the observed recruited-taxon and extra-stop coefficients</text>
+<line x1="250" y1="865" x2="835" y2="865" class="axis"/>
+<text x="250" y="890" class="small" text-anchor="middle">0.6</text>
+<text x="396" y="890" class="small" text-anchor="middle">0.9</text>
+<text x="542" y="890" class="small" text-anchor="middle">1.2</text>
+<text x="688" y="890" class="small" text-anchor="middle">1.5</text>
+<text x="835" y="890" class="small" text-anchor="middle">1.8</text>
+
+<text x="55" y="685" class="lab">Full 4,236 pairs</text>
+<text x="55" y="720" class="small">Persistence</text><circle cx="340" cy="715" r="8" class="lightfill" stroke="#555"/><text x="355" y="721" class="small">0.784</text>
+<text x="55" y="755" class="small">Uniform</text><circle cx="512" cy="750" r="8" class="midfill"/><text x="527" y="756" class="small">1.138</text>
+<text x="55" y="790" class="small">Cross-fit species response</text><circle cx="541" cy="785" r="8" class="midfill"/><text x="556" y="791" class="small">1.198</text>
+<text x="55" y="825" class="small">Observed</text><circle cx="700" cy="820" r="10" class="darkfill"/><text x="717" y="826" class="num">1.524</text>
+
+<text x="875" y="685" class="lab">Strictly-prior-history subset (2,916 pairs)</text>
+<line x1="1040" y1="865" x2="1510" y2="865" class="axis"/>
+<text x="1040" y="890" class="small" text-anchor="middle">1.1</text>
+<text x="1197" y="890" class="small" text-anchor="middle">1.3</text>
+<text x="1353" y="890" class="small" text-anchor="middle">1.5</text>
+<text x="1510" y="890" class="small" text-anchor="middle">1.7</text>
+<text x="875" y="735" class="small">Species + prior SiteID + dry persistence</text>
+<circle cx="1239" cy="730" r="8" class="midfill"/><text x="1255" y="736" class="small">1.353</text>
+<text x="875" y="780" class="small">+ held-out rain × history gate</text>
+<circle cx="1223" cy="775" r="8" class="lightfill" stroke="#555"/><text x="1239" y="781" class="small">1.332</text>
+<text x="875" y="825" class="small">Observed</text>
+<circle cx="1471" cy="820" r="10" class="darkfill"/><text x="1488" y="826" class="num">1.650</text>
+<text x="875" y="920" class="small">All conditional residual tests: P = 0.000999</text>
+
+<!-- Panel D -->
+<text x="55" y="965" class="panel">D  The deep response is a strong-chorus signal</text>
+<rect x="520" y="940" width="760" height="32" fill="#eeeeee" stroke="#333"/>
+<rect x="520" y="940" width="739" height="32" class="darkfill"/>
+<text x="900" y="963" fill="white" font-family="Arial" font-size="18" font-weight="700" text-anchor="middle">97.3% of third+ coefficient carried by CI2/3</text>
+<text x="1300" y="963" class="small">CI1-only 2.7%</text>
+<text x="55" y="1010" class="sub">Adjacent-stop links: β = 0.419; conditional P = 0.000999 under both primary nulls · same-observer + same-SiteID CI2/3 share = 95.4%</text>
+
+<text x="55" y="1038" class="small">Interpretation: higher-order route-scale spatial dependence in expressed acoustic activity; not literal simultaneity, movement, or a causal rainfall mechanism.</text>
+</svg>
