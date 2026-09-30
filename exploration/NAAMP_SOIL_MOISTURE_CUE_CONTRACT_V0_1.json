@@ -1,0 +1,47 @@
+{
+  "analysis": "naamp_soil_moisture_cue_discrimination_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "parent_evidence": {
+    "rain72": "72 h antecedent precipitation amount predicts strong 0->CI2/3 activation after DaysSinceRain adjustment.",
+    "instantaneous_air_moisture": "Survey-midpoint VPD and RH do not explain the strong-activation signal once rain72 is included.",
+    "current_light_rain": "Survey-time categorical light rain does not explain the strong-activation signal.",
+    "local_template": "Strong chorus reactivation is concentrated in previously used species x SiteID combinations."
+  },
+  "question": "Does shallow soil wetness at the survey time account for the accumulated-rainfall signal, or does antecedent precipitation retain an association beyond surface soil moisture?",
+  "sample": "Same NAAMP matched pairs used by the hydric-cue analysis, requiring both runs to have parseable survey midpoint, route-centroid coordinates, ERA5 72 h precipitation and ERA5 volumetric soil water at the survey midpoint.",
+  "weather_source": {
+    "provider": "Earthmover public ERA5 Icechunk repository",
+    "group": "single/temporal",
+    "rain72": "tp hourly accumulation over the 72 h ending at the survey-midpoint hour",
+    "soil_layer1": "swvl1 / GRIB paramId 39, volumetric soil water layer 1, m3 m-3",
+    "soil_layer2": "swvl2 / GRIB paramId 40, volumetric soil water layer 2, m3 m-3; secondary",
+    "spatial_link": "nearest ERA5 0.25 degree grid cell to route centroid",
+    "temporal_link": "nearest exact hourly timestamp to local survey midpoint converted to UTC"
+  },
+  "contrasts": {
+    "soil1_gain": "wet-run swvl1 minus dry-run swvl1; positive means wetter survey had wetter shallow soil",
+    "soil2_gain": "wet-run swvl2 minus dry-run swvl2; positive means wetter survey had wetter deeper soil",
+    "rain72_amount": "z-scored wet-minus-dry difference in log1p 72 h precipitation amount"
+  },
+  "primary_model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + soil1_gain_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_predictions": {
+    "shallow_soil_support": "soil1_gain_difference_z beta >0 with complete 95% CI >0.",
+    "antecedent_rain_independent": "rain72_amount_difference_z beta >0 with complete 95% CI >0 after soil1 adjustment.",
+    "soil_mediated_pattern": "soil1 supported while rain72 is not CI-positive.",
+    "rain_beyond_soil_pattern": "rain72 supported while soil1 is not CI-positive."
+  },
+  "secondary": [
+    "Replace swvl1 with swvl2.",
+    "Use new_ci3_count as the full-chorus endpoint.",
+    "Repeat primary model in same-observer + physically stable pairs.",
+    "Report correlations among rain72, swvl1 gain and swvl2 gain."
+  ],
+  "minimum_gate": "At least 3500 matched pairs and 500 routes; swvl1 identity, units and finite-range audit must pass.",
+  "interpretation": [
+    "ERA5 soil water is a coarse route-scale environmental proxy, not frog body hydration or pond depth.",
+    "A swvl1 effect would support ground-moisture state but not prove physiological hydration mediation.",
+    "Persistence of rain72 after swvl1 would be consistent with rainfall-coupled processes not captured by shallow soil water, including breeding-site inundation, but would not prove them.",
+    "All exposures are observational; no causal mediation claim and no RC11 submission modification are authorized."
+  ],
+  "retuning_after_readback": false
+}
