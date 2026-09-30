@@ -56,9 +56,17 @@ assert "not abundance, occupancy, colonization, spawning or reproductive success
 assert "not proposed as universal" in text
 assert "Universality of the full mechanism remains unestablished" in text
 
+manuscript_words=len(text.split())
+assert manuscript_words <= 8000, f"anonymous manuscript exceeds 8000-word safety target: {manuscript_words}"
+
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
 abstract_words=len(abstract.split())
 assert abstract_words <= 350, f"abstract exceeds JAE 350-word limit: {abstract_words}"
+
+keywords=text.split("## Keywords",1)[1].split("## Introduction",1)[0].strip()
+keylist=[x.strip() for x in keywords.split(";") if x.strip()]
+assert len(keylist) <= 8, keylist
+assert keylist == sorted(keylist,key=str.lower), f"keywords not alphabetized: {keylist}"
 for x in [
     "structured community-state transition",
     "higher-order within-taxon structure",
@@ -75,7 +83,10 @@ assert discussion.index("higher-order spatial coherence") < discussion.index("Fi
 assert "The inference is therefore not that “other factors exist,”" in discussion
 
 # Every key bibliography item remains represented.
-for surname in ["Brooke","Brodie","Kusano","Oseen","Ospina","Rush","Saenz","Sugai","Switzer","Trenham","Yang"]:
+reference_surnames=["Brooke","Brodie","Foreman","Holt","Kusano","Oseen","Ospina","Rowley","Royle","Rush","Saenz","Sarker","Sugai","Switzer","Trenham","Xie","Yang"]
+body=text.split("## References",1)[0]
+for surname in reference_surnames:
     assert re.search(rf"^{surname},", text, flags=re.M), f"missing reference: {surname}"
+    assert surname in body, f"reference listed but not cited in body: {surname}"
 
-print(f"pulse-template manuscript v0.3 QA: PASS ({abstract_words} abstract words)")
+print(f"pulse-template manuscript v0.3 QA: PASS ({manuscript_words} manuscript words; {abstract_words} abstract words; {len(keylist)} keywords)")
