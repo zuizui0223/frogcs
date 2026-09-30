@@ -4,7 +4,7 @@
 
 The figures must tell the frog-ecology story without requiring the reader to understand the null machinery first:
 
-**silence → strong chorus → multi-site depth → historical site recurrence → simple generators fail**
+**silence → strong chorus → higher-order multi-site coherence → historical site recurrence → simple generators fail**
 
 The old alpha/beta/gamma and boundary-allocation figures become supporting context rather than the visual spine.
 
@@ -41,79 +41,104 @@ Does recent-rain change merely make existing callers louder/more detectable, or 
 
 ---
 
-## Figure 2 — Recruited species deepen across sites and return to historically strong places
+## Figure 2 — Recruited taxa show higher-order route-scale spatial coherence
 
 ### Biological question
-After a species enters the wet-state route, is the response an isolated detection or a spatially deep recurrent chorus pattern?
+After a taxon enters the wet-state route, is its extra spatial participation merely a first-order consequence of recruiting more taxa and more occupied stops, or is spread unusually deep within the same taxa?
 
 ### Panels
 **A. Spatial-depth decomposition.**
-Show first recruitment as the reference structure, then observed rainfall coefficients:
+Show observed rainfall coefficients:
 - second stop: β = 0.132; not outside either primary null
-- third+ stops: β = 0.473; outside both primary null 95% ranges
+- third+ stops: β = 0.473; outside both primary-null 95% ranges
 - fourth+ stops: β = 0.363; outside null ranges
 
-Overlay the κ=2 uniform and a=0.75 persistence-preserving 95% null ranges rather than only P values.
+Overlay κ=2 uniform and a=0.75 persistence-preserving 95% null ranges.
 
-**B. Calling strength within third+ depth.**
-Stack or side-by-side:
+**B. Higher-order conditional concentration.**
+Explain the endpoint visually:
+- for each route-new taxon, e = occupied stops − 1
+- higher-order mass = choose(e,2)
+- k=2 → 0; k=3 → 1; k=4 → 3; k=5 → 6
+
+Plot:
+- observed higher-order β = 1.524
+- uniform-null prediction at observed new-species and extra-stop betas = 1.138
+- persistence-null prediction = 0.784
+- conditional residuals with their null 95% ranges:
+  - uniform residual = 0.386 vs −0.098 to 0.096, P=0.000999
+  - persistence residual = 0.740 vs −0.081 to 0.082, P=0.000999
+
+Annotate prominently:
+**conditions on both recruited-taxon count and total extra-stop spread.**
+
+**C. Route-topology corroboration.**
+Show adjacent-stop-link rainfall coefficient:
+- β = 0.419
+- conditional on total extra-stop spread: P=0.000999 under both primary nulls.
+
+Make clear that StopNumber adjacency is route topology, not exact geographic distance.
+
+**D. Calling strength within third+ depth.**
 - CI2/3 share of third+ coefficient = 97.3%
 - CI1-only remainder = 2.7%
 - same-observer + same-SiteID CI2/3 share = 95.4%
 
-**C. Within-pair × species site targeting.**
+### Source
+- `exploration/route-new-spatial-depth-v1/exploration/run_naamp_route_new_spatial_depth.py`
+- `exploration/route-new-coherence-v1/exploration/run_naamp_route_new_coherence_conditional.py`
+- `exploration/higher-order-spatial-coherence-v1/exploration/run_naamp_higher_order_spatial_coherence.py`
+- `exploration/route-new-contiguity-v1/exploration/run_naamp_route_new_contiguity.py`
+- `exploration/spatial-depth-chorus-v1/exploration/run_naamp_spatial_depth_chorus_decomposition.py`
+
+### Message printed in figure
+**At the same amount of first-order recruitment and spread, wet-state activity is still too deeply concentrated within the same recruited taxa for independent-cell activation nulls.**
+
+---
+
+## Figure 3 — Strong chorus placement follows a persistent species × site template
+
+### Biological question
+Does the route-scale coherence occur at arbitrary sites, or preferentially where the same species has previously formed strong choruses?
+
+### Panels
+**A. Recurrence context.**
+Show descriptively:
+- route-new incidence recurrent: 98.1% leave-pair-out; 98.9% strictly prior
+- new CI3 any-history recurrent: 98.1%
+- new CI3 same-SiteID recurrent: 90.4%
+- strictly-prior same-SiteID recurrent: 82.6%
+
+Label these **availability-sensitive descriptive shares**, not the inferential endpoint.
+
+**B. Within-pair × species historical-site targeting.**
 Coefficient plot:
 - prior strong SiteID → wet CI2/3: 0.1511 (0.1291–0.1731)
 - prior strong SiteID → wet CI3: 0.0778 (0.0619–0.0937)
 - same-observer CI2/3: 0.1589 (0.1344–0.1833)
 
-Annotate: comparisons are among the ten sites for the **same focal species and pair**.
+Annotate that comparisons are among the ten sites for the **same focal species and pair**.
 
-**D. Rain-selective targeting.**
+**C. Rain-selective historical targeting.**
 Coefficient plot:
-- target-rain-advantage × historical targeting: 0.02449 (0.00700–0.04198)
-- same observer: 0.03067 (0.01331–0.04804)
+- target-rain-advantage × historical CI3 targeting: 0.02449 (0.00700–0.04198)
+- same-observer: 0.03067 (0.01331–0.04804)
 
-Small inset illustrates the reverse-direction design: wet-as-target versus dry-as-target for the same pair.
+Inset: mirror wet-as-target versus dry-as-target within the same matched pair.
 
-### Source
-- `exploration/route-new-spatial-depth-v1/exploration/run_naamp_route_new_spatial_depth.py`
-- `exploration/local-chorus-memory-v1/exploration/run_naamp_local_chorus_memory_targeting.py`
-- `exploration/rain-selective-memory-v1/exploration/run_naamp_rain_selective_local_memory.py`
-
-### Message printed in figure
-**The unusual response begins after recruitment: species deepen into strong choruses across several sites, preferentially at sites with a prior strong record.**
-
----
-
-## Figure 3 — Historical recurrence is abundant, but raw recurrence is not the inferential endpoint
-
-### Purpose
-Prevent the eye-catching 98% number from becoming the causal argument.
-
-### Panels
-**A. Route-new incidence decomposition.**
-- leave-pair-out recurrent = 98.1%
-- strictly-prior recurrent = 98.9%
-- strictly-prior one-off β = 0.0094 (−0.1412–0.1600)
-
-**B. New-CI3 recurrence decomposition.**
-- leave-pair-out any recurrence = 98.1%
-- same-SiteID recurrence = 90.4%
-- strictly-prior same-SiteID recurrence = 82.6%
-
-**C. Inferential hierarchy.**
-A simple visual arrow:
+**D. Inferential ladder.**
 raw recurrence → same-site recurrence → within-pair × species targeting → directional rain-selective targeting
 
-Label the first two as **descriptive availability-sensitive** and the latter two as the inferential tests.
+Use typography to distinguish descriptive from inferential evidence.
 
 ### Source
 - `exploration/recurrent-activation-memory-v1/exploration/run_naamp_recurrent_activation_memory.py`
 - `exploration/full-chorus-site-memory-v1/exploration/run_naamp_full_chorus_site_memory.py`
+- `exploration/local-chorus-memory-v1/exploration/run_naamp_local_chorus_memory_targeting.py`
+- `exploration/rain-selective-memory-v1/exploration/run_naamp_rain_selective_local_memory.py`
 
-### Editorial option
-If main-text figure count must be reduced, move Figure 3 to SI and retain panels 2C–D in the main text.
+### Message printed in figure
+**Spatially coherent strong chorusing is not placed arbitrarily: it preferentially reappears at species-specific physical sites with a prior strong chorus record.**
 
 ---
 
@@ -219,6 +244,6 @@ Move rather than delete:
 
 A reader who sees only Figures 1, 2, 4 and 5 should recover the full biological argument:
 
-> rain-associated state switch → strong multi-site chorus → historically targeted placement → not generated by simple species/site processes → broad but heterogeneous frog-community phenomenon.
+> rain-associated state switch → higher-order multi-site chorus coherence → historically targeted placement → not generated by simple species/site processes → broad but heterogeneous frog-community phenomenon.
 
 If that sequence is not obvious from the rendered figures, the redesign has failed.
