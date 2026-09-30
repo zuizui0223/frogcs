@@ -126,3 +126,17 @@ Do **not** inspect species × station × year outcome matrices, calculate concen
 - Iowa DNR Frog and Toad Call Survey programme description and 2025 methods report.
 
 The repository should record the exact downloaded/source metadata and checksums if response-level WFTS data are later obtained.
+
+
+## Frozen implementation documents for WFTS
+
+Before WFTS response-data access, the following are frozen:
+
+- `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — design/data-access eligibility;
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md` — Daymet exposure, pairing, endpoint, comparator and coverage gate;
+- `revision/WFTS_CANONICAL_SCHEMA_V0_1.json` — canonical run/matrix schema;
+- `scripts/wfts/run_wfts_confirmatory_analysis.py` — confirmatory analysis core;
+- `scripts/wfts/generate_synthetic_wfts_fixture.py` — artificial data only for code QA;
+- `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_1.md` — request designed not to solicit outcome summaries.
+
+Real WFTS response data must not be passed to the confirmatory analysis until schema/provenance and the pre-response coverage gate have been recorded.
