@@ -275,7 +275,7 @@ This distinction matters for generalization. The NAAMP evidence supports a broad
 
 ### Limits and provenance
 
-The study concerns acoustic activity, not abundance, occupancy, colonization, spawning or reproductive success. Same-observer and same-SiteID analyses, recorded hearing/noise/wind adjustment and direct 0→CI3 transitions make observer turnover and marginal detectability unlikely to explain the whole signal, but dry acoustic zeros remain imperfect evidence of physical absence.
+The study concerns acoustic activity, not abundance, occupancy, colonization, spawning or reproductive success. Anuran calling surveys can explicitly separate ecological state from detection in occupancy-style models (Royle & Link, 2005); our estimand instead remains the observed acoustic state. Same-observer and same-SiteID analyses, recorded hearing/noise/wind adjustment and direct 0→CI3 transitions make observer turnover and marginal detectability unlikely to explain the whole signal, but dry acoustic zeros remain imperfect evidence of physical absence.
 
 Rainfall was not randomized. Matching within State × RouteNumber × RunNumber, exact-year sensitivities and protocol-window analyses constrain but do not remove time-varying confounding. Rain may also covary with humidity, hydroperiod and other environmental changes that are biologically part of a wet-state transition.
 
