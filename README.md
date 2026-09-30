@@ -19,7 +19,8 @@ Nothing in this branch retroactively converts post-freeze analyses into preregis
 
 Primary files:
 
-- `paper/manuscript_pulse_template_v0_3.md` — current integrated manuscript\n- `paper/manuscript_pulse_template_v0_2.md` — superseded integrated draft retained for audit
+- `paper/manuscript_pulse_template_v0_3.md` — current integrated manuscript
+- `paper/manuscript_pulse_template_v0_2.md` — superseded integrated draft retained for audit
 - `paper/supporting_information_pulse_template_v0_1.md`
 - `revision/INTEGRATED_RESULTS_V0_1.json` — durable numeric synthesis for manuscript/figures
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_1.md`
