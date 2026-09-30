@@ -1,6 +1,6 @@
 # Supporting Information
 
-## Rainfall gates the re-expression of persistent spatial structure in frog chorus communities
+## Rainfall-associated chorus activation re-expresses persistent spatial structure in frog communities
 
 This Supporting Information preserves secondary, falsification and alternative-mechanism analyses that are important for transparency but are not part of the main inferential spine.
 
