@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_soil_moisture_spatial_depth_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Does dynamic shallow-soil wetness specifically predict the anomalous third-and-later-stop spatial deepening of rainfall-recruited species?",
+  "sample": "NAAMP matched pairs with valid ERA5 swvl1/swvl2 and 72 h precipitation for both runs; primary analysis additionally requires all ten physical SiteIDs to be unchanged between wet and dry runs.",
+  "responses": {
+    "route_new_species": "Number of species absent from the dry route and present in the wet route.",
+    "second_stop_incidence": "Number of route-new species occupying >=2 wet stops.",
+    "third_plus_depth": "Sum max(k-2,0) across route-new species, where k is wet occupied-stop count.",
+    "strong_third_plus_depth": "Same third-plus depth restricted to route-new species whose maximum wet CallingIndex is 2 or 3.",
+    "full_chorus_third_plus_depth": "Same third-plus depth restricted to route-new species with maximum wet CallingIndex=3."
+  },
+  "primary_model": "response ~ rain_contrast + rain72_amount_difference_z + soil1_gain_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_prediction": "soil1_gain_difference_z is positive with complete 95% CI >0 for strong_third_plus_depth.",
+  "supporting_prediction": "soil1_gain_difference_z is positive with complete 95% CI >0 for third_plus_depth.",
+  "localization_diagnostic": "Report soil1 effects for route_new_species and second_stop_incidence. If third-plus responses are supported while route_new_species is not, interpret soil wetness as more closely associated with release of spatial depth than with the number of recruited taxa.",
+  "secondary": [
+    "Replace swvl1 with swvl2.",
+    "Use full_chorus_third_plus_depth.",
+    "Repeat primary strong_third_plus_depth in same-observer + physical-stop pairs.",
+    "Report standardized-response soil coefficients for the five responses as descriptive effect-size comparison."
+  ],
+  "minimum_gate": "At least 3500 physically stable weather-qualified pairs and 500 routes.",
+  "interpretation": [
+    "Support links dynamic hydric state to spatial release depth, not to individual movement among stops.",
+    "ERA5 soil water is route-scale environmental context, not pond depth or frog body hydration.",
+    "The test remains observational and does not establish mediation or causality.",
+    "No RC11 manuscript modification is authorized."
+  ],
+  "retuning_after_readback": false
+}
