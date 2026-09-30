@@ -7,6 +7,8 @@ on:
       - revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json
       - revision/build_pulse_template_figures.py
       - .github/workflows/build_pulse_template_figures.yml
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
