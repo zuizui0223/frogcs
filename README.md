@@ -23,6 +23,8 @@ Primary files:
 - `paper/supporting_information_pulse_template_v0_1.md`
 - `revision/INTEGRATED_RESULTS_V0_1.json` — durable numeric synthesis for manuscript/figures
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_1.md`
+- `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md` — current gap/novelty/ecology/scale map
+- `revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md` — current scientific synthesis + stop rule
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
 - `revision/FIGURE_REBUILD_SPEC_V0_1.md`
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
