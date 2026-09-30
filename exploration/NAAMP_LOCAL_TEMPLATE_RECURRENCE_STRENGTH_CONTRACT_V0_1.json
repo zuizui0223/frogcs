@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_local_template_recurrence_strength_v0_1",
+  "status": "post_readback_recurrence-strength test fixed before endpoint",
+  "question": "Does repeated prior strong-chorus use of the same physical SiteID by a species dose-dependently predict where that route-new species reactivates in a wetter survey?",
+  "population": "Physically stable matched pairs with prior eligible history in the same State x RouteNumber x RunNumber stratum. Focal species are absent from the focal dry route, present in the wet route, and previously recorded somewhere on the route.",
+  "unit": "pair x focal species x physical SiteID with at least two prior sampling opportunities for that SiteID",
+  "predictors": {
+    "own_prior_strong_rate": "Fraction of prior eligible opportunities at that SiteID with focal-species CallingIndex 2-3.",
+    "generic_other_strong_rate": "Across the same prior opportunities, mean number of other species with CallingIndex 2-3 at the SiteID.",
+    "own_prior_any_rate": "Fraction of prior opportunities with any focal-species CallingIndex >0; alternate sensitivity only."
+  },
+  "outcomes": {
+    "wet_strong": "1 if focal species has wet CallingIndex 2-3.",
+    "wet_full": "1 if focal species has wet CallingIndex 3."
+  },
+  "primary_design": "Restrict to pair x species groups with within-group variation in own_prior_strong_rate. Demean wet_strong, own_prior_strong_rate and generic_other_strong_rate within pair x species; regress demeaned wet_strong on the two predictors without intercept; cluster covariance by State x RouteNumber.",
+  "primary_prediction": "own_prior_strong_rate coefficient >0 with complete 95% CI >0 after generic site chorus quality is controlled.",
+  "secondary": [
+    "Repeat with wet_full.",
+    "Repeat wet_strong in same-observer pairs.",
+    "Replace own_prior_strong_rate with own_prior_any_rate while retaining generic-other-strong control."
+  ],
+  "minimum_gate": "At least 400 informative pair x species groups, >=225 routes and >=20 species after requiring at least two prior SiteID opportunities.",
+  "interpretation": [
+    "A positive dose response supports durable species-site recurrence beyond a one-off historical detection and generic frog-hotspot quality.",
+    "It remains compatible with persistent local populations and species-specific microhabitat suitability; these are not distinguished.",
+    "No continuous occupancy, individual identity, reproductive success or causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
