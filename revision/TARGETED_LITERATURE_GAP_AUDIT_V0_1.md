@@ -126,3 +126,24 @@ This allows a stronger novelty formulation:
 > **Previous frog studies establish environmental control of calling, rapid assemblage turnover, within-chorus call synchrony and breeding-site fidelity separately. Here, a repeated community matrix shows that rainfall-associated activation contains higher-order spatial dependence across sites: even at the same number of recruited taxa and the same total amount of spread, activity is unusually concentrated within the same taxa at third-and-later sites, and those strong chorus states preferentially reappear at historically used physical sites.**
 
 The term **higher-order spatial coherence** is preferred over "synchrony" because NAAMP stops were surveyed sequentially rather than simultaneously.
+
+
+## Addendum: breadth of the higher-order coherence result
+
+The higher-order within-taxon coefficient is not concentrated in one taxon or one sampled state.
+
+Taxonomic audit, using concentration thresholds reused from the earlier route-new spread audit:
+- 53 taxa represented;
+- 25 positive contributors;
+- 19 contributors >=1% of positive mass;
+- top-1 positive share 18.8%;
+- top-5 54.2%;
+- HHI 0.0855;
+- every leave-one-taxon-out total coefficient positive.
+
+Geographic audit, using the frozen RC11 leave-one-state-out rule:
+- all 21 leave-one-state-out coefficients and 95% CIs positive;
+- β range 0.967–1.775;
+- minimum lower CI 0.397.
+
+State-specific effects remain heterogeneous (14/17 positive point estimates, 2/17 positive CIs), so the evidence supports **broad but non-uniform** higher-order coherence within NAAMP, not spatial invariance.
