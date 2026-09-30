@@ -1,0 +1,36 @@
+{
+  "analysis": "naamp_higher_order_spatial_coherence_v0_1",
+  "status": "post_readback_higher_order_test_fixed_before_endpoint",
+  "motivation": "Existing analyses show excess extra-stop spread conditional on route-new species recruitment, and excess adjacent-stop links conditional on total extra-stop spread. This test asks a distinct higher-order question: after conditioning on both how many route-new species are recruited and how much extra-stop incidence is generated, are those extra incidences unusually concentrated within the same species at third-and-later occupied stops?",
+  "population": "Frozen 4,236 NAAMP matched pairs.",
+  "species_unit": "Species absent from the entire dry route and present at >=1 stop in the wet route.",
+  "pair_endpoints": {
+    "route_new_species_gain": "Number of route-new species in the wet survey.",
+    "extra_stop_incidence_gain": "For each route-new species with k occupied wet stops, max(k-1,0), summed across species.",
+    "higher_order_within_species_mass": "For each route-new species let e=max(k-1,0). Sum choose(e,2)=e(e-1)/2 across species. This is zero for k<=2 and increases convexly for k>=3.",
+    "threeplus_species_count": "Number of route-new species with k>=3; descriptive secondary endpoint."
+  },
+  "nulls": [
+    "uniform activation kappa=2",
+    "persistence-preserving activation anchor=0.75"
+  ],
+  "primary_conditional_test": {
+    "construction": "For each null family, generate 1,000 simulated rainfall-coefficient triplets (route_new_species_gain beta, extra_stop_incidence_gain beta, higher_order_within_species_mass beta). Fit OLS across null replicates: higher_beta = a + b1*new_species_beta + b2*extra_stop_beta.",
+    "statistic": "Observed higher-order beta minus the null-regression prediction evaluated at the observed route-new-species beta and observed extra-stop beta.",
+    "null_distribution": "Residuals of the 1,000 simulated triplets around the fitted null regression.",
+    "p_value": "Plus-one upper-tail Monte Carlo P comparing simulated residuals with the observed conditional residual.",
+    "support_rule": "Higher-order spatial coherence is supported only if the observed conditional residual is above the upper 95% residual bound under both null families."
+  },
+  "secondary_checks": [
+    "Report the unconditioned higher-order beta and its percentile under both null families.",
+    "Report the null-regression coefficients and R-squared to show how strongly the first-order recruitment/spread quantities determine the higher-order statistic.",
+    "Report threeplus_species_count descriptively; it has no decision role."
+  ],
+  "interpretation": [
+    "Support means the rainfall-associated extra-stop response is more concentrated within the same recruited taxa at third-and-later stops than expected after accounting for both the number of recruited taxa and the total amount of extra-stop spread.",
+    "This establishes higher-order dependence in spatial expression, not literal simultaneity because NAAMP route stops are surveyed sequentially.",
+    "It does not identify movement, hydrological connectivity, social facilitation or a causal rainfall mechanism.",
+    "No endpoint, model term, null family, tail or decision threshold may be changed after result readback."
+  ],
+  "retuning_after_readback": false
+}
