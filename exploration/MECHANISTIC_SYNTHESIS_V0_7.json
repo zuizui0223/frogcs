@@ -1,0 +1,250 @@
+{
+  "analysis": "mechanistic_synthesis_v0_7",
+  "status": "exploratory_synthesis_not_submission_authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "one_sentence": "Rain-associated acoustic expansion is recurrent re-expression of a latent species-by-site chorus network; dynamic soil-water change supplies an additional broadly transportable hydric-state axis, while historical local chorus use supplies the spatial template and realized activation depth drives the matrix anomaly.",
+  "axes": {
+    "acoustic_boundary_crossing": {
+      "evidence": {
+        "activation_share": 0.6528793213930071,
+        "ci2_3_share_of_activation": 0.8707082810857251,
+        "new_ci3_beta": 0.4413143755210998,
+        "new_ci3_ci95": [
+          0.11436200385886863,
+          0.768266747183331
+        ],
+        "robust_new_ci3_beta": 0.5140603333339898,
+        "robust_new_ci3_ci95": [
+          0.10081588098938049,
+          0.9273047856785992
+        ]
+      },
+      "conclusion": "Rain-associated change includes emergence of overlapping/full choruses, not merely louder already-active cells or CI1-only detections."
+    },
+    "recurrent_local_template": {
+      "evidence": {
+        "prior_only_recurrent_share_strong_score": 1.024992726810087,
+        "prior_only_same_site_any_share": 0.84392184861427,
+        "prior_only_same_site_prior_strong_share": 0.7001084698101772,
+        "local_site_memory_beta": 0.151,
+        "local_site_memory_ci95": [
+          0.129,
+          0.173
+        ],
+        "same_observer_local_site_memory_beta": 0.159,
+        "same_observer_local_site_memory_ci95": [
+          0.134,
+          0.183
+        ],
+        "prior_only_ci3_opportunity_beta": 0.02448895976609234,
+        "prior_only_ci3_opportunity_ci95": [
+          0.007001673669270292,
+          0.04197624586291439
+        ],
+        "own_site_template_positive_species_fraction": 0.95
+      },
+      "conclusion": "Previously used own-species physical sites are preferentially re-expressed. Generic site quality and sampling opportunity are insufficient explanations.",
+      "unresolved": "Cannot distinguish persistent local population from persistent species-specific microhabitat suitability."
+    },
+    "hydric_state": {
+      "evidence": {
+        "swvl1_gain_beta": 1.5728,
+        "swvl1_gain_ci95": [
+          0.9229,
+          2.2227
+        ],
+        "robust_swvl1_gain_beta": 1.6238,
+        "robust_swvl1_gain_ci95": [
+          0.8243,
+          2.4232
+        ],
+        "ci3_swvl1_beta": 0.3418,
+        "ci3_swvl1_ci95": [
+          0.1542,
+          0.5294
+        ],
+        "route_split_A": [
+          1.0753616664759644,
+          0.4702668122848258,
+          1.6804565206671032
+        ],
+        "route_split_B": [
+          2.1318183162004773,
+          1.0547792987484041,
+          3.2088573336525505
+        ],
+        "early_period": [
+          1.55,
+          0.912,
+          2.188
+        ],
+        "late_period": [
+          1.637,
+          0.72,
+          2.553
+        ],
+        "robust_route_A": [
+          0.987,
+          0.209,
+          1.765
+        ],
+        "robust_route_B": [
+          2.298,
+          1.002,
+          3.594
+        ],
+        "leave_one_state_out_all_ci_positive": true
+      },
+      "conclusion": "Wet-minus-dry soil-water change is the strongest tested environmental correlate of strong chorus recruitment and transports across routes, periods, robust subsets and state omissions.",
+      "falsifications": {
+        "rain72_after_soil_supported": false,
+        "instantaneous_vpd_rh_supported": false,
+        "barometric_pressure_supported": false,
+        "current_light_rain_supported": false,
+        "fixed_soil_threshold_supported": false
+      }
+    },
+    "hydric_change_not_binary_gate": {
+      "evidence": {
+        "wet_soil_beta": 2.286335433774905,
+        "wet_soil_ci95": [
+          1.2290638184837603,
+          3.34360704906605
+        ],
+        "dry_soil_beta": -2.6121167694286047,
+        "dry_soil_ci95": [
+          -3.673775576268662,
+          -1.5504579625885475
+        ],
+        "wet_plus_dry_symmetry_p": 0.21581938249038624,
+        "discordance_interaction_beta": 0.19196434949902894,
+        "discordance_interaction_ci95": [
+          -1.4463225016343881,
+          1.8302512006324458
+        ],
+        "discordance_interaction_p": 0.8183587055091421,
+        "discordant_pair_rain_beta": 1.128303264585615,
+        "discordant_pair_rain_ci95": [
+          0.0712552953129093,
+          2.185351233858321
+        ]
+      },
+      "conclusion": "Relative soil-water change is more consistent than an absolute threshold, but positive soil wetting is not a necessary on/off condition for the rain-recency signal. Rain recency and soil hydric state retain partly distinct information."
+    },
+    "spatial_depth": {
+      "evidence": {
+        "route_new_species_beta": 0.1846754325853956,
+        "second_stop_beta": 0.13170590853393746,
+        "third_plus_beta": 0.4725893914308725,
+        "fourth_plus_beta": 0.3628430638358824,
+        "third_plus_ci2_3_beta": 0.4598290241532527,
+        "ci2_3_share_third_plus": 0.9729990399510237,
+        "conditional_history_placement_p": 0.17882117882117882,
+        "conditional_persistence_placement_p": 0.21178821178821178
+      },
+      "conclusion": "The matrix anomaly is activation depth into third-and-later stops, overwhelmingly at substantial chorus intensity; special stop placement is unnecessary after species identity and realized depth are fixed."
+    },
+    "hydric_plus_template_depth": {
+      "evidence": {
+        "pair_species": 1927,
+        "routes": 325,
+        "species": 44,
+        "prior_template_beta": 0.6267759073743808,
+        "prior_template_ci95": [
+          0.4808742433230331,
+          0.7726775714257286
+        ],
+        "soil_beta": 0.13691402399667238,
+        "soil_ci95": [
+          0.036382440014824366,
+          0.23744560797852038
+        ],
+        "template_x_soil_beta": 0.07288851258600376,
+        "template_x_soil_ci95": [
+          -0.02011402951156631,
+          0.16589105468357385
+        ],
+        "same_observer_template_beta": 0.7203009809036272,
+        "same_observer_soil_beta": 0.13154374724334422,
+        "same_observer_interaction_beta": 0.11189710085491952,
+        "same_observer_interaction_ci95": [
+          0.020322667685607407,
+          0.20347153402423163
+        ]
+      },
+      "conclusion": "Historical template breadth and soil-water change independently predict post-activation depth in the full sample. The full-sample interaction is not supported, so a largely additive two-axis model is safer than a universal multiplicative gate."
+    },
+    "protocol_robustness": {
+      "evidence": {
+        "crossing_pairs": 1722,
+        "crossing_routes": 411,
+        "soil_beta": 1.9502213203122514,
+        "soil_ci95": [
+          1.1175417161338612,
+          2.7829009244906415
+        ],
+        "robust_pairs": 1293,
+        "robust_soil_beta": 1.8841199773916724,
+        "robust_soil_ci95": [
+          0.7986795803769182,
+          2.9695603744064263
+        ],
+        "both_outside_pairs": 174,
+        "both_outside_soil_beta": 1.376888461675595,
+        "both_outside_soil_ci95": [
+          -0.44263330096162923,
+          3.196410224312819
+        ]
+      },
+      "conclusion": "The soil-water association is not confined to comparisons wholly inside the 0-3-day survey target window; the both-outside subset is small and imprecise."
+    }
+  },
+  "falsified_or_insufficient": [
+    "uniform common activation",
+    "persistence-preserving common activation",
+    "cross-fit species-specific rainfall shifts alone",
+    "prior local memory alone",
+    "single rain-by-local-memory gate",
+    "observer turnover",
+    "physical stop relocation",
+    "measured acoustic detection conditions",
+    "weak-call-only detection",
+    "simple chorus facilitation to dry-active stops",
+    "acute same-night or 0-1-day-only response",
+    "NWI hydroperiod",
+    "NWI Palustrine vs Riverine/Lacustrine class",
+    "instantaneous humidity/VPD",
+    "barometric pressure",
+    "current light rain",
+    "72h precipitation amount after soil water",
+    "fixed soil-moisture threshold",
+    "positive soil-wetting sign as necessary gate",
+    "generic site productivity instead of own-species site history",
+    "special spatial placement conditional on realized activation depth"
+  ],
+  "generality": {
+    "within_NAAMP": {
+      "status": "strong pooled generality with local heterogeneity",
+      "soil_route_split_both_ci_positive": true,
+      "soil_temporal_split_both_ci_positive": true,
+      "soil_LOSO_21_of_21_ci_positive": true,
+      "soil_state_specific_positive_fraction": 0.8666666666666667,
+      "soil_state_specific_ci_positive_fraction": 0.4666666666666667,
+      "template_taxon_positive_fraction": 0.95,
+      "strong_activation_LOSO_21_of_21_ci_positive": true
+    },
+    "cross_continent": {
+      "established": false,
+      "reason": "No effort-complete comparable multi-site species x site matrix has been identified; available AnuraSet site tests do not reproduce the prefixed threshold-dominance rule."
+    }
+  },
+  "best_supported_statement": "Recent rain is associated with re-expression of a persistent species-specific local chorus network. Among tested environmental variables, wet-minus-dry soil-water change provides the strongest broadly transportable hydric-state information and independently predicts both substantial chorus recruitment and the spatial depth of activated taxa. Rain recency is not fully reducible to a binary soil-wetting gate.",
+  "mechanistic_ceiling": {
+    "unresolved_population_vs_habitat": "Persistent local populations versus persistent species-specific microhabitat suitability cannot be separated from these acoustic observations.",
+    "unresolved_hydric_route": "ERA5 soil water cannot distinguish frog hydration from breeding-site water availability/inundation or correlated hydric processes.",
+    "observational": true,
+    "not_demographic": true,
+    "universal_claim": false
+  },
+  "stop_rule": "Do not add more post-readback NAAMP regression variants unless they test a qualitatively new falsifiable alternative. Next decisive evidence requires direct hydrology/body-hydration or individual-level data, or an independent effort-complete acoustic matrix."
+}
