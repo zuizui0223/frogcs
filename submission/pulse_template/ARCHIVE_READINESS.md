@@ -2,8 +2,8 @@
 
 ## Frozen source
 
-- release candidate: `release/jae-higher-order-rc1`
-- submission candidate: `submission/jae-higher-order-v1`
+- release candidate: `release/jae-higher-order-rc2`
+- submission candidate: `submission/jae-higher-order-v2`
 - both were created from the same validated integrated revision head
 - scientific anonymous bundle: PASS
 
@@ -15,7 +15,7 @@ Workflow:
 
 Default source ref:
 
-`release/jae-higher-order-rc1`
+`release/jae-higher-order-rc2`
 
 The workflow intentionally fails closed until all archive-stage requirements are present.
 
