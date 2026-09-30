@@ -1,0 +1,45 @@
+{
+  "analysis": "stcroix_direct_hydrology_eligibility_v0_1",
+  "status": "fixed_before_external_endpoint_readback",
+  "purpose": "Audit whether the independent USGS St. Croix data release supports a direct external hydrology test of frog calling, without using NAAMP-derived soil moisture.",
+  "public_sources": {
+    "parent_sciencebase_item": "5b3e4033e4b060350a0ef7dd",
+    "calling_item": "5b3e4054e4b060350a0ef7e3",
+    "calling_doi": "10.5066/F7CR5SBH",
+    "water_depth_item": "5b3e4093e4b060350a0ef7f6",
+    "water_depth_doi": "10.5066/P145DVG8",
+    "related_paper_doi": "10.1371/journal.pone.0201951"
+  },
+  "focal_system": {
+    "species": "Pseudacris crucifer",
+    "site": "SC4DAI2",
+    "years": "2008-2012",
+    "calling_measure": "Daily 21:00-23:00 integrated sound intensity in the species-specific 2900-3200 Hz band.",
+    "hydrology_measure": "Median daily wetland water depth from pressure logger."
+  },
+  "eligibility_gates": [
+    "Calling file exposes an explicit calendar date and numeric calling-activity value for SC4DAI2.",
+    "Water-depth file exposes SiteID, calendar date and numeric median daily water depth.",
+    "The two sources overlap on >=100 daily dates across >=3 distinct years.",
+    "Zero/no-calling days are represented within the potential calling season, rather than the file containing only positive call days.",
+    "No outcome-dependent file or column choice is required."
+  ],
+  "if_eligible_analysis_to_freeze_after_schema_only": {
+    "primary_question": "Within the known annual calling season, is daily calling activity higher when measured wetland water depth is greater, after controlling flexibly for year and within-year seasonal progression?",
+    "preferred_response": "log1p(daily calling integrand)",
+    "preferred_predictor": "standardized water depth",
+    "covariates": [
+      "year fixed effects",
+      "within-year day-of-season quadratic or spline chosen before endpoint values are inspected"
+    ],
+    "covariance": "HAC/Newey-West or year-clustered sensitivity because daily observations are temporally autocorrelated.",
+    "secondary": "Compare days with surface water depth >0 versus <=0 only if zero-depth days are genuinely represented."
+  },
+  "interpretation_boundaries": [
+    "This is a single-species, single-wetland direct-hydrology replication, not a replication of NAAMP matrix geometry.",
+    "Water depth is a breeding-habitat state, not frog body hydration.",
+    "Observational association does not prove causal mediation.",
+    "No RC11 submission change is authorized."
+  ],
+  "retuning_after_readback": false
+}
