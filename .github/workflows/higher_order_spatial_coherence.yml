@@ -2,10 +2,14 @@ name: higher-order spatial coherence
 on:
   push:
     branches: [exploration/higher-order-spatial-coherence-v1]
+    paths-ignore:
+      - exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_RECEIPT_V0_1.json
   workflow_dispatch:
-permissions: {contents: read}
+permissions:
+  contents: write
 jobs:
   analyse:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -21,3 +25,13 @@ jobs:
             exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_CONTRACT_V0_1.json
             exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_RECEIPT_V0_1.json
           if-no-files-found: error
+      - name: Commit receipt to analysis branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record higher-order spatial coherence receipt"
+          git push
