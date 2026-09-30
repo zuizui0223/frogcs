@@ -46,6 +46,25 @@ def fetch():
             ctype=(r.headers.get("content-type") or "").lower()
             if r.status_code==200 and (b[:2]==b"PK" or "spreadsheet" in ctype or "excel" in ctype):
                 return b,url,r.url,r.headers.get("content-type")
+            # PMC serves binary attachments through an intermediate HTML download page.
+            if r.status_code==200 and "html" in ctype and ".xlsx" in url.lower():
+                txt=r.text
+                hrefs=re.findall(r'href=["\\\']([^"\\\']+)["\\\']',txt,re.I)
+                next_urls=[]
+                for href in hrefs:
+                    h=html.unescape(href)
+                    if ".xlsx" in h.lower() or "cdn.ncbi.nlm.nih.gov" in h.lower() or "download" in h.lower():
+                        next_urls.append(urljoin(r.url,h))
+                for u2 in list(dict.fromkeys(next_urls)):
+                    try:
+                        r2=requests.get(u2,headers={"User-Agent":"Mozilla/5.0 frogcs-korea-audit/0.1","Referer":r.url},timeout=90,allow_redirects=True)
+                        b2=r2.content
+                        ct2=(r2.headers.get("content-type") or "").lower()
+                        if r2.status_code==200 and (b2[:2]==b"PK" or "spreadsheet" in ct2 or "excel" in ct2):
+                            return b2,url,r2.url,r2.headers.get("content-type")
+                        errors.append({"url":u2,"status":r2.status_code,"final":r2.url,"content_type":r2.headers.get("content-type"),"bytes":len(b2),"stage":"pmc_html_follow"})
+                    except Exception as e2:
+                        errors.append({"url":u2,"error":f"{type(e2).__name__}: {e2}","stage":"pmc_html_follow"})
             errors.append({"url":url,"status":r.status_code,"final":r.url,"content_type":r.headers.get("content-type"),"bytes":len(b)})
         except Exception as e:
             errors.append({"url":url,"error":f"{type(e).__name__}: {e}"})
