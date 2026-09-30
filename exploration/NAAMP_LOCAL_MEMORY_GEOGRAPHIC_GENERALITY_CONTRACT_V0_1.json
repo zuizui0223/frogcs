@@ -1,0 +1,19 @@
+{
+  "analysis": "naamp_local_memory_geographic_generality_v0_1",
+  "status": "post_readback_generality test fixed before geography endpoint",
+  "question": "Is species-specific same-SiteID chorus memory geographically repeatable across the NAAMP domain even though the magnitude of the rainfall effect varies among states?",
+  "source_model": "Exactly the NAAMP_SPECIES_SPECIFIC_SITE_MEMORY_V0_1 pair x species fixed-effect model, including adjustment for other-species prior strong-chorus richness and prior site effort.",
+  "outcome": "wet_strong (CallingIndex 2-3).",
+  "tests": {
+    "leave_one_state_out": "Refit after omitting each state in turn. PASS if all same-species-memory coefficients remain >0; strong PASS if all 95% CIs remain entirely >0.",
+    "deterministic_route_split": "Assign State:RouteNumber to A/B by first SHA256 byte (<128=A, otherwise B). Fit each fold independently. Both folds must have same-species-memory beta >0 with complete 95% CI >0.",
+    "state_specific_description": "Within states having >=100 informative pair x species groups, >=10 routes and >=10 species, report the same adjusted same-species-memory coefficient. No per-state success gate."
+  },
+  "secondary": "Repeat deterministic route split for wet_full (CallingIndex 3).",
+  "interpretation": [
+    "If route-split and leave-one-state-out tests pass, the spatial reactivation rule is broadly repeatable within sampled NAAMP geography even if the rain-response magnitude itself is heterogeneous.",
+    "This is not evidence of global universality outside NAAMP.",
+    "No continuous occupancy, biological memory, individual fidelity, or causal rainfall effect is proven."
+  ],
+  "retuning_after_readback": false
+}
