@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_soil_moisture_recurrent_reactivation_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Is the shallow-soil-moisture association with strong chorus activation carried primarily by reactivation of species already observed in the local route/site history rather than by strong choruses with no prior route record?",
+  "population": "Physically stable NAAMP matched pairs with valid ERA5 swvl1 and at least one strictly prior eligible run in the same route-season stratum.",
+  "memory_partition": "Use the fixed prior-only strong-activation memory partition: same-site prior strong, same-site prior weak-only, route-only prior, and no-prior-stratum record.",
+  "responses": {
+    "total": "strong_new_score",
+    "recurrent": "score_recurrent_sum = all prior-history categories",
+    "same_site": "score_same_site_any",
+    "no_prior": "score_no_prior_stratum_record",
+    "full_chorus_recurrent": "ci3_recurrent_sum",
+    "full_chorus_no_prior": "ci3_no_prior_stratum_record"
+  },
+  "model": "Each response ~ rain_contrast + rain72_amount_difference_z + soil1_gain_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_rule": "Reactivation-hydric support if recurrent soil beta has complete positive 95% CI, recurrent soil beta / total soil beta >0.5, and no-prior soil beta does not have a complete positive 95% CI.",
+  "secondary": [
+    "Report same-site share of total soil beta.",
+    "Repeat CI3 recurrent vs no-prior partition.",
+    "Repeat primary in same-observer pairs.",
+    "Replace swvl1 with swvl2 for recurrent response."
+  ],
+  "minimum_gate": "At least 1500 prior-history weather-qualified pairs and 300 routes; total strong_new_score soil beta must be estimable.",
+  "interpretation": [
+    "Support would directly connect hydric state to reactivation of previously observed local acoustic populations/templates rather than to genuinely history-free appearance.",
+    "No prior record can reflect historical nondetection, not only genuine novelty.",
+    "This does not prove continuous occupancy, individual persistence, pond depth, frog body hydration or causal mediation."
+  ],
+  "retuning_after_readback": false
+}
