@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_local_memory_metric_distance_decay_v0_1",
+  "status": "post_readback_metric localization test fixed before endpoint",
+  "question": "Does species-specific prior strong-chorus memory decay continuously with geographic distance from the nearest previously strong chorus site?",
+  "population": "Physically stable matched pairs with at least one prior eligible run in the same State x RouteNumber x RunNumber stratum. Focal species are route-new in the wet survey, occurred somewhere on the route before the focal pair, and have at least one prior CallingIndex 2-3 SiteID with pinned coordinates.",
+  "unit": "pair x focal species x current physical stop",
+  "source": {
+    "coordinates": "Pinned NAAMP Coordinates.csv",
+    "sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
+  },
+  "predictor": {
+    "nearest_prior_strong_km": "Great-circle distance from current SiteID to the nearest SiteID where the same focal species had CallingIndex 2-3 in an eligible run strictly before the earlier focal-pair year.",
+    "transformed": "log1p(nearest_prior_strong_km)"
+  },
+  "nuisance_adjustment": [
+    "log1p(number of other species with prior CallingIndex 2-3 at the current SiteID)",
+    "number of prior eligible runs in which the current SiteID was sampled"
+  ],
+  "primary_design": "Within each pair x species, demean wet_strong, log1p(nearest prior strong distance), and nuisance covariates. OLS without intercept; cluster covariance by State x RouteNumber.",
+  "primary_prediction": "Distance coefficient <0 with complete 95% CI <0.",
+  "secondary": [
+    "Repeat for wet_full (CallingIndex 3).",
+    "Repeat primary in same-observer pairs.",
+    "Report predicted within-group change in wet_strong for 0 km vs 5 km and 0 km vs 10 km using the fitted log-distance slope."
+  ],
+  "minimum_gate": "At least 500 informative pair x species groups with >=2 unique nearest-distance values, >=250 routes and >=20 species.",
+  "interpretation": [
+    "A negative distance gradient identifies a metric spatial kernel of species-specific acoustic recurrence.",
+    "It remains compatible with persistent local populations or fine-scale habitat matching; no individual movement, occupancy continuity, or biological memory is proven.",
+    "No causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
