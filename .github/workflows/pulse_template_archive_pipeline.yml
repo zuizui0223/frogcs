@@ -6,7 +6,7 @@ on:
       source_ref:
         description: Frozen source ref to archive
         required: true
-        default: release/jae-higher-order-rc2
+        default: release/jae-multisite-rc3
         type: string
 
 permissions:
@@ -33,10 +33,10 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          title="Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
-          manuscript=Path("paper/manuscript_pulse_template_v0_3.md").read_text(encoding="utf-8")
+          title="Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence"
+          manuscript=Path("paper/manuscript_pulse_template_v0_4.md").read_text(encoding="utf-8")
           assert manuscript.startswith("# "+title+"\n")
-          assert Path("revision/INTEGRATED_RESULTS_V0_1.json").exists()
+          assert Path("revision/INTEGRATED_RESULTS_V0_2.json").exists()
           assert Path("submission/pulse_template/SCIENTIFIC_BUNDLE_RECEIPT.md").exists()
           print({"status":"PASS","source_title":title})
           PY
@@ -67,7 +67,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          title="Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
+          title="Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence"
           z=json.loads(Path("build/archive-metadata/ZENODO_METADATA_FINAL.json").read_text(encoding="utf-8"))
           v=json.loads(Path("build/archive-metadata/SUBMISSION_METADATA_VALIDATION.json").read_text(encoding="utf-8"))
           assert z["title"]==title
@@ -85,11 +85,11 @@ jobs:
 
           commit=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
           keep=[
-              "paper/manuscript_pulse_template_v0_3.md",
-              "paper/supporting_information_pulse_template_v0_1.md",
-              "revision/INTEGRATED_RESULTS_V0_1.json",
-              "revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md",
-              "revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md",
+              "paper/manuscript_pulse_template_v0_4.md",
+              "paper/supporting_information_pulse_template_v0_2.md",
+              "revision/INTEGRATED_RESULTS_V0_2.json",
+              "revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md",
+              "revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md",
               "revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json",
               "revision/build_pulse_template_figures.py",
               "submission/pulse_template/SCIENTIFIC_BUNDLE_RECEIPT.md",
