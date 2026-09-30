@@ -1,11 +1,33 @@
 # Archive readiness — integrated multi-site chorus paper
 
-## Frozen source
+## Current authority
 
-- release candidate: `release/jae-multisite-rc3`
-- submission candidate: `submission/jae-multisite-v3`
-- both were created from the same validated integrated revision head
-- scientific anonymous bundle: PASS
+Current frozen integrated authority remains:
+
+- release: `release/jae-higher-order-rc2`
+- submission: `submission/jae-higher-order-v2`
+
+RC3 scientific files are currently on:
+
+`revision/pulse-template-synthesis-v1`
+
+Prospective RC3 refs, to be created **only after manuscript QA, figure rendering and scientific-bundle validation pass**, are:
+
+- `release/jae-multisite-rc3`
+- `submission/jae-multisite-v3`
+
+They are not treated as existing authority before that validation.
+
+## RC3 scientific distinction
+
+RC3 changes the inferential hierarchy from RC2:
+
+- the exchangeable exact N,K null is secondary;
+- the principal comparator preserves cross-fit species response + strictly-prior physical-SiteID history + dry persistence;
+- public terminology is within-taxon spatial concentration / multi-site coherence;
+- cross-fitting is explicitly not independent confirmation;
+- no untouched NAAMP confirmation partition remains;
+- a prospective external replication specification is frozen.
 
 ## Archive pipeline
 
@@ -13,11 +35,11 @@ Workflow:
 
 `.github/workflows/pulse_template_archive_pipeline.yml`
 
-Default source ref:
+The workflow is already configured for the **prospective** RC3 source:
 
 `release/jae-multisite-rc3`
 
-The workflow intentionally fails closed until all archive-stage requirements are present.
+Until that branch is actually created after validation, archive execution should fail rather than silently fall back to RC2.
 
 ## Human decisions still required
 
@@ -26,8 +48,6 @@ The workflow intentionally fails closed until all archive-stage requirements are
 No repository license has been selected.
 
 Do **not** archive until the authors deliberately choose a license and add the corresponding `LICENSE` or `LICENSE.md` file.
-
-The archive metadata must use the same license identifier.
 
 ### Private metadata secret
 
@@ -40,7 +60,6 @@ using:
 `submission/pulse_template/metadata.template.yml`
 
 Archive-stage strict validation requires:
-
 - final author names/order;
 - affiliations;
 - corresponding-author details;
@@ -48,17 +67,13 @@ Archive-stage strict validation requires:
 - funding and acknowledgements;
 - Conflict of Interest;
 - Statement on Inclusion;
-- all approval booleans set true;
+- all approval booleans true;
 - repository license;
 - archive DOI.
 
-### Archive DOI
-
-The metadata renderer requires a syntactically valid persistent archive DOI at `--stage archive`.
-
 ## Archive outputs
 
-When all requirements are met, the workflow generates and validates:
+When RC3 exists and all human requirements are met, the workflow generates:
 
 - `ZENODO_METADATA_FINAL.json`
 - `CITATION.cff`
@@ -68,24 +83,12 @@ When all requirements are met, the workflow generates and validates:
 - selected repository license
 - `SHA256SUMS.json`
 
-The source manifest records the exact archived git commit and SHA256 digests of the central manuscript, SI, results and figure-input files.
-
-## Important separation
+## Separation rule
 
 Archive preparation does not modify:
-
 - frozen original `main`;
 - `release/jae-v1-rc11`;
 - `submission/jae-v1`;
-- integrated `release/jae-higher-order-rc1`.
+- RC1 or RC2 integrated release branches.
 
-Any archive-helper changes after RC1 belong on the revision track only.
-
-
-## RC3 scientific distinction
-
-RC3 changes the inferential hierarchy from RC2:
-- the exchangeable exact N,K null is secondary;
-- the principal comparator preserves taxon-specific rainfall response and strictly-prior SiteID history;
-- public terminology is within-taxon multi-site concentration/coherence;
-- independent confirmation remains outstanding and must be external.
+RC3 will become current only after its own validated release manifest is written.
