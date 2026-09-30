@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_soil_moisture_local_memory_gating_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Does route-scale shallow-soil wetness strengthen reactivation of historically strong species x SiteID chorus cells?",
+  "population": "Physically stable NAAMP matched pairs with valid ERA5 swvl1 for both runs, at least one strictly prior eligible run in the same State x RouteNumber x RunNumber stratum, and focal species absent from the dry route but present in the wet route and known somewhere on the route previously.",
+  "unit": "pair x focal species x physical SiteID",
+  "memory": "prior_site_strong=1 if the focal species had CallingIndex 2-3 at that SiteID in any eligible run strictly before the earlier focal-pair year.",
+  "hydric_gate": "soil1_gain_z = z-scored wet-run minus dry-run ERA5 swvl1 at route centroid and survey midpoint.",
+  "outcomes": {
+    "primary": "wet_strong = 1 if wet CallingIndex at the site is 2-3",
+    "secondary": "wet_full = 1 if wet CallingIndex is 3"
+  },
+  "primary_design": "Within each pair x species, demean wet_strong, prior_site_strong, and prior_site_strong*soil1_gain_z. OLS without intercept with route-clustered covariance. Because soil1_gain_z is constant within the pair, the interaction tests whether soil wetness amplifies spatial targeting to remembered sites.",
+  "primary_prediction": "soil1_gain_z x prior_site_strong interaction >0 with complete 95% CI >0.",
+  "secondary": [
+    "Repeat with swvl2 gain.",
+    "Repeat primary for wet_full.",
+    "Repeat primary in same-observer pairs.",
+    "Report the prior_site_strong main effect and correlation between soil1 gain and rain72 amount."
+  ],
+  "minimum_gate": "At least 750 informative pair x species groups with both memory=1 and memory=0 stops, >=250 routes and >=20 species.",
+  "interpretation": [
+    "Support would join the dynamic hydric gate to the persistent local chorus template: wetter ground conditions selectively release historically strong species x site cells.",
+    "This does not prove frog body hydration, pond depth, continuous occupancy or biological memory.",
+    "ERA5 soil water is coarse route-scale context and may proxy other rainfall-driven hydrological processes.",
+    "No causal mediation or RC11 manuscript change is authorized."
+  ],
+  "retuning_after_readback": false
+}
