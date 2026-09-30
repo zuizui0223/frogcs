@@ -1,4 +1,4 @@
-# Rainfall-associated chorus activation re-expresses persistent spatial structure in frog communities
+# Rainfall-associated frog chorus activation is spatially coherent and historically structured
 
 ## Abstract
 
