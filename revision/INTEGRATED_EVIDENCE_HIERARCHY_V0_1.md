@@ -17,7 +17,7 @@ This is presented as a principle supported in the NAAMP frog system, not as a un
 | Wet conditions expand active frog community | footprint, alpha, gamma positive | frozen RC11 | established association |
 | Change is not just marginal calling | 0→CI2/3 dominates activation; 0→CI3 positive; same observer + SiteID robust | post-freeze endpoint-fixed | chorus-state switching |
 | Recruitment is spatially deep | third+ and fourth+ incidence exceed nulls; 97.3% strong chorus | post-freeze endpoint-fixed | multi-site deepening |
-| Spread has higher-order within-taxon coherence | conditional higher-order mass β=1.524; P=0.000999 under both nulls after conditioning on recruited-taxon and extra-stop betas | post-freeze endpoint-fixed + decision note frozen before readback | higher-order route-scale spatial coherence |
+| Spread has higher-order within-taxon coherence | conditional higher-order mass β=1.524; P=0.000999 under both primary nulls; same-observer + same-SiteID subset also P=0.000999; cross-fit species and joint species+prior-history nulls also P=0.000999 | post-freeze endpoint-fixed, robustness/falsification contracts fixed before readback | higher-order route-scale spatial coherence beyond first-order species and site propensities |
 | Strong chorus locations are historically structured | within-pair × species prior-site β=0.151 | post-freeze endpoint-fixed | persistent species × site template |
 | History is selectively expressed toward rain | directional β=0.0245; same-observer β=0.0307 | post-freeze endpoint-fixed | rain-selective historical targeting |
 | Simple species/site ingredients are insufficient | six nested null families rejected | mixed frozen + post-freeze cross-fit | unresolved structured generator |
@@ -30,7 +30,7 @@ The unexpected result is the **conjunction**, not any single percentage:
 
 1. acoustic silence often jumps directly to overlapping/full chorus;
 2. the excess response appears after recruited species reach three or more sites;
-3. even at the same recruited-taxon count and same total extra-stop spread, extra incidences are too concentrated within the same taxa under both primary nulls;
+3. even at the same recruited-taxon count and same total extra-stop spread, extra incidences are too concentrated within the same taxa under uniform, persistence, cross-fit species-response and joint species+strictly-prior-history nulls;
 4. that multi-site response is almost entirely strong chorus;
 5. the strong sites recur in species-specific historical locations;
 6. rain selectively sharpens that historical targeting;
