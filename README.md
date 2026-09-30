@@ -27,6 +27,11 @@ Primary files:
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md` — current gap/novelty/ecology map
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
 - `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_1.md` — frozen external-confirmation specification
+- `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — outcome-blind WFTS design/data-access audit
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md` — frozen Daymet/rainfall and confirmatory analysis implementation
+- `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_1.md` — outcome-blind raw-data request template
+- `revision/WFTS_CANONICAL_SCHEMA_V0_1.json` — frozen canonical WFTS input schema
+- `scripts/wfts/` — prospective confirmatory analysis core + synthetic QA fixture generator
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
 - `revision/FIGURE_REBUILD_SPEC_V0_2.md`
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
@@ -114,3 +119,18 @@ For reproduction of the original RC11 submission, use `main`, not this revision 
 - `.github/workflows/submission_pipeline.yml`
 
 Historical development remains available in release/history branches and ordinary Git history.
+
+
+## Prospective external confirmation status
+
+First candidate: **Wisconsin Frog and Toad Survey (WFTS)**
+
+Current status:
+
+**DESIGN_ELIGIBLE / DATA_ACCESS_PENDING**
+
+Official design documentation confirms permanent 10-station traditional routes, repeated annual survey periods, five-minute listening and the compatible CI1–3 calling scale. Wisconsin is external to the 21-state discovery dataset, although WFTS is historically linked to USGS/NAAMP protocol development.
+
+No WFTS concentration outcome has been inspected.
+
+The weather exposure, canonical schema, route folds, coverage gate, principal comparator, simulation count and decision rule are frozen before response-data access.
