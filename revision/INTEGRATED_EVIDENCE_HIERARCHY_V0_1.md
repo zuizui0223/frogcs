@@ -21,6 +21,7 @@ This is presented as a principle supported in the NAAMP frog system, not as a un
 | Strong chorus locations are historically structured | within-pair × species prior-site β=0.151 | post-freeze endpoint-fixed | persistent species × site template |
 | History is selectively expressed toward rain | directional β=0.0245; same-observer β=0.0307 | post-freeze endpoint-fixed | rain-selective historical targeting |
 | Simple species/site ingredients are insufficient | six nested null families rejected | mixed frozen + post-freeze cross-fit | unresolved structured generator |
+| Higher-order coherence is taxonomically broad | 25/53 taxa positive; top1 18.8%, top5 54.2%, HHI 0.0855; all leave-one-taxon-out totals positive | post-freeze audit reusing prior concentration thresholds | diffuse across taxa |
 | Broad within NAAMP | species concentration + leave-one-state-out | post-freeze + frozen robustness | broad, heterogeneous |
 | Full universality | unavailable | not established | do not claim |
 
