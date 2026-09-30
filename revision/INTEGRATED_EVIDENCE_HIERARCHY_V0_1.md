@@ -20,7 +20,7 @@ This is presented as a principle supported in the NAAMP frog system, not as a un
 | Spread has higher-order within-taxon coherence | conditional higher-order mass β=1.524; P=0.000999 under both primary nulls, same-observer + same-SiteID robustness, cross-fit species response and joint species+prior-history nulls; exact pairwise N/K conditioning also positive (raw β=0.244, 95% CI 0.147–0.340) | post-freeze endpoint-fixed; exact validation and robustness/falsification contracts fixed before readback | higher-order route-scale spatial coherence beyond first-order recruitment/spread and tested species/site propensities |
 | Strong chorus locations are historically structured | within-pair × species prior-site β=0.151 | post-freeze endpoint-fixed | persistent species × site template |
 | History is selectively expressed toward rain | directional β=0.0245; same-observer β=0.0307 | post-freeze endpoint-fixed | rain-selective historical targeting |
-| Simple species/site ingredients are insufficient | six nested null families rejected | mixed frozen + post-freeze cross-fit | unresolved structured generator |
+| Simple species/site ingredients are insufficient | nested allocation nulls rejected; higher-order endpoint also survives cross-fit species response, prior SiteID history + dry persistence, and the pre-existing final rain × history gate | mixed frozen + post-freeze endpoint-fixed | unresolved structured generator |
 | Higher-order coherence is taxonomically broad | 25/53 taxa positive; top1 18.8%, top5 54.2%, HHI 0.0855; all leave-one-taxon-out totals positive | post-freeze audit reusing prior concentration thresholds | diffuse across taxa |
 | Higher-order coherence is geographically robust | all 21 leave-one-state-out β and CIs positive; β range 0.967–1.775; minimum CI lower 0.397 | post-freeze audit reusing frozen RC11 geographic rule | no single state required; heterogeneous among states |
 | Broad within NAAMP | species concentration + leave-one-state-out | post-freeze + frozen robustness | broad, heterogeneous |
@@ -36,7 +36,7 @@ The unexpected result is the **conjunction**, not any single percentage:
 4. that multi-site response is almost entirely strong chorus;
 5. the strong sites recur in species-specific historical locations;
 6. rain selectively sharpens that historical targeting;
-7. even a held-out species + local-history + rain-gating process cannot generate the full allocation.
+7. even the pre-existing held-out species + local-history + rain-gating process cannot generate either the full allocation or the higher-order within-taxon concentration.
 
 ## Claims intentionally not made
 
