@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import hashlib, io, json, re
+import hashlib, html, io, json, re
 from pathlib import Path
 from urllib.parse import urljoin
 import pandas as pd
