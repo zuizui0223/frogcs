@@ -8,6 +8,10 @@ on:
       - .github/workflows/pulse_template_manuscript_qa.yml
   pull_request:
     branches: [main]
+concurrency:
+  group: pulse-template-manuscript-qa-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions: {contents: read}
 jobs:
   audit:
