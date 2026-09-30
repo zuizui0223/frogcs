@@ -192,14 +192,17 @@ Visually mark every rejection identically; do **not** make later nulls look like
 ## Figure 5 — Broad within NAAMP, heterogeneous among states, narrower consistency in Australia
 
 ### Panels
-**A. Species contribution concentration.**
-Rank positive species contributions; annotate:
-- 57 species total
-- 28 positive
-- top 1 = 13.9%
-- top 5 = 49.2%
-- HHI = 0.074
-- all leave-one-species-out totals positive
+**A. Higher-order taxonomic contribution concentration.**
+Rank higher-order taxon contributions; annotate:
+- 53 taxa total
+- 25 positive
+- 19 contribute ≥1% of positive mass
+- top 1 = 18.8%
+- top 5 = 54.2%
+- HHI = 0.0855
+- all leave-one-taxon-out totals positive
+
+Optionally show the strong-activation concentration values (57 taxa, top1 13.9%, top5 49.2%, HHI 0.074) as a small corroborating inset.
 
 **B. Geographic robustness.**
 Leave-one-state-out strong-activation coefficient with 95% intervals.
