@@ -85,21 +85,58 @@ save(fig,"fig4_historical_site_targeting")
 
 # Figure 5: breadth and heterogeneity
 x=DATA["figure5"]
-fig,ax=plt.subplots(figsize=(9.2,5.6))
-ax.axis("off")
-lines=[
-    "Higher-order coherence is broad, but not homogeneous",
-    "",
-    f"Taxonomic breadth: {x['taxa_positive']}/{x['taxa_total']} taxa positive; {x['taxa_ge_1pct']} contribute ≥1% of positive mass",
-    f"Concentration: top 1 = {100*x['top1_positive_share']:.1f}%; top 5 = {100*x['top5_positive_share']:.1f}%; HHI = {x['hhi']:.3f}",
-    f"Every leave-one-taxon-out total remains positive; minimum β = {x['min_leave_one_taxon_beta']:.3f}",
-    "",
-    f"Geographic robustness: 21/21 leave-one-state-out coefficients and CIs positive",
-    f"Leave-one-state-out β range = {x['loo_state_beta_range'][0]:.3f}–{x['loo_state_beta_range'][1]:.3f}",
-    f"Smallest leave-one-state-out CI lower bound = {x['loo_state_min_ci_lower']:.3f}",
-    "",
-    f"State-specific heterogeneity: {x['state_positive']}/{x['state_estimable']} positive point estimates; {x['state_positive_ci']}/{x['state_estimable']} positive 95% CIs"
+fig,axs=plt.subplots(1,2,figsize=(11.2,5.4))
+
+# A. Taxonomic breadth / concentration
+ax=axs[0]
+cats=["Positive taxa","≥1% positive mass","Top-5 positive mass","Top-1 positive mass"]
+vals=[
+    x["taxa_positive"]/x["taxa_total"],
+    x["taxa_ge_1pct"]/x["taxa_total"],
+    x["top5_positive_share"],
+    x["top1_positive_share"],
 ]
-for i,line in enumerate(lines):
-    ax.text(.04,.95-i*.078,line,transform=ax.transAxes,va="top",fontsize=12 if i else 15,weight="bold" if i==0 else "normal")
+y=np.arange(len(cats))
+ax.barh(y,vals,alpha=.78)
+ax.set_yticks(y,cats)
+ax.invert_yaxis()
+ax.set_xlim(0,1)
+ax.set_xlabel("Proportion")
+ax.set_title("A  Taxonomic breadth")
+for yi,v in enumerate(vals):
+    ax.text(min(v+.025,.92),yi,f"{100*v:.1f}%",va="center")
+ax.text(.02,.03,
+        f"{x['taxa_positive']}/{x['taxa_total']} taxa positive; "
+        f"HHI={x['hhi']:.3f}\n"
+        f"All leave-one-taxon totals >0; min β={x['min_leave_one_taxon_beta']:.3f}",
+        transform=ax.transAxes,va="bottom")
+
+# B. Geographic robustness versus heterogeneity
+ax=axs[1]
+lo,hi=x["loo_state_beta_range"]
+ax.hlines(2,lo,hi,linewidth=5)
+ax.plot([lo,hi],[2,2],marker="|",linestyle="None",markersize=14)
+ax.axvline(0,linewidth=.8)
+ax.scatter([x["loo_state_min_ci_lower"]],[1],s=55)
+ax.barh([0.35,0.0],
+        [x["state_positive"]/x["state_estimable"],
+         x["state_positive_ci"]/x["state_estimable"]],
+        height=.22,alpha=.78)
+ax.text(.02,.35,
+        f"{x['state_positive']}/{x['state_estimable']} positive state slopes",
+        va="center")
+ax.text(.02,0.0,
+        f"{x['state_positive_ci']}/{x['state_estimable']} state CIs >0",
+        va="center")
+ax.set_yticks([2,1],["Leave-one-state β range","Smallest LOO CI lower"])
+ax.set_ylim(-.45,2.45)
+ax.set_xlim(min(0,lo)-.1,max(hi,1)+.15)
+ax.set_xlabel("Coefficient / proportion")
+ax.set_title("B  Robust pooled signal, heterogeneous states")
+ax.text(.02,.73,
+        "21/21 state omissions retain positive coefficients and CIs\n"
+        "State-specific slopes are much less uniform",
+        transform=ax.transAxes,va="top")
+
+fig.suptitle("Fig. 5  Higher-order chorus coherence is broad but geographically heterogeneous",y=1.02)
 save(fig,"fig5_breadth_and_heterogeneity")
