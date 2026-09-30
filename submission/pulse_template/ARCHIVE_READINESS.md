@@ -1,9 +1,9 @@
-# Archive readiness — integrated higher-order chorus paper
+# Archive readiness — integrated multi-site chorus paper
 
 ## Frozen source
 
-- release candidate: `release/jae-higher-order-rc2`
-- submission candidate: `submission/jae-higher-order-v2`
+- release candidate: `release/jae-multisite-rc3`
+- submission candidate: `submission/jae-multisite-v3`
 - both were created from the same validated integrated revision head
 - scientific anonymous bundle: PASS
 
@@ -15,7 +15,7 @@ Workflow:
 
 Default source ref:
 
-`release/jae-higher-order-rc2`
+`release/jae-multisite-rc3`
 
 The workflow intentionally fails closed until all archive-stage requirements are present.
 
@@ -80,3 +80,12 @@ Archive preparation does not modify:
 - integrated `release/jae-higher-order-rc1`.
 
 Any archive-helper changes after RC1 belong on the revision track only.
+
+
+## RC3 scientific distinction
+
+RC3 changes the inferential hierarchy from RC2:
+- the exchangeable exact N,K null is secondary;
+- the principal comparator preserves taxon-specific rainfall response and strictly-prior SiteID history;
+- public terminology is within-taxon multi-site concentration/coherence;
+- independent confirmation remains outstanding and must be external.
