@@ -265,6 +265,15 @@ def main():
     }
     if not gate:
         out["primary_precheck"]=primary
+        # This continuous-lag diagnostic was prespecified as secondary with no
+        # pass gate, so report it even when the primary old-vs-none route gate fails.
+        out["continuous_lag_decay_diagnostic"]=fit_lag_decay(d)
+        ds=d[d.same_observer].copy()
+        out["same_observer_primary_precheck"]=fit_age(ds,"wet_strong")
+        out["classification"]={
+            "primary_old_memory_gate_passed":False,
+            "durable_old_memory_targeting_formally_classified":False
+        }
         OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
         print(json.dumps(out,indent=2,sort_keys=True))
         return
