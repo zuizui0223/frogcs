@@ -49,28 +49,47 @@ ax.set_title("Fig. 2  The unusual spatial response begins beyond the second site
 ax.text(.98,.08,"Third+ coefficient: 97.3% carried by CI2/3\nSame-observer + same-site: 95.4%",transform=ax.transAxes,ha="right",va="bottom")
 save(fig,"fig2_spatial_depth_strong_chorus")
 
-# Figure 3: higher-order conditional excess
+# Figure 3: within-taxon multi-site concentration
 x=DATA["figure3"]
-labels=["Uniform activation","Dry-state persistence","Cross-fit species response","Species + prior site history","Final rain × history gate"]
-obs=[x["full_observed"],x["full_observed"],x["full_observed"],x["prior_subset_observed"],x["prior_subset_observed"]]
-pred=[x["uniform_predicted"],x["persistence_predicted"],x["species_predicted"],x["joint_predicted"],x["final_gate_predicted"]]
-fig,ax=plt.subplots(figsize=(9.2,5.4))
+labels=[
+    "Principal: species + prior site history",
+    "+ held-out rain × history gate",
+    "Cross-fit species response",
+    "Uniform activation",
+    "Dry-state persistence",
+]
+obs=[
+    x["prior_subset_observed"],
+    x["prior_subset_observed"],
+    x["full_observed"],
+    x["full_observed"],
+    x["full_observed"],
+]
+pred=[
+    x["joint_predicted"],
+    x["final_gate_predicted"],
+    x["species_predicted"],
+    x["uniform_predicted"],
+    x["persistence_predicted"],
+]
+fig,ax=plt.subplots(figsize=(9.4,5.7))
 y=np.arange(len(labels))
 for yi,(o,p) in enumerate(zip(obs,pred)):
-    ax.plot([p,o],[yi,yi],linewidth=2)
+    lw=3 if yi<2 else 1.8
+    ax.plot([p,o],[yi,yi],linewidth=lw)
     ax.plot(p,yi,marker="o",linestyle="None")
     ax.plot(o,yi,marker="s",linestyle="None")
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
-ax.set_xlabel("Higher-order within-taxon rainfall coefficient")
-ax.set_title("Fig. 3  First-order species and site propensities underpredict higher-order concentration")
+ax.set_xlabel("Within-taxon concentration rainfall coefficient")
+ax.set_title("Fig. 3  Species and site propensities underpredict multi-site concentration")
 ax.text(.99,.04,
-        "circle = null prediction at observed recruitment + spread\n"
-        "square = observed; all five conditional P = 0.000999\n"
-        f"exact within-pair N,K conditioning: raw β={x['exact_raw_beta']:.3f} "
+        "circle = comparator prediction at observed recruitment + spread\n"
+        "square = observed; all conditional P = 0.000999\n"
+        f"secondary exchangeable N,K diagnostic: raw β={x['exact_raw_beta']:.3f} "
         f"({x['exact_raw_ci95'][0]:.3f}–{x['exact_raw_ci95'][1]:.3f})",
         transform=ax.transAxes,ha="right",va="bottom")
-save(fig,"fig3_higher_order_null_ladder")
+save(fig,"fig3_within_taxon_concentration")
 
 # Figure 4: historical site targeting
 x=DATA["figure4"]
@@ -143,5 +162,5 @@ ax.text(.02,.73,
         "State-specific slopes are much less uniform",
         transform=ax.transAxes,va="top")
 
-fig.suptitle("Fig. 5  Higher-order chorus coherence is broad but geographically heterogeneous",y=1.02)
+fig.suptitle("Fig. 5  Within-taxon multi-site concentration is broad but geographically heterogeneous",y=1.02)
 save(fig,"fig5_breadth_and_heterogeneity")
