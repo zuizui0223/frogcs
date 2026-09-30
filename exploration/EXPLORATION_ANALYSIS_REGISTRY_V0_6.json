@@ -1,0 +1,170 @@
+{
+  "analysis_registry_version": "v0.6",
+  "submission_authority": {
+    "branch": "main / release/jae-v1-rc11 / submission/jae-v1",
+    "sha": "015a675324800f2e5ac9ab0985b080fe88adc375"
+  },
+  "note": "All entries below are exploratory and must not silently overwrite the frozen RC11 submission authority.",
+  "entries": [
+    {
+      "analysis": "CallingIndex decomposition",
+      "branch": "exploration/mechanism-universality-v1",
+      "run_id": 36518276703
+    },
+    {
+      "analysis": "Strong activation CI1 vs CI2-3",
+      "branch": "exploration/calling-strength-v1",
+      "run_id": 36526823493
+    },
+    {
+      "analysis": "New CI3 full chorus",
+      "branch": "exploration/full-chorus-activation-v1",
+      "run_id": 36585282312,
+      "sha": "e063c1b4447fd5b8c12b8e43fcf8cd461b54cf0c"
+    },
+    {
+      "analysis": "Joint same-observer + physical-stop robustness",
+      "branch": "exploration/strong-activation-robustness-v1",
+      "run_id": 36536566753,
+      "sha": "d12814a43331db347fc1cbb383fd95f45f5cef1a"
+    },
+    {
+      "analysis": "Detection-quality adjustment",
+      "branch": "exploration/strong-activation-detection-v1",
+      "run_id": 36528793343,
+      "sha": "d8ad700682ac2ed8722bed599b2a8afa7feb847c"
+    },
+    {
+      "analysis": "Protocol-window strong activation",
+      "branch": "exploration/strong-activation-protocol-v1",
+      "run_id": 36537617807,
+      "sha": "8af59fb223a49ac4544f3e1dab4d4eaac33cea5b"
+    },
+    {
+      "analysis": "State heterogeneity",
+      "branch": "exploration/strong-activation-state-heterogeneity-v1",
+      "run_id": 36584712261,
+      "sha": "8e9b54172b449ed03a9b88ad566c01396f0099ff"
+    },
+    {
+      "analysis": "Route-new spread",
+      "branch": "exploration/route-new-spread-v1",
+      "run_id": 36540331370
+    },
+    {
+      "analysis": "Route-new spread joint robustness",
+      "branch": "exploration/route-new-spread-robustness-v1",
+      "run_id": 36541809384,
+      "sha": "670538a55528d5d8cd614a70a9f252ebcc55f2a4"
+    },
+    {
+      "analysis": "Route-new spatial depth",
+      "branch": "exploration/route-new-spatial-depth-v1",
+      "run_id": 36584192987,
+      "sha": "c7b39f98f29f6c931c87c17c51d7e9e4c03120e5"
+    },
+    {
+      "analysis": "Spatial depth by chorus intensity",
+      "branch": "exploration/spatial-depth-chorus-v1",
+      "run_id": 36621242037,
+      "sha": "7c7e77ac842986fa985a1d64bf47717343d29cdc"
+    },
+    {
+      "analysis": "Conditional spread coherence",
+      "branch": "exploration/route-new-coherence-v1",
+      "run_id": 36578796666,
+      "sha": "f67d074f20ea4cdaee929e1793317fb6bebc404f"
+    },
+    {
+      "analysis": "Route-order contiguity",
+      "branch": "exploration/route-new-contiguity-v1",
+      "run_id": 36579635648,
+      "sha": "d038846c6a9cdd864093f036893bdcaae6d33429"
+    },
+    {
+      "analysis": "Robust route-order contiguity",
+      "branch": "exploration/route-new-contiguity-robust-v1",
+      "run_id": 36581152045,
+      "sha": "773479640cda12bae6f094c963deafab430b3b84"
+    },
+    {
+      "analysis": "Euclidean spatial-structure diagnostic",
+      "branch": "exploration/route-new-spatial-structure-fast-v1",
+      "run_id": 36583867071,
+      "sha": "a943799773b9750c6b01b75ebfc42736d4562405"
+    },
+    {
+      "analysis": "Strong-activation species concentration",
+      "branch": "exploration/strong-activation-species-concentration-fast-v1",
+      "run_id": 36583873812,
+      "sha": "bab5cdddb0dd4f3dea119adb59ed4d120d3c0483"
+    },
+    {
+      "analysis": "Recurrent activation memory",
+      "branch": "exploration/recurrent-activation-memory-v1",
+      "run_id": 36621580821,
+      "sha": "1fbd0020842c42e718bee51a6102550345c763c4"
+    },
+    {
+      "analysis": "Strong activation prior-only memory",
+      "branch": "exploration/strong-activation-memory-v1",
+      "run_id": 36624051270,
+      "sha": "40565f97c66fd4edacdb448b0817ac1dcf2af912"
+    },
+    {
+      "analysis": "Full-chorus site memory",
+      "branch": "exploration/full-chorus-site-memory-v1",
+      "run_id": 36622144059,
+      "sha": "83da3c2a41ea97683320537a8f884dff55846246"
+    },
+    {
+      "analysis": "Local chorus-memory targeting",
+      "branch": "exploration/local-chorus-memory-v1",
+      "run_id": 36627593512,
+      "sha": "60e724a0fc1b26b5f6c451d4ec50f55a057f73ff"
+    },
+    {
+      "analysis": "Opportunity-normalized site memory",
+      "branch": "exploration/site-memory-opportunity-v1",
+      "run_id": 36622376790,
+      "sha": "0845799290f9dbc9418812ce2cd092e848caa050"
+    },
+    {
+      "analysis": "Strict prior-only site-memory opportunity",
+      "branch": "exploration/site-memory-prior-opportunity-v1",
+      "run_id": 36622704917,
+      "sha": "f39d9c9f23e1dd01dd3face9b0f5b58b39b8bb88"
+    },
+    {
+      "analysis": "Within-species site-memory localization",
+      "branch": "exploration/site-memory-within-species-v1",
+      "run_id": 36623087663,
+      "sha": "d15a05bcc3d4f4ebd9b5d95afe5d7c62e78dcd28"
+    },
+    {
+      "analysis": "Site-memory intensity localization",
+      "branch": "exploration/site-memory-intensity-localization-v1",
+      "run_id": 36623707060,
+      "sha": "b67b734901ac5c7298a0ff5e415c8ed5e21156d7"
+    },
+    {
+      "analysis": "NWI context + strong chorus",
+      "branch": "exploration/nwi-context-v1",
+      "run_id": 36583750676,
+      "sha": "91760e3967fd1062b8edd9f81d5fc7ff80469473"
+    },
+    {
+      "analysis": "Full-chorus thermal/seasonal gating",
+      "branch": "exploration/full-chorus-multicue-v1",
+      "run_id": 36621804834,
+      "sha": "5460ab384869d9bb98b6c225e34462e01378716d"
+    },
+    {
+      "analysis": "Local chorus-memory age",
+      "branch": "exploration/local-chorus-memory-age-v1",
+      "run_id": 36649489482,
+      "sha": "b3db644ee4f36157efc25e1242f405eb69430ce5",
+      "status": "gate_failed_descriptive_only"
+    }
+  ]
+}
