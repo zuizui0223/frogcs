@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy xarray "icechunk>=1.1,<2" zarr timezonefinder
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy xarray icechunk timezonefinder "numcodecs[pcodec]"
       - run: python -m compileall -q exploration scripts
       - run: python exploration/run_naamp_soil_moisture_cue.py
       - uses: actions/upload-artifact@v4
