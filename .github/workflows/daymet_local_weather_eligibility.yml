@@ -22,22 +22,17 @@ jobs:
           import numpy as np
           import xarray as xr
           from pyproj import Transformer
-          from pystac_client import Client
-          import planetary_computer
+          import fsspec
+          import pystac
           
           COORD_URL="https://www.sciencebase.gov/catalog/file/get/583dc314e4b0d1899f9dea8d?f=__disk__77%2F22%2F7e%2F77227ec46ac1c01592cd7d158d442cd8343a7536"
           COORD_SHA="f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
           
-          cat=Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
-          coll=cat.get_collection("daymet-daily-na")
-          if coll is None:
+          collection_url="https://planetarycomputer.microsoft.com/api/stac/v1/collections/daymet-daily-na"
+          coll=pystac.read_file(collection_url)
+          if coll is None or coll.id!="daymet-daily-na":
               raise RuntimeError("missing daymet-daily-na collection")
-          search=cat.search(collections=["daymet-daily-na"],datetime="2005-06-15/2005-06-15")
-          items=list(search.items())
-          if not items:
-              raise RuntimeError("no Daymet item for representative date")
-          item=planetary_computer.sign(items[0])
-          assets={k:{"href":v.href,"type":v.media_type,"roles":v.roles} for k,v in item.assets.items()}
+          assets={k:{"href":v.href,"type":v.media_type,"roles":v.roles,"extra_fields":v.extra_fields} for k,v in coll.assets.items()}
           
           req=urllib.request.Request(COORD_URL,headers={"User-Agent":"frogcs-daymet-audit/0.1"})
           with urllib.request.urlopen(req,timeout=180) as r: raw=r.read()
@@ -51,14 +46,15 @@ jobs:
                   coords[sid]=(float(r["lat"]),float(r["lon"]))
           sample=sorted(coords,key=lambda s:hashlib.sha256(s.encode()).hexdigest())[:20]
           
-          # Identify a Zarr-like cloud asset. Planetary Computer Daymet exposes
-          # a zarr-abfs asset; fail closed if its naming changes.
-          zkeys=[k for k in assets if "zarr" in k.lower()]
-          if not zkeys:
-              raise RuntimeError(f"no zarr asset; assets={sorted(assets)}")
-          zkey=sorted(zkeys)[0]
-          href=item.assets[zkey].href
-          ds=xr.open_zarr(href,consolidated=False)
+          # Planetary Computer Daymet stores the full daily series as a
+          # collection-level Zarr asset (not one STAC item per day).
+          if "zarr-https" not in coll.assets:
+              raise RuntimeError(f"missing zarr-https collection asset; assets={sorted(coll.assets)}")
+          zkey="zarr-https"
+          asset=coll.assets[zkey]
+          store=fsspec.get_mapper(asset.href)
+          open_kwargs=dict(asset.extra_fields.get("xarray:open_kwargs") or {})
+          ds=xr.open_zarr(store,**open_kwargs)
           required={"prcp","vp","tmin","tmax"}
           missing=sorted(required-set(ds.data_vars))
           if missing:
@@ -66,9 +62,10 @@ jobs:
           if not {"time","x","y"}.issubset(ds.coords):
               raise RuntimeError(f"missing expected coords: {list(ds.coords)}")
           
-          # Daymet standard CRS is North America Lambert Conformal Conic.
-          proj="+proj=lcc +lat_1=25 +lat_2=60 +lat_0=42.5 +lon_0=-100 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs"
-          tr=Transformer.from_crs("EPSG:4326",proj,always_xy=True)
+          # Derive the Daymet Lambert Conformal CRS from its CF metadata.
+          from pyproj import CRS
+          crs=CRS.from_cf(dict(ds["lambert_conformal_conic"].attrs))
+          tr=Transformer.from_crs("EPSG:4326",crs,always_xy=True)
           audit=[]
           t=np.datetime64("2005-06-15")
           for sid in sample:
@@ -87,7 +84,6 @@ jobs:
             "analysis":"naamp_daymet_local_weather_eligibility_v0_1",
             "contract":"exploration/NAAMP_DAYMET_LOCAL_WEATHER_ELIGIBILITY_CONTRACT_V0_1.json",
             "collection_id":coll.id,
-            "representative_item_id":item.id,
             "assets":assets,
             "chosen_zarr_asset":zkey,
             "data_vars":list(ds.data_vars),
