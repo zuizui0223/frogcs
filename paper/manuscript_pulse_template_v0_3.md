@@ -242,17 +242,11 @@ Historical recurrence was also selectively stronger on the rain-favoured side of
 
 Thus persistent site suitability alone does not capture the whole pattern: the association between historical site strength and current full chorus became stronger toward the survey closer to rain (Fig. 4).
 
-### The exact species × site allocation is more structured than increasingly realistic null processes
+### Higher-order coherence accompanies a broader matrix-allocation shift
 
-The frozen four-component decomposition located the rainfall-associated incidence increase mainly at spatial and taxonomic boundaries. Total species × stop incidence increased with rainfall contrast by β = 1.365 (95% CI 0.757–1.974). Corner expansion contributed 36.9% of this coefficient, spatial spread 15.2%, taxonomic deepening 39.9% and within-core rearrangement only 8.0%; hence 92.0% crossed a spatial or taxonomic boundary.
+The earlier exact four-component decomposition provides complementary context. Rainfall contrast increased total species × stop incidence (β = 1.365, 95% CI 0.757–1.974), and 92.0% of that increase crossed a spatial or taxonomic boundary. Uniform activation predicted 80.9% boundary crossing and the persistence-preserving null 77.9%; both full four-component vectors were rejected (P = 0.000999).
 
-A simple common activation increase already predicted substantial boundary crossing, but not enough. The κ = 2 uniform null produced a mean of 80.9% (95% interval 74.2–87.4%) and rejected the full four-component vector (P = 0.000999). A persistence-preserving null that strongly anchored each simulated pair to its observed dry matrix predicted 77.9% boundary crossing (73.4–82.8%) and was also rejected (P = 0.000999).
-
-The result survived increasingly structured post-freeze nulls. A route-cross-fit species-specific rainfall-shift null was rejected (P = 0.001998). In the 2,916-pair strictly prior-history subset, the prior local species × SiteID null was rejected (P = 0.000999), as was the joint model combining cross-fitted species shifts, prior local history and dry persistence (P = 0.000999).
-
-Finally, a held-out cross-fit rain × local-history gate was still rejected (P = 0.000999). Under this most permissive prefixed null, observed boundary crossing was 0.921 versus a null mean of 0.814, observed taxonomic-deepening share was 0.399 versus 0.316, and observed within-core share was 0.079 versus 0.186.
-
-The prefixed decision tree therefore stopped mechanism escalation. These rejections do not identify a unique missing mechanism; they show that the observed chorus-state geometry is not reproduced by independent species rainfall sensitivity, static local historical propensity, dry persistence, or one transferable rain × history interaction.
+The same allocation departure persisted under cross-fitted species-specific rainfall shifts and strictly prior local history. In the 2,916-pair final held-out rain × history null, observed boundary crossing was 0.921 versus 0.814 expected, taxonomic deepening 0.399 versus 0.316, and within-core rearrangement 0.079 versus 0.186 (P = 0.000999). These matrix results corroborate the higher-order endpoint but do not define it; the prefixed decision tree stopped mechanism escalation at this point (Fig. 4).
 
 ### Higher-order coherence is taxonomically diffuse but geographically heterogeneous
 
