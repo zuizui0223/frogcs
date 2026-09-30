@@ -24,6 +24,7 @@ jobs:
           from pyproj import Transformer
           import fsspec
           import pystac
+          import planetary_computer
           
           COORD_URL="https://www.sciencebase.gov/catalog/file/get/583dc314e4b0d1899f9dea8d?f=__disk__77%2F22%2F7e%2F77227ec46ac1c01592cd7d158d442cd8343a7536"
           COORD_SHA="f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
@@ -51,7 +52,7 @@ jobs:
           if "zarr-https" not in coll.assets:
               raise RuntimeError(f"missing zarr-https collection asset; assets={sorted(coll.assets)}")
           zkey="zarr-https"
-          asset=coll.assets[zkey]
+          asset=planetary_computer.sign(coll.assets[zkey])
           store=fsspec.get_mapper(asset.href)
           open_kwargs=dict(asset.extra_fields.get("xarray:open_kwargs") or {})
           ds=xr.open_zarr(store,**open_kwargs)
