@@ -63,9 +63,9 @@
     }
   },
   "prefixed_interpretation": {
-    "temporal_gate_concordance": "At least one of z_PRCP7 or z_HYDRO has a positive 95% CI in the activation model; direction must be the same in both site-specific fits when estimable.",
-    "multi_day_over_immediate": "At least one of z_PRCP7 or z_HYDRO is positively supported while z_PRCP1 is not the sole positively supported hydric predictor.",
-    "site_context_heterogeneity": "At least one Site interaction for PRCP7 or HYDRO has a 95% CI excluding zero.",
+    "temporal_gate_concordance": "At least one of z_PRCP7 or z_HYDRO has a positive 95% block-bootstrap interval in the activation model; direction must be positive in both site-specific point estimates when estimable.",
+    "multi_day_over_immediate": "At least one of z_PRCP7 or z_HYDRO is positively block-bootstrap-supported while z_PRCP1 is not the sole positively supported hydric predictor.",
+    "site_context_heterogeneity": "At least one Site interaction for PRCP7 or HYDRO has a block-bootstrap 95% interval excluding zero.",
     "no_threshold_dominance_claim": "This dataset cannot establish NAAMP-style community recruitment dominance because it contains one focal species and a continuous daily calling index."
   },
   "interpretation_boundaries": [
@@ -75,5 +75,19 @@
     "Calling activity is not abundance or reproductive success.",
     "No change to RC11 is authorized."
   ],
-  "retuning_after_readback": false
+  "retuning_after_readback": false,
+  "inference_robustness": {
+    "block_bootstrap": {
+      "replicates": 500,
+      "seed": 2840223,
+      "block_days": 7,
+      "design": "Within each Site x Year stratum, sort valid days and resample circular consecutive 7-day blocks with replacement until the original stratum size is recovered; concatenate all six strata and refit the fixed model.",
+      "reported_for": [
+        "activation model hydric coefficients",
+        "site interaction hydric coefficients"
+      ],
+      "support_rule": "A coefficient is called bootstrap-supported only if its percentile 95% interval excludes zero in the predicted direction."
+    },
+    "primary_support_surface": "Use block-bootstrap percentile intervals, not naive model-based intervals, for prefixed classifications."
+  }
 }
