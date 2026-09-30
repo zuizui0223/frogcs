@@ -35,13 +35,13 @@
     "seasonal_control": "year fixed effects + cubic B-spline of within-year season_progress with df=4",
     "season_progress": "(date - first joined date in that year)/(last joined date - first joined date in that year)",
     "estimator": "OLS",
-    "covariance": "Newey-West HAC, maxlags=7, observations ordered by date",
+    "covariance": "Block Newey-West HAC with Bartlett weights and maxlags=7, summing autocovariance terms only within calendar year so year boundaries are never treated as adjacent days.",
     "prediction": "water_depth_z coefficient >0 with complete 95% CI >0"
   },
   "sensitivities": {
     "year_specific_season_curve": "Replace common spline by year fixed effects plus year-specific linear and quadratic season_progress terms; same water-depth predictor and HAC(7).",
     "within_year_depth_z": "Standardize water depth within year before fitting the primary seasonal model.",
-    "consecutive_day_first_difference": "For adjacent joined dates exactly one day apart within the same year, regress delta log1p(calling) on delta water depth with year fixed effects; HAC(3). Positive coefficient is directional support, with no pass gate.",
+    "consecutive_day_first_difference": "For joined dates exactly one calendar day apart within the same year, regress delta log1p(calling) on delta water depth with year fixed effects; block HAC maxlags=3. Positive coefficient is directional support, with no pass gate.",
     "leave_one_year_out": "Refit primary model five times omitting one year; report signs and CIs without requiring all individual CIs to exclude zero."
   },
   "no_binary_water_test": "No water-depth >0 versus <=0 test is authorized because the 282 joined calling-season dates contain zero water-depth days = 0.",
