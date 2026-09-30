@@ -1,0 +1,23 @@
+name: higher-order spatial coherence joint robustness
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python exploration/run_naamp_higher_order_spatial_coherence_joint_robustness.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-higher-order-spatial-coherence-joint-robustness-v0-1
+          path: |
+            exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_JOINT_ROBUSTNESS_CONTRACT_V0_1.json
+            exploration/NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_JOINT_ROBUSTNESS_RECEIPT_V0_1.json
+          if-no-files-found: error
