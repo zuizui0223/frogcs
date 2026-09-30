@@ -34,6 +34,7 @@ jobs:
           if coll is None or coll.id!="daymet-daily-na":
               raise RuntimeError("missing daymet-daily-na collection")
           assets={k:{"href":v.href,"type":v.media_type,"roles":v.roles,"extra_fields":v.extra_fields} for k,v in coll.assets.items()}
+          print(json.dumps({"collection_assets":assets},indent=2),flush=True)
           
           req=urllib.request.Request(COORD_URL,headers={"User-Agent":"frogcs-daymet-audit/0.1"})
           with urllib.request.urlopen(req,timeout=180) as r: raw=r.read()
@@ -49,12 +50,18 @@ jobs:
           
           # Planetary Computer Daymet stores the full daily series as a
           # collection-level Zarr asset (not one STAC item per day).
-          if "zarr-https" not in coll.assets:
-              raise RuntimeError(f"missing zarr-https collection asset; assets={sorted(coll.assets)}")
-          zkey="zarr-https"
+          zkey="zarr-abfs" if "zarr-abfs" in coll.assets else "zarr-https"
+          if zkey not in coll.assets:
+              raise RuntimeError(f"missing Daymet Zarr asset; assets={sorted(coll.assets)}")
           asset=planetary_computer.sign(coll.assets[zkey])
-          store=fsspec.get_mapper(asset.href)
           open_kwargs=dict(asset.extra_fields.get("xarray:open_kwargs") or {})
+          storage_options=dict(asset.extra_fields.get("xarray:storage_options") or {})
+          if zkey=="zarr-abfs":
+              store=fsspec.get_mapper(asset.href,**storage_options)
+          else:
+              # Fallback only; zarr-abfs is preferred because signed HTTPS
+              # query strings cannot safely be extended with Zarr child paths.
+              store=fsspec.get_mapper(asset.href)
           ds=xr.open_zarr(store,**open_kwargs)
           required={"prcp","vp","tmin","tmax"}
           missing=sorted(required-set(ds.data_vars))
