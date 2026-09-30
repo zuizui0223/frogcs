@@ -1,0 +1,216 @@
+{
+  "analysis": "frogcs_final_mechanism_synthesis_v0_1",
+  "status": "mechanism_escalation_stopped_by_prefixed_decision_tree",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "scientific_bottom_line": {
+    "behavioral_process": "Recent-rain contrasts are associated with activation of previously silent species x stop cells, including direct transitions to overlapping/full chorus states.",
+    "ecological_memory": "Most rainfall-associated route-new incidence and strong/full-chorus activation is recurrent in the historical acoustic record, especially at the same physical SiteID.",
+    "spatial_template": "Within focal pair x species, historically strong SiteIDs are much more likely to host later wet-survey strong/full chorus, identifying a stable local spatial template of acoustic activity.",
+    "unresolved_generator": "Strictly-prior local-memory probabilities, route-cross-fit species rainfall sensitivity, dry-state persistence, and one cross-fit rain x local-memory gate still fail to reproduce the observed four-component matrix allocation.",
+    "interpretation": "The data identify structured state-dependent reactivation of a latent acoustic network, but do not identify a sufficient unique lower-level biological generator.",
+    "universality": "Strong within-NAAMP geographic robustness is supported, but state effects are heterogeneous and direct cross-continental matrix replication is unavailable; universality is not established."
+  },
+  "evidence_chain": {
+    "matrix_boundary": {
+      "full_pairs": 4236,
+      "observed_boundary_share": 0.92,
+      "uniform_kappa2_mean": 0.809,
+      "persistence_a075_mean": 0.779,
+      "same_observer_pairs": 3152,
+      "same_observer_boundary_share": 0.92
+    },
+    "calling_intensity": {
+      "total_calling_index_beta": 2.8410419576031223,
+      "zero_to_positive_activation_beta": 1.8548575453289868,
+      "activation_share_of_total": 0.6528793213930071,
+      "shared_positive_intensity_beta": 0.19648401136771304,
+      "strong_zero_to_ci2_ci3_beta": 1.6150398249522895,
+      "strong_zero_to_ci2_ci3_ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ],
+      "strong_share_of_activation_beta": 0.8707082810857251,
+      "zero_to_ci3_full_chorus_beta": 0.4405530685436047,
+      "zero_to_ci3_full_chorus_ci95": [
+        0.11357271335451931,
+        0.7675334237326901
+      ],
+      "robust_same_observer_same_site_zero_to_ci3_beta": 0.5140603333339898,
+      "robust_same_observer_same_site_zero_to_ci3_ci95": [
+        0.10081588098938049,
+        0.9273047856785992
+      ]
+    },
+    "detection_and_design_robustness": {
+      "strong_activation_adjusted_for_hearing_timeout_wind_beta": 1.6225420695541188,
+      "strong_activation_adjusted_ci95": [
+        0.4587043993545672,
+        2.7863797397536705
+      ],
+      "physically_stable_pairs": 4172,
+      "physically_stable_fraction": 0.9848914069877243,
+      "protocol_crossing_pairs": 1769,
+      "protocol_crossing_strong_score_beta": 1.7317228632197144,
+      "protocol_crossing_strong_score_ci95": [
+        0.37189243470675537,
+        3.0915532917326733
+      ]
+    },
+    "taxonomic_generality": {
+      "species_in_strong_chorus_decomposition": 57,
+      "species_positive_beta": 28,
+      "top1_positive_share": 0.138781580735396,
+      "top5_positive_share": 0.4917813568649047,
+      "hhi_positive_shares": 0.07445721047263541,
+      "all_leave_one_species_out_totals_positive": true
+    },
+    "geographic_generality": {
+      "leave_one_state_out_all_positive": true,
+      "leave_one_state_out_all_ci_positive": true,
+      "state_specific_estimable": 19,
+      "state_specific_positive_fraction": 0.6842105263157895,
+      "state_specific_ci_positive_fraction": 0.3157894736842105,
+      "random_slope_population_beta": 1.654511396413927,
+      "random_slope_state_sd": 3.4605301334379646,
+      "interpretation": "Robust at programme scale but strongly heterogeneous among states."
+    },
+    "spatial_depth": {
+      "route_new_species_gain_beta": 0.1846754325853956,
+      "extra_stop_incidence_beta": 0.6042952999648085,
+      "conditional_coherence_uniform_p": 0.000999000999000999,
+      "conditional_coherence_persistence_p": 0.000999000999000999,
+      "adjacent_stop_beta": 0.4194242514527655,
+      "adjacent_conditional_uniform_p": 0.000999000999000999,
+      "adjacent_conditional_persistence_p": 0.000999000999000999,
+      "interpretation": "Once recruited, route-new taxa deepen spatial participation more than expected; occupied-stop placement metrics do not justify a simple geographic-hotspot mechanism."
+    },
+    "recurrent_activation": {
+      "recurrent_share_leave_pair_out": 0.9809270884016074,
+      "recurrent_share_prior_only": 0.9893366938882531,
+      "prior_only_same_site_recurrent_beta": 0.6963205184053309,
+      "prior_only_same_site_recurrent_ci95": [
+        0.17186676849439808,
+        1.220774268316264
+      ],
+      "one_off_prior_only_beta": 0.009439685773289727,
+      "one_off_prior_only_ci95": [
+        -0.1411605535064917,
+        0.16003992505307113
+      ]
+    },
+    "full_chorus_memory": {
+      "leave_pair_out_any_recurrent_share_of_new_ci3_beta": 0.980543209373069,
+      "leave_pair_out_same_site_share_of_new_ci3_beta": 0.9040000006981866,
+      "prior_only_any_recurrent_share_of_new_ci3_beta": 1.0032372231389006,
+      "prior_only_same_site_share_of_new_ci3_beta": 0.825963976382714
+    },
+    "local_targeting": {
+      "within_pair_species_prior_site_strong_beta": 0.1510940272028386,
+      "within_pair_species_prior_site_strong_ci95": [
+        0.12912743790722594,
+        0.17306061649845125
+      ],
+      "wet_full_prior_site_strong_beta": 0.07776463630987582,
+      "wet_full_prior_site_strong_ci95": [
+        0.06186518697082746,
+        0.09366408564892417
+      ],
+      "same_observer_prior_site_strong_beta": 0.15888689407540374,
+      "same_observer_prior_site_strong_ci95": [
+        0.1344406988140015,
+        0.18333308933680598
+      ],
+      "rain_x_memory_simple_diagnostic_beta": 0.023424077393590252,
+      "rain_x_memory_simple_diagnostic_ci95": [
+        -0.00586736524091894,
+        0.05271552002809944
+      ]
+    },
+    "opportunity_normalized_rain_memory": {
+      "prior_only_ci3_rate_difference_rain_beta": 0.02448895976609234,
+      "prior_only_ci3_rate_difference_ci95": [
+        0.007001673669270292,
+        0.04197624586291439
+      ],
+      "same_observer_beta": 0.030674732734838797,
+      "same_observer_ci95": [
+        0.013306013566328205,
+        0.04804345190334939
+      ],
+      "interpretation": "Rain contrast selectively favors historically recurrent full-chorus opportunities even when recurrent and nonrecurrent candidate-cell counts are normalized."
+    },
+    "memory_age": {
+      "formal_old_memory_gate_passed": false,
+      "formal_gate_reason": "433 informative pair-species groups but only 136 routes; prefixed requirement was >=200 routes.",
+      "old_memory_precheck_beta": 0.10056533562213175,
+      "old_memory_precheck_ci95": [
+        0.06783465078628825,
+        0.13329602045797526
+      ],
+      "recent_memory_precheck_beta": 0.17312081386469266,
+      "recent_memory_precheck_ci95": [
+        0.11511593333434397,
+        0.23112569439504135
+      ],
+      "continuous_log1p_lag_beta": -0.13515995095871502,
+      "continuous_log1p_lag_ci95": [
+        -0.18913141796969873,
+        -0.08118848394773132
+      ],
+      "interpretation": "Durable-memory formal classification withheld; diagnostic evidence suggests multi-year persistence with decay."
+    },
+    "candidate_mediators_not_supported": {
+      "simple_social_chorus_facilitation": false,
+      "sharply_immediate_zero_one_day_gate": false,
+      "nwi_hydroperiod_strong_chorus": false,
+      "nwi_palustrine_vs_riverine_lacustrine_strong_chorus": false,
+      "thermal_multicue_gate": false,
+      "seasonal_window_multicue_gate": false,
+      "stable_physical_stop_rain_sensitivity": false
+    }
+  },
+  "nested_null_sequence": {
+    "uniform_activation": {
+      "p": 0.000999000999000999,
+      "status": "rejected"
+    },
+    "persistence_preserving": {
+      "p": 0.000999000999000999,
+      "status": "rejected"
+    },
+    "route_crossfit_species_shift_full_sample": {
+      "p": 0.001998001998001998,
+      "status": "rejected"
+    },
+    "strictly_prior_local_memory_2916_pairs": {
+      "p": 0.000999000999000999,
+      "status": "rejected"
+    },
+    "joint_crossfit_species_plus_prior_local_memory_plus_dry_persistence_2916_pairs": {
+      "p": 0.000999000999000999,
+      "status": "rejected"
+    },
+    "final_crossfit_rain_by_local_memory_gate_2916_pairs": {
+      "p": 0.000999000999000999,
+      "status": "rejected",
+      "observed_boundary_share": 0.9212870182810022,
+      "null_boundary_mean": 0.8138096195997282,
+      "observed_taxonomic_deepening_share": 0.39882477460949567,
+      "null_taxonomic_deepening_mean": 0.3158372328069739,
+      "observed_within_core_share": 0.07871298171899774,
+      "null_within_core_mean": 0.18619038040027186
+    }
+  },
+  "stopping_rule": {
+    "source": "exploration/MECHANISM_DECISION_TREE_V0_1.json",
+    "decision": "STOP lower-level mechanism escalation after final held-out rain-by-memory gating null rejection.",
+    "prohibited": [
+      "No additional trait fishing.",
+      "No arbitrary site-specific rainfall coefficients learned and tested on the same routes.",
+      "No relaxation of failed gates.",
+      "No RC11 submission modification from these exploratory analyses."
+    ]
+  },
+  "final_ecological_statement": "Rainfall-associated acoustic expansion primarily reactivates a historically recurrent, site-structured chorus network: previously silent species x site cells often return at overlapping or full-chorus intensity, and historically strong SiteIDs predict where reactivation occurs. Yet the full taxonomic-versus-spatial allocation remains more structured than species sensitivity, prior local memory, dry persistence, and one held-out rain-by-memory gate can generate. The public observational data therefore support structured latent-network reactivation but do not identify a sufficient unique lower-level mechanism.",
+  "final_generality_statement": "Within NAAMP the process is taxonomically diffuse, insensitive to single-state omission, observer turnover, stop relocation and measured acoustic conditions, but state-specific effects are heterogeneous. Direct cross-continental replication of the full species x site matrix geometry remains unavailable, so universality is not established."
+}
