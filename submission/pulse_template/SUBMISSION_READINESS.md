@@ -18,10 +18,10 @@ Verified against the current Journal of Animal Ecology author guidelines (Octobe
 - [x] numbered English abstract
 - [x] abstract ≤350 words (current: 330)
 - [x] ≤8 alphabetized keywords
-- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,523)
+- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,486)
 - [x] separate Supporting Information
-- [x] continuous-line-number / double-spaced DOCX builder available
-- [x] five reproducible main figures
+- [x] continuous-line-number / double-spaced anonymous DOCX built and validated
+- [x] five reproducible main figures; submission bundle packages PNG copies
 - [x] data-archive statement included
 - [ ] final authors/order
 - [ ] final affiliations
@@ -49,3 +49,15 @@ Remaining work is limited to:
 ## Revision-stage note
 
 The current JAE revision guidelines require a graphical abstract at the revision stage. It is not part of the present initial-submission bundle and should be prepared only if the manuscript is invited for revision.
+
+
+## Scientific bundle validation
+
+- [x] integrated manuscript QA passed
+- [x] anonymous DOCX formatting/anonymity checks passed
+- [x] scientific submission bundle assembled
+- [x] SHA256 manifest generated
+- [x] workflow artifact uploaded
+- [x] bundle receipt stored in `submission/pulse_template/SCIENTIFIC_BUNDLE_RECEIPT.md`
+
+The private metadata bundle remains pending because final human metadata have not been supplied in the private secret.
