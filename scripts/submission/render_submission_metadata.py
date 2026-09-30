@@ -26,8 +26,8 @@ KEYWORDS = [
 DESCRIPTION = (
     "Reproducibility package for a Journal of Animal Ecology Research Article on rainfall-associated "
     "frog chorus activation. Using repeated North American NAAMP routes, the study tests whether wet-state "
-    "activity contains higher-order within-taxon spatial coherence after first-order recruitment and spread "
-    "are conditioned, and whether strong chorus activity recurs at species-specific historical sites. "
+    "activity shows within-taxon multi-site concentration beyond transferable species rainfall responses and "
+    "strictly-prior site use, and whether strong chorus activity recurs at species-specific historical sites. "
     "Australian FrogID provides only the narrower cross-dataset consistency check for active-unit taxonomic "
     "depth. The archive contains the anonymized scientific manuscript, versioned analysis contracts, result "
     "receipts, deterministic figure-generation code and analysis scripts. Raw third-party datasets are not redistributed."
