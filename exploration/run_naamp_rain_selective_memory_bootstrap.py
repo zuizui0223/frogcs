@@ -172,33 +172,64 @@ def fit_cluster(d,response,robust=True):
         })
     return out
 
+def design_matrix(d):
+    x=d.copy()
+    state=sorted(x.State.astype(str).unique())
+    run=sorted(x.RunNumber.astype(str).unique())
+    cols=[
+        np.ones(len(x),float),
+        x.rain_contrast.to_numpy(float),
+        x.temp_difference.to_numpy(float),
+        x.doy_difference.to_numpy(float),
+        x.year_gap.to_numpy(float),
+    ]
+    names=["Intercept","rain_contrast","temp_difference","doy_difference","year_gap"]
+    for level in state[1:]:
+        cols.append((x.State.astype(str)==level).to_numpy(float))
+        names.append("State:"+level)
+    for level in run[1:]:
+        cols.append((x.RunNumber.astype(str)==level).to_numpy(float))
+        names.append("RunNumber:"+level)
+    return np.column_stack(cols),names
+
+def matrix_wls_beta(d,response,route_levels,multiplicity=None):
+    X,names=design_matrix(d)
+    y=d[response].to_numpy(float)
+    w=d.opportunity_weight.to_numpy(float).copy()
+    if multiplicity is not None:
+        rindex={r:i for i,r in enumerate(route_levels)}
+        mult=np.asarray([multiplicity[rindex[str(r)]] for r in d.route_cluster.astype(str)],float)
+        w*=mult
+    ok=np.isfinite(y)&np.all(np.isfinite(X),axis=1)&np.isfinite(w)&(w>0)
+    if int(ok.sum())<X.shape[1]+2:
+        raise RuntimeError("insufficient weighted rows")
+    sw=np.sqrt(w[ok])
+    beta=np.linalg.lstsq(X[ok]*sw[:,None],y[ok]*sw,rcond=None)[0]
+    return float(beta[names.index("rain_contrast")])
+
 def bootstrap_diff(wet,dry,response):
     rng=np.random.default_rng(SEED + (0 if response=="ci3_rate_difference" else 10000))
     routes=sorted(set(wet.route_cluster.astype(str))|set(dry.route_cluster.astype(str)))
-    wr={r:g.copy() for r,g in wet.groupby(wet.route_cluster.astype(str),sort=False)}
-    dr={r:g.copy() for r,g in dry.groupby(dry.route_cluster.astype(str),sort=False)}
+    # Exact implementation audit: matrix WLS must reproduce the formula WLS rain slope.
+    wet_formula=fit_cluster(wet,response,robust=False)["beta"]
+    dry_formula=fit_cluster(dry,response,robust=False)["beta"]
+    ones=np.ones(len(routes),dtype=int)
+    wet_matrix=matrix_wls_beta(wet,response,routes,ones)
+    dry_matrix=matrix_wls_beta(dry,response,routes,ones)
+    if abs(wet_formula-wet_matrix)>1e-9 or abs(dry_formula-dry_matrix)>1e-9:
+        raise RuntimeError(
+            f"matrix WLS reproduction failed {response}: "
+            f"wet {wet_formula} vs {wet_matrix}; dry {dry_formula} vs {dry_matrix}"
+        )
+
     vals=[]
     failed=0
-    for b in range(B):
-        sample=rng.choice(routes,size=len(routes),replace=True)
-        wparts=[];dparts=[]
-        for j,r in enumerate(sample):
-            if r in wr:
-                g=wr[r].copy()
-                g["boot_cluster"]=f"{j}:{r}"
-                wparts.append(g)
-            if r in dr:
-                g=dr[r].copy()
-                g["boot_cluster"]=f"{j}:{r}"
-                dparts.append(g)
-        if not wparts or not dparts:
-            failed+=1
-            continue
-        wb=pd.concat(wparts,ignore_index=True)
-        db=pd.concat(dparts,ignore_index=True)
+    for _ in range(B):
+        draw=rng.integers(0,len(routes),size=len(routes))
+        mult=np.bincount(draw,minlength=len(routes))
         try:
-            bw=fit_cluster(wb,response,robust=False)["beta"]
-            bd=fit_cluster(db,response,robust=False)["beta"]
+            bw=matrix_wls_beta(wet,response,routes,mult)
+            bd=matrix_wls_beta(dry,response,routes,mult)
             if np.isfinite(bw) and np.isfinite(bd):
                 vals.append(float(bw-bd))
             else:
@@ -210,6 +241,11 @@ def bootstrap_diff(wet,dry,response):
         raise RuntimeError(f"bootstrap too many failures: valid={len(a)} failed={failed}")
     lo,hi=np.quantile(a,[.025,.975])
     return {
+        "implementation":"cluster multiplicity matrix-WLS; algebraically equivalent to duplicated-cluster WLS",
+        "matrix_formula_reproduction":{
+            "wet_abs_error":float(abs(wet_formula-wet_matrix)),
+            "dry_abs_error":float(abs(dry_formula-dry_matrix)),
+        },
         "replicates_requested":B,
         "replicates_valid":int(len(a)),
         "replicates_failed":int(failed),
