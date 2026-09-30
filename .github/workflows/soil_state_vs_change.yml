@@ -1,0 +1,24 @@
+name: soil state versus change
+on:
+  push:
+    branches: [exploration/soil-state-threshold-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy xarray icechunk timezonefinder "numcodecs[pcodec]"
+      - run: python -m compileall -q exploration scripts
+      - run: python exploration/run_naamp_soil_state_vs_change.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-soil-state-vs-change-v0-1
+          path: |
+            exploration/NAAMP_SOIL_STATE_VS_CHANGE_CONTRACT_V0_1.json
+            exploration/NAAMP_SOIL_STATE_VS_CHANGE_RECEIPT_V0_1.json
+          if-no-files-found: error
