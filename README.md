@@ -21,6 +21,7 @@ Primary files:
 
 - `paper/manuscript_pulse_template_v0_2.md`
 - `paper/supporting_information_pulse_template_v0_1.md`
+- `revision/INTEGRATED_RESULTS_V0_1.json` — durable numeric synthesis for manuscript/figures
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_1.md`
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
 - `revision/FIGURE_REBUILD_SPEC_V0_1.md`
