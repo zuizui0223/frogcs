@@ -1,0 +1,60 @@
+{
+  "analysis": "naamp_joint_crossfit_species_local_memory_null_v0_1",
+  "status": "post_readback_joint_mechanism_null_fixed_before_endpoint",
+  "question": "Can the combination of transferable species-specific rainfall sensitivity and strictly-prior species x physical-site acoustic memory reproduce the rainfall-associated four-component matrix allocation?",
+  "population": {
+    "base": "Exactly the physically stable, prior-history-eligible subset defined by NAAMP_PRIOR_LOCAL_MEMORY_NULL_CONTRACT_V0_1.",
+    "expected_reference": "The previous prior-memory null retained 2,916 pairs across 439 routes; rerun must reproduce this coverage before endpoint analysis.",
+    "minimum_gate": ">=1500 pairs and >=300 routes."
+  },
+  "species_response": {
+    "source": "Use exactly the route-cross-fit species wet-shift estimator from NAAMP_CROSSFIT_SPECIES_SHIFT_NULL_V0_1.",
+    "fold": "SHA256(State:RouteNumber) split A/B; each focal pair receives species shifts learned only from the opposite route fold.",
+    "response": "Number of positive stops out of 10 per eligible run.",
+    "model": "Per-species binomial GLM of stop-positive proportion on log1p(DaysSinceRain), mean temperature, cyclic day of year, State and RunNumber.",
+    "estimability": "At least 20 positive stop-cells across at least 5 training routes; otherwise gamma_species=0.",
+    "no_focal_route_leakage": true
+  },
+  "local_memory": {
+    "source": "Exactly the strictly-prior physical-SiteID probability construction in NAAMP_PRIOR_LOCAL_MEMORY_NULL_V0_1.",
+    "smoothing_kappa": 2,
+    "no_future_probability_information": true,
+    "note": "The frozen full stratum species pool is support only; probability weights are strictly prior-only."
+  },
+  "dry_persistence": {
+    "anchor": 0.75,
+    "construction": "p_anchor=(1-a)*p_prior_local + a*dry_cell_state."
+  },
+  "joint_construction": [
+    "Convert p_anchor to logit scale.",
+    "Add gamma_species * rain_contrast, with gamma learned from the opposite route fold.",
+    "Solve one common pair-level logit shift so expected wet incidence count equals the observed wet incidence count.",
+    "Simulate the wet species x stop matrix and calculate the same four allocation components."
+  ],
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "primary_test": "Same four-component Mahalanobis plus-one Monte Carlo omnibus as the existing uniform, persistence, species-shift and memory nulls.",
+  "secondary": [
+    "Boundary-crossing share",
+    "component shares",
+    "taxonomic-minus-spatial share"
+  ],
+  "site_identity_controls": {
+    "purpose": "Test whether any improvement requires the correct physical SiteID correspondence rather than generic prior-history heterogeneity.",
+    "construction": "Use the same two deterministic within-pair SiteID-column permutations fixed in NAAMP_PRIOR_LOCAL_MEMORY_NULL_V0_1, while leaving cross-fit species shifts, dry state and wet magnitude unchanged."
+  },
+  "prefixed_decision": {
+    "combined_insufficient": "True joint omnibus P<0.05.",
+    "combined_sufficient_site_identity_specific": "True joint P>=0.05 AND both SiteID-permuted joint controls P<0.05.",
+    "combined_sufficient_generic_history": "True joint P>=0.05 AND at least one SiteID-permuted control P>=0.05."
+  },
+  "interpretation": [
+    "Failure to reject indicates sufficiency of an additive species-response + local-memory process under this null family, not unique causal identification.",
+    "Rejection implies that cross-route species response heterogeneity plus additive local acoustic memory and dry-state persistence are still insufficient; additional state-dependent, species x site or other structure is required.",
+    "No individual movement, continuous occupancy, reproductive success or causal rainfall claim is authorized.",
+    "No RC11 submission change is authorized."
+  ],
+  "retuning_after_readback": false
+}
