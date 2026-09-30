@@ -1,0 +1,23 @@
+name: St Croix direct hydrology eligibility
+on:
+  push:
+    branches: [exploration/stcroix-hydrology-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m compileall -q exploration
+      - run: python exploration/audit_stcroix_direct_hydrology_eligibility.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stcroix-direct-hydrology-eligibility-v0-1
+          path: |
+            exploration/STCROIX_DIRECT_HYDROLOGY_ELIGIBILITY_CONTRACT_V0_1.json
+            exploration/STCROIX_DIRECT_HYDROLOGY_ELIGIBILITY_RECEIPT_V0_1.json
+          if-no-files-found: error
