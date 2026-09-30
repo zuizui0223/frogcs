@@ -1,0 +1,15 @@
+{
+  "analysis":"naamp_exact_conditional_higher_order_directional_v0_1",
+  "classification":{"primary_support":true,"strong_support":true},
+  "coverage":{"all_pairs":4236,"all_routes":585,"joint_robust_pairs":3115,"joint_robust_routes":499},
+  "full_sample":{
+    "raw_excess":{"beta":0.24387549076645898,"se":0.04924407155262532,"ci95":[0.14735888407119993,0.34039209746171806],"p":7.33102269555317e-07},
+    "z_excess":{"beta":0.09074638789118894,"se":0.015963708995352453,"ci95":[0.059458093200620045,0.12203468258175784],"p":1.311630314276558e-08}
+  },
+  "joint_same_observer_same_site":{
+    "raw_excess":{"beta":0.2543389727408656,"se":0.059609273318060194,"ci95":[0.13750694389286322,0.37117100158886795],"p":1.983247236045324e-05},
+    "z_excess":{"beta":0.0903208316394494,"se":0.017491341746699977,"ci95":[0.05603843177463552,0.12460323150426328],"p":2.4205716544353305e-07}
+  },
+  "directional_totals":{"wet":{"N":4726,"K":12580,"H":14289.0},"dry":{"N":4295,"K":10652,"H":10655.0}},
+  "interpretation_boundary":{"exact_first_order_conditioning":true,"regression_extrapolation_used":false,"literal_synchrony_inferred":false,"causal_rainfall_claim":false}
+}
