@@ -1,0 +1,52 @@
+{
+  "analysis": "naamp_template_depth_temporal_holdout_v0_1",
+  "status": "post_readback_temporal-validation test fixed before endpoint",
+  "question": "Can a species' route-specific chorus footprint measured only in 2001-2007 predict how deeply that species spreads across stops when it is newly active on the wetter side in 2008-2015?",
+  "periods": {
+    "template": [
+      2001,
+      2007
+    ],
+    "validation": [
+      2008,
+      2015
+    ],
+    "overlap": false
+  },
+  "validation_pairs": "Construct matched wetter-drier pairs using only eligible 2008-2015 runs within State x RouteNumber x RunNumber; require all ten physical SiteIDs to be identical within each pair.",
+  "unit": "validation matched pair x wet-route-new species",
+  "early_template": {
+    "opportunity_sites": "The validation pair's ten current SiteIDs that were sampled in >=1 eligible 2001-2007 run of the same route-season stratum.",
+    "minimum": "At least 8 opportunity SiteIDs and at least 2 eligible early runs in the stratum.",
+    "early_strong_breadth": "Fraction of opportunity SiteIDs at which the species reached CallingIndex 2-3 at least once during 2001-2007.",
+    "early_any_breadth": "Fraction of opportunity SiteIDs at which the species had any CallingIndex >0.",
+    "early_route_frequency": "Fraction of eligible early runs in which the species occurred anywhere on the route.",
+    "focal_species": "Species must have occurred somewhere on that route-season in 2001-2007; no validation-period outcome is used to define the template."
+  },
+  "outcomes": {
+    "wet_k": "Number of validation wet-survey stops occupied by the route-new species.",
+    "third_plus_depth": "max(wet_k-2,0), primary.",
+    "wet_strong_k": "Number of validation wet stops with CallingIndex 2-3."
+  },
+  "primary_model": {
+    "formula": "third_plus_depth ~ z_early_strong_breadth + c_rain_contrast + z_early_strong_breadth:c_rain_contrast + early_route_frequency + temperature_difference + day_of_year_difference + year_gap + C(species) + C(State) + C(RunNumber)",
+    "centered_rain": "c_rain_contrast is centered within the validation sample.",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "prediction": "z_early_strong_breadth coefficient >0 with complete 95% CI >0"
+  },
+  "secondary": [
+    "Repeat with wet_k, spatial_depth=wet_k-1 and wet_strong_k.",
+    "Replace early_strong_breadth with early_any_breadth.",
+    "Report breadth x rain interaction without a separate success gate.",
+    "Repeat primary in same-observer validation pairs and exact-consecutive-year validation pairs if their prefixed gates pass."
+  ],
+  "minimum_gate": ">=500 validation pair-species observations, >=150 routes, >=20 species and SD(early_strong_breadth)>=0.10.",
+  "sensitivity_gate": ">=350 pair-species observations, >=120 routes and >=20 species.",
+  "interpretation": [
+    "Support is a non-overlapping temporal validation that historical route-scale species-site footprint predicts later activation depth.",
+    "The analysis still conditions on wet-side recruitment and therefore does not explain activation probability.",
+    "It does not identify movement, abundance, continuous occupancy, reproductive success or a physiological mediator.",
+    "No causal rainfall claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
