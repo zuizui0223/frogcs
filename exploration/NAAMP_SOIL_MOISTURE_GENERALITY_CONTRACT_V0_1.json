@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_soil_moisture_generality_v0_1",
+  "status": "fixed_before_generality_endpoint_readback",
+  "parent": "NAAMP_SOIL_MOISTURE_CUE_V0_1",
+  "question": "Does the shallow-soil wetness association with rainfall-associated strong chorus activation transport across disjoint routes, time periods and omission of individual states?",
+  "sample": "Exactly the weather-qualified pairs constructed by run_naamp_soil_moisture_cue.py.",
+  "endpoint": "strong_new_score (dry CI=0 to wet CI=2/3 score).",
+  "model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + soil1_gain_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "route_split": {
+    "rule": "Deterministic SHA256(State:RouteNumber) split into A/B.",
+    "minimum": "Each fold >=1500 pairs and >=250 routes.",
+    "pass": "soil1_gain_difference_z beta >0 with complete 95% CI >0 in both folds."
+  },
+  "temporal_split": {
+    "early": "year_earlier <= 2008",
+    "late": "year_earlier >= 2009",
+    "minimum": "Each period >=1200 pairs and >=250 routes.",
+    "pass": "soil1_gain_difference_z beta >0 with complete 95% CI >0 in both periods."
+  },
+  "leave_one_state_out": {
+    "pass": "All 21 omitted-state refits retain soil1 beta >0.",
+    "strong_pass": "All 21 omitted-state refits retain complete 95% CI >0."
+  },
+  "state_specific": "Descriptive only for states with >=100 pairs and >=15 routes; report sign and CI support.",
+  "same_observer_physical_stop": "Repeat deterministic route A/B split in the existing same-observer + physically stable subset if each fold >=1000 pairs and >=200 routes.",
+  "interpretation": [
+    "A pass establishes robustness within the sampled NAAMP domain, not continental or universal generality.",
+    "ERA5 swvl1 is route-scale soil-water context, not frog hydration or pond depth.",
+    "No causal mediation claim is authorized.",
+    "No RC11 manuscript modification is authorized."
+  ],
+  "retuning_after_readback": false
+}
