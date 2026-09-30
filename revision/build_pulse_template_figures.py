@@ -51,9 +51,9 @@ save(fig,"fig2_spatial_depth_strong_chorus")
 
 # Figure 3: higher-order conditional excess
 x=DATA["figure3"]
-labels=["Uniform activation","Dry-state persistence","Cross-fit species response","Species + prior site history"]
-obs=[x["full_observed"],x["full_observed"],x["full_observed"],x["prior_subset_observed"]]
-pred=[x["uniform_predicted"],x["persistence_predicted"],x["species_predicted"],x["joint_predicted"]]
+labels=["Uniform activation","Dry-state persistence","Cross-fit species response","Species + prior site history","Final rain × history gate"]
+obs=[x["full_observed"],x["full_observed"],x["full_observed"],x["prior_subset_observed"],x["prior_subset_observed"]]
+pred=[x["uniform_predicted"],x["persistence_predicted"],x["species_predicted"],x["joint_predicted"],x["final_gate_predicted"]]
 fig,ax=plt.subplots(figsize=(9.2,5.4))
 y=np.arange(len(labels))
 for yi,(o,p) in enumerate(zip(obs,pred)):
@@ -66,7 +66,7 @@ ax.set_xlabel("Higher-order within-taxon rainfall coefficient")
 ax.set_title("Fig. 3  First-order species and site propensities underpredict higher-order concentration")
 ax.text(.99,.04,
         "circle = null prediction at observed recruitment + spread\n"
-        "square = observed; all conditional P = 0.000999\n"
+        "square = observed; all five conditional P = 0.000999\n"
         f"exact within-pair N,K conditioning: raw β={x['exact_raw_beta']:.3f} "
         f"({x['exact_raw_ci95'][0]:.3f}–{x['exact_raw_ci95'][1]:.3f})",
         transform=ax.transAxes,ha="right",va="bottom")
