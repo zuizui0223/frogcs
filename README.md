@@ -40,17 +40,20 @@ The frozen RC11 manuscript remains available as `paper/manuscript.md` and is not
 
 ## Integrated release authority
 
-Validated scientific RC1:
+Current integrated release candidate:
+
+- `release/jae-higher-order-rc2`
+- `submission/jae-higher-order-v2`
+- frozen commit `726873b8a8063f661c2b8cfc34b533c4e44f5207`
+
+RC2 includes the same scientific manuscript/results as RC1 plus corrected higher-order Zenodo/CITATION metadata tooling and a validated metadata-renderer smoke test.
+
+Historical RC1 remains preserved at:
 
 - `release/jae-higher-order-rc1`
 - `submission/jae-higher-order-v1`
-- frozen commit `c5d40b6302c8166e965b213757328501de685fb9`
 
-RC1's validated anonymous bundle and SHA256 digest are recorded in:
-
-`submission/pulse_template/RC1_MANIFEST.md`
-
-Later commits on the revision branch are limited to archive/submission tooling unless a new scientific release candidate is explicitly created.
+Release manifests are stored under `submission/pulse_template/`.
 
 ## Result in one paragraph
 
