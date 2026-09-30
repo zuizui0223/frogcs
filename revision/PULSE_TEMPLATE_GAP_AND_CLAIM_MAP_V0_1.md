@@ -300,3 +300,23 @@ For frogs, the biological discovery is:
 > **Recent-rain conditions are associated with silent-to-strong chorus transitions that deepen disproportionately within the same taxa across several sites and preferentially reappear at historically strong species-specific sites.**
 
 Do not replace "coherence" with "synchrony": route stops were surveyed sequentially.
+
+
+## 12. Final title/claim update
+
+Current title:
+
+**Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence**
+
+This wording is preferred over generic "spatial coherence" because cross-site calling covariance and regional population synchrony already exist in the anuran literature. The paper's distinctive claim is the **order of dependence** and its historical placement:
+
+1. silent-to-strong activation;
+2. third-and-later-site deepening;
+3. excess within-taxon concentration after conditioning on both recruited-taxon number and total spread;
+4. persistence after cross-fit species response and prior-site-history nulls;
+5. species-specific recurrence at historically strong physical sites;
+6. diffuse taxonomic contribution and leave-one-state-out geographic robustness.
+
+The general ecological principle should therefore be written as:
+
+> **Short environmental pulses can reveal higher-order spatial organization in a behaviourally expressed community, beyond ordinary cross-site covariance, when activity is concentrated within the same taxa and reappears on recurrent species × site templates.**
