@@ -1,0 +1,26 @@
+{
+  "analysis": "naamp_soil_rain_discordance_v0_1",
+  "status": "post-readback_hydric_falsification_fixed_before_endpoint",
+  "question": "Does the rainfall-contrast association with strong chorus activation depend on whether the more-recent-rain survey is actually wetter in shallow soil than its matched dry-side survey?",
+  "sample": "Exactly the weather-qualified matched pairs from NAAMP_SOIL_MOISTURE_CUE_V0_1.",
+  "natural_discordance": {
+    "concordant": "soil1_gain_difference > 0: the rain-recency-defined wetter survey also has greater ERA5 swvl1.",
+    "discordant": "soil1_gain_difference <= 0: the rain-recency-defined wetter survey is not wetter in ERA5 swvl1.",
+    "threshold": "Exactly zero; fixed from the physical meaning of wet-minus-dry soil water before endpoint readback."
+  },
+  "primary_model": "strong_new_score ~ rain_contrast * soil_wetting_positive + rain72_amount_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_prediction": "rain_contrast:soil_wetting_positive >0 with complete 95% CI >0.",
+  "minimum_gate": "Overall >=3500 pairs and >=500 routes; each concordance group >=500 pairs and >=150 routes.",
+  "secondary": [
+    "Fit the original rain model separately in concordant and discordant pairs.",
+    "Repeat interaction using new_ci3_count.",
+    "Repeat strong_new_score in same-observer + physically stable pairs if each group >=350 pairs and >=120 routes.",
+    "Repeat on exact-consecutive-year pairs as a directional sensitivity if both groups meet >=300 pairs and >=100 routes."
+  ],
+  "interpretation": {
+    "if_supported": "The effect of rain recency is stronger when recent rain corresponds to an actual increase in shallow soil water, supporting hydric-state release over a purely symbolic rain cue.",
+    "if_not_supported": "Soil moisture remains an independent predictor, but the rain-recency effect is not demonstrably gated by the sign of soil wetting.",
+    "boundary": "Observational stratification does not prove mediation; ERA5 swvl1 is not body hydration or pond depth."
+  },
+  "retuning_after_readback": false
+}
