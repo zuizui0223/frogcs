@@ -71,3 +71,58 @@ A positive external result would support transferability of the multi-site conce
 A negative result would delimit its generality.
 
 Neither outcome identifies the lower-level biological generator.
+
+
+## Candidate-network selection audit
+
+**Selection frozen before inspecting any candidate-network outcome matrix.**
+
+### Primary candidate: Wisconsin Frog and Toad Survey (WFTS)
+
+WFTS is the first external network selected for eligibility assessment because public programme documentation establishes, without opening response-level outcome data, that it has:
+
+- annual statewide monitoring since 1984;
+- approximately 100 permanent roadside routes;
+- exactly 10 listening stations per traditional route;
+- repeated surveys three times each year;
+- 5-minute listening periods;
+- the same qualitative call-index scale (1 = separated individual calls, 2 = overlapping calls with distinguishable individuals, 3 = continuous/full chorus);
+- permanent station descriptions intended to allow repeated surveying from the same locations.
+
+These properties match the structural requirements of the frozen external-replication design unusually well.
+
+The WFTS programme is independent of the 21-state NAAMP analysis used for discovery in this repository. Similarity of protocol is treated as an advantage for estimand alignment, not as statistical independence of methods.
+
+**Outcome data have not been inspected for this selection decision.**
+
+### Secondary candidate: Iowa Frog and Toad Call Survey
+
+The Iowa programme is retained only as a predeclared fallback if WFTS cannot supply an analysable repeated site-level dataset. Public documentation establishes:
+
+- monitoring since 1991;
+- repeated annual routes;
+- 5–10 wetland sites per route;
+- three surveys per year;
+- site-level calling records.
+
+It is less clean for the frozen primary endpoint because route site number varies and the programme later absorbed former NAAMP routes.
+
+### One-shot candidate rule
+
+1. Attempt WFTS eligibility first.
+2. If WFTS lacks the necessary repeated site-level records or rainfall-linkable dates, classify it **structurally ineligible** before looking at the concentration endpoint.
+3. Only then may Iowa be evaluated for structural eligibility.
+4. If WFTS is structurally eligible, it is the confirmatory dataset regardless of the eventual result.
+
+### Data-access boundary
+
+Public programme descriptions and blank/sample forms may be inspected to establish design eligibility.
+
+Do **not** inspect species × station × year outcome matrices, calculate concentration summaries, or choose subsets based on apparent effect direction before the eligibility decision and analysis implementation are frozen.
+
+### Public design sources used for candidate selection
+
+- Wisconsin DNR / WFTS programme overview and survey manual.
+- Iowa DNR Frog and Toad Call Survey programme description and 2025 methods report.
+
+The repository should record the exact downloaded/source metadata and checksums if response-level WFTS data are later obtained.
