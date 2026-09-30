@@ -1,0 +1,134 @@
+name: pulse-template archive pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Frozen source ref to archive
+        required: true
+        default: release/jae-higher-order-rc1
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install archive dependencies
+        run: python -m pip install --disable-pip-version-check -q PyYAML==6.0.2
+
+      - name: Guard frozen integrated source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          title="Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
+          manuscript=Path("paper/manuscript_pulse_template_v0_3.md").read_text(encoding="utf-8")
+          assert manuscript.startswith("# "+title+"\n")
+          assert Path("revision/INTEGRATED_RESULTS_V0_1.json").exists()
+          assert Path("submission/pulse_template/SCIENTIFIC_BUNDLE_RECEIPT.md").exists()
+          print({"status":"PASS","source_title":title})
+          PY
+
+      - name: Require repository license file
+        run: |
+          test -f LICENSE || test -f LICENSE.md || {
+            echo "Archive stage requires an explicit repository LICENSE or LICENSE.md chosen by the authors." >&2
+            exit 2
+          }
+
+      - name: Materialize private archive metadata
+        env:
+          JAE_PULSE_TEMPLATE_METADATA_YAML: ${{ secrets.JAE_PULSE_TEMPLATE_METADATA_YAML }}
+        run: |
+          test -n "$JAE_PULSE_TEMPLATE_METADATA_YAML" || {
+            echo "Missing repository secret JAE_PULSE_TEMPLATE_METADATA_YAML" >&2
+            exit 2
+          }
+          printf '%s' "$JAE_PULSE_TEMPLATE_METADATA_YAML" > /tmp/pulse-template-metadata.yml
+
+      - name: Render strict archive metadata
+        run: |
+          python scripts/submission/render_submission_metadata.py             --metadata /tmp/pulse-template-metadata.yml             --strict --stage archive             --outdir build/archive-metadata
+
+      - name: Guard title, DOI and license
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          title="Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
+          z=json.loads(Path("build/archive-metadata/ZENODO_METADATA_FINAL.json").read_text(encoding="utf-8"))
+          v=json.loads(Path("build/archive-metadata/SUBMISSION_METADATA_VALIDATION.json").read_text(encoding="utf-8"))
+          assert z["title"]==title
+          assert z.get("license")
+          assert v["archive_doi_present"] is True
+          assert v["status"]=="PASS"
+          print({"status":"PASS","license":z["license"],"archive_doi_present":v["archive_doi_present"]})
+          PY
+
+      - name: Build archive source manifest
+        run: |
+          python - <<'PY'
+          import hashlib,json,subprocess
+          from pathlib import Path
+
+          commit=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
+          keep=[
+              "paper/manuscript_pulse_template_v0_3.md",
+              "paper/supporting_information_pulse_template_v0_1.md",
+              "revision/INTEGRATED_RESULTS_V0_1.json",
+              "revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md",
+              "revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md",
+              "revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json",
+              "revision/build_pulse_template_figures.py",
+              "submission/pulse_template/SCIENTIFIC_BUNDLE_RECEIPT.md",
+          ]
+          rows={}
+          for name in keep:
+              p=Path(name)
+              assert p.exists(), name
+              rows[name]=hashlib.sha256(p.read_bytes()).hexdigest()
+          payload={"source_commit":commit,"files":rows}
+          Path("build/archive-metadata/SOURCE_MANIFEST.json").write_text(
+              json.dumps(payload,indent=2,sort_keys=True)+"\n",encoding="utf-8"
+          )
+          print({"source_commit":commit,"files":len(rows)})
+          PY
+
+      - name: Assemble archive metadata bundle
+        run: |
+          set -eu
+          out=build/pulse-template-archive-metadata
+          mkdir -p "$out"
+          cp build/archive-metadata/ZENODO_METADATA_FINAL.json "$out/"
+          cp build/archive-metadata/CITATION.cff "$out/"
+          cp build/archive-metadata/ARCHIVE_REFERENCE.txt "$out/"
+          cp build/archive-metadata/SUBMISSION_METADATA_VALIDATION.json "$out/"
+          cp build/archive-metadata/SOURCE_MANIFEST.json "$out/"
+          if [ -f LICENSE ]; then cp LICENSE "$out/"; else cp LICENSE.md "$out/"; fi
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          out=Path("build/pulse-template-archive-metadata")
+          rows={str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest()
+                for p in sorted(out.rglob("*")) if p.is_file()}
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print({"status":"PASS","files":len(rows)})
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-pulse-template-archive-metadata
+          path: build/pulse-template-archive-metadata/
+          if-no-files-found: error
