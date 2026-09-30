@@ -1,0 +1,47 @@
+{
+  "analysis": "naamp_hydric_cue_discrimination_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "parent_evidence": {
+    "antecedent_rain_amount": "72 h antecedent precipitation amount positively predicts strong 0->CallingIndex2/3 activation after adjusting for DaysSinceRain.",
+    "current_light_rain": "Survey-time categorical light rain does not explain strong activation.",
+    "local_template": "Strong chorus reactivation is strongly targeted to previously used species x SiteID combinations."
+  },
+  "question": "Is the remaining rain-associated strong-chorus activation better explained by instantaneous atmospheric desiccation stress at survey time or by accumulated antecedent rainfall?",
+  "sample": "NAAMP matched pairs for which both runs have parseable start/end times, route-centroid coordinates, ERA5 72 h precipitation and ERA5 2 m temperature/dewpoint at the survey midpoint.",
+  "weather_source": {
+    "provider": "Earthmover public ERA5 Icechunk repository",
+    "group": "single/temporal",
+    "precipitation": "tp hourly accumulation, same extraction semantics as NAAMP_ANTECEDENT_RAIN_AMOUNT_V0_1",
+    "temperature_and_dewpoint": "Discover variables by stable GRIB shortName/long_name metadata before response fitting; require unambiguous 2 m temperature and 2 m dewpoint variables.",
+    "spatial_link": "nearest ERA5 0.25 degree grid cell to route centroid",
+    "temporal_link": "nearest exact hourly timestamp to local survey midpoint converted to UTC"
+  },
+  "derived_cues": {
+    "vpd_kpa": "saturation vapour pressure at T minus actual vapour pressure from dewpoint, using Magnus formula; nonnegative",
+    "rh_percent": "100 * actual vapour pressure / saturation vapour pressure, capped to [0,100] only for numerical epsilon deviations",
+    "vpd_relief_contrast": "dry-run VPD minus wet-run VPD; positive means the wetter survey had lower desiccation demand",
+    "rh_gain_contrast": "wet-run RH minus dry-run RH; positive means the wetter survey was more humid",
+    "rain72_amount_contrast": "same z-scored log1p 72 h precipitation wet-minus-dry contrast as antecedent-rain-amount analysis"
+  },
+  "primary_model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + vpd_relief_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_predictions": {
+    "instantaneous_hydration_support": "vpd_relief_difference_z beta >0 with complete 95% CI >0.",
+    "accumulated_hydric_support": "rain72_amount_difference_z beta >0 with complete 95% CI >0 after VPD adjustment.",
+    "accumulated_over_instantaneous": "Accumulated hydric opportunity favored if rain72 remains CI-positive while VPD relief is not CI-positive.",
+    "mixed_cue": "Both CI-positive indicates independent contributions of accumulated rainfall and instantaneous atmospheric moisture."
+  },
+  "secondary": [
+    "Replace VPD relief with RH gain; same sign expectation but no separate mechanism gate.",
+    "Use new_ci3_count as a full-chorus endpoint.",
+    "Repeat primary model in same-observer + physically stable pairs.",
+    "Report correlation between rain72 amount contrast and VPD relief contrast."
+  ],
+  "minimum_gate": "At least 3500 pairs and 500 routes; exact ERA5 variable identity audit must pass.",
+  "interpretation": [
+    "VPD/RH are atmospheric moisture proxies, not direct frog hydration measurements.",
+    "Antecedent precipitation is not direct pond depth or hydroperiod.",
+    "Both weather exposures are observational and cannot establish causal mediation.",
+    "No RC11 submission modification is authorized from this exploratory test."
+  ],
+  "retuning_after_readback": false
+}
