@@ -149,7 +149,7 @@ def main():
       "full_sample":{"raw_excess":full_raw,"z_excess":full_z},
       "joint_same_observer_same_site":{"raw_excess":robust_raw,"z_excess":robust_z},
       "classification":{"primary_support":primary,"strong_support":strong},
-      "interpretation_boundary":{"exact_first_order_conditioning":true,"regression_extrapolation_used":false,"literal_synchrony_inferred":false,"causal_rainfall_claim":false}
+      "interpretation_boundary":{"exact_first_order_conditioning":True,"regression_extrapolation_used":False,"literal_synchrony_inferred":False,"causal_rainfall_claim":False}
     }
     OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
     print(json.dumps(out,indent=2,sort_keys=True))
