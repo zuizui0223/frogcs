@@ -15,6 +15,8 @@ on:
       - "submission/pulse_template/**"
       - "paper/title_page_pulse_template.template.md"
       - ".github/workflows/pulse_template_submission_pipeline.yml"
+  pull_request:
+    branches: [main]
   workflow_dispatch:
     inputs:
       build_private_bundle:
