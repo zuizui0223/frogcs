@@ -95,6 +95,8 @@ For each of 1,000 simulations under the κ = 2 uniform-activation null and the a
 
 across the 1,000 simulated coefficient triplets. The primary statistic was the observed higher-order coefficient minus the null-regression prediction evaluated at the observed first-order recruitment and spread coefficients. Higher-order spatial coherence was supported only if this conditional residual exceeded the upper 95% residual bound under both null families. This analysis tests dependence in spatial expression, not literal simultaneity because route stops were surveyed sequentially.
 
+We then applied the **unchanged endpoint and unchanged conditional-residual statistic** in three pre-specified post-readback audits. First, a joint observer/site robustness analysis restricted the data to matched pairs with the same nonmissing ObserverTrackingID and identical physical SiteID at all ten stops; the same two primary nulls were re-estimated within that subset. Second, a falsification analysis replaced the common species response with route-cross-fitted species-specific rainfall shifts and then with the additive combination of cross-fitted species shifts, strictly prior species × physical-SiteID probabilities and a = 0.75 dry-state persistence. In each case the higher-order coefficient was again conditioned on the simulated route-new-species and total extra-stop coefficients. Third, taxonomic and geographic generality audits decomposed the higher-order coefficient by taxon and repeated the unchanged higher-order rainfall model after omitting each state in turn. The taxonomic concentration thresholds were reused verbatim from the earlier route-new-spread audit; the geographic PASS/strong-PASS rules were reused verbatim from the frozen RC11 geographic audit.
+
 ### Exact species × stop allocation
 
 Every wet-gain incidence was classified along two axes: whether the species was already detected elsewhere in the dry route and whether the stop was already active in the dry run. Dry-loss incidences were classified symmetrically. Net wet-minus-dry change therefore fell into four exact components:
@@ -164,7 +166,11 @@ These analyses constrain observer turnover, recorded acoustic conditions and sto
 
 ### Taxonomic and geographic breadth
 
-For the strong-activation decomposition we summarized positive contribution across species, concentration of positive contribution, leave-one-species-out totals and leave-one-state-out totals. State-specific slopes and a state random-slope model quantified heterogeneity. Robustness to deleting one state was not interpreted as homogeneity among states.
+For the **higher-order coherence endpoint**, we decomposed the linear rainfall coefficient across taxa and summarized the positive-contribution distribution, top-1 and top-5 shares, Herfindahl concentration, and leave-one-taxon-out totals. We classified the contribution as diffuse only if it met the previously fixed route-new-spread thresholds: top-1 ≤ 0.25, top-5 ≤ 0.60, HHI ≤ 0.10 and every leave-one-taxon-out total remained positive.
+
+For geographic robustness, the unchanged higher-order rainfall model was refit 21 times, omitting one state per fit. As in the frozen RC11 audit, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific higher-order slopes were descriptive only.
+
+We retained the earlier strong-activation species-concentration and state-random-slope analyses as corroborating context. Robustness to deleting one state was not interpreted as homogeneity among states.
 
 ### Cross-dataset taxonomic-depth consistency
 
@@ -178,7 +184,7 @@ Because an earlier FrogID multispecies result was already known and FrogID lacks
 
 ### Analysis provenance and inferential boundaries
 
-The integrated manuscript combines the frozen RC11 analyses with post-freeze mechanism analyses. The latter were generated after the original matrix results were known. Individual post-freeze tests used versioned contracts that fixed each endpoint or null before its readback, and the mechanism sequence ended under a prefixed stopping rule, but these analyses are **post-opening and exploratory in the manuscript-level sense**. They are not described as preregistered or independent confirmation.
+The integrated manuscript combines the frozen RC11 analyses with post-freeze mechanism analyses. The latter were generated after the original matrix results were known. Individual post-freeze tests used versioned contracts that fixed each endpoint or null before its readback. The original mechanism decision tree ended under a prefixed stopping rule; the later higher-order-coherence analyses were initiated only after the manuscript was deliberately reframed around spatial dependence. For those later analyses, the higher-order endpoint, conditioning variables, null families and PASS/FAIL interpretations were fixed before each new endpoint or robustness result was read. All remain **post-opening and exploratory in the manuscript-level sense**. They are not described as preregistered or independent confirmation.
 
 The study concerns acoustic reproductive activity. No analysis establishes individual identity, continuous occupancy, dispersal, colonization, abundance, spawning or reproductive success. Terms such as “recurrent”, “re-expression” and “persistent template” refer to repeated species × physical-site acoustic states in the monitoring record.
 
@@ -202,7 +208,7 @@ The same full-chorus result remained when observer identity and physical listeni
 
 These results make a purely marginal-audibility interpretation difficult: the wet-state change frequently involved acoustic cells moving from no recorded call directly to overlapping or full chorus. They do not, however, convert dry-state acoustic zeros into confirmed physical absence.
 
-### Recruited species deepen across multiple sites, and the excess is carried by strong choruses
+### Recruited taxa show higher-order multi-site coherence carried by strong choruses
 
 The spatial effect was not concentrated at the moment a route-new species appeared for the first time. The second-stop incidence coefficient was β = 0.132 and was not exceptional under either primary null family. By contrast, third-and-later incidence was β = 0.473 and exceeded the upper 95% ranges under both the uniform-activation and persistence-preserving nulls (both plus-one Monte Carlo P = 0.000999). Fourth-and-later incidence was also elevated (β = 0.363).
 
