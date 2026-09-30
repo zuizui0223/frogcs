@@ -63,11 +63,16 @@ Explain the endpoint visually:
 
 Plot:
 - observed higher-order β = 1.524
-- uniform-null prediction at observed new-species and extra-stop betas = 1.138
+- uniform-null prediction = 1.138
 - persistence-null prediction = 0.784
-- conditional residuals with their null 95% ranges:
-  - uniform residual = 0.386 vs −0.098 to 0.096, P=0.000999
-  - persistence residual = 0.740 vs −0.081 to 0.082, P=0.000999
+- cross-fit species-response prediction = 1.198
+- joint cross-fit species + strictly-prior site-history + dry-persistence prediction (2,916-pair subset): 1.353 vs 1.650 observed
+- all conditional upper-tail P = 0.000999
+
+Add a robustness inset:
+- same observer + same physical SiteID: observed higher-order β = 1.817
+- uniform prediction = 1.400; persistence prediction = 0.918
+- both P = 0.000999
 
 Annotate prominently:
 **conditions on both recruited-taxon count and total extra-stop spread.**
@@ -92,7 +97,7 @@ Make clear that StopNumber adjacency is route topology, not exact geographic dis
 - `exploration/spatial-depth-chorus-v1/exploration/run_naamp_spatial_depth_chorus_decomposition.py`
 
 ### Message printed in figure
-**At the same amount of first-order recruitment and spread, wet-state activity is still too deeply concentrated within the same recruited taxa for independent-cell activation nulls.**
+**At the same amount of first-order recruitment and spread, wet-state activity remains too deeply concentrated within the same recruited taxa even after cross-fitted species rainfall sensitivity and strictly-prior site history are added.**
 
 ---
 
