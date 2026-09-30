@@ -41,6 +41,31 @@ jobs:
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
       - name: Run integrated manuscript QA
         run: python revision/audit_pulse_template_manuscript.py
+
+      - name: Smoke-test private metadata renderer with dummy fixture
+        run: |
+          python -m pip install --disable-pip-version-check -q PyYAML==6.0.2
+          python scripts/submission/render_submission_metadata.py             --metadata submission/pulse_template/test_metadata.fixture.yml             --strict --stage initial             --outdir build/metadata-fixture
+          python - <<'PY'
+          import json,yaml
+          from pathlib import Path
+          title="Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
+          z=json.loads(Path("build/metadata-fixture/ZENODO_METADATA_FINAL.json").read_text(encoding="utf-8"))
+          cff=yaml.safe_load(Path("build/metadata-fixture/CITATION.cff").read_text(encoding="utf-8"))
+          tp=Path("build/metadata-fixture/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          assert z["title"]==title and cff["title"]==title and title in tp
+          expected=[
+              "anuran breeding behaviour","behavioural community","calling activity","chorus",
+              "environmental pulse","rainfall","site recurrence","spatial ecology"
+          ]
+          assert z["keywords"]==expected
+          assert cff["keywords"]==expected
+          desc=z["description"].lower()
+          for token in ["higher-order","within-taxon","historical sites"]:
+              assert token in desc, token
+          print({"status":"PASS","keywords":len(expected)})
+          PY
+
       - name: Build anonymous manuscript and SI
         run: |
           python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_3.md --output build/Manuscript.docx
