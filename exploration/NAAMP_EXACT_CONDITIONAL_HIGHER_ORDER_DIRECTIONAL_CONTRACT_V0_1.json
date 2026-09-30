@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_exact_conditional_higher_order_directional_v0_1",
+  "status": "methodological_validation_fixed_before_endpoint",
+  "motivation": "The regression-conditioned higher-order null evaluates the observed first-order recruitment and spread coefficients against simulated coefficient clouds. Because extra-stop spread itself is unusually large, this validation avoids any regression extrapolation by conditioning exactly, within each pair and direction, on the realized number of route-new taxa and their realized total number of occupied sites.",
+  "question": "After exactly conditioning on recruited-taxon number and total route-new incidence in each direction, is within-taxon concentration of multi-site activity greater on the survey closer to rain than on its paired drier survey?",
+  "directional_unit": "For every matched pair, compute the endpoint twice: wet survey as target versus dry reference, and dry survey as target versus wet reference.",
+  "target_taxa": "Taxa absent from the entire reference route and present at >=1 target stop.",
+  "statistics": {
+    "N": "Number of target-new taxa.",
+    "K": "Total target incidences summed across those N taxa.",
+    "H": "sum_i choose(k_i - 1, 2), where k_i is occupied target stops for target-new taxon i.",
+    "exact_exchangeable_expectation": "Expected H across all N x 10 binary target matrices having every row occupied at least once and exactly K total incidences; configurations are weighted by their exact combinatorial multiplicity. Computed by dynamic programming, not simulation.",
+    "raw_excess": "H minus the exact conditional expectation.",
+    "z_excess": "raw_excess divided by the exact conditional SD when nonzero; otherwise 0."
+  },
+  "directional_test": {
+    "target_rain_advantage": "+rain_contrast for wet-as-target and -rain_contrast for dry-as-target.",
+    "pair_control": "Demean endpoint and target_rain_advantage within matched pair; fit OLS without intercept with route-clustered covariance. This is equivalent to a within-pair directional contrast and removes all pair-level covariates exactly.",
+    "primary_prediction": "Raw-excess coefficient >0 with complete 95% CI >0.",
+    "standardized_sensitivity": "z-excess coefficient >0 with complete 95% CI >0."
+  },
+  "joint_robustness": {
+    "sample": "Intersection of same-observer pairs and pairs retaining identical nonmissing SiteID at all ten StopNumbers.",
+    "strong_support_rule": "Primary raw-excess and z-excess both have complete 95% CI >0 in the full sample, and raw-excess has complete 95% CI >0 in the joint robustness subset."
+  },
+  "interpretation": [
+    "A positive result establishes rain-selective within-taxon concentration relative to an exact first-order exchangeability null without extrapolating from simulated first-order coefficient clouds.",
+    "It does not make taxa exchangeable biologically; cross-fitted species-response and prior-site-history falsifications are separate tests.",
+    "It does not establish literal simultaneity, movement, hydrological connectivity, social facilitation, or causal rainfall.",
+    "No endpoint, exact-conditioning rule, direction, tail, or support threshold may change after endpoint readback."
+  ],
+  "retuning_after_readback": false
+}
