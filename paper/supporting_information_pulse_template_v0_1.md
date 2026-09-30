@@ -1,6 +1,6 @@
 # Supporting Information
 
-## Rainfall-associated chorus activation re-expresses persistent spatial structure in frog communities
+## Rainfall-associated frog chorus activation is spatially coherent and historically structured
 
 This Supporting Information preserves secondary, falsification and alternative-mechanism analyses that are important for transparency but are not part of the main inferential spine.
 
