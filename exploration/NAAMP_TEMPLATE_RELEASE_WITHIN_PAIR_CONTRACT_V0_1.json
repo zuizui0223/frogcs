@@ -1,0 +1,46 @@
+{
+  "analysis": "naamp_template_release_within_pair_v0_1",
+  "status": "post_readback_template-release test fixed before endpoint",
+  "question": "Within the same wetter-drier matched comparison, do historically broad species-site templates translate into deeper spatial activation preferentially on the wetter side rather than the drier side?",
+  "population": "Physically stable NAAMP pairs with prior eligible history. Species are route-discordant in the focal pair (present in exactly one route member), known somewhere on the same route-season in years strictly before the earlier focal-pair year, and have prior sampling opportunity at >=8 of the ten current SiteIDs.",
+  "unit": "matched pair x discordant species",
+  "orientation": {
+    "wet_active": 1,
+    "dry_active": 0,
+    "active_k": "Number of stops occupied by the species in whichever member of the pair it is present.",
+    "third_plus_depth": "max(active_k - 2, 0), primary.",
+    "active_strong_k": "Number of active-side stops with CallingIndex 2-3."
+  },
+  "prior_predictors": {
+    "prior_strong_breadth": "Fraction of prior-opportunity current SiteIDs where the species had CI2-3.",
+    "prior_any_breadth": "Fraction where the species had any prior CallingIndex >0.",
+    "prior_route_frequency": "Fraction of prior eligible runs where the species occurred anywhere on the route."
+  },
+  "primary_design": {
+    "informative_pairs": "Retain only focal pairs containing at least one eligible wet-active and at least one eligible dry-active discordant species.",
+    "fixed_effects": "Exact pair effects by within-pair demeaning; species fixed effects in the regression.",
+    "formula_after_demeaning": "third_plus_depth_w ~ wet_active_w + z_prior_strong_breadth_w + (wet_active*z_prior_strong_breadth)_w + prior_route_frequency_w + C(species)",
+    "covariance": "cluster-robust by State x RouteNumber",
+    "primary_estimand": "wet_active x prior_strong_breadth interaction",
+    "prediction": "positive coefficient with complete 95% CI >0"
+  },
+  "secondary": [
+    "Repeat with spatial_depth=active_k-1, active_k, and active_strong_k.",
+    "Replace prior_strong_breadth with prior_any_breadth.",
+    "Fit a separate magnitude model adding within-pair lower-order rain-contrast products and wet_active x prior_strong_breadth x centered rain_contrast; the three-way interaction is descriptive and has no pass gate.",
+    "Repeat primary third_plus model in same-observer pairs.",
+    "Repeat primary in exact-consecutive-year pairs."
+  ],
+  "minimum_gate": "Before endpoint interpretation require >=1500 pair-species observations, >=500 informative pairs, >=300 routes, >=20 species and SD(prior_strong_breadth)>=0.10.",
+  "sensitivity_gates": {
+    "same_observer": ">=1000 pair-species, >=350 informative pairs, >=225 routes, >=20 species.",
+    "exact_year": ">=1000 pair-species, >=350 informative pairs, >=225 routes, >=20 species."
+  },
+  "interpretation": [
+    "This symmetric discordant-species design avoids conditioning only on wet-side recruitment.",
+    "A positive interaction means historically broader local templates are more deeply expressed when a discordant species is active on the wetter rather than drier side of the same matched pair.",
+    "It remains observational and does not identify movement, occupancy, abundance, breeding success or a physiological mediator.",
+    "No causal rainfall claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
