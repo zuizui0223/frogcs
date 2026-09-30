@@ -124,11 +124,11 @@ def main():
       "final_crossfit_rain_by_history_gate":test,
       "classification":{"higher_order_dependence_survives_final_gate":bool(test["above_upper_95"])},
       "interpretation_boundary":{
-        "existing_null_only":true,
-        "literal_synchrony_inferred":false,
-        "individual_movement_inferred":false,
-        "causal_rainfall_claim":false,
-        "unique_lower_level_mechanism_identified":false
+        "existing_null_only":True,
+        "literal_synchrony_inferred":False,
+        "individual_movement_inferred":False,
+        "causal_rainfall_claim":False,
+        "unique_lower_level_mechanism_identified":False
       }
     }
     OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
