@@ -54,6 +54,16 @@ Do not switch to PRISM, ERA5, station weather or another precipitation product a
 
 A different product may be used only if Daymet acquisition fails technically **before** WFTS outcome readback; that failure and replacement must be committed first.
 
+### Daymet calendar handling
+
+Use the official Daymet calendar semantics.
+
+Daymet retains **February 29** in leap years and drops **December 31** so every Daymet year has 365 entries. Map WFTS Gregorian survey dates directly to the corresponding Daymet calendar date; do not apply a post-February leap-year offset.
+
+Traditional WFTS surveys occur in April–July, so the omitted December 31 is outside the eligible survey window.
+
+If a future external dataset contains a December 31 survey, that date is ineligible under this frozen Daymet implementation rather than being silently remapped.
+
 ## 4. Antecedent-rain metric
 
 For every station and survey date:
