@@ -120,6 +120,17 @@ def load_structure(runs_path,matrix_path):
     if (date_check!=1).any():
         raise RuntimeError("multiple survey dates within route-period-year")
 
+    struct_dates=(
+        station_structure.groupby(rkey,as_index=False)["survey_date"]
+        .first()
+        .rename(columns={"survey_date":"matrix_survey_date"})
+    )
+    date_merge=runs[rkey+["survey_date"]].merge(struct_dates,on=rkey,how="left",validate="one_to_one")
+    if date_merge["matrix_survey_date"].isna().any():
+        raise RuntimeError("matrix structural dates missing for one or more runs")
+    if not (date_merge["survey_date"].to_numpy()==date_merge["matrix_survey_date"].to_numpy()).all():
+        raise RuntimeError("runs and matrix survey dates differ")
+
     sites={}
     for key,g in station_structure.groupby(rkey,sort=False):
         gg=g.sort_values("station_order")
