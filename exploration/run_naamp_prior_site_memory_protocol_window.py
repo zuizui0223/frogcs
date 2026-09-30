@@ -112,7 +112,7 @@ def main():
                    "primary_cross_window_pairs":int(len(primary)),
                    "primary_cross_window_routes":int(primary.route_cluster.nunique()) if len(primary) else 0},
        "response_endpoints_read":False}
-  OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\\n");print(json.dumps(out,indent=2));return
+  OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n");print(json.dumps(out,indent=2));return
  primary_fit=fit(primary)
  strict=primary[primary["wet_days_since_rain"]>=4].copy()
  strict_gate=bool(len(strict)>=100 and strict.route_cluster.nunique()>=75)
@@ -138,5 +138,5 @@ def main():
           "all_scheduling_confounding_removed":False,
           "continuous_occupancy_proven":False,
           "causal_rainfall_claim":False}}
- OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\\n");print(json.dumps(out,indent=2,sort_keys=True))
+ OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n");print(json.dumps(out,indent=2,sort_keys=True))
 if __name__=="__main__":main()
