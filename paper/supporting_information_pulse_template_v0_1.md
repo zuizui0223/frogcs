@@ -966,6 +966,37 @@ State-specific models were descriptive and heterogeneous:
 
 Higher-order coherence is therefore not dependent on any single state, but its strength is not geographically homogeneous.
 
+### S11.7 Existing final rain × local-history gate: higher-order endpoint audit
+
+After the higher-order endpoint had been established under the simpler null families, we applied the **unchanged endpoint and unchanged conditional-residual statistic** to the already-existing final held-out rain × local-history gating null. No new mechanism term was introduced.
+
+The population was exactly the existing strictly-prior-history subset:
+- **2,916 pairs**;
+- **439 routes**;
+- **20 states**.
+
+Observed coefficients:
+- route-new species β = **0.1982**;
+- extra-stop β = **0.6809**;
+- higher-order β = **1.6503**.
+
+The final null combined:
+- route-cross-fit species-specific rainfall response;
+- strictly-prior species × physical-SiteID probabilities;
+- a=0.75 dry-state persistence;
+- one route-cross-fit global rain × centred local-history gate applied only to currently silent cells;
+- pair-level magnitude matching to the observed wet incidence total.
+
+At the observed first-order recruitment and spread coefficients:
+- predicted higher-order β = **1.3323**;
+- observed conditional residual = **0.3180**;
+- null residual 95% interval = **−0.1172 to 0.1255**;
+- plus-one upper-tail **P = 0.000999**.
+
+The fixed classification was **higher-order dependence survives the final gate**.
+
+This is an endpoint audit of a pre-existing null, not an additional lower-level mechanism search. It authorizes the statement that the tested final species/history/gating process does not reproduce the observed higher-order concentration. It does not identify the missing biological generator.
+
 ## S12. Historical recurrence of apparent wet-state recruitment
 
 ### S12.1 Route-new incidence recurrence
@@ -1137,6 +1168,7 @@ Includes:
 - exact conditional directional higher-order validation;
 - same-observer + same-physical-site higher-order robustness;
 - cross-fit species-response and strictly-prior-history higher-order falsification;
+- higher-order endpoint audit of the pre-existing final rain × local-history gate;
 - higher-order taxonomic and geographic generality audits;
 - recurrent-activation decomposition;
 - direct full-chorus recurrence;
