@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_higher_order_final_rain_history_gate_v0_1",
+  "classification": {"higher_order_dependence_survives_final_gate": true},
+  "contract": "exploration/NAAMP_HIGHER_ORDER_FINAL_RAIN_HISTORY_GATE_CONTRACT_V0_1.json",
+  "coverage": {"pairs": 2916, "routes": 439, "states": 20},
+  "final_crossfit_rain_by_history_gate": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_extra_stop_slope": 2.1068350059647525,
+    "null_regression_intercept": 0.01261348612636996,
+    "null_regression_new_species_slope": -0.5798221153467955,
+    "null_residual_ci95": [-0.11722907299037132, 0.1255263141419511],
+    "observed_conditional_residual": 0.31803076946882447,
+    "predicted_higher_order_beta": 1.3322893659679573
+  },
+  "observed": {
+    "extra_stop_beta": 0.6809252254809639,
+    "higher_order_beta": 1.6503201354367818,
+    "route_new_species_beta": 0.19820082505375725,
+    "threeplus_species_beta": 0.12636595833156158
+  },
+  "interpretation_boundary": {
+    "causal_rainfall_claim": false,
+    "existing_null_only": true,
+    "individual_movement_inferred": false,
+    "literal_synchrony_inferred": false,
+    "unique_lower_level_mechanism_identified": false
+  }
+}
