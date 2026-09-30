@@ -10,7 +10,7 @@
 
 **Corresponding author:** [CONFIRM NAME, POSTAL ADDRESS, EMAIL]
 
-**Main-manuscript word count:** [RECALCULATE AFTER FINAL METADATA / FORMATTING; current anonymized Markdown ≈ 7,523 words including title, abstract, references and figure legends]
+**Main-manuscript word count:** [RECALCULATE AFTER FINAL METADATA / FORMATTING; current anonymized Markdown ≈ 7,486 words including title, abstract, references and figure legends]
 
 ## Acknowledgements
 
