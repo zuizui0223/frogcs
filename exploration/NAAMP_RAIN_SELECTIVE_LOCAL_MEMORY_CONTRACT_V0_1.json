@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_rain_selective_local_memory_v0_1",
+  "status": "post-readback reverse-direction placebo fixed before endpoint",
+  "question": "Does the survey closer to rain preferentially reactivate historically strong same-species SiteIDs more than the paired drier survey, after generic recurrence is cancelled by within-pair directional comparison?",
+  "population": "Frozen NAAMP matched pairs restricted to physically stable pairs with at least one prior eligible run in the same State x RouteNumber x RunNumber stratum.",
+  "directional_construction": {
+    "wet_direction": "Target=wet survey, reference=dry survey. Focal species are present somewhere in target, absent from the entire reference route, and previously observed somewhere on the route before the focal pair.",
+    "dry_direction": "Target=dry survey, reference=wet survey, using the exact mirror rule.",
+    "historical_memory": "For each focal species x current SiteID, recurrent=1 if the species had CallingIndex 2-3 at that SiteID in a prior eligible run; nonrecurrent otherwise."
+  },
+  "pair_direction_endpoint": {
+    "primary_ci3_rate_difference": "Within each target direction, CI3 rate among recurrent candidate cells minus CI3 rate among nonrecurrent candidate cells.",
+    "secondary_ci2plus_rate_difference": "Same construction for CallingIndex 2-3.",
+    "requirement": "Both recurrent and nonrecurrent candidate cell counts must be >0 in that direction."
+  },
+  "primary_design": "Keep matched pairs where both wet and dry directional CI3 rate differences are estimable. Stack the two directions, set target_rain_advantage=+rain_contrast for wet direction and -rain_contrast for dry direction, demean endpoint and target_rain_advantage within pair, then OLS without intercept with route-clustered covariance.",
+  "primary_prediction": "Coefficient of target_rain_advantage >0 with complete 95% CI >0.",
+  "secondary": [
+    "Repeat for CI2plus rate difference.",
+    "Repeat CI3 primary in same-observer pairs.",
+    "Report simple mean wet-minus-dry targeting asymmetry."
+  ],
+  "minimum_gate": "At least 750 matched pairs with both directions estimable and >=250 routes.",
+  "interpretation": [
+    "Support means proximity to rain selectively favors reactivation of historically strong species x SiteID cells beyond generic site recurrence.",
+    "Failure would imply local memory is a generic persistence property not demonstrably rain-selective.",
+    "No continuous occupancy, biological memory, individual fidelity, or causal rainfall effect is proven."
+  ],
+  "retuning_after_readback": false
+}
