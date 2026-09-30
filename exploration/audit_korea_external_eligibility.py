@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import hashlib, html, io, json, re
+import hashlib, html, io, json, re, zipfile
 from pathlib import Path
 from urllib.parse import urljoin
 import pandas as pd
@@ -15,6 +15,25 @@ TOKENS=("site","year","date","time","lat","lon","coord","rain","precip","tempera
 
 def fetch():
     errors=[]
+    # Europe PMC exposes all supplementary files as one official ZIP archive.
+    try:
+        su="https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6151124/supplementaryFiles"
+        sr=requests.get(su,headers={"User-Agent":"frogcs-korea-audit/0.1"},timeout=90)
+        if sr.status_code==200 and sr.content[:2]==b"PK":
+            z=zipfile.ZipFile(io.BytesIO(sr.content))
+            names=z.namelist()
+            xlsx=[n for n in names if n.lower().endswith(".xlsx") and ("5568" in n.lower() or "s001" in n.lower())]
+            if not xlsx:
+                xlsx=[n for n in names if n.lower().endswith(".xlsx")]
+            if xlsx:
+                b=z.read(xlsx[0])
+                if b[:2]==b"PK":
+                    return b,su+"#"+xlsx[0],su,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            errors.append({"url":su,"status":sr.status_code,"zip_members":names[:100],"stage":"europepmc_supplementaryFiles"})
+        else:
+            errors.append({"url":su,"status":sr.status_code,"content_type":sr.headers.get("content-type"),"bytes":len(sr.content),"stage":"europepmc_supplementaryFiles"})
+    except Exception as e:
+        errors.append({"url":"europepmc supplementaryFiles","error":f"{type(e).__name__}: {e}"})
     # Prefer public archival mirrors over the PeerJ page, which can be bot-protected.
     xml_urls=[
       "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6151124/fullTextXML",
