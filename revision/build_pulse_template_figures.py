@@ -64,7 +64,12 @@ ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.set_xlabel("Higher-order within-taxon rainfall coefficient")
 ax.set_title("Fig. 3  First-order species and site propensities underpredict higher-order concentration")
-ax.text(.99,.04,"circle = null prediction at observed recruitment + spread\nsquare = observed; all conditional P = 0.000999",transform=ax.transAxes,ha="right",va="bottom")
+ax.text(.99,.04,
+        "circle = null prediction at observed recruitment + spread\n"
+        "square = observed; all conditional P = 0.000999\n"
+        f"exact within-pair N,K conditioning: raw β={x['exact_raw_beta']:.3f} "
+        f"({x['exact_raw_ci95'][0]:.3f}–{x['exact_raw_ci95'][1]:.3f})",
+        transform=ax.transAxes,ha="right",va="bottom")
 save(fig,"fig3_higher_order_null_ladder")
 
 # Figure 4: historical site targeting
