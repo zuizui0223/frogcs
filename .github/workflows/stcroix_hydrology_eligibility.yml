@@ -14,10 +14,13 @@ jobs:
         with: {python-version: "3.12"}
       - run: python -m compileall -q exploration
       - run: python exploration/audit_stcroix_direct_hydrology_eligibility.py
+      - name: Audit exact SC4DAI2 daily join
+        run: python exploration/audit_stcroix_direct_hydrology_join.py
       - uses: actions/upload-artifact@v4
         with:
           name: stcroix-direct-hydrology-eligibility-v0-1
           path: |
             exploration/STCROIX_DIRECT_HYDROLOGY_ELIGIBILITY_CONTRACT_V0_1.json
             exploration/STCROIX_DIRECT_HYDROLOGY_ELIGIBILITY_RECEIPT_V0_1.json
+            exploration/STCROIX_DIRECT_HYDROLOGY_JOIN_AUDIT_V0_1.json
           if-no-files-found: error
