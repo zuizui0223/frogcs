@@ -1,0 +1,289 @@
+{
+  "analysis": "mechanism_and_transportability_exploration_summary_v0_9",
+  "status": "exploratory_synthesis_after_soil_moisture_falsification_hierarchy",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "headline": {
+    "process": "Rain-associated acoustic expansion is recurrent activation of a latent species-by-site chorus network, not simple amplification of an already-active chorus.",
+    "proximal_environment": "Among tested weather/hydric covariates, wet-minus-dry shallow soil-water change is the strongest and most transportable environmental correlate of strong CI2-3 and CI3 recruitment and of third-plus spatial depth.",
+    "local_template": "Strictly prior species x physical-SiteID chorus history predicts where reactivation occurs, beyond generic site quality and sampling effort.",
+    "architecture": "The safest model has partially distinct temporal/environmental and spatial-template axes: rain recency remains informative, soil-water change adds strong hydric-state information, and local species x site history supplies spatial memory. A simple soil-wetting-sign gate and a simple soil x local-memory interaction are not supported.",
+    "spatial_consequence": "Once a route-new species activates, the unusual matrix signal lies mainly in third-and-later-stop participation. Conditional on species identity and realized wet-side stop count, special stop placement is unnecessary.",
+    "generality": "Soil-water and local-template effects are robust across NAAMP route/time splits and leave-one-state-out tests, but state-specific slopes are heterogeneous and cross-continental universality remains unestablished."
+  },
+  "core_results": {
+    "strong_chorus": {
+      "activation_share": 0.6528793213930071,
+      "ci2_3_share_of_activation": 0.8707082810857251,
+      "ci2_3_score_beta": 1.6150398249522895,
+      "ci2_3_score_ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ],
+      "ci3_beta": 0.4413143755210998,
+      "ci3_ci95": [
+        0.11436200385886863,
+        0.768266747183331
+      ],
+      "robust_ci3_beta": 0.5140603333339898,
+      "robust_ci3_ci95": [
+        0.10081588098938049,
+        0.9273047856785992
+      ]
+    },
+    "recurrent_local_memory": {
+      "prior_only_recurrent_share_strong_score": 1.024992726810087,
+      "prior_only_same_site_any_share": 0.84392184861427,
+      "prior_only_same_site_prior_strong_share": 0.7001084698101772,
+      "prior_only_no_prior_score_beta": -0.04374475132510222,
+      "local_site_memory_beta": 0.151,
+      "local_site_memory_ci95": [
+        0.129,
+        0.173
+      ],
+      "same_observer_local_site_memory_beta": 0.159,
+      "same_observer_local_site_memory_ci95": [
+        0.134,
+        0.183
+      ],
+      "prior_opportunity_ci3_beta": 0.02448895976609234,
+      "prior_opportunity_ci95": [
+        0.007001673669270292,
+        0.04197624586291439
+      ],
+      "taxon_positive_fraction": 0.95,
+      "taxon_sign_test_p": 0.00002002716064453125
+    },
+    "spatial_depth": {
+      "route_new_species_beta": 0.1846754325853956,
+      "second_stop_beta": 0.13170590853393746,
+      "third_plus_beta": 0.4725893914308725,
+      "fourth_plus_beta": 0.3628430638358824,
+      "third_plus_ci2_3_beta": 0.4598290241532527,
+      "ci2_3_share_of_third_plus": 0.9729990399510237,
+      "robust_ci2_3_share": 0.9543102422904208,
+      "fixed_k_history_placement_p": 0.17882117882117882,
+      "fixed_k_persistence_placement_p": 0.21178821178821178
+    },
+    "soil_moisture_primary": {
+      "sample_pairs": 4045,
+      "sample_routes": 563,
+      "swvl1_gain_beta": 1.5728,
+      "swvl1_gain_ci95": [
+        0.9229,
+        2.2227
+      ],
+      "same_observer_physical_swvl1_beta": 1.6238,
+      "same_observer_physical_swvl1_ci95": [
+        0.8243,
+        2.4232
+      ],
+      "ci3_swvl1_beta": 0.3418,
+      "ci3_swvl1_ci95": [
+        0.1542,
+        0.5294
+      ],
+      "swvl2_beta": 1.6909,
+      "swvl2_ci95": [
+        1.065,
+        2.317
+      ],
+      "rain72_after_swvl1_supported": false,
+      "classification": "shallow_soil_moisture_over_antecedent_rain"
+    },
+    "soil_state_vs_change": {
+      "strong_wet_soil_beta": 2.286335433774905,
+      "strong_wet_soil_ci95": [
+        1.2290638184837603,
+        3.34360704906605
+      ],
+      "strong_dry_soil_beta": -2.6121167694286047,
+      "strong_dry_soil_ci95": [
+        -3.673775576268662,
+        -1.5504579625885475
+      ],
+      "beta_wet_plus_beta_dry": -0.3257813356536996,
+      "symmetry_p": 0.21581938249038624,
+      "same_observer_symmetry_p": 0.4313230489656289,
+      "full_chorus_symmetry_p": 0.7705110980241241,
+      "fixed_q75_threshold_supported": false,
+      "classification": "relative_change_sufficient_no_fixed_threshold_identified"
+    },
+    "soil_moisture_generality": {
+      "pairs": 4108,
+      "routes": 564,
+      "states": 21,
+      "route_split_A_beta": 1.0753616664759644,
+      "route_split_A_ci95": [
+        0.4702668122848258,
+        1.6804565206671032
+      ],
+      "route_split_B_beta": 2.1318183162004773,
+      "route_split_B_ci95": [
+        1.0547792987484041,
+        3.2088573336525505
+      ],
+      "early_beta": 1.55,
+      "early_ci95": [
+        0.912,
+        2.188
+      ],
+      "late_beta": 1.637,
+      "late_ci95": [
+        0.72,
+        2.553
+      ],
+      "robust_route_A_beta": 0.987,
+      "robust_route_A_ci95": [
+        0.209,
+        1.765
+      ],
+      "robust_route_B_beta": 2.298,
+      "robust_route_B_ci95": [
+        1.002,
+        3.594
+      ],
+      "leave_one_state_out_all_positive": true,
+      "leave_one_state_out_all_ci_positive": true,
+      "state_specific_estimable": 15,
+      "state_specific_positive_fraction": 0.8666666666666667,
+      "state_specific_ci_positive_fraction": 0.4666666666666667,
+      "classification": "strong_NAAMP_domain_generality"
+    },
+    "soil_protocol_window": {
+      "crossing_0_3_day_window_pairs": 1722,
+      "crossing_routes": 411,
+      "soil_beta": 1.9502213203122514,
+      "soil_ci95": [
+        1.1175417161338612,
+        2.7829009244906415
+      ],
+      "rain72_ci95": [
+        -0.9881556376828055,
+        0.27197147518211906
+      ],
+      "same_observer_physical_pairs": 1293,
+      "same_observer_soil_beta": 1.8841199773916724,
+      "same_observer_soil_ci95": [
+        0.7986795803769182,
+        2.9695603744064263
+      ],
+      "both_outside_pairs": 174,
+      "both_outside_soil_beta": 1.376888461675595,
+      "both_outside_soil_ci95": [
+        -0.44263330096162923,
+        3.196410224312819
+      ],
+      "interpretation": "Soil association is not confined to comparisons wholly inside the 0-3-day protocol window; the much smaller both-outside subset is directionally positive but imprecise."
+    },
+    "soil_rain_discordance": {
+      "concordant_pairs": 2805,
+      "discordant_pairs": 1303,
+      "interaction_beta": 0.19196434949902894,
+      "interaction_ci95": [
+        -1.4463225016343881,
+        1.8302512006324458
+      ],
+      "interaction_p": 0.8183587055091421,
+      "robust_interaction_beta": -0.005285881892993546,
+      "robust_interaction_p": 0.9955008818178211,
+      "concordant_rain_beta": 1.3605934308269048,
+      "concordant_rain_ci95": [
+        -0.06185671372154977,
+        2.783043575375359
+      ],
+      "discordant_rain_beta": 1.128303264585615,
+      "discordant_rain_ci95": [
+        0.0712552953129093,
+        2.185351233858321
+      ],
+      "classification": "simple_positive_soil_wetting_sign_gate_not_supported"
+    },
+    "soil_plus_template_depth": {
+      "pair_species": 1927,
+      "routes": 325,
+      "species": 44,
+      "prior_template_beta": 0.6267759073743808,
+      "prior_template_ci95": [
+        0.4808742433230331,
+        0.7726775714257286
+      ],
+      "soil_beta": 0.13691402399667238,
+      "soil_ci95": [
+        0.036382440014824366,
+        0.23744560797852038
+      ],
+      "template_x_soil_beta": 0.07288851258600376,
+      "template_x_soil_ci95": [
+        -0.02011402951156631,
+        0.16589105468357385
+      ],
+      "rain72_supported": false,
+      "rain_contrast_supported": false,
+      "classification": "additive_two_axis"
+    },
+    "same_observer_soil_plus_template_depth": {
+      "pair_species": 1472,
+      "routes": 278,
+      "template_beta": 0.7203009809036272,
+      "template_ci95": [
+        0.5587759992846615,
+        0.8818259625225928
+      ],
+      "soil_beta": 0.13154374724334422,
+      "soil_ci95": [
+        0.023499184837040277,
+        0.23958830964964817
+      ],
+      "interaction_beta": 0.11189710085491952,
+      "interaction_ci95": [
+        0.020322667685607407,
+        0.20347153402423163
+      ],
+      "interpretation": "Coupling appears in the smaller robust subset, but the full-sample interaction is not supported; do not make multiplicative gating the headline."
+    }
+  },
+  "alternatives_not_sufficient": [
+    "simple amplification among already-active cells",
+    "weak CI1-only detectability",
+    "observer turnover",
+    "physical stop relocation",
+    "measured hearing/noise/wind/traffic conditions",
+    "simple attraction to already-active chorus stops",
+    "an exclusively 0-1-day rain pulse",
+    "NWI hydroperiod as the strong-chorus mediator",
+    "Palustrine versus Riverine/Lacustrine NWI class as the strong-chorus mediator",
+    "instantaneous VPD/RH relief",
+    "barometric pressure change",
+    "current light rain at the survey",
+    "72-hour precipitation amount after soil-water change is included",
+    "a fixed q75 soil-moisture threshold",
+    "a simple binary gate requiring wet-side soil water to exceed dry-side soil water",
+    "generic good-frog-site quality instead of species-specific local memory",
+    "local memory alone as a generator of the matrix geometry",
+    "species-specific rainfall shifts alone as a generator of the full matrix geometry",
+    "special stop placement after species identity and realized occupied-stop count are fixed"
+  ],
+  "safest_current_model": {
+    "name": "partially_distinct_hydric_state_plus_local_template_model",
+    "statement": "Rain-recency-defined wet surveys contain more strong acoustic recruitment, while wet-minus-dry soil-water change provides additional, broadly transportable hydric-state information and strictly prior species x SiteID chorus history provides spatial memory. The two latter axes independently predict post-activation spatial depth in the full sample.",
+    "temporal_environmental_axis": "Recent rain and environmental wetting are related but not interchangeable. Soil-water change is a stronger predictor than 72-hour rain amount and generalizes strongly, yet rain-recency effects do not disappear specifically when soil wetting has the opposite sign; simple mediation/gating is therefore unsupported.",
+    "spatial_axis": "Historical own-species use of the same physical SiteID predicts future strong chorus beyond generic site productivity, and the effect decays with distance.",
+    "matrix_axis": "Historical template breadth and soil-water change both predict third-and-later-stop depth. Once species identity and realized depth k are fixed, special placement geometry is not required.",
+    "unresolved": "The acoustic data cannot separate persistent local populations from persistent species-specific microhabitat suitability, and ERA5 soil water cannot distinguish frog hydration from breeding-site/inundation processes."
+  },
+  "generality": {
+    "within_NAAMP": "Strong. Soil-water and local-template effects reproduce across route/time splits and leave-one-state-out analyses, although state-specific effects remain heterogeneous.",
+    "across_taxa": "Strongly suggestive within NAAMP; site-template signs are positive in 19/20 estimable species and strong-activation contributions are diffuse.",
+    "cross_continent": "Not established. Available external public data do not provide an effort-complete comparable species x site matrix, and AnuraSet site tests did not reproduce the prefixed threshold-dominance rule."
+  },
+  "do_not_claim": [
+    "Soil moisture is a proven causal mediator of rainfall.",
+    "Positive soil wetting is necessary for the rain-recency effect.",
+    "A fixed biological soil-moisture threshold has been identified.",
+    "ERA5 soil water is frog body hydration or pond depth.",
+    "Rain causes demographic colonization, abundance increase or reproductive success.",
+    "The same individuals return to the same sites.",
+    "The mechanism is universal across continents."
+  ],
+  "stop_rule": "Further NAAMP post-readback modeling should stop unless it tests a qualitatively new alternative unavailable in the current hierarchy. Highest-value next evidence is direct survey-night hydrology/body hydration or an independent effort-complete multi-site acoustic time series."
+}
