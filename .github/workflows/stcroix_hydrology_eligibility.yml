@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas statsmodels patsy
       - run: python -m compileall -q exploration
       - run: python exploration/audit_stcroix_direct_hydrology_eligibility.py
       - name: Audit exact SC4DAI2 daily join
