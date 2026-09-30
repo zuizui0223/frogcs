@@ -1,0 +1,26 @@
+{
+  "analysis": "naamp_local_chorus_memory_age_v0_1",
+  "status": "post_readback_memory-persistence test fixed before endpoint",
+  "question": "Does a strong-chorus record at the same physical SiteID remain predictive of later wet-survey strong chorus after a multi-year gap, or is local chorus memory only short-lived?",
+  "population": "Physically stable matched pairs with at least one prior eligible run in the same State x RouteNumber x RunNumber stratum. Focal species are route-new in the wet survey and had occurred somewhere on the route in prior years.",
+  "unit": "pair x focal species x physical stop",
+  "memory_age": {
+    "recent": "Most recent prior CallingIndex 2-3 record for the species at this SiteID occurred 1-3 years before the earlier focal-pair year.",
+    "old": "Most recent prior CallingIndex 2-3 record occurred >=4 years before the earlier focal-pair year.",
+    "none": "No prior CallingIndex 2-3 record for the species at this SiteID."
+  },
+  "primary_design": "Within each pair x species, regress wet_strong (CI2-3) on recent-memory and old-memory indicators after exact within-group demeaning; no intercept; cluster covariance by State x RouteNumber.",
+  "primary_prediction": "Old-memory coefficient >0 with complete 95% CI >0.",
+  "secondary": [
+    "Recent-memory coefficient and wet_full (CI3) coefficients are reported descriptively.",
+    "Repeat wet_strong in same-observer pairs.",
+    "Among stops with prior strong memory, report continuous years-since-last-strong slope as a descriptive decay estimate; no pass gate."
+  ],
+  "minimum_gate": "At least 300 informative pair x species groups containing both old-memory and none stops, >=200 routes, >=20 species.",
+  "interpretation": [
+    "Positive old-memory targeting supports a durable local acoustic template compatible with persistent habitat suitability or local population recurrence.",
+    "It does not prove continuous occupancy, site fidelity of individuals, biological memory, or the same individuals returning.",
+    "No causal rainfall or breeding-success claim."
+  ],
+  "retuning_after_readback": false
+}
