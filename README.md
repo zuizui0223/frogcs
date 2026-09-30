@@ -15,19 +15,20 @@ Nothing in this branch retroactively converts post-freeze analyses into preregis
 
 ## Current integrated manuscript
 
-**Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence**
+**Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence**
 
 Primary files:
 
-- `paper/manuscript_pulse_template_v0_3.md` — current integrated manuscript
-- `paper/manuscript_pulse_template_v0_2.md` — superseded integrated draft retained for audit
-- `paper/supporting_information_pulse_template_v0_1.md`
-- `revision/INTEGRATED_RESULTS_V0_1.json` — durable numeric synthesis for manuscript/figures
-- `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_1.md`
-- `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md` — current gap/novelty/ecology/scale map
-- `revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md` — current scientific synthesis + stop rule
+- `paper/manuscript_pulse_template_v0_4.md` — current integrated manuscript
+- `paper/manuscript_pulse_template_v0_3.md` — superseded RC2-era draft retained for audit
+- `paper/supporting_information_pulse_template_v0_2.md` — current SI
+- `revision/INTEGRATED_RESULTS_V0_2.json` — current numeric synthesis
+- `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_2.md` — current evidence hierarchy
+- `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md` — current gap/novelty/ecology map
+- `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
+- `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_1.md` — frozen external-confirmation specification
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
-- `revision/FIGURE_REBUILD_SPEC_V0_1.md`
+- `revision/FIGURE_REBUILD_SPEC_V0_2.md`
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
 - `revision/build_pulse_template_figures.py` — reproducible renderer
 - `figures_pulse_template/` — canonical generated SVG/PNG figures
@@ -57,16 +58,17 @@ Release manifests are stored under `submission/pulse_template/`.
 
 ## Result in one paragraph
 
-Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions were associated with expansion of the behaviourally active frog community, but the strongest result is not richness itself. Much of the CallingIndex increase came from previously silent species × site cells switching directly into overlapping or full chorus states. Recruited taxa showed excess participation at third-and-later sites, and exact within-pair conditioning on both recruited-taxon number and total incidence still showed greater within-taxon concentration toward the survey closer to rain (**β = 0.244, 95% CI 0.147–0.340**). The same result persisted with the same observer at the same physical sites, survived route-cross-fitted species-specific rainfall responses, strictly-prior species × SiteID history, dry-state persistence and the pre-existing held-out rain × history gate, and was not driven by one taxon or one state. Strong wet-state chorusing also preferentially reappeared at physical sites where that same taxon had chorused strongly before. The integrated interpretation is therefore **higher-order route-scale spatial coherence expressed on a recurrent species × site chorus template**, with the lower-level biological generator unresolved.
+Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions were associated with expansion of the behaviourally active frog community, but the strongest result concerns **how multi-site activity is allocated within recruited taxa**. Most activation entered directly at overlapping/full chorus states, and the unusual spatial component emerged at third-and-later sites. The principal comparator uses 2,916 pairs with strictly prior physical-site history and combines route-cross-fitted species rainfall responses, prior species × SiteID propensity, dry-state persistence and matched total wet incidence. It predicted within-taxon concentration β = **1.353** versus **1.650 observed**; the conditional residual was 0.297 beyond the null 95% interval (−0.132 to 0.119; P = 0.000999). A held-out rain × history gate still predicted only 1.332. Strong wet-state chorusing also preferentially reappeared at species-specific physical sites with prior strong chorus (β = **0.151**), and that targeting strengthened toward the survey closer to rain (β = **0.0245**). The exact N,K-conditioned exchangeable diagnostic (β = 0.244) is retained only as a secondary combinatorial check because it does not preserve taxon-specific spatial breadth or prior site use.
 
 ## Core evidence hierarchy
 
 1. **Chorus-state switching** — 65.3% of CallingIndex slope from 0→positive activation; 87.1% of activation from 0→CI2/3; direct 0→CI3 positive and observer/site robust.
-2. **Spatial depth** — excess begins at third-and-later occupied sites; 97.3% of that coefficient is carried by CI2/3.
-3. **Exact higher-order coherence** — after exactly fixing target-new taxon number and total incidence within pair and direction, rain advantage still predicts excess within-taxon concentration.
-4. **Robustness/falsification** — same-observer + same-SiteID, cross-fit species response, strictly-prior site history, dry persistence and the final held-out rain × history gate all fail to reproduce the higher-order concentration.
-5. **Historical placement** — within the same pair and taxon, previously strong physical sites preferentially host later wet-state strong chorusing; the targeting strengthens toward the survey closer to rain.
-6. **Breadth** — higher-order contributions are diffuse across taxa and all 21 leave-one-state-out estimates retain positive 95% confidence intervals, while state-specific effects remain heterogeneous.
+2. **Spatial depth** — the second occupied site is ordinary; the excess begins at third-and-later sites and is 97.3% CI2/3.
+3. **Principal spatial comparator** — cross-fit species response + strictly-prior SiteID history + dry persistence predicts 1.353 versus 1.650 observed (P = 0.000999).
+4. **Stronger sensitivity** — adding a held-out rain × history gate predicts 1.332 and remains insufficient (P = 0.000999).
+5. **Historical placement** — prior strong physical SiteIDs preferentially host later wet strong chorus within the same pair and taxon; targeting strengthens toward rain.
+6. **Breadth with heterogeneity** — contributions are diffuse across taxa and robust to state omission, while state-specific effects vary strongly.
+7. **Confirmation status** — cross-fitting prevents route leakage but is not independent confirmation; no untouched NAAMP confirmation partition remains. Prospective external replication is required.
 
 ## Inferential boundaries
 
