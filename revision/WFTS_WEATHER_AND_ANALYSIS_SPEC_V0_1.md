@@ -134,6 +134,8 @@ For a focal pair, use only eligible runs in the same traditional route and surve
 
 Pairs with no strictly-prior eligible run are excluded from the principal confirmatory analysis.
 
+A prior run contributes to the historical propensity only when at least **8 of the 10 focal physical SiteIDs** are present in that prior run, matching the frozen NAAMP prior-site implementation.
+
 No future run may contribute to the historical propensity.
 
 ## 8. Frog matrix
@@ -257,7 +259,28 @@ Only after the primary endpoint is calculated:
 
 None can rescue a failed primary replication.
 
-## 16. Data provenance
+## 16. Outcome-blind structural preflight
+
+Before `taxon_key` or `call_index` is parsed, run:
+
+`scripts/wfts/preflight_wfts_structure.py`
+
+The preflight may parse only:
+- route/station identity;
+- survey period/year/date;
+- precomputed weather covariates;
+- physical SiteID.
+
+It records full-file SHA256 digests but does not parse response columns.
+
+The confirmatory script must refuse to run unless:
+- the preflight receipt reports `response_columns_read=false`;
+- the structural/coverage gate passed;
+- the runs and matrix SHA256 digests exactly match the receipt.
+
+This order is part of the frozen confirmatory design.
+
+## 17. Data provenance
 
 On receipt of WFTS data, before endpoint calculation record:
 - exact file names;
@@ -273,7 +296,7 @@ On receipt of WFTS data, before endpoint calculation record:
 
 Schema/missingness may determine structural eligibility but must not be used to select ecologically favorable subsets.
 
-## 17. Outcome-blind exclusions
+## 18. Outcome-blind exclusions
 
 Allowed exclusions:
 - nontraditional survey types;
@@ -291,7 +314,7 @@ Not allowed:
 - changing the prior-history window;
 - redefining route-new taxa after inspection.
 
-## 18. Interpretation
+## 19. Interpretation
 
 A PASS supports transferability of **within-taxon multi-site concentration** to an external Wisconsin dataset with closely aligned protocol.
 
