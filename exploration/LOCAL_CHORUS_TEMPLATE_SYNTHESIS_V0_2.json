@@ -1,6 +1,6 @@
 {
-  "analysis": "frogcs_local_chorus_template_synthesis_v0_2",
-  "status": "exploratory_synthesis_not_submission_authority",
+  "analysis": "frogcs_local_chorus_template_synthesis_v0_3",
+  "status": "exploratory_synthesis_mechanism_escalation_stopped",
   "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
   "core_interpretation": {
     "concise": "Recent rain acts as a temporal gate on a persistent, species-specific local chorus template: previously silent species x site cells reappear disproportionately at sites where that species has chorused before, often reaching overlapping or full chorus intensity and deepening across multiple stops.",
@@ -48,7 +48,54 @@
       "seasonal_window_interaction_p": 0.11043418364941408,
       "interpretation": "Coarse temperature context and RunNumber do not formally explain the geographic heterogeneity."
     },
-    "instantaneous_vpd_vs_accumulated_rain": "pending NAAMP_HYDRIC_CUE_DISCRIMINATION_V0_1"
+    "instantaneous_vpd_vs_accumulated_rain": {
+      "status": "completed",
+      "pairs": 4108,
+      "routes": 564,
+      "classification": "accumulated_hydric_over_instantaneous_vpd",
+      "strong_score": {
+        "rain72_beta": 0.7292071664806887,
+        "rain72_ci95": [
+          0.37717654926053057,
+          1.0812377837008469
+        ],
+        "vpd_relief_beta": 0.0696163917771675,
+        "vpd_relief_ci95": [
+          -0.349345152958448,
+          0.488577936512783
+        ],
+        "days_since_rain_beta": 1.3222730611108884,
+        "days_since_rain_ci95": [
+          0.16682166893570027,
+          2.4777244532860765
+        ]
+      },
+      "full_chorus_ci3": {
+        "rain72_beta": 0.15374559933369175,
+        "rain72_ci95": [
+          0.06515236093848169,
+          0.2423388377289018
+        ],
+        "vpd_relief_beta": 0.042234403977387105,
+        "vpd_relief_ci95": [
+          -0.0612103774541814,
+          0.1456791854089556
+        ]
+      },
+      "robust_same_observer_physical_stop": {
+        "rain72_beta": 0.7054910415066867,
+        "rain72_ci95": [
+          0.2826551299523181,
+          1.1283269530610553
+        ],
+        "vpd_relief_beta": 0.0018768477515372947,
+        "vpd_relief_ci95": [
+          -0.5161503594161806,
+          0.5199040549192552
+        ]
+      },
+      "interpretation": "Accumulated antecedent rainfall, not survey-time VPD/RH, carries the independent hydric signal. This favors a persistent hydric/breeding-site opportunity over a purely instantaneous atmospheric hydration cue, without identifying water level or causal mediation."
+    }
   },
   "chorus_activation": {
     "strong_ci2_3": {
@@ -260,7 +307,8 @@
     "prior_local_memory_null": "rejected; local memory alone insufficient",
     "joint_crossfit_species_plus_local_memory_null": "rejected at Monte Carlo P=0.000999",
     "crossfit_rain_by_local_memory_gating_null": "rejected at Monte Carlo P=0.000999",
-    "decision_tree_stop": "Stop lower-level mechanism-null escalation. Available observational data identify structured state dependence and local reactivation, but do not resolve a unique process generating the complete four-component boundary geometry."
+    "decision_tree_stop": "Stop lower-level mechanism-null escalation. Available observational data identify structured state dependence and local reactivation, but do not resolve a unique process generating the complete four-component boundary geometry.",
+    "final_stop_reason": "Even cross-fitted species shifts + strictly prior local memory + a global rain-by-memory gating coefficient fail to reproduce the full four-component allocation (Monte Carlo P=0.000999). Per the fixed mechanism decision tree, lower-level null escalation stops here."
   },
   "external_generality": {
     "NAAMP_domain": "Strong activation and local-template effects are robust across leave-one-state-out/route-split diagnostics, with genuine state heterogeneity in effect size.",
@@ -268,10 +316,8 @@
     "direct_external_matrix_replication": "not available from audited public PAM datasets",
     "authorized_wording": "general within the sampled NAAMP domain; cross-continental universality not established"
   },
-  "current_best_mechanistic_hypothesis": "Accumulated recent rainfall acts as a temporal release signal on a persistent, spatially localized species x site chorus template. The released taxa often reach overlapping/full chorus intensity and expand to third and later stops. The template likely combines species-specific local population recurrence and/or fine-scale habitat matching; the available data cannot distinguish those two sources or fully reproduce the original matrix geometry.",
-  "pending": [
-    "NAAMP_HYDRIC_CUE_DISCRIMINATION_V0_1: instantaneous VPD/RH versus accumulated 72 h rainfall."
-  ],
+  "current_best_mechanistic_hypothesis": "Accumulated rainfall over the preceding 1-3 days acts as a temporal release signal on a persistent, spatially localized species x SiteID chorus template. The same species preferentially reactivates at sites where it has chorused before, with strength decaying over kilometers and apparently over years. Reactivated taxa often reach overlapping/full chorus intensity and deepen to third and later occupied stops. Instantaneous VPD/RH, current light rain, coarse NWI hydroperiod/system type, simple social attraction, and coarse temperature/season gating do not explain the pattern. The latent template likely reflects persistent local populations and/or species-specific fine-scale breeding habitat, which the available observational data cannot separate.",
+  "pending": [],
   "prohibited_interpretations": [
     "literal colonization/extinction",
     "continuous occupancy",
@@ -280,5 +326,10 @@
     "causal rainfall mediation",
     "unique hydrological or physiological mediator",
     "universal rule outside the sampled NAAMP domain"
+  ],
+  "next_data_needed": [
+    "Survey-night or antecedent local hydrology: pond depth/inundation, soil moisture, hydroperiod dynamics at physical SiteIDs.",
+    "Independent multi-year PAM with fixed multiple recorders and complete detection/nondetection effort to test the local-template rule outside NAAMP.",
+    "Demographic/genetic or repeated occupancy data if the goal is to distinguish persistent local populations from recurring species-specific habitat use."
   ]
 }
