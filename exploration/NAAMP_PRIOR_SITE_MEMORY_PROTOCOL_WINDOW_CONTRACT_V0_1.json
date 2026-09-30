@@ -1,0 +1,22 @@
+{
+  "analysis": "naamp_prior_site_memory_protocol_window_v0_1",
+  "status": "post-readback protocol robustness fixed before endpoint",
+  "question": "Does prior-only species x SiteID memory targeting persist when the paired comparison is forced to cross outside the NAAMP 0-3-day post-rain target window?",
+  "source_analysis": "Exactly NAAMP_PRIOR_SITE_MEMORY_OPPORTUNITY_V0_1.",
+  "sample": {
+    "base": "Physically stable pairs with prior-only candidate pool and >=5 candidate cells in both prior-same-site and prior-route-only groups.",
+    "primary_restriction": "dry_days_since_rain >=4, so the drier survey lies outside the 0-3 day target window.",
+    "stricter_secondary": "wet_days_since_rain >=4 as well, so both surveys lie outside the 0-3 day window."
+  },
+  "model": "Unchanged weighted model: CI3 same-site minus route-only rate difference ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber; opportunity weights; route-clustered covariance.",
+  "primary_gate": ">=500 pairs and >=150 routes.",
+  "primary_rule": "rain_contrast coefficient >0 with complete 95% CI >0.",
+  "stricter_secondary": "Report if >=100 pairs and >=75 routes; no success gate.",
+  "same_observer": "Apply the primary restriction to same-observer pairs and report if >=350 pairs and >=125 routes; directional sensitivity only.",
+  "interpretation": [
+    "Support shows rain-selective local-memory targeting is not restricted to comparisons wholly inside the programme's 0-3-day post-rain scheduling window.",
+    "This does not remove all survey-scheduling confounding or establish randomized rainfall.",
+    "No continuous occupancy, biological memory, individual fidelity, or reproductive-success claim."
+  ],
+  "retuning_after_readback": false
+}
