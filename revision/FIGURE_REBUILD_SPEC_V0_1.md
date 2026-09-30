@@ -55,43 +55,61 @@ Show observed rainfall coefficients:
 
 Overlay κ=2 uniform and a=0.75 persistence-preserving 95% null ranges.
 
-**B. Higher-order conditional concentration.**
-Explain the endpoint visually:
-- for each route-new taxon, e = occupied stops − 1
-- higher-order mass = choose(e,2)
-- k=2 → 0; k=3 → 1; k=4 → 3; k=5 → 6
+**B. Exact first-order-conditioned higher-order coherence.**
+Make this the primary panel.
 
-Plot:
-- observed higher-order β = 1.524
-- uniform-null prediction = 1.138
-- persistence-null prediction = 0.784
-- cross-fit species-response prediction = 1.198
-- joint cross-fit species + strictly-prior site-history + dry-persistence prediction (2,916-pair subset): 1.353 vs 1.650 observed
-- all conditional upper-tail P = 0.000999
+For each target direction:
+- N = number of target-new taxa;
+- K = total incidences across those taxa;
+- H = sum choose(k_i−1,2).
 
-Add a robustness inset:
-- same observer + same physical SiteID: observed higher-order β = 1.817
-- uniform prediction = 1.400; persistence prediction = 0.918
-- both P = 0.000999
+Plot the within-pair directional coefficients after exact conditioning on N and K:
+- raw excess β = **0.2439** (0.1474–0.3404)
+- standardized excess β = **0.09075** (0.05946–0.12203)
+- same-observer + same-SiteID raw excess β = **0.2543** (0.1375–0.3712)
 
-Annotate prominently:
-**conditions on both recruited-taxon count and total extra-stop spread.**
+Add a schematic showing that identical N and K can yield:
+- shallow allocation across taxa → low H
+- concentrated third+/fourth+ participation within the same taxon → high H
 
-Add two stronger-null markers:
-- cross-fit species-response null: observed 1.524 vs predicted 1.198; conditional residual 0.326, P=0.000999;
-- joint cross-fit species + strictly-prior SiteID history + dry persistence (2,916-pair subset): observed 1.650 vs predicted 1.353; residual 0.297, P=0.000999.
+Label prominently:
+**exactly conditions on recruited-taxon number and total route-new incidence within each pair; no simulated-cloud extrapolation.**
 
-**C. Route-topology corroboration.**
+**C. Strong-null falsification of higher-order concentration.**
+Plot observed and null-predicted higher-order β:
+
+Full 4,236 pairs:
+- observed = **1.524**
+- uniform prediction = **1.138**, residual P=0.000999
+- persistence prediction = **0.784**, residual P=0.000999
+- cross-fit species-response prediction = **1.198**, residual P=0.000999
+
+Strictly-prior 2,916-pair subset:
+- observed = **1.650**
+- cross-fit species + prior SiteID history + dry persistence prediction = **1.353**, residual P=0.000999
+- final held-out species + prior history + dry persistence + rain×history gate prediction = **1.332**, residual P=0.000999
+
+Robustness inset:
+- same observer + same SiteID observed = **1.817**
+- uniform prediction = **1.400**
+- persistence prediction = **0.918**
+- both residual P=0.000999
+
+Message:
+**Species-level rain sensitivity, historical site propensity and one held-out rain×history gate still do not reproduce the within-taxon concentration.**
+
+**D. Route-topology and chorus-strength corroboration.**
 Show adjacent-stop-link rainfall coefficient:
 - β = 0.419
 - conditional on total extra-stop spread: P=0.000999 under both primary nulls.
 
 Make clear that StopNumber adjacency is route topology, not exact geographic distance.
 
-**D. Calling strength within third+ depth.**
-- CI2/3 share of third+ coefficient = 97.3%
-- CI1-only remainder = 2.7%
-- same-observer + same-SiteID CI2/3 share = 95.4%
+Within the same panel or as an inset, show:
+- adjacent-stop-link β = 0.419; conditional P=0.000999 under both primary nulls;
+- CI2/3 share of third+ coefficient = 97.3%;
+- CI1-only remainder = 2.7%;
+- same-observer + same-SiteID CI2/3 share = 95.4%.
 
 ### Source
 - `exploration/route-new-spatial-depth-v1/exploration/run_naamp_route_new_spatial_depth.py`
@@ -101,7 +119,7 @@ Make clear that StopNumber adjacency is route topology, not exact geographic dis
 - `exploration/spatial-depth-chorus-v1/exploration/run_naamp_spatial_depth_chorus_decomposition.py`
 
 ### Message printed in figure
-**At the same amount of first-order recruitment and spread, wet-state activity remains too deeply concentrated within the same recruited taxa even after cross-fitted species rainfall sensitivity and strictly-prior site history are added.**
+**Even after recruited-taxon number and total incidence are fixed exactly, rain-associated activity is unusually concentrated within the same taxa at third-and-later sites; transferable species response, prior site history and a held-out rain×history gate do not reproduce that concentration.**
 
 ---
 
