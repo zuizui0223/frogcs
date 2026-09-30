@@ -1,7 +1,8 @@
 # Integrated release candidate RC1
 
 **Scientific release branch:** `release/jae-higher-order-rc1`  
-**Submission candidate branch:** `submission/jae-higher-order-v1`
+**Submission candidate branch:** `submission/jae-higher-order-v1`  
+**Frozen RC1 commit:** `c5d40b6302c8166e965b213757328501de685fb9`
 
 At creation, both refs were byte-identical to:
 
@@ -41,3 +42,18 @@ Allowed on the revision track:
 ## Original submission authority
 
 The earlier frozen boundary-allocation submission remains separately preserved on `main` and its release/submission branches. RC1 does not overwrite that history.
+
+
+## Validated anonymous bundle for RC1
+
+Workflow run: `36743103276`  
+Artifact: `frogcs-jae-pulse-template-scientific-submission`  
+Artifact ID: `11111850829`  
+Artifact size: **679,822 bytes**  
+Artifact digest: `sha256:d0d9563ef8f54a1eca80d86b513eb7860d249d1e870bbec0f17bf5f8452ea38f`
+
+The workflow run reports the frozen source head as:
+
+`c5d40b6302c8166e965b213757328501de685fb9`
+
+At the time this manifest was updated, the revision track was **3 commit(s) ahead** of RC1 and RC1 remained unchanged. Those later revision-only commits add archive tooling/documentation rather than alter RC1.
