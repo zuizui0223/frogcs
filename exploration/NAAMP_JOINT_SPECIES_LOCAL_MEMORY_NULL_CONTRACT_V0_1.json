@@ -56,5 +56,10 @@
     "No individual movement, continuous occupancy, reproductive success or causal rainfall claim is authorized.",
     "No RC11 submission change is authorized."
   ],
-  "retuning_after_readback": false
+  "retuning_after_readback": false,
+  "same_subset_diagnostics": {
+    "memory_only_reference": "Re-run the exact prior-local-memory + a=0.75 dry-persistence null on the same subset and require numerical agreement with NAAMP_PRIOR_LOCAL_MEMORY_NULL_V0_1 within Monte Carlo tolerance; it is descriptive because its endpoint has already been read.",
+    "species_nonlocal_prior": "Collapse each pair's prior local probability matrix to its species-wise mean across the ten focal SiteIDs, replicate that mean across stops, apply the same a=0.75 dry anchor and the same cross-fit species shift, then magnitude-match. This preserves prior species prevalence but removes local SiteID information.",
+    "interpretation": "If the true joint null fits while the species-nonlocal-prior diagnostic rejects, local physical-site history contributes information beyond species-specific rainfall sensitivity and prior route-level prevalence."
+  }
 }
