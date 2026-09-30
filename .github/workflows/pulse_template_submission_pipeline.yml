@@ -1,0 +1,232 @@
+name: pulse-template submission pipeline
+
+on:
+  push:
+    branches:
+      - revision/pulse-template-synthesis-v1
+    paths:
+      - "paper/manuscript_pulse_template_v0_3.md"
+      - "paper/supporting_information_pulse_template_v0_1.md"
+      - "figures_pulse_template/**"
+      - "revision/INTEGRATED_RESULTS_V0_1.json"
+      - "revision/audit_pulse_template_manuscript.py"
+      - "scripts/submission/build_jae_anonymous_docx.py"
+      - "scripts/submission/render_submission_metadata.py"
+      - "submission/pulse_template/**"
+      - "paper/title_page_pulse_template.template.md"
+      - ".github/workflows/pulse_template_submission_pipeline.yml"
+  workflow_dispatch:
+    inputs:
+      build_private_bundle:
+        description: Build private-metadata integrated JAE bundle
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  scientific-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install build dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0
+      - name: Run integrated manuscript QA
+        run: python revision/audit_pulse_template_manuscript.py
+      - name: Build anonymous manuscript and SI
+        run: |
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_3.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information_pulse_template_v0_1.md --output build/Supporting_Information.docx
+      - name: Verify JAE formatting and anonymity
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          from xml.etree import ElementTree as ET
+          import re
+
+          manuscript_md=Path("paper/manuscript_pulse_template_v0_3.md").read_text(encoding="utf-8")
+          si_md=Path("paper/supporting_information_pulse_template_v0_1.md").read_text(encoding="utf-8")
+          abstract=manuscript_md.split("## Abstract",1)[1].split("## Keywords",1)[0]
+          keywords=manuscript_md.split("## Keywords",1)[1].split("## Introduction",1)[0].strip()
+          manuscript_words=len(manuscript_md.split())
+          abstract_words=len(abstract.split())
+
+          assert manuscript_words <= 8500, manuscript_words
+          assert abstract_words <= 350, abstract_words
+          keylist=[x.strip() for x in keywords.split(";") if x.strip()]
+          assert len(keylist) <= 8, keylist
+          assert keylist == sorted(keylist, key=str.lower), keylist
+
+          reviewer_text=(manuscript_md+"\n"+si_md).lower()
+          for token in ["github.com/zuizui0223","zhang ruiqi","張瑞琪","tohoku university","東北大学"]:
+              assert token not in reviewer_text, token
+
+          main=Path("build/Manuscript.docx")
+          si=Path("build/Supporting_Information.docx")
+          assert main.stat().st_size > 10000 and si.stat().st_size > 10000
+
+          W="{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+          def inspect_docx(path):
+              with ZipFile(path) as z:
+                  docb=z.read("word/document.xml")
+                  stylesb=z.read("word/styles.xml")
+                  core=z.read("docProps/core.xml").decode("utf-8")
+                  footer=z.read("word/footer1.xml").decode("utf-8")
+              root=ET.fromstring(docb)
+              styles=ET.fromstring(stylesb)
+              sect=root.find(".//"+W+"sectPr")
+              assert sect is not None
+              ln=sect.find(W+"lnNumType")
+              assert ln is not None and ln.get(W+"countBy")=="1" and ln.get(W+"restart")=="continuous"
+              normal=None
+              for st in styles.findall(W+"style"):
+                  if st.get(W+"styleId")=="Normal":
+                      normal=st
+                      break
+              assert normal is not None
+              spacing=normal.find(W+"pPr/"+W+"spacing")
+              assert spacing is not None and spacing.get(W+"line")=="480"
+              assert "PAGE" in footer
+              assert not re.search(r"<dc:creator>[^<]+</dc:creator>",core)
+              return docb.decode("utf-8")
+
+          doc=inspect_docx(main)
+          sidoc=inspect_docx(si)
+          for token in ["higher-order spatial coherence","species-specific site recurrence","0.244","0.151","1.332"]:
+              assert token.lower() in doc.lower(), token
+          assert "higher-order" in sidoc.lower()
+          assert "`" not in doc+sidoc
+
+          figs=list(Path("figures_pulse_template").glob("fig*.svg"))
+          assert len(figs)==5, [x.name for x in figs]
+
+          print({"status":"PASS","manuscript_words":manuscript_words,"abstract_words":abstract_words,"keywords":len(keylist),"main_bytes":main.stat().st_size,"si_bytes":si.stat().st_size,"figures":len(figs)})
+          PY
+      - name: Assemble anonymous scientific bundle
+        run: |
+          set -eu
+          out=build/pulse-template-scientific-submission
+          sub="$out/submission_files"
+          audit="$out/audit"
+          mkdir -p "$sub" "$audit"
+          cp paper/manuscript_pulse_template_v0_3.md "$sub/Manuscript.md"
+          cp build/Manuscript.docx "$sub/Manuscript.docx"
+          cp paper/supporting_information_pulse_template_v0_1.md "$sub/Supporting_Information.md"
+          cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
+          cp submission/pulse_template/cover_letter.md "$sub/Cover_Letter.md"
+          cp figures_pulse_template/fig1_chorus_state_switch.svg "$sub/Figure1.svg"
+          cp figures_pulse_template/fig2_spatial_depth_strong_chorus.svg "$sub/Figure2.svg"
+          cp figures_pulse_template/fig3_higher_order_null_ladder.svg "$sub/Figure3.svg"
+          cp figures_pulse_template/fig4_historical_site_targeting.svg "$sub/Figure4.svg"
+          cp figures_pulse_template/fig5_breadth_and_heterogeneity.svg "$sub/Figure5.svg"
+          cp revision/INTEGRATED_RESULTS_V0_1.json "$audit/"
+          cp revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md "$audit/"
+          cp revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md "$audit/"
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          out=Path("build/pulse-template-scientific-submission")
+          sub=out/"submission_files"
+          for p in sub.iterdir():
+              assert not re.search(r"(RC\d+|V\d+[_\.-]?\d*)",p.name,re.I),p.name
+          rows={str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.rglob("*")) if p.is_file()}
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print({"status":"PASS","files":len(rows)})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-pulse-template-scientific-submission
+          path: build/pulse-template-scientific-submission/
+          if-no-files-found: error
+
+  private-bundle:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_private_bundle }}
+    needs: scientific-bundle
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install private-bundle dependencies
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+      - name: Materialize private metadata
+        env:
+          JAE_PULSE_TEMPLATE_METADATA_YAML: ${{ secrets.JAE_PULSE_TEMPLATE_METADATA_YAML }}
+        run: |
+          test -n "$JAE_PULSE_TEMPLATE_METADATA_YAML" || {
+            echo "Missing repository secret JAE_PULSE_TEMPLATE_METADATA_YAML" >&2
+            exit 2
+          }
+          printf '%s' "$JAE_PULSE_TEMPLATE_METADATA_YAML" > /tmp/pulse-template-metadata.yml
+      - name: Validate and render private metadata
+        run: |
+          python scripts/submission/render_submission_metadata.py --metadata /tmp/pulse-template-metadata.yml --strict --stage initial --outdir build/pulse-template-metadata
+      - name: Guard integrated title
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          expected="Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
+          x=Path("build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          assert expected in x
+          PY
+      - name: Build anonymous DOCX files
+        run: |
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_3.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information_pulse_template_v0_1.md --output build/Supporting_Information.docx
+      - name: Check combined JAE word count
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          main=Path("paper/manuscript_pulse_template_v0_3.md").read_text(encoding="utf-8")
+          title=Path("build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
+          count=len(main.split())+len(title.split())
+          assert count <= 8500, f"combined main + title-page word count {count} exceeds 8500"
+          print({"combined_word_count":count})
+          PY
+      - name: Assemble private integrated bundle
+        run: |
+          set -eu
+          out=build/pulse-template-initial-submission
+          sub="$out/submission_files"
+          audit="$out/audit"
+          mkdir -p "$sub" "$audit"
+          cp paper/manuscript_pulse_template_v0_3.md "$sub/Manuscript.md"
+          cp build/Manuscript.docx "$sub/Manuscript.docx"
+          cp paper/supporting_information_pulse_template_v0_1.md "$sub/Supporting_Information.md"
+          cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
+          cp build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md "$sub/Title_Page.md"
+          cp submission/pulse_template/cover_letter.md "$sub/Cover_Letter.md"
+          cp figures_pulse_template/fig1_chorus_state_switch.svg "$sub/Figure1.svg"
+          cp figures_pulse_template/fig2_spatial_depth_strong_chorus.svg "$sub/Figure2.svg"
+          cp figures_pulse_template/fig3_higher_order_null_ladder.svg "$sub/Figure3.svg"
+          cp figures_pulse_template/fig4_historical_site_targeting.svg "$sub/Figure4.svg"
+          cp figures_pulse_template/fig5_breadth_and_heterogeneity.svg "$sub/Figure5.svg"
+          cp build/pulse-template-metadata/JAE_PORTAL_FIELDS.json "$audit/"
+          cp build/pulse-template-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
+          cp build/pulse-template-metadata/CITATION.cff "$audit/"
+          cp revision/INTEGRATED_RESULTS_V0_1.json "$audit/"
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          out=Path("build/pulse-template-initial-submission")
+          sub=out/"submission_files"
+          for p in sub.iterdir():
+              assert not re.search(r"(RC\d+|V\d+[_\.-]?\d*)",p.name,re.I),p.name
+          rows={str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.rglob("*")) if p.is_file()}
+          (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print({"status":"PASS","files":len(rows)})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-jae-pulse-template-initial-submission
+          path: build/pulse-template-initial-submission/
+          if-no-files-found: error
