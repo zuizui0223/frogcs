@@ -1049,7 +1049,9 @@ The prefixed decision tree required stopping after rejection of the held-out rai
 
 The authorized interpretation is therefore **structured state-dependent re-expression with an unresolved lower-level generator**, not identification of a unique mechanism.
 
-## S16. Taxonomic and geographic breadth of strong activation
+## S16. Taxonomic and geographic breadth
+
+### S16.1 Strong activation
 
 Strong activation was distributed across the species pool:
 
@@ -1071,6 +1073,44 @@ State-specific effects were nevertheless heterogeneous:
 - state-slope SD: **3.46**.
 
 The result is therefore programme-scale robust but not spatially homogeneous.
+
+### S16.2 Higher-order coherence across taxa
+
+The higher-order coefficient was decomposed by taxon using the same residualized matched design. The concentration thresholds were reused unchanged from the earlier route-new-spread audit.
+
+Results:
+- taxa represented: **53**;
+- taxa with positive higher-order coefficients: **25**;
+- taxa contributing at least 1% of positive mass: **19**;
+- largest positive contributor: **18.8%**;
+- top five contributors: **54.2%**;
+- HHI of positive contribution shares: **0.0855**;
+- minimum leave-one-taxon-out total β: **1.2087**;
+- all leave-one-taxon-out totals remained positive.
+
+The prefixed classification was **diffuse taxonomic contribution**. This does not imply that every taxon responds positively or shares one mechanism; it shows only that the pooled higher-order result does not require one or a few taxa.
+
+### S16.3 Higher-order geographic generality
+
+The unchanged higher-order rainfall model was refit after omitting each of the 21 sampled states.
+
+Full model:
+- β = **1.5240**;
+- 95% CI **0.5351–2.5128**;
+- P = **0.00252**.
+
+Leave-one-state-out audit:
+- β range: **0.9670–1.7753**;
+- minimum 95% CI lower bound: **0.3973**.
+
+The prefixed classification was **strong PASS**: every leave-one-state-out coefficient and 95% CI remained positive.
+
+State-specific estimates remained heterogeneous:
+- estimable states: **17**;
+- positive point estimates: **14/17**;
+- wholly positive 95% CIs: **2/17**.
+
+Thus no single sampled state is required for the pooled higher-order association, but effect strength is not geographically homogeneous.
 
 ## S17. Integrated provenance hierarchy
 
@@ -1094,6 +1134,10 @@ Includes:
 - route-new spatial-depth decomposition;
 - conditional extra-stop coherence and adjacent-stop linkage;
 - higher-order within-taxon spatial coherence conditional on both recruitment and total spread;
+- exact conditional directional higher-order validation;
+- same-observer + same-physical-site higher-order robustness;
+- cross-fit species-response and strictly-prior-history higher-order falsification;
+- higher-order taxonomic and geographic generality audits;
 - recurrent-activation decomposition;
 - direct full-chorus recurrence;
 - within-pair × species historical-site targeting;
