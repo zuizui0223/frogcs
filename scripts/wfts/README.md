@@ -8,11 +8,11 @@ Primary inputs are canonical CSV files defined by:
 
 Scientific specification:
 
-`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_2.md`
+`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_3.md`
 
 Main analysis:
 
-`run_wfts_confirmatory_analysis_v0_2.py`
+`run_wfts_confirmatory_analysis_v0_3.py`
 
 The script implements:
 - adjacent-year pairing within traditional RouteID × SurveyPeriod;
@@ -35,3 +35,8 @@ Do not change endpoint/comparator terms after WFTS outcome readback. Any necessa
 `run_wfts_confirmatory_analysis_v0_1.py` / weather spec v0.1 are retained only as pre-data development history.
 
 v0.2 is the frozen implementation for real WFTS confirmation. It changes candidate support before response-data access so each RouteID × SurveyPeriod simulates only taxa observed somewhere in that route-period time series, matching the NAAMP support rule while retaining strictly-prior probability weights.
+
+
+## v0.3 safeguard
+
+The structural coverage gate is evaluated before the analysis loads `taxon_key` or `call_index`. If the route/pair/fold gate fails, the receipt is written and the program exits without opening the frog-response endpoint.
