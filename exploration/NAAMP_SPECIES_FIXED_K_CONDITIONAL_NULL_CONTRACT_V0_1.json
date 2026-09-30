@@ -1,0 +1,42 @@
+{
+  "analysis": "naamp_species_fixed_k_conditional_null_v0_1",
+  "status": "post_readback_mechanism-localization null fixed before endpoint",
+  "question": "Does the original four-component rainfall-associated matrix geometry remain exceptional once the wet-survey identity of active species and each species' number of occupied stops are fixed exactly?",
+  "population": "Frozen 4,236 NAAMP wetter-drier matched pairs.",
+  "conditioning": {
+    "dry_matrix": "Observed dry species x stop matrix is fixed.",
+    "wet_species_identity": "Exactly the observed set of wet-active species is fixed.",
+    "wet_species_stop_count": "For every species, k_s = observed number of wet occupied stops is fixed exactly."
+  },
+  "placement_nulls": {
+    "history_weighted": {
+      "baseline": "Existing kappa=2 dry-history species x stop probabilities.",
+      "exact_conditional_sampling": "For each species, sample exactly k_s stops from the conditional Bernoulli distribution. A k-stop subset has probability proportional to the product of baseline odds p/(1-p) over selected stops."
+    },
+    "persistence_weighted": {
+      "baseline": "p_anchor = 0.25 * history_probability + 0.75 * observed dry cell state, clipped to (0,1).",
+      "exact_conditional_sampling": "Same exact k_s-conditioned subset distribution using anchor odds."
+    }
+  },
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "primary_test": "Same four-component rainfall-coefficient Mahalanobis omnibus used by the existing activation nulls.",
+  "secondary": [
+    "Boundary-crossing share",
+    "taxonomic-minus-spatial share",
+    "component shares"
+  ],
+  "decision": {
+    "both_nonrejected": "Species-level activation depth and composition are sufficient to reproduce the tested matrix geometry; the unexplained structure localizes to how many stops each species activates, not to special stop placement.",
+    "history_rejected_persistence_nonrejected": "Species-level activation depth plus immediate dry-cell persistence is sufficient.",
+    "both_rejected": "Even exact species-specific wet stop counts are insufficient; cross-species or stop-placement coordination remains."
+  },
+  "interpretation": [
+    "This is a strongly response-conditioned diagnostic, not a predictive null and not confirmatory evidence.",
+    "Failure to reject means sufficiency under the conditioned model, not a unique causal mechanism.",
+    "No individual movement, occupancy, abundance, reproductive success or causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}
