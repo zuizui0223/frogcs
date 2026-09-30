@@ -3,7 +3,7 @@ from pathlib import Path
 import re
 
 ROOT=Path(__file__).resolve().parents[1]
-P=ROOT/"paper"/"manuscript_pulse_template_v0_2.md"
+P=ROOT/"paper"/"manuscript_pulse_template_v0_3.md"
 text=P.read_text()
 
 TITLE="# Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence"
@@ -16,6 +16,7 @@ required=[
     "1.817",
     "0.326",
     "0.297",
+    "1.332",
     "β = 0.244",
     "0.254",
     "25 had positive contributions",
@@ -26,6 +27,8 @@ required=[
     "Brooke et al., 2000",
     "Trenham et al., 2003",
     "post-opening and exploratory",
+    "higher-order spatial organization",
+    "recurrent species × site",
     "(Fig. 1)",
     "(Figs. 2–3)",
     "(Fig. 4)",
@@ -41,6 +44,7 @@ for x in [
     "RC11",
     "first demonstration",
     "first evidence",
+    "rain causes",
 ]:
     assert x not in text, f"legacy/overclaim token present: {x}"
 
@@ -49,24 +53,29 @@ for n in range(1,6):
 
 assert "not literal synchrony" in text
 assert "not abundance, occupancy, colonization, spawning or reproductive success" in text
-assert "not proposed here as universal" in text
+assert "not proposed as universal" in text
 assert "Universality of the full mechanism remains unestablished" in text
 
-# Abstract must foreground the new biological hierarchy.
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
 abstract_words=len(abstract.split())
 assert abstract_words <= 350, f"abstract exceeds JAE 350-word limit: {abstract_words}"
 for x in [
-    "cross-site synchrony are well known in frogs",
+    "structured community-state transition",
     "higher-order within-taxon structure",
     "same-observer + same-site pairs",
-    "species rainfall sensitivity",
+    "cross-fitted species rainfall sensitivity",
     "historically strong sites",
+    "lower-level biological generator remains unresolved",
 ]:
     assert x in abstract, f"abstract missing: {x}"
 
-# Every bibliography item remains represented once at minimum.
+# The Discussion must foreground the positive ecological result before null failures.
+discussion=text.split("## Discussion",1)[1].split("## Data Availability",1)[0]
+assert discussion.index("higher-order spatial coherence") < discussion.index("First-order species and site processes")
+assert "The inference is therefore not that “other factors exist,”" in discussion
+
+# Every key bibliography item remains represented.
 for surname in ["Brooke","Brodie","Kusano","Oseen","Ospina","Rush","Saenz","Sugai","Switzer","Trenham","Yang"]:
     assert re.search(rf"^{surname},", text, flags=re.M), f"missing reference: {surname}"
 
-print("pulse-template manuscript QA: PASS")
+print(f"pulse-template manuscript v0.3 QA: PASS ({abstract_words} abstract words)")
