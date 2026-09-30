@@ -810,6 +810,55 @@ The third-and-later coefficient was carried almost entirely by substantial choru
 
 CI1-only spatial deepening was not supported.
 
+### S11.3 Higher-order spatial coherence conditional on recruitment and total spread
+
+After the existing conditional-spread and third-and-later results were known, we fixed a distinct higher-order test before reading its endpoint in `NAAMP_HIGHER_ORDER_SPATIAL_COHERENCE_CONTRACT_V0_1.json`. The interpretation for both PASS and FAIL outcomes was also frozen before endpoint readback in `HIGHER_ORDER_SPATIAL_COHERENCE_DECISION_NOTE_V0_1.md`.
+
+For each route-new species occupying (k) wet stops, define (e=max(k-1,0)). We calculated
+
+`higher_order_within_species_mass = choose(e,2) = e(e-1)/2`.
+
+This statistic is zero for (k≤2) and grows convexly for (k≥3). For example, if three recruited taxa collectively contribute three extra-stop incidences, allocating them as one extra stop to each taxon gives mass 0, whereas allocating all three extra incidences to one taxon gives mass 3. Thus it distinguishes deep within-taxon concentration from the amount of recruitment or spread itself.
+
+For each primary null family, 1,000 simulated coefficient triplets were generated:
+
+1. route-new-species gain;
+2. total extra-stop incidence;
+3. higher-order within-species mass.
+
+Across the 1,000 simulations we fitted
+
+`higher_beta = intercept + b1 * new_species_beta + b2 * extra_stop_beta`.
+
+The primary statistic was the observed higher-order coefficient minus the null prediction evaluated at the observed route-new-species and extra-stop coefficients. Support required this conditional residual to exceed the upper 95% simulated residual bound under **both** null families.
+
+Observed first-order coefficients were:
+
+- route-new-species gain: **β = 0.1847**;
+- extra-stop incidence gain: **β = 0.6043**.
+
+The observed higher-order coefficient was **β = 1.5240**.
+
+Under the κ=2 uniform-activation null:
+
+- predicted higher-order β at the observed first-order coefficients: **1.1384**;
+- observed conditional residual: **0.3856**;
+- null residual 95% interval: **−0.0984 to 0.0959**;
+- plus-one upper-tail **P = 0.000999**.
+
+Under the a=0.75 persistence-preserving null:
+
+- predicted higher-order β: **0.7836**;
+- observed conditional residual: **0.7404**;
+- null residual 95% interval: **−0.0805 to 0.0824**;
+- plus-one upper-tail **P = 0.000999**.
+
+The prefixed classification was therefore **higher-order spatial coherence supported**.
+
+A separate conditional route-topology analysis had already shown that adjacent-stop links increased with rainfall contrast (**β = 0.4194**) and remained above the upper conditional residual range under both primary nulls after conditioning on total extra-stop spread (both **P = 0.000999**).
+
+These tests establish non-independent spatial expression at the route scale. They do **not** establish literal simultaneity because stops were surveyed sequentially, nor do they identify movement, hydrological connectivity, social facilitation or a causal rainfall mechanism.
+
 ## S12. Historical recurrence of apparent wet-state recruitment
 
 ### S12.1 Route-new incidence recurrence
@@ -936,6 +985,8 @@ Includes:
 Includes:
 - direct 0→CI3 endpoint;
 - route-new spatial-depth decomposition;
+- conditional extra-stop coherence and adjacent-stop linkage;
+- higher-order within-taxon spatial coherence conditional on both recruitment and total spread;
 - recurrent-activation decomposition;
 - direct full-chorus recurrence;
 - within-pair × species historical-site targeting;
