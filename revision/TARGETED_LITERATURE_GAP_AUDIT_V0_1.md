@@ -107,3 +107,22 @@ Rainfall-sensitive calling is among the best-known features of anuran reproducti
 ## Discussion bridge to general ecology — candidate text
 
 The frog system reveals a distinction that may apply broadly to behaviourally cryptic communities. A census made during an inactive state can hide spatial structure that has not disappeared ecologically; it is simply not expressed behaviourally. A short pulse can therefore change the observed community much faster than dispersal or demographic turnover by switching recurrent species × place combinations into an active state. We describe this as a **fast environmental gate acting on a slow spatial template**. In NAAMP frogs, that template is visible as repeated strong chorusing at particular physical sites, but the same logic could apply wherever animals alternate between cryptic and conspicuous states in response to episodic environmental cues.
+
+
+## Addendum: higher-order spatial coherence after the prefixed test
+
+A targeted follow-up search was conducted after the higher-order spatial-coherence endpoint was fixed. The closest anuran "synchrony" literature mainly concerns **within-chorus call timing among individual males**: neighboring males may overlap, alternate or synchronize calls within a pond or local chorus. That literature addresses communication timing and receiver consequences, not how rainfall-associated recruitment is distributed across repeated physical breeding/listening sites at the community scale.
+
+Assemblage-wide acoustic studies sample many ponds and quantify temporal variation in calling composition or environmental drivers, but the focal response is typically site-level activity, composition or richness. They do not condition on both the number of newly recruited taxa and total extra-site spread and then test whether residual spread is unusually concentrated within the same taxa at third-and-later sites.
+
+The new prefixed higher-order test therefore sharpens the gap:
+
+> **Does an environmental pulse produce only more site-level activations, or does it create higher-order route-scale coherence by concentrating extra spatial participation within the same newly activated taxa?**
+
+Observed NAAMP higher-order within-species mass was β=1.524. At the observed route-new-species and extra-stop coefficients, the uniform-activation null predicted 1.138 and the persistence-preserving null 0.784; the conditional residual exceeded the upper 95% residual bound under both nulls (both P=0.000999).
+
+This allows a stronger novelty formulation:
+
+> **Previous frog studies establish environmental control of calling, rapid assemblage turnover, within-chorus call synchrony and breeding-site fidelity separately. Here, a repeated community matrix shows that rainfall-associated activation contains higher-order spatial dependence across sites: even at the same number of recruited taxa and the same total amount of spread, activity is unusually concentrated within the same taxa at third-and-later sites, and those strong chorus states preferentially reappear at historically used physical sites.**
+
+The term **higher-order spatial coherence** is preferred over "synchrony" because NAAMP stops were surveyed sequentially rather than simultaneously.
