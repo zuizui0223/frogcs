@@ -190,7 +190,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install private-bundle dependencies
-        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2
+        run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2 matplotlib numpy
       - name: Materialize private metadata
         env:
           JAE_PULSE_TEMPLATE_METADATA_YAML: ${{ secrets.JAE_PULSE_TEMPLATE_METADATA_YAML }}
@@ -211,6 +211,8 @@ jobs:
           x=Path("build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           assert expected in x
           PY
+      - name: Render canonical RC3 figures
+        run: python revision/build_pulse_template_figures.py
       - name: Build anonymous DOCX files
         run: |
           python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_4.md --output build/Manuscript.docx
