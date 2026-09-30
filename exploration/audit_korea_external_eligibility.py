@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-import hashlib, io, json
+import hashlib, io, json, re
 from pathlib import Path
+from urllib.parse import urljoin
 import pandas as pd
 import requests
 
@@ -14,11 +15,36 @@ TOKENS=("site","year","date","time","lat","lon","coord","rain","precip","tempera
 
 def fetch():
     errors=[]
-    for url in URLS:
+    # Prefer public archival mirrors over the PeerJ page, which can be bot-protected.
+    xml_urls=[
+      "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6151124/fullTextXML",
+      "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC6151124/unicode",
+    ]
+    archive_candidates=[]
+    for xu in xml_urls:
+        try:
+            xr=requests.get(xu,headers={"User-Agent":"frogcs-korea-audit/0.1"},timeout=90)
+            if xr.status_code==200:
+                xt=xr.text
+                for href in re.findall(r'(?:xlink:href|href)=["\\\']([^"\\\']+)["\\\']',xt,re.I):
+                    if any(x in href.lower() for x in ("5568","supp","xlsx")):
+                        archive_candidates.extend([
+                          urljoin("https://pmc.ncbi.nlm.nih.gov/articles/PMC6151124/",href),
+                          urljoin(xu,href),
+                        ])
+        except Exception as e:
+            errors.append({"url":xu,"error":f"{type(e).__name__}: {e}"})
+    archive_candidates += [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6151124/bin/peerj-06-5568-s001.xlsx",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6151124/bin/peerj-06-5568-s001.xlsx",
+      "https://pmc.ncbi.nlm.nih.gov/articles/instance/6151124/bin/peerj-06-5568-s001.xlsx",
+    ]
+    for url in list(dict.fromkeys(archive_candidates+URLS)):
         try:
             r=requests.get(url,headers={"User-Agent":"Mozilla/5.0 frogcs-korea-audit/0.1"},timeout=90,allow_redirects=True)
             b=r.content
-            if r.status_code==200 and (b[:2]==b"PK" or "spreadsheet" in (r.headers.get("content-type") or "").lower() or "excel" in (r.headers.get("content-type") or "").lower()):
+            ctype=(r.headers.get("content-type") or "").lower()
+            if r.status_code==200 and (b[:2]==b"PK" or "spreadsheet" in ctype or "excel" in ctype):
                 return b,url,r.url,r.headers.get("content-type")
             errors.append({"url":url,"status":r.status_code,"final":r.url,"content_type":r.headers.get("content-type"),"bytes":len(b)})
         except Exception as e:
