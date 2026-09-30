@@ -348,7 +348,9 @@ Oseen, K. L., & Wassersug, R. J. (2002). Environmental factors influencing calli
 
 Ospina, O. E., Villanueva-Rivera, L. J., Corrada-Bravo, C. J., & Aide, T. M. (2013). Variable response of anuran calling activity to daily precipitation and temperature: implications for climate change. *Ecosphere*, 4, 47. https://doi.org/10.1890/ES12-00258.1
 
-Rowley, J. J. L., & Callaghan, C. T. (2020). The FrogID dataset: expert-validated occurrence records of Australia's frogs collected by citizen scientists. *ZooKeys*, 912, 139–151. https://doi.org/10.3897/zookeys.912.38253\n\nRush, E. R., Edwards, W., Schwarzkopf, L., & Allen-Ankins, S. (2026). Automated Acoustic Recogniser Reveals Spatial Variation in Seasonal Calling of the Range-Restricted Magnificent Broodfrog (*Pseudophryne covacevichae*). *Ecology and Evolution*, 16, e74191. https://doi.org/10.1002/ece3.74191
+Rowley, J. J. L., & Callaghan, C. T. (2020). The FrogID dataset: expert-validated occurrence records of Australia's frogs collected by citizen scientists. *ZooKeys*, 912, 139–151. https://doi.org/10.3897/zookeys.912.38253
+
+Rush, E. R., Edwards, W., Schwarzkopf, L., & Allen-Ankins, S. (2026). Automated Acoustic Recogniser Reveals Spatial Variation in Seasonal Calling of the Range-Restricted Magnificent Broodfrog (*Pseudophryne covacevichae*). *Ecology and Evolution*, 16, e74191. https://doi.org/10.1002/ece3.74191
 
 Royle, J. A., & Link, W. A. (2005). A general class of multinomial mixture models for anuran calling survey data. *Ecology*, 86, 2505–2512. https://doi.org/10.1890/04-1802
 
