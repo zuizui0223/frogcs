@@ -13,7 +13,7 @@ required=[
     "4,236",
     "higher-order within-species mass",
     "β = 1.524",
-    "β = 1.817",
+    "1.817",
     "0.326",
     "0.297",
     "25 had positive contributions",
