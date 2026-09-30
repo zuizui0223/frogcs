@@ -52,11 +52,13 @@ assert "Universality of the full mechanism remains unestablished" in text
 
 # Abstract must foreground the new biological hierarchy.
 abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
+abstract_words=len(abstract.split())
+assert abstract_words <= 350, f"abstract exceeds JAE 350-word limit: {abstract_words}"
 for x in [
     "cross-site synchrony are well known in frogs",
     "higher-order within-taxon structure",
     "same-observer + same-site pairs",
-    "species-specific rainfall responses",
+    "species rainfall sensitivity",
     "historically strong sites",
 ]:
     assert x in abstract, f"abstract missing: {x}"
