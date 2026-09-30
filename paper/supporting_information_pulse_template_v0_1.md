@@ -939,6 +939,30 @@ Results:
 
 The prefixed classification was **diffuse taxonomic contribution**. This does not imply that every species responds positively or through the same mechanism; it shows that no single taxon or small set of taxa is required for the pooled higher-order coefficient.
 
+### S11.7 Geographic generality of the higher-order endpoint
+
+We applied the same leave-one-state-out decision rule used in the frozen RC11 geographic audit to the unchanged higher-order endpoint.
+
+Full pooled higher-order model:
+- **β = 1.5240**;
+- 95% CI **0.5351–2.5128**;
+- P = **0.00252**.
+
+Across all 21 leave-one-state-out refits:
+- β range = **0.9670–1.7753**;
+- every coefficient remained positive;
+- every 95% CI remained entirely positive;
+- minimum leave-one-state-out 95% CI lower bound = **0.3973**.
+
+The prefixed classification was therefore **strong PASS**.
+
+State-specific models were descriptive and heterogeneous:
+- estimable states = **17**;
+- positive point estimates = **14/17**;
+- wholly positive 95% CIs = **2/17**.
+
+This distinction is important: higher-order coherence is not dependent on any single state, but its strength is not geographically homogeneous.
+
 ## S12. Historical recurrence of apparent wet-state recruitment
 
 ### S12.1 Route-new incidence recurrence
