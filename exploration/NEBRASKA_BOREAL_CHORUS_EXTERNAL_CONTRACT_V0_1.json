@@ -1,0 +1,79 @@
+{
+  "analysis": "nebraska_boreal_chorus_external_gate_v0_1",
+  "status": "fixed_before_external_endpoint_readback",
+  "relation_to_naamp": "Independent public dataset used for mechanistic concordance only; not a replication of NAAMP community boundary geometry and not a blind validation because the source publication already reports precipitation/hydropattern effects on calling.",
+  "source": {
+    "dataset": "Boreal Chorus Frog Calling Activity in the Central Platte River Valley of Nebraska in Spring 2015 - 2017",
+    "mendeley_id": "p6nbn2hyz9",
+    "version": 1,
+    "doi": "10.17632/p6nbn2hyz9.1",
+    "data_article_doi": "10.1016/j.dib.2020.106581",
+    "ecological_indicators_doi": "10.1016/j.ecolind.2020.107171"
+  },
+  "eligibility_gate": {
+    "required_columns": [
+      "Site",
+      "Year",
+      "Date",
+      "Missing",
+      "Count",
+      "HYDRO",
+      "PRCP",
+      "PRCP7",
+      "PRCP1",
+      "TAVG",
+      "DOY"
+    ],
+    "required_sites": 2,
+    "required_years": [
+      2015,
+      2016,
+      2017
+    ],
+    "count_rule": "Count numeric and bounded [0,1] on nonmissing days.",
+    "missing_rule": "Use only rows with Missing==0 and finite Count.",
+    "minimum_valid_site_years": 6,
+    "minimum_valid_days_total": 250,
+    "minimum_active_days": 50,
+    "minimum_silent_days": 50,
+    "consequence_if_fail": "Do not fit the external gate analysis."
+  },
+  "external_questions": {
+    "hydric_gate": "Is calling occurrence on a valid day associated with multi-day hydric opportunity (PRCP7 and HYDRO) after accounting for prior-day precipitation, temperature, seasonal date, site and year?",
+    "site_context": "Does the precipitation/calling relationship differ between the wet meadow and forested slough?",
+    "persistence": "Are PRCP7/HYDRO signals at least as informative as PRCP1, consistent with a multi-day gate rather than an exclusively immediate-rain cue?"
+  },
+  "models": {
+    "activation": {
+      "response": "active = 1[Count>0]",
+      "family": "binomial logit",
+      "formula": "active ~ z_PRCP7 + z_HYDRO + z_PRCP1 + z_TAVG + sin_DOY + cos_DOY + C(Site) + C(Year)",
+      "inference": "Report coefficients and 95% model-based intervals; repeat separately by Site as descriptive sensitivity."
+    },
+    "positive_intensity": {
+      "response": "Count among Count>0 days",
+      "family": "OLS",
+      "formula": "Count ~ z_PRCP7 + z_HYDRO + z_PRCP1 + z_TAVG + sin_DOY + cos_DOY + C(Site) + C(Year)",
+      "inference": "Descriptive contrast only; do not compare logit and OLS coefficient magnitudes directly."
+    },
+    "site_interaction": {
+      "response": "active",
+      "family": "binomial logit",
+      "formula": "active ~ (z_PRCP7 + z_HYDRO + z_PRCP1)*C(Site) + z_TAVG + sin_DOY + cos_DOY + C(Year)"
+    }
+  },
+  "prefixed_interpretation": {
+    "temporal_gate_concordance": "At least one of z_PRCP7 or z_HYDRO has a positive 95% CI in the activation model; direction must be the same in both site-specific fits when estimable.",
+    "multi_day_over_immediate": "At least one of z_PRCP7 or z_HYDRO is positively supported while z_PRCP1 is not the sole positively supported hydric predictor.",
+    "site_context_heterogeneity": "At least one Site interaction for PRCP7 or HYDRO has a 95% CI excluding zero.",
+    "no_threshold_dominance_claim": "This dataset cannot establish NAAMP-style community recruitment dominance because it contains one focal species and a continuous daily calling index."
+  },
+  "interpretation_boundaries": [
+    "The source study already established precipitation/hydropattern associations, so this is mechanistic concordance rather than independent discovery.",
+    "Two habitats and one species cannot establish taxonomic or continental universality.",
+    "HYDRO has site-specific physical meaning (wet-meadow inundation vs slough/river hydrology) and is a standardized habitat-state proxy, not the same physical measurement at both sites.",
+    "Calling activity is not abundance or reproductive success.",
+    "No change to RC11 is authorized."
+  ],
+  "retuning_after_readback": false
+}
