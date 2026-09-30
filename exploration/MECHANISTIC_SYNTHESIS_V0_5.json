@@ -1,0 +1,215 @@
+{
+  "analysis": "mechanistic_synthesis_v0_5",
+  "status": "exploratory_synthesis_after_fixed_diagnostics; not submission authority",
+  "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
+  "core_model": {
+    "label": "temporal gate over a persistent local acoustic template",
+    "stage_1_temporal_gate": "Recent-rain conditions increase the probability that previously silent species x site cells enter substantial acoustic activity, including CallingIndex 3 full chorus.",
+    "stage_2_spatial_template": "When a species is recruited, the wet-side sites used are preferentially sites where that same species had previously called strongly; the exact SiteID signal persists beyond generic site quality and neighborhood proximity.",
+    "stage_3_activation_depth": "The matrix-level boundary geometry is generated primarily by how deeply recruited species expand across multiple stops (especially third and later stops), not by an exceptional number of recruited species or unusual placement of occupied stops conditional on wet-side stop count k.",
+    "concise_interpretation": "Rain reveals an intermittently expressed local chorus network rather than constructing a new community from scratch."
+  },
+  "evidence_layers": {
+    "substantial_chorus_activation": {
+      "full_pairs": 4236,
+      "new_ci3_beta": 0.4406591109680625,
+      "new_ci3_ci95": [
+        0.11370481164083468,
+        0.7676134102952903
+      ],
+      "robust_same_observer_same_site_pairs": 3115,
+      "robust_new_ci3_beta": 0.5140184022055483,
+      "robust_new_ci3_ci95": [
+        0.1007238326532849,
+        0.9273129717578118
+      ],
+      "strong_ci2plus_share_of_activation_beta": 0.8707082810857251,
+      "detection_quality_adjusted_strong_score_beta": 1.6225420695541188,
+      "detection_quality_adjusted_ci95": [
+        0.4587043993545672,
+        2.7863797397536705
+      ],
+      "meaning": "Not confined to CI1 marginal detections or louder already-active cells."
+    },
+    "recurrent_acoustic_memory": {
+      "physically_stable_pairs": 4172,
+      "route_new_incidence_recurrent_beta_share_leave_pair_out": 0.981,
+      "prior_only_strong_score_recurrent_share": 1.024992726810087,
+      "prior_only_strong_score_beta": 1.7502992633619812,
+      "prior_only_recurrent_score_beta": 1.7940440146870835,
+      "prior_only_no_prior_score_beta": -0.04374475132510222,
+      "prior_only_same_site_any_share": 0.84392184861427,
+      "prior_only_same_site_prior_strong_share": 0.7001084698101772,
+      "prior_only_ci3_recurrent_share": 1.0032372231389006,
+      "meaning": "Rain-associated strong recruitment is overwhelmingly re-expression of taxa already observed historically in the same route, usually the same physical SiteID."
+    },
+    "site_specific_template": {
+      "local_memory_targeting_beta": 0.151,
+      "local_memory_targeting_ci95": [
+        0.129,
+        0.173
+      ],
+      "same_observer_beta": 0.159,
+      "same_observer_ci95": [
+        0.134,
+        0.183
+      ],
+      "opportunity_normalized_ci3_rain_beta": 0.016829111731873004,
+      "opportunity_normalized_ci3_ci95": [
+        0.0028365770275316175,
+        0.030821646436214392
+      ],
+      "prior_only_opportunity_ci3_beta": 0.02448895976609234,
+      "prior_only_opportunity_ci95": [
+        0.007001673669270292,
+        0.04197624586291439
+      ],
+      "symmetric_wet_minus_dry_ci3_memory_difference": 0.021285599751720036,
+      "cluster_bootstrap_ci95": [
+        0.0023996394101926024,
+        0.034908053373650196
+      ],
+      "species_specific_site_template": {
+        "own_memory_same_observer_beta": 0.13599463785811552,
+        "own_memory_same_observer_ci95": [
+          0.09647038781365365,
+          0.17551888790257741
+        ],
+        "generic_site_same_observer_beta": 0.02202094888087886,
+        "generic_site_same_observer_ci95": [
+          -0.001973889190133509,
+          0.046015786951891235
+        ]
+      },
+      "spatial_scale": {
+        "exact_site_same_observer_beta": 0.13793557497933273,
+        "exact_site_same_observer_ci95": [
+          0.10822284624115736,
+          0.1676483037175081
+        ],
+        "distance_beta": -0.020191276690944893,
+        "distance_ci95": [
+          -0.038690040097522596,
+          -0.0016925132843671926
+        ]
+      },
+      "taxon_generality": {
+        "estimable_species": 20,
+        "positive_species": 19,
+        "positive_fraction": 0.95,
+        "sign_test_p": 0.00002002716064453125
+      },
+      "meaning": "The spatial template is species-specific and local, not merely a generic high-quality frog site."
+    },
+    "memory_duration": {
+      "formal_gate_pass": false,
+      "reason": "Only 136 routes satisfied the old-memory vs no-memory within-species contrast; prefixed requirement was >=200 routes.",
+      "old_memory_beta_descriptive": 0.10056533562213175,
+      "old_memory_ci95_descriptive": [
+        0.06783465078628825,
+        0.13329602045797526
+      ],
+      "recent_memory_beta_descriptive": 0.17312081386469266,
+      "recent_memory_ci95_descriptive": [
+        0.11511593333434397,
+        0.23112569439504135
+      ],
+      "continuous_log_lag_beta_descriptive": -0.13515995095871502,
+      "continuous_log_lag_ci95_descriptive": [
+        -0.18913141796969873,
+        -0.08118848394773132
+      ],
+      "meaning": "A durable multi-year template is strongly suggested and decays with time, but the prespecified route-count gate prevents a formal old-memory claim."
+    },
+    "spatial_depth": {
+      "route_new_species_gain_beta": 0.1846754325853956,
+      "second_stop_beta": 0.13170590853393746,
+      "third_plus_stop_beta": 0.4725893914308725,
+      "third_plus_uniform_ci95": [
+        0.2628759555857566,
+        0.3552224768706642
+      ],
+      "third_plus_persistence_ci95": [
+        0.1794736101129831,
+        0.27736088366011774
+      ],
+      "fourth_plus_stop_beta": 0.3628430638358824,
+      "third_plus_excess_supported": true,
+      "meaning": "The excess is not recruitment count or reaching a second stop; it is deeper spatial expression at third and later stops."
+    },
+    "spatial_placement_conditional_on_k": {
+      "mpd_compactness_beta": 0.017352282661650818,
+      "mst_compactness_beta": 0.01942623912129594,
+      "adjacency_excess_beta": 0.0034242330987423113,
+      "convergent_cluster_support": false,
+      "species_fixed_k_uniform_omnibus_p": 0.17882117882117882,
+      "species_fixed_k_persistence_omnibus_p": 0.21178821178821178,
+      "fixed_k_decision": "species_activation_depth_sufficient_without_special_stop_placement",
+      "meaning": "Once species identity and each species' wet-side occupied-stop count k are conditioned on, special placement of those k stops is not required to reproduce the matrix geometry."
+    },
+    "prior_template_predicts_depth": {
+      "prior_strong_breadth_beta": 0.6346552086274684,
+      "prior_strong_breadth_ci95": [
+        0.489204224561284,
+        0.7801061926936528
+      ],
+      "rain_x_prior_breadth_beta": 0.1649897986512681,
+      "rain_x_prior_breadth_ci95": [
+        0.044898787791737546,
+        0.2850808095107986
+      ],
+      "n_pair_species": 1948,
+      "n_routes": 333,
+      "same_observer_gate_pass": false,
+      "exact_year_gate_pass": false,
+      "meaning": "Post-activation spatial depth is strongly related to the species' historical route-scale strong-chorus breadth, with a positive rain interaction; robustness subsets lacked prespecified coverage."
+    }
+  },
+  "falsified_or_insufficient_mechanisms": {
+    "simple_uniform_amplification": "Rejected by original and persistence-preserving nulls.",
+    "observer_turnover": "Not required; same-observer results persist.",
+    "stop_relocation": "Not required; 98.5% of pairs preserve all ten SiteIDs and stable-pair results persist.",
+    "measured_detection_conditions": "Hearing impairment, timeout, wind and traffic adjustment do not remove strong recruitment.",
+    "weak_call_detection_only": "Rejected as sole explanation because CI2-3 and CI3 activations increase.",
+    "simple_social_chorus_facilitation": "No excess route-new recruitment into dry-active stops.",
+    "immediate_only_humidity_pulse": "No evidence that 0-1 day wet recency is stronger than delayed wet recency; positive direction persists through 2-3 and 4-7 day strata.",
+    "nwi_hydroperiod": "Does not explain the robust CI2-3 strong-chorus endpoint.",
+    "nwi_broad_wetland_system": "No authorized support for Palustrine versus Riverine/Lacustrine as the principal strong-chorus mediator.",
+    "simple_temperature_or_run_window_gating": "Prespecified multicue interaction gates fail.",
+    "prior_local_memory_alone": "A null weighted by strictly prior local memory still rejects strongly; memory describes where activation tends to recur but is not sufficient to create the full observed geometry.",
+    "crossfit_rain_x_local_memory_single_gate": "Cross-fit single-parameter rain x local-memory gating null still rejects; lower-level single-gate mechanism insufficient."
+  },
+  "generality": {
+    "naamp_leave_one_state_out": {
+      "states": 21,
+      "all_positive": true,
+      "all_ci_positive": true
+    },
+    "state_specific": {
+      "estimable_states": 19,
+      "positive_fraction": 0.684,
+      "ci_positive_fraction": 0.316,
+      "random_slope_population_beta": 1.65,
+      "random_slope_state_sd": 3.46,
+      "meaning": "The pooled NAAMP signal is geographically robust but strongly heterogeneous among states."
+    },
+    "species_specific_template": {
+      "positive_fraction": 0.95,
+      "meaning": "Local-template targeting is broadly shared among estimable taxa, not driven by one or two species."
+    },
+    "external": {
+      "anuraset_inct20955_threshold_dominant": false,
+      "anuraset_inct41_threshold_dominant": false,
+      "effort_complete_multisite_boundary_replication_available": false,
+      "conclusion": "Cross-continental universality of the NAAMP mechanism is not established."
+    }
+  },
+  "inference_boundary": {
+    "established": "A rainfall-associated behavioural/acoustic reactivation process in which historically used species x site combinations re-enter substantial chorus activity and recruited species express deeper multi-stop participation.",
+    "strongly_supported_but_not_unique": "Temporal gating over a persistent species-specific local acoustic template.",
+    "not_identified": "The proximal cue: hydration, water-level change, endocrine response, prey/weather covariance, or another rain-associated condition.",
+    "not_demographic": "No claim of colonization, extinction, abundance change, continuous occupancy, individual philopatry, or reproductive success.",
+    "not_universal": "NAAMP-domain robustness does not establish a universal amphibian rule."
+  },
+  "stop_rule": "Do not add further post-readback mechanism models unless they test a qualitatively new falsifiable alternative or provide an independent external effort-complete replication. Existing fixed decision-tree diagnostics are sufficient to define the current mechanistic ceiling."
+}
