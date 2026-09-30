@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="960" viewBox="0 0 1500 960">
+<rect width="1500" height="960" fill="white"/>
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:29px;font-weight:700}.panel{font-size:23px;font-weight:700}.sub{font-size:16px}.lab{font-size:17px;font-weight:600}.small{font-size:14px}.num{font-size:20px;font-weight:700}.axis{stroke:#222;stroke-width:2}.dark{fill:#333}.mid{fill:#888}.light{fill:#ddd}.box{fill:#f7f7f7;stroke:#999;stroke-width:1.5}
+</style>
+<text x="50" y="50" class="title">Figure 5. Higher-order spatial coherence is broad within NAAMP but heterogeneous among states</text>
+<text x="50" y="80" class="sub">Robustness to taxon/state deletion is distinct from homogeneous effect strength.</text>
+
+<text x="55" y="130" class="panel">A  Taxonomic contribution is diffuse</text>
+<rect x="70" y="165" width="650" height="260" rx="8" class="box"/>
+<text x="100" y="210" class="lab">53 taxa represented</text>
+<text x="100" y="250" class="num">25 positive</text>
+<text x="100" y="290" class="num">19 contribute ≥1% of positive mass</text>
+<text x="100" y="345" class="small">Top 1 positive share</text>
+<rect x="300" y="328" width="330" height="24" class="light" stroke="#555"/>
+<rect x="300" y="328" width="62" height="24" class="dark"/><text x="645" y="347" class="num">18.8%</text>
+<text x="100" y="390" class="small">Top 5 positive share</text>
+<rect x="300" y="373" width="330" height="24" class="light" stroke="#555"/>
+<rect x="300" y="373" width="179" height="24" class="mid"/><text x="645" y="392" class="num">54.2%</text>
+<text x="100" y="420" class="small">HHI = 0.0855 · every leave-one-taxon-out total β remains positive · minimum = 1.209</text>
+
+<text x="780" y="130" class="panel">B  No single state is required</text>
+<rect x="800" y="165" width="630" height="260" rx="8" class="box"/>
+<text x="830" y="210" class="lab">21 leave-one-state-out refits</text>
+<text x="830" y="250" class="num">All β &gt; 0 and all 95% CIs &gt; 0</text>
+<line x1="850" y1="340" x2="1360" y2="340" class="axis"/>
+<text x="850" y="365" class="small" text-anchor="middle">0.8</text>
+<text x="1020" y="365" class="small" text-anchor="middle">1.2</text>
+<text x="1190" y="365" class="small" text-anchor="middle">1.6</text>
+<text x="1360" y="365" class="small" text-anchor="middle">2.0</text>
+<line x1="922" y1="315" x2="1265" y2="315" stroke="#555" stroke-width="7"/>
+<circle cx="1094" cy="315" r="10" class="dark"/>
+<text x="830" y="405" class="small">LOSO β range = 0.967–1.775 · smallest CI lower bound = 0.397</text>
+
+<text x="55" y="495" class="panel">C  State-specific effects are nevertheless heterogeneous</text>
+<rect x="70" y="530" width="650" height="260" rx="8" class="box"/>
+<text x="100" y="575" class="num">17 estimable states</text>
+<text x="100" y="620" class="num">14 / 17 positive point estimates</text>
+<text x="100" y="665" class="num">2 / 17 wholly positive 95% CIs</text>
+<text x="100" y="720" class="sub">Programme-scale robustness ≠ spatial invariance.</text>
+<text x="100" y="755" class="small">Regional species pools, rainfall regimes, hydrology and seasonal timing can modify response strength.</text>
+
+<text x="780" y="495" class="panel">D  Australia supports only the broader taxonomic-depth direction</text>
+<rect x="800" y="530" width="630" height="260" rx="8" class="box"/>
+<text x="830" y="575" class="lab">NAAMP · active-stop richness</text>
+<text x="830" y="615" class="num">β = +0.0794 (0.0231–0.1357)</text>
+<text x="830" y="670" class="lab">FrogID · dry-spell exposure</text>
+<text x="830" y="710" class="num">β = −0.0818 (−0.0982 to −0.0654)</text>
+<text x="830" y="760" class="small">Same wet-condition direction for taxonomic depth; effect sizes are not pooled.</text>
+
+<rect x="70" y="835" width="1360" height="70" rx="8" class="box"/>
+<text x="750" y="865" class="lab" text-anchor="middle">Scope</text>
+<text x="750" y="892" class="sub" text-anchor="middle">Higher-order species × site coherence is broad within NAAMP; cross-continental replication of that geometry is not established.</text>
+
+<text x="50" y="942" class="small">Interpretation: broad within-programme support with substantial geographic heterogeneity; universality is not claimed.</text>
+</svg>
