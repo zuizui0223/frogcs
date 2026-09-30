@@ -1,0 +1,53 @@
+{
+  "analysis": "naamp_daymet_hydric_cue_v0_1",
+  "status": "fixed_before_daymet_eligibility_and_response_readback",
+  "question": "Does a lower atmospheric vapor-pressure deficit on the wetter survey predict emergence of new full choruses beyond the existing DaysSinceRain contrast?",
+  "source": {
+    "dataset": "Daymet Daily North America Version 4 / R1 via Planetary Computer collection daymet-daily-na",
+    "variables": [
+      "vp",
+      "tmin",
+      "tmax",
+      "prcp"
+    ],
+    "resolution": "1 km daily",
+    "period": "2001-2015",
+    "access": "signed collection-level zarr-https asset"
+  },
+  "run_level_weather": {
+    "site_linkage": "Use the pinned physical SiteID coordinates for the ten non-skipped NAAMP stops in each eligible run.",
+    "completeness": "Require >=8 of 10 SiteIDs with finite Daymet values for each run.",
+    "tmean_c": "(tmin+tmax)/2 for each SiteID-date.",
+    "saturation_vapor_pressure_kpa": "0.6108 * exp(17.27*tmean/(tmean+237.3)).",
+    "vpd_kpa": "max(saturation_vapor_pressure_kpa - vp_Pa/1000, 0).",
+    "run_vpd": "Mean VPD across valid SiteIDs on the survey date.",
+    "run_vp": "Mean Daymet vp across valid SiteIDs on the survey date.",
+    "run_prcp3": "Mean across valid SiteIDs of cumulative Daymet prcp over survey date and previous two calendar days."
+  },
+  "pair_predictors": {
+    "delta_vpd": "wet run minus dry run; negative means wetter member had lower atmospheric drying demand.",
+    "delta_vp": "wet minus dry; positive means wetter member had higher vapor pressure.",
+    "delta_prcp3": "wet minus dry 3-day cumulative precipitation."
+  },
+  "response": {
+    "primary": "new_ci3_count = number of species x stop cells with dry CallingIndex=0 and wet CallingIndex=3.",
+    "secondary": "strong_new_score = sum wet CallingIndex over cells with dry=0 and wet in {2,3}."
+  },
+  "primary_model": "new_ci3_count ~ rain_contrast + delta_vpd + temp_difference + doy_difference + year_gap + State + RunNumber, route-clustered covariance.",
+  "primary_prediction": "delta_vpd coefficient <0 with complete 95% CI <0.",
+  "sensitivities": [
+    "Replace delta_vpd with delta_vp; expected coefficient >0.",
+    "Replace delta_vpd with delta_prcp3; expected coefficient >0.",
+    "Fit strong_new_score with delta_vpd.",
+    "Repeat the primary model in the existing same-observer + physical-stop pair subset.",
+    "Report percent change in the rain_contrast coefficient relative to the same complete-case model without delta_vpd as descriptive attenuation only; no mediation threshold."
+  ],
+  "minimum_gate": "At least 3000 matched pairs, >=450 routes, >=18 states with complete Daymet weather in both runs.",
+  "interpretation": [
+    "Support would make atmospheric hydration stress a plausible proximal cue in addition to rainfall recency.",
+    "Daily VPD is not survey-time microclimate and cannot establish physiological mediation.",
+    "Failure would not rule out humidity at the exact survey hour, soil/wetland hydrology, or other rainfall-associated cues.",
+    "No causal rainfall or reproductive-success claim, and no RC11 submission change is authorized."
+  ],
+  "retuning_after_readback": false
+}
