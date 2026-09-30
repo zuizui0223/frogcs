@@ -1,0 +1,21 @@
+{
+  "analysis":"naamp_higher_order_geographic_generality_v0_1",
+  "status":"post_readback_geographic_audit_fixed_before_endpoint",
+  "question":"Is the rainfall-associated higher-order within-taxon spatial coherence dependent on any single state?",
+  "sample":"Frozen 4,236 NAAMP matched pairs.",
+  "endpoint":"Exactly the previously frozen higher_order_within_species_mass = sum choose(max(k-1,0),2) across route-new taxa.",
+  "model":"higher_order_mass ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + State + RunNumber, route-clustered covariance.",
+  "leave_one_state_out":{
+    "procedure":"Refit the unchanged model once omitting each sampled state.",
+    "pass_rule":"Every leave-one-state-out rain_contrast coefficient remains >0.",
+    "strong_pass_rule":"Every leave-one-state-out 95% CI remains entirely >0.",
+    "rule_source":"Exactly mirrors the frozen RC11 geographic-generality audit."
+  },
+  "state_specific":"Descriptive only; fit within states with enough route clusters for clustered covariance and report sign/CI distribution.",
+  "interpretation":[
+    "Strong pass means no single sampled state is required for the pooled higher-order association.",
+    "It does not imply homogeneous effect strength across states or universality beyond NAAMP.",
+    "No endpoint or decision rule may change after readback."
+  ],
+  "retuning_after_readback":false
+}
