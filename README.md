@@ -31,6 +31,8 @@ Primary files:
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
 - `revision/build_pulse_template_figures.py` — reproducible renderer
 - `figures_pulse_template/` — canonical generated SVG/PNG figures
+- `submission/pulse_template/` — integrated cover letter, metadata template and submission-readiness checklist
+- `.github/workflows/pulse_template_submission_pipeline.yml` — integrated anonymous/private bundle builder
 
 The frozen RC11 manuscript remains available as `paper/manuscript.md` and is not overwritten.
 
