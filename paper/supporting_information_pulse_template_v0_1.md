@@ -1,6 +1,6 @@
 # Supporting Information
 
-## Rainfall-associated frog chorus activation is spatially coherent and historically structured
+## Rainfall-associated frog chorus activation shows higher-order spatial coherence and species-specific site recurrence
 
 This Supporting Information preserves secondary, falsification and alternative-mechanism analyses that are important for transparency but are not part of the main inferential spine.
 
