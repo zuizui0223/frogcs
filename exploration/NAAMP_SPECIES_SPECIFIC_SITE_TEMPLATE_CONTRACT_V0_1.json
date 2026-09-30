@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_species_specific_site_template_v0_1",
+  "status": "post_readback_template-specificity test fixed before endpoint",
+  "question": "Does prior strong-chorus use by the focal species predict where it reactivates beyond a site's generic tendency to host strong choruses of other species?",
+  "population": "Physically stable NAAMP matched pairs with at least one eligible prior run in the same State x RouteNumber x RunNumber stratum. Focal species are absent from the entire dry route, present in the wet route, and known from the route in prior years.",
+  "unit": "pair x focal species x physical SiteID with at least one prior sampling opportunity for that SiteID",
+  "prior_predictors": {
+    "own_prior_strong": "1 if the focal species had CallingIndex 2-3 at the SiteID in any eligible run strictly before the earlier focal-pair year.",
+    "generic_other_strong_rate": "Across prior runs in which that SiteID was sampled, mean number of other species (excluding the focal species) with CallingIndex 2-3 at the SiteID."
+  },
+  "outcomes": {
+    "wet_strong": "1 if focal species reaches CallingIndex 2-3 at the SiteID in the wet survey.",
+    "wet_full": "1 if focal species reaches CallingIndex 3 at the SiteID."
+  },
+  "primary_design": "Restrict to pair x species groups containing both own_prior_strong=1 and 0. Demean outcome, own_prior_strong, generic_other_strong_rate and their rain_contrast interactions within pair x species. Regress demeaned wet_strong on all four demeaned predictors without intercept; cluster covariance by State x RouteNumber.",
+  "primary_prediction": "Coefficient on own_prior_strong remains >0 with complete 95% CI >0 after generic site chorus quality is controlled.",
+  "secondary": [
+    "Report own_prior_strong x rain_contrast interaction.",
+    "Repeat outcome as wet_full.",
+    "Repeat wet_strong in same-observer pairs.",
+    "Report generic-site-quality coefficients without a separate success gate."
+  ],
+  "minimum_gate": "At least 500 informative pair x species groups, >=250 routes and >=20 species after requiring prior SiteID sampling opportunity.",
+  "interpretation": [
+    "Support favors a species-specific local activity template beyond generic frog-hotspot quality.",
+    "It does not distinguish persistent local population, species-specific habitat preference, or individual site fidelity.",
+    "No continuous occupancy, same-individual, reproductive-success or causal rainfall claim is authorized."
+  ],
+  "retuning_after_readback": false
+}
