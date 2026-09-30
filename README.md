@@ -25,6 +25,9 @@ Primary files:
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_1.md`
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
 - `revision/FIGURE_REBUILD_SPEC_V0_1.md`
+- `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
+- `revision/build_pulse_template_figures.py` — reproducible renderer
+- `figures_pulse_template/` — canonical generated SVG/PNG figures
 
 The frozen RC11 manuscript remains available as `paper/manuscript.md` and is not overwritten.
 
