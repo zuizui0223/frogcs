@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
+<rect width="1500" height="920" fill="white"/>
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:29px;font-weight:700}.panel{font-size:23px;font-weight:700}.sub{font-size:16px}.lab{font-size:17px;font-weight:600}.small{font-size:14px}.num{font-size:20px;font-weight:700}.axis{stroke:#222;stroke-width:2}.dark{fill:#333}.mid{fill:#888}.light{fill:#ddd}.box{fill:#f7f7f7;stroke:#999;stroke-width:1.5}
+</style>
+<text x="50" y="50" class="title">Figure 3. Strong chorus placement recurs at species-specific historical sites</text>
+<text x="50" y="80" class="sub">Raw recurrence percentages provide context; inferential tests compare sites within the same focal taxon and matched pair and then mirror wet- and dry-target directions.</text>
+
+<text x="55" y="130" class="panel">A  Most apparent wet-state recruitment has historical precedent</text>
+<text x="55" y="160" class="sub">Descriptive shares; monitoring history makes raw recurrence availability-sensitive</text>
+<text x="55" y="210" class="lab">Route-new incidence recurrent</text>
+<rect x="330" y="190" width="540" height="30" class="light" stroke="#333"/>
+<rect x="330" y="190" width="530" height="30" class="dark"/>
+<text x="885" y="211" class="num">98.1%</text>
+<text x="55" y="255" class="lab">Strictly-prior route-new recurrent</text>
+<rect x="330" y="235" width="540" height="30" class="light" stroke="#333"/>
+<rect x="330" y="235" width="534" height="30" class="dark"/>
+<text x="885" y="256" class="num">98.9%</text>
+<text x="55" y="300" class="lab">New CI3 same-SiteID recurrent</text>
+<rect x="330" y="280" width="540" height="30" class="light" stroke="#333"/>
+<rect x="330" y="280" width="488" height="30" class="mid"/>
+<text x="885" y="301" class="num">90.4%</text>
+<text x="55" y="345" class="lab">Strictly-prior new CI3 same-SiteID</text>
+<rect x="330" y="325" width="540" height="30" class="light" stroke="#333"/>
+<rect x="330" y="325" width="446" height="30" class="mid"/>
+<text x="885" y="346" class="num">82.6%</text>
+
+<text x="930" y="130" class="panel">B  Historical site strength predicts where the same taxon returns</text>
+<text x="930" y="160" class="sub">Within pair × taxon; positive β = stronger wet-state placement at prior strong SiteIDs</text>
+<line x1="1030" y1="360" x2="1450" y2="360" class="axis"/>
+<line x1="1030" y1="190" x2="1030" y2="375" stroke="#aaa"/>
+<text x="1030" y="390" class="small" text-anchor="middle">0</text>
+<text x="1170" y="390" class="small" text-anchor="middle">0.05</text>
+<text x="1310" y="390" class="small" text-anchor="middle">0.10</text>
+<text x="1450" y="390" class="small" text-anchor="middle">0.15</text>
+<text x="930" y="220" class="lab">Wet CI2/3</text>
+<line x1="1392" y1="214" x2="1514" y2="214" stroke="#222" stroke-width="5"/><circle cx="1453" cy="214" r="9" class="dark"/>
+<text x="930" y="270" class="lab">Wet CI3</text>
+<line x1="1203" y1="264" x2="1292" y2="264" stroke="#777" stroke-width="5"/><circle cx="1248" cy="264" r="9" class="mid"/>
+<text x="930" y="320" class="lab">Same-observer CI2/3</text>
+<line x1="1406" y1="314" x2="1543" y2="314" stroke="#555" stroke-width="5"/><circle cx="1475" cy="314" r="9" class="mid"/>
+<text x="1050" y="430" class="small">β = 0.151 (0.129–0.173)</text>
+<text x="1050" y="455" class="small">CI3 β = 0.0778 (0.0619–0.0937)</text>
+<text x="1050" y="480" class="small">same observer β = 0.159 (0.134–0.183)</text>
+
+<text x="55" y="465" class="panel">C  Rain proximity selectively strengthens historical-site targeting</text>
+<text x="55" y="495" class="sub">Directional placebo: wet-as-target and dry-as-target are mirrored within the same matched pair</text>
+<rect x="70" y="525" width="360" height="145" rx="8" class="box"/>
+<text x="250" y="555" class="lab" text-anchor="middle">Same pair</text>
+<text x="95" y="595" class="small">Wet target</text><text x="315" y="595" class="small">Dry target</text>
+<text x="95" y="625" class="num">+Δ rain</text><text x="315" y="625" class="num">−Δ rain</text>
+<text x="250" y="655" class="small" text-anchor="middle">compare historical-site CI3 targeting</text>
+
+<line x1="550" y1="670" x2="1120" y2="670" class="axis"/>
+<line x1="550" y1="535" x2="550" y2="685" stroke="#aaa"/>
+<text x="550" y="705" class="small" text-anchor="middle">0</text>
+<text x="740" y="705" class="small" text-anchor="middle">0.015</text>
+<text x="930" y="705" class="small" text-anchor="middle">0.030</text>
+<text x="1120" y="705" class="small" text-anchor="middle">0.045</text>
+<text x="470" y="575" class="lab">Full sample</text>
+<line x1="639" y1="568" x2="1082" y2="568" stroke="#222" stroke-width="5"/><circle cx="860" cy="568" r="10" class="dark"/>
+<text x="1140" y="574" class="small">β = 0.0245 (0.0070–0.0420)</text>
+<text x="470" y="630" class="lab">Same observer</text>
+<line x1="718" y1="623" x2="1161" y2="623" stroke="#777" stroke-width="5"/><circle cx="939" cy="623" r="10" class="mid"/>
+<text x="1140" y="629" class="small">β = 0.0307 (0.0133–0.0480)</text>
+
+<text x="55" y="770" class="panel">D  Inferential ladder</text>
+<rect x="75" y="795" width="235" height="54" rx="8" class="light" stroke="#777"/>
+<text x="192" y="828" class="lab" text-anchor="middle">raw recurrence</text>
+<text x="335" y="828" class="num">→</text>
+<rect x="380" y="795" width="250" height="54" rx="8" class="light" stroke="#777"/>
+<text x="505" y="828" class="lab" text-anchor="middle">same-site recurrence</text>
+<text x="655" y="828" class="num">→</text>
+<rect x="700" y="795" width="315" height="54" rx="8" class="box"/>
+<text x="857" y="820" class="lab" text-anchor="middle">within pair × taxon</text>
+<text x="857" y="842" class="small" text-anchor="middle">historical-site targeting</text>
+<text x="1040" y="828" class="num">→</text>
+<rect x="1085" y="795" width="355" height="54" rx="8" class="box"/>
+<text x="1262" y="820" class="lab" text-anchor="middle">rain-selective</text>
+<text x="1262" y="842" class="small" text-anchor="middle">historical-site targeting</text>
+
+<text x="50" y="892" class="sub" font-weight="700">Biological message: strong wet-state chorusing preferentially reappears at species-specific physical sites with a prior strong chorus record; the result does not identify individual memory or philopatry.</text>
+</svg>
