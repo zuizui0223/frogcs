@@ -2,12 +2,12 @@
 
 ## Current scientific package
 
-- Current manuscript: `paper/manuscript_pulse_template_v0_3.md`
-- Supporting Information: `paper/supporting_information_pulse_template_v0_1.md`
+- Current manuscript: `paper/manuscript_pulse_template_v0_4.md`
+- Supporting Information: `paper/supporting_information_pulse_template_v0_2.md`
 - Canonical figures: `figures_pulse_template/fig1_*.svg/png` through `fig5_*.svg/png`
-- Durable numerical synthesis: `revision/INTEGRATED_RESULTS_V0_1.json`
-- Current gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md`
-- Scientific stop rule: `revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
+- Durable numerical synthesis: `revision/INTEGRATED_RESULTS_V0_2.json`
+- Current gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md`
+- Scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md`
 
 ## JAE initial-submission checks
 
@@ -16,9 +16,9 @@ Verified against the current Journal of Animal Ecology author guidelines (Octobe
 - [x] Research Article target
 - [x] anonymized main manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words (current: 330)
+- [x] abstract ≤350 words (current: 343)
 - [x] ≤8 alphabetized keywords
-- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,486)
+- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,439)
 - [x] separate Supporting Information
 - [x] continuous-line-number / double-spaced anonymous DOCX built and validated
 - [x] five reproducible main figures; submission bundle packages PNG copies
@@ -53,11 +53,21 @@ The current JAE revision guidelines require a graphical abstract at the revision
 
 ## Scientific bundle validation
 
-- [x] integrated manuscript QA passed
-- [x] anonymous DOCX formatting/anonymity checks passed
-- [x] scientific submission bundle assembled
-- [x] SHA256 manifest generated
-- [x] workflow artifact uploaded
-- [x] bundle receipt stored in `submission/pulse_template/SCIENTIFIC_BUNDLE_RECEIPT.md`
+- [ ] RC3 manuscript QA passed on frozen candidate
+- [ ] RC3 anonymous DOCX formatting/anonymity checks passed
+- [ ] RC3 scientific submission bundle assembled
+- [ ] RC3 SHA256 manifest generated
+- [ ] RC3 workflow artifact uploaded
+- [ ] RC3 bundle receipt stored
 
 The private metadata bundle remains pending because final human metadata have not been supplied in the private secret.
+
+
+## RC3-specific safeguards
+
+- [x] exact N,K exchangeable null demoted to secondary diagnostic
+- [x] principal comparator preserves cross-fit species response + strictly-prior physical-site history + dry persistence
+- [x] public manuscript terminology uses within-taxon multi-site concentration/coherence, not higher-order interactions language
+- [x] manuscript states that cross-fitting is not independent confirmation
+- [x] manuscript states that no untouched NAAMP confirmation partition remains
+- [x] prospective external replication specification frozen before choosing an external outcome dataset
