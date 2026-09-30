@@ -85,44 +85,21 @@ We then decomposed the third-and-later coefficient by CallingIndex to determine 
 
 ### Higher-order spatial coherence of recruited taxa
 
-Excess third-and-later depth could still arise mechanically if rainfall simply recruited more taxa or produced more total extra-stop incidences. We therefore fixed a post-freeze higher-order test before reading its endpoint. For each route-new species occupying (k) wet stops, we defined (e = max(k-1,0)), the number of occupied stops beyond first recruitment, and calculated
+For each route-new taxon occupying (k_i) wet stops, we quantified higher-order concentration as
 
-`higher-order within-species mass = choose(e, 2) = e(e-1)/2`.
+`H = Σ_i choose(k_i − 1, 2)`.
 
-This statistic is zero for species occupying one or two stops and increases convexly when extra-stop incidences are concentrated within the same species at three or more stops. Thus, for identical numbers of recruited taxa and identical total extra-stop incidence, the statistic is larger when spread is deeper within fewer recruited taxa rather than distributed as shallow second-stop gains across many taxa.
+This is zero through the second occupied site and increases when additional incidences accumulate within the same taxon at third-and-later sites. Our strongest test conditioned **exactly** on the two first-order quantities that could generate this pattern mechanically. For each matched pair we evaluated wet-as-target and dry-as-target directions; (N) was the number of target-new taxa and (K) their total target incidence. Dynamic programming gave the exact exchangeable expectation and variance of (H) across all (N × 10) binary matrices with every target-new taxon present at least once and exactly (K) incidences. We modelled (H-E[H|N,K]) and its standardized form against signed target-rain advantage after within-pair demeaning.
 
-For each of 1,000 simulations under the κ = 2 uniform-activation null and the a = 0.75 persistence-preserving null, we calculated rainfall coefficients for route-new species gain, total extra-stop incidence and higher-order within-species mass. Within each null family we fitted
-
-`higher_order_beta ~ route_new_species_beta + extra_stop_beta`
-
-across the 1,000 simulated coefficient triplets. The primary statistic was the observed higher-order coefficient minus the null-regression prediction evaluated at the observed first-order recruitment and spread coefficients. Higher-order spatial coherence was supported only if this conditional residual exceeded the upper 95% residual bound under both null families. This analysis tests dependence in spatial expression, not literal simultaneity because route stops were surveyed sequentially.
-
-Because this regression-conditioned null could in principle be criticized for evaluating the observed first-order coefficients against a simulated coefficient cloud, we also fixed an **exact conditional directional validation** before reading that endpoint. For each matched pair we evaluated both wet-as-target and dry-as-target directions. Within each direction, (N) was the number of target-new taxa, (K) the total incidences across those taxa, and (H = \sum_i {k_i-1 \choose 2}). Dynamic programming gave the exact exchangeable expectation and variance of (H) across all (N \times 10) binary matrices in which every row was occupied at least once and the total incidence count was exactly (K). We analysed (H-E(H\mid N,K)) and its standardized form in a within-pair directional model, assigning +rain_contrast to the wet-target direction and −rain_contrast to the dry-target direction. This validation therefore conditions **exactly** on first-order recruitment and total route-new incidence within each pair rather than using simulation-regression extrapolation.
-
-We then applied the **unchanged endpoint and unchanged conditional-residual statistic** in three pre-specified post-readback audits. First, a joint observer/site robustness analysis restricted the data to matched pairs with the same nonmissing ObserverTrackingID and identical physical SiteID at all ten stops; the same two primary nulls were re-estimated within that subset. Second, a falsification analysis replaced the common species response with route-cross-fitted species-specific rainfall shifts and then with the additive combination of cross-fitted species shifts, strictly prior species × physical-SiteID probabilities and a = 0.75 dry-state persistence. In each case the higher-order coefficient was again conditioned on the simulated route-new-species and total extra-stop coefficients. Third, the unchanged higher-order endpoint was audited against the pre-existing final held-out rain × local-history gating null. Fourth, taxonomic and geographic generality audits decomposed the higher-order coefficient by taxon and repeated the unchanged higher-order rainfall model after omitting each state in turn. The taxonomic concentration thresholds were reused verbatim from the earlier route-new-spread audit; the geographic PASS/strong-PASS rules were reused verbatim from the frozen pre-integration geographic audit.
+Complementary 1,000-replicate simulations conditioned higher-order rainfall coefficients on simulated route-new-taxon and extra-stop coefficients. We repeated the unchanged endpoint under uniform activation, dry-state persistence, route-cross-fitted species-specific rainfall responses, the joint combination of cross-fitted species response + strictly prior species × SiteID history + dry persistence, and the pre-existing held-out rain × history gate. The endpoint was also repeated in the same-observer + same-physical-SiteID subset and audited for taxonomic and leave-one-state-out breadth. Full algorithms, gates and provenance are in Supporting Information.
 
 ### Exact species × stop allocation
 
-Every wet-gain incidence was classified along two axes: whether the species was already detected elsewhere in the dry route and whether the stop was already active in the dry run. Dry-loss incidences were classified symmetrically. Net wet-minus-dry change therefore fell into four exact components:
-
-1. **corner expansion:** route-new species × newly active stops;
-2. **spatial spread:** route-existing species × newly active stops;
-3. **taxonomic deepening:** route-new species × already-active stops;
-4. **within-core rearrangement:** route-existing species × already-active stops.
-
-For each pair,
-
-`delta species-stop incidences = corner + spatial spread + taxonomic deepening + within-core rearrangement`
-
-exactly. Identical covariates across component regressions preserve the same identity among their rainfall coefficients.
+As complementary context, every wet-gain/loss incidence was classified by whether the taxon was already present elsewhere in the route and whether the stop was already active. This gives four exact components—corner expansion, spatial spread, taxonomic deepening and within-core rearrangement—whose rainfall coefficients sum to total species × stop incidence change. Details and null construction are retained in Supporting Information.
 
 ### Historical recurrence of wet-state recruitment
 
-Historical recurrence analyses were restricted to physically stable comparisons in which all ten StopNumbers retained identical nonmissing SiteID values.
-
-For route-new wet incidences, leave-pair-out history classified each focal species × SiteID as: same-site recurrent, route-only recurrent, or a one-off stratum record, using all other eligible runs from the same State × RouteNumber × RunNumber stratum. A stricter sensitivity used only runs occurring before the earlier year of the focal matched pair. The raw recurrent share is descriptive because long monitoring histories create many opportunities for recurrence.
-
-For direct 0→CI3 cells we performed the analogous decomposition, distinguishing a prior full chorus at the same SiteID, another prior positive call at the same SiteID, route-only recurrence and no other stratum record.
+Historical recurrence analyses were restricted to physically stable pairs. Route-new and direct 0→CI3 incidences were classified using leave-pair-out history and, more conservatively, only runs preceding the focal pair. Raw recurrence shares are descriptive because longer histories create more opportunities for a previous record; the inferential tests therefore focus on within-taxon site targeting below.
 
 ### Within-species historical site targeting
 
@@ -142,25 +119,9 @@ Pairs were retained only when this contrast was estimable in both wet-target and
 
 ### Nested mechanism null sequence
 
-We evaluated the species × site allocation against an ordered sequence of increasingly structured null families. These nulls were developed sequentially during post-freeze mechanism exploration; each model specification and decision rule was fixed before its own endpoint was read, and the escalation sequence ended under a prefixed stopping rule.
+The matrix allocation and higher-order endpoint were compared with increasingly structured first-order generators: (1) magnitude-matched uniform activation; (2) dry-state persistence; (3) route-cross-fitted species-specific rainfall response; (4) strictly prior species × physical-SiteID history; (5) cross-fitted species response + prior history + dry persistence; and (6) the pre-existing final held-out rain × local-history gate. Pair-level shifts preserved observed wet-incidence magnitude. Cross-fitting prevented focal-route leakage, and local-history probabilities used only information preceding the focal pair where specified.
 
-**1. Uniform activation.** Historical species × stop probabilities were estimated within State × RouteNumber × RunNumber strata. For each pair, one common additive log-odds shift was solved so that expected wet incidence count matched the observed count. We generated 1,000 wet matrices and tested the observed four-component rainfall-coefficient vector by Mahalanobis distance. The primary smoothing strength was κ = 2, with κ = 1 and 5 sensitivities.
-
-**2. Persistence-preserving activation.** Historical cell probabilities were estimated without species-level shrinkage and anchored to the focal dry matrix,
-
-`p_anchor = (1 − a) p_hist + a I(dry-present)`,
-
-with primary (a=0.75) and frozen (a=0.50,0.90) sensitivities. One common pair-level activation shift again magnitude-matched expected wet incidence.
-
-**3. Cross-fitted species-specific rainfall response.** Species-specific rainfall shifts were estimated from routes in the opposite deterministic route fold and then applied to held-out routes, preventing focal-route leakage.
-
-**4. Strictly prior local-history null.** Cell probabilities used species × physical-SiteID history strictly preceding the focal pair, combined with dry-state persistence.
-
-**5. Joint species + local-history + persistence null.** The held-out species shift was added to strictly prior local probabilities and dry-state anchoring, with a common pair-level shift preserving observed wet incidence magnitude.
-
-**6. Held-out rainfall × local-history gate.** As the final prefixed fallback, one global interaction between rain contrast and centred strictly prior local-history probability was estimated on the opposite route fold and applied only to currently silent held-out cells, alongside the cross-fitted species effect and dry persistence.
-
-All six families were evaluated with the same four-component allocation test. Failure to reject would indicate sufficiency under that null family, not unique causal proof. Rejection of the final held-out model triggered the prespecified stop: no additional trait fishing, site-specific rain coefficients learned and tested on the same routes, relaxed gates or further mechanism escalation were permitted.
+Each post-freeze specification and its PASS/FAIL rule was fixed before its own endpoint readback. The final gate triggered the prespecified stop: no additional same-data trait fishing, relaxed gates, site-specific rainfall coefficients or new lower-level mechanism families were authorized. Full null equations, simulation settings and audit receipts are in Supporting Information.
 
 ### Detection, physical-site and protocol robustness
 
