@@ -923,6 +923,22 @@ The prefixed classification therefore supported higher-order dependence beyond b
 
 This result should not be paraphrased as "site history does not matter" or "species differ little". Both species response and historical site use contain information. The narrower inference is that **their tested first-order combination does not generate the observed within-taxon concentration of multi-site activation**.
 
+### S11.6 Taxonomic generality of the higher-order coefficient
+
+We decomposed the higher-order rainfall coefficient by taxon using the same linear matched design. The generality audit reused, without modification, the concentration thresholds previously fixed for route-new spread: top-1 positive share ≤0.25, top-5 ≤0.60, HHI ≤0.10 and all leave-one-taxon-out total coefficients >0.
+
+Results:
+- taxa represented: **53**;
+- positive taxa: **25**;
+- taxa contributing ≥1% of positive mass: **19**;
+- top-1 positive share: **0.1878**;
+- top-5 positive share: **0.5416**;
+- HHI: **0.0855**;
+- minimum leave-one-taxon-out higher-order β: **1.2087**;
+- all leave-one-taxon-out totals positive: **yes**.
+
+The prefixed classification was **diffuse taxonomic contribution**. This does not imply that every species responds positively or through the same mechanism; it shows that no single taxon or small set of taxa is required for the pooled higher-order coefficient.
+
 ## S12. Historical recurrence of apparent wet-state recruitment
 
 ### S12.1 Route-new incidence recurrence
