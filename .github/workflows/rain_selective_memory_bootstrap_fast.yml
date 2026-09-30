@@ -1,0 +1,24 @@
+name: rain selective memory bootstrap fast
+on:
+  push:
+    branches: [exploration/rain-selective-memory-bootstrap-fast-v1]
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - run: python -m compileall -q exploration scripts
+      - run: python exploration/run_naamp_rain_selective_memory_bootstrap.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-rain-selective-memory-bootstrap-fast-v0-1
+          path: |
+            exploration/NAAMP_RAIN_SELECTIVE_MEMORY_BOOTSTRAP_CONTRACT_V0_1.json
+            exploration/NAAMP_RAIN_SELECTIVE_MEMORY_BOOTSTRAP_RECEIPT_V0_1.json
+          if-no-files-found: error
