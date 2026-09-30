@@ -33,8 +33,24 @@ Primary files:
 - `figures_pulse_template/` — canonical generated SVG/PNG figures
 - `submission/pulse_template/` — integrated cover letter, metadata template and submission-readiness checklist
 - `.github/workflows/pulse_template_submission_pipeline.yml` — integrated anonymous/private bundle builder
+- `.github/workflows/pulse_template_archive_pipeline.yml` — fail-closed archive metadata builder
+- `submission/pulse_template/ARCHIVE_READINESS.md` — license/DOI/archive checklist
 
 The frozen RC11 manuscript remains available as `paper/manuscript.md` and is not overwritten.
+
+## Integrated release authority
+
+Validated scientific RC1:
+
+- `release/jae-higher-order-rc1`
+- `submission/jae-higher-order-v1`
+- frozen commit `c5d40b6302c8166e965b213757328501de685fb9`
+
+RC1's validated anonymous bundle and SHA256 digest are recorded in:
+
+`submission/pulse_template/RC1_MANIFEST.md`
+
+Later commits on the revision branch are limited to archive/submission tooling unless a new scientific release candidate is explicitly created.
 
 ## Result in one paragraph
 
