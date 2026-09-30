@@ -1,0 +1,44 @@
+{
+  "analysis": "naamp_soil_state_vs_change_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "question": "Is rainfall-associated strong chorus activation associated mainly with the change in soil moisture between matched surveys, or with the absolute shallow-soil state reached in the wetter survey?",
+  "sample": "Physically stable NAAMP matched pairs with valid ERA5 swvl1 and 72 h precipitation for both surveys.",
+  "environmental_reference": "Compute swvl1 mean, SD, median and quartiles from all midpoint-qualified eligible runs before fitting frog-response models.",
+  "primary_model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + wet_swvl1_z + dry_swvl1_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "restrictions": {
+    "pure_change": "H0: beta_wet_swvl1 + beta_dry_swvl1 = 0. Under a pure wet-minus-dry change model, wet and dry coefficients are equal and opposite.",
+    "wet_state_only": "H0: beta_dry_swvl1 = 0. Under a pure absolute wet-state model, dry baseline adds no information after wet state.",
+    "wet_state_positive": "beta_wet_swvl1 >0 with complete 95% CI >0."
+  },
+  "classification": {
+    "change_sufficient": "pure-change restriction P>=0.05 and wet-state-positive.",
+    "wet_state_favored": "wet-state-only restriction P>=0.05, pure-change restriction P<0.05, and wet-state-positive.",
+    "mixed_state_and_change": "both restrictions P<0.05 and wet-state-positive.",
+    "unresolved": "otherwise."
+  },
+  "threshold_diagnostic": {
+    "threshold": "Outcome-blind Q75 of swvl1 across all midpoint-qualified eligible runs.",
+    "transition_categories": [
+      "cross_up: dry below Q75 and wet >= Q75",
+      "remain_high: dry and wet >= Q75",
+      "remain_low: dry and wet below Q75",
+      "cross_down: dry >= Q75 and wet below Q75"
+    ],
+    "model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + C(soil_transition) + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+    "use": "Descriptive threshold diagnostic only; no separate pass rule."
+  },
+  "secondary": [
+    "Repeat continuous primary model for new_ci3_count.",
+    "Repeat strong_new_score with swvl2.",
+    "Repeat primary in same-observer + physically stable pairs.",
+    "Report transition-category sample sizes and coefficients relative to remain_low."
+  ],
+  "minimum_gate": "At least 3500 physically stable pairs and 500 routes.",
+  "interpretation": [
+    "Absolute ERA5 soil moisture is a route-scale hydric-state proxy, not pond depth or frog hydration.",
+    "A change-sufficient result would support dynamic wetting rather than a universal fixed moisture threshold.",
+    "A wet-state-favored result would support an absolute hydric-state interpretation.",
+    "This is observational and cannot establish causal mediation."
+  ],
+  "retuning_after_readback": false
+}
