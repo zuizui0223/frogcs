@@ -1,0 +1,19 @@
+name: pulse-template manuscript QA
+on:
+  push:
+    branches: [revision/pulse-template-synthesis-v1]
+    paths:
+      - paper/manuscript_pulse_template_v0_2.md
+      - revision/audit_pulse_template_manuscript.py
+      - .github/workflows/pulse_template_manuscript_qa.yml
+  pull_request:
+    branches: [main]
+permissions: {contents: read}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python revision/audit_pulse_template_manuscript.py
