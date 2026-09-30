@@ -3,7 +3,7 @@ on:
   push:
     branches: [revision/pulse-template-synthesis-v1]
     paths:
-      - paper/manuscript_pulse_template_v0_3.md
+      - paper/manuscript_pulse_template_v0_4.md
       - revision/audit_pulse_template_manuscript.py
       - .github/workflows/pulse_template_manuscript_qa.yml
   pull_request:
