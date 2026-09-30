@@ -106,10 +106,13 @@ jobs:
           assert "higher-order" in sidoc.lower()
           assert "`" not in doc+sidoc
 
-          figs=list(Path("figures_pulse_template").glob("fig*.svg"))
-          assert len(figs)==5, [x.name for x in figs]
+          svgs=list(Path("figures_pulse_template").glob("fig*.svg"))
+          pngs=list(Path("figures_pulse_template").glob("fig*.png"))
+          assert len(svgs)==5, [x.name for x in svgs]
+          assert len(pngs)==5, [x.name for x in pngs]
+          assert all(x.stat().st_size > 50000 for x in pngs), [(x.name,x.stat().st_size) for x in pngs]
 
-          print({"status":"PASS","manuscript_words":manuscript_words,"abstract_words":abstract_words,"keywords":len(keylist),"main_bytes":main.stat().st_size,"si_bytes":si.stat().st_size,"figures":len(figs)})
+          print({"status":"PASS","manuscript_words":manuscript_words,"abstract_words":abstract_words,"keywords":len(keylist),"main_bytes":main.stat().st_size,"si_bytes":si.stat().st_size,"svg_figures":len(svgs),"png_figures":len(pngs)})
           PY
       - name: Assemble anonymous scientific bundle
         run: |
@@ -123,11 +126,11 @@ jobs:
           cp paper/supporting_information_pulse_template_v0_1.md "$sub/Supporting_Information.md"
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
           cp submission/pulse_template/cover_letter.md "$sub/Cover_Letter.md"
-          cp figures_pulse_template/fig1_chorus_state_switch.svg "$sub/Figure1.svg"
-          cp figures_pulse_template/fig2_spatial_depth_strong_chorus.svg "$sub/Figure2.svg"
-          cp figures_pulse_template/fig3_higher_order_null_ladder.svg "$sub/Figure3.svg"
-          cp figures_pulse_template/fig4_historical_site_targeting.svg "$sub/Figure4.svg"
-          cp figures_pulse_template/fig5_breadth_and_heterogeneity.svg "$sub/Figure5.svg"
+          cp figures_pulse_template/fig1_chorus_state_switch.png "$sub/Figure1.png"
+          cp figures_pulse_template/fig2_spatial_depth_strong_chorus.png "$sub/Figure2.png"
+          cp figures_pulse_template/fig3_higher_order_null_ladder.png "$sub/Figure3.png"
+          cp figures_pulse_template/fig4_historical_site_targeting.png "$sub/Figure4.png"
+          cp figures_pulse_template/fig5_breadth_and_heterogeneity.png "$sub/Figure5.png"
           cp revision/INTEGRATED_RESULTS_V0_1.json "$audit/"
           cp revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_2.md "$audit/"
           cp revision/HIGHER_ORDER_CHORUS_COHERENCE_SYNTHESIS_V0_2.md "$audit/"
@@ -207,11 +210,11 @@ jobs:
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
           cp build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md "$sub/Title_Page.md"
           cp submission/pulse_template/cover_letter.md "$sub/Cover_Letter.md"
-          cp figures_pulse_template/fig1_chorus_state_switch.svg "$sub/Figure1.svg"
-          cp figures_pulse_template/fig2_spatial_depth_strong_chorus.svg "$sub/Figure2.svg"
-          cp figures_pulse_template/fig3_higher_order_null_ladder.svg "$sub/Figure3.svg"
-          cp figures_pulse_template/fig4_historical_site_targeting.svg "$sub/Figure4.svg"
-          cp figures_pulse_template/fig5_breadth_and_heterogeneity.svg "$sub/Figure5.svg"
+          cp figures_pulse_template/fig1_chorus_state_switch.png "$sub/Figure1.png"
+          cp figures_pulse_template/fig2_spatial_depth_strong_chorus.png "$sub/Figure2.png"
+          cp figures_pulse_template/fig3_higher_order_null_ladder.png "$sub/Figure3.png"
+          cp figures_pulse_template/fig4_historical_site_targeting.png "$sub/Figure4.png"
+          cp figures_pulse_template/fig5_breadth_and_heterogeneity.png "$sub/Figure5.png"
           cp build/pulse-template-metadata/JAE_PORTAL_FIELDS.json "$audit/"
           cp build/pulse-template-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
           cp build/pulse-template-metadata/CITATION.cff "$audit/"
