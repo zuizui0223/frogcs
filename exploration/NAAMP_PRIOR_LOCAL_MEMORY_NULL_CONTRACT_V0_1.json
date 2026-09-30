@@ -1,0 +1,56 @@
+{
+  "analysis": "naamp_prior_local_memory_activation_null_v0_1",
+  "status": "post_readback_mechanism_null_fixed_before_endpoint",
+  "question": "Can prior species x physical-site acoustic history, combined with persistence of the focal dry state, reproduce the observed rainfall-associated four-component matrix allocation?",
+  "population": {
+    "base": "Frozen 4,236 NAAMP matched pairs.",
+    "physical_stability": "Retain only pairs with identical nonmissing SiteID at all ten focal StopNumbers.",
+    "prior_history": "Require at least one eligible run in the same State x RouteNumber x RunNumber stratum strictly before the earlier focal-pair year that sampled at least 8 of the 10 focal SiteIDs.",
+    "minimum_gate": ">=1500 pairs and >=300 routes before any null endpoint is read."
+  },
+  "historical_probability": {
+    "species_support": "Use the frozen full stratum species pool from the existing uniform-null machinery only as support; focal wet outcomes do not enter historical probabilities.",
+    "physical_site_exposure": "For each focal current SiteID, count only strictly prior eligible runs in which that exact SiteID was sampled.",
+    "cell_frequency": "Prior detections / prior SiteID exposures for each species x focal SiteID.",
+    "smoothing": "Use kappa=2 hierarchical shrinkage, mirroring the existing uniform-null smoothing: species means shrink to a stratum-wide prior mean, then cell frequencies shrink to the species mean.",
+    "no_future_information": true
+  },
+  "focal_persistence": {
+    "anchor": 0.75,
+    "construction": "p_anchor=(1-a)*p_prior + a*dry_cell_state before the common magnitude-matching shift.",
+    "rationale": "Same fixed persistence strength as the existing primary persistence-preserving stress-test null."
+  },
+  "magnitude_matching": "For each pair solve one common logit shift so expected wet incidence equals observed wet incidence count.",
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "primary_test": "Four-component rain-contrast beta vector (corner, spatial spread, taxonomic deepening, within-core) with the same Mahalanobis plus-one Monte Carlo omnibus used by the existing nulls.",
+  "secondary": [
+    "Boundary-crossing share",
+    "component shares",
+    "taxonomic-minus-spatial contrast"
+  ],
+  "identity_controls": {
+    "purpose": "Distinguish specific physical-site memory from generic extra heterogeneity.",
+    "construction": "Within each focal pair, deterministically permute the ten historical SiteID probability columns while leaving species probabilities, dry state, wet incidence magnitude and route geometry unchanged.",
+    "permutations": [
+      "perm1: SHA256(State|RouteNumber|RunNumber|year_earlier|perm1)-seeded permutation",
+      "perm2: SHA256(State|RouteNumber|RunNumber|year_earlier|perm2)-seeded permutation"
+    ]
+  },
+  "prefixed_interpretation": {
+    "true_memory_sufficient": "Primary true-memory omnibus P>=0.05.",
+    "site_identity_specific": "True-memory P>=0.05 AND both identity-permuted control P<0.05.",
+    "generic_history_heterogeneity": "True-memory P>=0.05 AND at least one identity-permuted control P>=0.05.",
+    "memory_insufficient": "True-memory P<0.05."
+  },
+  "boundaries": [
+    "Failure to reject means sufficiency under this null family, not proof of the biological mechanism.",
+    "Prior acoustic history can encode persistent habitat suitability, local population recurrence, observer-access geometry or other stable site properties.",
+    "The stratum species pool is used as support only and can include taxa first documented later; all probability weights are strictly prior-only.",
+    "No individual movement, continuous occupancy, reproductive success or causal rainfall claim is authorized.",
+    "No RC11 submission change is authorized."
+  ],
+  "retuning_after_readback": false
+}
