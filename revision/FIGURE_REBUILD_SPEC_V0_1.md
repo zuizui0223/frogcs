@@ -204,17 +204,19 @@ Rank higher-order taxon contributions; annotate:
 
 Optionally show the strong-activation concentration values (57 taxa, top1 13.9%, top5 49.2%, HHI 0.074) as a small corroborating inset.
 
-**B. Geographic robustness.**
-Leave-one-state-out strong-activation coefficient with 95% intervals.
+**B. Higher-order geographic robustness.**
+Leave-one-state-out higher-order coefficient with 95% intervals:
+- all 21 coefficients positive with 95% CIs above zero
+- β range = 0.967–1.775
+- minimum lower CI = 0.397
 
-**C. State heterogeneity.**
-State-specific slopes plus random-slope population estimate:
-- 13/19 positive point estimates
-- 6/19 wholly positive CIs
-- population β = 1.65
-- state SD = 3.46
+**C. Geographic heterogeneity.**
+Higher-order state-specific slopes:
+- 17 estimable states
+- 14/17 positive point estimates
+- 2/17 wholly positive CIs
 
-Make the visual distinction between **robustness to omission** and **homogeneity** explicit.
+Optionally pair with the strong-activation random-slope result (population β=1.65, state SD=3.46) to show that robustness to omission and homogeneity are different questions.
 
 **D. FrogID scope panel.**
 Show only the shared active-unit taxonomic-depth estimand:
