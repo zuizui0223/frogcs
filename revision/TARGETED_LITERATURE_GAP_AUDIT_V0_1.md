@@ -111,9 +111,15 @@ The frog system reveals a distinction that may apply broadly to behaviourally cr
 
 ## Addendum: higher-order spatial coherence after the prefixed test
 
-A targeted follow-up search was conducted after the higher-order spatial-coherence endpoint was fixed. The closest anuran "synchrony" literature mainly concerns **within-chorus call timing among individual males**: neighboring males may overlap, alternate or synchronize calls within a pond or local chorus. That literature addresses communication timing and receiver consequences, not how rainfall-associated recruitment is distributed across repeated physical breeding/listening sites at the community scale.
+A targeted follow-up search was conducted after the higher-order spatial-coherence endpoint was fixed. The relevant frog literature already contains **three kinds of spatial coherence**, all of which must be acknowledged.
 
-Assemblage-wide acoustic studies sample many ponds and quantify temporal variation in calling composition or environmental drivers, but the focal response is typically site-level activity, composition or richness. They do not condition on both the number of newly recruited taxa and total extra-site spread and then test whether residual spread is unusually concentrated within the same taxa at third-and-later sites.
+1. **Within-chorus timing.** Neighboring males can overlap, alternate or synchronize calls within a pond or local chorus; this concerns communication timing among callers.
+2. **Cross-site calling covariance.** Brooke et al. (2000) measured *Cophixalus ornatus* calling intensity at six locations along a 560-m transect and found substantial day-to-day variation shared among sites after accounting for persistent local differences.
+3. **Regional population synchrony.** Trenham et al. (2003) found weak but detectable intraspecific synchrony of wetland-breeding frog/toad population fluctuations among sites separated by up to 50–100 km, while rainfall itself was more strongly synchronized.
+
+Thus the novelty cannot be "frogs are spatially coherent" or "weather synchronizes calling". The unresolved level is the **allocation of a short behavioural pulse inside a repeated multi-species × multi-site matrix**.
+
+Assemblage-wide acoustic studies sample many ponds and quantify temporal variation in calling composition or environmental drivers, but the focal response is typically site-level activity, composition or richness. The studies above likewise quantify covariance/synchrony among sites. They do not condition on both the number of newly recruited taxa and total extra-site spread and then ask whether residual spread is unusually concentrated within the same recruited taxa at third-and-later sites, nor link that higher-order concentration to species-specific historical physical sites.
 
 The new prefixed higher-order test therefore sharpens the gap:
 
@@ -147,3 +153,22 @@ Geographic audit, using the frozen RC11 leave-one-state-out rule:
 - minimum lower CI 0.397.
 
 State-specific effects remain heterogeneous (14/17 positive point estimates, 2/17 positive CIs), so the evidence supports **broad but non-uniform** higher-order coherence within NAAMP, not spatial invariance.
+
+
+## Closest-prior-study correction
+
+Two studies materially narrow the novelty claim and are now explicitly incorporated into the manuscript.
+
+- Brooke, Alford & Schwarzkopf (2000), *Behavioral Ecology and Sociobiology* 49:79–87, DOI 10.1007/s002650000256: one species, six locations along a 560-m transect, environmental/social controls of calling and shared day-to-day variation among sites.
+- Trenham et al. (2003), *Ecological Applications* 13:1522–1532, DOI 10.1890/02-5206: eight wetland-breeding species, regional population turnover and weak spatial synchrony up to 50–100 km, with rainfall correlations on 1–4-year lags.
+
+Accordingly, avoid:
+- "first evidence of spatial coherence in frog choruses";
+- "first evidence that rainfall coordinates frog activity across sites";
+- "frog sites respond independently in prior work".
+
+Preferred novelty statement:
+
+> **This study resolves a different order of structure: after conditioning on how many taxa are recruited and how much total extra-site spread occurs, rainfall-associated activity is still disproportionately concentrated within the same recruited taxa at third-and-later sites; this higher-order concentration survives cross-fitted species response, prior site history, observer/site controls, and is distributed across taxa and states.**
+
+That distinction is substantially narrower and more defensible than a generic synchrony claim.
