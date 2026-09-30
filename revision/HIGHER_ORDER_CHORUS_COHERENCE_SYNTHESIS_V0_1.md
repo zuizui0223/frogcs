@@ -8,7 +8,7 @@ Across repeated NAAMP routes, recent-rain conditions are associated with a struc
 2. newly recruited taxa do not merely add isolated detections but deepen across three or more sites;
 3. at the same number of recruited taxa and the same total amount of extra-stop spread, extra spatial participation is unusually concentrated within the same taxa;
 4. this higher-order concentration persists when observer identity and physical SiteID are held constant;
-5. it also persists under a cross-fit species-specific rainfall-response null and under a joint null combining those species responses with strictly prior local species × SiteID history and dry-state persistence;
+5. it also persists under a cross-fit species-specific rainfall-response null, a joint species + strictly-prior SiteID-history + dry-persistence null, and the pre-existing final held-out rain × local-history gate;
 6. strong wet-state activity preferentially reappears at physical sites where the same species had previously formed strong choruses.
 
 ## Strongest quantitative chain
@@ -41,6 +41,8 @@ Strictly-prior-history subset, 2,916 pairs:
 - observed higher-order β = 1.6503
 - joint cross-fit species + prior SiteID history + dry persistence prediction = 1.3535
 - residual 0.2969 vs −0.1319–0.1187; P=0.000999
+- final held-out rain × history gate prediction = 1.3323
+- final-gate residual 0.3180 vs −0.1172–0.1255; P=0.000999
 
 Same observer + same physical SiteID, 3,115 pairs:
 - observed higher-order β = 1.8173
@@ -64,7 +66,7 @@ The novelty is not:
 
 The defensible novelty is the conjunction:
 
-> **Rain-associated chorus activation contains higher-order spatial dependence: after controlling for the number of newly recruited taxa and the total amount of spread, activation remains too deeply concentrated within the same taxa across multiple sites for uniform activation, dry persistence, transferable species-specific rainfall responses, or their additive combination with strictly prior local site history to reproduce. The strong chorus states are then preferentially placed at historically favoured species-specific sites.**
+> **Rain-associated chorus activation contains higher-order spatial dependence: after controlling for the number of newly recruited taxa and the total amount of spread, activation remains too deeply concentrated within the same taxa across multiple sites for uniform activation, dry persistence, transferable species-specific rainfall responses, their additive combination with strictly prior local site history, or the pre-existing held-out rain × history gate to reproduce. The strong chorus states are then preferentially placed at historically favoured species-specific sites.**
 
 ## General ecological principle
 
