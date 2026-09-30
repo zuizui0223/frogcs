@@ -1,0 +1,21 @@
+{
+  "analysis": "naamp_soil_moisture_protocol_window_v0_1",
+  "status": "fixed_before_endpoint_readback",
+  "parent": "NAAMP_SOIL_MOISTURE_CUE_V0_1",
+  "question": "Does the shallow-soil wetness association with strong chorus activation persist when the matched comparison is not wholly confined to the NAAMP 0-3-day post-rain target window?",
+  "sample": "Weather-qualified pairs constructed exactly by run_naamp_soil_moisture_cue.py.",
+  "primary_subset": "dry_days_since_rain >= 4. Because the wet member has smaller DaysSinceRain, this excludes comparisons where both surveys lie within 0-3 days after rain.",
+  "secondary_subset": "wet_days_since_rain >= 4, placing both surveys outside the 0-3-day window.",
+  "model": "strong_new_score ~ rain_contrast + rain72_amount_difference_z + soil1_gain_difference_z + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber), route-clustered covariance.",
+  "primary_gate": ">=1500 pairs and >=300 routes.",
+  "primary_rule": "soil1_gain_difference_z beta >0 with complete 95% CI >0.",
+  "secondary_gate": ">=150 pairs and >=100 routes; directional diagnostic only, no formal pass gate.",
+  "same_observer_primary": "Repeat primary subset in same-observer + physically stable pairs if >=1000 pairs and >=250 routes.",
+  "interpretation": [
+    "A primary pass constrains simple 0-3-day protocol targeting as a sufficient explanation for the soil-water association.",
+    "It does not eliminate all scheduling or time-varying confounding.",
+    "ERA5 swvl1 is route-scale environmental context, not body hydration or pond depth.",
+    "No causal mediation or RC11 modification is authorized."
+  ],
+  "retuning_after_readback": false
+}
