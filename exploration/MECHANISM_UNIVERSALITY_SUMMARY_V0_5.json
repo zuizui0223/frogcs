@@ -3,137 +3,139 @@
   "status": "exploratory_not_submission_authority",
   "submission_authority": "015a675324800f2e5ac9ab0985b080fe88adc375",
   "synthesis": {
-    "ecological_model": "Rainfall acts primarily as a temporal activation gate on a persistent, species-specific local acoustic template. Previously silent species x site cells re-enter substantial chorus states after rain, and the spatial placement of that reactivation is strongly predicted by the same species' prior use of the same physical SiteID.",
-    "strongest_distinction": "The evidence is for recurrent acoustic activation, not de novo colonization, uniform amplification, or weak-call-only detectability.",
-    "causal_boundary": "The proximal cue remains unresolved: hydration, breeding-site water state, endocrine state and other weather covariates are not directly measured."
+    "core_process": "Rainfall-associated change in NAAMP is dominated by reactivation of previously silent species x site cells, frequently reaching overlapping/full chorus intensity, rather than by simple amplification of already-active cells.",
+    "strongest_ecological_interpretation": "Rain acts as a temporal gate over a persistent, species-specific local acoustic template. Wet surveys disproportionately reactivate species at physical SiteIDs where that species had called in other years, including prior strong choruses.",
+    "spatial_form": "Recruitment is not primarily an increase in the number of route-new species or in the number merely reaching a second stop. The excess appears at third-and-later occupied stops and is overwhelmingly carried by CI2-3/CI3 chorus activity.",
+    "generality": "Strong activation is diffuse across taxa and not dependent on any one state, observer or stop relocation, but state-specific effects are heterogeneous and external cross-continental replication of the full matrix rule is not established.",
+    "unresolved": "The stable local template may encode persistent habitat matching, recurrent local populations, hydrological microstructure or other species x site properties. Broad NWI hydroperiod/system categories do not explain the strong-chorus response."
   },
-  "evidence_chain": {
-    "activation_not_amplification": {
-      "calling_index_activation_share": 0.6528793213930071,
-      "shared_positive_intensity_share": 0.06915913749245683,
-      "strong_ci2_3_share_of_activation_beta": 0.8707082810857251,
-      "new_ci3_beta": 0.4413143755210998,
+  "strongest_completed_evidence": {
+    "calling_intensity_decomposition": {
+      "full_pairs": 4236,
+      "total_calling_index_beta": 2.8410419576031223,
+      "new_activation_beta": 1.8548575453289868,
+      "new_activation_share": 0.6528793213930071,
+      "already_active_intensity_beta": 0.19648401136771304,
+      "already_active_intensity_share": 0.06915913749245683
+    },
+    "strong_and_full_chorus": {
+      "strong_ci2_3_score_beta": 1.6150398249522895,
+      "strong_ci2_3_ci95": [
+        0.49343778495183677,
+        2.736641864952742
+      ],
+      "strong_share_of_activation_beta": 0.8707082810857251,
+      "new_ci3_count_beta": 0.4413143755210998,
       "new_ci3_ci95": [
         0.11436200385886863,
         0.768266747183331
       ],
-      "robust_new_ci3_beta": 0.5140603333339901,
-      "robust_new_ci3_ci95": [
-        0.10081588098938073,
-        0.9273047856785995
+      "robust_same_observer_same_site_ci3_beta": 0.5140603333339898,
+      "robust_ci3_ci95": [
+        0.10081588098938049,
+        0.9273047856785992
       ]
     },
-    "detection_and_design_robustness": {
-      "joint_same_observer_physical_stop_pairs": 3115,
-      "joint_strong_score_beta": 1.7428002577104516,
-      "joint_strong_score_ci95": [
+    "physical_and_detection_robustness": {
+      "physically_stable_pairs": 4172,
+      "physically_stable_fraction": 0.9848914069877243,
+      "stable_subset_boundary_share": 0.9305,
+      "stable_subset_null_p": [
+        0.000999000999000999,
+        0.000999000999000999
+      ],
+      "same_observer_same_physical_site_pairs": 3115,
+      "joint_robust_strong_score_beta": 1.7428002577104516,
+      "joint_robust_strong_score_ci95": [
         0.3270455434761059,
         3.158554971944797
       ],
-      "measured_detection_adjusted_pairs": 4024,
-      "measured_detection_adjusted_strong_beta": 1.6225420695541188,
-      "measured_detection_adjusted_strong_ci95": [
+      "detection_adjusted_pairs": 4024,
+      "detection_adjusted_strong_score_beta": 1.6225420695541188,
+      "detection_adjusted_ci95": [
         0.4587043993545672,
         2.7863797397536705
-      ],
-      "protocol_crossing_window_pairs": 1769,
-      "protocol_crossing_strong_beta": 1.7317228632197144,
-      "protocol_crossing_strong_ci95": [
-        0.37189243470675537,
-        3.0915532917326733
       ]
-    },
-    "recurrent_local_memory": {
-      "prior_only_pairs": 2940,
-      "strong_new_score_beta": 1.7502992633619812,
-      "recurrent_strong_beta": 1.7940440146870835,
-      "recurrent_share_of_strong_beta": 1.024992726810087,
-      "same_site_any_share_of_strong_beta": 0.84392184861427,
-      "same_site_prior_strong_share_of_strong_beta": 0.7001084698101772,
-      "no_prior_stratum_strong_beta": -0.04374475132510222,
-      "no_prior_stratum_strong_ci95": [
-        -0.3514765453291564,
-        0.2639870426789519
-      ],
-      "recurrent_ci3_share": 1.0032372231389006,
-      "no_prior_ci3_beta": -0.0014797877818591909,
-      "no_prior_ci3_ci95": [
-        -0.07705921442005437,
-        0.074099638856336
-      ]
-    },
-    "local_targeting_with_exact_species_pair_control": {
-      "candidate_pair_species_groups": 1272,
-      "prior_site_strong_effect_on_wet_strong": 0.1510940272028386,
-      "prior_site_strong_ci95": [
-        0.12912743790722594,
-        0.17306061649845125
-      ],
-      "wet_full_effect": 0.07776463630987582,
-      "wet_full_ci95": [
-        0.06186518697082746,
-        0.09366408564892417
-      ],
-      "same_observer_effect": 0.15888689407540374,
-      "same_observer_ci95": [
-        0.1344406988140015,
-        0.18333308933680598
-      ],
-      "rain_x_memory_beta": 0.023424077393590252,
-      "rain_x_memory_ci95": [
-        -0.00586736524091894,
-        0.05271552002809944
-      ],
-      "interpretation": "Local memory predicts where a route-new species reappears; evidence that larger rain contrast further sharpens targeting is not supported."
-    },
-    "opportunity_normalized_memory": {
-      "leave_pair_out_ci3_rain_beta": 0.016829111731873004,
-      "leave_pair_out_ci3_ci95": [
-        0.0028365770275316175,
-        0.030821646436214392
-      ],
-      "same_observer_ci3_rain_beta": 0.016287333264003598,
-      "same_observer_ci3_ci95": [
-        0.0013086230550534376,
-        0.03126604347295376
-      ],
-      "strict_prior_only_same_site_vs_route_only_beta": 0.02448895976609234,
-      "strict_prior_only_ci95": [
-        0.007001673669270292,
-        0.04197624586291439
-      ],
-      "strict_prior_only_same_observer_beta": 0.030674732734838797,
-      "strict_prior_only_same_observer_ci95": [
-        0.013306013566328205,
-        0.04804345190334939
-      ],
-      "interpretation": "Rain selectively activates historically used species x SiteID cells after adjusting for candidate-cell opportunity, and the strict prior-only comparison separates same-site memory from route-level commonness."
     },
     "spatial_depth": {
-      "extra_stop_beta": 0.6042952999648085,
-      "second_stop_beta": 0.13170590853393746,
-      "third_plus_stop_beta": 0.4725893914308725,
-      "fourth_plus_stop_beta": 0.3628430638358824,
-      "third_plus_null_excess_both": true,
-      "third_plus_strong_beta": 0.4598290241532527,
+      "route_new_species_gain_beta": 0.1846754325853956,
+      "second_stop_incidence_beta": 0.13170590853393746,
+      "third_plus_stop_incidence_beta": 0.4725893914308725,
+      "fourth_plus_stop_incidence_beta": 0.3628430638358824,
+      "third_plus_uniform_p": 0.000999000999000999,
+      "third_plus_persistence_p": 0.000999000999000999,
+      "interpretation": "Excess spatial participation is concentrated at the third and later occupied stops, not in creating more route-new species or merely reaching a second stop."
+    },
+    "spatial_depth_chorus": {
+      "third_plus_total_beta": 0.47258939143084705,
+      "third_plus_strong_ci2_3_beta": 0.4598290241532527,
       "third_plus_strong_ci95": [
         0.15380477056942105,
         0.7658532777370843
       ],
-      "strong_share_of_third_plus_beta": 0.9729990399510237,
-      "robust_strong_share": 0.9543102422904208,
-      "interpretation": "The spatial excess begins mainly at the third and later occupied stops and is almost entirely carried by route-new species that reach CallingIndex 2-3."
+      "strong_share": 0.9729990399510237,
+      "third_plus_ci3_beta": 0.36305644282539035,
+      "robust_strong_share": 0.9543102422904208
     },
-    "spatial_placement": {
-      "conditional_extra_stop_coherence_p_uniform": 0.000999000999000999,
-      "conditional_extra_stop_coherence_p_persistence": 0.000999000999000999,
-      "adjacent_stop_beta": 0.4194242514527655,
-      "adjacent_conditional_p_uniform": 0.000999000999000999,
-      "adjacent_conditional_p_persistence": 0.000999000999000999,
-      "robust_adjacent_conditional_p_uniform": 0.000999000999000999,
-      "robust_adjacent_conditional_p_persistence": 0.000999000999000999,
-      "euclidean_mpd_mst_cluster_gate": false,
-      "interpretation": "Recruitment is route-topologically coherent and disproportionately adjacent along the ten-stop sequence, but Euclidean MPD/MST compactness conditional on occupied-stop count is not established."
+    "local_acoustic_memory": {
+      "route_new_incidence_recurrent_share_leave_pair_out": 0.9809270884016074,
+      "route_new_incidence_recurrent_share_prior_only": 0.9893366938882531,
+      "prior_only_recurrent_beta": 0.8758097551004488,
+      "prior_only_recurrent_ci95": [
+        0.24571984306981243,
+        1.5058996671310851
+      ],
+      "prior_only_oneoff_beta": 0.009439685773289727,
+      "prior_only_oneoff_ci95": [
+        -0.1411605535064917,
+        0.16003992505307113
+      ],
+      "strong_new_score_prior_recurrent_share": 1.024927,
+      "strong_new_score_same_site_any_share": 0.844,
+      "strong_new_score_same_site_prior_strong_share": 0.7,
+      "note": "Strong-score shares >1 can occur because no-prior component rain coefficients are slightly negative; they are coefficient decompositions, not raw proportions."
+    },
+    "local_targeting_within_pair_species": {
+      "wet_strong_prior_site_strong_beta": 0.1510940272028386,
+      "ci95": [
+        0.12912743790722594,
+        0.17306061649845125
+      ],
+      "pair_species_groups": 1272,
+      "routes": 275,
+      "species": 43,
+      "wet_full_beta": 0.07776463630987582,
+      "wet_full_ci95": [
+        0.06186518697082746,
+        0.09366408564892417
+      ],
+      "same_observer_beta": 0.15888689407540374,
+      "same_observer_ci95": [
+        0.1344406988140015,
+        0.18333308933680598
+      ]
+    },
+    "prior_only_opportunity_normalized_memory": {
+      "pairs": 1194,
+      "routes": 294,
+      "rain_selectivity_beta": 0.02448895976609234,
+      "ci95": [
+        0.007001673669270292,
+        0.04197624586291439
+      ],
+      "same_observer_beta": 0.030674732734838797,
+      "same_observer_ci95": [
+        0.013306013566328205,
+        0.04804345190334939
+      ]
+    },
+    "full_chorus_memory": {
+      "new_ci3_beta": 0.4396911581301782,
+      "recurrent_share": 0.980543209373069,
+      "same_site_recurrent_share": 0.9040000006981866,
+      "prior_only_new_ci3_beta": 0.4571163983344871,
+      "prior_only_any_recurrent_beta": 0.45859618611634645,
+      "prior_only_oneoff_beta": -0.0014797877818591909
     },
     "taxonomic_generality": {
       "strong_activation_species": 57,
@@ -141,41 +143,53 @@
       "top1_positive_share": 0.138781580735396,
       "top5_positive_share": 0.4917813568649047,
       "hhi": 0.07445721047263541,
-      "diffuse_rule": true,
-      "robust_top1_share": 0.13850879719542133,
-      "robust_top5_share": 0.5451503519550087,
-      "robust_hhi": 0.08142688058401427,
-      "robust_diffuse_rule": true
+      "all_leave_one_species_out_totals_positive": true,
+      "robust_same_observer_same_site_top1_share": 0.13850879719542133,
+      "robust_hhi": 0.08142688058401427
     },
-    "geographic_generality": {
-      "leave_one_state_out_all_ci_positive": true,
-      "state_specific_estimable": 19,
-      "state_specific_positive_fraction": 0.6842105263157895,
-      "state_specific_ci_positive_fraction": 0.3157894736842105,
-      "random_slope_population_beta": 1.654511396413927,
-      "random_slope_state_sd": 3.4605301334379646,
-      "interpretation": "The pooled NAAMP signal is not controlled by one state, but state-specific effects are heterogeneous and not uniformly positive."
+    "geographic_heterogeneity": {
+      "states_total": 21,
+      "states_estimable": 19,
+      "positive_fraction": 0.6842105263157895,
+      "ci_positive_fraction": 0.3157894736842105,
+      "median_state_beta": 1.1267103619561687,
+      "state_beta_range": [
+        -4.002747196598834,
+        11.414108485374848
+      ],
+      "mixed_population_beta": 1.654511396413927,
+      "mixed_state_slope_sd": 3.4605301334379646,
+      "leave_one_state_out_all_positive": true,
+      "leave_one_state_out_all_ci_positive": true
     }
   },
-  "mechanisms_not_supported": {
-    "simple_social_cue_targeting": "Route-new recruitment into dry-active stops is not above either activation null.",
-    "sharp_immediate_rain_window": "Strong activation does not show a supported 0-1 day versus >=4 day interaction.",
-    "temperature_or_season_multicue_gate": "Prefixed temperature and RunNumber interaction families do not pass.",
-    "nwi_hydroperiod_for_strong_chorus": "CI2-3 strong activation does not differ detectably between short-hydroperiod and persistent-water NWI contexts.",
-    "nwi_palustrine_vs_riverine_lacustrine_for_strong_chorus": "No supported interaction.",
-    "stable_physical_stop_rainfall_slope": "Empirical stop-specific rain-response slopes are not temporally stable.",
-    "euclidean_local_clustering": "MPD/MST compactness beyond occupied-stop count is not established."
+  "hypotheses_not_supported_or_narrowed": {
+    "simple_amplification": "Already-active-cell intensity contributes only a small fraction of the rainfall slope.",
+    "weak_detection_only": "CI2-3 and CI3 activations increase and survive same-observer, physical-stop and measured detection-condition restrictions.",
+    "simple_social_cue": "Route-new recruitment is not preferentially allocated to dry-active stops beyond the tested nulls.",
+    "immediate_only_pulse": "Strong activation is not demonstrably confined to wet surveys 0-1 days after rain.",
+    "broad_temperature_or_season_gate": "Prespecified full-chorus thermal and RunNumber interaction gates were not supported.",
+    "stable_physical_stop_response_slope": "Empirical stop-specific rainfall slopes do not reproduce across early/late time blocks.",
+    "broad_nwi_hydroperiod": "NWI pulse-limited vs persistent water does not predict strong-chorus rainfall interaction.",
+    "broad_nwi_system": "Palustrine vs Riverine/Lacustrine NWI system does not predict strong-chorus rainfall interaction.",
+    "fine_scale_cluster_after_k_control": "MPD/MST/adjacency compactness conditional on occupied-stop count is not jointly supported."
   },
-  "external_generality": {
-    "anuraset_two_neotropical_sites": "Prefixed threshold-dominance rule not replicated.",
-    "external_effort_complete_spatial_matrix": "Not currently identified.",
-    "conclusion": "Cross-continental universality is not established."
+  "formal_limits": {
+    "durable_four_plus_year_memory": "Not authorized: preregistered route gate failed (239 < 250) before outcome readback in the independent broad design; an earlier smaller precheck is descriptive only.",
+    "cross_continental_matrix_rule": "Not established. Available external datasets either lack complete effort zeros/multi-site daily matrices or did not pass the prefixed threshold-dominance replication rule.",
+    "causal_mechanism": "Hydration, inundation, endocrine activation, prey response and other proximal pathways are not distinguished."
   },
-  "literature_context": {
-    "known": "Anuran rainfall/temperature effects, breeding-site fidelity, calling-station fidelity and interannual breeding-waterbody shifts are individually documented.",
-    "apparent_gap": "The current analysis links weather-driven community expansion to prior species-by-site chorus history: temporal rainfall gating of a persistent local acoustic template."
+  "pending_fixed_analyses": {
+    "prior_local_memory_null": "Does strictly prior species x physical-SiteID history plus dry-state persistence reproduce the original four-component boundary allocation? Includes two SiteID-permuted controls.",
+    "species_specific_memory_beyond_site_quality": "Does focal species x SiteID memory retain predictive value after controlling prior site sampling effort and other-species acoustic productivity?"
   },
-  "pending": [
-    "NAAMP_LOCAL_CHORUS_MEMORY_AGE_CONTRACT_V0_1"
-  ]
+  "current_best_model": {
+    "label": "temporal gate over a persistent local acoustic template",
+    "statement": "Rain-associated conditions reactivate a pre-existing, species-specific network of chorus sites. Once a taxon re-enters the active route, the excess is expressed mainly as strong chorus activity extending to third and later occupied stops. The template is spatially specific but not captured by coarse mapped wetland categories, and its expression varies strongly among states.",
+    "prohibited_extensions": [
+      "Do not call the template continuous occupancy or population persistence without demographic data.",
+      "Do not claim a unique hydrological or physiological mediator.",
+      "Do not call the pattern universal beyond NAAMP."
+    ]
+  }
 }
