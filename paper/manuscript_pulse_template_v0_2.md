@@ -62,7 +62,7 @@ with cluster-robust covariance by State × RouteNumber. Rainfall was observation
 
 We first quantified active-stop number, mean richness among active stops and route gamma richness. To ensure that the local-richness response did not arise simply because newly active stops entered the active-stop mean, we repeated local richness using only StopNumbers that were active in both surveys of a pair. We also quantified the change in occupied-stop count for species present somewhere in both route-runs.
 
-Pairwise Sørensen and normalized Whittaker beta-diversity responses from the frozen RC11 analysis are retained as secondary context but are not central to the integrated mechanism.
+Pairwise Sørensen and normalized Whittaker beta-diversity responses from the frozen pre-integration analysis are retained as secondary context but are not central to the integrated mechanism.
 
 ### Calling-state transitions
 
@@ -97,7 +97,7 @@ For each of 1,000 simulations under the κ = 2 uniform-activation null and the a
 
 across the 1,000 simulated coefficient triplets. The primary statistic was the observed higher-order coefficient minus the null-regression prediction evaluated at the observed first-order recruitment and spread coefficients. Higher-order spatial coherence was supported only if this conditional residual exceeded the upper 95% residual bound under both null families. This analysis tests dependence in spatial expression, not literal simultaneity because route stops were surveyed sequentially.
 
-We then applied the **unchanged endpoint and unchanged conditional-residual statistic** in three pre-specified post-readback audits. First, a joint observer/site robustness analysis restricted the data to matched pairs with the same nonmissing ObserverTrackingID and identical physical SiteID at all ten stops; the same two primary nulls were re-estimated within that subset. Second, a falsification analysis replaced the common species response with route-cross-fitted species-specific rainfall shifts and then with the additive combination of cross-fitted species shifts, strictly prior species × physical-SiteID probabilities and a = 0.75 dry-state persistence. In each case the higher-order coefficient was again conditioned on the simulated route-new-species and total extra-stop coefficients. Third, taxonomic and geographic generality audits decomposed the higher-order coefficient by taxon and repeated the unchanged higher-order rainfall model after omitting each state in turn. The taxonomic concentration thresholds were reused verbatim from the earlier route-new-spread audit; the geographic PASS/strong-PASS rules were reused verbatim from the frozen RC11 geographic audit.
+We then applied the **unchanged endpoint and unchanged conditional-residual statistic** in three pre-specified post-readback audits. First, a joint observer/site robustness analysis restricted the data to matched pairs with the same nonmissing ObserverTrackingID and identical physical SiteID at all ten stops; the same two primary nulls were re-estimated within that subset. Second, a falsification analysis replaced the common species response with route-cross-fitted species-specific rainfall shifts and then with the additive combination of cross-fitted species shifts, strictly prior species × physical-SiteID probabilities and a = 0.75 dry-state persistence. In each case the higher-order coefficient was again conditioned on the simulated route-new-species and total extra-stop coefficients. Third, taxonomic and geographic generality audits decomposed the higher-order coefficient by taxon and repeated the unchanged higher-order rainfall model after omitting each state in turn. The taxonomic concentration thresholds were reused verbatim from the earlier route-new-spread audit; the geographic PASS/strong-PASS rules were reused verbatim from the frozen pre-integration geographic audit.
 
 ### Exact species × stop allocation
 
@@ -162,7 +162,7 @@ All six families were evaluated with the same four-component allocation test. Fa
 
 ### Detection, physical-site and protocol robustness
 
-The frozen RC11 robustness analyses adjusted for recorded hearing impairment, major-noise timeouts and wind, with traffic and Massachusetts noise-index sensitivities. A same-observer subset retained 3,152 pairs. Physical-site analyses required identical SiteID correspondence across the two surveys. A protocol-window sensitivity required the drier survey to occur at least four days after rain, thereby excluding comparisons entirely confined to the programme-target 0–3 day window.
+The frozen pre-integration robustness analyses adjusted for recorded hearing impairment, major-noise timeouts and wind, with traffic and Massachusetts noise-index sensitivities. A same-observer subset retained 3,152 pairs. Physical-site analyses required identical SiteID correspondence across the two surveys. A protocol-window sensitivity required the drier survey to occur at least four days after rain, thereby excluding comparisons entirely confined to the programme-target 0–3 day window.
 
 These analyses constrain observer turnover, recorded acoustic conditions and stop relocation but do not constitute a complete detection model.
 
@@ -170,7 +170,7 @@ These analyses constrain observer turnover, recorded acoustic conditions and sto
 
 For the **higher-order coherence endpoint**, we decomposed the linear rainfall coefficient across taxa and summarized the positive-contribution distribution, top-1 and top-5 shares, Herfindahl concentration, and leave-one-taxon-out totals. We classified the contribution as diffuse only if it met the previously fixed route-new-spread thresholds: top-1 ≤ 0.25, top-5 ≤ 0.60, HHI ≤ 0.10 and every leave-one-taxon-out total remained positive.
 
-For geographic robustness, the unchanged higher-order rainfall model was refit 21 times, omitting one state per fit. As in the frozen RC11 audit, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific higher-order slopes were descriptive only.
+For geographic robustness, the unchanged higher-order rainfall model was refit 21 times, omitting one state per fit. As in the frozen pre-integration audit, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific higher-order slopes were descriptive only.
 
 We retained the earlier strong-activation species-concentration and state-random-slope analyses as corroborating context. Robustness to deleting one state was not interpreted as homogeneity among states.
 
@@ -186,7 +186,7 @@ Because an earlier FrogID multispecies result was already known and FrogID lacks
 
 ### Analysis provenance and inferential boundaries
 
-The integrated manuscript combines the frozen RC11 analyses with post-freeze mechanism analyses. The latter were generated after the original matrix results were known. Individual post-freeze tests used versioned contracts that fixed each endpoint or null before its readback. The original mechanism decision tree ended under a prefixed stopping rule; the later higher-order-coherence analyses were initiated only after the manuscript was deliberately reframed around spatial dependence. For those later analyses, the higher-order endpoint, conditioning variables, null families and PASS/FAIL interpretations were fixed before each new endpoint or robustness result was read. All remain **post-opening and exploratory in the manuscript-level sense**. They are not described as preregistered or independent confirmation.
+The integrated manuscript combines the frozen pre-integration analyses with post-freeze mechanism analyses. The latter were generated after the original matrix results were known. Individual post-freeze tests used versioned contracts that fixed each endpoint or null before its readback. The original mechanism decision tree ended under a prefixed stopping rule; the later higher-order-coherence analyses were initiated only after the manuscript was deliberately reframed around spatial dependence. For those later analyses, the higher-order endpoint, conditioning variables, null families and PASS/FAIL interpretations were fixed before each new endpoint or robustness result was read. All remain **post-opening and exploratory in the manuscript-level sense**. They are not described as preregistered or independent confirmation.
 
 The study concerns acoustic reproductive activity. No analysis establishes individual identity, continuous occupancy, dispersal, colonization, abundance, spawning or reproductive success. Terms such as “recurrent”, “re-expression” and “persistent template” refer to repeated species × physical-site acoustic states in the monitoring record.
 
@@ -208,7 +208,7 @@ The majority of that activation was already substantial when first expressed. Di
 
 The same full-chorus result remained when observer identity and physical listening-site identity were simultaneously held constant. In 3,115 such pairs, 0→CI3 activation remained positive (β = 0.514, 95% CI 0.101–0.927). Strong activation also remained positive after adjustment for recorded hearing impairment, major-noise timeout and wind (β = 1.623, 95% CI 0.459–2.786).
 
-These results make a purely marginal-audibility interpretation difficult: the wet-state change frequently involved acoustic cells moving from no recorded call directly to overlapping or full chorus. They do not, however, convert dry-state acoustic zeros into confirmed physical absence.
+These results make a purely marginal-audibility interpretation difficult: the wet-state change frequently involved acoustic cells moving from no recorded call directly to overlapping or full chorus. They do not, however, convert dry-state acoustic zeros into confirmed physical absence (Fig. 1).
 
 ### Recruited taxa show higher-order multi-site coherence carried by strong choruses
 
@@ -224,7 +224,7 @@ The result strengthened rather than weakened when two reviewer-facing explanatio
 
 Nor was the pattern reproduced by transferable species heterogeneity. A route-cross-fit species-specific rainfall-response null predicted higher-order β = 1.198 at the observed first-order coefficients, leaving a residual of 0.326 (95% null −0.101 to 0.109, P = 0.000999). In the 2,916-pair strictly-prior-history subset, the additive combination of cross-fitted species rainfall sensitivity, strictly prior species × SiteID propensity and dry-state persistence predicted 1.353 versus 1.650 observed; the conditional residual was 0.297 (95% null −0.132 to 0.119, P = 0.000999). Therefore the higher-order concentration is not simply the consequence of recruiting more rain-responsive taxa or repeatedly using historically favourable sites.
 
-A separate route-topology diagnostic gave the same qualitative result: adjacent-stop links increased with rainfall contrast (β = 0.419), and remained above both primary null expectations after conditioning on total extra-stop spread (both P = 0.000999). Because StopNumber adjacency is not exact geographic distance and route stops were sampled sequentially, these results support **route-scale spatial coherence**, not literal synchrony or movement among sites.
+A separate route-topology diagnostic gave the same qualitative result: adjacent-stop links increased with rainfall contrast (β = 0.419), and remained above both primary null expectations after conditioning on total extra-stop spread (both P = 0.000999). Because StopNumber adjacency is not exact geographic distance and route stops were sampled sequentially, these results support **route-scale spatial coherence**, not literal synchrony or movement among sites (Figs. 2–3).
 
 ### Strong wet-state activity preferentially reappears at historically used physical sites
 
@@ -236,7 +236,7 @@ Within the same focal pair and species, a SiteID where that species had previous
 
 Historical recurrence was also selectively stronger on the rain-favoured side of the pair. In the directional opportunity-normalized analysis, increasing target rain advantage increased the CI3 targeting contrast between historically recurrent and non-recurrent candidate cells (β = 0.0245, 95% CI 0.0070–0.0420). The same-observer estimate was β = 0.0307 (0.0133–0.0480).
 
-Thus persistent site suitability alone does not capture the whole pattern: the association between historical site strength and current full chorus became stronger toward the survey closer to rain.
+Thus persistent site suitability alone does not capture the whole pattern: the association between historical site strength and current full chorus became stronger toward the survey closer to rain (Fig. 4).
 
 ### The exact species × site allocation is more structured than increasingly realistic null processes
 
@@ -260,7 +260,7 @@ The higher-order endpoint itself was also insensitive to any one state. Across a
 
 This robustness did not imply geographic homogeneity. Among 17 states with estimable state-specific higher-order models, 14 had positive point estimates but only two had wholly positive 95% confidence intervals. The broader strong-activation analysis showed the same pattern of heterogeneity: among 19 estimable states, 13 had positive point estimates and six had wholly positive intervals; its random-slope population estimate was 1.65 with state-slope SD 3.46.
 
-The appropriate interpretation is therefore **broad programme-scale robustness with substantial regional heterogeneity in response strength**.
+The appropriate interpretation is therefore **broad programme-scale robustness with substantial regional heterogeneity in response strength** (Fig. 5).
 
 ### Taxonomic deepening has the same recent-rain direction in Australian FrogID
 
@@ -322,7 +322,7 @@ The study concerns acoustic activity, not abundance, occupancy, colonization, sp
 
 Rainfall was not randomized. Matching within State × RouteNumber × RunNumber, exact-year sensitivities and protocol-window analyses constrain but do not remove time-varying confounding. Rain may also covary with humidity, hydroperiod and other environmental changes that are biologically part of a wet-state transition.
 
-Finally, the integrated framing was developed after the frozen RC11 matrix result. The post-freeze analyses were explicitly exploratory at the manuscript level. Individual endpoints and nulls were versioned before their own readback, and a prefixed decision tree stopped further mechanism escalation after the final held-out null was rejected. This provenance does not turn the integrated story into a preregistered hypothesis; it does, however, make the sequence of discovery and falsification auditable.
+Finally, the integrated framing was developed after the frozen pre-integration matrix result. The post-freeze analyses were explicitly exploratory at the manuscript level. Individual endpoints and nulls were versioned before their own readback, and a prefixed decision tree stopped further mechanism escalation after the final held-out null was rejected. This provenance does not turn the integrated story into a preregistered hypothesis; it does, however, make the sequence of discovery and falsification auditable.
 
 ### Conclusion
 
