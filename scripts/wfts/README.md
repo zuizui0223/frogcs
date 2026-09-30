@@ -8,11 +8,11 @@ Primary inputs are canonical CSV files defined by:
 
 Scientific specification:
 
-`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md`
+`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_2.md`
 
 Main analysis:
 
-`run_wfts_confirmatory_analysis.py`
+`run_wfts_confirmatory_analysis_v0_2.py`
 
 The script implements:
 - adjacent-year pairing within traditional RouteID × SurveyPeriod;
@@ -28,3 +28,10 @@ The script implements:
 `generate_synthetic_wfts_fixture.py` produces only artificial data for code QA. Synthetic PASS/FAIL direction has **no scientific meaning**.
 
 Do not change endpoint/comparator terms after WFTS outcome readback. Any necessary schema adapter from raw WFTS files to the canonical CSVs must be frozen and audited before running the confirmatory endpoint.
+
+
+## Version note
+
+`run_wfts_confirmatory_analysis_v0_1.py` / weather spec v0.1 are retained only as pre-data development history.
+
+v0.2 is the frozen implementation for real WFTS confirmation. It changes candidate support before response-data access so each RouteID × SurveyPeriod simulates only taxa observed somewhere in that route-period time series, matching the NAAMP support rule while retaining strictly-prior probability weights.
