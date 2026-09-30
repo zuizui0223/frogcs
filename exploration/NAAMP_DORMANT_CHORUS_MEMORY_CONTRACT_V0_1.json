@@ -1,0 +1,27 @@
+{
+  "analysis": "naamp_dormant_chorus_memory_v0_1",
+  "status": "post-readback acoustic-dormancy test fixed before endpoint",
+  "question": "Can a species x physical SiteID retain predictive chorus memory after an intervening sampled year in which that species was acoustically silent at the same SiteID?",
+  "population": "Physically stable matched NAAMP pairs with at least one eligible run in the same State x RouteNumber x RunNumber stratum strictly before the earlier focal-pair year. Focal species are route-new in the wet survey and had occurred somewhere on the route before the focal pair.",
+  "unit": "pair x focal species x current physical SiteID",
+  "prior_site_state": {
+    "dormant_memory": "The species had CallingIndex 2-3 at this SiteID in at least one prior eligible run, and after the most recent such strong record there was at least one later prior eligible run sampling the same SiteID with CallingIndex 0; additionally, the most recent prior sampled run at the SiteID had CallingIndex 0.",
+    "active_memory": "The species had a prior CallingIndex 2-3 at the SiteID and the most recent prior sampled run at the SiteID had CallingIndex >0.",
+    "never_strong": "The species had never reached CallingIndex 2-3 at the SiteID in prior eligible runs."
+  },
+  "primary_comparison": "Within pair x species groups containing both dormant_memory and never_strong SiteIDs, retain only those two categories. Regress demeaned wet_strong on dormant_memory, adjusting for log1p(other-species prior strong richness at SiteID) and prior SiteID sampling effort; no intercept; route-clustered covariance.",
+  "primary_prediction": "Dormant-memory coefficient >0 with complete 95% CI >0.",
+  "secondary": [
+    "Repeat for wet_full (CallingIndex 3).",
+    "Repeat primary in same-observer pairs.",
+    "Compare dormant_memory versus active_memory descriptively with the same pairwise construction; no pass gate.",
+    "Report median number of silent prior surveys after last strong chorus among dormant-memory SiteIDs."
+  ],
+  "minimum_gate": "At least 300 informative pair x species groups, >=200 routes and >=20 species for dormant-vs-never comparison.",
+  "interpretation": [
+    "Support demonstrates repeated acoustic use after an intervening sampled nondetection, i.e. acoustic reactivation after observed silence.",
+    "A CI0 survey is not proof of demographic absence; continuous occupancy may persist below acoustic detectability.",
+    "No biological memory, individual fidelity, colonization/extinction, reproductive success, or causal rainfall effect is proven."
+  ],
+  "retuning_after_readback": false
+}
