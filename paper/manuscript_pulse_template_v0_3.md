@@ -62,7 +62,7 @@ with cluster-robust covariance by State × RouteNumber. Rainfall was observation
 
 We first quantified active-stop number, mean richness among active stops and route gamma richness. To ensure that the local-richness response did not arise simply because newly active stops entered the active-stop mean, we repeated local richness using only StopNumbers that were active in both surveys of a pair. We also quantified the change in occupied-stop count for species present somewhere in both route-runs.
 
-Pairwise Sørensen and normalized Whittaker beta-diversity responses from the frozen pre-integration analysis are retained as secondary context but are not central to the integrated mechanism.
+Pairwise Sørensen and normalized Whittaker beta-diversity responses from the earlier matrix analysis are retained as secondary context but are not central to the integrated mechanism.
 
 ### Calling-state transitions
 
@@ -79,7 +79,7 @@ For each species absent from the entire dry route and present in the wet route, 
 - third-and-later incidence: (max(k-2,0));
 - fourth-and-later incidence: (max(k-3,0)).
 
-Thus extra-stop incidence beyond first recruitment equals second-stop incidence plus third-and-later incidence. We fitted the same matched-pair rainfall model to each component and compared the observed coefficients with 1,000 simulations under both the primary uniform-activation null and the primary persistence-preserving null. The prefixed diagnostic criterion for spatial depth was that the third-and-later coefficient exceed the upper 95% range under both nulls.
+Thus extra-stop incidence beyond first recruitment equals second-stop incidence plus third-and-later incidence. We fitted the same matched-pair rainfall model to each component and compared the observed coefficients with 1,000 simulations under both the primary uniform-activation null and the primary persistence-preserving null. The spatial-depth criterion, fixed before that endpoint was inspected, required the third-and-later coefficient to exceed the upper 95% range under both nulls.
 
 We then decomposed the third-and-later coefficient by CallingIndex to determine whether spatial deepening was carried by marginal CI1 detections or by overlapping/full chorus states (CI2/3).
 
@@ -121,11 +121,11 @@ Pairs were retained only when this contrast was estimable in both wet-target and
 
 The matrix allocation and higher-order endpoint were compared with increasingly structured first-order generators: (1) magnitude-matched uniform activation; (2) dry-state persistence; (3) route-cross-fitted species-specific rainfall response; (4) strictly prior species × physical-SiteID history; (5) cross-fitted species response + prior history + dry persistence; and (6) the pre-existing final held-out rain × local-history gate. Pair-level shifts preserved observed wet-incidence magnitude. Cross-fitting prevented focal-route leakage, and local-history probabilities used only information preceding the focal pair where specified.
 
-Each post-freeze specification and its PASS/FAIL rule was fixed before its own endpoint readback. The final gate triggered the prespecified stop: no additional same-data trait fishing, relaxed gates, site-specific rainfall coefficients or new lower-level mechanism families were authorized. Full null equations, simulation settings and audit receipts are in Supporting Information.
+Each specification and PASS/FAIL rule was versioned before its endpoint was inspected. The final gate triggered the stopping rule: no additional same-data trait fishing, relaxed gates, site-specific rainfall coefficients or new lower-level mechanism families were authorized. Full equations, simulation settings and provenance are in Supporting Information.
 
 ### Detection, physical-site and protocol robustness
 
-The frozen pre-integration robustness analyses adjusted for recorded hearing impairment, major-noise timeouts and wind, with traffic and Massachusetts noise-index sensitivities. A same-observer subset retained 3,152 pairs. Physical-site analyses required identical SiteID correspondence across the two surveys. A protocol-window sensitivity required the drier survey to occur at least four days after rain, thereby excluding comparisons entirely confined to the programme-target 0–3 day window.
+The earlier robustness analyses adjusted for recorded hearing impairment, major-noise timeouts and wind, with traffic and Massachusetts noise-index sensitivities. A same-observer subset retained 3,152 pairs. Physical-site analyses required identical SiteID correspondence across the two surveys. A protocol-window sensitivity required the drier survey to occur at least four days after rain, thereby excluding comparisons entirely confined to the programme-target 0–3 day window.
 
 These analyses constrain observer turnover, recorded acoustic conditions and stop relocation but do not constitute a complete detection model.
 
@@ -133,13 +133,13 @@ These analyses constrain observer turnover, recorded acoustic conditions and sto
 
 For the **higher-order coherence endpoint**, we decomposed the linear rainfall coefficient across taxa and summarized the positive-contribution distribution, top-1 and top-5 shares, Herfindahl concentration, and leave-one-taxon-out totals. We classified the contribution as diffuse only if it met the previously fixed route-new-spread thresholds: top-1 ≤ 0.25, top-5 ≤ 0.60, HHI ≤ 0.10 and every leave-one-taxon-out total remained positive.
 
-For geographic robustness, the unchanged higher-order rainfall model was refit 21 times, omitting one state per fit. As in the frozen pre-integration audit, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific higher-order slopes were descriptive only.
+For geographic robustness, the unchanged higher-order rainfall model was refit 21 times, omitting one state per fit. Using the previously fixed geographic rule, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific higher-order slopes were descriptive only.
 
 We retained the earlier strong-activation species-concentration and state-random-slope analyses as corroborating context. Robustness to deleting one state was not interpreted as homogeneity among states.
 
 ### Cross-dataset taxonomic-depth consistency
 
-We retained the frozen estimand-aligned comparison with 40,754 expert-validated Australian FrogID recordings (Rowley & Callaghan, 2020). All retained recordings already contained at least one frog species. The response was excess richness = species richness − 1, and the exposure was standardized log dry-spell duration derived from ERA5. The primary model was
+We retained the estimand-aligned comparison with 40,754 expert-validated Australian FrogID recordings (Rowley & Callaghan, 2020). All retained recordings already contained at least one frog species. The response was excess richness = species richness − 1, and the exposure was standardized log dry-spell duration derived from ERA5. The primary model was
 
 `excess_richness ~ dry_z + State × Month + year_z + sin(hour) + cos(hour)`
 
@@ -149,7 +149,7 @@ Because an earlier FrogID multispecies result was already known and FrogID lacks
 
 ### Analysis provenance and inferential boundaries
 
-The integrated manuscript combines the frozen pre-integration analyses with post-freeze mechanism analyses. The latter were generated after the original matrix results were known. Individual post-freeze tests used versioned contracts that fixed each endpoint or null before its readback. The original mechanism decision tree ended under a prefixed stopping rule; the later higher-order-coherence analyses were initiated only after the manuscript was deliberately reframed around spatial dependence. For those later analyses, the higher-order endpoint, conditioning variables, null families and PASS/FAIL interpretations were fixed before each new endpoint or robustness result was read. All remain **post-opening and exploratory in the manuscript-level sense**. They are not described as preregistered or independent confirmation.
+The integrated manuscript combines the original matrix analyses with later mechanism and higher-order analyses developed after those initial results were known. Each later endpoint, conditioning rule, null family and PASS/FAIL interpretation was versioned before the corresponding result was inspected, and the mechanism sequence ended under an explicit stopping rule. These analyses remain **post-opening and exploratory in the manuscript-level sense**; they are not described as preregistered or as independent confirmation. Supporting Information preserves the full sequence of specifications, negative results and audit receipts.
 
 The study concerns acoustic reproductive activity. No analysis establishes individual identity, continuous occupancy, dispersal, colonization, abundance, spawning or reproductive success. Terms such as “recurrent”, “re-expression” and “persistent template” refer to repeated species × physical-site acoustic states in the monitoring record.
 
@@ -207,7 +207,7 @@ Thus persistent site suitability alone does not capture the whole pattern: the a
 
 The earlier exact four-component decomposition provides complementary context. Rainfall contrast increased total species × stop incidence (β = 1.365, 95% CI 0.757–1.974), and 92.0% of that increase crossed a spatial or taxonomic boundary. Uniform activation predicted 80.9% boundary crossing and the persistence-preserving null 77.9%; both full four-component vectors were rejected (P = 0.000999).
 
-The same allocation departure persisted under cross-fitted species-specific rainfall shifts and strictly prior local history. In the 2,916-pair final held-out rain × history null, observed boundary crossing was 0.921 versus 0.814 expected, taxonomic deepening 0.399 versus 0.316, and within-core rearrangement 0.079 versus 0.186 (P = 0.000999). These matrix results corroborate the higher-order endpoint but do not define it; the prefixed decision tree stopped mechanism escalation at this point (Fig. 4).
+The same allocation departure persisted under cross-fitted species-specific rainfall shifts and strictly prior local history. In the 2,916-pair final held-out rain × history null, observed boundary crossing was 0.921 versus 0.814 expected, taxonomic deepening 0.399 versus 0.316, and within-core rearrangement 0.079 versus 0.186 (P = 0.000999). These matrix results corroborate the higher-order endpoint but do not define it; the documented stopping rule ended mechanism escalation at this point (Fig. 4).
 
 ### Higher-order coherence is taxonomically diffuse but geographically heterogeneous
 
@@ -279,7 +279,7 @@ The study concerns acoustic activity, not abundance, occupancy, colonization, sp
 
 Rainfall was not randomized. Matching within State × RouteNumber × RunNumber, exact-year sensitivities and protocol-window analyses constrain but do not remove time-varying confounding. Rain may also covary with humidity, hydroperiod and other environmental changes that are biologically part of a wet-state transition.
 
-Finally, the integrated framing was developed after the frozen pre-integration matrix result. The post-freeze analyses were explicitly exploratory at the manuscript level. Individual endpoints and nulls were versioned before their own readback, and a prefixed decision tree stopped further mechanism escalation after the final held-out null was rejected. This provenance does not turn the integrated story into a preregistered hypothesis; it does, however, make the sequence of discovery and falsification auditable.
+Finally, the integrated framing was developed after the initial matrix result, so the later analyses are exploratory at the manuscript level rather than preregistered confirmation. Their versioned specifications and stopping rules make the sequence of discovery and falsification auditable.
 
 ### Conclusion
 
