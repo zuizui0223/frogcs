@@ -20,10 +20,11 @@
   },
   "primary_model": {
     "estimator": "OLS with route-clustered covariance",
-    "formula": "third_plus_depth ~ z_prior_strong_breadth + rain_contrast + z_prior_strong_breadth:rain_contrast + prior_route_frequency + temperature_difference + day_of_year_difference + year_gap + C(species) + C(State) + C(RunNumber)",
+    "formula": "third_plus_depth ~ z_prior_strong_breadth + c_rain_contrast + z_prior_strong_breadth:c_rain_contrast + prior_route_frequency + temperature_difference + day_of_year_difference + year_gap + C(species) + C(State) + C(RunNumber)",
     "primary_estimand": "z_prior_strong_breadth main-effect coefficient",
     "rationale": "Species fixed effects remove stable among-species breadth differences; prior_route_frequency controls route-level historical commonness. The remaining estimand asks whether a species activates more deeply on routes where its previously used local strong-chorus template was broader.",
-    "prediction": "positive coefficient with complete 95% CI >0"
+    "prediction": "positive coefficient with complete 95% CI >0",
+    "centered_rain": "c_rain_contrast = rain_contrast minus its mean in the analyzed sample, so the breadth main effect is evaluated at the mean rainfall contrast."
   },
   "secondary": [
     "Repeat primary model with spatial_depth and wet_k.",
