@@ -1,0 +1,61 @@
+{
+  "analysis": "stcroix_direct_hydrology_calling_v0_1",
+  "status": "fixed_after_schema_and_join_eligibility_but_before_response_relationship_readback",
+  "source_pins": {
+    "calling_item": "5b3e4054e4b060350a0ef7e3",
+    "calling_file": "Daily Calling activity Pcrucifer SC4DAI2 2008to2012.csv",
+    "calling_sha256": "1a308c30fa7bcf42e576998625b312f25c700dd1abd6f23ee554e535fc2b81f5",
+    "water_item": "5b3e4093e4b060350a0ef7f6",
+    "water_file": "Median daily water depths.csv",
+    "water_sha256": "a3dca71608ea75be5a1f06c9ddd3fc05a6114ecdb37ff45dc249e532d68e66f3",
+    "site": "SC4DAI2"
+  },
+  "eligible_join": {
+    "dates": 282,
+    "years": [
+      2008,
+      2009,
+      2010,
+      2011,
+      2012
+    ],
+    "per_year": {
+      "2008": 48,
+      "2009": 35,
+      "2010": 82,
+      "2011": 43,
+      "2012": 74
+    },
+    "calling_zero_days": 3,
+    "water_zero_days": 0
+  },
+  "primary": {
+    "response": "log1p(daily Pseudacris crucifer calling integrand)",
+    "predictor": "water_depth_z, standardized across the 282 joined days",
+    "seasonal_control": "year fixed effects + cubic B-spline of within-year season_progress with df=4",
+    "season_progress": "(date - first joined date in that year)/(last joined date - first joined date in that year)",
+    "estimator": "OLS",
+    "covariance": "Newey-West HAC, maxlags=7, observations ordered by date",
+    "prediction": "water_depth_z coefficient >0 with complete 95% CI >0"
+  },
+  "sensitivities": {
+    "year_specific_season_curve": "Replace common spline by year fixed effects plus year-specific linear and quadratic season_progress terms; same water-depth predictor and HAC(7).",
+    "within_year_depth_z": "Standardize water depth within year before fitting the primary seasonal model.",
+    "consecutive_day_first_difference": "For adjacent joined dates exactly one day apart within the same year, regress delta log1p(calling) on delta water depth with year fixed effects; HAC(3). Positive coefficient is directional support, with no pass gate.",
+    "leave_one_year_out": "Refit primary model five times omitting one year; report signs and CIs without requiring all individual CIs to exclude zero."
+  },
+  "no_binary_water_test": "No water-depth >0 versus <=0 test is authorized because the 282 joined calling-season dates contain zero water-depth days = 0.",
+  "interpretation": {
+    "if_supported": "Independent single-site evidence that direct breeding-wetland water state covaries positively with calling activity beyond broad annual and seasonal progression.",
+    "if_not_supported": "The NAAMP soil-water association remains internally strong but does not receive support from this direct-water-depth case study.",
+    "boundaries": [
+      "Single species and single wetland; not a replication of NAAMP community matrix geometry.",
+      "Calling data span each year's first-to-last calling interval and are not year-round monitoring zeros.",
+      "Temperature, precipitation and other daily covariates are not included in this frozen test; residual confounding remains.",
+      "Water depth is habitat hydrology, not frog body hydration.",
+      "Observational association does not establish causal mediation.",
+      "No RC11 submission change is authorized."
+    ]
+  },
+  "retuning_after_readback": false
+}
