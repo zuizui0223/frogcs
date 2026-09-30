@@ -18,7 +18,7 @@ Verified against the current Journal of Animal Ecology author guidelines (Octobe
 - [x] numbered English abstract
 - [x] abstract ≤350 words (current: 330)
 - [x] ≤8 alphabetized keywords
-- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈8,204)
+- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,523)
 - [x] separate Supporting Information
 - [x] continuous-line-number / double-spaced DOCX builder available
 - [x] five reproducible main figures
@@ -44,3 +44,8 @@ Remaining work is limited to:
 - metadata completion;
 - repository/archive finalization;
 - genuinely external replication if suitable independent data later become available.
+
+
+## Revision-stage note
+
+The current JAE revision guidelines require a graphical abstract at the revision stage. It is not part of the present initial-submission bundle and should be prepared only if the manuscript is invited for revision.
