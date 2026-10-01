@@ -185,6 +185,7 @@ def main():
     output={
         "analysis":"wfts_structural_preflight_v0_1",
         "schema":"revision/WFTS_CANONICAL_SCHEMA_V0_1.json",
+        "schema_sha256":sha256_file(SCHEMA_PATH),
         "input_sha256":{
             "runs":sha256_file(runs_path),
             "matrix":sha256_file(matrix_path),
