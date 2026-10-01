@@ -77,5 +77,14 @@ The private metadata bundle remains pending because final human metadata have no
 
 - release: `release/jae-multisite-rc3`
 - submission: `submission/jae-multisite-v3`
-- commit: `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- final release/submission head: `38eb4676320493070ef84ad5e8b803d692878587`
 - receipt: `submission/pulse_template/RC3_RELEASE_RECEIPT.md`
+
+
+## Final release-head validation
+
+The final release/submission head `38eb4676320493070ef84ad5e8b803d692878587` passed all five required workflows.
+
+Receipt:
+
+`submission/pulse_template/RC3_FINAL_QA_RECEIPT.md`
