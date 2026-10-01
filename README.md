@@ -35,7 +35,7 @@ Primary files:
 - `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md` — sole real-data authority for WFTS confirmation
 - `scripts/wfts/` — prospective confirmatory code; real-data authority is `run_wfts_confirmatory_analysis_v0_5.py` with outcome-blind preflight
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
-- `revision/FIGURE_REBUILD_SPEC_V0_2.md`
+- `revision/FIGURE_REBUILD_SPEC_V0_3.md`
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
 - `revision/build_pulse_template_figures.py` — reproducible renderer
 - `figures_pulse_template/` — canonical generated SVG/PNG figures
