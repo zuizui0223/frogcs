@@ -46,13 +46,21 @@ The frozen RC11 manuscript remains available as `paper/manuscript.md` and is not
 
 ## Integrated release authority
 
-Current integrated release candidate:
+Current integrated release authority:
 
+- `release/jae-multisite-rc3`
+- `submission/jae-multisite-v3`
+- frozen commit `fc9509dac8c8374041a0ddb86538bbf58240a748`
+
+RC3 is the validated multi-site version: the exchangeable exact N,K null is secondary, the principal comparator preserves cross-fit species response + strictly-prior physical-site history + dry persistence, and reader-facing terminology is within-taxon multi-site concentration/coherence.
+
+Validated release receipt:
+
+`submission/pulse_template/RC3_RELEASE_RECEIPT.md`
+
+Historical RC2 remains preserved at:
 - `release/jae-higher-order-rc2`
 - `submission/jae-higher-order-v2`
-- frozen commit `726873b8a8063f661c2b8cfc34b533c4e44f5207`
-
-RC2 includes the same scientific manuscript/results as RC1 plus corrected higher-order Zenodo/CITATION metadata tooling and a validated metadata-renderer smoke test.
 
 Historical RC1 remains preserved at:
 
