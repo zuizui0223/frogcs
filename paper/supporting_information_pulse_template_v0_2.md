@@ -2,21 +2,43 @@
 
 ## Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence
 
-This Supporting Information preserves secondary, falsification and alternative-mechanism analyses that are important for transparency but are not part of the main inferential spine.
+This Supporting Information contains the **defence, falsification, robustness and provenance layer** for the integrated manuscript. The main article is deliberately restricted to one biological spine:
 
-The main article now focuses on:
-1. multiscale expansion of the acoustically active community;
-2. directional cross-dataset consistency of active-unit taxonomic deepening in NAAMP and FrogID;
-3. exact species × stop incidence allocation benchmarked against both the original magnitude-matched uniform-activation null and a persistence-preserving stress test;
-4. geographic, protocol-window and recorded acoustic-detection robustness.
+1. previously silent species × site cells switch directly into substantial chorus states;
+2. recruited taxa show excess third-and-later-site participation and within-taxon multi-site concentration;
+3. that concentration exceeds a comparator containing cross-fitted species rainfall response, strictly-prior species × physical-site history, dry-state persistence and matched wet-incidence magnitude;
+4. strong wet-state chorusing preferentially reappears at historically strong species-specific physical sites, with targeting strengthened toward the survey closer to rain.
 
-Pairwise Sørensen stability is retained as secondary bounded context rather than as a title-level discovery because the equivalence margin was post hoc and the observed slope is not exceptional under the uniform-activation null.
+The principal manuscript novelty is therefore **pulse-revealed spatial dependence**, not rainfall-sensitive calling itself, not a high raw boundary-crossing percentage, and not a species trait identified after the fact.
 
-Species-trait and response-trait analyses are retained here as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait.
+Results retained here include the earlier RC11 matrix decomposition and nulls, FrogID cross-dataset consistency, beta-diversity and matrix-fill context, protocol and observer robustness, exact combinatorial diagnostics, route-topology corroboration, alternative trait/mechanism tests, failed falsification gates and full provenance. These analyses are important because they constrain simpler explanations without competing with the main inferential spine.
 
-The analyses below were frozen and versioned before their own results were inspected where applicable. Their negative or non-headline results are retained explicitly to prevent outcome-dependent mechanism switching.
+Pairwise Sørensen stability remains secondary bounded context because the equivalence margin was post hoc and the observed slope is not exceptional under uniform activation. The RC11 boundary-allocation result remains a valid defence result, but the integrated paper now gives priority to the stronger species-response + prior-site-history comparator.
+
+Species-trait and response-trait analyses are retained explicitly as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait. Negative and non-estimable mechanism tests remain visible to prevent outcome-dependent switching.
+
+The analyses below were frozen and versioned before their own results were inspected where applicable. Those safeguards constrain within-analysis flexibility but do not convert post-opening analyses into preregistered hypotheses.
 
 ---
+
+## S0. Evidence routing and reviewer-defence map
+
+The integrated manuscript distinguishes **discovery evidence** from **defence evidence**.
+
+| Reviewer question | Primary response | Detailed location |
+|---|---|---|
+| Is this only the familiar fact that frogs call after rain? | No: the target is the spatial dependence structure of strong chorus activation across repeated sites | Main text; S10–S15 |
+| Could marginal detectability or observer turnover generate the result? | Strong 0→CI3 transitions persist with the same observer and same physical SiteIDs; recorded hearing/noise/wind adjustments retain strong activation | S10; robustness sections |
+| Could intrinsically widespread rain-responsive taxa automatically generate concentration? | Principal comparator includes cross-fit species-specific rain response plus strictly-prior species × SiteID history, dry persistence and matched magnitude | S11.3 |
+| Could static good sites plus rain explain the result? | Held-out rain × local-history gate still underpredicts concentration | S11.4; S15 |
+| Is concentration a mathematical consequence of more taxa or incidences? | No: first-order coefficients are conditioned in the principal simulation; exact N,K diagnostic is directionally consistent | S11.3, S11.7 |
+| Is one taxon or one state driving the signal? | No single taxon or sampled state is required, although state-specific effects are heterogeneous | S11.9–S11.10; S16 |
+| Does recurrence prove memory, movement or philopatry? | No: the result is recurrent species × physical-site chorus placement | S12–S14 |
+| Why not identify a single lower-level mechanism? | The ordered mechanism-null sequence stopped after the final held-out gate; trait and context candidates failed or were non-estimable | S4–S6; S15 |
+| Is NAAMP cross-fitting independent confirmation? | No: all integrated NAAMP analyses remain exploratory at manuscript level | S17 |
+
+The detailed evidence-to-claim ledger is stored in `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`.
+
 
 ## S1. Analysis hierarchy and provenance
 
