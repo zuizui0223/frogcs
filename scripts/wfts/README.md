@@ -4,11 +4,11 @@ This directory contains the analysis implementation frozen **before access to WF
 
 Primary inputs are canonical CSV files defined by:
 
-`revision/WFTS_CANONICAL_SCHEMA_V0_1.json`
+`revision/WFTS_CANONICAL_SCHEMA_V0_2.json`
 
 Scientific specification:
 
-`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_3.md`
+`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md`
 
 Main analysis:
 
@@ -32,10 +32,9 @@ Do not change endpoint/comparator terms after WFTS outcome readback. Any necessa
 
 ## Version note
 
-`run_wfts_confirmatory_analysis_v0_1.py` / weather spec v0.1 are retained only as pre-data development history.
+Earlier schemas/specs/scripts v0.1–v0.3 are retained only as pre-data development history.
 
-v0.2 is the frozen implementation for real WFTS confirmation. It changes candidate support before response-data access so each RouteID × SurveyPeriod simulates only taxa observed somewhere in that route-period time series, matching the NAAMP support rule while retaining strictly-prior probability weights.
-
+v0.2 introduced route × survey-period candidate support matching NAAMP.
 
 ## v0.3 safeguard
 
@@ -44,7 +43,14 @@ The structural coverage gate is evaluated before the analysis loads `taxon_key` 
 
 ## v0.4 authority
 
-`run_wfts_confirmatory_analysis_v0_4.py` is the only script authorized for real WFTS confirmation.
+The sole real-data authority is the tuple:
+
+- `revision/WFTS_CANONICAL_SCHEMA_V0_2.json`
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md`
+- `scripts/wfts/preflight_wfts_structure.py`
+- `scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py`
+
+`run_wfts_confirmatory_analysis_v0_4.py` is the only analysis script authorized for real WFTS confirmation.
 
 It combines:
 - the v0.3 internal pre-response structural gate;
