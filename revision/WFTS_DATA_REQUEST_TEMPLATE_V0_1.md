@@ -8,7 +8,8 @@
 
 Wisconsin Frog and Toad Survey  
 Wisconsin Department of Natural Resources  
-Official programme contact: WFTS@wisconsin.gov
+Official programme contact: WFTS@wisconsin.gov  
+Current WFTS coordinator listed by Wisconsin DNR (2026): Andrew Badje, Andrew.Badje@wisconsin.gov
 
 ## Suggested request
 
