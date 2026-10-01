@@ -27,12 +27,13 @@ Primary files:
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md` — cross-branch evidence → claim → main/SI routing ledger
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md` — current gap/novelty/ecology map
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
-- `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_1.md` — frozen external-confirmation specification
+- `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_2.md` — frozen external-confirmation specification with overlap exclusion + informative/inconclusive rule
 - `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — outcome-blind WFTS design/data-access audit
-- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md` — frozen Daymet/rainfall and confirmatory analysis implementation
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md` — frozen Daymet/rainfall, primary comparator and three-way confirmation interpretation
 - `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_1.md` — outcome-blind raw-data request template
 - `revision/WFTS_CANONICAL_SCHEMA_V0_2.json` — frozen canonical WFTS input schema
-- `scripts/wfts/` — prospective confirmatory code; real-data authority is `run_wfts_confirmatory_analysis_v0_4.py` with outcome-blind preflight
+- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md` — sole real-data authority for WFTS confirmation
+- `scripts/wfts/` — prospective confirmatory code; real-data authority is `run_wfts_confirmatory_analysis_v0_5.py` with outcome-blind preflight
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
 - `revision/FIGURE_REBUILD_SPEC_V0_2.md`
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json` — canonical figure inputs
