@@ -138,9 +138,9 @@ The repository should record the exact downloaded/source metadata and checksums 
 Before WFTS response-data access, the following are frozen:
 
 - `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — design/data-access eligibility;
-- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md` — Daymet exposure, pairing, endpoint, comparator and coverage gate;
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md` — Daymet exposure, pairing, endpoint, comparator and coverage gate;
 - `revision/WFTS_CANONICAL_SCHEMA_V0_2.json` — canonical run/matrix schema;
-- `scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py` — sole confirmatory analysis authority;
+- `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py` — sole confirmatory analysis authority;
 - `scripts/wfts/generate_synthetic_wfts_fixture.py` — artificial data only for code QA;
 - `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_1.md` — request designed not to solicit outcome summaries.
 
@@ -153,7 +153,7 @@ Before any WFTS response outcome is inspected, the authorized execution sequence
 
 1. `scripts/wfts/preflight_wfts_structure.py`
 2. verify structural gate and SHA256 receipt
-3. `scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py`
+3. `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`
 
 The confirmatory script requires:
 - the exact preflight receipt;
@@ -161,7 +161,7 @@ The confirmatory script requires:
 - identical canonical-schema SHA256;
 - a passed pre-response coverage gate.
 
-Scripts v0.1–v0.3 are development history only.
+Scripts v0.1–v0.4 are development history only. Real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`.
 
 
 ## Frozen WFTS weather authority
