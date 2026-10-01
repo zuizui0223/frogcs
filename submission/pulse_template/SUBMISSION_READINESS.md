@@ -2,8 +2,8 @@
 
 ## Current scientific package
 
-- Current manuscript: `paper/manuscript_pulse_template_v0_4.md`
-- Supporting Information: `paper/supporting_information_pulse_template_v0_2.md`
+- Current manuscript: `paper/manuscript_pulse_template_v0_5.md`
+- Supporting Information: `paper/supporting_information_pulse_template_v0_3.md`
 - Canonical figures: `figures_pulse_template/fig1_*.svg/png` through `fig5_*.svg/png`
 - Durable numerical synthesis: `revision/INTEGRATED_RESULTS_V0_2.json`
 - Current gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md`
