@@ -28,7 +28,7 @@ required=[
     "0.967 to 1.775",
     "dependence structure",
     "post-opening and exploratory",
-    "prospective external confirmation",
+    "independent external confirmation",
     "(Fig. 1)",
     "(Figs 2–3)",
     "(Fig. 4)",
@@ -79,7 +79,7 @@ for x in [
     "1.650 versus 1.353",
     "held-out rain × history gate",
     "pulse-revealed dependence structure",
-    "prospective external confirmation",
+    "independent external confirmation",
 ]:
     assert x in abstract, f"abstract missing: {x}"
 assert "0.244" not in abstract, "secondary exchangeable N,K diagnostic must not be abstract headline"
