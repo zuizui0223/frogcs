@@ -8,11 +8,11 @@ Primary inputs are canonical CSV files defined by:
 
 Scientific specification:
 
-`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_3.md`
+`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md`
 
 Main analysis:
 
-`run_wfts_confirmatory_analysis_v0_3.py`
+`run_wfts_confirmatory_analysis_v0_4.py`
 
 The script implements:
 - adjacent-year pairing within traditional RouteID × SurveyPeriod;
@@ -40,3 +40,20 @@ v0.2 is the frozen implementation for real WFTS confirmation. It changes candida
 ## v0.3 safeguard
 
 The structural coverage gate is evaluated before the analysis loads `taxon_key` or `call_index`. If the route/pair/fold gate fails, the receipt is written and the program exits without opening the frog-response endpoint.
+
+
+## v0.4 authority
+
+`run_wfts_confirmatory_analysis_v0_4.py` is the only script authorized for real WFTS confirmation.
+
+It combines:
+- the v0.3 internal pre-response structural gate;
+- route-period candidate support;
+- exact runs/matrix date validation;
+- required outcome-blind preflight receipt;
+- SHA256 equality between preflight and analysis inputs;
+- canonical-schema SHA256 equality.
+
+The analysis refuses to parse frog response columns unless the preflight receipt passed and all hashes match.
+
+Earlier scripts are retained only as development history and must not be used on real WFTS response data.
