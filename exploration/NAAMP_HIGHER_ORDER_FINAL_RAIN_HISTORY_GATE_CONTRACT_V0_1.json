@@ -1,0 +1,23 @@
+{
+  "analysis": "naamp_higher_order_final_rain_history_gate_v0_1",
+  "status": "post_readback_existing_null_endpoint_audit_fixed_before_endpoint",
+  "question": "Can the already-existing final held-out rain x local-history gating null reproduce the previously established higher-order within-taxon concentration of route-new multi-site activity?",
+  "population": "Exactly the 2,916 physically stable, strictly-prior-history-eligible pairs across 439 routes used by the existing final cross-fit rain-by-memory gating null.",
+  "endpoint": {
+    "route_new_species_gain": "Number of route-new taxa in the wet survey.",
+    "extra_stop_incidence_gain": "Sum max(k-1,0) across route-new taxa.",
+    "higher_order_within_species_mass": "Sum choose(max(k-1,0),2) across route-new taxa."
+  },
+  "null": "Exactly the already-existing final null: strictly-prior species x SiteID probabilities + a=0.75 dry persistence + route-cross-fit species-specific rainfall shifts + one route-cross-fit global rain x centered local-memory gate on currently silent cells + pair-level wet-incidence magnitude matching.",
+  "conditioning": "Across 1,000 simulations of the existing final null, regress higher_order_beta on route_new_species_beta and extra_stop_beta. Compare the observed conditional residual with the simulated residual distribution.",
+  "primary_rule": "Residual higher-order dependence survives the final null only if the observed conditional residual exceeds the upper 95% null-residual bound.",
+  "simulation": {"replicates": 1000, "seed": 2944223},
+  "interpretation": [
+    "Pass means the existing final held-out species + prior-history + dry-persistence + rain-by-history gate still does not reproduce the observed higher-order concentration after first-order recruitment and spread are conditioned.",
+    "Fail means this strongest pre-existing null is sufficient for the higher-order endpoint; the manuscript must not claim higher-order dependence beyond that final null.",
+    "This is an endpoint audit of an already-existing null, not a new mechanism model.",
+    "No literal synchrony, movement, social facilitation, hydrological connectivity, causal rainfall, or universal mechanism is inferred.",
+    "No statistic, subset, fitted lambda, cross-fit rule, null construction, tail or threshold may change after endpoint readback."
+  ],
+  "retuning_after_readback": false
+}

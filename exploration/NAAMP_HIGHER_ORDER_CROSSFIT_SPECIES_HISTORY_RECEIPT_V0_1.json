@@ -1,0 +1,16 @@
+{
+  "analysis":"naamp_higher_order_crossfit_species_history_v0_1",
+  "classification":{"higher_order_dependence_beyond_species_and_history_supported":true},
+  "species_shift_training":{"crossfold_gamma_correlation":0.23992728281112266,"n_estimable_both_folds":42},
+  "full_sample":{
+    "n_pairs":4236,"n_routes":585,
+    "observed":{"route_new_species_beta":0.1846754325853956,"extra_stop_beta":0.6042952999648085,"higher_order_beta":1.52397912912372},
+    "crossfit_species_null":{"predicted_higher_order_beta":1.1978990482443808,"observed_conditional_residual":0.32608008087933915,"null_residual_ci95":[-0.10061193256118715,0.10857096591064383],"conditional_upper_tail_p":0.000999000999000999,"above_upper_95":true}
+  },
+  "prior_history_subset":{
+    "n_pairs":2916,"n_routes":439,
+    "observed":{"route_new_species_beta":0.19820082505375725,"extra_stop_beta":0.6809252254809639,"higher_order_beta":1.6503201354367818},
+    "joint_crossfit_species_prior_history_persistence_null":{"predicted_higher_order_beta":1.3534664037854447,"observed_conditional_residual":0.2968537316513371,"null_residual_ci95":[-0.13185369117339027,0.11870819192117488],"conditional_upper_tail_p":0.000999000999000999,"above_upper_95":true}
+  },
+  "interpretation_boundary":{"literal_synchrony_inferred":false,"individual_movement_inferred":false,"causal_rainfall_claim":false,"unique_lower_level_mechanism_identified":false}
+}

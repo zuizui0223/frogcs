@@ -1,0 +1,20 @@
+{
+  "analysis": "naamp_higher_order_spatial_coherence_joint_robustness_v0_1",
+  "status": "post_readback_robustness_fixed_before_endpoint",
+  "question": "Does the already-supported higher-order within-taxon spatial coherence persist when observer identity and physical SiteID are simultaneously held constant?",
+  "sample": "Intersection of same-observer matched pairs and pairs retaining identical nonmissing SiteID at all ten StopNumbers.",
+  "endpoint": "Exactly the previously frozen higher_order_within_species_mass = sum choose(max(k-1,0),2) across route-new taxa, with no redefinition.",
+  "conditioning": "Exactly the previously frozen null-regression conditioning on route_new_species_gain beta and extra_stop_incidence_gain beta.",
+  "nulls": [
+    "uniform activation kappa=2 re-estimated within the restricted sample",
+    "persistence-preserving activation anchor=0.75 re-estimated within the restricted sample"
+  ],
+  "minimum_gate": "At least 2500 pairs and 400 routes.",
+  "pass_rule": "Joint robustness passes only if the observed higher-order conditional residual exceeds the upper 95% residual bound under both null families.",
+  "interpretation": [
+    "A pass shows the higher-order coherence does not require observer turnover or physical-stop relocation.",
+    "The test remains post-freeze and does not establish literal synchrony, movement, hydrological connectivity, or causal rainfall.",
+    "No metric, conditioning covariate, null family, tail, or threshold may change after endpoint readback."
+  ],
+  "retuning_after_readback": false
+}

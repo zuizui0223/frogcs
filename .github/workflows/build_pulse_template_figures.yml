@@ -1,0 +1,49 @@
+name: build pulse-template figures
+# Post-RC3 novelty renderer: Figure 3 restricted to principal species/site comparators
+on:
+  push:
+    branches: [integration/jae-multisite-rc4-clean, main]
+    paths:
+      - revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json
+      - revision/FIGURE_REBUILD_SPEC_V0_3.md
+      - revision/build_pulse_template_figures.py
+      - .github/workflows/build_pulse_template_figures.yml
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pulse-template-figures-${{ github.event_name }}-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q matplotlib numpy
+      - name: Render canonical figures
+        run: python revision/build_pulse_template_figures.py
+
+      - name: Verify generated figures are committed
+        if: github.event_name == 'pull_request' || github.ref_name == 'main'
+        run: |
+          git diff --exit-code -- figures_pulse_template
+
+      - name: Commit generated figures on clean integration branch
+        if: github.event_name == 'push' && github.ref_name == 'integration/jae-multisite-rc4-clean'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add figures_pulse_template
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Build integrated pulse-template figures"
+          git push origin HEAD:integration/jae-multisite-rc4-clean

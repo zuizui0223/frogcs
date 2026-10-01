@@ -1,71 +1,134 @@
-# Frog active-community response to rainfall — JAE RC11 reproducibility package
+# frogcs — RC4 integrated frog chorus analysis
 
-Current manuscript:
+## Current paper
 
-**Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts**
+**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
 
-## Current authority
+Current validated release/submission refs:
 
-The synchronized submission state is:
+- `release/jae-multisite-rc4`
+- `submission/jae-multisite-v4`
+- validated scientific source: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
+- release receipt: `submission/RC4_RELEASE_RECEIPT.md`
 
-- `main`
-- `release/jae-v1-rc11`
-- `submission/jae-v1`
+RC3 and the original RC11 submission remain preserved in their historical release/submission refs; they are not duplicated in this cleaned integration tree.
 
-Journal-facing source files:
+## Biological result
+
+Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions are associated with rapid switching from acoustic silence into strong chorus states. The unusual spatial component begins at third-and-later sites within recruited taxa.
+
+The principal ecological test uses **2,916** pairs with strictly prior physical-site history. Observed within-taxon concentration was **1.6503** versus **1.3535** under a comparator that already contained:
+
+- route-cross-fitted taxon-specific rainfall response;
+- strictly-prior species × physical-site use;
+- dry-state persistence;
+- matched total wet incidence.
+
+The conditional residual was **0.2969**, outside the simulated 95% range (**−0.1319 to 0.1187**, plus-one **P = 0.000999**). A stronger held-out rain × history gate still predicted only **1.3323**.
+
+Strong wet-state chorusing also preferentially reappeared at species-specific historically strong sites (**β = 0.1511**), and that targeting strengthened toward the survey closer to rain (**β = 0.02449**).
+
+## Main ecological interpretation
+
+The discovery is not simply that frogs call more after rain.
+
+The stronger result is a **pulse-revealed dependence structure**: extra activity is more concentrated across multiple sites within the same recruited taxa than expected from first-order species responses and static site propensities alone.
+
+The general hypothesis is:
+
+> Environmental pulses may expose dependence in joint species × place activity that remains behaviourally hidden during inactive periods.
+
+This is a conceptual generalization from the NAAMP system, not a universal law.
+
+## Main text versus Supporting Information
+
+The main paper contains only the inferential spine:
+
+1. silence → strong-chorus state switching;
+2. third-and-later multi-site depth;
+3. principal species-response + prior-site-history comparator;
+4. held-out rain × history sensitivity;
+5. historical species-specific site targeting;
+6. taxonomic/geographic breadth with heterogeneity.
+
+Supporting Information contains the defence/falsification layer:
+
+- earlier RC11 four-component matrix allocation;
+- uniform and persistence-only activation nulls;
+- exact N,K combinatorial diagnostic;
+- raw recurrence percentages;
+- route-topology corroboration;
+- FrogID directional consistency;
+- trait/context mechanism screens;
+- activation-geometry placebo falsification;
+- protocol, detection and observer sensitivities.
+
+## Current canonical files
 
 - `paper/manuscript.md`
 - `paper/supporting_information.md`
 - `paper/title_page.template.md`
-- `submission/cover_letter.md`
+- `figures_pulse_template/`
+- `provenance/CURRENT_RESULTS.json`
+- `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json`
+- `revision/INTEGRATED_RESULTS_V0_3.json`
+- `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
+- `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
+- `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
+- `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_2.md`
+- `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
+- `submission/SUBMISSION_READINESS.md`
+- `submission/RC4_RELEASE_RECEIPT.md`
 
-## Result in one paragraph
+Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
 
-Across 4,236 matched wetter–drier NAAMP comparisons, recent-rain conditions were associated with larger active spatial footprint, higher richness per active stop and higher route richness. Of the rainfall-associated increase in species × stop incidences, **92.0% crossed a spatial or taxonomic boundary**, exceeding both a magnitude-matched uniform-activation null (**80.9%** expected) and a persistence-preserving null (**77.9%** expected). The same boundary share remained **92.0%** in 3,152 same-observer pairs. FrogID provides directional cross-dataset consistency for active-unit taxonomic depth, not independent validation. A null allowing **species-specific rainfall-response shifts** remains untested and is reserved for revision if requested.
+## Reproducibility and QA
 
-## Repository layout
+Current automated checks:
 
-- `scripts/naamp/` — NAAMP analyses
-- `scripts/frogid/` — FrogID and cross-dataset analyses
-- `scripts/qa/` — repository and submission audits
-- `scripts/submission/` — DOCX, metadata and submission-build utilities
-- `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json` — bundled frozen analysis definitions, repair record, and scope decisions
-- `provenance/CURRENT_RESULTS.json` — bundled durable result summaries
-- `provenance/receipts/` — runtime receipt destination (historical receipts are not checked in)
-- `submission/` — cover letter plus the current metadata template only
+- `.github/workflows/pulse_template_manuscript_qa.yml` — manuscript/SI routing, wording and JAE limits;
+- `.github/workflows/build_pulse_template_figures.yml` — deterministic five-figure rebuild;
+- `.github/workflows/pulse_template_submission_pipeline.yml` — anonymous DOCX, formatting/anonymity audit and submission bundle;
+- `.github/workflows/wfts_daymet_code_qa.yml` — prospective weather adapter QA;
+- `.github/workflows/wfts_confirmatory_code_qa.yml` — prospective external-confirmation code QA.
 
-Root-level JSON provenance and root-level analysis scripts are intentionally prohibited.
+The original RC11 analysis scripts under `scripts/naamp/` remain because they support the baseline and reviewer-defence analyses.
 
-## Current reproducibility anchors
+Post-freeze analyses that generated the integrated multi-site result remain auditable on their frozen `exploration/*` branches. The final contracts/scripts needed for the RC4 claim have also been selectively restored here; the full exploration history is intentionally not duplicated.
 
-- analysis specifications and story freeze: `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json`
-- current durable results: `provenance/CURRENT_RESULTS.json`
+## Prospective external confirmation
 
-Detailed inferential boundaries are documented in the Supporting Information; historical development remains available on the history/release branches.
+Wisconsin Frog and Toad Survey (WFTS) is the first external candidate.
 
-## Workflows
+Important boundaries:
 
-The current branch uses two workflows only:
+- Wisconsin is not one of the 21 NAAMP discovery states;
+- response-blind structural eligibility must pass before frog outcomes are loaded;
+- the primary endpoint/comparator is frozen;
+- the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`;
+- the implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`.
 
-- `reproduce_current_results.yml` — manual reproduction of the current analysis endpoints;
-- `submission_pipeline.yml` — repository structure, scientific package QA, JAE compliance, anonymous DOCX, scientific bundle, and optional private-metadata bundle.
+A non-PASS is classified prospectively as either:
 
-Historical release branches preserve exact earlier layouts and are not current authority.
+- `informative_nonreplication_of_half_discovery_effect`, or
+- `inconclusive_nonpass`.
 
+This prevents a low-precision non-significant result from being mislabeled as biological non-replication.
 
-## Private submission metadata
+## Inferential boundaries
 
-Human-identifying submission fields are kept out of the public repository. Copy `submission/metadata.template.yml`, fill it locally, and store the completed YAML in the GitHub Actions secret `JAE_SUBMISSION_METADATA_YAML`.
+The paper concerns **observed reproductive acoustic activity**.
 
-Before building the private bundle, confirm author order, affiliations, corresponding-author contact details, CRediT roles, funding/acknowledgements, Conflict of Interest, Statement on Inclusion, approvals, repository license, and (when available) archive DOI.
+It does not establish:
 
-To build the private-metadata bundle, run **Actions → submission pipeline → Run workflow** with **build_private_bundle = true**. The workflow validates the private YAML, renders the title page/portal metadata/CITATION/Zenodo metadata, and assembles the submission artifact without committing private contact details.
+- rainfall causality;
+- acoustic zero = biological absence;
+- literal synchrony among sequential route stops;
+- movement among sites;
+- individual memory or philopatry;
+- occupancy/colonization change;
+- spawning or reproductive success;
+- a unique lower-level mechanism;
+- universal anuran generality.
 
-
-## Historical material
-
-Superseded manuscripts, analyses, workflows, figures, and submission versions are intentionally absent from the current branch. Exact history remains available in:
-
-- `history/pre-deep-cleanup-2026-09-28`;
-- `release/jae-v1-rc1` through `release/jae-v1-rc11`;
-- ordinary Git history.
+The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation remains the decisive next test.

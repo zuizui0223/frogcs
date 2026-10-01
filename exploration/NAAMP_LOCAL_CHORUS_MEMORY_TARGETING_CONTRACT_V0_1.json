@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_local_chorus_memory_targeting_v0_1",
+  "status": "post_readback_memory_localization_test_fixed_before_endpoint",
+  "question": "Conditional on a route-new species being acoustically recruited in the wet survey, is its strong chorus activity preferentially placed at physical SiteIDs where that same species had formed a strong chorus in years before the focal pair?",
+  "population": "Physically stable matched pairs with at least one prior eligible run in the same State x RouteNumber x RunNumber stratum.",
+  "focal_species": "Species absent from all ten dry-run stops, present at >=1 wet-run stop, and recorded somewhere on the same route-season stratum in at least one year strictly before the earlier year of the focal pair.",
+  "unit": "pair x focal species x physical stop.",
+  "predictors": {
+    "prior_site_strong": "1 if the focal species had CallingIndex 2 or 3 at this same SiteID in any prior eligible run; 0 otherwise.",
+    "prior_site_any": "1 if the focal species had any CallingIndex >0 at this same SiteID in any prior eligible run; sensitivity.",
+    "prior_route_frequency": "Fraction of prior eligible runs in which the species occurred anywhere on the route; used only as a descriptive species-history covariate and constant within species-pair."
+  },
+  "outcomes": {
+    "wet_strong": "1 if wet CallingIndex at the stop is 2 or 3.",
+    "wet_full": "1 if wet CallingIndex is 3.",
+    "wet_presence": "1 if wet CallingIndex >0, secondary placement endpoint."
+  },
+  "primary_design": "Restrict to pair x species groups having both prior_site_strong=1 and 0 among their ten stops. Demean wet_strong and prior_site_strong within pair x species, then OLS without intercept; cluster covariance by State x RouteNumber.",
+  "primary_prediction": "Coefficient on within-species-pair prior_site_strong >0 with complete 95% CI >0.",
+  "secondary": [
+    "Repeat for wet_full.",
+    "Repeat using prior_site_any.",
+    "Repeat primary in same-observer pairs.",
+    "Report but do not gate rain_contrast * prior_site_strong after pair-species demeaning; positive interaction would mean stronger rainfall contrasts sharpen local memory targeting."
+  ],
+  "minimum_gate": "At least 500 informative pair x species groups, >=250 routes, and >=20 species.",
+  "interpretation": [
+    "Support identifies site-specific recurrence of acoustic activity after controlling exactly for species and focal pair.",
+    "It does not prove continuous occupancy, individual philopatry, causal memory, or that the same individuals returned.",
+    "Because focal species are conditioned to be route-new in the wet survey, the test concerns spatial placement of reactivation, not whether the species activates at all."
+  ],
+  "retuning_after_readback": false
+}

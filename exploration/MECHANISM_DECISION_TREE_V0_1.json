@@ -1,0 +1,29 @@
+{
+  "analysis_program": "frogcs_mechanism_decision_tree_v0_1",
+  "status": "fixed_before_joint-null_endpoint_readback",
+  "current_test": "NAAMP_JOINT_SPECIES_LOCAL_MEMORY_NULL_CONTRACT_V0_1",
+  "branches": {
+    "if_joint_p_ge_0_05": {
+      "action": "stop_mechanism_escalation",
+      "interpretation": "An additive process combining transferable species rainfall sensitivity, prior local species x SiteID memory and focal dry-state persistence is sufficient under the tested null family. Do not add a species x site rainfall-interaction model unless a reviewer identifies a specific inferential defect."
+    },
+    "if_joint_p_lt_0_05": {
+      "action": "run_crossfit_rain_by_local_memory_gate",
+      "next_question": "Does rainfall preferentially activate historically likely species x SiteID cells beyond their baseline local-memory probability?",
+      "next_model_constraints": [
+        "Estimate the rain x local-memory interaction only on routes in the opposite training fold.",
+        "Use strictly-prior focal-pair local memory in held-out routes.",
+        "Retain the already fixed cross-fit species shifts and a=0.75 dry persistence.",
+        "One global memory-gating coefficient is allowed; no species-specific site interaction coefficients.",
+        "Use the same four-component Mahalanobis null test with 1,000 simulations."
+      ],
+      "stop_rule": "If this held-out memory-gating null is still rejected, stop and conclude that the available observational data identify structured state dependence but do not resolve a unique lower-level mechanism."
+    }
+  },
+  "prohibited": [
+    "No trait fishing after the joint-null result.",
+    "No arbitrary site-specific rainfall coefficients learned and tested on the same routes.",
+    "No relaxation of earlier failed gates.",
+    "No RC11 manuscript modification from this exploratory branch."
+  ]
+}

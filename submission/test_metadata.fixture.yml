@@ -1,0 +1,58 @@
+manuscript:
+  title: "Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
+  target_journal: "Journal of Animal Ecology"
+  article_type: "Research Article"
+
+authors:
+  - order: 1
+    given_names: "Test"
+    family_names: "Author"
+    display_name: "Test Author"
+    affiliation_ids: ["A1"]
+    orcid: ""
+    credit_roles: ["Conceptualization", "Formal analysis", "Writing – original draft"]
+
+affiliations:
+  A1:
+    institution: "Example Institute"
+    department: "Example Department"
+    address: "1 Example Street"
+    city: "Example City"
+    country: "Example Country"
+
+corresponding_author:
+  author_order: 1
+  email: "test.author@example.org"
+  postal_address: "1 Example Street, Example City, Example Country"
+
+funding:
+  - funder: "None"
+    grant_number: ""
+
+acknowledgements: "None"
+conflict_of_interest: "The test fixture declares no conflicts of interest."
+statement_on_inclusion: "Test fixture only. The production submission must contain the authors' final Statement on Inclusion."
+
+ethics_and_permits:
+  secondary_public_data_only: true
+  statement: "Secondary analysis of publicly released acoustic-monitoring data; no new animal capture, handling or field sampling."
+
+approvals:
+  all_authors_approve_submission: true
+  relevant_institutions_approve_submission: true
+  all_entitled_authors_included: true
+  not_under_consideration_elsewhere: true
+  work_original_and_acknowledged: true
+  legal_requirements_confirmed: true
+
+repository:
+  url: "https://github.com/zuizui0223/frogcs"
+  license: "[ARCHIVE LICENSE]"
+  archive_year: 2026
+  archive_doi: ""
+
+source_data:
+  - name: "North American Amphibian Monitoring Program (NAAMP)"
+    doi: "10.5066/F7G44NG0"
+  - name: "FrogID dataset"
+    doi: "10.3897/zookeys.912.38253"

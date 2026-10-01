@@ -1,0 +1,24 @@
+{
+  "analysis": "naamp_route_new_spatial_depth_v0_1",
+  "status": "post_readback_algebraic_diagnostic_fixed_before_endpoint",
+  "motivation": "The prior spread analysis found excess extra-stop incidence but no excess in the number of route-new species reaching a second stop. Decompose the excess exactly.",
+  "population": "Frozen 4,236 NAAMP matched pairs.",
+  "exact_decomposition": {
+    "route_new_species_gain": "Count of species absent from the entire dry route and present in the wet route.",
+    "second_stop_incidence_gain": "Count of route-new species occupying at least 2 wet stops; exactly one second-stop incidence per such species.",
+    "third_plus_stop_incidence_gain": "Sum over route-new species of max(k-2,0), where k is number of occupied wet stops.",
+    "extra_stop_incidence_gain": "Sum max(k-1,0) = second_stop_incidence_gain + third_plus_stop_incidence_gain."
+  },
+  "secondary": {
+    "threeplus_route_new_species": "Count of route-new species with k>=3.",
+    "fourth_plus_stop_incidence_gain": "Sum max(k-3,0)."
+  },
+  "inference": "Use the frozen matched-pair residualized rain design and compare observed coefficients with 1,000 simulations under kappa=2 uniform activation and a=0.75 persistence-preserving activation.",
+  "prefixed_rule": "Spatial-depth excess is supported if third_plus_stop_incidence_gain exceeds the upper 95% null bound under both nulls.",
+  "interpretation": [
+    "Support means the excess spatial footprint is concentrated beyond the second occupied stop among route-new species.",
+    "This is an algebraic localization of the previously discovered spread excess, not an independent confirmatory family.",
+    "It does not imply individual movement, physical connectivity, or a specific hydrological mediator."
+  ],
+  "retuning_after_readback": false
+}
