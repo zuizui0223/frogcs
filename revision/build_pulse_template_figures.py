@@ -2,6 +2,7 @@
 from __future__ import annotations
 import json
 from pathlib import Path
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -9,6 +10,9 @@ ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads((ROOT/"revision"/"PULSE_TEMPLATE_FIGURE_DATA_V0_1.json").read_text())
 OUT=ROOT/"figures_pulse_template"
 OUT.mkdir(exist_ok=True)
+
+# Make SVG IDs reproducible across independent Matplotlib processes.
+mpl.rcParams["svg.hashsalt"]="frogcs-pulse-template-rc3"
 
 # Remove legacy public figure names that used exploratory "higher-order" terminology.
 for legacy in (
@@ -19,8 +23,17 @@ for legacy in (
 
 def save(fig,name):
     fig.tight_layout()
-    fig.savefig(OUT/f"{name}.svg",bbox_inches="tight")
-    fig.savefig(OUT/f"{name}.png",dpi=300,bbox_inches="tight")
+    fig.savefig(
+        OUT/f"{name}.svg",
+        bbox_inches="tight",
+        metadata={"Date": None},
+    )
+    fig.savefig(
+        OUT/f"{name}.png",
+        dpi=300,
+        bbox_inches="tight",
+        metadata={"Software": "Matplotlib"},
+    )
     plt.close(fig)
 
 # Figure 1: calling-state switch
