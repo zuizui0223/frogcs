@@ -7,7 +7,7 @@ on:
       - revision/WFTS_CANONICAL_SCHEMA_V0_1.json
       - revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md
       - scripts/wfts/preflight_wfts_structure.py
-      - scripts/wfts/run_wfts_confirmatory_analysis.py
+      - scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py
       - scripts/wfts/generate_synthetic_wfts_fixture.py
       - .github/workflows/wfts_confirmatory_code_qa.yml
   pull_request:
@@ -53,7 +53,7 @@ jobs:
           PY
       - name: Run frozen confirmatory core on synthetic data only
         run: |
-          python scripts/wfts/run_wfts_confirmatory_analysis.py             --runs build/wfts-synthetic/runs.csv             --matrix build/wfts-synthetic/matrix.csv             --preflight-receipt build/wfts-synthetic/preflight.json             --output build/wfts-synthetic/confirmatory.json
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py             --runs build/wfts-synthetic/runs.csv             --matrix build/wfts-synthetic/matrix.csv             --preflight-receipt build/wfts-synthetic/preflight.json             --output build/wfts-synthetic/confirmatory.json
       - name: Audit code path without asserting ecological direction
         run: |
           python - <<'PY'
@@ -65,6 +65,7 @@ jobs:
           assert x["simulation_replicates"]==1000
           assert x["seed"]==2840223
           assert x["preflight_verified"] is True
+          assert x["analysis"]=="wfts_prospective_within_taxon_concentration_v0_4"
           assert set(x["observed"])=={
               "route_new_taxon_beta","extra_stop_beta","within_taxon_concentration_beta"
           }
