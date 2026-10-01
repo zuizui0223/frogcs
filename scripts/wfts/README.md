@@ -63,3 +63,17 @@ It combines:
 The analysis refuses to parse frog response columns unless the preflight receipt passed and all hashes match.
 
 Earlier scripts are retained only as development history and must not be used on real WFTS response data.
+
+
+## Frozen weather authority
+
+Before any WFTS response analysis, construct canonical weather covariates with:
+
+- `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md`
+- `scripts/wfts/build_daymet_covariates.py`
+
+The weather input must contain only structural route/station/date/coordinate fields. Frog-response-like columns are rejected.
+
+Weather-code integrity is tested on artificial Daymet CSVs by:
+
+`.github/workflows/wfts_daymet_code_qa.yml`
