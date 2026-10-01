@@ -1,15 +1,15 @@
-name: pulse-template submission pipeline
+name: pulse-template v0.5 submission pipeline
 
 on:
   push:
     branches:
-      - revision/pulse-template-synthesis-v1
+      - revision/novelty-evidence-spine-v1
     paths:
-      - "paper/manuscript_pulse_template_v0_4.md"
-      - "paper/supporting_information_pulse_template_v0_2.md"
+      - "paper/manuscript_pulse_template_v0_5.md"
+      - "paper/supporting_information_pulse_template_v0_3.md"
       - "figures_pulse_template/**"
-      - "revision/INTEGRATED_RESULTS_V0_2.json"
-      - "revision/audit_pulse_template_manuscript.py"
+      - "revision/INTEGRATED_RESULTS_V0_3.json"
+      - "revision/audit_pulse_template_manuscript_v0_5.py"
       - "scripts/submission/build_jae_anonymous_docx.py"
       - "scripts/submission/render_submission_metadata.py"
       - "submission/pulse_template/**"
@@ -44,9 +44,9 @@ jobs:
       - name: Install build dependencies
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 matplotlib numpy
       - name: Run integrated manuscript QA
-        run: python revision/audit_pulse_template_manuscript.py
+        run: python revision/audit_pulse_template_manuscript_v0_5.py
 
-      - name: Render canonical RC3 figures from frozen inputs
+      - name: Render novelty-track figures from frozen inputs
         run: python revision/build_pulse_template_figures.py
 
       - name: Smoke-test private metadata renderer with dummy fixture
@@ -56,7 +56,7 @@ jobs:
           python - <<'PY'
           import json,yaml
           from pathlib import Path
-          title="Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence"
+          title="Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
           z=json.loads(Path("build/metadata-fixture/ZENODO_METADATA_FINAL.json").read_text(encoding="utf-8"))
           cff=yaml.safe_load(Path("build/metadata-fixture/CITATION.cff").read_text(encoding="utf-8"))
           tp=Path("build/metadata-fixture/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
@@ -75,8 +75,8 @@ jobs:
 
       - name: Build anonymous manuscript and SI
         run: |
-          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_4.md --output build/Manuscript.docx
-          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information_pulse_template_v0_2.md --output build/Supporting_Information.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_5.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information_pulse_template_v0_3.md --output build/Supporting_Information.docx
       - name: Verify JAE formatting and anonymity
         run: |
           python - <<'PY'
@@ -85,8 +85,8 @@ jobs:
           from xml.etree import ElementTree as ET
           import re
 
-          manuscript_md=Path("paper/manuscript_pulse_template_v0_4.md").read_text(encoding="utf-8")
-          si_md=Path("paper/supporting_information_pulse_template_v0_2.md").read_text(encoding="utf-8")
+          manuscript_md=Path("paper/manuscript_pulse_template_v0_5.md").read_text(encoding="utf-8")
+          si_md=Path("paper/supporting_information_pulse_template_v0_3.md").read_text(encoding="utf-8")
           abstract=manuscript_md.split("## Abstract",1)[1].split("## Keywords",1)[0]
           keywords=manuscript_md.split("## Keywords",1)[1].split("## Introduction",1)[0].strip()
           manuscript_words=len(manuscript_md.split())
@@ -133,7 +133,7 @@ jobs:
 
           doc=inspect_docx(main)
           sidoc=inspect_docx(si)
-          for token in ["within-taxon multi-site coherence","species-specific site recurrence","1.650","1.353","0.151","1.332"]:
+          for token in ["recurrent within-taxon multi-site organization","pulse-revealed dependence structure","1.650","1.353","0.151","1.332"]:
               assert token.lower() in doc.lower(), token
           assert "within-taxon" in sidoc.lower() and "principal comparator" in sidoc.lower()
           assert "`" not in doc+sidoc
@@ -153,9 +153,9 @@ jobs:
           sub="$out/submission_files"
           audit="$out/audit"
           mkdir -p "$sub" "$audit"
-          cp paper/manuscript_pulse_template_v0_4.md "$sub/Manuscript.md"
+          cp paper/manuscript_pulse_template_v0_5.md "$sub/Manuscript.md"
           cp build/Manuscript.docx "$sub/Manuscript.docx"
-          cp paper/supporting_information_pulse_template_v0_2.md "$sub/Supporting_Information.md"
+          cp paper/supporting_information_pulse_template_v0_3.md "$sub/Supporting_Information.md"
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
           cp submission/pulse_template/cover_letter.md "$sub/Cover_Letter.md"
           cp figures_pulse_template/fig1_chorus_state_switch.png "$sub/Figure1.png"
@@ -163,9 +163,9 @@ jobs:
           cp figures_pulse_template/fig3_within_taxon_concentration.png "$sub/Figure3.png"
           cp figures_pulse_template/fig4_historical_site_targeting.png "$sub/Figure4.png"
           cp figures_pulse_template/fig5_breadth_and_heterogeneity.png "$sub/Figure5.png"
-          cp revision/INTEGRATED_RESULTS_V0_2.json "$audit/"
-          cp revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md "$audit/"
-          cp revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md "$audit/"
+          cp revision/INTEGRATED_RESULTS_V0_3.json "$audit/"
+          cp revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md "$audit/"
+          cp revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md "$audit/"
           python - <<'PY'
           import hashlib,json,re
           from pathlib import Path
@@ -211,21 +211,21 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence"
+          expected="Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
           x=Path("build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           assert expected in x
           PY
-      - name: Render canonical RC3 figures
+      - name: Render novelty-track figures
         run: python revision/build_pulse_template_figures.py
       - name: Build anonymous DOCX files
         run: |
-          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_4.md --output build/Manuscript.docx
-          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information_pulse_template_v0_2.md --output build/Supporting_Information.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript_pulse_template_v0_5.md --output build/Manuscript.docx
+          python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information_pulse_template_v0_3.md --output build/Supporting_Information.docx
       - name: Check combined JAE word count
         run: |
           python - <<'PY'
           from pathlib import Path
-          main=Path("paper/manuscript_pulse_template_v0_4.md").read_text(encoding="utf-8")
+          main=Path("paper/manuscript_pulse_template_v0_5.md").read_text(encoding="utf-8")
           title=Path("build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           count=len(main.split())+len(title.split())
           assert count <= 8500, f"combined main + title-page word count {count} exceeds 8500"
@@ -238,9 +238,9 @@ jobs:
           sub="$out/submission_files"
           audit="$out/audit"
           mkdir -p "$sub" "$audit"
-          cp paper/manuscript_pulse_template_v0_4.md "$sub/Manuscript.md"
+          cp paper/manuscript_pulse_template_v0_5.md "$sub/Manuscript.md"
           cp build/Manuscript.docx "$sub/Manuscript.docx"
-          cp paper/supporting_information_pulse_template_v0_2.md "$sub/Supporting_Information.md"
+          cp paper/supporting_information_pulse_template_v0_3.md "$sub/Supporting_Information.md"
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
           cp build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md "$sub/Title_Page.md"
           cp submission/pulse_template/cover_letter.md "$sub/Cover_Letter.md"
@@ -252,7 +252,7 @@ jobs:
           cp build/pulse-template-metadata/JAE_PORTAL_FIELDS.json "$audit/"
           cp build/pulse-template-metadata/SUBMISSION_METADATA_VALIDATION.json "$audit/"
           cp build/pulse-template-metadata/CITATION.cff "$audit/"
-          cp revision/INTEGRATED_RESULTS_V0_2.json "$audit/"
+          cp revision/INTEGRATED_RESULTS_V0_3.json "$audit/"
           python - <<'PY'
           import hashlib,json,re
           from pathlib import Path
