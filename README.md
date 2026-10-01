@@ -30,6 +30,7 @@ Primary files:
 - `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — outcome-blind WFTS design/data-access audit
 - `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md` — frozen Daymet/rainfall and confirmatory analysis implementation
 - `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_1.md` — outcome-blind raw-data request template
+- `revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_1.md` — public-download audit; row-level response access remains pending
 - `revision/WFTS_CANONICAL_SCHEMA_V0_2.json` — frozen canonical WFTS input schema
 - `scripts/wfts/` — prospective confirmatory code; real-data authority is `run_wfts_confirmatory_analysis_v0_4.py` with outcome-blind preflight
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_1.md`
@@ -141,4 +142,4 @@ Official design documentation confirms permanent 10-station traditional routes, 
 
 No WFTS concentration outcome has been inspected.
 
-The weather exposure, canonical schema, route folds, coverage gate, principal comparator, simulation count and decision rule are frozen before response-data access.
+The weather exposure, canonical schema, route folds, coverage gate, principal comparator, simulation count and decision rule are frozen before response-data access. A targeted official-source audit found no public row-level historical download, so the next action is an outcome-blind raw-data request to WFTS staff.
