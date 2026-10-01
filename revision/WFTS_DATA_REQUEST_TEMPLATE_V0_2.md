@@ -36,9 +36,9 @@ The minimum information needed is:
 
 If available, the following structural metadata would be especially helpful:
 
-- route master table;
+- route master table, including former/legacy RouteID and first permanent year if those fields exist;
 - station master table with stable internal site identifiers;
-- dates when routes or stations began/ended;
+- dates when routes or stations began/ended, including the first year a route was treated as permanent;
 - station replacement, relocation or renumbering history;
 - flags for invalid/incomplete surveys or individual stations;
 - a data dictionary/codebook and missing-value definitions.
