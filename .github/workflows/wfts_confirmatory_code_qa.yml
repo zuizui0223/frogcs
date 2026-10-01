@@ -4,8 +4,8 @@ on:
   push:
     branches: [revision/pulse-template-synthesis-v1]
     paths:
-      - revision/WFTS_CANONICAL_SCHEMA_V0_1.json
-      - revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md
+      - revision/WFTS_CANONICAL_SCHEMA_V0_2.json
+      - revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md
       - scripts/wfts/preflight_wfts_structure.py
       - scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py
       - scripts/wfts/generate_synthetic_wfts_fixture.py
