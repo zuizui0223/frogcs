@@ -18,7 +18,7 @@ Everything else either establishes one step in that claim, limits it, or defends
 |---|---|---|---|---|
 | Calling-state decomposition | 65.3% of CallingIndex slope from 0→positive; 87.1% of activation from 0→CI2/3 | Wet-state change is often a discrete transition from acoustic silence to substantial chorus, not only marginal amplification | biological entry point | Main |
 | Direct full-chorus activation | 0→CI3 β=0.4406 (0.1136–0.7675); same-observer+same-SiteID β=0.5141 (0.1008–0.9273) | Observer turnover and site relocation are not required for the strong state-switch signal | key defence attached to state switch | Main, compact |
-| Route-new spatial depth | second site ordinary; third+ β=0.473; fourth+ β=0.363; 97.3% of third+ carried by CI2/3 | The unusual response begins beyond simple recruitment and pairwise spread, at repeated multi-site participation within recruited taxa | first spatial surprise | Main |
+| Route-new spatial depth | second site ordinary; third+ β=0.473; fourth+ β=0.363; 97.3% of third+ carried by CI2/3; NAAMP stops ≈0.5 miles (0.80 km) apart or more by protocol | The unusual response begins when the same recruited taxon appears at three or more spatially separated route stops, not within one local chorus | first spatial surprise | Main |
 | Principal joint comparator | 2,916 pairs; observed concentration 1.6503 vs predicted 1.3535; residual 0.2969 outside −0.1319–0.1187; P=0.000999 | Species-specific rain response + prior physical-site use + dry-state persistence + matched total incidence do not reproduce observed within-taxon multi-site concentration | **principal spatial test** | Main |
 | Held-out rain×history gate | predicted 1.3323 vs observed 1.6503; residual 0.3180; P=0.000999 | Even allowing rain to differentially weight historically suitable cells does not remove the excess concentration | strongest same-data falsification | Main, one sentence |
 | Historical strong-site targeting | prior strong SiteID→wet CI2/3 β=0.1511 (0.1291–0.1731) | Strong wet-state chorusing reappears preferentially at the same species-specific physical sites | slow spatial template | Main |
@@ -106,7 +106,7 @@ Use as Discussion synthesis, not as a causal or demographic claim.
 | Uniform activation null | 92.0% observed boundary crossing vs 80.9% expected | High boundary crossing is not merely a mechanical result of overall activation | SI defence |
 | Persistence-preserving null | 92.0% vs 77.9% expected at a=0.75 | RC11 result does not depend on weak preservation of dry cell identity | SI defence |
 | Matrix fill/connectance | slope practically equivalent within ±0.05 | Row/column expansion occurs without large change in average active-matrix fill | SI/context |
-| FrogID | recent-rain taxonomic depth direction consistent in Australia | Directional cross-dataset consistency for a narrow marginal phenomenon | SI; **not replication of multi-site mechanism** |
+| FrogID | 40,754 Australian recordings; recent-rain taxonomic depth direction consistent (dry-spell β=-0.0818, 95% CI -0.0982 to -0.0654) | A second continent supports the taxonomic-deepening component, but FrogID cannot test fixed-site multi-site dependence | Main Discussion + SI; **not replication of multi-site mechanism** |
 | Adjacent-stop linkage | β=0.4194; above conditional null | Route topology corroborates multi-site coherence | SI corroboration |
 | Exact N,K diagnostic | raw excess β=0.2439 (0.1474–0.3404) | Concentration is not algebraically forced by recruited-taxon count and total incidence | SI secondary diagnostic |
 
@@ -168,7 +168,8 @@ Response:
 ### “You are calling this synchrony without simultaneous observations.”
 Response:
 - do not use synchrony as headline terminology;
-- use multi-site coherence / concentration / organization.
+- NAAMP stops were sampled sequentially and were designed to be about 0.5 miles (0.80 km) apart or more;
+- use distributed multi-site organization / concentration across separated stops, not acoustic coordination.
 
 ### “You are inferring memory or philopatry.”
 Response:
