@@ -13,22 +13,24 @@ DOI_RE = re.compile(r"^10\.\d{4,9}/\S+$")
 ORCID_RE = re.compile(r"^(?:https://orcid\.org/)?\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
 
 KEYWORDS = [
-    "active community",
-    "alpha diversity",
-    "beta diversity",
+    "anuran breeding behaviour",
+    "behavioural community",
+    "calling activity",
+    "chorus",
     "environmental pulse",
-    "incidence matrix",
-    "metacommunity",
     "rainfall",
-    "species richness",
+    "site recurrence",
+    "spatial ecology",
 ]
 
 DESCRIPTION = (
-    "Reproducibility package for a Journal of Animal Ecology Research Article analysing how recent "
-    "rainfall is associated with the spatial and taxonomic organization of acoustically active frog "
-    "communities in North American NAAMP surveys and Australian FrogID recordings. The archive contains the anonymized "
-    "scientific manuscript, versioned analysis contracts, result receipts, deterministic figure-generation "
-    "code and analysis scripts. Raw third-party datasets are not redistributed."
+    "Reproducibility package for a Journal of Animal Ecology Research Article on rainfall-associated "
+    "frog chorus activation. Using repeated North American NAAMP routes, the study tests whether wet-state "
+    "activity shows within-taxon multi-site concentration beyond transferable species rainfall responses and "
+    "strictly-prior site use, and whether strong chorus activity recurs at species-specific historical sites. "
+    "Australian FrogID provides only the narrower cross-dataset consistency check for active-unit taxonomic "
+    "depth. The archive contains the anonymized scientific manuscript, versioned analysis contracts, result "
+    "receipts, deterministic figure-generation code and analysis scripts. Raw third-party datasets are not redistributed."
 )
 
 def load(path: Path) -> dict:

@@ -1,9 +1,9 @@
-# Canonical human metadata template for the current Journal of Animal Ecology submission.
-# Fill locally or store the completed YAML in the GitHub Actions secret JAE_SUBMISSION_METADATA_YAML.
+# Private human metadata template for the integrated Journal of Animal Ecology submission.
+# Fill locally or store completed YAML in GitHub Actions secret JAE_PULSE_TEMPLATE_METADATA_YAML.
 # Do not commit private contact details to this public repository unless intentionally public.
 
 manuscript:
-  title: "Rainfall-associated expansion of frog active communities is more boundary-biased than uniform activation predicts"
+  title: "Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
   target_journal: "Journal of Animal Ecology"
   article_type: "Research Article"
 
@@ -14,7 +14,6 @@ authors:
     display_name: "[FULL DISPLAY NAME]"
     affiliation_ids: ["A1"]
     orcid: ""
-    # Required when there is more than one author. CRediT terms are accepted.
     credit_roles: []
 
 affiliations:
@@ -36,11 +35,11 @@ funding:
 
 acknowledgements: "None"
 conflict_of_interest: "[STATE ALL RELEVANT CONFLICTS, OR EXPLICITLY STATE THAT THERE ARE NONE]"
-statement_on_inclusion: "[REQUIRED DURING JAE SUBMISSION: describe regional collaboration/intellectual input/stakeholder engagement as applicable]"
+statement_on_inclusion: "[REQUIRED DURING JAE SUBMISSION; tailor for secondary public monitoring data and regional intellectual/stakeholder context]"
 
 ethics_and_permits:
   secondary_public_data_only: true
-  statement: "Secondary analysis of publicly released acoustic-monitoring and trait data; no new animal capture, handling or field sampling."
+  statement: "Secondary analysis of publicly released acoustic-monitoring data; no new animal capture, handling or field sampling by the authors."
 
 approvals:
   all_authors_approve_submission: false
@@ -52,7 +51,6 @@ approvals:
 
 repository:
   url: "https://github.com/zuizui0223/frogcs"
-  # May remain unresolved for initial submission if the archive is not yet finalized.
   license: "[CONFIRM LICENSE]"
   archive_year: 2026
   archive_doi: ""
@@ -62,5 +60,3 @@ source_data:
     doi: "10.5066/F7G44NG0"
   - name: "FrogID dataset"
     doi: "10.3897/zookeys.912.38253"
-  - name: "AmphiBIO v1"
-    doi: "10.6084/m9.figshare.4644424.v5"

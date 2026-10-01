@@ -1,0 +1,62 @@
+name: RC4 restored-analysis reproducibility smoke
+
+on:
+  push:
+    branches: [integration/jae-multisite-rc4-clean, main]
+    paths:
+      - "exploration/**"
+      - "scripts/naamp/**"
+      - ".github/workflows/rc4_restored_analysis_smoke.yml"
+  pull_request:
+    branches: [main]
+
+permissions: {contents: read}
+
+jobs:
+  static-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Compile and audit restored analysis dependencies
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import py_compile
+          import re
+          import json
+
+          root=Path(".")
+          scripts=sorted((root/"exploration").glob("run_*.py"))
+          assert scripts, "no restored exploration scripts found"
+
+          refs=[]
+          contracts=[]
+          for path in scripts:
+              py_compile.compile(str(path),doraise=True)
+              text=path.read_text(encoding="utf-8")
+              for base,name in re.findall(r'loadmod\([^,]+,\s*(NAAMP|EXP)/"([^"]+)"\)',text):
+                  target=(root/"scripts"/"naamp"/name) if base=="NAAMP" else (root/"exploration"/name)
+                  refs.append((str(path),str(target)))
+                  assert target.exists(), f"{path}: missing local dependency {target}"
+              for name in re.findall(r'"(exploration/[^"]+_CONTRACT_[^"]+\.json)"',text):
+                  contracts.append((str(path),name))
+                  assert (root/name).exists(), f"{path}: missing contract {name}"
+
+          current=json.loads((root/"provenance"/"CURRENT_RESULTS.json").read_text(encoding="utf-8"))
+          spec=json.loads((root/"provenance"/"CURRENT_ANALYSIS_SPECIFICATIONS.json").read_text(encoding="utf-8"))
+          assert current["analysis"]=="frogcs_integrated_multisite_results_v0_3"
+          assert current["current_title"]==spec["title"]
+          assert spec["release_authority"]["release_ref"]=="release/jae-multisite-rc4"
+          assert spec["release_authority"]["submission_ref"]=="submission/jae-multisite-v4"
+          for key,pathstr in spec["canonical_files"].items():
+              assert (root/pathstr).exists(), f"missing canonical file {key}: {pathstr}"
+          print({
+              "status":"PASS",
+              "restored_scripts":len(scripts),
+              "local_dependency_refs":len(refs),
+              "contract_refs":len(contracts),
+              "canonical_provenance":"PASS",
+          })
+          PY

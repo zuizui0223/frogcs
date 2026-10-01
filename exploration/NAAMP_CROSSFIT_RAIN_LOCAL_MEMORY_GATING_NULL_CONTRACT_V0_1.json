@@ -1,0 +1,48 @@
+{
+  "analysis": "naamp_crossfit_rain_by_local_memory_gating_null_v0_1",
+  "status": "final_prefixed_fallback_fixed_after_joint_rejection_before_endpoint",
+  "trigger": "NAAMP_JOINT_SPECIES_LOCAL_MEMORY_NULL_V0_1 rejected at plus-one Monte Carlo P=0.000999, activating exactly this one fallback under MECHANISM_DECISION_TREE_V0_1.",
+  "question": "Does rainfall selectively gate reactivation toward historically favored, currently silent species x physical-SiteID cells strongly enough to reproduce the observed four-component matrix allocation?",
+  "population": "Exactly the same 2,916 physically stable, strictly-prior-history-eligible pairs across 439 routes used by the joint species-memory null.",
+  "base_process": {
+    "local_memory": "Strictly-prior species x physical-SiteID probabilities from NAAMP_PRIOR_LOCAL_MEMORY_NULL_V0_1, kappa=2 smoothing.",
+    "dry_persistence": "a=0.75, p_anchor=(1-a)*p_prior+a*dry.",
+    "species_shift": "Existing route-cross-fit species gamma from NAAMP_CROSSFIT_SPECIES_SHIFT_NULL_V0_1; each held-out route uses gamma learned only from the opposite SHA256 route fold.",
+    "magnitude": "One common pair-level shift is always solved so expected wet incidence equals observed wet incidence count."
+  },
+  "gating_score": {
+    "raw": "For each pair and species, p_prior at each of the 10 focal physical SiteIDs.",
+    "centered": "m = p_prior - mean(p_prior across the 10 focal SiteIDs for that species).",
+    "currently_silent_only": "m_gate = m when focal dry cell=0; m_gate=0 when dry cell=1.",
+    "rationale": "The interaction redistributes new activation among historically favored versus disfavored currently-silent sites without changing species-level prior prevalence or directly modifying persistent dry-positive cells."
+  },
+  "one_parameter_model": "logit pre-probability = logit(p_anchor) + gamma_species*rain_contrast + lambda_trainfold*rain_contrast*m_gate.",
+  "lambda_crossfit": {
+    "folds": "Same deterministic SHA256 State:RouteNumber A/B split as the species-shift null.",
+    "training": "For test fold A use lambda_B learned only on eligible fold-B pairs; for test fold B use lambda_A learned only on eligible fold-A pairs.",
+    "objective": "Choose one scalar lambda per training fold to maximize Bernoulli log-likelihood of observed wet species x stop cells after solving a separate common pair shift at every candidate lambda so each training pair's expected total wet incidence equals its observed wet incidence.",
+    "optimizer": "scipy.optimize.minimize_scalar, bounded lambda in [-10,10], xatol=1e-5.",
+    "stability_gate": "Both optimizers must succeed and abs(lambda)<9.9. If either fails/hits the bound, no mechanism sufficiency conclusion is authorized."
+  },
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223
+  },
+  "primary_test": "Held-out cross-fit simulation of the same corner/spatial/taxonomic/within-core rain-contrast beta vector; same Mahalanobis plus-one Monte Carlo omnibus.",
+  "secondary": [
+    "boundary-crossing share",
+    "component shares",
+    "taxonomic-minus-spatial share"
+  ],
+  "prefixed_decision": {
+    "p_ge_0_05": "Stop mechanism escalation. Cross-fit rain-gated local memory plus cross-fit species response and dry persistence is sufficient under this null family.",
+    "p_lt_0_05": "Stop mechanism escalation. Even the final held-out rain-by-memory gate is insufficient; conclude structured recurrent activation is real but the public observational data do not identify a sufficient lower-level generator."
+  },
+  "prohibited": [
+    "No additional traits, site-specific rainfall coefficients, alternative interaction forms, threshold retuning or new mechanism models after this result.",
+    "No RC11 submission change from this exploratory test.",
+    "Failure to reject is sufficiency under the tested null, not unique causal proof.",
+    "No continuous occupancy, individual fidelity, abundance, breeding success or causal rainfall claim."
+  ],
+  "retuning_after_readback": false
+}

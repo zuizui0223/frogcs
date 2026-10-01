@@ -1,0 +1,10 @@
+{
+  "analysis":"naamp_higher_order_geographic_generality_v0_1",
+  "n_pairs":4236,
+  "n_routes":585,
+  "n_states":21,
+  "full_model":{"beta":1.5239791291236486,"ci95":[0.5351094383557762,2.512848819891521],"p":0.0025230436562143944},
+  "leave_one_state_out":{"beta_range":[0.9669803992111705,1.7752639854189354],"minimum_ci_lower":0.3973148198503791},
+  "classification":{"pass":true,"strong_pass":true},
+  "state_specific":{"n_estimable":17,"positive_point_estimates":14,"positive_ci":2}
+}

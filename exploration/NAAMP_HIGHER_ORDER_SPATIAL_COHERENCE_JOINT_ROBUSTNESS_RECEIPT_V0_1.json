@@ -1,0 +1,9 @@
+{
+  "analysis": "naamp_higher_order_spatial_coherence_joint_robustness_v0_1",
+  "classification": {"joint_robust_higher_order_spatial_coherence": true},
+  "coverage": {"all_pairs":4236,"same_observer_pairs":3152,"intersection_pairs":3115,"routes":499,"observers":540},
+  "observed": {"route_new_species_gain_beta":0.22624942190379027,"extra_stop_incidence_gain_beta":0.7337554170220278,"higher_order_within_species_mass_beta":1.8173109334124364,"threeplus_species_count_beta":0.13255444999103233},
+  "uniform_kappa2": {"predicted_higher_order_beta":1.4002328604300909,"observed_conditional_residual":0.41707807298234556,"null_residual_ci95":[-0.11164351285518803,0.11059677191247574],"conditional_upper_tail_p":0.000999000999000999,"above_upper_95":true},
+  "persistence_anchor_0_75": {"predicted_higher_order_beta":0.9183901805129007,"observed_conditional_residual":0.8989207528995358,"null_residual_ci95":[-0.09720012901768807,0.09885937972847914],"conditional_upper_tail_p":0.000999000999000999,"above_upper_95":true},
+  "interpretation_boundary": {"observer_turnover_required":false,"physical_stop_relocation_required":false,"literal_simultaneity_inferred":false,"causal_rainfall_claim":false}
+}

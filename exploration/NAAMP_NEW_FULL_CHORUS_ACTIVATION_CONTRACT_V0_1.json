@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_new_full_chorus_activation_v0_1",
+  "status": "post_readback_calling_intensity_refinement_fixed_before_endpoint",
+  "question": "Does rainfall-associated recruitment include species x stop cells that jump from silence directly to NAAMP CallingIndex 3 (full chorus), rather than being confined to CI1 or CI2?",
+  "calling_index_semantics": {
+    "ci1": "Individual calls are distinguishable with no overlap.",
+    "ci2": "Calls of individuals remain distinguishable but overlap.",
+    "ci3": "Full chorus with constant/continuous overlapping calls; individuals cannot be distinguished."
+  },
+  "sample": {
+    "full": "Frozen 4,236 matched pairs.",
+    "robust": "Intersection of same-observer pairs and pairs with all ten identical nonmissing SiteID values."
+  },
+  "endpoints": {
+    "new_ci1_count": "Count cells dry=0, wet=1.",
+    "new_ci2_count": "Count cells dry=0, wet=2.",
+    "new_ci3_count": "Count cells dry=0, wet=3.",
+    "full_chorus_score": "3 * new_ci3_count."
+  },
+  "model": "Existing matched-pair model with rain_contrast, temperature_difference, day_of_year_difference, year_gap, State and RunNumber; route-clustered covariance.",
+  "primary_rule": "New full-chorus activation is supported if new_ci3_count has positive rain_contrast beta with complete 95% CI >0 in the full sample.",
+  "robustness_rule": "Joint robustness if the same criterion also holds in the same-observer + physical-stop subset.",
+  "interpretation": [
+    "Support shows rainfall-associated recruitment includes emergence of full choruses, not only marginal call detectability.",
+    "CallingIndex is an ordinal chorus-intensity proxy and does not directly measure reproductive success or exact abundance.",
+    "No causal rainfall or physiological mediator is identified."
+  ],
+  "retuning_after_readback": false
+}

@@ -1,0 +1,26 @@
+{
+  "analysis":"naamp_higher_order_taxonomic_generality_v0_1",
+  "status":"post_readback_generality_audit_fixed_before_species_contribution_readback",
+  "question":"Is the rainfall-associated higher-order within-taxon spatial coherence broadly distributed across frog taxa, or dominated by one/few species?",
+  "sample":"Frozen 4,236 NAAMP matched pairs.",
+  "response_per_species":"For each pair and route-new species with k occupied wet stops, higher_order_mass = choose(max(k-1,0),2); otherwise 0.",
+  "decomposition":"Because the matched rainfall coefficient is linear, the total higher-order coefficient equals the sum of species-specific coefficients using the same residualized design.",
+  "diagnostics":{
+    "positive_share":"Each positive species beta divided by the sum of positive species betas.",
+    "top1_top5":"Largest and five-largest positive contribution shares.",
+    "hhi":"Herfindahl index of positive contribution shares.",
+    "leave_one_species_out":"Subtract each species beta from the total higher-order beta and report the minimum remaining beta.",
+    "contributing_taxa":"Count species with positive beta and positive beta >=1% of total positive mass."
+  },
+  "prefixed_rule":{
+    "diffuse":"top1 <=0.25 AND top5 <=0.60 AND HHI <=0.10 AND all leave-one-species-out total betas remain >0",
+    "concentrated":"Any diffuse condition fails",
+    "threshold_source":"Exactly reused from NAAMP_ROUTE_NEW_SPECIES_CONCENTRATION_CONTRACT_V0_1; no new cutoffs selected after higher-order endpoint readback."
+  },
+  "interpretation":[
+    "Diffuse support means no single taxon or small set of taxa is required for the higher-order rainfall coefficient.",
+    "It does not imply every species responds positively or that all taxa share one mechanism.",
+    "No trait mechanism is inferred."
+  ],
+  "retuning_after_readback":false
+}
