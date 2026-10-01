@@ -146,9 +146,12 @@ Real WFTS response data must not be passed to the confirmatory analysis until sc
 
 Before any WFTS response outcome is inspected, the authorized execution sequence is:
 
-1. `scripts/wfts/preflight_wfts_structure.py`
-2. verify structural gate and SHA256 receipt
-3. `scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py`
+1. preserve received bytes and run `scripts/wfts/intake_wfts_files.py` under `revision/WFTS_RAW_DATA_INTAKE_PROTOCOL_V0_1.md`;
+2. build Daymet weather from response-free station structure;
+3. build canonical files under schema v0.2;
+4. run `scripts/wfts/preflight_wfts_structure.py`;
+5. verify structural gate plus input/schema SHA256 receipts;
+6. run `scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py` exactly once.
 
 The confirmatory script requires:
 - the exact preflight receipt;
