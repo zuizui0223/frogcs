@@ -1,0 +1,132 @@
+{
+  "schema": "wfts_canonical_replication_v0_2",
+  "status": "frozen_before_WFTS_response_data_access; supersedes v0_1 before outcome access",
+  "runs_file": {
+    "required_columns": [
+      "route_id",
+      "survey_period",
+      "survey_year",
+      "survey_date",
+      "rain_recency",
+      "tmean_run"
+    ],
+    "survey_period_levels": [
+      "early_spring",
+      "late_spring",
+      "summer"
+    ],
+    "grain": "one row per traditional route x survey period x year"
+  },
+  "matrix_file": {
+    "required_columns": [
+      "route_id",
+      "survey_period",
+      "survey_year",
+      "survey_date",
+      "station_order",
+      "physical_site_id",
+      "taxon_key",
+      "call_index"
+    ],
+    "grain": "complete route-run x 10 physical stations x fixed WFTS taxon list",
+    "call_index_allowed": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "station_order_allowed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "taxa": [
+    "american_toad",
+    "blanchards_cricket_frog",
+    "boreal_chorus_frog",
+    "spring_peeper",
+    "gray_treefrog",
+    "copes_gray_treefrog",
+    "wood_frog",
+    "northern_leopard_frog",
+    "pickerel_frog",
+    "green_frog",
+    "mink_frog",
+    "american_bullfrog"
+  ],
+  "primary_weather": {
+    "product": "Daymet Version 4 R1",
+    "doi": "10.3334/ORNLDAAC/2129",
+    "dry_day_threshold_mm": 1,
+    "dry_day_cap": 30,
+    "survey_day_precipitation_used": false,
+    "route_run_rain_recency": "mean over 10 stations of log(1 + consecutive prior dry days)"
+  },
+  "principal_comparator": {
+    "crossfit_route_folds": true,
+    "minimum_positive_stop_cells_species_slope": 20,
+    "minimum_positive_routes_species_slope": 5,
+    "strictly_prior_site_history": true,
+    "history_kappa": 2,
+    "dry_state_anchor": 0.75,
+    "pair_magnitude_matching": true,
+    "simulations": 1000,
+    "seed": 2840223,
+    "prior_run_minimum_focal_site_overlap": 8,
+    "response_columns_parsed_only_after_preflight_gate": true
+  },
+  "coverage_gate": {
+    "minimum_routes": 30,
+    "minimum_principal_pairs": 300,
+    "minimum_routes_per_fold": 10
+  },
+  "preflight": {
+    "script": "scripts/wfts/preflight_wfts_structure.py",
+    "parsed_runs_columns": [
+      "route_id",
+      "survey_period",
+      "survey_year",
+      "survey_date",
+      "rain_recency",
+      "tmean_run"
+    ],
+    "parsed_matrix_columns": [
+      "route_id",
+      "survey_period",
+      "survey_year",
+      "survey_date",
+      "station_order",
+      "physical_site_id"
+    ],
+    "forbidden_before_gate": [
+      "taxon_key",
+      "call_index"
+    ],
+    "full_file_sha256_recorded": true,
+    "receipt_required_by_confirmatory_analysis": true,
+    "schema_sha256_must_match_confirmatory_runtime": true
+  },
+  "confirmatory_script": "scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py",
+  "synthetic_qa": {
+    "generator": "scripts/wfts/generate_synthetic_wfts_fixture.py",
+    "workflow": ".github/workflows/wfts_confirmatory_code_qa.yml",
+    "ecological_direction_asserted": false
+  },
+  "development_history_scripts": [
+    "scripts/wfts/run_wfts_confirmatory_analysis.py",
+    "scripts/wfts/run_wfts_confirmatory_analysis_v0_2.py",
+    "scripts/wfts/run_wfts_confirmatory_analysis_v0_3.py"
+  ],
+  "weather_analysis_spec": "revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md",
+  "development_history_schemas": [
+    "revision/WFTS_CANONICAL_SCHEMA_V0_1.json"
+  ]
+}
