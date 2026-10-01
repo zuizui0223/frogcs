@@ -19,13 +19,13 @@ Nothing in this branch retroactively converts post-freeze analyses into preregis
 
 Primary files:
 
-- `paper/manuscript_pulse_template_v0_4.md` — current integrated manuscript
+- `paper/manuscript_pulse_template_v0_5.md` — current novelty-maximized integrated manuscript
 - `paper/manuscript_pulse_template_v0_3.md` — superseded RC2-era draft retained for audit
-- `paper/supporting_information_pulse_template_v0_2.md` — current SI
+- `paper/supporting_information_pulse_template_v0_3.md` — current defence/falsification SI
 - `revision/INTEGRATED_RESULTS_V0_2.json` — current numeric synthesis
-- `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_2.md` — current evidence hierarchy
+- `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md` — current evidence hierarchy
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md` — cross-branch evidence → claim → main/SI routing ledger
-- `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md` — current gap/novelty/ecology map
+- `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md` — current gap/novelty/ecology map
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
 - `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_2.md` — frozen external-confirmation specification with overlap exclusion + informative/inconclusive rule
 - `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — outcome-blind WFTS design/data-access audit
@@ -54,7 +54,7 @@ Current integrated release authority:
 - `submission/jae-multisite-v3`
 - validated scientific source commit `bea996b3bf59fa1e66dedcc5cbd0a68833fa311d`
 
-RC3 release/submission refs are documentation-only descendants of that validated scientific source. RC3 is the validated multi-site version: the exchangeable exact N,K null is secondary, the principal comparator preserves cross-fit species response + strictly-prior physical-site history + dry persistence, and reader-facing terminology is within-taxon multi-site concentration/coherence.
+RC3 release/submission refs are documentation-only descendants of that validated scientific source. RC3 remains the last validated release. This revision branch is a post-RC3 novelty/editorial track: the principal comparator is unchanged, but the manuscript now foregrounds **pulse-revealed dependence structure**, routes FrogID/RC11 matrix defences to SI, and prospectively sharpens WFTS outcome interpretation. No post-RC3 analysis is represented as an RC3 result.
 
 Validated release receipt:
 
