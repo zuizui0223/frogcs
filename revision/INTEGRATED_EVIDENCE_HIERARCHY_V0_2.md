@@ -6,9 +6,9 @@
 
 ## General ecological claim
 
-**Short environmental pulses can reveal multi-site spatial organization on recurrent species × place templates in behaviourally cryptic communities.**
+**Short environmental pulses can reveal a dependence structure in behaviourally cryptic communities: recurrent species × place organization that is not recovered from first-order species responses and static site propensities alone.**
 
-This is a conceptual generalization from the NAAMP frog system, not a universal law.
+This is the manuscript's strongest conceptual generalization from the NAAMP frog system, not a universal law. The novelty lies in the **dependence structure**, not in rainfall-sensitive calling, richness change or cross-site covariance by themselves.
 
 ## Evidence ladder
 
