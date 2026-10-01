@@ -1,10 +1,11 @@
 name: build pulse-template figures
-# RC3 renderer: principal species-history comparator first; no public higher-order terminology
+# Post-RC3 novelty renderer: Figure 3 restricted to principal species/site comparators
 on:
   push:
-    branches: [revision/pulse-template-synthesis-v1]
+    branches: [revision/novelty-evidence-spine-v1]
     paths:
       - revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json
+      - revision/FIGURE_REBUILD_SPEC_V0_3.md
       - revision/build_pulse_template_figures.py
       - .github/workflows/build_pulse_template_figures.yml
   pull_request:
@@ -45,4 +46,4 @@ jobs:
           git add figures_pulse_template
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Build integrated pulse-template figures"
-          git push origin HEAD:revision/pulse-template-synthesis-v1
+          git push origin HEAD:revision/novelty-evidence-spine-v1
