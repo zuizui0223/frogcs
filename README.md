@@ -51,13 +51,17 @@ Current integrated release authority:
 
 - `release/jae-multisite-rc3`
 - `submission/jae-multisite-v3`
-- frozen commit `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- final release/submission head `38eb4676320493070ef84ad5e8b803d692878587`
 
 RC3 is the validated multi-site version: the exchangeable exact N,K null is secondary, the principal comparator preserves cross-fit species response + strictly-prior physical-site history + dry persistence, and reader-facing terminology is within-taxon multi-site concentration/coherence.
 
 Validated release receipt:
 
 `submission/pulse_template/RC3_RELEASE_RECEIPT.md`
+
+Final release-head QA:
+
+`submission/pulse_template/RC3_FINAL_QA_RECEIPT.md`
 
 Historical RC2 remains preserved at:
 - `release/jae-higher-order-rc2`
@@ -143,3 +147,8 @@ Official design documentation confirms permanent 10-station traditional routes, 
 No WFTS concentration outcome has been inspected.
 
 The weather exposure, canonical schema, route folds, coverage gate, principal comparator, simulation count and decision rule are frozen before response-data access. A targeted official-source audit found no public row-level historical download, so the next action is an outcome-blind raw-data request to WFTS staff.
+
+
+### Historical pre-validation candidate
+
+`candidate/jae-multisite-rc3` is retained only as pre-validation development history and is **not** release authority.
