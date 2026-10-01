@@ -22,11 +22,11 @@ Primary files:
 - `paper/manuscript_pulse_template_v0_5.md` — current novelty-maximized integrated manuscript
 - `paper/manuscript_pulse_template_v0_3.md` — superseded RC2-era draft retained for audit
 - `paper/supporting_information_pulse_template_v0_3.md` — current defence/falsification SI
-- `revision/INTEGRATED_RESULTS_V0_2.json` — current numeric synthesis
+- `revision/INTEGRATED_RESULTS_V0_3.json` — current numeric synthesis + claim/routing metadata
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md` — current evidence hierarchy
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md` — cross-branch evidence → claim → main/SI routing ledger
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md` — current gap/novelty/ecology map
-- `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
+- `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md` — current synthesis + novelty stop rule
 - `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_2.md` — frozen external-confirmation specification with overlap exclusion + informative/inconclusive rule
 - `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — outcome-blind WFTS design/data-access audit
 - `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md` — frozen Daymet/rainfall, primary comparator and three-way confirmation interpretation
