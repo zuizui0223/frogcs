@@ -157,3 +157,15 @@ The confirmatory script requires:
 - a passed pre-response coverage gate.
 
 Scripts v0.1–v0.3 are development history only.
+
+
+## Frozen WFTS weather authority
+
+Before WFTS response outcomes are opened, the rainfall exposure is implemented by:
+
+- `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md`
+- `scripts/wfts/build_daymet_covariates.py`
+
+The adapter uses Daymet daily `prcp/tmin/tmax`, a 1.0-mm wet-day threshold, a 30-day dry-spell cap, excludes survey-day precipitation, and averages `log(1+dry_days)` over the ten stations.
+
+The adapter is response-free and its synthetic QA must pass before real response analysis.
