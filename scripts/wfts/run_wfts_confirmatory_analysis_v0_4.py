@@ -70,11 +70,9 @@ def fold_for_route(route_id):
 def load_structure(runs_path,matrix_path):
     """Load only non-response fields needed for the pre-response coverage gate."""
     schema=json.loads(SCHEMA_PATH.read_text())
-    runs=pd.read_csv(runs_path)
-    struct_cols=[
-        "route_id","survey_period","survey_year","survey_date",
-        "station_order","physical_site_id",
-    ]
+    run_cols=list(schema["preflight"]["parsed_runs_columns"])
+    struct_cols=list(schema["preflight"]["parsed_matrix_columns"])
+    runs=pd.read_csv(runs_path,usecols=run_cols)
     structure=pd.read_csv(matrix_path,usecols=struct_cols)
 
     for col in schema["runs_file"]["required_columns"]:
