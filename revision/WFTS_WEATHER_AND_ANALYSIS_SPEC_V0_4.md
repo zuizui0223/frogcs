@@ -367,3 +367,29 @@ The confirmatory script:
 v0.1–v0.3 scripts and specs are retained only as pre-data development history.
 
 No change from v0.3 affects the ecological endpoint, candidate support rule, principal comparator, coverage thresholds, simulation count, seed or decision rule. v0.4 adds fail-closed provenance and response-access safeguards only.
+
+
+## 20. Frozen Daymet weather implementation
+
+The primary weather exposure defined in Sections 3–5 must be built with:
+
+- `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md`
+- `scripts/wfts/build_daymet_covariates.py`
+
+Synthetic weather-code QA:
+
+`.github/workflows/wfts_daymet_code_qa.yml`
+
+The weather adapter accepts only route/station/date/coordinate structural fields and fails closed if frog-response-like columns are present.
+
+The adapter records:
+- structural-input SHA256;
+- raw Daymet response SHA256 for every physical SiteID;
+- output SHA256 for canonical run weather and station weather tables;
+- exact Daymet request URLs.
+
+Real WFTS frog outcomes must not be supplied to the weather adapter.
+
+The canonical `runs.csv` passed to the structural preflight and confirmatory analysis must use the weather output generated under this frozen adapter or a byte-identical verified derivative.
+
+No precipitation product, wet-day threshold, dry-day cap, route aggregation, or survey-day precipitation rule may change after WFTS frog outcomes are opened.
