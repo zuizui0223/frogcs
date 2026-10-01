@@ -40,14 +40,8 @@ def main():
     matrix_path=Path(args.matrix)
     schema=json.loads(SCHEMA_PATH.read_text())
 
-    run_usecols=[
-        "route_id","survey_period","survey_year","survey_date",
-        "rain_recency","tmean_run",
-    ]
-    matrix_usecols=[
-        "route_id","survey_period","survey_year","survey_date",
-        "station_order","physical_site_id",
-    ]
+    run_usecols=list(schema["preflight"]["parsed_runs_columns"])
+    matrix_usecols=list(schema["preflight"]["parsed_matrix_columns"])
 
     # Parse only design/weather/site-identity columns. taxon_key and call_index
     # are intentionally not read before the structural gate is frozen.
