@@ -6,7 +6,7 @@ Current frozen integrated authority:
 
 - release: `release/jae-multisite-rc3`
 - submission: `submission/jae-multisite-v3`
-- commit: `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- final release/submission head: `38eb4676320493070ef84ad5e8b803d692878587`
 
 RC3 passed manuscript, figure, submission-bundle, Daymet and WFTS confirmatory-code QA on the same frozen commit.
 
@@ -88,3 +88,8 @@ Archive preparation does not modify:
 - RC1 or RC2 integrated release branches.
 
 RC3 will become current only after its own validated release manifest is written.
+
+
+Final release-head QA receipt:
+
+`submission/pulse_template/RC3_FINAL_QA_RECEIPT.md`
