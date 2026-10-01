@@ -53,7 +53,7 @@ The current JAE revision guidelines require a graphical abstract at the revision
 
 ## Scientific bundle validation
 
-**RC3 remains the last validated release.** The v0.5/v0.3 novelty track is a post-RC3 candidate and must not inherit RC3 validation status.
+**RC4 is the current validated integrated release/submission line.** RC3 remains preserved as the previous validated release.
 
 - [x] v0.5 manuscript/SI-routing QA passes on the novelty branch
 - [x] principal-only Figure 3 is regenerated and committed
@@ -83,7 +83,17 @@ The private metadata bundle remains pending because final human metadata have no
 - [x] WFTS v0.5 interpretation frozen as support / informative attenuation-nonreplication / inconclusive
 
 
-## Frozen RC3 authority and current post-RC3 candidate
+## Release authority
+
+### Current RC4
+
+- release: `release/jae-multisite-rc4`
+- submission: `submission/jae-multisite-v4`
+- validated scientific source commit: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
+- release receipt commit: `2b31c7b4363374110c8fb6098a2c0492f2e4c8e0`
+- receipt: `submission/pulse_template/RC4_RELEASE_RECEIPT.md`
+
+### Preserved previous RC3
 
 - release: `release/jae-multisite-rc3`
 - submission: `submission/jae-multisite-v3`
@@ -91,17 +101,14 @@ The private metadata bundle remains pending because final human metadata have no
 - receipt: `submission/pulse_template/RC3_RELEASE_RECEIPT.md`
 
 
-### Post-RC3 novelty candidate
+### RC4 scientific package
 
-- branch: `revision/novelty-evidence-spine-v1`
 - manuscript: `paper/manuscript_pulse_template_v0_5.md`
 - SI: `paper/supporting_information_pulse_template_v0_3.md`
 - evidence ledger: `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - evidence hierarchy: `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - literature novelty lock: `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_2.md`
 - WFTS authority: `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`
-
-This candidate is not a release until its branch QA and rebuilt submission bundle pass.
 
 
 ## Post-RC3 automated validation receipt
