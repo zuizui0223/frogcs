@@ -46,7 +46,7 @@ The structural coverage gate is evaluated before the analysis loads `taxon_key` 
 The sole real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`, which fixes the tuple:
 
 - `revision/WFTS_CANONICAL_SCHEMA_V0_2.json`
-- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md`
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md`
 - `scripts/wfts/preflight_wfts_structure.py`
 - `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`
 
@@ -63,6 +63,8 @@ It combines:
 The analysis refuses to parse frog response columns unless the preflight receipt passed and all hashes match. v0.5 additionally applies the prospectively frozen three-way interpretation: replication support, informative non-replication of an effect at least half the NAAMP discovery residual, or inconclusive non-PASS.
 
 Earlier scripts are retained only as development history and must not be used on real WFTS response data.
+
+Public-data/access status is tracked separately in `revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_2.md`; the current request text is `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md`.
 
 
 ## Frozen weather authority
