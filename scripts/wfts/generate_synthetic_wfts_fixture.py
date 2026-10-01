@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[2]
-SCHEMA=json.loads((ROOT/"revision"/"WFTS_CANONICAL_SCHEMA_V0_1.json").read_text())
+SCHEMA=json.loads((ROOT/"revision"/"WFTS_CANONICAL_SCHEMA_V0_2.json").read_text())
 
 
 def main():
