@@ -190,6 +190,16 @@ The third-party Frog Night site is **not** suitable as a substitute: it states t
 
 Do not spend further analysis effort trying to reconstruct the response matrix from annual summaries or modeled web displays. Request the actual electronic export.
 
+## 6b. Public-search stop rule reached
+
+A final targeted pass was made across the official/current WFTS site, the legacy USGS/Patuxent WFTS site, USGS data releases/data catalog, Wisconsin DNR pages, general government data catalogs, major ecological/general-purpose repositories, GitHub, and indexed file-type searches.
+
+This pass recovered public raw **Upper Midwest ARMI** nighttime-call datasets from 2003–2008 and 2024, but those are separate survey projects and are not the long-term traditional WFTS route series. They therefore cannot substitute for the WFTS confirmation without changing the frozen external candidate and estimand.
+
+No complete public traditional-route WFTS station-level response export was located.
+
+The public search is therefore considered **exhausted for the purpose of this confirmation**. Repeated web searching should not delay the study unless a new official lead appears. The next unresolved dependency is an existing DNR/WFTS electronic export.
+
 ## 7. Best data-acquisition path
 
 ### First choice: direct research/data request
