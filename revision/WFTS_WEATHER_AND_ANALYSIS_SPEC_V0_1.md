@@ -323,3 +323,22 @@ A FAIL delimits generality.
 Because WFTS is historically linked to USGS/NAAMP protocol development, either outcome should be described as an **external-dataset replication**, not a replication under an unrelated monitoring methodology.
 
 No outcome identifies the lower-level biological generator.
+
+
+## 20. Frozen implementation authority
+
+Real WFTS response data may be analysed only with:
+
+`scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py`
+
+and only after:
+
+`scripts/wfts/preflight_wfts_structure.py`
+
+has produced a passed receipt for the exact same input bytes and canonical schema.
+
+The synthetic QA workflow is:
+
+`.github/workflows/wfts_confirmatory_code_qa.yml`
+
+Synthetic ecological direction has no inferential role; the QA tests code-path integrity only.
