@@ -128,5 +128,14 @@
   "weather_analysis_spec": "revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md",
   "development_history_schemas": [
     "revision/WFTS_CANONICAL_SCHEMA_V0_1.json"
-  ]
+  ],
+  "weather_adapter": {
+    "spec": "revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md",
+    "script": "scripts/wfts/build_daymet_covariates.py",
+    "qa_workflow": ".github/workflows/wfts_daymet_code_qa.yml",
+    "response_free_input_required": true,
+    "forbidden_response_columns_before_weather": true,
+    "product": "Daymet Version 4 R1",
+    "doi": "10.3334/ORNLDAAC/2129"
+  }
 }
