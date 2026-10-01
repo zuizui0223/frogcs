@@ -106,3 +106,17 @@ Generated repository outputs now include:
 - Figure 5 visible title uses within-taxon multi-site concentration terminology.
 
 The bot-generated figure commit is part of this validation lineage. This human-authored commit exists only to trigger the final same-head QA suite after GitHub declined to auto-run PR workflows from the bot-authored commit.
+
+## Final validation trigger
+
+Canonical figures have now been regenerated with a fixed Matplotlib SVG hashsalt and Date-free SVG metadata. The generated figure commit is in this branch history.
+
+The WFTS confirmatory authority is also frozen as:
+- schema v0.2;
+- weather/analysis spec v0.4;
+- Daymet adapter spec v0.1;
+- outcome-blind structural preflight;
+- confirmatory core v0.4.
+
+This commit changes no scientific endpoint, result or visible figure content. It exists solely as the final human-authored head on which the five RC3 validation workflows must all PASS.
+
