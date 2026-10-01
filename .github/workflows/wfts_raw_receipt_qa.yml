@@ -1,0 +1,48 @@
+name: WFTS raw receipt QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/wfts/receipt_raw_wfts_files.py"
+      - "scripts/wfts/fixtures/raw_receipt_*"
+      - ".github/workflows/wfts_raw_receipt_qa.yml"
+  pull_request:
+    branches: [main]
+
+permissions: {contents: read}
+
+jobs:
+  byte-only-receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Build byte-only receipt
+        run: |
+          python scripts/wfts/receipt_raw_wfts_files.py \
+            scripts/wfts/fixtures/raw_receipt_a.csv \
+            scripts/wfts/fixtures/raw_receipt_b.txt \
+            --source-note "synthetic QA only" \
+            --received-at-utc "2026-10-01T00:00:00+00:00" \
+            --output build/wfts-raw-receipt.json
+      - name: Audit receipt semantics
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          x=json.loads(Path("build/wfts-raw-receipt.json").read_text())
+          assert x["receipt_type"]=="wfts_raw_file_bytes_v0_1"
+          assert x["response_values_interpreted"] is False
+          assert x["schema_interpreted"] is False
+          assert x["file_count"]==2
+          by={row["filename"]:row for row in x["files"]}
+          for name,path in {
+              "raw_receipt_a.csv":Path("scripts/wfts/fixtures/raw_receipt_a.csv"),
+              "raw_receipt_b.txt":Path("scripts/wfts/fixtures/raw_receipt_b.txt"),
+          }.items():
+              assert by[name]["byte_size"]==path.stat().st_size
+              assert by[name]["sha256"]==hashlib.sha256(path.read_bytes()).hexdigest()
+          print({"status":"PASS","files":2,"response_values_interpreted":False})
+          PY
