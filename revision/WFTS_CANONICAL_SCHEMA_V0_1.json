@@ -111,12 +111,18 @@
       "call_index"
     ],
     "full_file_sha256_recorded": true,
-    "receipt_required_by_confirmatory_analysis": true
+    "receipt_required_by_confirmatory_analysis": true,
+    "schema_sha256_must_match_confirmatory_runtime": true
   },
-  "confirmatory_script": "scripts/wfts/run_wfts_confirmatory_analysis.py",
+  "confirmatory_script": "scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py",
   "synthetic_qa": {
     "generator": "scripts/wfts/generate_synthetic_wfts_fixture.py",
     "workflow": ".github/workflows/wfts_confirmatory_code_qa.yml",
     "ecological_direction_asserted": false
-  }
+  },
+  "development_history_scripts": [
+    "scripts/wfts/run_wfts_confirmatory_analysis.py",
+    "scripts/wfts/run_wfts_confirmatory_analysis_v0_2.py",
+    "scripts/wfts/run_wfts_confirmatory_analysis_v0_3.py"
+  ]
 }
