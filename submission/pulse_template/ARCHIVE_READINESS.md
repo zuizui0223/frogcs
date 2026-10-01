@@ -2,21 +2,17 @@
 
 ## Current authority
 
-Current frozen integrated authority remains:
+Current frozen integrated authority:
 
-- release: `release/jae-higher-order-rc2`
-- submission: `submission/jae-higher-order-v2`
+- release: `release/jae-multisite-rc3`
+- submission: `submission/jae-multisite-v3`
+- commit: `fc9509dac8c8374041a0ddb86538bbf58240a748`
 
-RC3 scientific files are currently on:
+RC3 passed manuscript, figure, submission-bundle, Daymet and WFTS confirmatory-code QA on the same frozen commit.
 
-`revision/pulse-template-synthesis-v1`
+Release receipt:
 
-Prospective RC3 refs, to be created **only after manuscript QA, figure rendering and scientific-bundle validation pass**, are:
-
-- `release/jae-multisite-rc3`
-- `submission/jae-multisite-v3`
-
-They are not treated as existing authority before that validation.
+`submission/pulse_template/RC3_RELEASE_RECEIPT.md`
 
 ## RC3 scientific distinction
 
@@ -39,7 +35,7 @@ The workflow is already configured for the **prospective** RC3 source:
 
 `release/jae-multisite-rc3`
 
-Until that branch is actually created after validation, archive execution should fail rather than silently fall back to RC2.
+The archive workflow now targets the validated RC3 release branch.
 
 ## Human decisions still required
 
