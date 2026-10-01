@@ -39,14 +39,12 @@ The integrated manuscript uses this only as a secondary check that the concentra
 
 ## General ecological principle
 
-> **Short environmental pulses can reveal a spatial dependence structure that remains hidden during behavioural inactivity and is not recovered from first-order species responses or static site propensities alone.**
+> **Short environmental pulses can reveal non-independent multi-site organization on recurrent species × place templates in behaviourally cryptic communities.**
 
 This distinguishes:
 - **fast gate:** short environmental state;
 - **slow template:** recurrent species × place structure;
-- **dependence layer:** extra spatial participation remains concentrated within taxa beyond the tested species/site propensities.
-
-The strongest surprise is therefore **not how much activity appears, but how the added activity is statistically dependent across sites within taxa**.
+- **multi-site coherence:** extra spatial participation remains concentrated within taxa beyond the tested species/site propensities.
 
 ## Generality
 
@@ -73,4 +71,4 @@ The next decisive test is a prospectively frozen external replication in another
 
 ## Current title
 
-**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+**Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence**
