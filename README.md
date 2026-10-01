@@ -50,15 +50,21 @@ The frozen RC11 manuscript remains available as `paper/manuscript.md` and is not
 
 Current integrated release authority:
 
-- `release/jae-multisite-rc3`
-- `submission/jae-multisite-v3`
-- validated scientific source commit `bea996b3bf59fa1e66dedcc5cbd0a68833fa311d`
+- `release/jae-multisite-rc4`
+- `submission/jae-multisite-v4`
+- validated scientific source commit `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
+- release receipt commit `2b31c7b4363374110c8fb6098a2c0492f2e4c8e0`
 
-RC3 release/submission refs are documentation-only descendants of that validated scientific source. RC3 remains the last validated release. This revision branch is a post-RC3 novelty/editorial track: the principal comparator is unchanged, but the manuscript now foregrounds **pulse-revealed dependence structure**, routes FrogID/RC11 matrix defences to SI, and prospectively sharpens WFTS outcome interpretation. No post-RC3 analysis is represented as an RC3 result.
+RC4 is the validated novelty-maximized integrated release. The principal comparator is unchanged from RC3, while the manuscript foregrounds **pulse-revealed dependence structure**, routes FrogID/RC11 matrix defences to SI, and prospectively distinguishes WFTS support, informative attenuation/non-replication and inconclusive outcomes.
 
 Validated release receipt:
 
-`submission/pulse_template/RC3_RELEASE_RECEIPT.md`
+`submission/pulse_template/RC4_RELEASE_RECEIPT.md`
+
+Previous RC3 remains preserved at:
+- `release/jae-multisite-rc3`
+- `submission/jae-multisite-v3`
+- `submission/pulse_template/RC3_RELEASE_RECEIPT.md`
 
 Historical RC2 remains preserved at:
 - `release/jae-higher-order-rc2`
