@@ -93,17 +93,7 @@ The score is zero through the second occupied site and increases convexly as add
 
 For the integrated synthesis, the **principal comparator** is the 2,916-pair subset with strictly prior physical-site history. Species-specific rainfall responses were learned only from the opposite deterministic route fold; strictly prior species × SiteID probabilities represented historical spatial breadth and site use; an a = 0.75 anchor represented dry-state persistence; and a pair-level common shift matched expected total wet incidence to the observed magnitude. Across 1,000 simulations, the concentration rainfall coefficient was conditioned on the simulated route-new-taxon and total extra-stop coefficients. We also applied the pre-existing held-out rain × local-history gate as a stronger sensitivity analysis.
 
-We retained two secondary diagnostics. First, the same concentration score was evaluated under uniform activation, dry-state persistence and a cross-fitted species-response-only comparator in the full 4,236-pair sample, and repeated in the same-observer + same-physical-SiteID subset. Second, an exact within-pair combinatorial diagnostic conditioned only on target-new taxon count (N) and total target incidence (K). That exchangeable diagnostic is useful for showing that concentration is not a mathematical consequence of (N) and (K) alone, but it does **not** preserve taxon-specific spatial breadth or habitat use and therefore is not treated as the principal ecological null.
-
-Taxonomic and leave-one-state-out audits used the unchanged concentration score. Full algorithms, gates and provenance are in Supporting Information.
-
-### Exact species × stop allocation
-
-As complementary context, every wet-gain/loss incidence was classified by whether the taxon was already present elsewhere in the route and whether the stop was already active. This gives four exact components—corner expansion, spatial spread, taxonomic deepening and within-core rearrangement—whose rainfall coefficients sum to total species × stop incidence change. Details and null construction are retained in Supporting Information.
-
-### Historical recurrence of wet-state recruitment
-
-Historical recurrence analyses were restricted to physically stable pairs. Route-new and direct 0→CI3 incidences were classified using leave-pair-out history and, more conservatively, only runs preceding the focal pair. Raw recurrence shares are descriptive because longer histories create more opportunities for a previous record; the inferential tests therefore focus on within-taxon site targeting below.
+Secondary uniform/persistence comparators, the exact N,K combinatorial diagnostic, route-topology corroboration, the earlier four-component matrix allocation and raw recurrence percentages are retained in Supporting Information. Taxonomic and leave-one-state-out audits used the unchanged concentration score. Full algorithms, gates and provenance are also in Supporting Information.
 
 ### Within-species historical site targeting
 
@@ -185,25 +175,15 @@ A separate route-topology diagnostic provided corroborating evidence: adjacent-s
 
 Most rainfall-associated route-new incidence had appeared elsewhere in the historical acoustic record. Among physically stable pairs, 98.1% of the route-new incidence rainfall coefficient was recurrent in leave-pair-out history, and the strictly prior-only recurrence share was 98.9%. The strictly prior one-off/no-prior component was approximately zero (β = 0.009, 95% CI −0.141–0.160).
 
-Full-chorus activation showed the same pattern. In leave-pair-out history, 98.1% of the new-CI3 rainfall coefficient was historically recurrent and 90.4% was recurrent at the same physical SiteID. Using only runs before the focal pair, 82.6% remained same-site recurrent. These percentages are descriptive because long histories provide many opportunities for recurrence; the stronger test asks whether a species preferentially returns to **its own historically strong site**.
-
 Within the same focal pair and species, a SiteID where that species had previously reached CallingIndex 2–3 was substantially more likely to host wet-state CI2/3 (β = 0.151, 95% CI 0.129–0.173). The effect persisted for wet CI3 alone (β = 0.0778, 0.0619–0.0937) and in same-observer pairs (β = 0.159, 0.134–0.183).
 
 Historical recurrence was also selectively stronger on the rain-favoured side of the pair. In the directional opportunity-normalized analysis, increasing target rain advantage increased the CI3 targeting contrast between historically recurrent and non-recurrent candidate cells (β = 0.0245, 95% CI 0.0070–0.0420). The same-observer estimate was β = 0.0307 (0.0133–0.0480).
 
 Thus persistent site suitability alone does not capture the whole pattern: the association between historical site strength and current full chorus became stronger toward the survey closer to rain (Fig. 4).
 
-### Multi-site concentration accompanies a broader matrix-allocation shift
-
-The earlier exact four-component decomposition provides complementary context. Rainfall contrast increased total species × stop incidence (β = 1.365, 95% CI 0.757–1.974), and 92.0% of that increase crossed a spatial or taxonomic boundary. Uniform activation predicted 80.9% boundary crossing and the persistence-preserving null 77.9%; both full four-component vectors were rejected (P = 0.000999).
-
-The same allocation departure persisted under cross-fitted species-specific rainfall shifts and strictly prior local history. In the 2,916-pair final held-out rain × history null, observed boundary crossing was 0.921 versus 0.814 expected, taxonomic deepening 0.399 versus 0.316, and within-core rearrangement 0.079 versus 0.186 (P = 0.000999). These matrix results corroborate the within-taxon concentration endpoint but do not define it; the documented stopping rule ended mechanism escalation at this point (Fig. 4).
-
 ### Within-taxon concentration is taxonomically diffuse but geographically heterogeneous
 
 The multi-site concentration signal itself was not carried by one dominant taxon. Across 53 taxa in the within-taxon concentration decomposition, 25 had positive contributions and 19 contributed at least 1% of positive mass. The largest contributor accounted for **18.8%** of positive mass, the top five for **54.2%**, and HHI was **0.0855**, meeting the previously defined diffuse-contribution rule. Removing any single taxon left the total within-taxon concentration coefficient positive; the smallest leave-one-taxon-out coefficient was **1.209**.
-
-Strong chorus activation showed the same qualitative breadth. Of 57 species represented in that decomposition, 28 had positive contributions; the largest contributor accounted for 13.9% of positive mass and the top five for 49.2%, with HHI = 0.074.
 
 The within-taxon concentration endpoint itself was also insensitive to any one state. Across all 21 leave-one-state-out refits, within-taxon concentration rainfall coefficients ranged from **0.967 to 1.775**, and every 95% confidence interval remained above zero; the smallest lower bound was **0.397**. Thus no single sampled state was required for the pooled multi-site association.
 
@@ -225,7 +205,7 @@ This does not prove that frogs were physically absent during the dry survey and 
 
 The second contribution concerns the **dependence structure** of that state transition. If wet conditions merely created independent extra detections, the main excess should be accounted for by how many taxa were recruited and how many additional sites they occupied. Instead, the departure emerged at third-and-later occupied sites and remained after conditioning on both first-order quantities. It was almost entirely carried by CI2/3 states.
 
-This changes the ecological picture from “more species are heard after rain” to **the same recruited species participates strongly across several wetland-associated sites within a route**. More importantly, the multi-site test shows that this pattern is not reducible to having more recruited taxa or more total extra-stop incidences. The strongest evidence comes from the comparator that explicitly preserves species-level rainfall sensitivity and prior species × SiteID structure: even there, observed within-taxon concentration exceeds the simulated expectation, and the result remains after adding a held-out rain × history gate. This directly addresses the possibility that rain simply recruits taxa that are intrinsically widespread or historically common across many stops. The exact N,K-conditioned calculation reaches the same direction but is secondary because its exchangeability assumption does not preserve those taxon-level spatial properties. The relevant discovery is therefore not that "other factors exist", but that the observed multi-site response contains **non-independent within-taxon spatial organization** beyond the tested transferable species responses and historical site propensities. Excess adjacent-stop linkage provides a complementary route-topology signal.
+This changes the ecological picture from “more species are heard after rain” to **the same recruited species participates strongly across several wetland-associated sites within a route**. More importantly, the multi-site test shows that this pattern is not reducible to having more recruited taxa or more total extra-stop incidences. The strongest evidence comes from the comparator that explicitly preserves species-level rainfall sensitivity and prior species × SiteID structure: even there, observed within-taxon concentration exceeds the simulated expectation, and the result remains after adding a held-out rain × history gate. This directly addresses the possibility that rain simply recruits taxa that are intrinsically widespread or historically common across many stops. The relevant discovery is therefore not that "other factors exist", but that the observed multi-site response contains **non-independent within-taxon spatial organization** beyond the tested transferable species responses and historical site propensities.
 
 The analysis cannot determine whether this coherence reflects activation of individuals already near those sites, short-distance movement, shared hydrological change, social processes or another mechanism. Nor does it establish literal synchrony because the ten stops were sampled sequentially. It does show that the unit of response is broader than independent site-level detections.
 
@@ -247,7 +227,7 @@ This extends general pulse ecology (Yang et al., 2008; Holt, 2008) from asking h
 
 ### Tested first-order species and site processes do not reproduce the multi-site concentration pattern
 
-The null sequence serves a narrow falsification role. Uniform activation, dry-state persistence, route-cross-fitted species rainfall sensitivity, strictly prior species × SiteID propensity, their joint combination and the held-out rain × history gate all contain biologically plausible first-order information. Yet each underpredicted the observed within-taxon concentration after recruitment and total spread were conditioned, and the final allocation model also produced too much within-core rearrangement and too little boundary crossing and taxonomic deepening.
+The null sequence serves a narrow falsification role. Uniform activation, dry-state persistence, route-cross-fitted species rainfall sensitivity, strictly prior species × SiteID propensity, their joint combination and the held-out rain × history gate all contain biologically plausible first-order information. Yet each underpredicted the observed within-taxon concentration after recruitment and total spread were conditioned.
 
 The inference is therefore not that “other factors exist,” nor that species response or site history are unimportant. It is more specific: **the tested transferable species responses and static local propensities do not make species × site activations independent enough to reproduce the observed wet-state organization**. Fine-scale hydrology, vegetation, water depth, breeding phenology, local density, site fidelity, social processes or interactions among them remain plausible lower-level generators. Coarse wetland classes and simple mediator proxies tested here were insufficient, but they do not exhaust those possibilities.
 
