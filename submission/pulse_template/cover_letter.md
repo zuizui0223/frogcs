@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-Please consider our Research Article, **“Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence,”** for publication in *Journal of Animal Ecology*.
+Please consider our Research Article, **“Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization,”** for publication in *Journal of Animal Ecology*.
 
 Rainfall-sensitive calling is one of the most familiar features of anuran reproductive ecology. We ask a different community-level question: **when recent-rain conditions recruit taxa into an active chorus landscape, is the multi-site pattern reproduced by species-specific rainfall responses and historically used sites, or does extra spatial participation remain unusually concentrated within the same taxa?**
 
@@ -12,9 +12,9 @@ Our principal spatial comparison uses 2,916 matched pairs with strictly prior ph
 
 The coherent response was also historically placed. Within the same matched pair and taxon, physical sites with prior strong chorusing were more likely to host later wet-state strong chorusing (β = 0.151, 95% CI 0.129–0.173), and proximity to rain selectively strengthened full-chorus placement at historically strong sites (β = 0.0245, 0.0070–0.0420).
 
-We believe the study fits *Journal of Animal Ecology* because it uses a familiar behavioural response to expose a broader ecological principle: **short environmental pulses can reveal non-independent multi-site organization on recurrent species × place templates in behaviourally cryptic communities.** We describe the result as **within-taxon multi-site coherence** to make clear that it concerns spatial concentration of activity within taxa, not multi-species interaction terms.
+We believe the study fits *Journal of Animal Ecology* because it turns a familiar behavioural response into a test of a broader ecological problem: **does an environmental pulse merely change marginal activity, or can it reveal a dependence structure among species and places that first-order species responses and static site propensities do not recover?** In NAAMP, the latter is supported: extra spatial participation is concentrated within recruited taxa and reappears on recurrent species × place templates. We use **within-taxon multi-site organization** rather than synchrony or higher-order interaction language because the result concerns the spatial dependence structure of activity, not simultaneous observations or multi-species interaction terms.
 
-The integrated framing is explicitly post-opening and exploratory within NAAMP. Cross-fitting prevents route leakage in fitted comparator terms but does not provide independent confirmation, and the manuscript states that prospective external replication is the next decisive test. The paper also remains observational: it does not infer literal synchrony among sequentially surveyed stops, individual movement, demographic occupancy change or a unique lower-level mechanism.
+The integrated framing is explicitly post-opening and exploratory within NAAMP. Cross-fitting prevents route leakage in fitted comparator terms but does not provide independent confirmation. A prospective Wisconsin external test has therefore been frozen before response access, with a predeclared distinction between replication support, informative attenuation/non-replication and an inconclusive non-PASS. The paper also remains observational: it does not infer literal synchrony among sequentially surveyed stops, individual movement, demographic occupancy change or a unique lower-level mechanism.
 
 The manuscript is prepared for double-anonymized review, is within the journal's word limits, and is accompanied by Supporting Information and a reproducible five-figure set.
 
