@@ -12,7 +12,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
 ROOT=Path(__file__).resolve().parents[2]
-SCHEMA_PATH=ROOT/"revision"/"WFTS_CANONICAL_SCHEMA_V0_1.json"
+SCHEMA_PATH=ROOT/"revision"/"WFTS_CANONICAL_SCHEMA_V0_2.json"
 
 B=1000
 SEED=2840223
@@ -558,7 +558,7 @@ def main():
 
     out={
         "analysis":"wfts_prospective_within_taxon_concentration_v0_4",
-        "schema":"revision/WFTS_CANONICAL_SCHEMA_V0_1.json",
+        "schema":"revision/WFTS_CANONICAL_SCHEMA_V0_2.json",
         "candidate_support_rule":"RouteID x SurveyPeriod union of taxa positive in any eligible run; used as support only",
         "preflight_receipt":str(preflight_path),
         "preflight_verified":True,
