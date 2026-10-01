@@ -1,0 +1,73 @@
+{
+  "status_id": "wfts_external_confirmation_access_v0_1",
+  "date": "2026-10-01",
+  "classification": "DESIGN_ELIGIBLE / PUBLIC_METADATA_SUFFICIENT / RESPONSE_EXPORT_REQUIRED",
+  "biological_outcome_inspected": false,
+  "structural_gate_run": false,
+  "confirmatory_dataset_ready": false,
+  "solved": {
+    "traditional_design": true,
+    "ten_station_grain": true,
+    "three_survey_periods": true,
+    "native_call_index_1_3": true,
+    "valid_blank_means_no_call": true,
+    "public_current_station_coordinates": true,
+    "historical_route_descriptions_exist": true,
+    "permanent_route_policy_documented": true,
+    "route_lineage_documented_in_early_tables": true,
+    "route_id_county_code_convention_documented": true,
+    "electronic_historical_database_documented": true,
+    "coverage_scale_plausible": true,
+    "direct_program_contact_known": true,
+    "public_records_fallback_known": true,
+    "raw_byte_receipt_tool_ready": true,
+    "schema_only_inspector_ready": true,
+    "public_route_metadata_parser_ready": true,
+    "route_master_structural_auditor_ready": true,
+    "daymet_adapter_ready": true,
+    "response_blind_preflight_ready": true,
+    "confirmatory_v0_5_ready": true
+  },
+  "unresolved": {
+    "complete_station_level_response_export": true,
+    "authoritative_current_traditional_route_master": true,
+    "authoritative_station_replacement_history": true,
+    "exact_structural_pair_count": true,
+    "frozen_coverage_gate_result": true
+  },
+  "public_effort_evidence": {
+    "routes_used_1981_1998_analysis": 135,
+    "routes_run_2021": 140,
+    "routes_run_2022": 139,
+    "interpretation": "strongly suggests coverage feasibility but does not substitute for response-blind preflight"
+  },
+  "next_external_dependency": "obtain existing electronic station-level WFTS export and route/station lineage metadata from Wisconsin DNR",
+  "primary_request": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md",
+  "access_audit": "revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_2.md",
+  "receipt_protocol": "revision/WFTS_RECEIPT_AND_PREFLIGHT_PROTOCOL_V0_1.md",
+  "tools": {
+    "raw_receipt": "scripts/wfts/receipt_raw_wfts_files.py",
+    "schema_only": "scripts/wfts/inspect_wfts_schema_only.py",
+    "public_route_metadata": "scripts/wfts/fetch_public_route_metadata.py",
+    "route_master_audit": "scripts/wfts/audit_wfts_route_master.py",
+    "weather": "scripts/wfts/build_daymet_covariates.py",
+    "structural_preflight": "scripts/wfts/preflight_wfts_structure.py",
+    "confirmatory": "scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py"
+  },
+  "qa_runs": {
+    "public_route_metadata_parser": 36836062424,
+    "raw_receipt": 36836376544,
+    "schema_only_inspector": 36836690335,
+    "route_master_structural": 36836968077,
+    "daymet": 36830477471,
+    "confirmatory_synthetic": 36830477410
+  },
+  "forbidden_shortcuts": [
+    "reconstruct response matrix from annual summaries",
+    "use Frog Night modeled route/month values as local observations",
+    "infer traditional/protocol route type from RouteID alone",
+    "declare structural gate PASS from published route counts",
+    "manually browse frog-response rows before frozen preflight and one-shot execution",
+    "retune endpoint/comparator after WFTS outcome access"
+  ]
+}
