@@ -50,6 +50,8 @@ Permitted remaining work:
 - archive/license/DOI finalization;
 - prospective WFTS execution only after its response-blind eligibility gate passes.
 
+**WFTS is not a submission gate for RC4.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
+
 ## RC4 claim safeguards
 
 - [x] main inferential spine is restricted to state switching → within-taxon multi-site dependence → recurrent species × site placement
@@ -101,7 +103,7 @@ Clean scientific-bundle artifact from run 36819400689:
 
 The private metadata bundle remains intentionally pending until final human metadata are supplied.
 
-## Prospective external confirmation
+## Prospective external confirmation — future, non-blocking
 
 WFTS real-data authority:
 - `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`
