@@ -1,0 +1,145 @@
+{
+  "analysis": "frogcs_integrated_multisite_results_v0_3",
+  "status": "post_opening_integrated_synthesis",
+  "current_title": "Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization",
+  "population": {
+    "matched_pairs": 4236,
+    "routes": 585,
+    "states": 21,
+    "principal_history_pairs": 2916,
+    "principal_history_routes": 439,
+    "principal_history_states": 20,
+    "same_observer_same_site_pairs": 3115
+  },
+  "chorus_state": {
+    "zero_to_positive_share_total": 0.6528793213930071,
+    "zero_to_ci2_ci3_share_activation": 0.8707082810857251,
+    "zero_to_ci3_beta": 0.4405530685436047,
+    "zero_to_ci3_ci95": [
+      0.11357271335451931,
+      0.7675334237326901
+    ],
+    "robust_zero_to_ci3_beta": 0.5140603333339898,
+    "robust_zero_to_ci3_ci95": [
+      0.10081588098938049,
+      0.9273047856785992
+    ]
+  },
+  "spatial_depth": {
+    "second_stop_beta": 0.132,
+    "third_plus_beta": 0.473,
+    "fourth_plus_beta": 0.363,
+    "third_plus_ci2_ci3_share": 0.973
+  },
+  "principal_within_taxon_comparator": {
+    "observed_beta": 1.6503201354367818,
+    "predicted_beta": 1.3534664037854447,
+    "conditional_residual": 0.2968537316513371,
+    "null_residual_ci95": [
+      -0.13185369117339027,
+      0.11870819192117488
+    ],
+    "p": 0.000999000999000999,
+    "ingredients": [
+      "route-cross-fit species-specific rainfall response",
+      "strictly-prior species x physical-SiteID probabilities",
+      "dry-state persistence a=0.75",
+      "pair-level wet-incidence magnitude matching"
+    ]
+  },
+  "final_gate_sensitivity": {
+    "observed_beta": 1.6503201354367818,
+    "predicted_beta": 1.3322893659679573,
+    "conditional_residual": 0.31803076946882447,
+    "null_residual_ci95": [
+      -0.11722907299037132,
+      0.1255263141419511
+    ],
+    "p": 0.000999000999000999
+  },
+  "exact_NK_secondary": {
+    "raw_excess_beta": 0.24387549076645898,
+    "raw_excess_ci95": [
+      0.14735888407119993,
+      0.34039209746171806
+    ],
+    "robust_raw_excess_beta": 0.2543389727408656,
+    "robust_raw_excess_ci95": [
+      0.13750694389286322,
+      0.37117100158886795
+    ],
+    "role": "secondary combinatorial diagnostic only",
+    "caveat": "taxa are exchangeable conditional on N and K; intrinsic taxon spatial breadth and prior site use are not preserved"
+  },
+  "historical_site_structure": {
+    "prior_strong_site_to_wet_ci2_ci3_beta": 0.1510940272028386,
+    "ci95": [
+      0.12912743790722594,
+      0.17306061649845125
+    ],
+    "rain_selective_ci3_targeting_beta": 0.02448895976609234,
+    "rain_selective_ci3_targeting_ci95": [
+      0.007001673669270292,
+      0.04197624586291439
+    ]
+  },
+  "generality": {
+    "taxa_total": 53,
+    "positive_taxa": 25,
+    "top1_positive_share": 0.1877943000389063,
+    "top5_positive_share": 0.5416311941214678,
+    "hhi": 0.08551024929666419,
+    "all_leave_one_taxon_out_positive": true,
+    "leave_one_state_beta_range": [
+      0.9669803992111705,
+      1.7752639854189354
+    ],
+    "minimum_leave_one_state_ci_lower": 0.3973148198503791,
+    "state_specific_estimable": 17,
+    "state_specific_positive": 14,
+    "state_specific_positive_ci": 2
+  },
+  "exploration_boundary": {
+    "independently_confirmed": false,
+    "crossfit_is_external_confirmation": false,
+    "untouched_NAAMP_confirmation_partition_available": false,
+    "external_prospective_replication_required": true
+  },
+  "claim_spine": {
+    "biological": "strong chorus state switching -> excess within-taxon multi-site concentration -> recurrent species-specific physical-site placement",
+    "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
+    "principal_test": "principal_within_taxon_comparator",
+    "strongest_sensitivity": "final_gate_sensitivity"
+  },
+  "main_text_routing": {
+    "keep": [
+      "chorus_state",
+      "spatial_depth",
+      "principal_within_taxon_comparator",
+      "final_gate_sensitivity",
+      "historical_site_structure",
+      "generality"
+    ],
+    "supporting_information_only": [
+      "exact_NK_secondary",
+      "uniform_activation_and_persistence_only_nulls",
+      "RC11_four_component_matrix_allocation",
+      "raw_recurrence_percentages",
+      "route_topology_corroboration",
+      "FrogID_cross_dataset_taxonomic_depth",
+      "trait_and_context_mechanism_screens",
+      "activation_geometry_placebo_falsification"
+    ]
+  },
+  "novelty_boundary": {
+    "do_not_claim": [
+      "first hidden spatial structure",
+      "first cross-site coherence in frogs",
+      "rainfall causality",
+      "individual memory or philopatry",
+      "literal synchrony",
+      "universal pulse template"
+    ],
+    "preferred_claim": "conditional dependence after explicit first-order ecological comparators"
+  }
+}
