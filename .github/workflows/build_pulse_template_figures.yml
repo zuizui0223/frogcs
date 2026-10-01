@@ -11,7 +11,7 @@ on:
     branches: [main]
   workflow_dispatch:
 concurrency:
-  group: pulse-template-figures-${{ github.ref }}
+  group: pulse-template-figures-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
