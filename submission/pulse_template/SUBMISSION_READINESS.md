@@ -5,9 +5,9 @@
 - Current manuscript: `paper/manuscript_pulse_template_v0_5.md`
 - Supporting Information: `paper/supporting_information_pulse_template_v0_3.md`
 - Canonical figures: `figures_pulse_template/fig1_*.svg/png` through `fig5_*.svg/png`
-- Durable numerical synthesis: `revision/INTEGRATED_RESULTS_V0_2.json`
+- Durable numerical synthesis: `revision/INTEGRATED_RESULTS_V0_3.json`
 - Current gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- Scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md`
+- Scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 
 ## JAE initial-submission checks
 
