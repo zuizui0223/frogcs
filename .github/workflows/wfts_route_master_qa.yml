@@ -1,0 +1,57 @@
+name: WFTS route-master structural QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/wfts/audit_wfts_route_master.py"
+      - "revision/WISCONSIN_COUNTY_ROUTE_PREFIX_V0_1.csv"
+      - ".github/workflows/wfts_route_master_qa.yml"
+  pull_request:
+    branches: [main]
+
+permissions: {contents: read}
+
+jobs:
+  route-master:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Build synthetic structural route master
+        run: |
+          mkdir -p build
+          cat > build/routes.csv <<'CSV'
+          route_id,county,route_type
+          73,Burnett,traditional
+          123,Crawford/Grant,traditional
+          132,Dane,traditional
+          134,Dane,traditional
+          211,Forest,traditional
+          701,Marquette/Waushara,traditional
+          901,Iowa,special-comparison
+          212,Dane,unknown
+          CSV
+      - name: Run route-ID county audit
+        run: |
+          python scripts/wfts/audit_wfts_route_master.py \
+            --route-master build/routes.csv \
+            --output build/route-audit.json
+      - name: Check structural-only classifications
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/route-audit.json").read_text())
+          assert x["response_values_read"] is False
+          assert x["route_type_inferred"] is False
+          assert x["counts"]["county_prefix_consistent"]==6
+          assert x["counts"]["special_or_noncounty_route_id"]==1
+          assert x["counts"]["county_mismatch"]==1
+          by={r["route_id"]:r for r in x["rows"]}
+          assert by["701"]["expected_county"]=="Waushara"
+          assert by["123"]["expected_county"]=="Crawford"
+          assert by["134"]["expected_county"]=="Dane"
+          print({"status":"PASS","response_values_read":False,"rows":len(x["rows"])})
+          PY
