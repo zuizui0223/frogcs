@@ -1,0 +1,44 @@
+name: WFTS public route metadata parser QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/wfts/fetch_public_route_metadata.py"
+      - "scripts/wfts/fixtures/public_route_page_test.html"
+      - ".github/workflows/wfts_public_route_metadata_qa.yml"
+  pull_request:
+    branches: [main]
+
+permissions: {contents: read}
+
+jobs:
+  synthetic-parser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Parse response-free synthetic route page
+        run: |
+          python scripts/wfts/fetch_public_route_metadata.py \
+            --html scripts/wfts/fixtures/public_route_page_test.html \
+            --output build/wfts-public-route-test.csv
+      - name: Audit parsed route metadata
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          p=Path("build/wfts-public-route-test.csv")
+          rows=list(csv.DictReader(p.open(encoding="utf-8")))
+          assert len(rows)==10
+          assert {r["route_id"] for r in rows}=={"999"}
+          assert {r["county"] for r in rows}=={"Test County"}
+          assert [int(r["site_number"]) for r in rows]==list(range(1,11))
+          assert abs(float(rows[0]["latitude"])-43.10001)<1e-9
+          assert abs(float(rows[-1]["longitude"])+89.10010)<1e-9
+          assert all(r["html_sha256"]==rows[0]["html_sha256"] for r in rows)
+          assert all("call_index" not in r for r in rows)
+          print({"status":"PASS","routes":1,"sites":10,"response_data":False})
+          PY
