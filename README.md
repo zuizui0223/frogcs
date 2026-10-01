@@ -28,7 +28,7 @@ Primary files:
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
 - `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_1.md` — frozen external-confirmation specification
 - `revision/WFTS_EXTERNAL_REPLICATION_ELIGIBILITY_V0_1.md` — outcome-blind WFTS design/data-access audit
-- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md` — frozen Daymet/rainfall and confirmatory analysis implementation
+- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_3.md` — frozen Daymet/rainfall and confirmatory analysis implementation
 - `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_1.md` — outcome-blind raw-data request template
 - `revision/WFTS_CANONICAL_SCHEMA_V0_1.json` — frozen canonical WFTS input schema
 - `scripts/wfts/` — prospective confirmatory analysis core + synthetic QA fixture generator
