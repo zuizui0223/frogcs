@@ -6,9 +6,9 @@ Current frozen integrated authority:
 
 - release: `release/jae-multisite-rc3`
 - submission: `submission/jae-multisite-v3`
-- commit: `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- validated scientific source commit: `bea996b3bf59fa1e66dedcc5cbd0a68833fa311d`
 
-RC3 passed manuscript, figure, submission-bundle, Daymet and WFTS confirmatory-code QA on the same frozen commit.
+RC3 passed manuscript, figure, submission-bundle, Daymet and WFTS confirmatory-code QA on the same validated scientific source commit.
 
 Release receipt:
 
