@@ -50,9 +50,9 @@ Current integrated release authority:
 
 - `release/jae-multisite-rc3`
 - `submission/jae-multisite-v3`
-- frozen commit `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- validated scientific source commit `bea996b3bf59fa1e66dedcc5cbd0a68833fa311d`
 
-RC3 is the validated multi-site version: the exchangeable exact N,K null is secondary, the principal comparator preserves cross-fit species response + strictly-prior physical-site history + dry persistence, and reader-facing terminology is within-taxon multi-site concentration/coherence.
+RC3 release/submission refs are documentation-only descendants of that validated scientific source. RC3 is the validated multi-site version: the exchangeable exact N,K null is secondary, the principal comparator preserves cross-fit species response + strictly-prior physical-site history + dry persistence, and reader-facing terminology is within-taxon multi-site concentration/coherence.
 
 Validated release receipt:
 
