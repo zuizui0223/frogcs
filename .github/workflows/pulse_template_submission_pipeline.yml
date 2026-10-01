@@ -26,7 +26,7 @@ on:
         type: boolean
 
 concurrency:
-  group: pulse-template-submission-${{ github.ref }}
+  group: pulse-template-submission-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
