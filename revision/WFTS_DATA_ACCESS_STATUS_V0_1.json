@@ -26,7 +26,15 @@
     "route_master_structural_auditor_ready": true,
     "daymet_adapter_ready": true,
     "response_blind_preflight_ready": true,
-    "confirmatory_v0_5_ready": true
+    "confirmatory_v0_5_ready": true,
+    "current_program_coordinator_verified": true,
+    "programme_aliases_verified": true,
+    "open_records_route_verified": true,
+    "public_search_stop_rule_frozen": true,
+    "raw_to_canonical_rules_frozen": true,
+    "raw_to_canonical_mapping_template_ready": true,
+    "open_records_request_ready": true,
+    "acquisition_packet_ready": true
   },
   "unresolved": {
     "complete_station_level_response_export": true,
@@ -41,7 +49,7 @@
     "routes_run_2022": 139,
     "interpretation": "strongly suggests coverage feasibility but does not substitute for response-blind preflight"
   },
-  "next_external_dependency": "obtain existing electronic station-level WFTS export and route/station lineage metadata from Wisconsin DNR",
+  "next_external_dependency": "send WFTS research-data request; if direct export is unavailable, use the narrow Wisconsin DNR open-records request",
   "primary_request": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md",
   "access_audit": "revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_2.md",
   "receipt_protocol": "revision/WFTS_RECEIPT_AND_PREFLIGHT_PROTOCOL_V0_1.md",
@@ -69,5 +77,24 @@
     "declare structural gate PASS from published route counts",
     "manually browse frog-response rows before frozen preflight and one-shot execution",
     "retune endpoint/comparator after WFTS outcome access"
-  ]
+  ],
+  "public_search_exhausted": true,
+  "current_contacts_verified": true,
+  "secure_public_export_found": false,
+  "acquisition_packet": "revision/WFTS_ACQUISITION_PACKET_V0_1.md",
+  "open_records_fallback": "revision/WFTS_OPEN_RECORDS_REQUEST_V0_1.md",
+  "adapter_rules": "revision/WFTS_RAW_TO_CANONICAL_RULES_V0_1.md",
+  "adapter_mapping_template": "revision/WFTS_RAW_TO_CANONICAL_MAPPING_TEMPLATE_V0_1.json",
+  "contact_evidence": {
+    "coordinator": "Andrew.Badje@wisconsin.gov (2026 Wisconsin DNR WFTS release)",
+    "programme_alias_manual": "WFTS@wisconsin.gov (2022 WFTS manual)",
+    "programme_alias_brochure": "DNRWFTS@wisconsin.gov (2025 WFTS brochure)",
+    "open_records": "DNRRecordsResponse@wisconsin.gov"
+  },
+  "route_identity_evidence": {
+    "current_public_site_coordinates": true,
+    "early_route_lineage_table": true,
+    "all_routes_considered_permanent_historical_methods": true,
+    "major_noncomparable_change_treated_as_new_route": true
+  }
 }
