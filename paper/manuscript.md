@@ -2,7 +2,7 @@
 
 ## Abstract
 
-1. **Rainfall-sensitive calling is familiar in frogs; the unresolved question is whether a short environmental pulse changes only marginal activity or exposes spatial dependence.** We asked whether recent-rain activity becomes concentrated within recruited taxa after allowing taxa to differ in rainfall sensitivity and historical site use, and whether strong chorus activity recurs at species-specific physical sites.
+1. **Rainfall-sensitive calling is familiar in frogs; the unresolved question is whether a short environmental pulse changes only marginal activity or exposes a spatial dependence structure.** We asked whether recent-rain activity becomes concentrated within recruited taxa after allowing taxa to differ in rainfall sensitivity and historical site use, and whether strong chorus activity recurs at species-specific physical sites.
 
 2. **We analysed 4,236 wetter–drier comparisons spanning 53 taxa, 585 ten-stop routes and 21 U.S. states over 15 years.** The principal spatial comparator used 2,916 pairs with strictly prior site history, combining cross-fitted species rainfall responses, prior species × SiteID probabilities, dry-state persistence and matched wet-incidence magnitude.
 
