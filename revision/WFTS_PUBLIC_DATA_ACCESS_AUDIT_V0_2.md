@@ -95,6 +95,21 @@ The response request should ask for, if held:
 
 If no explicit replacement table exists, public/current coordinates plus archived route-description documents can support a secondary historical identity audit, but DNR's internal route/site history is preferred.
 
+### Early route lineage is explicitly documented
+
+The original WFTS establishment report contains a route table for 1981–1983 with columns for:
+
+- **New Route Number**;
+- **Former Route Number**;
+- county/area route name;
+- primary observers;
+- survey-period site counts by year;
+- **First Year of Permanent Route**.
+
+Examples include 041 (Bayfield), 051 (Brown) and 071 (Burnett). This is direct documentary evidence that the programme explicitly tracked route renumbering and the transition from experimental/early routes to permanent routes.
+
+For the external confirmation, this makes `former_route_id` and `first_permanent_year` valuable structural fields to request. If the modern DNR database preserves them, the preflight can exclude pre-permanent segments or reconcile lineage without looking at frog-response values.
+
 ## 3b. Public RouteID numbering is highly structured but is not a substitute for a master table
 
 Public/current route pages and historical forms indicate a stable RouteID convention in which the leading digits correspond to the Wisconsin county's alphabetical ordinal and the final digit identifies a route within that county.
