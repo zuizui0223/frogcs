@@ -1,0 +1,60 @@
+{
+  "manifest_type": "wfts_raw_to_canonical_mapping_v0_1",
+  "status": "TEMPLATE_NOT_FROZEN",
+  "created_before_response_row_browsing": true,
+  "raw_files": [
+    {
+      "filename": "[RAW FILE]",
+      "sha256": "[FROM BYTE RECEIPT]"
+    }
+  ],
+  "source_tables_or_sheets": {
+    "responses": "[TABLE OR SHEET]",
+    "route_master": "[TABLE OR SHEET OR EXTERNAL LOOKUP]",
+    "station_master": "[TABLE OR SHEET OR EXTERNAL LOOKUP]"
+  },
+  "structural_mapping": {
+    "route_id": "[RAW COLUMN]",
+    "route_type": "[RAW COLUMN OR LOOKUP]",
+    "survey_year": "[RAW COLUMN]",
+    "survey_period": "[RAW COLUMN]",
+    "survey_date": "[RAW COLUMN OR DATE ASSEMBLY RULE]",
+    "site_id": "[RAW COLUMN OR FROZEN CONSTRUCTION RULE]",
+    "site_number": "[RAW COLUMN]",
+    "valid_run": "[RAW COLUMN OR DOCUMENTED RULE]",
+    "valid_site": "[RAW COLUMN OR DOCUMENTED RULE]",
+    "route_first_permanent_year": "[RAW COLUMN/LOOKUP IF AVAILABLE]",
+    "former_route_id": "[RAW COLUMN/LOOKUP IF AVAILABLE]",
+    "site_start_date": "[RAW COLUMN/LOOKUP IF AVAILABLE]",
+    "site_end_date": "[RAW COLUMN/LOOKUP IF AVAILABLE]",
+    "site_replacement_flag": "[RAW COLUMN/LOOKUP IF AVAILABLE]"
+  },
+  "response_mapping_frozen_before_endpoint": {
+    "taxon": "[RAW COLUMN]",
+    "call_index": "[RAW COLUMN]",
+    "non_detection_representation": "[BLANK/0/OTHER AS DOCUMENTED]",
+    "taxon_synonym_table": "[PATH OR NONE]"
+  },
+  "structural_exclusions": {
+    "allowed_route_type": "traditional",
+    "exclude_protocol_naamp_routes": true,
+    "exclude_phenology": true,
+    "exclude_mink": true,
+    "exclude_ad_hoc": true,
+    "complete_station_count": 10,
+    "station_replacement_policy": "exclude focal pair unless physical station continuity is verified",
+    "invalid_run_policy": "[FREEZE FROM DOCUMENTATION/FLAGS]"
+  },
+  "date_and_period_normalization": {
+    "early_spring": "[RAW VALUE(S)]",
+    "late_spring": "[RAW VALUE(S)]",
+    "summer": "[RAW VALUE(S)]",
+    "timezone": "America/Chicago",
+    "date_parse_rule": "[FREEZE EXACT RULE]"
+  },
+  "notes": [
+    "Fill only from schema, codebook, route/station metadata and documented coding rules.",
+    "Do not browse or summarize frog-response values while completing this manifest.",
+    "Commit/freeze the completed manifest before the response endpoint is calculated."
+  ]
+}
