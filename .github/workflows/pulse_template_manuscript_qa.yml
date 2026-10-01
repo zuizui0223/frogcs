@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [main]
 concurrency:
-  group: pulse-template-manuscript-qa-${{ github.ref }}
+  group: pulse-template-manuscript-qa-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions: {contents: read}
