@@ -57,7 +57,7 @@ The current JAE revision guidelines require a graphical abstract at the revision
 
 - [x] v0.5 manuscript/SI-routing QA passes on the novelty branch
 - [x] principal-only Figure 3 is regenerated and committed
-- [ ] v0.5 anonymous DOCX/submission bundle rebuilt after QA
+- [x] v0.5 anonymous DOCX/submission bundle rebuilt after QA
 - [x] WFTS v0.5 synthetic code QA passes
 
 Historical validated RC3 checks:
@@ -102,3 +102,20 @@ The private metadata bundle remains pending because final human metadata have no
 - WFTS authority: `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`
 
 This candidate is not a release until its branch QA and rebuilt submission bundle pass.
+
+
+## Post-RC3 automated validation receipt
+
+Validated scientific-bundle run: **36818136788**.
+
+- integrated manuscript QA: PASS
+- principal-only figure rendering: PASS
+- metadata-renderer smoke test: PASS
+- anonymous manuscript/SI DOCX build: PASS
+- JAE formatting and anonymity audit: PASS
+- anonymous scientific bundle assembly: PASS
+- artifact: `frogcs-jae-pulse-template-scientific-submission`
+- artifact ID: `11142765331`
+- artifact SHA256 digest: `0cca77c00284a288fc800af81dd3bb8ef5050038e59d79d45fbbbd8eb36c506a`
+
+WFTS v0.5 synthetic confirmation-code QA also passed in run **36818047346** after correcting the QA workflow to execute the v0.5 core.
