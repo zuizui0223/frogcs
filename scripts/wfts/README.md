@@ -8,7 +8,7 @@ Primary inputs are canonical CSV files defined by:
 
 Scientific specification:
 
-`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_1.md`
+`revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_3.md`
 
 Main analysis:
 
