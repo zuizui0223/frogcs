@@ -1,0 +1,62 @@
+name: WFTS schema-only inspector QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/wfts/inspect_wfts_schema_only.py"
+      - "scripts/wfts/fixtures/raw_receipt_a.csv"
+      - ".github/workflows/wfts_schema_only_qa.yml"
+  pull_request:
+    branches: [main]
+
+permissions: {contents: read}
+
+jobs:
+  schema-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install XLSX dependency
+        run: python -m pip install --disable-pip-version-check -q openpyxl==3.1.5
+      - name: Create synthetic XLSX without inspecting outcome values
+        run: |
+          python - <<'PY'
+          from openpyxl import Workbook
+          from pathlib import Path
+          p=Path("build/schema-test.xlsx")
+          p.parent.mkdir(parents=True,exist_ok=True)
+          wb=Workbook()
+          ws=wb.active
+          ws.title="Responses"
+          ws.append(["route_id","station_id","taxon_key","call_index"])
+          ws.append(["TEST",1,"FROG_A",3])
+          meta=wb.create_sheet("RouteMaster")
+          meta.append(["route_id","route_type","county"])
+          meta.append(["TEST","traditional","Test County"])
+          wb.save(p)
+          PY
+      - name: Inspect headers only
+        run: |
+          python scripts/wfts/inspect_wfts_schema_only.py \
+            scripts/wfts/fixtures/raw_receipt_a.csv \
+            build/schema-test.xlsx \
+            --output build/wfts-schema-receipt.json
+      - name: Audit no response rows read
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/wfts-schema-receipt.json").read_text())
+          assert x["receipt_type"]=="wfts_schema_only_v0_1"
+          assert x["response_values_interpreted"] is False
+          assert x["response_rows_read"]==0
+          assert x["files"][0]["columns"]==["route_id","station_id","taxon_key","call_index"]
+          sheets={s["sheet"]:s for s in x["files"][1]["sheets"]}
+          assert sheets["Responses"]["columns"]==["route_id","station_id","taxon_key","call_index"]
+          assert sheets["RouteMaster"]["columns"]==["route_id","route_type","county"]
+          assert all(s["response_rows_read"]==0 for s in sheets.values())
+          print({"status":"PASS","response_rows_read":0,"files":2})
+          PY
