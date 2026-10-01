@@ -8,8 +8,13 @@
 
 Wisconsin Frog and Toad Survey / Wisconsin DNR Natural Heritage Conservation
 
-- WFTS programme: `WFTS@wisconsin.gov`
-- WFTS coordinator: Andrew Badje, `Andrew.Badje@wisconsin.gov`
+Current official contact evidence is slightly versioned, so use the coordinator plus both programme aliases:
+
+- coordinator (2026 DNR release): Andrew Badje, `Andrew.Badje@wisconsin.gov`
+- WFTS manual contact (2022 manual): `WFTS@wisconsin.gov`
+- WFTS brochure contact (PUB-NH-931, 2025): `DNRWFTS@wisconsin.gov`
+
+Recommended first message: send to Andrew Badje and copy the two programme aliases. This avoids depending on which programme alias is currently preferred while keeping the request inside the WFTS/DNR team.
 
 If a direct research-data request cannot provide an existing electronic export, the same narrowly specified record set can be requested through Wisconsin DNR Open Records at `DNRRecordsResponse@wisconsin.gov`.
 
