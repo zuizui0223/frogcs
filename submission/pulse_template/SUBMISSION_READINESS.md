@@ -16,9 +16,9 @@ Verified against the current Journal of Animal Ecology author guidelines (Octobe
 - [x] Research Article target
 - [x] anonymized main manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words (current: 343)
+- [x] abstract ≤350 words (current: 341)
 - [x] ≤8 alphabetized keywords
-- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,439)
+- [x] main manuscript below 8,500 words before final human title-page metadata (current anonymized Markdown ≈7,443)
 - [x] separate Supporting Information
 - [x] continuous-line-number / double-spaced anonymous DOCX built and validated
 - [x] five reproducible main figures; submission bundle packages PNG copies
@@ -53,12 +53,12 @@ The current JAE revision guidelines require a graphical abstract at the revision
 
 ## Scientific bundle validation
 
-- [ ] RC3 manuscript QA passed on frozen candidate
-- [ ] RC3 anonymous DOCX formatting/anonymity checks passed
-- [ ] RC3 scientific submission bundle assembled
-- [ ] RC3 SHA256 manifest generated
-- [ ] RC3 workflow artifact uploaded
-- [ ] RC3 bundle receipt stored
+- [x] RC3 manuscript QA passed on frozen candidate
+- [x] RC3 anonymous DOCX formatting/anonymity checks passed
+- [x] RC3 scientific submission bundle assembled
+- [x] RC3 SHA256 manifest generated
+- [x] RC3 workflow artifact uploaded
+- [x] RC3 bundle receipt stored
 
 The private metadata bundle remains pending because final human metadata have not been supplied in the private secret.
 
@@ -71,3 +71,11 @@ The private metadata bundle remains pending because final human metadata have no
 - [x] manuscript states that cross-fitting is not independent confirmation
 - [x] manuscript states that no untouched NAAMP confirmation partition remains
 - [x] prospective external replication specification frozen before choosing an external outcome dataset
+
+
+## RC3 frozen authority
+
+- release: `release/jae-multisite-rc3`
+- submission: `submission/jae-multisite-v3`
+- commit: `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- receipt: `submission/pulse_template/RC3_RELEASE_RECEIPT.md`
