@@ -91,6 +91,33 @@ The response request should ask for, if held:
 
 If no explicit replacement table exists, public/current coordinates plus archived route-description documents can support a secondary historical identity audit, but DNR's internal route/site history is preferred.
 
+## 3b. Public RouteID numbering is highly structured but is not a substitute for a master table
+
+Public/current route pages and historical forms indicate a stable RouteID convention in which the leading digits correspond to the Wisconsin county's alphabetical ordinal and the final digit identifies a route within that county.
+
+Verified examples include:
+
+- Burnett = 7th county → Route 73;
+- Crawford = 12th → Route 121/123;
+- Dane = 13th → Route 132, and the official sample sheet uses Route 134;
+- Dodge = 14th → sample route 142;
+- Forest = 21st → Routes 211/213;
+- Oneida = 44th → Routes 441/442;
+- St. Croix = 56th → historical Route 561;
+- Sauk = 57th → historical Routes 572/573;
+- Sheboygan = 60th → historical Route 601;
+- Vilas = 64th → historical Route 641;
+- Walworth = 65th → historical Routes 651/652;
+- Washington = 67th → historical Route 671;
+- Waupaca = 69th → historical Route 691;
+- Waushara = 70th → current Route 701;
+- Winnebago = 71st → historical Routes 711/712;
+- Wood = 72nd → historical Route 721.
+
+This convention is useful for auditing a supplied route master and detecting obvious route/county inconsistencies.
+
+It should **not** be used to invent the current route master. Counties can have more than two routes, route numbers have changed historically, cross-county routes exist, and old reports also contain special/non-Wisconsin comparison identifiers. The authoritative traditional-route set must therefore come from DNR records or an official route listing.
+
 ## 4. Traditional routes must be separated from protocol routes
 
 Official WFTS history records that in 1997–1998 an additional 80 NAAMP-based/protocol routes were run, and that a small number of those routes remain active.
