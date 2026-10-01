@@ -15,7 +15,7 @@ Nothing in this branch retroactively converts post-freeze analyses into preregis
 
 ## Current integrated manuscript
 
-**Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence**
+**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
 
 Primary files:
 
@@ -24,6 +24,7 @@ Primary files:
 - `paper/supporting_information_pulse_template_v0_2.md` — current SI
 - `revision/INTEGRATED_RESULTS_V0_2.json` — current numeric synthesis
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_2.md` — current evidence hierarchy
+- `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md` — cross-branch evidence → claim → main/SI routing ledger
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md` — current gap/novelty/ecology map
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md` — current synthesis + stop rule
 - `revision/PROSPECTIVE_EXTERNAL_REPLICATION_SPEC_V0_1.md` — frozen external-confirmation specification
