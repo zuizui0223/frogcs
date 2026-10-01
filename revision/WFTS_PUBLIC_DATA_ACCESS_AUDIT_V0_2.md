@@ -69,13 +69,17 @@ Canonical public route-page pattern:
 
 The current coordinates therefore do **not** need to be supplied with the response export in order to link eligible present-day site identities to Daymet. A route/site table from DNR remains preferable because it can carry stable internal identifiers and history.
 
-## 3. Historical site identity is an auditable issue, not a fatal ambiguity
+## 3. Historical site identity is much better controlled than a generic volunteer dataset
 
 The WFTS instructions require route descriptions precise enough that a later observer can survey the exact same locations. They also warn that replacing a bad site after a first run can void the first year's monitoring data and recommend selecting the ten permanent sites before reporting the year.
 
-Historical Wisconsin DNR records in SWIMS include WFTS route-description forms. A verified 1994 Dodge County record contains ten site-by-site location and wetland descriptions.
+The long-term methods account by Mossman and colleagues is even more informative. It states that **all routes were considered permanent**. Route/site changes were allowed mainly during the first few years of a route or on rare occasions when access or background noise made the original station incomparable. In those cases, the programme either replaced a station with a similar one, abandoned the route, or made a larger change and **treated it as a new route**. Earlier data affected by initial route changes were not used in their trend analyses.
 
-This matters because the frozen confirmation requires the same physical stations in each matched pair and strictly-prior site history. Site replacement therefore needs to be treated explicitly rather than assumed away.
+Historical Wisconsin DNR records in SWIMS also include WFTS route-description forms. A verified 1994 Dodge County record contains ten site-by-site location and wetland descriptions.
+
+This substantially reduces the risk that long-term RouteID × SiteNumber silently mixes arbitrary physical locations. The frozen confirmation should still audit station continuity explicitly, but the programme's own historical rules were designed to preserve exactly the kind of repeated physical-site identity needed here.
+
+The same historical methods account states that field records were entered into an **SAS computer databank**, which is further evidence that electronic historical records existed long before the current online submission system.
 
 ### Required metadata
 
@@ -134,9 +138,10 @@ The frozen pre-response gate requires:
 - at least 300 matched pairs with strictly-prior history;
 - at least 10 routes in each deterministic fold.
 
-Public programme history shows:
+Public programme history and published WFTS analyses show:
 
 - statewide permanent coverage began in 1984;
+- a 2003 regional-dynamics analysis used **135 routes × 10 fixed listening sites** from WFTS records spanning 1981–1998;
 - during 1984–1995, 58–100 routes were surveyed per year;
 - 122 routes were run at least twice during 1984–1995 in the 1998 programme analysis;
 - 73 routes were run in 2009 and 76 in 2008;
