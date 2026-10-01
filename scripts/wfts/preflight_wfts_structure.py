@@ -9,7 +9,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parents[2]
-SCHEMA_PATH=ROOT/"revision"/"WFTS_CANONICAL_SCHEMA_V0_1.json"
+SCHEMA_PATH=ROOT/"revision"/"WFTS_CANONICAL_SCHEMA_V0_2.json"
 
 
 def sha256_file(path: Path) -> str:
@@ -184,7 +184,7 @@ def main():
 
     output={
         "analysis":"wfts_structural_preflight_v0_1",
-        "schema":"revision/WFTS_CANONICAL_SCHEMA_V0_1.json",
+        "schema":"revision/WFTS_CANONICAL_SCHEMA_V0_2.json",
         "schema_sha256":sha256_file(SCHEMA_PATH),
         "input_sha256":{
             "runs":sha256_file(runs_path),
