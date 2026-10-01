@@ -55,10 +55,10 @@ The current JAE revision guidelines require a graphical abstract at the revision
 
 **RC3 remains the last validated release.** The v0.5/v0.3 novelty track is a post-RC3 candidate and must not inherit RC3 validation status.
 
-- [ ] v0.5 manuscript/SI-routing QA passes on the novelty branch
-- [ ] principal-only Figure 3 is regenerated and committed
+- [x] v0.5 manuscript/SI-routing QA passes on the novelty branch
+- [x] principal-only Figure 3 is regenerated and committed
 - [ ] v0.5 anonymous DOCX/submission bundle rebuilt after QA
-- [ ] WFTS v0.5 synthetic code QA passes
+- [x] WFTS v0.5 synthetic code QA passes
 
 Historical validated RC3 checks:
 - [x] RC3 manuscript QA passed on frozen candidate
