@@ -53,7 +53,7 @@ jobs:
           PY
       - name: Run frozen confirmatory core on synthetic data only
         run: |
-          python scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py             --runs build/wfts-synthetic/runs.csv             --matrix build/wfts-synthetic/matrix.csv             --preflight-receipt build/wfts-synthetic/preflight.json             --output build/wfts-synthetic/confirmatory.json
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py             --runs build/wfts-synthetic/runs.csv             --matrix build/wfts-synthetic/matrix.csv             --preflight-receipt build/wfts-synthetic/preflight.json             --output build/wfts-synthetic/confirmatory.json
       - name: Audit code path without asserting ecological direction
         run: |
           python - <<'PY'
