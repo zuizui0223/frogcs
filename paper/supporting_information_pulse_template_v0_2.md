@@ -734,7 +734,7 @@ Under the primary a = 0.75 stress test:
 
 Thus stronger preservation of pair-specific dry cell identity does not explain the observed allocation. If anything, the persistence-favouring null predicts slightly less boundary crossing and more within-core rearrangement than the original κ = 2 null.
 
-**Interpretive boundary:** rejection shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. These comparators still apply one common activation shift; we did not fit a null with species-specific shifts, which would test whether species-level response heterogeneity alone can reproduce the boundary allocation. The analyses therefore do not identify a unique biological mechanism. Preferential recruitment of combinations rare under dry conditions, including activation of temporary or intermittently suitable wet sites, is a plausible discussion-level hypothesis only.
+**Interpretive boundary:** this RC11-era stress test shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. At that stage the comparator still applied one common activation shift. The integrated post-freeze analyses reported in S11 and S15 subsequently added route-cross-fitted species-specific rainfall shifts, strictly-prior species × physical-SiteID history, their joint combination with dry persistence, and a held-out rain × local-history gate; those stronger comparators also underpredicted the observed within-taxon concentration. None of these null rejections identifies a unique lower-level biological mechanism.
 
 
 ---
