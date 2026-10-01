@@ -77,3 +77,18 @@ The weather input must contain only structural route/station/date/coordinate fie
 Weather-code integrity is tested on artificial Daymet CSVs by:
 
 `.github/workflows/wfts_daymet_code_qa.yml`
+
+
+## Raw-data intake
+
+When WFTS files are first received, do not open or summarize frog-response values manually.
+
+Run:
+
+`scripts/wfts/intake_wfts_files.py`
+
+under:
+
+`revision/WFTS_RAW_DATA_INTAKE_PROTOCOL_V0_1.md`
+
+This records file/header provenance only. Canonicalization, preflight and confirmatory analysis occur only after that intake receipt is committed.
