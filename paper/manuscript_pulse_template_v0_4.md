@@ -1,4 +1,4 @@
-# Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence
+# Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization
 
 ## Abstract
 
@@ -10,7 +10,7 @@
 
 4. **Recruited taxa showed excess within-taxon multi-site concentration.** The excess emerged at third-and-later sites (β = 0.473), 97.3% carried by CallingIndex 2–3. In the strictly prior-history subset, observed concentration was β = 1.650 versus 1.353 under the principal species + site-history comparator; the conditional residual was 0.297, exceeding its 95% null interval (−0.132 to 0.119; P = 0.000999). Adding a held-out rain × history gate still underpredicted the observed concentration (1.332; P = 0.000999).
 
-5. **The coherent response was historically placed rather than arbitrary.** Within the same pair and taxon, sites with prior strong chorusing were more likely to host wet-state strong chorusing (β = 0.151, 0.129–0.173), and rain contrast selectively strengthened full-chorus placement at historically strong sites (β = 0.0245, 0.0070–0.0420). Thus short environmental pulses can reveal non-independent multi-site organization on recurrent species × place templates; the integrated result remains exploratory and requires prospective external confirmation.
+5. **The coherent response was historically placed rather than arbitrary.** Within the same pair and taxon, sites with prior strong chorusing were more likely to host wet-state strong chorusing (β = 0.151, 0.129–0.173), and rain contrast selectively strengthened full-chorus placement at historically strong sites (β = 0.0245, 0.0070–0.0420). The unexpected object is therefore not simply greater activity but a **pulse-revealed dependence structure**: short environmental pulses can expose recurrent species × place organization that is not recovered from first-order species responses and site propensities alone. The integrated result remains exploratory and requires prospective external confirmation.
 
 ## Keywords
 
@@ -213,7 +213,7 @@ The appropriate interpretation is therefore **broad programme-scale robustness w
 
 ## Discussion
 
-Across 15 years of standardized surveys, recent-rain conditions were associated with a change in the **organization** of frog chorus activity, not only its amount. Previously silent species × site cells often entered directly into overlapping or full chorus states. Once recruited, taxa became unusually deep across the route, and their multi-site concentration remained greater than predicted after species-specific rainfall sensitivity, strictly prior species × SiteID history and dry-state persistence were represented. Those strong wet-state choruses also preferentially reappeared at physical sites where the same taxa had chorused strongly before. The central ecological result is therefore **within-taxon multi-site coherence expressed on a recurrent species × site chorus template**.
+Across 15 years of standardized surveys, recent-rain conditions were associated with a change in the **dependence structure** of frog chorus activity, not only its amount. Previously silent species × site cells often entered directly into overlapping or full chorus states. Once recruited, taxa became unusually deep across the route, and their multi-site concentration remained greater than predicted after species-specific rainfall sensitivity, strictly prior species × SiteID history and dry-state persistence were represented. Those strong wet-state choruses also preferentially reappeared at physical sites where the same taxa had chorused strongly before. The central ecological result is therefore **pulse-revealed within-taxon multi-site organization on a recurrent species × site chorus template**.
 
 ### Rainfall is associated with chorus-state switching, not simply greater audibility
 
@@ -321,4 +321,4 @@ Yang, L. H., Bastow, J. L., Spence, K. O., & Wright, A. N. (2008). What can we l
 
 **Figure 5. Within-taxon multi-site concentration is broad but geographically heterogeneous.** The left panel summarizes taxonomic breadth and concentration of the within-taxon concentration coefficient: 25 of 53 taxa contribute positively, top-1 positive share 18.8%, top-five 54.2%, HHI 0.0855, and every leave-one-taxon-out total remains positive. The right panel contrasts leave-one-state-out robustness—all 21 coefficients and 95% confidence intervals remain positive—with heterogeneous state-specific slopes.
 
-Secondary alpha/beta/gamma decompositions, boundary-allocation figures, Sørensen and matrix-fill equivalence tests, detailed null sensitivities, trait analyses, response-diversity tests, activation-geometry falsification, additional FrogID results and unsuccessful mediator analyses are retained in Supporting Information.
+Secondary alpha/beta/gamma decompositions, boundary-allocation figures, Sørensen and matrix-fill equivalence tests, detailed null sensitivities, FrogID cross-dataset consistency, trait analyses, response-diversity tests, activation-geometry falsification and unsuccessful mediator analyses are retained in Supporting Information.
