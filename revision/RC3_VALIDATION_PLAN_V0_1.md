@@ -94,3 +94,15 @@ Allowed after RC3 freeze:
 - archive license/DOI;
 - outcome-blind WFTS data acquisition/schema adaptation;
 - one-shot WFTS confirmation under the frozen authority tuple.
+
+
+## Figure synchronization receipt
+
+The canonical figure renderer has been executed after the RC3 terminology/comparator changes.
+
+Generated repository outputs now include:
+- `fig3_within_taxon_concentration.svg/png`;
+- no canonical `fig3_higher_order_null_ladder.svg/png`;
+- Figure 5 visible title uses within-taxon multi-site concentration terminology.
+
+The bot-generated figure commit is part of this validation lineage. This human-authored commit exists only to trigger the final same-head QA suite after GitHub declined to auto-run PR workflows from the bot-authored commit.
