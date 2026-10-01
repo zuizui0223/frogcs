@@ -1,12 +1,12 @@
 # Integrated JAE RC3 release receipt
 
-## Frozen authority
+## Scientific authority
 
 - release branch: `release/jae-multisite-rc3`
 - submission branch: `submission/jae-multisite-v3`
-- frozen commit: `fc9509dac8c8374041a0ddb86538bbf58240a748`
+- **validated scientific source commit:** `bea996b3bf59fa1e66dedcc5cbd0a68833fa311d`
 
-Both branches are byte-identical to the frozen commit.
+The release/submission branches are documentation-only descendants of that validated scientific source. Scientific files listed below are unchanged from the validated source commit.
 
 ## Scientific package
 
@@ -14,7 +14,7 @@ Title:
 
 **Rainfall-associated frog chorus activation shows within-taxon multi-site coherence and species-specific site recurrence**
 
-Frozen files include:
+Frozen scientific files:
 - `paper/manuscript_pulse_template_v0_4.md`
 - `paper/supporting_information_pulse_template_v0_2.md`
 - canonical five-figure set under `figures_pulse_template/`
@@ -22,17 +22,18 @@ Frozen files include:
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_2.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_1.md`
-- frozen prospective external-replication specifications and WFTS code authority.
+- prospective external-replication specification and WFTS authority tuple.
 
-## Same-head validation
+## Same-head scientific validation
 
-All required workflows passed on `fc9509dac8c8374041a0ddb86538bbf58240a748`:
+All required workflows passed on the same scientific source commit
+`bea996b3bf59fa1e66dedcc5cbd0a68833fa311d`:
 
-1. manuscript QA — run `36798162816` — **PASS**
-2. canonical figure QA — run `36798162733` — **PASS**
-3. scientific submission bundle — run `36798162846` — **PASS**
-4. WFTS Daymet weather adapter QA — run `36798162751` — **PASS**
-5. WFTS confirmatory code synthetic QA — run `36798162730` — **PASS**
+1. manuscript QA — run `36798468716` — **PASS**
+2. canonical figure QA — run `36798468724` — **PASS**
+3. scientific submission bundle — run `36798468743` — **PASS**
+4. WFTS Daymet weather adapter QA — run `36798468773` — **PASS**
+5. WFTS confirmatory code synthetic QA — run `36798468713` — **PASS**
 
 ## JAE manuscript/bundle measurements
 
@@ -54,9 +55,9 @@ All required workflows passed on `fc9509dac8c8374041a0ddb86538bbf58240a748`:
 
 Workflow artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: `11134124522`
-- size: **818,124 bytes**
-- digest: `sha256:b166759661673d0e4ed6a381eb2d48950904e49b0d999c14ebbbb6dbd038ed98`
+- artifact ID: `11135165910`
+- size: **818,122 bytes**
+- digest: `sha256:1a5c6013ff2132d118e15ae468f209c26b91b8622fb8a7410f228dc68ad645fc`
 
 ## Prospective WFTS code QA
 
@@ -66,7 +67,7 @@ WFTS remains:
 
 No WFTS frog-response outcome was used to validate RC3.
 
-Frozen WFTS authority:
+Frozen real-data authority:
 - schema: `revision/WFTS_CANONICAL_SCHEMA_V0_2.json`
 - weather/analysis spec: `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_4.md`
 - Daymet spec: `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md`
@@ -75,12 +76,12 @@ Frozen WFTS authority:
 - confirmatory core: `scripts/wfts/run_wfts_confirmatory_analysis_v0_4.py`
 
 Synthetic confirmatory artifact:
-- artifact ID: `11134207458`
-- digest: `sha256:1c0027eccc1fc7ea632f24f657f589a16b32d2f29d79c38c533885f3c0199c3b`
+- artifact ID: `11134882150`
+- digest: `sha256:8e12558c7b506bacf84951ec9fc91b1c21ec710de4d1f22f0931994d5c1b5634`
 
 Synthetic Daymet artifact:
-- artifact ID: `11134761857`
-- digest: `sha256:c1193088b7b56f6475ea631b067d98d971ccce0793fb3103a1375f0bab0cf131`
+- artifact ID: `11134172975`
+- digest: `sha256:5585e406f2d9cbcfa9e439cb7260b0d5db74c812836f511867fff2de2db2bcdf`
 
 Synthetic PASS/FAIL direction has no scientific inferential role; these workflows validate code-path integrity only.
 
