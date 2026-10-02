@@ -10,7 +10,7 @@
 - evidence ledger: `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - evidence hierarchy: `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- literature novelty lock: `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_2.md`
+- literature novelty lock: `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - release receipt: `submission/RC4_RELEASE_RECEIPT.md`
 
