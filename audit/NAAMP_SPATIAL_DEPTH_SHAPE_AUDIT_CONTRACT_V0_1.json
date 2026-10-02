@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_spatial_depth_shape_audit_v0_1",
+  "status": "post_freeze_descriptive_metric_audit_fixed_before_exact_k_readback",
+  "purpose": "Clarify the mathematical and ecological meaning of the frozen spatial-depth/concentration endpoints without adding a new mechanism claim.",
+  "population": "Exactly the frozen 4,236 NAAMP wetter-drier matched pairs used by the spatial-depth analysis.",
+  "focal_objects": {
+    "k": "Number of wet-survey occupied stops for a route-new taxon (absent from all dry stops).",
+    "marginal_jth_site": "For j=1..10, count route-new taxa with k>=j. This is the contribution of the j-th occupied stop, one per taxon reaching that depth.",
+    "exact_k": "For k=1..10, count route-new taxa occupying exactly k wet stops.",
+    "total_sites": "Sum k across route-new taxa.",
+    "extra_stop": "Sum max(k-1,0).",
+    "third_plus": "Sum max(k-2,0).",
+    "concentration_H": "Sum choose(max(k-1,0),2).",
+    "standard_pair_count_P": "Sum choose(k,2)."
+  },
+  "identities": [
+    "extra_stop = sum_{j=2..10} marginal_jth_site",
+    "third_plus = sum_{j=3..10} marginal_jth_site",
+    "H = P - extra_stop exactly, because choose(k,2)=choose(k-1,2)+(k-1)",
+    "Therefore H and standard within-taxon site-pair count P contain identical concentration information after conditioning on extra_stop."
+  ],
+  "inference": "Use the same residualized rain design as the frozen spatial-depth analysis. Report observed coefficients for exact-k and marginal j-th-site components. Compare marginal j-th-site coefficients with the same 1,000 uniform-activation and a=0.75 persistence-preserving null simulations.",
+  "interpretation_rules": [
+    "Do not call k=3 a biological threshold unless the marginal third-site component itself shows a discontinuity relative to second and deeper components.",
+    "Do not call the depth pattern exponential unless a separately justified shape model is fit and supported; this audit does not authorize such a claim.",
+    "If cumulative third-plus is exceptional while individual marginal-depth coefficients are similar/small, interpret the result as a heavy/deep tail accumulating beyond the second site rather than a threshold at exactly three sites.",
+    "Simple total occupied-site counts measure amount of spread, not how that spread is allocated among taxa. Concentration H is only interpreted conditional on recruitment and extra-stop spread."
+  ],
+  "retuning_after_readback": false
+}
