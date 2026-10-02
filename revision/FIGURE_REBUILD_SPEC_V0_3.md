@@ -16,12 +16,19 @@ Keep:
 - 0→CI3;
 - same-observer + same-SiteID 0→CI3.
 
-## Figure 2 — spatial depth
-Keep:
-- second occupied site β=0.132;
-- third+ β=0.473;
-- fourth+ β=0.363;
-- 97.3% of third+ carried by CI2/3.
+## Figure 2 — spatial-depth shape
+Show:
+- marginal j-th occupied-stop coefficients for j=1,...,10;
+- observed profile against uniform-activation and persistence-preserving 95% envelopes;
+- stops 1–3 within both null envelopes;
+- stops 4–10 above both null envelopes;
+- cumulative third+ β=0.473 retained as context;
+- 97.3% of cumulative third+ carried by CI2/3.
+
+Interpretation:
+- no discrete threshold at exactly the third stop;
+- no exponential increase with depth;
+- the signal is a heavier/deeper within-taxon spatial tail than expected.
 
 ## Figure 3 — principal species/site comparator versus within-taxon concentration
 

@@ -832,6 +832,39 @@ The third-and-later coefficient was carried almost entirely by substantial choru
 
 CI1-only spatial deepening was not supported.
 
+### S11.2a Post-freeze marginal-depth shape audit
+
+Because the cumulative third-and-later endpoint could be misread as a biological threshold at exactly three occupied stops, we froze a descriptive audit before reading the exact k = 1,...,10 depth profile. For marginal depth j, the endpoint was the number of route-new taxa reaching at least j occupied stops. By algebraic identity:
+
+`extra_stop = sum_{j=2}^{10} marginal_j`
+
+and
+
+`third_plus = sum_{j=3}^{10} marginal_j`.
+
+The observed marginal rainfall coefficients were:
+
+| Occupied-stop depth j | Observed β | Uniform-null mean | Persistence-null mean | Above both 95% nulls? |
+|---:|---:|---:|---:|:---:|
+| 1 | 0.1847 | 0.1754 | 0.2665 | no |
+| 2 | 0.1317 | 0.1332 | 0.1859 | no |
+| 3 | 0.1097 | 0.0997 | 0.1092 | no |
+| 4 | 0.0934 | 0.0718 | 0.0595 | **yes** |
+| 5 | 0.0811 | 0.0506 | 0.0314 | **yes** |
+| 6 | 0.0699 | 0.0347 | 0.0162 | **yes** |
+| 7 | 0.0485 | 0.0229 | 0.00784 | **yes** |
+| 8 | 0.0368 | 0.0143 | 0.00335 | **yes** |
+| 9 | 0.0235 | 0.00801 | 0.00109 | **yes** |
+| 10 | 0.00956 | 0.00337 | 0.000232 | **yes** |
+
+The third-stop marginal coefficient itself was ordinary:
+- uniform upper-tail P = **0.177**;
+- persistence upper-tail P = **0.484**.
+
+By contrast, the fourth through tenth marginal depths each exceeded the upper 95% range under both nulls. Marginal coefficients decreased smoothly with depth rather than increasing. The result is therefore **not an exponential increase and not a discrete third-stop threshold**. The correct description is a **heavier/deeper within-taxon spatial tail than expected**: null models predict that route-new taxa should rapidly drop out as depth increases, whereas observed taxa persist to unusually deep positions along the ten-stop route.
+
+This audit does not add an independent confirmatory family. It clarifies the shape of the already-established cumulative spatial-depth result.
+
 ### S11.3 Principal comparator: cross-fit species response + strictly-prior site history
 
 The integrated synthesis treats this as the **principal ecological comparator** for within-taxon multi-site concentration because it explicitly allows recruited taxa to differ in rainfall response and historical spatial breadth.
@@ -840,7 +873,35 @@ For each route-new taxon occupying (k) wet stops, let (e = \max(k-1,0)). We calc
 
 `within_taxon_concentration = choose(e,2) = e(e-1)/2`.
 
-The score is zero through the second occupied site and increases convexly as extra incidences accumulate within the same taxon at third-and-later sites.
+The score is zero through the second occupied site and increases convexly as extra incidences accumulate within the same taxon. The weighting is triangular/quadratic, not exponential:
+
+- k=1 → 0;
+- k=2 → 0;
+- k=3 → 1;
+- k=4 → 3;
+- k=5 → 6;
+- ...;
+- k=10 → 36.
+
+The reason for this weighting can be written exactly. Let
+
+`P = sum_i choose(k_i,2)`
+
+be the standard number of within-taxon unordered site pairs, and let
+
+`E = sum_i (k_i-1)`
+
+be total extra-stop spread beyond first recruitment. For every k,
+
+`choose(k,2) = choose(k-1,2) + (k-1)`,
+
+so after summing across taxa,
+
+`P = C + E`.
+
+Therefore the frozen concentration score C is simply the standard within-taxon site-pair count after subtracting the first-order amount of extra spread. Because the principal null explicitly conditions concentration on the observed recruitment and extra-stop coefficients, C and P contain the same residual concentration information for the inferential question.
+
+A simple example shows why total site count alone is insufficient. With two recruited taxa and four total incidences, allocations (2,2) and (3,1) have identical N=2, K=4 and E=2. Yet C=0 for (2,2) and C=1 for (3,1), because the second allocation concentrates both extra incidences within one taxon.
 
 The principal population was the exact 2,916-pair strictly-prior-history subset used by the joint species-memory comparator (439 routes, 20 states). The null combined:
 
