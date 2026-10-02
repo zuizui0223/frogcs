@@ -18,7 +18,7 @@ Everything else either establishes one step in that claim, limits it, or defends
 |---|---|---|---|---|
 | Calling-state decomposition | 65.3% of CallingIndex slope from 0→positive; 87.1% of activation from 0→CI2/3 | Wet-state change is often a discrete transition from acoustic silence to substantial chorus, not only marginal amplification | biological entry point | Main |
 | Direct full-chorus activation | 0→CI3 β=0.4406 (0.1136–0.7675); same-observer+same-SiteID β=0.5141 (0.1008–0.9273) | Observer turnover and site relocation are not required for the strong state-switch signal | key defence attached to state switch | Main, compact |
-| Route-new spatial depth | second site ordinary; third+ β=0.473; fourth+ β=0.363; 97.3% of third+ carried by CI2/3; NAAMP stops ≈0.5 miles (0.80 km) apart or more by protocol | The unusual response begins when the same recruited taxon appears at three or more spatially separated route stops, not within one local chorus | first spatial surprise | Main |
+| Route-new spatial depth | cumulative third+ β=0.473; fourth+ β=0.363; exact-depth audit: marginal stops 1–3 within both nulls, stops 4–10 above both; 97.3% of cumulative third+ carried by CI2/3 | The spatial signal is a deeper-than-expected within-taxon tail across separated route stops, not a discrete third-stop threshold | first spatial surprise | Main |
 | Principal joint comparator | 2,916 pairs; observed concentration 1.6503 vs predicted 1.3535; residual 0.2969 outside −0.1319–0.1187; P=0.000999 | Species-specific rain response + prior physical-site use + dry-state persistence + matched total incidence do not reproduce observed within-taxon multi-site concentration | **principal spatial test** | Main |
 | Held-out rain×history gate | predicted 1.3323 vs observed 1.6503; residual 0.3180; P=0.000999 | Even allowing rain to differentially weight historically suitable cells does not remove the excess concentration | strongest same-data falsification | Main, one sentence |
 | Historical strong-site targeting | prior strong SiteID→wet CI2/3 β=0.1511 (0.1291–0.1731) | Strong wet-state chorusing reappears preferentially at the same species-specific physical sites | slow spatial template | Main |
@@ -48,9 +48,9 @@ The intuitive model of rain-responsive chorusing is first-order:
 
 frogcs shows an extra layer after those first-order properties are represented:
 
-- the second occupied site is not unusual;
-- the excess begins at third-and-later sites;
-- almost all of that excess is overlapping/full chorus;
+- second- and third-stop marginal participation are ordinary under the activation nulls;
+- the excess accumulates because taxa persist unusually far into the fourth-through-tenth-stop tail;
+- almost all cumulative deep spread is overlapping/full chorus;
 - species-specific rainfall response and strictly-prior species×SiteID history still underpredict the concentration;
 - strong choruses recur at the same species-specific sites;
 - rain selectively strengthens that historical placement.
