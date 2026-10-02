@@ -75,7 +75,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_2.md`
+- `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
 - `submission/RC4_RELEASE_RECEIPT.md`
