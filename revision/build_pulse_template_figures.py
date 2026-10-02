@@ -54,19 +54,31 @@ ax.set_title("Fig. 1  Rain-associated change enters from silence and often as st
 ax.text(.98,.05,f"65.3% of CallingIndex slope = 0→positive\n87.1% of activation = 0→CI2/3",transform=ax.transAxes,ha="right",va="bottom")
 save(fig,"fig1_chorus_state_switch")
 
-# Figure 2: spatial depth
+# Figure 2: spatial-depth shape
 x=DATA["figure2"]
-fig,ax=plt.subplots(figsize=(8.4,5.2))
-labels=["Second occupied site","Third and later sites","Fourth and later sites"]
-vals=[x["second_stop_beta"],x["third_plus_beta"],x["fourth_plus_beta"]]
-y=np.arange(3)
-ax.barh(y,vals,alpha=.75)
-ax.set_yticks(y,labels)
-ax.invert_yaxis()
-ax.axvline(0,linewidth=.8)
-ax.set_xlabel("Rainfall-contrast coefficient")
-ax.set_title("Fig. 2  The unusual spatial response begins beyond the second site")
-ax.text(.98,.08,"Third+ coefficient: 97.3% carried by CI2/3\nSame-observer + same-site: 95.4%",transform=ax.transAxes,ha="right",va="bottom")
+fig,ax=plt.subplots(figsize=(8.8,5.4))
+depth=np.asarray(x["marginal_depths"],float)
+obs=np.asarray(x["marginal_site_beta"],float)
+u_mean=np.asarray(x["uniform_marginal_mean"],float)
+u_ci=np.asarray(x["uniform_marginal_ci95"],float)
+p_mean=np.asarray(x["persistence_marginal_mean"],float)
+p_ci=np.asarray(x["persistence_marginal_ci95"],float)
+
+ax.fill_between(depth,u_ci[:,0],u_ci[:,1],alpha=.16,label="Uniform activation 95%")
+ax.fill_between(depth,p_ci[:,0],p_ci[:,1],alpha=.16,label="Persistence-preserving 95%")
+ax.plot(depth,u_mean,marker="o",linewidth=1.5,label="Uniform activation mean")
+ax.plot(depth,p_mean,marker="o",linewidth=1.5,label="Persistence-preserving mean")
+ax.plot(depth,obs,marker="s",linewidth=2.6,label="Observed")
+ax.set_xticks(depth)
+ax.set_xlabel("Occupied-stop depth within a route-new taxon")
+ax.set_ylabel("Marginal rainfall-contrast coefficient")
+ax.set_title("Fig. 2  Rain-associated activation has a deeper multi-site tail than expected")
+ax.legend(frameon=False,fontsize=8)
+ax.text(.98,.97,
+        "Stops 1–3 fall within both null envelopes\n"
+        "Stops 4–10 exceed both 95% envelopes\n"
+        "Cumulative third+ β=0.473; 97.3% carried by CI2/3",
+        transform=ax.transAxes,ha="right",va="top")
 save(fig,"fig2_spatial_depth_strong_chorus")
 
 # Figure 3: principal within-taxon concentration tests only
