@@ -108,7 +108,7 @@ for x in [
 ]:
     assert x in si, f"SI missing routed defence/falsification content: {x}"
 
-reference_surnames=["Brooke","Brodie","Foreman","Holt","Kusano","Oseen","Ospina","Rowley","Royle","Rush","Saenz","Sarker","Sugai","Switzer","Trenham","Xie","Yang"]
+reference_surnames=["Brooke","Brodie","Dormann","Foreman","Gotelli","Holt","Jenkins","Kusano","McGeoch","Oseen","Ospina","Rowley","Royle","Rush","Saenz","Sarker","Sugai","Switzer","Trenham","Xie","Yang"]
 body=text.split("## References",1)[0]
 for surname in reference_surnames:
     assert re.search(rf"^{surname},", text, flags=re.M), f"missing reference: {surname}"

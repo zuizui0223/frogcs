@@ -70,9 +70,11 @@ To distinguish marginal activation from strong chorusing, we decomposed rainfall
 
 The focal full-chorus endpoint was the pair-level count of cells with dry CallingIndex = 0 and wet CallingIndex = 3. It was analysed with the matched-pair model above. The same endpoint was repeated in the intersection of same-observer pairs and pairs for which all ten StopNumbers retained identical nonmissing physical SiteID values. This analysis was specified after earlier calling-intensity results had been read but before the 0→CI3 endpoint was inspected.
 
-### Spatial depth of recruited route species
+### Spatial depth of acoustically recruited route taxa
 
-For each species absent from the entire dry route and present in the wet route, let (k) be the number of wet stops at which it was detected. We decomposed its spatial participation exactly into:
+For each taxon with no recorded call at any of the ten stops in the drier survey but at least one recorded call in the wetter survey, let (k) be the number of wetter-survey stops at which it was detected calling. We call (k) **calling-incidence depth**. Mathematically, this is the same kind of row-wise site-incidence summary used in occupancy-frequency and ranked species-occupancy analyses, which count the number of sampled sites at which each species is observed (McGeoch & Gaston, 2002; Jenkins, 2011). Our biological interpretation is deliberately narrower: an acoustic zero is not evidence of physical absence, so (k) is not demographic occupancy, colonization, dispersal distance or the number of sites a taxon “reached”. A taxon classified as acoustically route-new may already have been physically present near some or all stops while not calling or not being detected in the drier survey.
+
+We decomposed calling-incidence depth exactly into:
 
 - first-stop recruitment: one incidence for every recruited route species;
 - second-stop incidence: one additional incidence if (k ≥ 2);
@@ -81,35 +83,47 @@ For each species absent from the entire dry route and present in the wet route, 
 
 Thus extra-stop incidence beyond first recruitment equals second-stop incidence plus third-and-later incidence. We fitted the same matched-pair rainfall model to each component and compared the observed coefficients with 1,000 simulations under both the primary uniform-activation null and the primary persistence-preserving null. The spatial-depth criterion, fixed before that endpoint was inspected, required the cumulative third-and-later coefficient to exceed the upper 95% range under both nulls.
 
-After RC4 was frozen, we added a descriptive shape audit to clarify what that cumulative endpoint meant. Before reading the exact depth profile, we fixed marginal j-th-stop participation as the number of route-new taxa reaching at least j occupied stops (j = 1,...,10). By identity, third-and-later incidence equals the sum of these marginal contributions for j = 3,...,10. We compared each marginal coefficient with the same two activation nulls. This audit was used only to distinguish a discrete threshold from a deeper-than-expected tail; it did not add a new mechanism family or retune the primary endpoint.
+After RC4 was frozen, we added a descriptive shape audit to clarify what that cumulative endpoint meant. Before reading the exact depth profile, we fixed marginal j-th-stop participation as the number of acoustically route-new taxa recorded calling at least j stops (j = 1,...,10). By identity, third-and-later incidence equals the sum of these marginal contributions for j = 3,...,10. We compared each marginal coefficient with the same two activation nulls. This audit was used only to distinguish a discrete threshold from a deeper-than-expected tail; it did not add a new mechanism family or retune the primary endpoint.
 
 We also decomposed the cumulative third-and-later coefficient by CallingIndex to determine whether spatial deepening was carried by marginal CI1 detections or by overlapping/full chorus states (CI2/3).
 
-### Within-taxon multi-site concentration of recruited taxa
+### Within-taxon multi-site concentration of acoustically recruited taxa
 
-For each route-new taxon occupying (k_i) wet stops, we quantified within-taxon multi-site concentration as
+Presence–absence matrix ecology has a long tradition of asking whether an observed arrangement contains structure beyond its row and column totals, and of using constrained null matrices to make that question explicit (Gotelli, 2000; Gotelli & McCabe, 2002). Network analyses make the same methodological point: raw structural indices can be strongly influenced by network dimensions, connectance and sampling intensity, so ecological interpretation should be based on comparison with an appropriate null rather than on the raw index alone (Dormann et al., 2009). We follow that general logic, but the concentration statistic below is a study-specific algebraic summary rather than a previously named ecological index.
+
+For each acoustically route-new taxon recorded at (k_i) wetter-survey stops, define the ordinary within-taxon site-pair count
+
+`P = Σ_i choose(k_i, 2)`.
+
+This simply counts unordered pairs of route stops linked by calling records of the same taxon. We then define total extra-stop spread beyond the first calling record of each taxon as
+
+`E = Σ_i (k_i − 1)`,
+
+and use the residualized concentration score
 
 `C = Σ_i choose(k_i − 1, 2)`.
 
-The score is zero through the second occupied site and increases convexly as additional incidences accumulate within the same taxon. Its interpretation is not an arbitrary threshold at three sites. For each taxon, the standard within-taxon site-pair count obeys choose(k_i,2) = choose(k_i−1,2) + (k_i−1); therefore, summed across taxa, the standard pair-count statistic equals C plus total extra-stop incidence. Because the principal comparator conditions explicitly on extra-stop spread, C contains the same concentration information as the standard pair count after removing that first-order spread term.
+For every (k_i), `choose(k_i,2) = choose(k_i−1,2) + (k_i−1)`; therefore **P = C + E exactly**. The score is zero through the second calling-positive stop and increases quadratically as additional incidences accumulate within the same taxon. This weighting is not intended to posit a biological threshold at three stops. Rather, it removes the first-order amount of spread (E) from the standard within-taxon site-pair count (P). Because the principal test conditions explicitly on extra-stop spread, using C or P yields the same residual concentration information for the inferential question: given how many taxa became acoustically active and how much total multi-site calling occurred, were those incidences more concentrated within the same taxa than the null generator predicts?
 
-For the integrated synthesis, the **principal comparator** is the 2,916-pair subset with strictly prior physical-site history. Species-specific rainfall responses were learned only from the opposite deterministic route fold; strictly prior species × SiteID probabilities represented historical spatial breadth and site use; an a = 0.75 anchor represented dry-state persistence; and a pair-level common shift matched expected total wet incidence to the observed magnitude. Across 1,000 simulations, the concentration rainfall coefficient was conditioned on the simulated route-new-taxon and total extra-stop coefficients. We also applied the pre-existing held-out rain × local-history gate as a stronger sensitivity analysis.
+For the integrated synthesis, the **principal comparator** is the 2,916-pair subset with strictly prior physical-site history. Classical null-model work emphasizes that the biological meaning of a departure depends on which margins or first-order properties the null preserves (Gotelli, 2000). Accordingly, our null sequence is deliberately more constrained than a simple randomization. Species-specific rainfall responses were learned only from the opposite deterministic route fold; strictly prior species × SiteID probabilities represented historical spatial breadth and site use; an a = 0.75 anchor represented dry-state persistence; and a pair-level common shift matched expected total wet calling incidence to the observed magnitude. Across 1,000 simulations, the concentration rainfall coefficient was conditioned on the simulated acoustically route-new-taxon and total extra-stop coefficients. We also applied the pre-existing held-out rain × local-history gate as a stronger sensitivity analysis.
+
+The concentration statistic captures **allocation among taxa**, not exact route geometry. For example, a taxon calling at stops 1, 2 and 3 has the same (k=3) contribution as one calling at stops 1, 5 and 10. The separate adjacent-stop analysis therefore tests route topology as secondary corroboration rather than being built into C.
 
 Secondary uniform/persistence comparators, the exact N,K combinatorial diagnostic, route-topology corroboration, the earlier four-component matrix allocation and raw recurrence percentages are retained in Supporting Information. Taxonomic and leave-one-state-out audits used the unchanged concentration score. Full algorithms, gates and provenance are also in Supporting Information.
 
 ### Within-species historical site targeting
 
-To test whether historical site use predicts **where** a recruited species returns, we restricted analysis to physically stable pairs with at least one eligible run before the focal pair. Focal species were absent from all ten dry stops, present at one or more wet stops, and had been recorded somewhere on that route-season stratum before the focal pair.
+To test whether historical site use predicts **where strong calling is re-expressed**, we restricted analysis to physically stable pairs with at least one eligible run before the focal pair. Focal species were absent from all ten dry stops, present at one or more wet stops, and had been recorded somewhere on that route-season stratum before the focal pair.
 
 The unit was pair × focal species × physical SiteID. A site was historically strong if that species had CallingIndex 2 or 3 there in a prior eligible run. The primary outcome was whether the focal wet survey reached CallingIndex 2 or 3 at that SiteID; wet CI3 alone was secondary. To control exactly for the focal pair and species, both predictor and outcome were demeaned within pair × species, then fitted without an intercept with route-clustered covariance. Only pair × species groups containing both historically strong and non-strong sites among their ten stops were informative.
 
-This test therefore asks whether a recruited species is placed preferentially at its own historically strong physical sites, rather than whether historically common species are simply more likely to be recruited.
+This test therefore asks whether strong calling by an acoustically recruited species is preferentially expressed at its own historically strong physical sites, rather than whether historically common species are simply more likely to be recorded.
 
 ### Rain-selective historical targeting
 
 Stable local suitability could generate historical targeting even if rain had no special role in that targeting. We therefore used a directional placebo that mirrors the wet and dry sides of each pair.
 
-For each direction, focal species were present somewhere in the target survey, absent from the entire reference survey and recorded on the route before the focal pair. Candidate physical sites were classified as historically recurrent when the same species had previously reached CallingIndex 2–3 there. Within each target direction we computed the CI3 rate among recurrent candidate cells minus the CI3 rate among non-recurrent candidate cells.
+For each direction, focal species had at least one calling record in the target survey, no calling record at any reference-survey stop, and a calling record on the route before the focal pair. Candidate physical sites were classified as historically recurrent when the same species had previously been recorded at CallingIndex 2–3 there. Within each target direction we computed the CI3 rate among recurrent candidate cells minus the CI3 rate among non-recurrent candidate cells.
 
 Pairs were retained only when this contrast was estimable in both wet-target and dry-target directions. We stacked the two directions, assigned target-rain advantage as +rain_contrast for the wet direction and −rain_contrast for the dry direction, demeaned both endpoint and predictor within pair, and fitted OLS without an intercept using route-clustered covariance. A positive coefficient means that proximity to rain selectively strengthens historical-site targeting beyond generic site recurrence. CallingIndex 2–3 and same-observer analyses were secondary.
 
@@ -201,9 +215,9 @@ This does not prove that frogs were physically absent during the dry survey and 
 
 The second contribution concerns the **dependence structure** of that state transition. If wet conditions merely created independent extra detections, the main excess should be accounted for by how many taxa were recruited and how many additional sites they occupied. The cumulative excess lay in deep multi-site spread, but the exact depth profile did not show a threshold at the third stop: second- and third-stop marginal participation remained inside both activation-null envelopes, whereas marginal fourth through tenth stops were overrepresented. The effect is therefore better described as a **heavier within-taxon spatial tail than expected**, almost entirely carried by CI2/3 states.
 
-This changes the ecological picture from “more species are heard after rain” to **the same recruited taxon persisting across an unexpectedly large number of spatially separated listening stops within a route**. Because NAAMP stops were spaced by approximately 0.5 miles (0.80 km) or more under the protocol, this deep tail is not simply repeated scoring within one local chorus. It is distributed route-scale expression of the same taxon across separated listening locations. More importantly, the multi-site test shows that this pattern is not reducible to having more recruited taxa or more total extra-stop incidences. The strongest evidence comes from the comparator that explicitly preserves species-level rainfall sensitivity and prior species × SiteID structure: even there, observed within-taxon concentration exceeds the simulated expectation, and the result remains after adding a held-out rain × history gate. This directly addresses the possibility that rain simply recruits taxa that are intrinsically widespread or historically common across many stops. The relevant discovery is therefore not that "other factors exist", but that the observed multi-site response contains **non-independent within-taxon spatial organization** beyond the tested transferable species responses and historical site propensities.
+This changes the ecological picture from “more species are heard after rain” to **calling by the same taxon being expressed across an unexpectedly large number of spatially separated listening stops within a route**. Because NAAMP stops were spaced by approximately 0.5 miles (0.80 km) or more under the protocol, this deep tail is not simply repeated scoring within one local chorus. It is distributed route-scale expression of the same taxon across separated listening locations. More importantly, the multi-site test shows that this pattern is not reducible to having more recruited taxa or more total extra-stop incidences. The strongest evidence comes from the comparator that explicitly preserves species-level rainfall sensitivity and prior species × SiteID structure: even there, observed within-taxon concentration exceeds the simulated expectation, and the result remains after adding a held-out rain × history gate. This directly addresses the possibility that rain simply recruits taxa that are intrinsically widespread or historically common across many stops. The relevant discovery is therefore not that "other factors exist", but that the observed multi-site response contains **non-independent within-taxon spatial organization** beyond the tested transferable species responses and historical site propensities.
 
-The analysis cannot determine whether this distributed activation reflects individuals already resident near each listening site, movement within local habitat networks, shared hydrological change, social processes or another mechanism. Direct acoustic coordination among route stops is not established, and literal synchrony cannot be inferred because the ten stops were sampled sequentially. The empirical result is instead that the response spans separated route locations and is more concentrated within taxa than independent site-level activation predicts.
+The analysis cannot determine whether this distributed activation reflects individuals already resident near each listening site, movement within local habitat networks, shared hydrological change, social processes or another mechanism. Direct acoustic coordination among route stops is not established, and literal synchrony cannot be inferred because the ten stops were sampled sequentially. The empirical result is instead that calling expression spans separated route locations and is more concentrated within taxa than the tested first-order site-level activation processes predict.
 
 ### Rain exposes a persistent species × site chorus template
 
@@ -243,7 +257,7 @@ Finally, the integrated framing was developed after extensive exploration of the
 
 ### Conclusion
 
-A familiar observation—frogs call after rain—contains a less familiar community-level pattern. Recent-rain conditions were associated with direct transitions from silence to strong chorus, and newly recruited taxa became unusually deep across multiple, spatially separated route stops. Crucially, that within-taxon concentration remained above a comparator that already allowed species-specific rainfall response, strictly prior physical-site use, dry-state persistence and matched activation magnitude; strong chorus states also preferentially reappeared at historically used species-specific sites. The wet-state chorus is therefore not simply a louder or richer version of the dry-state assemblage. It exposes a **recurrent within-taxon spatial dependence structure**. More generally, short environmental pulses may reveal joint species × place organization that first-order response functions leave hidden.
+A familiar observation—frogs call after rain—contains a less familiar community-level pattern. Recent-rain conditions were associated with direct transitions from silence to strong chorus, and taxa acoustically absent from the drier route were expressed across unusually many spatially separated stops in the wetter survey. Crucially, that within-taxon concentration remained above a comparator that already allowed species-specific rainfall response, strictly prior physical-site use, dry-state persistence and matched activation magnitude; strong chorus states also preferentially reappeared at historically used species-specific sites. The wet-state chorus is therefore not simply a louder or richer version of the dry-state assemblage. It exposes a **recurrent within-taxon spatial dependence structure**. More generally, short environmental pulses may reveal joint species × place organization that first-order response functions leave hidden.
 
 ## Data Availability
 
@@ -255,11 +269,21 @@ Brooke, P. N., Alford, R. A., & Schwarzkopf, L. (2000). Environmental and social
 
 Brodie, S., Allen-Ankins, S., & Schwarzkopf, L. (2025). Environmental influences on chorusing patterns in an Australian tropical savanna frog community. *Ecosphere*, 16, e70153. https://doi.org/10.1002/ecs2.70153
 
+Dormann, C. F., Fründ, J., Blüthgen, N., & Gruber, B. (2009). Indices, graphs and null models: analyzing bipartite ecological networks. *The Open Ecology Journal*, 2, 7–24. https://doi.org/10.2174/1874213000902010007
+
 Foreman, T., Grant, E. H., & Weir, L. A. (2017). *North American Amphibian Monitoring Program (NAAMP) anuran detection data from the eastern and central United States (1994–2015)* [Data release]. U.S. Geological Survey. https://doi.org/10.5066/F7G44NG0
+
+Gotelli, N. J. (2000). Null model analysis of species co-occurrence patterns. *Ecology*, 81, 2606–2621. https://doi.org/10.1890/0012-9658(2000)081[2606:NMAOSC]2.0.CO;2
+
+Gotelli, N. J., & McCabe, D. J. (2002). Species co-occurrence: a meta-analysis of J. M. Diamond's assembly rules model. *Ecology*, 83, 2091–2096. https://doi.org/10.1890/0012-9658(2002)083[2091:SCOAMA]2.0.CO;2
 
 Holt, R. D. (2008). Theoretical perspectives on resource pulses. *Ecology*, 89, 671–681. https://doi.org/10.1890/07-0348.1
 
+Jenkins, D. G. (2011). Ranked species occupancy curves reveal common patterns among diverse metacommunities. *Global Ecology and Biogeography*, 20, 486–497. https://doi.org/10.1111/j.1466-8238.2010.00617.x
+
 Kusano, T., Maruyama, K., & Kanenko, S. (1999). Breeding site fidelity in the Japanese toad, *Bufo japonicus formosus*. *Herpetological Journal*, 9, 9–13.
+
+McGeoch, M. A., & Gaston, K. J. (2002). Occupancy frequency distributions: patterns, artefacts and mechanisms. *Biological Reviews*, 77, 311–331. https://doi.org/10.1017/S1464793101005887
 
 Oseen, K. L., & Wassersug, R. J. (2002). Environmental factors influencing calling in sympatric anurans. *Oecologia*, 133, 616–625. https://doi.org/10.1007/s00442-002-1067-5
 
@@ -289,7 +313,7 @@ Yang, L. H., Bastow, J. L., Spence, K. O., & Wright, A. N. (2008). What can we l
 
 **Figure 1. Rain-associated change enters from silence and often as strong chorus.** Rainfall coefficients for total CallingIndex and its activation components show that 65.3% of the CallingIndex slope arose from 0→positive activation and 87.1% of that activation entered directly at CallingIndex 2–3. Direct 0→CallingIndex 3 estimates with 95% confidence intervals are shown for the full sample and the same-observer + same-physical-SiteID subset. CallingIndex 3 is a continuous overlapping chorus; acoustic zeros are not interpreted as confirmed physical absence.
 
-**Figure 2. The unusual spatial response begins beyond the second occupied site and is carried by strong chorus states.** Rainfall coefficients are shown for second-stop incidence, third-and-later incidence and fourth-and-later incidence among route-new taxa. The third-and-later component exceeded both primary null ranges, whereas the second-stop component did not. Of the third-and-later coefficient, 97.3% was carried by CallingIndex 2–3 states and 95.4% in the same-observer + same-site subset.
+**Figure 2. Recent-rain calling has a deeper within-taxon multi-site tail than expected.** For taxa with no recorded call anywhere on the drier route, the figure shows the marginal rainfall coefficient for being recorded calling at the 1st through 10th wetter-survey stop, together with 95% envelopes from the uniform-activation and persistence-preserving nulls. Marginal depths 1–3 fall within both null envelopes, whereas depths 4–10 exceed both. Coefficients decline with depth, so the pattern is a heavier tail rather than exponential growth or a discrete third-stop threshold. The cumulative third-and-later component was β = 0.473, of which 97.3% was carried by CallingIndex 2–3 states.
 
 **Figure 3. Species and site propensities underpredict within-taxon multi-site concentration.** In the strictly-prior-history subset, observed concentration is compared with the principal route-cross-fit species-response + prior physical-site-history + dry-persistence comparator and with the stronger held-out rain × history gate. Both underpredict the observed concentration (conditional upper-tail P = 0.000999). Simpler activation nulls and the exact N,K diagnostic are retained in Supporting Information.
 

@@ -804,11 +804,19 @@ These analyses constrain measured acoustic conditions but do not make dry acoust
 
 ## S11. Spatial depth of recruited route species
 
+### S11.0 Relation to established site-incidence and null-model methods
+
+The depth analysis begins with a standard mathematical object: for each row of a species × site incidence matrix, count the number of sampled sites at which that species is observed. Occupancy-frequency distributions and ranked species-occupancy curves use exactly this row-wise site count as their basic summary (McGeoch & Gaston, 2002; Jenkins, 2011). We use the same algebra but not the same demographic interpretation. Here a positive cell means **calling recorded during a five-minute survey**, and a zero means **no call recorded**. Thus (k) is calling-incidence depth, not confirmed physical occupancy, colonization, dispersal distance or movement among stops.
+
+The inferential framework also follows the general incidence-matrix null-model tradition: compare an observed structural statistic with matrices generated under an explicitly constrained null, and interpret departures only relative to the properties that null preserves (Gotelli, 2000; Gotelli & McCabe, 2002). This is particularly important for structural indices because many can change mechanically with network size, connectance or sampling intensity (Dormann et al., 2009). Our nulls are therefore not intended to represent "random ecology"; they are progressively richer first-order generators that preserve observed wet-incidence magnitude and then add dry-state persistence, species-specific rainfall response and prior species × physical-site structure.
+
+The exact concentration score used below, `sum choose(k_i-1,2)`, is **not presented as a standard named index from that literature**. It is a study-specific residualization of the ordinary within-taxon site-pair count, with an exact algebraic relationship given in S11.3.
+
 ### S11.1 Exact decomposition
 
 The post-freeze spatial-depth analysis was fixed before endpoint readback in `NAAMP_ROUTE_NEW_SPATIAL_DEPTH_CONTRACT_V0_1.json`.
 
-For every species absent from the entire dry route and present in the wet route, (k) was the number of wet stops occupied. Extra spatial participation was decomposed into:
+For every species with no recorded call at any dry-route stop and at least one recorded call in the wetter survey, (k) was the number of wetter-survey stops with a calling record. In the algebra below, "occupied stop" is shorthand for a **calling-positive sampling stop**, not evidence that the species was physically absent elsewhere. Extra spatial participation was decomposed into:
 
 - second-stop incidence: one incidence for every species with (k≥2);
 - third-and-later incidence: (max(k-2,0));
@@ -887,7 +895,7 @@ The reason for this weighting can be written exactly. Let
 
 `P = sum_i choose(k_i,2)`
 
-be the standard number of within-taxon unordered site pairs, and let
+be the ordinary combinatorial count of within-taxon unordered site pairs, and let
 
 `E = sum_i (k_i-1)`
 
@@ -899,7 +907,7 @@ so after summing across taxa,
 
 `P = C + E`.
 
-Therefore the frozen concentration score C is simply the standard within-taxon site-pair count after subtracting the first-order amount of extra spread. Because the principal null explicitly conditions concentration on the observed recruitment and extra-stop coefficients, C and P contain the same residual concentration information for the inferential question.
+Therefore the frozen concentration score C is simply the within-taxon site-pair count after subtracting the first-order amount of extra spread. We do not claim C as a previously established ecological index. Its advantage here is interpretive and algebraic: because the principal null explicitly conditions concentration on the observed acoustic-recruitment and extra-stop coefficients, C and P contain the same residual concentration information for the inferential question.
 
 A simple example shows why total site count alone is insufficient. With two recruited taxa and four total incidences, allocations (2,2) and (3,1) have identical N=2, K=4 and E=2. Yet C=0 for (2,2) and C=1 for (3,1), because the second allocation concentrates both extra incidences within one taxon.
 
@@ -1031,7 +1039,7 @@ Same-observer + same-physical-site subset:
 
 Adjacent-stop links increased with rainfall contrast (**β = 0.4194**) and remained above the upper conditional residual range under both primary activation nulls after conditioning on total extra-stop spread (both **P = 0.000999**).
 
-StopNumber adjacency is route topology, not exact geographic distance. This supports route-scale multi-site coherence but does not establish literal simultaneity, movement or hydrological connectivity.
+StopNumber adjacency is route topology, not exact geographic distance. This supports route-scale organization of calling records but does not establish literal simultaneity, individual movement or hydrological connectivity.
 
 ### S11.9 Taxonomic breadth of within-taxon concentration
 
