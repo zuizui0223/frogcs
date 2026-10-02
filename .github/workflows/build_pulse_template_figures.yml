@@ -2,7 +2,7 @@ name: build pulse-template figures
 # Post-RC3 novelty renderer: Figure 3 restricted to principal species/site comparators
 on:
   push:
-    branches: [integration/jae-multisite-rc4-clean, main, audit/spatial-depth-shape-v1]
+    branches: [integration/jae-multisite-rc4-clean, main]
     paths:
       - revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json
       - revision/FIGURE_REBUILD_SPEC_V0_3.md
@@ -39,11 +39,11 @@ jobs:
           git diff --exit-code -- figures_pulse_template
 
       - name: Commit generated figures on clean integration branch
-        if: github.event_name == 'push' && (github.ref_name == 'integration/jae-multisite-rc4-clean' || github.ref_name == 'audit/spatial-depth-shape-v1')
+        if: github.event_name == 'push' && github.ref_name == 'integration/jae-multisite-rc4-clean'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add figures_pulse_template
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Build integrated pulse-template figures"
-          git push origin HEAD:${{ github.ref_name }}
+          git push origin HEAD:integration/jae-multisite-rc4-clean
