@@ -142,7 +142,7 @@ def main():
         wets.append(wet)
         drys.append(dry)
         folds.append(route_fold)
-        obs_rows.append(uniform.component_counts(wet,dry)[[0,1,3]])
+        obs_rows.append(flex.metrics(wet,dry))
 
         silent=(dry.sum(axis=1)==0)
         if np.any(silent):
@@ -201,7 +201,7 @@ def main():
             else:
                 wsim[:,i,:]=rng.random((B,10))<q[i][None,:]
 
-        numer+=r[pair_i]*uniform.sim_component_counts(wsim,dry)[:,[0,1,3]]
+        numer+=r[pair_i]*flex.sim_metrics(wsim,dry)
 
     sim=numer/den
 
