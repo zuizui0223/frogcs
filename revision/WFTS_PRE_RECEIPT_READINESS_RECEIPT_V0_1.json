@@ -1,7 +1,7 @@
 {
   "receipt_id": "wfts_pre_receipt_readiness_v0_1",
   "date": "2026-10-04",
-  "status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY",
+  "status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE",
   "biological_outcomes_inspected": false,
   "internal_pre_receipt_blockers": [],
   "scientific_rule_setting_complete": true,
@@ -57,5 +57,30 @@
     "change coverage/informativeness gates",
     "inspect WFTS frog-response outcomes"
   ],
-  "note": "The synthetic classifications are deliberately not QA gates. This receipt records implementation readiness only, not ecological support or non-support."
+  "note": "The synthetic classifications are deliberately not QA gates. This receipt records implementation readiness only, not ecological support or non-support.",
+  "fail_closed_guard_qa": {
+    "workflow": ".github/workflows/wfts_fail_closed_guard_qa.yml",
+    "run": 37153969280,
+    "conclusion": "success",
+    "artifact": {
+      "id": 11285147541,
+      "digest": "sha256:2160db04a28c11ba404b56c135ffcf7becbc34da00183fabd89f0683580e2e23"
+    },
+    "verified": {
+      "insufficient_coverage_preflight_fails": true,
+      "failed_preflight_reads_response_columns": false,
+      "primary_refuses_failed_preflight": true,
+      "primary_refuses_matrix_byte_drift_after_preflight": true,
+      "primary_refuses_runs_byte_drift_after_preflight": true
+    },
+    "synthetic_failure_fixture": {
+      "routes": 20,
+      "principal_history_pairs": 360,
+      "fold_routes": {
+        "A": 9,
+        "B": 11
+      },
+      "gate_pass": false
+    }
+  }
 }
