@@ -1,0 +1,46 @@
+{
+  "lock_id": "wfts_real_data_execution_lock_v0_1",
+  "frozen_on": "2026-10-03",
+  "status": "frozen_before_wfts_frog_response_outcome_access",
+  "purpose": "Prevent silent drift of any file authorized for real WFTS acquisition, response-blind preflight, primary confirmation, or predeclared secondary diagnostics.",
+  "real_data_authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md",
+  "historical_label_note": "WFTS_CANONICAL_SCHEMA_V0_2.json and WFTS_DAYMET_WEATHER_SPEC_V0_1.md intentionally retain historical v0.4/v0.2 labels in their frozen bytes. Execution authority is WFTS_CONFIRMATORY_AUTHORITY_V0_4.md; do not edit frozen bytes merely to update labels.",
+  "files": {
+    "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md": "f22869b63cfb2edb9eed25864d51e2c391768c53",
+    "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md": "5f548a53ff8c409a9af8308961b180488f44a562",
+    "revision/WFTS_CANONICAL_SCHEMA_V0_2.json": "f27bb78d50b7785349f4ef61f22b7ccf2b11dfe2",
+    "revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md": "54056270c8fa32695524751e5941e004bd608dff",
+    "revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md": "5448ca10ae04fae59e7c8083ed18a177ae9181a5",
+    "scripts/wfts/build_daymet_covariates.py": "5a5fd47512cc3195b86e4334e08b0eddb0ec4609",
+    "scripts/wfts/preflight_wfts_structure.py": "b8737a6fb187a2f9a590952430483f6fc041979a",
+    "scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py": "41b6c802cf9d5c7d2b58cb89d23bd315dd98cdc7",
+    "revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json": "415931d7459dc7a89099d63071aa439f0441fd13",
+    "scripts/wfts/build_common_environment_covariates.py": "1945e2532449da626cbf77e092abfd43df2c04d3",
+    "scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py": "66af77b48b3adf3771d8d321bc637beabf792fba",
+    "revision/WFTS_PROSPECTIVE_DEEP_TEMPLATE_ALIGNMENT_V0_1.json": "fd16e3d8e9e3e99987fde41f2fcf7a4e9fd53217",
+    "scripts/wfts/run_wfts_deep_template_alignment_v0_1.py": "d11c726442e540761209b8d61921473a8e594d3e",
+    "revision/WFTS_RAW_TO_CANONICAL_RULES_V0_1.md": "f0aff3cd3d0a19b61998f4a05841237fc8584409",
+    "revision/WFTS_RAW_TO_CANONICAL_MAPPING_TEMPLATE_V0_1.json": "531782cfdcda94242bc4dc9911d8a71dd6e020dd",
+    "scripts/wfts/receipt_raw_wfts_files.py": "4044ee08bd5c28d85066fad24c1c59712883557e",
+    "scripts/wfts/inspect_wfts_schema_only.py": "2f9c47792439454cb4ffe70fc285b6a11b5d4eb0",
+    "scripts/wfts/audit_wfts_route_master.py": "d7b4e0774609bce360a1ad4fea8e96355fd4329b"
+  },
+  "execution_order": [
+    "receipt raw bytes without opening outcomes",
+    "schema-only inspection",
+    "freeze raw-to-canonical mapping from metadata/codebook only",
+    "build response-free Daymet primary and secondary weather",
+    "run structural preflight",
+    "if and only if preflight PASS, run primary confirmatory analysis once",
+    "freeze primary result/classification",
+    "run common-environment/route-night secondary",
+    "freeze secondary result",
+    "run deep historical-site alignment secondary",
+    "freeze secondary classification"
+  ],
+  "anti_drift": [
+    "Any change to a locked file before real-data execution requires a new lock version and explicit reason before response outcome access.",
+    "After any WFTS frog-response outcome is opened, no locked scientific rule or code may be changed to improve fit or significance.",
+    "Synthetic QA results are implementation checks only and cannot change scientific decision rules."
+  ]
+}
