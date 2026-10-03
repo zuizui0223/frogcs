@@ -115,6 +115,15 @@ This does not exclude within-observer perceptual error, but it rules out observe
 
 A breadth audit fixed before the bounded repair used the historical D score. All **40/40** information-eligible taxa had positive departures; the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not treated as comparable effect sizes. The audit supports breadth of the positive departure, not a common effect magnitude or mechanism.
 
+### Descriptive magnitude of the shared species × route-night state
+
+A separately fixed logistic-normal model treated the strongest measured-comparator `logit(q)` as an offset and added one random intercept shared by the ten stops of each species × route-night cluster. This does not replace the bounded simulation test; it only asks how large a latent common shift is required in that model.
+
+- all clusters: **sigma = 2.563**, latent-logistic variance share **0.666**, +1 SD odds multiplier **13.0×**;
+- dry-route-silent clusters: **sigma = 2.884**, latent-logistic variance share **0.717**, +1 SD odds multiplier **17.9×**.
+
+A prespecified numerical audit passed: the 20-node sigma values differed from 60-node estimates by **1.03%** and **1.69%**, and 40-node estimates by **0.02%** and **0.12%**. These quantities are model-based latent-scale descriptions, not occupancy ICCs, monitoring design effects or route-clustered confidence statements. The primary inferential quantity remains bounded `rho_b` against the independent-Bernoulli null.
+
 ## Biological interpretation now supported
 
 > **A frog species' acoustic state on a given route-night behaves as a shared landscape-scale state: after measured rainfall amount, nonlinear rain recency, temperature, season, historical physical-site use, dry-state persistence and total activity are represented, calling outcomes remain positively dependent within the same species and night, including among taxa previously silent across the route and at widely separated route positions.**
