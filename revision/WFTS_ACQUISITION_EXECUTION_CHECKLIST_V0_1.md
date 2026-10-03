@@ -25,6 +25,7 @@
 - [x] fail-closed real-data execution handoff ready
 - [x] full frozen synthetic chain passes preflight → primary → common-environment secondary → recurrent-site secondary — run **37130556855**
 - [x] pre-receipt readiness receipt frozen — `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`
+- [x] fail-closed guard QA passed: insufficient coverage stops before response read; post-preflight runs/matrix byte drift is rejected — run **37153969280**
 
 ## B. Direct WFTS research-data request
 
