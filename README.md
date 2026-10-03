@@ -4,12 +4,14 @@
 
 **Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
 
-Current validated release/submission refs:
+Historical frozen release/submission refs:
 
 - `release/jae-multisite-rc4`
 - `submission/jae-multisite-v4`
-- validated scientific source: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
+- validated RC4 scientific source: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
 - release receipt: `submission/RC4_RELEASE_RECEIPT.md`
+
+Current `main` is the **post-RC4 submission candidate** containing the explicitly post-hoc 2026-10-03 refinement and its second closure. A new release ref should be cut only after manuscript QA and the anonymous scientific-bundle pipeline both pass for the same current scientific HEAD.
 
 RC3 and the original RC11 submission remain preserved in their historical release/submission refs; they are not duplicated in this cleaned integration tree.
 
