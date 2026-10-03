@@ -1,0 +1,58 @@
+{
+  "analysis": "wfts_prospective_common_environment_diagnostic_v0_1",
+  "status": "prospective_secondary_diagnostic_frozen_before_wfts_frog_outcome_readback",
+  "role": "Secondary mechanism diagnostic only. It does not alter, replace, rescue or retune the frozen WFTS primary replication endpoint/comparator or three-way replication classification.",
+  "question": "If the NAAMP multi-site concentration transfers to WFTS, can measured common route-night weather account for it?",
+  "population": "Exactly the primary WFTS-confirmatory eligible matched comparisons after the existing structural, physical-station-continuity and strictly-prior-history gates.",
+  "weather_source": {
+    "product": "Daymet Version 4 R1, identical to the frozen WFTS primary weather source.",
+    "primary_amount_exposure": "Total prcp over the three complete local calendar days immediately preceding the survey; survey-day precipitation excluded.",
+    "transformation": "log(1 + 3-day precipitation mm)",
+    "temperature": "Existing route-run Daymet tmean.",
+    "rain_recency": "Existing frozen mean log(1 + dry_days) route-run exposure.",
+    "sensitivities": [
+      "1 complete pre-survey day precipitation total",
+      "7 complete pre-survey day precipitation total"
+    ]
+  },
+  "species_common_environment_model": {
+    "split": "Existing deterministic WFTS route fold; focal routes are predicted only from the opposite fold.",
+    "response": "Calling-positive station count out of the ten fixed physical stations for each taxon x route-run.",
+    "primary_terms": [
+      "cubic B-spline rain_recency, 4 df",
+      "cubic B-spline log(1 + 3-day precipitation), 4 df",
+      "cubic B-spline tmean, 4 df",
+      "rain_recency x log(1 + 3-day precipitation)",
+      "log(1 + 3-day precipitation) x tmean",
+      "SurveyPeriod fixed effects"
+    ],
+    "minimum_information": "Reuse the NAAMP rule: at least 20 positive station cells and 5 positive routes in the training fold; otherwise common-environment shift is zero.",
+    "family": "Binomial GLM with ridge fallback."
+  },
+  "null_construction": {
+    "site_structure": "Exactly the frozen WFTS strictly-prior taxon x physical-station probability and a=0.75 drier-state persistence anchor.",
+    "environment_shift": "Cross-fitted predicted logit difference between wetter and drier route-runs for each taxon, shared across that taxon's ten stations.",
+    "magnitude": "Pair-level shift matching expected total wet incidence to observed total wet incidence.",
+    "replicates": 1000,
+    "seed": 2840226,
+    "conditioning": "Same conditional regression on simulated route-new-taxon and total extra-station coefficients as the frozen primary comparator."
+  },
+  "outputs": [
+    "observed concentration coefficient",
+    "primary WFTS comparator predicted concentration and conditional residual",
+    "common-environment comparator predicted concentration and conditional residual",
+    "fraction of primary-comparator residual removed",
+    "1-day and 7-day fixed-window sensitivities"
+  ],
+  "interpretation": {
+    "sufficient": "Common-environment null contains the observed residual within its 95% null interval.",
+    "insufficient": "Observed residual remains above its upper 95% null bound.",
+    "boundary": "Insufficiency does not identify social facilitation, synchronized breeding or any unique lower-level mechanism."
+  },
+  "anti_tuning": [
+    "Do not alter 3-day primary window after WFTS frog outcomes are opened.",
+    "Do not select among 1/3/7-day windows by best result; 3-day is primary and 1/7-day are named sensitivities.",
+    "Do not alter spline df, interactions, training thresholds, simulation count, seed, conditioning variables or tail after outcome readback.",
+    "Do not change the primary WFTS replication classification based on this diagnostic."
+  ]
+}
