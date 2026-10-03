@@ -1,0 +1,139 @@
+{
+  "analysis": "wfts_prospective_common_environment_and_route_night_diagnostic_v0_2",
+  "status": "prospective_secondary_diagnostic_frozen_before_wfts_frog_outcome_readback; supersedes v0_1 before outcome access",
+  "role": "Secondary mechanism and sampling-unit diagnostics only. They do not alter, replace, rescue or retune the frozen WFTS primary replication endpoint/comparator or three-way replication classification.",
+  "questions": [
+    "If the NAAMP multi-site concentration transfers to WFTS, can measured common route-night weather account for it?",
+    "After that measured common-environment comparator, do station outcomes retain positive bounded within-taxon route-night dependence?",
+    "If dependence remains, is it confined to adjacent station numbers or retained at far route-position lags?"
+  ],
+  "population": "Exactly the primary WFTS-confirmatory eligible matched comparisons after the existing structural, physical-station-continuity and strictly-prior-history gates.",
+  "weather_source": {
+    "product": "Daymet Version 4 R1, identical to the frozen WFTS primary weather product.",
+    "station_amounts": "For each physical station and survey date, exclude survey-day precipitation and sum Daymet prcp over the 1, 3, and 7 complete local calendar days immediately preceding the survey.",
+    "transformation": "At station level use log(1 + antecedent precipitation mm).",
+    "route_aggregation": "For each window, route-run exposure is the arithmetic mean of station-level log(1 + antecedent precipitation mm) across exactly the ten permanent stations.",
+    "primary_amount_window_days": 3,
+    "named_sensitivity_windows_days": [
+      1,
+      7
+    ],
+    "temperature": "Existing route-run Daymet tmean.",
+    "rain_recency": "Existing frozen mean log(1 + dry_days) route-run exposure."
+  },
+  "species_common_environment_model": {
+    "split": "Existing deterministic WFTS route fold; focal routes are predicted only from the opposite fold.",
+    "response": "Calling-positive station count out of ten for each taxon x route-run.",
+    "primary_terms": [
+      "cubic B-spline rain_recency, 4 df",
+      "cubic B-spline primary 3-day route-run precipitation exposure, 4 df",
+      "cubic B-spline tmean_run, 4 df",
+      "rain_recency x 3-day precipitation exposure",
+      "3-day precipitation exposure x tmean_run",
+      "SurveyPeriod fixed effects"
+    ],
+    "minimum_information": "At least 20 positive station cells and 5 positive routes in the training fold; otherwise common-environment shift is zero.",
+    "family": "Binomial GLM with ridge fallback."
+  },
+  "q_construction": {
+    "site_structure": "Exactly the frozen WFTS strictly-prior taxon x physical-station probability and a=0.75 drier-state persistence anchor.",
+    "environment_shift": "Cross-fitted predicted logit difference between wetter and drier route-runs for each taxon, shared across that taxon's ten stations.",
+    "magnitude": "Pair-level shift matching expected total wet incidence to observed total wet incidence."
+  },
+  "concentration_test": {
+    "simulations": 1000,
+    "seed": 2840226,
+    "conditioning": "Same conditional regression on simulated route-new-taxon and total extra-station coefficients as the frozen primary comparator.",
+    "outputs": [
+      "observed concentration coefficient",
+      "primary WFTS comparator conditional residual",
+      "common-environment comparator conditional residual",
+      "fraction of primary-comparator residual removed",
+      "1-day and 7-day named-window sensitivities"
+    ]
+  },
+  "bounded_route_night_dependence": {
+    "residual": "e_cj = y_cj - q_cj from the fixed primary 3-day common-environment q matrices.",
+    "coefficient": "rho_b = 2 * sum_c sum_{j<k} e_cj e_ck / [9 * sum_c sum_j e_cj^2]",
+    "primary_strata": [
+      "all fixed-support taxon x route-night clusters",
+      "dry-route-silent taxa defined using the drier survey only"
+    ],
+    "null": "1,000 independent Bernoulli draws from the same fixed heterogeneous q matrices.",
+    "seed": 2840230,
+    "support_rule": "Observed rho_b exceeds the upper 95% null quantile and plus-one upper-tail P < 0.05.",
+    "NAAMP_directional_reference": {
+      "all": 0.17206769596558683,
+      "dry_route_silent": 0.28487700425848284
+    },
+    "decision_boundary": "WFTS need not match the NAAMP magnitude to support transfer; effect size, null interval and P are reported without post-hoc threshold tuning."
+  },
+  "route_position_lag_profile": {
+    "primary_stratum": "dry-route-silent taxa defined using drier outcomes only",
+    "lags": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "near_pool": [
+      1,
+      2,
+      3
+    ],
+    "far_pool": [
+      7,
+      8,
+      9
+    ],
+    "coefficient": "For each lag or pooled lag set, cosine correlation of residual entries e_cj and e_c,j+d across all valid within-cluster pairs.",
+    "null": "1,000 independent Bernoulli draws from the same q matrices.",
+    "seed": 2840231,
+    "primary_prediction": "far pooled lags 7-9 are positive and exceed the upper 95% independent-null bound.",
+    "NAAMP_directional_reference": {
+      "near_1_3": 0.29643298821548375,
+      "far_7_9": 0.27178236785618926
+    },
+    "boundary": "Station-number lag is route topology, not exact geographic distance."
+  },
+  "monitoring_uncertainty": {
+    "status": "prospective descriptive secondary if response sample supports estimation",
+    "model": "Within each taxon, wet activation among station cells acoustically zero in the drier member ~ rain_contrast + temperature_difference + day_of_year_difference + year_gap + SurveyPeriod.",
+    "covariances": [
+      "IID model-based",
+      "cluster by focal matched pair",
+      "cluster by route across years"
+    ],
+    "fixed_species_eligibility": {
+      "minimum_risk_cells": 200,
+      "minimum_positive_wet_cells": 20,
+      "minimum_pair_clusters": 30,
+      "minimum_routes": 10
+    },
+    "outputs": [
+      "specieswise clustered/IID SE ratios",
+      "median and IQR ratios",
+      "fraction of eligible taxa with ratio > 1"
+    ],
+    "boundary": "Not a re-fit of a published WFTS trend estimator and not a universal correction factor."
+  },
+  "interpretation": {
+    "common_environment_sufficient": "Common-environment null contains observed concentration residual within its 95% null interval.",
+    "common_environment_insufficient": "Observed concentration residual remains above its upper 95% null bound.",
+    "route_night_positive": "Bounded rho_b rejects independent station outcomes under fixed q.",
+    "far_scale_positive": "Far lags 7-9 reject independent station outcomes in the dry-route-silent stratum.",
+    "boundary": "None of these secondary diagnostics identifies social facilitation, synchronized breeding, movement, hydrological causation, or any unique lower-level mechanism."
+  },
+  "anti_tuning": [
+    "Do not alter 3-day primary precipitation window after WFTS frog outcomes are opened.",
+    "Do not select among 1/3/7-day windows by best result; 3-day is primary and 1/7-day are named sensitivities.",
+    "Do not alter route aggregation, spline df, interactions, training thresholds, q construction, simulation counts, seeds, lag bins, tails or support rules after outcome readback.",
+    "Do not change the primary WFTS replication classification based on any secondary diagnostic."
+  ],
+  "supersedes": "revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_1.json"
+}
