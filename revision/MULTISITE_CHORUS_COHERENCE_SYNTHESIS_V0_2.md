@@ -9,7 +9,7 @@ Across repeated NAAMP routes, recent-rain conditions are associated with a **pul
 3. within-taxon multi-site concentration exceeds a comparator that already includes cross-fit taxon rainfall response, strictly-prior physical-site history, dry persistence and matched activation magnitude;
 4. strong chorus states preferentially reappear at the same taxon-specific physical sites, with targeting strengthened toward the survey closer to rain.
 
-The key discovery is therefore **not activation magnitude itself but residual dependence in how activity is allocated across sites within taxa**.
+The key discovery is therefore **not activation magnitude itself but residual dependence in how activity is allocated across sites within taxa**. Post-reopening structural diagnostics further show that the residual state is route-spanning but spatially non-uniform: a uniform species-night scalar switch is too coherent, while deep k≥4 activation couples more strongly than shallow activation to strictly-prior strong-chorus sites after exact k and fixed-q site propensity are held constant.
 
 ## Principal spatial test
 
@@ -62,9 +62,11 @@ Historical contract/script names containing `higher_order` remain unchanged for 
 
 The integrated claim is exploratory within NAAMP. Cross-fitting prevents route leakage in comparator fitting but does not provide independent confirmation.
 
-The original same-data mechanism stop rule was explicitly lifted on **2026-10-03** for targeted common-cause falsification. Any new NAAMP mechanism analysis is post-hoc/exploratory and cannot be presented as independent confirmation or as part of the original prespecified sequence.
+The original same-data mechanism stop rule was explicitly lifted on **2026-10-03** for a finite targeted falsification chain. All analyses in that reopened chain remain post-hoc/exploratory and cannot be presented as independent confirmation or as part of the original prespecified sequence.
 
-Prospective external replication remains the decisive confirmation step.
+That reopened line is now **closed again** under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No new NAAMP lower-level mechanism family or outcome-driven retuning is authorized.
+
+Prospective external replication under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md` is the decisive next test.
 
 
 ## Main-text routing after novelty maximization
@@ -84,12 +86,18 @@ Supporting Information carries:
 - raw recurrence percentages;
 - adjacency/topology corroboration;
 - FrogID consistency;
-- failed trait/context mechanisms and activation-geometry placebo.
+- failed trait/context mechanisms and activation-geometry placebo;
+- post-reopening common-environment, detection, calibration and cross-taxon stop-night falsifications;
+- bounded route-night dependence, near/far decay and same-observer sensitivity;
+- latent scalar-state overcoherence and exact-k deep-template alignment;
+- Monte Carlo/numerical stability audits and monitoring-uncertainty diagnostics.
 
 This routing is deliberate: defence evidence should protect the main claim without becoming competing novelty claims.
 
 ## Novelty stop rule
 
-Do not add new same-data mechanism families. Do not broaden the headline to "hidden spatial structure" or "synchrony". The strongest authorized generalization is:
+Do not add new same-data mechanism families. Do not broaden the headline to "synchrony" or a named lower-level mechanism. The strongest authorized structural generalization is:
 
-> Environmental pulses may expose dependence in joint species × place activity that is not recoverable from marginal species responses or static site propensities alone.
+> **A fast taxon-by-night behavioural state can be expressed selectively through a distributed recurrent species × place template rather than uniformly across space.**
+
+This is an exploratory NAAMP synthesis. The title remains the more conservative empirical formulation: **recurrent within-taxon multi-site organization**.
