@@ -1,0 +1,36 @@
+{
+  "analysis": "naamp_deep_vs_shallow_template_alignment_monte_carlo_stability_v0_1",
+  "status": "posthoc_numerical_stability_audit_after_primary_contrast_readback",
+  "authoritative_test": "exploration/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_CONTRAST_RECEIPT_V0_1.json",
+  "known_primary": {
+    "observed_beta_deep_minus_shallow": 0.0296974698534744,
+    "primary_null_ci95": [
+      -0.02531719865771154,
+      0.028888371572041494
+    ],
+    "primary_plus_one_p": 0.02097902097902098,
+    "primary_replicates": 1000,
+    "primary_seed": 2840234
+  },
+  "purpose": "Assess Monte Carlo stability of the already-fixed deep-versus-shallow contrast without changing or replacing its inferential authority.",
+  "audit": {
+    "batches": 20,
+    "replicates_per_batch": 1000,
+    "seeds": "2840300 through 2840319",
+    "exact_same_population_conditioning_statistic_and_tail": true,
+    "outputs": [
+      "batch plus-one P values",
+      "batch 97.5% null quantiles",
+      "fraction of batches in which observed contrast exceeds the batch 97.5% quantile",
+      "pooled descriptive Monte Carlo tail fraction across 20,000 draws"
+    ]
+  },
+  "interpretation": {
+    "stable": "Most batches preserve the same direction and the pooled descriptive tail fraction remains below 0.05.",
+    "unstable": "Flag the P=0.021 result as Monte-Carlo-sensitive and do not use deep-specific coupling as a headline mechanistic result.",
+    "boundary": "This audit does not replace the original 1,000-draw test and does not create a new inferential P value."
+  },
+  "anti_tuning": [
+    "Do not alter batch count, seeds, statistic, population, conditioning or tail after this audit contract is written."
+  ]
+}
