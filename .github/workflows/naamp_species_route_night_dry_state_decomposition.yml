@@ -1,0 +1,54 @@
+name: NAAMP route-night dry-state decomposition
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_SPECIES_ROUTE_NIGHT_DRY_STATE_DECOMPOSITION_CONTRACT_V0_1.json
+      - exploration/run_naamp_species_route_night_dry_state_decomposition.py
+      - .github/workflows/naamp_species_route_night_dry_state_decomposition.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-route-night-dry-state-decomposition
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed dry-state decomposition
+        run: python exploration/run_naamp_species_route_night_dry_state_decomposition.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_SPECIES_ROUTE_NIGHT_DRY_STATE_DECOMPOSITION_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835, x["coverage"]
+          print(json.dumps(x["strata"],indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_SPECIES_ROUTE_NIGHT_DRY_STATE_DECOMPOSITION_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record dry-state route-night dependence decomposition"
+            git push origin HEAD:main
+          fi
