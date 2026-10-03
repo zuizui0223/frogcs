@@ -102,5 +102,14 @@
     "major_noncomparable_change_treated_as_new_route": true
   },
   "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
-  "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md"
+  "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
+  "pre_receipt_internal_readiness": {
+    "internal_blockers": [],
+    "all_scientific_rules_frozen": true,
+    "all_authorized_execution_code_byte_locked": true,
+    "execution_handoff_ready": true,
+    "checklist_section_A_complete": true,
+    "remaining_unchecked_items": "external-acquisition, post-receipt schema/structural work, or post-preflight execution only",
+    "user_action_required_before_data_can_arrive": "send the already-prepared WFTS research-data request or otherwise obtain the existing export; no email has been sent from this repository state"
+  }
 }
