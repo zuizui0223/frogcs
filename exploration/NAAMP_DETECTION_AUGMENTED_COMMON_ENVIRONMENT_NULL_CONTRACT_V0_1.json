@@ -1,0 +1,85 @@
+{
+  "analysis": "naamp_detection_augmented_common_environment_null_v0_1",
+  "status": "posthoc_targeted_detection_falsification_fixed_before_endpoint_readback",
+  "provenance": {
+    "reopening_date": "2026-10-03",
+    "known_results": [
+      "Flexible nonlinear measured weather explained only 11.4% of the original concentration residual.",
+      "Species-specific 72-h ERA5 rainfall amount explained only 6.5% of the same-sample linear residual.",
+      "Bounded residual route-night dependence remained positive, strongest among dry-route-silent taxa, and persisted under same-observer restriction."
+    ],
+    "new_unread_question": "Whether measured route-night acoustic detection conditions further reproduce concentration or bounded residual dependence has not been evaluated under the strongest q comparator."
+  },
+  "question": "Can measured route-night acoustic detection conditions, added to the strongest measured-weather and site-history comparator, explain the residual within-taxon multi-site allocation and bounded route-night dependence?",
+  "detection_covariates": {
+    "source": "Recorded NAAMP survey-quality fields, calculated exactly as scripts/naamp/run_naamp_detection_quality_robustness.py.",
+    "primary": [
+      "hearing_impairment_fraction: fraction of >=8 sampled stops with Noise=1 or MassNoiseIndex>=2",
+      "timeout_fraction: fraction of >=8 sampled stops with TimeOut=1",
+      "mean_wind: mean of valid run StartWind and EndWind Beaufort codes 0-5"
+    ],
+    "not_primary": [
+      "mean_car_count because availability is lower",
+      "mean_mass_noise_index because it is programme-specific and lower-coverage"
+    ],
+    "focal_complete_case_rule": "Both wet and dry route-runs must have finite values for all three primary detection covariates, in addition to ERA5 and strictly-prior-history eligibility."
+  },
+  "same_sample_comparison": {
+    "baseline": "Re-run the frozen 72-h rainfall common-environment q generator on the exact detection-complete focal subset.",
+    "augmented": "Add the three detection-quality covariates to the species-specific cross-fitted common-environment model on the exact same focal subset.",
+    "primary_quantity": "Change in conditional concentration residual and change in bounded dry-route-silent residual dependence."
+  },
+  "crossfit_species_model": {
+    "split": "Existing deterministic SHA256 route fold; focal route predicted only by opposite fold.",
+    "response": "Calling-positive stop count out of ten for each species x route-run.",
+    "training_population": "Runs with valid 72-h ERA5 rainfall and finite hearing_impairment_fraction, timeout_fraction and mean_wind.",
+    "minimum_information": "At least 20 positive stop cells and at least 5 positive routes in the training fold; otherwise environmental shift is zero.",
+    "fixed_terms": [
+      "cubic B-spline log(1 + DaysSinceRain), 4 df",
+      "cubic B-spline log(1 + 72-h ERA5 precipitation mm), 4 df",
+      "cubic B-spline mean route-run air temperature, 4 df",
+      "annual first and second harmonics",
+      "log(1 + DaysSinceRain) x log(1 + 72-h rainfall mm)",
+      "log(1 + 72-h rainfall mm) x mean temperature",
+      "linear hearing_impairment_fraction",
+      "linear timeout_fraction",
+      "linear mean_wind",
+      "State fixed effects",
+      "RunNumber fixed effects"
+    ],
+    "family": "Binomial GLM with ridge fallback."
+  },
+  "q_construction": {
+    "site_structure": "Strictly-prior species x physical-SiteID probability plus a=0.75 dry-state persistence.",
+    "shift": "Cross-fitted wet minus dry predicted species logit shift shared across the ten stops.",
+    "magnitude": "One pair-level common logit shift matching expected total wet calling incidence to observed."
+  },
+  "endpoints": {
+    "concentration": {
+      "simulations": 1000,
+      "seed": 2840232,
+      "conditioning": "Existing conditional regression on simulated route-new-species and total extra-stop rainfall coefficients."
+    },
+    "bounded_dependence": {
+      "coefficient": "rho_b = 2 * sum_c sum_{j<k} e_cj e_ck / [9 * sum_c sum_j e_cj^2]",
+      "strata": [
+        "all fixed-support species x route-night clusters",
+        "dry-route-silent taxa defined from drier survey only"
+      ],
+      "simulations": 1000,
+      "seed": 2840233,
+      "tail": "upper"
+    }
+  },
+  "decisions": {
+    "concentration_sufficient": "Detection-augmented observed residual lies within its 95% null residual interval.",
+    "bounded_dependence_removed": "Detection-augmented bounded coefficient does not exceed its independent-Bernoulli null upper 95% quantile.",
+    "residual_after_detection": "Either concentration remains above its null upper 95% bound or bounded dry-route-silent dependence remains positive by the fixed upper-tail rule."
+  },
+  "boundaries": [
+    "This is post-hoc exploratory falsification, not independent confirmation.",
+    "Recorded detection covariates are incomplete proxies for detectability and do not exclude all acoustic observation error.",
+    "Do not infer a biological mechanism merely because measured detection covariates fail.",
+    "Do not change the complete-case rule, covariates, spline df, interactions, q construction, seeds, tail, or endpoints after readback."
+  ]
+}
