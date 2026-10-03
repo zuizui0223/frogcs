@@ -10,7 +10,7 @@
 
 4. **Recruited taxa showed excess within-taxon multi-site concentration.** Marginal fourth–tenth stops, not the second or third, exceeded both activation nulls, and CallingIndex 2–3 carried 97.3% of deep spread. In the prior-history subset, observed concentration was 1.650 versus 1.353 under the principal comparator (residual 0.297; P = 0.000999). The held-out rain × history gate also underpredicted it; post-hoc tests explained little. A bounded residual-dependence coefficient was 0.285 among taxa silent across the drier route, and remained 0.272 for far stop-number lags 7–9 (both P = 0.000999).
 
-5. **The multi-site response was historically placed rather than arbitrary.** Prior strong-chorus sites were more likely to host wet-state strong chorusing within the same pair and taxon (β = 0.151, 0.129–0.173), and rain selectively strengthened full-chorus targeting at those sites (β = 0.0245, 0.0070–0.0420). The unexpected object is a **pulse-revealed dependence structure**: environmental pulses can expose recurrent species × place organization not recovered from first-order species responses and site propensities alone. The synthesis remains exploratory and awaits independent external confirmation.
+5. **The deep response was historically placed rather than arbitrary.** Prior strong-chorus sites predicted wet-state strong chorusing (β = 0.151, 0.129–0.173). In a post-hoc exact-k test, historical-template coupling was stronger for deep k ≥ 4 than shallow k = 1–3 activation (Δβ = 0.0297, P = 0.021). The resulting **pulse-revealed dependence structure** is consistent with a fast species-night gate expressed through a distributed recurrent species × place template. This synthesis remains exploratory and awaits external confirmation.
 
 ## Keywords
 
@@ -245,7 +245,7 @@ Here, recent-rain conditions mark a **fast behavioural gate**, repeated taxon-sp
 
 This extends general pulse ecology (Yang et al., 2008; Holt, 2008) from asking how much abundance or activity changes to asking **which spatial dependencies become expressed when behaviour switches state, after marginal species and site propensities are already represented**. The principle is not proposed as universal: NAAMP provides a frog-system example that can be tested directly in other behaviourally cryptic systems, including calling insects, lekking animals, nocturnal activity pulses and emergence events.
 
-### The remaining dependence is a species-by-route-night landscape state, not simply a rainfall threshold
+### The remaining state is route-spanning but spatially non-uniform
 
 Measured weather, recorded acoustic conditions and cross-taxon stop-night hotness explained little of the allocation residual. The remaining structure is **taxon-specific, route-spanning but non-uniform**: far-lag dependence retained 91.7% of the near-lag value despite a detectable route-position decline, while a transferable scalar species-night shift made all ten stops too coherent. Crucially, the observed deep k ≥ 4 subsets were preferentially drawn from historically strong SiteIDs even after exact k and fixed q site propensities were conditioned away. The parsimonious structural description is therefore a **fast species-night gate expressed through a distributed slow species × place template**, not a uniform whole-route switch. Unmeasured hydrology, breeding readiness, demographic availability and social processes remain possible lower-level generators.
 
