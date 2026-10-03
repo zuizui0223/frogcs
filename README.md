@@ -30,13 +30,13 @@ The conditional residual was **0.2969**, outside the simulated 95% range (**−0
 
 Strong wet-state chorusing also preferentially reappeared at species-specific historically strong sites (**β = 0.1511**), and that targeting strengthened toward the survey closer to rain (**β = 0.02449**).
 
-Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. A repaired bounded residual-dependence coefficient was **rho_b = 0.172** overall and **0.285** among taxa silent across the drier route (both P = 0.000999). In the silent stratum, dependence persisted from stop-number lags 1–3 (**0.296**) to lags 7–9 (**0.272**), and the same-observer subset retained rho_b = **0.276**.
+Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. A repaired bounded residual-dependence coefficient was **rho_b = 0.172** overall and **0.285** among taxa silent across the drier route (both P = 0.000999). Dependence persisted from stop-number lags 1–3 (**0.296**) to lags 7–9 (**0.272**). A cross-fitted uniform species-night scalar state reproduced concentration but overpredicted near/far dependence (~**0.475**), showing that the state is not a whole-route all-or-none switch. Among **409** deep k≥4 clusters, the non-uniform active subset aligned with strictly-prior strong-chorus SiteIDs beyond exact k and fixed q site propensity (**β = 0.0266**, P = **0.0020**).
 
 ## Main ecological interpretation
 
 The discovery is not simply that frogs call more after rain.
 
-The stronger result is a **pulse-revealed dependence structure**: extra activity is more concentrated across multiple sites within the same recruited taxa than expected from first-order species responses and static site propensities alone.
+The stronger result is a **pulse-revealed dependence structure**: a fast species-night activation state is expressed non-uniformly across a distributed, recurrent species × place template, producing deeper within-taxon multi-site activity than first-order species responses and static site propensities predict.
 
 The general hypothesis is:
 
