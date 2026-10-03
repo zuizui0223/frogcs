@@ -1,0 +1,43 @@
+{
+  "analysis": "naamp_bounded_route_night_same_observer_sensitivity_v0_1",
+  "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json",
+  "coverage": {
+    "pairs": 2191,
+    "routes": 379,
+    "states": 20
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "observer_turnover_required": false,
+    "unique_lower_level_mechanism_identified": false,
+    "within_observer_error_excluded": false
+  },
+  "results": {
+    "all": {
+      "clusters": 14514,
+      "null_ci95": [
+        -0.0031436515980457383,
+        0.0033280618596355904
+      ],
+      "null_mean": 9.576831947316531e-06,
+      "plus_one_upper_tail_p": 0.000999000999000999,
+      "positive_dependence_supported": true,
+      "rho_bounded": 0.16271391911200095
+    },
+    "dry_route_silent": {
+      "clusters": 6396,
+      "null_ci95": [
+        -0.006018812121748698,
+        0.006337698550528403
+      ],
+      "null_mean": -1.7532177543595823e-05,
+      "plus_one_upper_tail_p": 0.000999000999000999,
+      "positive_dependence_supported": true,
+      "rho_bounded": 0.2757567247727625
+    }
+  },
+  "status": "posthoc_detection_sensitivity_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
