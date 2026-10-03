@@ -19,6 +19,20 @@ Foreman, T.M., Grant, E.H.C. & Weir, L.A. (2017), *North American Amphibian Moni
 
 The repository pins the source tables by SHA256 before analysis.
 
+## Canonical reconciliation
+
+The original descriptive hand audit briefly reported 6,075 unique paired runs. A subsequent executable check using the manuscript's actual `scripts/naamp/run_naamp_ecological_pulse.py::build_runs + pair_runs` functions supersedes that hand count.
+
+Canonical pair-side values are:
+- **6,074 unique run IDs**
+- **60,740 stop visits**
+- **88,737 positive CallingIndex 1–3 records**
+- **53 positive taxon labels**
+- RunID-set SHA256: `a1ae266d8e87599a4b19d0eb0cded5f4ec82ef177909456efdbfbe97aa7cdff2`
+
+Executable authority:
+- `audit/NAAMP_CANONICAL_PAIR_VOLUME_CHECK_V0_1.json`
+
 ## 1. Full public NAAMP source tables
 
 Direct row counts from the pinned CSV files:
@@ -85,24 +99,24 @@ Because an eligible run can serve in two adjacent-year comparisons, 4,236 pairs 
 
 The 4,236 pairs are built from:
 
-- **6,075 unique survey runs**
+- **6,074 unique survey runs**
 - **8,472 run appearances** across the two sides of all pairs
-- **60,750 unique stop visits** across those unique runs
+- **60,740 unique stop visits** across those unique runs
 - **84,720 stop appearances** when repeated use of a run in adjacent pairs is counted
 
-Across the **6,075 unique runs** contributing to at least one pair:
+Across the **6,074 unique runs** contributing to at least one pair:
 
-- positive frog calling records: **88,743**
-- CI1: **37,017**
-- CI2: **23,521**
-- CI3: **28,205**
+- positive frog calling records: **88,737**
+- CI1: **37,019**
+- CI2: **23,522**
+- CI3: **28,196**
 - distinct paired-analysis taxa: **53**
-- positive taxon × run combinations: **22,576**
-- active stop × run combinations: **45,991**
+- positive taxon × run combinations: **22,574**
+- active stop × run combinations: **45,986**
 
 This is the most useful scale statement for the main paper:
 
-> **The 4,236 wetter–drier comparisons are built from 6,075 unique survey nights, 60,750 fixed-stop visits and 88,743 positive species × stop calling records spanning 53 taxa.**
+> **The 4,236 wetter–drier comparisons are built from 6,074 unique survey nights, 60,740 fixed-stop visits and 88,737 positive species × stop calling records spanning 53 taxa.**
 
 ## 4. Rainfall information
 
@@ -113,7 +127,7 @@ The primary rain variable is the NAAMP run-level DaysSinceRain.
 Because valid DaysSinceRain is part of the eligibility filter:
 
 - run-level DaysSinceRain observations in the eligible dataset: **7,848**
-- unique run-level DaysSinceRain observations represented in the 4,236 matched comparisons: **6,075**
+- unique run-level DaysSinceRain observations represented in the 4,236 matched comparisons: **6,074**
 - wetter/drier run appearances across all pairs: **8,472**
 - pair-level rain-recency contrasts: **4,236**
 
@@ -177,12 +191,12 @@ Keep the current 4,236 matched comparisons, 53 taxa, 585 ten-stop routes, 21 sta
 ### Methods
 Useful compact scale sentence:
 
-> The 4,236 matched comparisons were built from 6,075 unique survey runs, representing 60,750 fixed-stop visits and 88,743 positive species × stop calling records across the 53 taxa retained in the paired analysis.
+> The 4,236 matched comparisons were built from 6,074 unique survey runs, representing 60,740 fixed-stop visits and 88,737 positive species × stop calling records across the 53 taxa retained in the paired analysis.
 
 ### Talks / overview
 Useful fuller scale description:
 
-> The filtered NAAMP dataset contains 7,848 standardized survey nights and 78,480 fixed-stop visits. The matched analysis uses 6,075 unique nights and 88,743 positive frog-call records; the post-hoc 72-h rainfall analysis links 7,559 nights to 544,248 hourly ERA5 precipitation values.
+> The filtered NAAMP dataset contains 7,848 standardized survey nights and 78,480 fixed-stop visits. The matched analysis uses 6,074 unique nights and 88,737 positive frog-call records; the post-hoc 72-h rainfall analysis links 7,559 nights to 544,248 hourly ERA5 precipitation values.
 
 ## Boundaries
 
