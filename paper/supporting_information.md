@@ -1249,7 +1249,13 @@ We then asked whether that latent state could be reduced to a **single uniform s
 
 The scalar state was sufficient for the **row-count concentration** endpoint: observed concentration β = **1.7136**, scalar prediction = **1.9204**, and the observed conditional residual **−0.2069** lay inside the scalar-generator residual interval **−0.2797 to 0.2867**. But the same model was **too spatially coherent**. It predicted residual correlations of approximately **0.475** for both near lags 1–3 and far lags 7–9, whereas the observed values were only **0.296** and **0.272**; both observed lag values lay below the scalar-generator 95% predictive intervals.
 
-Thus the higher-order concentration can arise from a transferable species-night activation state, but that state is not a uniform all-stop switch. Combined with the weak near-to-far decline and historical-site targeting, the data are better described as **distributed, non-uniform expression across a subset of recurrent species-specific sites**. This is a structural description, not identification of the lower-level generator.
+Thus the higher-order concentration can arise from a transferable species-night activation state, but that state is not a uniform all-stop switch.
+
+We then fixed an exact-k historical-template alignment test before reading its endpoint. For each dry-route-silent species × route-night cluster, k was the observed number of wet calling-positive stops and m was the number of focal physical SiteIDs at which the species had reached CI2/3 in strictly-prior eligible runs. Clusters required both prior-strong and non-strong focal sites. The fixed q values from the strongest measured-environment comparator defined the exact independent-Bernoulli distribution conditional on the observed k: among all `choose(10,k)` stop subsets, subset probability was proportional to the product of q/(1−q) odds for included stops. Thus recruitment, activation depth and current site propensity were all held fixed; only **where** the k active stops fell was tested.
+
+Across **409 deep k ≥ 4 clusters**, the rainfall coefficient for q-conditioned overlap excess with prior-strong SiteIDs was **β = 0.02659**, exceeding the simulated 95% interval **−0.01938 to 0.01855** (plus-one P = **0.001998**). Mean q-conditioned overlap excess was **0.0760** in deep clusters but **−0.0108** in shallow k=1–3 clusters, and **61.4%** of deep clusters were positive. Pooling all **1,247** eligible k ≥ 1 clusters yielded β = **0.02348** but did not pass the fixed upper-tail rule (P = **0.0579**).
+
+The linkage is therefore specific to the unusual deep tail: once a species-night response becomes spatially deep, its non-uniform expression preferentially follows recurrent strong-chorus sites beyond the prior site propensity already represented in q. Combined with the scalar-state overcoherence result, the supported structural description is **a fast species-night gate expressed through a distributed slow species × place template**. This remains a structural description, not identification of the lower-level generator.
 
 A taxonomic-breadth audit had been fixed before the bounded-metric repair. Using the historical D score, all **40/40** information-eligible taxa had positive departures, the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not used as comparable effect sizes; this audit supports breadth of the departure only.
 
@@ -1386,6 +1392,8 @@ The following analyses were conducted only after the original stopping rule was 
 - same-observer bounded-dependence sensitivity;
 - detection-augmented common-environment falsification using hearing impairment, major-noise timeout and wind;
 - logistic-normal species × route-night latent-state magnitude model and its numerical convergence audit;
+- cross-fitted scalar-state structural sufficiency test;
+- exact-k deep historical-template alignment test;
 - taxonomic breadth of the historical dependence departure;
 - IID versus clustered uncertainty diagnostics, including route-across-years and specieswise comparisons;
 - an exact-coordinate distance profile retained for provenance but **not interpreted** after geometry-only QC found gross coordinate transcription errors in the pinned source table (`revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md`);
