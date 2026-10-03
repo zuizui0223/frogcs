@@ -34,6 +34,20 @@ Strong wet-state chorusing also preferentially reappeared at species-specific hi
 
 Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. A repaired bounded residual-dependence coefficient was **rho_b = 0.172** overall and **0.285** among taxa silent across the drier route (both P = 0.000999). Dependence persisted from stop-number lags 1–3 (**0.296**) to lags 7–9 (**0.272**). A cross-fitted uniform species-night scalar state reproduced concentration but overpredicted near/far dependence (~**0.475**), showing that the state is not a whole-route all-or-none switch. Among **409** deep k≥4 clusters, the non-uniform active subset aligned with strictly-prior strong-chorus SiteIDs beyond exact k and fixed q site propensity (**β = 0.0266**, P = **0.0020**).
 
+## Data scale
+
+The public NAAMP source release contains **21,934 run rows**, **219,340 stop rows** and **337,848 positive calling records**. Current filters retain **7,848 standardized survey nights** and **78,480 fixed-stop visits**.
+
+The 4,236 wetter–drier comparisons are built from **6,075 unique nights**, **60,750 fixed-stop visits** and **88,743 positive species × stop calling records** across the 53 paired-analysis taxa.
+
+Rain exposure is much lower-dimensional than the frog response:
+- primary NAAMP `DaysSinceRain`: one value per eligible survey night;
+- post-hoc ERA5 72-h rainfall: **7,559 run-level sums**, derived from **544,248 hourly precipitation values** (72 per run);
+- ERA5 coverage: **2,835/2,916** principal-history pairs (97.2%).
+
+Full counting and caveats:
+- `revision/DATA_VOLUME_AUDIT_2026-10-03.md`
+
 ## Main ecological interpretation
 
 The discovery is not simply that frogs call more after rain.
