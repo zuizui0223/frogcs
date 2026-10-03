@@ -1362,10 +1362,12 @@ The following analyses were conducted only after the original stopping rule was 
 
 - flexible nonlinear route-night common-environment null;
 - species-specific 72-h ERA5 rainfall-amount common-environment null;
-- fixed-q species × route-night residual-dependence diagnostic;
-- drier-state decomposition of that residual dependence;
-- taxonomic breadth of residual dependence;
-- IID versus clustered uncertainty diagnostics.
+- historical fixed-q unbounded residual-dependence score and dry-state decomposition;
+- bounded residual co-dependence metric repair;
+- stop-number-lag profile of bounded residual dependence;
+- same-observer bounded-dependence sensitivity;
+- taxonomic breadth of the historical dependence departure;
+- IID versus clustered uncertainty diagnostics, including route-across-years and specieswise comparisons.
 
 These analyses were fixed before their own newly defined outputs were read, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree.
 
