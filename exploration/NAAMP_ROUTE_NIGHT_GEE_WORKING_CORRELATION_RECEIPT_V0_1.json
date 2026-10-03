@@ -1,0 +1,58 @@
+{
+  "analysis": "naamp_route_night_gee_working_correlation_v0_1",
+  "comparison": {
+    "custom_standardized_residual_dependence_D": 0.41585612605080213,
+    "note": "D and GEE alpha are different estimands; alpha is reported only as conventional correlated-replicate corroboration."
+  },
+  "contract": "exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_CONTRACT_V0_1.json",
+  "coverage": {
+    "cells": 187690,
+    "clusters": 18769,
+    "pairs": 2835,
+    "routes": 428
+  },
+  "gee": {
+    "all": {
+      "converged": true,
+      "intercept": -2172135.849490135,
+      "intercept_robust_se": 0.0,
+      "iterations": 7,
+      "label": "all_species_route_nights",
+      "n_cells": 187690,
+      "n_clusters": 18769,
+      "observed_positive_fraction": 0.2304118493260163,
+      "working_correlation_alpha": 0.5624800052946677
+    },
+    "dry_route_active": {
+      "converged": true,
+      "intercept": -1688.5265602107493,
+      "intercept_robust_se": 0.0,
+      "iterations": 6,
+      "label": "dry_route_active",
+      "n_cells": 104260,
+      "n_clusters": 10426,
+      "observed_positive_fraction": 0.33666794552081336,
+      "working_correlation_alpha": 0.6028526545879362
+    },
+    "dry_route_silent": {
+      "converged": true,
+      "intercept": 0.32213309097435094,
+      "intercept_robust_se": 0.03297714003948138,
+      "iterations": 12,
+      "label": "dry_route_silent",
+      "n_cells": 83430,
+      "n_clusters": 8343,
+      "observed_positive_fraction": 0.09762675296655879,
+      "working_correlation_alpha": 0.33783271629932615
+    }
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "occupancy_trend_reanalysis": false,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "status": "posthoc_method_corroboration_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
