@@ -195,7 +195,7 @@ The original residual score was unbounded, so we repeated the test with a bounde
 
 ### Strong wet-state activity preferentially reappears at historically used physical sites
 
-Within the same focal pair and species, a SiteID where that species had previously reached CallingIndex 2–3 was substantially more likely to host wet-state CI2/3 (β = 0.151, 95% CI 0.129–0.173; Fig. 4). The effect persisted for wet CI3 alone (β = 0.0778, 0.0619–0.0937) and in same-observer pairs (β = 0.159, 0.134–0.183).
+Within the same focal pair and species, a SiteID where that species had previously reached CallingIndex 2–3 was substantially more likely to host wet-state CI2/3 (β = 0.151, 95% CI 0.129–0.173) (Fig. 4). The effect persisted for wet CI3 alone (β = 0.0778, 0.0619–0.0937) and in same-observer pairs (β = 0.159, 0.134–0.183).
 
 Historical recurrence was also selectively stronger on the rain-favoured side of the pair: increasing target rain advantage increased the CI3 targeting contrast between recurrent and non-recurrent cells (β = 0.0245, 95% CI 0.0070–0.0420; same-observer β = 0.0307).
 
