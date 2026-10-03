@@ -6,6 +6,7 @@ on:
     paths:
       - "audit/NAAMP_DATA_VOLUME_AUDIT_CONTRACT_V0_1.json"
       - "audit/run_naamp_data_volume_audit.py"
+      - "audit/run_naamp_canonical_pair_volume_check.py"
       - ".github/workflows/naamp_data_volume_audit.yml"
   workflow_dispatch:
 
@@ -27,6 +28,10 @@ jobs:
           python-version: "3.12"
       - name: Run frozen data-volume audit
         run: python audit/run_naamp_data_volume_audit.py
+      - name: Install canonical-pair check dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas statsmodels
+      - name: Run canonical pair-volume check
+        run: python audit/run_naamp_canonical_pair_volume_check.py
       - name: Validate receipt
         run: |
           python - <<'PY'
@@ -43,6 +48,12 @@ jobs:
           assert x["source"]["files"]["Runs.csv"]["existing_analysis_pin_verified"] is True
           assert x["source"]["files"]["Stops.csv"]["existing_analysis_pin_verified"] is True
           assert x["source"]["files"]["Counts.csv"]["existing_analysis_pin_verified"] is True
+          y=json.loads(Path("audit/NAAMP_CANONICAL_PAIR_VOLUME_CHECK_V0_1.json").read_text())
+          assert y["eligible_runs"]==7848
+          assert y["pairs"]==4236
+          assert y["routes"]==585
+          assert y["unique_pair_side_runids"]==x["matched_pair_use"]["unique_runs_actually_used_as_wet_or_dry"]
+          assert y["positive_call_records_in_pair_side_runs"]==x["matched_pair_use"]["positive_call_rows_ci1_3_in_actual_pair_runs"]
           print({
               "raw_rows": x["raw_frog_records"],
               "eligible": x["eligible_frog_analysis"],
@@ -53,13 +64,13 @@ jobs:
       - name: Commit audit receipt
         run: |
           set -eu
-          if [ -z "$(git status --porcelain -- audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json)" ]; then
-            echo "receipt unchanged"
+          if [ -z "$(git status --porcelain -- audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json audit/NAAMP_CANONICAL_PAIR_VOLUME_CHECK_V0_1.json)" ]; then
+            echo "receipts unchanged"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json
+          git add audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json audit/NAAMP_CANONICAL_PAIR_VOLUME_CHECK_V0_1.json
           git commit -m "Record NAAMP data-volume audit receipt"
           git pull --rebase origin main
           git push origin HEAD:main
