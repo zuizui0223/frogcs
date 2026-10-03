@@ -6,7 +6,7 @@
 
 Obtain the existing electronic traditional-route WFTS records needed to run the already-frozen external confirmation. Do not ask DNR/WFTS staff to calculate any ecological result.
 
-## Current official contacts
+## Current official contacts — reverified 2026-10-04
 
 ### Primary coordinator
 
@@ -19,13 +19,16 @@ Verified in Wisconsin DNR's 26 March 2026 WFTS volunteer release.
 
 ### Programme aliases
 
+Historical programme aliases retained for optional copy:
 - `WFTS@wisconsin.gov` — listed in the 2022 WFTS manual.
 - `DNRWFTS@wisconsin.gov` — listed in the 2025 WFTS brochure (PUB-NH-931).
 
-Because both programme aliases appear in recent official material, the recommended research-data request is:
+Operational reverification on 2026-10-04 clearly confirmed Andrew Badje's direct contact in the current 2026 Wisconsin DNR WFTS release, but did not independently reverify the two programme aliases on the current public web. Therefore the aliases are **optional CCs**, not required routing.
+
+Recommended research-data request:
 
 **To:** Andrew.Badje@wisconsin.gov  
-**Cc:** WFTS@wisconsin.gov; DNRWFTS@wisconsin.gov
+**Cc:** optional — WFTS@wisconsin.gov; DNRWFTS@wisconsin.gov
 
 ### Public-records fallback
 
@@ -150,3 +153,7 @@ Full handling authority:
 - open-records route: Wisconsin DNR Public Records Request page;
 - data-analysis grain: WFTS Analysis page;
 - route permanence/history: WFTS Survey History and historical WFTS reports.
+
+
+Operational contact verification:
+`revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md`
