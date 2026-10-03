@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_monitoring_independence_impact_v0_1",
+  "status": "posthoc_diagnostic_fixed_after_positive_route_night_dependence_before_se_comparison_readback",
+  "question": "For a representative stop-level acoustic-activation regression, how much does treating ten route stops as conditionally independent change uncertainty relative to clustering repeated stop outcomes within species x route-night?",
+  "population": "Exactly the 2,835 weather-eligible strictly-prior-history matched pairs used in the rain-amount and residual-dependence diagnostics.",
+  "risk_set": "Species x stop cells with CallingIndex=0 / no recorded call in the drier route-run; response is binary calling-positive status at the same StopNumber in the wetter run.",
+  "model": {
+    "family": "Binomial logistic GLM.",
+    "formula": "wet_activation ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber) + C(species)",
+    "same_point_estimate_rule": "Fit this formula once; compare covariance estimators without changing coefficients or the analysis sample."
+  },
+  "covariance_estimators": {
+    "iid_primary_reference": "Model-based GLM covariance treating cells as independent.",
+    "species_route_night_primary": "Sandwich covariance clustered by focal pair x species, so the up-to-ten stop cells for the same species and route-night form one cluster.",
+    "route_pair_secondary": "Sandwich covariance clustered by focal matched pair, allowing dependence across all taxa and stops within the route-night contrast."
+  },
+  "primary_output": [
+    "rain_contrast coefficient",
+    "IID standard error and 95% CI",
+    "species-route-night cluster standard error and 95% CI",
+    "SE inflation ratio clustered/IID",
+    "route-pair clustered SE as a broader-dependence sensitivity"
+  ],
+  "interpretation": {
+    "se_inflation": "If clustered SE exceeds IID SE, treating stops as independent understates uncertainty for this representative activation regression.",
+    "no_inflation": "Do not claim general underestimation of uncertainty if clustered SE is not larger.",
+    "boundary": "This is not a reanalysis of a specific published occupancy-trend estimator and does not establish the exact bias or design effect of such models."
+  },
+  "provenance": "Post-hoc diagnostic after the explicit 2026-10-03 reopening; not independent confirmation."
+}
