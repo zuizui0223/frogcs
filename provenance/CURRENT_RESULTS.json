@@ -237,46 +237,6 @@
       "specieswise_route_cluster_fraction_gt1": 0.9230769230769231,
       "boundary": "Representative activation regressions only; not a reanalysis of a published NAAMP occupancy-trend estimator."
     },
-    "bounded_route_night_dependence": {
-      "pairs": 2835,
-      "routes": 428,
-      "all_clusters": 18769,
-      "rho_bounded_all": 0.17206769596558683,
-      "all_null_ci95": [
-        -0.002669076296533742,
-        0.002853277727650955
-      ],
-      "dry_route_silent_clusters": 8343,
-      "rho_bounded_dry_route_silent": 0.28487700425848284,
-      "dry_route_silent_null_ci95": [
-        -0.0054097624519672755,
-        0.00564583556781708
-      ],
-      "dry_route_active_clusters": 10426,
-      "rho_bounded_dry_route_active": 0.12729974469369246,
-      "dry_route_active_null_ci95": [
-        -0.0031391746664463684,
-        0.0034971281670786955
-      ],
-      "p": 0.000999000999000999,
-      "metric_boundary": "Bounded residual co-dependence coefficient; not converted into an effective stop count."
-    },
-    "route_position_lag_profile": {
-      "dry_route_silent_near_lags_1_3": 0.29643298821548375,
-      "dry_route_silent_far_lags_7_9": 0.27178236785618926,
-      "all_near_lags_1_3": 0.18285938081902683,
-      "all_far_lags_7_9": 0.15769985305363424,
-      "far_p": 0.000999000999000999,
-      "boundary": "Stop-number lag is route topology, not exact geographic distance."
-    },
-    "same_observer_bounded_sensitivity": {
-      "pairs": 2191,
-      "routes": 379,
-      "rho_bounded_all": 0.16271391911200095,
-      "rho_bounded_dry_route_silent": 0.2757567247727625,
-      "p": 0.000999000999000999,
-      "boundary": "Observer turnover is not required; within-observer error is not excluded."
-    },
     "route_topology_lag_profile": {
       "dry_route_silent": {
         "near_lags_1_3": 0.29643298821548375,
