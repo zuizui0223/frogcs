@@ -1,0 +1,66 @@
+name: NAAMP monitoring independence impact
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_CONTRACT_V0_1.json
+      - exploration/run_naamp_monitoring_independence_impact.py
+      - exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_RECEIPT_V0_1.json
+      - .github/workflows/naamp_monitoring_independence_impact.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-monitoring-independence-impact
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed monitoring-independence diagnostic
+        run: python exploration/run_naamp_monitoring_independence_impact.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["status"] in {"posthoc_diagnostic_triggered","not_run_positive_dependence_trigger_not_met"}
+          if x["status"]=="posthoc_diagnostic_triggered":
+              assert x["coverage"]["pairs"]==2835
+              u=x["uncertainty"]
+              print(json.dumps({
+                  "coverage":x["coverage"],
+                  "beta":x["model"]["rain_contrast_beta"],
+                  "iid":u["iid_model_based"],
+                  "species_route_night":u["species_route_night_clustered"],
+                  "route_pair":u["route_pair_clustered"],
+                  "inflation_species":u["species_route_night_se_inflation_ratio"],
+                  "inflation_pair":u["route_pair_se_inflation_ratio"]
+              },indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record monitoring-independence impact"
+            git push origin HEAD:main
+          fi
