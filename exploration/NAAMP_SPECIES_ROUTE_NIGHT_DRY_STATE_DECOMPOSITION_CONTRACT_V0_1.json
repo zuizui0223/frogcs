@@ -1,0 +1,21 @@
+{
+  "analysis": "naamp_species_route_night_residual_dependence_dry_state_decomposition_v0_1",
+  "status": "posthoc_linkage_audit_fixed_after_global_rho_before_dry_state_stratum_readback",
+  "known_before_this_contract": {
+    "global_rho_resid": 0.41585612605080213
+  },
+  "question": "Is residual stop dependence present specifically among taxa that were acoustically silent across the entire drier route, the pre-wet-state stratum that generates the route-new concentration endpoint?",
+  "population_and_prediction": "Exactly the same 2,835 pairs and fixed q matrices as the global residual-dependence diagnostic.",
+  "strata_fixed_from_drier_state_only": {
+    "dry_route_silent": "Species with zero calling-positive stops across all ten stops in the drier route-run, regardless of wetter outcome.",
+    "dry_route_active": "Species with at least one calling-positive stop in the drier route-run."
+  },
+  "statistic": "Compute the identical standardized residual pair-correlation numerator, denominator, and 1,000 independent-Bernoulli null replicates separately within each dry-state stratum.",
+  "seed": 2840226,
+  "support_rule": "For each stratum, positive dependence is supported when observed rho exceeds its null upper 95% quantile and plus-one upper-tail P < 0.05.",
+  "interpretation": {
+    "silent_positive": "Directly links the landscape-scale dependence diagnostic to taxa eligible to become acoustically route-new without selecting on wetter outcomes.",
+    "boundary": "Does not identify the lower-level generator and does not imply biological absence in the drier route."
+  },
+  "provenance": "No stratum definition, null generator, statistic, seed or tail may change after readback."
+}
