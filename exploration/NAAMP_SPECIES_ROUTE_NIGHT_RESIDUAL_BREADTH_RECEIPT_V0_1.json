@@ -1,0 +1,574 @@
+{
+  "analysis": "naamp_species_route_night_residual_breadth_v0_1",
+  "breadth": {
+    "broad_by_frozen_rule": true,
+    "eligible_positive_rho_count": 40,
+    "eligible_positive_rho_fraction": 1.0,
+    "eligible_rho_iqr": [
+      0.2826338810572862,
+      0.7264673988964321
+    ],
+    "eligible_rho_median": 0.4197609294135984,
+    "leave_one_species_out_global_rho_max": 0.44083338308453635,
+    "leave_one_species_out_global_rho_min": 0.391017649530983,
+    "positive_numerator_hhi": 0.057860753752318854,
+    "top1_positive_numerator_share": 0.1172346837461403,
+    "top5_positive_numerator_share": 0.4653239385757867
+  },
+  "contract": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_BREADTH_CONTRACT_V0_1.json",
+  "coverage": {
+    "pairs": 2835,
+    "routes": 428,
+    "species_eligible": 40,
+    "species_total": 53
+  },
+  "eligibility_thresholds": {
+    "minimum_observed_positive_clusters": 10,
+    "minimum_species_route_night_clusters": 30,
+    "minimum_stop_cells": 300
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "shared_mechanism_across_all_species": false
+  },
+  "reproduction": {
+    "global_rho_resid": 0.4158561260508563,
+    "trigger_global_rho_resid": 0.41585612605080213
+  },
+  "species_records": {
+    "Acris crepitans": {
+      "clusters": 636,
+      "denominator": 1233.8784468701901,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41545939166218604,
+      "numerator": 530.5502620052425,
+      "observed_positive_clusters": 348,
+      "rho_resid": 0.429985841272304,
+      "stop_cells": 6360
+    },
+    "Acris crepitans/gryllus complex": {
+      "clusters": 208,
+      "denominator": 504.88820182776766,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4046392354920619,
+      "numerator": 711.0601065672835,
+      "observed_positive_clusters": 101,
+      "rho_resid": 1.4083515994098177,
+      "stop_cells": 2080
+    },
+    "Acris gryllus": {
+      "clusters": 252,
+      "denominator": 678.2951727067334,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41171647785199655,
+      "numerator": 466.28848434603674,
+      "observed_positive_clusters": 143,
+      "rho_resid": 0.687441844065195,
+      "stop_cells": 2520
+    },
+    "Anaxyrus americanus": {
+      "clusters": 1765,
+      "denominator": 4578.7911861904695,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.42691822903054866,
+      "numerator": 1454.999967699088,
+      "observed_positive_clusters": 919,
+      "rho_resid": 0.31776945235837245,
+      "stop_cells": 17650
+    },
+    "Anaxyrus americanus/terrestris complex": {
+      "clusters": 34,
+      "denominator": 27.883406307810276,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41187355971322454,
+      "numerator": 191.41089647323219,
+      "observed_positive_clusters": 15,
+      "rho_resid": 6.864688422935511,
+      "stop_cells": 340
+    },
+    "Anaxyrus cognatus": {
+      "clusters": 5,
+      "denominator": 6.414864406341168,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41585902268191444,
+      "numerator": 2.5368137343028483,
+      "observed_positive_clusters": 5,
+      "rho_resid": 0.39545866812012087,
+      "stop_cells": 50
+    },
+    "Anaxyrus fowleri": {
+      "clusters": 830,
+      "denominator": 2292.7832788315386,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4197899278059184,
+      "numerator": 784.7639801740122,
+      "observed_positive_clusters": 478,
+      "rho_resid": 0.3422756906068977,
+      "stop_cells": 8300
+    },
+    "Anaxyrus fowleri/woodhousii complex": {
+      "clusters": 4,
+      "denominator": 6.608353677151497,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41589554350332414,
+      "numerator": 0.9675626228998876,
+      "observed_positive_clusters": 3,
+      "rho_resid": 0.1464150785762652,
+      "stop_cells": 40
+    },
+    "Anaxyrus quercicus": {
+      "clusters": 61,
+      "denominator": 147.29743997085833,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41118428389775835,
+      "numerator": 271.63331323997295,
+      "observed_positive_clusters": 23,
+      "rho_resid": 1.8441142853108208,
+      "stop_cells": 610
+    },
+    "Anaxyrus terrestris": {
+      "clusters": 247,
+      "denominator": 749.1726893177424,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4110121992833787,
+      "numerator": 526.7605639848957,
+      "observed_positive_clusters": 143,
+      "rho_resid": 0.7031230202272947,
+      "stop_cells": 2470
+    },
+    "Gastrophryne carolinensis": {
+      "clusters": 224,
+      "denominator": 498.95639080442834,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4173359751328696,
+      "numerator": 141.37505842938825,
+      "observed_positive_clusters": 103,
+      "rho_resid": 0.28334151247458783,
+      "stop_cells": 2240
+    },
+    "Hyla andersonii": {
+      "clusters": 37,
+      "denominator": 34.90461207813784,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41359699981208453,
+      "numerator": 116.50042604312098,
+      "observed_positive_clusters": 9,
+      "rho_resid": 3.3376800115217407,
+      "stop_cells": 370
+    },
+    "Hyla avivoca": {
+      "clusters": 65,
+      "denominator": 124.19724865228154,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4164780154137245,
+      "numerator": 23.629381726557877,
+      "observed_positive_clusters": 42,
+      "rho_resid": 0.19025688558297862,
+      "stop_cells": 650
+    },
+    "Hyla chrysoscelis": {
+      "clusters": 941,
+      "denominator": 2829.959568283787,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4019532775282814,
+      "numerator": 1765.6216637613581,
+      "observed_positive_clusters": 545,
+      "rho_resid": 0.6239034944347666,
+      "stop_cells": 9410
+    },
+    "Hyla chrysoscelis/versicolor complex": {
+      "clusters": 502,
+      "denominator": 1003.6997390982401,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.391017649530983,
+      "numerator": 1514.6299567408869,
+      "observed_positive_clusters": 166,
+      "rho_resid": 1.5090468770089398,
+      "stop_cells": 5020
+    },
+    "Hyla cinerea": {
+      "clusters": 472,
+      "denominator": 1264.0361741368201,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41658574606874915,
+      "numerator": 493.61629904119394,
+      "observed_positive_clusters": 293,
+      "rho_resid": 0.3905080480614193,
+      "stop_cells": 4720
+    },
+    "Hyla femoralis": {
+      "clusters": 160,
+      "denominator": 429.6029721141233,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4176539949134231,
+      "numerator": 98.20034058115435,
+      "observed_positive_clusters": 79,
+      "rho_resid": 0.22858394134914783,
+      "stop_cells": 1600
+    },
+    "Hyla gratiosa": {
+      "clusters": 229,
+      "denominator": 388.0860076083068,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41540185458721945,
+      "numerator": 181.73496035812775,
+      "observed_positive_clusters": 112,
+      "rho_resid": 0.4682852687169075,
+      "stop_cells": 2290
+    },
+    "Hyla squirella": {
+      "clusters": 232,
+      "denominator": 600.3773454841483,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41676552403933337,
+      "numerator": 209.13132249456584,
+      "observed_positive_clusters": 124,
+      "rho_resid": 0.3483331342656191,
+      "stop_cells": 2320
+    },
+    "Hyla versicolor": {
+      "clusters": 1355,
+      "denominator": 4406.250478557546,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4165328525752291,
+      "numerator": 1804.7745772059525,
+      "observed_positive_clusters": 777,
+      "rho_resid": 0.4095941858023408,
+      "stop_cells": 13550
+    },
+    "Incilius nebulifer": {
+      "clusters": 5,
+      "denominator": 14.987390595600614,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41579179384596227,
+      "numerator": 9.138067918730728,
+      "observed_positive_clusters": 0,
+      "rho_resid": 0.6097170725244933,
+      "stop_cells": 50
+    },
+    "Lithobates areolatus": {
+      "clusters": 3,
+      "denominator": 2.2063258490706352,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.415875090789109,
+      "numerator": 0.0607571290899954,
+      "observed_positive_clusters": 0,
+      "rho_resid": 0.027537695357006294,
+      "stop_cells": 30
+    },
+    "Lithobates blairi": {
+      "clusters": 45,
+      "denominator": 46.56175808825833,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41530626022516104,
+      "numerator": 44.179514614978125,
+      "observed_positive_clusters": 14,
+      "rho_resid": 0.948836908847715,
+      "stop_cells": 450
+    },
+    "Lithobates capito": {
+      "clusters": 3,
+      "denominator": 3.0412858878402114,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41588621322549224,
+      "numerator": -0.09446519304665736,
+      "observed_positive_clusters": 1,
+      "rho_resid": -0.031060938211810933,
+      "stop_cells": 30
+    },
+    "Lithobates catesbeianus": {
+      "clusters": 1624,
+      "denominator": 3378.4501613508264,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4368549473270265,
+      "numerator": 527.1969700996867,
+      "observed_positive_clusters": 1028,
+      "rho_resid": 0.15604698750059237,
+      "stop_cells": 16240
+    },
+    "Lithobates clamitans": {
+      "clusters": 1806,
+      "denominator": 4437.585663116518,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.44083338308453635,
+      "numerator": 827.800358257159,
+      "observed_positive_clusters": 1261,
+      "rho_resid": 0.186542958514021,
+      "stop_cells": 18060
+    },
+    "Lithobates grylio": {
+      "clusters": 76,
+      "denominator": 146.75343679014213,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4146156489904519,
+      "numerator": 116.8891909023257,
+      "observed_positive_clusters": 49,
+      "rho_resid": 0.7965005349038442,
+      "stop_cells": 760
+    },
+    "Lithobates palustris": {
+      "clusters": 1003,
+      "denominator": 1154.4988623548752,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.42233813327262026,
+      "numerator": 194.74139216690202,
+      "observed_positive_clusters": 373,
+      "rho_resid": 0.16868045393278308,
+      "stop_cells": 10030
+    },
+    "Lithobates pipiens": {
+      "clusters": 243,
+      "denominator": 314.8741582703828,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4175635027664615,
+      "numerator": 54.343200910446036,
+      "observed_positive_clusters": 81,
+      "rho_resid": 0.17258704623128032,
+      "stop_cells": 2430
+    },
+    "Lithobates septentrionalis": {
+      "clusters": 39,
+      "denominator": 58.06923002300932,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4146379161295179,
+      "numerator": 79.11462757434815,
+      "observed_positive_clusters": 15,
+      "rho_resid": 1.3624190908506935,
+      "stop_cells": 390
+    },
+    "Lithobates sphenocephalus": {
+      "clusters": 900,
+      "denominator": 1750.451974292921,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41947545457488694,
+      "numerator": 570.7557263163595,
+      "observed_positive_clusters": 474,
+      "rho_resid": 0.326061916978277,
+      "stop_cells": 9000
+    },
+    "Lithobates sylvaticus": {
+      "clusters": 781,
+      "denominator": 1663.1143921216433,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4153183259041736,
+      "numerator": 715.018900579006,
+      "observed_positive_clusters": 371,
+      "rho_resid": 0.42992767302485596,
+      "stop_cells": 7810
+    },
+    "Lithobates virgatipes": {
+      "clusters": 86,
+      "denominator": 136.88960149498797,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41605894687125716,
+      "numerator": 47.79099865321262,
+      "observed_positive_clusters": 41,
+      "rho_resid": 0.34912073766948926,
+      "stop_cells": 860
+    },
+    "Pseudacris brachyphona": {
+      "clusters": 66,
+      "denominator": 169.1540581111279,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4164393571783519,
+      "numerator": 44.09288722742601,
+      "observed_positive_clusters": 38,
+      "rho_resid": 0.2606670376093409,
+      "stop_cells": 660
+    },
+    "Pseudacris brimleyi": {
+      "clusters": 71,
+      "denominator": 121.73579892738294,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41617858696115645,
+      "numerator": 36.095525631490005,
+      "observed_positive_clusters": 21,
+      "rho_resid": 0.29650707474324356,
+      "stop_cells": 710
+    },
+    "Pseudacris clarkii": {
+      "clusters": 4,
+      "denominator": 2.22725753360374,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.4156985484686414,
+      "numerator": 8.04498989992571,
+      "observed_positive_clusters": 2,
+      "rho_resid": 3.612060921804934,
+      "stop_cells": 40
+    },
+    "Pseudacris crucifer": {
+      "clusters": 2357,
+      "denominator": 7001.952576882762,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.43443185127337525,
+      "numerator": 2202.6474203239472,
+      "observed_positive_clusters": 1864,
+      "rho_resid": 0.3145761694525152,
+      "stop_cells": 23570
+    },
+    "Pseudacris feriarum": {
+      "clusters": 254,
+      "denominator": 687.7075125233285,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4136795472519006,
+      "numerator": 382.8251443510537,
+      "observed_positive_clusters": 157,
+      "rho_resid": 0.556668550771528,
+      "stop_cells": 2540
+    },
+    "Pseudacris feriarum/fouquettei complex": {
+      "clusters": 17,
+      "denominator": 31.221013097926424,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41606049644172566,
+      "numerator": 3.756678123891983,
+      "observed_positive_clusters": 3,
+      "rho_resid": 0.12032531142115585,
+      "stop_cells": 170
+    },
+    "Pseudacris feriarum/kalmi complex": {
+      "clusters": 88,
+      "denominator": 133.67706949521406,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41652962854155334,
+      "numerator": 25.25261338731193,
+      "observed_positive_clusters": 39,
+      "rho_resid": 0.18890759262355036,
+      "stop_cells": 880
+    },
+    "Pseudacris feriarum/triseriata complex": {
+      "clusters": 28,
+      "denominator": 73.13354763756409,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.4142149246236593,
+      "numerator": 104.44006078376067,
+      "observed_positive_clusters": 17,
+      "rho_resid": 1.4280732188919056,
+      "stop_cells": 280
+    },
+    "Pseudacris kalmi": {
+      "clusters": 202,
+      "denominator": 405.45416567187806,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41732363424936575,
+      "numerator": 102.90575533391066,
+      "observed_positive_clusters": 86,
+      "rho_resid": 0.25380367017165933,
+      "stop_cells": 2020
+    },
+    "Pseudacris maculata": {
+      "clusters": 103,
+      "denominator": 344.69809273587015,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4147285926195489,
+      "numerator": 193.89644817662247,
+      "observed_positive_clusters": 80,
+      "rho_resid": 0.5625109400451438,
+      "stop_cells": 1030
+    },
+    "Pseudacris maculata/triseriata complex": {
+      "clusters": 158,
+      "denominator": 420.1093249166465,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41465089685337925,
+      "numerator": 228.64918148827442,
+      "observed_positive_clusters": 109,
+      "rho_resid": 0.5442611432955946,
+      "stop_cells": 1580
+    },
+    "Pseudacris nigrita": {
+      "clusters": 127,
+      "denominator": 255.14856164164567,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41548180125131556,
+      "numerator": 122.92102495813313,
+      "observed_positive_clusters": 63,
+      "rho_resid": 0.481762562827122,
+      "stop_cells": 1270
+    },
+    "Pseudacris nigrita/feriarum complex": {
+      "clusters": 66,
+      "denominator": 115.80712916024046,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4141866111327554,
+      "numerator": 123.39197788926744,
+      "observed_positive_clusters": 18,
+      "rho_resid": 1.0654955250512421,
+      "stop_cells": 660
+    },
+    "Pseudacris ocularis": {
+      "clusters": 108,
+      "denominator": 256.2172810461039,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4166280758479913,
+      "numerator": 71.87176234283434,
+      "observed_positive_clusters": 48,
+      "rho_resid": 0.2805109868053814,
+      "stop_cells": 1080
+    },
+    "Pseudacris ornata": {
+      "clusters": 60,
+      "denominator": 71.39505440384123,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.41217360706056544,
+      "numerator": 195.7979202461664,
+      "observed_positive_clusters": 24,
+      "rho_resid": 2.742457749785425,
+      "stop_cells": 600
+    },
+    "Pseudacris streckeri": {
+      "clusters": 2,
+      "denominator": 10.250075170351128,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.4159615760634587,
+      "numerator": -0.5004382322953764,
+      "observed_positive_clusters": 1,
+      "rho_resid": -0.04882288412312525,
+      "stop_cells": 20
+    },
+    "Scaphiopus couchii": {
+      "clusters": 4,
+      "denominator": 7.6330980903355385,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41589822260563847,
+      "numerator": 1.2727318260854588,
+      "observed_positive_clusters": 0,
+      "rho_resid": 0.16673856552385946,
+      "stop_cells": 40
+    },
+    "Scaphiopus holbrookii": {
+      "clusters": 175,
+      "denominator": 154.47977770428705,
+      "eligible": true,
+      "leave_one_species_out_global_rho": 0.4070069595355303,
+      "numerator": 462.6666037483489,
+      "observed_positive_clusters": 40,
+      "rho_resid": 2.9949978607168153,
+      "stop_cells": 1750
+    },
+    "Scaphiopus hurterii": {
+      "clusters": 4,
+      "denominator": 2.312742050846053,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.4158660938567484,
+      "numerator": 0.5114602706040311,
+      "observed_positive_clusters": 1,
+      "rho_resid": 0.2211488611178784,
+      "stop_cells": 40
+    },
+    "Spea bombifrons": {
+      "clusters": 2,
+      "denominator": 0.6394833731996847,
+      "eligible": false,
+      "leave_one_species_out_global_rho": 0.41585971082222944,
+      "numerator": 0.10398070032630717,
+      "observed_positive_clusters": 0,
+      "rho_resid": 0.16260110064478286,
+      "stop_cells": 20
+    }
+  },
+  "status": "posthoc_breadth_audit_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
