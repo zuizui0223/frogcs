@@ -5,7 +5,7 @@
 This file supersedes `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_2.md` as the current novelty lock.
 
 The detailed closest-study matrix is:
-- `revision/CLOSEST_PRIOR_STUDY_AUDIT_V0_1.md`
+- `revision/CLOSEST_PRIOR_STUDIES_AUDIT_V0_1.md`
 
 ## What the literature already establishes
 
@@ -125,6 +125,16 @@ The evidence does not establish:
 - spawning or reproductive success;
 - a unique lower-level mechanism;
 - universality beyond the sampled system.
+
+## Closest-study verdict
+
+The two closest ecological antecedents are:
+- **Sarker et al. (2022)** for an explicit environmental pulse acting on multi-species chorusing across multiple acoustic sites;
+- **Brodie et al. (2025)** for species-specific cross-site chorus correlations and rain-associated onset across fixed sites.
+
+**Guzy et al. (2012)** is the closest precedent for persistent species × wetland calling-index structure.
+
+These studies remove any defensible novelty claim based simply on multi-site response, cross-site covariance, or recurrent acoustic site structure.
 
 ## Current novelty verdict
 
