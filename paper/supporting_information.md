@@ -1170,6 +1170,90 @@ On **3 October 2026**, after the integrated manuscript result and its limitation
 
 Until such post-hoc analyses identify a better-supported generator, the evidentially conservative interpretation remains **structured state-dependent re-expression with an unresolved lower-level generator**, not identification of a unique mechanism.
 
+### S15.4 Post-reopening common-environment falsification
+
+The first reopened analysis asked whether the concentration residual could be reproduced by a substantially more flexible species-specific environmental response while retaining the same strictly-prior physical-site history, dry-state persistence and pair-level incidence matching.
+
+The fixed route-cross-fitted model allowed nonlinear `log(1 + DaysSinceRain)`, nonlinear mean temperature, first and second annual harmonics, a rain-recency × temperature interaction, State and RunNumber effects. In the 2,916-pair prior-history subset:
+
+- observed concentration β = **1.6503**;
+- principal-null prediction = **1.3535**;
+- flexible-environment prediction = **1.3872**;
+- conditional residual = **0.2631**, versus **0.2969** under the principal comparator;
+- fraction of the original residual removed = **11.4%**;
+- flexible-null residual 95% interval = **−0.1307 to 0.1276**;
+- upper-tail Monte Carlo **P = 0.000999**.
+
+We then used the previously audited ERA5 linkage to add species-specific responses to actual 72-h antecedent precipitation. The weather/prior-history intersection contained **2,835 pairs, 428 routes and 20 states**. To separate weather information from sample restriction, the earlier linear species-response comparator was recomputed on exactly the same subset.
+
+On that common sample:
+
+- observed concentration β = **1.7136**;
+- linear species-response prediction = **1.3960**, residual **0.3176**;
+- 72-h-rainfall common-environment prediction = **1.4166**, residual **0.2970**;
+- residual removed relative to the same-sample linear comparator = **6.5%**;
+- rainfall-null residual 95% interval = **−0.1305 to 0.1378**;
+- upper-tail Monte Carlo **P = 0.000999**.
+
+A separate earlier analysis showed that 72-h rainfall amount itself is biologically informative for strong activation (β = **0.741**, 95% CI **0.386–1.097**). Thus actual antecedent rainfall amount helps predict whether strong activation occurs, but explains little of the residual allocation of that activity among stops within taxa.
+
+These tests do not exhaust shared environmental forcing. Local hydroperiod, water level, soil moisture, small-scale rainfall heterogeneity and other unmeasured route-night variables remain possible.
+
+### S15.5 Direct species × route-night residual dependence
+
+After the 72-h rainfall common-environment null remained insufficient, a conditional diagnostic was run under a contract fixed before that endpoint was read. It used the stop-specific wet-state probabilities `q` from the strongest measured-environment comparator without refitting them.
+
+For every species × focal wetter route-run, residuals were
+
+`e_ij = y_ij - q_ij`.
+
+The pooled standardized residual-dependence statistic was the sum of within-species unordered stop-pair residual cross-products divided by the corresponding sum of `sqrt[q_ij(1-q_ij) q_ik(1-q_ik)]`. We denote this statistic **D** here. **D is not a Pearson correlation coefficient and is not assumed to be bounded by −1 and 1**; its reference distribution is generated directly by independent Bernoulli draws from the same heterogeneous `q` matrices.
+
+Across **18,769 species × route-night clusters** and **187,690 species × stop cells**:
+
+- observed **D = 0.4159**;
+- independent-Bernoulli null mean = **0.00002**;
+- null 95% interval = **−0.00343 to 0.00343**;
+- upper-tail **P = 0.000999**.
+
+Thus the tested measured weather, historical site use, dry-state persistence and total wet incidence do not make stop outcomes conditionally independent.
+
+A fixed decomposition classified taxa using only the drier member of each pair, avoiding selection on the wetter outcome:
+
+- **dry-route silent** taxa: 8,343 species × route-night clusters, **D = 0.5666**, null 95% interval **−0.00543 to 0.00561**, P = **0.000999**;
+- **dry-route active** taxa: 10,426 clusters, **D = 0.3364**, null 95% interval **−0.00432 to 0.00439**, P = **0.000999**.
+
+The dependence is therefore not merely persistence among taxa already calling in the drier survey. It is especially strong in the dry-route-silent stratum from which acoustically route-new taxa can emerge.
+
+A separate fixed taxonomic-breadth audit retained 40 information-eligible taxa:
+
+- positive D: **40/40 taxa**;
+- median D = **0.4198**, IQR **0.2826–0.7265**;
+- largest positive numerator contribution = **11.7%**;
+- top-five share = **46.5%**;
+- HHI = **0.0579**;
+- leave-one-species-out global D range = **0.3910–0.4408**.
+
+The route-night dependence diagnostic is therefore taxonomically broad. This does not imply a shared lower-level mechanism across taxa.
+
+### S15.6 Monitoring-independence consequence
+
+Because the residual-dependence diagnostic concerns the statistical unit of acoustic observations, we separately tested its effect on uncertainty in a representative stop-level activation regression. The response was wetter-survey calling at species × stop cells that were acoustically zero in the drier member. The coefficient model was held fixed while covariance estimators were changed.
+
+In the pooled model, the same rainfall-contrast coefficient (β = **0.1005**) had:
+
+- model-based IID SE = **0.01365**;
+- species × route-night clustered SE = **0.02470** (**1.81×** IID);
+- route-pair clustered SE = **0.03057** (**2.24×** IID);
+- route clustered across years SE = **0.03676** (**2.69×** IID).
+
+A second analysis repeated the uncertainty comparison within species using fixed information thresholds. All **39** eligible taxa were estimable:
+
+- pair-clustered SE exceeded IID for **38/39 taxa**; median ratio **1.61**, IQR **1.30–1.74**;
+- route-clustered SE exceeded IID for **36/39 taxa**; median ratio **1.48**, IQR **1.24–1.72**.
+
+Thus the uncertainty inflation is not only an artefact of pooling many species. These calculations are **not** a re-fit of a specific published NAAMP occupancy-trend estimator and do not supply a universal correction factor. The earlier exchangeable-design-effect translation from D is retained only as historical diagnostic provenance and is not used as a main inferential quantity because D is not itself a conventional intraclass correlation.
+
 ## S16. Taxonomic and geographic breadth
 
 ### S16.1 Strong activation
@@ -1271,10 +1355,23 @@ Includes:
 
 These tests are protected against retuning after their own readback but remain post-opening relative to the original manuscript.
 
-### S17.3 Descriptive or non-gating diagnostics
+### S17.3 Post-reopening exploratory falsification and diagnostics
+
+The following analyses were conducted only after the original stopping rule was explicitly lifted on 3 October 2026:
+
+- flexible nonlinear route-night common-environment null;
+- species-specific 72-h ERA5 rainfall-amount common-environment null;
+- fixed-q species × route-night residual-dependence diagnostic;
+- drier-state decomposition of that residual dependence;
+- taxonomic breadth of residual dependence;
+- IID versus clustered uncertainty diagnostics.
+
+These analyses were fixed before their own newly defined outputs were read, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree.
+
+### S17.4 Descriptive or non-gating diagnostics
 
 Includes raw recurrence percentages, memory-age diagnostics that failed their prefixed route-count gate, and candidate-mediator analyses without an authorized mechanism classification.
 
-### S17.4 Manuscript-level interpretation
+### S17.5 Manuscript-level interpretation
 
 The integrated paper is therefore a transparent synthesis of frozen and post-freeze evidence. The central biological pattern is stronger than RC11's original boundary-allocation description, but it is not presented as a prospectively preregistered fast-gate × slow-template hypothesis.
