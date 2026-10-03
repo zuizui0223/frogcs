@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "After measured weather, observation conditions, constant species calibration and contemporaneous cross-taxon stop-night hotness are represented, the remaining state is taxon-specific, event-specific and route-spanning but non-uniform. A uniform scalar taxon-night shift overpredicts coherence, while deep k>=4 expression couples more strongly than shallow activation to strictly-prior strong-chorus sites."
+    "post_reopening_refinement": "After measured weather, observation conditions, species calibration and cross-taxon stop-night hotness are represented, the remaining state is taxon-specific, event-specific and route-spanning with modest route-position decay. A uniform scalar taxon-night shift overpredicts coherence, while deep k>=4 expression couples more strongly than shallow activation to strictly-prior strong-chorus sites; that contrast is Monte-Carlo stable across fixed audit seeds."
   },
   "main_text_routing": {
     "keep": [
@@ -468,6 +468,35 @@
       "dry_route_silent_far_lag_7_9": 0.2841809236169251,
       "decision": "residual_species_route_night_structure",
       "interpretation": "Contemporaneous stop-night hotness estimated from other taxa improves column prediction but does not explain target-taxon route-night concentration/dependence."
+    },
+    "near_vs_far_route_dependence_contrast": {
+      "pairs": 2835,
+      "routes": 428,
+      "dry_route_silent_clusters": 8343,
+      "near_lags_1_3": 0.2964329882154847,
+      "far_lags_7_9": 0.27178236785619014,
+      "far_over_near": 0.9168425197624247,
+      "near_minus_far": 0.02465062035929455,
+      "route_cluster_bootstrap_ci95": [
+        0.010056752644785564,
+        0.039780844381982865
+      ],
+      "two_sided_sign_p": 0.005997001499250375,
+      "interpretation": "Dependence spans far route positions but declines modestly with stop-number separation; stop number is topology/survey order, not exact distance."
+    },
+    "deep_vs_shallow_template_alignment_mc_stability": {
+      "authoritative_primary_p": 0.02097902097902098,
+      "batches": 20,
+      "replicates_per_batch": 1000,
+      "fraction_batches_primary_rule_pass": 0.95,
+      "batch_p_range": [
+        0.011988011988011988,
+        0.026973026973026972
+      ],
+      "batch_p_median": 0.01998001998001998,
+      "pooled_descriptive_tail_fraction": 0.01855,
+      "primary_inference_replaced": false,
+      "numerically_stable_by_contract": true
     }
   }
 }
