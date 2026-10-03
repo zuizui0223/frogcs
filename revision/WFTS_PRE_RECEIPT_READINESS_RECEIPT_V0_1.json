@@ -1,0 +1,61 @@
+{
+  "receipt_id": "wfts_pre_receipt_readiness_v0_1",
+  "date": "2026-10-04",
+  "status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY",
+  "biological_outcomes_inspected": false,
+  "internal_pre_receipt_blockers": [],
+  "scientific_rule_setting_complete": true,
+  "byte_lock": {
+    "authority": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
+    "qa_run": 37129985326,
+    "conclusion": "success",
+    "locked_files": 18
+  },
+  "full_chain_synthetic_qa": {
+    "workflow": ".github/workflows/wfts_full_chain_qa.yml",
+    "run": 37130556855,
+    "conclusion": "success",
+    "head_sha": "ea5c2c691c8f9627fde310ae7e9b524537ff882f",
+    "artifact": {
+      "id": 11276592978,
+      "name": "wfts-frozen-full-chain-synthetic-qa",
+      "size_bytes": 7710,
+      "digest": "sha256:c75a464a891e883deffd920be9cd1e728e072231b410810fc378b80753b87a36"
+    },
+    "structural_preflight": {
+      "eligible_complete_runs": 720,
+      "all_matched_pairs": 630,
+      "principal_history_pairs": 540,
+      "principal_routes": 30,
+      "routes_by_fold": {
+        "A": 15,
+        "B": 15
+      },
+      "gate_pass": true
+    },
+    "guards_verified": {
+      "response_blind_preflight": true,
+      "authority_lock_matches": true,
+      "primary_runs_after_preflight_only": true,
+      "secondary_uses_same_preflight_covered_bytes": true,
+      "secondary_primary_classification_unchanged": true,
+      "deep_secondary_cannot_change_primary": true
+    },
+    "synthetic_classifications_have_scientific_meaning": false,
+    "observed_synthetic_primary_classification": "informative_nonreplication_of_half_discovery_effect",
+    "observed_synthetic_deep_secondary_classification": "inconclusive_secondary_template_link"
+  },
+  "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
+  "acquisition_packet": "revision/WFTS_ACQUISITION_PACKET_V0_1.md",
+  "request_template": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md",
+  "open_records_fallback": "revision/WFTS_OPEN_RECORDS_REQUEST_V0_1.md",
+  "next_dependency": "obtain existing station-level WFTS response export plus route/station lineage metadata",
+  "forbidden_before_receipt": [
+    "add new NAAMP mechanism analyses",
+    "change WFTS scientific endpoint/comparator",
+    "change rain windows or thresholds",
+    "change coverage/informativeness gates",
+    "inspect WFTS frog-response outcomes"
+  ],
+  "note": "The synthetic classifications are deliberately not QA gates. This receipt records implementation readiness only, not ecological support or non-support."
+}
