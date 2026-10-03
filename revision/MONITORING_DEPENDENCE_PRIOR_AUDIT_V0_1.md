@@ -45,9 +45,9 @@ Post-reopening NAAMP diagnostics:
 
 - flexible measured common environment removed **11.4%** of the principal concentration residual;
 - actual 72-h rainfall amount removed **6.5%** on a same-sample comparison;
-- standardized residual-dependence statistic **D = 0.416** versus an independent-Bernoulli null centred near zero (P = 0.000999);
-- drier-route-silent taxa: **D = 0.567**;
-- all **40/40** information-eligible taxa had positive specieswise D;
+- repaired bounded residual-dependence coefficient **rho_b = 0.172** overall (P = 0.000999);
+- drier-route-silent taxa: **rho_b = 0.285** (P = 0.000999);
+- all **40/40** information-eligible taxa had positive residual cross-product departures in the historical breadth audit; the unbounded D values themselves are not treated as comparable effect sizes;
 - pair-clustered uncertainty exceeded IID for **38/39** information-eligible species (median ratio **1.61**), and route-clustered uncertainty did so for **36/39** (median **1.48**).
 
 All of these NAAMP extensions are post-hoc/exploratory after the explicit 2026-10-03 reopening. Prospective WFTS confirmation remains separate.
