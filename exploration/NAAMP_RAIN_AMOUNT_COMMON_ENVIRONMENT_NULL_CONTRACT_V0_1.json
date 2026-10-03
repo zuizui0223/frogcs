@@ -1,0 +1,60 @@
+{
+  "analysis": "naamp_rain_amount_common_environment_null_v0_1",
+  "status": "posthoc_second_stage_falsification_fixed_before_within_taxon_rain_amount_endpoint_readback",
+  "provenance": {
+    "reopening_date": "2026-10-03",
+    "previous_result_known": "The flexible DaysSinceRain + temperature + season common-environment null removed 11.4% of the existing residual but remained rejected.",
+    "rain_amount_activation_result_known": "A prior separate analysis showed ERA5 72-h rainfall amount predicts strong acoustic activation beyond DaysSinceRain.",
+    "new_unread_question": "Whether species-specific 72-h rainfall-amount responses reproduce the within-taxon concentration endpoint has not been evaluated before this contract."
+  },
+  "question": "Can species-specific responses to actual antecedent rainfall amount explain the residual within-taxon multi-site concentration?",
+  "population": {
+    "base": "The 2,916-pair strictly-prior physical-site-history subset.",
+    "weather_intersection": "Require valid coordinate/time linkage and ERA5 72-h rainfall amount for both members of the focal pair.",
+    "same_sample_requirement": "Recompute both the existing linear species-response comparator and the new rainfall-amount comparator on exactly this weather-eligible focal subset."
+  },
+  "weather": {
+    "source": "ERA5 hourly total precipitation from the existing audited Earthmover Icechunk source and NAAMP physical SiteID coordinate file.",
+    "primary_exposure": "log(1 + total precipitation mm in the 72 hours ending at the greatest ERA5 hour <= local survey midpoint converted to UTC).",
+    "coordinate_rule": "Mean coordinate of sampled physical SiteIDs for each run.",
+    "time_rule": "Existing audited route-run midpoint and timezone reconstruction."
+  },
+  "crossfit_species_model": {
+    "split": "Existing deterministic SHA256 route fold; each focal route is predicted by the opposite route fold.",
+    "response": "Calling-positive stop count out of 10 for each species x route-run.",
+    "minimum_information": "At least 20 positive stop cells and at least 5 positive routes in the training fold; otherwise common-environment shift is zero.",
+    "terms": [
+      "cubic B-spline log(1 + DaysSinceRain), 4 df",
+      "cubic B-spline log(1 + 72-h rainfall mm), 4 df",
+      "cubic B-spline mean route-run air temperature, 4 df",
+      "annual first and second harmonics",
+      "log(1 + DaysSinceRain) x log(1 + 72-h rainfall mm)",
+      "log(1 + 72-h rainfall mm) x mean temperature",
+      "State fixed effects",
+      "RunNumber fixed effects"
+    ],
+    "family": "Binomial GLM with ridge fallback."
+  },
+  "null_construction": {
+    "site_structure": "Strictly-prior species x physical-SiteID probability plus a=0.75 dry-state persistence.",
+    "environment_shift": "For each species and focal pair, add the cross-fitted predicted wet-run minus dry-run environmental logit shift to every stop.",
+    "magnitude": "Solve one pair-level common logit shift so expected total wet incidence equals observed.",
+    "replicates": 1000,
+    "seed": 2840223,
+    "conditioning": "Condition concentration on simulated route-new-taxon and total extra-stop rainfall coefficients with the existing null-regression residual method."
+  },
+  "comparison": {
+    "baseline": "Re-run the existing cross-fitted linear DaysSinceRain species-response + prior-history + dry-persistence comparator on the same ERA5-eligible focal subset.",
+    "primary_quantity": "Fractional reduction in observed conditional residual from same-sample baseline to rainfall-amount common-environment null."
+  },
+  "decision": {
+    "sufficient": "Observed rainfall-amount-null residual is within its 95% null residual interval.",
+    "insufficient": "Observed residual remains above the rainfall-amount-null upper 95% bound."
+  },
+  "boundaries": [
+    "This is post-hoc exploratory sensitivity, not independent confirmation.",
+    "Rejection does not identify social facilitation or synchronous breeding.",
+    "ERA5 precipitation is not local hydrology; hydroperiod, water level and other shared environmental triggers can remain unmeasured.",
+    "No tuning of 72-h window, spline df, interactions, sample rules, tail or simulation conditioning after endpoint readback."
+  ]
+}
