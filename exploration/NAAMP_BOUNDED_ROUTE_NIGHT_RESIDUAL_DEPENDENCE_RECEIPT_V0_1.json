@@ -1,0 +1,40 @@
+{
+  "analysis": "naamp_bounded_route_night_residual_dependence_v0_1",
+  "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_CONTRACT_V0_1.json",
+  "coverage": {"pairs":2835,"routes":428,"states":20},
+  "interpretation_boundary": {"independent_confirmation":false,"unique_lower_level_mechanism_identified":false},
+  "metric_repair": {
+    "design_effect_translation_withdrawn": true,
+    "effective_stop_count_translation_withdrawn": true,
+    "superseded_unbounded_score_should_not_be_called_correlation": true
+  },
+  "results": {
+    "all": {
+      "clusters":18769,
+      "null_ci95":[-0.002669076296533742,0.002853277727650955],
+      "null_mean":-1.8790332247068144e-06,
+      "plus_one_upper_tail_p":0.000999000999000999,
+      "positive_dependence_supported":true,
+      "rho_bounded":0.17206769596558683
+    },
+    "dry_route_active": {
+      "clusters":10426,
+      "null_ci95":[-0.0031391746664463684,0.0034971281670786955],
+      "null_mean":-7.3936702202720695e-06,
+      "plus_one_upper_tail_p":0.000999000999000999,
+      "positive_dependence_supported":true,
+      "rho_bounded":0.12729974469369246
+    },
+    "dry_route_silent": {
+      "clusters":8343,
+      "null_ci95":[-0.0054097624519672755,0.00564583556781708],
+      "null_mean":9.276545827381833e-06,
+      "plus_one_upper_tail_p":0.000999000999000999,
+      "positive_dependence_supported":true,
+      "rho_bounded":0.28487700425848284
+    }
+  },
+  "status":"posthoc_metric_repair_triggered",
+  "weather_provenance":{"era5_antecedent_amount_sha256":"d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"},
+  "workflow_receipt":{"run_id":37089602740,"computation_completed":true,"validation_completed":true,"original_receipt_push_failed_only_due_to_non_fast_forward_race":true}
+}
