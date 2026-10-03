@@ -1367,7 +1367,9 @@ The following analyses were conducted only after the original stopping rule was 
 - stop-number-lag profile of bounded residual dependence;
 - same-observer bounded-dependence sensitivity;
 - taxonomic breadth of the historical dependence departure;
-- IID versus clustered uncertainty diagnostics, including route-across-years and specieswise comparisons.
+- IID versus clustered uncertainty diagnostics, including route-across-years and specieswise comparisons;
+- an exact-coordinate distance profile retained for provenance but **not interpreted** after geometry-only QC found gross coordinate transcription errors in the pinned source table (`revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md`);
+- an exchangeable-GEE corroboration retained for provenance but **not interpreted** because the full and dry-active fits were numerically degenerate (`revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md`).
 
 These analyses were fixed before their own newly defined outputs were read, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree.
 
