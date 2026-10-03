@@ -1,21 +1,23 @@
-# frogcs — RC4 integrated frog chorus analysis
+# frogcs — RC5 integrated frog chorus analysis
 
 ## Current paper
 
 **Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
 
-Historical frozen release/submission refs:
+Current validated release/submission refs:
 
+- `release/jae-multisite-rc5`
+- `submission/jae-multisite-v5`
+- validated RC5 scientific source: `0dbc3b3724d428763c6176fcff939c0492c651d9`
+- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
+
+Historical RC4 remains preserved at:
 - `release/jae-multisite-rc4`
 - `submission/jae-multisite-v4`
-- validated RC4 scientific source: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
-- release receipt: `submission/RC4_RELEASE_RECEIPT.md`
-
-Current `main` is the **post-RC4 submission candidate** containing the explicitly post-hoc 2026-10-03 refinement and its second closure. A new release ref should be cut only after manuscript QA and the anonymous scientific-bundle pipeline both pass for the same current scientific HEAD.
 
 RC3 and the original RC11 submission remain preserved in their historical release/submission refs; they are not duplicated in this cleaned integration tree.
 
-**Provenance note:** RC4 remains the frozen historical release authority. Current `main` contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-state and historical-template tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
+**Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
 ## Biological result
 
@@ -103,7 +105,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
-- `submission/RC4_RELEASE_RECEIPT.md`
+- `submission/RC5_RELEASE_RECEIPT.md`
 
 Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
 
