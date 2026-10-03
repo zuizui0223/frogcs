@@ -1,0 +1,48 @@
+{
+  "analysis": "naamp_flexible_common_environment_null_v0_1",
+  "status": "posthoc_exploratory_sensitivity_fixed_after_2026_10_03_reopening_before_this_endpoint_readback",
+  "provenance": {
+    "historical_stop_rule_preserved": "exploration/MECHANISM_DECISION_TREE_V0_1.json",
+    "reopening_date": "2026-10-03",
+    "confirmation_status": "This analysis uses the already-explored NAAMP discovery data and is not independent confirmation."
+  },
+  "question": "Can flexible species-specific responses to measured route-night environment reproduce the observed within-taxon multi-site concentration once strictly-prior physical-site history, dry-state persistence and total wet incidence are retained?",
+  "population": "Exactly the 2,916-pair strictly-prior physical-site-history subset used by the principal comparator; coverage must reproduce 439 routes.",
+  "endpoint": "Exactly the existing within-taxon concentration endpoint sum choose(max(k-1,0),2) over acoustically route-new taxa, with the existing conditional residualization on simulated route-new-taxon and extra-stop rainfall coefficients.",
+  "training": {
+    "split": "Existing deterministic SHA256 route fold A/B; every focal route is predicted only by the opposite route fold.",
+    "response": "For each species and route-run, number of calling-positive stops out of 10.",
+    "minimum_information": "At least 20 positive stop cells and at least 5 positive routes in the training fold; otherwise the environmental logit shift is fixed to zero."
+  },
+  "measured_common_environment_model": {
+    "family": "Binomial GLM with ridge fallback if ordinary GLM is unstable.",
+    "terms": [
+      "cubic B-spline of log(1 + DaysSinceRain), 4 df, fixed bounds 0..log(181)",
+      "cubic B-spline of mean route-run air temperature, 4 df, fixed bounds -10..45 C",
+      "annual harmonic sin(DOY), cos(DOY)",
+      "second annual harmonic sin(2*DOY), cos(2*DOY)",
+      "linear interaction log(1 + DaysSinceRain) x mean temperature",
+      "State fixed effects",
+      "RunNumber fixed effects"
+    ],
+    "pair_effect": "For each species, compute cross-fitted predicted logit(wet route-run) minus predicted logit(dry route-run). Add this species-by-pair common environmental shift to every stop-specific anchored probability.",
+    "site_structure": "Retain strictly-prior species x physical-SiteID probability and a=0.75 dry-state persistence exactly as in the principal comparator.",
+    "magnitude": "Solve one pair-level common logit shift so expected total wet incidence equals observed wet incidence."
+  },
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840223,
+    "conditioning": "Use the existing null-regression residual method conditioning concentration on simulated route-new-species and total extra-stop rainfall coefficients."
+  },
+  "interpretation_rules": {
+    "common_environment_supported_as_sufficient": "Observed conditional residual lies within the flexible-null 95% residual interval.",
+    "residual_dependence_beyond_measured_common_environment": "Observed conditional residual exceeds the flexible-null upper 95% residual bound.",
+    "boundary": "Failure of this measured-environment null does not identify social facilitation, synchronous breeding, movement, rainfall causality or a unique mechanism; unmeasured shared environmental variables remain possible."
+  },
+  "comparison": "Report the flexible-null predicted concentration and residual alongside the existing principal linear species-response + prior-history comparator (predicted 1.3535, observed 1.6503, residual 0.2969).",
+  "forbidden_reframing": [
+    "Do not call this confirmatory or preregistered relative to the original discovery endpoint.",
+    "Do not tune spline df, interaction set, information thresholds or simulation conditioning after reading the flexible-null endpoint.",
+    "Do not infer a unique lower-level mechanism from rejection."
+  ]
+}
