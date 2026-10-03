@@ -73,7 +73,8 @@
     "daymet": 36830477471,
     "confirmatory_synthetic": 36830477410,
     "real_data_authority_lock": 37129985326,
-    "full_chain_synthetic": 37130556855
+    "full_chain_synthetic": 37130556855,
+    "fail_closed_guard": 37153969280
   },
   "forbidden_shortcuts": [
     "reconstruct response matrix from annual summaries",
@@ -114,7 +115,8 @@
     "user_action_required_before_data_can_arrive": "send the already-prepared WFTS research-data request or otherwise obtain the existing export; no email has been sent from this repository state",
     "full_chain_synthetic_qa_passed": true,
     "readiness_receipt": "revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json",
-    "status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY"
+    "status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE",
+    "fail_closed_guard_qa_passed": true
   },
   "full_chain_artifact": {
     "id": 11276592978,
@@ -142,5 +144,9 @@
       "status": "currently reverified on Wisconsin DNR Public Records Request page"
     },
     "authority": "revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md"
+  },
+  "fail_closed_guard_artifact": {
+    "id": 11285147541,
+    "digest": "sha256:2160db04a28c11ba404b56c135ffcf7becbc34da00183fabd89f0683580e2e23"
   }
 }
