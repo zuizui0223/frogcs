@@ -48,14 +48,13 @@ This is a conceptual generalization from the NAAMP system, not a universal law o
 
 ## Main text versus Supporting Information
 
-The main paper contains only the inferential spine:
+The main paper is organized around three ecological questions:
 
-1. silence → strong-chorus state switching;
-2. deeper-than-expected multi-site tail (marginal depths 4–10);
-3. principal species-response + prior-site-history comparator;
-4. held-out rain × history sensitivity;
-5. historical species-specific site targeting;
-6. taxonomic/geographic breadth with heterogeneity.
+1. **state change** — amplification versus silence→strong-chorus switching;
+2. **spatial unit** — independent wetland responses versus organized multi-site expression;
+3. **place selection** — uniform route spread versus preferential use of recurrent taxon-specific chorus locations.
+
+The principal comparator, held-out rain × history gate and breadth analyses answer or bound those questions.
 
 Supporting Information contains the defence/falsification layer:
 
@@ -85,6 +84,8 @@ Supporting Information contains the defence/falsification layer:
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
+- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md`
+- `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
