@@ -1,4 +1,4 @@
-# RC4 JAE submission readiness
+# JAE submission readiness — post-RC4 main candidate
 
 ## Current canonical scientific package
 
@@ -24,12 +24,13 @@ Historical manuscript drafts are retained in Git history and frozen release bran
 - [x] numbered English abstract
 - [x] abstract ≤350 words — **312**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] main manuscript below 8,500 words — current whitespace count **7,905**
+- [x] main manuscript below 8,500 words — current whitespace count **7,929**
 - [x] separate Supporting Information
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
-- [x] anonymous scientific submission bundle builds successfully
+- [x] historical RC4 anonymous scientific submission bundle builds successfully
+- [ ] current post-RC4 main candidate scientific bundle — latest pipeline rerun pending after QA-safeguard restoration
 - [ ] final authors/order
 - [ ] final affiliations
 - [ ] corresponding-author details
@@ -56,7 +57,7 @@ Permitted remaining work:
 
 **WFTS is not a submission gate for RC4.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
 
-## RC4 claim safeguards
+## Current claim safeguards
 
 - [x] main inferential spine is restricted to state switching → deep within-taxon multi-site dependence → route-spanning but non-uniform taxon-night state → recurrent species × site template
 - [x] FrogID, RC11 matrix allocation, exact N,K, raw recurrence, route topology and failed mechanism screens are routed to SI
@@ -69,11 +70,13 @@ Permitted remaining work:
 
 ## Release authority
 
-Current:
+Historical frozen release authority:
 - release: `release/jae-multisite-rc4`
 - submission: `submission/jae-multisite-v4`
 - validated scientific source: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
 - release receipt commit: `2b31c7b4363374110c8fb6098a2c0492f2e4c8e0`
+
+Current `main` is a **post-RC4 candidate** containing the explicitly post-hoc extension and subsequent closure. Do not create a new release/submission ref until the current manuscript QA and anonymous scientific-bundle pipeline both pass on the same scientific HEAD.
 
 Previous RC3 remains preserved at:
 - `release/jae-multisite-rc3`
