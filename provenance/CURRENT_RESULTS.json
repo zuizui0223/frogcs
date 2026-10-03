@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "After measured weather, detection conditions and prior site structure, a transferable species-night scalar state reproduces concentration but overpredicts whole-route coherence; the observed deep k>=4 non-uniform expression preferentially aligns with strictly-prior strong-chorus sites under exact-k q conditioning, supporting a fast species-night gate expressed through a distributed slow species x place template."
+    "post_reopening_refinement": "After measured weather, observation conditions, constant species calibration and contemporaneous cross-taxon stop-night hotness are represented, the remaining state is taxon-specific, event-specific and route-spanning but non-uniform. A uniform scalar taxon-night shift overpredicts coherence, while deep k>=4 expression couples more strongly than shallow activation to strictly-prior strong-chorus sites."
   },
   "main_text_routing": {
     "keep": [
@@ -447,6 +447,27 @@
       ],
       "decision": "residual_route_night_dependence_after_species_calibration",
       "interpretation": "Constant species-level marginal calibration error is insufficient."
+    },
+    "loto_stop_night_hotness": {
+      "pairs": 2835,
+      "routes": 428,
+      "target_species_stop_cells": 187690,
+      "fallback_cells_lt3_other_taxa": 10480,
+      "hotness_audit": {
+        "mean_stop_richness_rmse_before": 0.7752160787032109,
+        "mean_stop_richness_rmse_after": 0.5810157811435136,
+        "delta_abs_q95": 1.1441845932874521
+      },
+      "concentration_residual": 0.3181568399323087,
+      "concentration_null_ci95": [
+        -0.13862432730931412,
+        0.12202643146775075
+      ],
+      "concentration_p": 0.000999000999000999,
+      "dry_route_silent_rho_bounded": 0.298511885753885,
+      "dry_route_silent_far_lag_7_9": 0.2841809236169251,
+      "decision": "residual_species_route_night_structure",
+      "interpretation": "Contemporaneous stop-night hotness estimated from other taxa improves column prediction but does not explain target-taxon route-night concentration/dependence."
     }
   }
 }
