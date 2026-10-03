@@ -1,6 +1,6 @@
 {
   "analysis": "frogcs_rc4_current_analysis_specifications",
-  "status": "validated_post_opening_integrated_synthesis_with_posthoc_common_cause_falsification",
+  "status": "validated_rc5_postopening_integrated_synthesis_with_closed_posthoc_refinement",
   "title": "Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization",
   "canonical_files": {
     "manuscript": "paper/manuscript.md",
@@ -17,10 +17,20 @@
     "data_volume_audit": "revision/DATA_VOLUME_AUDIT_2026-10-03.md"
   },
   "release_authority": {
-    "scientific_source_sha": "bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb",
-    "release_ref": "release/jae-multisite-rc4",
-    "submission_ref": "submission/jae-multisite-v4",
-    "release_receipt": "submission/RC4_RELEASE_RECEIPT.md"
+    "scientific_source_sha": "0dbc3b3724d428763c6176fcff939c0492c651d9",
+    "release_ref": "release/jae-multisite-rc5",
+    "submission_ref": "submission/jae-multisite-v5",
+    "release_receipt": "submission/RC5_RELEASE_RECEIPT.md",
+    "manuscript_qa_run": 37128665685,
+    "submission_pipeline_run": 37128665645,
+    "scientific_bundle_artifact_id": 11275981516,
+    "scientific_bundle_digest": "sha256:64d3d1b4fd768d08a33481aa96084b882b6be31aeb550546688ea6e9069169c7",
+    "historical_release": {
+      "release_ref": "release/jae-multisite-rc4",
+      "submission_ref": "submission/jae-multisite-v4",
+      "scientific_source_sha": "bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb",
+      "release_receipt": "submission/RC4_RELEASE_RECEIPT.md"
+    }
   },
   "primary_analysis_chain": [
     {
