@@ -39,14 +39,14 @@ The integrated manuscript uses this only as a secondary check that the concentra
 
 ## General ecological principle
 
-> **Short environmental pulses can reveal a spatial dependence structure that remains hidden during behavioural inactivity and is not recovered from first-order species responses or static site propensities alone.**
+> **Short environmental pulses can reveal a fast behavioural state that is expressed selectively through a recurrent species × place template rather than uniformly across space.**
 
 This distinguishes:
-- **fast gate:** short environmental state;
+- **fast gate:** a taxon-specific route-night activation state;
 - **slow template:** recurrent species × place structure;
-- **dependence layer:** wet-state calling remains concentrated within taxa beyond the tested species/site propensities and total incidence magnitude.
+- **distributed expression:** the deep k≥4 state is spatially selective, retains far-route dependence, and couples more strongly than shallow activation to strictly-prior strong-chorus sites after exact k and fixed-q site propensity are represented.
 
-The strongest surprise is therefore **not how much activity appears, but how a fixed amount of calling is allocated among taxa across sites after first-order expectations are represented**.
+The strongest surprise is therefore **not how much activity appears, but how a fixed amount of calling is allocated within taxa across a persistent spatial template after first-order expectations are represented**.
 
 ## Generality
 
@@ -67,9 +67,11 @@ Correct wording: **broad within-programme support, not spatial invariance.**
 
 The integrated story is post-opening and exploratory.
 
-No unexamined NAAMP partition remains a genuine confirmation dataset. Cross-fitting is protection against training/test leakage for model components, not independent replication of the discovered claim.
+No unexamined NAAMP partition remains a genuine confirmation dataset. Cross-fitting protects component fitting and route-transfer diagnostics from direct route leakage, but is not independent replication.
 
-The next decisive test is a prospectively frozen external replication in another repeated fixed-site frog monitoring network.
+The explicitly reopened NAAMP mechanism-analysis line was closed again on 2026-10-03 under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No new same-data lower-level mechanism family is authorized.
+
+The next decisive test is the prospectively frozen WFTS v0.4 external replication, including the deep-versus-shallow template-coupling prediction.
 
 ## Closest-study audit
 
@@ -79,3 +81,18 @@ Detailed study-by-study comparison:
 ## Current title
 
 **Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+
+
+## Title lock after mechanism refinement
+
+Keep the current title:
+
+**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+
+Do **not** retitle the NAAMP paper around “fast gate”, “latent state”, “template coupling”, “synchrony” or a named lower-level mechanism.
+
+Reason:
+- the title names the robust empirical object supported by the principal comparator;
+- fast-gate × distributed-template structure was refined post hoc after explicit reopening;
+- the current title remains accurate if WFTS later supports, weakens or fails to reproduce the secondary structural prediction;
+- mechanism-level wording is appropriate in the Abstract/Discussion with an explicit exploratory boundary, not as the paper title.
