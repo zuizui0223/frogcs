@@ -13,6 +13,8 @@ Current validated release/submission refs:
 
 RC3 and the original RC11 submission remain preserved in their historical release/submission refs; they are not duplicated in this cleaned integration tree.
 
+**Provenance note:** RC4 remains the frozen historical release authority. Current `main` additionally contains an explicitly post-hoc exploratory extension opened on **2026-10-03** to test common-environment explanations, direct species × route-night residual dependence and monitoring-uncertainty consequences. These additions are not independent confirmation.
+
 ## Biological result
 
 Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions are associated with rapid switching from acoustic silence into strong chorus states. The unusual spatial component is a **deeper-than-expected within-taxon multi-site tail**: marginal depths 4–10 exceed both activation nulls, whereas the second and third stops do not.
@@ -27,6 +29,8 @@ The principal ecological test uses **2,916** pairs with strictly prior physical-
 The conditional residual was **0.2969**, outside the simulated 95% range (**−0.1319 to 0.1187**, plus-one **P = 0.000999**). A stronger held-out rain × history gate still predicted only **1.3323**.
 
 Strong wet-state chorusing also preferentially reappeared at species-specific historically strong sites (**β = 0.1511**), and that targeting strengthened toward the survey closer to rain (**β = 0.02449**).
+
+Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. Under the strongest measured comparator, the standardized residual-dependence statistic was **D = 0.416** (independent-null P = 0.000999), rising to **D = 0.567** among taxa silent across the drier route. D is a residual-dependence diagnostic, not a Pearson correlation coefficient.
 
 ## Main ecological interpretation
 
@@ -61,7 +65,10 @@ Supporting Information contains the defence/falsification layer:
 - FrogID directional consistency;
 - trait/context mechanism screens;
 - activation-geometry placebo falsification;
-- protocol, detection and observer sensitivities.
+- protocol, detection and observer sensitivities;
+- post-reopening flexible-weather and 72-h-rain common-cause falsification;
+- direct species × route-night residual-dependence and dry-state decomposition;
+- specieswise monitoring-uncertainty diagnostics.
 
 ## Current canonical files
 
