@@ -129,7 +129,11 @@
       "script": "scripts/wfts/run_wfts_deep_template_alignment_v0_1.py",
       "qa": ".github/workflows/wfts_deep_template_alignment_qa.yml",
       "status": "prospectively frozen before WFTS frog-response outcome access"
-    }
+    },
+    "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
+    "execution_lock_qa_run": 37129985326,
+    "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
+    "pre_receipt_status": "scientific rules and executable code complete; waiting on external response export and structural lineage metadata only"
   },
   "interpretation_boundaries": {
     "causal_rainfall_claim": false,
