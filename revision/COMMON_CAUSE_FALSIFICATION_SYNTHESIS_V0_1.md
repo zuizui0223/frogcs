@@ -130,7 +130,15 @@ A stronger structural test estimated the dry-route-silent latent distribution in
 
 However, the same scalar state was **too coherent across stops**. It predicted near-lag and far-lag residual dependence of about **0.475** in both cases, whereas the observations were only **0.296** and **0.272**; both observed values lay below the scalar-generator predictive intervals.
 
-This rules out the simplest picture of a whole-route all-or-none species switch. The pattern is instead **route-spanning but spatially non-uniform**: enough species-night state variation exists to generate the heavy within-taxon tail, but its expression is restricted to a subset of sites. Together with historical-site targeting, the parsimonious structural description is a **fast species-night gate acting on a distributed slow species × place template**.
+This rules out the simplest picture of a whole-route all-or-none species switch. The pattern is instead **route-spanning but spatially non-uniform**: enough species-night state variation exists to generate the heavy within-taxon tail, but its expression is restricted to a subset of sites.
+
+### Does the non-uniform deep state align with the historical site template?
+
+A fixed exact-k placement test then linked the two pieces directly. It retained dry-route-silent taxa, fixed each observed wet activation depth k exactly, and used the strongest fixed q values to define the conditional independent-Bernoulli distribution over which k of the ten stops should be active. The only remaining question was whether those active stops overlapped strictly-prior CI2/3 SiteIDs more often than q predicted.
+
+Among **409 deep k ≥ 4 species × route-night clusters**, historical-template alignment increased with rainfall contrast (**β = 0.02659**), above the q-conditioned null 95% interval **−0.01938 to 0.01855** (P = **0.001998**). Mean q-conditioned overlap excess was **0.0760** in deep clusters versus **−0.0108** in shallow k=1–3 clusters; **61.4%** of deep clusters had positive excess. Pooling all **1,247** eligible k ≥ 1 clusters did not pass the same rainfall-coefficient test (P = **0.0579**).
+
+This is the missing direct bridge: the unusual deep tail is not merely non-uniform; its non-uniform placement is preferentially aligned with the taxon's recurrent strong-chorus site template beyond the site propensities already represented in q. The parsimonious structural description is therefore a **fast species-night gate expressed through a distributed slow species × place template**.
 
 ## Biological interpretation now supported
 
