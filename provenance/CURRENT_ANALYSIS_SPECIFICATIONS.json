@@ -245,6 +245,13 @@
         "receipt": "exploration/NAAMP_DEEP_HISTORICAL_TEMPLATE_ALIGNMENT_RECEIPT_V0_1.json",
         "script": "exploration/run_naamp_deep_historical_template_alignment.py",
         "status": "authoritative post-hoc structural-linkage diagnostic: deep k>=4 alignment positive; all k>=1 not supported"
+      },
+      {
+        "role": "direct deep-versus-shallow contrast of historical-template coupling",
+        "contract": "exploration/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_CONTRAST_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_CONTRAST_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_deep_vs_shallow_template_alignment_contrast.py",
+        "status": "explicitly post-hoc direct contrast; positive deep-minus-shallow template coupling"
       }
     ],
     "metric_authority": {
