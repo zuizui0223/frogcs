@@ -36,7 +36,8 @@ Recommended routing:
 - Cc: DNRWFTS@wisconsin.gov
 
 Request authority:
-- `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md`
+- `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_3.md` — concise first contact
+- `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md` — detailed field-level follow-up
 - `revision/WFTS_ACQUISITION_PACKET_V0_1.md`
 
 Tracking fields:
