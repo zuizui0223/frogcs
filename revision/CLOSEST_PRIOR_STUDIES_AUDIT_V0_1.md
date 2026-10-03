@@ -156,7 +156,7 @@ Within NAAMP, both parts are supported post hoc: wet-state calling remains overl
 
 ### General ecological
 
-> Environmental pulses may reveal a **fast state × slow spatial-template coupling**: event-scale behavioural activation can be distributed non-uniformly across recurrent species × place structure even after marginal response and site propensity are represented.
+> Environmental pulses may reveal an **intermediate spatial scale of behavioural organization**: activity can extend across multiple locations without becoming a uniform landscape-wide response, and can preferentially involve recurrent taxon-specific places after marginal response and site propensity are represented.
 
 ## Claims to avoid
 
