@@ -1,0 +1,58 @@
+{
+  "analysis": "naamp_monitoring_independence_impact_v0_1",
+  "contract": "exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_CONTRACT_V0_1.json",
+  "coverage": {
+    "pair_clusters": 2833,
+    "pairs": 2835,
+    "risk_set_species_stop_cells": 146082,
+    "routes": 428,
+    "species": 53,
+    "species_pair_clusters": 18149
+  },
+  "interpretation": {
+    "exact_effect_on_published_occupancy_trend_estimator": false,
+    "general_all_monitoring_models_claim": false,
+    "independent_confirmation": false,
+    "route_pair_clustering_increases_se": true,
+    "species_route_night_clustering_increases_se": true
+  },
+  "model": {
+    "converged": true,
+    "formula": "wet_activation ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber) + C(species)",
+    "rain_contrast_beta": 0.10048426542742779
+  },
+  "status": "posthoc_diagnostic_triggered",
+  "uncertainty": {
+    "iid_model_based": {
+      "beta": 0.10048426542742779,
+      "ci95": [
+        0.0737249394573525,
+        0.12724359139750308
+      ],
+      "se": 0.01365296820816578
+    },
+    "iid_to_route_pair_information_ratio_heuristic": 0.19952123602567237,
+    "iid_to_species_cluster_information_ratio_heuristic": 0.3056190418067567,
+    "route_pair_clustered": {
+      "beta": 0.10048426542742779,
+      "ci95": [
+        0.04057684677872978,
+        0.1603916840761258
+      ],
+      "se": 0.030565571164184693
+    },
+    "route_pair_se_inflation_ratio": 2.2387491641490502,
+    "species_route_night_clustered": {
+      "beta": 0.10048426542742779,
+      "ci95": [
+        0.052079851616492936,
+        0.14888867923836263
+      ],
+      "se": 0.024696583300888534
+    },
+    "species_route_night_se_inflation_ratio": 1.8088801588300496
+  },
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
