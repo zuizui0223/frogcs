@@ -15,7 +15,7 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 ## Biological result
 
-Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions are associated with rapid switching from acoustic silence into strong chorus states. The unusual spatial component begins at third-and-later sites within recruited taxa.
+Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions are associated with rapid switching from acoustic silence into strong chorus states. The unusual spatial component is a **deeper-than-expected within-taxon multi-site tail**: marginal depths 4–10 exceed both activation nulls, whereas the second and third stops do not.
 
 The principal ecological test uses **2,916** pairs with strictly prior physical-site history. Observed within-taxon concentration was **1.6503** versus **1.3535** under a comparator that already contained:
 
@@ -45,7 +45,7 @@ This is a conceptual generalization from the NAAMP system, not a universal law.
 The main paper contains only the inferential spine:
 
 1. silence → strong-chorus state switching;
-2. third-and-later multi-site depth;
+2. deeper-than-expected multi-site tail (marginal depths 4–10);
 3. principal species-response + prior-site-history comparator;
 4. held-out rain × history sensitivity;
 5. historical species-specific site targeting;
