@@ -1,0 +1,108 @@
+{
+  "analysis": "naamp_route_night_residual_distance_profile_v0_1",
+  "contract": "exploration/NAAMP_ROUTE_NIGHT_RESIDUAL_DISTANCE_PROFILE_CONTRACT_V0_1.json",
+  "coverage": {
+    "coordinate_known_fraction": 0.9993650793650793,
+    "coordinate_known_stop_pair_instances": 127494,
+    "pairs": 2835,
+    "possible_stop_pair_instances": 127575,
+    "routes": 428
+  },
+  "decision": {
+    "broad_spatial_dependence_supported": true
+  },
+  "distance_bins": {
+    "Q1": {
+      "D": 0.5019255958372336,
+      "above_upper_95": true,
+      "distance_median_km": 1.5146346447756232,
+      "distance_range_km": [
+        0.0,
+        2.4812165540606563
+      ],
+      "estimable": true,
+      "geometry_pair_instances": 31868,
+      "null_ci95": [
+        -0.007394905587619534,
+        0.007202885045444724
+      ],
+      "null_mean": 4.298238758650219e-05,
+      "plus_one_upper_tail_p": 0.000999000999000999
+    },
+    "Q2": {
+      "D": 0.43756966029002736,
+      "above_upper_95": true,
+      "distance_median_km": 3.56855229529978,
+      "distance_range_km": [
+        2.4813575350969286,
+        4.756592835598498
+      ],
+      "estimable": true,
+      "geometry_pair_instances": 31877,
+      "null_ci95": [
+        -0.0069533812318488914,
+        0.006644064090055267
+      ],
+      "null_mean": 7.6299683351905e-05,
+      "plus_one_upper_tail_p": 0.000999000999000999
+    },
+    "Q3": {
+      "D": 0.38604234510728214,
+      "above_upper_95": true,
+      "distance_median_km": 6.257547072457639,
+      "distance_range_km": [
+        4.7567992234011545,
+        8.272006387603684
+      ],
+      "estimable": true,
+      "geometry_pair_instances": 31875,
+      "null_ci95": [
+        -0.006460330343939223,
+        0.006088474560372799
+      ],
+      "null_mean": -0.00010666604957413558,
+      "plus_one_upper_tail_p": 0.000999000999000999
+    },
+    "Q4": {
+      "D": 0.3398138612068977,
+      "above_upper_95": true,
+      "distance_median_km": 11.006857231373594,
+      "distance_range_km": [
+        8.272459362470883,
+        12498.242561688065
+      ],
+      "estimable": true,
+      "geometry_pair_instances": 31874,
+      "null_ci95": [
+        -0.0064652261733212325,
+        0.006875655178909042
+      ],
+      "null_mean": -5.156558549387541e-06,
+      "plus_one_upper_tail_p": 0.000999000999000999
+    }
+  },
+  "farthest_to_nearest_D_ratio": 0.6770203871354149,
+  "geometry": {
+    "overall_distance_median_km": 4.7567992234011545,
+    "overall_distance_range_km": [
+      0.0,
+      12498.242561688065
+    ],
+    "quartile_cut_km": [
+      2.4813575350969286,
+      4.7567992234011545,
+      8.272346118754083
+    ]
+  },
+  "interpretation_boundary": {
+    "broad_environmental_forcing_excluded": false,
+    "independent_confirmation": false,
+    "literal_simultaneity_inferred": false,
+    "local_social_facilitation_excluded": false,
+    "shared_hydrology_excluded": false
+  },
+  "status": "posthoc_distance_profile_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
