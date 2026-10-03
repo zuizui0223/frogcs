@@ -38,7 +38,7 @@ Post-reopening falsification showed that flexible measured weather removed only 
 
 The public NAAMP source release contains **21,934 run rows**, **219,340 stop rows** and **337,848 positive calling records**. Current filters retain **7,848 standardized survey nights** and **78,480 fixed-stop visits**.
 
-The 4,236 wetter–drier comparisons are built from **6,075 unique nights**, **60,750 fixed-stop visits** and **88,743 positive species × stop calling records** across the 53 paired-analysis taxa.
+The 4,236 wetter–drier comparisons are built from **6,074 unique nights**, **60,740 fixed-stop visits** and **88,737 positive species × stop calling records** across the 53 paired-analysis taxa.
 
 Rain exposure is much lower-dimensional than the frog response:
 - primary NAAMP `DaysSinceRain`: one value per eligible survey night;
