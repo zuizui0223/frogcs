@@ -10,7 +10,7 @@
 
 4. **Recruited taxa showed excess within-taxon multi-site concentration.** Marginal fourth–tenth stops, not the second or third, exceeded both activation nulls, and CallingIndex 2–3 carried 97.3% of deep spread. In the prior-history subset, observed concentration was 1.650 versus 1.353 under the principal comparator (residual 0.297; P = 0.000999). The held-out rain × history gate also underpredicted it; post-hoc tests explained little. A bounded residual-dependence coefficient was 0.285 among taxa silent across the drier route, and remained 0.272 for far stop-number lags 7–9 (both P = 0.000999).
 
-5. **The deep response was historically placed rather than arbitrary.** Prior strong-chorus sites predicted wet-state strong chorusing (β = 0.151, 0.129–0.173). In a post-hoc exact-k test, historical-template coupling was stronger for deep k ≥ 4 than shallow k = 1–3 activation (Δβ = 0.0297, P = 0.021). The resulting **pulse-revealed dependence structure** is consistent with a fast species-night gate expressed through a distributed recurrent species × place template. This synthesis remains exploratory and awaits independent external confirmation.
+5. **The multi-site response was recurrent and statistically consequential.** Prior strong-chorus sites predicted wet-state strong chorusing (β = 0.151, 0.129–0.173). In specieswise monitoring diagnostics, pair-clustered standard errors exceeded IID values in 38/39 eligible taxa (median **1.61-fold**), while pooled route clustering increased the rainfall-effect SE **2.69-fold**. The resulting **pulse-revealed dependence structure** implies that ten route stops need not provide ten independent acoustic-state observations. The mechanistic synthesis remains exploratory and awaits independent external confirmation.
 
 ## Keywords
 
@@ -135,7 +135,7 @@ Each specification and PASS/FAIL rule in the original mechanism sequence was ver
 
 ### Post-hoc common-environment and conditional-dependence diagnostics
 
-After explicit reopening, two route-cross-fitted common-environment generators were tested: flexible nonlinear rain recency, temperature and season, then a model adding species-specific response to 72-h ERA5 precipitation. Both retained prior SiteID history, dry persistence and incidence matching. Under the stronger generator we tested residual stop dependence within species × route-night. A stop-level activation GLM then compared independent-cell with clustered covariance. To localize non-uniform deep expression, we conditioned each dry-route-silent species × night exactly on observed k and fixed q, compared overlap with strictly-prior CI2/3 SiteIDs against the exact conditional subset distribution, and fixed the k ≥ 4 versus k = 1–3 contrast. Full specifications are in Supporting Information; all are post-hoc diagnostics.
+After explicit reopening, post-hoc diagnostics added nonlinear measured weather, 72-h ERA5 precipitation and conditional species × route-night dependence to the fixed history/persistence comparator. For template placement, each dry-route-silent species × night was conditioned exactly on observed k and fixed q; overlap with strictly-prior CI2/3 SiteIDs was compared with the exact conditional subset distribution, with k ≥ 4 versus k = 1–3 fixed in advance of that contrast. Full specifications are in Supporting Information.
 
 ### Detection, physical-site and protocol robustness
 
@@ -191,7 +191,7 @@ The principal ecological comparator retained taxon-specific rainfall response an
 
 Flexible nonlinear rain recency, temperature and season removed 11.4% of the concentration residual (P = 0.000999). Although 72-h ERA5 rainfall predicted strong new-chorus activation (β = 0.741, 95% CI 0.386–1.097), adding rainfall amount reduced the same-sample residual only 6.5% (P = 0.000999). Recorded acoustic conditions, cross-fitted species calibration and leave-one-taxon-out contemporaneous stop hotness likewise left the residual intact (Supporting Information).
 
-The original residual score was unbounded, so we repeated the test with a bounded residual-pair coefficient: **0.172** overall and **0.285** among dry-route-silent taxa (both P = 0.000999). In that silent stratum, dependence declined modestly from **0.296** at lags 1–3 to **0.272** at lags 7–9 (far/near = **0.917**; route-bootstrap Δ = **0.0247**, 95% CI 0.0101–0.0398); same-observer pairs retained **0.276**. A route-cross-fitted scalar species-night state reproduced the concentration endpoint but overpredicted both near and far dependence (~**0.475**), excluding a simple uniform all-stop switch. Pair-clustered SE exceeded IID in 38/39 eligible species (median **1.61-fold**); route-clustered SE did so in 36/39 (median **1.48-fold**).
+A bounded residual-pair coefficient remained positive overall (**0.172**) and was stronger among dry-route-silent taxa (**0.285**; both P = 0.000999). In that stratum it declined only modestly from lags 1–3 (**0.296**) to 7–9 (**0.272**; route-bootstrap near−far = **0.0247**, 95% CI 0.0101–0.0398). A cross-fitted uniform species-night shift reproduced concentration but overpredicted spatial dependence (~**0.475**), ruling out a simple all-stop switch. Specieswise pair-clustered SE exceeded IID in 38/39 taxa (median **1.61-fold**).
 
 ### Strong wet-state activity preferentially reappears at historically used physical sites
 
@@ -199,7 +199,7 @@ Within the same focal pair and species, a SiteID where that species had previous
 
 Historical recurrence was also selectively stronger on the rain-favoured side of the pair: increasing target rain advantage increased the CI3 targeting contrast between recurrent and non-recurrent cells (β = 0.0245, 95% CI 0.0070–0.0420; same-observer β = 0.0307).
 
-A post-hoc exact-k placement test linked this template specifically to the deep tail. Among **409** dry-route-silent species × nights with k ≥ 4, placement at prior CI2/3 SiteIDs exceeded the fixed-q expectation while holding k exactly (β = **0.0266**, P = **0.0020**). The direct deep-versus-shallow coefficient contrast was also positive (**Δβ = 0.0297**, null 95% interval −0.0253 to 0.0289; P = **0.0210**).
+A post-hoc exact-k placement test linked the template to the deep tail. Among **409** dry-route-silent species × nights with k ≥ 4, prior CI2/3 SiteIDs were used more than fixed q predicted while holding k exactly (β = **0.0266**, P = **0.0020**); the direct deep-versus-shallow contrast was also positive (**Δβ = 0.0297**, P = **0.0210**; Supporting Information).
 
 ### Within-taxon concentration is taxonomically diffuse but geographically heterogeneous
 
@@ -249,7 +249,7 @@ This extends general pulse ecology (Yang et al., 2008; Holt, 2008) from asking h
 
 Measured weather, recorded acoustic conditions and cross-taxon stop-night hotness explained little of the allocation residual. The remaining structure is **taxon-specific, route-spanning but non-uniform**: far-lag dependence retained 91.7% of the near-lag value despite a detectable route-position decline, while a transferable scalar species-night shift made all ten stops too coherent. Crucially, the observed deep k ≥ 4 subsets were preferentially drawn from historically strong SiteIDs even after exact k and fixed q site propensities were conditioned away. The parsimonious structural description is therefore a **fast species-night gate expressed through a distributed slow species × place template**, not a uniform whole-route switch. Unmeasured hydrology, breeding readiness, demographic availability and social processes remain possible lower-level generators.
 
-This also matters for monitoring. NAAMP occupancy work treated stops as spatial replicates and warned that route nesting could affect trend precision (Weir et al., 2009); correlated-replicate models address this problem (Hines et al., 2014). Pooled route clustering raised the rainfall-effect SE **2.69-fold**; specieswise clustered SE exceeded IID in 38/39 taxa by pair (median 1.61-fold) and 36/39 by route (1.48-fold). These are not published occupancy-trend reanalyses, but show that ten stops need not yield ten independent acoustic-state observations.
+This also matters for monitoring. NAAMP occupancy work treated stops as spatial replicates while noting that route nesting could affect precision (Weir et al., 2009), a problem addressed by correlated-replicate models (Hines et al., 2014). Here, pooled route clustering raised the rainfall-effect SE **2.69-fold**, and pair-clustered SE exceeded IID in 38/39 taxa (median **1.61-fold**). This is not a reanalysis of published occupancy trends, but shows that ten stops need not yield ten independent acoustic-state observations.
 
 ### Broad within-programme support does not mean uniformity
 
