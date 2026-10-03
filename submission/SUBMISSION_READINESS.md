@@ -22,9 +22,9 @@ Historical manuscript drafts are retained in Git history and frozen release bran
 - [x] Research Article target
 - [x] anonymized main-manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words — **325**
+- [x] abstract ≤350 words — **312**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] main manuscript below 8,500 words — approximately **7,749**
+- [x] main manuscript below 8,500 words — current whitespace count **7,905**
 - [x] separate Supporting Information
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
@@ -43,19 +43,22 @@ Historical manuscript drafts are retained in Git history and frozen release bran
 
 ## Scientific stop
 
-No further same-data mechanism search is authorized for RC4.
+The original same-data stop was explicitly reopened on **2026-10-03** for a finite post-hoc falsification chain and is now **closed again** under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`.
+
+No new NAAMP lower-level mechanism family or outcome-driven retuning is authorized.
 
 Permitted remaining work:
-- non-substantive copy-editing;
-- private human metadata completion;
+- correction of demonstrable bugs, with affected claims re-audited if endpoints change;
+- deterministic reproducibility and previously frozen numerical/implementation QA;
+- non-substantive copy-editing, figures and metadata;
 - archive/license/DOI finalization;
-- prospective WFTS execution only after its response-blind eligibility gate passes.
+- prospective WFTS execution under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`.
 
 **WFTS is not a submission gate for RC4.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
 
 ## RC4 claim safeguards
 
-- [x] main inferential spine is restricted to state switching → within-taxon multi-site dependence → recurrent species × site placement
+- [x] main inferential spine is restricted to state switching → deep within-taxon multi-site dependence → route-spanning but non-uniform taxon-night state → recurrent species × site template
 - [x] FrogID, RC11 matrix allocation, exact N,K, raw recurrence, route topology and failed mechanism screens are routed to SI
 - [x] principal comparator contains cross-fit species response + strictly-prior physical-site history + dry persistence + magnitude matching
 - [x] title/public framing uses within-taxon multi-site organization / dependence structure, not higher-order interaction terminology
@@ -110,8 +113,10 @@ WFTS real-data authority:
 - `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`
 - `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md`
 - `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`
+- `revision/WFTS_PROSPECTIVE_DEEP_TEMPLATE_ALIGNMENT_V0_1.json`
+- `scripts/wfts/run_wfts_deep_template_alignment_v0_1.py`
 
-No WFTS response outcome was inspected to create the current support/informative/inconclusive rule.
+The v0.4 authority leaves the primary replication unchanged and prospectively adds the NAAMP-derived secondary prediction that exact-k historical-template coupling is stronger for deep k≥4 than shallow k=1–3 activation. Synthetic QA for that secondary path has passed. No WFTS frog-response outcome was inspected to create or test these rules.
 
 ## Revision-stage note
 
