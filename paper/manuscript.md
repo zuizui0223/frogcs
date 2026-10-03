@@ -213,7 +213,7 @@ The appropriate interpretation is therefore **broad programme-scale robustness w
 
 ## Discussion
 
-Across 15 years of standardized surveys, recent-rain conditions were associated with a change in the **dependence structure** of frog chorus activity, not only its amount. Previously silent species × site cells often entered directly into overlapping or full chorus states. Once recruited, the same taxa appeared strongly across multiple separated route stops, and their multi-site concentration remained greater than predicted after species-specific rainfall sensitivity, strictly prior species × SiteID history and dry-state persistence were represented. Those strong wet-state choruses also preferentially reappeared at physical sites where the same taxa had chorused strongly before. The central ecological result is therefore **pulse-revealed, distributed within-taxon multi-site organization on a recurrent species × site chorus template**.
+Across 15 years of standardized surveys, recent-rain conditions were associated with a change in the **dependence structure** of frog chorus activity, not only its amount. Previously silent species × site cells often entered directly into overlapping or full chorus states. Once recruited, the same taxa appeared strongly across multiple separated route stops, and their multi-site concentration remained greater than predicted after species-specific rainfall sensitivity, strictly prior species × SiteID history and dry-state persistence were represented. Those strong wet-state choruses also preferentially reappeared at physical sites where the same taxa had chorused strongly before. The central ecological result is therefore that **frog reproductive acoustic activity is organized across separated sites, but not uniformly: the same taxa repeatedly express strong chorus at a recurrent subset of route locations**.
 
 ### Rainfall is associated with chorus-state switching, not simply greater audibility
 
@@ -237,7 +237,7 @@ We deliberately avoid interpreting this as individual memory or philopatry. Repe
 
 The directional rain-selective analysis adds the temporal gate. Historical-site targeting was stronger toward the survey closer to rain after recurrent and non-recurrent opportunities were normalized within each direction. Thus the pattern is not merely that good sites are always good. Recent-rain conditions are associated with preferential expression of activity at historically strong species × site combinations.
 
-### Environmental pulses can reveal within-taxon multi-site organization
+### Environmental pulses reveal an intermediate spatial scale of chorus organization
 
 The frog system suggests a distinction between **creating ecological structure** and **revealing structure that is behaviourally hidden**. Inactive censuses can obscure recurrent species × place relationships; a short pulse can expose them faster than dispersal or demographic turnover could create them. The conceptual object is therefore a **dependence structure in joint species × place activity**, not another change in mean activity.
 
