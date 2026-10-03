@@ -36,6 +36,21 @@ Everything else either establishes one step in that claim, limits it, or defends
 
 The data support this as a frog-system principle and testable ecological hypothesis, not as a universal law.
 
+### A2. Post-reopening interpretation refinements
+
+These analyses were conducted only after the original same-data stopping rule was explicitly lifted on 3 October 2026. They are post-hoc/exploratory with respect to the NAAMP discovery and are **not** independent confirmation.
+
+| Evidence | Result | Strongest authorized claim | Role |
+|---|---|---|---|
+| Flexible common-environment null | nonlinear rain recency + temperature + season removed **11.4%** of principal residual; remaining P=0.000999 | measured nonlinear route-night weather explains only a small part of concentration | post-hoc common-cause falsification |
+| Actual 72-h rainfall null | on 2,835 same-sample pairs, residual **0.318 → 0.297** (**6.5%** removed); P=0.000999 | actual antecedent rainfall amount predicts activation but does not reproduce multi-site allocation | post-hoc common-cause falsification |
+| Direct route-night residual dependence | standardized residual-dependence **D=0.416**; independent null −0.0034–0.0034; P=0.000999 | stop outcomes remain non-independent within species × route-night after the strongest measured comparator | scale-of-dependence diagnostic |
+| Dry-state decomposition | dry-route-silent **D=0.567** vs dry-route-active **D=0.336**, both P=0.000999 | residual dependence directly occurs in the pre-wet stratum that can generate acoustically route-new taxa | linkage to principal endpoint |
+| Residual-dependence breadth | **40/40** eligible taxa positive; median D=0.420; top1 positive share 11.7%; all leave-one-species-out D >0 | route-night dependence is taxonomically broad, not a one-species artefact | breadth defence |
+| Monitoring uncertainty | pair-cluster SE > IID in **38/39** species (median 1.61×); route-cluster SE > IID in **36/39** (median 1.48×) | ten route stops need not provide ten independent pieces of acoustic-state information | applied implication, not occupancy-trend reanalysis |
+
+**Terminology rule:** D is a standardized residual-dependence statistic, not a Pearson correlation coefficient and not a universal ICC. Do not convert it into an exact effective sample size in the main paper.
+
 ---
 
 ## B. Why the result is surprising
@@ -178,9 +193,11 @@ Response:
 
 ### “Why not claim a specific mechanism?”
 Response:
-- nested null sequence stopped after final gate;
-- candidate trait/mechanism families failed or were non-estimable;
-- the original same-data stop rule was lifted on 2026-10-03 for targeted common-cause falsification; any resulting NAAMP mechanism analyses are post-hoc/exploratory and do not alter the confirmation status of the integrated result.
+- nested null sequence originally stopped after the final gate;
+- after explicit reopening, flexible measured weather and actual 72-h rainfall explained only small fractions of the concentration residual;
+- residual dependence remains broad within species × route-night, especially among dry-route-silent taxa;
+- unmeasured hydrology, breeding readiness, demographic availability and social facilitation remain distinguishable alternatives;
+- all post-reopening NAAMP analyses remain post-hoc/exploratory and do not alter the confirmation status of the integrated result.
 
 ---
 
@@ -220,9 +237,11 @@ This is stronger than “fast gate × slow template” alone because it identifi
 4. Principal joint species+site-history comparator.
 5. Held-out rain×history gate, briefly.
 6. Historical site targeting and rain selectivity.
-7. Taxonomic/geographic breadth with heterogeneity.
-8. One explicit conceptual synthesis: **pulse-revealed spatial dependence**.
-9. Exploration status and need for prospective external confirmation.
+7. Post-hoc measured-common-cause falsification and direct route-night residual dependence, compactly.
+8. Monitoring implication from clustered uncertainty, with the occupancy-reanalysis boundary.
+9. Taxonomic/geographic breadth with heterogeneity.
+10. One explicit conceptual synthesis: **pulse-revealed spatial dependence**.
+11. Exploration status and need for prospective external confirmation.
 
 ### Move or keep in SI
 
