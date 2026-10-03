@@ -1,0 +1,23 @@
+{
+  "analysis": "naamp_bounded_route_night_same_observer_sensitivity_v0_1",
+  "status": "posthoc_detection_sensitivity_fixed_before_same_observer_bounded_readback",
+  "question": "Does the repaired bounded species-by-route-night residual dependence persist when wetter and drier surveys were conducted by the same observer at the same ten physical SiteIDs?",
+  "population": "Start from the 2,835 ERA5-eligible strictly-prior-history pairs. Strictly-prior-history eligibility already requires identical wet/dry physical SiteIDs at all ten stops. Further require nonmissing ObserverTrackingID and identical observer in the two focal runs.",
+  "prediction": "Use the same route-cross-fitted 72-h-rainfall common-environment model and prior-history q construction as the full repaired diagnostic; do not refit the endpoint or tune the model to the same-observer subset.",
+  "endpoints": [
+    "bounded residual-dependence coefficient across all fixed-support species x route-night clusters",
+    "bounded coefficient among species acoustically silent across the entire drier route"
+  ],
+  "null": {
+    "generator": "Independent Bernoulli draws from the fixed q matrices.",
+    "replicates": 1000,
+    "seed": 2840229,
+    "tail": "upper",
+    "support_rule": "Observed bounded coefficient exceeds null upper 95% quantile and plus-one P < 0.05."
+  },
+  "interpretation": {
+    "positive": "Observer turnover is not required for the residual route-night dependence.",
+    "boundary": "Same-observer sensitivity does not remove within-observer perceptual errors, unmeasured environmental common causes, or identify a biological mechanism."
+  },
+  "provenance": "No subset rule, metric, q model, seed, tail or support criterion may change after readback."
+}
