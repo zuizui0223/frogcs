@@ -137,6 +137,9 @@ Important boundaries:
 - after the primary result is frozen, a separately frozen secondary sequence tests Daymet common-environment sufficiency, bounded route-night dependence, far-lag persistence and clustered uncertainty under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;
 - secondary results cannot rescue, downgrade or retune the primary WFTS classification.
 - v0.4 additionally freezes exact-k deep historical-template alignment and the deep-versus-shallow coupling contrast before WFTS frog outcomes.
+- the authorized real-data files are byte-locked by `revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json`; lock QA run **37129985326** passed.
+- the receipt → schema-only → mapping freeze → weather → structural preflight → primary → secondary execution order is fixed in `revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md`.
+- there are currently **no internal pre-receipt scientific or implementation blockers**; the remaining dependency is acquisition of the existing station-level WFTS export plus route/station lineage metadata.
 
 A non-PASS is classified prospectively as either:
 
