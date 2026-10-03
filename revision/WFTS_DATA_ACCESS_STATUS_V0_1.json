@@ -52,7 +52,7 @@
     "routes_run_2022": 139,
     "interpretation": "strongly suggests coverage feasibility but does not substitute for response-blind preflight"
   },
-  "next_external_dependency": "obtain the existing WFTS station-level historical response export plus route/station lineage metadata; no further scientific rule-setting is authorized before receipt",
+  "next_external_dependency": "send/otherwise initiate the direct request to Andrew Badje for the existing station-level WFTS response export plus route/station lineage metadata, or obtain those files by another authorized route",
   "primary_request": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md",
   "access_audit": "revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_2.md",
   "receipt_protocol": "revision/WFTS_RECEIPT_AND_PREFLIGHT_PROTOCOL_V0_1.md",
@@ -119,5 +119,28 @@
   "full_chain_artifact": {
     "id": 11276592978,
     "digest": "sha256:c75a464a891e883deffd920be9cd1e728e072231b410810fc378b80753b87a36"
+  },
+  "contact_verification": {
+    "reverified_date": "2026-10-04",
+    "direct_recipient": {
+      "name": "Andrew Badje",
+      "email": "Andrew.Badje@wisconsin.gov",
+      "phone": "715-921-5886",
+      "source": "Wisconsin DNR WFTS release dated 2026-03-26",
+      "status": "currently reverified"
+    },
+    "historical_programme_aliases": {
+      "addresses": [
+        "WFTS@wisconsin.gov",
+        "DNRWFTS@wisconsin.gov"
+      ],
+      "status": "optional CC only; not required routing after 2026-10-04 reverification"
+    },
+    "open_records": {
+      "email": "DNRRecordsResponse@wisconsin.gov",
+      "phone": "608-266-2177",
+      "status": "currently reverified on Wisconsin DNR Public Records Request page"
+    },
+    "authority": "revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md"
   }
 }
