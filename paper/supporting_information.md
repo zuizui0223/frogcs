@@ -1201,40 +1201,41 @@ These tests do not exhaust shared environmental forcing. Local hydroperiod, wate
 
 ### S15.5 Direct species × route-night residual dependence
 
-After the 72-h rainfall common-environment null remained insufficient, a conditional diagnostic was run under a contract fixed before that endpoint was read. It used the stop-specific wet-state probabilities `q` from the strongest measured-environment comparator without refitting them.
-
-For every species × focal wetter route-run, residuals were
+After the 72-h rainfall common-environment null remained insufficient, a conditional diagnostic was run using the fixed stop-specific wet-state probabilities `q` from that comparator. For every species × focal wetter route-run,
 
 `e_ij = y_ij - q_ij`.
 
-The pooled standardized residual-dependence statistic was the sum of within-species unordered stop-pair residual cross-products divided by the corresponding sum of `sqrt[q_ij(1-q_ij) q_ik(1-q_ik)]`. We denote this statistic **D** here. **D is not a Pearson correlation coefficient and is not assumed to be bounded by −1 and 1**; its reference distribution is generated directly by independent Bernoulli draws from the same heterogeneous `q` matrices.
+The first diagnostic normalized summed within-species stop-pair residual products by the corresponding Bernoulli standard deviations. It strongly rejected independent Bernoulli outcomes (**D = 0.4159**, null 95% interval **−0.00343 to 0.00343**, P = **0.000999**), but a subsequent audit showed that D is not bounded by ±1 at species level. D is therefore retained only as the historical standardized **dependence score** used for its original null test; it is not interpreted as a correlation coefficient, ICC or input to an effective-sample-size formula.
 
-Across **18,769 species × route-night clusters** and **187,690 species × stop cells**:
+We consequently fixed a bounded residual co-dependence coefficient before inspecting its value:
 
-- observed **D = 0.4159**;
-- independent-Bernoulli null mean = **0.00002**;
-- null 95% interval = **−0.00343 to 0.00343**;
-- upper-tail **P = 0.000999**.
+`rho_b = 2 Σ_c Σ_{j<k} e_cj e_ck / [9 Σ_c Σ_j e_cj^2]`.
 
-Thus the tested measured weather, historical site use, dry-state persistence and total wet incidence do not make stop outcomes conditionally independent.
+For ten-stop clusters this coefficient is bounded between −1/9 and 1. Independent-Bernoulli reference distributions were generated from the same heterogeneous fixed `q` matrices. Across **18,769 species × route-night clusters**:
 
-A fixed decomposition classified taxa using only the drier member of each pair, avoiding selection on the wetter outcome:
+- all fixed-support clusters: **rho_b = 0.1721**, null 95% interval **−0.00267 to 0.00285**, P = **0.000999**;
+- taxa acoustically active somewhere on the drier route: **rho_b = 0.1273**, null 95% interval **−0.00314 to 0.00350**, P = **0.000999**;
+- taxa acoustically silent across the entire drier route: **rho_b = 0.2849**, null 95% interval **−0.00541 to 0.00565**, P = **0.000999**.
 
-- **dry-route silent** taxa: 8,343 species × route-night clusters, **D = 0.5666**, null 95% interval **−0.00543 to 0.00561**, P = **0.000999**;
-- **dry-route active** taxa: 10,426 clusters, **D = 0.3364**, null 95% interval **−0.00432 to 0.00439**, P = **0.000999**.
+The drier-state classification uses only the drier member and therefore does not select taxa according to their wetter-survey outcome. Positive dependence is strongest in the pre-wet, dry-route-silent stratum from which acoustically route-new taxa can subsequently emerge.
 
-The dependence is therefore not merely persistence among taxa already calling in the drier survey. It is especially strong in the dry-route-silent stratum from which acoustically route-new taxa can emerge.
+We next fixed a stop-number-lag profile using the same residuals and `q` matrices. Stop number is route topology rather than exact geographic distance, but it distinguishes adjacent from widely separated route positions. Among dry-route-silent taxa:
 
-A separate fixed taxonomic-breadth audit retained 40 information-eligible taxa:
+- pooled lags 1–3: **rho_lag = 0.2964**, null 95% interval **−0.00717 to 0.00722**, P = **0.000999**;
+- pooled lags 7–9: **rho_lag = 0.2718**, null 95% interval **−0.01418 to 0.01433**, P = **0.000999**.
 
-- positive D: **40/40 taxa**;
-- median D = **0.4198**, IQR **0.2826–0.7265**;
-- largest positive numerator contribution = **11.7%**;
-- top-five share = **46.5%**;
-- HHI = **0.0579**;
-- leave-one-species-out global D range = **0.3910–0.4408**.
+Every individual lag from 1 through 9 was positive and exceeded its independent-null envelope. In all fixed-support clusters, the corresponding near- and far-lag coefficients were **0.1829** and **0.1577**, both P = **0.000999**. Thus the residual dependence is not confined to adjacent route positions.
 
-The route-night dependence diagnostic is therefore taxonomically broad. This does not imply a shared lower-level mechanism across taxa.
+Observer turnover was also unnecessary. Restricting to **2,191** weather-linked prior-history pairs surveyed by the same observer in both focal runs retained positive bounded dependence:
+
+- all fixed-support clusters: **rho_b = 0.1627**, P = **0.000999**;
+- dry-route-silent clusters: **rho_b = 0.2758**, P = **0.000999**.
+
+This sensitivity does not remove within-observer perceptual error, but it excludes observer replacement as a requirement for the route-night pattern.
+
+A taxonomic-breadth audit had been fixed before the bounded-metric repair. Using the historical D score, all **40/40** information-eligible taxa had positive departures, the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not used as comparable effect sizes; this audit supports breadth of the departure only.
+
+Together, the repaired analyses support a **species-by-route-night shared landscape state** superimposed on stop-specific propensity. They do not distinguish unmeasured shared hydrology, landscape-scale breeding readiness, demographic availability, social processes or other latent route-night generators.
 
 ### S15.6 Monitoring-independence consequence
 
@@ -1252,7 +1253,7 @@ A second analysis repeated the uncertainty comparison within species using fixed
 - pair-clustered SE exceeded IID for **38/39 taxa**; median ratio **1.61**, IQR **1.30–1.74**;
 - route-clustered SE exceeded IID for **36/39 taxa**; median ratio **1.48**, IQR **1.24–1.72**.
 
-Thus the uncertainty inflation is not only an artefact of pooling many species. These calculations are **not** a re-fit of a specific published NAAMP occupancy-trend estimator and do not supply a universal correction factor. The earlier exchangeable-design-effect translation from D is retained only as historical diagnostic provenance and is not used as a main inferential quantity because D is not itself a conventional intraclass correlation.
+Thus the uncertainty inflation is not only an artefact of pooling many species. These calculations are **not** a re-fit of a specific published NAAMP occupancy-trend estimator and do not supply a universal correction factor. The earlier exchangeable-design-effect and effective-stop translations from D are **withdrawn** because D is unbounded; monitoring consequences are quantified directly from the clustered covariance comparisons above.
 
 ## S16. Taxonomic and geographic breadth
 
