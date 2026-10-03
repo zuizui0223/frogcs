@@ -214,4 +214,4 @@ The stronger direction is:
 4. link that fast state to the independently observed slow historical site template, yielding a fast-gate × slow-template description;
 5. note that same-observer and measured detection-condition adjustments leave the dependence essentially intact;
 6. elevate the monitoring-design implication cautiously: clustered uncertainty is broadly larger across species, but no published occupancy-trend estimator has yet been re-fit;
-7. keep WFTS as the prospective confirmation under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`, including the frozen secondary common-environment / bounded-dependence / far-lag diagnostics.
+7. keep WFTS as the prospective confirmation under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`, including the frozen secondary common-environment / bounded-dependence / far-lag diagnostics.
