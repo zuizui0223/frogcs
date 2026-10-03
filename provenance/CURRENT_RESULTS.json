@@ -393,6 +393,36 @@
       },
       "conditioning": "Observed k fixed exactly; stop subsets weighted by fixed q conditional independent-Bernoulli probabilities; prior strong = strictly-prior CI2/3 at focal SiteID.",
       "interpretation": "Deep k>=4 route-night expression preferentially aligns with recurrent strong-chorus sites beyond current q site propensity and exact activation depth."
+    },
+    "deep_vs_shallow_template_alignment_contrast": {
+      "pairs": 2835,
+      "routes": 428,
+      "deep_k4plus_clusters": 409,
+      "shallow_k1to3_clusters": 838,
+      "species": 43,
+      "rainfall_coefficient": {
+        "beta_deep": 0.026586957417988274,
+        "beta_shallow": -0.0031105124354861248,
+        "deep_minus_shallow": 0.0296974698534744,
+        "null_ci95": [
+          -0.02531719865771154,
+          0.028888371572041494
+        ],
+        "p": 0.02097902097902098,
+        "positive_supported": true
+      },
+      "cluster_mean": {
+        "deep": 0.0760277933531632,
+        "shallow": -0.01082377920990115,
+        "deep_minus_shallow": 0.08685157256306436,
+        "null_ci95": [
+          -0.06177625828346151,
+          0.06039289519058015
+        ],
+        "p": 0.005994005994005994,
+        "positive_supported": true
+      },
+      "provenance": "Explicitly post-hoc direct contrast; descriptive deep-shallow means were known before this contrast contract."
     }
   }
 }
