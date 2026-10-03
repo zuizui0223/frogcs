@@ -2,8 +2,8 @@
 
 ## Release identity
 
-- intended release ref: `release/jae-multisite-rc5`
-- intended submission ref: `submission/jae-multisite-v5`
+- release ref: `release/jae-multisite-rc5`
+- submission ref: `submission/jae-multisite-v5`
 - validated scientific source: `0dbc3b3724d428763c6176fcff939c0492c651d9`
 - candidate lineage: `candidate/jae-multisite-rc5`
 - manuscript: `paper/manuscript.md`
