@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_species_route_night_residual_breadth_v0_1",
+  "status": "posthoc_breadth_audit_fixed_after_global_rho_before_specieswise_readback",
+  "known_before_this_contract": {
+    "global_rho_resid": 0.41585612605080213,
+    "global_positive_dependence_supported": true
+  },
+  "question": "Is the positive species-by-route-night residual dependence broadly distributed across taxa or driven by a small number of species?",
+  "population_and_prediction": "Exactly the same 2,835 pairs and fixed q matrices used in NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_V0_1.",
+  "specieswise_statistic": "Accumulate the existing residual-correlation numerator and denominator separately by species, then rho_s = numerator_s / denominator_s.",
+  "species_eligibility_fixed_before_readback": {
+    "minimum_species_route_night_clusters": 30,
+    "minimum_observed_positive_clusters": 10,
+    "minimum_stop_cells": 300
+  },
+  "breadth_outputs": [
+    "number of eligible species",
+    "number and fraction with rho_s > 0",
+    "median and IQR rho_s",
+    "largest positive-numerator contribution share",
+    "top-five positive-numerator share",
+    "HHI of positive numerator shares",
+    "leave-one-species-out global rho minimum and range"
+  ],
+  "interpretation": {
+    "broad": "More than half of eligible species have rho_s > 0, top-one positive numerator share < 0.25, and every leave-one-species-out global rho remains > 0.",
+    "boundary": "This is taxonomic breadth of a post-hoc residual-dependence diagnostic, not evidence that all species share one mechanism."
+  },
+  "provenance": "No eligibility threshold or breadth criterion may change after specieswise outputs are read."
+}
