@@ -1,0 +1,71 @@
+name: NAAMP deep-vs-shallow Monte Carlo stability
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - audit/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_MC_STABILITY_CONTRACT_V0_1.json
+      - audit/run_naamp_deep_vs_shallow_template_alignment_mc_stability.py
+      - .github/workflows/naamp_deep_vs_shallow_mc_stability.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-deep-vs-shallow-mc-stability
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run Monte Carlo stability audit
+        run: python audit/run_naamp_deep_vs_shallow_template_alignment_mc_stability.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("audit/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_MC_STABILITY_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835
+          assert x["coverage"]["deep_clusters"]==409
+          assert x["coverage"]["shallow_clusters"]==838
+          assert x["audit"]["batches"]==20
+          assert x["audit"]["replicates_per_batch"]==1000
+          assert x["interpretation"]["primary_inference_replaced"] is False
+          print(json.dumps({
+              "fraction_batches_pass":x["audit"]["fraction_batches_primary_rule_pass"],
+              "p_range":x["audit"]["batch_p_range"],
+              "q975_range":x["audit"]["batch_q975_range"],
+              "pooled_tail_fraction":x["audit"]["pooled_descriptive_tail_fraction"],
+              "stable":x["interpretation"]["numerically_stable_by_contract"]
+          },indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audit/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_MC_STABILITY_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record Monte Carlo stability audit for deep-vs-shallow alignment"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main && exit 0
+              sleep 2
+            done
+            exit 1
+          fi
