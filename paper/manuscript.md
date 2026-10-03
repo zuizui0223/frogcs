@@ -89,7 +89,7 @@ We also decomposed the cumulative third-and-later coefficient by CallingIndex to
 
 ### Within-taxon multi-site concentration of acoustically recruited taxa
 
-Presence–absence matrix ecology has a long tradition of asking whether an observed arrangement contains structure beyond its row and column totals, and of using constrained null matrices to make that question explicit (Gotelli, 2000; Gotelli & McCabe, 2002). Network analyses make the same methodological point: raw structural indices can be strongly influenced by network dimensions, connectance and sampling intensity, so ecological interpretation should be based on comparison with an appropriate null rather than on the raw index alone (Dormann et al., 2009). We follow that general logic, but the concentration statistic below is a study-specific algebraic summary rather than a previously named ecological index.
+Following constrained incidence-matrix null approaches (Gotelli, 2000; Gotelli & McCabe, 2002; Dormann et al., 2009), we interpret structural departures only relative to the first-order properties preserved by each null. The concentration statistic below is a study-specific algebraic summary rather than a previously named ecological index.
 
 For each acoustically route-new taxon recorded at (k_i) wetter-survey stops, define the ordinary within-taxon site-pair count
 
