@@ -1405,7 +1405,7 @@ The following analyses were conducted only after the original stopping rule was 
 - an exact-coordinate distance profile retained for provenance but **not interpreted** after geometry-only QC found gross coordinate transcription errors in the pinned source table (`revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md`);
 - an exchangeable-GEE corroboration retained for provenance but **not interpreted** because the full and dry-active fits were numerically degenerate (`revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md`).
 
-These analyses were fixed before their own newly defined outputs were read, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree.
+These analyses were fixed before their own newly defined outputs were read, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree. After the fast-state × distributed-template structure and its direct deep-versus-shallow contrast had been documented, the reopened NAAMP mechanism-analysis line was **closed again on 3 October 2026**. The closure record (`revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`) prohibits new same-data lower-level mechanism families or outcome-driven retuning; only bug correction, deterministic reproducibility work and previously frozen QA remain authorized.
 
 ### S17.4 Descriptive or non-gating diagnostics
 
