@@ -133,7 +133,7 @@
     "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
     "execution_lock_qa_run": 37129985326,
     "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
-    "pre_receipt_status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY; no internal scientific or implementation blockers remain",
+    "pre_receipt_status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE; no internal scientific or implementation blockers remain",
     "full_chain_qa": {
       "workflow": ".github/workflows/wfts_full_chain_qa.yml",
       "run": 37130556855,
@@ -142,6 +142,15 @@
       "artifact_digest": "sha256:c75a464a891e883deffd920be9cd1e728e072231b410810fc378b80753b87a36",
       "readiness_receipt": "revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json",
       "scientific_direction_asserted": false
+    },
+    "fail_closed_guard_qa": {
+      "workflow": ".github/workflows/wfts_fail_closed_guard_qa.yml",
+      "run": 37153969280,
+      "conclusion": "success",
+      "artifact_id": 11285147541,
+      "artifact_digest": "sha256:2160db04a28c11ba404b56c135ffcf7becbc34da00183fabd89f0683580e2e23",
+      "coverage_fail_prevents_response_read": true,
+      "post_preflight_runs_or_matrix_byte_drift_rejected": true
     }
   },
   "interpretation_boundaries": {
