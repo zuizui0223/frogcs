@@ -1,0 +1,31 @@
+{
+  "analysis": "naamp_near_vs_far_route_dependence_contrast_v0_1",
+  "status": "posthoc_spatial_decay_contrast_fixed_after_near_far_point_estimates_before_bootstrap_interval_readback",
+  "known_before_contract": {
+    "dry_route_silent_near_1_3": 0.29643298821548375,
+    "dry_route_silent_far_7_9": 0.27178236785618926,
+    "observed_difference": 0.02465062035929449
+  },
+  "question": "Is within-species route-night residual dependence materially stronger at near stop-number lags than at far lags, as expected under a predominantly local propagation process?",
+  "population": "Exactly the 2,835 weather-eligible pairs and 8,343 dry-route-silent species x route-night clusters used in the fixed lag-profile diagnostic.",
+  "statistic": {
+    "near": "Pooled cosine residual correlation over stop-number lags 1-3.",
+    "far": "Pooled cosine residual correlation over lags 7-9.",
+    "contrast": "rho_near - rho_far."
+  },
+  "uncertainty": {
+    "resampling_unit": "route_cluster (State x RouteNumber), preserving all focal pairs, taxa and residual clusters within each sampled route.",
+    "bootstrap_replicates": 2000,
+    "seed": 2840237,
+    "interval": "percentile 95% interval for rho_near-rho_far.",
+    "p_value": "two-sided plus-one bootstrap sign probability, 2*min[P(diff<=0),P(diff>=0)], capped at 1."
+  },
+  "interpretation": {
+    "positive_decay": "If lower 95% bound >0, near dependence is detectably stronger than far dependence, consistent with an additional local component but not proving acoustic propagation.",
+    "no_detectable_decay": "If interval includes 0, do not claim local decay; strong far-lag persistence favors a route-spanning state description over a predominantly adjacent-stop process.",
+    "boundary": "Stop-number lag is route topology, not exact geographic distance, and sequential survey order is partly confounded with topology."
+  },
+  "anti_tuning": [
+    "Do not change route bootstrap unit, lag pools, residual definition, replicate count, seed, interval or contrast after readback."
+  ]
+}
