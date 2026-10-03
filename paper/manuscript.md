@@ -46,7 +46,7 @@ An active stop contained at least one calling species. Local alpha richness was 
 
 Runs were stratified by State × RouteNumber × RunNumber, where RunNumber represents the programme's seasonal sampling window. Within each stratum, eligible runs were ordered by survey year and paired across adjacent observed years. Pairs with equal DaysSinceRain were excluded. In each remaining pair, the run closer to rain was labelled wetter and the other drier.
 
-The primary dataset contained 4,236 comparisons from 585 routes in 21 states. These comparisons were built from **6,075 unique survey runs, 60,750 fixed-stop visits and 88,743 positive species × stop calling records across 53 taxa**. Of the 4,236 comparisons, 2,693 were exact consecutive-year pairs. Rainfall contrast was
+The primary dataset contained 4,236 comparisons from 585 routes in 21 states. These comparisons were built from **6,074 unique survey runs, 60,740 fixed-stop visits and 88,737 positive species × stop calling records across 53 taxa**. Of the 4,236 comparisons, 2,693 were exact consecutive-year pairs. Rainfall contrast was
 
 `ΔR = log(1 + D_dry) − log(1 + D_wet)`,
 
