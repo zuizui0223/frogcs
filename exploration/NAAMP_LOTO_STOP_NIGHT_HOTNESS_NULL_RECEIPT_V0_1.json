@@ -1,0 +1,68 @@
+{
+  "analysis": "naamp_leave_one_taxon_out_stop_night_hotness_null_v0_1",
+  "concentration": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.5821435971425546,
+    "null_residual_ci95": [
+      -0.13862432730931412,
+      0.12202643146775075
+    ],
+    "observed_concentration_beta": 1.713554974812249,
+    "observed_conditional_residual": 0.3181568399323087,
+    "predicted_concentration_beta": 1.3953981348799402
+  },
+  "contract": "exploration/NAAMP_LOTO_STOP_NIGHT_HOTNESS_NULL_CONTRACT_V0_1.json",
+  "coverage": {
+    "dry_route_silent_clusters": 8343,
+    "fallback_cells_lt3_other_taxa": 10480,
+    "pairs": 2835,
+    "routes": 428,
+    "target_species_stop_cells": 187690
+  },
+  "decision": "residual_species_route_night_structure",
+  "dry_route_silent_bounded_dependence": {
+    "clusters": 8343,
+    "null_ci95": [
+      -0.005558154409427259,
+      0.005248528555767289
+    ],
+    "null_mean": -0.00012590525429003079,
+    "plus_one_upper_tail_p": 0.000999000999000999,
+    "positive_dependence_supported": true,
+    "rho_bounded": 0.298511885753885
+  },
+  "dry_route_silent_far_lag_7_9": {
+    "null_ci95": [
+      -0.014446424292370452,
+      0.013857208407056723
+    ],
+    "null_mean": -0.000268948020252379,
+    "ordered_pair_records": 50058,
+    "plus_one_upper_tail_p": 0.000999000999000999,
+    "positive_dependence_supported": true,
+    "rho_lag": 0.2841809236169251
+  },
+  "hotness_audit": {
+    "delta_abs_q95": 1.1441845932874521,
+    "delta_iqr": [
+      -0.3295858891427308,
+      0.30825999774194046
+    ],
+    "delta_median": -0.012420828242754112,
+    "mean_stop_richness_rmse_after": 0.5810157811435136,
+    "mean_stop_richness_rmse_before": 0.7752160787032109,
+    "ridge_lambda": 1.0
+  },
+  "interpretation_boundary": {
+    "independent_prediction": false,
+    "other_taxa_same_wet_survey_used": true,
+    "specific_stop_night_driver_identified": false,
+    "target_taxon_wet_outcome_used_to_estimate_own_stop_hotness": false,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "status": "posthoc_cross_taxon_common_cause_falsification_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
