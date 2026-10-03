@@ -1,0 +1,54 @@
+{
+  "analysis": "naamp_logistic_normal_species_route_night_state_v0_1",
+  "status": "posthoc_latent_state_magnitude_fixed_after_bounded_dependence_before_random_effect_readback",
+  "known_before_this_contract": {
+    "bounded_all": 0.17206769596558683,
+    "bounded_dry_route_silent": 0.28487700425848284,
+    "dry_route_silent_far_lag_7_9": 0.27178236785618926,
+    "same_observer_dry_route_silent": 0.2757567247727625
+  },
+  "question": "How large is the shared species-by-route-night latent activation state required after the fixed strongest measured-environment + site-history probabilities q are treated as offsets?",
+  "population": "Exactly the same 2,835 weather-eligible strictly-prior-history pairs and fixed q matrices used in the bounded route-night dependence diagnostic.",
+  "model": {
+    "observation": "For cluster c and stop j, y_cj ~ Bernoulli(p_cj).",
+    "linear_predictor": "logit(p_cj) = logit(q_cj) + mu + u_c.",
+    "random_effect": "u_c ~ Normal(0, sigma^2), shared across all ten stops within species x route-night.",
+    "calibration": "mu is a single fitted fixed calibration offset within each reported stratum so sigma is not forced to absorb marginal miscalibration.",
+    "strata": [
+      "all fixed-support species x route-night clusters",
+      "dry-route-silent species defined using the drier survey only"
+    ]
+  },
+  "estimation": {
+    "integration": "20-point Gauss-Hermite quadrature.",
+    "sigma_bounds": [
+      0,
+      5
+    ],
+    "mu_bounds": [
+      -5,
+      5
+    ],
+    "optimizer": "bounded scalar optimization of sigma; for each sigma, bounded scalar optimization of mu.",
+    "profile_ci": "95% profile-likelihood interval for sigma using 2*(logLik_MLE-logLik_sigma)=3.841458820694124; lower bound may be 0.",
+    "null": "sigma=0 with mu re-optimized."
+  },
+  "outputs": [
+    "mu_hat",
+    "sigma_hat",
+    "sigma_profile_ci95",
+    "one_sd_common_state_odds_multiplier = exp(sigma_hat)",
+    "latent_logistic_ICC = sigma_hat^2 / (sigma_hat^2 + pi^2/3)",
+    "maximized log likelihood",
+    "sigma=0 optimized log likelihood",
+    "likelihood-ratio statistic"
+  ],
+  "interpretation": {
+    "positive_sigma": "Quantifies a shared species-by-route-night latent state remaining after fixed q; it does not identify why that state varies.",
+    "boundary": "Latent logistic ICC is a model-based variance partition on the logistic latent scale, not the design effect of a published occupancy estimator and not evidence for social facilitation, synchronized breeding, movement or hydrological causality."
+  },
+  "anti_tuning": [
+    "Do not change q, strata, quadrature nodes, parameter bounds, likelihood, CI rule or reported transformations after readback.",
+    "Do not add species-specific sigma or mixture components after reading this endpoint."
+  ]
+}
