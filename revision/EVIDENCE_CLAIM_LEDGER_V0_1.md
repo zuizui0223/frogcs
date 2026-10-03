@@ -52,7 +52,7 @@ These analyses were conducted only after the original same-data stopping rule wa
 | Same-observer sensitivity | 2,191 pairs: **rho_b=0.163** overall and **0.276** in dry-route-silent taxa; both P=0.000999 | observer turnover is not required for route-night dependence | detection-process defence |
 | Logistic-normal latent-state magnitude | fixed-q offset model: **sigma=2.563** overall and **2.884** dry-route-silent; latent-scale ICC **0.666/0.717**; 20-node sigma within **1.03%/1.69%** of 60-node audit | residual route-night state is large on the fitted logistic latent scale, not a tiny leftover | descriptive magnitude diagnostic only; bounded rho_b remains primary inference |
 | Cross-fitted scalar-state sufficiency | scalar random-intercept generator reproduced concentration residual (observed −0.207 inside −0.280–0.287) but predicted near/far **rho≈0.475**, above observed **0.296/0.272** | a uniform all-stop species-night switch is too coherent; the state is route-spanning but spatially non-uniform | structural-shape diagnostic |
-| Deep historical-template alignment | **409** deep k≥4 clusters; exact-k q-conditioned prior-strong overlap β=**0.0266**, P=**0.0020**; direct deep−shallow **Δβ=0.0297**, P=**0.0210**; MC stability: **19/20** seed batches pass, pooled descriptive tail **0.0186** | coupling to recurrent strong-chorus sites is stronger in the unusual deep tail than shallow activation, beyond fixed q site propensity and exact k | direct fast-gate × slow-template linkage; post-hoc contrast, numerically stable |
+| Deep historical-template alignment | **409** deep k≥4 clusters; exact-k q-conditioned prior-strong overlap β=**0.0266**, P=**0.0020**; direct deep−shallow **Δβ=0.0297**, P=**0.0210**; MC stability: **19/20** seed batches pass, pooled descriptive tail **0.0186** | recurrent strong-chorus sites are preferentially used during unusually deep activation, beyond fixed q site propensity and exact k | post-hoc place-selection refinement; numerically stable |
 | Historical unbounded D breadth audit | **40/40** eligible taxa positive; top1 positive numerator share 11.7%; all leave-one-species-out D >0 | the positive departure is taxonomically broad, not a one-species artefact | breadth defence only; D is not an effect-size correlation |
 | Monitoring uncertainty | pooled route-cluster SE **2.69×** IID; pair-cluster SE > IID in **38/39** species (median 1.61×); route-cluster SE > IID in **36/39** (median 1.48×) | ten route stops need not provide ten independent pieces of acoustic-state information | applied implication, not occupancy-trend reanalysis |
 
@@ -89,7 +89,7 @@ A concise surprise statement for the paper:
 
 ### G1 — safest generalization
 
-**Fast environmental gates can reveal slow species × place structure in behaviourally cryptic communities.**
+**Environmental pulses can reveal the spatial unit over which behaviour is organized when animals become conspicuous.**
 
 Supported by:
 - direct state switching;
