@@ -199,7 +199,7 @@ Within the same focal pair and species, a SiteID where that species had previous
 
 Historical recurrence was also selectively stronger on the rain-favoured side of the pair: increasing target rain advantage increased the CI3 targeting contrast between recurrent and non-recurrent cells (β = 0.0245, 95% CI 0.0070–0.0420; same-observer β = 0.0307).
 
-A post-hoc exact-k placement test linked this template specifically to the deep tail. Among **409** dry-route-silent species × nights with k ≥ 4 and both prior-strong and non-strong sites available, placement at prior CI2/3 SiteIDs exceeded the expectation from the fixed q probabilities while holding the observed k exactly (β = **0.0266**, null 95% interval −0.0194 to 0.0185; P = **0.0020**). Pooling all k ≥ 1 clusters did not pass the same test (P = 0.058).
+A post-hoc exact-k placement test linked this template specifically to the deep tail. Among **409** dry-route-silent species × nights with k ≥ 4, placement at prior CI2/3 SiteIDs exceeded the fixed-q expectation while holding k exactly (β = **0.0266**, P = **0.0020**). The direct deep-versus-shallow coefficient contrast was also positive (**Δβ = 0.0297**, null 95% interval −0.0253 to 0.0289; P = **0.0210**).
 
 ### Within-taxon concentration is taxonomically diffuse but geographically heterogeneous
 
