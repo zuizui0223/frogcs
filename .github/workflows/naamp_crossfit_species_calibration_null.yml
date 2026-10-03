@@ -1,0 +1,73 @@
+name: NAAMP cross-fit species calibration falsification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_CROSSFIT_SPECIES_CALIBRATION_NULL_CONTRACT_V0_1.json
+      - exploration/run_naamp_crossfit_species_calibration_null.py
+      - .github/workflows/naamp_crossfit_species_calibration_null.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-crossfit-species-calibration-null
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed species-calibration falsification
+        run: python exploration/run_naamp_crossfit_species_calibration_null.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_CROSSFIT_SPECIES_CALIBRATION_NULL_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835
+          assert x["coverage"]["routes"]==428
+          assert x["coverage"]["dry_route_silent_clusters"]==8343
+          assert x["decision"] in {
+              "species_miscalibration_sufficient",
+              "residual_route_night_dependence_after_species_calibration",
+              "mixed"
+          }
+          print(json.dumps({
+              "calibration":x["calibration_summary"],
+              "concentration":x["concentration"],
+              "bounded":x["dry_route_silent_bounded_dependence"],
+              "far":x["dry_route_silent_far_lag_7_9"],
+              "decision":x["decision"]
+          },indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_CROSSFIT_SPECIES_CALIBRATION_NULL_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record cross-fit species calibration falsification"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main && exit 0
+              sleep 2
+            done
+            exit 1
+          fi
