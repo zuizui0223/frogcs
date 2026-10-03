@@ -1,0 +1,64 @@
+{
+  "all_clusters": {
+    "clusters": 18769,
+    "latent_logistic_icc": 0.6662939659205337,
+    "likelihood_ratio_statistic": 36390.82038866656,
+    "log_likelihood_mle": -71489.19375198917,
+    "log_likelihood_sigma0": -89684.60394632244,
+    "mu_hat": -0.43087348171355255,
+    "one_sd_common_state_odds_multiplier": 12.974035996714965,
+    "profile_upper_bound_hit": false,
+    "sigma0_mu_hat": -1.074940827521057e-08,
+    "sigma_hat": 2.5629501293141432,
+    "sigma_profile_ci95": [
+      2.5227230516399475,
+      2.6040534328082536
+    ]
+  },
+  "analysis": "naamp_logistic_normal_species_route_night_state_v0_1",
+  "contract": "exploration/NAAMP_LOGISTIC_NORMAL_ROUTE_NIGHT_STATE_CONTRACT_V0_1.json",
+  "coverage": {
+    "all_clusters": 18769,
+    "dry_route_silent_clusters": 8343,
+    "pairs": 2835,
+    "routes": 428
+  },
+  "dry_route_silent": {
+    "clusters": 8343,
+    "latent_logistic_icc": 0.7166141304141169,
+    "likelihood_ratio_statistic": 15733.582961054228,
+    "log_likelihood_mle": -20982.582302184375,
+    "log_likelihood_sigma0": -28849.37378271149,
+    "mu_hat": -0.2640205570736568,
+    "one_sd_common_state_odds_multiplier": 17.89132506591594,
+    "profile_upper_bound_hit": false,
+    "sigma0_mu_hat": 0.5833752008153326,
+    "sigma_hat": 2.884315962185036,
+    "sigma_profile_ci95": [
+      2.806284478358477,
+      2.961883747441835
+    ]
+  },
+  "interpretation_boundary": {
+    "fixed_q_offset": true,
+    "independent_confirmation": false,
+    "latent_icc_is_published_monitoring_design_effect": false,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "model": {
+    "mu_bounds": [
+      -5.0,
+      5.0
+    ],
+    "profile_likelihood_drop": 1.920729410347062,
+    "quadrature_nodes": 20,
+    "sigma_bounds": [
+      0.0,
+      5.0
+    ]
+  },
+  "status": "posthoc_latent_state_magnitude_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
