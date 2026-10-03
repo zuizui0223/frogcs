@@ -143,6 +143,7 @@ The following remain QA-only and are not scientific evidence:
 
 - `scripts/wfts/generate_synthetic_daymet_fixture.py`
 - `scripts/wfts/generate_synthetic_wfts_fixture.py`
+- `scripts/wfts/generate_synthetic_common_environment_runs.py`
 - `.github/workflows/wfts_daymet_code_qa.yml`
 - `.github/workflows/wfts_confirmatory_code_qa.yml`
 - `.github/workflows/wfts_common_environment_weather_qa.yml`
@@ -152,6 +153,8 @@ The following remain QA-only and are not scientific evidence:
 
 - `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json`: `415931d7459dc7a89099d63071aa439f0441fd13`
 - `scripts/wfts/build_common_environment_covariates.py`: `1945e2532449da626cbf77e092abfd43df2c04d3`
-- `scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py`: `cce6f8d80160c66b1bfc162e9f3464b5f0edae5a`
+- `scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py`: `66af77b48b3adf3771d8d321bc637beabf792fba`
+- `scripts/wfts/generate_synthetic_common_environment_runs.py`: `12957002aa46c534f1c46cdbbf12d2d64929b2d9`
+- `.github/workflows/wfts_route_night_secondary_qa.yml`: `27e7fc08d24ad4a7c65a4a5735a45455e3dab300`
 
 No WFTS species × station × year outcome matrix was inspected to create this authority.
