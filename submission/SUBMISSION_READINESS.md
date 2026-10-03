@@ -78,6 +78,12 @@ Historical frozen release authority:
 
 Current `main` is a **post-RC4 candidate** containing the explicitly post-hoc extension and subsequent closure. Do not create a new release/submission ref until the current manuscript QA and anonymous scientific-bundle pipeline both pass on the same scientific HEAD.
 
+Reserved next release names, to be created only after that gate:
+- `release/jae-multisite-rc5`
+- `submission/jae-multisite-v5`
+
+Do not use the pre-existing `release/jae-v1-rc5`; that branch belongs to an older frog-chorus synchrony line.
+
 Previous RC3 remains preserved at:
 - `release/jae-multisite-rc3`
 - `submission/jae-multisite-v3`
