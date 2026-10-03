@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "Measured nonlinear weather, actual antecedent rainfall, observer turnover, recorded hearing impairment, major-noise timeout and wind explain little or none of the residual allocation; bounded dependence is strongest among dry-route-silent taxa and persists to far route-position lags."
+    "post_reopening_refinement": "After measured weather, detection conditions and prior site structure, residual dependence is species-by-route-night, route-spanning but non-uniform: a cross-fitted scalar state reproduces concentration but overpredicts near/far stop dependence, supporting distributed patch expression across recurrent sites."
   },
   "main_text_routing": {
     "keep": [
@@ -323,6 +323,42 @@
         "sigma_60": 2.9338562719145354
       },
       "boundary": "Numerical validation only; the original 20-node prespecified point estimate remains the reported latent-model estimate and its profile CI is not treated as route-clustered sampling uncertainty."
+    },
+    "crossfit_scalar_route_night_state_sufficiency": {
+      "pairs": 2835,
+      "routes": 428,
+      "dry_route_silent_clusters": 8343,
+      "training": {
+        "fold_A_sigma": 3.0094065576289917,
+        "fold_B_sigma": 2.776404027091492
+      },
+      "concentration": {
+        "observed_beta": 1.713554974812249,
+        "predicted_beta": 1.9204410722441518,
+        "observed_conditional_residual": -0.2068860974319029,
+        "scalar_residual_ci95": [
+          -0.2796798840699037,
+          0.2866955795349243
+        ],
+        "structurally_sufficient": true
+      },
+      "lag_profile": {
+        "observed_near_1_3": 0.29643298821548464,
+        "predicted_near_mean": 0.47458338819312185,
+        "predicted_near_ci95": [
+          0.4585533540820018,
+          0.49099069356341024
+        ],
+        "observed_far_7_9": 0.2717823678561895,
+        "predicted_far_mean": 0.4740442586714541,
+        "predicted_far_ci95": [
+          0.4556793337300058,
+          0.4932881993776681
+        ],
+        "far_structurally_sufficient": false
+      },
+      "decision": "concentration_only_sufficient_uniform_scalar_state_too_spatially_coherent",
+      "interpretation": "A transferable species-night scalar state can generate the row-count concentration, but a uniform all-stop shift overpredicts both near and far residual dependence. The observed state is route-spanning but spatially non-uniform."
     }
   }
 }
