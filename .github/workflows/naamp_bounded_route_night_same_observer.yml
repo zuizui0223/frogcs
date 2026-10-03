@@ -1,0 +1,62 @@
+name: NAAMP bounded route-night same-observer sensitivity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json
+      - exploration/run_naamp_bounded_route_night_same_observer.py
+      - .github/workflows/naamp_bounded_route_night_same_observer.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-bounded-route-night-same-observer
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run same-observer sensitivity
+        run: python exploration/run_naamp_bounded_route_night_same_observer.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]>=1500, x["coverage"]
+          for k,v in x["results"].items():
+              assert -1/9-1e-12 <= v["rho_bounded"] <= 1+1e-12, (k,v)
+          print(json.dumps({"coverage":x["coverage"],"results":x["results"]},indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record same-observer bounded route-night dependence"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main && exit 0
+              sleep 2
+            done
+            exit 1
+          fi
