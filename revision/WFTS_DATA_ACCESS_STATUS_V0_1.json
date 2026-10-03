@@ -1,6 +1,6 @@
 {
   "status_id": "wfts_external_confirmation_access_v0_1",
-  "date": "2026-10-01",
+  "date": "2026-10-03",
   "classification": "DESIGN_ELIGIBLE / PUBLIC_METADATA_SUFFICIENT / RESPONSE_EXPORT_REQUIRED",
   "biological_outcome_inspected": false,
   "structural_gate_run": false,
@@ -34,7 +34,10 @@
     "raw_to_canonical_rules_frozen": true,
     "raw_to_canonical_mapping_template_ready": true,
     "open_records_request_ready": true,
-    "acquisition_packet_ready": true
+    "acquisition_packet_ready": true,
+    "real_data_execution_lock_frozen": true,
+    "real_data_execution_lock_qa_passed": true,
+    "real_data_execution_handoff_ready": true
   },
   "unresolved": {
     "complete_station_level_response_export": true,
@@ -49,7 +52,7 @@
     "routes_run_2022": 139,
     "interpretation": "strongly suggests coverage feasibility but does not substitute for response-blind preflight"
   },
-  "next_external_dependency": "send WFTS research-data request; if direct export is unavailable, use the narrow Wisconsin DNR open-records request",
+  "next_external_dependency": "obtain the existing WFTS station-level historical response export plus route/station lineage metadata; no further scientific rule-setting is authorized before receipt",
   "primary_request": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md",
   "access_audit": "revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_2.md",
   "receipt_protocol": "revision/WFTS_RECEIPT_AND_PREFLIGHT_PROTOCOL_V0_1.md",
@@ -68,7 +71,8 @@
     "schema_only_inspector": 36836690335,
     "route_master_structural": 36836968077,
     "daymet": 36830477471,
-    "confirmatory_synthetic": 36830477410
+    "confirmatory_synthetic": 36830477410,
+    "real_data_authority_lock": 37129985326
   },
   "forbidden_shortcuts": [
     "reconstruct response matrix from annual summaries",
@@ -96,5 +100,7 @@
     "early_route_lineage_table": true,
     "all_routes_considered_permanent_historical_methods": true,
     "major_noncomparable_change_treated_as_new_route": true
-  }
+  },
+  "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
+  "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md"
 }
