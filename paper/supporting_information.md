@@ -1378,6 +1378,8 @@ The following analyses were conducted only after the original stopping rule was 
 - bounded residual co-dependence metric repair;
 - stop-number-lag profile of bounded residual dependence;
 - same-observer bounded-dependence sensitivity;
+- detection-augmented common-environment falsification using hearing impairment, major-noise timeout and wind;
+- logistic-normal species × route-night latent-state magnitude model and its numerical convergence audit;
 - taxonomic breadth of the historical dependence departure;
 - IID versus clustered uncertainty diagnostics, including route-across-years and specieswise comparisons;
 - an exact-coordinate distance profile retained for provenance but **not interpreted** after geometry-only QC found gross coordinate transcription errors in the pinned source table (`revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md`);
