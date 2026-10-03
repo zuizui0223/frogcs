@@ -1,0 +1,36 @@
+{
+  "analysis": "naamp_bounded_route_night_residual_dependence_v0_1",
+  "status": "posthoc_metric_repair_fixed_after_discovering_original_residual_score_is_not_bounded",
+  "reason_for_repair": "The earlier standardized residual-product statistic was labelled rho_resid, but species-level values can exceed 1. It is therefore a dependence score, not a correlation coefficient, and must not be used in an exchangeable-correlation design-effect formula.",
+  "question": "Under the same fixed q matrices, is there positive bounded within-species route-night residual co-dependence across the ten stops?",
+  "population_and_prediction": "Exactly the 2,835 weather-eligible strictly-prior-history focal pairs and the fixed q matrices from the 72-h rainfall common-environment null.",
+  "primary_statistic": {
+    "residual": "e_cj = y_cj - q_cj",
+    "cluster_size": 10,
+    "coefficient": "rho_bounded = [2 * sum_c sum_{j<k} e_cj e_ck] / [9 * sum_c sum_j e_cj^2]",
+    "equivalent_view": "Pearson-style correlation between the two residual entries across the complete set of ordered within-cluster stop pairs.",
+    "range": "For ten-stop clusters, the coefficient is bounded between -1/9 and 1."
+  },
+  "null": {
+    "generator": "Independent Bernoulli draws from the same fixed heterogeneous q matrices.",
+    "replicates": 1000,
+    "seed": 2840227,
+    "tail": "upper",
+    "support_rule": "Observed rho_bounded exceeds the upper 95% null quantile and plus-one upper-tail P < 0.05."
+  },
+  "pre_fixed_decompositions": [
+    "all fixed-support species x route-night clusters",
+    "dry-route-silent species defined using the drier route only",
+    "dry-route-active species defined using the drier route only"
+  ],
+  "interpretation": {
+    "positive": "Stop outcomes retain bounded positive residual co-dependence within a species x route-night after the strongest measured common-environment and site-history comparator.",
+    "forbidden": [
+      "Do not call the superseded unbounded score a correlation coefficient.",
+      "Do not use either residual coefficient in a design-effect or effective-stop-count formula.",
+      "Do not infer social facilitation, synchronous breeding, movement, or a unique lower-level mechanism."
+    ]
+  },
+  "monitoring_quantity": "Use directly estimated clustered/IID standard-error ratios, not a correlation-to-design-effect translation.",
+  "provenance": "No metric formula, strata, simulation count, seed, tail or support rule may change after this repaired endpoint is read."
+}
