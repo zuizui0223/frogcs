@@ -7,6 +7,7 @@ on:
       - revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json
       - scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py
       - scripts/wfts/generate_synthetic_wfts_fixture.py
+      - scripts/wfts/generate_synthetic_common_environment_runs.py
       - scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py
       - .github/workflows/wfts_route_night_secondary_qa.yml
   pull_request:
@@ -46,30 +47,10 @@ jobs:
             --output build/wfts-secondary/primary.json
       - name: Create response-free synthetic common-environment run covariates
         run: |
-          python - <<'PY'
-          import hashlib,json
-          from pathlib import Path
-          import numpy as np,pandas as pd
-          src=Path("build/wfts-secondary/runs.csv")
-          x=pd.read_csv(src)
-          z=x[["route_id","survey_period","survey_year","survey_date"]].copy()
-          # Synthetic weather-only covariates; no matrix/outcome file is read.
-          r=x["rain_recency"].astype(float)
-          t=x["tmean_run"].astype(float)
-          z["prcp_1d_exposure"]=np.log1p(np.maximum(0,6-r))
-          z["prcp_3d_exposure"]=np.log1p(np.maximum(0,12-2*r+0.03*t))
-          z["prcp_7d_exposure"]=np.log1p(np.maximum(0,20-2.5*r+0.05*t))
-          out=Path("build/wfts-secondary/common_env_runs.csv")
-          z.to_csv(out,index=False)
-          h=hashlib.sha256(out.read_bytes()).hexdigest()
-          receipt={
-            "analysis":"synthetic_common_env_weather_for_qa",
-            "response_columns_read":False,
-            "output_sha256":{"runs":h},
-            "fixture_mode":True
-          }
-          Path("build/wfts-secondary/common_env_receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
-          PY
+          python scripts/wfts/generate_synthetic_common_environment_runs.py \
+            --runs build/wfts-secondary/runs.csv \
+            --output-runs build/wfts-secondary/common_env_runs.csv \
+            --receipt build/wfts-secondary/common_env_receipt.json
       - name: Run frozen prospective secondary diagnostics
         run: |
           python scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py \
