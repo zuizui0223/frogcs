@@ -86,20 +86,31 @@
   "prospective_external_confirmation": {
     "candidate": "Wisconsin Frog and Toad Survey",
     "authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md",
-    "weather_analysis_spec": "revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md",
-    "schema": "revision/WFTS_CANONICAL_SCHEMA_V0_2.json",
-    "script": "scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py",
-    "response_outcomes_inspected_when_frozen": false,
-    "secondary_route_night_diagnostics": {
-      "authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md",
+    "primary": {
+      "inherited_primary_authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md",
+      "weather_analysis_spec": "revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md",
+      "schema": "revision/WFTS_CANONICAL_SCHEMA_V0_2.json",
+      "weather_script": "scripts/wfts/build_daymet_covariates.py",
+      "preflight_script": "scripts/wfts/preflight_wfts_structure.py",
+      "analysis_script": "scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py",
+      "decision_rule_unchanged_from_v0_2": true
+    },
+    "prospective_secondary": {
       "contract": "revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json",
-      "weather_adapter": "scripts/wfts/build_common_environment_covariates.py",
+      "weather_script": "scripts/wfts/build_common_environment_covariates.py",
       "analysis_script": "scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py",
       "weather_qa": ".github/workflows/wfts_common_environment_weather_qa.yml",
       "end_to_end_qa": ".github/workflows/wfts_route_night_secondary_qa.yml",
-      "execution_order": "Only after the frozen primary WFTS result is written; cannot alter primary classification.",
-      "response_outcomes_inspected_when_frozen": false
-    }
+      "execution_order": "only after frozen primary result",
+      "can_change_primary_classification": false,
+      "tests": [
+        "3-day Daymet common-environment sufficiency with 1/7-day named sensitivities",
+        "bounded species x route-night residual dependence",
+        "dry-route-silent far station-lag 7-9 persistence",
+        "specieswise IID versus clustered uncertainty"
+      ]
+    },
+    "response_outcomes_inspected_when_frozen": false
   },
   "interpretation_boundaries": {
     "causal_rainfall_claim": false,
