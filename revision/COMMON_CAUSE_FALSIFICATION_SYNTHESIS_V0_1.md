@@ -60,45 +60,45 @@ Earlier branch-preserved analyses provide useful negative controls:
 
 These analyses do not exhaust environmental common causes. Local hydroperiod, water level, soil moisture, small-scale rainfall heterogeneity and other unmeasured route-night variables remain possible.
 
-## Stage 3 — direct conditional-independence diagnostic
+## Stage 3 — repaired direct conditional-independence diagnostic
 
-Fixed contract: `exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_CONTRACT_V0_1.json`
+The original fixed diagnostic strongly rejected independent Bernoulli stop outcomes under the strongest measured-environment + historical-site comparator (**D = 0.4159**, P = **0.000999**), but a later audit showed that D is an unbounded standardized dependence score rather than a correlation coefficient. It is retained for provenance and breadth-of-departure auditing, but not as the primary effect-size metric and not for design-effect conversion.
 
-Using the fixed stop-specific probabilities from the strongest 72-h-rainfall + prior-history comparator:
+A bounded repair was therefore fixed before its value was read:
 
-Coverage:
-- 2,835 focal pairs
-- 18,769 species × route-night clusters
-- 187,690 species × stop cells
+- all **18,769** species × route-night clusters: **rho_b = 0.1721**, null 95% interval **−0.00267 to 0.00285**, P = **0.000999**;
+- **dry-route-silent** taxa: **rho_b = 0.2849**, null 95% interval **−0.00541 to 0.00565**, P = **0.000999**;
+- **dry-route-active** taxa: **rho_b = 0.1273**, null 95% interval **−0.00314 to 0.00350**, P = **0.000999**.
 
-Standardized within-species route-night residual-dependence statistic:
-- observed **D = 0.4159**
-- independent-Bernoulli null mean ≈ **0.00002**
-- null 95% interval = **−0.00343 to 0.00343**
-- upper-tail **P = 0.000999**
+The drier-state split uses only the drier survey, so the stronger dependence among dry-route-silent taxa is not created by selecting on their wetter outcome. It directly links the shared-state diagnostic to the pre-wet stratum from which acoustically route-new taxa can emerge.
 
-Here, D is a pooled ratio of within-cluster residual cross-products to their model-based Bernoulli variance scale. It is a diagnostic of residual dependence, **not a Pearson correlation coefficient and not assumed to be bounded by −1 and 1**.
+### Spatial scale along the route
 
-Thus conditional independence among the ten stop outcomes is strongly rejected under the tested measured-environment + historical-site comparator.
+A fixed lag-profile diagnostic asked whether the residual dependence was confined to adjacent route positions. Among dry-route-silent taxa:
 
-### Direct link to the route-new result
+- pooled stop-number lags 1–3: **0.2964**, P = **0.000999**;
+- pooled stop-number lags 7–9: **0.2718**, P = **0.000999**.
 
-A second fixed audit split clusters using the **drier survey only**, so it does not select taxa according to the wetter outcome.
+Every individual lag from 1 to 9 was positive and outside its independent-null envelope. In all fixed-support clusters, near and far coefficients were **0.1829** and **0.1577**, respectively.
 
-- taxa acoustically silent across the entire drier route: **D = 0.5666**, null 95% interval **−0.00543 to 0.00561**, P = **0.000999**;
-- taxa already active somewhere on the drier route: **D = 0.3364**, null 95% interval **−0.00432 to 0.00439**, P = **0.000999**.
+Stop-number lag is route topology, not exact geographic distance. Nevertheless, persistence at lags 7–9 shows that the residual dependence is not merely an adjacent-stop phenomenon.
 
-Residual route-night dependence is therefore not merely persistence among taxa that were already calling. It is especially strong in the dry-route-silent stratum that can subsequently generate acoustically route-new taxa.
+### Observer sensitivity
+
+Observer turnover was not required. Among **2,191** weather-linked prior-history pairs in which the same observer conducted both focal surveys:
+
+- all clusters: **rho_b = 0.1627**, P = **0.000999**;
+- dry-route-silent clusters: **rho_b = 0.2758**, P = **0.000999**.
+
+This does not exclude within-observer perceptual error, but it rules out observer replacement as a necessary explanation.
 
 ### Taxonomic breadth
 
-The specieswise breadth audit retained 40 information-eligible taxa. All **40/40** had positive D, with median **0.4198** and IQR **0.2826–0.7265**. The largest positive numerator contributor accounted for only **11.7%** of positive mass (top five **46.5%**, HHI **0.0579**), and leave-one-species-out global D remained **0.391–0.441**.
-
-The dependence signal is therefore taxonomically broad rather than a pooled effect carried by one or two explosive breeders. Specieswise D can exceed 1 because it is a standardized residual-dependence statistic rather than a conventional correlation coefficient.
+A breadth audit fixed before the bounded repair used the historical D score. All **40/40** information-eligible taxa had positive departures; the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not treated as comparable effect sizes. The audit supports breadth of the positive departure, not a common effect magnitude or mechanism.
 
 ## Biological interpretation now supported
 
-> **A frog species' acoustic state on a given route-night behaves as a shared landscape-scale state: after measured rainfall amount, nonlinear rain recency, temperature, season, historical physical-site use, dry-state persistence and total activity are represented, calling outcomes at separated stops remain strongly positively dependent within the same species and night.**
+> **A frog species' acoustic state on a given route-night behaves as a shared landscape-scale state: after measured rainfall amount, nonlinear rain recency, temperature, season, historical physical-site use, dry-state persistence and total activity are represented, calling outcomes remain positively dependent within the same species and night, including among taxa previously silent across the route and at widely separated route positions.**
 
 This establishes the **scale of dependence**, not its unique lower-level cause.
 
@@ -142,6 +142,7 @@ The stronger direction is:
 
 1. retain the ecological discovery as **species-by-route-night landscape-scale dependence**;
 2. show that the strongest measured common environmental triggers explain little of the allocation residual;
-3. describe the remaining object as a **broad species-by-route-night shared landscape state**, especially pronounced among taxa silent on the drier route;
-4. elevate the monitoring-design implication cautiously: clustered uncertainty is broadly larger across species, but no published occupancy-trend estimator has yet been re-fit;
-5. keep WFTS as the prospective confirmation, with the already frozen secondary common-environment diagnostic in `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_1.json`.
+3. describe the remaining object as a **species-by-route-night shared landscape state**, especially pronounced among taxa silent on the drier route and persisting to far route-position lags;
+4. note that same-observer restriction leaves the dependence essentially intact, so observer turnover is not required;
+5. elevate the monitoring-design implication cautiously: clustered uncertainty is broadly larger across species, but no published occupancy-trend estimator has yet been re-fit;
+6. keep WFTS as the prospective confirmation, with the already frozen secondary common-environment diagnostic in `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_1.json`.
