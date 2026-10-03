@@ -10,7 +10,7 @@
 
 4. **Recruited taxa showed excess within-taxon multi-site concentration.** Marginal fourth–tenth stops, not the second or third, exceeded both activation nulls, and CallingIndex 2–3 carried 97.3% of deep spread. In the prior-history subset, observed concentration was 1.650 versus 1.353 under the principal comparator (residual 0.297; P = 0.000999). The held-out rain × history gate also underpredicted it; post-hoc tests explained little. A bounded residual-dependence coefficient was 0.285 among taxa silent across the drier route, and remained 0.272 for far stop-number lags 7–9 (both P = 0.000999).
 
-5. **The deep response was historically placed rather than arbitrary.** Prior strong-chorus sites predicted wet-state strong chorusing (β = 0.151, 0.129–0.173). In a post-hoc exact-k test, historical-template coupling was stronger for deep k ≥ 4 than shallow k = 1–3 activation (Δβ = 0.0297, P = 0.021). The resulting **pulse-revealed dependence structure** is consistent with a fast species-night gate expressed through a distributed recurrent species × place template. This synthesis remains exploratory and awaits external confirmation.
+5. **The deep response was historically placed rather than arbitrary.** Prior strong-chorus sites predicted wet-state strong chorusing (β = 0.151, 0.129–0.173). In a post-hoc exact-k test, historical-template coupling was stronger for deep k ≥ 4 than shallow k = 1–3 activation (Δβ = 0.0297, P = 0.021). The resulting **pulse-revealed dependence structure** is consistent with a fast species-night gate expressed through a distributed recurrent species × place template. This synthesis remains exploratory and awaits independent external confirmation.
 
 ## Keywords
 
