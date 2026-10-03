@@ -1,4 +1,4 @@
-# JAE submission readiness — post-RC4 main candidate
+# RC5 JAE submission readiness
 
 ## Current canonical scientific package
 
@@ -13,7 +13,7 @@
 - literature novelty lock: `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - closest-prior-study audit: `revision/CLOSEST_PRIOR_STUDIES_AUDIT_V0_1.md`
 - scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
-- release receipt: `submission/RC4_RELEASE_RECEIPT.md`
+- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
 
 Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the canonical tree.
 
@@ -22,15 +22,15 @@ Historical manuscript drafts are retained in Git history and frozen release bran
 - [x] Research Article target
 - [x] anonymized main-manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words — **312**
+- [x] abstract ≤350 words — **307**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] main manuscript below 8,500 words — current whitespace count **7,929**
+- [x] main manuscript below 8,500 words — current whitespace count **7,899**
 - [x] separate Supporting Information
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] historical RC4 anonymous scientific submission bundle builds successfully
-- [ ] current post-RC4 main candidate scientific bundle — latest pipeline rerun pending after QA-safeguard restoration
+- [x] current RC5 anonymous scientific submission bundle builds successfully — run **37128665645**, artifact **11275981516**
 - [ ] final authors/order
 - [ ] final affiliations
 - [ ] corresponding-author details
@@ -55,11 +55,11 @@ Permitted remaining work:
 - archive/license/DOI finalization;
 - prospective WFTS execution under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`.
 
-**WFTS is not a submission gate for RC4.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
+**WFTS is not a submission gate for RC5.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
 
 ## Current claim safeguards
 
-- [x] main inferential spine is restricted to state switching → deep within-taxon multi-site dependence → route-spanning but non-uniform taxon-night state → recurrent species × site template
+- [x] main inferential spine is restricted to state switching → intermediate spatial organization across separated stops → preferential expression at recurrent taxon-specific chorus locations
 - [x] FrogID, RC11 matrix allocation, exact N,K, raw recurrence, route topology and failed mechanism screens are routed to SI
 - [x] principal comparator contains cross-fit species response + strictly-prior physical-site history + dry persistence + magnitude matching
 - [x] title/public framing uses within-taxon multi-site organization / dependence structure, not higher-order interaction terminology
@@ -70,17 +70,21 @@ Permitted remaining work:
 
 ## Release authority
 
-Historical frozen release authority:
-- release: `release/jae-multisite-rc4`
-- submission: `submission/jae-multisite-v4`
-- validated scientific source: `bfcd5bcaaf08e9b35aa8684a6ed2e10bbe1d0beb`
-- release receipt commit: `2b31c7b4363374110c8fb6098a2c0492f2e4c8e0`
+Current validated RC5 scientific source:
+- validated scientific source: `0dbc3b3724d428763c6176fcff939c0492c651d9`
+- manuscript QA: run **37128665685** — PASS
+- anonymous scientific bundle: run **37128665645** — PASS
+- artifact ID: **11275981516**
+- artifact digest: `sha256:64d3d1b4fd768d08a33481aa96084b882b6be31aeb550546688ea6e9069169c7`
+- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
 
-Current `main` is a **post-RC4 candidate** containing the explicitly post-hoc extension and subsequent closure. Do not create a new release/submission ref until the current manuscript QA and anonymous scientific-bundle pipeline both pass on the same scientific HEAD.
-
-Reserved next release names, to be created only after that gate:
+RC5 refs:
 - `release/jae-multisite-rc5`
 - `submission/jae-multisite-v5`
+
+Historical RC4 remains preserved:
+- `release/jae-multisite-rc4`
+- `submission/jae-multisite-v4`
 
 Do not use the pre-existing `release/jae-v1-rc5`; that branch belongs to an older frog-chorus synchrony line.
 
@@ -90,29 +94,21 @@ Previous RC3 remains preserved at:
 
 Original RC11 remains preserved at its frozen release/submission refs.
 
-## Clean-integration automated validation
-
-The canonical clean-main candidate `integration/jae-multisite-rc4-clean` has passed:
+## RC5 automated validation
 
 | Check | Run | Status |
 |---|---:|---|
-| manuscript/SI routing + JAE limits | **36819376056** | PASS |
-| deterministic figure rebuild | **36818984683** | PASS |
-| WFTS Daymet adapter QA | **36818980721** | PASS |
-| WFTS v0.5 confirmatory-code QA | **36818948605** | PASS |
-| anonymous RC4 submission pipeline | **36819400689** | PASS |
-| restored RC4 analysis dependency smoke | **36819594549** | PASS |
+| manuscript/SI routing + JAE limits | **37128665685** | PASS |
+| anonymous scientific submission pipeline | **37128665645** | PASS |
+| canonical NAAMP data-volume audit | **37128735161** | PASS |
+| canonical pair-volume reconciliation | **37128517668** | PASS |
+| WFTS prospective deep-template QA | **37105487275** | PASS |
 
-Restored-analysis smoke coverage:
-- **13** final exploration scripts compiled;
-- **26** local module references resolved;
-- **8** contract references resolved.
-
-Clean scientific-bundle artifact from run 36819400689:
+RC5 scientific-bundle artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: `11142458770`
-- size: **776,912 bytes**
-- digest: `sha256:32d0ff1ab9e59e1f95ccd25bf642dd6eda9b28a69b52ef1c62a59346ed6a93fd`
+- artifact ID: **11275981516**
+- size: **1,005,169 bytes**
+- digest: `sha256:64d3d1b4fd768d08a33481aa96084b882b6be31aeb550546688ea6e9069169c7`
 
 The private metadata bundle remains intentionally pending until final human metadata are supplied.
 
