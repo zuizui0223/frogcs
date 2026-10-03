@@ -1,0 +1,47 @@
+{
+  "analysis": "naamp_near_vs_far_route_dependence_contrast_v0_1",
+  "contract": "exploration/NAAMP_NEAR_VS_FAR_DEPENDENCE_CONTRAST_CONTRACT_V0_1.json",
+  "coverage": {
+    "dry_route_silent_clusters": 8343,
+    "pairs": 2835,
+    "routes": 428
+  },
+  "decision": {
+    "detectable_near_to_far_decay": true,
+    "far_scale_remains_positive": true
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "local_social_propagation_identified": false,
+    "stop_number_is_exact_distance": false,
+    "survey_order_confounded_with_route_topology": true
+  },
+  "observed": {
+    "far_lags_7_9": 0.27178236785619014,
+    "far_over_near": 0.9168425197624247,
+    "near_lags_1_3": 0.2964329882154847,
+    "near_minus_far": 0.02465062035929455
+  },
+  "route_cluster_bootstrap": {
+    "far_ci95": [
+      0.24055960546099076,
+      0.2988486766513762
+    ],
+    "near_ci95": [
+      0.26943573862004827,
+      0.32120528603748494
+    ],
+    "near_minus_far_ci95": [
+      0.010056752644785564,
+      0.039780844381982865
+    ],
+    "near_minus_far_mean": 0.024892286784065725,
+    "replicates": 2000,
+    "seed": 2840237,
+    "two_sided_sign_p": 0.005997001499250375
+  },
+  "status": "posthoc_spatial_decay_contrast_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
