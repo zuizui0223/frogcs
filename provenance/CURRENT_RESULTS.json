@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "Measured common environmental triggers explain little of the allocation residual; repaired bounded residual dependence remains within species x route-night, is strongest among dry-route-silent taxa, persists to far route-position lags, and survives same-observer restriction."
+    "post_reopening_refinement": "Measured nonlinear weather, actual antecedent rainfall, observer turnover, recorded hearing impairment, major-noise timeout and wind explain little or none of the residual allocation; bounded dependence is strongest among dry-route-silent taxa and persists to far route-position lags."
   },
   "main_text_routing": {
     "keep": [
@@ -269,6 +269,46 @@
         "reason": "Full and dry-route-active GEE fits returned extreme intercepts and zero robust SE.",
         "qc": "revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md"
       }
+    },
+    "detection_augmented_common_environment": {
+      "pairs": 2718,
+      "routes": 421,
+      "states": 20,
+      "covariates": [
+        "hearing_impairment_fraction",
+        "timeout_fraction",
+        "mean_wind"
+      ],
+      "same_sample_rain72_concentration_residual": 0.2851203586886657,
+      "augmented_concentration_residual": 0.2713133315197962,
+      "fraction_baseline_residual_removed": 0.04842525883585165,
+      "augmented_concentration_p": 0.000999000999000999,
+      "same_sample_dry_route_silent_rho_bounded": 0.2856284097565475,
+      "augmented_dry_route_silent_rho_bounded": 0.28600453486317134,
+      "augmented_dry_route_silent_p": 0.000999000999000999,
+      "boundary": "Recorded route-run acoustic conditions do not explain the residual pattern; all detectability confounding is not excluded."
+    },
+    "logistic_normal_route_night_state": {
+      "role": "descriptive latent-state magnitude model conditional on fixed q; bounded rho_b remains the primary inferential effect size",
+      "all": {
+        "sigma_hat": 2.5629501293141432,
+        "sigma_profile_ci95": [
+          2.5227230516399475,
+          2.6040534328082536
+        ],
+        "latent_logistic_icc": 0.6662939659205337,
+        "one_sd_common_state_odds_multiplier": 12.974035996714965
+      },
+      "dry_route_silent": {
+        "sigma_hat": 2.884315962185036,
+        "sigma_profile_ci95": [
+          2.806284478358477,
+          2.961883747441835
+        ],
+        "latent_logistic_icc": 0.7166141304141169,
+        "one_sd_common_state_odds_multiplier": 17.89132506591594
+      },
+      "boundary": "Model-based latent-scale variance description only; not a published-monitoring design effect and not a unique biological mechanism. Numerical-convergence audit pending/recorded separately."
     }
   }
 }
