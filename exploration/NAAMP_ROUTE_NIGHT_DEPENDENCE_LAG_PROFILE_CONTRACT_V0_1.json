@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_route_night_dependence_lag_profile_v0_1",
+  "status": "posthoc_spatial_scale_diagnostic_fixed_before_lag_profile_readback",
+  "question": "Is residual within-species route-night dependence confined to adjacent route stops or does it persist across widely separated stop numbers?",
+  "population_and_prediction": "Exactly the same 2,835 weather-eligible strictly-prior-history focal pairs and fixed q matrices from the 72-h rainfall common-environment null.",
+  "primary_stratum": "Species acoustically silent across the entire drier route, defined using drier outcomes only.",
+  "secondary_stratum": "All fixed-support species x route-night clusters.",
+  "lag_statistic": {
+    "lags": [1,2,3,4,5,6,7,8,9],
+    "residual": "e_cj = y_cj - q_cj",
+    "rho_lag": "For stop-number lag d, sum e_cj*e_c,j+d divided by sqrt(sum e_cj^2 * sum e_c,j+d^2), pooled across all eligible clusters and valid j.",
+    "range": "Each lag coefficient is bounded in [-1,1]."
+  },
+  "pooled_scale_contrasts": {
+    "near": "Pool stop pairs with lag 1-3 and compute the same cosine residual correlation.",
+    "far": "Pool stop pairs with lag 7-9 and compute the same cosine residual correlation."
+  },
+  "null": {
+    "generator": "Independent Bernoulli draws from the same fixed q matrices.",
+    "replicates": 1000,
+    "seed": 2840228,
+    "tail": "upper",
+    "far_scale_support_rule": "Far-lag pooled coefficient exceeds its null upper 95% quantile with plus-one P < 0.05."
+  },
+  "interpretation": {
+    "far_positive": "Residual dependence is not confined to adjacent route positions, favoring a route-scale shared-state description over a purely adjacent-stop process.",
+    "boundary": "Stop-number lag is route topology, not exact geographic distance. Far-lag support does not exclude broad hydrological forcing, common breeding readiness, chain propagation, or other unmeasured processes and does not identify social facilitation."
+  },
+  "provenance": "No lag bins, strata, metric, seed, null or support rule may change after readback."
+}
