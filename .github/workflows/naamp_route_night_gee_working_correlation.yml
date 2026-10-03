@@ -1,0 +1,60 @@
+name: NAAMP route-night GEE corroboration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_CONTRACT_V0_1.json
+      - exploration/run_naamp_route_night_gee_working_correlation.py
+      - .github/workflows/naamp_route_night_gee_working_correlation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-route-night-gee
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed GEE corroboration
+        run: python exploration/run_naamp_route_night_gee_working_correlation.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835
+          assert x["coverage"]["cells"]==187690
+          print(json.dumps(x["gee"],indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record route-night GEE corroboration"
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((i*2))
+            done
+            exit 1
+          fi
