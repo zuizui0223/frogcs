@@ -1,0 +1,133 @@
+name: WFTS fail-closed guard QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json"
+      - "scripts/wfts/preflight_wfts_structure.py"
+      - "scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py"
+      - "scripts/wfts/generate_synthetic_wfts_fixture.py"
+      - ".github/workflows/wfts_fail_closed_guard_qa.yml"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+concurrency:
+  group: wfts-fail-closed-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+
+      - name: Generate canonical synthetic WFTS fixture
+        run: python scripts/wfts/generate_synthetic_wfts_fixture.py --outdir build/wfts-guards
+
+      - name: Build structurally ineligible 20-route fixture
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          d=Path("build/wfts-guards")
+          runs=pd.read_csv(d/"runs.csv")
+          matrix=pd.read_csv(d/"matrix.csv")
+          keep={f"R{i:03d}" for i in range(1,21)}
+          runs=runs[runs.route_id.isin(keep)].copy()
+          matrix=matrix[matrix.route_id.isin(keep)].copy()
+          runs.to_csv(d/"runs_20.csv",index=False)
+          matrix.to_csv(d/"matrix_20.csv",index=False)
+          print({"runs":len(runs),"matrix":len(matrix),"routes":runs.route_id.nunique()})
+          PY
+
+      - name: Preflight must FAIL without reading response columns
+        run: |
+          python scripts/wfts/preflight_wfts_structure.py             --runs build/wfts-guards/runs_20.csv             --matrix build/wfts-guards/matrix_20.csv             --output build/wfts-guards/preflight_fail.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/wfts-guards/preflight_fail.json").read_text())
+          assert x["coverage"]["gate_pass"] is False
+          assert x["response_columns_read"] is False
+          assert x["taxon_key_read"] is False
+          assert x["call_index_read"] is False
+          assert x["coverage"]["principal_routes"] < 30
+          print({"status":"PASS","coverage":x["coverage"]})
+          PY
+
+      - name: Primary must refuse a failed preflight
+        run: |
+          set +e
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py             --runs build/wfts-guards/runs_20.csv             --matrix build/wfts-guards/matrix_20.csv             --preflight-receipt build/wfts-guards/preflight_fail.json             --output build/wfts-guards/should_not_exist.json             > build/wfts-guards/failed_preflight_stdout.txt 2>&1
+          status=$?
+          set -e
+          test "$status" -ne 0
+          test ! -f build/wfts-guards/should_not_exist.json
+          echo "FAILED_PREFLIGHT_PRIMARY_REFUSAL=PASS"
+
+      - name: Build normal PASS preflight
+        run: |
+          python scripts/wfts/preflight_wfts_structure.py             --runs build/wfts-guards/runs.csv             --matrix build/wfts-guards/matrix.csv             --output build/wfts-guards/preflight_pass.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/wfts-guards/preflight_pass.json").read_text())
+          assert x["coverage"]["gate_pass"] is True
+          assert x["response_columns_read"] is False
+          print("PASS_PREFLIGHT=PASS")
+          PY
+
+      - name: Primary must refuse matrix byte drift after preflight
+        run: |
+          cp build/wfts-guards/matrix.csv build/wfts-guards/matrix_drift.csv
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("build/wfts-guards/matrix_drift.csv")
+          b=p.read_bytes()
+          # Semantically harmless newline append still changes bytes/hash.
+          p.write_bytes(b+b"\n")
+          PY
+          set +e
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py             --runs build/wfts-guards/runs.csv             --matrix build/wfts-guards/matrix_drift.csv             --preflight-receipt build/wfts-guards/preflight_pass.json             --output build/wfts-guards/should_not_exist_drift.json             > build/wfts-guards/drift_stdout.txt 2>&1
+          status=$?
+          set -e
+          test "$status" -ne 0
+          test ! -f build/wfts-guards/should_not_exist_drift.json
+          echo "MATRIX_BYTE_DRIFT_REFUSAL=PASS"
+
+      - name: Primary must refuse runs byte drift after preflight
+        run: |
+          cp build/wfts-guards/runs.csv build/wfts-guards/runs_drift.csv
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("build/wfts-guards/runs_drift.csv")
+          b=p.read_bytes()
+          p.write_bytes(b+b"\n")
+          PY
+          set +e
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py             --runs build/wfts-guards/runs_drift.csv             --matrix build/wfts-guards/matrix.csv             --preflight-receipt build/wfts-guards/preflight_pass.json             --output build/wfts-guards/should_not_exist_runs_drift.json             > build/wfts-guards/runs_drift_stdout.txt 2>&1
+          status=$?
+          set -e
+          test "$status" -ne 0
+          test ! -f build/wfts-guards/should_not_exist_runs_drift.json
+          echo "RUNS_BYTE_DRIFT_REFUSAL=PASS"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wfts-fail-closed-guard-qa
+          path: |
+            build/wfts-guards/preflight_fail.json
+            build/wfts-guards/preflight_pass.json
+            build/wfts-guards/failed_preflight_stdout.txt
+            build/wfts-guards/drift_stdout.txt
+            build/wfts-guards/runs_drift_stdout.txt
+          if-no-files-found: error
