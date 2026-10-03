@@ -1,0 +1,61 @@
+{
+  "analysis": "wfts_prospective_deep_template_alignment_v0_1",
+  "status": "prospective_secondary_frozen_before_any_wfts_frog_response_outcome_readback",
+  "role": "Secondary structural-mechanism confirmation only. Does not alter or rescue the frozen WFTS primary replication classification.",
+  "naamp_prediction_source": {
+    "deep_k4plus_beta": 0.026586957417988274,
+    "deep_k4plus_p": 0.001998001998001998,
+    "shallow_k1to3_beta": -0.0031105124354861248,
+    "deep_minus_shallow_beta": 0.0296974698534744,
+    "deep_minus_shallow_p": 0.02097902097902098,
+    "interpretation": "Historical-template coupling is stronger in deep k>=4 activation than shallow k=1-3 after exact k and fixed q are conditioned."
+  },
+  "population": {
+    "base": "Exactly the WFTS primary-confirmatory eligible matched comparisons after the frozen structural and strictly-prior-history gates.",
+    "taxon_cluster": "Taxa acoustically silent at all ten stations in the drier focal run.",
+    "history": "Only same route x SurveyPeriod runs before the earlier focal year with >=8/10 focal physical-site overlap, identical to the primary prior-history eligibility rule.",
+    "eligible_cluster": "Observed wet k>=1, at least one focal SiteID with strictly-prior CI>=2 and at least one focal SiteID without strictly-prior CI>=2."
+  },
+  "q_source": {
+    "authority": "revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json",
+    "definition": "Fixed q from the prospective 3-complete-day Daymet common-environment comparator, with strictly-prior site history, a=0.75 drier-state persistence, route-cross-fitted species environment response and pair-level total-incidence matching."
+  },
+  "exact_k_alignment": {
+    "k": "Observed number of wet calling-positive stations for the focal taxon.",
+    "prior_strong": "Focal physical SiteID at which that taxon reached call_index>=2 in at least one eligible strictly-prior run.",
+    "observed_overlap": "Number of wet active stations that are prior-strong.",
+    "conditional_null": "Condition exactly on observed k. Among all choose(10,k) station subsets, probability is proportional to the product of fixed q/(1-q) odds for included stations.",
+    "overlap_excess": "Observed overlap minus its exact q-conditioned expectation."
+  },
+  "primary_test": {
+    "endpoint": "Matched-design rainfall coefficient difference beta_deep(k>=4) - beta_shallow(k=1-3) for summed q-conditioned overlap excess within each focal pair.",
+    "simulations": 1000,
+    "seed": 2840236,
+    "tail": "upper",
+    "support_rule": "Observed deep-minus-shallow coefficient exceeds the simulated upper 95% bound and plus-one P<0.05."
+  },
+  "secondary_test": {
+    "endpoint": "Deep k>=4 rainfall coefficient for q-conditioned overlap excess.",
+    "support_rule": "Observed coefficient exceeds its simulated upper 95% bound and plus-one P<0.05."
+  },
+  "informativeness_gate": {
+    "minimum_deep_k4plus_clusters": 50,
+    "minimum_shallow_k1to3_clusters": 100,
+    "minimum_taxa": 5,
+    "minimum_routes": 20,
+    "failure_classification": "inconclusive_secondary_template_link"
+  },
+  "decision": {
+    "template_link_support": "Informativeness gate passes and both primary deep-minus-shallow contrast and secondary deep-only alignment pass.",
+    "template_link_non_support": "Informativeness gate passes but one or both fixed support rules fail.",
+    "inconclusive_secondary_template_link": "Informativeness gate fails."
+  },
+  "interpretation": {
+    "support": "Prospective external support that deep species-night activation is preferentially expressed through a recurrent strong-site template rather than a uniform whole-route switch.",
+    "boundary": "Does not identify individual fidelity, hydrological causation, social attraction, movement or a unique lower-level mechanism."
+  },
+  "anti_tuning": [
+    "Do not change k>=4 threshold, CI>=2 prior-strong definition, q source, exact-k conditioning, pair design, informativeness gate, simulation count, seed or tail after WFTS outcomes are opened.",
+    "Do not promote 1-day or 7-day weather sensitivities to the q source for this test."
+  ]
+}
