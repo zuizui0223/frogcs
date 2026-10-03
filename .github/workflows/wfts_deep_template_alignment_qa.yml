@@ -1,0 +1,107 @@
+name: WFTS prospective deep-template alignment QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - revision/WFTS_PROSPECTIVE_DEEP_TEMPLATE_ALIGNMENT_V0_1.json
+      - scripts/wfts/run_wfts_deep_template_alignment_v0_1.py
+      - scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py
+      - scripts/wfts/generate_synthetic_common_environment_runs.py
+      - scripts/wfts/generate_synthetic_wfts_fixture.py
+      - .github/workflows/wfts_deep_template_alignment_qa.yml
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+concurrency:
+  group: wfts-deep-template-alignment-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  synthetic-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Generate synthetic WFTS fixture
+        run: python scripts/wfts/generate_synthetic_wfts_fixture.py --outdir build/wfts-template
+      - name: Run structural preflight
+        run: |
+          python scripts/wfts/preflight_wfts_structure.py \
+            --runs build/wfts-template/runs.csv \
+            --matrix build/wfts-template/matrix.csv \
+            --output build/wfts-template/preflight.json
+      - name: Run frozen primary
+        run: |
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py \
+            --runs build/wfts-template/runs.csv \
+            --matrix build/wfts-template/matrix.csv \
+            --preflight-receipt build/wfts-template/preflight.json \
+            --output build/wfts-template/primary.json
+      - name: Generate response-free synthetic common weather
+        run: |
+          python scripts/wfts/generate_synthetic_common_environment_runs.py \
+            --runs build/wfts-template/runs.csv \
+            --output-runs build/wfts-template/common_env_runs.csv \
+            --receipt build/wfts-template/common_env_receipt.json
+      - name: Run prospective common-environment secondary
+        run: |
+          python scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py \
+            --runs build/wfts-template/runs.csv \
+            --matrix build/wfts-template/matrix.csv \
+            --preflight-receipt build/wfts-template/preflight.json \
+            --primary-result build/wfts-template/primary.json \
+            --common-env-runs build/wfts-template/common_env_runs.csv \
+            --common-env-receipt build/wfts-template/common_env_receipt.json \
+            --output build/wfts-template/secondary.json
+      - name: Run prospective deep-template alignment
+        run: |
+          python scripts/wfts/run_wfts_deep_template_alignment_v0_1.py \
+            --runs build/wfts-template/runs.csv \
+            --matrix build/wfts-template/matrix.csv \
+            --preflight-receipt build/wfts-template/preflight.json \
+            --primary-result build/wfts-template/primary.json \
+            --common-env-runs build/wfts-template/common_env_runs.csv \
+            --common-env-receipt build/wfts-template/common_env_receipt.json \
+            --secondary-result build/wfts-template/secondary.json \
+            --output build/wfts-template/template_alignment.json
+      - name: Audit code path without asserting ecological direction
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/wfts-template/template_alignment.json").read_text())
+          assert x["analysis"]=="wfts_prospective_deep_template_alignment_v0_1"
+          assert x["coverage"]["pairs"]==540
+          assert x["coverage"]["routes"]==30
+          assert x["decision"] in {
+              "template_link_support",
+              "template_link_non_support",
+              "inconclusive_secondary_template_link"
+          }
+          assert x["interpretation_boundary"]["can_change_primary_replication_classification"] is False
+          if x["coverage"]["deep_k4plus_clusters"]>0 and x["coverage"]["shallow_k1to3_clusters"]>0:
+              assert x["primary_deep_minus_shallow"] is not None
+              assert x["secondary_deep_only"] is not None
+          print({
+              "status":"PASS",
+              "coverage":x["coverage"],
+              "decision_is_not_qa_gate":x["decision"]
+          })
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wfts-deep-template-alignment-synthetic-qa
+          path: |
+            build/wfts-template/primary.json
+            build/wfts-template/secondary.json
+            build/wfts-template/template_alignment.json
+          if-no-files-found: error
