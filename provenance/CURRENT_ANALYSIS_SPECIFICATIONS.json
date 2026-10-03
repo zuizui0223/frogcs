@@ -127,7 +127,10 @@
     "observer_turnover_required_for_route_night_dependence": false,
     "exact_coordinate_distance_profile_authoritative": false,
     "gee_working_correlation_authoritative": false,
-    "stop_number_lag_is_exact_distance": false
+    "stop_number_lag_is_exact_distance": false,
+    "all_detectability_confounding_excluded": false,
+    "latent_logistic_icc_is_monitoring_design_effect": false,
+    "latent_state_model_identifies_unique_mechanism": false
   },
   "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and bounded species-by-route-night residual co-dependence. The original unbounded D statistic is retained only for historical auditability and breadth of departure. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
   "post_reopening_exploratory_chain": {
@@ -203,6 +206,27 @@
         "receipt": "exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_RECEIPT_V0_1.json",
         "status": "non-authoritative after numerical-degeneracy QC",
         "qc": "revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md"
+      },
+      {
+        "role": "detection-augmented common-environment falsification",
+        "contract": "exploration/NAAMP_DETECTION_AUGMENTED_COMMON_ENVIRONMENT_NULL_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_DETECTION_AUGMENTED_COMMON_ENVIRONMENT_NULL_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_detection_augmented_common_environment_null.py",
+        "status": "authoritative post-hoc measured-observation-condition falsification; does not exclude all detectability confounding"
+      },
+      {
+        "role": "logistic-normal species x route-night latent-state magnitude",
+        "contract": "exploration/NAAMP_LOGISTIC_NORMAL_ROUTE_NIGHT_STATE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_LOGISTIC_NORMAL_ROUTE_NIGHT_STATE_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_logistic_normal_route_night_state.py",
+        "status": "descriptive magnitude model conditional on fixed q; bounded rho_b remains primary inferential effect size"
+      },
+      {
+        "role": "numerical convergence audit for logistic-normal latent-state model",
+        "contract": "exploration/NAAMP_LOGISTIC_NORMAL_NUMERICAL_CONVERGENCE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_LOGISTIC_NORMAL_NUMERICAL_CONVERGENCE_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_logistic_normal_numerical_convergence.py",
+        "status": "numerical validation only"
       }
     ],
     "metric_authority": {
