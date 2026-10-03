@@ -99,9 +99,13 @@
     "occupancy_or_colonization": false,
     "unique_lower_level_mechanism": false,
     "standardized_residual_dependence_D_is_Pearson_correlation": false,
-    "monitoring_diagnostic_is_published_occupancy_reanalysis": false
+    "monitoring_diagnostic_is_published_occupancy_reanalysis": false,
+    "historical_D_is_bounded_correlation": false,
+    "design_effect_from_historical_D_authorized": false,
+    "stop_number_lag_is_exact_geographic_distance": false,
+    "observer_turnover_required_for_route_night_dependence": false
   },
-  "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and standardized residual dependence D. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
+  "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and bounded species-by-route-night residual co-dependence. The original unbounded D statistic is retained only for historical auditability and breadth of departure. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
   "post_reopening_exploratory_chain": {
     "reopening_date": "2026-10-03",
     "provenance_boundary": "All entries below are post-hoc exploratory analyses on the already-explored NAAMP discovery data. They are not independent confirmation and are not part of the original stopped mechanism sequence.",
@@ -141,6 +145,24 @@
         "contract": "exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_CONTRACT_V0_2.json",
         "receipt": "exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_RECEIPT_V0_2.json",
         "script": "exploration/run_naamp_monitoring_independence_impact_v0_2.py"
+      },
+      {
+        "role": "bounded repair of species x route-night residual dependence",
+        "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_bounded_route_night_residual_dependence.py"
+      },
+      {
+        "role": "route-position lag profile of residual dependence",
+        "contract": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_route_night_dependence_lag_profile.py"
+      },
+      {
+        "role": "same-observer sensitivity of bounded route-night dependence",
+        "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_bounded_route_night_same_observer.py"
       }
     ]
   }
