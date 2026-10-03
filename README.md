@@ -30,7 +30,7 @@ The conditional residual was **0.2969**, outside the simulated 95% range (**−0
 
 Strong wet-state chorusing also preferentially reappeared at species-specific historically strong sites (**β = 0.1511**), and that targeting strengthened toward the survey closer to rain (**β = 0.02449**).
 
-Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. Under the strongest measured comparator, the standardized residual-dependence statistic was **D = 0.416** (independent-null P = 0.000999), rising to **D = 0.567** among taxa silent across the drier route. D is a residual-dependence diagnostic, not a Pearson correlation coefficient.
+Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. A repaired bounded residual-dependence coefficient was **rho_b = 0.172** overall and **0.285** among taxa silent across the drier route (both P = 0.000999). In the silent stratum, dependence persisted from stop-number lags 1–3 (**0.296**) to lags 7–9 (**0.272**), and the same-observer subset retained rho_b = **0.276**.
 
 ## Main ecological interpretation
 
