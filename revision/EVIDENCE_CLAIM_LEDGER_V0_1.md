@@ -44,12 +44,13 @@ These analyses were conducted only after the original same-data stopping rule wa
 |---|---|---|---|
 | Flexible common-environment null | nonlinear rain recency + temperature + season removed **11.4%** of principal residual; remaining P=0.000999 | measured nonlinear route-night weather explains only a small part of concentration | post-hoc common-cause falsification |
 | Actual 72-h rainfall null | on 2,835 same-sample pairs, residual **0.318 → 0.297** (**6.5%** removed); P=0.000999 | actual antecedent rainfall amount predicts activation but does not reproduce multi-site allocation | post-hoc common-cause falsification |
-| Direct route-night residual dependence | standardized residual-dependence **D=0.416**; independent null −0.0034–0.0034; P=0.000999 | stop outcomes remain non-independent within species × route-night after the strongest measured comparator | scale-of-dependence diagnostic |
-| Dry-state decomposition | dry-route-silent **D=0.567** vs dry-route-active **D=0.336**, both P=0.000999 | residual dependence directly occurs in the pre-wet stratum that can generate acoustically route-new taxa | linkage to principal endpoint |
-| Residual-dependence breadth | **40/40** eligible taxa positive; median D=0.420; top1 positive share 11.7%; all leave-one-species-out D >0 | route-night dependence is taxonomically broad, not a one-species artefact | breadth defence |
-| Monitoring uncertainty | pair-cluster SE > IID in **38/39** species (median 1.61×); route-cluster SE > IID in **36/39** (median 1.48×) | ten route stops need not provide ten independent pieces of acoustic-state information | applied implication, not occupancy-trend reanalysis |
+| Bounded route-night residual dependence | **rho_b=0.172** overall; **0.285** in dry-route-silent taxa vs **0.127** in dry-route-active taxa; all P=0.000999 | stop outcomes retain positive within-species route-night dependence after the strongest measured comparator, especially in the pre-wet silent stratum | primary scale-of-dependence diagnostic |
+| Route-topology lag profile | dry-route-silent near lags 1–3 **0.296** vs far lags 7–9 **0.272**; every lag 1–9 positive; far P=0.000999 | residual dependence is not confined to adjacent route positions | spatial-scale diagnostic; stop number is not exact distance |
+| Same-observer sensitivity | 2,191 pairs: **rho_b=0.163** overall and **0.276** in dry-route-silent taxa; both P=0.000999 | observer turnover is not required for route-night dependence | detection-process defence |
+| Historical unbounded D breadth audit | **40/40** eligible taxa positive; top1 positive numerator share 11.7%; all leave-one-species-out D >0 | the positive departure is taxonomically broad, not a one-species artefact | breadth defence only; D is not an effect-size correlation |
+| Monitoring uncertainty | pooled route-cluster SE **2.69×** IID; pair-cluster SE > IID in **38/39** species (median 1.61×); route-cluster SE > IID in **36/39** (median 1.48×) | ten route stops need not provide ten independent pieces of acoustic-state information | applied implication, not occupancy-trend reanalysis |
 
-**Terminology rule:** D is a standardized residual-dependence statistic, not a Pearson correlation coefficient and not a universal ICC. Do not convert it into an exact effective sample size in the main paper.
+**Terminology rule:** the earlier D statistic is an unbounded standardized dependence score retained for historical auditability only. The repaired bounded coefficient `rho_b` is the primary residual-dependence effect size. Neither is converted into an effective-stop count; monitoring consequences are quantified directly with clustered standard errors.
 
 ---
 
