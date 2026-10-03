@@ -1,0 +1,46 @@
+{
+  "analysis": "naamp_leave_one_taxon_out_stop_night_hotness_null_v0_1",
+  "status": "posthoc_cross_taxon_common_cause_falsification_fixed_before_endpoint_readback",
+  "question": "Can contemporaneous stop-night conditions shared across taxa explain the residual within-taxon concentration and route-night dependence?",
+  "population": "Exactly the 2,835 weather-eligible strictly-prior-history pairs and strongest fixed 72-h-rainfall q matrices.",
+  "common_stop_night_effect": {
+    "unit": "focal pair x wet stop x target taxon",
+    "leave_one_taxon_out": true,
+    "training_outcomes": "At a focal wet stop, use only the wet calling-presence outcomes of all other fixed-support taxa in that pair.",
+    "offset": "Their fixed strongest-comparator logit(q) values.",
+    "model": "One penalized logistic calibration intercept delta_j,-s shared across the other taxa at that stop.",
+    "penalty": "Fixed Gaussian/ridge penalty 0.5 * delta^2 with lambda=1.0.",
+    "bounds": [
+      -5,
+      5
+    ],
+    "minimum_other_taxa": 3,
+    "fallback": "delta=0 when fewer than 3 other taxa are available.",
+    "application": "Apply delta_j,-s to the target taxon's fixed q at that stop only.",
+    "interpretation": "Captures contemporaneous stop-wide conditions that affect multiple taxa, including unmeasured local weather/hydrology, route-order/time effects, or shared observation conditions, without using the target taxon's own wet outcome."
+  },
+  "pair_rematching": "After all leave-one-taxon-out stop shifts are applied, solve one common pair-level logit shift so expected total wet incidence again matches the observed total.",
+  "simulation": {
+    "generator": "Independent Bernoulli from the leave-one-taxon-out stop-hotness-adjusted, pair-rematched q.",
+    "replicates": 1000,
+    "seed": 2840235
+  },
+  "endpoints": {
+    "concentration": "Existing conditional within-taxon concentration residual controlling route-new-taxon and extra-stop coefficients.",
+    "bounded_dependence": "Existing bounded rho_b among dry-route-silent taxa.",
+    "far_lag": "Existing pooled stop-number lag 7-9 coefficient among dry-route-silent taxa."
+  },
+  "decision": {
+    "stop_night_hotness_sufficient": "All three observed endpoints fall within the adjusted independent-null reference intervals.",
+    "residual_species_route_night_structure": "Concentration remains above its upper residual bound and bounded/far-lag dependence remain above their upper null bounds.",
+    "mixed": "Any other combination."
+  },
+  "interpretation": {
+    "residual": "Shared contemporaneous stop-night hotness across taxa is insufficient; the remaining structure requires a taxon-specific route-night x place component or another process not shared uniformly across taxa.",
+    "sufficient": "A substantial part of the apparent species-night structure can be explained by contemporaneous stop-wide conditions shared across taxa.",
+    "boundary": "This is a deliberately strong post-hoc common-cause adjustment using other taxa from the same wet survey; it is not independent prediction and does not identify which stop-night variable generated the shared hotness."
+  },
+  "anti_tuning": [
+    "Do not change leave-one-taxon-out rule, penalty lambda=1, bounds, minimum-other-taxa threshold, pair rematching, simulation count, seed, endpoint definitions or tails after readback."
+  ]
+}
