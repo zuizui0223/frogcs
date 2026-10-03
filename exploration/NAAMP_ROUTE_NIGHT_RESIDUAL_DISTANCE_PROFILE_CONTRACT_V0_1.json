@@ -1,0 +1,33 @@
+{
+  "analysis": "naamp_route_night_residual_distance_profile_v0_1",
+  "status": "posthoc_mechanism_discrimination_fixed_after_global_dependence_before_distance_profile_readback",
+  "known_before_this_contract": {
+    "global_standardized_residual_dependence_D": 0.41585612605080213,
+    "dry_route_silent_D": 0.5666108355869385,
+    "taxonomic_breadth": "40/40 information-eligible taxa had positive D"
+  },
+  "question": "Is residual species-by-route-night dependence confined to nearby stop pairs, or does it persist across the full spatial extent of routes?",
+  "population_and_prediction": "Exactly the 2,835 weather-eligible strictly-prior-history pairs and fixed q matrices from the 72-h rainfall common-environment null.",
+  "geometry": {
+    "coordinates": "Pinned NAAMP physical SiteID coordinate file already used by the audited ERA5 antecedent-rain analysis.",
+    "pair_distance": "Great-circle distance between every unordered pair of the ten physical SiteIDs in the focal wet route.",
+    "binning": "Compute distance quartile boundaries from geometry only, before joining residual outcomes; then assign all species x route-night stop pairs to Q1-Q4 using those fixed boundaries."
+  },
+  "statistic": "Within each distance quartile, compute the same standardized residual-dependence D: sum e_j e_k divided by sum sqrt[q_j(1-q_j)q_k(1-q_k)].",
+  "null": {
+    "generator": "Independent Bernoulli draws from the same fixed heterogeneous q matrices.",
+    "replicates": 1000,
+    "seed": 2840227,
+    "tail": "upper"
+  },
+  "outputs": [
+    "distance quartile boundaries and median distance per quartile",
+    "observed D, null 95% interval and plus-one P for Q1-Q4",
+    "farthest-quartile D / nearest-quartile D ratio when estimable"
+  ],
+  "interpretation": {
+    "broad_spatial_dependence": "Farthest distance quartile has D above its independent-null upper 95% bound with plus-one P < 0.05.",
+    "boundary": "Persistence at long distance argues against a dependence pattern confined to immediately neighbouring stops, but does not exclude shared hydrology, broad environmental forcing, cascading acoustic/social effects, or other latent route-night processes."
+  },
+  "provenance": "No distance binning, q model, seed, statistic, null, tail or interpretation rule may change after profile readback."
+}
