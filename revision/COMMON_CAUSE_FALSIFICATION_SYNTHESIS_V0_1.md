@@ -124,9 +124,17 @@ A separately fixed logistic-normal model treated the strongest measured-comparat
 
 A prespecified numerical audit passed: the 20-node sigma values differed from 60-node estimates by **1.03%** and **1.69%**, and 40-node estimates by **0.02%** and **0.12%**. These quantities are model-based latent-scale descriptions, not occupancy ICCs, monitoring design effects or route-clustered confidence statements. The primary inferential quantity remains bounded `rho_b` against the independent-Bernoulli null.
 
+### Is one uniform species-night scalar state enough?
+
+A stronger structural test estimated the dry-route-silent latent distribution in one deterministic route fold and generated only the opposite fold. The transferred scalar state **was sufficient for the concentration endpoint**: observed concentration β = **1.7136**, scalar prediction = **1.9204**, and the observed conditional residual **−0.2069** lay inside the scalar-generator interval **−0.2797 to 0.2867**.
+
+However, the same scalar state was **too coherent across stops**. It predicted near-lag and far-lag residual dependence of about **0.475** in both cases, whereas the observations were only **0.296** and **0.272**; both observed values lay below the scalar-generator predictive intervals.
+
+This rules out the simplest picture of a whole-route all-or-none species switch. The pattern is instead **route-spanning but spatially non-uniform**: enough species-night state variation exists to generate the heavy within-taxon tail, but its expression is restricted to a subset of sites. Together with historical-site targeting, the parsimonious structural description is a **fast species-night gate acting on a distributed slow species × place template**.
+
 ## Biological interpretation now supported
 
-> **A frog species' acoustic state on a given route-night behaves as a shared landscape-scale state: after measured rainfall amount, nonlinear rain recency, temperature, season, historical physical-site use, dry-state persistence and total activity are represented, calling outcomes remain positively dependent within the same species and night, including among taxa previously silent across the route and at widely separated route positions.**
+> **A frog species' acoustic state on a given route-night is distributed across the landscape but not uniformly: after measured weather, recorded acoustic conditions, historical physical-site use, dry-state persistence and total activity are represented, a fast species-night gate is expressed across a spatially separated subset of recurrent sites.**
 
 This establishes the **scale of dependence**, not its unique lower-level cause.
 
@@ -170,7 +178,8 @@ The stronger direction is:
 
 1. retain the ecological discovery as **species-by-route-night landscape-scale dependence**;
 2. show that the strongest measured common environmental triggers explain little of the allocation residual;
-3. describe the remaining object as a **species-by-route-night shared landscape state**, especially pronounced among taxa silent on the drier route and persisting to far route-position lags;
-4. note that same-observer restriction leaves the dependence essentially intact, so observer turnover is not required;
-5. elevate the monitoring-design implication cautiously: clustered uncertainty is broadly larger across species, but no published occupancy-trend estimator has yet been re-fit;
-6. keep WFTS as the prospective confirmation, with the already frozen secondary common-environment diagnostic in `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_1.json`.
+3. describe the remaining object as a **distributed, non-uniform species-by-route-night state**: a scalar gate explains concentration but overpredicts whole-route coherence;
+4. link that fast state to the independently observed slow historical site template, yielding a fast-gate × slow-template description;
+5. note that same-observer and measured detection-condition adjustments leave the dependence essentially intact;
+6. elevate the monitoring-design implication cautiously: clustered uncertainty is broadly larger across species, but no published occupancy-trend estimator has yet been re-fit;
+7. keep WFTS as the prospective confirmation under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`, including the frozen secondary common-environment / bounded-dependence / far-lag diagnostics.
