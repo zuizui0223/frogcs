@@ -1,0 +1,66 @@
+name: NAAMP residual-dependence distance profile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_ROUTE_NIGHT_RESIDUAL_DISTANCE_PROFILE_CONTRACT_V0_1.json
+      - exploration/run_naamp_route_night_residual_distance_profile.py
+      - .github/workflows/naamp_route_night_residual_distance_profile.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-residual-distance-profile
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed distance profile
+        run: python exploration/run_naamp_route_night_residual_distance_profile.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_ROUTE_NIGHT_RESIDUAL_DISTANCE_PROFILE_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835, x["coverage"]
+          assert all(k in x["distance_bins"] for k in ["Q1","Q2","Q3","Q4"])
+          print(json.dumps({
+            "coverage":x["coverage"],
+            "geometry":x["geometry"],
+            "distance_bins":x["distance_bins"],
+            "ratio":x["farthest_to_nearest_D_ratio"],
+            "decision":x["decision"]
+          },indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_ROUTE_NIGHT_RESIDUAL_DISTANCE_PROFILE_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record residual-dependence distance profile"
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((i*2))
+            done
+            exit 1
+          fi
