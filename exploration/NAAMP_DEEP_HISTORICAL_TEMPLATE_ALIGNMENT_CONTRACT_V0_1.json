@@ -10,7 +10,7 @@
   "population": {
     "base": "Exactly the 2,835 ERA5-weather-eligible strictly-prior-history focal pairs.",
     "species_cluster": "Taxa acoustically silent across all ten stops in the drier focal run.",
-    "history": "Use only runs in the same route x seasonal RunNumber before the earlier focal year.",
+    "history": "Use only runs in the same route x seasonal RunNumber before the earlier focal year that satisfy the same >=8/10 focal-SiteID overlap rule as the principal strictly-prior-history comparator.",
     "eligible_cluster": "At least one focal SiteID with prior CI>=2 and at least one focal SiteID without prior CI>=2; wet k>=1."
   },
   "quantities": {
@@ -21,14 +21,14 @@
   },
   "q_conditioned_null": {
     "q_source": "Fixed stop probabilities from the strongest cross-fitted 72-h rainfall + strictly-prior SiteID-history + dry-persistence + pair-incidence-matching comparator.",
-    "conditioning": "Condition exactly on the observed wet k for each species x route-night cluster.",
+    "conditioning": "For every observed eligible species x route-night cluster, fix the observed wet k exactly. Randomize only which k of the ten stops are active.",
     "subset_probability": "Among all choose(10,k) stop subsets, probability is proportional to product_j odds(q_j) for included stops; this is the exact independent-Bernoulli distribution conditional on total k.",
     "expected_overlap": "Exact enumeration of all stop subsets, no Monte Carlo required for cluster-level expectation."
   },
   "primary_test": {
     "endpoint": "Matched-design rainfall coefficient of summed q-conditioned overlap_excess per focal pair, restricted to deep clusters k>=4.",
     "regression": "Same residualized rain-contrast design used by the principal concentration analysis.",
-    "null": "1,000 simulations generated independently from q and then conditioned/standardized by the same overlap-excess calculation.",
+    "null": "For each eligible observed cluster, draw 1,000 exact-k stop subsets from the conditional independent-Bernoulli distribution implied by its fixed q; aggregate the centered overlap excess by pair and refit the same rainfall coefficient.",
     "seed": 2840233,
     "support_rule": "Observed deep-template-alignment coefficient exceeds the upper 95% null coefficient interval; plus-one upper-tail P<0.05."
   },
