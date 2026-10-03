@@ -50,5 +50,6 @@ jobs:
             echo "Receipt unchanged"
           else
             git commit -m "Record dry-state route-night dependence decomposition"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
