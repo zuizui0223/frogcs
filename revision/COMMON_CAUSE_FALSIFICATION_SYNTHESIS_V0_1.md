@@ -123,6 +123,18 @@ The recalibrated null remained insufficient:
 
 Thus a constant species calibration error is not the missing state variable; the residual is genuinely event-specific at the species × route-night level.
 
+### Contemporaneous stop-night hotness shared across taxa
+
+We then used the same wet survey itself as a deliberately strong common-cause falsification while preventing target-taxon leakage. For each target taxon and stop, a ridge-penalized stop-night intercept was estimated from **all other fixed-support taxa only**, using their fixed q values as offsets. This can absorb contemporaneous local conditions shared across taxa, including route-order/time progression, unmeasured local weather or hydrology, and other stop-wide observation conditions.
+
+The adjustment was non-trivial: mean stop-richness prediction RMSE improved from **0.7752 to 0.5810**. Yet the target-taxon structure did not disappear:
+
+- concentration residual = **0.3182**, null 95% **−0.1386 to 0.1220**, P = **0.000999**;
+- dry-route-silent bounded dependence = **0.2985**, P = **0.000999**;
+- far-lag 7–9 dependence = **0.2842**, P = **0.000999**.
+
+Thus the remaining event-level state is not adequately described as a stop-night condition shared uniformly across taxa. The supported statistical structure is more specific: a **taxon-specific route-night gate whose spatial expression varies among sites**.
+
 ### Taxonomic breadth
 
 A breadth audit fixed before the bounded repair used the historical D score. All **40/40** information-eligible taxa had positive departures; the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not treated as comparable effect sizes. The audit supports breadth of the positive departure, not a common effect magnitude or mechanism.
