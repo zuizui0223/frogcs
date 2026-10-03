@@ -223,15 +223,27 @@ def main():
             })
 
     pair_run_ids = {p[k] for p in pair_rows for k in ("wet", "dry")}
+    pair_keys = {(p["state"], p["route"], run_meta[p["wet"]]["RunNumber"]) for p in pair_rows}
+    pair_strata_run_ids = {
+        rid for rid in eligible_ids
+        if (run_meta[rid]["State"], run_meta[rid]["RouteNumber"], run_meta[rid]["RunNumber"]) in pair_keys
+    }
+    pair_strata_extra_runs = sorted(pair_strata_run_ids - pair_run_ids)
+
     pair_positive_cells = {x for x in eligible_positive_cells if x[0] in pair_run_ids}
+    pair_strata_positive_cells = {x for x in eligible_positive_cells if x[0] in pair_strata_run_ids}
     pair_positive_rows = 0
+    pair_strata_positive_rows = 0
     for c in rows["Counts.csv"]:
         rid = (c.get("RunID") or "").strip()
         st = (c.get("StopNumber") or "").strip()
         sp = (c.get("Species") or "").strip()
         ci = (c.get("CallingIndex") or "").strip()
-        if rid in pair_run_ids and st in sampled.get(rid, set()) and ci in POS and sp:
+        ok = st in sampled.get(rid, set()) and ci in POS and sp
+        if rid in pair_run_ids and ok:
             pair_positive_rows += 1
+        if rid in pair_strata_run_ids and ok:
+            pair_strata_positive_rows += 1
 
     eligible_stop_opportunities = sum(len(sampled[rid]) for rid in eligible_ids)
     potential_cells = eligible_stop_opportunities * len(eligible_taxa)
@@ -294,17 +306,37 @@ def main():
             "routes": len({(p["state"], p["route"]) for p in pair_rows}),
             "states": len({p["state"] for p in pair_rows}),
             "pair_side_survey_instances": 2 * len(pair_rows),
-            "unique_runs_used": len(pair_run_ids),
-            "unique_run_stop_opportunities": 10 * len(pair_run_ids),
-            "positive_call_rows_ci1_3_in_unique_pair_runs": pair_positive_rows,
-            "unique_positive_run_stop_taxon_cells_in_unique_pair_runs": len(pair_positive_cells),
+            "unique_runs_actually_used_as_wet_or_dry": len(pair_run_ids),
+            "unique_run_stop_opportunities_actually_used": 10 * len(pair_run_ids),
+            "positive_call_rows_ci1_3_in_actual_pair_runs": pair_positive_rows,
+            "unique_positive_run_stop_taxon_cells_in_actual_pair_runs": len(pair_positive_cells),
+            "pair_strata_envelope": {
+                "eligible_runs_in_any_stratum_that_contains_a_pair": len(pair_strata_run_ids),
+                "run_stop_opportunities": 10 * len(pair_strata_run_ids),
+                "positive_call_rows_ci1_3": pair_strata_positive_rows,
+                "unique_positive_run_stop_taxon_cells": len(pair_strata_positive_cells),
+                "extra_runs_not_actually_used_as_pair_sides": len(pair_strata_extra_runs),
+                "extra_run_ids": pair_strata_extra_runs,
+                "extra_run_metadata": [
+                    {
+                        "RunID": rid,
+                        "State": run_meta[rid]["State"],
+                        "RouteNumber": run_meta[rid]["RouteNumber"],
+                        "RunNumber": run_meta[rid]["RunNumber"],
+                        "SurveyYear": run_meta[rid]["SurveyYear"],
+                        "DaysSinceRain": run_meta[rid]["DaysSinceRain"],
+                        "positive_cells": sum(1 for x in eligible_positive_cells if x[0] == rid)
+                    }
+                    for rid in pair_strata_extra_runs
+                ]
+            },
             "exact_consecutive_year_pairs": sum(1 for p in pair_rows if p["year_gap"] == 1),
             "fraction_exact_consecutive_year": sum(1 for p in pair_rows if p["year_gap"] == 1) / len(pair_rows),
         },
         "rain_data_volume": {
             "naamp_days_since_rain": {
                 "eligible_run_level_values": len(eligible_ids),
-                "unique_runs_used_in_matched_pairs": len(pair_run_ids),
+                "unique_runs_actually_used_in_matched_pairs": len(pair_run_ids),
                 "pair_side_values_with_run_reuse": 2 * len(pair_rows),
                 "unit": "days since last reported rain",
             },
