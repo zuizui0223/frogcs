@@ -1,0 +1,40 @@
+{
+  "analysis": "naamp_crossfit_species_calibrated_common_environment_null_v0_1",
+  "status": "posthoc_miscalibration_falsification_fixed_before_species_calibrated_endpoint_readback",
+  "question": "Can persistent species-level calibration error in the strongest fixed q comparator explain the apparent within-species route-night dependence and concentration?",
+  "population": "Exactly the 2,835 weather-eligible strictly-prior-history pairs and fixed q matrices from the 72-h rainfall common-environment comparator.",
+  "calibration": {
+    "split": "Existing deterministic SHA256 route fold A/B.",
+    "training_data": "All fixed-support species x stop wetter-survey outcomes and their fixed q values in the training route fold.",
+    "model": "For each species fit one calibration intercept b_s with logit(p)=logit(q)+b_s by maximum likelihood.",
+    "eligibility": {
+      "minimum_stop_cells": 200,
+      "minimum_positive_cells": 20,
+      "minimum_negative_cells": 20
+    },
+    "fallback": "b_s=0 for ineligible species.",
+    "application": "Apply b_s only to focal routes in the opposite fold, then solve one pair-level common logit shift so expected total wet incidence again equals the observed total."
+  },
+  "simulation": {
+    "generator": "Independent Bernoulli from the recalibrated, pair-rematched q values.",
+    "replicates": 1000,
+    "seed": 2840233
+  },
+  "endpoints": {
+    "concentration": "Existing conditional concentration residual controlling simulated route-new-taxon and total extra-stop coefficients.",
+    "bounded_dependence": "Existing bounded rho_b among dry-route-silent taxa, evaluated against recalibrated q.",
+    "far_lag": "Existing pooled lag 7-9 residual coefficient among dry-route-silent taxa, evaluated against recalibrated q."
+  },
+  "decision": {
+    "species_miscalibration_sufficient": "All observed endpoints fall within their independent recalibrated-null 95% reference intervals / concentration residual envelope.",
+    "residual_route_night_dependence_after_species_calibration": "Concentration remains above its upper 95% residual bound and both bounded-dependence and far-lag diagnostics remain above their independent-null upper 95% bounds.",
+    "mixed": "Any other combination."
+  },
+  "interpretation": {
+    "residual": "A route-night shared component remains after cross-fitted species-level marginal calibration, so constant species under/overprediction is insufficient.",
+    "boundary": "This still does not identify a biological lower-level mechanism."
+  },
+  "anti_tuning": [
+    "Do not change calibration eligibility, folds, q source, pair rematching, simulation count, seed, endpoint formulas or tails after readback."
+  ]
+}
