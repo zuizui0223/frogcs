@@ -106,11 +106,16 @@
     "external_prospective_replication_required": true
   },
   "claim_spine": {
-    "biological": "strong chorus state switching -> excess within-taxon multi-site concentration -> recurrent species-specific physical-site placement",
-    "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
+    "biological": "silence-to-strong-chorus switching -> non-independent multi-site organization -> preferential reuse of recurrent taxon-specific chorus locations",
+    "conceptual": "favourable-night reproductive acoustic activity is organized at an intermediate spatial scale: broader than independent wetland responses, more selective than a uniform route-wide switch",
+    "three_questions": [
+      "Does recent rain mainly amplify existing calling or switch silent species x sites into substantial chorus?",
+      "When a taxon becomes active, do route stops behave independently or is activity organized across separated locations?",
+      "When activity is spatially deep, is it uniform across the route or preferentially expressed at recurrent taxon-specific chorus locations?"
+    ],
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "After measured weather, observation conditions, species calibration and cross-taxon stop-night hotness are represented, the remaining state is taxon-specific, event-specific and route-spanning with modest route-position decay. A uniform scalar taxon-night shift overpredicts coherence, while deep k>=4 expression couples more strongly than shallow activation to strictly-prior strong-chorus sites; that contrast is Monte-Carlo stable across fixed audit seeds."
+    "post_reopening_refinement": "Post-hoc diagnostics constrain the residual spatial form: measured common causes are insufficient, far-route dependence remains substantial but declines modestly, a uniform scalar taxon-night shift is too coherent, and deep expression preferentially overlaps strictly-prior strong-chorus sites after exact k and fixed-q site propensity are held constant."
   },
   "main_text_routing": {
     "keep": [
@@ -142,7 +147,7 @@
       "literal synchrony",
       "universal pulse template"
     ],
-    "preferred_claim": "conditional species-by-route-night spatial dependence after explicit first-order ecological comparators"
+    "preferred_claim": "conditional spatial organization of frog reproductive acoustic activity after explicit taxon-response and historical-site comparators"
   },
   "post_reopening_exploratory": {
     "provenance": {
