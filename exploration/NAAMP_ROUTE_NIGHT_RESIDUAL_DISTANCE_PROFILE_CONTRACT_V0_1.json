@@ -11,7 +11,8 @@
   "geometry": {
     "coordinates": "Pinned NAAMP physical SiteID coordinate file already used by the audited ERA5 antecedent-rain analysis.",
     "pair_distance": "Great-circle distance between every unordered pair of the ten physical SiteIDs in the focal wet route.",
-    "binning": "Compute distance quartile boundaries from geometry only, before joining residual outcomes; then assign all species x route-night stop pairs to Q1-Q4 using those fixed boundaries."
+    "binning": "Compute distance quartile boundaries from geometry only, before joining residual outcomes; then assign all species x route-night stop pairs to Q1-Q4 using those fixed boundaries.",
+    "missing_coordinate_rule": "Use an unordered stop pair only when both physical SiteIDs have pinned coordinates. Do not exclude or retain whole routes based on the residual outcome or observed D. Report the number and fraction of the 45 possible stop pairs with known distance; quartile boundaries are calculated from all coordinate-known focal route-pair geometries before residuals are joined."
   },
   "statistic": "Within each distance quartile, compute the same standardized residual-dependence D: sum e_j e_k divided by sum sqrt[q_j(1-q_j)q_k(1-q_k)].",
   "null": {
