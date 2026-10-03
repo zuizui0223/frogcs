@@ -252,6 +252,13 @@
         "receipt": "exploration/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_CONTRAST_RECEIPT_V0_1.json",
         "script": "exploration/run_naamp_deep_vs_shallow_template_alignment_contrast.py",
         "status": "explicitly post-hoc direct contrast; positive deep-minus-shallow template coupling"
+      },
+      {
+        "role": "cross-fit species-level calibration falsification",
+        "contract": "exploration/NAAMP_CROSSFIT_SPECIES_CALIBRATION_NULL_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_CROSSFIT_SPECIES_CALIBRATION_NULL_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_crossfit_species_calibration_null.py",
+        "status": "post-hoc calibration falsification; concentration and route-night dependence remain"
       }
     ],
     "metric_authority": {
