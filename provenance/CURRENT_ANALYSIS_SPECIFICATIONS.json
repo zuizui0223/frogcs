@@ -134,7 +134,8 @@
     "uniform_all_stop_scalar_state_sufficient_for_full_spatial_structure": false,
     "deep_template_alignment_identifies_individual_fidelity": false,
     "deep_template_alignment_identifies_unique_mechanism": false,
-    "fast_gate_slow_template_is_prospectively_preregistered_NAAMP_hypothesis": false
+    "fast_gate_slow_template_is_prospectively_preregistered_NAAMP_hypothesis": false,
+    "cross_taxon_stop_night_hotness_sufficient": false
   },
   "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and bounded species-by-route-night residual co-dependence. The original unbounded D statistic is retained only for historical auditability and breadth of departure. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
   "post_reopening_exploratory_chain": {
@@ -259,6 +260,13 @@
         "receipt": "exploration/NAAMP_CROSSFIT_SPECIES_CALIBRATION_NULL_RECEIPT_V0_1.json",
         "script": "exploration/run_naamp_crossfit_species_calibration_null.py",
         "status": "post-hoc calibration falsification; concentration and route-night dependence remain"
+      },
+      {
+        "role": "leave-one-taxon-out contemporaneous stop-night hotness falsification",
+        "contract": "exploration/NAAMP_LOTO_STOP_NIGHT_HOTNESS_NULL_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_LOTO_STOP_NIGHT_HOTNESS_NULL_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_loto_stop_night_hotness_null.py",
+        "status": "post-hoc cross-taxon common-cause falsification; residual target-taxon route-night structure remains"
       }
     ],
     "metric_authority": {
