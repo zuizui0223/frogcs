@@ -423,6 +423,30 @@
         "positive_supported": true
       },
       "provenance": "Explicitly post-hoc direct contrast; descriptive deep-shallow means were known before this contrast contract."
+    },
+    "crossfit_species_calibration": {
+      "pairs": 2835,
+      "routes": 428,
+      "fold_A_eligible_species": 35,
+      "fold_B_eligible_species": 36,
+      "concentration_residual": 0.2607519573682813,
+      "concentration_null_ci95": [
+        -0.13258355426554058,
+        0.13545250657150026
+      ],
+      "concentration_p": 0.000999000999000999,
+      "dry_route_silent_rho_bounded": 0.28661772455619167,
+      "dry_route_silent_rho_null_ci95": [
+        -0.0059601417200188765,
+        0.005477034405177532
+      ],
+      "dry_route_silent_far_lag_7_9": 0.2736706715637073,
+      "far_lag_null_ci95": [
+        -0.014268646072754887,
+        0.01492277140258777
+      ],
+      "decision": "residual_route_night_dependence_after_species_calibration",
+      "interpretation": "Constant species-level marginal calibration error is insufficient."
     }
   }
 }
