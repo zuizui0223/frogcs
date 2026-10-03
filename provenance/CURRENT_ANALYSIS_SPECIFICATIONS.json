@@ -156,27 +156,17 @@
         "status": "authoritative post-hoc residual-dependence effect-size diagnostic"
       },
       {
-        "role": "route-position lag profile of residual dependence",
-        "contract": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_CONTRACT_V0_1.json",
-        "receipt": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_RECEIPT_V0_1.json",
-        "script": "exploration/run_naamp_route_night_dependence_lag_profile.py"
-      },
-      {
-        "role": "same-observer sensitivity of bounded route-night dependence",
-        "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json",
-        "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json",
-        "script": "exploration/run_naamp_bounded_route_night_same_observer.py"
-      },
-      {
         "role": "route-topology lag profile of residual dependence",
         "contract": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_CONTRACT_V0_1.json",
         "receipt": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_route_night_dependence_lag_profile.py",
         "status": "authoritative post-hoc spatial-scale diagnostic; stop-number topology, not exact distance"
       },
       {
         "role": "same-observer bounded route-night sensitivity",
         "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json",
         "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_bounded_route_night_same_observer.py",
         "status": "authoritative post-hoc observer-turnover sensitivity"
       },
       {
