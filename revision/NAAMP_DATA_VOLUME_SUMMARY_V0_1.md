@@ -3,6 +3,7 @@
 Source of record:
 - audit contract: `audit/NAAMP_DATA_VOLUME_AUDIT_CONTRACT_V0_1.json`
 - audit receipt: `audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json`
+- canonical pair-side check: `audit/NAAMP_CANONICAL_PAIR_VOLUME_CHECK_V0_1.json`
 
 ## Raw USGS NAAMP release
 
