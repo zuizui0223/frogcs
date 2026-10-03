@@ -1,0 +1,55 @@
+{
+  "analysis": "naamp_data_volume_audit_v0_1",
+  "status": "audit_fixed_before_raw_row_count_readback",
+  "purpose": "Quantify the actual frog and rainfall data volume underlying the current NAAMP manuscript without changing any scientific endpoint.",
+  "source": {
+    "sciencebase_item_id": "583dc314e4b0d1899f9dea8d",
+    "doi": "10.5066/F7G44NG0",
+    "files": ["Runs.csv", "Stops.csv", "Counts.csv", "Species.csv"],
+    "verify_existing_sha256_pins_for": ["Runs.csv", "Stops.csv", "Counts.csv"]
+  },
+  "frog_volume": {
+    "raw": [
+      "CSV row counts",
+      "unique RunIDs",
+      "positive CallingIndex 1-3 rows",
+      "unique RunID x StopNumber x Species positive cells",
+      "taxa represented"
+    ],
+    "eligible_2001_2015": [
+      "runs passing the exact current ecological-pulse run filter",
+      "unique sampled stop opportunities",
+      "positive call rows and unique positive taxon-stop cells",
+      "active stop visits",
+      "eligible taxa",
+      "potential taxon x stop x run cells",
+      "observed positive-cell fraction"
+    ],
+    "matched_pair_use": [
+      "matched wetter-drier pairs",
+      "unique RunIDs used by those pairs",
+      "pair-side survey instances",
+      "positive call cells in unique paired runs"
+    ]
+  },
+  "rain_volume": {
+    "naamp_days_since_rain": "one run-level value per eligible run",
+    "era5_72h": {
+      "receipt": "exploration/NAAMP_RAIN_AMOUNT_COMMON_ENVIRONMENT_NULL_RECEIPT_V0_1.json",
+      "report": [
+        "weather-linked runs",
+        "weather-linked principal-history pairs",
+        "routes",
+        "states",
+        "72-hour totals",
+        "hourly precipitation values sampled = weather_runs x 72"
+      ]
+    }
+  },
+  "boundaries": [
+    "Potential taxon x stop x run cells are matrix opportunities, not raw CSV rows.",
+    "Counts.csv records positive detections/CallingIndex records and is not a dense zero-filled species matrix.",
+    "ERA5 hourly-value count is the number of run-hour samples used to construct 72-h totals, not the number of unique grid-time cells after deduplication.",
+    "This audit changes no analysis, endpoint, model, sample filter or manuscript claim."
+  ]
+}
