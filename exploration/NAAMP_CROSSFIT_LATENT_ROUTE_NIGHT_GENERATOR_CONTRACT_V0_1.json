@@ -1,0 +1,63 @@
+{
+  "analysis": "naamp_crossfit_latent_route_night_state_generator_v0_1",
+  "status": "posthoc_generator_test_fixed_after_full_latent_state_fit_before_crossfit_generator_readback",
+  "known_before_this_contract": {
+    "full_all_sigma": 2.5629501293141432,
+    "full_dry_route_silent_sigma": 2.884315962185036,
+    "bounded_dry_route_silent": 0.28487700425848284,
+    "far_lag_7_9": 0.27178236785618926
+  },
+  "question": "Does a single transferable species-by-route-night latent activation state, estimated on opposite routes and layered on the strongest fixed q comparator, reproduce the observed within-taxon concentration and residual spatial dependence?",
+  "population": "Exactly the 2,835 weather-eligible strictly-prior-history pairs and fixed q matrices used in the 72-h-rainfall comparator.",
+  "crossfit": {
+    "split": "Existing deterministic SHA256 route fold A/B.",
+    "training": "Fit the logistic-normal latent state only on dry-route-silent species x route-night clusters from the training fold.",
+    "test": "Each focal route uses mu and sigma estimated only from the opposite route fold.",
+    "model": "logit(p_cj)=logit(q_cj)+mu_train+u_c, u_c~Normal(0,sigma_train^2).",
+    "quadrature_nodes": 20,
+    "sigma_bounds": [
+      0,
+      5
+    ],
+    "mu_bounds": [
+      -5,
+      5
+    ]
+  },
+  "generator": {
+    "dry_route_silent_taxa": "Draw one u_c per species x route-night cluster and apply it to all ten stop logits.",
+    "dry_route_active_taxa": "Generate independently from their fixed q probabilities; they do not enter the route-new concentration endpoint.",
+    "replicates": 1000,
+    "seed": 2840232
+  },
+  "endpoints": {
+    "concentration": {
+      "statistic": "Existing route-new / extra-stop / concentration rainfall coefficients.",
+      "conditioning": "Fit concentration_beta ~ route_new_taxon_beta + extra_stop_beta across generator simulations and evaluate the observed concentration residual at observed first-order coefficients.",
+      "sufficient_rule": "Observed conditional residual lies within the generator 95% residual interval."
+    },
+    "bounded_dependence": {
+      "stratum": "dry-route-silent species x route-night clusters.",
+      "statistic": "Existing bounded rho_b.",
+      "sufficient_rule": "Observed rho_b=0.28487700425848284 lies within the central 95% generator interval."
+    },
+    "far_lag": {
+      "stratum": "dry-route-silent species x route-night clusters.",
+      "statistic": "Existing pooled stop-number lag 7-9 residual cosine coefficient computed against fixed q.",
+      "sufficient_rule": "Observed far-lag coefficient=0.27178236785618926 lies within the central 95% generator interval."
+    }
+  },
+  "joint_classification": {
+    "route_transferable_shared_state_generator": "All three sufficiency rules pass.",
+    "partial_generator": "At least one but not all endpoints pass.",
+    "insufficient_generator": "None pass."
+  },
+  "interpretation": {
+    "pass": "A single route-transferable latent species-by-night state is sufficient at the statistical-process level for the tested concentration and dependence summaries.",
+    "boundary": "This is not a unique biological mechanism. The latent state can represent unmeasured hydrology, breeding readiness, demographic availability, social processes or mixtures of them."
+  },
+  "anti_tuning": [
+    "Do not change folds, dry-silent stratum, q matrices, random-effect family, parameter bounds, simulation count, seed, endpoint formulas, conditioning regression or sufficiency rules after readback.",
+    "Do not add species-specific sigma, mixtures, distance kernels or additional latent factors after this endpoint is read."
+  ]
+}
