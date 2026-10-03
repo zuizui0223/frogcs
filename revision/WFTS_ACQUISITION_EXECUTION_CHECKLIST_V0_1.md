@@ -23,6 +23,8 @@
 - [x] prospective exact-k deep historical-template / deep-versus-shallow contrast frozen and synthetic QA passed
 - [x] byte-level real-data execution lock frozen and QA passed — run 37129985326
 - [x] fail-closed real-data execution handoff ready
+- [x] full frozen synthetic chain passes preflight → primary → common-environment secondary → recurrent-site secondary — run **37130556855**
+- [x] pre-receipt readiness receipt frozen — `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`
 
 ## B. Direct WFTS research-data request
 
@@ -227,6 +229,6 @@ Only after K and after the primary result file is frozen:
 
 As of 2026-10-03:
 
-> **Waiting on external acquisition only.** The primary confirmation plus the prospective common-environment, bounded route-night, far-lag and deep historical-site/deep-versus-shallow secondary chain are frozen, byte-locked and implemented before WFTS outcome access. The receipt→schema→mapping→weather→preflight→primary→secondary execution order is fixed in `revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md`.
+> **Waiting on external acquisition only.** The primary confirmation plus the prospective common-environment, bounded route-night, far-lag and recurrent-site/deep-versus-shallow secondary chain are frozen, byte-locked and have passed a complete synthetic execution chain before WFTS outcome access. The receipt→schema→mapping→weather→preflight→primary→secondary execution order is fixed in `revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md`.
 
 No unresolved same-data NAAMP analysis is required to define the WFTS tests.
