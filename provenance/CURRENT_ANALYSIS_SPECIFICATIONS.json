@@ -103,7 +103,10 @@
     "historical_D_is_bounded_correlation": false,
     "design_effect_from_historical_D_authorized": false,
     "stop_number_lag_is_exact_geographic_distance": false,
-    "observer_turnover_required_for_route_night_dependence": false
+    "observer_turnover_required_for_route_night_dependence": false,
+    "exact_coordinate_distance_profile_authoritative": false,
+    "gee_working_correlation_authoritative": false,
+    "stop_number_lag_is_exact_distance": false
   },
   "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and bounded species-by-route-night residual co-dependence. The original unbounded D statistic is retained only for historical auditability and breadth of departure. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
   "post_reopening_exploratory_chain": {
@@ -150,7 +153,7 @@
         "role": "bounded repair of species x route-night residual dependence",
         "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_CONTRACT_V0_1.json",
         "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_RECEIPT_V0_1.json",
-        "script": "exploration/run_naamp_bounded_route_night_residual_dependence.py"
+        "status": "authoritative post-hoc residual-dependence effect-size diagnostic"
       },
       {
         "role": "route-position lag profile of residual dependence",
@@ -163,7 +166,38 @@
         "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json",
         "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json",
         "script": "exploration/run_naamp_bounded_route_night_same_observer.py"
+      },
+      {
+        "role": "route-topology lag profile of residual dependence",
+        "contract": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_RECEIPT_V0_1.json",
+        "status": "authoritative post-hoc spatial-scale diagnostic; stop-number topology, not exact distance"
+      },
+      {
+        "role": "same-observer bounded route-night sensitivity",
+        "contract": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_BOUNDED_ROUTE_NIGHT_SAME_OBSERVER_RECEIPT_V0_1.json",
+        "status": "authoritative post-hoc observer-turnover sensitivity"
+      },
+      {
+        "role": "exact-coordinate residual distance profile",
+        "contract": "exploration/NAAMP_ROUTE_NIGHT_RESIDUAL_DISTANCE_PROFILE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_ROUTE_NIGHT_RESIDUAL_DISTANCE_PROFILE_RECEIPT_V0_1.json",
+        "status": "non-authoritative after coordinate-geometry QC",
+        "qc": "revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md"
+      },
+      {
+        "role": "exchangeable GEE working-correlation corroboration",
+        "contract": "exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_ROUTE_NIGHT_GEE_WORKING_CORRELATION_RECEIPT_V0_1.json",
+        "status": "non-authoritative after numerical-degeneracy QC",
+        "qc": "revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md"
       }
-    ]
+    ],
+    "metric_authority": {
+      "primary_route_night_effect_size": "bounded residual co-dependence coefficient rho_b",
+      "superseded_metric": "historical unbounded D score retained for null-test/breadth provenance only",
+      "design_effect_or_effective_stop_conversion_authorized": false
+    }
   }
 }
