@@ -10,7 +10,7 @@ This is a targeted literature audit, not a systematic review. It does not author
 
 | Study | Biological scale | What it already established | What it did not test |
 |---|---|---|---|
-| Brooke, Alford & Schwarzkopf 2000, *Behavioral Ecology and Sociobiology* 49:79–87, DOI 10.1007/s002650000256 | 1 species, 6 locations along a 560-m transect, one breeding season | Daily calling varied among sites; after persistent site differences were removed, up to 35.8% of among-day variation was attributable to factors common across sites such as weather, moonlight or large-scale social facilitation | Multi-species allocation of a pulse; conditioning on total activation; taxon-specific historical site use |
+| Brooke, Alford & Schwarzkopf 2000, *Behavioral Ecology and Sociobiology* 49:79–87, DOI 10.1007/s002650000256 | 1 species, 6 locations along a 560-m transect, one breeding season | Daily calling varied among sites; after persistent site differences were removed, up to 35.8% of among-day variation was attributable to factors common across sites; marked males also showed strong calling-location/perch fidelity | Conditional coupling of a fast common state to a slow spatial template; exact-k placement of deep multi-site activation after current site propensity is represented |
 | Trenham et al. 2003, *Ecological Applications* 13:1522–1532, DOI 10.1890/02-5206 | 8 wetland-breeding species, statewide Wisconsin monitoring | Population/calling fluctuations showed weak intraspecific synchrony across sites up to 50–100 km; rainfall was more strongly synchronized and abundance was associated with rainfall 1–4 years earlier | Short rain-recency pulse; joint species × site calling allocation; recurrent strong-chorus SiteID targeting |
 | Guzy et al. 2012, *Journal of Applied Ecology* 49:941–952, DOI 10.1111/j.1365-2664.2012.02172.x | Calling intensity at 42 Florida wetlands over multiple years | Repeated calling-index data revealed persistent species groups and wetland structure; species co-occurrence and wetland condition could be identified from call data | Event-scale pulse allocation; whether a fixed amount of calling becomes disproportionately concentrated within the same taxa |
 | Sugai et al. 2021, *Journal of Animal Ecology* 90:673–684, DOI 10.1111/1365-2656.13399 | 39 Pantanal anuran assemblages, fine temporal acoustic sampling | Calling assemblage composition changes strongly at fine temporal resolution; habitat and ecological context explain part of temporal compositional change | Repeated fixed-site pulse allocation and historical taxon × physical-site recurrence |
@@ -35,6 +35,19 @@ Therefore frogcs must **not** claim that it is the first multi-species, multi-si
 
 What frogcs adds is an allocation-level question:
 > Given the amount of calling expressed after the pulse, how is that activity distributed among taxa and sites?
+
+### Closest in fast-state × place persistence: Brooke et al. 2000
+
+Brooke et al. already contains both ingredients that are now closest to the frogcs structural interpretation:
+- a day-to-day calling component shared among six locations along one transect;
+- persistent local differences and strong reuse of calling locations by marked males.
+
+Therefore frogcs must **not** claim that either landscape-wide nightly forcing or recurrent calling locations are novel.
+
+What frogcs adds is their conditional coupling:
+> after a species-night response is spatially deep, are the active sites preferentially drawn from the taxon's strictly-prior strong-chorus template beyond the exact activation depth and the current site probabilities already encoded in the comparator?
+
+The post-hoc exact-k result supports this only for the deep tail, with a direct deep-versus-shallow contrast. That is narrower than site fidelity, synchrony or common environmental forcing.
 
 ### Closest in cross-site chorus organization: Brodie et al. 2025
 
@@ -99,9 +112,11 @@ The exact-depth audit further shows that this is not a third-stop threshold:
 - marginal depths 4–10 exceed both;
 - the biological pattern is a **deeper/heavier calling-incidence tail than expected**.
 
-Historical targeting then adds a second distinct piece:
+Historical targeting alone is not the final novelty, because persistent calling locations are already known. The stronger post-hoc linkage is:
 - prior strong physical SiteID predicts later wet CI2/3 within the same pair and taxon (beta = 0.1511);
-- rain advantage strengthens full-chorus targeting at those historically strong sites (beta = 0.02449).
+- a uniform species-night scalar state is too spatially coherent;
+- among 409 deep k>=4 clusters, exact-k placement aligns with prior-strong SiteIDs beyond fixed q (beta = 0.02659, P = 0.001998);
+- the direct deep-minus-shallow template-coupling contrast is positive (delta beta = 0.02970, P = 0.02098), with Monte Carlo stability across 19/20 fixed audit seed batches.
 
 ## The actual gap filled
 
@@ -125,9 +140,9 @@ persistent species × site differences
 
 frogcs asks a different conditional question at their intersection:
 
-> **After those first-order species and site patterns are explicitly represented, is the joint species × site expression of the pulse still non-independent?**
+> **After first-order species and site patterns are represented, does a fast species-night state remain spatially non-independent, and is its unusually deep expression preferentially placed on the recurrent species × site template?**
 
-The supported answer within NAAMP is yes: wet-state calling is more concentrated within the same taxa than the tested first-order generators reproduce.
+Within NAAMP, both parts are supported post hoc: wet-state calling remains overly concentrated within taxa, and deep k>=4 expression couples more strongly than shallow activation to strictly-prior strong-chorus sites after exact k and fixed-q site propensity are held constant.
 
 ## Strongest novelty wording
 
@@ -141,7 +156,7 @@ The supported answer within NAAMP is yes: wet-state calling is more concentrated
 
 ### General ecological
 
-> Environmental pulses may change not only marginal activity but the **dependence structure of joint species × place expression**.
+> Environmental pulses may reveal a **fast state × slow spatial-template coupling**: event-scale behavioural activation can be distributed non-uniformly across recurrent species × place structure even after marginal response and site propensity are represented.
 
 ## Claims to avoid
 
