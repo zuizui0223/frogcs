@@ -1,0 +1,60 @@
+{
+  "analysis": "naamp_species_route_night_residual_dependence_v0_1",
+  "contract": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_CONTRACT_V0_1.json",
+  "coverage": {
+    "clusters_with_at_least_one_observed_positive_stop": 10747,
+    "pairs": 2835,
+    "routes": 428,
+    "species_x_route_night_clusters": 18769,
+    "species_x_stop_cells": 187690,
+    "states": 20
+  },
+  "interpretation": {
+    "causal_rainfall_claim": false,
+    "conditional_stop_independence_rejected": true,
+    "independent_confirmation": false,
+    "measured_weather_and_site_history_exhaust_shared_environment": false,
+    "movement_identified": false,
+    "social_facilitation_identified": false,
+    "synchronous_breeding_identified": false
+  },
+  "monitoring_translation": {
+    "effective_stop_count_heuristic": 2.1085013123305743,
+    "exact_design_effect_for_published_occupancy_model": false,
+    "exchangeable_ten_stop_design_effect_heuristic": 4.7427051344572195
+  },
+  "prediction_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1",
+    "fold_A": {
+      "feature_count": 42,
+      "n_estimable_species": 43,
+      "n_training_routes": 376,
+      "n_training_runs": 3800,
+      "training_fold": "A"
+    },
+    "fold_B": {
+      "feature_count": 42,
+      "n_estimable_species": 42,
+      "n_training_routes": 382,
+      "n_training_runs": 3759,
+      "training_fold": "B"
+    },
+    "mean_q": 0.23041185032896055,
+    "q05_q95": [
+      0.0001896201982702195,
+      0.9737320613762996
+    ]
+  },
+  "residual_dependence": {
+    "null_ci95": [
+      -0.0034339700676379987,
+      0.0034325613427938317
+    ],
+    "null_mean": 1.7229613807413134e-05,
+    "plus_one_upper_tail_p": 0.000999000999000999,
+    "positive_dependence_supported": true,
+    "rho_resid": 0.41585612605080213
+  },
+  "status": "posthoc_exploratory_triggered",
+  "trigger": "residual_dependence_beyond_rain_amount_common_environment"
+}
