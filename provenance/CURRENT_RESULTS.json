@@ -1,6 +1,6 @@
 {
   "analysis": "frogcs_integrated_multisite_results_v0_3",
-  "status": "post_opening_integrated_synthesis",
+  "status": "post_opening_integrated_synthesis_with_posthoc_common_cause_falsification",
   "current_title": "Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization",
   "population": {
     "matched_pairs": 4236,
@@ -109,7 +109,8 @@
     "biological": "strong chorus state switching -> excess within-taxon multi-site concentration -> recurrent species-specific physical-site placement",
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
-    "strongest_sensitivity": "final_gate_sensitivity"
+    "strongest_sensitivity": "final_gate_sensitivity",
+    "post_reopening_refinement": "measured common environmental triggers explain little of the allocation residual; residual stop dependence is broad within species x route-night and strongest among taxa silent on the drier route"
   },
   "main_text_routing": {
     "keep": [
@@ -118,7 +119,8 @@
       "principal_within_taxon_comparator",
       "final_gate_sensitivity",
       "historical_site_structure",
-      "generality"
+      "generality",
+      "post_reopening_exploratory"
     ],
     "supporting_information_only": [
       "exact_NK_secondary",
@@ -141,5 +143,86 @@
       "universal pulse template"
     ],
     "preferred_claim": "conditional dependence after explicit first-order ecological comparators"
+  },
+  "post_reopening_exploratory": {
+    "provenance": {
+      "reopening_date": "2026-10-03",
+      "posthoc": true,
+      "independent_confirmation": false
+    },
+    "flexible_common_environment": {
+      "pairs": 2916,
+      "observed_concentration_beta": 1.6503201354367818,
+      "predicted_concentration_beta": 1.3871762847697637,
+      "conditional_residual": 0.26314385066701806,
+      "fraction_original_residual_removed": 0.11369534972375188,
+      "null_residual_ci95": [
+        -0.13065356884269974,
+        0.12762359906390075
+      ],
+      "p": 0.000999000999000999
+    },
+    "rain72_common_environment": {
+      "pairs": 2835,
+      "routes": 428,
+      "observed_concentration_beta": 1.7135549748,
+      "same_sample_linear_residual": 0.3175801298,
+      "rain72_residual": 0.2969861534,
+      "fraction_same_sample_residual_removed": 0.064847,
+      "p": 0.000999000999000999
+    },
+    "route_night_residual_dependence": {
+      "statistic_name": "standardized residual-dependence D",
+      "D": 0.41585612605080213,
+      "independent_null_ci95": [
+        -0.003434,
+        0.003433
+      ],
+      "p": 0.000999000999000999,
+      "note": "D is not a Pearson correlation coefficient and is not used as an exact ICC or effective-sample-size conversion."
+    },
+    "dry_state_decomposition": {
+      "dry_route_silent_D": 0.5666108355869385,
+      "dry_route_silent_null_ci95": [
+        -0.005434954563685333,
+        0.005606669939113412
+      ],
+      "dry_route_silent_p": 0.000999000999000999,
+      "dry_route_active_D": 0.33637531723218456,
+      "dry_route_active_null_ci95": [
+        -0.0043163951868215086,
+        0.004391807285710579
+      ],
+      "dry_route_active_p": 0.000999000999000999
+    },
+    "residual_dependence_taxonomic_breadth": {
+      "eligible_taxa": 40,
+      "positive_D_taxa": 40,
+      "median_D": 0.4197609294135984,
+      "D_iqr": [
+        0.2826338810572862,
+        0.7264673988964321
+      ],
+      "top1_positive_numerator_share": 0.1172346837461403,
+      "top5_positive_numerator_share": 0.4653239385757867,
+      "hhi": 0.057860753752318854,
+      "leave_one_species_out_D_range": [
+        0.391017649530983,
+        0.44083338308453635
+      ]
+    },
+    "monitoring_uncertainty": {
+      "pairs": 2835,
+      "pooled_iid_se": 0.013652968208165812,
+      "pooled_species_pair_cluster_ratio": 1.8088801588300583,
+      "pooled_route_pair_cluster_ratio": 2.238749164149064,
+      "pooled_route_cluster_ratio": 2.6925144901797524,
+      "specieswise_eligible": 39,
+      "specieswise_pair_cluster_ratio_median": 1.6066216759496283,
+      "specieswise_pair_cluster_fraction_gt1": 0.9743589743589743,
+      "specieswise_route_cluster_ratio_median": 1.4820839968218282,
+      "specieswise_route_cluster_fraction_gt1": 0.9230769230769231,
+      "boundary": "Representative activation regressions only; not a reanalysis of a published NAAMP occupancy-trend estimator."
+    }
   }
 }
