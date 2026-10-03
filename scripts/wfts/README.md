@@ -43,7 +43,7 @@ The structural coverage gate is evaluated before the analysis loads `taxon_key` 
 
 ## v0.5 authority
 
-The sole real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`, which fixes the tuple:
+The sole real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`, which fixes the tuple:
 
 - `revision/WFTS_CANONICAL_SCHEMA_V0_2.json`
 - `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md`
@@ -83,4 +83,4 @@ Weather-code integrity is tested on artificial Daymet CSVs by:
 
 ## Frozen-byte provenance note
 
-`revision/WFTS_CANONICAL_SCHEMA_V0_2.json` and `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md` retain historical references to the v0.4 implementation because their bytes were already frozen before the v0.5 informativeness rule was added. Those references are provenance metadata, not execution authority. The superseding real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`, which pins the unchanged structural schema/weather components together with the v0.5 analysis implementation. Do not edit the frozen schema or Daymet specification merely to update those historical labels.
+`revision/WFTS_CANONICAL_SCHEMA_V0_2.json` and `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md` retain historical references to the v0.4 implementation because their bytes were already frozen before the v0.5 informativeness rule was added. Those references are provenance metadata, not execution authority. The superseding real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`, which pins the unchanged structural schema/weather components together with the v0.5 analysis implementation. Do not edit the frozen schema or Daymet specification merely to update those historical labels.
