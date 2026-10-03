@@ -135,7 +135,7 @@ Mapping authority:
 - [ ] secondary weather receipt and output SHA256 frozen
 
 Authority:
-- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`
+- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`
 - `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md`
 - `scripts/wfts/build_daymet_covariates.py`
 - `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json`
