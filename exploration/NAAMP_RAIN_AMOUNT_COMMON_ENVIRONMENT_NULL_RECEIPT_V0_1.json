@@ -1,0 +1,722 @@
+{
+  "analysis": "naamp_rain_amount_common_environment_null_v0_1",
+  "comparison": {
+    "fraction_of_same_sample_linear_residual_removed": 0.0648465517908153,
+    "linear_predicted_concentration_beta": 1.3959748450325953,
+    "linear_residual": 0.31758012977964656,
+    "rain_amount_predicted_concentration_beta": 1.416568821366085,
+    "rain_amount_residual": 0.29698615344615686
+  },
+  "contract": "exploration/NAAMP_RAIN_AMOUNT_COMMON_ENVIRONMENT_NULL_CONTRACT_V0_1.json",
+  "coverage": {
+    "prior_history_pairs": 2916,
+    "routes": 428,
+    "states": 20,
+    "weather_prior_history_pairs": 2835,
+    "weather_runs": 7559
+  },
+  "decision": "residual_dependence_beyond_rain_amount_common_environment",
+  "environment_shift_audit": {
+    "mean_abs_species_pair_logit_shift": 0.6236036460888503,
+    "q95_abs_species_pair_logit_shift": 1.8035964917454863
+  },
+  "era5": {
+    "antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1",
+    "primary_window_hours": 72
+  },
+  "interpretation_boundary": {
+    "era5_is_local_hydrology": false,
+    "independent_confirmation": false,
+    "posthoc_exploratory": true,
+    "social_facilitation_identified": false,
+    "synchronous_breeding_identified": false,
+    "unique_mechanism_identified": false,
+    "unmeasured_hydroperiod_excluded": false
+  },
+  "observed": {
+    "concentration_beta": 1.7135549748122418,
+    "extra_stop_beta": 0.7014479871304604,
+    "route_new_species_beta": 0.20311977424596758
+  },
+  "rain_amount_common_environment_null": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.5919076860425141,
+    "null_residual_ci95": [
+      -0.13053572284664786,
+      0.13777214708241153
+    ],
+    "observed_concentration_beta": 1.7135549748122418,
+    "observed_conditional_residual": 0.29698615344615686,
+    "predicted_concentration_beta": 1.416568821366085
+  },
+  "rain_amount_model_training": {
+    "fold_A": {
+      "feature_count": 42,
+      "n_estimable_species": 43,
+      "n_training_routes": 376,
+      "n_training_runs": 3800,
+      "training_fold": "A"
+    },
+    "fold_A_species": {
+      "Acris crepitans": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 132,
+        "positive_stop_cells": 2090
+      },
+      "Acris crepitans/gryllus complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 51,
+        "positive_stop_cells": 395
+      },
+      "Acris gryllus": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 62,
+        "positive_stop_cells": 684
+      },
+      "Anaxyrus americanus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 242,
+        "positive_stop_cells": 3917
+      },
+      "Anaxyrus americanus/terrestris complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 13,
+        "positive_stop_cells": 80
+      },
+      "Anaxyrus cognatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 5
+      },
+      "Anaxyrus fowleri": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 156,
+        "positive_stop_cells": 2454
+      },
+      "Anaxyrus fowleri/woodhousii complex": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 19
+      },
+      "Anaxyrus quercicus": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 15,
+        "positive_stop_cells": 35
+      },
+      "Anaxyrus terrestris": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 60,
+        "positive_stop_cells": 696
+      },
+      "Gastrophryne carolinensis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 64,
+        "positive_stop_cells": 336
+      },
+      "Hyla andersonii": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 10,
+        "positive_stop_cells": 34
+      },
+      "Hyla avivoca": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 23,
+        "positive_stop_cells": 195
+      },
+      "Hyla chrysoscelis": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 184,
+        "positive_stop_cells": 3006
+      },
+      "Hyla chrysoscelis/versicolor complex": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 73,
+        "positive_stop_cells": 882
+      },
+      "Hyla cinerea": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 116,
+        "positive_stop_cells": 1704
+      },
+      "Hyla femoralis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 37,
+        "positive_stop_cells": 258
+      },
+      "Hyla gratiosa": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 56,
+        "positive_stop_cells": 342
+      },
+      "Hyla squirella": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 58,
+        "positive_stop_cells": 426
+      },
+      "Hyla versicolor": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 181,
+        "positive_stop_cells": 4550
+      },
+      "Incilius nebulifer": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 3,
+        "positive_stop_cells": 18
+      },
+      "Lithobates areolatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 1
+      },
+      "Lithobates blairi": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 13,
+        "positive_stop_cells": 68
+      },
+      "Lithobates capito": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 1
+      },
+      "Lithobates catesbeianus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 297,
+        "positive_stop_cells": 3702
+      },
+      "Lithobates clamitans": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 314,
+        "positive_stop_cells": 5828
+      },
+      "Lithobates grylio": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 16,
+        "positive_stop_cells": 79
+      },
+      "Lithobates palustris": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 147,
+        "positive_stop_cells": 862
+      },
+      "Lithobates pipiens": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 49,
+        "positive_stop_cells": 225
+      },
+      "Lithobates septentrionalis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 17,
+        "positive_stop_cells": 70
+      },
+      "Lithobates sphenocephalus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 150,
+        "positive_stop_cells": 1804
+      },
+      "Lithobates sylvaticus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 148,
+        "positive_stop_cells": 2019
+      },
+      "Lithobates virgatipes": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 26,
+        "positive_stop_cells": 131
+      },
+      "Pseudacris brachyphona": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 18,
+        "positive_stop_cells": 245
+      },
+      "Pseudacris brimleyi": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 18,
+        "positive_stop_cells": 135
+      },
+      "Pseudacris clarkii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Pseudacris crucifer": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 332,
+        "positive_stop_cells": 16253
+      },
+      "Pseudacris feriarum": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 63,
+        "positive_stop_cells": 1004
+      },
+      "Pseudacris feriarum/fouquettei complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 5,
+        "positive_stop_cells": 27
+      },
+      "Pseudacris feriarum/kalmi complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 11,
+        "positive_stop_cells": 224
+      },
+      "Pseudacris feriarum/triseriata complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 10,
+        "positive_stop_cells": 62
+      },
+      "Pseudacris kalmi": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 25,
+        "positive_stop_cells": 217
+      },
+      "Pseudacris maculata": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 31,
+        "positive_stop_cells": 702
+      },
+      "Pseudacris maculata/triseriata complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 25,
+        "positive_stop_cells": 641
+      },
+      "Pseudacris nigrita": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 29,
+        "positive_stop_cells": 337
+      },
+      "Pseudacris nigrita/feriarum complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 14,
+        "positive_stop_cells": 100
+      },
+      "Pseudacris ocularis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 34,
+        "positive_stop_cells": 249
+      },
+      "Pseudacris ornata": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 11,
+        "positive_stop_cells": 90
+      },
+      "Pseudacris streckeri": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Scaphiopus couchii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Scaphiopus holbrookii": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 27,
+        "positive_stop_cells": 86
+      },
+      "Scaphiopus hurterii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Spea bombifrons": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 4
+      }
+    },
+    "fold_B": {
+      "feature_count": 42,
+      "n_estimable_species": 42,
+      "n_training_routes": 382,
+      "n_training_runs": 3759,
+      "training_fold": "B"
+    },
+    "fold_B_species": {
+      "Acris crepitans": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 143,
+        "positive_stop_cells": 1943
+      },
+      "Acris crepitans/gryllus complex": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 38,
+        "positive_stop_cells": 547
+      },
+      "Acris gryllus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 66,
+        "positive_stop_cells": 920
+      },
+      "Anaxyrus americanus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 239,
+        "positive_stop_cells": 4048
+      },
+      "Anaxyrus americanus/terrestris complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 19,
+        "positive_stop_cells": 85
+      },
+      "Anaxyrus cognatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 16
+      },
+      "Anaxyrus fowleri": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 154,
+        "positive_stop_cells": 1950
+      },
+      "Anaxyrus fowleri/woodhousii complex": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 11
+      },
+      "Anaxyrus quercicus": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 18,
+        "positive_stop_cells": 173
+      },
+      "Anaxyrus terrestris": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 65,
+        "positive_stop_cells": 767
+      },
+      "Gastrophryne carolinensis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 75,
+        "positive_stop_cells": 364
+      },
+      "Hyla andersonii": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 6,
+        "positive_stop_cells": 54
+      },
+      "Hyla avivoca": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 24,
+        "positive_stop_cells": 224
+      },
+      "Hyla chrysoscelis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 180,
+        "positive_stop_cells": 3143
+      },
+      "Hyla chrysoscelis/versicolor complex": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 93,
+        "positive_stop_cells": 1021
+      },
+      "Hyla cinerea": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 121,
+        "positive_stop_cells": 2166
+      },
+      "Hyla femoralis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 31,
+        "positive_stop_cells": 355
+      },
+      "Hyla gratiosa": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 58,
+        "positive_stop_cells": 370
+      },
+      "Hyla squirella": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 67,
+        "positive_stop_cells": 483
+      },
+      "Hyla versicolor": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 178,
+        "positive_stop_cells": 4092
+      },
+      "Incilius nebulifer": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 3,
+        "positive_stop_cells": 7
+      },
+      "Lithobates areolatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Lithobates blairi": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 9,
+        "positive_stop_cells": 35
+      },
+      "Lithobates capito": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 4,
+        "positive_stop_cells": 9
+      },
+      "Lithobates catesbeianus": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 300,
+        "positive_stop_cells": 3635
+      },
+      "Lithobates clamitans": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 300,
+        "positive_stop_cells": 5317
+      },
+      "Lithobates grylio": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 23,
+        "positive_stop_cells": 228
+      },
+      "Lithobates palustris": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 149,
+        "positive_stop_cells": 875
+      },
+      "Lithobates pipiens": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 43,
+        "positive_stop_cells": 210
+      },
+      "Lithobates septentrionalis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 6,
+        "positive_stop_cells": 36
+      },
+      "Lithobates sphenocephalus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 171,
+        "positive_stop_cells": 1940
+      },
+      "Lithobates sylvaticus": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 133,
+        "positive_stop_cells": 1345
+      },
+      "Lithobates virgatipes": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 17,
+        "positive_stop_cells": 139
+      },
+      "Pseudacris brachyphona": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 12,
+        "positive_stop_cells": 143
+      },
+      "Pseudacris brimleyi": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 20,
+        "positive_stop_cells": 120
+      },
+      "Pseudacris clarkii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 6
+      },
+      "Pseudacris crucifer": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 343,
+        "positive_stop_cells": 14239
+      },
+      "Pseudacris feriarum": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 56,
+        "positive_stop_cells": 823
+      },
+      "Pseudacris feriarum/fouquettei complex": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 6,
+        "positive_stop_cells": 15
+      },
+      "Pseudacris feriarum/kalmi complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 9,
+        "positive_stop_cells": 51
+      },
+      "Pseudacris feriarum/triseriata complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 17,
+        "positive_stop_cells": 229
+      },
+      "Pseudacris kalmi": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 20,
+        "positive_stop_cells": 222
+      },
+      "Pseudacris maculata": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 25,
+        "positive_stop_cells": 942
+      },
+      "Pseudacris maculata/triseriata complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 33,
+        "positive_stop_cells": 679
+      },
+      "Pseudacris nigrita": {
+        "estimable": true,
+        "method": "glm",
+        "positive_routes": 34,
+        "positive_stop_cells": 279
+      },
+      "Pseudacris nigrita/feriarum complex": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 20,
+        "positive_stop_cells": 104
+      },
+      "Pseudacris ocularis": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 29,
+        "positive_stop_cells": 254
+      },
+      "Pseudacris ornata": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 15,
+        "positive_stop_cells": 41
+      },
+      "Pseudacris streckeri": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 6
+      },
+      "Scaphiopus couchii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 5
+      },
+      "Scaphiopus holbrookii": {
+        "estimable": true,
+        "method": "ridge_fallback",
+        "positive_routes": 34,
+        "positive_stop_cells": 56
+      },
+      "Scaphiopus hurterii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 2
+      },
+      "Spea bombifrons": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 1
+      }
+    }
+  },
+  "same_sample_existing_linear_comparator": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.5877819957225385,
+    "null_residual_ci95": [
+      -0.13099672497247758,
+      0.13752258572306542
+    ],
+    "observed_concentration_beta": 1.7135549748122418,
+    "observed_conditional_residual": 0.31758012977964656,
+    "predicted_concentration_beta": 1.3959748450325953
+  },
+  "status": "posthoc_second_stage_after_explicit_reopening"
+}
