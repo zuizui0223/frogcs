@@ -1,0 +1,50 @@
+{
+  "analysis": "naamp_deep_activation_historical_template_alignment_v0_1",
+  "status": "posthoc_fast_gate_slow_template_alignment_fixed_after_scalar_state_overcoherence_before_alignment_readback",
+  "known_before_this_contract": {
+    "deep_tail_boundary": "Marginal depths 4-10 exceed both activation nulls; depths 1-3 do not.",
+    "scalar_generator_result": "A route-cross-fitted uniform species-night scalar state reproduces concentration but overpredicts near/far dependence.",
+    "historical_targeting_result": "Prior strong SiteID predicts later wet CI2/3 and rain strengthens full-chorus targeting."
+  },
+  "question": "Is the spatially non-uniform expression of dry-route-silent species-night activation preferentially aligned with the taxon's strictly-prior strong-chorus site template, especially in the deep k>=4 tail?",
+  "population": {
+    "base": "Exactly the 2,835 ERA5-weather-eligible strictly-prior-history focal pairs.",
+    "species_cluster": "Taxa acoustically silent across all ten stops in the drier focal run.",
+    "history": "Use only runs in the same route x seasonal RunNumber before the earlier focal year.",
+    "eligible_cluster": "At least one focal SiteID with prior CI>=2 and at least one focal SiteID without prior CI>=2; wet k>=1."
+  },
+  "quantities": {
+    "k": "Number of wet calling-positive stops for the focal taxon.",
+    "m": "Number of ten focal physical SiteIDs with strictly-prior CI>=2 for that taxon.",
+    "h": "Number of wet calling-positive stops that are prior-strong SiteIDs.",
+    "overlap_excess": "h - E[h | exact k, fixed q, prior-strong mask]."
+  },
+  "q_conditioned_null": {
+    "q_source": "Fixed stop probabilities from the strongest cross-fitted 72-h rainfall + strictly-prior SiteID-history + dry-persistence + pair-incidence-matching comparator.",
+    "conditioning": "Condition exactly on the observed wet k for each species x route-night cluster.",
+    "subset_probability": "Among all choose(10,k) stop subsets, probability is proportional to product_j odds(q_j) for included stops; this is the exact independent-Bernoulli distribution conditional on total k.",
+    "expected_overlap": "Exact enumeration of all stop subsets, no Monte Carlo required for cluster-level expectation."
+  },
+  "primary_test": {
+    "endpoint": "Matched-design rainfall coefficient of summed q-conditioned overlap_excess per focal pair, restricted to deep clusters k>=4.",
+    "regression": "Same residualized rain-contrast design used by the principal concentration analysis.",
+    "null": "1,000 simulations generated independently from q and then conditioned/standardized by the same overlap-excess calculation.",
+    "seed": 2840233,
+    "support_rule": "Observed deep-template-alignment coefficient exceeds the upper 95% null coefficient interval; plus-one upper-tail P<0.05."
+  },
+  "secondary_fixed_outputs": [
+    "All eligible k>=1 clusters pooled.",
+    "Shallow k=1-3 versus deep k=4-10 observed mean q-conditioned overlap_excess.",
+    "Fraction of deep eligible clusters with positive overlap_excess.",
+    "Uniform hypergeometric overlap excess h-k*m/10 as descriptive contrast only."
+  ],
+  "interpretation": {
+    "positive_deep_test": "The non-uniform deep species-night response preferentially occupies recurrent strong-chorus sites beyond what current q site propensities and the exact number of active stops predict, directly linking the fast gate to the slow species x place template.",
+    "null_deep_test": "Historical targeting and route-night dependence remain separate facts; do not claim the slow template explains where the deep state is expressed.",
+    "boundary": "Does not identify individual fidelity, social attraction, hydrological causation or a unique mechanism."
+  },
+  "anti_tuning": [
+    "Do not alter k>=4 deep threshold, prior CI>=2 definition, exact-k conditioning, q source, pair design, simulation count, seed or tail after readback.",
+    "Do not substitute prior-any-call history for prior-strong history in the primary test after readback."
+  ]
+}
