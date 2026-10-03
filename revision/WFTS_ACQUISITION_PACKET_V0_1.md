@@ -40,7 +40,7 @@ Wisconsin DNR states that email is the preferred and most efficient public-recor
 
 ## Send order
 
-1. Send the direct research-data request from `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md`.
+1. Send the concise direct research-data request from `revision/WFTS_DATA_REQUEST_TEMPLATE_V0_3.md`. Use v0.2 only as the detailed field-level follow-up if needed.
 2. Request an **existing electronic export**, not a custom analysis.
 3. Ask for response table + route master + station history + codebook together.
 4. If WFTS can provide access directly, stop there.
