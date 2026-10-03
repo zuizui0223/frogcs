@@ -1,0 +1,159 @@
+{
+  "analysis": "naamp_detection_augmented_common_environment_null_v0_1",
+  "comparison": {
+    "augmented_concentration_residual": 0.2713133315197962,
+    "augmented_dry_route_silent_rho_bounded": 0.28600453486317134,
+    "baseline_concentration_residual": 0.2851203586886657,
+    "baseline_dry_route_silent_rho_bounded": 0.2856284097565475,
+    "fraction_baseline_concentration_residual_removed": 0.04842525883585165,
+    "fraction_baseline_dry_silent_dependence_removed": -0.0013168336684169905
+  },
+  "contract": "exploration/NAAMP_DETECTION_AUGMENTED_COMMON_ENVIRONMENT_NULL_CONTRACT_V0_1.json",
+  "coverage": {
+    "complete_training_runs": 7372,
+    "detection_complete_pairs": 2718,
+    "prior_history_pairs": 2916,
+    "routes": 421,
+    "states": 20
+  },
+  "decision": {
+    "detection_augmented_concentration_sufficient": false,
+    "detection_augmented_dry_silent_dependence_supported": true,
+    "residual_after_measured_detection": true
+  },
+  "detection_augmented": {
+    "bounded_dependence": {
+      "all": {
+        "clusters": 17978,
+        "null_ci95": [
+          -0.003083144761414496,
+          0.002622718862976356
+        ],
+        "null_mean": -0.00011875699361132328,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_bounded": 0.17269405370934135
+      },
+      "dry_route_silent": {
+        "clusters": 7960,
+        "null_ci95": [
+          -0.005552465332752383,
+          0.005094207808084655
+        ],
+        "null_mean": -0.00017540576092184792,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_bounded": 0.28600453486317134
+      }
+    },
+    "concentration": {
+      "above_upper_95": true,
+      "conditional_upper_tail_p": 0.000999000999000999,
+      "null_regression_r2": 0.5755017041944421,
+      "null_residual_ci95": [
+        -0.1408001635860567,
+        0.1377867625769276
+      ],
+      "observed_concentration_beta": 1.6990800268754804,
+      "observed_conditional_residual": 0.2713133315197962,
+      "predicted_concentration_beta": 1.4277666953556842
+    },
+    "environment_shift_audit": {
+      "mean_abs_species_pair_logit_shift": 0.6444095233351279,
+      "q95_abs_species_pair_logit_shift": 1.8400997416459974
+    },
+    "training": {
+      "fold_A": {
+        "feature_count": 45,
+        "n_estimable_species": 43,
+        "n_training_routes": 376,
+        "n_training_runs": 3695,
+        "training_fold": "A"
+      },
+      "fold_B": {
+        "feature_count": 45,
+        "n_estimable_species": 42,
+        "n_training_routes": 381,
+        "n_training_runs": 3677,
+        "training_fold": "B"
+      }
+    }
+  },
+  "detection_covariates": [
+    "hearing_impairment_fraction",
+    "timeout_fraction",
+    "mean_wind"
+  ],
+  "interpretation_boundary": {
+    "all_detectability_confounding_excluded": false,
+    "independent_confirmation": false,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "observed": {
+    "concentration_beta": 1.6990800268754804,
+    "extra_stop_beta": 0.7046930136019852,
+    "route_new_species_beta": 0.2083659310435424
+  },
+  "provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  },
+  "same_sample_rain_amount_baseline": {
+    "bounded_dependence": {
+      "all": {
+        "clusters": 17978,
+        "null_ci95": [
+          -0.003022639185697479,
+          0.002632429430421077
+        ],
+        "null_mean": -0.00011855620781888484,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_bounded": 0.17255098474374356
+      },
+      "dry_route_silent": {
+        "clusters": 7960,
+        "null_ci95": [
+          -0.0058463399480016874,
+          0.005471870761933167
+        ],
+        "null_mean": -0.00019148793408707966,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_bounded": 0.2856284097565475
+      }
+    },
+    "concentration": {
+      "above_upper_95": true,
+      "conditional_upper_tail_p": 0.000999000999000999,
+      "null_regression_r2": 0.5728743335186268,
+      "null_residual_ci95": [
+        -0.13601568764120306,
+        0.13746000896751906
+      ],
+      "observed_concentration_beta": 1.6990800268754804,
+      "observed_conditional_residual": 0.2851203586886657,
+      "predicted_concentration_beta": 1.4139596681868147
+    },
+    "environment_shift_audit": {
+      "mean_abs_species_pair_logit_shift": 0.6220365848829869,
+      "q95_abs_species_pair_logit_shift": 1.7931399243081423
+    },
+    "training": {
+      "fold_A": {
+        "feature_count": 42,
+        "n_estimable_species": 43,
+        "n_training_routes": 376,
+        "n_training_runs": 3695,
+        "training_fold": "A"
+      },
+      "fold_B": {
+        "feature_count": 42,
+        "n_estimable_species": 42,
+        "n_training_routes": 381,
+        "n_training_runs": 3677,
+        "training_fold": "B"
+      }
+    }
+  },
+  "status": "posthoc_targeted_detection_falsification"
+}
