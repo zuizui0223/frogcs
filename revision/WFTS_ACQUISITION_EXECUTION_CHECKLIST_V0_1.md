@@ -16,6 +16,10 @@
 - [x] Daymet adapter ready
 - [x] response-blind structural preflight ready
 - [x] confirmatory v0.5 implementation ready
+- [x] unified real-data authority v0.3 frozen before WFTS outcomes
+- [x] prospective common-environment v0.2 secondary specification frozen
+- [x] response-free 1/3/7-day precipitation adapter ready and synthetic QA passed
+- [x] prospective bounded route-night / far-lag secondary implementation ready
 
 ## B. Direct WFTS research-data request
 
@@ -127,10 +131,15 @@ Mapping authority:
 - [ ] Daymet/raw/output SHA256 recorded
 - [ ] rain_recency calculated under frozen specification
 - [ ] tmean_run calculated under frozen specification
+- [ ] secondary 1/3/7-day precipitation exposures built from response-free structural station/date data
+- [ ] secondary weather receipt and output SHA256 frozen
 
 Authority:
+- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`
 - `revision/WFTS_DAYMET_WEATHER_SPEC_V0_1.md`
 - `scripts/wfts/build_daymet_covariates.py`
+- `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json`
+- `scripts/wfts/build_common_environment_covariates.py`
 
 ## I. Response-blind structural preflight
 
@@ -188,18 +197,22 @@ Allowed decision:
 
 ## L. After primary result
 
-Only after K:
+Only after K and after the primary result file is frozen:
 
-- [ ] inspect response values normally
-- [ ] audit influential taxa/routes
-- [ ] run only predeclared secondary endpoints as confirmatory/secondary
-- [ ] label any new analysis explicitly exploratory
-- [ ] update manuscript interpretation only after full WFTS result is frozen
+- [ ] run `scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py` on the exact preflight-covered primary bytes
+- [ ] freeze the three-day common-environment comparator and named one-/seven-day sensitivities
+- [ ] freeze bounded all-cluster and dry-route-silent route-night dependence
+- [ ] freeze near 1–3 and far 7–9 station-number lag diagnostics
+- [ ] freeze predeclared specieswise IID versus clustered uncertainty summary
+- [ ] verify the secondary output records `primary_replication_classification_unchanged = true`
+- [ ] inspect response values normally for non-gating descriptive audit
+- [ ] label any additional unplanned analysis explicitly exploratory
+- [ ] update manuscript interpretation only after the primary + predeclared secondary WFTS outputs are frozen
 
 ## Current state
 
-As of 2026-10-01:
+As of 2026-10-03:
 
-> **Waiting on external acquisition only.**
+> **Waiting on external acquisition only.** The primary confirmation and the prospective common-environment / bounded route-night / far-lag secondary chain are frozen and implemented before WFTS outcome access.
 
-No unresolved same-data NAAMP analysis is needed before WFTS.
+No unresolved same-data NAAMP analysis is required to define the WFTS tests.
