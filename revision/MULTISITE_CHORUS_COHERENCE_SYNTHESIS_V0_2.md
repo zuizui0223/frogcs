@@ -62,9 +62,9 @@ Historical contract/script names containing `higher_order` remain unchanged for 
 
 The integrated claim is exploratory within NAAMP. Cross-fitting prevents route leakage in comparator fitting but does not provide independent confirmation.
 
-No further same-data mechanism fishing is authorized.
+The original same-data mechanism stop rule was explicitly lifted on **2026-10-03** for targeted common-cause falsification. Any new NAAMP mechanism analysis is post-hoc/exploratory and cannot be presented as independent confirmation or as part of the original prespecified sequence.
 
-Next scientific step: prospective external replication.
+Prospective external replication remains the decisive confirmation step.
 
 
 ## Main-text routing after novelty maximization
