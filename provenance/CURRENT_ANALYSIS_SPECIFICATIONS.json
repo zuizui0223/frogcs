@@ -133,7 +133,16 @@
     "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
     "execution_lock_qa_run": 37129985326,
     "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
-    "pre_receipt_status": "scientific rules and executable code complete; waiting on external response export and structural lineage metadata only"
+    "pre_receipt_status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY; no internal scientific or implementation blockers remain",
+    "full_chain_qa": {
+      "workflow": ".github/workflows/wfts_full_chain_qa.yml",
+      "run": 37130556855,
+      "conclusion": "success",
+      "artifact_id": 11276592978,
+      "artifact_digest": "sha256:c75a464a891e883deffd920be9cd1e728e072231b410810fc378b80753b87a36",
+      "readiness_receipt": "revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json",
+      "scientific_direction_asserted": false
+    }
   },
   "interpretation_boundaries": {
     "causal_rainfall_claim": false,
