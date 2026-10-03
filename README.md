@@ -38,13 +38,13 @@ Post-reopening falsification showed that flexible measured weather removed only 
 
 The discovery is not simply that frogs call more after rain.
 
-The stronger result is a **pulse-revealed dependence structure**: a fast species-night activation state is expressed non-uniformly across a distributed, recurrent species × place template, producing deeper within-taxon multi-site activity than first-order species responses and static site propensities predict.
+The ecological question is **what spatial unit organizes reproductive acoustic activity on favourable nights**. The NAAMP pattern falls between two simple extremes: route stops do not behave as fully independent local responses, but a taxon also does not switch uniformly across the whole route. Instead, route-spanning activity is spatially selective and is disproportionately re-expressed at recurrent taxon-specific chorus locations.
 
 The general hypothesis is:
 
-> Environmental pulses may expose dependence in joint species × place activity that remains behaviourally hidden during inactive periods.
+> Environmental pulses may reveal how behavioural activity is distributed across persistent spatial structure that is difficult to see when animals are inactive.
 
-This is a conceptual generalization from the NAAMP system, not a universal law.
+This is a conceptual generalization from the NAAMP system, not a universal law or an identified lower-level mechanism.
 
 ## Main text versus Supporting Information
 
