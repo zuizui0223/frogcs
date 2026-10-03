@@ -1197,7 +1197,9 @@ On that common sample:
 
 A separate earlier analysis showed that 72-h rainfall amount itself is biologically informative for strong activation (β = **0.741**, 95% CI **0.386–1.097**). Thus actual antecedent rainfall amount helps predict whether strong activation occurs, but explains little of the residual allocation of that activity among stops within taxa.
 
-These tests do not exhaust shared environmental forcing. Local hydroperiod, water level, soil moisture, small-scale rainfall heterogeneity and other unmeasured route-night variables remain possible.
+We then added recorded route-run acoustic observation conditions to the same species-specific 72-h-rainfall comparator. The complete-case intersection retained **2,718 pairs, 421 routes and 20 states**. The augmented cross-fitted model added hearing-impairment fraction, major-noise timeout fraction and mean Beaufort wind while retaining the same prior SiteID history, dry-state persistence and incidence matching. On this identical focal and training sample, the 72-h-rainfall baseline residual was **0.2851** and the detection-augmented residual was **0.2713**, so the measured detection covariates removed only **4.8%** of the baseline residual; the augmented residual remained beyond its null interval (**−0.1408 to 0.1378**, P = **0.000999**). More importantly, bounded dependence among dry-route-silent taxa was essentially unchanged (**0.2856 → 0.2860**; augmented null 95% interval **−0.00555 to 0.00509**, P = **0.000999**).
+
+These tests constrain measured weather and recorded route-run acoustic conditions as common-cause explanations but do not exhaust them. Local hydroperiod, water level, soil moisture, small-scale rainfall heterogeneity, unrecorded masking and species-specific detectability remain possible.
 
 ### S15.5 Direct species × route-night residual dependence
 
