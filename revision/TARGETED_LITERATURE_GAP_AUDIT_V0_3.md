@@ -17,7 +17,7 @@ The following are **not** novelty claims for frogcs:
 4. **Cross-site covariance/synchrony exists.** Brooke et al. (2000), Trenham et al. (2003), Brodie et al. (2025) and Rush et al. (2026) establish covariance or synchrony at local-to-regional scales.
 5. **Species × wetland calling matrices have persistent structure.** Guzy et al. (2012) explicitly analysed calling-index structure across wetlands.
 6. **Meteorological response functions can be estimated across many species.** Thompson et al. (2022) modelled 100 Australian frog species at continental scale.
-7. **Site fidelity and persistent site suitability are known in frogs.**
+7. **Site fidelity and persistent site suitability are known in frogs.** Brooke et al. (2000) is especially close because it combines a shared day-to-day calling component across six locations with strong reuse of individual calling locations.
 
 Therefore avoid:
 - first evidence that rain coordinates frogs across sites;
@@ -87,10 +87,10 @@ frogcs instead asks:
 
 ### Versus Brooke 2000 / Brodie 2025 / Rush 2026
 
-These establish cross-site covariance or synchrony.
+These establish cross-site covariance or synchrony; Brooke additionally shows strong reuse of calling locations.
 
-frogcs does not ask whether sites covary. It asks:
-> whether multi-site calling remains disproportionately concentrated within the same taxa after first-order ecological expectations are represented.
+frogcs therefore does not claim novelty for either a common nightly state or a persistent place template. It asks:
+> after first-order ecological expectations are represented, is the remaining species-night state spatially non-uniform, and is its deep expression preferentially aligned with the strictly-prior site template beyond exact k and current site propensity?
 
 ### Versus Thompson et al. 2022
 
@@ -100,7 +100,7 @@ frogcs explicitly uses species-specific response as **part of the comparator**, 
 
 ## Frog-specific novelty
 
-> Recent-rain conditions are associated with direct switching from acoustic silence into strong chorus, and the resulting calling-incidence distribution has an unusually deep within-taxon spatial tail across separated route stops. Strong calling is preferentially re-expressed at taxon-specific physical sites with prior strong-chorus history.
+> Recent-rain conditions are associated with direct switching from acoustic silence into strong chorus and an unusually deep within-taxon spatial tail. The residual species-night state spans the route but is non-uniform, and deep k>=4 activation couples more strongly than shallow activation to the taxon's strictly-prior strong-chorus site template.
 
 ## General ecological novelty
 
@@ -108,7 +108,7 @@ frogcs explicitly uses species-specific response as **part of the comparator**, 
 
 Stronger formulation:
 
-> **Pulse-associated activity can remain non-independently allocated after marginal species response, local historical propensity and total activation magnitude are explicitly represented.**
+> **A fast behavioural state can be expressed selectively through a slow recurrent species × place template: deep pulse-associated activation remains non-independent after marginal species response, historical site propensity, activation depth and total magnitude are represented.**
 
 This is the conceptual contribution.
 
