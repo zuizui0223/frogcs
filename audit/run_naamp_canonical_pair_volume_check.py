@@ -27,6 +27,8 @@ def main():
     cells=0
     taxa=set()
     byrun=Counter()
+    taxon_run=set()
+    active_stop=set()
     for r in raw["Counts.csv"]:
         rid=(r.get("RunID") or "").strip()
         if rid not in pair_run_ids:
@@ -39,6 +41,8 @@ def main():
         ci[c]+=1
         taxa.add(sp)
         byrun[rid]+=1
+        taxon_run.add((rid,sp))
+        active_stop.add((rid,(r.get("StopNumber") or "").strip()))
 
     out={
         "analysis":"naamp_canonical_pair_volume_check_v0_1",
@@ -52,6 +56,10 @@ def main():
         "positive_call_records_in_pair_side_runs":int(cells),
         "calling_index_distribution":{k:int(ci[k]) for k in ("1","2","3")},
         "positive_taxon_labels_in_pair_side_runs":int(len(taxa)),
+        "positive_taxon_x_run_combinations":int(len(taxon_run)),
+        "active_run_x_stop_combinations":int(len(active_stop)),
+        "runs_with_at_least_one_positive_call":int(sum(1 for r in pair_run_ids if byrun.get(r,0)>0)),
+        "completely_call_silent_pair_runs":int(sum(1 for r in pair_run_ids if byrun.get(r,0)==0)),
         "runid_sha256":__import__("hashlib").sha256(
             ("\n".join(sorted(pair_run_ids,key=lambda z:int(z) if z.isdigit() else z))+"\n").encode()
         ).hexdigest(),
