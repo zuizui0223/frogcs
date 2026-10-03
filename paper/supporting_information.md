@@ -1162,11 +1162,13 @@ Under the final held-out null:
 - observed within-core share = **0.0787**;
 - null within-core mean = **0.1862**.
 
-### S15.3 Final stopping rule
+### S15.3 Original stopping rule and explicit reopening
 
-The prefixed decision tree required stopping after rejection of the held-out rain × local-history gate. It explicitly prohibited additional trait fishing, same-data site-specific rainfall coefficients, relaxed gates or further mechanism models.
+The prefixed decision tree required stopping after rejection of the held-out rain × local-history gate and originally prohibited additional trait fishing, same-data site-specific rainfall coefficients, relaxed gates or further mechanism models. That historical rule and its original decision-tree file are retained unchanged for auditability.
 
-The authorized interpretation is therefore **structured state-dependent re-expression with an unresolved lower-level generator**, not identification of a unique mechanism.
+On **3 October 2026**, after the integrated manuscript result and its limitations had been documented, same-data mechanism analysis was explicitly reopened for targeted falsification of additional common-cause explanations. All analyses conducted after this reopening are labelled **post-hoc exploratory sensitivity analyses**. They do not become prespecified tests, do not constitute independent confirmation, and cannot be used to rewrite the provenance of the original stopped sequence.
+
+Until such post-hoc analyses identify a better-supported generator, the evidentially conservative interpretation remains **structured state-dependent re-expression with an unresolved lower-level generator**, not identification of a unique mechanism.
 
 ## S16. Taxonomic and geographic breadth
 
