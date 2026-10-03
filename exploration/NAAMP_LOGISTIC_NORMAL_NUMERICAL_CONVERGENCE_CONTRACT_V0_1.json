@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_logistic_normal_route_night_numerical_convergence_v0_1",
+  "status": "posthoc_numerical_validation_fixed_after_primary_latent_state_readback",
+  "known_before_contract": {
+    "all_sigma_hat": 2.5629501293141432,
+    "dry_route_silent_sigma_hat": 2.884315962185036,
+    "primary_quadrature_nodes": 20
+  },
+  "purpose": "Numerical validation only. Do not alter the latent-state model, q offsets, strata, parameter bounds, likelihood or interpretation.",
+  "model": "Identical to NAAMP_LOGISTIC_NORMAL_ROUTE_NIGHT_STATE_CONTRACT_V0_1.",
+  "quadrature_nodes": [
+    10,
+    20,
+    40,
+    60
+  ],
+  "outputs": [
+    "sigma_hat by node count for all clusters",
+    "sigma_hat by node count for dry-route-silent clusters",
+    "mu_hat by node count",
+    "relative deviation of sigma_hat from the 60-node value"
+  ],
+  "pass_rule": "For both strata, the 20-node sigma estimate differs from the 60-node estimate by <= 2% and the 40-node estimate differs by <= 0.5%.",
+  "interpretation": "PASS supports numerical stability of the existing point estimate only. It does not upgrade evidential status or validate cluster-independence assumptions for the profile-likelihood interval.",
+  "anti_tuning": [
+    "Do not change node counts after readback.",
+    "Do not change parameter bounds, q, strata or optimizer.",
+    "If convergence fails, demote the latent-state magnitude model rather than retuning it."
+  ]
+}
