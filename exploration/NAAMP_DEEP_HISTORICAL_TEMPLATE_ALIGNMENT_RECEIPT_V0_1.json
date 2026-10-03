@@ -1,0 +1,60 @@
+{
+  "analysis": "naamp_deep_activation_historical_template_alignment_v0_1",
+  "cluster_alignment": {
+    "deep_minus_shallow_mean_excess": 0.08685157256306446,
+    "fraction_deep_positive_q_conditioned_excess": 0.6136919315403423,
+    "mean_q_conditioned_excess_all": 0.017662422216156035,
+    "mean_q_conditioned_excess_deep": 0.07602779335316326,
+    "mean_q_conditioned_excess_shallow": -0.010823779209901203,
+    "mean_uniform_overlap_excess_all": 0.36792301523656773,
+    "mean_uniform_overlap_excess_deep": 0.428117359413203
+  },
+  "contract": "exploration/NAAMP_DEEP_HISTORICAL_TEMPLATE_ALIGNMENT_CONTRACT_V0_1.json",
+  "coverage": {
+    "deep_k4plus_clusters": 409,
+    "eligible_clusters": 1247,
+    "median_prior_runs": 2.0,
+    "pairs": 2835,
+    "routes": 428,
+    "shallow_k1to3_clusters": 838,
+    "species": 43
+  },
+  "interpretation_boundary": {
+    "hydrological_causality_identified": false,
+    "independent_confirmation": false,
+    "individual_fidelity_identified": false,
+    "social_attraction_identified": false,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "primary_deep_k4plus": {
+    "null_ci95": [
+      -0.019383741143070538,
+      0.018546225617440192
+    ],
+    "null_mean": -7.937861594286134e-05,
+    "observed_beta": 0.026586957417988274,
+    "plus_one_upper_tail_p": 0.001998001998001998,
+    "positive_alignment_supported": true
+  },
+  "q_conditioning": {
+    "conditional_independent_bernoulli_weights": "subset probability proportional to product of q/(1-q) odds",
+    "enumerated_subsets_max": 252,
+    "exact_k_fixed_per_observed_cluster": true,
+    "seed": 2840233,
+    "simulations": 1000
+  },
+  "secondary_all_k1plus": {
+    "null_ci95": [
+      -0.027270841441655022,
+      0.027172684581001704
+    ],
+    "null_mean": -0.0004834821858966066,
+    "observed_beta": 0.023476444982502155,
+    "plus_one_upper_tail_p": 0.057942057942057944,
+    "positive_alignment_supported": false
+  },
+  "status": "posthoc_fast_gate_slow_template_alignment_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
