@@ -39,14 +39,14 @@ The integrated manuscript uses this only as a secondary check that the concentra
 
 ## General ecological principle
 
-> **Short environmental pulses can reveal a fast behavioural state that is expressed selectively through a recurrent species × place template rather than uniformly across space.**
+> **Favourable nights can organize frog reproductive acoustic activity at an intermediate spatial scale: broader than independent wetland responses, but more selective than a uniform landscape-wide switch.**
 
-This distinguishes:
-- **fast gate:** a taxon-specific route-night activation state;
-- **slow template:** recurrent species × place structure;
-- **distributed expression:** the deep k≥4 state is spatially selective, retains far-route dependence, and couples more strongly than shallow activation to strictly-prior strong-chorus sites after exact k and fixed-q site propensity are represented.
+The NAAMP evidence constrains that spatial organization:
+- calling by the same taxon remains dependent across widely separated route positions;
+- a uniform taxon-night shift makes the stops too coherent;
+- unusually deep k≥4 expression is preferentially placed at strictly-prior strong-chorus sites after exact k and fixed-q site propensity are represented.
 
-The strongest surprise is therefore **not how much activity appears, but how a fixed amount of calling is allocated within taxa across a persistent spatial template after first-order expectations are represented**.
+The strongest surprise is therefore **not how much activity appears, but which recurrent locations participate when a taxon becomes active across a route**.
 
 ## Generality
 
