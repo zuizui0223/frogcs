@@ -1,0 +1,59 @@
+{
+  "analysis": "naamp_deep_vs_shallow_template_alignment_contrast_v0_1",
+  "cluster_mean_contrast": {
+    "mean_deep": 0.0760277933531632,
+    "mean_deep_minus_shallow": {
+      "null_ci95": [
+        -0.06177625828346151,
+        0.06039289519058015
+      ],
+      "null_mean": 0.0005195006255720977,
+      "observed": 0.08685157256306436,
+      "plus_one_upper_tail_p": 0.005994005994005994,
+      "positive_supported": true
+    },
+    "mean_shallow": -0.01082377920990115
+  },
+  "contract": "exploration/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_CONTRAST_CONTRACT_V0_1.json",
+  "coverage": {
+    "deep_k4plus_clusters": 409,
+    "pairs": 2835,
+    "routes": 428,
+    "shallow_k1to3_clusters": 838,
+    "species": 43
+  },
+  "decision": {
+    "template_coupling_stronger_in_deep_tail": true
+  },
+  "interpretation_boundary": {
+    "deep_shallow_descriptive_difference_known_before_contract": true,
+    "independent_confirmation": false,
+    "posthoc_direct_contrast": true,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "null": {
+    "exact_observed_k_fixed": true,
+    "fixed_q_and_prior_strong_mask": true,
+    "replicates": 1000,
+    "seed": 2840234,
+    "tail": "upper"
+  },
+  "rainfall_coefficient_contrast": {
+    "beta_deep": 0.026586957417988274,
+    "beta_deep_minus_shallow": {
+      "null_ci95": [
+        -0.02531719865771154,
+        0.028888371572041494
+      ],
+      "null_mean": 0.0006824566966805658,
+      "observed": 0.0296974698534744,
+      "plus_one_upper_tail_p": 0.02097902097902098,
+      "positive_supported": true
+    },
+    "beta_shallow": -0.0031105124354861248
+  },
+  "status": "posthoc_direct_contrast_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
