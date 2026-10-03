@@ -53,7 +53,7 @@ jobs:
       - name: Commit audit receipt
         run: |
           set -eu
-          if git diff --quiet -- audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json; then
+          if [ -z "$(git status --porcelain -- audit/NAAMP_DATA_VOLUME_AUDIT_RECEIPT_V0_1.json)" ]; then
             echo "receipt unchanged"
             exit 0
           fi
