@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "Measured common environmental triggers explain little of the allocation residual; repaired bounded dependence is strongest among taxa silent across the drier route, persists to far route-position lags, and survives same-observer restriction."
+    "post_reopening_refinement": "Measured common environmental triggers explain little of the allocation residual; repaired bounded residual dependence remains within species x route-night, is strongest among dry-route-silent taxa, persists to far route-position lags, and survives same-observer restriction."
   },
   "main_text_routing": {
     "keep": [
@@ -172,31 +172,40 @@
       "p": 0.000999000999000999
     },
     "route_night_residual_dependence": {
-      "statistic_name": "historical unbounded standardized dependence score D",
-      "D": 0.41585612605080213,
-      "independent_null_ci95": [
-        -0.003434,
-        0.003433
-      ],
-      "p": 0.000999000999000999,
-      "note": "Historical null-test provenance only. D is unbounded and is not interpreted as a correlation/ICC or used for design-effect/effective-stop conversion.",
-      "superseded_effect_size_interpretation": true
-    },
-    "dry_state_decomposition": {
-      "dry_route_silent_D": 0.5666108355869385,
-      "dry_route_silent_null_ci95": [
-        -0.005434954563685333,
-        0.005606669939113412
-      ],
-      "dry_route_silent_p": 0.000999000999000999,
-      "dry_route_active_D": 0.33637531723218456,
-      "dry_route_active_null_ci95": [
-        -0.0043163951868215086,
-        0.004391807285710579
-      ],
-      "dry_route_active_p": 0.000999000999000999,
-      "superseded_effect_size_interpretation": true,
-      "note": "Historical D decomposition retained for auditability; bounded repair is authoritative for effect-size interpretation."
+      "primary_metric": "bounded residual co-dependence coefficient rho_b",
+      "all_clusters": {
+        "rho_b": 0.17206769596558683,
+        "null_ci95": [
+          -0.002669076296533742,
+          0.002853277727650955
+        ],
+        "p": 0.000999000999000999,
+        "clusters": 18769
+      },
+      "dry_route_silent": {
+        "rho_b": 0.28487700425848284,
+        "null_ci95": [
+          -0.0054097624519672755,
+          0.00564583556781708
+        ],
+        "p": 0.000999000999000999,
+        "clusters": 8343
+      },
+      "dry_route_active": {
+        "rho_b": 0.12729974469369246,
+        "null_ci95": [
+          -0.0031391746664463684,
+          0.0034971281670786955
+        ],
+        "p": 0.000999000999000999,
+        "clusters": 10426
+      },
+      "historical_unbounded_score": {
+        "D": 0.41585612605080213,
+        "status": "superseded_as_effect_size_retained_for_provenance_only",
+        "correlation_interpretation_authorized": false,
+        "design_effect_translation_authorized": false
+      }
     },
     "residual_dependence_taxonomic_breadth": {
       "eligible_taxa": 40,
@@ -213,7 +222,7 @@
         0.391017649530983,
         0.44083338308453635
       ],
-      "note": "Breadth of positive departure under historical unbounded D; specieswise D values are not comparable correlation effect sizes."
+      "note": "Breadth audit used the historical unbounded score before metric repair. All 40/40 eligible taxa had positive residual cross-product departures; numerical D values are not treated as comparable correlation effect sizes."
     },
     "monitoring_uncertainty": {
       "pairs": 2835,
@@ -267,6 +276,39 @@
       "rho_bounded_dry_route_silent": 0.2757567247727625,
       "p": 0.000999000999000999,
       "boundary": "Observer turnover is not required; within-observer error is not excluded."
+    },
+    "route_topology_lag_profile": {
+      "dry_route_silent": {
+        "near_lags_1_3": 0.29643298821548375,
+        "far_lags_7_9": 0.27178236785618926,
+        "far_p": 0.000999000999000999,
+        "all_lags_1_9_positive": true
+      },
+      "all_clusters": {
+        "near_lags_1_3": 0.18285938081902683,
+        "far_lags_7_9": 0.15769985305363424,
+        "far_p": 0.000999000999000999
+      },
+      "boundary": "Stop-number lag is route topology, not exact geographic distance."
+    },
+    "same_observer_bounded_dependence": {
+      "pairs": 2191,
+      "all_rho_b": 0.16271391911200095,
+      "dry_route_silent_rho_b": 0.2757567247727625,
+      "p": 0.000999000999000999,
+      "boundary": "Observer turnover is not required; within-observer perceptual error is not excluded."
+    },
+    "non_authoritative_diagnostics": {
+      "exact_coordinate_distance_profile": {
+        "status": "invalidated_by_geometry_qc",
+        "reason": "Pinned coordinate file contains gross within-route transcription errors, including one positive U.S. longitude and multiple >100-km within-route spans.",
+        "qc": "revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md"
+      },
+      "gee_working_correlation": {
+        "status": "non_authoritative_numerical_degeneracy",
+        "reason": "Full and dry-route-active GEE fits returned extreme intercepts and zero robust SE.",
+        "qc": "revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md"
+      }
     }
   }
 }
