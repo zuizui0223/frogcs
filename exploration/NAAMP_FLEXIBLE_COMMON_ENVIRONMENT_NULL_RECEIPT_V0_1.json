@@ -1,0 +1,960 @@
+{
+  "analysis": "naamp_flexible_common_environment_null_v0_1",
+  "comparison_with_existing_principal_comparator": {
+    "existing_conditional_residual": 0.2969,
+    "existing_observed_concentration_beta": 1.6503,
+    "existing_predicted_concentration_beta": 1.3535,
+    "flexible_conditional_residual": 0.26314385066701806,
+    "fraction_of_existing_residual_removed": 0.11369534972375188
+  },
+  "contract": "exploration/NAAMP_FLEXIBLE_COMMON_ENVIRONMENT_NULL_CONTRACT_V0_1.json",
+  "coverage": {
+    "pairs": 2916,
+    "routes": 439,
+    "states": 20
+  },
+  "decision": "residual_dependence_beyond_measured_flexible_common_environment",
+  "environment_shift_audit": {
+    "max_abs_species_pair_environment_logit_shift": 10.504001966344719,
+    "mean_abs_species_pair_environment_logit_shift": 0.5636042651455232,
+    "q95_abs_species_pair_environment_logit_shift": 1.7904044733287399
+  },
+  "flexible_common_environment_null": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.5924696827911414,
+    "null_residual_ci95": [
+      -0.13065356884269974,
+      0.12762359906390075
+    ],
+    "observed_concentration_beta": 1.6503201354367818,
+    "observed_conditional_residual": 0.26314385066701806,
+    "predicted_concentration_beta": 1.3871762847697637
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "posthoc_exploratory": true,
+    "rainfall_amount_directly_modeled": false,
+    "social_facilitation_identified": false,
+    "synchronous_breeding_identified": false,
+    "unique_lower_level_mechanism_identified": false,
+    "unmeasured_shared_environment_excluded": false
+  },
+  "model_training": {
+    "fold_A": {
+      "feature_count": 37,
+      "n_estimable_species": 43,
+      "n_training_routes": 398,
+      "n_training_runs": 3939,
+      "training_fold": "A"
+    },
+    "fold_A_species": {
+      "Acris crepitans": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.05415083703986755,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 5548.535237771795,
+        "positive_routes": 140,
+        "positive_stop_cells": 2133
+      },
+      "Acris crepitans/gryllus complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.012599138212567975,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1857.8099558953686,
+        "positive_routes": 53,
+        "positive_stop_cells": 400
+      },
+      "Acris gryllus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.01982397771067215,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 2555.8448677779597,
+        "positive_routes": 62,
+        "positive_stop_cells": 684
+      },
+      "Anaxyrus americanus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.1045950754760161,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 11018.04087375282,
+        "positive_routes": 259,
+        "positive_stop_cells": 4120
+      },
+      "Anaxyrus americanus/terrestris complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004481533969664036,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 593.8834201755211,
+        "positive_routes": 13,
+        "positive_stop_cells": 80
+      },
+      "Anaxyrus cognatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 5
+      },
+      "Anaxyrus fowleri": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.06301095024118282,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 6314.4452139084315,
+        "positive_routes": 165,
+        "positive_stop_cells": 2482
+      },
+      "Anaxyrus fowleri/woodhousii complex": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 19
+      },
+      "Anaxyrus quercicus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.003355142635247363,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 346.93978097141945,
+        "positive_routes": 15,
+        "positive_stop_cells": 35
+      },
+      "Anaxyrus terrestris": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.020208721639088836,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 2448.2589172845837,
+        "positive_routes": 61,
+        "positive_stop_cells": 703
+      },
+      "Gastrophryne carolinensis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.010936475734222075,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1495.2318007424267,
+        "positive_routes": 64,
+        "positive_stop_cells": 336
+      },
+      "Hyla andersonii": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.003347182285041534,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 335.5719422995261,
+        "positive_routes": 10,
+        "positive_stop_cells": 34
+      },
+      "Hyla avivoca": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.00747256960180799,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1003.9372414107738,
+        "positive_routes": 23,
+        "positive_stop_cells": 195
+      },
+      "Hyla chrysoscelis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.07814169207920311,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 7483.4292098799615,
+        "positive_routes": 193,
+        "positive_stop_cells": 3078
+      },
+      "Hyla chrysoscelis/versicolor complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.022543831310590918,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 2923.665787794489,
+        "positive_routes": 74,
+        "positive_stop_cells": 888
+      },
+      "Hyla cinerea": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.04553286775835486,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 4131.790335786371,
+        "positive_routes": 117,
+        "positive_stop_cells": 1705
+      },
+      "Hyla femoralis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008954648871751479,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1223.3530948671787,
+        "positive_routes": 37,
+        "positive_stop_cells": 258
+      },
+      "Hyla gratiosa": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.011186349828793692,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1545.4463142519005,
+        "positive_routes": 57,
+        "positive_stop_cells": 343
+      },
+      "Hyla squirella": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.013119513824845584,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1722.5280772231856,
+        "positive_routes": 58,
+        "positive_stop_cells": 426
+      },
+      "Hyla versicolor": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.11959890319879084,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 9736.891118998838,
+        "positive_routes": 190,
+        "positive_stop_cells": 4711
+      },
+      "Incilius nebulifer": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 3,
+        "positive_stop_cells": 18
+      },
+      "Lithobates areolatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 1
+      },
+      "Lithobates blairi": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004153083622779949,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 476.8837375865862,
+        "positive_routes": 13,
+        "positive_stop_cells": 68
+      },
+      "Lithobates capito": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 1
+      },
+      "Lithobates catesbeianus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.09718202589490692,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 10333.447790119437,
+        "positive_routes": 316,
+        "positive_stop_cells": 3828
+      },
+      "Lithobates clamitans": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.15376999238385922,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 12945.568739538357,
+        "positive_routes": 333,
+        "positive_stop_cells": 6057
+      },
+      "Lithobates grylio": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.0020056711094182775,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 339.5517094367121,
+        "positive_routes": 16,
+        "positive_stop_cells": 79
+      },
+      "Lithobates palustris": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.022264539730896038,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 3552.4441914339563,
+        "positive_routes": 156,
+        "positive_stop_cells": 877
+      },
+      "Lithobates pipiens": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.005788326148768592,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 1008.9078556466552,
+        "positive_routes": 50,
+        "positive_stop_cells": 228
+      },
+      "Lithobates septentrionalis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004275245055653919,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 502.4031060655349,
+        "positive_routes": 17,
+        "positive_stop_cells": 72
+      },
+      "Lithobates sphenocephalus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.04645852487941302,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 5452.448693239161,
+        "positive_routes": 155,
+        "positive_stop_cells": 1830
+      },
+      "Lithobates sylvaticus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.05351613538969277,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 4200.876758231158,
+        "positive_routes": 154,
+        "positive_stop_cells": 2108
+      },
+      "Lithobates virgatipes": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.0058770754190703,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 824.7441792727279,
+        "positive_routes": 27,
+        "positive_stop_cells": 132
+      },
+      "Pseudacris brachyphona": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008642938812222391,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1047.1579976060668,
+        "positive_routes": 20,
+        "positive_stop_cells": 251
+      },
+      "Pseudacris brimleyi": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.006033225155925598,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 802.8716850539502,
+        "positive_routes": 19,
+        "positive_stop_cells": 143
+      },
+      "Pseudacris clarkii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Pseudacris crucifer": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.4308707793856208,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 17884.650994582225,
+        "positive_routes": 352,
+        "positive_stop_cells": 16972
+      },
+      "Pseudacris feriarum": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.026174225920286516,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 2571.9637145955676,
+        "positive_routes": 67,
+        "positive_stop_cells": 1031
+      },
+      "Pseudacris feriarum/fouquettei complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.003070112041904467,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 253.61817314569132,
+        "positive_routes": 5,
+        "positive_stop_cells": 27
+      },
+      "Pseudacris feriarum/kalmi complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008172291659239383,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 865.6230418844092,
+        "positive_routes": 11,
+        "positive_stop_cells": 224
+      },
+      "Pseudacris feriarum/triseriata complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004229851534444895,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 467.9570548194179,
+        "positive_routes": 12,
+        "positive_stop_cells": 69
+      },
+      "Pseudacris kalmi": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.005534487839554119,
+        "method": "glm",
+        "n_training_runs": 3939,
+        "negative_loglik": 746.3409209120318,
+        "positive_routes": 26,
+        "positive_stop_cells": 218
+      },
+      "Pseudacris maculata": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.02025076947394767,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1348.9983831522686,
+        "positive_routes": 31,
+        "positive_stop_cells": 702
+      },
+      "Pseudacris maculata/triseriata complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.018787890318351423,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1380.0856213574998,
+        "positive_routes": 25,
+        "positive_stop_cells": 641
+      },
+      "Pseudacris nigrita": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.010946187641253826,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1172.8543848453633,
+        "positive_routes": 29,
+        "positive_stop_cells": 337
+      },
+      "Pseudacris nigrita/feriarum complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004999163746812752,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 642.3930242303542,
+        "positive_routes": 14,
+        "positive_stop_cells": 100
+      },
+      "Pseudacris ocularis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008689468084863214,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 1229.6847883586584,
+        "positive_routes": 35,
+        "positive_stop_cells": 250
+      },
+      "Pseudacris ornata": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004704106005001569,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 494.28707656687243,
+        "positive_routes": 11,
+        "positive_stop_cells": 90
+      },
+      "Pseudacris streckeri": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Scaphiopus couchii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Scaphiopus holbrookii": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004552225170212408,
+        "method": "ridge_fallback",
+        "n_training_runs": 3939,
+        "negative_loglik": 638.5035689573965,
+        "positive_routes": 27,
+        "positive_stop_cells": 86
+      },
+      "Scaphiopus hurterii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Spea bombifrons": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 4
+      }
+    },
+    "fold_B": {
+      "feature_count": 37,
+      "n_estimable_species": 42,
+      "n_training_routes": 409,
+      "n_training_runs": 3909,
+      "training_fold": "B"
+    },
+    "fold_B_species": {
+      "Acris crepitans": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.0531584461171161,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 5823.572889389994,
+        "positive_routes": 148,
+        "positive_stop_cells": 1988
+      },
+      "Acris crepitans/gryllus complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.014351559273470699,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 1971.1363869973225,
+        "positive_routes": 40,
+        "positive_stop_cells": 561
+      },
+      "Acris gryllus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.023561075083140228,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 2668.2854003180773,
+        "positive_routes": 67,
+        "positive_stop_cells": 921
+      },
+      "Anaxyrus americanus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.10698388436939686,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 11285.583291569186,
+        "positive_routes": 256,
+        "positive_stop_cells": 4182
+      },
+      "Anaxyrus americanus/terrestris complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.004723340258242723,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 636.0256720704999,
+        "positive_routes": 19,
+        "positive_stop_cells": 85
+      },
+      "Anaxyrus cognatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 16
+      },
+      "Anaxyrus fowleri": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.05356180005956958,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 6405.783098205844,
+        "positive_routes": 161,
+        "positive_stop_cells": 2008
+      },
+      "Anaxyrus fowleri/woodhousii complex": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 2,
+        "positive_stop_cells": 11
+      },
+      "Anaxyrus quercicus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.006770584675851934,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 856.4966466224624,
+        "positive_routes": 19,
+        "positive_stop_cells": 174
+      },
+      "Anaxyrus terrestris": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.01962145228958901,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 2267.860176853608,
+        "positive_routes": 65,
+        "positive_stop_cells": 767
+      },
+      "Gastrophryne carolinensis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.011790362448912586,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1618.1588578883473,
+        "positive_routes": 77,
+        "positive_stop_cells": 370
+      },
+      "Hyla andersonii": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.00391834082581051,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 423.8357161714398,
+        "positive_routes": 6,
+        "positive_stop_cells": 54
+      },
+      "Hyla avivoca": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008415900003963025,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1093.3160831114596,
+        "positive_routes": 24,
+        "positive_stop_cells": 224
+      },
+      "Hyla chrysoscelis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.08424152138877081,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 8023.734779980133,
+        "positive_routes": 191,
+        "positive_stop_cells": 3293
+      },
+      "Hyla chrysoscelis/versicolor complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.026477393966289904,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 3513.1788450813247,
+        "positive_routes": 96,
+        "positive_stop_cells": 1035
+      },
+      "Hyla cinerea": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.055871108083914274,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 4226.416634511956,
+        "positive_routes": 125,
+        "positive_stop_cells": 2184
+      },
+      "Hyla femoralis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.011471619754530793,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1480.910815565463,
+        "positive_routes": 32,
+        "positive_stop_cells": 356
+      },
+      "Hyla gratiosa": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.00946539869857867,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 1321.6590443804373,
+        "positive_routes": 58,
+        "positive_stop_cells": 370
+      },
+      "Hyla squirella": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.01475181397917599,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1912.523242440544,
+        "positive_routes": 68,
+        "positive_stop_cells": 484
+      },
+      "Hyla versicolor": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.10790485689436813,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 9093.024440217541,
+        "positive_routes": 186,
+        "positive_stop_cells": 4218
+      },
+      "Incilius nebulifer": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 3,
+        "positive_stop_cells": 7
+      },
+      "Lithobates areolatus": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 0,
+        "positive_stop_cells": 0
+      },
+      "Lithobates blairi": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.003452715481502943,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 344.32650522989127,
+        "positive_routes": 9,
+        "positive_stop_cells": 35
+      },
+      "Lithobates capito": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 4,
+        "positive_stop_cells": 9
+      },
+      "Lithobates catesbeianus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.09954996507090723,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 10639.031328206653,
+        "positive_routes": 319,
+        "positive_stop_cells": 3803
+      },
+      "Lithobates clamitans": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.14215912033630196,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 11968.361085256189,
+        "positive_routes": 318,
+        "positive_stop_cells": 5557
+      },
+      "Lithobates grylio": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008304909646385803,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1120.2718159063054,
+        "positive_routes": 23,
+        "positive_stop_cells": 228
+      },
+      "Lithobates palustris": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.023561014070095303,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 3719.0852408806068,
+        "positive_routes": 161,
+        "positive_stop_cells": 921
+      },
+      "Lithobates pipiens": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.005397868329495549,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 842.3158145418378,
+        "positive_routes": 44,
+        "positive_stop_cells": 211
+      },
+      "Lithobates septentrionalis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.003329001212810952,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 308.23096326029935,
+        "positive_routes": 6,
+        "positive_stop_cells": 36
+      },
+      "Lithobates sphenocephalus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.05060120703504996,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 5797.465646188661,
+        "positive_routes": 177,
+        "positive_stop_cells": 1978
+      },
+      "Lithobates sylvaticus": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.035149680513551676,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 3064.3609226062454,
+        "positive_routes": 140,
+        "positive_stop_cells": 1374
+      },
+      "Lithobates virgatipes": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.006100059547949164,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 850.8225220211663,
+        "positive_routes": 17,
+        "positive_stop_cells": 139
+      },
+      "Pseudacris brachyphona": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.006720527152520231,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 792.1687809619814,
+        "positive_routes": 14,
+        "positive_stop_cells": 168
+      },
+      "Pseudacris brimleyi": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.005621115196065095,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 792.147384214541,
+        "positive_routes": 22,
+        "positive_stop_cells": 124
+      },
+      "Pseudacris clarkii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 6
+      },
+      "Pseudacris crucifer": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.3803018678178505,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 17155.226965426173,
+        "positive_routes": 366,
+        "positive_stop_cells": 14866
+      },
+      "Pseudacris feriarum": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.022614545638272747,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 2397.366246281003,
+        "positive_routes": 64,
+        "positive_stop_cells": 884
+      },
+      "Pseudacris feriarum/fouquettei complex": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 6,
+        "positive_stop_cells": 15
+      },
+      "Pseudacris feriarum/kalmi complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.0038044077580942316,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 410.5622246880133,
+        "positive_routes": 9,
+        "positive_stop_cells": 51
+      },
+      "Pseudacris feriarum/triseriata complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008309012208972896,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 753.9661122487742,
+        "positive_routes": 18,
+        "positive_stop_cells": 230
+      },
+      "Pseudacris kalmi": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.005909521642362601,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 769.8492835938316,
+        "positive_routes": 21,
+        "positive_stop_cells": 231
+      },
+      "Pseudacris maculata": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.026548118173910947,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1609.6195231784081,
+        "positive_routes": 25,
+        "positive_stop_cells": 942
+      },
+      "Pseudacris maculata/triseriata complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.019947590086529833,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1627.0570785273967,
+        "positive_routes": 33,
+        "positive_stop_cells": 679
+      },
+      "Pseudacris nigrita": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.007137450498849271,
+        "method": "glm",
+        "n_training_runs": 3909,
+        "negative_loglik": 880.1060917179095,
+        "positive_routes": 34,
+        "positive_stop_cells": 279
+      },
+      "Pseudacris nigrita/feriarum complex": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.00504536322893232,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 612.5705407412069,
+        "positive_routes": 20,
+        "positive_stop_cells": 104
+      },
+      "Pseudacris ocularis": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.008784568265533907,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 1258.2197006148374,
+        "positive_routes": 29,
+        "positive_stop_cells": 254
+      },
+      "Pseudacris ornata": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.0034544480457496946,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 338.7634082615624,
+        "positive_routes": 15,
+        "positive_stop_cells": 41
+      },
+      "Pseudacris streckeri": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 6
+      },
+      "Scaphiopus couchii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 5
+      },
+      "Scaphiopus holbrookii": {
+        "estimable": true,
+        "mean_predicted_stop_probability": 0.003940882686039367,
+        "method": "ridge_fallback",
+        "n_training_runs": 3909,
+        "negative_loglik": 492.61667023230234,
+        "positive_routes": 35,
+        "positive_stop_cells": 58
+      },
+      "Scaphiopus hurterii": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 2
+      },
+      "Spea bombifrons": {
+        "estimable": false,
+        "method": "zero_environment_shift",
+        "positive_routes": 1,
+        "positive_stop_cells": 1
+      }
+    }
+  },
+  "observed": {
+    "concentration_beta": 1.6503201354367818,
+    "extra_stop_beta": 0.6809252254809639,
+    "route_new_species_beta": 0.19820082505375725
+  },
+  "status": "posthoc_exploratory_after_explicit_2026_10_03_reopening"
+}
