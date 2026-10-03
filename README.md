@@ -139,6 +139,8 @@ Important boundaries:
 - v0.4 additionally freezes exact-k deep historical-template alignment and the deep-versus-shallow coupling contrast before WFTS frog outcomes.
 - the authorized real-data files are byte-locked by `revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json`; lock QA run **37129985326** passed.
 - the receipt → schema-only → mapping freeze → weather → structural preflight → primary → secondary execution order is fixed in `revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md`.
+- the complete synthetic preflight → primary → common-environment secondary → recurrent-site secondary chain passed in run **37130556855**; the QA artifact is **11276592978**.
+- pre-receipt readiness is frozen in `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`.
 - there are currently **no internal pre-receipt scientific or implementation blockers**; the remaining dependency is acquisition of the existing station-level WFTS export plus route/station lineage metadata.
 
 A non-PASS is classified prospectively as either:
