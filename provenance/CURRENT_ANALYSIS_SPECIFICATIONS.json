@@ -1,6 +1,6 @@
 {
   "analysis": "frogcs_rc4_current_analysis_specifications",
-  "status": "validated_post_opening_integrated_synthesis",
+  "status": "validated_post_opening_integrated_synthesis_with_posthoc_common_cause_falsification",
   "title": "Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization",
   "canonical_files": {
     "manuscript": "paper/manuscript.md",
@@ -97,7 +97,51 @@
     "literal_synchrony": false,
     "individual_memory_or_philopatry": false,
     "occupancy_or_colonization": false,
-    "unique_lower_level_mechanism": false
+    "unique_lower_level_mechanism": false,
+    "standardized_residual_dependence_D_is_Pearson_correlation": false,
+    "monitoring_diagnostic_is_published_occupancy_reanalysis": false
   },
-  "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing RC4 terminology is within-taxon multi-site organization, historical site targeting, and pulse-revealed dependence structure."
+  "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and standardized residual dependence D. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
+  "post_reopening_exploratory_chain": {
+    "reopening_date": "2026-10-03",
+    "provenance_boundary": "All entries below are post-hoc exploratory analyses on the already-explored NAAMP discovery data. They are not independent confirmation and are not part of the original stopped mechanism sequence.",
+    "analyses": [
+      {
+        "role": "flexible measured common-environment falsification",
+        "contract": "exploration/NAAMP_FLEXIBLE_COMMON_ENVIRONMENT_NULL_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_FLEXIBLE_COMMON_ENVIRONMENT_NULL_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_flexible_common_environment_null.py"
+      },
+      {
+        "role": "actual 72-h rainfall common-environment falsification",
+        "contract": "exploration/NAAMP_RAIN_AMOUNT_COMMON_ENVIRONMENT_NULL_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_RAIN_AMOUNT_COMMON_ENVIRONMENT_NULL_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_rain_amount_common_environment_null.py"
+      },
+      {
+        "role": "species x route-night standardized residual dependence",
+        "contract": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_DEPENDENCE_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_species_route_night_residual_dependence.py"
+      },
+      {
+        "role": "dry-state decomposition of route-night residual dependence",
+        "contract": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_DRY_STATE_DECOMPOSITION_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_DRY_STATE_DECOMPOSITION_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_species_route_night_dry_state_decomposition.py"
+      },
+      {
+        "role": "taxonomic breadth of route-night residual dependence",
+        "contract": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_BREADTH_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_SPECIES_ROUTE_NIGHT_RESIDUAL_BREADTH_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_species_route_night_residual_breadth.py"
+      },
+      {
+        "role": "monitoring independence uncertainty diagnostic",
+        "contract": "exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_CONTRACT_V0_2.json",
+        "receipt": "exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_RECEIPT_V0_2.json",
+        "script": "exploration/run_naamp_monitoring_independence_impact_v0_2.py"
+      }
+    ]
+  }
 }
