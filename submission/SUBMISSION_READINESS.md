@@ -11,6 +11,7 @@
 - evidence hierarchy: `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
 - literature novelty lock: `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
+- closest-prior-study audit: `revision/CLOSEST_PRIOR_STUDIES_AUDIT_V0_1.md`
 - scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - release receipt: `submission/RC4_RELEASE_RECEIPT.md`
 
@@ -21,9 +22,9 @@ Historical manuscript drafts are retained in Git history and frozen release bran
 - [x] Research Article target
 - [x] anonymized main-manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words — **349**
+- [x] abstract ≤350 words — **325**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] main manuscript below 8,500 words — approximately **6,455**
+- [x] main manuscript below 8,500 words — approximately **7,749**
 - [x] separate Supporting Information
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
