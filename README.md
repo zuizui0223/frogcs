@@ -113,7 +113,7 @@ Important boundaries:
 - Wisconsin is not one of the 21 NAAMP discovery states;
 - response-blind structural eligibility must pass before frog outcomes are loaded;
 - the primary endpoint/comparator is frozen;
-- the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`;
+- the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`;
 - the primary implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`;
 - after the primary result is frozen, a separately frozen secondary sequence tests Daymet common-environment sufficiency, bounded route-night dependence, far-lag persistence and clustered uncertainty under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`;
 - secondary results cannot rescue, downgrade or retune the primary WFTS classification.
