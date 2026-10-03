@@ -161,7 +161,7 @@ Classification:
 - `template_link_non_support`: gate passes but one or both fixed support rules fail;
 - `inconclusive_secondary_template_link`: gate fails.
 
-This secondary test is the prospective external test of the NAAMP-derived **fast species-night gate × distributed slow species × place template** structural prediction.
+This secondary test is the prospective external test of the NAAMP-derived prediction that **route-spanning activity is spatially selective and that unusually deep activation preferentially involves recurrent taxon-specific strong-chorus locations**.
 
 ## 6. Interpretation boundaries
 
