@@ -191,7 +191,7 @@ The principal ecological comparator retained taxon-specific rainfall response an
 
 Flexible nonlinear rain recency, temperature and season predicted concentration 1.387 versus 1.650 observed, removing 11.4% of the original residual (P = 0.000999). Although 72-h ERA5 rainfall amount independently predicted strong new-chorus activation (β = 0.741, 95% CI 0.386–1.097), it explained little of spatial allocation. Among 2,835 weather-linked prior-history pairs, the same-sample linear comparator left residual 0.318 and the rainfall-amount generator 0.297—only a 6.5% reduction (P = 0.000999).
 
-The original residual score was unbounded, so we repeated the test with a bounded residual-pair coefficient: **0.172** overall and **0.285** among dry-route-silent taxa (independent-null upper 95% bounds 0.0029 and 0.0056; both P = 0.000999). In the silent stratum it remained **0.296** at stop-number lags 1–3 and **0.272** at lags 7–9 (both P = 0.000999). Pair-clustered SE exceeded IID in 38/39 eligible species (median **1.61-fold**); route-clustered SE did so in 36/39 (median **1.48-fold**).
+The original residual score was unbounded, so we repeated the test with a bounded residual-pair coefficient: **0.172** overall and **0.285** among dry-route-silent taxa (independent-null upper 95% bounds 0.0029 and 0.0056; both P = 0.000999). In the silent stratum it remained **0.296** at stop-number lags 1–3 and **0.272** at lags 7–9 (both P = 0.000999); restricting to the same observer in both focal surveys retained **0.276** (P = 0.000999). Pair-clustered SE exceeded IID in 38/39 eligible species (median **1.61-fold**); route-clustered SE did so in 36/39 (median **1.48-fold**).
 
 ### Strong wet-state activity preferentially reappears at historically used physical sites
 
