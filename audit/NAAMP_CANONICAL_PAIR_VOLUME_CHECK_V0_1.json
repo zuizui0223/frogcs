@@ -1,4 +1,5 @@
 {
+  "active_run_x_stop_combinations": 45986,
   "analysis": "naamp_canonical_pair_volume_check_v0_1",
   "authority": "scripts/naamp/run_naamp_ecological_pulse.py::build_runs + pair_runs",
   "calling_index_distribution": {
@@ -6,14 +7,17 @@
     "2": 23522,
     "3": 28196
   },
+  "completely_call_silent_pair_runs": 114,
   "eligible_runs": 7848,
   "max_positive_records_per_pair_run": 66,
   "min_positive_records_per_pair_run": 0,
   "pairs": 4236,
   "positive_call_records_in_pair_side_runs": 88737,
   "positive_taxon_labels_in_pair_side_runs": 53,
+  "positive_taxon_x_run_combinations": 22574,
   "routes": 585,
   "runid_sha256": "a1ae266d8e87599a4b19d0eb0cded5f4ec82ef177909456efdbfbe97aa7cdff2",
+  "runs_with_at_least_one_positive_call": 5960,
   "states": 21,
   "unique_pair_side_runids": 6074,
   "unique_stop_visits_at_10_per_run": 60740
