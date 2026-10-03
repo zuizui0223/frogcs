@@ -1,0 +1,273 @@
+{
+  "all_clusters": {
+    "far_lags_7_9": {
+      "null_ci95": [
+        -0.007518737330623652,
+        0.007147992251303573
+      ],
+      "null_mean": 1.7910740545160065e-07,
+      "ordered_pair_records": 112614,
+      "plus_one_upper_tail_p": 0.000999000999000999,
+      "positive_dependence_supported": true,
+      "rho_lag": 0.15769985305363424
+    },
+    "lags": {
+      "1": {
+        "null_ci95": [
+          -0.0066587766178242466,
+          0.006335345521656517
+        ],
+        "null_mean": 5.414285476154116e-05,
+        "ordered_pair_records": 168921,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.1964857382870554
+      },
+      "2": {
+        "null_ci95": [
+          -0.007327983749599155,
+          0.007158508017134637
+        ],
+        "null_mean": 4.6212749596502515e-05,
+        "ordered_pair_records": 150152,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.1779447797526174
+      },
+      "3": {
+        "null_ci95": [
+          -0.006577003185347262,
+          0.007342945937624665
+        ],
+        "null_mean": 0.0002360003236727107,
+        "ordered_pair_records": 131383,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.1708944837865788
+      },
+      "4": {
+        "null_ci95": [
+          -0.008063425893962806,
+          0.00770236918847975
+        ],
+        "null_mean": -3.1097252474803404e-05,
+        "ordered_pair_records": 112614,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.16624169130927294
+      },
+      "5": {
+        "null_ci95": [
+          -0.008546394628289919,
+          0.008801826907949159
+        ],
+        "null_mean": 3.4131837888356194e-05,
+        "ordered_pair_records": 93845,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.1587980230092168
+      },
+      "6": {
+        "null_ci95": [
+          -0.00929973187063564,
+          0.008890653392550234
+        ],
+        "null_mean": -6.0290392390643375e-05,
+        "ordered_pair_records": 75076,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.1544711680398876
+      },
+      "7": {
+        "null_ci95": [
+          -0.010098359258210643,
+          0.010756737999323744
+        ],
+        "null_mean": 0.00010424511351046798,
+        "ordered_pair_records": 56307,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.15349909450183394
+      },
+      "8": {
+        "null_ci95": [
+          -0.013145984575328755,
+          0.01265913722293358
+        ],
+        "null_mean": -0.00017078373232678988,
+        "ordered_pair_records": 37538,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.17691519207786846
+      },
+      "9": {
+        "null_ci95": [
+          -0.020405323549283122,
+          0.018533205144029265
+        ],
+        "null_mean": 2.5580964891072104e-05,
+        "ordered_pair_records": 18769,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.13150461348490808
+      }
+    },
+    "near_lags_1_3": {
+      "null_ci95": [
+        -0.0040040912252866856,
+        0.004182531310494618
+      ],
+      "null_mean": 0.00010448975770882999,
+      "ordered_pair_records": 450456,
+      "plus_one_upper_tail_p": 0.000999000999000999,
+      "positive_dependence_supported": true,
+      "rho_lag": 0.18285938081902683
+    }
+  },
+  "analysis": "naamp_route_night_dependence_lag_profile_v0_1",
+  "contract": "exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_CONTRACT_V0_1.json",
+  "coverage": {
+    "all_clusters": 18769,
+    "dry_route_silent_clusters": 8343,
+    "pairs": 2835,
+    "routes": 428
+  },
+  "decision": {
+    "all_cluster_far_scale_supported": true,
+    "dry_route_silent_far_scale_supported": true
+  },
+  "dry_route_silent": {
+    "far_lags_7_9": {
+      "null_ci95": [
+        -0.014178427811572853,
+        0.01433004531017673
+      ],
+      "null_mean": 0.00012959616719879747,
+      "ordered_pair_records": 50058,
+      "plus_one_upper_tail_p": 0.000999000999000999,
+      "positive_dependence_supported": true,
+      "rho_lag": 0.27178236785618926
+    },
+    "lags": {
+      "1": {
+        "null_ci95": [
+          -0.012416833212972458,
+          0.012140477262362944
+        ],
+        "null_mean": 0.00014231710927633433,
+        "ordered_pair_records": 75087,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.316376985475618
+      },
+      "2": {
+        "null_ci95": [
+          -0.012290229395462409,
+          0.012307387796737136
+        ],
+        "null_mean": 9.733037689044277e-05,
+        "ordered_pair_records": 66744,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.2869624950423273
+      },
+      "3": {
+        "null_ci95": [
+          -0.013248379688475212,
+          0.013561354645655013
+        ],
+        "null_mean": 0.00023539087774495022,
+        "ordered_pair_records": 58401,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.28151761216077337
+      },
+      "4": {
+        "null_ci95": [
+          -0.014609473931952818,
+          0.015037431076668634
+        ],
+        "null_mean": -4.906551324195907e-05,
+        "ordered_pair_records": 50058,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.2761591229255445
+      },
+      "5": {
+        "null_ci95": [
+          -0.01620863404519891,
+          0.016096307484048434
+        ],
+        "null_mean": 0.0002271061386741727,
+        "ordered_pair_records": 41715,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.2644823703634067
+      },
+      "6": {
+        "null_ci95": [
+          -0.01704521446345692,
+          0.017536820813041608
+        ],
+        "null_mean": 0.00020810203494736436,
+        "ordered_pair_records": 33372,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.2738578806615328
+      },
+      "7": {
+        "null_ci95": [
+          -0.02029863939635913,
+          0.020618123469252275
+        ],
+        "null_mean": -4.504963310478541e-05,
+        "ordered_pair_records": 25029,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.2622755852983815
+      },
+      "8": {
+        "null_ci95": [
+          -0.025337972998273527,
+          0.026012783343552198
+        ],
+        "null_mean": 0.00012209894399680754,
+        "ordered_pair_records": 16686,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.29285151040701973
+      },
+      "9": {
+        "null_ci95": [
+          -0.03365495352853916,
+          0.03837377637370095
+        ],
+        "null_mean": 0.0006734049137106158,
+        "ordered_pair_records": 8343,
+        "plus_one_upper_tail_p": 0.000999000999000999,
+        "positive_dependence_supported": true,
+        "rho_lag": 0.25814447031077364
+      }
+    },
+    "near_lags_1_3": {
+      "null_ci95": [
+        -0.007169436673940088,
+        0.007219792347113955
+      ],
+      "null_mean": 0.0001543326706880669,
+      "ordered_pair_records": 200232,
+      "plus_one_upper_tail_p": 0.000999000999000999,
+      "positive_dependence_supported": true,
+      "rho_lag": 0.29643298821548375
+    }
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "social_facilitation_identified": false,
+    "stop_number_is_exact_geographic_distance": false
+  },
+  "status": "posthoc_spatial_scale_diagnostic_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
