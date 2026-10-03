@@ -53,7 +53,7 @@
     "interpretation": "strongly suggests coverage feasibility but does not substitute for response-blind preflight"
   },
   "next_external_dependency": "send/otherwise initiate the direct request to Andrew Badje for the existing station-level WFTS response export plus route/station lineage metadata, or obtain those files by another authorized route",
-  "primary_request": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md",
+  "primary_request": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_3.md",
   "access_audit": "revision/WFTS_PUBLIC_DATA_ACCESS_AUDIT_V0_2.md",
   "receipt_protocol": "revision/WFTS_RECEIPT_AND_PREFLIGHT_PROTOCOL_V0_1.md",
   "tools": {
@@ -143,10 +143,12 @@
       "phone": "608-266-2177",
       "status": "currently reverified on Wisconsin DNR Public Records Request page"
     },
-    "authority": "revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md"
+    "authority": "revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md",
+    "request_strategy": "send concise v0.3 directly to Andrew Badje; use v0.2 only if detailed field clarification is requested"
   },
   "fail_closed_guard_artifact": {
     "id": 11285147541,
     "digest": "sha256:2160db04a28c11ba404b56c135ffcf7becbc34da00183fabd89f0683580e2e23"
-  }
+  },
+  "detailed_request_followup": "revision/WFTS_DATA_REQUEST_TEMPLATE_V0_2.md"
 }
