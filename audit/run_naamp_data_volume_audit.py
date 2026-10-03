@@ -310,26 +310,6 @@ def main():
             "unique_run_stop_opportunities_actually_used": 10 * len(pair_run_ids),
             "positive_call_rows_ci1_3_in_actual_pair_runs": pair_positive_rows,
             "unique_positive_run_stop_taxon_cells_in_actual_pair_runs": len(pair_positive_cells),
-            "pair_strata_envelope": {
-                "eligible_runs_in_any_stratum_that_contains_a_pair": len(pair_strata_run_ids),
-                "run_stop_opportunities": 10 * len(pair_strata_run_ids),
-                "positive_call_rows_ci1_3": pair_strata_positive_rows,
-                "unique_positive_run_stop_taxon_cells": len(pair_strata_positive_cells),
-                "extra_runs_not_actually_used_as_pair_sides": len(pair_strata_extra_runs),
-                "extra_run_ids": pair_strata_extra_runs,
-                "extra_run_metadata": [
-                    {
-                        "RunID": rid,
-                        "State": run_meta[rid]["State"],
-                        "RouteNumber": run_meta[rid]["RouteNumber"],
-                        "RunNumber": run_meta[rid]["RunNumber"],
-                        "SurveyYear": run_meta[rid]["SurveyYear"],
-                        "DaysSinceRain": run_meta[rid]["DaysSinceRain"],
-                        "positive_cells": sum(1 for x in eligible_positive_cells if x[0] == rid)
-                    }
-                    for rid in pair_strata_extra_runs
-                ]
-            },
             "exact_consecutive_year_pairs": sum(1 for p in pair_rows if p["year_gap"] == 1),
             "fraction_exact_consecutive_year": sum(1 for p in pair_rows if p["year_gap"] == 1) / len(pair_rows),
         },
