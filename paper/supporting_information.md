@@ -1235,6 +1235,8 @@ Observer turnover was also unnecessary. Restricting to **2,191** weather-linked 
 
 This sensitivity does not remove within-observer perceptual error, but it excludes observer replacement as a requirement for the route-night pattern.
 
+We also tested persistent **species-level marginal miscalibration**. For each species, one logit calibration intercept was estimated only from the opposite deterministic route fold using the strongest fixed q values as offsets; ineligible species received zero adjustment. The calibrated probabilities were then re-matched to the observed pair-level total wet incidence. Despite intercept ranges of approximately −2.14 to 1.11 in fold A and −1.98 to 2.61 in fold B, the concentration residual remained **0.2608** (null 95% interval **−0.1326 to 0.1355**, P = **0.000999**), dry-route-silent bounded dependence remained **0.2866** (P = **0.000999**) and far-lag dependence remained **0.2737** (P = **0.000999**). Constant species under- or overprediction therefore does not explain the event-specific route-night structure.
+
 The comparator already contains a **pair-level common log-odds shift** solved so that expected total wet incidence equals the observed total. Thus a route-night process that merely raises all species × stop cells together is conditioned away at first order; the residual diagnostic asks how that fixed amount of activity is allocated within particular species across stops.
 
 To describe the magnitude of the remaining species × route-night state without converting `rho_b` into a design effect, we separately fixed a logistic-normal random-intercept model with `logit(q)` as an offset:
@@ -1391,6 +1393,7 @@ The following analyses were conducted only after the original stopping rule was 
 - stop-number-lag profile of bounded residual dependence;
 - same-observer bounded-dependence sensitivity;
 - detection-augmented common-environment falsification using hearing impairment, major-noise timeout and wind;
+- route-cross-fitted species-level marginal calibration falsification;
 - logistic-normal species × route-night latent-state magnitude model and its numerical convergence audit;
 - cross-fitted scalar-state structural sufficiency test;
 - exact-k deep historical-template alignment test;
