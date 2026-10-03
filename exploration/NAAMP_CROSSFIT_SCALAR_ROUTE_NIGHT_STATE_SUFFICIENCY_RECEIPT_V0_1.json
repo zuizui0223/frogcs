@@ -1,0 +1,99 @@
+{
+  "analysis": "naamp_crossfit_scalar_route_night_state_sufficiency_v0_1",
+  "contract": "exploration/NAAMP_CROSSFIT_SCALAR_ROUTE_NIGHT_STATE_SUFFICIENCY_CONTRACT_V0_1.json",
+  "coverage": {
+    "dry_route_silent_clusters": 8343,
+    "pairs": 2835,
+    "routes": 428,
+    "routes_by_fold": {
+      "A": 218,
+      "B": 210
+    }
+  },
+  "crossfit_latent_training": {
+    "fold_A": {
+      "clusters": 4374,
+      "latent_logistic_icc": 0.7335361555218419,
+      "likelihood_ratio_statistic": 8741.630044624293,
+      "log_likelihood_mle": -10740.568538299634,
+      "log_likelihood_sigma0": -15111.383560611781,
+      "mu_hat": -0.3134486931036212,
+      "one_sd_common_state_odds_multiplier": 20.275364094166992,
+      "profile_upper_bound_hit": false,
+      "sigma0_mu_hat": 0.6372701493214895,
+      "sigma_hat": 3.0094065576289917,
+      "sigma_profile_ci95": [
+        2.898713012823087,
+        3.1161390133456375
+      ]
+    },
+    "fold_B": {
+      "clusters": 3969,
+      "latent_logistic_icc": 0.7008745091403084,
+      "likelihood_ratio_statistic": 6986.589041101532,
+      "log_likelihood_mle": -10237.629944966837,
+      "log_likelihood_sigma0": -13730.924465517603,
+      "mu_hat": -0.22265756140131185,
+      "one_sd_common_state_odds_multiplier": 16.061161478278116,
+      "profile_upper_bound_hit": false,
+      "sigma0_mu_hat": 0.5294259991088798,
+      "sigma_hat": 2.776404027091492,
+      "sigma_profile_ci95": [
+        2.642198428919056,
+        2.8837265969189385
+      ]
+    }
+  },
+  "decision": {
+    "both_endpoints_structurally_sufficient": false,
+    "concentration_structurally_sufficient": true,
+    "far_lag_structurally_sufficient": false
+  },
+  "interpretation_boundary": {
+    "independent_external_confirmation": false,
+    "pair_total_retuned_after_latent_draw": false,
+    "route_crossfit_latent_distribution": true,
+    "unique_lower_level_mechanism_identified": false
+  },
+  "observed": {
+    "concentration_beta": 1.713554974812249,
+    "extra_stop_beta": 0.7014479871304635,
+    "route_new_taxon_beta": 0.2031197742459689
+  },
+  "scalar_state_concentration": {
+    "above_upper_95": false,
+    "conditional_upper_tail_p": 0.9250749250749251,
+    "null_regression_r2": 0.9029154485548232,
+    "null_residual_ci95": [
+      -0.2796798840699037,
+      0.2866955795349243
+    ],
+    "observed_concentration_beta": 1.713554974812249,
+    "observed_conditional_residual": -0.2068860974319029,
+    "predicted_concentration_beta": 1.9204410722441518
+  },
+  "scalar_state_lag_profile": {
+    "far_lags_7_9": {
+      "observed_inside_predictive_ci": false,
+      "observed_rho_lag": 0.2717823678561895,
+      "scalar_generator_ci95": [
+        0.4556793337300058,
+        0.4932881993776681
+      ],
+      "scalar_generator_mean": 0.4740442586714541
+    },
+    "near_lags_1_3": {
+      "observed_inside_predictive_ci": false,
+      "observed_rho_lag": 0.29643298821548464,
+      "scalar_generator_ci95": [
+        0.4585533540820018,
+        0.49099069356341024
+      ],
+      "scalar_generator_mean": 0.47458338819312185
+    }
+  },
+  "status": "posthoc_crossfit_structural_sufficiency",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
