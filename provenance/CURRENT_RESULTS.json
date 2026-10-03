@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "After measured weather, detection conditions and prior site structure, residual dependence is species-by-route-night, route-spanning but non-uniform: a cross-fitted scalar state reproduces concentration but overpredicts near/far stop dependence, supporting distributed patch expression across recurrent sites."
+    "post_reopening_refinement": "After measured weather, detection conditions and prior site structure, a transferable species-night scalar state reproduces concentration but overpredicts whole-route coherence; the observed deep k>=4 non-uniform expression preferentially aligns with strictly-prior strong-chorus sites under exact-k q conditioning, supporting a fast species-night gate expressed through a distributed slow species x place template."
   },
   "main_text_routing": {
     "keep": [
@@ -359,6 +359,40 @@
       },
       "decision": "concentration_only_sufficient_uniform_scalar_state_too_spatially_coherent",
       "interpretation": "A transferable species-night scalar state can generate the row-count concentration, but a uniform all-stop shift overpredicts both near and far residual dependence. The observed state is route-spanning but spatially non-uniform."
+    },
+    "deep_historical_template_alignment": {
+      "pairs": 2835,
+      "routes": 428,
+      "eligible_clusters": 1247,
+      "deep_k4plus_clusters": 409,
+      "shallow_k1to3_clusters": 838,
+      "species": 43,
+      "primary_deep_k4plus": {
+        "observed_beta": 0.026586957417988274,
+        "null_ci95": [
+          -0.019383741143070538,
+          0.018546225617440192
+        ],
+        "p": 0.001998001998001998,
+        "positive_alignment_supported": true
+      },
+      "all_k1plus": {
+        "observed_beta": 0.023476444982502155,
+        "null_ci95": [
+          -0.027270841441655022,
+          0.027172684581001704
+        ],
+        "p": 0.057942057942057944,
+        "positive_alignment_supported": false
+      },
+      "cluster_alignment": {
+        "mean_q_conditioned_excess_deep": 0.07602779335316326,
+        "mean_q_conditioned_excess_shallow": -0.010823779209901203,
+        "deep_minus_shallow": 0.08685157256306446,
+        "fraction_deep_positive": 0.6136919315403423
+      },
+      "conditioning": "Observed k fixed exactly; stop subsets weighted by fixed q conditional independent-Bernoulli probabilities; prior strong = strictly-prior CI2/3 at focal SiteID.",
+      "interpretation": "Deep k>=4 route-night expression preferentially aligns with recurrent strong-chorus sites beyond current q site propensity and exact activation depth."
     }
   }
 }
