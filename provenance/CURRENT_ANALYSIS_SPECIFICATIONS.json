@@ -91,12 +91,12 @@
     "script": "scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py",
     "response_outcomes_inspected_when_frozen": false,
     "secondary_route_night_diagnostics": {
-      "authority": "revision/WFTS_SECONDARY_DIAGNOSTIC_AUTHORITY_V0_1.md",
+      "authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md",
       "contract": "revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json",
       "weather_adapter": "scripts/wfts/build_common_environment_covariates.py",
       "analysis_script": "scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py",
       "weather_qa": ".github/workflows/wfts_common_environment_weather_qa.yml",
-      "end_to_end_qa": ".github/workflows/wfts_secondary_route_night_qa.yml",
+      "end_to_end_qa": ".github/workflows/wfts_route_night_secondary_qa.yml",
       "execution_order": "Only after the frozen primary WFTS result is written; cannot alter primary classification.",
       "response_outcomes_inspected_when_frozen": false
     }
