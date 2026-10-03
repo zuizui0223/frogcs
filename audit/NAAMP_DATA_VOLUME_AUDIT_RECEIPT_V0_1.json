@@ -1,0 +1,119 @@
+{
+  "analysis": "naamp_data_volume_audit_v0_1",
+  "boundaries": [
+    "Counts.csv is sparse detection/calling data, not a dense zero-filled taxon matrix.",
+    "potential_taxon_x_stop_x_run_cells is a matrix opportunity count, not a raw record count.",
+    "pair-side survey instances count repeated use of a run if it participates in adjacent pairs; unique_runs_used removes that reuse.",
+    "ERA5 run-hour count is the number of 72 hourly values sampled for each linked run, not deduplicated grid-time cells.",
+    "No analysis sample, model, endpoint or inferential result is changed by this audit."
+  ],
+  "contract": "audit/NAAMP_DATA_VOLUME_AUDIT_CONTRACT_V0_1.json",
+  "eligible_frog_analysis": {
+    "eligible_active_run_stop_visits": 59434,
+    "eligible_positive_call_rows_ci1_3": 115638,
+    "eligible_runs": 7848,
+    "eligible_taxa_labels": 57,
+    "eligible_unique_positive_run_stop_taxon_cells": 115638,
+    "positive_cells_per_run": {
+      "mean": 14.734709480122325,
+      "median": 14.0,
+      "q05": 3.0,
+      "q95": 30.0
+    },
+    "positive_fraction_of_potential_cells": 0.025850367508986533,
+    "potential_taxon_x_stop_x_run_cells": 4473360,
+    "routes": 807,
+    "states": 21,
+    "taxa_per_run": {
+      "mean": 3.774847094801223,
+      "median": 3.0,
+      "q05": 1.0,
+      "q95": 8.0
+    },
+    "unique_run_stop_opportunities": 78480
+  },
+  "matched_pair_use": {
+    "exact_consecutive_year_pairs": 2693,
+    "fraction_exact_consecutive_year": 0.6357412653446648,
+    "pair_side_survey_instances": 8472,
+    "pairs": 4236,
+    "positive_call_rows_ci1_3_in_unique_pair_runs": 88737,
+    "routes": 585,
+    "states": 21,
+    "unique_positive_run_stop_taxon_cells_in_unique_pair_runs": 88737,
+    "unique_run_stop_opportunities": 60740,
+    "unique_runs_used": 6074
+  },
+  "rain_data_volume": {
+    "era5_72h_total_precipitation": {
+      "derived_72h_totals": 7559,
+      "hours_per_total": 72,
+      "note": "run-hour sample count; not deduplicated unique ERA5 grid-time cells",
+      "routes": 428,
+      "run_hour_precipitation_values_sampled": 544248,
+      "states": 20,
+      "weather_linked_principal_history_pairs": 2835,
+      "weather_linked_runs": 7559
+    },
+    "naamp_days_since_rain": {
+      "eligible_run_level_values": 7848,
+      "pair_side_values_with_run_reuse": 8472,
+      "unique_runs_used_in_matched_pairs": 6074,
+      "unit": "days since last reported rain"
+    }
+  },
+  "raw_frog_records": {
+    "counts_rows": 337848,
+    "duplicate_positive_rows_beyond_unique_cells": 0,
+    "raw_positive_call_rows_ci1_3": 337848,
+    "raw_positive_taxa_labels": 68,
+    "raw_unique_positive_run_stop_taxon_cells": 337848,
+    "runs_rows": 21934,
+    "species_rows": 68,
+    "stops_rows": 219340
+  },
+  "source": {
+    "analysis_period": "2001-2015 unified protocol",
+    "core_frog_files_bytes": 33478761,
+    "core_frog_files_decimal_mb": 33.478761,
+    "core_frog_files_mib": 31.927834510803223,
+    "doi": "10.5066/F7G44NG0",
+    "files": {
+      "Counts.csv": {
+        "bytes": 17214148,
+        "decimal_mb": 17.214148,
+        "existing_analysis_pin_verified": true,
+        "mib": 16.416690826416016,
+        "rows": 337848,
+        "sha256": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+      },
+      "Runs.csv": {
+        "bytes": 2194381,
+        "decimal_mb": 2.194381,
+        "existing_analysis_pin_verified": true,
+        "mib": 2.0927248001098633,
+        "rows": 21934,
+        "sha256": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730"
+      },
+      "Species.csv": {
+        "bytes": 2916,
+        "decimal_mb": 0.002916,
+        "existing_analysis_pin_verified": false,
+        "mib": 0.002780914306640625,
+        "rows": 68,
+        "sha256": "ac97118a3a1ccd72a94136009e9696173dabd29b042ac63e474a74c5a9fcd1cb"
+      },
+      "Stops.csv": {
+        "bytes": 14070232,
+        "decimal_mb": 14.070232,
+        "existing_analysis_pin_verified": true,
+        "mib": 13.418418884277344,
+        "rows": 219340,
+        "sha256": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f"
+      }
+    },
+    "raw_period": "1994-2015",
+    "sciencebase_item_id": "583dc314e4b0d1899f9dea8d"
+  },
+  "status": "audit_only_no_scientific_endpoint_changed"
+}
