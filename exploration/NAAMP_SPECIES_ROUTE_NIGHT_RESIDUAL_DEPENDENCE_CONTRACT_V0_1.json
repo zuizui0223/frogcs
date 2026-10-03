@@ -1,0 +1,41 @@
+{
+  "analysis": "naamp_species_route_night_residual_dependence_v0_1",
+  "status": "conditional_posthoc_diagnostic_fixed_before_rain_amount_null_readback",
+  "trigger": "Run only if NAAMP_RAIN_AMOUNT_COMMON_ENVIRONMENT_NULL_V0_1 rejects conditional independence.",
+  "question": "After the strongest measured common-environment + prior-site-history comparator, do stop-level calling states retain positive dependence within the same species x route-night?",
+  "population": "Exactly the weather-eligible strictly-prior-history focal pairs from the rain-amount common-environment null.",
+  "prediction_source": "Use the fixed stop-specific wet-state probabilities q from the cross-fitted 72-h-rainfall common-environment null, including prior SiteID history, a=0.75 dry persistence and pair-level wet-incidence magnitude matching. Do not refit or retune q for this diagnostic.",
+  "statistic": {
+    "cluster": "species x focal wetter route-run",
+    "cells": "the ten physical route stops for every species in the fixed route-period support pool",
+    "residual": "e_ij = y_ij - q_ij",
+    "variance": "v_ij = q_ij(1-q_ij)",
+    "rho_resid": "sum over within-cluster unordered stop pairs of e_ij*e_ik divided by sum over the same pairs of sqrt(v_ij*v_ik)",
+    "interpretation": "rho_resid is a standardized residual pair-correlation diagnostic under heterogeneous stop probabilities; it is not individual-level behavioral correlation."
+  },
+  "null": {
+    "generator": "Independent Bernoulli draws from the fixed q matrices.",
+    "replicates": 1000,
+    "seed": 2840225,
+    "tail": "upper",
+    "support_rule": "Observed rho_resid exceeds the upper 95% null quantile and plus-one Monte Carlo P < 0.05."
+  },
+  "monitoring_translation": {
+    "report_only_if_positive": true,
+    "design_effect_approximation": "1 + 9*rho_resid for a ten-stop exchangeable-correlation heuristic",
+    "effective_stop_count_approximation": "10 / (1 + 9*rho_resid)",
+    "boundary": "These are heuristic translations of the standardized residual dependence and are not claimed as the exact design effect of a specific occupancy estimator."
+  },
+  "interpretation_rules": {
+    "positive": "Measured common environment and historical site propensity leave a species-by-route-night shared component: stop outcomes are not conditionally independent under the tested comparator.",
+    "null": "The concentration result should not be translated into a general stop-level residual-correlation claim under this comparator.",
+    "forbidden": [
+      "No social facilitation inference.",
+      "No synchronous breeding mechanism inference.",
+      "No movement inference.",
+      "No causal rainfall inference.",
+      "No claim that standard errors in a particular published monitoring model are biased until that estimator is directly re-fit or simulated."
+    ]
+  },
+  "provenance": "Post-hoc exploratory after the 2026-10-03 explicit reopening; not independent confirmation."
+}
