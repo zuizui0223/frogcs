@@ -116,7 +116,8 @@ Important boundaries:
 - the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;
 - the primary implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`;
 - after the primary result is frozen, a separately frozen secondary sequence tests Daymet common-environment sufficiency, bounded route-night dependence, far-lag persistence and clustered uncertainty under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;
-- secondary results cannot rescue, downgrade or retune the primary WFTS classification.\n- v0.4 additionally freezes exact-k deep historical-template alignment and the deep-versus-shallow coupling contrast before WFTS frog outcomes.
+- secondary results cannot rescue, downgrade or retune the primary WFTS classification.
+- v0.4 additionally freezes exact-k deep historical-template alignment and the deep-versus-shallow coupling contrast before WFTS frog outcomes.
 
 A non-PASS is classified prospectively as either:
 
