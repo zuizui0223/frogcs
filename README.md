@@ -13,7 +13,7 @@ Current validated release/submission refs:
 
 RC3 and the original RC11 submission remain preserved in their historical release/submission refs; they are not duplicated in this cleaned integration tree.
 
-**Provenance note:** RC4 remains the frozen historical release authority. Current `main` additionally contains an explicitly post-hoc exploratory extension opened on **2026-10-03** to test common-environment explanations, direct species × route-night residual dependence and monitoring-uncertainty consequences. These additions are not independent confirmation.
+**Provenance note:** RC4 remains the frozen historical release authority. Current `main` contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-state and historical-template tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
 ## Biological result
 
