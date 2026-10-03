@@ -1,17 +1,17 @@
-# Gap and claim map v0.3 — within-taxon multi-site coherence
+# Gap and claim map v0.4 — conditional within-taxon multi-site allocation
 
 ## Literature gap
 
-Previous frog studies establish rainfall-sensitive calling, short-term assemblage change, cross-site covariance and breeding-site fidelity. The unresolved question is narrower:
+Previous frog studies already establish rainfall-sensitive calling, short-term assemblage change, cross-site covariance, pulse-associated multi-site chorus change, persistent species × wetland calling structure and breeding-site fidelity. The closest antecedents include Sarker et al. (2022), Brodie et al. (2025) and Guzy et al. (2012). The unresolved question is narrower:
 
-> **When a short environmental pulse recruits taxa into a repeated multi-species × multi-site chorus landscape, is the extra spatial participation reproduced by transferable species responses and prior site use, or does activity remain unusually concentrated within the same recruited taxa?**
+> **After total acoustic activation, taxon-specific rainfall response, prior taxon × physical-site use and dry-state persistence are explicitly represented, is the remaining wet-state calling still disproportionately concentrated within the same taxa across sites?**
 
-The novelty is not “frogs are spatially coherent” and not “rain synchronizes frogs.”
+The novelty is not “frogs are spatially coherent”, not “rain synchronizes frogs”, and not “environmental pulses alter chorusing at multiple sites.”
 
 ## Frog-specific discovery
 
 1. **State switching:** 65.3% of CallingIndex change is 0→positive; 87.1% of activation is 0→CI2/3; direct 0→CI3 is positive.
-2. **Depth:** the second occupied site is ordinary; the excess emerges at third-and-later sites and is overwhelmingly strong chorus.
+2. **Depth:** exact marginal-depth auditing shows no third-stop threshold; calling-incidence depths 1–3 lie within both activation-null envelopes, whereas depths 4–10 are overrepresented. The result is a heavier/deeper within-taxon tail and is overwhelmingly strong chorus.
 3. **Within-taxon concentration:** in 2,916 pairs with strictly prior site history, observed concentration β=1.650 vs 1.353 predicted by cross-fit species response + prior SiteID history + dry persistence (P=0.000999).
 4. **Stronger sensitivity:** adding a held-out rain × history gate predicts 1.332, still below 1.650 observed (P=0.000999).
 5. **Historical placement:** prior strong SiteID predicts later wet strong chorus within the same pair and taxon (β=0.151).
@@ -27,7 +27,7 @@ Even after a comparator is allowed to know:
 - whether the cell was active in the dry survey;
 - the observed magnitude of wet incidence;
 
-the observed extra spatial participation is still more concentrated within the same recruited taxa than expected.
+the observed wet-state calling is still more concentrated within the same taxa than expected.
 
 ## Exact N,K diagnostic: useful but secondary
 
@@ -44,9 +44,9 @@ The integrated manuscript uses this only as a secondary check that the concentra
 This distinguishes:
 - **fast gate:** short environmental state;
 - **slow template:** recurrent species × place structure;
-- **dependence layer:** extra spatial participation remains concentrated within taxa beyond the tested species/site propensities.
+- **dependence layer:** wet-state calling remains concentrated within taxa beyond the tested species/site propensities and total incidence magnitude.
 
-The strongest surprise is therefore **not how much activity appears, but how the added activity is statistically dependent across sites within taxa**.
+The strongest surprise is therefore **not how much activity appears, but how a fixed amount of calling is allocated among taxa across sites after first-order expectations are represented**.
 
 ## Generality
 
@@ -70,6 +70,11 @@ The integrated story is post-opening and exploratory.
 No unexamined NAAMP partition remains a genuine confirmation dataset. Cross-fitting is protection against training/test leakage for model components, not independent replication of the discovered claim.
 
 The next decisive test is a prospectively frozen external replication in another repeated fixed-site frog monitoring network.
+
+## Closest-study audit
+
+Detailed study-by-study comparison:
+- `revision/CLOSEST_PRIOR_STUDIES_AUDIT_V0_1.md`
 
 ## Current title
 
