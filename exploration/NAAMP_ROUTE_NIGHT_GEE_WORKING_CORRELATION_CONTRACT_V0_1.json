@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_route_night_gee_working_correlation_v0_1",
+  "status": "posthoc_method_corroboration_fixed_after_D_before_GEE_alpha_readback",
+  "known_before_this_contract": {
+    "standardized_residual_dependence_D": 0.41585612605080213,
+    "independent_null_p": 0.000999000999000999
+  },
+  "question": "Does a standard exchangeable GEE, using the strongest common-environment q values as a fixed mean offset, also estimate positive within-species route-night working correlation?",
+  "population_and_prediction": "Exactly the 2,835 weather-eligible strictly-prior-history pairs and fixed q matrices used by the residual-dependence diagnostic.",
+  "model": {
+    "response": "wet calling-positive status at each species x stop cell",
+    "mean": "logit(mu_ij) = logit(q_ij) + intercept",
+    "cluster": "species x focal route-night",
+    "family": "binomial logit",
+    "covariance_structure": "exchangeable GEE",
+    "q_rule": "q is fixed from the cross-fitted 72-h rainfall + prior SiteID history + dry persistence + pair incidence-matching comparator; no refit or tuning."
+  },
+  "outputs": [
+    "GEE intercept and robust SE",
+    "exchangeable working-correlation alpha for all clusters",
+    "alpha for clusters classified dry-route-silent using only drier state",
+    "alpha for dry-route-active clusters"
+  ],
+  "interpretation": {
+    "role": "Methodological corroboration of the fixed-q residual-dependence result using a conventional correlated-replicate model.",
+    "boundary": "GEE alpha is a working correlation, not identification of a biological mechanism and not an occupancy-trend reanalysis."
+  },
+  "provenance": "No mean model, offset, cluster definition, dry-state split or covariance structure may change after alpha readback."
+}
