@@ -1,0 +1,761 @@
+{
+  "analysis": "naamp_monitoring_independence_impact_v0_2",
+  "contract": "exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_CONTRACT_V0_2.json",
+  "coverage": {
+    "pair_clusters": 2833,
+    "pairs": 2835,
+    "risk_set_species_stop_cells": 146082,
+    "routes": 428,
+    "species": 53,
+    "species_pair_clusters": 18149
+  },
+  "decision": {
+    "pooled_route_cluster_exceeds_iid": true,
+    "specieswise_pair_cluster_inflation_broad": true,
+    "specieswise_route_cluster_inflation_broad": true
+  },
+  "interpretation_boundary": {
+    "exact_published_occupancy_estimator": false,
+    "independent_confirmation": false,
+    "universal_monitoring_model_claim": false
+  },
+  "pooled": {
+    "converged": true,
+    "formula": "wet_activation ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber) + C(species)",
+    "iid": {
+      "beta": 0.10048426542742521,
+      "ci95": [
+        0.07372493945734987,
+        0.12724359139750055
+      ],
+      "se": 0.013652968208165812
+    },
+    "ratios": {
+      "route_over_iid": 2.6925144901797524,
+      "route_pair_over_iid": 2.238749164149064,
+      "species_pair_over_iid": 1.8088801588300583
+    },
+    "route_cluster": {
+      "beta": 0.10048426542742521,
+      "ci95": [
+        0.028434392505553976,
+        0.17253413834929643
+      ],
+      "se": 0.03676081473444994
+    },
+    "route_pair_cluster": {
+      "beta": 0.10048426542742521,
+      "ci95": [
+        0.04057684677872668,
+        0.16039168407612375
+      ],
+      "se": 0.030565571164184957
+    },
+    "species_pair_cluster": {
+      "beta": 0.10048426542742521,
+      "ci95": [
+        0.05207985161649001,
+        0.1488886792383604
+      ],
+      "se": 0.02469658330088871
+    }
+  },
+  "specieswise": {
+    "eligibility_thresholds": {
+      "minimum_positive_wet_cells": 20,
+      "minimum_risk_cells": 200,
+      "minimum_routes": 10,
+      "minimum_species_pair_clusters": 30
+    },
+    "records": {
+      "Acris crepitans": {
+        "beta": 0.16268218055465186,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.08582977894935763,
+        "pair_cluster_se": 0.12718730094199787,
+        "pair_clusters": 633,
+        "pair_over_iid": 1.4818551614474333,
+        "positive_wet_cells": 530,
+        "risk_cells": 5131,
+        "route_cluster_se": 0.14166415914681962,
+        "route_over_iid": 1.6505245717853485,
+        "routes": 162
+      },
+      "Acris crepitans/gryllus complex": {
+        "beta": 0.02220298886049486,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.14334578916905008,
+        "pair_cluster_se": 0.3243275587058648,
+        "pair_clusters": 206,
+        "pair_over_iid": 2.2625537909828655,
+        "positive_wet_cells": 189,
+        "risk_cells": 1689,
+        "route_cluster_se": 0.31901063380175115,
+        "route_over_iid": 2.2254621893743707,
+        "routes": 53
+      },
+      "Acris gryllus": {
+        "beta": 0.5189770696537095,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.09141792248346384,
+        "pair_cluster_se": 0.19378213260868485,
+        "pair_clusters": 246,
+        "pair_over_iid": 2.1197389674189675,
+        "positive_wet_cells": 297,
+        "risk_cells": 2025,
+        "route_cluster_se": 0.14560543463326697,
+        "route_over_iid": 1.5927449528248125,
+        "routes": 55
+      },
+      "Anaxyrus americanus": {
+        "beta": 0.011398081397429705,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.04626156591816837,
+        "pair_cluster_se": 0.07987251302264184,
+        "pair_clusters": 1747,
+        "pair_over_iid": 1.7265414915683472,
+        "positive_wet_cells": 1916,
+        "risk_cells": 14547,
+        "route_cluster_se": 0.0897963201119924,
+        "route_over_iid": 1.9410566488568983,
+        "routes": 308
+      },
+      "Anaxyrus americanus/terrestris complex": {
+        "beta": 0.0017581410141391317,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.32179187891126604,
+        "pair_cluster_se": 0.64345436392815,
+        "pair_clusters": 34,
+        "pair_over_iid": 1.9995978957119123,
+        "positive_wet_cells": 57,
+        "risk_cells": 322,
+        "route_cluster_se": 0.40755642520852947,
+        "route_over_iid": 1.2665217860296374,
+        "routes": 16
+      },
+      "Anaxyrus cognatus": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 5,
+        "positive_wet_cells": 6,
+        "risk_cells": 45,
+        "routes": 1
+      },
+      "Anaxyrus fowleri": {
+        "beta": 0.18785157483862125,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.06413236880280246,
+        "pair_cluster_se": 0.10979063972227457,
+        "pair_clusters": 818,
+        "pair_over_iid": 1.7119380084004776,
+        "positive_wet_cells": 942,
+        "risk_cells": 6553,
+        "route_cluster_se": 0.10481435586146996,
+        "route_over_iid": 1.6343440577371873,
+        "routes": 179
+      },
+      "Anaxyrus fowleri/woodhousii complex": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 4,
+        "positive_wet_cells": 0,
+        "risk_cells": 33,
+        "routes": 2
+      },
+      "Anaxyrus quercicus": {
+        "beta": 0.2502825645674237,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.15173730267429542,
+        "pair_cluster_se": 0.39370995658154934,
+        "pair_clusters": 61,
+        "pair_over_iid": 2.5946813976695564,
+        "positive_wet_cells": 100,
+        "risk_cells": 551,
+        "route_cluster_se": 0.1799486616151404,
+        "route_over_iid": 1.1859223700674366,
+        "routes": 14
+      },
+      "Anaxyrus terrestris": {
+        "beta": -0.20508191139511897,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.0987739745104611,
+        "pair_cluster_se": 0.1575604873754893,
+        "pair_clusters": 245,
+        "pair_over_iid": 1.5951619660581964,
+        "positive_wet_cells": 351,
+        "risk_cells": 2107,
+        "route_cluster_se": 0.20689282065416706,
+        "route_over_iid": 2.0946086424036237,
+        "routes": 55
+      },
+      "Gastrophryne carolinensis": {
+        "beta": 0.4366663101696415,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.11239382120688714,
+        "pair_cluster_se": 0.19572925900475785,
+        "pair_clusters": 224,
+        "pair_over_iid": 1.7414592448500557,
+        "positive_wet_cells": 238,
+        "risk_cells": 2133,
+        "route_cluster_se": 0.1638330513515021,
+        "route_over_iid": 1.4576695550721515,
+        "routes": 69
+      },
+      "Hyla andersonii": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 37,
+        "positive_wet_cells": 16,
+        "risk_cells": 357,
+        "routes": 8
+      },
+      "Hyla avivoca": {
+        "beta": -0.6719666898812746,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.28946921008833915,
+        "pair_cluster_se": 0.2900732529238427,
+        "pair_clusters": 65,
+        "pair_over_iid": 1.0020867256842936,
+        "positive_wet_cells": 50,
+        "risk_cells": 532,
+        "route_cluster_se": 0.2892059754742384,
+        "route_over_iid": 0.9990906300051033,
+        "routes": 21
+      },
+      "Hyla chrysoscelis": {
+        "beta": 0.0343905529604202,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.05145393566070352,
+        "pair_cluster_se": 0.08929163057408944,
+        "pair_clusters": 921,
+        "pair_over_iid": 1.7353702768801684,
+        "positive_wet_cells": 1504,
+        "risk_cells": 7451,
+        "route_cluster_se": 0.08825921331755202,
+        "route_over_iid": 1.7153053927604118,
+        "routes": 210
+      },
+      "Hyla chrysoscelis/versicolor complex": {
+        "beta": 0.25859687178799123,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.07686008641894505,
+        "pair_cluster_se": 0.17871514810111708,
+        "pair_clusters": 498,
+        "pair_over_iid": 2.32520097787798,
+        "positive_wet_cells": 517,
+        "risk_cells": 4428,
+        "route_cluster_se": 0.1920779886057446,
+        "route_over_iid": 2.499060273739164,
+        "routes": 114
+      },
+      "Hyla cinerea": {
+        "beta": 0.1718710220367045,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.0795500820166201,
+        "pair_cluster_se": 0.12595928779520177,
+        "pair_clusters": 464,
+        "pair_over_iid": 1.583396077063573,
+        "positive_wet_cells": 532,
+        "risk_cells": 3435,
+        "route_cluster_se": 0.11789990350269657,
+        "route_over_iid": 1.4820839968218282,
+        "routes": 114
+      },
+      "Hyla femoralis": {
+        "beta": 0.31056216008839616,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.1046379643771324,
+        "pair_cluster_se": 0.1758277515736542,
+        "pair_clusters": 160,
+        "pair_over_iid": 1.6803437702585855,
+        "positive_wet_cells": 219,
+        "risk_cells": 1427,
+        "route_cluster_se": 0.18693021658339035,
+        "route_over_iid": 1.7864473730553776,
+        "routes": 38
+      },
+      "Hyla gratiosa": {
+        "beta": 0.025331864344208657,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.11219508405289522,
+        "pair_cluster_se": 0.1311674134720433,
+        "pair_clusters": 229,
+        "pair_over_iid": 1.169101254117368,
+        "positive_wet_cells": 203,
+        "risk_cells": 2022,
+        "route_cluster_se": 0.12437222039073377,
+        "route_over_iid": 1.1085353822819684,
+        "routes": 57
+      },
+      "Hyla squirella": {
+        "beta": 0.45006925870878806,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.09821458724947588,
+        "pair_cluster_se": 0.1281229037941887,
+        "pair_clusters": 232,
+        "pair_over_iid": 1.3045201062520622,
+        "positive_wet_cells": 300,
+        "risk_cells": 2131,
+        "route_cluster_se": 0.10278048328314171,
+        "route_over_iid": 1.0464889805224957,
+        "routes": 60
+      },
+      "Hyla versicolor": {
+        "beta": 0.1007575523588404,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.048506103675822046,
+        "pair_cluster_se": 0.0863556135019838,
+        "pair_clusters": 1306,
+        "pair_over_iid": 1.7803040639817027,
+        "positive_wet_cells": 1861,
+        "risk_cells": 10156,
+        "route_cluster_se": 0.09660059899068808,
+        "route_over_iid": 1.9915142975880544,
+        "routes": 230
+      },
+      "Incilius nebulifer": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 5,
+        "positive_wet_cells": 0,
+        "risk_cells": 48,
+        "routes": 3
+      },
+      "Lithobates areolatus": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 3,
+        "positive_wet_cells": 0,
+        "risk_cells": 30,
+        "routes": 1
+      },
+      "Lithobates blairi": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 45,
+        "positive_wet_cells": 9,
+        "risk_cells": 423,
+        "routes": 13
+      },
+      "Lithobates capito": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 3,
+        "positive_wet_cells": 2,
+        "risk_cells": 30,
+        "routes": 1
+      },
+      "Lithobates catesbeianus": {
+        "beta": -0.052382763152457754,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.05425228639072401,
+        "pair_cluster_se": 0.06855692386302002,
+        "pair_clusters": 1622,
+        "pair_over_iid": 1.2636688409641257,
+        "positive_wet_cells": 1284,
+        "risk_cells": 13398,
+        "route_cluster_se": 0.07119581941319132,
+        "route_over_iid": 1.3123100269072585,
+        "routes": 340
+      },
+      "Lithobates clamitans": {
+        "beta": -0.03906737735801029,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.0500089009382978,
+        "pair_cluster_se": 0.06176543196761411,
+        "pair_clusters": 1799,
+        "pair_over_iid": 1.235088770373534,
+        "positive_wet_cells": 1591,
+        "risk_cells": 13572,
+        "route_cluster_se": 0.07137824615193357,
+        "route_over_iid": 1.4273108349252024,
+        "routes": 345
+      },
+      "Lithobates grylio": {
+        "beta": 0.37745930534504635,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.15590969078129824,
+        "pair_cluster_se": 0.22146682934410716,
+        "pair_clusters": 76,
+        "pair_over_iid": 1.4204814866496591,
+        "positive_wet_cells": 68,
+        "risk_cells": 624,
+        "route_cluster_se": 0.195375751734156,
+        "route_over_iid": 1.253134110875883,
+        "routes": 14
+      },
+      "Lithobates palustris": {
+        "beta": 0.00837773302622244,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.09185037526408317,
+        "pair_cluster_se": 0.10338421745835213,
+        "pair_clusters": 1003,
+        "pair_over_iid": 1.1255720748130587,
+        "positive_wet_cells": 451,
+        "risk_cells": 9252,
+        "route_cluster_se": 0.0993371169401035,
+        "route_over_iid": 1.0815101914880028,
+        "routes": 206
+      },
+      "Lithobates pipiens": {
+        "beta": -0.15603165748274553,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.20507222870454958,
+        "pair_cluster_se": 0.23565535500244153,
+        "pair_clusters": 243,
+        "pair_over_iid": 1.1491334369899178,
+        "positive_wet_cells": 100,
+        "risk_cells": 2286,
+        "route_cluster_se": 0.23031948674789482,
+        "route_over_iid": 1.1231139789274895,
+        "routes": 60
+      },
+      "Lithobates septentrionalis": {
+        "beta": -0.4733485996421874,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.549111754176669,
+        "pair_cluster_se": 0.7136508784319563,
+        "pair_clusters": 39,
+        "pair_over_iid": 1.2996459700666854,
+        "positive_wet_cells": 37,
+        "risk_cells": 377,
+        "route_cluster_se": 0.7208548706303741,
+        "route_over_iid": 1.3127653253593423,
+        "routes": 15
+      },
+      "Lithobates sphenocephalus": {
+        "beta": -0.06913376024770013,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.07040662375936885,
+        "pair_cluster_se": 0.12199568496783281,
+        "pair_clusters": 886,
+        "pair_over_iid": 1.7327302241445588,
+        "positive_wet_cells": 764,
+        "risk_cells": 7651,
+        "route_cluster_se": 0.11806671850275419,
+        "route_over_iid": 1.676926291853944,
+        "routes": 170
+      },
+      "Lithobates sylvaticus": {
+        "beta": 0.06288086580211628,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.07968355648428779,
+        "pair_cluster_se": 0.12802132906441333,
+        "pair_clusters": 761,
+        "pair_over_iid": 1.6066216759496283,
+        "positive_wet_cells": 636,
+        "risk_cells": 6329,
+        "route_cluster_se": 0.1116738963204091,
+        "route_over_iid": 1.4014672693785855,
+        "routes": 181
+      },
+      "Lithobates virgatipes": {
+        "beta": -0.10261463389815578,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.3013453264483581,
+        "pair_cluster_se": 0.2857521464733765,
+        "pair_clusters": 86,
+        "pair_over_iid": 0.9482547807899924,
+        "positive_wet_cells": 51,
+        "risk_cells": 785,
+        "route_cluster_se": 0.2949811523597369,
+        "route_over_iid": 0.9788807937935222,
+        "routes": 26
+      },
+      "Pseudacris brachyphona": {
+        "beta": 0.04616956932734948,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.327553149395076,
+        "pair_cluster_se": 0.4264998073905439,
+        "pair_clusters": 66,
+        "pair_over_iid": 1.3020781762538451,
+        "positive_wet_cells": 72,
+        "risk_cells": 527,
+        "route_cluster_se": 0.38354933133733865,
+        "route_over_iid": 1.1709529645667465,
+        "routes": 13
+      },
+      "Pseudacris brimleyi": {
+        "beta": -0.8617508835759972,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.4533991240646596,
+        "pair_cluster_se": 0.6443238390861485,
+        "pair_clusters": 71,
+        "pair_over_iid": 1.4210963473195,
+        "positive_wet_cells": 43,
+        "risk_cells": 639,
+        "route_cluster_se": 0.6463625946903188,
+        "route_over_iid": 1.425592949752017,
+        "routes": 23
+      },
+      "Pseudacris clarkii": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 4,
+        "positive_wet_cells": 6,
+        "risk_cells": 39,
+        "routes": 1
+      },
+      "Pseudacris crucifer": {
+        "beta": 0.03367056722457103,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.04258750302561691,
+        "pair_cluster_se": 0.07331483047598018,
+        "pair_clusters": 1939,
+        "pair_over_iid": 1.7215104260017406,
+        "positive_wet_cells": 2787,
+        "risk_cells": 11438,
+        "route_cluster_se": 0.07557353368029512,
+        "route_over_iid": 1.7745471866438545,
+        "routes": 369
+      },
+      "Pseudacris feriarum": {
+        "beta": 0.5287056879566138,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.14255348026405298,
+        "pair_cluster_se": 0.24642562521276068,
+        "pair_clusters": 238,
+        "pair_over_iid": 1.7286538691044544,
+        "positive_wet_cells": 254,
+        "risk_cells": 1795,
+        "route_cluster_se": 0.24666851061495484,
+        "route_over_iid": 1.730357688623587,
+        "routes": 68
+      },
+      "Pseudacris feriarum/fouquettei complex": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 17,
+        "positive_wet_cells": 4,
+        "risk_cells": 158,
+        "routes": 5
+      },
+      "Pseudacris feriarum/kalmi complex": {
+        "beta": -0.09981770285740911,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.21857022144725716,
+        "pair_cluster_se": 0.2932552088101644,
+        "pair_clusters": 88,
+        "pair_over_iid": 1.341697907740508,
+        "positive_wet_cells": 57,
+        "risk_cells": 763,
+        "route_cluster_se": 0.3647351969896417,
+        "route_over_iid": 1.6687323395408435,
+        "routes": 17
+      },
+      "Pseudacris feriarum/triseriata complex": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 27,
+        "positive_wet_cells": 44,
+        "risk_cells": 209,
+        "routes": 12
+      },
+      "Pseudacris kalmi": {
+        "beta": -0.18516458804525726,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.18751789053210505,
+        "pair_cluster_se": 0.31106042347370977,
+        "pair_clusters": 202,
+        "pair_over_iid": 1.6588306459241708,
+        "positive_wet_cells": 155,
+        "risk_cells": 1866,
+        "route_cluster_se": 0.31431459397009004,
+        "route_over_iid": 1.6761845660602503,
+        "routes": 32
+      },
+      "Pseudacris maculata": {
+        "beta": 0.5589759866642509,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.14258079603709534,
+        "pair_cluster_se": 0.2625453918290775,
+        "pair_clusters": 91,
+        "pair_over_iid": 1.8413797588896255,
+        "positive_wet_cells": 193,
+        "risk_cells": 610,
+        "route_cluster_se": 0.2572823498180141,
+        "route_over_iid": 1.8044670598632147,
+        "routes": 25
+      },
+      "Pseudacris maculata/triseriata complex": {
+        "beta": -0.27709645475125333,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.1919156514954595,
+        "pair_cluster_se": 0.3853590238702238,
+        "pair_clusters": 152,
+        "pair_over_iid": 2.007960376693617,
+        "positive_wet_cells": 226,
+        "risk_cells": 1126,
+        "route_cluster_se": 0.296575917849061,
+        "route_over_iid": 1.545345132291504,
+        "routes": 30
+      },
+      "Pseudacris nigrita": {
+        "beta": -0.32139129691562873,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.1438682061331734,
+        "pair_cluster_se": 0.18792007277513223,
+        "pair_clusters": 127,
+        "pair_over_iid": 1.3061959819057012,
+        "positive_wet_cells": 137,
+        "risk_cells": 1073,
+        "route_cluster_se": 0.17683578009571105,
+        "route_over_iid": 1.2291512131041713,
+        "routes": 29
+      },
+      "Pseudacris nigrita/feriarum complex": {
+        "beta": 0.8017374163201474,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.363876115145331,
+        "pair_cluster_se": 0.6421133009436688,
+        "pair_clusters": 66,
+        "pair_over_iid": 1.764648115711609,
+        "positive_wet_cells": 47,
+        "risk_cells": 591,
+        "route_cluster_se": 0.5963719796443979,
+        "route_over_iid": 1.638942362034971,
+        "routes": 23
+      },
+      "Pseudacris ocularis": {
+        "beta": 0.0021122552916791855,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.22807657571866535,
+        "pair_cluster_se": 0.2532180944764401,
+        "pair_clusters": 108,
+        "pair_over_iid": 1.1102327965007115,
+        "positive_wet_cells": 84,
+        "risk_cells": 989,
+        "route_cluster_se": 0.3013003556810953,
+        "route_over_iid": 1.3210491026169746,
+        "routes": 27
+      },
+      "Pseudacris ornata": {
+        "beta": 0.06978492049274143,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.2996697884696811,
+        "pair_cluster_se": 0.3929097703458166,
+        "pair_clusters": 60,
+        "pair_over_iid": 1.3111424156311604,
+        "positive_wet_cells": 48,
+        "risk_cells": 548,
+        "route_cluster_se": 0.23419821690205875,
+        "route_over_iid": 0.7815209470999229,
+        "routes": 16
+      },
+      "Pseudacris streckeri": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 2,
+        "positive_wet_cells": 3,
+        "risk_cells": 20,
+        "routes": 1
+      },
+      "Scaphiopus couchii": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 4,
+        "positive_wet_cells": 0,
+        "risk_cells": 38,
+        "routes": 1
+      },
+      "Scaphiopus holbrookii": {
+        "beta": 0.1312886490911565,
+        "eligible": true,
+        "estimable": true,
+        "iid_se": 0.22462519817934767,
+        "pair_cluster_se": 0.37612115804426244,
+        "pair_clusters": 175,
+        "pair_over_iid": 1.6744388478800838,
+        "positive_wet_cells": 85,
+        "risk_cells": 1718,
+        "route_cluster_se": 0.40972682130869276,
+        "route_over_iid": 1.8240465656998741,
+        "routes": 44
+      },
+      "Scaphiopus hurterii": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 4,
+        "positive_wet_cells": 1,
+        "risk_cells": 38,
+        "routes": 1
+      },
+      "Spea bombifrons": {
+        "eligible": false,
+        "estimable": false,
+        "pair_clusters": 2,
+        "positive_wet_cells": 0,
+        "risk_cells": 17,
+        "routes": 2
+      }
+    },
+    "summary": {
+      "eligible_species": 39,
+      "estimable_species": 39,
+      "pair_cluster_over_iid": {
+        "fraction_gt_1": 0.9743589743589743,
+        "iqr": [
+          1.3032991412529538,
+          1.738414760865112
+        ],
+        "max": 2.5946813976695564,
+        "median": 1.6066216759496283,
+        "min": 0.9482547807899924,
+        "n_gt_1": 38
+      },
+      "route_cluster_over_iid": {
+        "fraction_gt_1": 0.9230769230769231,
+        "iqr": [
+          1.2411426619900272,
+          1.7228315406919994
+        ],
+        "max": 2.499060273739164,
+        "median": 1.4820839968218282,
+        "min": 0.7815209470999229,
+        "n_gt_1": 36
+      }
+    }
+  },
+  "status": "posthoc_extension_triggered",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
