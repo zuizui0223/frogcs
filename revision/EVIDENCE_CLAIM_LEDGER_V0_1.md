@@ -180,7 +180,7 @@ Response:
 Response:
 - nested null sequence stopped after final gate;
 - candidate trait/mechanism families failed or were non-estimable;
-- further same-data fishing prohibited.
+- the original same-data stop rule was lifted on 2026-10-03 for targeted common-cause falsification; any resulting NAAMP mechanism analyses are post-hoc/exploratory and do not alter the confirmation status of the integrated result.
 
 ---
 
