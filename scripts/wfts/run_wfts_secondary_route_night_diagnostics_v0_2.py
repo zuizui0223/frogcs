@@ -330,6 +330,8 @@ def main():
         raise RuntimeError("preflight gate was not PASS")
     if weather_receipt.get("response_columns_read") is not False:
         raise RuntimeError("secondary weather adapter read response columns")
+    if weather_receipt.get("authority")!="revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json":
+        raise RuntimeError("secondary weather receipt does not point to frozen v0.2 authority")
     if weather_receipt.get("output_sha256",{}).get("runs")!=base.sha256_file(Path(args.common_env_runs)):
         raise RuntimeError("common-environment weather runs hash mismatch")
 
