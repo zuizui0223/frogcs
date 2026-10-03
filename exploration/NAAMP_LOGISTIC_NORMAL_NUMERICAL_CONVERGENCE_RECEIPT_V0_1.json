@@ -1,0 +1,90 @@
+{
+  "analysis": "naamp_logistic_normal_route_night_numerical_convergence_v0_1",
+  "checks": {
+    "all": {
+      "pass": true,
+      "relative_deviation_20_vs_60": 0.010271624625028977,
+      "relative_deviation_40_vs_60": 0.00015154409971600077
+    },
+    "dry_route_silent": {
+      "pass": true,
+      "relative_deviation_20_vs_60": 0.016885731655193466,
+      "relative_deviation_40_vs_60": 0.0011840590874504298
+    }
+  },
+  "contract": "exploration/NAAMP_LOGISTIC_NORMAL_NUMERICAL_CONVERGENCE_CONTRACT_V0_1.json",
+  "coverage": {
+    "all_clusters": 18769,
+    "dry_route_silent_clusters": 8343,
+    "pairs": 2835
+  },
+  "interpretation_boundary": {
+    "independent_confirmation": false,
+    "numerical_validation_only": true,
+    "profile_ci_sampling_validity_established": false
+  },
+  "overall_pass": true,
+  "results": {
+    "all": {
+      "10": {
+        "log_likelihood": -71656.09741464938,
+        "log_likelihood_sigma0": -89684.60394632067,
+        "mu_hat": -0.41927559645374574,
+        "nodes": 10,
+        "sigma_hat": 2.4951322809662826
+      },
+      "20": {
+        "log_likelihood": -71489.19375198876,
+        "log_likelihood_sigma0": -89684.60394632065,
+        "mu_hat": -0.4308734817105957,
+        "nodes": 20,
+        "sigma_hat": 2.562950129316485
+      },
+      "40": {
+        "log_likelihood": -71479.61573696675,
+        "log_likelihood_sigma0": -89684.60394632065,
+        "mu_hat": -0.4250865296447945,
+        "nodes": 40,
+        "sigma_hat": 2.5891565737676885
+      },
+      "60": {
+        "log_likelihood": -71479.75367471192,
+        "log_likelihood_sigma0": -89684.60394632065,
+        "mu_hat": -0.42596631924237205,
+        "nodes": 60,
+        "sigma_hat": 2.589549004640267
+      }
+    },
+    "dry_route_silent": {
+      "10": {
+        "log_likelihood": -21064.784390227498,
+        "log_likelihood_sigma0": -28849.37378271072,
+        "mu_hat": -0.2450512023665043,
+        "nodes": 10,
+        "sigma_hat": 2.6908642610119333
+      },
+      "20": {
+        "log_likelihood": -20982.58230218432,
+        "log_likelihood_sigma0": -28849.373782710718,
+        "mu_hat": -0.26402055690721493,
+        "nodes": 20,
+        "sigma_hat": 2.88431596219208
+      },
+      "40": {
+        "log_likelihood": -20968.53170111689,
+        "log_likelihood_sigma0": -28849.37378271072,
+        "mu_hat": -0.3147752320827496,
+        "nodes": 40,
+        "sigma_hat": 2.9303824127345015
+      },
+      "60": {
+        "log_likelihood": -20967.917715009953,
+        "log_likelihood_sigma0": -28849.37378271072,
+        "mu_hat": -0.3172439712261447,
+        "nodes": 60,
+        "sigma_hat": 2.9338562719145354
+      }
+    }
+  },
+  "status": "posthoc_numerical_validation"
+}
