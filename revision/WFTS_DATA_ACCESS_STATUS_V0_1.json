@@ -72,7 +72,8 @@
     "route_master_structural": 36836968077,
     "daymet": 36830477471,
     "confirmatory_synthetic": 36830477410,
-    "real_data_authority_lock": 37129985326
+    "real_data_authority_lock": 37129985326,
+    "full_chain_synthetic": 37130556855
   },
   "forbidden_shortcuts": [
     "reconstruct response matrix from annual summaries",
@@ -110,6 +111,13 @@
     "execution_handoff_ready": true,
     "checklist_section_A_complete": true,
     "remaining_unchecked_items": "external-acquisition, post-receipt schema/structural work, or post-preflight execution only",
-    "user_action_required_before_data_can_arrive": "send the already-prepared WFTS research-data request or otherwise obtain the existing export; no email has been sent from this repository state"
+    "user_action_required_before_data_can_arrive": "send the already-prepared WFTS research-data request or otherwise obtain the existing export; no email has been sent from this repository state",
+    "full_chain_synthetic_qa_passed": true,
+    "readiness_receipt": "revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json",
+    "status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY"
+  },
+  "full_chain_artifact": {
+    "id": 11276592978,
+    "digest": "sha256:c75a464a891e883deffd920be9cd1e728e072231b410810fc378b80753b87a36"
   }
 }
