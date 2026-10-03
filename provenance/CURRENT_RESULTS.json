@@ -110,7 +110,7 @@
     "conceptual": "pulse-revealed dependence structure beyond first-order species responses and static site propensities",
     "principal_test": "principal_within_taxon_comparator",
     "strongest_sensitivity": "final_gate_sensitivity",
-    "post_reopening_refinement": "measured common environmental triggers explain little of the allocation residual; residual stop dependence is broad within species x route-night and strongest among taxa silent on the drier route"
+    "post_reopening_refinement": "Measured common environmental triggers explain little of the allocation residual; repaired bounded dependence is strongest among taxa silent across the drier route, persists to far route-position lags, and survives same-observer restriction."
   },
   "main_text_routing": {
     "keep": [
@@ -142,7 +142,7 @@
       "literal synchrony",
       "universal pulse template"
     ],
-    "preferred_claim": "conditional dependence after explicit first-order ecological comparators"
+    "preferred_claim": "conditional species-by-route-night spatial dependence after explicit first-order ecological comparators"
   },
   "post_reopening_exploratory": {
     "provenance": {
@@ -172,14 +172,15 @@
       "p": 0.000999000999000999
     },
     "route_night_residual_dependence": {
-      "statistic_name": "standardized residual-dependence D",
+      "statistic_name": "historical unbounded standardized dependence score D",
       "D": 0.41585612605080213,
       "independent_null_ci95": [
         -0.003434,
         0.003433
       ],
       "p": 0.000999000999000999,
-      "note": "D is not a Pearson correlation coefficient and is not used as an exact ICC or effective-sample-size conversion."
+      "note": "Historical null-test provenance only. D is unbounded and is not interpreted as a correlation/ICC or used for design-effect/effective-stop conversion.",
+      "superseded_effect_size_interpretation": true
     },
     "dry_state_decomposition": {
       "dry_route_silent_D": 0.5666108355869385,
@@ -193,7 +194,9 @@
         -0.0043163951868215086,
         0.004391807285710579
       ],
-      "dry_route_active_p": 0.000999000999000999
+      "dry_route_active_p": 0.000999000999000999,
+      "superseded_effect_size_interpretation": true,
+      "note": "Historical D decomposition retained for auditability; bounded repair is authoritative for effect-size interpretation."
     },
     "residual_dependence_taxonomic_breadth": {
       "eligible_taxa": 40,
@@ -209,7 +212,8 @@
       "leave_one_species_out_D_range": [
         0.391017649530983,
         0.44083338308453635
-      ]
+      ],
+      "note": "Breadth of positive departure under historical unbounded D; specieswise D values are not comparable correlation effect sizes."
     },
     "monitoring_uncertainty": {
       "pairs": 2835,
@@ -223,6 +227,46 @@
       "specieswise_route_cluster_ratio_median": 1.4820839968218282,
       "specieswise_route_cluster_fraction_gt1": 0.9230769230769231,
       "boundary": "Representative activation regressions only; not a reanalysis of a published NAAMP occupancy-trend estimator."
+    },
+    "bounded_route_night_dependence": {
+      "pairs": 2835,
+      "routes": 428,
+      "all_clusters": 18769,
+      "rho_bounded_all": 0.17206769596558683,
+      "all_null_ci95": [
+        -0.002669076296533742,
+        0.002853277727650955
+      ],
+      "dry_route_silent_clusters": 8343,
+      "rho_bounded_dry_route_silent": 0.28487700425848284,
+      "dry_route_silent_null_ci95": [
+        -0.0054097624519672755,
+        0.00564583556781708
+      ],
+      "dry_route_active_clusters": 10426,
+      "rho_bounded_dry_route_active": 0.12729974469369246,
+      "dry_route_active_null_ci95": [
+        -0.0031391746664463684,
+        0.0034971281670786955
+      ],
+      "p": 0.000999000999000999,
+      "metric_boundary": "Bounded residual co-dependence coefficient; not converted into an effective stop count."
+    },
+    "route_position_lag_profile": {
+      "dry_route_silent_near_lags_1_3": 0.29643298821548375,
+      "dry_route_silent_far_lags_7_9": 0.27178236785618926,
+      "all_near_lags_1_3": 0.18285938081902683,
+      "all_far_lags_7_9": 0.15769985305363424,
+      "far_p": 0.000999000999000999,
+      "boundary": "Stop-number lag is route topology, not exact geographic distance."
+    },
+    "same_observer_bounded_sensitivity": {
+      "pairs": 2191,
+      "routes": 379,
+      "rho_bounded_all": 0.16271391911200095,
+      "rho_bounded_dry_route_silent": 0.2757567247727625,
+      "p": 0.000999000999000999,
+      "boundary": "Observer turnover is not required; within-observer error is not excluded."
     }
   }
 }
