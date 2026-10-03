@@ -130,7 +130,8 @@
     "stop_number_lag_is_exact_distance": false,
     "all_detectability_confounding_excluded": false,
     "latent_logistic_icc_is_monitoring_design_effect": false,
-    "latent_state_model_identifies_unique_mechanism": false
+    "latent_state_model_identifies_unique_mechanism": false,
+    "uniform_all_stop_scalar_state_sufficient_for_full_spatial_structure": false
   },
   "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and bounded species-by-route-night residual co-dependence. The original unbounded D statistic is retained only for historical auditability and breadth of departure. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
   "post_reopening_exploratory_chain": {
@@ -227,6 +228,13 @@
         "receipt": "exploration/NAAMP_LOGISTIC_NORMAL_NUMERICAL_CONVERGENCE_RECEIPT_V0_1.json",
         "script": "exploration/run_naamp_logistic_normal_numerical_convergence.py",
         "status": "numerical validation only"
+      },
+      {
+        "role": "cross-fitted scalar species x route-night state structural sufficiency",
+        "contract": "exploration/NAAMP_CROSSFIT_SCALAR_ROUTE_NIGHT_STATE_SUFFICIENCY_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_CROSSFIT_SCALAR_ROUTE_NIGHT_STATE_SUFFICIENCY_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_crossfit_scalar_route_night_state_sufficiency.py",
+        "status": "post-hoc structural-shape diagnostic: concentration sufficient, far-lag insufficient; uniform all-stop scalar state overcoherent"
       }
     ],
     "metric_authority": {
