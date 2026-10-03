@@ -1235,6 +1235,16 @@ Observer turnover was also unnecessary. Restricting to **2,191** weather-linked 
 
 This sensitivity does not remove within-observer perceptual error, but it excludes observer replacement as a requirement for the route-night pattern.
 
+The comparator already contains a **pair-level common log-odds shift** solved so that expected total wet incidence equals the observed total. Thus a route-night process that merely raises all species × stop cells together is conditioned away at first order; the residual diagnostic asks how that fixed amount of activity is allocated within particular species across stops.
+
+To describe the magnitude of the remaining species × route-night state without converting `rho_b` into a design effect, we separately fixed a logistic-normal random-intercept model with `logit(q)` as an offset:
+
+`logit(p_cj) = logit(q_cj) + mu + u_c`, with `u_c ~ Normal(0, sigma^2)`.
+
+This is a descriptive latent-scale model, not the primary inferential test. With the prespecified 20-point quadrature, **sigma = 2.563** across all clusters and **2.884** among dry-route-silent clusters. These correspond to model-based latent-logistic variance shares of **0.666** and **0.717**, and to approximately **13.0-fold** and **17.9-fold** odds multipliers for a +1 SD latent-state shift. The values should not be interpreted as occupancy ICCs or monitoring design effects.
+
+A numerical convergence audit retained the model, offsets and bounds unchanged and recomputed only the quadrature resolution. Relative deviation of the 20-node sigma from the 60-node estimate was **1.03%** overall and **1.69%** in dry-route-silent taxa; the 40-node deviations were **0.02%** and **0.12%**, satisfying the fixed convergence rule. The profile-likelihood intervals from the original latent model are model-internal and are not treated as sampling-valid route-clustered confidence intervals. Inferential support therefore remains based on the bounded coefficient and its independent-Bernoulli simulation null.
+
 A taxonomic-breadth audit had been fixed before the bounded-metric repair. Using the historical D score, all **40/40** information-eligible taxa had positive departures, the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not used as comparable effect sizes; this audit supports breadth of the departure only.
 
 Together, the repaired analyses support a **species-by-route-night shared landscape state** superimposed on stop-specific propensity. They do not distinguish unmeasured shared hydrology, landscape-scale breeding readiness, demographic availability, social processes or other latent route-night generators.
