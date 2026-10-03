@@ -141,7 +141,9 @@
     "deep_template_alignment_identifies_individual_fidelity": false,
     "deep_template_alignment_identifies_unique_mechanism": false,
     "fast_gate_slow_template_is_prospectively_preregistered_NAAMP_hypothesis": false,
-    "cross_taxon_stop_night_hotness_sufficient": false
+    "cross_taxon_stop_night_hotness_sufficient": false,
+    "near_far_decay_is_exact_geographic_distance": false,
+    "near_far_decay_separates_route_topology_from_survey_order": false
   },
   "note": "Historical internal filenames retain terms such as higher_order and memory for provenance. Reader-facing terminology is within-taxon multi-site organization, historical site targeting, pulse-revealed dependence structure, and bounded species-by-route-night residual co-dependence. The original unbounded D statistic is retained only for historical auditability and breadth of departure. The frozen RC4 release refs remain the historical release authority; the post-2026-10-03 main extension is explicitly exploratory.",
   "post_reopening_exploratory_chain": {
@@ -273,12 +275,27 @@
         "receipt": "exploration/NAAMP_LOTO_STOP_NIGHT_HOTNESS_NULL_RECEIPT_V0_1.json",
         "script": "exploration/run_naamp_loto_stop_night_hotness_null.py",
         "status": "post-hoc cross-taxon common-cause falsification; residual target-taxon route-night structure remains"
+      },
+      {
+        "role": "route-cluster bootstrap near-versus-far route-position dependence contrast",
+        "contract": "exploration/NAAMP_NEAR_VS_FAR_DEPENDENCE_CONTRAST_CONTRACT_V0_1.json",
+        "receipt": "exploration/NAAMP_NEAR_VS_FAR_DEPENDENCE_CONTRAST_RECEIPT_V0_1.json",
+        "script": "exploration/run_naamp_near_vs_far_dependence_contrast.py",
+        "status": "post-hoc spatial-shape diagnostic; modest near-to-far decline with far dependence retained"
       }
     ],
     "metric_authority": {
       "primary_route_night_effect_size": "bounded residual co-dependence coefficient rho_b",
       "superseded_metric": "historical unbounded D score retained for null-test/breadth provenance only",
       "design_effect_or_effective_stop_conversion_authorized": false
+    }
+  },
+  "numerical_audits": {
+    "deep_vs_shallow_template_alignment_mc_stability": {
+      "contract": "audit/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_MC_STABILITY_CONTRACT_V0_1.json",
+      "receipt": "audit/NAAMP_DEEP_VS_SHALLOW_TEMPLATE_ALIGNMENT_MC_STABILITY_RECEIPT_V0_1.json",
+      "script": "audit/run_naamp_deep_vs_shallow_template_alignment_mc_stability.py",
+      "status": "non-authoritative Monte Carlo stability audit; primary seed/test unchanged"
     }
   }
 }
