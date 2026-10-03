@@ -1,0 +1,43 @@
+{
+  "analysis": "naamp_monitoring_independence_impact_v0_2",
+  "status": "posthoc_extension_fixed_after_v0_1_before_route_cluster_and_specieswise_readback",
+  "known_before_this_contract": {
+    "v0_1_pooled_iid_se": 0.01365296820816578,
+    "v0_1_species_pair_cluster_se": 0.024696583300888534,
+    "v0_1_route_pair_cluster_se": 0.030565571164184693
+  },
+  "question": "Does the uncertainty inflation attributed to non-independent route stops persist when dependence is allowed across years within routes and when the same comparison is repeated within individual species?",
+  "population": "Exactly the 2,835 weather-eligible strictly-prior-history pairs used in v0.1.",
+  "pooled_extension": {
+    "model": "Same v0.1 stop-level binomial GLM and identical risk set.",
+    "new_covariance": "Cluster sandwich by State x RouteNumber across all pairs, years, taxa and stops within a route.",
+    "purpose": "Allow both within-night and repeated-route dependence rather than stopping at pair-level clustering."
+  },
+  "specieswise_extension": {
+    "risk_set": "For each species separately, cells with no recorded call at that stop in the drier member; response is wet calling-positive status.",
+    "formula": "wet_activation ~ rain_contrast + temp_difference + doy_difference + year_gap + C(State) + C(RunNumber)",
+    "eligibility_fixed_before_readback": {
+      "minimum_risk_cells": 200,
+      "minimum_positive_wet_cells": 20,
+      "minimum_species_pair_clusters": 30,
+      "minimum_routes": 10
+    },
+    "covariances": [
+      "IID model-based",
+      "cluster by focal matched pair (up to ten stops)",
+      "cluster by route across years"
+    ],
+    "outputs": [
+      "number of eligible and estimable species",
+      "median and IQR pair-cluster/IID SE ratio",
+      "median and IQR route-cluster/IID SE ratio",
+      "fraction of species with ratio > 1 for each clustered covariance",
+      "species-level ratios and coefficients for audit"
+    ]
+  },
+  "interpretation": {
+    "broad_support": "Median clustered/IID SE ratio > 1 and more than half of estimable species have ratio > 1.",
+    "boundary": "This remains a representative acoustic-activation regression, not the exact published NAAMP occupancy-trend estimator; no universal claim over all monitoring models."
+  },
+  "provenance": "Post-hoc after explicit 2026-10-03 reopening. No eligibility threshold, formula or clustering definition may be changed after these outputs are read."
+}
