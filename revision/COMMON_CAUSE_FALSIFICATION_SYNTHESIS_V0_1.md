@@ -71,15 +71,30 @@ Coverage:
 - 18,769 species × route-night clusters
 - 187,690 species × stop cells
 
-Standardized within-species route-night residual correlation:
-- observed **ρ_resid = 0.4159**
+Standardized within-species route-night residual-dependence statistic:
+- observed **D = 0.4159**
 - independent-Bernoulli null mean ≈ **0.00002**
 - null 95% interval = **−0.00343 to 0.00343**
 - upper-tail **P = 0.000999**
 
+Here, D is a pooled ratio of within-cluster residual cross-products to their model-based Bernoulli variance scale. It is a diagnostic of residual dependence, **not a Pearson correlation coefficient and not assumed to be bounded by −1 and 1**.
+
 Thus conditional independence among the ten stop outcomes is strongly rejected under the tested measured-environment + historical-site comparator.
 
-A simple ten-stop exchangeable-correlation translation gives a design-effect heuristic ≈ **4.74** and effective-stop-count heuristic ≈ **2.11 of 10**. These are heuristic translations, not the exact design effect of a particular occupancy estimator.
+### Direct link to the route-new result
+
+A second fixed audit split clusters using the **drier survey only**, so it does not select taxa according to the wetter outcome.
+
+- taxa acoustically silent across the entire drier route: **D = 0.5666**, null 95% interval **−0.00543 to 0.00561**, P = **0.000999**;
+- taxa already active somewhere on the drier route: **D = 0.3364**, null 95% interval **−0.00432 to 0.00439**, P = **0.000999**.
+
+Residual route-night dependence is therefore not merely persistence among taxa that were already calling. It is especially strong in the dry-route-silent stratum that can subsequently generate acoustically route-new taxa.
+
+### Taxonomic breadth
+
+The specieswise breadth audit retained 40 information-eligible taxa. All **40/40** had positive D, with median **0.4198** and IQR **0.2826–0.7265**. The largest positive numerator contributor accounted for only **11.7%** of positive mass (top five **46.5%**, HHI **0.0579**), and leave-one-species-out global D remained **0.391–0.441**.
+
+The dependence signal is therefore taxonomically broad rather than a pooled effect carried by one or two explosive breeders. Specieswise D can exceed 1 because it is a standardized residual-dependence statistic rather than a conventional correlation coefficient.
 
 ## Biological interpretation now supported
 
@@ -105,10 +120,19 @@ Not established:
 
 The direct ecological result implies that stop number is not automatically equal to independent information. The historical NAAMP occupancy literature itself treated route stops as spatial replicates and noted that nesting within routes could induce dependence affecting trend precision.
 
-A separate fixed post-hoc diagnostic directly compares model-based IID uncertainty with species × route-night clustered uncertainty for a representative stop-level activation regression:
-- contract: `exploration/NAAMP_MONITORING_INDEPENDENCE_IMPACT_CONTRACT_V0_1.json`
+Two fixed post-hoc uncertainty diagnostics compare model-based IID covariance with clustered covariance for the same representative stop-level activation regression.
 
-That SE comparison determines whether the monitoring implication is presented quantitatively or only as a methodological consequence.
+Pooled analysis:
+- species × route-night clustering: SE **1.81×** IID;
+- route-pair clustering: SE **2.24×** IID;
+- route clustering across years: SE **2.69×** IID.
+
+Specieswise audit:
+- 39 taxa met fixed information thresholds;
+- pair-clustered SE exceeded IID in **38/39**, median ratio **1.61** (IQR **1.30–1.74**);
+- route-clustered SE exceeded IID in **36/39**, median ratio **1.48** (IQR **1.24–1.72**).
+
+Thus uncertainty inflation is not only a pooled multispecies phenomenon. These diagnostics do **not** re-estimate a published NAAMP occupancy-trend model and do not establish a universal correction factor.
 
 ## Current decision
 
@@ -118,5 +142,6 @@ The stronger direction is:
 
 1. retain the ecological discovery as **species-by-route-night landscape-scale dependence**;
 2. show that the strongest measured common environmental triggers explain little of the allocation residual;
-3. use the direct SE comparison to decide how strongly to elevate the monitoring-design implication;
-4. keep WFTS as the prospective confirmation, with the already frozen secondary common-environment diagnostic in `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_1.json`.
+3. describe the remaining object as a **broad species-by-route-night shared landscape state**, especially pronounced among taxa silent on the drier route;
+4. elevate the monitoring-design implication cautiously: clustered uncertainty is broadly larger across species, but no published occupancy-trend estimator has yet been re-fit;
+5. keep WFTS as the prospective confirmation, with the already frozen secondary common-environment diagnostic in `revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_1.json`.
