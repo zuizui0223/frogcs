@@ -221,7 +221,7 @@ The first contribution is frog-specific. Rainfall-sensitive calling is well esta
 
 This does not prove that frogs were physically absent during the dry survey and then arrived after rain. Acoustic zeros can contain non-calling residents or missed weak callers. But a transition from no recorded call to a continuous overlapping chorus is qualitatively different from a small change at the edge of detectability. The result therefore supports rapid switching of **reproductive acoustic state** at the species × site level.
 
-### The spatial response contains distributed within-taxon multi-site organization
+### Calling by the same taxon is organized across separated route locations
 
 The second contribution concerns the **dependence structure** of that state transition. If wet conditions merely created independent extra detections, the main excess should be accounted for by how many taxa were recruited and how many additional sites they occupied. The cumulative excess lay in deep multi-site spread, but the exact depth profile did not show a threshold at the third stop: second- and third-stop marginal participation remained inside both activation-null envelopes, whereas marginal fourth through tenth stops were overrepresented. The effect is therefore better described as a **heavier within-taxon spatial tail than expected**, almost entirely carried by CI2/3 states.
 
@@ -229,7 +229,7 @@ This changes the ecological picture from “more species are heard after rain”
 
 The analysis cannot determine whether this distributed activation reflects individuals already resident near each listening site, movement within local habitat networks, shared hydrological change, social processes or another mechanism. Direct acoustic coordination among route stops is not established, and literal synchrony cannot be inferred because the ten stops were sampled sequentially. The empirical result is instead that calling expression spans separated route locations and is more concentrated within taxa than the tested first-order site-level activation processes predict.
 
-### Rain exposes a persistent species × site chorus template
+### Strong chorus returns preferentially to recurrent taxon-specific locations
 
 The third contribution connects short-term calling dynamics with spatial recurrence. Strong breeding-site fidelity is known in some frogs and toads (Kusano et al., 1999), while assemblage studies show rapid temporal change in which species are calling (Sugai et al., 2021). Our results connect these levels without requiring individual tracking: within the same focal pair and species, the physical sites that had supported strong chorusing in prior years were more likely to support strong chorusing again in the wet survey.
 
@@ -245,7 +245,7 @@ The closest ecological precedents already show the ingredients separately and, i
 
 This extends general pulse ecology (Yang et al., 2008; Holt, 2008) from asking how much abundance or activity changes to asking **which spatial dependencies become expressed when behaviour switches state, after marginal species and site propensities are already represented**. The principle is not proposed as universal: NAAMP provides a frog-system example that can be tested directly in other behaviourally cryptic systems, including calling insects, lekking animals, nocturnal activity pulses and emergence events.
 
-### The remaining state is route-spanning but spatially non-uniform
+### The route-scale response is broad but not spatially uniform
 
 Measured weather, recorded acoustic conditions and cross-taxon stop-night hotness explained little of the allocation residual. The remaining structure is **taxon-specific, route-spanning but non-uniform**: far-lag dependence retained 91.7% of the near-lag value despite a detectable route-position decline, while a transferable scalar species-night shift made all ten stops too coherent. Deep k ≥ 4 responses were also preferentially drawn from historically strong SiteIDs after exact k and fixed q site propensities were conditioned away. A useful working interpretation—not an identified mechanism—is therefore that a taxon can enter a favourable-night calling state at route scale, while persistent local suitability filters where that state is expressed. Unmeasured hydrology, breeding readiness, demographic availability and social processes remain possible lower-level generators.
 
