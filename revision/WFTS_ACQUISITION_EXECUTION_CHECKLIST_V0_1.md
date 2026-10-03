@@ -16,10 +16,11 @@
 - [x] Daymet adapter ready
 - [x] response-blind structural preflight ready
 - [x] confirmatory v0.5 implementation ready
-- [x] unified real-data authority v0.3 frozen before WFTS outcomes
+- [x] unified real-data authority v0.4 frozen before WFTS outcomes
 - [x] prospective common-environment v0.2 secondary specification frozen
 - [x] response-free 1/3/7-day precipitation adapter ready and synthetic QA passed
 - [x] prospective bounded route-night / far-lag secondary implementation ready
+- [x] prospective exact-k deep historical-template / deep-versus-shallow contrast frozen and synthetic QA passed
 
 ## B. Direct WFTS research-data request
 
@@ -199,20 +200,31 @@ Allowed decision:
 
 Only after K and after the primary result file is frozen:
 
-- [ ] run `scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py` on the exact preflight-covered primary bytes
-- [ ] freeze the three-day common-environment comparator and named one-/seven-day sensitivities
-- [ ] freeze bounded all-cluster and dry-route-silent route-night dependence
-- [ ] freeze near 1–3 and far 7–9 station-number lag diagnostics
-- [ ] freeze predeclared specieswise IID versus clustered uncertainty summary
-- [ ] verify the secondary output records `primary_replication_classification_unchanged = true`
-- [ ] inspect response values normally for non-gating descriptive audit
-- [ ] label any additional unplanned analysis explicitly exploratory
-- [ ] update manuscript interpretation only after the primary + predeclared secondary WFTS outputs are frozen
+1. Common-environment / route-night secondary:
+   - [ ] run `scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py` on the exact preflight-covered primary bytes
+   - [ ] freeze the three-day common-environment comparator and named one-/seven-day sensitivities
+   - [ ] freeze bounded all-cluster and dry-route-silent route-night dependence
+   - [ ] freeze near 1–3 and far 7–9 station-number lag diagnostics
+   - [ ] freeze predeclared specieswise IID versus clustered uncertainty summary
+   - [ ] verify the secondary output records `primary_replication_classification_unchanged = true`
+
+2. Prospective deep-template secondary:
+   - [ ] run `scripts/wfts/run_wfts_deep_template_alignment_v0_1.py` using the already-frozen primary and common-environment outputs
+   - [ ] verify the fixed informativeness gate: ≥50 deep k≥4 clusters, ≥100 shallow k=1–3 clusters, ≥5 taxa, ≥20 routes
+   - [ ] freeze exact-k deep historical-template alignment
+   - [ ] freeze the primary secondary contrast `beta_deep(k≥4) - beta_shallow(k=1–3)`
+   - [ ] record exactly one template-link classification: `template_link_support`, `template_link_non_support`, or `inconclusive_secondary_template_link`
+   - [ ] confirm this secondary classification does not alter the primary WFTS replication classification
+
+3. Only after both frozen secondary outputs:
+   - [ ] inspect response values normally for non-gating descriptive audit
+   - [ ] label any additional unplanned analysis explicitly exploratory
+   - [ ] update manuscript interpretation only after the primary + predeclared secondary WFTS outputs are frozen
 
 ## Current state
 
 As of 2026-10-03:
 
-> **Waiting on external acquisition only.** The primary confirmation and the prospective common-environment / bounded route-night / far-lag secondary chain are frozen and implemented before WFTS outcome access.
+> **Waiting on external acquisition only.** The primary confirmation plus the prospective common-environment, bounded route-night, far-lag and deep historical-template/deep-versus-shallow secondary chain are frozen and implemented before WFTS outcome access.
 
 No unresolved same-data NAAMP analysis is required to define the WFTS tests.
