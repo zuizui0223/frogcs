@@ -60,6 +60,25 @@ Earlier branch-preserved analyses provide useful negative controls:
 
 These analyses do not exhaust environmental common causes. Local hydroperiod, water level, soil moisture, small-scale rainfall heterogeneity and other unmeasured route-night variables remain possible.
 
+## Stage 2b — measured acoustic-observation conditions
+
+We next asked whether the remaining pattern could be a route-night detectability artefact rather than an ecological state. The fixed complete-case analysis retained **2,718 pairs on 421 routes** and added recorded hearing-impairment fraction, major-noise timeout fraction and mean Beaufort wind to the same cross-fitted 72-h-rainfall common-environment model. The baseline and augmented models used the **same focal pairs and training-run universe**.
+
+Results:
+- same-sample 72-h-rainfall residual = **0.2851**;
+- detection-augmented residual = **0.2713**;
+- fraction removed = **4.8%**;
+- augmented residual null 95% interval = **−0.1408 to 0.1378**;
+- augmented upper-tail **P = 0.000999**.
+
+The route-night dependence result was even less affected:
+- dry-route-silent baseline **rho_b = 0.2856**;
+- detection-augmented **rho_b = 0.2860**;
+- augmented null 95% interval = **−0.00555 to 0.00509**;
+- **P = 0.000999**.
+
+Thus measured route-run hearing impairment, major-noise interruption and wind do not account for the residual allocation or the dry-route-silent dependence. This does **not** eliminate unrecorded masking, within-observer perceptual error or species-specific detectability.
+
 ## Stage 3 — repaired direct conditional-independence diagnostic
 
 The original fixed diagnostic strongly rejected independent Bernoulli stop outcomes under the strongest measured-environment + historical-site comparator (**D = 0.4159**, P = **0.000999**), but a later audit showed that D is an unbounded standardized dependence score rather than a correlation coefficient. It is retained for provenance and breadth-of-departure auditing, but not as the primary effect-size metric and not for design-effect conversion.
@@ -70,7 +89,7 @@ A bounded repair was therefore fixed before its value was read:
 - **dry-route-silent** taxa: **rho_b = 0.2849**, null 95% interval **−0.00541 to 0.00565**, P = **0.000999**;
 - **dry-route-active** taxa: **rho_b = 0.1273**, null 95% interval **−0.00314 to 0.00350**, P = **0.000999**.
 
-The drier-state split uses only the drier survey, so the stronger dependence among dry-route-silent taxa is not created by selecting on their wetter outcome. It directly links the shared-state diagnostic to the pre-wet stratum from which acoustically route-new taxa can emerge.
+The drier-state split uses only the drier survey, so the stronger dependence among dry-route-silent taxa is not created by selecting on their wetter outcome. It directly links the shared-state diagnostic to the pre-wet stratum from which acoustically route-new taxa can emerge. The q construction also includes one pair-level common logit shift chosen to match the **observed total wet incidence**, so a route-night factor that merely raises all cells together is conditioned away at first order; the remaining object concerns how that fixed amount of activity is allocated within species across stops.
 
 ### Spatial scale along the route
 
