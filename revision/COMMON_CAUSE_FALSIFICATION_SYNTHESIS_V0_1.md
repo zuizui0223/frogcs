@@ -111,6 +111,18 @@ Observer turnover was not required. Among **2,191** weather-linked prior-history
 
 This does not exclude within-observer perceptual error, but it rules out observer replacement as a necessary explanation.
 
+### Species-level marginal calibration
+
+A separate route-cross-fitted falsification allowed each information-eligible species one constant calibration intercept on top of the strongest fixed q comparator, estimated only on the opposite route fold and followed by the same pair-level incidence rematching. This directly tests whether persistent species-level under- or overprediction is masquerading as a species × route-night effect.
+
+The recalibrated null remained insufficient:
+
+- concentration residual = **0.2608**, null 95% interval **−0.1326 to 0.1355**, P = **0.000999**;
+- dry-route-silent bounded dependence = **0.2866**, P = **0.000999**;
+- far-lag 7–9 dependence = **0.2737**, P = **0.000999**.
+
+Thus a constant species calibration error is not the missing state variable; the residual is genuinely event-specific at the species × route-night level.
+
 ### Taxonomic breadth
 
 A breadth audit fixed before the bounded repair used the historical D score. All **40/40** information-eligible taxa had positive departures; the largest positive numerator contributor accounted for **11.7%** of positive mass, and every leave-one-species-out pooled D remained positive. Because D is unbounded, its specieswise numerical values are not treated as comparable effect sizes. The audit supports breadth of the positive departure, not a common effect magnitude or mechanism.
