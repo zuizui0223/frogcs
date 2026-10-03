@@ -135,7 +135,7 @@ Each specification and PASS/FAIL rule in the original mechanism sequence was ver
 
 ### Post-hoc common-environment and conditional-dependence diagnostics
 
-After explicit reopening, two route-cross-fitted common-environment generators were tested: flexible nonlinear rain recency, temperature and season, then a model adding species-specific response to 72-h ERA5 precipitation. Both retained prior SiteID history, dry persistence and incidence matching. Under the stronger generator we tested residual stop dependence within species × route-night. A stop-level activation GLM then compared independent-cell with clustered covariance. Full specifications are in Supporting Information; all are post-hoc diagnostics.
+After explicit reopening, two route-cross-fitted common-environment generators were tested: flexible nonlinear rain recency, temperature and season, then a model adding species-specific response to 72-h ERA5 precipitation. Both retained prior SiteID history, dry persistence and incidence matching. Under the stronger generator we tested residual stop dependence within species × route-night. A stop-level activation GLM then compared independent-cell with clustered covariance. To localize non-uniform deep expression, we conditioned each dry-route-silent species × night exactly on observed k and fixed q, compared overlap with strictly-prior CI2/3 SiteIDs against the exact conditional subset distribution, and fixed the k ≥ 4 versus k = 1–3 contrast. Full specifications are in Supporting Information; all are post-hoc diagnostics.
 
 ### Detection, physical-site and protocol robustness
 
