@@ -309,6 +309,20 @@
         "one_sd_common_state_odds_multiplier": 17.89132506591594
       },
       "boundary": "Model-based latent-scale variance description only; not a published-monitoring design effect and not a unique biological mechanism. Numerical-convergence audit pending/recorded separately."
+    },
+    "logistic_normal_numerical_convergence": {
+      "overall_pass": true,
+      "all": {
+        "relative_deviation_20_vs_60": 0.010271624625028977,
+        "relative_deviation_40_vs_60": 0.00015154409971600077,
+        "sigma_60": 2.589549004640267
+      },
+      "dry_route_silent": {
+        "relative_deviation_20_vs_60": 0.016885731655193466,
+        "relative_deviation_40_vs_60": 0.0011840590874504298,
+        "sigma_60": 2.9338562719145354
+      },
+      "boundary": "Numerical validation only; the original 20-node prespecified point estimate remains the reported latent-model estimate and its profile CI is not treated as route-clustered sampling uncertainty."
     }
   }
 }
