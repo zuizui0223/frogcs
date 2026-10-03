@@ -85,7 +85,7 @@
   ],
   "prospective_external_confirmation": {
     "candidate": "Wisconsin Frog and Toad Survey",
-    "authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md",
+    "authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md",
     "primary": {
       "inherited_primary_authority": "revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md",
       "weather_analysis_spec": "revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md",
@@ -110,7 +110,13 @@
         "specieswise IID versus clustered uncertainty"
       ]
     },
-    "response_outcomes_inspected_when_frozen": false
+    "response_outcomes_inspected_when_frozen": false,
+    "deep_template_alignment": {
+      "contract": "revision/WFTS_PROSPECTIVE_DEEP_TEMPLATE_ALIGNMENT_V0_1.json",
+      "script": "scripts/wfts/run_wfts_deep_template_alignment_v0_1.py",
+      "qa": ".github/workflows/wfts_deep_template_alignment_qa.yml",
+      "status": "prospectively frozen before WFTS frog-response outcome access"
+    }
   },
   "interpretation_boundaries": {
     "causal_rainfall_claim": false,
