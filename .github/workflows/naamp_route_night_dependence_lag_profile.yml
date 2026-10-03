@@ -1,0 +1,61 @@
+name: NAAMP route-night dependence lag profile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_CONTRACT_V0_1.json
+      - exploration/run_naamp_route_night_dependence_lag_profile.py
+      - .github/workflows/naamp_route_night_dependence_lag_profile.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-route-night-lag-profile
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed lag-profile diagnostic
+        run: python exploration/run_naamp_route_night_dependence_lag_profile.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835, x["coverage"]
+          for section in ("dry_route_silent","all_clusters"):
+              for k,v in x[section]["lags"].items():
+                  assert -1-1e-12 <= v["rho_lag"] <= 1+1e-12, (section,k,v)
+          print(json.dumps({
+            "decision":x["decision"],
+            "silent_near":x["dry_route_silent"]["near_lags_1_3"],
+            "silent_far":x["dry_route_silent"]["far_lags_7_9"]
+          },indent=2))
+          PY
+      - name: Commit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_ROUTE_NIGHT_DEPENDENCE_LAG_PROFILE_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record route-night dependence lag profile"
+            git push origin HEAD:main
+          fi
