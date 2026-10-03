@@ -1,10 +1,12 @@
-# Gap and claim map v0.4 — conditional within-taxon multi-site allocation
+# Gap and claim map v0.4 — spatial organization of frog reproductive acoustic activity
 
 ## Literature gap
 
-Previous frog studies already establish rainfall-sensitive calling, short-term assemblage change, cross-site covariance, pulse-associated multi-site chorus change, persistent species × wetland calling structure and breeding-site fidelity. The closest antecedents include Sarker et al. (2022), Brodie et al. (2025) and Guzy et al. (2012). The unresolved question is narrower:
+Previous frog studies already establish rainfall-sensitive calling, short-term assemblage change, cross-site covariance, pulse-associated multi-site chorus change, persistent species × wetland calling structure and breeding-site fidelity. The closest antecedents include Sarker et al. (2022), Brodie et al. (2025) and Guzy et al. (2012). The unresolved ecological question is narrower:
 
-> **After total acoustic activation, taxon-specific rainfall response, prior taxon × physical-site use and dry-state persistence are explicitly represented, is the remaining wet-state calling still disproportionately concentrated within the same taxa across sites?**
+> **When a frog taxon becomes acoustically active on a favourable night, what spatial unit organizes that activity — independent wetlands, a uniform route-wide shift, or a recurrent subset of taxon-specific locations?**
+
+The conditional concentration analysis is the statistical test used to distinguish those possibilities after taxon response, prior physical-site use, dry-state persistence and total activation magnitude are represented.
 
 The novelty is not “frogs are spatially coherent”, not “rain synchronizes frogs”, and not “environmental pulses alter chorusing at multiple sites.”
 
