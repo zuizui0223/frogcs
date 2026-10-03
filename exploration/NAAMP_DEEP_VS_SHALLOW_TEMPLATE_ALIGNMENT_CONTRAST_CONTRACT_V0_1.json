@@ -1,0 +1,45 @@
+{
+  "analysis": "naamp_deep_vs_shallow_template_alignment_contrast_v0_1",
+  "status": "posthoc_direct_contrast_fixed_after_descriptive_deep_shallow_means_were_known",
+  "provenance": {
+    "known_before_contract": {
+      "deep_mean_q_conditioned_overlap_excess": 0.07602779335316326,
+      "shallow_mean_q_conditioned_overlap_excess": -0.010823779209901203,
+      "descriptive_difference": 0.08685157256306446,
+      "deep_rainfall_beta": 0.026586957417988274,
+      "deep_p": 0.001998001998001998,
+      "all_k1plus_p": 0.057942057942057944
+    },
+    "warning": "The descriptive deep-versus-shallow difference was already known. This test is an explicitly post-hoc direct contrast, not a prospective test."
+  },
+  "question": "Is historical-template alignment itself stronger in the deep k>=4 tail than in shallow k=1-3 activation, rather than merely appearing significant in one subgroup?",
+  "population": "Exactly the eligible clusters from NAAMP_DEEP_HISTORICAL_TEMPLATE_ALIGNMENT_V0_1: 2,835 focal pairs, dry-route-silent taxa, observed k>=1, both prior-strong and non-strong focal SiteIDs.",
+  "groups": {
+    "shallow": "Observed wet k=1-3.",
+    "deep": "Observed wet k=4-10."
+  },
+  "statistic": {
+    "pair_level": "Sum q-conditioned historical-template overlap excess separately for deep and shallow eligible clusters within each focal pair.",
+    "regression": "Use the unchanged residualized rain-contrast design to obtain beta_deep and beta_shallow.",
+    "primary_contrast": "beta_deep - beta_shallow."
+  },
+  "null": {
+    "conditioning": "Fix every cluster's observed k, fixed q vector and prior-strong mask exactly.",
+    "generator": "Draw exact-k stop subsets from the conditional independent-Bernoulli distribution proportional to product q/(1-q) odds.",
+    "replicates": 1000,
+    "seed": 2840234,
+    "tail": "upper",
+    "support_rule": "Observed beta_deep - beta_shallow exceeds the upper 95% simulated contrast bound with plus-one P<0.05."
+  },
+  "secondary": {
+    "cluster_mean_contrast": "Mean q-conditioned overlap excess in deep clusters minus shallow clusters, with the corresponding exact-k simulation null."
+  },
+  "interpretation": {
+    "positive": "The coupling between species-night activation and the historical strong-site template is stronger in the unusual deep tail than in shallow activation.",
+    "null_result": "Do not describe template coupling as deep-specific; report only that the deep subgroup shows alignment while the pooled evidence is weaker.",
+    "boundary": "This contrast does not identify why historical strong sites are favoured."
+  },
+  "anti_tuning": [
+    "Do not change k threshold, eligibility, q source, prior-strong definition, pair design, simulation count, seed or tail after readback."
+  ]
+}
