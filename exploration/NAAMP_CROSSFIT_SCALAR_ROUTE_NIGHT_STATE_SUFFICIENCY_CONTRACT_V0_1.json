@@ -1,0 +1,71 @@
+{
+  "analysis": "naamp_crossfit_scalar_route_night_state_sufficiency_v0_1",
+  "status": "posthoc_structural_sufficiency_test_fixed_after_latent_magnitude_and_detection_falsification_before_scalar_generator_readback",
+  "known_before_contract": {
+    "bounded_dry_route_silent": 0.28487700425848284,
+    "far_lag_7_9": 0.27178236785618926,
+    "latent_dry_route_silent_sigma_20node": 2.884315962185036,
+    "detection_augmented_dry_route_silent_rho": 0.28600453486317134
+  },
+  "question": "Can a single transferable species-by-route-night scalar activation state, layered over fixed measured-environment and prior-site probabilities q, reproduce the observed within-taxon concentration and broad lag profile?",
+  "population": "Exactly the 2,835 weather-eligible strictly-prior-history pairs used by the 72-h rainfall q comparator.",
+  "folds": "Existing deterministic SHA256 route folds A/B. Estimate scalar-state parameters from one route fold and generate only the opposite fold; never use focal-route outcomes to estimate its scalar-state distribution.",
+  "training_model": {
+    "stratum": "Species acoustically silent across the entire drier route, defined using the drier survey only.",
+    "model": "logit(p_cj)=logit(q_cj)+mu_train+u_c, u_c~Normal(0,sigma_train^2), shared across ten stops.",
+    "q": "Unchanged fixed q from cross-fitted 72-h-rainfall + strictly-prior SiteID history + a=0.75 dry persistence + observed pair-level wet-incidence magnitude matching.",
+    "quadrature_nodes": 20,
+    "parameter_bounds": {
+      "sigma": [
+        0,
+        5
+      ],
+      "mu": [
+        -5,
+        5
+      ]
+    },
+    "estimator": "Identical marginal likelihood and bounded optimizers as NAAMP_LOGISTIC_NORMAL_ROUTE_NIGHT_STATE_CONTRACT_V0_1."
+  },
+  "generator": {
+    "focal_species": "Only dry-route-silent species matter for route-new metrics. For each focal species x route-night and simulation replicate, draw u from the opposite-fold fitted Normal(0,sigma^2), then Bernoulli stop outcomes from logistic(logit(q)+mu+u).",
+    "active_dry_species": "Ignored for route-new metrics because the endpoint mask excludes them.",
+    "pair_total": "Do not add or retune a new pair-level shift after the latent draw. The underlying q already contains the observed-incidence matching shift; first-order differences induced by the latent generator are handled by the unchanged conditional regression on simulated route-new-taxon and extra-stop coefficients."
+  },
+  "primary_endpoint": {
+    "simulations": 1000,
+    "seed": 2840234,
+    "observed_metrics": "Route-new-taxon, total extra-stop and within-taxon concentration rainfall coefficients on the 2,835-pair sample.",
+    "conditional_test": "Fit concentration_beta ~ route_new_taxon_beta + extra_stop_beta across scalar-state simulations; evaluate observed residual at observed first-order coefficients.",
+    "sufficiency_rule": "Scalar state is structurally sufficient for concentration if the observed conditional residual lies within the simulation 95% residual interval; otherwise additional structure remains."
+  },
+  "lag_endpoint": {
+    "seed": 2840235,
+    "residual_reference": "Always compute e=y-q relative to the original fixed q, as in the observed lag profile.",
+    "near": [
+      1,
+      2,
+      3
+    ],
+    "far": [
+      7,
+      8,
+      9
+    ],
+    "outputs": [
+      "observed near and far rho_lag",
+      "scalar-generator predictive 95% intervals for near and far rho_lag"
+    ],
+    "sufficiency_rule": "Far-lag structure is reproduced if observed far rho_lag lies inside the scalar-generator 95% predictive interval."
+  },
+  "interpretation": {
+    "both_sufficient": "The residual spatial organization can be parsimoniously represented as a fast species-wide route-night activation state layered over slow stop-specific propensity; no more complex route geometry is required by these endpoints.",
+    "concentration_only": "A scalar activation state explains concentration but not its route-position profile.",
+    "insufficient": "The scalar state leaves concentration or far-lag structure unexplained, implying additional within-route structure beyond a shared species-night intercept.",
+    "boundary": "Even if sufficient, the scalar latent state is a statistical ecological state, not identification of hydrology, physiology, movement or social facilitation."
+  },
+  "anti_tuning": [
+    "Do not change folds, stratum, q, model, quadrature nodes, parameter bounds, simulations, seeds, endpoints, lag bins or sufficiency rules after readback.",
+    "Do not add species-specific sigma, mixture states or route-specific sigma after reading this endpoint."
+  ]
+}
