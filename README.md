@@ -67,7 +67,8 @@ Supporting Information contains the defence/falsification layer:
 - activation-geometry placebo falsification;
 - protocol, detection and observer sensitivities;
 - post-reopening flexible-weather and 72-h-rain common-cause falsification;
-- direct species × route-night residual-dependence and dry-state decomposition;
+- bounded species × route-night residual co-dependence;
+- dry-route-silent, far-lag and same-observer dependence diagnostics;
 - specieswise monitoring-uncertainty diagnostics.
 
 ## Current canonical files
@@ -113,7 +114,9 @@ Important boundaries:
 - response-blind structural eligibility must pass before frog outcomes are loaded;
 - the primary endpoint/comparator is frozen;
 - the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_2.md`;
-- the implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`.
+- the primary implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`;
+- after the primary result is frozen, a separately frozen secondary sequence tests Daymet common-environment sufficiency, bounded route-night dependence, far-lag persistence and clustered uncertainty under `revision/WFTS_SECONDARY_DIAGNOSTIC_AUTHORITY_V0_1.md`;
+- secondary results cannot rescue, downgrade or retune the primary WFTS classification.
 
 A non-PASS is classified prospectively as either:
 
