@@ -107,7 +107,7 @@ The private metadata bundle remains intentionally pending until final human meta
 ## Prospective external confirmation — future, non-blocking
 
 WFTS real-data authority:
-- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_3.md`
+- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`
 - `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md`
 - `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`
 
