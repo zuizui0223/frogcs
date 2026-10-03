@@ -1,0 +1,117 @@
+name: WFTS prospective route-night secondary QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - revision/WFTS_PROSPECTIVE_COMMON_ENVIRONMENT_DIAGNOSTIC_V0_2.json
+      - scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py
+      - scripts/wfts/generate_synthetic_wfts_fixture.py
+      - scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py
+      - .github/workflows/wfts_route_night_secondary_qa.yml
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {contents: read}
+
+concurrency:
+  group: wfts-route-night-secondary-${{ github.event.pull_request.head.ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  synthetic-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels patsy
+      - name: Generate artificial WFTS fixture
+        run: python scripts/wfts/generate_synthetic_wfts_fixture.py --outdir build/wfts-secondary
+      - name: Run response-blind structural preflight
+        run: |
+          python scripts/wfts/preflight_wfts_structure.py \
+            --runs build/wfts-secondary/runs.csv \
+            --matrix build/wfts-secondary/matrix.csv \
+            --output build/wfts-secondary/preflight.json
+      - name: Run frozen primary analysis first
+        run: |
+          python scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py \
+            --runs build/wfts-secondary/runs.csv \
+            --matrix build/wfts-secondary/matrix.csv \
+            --preflight-receipt build/wfts-secondary/preflight.json \
+            --output build/wfts-secondary/primary.json
+      - name: Create response-free synthetic common-environment run covariates
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          src=Path("build/wfts-secondary/runs.csv")
+          x=pd.read_csv(src)
+          z=x[["route_id","survey_period","survey_year","survey_date"]].copy()
+          # Synthetic weather-only covariates; no matrix/outcome file is read.
+          r=x["rain_recency"].astype(float)
+          t=x["tmean_run"].astype(float)
+          z["prcp_1d_exposure"]=np.log1p(np.maximum(0,6-r))
+          z["prcp_3d_exposure"]=np.log1p(np.maximum(0,12-2*r+0.03*t))
+          z["prcp_7d_exposure"]=np.log1p(np.maximum(0,20-2.5*r+0.05*t))
+          out=Path("build/wfts-secondary/common_env_runs.csv")
+          z.to_csv(out,index=False)
+          h=hashlib.sha256(out.read_bytes()).hexdigest()
+          receipt={
+            "analysis":"synthetic_common_env_weather_for_qa",
+            "response_columns_read":False,
+            "output_sha256":{"runs":h},
+            "fixture_mode":True
+          }
+          Path("build/wfts-secondary/common_env_receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
+          PY
+      - name: Run frozen prospective secondary diagnostics
+        run: |
+          python scripts/wfts/run_wfts_secondary_route_night_diagnostics_v0_2.py \
+            --runs build/wfts-secondary/runs.csv \
+            --matrix build/wfts-secondary/matrix.csv \
+            --preflight-receipt build/wfts-secondary/preflight.json \
+            --primary-result build/wfts-secondary/primary.json \
+            --common-env-runs build/wfts-secondary/common_env_runs.csv \
+            --common-env-receipt build/wfts-secondary/common_env_receipt.json \
+            --output build/wfts-secondary/secondary.json
+      - name: Audit code path without asserting ecological direction
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/wfts-secondary/secondary.json").read_text())
+          assert x["status"]=="prospective_secondary_executed_after_primary"
+          assert x["coverage"]["pairs"]==540
+          assert x["coverage"]["routes"]==30
+          assert x["primary_replication_classification_unchanged"] is True
+          for k in ("primary_3day","sensitivity_1day","sensitivity_7day"):
+              t=x["common_environment"][k]["test"]
+              for q in ("predicted_concentration_beta","observed_conditional_residual","null_residual_ci95","upper_tail_p","pass"):
+                  assert q in t,(k,q)
+          for k in ("all","dry_route_silent"):
+              d=x["bounded_route_night_dependence"][k]
+              assert -1/9-1e-12 <= d["rho_bounded"] <= 1+1e-12
+          lag=x["route_position_lag_profile"]
+          assert set(lag["lags"])==set(str(i) for i in range(1,10))
+          assert x["interpretation_boundary"]["secondary_can_rescue_or_retune_primary"] is False
+          print({
+            "status":"PASS",
+            "primary_decision":x["primary_decision"],
+            "common_env_p":x["common_environment"]["primary_3day"]["test"]["upper_tail_p"],
+            "bounded":x["bounded_route_night_dependence"]["dry_route_silent"]["rho_bounded"],
+            "far":x["route_position_lag_profile"]["far_lags_7_9"]["rho_lag"]
+          })
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wfts-route-night-secondary-synthetic-qa
+          path: |
+            build/wfts-secondary/primary.json
+            build/wfts-secondary/secondary.json
+          if-no-files-found: error
