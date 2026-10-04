@@ -1,0 +1,120 @@
+{
+  "analysis": "naamp_recurrent_core_expansion_v0_1",
+  "by_exact_k": {
+    "10": {
+      "mean_adjacent_fraction_excess": 0.0,
+      "mean_core_distance_excess": 0.0,
+      "n_clusters": 16
+    },
+    "4": {
+      "mean_adjacent_fraction_excess": 0.03956643724100629,
+      "mean_core_distance_excess": -0.2075120325385477,
+      "n_clusters": 91
+    },
+    "5": {
+      "mean_adjacent_fraction_excess": -0.002974715331555622,
+      "mean_core_distance_excess": 0.002613863342597167,
+      "n_clusters": 52
+    },
+    "6": {
+      "mean_adjacent_fraction_excess": -0.004213402359963287,
+      "mean_core_distance_excess": -0.011580059331435388,
+      "n_clusters": 62
+    },
+    "7": {
+      "mean_adjacent_fraction_excess": 0.01400746875657928,
+      "mean_core_distance_excess": -0.06827207125960325,
+      "n_clusters": 50
+    },
+    "8": {
+      "mean_adjacent_fraction_excess": -0.0066940744150570984,
+      "mean_core_distance_excess": -0.028418177871082622,
+      "n_clusters": 36
+    },
+    "9": {
+      "mean_adjacent_fraction_excess": 0.011521697951942134,
+      "mean_core_distance_excess": -0.06339134700441003,
+      "n_clusters": 30
+    }
+  },
+  "conditioning": {
+    "exact_h_active_prior_strong": true,
+    "exact_k": true,
+    "fixed_prior_strong_mask": true,
+    "fixed_q": true,
+    "replicates": 2000,
+    "seed": 2840243,
+    "subset_weight": "product of fixed q/(1-q) odds"
+  },
+  "contract": "landscape/NAAMP_RECURRENT_CORE_EXPANSION_CONTRACT_V0_1.json",
+  "coverage": {
+    "active_prior_strong_count_h": {
+      "1": 100,
+      "2": 75,
+      "3": 66,
+      "4": 37,
+      "5": 24,
+      "6": 15,
+      "7": 10,
+      "8": 8,
+      "9": 2
+    },
+    "eligible_deep_core_clusters": 337,
+    "eligible_routes": 159,
+    "pairs": 2835,
+    "routes": 428,
+    "species": 34
+  },
+  "interpretation_boundary": {
+    "changes_rc6": false,
+    "generated_after_stage_a1": true,
+    "independent_confirmation": false,
+    "individual_fidelity_identified": false,
+    "movement_or_propagation_identified": false,
+    "post_rc6": true,
+    "stop_number_is_exact_distance": false
+  },
+  "primary_core_distance_excess": {
+    "null_ci95": [
+      -0.07842099527574933,
+      0.07911335897040017
+    ],
+    "null_mean": -0.0005956720455670228,
+    "observed_mean_excess": -0.07656984012526177,
+    "plus_one_p": 0.030484757621189407,
+    "route_bootstrap": {
+      "ci95": [
+        -0.14860770188875688,
+        -0.005078633156274635
+      ],
+      "replicates": 2000,
+      "routes": 159,
+      "seed": 2840244
+    },
+    "supported": false,
+    "tail": "lower"
+  },
+  "secondary_adjacent_to_core_excess": {
+    "null_ci95": [
+      -0.025005491140429464,
+      0.02721322794958041
+    ],
+    "null_mean": 0.00020665383625557233,
+    "observed_mean_excess": 0.011838775497976647,
+    "plus_one_p": 0.19590204897551225,
+    "route_bootstrap": {
+      "ci95": [
+        -0.012783990635523167,
+        0.03493101587130423
+      ],
+      "replicates": 2000,
+      "routes": 159,
+      "seed": 2840245
+    },
+    "tail": "upper"
+  },
+  "status": "stage_a2_generated_after_stage_a1_fixed_before_core_distance_readback",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
