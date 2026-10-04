@@ -10,7 +10,7 @@
 
 4. **Two biological results clarify what that endpoint represents.** Rain-associated change often involved transitions from acoustic silence directly into overlapping or full chorus, rather than only intensification of already-calling cells. In addition, physical sites where a taxon had previously reached strong chorus were more likely to host strong wet-state chorusing again (β = 0.151, 95% CI 0.129–0.173).
 
-5. **Thus response magnitude did not determine the spatial pattern of chorus activation.** After first-order taxon response, site history and total activation were represented, activity still clustered within taxa and was selectively expressed at recurrent taxon-specific sites. Short behavioural pulses may therefore reveal spatial organization that is missed by counts of responding units alone. The inference remains exploratory at manuscript level, and independent external confirmation is a future test.
+5. **Thus response magnitude did not fully describe the spatial pattern of chorus activation.** After first-order taxon response, site history and total activation were represented, activity still clustered within taxa and was selectively expressed at recurrent taxon-specific sites. Short behavioural pulses may therefore reveal spatial organization that is missed by counts of responding units alone. The inference remains exploratory at manuscript level, and independent external confirmation is a future test.
 
 ## Keywords
 
@@ -241,7 +241,7 @@ We avoid interpreting recurrence as memory or philopatry. Returns can arise from
 
 The directional rain-selective analysis adds the temporal gate. Historical-site targeting was stronger toward the survey closer to rain after recurrent and non-recurrent opportunities were normalized within each direction. Thus the pattern is not merely that good sites are always good. Recent-rain conditions are associated with preferential expression of activity at historically strong species × site combinations.
 
-### Response magnitude does not determine the spatial pattern of activation
+### Response magnitude does not fully describe the spatial pattern of activation
 
 Resource-pulse ecology already emphasizes pulse magnitude, duration and spatial scale (Yang et al., 2008; Holt, 2008), and pulse-dynamics theory explicitly treats the spatial and temporal distribution of resource patches as a determinant of ecological response (Jentsch & White, 2019). Spatial-synchrony theory further shows that common environmental forcing can correlate dynamics across locations (Liebhold et al., 2004), while community models separate marginal environmental responses from residual joint association (Pollock et al., 2014; Tikhonov et al., 2017). Pulse-disturbance work also distinguishes mean response from response diversity (Kunze et al., 2026). We therefore do **not** claim novelty for spatially structured pulses, environmental synchrony, response diversity or marginal-versus-joint structure in general.
 
