@@ -9,7 +9,7 @@ This Supporting Information contains the **defence, falsification, robustness an
 3. that concentration exceeds a comparator containing cross-fitted species rainfall response, strictly-prior species × physical-site history, dry-state persistence and matched wet-incidence magnitude;
 4. strong wet-state chorusing preferentially reappears at historically strong species-specific physical sites, with targeting strengthened toward the survey closer to rain.
 
-The principal manuscript novelty is therefore **pulse-revealed spatial dependence**, not rainfall-sensitive calling itself, not a high raw boundary-crossing percentage, and not a species trait identified after the fact.
+The principal manuscript novelty is therefore the **realised spatial pattern of chorus activation after response magnitude and first-order taxon/site propensities are represented**. It is not rainfall-sensitive calling itself, not generic cross-site dependence, not a high raw boundary-crossing percentage, and not a species trait identified after the fact.
 
 Results retained here include the earlier RC11 matrix decomposition and nulls, FrogID cross-dataset consistency, beta-diversity and matrix-fill context, protocol and observer robustness, exact combinatorial diagnostics, route-topology corroboration, alternative trait/mechanism tests, failed falsification gates and full provenance. These analyses are important because they constrain simpler explanations without competing with the main inferential spine.
 
@@ -27,7 +27,7 @@ The integrated manuscript distinguishes **discovery evidence** from **defence ev
 
 | Reviewer question | Primary response | Detailed location |
 |---|---|---|
-| Is this only the familiar fact that frogs call after rain? | No: the target is the spatial dependence structure of strong chorus activation across repeated sites | Main text; S10–S15 |
+| Is this only the familiar fact that frogs call after rain? | No: the target is whether the realised multi-site pattern remains structured after response magnitude and first-order taxon/site propensities are represented | Main text; S10–S15 |
 | Could marginal detectability or observer turnover generate the result? | Strong 0→CI3 transitions persist with the same observer and same physical SiteIDs; recorded hearing/noise/wind adjustments retain strong activation | S10; robustness sections |
 | Could intrinsically widespread rain-responsive taxa automatically generate concentration? | Principal comparator includes cross-fit species-specific rain response plus strictly-prior species × SiteID history, dry persistence and matched magnitude | S11.3 |
 | Could static good sites plus rain explain the result? | Held-out rain × local-history gate still underpredicts concentration | S11.4; S15 |
