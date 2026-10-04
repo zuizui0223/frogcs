@@ -40,7 +40,7 @@ Spatial synchrony theory and joint species-distribution models already cover tho
 
 ## Biological novelty
 
-The novel ecological question is the **allocation of a short behavioural pulse**:
+The novel ecological question is the **realised spatial pattern of a short behavioural pulse after response magnitude is represented**:
 
 > After first-order taxon response, prior site propensity, dry-state persistence and total activation are represented, how are the realized activations distributed among taxa and sites?
 
@@ -66,12 +66,12 @@ The NAAMP frog result is one empirical example: the realised pattern is over-con
 Silence→CI2/3 and silence→CI3 results show that the primary endpoint concerns substantial reproductive acoustic state change, not merely weak audibility.
 
 ### Historical placement
-Prior strong SiteID targeting shows where the excess allocation is expressed.
+Prior strong SiteID targeting shows where the excess spatial concentration is expressed.
 
 These analyses interpret the endpoint; they are not co-equal headline endpoints.
 
 ## Generality boundary
 
-The pattern is broad within NAAMP but geographically heterogeneous. FrogID supports only the taxonomic-deepening direction, not the spatial allocation mechanism.
+The pattern is broad within NAAMP but geographically heterogeneous. FrogID supports only the taxonomic-deepening direction, not the multi-site spatial pattern.
 
-External replication can test whether the allocation result transfers to another fixed-site network. It is not required for the present NAAMP submission.
+External replication can test whether the multi-site spatial result transfers to another fixed-site network. It is not required for the present NAAMP submission.
