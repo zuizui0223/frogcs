@@ -106,6 +106,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
 - `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
+- `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
 - `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
 - `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
