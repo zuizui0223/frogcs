@@ -65,7 +65,7 @@ for n in range(1,6):
 
 assert "not abundance, occupancy, colonization, spawning or reproductive success" in text
 assert "rather than a universal law" in text
-assert "do **not** claim novelty for spatially structured pulses, environmental synchrony or marginal-versus-joint structure in general" in text
+assert "do **not** claim novelty for spatially structured pulses, environmental synchrony, response diversity or marginal-versus-joint structure in general" in text
 assert "Universality of the full mechanism remains unestablished" in text
 
 manuscript_words=len(text.split())
