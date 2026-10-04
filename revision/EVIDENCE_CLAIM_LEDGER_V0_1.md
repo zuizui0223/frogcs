@@ -32,9 +32,9 @@ Everything else either establishes one step in that claim, limits it, or defends
 
 ### Main conceptual claim
 
-**Environmental pulses can reveal spatial dependence that is hidden during behavioural inactivity.**
+**Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
 
-The data support this as a frog-system principle and testable ecological hypothesis, not as a universal law.
+In NAAMP, that structure appears as excess within-taxon multi-site concentration with preferential expression at recurrent strong-chorus locations. The data support this as a frog-system hypothesis, not as a universal law or a claim that spatial synchrony, response diversity or residual association are themselves new concepts.
 
 ### A2. Post-reopening interpretation refinements
 
@@ -77,33 +77,36 @@ frogcs shows an extra layer after those first-order properties are represented:
 - strong choruses recur at the same species-specific sites;
 - rain selectively strengthens that historical placement.
 
-The unexpected result is therefore **not the amount of activation but its dependence structure**.
+The unexpected result is therefore **not the amount of activation alone, but the realised multi-site pattern after that amount and the main first-order propensities are represented**.
 
 A concise surprise statement for the paper:
 
-> **Rain does not merely add calling records; it exposes a recurrent, taxon-specific spatial organization whose multi-site concentration exceeds what the observed species responses and site histories predict.**
+> **Rain-associated activation is not fully described by how much calling appears: the same taxa are expressed across more sites than expected, especially at recurrent strong-chorus locations.**
 
 ---
 
-## C. General ecological principle hierarchy
+## C. General ecological hypothesis hierarchy
 
 ### G1 — safest generalization
 
-**Environmental pulses can reveal the spatial unit over which behaviour is organized when animals become conspicuous.**
+**Response magnitude alone may be insufficient to describe a short behavioural pulse.**
 
 Supported by:
-- direct state switching;
-- historical site targeting;
-- rain-selective targeting.
+- matched total wet incidence in the principal comparator;
+- excess within-taxon concentration after first-order taxon and site propensities are represented;
+- deep multi-site expression dominated by CI2/3.
 
 ### G2 — stronger and more distinctive
 
-**A community response to an environmental pulse can contain a dependence layer that is invisible to first-order summaries of species response, local propensity, richness and total incidence.**
+**The realised spatial pattern of a pulse response can retain ecological structure after response magnitude, transferable taxon response and persistent site propensity are represented.**
 
 Supported by:
 - principal joint comparator;
 - held-out rain×history gate;
-- exact N,K diagnostic as secondary corroboration.
+- recurrent strong-site targeting;
+- exact-k deep-placement result as post-hoc refinement.
+
+This is an ecological hypothesis about the realised pattern of response, not a new statistical theorem about joint distributions.
 
 ### G3 — metacommunity formulation
 
@@ -228,9 +231,9 @@ All are either known, mechanically expected, or too close to existing frog ecolo
 > **The multi-site concentration remains excessive after modelling transferable species rainfall responses, strictly-prior species×site history, dry-state persistence and the observed magnitude of activation.**
 
 **General ecological novelty:**
-> **Environmental pulses can reveal a dependence structure in community activity that is not identifiable from first-order species responses or static site propensities.**
+> **After response magnitude and first-order taxon/site propensities are represented, a short behavioural pulse can retain a structured multi-site pattern that is not captured by counts of responding units alone.**
 
-This is stronger than “fast gate × slow template” alone because it identifies what is new about the joint comparator: **the unexplained object is a dependence structure, not another marginal effect.**
+The novelty is empirical and ecological: the unexplained object is the **realised taxon-by-place pattern of response**, not another marginal rainfall effect and not the generic existence of residual association.
 
 ---
 
@@ -247,7 +250,7 @@ This is stronger than “fast gate × slow template” alone because it identifi
 7. Post-hoc measured-common-cause falsification and direct route-night residual dependence, compactly.
 8. Monitoring implication from clustered uncertainty, with the occupancy-reanalysis boundary.
 9. Taxonomic/geographic breadth with heterogeneity.
-10. One explicit conceptual synthesis: **pulse-revealed spatial dependence**.
+10. One explicit conceptual synthesis: **response magnitude does not determine the realised spatial pattern of activation**.
 11. Exploration status and need for prospective external confirmation.
 
 ### Move or keep in SI
