@@ -56,13 +56,13 @@ Full counting and caveats:
 
 The discovery is not simply that frogs call more after rain.
 
-The ecological question is not only how many local units respond to a favourable night, but **how those activations are allocated across taxa and places after first-order response has been represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
+The ecological question is not only how many local units respond to a favourable night, but **how a given amount of biological response is allocated across taxa and repeated places after first-order response has been represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
 
 The general hypothesis is:
 
-> **Short environmental pulses may affect ecological organization not only through how many local units respond, but through how activation is allocated across persistent spatial structure.**
+> **Two landscapes with the same amount of local activation can realize different behavioural states because activity can be allocated differently across taxa and persistent places.**
 
-This is a conceptual generalization from the NAAMP system, not a new statistical theorem, universal law or identified lower-level mechanism.
+This is a conceptual generalization from the NAAMP system. Pulse theory already treats the spatial structure of pulse events themselves; the hypothesis here concerns allocation of the biological response after first-order activation is represented. It is not a new statistical theorem, universal law or identified lower-level mechanism.
 
 ## Main text versus Supporting Information
 
