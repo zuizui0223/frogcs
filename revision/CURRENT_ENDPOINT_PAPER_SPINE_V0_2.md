@@ -52,19 +52,13 @@ In NAAMP the answer is:
 
 ## General hypothesis
 
-Use a two-part description of pulse response:
+The manuscript does **not** present marginal-versus-joint structure, spatial pulse structure, or response diversity as new concepts.
 
-**marginal activation**
-= which local taxon × site units become active and how much total activation occurs;
+The broader ecological hypothesis is:
 
-**response allocation**
-= how those realized activations are distributed among taxa and sites after marginal response has been represented.
+> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
 
-The manuscript does **not** present this marginal-versus-joint distinction as a new statistical theorem. Pulse theory already treats the spatial distribution of pulse events and resource patches. The broader ecological hypothesis here concerns the **distribution of the biological response conditional on first-order activation**:
-
-> **Two landscapes with the same amount of local activation can realize different behavioural states because activity can be allocated differently across taxa and persistent places.**
-
-The NAAMP frog result is one empirical example in which the allocation component is taxon-concentrated and history-dependent.
+The NAAMP frog result is one empirical example: the realised pattern is over-concentrated within taxa and its deepest expression is associated with recurrent strong-chorus locations.
 
 ## Interpretation analyses
 
