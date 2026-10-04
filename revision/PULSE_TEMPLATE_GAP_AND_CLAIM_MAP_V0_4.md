@@ -73,7 +73,7 @@ No unexamined NAAMP partition remains a genuine confirmation dataset. Cross-fitt
 
 The explicitly reopened NAAMP mechanism-analysis line was closed again on 2026-10-03 under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No new same-data lower-level mechanism family is authorized.
 
-The next decisive test is the prospectively frozen WFTS v0.4 external replication, including the deep-versus-shallow template-coupling prediction.
+A decisive evidential upgrade would be prospective external replication of the frozen endpoint, with WFTS v0.4 retained as one prepared candidate including the deep-versus-shallow site-coupling prediction.
 
 ## Closest-study audit
 
