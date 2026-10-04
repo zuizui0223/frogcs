@@ -1,0 +1,69 @@
+name: NAAMP recurrent-core landscape expansion
+
+on:
+  push:
+    branches: [landscape/naamp-behavioural-landscape-v1]
+    paths:
+      - landscape/NAAMP_RECURRENT_CORE_EXPANSION_CONTRACT_V0_1.json
+      - landscape/run_naamp_recurrent_core_expansion_v0_1.py
+      - .github/workflows/naamp_recurrent_core_expansion.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-recurrent-core-landscape-expansion
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run frozen recurrent-core test
+        run: python landscape/run_naamp_recurrent_core_expansion_v0_1.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("landscape/NAAMP_RECURRENT_CORE_EXPANSION_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835
+          assert x["coverage"]["routes"]==428
+          assert x["coverage"]["eligible_deep_core_clusters"]>0
+          assert x["conditioning"]["exact_k"] is True
+          assert x["conditioning"]["exact_h_active_prior_strong"] is True
+          assert x["interpretation_boundary"]["changes_rc6"] is False
+          print(json.dumps({
+              "coverage":x["coverage"],
+              "primary":x["primary_core_distance_excess"],
+              "secondary":x["secondary_adjacent_to_core_excess"]
+          },indent=2))
+          PY
+      - name: Commit Stage-A2 receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add landscape/NAAMP_RECURRENT_CORE_EXPANSION_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record recurrent-core landscape expansion test"
+            for attempt in 1 2 3; do
+              git fetch origin landscape/naamp-behavioural-landscape-v1
+              git rebase origin/landscape/naamp-behavioural-landscape-v1
+              git push origin HEAD:landscape/naamp-behavioural-landscape-v1 && exit 0
+              sleep 2
+            done
+            exit 1
+          fi
