@@ -48,7 +48,7 @@ The excess is biologically structured:
 - exact-k deep placement preferentially overlaps prior-strong sites;
 - a uniform whole-route species-night switch is too coherent.
 
-Thus the new empirical object is not “dependence” alone. It is a **history-dependent response allocation of pulse-triggered behavioural activation within taxa across sites**.
+Thus the new empirical object is not “dependence” alone. It is a **history-dependent realised spatial pattern of pulse-triggered behavioural activation within taxa across sites**.
 
 ## General organizing hypothesis
 
@@ -62,9 +62,9 @@ Given that first-order activation, how the realized active cells are distributed
 
 Existing pulse theory already incorporates the spatial distribution of pulse events and resource patches. The broader ecological hypothesis here instead concerns the response after that forcing:
 
-> **Two landscapes with the same amount of local activation can realize different behavioural states because activity can be allocated differently across taxa and persistent places.**
+> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
 
-This is an ecological hypothesis about the spatial allocation of pulse-triggered behaviour after first-order response is represented, not a mathematical theorem about joint distributions or a claim that spatial pulse structure is new.
+This is an ecological hypothesis about the realised pattern of pulse-triggered behaviour, not a mathematical theorem about joint distributions or a claim that spatial pulse structure or response diversity is new.
 
 ## Why the frog result is useful
 
