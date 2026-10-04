@@ -1,5 +1,7 @@
 # WFTS request email — final v0.1
 
+> **STATUS: PARKED DRAFT — DO NOT SEND BY DEFAULT.** This template is retained only for a possible future external replication. It is not a current task, not a prerequisite for RC5, and should be used only after an explicit decision to reopen WFTS acquisition.
+
 ## Routing
 
 **To:** Andrew.Badje@wisconsin.gov  
