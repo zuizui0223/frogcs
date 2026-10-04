@@ -265,7 +265,7 @@ This distinction matters for generalization. The NAAMP evidence supports a broad
 
 The study concerns observed acoustic activity, not abundance, occupancy, colonization, spawning or reproductive success. Occupancy models can separate ecological state from detection (Royle & Link, 2005). Dry acoustic zeros remain imperfect evidence of physical absence, and sequential route sampling precludes literal synchrony. Rainfall was not randomized; humidity, hydroperiod and other wet-state changes may covary with it.
 
-The integrated framing is exploratory. The nonlinear-weather, ERA5 rainfall, residual-dependence and SE diagnostics were added only after the original stopping rule was explicitly reopened on 3 October 2026 and are post-hoc falsification analyses. Cross-fitting prevents route leakage but does not create a genuinely untouched confirmation dataset. Measured weather cannot exclude shared hydrology or breeding state, and the SE comparison is not a published occupancy-trend reanalysis. Transferability beyond NAAMP remains untested and requires external replication.
+The integrated framing is exploratory. The nonlinear-weather, ERA5 rainfall, residual-dependence and SE diagnostics were added only after the original stopping rule was explicitly reopened on 3 October 2026 and are post-hoc falsification analyses. Cross-fitting prevents route leakage but does not create an untouched confirmation dataset. Measured weather cannot exclude shared hydrology or breeding state, and the SE comparison is not a published occupancy-trend reanalysis. Transferability beyond NAAMP requires external replication.
 
 ### Conclusion
 
