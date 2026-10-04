@@ -4,7 +4,7 @@
 
 Previous frog studies already establish rainfall-sensitive calling, short-term assemblage change, cross-site covariance, pulse-associated multi-site chorus change, persistent species × wetland calling structure and breeding-site fidelity. The closest antecedents include Sarker et al. (2022), Brodie et al. (2025) and Guzy et al. (2012). The unresolved ecological question is narrower:
 
-> **When a frog taxon becomes acoustically active on a favourable night, what spatial unit organizes that activity — independent wetlands, a uniform route-wide shift, or a recurrent subset of taxon-specific locations?**
+> **After response magnitude and first-order taxon/site propensities are represented, does the realised chorus pattern remain more concentrated within taxa than expected, and where is that excess expressed?**
 
 The conditional concentration analysis is the statistical test used to distinguish those possibilities after taxon response, prior physical-site use, dry-state persistence and total activation magnitude are represented.
 
@@ -39,16 +39,16 @@ It therefore cannot exclude a first-order explanation in which rain preferential
 
 The integrated manuscript uses this only as a secondary check that the concentration is not a mathematical consequence of N and K alone.
 
-## General ecological principle
+## General ecological hypothesis
 
-> **Favourable nights can organize frog reproductive acoustic activity at an intermediate spatial scale: broader than independent wetland responses, but more selective than a uniform landscape-wide switch.**
+> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
 
-The NAAMP evidence constrains that spatial organization:
-- calling by the same taxon remains dependent across widely separated route positions;
+The NAAMP evidence gives that statement a specific ecological form:
+- the same taxon is expressed across more separated route positions than expected;
 - a uniform taxon-night shift makes the stops too coherent;
-- unusually deep k≥4 expression is preferentially placed at strictly-prior strong-chorus sites after exact k and fixed-q site propensity are represented.
+- unusually deep k≥4 expression preferentially involves strictly-prior strong-chorus sites after exact k and fixed-q site propensity are represented.
 
-The strongest surprise is therefore **not how much activity appears, but which recurrent locations participate when a taxon becomes active across a route**.
+The strongest surprise is therefore **not how much activity appears, but how that activity is realised across taxa and recurrent places**.
 
 ## Generality
 
