@@ -134,7 +134,7 @@ jobs:
 
           doc=inspect_docx(main)
           sidoc=inspect_docx(si)
-          for token in ["recurrent within-taxon multi-site organization","pulse-revealed dependence structure","1.650","1.353","0.151","1.332"]:
+          for token in ["concentrated within taxa across multiple sites","response magnitude did not determine the spatial pattern of chorus activation","1.650","1.353","0.151","1.332"]:
               assert token.lower() in doc.lower(), token
           assert "within-taxon" in sidoc.lower() and "principal comparator" in sidoc.lower()
           assert "`" not in doc+sidoc
