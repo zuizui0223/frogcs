@@ -6,9 +6,9 @@
 
 ## General ecological claim
 
-**On favourable nights, frog reproductive acoustic activity can be organized at an intermediate spatial scale: broader than independent wetland responses, but more selective than a uniform route-wide switch.**
+**Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
 
-This is the manuscript's strongest conceptual generalization from the NAAMP frog system, not a universal law. The novelty lies in the **conditional spatial organization of activity after marginal taxon response and persistent site propensity are represented**, not in rainfall-sensitive calling, site fidelity or cross-site covariance by themselves.
+In NAAMP, that residual structure is expressed as within-taxon multi-site concentration with preferential involvement of recurrent strong-chorus locations. The pattern lies between independent wetland responses and a uniform route-wide switch. This is a testable generalization from the frog system, not a universal law and not a claim that residual association, spatial synchrony or pulse spatial structure are themselves new concepts.
 
 ## Evidence ladder
 

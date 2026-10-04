@@ -1,6 +1,6 @@
-# Journal of Animal Ecology title page — RC4 metadata template
+# Journal of Animal Ecology title page — current endpoint submission template
 
-**Manuscript title:** Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization
+**Manuscript title:** Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites
 
 **Article type:** Research Article
 
@@ -26,7 +26,7 @@
 
 ## Statement on Inclusion
 
-[REQUIRED DURING JAE SUBMISSION: tailor to secondary public monitoring data and regional intellectual/stakeholder context.]
+This study is a secondary analysis of publicly released amphibian-monitoring datasets from the United States and Australia; the authors conducted no new local field sampling. We cite the monitoring programmes and dataset creators whose work made these analyses possible and interpret the results within the scope of their sampling designs. No additional local stakeholder or community engagement was undertaken for this secondary-data analysis. [CONFIRM FINAL WORDING WITH ALL AUTHORS.]
 
 ## Ethics and permits
 

@@ -5,7 +5,7 @@ on:
     paths:
       - paper/manuscript.md
       - paper/supporting_information.md
-      - revision/audit_pulse_template_manuscript_v0_5.py
+      - revision/audit_current_endpoint_manuscript_v0_7.py
       - .github/workflows/pulse_template_manuscript_qa.yml
   pull_request:
     branches: [main]
@@ -21,4 +21,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: python revision/audit_pulse_template_manuscript_v0_5.py
+      - run: python revision/audit_current_endpoint_manuscript_v0_7.py

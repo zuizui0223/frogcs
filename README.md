@@ -1,15 +1,19 @@
-# frogcs — RC5 integrated frog chorus analysis
+# frogcs — RC6 endpoint-centred frog chorus analysis
 
 ## Current paper
 
-**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+**Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
 Current validated release/submission refs:
 
+- `release/jae-multisite-rc6`
+- `submission/jae-multisite-v6`
+- validated RC6 scientific source: `dc8706a321c4822401e2fae317711058bd5262e3`
+- release receipt: `submission/RC6_RELEASE_RECEIPT.md`
+
+Historical RC5 remains preserved at:
 - `release/jae-multisite-rc5`
 - `submission/jae-multisite-v5`
-- validated RC5 scientific source: `0dbc3b3724d428763c6176fcff939c0492c651d9`
-- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
 
 Historical RC4 remains preserved at:
 - `release/jae-multisite-rc4`
@@ -19,7 +23,7 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-04):** RC5 is complete as a NAAMP-only submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC5 submission path.
+**Operational status (2026-10-04):** RC6 is the current NAAMP-only scientific submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
 
 ## Biological result
 
@@ -56,23 +60,26 @@ Full counting and caveats:
 
 The discovery is not simply that frogs call more after rain.
 
-The ecological question is **what spatial unit organizes reproductive acoustic activity on favourable nights**. The NAAMP pattern falls between two simple extremes: route stops do not behave as fully independent local responses, but a taxon also does not switch uniformly across the whole route. Instead, route-spanning activity is spatially selective and is disproportionately re-expressed at recurrent taxon-specific chorus locations.
+The ecological question is not only how many local units respond to a favourable night, but **whether the realised spatial pattern remains structured after response magnitude and first-order taxon/site propensities are represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
 
 The general hypothesis is:
 
-> Environmental pulses may reveal how behavioural activity is distributed across persistent spatial structure that is difficult to see when animals are inactive.
+> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the spatial pattern of the realised response can retain additional ecological structure.**
 
-This is a conceptual generalization from the NAAMP system, not a universal law or an identified lower-level mechanism.
+This is a conceptual generalization from the NAAMP system. Pulse theory already treats the spatial structure of pulse events themselves, and response-diversity theory treats variation among species responses; the hypothesis here concerns the realised spatial pattern after response magnitude and first-order propensities are represented. It is not a new statistical theorem, universal law or identified lower-level mechanism.
 
 ## Main text versus Supporting Information
 
-The main paper is organized around three ecological questions:
+The current paper is organized around **one primary endpoint**:
 
-1. **state change** — amplification versus silence→strong-chorus switching;
-2. **spatial unit** — independent wetland responses versus organized multi-site expression;
-3. **place selection** — uniform route spread versus preferential use of recurrent taxon-specific chorus locations.
+> conditional within-taxon multi-site concentration among taxa acoustically recruited on wetter surveys, after species-specific rainfall response, strictly prior physical-site propensity, dry-state persistence and total activation magnitude are represented.
 
-The principal comparator, held-out rain × history gate and breadth analyses answer or bound those questions.
+Two biological analyses interpret that endpoint rather than competing with it as co-equal headline outcomes:
+
+1. **state change** — whether the activity entering the endpoint is weak amplification or silence→strong-chorus switching;
+2. **place selection** — whether the excess is expressed arbitrarily or preferentially at recurrent taxon-specific chorus locations.
+
+The principal 2,916-pair comparator is the inferential centre. The held-out rain × history gate and breadth analyses bound its robustness and generality. Reader-facing authority: `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`.
 
 Supporting Information contains the defence/falsification layer:
 
@@ -102,12 +109,17 @@ Supporting Information contains the defence/falsification layer:
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md`
+- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
+- `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
+- `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
+- `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
+- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
+- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
-- `submission/RC5_RELEASE_RECEIPT.md`
+- `submission/RC6_RELEASE_RECEIPT.md`
 
 Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
 
@@ -127,7 +139,7 @@ Post-freeze analyses that generated the integrated multi-site result remain audi
 
 ## Optional prospective external confirmation — parked
 
-Wisconsin Frog and Toad Survey (WFTS) remains a prepared external candidate, but it is **not part of the evidence required for RC5, not a submission gate, and not a current required task**. The request/contact documents are retained only as dormant planning artifacts so that the prospective design is not lost. They should be used only if external replication is explicitly reopened later.
+Wisconsin Frog and Toad Survey (WFTS) remains a prepared external candidate, but it is **not part of the evidence required for RC6, not a submission gate, and not a current required task**. The request/contact documents are retained only as dormant planning artifacts so that the prospective design is not lost. They should be used only if external replication is explicitly reopened later.
 
 Important boundaries:
 
@@ -170,4 +182,4 @@ It does not establish:
 - a unique lower-level mechanism;
 - universal anuran generality.
 
-The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation would be valuable future evidence, but it is not required to justify or submit RC5.
+The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation would be valuable future evidence, but it is not required to justify or submit RC6.

@@ -10,7 +10,7 @@ on:
       - "paper/supporting_information.md"
       - "figures_pulse_template/**"
       - "revision/INTEGRATED_RESULTS_V0_3.json"
-      - "revision/audit_pulse_template_manuscript_v0_5.py"
+      - "revision/audit_current_endpoint_manuscript_v0_7.py"
       - "scripts/submission/build_jae_anonymous_docx.py"
       - "scripts/submission/render_submission_metadata.py"
       - "submission/**"
@@ -45,7 +45,7 @@ jobs:
       - name: Install build dependencies
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 matplotlib numpy
       - name: Run integrated manuscript QA
-        run: python revision/audit_pulse_template_manuscript_v0_5.py
+        run: python revision/audit_current_endpoint_manuscript_v0_7.py
 
       - name: Render novelty-track figures from frozen inputs
         run: python revision/build_pulse_template_figures.py
@@ -57,7 +57,7 @@ jobs:
           python - <<'PY'
           import json,yaml
           from pathlib import Path
-          title="Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
+          title="Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites"
           z=json.loads(Path("build/metadata-fixture/ZENODO_METADATA_FINAL.json").read_text(encoding="utf-8"))
           cff=yaml.safe_load(Path("build/metadata-fixture/CITATION.cff").read_text(encoding="utf-8"))
           tp=Path("build/metadata-fixture/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
@@ -134,7 +134,7 @@ jobs:
 
           doc=inspect_docx(main)
           sidoc=inspect_docx(si)
-          for token in ["recurrent within-taxon multi-site organization","pulse-revealed dependence structure","1.650","1.353","0.151","1.332"]:
+          for token in ["concentrated within taxa across multiple sites","response magnitude did not fully describe the spatial pattern of chorus activation","1.650","1.353","0.151","1.332"]:
               assert token.lower() in doc.lower(), token
           assert "within-taxon" in sidoc.lower() and "principal comparator" in sidoc.lower()
           assert "`" not in doc+sidoc
@@ -212,7 +212,7 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          expected="Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
+          expected="Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites"
           x=Path("build/pulse-template-metadata/JAE_TITLE_PAGE_FINAL.md").read_text(encoding="utf-8")
           assert expected in x
           PY

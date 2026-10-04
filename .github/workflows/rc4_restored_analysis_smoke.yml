@@ -48,8 +48,8 @@ jobs:
           spec=json.loads((root/"provenance"/"CURRENT_ANALYSIS_SPECIFICATIONS.json").read_text(encoding="utf-8"))
           assert current["analysis"]=="frogcs_integrated_multisite_results_v0_3"
           assert current["current_title"]==spec["title"]
-          assert spec["release_authority"]["release_ref"]=="release/jae-multisite-rc4"
-          assert spec["release_authority"]["submission_ref"]=="submission/jae-multisite-v4"
+          assert spec["release_authority"]["historical_release"]["release_ref"]=="release/jae-multisite-rc4"
+          assert spec["release_authority"]["historical_release"]["submission_ref"]=="submission/jae-multisite-v4"
           for key,pathstr in spec["canonical_files"].items():
               assert (root/pathstr).exists(), f"missing canonical file {key}: {pathstr}"
           print({
