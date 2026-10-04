@@ -1,0 +1,240 @@
+{
+  "analysis": "naamp_route_topology_geometry_v0_1",
+  "contract": "landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_CONTRACT_V0_1.json",
+  "coverage": {
+    "all_dry_route_silent_wet_active_clusters": 3080,
+    "deep_k4plus_clusters": 767,
+    "deep_routes": 243,
+    "pairs": 2835,
+    "routes": 428
+  },
+  "exact_k_descriptives": {
+    "1": {
+      "mean_excess_components": 0.0,
+      "mean_excess_holes": 0.0,
+      "mean_excess_mean_pairwise_lag": 0.0,
+      "mean_excess_span": 0.0,
+      "n_clusters": 1387,
+      "observed_mean_components": 1.0,
+      "observed_mean_holes": 0.0,
+      "observed_mean_mean_pairwise_lag": 0.0,
+      "observed_mean_span": 0.0,
+      "q_expected_mean_components": 1.0,
+      "q_expected_mean_holes": 0.0,
+      "q_expected_mean_mean_pairwise_lag": 0.0,
+      "q_expected_mean_span": 0.0
+    },
+    "10": {
+      "mean_excess_components": 0.0,
+      "mean_excess_holes": 0.0,
+      "mean_excess_mean_pairwise_lag": 0.0,
+      "mean_excess_span": 0.0,
+      "n_clusters": 46,
+      "observed_mean_components": 1.0,
+      "observed_mean_holes": 0.0,
+      "observed_mean_mean_pairwise_lag": 3.6666666666666656,
+      "observed_mean_span": 9.0,
+      "q_expected_mean_components": 1.0,
+      "q_expected_mean_holes": 0.0,
+      "q_expected_mean_mean_pairwise_lag": 3.6666666666666656,
+      "q_expected_mean_span": 9.0
+    },
+    "2": {
+      "mean_excess_components": -0.07931227891905233,
+      "mean_excess_holes": -0.26495738114110545,
+      "mean_excess_mean_pairwise_lag": -0.26495738114110623,
+      "mean_excess_span": -0.26495738114110623,
+      "n_clusters": 581,
+      "observed_mean_components": 1.7194492254733218,
+      "observed_mean_holes": 2.4079173838209984,
+      "observed_mean_mean_pairwise_lag": 3.4079173838209984,
+      "observed_mean_span": 3.4079173838209984,
+      "q_expected_mean_components": 1.7987615043923741,
+      "q_expected_mean_holes": 2.6728747649621036,
+      "q_expected_mean_mean_pairwise_lag": 3.6728747649621045,
+      "q_expected_mean_span": 3.6728747649621045
+    },
+    "3": {
+      "mean_excess_components": -0.1919373730486409,
+      "mean_excess_holes": -0.5098285535198827,
+      "mean_excess_mean_pairwise_lag": -0.3398857023465902,
+      "mean_excess_span": -0.5098285535198807,
+      "n_clusters": 345,
+      "observed_mean_components": 2.197101449275362,
+      "observed_mean_holes": 2.982608695652174,
+      "observed_mean_mean_pairwise_lag": 3.3217391304347825,
+      "observed_mean_span": 4.982608695652174,
+      "q_expected_mean_components": 2.3890388223240033,
+      "q_expected_mean_holes": 3.4924372491720566,
+      "q_expected_mean_mean_pairwise_lag": 3.661624832781373,
+      "q_expected_mean_span": 5.492437249172054
+    },
+    "4": {
+      "mean_excess_components": -0.1741082406601003,
+      "mean_excess_holes": -0.3552767295784547,
+      "mean_excess_mean_pairwise_lag": -0.20395451698672734,
+      "mean_excess_span": -0.35527672957844897,
+      "n_clusters": 237,
+      "observed_mean_components": 2.607594936708861,
+      "observed_mean_holes": 3.1856540084388185,
+      "observed_mean_mean_pairwise_lag": 3.42756680731364,
+      "observed_mean_span": 6.185654008438819,
+      "q_expected_mean_components": 2.781703177368961,
+      "q_expected_mean_holes": 3.5409307380172734,
+      "q_expected_mean_mean_pairwise_lag": 3.6315213243003672,
+      "q_expected_mean_span": 6.540930738017267
+    },
+    "5": {
+      "mean_excess_components": -0.22371132039411404,
+      "mean_excess_holes": -0.1866812886422568,
+      "mean_excess_mean_pairwise_lag": -0.1247005030218871,
+      "mean_excess_span": -0.1866812886422622,
+      "n_clusters": 148,
+      "observed_mean_components": 2.7635135135135136,
+      "observed_mean_holes": 3.1283783783783785,
+      "observed_mean_mean_pairwise_lag": 3.5351351351351363,
+      "observed_mean_span": 7.128378378378378,
+      "q_expected_mean_components": 2.9872248339076277,
+      "q_expected_mean_holes": 3.3150596670206354,
+      "q_expected_mean_mean_pairwise_lag": 3.6598356381570234,
+      "q_expected_mean_span": 7.31505966702064
+    },
+    "6": {
+      "mean_excess_components": -0.11065721384111879,
+      "mean_excess_holes": -0.10652058206045467,
+      "mean_excess_mean_pairwise_lag": -0.08960775616597244,
+      "mean_excess_span": -0.10652058206045913,
+      "n_clusters": 115,
+      "observed_mean_components": 2.860869565217391,
+      "observed_mean_holes": 2.7130434782608694,
+      "observed_mean_mean_pairwise_lag": 3.557681159420291,
+      "observed_mean_span": 7.71304347826087,
+      "q_expected_mean_components": 2.97152677905851,
+      "q_expected_mean_holes": 2.819564060321324,
+      "q_expected_mean_mean_pairwise_lag": 3.6472889155862633,
+      "q_expected_mean_span": 7.819564060321329
+    },
+    "7": {
+      "mean_excess_components": -0.043441230646189585,
+      "mean_excess_holes": 0.080064057611921,
+      "mean_excess_mean_pairwise_lag": 0.012379864375781015,
+      "mean_excess_span": 0.08006405761192215,
+      "n_clusters": 98,
+      "observed_mean_components": 2.7448979591836733,
+      "observed_mean_holes": 2.326530612244898,
+      "observed_mean_mean_pairwise_lag": 3.6763848396501464,
+      "observed_mean_span": 8.326530612244898,
+      "q_expected_mean_components": 2.788339189829863,
+      "q_expected_mean_holes": 2.246466554632977,
+      "q_expected_mean_mean_pairwise_lag": 3.664004975274365,
+      "q_expected_mean_span": 8.246466554632976
+    },
+    "8": {
+      "mean_excess_components": -0.005415487474925433,
+      "mean_excess_holes": -0.006074281498838527,
+      "mean_excess_mean_pairwise_lag": 0.028238063422700018,
+      "mean_excess_span": -0.006074281498839745,
+      "n_clusters": 70,
+      "observed_mean_components": 2.3857142857142857,
+      "observed_mean_holes": 1.542857142857143,
+      "observed_mean_mean_pairwise_lag": 3.6892857142857145,
+      "observed_mean_span": 8.542857142857143,
+      "q_expected_mean_components": 2.391129773189211,
+      "q_expected_mean_holes": 1.5489314243559813,
+      "q_expected_mean_mean_pairwise_lag": 3.661047650863014,
+      "q_expected_mean_span": 8.548931424355983
+    },
+    "9": {
+      "mean_excess_components": -0.020383961336198405,
+      "mean_excess_holes": -0.020383961336197468,
+      "mean_excess_mean_pairwise_lag": -0.03394425684340237,
+      "mean_excess_span": -0.020383961336199477,
+      "n_clusters": 53,
+      "observed_mean_components": 1.7735849056603774,
+      "observed_mean_holes": 0.7735849056603774,
+      "observed_mean_mean_pairwise_lag": 3.6278825995807136,
+      "observed_mean_span": 8.773584905660377,
+      "q_expected_mean_components": 1.7939688669965759,
+      "q_expected_mean_holes": 0.7939688669965749,
+      "q_expected_mean_mean_pairwise_lag": 3.661826856424116,
+      "q_expected_mean_span": 8.793968866996577
+    }
+  },
+  "interpretation_boundary": {
+    "changes_rc6": false,
+    "hydrological_connectivity_identified": false,
+    "independent_confirmation": false,
+    "literal_synchrony": false,
+    "movement_identified": false,
+    "stop_number_is_exact_geographic_distance": false
+  },
+  "metric_definitions": {
+    "components": "number of contiguous active StopNumber runs",
+    "holes": "span + 1 - k",
+    "mean_pairwise_lag": "mean absolute StopNumber difference over active-stop pairs",
+    "span": "max active StopNumber - min active StopNumber"
+  },
+  "null": {
+    "conditional_independent_bernoulli_subset_weights": true,
+    "exact_observed_k_fixed": true,
+    "fixed_q": true,
+    "replicates": 2000,
+    "seed": 2840241
+  },
+  "primary_deep_holes_excess": {
+    "null_ci95": [
+      -0.08179733321495224,
+      0.08381544383850266
+    ],
+    "null_mean": 0.0008695507485418686,
+    "observed_mean_excess": -0.15350528627883736,
+    "plus_one_p": 1.0,
+    "route_bootstrap": {
+      "ci95": [
+        -0.25777396034564337,
+        -0.04939173257505702
+      ],
+      "replicates": 2000,
+      "routes": 243,
+      "seed": 2840242
+    },
+    "supported": false,
+    "tail": "upper"
+  },
+  "secondary_deep_geometry_excess": {
+    "components": {
+      "null_ci95": [
+        -0.04933530993988358,
+        0.05239219983847365
+      ],
+      "null_mean": 8.236344340699531e-06,
+      "observed_mean_excess": -0.12101066847964885,
+      "plus_one_p": 0.0009995002498750624,
+      "tail": "two-sided"
+    },
+    "mean_pairwise_lag": {
+      "null_ci95": [
+        -0.0435769863615667,
+        0.04639885230071263
+      ],
+      "null_mean": 0.00021051751873383772,
+      "observed_mean_excess": -0.09870526909578162,
+      "plus_one_p": 0.0009995002498750624,
+      "tail": "two-sided"
+    },
+    "span": {
+      "null_ci95": [
+        -0.08179733321495229,
+        0.08381544383850255
+      ],
+      "null_mean": 0.0008695507485417915,
+      "observed_mean_excess": -0.1535052862788376,
+      "plus_one_p": 0.0009995002498750624,
+      "tail": "two-sided"
+    }
+  },
+  "status": "post_rc6_exploratory_topology_geometry_fixed_before_metric_readback",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
