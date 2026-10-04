@@ -57,12 +57,12 @@ Use a two-part description of pulse response:
 **marginal activation**
 = which local taxon × site units become active and how much total activation occurs;
 
-**conditional allocation**
+**response allocation**
 = how those realized activations are distributed among taxa and sites after marginal response has been represented.
 
-The manuscript does **not** present this marginal-versus-joint distinction as a new statistical theorem. The broader ecological hypothesis is narrower:
+The manuscript does **not** present this marginal-versus-joint distinction as a new statistical theorem. Pulse theory already treats the spatial distribution of pulse events and resource patches. The broader ecological hypothesis here concerns the **distribution of the biological response conditional on first-order activation**:
 
-> **Short environmental pulses may affect ecological organization not only through how many local units respond, but through how activation is allocated across persistent spatial structure.**
+> **Two landscapes with the same amount of local activation can realize different behavioural states because activity can be allocated differently across taxa and persistent places.**
 
 The NAAMP frog result is one empirical example in which the allocation component is taxon-concentrated and history-dependent.
 
