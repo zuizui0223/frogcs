@@ -1,0 +1,77 @@
+{
+  "analysis": "naamp_route_topology_compactness_followup_v0_1",
+  "compactness_lower_tail": {
+    "contiguous_component_count": {
+      "negative_compactness_supported": true,
+      "null_ci95": [
+        -0.029010047535526606,
+        0.028284695524130776
+      ],
+      "null_mean": -0.00022209715159298972,
+      "observed": -0.12115417039435811,
+      "plus_one_lower_tail_p": 0.0004997501249375312
+    },
+    "mean_pairwise_stop_separation": {
+      "negative_compactness_supported": true,
+      "null_ci95": [
+        -0.07232111749020723,
+        0.07024519196328456
+      ],
+      "null_mean": -0.0015392484027414455,
+      "observed": -0.2049071158588397,
+      "plus_one_lower_tail_p": 0.0004997501249375312
+    },
+    "topological_span": {
+      "negative_compactness_supported": true,
+      "null_ci95": [
+        -0.08598325102374837,
+        0.08471964324677754
+      ],
+      "null_mean": -0.0020089450580070525,
+      "observed": -0.26436482219917634,
+      "plus_one_lower_tail_p": 0.0004997501249375312
+    }
+  },
+  "contract": "landscape/NAAMP_ROUTE_TOPOLOGY_COMPACTNESS_FOLLOWUP_CONTRACT_V0_1.json",
+  "coverage": {
+    "deep_k4_10_clusters": 767,
+    "eligible_clusters_k2plus": 1693,
+    "pairs": 2835,
+    "routes": 428,
+    "shallow_k2_3_clusters": 926
+  },
+  "deep_vs_shallow_mean_pairwise_excess": {
+    "deep_mean_excess": -0.09870526909578083,
+    "deep_minus_shallow": {
+      "null_ci95": [
+        -0.1332508691519505,
+        0.13549910207404312
+      ],
+      "null_mean": 0.0013796706544455613,
+      "observed": 0.19416817124174768,
+      "outside_95": true,
+      "plus_one_two_sided_p": 0.005997001499250375
+    },
+    "shallow_mean_excess": -0.2928734403375285
+  },
+  "interpretation_boundary": {
+    "can_upgrade_rc6": false,
+    "independent_confirmation": false,
+    "mechanism_identified": false,
+    "original_positive_dispersion_prediction_failed": true,
+    "post_readback_followup": true,
+    "route_topology_is_exact_geographic_distance": false
+  },
+  "null": {
+    "exact_k_fixed": true,
+    "fixed_q": true,
+    "replicates": 2000,
+    "same_generator_as_v0_1": true,
+    "seed": 2840301
+  },
+  "prior_receipt": "landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_RECEIPT_V0_1.json",
+  "status": "post_readback_sign_reversal_quantification",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
