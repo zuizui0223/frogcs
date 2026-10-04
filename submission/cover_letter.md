@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-Please consider our Research Article, **“Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization,”** for publication in *Journal of Animal Ecology*.
+Please consider our Research Article, **“Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites,”** for publication in *Journal of Animal Ecology*.
 
 Rainfall-sensitive calling is familiar in anurans. We ask a different question: **when a short environmental pulse recruits taxa into an active chorus landscape, is the resulting multi-site pattern simply the sum of species-specific responses and historically suitable sites, or does activity retain additional dependence across sites within the same taxa?**
 
