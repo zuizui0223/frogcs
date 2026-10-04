@@ -26,7 +26,7 @@ None of those is the central novelty claim.
 
 ## What the NAAMP result adds
 
-The distinct biological problem is the **allocation of a short behavioural activation pulse across a repeated spatial template**.
+The distinct biological problem is the **realised spatial pattern of a short behavioural activation pulse across repeated sites after response magnitude is represented**.
 
 The primary comparator is allowed to know:
 - transferable taxon-specific rainfall response;
@@ -57,8 +57,8 @@ For a short environmental pulse, distinguish:
 ### 1. Marginal activation
 Which local taxon × site units become active, and how much total activity occurs.
 
-### 2. Conditional allocation
-Given that first-order activation, how the realized active cells are distributed among taxa and spatial locations.
+### 2. Realised spatial pattern
+Given first-order activation and total response magnitude, how the active cells are distributed among taxa and repeated locations.
 
 Existing pulse theory already incorporates the spatial distribution of pulse events and resource patches. The broader ecological hypothesis here instead concerns the response after that forcing:
 
@@ -68,7 +68,7 @@ This is an ecological hypothesis about the realised pattern of pulse-triggered b
 
 ## Why the frog result is useful
 
-In the NAAMP system, the conditional-allocation component has three properties:
+In the NAAMP system, the residual spatial pattern has three properties:
 1. **taxon concentration** — activation is more deeply bundled within taxa than predicted;
 2. **spatial selectivity** — the response is not a uniform route-wide switch;
 3. **historical anchoring** — deep activity disproportionately uses recurrent taxon-specific strong-chorus locations.
@@ -81,7 +81,7 @@ This combination is what gives the result ecological content beyond generic resi
 
 ## Strongest defensible generality sentence
 
-> **Pulse-triggered behavioural responses may have an allocation component: the same amount of local activation can generate different landscape-level states depending on how activity is bundled among taxa and persistent places.**
+> **Pulse-triggered behavioural responses can retain spatial structure after response magnitude is fixed: the same amount of local activation can be realised through different taxon-by-place patterns.**
 
 ## Claims to avoid
 
@@ -91,11 +91,11 @@ Do not claim:
 - first proof that joint distributions differ from marginal distributions;
 - first evidence that environment changes species associations;
 - first evidence of recurrent frog calling sites;
-- a universal pulse-allocation law;
+- a universal law of pulse-response spatial structure;
 - an identified causal mechanism.
 
 ## Evidential status
 
 The result is broad within NAAMP but manuscript-level exploratory because the endpoint was developed after opening the dataset.
 
-Prospective external replication can test transferability of the frozen allocation endpoint. It is an evidential upgrade, not a prerequisite for the current NAAMP paper.
+Prospective external replication can test transferability of the frozen multi-site endpoint. It is an evidential upgrade, not a prerequisite for the current NAAMP paper.
