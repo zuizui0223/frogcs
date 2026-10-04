@@ -82,14 +82,14 @@ Detailed study-by-study comparison:
 
 ## Current title
 
-**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+**Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
 
 ## Title lock after mechanism refinement
 
 Keep the current title:
 
-**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+**Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
 Do **not** retitle the NAAMP paper around “fast gate”, “latent state”, “template coupling”, “synchrony” or a named lower-level mechanism.
 
