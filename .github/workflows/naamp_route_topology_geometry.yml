@@ -1,0 +1,70 @@
+name: NAAMP route-topology geometry
+
+on:
+  push:
+    branches: [landscape/naamp-behaviour-v1]
+    paths:
+      - landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_CONTRACT_V0_1.json
+      - landscape/run_naamp_route_topology_geometry_v0_1.py
+      - .github/workflows/naamp_route_topology_geometry.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-route-topology-geometry
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q icechunk xarray zarr numpy pandas scipy statsmodels patsy timezonefinder 'numcodecs[pcodec]'
+      - name: Run fixed route-topology geometry test
+        run: python landscape/run_naamp_route_topology_geometry_v0_1.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["coverage"]["pairs"]==2835, x["coverage"]
+          assert x["coverage"]["routes"]==428, x["coverage"]
+          assert x["coverage"]["eligible_clusters_k2plus"]>0
+          assert x["coverage"]["deep_k4_10_clusters"]>0
+          assert x["null"]["exact_observed_k_fixed"] is True
+          assert x["interpretation_boundary"]["can_upgrade_rc6"] is False
+          print(json.dumps({
+              "coverage":x["coverage"],
+              "primary":x["primary"],
+              "raw_vs_expected":x["raw_vs_expected"],
+              "strata":x["fixed_strata_descriptive"]
+          },indent=2))
+          PY
+      - name: Commit receipt to landscape branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then
+            echo "Receipt unchanged"
+          else
+            git commit -m "Record NAAMP route-topology geometry receipt"
+            for attempt in 1 2 3; do
+              git fetch origin landscape/naamp-behaviour-v1
+              git rebase origin/landscape/naamp-behaviour-v1
+              git push origin HEAD:landscape/naamp-behaviour-v1 && exit 0
+              sleep 2
+            done
+            exit 1
+          fi
