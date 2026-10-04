@@ -2,7 +2,7 @@
 
 ## Current paper
 
-**Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization**
+**Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
 Current validated release/submission refs:
 
