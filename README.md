@@ -1,4 +1,4 @@
-# frogcs — RC5 integrated frog chorus analysis
+# frogcs — RC6 endpoint-centred frog chorus analysis
 
 ## Current paper
 
@@ -6,10 +6,14 @@
 
 Current validated release/submission refs:
 
+- `release/jae-multisite-rc6`
+- `submission/jae-multisite-v6`
+- validated RC6 scientific source: `dc8706a321c4822401e2fae317711058bd5262e3`
+- release receipt: `submission/RC6_RELEASE_RECEIPT.md`
+
+Historical RC5 remains preserved at:
 - `release/jae-multisite-rc5`
 - `submission/jae-multisite-v5`
-- validated RC5 scientific source: `0dbc3b3724d428763c6176fcff939c0492c651d9`
-- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
 
 Historical RC4 remains preserved at:
 - `release/jae-multisite-rc4`
@@ -19,7 +23,7 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-04):** RC5 is complete as a NAAMP-only submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC5 submission path.
+**Operational status (2026-10-04):** RC6 is the current NAAMP-only scientific submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
 
 ## Biological result
 
@@ -115,7 +119,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
-- `submission/RC5_RELEASE_RECEIPT.md`
+- `submission/RC6_RELEASE_RECEIPT.md`
 
 Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
 
@@ -135,7 +139,7 @@ Post-freeze analyses that generated the integrated multi-site result remain audi
 
 ## Optional prospective external confirmation — parked
 
-Wisconsin Frog and Toad Survey (WFTS) remains a prepared external candidate, but it is **not part of the evidence required for RC5, not a submission gate, and not a current required task**. The request/contact documents are retained only as dormant planning artifacts so that the prospective design is not lost. They should be used only if external replication is explicitly reopened later.
+Wisconsin Frog and Toad Survey (WFTS) remains a prepared external candidate, but it is **not part of the evidence required for RC6, not a submission gate, and not a current required task**. The request/contact documents are retained only as dormant planning artifacts so that the prospective design is not lost. They should be used only if external replication is explicitly reopened later.
 
 Important boundaries:
 
@@ -178,4 +182,4 @@ It does not establish:
 - a unique lower-level mechanism;
 - universal anuran generality.
 
-The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation would be valuable future evidence, but it is not required to justify or submit RC5.
+The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation would be valuable future evidence, but it is not required to justify or submit RC6.
