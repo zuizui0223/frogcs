@@ -56,13 +56,13 @@ Full counting and caveats:
 
 The discovery is not simply that frogs call more after rain.
 
-The ecological question is not only how many local units respond to a favourable night, but **how a given amount of biological response is allocated across taxa and repeated places after first-order response has been represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
+The ecological question is not only how many local units respond to a favourable night, but **whether the realised spatial pattern remains structured after response magnitude and first-order taxon/site propensities are represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
 
 The general hypothesis is:
 
-> **Two landscapes with the same amount of local activation can realize different behavioural states because activity can be allocated differently across taxa and persistent places.**
+> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the spatial pattern of the realised response can retain additional ecological structure.**
 
-This is a conceptual generalization from the NAAMP system. Pulse theory already treats the spatial structure of pulse events themselves; the hypothesis here concerns allocation of the biological response after first-order activation is represented. It is not a new statistical theorem, universal law or identified lower-level mechanism.
+This is a conceptual generalization from the NAAMP system. Pulse theory already treats the spatial structure of pulse events themselves, and response-diversity theory treats variation among species responses; the hypothesis here concerns the realised spatial pattern after response magnitude and first-order propensities are represented. It is not a new statistical theorem, universal law or identified lower-level mechanism.
 
 ## Main text versus Supporting Information
 
