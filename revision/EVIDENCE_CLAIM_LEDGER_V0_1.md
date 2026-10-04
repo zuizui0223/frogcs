@@ -251,7 +251,7 @@ The novelty is empirical and ecological: the unexplained object is the **realise
 8. Monitoring implication from clustered uncertainty, with the occupancy-reanalysis boundary.
 9. Taxonomic/geographic breadth with heterogeneity.
 10. One explicit conceptual synthesis: **response magnitude does not determine the realised spatial pattern of activation**.
-11. Exploration status and need for prospective external confirmation.
+11. Exploration status and boundary of prospective external confirmation.
 
 ### Move or keep in SI
 
@@ -288,4 +288,4 @@ Everything else is support.
 
 The integrated NAAMP result remains exploratory because the concentration endpoint emerged after extensive same-dataset exploration. Route cross-fitting protects component fitting from route leakage but is not external confirmation.
 
-WFTS or another eligible fixed-site network should test the already frozen endpoint/comparator prospectively. The external test must remain separate from the present evidence hierarchy until eligibility, overlap exclusion and informativeness/power rules are frozen before outcome readback.
+If external transferability is pursued, WFTS or another eligible fixed-site network can test the already frozen endpoint/comparator prospectively. The external test must remain separate from the present evidence hierarchy until eligibility, overlap exclusion and informativeness/power rules are frozen before outcome readback.
