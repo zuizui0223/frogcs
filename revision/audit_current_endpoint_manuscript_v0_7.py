@@ -126,6 +126,13 @@ for surname in reference_surnames:
     assert re.search(rf"^{surname},", text, flags=re.M), f"missing reference: {surname}"
     assert surname in body, f"reference listed but not cited in body: {surname}"
 
+refs_block=text.split("## References",1)[1].split("## Figure legends",1)[0].strip()
+ref_entries=[x.strip() for x in re.split(r"\n\s*\n",refs_block) if x.strip()]
+first_authors=[x.split(",",1)[0].strip() for x in ref_entries]
+assert first_authors == sorted(first_authors,key=str.casefold), f"references not alphabetized: {first_authors}"
+for surname in sorted(set(first_authors),key=str.casefold):
+    assert surname in body, f"uncited reference remains: {surname}"
+
 print(
     f"current-endpoint manuscript v0.7 QA: PASS "
     f"({manuscript_words} manuscript words; {abstract_words} abstract words; "
