@@ -53,7 +53,7 @@ Permitted remaining work:
 - deterministic reproducibility and previously frozen numerical/implementation QA;
 - non-substantive copy-editing, figures and metadata;
 - archive/license/DOI finalization;
-- prospective WFTS execution under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`.
+- optional prospective WFTS execution under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md` **only if external replication is explicitly reopened**; it is not required for RC5 submission.
 
 **WFTS is not a submission gate for RC5.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
 
