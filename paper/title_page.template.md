@@ -1,4 +1,4 @@
-# Journal of Animal Ecology title page — RC4 metadata template
+# Journal of Animal Ecology title page — current endpoint submission template
 
 **Manuscript title:** Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites
 
