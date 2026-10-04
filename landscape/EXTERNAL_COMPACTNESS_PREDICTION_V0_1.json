@@ -1,0 +1,24 @@
+{
+  "analysis": "landscape_external_compactness_prediction_v0_1",
+  "status": "prospective_prediction_generated_from_posthoc_NAAMP_landscape_line",
+  "discovery_source": "NAAMP route-topology geometry v0.1 + compactness follow-up v0.1",
+  "target_design": "Independent repeated fixed-station network with ordered stations and historical station-level taxon response.",
+  "primary_prediction": {
+    "endpoint": "mean pairwise station-separation excess conditional on exact k and frozen first-order station probabilities",
+    "direction": "negative",
+    "meaning": "Active stations are more compact than conditionally independent placement predicts."
+  },
+  "secondary_predictions": [
+    "Topological span excess is negative.",
+    "Contiguous active-component-count excess is negative.",
+    "Compactness weakens from shallow to deep activation but remains negative in deep activation.",
+    "Recurrent high-use stations remain preferentially represented during deep activation."
+  ],
+  "required_boundaries": [
+    "Freeze station-order geometry and historical station mapping before response readback.",
+    "Freeze exact-k conditional null and station probabilities before response readback.",
+    "Do not reinterpret non-replication as mechanism evidence.",
+    "Do not use NAAMP to retune thresholds after this prediction."
+  ],
+  "rc6_relation": "No result from this external landscape test changes RC6 unless treated as a separate future study."
+}
