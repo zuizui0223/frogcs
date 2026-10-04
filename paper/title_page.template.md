@@ -1,6 +1,6 @@
 # Journal of Animal Ecology title page — RC4 metadata template
 
-**Manuscript title:** Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization
+**Manuscript title:** Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites
 
 **Article type:** Research Article
 
