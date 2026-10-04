@@ -9,7 +9,7 @@ SI=ROOT/"paper"/"supporting_information.md"
 text=MANUSCRIPT.read_text()
 si=SI.read_text()
 
-TITLE="# Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization"
+TITLE="# Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites"
 assert text.startswith(TITLE+"\n")
 
 required=[
