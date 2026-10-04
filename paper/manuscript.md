@@ -243,11 +243,11 @@ The directional rain-selective analysis adds the temporal gate. Historical-site 
 
 ### Pulse responses can contain a history-dependent allocation component
 
-Resource-pulse ecology emphasizes the magnitude, duration and spatial scale of ecological responses (Yang et al., 2008; Holt, 2008), while spatial-synchrony theory shows that common environmental forcing can correlate dynamics across locations (Liebhold et al., 2004). Community models likewise separate marginal environmental responses from residual joint association (Pollock et al., 2014; Tikhonov et al., 2017). We therefore do **not** treat marginal-versus-joint structure itself as a new principle.
+Resource-pulse ecology already emphasizes pulse magnitude, duration and spatial scale (Yang et al., 2008; Holt, 2008), and pulse-dynamics theory explicitly treats the spatial and temporal distribution of resource patches as a determinant of ecological response (Jentsch & White, 2019). Spatial-synchrony theory further shows that common environmental forcing can correlate dynamics across locations (Liebhold et al., 2004), while community models separate marginal environmental responses from residual joint association (Pollock et al., 2014; Tikhonov et al., 2017). We therefore do **not** claim novelty for spatially structured pulses, environmental synchrony or marginal-versus-joint structure in general.
 
-We use an empirical decomposition for short behavioural pulses. A pulse response has two distinguishable components: **marginal activation**, describing which taxon × site cells become active and how much total activity appears, and **conditional allocation**, describing how those activations are distributed among taxa and sites after the marginal responses are represented. In NAAMP, the allocation component remained non-random: activation was over-concentrated within taxa and its deep expression preferentially involved recurrent strong-chorus locations.
+Our empirical question concerns a different object: the **spatial allocation of the biological response after pulse exposure and first-order response have already been represented**. We distinguish **marginal activation**, describing which taxon × site cells become active and how much total activity appears, from **response allocation**, describing how a given amount of realized activation is bundled among taxa and repeated sites. In NAAMP, this response allocation remained structured: activation was over-concentrated within taxa and its deepest expression preferentially involved recurrent strong-chorus locations.
 
-This suggests a testable hypothesis rather than a universal law: **the ecological effect of a short environmental pulse may reside partly in how activity is allocated across persistent spatial structure, not only in how many local units respond**. The frog result places that allocation between two limiting cases—independent pond-level reactions and a uniform whole-route switch—and motivates the same decomposition in other behaviourally cryptic systems.
+This suggests a testable hypothesis rather than a universal law: **two landscapes with the same amount of local activation can realize different behavioural states because that activation can be allocated differently across taxa and persistent places**. The frog result places that allocation between two limiting cases—independent pond-level reactions and a uniform whole-route switch—and motivates testing response allocation explicitly in other behaviourally cryptic systems.
 
 ### The route-scale response is broad but not spatially uniform
 
@@ -269,7 +269,7 @@ The integrated framing is exploratory. The nonlinear-weather, ERA5 rainfall, res
 
 ### Conclusion
 
-The main finding is not simply that frogs call more after rain. Among taxa acoustically recruited on wetter surveys, calling incidences were **more concentrated within the same taxa than expected from species-specific rainfall response, prior physical-site use, dry-state persistence and the total amount of activation**. That excess was expressed as a deep multi-site tail dominated by overlapping or full chorus and was preferentially associated with recurrent taxon-specific strong-chorus locations. The result supports a two-part view of short behavioural pulses: local units have marginal probabilities of activation, but the realized activations also have a conditional spatial allocation. Here that allocation was taxon-concentrated and history-dependent, lying between independent wetland responses and a uniform route-wide switch.
+The main finding is not simply that frogs call more after rain. Among taxa acoustically recruited on wetter surveys, calling incidences were **more concentrated within the same taxa than expected from species-specific rainfall response, prior physical-site use, dry-state persistence and the total amount of activation**. That excess was expressed as a deep multi-site tail dominated by overlapping or full chorus and was preferentially associated with recurrent taxon-specific strong-chorus locations. The result supports a two-part view of short behavioural pulses: local units differ in their probabilities of activation, but a given amount of realized activity can also be distributed differently across taxa and places. Here that response was taxon-concentrated and history-dependent, lying between independent wetland responses and a uniform route-wide switch.
 
 ## Data Availability
 
@@ -296,6 +296,8 @@ Gotelli, N. J., & McCabe, D. J. (2002). Species co-occurrence: a meta-analysis o
 Holt, R. D. (2008). Theoretical perspectives on resource pulses. *Ecology*, 89, 671–681. https://doi.org/10.1890/07-0348.1
 
 Jenkins, D. G. (2011). Ranked species occupancy curves reveal common patterns among diverse metacommunities. *Global Ecology and Biogeography*, 20, 486–497. https://doi.org/10.1111/j.1466-8238.2010.00617.x
+
+Jentsch, A., & White, P. (2019). A theory of pulse dynamics and disturbance in ecology. *Ecology*, 100, e02734. https://doi.org/10.1002/ecy.2734
 
 Kusano, T., Maruyama, K., & Kanenko, S. (1999). Breeding site fidelity in the Japanese toad, *Bufo japonicus formosus*. *Herpetological Journal*, 9, 9–13.
 
