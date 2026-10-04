@@ -247,7 +247,7 @@ Resource-pulse ecology already emphasizes pulse magnitude, duration and spatial 
 
 Our empirical question is simpler: **once the amount of activation and the main taxon- and site-level propensities are represented, is the spatial pattern itself still structured?** In NAAMP it was. Calling was over-concentrated within taxa, and the deepest expression preferentially involved recurrent strong-chorus locations.
 
-This suggests a testable hypothesis rather than a universal law: **response magnitude alone may be insufficient to describe a short behavioural pulse; the spatial pattern of the realised response can retain additional ecological structure**. In frogs, that structure fell between independent pond responses and a uniform route-wide switch.
+This suggests a testable hypothesis rather than a universal law: **response magnitude alone may be insufficient to describe a short behavioural pulse; the spatial pattern of the realised response can retain additional ecological structure**. In frogs, that structure fell between independent pond responses and a uniform route-wide switch. A more specific post-hoc prediction is that broad activation need not wash out spatial selectivity: after exact activation depth and fixed site propensity were held constant, deep k ≥ 4 events were more strongly aligned with recurrent strong-chorus sites than shallow k = 1–3 events. Because that contrast was developed after opening NAAMP, it is a prospective prediction for external replication rather than part of the primary claim.
 
 ### The route-scale response is broad but not spatially uniform
 
