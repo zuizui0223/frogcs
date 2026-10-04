@@ -237,7 +237,7 @@ The analysis cannot determine whether this distributed activation reflects indiv
 
 The third contribution connects short-term calling dynamics with spatial recurrence. Strong breeding-site fidelity is known in some frogs and toads (Kusano et al., 1999), while assemblage studies show rapid temporal change in which species are calling (Sugai et al., 2021). Our results connect these levels without requiring individual tracking: within the same focal pair and species, the physical sites that had supported strong chorusing in prior years were more likely to support strong chorusing again in the wet survey.
 
-We deliberately avoid interpreting this as individual memory or philopatry. Repeated acoustic use of a SiteID can arise from stable hydrology, vegetation, microtopography, calling-site structure, predator regime, breeding suitability, individual fidelity, social attraction or combinations of these. The empirical result is narrower but still ecologically important: **each taxon has recurrent physical locations at which strong chorusing is disproportionately re-expressed across years**. These are best interpreted as recurrent chorus locations or persistent suitable habitat, not demonstrated breeding sites and not evidence that the same individuals returned.
+We deliberately avoid interpreting recurrence as individual memory or philopatry. Return patterns can arise from habitat structure or chance even without memory, so site fidelity requires an explicit null expectation (Picardi et al., 2023). Our empirical result is narrower: **each taxon has recurrent physical locations at which strong chorusing is disproportionately re-expressed across years**. These are recurrent chorus locations or persistent suitable habitat, not evidence that the same individuals returned.
 
 The directional rain-selective analysis adds the temporal gate. Historical-site targeting was stronger toward the survey closer to rain after recurrent and non-recurrent opportunities were normalized within each direction. Thus the pattern is not merely that good sites are always good. Recent-rain conditions are associated with preferential expression of activity at historically strong species × site combinations.
 
@@ -310,6 +310,8 @@ McGeoch, M. A., & Gaston, K. J. (2002). Occupancy frequency distributions: patte
 Oseen, K. L., & Wassersug, R. J. (2002). Environmental factors influencing calling in sympatric anurans. *Oecologia*, 133, 616–625. https://doi.org/10.1007/s00442-002-1067-5
 
 Ospina, O. E., Villanueva-Rivera, L. J., Corrada-Bravo, C. J., & Aide, T. M. (2013). Variable response of anuran calling activity to daily precipitation and temperature: implications for climate change. *Ecosphere*, 4, 47. https://doi.org/10.1890/ES12-00258.1
+
+Picardi, S., Abrahms, B., Gelzer, E., Morrison, T. A., Verzuh, T., & Merkle, J. A. (2023). Defining null expectations for animal site fidelity. *Ecology Letters*, 26, 157–169. https://doi.org/10.1111/ele.14148
 
 Pollock, L. J., Tingley, R., Morris, W. K., Golding, N., O'Hara, R. B., Parris, K. M., Vesk, P. A., & McCarthy, M. A. (2014). Understanding co-occurrence by modelling species simultaneously with a Joint Species Distribution Model (JSDM). *Methods in Ecology and Evolution*, 5, 397–406. https://doi.org/10.1111/2041-210X.12180
 
