@@ -94,7 +94,7 @@ assert "We ask three linked questions" not in text, "legacy equal-weight three-q
 assert "### Primary endpoint: recruited taxa show excess within-taxon multi-site concentration" in text
 assert "### Response magnitude does not determine the spatial pattern of activation" in text
 assert "marginal activation" in text
-assert "response allocation" in text
+assert "response magnitude alone may be insufficient to describe a short behavioural pulse" in text
 
 keywords=text.split("## Keywords",1)[1].split("## Introduction",1)[0].strip()
 keylist=[x.strip() for x in keywords.split(";") if x.strip()]
@@ -120,7 +120,7 @@ for x in [
 ]:
     assert x in si, f"SI missing routed defence/falsification content: {x}"
 
-reference_surnames=["Brooke","Brodie","Ceron","Dormann","Foreman","Gotelli","Guzy","Holt","Jenkins","Jentsch","Kusano","Liebhold","McGeoch","Oseen","Ospina","Pollock","Rowley","Royle","Saenz","Sarker","Sugai","Switzer","Thompson","Tikhonov","Trenham","Xie","Yang"]
+reference_surnames=["Brooke","Brodie","Ceron","Dormann","Foreman","Gotelli","Guzy","Holt","Jenkins","Jentsch","Kunze","Kusano","Liebhold","McGeoch","Oseen","Ospina","Pollock","Rowley","Royle","Saenz","Sarker","Sugai","Switzer","Thompson","Tikhonov","Trenham","Xie","Yang"]
 body=text.split("## References",1)[0]
 for surname in reference_surnames:
     assert re.search(rf"^{surname},", text, flags=re.M), f"missing reference: {surname}"
