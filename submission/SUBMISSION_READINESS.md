@@ -1,4 +1,4 @@
-# RC5 JAE submission readiness
+# RC6 JAE submission readiness
 
 ## Current canonical scientific package
 
@@ -10,119 +10,131 @@
 - evidence ledger: `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - evidence hierarchy: `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- literature novelty lock: `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
-- closest-prior-study audit: `revision/CLOSEST_PRIOR_STUDIES_AUDIT_V0_1.md`
-- scientific stop rule: `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
-- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
+- paper spine: `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
+- novelty/general-principle audit: `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
+- conceptual-neighbor audit: `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
+- science lock: `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
+- release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 
-Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the canonical tree.
+Historical RC5 remains preserved at:
+- `release/jae-multisite-rc5`
+- `submission/jae-multisite-v5`
 
 ## JAE initial-submission checks
 
 - [x] Research Article target
 - [x] anonymized main-manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words — **307**
+- [x] abstract ≤350 words — **312**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] main manuscript below 8,500 words — current whitespace count **7,899**
+- [x] manuscript below 8,500 words — **7,978**
 - [x] separate Supporting Information
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
-- [x] historical RC4 anonymous scientific submission bundle builds successfully
-- [x] current RC5 anonymous scientific submission bundle builds successfully — run **37128665645**, artifact **11275981516**
+- [x] RC6 manuscript QA — run **37189806929**, SUCCESS
+- [x] RC6 anonymous scientific submission bundle — run **37189806898**, SUCCESS
+- [x] RC6 figure build — run **37189806897**, SUCCESS
+- [x] RC4 restored-analysis reproducibility smoke — run **37189806859**, SUCCESS
+- [x] Statement on Inclusion draft prepared for secondary public-data study
+- [ ] final author approval of Statement on Inclusion
 - [ ] final authors/order
 - [ ] final affiliations
 - [ ] corresponding-author details
 - [ ] CRediT roles
 - [ ] funding/acknowledgements
 - [ ] Conflict of Interest
-- [x] Statement on Inclusion draft prepared from current JAE guidance
-- [ ] final author approval of Statement on Inclusion
-- [ ] repository license
+- [ ] repository/archive license
 - [ ] persistent archive DOI
 - [ ] final author/institutional approvals
 
 ## Scientific stop
 
-The original same-data stop was explicitly reopened on **2026-10-03** for a finite post-hoc falsification chain and is now **closed again** under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`.
+The NAAMP scientific story is locked under:
+- `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
 
-No new NAAMP lower-level mechanism family or outcome-driven retuning is authorized.
+No new outcome-driven NAAMP endpoint, mechanism family, threshold retuning or claim escalation is authorized without an explicit reopening record.
 
 Permitted remaining work:
 - correction of demonstrable bugs, with affected claims re-audited if endpoints change;
-- deterministic reproducibility and previously frozen numerical/implementation QA;
-- non-substantive copy-editing, figures and metadata;
+- deterministic reproducibility checks;
+- citation/reference correction;
+- non-substantive copy-editing and figure formatting;
+- submission metadata;
 - archive/license/DOI finalization;
-- optional prospective WFTS execution under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md` **only if external replication is explicitly reopened**; it is not required for RC5 submission.
+- optional prospective external replication under a frozen design.
 
-**WFTS is not a submission gate for RC5.** The present paper is supported by the NAAMP discovery, robustness, falsification and breadth evidence already frozen in the canonical package. External confirmation is a future test of transferability, not missing evidence required to submit the current manuscript.
+## Current inferential spine
 
-## Current claim safeguards
+Primary endpoint:
 
-- [x] main inferential spine is restricted to state switching → intermediate spatial organization across separated stops → preferential expression at recurrent taxon-specific chorus locations
-- [x] FrogID, RC11 matrix allocation, exact N,K, raw recurrence, route topology and failed mechanism screens are routed to SI
-- [x] principal comparator contains cross-fit species response + strictly-prior physical-site history + dry persistence + magnitude matching
-- [x] title/public framing uses within-taxon multi-site organization / dependence structure, not higher-order interaction terminology
-- [x] manuscript states cross-fitting is not independent confirmation
-- [x] manuscript states no untouched NAAMP confirmation partition remains
-- [x] Wisconsin lies outside the 21-state NAAMP discovery sample
-- [x] WFTS outcome interpretation is frozen as support / informative non-replication of a half-discovery effect / inconclusive non-PASS
+> **After response magnitude and first-order taxon/site propensities are represented, rainfall-associated frog chorus activation remains over-concentrated within taxa across multiple sites.**
 
-## Release authority
+Frozen primary result:
+- 2,916 prior-history pairs;
+- observed concentration **1.650**;
+- principal comparator **1.353**;
+- residual **0.297**;
+- null 95% range **−0.132 to 0.119**;
+- P = **0.000999**;
+- held-out rain × history prediction **1.332**.
 
-Current validated RC5 scientific source:
-- validated scientific source: `0dbc3b3724d428763c6176fcff939c0492c651d9`
-- manuscript QA: run **37128665685** — PASS
-- anonymous scientific bundle: run **37128665645** — PASS
-- artifact ID: **11275981516**
-- artifact digest: `sha256:64d3d1b4fd768d08a33481aa96084b882b6be31aeb550546688ea6e9069169c7`
-- release receipt: `submission/RC5_RELEASE_RECEIPT.md`
+Biological interpretation:
+- activity frequently enters from acoustic silence into CI2/3;
+- the excess lies in a deep multi-site tail;
+- recurrent taxon-specific strong-chorus sites are preferentially involved.
 
-RC5 refs:
-- `release/jae-multisite-rc5`
-- `submission/jae-multisite-v5`
+General hypothesis:
 
-Historical RC4 remains preserved:
-- `release/jae-multisite-rc4`
-- `submission/jae-multisite-v4`
+> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
 
-Do not use the pre-existing `release/jae-v1-rc5`; that branch belongs to an older frog-chorus synchrony line.
+Post-hoc prospective prediction:
 
-Previous RC3 remains preserved at:
-- `release/jae-multisite-rc3`
-- `submission/jae-multisite-v3`
+> **Broad activation need not erase spatial selectivity; deep multi-site activity may remain more strongly associated with recurrent high-use sites than shallow activity.**
 
-Original RC11 remains preserved at its frozen release/submission refs.
+## Claim safeguards
 
-## RC5 automated validation
+- [x] rainfall language is associative, not causal
+- [x] acoustic zero is not interpreted as physical absence
+- [x] sequential route stops are not interpreted as literal synchrony
+- [x] recurrent SiteID use is not interpreted as individual memory or philopatry
+- [x] primary comparator preserves taxon response + prior physical-site history + dry persistence + response magnitude
+- [x] title names the primary empirical endpoint rather than a latent mechanism
+- [x] response diversity, spatial synchrony, JSDM residual association and pulse spatial structure are explicitly treated as prior concepts
+- [x] exact-k deep-site coupling is routed as post-hoc prospective prediction, not primary confirmation
+- [x] FrogID remains partial cross-dataset context, not replication of the multi-site mechanism
+- [x] no untouched NAAMP confirmation partition is claimed
 
-| Check | Run | Status |
-|---|---:|---|
-| manuscript/SI routing + JAE limits | **37128665685** | PASS |
-| anonymous scientific submission pipeline | **37128665645** | PASS |
-| canonical NAAMP data-volume audit | **37128735161** | PASS |
-| canonical pair-volume reconciliation | **37128517668** | PASS |
-| WFTS prospective deep-template QA | **37105487275** | PASS |
+## RC6 release authority
 
-RC5 scientific-bundle artifact:
+Validated RC6 scientific source:
+- `dc8706a321c4822401e2fae317711058bd5262e3`
+
+RC6 refs:
+- `release/jae-multisite-rc6`
+- `submission/jae-multisite-v6`
+
+Release receipt:
+- `submission/RC6_RELEASE_RECEIPT.md`
+
+Scientific submission artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11275981516**
-- size: **1,005,169 bytes**
-- digest: `sha256:64d3d1b4fd768d08a33481aa96084b882b6be31aeb550546688ea6e9069169c7`
+- artifact ID: **11298705674**
+- size: **1,005,201 bytes**
+- digest: `sha256:e4b579b7c56c37f52057ae7c8155374e3e2cb7a3f2ddcd0773c369c11f7bdc83`
 
-The private metadata bundle remains intentionally pending until final human metadata are supplied.
+The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
 
-## Prospective external confirmation — future, non-blocking
+## WFTS — future, optional, non-blocking
 
-WFTS real-data authority:
-- `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`
-- `revision/WFTS_WEATHER_AND_ANALYSIS_SPEC_V0_5.md`
-- `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`
-- `revision/WFTS_PROSPECTIVE_DEEP_TEMPLATE_ALIGNMENT_V0_1.json`
-- `scripts/wfts/run_wfts_deep_template_alignment_v0_1.py`
+WFTS remains a prepared prospective external candidate.
 
-The v0.4 authority leaves the primary replication unchanged and prospectively adds the NAAMP-derived secondary prediction that exact-k historical-template coupling is stronger for deep k≥4 than shallow k=1–3 activation. Synthetic QA for that secondary path has passed. No WFTS frog-response outcome was inspected to create or test these rules.
+It is:
+- not evidence in RC6;
+- not a submission gate;
+- not required before submitting the present NAAMP paper.
+
+If external replication is explicitly reopened, the frozen WFTS authority and fail-closed execution sequence remain available. Until then, no WFTS contact or data request is required.
 
 ## Revision-stage note
 
