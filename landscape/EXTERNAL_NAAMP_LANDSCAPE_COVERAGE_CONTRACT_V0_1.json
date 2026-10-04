@@ -1,0 +1,46 @@
+{
+  "analysis": "external_naamp_landscape_coverage_audit_v0_1",
+  "status": "response_blind_coverage_gate_fixed_before_external_landscape_join",
+  "sources": [
+    {
+      "name": "Marsh_et_al_2017_Dryad",
+      "doi": "10.5061/dryad.8ns60",
+      "file": "DDI_Marshetal.csv",
+      "documented_scope": "587 NAAMP survey sites; SiteID-linked land-use and road variables at 300 m, 600 m, 1 km, 5 km and 10 km buffers"
+    },
+    {
+      "name": "Marsh_Cosentino_2019_nested_supplement",
+      "documented_scope": "406 NAAMP routes from 13 states; stops 1,4,7,10; 1-km forest, agriculture, development, wetland and road-density metrics"
+    }
+  ],
+  "authorized_first_read": [
+    "file names and byte hashes",
+    "column names and types",
+    "SiteID/RouteNumber/StopNumber identifiers",
+    "landscape-variable missingness",
+    "join coverage counts only"
+  ],
+  "prohibited_before_coverage_freeze": [
+    "frog response columns from external files",
+    "association with RC6 concentration or activation endpoints",
+    "selection of landscape variables based on frog outcomes",
+    "selection of buffer scale based on frog outcomes"
+  ],
+  "coverage_receipt_fields": [
+    "external_rows",
+    "unique_external_siteids",
+    "matched_focal_siteids",
+    "matched_routes",
+    "routes_with_at_least_2_matched_stops",
+    "routes_with_stops_1_4_7_10_if_applicable",
+    "state_coverage",
+    "missingness_by_landscape_variable_and_scale"
+  ],
+  "next_step_rule": "Only after the coverage receipt is frozen may a biological moderator contract be written. If within-route stop coverage is inadequate, do not claim within-route landscape heterogeneity; restrict any later use to route-level context.",
+  "interpretation_boundary": {
+    "independent_coordinate_validation": false,
+    "exact_distance_enabled": false,
+    "rc6_changed": false,
+    "independent_confirmation": false
+  }
+}
