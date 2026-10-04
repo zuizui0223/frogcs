@@ -1,0 +1,51 @@
+{
+  "analysis": "naamp_route_topology_compactness_followup_v0_1",
+  "status": "post_readback_sign_reversal_quantification_fixed_after_v0_1_geometry_result",
+  "separation_authority": "revision/NAAMP_LANDSCAPE_BEHAVIOUR_SEPARATION_2026-10-05.md",
+  "trigger": {
+    "prior_contract": "landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_CONTRACT_V0_1.json",
+    "prior_receipt": "landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_RECEIPT_V0_1.json",
+    "known_sign": "All three frozen geometry metrics had negative observed excess; the primary positive-dispersion prediction failed."
+  },
+  "purpose": "Quantify the unexpected compactness direction transparently without reclassifying the failed pre-specified dispersion test.",
+  "population": "Exactly the same 2,835 pairs and dry-route-silent k>=2 clusters as v0.1.",
+  "q_and_conditioning": "Exactly the same fixed q and exact observed k conditional subset distribution as v0.1.",
+  "primary_followup": {
+    "metric": "mean_pairwise_stop_separation",
+    "statistic": "Mean observed-minus-exact-expectation cluster excess.",
+    "tail": "lower",
+    "rule": "Report plus-one lower-tail P and frozen-null 95% interval. Label explicitly post-readback."
+  },
+  "secondary_followup": [
+    {
+      "metric": "topological_span",
+      "tail": "lower"
+    },
+    {
+      "metric": "contiguous_component_count",
+      "tail": "lower"
+    }
+  ],
+  "deep_shallow": {
+    "status": "descriptive_contrast_to_be_quantified_but_not_used_to_rescue_primary",
+    "groups": [
+      "shallow k=2-3",
+      "deep k>=4"
+    ],
+    "statistic": "difference in mean pairwise-separation excess, deep minus shallow",
+    "inference": "two-sided Monte Carlo contrast using the same clusterwise exact-k null draws",
+    "role": "hypothesis generation only"
+  },
+  "Monte_Carlo": {
+    "replicates": 2000,
+    "seed": 2840301,
+    "requirement": "Reuse the same deterministic v0.1 random seed and generator so follow-up tail probabilities refer to the same frozen null construction."
+  },
+  "interpretation_boundary": [
+    "The original upper-tail dispersion prediction remains a failure.",
+    "This follow-up cannot be described as preregistered or confirmatory.",
+    "Route topology is not exact geographic distance.",
+    "No mechanism is identified.",
+    "RC6 cannot be upgraded or changed."
+  ]
+}
