@@ -56,23 +56,26 @@ Full counting and caveats:
 
 The discovery is not simply that frogs call more after rain.
 
-The ecological question is **what spatial unit organizes reproductive acoustic activity on favourable nights**. The NAAMP pattern falls between two simple extremes: route stops do not behave as fully independent local responses, but a taxon also does not switch uniformly across the whole route. Instead, route-spanning activity is spatially selective and is disproportionately re-expressed at recurrent taxon-specific chorus locations.
+The ecological question is not only how many local units respond to a favourable night, but **how those activations are allocated across taxa and places after first-order response has been represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
 
 The general hypothesis is:
 
-> Environmental pulses may reveal how behavioural activity is distributed across persistent spatial structure that is difficult to see when animals are inactive.
+> **Short environmental pulses may affect ecological organization not only through how many local units respond, but through how activation is allocated across persistent spatial structure.**
 
-This is a conceptual generalization from the NAAMP system, not a universal law or an identified lower-level mechanism.
+This is a conceptual generalization from the NAAMP system, not a new statistical theorem, universal law or identified lower-level mechanism.
 
 ## Main text versus Supporting Information
 
-The main paper is organized around three ecological questions:
+The current paper is organized around **one primary endpoint**:
 
-1. **state change** — amplification versus silence→strong-chorus switching;
-2. **spatial unit** — independent wetland responses versus organized multi-site expression;
-3. **place selection** — uniform route spread versus preferential use of recurrent taxon-specific chorus locations.
+> conditional within-taxon multi-site concentration among taxa acoustically recruited on wetter surveys, after species-specific rainfall response, strictly prior physical-site propensity, dry-state persistence and total activation magnitude are represented.
 
-The principal comparator, held-out rain × history gate and breadth analyses answer or bound those questions.
+Two biological analyses interpret that endpoint rather than competing with it as co-equal headline outcomes:
+
+1. **state change** — whether the activity entering the endpoint is weak amplification or silence→strong-chorus switching;
+2. **place selection** — whether the excess is expressed arbitrarily or preferentially at recurrent taxon-specific chorus locations.
+
+The principal 2,916-pair comparator is the inferential centre. The held-out rain × history gate and breadth analyses bound its robustness and generality. Reader-facing authority: `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`.
 
 Supporting Information contains the defence/falsification layer:
 
@@ -102,7 +105,10 @@ Supporting Information contains the defence/falsification layer:
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md`
+- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
+- `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
+- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
+- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
