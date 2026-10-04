@@ -75,3 +75,19 @@ These analyses interpret the endpoint; they are not co-equal headline endpoints.
 The pattern is broad within NAAMP but geographically heterogeneous. FrogID supports only the taxonomic-deepening direction, not the multi-site spatial pattern.
 
 External replication can test whether the multi-site spatial result transfers to another fixed-site network. It is not required for the present NAAMP submission.
+
+
+## Secondary prospective prediction
+
+The primary general hypothesis concerns response magnitude versus realised spatial pattern.
+
+A more specific **post-hoc, prospectively testable** prediction is:
+
+> **Broad activation need not erase spatial selectivity; deep multi-site activity may remain more strongly coupled to recurrent high-use sites than shallow activity.**
+
+NAAMP support:
+- exact-k deep k≥4 prior-strong-site alignment is positive;
+- deep-minus-shallow alignment contrast is positive;
+- uniform whole-route activation is too spatially coherent.
+
+This prediction must not be promoted to a primary NAAMP claim because it was developed post hoc. Its role is to define a sharper external replication target.
