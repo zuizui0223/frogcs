@@ -99,3 +99,16 @@ Do not claim:
 The result is broad within NAAMP but manuscript-level exploratory because the endpoint was developed after opening the dataset.
 
 Prospective external replication can test transferability of the frozen multi-site endpoint. It is an evidential upgrade, not a prerequisite for the current NAAMP paper.
+
+
+## Secondary general prediction from the post-hoc refinement
+
+The safe general hypothesis is about response magnitude versus realised spatial pattern.
+
+The more surprising NAAMP refinement is:
+
+> **Broad activation need not homogenize spatial expression; deep activity can remain selectively anchored to recurrent high-use locations.**
+
+This is supported by the exact-k deep-site alignment and deep-minus-shallow contrast, but both belong to the post-hoc refinement layer. Therefore this sentence is a **prospective prediction**, not an independently confirmed general principle.
+
+Its value is that it is more biologically discriminating than simply asking whether multi-site dependence exists: an external system can test whether greater spatial breadth weakens, preserves or strengthens coupling to recurrent sites.
