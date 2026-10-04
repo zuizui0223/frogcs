@@ -104,7 +104,7 @@ assert keylist == sorted(keylist,key=str.lower), f"keywords not alphabetized: {k
 discussion=text.split("## Discussion",1)[1].split("## Data Availability",1)[0]
 assert "dependence structure" in discussion
 assert "cross-fitting prevents route leakage" in discussion.lower()
-assert "does not create a genuinely untouched confirmation dataset" in discussion.lower()
+assert "does not create an untouched confirmation dataset" in discussion.lower()
 
 # SI must carry the defence/falsification layer removed from the main text.
 for x in [
