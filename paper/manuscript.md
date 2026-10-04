@@ -277,9 +277,9 @@ NAAMP source data are publicly available from the U.S. Geological Survey data re
 
 ## References
 
-Brooke, P. N., Alford, R. A., & Schwarzkopf, L. (2000). Environmental and social factors influence chorusing behaviour in a tropical frog: examining various temporal and spatial scales. *Behavioral Ecology and Sociobiology*, 49, 79–87. https://doi.org/10.1007/s002650000256
-
 Brodie, S., Allen-Ankins, S., & Schwarzkopf, L. (2025). Environmental influences on chorusing patterns in an Australian tropical savanna frog community. *Ecosphere*, 16, e70153. https://doi.org/10.1002/ecs2.70153
+
+Brooke, P. N., Alford, R. A., & Schwarzkopf, L. (2000). Environmental and social factors influence chorusing behaviour in a tropical frog: examining various temporal and spatial scales. *Behavioral Ecology and Sociobiology*, 49, 79–87. https://doi.org/10.1007/s002650000256
 
 Ceron, K., Santana, D. J., Lucas, E. M., Zocche, J. J., & Provete, D. B. (2020). Climatic variables influence the temporal dynamics of an anuran metacommunity in a nonstationary way. *Ecology and Evolution*, 10, 4630–4639. https://doi.org/10.1002/ece3.6217
 
@@ -287,11 +287,13 @@ Dormann, C. F., Fründ, J., Blüthgen, N., & Gruber, B. (2009). Indices, graphs 
 
 Foreman, T., Grant, E. H., & Weir, L. A. (2017). *North American Amphibian Monitoring Program (NAAMP) anuran detection data from the eastern and central United States (1994–2015)* [Data release]. U.S. Geological Survey. https://doi.org/10.5066/F7G44NG0
 
-Guzy, J. C., McCoy, E. D., Deyle, A. C., Gonzalez, S. M., Halstead, N., & Mushinsky, H. R. (2012). Urbanization interferes with the use of amphibians as indicators of ecological integrity of wetlands. *Journal of Applied Ecology*, 49, 941–952. https://doi.org/10.1111/j.1365-2664.2012.02172.x
-
 Gotelli, N. J. (2000). Null model analysis of species co-occurrence patterns. *Ecology*, 81, 2606–2621. https://doi.org/10.1890/0012-9658(2000)081[2606:NMAOSC]2.0.CO;2
 
 Gotelli, N. J., & McCabe, D. J. (2002). Species co-occurrence: a meta-analysis of J. M. Diamond's assembly rules model. *Ecology*, 83, 2091–2096. https://doi.org/10.1890/0012-9658(2002)083[2091:SCOAMA]2.0.CO;2
+
+Guzy, J. C., McCoy, E. D., Deyle, A. C., Gonzalez, S. M., Halstead, N., & Mushinsky, H. R. (2012). Urbanization interferes with the use of amphibians as indicators of ecological integrity of wetlands. *Journal of Applied Ecology*, 49, 941–952. https://doi.org/10.1111/j.1365-2664.2012.02172.x
+
+Hines, J. E., Nichols, J. D., & Collazo, J. A. (2014). Multiseason occupancy models for correlated replicate surveys. *Methods in Ecology and Evolution*, 5, 583–591. https://doi.org/10.1111/2041-210X.12186
 
 Holt, R. D. (2008). Theoretical perspectives on resource pulses. *Ecology*, 89, 671–681. https://doi.org/10.1890/07-0348.1
 
@@ -315,12 +317,6 @@ Picardi, S., Abrahms, B., Gelzer, E., Morrison, T. A., Verzuh, T., & Merkle, J. 
 
 Pollock, L. J., Tingley, R., Morris, W. K., Golding, N., O'Hara, R. B., Parris, K. M., Vesk, P. A., & McCarthy, M. A. (2014). Understanding co-occurrence by modelling species simultaneously with a Joint Species Distribution Model (JSDM). *Methods in Ecology and Evolution*, 5, 397–406. https://doi.org/10.1111/2041-210X.12180
 
-Tikhonov, G., Abrego, N., Dunson, D., & Ovaskainen, O. (2017). Using joint species distribution models for evaluating how species-to-species associations depend on the environmental context. *Methods in Ecology and Evolution*, 8, 443–452. https://doi.org/10.1111/2041-210X.12723
-
-Hines, J. E., Nichols, J. D., & Collazo, J. A. (2014). Multiseason occupancy models for correlated replicate surveys. *Methods in Ecology and Evolution*, 5, 583–591. https://doi.org/10.1111/2041-210X.12186
-
-Höbel, G. (2017). Social facilitation is a better predictor of frog reproductive activity than environmental factors. *Biotropica*, 49, 372–381. https://doi.org/10.1111/btp.12437
-
 Rowley, J. J. L., & Callaghan, C. T. (2020). The FrogID dataset: expert-validated occurrence records of Australia's frogs collected by citizen scientists. *ZooKeys*, 912, 139–151. https://doi.org/10.3897/zookeys.912.38253
 
 Royle, J. A., & Link, W. A. (2005). A general class of multinomial mixture models for anuran calling survey data. *Ecology*, 86, 2505–2512. https://doi.org/10.1890/04-1802
@@ -334,6 +330,8 @@ Sugai, L. S. M., Silva, T. S. F., Llusia, D., & Siqueira, T. (2021). Drivers of 
 Switzer, P. V. (1993). Site fidelity in predictable and unpredictable habitats. *Evolutionary Ecology*, 7, 533–555. https://doi.org/10.1007/BF01237820
 
 Thompson, M. M., Rowley, J. J. L., Poore, A. G. B., & Callaghan, C. T. (2022). Citizen science reveals meteorological determinants of frog calling at a continental scale. *Diversity and Distributions*, 28, 2375–2387. https://doi.org/10.1111/ddi.13634
+
+Tikhonov, G., Abrego, N., Dunson, D., & Ovaskainen, O. (2017). Using joint species distribution models for evaluating how species-to-species associations depend on the environmental context. *Methods in Ecology and Evolution*, 8, 443–452. https://doi.org/10.1111/2041-210X.12723
 
 Trenham, P. C., Koenig, W. D., Mossman, M. J., Stark, S. L., & Jagger, L. A. (2003). Regional dynamics of wetland-breeding frogs and toads: turnover and synchrony. *Ecological Applications*, 13, 1522–1532. https://doi.org/10.1890/02-5206
 
