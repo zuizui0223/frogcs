@@ -1,0 +1,71 @@
+{
+  "analysis": "naamp_route_topology_geometry_v0_1",
+  "status": "posthoc_landscape_hypothesis_generation_fixed_before_geometry_readback",
+  "separation_authority": "revision/NAAMP_LANDSCAPE_BEHAVIOUR_SEPARATION_2026-10-05.md",
+  "question": "Conditional on exact wet activation depth k and fixed stop-level q, is the realised active-stop subset more topologically dispersed along the 10-stop route than expected?",
+  "known_before_contract": {
+    "rc6_primary": "Within-taxon multi-site concentration exceeds the principal species-response + prior-site-history comparator.",
+    "lag_profile": "Residual dependence remains positive at stop-number lags 7-9 but declines modestly from near lags.",
+    "coordinate_qc": "Exact-distance profile is non-authoritative because raw SiteID coordinates contain gross transcription errors.",
+    "deep_template": "Deep k>=4 activity preferentially aligns with recurrent strong-chorus SiteIDs in a post-hoc exact-k analysis."
+  },
+  "population": {
+    "base": "Exactly the 2,835 ERA5-weather-eligible strictly-prior-history focal pairs used by the strongest post-hoc comparator.",
+    "cluster": "Taxa acoustically silent at all ten drier-run stops and active at k>=2 wetter-run stops.",
+    "topology": "Ten ordered route positions as represented by the aligned stop columns; positions are indexed 1..10."
+  },
+  "fixed_q": {
+    "source": "The same cross-fitted 72-h rainfall + strictly-prior SiteID history + dry-persistence + pair-incidence-matching q used by the strongest post-hoc comparator.",
+    "conditioning": "Fix observed k exactly for each eligible taxon x route-night cluster. Randomize only which k route positions are active.",
+    "subset_probability": "Exact independent-Bernoulli conditional distribution: subset weight proportional to the product of q/(1-q) odds for included positions."
+  },
+  "metrics": {
+    "primary": {
+      "name": "mean_pairwise_stop_separation",
+      "definition": "For active ordered positions A with k>=2, mean of |i-j| over all unordered active-position pairs.",
+      "cluster_excess": "observed metric minus exact E[metric | k, fixed q].",
+      "aggregation": "Mean cluster excess over all eligible clusters.",
+      "direction": "upper"
+    },
+    "secondary": [
+      {
+        "name": "topological_span",
+        "definition": "max(active position)-min(active position), range 1..9 for k>=2."
+      },
+      {
+        "name": "contiguous_component_count",
+        "definition": "Number of contiguous runs of active positions after sorting positions 1..10."
+      }
+    ]
+  },
+  "null": {
+    "exact_enumeration": true,
+    "max_subsets": 252,
+    "Monte_Carlo_replicates": 2000,
+    "seed": 2840301,
+    "primary_p": "plus-one upper-tail probability from clusterwise exact-k subset draws aggregated to the mean excess."
+  },
+  "fixed_strata": {
+    "descriptive_only": [
+      "shallow k=2-3",
+      "deep k>=4"
+    ],
+    "no_threshold_retuning": true
+  },
+  "interpretation": {
+    "positive_primary": "The realised multi-site behavioural response is more dispersed along route topology than expected from exact activation depth and the strongest stop-level q alone.",
+    "null_primary": "Multi-site depth exists, but the route-topological arrangement is adequately described by exact k plus fixed q; do not claim additional landscape dispersion.",
+    "boundary": [
+      "Route-topology separation is not exact geographic distance.",
+      "Survey order is confounded with stop-number topology.",
+      "No movement, connectivity, hydrological pathway, acoustic propagation, or social mechanism is identified.",
+      "Result is post-hoc hypothesis generation and cannot upgrade RC6."
+    ]
+  },
+  "anti_tuning": [
+    "Do not replace mean pairwise stop separation as the primary metric after readback.",
+    "Do not change k>=2 eligibility, q source, exact-k conditioning, seed, replicate count or upper-tail direction after readback.",
+    "Do not introduce coordinate-based exclusions or repairs after seeing topology outcomes.",
+    "Do not promote this analysis into RC6."
+  ]
+}
