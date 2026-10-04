@@ -92,7 +92,7 @@ for x in [
 assert "0.244" not in abstract, "secondary exchangeable N,K diagnostic must not be abstract headline"
 assert "We ask three linked questions" not in text, "legacy equal-weight three-question framing remains in manuscript"
 assert "### Primary endpoint: recruited taxa show excess within-taxon multi-site concentration" in text
-assert "### Response magnitude does not determine the spatial pattern of activation" in text
+assert "### Response magnitude does not fully describe the spatial pattern of activation" in text
 assert "marginal activation" in text
 assert "response magnitude alone may be insufficient to describe a short behavioural pulse" in text
 
