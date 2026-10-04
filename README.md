@@ -66,13 +66,16 @@ This is a conceptual generalization from the NAAMP system, not a universal law o
 
 ## Main text versus Supporting Information
 
-The main paper is organized around three ecological questions:
+The current paper is organized around **one primary endpoint**:
 
-1. **state change** — amplification versus silence→strong-chorus switching;
-2. **spatial unit** — independent wetland responses versus organized multi-site expression;
-3. **place selection** — uniform route spread versus preferential use of recurrent taxon-specific chorus locations.
+> conditional within-taxon multi-site concentration among taxa acoustically recruited on wetter surveys, after species-specific rainfall response, strictly prior physical-site propensity, dry-state persistence and total activation magnitude are represented.
 
-The principal comparator, held-out rain × history gate and breadth analyses answer or bound those questions.
+Two biological analyses interpret that endpoint rather than competing with it as co-equal headline outcomes:
+
+1. **state change** — whether the activity entering the endpoint is weak amplification or silence→strong-chorus switching;
+2. **place selection** — whether the excess is expressed arbitrarily or preferentially at recurrent taxon-specific chorus locations.
+
+The principal 2,916-pair comparator is the inferential centre. The held-out rain × history gate and breadth analyses bound its robustness and generality. Reader-facing authority: `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md`.
 
 Supporting Information contains the defence/falsification layer:
 
@@ -102,7 +105,8 @@ Supporting Information contains the defence/falsification layer:
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md`
+- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md`
+- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
 - `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
