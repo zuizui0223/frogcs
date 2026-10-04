@@ -1,0 +1,76 @@
+{
+  "analysis": "naamp_route_topology_geometry_v0_1",
+  "status": "post_rc6_exploratory_fixed_before_topology_metric_readback",
+  "separation_from_rc6": {
+    "changes_rc6": false,
+    "independent_confirmation": false,
+    "current_rc6_release": "release/jae-multisite-rc6"
+  },
+  "known_before_contract": {
+    "deep_tail": "Marginal depths 4-10 exceed activation nulls; depths 1-3 do not.",
+    "route_lag": "Residual dependence remains positive at stop-number lags 7-9.",
+    "scalar_state": "Uniform all-stop taxon-night scalar state is too coherent.",
+    "historical_sites": "Deep k>=4 activity preferentially aligns with recurrent strong-chorus SiteIDs in a post-hoc diagnostic.",
+    "exact_coordinate_distance": "Previously attempted exact-distance profile is non-authoritative because of coordinate transcription errors."
+  },
+  "population": {
+    "base": "Exactly the ERA5-weather-eligible strictly-prior-history focal pairs used by the strongest fixed-q comparator.",
+    "species_cluster": "Taxa acoustically silent at all ten drier-survey stops and active at >=1 wetter-survey stop.",
+    "primary": "Deep wet-state clusters with k>=4.",
+    "secondary": "All k>=2 clusters for span and pairwise-lag descriptions; k>=1 for components."
+  },
+  "metrics": {
+    "k": "Number of wet calling-positive StopNumbers.",
+    "span": "max(active StopNumber)-min(active StopNumber); zero for k=1.",
+    "holes": "span+1-k; number of inactive stop-number positions inside the active-set hull.",
+    "components": "Number of contiguous runs of active StopNumbers.",
+    "mean_pairwise_lag": "Mean absolute StopNumber difference among active-stop pairs; zero for k<2."
+  },
+  "primary_endpoint": {
+    "metric": "holes",
+    "stratum": "k>=4",
+    "statistic": "Mean observed holes minus exact-k fixed-q conditional expectation across eligible clusters.",
+    "prediction": "positive",
+    "biological_interpretation": "Deep activation is spatially selective/discontinuous in route order rather than being adequately described as a compact contiguous block after fixed-q site propensity and exact activation depth are represented."
+  },
+  "secondary_fixed_endpoints": [
+    "deep k>=4 span excess",
+    "deep k>=4 components excess",
+    "deep k>=4 mean-pairwise-lag excess",
+    "descriptive observed and q-expected topology metrics by exact k=1..10"
+  ],
+  "q_conditioned_null": {
+    "q_source": "Same strongest fixed-q generator used by the ERA5 + strictly-prior SiteID-history + dry-persistence + matched-incidence structural diagnostics.",
+    "exact_k": true,
+    "subset_weights": "Probability proportional to product of q/(1-q) odds for included stops.",
+    "enumeration": "All choose(10,k) subsets; maximum 252.",
+    "monte_carlo_replicates": 2000,
+    "seed": 2840241
+  },
+  "uncertainty": {
+    "primary_interval": "Route-cluster bootstrap percentile 95% interval for mean cluster-level holes excess.",
+    "bootstrap_unit": "State x RouteNumber, retaining all eligible taxa/pairs within each sampled route.",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 2840242,
+    "null_test": "Plus-one upper-tail Monte Carlo probability for the mean primary excess under exact-k fixed-q subset draws."
+  },
+  "support_rule": {
+    "primary_supported": "Observed mean holes excess > exact-k null 97.5th percentile, plus-one upper-tail P<0.05, and route-bootstrap 95% lower bound >0.",
+    "if_not_supported": "Do not claim selective/discontinuous route geometry; retain only the RC6 multi-site concentration and route-lag results."
+  },
+  "interpretation_boundaries": {
+    "stop_number_is_exact_distance": false,
+    "literal_synchrony": false,
+    "individual_movement": false,
+    "hydrological_connectivity_identified": false,
+    "acoustic_propagation_identified": false,
+    "independent_confirmation": false,
+    "rc6_claim_changed": false
+  },
+  "anti_tuning": [
+    "Do not change the primary k>=4 threshold after readback.",
+    "Do not change holes definition, fixed-q source, exact-k conditioning, bootstrap unit, seeds or tails after readback.",
+    "Do not substitute repaired latitude/longitude into Stage A.",
+    "Do not promote a secondary topology metric if the primary holes endpoint fails."
+  ]
+}
