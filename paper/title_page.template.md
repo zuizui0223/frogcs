@@ -26,7 +26,7 @@
 
 ## Statement on Inclusion
 
-[REQUIRED DURING JAE SUBMISSION: tailor to secondary public monitoring data and regional intellectual/stakeholder context.]
+This study is a secondary analysis of publicly released amphibian-monitoring datasets from the United States and Australia; the authors conducted no new local field sampling. We cite the monitoring programmes and dataset creators whose work made these analyses possible and interpret the results within the scope of their sampling designs. No additional local stakeholder or community engagement was undertaken for this secondary-data analysis. [CONFIRM FINAL WORDING WITH ALL AUTHORS.]
 
 ## Ethics and permits
 
