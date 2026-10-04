@@ -81,7 +81,7 @@ for x in [
     "0.297",
     "1.332",
     "recurrent taxon-specific sites",
-    "independent external confirmation",
+    "future test",
 ]:
     assert x in abstract, f"abstract missing: {x}"
 for x in [
