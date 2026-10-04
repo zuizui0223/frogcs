@@ -19,6 +19,8 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
+**Operational status (2026-10-04):** RC5 is complete as a NAAMP-only submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC5 submission path.
+
 ## Biological result
 
 Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions are associated with rapid switching from acoustic silence into strong chorus states. The unusual spatial component is a **deeper-than-expected within-taxon multi-site tail**: marginal depths 4–10 exceed both activation nulls, whereas the second and third stops do not.
@@ -123,9 +125,9 @@ The original RC11 analysis scripts under `scripts/naamp/` remain because they su
 
 Post-freeze analyses that generated the integrated multi-site result remain auditable on their frozen `exploration/*` branches. The final contracts/scripts needed for the RC4 claim have also been selectively restored here; the full exploration history is intentionally not duplicated.
 
-## Prospective external confirmation
+## Optional prospective external confirmation — parked
 
-Wisconsin Frog and Toad Survey (WFTS) is the first external candidate.
+Wisconsin Frog and Toad Survey (WFTS) remains a prepared external candidate, but it is **not part of the evidence required for RC5, not a submission gate, and not a current required task**. The request/contact documents are retained only as dormant planning artifacts so that the prospective design is not lost. They should be used only if external replication is explicitly reopened later.
 
 Important boundaries:
 
@@ -142,8 +144,8 @@ Important boundaries:
 - the complete synthetic preflight → primary → common-environment secondary → recurrent-site secondary chain passed in run **37130556855**; the QA artifact is **11276592978**.
 - fail-closed guard QA passed in run **37153969280**: insufficient structural coverage stops before response access, and any post-preflight runs/matrix byte drift is rejected.
 - pre-receipt readiness is frozen in `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`.
-- there are currently **no internal pre-receipt scientific or implementation blockers**; the remaining dependency is acquisition of the existing station-level WFTS export plus route/station lineage metadata.
-- current contact routing was reverified on 2026-10-04 and is recorded in `revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md`.
+- if this external test is explicitly reopened, there are currently **no internal pre-receipt scientific or implementation blockers**; the external dependency would be acquisition of the existing station-level WFTS export plus route/station lineage metadata.
+- contact routing was reverified on 2026-10-04 and is retained in `revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md` for possible future use; no contact is currently required.
 
 A non-PASS is classified prospectively as either:
 
@@ -168,4 +170,4 @@ It does not establish:
 - a unique lower-level mechanism;
 - universal anuran generality.
 
-The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation remains the decisive next test.
+The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation would be valuable future evidence, but it is not required to justify or submit RC5.
