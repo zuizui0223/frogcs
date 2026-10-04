@@ -1,0 +1,158 @@
+{
+  "analysis": "naamp_route_topology_geometry_v0_1",
+  "contract": "landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_CONTRACT_V0_1.json",
+  "coverage": {
+    "deep_k4_10_clusters": 767,
+    "eligible_clusters_k2plus": 1693,
+    "k_counts": {
+      "10": 46,
+      "2": 581,
+      "3": 345,
+      "4": 237,
+      "5": 148,
+      "6": 115,
+      "7": 98,
+      "8": 70,
+      "9": 53
+    },
+    "pairs": 2835,
+    "routes": 428,
+    "shallow_k2_3_clusters": 926,
+    "species": 45
+  },
+  "fixed_strata_descriptive": {
+    "deep_k4_10": {
+      "contiguous_component_count": {
+        "clusters": 767,
+        "null_ci95": [
+          -0.048031528975084815,
+          0.05369598080327244
+        ],
+        "null_mean": 4.995733521509796e-05,
+        "observed_mean_excess": -0.12101066847964816
+      },
+      "mean_pairwise_stop_separation": {
+        "clusters": 767,
+        "null_ci95": [
+          -0.04684381134449262,
+          0.045102392169507406
+        ],
+        "null_mean": -0.0007846264145449935,
+        "observed_mean_excess": -0.09870526909578083
+      },
+      "topological_span": {
+        "clusters": 767,
+        "null_ci95": [
+          -0.08570867610934453,
+          0.08120788190890825
+        ],
+        "null_mean": -0.0015848169176886837,
+        "observed_mean_excess": -0.15350528627883622
+      }
+    },
+    "shallow_k2_3": {
+      "contiguous_component_count": {
+        "clusters": 926,
+        "null_ci95": [
+          -0.0338000299716598,
+          0.030994786443026955
+        ],
+        "null_mean": -0.0004474381790031867,
+        "observed_mean_excess": -0.12127303213148694
+      },
+      "mean_pairwise_stop_separation": {
+        "clusters": 926,
+        "null_ci95": [
+          -0.12728668727777379,
+          0.12614203842417004
+        ],
+        "null_mean": -0.002164297068990555,
+        "observed_mean_excess": -0.2928734403375285
+      },
+      "topological_span": {
+        "clusters": 926,
+        "null_ci95": [
+          -0.14023335789129462,
+          0.14167808919293884
+        ],
+        "null_mean": -0.0023602477401065995,
+        "observed_mean_excess": -0.35618908143341077
+      }
+    }
+  },
+  "interpretation_boundary": {
+    "acoustic_propagation_identified": false,
+    "can_upgrade_rc6": false,
+    "hydrological_connectivity_identified": false,
+    "independent_confirmation": false,
+    "movement_identified": false,
+    "route_topology_is_exact_geographic_distance": false,
+    "social_process_identified": false,
+    "stop_number_confounded_with_survey_order": true
+  },
+  "null": {
+    "exact_observed_k_fixed": true,
+    "fixed_q": true,
+    "replicates": 2000,
+    "seed": 2840301,
+    "subset_distribution": "independent Bernoulli conditional on exact k, weights proportional to q/(1-q) odds"
+  },
+  "overall_metrics": {
+    "contiguous_component_count": {
+      "clusters": 1693,
+      "null_ci95": [
+        -0.029010047535526606,
+        0.028284695524130776
+      ],
+      "null_mean": -0.00022209715159298972,
+      "observed_mean_excess": -0.12115417039435811
+    },
+    "mean_pairwise_stop_separation": {
+      "clusters": 1693,
+      "null_ci95": [
+        -0.07232111749020723,
+        0.07024519196328456
+      ],
+      "null_mean": -0.0015392484027414455,
+      "observed_mean_excess": -0.2049071158588397
+    },
+    "topological_span": {
+      "clusters": 1693,
+      "null_ci95": [
+        -0.08598325102374837,
+        0.08471964324677754
+      ],
+      "null_mean": -0.0020089450580070525,
+      "observed_mean_excess": -0.26436482219917634
+    }
+  },
+  "primary": {
+    "null_ci95": [
+      -0.07232111749020723,
+      0.07024519196328456
+    ],
+    "null_mean": -0.0015392484027414455,
+    "observed_mean_excess": -0.2049071158588397,
+    "plus_one_upper_tail_p": 1.0,
+    "positive_dispersion_supported": false
+  },
+  "raw_vs_expected": {
+    "contiguous_component_count": {
+      "fixed_q_exact_k_expected_mean": 2.300126409024028,
+      "observed_mean": 2.1789722386296515
+    },
+    "mean_pairwise_stop_separation": {
+      "fixed_q_exact_k_expected_mean": 3.660398448048361,
+      "observed_mean": 3.455491332189502
+    },
+    "topological_span": {
+      "fixed_q_exact_k_expected_mean": 5.8166388918979415,
+      "observed_mean": 5.552274069698759
+    }
+  },
+  "separation_authority": "revision/NAAMP_LANDSCAPE_BEHAVIOUR_SEPARATION_2026-10-05.md",
+  "status": "posthoc_landscape_hypothesis_generation",
+  "weather_provenance": {
+    "era5_antecedent_amount_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
+  }
+}
