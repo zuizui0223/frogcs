@@ -1,0 +1,65 @@
+{
+  "analysis": "naamp_recurrent_core_expansion_v0_1",
+  "status": "stage_a2_generated_after_stage_a1_compactness_readback_fixed_before_core_distance_readback",
+  "provenance": {
+    "stage_a1_receipt": "landscape/NAAMP_ROUTE_TOPOLOGY_GEOMETRY_RECEIPT_V0_1.json",
+    "stage_a1_primary_supported": false,
+    "known_stage_a1_direction": "deep topology metrics were more compact than exact-k fixed-q expectation",
+    "known_recurrence_result": "deep k>=4 activation preferentially overlaps prior strong-chorus SiteIDs"
+  },
+  "question": "Among deep clusters that activate both recurrent strong sites and other sites, are the additional active non-strong sites closer in route order to the active recurrent strong sites than expected after exact k, exact h and fixed q are represented?",
+  "population": {
+    "base": "Same 2,835 ERA5-weather-eligible strictly-prior-history focal pairs.",
+    "taxon_state": "Taxon acoustically silent across all ten drier stops.",
+    "deep": "Wet k>=4.",
+    "prior_strong_mask": "Strictly-prior CI>=2 at focal physical SiteID.",
+    "eligibility": "At least one active prior-strong site (h>=1) and at least one active non-strong site (k-h>=1); prior-strong mask contains at least one and fewer than ten sites."
+  },
+  "quantities": {
+    "k": "Observed wet active-stop count.",
+    "h": "Observed number of wet active stops that are prior-strong SiteIDs.",
+    "core_distance": "For each active non-strong stop, minimum absolute StopNumber lag to any active prior-strong stop; cluster metric is the mean of these minimum lags.",
+    "adjacent_to_core_fraction": "Fraction of active non-strong stops at StopNumber lag 1 from at least one active prior-strong stop."
+  },
+  "null": {
+    "exact_k": true,
+    "exact_h": true,
+    "fixed_q": true,
+    "fixed_prior_strong_mask": true,
+    "subset_weights": "Among subsets satisfying exact k and exact h, probability proportional to product of fixed q/(1-q) odds for selected stops.",
+    "enumeration": "Exact over all eligible ten-stop subsets.",
+    "monte_carlo_replicates": 2000,
+    "seed": 2840243
+  },
+  "primary_endpoint": {
+    "metric": "core_distance",
+    "prediction": "negative observed minus conditional expectation",
+    "support_rule": "Observed mean excess below null 2.5th percentile, lower-tail plus-one P<0.05, and route-cluster bootstrap 95% upper bound <0.",
+    "interpretation": "Active non-recurrent sites lie unusually close in route order to activated recurrent strong sites, consistent with compact expansion around recurrent chorus cores."
+  },
+  "secondary_fixed_endpoint": {
+    "metric": "adjacent_to_core_fraction",
+    "prediction": "positive",
+    "role": "Corroboration only; cannot rescue a failed primary endpoint."
+  },
+  "uncertainty": {
+    "bootstrap_unit": "State x RouteNumber",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 2840244
+  },
+  "boundaries": {
+    "generated_after_stage_a1": true,
+    "post_rc6": true,
+    "independent_confirmation": false,
+    "movement_or_propagation_identified": false,
+    "recurrent_sites_are_individual_fidelity": false,
+    "stop_number_is_exact_distance": false,
+    "changes_rc6": false
+  },
+  "anti_tuning": [
+    "Do not change k>=4 after readback.",
+    "Do not drop exact-h conditioning after readback.",
+    "Do not change core-distance definition, q source, prior-strong CI>=2 definition, bootstrap unit, seeds or tail after readback.",
+    "Do not promote adjacency to primary if core-distance fails."
+  ]
+}
