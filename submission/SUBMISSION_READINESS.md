@@ -37,7 +37,8 @@ Historical manuscript drafts are retained in Git history and frozen release bran
 - [ ] CRediT roles
 - [ ] funding/acknowledgements
 - [ ] Conflict of Interest
-- [ ] Statement on Inclusion
+- [x] Statement on Inclusion draft prepared from current JAE guidance
+- [ ] final author approval of Statement on Inclusion
 - [ ] repository license
 - [ ] persistent archive DOI
 - [ ] final author/institutional approvals
