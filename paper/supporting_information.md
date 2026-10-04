@@ -1,6 +1,6 @@
 # Supporting Information
 
-## Rainfall-associated frog chorus activation reveals recurrent within-taxon multi-site organization
+## Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites
 
 This Supporting Information contains the **defence, falsification, robustness and provenance layer** for the integrated manuscript. The main article is deliberately restricted to one biological spine:
 
