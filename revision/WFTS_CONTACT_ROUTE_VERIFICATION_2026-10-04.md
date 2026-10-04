@@ -1,5 +1,7 @@
 # WFTS contact-route verification — 2026-10-04
 
+> **STATUS: PARKED.** Contact information is retained for possible future use. No WFTS contact or data request is currently required for the NAAMP RC5 submission.
+
 ## Scope
 
 Operational verification only. This document does not alter any scientific endpoint, comparator, coverage gate, or analysis rule.
@@ -46,7 +48,7 @@ Reverified on the Wisconsin DNR Public Records Request page:
 
 The DNR states that email is the preferred and most efficient method for public-records requests.
 
-## Recommended order
+## Recommended order — only if WFTS acquisition is explicitly reopened
 
 1. Direct research-data request to `Andrew.Badje@wisconsin.gov`.
 2. If desired, copy one or both historical programme aliases; do not treat delivery to them as required.
