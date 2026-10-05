@@ -66,7 +66,7 @@ Permitted remaining work:
 
 ## Current inferential spine
 
-Primary endpoint:
+Focal endpoint:
 
 > **After response magnitude and first-order taxon/site propensities are represented, rainfall-associated frog chorus activation remains over-concentrated within taxa across multiple sites.**
 
