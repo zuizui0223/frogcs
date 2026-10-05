@@ -88,7 +88,7 @@ for x in [
     "1.61-fold",
     "2.69-fold",
 ]:
-    assert x not in abstract, f"monitoring diagnostic should not headline the endpoint-centred abstract: {x}"
+    assert x in abstract, f"abstract missing concrete monitoring implication: {x}"
 assert "0.244" not in abstract, "secondary exchangeable N,K diagnostic must not be abstract headline"
 assert "We ask three linked questions" not in text, "legacy equal-weight three-question framing remains in manuscript"
 assert "### Focal endpoint: recruited taxa show excess within-taxon multi-site concentration" in text
