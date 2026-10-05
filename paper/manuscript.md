@@ -131,9 +131,9 @@ Pairs were retained only when this contrast was estimable in both wet-target and
 
 ### Nested mechanism null sequence
 
-The matrix allocation and within-taxon concentration endpoint were compared with increasingly structured first-order generators: (1) magnitude-matched uniform activation; (2) dry-state persistence; (3) route-cross-fitted species-specific rainfall response; (4) strictly prior species × physical-SiteID history; (5) cross-fitted species response + prior history + dry persistence; and (6) the pre-existing final held-out rain × local-history gate. Pair-level shifts preserved observed wet-incidence magnitude. Cross-fitting prevented focal-route leakage, and local-history probabilities used only information preceding the focal pair where specified.
+We compared the focal endpoint with progressively richer generators: magnitude-matched uniform activation, dry-state persistence, route-cross-fitted species rainfall response, strictly prior species × physical-SiteID history, their joint species/history/persistence model, and the held-out rain × local-history gate. Pair shifts preserved wet-incidence magnitude; cross-fitting prevented focal-route leakage and historical probabilities used only prior information.
 
-Each specification and PASS/FAIL rule in the original mechanism sequence was versioned before its endpoint was inspected. That sequence ended under a prespecified stopping rule. After the integrated result and its limitations had been documented, we reopened same-data mechanism analysis for targeted tests of additional common-cause explanations. Analyses added after that point are labelled post-hoc and exploratory, are not treated as independent confirmation, and cannot retrospectively strengthen the evidential status of the earlier sequence. Full equations, simulation settings and provenance are in Supporting Information.
+Specifications and decision rules were versioned before their results were inspected, and the sequence ended under a stopping rule. After the integrated result was documented, additional same-data common-cause tests were added as explicitly post-hoc exploratory analyses; they are not independent confirmation. Full specifications and provenance are in Supporting Information.
 
 ### Post-hoc common-environment and conditional-dependence diagnostics
 
@@ -155,7 +155,7 @@ We retained the earlier strong-activation species-concentration and state-random
 
 ### Analysis provenance and inferential boundaries
 
-The integrated manuscript combines the original matrix analyses with later mechanism and multi-site analyses developed after those initial results were known. Each later endpoint, conditioning rule, null family and PASS/FAIL interpretation was versioned before the corresponding result was inspected, and the mechanism sequence ended under an explicit stopping rule. These analyses were developed after the initial NAAMP results had been inspected and remain **exploratory in the manuscript-level sense**; they are not described as preregistered or as independent confirmation. Supporting Information preserves the full sequence of specifications, negative results and audit receipts.
+Later mechanism and multi-site analyses were developed after the initial NAAMP results had been inspected. Their endpoints, conditioning rules and null families were versioned before the corresponding results were inspected, but they remain **exploratory at manuscript level**, not preregistered or independently confirmed. Supporting Information preserves specifications, negative results and provenance.
 
 The study concerns acoustic reproductive activity. No analysis establishes individual identity, continuous occupancy, dispersal, colonization, abundance, spawning or reproductive success. Terms such as “recurrent”, “re-expression” and “persistent template” refer to repeated species × physical-site acoustic states in the monitoring record.
 
@@ -181,9 +181,9 @@ These results make a purely marginal-audibility interpretation difficult: the we
 
 ### Focal endpoint: recruited taxa show excess within-taxon multi-site concentration
 
-The spatial effect was not concentrated at route entry. The second-stop incidence coefficient was β = 0.132 and did not exceed the upper 95% range under either primary activation null; relative to the persistence-preserving null, the marginal second-stop coefficient was instead below its lower 95% envelope. Cumulative third-and-later incidence was nevertheless elevated (β = 0.473; both plus-one Monte Carlo P = 0.000999), as was cumulative fourth-and-later incidence (β = 0.363).
+The second-stop coefficient was β = 0.132 and did not exceed either null's upper 95% range; under the persistence-preserving null it instead fell below the lower envelope. Cumulative third-and-later incidence was elevated (β = 0.473; both plus-one Monte Carlo P = 0.000999), as was fourth-and-later incidence (β = 0.363).
 
-The marginal-depth audit showed why. All first through third occupied-stop coefficients lay within the uniform-activation envelope. Relative to the persistence-preserving null, the first and second occupied-stop coefficients fell below the 95% envelope, the third lay within it, and the fourth through tenth each exceeded the upper 95% envelope under both activation nulls. Marginal coefficients declined smoothly with depth, from 0.093 at the fourth occupied stop to 0.0096 at the tenth, but the null expectations declined much faster. The profile therefore shifted from fewer shallow incidences to more deep incidences than expected under persistence preservation. Thus the significant cumulative third-plus endpoint reflected a **deeper/heavier multi-site tail**, not a sudden transition at exactly three sites (Fig. 2).
+Depths 1–3 lay within the uniform-activation envelope. Under persistence preservation, depths 1–2 fell below the 95% envelope, depth 3 lay within it, and depths 4–10 exceeded both nulls. Although observed coefficients declined from 0.093 at depth 4 to 0.0096 at depth 10, null expectations declined faster. The profile therefore shifted from shallow toward deep incidence, producing a **deeper/heavier multi-site tail** rather than a discrete third-stop threshold (Fig. 2).
 
 This deep-tail component was overwhelmingly strong chorus activity: CallingIndex 2–3 components accounted for 97.3% of the cumulative third-and-later coefficient in the full sample and 95.4% in the same-observer + same-physical-site subset. CI1-only spatial deepening was not supported. The unusual component was therefore persistence of the same recruited taxa across unusually many separated route stops, predominantly as overlapping or full chorus.
 
@@ -273,7 +273,7 @@ The main finding is not simply that frogs call more after rain. Among taxa acous
 
 ## Data Availability
 
-NAAMP source data are publicly available from the U.S. Geological Survey data release (Foreman et al., 2017; DOI 10.5066/F7G44NG0). Australian FrogID occurrence data are publicly available through the Atlas of Living Australia and described by Rowley and Callaghan (2020; DOI 10.3897/zookeys.912.38253). An anonymized reviewer code bundle containing analysis scripts, frozen figure inputs and derived summaries is supplied with the submission; raw third-party source datasets are not redistributed. The final code and derived analysis package will be archived in Zenodo at finalization, and the persistent identifier will be added then.
+NAAMP data are publicly available from the U.S. Geological Survey (Foreman et al., 2017; DOI 10.5066/F7G44NG0); FrogID data are available through the Atlas of Living Australia (Rowley & Callaghan, 2020; DOI 10.3897/zookeys.912.38253). An anonymized reviewer code bundle containing scripts, frozen figure inputs and derived summaries accompanies the submission; raw third-party data are not redistributed. The final code and derived package will be archived in Zenodo and its persistent identifier added at finalization.
 
 ## References
 
