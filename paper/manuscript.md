@@ -273,7 +273,7 @@ The main finding is not simply that frogs call more after rain. Among taxa acous
 
 ## Data Availability
 
-NAAMP source data are publicly available from the U.S. Geological Survey data release (Foreman et al., 2017; DOI 10.5066/F7G44NG0). Australian FrogID occurrence data are publicly available through the Atlas of Living Australia and described by Rowley and Callaghan (2020; DOI 10.3897/zookeys.912.38253). The analysis repository preserves source digests, versioned contracts, deterministic scripts, workflow receipts and derived summaries. Raw third-party source datasets are not redistributed. The code and derived analysis package will be archived in Zenodo at finalization, and the persistent identifier will be added then.
+NAAMP source data are publicly available from the U.S. Geological Survey data release (Foreman et al., 2017; DOI 10.5066/F7G44NG0). Australian FrogID occurrence data are publicly available through the Atlas of Living Australia and described by Rowley and Callaghan (2020; DOI 10.3897/zookeys.912.38253). The analysis repository preserves source digests, versioned contracts, deterministic scripts, workflow receipts and derived summaries. Raw third-party source datasets are not redistributed. An anonymized code bundle accompanies the submission for peer review. The code and derived analysis package will be archived in Zenodo at finalization, and the persistent identifier will be added then.
 
 ## References
 
