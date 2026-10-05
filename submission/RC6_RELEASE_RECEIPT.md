@@ -7,7 +7,7 @@ Current manuscript title:
 **Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
 Validated RC6 scientific source:
-- `dc8706a321c4822401e2fae317711058bd5262e3`
+- `41cadc0685c1714b07a7d7f09825cd0ba1778657`
 
 Release/submission refs:
 - `release/jae-multisite-rc6`
@@ -54,11 +54,11 @@ No new outcome-driven NAAMP endpoint, mechanism family, threshold retuning or cl
 ## Validation
 
 RC6 manuscript QA:
-- run **37189806929**
+- run **37246286273**
 - status **SUCCESS**
 
 RC6 JAE scientific submission pipeline:
-- run **37189806898**
+- run **37246286237**
 - status **SUCCESS**
 
 RC6 figure build:
@@ -71,13 +71,13 @@ RC4 restored-analysis reproducibility smoke:
 
 Scientific submission artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11298705674**
-- size: **1,005,201 bytes**
-- digest: `sha256:e4b579b7c56c37f52057ae7c8155374e3e2cb7a3f2ddcd0773c369c11f7bdc83`
+- artifact ID: **11319770195**
+- size: **1,005,308 bytes**
+- digest: `sha256:40bb813173d0f89246abfe4b59be6b176e17f52b5dc7c3ae4ecb1bbd21f6280f`
 
 Current manuscript counts:
-- manuscript: **7,978** whitespace-delimited words;
-- abstract: **312** words;
+- manuscript: **7,986** whitespace-delimited words;
+- abstract: **320** words;
 - keywords: **8**.
 
 ## Novelty safeguards
