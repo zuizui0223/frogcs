@@ -1,5 +1,8 @@
 # Research-question evolution and discovery history — 2026-10-03
 
+> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** Sections that describe WFTS as the current next external test record the historical plan as of 2026-10-03. They are superseded operationally by `revision/WFTS_NOT_PURSUED_2026-10-05.md`; no WFTS data were requested or analysed.
+
+
 ## Why this document exists
 
 The current manuscript should not be narrated as if the final structural interpretation was the original hypothesis.
