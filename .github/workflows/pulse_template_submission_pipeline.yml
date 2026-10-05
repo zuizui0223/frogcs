@@ -153,7 +153,8 @@ jobs:
           out=build/pulse-template-scientific-submission
           sub="$out/submission_files"
           audit="$out/audit"
-          mkdir -p "$sub" "$audit"
+          code="$out/reviewer_code"
+          mkdir -p "$sub" "$audit" "$code/scripts" "$code/exploration" "$code/revision" "$code/provenance"
           cp paper/manuscript.md "$sub/Manuscript.md"
           cp build/Manuscript.docx "$sub/Manuscript.docx"
           cp paper/supporting_information.md "$sub/Supporting_Information.md"
@@ -167,6 +168,21 @@ jobs:
           cp revision/INTEGRATED_RESULTS_V0_3.json "$audit/"
           cp revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md "$audit/"
           cp revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md "$audit/"
+
+          # Double-anonymized reviewer code package. Raw third-party data are not redistributed.
+          cp submission/REVIEWER_CODE_README.md "$code/README.md"
+          cp -R scripts/naamp "$code/scripts/"
+          find exploration -maxdepth 1 -type f \( -name '*.py' -o -name '*.json' \) -exec cp {} "$code/exploration/" \;
+          cp revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json "$code/revision/"
+          cp revision/build_pulse_template_figures.py "$code/revision/"
+          cp provenance/CURRENT_RESULTS.json "$code/provenance/"
+          cp provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json "$code/provenance/"
+
+          if grep -R -I -n -i -E 'github\.com/zuizui0223|zuizui0223|rachelzhang|zhang ruiqi|張瑞琪|tohoku university|東北大学' "$code"; then
+            echo "Author-identifying token found in reviewer code bundle" >&2
+            exit 2
+          fi
+
           python - <<'PY'
           import hashlib,json,re
           from pathlib import Path
