@@ -9,6 +9,8 @@ Canonical renderer:
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json`
 
 ## Figure 1 — chorus-state switching
+Use point estimates throughout; show 95% CIs only for the direct CI3 endpoints because those are the inferential intervals stored in the frozen figure data. Do not mix bars and points.
+
 Keep:
 - total CallingIndex;
 - 0→positive;
@@ -20,8 +22,9 @@ Keep:
 Show:
 - marginal j-th occupied-stop coefficients for j=1,...,10;
 - observed profile against uniform-activation and persistence-preserving 95% envelopes;
-- stops 1–3 within both null envelopes;
-- stops 4–10 above both null envelopes;
+- depths 1–3 within the uniform-activation envelope;
+- depths 1–2 below the persistence-preserving two-sided envelope, depth 3 within it;
+- depths 4–10 above both upper 95% envelopes;
 - cumulative third+ β=0.473 retained as context;
 - 97.3% of cumulative third+ carried by CI2/3.
 
@@ -41,8 +44,11 @@ Show:
 - observed = 1.650;
 - principal prediction = 1.353;
 - final rain × history prediction = 1.332;
-- observed values as squares and comparator predictions as circles connected within row;
-- both conditional upper-tail P = 0.000999.
+- conditional residuals as squares;
+- simulated 95% null-residual intervals as horizontal bars;
+- principal residual 0.297 versus −0.132 to 0.119;
+- held-out-gate residual 0.318 versus −0.117 to 0.126;
+- both conditional upper-tail P ≈ 0.001 (minimum attainable with 1,000 simulations).
 
 Do **not** show in the main figure:
 - uniform activation;
@@ -87,3 +93,8 @@ Do not use:
 - simultaneous activation.
 
 Historical internal analysis filenames may retain `higher_order` for provenance.
+
+
+## Visible-title rule
+
+Main figure files must not contain manuscript-style titles such as “Fig. 1 …” inside the image. Figure titles belong in the manuscript legends. Panel labels such as “A” and “B” may remain where needed.
