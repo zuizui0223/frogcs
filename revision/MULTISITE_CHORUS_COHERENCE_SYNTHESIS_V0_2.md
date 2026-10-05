@@ -66,7 +66,7 @@ The original same-data mechanism stop rule was explicitly lifted on **2026-10-03
 
 That reopened line is now **closed again** under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No new NAAMP lower-level mechanism family or outcome-driven retuning is authorized.
 
-Prospective external replication under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md` is the decisive next test.
+Independent external replication would be the decisive evidential upgrade, but it is not an active next step in the current project. The archived WFTS design was specified but not pursued; no WFTS data were requested or analysed (`revision/WFTS_NOT_PURSUED_2026-10-05.md`).
 
 
 ## Main-text routing after novelty maximization

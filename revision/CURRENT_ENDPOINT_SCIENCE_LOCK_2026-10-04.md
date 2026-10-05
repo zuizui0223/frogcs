@@ -74,8 +74,7 @@ Allowed:
 - citation/reference correction;
 - figure and copy editing;
 - metadata, title-page and submission formatting;
-- archive/license/DOI work;
-- prospective external replication under a frozen design.
+- archive/license/DOI work.
 
 Not allowed without a new explicit reopening record:
 - new NAAMP mechanism families;
@@ -87,12 +86,11 @@ Not allowed without a new explicit reopening record:
 
 ## Evidential upgrade
 
-Transferability beyond NAAMP requires external data.
+Transferability beyond NAAMP remains untested and would require genuinely independent external data.
 
-WFTS remains one prepared candidate, but it is:
-- optional for the current submission;
-- not a current submission gate;
-- not evidence in the present manuscript until actually executed.
+For the **current project**, no external replication is active. The prospective WFTS design was specified but is **not being pursued**; no WFTS data were requested or analysed. Its specifications remain historical prospective-design provenance under `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
+
+Any future external replication is a new independent project decision, not unfinished RC6 work.
 
 ## Reader-facing scientific package
 

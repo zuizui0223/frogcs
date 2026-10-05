@@ -73,7 +73,7 @@ No unexamined NAAMP partition remains a genuine confirmation dataset. Cross-fitt
 
 The explicitly reopened NAAMP mechanism-analysis line was closed again on 2026-10-03 under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No new same-data lower-level mechanism family is authorized.
 
-A decisive evidential upgrade would be prospective external replication of the frozen endpoint, with WFTS v0.4 retained as one prepared candidate including the deep-versus-shallow site-coupling prediction.
+A decisive evidential upgrade would require a genuinely independent monitoring programme, but no such replication is active in the current project. The WFTS v0.4 design is retained only as historical prospective-design provenance; it was specified but not pursued, and no WFTS data were requested or analysed.
 
 ## Closest-study audit
 
@@ -96,5 +96,5 @@ Do **not** retitle the NAAMP paper around “fast gate”, “latent state”, �
 Reason:
 - the title names the robust empirical object supported by the principal comparator;
 - fast-gate × distributed-template structure was refined post hoc after explicit reopening;
-- the current title remains accurate if WFTS later supports, weakens or fails to reproduce the secondary structural prediction;
+- the current title does not depend on any future external replication outcome;
 - mechanism-level wording is appropriate in the Abstract/Discussion with an explicit exploratory boundary, not as the paper title.

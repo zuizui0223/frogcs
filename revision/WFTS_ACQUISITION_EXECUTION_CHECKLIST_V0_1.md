@@ -1,5 +1,8 @@
 # WFTS acquisition execution checklist v0.1
 
+> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`. This file is retained only as historical prospective-design provenance.
+
+
 ## A. Before contacting WFTS
 
 - [x] public-data search exhausted

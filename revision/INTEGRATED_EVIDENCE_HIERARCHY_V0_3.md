@@ -63,4 +63,4 @@ The concentration endpoint and the subsequent spatial-scale and recurrent-site r
 
 The explicitly reopened same-data mechanism line was closed again on 2026-10-03 under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No further NAAMP lower-level mechanism family or outcome-driven retuning is authorized.
 
-Independent evidential upgrade can come only from prospectively frozen external replication. The current WFTS authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`.
+Independent confirmation would require genuinely external data. No external replication is active in the current project. The prospective WFTS design is retained only as historical prospective-design provenance and is superseded operationally by `revision/WFTS_NOT_PURSUED_2026-10-05.md`; no WFTS data were requested or analysed.
