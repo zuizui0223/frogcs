@@ -3,7 +3,7 @@
 > **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`. This file is retained only as historical prospective-design provenance.
 
 
-**Status:** ready before receipt of WFTS frog-response data. No WFTS taxon × station × year outcome has been inspected.
+**Historical status (2026-10-04):** ready before receipt of WFTS frog-response data. No WFTS taxon × station × year outcome had been inspected. This state is superseded by the 2026-10-05 not-pursued decision above.
 
 This document is operational only. Scientific authority remains:
 
