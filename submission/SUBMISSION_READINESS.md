@@ -32,8 +32,8 @@ Historical RC5 remains preserved at:
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
-- [x] RC6 manuscript QA — run **37246286273**, SUCCESS
-- [x] RC6 anonymous scientific submission bundle — run **37246286237**, SUCCESS
+- [x] RC6 manuscript QA — run **37250005953**, SUCCESS
+- [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
 - [x] RC6 figure build — run **37189806897**, SUCCESS
 - [x] RC4 restored-analysis reproducibility smoke — run **37189806859**, SUCCESS
 - [x] Statement on Inclusion draft prepared for secondary public-data study
@@ -108,7 +108,7 @@ Post-hoc prospective prediction:
 ## RC6 release authority
 
 Validated RC6 scientific source:
-- `41cadc0685c1714b07a7d7f09825cd0ba1778657`
+- `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
 
 RC6 refs:
 - `release/jae-multisite-rc6`
@@ -119,9 +119,9 @@ Release receipt:
 
 Scientific submission artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11319770195**
+- artifact ID: **11320298330**
 - size: **1,005,308 bytes**
-- digest: `sha256:40bb813173d0f89246abfe4b59be6b176e17f52b5dc7c3ae4ecb1bbd21f6280f`
+- digest: `sha256:efe6e65c5fb64a604dd935e92482e7980fb0c248efaa7cc2840c680bcf3faeba`
 
 The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
 
@@ -133,16 +133,20 @@ The private metadata bundle remains intentionally incomplete until final author 
 - [x] no further NAAMP landscape outcome analysis authorized
 - [x] landscape work is not a submission gate
 
-## WFTS — future, optional, non-blocking
+## WFTS — specified but not pursued
 
-WFTS remains a prepared prospective external candidate.
+A prospective WFTS replication was specified but is not being pursued.
 
-It is:
-- not evidence in RC6;
-- not a submission gate;
-- not required before submitting the present NAAMP paper.
+Current status:
+- no WFTS data were requested;
+- no WFTS response data were received or analysed;
+- WFTS is not evidence in RC6;
+- WFTS is not a submission gate;
+- no WFTS contact or execution step is authorized.
 
-If external replication is explicitly reopened, the frozen WFTS authority and fail-closed execution sequence remain available. Until then, no WFTS contact or data request is required.
+Decision authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
+
+The frozen WFTS specifications remain in the repository for provenance only.
 
 ## Revision-stage note
 

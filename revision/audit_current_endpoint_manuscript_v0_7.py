@@ -28,7 +28,7 @@ required=[
     "0.967 to 1.775",
     "dependence structure",
     "post-opening and exploratory",
-    "future test",
+    "independent monitoring programmes",
     "(Fig. 1)",
     "(Figs 2–3)",
     "(Fig. 4)",
@@ -81,7 +81,7 @@ for x in [
     "0.297",
     "1.332",
     "recurrent taxon-specific sites",
-    "future test",
+    "independent monitoring programmes",
 ]:
     assert x in abstract, f"abstract missing: {x}"
 for x in [

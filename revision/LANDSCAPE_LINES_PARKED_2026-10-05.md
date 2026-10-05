@@ -29,9 +29,11 @@ The compactness signal is retained honestly for provenance, but it is not promot
 
 ## Future use
 
-Frozen landscape predictions may be tested only in an independent externally reopened study, including WFTS if that route is explicitly reopened and structurally eligible.
+The two landscape branches are retained for provenance only and should receive no further NAAMP outcome analysis under the current project.
 
-Such a test:
+Any future test would be a separate independent study with a new prospective authority. WFTS is not being pursued.
+
+Such a future study:
 - is not required for RC6 submission;
 - does not retrospectively change RC6;
 - must not be used to retune the NAAMP landscape analyses.

@@ -8,7 +8,7 @@ Current validated release/submission refs:
 
 - `release/jae-multisite-rc6`
 - `submission/jae-multisite-v6`
-- validated RC6 scientific source: `dc8706a321c4822401e2fae317711058bd5262e3`
+- validated RC6 scientific source: `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 
 Historical RC5 remains preserved at:
@@ -23,7 +23,9 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration and WFTS acquisition are **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
+**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration is **parked**, and the prospective WFTS replication is **not being pursued**.
+
+**External-replication disclosure:** A prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed.
 
 ## Biological result
 
@@ -138,9 +140,9 @@ The original RC11 analysis scripts under `scripts/naamp/` remain because they su
 
 Post-freeze analyses that generated the integrated multi-site result remain auditable on their frozen `exploration/*` branches. The final contracts/scripts needed for the RC4 claim have also been selectively restored here; the full exploration history is intentionally not duplicated.
 
-## Optional prospective external confirmation — parked
+## Prospective WFTS replication — specified but not pursued
 
-Wisconsin Frog and Toad Survey (WFTS) remains a prepared external candidate, but it is **not part of the evidence required for RC6, not a submission gate, and not a current required task**. The request/contact documents are retained only as dormant planning artifacts so that the prospective design is not lost. They should be used only if external replication is explicitly reopened later.
+The WFTS replication was specified prospectively but is **not being pursued**. No WFTS data were requested, received or analysed. The request/contact documents, schema, fail-closed QA and analysis code are retained only as historical prospective-design records.
 
 Important boundaries:
 
@@ -157,8 +159,8 @@ Important boundaries:
 - the complete synthetic preflight → primary → common-environment secondary → recurrent-site secondary chain passed in run **37130556855**; the QA artifact is **11276592978**.
 - fail-closed guard QA passed in run **37153969280**: insufficient structural coverage stops before response access, and any post-preflight runs/matrix byte drift is rejected.
 - pre-receipt readiness is frozen in `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`.
-- if this external test is explicitly reopened, there are currently **no internal pre-receipt scientific or implementation blockers**; the external dependency would be acquisition of the existing station-level WFTS export plus route/station lineage metadata.
-- contact routing was reverified on 2026-10-04 and is retained in `revision/WFTS_CONTACT_ROUTE_VERIFICATION_2026-10-04.md` for possible future use; no contact is currently required.
+- `revision/WFTS_NOT_PURSUED_2026-10-05.md` is the current decision authority and supersedes acquisition-readiness language in the earlier WFTS planning records.
+- no WFTS contact, data request, receipt or execution step is currently authorized.
 
 A non-PASS is classified prospectively as either:
 
