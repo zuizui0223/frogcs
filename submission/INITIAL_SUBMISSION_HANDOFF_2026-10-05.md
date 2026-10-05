@@ -53,9 +53,18 @@ Keep final author names, affiliations, acknowledgements, contributions and other
 The cover letter is optional and anonymous.
 
 Current cover letter:
-- **366 words**
+- **401 words**
 - below the current **500-word** JAE limit
 - contains no author-identifying information
+
+## Anonymous reviewer-code access
+
+The scientific submission pipeline now generates `Reviewer_Code.zip`, containing the main analysis scripts, frozen specifications, selected result receipts and deterministic figure inputs without Git history or author-identifying repository metadata. Identity tokens are scanned automatically.
+
+Preferred review workflow:
+- attach `Reviewer_Code.zip` directly as an anonymous reviewer/supplementary file in the journal submission system;
+- if the journal interface requires a URL instead of a file, upload this exact ZIP to an anonymous/restricted repository service before submission;
+- do **not** give reviewers the public GitHub URL containing the account name.
 
 ## Human decisions still required before initial submission
 
