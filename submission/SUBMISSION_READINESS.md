@@ -36,6 +36,7 @@ Historical RC5 remains preserved at:
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
+- [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
 - [x] RC6 figure build — run **37189806897**, SUCCESS
