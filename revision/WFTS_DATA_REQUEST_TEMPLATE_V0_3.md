@@ -1,5 +1,7 @@
 # WFTS data request template v0.3 — concise direct request
 
+> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
+
 **Operational status:** preferred first-contact text as of 2026-10-04. Supersedes v0.2 for direct outreach only. Scientific analysis authority is unchanged.
 
 ## Recipient
