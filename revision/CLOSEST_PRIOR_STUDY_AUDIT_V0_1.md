@@ -73,7 +73,7 @@ The answer in the principal 2,916-pair subset is yes:
 - null residual 95% interval = -0.1319 to 0.1187;
 - plus-one P = 0.000999.
 
-The separate depth audit further shows that the effect is not a third-stop threshold. Calling-incidence depths 1–3 are compatible with the activation nulls, while depths 4–10 are overrepresented: a deeper within-taxon tail than expected.
+The separate depth audit further shows that the effect is not a third-stop threshold. Depths 1–3 are compatible with the uniform-activation null; under the persistence-preserving null, depths 1–2 are lower than expected and depth 3 remains within the envelope, while depths 4–10 exceed both null envelopes. The profile therefore shifts toward a deeper within-taxon tail.
 
 ## Novelty hierarchy after this audit
 
