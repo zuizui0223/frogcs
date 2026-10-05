@@ -131,9 +131,9 @@ Pairs were retained only when this contrast was estimable in both wet-target and
 
 ### Nested mechanism null sequence
 
-The matrix allocation and within-taxon concentration endpoint were compared with increasingly structured first-order generators: (1) magnitude-matched uniform activation; (2) dry-state persistence; (3) route-cross-fitted species-specific rainfall response; (4) strictly prior species × physical-SiteID history; (5) cross-fitted species response + prior history + dry persistence; and (6) the pre-existing final held-out rain × local-history gate. Pair-level shifts preserved observed wet-incidence magnitude. Cross-fitting prevented focal-route leakage, and local-history probabilities used only information preceding the focal pair where specified.
+The focal concentration endpoint was compared with a sequence of first-order generators that added, in order, magnitude-matched uniform activation, dry-state persistence, route-cross-fitted species-specific rainfall response, strictly prior species × physical-SiteID history, their joint model and a held-out rain × local-history gate. Pair-level shifts matched wet incidence; cross-fitting prevented focal-route leakage and history used only runs preceding the focal pair.
 
-Each specification and PASS/FAIL rule in the original mechanism sequence was versioned before its endpoint was inspected. That sequence ended under a prespecified stopping rule. After the integrated manuscript result and its limitations had been documented, we reopened same-data mechanism analysis to test additional common-cause explanations. Analyses added after that point are labelled post-hoc and exploratory, are not treated as independent confirmation, and cannot retrospectively strengthen the evidential status of the earlier sequence. Full equations, simulation settings and provenance are in Supporting Information.
+Each specification and decision rule was versioned before its endpoint was inspected, and the sequence ended under a prespecified stopping rule. After the integrated result and its limitations had been documented, we added targeted post-hoc common-cause tests. These are exploratory, not independent confirmation, and cannot upgrade the earlier sequence. Full specifications and provenance are in Supporting Information.
 
 ### Post-hoc common-environment and conditional-dependence diagnostics
 
@@ -155,7 +155,7 @@ We retained the earlier strong-activation species-concentration and state-random
 
 ### Analysis provenance and inferential boundaries
 
-The integrated manuscript combines the original matrix analyses with later mechanism and multi-site analyses developed after those initial results were known. Each later endpoint, conditioning rule, null family and PASS/FAIL interpretation was versioned before the corresponding result was inspected, and the mechanism sequence ended under an explicit stopping rule. Because these analyses were developed after the initial results were inspected, they remain **exploratory at manuscript level**; they are not described as preregistered or as independent confirmation. Supporting Information preserves the full sequence of specifications, negative results and audit receipts.
+Later mechanism and multi-site endpoints were developed after the initial results were known but versioned before their own results were inspected. They therefore remain **exploratory at manuscript level**, not preregistered or independently confirmed. Supporting Information preserves the specifications, negative results and audit receipts.
 
 The study concerns acoustic reproductive activity. No analysis establishes individual identity, continuous occupancy, dispersal, colonization, abundance, spawning or reproductive success. Terms such as “recurrent”, “re-expression” and “persistent template” refer to repeated species × physical-site acoustic states in the monitoring record.
 
