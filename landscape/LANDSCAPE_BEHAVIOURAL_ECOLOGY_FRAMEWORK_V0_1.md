@@ -1,5 +1,7 @@
 # Landscape behavioural ecology framework v0.1
 
+**PARKED — 2026-10-05.** This framework is retained for provenance only. No further NAAMP landscape outcome analysis is authorized. See `landscape/PARKED_STATUS_2026-10-05.md`.
+
 ## Core question
 
 RC6 asks whether response magnitude fully describes the realised multi-site chorus pattern.
