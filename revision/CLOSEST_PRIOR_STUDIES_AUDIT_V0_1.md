@@ -108,8 +108,9 @@ The observed within-taxon site-pair concentration remains larger than the compar
 - P = 0.000999.
 
 The exact-depth audit further shows that this is not a third-stop threshold:
-- marginal depths 1–3 lie within both primary null envelopes;
-- marginal depths 4–10 exceed both;
+- marginal depths 1–3 lie within the uniform-activation envelope;
+- under the persistence-preserving null, depths 1–2 fall below the 95% envelope and depth 3 remains within it;
+- marginal depths 4–10 exceed both null envelopes;
 - the biological pattern is a **deeper/heavier calling-incidence tail than expected**.
 
 Historical targeting alone is not the final novelty, because persistent calling locations are already known. The stronger post-hoc linkage is:
