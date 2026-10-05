@@ -2,11 +2,13 @@
 
 ## Status
 
+**PARKED — 2026-10-05.**
+
 Independent post-RC6 landscape branch:
 
 `landscape/naamp-behavioural-landscape-v1`
 
-This branch does not alter RC6.
+This branch does not alter RC6. The prespecified landscape prediction failed; the compactness interpretation is post-hoc. No further NAAMP outcome-driven landscape analysis is authorized. See `PARKED_STATUS_2026-10-05.md`.
 
 ## Current landscape result
 
@@ -90,7 +92,7 @@ Required before reopening:
 - independently validated coordinate concordance table fixed without frog outcomes.
 
 ### Stage C — external landscape covariates
-**SOURCE IDENTIFIED / COVERAGE GATE PENDING**
+**PARKED — DO NOT RUN ON NAAMP OUTCOMES**
 
 Independent sources:
 1. Marsh et al. 2017 Dryad DOI 10.5061/dryad.8ns60
@@ -119,7 +121,7 @@ Independent landscape variables can discriminate among possibilities such as:
 - road/development structure fragments or weakens multi-site expression;
 - compactness remains after measured landscape structure, implying another shared behavioural/hydrological process.
 
-No directional Stage-C biological test should be frozen until response-blind coverage is known.
+No Stage-C biological test should be run on NAAMP under the current park. External sources are retained only for a future independently reopened study.
 
 ## Boundaries
 
