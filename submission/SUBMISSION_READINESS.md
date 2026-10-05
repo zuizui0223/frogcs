@@ -38,6 +38,7 @@ Historical RC5 remains preserved at:
 - [x] RC6 figure build — run **37189806897**, SUCCESS
 - [x] RC4 restored-analysis reproducibility smoke — run **37189806859**, SUCCESS
 - [x] Statement on Inclusion draft prepared for secondary public-data study
+- [x] archive handoff prepared — `submission/ARCHIVE_HANDOFF_2026-10-05.md`
 - [ ] final author approval of Statement on Inclusion
 - [ ] final authors/order
 - [ ] final affiliations
@@ -45,7 +46,8 @@ Historical RC5 remains preserved at:
 - [ ] CRediT roles
 - [ ] funding/acknowledgements
 - [ ] Conflict of Interest
-- [ ] repository/archive license
+- [ ] repository/archive license — explicit author choice still required
+- [ ] final GitHub release/archive source
 - [ ] persistent archive DOI
 - [ ] final author/institutional approvals
 
@@ -147,6 +149,13 @@ Current status:
 Decision authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
 
 The frozen WFTS specifications remain in the repository for provenance only.
+
+## Archive-stage boundary
+
+The repository currently has no GitHub Release object, no root license declaration and no analysis-repository archive DOI. These are the remaining archive blockers; they are not missing scientific evidence.
+
+Archive instructions:
+- `submission/ARCHIVE_HANDOFF_2026-10-05.md`
 
 ## Revision-stage note
 

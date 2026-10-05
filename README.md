@@ -1,105 +1,70 @@
-# frogcs — RC6 endpoint-centred frog chorus analysis
+# frogcs — RC6 frog chorus analysis
 
 ## Current paper
 
 **Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
-Current validated release/submission refs:
+This repository contains the analysis, provenance and submission package for the current **Journal of Animal Ecology** Research Article candidate.
+
+Current scientific/submission refs:
 
 - `release/jae-multisite-rc6`
 - `submission/jae-multisite-v6`
 - validated RC6 scientific source: `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
-- release receipt: `submission/RC6_RELEASE_RECEIPT.md`
+- current project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 
-Historical RC5 remains preserved at:
-- `release/jae-multisite-rc5`
-- `submission/jae-multisite-v5`
+The scientific analysis path is closed. Remaining work is submission metadata and archive finalization.
 
-Historical RC4 remains preserved at:
-- `release/jae-multisite-rc4`
-- `submission/jae-multisite-v4`
+## Main result
 
-RC3 and the original RC11 submission remain preserved in their historical release/submission refs; they are not duplicated in this cleaned integration tree.
+Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions were associated with rapid switching from acoustic silence into strong chorus states.
 
-**Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
+The focal analysis uses **2,916** comparisons with strictly prior physical-site history. Observed within-taxon multi-site concentration was **1.6503**, versus **1.3535** under the principal comparator. The conditional residual was **0.2969**, outside the simulated 95% range (**−0.1319 to 0.1187**; plus-one **P = 0.000999**). A stronger held-out rain × history gate predicted **1.3323**.
 
-**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration is **closed**, and the prospective WFTS replication is **not being pursued**.
-
-**External-replication disclosure:** A prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed.
-
-## Biological result
-
-Across **4,236** matched wetter–drier NAAMP comparisons, recent-rain conditions are associated with rapid switching from acoustic silence into strong chorus states. The unusual spatial component is a **deeper-than-expected within-taxon multi-site tail**: marginal depths 4–10 exceed both activation nulls, whereas the second and third stops do not.
-
-The principal ecological test uses **2,916** pairs with strictly prior physical-site history. Observed within-taxon concentration was **1.6503** versus **1.3535** under a comparator that already contained:
+The principal comparator represents:
 
 - route-cross-fitted taxon-specific rainfall response;
-- strictly-prior species × physical-site use;
+- strictly prior species × physical-site use;
 - dry-state persistence;
-- matched total wet incidence.
+- total wet-state activation magnitude.
 
-The conditional residual was **0.2969**, outside the simulated 95% range (**−0.1319 to 0.1187**, plus-one **P = 0.000999**). A stronger held-out rain × history gate still predicted only **1.3323**.
+The excess was concentrated in a deeper multi-site tail, and strong wet-state chorusing preferentially reappeared at recurrent taxon-specific strong-chorus sites (**β = 0.1511**).
 
-Strong wet-state chorusing also preferentially reappeared at species-specific historically strong sites (**β = 0.1511**), and that targeting strengthened toward the survey closer to rain (**β = 0.02449**).
+## Ecological interpretation
 
-Post-reopening falsification showed that flexible measured weather removed only **11.4%** of the concentration residual and actual 72-h rainfall amount only **6.5%** on a common sample. A repaired bounded residual-dependence coefficient was **rho_b = 0.172** overall and **0.285** among taxa silent across the drier route (both P = 0.000999). Dependence persisted from stop-number lags 1–3 (**0.296**) to lags 7–9 (**0.272**). A cross-fitted uniform species-night scalar state reproduced concentration but overpredicted near/far dependence (~**0.475**), showing that the state is not a whole-route all-or-none switch. Among **409** deep k≥4 clusters, the non-uniform active subset aligned with strictly-prior strong-chorus SiteIDs beyond exact k and fixed q site propensity (**β = 0.0266**, P = **0.0020**).
+The result is not simply that frogs call more after rain.
 
-## Data scale
+The NAAMP pattern falls between two simpler spatial pictures:
 
-The public NAAMP source release contains **21,934 run rows**, **219,340 stop rows** and **337,848 positive calling records**. Current filters retain **7,848 standardized survey nights** and **78,480 fixed-stop visits**.
+- independent local wetland responses; and
+- a uniform route-wide switch.
 
-The 4,236 wetter–drier comparisons are built from **6,074 unique nights**, **60,740 fixed-stop visits** and **88,737 positive species × stop calling records** across the 53 paired-analysis taxa.
+Instead, favourable nights were associated with **within-taxon multi-site organization that remained spatially selective after response magnitude and first-order taxon/site propensities were represented**.
 
-Rain exposure is much lower-dimensional than the frog response:
-- primary NAAMP `DaysSinceRain`: one value per eligible survey night;
-- post-hoc ERA5 72-h rainfall: **7,559 run-level sums**, derived from **544,248 hourly precipitation values** (72 per run);
-- ERA5 coverage: **2,835/2,916** principal-history pairs (97.2%).
-
-Full counting and caveats:
-- `revision/DATA_VOLUME_AUDIT_2026-10-03.md`
-
-## Main ecological interpretation
-
-The discovery is not simply that frogs call more after rain.
-
-The ecological question is not only how many local units respond to a favourable night, but **whether the realised spatial pattern remains structured after response magnitude and first-order taxon/site propensities are represented**. The NAAMP pattern falls between independent local responses and a uniform route-wide switch: activity is over-concentrated within taxa and selectively re-expressed at recurrent taxon-specific chorus locations.
-
-The general hypothesis is:
+The broader hypothesis is:
 
 > **Response magnitude alone may be insufficient to describe a short behavioural pulse because the spatial pattern of the realised response can retain additional ecological structure.**
 
-This is a conceptual generalization from the NAAMP system. Pulse theory already treats the spatial structure of pulse events themselves, and response-diversity theory treats variation among species responses; the hypothesis here concerns the realised spatial pattern after response magnitude and first-order propensities are represented. It is not a new statistical theorem, universal law or identified lower-level mechanism.
+This remains an exploratory manuscript-level inference. It does not establish rainfall causality, demographic occupancy change, literal synchrony among sequentially surveyed stops, individual movement, individual memory or philopatry, reproductive success, or a unique lower-level mechanism.
 
-## Main text versus Supporting Information
+## Data scale
 
-The current paper is organized around **one focal endpoint**:
+The public NAAMP source release contains:
 
-> conditional within-taxon multi-site concentration among taxa acoustically recruited on wetter surveys, after species-specific rainfall response, strictly prior physical-site propensity, dry-state persistence and total activation magnitude are represented.
+- **21,934** run rows;
+- **219,340** stop rows;
+- **337,848** positive calling records.
 
-Two biological analyses interpret that endpoint rather than competing with it as co-equal headline outcomes:
+Current filters retain **7,848** standardized survey nights and **78,480** fixed-stop visits.
 
-1. **state change** — whether the activity entering the endpoint is weak amplification or silence→strong-chorus switching;
-2. **place selection** — whether the excess is expressed arbitrarily or preferentially at recurrent taxon-specific chorus locations.
+The matched analysis contains **6,074** unique nights, **60,740** fixed-stop visits and **88,737** positive species × stop calling records across **53 taxa**.
 
-The principal 2,916-pair comparator is the inferential centre. The held-out rain × history gate and breadth analyses bound its robustness and generality. Reader-facing authority: `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`.
+Full data-volume audit:
+- `revision/DATA_VOLUME_AUDIT_2026-10-03.md`
 
-Supporting Information contains the defence/falsification layer:
+## Canonical scientific files
 
-- earlier RC11 four-component matrix allocation;
-- uniform and persistence-only activation nulls;
-- exact N,K combinatorial diagnostic;
-- raw recurrence percentages;
-- route-topology corroboration;
-- FrogID directional consistency;
-- trait/context mechanism screens;
-- activation-geometry placebo falsification;
-- protocol, detection and observer sensitivities;
-- post-reopening flexible-weather and 72-h-rain common-cause falsification;
-- bounded species × route-night residual co-dependence;
-- dry-route-silent, far-lag and same-observer dependence diagnostics;
-- specieswise monitoring-uncertainty diagnostics.
-
-## Current canonical files
+Reader-facing scientific package:
 
 - `paper/manuscript.md`
 - `paper/supporting_information.md`
@@ -107,84 +72,67 @@ Supporting Information contains the defence/falsification layer:
 - `figures_pulse_template/`
 - `provenance/CURRENT_RESULTS.json`
 - `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json`
-- `revision/INTEGRATED_RESULTS_V0_3.json`
+- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
 - `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`
 - `revision/INTEGRATED_EVIDENCE_HIERARCHY_V0_3.md`
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
-- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
-- `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
-- `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
-- `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`
-- `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md` — superseded historical status
-- `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
-- `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
-- `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
-- `revision/TARGETED_LITERATURE_GAP_AUDIT_V0_3.md`
-- `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
 - `submission/RC6_RELEASE_RECEIPT.md`
 - `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 
-Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
+Historical drafts, exploratory branches and superseded analysis records are retained for provenance rather than duplicated in the reader-facing path.
 
-## Reproducibility and QA
+## Reproducibility
 
-Current automated checks:
+Current submission/rebuild workflows:
 
-- `.github/workflows/pulse_template_manuscript_qa.yml` — manuscript/SI routing, wording and JAE limits;
-- `.github/workflows/build_pulse_template_figures.yml` — deterministic five-figure rebuild;
-- `.github/workflows/pulse_template_submission_pipeline.yml` — anonymous DOCX, formatting/anonymity audit and submission bundle;
-- `.github/workflows/wfts_daymet_code_qa.yml` — prospective weather adapter QA;
-- `.github/workflows/wfts_confirmatory_code_qa.yml` — prospective external-confirmation code QA.
+- `.github/workflows/pulse_template_manuscript_qa.yml`
+- `.github/workflows/build_pulse_template_figures.yml`
+- `.github/workflows/pulse_template_submission_pipeline.yml`
 
-The original RC11 analysis scripts under `scripts/naamp/` remain because they support the baseline and reviewer-defence analyses.
+The original NAAMP analysis scripts remain under `scripts/naamp/`; post-freeze analyses remain auditable in the repository history and frozen exploration branches.
 
-Post-freeze analyses that generated the integrated multi-site result remain auditable on their frozen `exploration/*` branches. The final contracts/scripts needed for the RC4 claim have also been selectively restored here; the full exploration history is intentionally not duplicated.
+Historical WFTS prospective code and QA are retained for provenance only and are not an active analysis path.
 
-## Prospective WFTS replication — specified but not pursued
+## Closed analysis paths
 
-The WFTS replication was specified prospectively but is **not being pursued**. No WFTS data were requested, received or analysed. The request/contact documents, schema, fail-closed QA and analysis code are retained only as historical prospective-design records.
+### WFTS
 
-Important boundaries:
+A prospective Wisconsin Frog and Toad Survey replication was specified but **not pursued**.
 
-- Wisconsin is not one of the 21 NAAMP discovery states;
-- response-blind structural eligibility must pass before frog outcomes are loaded;
-- the focal NAAMP endpoint/comparator is frozen;
-- the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;
-- the primary implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`;
-- after the primary result is frozen, a separately frozen secondary sequence tests Daymet common-environment sufficiency, bounded route-night dependence, far-lag persistence and clustered uncertainty under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;
-- secondary results cannot rescue, downgrade or retune the primary WFTS classification.
-- v0.4 additionally freezes exact-k deep historical-template alignment and the deep-versus-shallow coupling contrast before WFTS frog outcomes.
-- the authorized real-data files are byte-locked by `revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json`; lock QA run **37129985326** passed.
-- the receipt → schema-only → mapping freeze → weather → structural preflight → primary → secondary execution order is fixed in `revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md`.
-- the complete synthetic preflight → primary → common-environment secondary → recurrent-site secondary chain passed in run **37130556855**; the QA artifact is **11276592978**.
-- fail-closed guard QA passed in run **37153969280**: insufficient structural coverage stops before response access, and any post-preflight runs/matrix byte drift is rejected.
-- pre-receipt readiness is frozen in `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`.
-- `revision/WFTS_NOT_PURSUED_2026-10-05.md` is the current decision authority and supersedes acquisition-readiness language in the earlier WFTS planning records.
-- no WFTS contact, data request, receipt or execution step is currently authorized.
+- no WFTS data were requested;
+- no WFTS response data were received or analysed;
+- WFTS contributes no evidence to RC6;
+- no WFTS acquisition or execution step is currently authorized.
 
-A non-PASS is classified prospectively as either:
+Current decision authority:
+- `revision/WFTS_NOT_PURSUED_2026-10-05.md`
 
-- `informative_nonreplication_of_half_discovery_effect`, or
-- `inconclusive_nonpass`.
+Earlier WFTS specifications and code remain only as historical prospective-design records.
 
-This prevents a low-precision non-significant result from being mislabeled as biological non-replication.
+### Post-RC6 landscape exploration
 
-## Inferential boundaries
+The landscape branches are **closed for the current project**. The prespecified dispersion/fragmentation prediction failed; post-readback compactness is retained as exploratory provenance and is not promoted into RC6.
 
-The paper concerns **observed reproductive acoustic activity**.
+Current authority:
+- `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`
 
-It does not establish:
+## Archive and submission status
 
-- rainfall causality;
-- acoustic zero = biological absence;
-- literal synchrony among sequential route stops;
-- movement among sites;
-- individual memory or philopatry;
-- occupancy/colonization change;
-- spawning or reproductive success;
-- a unique lower-level mechanism;
-- universal anuran generality.
+The scientific package is closed. The remaining author-side tasks are:
 
-The integrated NAAMP result remains post-opening and exploratory at manuscript level. Prospective external confirmation would be valuable future evidence, but it is not required to justify or submit RC6.
+- final author set/order and affiliations;
+- corresponding-author details;
+- CRediT roles;
+- funding/acknowledgements;
+- Conflict of Interest;
+- final Statement on Inclusion approval;
+- repository/archive license choice;
+- persistent archive DOI;
+- final author/institutional approvals.
+
+Archive handoff:
+- `submission/ARCHIVE_HANDOFF_2026-10-05.md`
+
+The manuscript currently states that the code and derived analysis package will be archived in Zenodo at finalization. Raw third-party source datasets are not redistributed.
