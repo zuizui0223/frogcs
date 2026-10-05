@@ -1,5 +1,8 @@
 # Post-reopening NAAMP mechanism-analysis closure — 2026-10-03
 
+> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The NAAMP closure remains authoritative. WFTS execution language below records the historical prospective plan and is superseded operationally by `revision/WFTS_NOT_PURSUED_2026-10-05.md`; no WFTS data were requested or analysed.
+
+
 ## Status
 
 **Mechanism exploration on the NAAMP discovery data is closed again.**
