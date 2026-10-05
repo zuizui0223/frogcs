@@ -39,9 +39,9 @@ The WFTS checks are historical-design integrity checks only. WFTS is not being p
 
 Current counts before final human metadata:
 
-- anonymous main manuscript: **7,986 words**
+- anonymous main manuscript: **7,902 words**
 - current title-page template: **158 words**
-- current combined count: approximately **8,144 words**
+- current combined count: approximately **8,060 words**
 - JAE Research Article limit: **8,500 words**
 
 Approximate remaining margin before final title-page metadata: **356 words**.
@@ -53,7 +53,7 @@ Keep final author names, affiliations, acknowledgements, contributions and other
 The cover letter is optional and anonymous.
 
 Current cover letter:
-- **366 words**
+- **412 words**
 - below the current **500-word** JAE limit
 - contains no author-identifying information
 
