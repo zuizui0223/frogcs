@@ -17,7 +17,7 @@ Pairwise Sørensen stability remains secondary bounded context because the equiv
 
 Species-trait and response-trait analyses are retained explicitly as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait. Negative and non-estimable mechanism tests remain visible to prevent outcome-dependent switching.
 
-The analyses below were frozen and versioned before their own results were inspected where applicable. Those safeguards constrain within-analysis flexibility but do not convert post-opening analyses into preregistered hypotheses.
+The analyses below were frozen and versioned before their own results were inspected where applicable. Those safeguards constrain within-analysis flexibility but do not convert analyses developed after earlier results were inspected into preregistered hypotheses.
 
 ---
 
@@ -42,7 +42,7 @@ Repository-level evidence-to-claim provenance is summarized in Table S18.
 
 ## S1. Analysis hierarchy and provenance
 
-The original programme-level rainfall endpoint was frozen before the effect estimate was inspected. The metacommunity, matrix, functional and response-trait analyses were developed subsequently as post-opening mechanistic/community extensions.
+The original programme-level rainfall endpoint was frozen before the effect estimate was inspected. The metacommunity, matrix, functional and response-trait analyses were developed subsequently, after the initial result had been inspected.
 
 For those extensions, the repository preserves:
 - versioned contracts written before results were inspected;
@@ -51,7 +51,7 @@ For those extensions, the repository preserves:
 - exact algebraic identities for matrix decompositions;
 - negative results and failed mechanism tests.
 
-These safeguards do not convert post-opening questions into preregistered hypotheses. The main evidential claim rests on convergence among independently specified decompositions rather than on nominal significance of every extension.
+These safeguards do not convert questions developed after earlier results were inspected into preregistered hypotheses. The main evidential claim rests on convergence among independently specified decompositions rather than on nominal significance of every extension.
 
 ---
 
@@ -132,7 +132,7 @@ The prespecified buffering prediction was therefore unsupported. Response divers
 
 ### S5.1 Body size
 
-An initial pooled post-opening analysis suggested that smaller-bodied species had more positive wet-associated responses. Because body size is phylogenetically structured and the family-adjusted model was unstable, subsequent family-aware validation was treated as the stronger gate. The final family-stratified permutation did not authorize body size as the mechanism (P = .314).
+A subsequent pooled analysis suggested that smaller-bodied species had more positive wet-associated responses. Because body size is phylogenetically structured and the family-adjusted model was unstable, subsequent family-aware validation was treated as the stronger gate. The final family-stratified permutation did not authorize body size as the mechanism (P = .314).
 
 We therefore do not claim that body size explains species rainfall responses.
 
@@ -428,7 +428,7 @@ The frozen AmphiBIO functional panel covers body size, clutch size, offspring si
 
 The activation-geometry placebo gate remains the final species-trait falsification for the species-trait analyses. It failed, so activation geometry is demoted rather than redefined.
 
-No additional endpoint search is authorized to rescue activation geometry or replace it with another post-opening species trait in this manuscript.
+No additional endpoint search is authorized to rescue activation geometry or replace it with another species trait selected after inspection of the earlier results.
 
 Future mechanistic work should use independent data or independently sourced proximal traits and begin from a new frozen hypothesis family. The current article remains focused on the multiscale geometry of community expansion, matrix fill and beta diversity.
 
@@ -1083,7 +1083,7 @@ The pooled signal therefore does not depend on any single sampled state, but its
 
 The historical analysis contracts and script filenames use the term `higher_order` because that was the exploratory label under which the concentration score was developed. The integrated manuscript deliberately uses **within-taxon spatial concentration** and **multi-site coherence** instead, to avoid confusion with “higher-order interactions” among three or more species.
 
-All S11 concentration analyses are post-opening relative to the original NAAMP matrix analysis. Cross-fitting prevents focal-route leakage in fitted species-response terms; it does not make these results an independent confirmation dataset.
+All S11 concentration analyses were developed after the original NAAMP matrix analysis had been inspected. Cross-fitting prevents focal-route leakage in fitted species-response terms; it does not make these results an independent confirmation dataset.
 
 ## S12. Historical recurrence of apparent wet-state recruitment
 
@@ -1382,7 +1382,7 @@ Includes:
 - joint species + history + dry-persistence null;
 - held-out rain × local-history gate.
 
-These tests are protected against retuning after their own readback but remain post-opening relative to the original manuscript.
+These tests are protected against retuning after their own results were inspected but remain post-hoc relative to the original manuscript.
 
 ### S17.3 Post-reopening exploratory falsification and diagnostics
 
