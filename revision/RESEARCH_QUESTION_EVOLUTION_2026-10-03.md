@@ -137,10 +137,10 @@ There was briefly a “third-stop” interpretation.
 
 That interpretation was wrong.
 
-The second and third marginal stops were not exceptional.
+The second and third marginal stops were not elevated in the prespecified upper-tail tests; relative to the persistence-preserving two-sided envelope, the first two depths were lower than expected.
 
 The excess was a **deep tail**:
-- marginal depths 1–3 were consistent with activation nulls;
+- depths 1–3 were inside the uniform-activation envelope; depths 1–2 were below the persistence-preserving two-sided envelope and depth 3 was inside it;
 - marginal depths 4–10 exceeded them.
 
 ### Consequence
