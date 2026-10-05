@@ -23,9 +23,9 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration is **parked**, and the prospective WFTS replication is **not being pursued**.
+**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration is **parked**. WFTS **data acquisition is reopened as a separate prospective external-replication route** and remains non-blocking for RC6.
 
-**External-replication disclosure:** A prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed.
+**External-replication boundary:** WFTS is not evidence in RC6. The current authorization covers data request, receipt logging, schema-only inspection and response-blind preflight; outcome analysis remains governed by the frozen fail-closed authority.
 
 ## Biological result
 
@@ -140,9 +140,9 @@ The original RC11 analysis scripts under `scripts/naamp/` remain because they su
 
 Post-freeze analyses that generated the integrated multi-site result remain auditable on their frozen `exploration/*` branches. The final contracts/scripts needed for the RC4 claim have also been selectively restored here; the full exploration history is intentionally not duplicated.
 
-## Prospective WFTS replication — specified but not pursued
+## Prospective WFTS replication — acquisition reopened
 
-The WFTS replication was specified prospectively but is **not being pursued**. No WFTS data were requested, received or analysed. The request/contact documents, schema, fail-closed QA and analysis code are retained only as historical prospective-design records.
+The WFTS external-replication route is prospectively specified and **data acquisition is now reopened**. No WFTS frog-response data have been received or analysed. The request is limited to existing records and documentation; response access remains fail-closed until structural eligibility passes.
 
 Important boundaries:
 
@@ -159,8 +159,8 @@ Important boundaries:
 - the complete synthetic preflight → primary → common-environment secondary → recurrent-site secondary chain passed in run **37130556855**; the QA artifact is **11276592978**.
 - fail-closed guard QA passed in run **37153969280**: insufficient structural coverage stops before response access, and any post-preflight runs/matrix byte drift is rejected.
 - pre-receipt readiness is frozen in `revision/WFTS_PRE_RECEIPT_READINESS_RECEIPT_V0_1.json`.
-- `revision/WFTS_NOT_PURSUED_2026-10-05.md` is the current decision authority and supersedes acquisition-readiness language in the earlier WFTS planning records.
-- no WFTS contact, data request, receipt or execution step is currently authorized.
+- `revision/WFTS_ACQUISITION_REOPENED_2026-10-05.md` is the current operational authority for acquisition and supersedes the earlier not-pursued status for acquisition only.
+- direct data request, receipt logging, schema-only inspection and response-blind structural preflight are authorized; outcome browsing or retuning is not.
 
 A non-PASS is classified prospectively as either:
 
