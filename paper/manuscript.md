@@ -157,7 +157,7 @@ We retained the earlier strong-activation species-concentration and state-random
 
 Later mechanism and multi-site endpoints were developed after the initial results were known but versioned before their own results were inspected. They therefore remain **exploratory at manuscript level**, not preregistered or independently confirmed. Supporting Information preserves the specifications, negative results and audit receipts.
 
-The study concerns acoustic reproductive activity. No analysis establishes individual identity, continuous occupancy, dispersal, colonization, abundance, spawning or reproductive success. Terms such as “recurrent”, “re-expression” and “persistent template” refer to repeated species × physical-site acoustic states in the monitoring record.
+The study concerns acoustic reproductive activity, not individual identity, occupancy, dispersal, colonization, abundance, spawning or reproductive success. “Recurrent” and “re-expression” refer to repeated species × physical-site acoustic states.
 
 ## Results
 
