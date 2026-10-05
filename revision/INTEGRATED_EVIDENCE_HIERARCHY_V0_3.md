@@ -16,7 +16,7 @@ In NAAMP, that residual structure is expressed as within-taxon multi-site concen
 |---|---|---|
 | Wet conditions expand the active acoustic community | active stops, active-stop richness and route richness positive | baseline phenomenon |
 | Change is not only marginal audibility | 0→CI2/3 dominates activation; 0→CI3 positive; same observer + SiteID robust | frog-specific state switch |
-| Recruitment is spatially deep | second site ordinary; third+ and fourth+ elevated; 97.3% of third+ carried by CI2/3 | multi-site depth |
+| Recruitment is spatially deep | second site not elevated in the prespecified upper-tail test; shallow depths are depleted under the persistence null while third+ and fourth+ are elevated; 97.3% of third+ carried by CI2/3 | multi-site depth |
 | Within-taxon concentration exceeds species/site expectations | principal 2,916-pair joint comparator: observed 1.650 vs predicted 1.353; residual 0.297 vs null 95% −0.132–0.119; P=0.000999 | **principal spatial test** |
 | Stronger history-gated comparator remains insufficient | final gate predicted 1.332 vs 1.650 observed; residual 0.318; P=0.000999 | strongest sensitivity |
 | Observer/site turnover is not required | 3,115 same-observer + same-SiteID pairs retain concentration | robustness |
