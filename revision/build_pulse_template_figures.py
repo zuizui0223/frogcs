@@ -38,7 +38,7 @@ def save(fig,name):
 
 # Figure 1: calling-state switch
 x=DATA["figure1"]
-fig,ax=plt.subplots(figsize=(8.4,4.2))
+fig,ax=plt.subplots(figsize=(8.4,3.4))
 labels=["0→CI3","0→CI3\nsame observer + same site"]
 y=np.arange(len(labels))
 for yi,key in [(0,"zero_to_ci3"),(1,"robust_zero_to_ci3")]:
@@ -89,7 +89,7 @@ labels=[
 ]
 res=np.asarray([x["joint_residual"],x["final_gate_residual"]],float)
 cis=np.asarray([x["joint_residual_ci95"],x["final_gate_residual_ci95"]],float)
-fig,ax=plt.subplots(figsize=(9.2,4.0))
+fig,ax=plt.subplots(figsize=(9.2,3.2))
 y=np.arange(len(labels))
 for yi,(r,ci) in enumerate(zip(res,cis)):
     interval_label="Simulated null 95% interval" if yi==0 else None
