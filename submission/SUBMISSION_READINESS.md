@@ -133,16 +133,20 @@ The private metadata bundle remains intentionally incomplete until final author 
 - [x] no further NAAMP landscape outcome analysis authorized
 - [x] landscape work is not a submission gate
 
-## WFTS — future, optional, non-blocking
+## WFTS — specified but not pursued
 
-WFTS remains a prepared prospective external candidate.
+A prospective WFTS replication was specified but is not being pursued.
 
-It is:
-- not evidence in RC6;
-- not a submission gate;
-- not required before submitting the present NAAMP paper.
+Current status:
+- no WFTS data were requested;
+- no WFTS response data were received or analysed;
+- WFTS is not evidence in RC6;
+- WFTS is not a submission gate;
+- no WFTS contact or execution step is authorized.
 
-If external replication is explicitly reopened, the frozen WFTS authority and fail-closed execution sequence remain available. Until then, no WFTS contact or data request is required.
+Decision authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
+
+The frozen WFTS specifications remain in the repository for provenance only.
 
 ## Revision-stage note
 
