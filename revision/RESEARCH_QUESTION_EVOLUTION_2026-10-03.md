@@ -137,11 +137,12 @@ There was briefly a “third-stop” interpretation.
 
 That interpretation was wrong.
 
-The second and third marginal stops were not exceptional.
+The second and third marginal stops did not exceed the upper tails of the activation nulls.
 
 The excess was a **deep tail**:
-- marginal depths 1–3 were consistent with activation nulls;
-- marginal depths 4–10 exceeded them.
+- marginal depths 1–3 were consistent with the uniform-activation envelope;
+- under the persistence-preserving null, depths 1–2 were below the 95% envelope and depth 3 remained within it;
+- marginal depths 4–10 exceeded both null envelopes.
 
 ### Consequence
 
