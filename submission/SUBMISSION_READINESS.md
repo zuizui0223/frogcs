@@ -15,6 +15,7 @@
 - conceptual-neighbor audit: `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - science lock: `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
+- final project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 
 Historical RC5 remains preserved at:
 - `release/jae-multisite-rc5`
@@ -61,8 +62,7 @@ Permitted remaining work:
 - citation/reference correction;
 - non-substantive copy-editing and figure formatting;
 - submission metadata;
-- archive/license/DOI finalization;
-- optional prospective external replication under a frozen design.
+- archive/license/DOI finalization.
 
 ## Current inferential spine
 
@@ -125,11 +125,11 @@ Scientific submission artifact:
 
 The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
 
-## Post-RC6 landscape exploration — parked
+## Post-RC6 landscape exploration — closed
 
-- [x] landscape branches parked under `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md`
+- [x] landscape branches closed under `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`
 - [x] prespecified landscape direction failure retained
-- [x] post-hoc compactness not promoted into RC6
+- [x] post-hoc compactness retained for provenance and not promoted into RC6
 - [x] no further NAAMP landscape outcome analysis authorized
 - [x] landscape work is not a submission gate
 

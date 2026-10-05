@@ -109,12 +109,12 @@ Current authority:
 This lock changes no numerical result.
 
 
-## Parked post-RC6 landscape lines
+## Closed post-RC6 landscape lines
 
-The later branches `landscape/naamp-behaviour-v1` and `landscape/naamp-behavioural-landscape-v1` are parked under `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md`.
+The later branches `landscape/naamp-behaviour-v1` and `landscape/naamp-behavioural-landscape-v1` are closed under `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`.
 
 Their prespecified dispersion/fragmentation prediction failed. Post-readback compactness is retained as exploratory provenance only.
 
-No further NAAMP landscape endpoint, topology metric, threshold, mechanism or landscape-covariate outcome test is authorized. These branches may be revisited only as an independent external study under a new explicit reopening record.
+No further NAAMP landscape endpoint, topology metric, threshold, mechanism, compactness refinement or landscape-covariate outcome test is authorized. Any future landscape-scale test is a separate independent study under a new explicit authority, not a continuation of the current project.
 
 They are not part of RC6 and are not a reason to delay submission.

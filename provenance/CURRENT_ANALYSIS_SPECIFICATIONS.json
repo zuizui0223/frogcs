@@ -19,7 +19,7 @@
     "ecological_spine": "revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md",
     "question_evolution": "revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md",
     "data_volume_audit": "revision/DATA_VOLUME_AUDIT_2026-10-03.md",
-    "landscape_status": "revision/LANDSCAPE_LINES_PARKED_2026-10-05.md",
+    "landscape_status": "revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md",
     "wfts_project_decision": "revision/WFTS_NOT_PURSUED_2026-10-05.md"
   },
   "release_authority": {
@@ -145,7 +145,7 @@
     "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
     "execution_lock_qa_run": 37129985326,
     "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
-    "pre_receipt_status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE; no internal scientific or implementation blockers remain",
+    "historical_pre_receipt_status": "Before the 2026-10-05 stop decision, WFTS was READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE; this readiness state is superseded by revision/WFTS_NOT_PURSUED_2026-10-05.md",
     "full_chain_qa": {
       "workflow": ".github/workflows/wfts_full_chain_qa.yml",
       "run": 37130556855,
@@ -202,7 +202,7 @@
     "fast_gate_slow_template_identifies_unique_lower_level_mechanism": false,
     "post_reopening_naamp_results_are_independent_confirmation": false
   },
-  "note": "Historical internal filenames retain exploratory terms such as higher_order and memory for provenance. Reader-facing authority is the RC6 endpoint-centred package with one focal within-taxon multi-site concentration endpoint, interpreted by strong chorus state switching and recurrent taxon-specific site expression. Post-RC6 landscape exploration is parked after the prespecified direction failed, and no further NAAMP landscape outcome analysis is authorized. The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current NAAMP science is locked under revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md.",
+  "note": "Historical internal filenames retain exploratory terms such as higher_order and memory for provenance. Reader-facing authority is the RC6 endpoint-centred package with one focal within-taxon multi-site concentration endpoint, interpreted by strong chorus state switching and recurrent taxon-specific site expression. Post-RC6 landscape exploration is closed after the prespecified direction failed, and no further NAAMP landscape outcome analysis is authorized. The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current NAAMP science is locked under revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md.",
   "post_reopening_exploratory_chain": {
     "reopening_date": "2026-10-03",
     "provenance_boundary": "All entries below are post-hoc exploratory analyses on the already-explored NAAMP discovery data. They are not independent confirmation and are not part of the original stopped mechanism sequence.",

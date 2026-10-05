@@ -1,5 +1,7 @@
 # Landscape lines parked — 2026-10-05
 
+> **Superseded status:** this historical parked-state record is superseded by `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`. The landscape line is closed for the current project.
+
 ## Decision
 
 The two post-RC6 landscape branches are **parked** and are not part of the RC6 submission path.

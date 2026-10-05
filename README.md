@@ -23,7 +23,7 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration is **parked**, and the prospective WFTS replication is **not being pursued**.
+**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration is **closed**, and the prospective WFTS replication is **not being pursued**.
 
 **External-replication disclosure:** A prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed.
 
@@ -115,7 +115,8 @@ Supporting Information contains the defence/falsification layer:
 - `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
 - `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
-- `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md`
+- `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`
+- `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md` — superseded historical status
 - `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
 - `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
@@ -123,6 +124,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
 - `submission/RC6_RELEASE_RECEIPT.md`
+- `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 
 Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
 
