@@ -75,7 +75,7 @@ abstract=text.split("## Abstract",1)[1].split("## Keywords",1)[0]
 abstract_words=len(abstract.split())
 assert abstract_words <= 350, f"abstract exceeds JAE 350-word limit: {abstract_words}"
 for x in [
-    "primary endpoint",
+    "focal endpoint",
     "1.650",
     "1.353",
     "0.297",
@@ -88,10 +88,10 @@ for x in [
     "1.61-fold",
     "2.69-fold",
 ]:
-    assert x not in abstract, f"monitoring diagnostic should not headline the endpoint-centred abstract: {x}"
+    assert x in abstract, f"abstract missing concrete monitoring implication: {x}"
 assert "0.244" not in abstract, "secondary exchangeable N,K diagnostic must not be abstract headline"
 assert "We ask three linked questions" not in text, "legacy equal-weight three-question framing remains in manuscript"
-assert "### Primary endpoint: recruited taxa show excess within-taxon multi-site concentration" in text
+assert "### Focal endpoint: recruited taxa show excess within-taxon multi-site concentration" in text
 assert "### Response magnitude does not fully describe the spatial pattern of activation" in text
 assert "marginal activation" in text
 assert "response magnitude alone may be insufficient to describe a short behavioural pulse" in text

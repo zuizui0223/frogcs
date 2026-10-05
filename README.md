@@ -23,7 +23,7 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-04):** RC6 is the current NAAMP-only scientific submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
+**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration and WFTS acquisition are **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
 
 ## Biological result
 
@@ -70,7 +70,7 @@ This is a conceptual generalization from the NAAMP system. Pulse theory already 
 
 ## Main text versus Supporting Information
 
-The current paper is organized around **one primary endpoint**:
+The current paper is organized around **one focal endpoint**:
 
 > conditional within-taxon multi-site concentration among taxa acoustically recruited on wetter surveys, after species-specific rainfall response, strictly prior physical-site propensity, dry-state persistence and total activation magnitude are represented.
 
@@ -113,6 +113,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
 - `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
+- `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md`
 - `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
 - `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
@@ -145,7 +146,7 @@ Important boundaries:
 
 - Wisconsin is not one of the 21 NAAMP discovery states;
 - response-blind structural eligibility must pass before frog outcomes are loaded;
-- the primary endpoint/comparator is frozen;
+- the focal NAAMP endpoint/comparator is frozen;
 - the real-data authority is `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;
 - the primary implementation is `scripts/wfts/run_wfts_confirmatory_analysis_v0_5.py`;
 - after the primary result is frozen, a separately frozen secondary sequence tests Daymet common-environment sufficiency, bounded route-night dependence, far-lag persistence and clustered uncertainty under `revision/WFTS_CONFIRMATORY_AUTHORITY_V0_4.md`;

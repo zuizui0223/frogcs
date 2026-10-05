@@ -4,9 +4,9 @@
 
 Reader-facing authority for the NAAMP manuscript on this branch. Supersedes v0.1.
 
-The paper has **one primary endpoint** and one broader ecological hypothesis.
+The paper has **one focal endpoint** and one broader ecological hypothesis.
 
-## Primary endpoint
+## Focal endpoint
 
 Conditional within-taxon multi-site concentration among taxa acoustically recruited on the wetter survey.
 
@@ -63,7 +63,7 @@ The NAAMP frog result is one empirical example: the realised pattern is over-con
 ## Interpretation analyses
 
 ### State switching
-Silence→CI2/3 and silence→CI3 results show that the primary endpoint concerns substantial reproductive acoustic state change, not merely weak audibility.
+Silence→CI2/3 and silence→CI3 results show that the focal endpoint concerns substantial reproductive acoustic state change, not merely weak audibility.
 
 ### Historical placement
 Prior strong SiteID targeting shows where the excess spatial concentration is expressed.
