@@ -11,10 +11,8 @@ DATA=json.loads((ROOT/"revision"/"PULSE_TEMPLATE_FIGURE_DATA_V0_1.json").read_te
 OUT=ROOT/"figures_pulse_template"
 OUT.mkdir(exist_ok=True)
 
-# Make SVG IDs reproducible across independent Matplotlib processes.
 mpl.rcParams["svg.hashsalt"]="frogcs-pulse-template-rc3"
 
-# Remove legacy public figure names that used exploratory "higher-order" terminology.
 for legacy in (
     "fig3_higher_order_null_ladder.svg",
     "fig3_higher_order_null_ladder.png",
@@ -38,20 +36,37 @@ def save(fig,name):
 
 # Figure 1: calling-state switch
 x=DATA["figure1"]
-fig,ax=plt.subplots(figsize=(8.4,5.4))
+fig,ax=plt.subplots(figsize=(8.4,5.2))
 labels=["Total CallingIndex","0→positive","0→CI2/3","0→CI3","0→CI3\nsame observer + site"]
-vals=[x["total_calling_index_beta"],x["zero_to_positive_beta"],x["zero_to_strong_beta"],x["zero_to_ci3_beta"],x["robust_zero_to_ci3_beta"]]
+vals=[
+    x["total_calling_index_beta"],
+    x["zero_to_positive_beta"],
+    x["zero_to_strong_beta"],
+    x["zero_to_ci3_beta"],
+    x["robust_zero_to_ci3_beta"],
+]
 y=np.arange(len(labels))
-ax.barh(y[:3],vals[:3],alpha=.75)
+
+# The first three quantities are exact decomposition point estimates in the
+# frozen figure data; only the direct CI3 endpoints have stored 95% CIs.
+ax.plot(vals[:3],y[:3],marker="o",linestyle="None",markersize=7)
 for yi,key in [(3,"zero_to_ci3"),(4,"robust_zero_to_ci3")]:
     b=x[f"{key}_beta"]; lo,hi=x[f"{key}_ci95"]
-    ax.errorbar(b,yi,xerr=[[b-lo],[hi-b]],fmt="o",capsize=4)
+    ax.errorbar(b,yi,xerr=[[b-lo],[hi-b]],fmt="o",capsize=4,markersize=7)
+
+ax.axhline(2.5,linewidth=.7)
+ax.axvline(0,linewidth=.8)
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
-ax.axvline(0,linewidth=.8)
 ax.set_xlabel("Rainfall-contrast coefficient")
-ax.set_title("Fig. 1  Rain-associated change enters from silence and often as strong chorus")
-ax.text(.98,.05,f"65.3% of CallingIndex slope = 0→positive\n87.1% of activation = 0→CI2/3",transform=ax.transAxes,ha="right",va="bottom")
+ax.text(.98,.96,
+        "Decomposition point estimates (top)\n"
+        "Direct CI3 estimates with 95% CI (bottom)",
+        transform=ax.transAxes,ha="right",va="top",fontsize=9)
+ax.text(.98,.05,
+        "65.3% of CallingIndex slope = 0→positive\n"
+        "87.1% of activation = 0→CI2/3",
+        transform=ax.transAxes,ha="right",va="bottom")
 save(fig,"fig1_chorus_state_switch")
 
 # Figure 2: spatial-depth shape
@@ -72,51 +87,68 @@ ax.plot(depth,obs,marker="s",linewidth=2.6,label="Observed")
 ax.set_xticks(depth)
 ax.set_xlabel("Occupied-stop depth within a route-new taxon")
 ax.set_ylabel("Marginal rainfall-contrast coefficient")
-ax.set_title("Fig. 2  Rain-associated activation has a deeper multi-site tail than expected")
 ax.legend(frameon=False,fontsize=8)
 ax.text(.98,.97,
-        "Stops 1–3 fall within both null envelopes\n"
-        "Stops 4–10 exceed both 95% envelopes\n"
+        "Depths 1–3 within uniform envelope\n"
+        "Persistence null: depths 1–2 below, depth 3 within\n"
+        "Depths 4–10 above both upper 95% envelopes\n"
         "Cumulative third+ β=0.473; 97.3% carried by CI2/3",
-        transform=ax.transAxes,ha="right",va="top")
+        transform=ax.transAxes,ha="right",va="top",fontsize=9)
 save(fig,"fig2_spatial_depth_strong_chorus")
 
-# Figure 3: principal within-taxon concentration tests only
+# Figure 3: principal conditional residual tests
 x=DATA["figure3"]
 labels=[
-    "Species response + prior site history + dry persistence",
-    "+ held-out rain × history gate",
+    "Principal species + prior-site + persistence comparator\npred. 1.353; observed 1.650",
+    "Held-out rain × history gate\npred. 1.332; observed 1.650",
 ]
-obs=[
-    x["prior_subset_observed"],
-    x["prior_subset_observed"],
-]
-pred=[
-    x["joint_predicted"],
-    x["final_gate_predicted"],
-]
-fig,ax=plt.subplots(figsize=(9.4,4.4))
+residuals=np.asarray([x["joint_residual"],x["final_gate_residual"]],float)
+cis=np.asarray([x["joint_residual_ci95"],x["final_gate_residual_ci95"]],float)
 y=np.arange(len(labels))
-for yi,(o,p) in enumerate(zip(obs,pred)):
-    ax.plot([p,o],[yi,yi],linewidth=3)
-    ax.plot(p,yi,marker="o",linestyle="None")
-    ax.plot(o,yi,marker="s",linestyle="None")
+
+fig,ax=plt.subplots(figsize=(9.2,4.2))
+for yi,(r,ci) in enumerate(zip(residuals,cis)):
+    ax.hlines(yi,ci[0],ci[1],linewidth=7,alpha=.28)
+    ax.plot([ci[0],ci[1]],[yi,yi],marker="|",linestyle="None",markersize=15)
+    ax.plot(r,yi,marker="s",linestyle="None",markersize=8)
+    ax.text(r+.012,yi,f"{r:.3f}",va="center",ha="left",fontsize=9)
+
+ax.axvline(0,linewidth=.9)
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
-ax.set_xlabel("Within-taxon concentration rainfall coefficient")
-ax.set_title("Fig. 3  First-order species and site structure underpredicts concentration")
-ax.text(.99,.06,
-        "circle = comparator prediction at observed recruitment + spread\n"
-        "square = observed; both conditional P = 0.000999",
-        transform=ax.transAxes,ha="right",va="bottom")
+ax.set_xlabel("Conditional residual in within-taxon concentration coefficient")
+ax.set_xlim(min(cis[:,0].min()-.04,-.18),max(residuals.max()+.10,.42))
+ax.text(.02,.05,
+        "horizontal bar = simulated 95% null-residual interval\n"
+        "square = observed residual; both upper-tail P ≈ 0.001\n"
+        "(minimum attainable with 1,000 simulations)",
+        transform=ax.transAxes,ha="left",va="bottom",fontsize=9)
 save(fig,"fig3_within_taxon_concentration")
 
 # Figure 4: historical site targeting
 x=DATA["figure4"]
-labels=["Prior strong site → wet CI2/3","Prior strong site → wet CI3","Same observer: prior strong → CI2/3","Rain-selective CI3 targeting","Rain-selective CI3 targeting, same observer"]
-vals=[x["prior_strong_wet_strong_beta"],x["prior_strong_wet_ci3_beta"],x["same_observer_prior_strong_beta"],x["rain_selective_ci3_beta"],x["rain_selective_same_observer_beta"]]
-cis=[x["prior_strong_wet_strong_ci95"],x["prior_strong_wet_ci3_ci95"],x["same_observer_prior_strong_ci95"],x["rain_selective_ci3_ci95"],x["rain_selective_same_observer_ci95"]]
-fig,ax=plt.subplots(figsize=(9.2,5.6))
+labels=[
+    "Prior strong site → wet CI2/3",
+    "Prior strong site → wet CI3",
+    "Same observer: prior strong → CI2/3",
+    "Rain-selective CI3 targeting",
+    "Rain-selective CI3 targeting, same observer",
+]
+vals=[
+    x["prior_strong_wet_strong_beta"],
+    x["prior_strong_wet_ci3_beta"],
+    x["same_observer_prior_strong_beta"],
+    x["rain_selective_ci3_beta"],
+    x["rain_selective_same_observer_beta"],
+]
+cis=[
+    x["prior_strong_wet_strong_ci95"],
+    x["prior_strong_wet_ci3_ci95"],
+    x["same_observer_prior_strong_ci95"],
+    x["rain_selective_ci3_ci95"],
+    x["rain_selective_same_observer_ci95"],
+]
+fig,ax=plt.subplots(figsize=(9.2,5.4))
 y=np.arange(len(labels))
 for yi,(b,ci) in enumerate(zip(vals,cis)):
     ax.errorbar(b,yi,xerr=[[b-ci[0]],[ci[1]-b]],fmt="o",capsize=4)
@@ -124,14 +156,12 @@ ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.axvline(0,linewidth=.8)
 ax.set_xlabel("Coefficient (95% CI)")
-ax.set_title("Fig. 4  Strong chorus placement recurs at species-specific historical sites")
 save(fig,"fig4_historical_site_targeting")
 
 # Figure 5: breadth and heterogeneity
 x=DATA["figure5"]
-fig,axs=plt.subplots(1,2,figsize=(11.2,5.4))
+fig,axs=plt.subplots(1,2,figsize=(11.2,5.2))
 
-# A. Taxonomic breadth / concentration
 ax=axs[0]
 cats=["Positive taxa","≥1% positive mass","Top-5 positive mass","Top-1 positive mass"]
 vals=[
@@ -155,7 +185,6 @@ ax.text(.02,.03,
         f"All leave-one-taxon totals >0; min β={x['min_leave_one_taxon_beta']:.3f}",
         transform=ax.transAxes,va="bottom")
 
-# B. Geographic robustness versus heterogeneity
 ax=axs[1]
 lo,hi=x["loo_state_beta_range"]
 ax.hlines(2,lo,hi,linewidth=5)
@@ -182,5 +211,4 @@ ax.text(.02,.73,
         "State-specific slopes are much less uniform",
         transform=ax.transAxes,va="top")
 
-fig.suptitle("Fig. 5  Within-taxon multi-site concentration is broad but geographically heterogeneous",y=1.02)
 save(fig,"fig5_breadth_and_heterogeneity")
