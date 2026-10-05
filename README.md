@@ -124,6 +124,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/MULTISITE_CHORUS_COHERENCE_SYNTHESIS_V0_2.md`
 - `submission/SUBMISSION_READINESS.md`
 - `submission/RC6_RELEASE_RECEIPT.md`
+- `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 
 Historical manuscript drafts are retained in Git history and frozen release branches rather than duplicated in the current tree.
 
