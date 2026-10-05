@@ -34,8 +34,9 @@ Do **not** say:
 > the unusual effect begins at the third occupied stop.
 
 The exact marginal-depth audit shows:
-- calling-incidence depths 1–3 fall within both activation-null envelopes;
-- depths 4–10 exceed both;
+- calling-incidence depths 1–3 fall within the uniform-activation envelope;
+- under the persistence-preserving null, depths 1–2 fall below the 95% envelope and depth 3 remains within it;
+- depths 4–10 exceed both null envelopes;
 - marginal coefficients decrease smoothly with depth.
 
 Authorized description:
