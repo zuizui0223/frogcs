@@ -184,15 +184,6 @@ def render_title_page(m: dict) -> str:
         "",
         str(m.get("statement_on_inclusion","")),
         "",
-        "## Approval",
-        "",
-        f"- all authors approve the submitted version: {m['approvals'].get('all_authors_approve_submission')}",
-        f"- relevant institutions approve submission: {m['approvals'].get('relevant_institutions_approve_submission')}",
-        f"- all entitled authors are included: {m['approvals'].get('all_entitled_authors_included')}",
-        f"- manuscript is not under consideration elsewhere: {m['approvals'].get('not_under_consideration_elsewhere')}",
-        f"- work is original and necessary acknowledgements are made: {m['approvals'].get('work_original_and_acknowledged')}",
-        f"- legal/conservation/welfare requirements are confirmed: {m['approvals'].get('legal_requirements_confirmed')}",
-        "",
     ])
 
 def render_zenodo(m: dict) -> dict:
