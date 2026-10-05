@@ -8,7 +8,7 @@ Current validated release/submission refs:
 
 - `release/jae-multisite-rc6`
 - `submission/jae-multisite-v6`
-- validated RC6 scientific source: `dc8706a321c4822401e2fae317711058bd5262e3`
+- validated RC6 scientific source: `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 
 Historical RC5 remains preserved at:
