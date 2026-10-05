@@ -1,6 +1,9 @@
 # Prospective external replication specification v0.2
 
-**Status:** frozen before selecting or inspecting any external outcome data for this integrated claim.
+> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current project decision: `revision/WFTS_NOT_PURSUED_2026-10-05.md`. The frozen design below is retained only as historical prospective-design provenance and is not authorized for execution in the current project.
+
+
+**Historical design status:** frozen before selecting or inspecting any external outcome data for this integrated claim.
 
 ## Purpose
 
