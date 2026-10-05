@@ -1,6 +1,9 @@
 # WFTS receipt and structural-preflight protocol v0.1
 
-**Status:** response-blind handling protocol, fixed before receipt/inspection of WFTS frog-response outcomes.
+> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`. This file is retained only as historical prospective-design provenance.
+
+
+**Historical status:** response-blind handling protocol fixed before any WFTS frog-response outcomes were received or inspected; retained for provenance only.
 
 ## Purpose
 
