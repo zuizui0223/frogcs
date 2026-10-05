@@ -48,11 +48,11 @@ ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.axvline(0,linewidth=.8)
 ax.set_xlabel("Rainfall-contrast coefficient (95% CI)")
-ax.text(.98,.05,
+ax.text(.98,.50,
         "Descriptive decomposition:\n"
         "65.3% of CallingIndex slope = 0→positive\n"
         "87.1% of activation = 0→CI2/3",
-        transform=ax.transAxes,ha="right",va="bottom")
+        transform=ax.transAxes,ha="right",va="center",fontsize=9)
 save(fig,"fig1_chorus_state_switch")
 
 # Figure 2: spatial-depth shape
@@ -92,18 +92,16 @@ cis=np.asarray([x["joint_residual_ci95"],x["final_gate_residual_ci95"]],float)
 fig,ax=plt.subplots(figsize=(9.2,4.0))
 y=np.arange(len(labels))
 for yi,(r,ci) in enumerate(zip(res,cis)):
-    ax.hlines(yi,ci[0],ci[1],linewidth=8,alpha=.28)
+    interval_label="Simulated null 95% interval" if yi==0 else None
+    residual_label="Observed residual" if yi==0 else None
+    ax.hlines(yi,ci[0],ci[1],linewidth=8,alpha=.28,label=interval_label)
     ax.plot([ci[0],ci[1]],[yi,yi],marker="|",linestyle="None",markersize=15)
-    ax.plot(r,yi,marker="s",linestyle="None",markersize=7)
+    ax.plot(r,yi,marker="s",linestyle="None",markersize=7,label=residual_label)
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.axvline(0,linewidth=.8)
 ax.set_xlabel("Conditional residual: observed − comparator prediction")
-ax.text(.99,.06,
-        "horizontal segment = simulated null 95% interval\n"
-        "square = observed residual; both P ≈ 0.001\n"
-        "(minimum plus-one value from 1,000 simulations)",
-        transform=ax.transAxes,ha="right",va="bottom")
+ax.legend(frameon=False,loc="center")
 save(fig,"fig3_within_taxon_concentration")
 
 # Figure 4: historical site targeting
