@@ -1,8 +1,8 @@
 # WFTS data request template v0.3 — concise direct request
 
-> **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
+> **CURRENT PROJECT STATUS (2026-10-05): ACQUISITION REOPENED.** Direct request for the existing station-level export is authorized. Current operational authority: `revision/WFTS_ACQUISITION_REOPENED_2026-10-05.md`.
 
-**Operational status:** preferred first-contact text as of 2026-10-04. Supersedes v0.2 for direct outreach only. Scientific analysis authority is unchanged.
+**Operational status:** current preferred first-contact text. Supersedes v0.2 for direct outreach only. Scientific analysis authority and fail-closed execution rules are unchanged.
 
 ## Recipient
 
