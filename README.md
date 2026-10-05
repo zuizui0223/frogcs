@@ -80,6 +80,7 @@ Reader-facing scientific package:
 - `submission/SUBMISSION_READINESS.md`
 - `submission/RC6_RELEASE_RECEIPT.md`
 - `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
+- `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
 
 Historical drafts, exploratory branches and superseded analysis records are retained for provenance rather than duplicated in the reader-facing path.
 
@@ -123,6 +124,8 @@ Current authority:
 The scientific package is closed.
 
 ### Initial submission
+
+Final handoff: `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
 
 Remaining blockers are author-side only:
 

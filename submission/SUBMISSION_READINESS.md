@@ -16,6 +16,7 @@
 - science lock: `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 - final project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
+- initial-submission handoff: `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
 
 Historical RC5 remains preserved at:
 - `release/jae-multisite-rc5`
