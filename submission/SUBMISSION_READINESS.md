@@ -25,15 +25,15 @@ Historical RC5 remains preserved at:
 - [x] Research Article target
 - [x] anonymized main-manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words — **312**
+- [x] abstract ≤350 words — **320**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] manuscript below 8,500 words — **7,978**
+- [x] manuscript below 8,500 words — **7,986**
 - [x] separate Supporting Information
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
-- [x] RC6 manuscript QA — run **37189806929**, SUCCESS
-- [x] RC6 anonymous scientific submission bundle — run **37189806898**, SUCCESS
+- [x] RC6 manuscript QA — run **37246286273**, SUCCESS
+- [x] RC6 anonymous scientific submission bundle — run **37246286237**, SUCCESS
 - [x] RC6 figure build — run **37189806897**, SUCCESS
 - [x] RC4 restored-analysis reproducibility smoke — run **37189806859**, SUCCESS
 - [x] Statement on Inclusion draft prepared for secondary public-data study
@@ -108,7 +108,7 @@ Post-hoc prospective prediction:
 ## RC6 release authority
 
 Validated RC6 scientific source:
-- `dc8706a321c4822401e2fae317711058bd5262e3`
+- `41cadc0685c1714b07a7d7f09825cd0ba1778657`
 
 RC6 refs:
 - `release/jae-multisite-rc6`
@@ -119,9 +119,9 @@ Release receipt:
 
 Scientific submission artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11298705674**
-- size: **1,005,201 bytes**
-- digest: `sha256:e4b579b7c56c37f52057ae7c8155374e3e2cb7a3f2ddcd0773c369c11f7bdc83`
+- artifact ID: **11319770195**
+- size: **1,005,308 bytes**
+- digest: `sha256:40bb813173d0f89246abfe4b59be6b176e17f52b5dc7c3ae4ecb1bbd21f6280f`
 
 The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
 
