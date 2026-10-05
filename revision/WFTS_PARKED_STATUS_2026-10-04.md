@@ -1,5 +1,7 @@
 # WFTS parked status — 2026-10-04
 
+> **Superseded status:** this historical parked-state record is superseded by `revision/WFTS_NOT_PURSUED_2026-10-05.md`. WFTS is not being pursued for the current project; no WFTS data were requested or analysed.
+
 > **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
 
 ## Decision
