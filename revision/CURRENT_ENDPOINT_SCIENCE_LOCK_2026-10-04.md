@@ -107,3 +107,14 @@ Current authority:
 - `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
 
 This lock changes no numerical result.
+
+
+## Parked post-RC6 landscape lines
+
+The later branches `landscape/naamp-behaviour-v1` and `landscape/naamp-behavioural-landscape-v1` are parked under `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md`.
+
+Their prespecified dispersion/fragmentation prediction failed. Post-readback compactness is retained as exploratory provenance only.
+
+No further NAAMP landscape endpoint, topology metric, threshold, mechanism or landscape-covariate outcome test is authorized. These branches may be revisited only as an independent external study under a new explicit reopening record.
+
+They are not part of RC6 and are not a reason to delay submission.
