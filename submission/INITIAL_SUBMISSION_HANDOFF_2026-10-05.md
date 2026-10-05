@@ -2,6 +2,8 @@
 
 ## Status
 
+Final pre-submission correction receipt: `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
+
 The scientific and technical initial-submission package is complete.
 
 Current main integration after submission packaging:
