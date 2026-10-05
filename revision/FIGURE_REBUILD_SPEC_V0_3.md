@@ -9,19 +9,20 @@ Canonical renderer:
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json`
 
 ## Figure 1 — chorus-state switching
-Keep:
-- total CallingIndex;
-- 0→positive;
-- 0→CI2/3;
-- 0→CI3;
-- same-observer + same-SiteID 0→CI3.
+Show:
+- direct 0→CI3 estimate with 95% CI;
+- same-observer + same-SiteID 0→CI3 estimate with 95% CI;
+- descriptive annotation that 65.3% of the total CallingIndex slope came from 0→positive activation and 87.1% of activation entered CI2/3.
+
+Do not mix bars without uncertainty intervals with CI-bearing point estimates.
 
 ## Figure 2 — spatial-depth shape
 Show:
 - marginal j-th occupied-stop coefficients for j=1,...,10;
 - observed profile against uniform-activation and persistence-preserving 95% envelopes;
-- stops 1–3 within both null envelopes;
-- stops 4–10 above both null envelopes;
+- depths 1–3 within the uniform-activation envelope;
+- under the persistence-preserving null, depths 1–2 below the envelope and depth 3 within it;
+- depths 4–10 above both null envelopes;
 - cumulative third+ β=0.473 retained as context;
 - 97.3% of cumulative third+ carried by CI2/3.
 
@@ -38,11 +39,12 @@ Main-text Figure 3 now shows **only the two ecologically strongest tests**:
 2. the stronger held-out rain × history gate.
 
 Show:
-- observed = 1.650;
-- principal prediction = 1.353;
-- final rain × history prediction = 1.332;
-- observed values as squares and comparator predictions as circles connected within row;
-- both conditional upper-tail P = 0.000999.
+- principal conditional residual = 0.297 with simulated null 95% interval −0.132 to 0.119;
+- final rain × history conditional residual = 0.318 with simulated null 95% interval −0.117 to 0.126;
+- observed residuals as squares against the null intervals;
+- both conditional upper-tail P ≈ 0.001, the minimum plus-one value from 1,000 simulations.
+
+The figure should visualize the inferential comparison directly rather than connect prediction and observation across empty plotting space.
 
 Do **not** show in the main figure:
 - uniform activation;
@@ -87,3 +89,8 @@ Do not use:
 - simultaneous activation.
 
 Historical internal analysis filenames may retain `higher_order` for provenance.
+
+
+## Submission-figure formatting rule
+
+Do not place "Fig. N" or the full manuscript legend title inside the plotted image. Figure numbers and descriptive titles belong in the manuscript legends. Panel labels such as A/B are allowed where needed.
