@@ -59,10 +59,9 @@ ax.axvline(0,linewidth=.8)
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.set_xlabel("Rainfall-contrast coefficient")
-ax.text(.98,.96,
-        "Decomposition point estimates (top)\n"
-        "Direct CI3 estimates with 95% CI (bottom)",
-        transform=ax.transAxes,ha="right",va="top",fontsize=9)
+ax.text(.02,.05,
+        "95% CIs shown for direct CI3 endpoints",
+        transform=ax.transAxes,ha="left",va="bottom",fontsize=9)
 ax.text(.98,.05,
         "65.3% of CallingIndex slope = 0→positive\n"
         "87.1% of activation = 0→CI2/3",
@@ -118,7 +117,7 @@ ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.set_xlabel("Conditional residual in within-taxon concentration coefficient")
 ax.set_xlim(min(cis[:,0].min()-.04,-.18),max(residuals.max()+.10,.42))
-ax.text(.02,.05,
+ax.text(.02,.50,
         "horizontal bar = simulated 95% null-residual interval\n"
         "square = observed residual; both upper-tail P ≈ 0.001\n"
         "(minimum attainable with 1,000 simulations)",
