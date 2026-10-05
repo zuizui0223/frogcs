@@ -11,9 +11,9 @@ This Supporting Information contains the **defence, falsification, robustness an
 
 The principal manuscript novelty is therefore the **realised spatial pattern of chorus activation after response magnitude and first-order taxon/site propensities are represented**. It is not rainfall-sensitive calling itself, not generic cross-site dependence, not a high raw boundary-crossing percentage, and not a species trait identified after the fact.
 
-Results retained here include the earlier RC11 matrix decomposition and nulls, FrogID cross-dataset consistency, beta-diversity and matrix-fill context, protocol and observer robustness, exact combinatorial diagnostics, route-topology corroboration, alternative trait/mechanism tests, failed falsification gates and full provenance. These analyses are important because they constrain simpler explanations without competing with the main inferential spine.
+Results retained here include the earlier matrix decomposition and nulls, FrogID cross-dataset consistency, beta-diversity and matrix-fill context, protocol and observer robustness, exact combinatorial diagnostics, route-topology corroboration, alternative trait/mechanism tests, failed falsification gates and full provenance. These analyses are important because they constrain simpler explanations without competing with the main inferential spine.
 
-Pairwise Sørensen stability remains secondary bounded context because the equivalence margin was post hoc and the observed slope is not exceptional under uniform activation. The RC11 boundary-allocation result remains a valid defence result, but the integrated paper now gives priority to the stronger species-response + prior-site-history comparator.
+Pairwise Sørensen stability remains secondary bounded context because the equivalence margin was post hoc and the observed slope is not exceptional under uniform activation. The earlier boundary-allocation result remains a valid defence result, but the integrated paper now gives priority to the stronger species-response + prior-site-history comparator.
 
 Species-trait and response-trait analyses are retained explicitly as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait. Negative and non-estimable mechanism tests remain visible to prevent outcome-dependent switching.
 
@@ -734,7 +734,7 @@ Under the primary a = 0.75 stress test:
 
 Thus stronger preservation of pair-specific dry cell identity does not explain the observed allocation. If anything, the persistence-favouring null predicts slightly less boundary crossing and more within-core rearrangement than the original κ = 2 null.
 
-**Interpretive boundary:** this RC11-era stress test shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. At that stage the comparator still applied one common activation shift. The integrated post-freeze analyses reported in S11 and S15 subsequently added route-cross-fitted species-specific rainfall shifts, strictly-prior species × physical-SiteID history, their joint combination with dry persistence, and a held-out rain × local-history gate; those stronger comparators also underpredicted the observed within-taxon concentration. None of these null rejections identifies a unique lower-level biological mechanism.
+**Interpretive boundary:** this earlier stress test shows that the observed allocation is not reproduced by a common activation shift even when the null strongly preserves dry species × stop identity. At that stage the comparator still applied one common activation shift. The integrated post-freeze analyses reported in S11 and S15 subsequently added route-cross-fitted species-specific rainfall shifts, strictly-prior species × physical-SiteID history, their joint combination with dry persistence, and a held-out rain × local-history gate; those stronger comparators also underpredicted the observed within-taxon concentration. None of these null rejections identifies a unique lower-level biological mechanism.
 
 
 ---
@@ -776,7 +776,7 @@ The persistence-preserving stress test gave the same result. At the primary 0.75
 
 ### S10.1 Provenance and question
 
-These analyses were conducted after the RC11 matrix results were known. The CallingIndex decomposition was developed during post-freeze mechanism exploration. The direct 0→CallingIndex 3 endpoint was fixed in `exploration/NAAMP_NEW_FULL_CHORUS_ACTIVATION_CONTRACT_V0_1.json` before that endpoint was read.
+These analyses were conducted after the earlier matrix results were known. The CallingIndex decomposition was developed during post-freeze mechanism exploration. The direct 0→CallingIndex 3 endpoint was fixed in `exploration/NAAMP_NEW_FULL_CHORUS_ACTIVATION_CONTRACT_V0_1.json` before that endpoint was read.
 
 The question was whether rainfall-associated recruitment was confined to marginal CallingIndex 1 detections or included direct entry from acoustic silence to overlapping/full chorus states.
 
@@ -1350,7 +1350,7 @@ Thus no single sampled state is required for the pooled within-taxon concentrati
 
 The integrated manuscript deliberately distinguishes three evidence classes.
 
-### S17.1 Frozen RC11 evidence
+### S17.1 Earlier frozen evidence
 
 Includes:
 - 4,236 matched-pair design;
@@ -1413,4 +1413,4 @@ Includes raw recurrence percentages, memory-age diagnostics that failed their pr
 
 ### S17.5 Manuscript-level interpretation
 
-The integrated paper is therefore a transparent synthesis of frozen and post-freeze evidence. The central biological pattern is stronger than RC11's original boundary-allocation description, but it is not presented as a prospectively preregistered fast-gate × slow-template hypothesis.
+The integrated paper is therefore a transparent synthesis of frozen and post-freeze evidence. The central biological pattern is stronger than the earlier boundary-allocation description, but it is not presented as a prospectively preregistered fast-gate × slow-template hypothesis.
