@@ -46,9 +46,6 @@ Historical RC5 remains preserved at:
 - [ ] CRediT roles
 - [ ] funding/acknowledgements
 - [ ] Conflict of Interest
-- [ ] repository/archive license — explicit author choice still required
-- [ ] final GitHub release/archive source
-- [ ] persistent archive DOI
 - [ ] final author/institutional approvals
 
 ## Scientific stop
@@ -150,12 +147,34 @@ Decision authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
 
 The frozen WFTS specifications remain in the repository for provenance only.
 
-## Archive-stage boundary
+## Initial-submission versus archive-stage boundary
 
-The repository currently has no GitHub Release object, no root license declaration and no analysis-repository archive DOI. These are the remaining archive blockers; they are not missing scientific evidence.
+Current JAE/BES guidance requires a Data Availability statement at initial submission and permanent archiving as a condition for publication. The current manuscript already contains the Data Availability statement. A repository/archive DOI is therefore **not treated here as a blocker for initial submission**; it remains a pre-publication/finalization requirement.
+
+### Remaining initial-submission blockers
+
+Only author-side metadata/approval items remain:
+- final author set/order and affiliations;
+- corresponding-author details;
+- CRediT roles where applicable;
+- funding/acknowledgements;
+- Conflict of Interest;
+- final Statement on Inclusion approval;
+- final author/institutional approvals.
+
+### Pre-publication archive finalization
+
+- [ ] repository/archive license — explicit author choice still required
+- [ ] final GitHub release/archive source
+- [ ] persistent archive DOI
+- [ ] final archive `CITATION.cff` / Zenodo metadata generated
 
 Archive instructions:
 - `submission/ARCHIVE_HANDOFF_2026-10-05.md`
+
+Policy basis checked 2026-10-05:
+- JAE Author Guidelines: https://besjournals.onlinelibrary.wiley.com/hub/journal/13652656/author-guidelines
+- BES data archiving policy: https://besjournals.onlinelibrary.wiley.com/hub/data_archiving_policy
 
 ## Revision-stage note
 

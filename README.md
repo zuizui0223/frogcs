@@ -13,7 +13,7 @@ Current scientific/submission refs:
 - validated RC6 scientific source: `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
 - current project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 
-The scientific analysis path is closed. Remaining work is submission metadata and archive finalization.
+The scientific analysis path is closed. Initial submission now depends only on author-side metadata/approvals; archive license/release/DOI finalization is a later pre-publication step.
 
 ## Main result
 
@@ -118,21 +118,32 @@ The landscape branches are **closed for the current project**. The prespecified 
 Current authority:
 - `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`
 
-## Archive and submission status
+## Submission and archive status
 
-The scientific package is closed. The remaining author-side tasks are:
+The scientific package is closed.
+
+### Initial submission
+
+Remaining blockers are author-side only:
 
 - final author set/order and affiliations;
 - corresponding-author details;
-- CRediT roles;
+- CRediT roles where applicable;
 - funding/acknowledgements;
 - Conflict of Interest;
 - final Statement on Inclusion approval;
-- repository/archive license choice;
-- persistent archive DOI;
 - final author/institutional approvals.
+
+### Pre-publication archive finalization
+
+Still pending:
+
+- repository/archive license choice;
+- final release/archive source;
+- persistent archive DOI;
+- final `CITATION.cff` / Zenodo metadata.
 
 Archive handoff:
 - `submission/ARCHIVE_HANDOFF_2026-10-05.md`
 
-The manuscript currently states that the code and derived analysis package will be archived in Zenodo at finalization. Raw third-party source datasets are not redistributed.
+The manuscript already states that the code and derived analysis package will be archived in Zenodo at finalization. Raw third-party source datasets are not redistributed.
