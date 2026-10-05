@@ -7,7 +7,7 @@ Current manuscript title:
 **Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
 
 Validated RC6 scientific source:
-- `41cadc0685c1714b07a7d7f09825cd0ba1778657`
+- `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
 
 Release/submission refs:
 - `release/jae-multisite-rc6`
@@ -54,11 +54,11 @@ No new outcome-driven NAAMP endpoint, mechanism family, threshold retuning or cl
 ## Validation
 
 RC6 manuscript QA:
-- run **37246286273**
+- run **37250005953**
 - status **SUCCESS**
 
 RC6 JAE scientific submission pipeline:
-- run **37246286237**
+- run **37250006172**
 - status **SUCCESS**
 
 RC6 figure build:
@@ -71,13 +71,13 @@ RC4 restored-analysis reproducibility smoke:
 
 Scientific submission artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11319770195**
-- size: **1,005,308 bytes**
-- digest: `sha256:40bb813173d0f89246abfe4b59be6b176e17f52b5dc7c3ae4ecb1bbd21f6280f`
+- artifact ID: **11320298330**
+- size: **1,005,305 bytes**
+- digest: `sha256:efe6e65c5fb64a604dd935e92482e7980fb0c248efaa7cc2840c680bcf3faeba`
 
 Current manuscript counts:
-- manuscript: **7,986** whitespace-delimited words;
-- abstract: **320** words;
+- manuscript: **7,987** whitespace-delimited words;
+- abstract: **321** words;
 - keywords: **8**.
 
 ## Novelty safeguards
@@ -100,12 +100,17 @@ RC6 does not claim novelty for:
 
 ## WFTS boundary
 
-WFTS remains a prepared but parked prospective external candidate.
+A prospective WFTS replication was specified but **not pursued**.
 
-It is:
-- not evidence in RC6;
-- not required for RC6 submission;
-- not a current submission gate.
+As of final RC6 closure:
+- no WFTS data were requested;
+- no WFTS response data were received or analysed;
+- WFTS is not evidence in RC6;
+- WFTS is not a submission gate;
+- no WFTS acquisition or execution step is authorized.
+
+Current decision authority:
+- `revision/WFTS_NOT_PURSUED_2026-10-05.md`
 
 Transferability beyond NAAMP remains untested.
 
