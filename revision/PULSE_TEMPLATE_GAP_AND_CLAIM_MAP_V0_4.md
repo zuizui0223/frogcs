@@ -13,7 +13,7 @@ The novelty is not “frogs are spatially coherent”, not “rain synchronizes 
 ## Frog-specific discovery
 
 1. **State switching:** 65.3% of CallingIndex change is 0→positive; 87.1% of activation is 0→CI2/3; direct 0→CI3 is positive.
-2. **Depth:** exact marginal-depth auditing shows no third-stop threshold; calling-incidence depths 1–3 lie within both activation-null envelopes, whereas depths 4–10 are overrepresented. The result is a heavier/deeper within-taxon tail and is overwhelmingly strong chorus.
+2. **Depth:** exact marginal-depth auditing shows no third-stop threshold. Depths 1–3 lie within the uniform-activation envelope; under the persistence-preserving null, depths 1–2 fall below the 95% envelope and depth 3 lies within it, whereas depths 4–10 exceed both null envelopes. The result is a shift toward a heavier/deeper within-taxon tail and is overwhelmingly strong chorus.
 3. **Within-taxon concentration:** in 2,916 pairs with strictly prior site history, observed concentration β=1.650 vs 1.353 predicted by cross-fit species response + prior SiteID history + dry persistence (P=0.000999).
 4. **Stronger sensitivity:** adding a held-out rain × history gate predicts 1.332, still below 1.650 observed (P=0.000999).
 5. **Historical placement:** prior strong SiteID predicts later wet strong chorus within the same pair and taxon (β=0.151).
