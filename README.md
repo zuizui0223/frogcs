@@ -23,7 +23,7 @@ RC3 and the original RC11 submission remain preserved in their historical releas
 
 **Provenance note:** RC5 contains an explicitly post-hoc exploratory extension opened on **2026-10-03** and closed again the same day after targeted common-cause, route-night-scale and recurrent-site tests. These additions are not independent confirmation. The closure authority is `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`; no further same-data lower-level mechanism families are authorized.
 
-**Operational status (2026-10-04):** RC6 is the current NAAMP-only scientific submission package. WFTS acquisition is **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
+**Operational status (2026-10-05):** RC6 is the current NAAMP-only scientific submission package. Post-RC6 landscape exploration and WFTS acquisition are **parked**. No WFTS request email is required, scheduled, or part of the RC6 submission path.
 
 ## Biological result
 
@@ -113,6 +113,7 @@ Supporting Information contains the defence/falsification layer:
 - `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
 - `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
+- `revision/LANDSCAPE_LINES_PARKED_2026-10-05.md`
 - `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_1.md` — superseded
 - `revision/THREE_QUESTION_ECOLOGICAL_SPINE_V0_1.md` — superseded reader-facing structure retained for provenance
 - `revision/RESEARCH_QUESTION_EVOLUTION_2026-10-03.md`
