@@ -3,7 +3,7 @@
 > **CURRENT PROJECT STATUS (2026-10-05): SUPERSEDED / DO NOT EXECUTE.** The prospective WFTS replication was specified but not pursued; no WFTS data were requested or analysed. Current project decision: `revision/WFTS_NOT_PURSUED_2026-10-05.md`. The frozen design below is retained only as historical prospective-design provenance and is not authorized for execution in the current project.
 
 
-**Status:** frozen before WFTS frog-response outcome access. This v0.4 supersedes v0.3 only by adding a prospectively fixed **deep historical-template alignment** secondary test learned from the NAAMP post-hoc structural analysis. The primary WFTS confirmation, its endpoint, comparator, coverage gate, informativeness rule and three-way decision classification remain unchanged from v0.2/v0.3.
+**Historical design status:** frozen before WFTS frog-response outcome access. This v0.4 supersedes v0.3 only by adding a prospectively fixed **deep historical-template alignment** secondary test learned from the NAAMP post-hoc structural analysis. The primary WFTS confirmation, its endpoint, comparator, coverage gate, informativeness rule and three-way decision classification remain unchanged from v0.2/v0.3.
 
 ## 1. Primary real-data authority — unchanged
 
