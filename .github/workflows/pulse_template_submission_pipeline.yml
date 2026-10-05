@@ -147,6 +147,8 @@ jobs:
 
           print({"status":"PASS","manuscript_words":manuscript_words,"abstract_words":abstract_words,"keywords":len(keylist),"main_bytes":main.stat().st_size,"si_bytes":si.stat().st_size,"svg_figures":len(svgs),"png_figures":len(pngs)})
           PY
+      - name: Build anonymous reviewer code bundle
+        run: python scripts/submission/build_anonymous_reviewer_bundle.py --output build/Reviewer_Code.zip
       - name: Assemble anonymous scientific bundle
         run: |
           set -eu
@@ -159,6 +161,7 @@ jobs:
           cp paper/supporting_information.md "$sub/Supporting_Information.md"
           cp build/Supporting_Information.docx "$sub/Supporting_Information.docx"
           cp submission/cover_letter.md "$sub/Cover_Letter.md"
+          cp build/Reviewer_Code.zip "$sub/Reviewer_Code.zip"
           cp figures_pulse_template/fig1_chorus_state_switch.png "$sub/Figure1.png"
           cp figures_pulse_template/fig2_spatial_depth_strong_chorus.png "$sub/Figure2.png"
           cp figures_pulse_template/fig3_within_taxon_concentration.png "$sub/Figure3.png"
