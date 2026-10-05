@@ -133,20 +133,19 @@ The private metadata bundle remains intentionally incomplete until final author 
 - [x] no further NAAMP landscape outcome analysis authorized
 - [x] landscape work is not a submission gate
 
-## WFTS — specified but not pursued
+## WFTS — acquisition reopened, non-blocking
 
-A prospective WFTS replication was specified but is not being pursued.
+A prospective WFTS replication remains separate from RC6, but data acquisition is reopened.
 
 Current status:
-- no WFTS data were requested;
-- no WFTS response data were received or analysed;
+- direct request for the existing station-level export is authorized;
+- no WFTS response data have been received or analysed;
 - WFTS is not evidence in RC6;
 - WFTS is not a submission gate;
-- no WFTS contact or execution step is authorized.
+- receipt logging, schema-only inspection and response-blind structural preflight are authorized;
+- outcome browsing/analysis remains fail-closed until the frozen structural gate passes.
 
-Decision authority: `revision/WFTS_NOT_PURSUED_2026-10-05.md`.
-
-The frozen WFTS specifications remain in the repository for provenance only.
+Operational authority: `revision/WFTS_ACQUISITION_REOPENED_2026-10-05.md`.
 
 ## Revision-stage note
 
