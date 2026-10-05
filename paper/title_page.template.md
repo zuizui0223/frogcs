@@ -50,5 +50,7 @@ Primary source data:
 - [ ] manuscript is not under consideration elsewhere
 - [ ] work is original and necessary acknowledgements are made
 - [ ] legal / conservation / welfare requirements are confirmed
-- [ ] repository license is confirmed
-- [ ] archive DOI is added when available
+
+## Archive finalization note
+
+Repository license and persistent archive DOI are pre-publication archive-finalization items, not author-approval items for the initial submission. The Data Availability statement already identifies the intended Zenodo archive; the DOI will be added when the final archive is minted.
