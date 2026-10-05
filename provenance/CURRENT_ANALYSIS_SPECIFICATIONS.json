@@ -145,7 +145,7 @@
     "execution_lock": "revision/WFTS_REAL_DATA_EXECUTION_LOCK_V0_1.json",
     "execution_lock_qa_run": 37129985326,
     "execution_handoff": "revision/WFTS_REAL_DATA_EXECUTION_HANDOFF_V0_1.md",
-    "pre_receipt_status": "READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE; no internal scientific or implementation blockers remain",
+    "historical_pre_receipt_status": "Before the 2026-10-05 stop decision, WFTS was READY_FOR_EXTERNAL_ACQUISITION_ONLY_FAIL_CLOSED_QA_COMPLETE; this readiness state is superseded by revision/WFTS_NOT_PURSUED_2026-10-05.md",
     "full_chain_qa": {
       "workflow": ".github/workflows/wfts_full_chain_qa.yml",
       "run": 37130556855,
