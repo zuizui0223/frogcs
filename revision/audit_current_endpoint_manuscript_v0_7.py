@@ -27,7 +27,7 @@ required=[
     "0.0855",
     "0.967 to 1.775",
     "dependence structure",
-    "post-opening and exploratory",
+    "exploratory at manuscript level",
     "independent monitoring programmes",
     "(Fig. 1)",
     "(Figs 2–3)",
