@@ -30,6 +30,8 @@ Historical RC5 remains preserved at:
 - [x] ≤8 alphabetized keywords — **8**
 - [x] manuscript below 8,500 words — **7,986**
 - [x] separate Supporting Information
+- [x] separate title-page template contains author/affiliation/corresponding-author, acknowledgements, COI and contributions fields
+- [x] optional anonymous cover letter ≤500 words — **366**
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
