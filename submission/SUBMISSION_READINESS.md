@@ -32,10 +32,15 @@ Historical RC5 remains preserved at:
 - [x] anonymous main manuscript **7,986** words; current title-page template **158** words; combined current count ≈ **8,144**, below the 8,500-word Research Article limit before final author metadata
 - [x] separate Supporting Information
 - [x] separate title-page template contains author/affiliation/corresponding-author, acknowledgements, COI and contributions fields
-- [x] optional anonymous cover letter ≤500 words — **366**
+- [x] optional anonymous cover letter ≤500 words — **412**
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
+- [x] Figure 2 marginal-depth wording checked against frozen figure data: depths 1–3 within uniform envelope; persistence depths 1–2 below, depth 3 within; depths 4–10 above both
+- [x] submitted figures contain no full "Fig. N" titles inside image panels
+- [x] Figure 3 displays observed conditional residuals against simulated null 95% intervals
+- [x] SI reader-facing prose uses natural timing language; internal provenance filenames consolidated in S17.6
+- [x] anonymized reviewer-code bundle configured in scientific submission artifact
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
 - [x] RC6 figure build — run **37189806897**, SUCCESS
