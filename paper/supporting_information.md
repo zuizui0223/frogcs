@@ -17,7 +17,7 @@ Pairwise Sørensen stability remains secondary bounded context because the equiv
 
 Species-trait and response-trait analyses are retained explicitly as falsification evidence. In particular, the proposed activation geometry was highly repeatable but failed a separately frozen placebo gate and is therefore **not** interpreted as a rainfall-specific response trait. Negative and non-estimable mechanism tests remain visible to prevent outcome-dependent switching.
 
-The analyses below were frozen and versioned before their own results were inspected where applicable. Those safeguards constrain within-analysis flexibility but do not convert post-opening analyses into preregistered hypotheses.
+The analyses below were frozen and versioned before their own results were inspected where applicable. Those safeguards constrain within-analysis flexibility but do not convert developed after the initial analyses analyses into preregistered hypotheses.
 
 ---
 
@@ -37,12 +37,12 @@ The integrated manuscript distinguishes **discovery evidence** from **defence ev
 | Why not identify a single lower-level mechanism? | The ordered mechanism-null sequence stopped after the final held-out gate; trait and context candidates failed or were non-estimable | S4–S6; S15 |
 | Is NAAMP cross-fitting independent confirmation? | No: all integrated NAAMP analyses remain exploratory at manuscript level | S17 |
 
-The detailed evidence-to-claim ledger is stored in `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md`.
+A detailed evidence-to-claim ledger is retained with the repository provenance; the relevant provenance records are consolidated in S17.6.
 
 
 ## S1. Analysis hierarchy and provenance
 
-The original programme-level rainfall endpoint was frozen before the effect estimate was inspected. The metacommunity, matrix, functional and response-trait analyses were developed subsequently as post-opening mechanistic/community extensions.
+The original programme-level rainfall endpoint was frozen before the effect estimate was inspected. The metacommunity, matrix, functional and response-trait analyses were developed subsequently as developed after the initial analyses mechanistic/community extensions.
 
 For those extensions, the repository preserves:
 - versioned contracts written before results were inspected;
@@ -51,7 +51,7 @@ For those extensions, the repository preserves:
 - exact algebraic identities for matrix decompositions;
 - negative results and failed mechanism tests.
 
-These safeguards do not convert post-opening questions into preregistered hypotheses. The main evidential claim rests on convergence among independently specified decompositions rather than on nominal significance of every extension.
+These safeguards do not convert developed after the initial analyses questions into preregistered hypotheses. The main evidential claim rests on convergence among independently specified decompositions rather than on nominal significance of every extension.
 
 ---
 
@@ -132,7 +132,7 @@ The prespecified buffering prediction was therefore unsupported. Response divers
 
 ### S5.1 Body size
 
-An initial pooled post-opening analysis suggested that smaller-bodied species had more positive wet-associated responses. Because body size is phylogenetically structured and the family-adjusted model was unstable, subsequent family-aware validation was treated as the stronger gate. The final family-stratified permutation did not authorize body size as the mechanism (P = .314).
+An initial pooled developed after the initial analyses analysis suggested that smaller-bodied species had more positive wet-associated responses. Because body size is phylogenetically structured and the family-adjusted model was unstable, subsequent family-aware validation was treated as the stronger gate. The final family-stratified permutation did not authorize body size as the mechanism (P = .314).
 
 We therefore do not claim that body size explains species rainfall responses.
 
@@ -428,7 +428,7 @@ The frozen AmphiBIO functional panel covers body size, clutch size, offspring si
 
 The activation-geometry placebo gate remains the final species-trait falsification for the species-trait analyses. It failed, so activation geometry is demoted rather than redefined.
 
-No additional endpoint search is authorized to rescue activation geometry or replace it with another post-opening species trait in this manuscript.
+No additional endpoint search is authorized to rescue activation geometry or replace it with another developed after the initial analyses species trait in this manuscript.
 
 Future mechanistic work should use independent data or independently sourced proximal traits and begin from a new frozen hypothesis family. The current article remains focused on the multiscale geometry of community expansion, matrix fill and beta diversity.
 
@@ -776,7 +776,7 @@ The persistence-preserving stress test gave the same result. At the primary 0.75
 
 ### S10.1 Provenance and question
 
-These analyses were conducted after the earlier matrix results were known. The CallingIndex decomposition was developed during post-freeze mechanism exploration. The direct 0→CallingIndex 3 endpoint was fixed in `exploration/NAAMP_NEW_FULL_CHORUS_ACTIVATION_CONTRACT_V0_1.json` before that endpoint was read.
+These analyses were conducted after the earlier matrix results were known. The CallingIndex decomposition was developed during later mechanism exploration. The direct 0→CallingIndex 3 endpoint and its decision rule were fixed before that endpoint was inspected; provenance records are listed in S17.6.
 
 The question was whether rainfall-associated recruitment was confined to marginal CallingIndex 1 detections or included direct entry from acoustic silence to overlapping/full chorus states.
 
@@ -814,7 +814,7 @@ The exact concentration score used below, `sum choose(k_i-1,2)`, is **not presen
 
 ### S11.1 Exact decomposition
 
-The post-freeze spatial-depth analysis was fixed before endpoint readback in `NAAMP_ROUTE_NEW_SPATIAL_DEPTH_CONTRACT_V0_1.json`.
+The spatial-depth analysis and its decision rule were fixed before the endpoint was inspected; provenance records are listed in S17.6.
 
 For every species with no recorded call at any dry-route stop and at least one recorded call in the wetter survey, (k) was the number of wetter-survey stops with a calling record. In the algebra below, "occupied stop" is shorthand for a **calling-positive sampling stop**, not evidence that the species was physically absent elsewhere. Extra spatial participation was decomposed into:
 
@@ -918,7 +918,7 @@ The principal population was the exact 2,916-pair strictly-prior-history subset 
 - a = 0.75 dry-state persistence;
 - one pair-level common shift matching expected wet incidence magnitude to the observed total.
 
-Across 1,000 simulations, the within-taxon concentration rainfall coefficient was conditioned on the simulated route-new-species and total extra-stop coefficients using the same residual procedure fixed before endpoint readback.
+Across 1,000 simulations, the within-taxon concentration rainfall coefficient was conditioned on the simulated route-new-species and total extra-stop coefficients using the same residual procedure fixed before the corresponding endpoint was inspected.
 
 Observed:
 - route-new-species β = **0.1982**;
@@ -1083,13 +1083,13 @@ The pooled signal therefore does not depend on any single sampled state, but its
 
 The historical analysis contracts and script filenames use the term `higher_order` because that was the exploratory label under which the concentration score was developed. The integrated manuscript deliberately uses **within-taxon spatial concentration** and **multi-site coherence** instead, to avoid confusion with “higher-order interactions” among three or more species.
 
-All S11 concentration analyses are post-opening relative to the original NAAMP matrix analysis. Cross-fitting prevents focal-route leakage in fitted species-response terms; it does not make these results an independent confirmation dataset.
+All S11 concentration analyses are developed after the initial analyses relative to the original NAAMP matrix analysis. Cross-fitting prevents focal-route leakage in fitted species-response terms; it does not make these results an independent confirmation dataset.
 
 ## S12. Historical recurrence of apparent wet-state recruitment
 
 ### S12.1 Route-new incidence recurrence
 
-The recurrent-activation analysis was fixed before endpoint readback in `NAAMP_RECURRENT_ACTIVATION_MEMORY_CONTRACT_V0_1.json` and restricted to physically stable pairs.
+The recurrent-activation analysis was fixed before the endpoint was inspected and restricted to physically stable pairs. Its current evidence classification is retained in the integrated provenance records summarized in S17.6.
 
 Leave-pair-out history classified focal route-new wet incidences as same-site recurrent, route-only recurrent or one-off within the State × RouteNumber × RunNumber stratum.
 
@@ -1109,7 +1109,7 @@ A prior record at the same SiteID may reflect stable habitat suitability, repeat
 
 ## S13. Within-species historical site targeting
 
-The local-targeting analysis was fixed before endpoint readback in `NAAMP_LOCAL_CHORUS_MEMORY_TARGETING_CONTRACT_V0_1.json`.
+The local-targeting analysis was fixed before the endpoint was inspected; provenance records are listed in S17.6.
 
 Focal species were absent from all ten dry stops, present in the wet survey and recorded somewhere on the route in a strictly prior year. The unit was pair × species × physical SiteID. The predictor was whether that same species had previously reached CI2/3 at the SiteID.
 
@@ -1125,7 +1125,7 @@ This identifies repeated spatial placement of strong acoustic activity. It does 
 
 ## S14. Rain-selective historical targeting
 
-A historical site may be repeatedly favourable even without rain selectivity. The directional placebo analysis in `NAAMP_RAIN_SELECTIVE_LOCAL_MEMORY_CONTRACT_V0_1.json` therefore mirrored wet-target and dry-target directions within each matched pair.
+A historical site may be repeatedly favourable even without rain selectivity. The directional placebo analysis was therefore fixed before its result was inspected and mirrored wet-target and dry-target directions within each matched pair; provenance records are listed in S17.6.
 
 For each direction, the endpoint was the CI3 rate among historically strong candidate cells minus the CI3 rate among non-recurrent candidate cells. Target-rain advantage was +rain_contrast for the wet direction and −rain_contrast for the dry direction, and both endpoint and predictor were demeaned within pair.
 
@@ -1140,7 +1140,7 @@ Thus proximity to rain selectively strengthens full-chorus placement at sites wi
 
 ### S15.1 Rationale
 
-The integrated manuscript does not infer a mechanism from a single null rejection. Instead, post-freeze exploration evaluated an ordered set of increasingly structured generative comparators. Each comparator was fixed before its own endpoint readback. The final escalation path was itself governed by `MECHANISM_DECISION_TREE_V0_1.json`.
+The integrated manuscript does not infer a mechanism from a single null rejection. Instead, later exploration evaluated an ordered set of increasingly structured generative comparators. Each comparator and the escalation order were fixed before the corresponding result was inspected; the versioned decision record is listed in S17.6.
 
 ### S15.2 Sequence
 
@@ -1162,11 +1162,11 @@ Under the final held-out null:
 - observed within-core share = **0.0787**;
 - null within-core mean = **0.1862**.
 
-### S15.3 Original stopping rule and explicit reopening
+### S15.3 Original stopping rule and later exploratory extension
 
 The prefixed decision tree required stopping after rejection of the held-out rain × local-history gate and originally prohibited additional trait fishing, same-data site-specific rainfall coefficients, relaxed gates or further mechanism models. That historical rule and its original decision-tree file are retained unchanged for auditability.
 
-On **3 October 2026**, after the integrated manuscript result and its limitations had been documented, same-data mechanism analysis was explicitly reopened for targeted falsification of additional common-cause explanations. All analyses conducted after this reopening are labelled **post-hoc exploratory sensitivity analyses**. They do not become prespecified tests, do not constitute independent confirmation, and cannot be used to rewrite the provenance of the original stopped sequence.
+After the integrated result and its limitations had been documented, the same data were used for a finite set of targeted falsification analyses addressing additional common-cause explanations. These analyses are labelled **post-hoc exploratory sensitivity analyses**. They do not become prespecified tests, do not constitute independent confirmation, and cannot be used to rewrite the provenance of the original stopped sequence.
 
 Until such post-hoc analyses identify a better-supported generator, the evidentially conservative interpretation remains **structured state-dependent re-expression with an unresolved lower-level generator**, not identification of a unique mechanism.
 
@@ -1361,7 +1361,7 @@ Includes:
 - detection-condition, protocol-window, same-observer and geographic robustness;
 - FrogID active-unit taxonomic-depth consistency.
 
-### S17.2 Post-freeze analyses fixed before their own endpoint readback
+### S17.2 Later analyses fixed before the corresponding results were inspected
 
 Includes:
 - direct 0→CI3 endpoint;
@@ -1382,11 +1382,11 @@ Includes:
 - joint species + history + dry-persistence null;
 - held-out rain × local-history gate.
 
-These tests are protected against retuning after their own readback but remain post-opening relative to the original manuscript.
+These tests were protected against retuning after the corresponding results were inspected, but they were developed after the original manuscript analyses had already been examined.
 
 ### S17.3 Post-reopening exploratory falsification and diagnostics
 
-The following analyses were conducted only after the original stopping rule was explicitly lifted on 3 October 2026:
+The following analyses were conducted only in the later post-hoc falsification phase, after the original stopping rule had ended the earlier mechanism sequence:
 
 - flexible nonlinear route-night common-environment null;
 - species-specific 72-h ERA5 rainfall-amount common-environment null;
@@ -1402,10 +1402,10 @@ The following analyses were conducted only after the original stopping rule was 
 - exact-k deep historical-template alignment test;
 - taxonomic breadth of the historical dependence departure;
 - IID versus clustered uncertainty diagnostics, including route-across-years and specieswise comparisons;
-- an exact-coordinate distance profile retained for provenance but **not interpreted** after geometry-only QC found gross coordinate transcription errors in the pinned source table (`revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md`);
-- an exchangeable-GEE corroboration retained for provenance but **not interpreted** because the full and dry-active fits were numerically degenerate (`revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md`).
+- an exact-coordinate distance profile retained for provenance but **not interpreted** after geometry-only QC found gross coordinate transcription errors in the pinned source table;
+- an exchangeable-GEE corroboration retained for provenance but **not interpreted** because the full and dry-active fits were numerically degenerate.
 
-These analyses were fixed before their own newly defined outputs were read, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree. After the fast-state × distributed-template structure and its direct deep-versus-shallow contrast had been documented, the reopened NAAMP mechanism-analysis line was **closed again on 3 October 2026**. The closure record (`revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`) prohibits new same-data lower-level mechanism families or outcome-driven retuning; only bug correction, deterministic reproducibility work and previously frozen QA remain authorized.
+These analyses were fixed before their newly defined outputs were inspected, but they are **post-hoc with respect to the NAAMP discovery**. They are not independent confirmation and cannot retrospectively be classified as part of the earlier decision tree. After the structural diagnostics and direct deep-versus-shallow contrast had been documented, the same-data mechanism-analysis line was closed again. The project closure prohibits new same-data lower-level mechanism families or outcome-driven retuning; only bug correction, deterministic reproducibility work and previously frozen QA remain authorized.
 
 ### S17.4 Descriptive or non-gating diagnostics
 
@@ -1413,4 +1413,21 @@ Includes raw recurrence percentages, memory-age diagnostics that failed their pr
 
 ### S17.5 Manuscript-level interpretation
 
-The integrated paper is therefore a transparent synthesis of frozen and post-freeze evidence. The central biological pattern is stronger than the earlier boundary-allocation description, but it is not presented as a prospectively preregistered fast-gate × slow-template hypothesis.
+The integrated paper is therefore a transparent synthesis of earlier and later evidence. The central biological pattern is stronger than the earlier boundary-allocation description, but it is not presented as a prospectively preregistered mechanism hypothesis.
+
+### S17.6 Consolidated provenance records
+
+Internal file names are collected here rather than embedded in the biological Methods/Results text. They document analysis timing, decision rules and quality-control boundaries; they are not additional evidence.
+
+| Analysis/provenance role | Repository record |
+|---|---|
+| Current analysis authority and routing | `provenance/CURRENT_ANALYSIS_SPECIFICATIONS.json` |
+| Evidence-to-claim ledger | `revision/EVIDENCE_CLAIM_LEDGER_V0_1.md` |
+| Direct 0→CallingIndex 3 analysis | `exploration/NAAMP_NEW_FULL_CHORUS_ACTIVATION_CONTRACT_V0_1.json` |
+| Route-new spatial-depth analysis | `exploration/NAAMP_ROUTE_NEW_SPATIAL_DEPTH_CONTRACT_V0_1.json` |
+| Historical strong-site targeting | `exploration/NAAMP_LOCAL_CHORUS_MEMORY_TARGETING_CONTRACT_V0_1.json` |
+| Rain-selective historical targeting | `exploration/NAAMP_RAIN_SELECTIVE_LOCAL_MEMORY_CONTRACT_V0_1.json` |
+| Ordered mechanism decision sequence | `exploration/MECHANISM_DECISION_TREE_V0_1.json` |
+| Coordinate-geometry quality-control boundary | `revision/NAAMP_COORDINATE_GEOMETRY_QC_V0_1.md` |
+| GEE numerical quality-control boundary | `revision/NAAMP_GEE_CORROBORATION_QC_V0_1.md` |
+| Same-data mechanism-analysis closure record | `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md` |
