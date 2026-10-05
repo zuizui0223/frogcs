@@ -2,7 +2,7 @@
 
 ## Current state
 
-The scientific package is closed. Archive finalization is the remaining repository-side step before a persistent archive DOI can be inserted into the manuscript/title-page metadata.
+The scientific package is closed. Archive finalization is the remaining repository-side step before a persistent archive DOI can be inserted into the final publication metadata. Under current JAE/BES guidance, this archive DOI is **not treated as a blocker for initial submission**; the permanent archive must be completed before publication/final acceptance processing.
 
 As of 2026-10-05:
 
@@ -14,7 +14,7 @@ As of 2026-10-05:
 - `repository.archive_doi` is empty;
 - the manuscript Data Availability section correctly says that the code and derived package **will be archived in Zenodo at finalization**.
 
-These are archive/submission metadata gaps, not scientific-evidence gaps.
+These are archive/finalization metadata gaps, not scientific-evidence gaps and not, by themselves, initial-submission blockers.
 
 ## Archive source
 
@@ -29,6 +29,16 @@ Project-closure authorities:
 - `revision/LANDSCAPE_LINES_CLOSED_2026-10-05.md`
 
 The archive may include later provenance/status cleanup provided it does not alter the frozen manuscript/SI scientific results.
+
+## Initial submission can proceed before archive minting
+
+The current manuscript already contains a Data Availability statement identifying the public source datasets and stating that the code/derived analysis package will be archived in Zenodo at finalization.
+
+For initial JAE submission, the remaining blockers are author-side metadata and approvals, not the Zenodo DOI itself.
+
+Current policy basis checked 2026-10-05:
+- JAE Author Guidelines: https://besjournals.onlinelibrary.wiley.com/hub/journal/13652656/author-guidelines
+- BES data archiving policy: https://besjournals.onlinelibrary.wiley.com/hub/data_archiving_policy
 
 ## Required human metadata before archive minting
 
@@ -99,13 +109,15 @@ The source-data DOIs remain:
 
 ## Submission consequence
 
-RC6 does **not** need more NAAMP analysis, WFTS work or landscape exploration before archiving.
+RC6 does **not** need more NAAMP analysis, WFTS work or landscape exploration.
 
-The repository-side blockers are now only:
+For **initial submission**, only author-side metadata/approval completion remains.
 
-- human metadata/approvals;
-- license choice;
+For **pre-publication archive finalization**, the remaining repository-side items are:
+
+- explicit license choice;
 - final release/archive creation;
-- Zenodo DOI minting.
+- Zenodo DOI minting;
+- final archive metadata/CITATION generation.
 
-After those are supplied, the existing metadata pipeline can generate the final title-page, Zenodo and citation files without reopening the scientific analysis.
+After those are supplied, the existing metadata pipeline can generate the final archive-facing title-page, Zenodo and citation files without reopening the scientific analysis.
