@@ -15,7 +15,7 @@ Release/submission refs:
 
 The RC6 reader-facing revision changes framing, title, evidence routing, novelty boundaries, submission metadata and reviewer-defence documentation relative to RC5. It does **not** change the frozen numerical endpoints.
 
-## Primary endpoint
+## Focal endpoint
 
 - prior-history subset: **2,916** matched pairs;
 - observed within-taxon concentration: **1.650**;
@@ -27,7 +27,7 @@ The RC6 reader-facing revision changes framing, title, evidence routing, novelty
 
 ## Biological interpretation
 
-The primary endpoint is interpreted through:
+The focal endpoint is interpreted through:
 - rainfall-associated entry from acoustic silence, often into CI2/3 strong chorus;
 - a deeper-than-expected within-taxon multi-site tail;
 - preferential re-expression of strong chorus at recurrent taxon-specific physical sites.
