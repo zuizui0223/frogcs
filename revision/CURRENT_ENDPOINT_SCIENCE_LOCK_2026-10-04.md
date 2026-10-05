@@ -11,14 +11,14 @@ This lock follows:
 - the conceptual-neighbor audit;
 - the explicit 2026-10-03 reopening-and-closure record.
 
-## Frozen primary endpoint
+## Frozen focal endpoint
 
 Conditional within-taxon multi-site concentration among taxa acoustically recruited on the wetter survey.
 
 Primary history subset:
 - 2,916 matched pairs.
 
-Frozen primary result:
+Frozen focal result:
 - observed concentration: 1.650;
 - principal comparator: 1.353;
 - conditional residual: 0.297;
@@ -26,11 +26,11 @@ Frozen primary result:
 - P = 0.000999;
 - stronger held-out rain × history prediction: 1.332.
 
-No new NAAMP endpoint may replace this primary endpoint based on a more attractive result.
+No new NAAMP endpoint may replace this focal endpoint based on a more attractive result.
 
 ## Frozen biological interpretation
 
-The primary endpoint is interpreted using two linked results:
+The focal endpoint is interpreted using two linked results:
 
 1. **state change**
    - rain-associated change frequently enters from acoustic silence;
@@ -82,7 +82,7 @@ Not allowed without a new explicit reopening record:
 - new NAAMP endpoints chosen after seeing results;
 - retuning the primary comparator;
 - redefining deep/shallow thresholds from outcomes;
-- replacing the primary endpoint with a post-hoc stronger statistic;
+- replacing the focal endpoint with a post-hoc stronger statistic;
 - escalating recurrent-site results into individual fidelity or memory.
 
 ## Evidential upgrade
