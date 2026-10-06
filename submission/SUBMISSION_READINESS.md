@@ -41,7 +41,7 @@ Historical RC5 remains preserved at:
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
-- [x] final anonymous scientific submission artifact recorded — artifact ID **11393249104**, digest `sha256:3714e36148fb3d11d2b2e52b1dc72aa297e6d2284293bde6fe477c460d61ffa7`
+- [x] final anonymous scientific submission artifact recorded — artifact ID **11410907633**, digest `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
 - [x] finite public-data scale validation completed and reclosed — blocked State/time transferability supported; future-rain negative control retained as an interpretation boundary
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
@@ -135,10 +135,10 @@ Historical RC6 release artifact:
 - status: **superseded for current initial submission**
 
 Current canonical initial-submission artifact:
-- artifact ID: **11393249104**
-- digest: `sha256:3714e36148fb3d11d2b2e52b1dc72aa297e6d2284293bde6fe477c460d61ffa7`
-- source scientific commit: `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`
-- JAE pipeline run: **37422937862**
+- artifact ID: **11410907633**
+- digest: `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
+- source scientific commit: `e5eb94885346a1c0c3247a14eed0c847d3c3d775`
+- JAE pipeline run: **37458881761**
 - authority: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
 
 The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
