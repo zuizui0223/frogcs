@@ -136,6 +136,18 @@ The two closest ecological antecedents are:
 
 These studies remove any defensible novelty claim based simply on multi-site response, cross-site covariance, or recurrent acoustic site structure.
 
+## What changes relative to the prior literature
+
+Prior work answers much of **when, where and how strongly frogs call** under changing environmental conditions. The present paper adds a different response property: **how a fixed amount of realised activity is configured across taxa and repeated places**.
+
+The strongest knowledge update is therefore not another weather-response coefficient. It is:
+
+> **response magnitude does not uniquely specify ecological response configuration.**
+
+Within NAAMP, that configuration-level excess also persists under focal-State-excluded response calibration and a 2009–2015 temporal block trained only on pre-2009 response/history. The result is therefore broader than a pooled same-sample association, while still falling short of external confirmation.
+
+A future-rain placebo limits the weather mechanism interpretation: antecedent rainfall amount is not granted special temporal-mechanism status merely because it improves prediction slightly.
+
 ## Current novelty verdict
 
 **Novelty remains substantive but narrow.**
@@ -143,4 +155,4 @@ These studies remove any defensible novelty claim based simply on multi-site res
 The paper should not be sold as discovering weather-sensitive frog chorusing or spatially coordinated frog activity.
 
 It should be sold as:
-> **a large-scale dependence-level analysis of how wet-state acoustic activity is allocated within a repeated species × place matrix, after the most obvious first-order ecological explanations are explicitly built into the comparator.**
+> **a large-scale demonstration that environmental response has both a magnitude and a realised taxon-by-place configuration, with the latter retaining structure after first-order ecological explanations and response amount are explicitly represented.**
