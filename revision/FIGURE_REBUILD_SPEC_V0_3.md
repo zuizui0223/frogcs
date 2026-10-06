@@ -9,7 +9,7 @@ Canonical renderer:
 - `revision/PULSE_TEMPLATE_FIGURE_DATA_V0_1.json`
 
 ## Figure 1 — chorus-state switching
-Use point estimates throughout; show 95% CIs only for the direct CI3 endpoints because those are the inferential intervals stored in the frozen figure data. Do not mix bars and points.
+Use point estimates throughout; show 95% CIs only for the direct CI3 endpoints because those are the inferential intervals stored in the frozen figure data. Do not mix bars and points. Place the note **above** the axes so it cannot overlap the lower CI bars, and state explicitly: top three = point estimates only; bottom two = 95% CI.
 
 Keep:
 - total CallingIndex;
@@ -33,22 +33,25 @@ Interpretation:
 - no exponential increase with depth;
 - the signal is a heavier/deeper within-taxon spatial tail than expected.
 
-## Figure 3 — principal species/site comparator versus within-taxon concentration
+## Figure 3 — principal and blocked transferability tests
 
-Main-text Figure 3 now shows **only the two ecologically strongest tests**:
+Main-text Figure 3 shows four conditional-residual tests:
 
 1. principal species-specific rainfall response + strictly-prior SiteID history + dry-persistence comparator;
-2. the stronger held-out rain × history gate.
+2. held-out rain × history gate;
+3. focal-State-excluded species-response training;
+4. temporal block with response and physical-site history frozen through 2008 and evaluated in 2009–2015.
 
 Show:
-- observed = 1.650;
-- principal prediction = 1.353;
-- final rain × history prediction = 1.332;
+- principal: observed 1.650, prediction 1.353, residual 0.297, null 95% −0.132 to 0.119;
+- held-out gate: observed 1.650, prediction 1.332, residual 0.318, null 95% −0.117 to 0.126;
+- State-blocked: observed 1.650, prediction 1.356, residual 0.295, null 95% −0.120 to 0.130;
+- temporal block: observed 3.006, prediction 2.429, residual 0.577, null 95% −0.225 to 0.238;
 - conditional residuals as squares;
 - simulated 95% null-residual intervals as horizontal bars;
-- principal residual 0.297 versus −0.132 to 0.119;
-- held-out-gate residual 0.318 versus −0.117 to 0.126;
-- both conditional upper-tail P ≈ 0.001 (minimum attainable with 1,000 simulations).
+- all four upper-tail P ≈ 0.001.
+
+Use a light separator between the first two principal/sensitivity rows and the two post-hoc blocked-transferability rows. The lower two rows must remain labelled **post-hoc within-programme transferability**, not independent confirmation.
 
 Do **not** show in the main figure:
 - uniform activation;
