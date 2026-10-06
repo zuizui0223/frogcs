@@ -9,10 +9,10 @@ Final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2
 The scientific and technical initial-submission package is complete.
 
 Canonical scientific-bundle source:
-- commit: `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`
-- JAE pipeline run: **37422937862**
-- artifact ID: **11393249104**
-- digest: `sha256:3714e36148fb3d11d2b2e52b1dc72aa297e6d2284293bde6fe477c460d61ffa7`
+- commit: `e5eb94885346a1c0c3247a14eed0c847d3c3d775`
+- JAE pipeline run: **37458881761**
+- artifact ID: **11410907633**
+- digest: `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
 
 The final conceptual framing distinguishes response magnitude from realised configuration without altering any numerical endpoint. Later receipt-only repository edits do not alter the canonical submission inputs.
 
@@ -22,8 +22,8 @@ The manuscript, Supporting Information, figures and scientific endpoints are clo
 
 The final submission-facing packaging PR passed:
 
-- integrated manuscript QA — **SUCCESS** within JAE pipeline run **37422937862**
-- JAE submission pipeline — **SUCCESS** (run **37422937862**)
+- integrated manuscript QA — **SUCCESS** within JAE pipeline run **37458881761**
+- JAE submission pipeline — **SUCCESS** (run **37458881761**)
 - build pulse-template figures — **SUCCESS**
 - RC4 restored-analysis reproducibility smoke — **SUCCESS**
 - WFTS real-data authority lock — **SUCCESS**
