@@ -1,0 +1,145 @@
+{
+  "analysis": "naamp_future_rain_negative_control_v0_1",
+  "antecedent_72h_amount_model": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.6024601721914428,
+    "null_residual_ci95": [
+      -0.13150056063417556,
+      0.1300150167393408
+    ],
+    "observed_concentration_beta": 1.713554974812249,
+    "observed_conditional_residual": 0.2790778433777883,
+    "predicted_concentration_beta": 1.4344771314344607
+  },
+  "classification": "future_placebo_rejected",
+  "contract": "exploration/NAAMP_FUTURE_RAIN_NEGATIVE_CONTROL_CONTRACT_V0_1.json",
+  "coverage": {
+    "gate_pass": true,
+    "pairs": 2835,
+    "routes": 428,
+    "states": 20,
+    "weather_runs_both_windows": 7559
+  },
+  "environment_shift_audit": {
+    "antecedent": {
+      "mean_abs_species_pair_logit_shift": 0.6236036460887401,
+      "q95_abs_species_pair_logit_shift": 1.8035964917454483
+    },
+    "future": {
+      "mean_abs_species_pair_logit_shift": 0.6271883126019525,
+      "q95_abs_species_pair_logit_shift": 1.785785303979091
+    }
+  },
+  "era5": {
+    "antecedent_sha256": "d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1",
+    "antecedent_window_hours": 72,
+    "future_sha256": "5020282e4dd8c8b5e1676677368c5dcc716aec95fe96c3b6517c4ca572c158c7",
+    "future_window_hours": 72,
+    "future_window_offset_hours": [
+      1,
+      72
+    ]
+  },
+  "future_72h_placebo_model": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.5973439629822961,
+    "null_residual_ci95": [
+      -0.1315954772389674,
+      0.13429855992479703
+    ],
+    "observed_concentration_beta": 1.713554974812249,
+    "observed_conditional_residual": 0.2844525229714796,
+    "predicted_concentration_beta": 1.4291024518407693
+  },
+  "interpretation_boundary": {
+    "causal_rainfall_claim": false,
+    "days_since_rain_retained_in_both_amount_models": true,
+    "future_placebo_failure_proves_causality": false,
+    "future_rain_can_proxy_persistent_wet_regime": true,
+    "posthoc_negative_control": true
+  },
+  "model_training": {
+    "antecedent": {
+      "fold_A": {
+        "feature_count": 42,
+        "n_estimable_species": 43,
+        "n_training_routes": 376,
+        "n_training_runs": 3800,
+        "training_fold": "A"
+      },
+      "fold_B": {
+        "feature_count": 42,
+        "n_estimable_species": 42,
+        "n_training_routes": 382,
+        "n_training_runs": 3759,
+        "training_fold": "B"
+      },
+      "n_estimable_A": 43,
+      "n_estimable_B": 42
+    },
+    "future": {
+      "fold_A": {
+        "feature_count": 42,
+        "n_estimable_species": 43,
+        "n_training_routes": 376,
+        "n_training_runs": 3800,
+        "training_fold": "A"
+      },
+      "fold_B": {
+        "feature_count": 42,
+        "n_estimable_species": 42,
+        "n_training_routes": 382,
+        "n_training_runs": 3759,
+        "training_fold": "B"
+      },
+      "n_estimable_A": 43,
+      "n_estimable_B": 42
+    },
+    "linear": {
+      "fold_A": {
+        "n_routes": 398,
+        "n_runs": 3939,
+        "n_species_estimable": 43,
+        "n_species_total": 53,
+        "training_fold": "A"
+      },
+      "fold_B": {
+        "n_routes": 409,
+        "n_runs": 3909,
+        "n_species_estimable": 42,
+        "n_species_total": 53,
+        "training_fold": "B"
+      }
+    }
+  },
+  "observed": {
+    "concentration_beta": 1.713554974812249,
+    "extra_stop_beta": 0.7014479871304635,
+    "route_new_species_beta": 0.2031197742459689
+  },
+  "residual_comparison": {
+    "antecedent_fraction_removed": 0.16173295961351528,
+    "antecedent_minus_future_fraction_removed": 0.016143942856582355,
+    "antecedent_residual": 0.2790778433777883,
+    "future_fraction_removed": 0.14558901675693292,
+    "future_residual": 0.2844525229714796,
+    "linear_residual": 0.3329223623645263,
+    "run_level_log1p_antecedent_future_correlation": 0.05191290972619061
+  },
+  "response_endpoint_read": true,
+  "same_sample_linear_comparator": {
+    "above_upper_95": true,
+    "conditional_upper_tail_p": 0.000999000999000999,
+    "null_regression_r2": 0.5830422031179887,
+    "null_residual_ci95": [
+      -0.12463917437027533,
+      0.12413012248728336
+    ],
+    "observed_concentration_beta": 1.713554974812249,
+    "observed_conditional_residual": 0.3329223623645263,
+    "predicted_concentration_beta": 1.3806326124477226
+  },
+  "status": "complete"
+}
