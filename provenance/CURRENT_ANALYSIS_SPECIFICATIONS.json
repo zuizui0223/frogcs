@@ -391,7 +391,7 @@
   "current_submission_bundle": {
     "status": "canonical_initial_submission_bundle",
     "final_receipt": "submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md",
-    "manuscript_words": 7966,
+    "manuscript_words": 7977,
     "abstract_words": 293,
     "cover_letter_words": 400,
     "framing": "response magnitude versus realised configuration",
@@ -399,8 +399,9 @@
   },
   "environmental_factor_coverage_audit": {
     "status": "coverage_audit_only_no_new_outcome_analysis",
-    "current": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_2.md",
-    "supersedes": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_1.md",
+    "current": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_3.md",
+    "supersedes": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_2.md",
+    "literature_rechecked_through": 2026,
     "science_lock_preserved": true
   },
   "future_local_hydrology_discrimination": {
@@ -408,6 +409,7 @@
     "specification": "revision/PROSPECTIVE_LOCAL_HYDROLOGY_DISCRIMINATION_SPEC_V0_1.md",
     "generated_from": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_2.md",
     "current_manuscript_gate": false,
-    "current_naamp_analysis_reopened": false
+    "current_naamp_analysis_reopened": false,
+    "current_coverage_authority": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_3.md"
   }
 }
