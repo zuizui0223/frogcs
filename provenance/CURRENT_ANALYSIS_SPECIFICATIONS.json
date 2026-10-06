@@ -369,5 +369,20 @@
       "independent external replication only under a new explicit project decision"
     ],
     "evidential_upgrade_source": "independent external replication in a future project only; no WFTS replication is currently pursued"
+  },
+  "public_scale_validation": {
+    "status": "posthoc_blocked_transferability_and_temporal_negative_control",
+    "blocked_transferability": {
+      "contract": "exploration/NAAMP_BLOCKED_TRANSFERABILITY_CONTRACT_V0_1.json",
+      "receipt": "exploration/NAAMP_BLOCKED_TRANSFERABILITY_RECEIPT_V0_1.json",
+      "script": "exploration/run_naamp_blocked_transferability.py"
+    },
+    "future_rain_negative_control": {
+      "contract": "exploration/NAAMP_FUTURE_RAIN_NEGATIVE_CONTROL_CONTRACT_V0_1.json",
+      "receipt": "exploration/NAAMP_FUTURE_RAIN_NEGATIVE_CONTROL_RECEIPT_V0_1.json",
+      "script": "exploration/run_naamp_future_rain_negative_control.py"
+    },
+    "synthesis": "revision/PUBLIC_DATA_SCALE_VALIDATION_SYNTHESIS_V0_1.md",
+    "submission_role": "post-hoc within-programme generalization and temporal negative control; not independent confirmation"
   }
 }
