@@ -251,7 +251,7 @@ Resource-pulse ecology already emphasizes pulse magnitude, duration and spatial 
 
 Our question is simpler: after accounting for **how much** response occurs, does **how it is configured across taxa and places** retain information? In NAAMP it did. Calling was over-concentrated within taxa, and the deepest expression preferentially involved recurrent strong-chorus locations.
 
-This separates two properties of a short behavioural pulse: **response magnitude** and **realised configuration**. The same amount of activation can be realised through different taxon-by-place patterns. A post-hoc refinement further predicts that broad activation need not erase spatial selectivity: deep k ≥ 4 events were more strongly aligned with recurrent strong-chorus sites than shallow events after exact k and site propensity were held constant.
+This separates two properties of a short behavioural pulse: **response magnitude** and **realised configuration**. Put differently, **response magnitude alone may be insufficient to describe a short behavioural pulse** because the same amount of activation can be realised through different taxon-by-place patterns. A post-hoc refinement further predicts that broad activation need not erase spatial selectivity: deep k ≥ 4 events were more strongly aligned with recurrent strong-chorus sites than shallow events after exact k and site propensity were held constant.
 
 ### The route-scale response is broad but not spatially uniform
 
