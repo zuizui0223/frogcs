@@ -12,6 +12,7 @@
 - gap/claim map: `revision/PULSE_TEMPLATE_GAP_AND_CLAIM_MAP_V0_4.md`
 - paper spine: `revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md`
 - novelty/general-principle audit: `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
+- knowledge-shift synthesis: `revision/KNOWLEDGE_SHIFT_SYNTHESIS_V0_1.md`
 - conceptual-neighbor audit: `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - science lock: `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
 - public-data scale validation closure: `revision/PUBLIC_DATA_SCALE_VALIDATION_CLOSURE_2026-10-06.md`
@@ -40,7 +41,7 @@ Historical RC5 remains preserved at:
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
-- [x] final anonymous scientific submission artifact recorded — artifact ID **11387327485**, digest `sha256:018dbab97284978ec69cb37736ba111b4b38b4f76f0c490406a0976c892c8226`
+- [x] final anonymous scientific submission artifact recorded — artifact ID **11388866635**, digest `sha256:f2bb818a637049b2435aa13f02a7d351692bdfdb16a406a315cf18e5b8081167`
 - [x] finite public-data scale validation completed and reclosed — blocked State/time transferability supported; future-rain negative control retained as an interpretation boundary
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
