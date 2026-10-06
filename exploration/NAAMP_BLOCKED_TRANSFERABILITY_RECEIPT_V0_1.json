@@ -1,0 +1,346 @@
+{
+  "analysis": "naamp_blocked_transferability_v0_1",
+  "contract": "exploration/NAAMP_BLOCKED_TRANSFERABILITY_CONTRACT_V0_1.json",
+  "interpretation_boundary": {
+    "causal_rainfall_claim": false,
+    "independent_confirmation": false,
+    "observed_total_activation_conditioned_on": true,
+    "posthoc_transferability_assessment": true,
+    "spatial_species_response_uses_focal_state": false,
+    "temporal_history_uses_post_2008_data": false,
+    "temporal_species_response_uses_post_2008_data": false
+  },
+  "response_endpoint_read": true,
+  "seed": 2840261,
+  "simulation_replicates": 1000,
+  "spatial_gate": {
+    "pairs": 2916,
+    "pass": true,
+    "routes": 439,
+    "states": 20
+  },
+  "spatial_leave_one_state_out_mosaic": {
+    "classification": "excess_transfers",
+    "estimability": {
+      "Delaware": {
+        "n_estimable": 44
+      },
+      "Georgia": {
+        "n_estimable": 44
+      },
+      "Indiana": {
+        "n_estimable": 43
+      },
+      "Iowa": {
+        "n_estimable": 42
+      },
+      "Kentucky": {
+        "n_estimable": 44
+      },
+      "Maine": {
+        "n_estimable": 43
+      },
+      "Maryland": {
+        "n_estimable": 43
+      },
+      "Massachusetts": {
+        "n_estimable": 44
+      },
+      "Mississippi": {
+        "n_estimable": 42
+      },
+      "NewHampshire": {
+        "n_estimable": 44
+      },
+      "NewJersey": {
+        "n_estimable": 43
+      },
+      "NewYork": {
+        "n_estimable": 44
+      },
+      "NorthCarolina": {
+        "n_estimable": 44
+      },
+      "Pennsylvania": {
+        "n_estimable": 44
+      },
+      "SouthCarolina": {
+        "n_estimable": 44
+      },
+      "Tennessee": {
+        "n_estimable": 44
+      },
+      "Texas": {
+        "n_estimable": 44
+      },
+      "Vermont": {
+        "n_estimable": 44
+      },
+      "Virginia": {
+        "n_estimable": 44
+      },
+      "WestVirginia": {
+        "n_estimable": 44
+      }
+    },
+    "result": {
+      "above_upper_95": true,
+      "conditional_upper_tail_p": 0.000999000999000999,
+      "null_regression_extra_stop_slope": 2.173772860492296,
+      "null_regression_intercept": -0.010715414233436077,
+      "null_regression_new_species_slope": -0.5742033139573985,
+      "null_regression_r2": 0.6063611301274304,
+      "null_residual_ci95": [
+        -0.12034603216031733,
+        0.12984358392431752
+      ],
+      "observed_concentration_beta": 1.6503201354367816,
+      "observed_conditional_residual": 0.2946663450700595,
+      "observed_extra_stop_beta": 0.6809252254809637,
+      "observed_route_new_species_beta": 0.1982008250537571,
+      "predicted_higher_order_beta": 1.355653790366722
+    },
+    "training": {
+      "Delaware": {
+        "label": "exclude_state_Delaware",
+        "n_routes": 789,
+        "n_runs": 7518,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Georgia": {
+        "label": "exclude_state_Georgia",
+        "n_routes": 749,
+        "n_runs": 7443,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Indiana": {
+        "label": "exclude_state_Indiana",
+        "n_routes": 744,
+        "n_runs": 7191,
+        "n_species_estimable": 43,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Iowa": {
+        "label": "exclude_state_Iowa",
+        "n_routes": 751,
+        "n_runs": 7384,
+        "n_species_estimable": 42,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Kentucky": {
+        "label": "exclude_state_Kentucky",
+        "n_routes": 791,
+        "n_runs": 7767,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Maine": {
+        "label": "exclude_state_Maine",
+        "n_routes": 747,
+        "n_runs": 7079,
+        "n_species_estimable": 43,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Maryland": {
+        "label": "exclude_state_Maryland",
+        "n_routes": 775,
+        "n_runs": 7300,
+        "n_species_estimable": 43,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Massachusetts": {
+        "label": "exclude_state_Massachusetts",
+        "n_routes": 778,
+        "n_runs": 7355,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Mississippi": {
+        "label": "exclude_state_Mississippi",
+        "n_routes": 769,
+        "n_runs": 7582,
+        "n_species_estimable": 42,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "NewHampshire": {
+        "label": "exclude_state_NewHampshire",
+        "n_routes": 791,
+        "n_runs": 7579,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "NewJersey": {
+        "label": "exclude_state_NewJersey",
+        "n_routes": 753,
+        "n_runs": 7377,
+        "n_species_estimable": 43,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "NewYork": {
+        "label": "exclude_state_NewYork",
+        "n_routes": 778,
+        "n_runs": 7478,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "NorthCarolina": {
+        "label": "exclude_state_NorthCarolina",
+        "n_routes": 715,
+        "n_runs": 7112,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Pennsylvania": {
+        "label": "exclude_state_Pennsylvania",
+        "n_routes": 776,
+        "n_runs": 7548,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "SouthCarolina": {
+        "label": "exclude_state_SouthCarolina",
+        "n_routes": 765,
+        "n_runs": 7430,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Tennessee": {
+        "label": "exclude_state_Tennessee",
+        "n_routes": 780,
+        "n_runs": 7671,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Texas": {
+        "label": "exclude_state_Texas",
+        "n_routes": 806,
+        "n_runs": 7835,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Vermont": {
+        "label": "exclude_state_Vermont",
+        "n_routes": 795,
+        "n_runs": 7770,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "Virginia": {
+        "label": "exclude_state_Virginia",
+        "n_routes": 744,
+        "n_runs": 7209,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      },
+      "WestVirginia": {
+        "label": "exclude_state_WestVirginia",
+        "n_routes": 767,
+        "n_runs": 7534,
+        "n_species_estimable": 44,
+        "n_species_total": 53,
+        "n_states": 20,
+        "year_max": 2015,
+        "year_min": 2001
+      }
+    }
+  },
+  "status": "complete",
+  "temporal_2001_2008_to_2009_2015": {
+    "classification": "excess_transfers",
+    "history_frozen_through": 2008,
+    "n_species_estimable": 41,
+    "result": {
+      "above_upper_95": true,
+      "conditional_upper_tail_p": 0.000999000999000999,
+      "null_regression_extra_stop_slope": 2.4160872076379682,
+      "null_regression_intercept": -0.10330054672606968,
+      "null_regression_new_species_slope": -0.5028617000432432,
+      "null_regression_r2": 0.6397832805179517,
+      "null_residual_ci95": [
+        -0.22533694109918,
+        0.23766961827957941
+      ],
+      "observed_concentration_beta": 3.005839686764623,
+      "observed_conditional_residual": 0.5770880213612126,
+      "observed_extra_stop_beta": 1.091920050111782,
+      "observed_route_new_species_beta": 0.21103586274293767,
+      "predicted_higher_order_beta": 2.4287516654034103
+    },
+    "training": {
+      "label": "years_2001_2008",
+      "n_routes": 558,
+      "n_runs": 3385,
+      "n_species_estimable": 41,
+      "n_species_total": 53,
+      "n_states": 20,
+      "year_max": 2008,
+      "year_min": 2001
+    }
+  },
+  "temporal_gate": {
+    "cutoff_year": 2008,
+    "pairs": 1095,
+    "pass": true,
+    "routes": 211,
+    "states": 18
+  }
+}
