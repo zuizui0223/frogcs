@@ -64,6 +64,14 @@ def collect_paths(spec:dict)->set[str]:
         elif isinstance(item,str) and (item.endswith(".md") or item.endswith(".json") or item.endswith(".py")):
             add_path(paths,item)
 
+    env_audit=spec.get("environmental_factor_coverage_audit",{}) or {}
+    for key in ("current","supersedes"):
+        add_path(paths,env_audit.get(key))
+
+    future_hydrology=spec.get("future_local_hydrology_discrimination",{}) or {}
+    for key in ("specification","generated_from","current_coverage_authority"):
+        add_path(paths,future_hydrology.get(key))
+
     return paths
 
 def text_identity_hits(path:Path)->list[str]:
