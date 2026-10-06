@@ -1,0 +1,89 @@
+{
+  "analysis": "brodie_2025_expansion_without_homogenization_v0_1",
+  "status": "completed_external_row_level_validation",
+  "source": {
+    "dataset": "Brodie, Schwarzkopf & Allen-Ankins 2023, Data for: Chorusing patterns and environmental drivers of an Australian tropical savanna frog community",
+    "doi": "10.25903/bpkv-gf77",
+    "article": "Brodie, Allen-Ankins & Schwarzkopf 2025, Ecosphere 16:e70153",
+    "design": "17 species, three fixed breeding sites, nightly chorus minutes, 2012-10-04 to 2014-04-27"
+  },
+  "provenance_boundary": {
+    "contract": "external/BRODIE_2025_EXPANSION_WITHOUT_HOMOGENIZATION_CONTRACT_V0_1.md",
+    "contract_commit": "306c54fc6b9337f148c408fc65aac01236c5e71b",
+    "outcome_rows_inspected_before_contract": false,
+    "literature_blind": false,
+    "note": "The associated published paper had already been read at the literature-audit level and reports cross-site correlations / generally consistent site patterns for some species. Therefore this is independent-data, row-outcome-blind corroboration, not a fully literature-blind preregistered confirmation."
+  },
+  "structural_gate": {
+    "raw_rows": 1700,
+    "unique_nights": 571,
+    "fixed_sites": [
+      "HR-3mile",
+      "HR-Freestun1",
+      "HR-Tearooms"
+    ],
+    "valid_audio_by_site": {
+      "HR-3mile": 446,
+      "HR-Freestun1": 395,
+      "HR-Tearooms": 474
+    },
+    "complete_three_site_nights": 325,
+    "species_columns": 17,
+    "result": "pass"
+  },
+  "frozen_split": "2013-07-01",
+  "primary": {
+    "eligible_species": 9,
+    "species_with_primary_records": 9,
+    "species_nights": 181,
+    "endpoint": "historical-template alignment A among validation nights with calling at >=2 sites",
+    "median_A": 0.027735984702926826,
+    "species_block_bootstrap_95": [
+      0.005321876174314136,
+      0.16523884121425786
+    ],
+    "bootstrap_replicates": 10000,
+    "seed": 2840241,
+    "classification": "pass_alignment_above_zero"
+  },
+  "homogenization_test": {
+    "model": "A ~ log1p(total chorus minutes) + species fixed effects; date-clustered covariance",
+    "slope": 0.004218673329235146,
+    "cluster_se": 0.0058505052363151434,
+    "ci95": [
+      -0.007248106225305217,
+      0.01568545288377551
+    ],
+    "classification": "no_evidence_of_homogenization_with_increasing_activity",
+    "falsification_rule_triggered": false
+  },
+  "rain_secondary": {
+    "model": "A ~ same-night rainfall mm + species fixed effects; date-clustered covariance",
+    "n_species_nights": 181,
+    "unique_dates": 56,
+    "slope_per_mm": -0.000011024614849809018,
+    "cluster_se": 0.00012467222961045192,
+    "ci95": [
+      -0.0002553776947585962,
+      0.00023332846505897813
+    ],
+    "median_A_rainy": 0.025702213852508173,
+    "median_A_zero_rain": 0.028828530276064118,
+    "classification": "no_detectable_strengthening_or_weakening_with_same_night_rain"
+  },
+  "historical_best_site_secondary": {
+    "eligible_species": 7,
+    "positive_high_minus_low": 3,
+    "negative_high_minus_low": 4,
+    "median_difference": -0.022011290403157302,
+    "two_sided_sign_p": 1,
+    "classification": "not_supported",
+    "note": "This secondary does not replace the primary endpoint."
+  },
+  "conclusion": {
+    "supported": "In an independent Australian acoustic dataset, multi-site chorus nights in the held-out second season remain aligned with species-specific site allocation learned only from the first season, and greater total chorus activity does not measurably erase that alignment.",
+    "not_supported": "The data do not show that stronger activity or same-night rainfall strengthens historical-site alignment.",
+    "scope": "Supports expansion without homogenization of species-specific spatial activity; does not replicate NAAMP's 10-stop concentration statistic or identify a mechanism.",
+    "manuscript_implication": "This materially improves the biological plausibility/generalizability of the sharper 'broad activation need not erase spatial selectivity' prediction, but should be described as external corroboration rather than preregistered independent confirmation because the published Brodie paper's qualitative cross-site patterns were known before dataset selection."
+  }
+}
