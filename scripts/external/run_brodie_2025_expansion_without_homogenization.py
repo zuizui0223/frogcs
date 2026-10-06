@@ -29,8 +29,8 @@ sha_comb,size_comb=get(URL_COMBINED,combp)
 
 raw=pd.read_csv(rawp)
 comb=pd.read_csv(combp)
-raw['night']=pd.to_datetime(raw['night'],errors='raise')
-comb['night']=pd.to_datetime(comb['night'],errors='raise')
+raw['night']=pd.to_datetime(raw['night'],format='%d/%m/%Y',errors='raise')
+comb['night']=pd.to_datetime(comb['night'],format='%d/%m/%Y',errors='raise')
 
 extent_cols=[c for c in raw.columns if c.endswith('_extent')]
 if len(extent_cols)!=17:
