@@ -85,10 +85,15 @@ for x in [
 ]:
     assert x in abstract, f"abstract missing: {x}"
 for x in [
+    "State-blocked",
+    "2009–2015 temporal-block",
+]:
+    assert x in abstract, f"abstract missing blocked-transferability summary: {x}"
+for x in [
     "1.61-fold",
     "2.69-fold",
 ]:
-    assert x in abstract, f"abstract missing concrete monitoring implication: {x}"
+    assert x in text, f"manuscript missing concrete monitoring implication: {x}"
 assert "0.244" not in abstract, "secondary exchangeable N,K diagnostic must not be abstract headline"
 assert "We ask three linked questions" not in text, "legacy equal-weight three-question framing remains in manuscript"
 assert "### Focal endpoint: recruited taxa show excess within-taxon multi-site concentration" in text

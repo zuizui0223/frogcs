@@ -219,7 +219,23 @@
       -0.11722907299037132,
       0.1255263141419511
     ],
-    "final_gate_p": 0.000999000999000999
+    "final_gate_p": 0.000999000999000999,
+    "state_blocked_observed": 1.6503201354367816,
+    "state_blocked_predicted": 1.355653790366722,
+    "state_blocked_residual": 0.2946663450700595,
+    "state_blocked_residual_ci95": [
+      -0.12034603216031733,
+      0.12984358392431752
+    ],
+    "state_blocked_p": 0.000999000999000999,
+    "temporal_blocked_observed": 3.005839686764623,
+    "temporal_blocked_predicted": 2.4287516654034103,
+    "temporal_blocked_residual": 0.5770880213612126,
+    "temporal_blocked_residual_ci95": [
+      -0.22533694109918,
+      0.23766961827957941
+    ],
+    "temporal_blocked_p": 0.000999000999000999
   },
   "figure4": {
     "prior_strong_wet_strong_beta": 0.1510940272028386,
