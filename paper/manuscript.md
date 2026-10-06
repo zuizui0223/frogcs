@@ -32,7 +32,7 @@ The North American Amphibian Monitoring Program (NAAMP) provides an unusual test
 
 Two linked analyses give that endpoint biological meaning rather than treating it as an abstract matrix property. First, we ask whether the rain-associated change is mainly weak intensification or instead entry from acoustic silence into overlapping or full chorus. Second, we ask whether the sites participating in strong wet-state calling are spatially arbitrary or preferentially recur at physical locations where the same taxon had previously chorused strongly.
 
-The resulting test turns a familiar response—frogs calling after rain—into a narrower ecological question: **after first-order taxon response, site history and activation magnitude are represented, does a favourable night still reveal non-independent spatial organization within taxa, and if so, where is that activity expressed?**
+The resulting test separates **response magnitude** from **realised configuration**: after first-order taxon response, site history and activation magnitude are represented, does a favourable night still reveal non-independent spatial organization within taxa, and where is it expressed?
 
 ## Materials and Methods
 
@@ -249,9 +249,9 @@ The directional rain-selective analysis adds the temporal gate. Historical-site 
 
 Resource-pulse ecology already emphasizes pulse magnitude, duration and spatial scale (Yang et al., 2008; Holt, 2008), and pulse-dynamics theory explicitly treats the spatial and temporal distribution of resource patches as a determinant of ecological response (Jentsch & White, 2019). Spatial-synchrony theory further shows that common environmental forcing can correlate dynamics across locations (Liebhold et al., 2004), while community models separate marginal environmental responses from residual joint association (Pollock et al., 2014; Tikhonov et al., 2017). Pulse-disturbance work also distinguishes mean response from response diversity (Kunze et al., 2026). We therefore do **not** claim novelty for spatially structured pulses, environmental synchrony, response diversity or marginal-versus-joint structure in general.
 
-Our question is simpler: **once activation amount and the main taxon- and site-level propensities are represented, is the spatial pattern still structured?** In NAAMP it was. Calling was over-concentrated within taxa, and the deepest expression preferentially involved recurrent strong-chorus locations.
+Our question is simpler: after accounting for **how much** response occurs, does **how it is configured across taxa and places** retain information? In NAAMP it did. Calling was over-concentrated within taxa, and the deepest expression preferentially involved recurrent strong-chorus locations.
 
-This suggests a testable hypothesis rather than a universal law: **response magnitude alone may be insufficient to describe a short behavioural pulse; the spatial pattern of the realised response can retain additional ecological structure**. A post-hoc refinement further predicts that broad activation need not erase spatial selectivity: deep k ≥ 4 events were more strongly aligned with recurrent strong-chorus sites than shallow events after exact k and site propensity were held constant.
+This separates two properties of a short behavioural pulse: **response magnitude** and **realised configuration**. The same amount of activation can be realised through different taxon-by-place patterns. A post-hoc refinement further predicts that broad activation need not erase spatial selectivity: deep k ≥ 4 events were more strongly aligned with recurrent strong-chorus sites than shallow events after exact k and site propensity were held constant.
 
 ### The route-scale response is broad but not spatially uniform
 
@@ -273,7 +273,7 @@ The integrated framing and added diagnostics remain post-hoc. Cross-fitting prev
 
 ### Conclusion
 
-The main finding is not simply that frogs call more after rain. Among taxa acoustically recruited on wetter surveys, calling incidences were **more concentrated within the same taxa than expected from species-specific rainfall response, prior physical-site use, dry-state persistence and the total amount of activation**. That excess was expressed as a deep multi-site tail dominated by overlapping or full chorus and was preferentially associated with recurrent taxon-specific strong-chorus locations. The result supports a two-part view of short behavioural pulses: local units differ in their probabilities of activation, but a given amount of realized activity can also be distributed differently across taxa and places. Here that response was taxon-concentrated and history-dependent, lying between independent wetland responses and a uniform route-wide switch.
+The main finding is not simply that frogs call more after rain. Among taxa acoustically recruited on wetter surveys, calling incidences were **more concentrated within the same taxa than expected from species-specific rainfall response, prior physical-site use, dry-state persistence and total activation**. The excess formed a deep multi-site tail dominated by overlapping or full chorus and preferentially involved recurrent taxon-specific strong-chorus locations. Thus short behavioural pulses have at least two separable properties: **response magnitude** and **realised configuration**. Here, a given amount of activity was taxon-concentrated and history-dependent, lying between independent wetland responses and a uniform route-wide switch.
 
 ## Data Availability
 
