@@ -151,7 +151,7 @@ For the **multi-site coherence endpoint**, we decomposed the linear rainfall coe
 
 For geographic robustness, the unchanged within-taxon concentration rainfall model was refit 21 times, omitting one state per fit. Using the previously fixed geographic rule, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific multi-site slopes were descriptive only.
 
-We also used post-hoc blocked tests: species rainfall-response slopes were trained with each focal State excluded, and a temporal test froze species response and physical-site history through 2008 before evaluating 2009–2015 pairs. Both retained conditioning on observed activation magnitude and assess spatial-allocation transfer rather than independent confirmation. A temporal negative control substituted non-overlapping post-survey for antecedent 72-h rainfall.
+Post-hoc blocked tests excluded each focal State from species-response training and froze species response/site history through 2008 for 2009–2015 evaluation. Both conditioned on observed activation magnitude and test spatial-allocation transfer, not independent confirmation. A negative control substituted non-overlapping post-survey for antecedent 72-h rainfall.
 
 We retained the earlier strong-activation species-concentration and state-random-slope analyses as corroborating context. Robustness to deleting one state was not interpreted as homogeneity among states.
 
@@ -261,7 +261,7 @@ This also matters for monitoring. NAAMP occupancy work treated stops as spatial 
 
 ### Broad within-programme support does not mean uniformity
 
-The pooled result was taxonomically diffuse and survived every state omission, although state-specific effects remained heterogeneous. The blocked tests strengthen this scope: the conditional allocation excess survived both focal-State exclusion from species-response training and a later seven-year test after response/history information was frozen. Because activation magnitude and broader taxonomic support remain conditioned on, these are **within-programme transferability tests of spatial allocation**, not independent forecasts or external confirmation.
+The pooled result was taxonomically diffuse and state-robust but heterogeneous among states. The conditional allocation excess also survived focal-State exclusion from response training and a later seven-year block. Because activation magnitude and broader taxonomic support remain conditioned on, these are **within-programme transferability tests**, not independent forecasts or external confirmation.
 
 This distinction matters for generalization. The NAAMP evidence supports a broad North American programme-scale pattern, not a spatially invariant response. A narrower Australian FrogID analysis nevertheless provides cross-dataset support for the **taxonomic-deepening** part of the story: across 40,754 expert-validated recordings from 1,623 ERA5 cells and 13,148 recorders, recordings farther from recent rain contained fewer additional species beyond the first (β = -0.0818 species per 1 SD increase in log dry-spell exposure, 95% CI -0.0982 to -0.0654), with the same direction in recorder-clustered and within-cell sensitivities. FrogID does not contain repeated ten-stop route matrices, so this is evidence that recent-rain acoustic assemblages deepen taxonomically in a second continent, **not** a replication of the North American multi-site dependence mechanism. Universality of the full mechanism remains unestablished.
 
@@ -269,7 +269,7 @@ This distinction matters for generalization. The NAAMP evidence supports a broad
 
 The study concerns observed acoustic activity, not abundance, occupancy, colonization, spawning or reproductive success. Occupancy models can separate ecological state from detection (Royle & Link, 2005). Dry acoustic zeros remain imperfect evidence of physical absence, and sequential route sampling precludes literal synchrony. Rainfall was not randomized; humidity, hydroperiod and other wet-state changes may covary with it.
 
-The integrated framing is exploratory, and the weather, residual-dependence, blocked-transferability and SE diagnostics are post-hoc. Blocked transferability within NAAMP was supported but does not create an untouched confirmation dataset; the future-rain control also limits temporal interpretation of the 72-h amount covariate. Measured weather cannot exclude shared hydrology or breeding state, and the SE comparison is not an occupancy-trend reanalysis. Transferability beyond NAAMP requires external replication.
+The integrated framing and added diagnostics remain post-hoc. Blocked transferability within NAAMP does not create an untouched confirmation set, and the future-rain control limits temporal interpretation of 72-h rainfall amount. Measured weather cannot exclude shared hydrology or breeding state. Transferability beyond NAAMP requires external replication.
 
 ### Conclusion
 
