@@ -8,8 +8,13 @@ Final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2
 
 The scientific and technical initial-submission package is complete.
 
-Current main integration after submission packaging:
-- merge commit: `be8af688c1f523f7d825d8f6eea636b64421f7ee`
+Canonical scientific-bundle source:
+- commit: `3c7677e14866f70f922ff09d2fd398d6e5d74279`
+- JAE pipeline run: **37406142401**
+- artifact ID: **11387327485**
+- digest: `sha256:018dbab97284978ec69cb37736ba111b4b38b4f76f0c490406a0976c892c8226`
+
+Later repository commits may update receipts or workflow triggers only; they do not alter the canonical submission inputs.
 
 The manuscript, Supporting Information, figures and scientific endpoints are closed. A finite public-data scale validation was subsequently completed and reclosed: blocked State/time transferability supported the conditional spatial-allocation result, while a future-rain negative control limited temporal interpretation of the 72-h rainfall-amount covariate. No further NAAMP analysis, WFTS work or landscape exploration is required for initial submission.
 
@@ -17,8 +22,8 @@ The manuscript, Supporting Information, figures and scientific endpoints are clo
 
 The final submission-facing packaging PR passed:
 
-- pulse-template manuscript QA — **SUCCESS** (run **37405329165**)
-- JAE submission pipeline — **SUCCESS** (run **37405329025**)
+- integrated manuscript QA — **SUCCESS** within JAE pipeline run **37406142401**
+- JAE submission pipeline — **SUCCESS** (run **37406142401**)
 - build pulse-template figures — **SUCCESS**
 - RC4 restored-analysis reproducibility smoke — **SUCCESS**
 - WFTS real-data authority lock — **SUCCESS**
