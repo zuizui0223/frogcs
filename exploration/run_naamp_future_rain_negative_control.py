@@ -18,6 +18,7 @@ OUT=EXP/"NAAMP_FUTURE_RAIN_NEGATIVE_CONTROL_RECEIPT_V0_1.json"
 
 B=1000
 SEED=2840273
+EXPECTED_ANTECEDENT_SHA="d27e743c98a2c6abf9a47590a1b1358b436b6f91966f2c7e14e8f6e9c3c179c1"
 
 def loadmod(name,path):
     spec=importlib.util.spec_from_file_location(name,path)
@@ -95,6 +96,10 @@ def main():
     raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
     mid=rain.build_midpoints(raw,runs)
     antecedent,antecedent_sha=rain.antecedent_amounts(mid)
+    if antecedent_sha!=EXPECTED_ANTECEDENT_SHA:
+        raise RuntimeError(
+            f"antecedent weather reproduction failed: {antecedent_sha} != {EXPECTED_ANTECEDENT_SHA}"
+        )
     future,future_sha=future_amounts(mid)
 
     mask=np.asarray([
