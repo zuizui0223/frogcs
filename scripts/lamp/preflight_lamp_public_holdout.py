@@ -42,7 +42,26 @@ def header_info(f):
     return out
 
 item=get_json(ITEM_URL)
-files=[header_info(f) for f in (item.get("files") or [])]
+raw_files=(item.get("files") or [])
+files=[header_info(f) for f in raw_files]
+
+# Metadata-only keyword audit. This inspects the FGDC XML description, never CSV outcome rows.
+metadata_keyword_context=[]
+for f0 in raw_files:
+    name=(f0.get("name") or "").lower()
+    url=file_url(f0)
+    if url and name.endswith(".xml"):
+        try:
+            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-lamp-preflight/0.2"})
+            with urllib.request.urlopen(req,timeout=60) as rr:
+                meta=rr.read().decode("utf-8",errors="replace")
+            flat=re.sub(r"\\s+"," ",meta)
+            for pat in ["rain","precip","weather","temperature","wind","sky","moisture"]:
+                for m in list(re.finditer(pat,flat,re.I))[:8]:
+                    a=max(0,m.start()-180); b=min(len(flat),m.end()+260)
+                    metadata_keyword_context.append({"keyword":pat,"context":flat[a:b]})
+        except Exception as e:
+            metadata_keyword_context.append({"metadata_error":type(e).__name__+": "+str(e)[:200]})
 
 # This checks only frozen reader-facing documents, not raw response outcomes.
 repo_text=""
@@ -84,6 +103,7 @@ result={
     "title":item.get("title"),
     "file_count":len(files),
     "files":files,
+    "metadata_keyword_context":metadata_keyword_context,
     "structural_fields_detected_across_plain_headers":structural,
     "classification":classification,
     "current_rc6_reader_docs_mention_louisiana":mentions_louisiana,
