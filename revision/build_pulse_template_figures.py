@@ -59,9 +59,9 @@ ax.axvline(0,linewidth=.8)
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.set_xlabel("Rainfall-contrast coefficient")
-ax.text(.02,.05,
-        "95% CIs shown for direct CI3 endpoints",
-        transform=ax.transAxes,ha="left",va="bottom",fontsize=9)
+ax.text(.00,1.02,
+        "Top three: point estimates only; bottom two: 95% CI",
+        transform=ax.transAxes,ha="left",va="bottom",fontsize=9,clip_on=False)
 ax.text(.98,.05,
         "65.3% of CallingIndex slope = 0→positive\n"
         "87.1% of activation = 0→CI2/3",
@@ -95,33 +95,48 @@ ax.text(.98,.97,
         transform=ax.transAxes,ha="right",va="top",fontsize=9)
 save(fig,"fig2_spatial_depth_strong_chorus")
 
-# Figure 3: principal conditional residual tests
+# Figure 3: principal and blocked conditional residual tests
 x=DATA["figure3"]
 labels=[
     "Principal species + prior-site + persistence comparator\npred. 1.353; observed 1.650",
     "Held-out rain × history gate\npred. 1.332; observed 1.650",
+    "State-blocked response training\npred. 1.356; observed 1.650",
+    "2009–2015 temporal block\npred. 2.429; observed 3.006",
 ]
-residuals=np.asarray([x["joint_residual"],x["final_gate_residual"]],float)
-cis=np.asarray([x["joint_residual_ci95"],x["final_gate_residual_ci95"]],float)
+residuals=np.asarray([
+    x["joint_residual"],
+    x["final_gate_residual"],
+    x["state_blocked_residual"],
+    x["temporal_blocked_residual"],
+],float)
+cis=np.asarray([
+    x["joint_residual_ci95"],
+    x["final_gate_residual_ci95"],
+    x["state_blocked_residual_ci95"],
+    x["temporal_blocked_residual_ci95"],
+],float)
 y=np.arange(len(labels))
 
-fig,ax=plt.subplots(figsize=(9.2,4.2))
+fig,ax=plt.subplots(figsize=(9.4,5.5))
 for yi,(r,ci) in enumerate(zip(residuals,cis)):
     ax.hlines(yi,ci[0],ci[1],linewidth=7,alpha=.28)
     ax.plot([ci[0],ci[1]],[yi,yi],marker="|",linestyle="None",markersize=15)
     ax.plot(r,yi,marker="s",linestyle="None",markersize=8)
-    ax.text(r+.012,yi,f"{r:.3f}",va="center",ha="left",fontsize=9)
+    ax.text(r+.014,yi,f"{r:.3f}",va="center",ha="left",fontsize=9)
 
+ax.axhline(1.5,linewidth=.7)
 ax.axvline(0,linewidth=.9)
 ax.set_yticks(y,labels)
 ax.invert_yaxis()
 ax.set_xlabel("Conditional residual in within-taxon concentration coefficient")
-ax.set_xlim(min(cis[:,0].min()-.04,-.18),max(residuals.max()+.10,.42))
-ax.text(.02,.50,
-        "horizontal bar = simulated 95% null-residual interval\n"
-        "square = observed residual; both upper-tail P ≈ 0.001\n"
-        "(minimum attainable with 1,000 simulations)",
-        transform=ax.transAxes,ha="left",va="bottom",fontsize=9)
+ax.set_xlim(min(cis[:,0].min()-.04,-.28),max(residuals.max()+.11,.70))
+ax.text(.00,1.02,
+        "horizontal bar = simulated 95% null-residual interval; square = observed residual",
+        transform=ax.transAxes,ha="left",va="bottom",fontsize=9,clip_on=False)
+ax.text(.99,.02,
+        "top two: principal/sensitivity comparators\n"
+        "bottom two: post-hoc blocked transferability",
+        transform=ax.transAxes,ha="right",va="bottom",fontsize=8)
 save(fig,"fig3_within_taxon_concentration")
 
 # Figure 4: historical site targeting
