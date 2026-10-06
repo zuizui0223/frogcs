@@ -3,16 +3,16 @@
 ## Canonical submission state
 
 Canonical scientific-bundle source commit:
-- `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`
+- `e5eb94885346a1c0c3247a14eed0c847d3c3d775`
 
 The final conceptual framing distinguishes **response magnitude** from **realised configuration** without changing any endpoint or numerical result. Receipt/readiness-only commits after this point are excluded from scientific-bundle triggers.
 
 Current manuscript:
 - title: **Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
-- anonymous manuscript: **7,966 words**
+- anonymous manuscript: **7,977 words**
 - title-page template: **158 words**
-- current combined count: approximately **8,124 words**
-- current margin below the 8,500-word Research Article limit: approximately **376 words**
+- current combined count: approximately **8,135 words**
+- current margin below the 8,500-word Research Article limit: approximately **365 words**
 - Abstract: **293 words**
 - cover letter: **400 words**
 
@@ -70,6 +70,16 @@ A future-rain negative control remains an interpretation boundary:
 
 Therefore the 72-h rainfall-amount increment is not interpreted as specifically antecedent, while the focal spatial-allocation excess remains.
 
+## Final environmental-factor coverage
+
+A literature-verified coverage audit through 2026 is recorded in:
+- `revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_3.md`.
+
+The current manuscript does **not** claim that all environmental causes were excluded. The strongest measured broad atmospheric, seasonal and observation-process explanations were insufficient, while the leading unresolved environmental alternative is **dynamic local wetland state × taxon-specific breeding requirements**, especially hydroperiod, water level/inundation, local wetness/runoff and water temperature.
+
+This audit did not reopen NAAMP outcome analysis. The decisive mechanistic test is reserved for a future independent fixed-site system with direct local hydrology:
+- `revision/PROSPECTIVE_LOCAL_HYDROLOGY_DISCRIMINATION_SPEC_V0_1.md`.
+
 ## Final main-text boundary
 
 The manuscript still does **not** claim:
@@ -85,10 +95,10 @@ The blocked tests are explicitly described as **post-hoc within-programme transf
 
 ## Final GitHub Actions validation
 
-On scientific-bundle source commit `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`:
+On scientific-bundle source commit `e5eb94885346a1c0c3247a14eed0c847d3c3d775`:
 
 - JAE submission pipeline
-  - run: **37422937862**
+  - run: **37458881761**
   - conclusion: **SUCCESS**
 
 Within that run, all scientific-package steps succeeded:
@@ -105,11 +115,11 @@ Within that run, all scientific-package steps succeeded:
 
 Artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11393249104**
-- size: **1,222,249 bytes**
-- digest: `sha256:3714e36148fb3d11d2b2e52b1dc72aa297e6d2284293bde6fe477c460d61ffa7`
-- source workflow run: **37422937862**
-- source scientific commit: `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`
+- artifact ID: **11410907633**
+- size: **1,225,039 bytes**
+- digest: `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
+- source workflow run: **37458881761**
+- source scientific commit: `e5eb94885346a1c0c3247a14eed0c847d3c3d775`
 
 This is the canonical anonymous reviewer-facing scientific package. Its bundled canonical provenance is self-reference-free: dynamic artifact identifiers live only in this receipt, not inside `CURRENT_ANALYSIS_SPECIFICATIONS.json`. Subsequent receipt/readiness-only edits do not alter its contents and do not trigger a scientific-bundle rebuild.
 
