@@ -83,6 +83,7 @@ Reader-facing scientific package:
 - `submission/RC6_RELEASE_RECEIPT.md`
 - `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 - `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
+- `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
 - `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
 
 Historical drafts, exploratory branches and superseded analysis records are retained for provenance rather than duplicated in the reader-facing path.
