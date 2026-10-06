@@ -13,7 +13,10 @@ on:
       - "revision/audit_current_endpoint_manuscript_v0_7.py"
       - "scripts/submission/build_jae_anonymous_docx.py"
       - "scripts/submission/render_submission_metadata.py"
-      - "submission/**"
+      - "scripts/submission/build_anonymous_reviewer_bundle.py"
+      - "submission/cover_letter.md"
+      - "submission/test_metadata.fixture.yml"
+      - "submission/metadata.template.yml"
       - "paper/title_page.template.md"
       - ".github/workflows/pulse_template_submission_pipeline.yml"
   pull_request:
