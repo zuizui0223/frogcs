@@ -32,10 +32,10 @@ Historical RC5 remains preserved at:
 - [x] numbered English abstract
 - [x] abstract ≤350 words — **320**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] anonymous main manuscript **7,996** words; current title-page template **158** words; combined current count ≈ **8,154**, below the 8,500-word Research Article limit before final author metadata
+- [x] anonymous main manuscript **7,957** words; current title-page template **158** words; combined current count ≈ **8,115**, below the 8,500-word Research Article limit before final author metadata
 - [x] separate Supporting Information
 - [x] separate title-page template contains author/affiliation/corresponding-author, acknowledgements, COI and contributions fields
-- [x] optional anonymous cover letter ≤500 words — **412**
+- [x] optional anonymous cover letter ≤500 words — **400**
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
