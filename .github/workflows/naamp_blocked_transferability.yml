@@ -67,4 +67,5 @@ jobs:
           git add exploration/NAAMP_BLOCKED_TRANSFERABILITY_RECEIPT_V0_1.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Record blocked transferability result"
+          git pull --rebase origin exploration/public-scale-transferability-v1
           git push origin HEAD:exploration/public-scale-transferability-v1
