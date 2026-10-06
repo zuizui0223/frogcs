@@ -269,7 +269,7 @@ This distinction matters for generalization. The NAAMP evidence supports a broad
 
 The study concerns observed acoustic activity, not abundance, occupancy, colonization, spawning or reproductive success. Occupancy models can separate ecological state from detection (Royle & Link, 2005). Dry acoustic zeros remain imperfect evidence of physical absence, and sequential route sampling precludes literal synchrony. Rainfall was not randomized; humidity, hydroperiod and other wet-state changes may covary with it.
 
-The integrated framing and added diagnostics remain post-hoc. Blocked transferability within NAAMP does not create an untouched confirmation set, and the future-rain control limits temporal interpretation of 72-h rainfall amount. Measured weather cannot exclude shared hydrology or breeding state. Transferability beyond NAAMP requires external replication.
+The integrated framing and added diagnostics remain post-hoc. Cross-fitting prevents route leakage but does not create independent confirmation, and the future-rain control limits temporal interpretation of 72-h rainfall amount. Measured weather cannot exclude shared hydrology or breeding state. Transferability beyond NAAMP requires external replication.
 
 ### Conclusion
 
