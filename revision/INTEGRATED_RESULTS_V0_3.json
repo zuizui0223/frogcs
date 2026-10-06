@@ -242,5 +242,70 @@
       "not a unique lower-level mechanism"
     ],
     "synthesis": "revision/KNOWLEDGE_SHIFT_SYNTHESIS_V0_1.md"
+  },
+  "environmental_factor_coverage": {
+    "status": "coverage_audit_no_new_outcome_analysis",
+    "audit": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_2.md",
+    "directly_or_strongly_addressed": [
+      "rainfall recency",
+      "antecedent 72-h rainfall amount",
+      "future-rainfall placebo",
+      "air temperature including nonlinear response",
+      "season/day-of-year harmonics and RunNumber",
+      "rain-recency x temperature interaction",
+      "wind",
+      "recorded noise/major interruptions",
+      "observer/hearing effects",
+      "generic contemporaneous stop-night condition shared across taxa",
+      "uniform species x route-night latent-state sufficiency"
+    ],
+    "examined_secondary_provenance": [
+      "current/light rain",
+      "relative humidity",
+      "surface/barometric pressure and pressure fall"
+    ],
+    "indirectly_addressed": [
+      "photoperiod/daylength through seasonal terms",
+      "static taxon-specific site quality through strictly-prior species x SiteID propensity",
+      "generic route-order/time progression through stop-night hotness and route-position diagnostics"
+    ],
+    "not_directly_measured_ranked": [
+      {
+        "rank": 1,
+        "family": "dynamic local hydrology x taxon-specific breeding requirements",
+        "examples": [
+          "hydroperiod",
+          "water level/inundation",
+          "soil moisture/runoff",
+          "fine-scale wetness",
+          "water temperature"
+        ],
+        "priority": "highest"
+      },
+      {
+        "rank": 2,
+        "family": "taxon-specific diel timing x route progression",
+        "priority": "medium"
+      },
+      {
+        "rank": 3,
+        "family": "local microclimate or moonlight x canopy/topography",
+        "priority": "low-medium"
+      },
+      {
+        "rank": 4,
+        "family": "temporally changing vegetation/habitat structure",
+        "priority": "medium"
+      },
+      {
+        "rank": 5,
+        "family": "static habitat descriptors or water chemistry as sole explanation",
+        "priority": "lower"
+      }
+    ],
+    "structural_constraint": "Any omitted environmental explanation capable of reproducing the focal residual must vary among survey events, be non-uniform among stops, have taxon-specific effects, and preserve or reinforce recurrent taxon-specific site selectivity.",
+    "leading_unresolved_environmental_alternative": "dynamic, spatially heterogeneous local wetland state, especially hydroperiod/water level/inundation and related local wetness, with taxon-specific effects",
+    "authorized_claim": "Most major broad atmospheric, seasonal and observation-process explanations were directly or indirectly examined and were insufficient; all environmental causes have not been excluded.",
+    "science_lock": "No new same-data hydrological mechanism analysis is authorized by this audit."
   }
 }
