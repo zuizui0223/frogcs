@@ -154,3 +154,5 @@ Archive handoff:
 - `submission/ARCHIVE_HANDOFF_2026-10-05.md`
 
 The manuscript already states that the code and derived analysis package will be archived in Zenodo at finalization. Raw third-party source datasets are not redistributed.
+
+- `revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_1.md`
