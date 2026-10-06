@@ -122,7 +122,8 @@
       "principal_within_taxon_comparator",
       "final_gate_sensitivity",
       "historical_site_structure",
-      "generality"
+      "generality",
+      "public_scale_validation"
     ],
     "supporting_information_only": [
       "exact_NK_secondary",
@@ -145,5 +146,74 @@
       "universal pulse template"
     ],
     "preferred_claim": "conditional dependence after explicit first-order ecological comparators"
+  },
+  "public_scale_validation": {
+    "status": "posthoc_within_programme_transferability_supported_future_amount_placebo_rejected",
+    "spatial_blocked_transferability": {
+      "pairs": 2916,
+      "routes": 439,
+      "states": 20,
+      "observed_beta": 1.6503201354367816,
+      "predicted_beta": 1.355653790366722,
+      "conditional_residual": 0.2946663450700595,
+      "null_residual_ci95": [
+        -0.12034603216031733,
+        0.12984358392431752
+      ],
+      "p": 0.000999000999000999,
+      "classification": "excess_transfers",
+      "boundary": "species rainfall response excludes the focal State; strictly-prior local site history, broader taxonomic support and observed activation magnitude remain conditioned on"
+    },
+    "temporal_blocked_transferability": {
+      "training_years": [
+        2001,
+        2008
+      ],
+      "test_years": [
+        2009,
+        2015
+      ],
+      "pairs": 1095,
+      "routes": 211,
+      "states": 18,
+      "n_species_estimable_pre2009": 41,
+      "observed_beta": 3.005839686764623,
+      "predicted_beta": 2.4287516654034103,
+      "conditional_residual": 0.5770880213612126,
+      "null_residual_ci95": [
+        -0.22533694109918,
+        0.23766961827957941
+      ],
+      "p": 0.000999000999000999,
+      "classification": "excess_transfers",
+      "boundary": "species response and physical-site history frozen through 2008; response magnitude and broader taxonomic support remain conditioned on"
+    },
+    "future_rain_negative_control": {
+      "pairs": 2835,
+      "routes": 428,
+      "states": 20,
+      "observed_beta": 1.713554974812249,
+      "antecedent_72h": {
+        "predicted_beta": 1.4344771314344607,
+        "conditional_residual": 0.2790778433777883
+      },
+      "future_72h": {
+        "predicted_beta": 1.4291024518407693,
+        "conditional_residual": 0.2844525229714796,
+        "null_residual_ci95": [
+          -0.1315954772389674,
+          0.13429855992479703
+        ],
+        "p": 0.000999000999000999
+      },
+      "classification": "future_placebo_rejected",
+      "interpretation": "both antecedent and future amount models leave the concentration excess; their similar same-seed predictions do not support interpreting the incremental 72-h rainfall-amount fit as antecedent-specific"
+    },
+    "boundary": {
+      "independent_confirmation": false,
+      "external_transferability_tested": false,
+      "causal_rainfall_claim": false,
+      "focal_endpoint_changed": false
+    }
   }
 }
