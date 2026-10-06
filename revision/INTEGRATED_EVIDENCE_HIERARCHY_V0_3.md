@@ -24,6 +24,7 @@ In NAAMP, that residual structure is expressed as within-taxon multi-site concen
 | Strong chorus locations are historically structured | within pair × taxon prior-site β=0.151 | recurrent species × site template |
 | Historical targeting strengthens toward rain | directional β=0.0245; same-observer β=0.0307 | rain-selective recurrent-site expression |
 | Measured common causes remain insufficient | nonlinear weather, 72-h rain, detection covariates, species calibration and leave-one-taxon-out stop-night hotness all leave concentration/dependence residuals | post-hoc falsification layer |
+| Future-rain amount is also insufficient | non-overlapping +1 to +72 h rainfall predicts nearly the same concentration as antecedent amount but leaves residual 0.284, P≈0.001 | limits temporal interpretation of the rainfall-amount covariate; does not weaken focal spatial residual |
 | Residual dependence is bounded and route-spanning | dry-route-silent rho_b=0.285; far lags 7–9=0.272; same-observer rho_b=0.276 | post-hoc scale diagnostic |
 | Route-position dependence decays modestly | near 0.296 vs far 0.272; route-bootstrap near−far=0.0247 (0.0101–0.0398) | route-spanning, not spatially flat |
 | Uniform whole-route scalar state is too coherent | cross-fit scalar state reproduces concentration but predicts near/far dependence ≈0.475 | rejects simple all-stop switch |
@@ -31,6 +32,7 @@ In NAAMP, that residual structure is expressed as within-taxon multi-site concen
 | Coupling is stronger in deep than shallow activation | deep−shallow Δβ=0.0297, P=0.0210; 19/20 fixed MC audit batches retain support | post-hoc structural refinement; not independent confirmation |
 | Taxonomic contribution is diffuse | 25/53 positive; top1 18.8%, top5 54.2%, HHI 0.0855 | not one-taxon driven |
 | Pooled signal survives state omission | all 21 leave-one-state-out coefficients/CIs positive | broad within NAAMP |
+| Conditional allocation transfers across blocked space/time | focal-State-excluded response model leaves residual 0.295; pre-2009 response/history tested in 2009–2015 leaves residual 0.577; both P≈0.001 | post-hoc within-programme generalization; not independent confirmation |
 | State-specific effects are heterogeneous | 14/17 positive estimates; 2/17 positive CIs | not spatially uniform |
 | Independent confirmation | unavailable within NAAMP | **not established** |
 
@@ -59,7 +61,7 @@ The held-out rain × history gate is the strongest sensitivity.
 
 ## Exploration boundary
 
-The concentration endpoint and the subsequent spatial-scale and recurrent-site refinements emerged after extensive analysis of NAAMP. Cross-fitting prevents focal-route leakage for fitted response terms and structural transfer diagnostics but does not create an untouched confirmation set.
+The concentration endpoint and the subsequent spatial-scale and recurrent-site refinements emerged after extensive analysis of NAAMP. Cross-fitting and the later blocked State/time assessments reduce particular forms of spatial and temporal reuse, but they do not create an untouched confirmation set because the focal estimand still conditions on realised response magnitude and uses the same monitoring programme.
 
 The explicitly reopened same-data mechanism line was closed again on 2026-10-03 under `revision/NAAMP_POST_REOPENING_CLOSURE_2026-10-03.md`. No further NAAMP lower-level mechanism family or outcome-driven retuning is authorized.
 

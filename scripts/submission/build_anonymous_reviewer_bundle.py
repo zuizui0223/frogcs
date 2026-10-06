@@ -56,6 +56,14 @@ def collect_paths(spec:dict)->set[str]:
             for key in ("contract","receipt","script","qc"):
                 add_path(paths,item.get(key))
 
+    public_scale=spec.get("public_scale_validation",{}) or {}
+    for item in public_scale.values():
+        if isinstance(item,dict):
+            for key in ("contract","receipt","script","qc"):
+                add_path(paths,item.get(key))
+        elif isinstance(item,str) and (item.endswith(".md") or item.endswith(".json") or item.endswith(".py")):
+            add_path(paths,item)
+
     return paths
 
 def text_identity_hits(path:Path)->list[str]:

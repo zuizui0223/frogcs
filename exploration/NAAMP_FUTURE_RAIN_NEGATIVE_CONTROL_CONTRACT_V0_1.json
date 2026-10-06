@@ -1,0 +1,43 @@
+{
+  "analysis": "naamp_future_rain_negative_control_v0_1",
+  "status": "posthoc_temporal_negative_control_fixed_before_future_rain_result",
+  "question": "Does rainfall occurring only after the survey reproduce the same within-taxon concentration structure attributed to recent antecedent rain, consistent with a persistent wet-regime explanation rather than temporal specificity?",
+  "population": "Intersection of the existing 2,916 strictly-prior-history pairs for which both survey runs have valid 72-h antecedent and non-overlapping 72-h future ERA5 precipitation windows.",
+  "weather": {
+    "product": "Same ERA5 hourly total precipitation source and route-run midpoint/coordinate procedure as the existing rain-amount common-environment analysis.",
+    "antecedent_window": "72 hourly accumulations ending at the floored survey-midpoint hour, identical to the existing analysis.",
+    "future_window": "72 hourly accumulations from +1 through +72 hours after the floored survey-midpoint hour; no hour overlaps the antecedent window.",
+    "transforms": "log1p(mm) at route-run level."
+  },
+  "model": {
+    "baseline": "Existing cross-fitted linear species response to DaysSinceRain with prior physical-site history, dry persistence and matched wet incidence.",
+    "antecedent_amount": "Existing flexible cross-fitted species environment model with antecedent 72-h rainfall amount.",
+    "future_placebo": "Exactly the same flexible model specification, replacing antecedent 72-h amount with future 72-h amount while retaining DaysSinceRain, temperature, season, State and RunNumber terms.",
+    "focal_endpoint": "Existing conditional within-taxon concentration residual, with 1,000 simulations.",
+    "magnitude_conditioning": "Observed total wet incidence is matched exactly; this remains a conditional spatial-allocation test."
+  },
+  "structural_gate": {
+    "min_pairs": 2700,
+    "min_routes": 400,
+    "min_states": 18
+  },
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840273
+  },
+  "primary_classification": {
+    "future_placebo_sufficient": "future-rain null does not exceed its upper 95% residual bound",
+    "future_placebo_rejected": "future-rain null remains above its upper 95% residual bound"
+  },
+  "descriptive_comparison": [
+    "Fraction of the same-sample baseline residual removed by antecedent amount.",
+    "Fraction removed by future amount.",
+    "Antecedent-minus-future residual-removal difference; descriptive only, with no retuned threshold."
+  ],
+  "interpretation_boundaries": [
+    "This is a post-hoc negative control, not causal identification.",
+    "Future-rain association can arise from persistent wet spells or seasonality; failure of the placebo strengthens temporal specificity but does not prove rainfall causality.",
+    "DaysSinceRain remains in both amount models, so this tests incremental information in antecedent versus future rainfall amount beyond the existing recency term.",
+    "No window length, offset, endpoint, tail, sample rule or classification may change after results are read."
+  ]
+}

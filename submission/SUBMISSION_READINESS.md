@@ -14,6 +14,7 @@
 - novelty/general-principle audit: `revision/NOVELTY_AND_GENERAL_PRINCIPLE_AUDIT_V0_2.md`
 - conceptual-neighbor audit: `revision/CONCEPTUAL_NEIGHBOR_AUDIT_V0_1.md`
 - science lock: `revision/CURRENT_ENDPOINT_SCIENCE_LOCK_2026-10-04.md`
+- public-data scale validation closure: `revision/PUBLIC_DATA_SCALE_VALIDATION_CLOSURE_2026-10-06.md`
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 - final project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 - initial-submission handoff: `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
@@ -30,14 +31,15 @@ Historical RC5 remains preserved at:
 - [x] numbered English abstract
 - [x] abstract ≤350 words — **320**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] anonymous main manuscript **7,996** words; current title-page template **158** words; combined current count ≈ **8,154**, below the 8,500-word Research Article limit before final author metadata
+- [x] anonymous main manuscript **7,997** words; current title-page template **158** words; combined current count ≈ **8,155**, below the 8,500-word Research Article limit before final author metadata
 - [x] separate Supporting Information
 - [x] separate title-page template contains author/affiliation/corresponding-author, acknowledgements, COI and contributions fields
-- [x] optional anonymous cover letter ≤500 words — **401**
+- [x] optional anonymous cover letter ≤500 words — **412**
 - [x] continuous line numbering and double-spaced anonymous DOCX validated
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
+- [x] finite public-data scale validation completed and reclosed — blocked State/time transferability supported; future-rain negative control retained as an interpretation boundary
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
 - [x] RC6 figure build — run **37189806897**, SUCCESS

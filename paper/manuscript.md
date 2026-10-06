@@ -151,6 +151,8 @@ For the **multi-site coherence endpoint**, we decomposed the linear rainfall coe
 
 For geographic robustness, the unchanged within-taxon concentration rainfall model was refit 21 times, omitting one state per fit. Using the previously fixed geographic rule, PASS required every leave-one-state-out coefficient to remain positive and strong PASS required every corresponding 95% confidence interval to remain above zero. State-specific multi-site slopes were descriptive only.
 
+Post-hoc blocked tests excluded each focal State from species-response training and froze species response/site history through 2008 for 2009–2015 evaluation. Both conditioned on observed activation magnitude and test spatial-allocation transfer, not independent confirmation. A negative control substituted non-overlapping post-survey for antecedent 72-h rainfall.
+
 We retained the earlier strong-activation species-concentration and state-random-slope analyses as corroborating context. Robustness to deleting one state was not interpreted as homogeneity among states.
 
 ### Analysis provenance and inferential boundaries
@@ -191,7 +193,7 @@ The principal ecological comparator retained taxon-specific rainfall response an
 
 ### Measured common route-night environment explains little of the residual dependence
 
-Flexible nonlinear rain recency, temperature and season removed 11.4% of the concentration residual (P = 0.000999). Although 72-h ERA5 rainfall predicted strong new-chorus activation (β = 0.741, 95% CI 0.386–1.097), adding rainfall amount reduced the same-sample residual only 6.5% (P = 0.000999). Recorded acoustic conditions, cross-fitted species calibration and leave-one-taxon-out contemporaneous stop hotness likewise left the residual intact (Supporting Information).
+Flexible nonlinear rain recency, temperature and season removed 11.4% of the concentration residual (P = 0.000999). Although 72-h ERA5 rainfall predicted strong new-chorus activation (β = 0.741, 95% CI 0.386–1.097), adding rainfall amount reduced the same-sample residual only 6.5% (P = 0.000999). A non-overlapping 72-h **future-rain** placebo also failed and gave nearly the same prediction as antecedent rainfall, so the incremental rainfall-amount fit is not interpreted as antecedent-specific. Recorded acoustic conditions, cross-fitted species calibration and leave-one-taxon-out contemporaneous stop hotness likewise left the residual intact (Supporting Information).
 
 A bounded residual-pair coefficient remained positive overall (**0.172**) and was stronger among dry-route-silent taxa (**0.285**; both P = 0.000999). In that stratum it declined only modestly from lags 1–3 (**0.296**) to 7–9 (**0.272**; route-bootstrap near−far = **0.0247**, 95% CI 0.0101–0.0398). A cross-fitted uniform species-night shift reproduced concentration but overpredicted spatial dependence (~**0.475**), ruling out a simple all-stop switch. Specieswise pair-clustered SE exceeded IID in 38/39 taxa (median **1.61-fold**).
 
@@ -208,6 +210,8 @@ A post-hoc exact-k placement test linked the template to the deep tail. Among **
 The multi-site concentration signal itself was not carried by one dominant taxon. Across 53 taxa in the within-taxon concentration decomposition, 25 had positive contributions and 19 contributed at least 1% of positive mass. The largest contributor accounted for **18.8%** of positive mass, the top five for **54.2%**, and HHI was **0.0855**, meeting the previously defined diffuse-contribution rule. Removing any single taxon left the total within-taxon concentration coefficient positive; the smallest leave-one-taxon-out coefficient was **1.209**.
 
 The within-taxon concentration endpoint itself was also insensitive to any one state. Across all 21 leave-one-state-out refits, within-taxon concentration rainfall coefficients ranged from **0.967 to 1.775**, and every 95% confidence interval remained above zero; the smallest lower bound was **0.397**. Thus no single sampled state was required for the pooled multi-site association.
+
+Blocked transferability was also supported. With the focal State excluded from species-response training, concentration was **1.650** observed versus **1.356** predicted (residual **0.295**; null 95% **−0.120 to 0.130**; P = 0.000999). With response and site history frozen through 2008, 1,095 held-out 2009–2015 pairs gave **3.006** versus **2.429** (residual **0.577**; **−0.225 to 0.238**; P = 0.000999).
 
 This robustness did not imply geographic homogeneity. Among 17 states with estimable state-specific multi-site models, 14 had positive point estimates but only two had wholly positive 95% confidence intervals. The broader strong-activation analysis showed the same pattern of heterogeneity: among 19 estimable states, 13 had positive point estimates and six had wholly positive intervals; its random-slope population estimate was 1.65 with state-slope SD 3.46.
 
@@ -257,7 +261,7 @@ This also matters for monitoring. NAAMP occupancy work treated stops as spatial 
 
 ### Broad within-programme support does not mean uniformity
 
-The multi-site concentration pattern was distributed across many taxa and retained a positive, CI-supported rainfall coefficient after deleting each state in turn, arguing against either a single taxon or a single sampled state driving the result. Among 53 taxa contributing to the within-taxon concentration decomposition, 25 had positive coefficients; the largest contributor accounted for 18.8% of positive mass, the top five for 54.2%, and HHI was 0.086. Removing any one taxon left the total within-taxon concentration coefficient positive (minimum remaining β = 1.209). Across 21 leave-one-state-out refits, coefficients ranged from 0.967 to 1.775 and the smallest 95% CI lower bound was 0.397. State-specific effects were nevertheless heterogeneous: only 14 of 17 estimable states had positive point estimates and only two had wholly positive intervals. Regional differences in species pools, rainfall regimes, hydrology, seasonal timing and programme design may therefore modulate how strongly this route-scale organization is expressed.
+The pooled result was taxonomically diffuse and state-robust but heterogeneous among states. The conditional allocation excess also survived focal-State exclusion from response training and a later seven-year block. Because activation magnitude and broader taxonomic support remain conditioned on, these are **within-programme transferability tests**, not independent forecasts or external confirmation.
 
 This distinction matters for generalization. The NAAMP evidence supports a broad North American programme-scale pattern, not a spatially invariant response. A narrower Australian FrogID analysis nevertheless provides cross-dataset support for the **taxonomic-deepening** part of the story: across 40,754 expert-validated recordings from 1,623 ERA5 cells and 13,148 recorders, recordings farther from recent rain contained fewer additional species beyond the first (β = -0.0818 species per 1 SD increase in log dry-spell exposure, 95% CI -0.0982 to -0.0654), with the same direction in recorder-clustered and within-cell sensitivities. FrogID does not contain repeated ten-stop route matrices, so this is evidence that recent-rain acoustic assemblages deepen taxonomically in a second continent, **not** a replication of the North American multi-site dependence mechanism. Universality of the full mechanism remains unestablished.
 
@@ -265,7 +269,7 @@ This distinction matters for generalization. The NAAMP evidence supports a broad
 
 The study concerns observed acoustic activity, not abundance, occupancy, colonization, spawning or reproductive success. Occupancy models can separate ecological state from detection (Royle & Link, 2005). Dry acoustic zeros remain imperfect evidence of physical absence, and sequential route sampling precludes literal synchrony. Rainfall was not randomized; humidity, hydroperiod and other wet-state changes may covary with it.
 
-The integrated framing is exploratory. The nonlinear-weather, ERA5 rainfall, residual-dependence and SE diagnostics were added only after the integrated result and its limitations had already been inspected, and are post-hoc falsification analyses. Cross-fitting prevents route leakage but does not create an untouched confirmation dataset. Measured weather cannot exclude shared hydrology or breeding state, and the SE comparison is not a published occupancy-trend reanalysis. Transferability beyond NAAMP requires external replication.
+The integrated framing and added diagnostics remain post-hoc. Cross-fitting prevents route leakage but does not create an untouched confirmation dataset; the future-rain control limits temporal interpretation of 72-h rainfall amount. Measured weather cannot exclude shared hydrology or breeding state. Transferability beyond NAAMP requires external replication.
 
 ### Conclusion
 
