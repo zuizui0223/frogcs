@@ -1,0 +1,69 @@
+name: NAAMP blocked transferability
+
+on:
+  push:
+    branches: [exploration/public-scale-transferability-v1]
+    paths:
+      - exploration/NAAMP_BLOCKED_TRANSFERABILITY_CONTRACT_V0_1.json
+      - exploration/run_naamp_blocked_transferability.py
+      - .github/workflows/naamp_blocked_transferability.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: naamp-blocked-transferability
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: exploration/public-scale-transferability-v1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Run frozen blocked transferability analysis
+        run: python exploration/run_naamp_blocked_transferability.py
+      - name: Validate receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("exploration/NAAMP_BLOCKED_TRANSFERABILITY_RECEIPT_V0_1.json")
+          x=json.loads(p.read_text())
+          assert x["spatial_gate"]["pairs"]==2916
+          assert x["spatial_gate"]["routes"]==439
+          assert x["spatial_gate"]["pass"] is True
+          assert x["temporal_gate"]["pass"] is True
+          assert x["status"]=="complete"
+          assert x["spatial_leave_one_state_out_mosaic"]["classification"] in {
+              "excess_transfers","directional_only","no_positive_transfer"
+          }
+          assert x["temporal_2001_2008_to_2009_2015"]["classification"] in {
+              "excess_transfers","directional_only","no_positive_transfer"
+          }
+          print(json.dumps({
+              "spatial_gate":x["spatial_gate"],
+              "temporal_gate":x["temporal_gate"],
+              "spatial":x["spatial_leave_one_state_out_mosaic"]["result"],
+              "spatial_classification":x["spatial_leave_one_state_out_mosaic"]["classification"],
+              "temporal":x["temporal_2001_2008_to_2009_2015"]["result"],
+              "temporal_classification":x["temporal_2001_2008_to_2009_2015"]["classification"],
+          },indent=2))
+          PY
+      - name: Commit receipt to exploration branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add exploration/NAAMP_BLOCKED_TRANSFERABILITY_RECEIPT_V0_1.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Record blocked transferability result"
+          git push origin HEAD:exploration/public-scale-transferability-v1
