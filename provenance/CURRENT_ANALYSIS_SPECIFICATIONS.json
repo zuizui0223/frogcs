@@ -390,16 +390,11 @@
   },
   "current_submission_bundle": {
     "status": "canonical_initial_submission_bundle",
-    "scientific_source_sha": "7fab1774510ae00d0d717b6c5544ae8b1b8cc554",
     "final_receipt": "submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md",
-    "jae_pipeline_run": 37408939702,
-    "scientific_bundle_artifact_id": 11388866635,
-    "scientific_bundle_size_bytes": 1191757,
-    "scientific_bundle_digest": "sha256:f2bb818a637049b2435aa13f02a7d351692bdfdb16a406a315cf18e5b8081167",
     "manuscript_words": 7980,
     "abstract_words": 320,
     "cover_letter_words": 400,
     "framing": "response magnitude versus realised configuration",
-    "note": "Receipt/readiness-only commits after the scientific source do not alter bundle contents."
+    "note": "Dynamic artifact ID, digest, workflow run and source commit are recorded only in the final submission receipt to avoid circular self-reference inside the reviewer bundle."
   }
 }
