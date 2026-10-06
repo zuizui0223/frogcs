@@ -73,12 +73,12 @@ Therefore the 72-h rainfall-amount increment is not interpreted as specifically 
 ## Final environmental-factor coverage
 
 A literature-verified coverage audit through 2026 is recorded in:
-- `revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_4.md`.
+- `revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_5.md`.
 
 The current manuscript does **not** claim that all environmental causes were excluded. Literature was rechecked through October 2026, including recent large-scale PAM studies of humidity, moonlight, wind, photoperiod, diel timing, canopy, temporary/lentic water, thermal response and prior calling state. The strongest measured broad atmospheric, seasonal and observation-process explanations were insufficient, while the leading unresolved environmental alternative remains **dynamic local wetland state × taxon-specific breeding requirements**, especially hydroperiod, water level/inundation, local wetness/runoff/substrate moisture and water temperature.
 
 This audit did not reopen NAAMP outcome analysis. The decisive mechanistic test is reserved for a future independent fixed-site system with direct local hydrology:
-- `revision/PROSPECTIVE_LOCAL_HYDROLOGY_DISCRIMINATION_SPEC_V0_1.md`.
+- `revision/PROSPECTIVE_LOCAL_HYDROLOGY_DISCRIMINATION_SPEC_V0_2.md`.
 
 ## Final main-text boundary
 
