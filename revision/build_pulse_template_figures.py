@@ -98,10 +98,10 @@ save(fig,"fig2_spatial_depth_strong_chorus")
 # Figure 3: principal and blocked conditional residual tests
 x=DATA["figure3"]
 labels=[
-    "Principal species + prior-site + persistence comparator\npred. 1.353; observed 1.650",
-    "Held-out rain × history gate\npred. 1.332; observed 1.650",
-    "State-blocked response training\npred. 1.356; observed 1.650",
-    "2009–2015 temporal block\npred. 2.429; observed 3.006",
+    "Principal species + prior-site + persistence\npred. 1.353; obs. 1.650",
+    "Held-out rain × history gate\npred. 1.332; obs. 1.650",
+    "State-blocked response training (post-hoc)\npred. 1.356; obs. 1.650",
+    "2009–2015 temporal block (post-hoc)\npred. 2.429; obs. 3.006",
 ]
 residuals=np.asarray([
     x["joint_residual"],
@@ -133,10 +133,6 @@ ax.set_xlim(min(cis[:,0].min()-.04,-.28),max(residuals.max()+.11,.70))
 ax.text(.00,1.02,
         "horizontal bar = simulated 95% null-residual interval; square = observed residual",
         transform=ax.transAxes,ha="left",va="bottom",fontsize=9,clip_on=False)
-ax.text(.99,.02,
-        "top two: principal/sensitivity comparators\n"
-        "bottom two: post-hoc blocked transferability",
-        transform=ax.transAxes,ha="right",va="bottom",fontsize=8)
 save(fig,"fig3_within_taxon_concentration")
 
 # Figure 4: historical site targeting
