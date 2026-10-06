@@ -1,0 +1,54 @@
+{
+  "analysis": "naamp_blocked_transferability_v0_1",
+  "status": "posthoc_public_scale_generalization_test_fixed_before_blocked_results",
+  "purpose": "Use the scale of the public NAAMP archive to test whether the focal within-taxon concentration excess persists under genuinely blocked spatial and temporal prediction, rather than only random route cross-fitting.",
+  "frozen_primary_endpoint": "Exactly the existing within-taxon concentration endpoint: sum choose(max(k-1,0),2) over acoustically route-new taxa, conditionally residualized on simulated route-new-taxon and total extra-stop rainfall coefficients.",
+  "comparator": {
+    "anchor": 0.75,
+    "species_response": "Species-specific wet-shift gamma estimated from stop-positive counts using log1p(DaysSinceRain), mean temperature, annual sine/cosine, State and RunNumber nuisance terms; minimum information remains 20 positive stop cells and 5 positive routes.",
+    "site_history": "Same strictly-prior species x physical-SiteID probability model and dry-state persistence anchor as the current principal comparator.",
+    "magnitude_conditioning": "Observed wet incidence magnitude is matched exactly as in the existing principal comparator; this is conditional allocation transferability, not prediction of total activation magnitude."
+  },
+  "spatial_block": {
+    "design": "Leave-one-State-out prediction mosaic.",
+    "training_rule": "For every focal pair, species wet-shift gamma is trained on eligible runs from all other States and never on any run from the focal State.",
+    "history_rule": "The focal State's strictly-prior physical-SiteID history may be used because it is information available before the focal pair; focal-pair and future history are excluded by the existing prior-history rule.",
+    "test_population": "The existing 2,916-pair strictly-prior-history principal subset.",
+    "primary_test": "Pool all focal pairs after assigning each its no-self-State species gamma; compare the observed conditional concentration residual with 1,000 simulations.",
+    "gate": {
+      "pairs": 2916,
+      "routes": 439,
+      "min_states": 18
+    }
+  },
+  "temporal_block": {
+    "cutoff_year": 2008,
+    "training_period": "2001-2008 inclusive",
+    "test_period": "Pairs with year_earlier >= 2009; both members are therefore in 2009-2015.",
+    "species_training": "Species wet-shift gamma uses only eligible runs with SurveyYear <= 2008.",
+    "history_training": "Physical-site history is frozen to eligible prior runs with SurveyYear <= 2008; no 2009-2015 history is used to build the template.",
+    "primary_test": "Evaluate the same conditional concentration residual only in the temporally held-out pairs, with 1,000 simulations.",
+    "structural_gate": {
+      "min_pairs": 500,
+      "min_routes": 100,
+      "min_states": 12
+    }
+  },
+  "simulation": {
+    "replicates": 1000,
+    "seed": 2840261
+  },
+  "classification": {
+    "excess_transfers": "observed conditional residual exceeds the simulated upper 95% bound",
+    "directional_only": "residual is positive but does not exceed the upper 95% bound",
+    "no_positive_transfer": "residual <= 0"
+  },
+  "interpretation_boundaries": [
+    "This is post-hoc transferability assessment, not independent confirmation.",
+    "The spatial test transfers the species rainfall-response component across States while retaining strictly-prior local site history.",
+    "The temporal test is stronger: both species response and local site-history template are frozen before 2009.",
+    "Observed wet incidence magnitude remains conditioned on, so the test concerns spatial allocation conditional on response magnitude.",
+    "No causal rainfall, literal synchrony, individual movement, occupancy change or unique mechanism is inferred.",
+    "No cutoff, structural gate, endpoint, tail or classification may change after blocked outcomes are read."
+  ]
+}
