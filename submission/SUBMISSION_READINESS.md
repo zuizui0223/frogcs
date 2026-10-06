@@ -18,6 +18,7 @@
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 - final project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 - initial-submission handoff: `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
+- final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
 - final pre-submission audit: `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
 
 Historical RC5 remains preserved at:
@@ -39,6 +40,7 @@ Historical RC5 remains preserved at:
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
+- [x] final anonymous scientific submission artifact recorded — artifact ID **11387156319**, digest `sha256:e18eb544f8267e5c1c6e2844129a53018074c0f517bc269cfaaf038fc9064cee`
 - [x] finite public-data scale validation completed and reclosed — blocked State/time transferability supported; future-rain negative control retained as an interpretation boundary
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
