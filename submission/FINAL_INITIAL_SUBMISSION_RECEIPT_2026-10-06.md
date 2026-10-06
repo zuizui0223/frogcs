@@ -2,16 +2,18 @@
 
 ## Canonical submission state
 
-Current main commit:
-- `be8af688c1f523f7d825d8f6eea636b64421f7ee`
+Canonical scientific-bundle source commit:
+- `3c7677e14866f70f922ff09d2fd398d6e5d74279`
+
+A later operational commit narrows the JAE workflow trigger set only. Comparison against the bundle-source commit shows no manuscript, Supporting Information, figure, analysis, provenance or cover-letter changes. Receipt/readiness-only commits after this point are intentionally excluded from bundle triggers.
 
 Current manuscript:
 - title: **Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
-- anonymous manuscript: **7,997 words**
+- anonymous manuscript: **7,996 words**
 - title-page template: **158 words**
-- current combined count: approximately **8,155 words**
-- current margin below the 8,500-word Research Article limit: approximately **345 words**
-- Abstract: **321 words**
+- current combined count: approximately **8,154 words**
+- current margin below the 8,500-word Research Article limit: approximately **346 words**
+- Abstract: **320 words**
 - cover letter: **412 words**
 
 The finite public-data scale validation has been completed and reclosed under:
@@ -60,36 +62,35 @@ The blocked tests are explicitly described as **post-hoc within-programme transf
 
 ## Final GitHub Actions validation
 
-On current main commit `be8af688c1f523f7d825d8f6eea636b64421f7ee`:
-
-- pulse-template manuscript QA
-  - run: **37405329165**
-  - conclusion: **SUCCESS**
+On scientific-bundle source commit `3c7677e14866f70f922ff09d2fd398d6e5d74279`:
 
 - JAE submission pipeline
-  - run: **37405329025**
+  - run: **37406142401**
   - conclusion: **SUCCESS**
 
-The JAE pipeline successfully completed:
+Within that run, all scientific-package steps succeeded:
 - integrated manuscript QA;
 - figure rendering from frozen inputs;
+- private-metadata renderer smoke test;
 - anonymous manuscript and Supporting Information build;
 - JAE formatting and anonymity verification;
 - anonymous reviewer-code bundle build and identity scan;
 - scientific submission bundle assembly;
 - artifact upload.
 
+The later workflow-trigger hardening commit changes only `.github/workflows/pulse_template_submission_pipeline.yml`; the canonical scientific inputs are unchanged.
+
 ## Final anonymous scientific bundle
 
 Artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11387156319**
-- size: **1,191,709 bytes**
-- digest: `sha256:e18eb544f8267e5c1c6e2844129a53018074c0f517bc269cfaaf038fc9064cee`
-- source workflow run: **37405329025**
-- source commit: `be8af688c1f523f7d825d8f6eea636b64421f7ee`
+- artifact ID: **11387327485**
+- size: **1,191,690 bytes**
+- digest: `sha256:018dbab97284978ec69cb37736ba111b4b38b4f76f0c490406a0976c892c8226`
+- source workflow run: **37406142401**
+- source scientific commit: `3c7677e14866f70f922ff09d2fd398d6e5d74279`
 
-This is the current anonymous reviewer-facing scientific package.
+This is the canonical anonymous reviewer-facing scientific package. Subsequent receipt/readiness-only repository edits do not alter its contents and no longer trigger a scientific-bundle rebuild.
 
 ## Remaining initial-submission blockers
 
