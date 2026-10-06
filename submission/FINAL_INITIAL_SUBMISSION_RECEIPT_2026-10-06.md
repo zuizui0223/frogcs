@@ -3,17 +3,17 @@
 ## Canonical submission state
 
 Canonical scientific-bundle source commit:
-- `7c3d665f2c5f3077a25f1ea7d944583fdbeef6ec`
+- `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`
 
 The final conceptual framing distinguishes **response magnitude** from **realised configuration** without changing any endpoint or numerical result. Receipt/readiness-only commits after this point are excluded from scientific-bundle triggers.
 
 Current manuscript:
 - title: **Rainfall-associated frog chorus activation is concentrated within taxa across multiple sites**
-- anonymous manuscript: **7,980 words**
+- anonymous manuscript: **7,966 words**
 - title-page template: **158 words**
-- current combined count: approximately **8,138 words**
-- current margin below the 8,500-word Research Article limit: approximately **362 words**
-- Abstract: **320 words**
+- current combined count: approximately **8,124 words**
+- current margin below the 8,500-word Research Article limit: approximately **376 words**
+- Abstract: **293 words**
 - cover letter: **400 words**
 
 The finite public-data scale validation has been completed and reclosed under:
@@ -30,6 +30,19 @@ The reader-facing contribution is now stated consistently as a distinction betwe
 
 This is an ecological framing of the existing frozen result, not a new endpoint or statistical theorem. The detailed boundary is recorded in:
 - `revision/KNOWLEDGE_SHIFT_SYNTHESIS_V0_1.md`.
+
+## Final visual polish
+
+The final submission-facing figure/abstract audit made no new scientific inference:
+
+- Figure 1 explicitly labels the upper three decomposition quantities as **point estimates only** and the two direct CI3 endpoints as **95% CI**, with the note placed above the axes;
+- Figure 3 shows four conditional-residual rows: the principal comparator, held-out rain × history gate, focal-State-excluded response training and the 2009–2015 temporal block;
+- the two blocked rows remain explicitly post-hoc within-programme transferability tests;
+- Abstract point 5 was reduced to the core conclusion, one blocked-transferability sentence and the confirmation boundary;
+- internal filenames remain confined to the SI provenance table;
+- Kusano et al. (1999) retains the original journal spelling **Kanenko**.
+
+The generated Figure 1 and Figure 3 files were synchronized onto main by deterministic figure-build commit `4c4f65f46f62f39216d50cccb2a64497ee818b6c`.
 
 ## Final scientific additions
 
@@ -72,10 +85,10 @@ The blocked tests are explicitly described as **post-hoc within-programme transf
 
 ## Final GitHub Actions validation
 
-On scientific-bundle source commit `7c3d665f2c5f3077a25f1ea7d944583fdbeef6ec`:
+On scientific-bundle source commit `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`:
 
 - JAE submission pipeline
-  - run: **37419736713**
+  - run: **37422937862**
   - conclusion: **SUCCESS**
 
 Within that run, all scientific-package steps succeeded:
@@ -92,11 +105,11 @@ Within that run, all scientific-package steps succeeded:
 
 Artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11392985511**
-- size: **1,193,216 bytes**
-- digest: `sha256:14b6ac9e84a76ce8bf490b96ba4d08b9d2a6223553fa6bdaf73fb67dcba88b3b`
-- source workflow run: **37419736713**
-- source scientific commit: `7c3d665f2c5f3077a25f1ea7d944583fdbeef6ec`
+- artifact ID: **11393249104**
+- size: **1,222,249 bytes**
+- digest: `sha256:3714e36148fb3d11d2b2e52b1dc72aa297e6d2284293bde6fe477c460d61ffa7`
+- source workflow run: **37422937862**
+- source scientific commit: `85610c8bf9f56491c5d3c0ba88b66ae8bc1e86cf`
 
 This is the canonical anonymous reviewer-facing scientific package. Its bundled canonical provenance is self-reference-free: dynamic artifact identifiers live only in this receipt, not inside `CURRENT_ANALYSIS_SPECIFICATIONS.json`. Subsequent receipt/readiness-only edits do not alter its contents and do not trigger a scientific-bundle rebuild.
 
