@@ -3,7 +3,7 @@
 ## Canonical submission state
 
 Canonical scientific-bundle source commit:
-- `7fab1774510ae00d0d717b6c5544ae8b1b8cc554`
+- `7c3d665f2c5f3077a25f1ea7d944583fdbeef6ec`
 
 The final conceptual framing distinguishes **response magnitude** from **realised configuration** without changing any endpoint or numerical result. Receipt/readiness-only commits after this point are excluded from scientific-bundle triggers.
 
@@ -72,10 +72,10 @@ The blocked tests are explicitly described as **post-hoc within-programme transf
 
 ## Final GitHub Actions validation
 
-On scientific-bundle source commit `7fab1774510ae00d0d717b6c5544ae8b1b8cc554`:
+On scientific-bundle source commit `7c3d665f2c5f3077a25f1ea7d944583fdbeef6ec`:
 
 - JAE submission pipeline
-  - run: **37408939702**
+  - run: **37419736713**
   - conclusion: **SUCCESS**
 
 Within that run, all scientific-package steps succeeded:
@@ -92,13 +92,13 @@ Within that run, all scientific-package steps succeeded:
 
 Artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
-- artifact ID: **11388866635**
-- size: **1,191,757 bytes**
-- digest: `sha256:f2bb818a637049b2435aa13f02a7d351692bdfdb16a406a315cf18e5b8081167`
-- source workflow run: **37408939702**
-- source scientific commit: `7fab1774510ae00d0d717b6c5544ae8b1b8cc554`
+- artifact ID: **11392985511**
+- size: **1,193,216 bytes**
+- digest: `sha256:14b6ac9e84a76ce8bf490b96ba4d08b9d2a6223553fa6bdaf73fb67dcba88b3b`
+- source workflow run: **37419736713**
+- source scientific commit: `7c3d665f2c5f3077a25f1ea7d944583fdbeef6ec`
 
-This is the canonical anonymous reviewer-facing scientific package. Subsequent receipt/readiness-only edits do not alter its contents and do not trigger a scientific-bundle rebuild.
+This is the canonical anonymous reviewer-facing scientific package. Its bundled canonical provenance is self-reference-free: dynamic artifact identifiers live only in this receipt, not inside `CURRENT_ANALYSIS_SPECIFICATIONS.json`. Subsequent receipt/readiness-only edits do not alter its contents and do not trigger a scientific-bundle rebuild.
 
 ## Remaining initial-submission blockers
 
