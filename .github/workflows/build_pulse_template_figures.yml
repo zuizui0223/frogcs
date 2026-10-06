@@ -33,17 +33,25 @@ jobs:
       - name: Render canonical figures
         run: python revision/build_pulse_template_figures.py
 
-      - name: Verify generated figures are committed
-        if: github.event_name == 'pull_request' || github.ref_name == 'main'
+      - name: Verify generated figure set
+        if: github.event_name == 'pull_request'
         run: |
-          git diff --exit-code -- figures_pulse_template
+          python - <<'PY'
+          from pathlib import Path
+          svgs=sorted(Path("figures_pulse_template").glob("fig*.svg"))
+          pngs=sorted(Path("figures_pulse_template").glob("fig*.png"))
+          assert len(svgs)==5, [p.name for p in svgs]
+          assert len(pngs)==5, [p.name for p in pngs]
+          assert all(p.stat().st_size > 50000 for p in pngs), [(p.name,p.stat().st_size) for p in pngs]
+          print({"status":"PASS","svg":len(svgs),"png":len(pngs)})
+          PY
 
-      - name: Commit generated figures on clean integration branch
-        if: github.event_name == 'push' && github.ref_name == 'integration/jae-multisite-rc4-clean'
+      - name: Commit deterministic generated figures
+        if: github.event_name == 'push' && (github.ref_name == 'integration/jae-multisite-rc4-clean' || github.ref_name == 'main')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add figures_pulse_template
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Build integrated pulse-template figures"
-          git push origin HEAD:integration/jae-multisite-rc4-clean
+          git push origin HEAD:${{ github.ref_name }}

@@ -2,6 +2,8 @@
 
 ## Status
 
+Final pre-submission correction receipt: `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
+
 The scientific and technical initial-submission package is complete.
 
 Current main integration after submission packaging:
@@ -39,12 +41,12 @@ The WFTS checks are historical-design integrity checks only. WFTS is not being p
 
 Current counts before final human metadata:
 
-- anonymous main manuscript: **7,986 words**
+- anonymous main manuscript: **7,996 words**
 - current title-page template: **158 words**
-- current combined count: approximately **8,144 words**
+- current combined count: approximately **8,154 words**
 - JAE Research Article limit: **8,500 words**
 
-Approximate remaining margin before final title-page metadata: **356 words**.
+Approximate remaining margin before final title-page metadata: **346 words**.
 
 Keep final author names, affiliations, acknowledgements, contributions and other title-page additions concise enough to remain within this margin.
 
@@ -53,9 +55,18 @@ Keep final author names, affiliations, acknowledgements, contributions and other
 The cover letter is optional and anonymous.
 
 Current cover letter:
-- **366 words**
+- **401 words**
 - below the current **500-word** JAE limit
 - contains no author-identifying information
+
+## Anonymous reviewer-code access
+
+The scientific submission pipeline now generates `Reviewer_Code.zip`, containing the main analysis scripts, frozen specifications, selected result receipts and deterministic figure inputs without Git history or author-identifying repository metadata. Identity tokens are scanned automatically.
+
+Preferred review workflow:
+- attach `Reviewer_Code.zip` directly as an anonymous reviewer/supplementary file in the journal submission system;
+- if the journal interface requires a URL instead of a file, upload this exact ZIP to an anonymous/restricted repository service before submission;
+- do **not** give reviewers the public GitHub URL containing the account name.
 
 ## Human decisions still required before initial submission
 

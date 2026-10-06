@@ -5,7 +5,7 @@
 Across repeated NAAMP routes, recent-rain conditions are associated with a **pulse-revealed dependence structure**:
 
 1. previously silent species × site cells often switch directly into strong/full chorus states;
-2. recruited taxa show a deeper-than-expected within-taxon multi-site tail: marginal depths 4–10 exceed both activation nulls, whereas depths 1–3 do not;
+2. recruited taxa show a shallow-to-deep shift and deeper-than-expected within-taxon multi-site tail: depths 1–3 remain within the uniform-activation envelope, depths 1–2 fall below the persistence-preserving two-sided envelope, and depths 4–10 exceed both upper envelopes;
 3. within-taxon multi-site concentration exceeds a comparator that already includes cross-fit taxon rainfall response, strictly-prior physical-site history, dry persistence and matched activation magnitude;
 4. strong chorus states preferentially reappear at the same taxon-specific physical sites, with targeting strengthened toward the survey closer to rain.
 

@@ -61,7 +61,7 @@ Example:
 The post-freeze exact-depth audit fixes marginal j-th-stop participation before readback.
 
 Observed result:
-- marginal depths 1–3 remain within both primary activation-null envelopes;
+- marginal depths 1–3 remain within the uniform-activation envelope; depths 1–2 fall below the persistence-preserving two-sided envelope and depth 3 remains within it;
 - marginal depths 4–10 exceed both;
 - observed marginal coefficients decline with depth rather than increase.
 
