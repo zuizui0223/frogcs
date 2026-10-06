@@ -40,7 +40,7 @@ Historical RC5 remains preserved at:
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
-- [x] final anonymous scientific submission artifact recorded — artifact ID **11387156319**, digest `sha256:e18eb544f8267e5c1c6e2844129a53018074c0f517bc269cfaaf038fc9064cee`
+- [x] final anonymous scientific submission artifact recorded — artifact ID **11387327485**, digest `sha256:018dbab97284978ec69cb37736ba111b4b38b4f76f0c490406a0976c892c8226`
 - [x] finite public-data scale validation completed and reclosed — blocked State/time transferability supported; future-rain negative control retained as an interpretation boundary
 - [x] RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
