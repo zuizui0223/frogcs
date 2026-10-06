@@ -43,12 +43,12 @@ The WFTS checks are historical-design integrity checks only. WFTS is not being p
 
 Current counts before final human metadata:
 
-- anonymous main manuscript: **7,993 words**
+- anonymous main manuscript: **7,996 words**
 - current title-page template: **158 words**
-- current combined count: approximately **8,151 words**
+- current combined count: approximately **8,154 words**
 - JAE Research Article limit: **8,500 words**
 
-Approximate remaining margin before final title-page metadata: **349 words**.
+Approximate remaining margin before final title-page metadata: **346 words**.
 
 Keep final author names, affiliations, acknowledgements, contributions and other title-page additions concise enough to remain within this margin.
 
