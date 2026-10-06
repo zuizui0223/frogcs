@@ -607,7 +607,20 @@
   },
   "environmental_factor_coverage": {
     "status": "coverage_audit_no_new_outcome_analysis",
-    "audit": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_2.md",
+    "audit": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_3.md",
+    "literature_verified_axes": [
+      "air temperature",
+      "water temperature",
+      "rainfall amount and recency",
+      "barometric pressure",
+      "relative humidity",
+      "wind",
+      "time of day",
+      "moonlight",
+      "hydropattern/hydroperiod",
+      "water depth/inundation",
+      "vegetation/habitat state"
+    ],
     "directly_or_strongly_addressed": [
       "rainfall recency",
       "antecedent 72-h rainfall amount",
@@ -636,7 +649,7 @@
         "rank": 1,
         "family": "dynamic local hydrology x taxon-specific breeding requirements",
         "examples": [
-          "hydroperiod",
+          "hydroperiod/recent wet-dry transition",
           "water level/inundation",
           "soil moisture/runoff",
           "fine-scale wetness",
@@ -656,7 +669,7 @@
       },
       {
         "rank": 4,
-        "family": "temporally changing vegetation/habitat structure",
+        "family": "temporally changing vegetation/calling substrate",
         "priority": "medium"
       },
       {
@@ -666,8 +679,9 @@
       }
     ],
     "structural_constraint": "Any omitted environmental explanation capable of reproducing the focal residual must vary among survey events, be non-uniform among stops, have taxon-specific effects, and preserve or reinforce recurrent taxon-specific site selectivity.",
-    "leading_unresolved_environmental_alternative": "dynamic, spatially heterogeneous local wetland state, especially hydroperiod/water level/inundation and related local wetness, with taxon-specific effects",
+    "leading_unresolved_environmental_alternative": "dynamic, spatially heterogeneous local wetland state, especially hydroperiod/water level/inundation, local wetness/runoff and water temperature, with taxon-specific effects",
     "authorized_claim": "Most major broad atmospheric, seasonal and observation-process explanations were directly or indirectly examined and were insufficient; all environmental causes have not been excluded.",
+    "future_decisive_test": "directly measure local wetland state in an independent repeated fixed-site system and compare broad-weather, local-state-only, and broad-state x local-filter generators",
     "science_lock": "No new same-data hydrological mechanism analysis is authorized by this audit."
   }
 }
