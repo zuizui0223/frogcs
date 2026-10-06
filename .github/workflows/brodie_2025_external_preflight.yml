@@ -1,0 +1,35 @@
+name: Brodie 2025 external schema preflight
+
+on:
+  push:
+    branches:
+      - external/brodie-chorus-validation-v1
+    paths:
+      - '.github/workflows/brodie_2025_external_preflight.yml'
+      - 'scripts/external/preflight_brodie_2025.py'
+      - 'external/BRODIE_2025_EXPANSION_WITHOUT_HOMOGENIZATION_CONTRACT_V0_1.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download public JCU data attachments
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p external_data
+          curl -L --fail --retry 3 -o external_data/HerveyRange_frog_chorus_rawdata.csv 'https://researchdata.jcu.edu.au/default/rdmp/pubrecord/6e808de0ddf811edb22c156e754c4bda/pubattach/76cdd0dc28f83c0dc4abc95bbed6dfcc?pubId=e28ccb6044a311eea020c9a81293027e'
+          curl -L --fail --retry 3 -o external_data/HerveyRange_weather_aggregated.csv 'https://researchdata.jcu.edu.au/default/rdmp/pubrecord/6e808de0ddf811edb22c156e754c4bda/pubattach/28b379c722145c48dd9b5edc47516f0b?pubId=e28ccb6044a311eea020c9a81293027e'
+          curl -L --fail --retry 3 -o external_data/HerveyRange_frogchorus_weather.csv 'https://researchdata.jcu.edu.au/default/rdmp/pubrecord/6e808de0ddf811edb22c156e754c4bda/pubattach/2c7690372ace861161ba988732b4f9f4?pubId=e28ccb6044a311eea020c9a81293027e'
+      - name: Schema-only preflight
+        run: python scripts/external/preflight_brodie_2025.py
+      - name: Upload schema receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: brodie-2025-schema-preflight
+          path: external/BRODIE_2025_SCHEMA_PREFLIGHT_RECEIPT.json
