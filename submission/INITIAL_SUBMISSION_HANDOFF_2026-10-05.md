@@ -9,7 +9,7 @@ The scientific and technical initial-submission package is complete.
 Current main integration after submission packaging:
 - merge commit: `02eac2858ede8083ac18cdcaf55d721161ea0625`
 
-The manuscript, Supporting Information, figures and scientific endpoints are closed. No further NAAMP analysis, WFTS work or landscape exploration is required for initial submission.
+The manuscript, Supporting Information, figures and scientific endpoints are closed. A finite public-data scale validation was subsequently completed and reclosed: blocked State/time transferability supported the conditional spatial-allocation result, while a future-rain negative control limited temporal interpretation of the 72-h rainfall-amount covariate. No further NAAMP analysis, WFTS work or landscape exploration is required for initial submission.
 
 ## Technical checks
 
@@ -41,12 +41,12 @@ The WFTS checks are historical-design integrity checks only. WFTS is not being p
 
 Current counts before final human metadata:
 
-- anonymous main manuscript: **7,996 words**
+- anonymous main manuscript: **8,050 words**
 - current title-page template: **158 words**
-- current combined count: approximately **8,154 words**
+- current combined count: approximately **8,208 words**
 - JAE Research Article limit: **8,500 words**
 
-Approximate remaining margin before final title-page metadata: **346 words**.
+Approximate remaining margin before final title-page metadata: **292 words**.
 
 Keep final author names, affiliations, acknowledgements, contributions and other title-page additions concise enough to remain within this margin.
 
@@ -55,7 +55,7 @@ Keep final author names, affiliations, acknowledgements, contributions and other
 The cover letter is optional and anonymous.
 
 Current cover letter:
-- **401 words**
+- **412 words**
 - below the current **500-word** JAE limit
 - contains no author-identifying information
 
