@@ -4,10 +4,12 @@
 
 Final pre-submission correction receipt: `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
 
+Final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
+
 The scientific and technical initial-submission package is complete.
 
 Current main integration after submission packaging:
-- merge commit: `02eac2858ede8083ac18cdcaf55d721161ea0625`
+- merge commit: `be8af688c1f523f7d825d8f6eea636b64421f7ee`
 
 The manuscript, Supporting Information, figures and scientific endpoints are closed. A finite public-data scale validation was subsequently completed and reclosed: blocked State/time transferability supported the conditional spatial-allocation result, while a future-rain negative control limited temporal interpretation of the 72-h rainfall-amount covariate. No further NAAMP analysis, WFTS work or landscape exploration is required for initial submission.
 
@@ -15,8 +17,8 @@ The manuscript, Supporting Information, figures and scientific endpoints are clo
 
 The final submission-facing packaging PR passed:
 
-- pulse-template manuscript QA — **SUCCESS**
-- JAE submission pipeline — **SUCCESS**
+- pulse-template manuscript QA — **SUCCESS** (run **37405329165**)
+- JAE submission pipeline — **SUCCESS** (run **37405329025**)
 - build pulse-template figures — **SUCCESS**
 - RC4 restored-analysis reproducibility smoke — **SUCCESS**
 - WFTS real-data authority lock — **SUCCESS**
