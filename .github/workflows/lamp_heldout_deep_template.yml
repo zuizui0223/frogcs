@@ -1,11 +1,10 @@
 name: LAMP held-out deep-template test
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches:
+      - external/lamp-holdout-run-v1
     paths:
-      - "revision/LAMP_HELDOUT_DEEP_TEMPLATE_TEST_V0_1.md"
-      - "scripts/lamp/run_lamp_heldout_deep_template_v0_1.py"
       - ".github/workflows/lamp_heldout_deep_template.yml"
   workflow_dispatch:
 
