@@ -10,7 +10,7 @@
 
 4. **Two biological results clarify what that endpoint represents.** Rain-associated change often involved transitions from acoustic silence directly into overlapping or full chorus, rather than only intensification of already-calling cells. In addition, physical sites where a taxon had previously reached strong chorus were more likely to host strong wet-state chorusing again (β = 0.151, 95% CI 0.129–0.173).
 
-5. **Thus response magnitude did not fully describe spatial chorus activation.** Activity remained taxon-concentrated at recurrent taxon-specific sites. The excess persisted when focal-State data were excluded from response training and when response/site history were frozen through 2008 for 2009–2015 evaluation. These post-hoc within-programme tests are not independent confirmation. Pair-clustered SE exceeded IID in 38/39 taxa (median **1.61-fold**); route clustering increased pooled SE **2.69-fold**. The inference remains exploratory at manuscript level; transferability remains to be tested in independent monitoring programmes.
+5. **Thus response magnitude did not fully describe the spatial pattern of chorus activation.** Activity remained taxon-concentrated at recurrent taxon-specific sites. The excess persisted when focal-State data were excluded from response training and when response/site history were frozen through 2008 for 2009–2015 evaluation. These post-hoc within-programme tests are not independent confirmation. Pair-clustered SE exceeded IID in 38/39 taxa (median **1.61-fold**); route clustering increased pooled SE **2.69-fold**. The inference remains exploratory at manuscript level; transferability remains to be tested in independent monitoring programmes.
 
 ## Keywords
 
