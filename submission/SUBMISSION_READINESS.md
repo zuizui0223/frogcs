@@ -95,7 +95,9 @@ Biological interpretation:
 
 General hypothesis:
 
-> **Response magnitude alone may be insufficient to describe a short behavioural pulse because the realised spatial pattern can retain additional ecological structure after first-order taxon and site propensities are represented.**
+> **Short behavioural responses have at least two separable empirical properties—response magnitude and realised configuration—because the same amount of activation can be realised through different taxon-by-place patterns.**
+
+Equivalent conservative wording retained in the manuscript: **response magnitude alone may be insufficient to describe a short behavioural pulse**.
 
 Post-hoc prospective prediction:
 
@@ -114,7 +116,7 @@ Post-hoc prospective prediction:
 - [x] FrogID remains partial cross-dataset context, not replication of the multi-site mechanism
 - [x] no untouched NAAMP confirmation partition is claimed
 
-## RC6 release authority
+## Historical RC6 release authority
 
 Validated RC6 scientific source:
 - `ea2bea7fd9ac8856f880a7f3302e193fa19705bd`
@@ -126,11 +128,18 @@ RC6 refs:
 Release receipt:
 - `submission/RC6_RELEASE_RECEIPT.md`
 
-Scientific submission artifact:
+Historical RC6 release artifact:
 - name: `frogcs-jae-pulse-template-scientific-submission`
 - artifact ID: **11320298330**
-- size: **1,005,308 bytes**
 - digest: `sha256:efe6e65c5fb64a604dd935e92482e7980fb0c248efaa7cc2840c680bcf3faeba`
+- status: **superseded for current initial submission**
+
+Current canonical initial-submission artifact:
+- artifact ID: **11388866635**
+- digest: `sha256:f2bb818a637049b2435aa13f02a7d351692bdfdb16a406a315cf18e5b8081167`
+- source scientific commit: `7fab1774510ae00d0d717b6c5544ae8b1b8cc554`
+- JAE pipeline run: **37408939702**
+- authority: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
 
 The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
 
