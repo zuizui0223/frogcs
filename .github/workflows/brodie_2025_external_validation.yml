@@ -1,0 +1,32 @@
+name: Brodie 2025 expansion-without-homogenization
+
+on:
+  push:
+    branches:
+      - external/brodie-chorus-validation-v1
+    paths:
+      - ".github/workflows/brodie_2025_external_validation.yml"
+      - "scripts/external/run_brodie_2025_expansion_without_homogenization.py"
+      - "external/BRODIE_2025_EXPANSION_WITHOUT_HOMOGENIZATION_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check pandas numpy statsmodels
+      - name: Run frozen external validation
+        run: python scripts/external/run_brodie_2025_expansion_without_homogenization.py
+      - name: Upload receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: brodie-2025-expansion-without-homogenization
+          path: external/BRODIE_2025_EXPANSION_WITHOUT_HOMOGENIZATION_RECEIPT_V0_1.json
