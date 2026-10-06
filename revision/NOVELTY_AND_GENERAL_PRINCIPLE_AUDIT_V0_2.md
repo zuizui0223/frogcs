@@ -75,13 +75,24 @@ In the NAAMP system, the residual spatial pattern has three properties:
 
 This combination is what gives the result ecological content beyond generic residual covariance.
 
+## Knowledge shift relative to previous frog ecology
+
+The paper changes the description of environmental response from a single dominant axis to two separable empirical properties:
+
+1. **response magnitude** — how much activity appears;
+2. **realised configuration** — how that activity is distributed among taxa and places after first-order propensities are represented.
+
+The blocked State/time tests strengthen this interpretation within NAAMP: the conditional configuration excess persists when focal-State response calibration is removed and when response/site history are frozen before a later seven-year test period. These are within-programme transferability results, not external confirmation.
+
+The future-rain negative control narrows the mechanism claim: the robust contribution is the spatial organization of the response, not evidence that antecedent 72-h rainfall amount uniquely generates it.
+
 ## Strongest defensible novelty sentence
 
 > **After first-order taxon response, prior physical-site propensity, dry-state persistence and total activation were represented, rain-associated frog calling remained over-concentrated within taxa across separated sites, with the deepest expression preferentially involving recurrent taxon-specific chorus locations.**
 
 ## Strongest defensible generality sentence
 
-> **Pulse-triggered behavioural responses can retain spatial structure after response magnitude is fixed: the same amount of local activation can be realised through different taxon-by-place patterns.**
+> **Short behavioural responses have at least two separable empirical properties—response magnitude and realised configuration—because the same amount of local activation can be realised through different taxon-by-place patterns.**
 
 ## Claims to avoid
 
@@ -96,9 +107,9 @@ Do not claim:
 
 ## Evidential status
 
-The result is broad within NAAMP but manuscript-level exploratory because the endpoint was developed after opening the dataset.
+The result is broad within NAAMP and now has post-hoc blocked geographic and temporal transferability within the programme, but it remains manuscript-level exploratory because the endpoint was developed after opening the dataset.
 
-Prospective external replication can test transferability of the frozen multi-site endpoint. It is an evidential upgrade, not a prerequisite for the current NAAMP paper.
+External replication can test whether the same configuration-level result transfers beyond NAAMP. It remains an evidential upgrade, not a prerequisite for the current paper.
 
 
 ## Secondary general prediction from the post-hoc refinement
