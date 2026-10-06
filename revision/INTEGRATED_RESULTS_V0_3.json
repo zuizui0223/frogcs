@@ -245,23 +245,28 @@
   },
   "environmental_factor_coverage": {
     "status": "coverage_audit_no_new_outcome_analysis",
-    "audit": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_4.md",
+    "audit": "revision/ENVIRONMENTAL_FACTOR_COVERAGE_AUDIT_V0_5.md",
+    "literature_rechecked_through": "2026-10",
+    "primary_source_verification": true,
     "literature_verified_axes": [
       "air temperature",
       "water temperature",
-      "rainfall amount and recency",
+      "rainfall amount, recency and lag windows",
       "barometric pressure",
       "relative humidity",
+      "vapour pressure deficit / atmospheric dryness",
       "wind",
-      "time of day/diel timing",
+      "time of day / diel timing",
       "photoperiod",
       "moonlight",
-      "hydropattern/hydroperiod",
-      "water depth/inundation",
-      "soil moisture/substrate wetness",
-      "vegetation/canopy/habitat state",
-      "snowmelt/ice-out in northern systems",
-      "social/prior-calling state as a biotic contextual driver"
+      "hydropattern / hydroperiod",
+      "water depth / inundation / flow arrival",
+      "soil or substrate wetness / runoff",
+      "vegetation / canopy / habitat state",
+      "snowmelt / ice-out in northern systems",
+      "static habitat / wetland type",
+      "water chemistry as a lower-priority system-specific axis",
+      "social / prior-calling state as a biotic contextual driver"
     ],
     "directly_or_strongly_addressed": [
       "rainfall recency",
@@ -283,6 +288,7 @@
     ],
     "indirectly_addressed": [
       "photoperiod/daylength through seasonal terms",
+      "vapour pressure deficit partly through temperature/humidity-related structure but not directly parameterized",
       "static taxon-specific site quality through strictly-prior species x SiteID propensity",
       "generic route-order/time progression through stop-night hotness and route-position diagnostics"
     ],
@@ -293,7 +299,7 @@
         "examples": [
           "hydroperiod/recent wet-dry transition",
           "water level/inundation/shallow-water extent",
-          "soil moisture/runoff/substrate wetness",
+          "soil or substrate wetness/runoff",
           "fine-scale local rainfall",
           "water temperature",
           "event-specific aquatic microhabitat availability"
@@ -312,6 +318,10 @@
       {
         "rank": 3,
         "family": "local microclimate or moonlight x canopy/topography",
+        "examples": [
+          "stop-level humidity/VPD unavailable",
+          "route-wide lunar cue requires local modifier to explain site selectivity"
+        ],
         "priority": "low-medium"
       },
       {
@@ -327,17 +337,20 @@
     ],
     "structural_constraint": "Any omitted environmental explanation capable of reproducing the focal residual must vary among survey events, be non-uniform among stops, have taxon-specific effects, and preserve or reinforce recurrent taxon-specific site selectivity.",
     "leading_unresolved_environmental_alternative": "dynamic, spatially heterogeneous local wetland state, especially hydroperiod/water level/inundation, local wetness/runoff/substrate moisture and water temperature, with taxon-specific effects",
+    "completeness_verdict": "Broad environmental coverage is strong, but exhaustive causal exclusion is impossible because direct site x survey-event wetland state was not measured.",
     "authorized_claim": "Most major broad atmospheric, seasonal and observation-process explanations were directly or indirectly examined and were insufficient; all environmental causes have not been excluded.",
-    "future_decisive_test": "directly measure local wetland state in an independent repeated fixed-site system and compare broad-weather, local-state-only, and broad-state x local-filter generators",
+    "future_decisive_test": "directly measure local wetland state in an independent repeated fixed-site system and compare broad-weather/phenology, local-state-only, and broad-state x local-filter generators",
+    "future_specification": "revision/PROSPECTIVE_LOCAL_HYDROLOGY_DISCRIMINATION_SPEC_V0_2.md",
     "science_lock": "No new same-data hydrological, diel-timing or microclimate outcome analysis is authorized by this audit.",
-    "literature_rechecked_through": "2026-10",
-    "new_2026_literature_crosscheck": [
-      "Leung et al. 2026: humidity, moonlight, wind, canopy, temporary/lentic water and prior calling all matter, with climate-zone dependence",
-      "Pouso et al. 2026: photoperiod and temperature supported; rainfall and pressure unsupported in that subtropical system",
-      "Ethier et al. 2026: false spring shifted calling phenology in species-specific ways",
+    "verified_literature_updates": [
+      "Leung et al. 2026: humidity, wind, moonlight, canopy, lentic/temporary water and prior calling matter, with climate-zone-dependent importance",
+      "Pouso et al. 2026: photoperiod and temperature supported; rainfall and pressure unsupported in a subtropical permanent-pond system",
       "Hainan 2026 thermal PAM study: diel partitioning and habitat-specific thermal responses",
-      "Rush et al. 2026: geographic variation consistent with local climatic/hydrological buffering",
-      "Mitchell 2001: wetter substrate experimentally increased male calling"
+      "Rush et al. 2026: rainfall, minimum temperature and VPD effects differ strongly between nearby regions, consistent with local buffering/hydrology",
+      "Larsen et al. 2021: snowmelt and temperature track wood-frog breeding/calling phenology",
+      "Wheeler et al. 2018: water depth and water temperature influence calling phenology",
+      "Sarker et al. 2022: inundation produces species- and site-specific chorus changes",
+      "Mitchell 2001: experimentally wetter substrate increases male calling"
     ]
   }
 }
