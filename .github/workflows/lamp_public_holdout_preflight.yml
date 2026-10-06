@@ -1,0 +1,21 @@
+name: LAMP public holdout header preflight
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "revision/LAMP_PUBLIC_HOLDOUT_PREFLIGHT_V0_1.md"
+      - "scripts/lamp/preflight_lamp_public_holdout.py"
+      - ".github/workflows/lamp_public_holdout_preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run response-blind LAMP header preflight
+        run: python scripts/lamp/preflight_lamp_public_holdout.py
