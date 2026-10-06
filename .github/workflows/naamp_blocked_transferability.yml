@@ -7,6 +7,7 @@ on:
       - exploration/NAAMP_BLOCKED_TRANSFERABILITY_CONTRACT_V0_1.json
       - exploration/run_naamp_blocked_transferability.py
       - .github/workflows/naamp_blocked_transferability.yml
+      - .github/run_requests/naamp_blocked_transferability.trigger
   workflow_dispatch:
 
 permissions:
