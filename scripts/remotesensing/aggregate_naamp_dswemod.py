@@ -54,8 +54,9 @@ def ym_shift(y,m,delta):
 
 files=sorted(INDIR.glob("NAAMP_DSWEMOD_MONTHLY_20*.csv"))
 years=sorted(int(p.stem.rsplit("_",1)[1]) for p in files)
-if years!=list(range(2003,2016)):
-    raise RuntimeError(f"expected years 2003-2015, got {years}")
+expected_years=[2003]+list(range(2005,2016))
+if years!=expected_years:
+    raise RuntimeError(f"expected available years {expected_years}, got {years}")
 monthly=pd.concat([pd.read_csv(p) for p in files],ignore_index=True)
 if monthly.duplicated(["SiteID","year","month"]).any():
     raise RuntimeError("duplicate SiteID/year/month DSWEmod keys")
@@ -85,7 +86,8 @@ runrow={str(r.RunID):r for r in runs.itertuples(index=False)}
 pair_specs=[]
 run_specs={}
 for p,dct in zip(psub.itertuples(index=False),dsub):
-    if int(p.year_earlier)<2003 or int(p.year_later)>2015:
+    allowed_years={2003} | set(range(2005,2016))
+    if int(p.year_earlier) not in allowed_years or int(p.year_later) not in allowed_years:
         continue
     if str(p.RouteNumber) not in safe:
         continue
@@ -161,7 +163,7 @@ coverage={
 }
 out={
  "analysis":"naamp_dswemod_coverage_v0_2",
- "contract":"revision/NAAMP_MODIS_DSWEMOD_MECHANISM_EXTENSION_V0_2.md",
+ "contract":"revision/NAAMP_MODIS_DSWEMOD_SOURCE_REPAIR_V0_3.md",
  "source":{"years":years,"product":"USGS monthly MODIS DSWEmod","resolution_m":250},
  "monthly_rows":int(len(monthly)),"monthly_siteids":int(monthly.SiteID.nunique()),
  "run_site_rows":int(len(df)),"runids":int(df.RunID.nunique()),
