@@ -102,11 +102,19 @@ M_REGIME is sufficient only if its residual does not exceed its simulated upper 
 
 Secondary M_TYPE is interpreted only as supporting context.
 
+## Temporal-map interpretation boundary
+
+The NWI layer is a static/current mapping product, not a historical annual reconstruction of each wetland during the 2001–2015 NAAMP surveys.
+
+Therefore WATER_REGIME_NAME is treated as a proxy for persistent hydrogeomorphic setting. The analysis asks whether that mapped persistent setting predicts differential response to historical rainfall pulses.
+
+It does not assume that polygon boundaries, management, water regime, or wetland existence were unchanged at every site throughout 2001–2015.
+
 ## Interpretation
 
-Primary support would show that a static hydroperiod regime determines which local breeding sites are activated by a common rainfall pulse, even after persistent SiteID use and total activation magnitude are represented.
+Primary support would show that mapped persistent hydroperiod regime predicts which local breeding sites are activated by a common rainfall pulse, even after persistent SiteID use and total activation magnitude are represented.
 
-This would not mean the NWI regime itself changed between surveys.
+This would not mean the NWI regime itself changed between surveys, nor prove that the current NWI classification was identical during every historical survey.
 
 ## Anti-tuning
 
