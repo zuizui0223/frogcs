@@ -22,6 +22,7 @@ COORD_SHA="f71a87df9fc252d283f223a1ada41f2771136acf69b25726ca4895ef90f7f0d"
 # Correct pinned coordinate hash from the archived audit.
 COORD_SHA="f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
 NWI="https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query"
+NWI_CODES="https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/1/query"
 RADIUS=500.0
 RETRIEVAL_MARGIN_DEG=0.02
 PAGE=1000
@@ -133,6 +134,47 @@ def query_route_envelope(lons,lats):
         if not batch: break
     return feats
 
+def fetch_code_table():
+    rows=[]
+    offset=0
+    while True:
+        params={
+          "where":"1=1",
+          "outFields":"OBJECTID,ATTRIBUTE,WATER_REGIME,WATER_REGIME_NAME,WATER_REGIME_SUBGROUP,SYSTEM_NAME,CLASS_NAME",
+          "returnGeometry":"false",
+          "orderByFields":"OBJECTID",
+          "resultOffset":str(offset),
+          "resultRecordCount":"500",
+          "f":"json"
+        }
+        url=NWI_CODES+"?"+urllib.parse.urlencode(params)
+        obj=json.loads(fetch(url,120).decode("utf-8"))
+        if "error" in obj:
+            raise RuntimeError("NWI code table: "+json.dumps(obj["error"]))
+        batch=[(z.get("attributes") or {}) for z in (obj.get("features") or [])]
+        rows.extend(batch)
+        if len(batch)<500 and not obj.get("exceededTransferLimit",False):
+            break
+        if not batch:
+            break
+        offset += len(batch)
+    out={}
+    for a in rows:
+        attr=str(a.get("ATTRIBUTE") or "").strip()
+        if not attr:
+            continue
+        out[attr]={
+          "WATER_REGIME":str(a.get("WATER_REGIME") or "").strip(),
+          "WATER_REGIME_NAME":str(a.get("WATER_REGIME_NAME") or "").strip(),
+          "WATER_REGIME_SUBGROUP":str(a.get("WATER_REGIME_SUBGROUP") or "").strip(),
+          "SYSTEM_NAME":str(a.get("SYSTEM_NAME") or "").strip(),
+          "CLASS_NAME":str(a.get("CLASS_NAME") or "").strip()
+        }
+    if not out:
+        raise RuntimeError("empty NWI code table")
+    return out
+
+
 # Coordinate authority.
 b=fetch(COORD_URL)
 if hashlib.sha256(b).hexdigest()!=COORD_SHA: raise RuntimeError("coordinate SHA drift")
@@ -159,6 +201,7 @@ assigned_routes=[
  if int(hashlib.sha256(rid.encode()).hexdigest()[:8],16)%SHARD_COUNT==SHARD_INDEX
 ]
 tf=Transformer.from_crs("EPSG:4326","EPSG:5070",always_xy=True)
+code_table=fetch_code_table()
 rows=[]
 for n,rid in enumerate(assigned_routes,1):
     sids=sorted(route_sites[rid])
@@ -181,20 +224,36 @@ for n,rid in enumerate(assigned_routes,1):
                 choices.append((dist,-area,str(a.get("ATTRIBUTE") or ""),a))
             rec={"SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
                  "query_success":True,"route_feature_count":len(feats),
-                 "ATTRIBUTE":None,"WETLAND_TYPE":None,"distance_m":None,"area_in_500m_m2":None}
+                 "ATTRIBUTE":None,"WETLAND_TYPE":None,
+                 "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
+                 "SYSTEM_NAME":None,"CLASS_NAME":None,"code_join_success":False,
+                 "distance_m":None,"area_in_500m_m2":None}
             if not choices:
-                rec.update({"ATTRIBUTE":"no_NWI_wetland_500m","WETLAND_TYPE":"no_NWI_wetland_500m","area_in_500m_m2":0.0})
+                rec.update({
+                  "ATTRIBUTE":"no_NWI_wetland_500m","WETLAND_TYPE":"no_NWI_wetland_500m",
+                  "WATER_REGIME":"no_NWI_wetland_500m","WATER_REGIME_NAME":"no_NWI_wetland_500m",
+                  "WATER_REGIME_SUBGROUP":"no_NWI_wetland_500m",
+                  "SYSTEM_NAME":"no_NWI_wetland_500m","CLASS_NAME":"no_NWI_wetland_500m",
+                  "code_join_success":True,"area_in_500m_m2":0.0
+                })
             else:
                 choices.sort(key=lambda z:(z[0],z[1],z[2]))
                 dist,negarea,attr,a=choices[0]
-                rec.update({"ATTRIBUTE":str(a.get("ATTRIBUTE") or ""),"WETLAND_TYPE":str(a.get("WETLAND_TYPE") or ""),
+                attr=str(a.get("ATTRIBUTE") or "")
+                code=code_table.get(attr)
+                rec.update({"ATTRIBUTE":attr,"WETLAND_TYPE":str(a.get("WETLAND_TYPE") or ""),
                             "distance_m":dist,"area_in_500m_m2":-negarea})
+                if code is not None and code.get("WATER_REGIME_NAME"):
+                    rec.update(code)
+                    rec["code_join_success"]=True
             rows.append(rec)
     except Exception as e:
         for sid in sids:
             _,lat,lon=coords[sid]
             rows.append({"SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
                          "query_success":False,"route_feature_count":None,"ATTRIBUTE":None,"WETLAND_TYPE":None,
+                         "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
+                         "SYSTEM_NAME":None,"CLASS_NAME":None,"code_join_success":False,
                          "distance_m":None,"area_in_500m_m2":None,
                          "error":type(e).__name__+": "+str(e)[:240]})
     if n==1 or n%5==0 or n==len(assigned_routes):
@@ -206,11 +265,13 @@ jsonout=OUTDIR/f"NWI_SITE_ASSIGNMENTS_SHARD_{SHARD_INDEX:02d}.json"
 df=pd.DataFrame(rows);df.to_csv(csvout,index=False)
 receipt={
  "analysis":"naamp_nwi_site_assignment_shard_v0_2",
- "contract":"revision/NAAMP_NWI_RAIN_FILTER_MECHANISM_CONTRACT_V0_1.md",
+ "contract":"revision/NAAMP_NWI_WATER_REGIME_RAIN_FILTER_EXTENSION_V0_2.md",
  "shard_index":SHARD_INDEX,"shard_count":SHARD_COUNT,
  "assigned_routes":len(assigned_routes),"assigned_siteids":len(df),
  "query_success":int(df.query_success.fillna(False).sum()) if len(df) else 0,
+ "code_join_success":int(df.code_join_success.fillna(False).sum()) if len(df) else 0,
  "no_wetland_500m":int((df.WETLAND_TYPE=="no_NWI_wetland_500m").sum()) if len(df) else 0,
+ "water_regime_counts":{str(k):int(v) for k,v in df.WATER_REGIME_NAME.value_counts(dropna=True).to_dict().items()} if len(df) else {},
  "wetland_type_counts":{str(k):int(v) for k,v in df.WETLAND_TYPE.value_counts(dropna=True).to_dict().items()} if len(df) else {},
  "retrieval_margin_deg":RETRIEVAL_MARGIN_DEG,
  "scientific_distance_m":RADIUS,
