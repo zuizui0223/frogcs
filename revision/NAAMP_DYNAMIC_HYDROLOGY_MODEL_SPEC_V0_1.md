@@ -36,7 +36,7 @@ If the all-ten M3 gate fails, M3 is variability-inconclusive. M1 may still be ev
 
 ## Cell-level training data
 
-Hydrology coefficients are learned using species × RunID × physical-SiteID calling cells from eligible runs.
+Hydrology coefficients are learned using species × RunID × physical-SiteID calling cells from the unique focal RunIDs represented in the final complete-case principal-pair universe. A RunID that appears in more than one adjacent-year pair contributes its calling cells only once to coefficient training.
 
 Binary training response:
 - y = 1 when the species has CallingIndex 1–3 at the stop;
