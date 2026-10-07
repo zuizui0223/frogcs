@@ -1,0 +1,32 @@
+name: Extract NAAMP JRC v1 hydrology
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/extract_naamp_jrc_v1_hydrology.yml"
+      - "scripts/remotesensing/extract_naamp_jrc_v1_hydrology.py"
+      - "revision/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_EXTENSION_V0_2.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install extraction dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy rasterio
+      - name: Extract hydrology exposures and freeze coverage
+        run: python scripts/remotesensing/extract_naamp_jrc_v1_hydrology.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-jrc-v1-hydrology-exposures
+          path: |
+            remotesensing/NAAMP_JRC_V1_HYDROLOGY_EXPOSURES_V0_1.csv
+            remotesensing/NAAMP_JRC_V1_HYDROLOGY_COVERAGE_V0_1.json
+          retention-days: 30
