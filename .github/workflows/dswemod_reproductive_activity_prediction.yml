@@ -1,0 +1,38 @@
+name: DSWEmod reproductive activity prediction
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/dswemod_reproductive_activity_prediction.yml"
+      - "scripts/remotesensing/run_naamp_dswemod_reproductive_activity_prediction.py"
+      - "revision/NAAMP_DSWEMOD_REPRODUCTIVE_ACTIVITY_PREDICTION_CONTRACT_V0_1.md"
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-dswemod-v02-reuse-result
+          path: frozen_dswemod
+          github-token: ${{ github.token }}
+          run-id: 37615425574
+      - name: Run frozen out-of-route activity prediction
+        env:
+          NAAMP_DSWEMOD_CSV: frozen_dswemod/NAAMP_DSWEMOD_RUN_SITE_METRICS_V0_1.csv
+        run: python scripts/remotesensing/run_naamp_dswemod_reproductive_activity_prediction.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dswemod-reproductive-activity-prediction
+          path: remotesensing/NAAMP_DSWEMOD_REPRODUCTIVE_ACTIVITY_PREDICTION_RECEIPT_V0_1.json
+          retention-days: 30
