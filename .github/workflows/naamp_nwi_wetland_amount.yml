@@ -1,0 +1,84 @@
+name: NAAMP NWI wetland amount mechanism
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_nwi_wetland_amount.yml"
+      - "scripts/remotesensing/query_naamp_nwi_wetland_amount_shard.py"
+      - "scripts/remotesensing/aggregate_naamp_nwi_wetland_amount.py"
+      - "scripts/remotesensing/run_naamp_nwi_wetland_amount_mechanism.py"
+      - "revision/NAAMP_NWI_WETLAND_AMOUNT_RAIN_MECHANISM_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  query:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check pandas shapely pyproj
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-failed-only-repair-result
+          path: frozen_nwi
+          github-token: ${{ github.token }}
+          run-id: 37633046871
+      - name: Query NWI wetland landscape amount
+        env:
+          NWI_COORD_ASSIGNMENTS: frozen_nwi/NAAMP_NWI_SITE_ASSIGNMENTS_REPAIRED_V0_3.csv
+          NWI_AMOUNT_SHARD_INDEX: ${{ matrix.shard }}
+          NWI_AMOUNT_SHARD_COUNT: 8
+        run: python scripts/remotesensing/query_naamp_nwi_wetland_amount_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nwi-amount-shard-${{ matrix.shard }}
+          path: |
+            remotesensing/nwi_amount_shards/NWI_WETLAND_AMOUNT_SHARD_*.csv
+            remotesensing/nwi_amount_shards/NWI_WETLAND_AMOUNT_SHARD_*.json
+          retention-days: 7
+
+  aggregate_and_test:
+    needs: query
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nwi-amount-shard-*
+          path: remotesensing/nwi_amount_inputs
+          merge-multiple: true
+      - name: Aggregate wetland amount and freeze coverage
+        env:
+          NWI_AMOUNT_SHARD_DIR: remotesensing/nwi_amount_inputs
+        run: python scripts/remotesensing/aggregate_naamp_nwi_wetland_amount.py
+      - name: Run frozen wetland amount rain-filter mechanism
+        env:
+          NAAMP_NWI_AMOUNT: remotesensing/NAAMP_NWI_WETLAND_AMOUNT_V0_1.csv
+          NAAMP_NWI_AMOUNT_COVERAGE: remotesensing/NAAMP_NWI_WETLAND_AMOUNT_COVERAGE_V0_1.json
+        run: python scripts/remotesensing/run_naamp_nwi_wetland_amount_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-wetland-amount-result
+          path: |
+            remotesensing/NAAMP_NWI_WETLAND_AMOUNT_V0_1.csv
+            remotesensing/NAAMP_NWI_WETLAND_AMOUNT_COVERAGE_V0_1.json
+            remotesensing/NAAMP_NWI_WETLAND_AMOUNT_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
