@@ -1,0 +1,27 @@
+name: NAAMP hydrology request manifest
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_hydrology_request_manifest.yml"
+      - "scripts/remotesensing/build_hydrology_request_manifest.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install existing analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - name: Build request manifest without remote-sensing value readback
+        run: python scripts/remotesensing/build_hydrology_request_manifest.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-hydrology-request-manifest
+          path: remotesensing/NAAMP_HYDROLOGY_REQUEST_MANIFEST_V0_1.json
