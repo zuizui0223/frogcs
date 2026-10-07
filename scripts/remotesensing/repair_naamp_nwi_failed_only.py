@@ -20,6 +20,7 @@ PAGE=1000
 
 def fetch(url,timeout=20):
     # Retrieval-only fast-fail policy. Scientific geometry and coverage gates are unchanged.
+    # Isolated v0.4 runner; retrieval semantics identical to the frozen repair.
     last=None
     for i in range(3):
         try:
