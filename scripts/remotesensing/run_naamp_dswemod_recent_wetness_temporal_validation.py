@@ -115,6 +115,33 @@ def main():
     p3,d3,h3,hyd3,site,safe,fail=pred.m3_population(metrics,raw,runs,psub,dsub,hsub)
     cells,run_sites=pred.build_cells(raw,runs,p3,d3,hyd3,pools,sampled,ss,metrics)
 
+    # Strict temporal species-pool authority: validation years cannot introduce
+    # candidate taxa. Build each State x RouteNumber x RunNumber pool from
+    # training-year ten-stop observations only, then filter both train/test cells
+    # to those pre-2010 candidate taxa.
+    runmeta={str(r.RunID):r for r in runs.itertuples(index=False)}
+    training_pools={}
+    for r in runs.itertuples(index=False):
+        if int(r.SurveyYear) not in TRAIN_YEARS:
+            continue
+        rid=str(r.RunID)
+        key=(str(r.State),str(r.RouteNumber),str(r.RunNumber))
+        z=training_pools.setdefault(key,set())
+        for st in sampled.get(rid,set()):
+            z.update(ss.get((rid,str(st)),set()))
+
+    run_key={
+        rid:(str(r.State),str(r.RouteNumber),str(r.RunNumber))
+        for rid,r in runmeta.items()
+    }
+    before_pool_rows=int(len(cells))
+    keep=[]
+    for row in cells[["RunID","species"]].itertuples(index=False):
+        key=run_key.get(str(row.RunID))
+        keep.append(bool(key in training_pools and str(row.species) in training_pools[key]))
+    cells=cells.loc[np.asarray(keep,bool)].copy().reset_index(drop=True)
+    after_pool_rows=int(len(cells))
+
     year_map={str(r.RunID):int(r.SurveyYear) for r in runs.itertuples(index=False)}
     cells["SurveyYear"]=cells.RunID.astype(str).map(year_map)
     tr=cells[cells.SurveyYear.isin(TRAIN_YEARS)].copy()
@@ -195,7 +222,10 @@ def main():
       "split":{"training_years":sorted(TRAIN_YEARS),"validation_years":sorted(TEST_YEARS)},
       "coverage":{"training_cells":int(len(tr)),"validation_cells":int(len(te)),
                   "validation_routes":int(te.route_cluster.nunique()),"validation_species":int(te.species.nunique()),
-                  "m3_population_pairs":int(len(p3)),"m3_population_routes":int(p3.route_cluster.nunique())},
+                  "m3_population_pairs":int(len(p3)),"m3_population_routes":int(p3.route_cluster.nunique()),
+                  "all_period_pool_rows_before_filter":before_pool_rows,
+                  "training_only_pool_rows_after_filter":after_pool_rows,
+                  "training_pool_strata":int(len(training_pools))},
       "observed_equal_species_mean_logloss_gain":observed,
       "observed_equal_species_mean_brier_gain":brier_gain,
       "bootstrap":boot,
