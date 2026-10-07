@@ -121,9 +121,10 @@ def fit_habitat_deltas(cells,callers,all_species):
         for h in habitats[1:]:
             base.append((d0.habitat.astype(str).to_numpy()==h).astype(float))
 
-        # Direct dryness slopes for each habitat. No global dry_x column is added,
-        # so the habitat-specific slope columns are identifiable as a partition.
-        dry=d0["dry_x"].to_numpy(float)
+        # Direct within-SiteID dryness slopes for each habitat. Site-centering
+        # removes persistent location quality before estimating rain response.
+        d0["dry_x_c"]=d0["dry_x"]-d0.groupby("SiteID")["dry_x"].transform("mean")
+        dry=d0["dry_x_c"].to_numpy(float)
         hvec=d0.habitat.astype(str).to_numpy()
         slope_cols=[dry*(hvec==h).astype(float) for h in habitats]
         X=np.column_stack(base+slope_cols)
