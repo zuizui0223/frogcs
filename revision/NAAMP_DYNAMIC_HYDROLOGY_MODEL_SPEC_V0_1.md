@@ -61,17 +61,17 @@ These broad terms are controls only. Their fitted coefficients are not added to 
 
 Hydrology coefficients target temporal wetland-state change, not static habitat differences.
 
-Before species-specific fitting, for each physical SiteID compute the mean of each hydrology covariate across the available focal RunIDs for that SiteID and center:
+Before species-specific fitting, hydrology covariates are residualized in two steps. First, for each physical SiteID subtract its mean across available focal RunIDs. Second, within each RunID subtract the mean of that SiteID-centered covariate across the ten focal stops. This removes both persistent site differences and route-wide hydrological state.
 
-- H_current_c = H_current - mean_site(H_current)
-- recent_wetness_3m_c = recent_wetness_3m - mean_site(recent_wetness_3m)
-- hydro_sd_12m_c = hydro_sd_12m - mean_site(hydro_sd_12m)
+- H_current_c = site-centered H_current, then centered again within RunID
+- recent_wetness_3m_c = site-centered recent_wetness_3m, then centered again within RunID
+- hydro_sd_12m_c = site-centered hydro_sd_12m, then centered again within RunID
 
 Because a physical SiteID belongs to one route and therefore one deterministic route fold, this centering does not leak focal-route information across folds.
 
-The fitted hydrology coefficients therefore reflect within-site temporal association with calling.
+The fitted hydrology coefficients therefore reflect local within-site temporal hydrology that is also spatially non-uniform within the focal route-night.
 
-For focal-pair prediction, the centered site mean cancels exactly, so the applied shift remains beta times wet-minus-dry hydrology at the same SiteID.
+For focal-pair prediction, coefficients are applied to raw wet-minus-dry hydrology at each same physical SiteID; the later pair-level incidence-matching shift removes any common component across all cells, preserving the intended allocation estimand.
 
 ## Nested species-specific hydrology models
 
