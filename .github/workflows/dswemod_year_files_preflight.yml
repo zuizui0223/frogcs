@@ -1,0 +1,16 @@
+name: DSWEmod yearly file preflight
+on:
+  push:
+    branches: [remotesensing/naamp-dynamic-hydrology-v1]
+    paths:
+      - ".github/workflows/dswemod_year_files_preflight.yml"
+      - "scripts/remotesensing/preflight_dswemod_year_files.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/remotesensing/preflight_dswemod_year_files.py
