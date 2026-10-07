@@ -1,0 +1,49 @@
+name: NAAMP DSWEmod current mechanism from frozen years
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_dswemod_current_from_frozen.yml"
+      - "scripts/remotesensing/aggregate_naamp_dswemod_current_only.py"
+      - "scripts/remotesensing/run_naamp_dswemod_mechanism.py"
+      - "revision/NAAMP_MODIS_DSWEMOD_SOURCE_REPAIR_V0_3.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dswemod-year-*
+          path: remotesensing/dswemod_v01_inputs
+          merge-multiple: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37613769915
+      - name: Aggregate frozen source-available current exposures
+        env:
+          DSWEMOD_V01_DIR: remotesensing/dswemod_v01_inputs
+        run: python scripts/remotesensing/aggregate_naamp_dswemod_current_only.py
+      - name: Run frozen DSWEmod current mechanism
+        env:
+          NAAMP_DSWEMOD_CSV: remotesensing/NAAMP_DSWEMOD_RUN_SITE_METRICS_CURRENT_ONLY_V0_1.csv
+        run: python scripts/remotesensing/run_naamp_dswemod_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-dswemod-current-from-frozen
+          path: |
+            remotesensing/NAAMP_DSWEMOD_RUN_SITE_METRICS_CURRENT_ONLY_V0_1.csv
+            remotesensing/NAAMP_DSWEMOD_CURRENT_ONLY_COVERAGE_INPUT_V0_1.json
+            remotesensing/NAAMP_DSWEMOD_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
