@@ -1,0 +1,25 @@
+name: JRC v1 GeoTIFF preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/jrc_ver1_geotiff_preflight.yml"
+      - "scripts/remotesensing/preflight_jrc_ver1_geotiff.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --disable-pip-version-check rasterio
+      - run: python scripts/remotesensing/preflight_jrc_ver1_geotiff.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jrc-ver1-geotiff-preflight
+          path: remotesensing/JRC_VER1_GEOTIFF_PREFLIGHT_V0_1.json
