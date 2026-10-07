@@ -48,7 +48,7 @@ Before any frog endpoint is calculated, report coverage under both:
 
 A. same nominal survey date;
 
-B. nearest valid Terra nighttime observation on or before the survey date within 2 calendar days.
+B. nearest **common route date** on or before the survey date within 2 calendar days for which all ten focal SiteIDs have valid Terra nighttime LST under the frozen QC rule. The same selected MODIS date is used for all ten stops of that RunID.
 
 The decision rule is fixed:
 - use A if it passes the primary coverage gate;
@@ -58,6 +58,8 @@ The decision rule is fixed:
 No post-survey observation is used.
 
 This selection is based only on data availability/QC, not frog outcomes.
+
+Do not choose a different MODIS date for different stops within the same RunID; route-relative thermal contrasts must come from one common satellite night.
 
 ## QC rule
 
