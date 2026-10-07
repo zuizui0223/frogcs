@@ -18,16 +18,17 @@ RADIUS=500.0
 MARGIN=.01
 PAGE=1000
 
-def fetch(url,timeout=120):
+def fetch(url,timeout=20):
+    # Retrieval-only fast-fail policy. Scientific geometry and coverage gates are unchanged.
     last=None
-    for i in range(8):
+    for i in range(3):
         try:
-            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-nwi-failed-only-repair/0.1"})
+            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-nwi-failed-only-repair/0.2"})
             with urllib.request.urlopen(req,timeout=timeout) as r:
                 return r.read()
         except Exception as e:
             last=e
-            time.sleep(min(45.0,2.0*(i+1)))
+            time.sleep(1.0*(i+1))
     raise last
 
 def signed_area(ring):
@@ -76,7 +77,7 @@ def query_site(lon,lat):
       "resultRecordCount":str(PAGE),
       "f":"json"
     }
-    obj=json.loads(fetch(NWI+"?"+urllib.parse.urlencode(params)).decode("utf-8"))
+    obj=json.loads(fetch(NWI+"?"+urllib.parse.urlencode(params),20).decode("utf-8"))
     if "error" in obj:
         raise RuntimeError(json.dumps(obj["error"]))
     if obj.get("exceededTransferLimit",False):
