@@ -44,22 +44,38 @@ Landsat ST may remain a later spatial-resolution sensitivity only if the primary
 
 ## Response-blind temporal coverage preflight
 
+MOD11A1 file/item dates are **UTC data days**, while `Night_view_time` is local solar time. The MOD11 C6.1 user guide explicitly notes that the UTC data day and a grid cell's local-solar data day can differ by one calendar day.
+
+Therefore temporal matching is defined on the reconstructed **local-solar observation date**, not directly on the STAC item/file date.
+
+For a pixel with longitude `lon` (degrees east, negative in the conterminous U.S.) and scaled local solar observation hour `h_local`:
+
+`h_utc_unwrapped = h_local - lon / 15`
+
+`day_shift = floor(h_utc_unwrapped / 24)`
+
+`local_solar_date = UTC_data_date - day_shift days`.
+
+Require `Night_view_time` to be within its documented non-fill range 0–24.0 h before using it for date reconstruction.
+
 Before any frog endpoint is calculated, report coverage under both:
 
-A. same nominal survey date;
+A. a valid Terra nighttime observation whose reconstructed `local_solar_date` equals the nominal NAAMP survey date at all ten focal SiteIDs;
 
-B. nearest **common route date** on or before the survey date within 2 calendar days for which all ten focal SiteIDs have valid Terra nighttime LST under the frozen QC rule. The same selected MODIS date is used for all ten stops of that RunID.
+B. the nearest **common local-solar route date** on or before the survey date within 2 calendar days for which all ten focal SiteIDs have valid Terra nighttime LST under the frozen QC rule. The same target local-solar date is used for all ten stops of that RunID.
+
+For each target local-solar date, search the adjacent UTC data days needed to recover it (target date −1, target date, target date +1) and retain only pixel observations whose reconstructed local-solar date equals the target.
 
 The decision rule is fixed:
 - use A if it passes the primary coverage gate;
 - otherwise use B if B passes;
 - otherwise classify local-nighttime-LST coverage-inconclusive.
 
-No post-survey observation is used.
+No local-solar observation after the survey date is used.
 
 This selection is based only on data availability/QC, not frog outcomes.
 
-Do not choose a different MODIS date for different stops within the same RunID; route-relative thermal contrasts must come from one common satellite night.
+Do not choose a different local-solar date for different stops within the same RunID; route-relative thermal contrasts must come from one common satellite night.
 
 ## QC rule
 
