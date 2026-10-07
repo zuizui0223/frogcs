@@ -220,17 +220,21 @@ def design_matrix(cells,mask,model,state_levels,run_levels):
     return X,hyd_cols
 
 def fit_hydrology_coefficients(cells,callers,all_species,models=("M1","M2","M3")):
-    state_levels=sorted(cells["State"].astype(str).unique())
-    run_levels=sorted(cells["RunNumber"].astype(str).unique())
     out={m:{} for m in models}
     audit={m:{} for m in models}
 
     for train_fold in ("A","B"):
         mask=(cells["route_fold"].to_numpy()==train_fold)
-        routes=cells.loc[mask,"route_cluster"].astype(str).to_numpy()
+        train_cells=cells.loc[mask]
+        state_levels=sorted(train_cells["State"].astype(str).unique())
+        run_levels=sorted(train_cells["RunNumber"].astype(str).unique())
+        routes=train_cells["route_cluster"].astype(str).to_numpy()
         caller_sub=[callers[i] for i in np.flatnonzero(mask)]
         for model in models:
             X,hyd_cols=design_matrix(cells,mask,model,state_levels,run_levels)
+            rank=int(np.linalg.matrix_rank(X))
+            if rank!=X.shape[1]:
+                raise RuntimeError(f"rank-deficient hydrology design after fold-specific levels: {train_fold} {model} rank={rank} p={X.shape[1]}")
             hstart=X.shape[1]-len(hyd_cols)
             coefmap={}
             aud={}
@@ -266,6 +270,7 @@ def fit_hydrology_coefficients(cells,callers,all_species,models=("M1","M2","M3")
             out[model][train_fold]=coefmap
             audit[model][train_fold]={
               "training_cells":int(mask.sum()),"training_routes":int(cells.loc[mask,"route_cluster"].nunique()),
+              "design_rank":int(rank),"design_columns":int(X.shape[1]),
               "species_estimable":int(sum(v["estimable"] for v in aud.values())),
               "species":aud
             }
