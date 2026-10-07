@@ -1,0 +1,73 @@
+name: NWI wetland amount shard5 recovery
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/nwi_wetland_amount_shard5_recovery.yml"
+      - "scripts/remotesensing/combine_nwi_wetland_amount_shard5_recovery.py"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  recover:
+    strategy:
+      fail-fast: false
+      matrix:
+        subshard: [5,13,21,29]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check pandas shapely pyproj
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-failed-only-repair-result
+          path: frozen_nwi
+          github-token: ${{ github.token }}
+          run-id: 37633046871
+      - name: Requery original shard-5 quarter
+        env:
+          NWI_COORD_ASSIGNMENTS: frozen_nwi/NAAMP_NWI_SITE_ASSIGNMENTS_REPAIRED_V0_3.csv
+          NWI_AMOUNT_SHARD_INDEX: ${{ matrix.subshard }}
+          NWI_AMOUNT_SHARD_COUNT: 32
+        run: python scripts/remotesensing/query_naamp_nwi_wetland_amount_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nwi-amount-shard5-recovery-${{ matrix.subshard }}
+          path: |
+            remotesensing/nwi_amount_shards/NWI_WETLAND_AMOUNT_SHARD_*.csv
+            remotesensing/nwi_amount_shards/NWI_WETLAND_AMOUNT_SHARD_*.json
+          retention-days: 7
+
+  combine:
+    needs: recover
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check pandas
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nwi-amount-shard5-recovery-*
+          path: remotesensing/nwi_amount_recovery_inputs
+          merge-multiple: true
+      - env:
+          NWI_AMOUNT_RECOVERY_DIR: remotesensing/nwi_amount_recovery_inputs
+        run: python scripts/remotesensing/combine_nwi_wetland_amount_shard5_recovery.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nwi-amount-shard-5-recovered
+          path: |
+            remotesensing/nwi_amount_shards/NWI_WETLAND_AMOUNT_SHARD_05.csv
+            remotesensing/nwi_amount_shards/NWI_WETLAND_AMOUNT_SHARD_05.json
+          retention-days: 7
