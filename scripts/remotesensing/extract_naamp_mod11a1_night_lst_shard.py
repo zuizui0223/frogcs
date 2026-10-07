@@ -12,6 +12,7 @@ import rasterio
 from pyproj import Transformer
 from pystac_client import Client
 from rasterio.windows import Window
+from mod11_local_solar import read_common_local_solar_date
 
 ROOT=Path(__file__).resolve().parents[2]
 EXP=ROOT/"exploration"
@@ -135,7 +136,7 @@ for n,sp in enumerate(assigned,1):
     result={}
     for lag in (0,1,2):
         d=survey-timedelta(days=lag)
-        v=read_common_date(client,d,sp["siteids"],coords)
+        v=read_common_local_solar_date(client,COL,d,sp["siteids"],coords)
         if v is not None:
             result[lag]=(d,v)
         if lag==0:
@@ -161,6 +162,8 @@ for n,sp in enumerate(assigned,1):
           "A_lst_kelvin":Aval[1][sid]["lst_kelvin"] if Aval else None,
           "A_view_local_hour":Aval[1][sid]["view_local_hour"] if Aval else None,
           "A_item_id":Aval[1][sid]["item_id"] if Aval else None,
+          "A_utc_data_date":Aval[1][sid]["utc_data_date"] if Aval else None,
+          "A_local_solar_date":Aval[1][sid]["local_solar_date"] if Aval else None,
           "A_pixel_key":Aval[1][sid]["pixel_key"] if Aval else None,
           "A_unique_pixels_run":A_pixels,
           "B_complete":bool(Bsel is not None),"B_lag_days":int(Bsel[0]) if Bsel else None,
@@ -168,6 +171,8 @@ for n,sp in enumerate(assigned,1):
           "B_lst_kelvin":Bsel[2][sid]["lst_kelvin"] if Bsel else None,
           "B_view_local_hour":Bsel[2][sid]["view_local_hour"] if Bsel else None,
           "B_item_id":Bsel[2][sid]["item_id"] if Bsel else None,
+          "B_utc_data_date":Bsel[2][sid]["utc_data_date"] if Bsel else None,
+          "B_local_solar_date":Bsel[2][sid]["local_solar_date"] if Bsel else None,
           "B_pixel_key":Bsel[2][sid]["pixel_key"] if Bsel else None,
           "B_unique_pixels_run":B_pixels
         }
