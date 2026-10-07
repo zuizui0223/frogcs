@@ -244,8 +244,8 @@ with rasterio.Env(
     CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif",
     GDAL_HTTP_MULTIRANGE="YES",
     VSI_CACHE="TRUE",
-    VSI_CACHE_SIZE="67108864",
-    GDAL_CACHEMAX="256",
+    VSI_CACHE_SIZE=67108864,
+    GDAL_CACHEMAX=256,
 ):
     for month in months:
         sids=sorted({sid for (y,m),v in request_by_ym.items() if m==month for sid in v})
