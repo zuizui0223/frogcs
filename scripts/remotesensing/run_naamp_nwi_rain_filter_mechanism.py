@@ -98,39 +98,115 @@ def build_training_cells(raw,runs,sampled,ss,site,assign):
 
 def fit_habitat_deltas(cells,callers,all_species):
     out={};audit={}
-    habitats=sorted(cells.habitat.astype(str).unique())
     for train_fold in ("A","B"):
-        mask=np.flatnonzero(cells.route_fold.to_numpy()==train_fold)
-        d0=cells.iloc[mask].reset_index(drop=True)
-        c0=[callers[i] for i in mask]
+        idx=np.flatnonzero(cells.route_fold.to_numpy()==train_fold)
+        d0=cells.iloc[idx].copy().reset_index(drop=True)
+        c0=[callers[i] for i in idx]
+        habitats=sorted(d0.habitat.astype(str).unique())
+        states=sorted(d0.State.astype(str).unique())
+        runs=sorted(d0.RunNumber.astype(str).unique())
+
+        # Fold-level nuisance design shared across species:
+        # intercept, temperature, season, state, run, habitat main effects.
+        base=[
+          np.ones(len(d0),float),
+          d0["mean_temp_c"].to_numpy(float),
+          d0["sin_doy"].to_numpy(float),
+          d0["cos_doy"].to_numpy(float)
+        ]
+        for v in states[1:]:
+            base.append((d0.State.astype(str).to_numpy()==v).astype(float))
+        for v in runs[1:]:
+            base.append((d0.RunNumber.astype(str).to_numpy()==v).astype(float))
+        for h in habitats[1:]:
+            base.append((d0.habitat.astype(str).to_numpy()==h).astype(float))
+
+        # Direct dryness slopes for each habitat. No global dry_x column is added,
+        # so the habitat-specific slope columns are identifiable as a partition.
+        dry=d0["dry_x"].to_numpy(float)
+        hvec=d0.habitat.astype(str).to_numpy()
+        slope_cols=[dry*(hvec==h).astype(float) for h in habitats]
+        X=np.column_stack(base+slope_cols)
+        slope_start=X.shape[1]-len(habitats)
+        rank=int(np.linalg.matrix_rank(X))
+
         foldmap={};foldaudit={}
+        routes=d0.route_cluster.astype(str).to_numpy()
         for sp in all_species:
-            y=np.asarray([1 if sp in z else 0 for z in c0],int)
-            base=d0.copy();base["y"]=y
-            beta_all,method_all=fit_dry_slope(base)
-            rec={"global_beta":beta_all,"global_method":method_all,"habitats":{}}
-            deltas={}
-            if beta_all is None:
-                for h in habitats:
-                    deltas[h]=0.0;rec["habitats"][h]={"delta_gamma":0.0,"method":"zero_global"}
-            else:
-                for h in habitats:
-                    dh=base[base.habitat.astype(str)==h].copy()
-                    beta_h,method=fit_dry_slope(dh)
-                    pos=int(dh.y.sum()) if len(dh) else 0
-                    pr=int(dh.loc[dh.y>0,"route_cluster"].astype(str).nunique()) if len(dh) else 0
-                    if beta_h is None:
-                        delta=0.0
+            y=np.asarray([1.0 if sp in z else 0.0 for z in c0],float)
+            hinfo={}
+            eligible=[]
+            for h in habitats:
+                m=(hvec==h)
+                pos=int(y[m].sum())
+                posroutes=int(len(set(routes[m & (y>0)])))
+                cells_h=int(m.sum())
+                ok=bool(pos>=MIN_POS and posroutes>=MIN_ROUTES)
+                hinfo[h]={"positive_cells":pos,"positive_routes":posroutes,
+                          "training_cells":cells_h,"estimable_gate":ok}
+                if ok:
+                    eligible.append(h)
+
+            deltas={h:0.0 for h in habitats}
+            method="zero_gate"
+            slopes={h:None for h in habitats}
+
+            if len(eligible)>=2 and y.sum()>=MIN_POS and np.any(y==0):
+                mod=sm.GLM(y,X,family=sm.families.Binomial())
+                params=None
+                method="glm"
+                try:
+                    if rank!=X.shape[1]:
+                        raise RuntimeError(f"rank deficient {rank}/{X.shape[1]}")
+                    fit=mod.fit(maxiter=200,disp=0)
+                    params=np.asarray(fit.params,float)
+                    if not np.all(np.isfinite(params)):
+                        raise RuntimeError("nonfinite")
+                except Exception:
+                    method="ridge_fallback"
+                    try:
+                        fit=mod.fit_regularized(alpha=.01,L1_wt=0.0,maxiter=1000)
+                        params=np.asarray(fit.params,float)
+                        if not np.all(np.isfinite(params)):
+                            params=None
+                    except Exception:
+                        params=None
+
+                if params is not None:
+                    raw_slopes=np.asarray(params[slope_start:],float)
+                    if np.all(np.isfinite(raw_slopes)) and np.all(np.abs(raw_slopes)<=20):
+                        slopes={h:float(b) for h,b in zip(habitats,raw_slopes)}
+                        w=np.asarray([hinfo[h]["training_cells"] for h in eligible],float)
+                        b=np.asarray([slopes[h] for h in eligible],float)
+                        mean_beta=float(np.average(b,weights=w))
+                        for h in eligible:
+                            # wet response gamma = -dryness beta;
+                            # only habitat-relative redistribution is added to M0.
+                            deltas[h]=float(-(slopes[h]-mean_beta))
+                        method=method
                     else:
-                        # gamma=-beta, so habitat-specific deviation in wet response:
-                        delta=float(-(beta_h-beta_all))
-                    deltas[h]=delta
-                    rec["habitats"][h]={"beta_h":beta_h,"delta_gamma":delta,"method":method,
-                                          "positive_cells":pos,"positive_routes":pr,"cells":int(len(dh))}
-            foldmap[sp]=deltas;foldaudit[sp]=rec
+                        method="zero_unstable"
+                else:
+                    method="zero_failed"
+
+            for h in habitats:
+                hinfo[h]["beta_dry_joint"]=slopes[h]
+                hinfo[h]["delta_gamma"]=float(deltas[h])
+                hinfo[h]["used_interaction"]=bool(h in eligible and len(eligible)>=2 and method in ("glm","ridge_fallback"))
+
+            foldmap[sp]=deltas
+            foldaudit[sp]={
+              "method":method,
+              "eligible_habitats":eligible,
+              "habitats":hinfo
+            }
+
         out[train_fold]=foldmap
         audit[train_fold]={
-          "training_cells":int(len(d0)),"training_routes":int(d0.route_cluster.nunique()),
+          "training_cells":int(len(d0)),
+          "training_routes":int(d0.route_cluster.nunique()),
+          "design_columns":int(X.shape[1]),
+          "design_rank":rank,
           "habitat_counts":{str(k):int(v) for k,v in d0.habitat.value_counts().to_dict().items()},
           "species":foldaudit
         }
