@@ -1,0 +1,16 @@
+name: DSWE asset HTTP audit
+on:
+  push:
+    branches: [remotesensing/naamp-dynamic-hydrology-v1]
+    paths:
+      - ".github/workflows/dswe_asset_http_audit.yml"
+      - "scripts/remotesensing/audit_dswe_asset_http.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/remotesensing/audit_dswe_asset_http.py
