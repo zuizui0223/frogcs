@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json, re, urllib.request, tempfile, pathlib
 import rasterio
+from rasterio.warp import transform
 from rasterio.windows import Window
 
 PARENT="609955c9d34ea221ce33c534"
@@ -48,8 +49,10 @@ with rasterio.open(tmp) as ds:
           "descriptions":list(ds.descriptions)
         }
         for p in PTS:
-            row,col=ds.index(p["lon"],p["lat"])
-            rec={**p,"index":[int(row),int(col)],"in_bounds":bool(0<=row<ds.height and 0<=col<ds.width),"bands":[]}
+            xs,ys=transform("EPSG:4326",ds.crs,[p["lon"]],[p["lat"]])
+            x,y=float(xs[0]),float(ys[0])
+            row,col=ds.index(x,y)
+            rec={**p,"projected_xy":[x,y],"index":[int(row),int(col)],"in_bounds":bool(0<=row<ds.height and 0<=col<ds.width),"bands":[]}
             if rec["in_bounds"]:
                 for b in (1,5,12):
                     a=ds.read(b,window=Window(max(0,col-1),max(0,row-1),3,3))
