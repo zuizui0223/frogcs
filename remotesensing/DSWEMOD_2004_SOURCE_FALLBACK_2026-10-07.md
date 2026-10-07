@@ -1,3 +1,5 @@
+> **Superseded:** this fallback proposal is superseded by `revision/NAAMP_MODIS_DSWEMOD_SOURCE_REPAIR_V0_3.md`, which freezes 2004 as source-unavailable after the official child link returned 404 and the 2.04-GB parent ZIP proved non-range-readable. No 2004 DSWEmod focal value was read.
+
 # DSWEmod 2004 source-acquisition fallback — 2026-10-07
 
 ## Problem
