@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import csv, hashlib, importlib.util, io, json, math, os, re, tempfile, time, urllib.request
+import csv, hashlib, importlib.util, io, json, math, os, re, tempfile, time, urllib.request, urllib.error, zipfile, shutil
 from collections import defaultdict
 from datetime import date, timedelta
 from pathlib import Path
@@ -91,9 +91,37 @@ for ff in item.get("files") or []:
         tif=ff;break
 if tif is None: raise RuntimeError("year tif not found")
 url=tif.get("downloadUri") or tif.get("url")
-blob=fetch_bytes(url)
 tmp=Path(tempfile.gettempdir())/f"DSWEmod_US_{YEAR}.tif"
-tmp.write_bytes(blob)
+source_mode="child_item"
+try:
+    blob=fetch_bytes(url)
+    tmp.write_bytes(blob)
+    downloaded_bytes=len(blob)
+except RuntimeError as e:
+    if YEAR!=2004 or "404" not in str(e):
+        raise
+    # Official 2004 child file URI is broken. Fail over only to the same
+    # USGS parent-release ZIP, as frozen before focal 2004 raster readback.
+    parent=get_json(f"https://www.sciencebase.gov/catalog/item/{PARENT}?format=json")
+    zfile=None
+    for ff in parent.get("files") or []:
+        if (ff.get("name") or "")=="DSWEmod_ConterminousUS_2003_2019.zip":
+            zfile=ff;break
+    if zfile is None:
+        raise RuntimeError("official parent ZIP missing")
+    zurl=zfile.get("downloadUri") or zfile.get("url")
+    zpath=Path(tempfile.gettempdir())/"DSWEmod_ConterminousUS_2003_2019.zip"
+    req=urllib.request.Request(zurl,headers={"User-Agent":"frogcs-dswemod-extract/0.2"})
+    with urllib.request.urlopen(req,timeout=1800) as rr, zpath.open("wb") as out:
+        shutil.copyfileobj(rr,out,length=1024*1024)
+    downloaded_bytes=zpath.stat().st_size
+    with zipfile.ZipFile(zpath) as z:
+        names=[n for n in z.namelist() if Path(n).name=="DSWEmod_US_2004.tif"]
+        if len(names)!=1:
+            raise RuntimeError(f"expected one DSWEmod_US_2004.tif in parent ZIP, got {names}")
+        with z.open(names[0]) as src, tmp.open("wb") as out:
+            shutil.copyfileobj(src,out,length=1024*1024)
+    source_mode="official_parent_zip_fallback"
 
 # Coordinate authority.
 cb=fetch_bytes(COORD_URL)
@@ -186,7 +214,9 @@ df.to_csv(csvout,index=False,float_format="%.8g")
 receipt={
  "analysis":"naamp_dswemod_monthly_year_extraction_v0_2",
  "contract":"revision/NAAMP_MODIS_DSWEMOD_MECHANISM_EXTENSION_V0_2.md",
- "year":YEAR,"source_item":child["id"],"source_file":tif.get("name"),"downloaded_bytes":len(blob),
+ "year":YEAR,"source_item":child["id"],"source_file":tif.get("name"),
+ "source_mode":source_mode,"downloaded_bytes":downloaded_bytes,
+ "extracted_tif_bytes":tmp.stat().st_size,
  "rows":len(df),"months":sorted(int(x) for x in df.month.unique()) if len(df) else [],
  "unique_siteids":int(df.SiteID.nunique()) if len(df) else 0,
  "nonmissing_r500":int(df.dswemod123_r500.notna().sum()) if len(df) else 0,
