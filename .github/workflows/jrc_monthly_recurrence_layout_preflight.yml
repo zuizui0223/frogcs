@@ -1,0 +1,24 @@
+name: JRC monthly recurrence layout preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/jrc_monthly_recurrence_layout_preflight.yml"
+      - "scripts/remotesensing/preflight_jrc_monthly_recurrence_layout.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/remotesensing/preflight_jrc_monthly_recurrence_layout.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jrc-monthly-recurrence-layout-preflight
+          path: remotesensing/JRC_MONTHLY_RECURRENCE_LAYOUT_PREFLIGHT_V0_1.json
