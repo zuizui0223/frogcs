@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, re, urllib.request
+import json, re, urllib.request, tempfile, pathlib
 import rasterio
 from rasterio.windows import Window
 
@@ -33,9 +33,13 @@ url=tif.get("downloadUri") or tif.get("url")
 if not url:
     raise RuntimeError("no download URL")
 
-out={"analysis":"dswemod_raster_io_audit_v0_1","year":YEAR,"url":url,"file_name":tif.get("name"),"file_size":tif.get("size"),"points":[],"frog_data_used":False}
-with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR",CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif",GDAL_HTTP_MULTIRANGE="YES"):
-    with rasterio.open(url) as ds:
+out={"analysis":"dswemod_raster_io_audit_v0_2","year":YEAR,"url":url,"file_name":tif.get("name"),"file_size":tif.get("size"),"points":[],"frog_data_used":False}
+tmp=pathlib.Path(tempfile.gettempdir())/f"DSWEmod_US_{YEAR}.tif"
+req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswemod-raster-audit/0.2"})
+with urllib.request.urlopen(req,timeout=300) as r:
+    tmp.write_bytes(r.read())
+out["downloaded_bytes"]=tmp.stat().st_size
+with rasterio.open(tmp) as ds:
         out["dataset"]={
           "count":ds.count,"width":ds.width,"height":ds.height,"crs":str(ds.crs),
           "transform":[float(ds.transform.a),float(ds.transform.b),float(ds.transform.c),float(ds.transform.d),float(ds.transform.e),float(ds.transform.f)],
