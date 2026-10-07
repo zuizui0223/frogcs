@@ -1,5 +1,9 @@
 name: DSWEmod recent-wetness temporal validation
 
+concurrency:
+  group: dswemod-recent-wetness-temporal-validation
+  cancel-in-progress: true
+
 # latest-spec trigger: training-only species pools
 
 on:
