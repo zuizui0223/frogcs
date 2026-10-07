@@ -121,7 +121,14 @@ Do not interpret the positive 3-month gain as:
 
 The response is reproductive acoustic activity only.
 
-Species coefficients were heterogeneous, so do not headline a pooled directional hydrology coefficient.
+Species-level predictive gains were heterogeneous. For the 3-month increment, among the 53 fixed taxa:
+- 15 had positive recent-wetness gain;
+- 16 had negative gain;
+- 22 had exactly zero gain under the fail-closed/non-estimable rule.
+
+Therefore the positive equal-species mean and route-bootstrap interval should **not** be rewritten as a universal species-level response. The supported statement is that recent wetness improves the predeclared cross-taxon prediction estimand for strong chorus, with substantial taxon heterogeneity.
+
+Species coefficients were likewise heterogeneous, so do not headline a pooled directional hydrology coefficient.
 
 ## Decision
 
