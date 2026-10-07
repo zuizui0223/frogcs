@@ -1,0 +1,92 @@
+name: NAAMP NWI failed-only repair
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_nwi_failed_only_repair.yml"
+      - "scripts/remotesensing/repair_naamp_nwi_failed_only.py"
+      - "scripts/remotesensing/aggregate_naamp_nwi_failed_repair.py"
+      - "scripts/remotesensing/run_naamp_nwi_rain_filter_mechanism.py"
+      - "revision/NAAMP_NWI_RETRIEVAL_REPAIR_V0_3.md"
+      - "revision/NAAMP_NWI_WATER_REGIME_RAIN_FILTER_EXTENSION_V0_2.md"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  repair:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check pandas shapely pyproj
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-coverage
+          path: frozen_nwi
+          github-token: ${{ github.token }}
+          run-id: 37620292386
+      - name: Retry only failed NWI SiteIDs
+        env:
+          NWI_BASE_ASSIGNMENTS: frozen_nwi/NAAMP_NWI_SITE_ASSIGNMENTS_V0_1.csv
+          NWI_REPAIR_SHARD_INDEX: ${{ matrix.shard }}
+          NWI_REPAIR_SHARD_COUNT: 8
+        run: python scripts/remotesensing/repair_naamp_nwi_failed_only.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nwi-failed-repair-${{ matrix.shard }}
+          path: |
+            remotesensing/nwi_repair_shards/NWI_FAILED_REPAIR_SHARD_*.csv
+            remotesensing/nwi_repair_shards/NWI_FAILED_REPAIR_SHARD_*.json
+          retention-days: 7
+
+  aggregate_and_test:
+    needs: repair
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-coverage
+          path: frozen_nwi
+          github-token: ${{ github.token }}
+          run-id: 37620292386
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nwi-failed-repair-*
+          path: remotesensing/nwi_repair_inputs
+          merge-multiple: true
+      - name: Aggregate repaired NWI assignment and freeze coverage
+        env:
+          NWI_BASE_ASSIGNMENTS: frozen_nwi/NAAMP_NWI_SITE_ASSIGNMENTS_V0_1.csv
+          NWI_REPAIR_DIR: remotesensing/nwi_repair_inputs
+        run: python scripts/remotesensing/aggregate_naamp_nwi_failed_repair.py
+      - name: Run frozen water-regime rain-filter mechanism if gate passes
+        env:
+          NAAMP_NWI_ASSIGNMENTS: remotesensing/NAAMP_NWI_SITE_ASSIGNMENTS_REPAIRED_V0_3.csv
+          NAAMP_NWI_COVERAGE: remotesensing/NAAMP_NWI_COVERAGE_REPAIRED_V0_3.json
+        run: python scripts/remotesensing/run_naamp_nwi_rain_filter_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-failed-only-repair-result
+          path: |
+            remotesensing/NAAMP_NWI_SITE_ASSIGNMENTS_REPAIRED_V0_3.csv
+            remotesensing/NAAMP_NWI_COVERAGE_REPAIRED_V0_3.json
+            remotesensing/NAAMP_NWI_RAIN_FILTER_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
