@@ -20,6 +20,8 @@ if not 2003<=YEAR<=2015:
     raise ValueError(YEAR)
 
 PARENT="609955c9d34ea221ce33c534"
+COORD_URL="https://www.sciencebase.gov/catalog/file/get/583dc314e4b0d1899f9dea8d?f=__disk__77%2F22%2F7e%2F77227ec46ac1c01592cd8343a7536"
+# Correct pinned source below (kept explicit to fail closed).
 COORD_URL="https://www.sciencebase.gov/catalog/file/get/583dc314e4b0d1899f9dea8d?f=__disk__77%2F22%2F7e%2F77227ec46ac1c01592cd7d158d442cd8343a7536"
 COORD_SHA="f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83"
 RADII=(250,500)
@@ -32,7 +34,7 @@ flex=loadmod("flex",EXP/"run_naamp_flexible_common_environment_null.py")
 mem=flex.mem
 
 def get_json(url):
-    req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswemod-extract/0.1","Accept":"application/json"})
+    req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswemod-extract/0.2","Accept":"application/json"})
     with urllib.request.urlopen(req,timeout=120) as r:
         return json.loads(r.read().decode())
 
@@ -40,7 +42,7 @@ def fetch_bytes(url):
     last=None
     for i in range(6):
         try:
-            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswemod-extract/0.1"})
+            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswemod-extract/0.2"})
             with urllib.request.urlopen(req,timeout=600) as r:
                 return r.read()
         except Exception as e:
@@ -71,7 +73,11 @@ def strict_routes(byroute):
         good.add(rid)
     return good
 
-# Resolve official year TIFF.
+def ym_shift(y,m,delta):
+    z=y*12+(m-1)+delta
+    return z//12,z%12+1
+
+# Resolve official annual TIFF.
 children=get_json(f"https://www.sciencebase.gov/catalog/items?parentId={PARENT}&format=json&max=100").get("items") or []
 child=None
 for x in children:
@@ -80,9 +86,9 @@ for x in children:
 if child is None: raise RuntimeError("year child not found")
 item=get_json(f"https://www.sciencebase.gov/catalog/item/{child['id']}?format=json")
 tif=None
-for f in item.get("files") or []:
-    if (f.get("name") or "").lower().endswith(".tif"):
-        tif=f;break
+for ff in item.get("files") or []:
+    if (ff.get("name") or "").lower().endswith(".tif"):
+        tif=ff;break
 if tif is None: raise RuntimeError("year tif not found")
 url=tif.get("downloadUri") or tif.get("url")
 blob=fetch_bytes(url)
@@ -99,84 +105,90 @@ for r in csv.DictReader(io.StringIO(cb.decode("utf-8-sig"))):
     lat=float(r["lat"]);lon=float(r["lon"]);coords[sid]=(rid,lat,lon);byroute[rid].append((sid,lat,lon))
 safe=strict_routes(byroute)
 
-# Frozen principal-pair RunID x physical-SiteID requests in this year.
+# Reconstruct fixed product-period principal population and all 12-month site-month requests
+# that land in this annual raster.
 raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
 eligible=set(runs.RunID.astype(str)); site=mem.site_map(raw,eligible)
 runrow={str(r.RunID):r for r in runs.itertuples(index=False)}
-requests={}
+requests=defaultdict(set)  # month -> SiteIDs needed in YEAR
+
 for p,dct in zip(psub.itertuples(index=False),dsub):
-    if str(p.RouteNumber) not in safe: continue
+    # Product availability is fixed to 2003-2015 for both focal surveys.
+    if int(p.year_earlier)<2003 or int(p.year_later)>2015:
+        continue
+    if str(p.RouteNumber) not in safe:
+        continue
     ids=mem.focal_siteids(p,dct,site)
-    if ids is None or len(ids)!=10 or any(s not in coords for s in ids): continue
+    if ids is None or len(ids)!=10 or any(s not in coords for s in ids):
+        continue
     for runid in (str(p.wet_RunID),str(p.dry_RunID)):
         rr=runrow.get(runid)
-        if rr is None or int(rr.SurveyYear)!=YEAR: continue
-        month=(date(int(rr.SurveyYear),1,1)+timedelta(days=int(rr.doy)-1)).month
-        spec={"RunID":runid,"RouteNumber":str(rr.RouteNumber),"route_cluster":str(rr.route_cluster),
-              "State":str(rr.State),"RunNumber":str(rr.RunNumber),"year":YEAR,"month":month,"siteids":list(ids)}
-        if runid in requests and requests[runid]["siteids"]!=spec["siteids"]:
-            raise RuntimeError(f"RunID site identity drift {runid}")
-        requests[runid]=spec
+        if rr is None:continue
+        y=int(rr.SurveyYear)
+        m=(date(y,1,1)+timedelta(days=int(rr.doy)-1)).month
+        for k in range(12):
+            yy,mm=ym_shift(y,m,-k)
+            if yy==YEAR:
+                requests[mm].update(ids)
 
 rows=[]
 with rasterio.open(tmp) as ds:
-    if ds.count!=12 or ds.crs is None:
-        raise RuntimeError(f"DSWEmod raster identity drift count={ds.count} crs={ds.crs}")
-    # Project all unique coordinates once.
-    unique_sids=sorted({sid for spec in requests.values() for sid in spec["siteids"]})
+    if ds.count!=12 or str(ds.crs)!="EPSG:5070":
+        raise RuntimeError(f"DSWEmod identity drift count={ds.count} crs={ds.crs}")
+    px=float(abs(ds.transform.a))
+    if not 240<=px<=260:raise RuntimeError(f"unexpected pixel size {px}")
+    unique_sids=sorted({sid for sids in requests.values() for sid in sids})
     xs,ys=transform("EPSG:4326",ds.crs,[coords[s][2] for s in unique_sids],[coords[s][1] for s in unique_sids])
     xy={sid:(float(x),float(y)) for sid,x,y in zip(unique_sids,xs,ys)}
-    px=float(abs(ds.transform.a))
-    if not 240<=px<=260:
-        raise RuntimeError(f"unexpected pixel size {px}")
 
-    for n,(runid,spec) in enumerate(sorted(requests.items()),1):
-        band=int(spec["month"])
-        for sid in spec["siteids"]:
+    for month in sorted(requests):
+        for sid in sorted(requests[month]):
             x,y=xy[sid]
             row0,col0=ds.index(x,y)
-            rec={"RunID":runid,"SiteID":sid,"RouteNumber":spec["RouteNumber"],"route_cluster":spec["route_cluster"],
-                 "State":spec["State"],"RunNumber":spec["RunNumber"],"year":YEAR,"month":band}
+            rec={"SiteID":sid,"year":YEAR,"month":month}
             for radius in RADII:
                 nr=int(math.ceil(radius/px))+1
-                win=Window(max(0,col0-nr),max(0,row0-nr),2*nr+1,2*nr+1)
-                a=ds.read(band,window=win)
-                # Pixel-center geometry in projected meters.
-                rows_idx=np.arange(int(win.row_off),int(win.row_off)+a.shape[0])
-                cols_idx=np.arange(int(win.col_off),int(win.col_off)+a.shape[1])
-                rr,cc=np.meshgrid(rows_idx,cols_idx,indexing="ij")
-                pxc=ds.transform.c+(cc+0.5)*ds.transform.a
-                pyc=ds.transform.f+(rr+0.5)*ds.transform.e
-                mask=((pxc-x)**2+(pyc-y)**2)<=radius**2
-                vals=a[mask]
+                row_off=max(0,row0-nr); col_off=max(0,col0-nr)
+                h=min(2*nr+1,ds.height-row_off); w=min(2*nr+1,ds.width-col_off)
+                if h<=0 or w<=0:
+                    vals=np.asarray([],dtype=np.uint8)
+                else:
+                    a=ds.read(month,window=Window(col_off,row_off,w,h))
+                    rows_idx=np.arange(row_off,row_off+a.shape[0])
+                    cols_idx=np.arange(col_off,col_off+a.shape[1])
+                    rr,cc=np.meshgrid(rows_idx,cols_idx,indexing="ij")
+                    pxc=ds.transform.c+(cc+0.5)*ds.transform.a
+                    pyc=ds.transform.f+(rr+0.5)*ds.transform.e
+                    mask=((pxc-x)**2+(pyc-y)**2)<=radius**2
+                    vals=a[mask]
                 valid=np.isin(vals,[0,1,2,3,4])
                 vf=float(valid.mean()) if len(vals) else 0.0
+                rec[f"valid_frac_r{radius}"]=vf
                 if valid.any() and vf>=VALID_MIN:
                     vv=vals[valid]
-                    rec[f"valid_frac_r{radius}"]=vf
                     rec[f"dswemod123_r{radius}"]=float(np.isin(vv,[1,2,3]).mean())
                     rec[f"dswemod1234_r{radius}"]=float(np.isin(vv,[1,2,3,4]).mean())
                     rec[f"class3_r{radius}"]=float((vv==3).mean())
                     rec[f"class4_r{radius}"]=float((vv==4).mean())
                 else:
-                    rec[f"valid_frac_r{radius}"]=vf
                     rec[f"dswemod123_r{radius}"]=None
                     rec[f"dswemod1234_r{radius}"]=None
                     rec[f"class3_r{radius}"]=None
                     rec[f"class4_r{radius}"]=None
             rows.append(rec)
-        if n==1 or n%100==0 or n==len(requests):
-            print(json.dumps({"year":YEAR,"run":n,"runs":len(requests)}),flush=True)
+        print(json.dumps({"year":YEAR,"month":month,"sites":len(requests[month])}),flush=True)
 
 df=pd.DataFrame(rows)
 OUTDIR.mkdir(parents=True,exist_ok=True)
-csvout=OUTDIR/f"NAAMP_DSWEMOD_{YEAR}.csv"
-jsonout=OUTDIR/f"NAAMP_DSWEMOD_{YEAR}.json"
+csvout=OUTDIR/f"NAAMP_DSWEMOD_MONTHLY_{YEAR}.csv"
+jsonout=OUTDIR/f"NAAMP_DSWEMOD_MONTHLY_{YEAR}.json"
 df.to_csv(csvout,index=False,float_format="%.8g")
 receipt={
- "analysis":"naamp_dswemod_year_extraction_v0_1","contract":"revision/NAAMP_MODIS_DSWEMOD_MECHANISM_CONTRACT_V0_1.md",
+ "analysis":"naamp_dswemod_monthly_year_extraction_v0_2",
+ "contract":"revision/NAAMP_MODIS_DSWEMOD_MECHANISM_EXTENSION_V0_2.md",
  "year":YEAR,"source_item":child["id"],"source_file":tif.get("name"),"downloaded_bytes":len(blob),
- "runs":len(requests),"rows":len(df),"unique_siteids":int(df.SiteID.nunique()) if len(df) else 0,
+ "rows":len(df),"months":sorted(int(x) for x in df.month.unique()) if len(df) else [],
+ "unique_siteids":int(df.SiteID.nunique()) if len(df) else 0,
  "nonmissing_r500":int(df.dswemod123_r500.notna().sum()) if len(df) else 0,
  "nonmissing_r250":int(df.dswemod123_r250.notna().sum()) if len(df) else 0,
  "csv_sha256":hashlib.sha256(csvout.read_bytes()).hexdigest(),
