@@ -61,13 +61,15 @@ M_NWI adds a **species-specific rainfall × NWI wetland-type interaction**.
 
 Training uses only the opposite deterministic route fold.
 
-For each species and wetland-type level, estimate the additional dryness/rain response relative to the reference habitat while controlling for State, RunNumber, mean air temperature and annual sine/cosine.
+For each species, estimate all wetland-type rainfall interactions jointly within the training fold while controlling for wetland-type main effects, State, RunNumber, mean air temperature and annual sine/cosine. Do not fit separate habitat-specific regressions.
+
+Parameterize habitat-specific dryness slopes in one design matrix. For wetland types meeting the interaction estimability gate, calculate the fitted dryness slope for that type. Center the estimable habitat-specific slopes by their training-cell-weighted mean, so the interaction shifts sum to zero in expectation across the training habitat distribution. Convert the centered dryness deviations to wet-response deviations by changing sign. The existing M0 species rainfall response remains the common response; NWI contributes only redistribution among habitat types.
 
 Estimability gate for a species × habitat interaction:
 - >=20 positive stop-cells in that habitat;
 - >=5 positive routes containing that habitat.
 
-Non-estimable interactions are zero.
+Non-estimable habitat interactions are fixed at zero and are not merged into another ecological type.
 
 For a focal pair, the common rain contrast is multiplied by each stop's cross-fitted species × wetland-type interaction, then the unchanged pair-level common shift matches observed total wet incidence.
 
