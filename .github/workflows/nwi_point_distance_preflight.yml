@@ -1,0 +1,22 @@
+name: NWI point-distance preflight
+
+on:
+  push:
+    branches: [remotesensing/naamp-dynamic-hydrology-v1]
+    paths:
+      - ".github/workflows/nwi_point_distance_preflight.yml"
+      - "scripts/remotesensing/preflight_nwi_point_distance.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/remotesensing/preflight_nwi_point_distance.py
