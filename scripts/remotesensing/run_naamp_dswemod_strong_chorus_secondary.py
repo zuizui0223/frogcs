@@ -32,7 +32,14 @@ def ci_map(raw,eligible,sampled):
 
 def main():
     if not INCSV.exists(): raise RuntimeError(f"missing {INCSV}")
-    var=pd.read_csv(INCSV)
+    src=pd.read_csv(INCSV)
+    # Schema-only adapter into the common M1 hydrology interface.
+    # The DSWEmod primary exposure is current_D_r500 by frozen contract.
+    var=src[["RunID","SiteID"]].copy()
+    var["current_water_fraction_r250"]=pd.to_numeric(src["current_D_r500"],errors="coerce")
+    var["recent_wetness_3m_r250"]=np.nan
+    var["hydro_sd_12m_r250"]=np.nan
+
     raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
     p1,d1,h1,hyd1,site,safe,fail=hyd.build_complete_sample(raw,runs,psub,dsub,hsub,var,"M1")
     eligible=set(runs.RunID.astype(str)); ci=ci_map(raw,eligible,sampled)
