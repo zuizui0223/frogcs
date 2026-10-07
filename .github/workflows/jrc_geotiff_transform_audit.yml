@@ -1,0 +1,17 @@
+name: JRC GeoTIFF transform audit
+on:
+  push:
+    branches: [remotesensing/naamp-dynamic-hydrology-v1]
+    paths:
+      - ".github/workflows/jrc_geotiff_transform_audit.yml"
+      - "scripts/remotesensing/audit_jrc_geotiff_transform.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --disable-pip-version-check rasterio
+      - run: python scripts/remotesensing/audit_jrc_geotiff_transform.py
