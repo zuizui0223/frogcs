@@ -1,0 +1,24 @@
+name: NAAMP dynamic hydrology code QA
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_dynamic_hydrology_code_qa.yml"
+      - "scripts/remotesensing/run_naamp_dynamic_hydrology_mechanism.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile mechanism script
+        run: python -m py_compile scripts/remotesensing/run_naamp_dynamic_hydrology_mechanism.py
