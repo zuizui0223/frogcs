@@ -61,7 +61,15 @@ M_NWI adds a **species-specific rainfall × NWI wetland-type interaction**.
 
 Training uses only the opposite deterministic route fold.
 
-For each species, estimate all wetland-type rainfall interactions jointly within the training fold while controlling for wetland-type main effects, State, RunNumber, mean air temperature and annual sine/cosine. Do not fit separate habitat-specific regressions.
+Before fitting, calculate `dry_x = log(1 + DaysSinceRain)` and center it within each physical SiteID using only training-fold runs for that SiteID:
+
+`dry_x_c = dry_x - mean_trainingSite(dry_x)`.
+
+Because each physical SiteID belongs to one route and therefore one deterministic route fold, this introduces no cross-fold leakage.
+
+For each species, estimate all wetland-type rainfall interactions jointly within the training fold using habitat-specific slopes of `dry_x_c`, while controlling for wetland-type main effects, State, RunNumber, mean air temperature and annual sine/cosine. Do not fit separate habitat-specific regressions.
+
+This makes the interaction a within-site temporal rain-response contrast and prevents persistent site quality from being reintroduced under the NWI label.
 
 Parameterize habitat-specific dryness slopes in one design matrix. For wetland types meeting the interaction estimability gate, calculate the fitted dryness slope for that type. Center the estimable habitat-specific slopes by their training-cell-weighted mean, so the interaction shifts sum to zero in expectation across the training habitat distribution. Convert the centered dryness deviations to wet-response deviations by changing sign. The existing M0 species rainfall response remains the common response; NWI contributes only redistribution among habitat types.
 
@@ -71,7 +79,7 @@ Estimability gate for a species × habitat interaction:
 
 Non-estimable habitat interactions are fixed at zero and are not merged into another ecological type.
 
-For a focal pair, the common rain contrast is multiplied by each stop's cross-fitted species × wetland-type interaction, then the unchanged pair-level common shift matches observed total wet incidence.
+For a focal pair, the site-centering constant cancels in the wet-minus-dry contrast, so the existing positive `rain_contrast = dry_x_dry - dry_x_wet` is multiplied by each stop's cross-fitted species × wetland-type wet-response deviation. The unchanged pair-level common shift then matches observed total wet incidence.
 
 Thus NWI is tested on **where** activation occurs, not how much total activation occurs.
 
