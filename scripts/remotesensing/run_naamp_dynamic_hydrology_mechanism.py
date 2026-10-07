@@ -89,21 +89,23 @@ def run_months(runs):
       for r in runs.itertuples(index=False)
     }
 
-def build_complete_sample(raw,runs,psub,dsub,hsub,var):
+def build_complete_sample(raw,runs,psub,dsub,hsub,var,level):
+    if level not in ("M1","M3"):
+        raise ValueError(level)
     eligible=set(runs.RunID.astype(str))
     site=mem.site_map(raw,eligible)
-    months=run_months(runs)
     safe=strict_routes()
 
     vv={}
     for r in var.itertuples(index=False):
-        vals=(r.current_water_fraction_r250,r.recent_wetness_3m_r250,r.hydro_sd_12m_r250)
-        if all(pd.notna(v) for v in vals):
-            vv[(str(r.RunID),str(r.SiteID))]={
-              "current_water":float(vals[0]),
-              "recent3":float(vals[1]),
-              "sd12":float(vals[2])
-            }
+        cur=getattr(r,"current_water_fraction_r250")
+        recent=getattr(r,"recent_wetness_3m_r250")
+        sd=getattr(r,"hydro_sd_12m_r250")
+        vv[(str(r.RunID),str(r.SiteID))]={
+          "current_water":float(cur) if pd.notna(cur) else None,
+          "recent3":float(recent) if pd.notna(recent) else None,
+          "sd12":float(sd) if pd.notna(sd) else None
+        }
 
     kp=[]; kd=[]; kh=[]; hydro=[]
     fail=defaultdict(int)
@@ -114,20 +116,26 @@ def build_complete_sample(raw,runs,psub,dsub,hsub,var):
         if ids is None or len(ids)!=10:
             fail["siteid_identity"]+=1; continue
         wetid=str(p.wet_RunID); dryid=str(p.dry_RunID)
-        if wetid not in months or dryid not in months:
-            fail["run_month"]+=1; continue
-        wy,wm=months[wetid]; dy,dm=months[dryid]
         Hw=[]; Hd=[]; Rw=[]; Rd=[]; Sw=[]; Sd=[]
         ok=True
         for sid in ids:
             vw=vv.get((wetid,sid)); vd=vv.get((dryid,sid))
             if vw is None or vd is None:
-                ok=False; break
+                fail["hydrology_row_missing"]+=1; ok=False; break
+            if vw["current_water"] is None or vd["current_water"] is None:
+                fail["current_missing"]+=1; ok=False; break
+            if level=="M3" and (
+                vw["recent3"] is None or vd["recent3"] is None or
+                vw["sd12"] is None or vd["sd12"] is None
+            ):
+                fail["m3_missing"]+=1; ok=False; break
             Hw.append(vw["current_water"]); Hd.append(vd["current_water"])
-            Rw.append(vw["recent3"]); Rd.append(vd["recent3"])
-            Sw.append(vw["sd12"]); Sd.append(vd["sd12"])
+            Rw.append(vw["recent3"] if vw["recent3"] is not None else np.nan)
+            Rd.append(vd["recent3"] if vd["recent3"] is not None else np.nan)
+            Sw.append(vw["sd12"] if vw["sd12"] is not None else np.nan)
+            Sd.append(vd["sd12"] if vd["sd12"] is not None else np.nan)
         if not ok:
-            fail["hydrology_missing"]+=1; continue
+            continue
         kp.append(p); kd.append(dct); kh.append(ph)
         hydro.append({
           "siteids":ids,
@@ -211,17 +219,17 @@ def design_matrix(cells,mask,model,state_levels,run_levels):
     X=np.column_stack([base,state,rn,hyd])
     return X,hyd_cols
 
-def fit_hydrology_coefficients(cells,callers,all_species):
+def fit_hydrology_coefficients(cells,callers,all_species,models=("M1","M2","M3")):
     state_levels=sorted(cells["State"].astype(str).unique())
     run_levels=sorted(cells["RunNumber"].astype(str).unique())
-    out={m:{} for m in ("M1","M2","M3")}
-    audit={m:{} for m in ("M1","M2","M3")}
+    out={m:{} for m in models}
+    audit={m:{} for m in models}
 
     for train_fold in ("A","B"):
         mask=(cells["route_fold"].to_numpy()==train_fold)
         routes=cells.loc[mask,"route_cluster"].astype(str).to_numpy()
         caller_sub=[callers[i] for i in np.flatnonzero(mask)]
-        for model in ("M1","M2","M3"):
+        for model in models:
             X,hyd_cols=design_matrix(cells,mask,model,state_levels,run_levels)
             hstart=X.shape[1]-len(hyd_cols)
             coefmap={}
@@ -304,26 +312,91 @@ def simulate_model(model,pfinal,dsub,hsub,hydro,rain_slopes,hydro_coef,r,den):
       "q95_abs_hydrology_logit_shift":float(np.quantile(shift,.95)) if len(shift) else 0.0
     }
 
+def analyze_sample(label,pfinal,dfinal,hfinal,hydro,runs,sampled,ss,pools,models):
+    all_species=sorted({sp for spp in pools.values() for sp in spp})
+
+    rainA,auditA,foldA=joint.fit_species_slopes(runs,sampled,ss,all_species,"A")
+    rainB,auditB,foldB=joint.fit_species_slopes(runs,sampled,ss,all_species,"B")
+    rain_slopes={"A":rainA,"B":rainB}
+
+    run_specs=build_run_specs(pfinal,dfinal,hydro,runs)
+    cells,callers=cell_frame(run_specs,ss)
+    hydro_models=tuple(m for m in models if m!="M0")
+    hydro_coef,hydro_audit=fit_hydrology_coefficients(
+        cells,callers,all_species,models=hydro_models
+    ) if hydro_models else ({},{})
+
+    obs_rows=np.asarray([flex.metrics(d["wet"],d["dry"]) for d in dfinal],float)
+    r,den=uniform.design_residual(pfinal)
+    obs=(r[:,None]*obs_rows).sum(axis=0)/den
+
+    results={}
+    shift_audit={}
+    for model in models:
+        sim,sa=simulate_model(model,pfinal,dfinal,hfinal,hydro,rain_slopes,hydro_coef,r,den)
+        results[model]=flex.conditional(sim,obs)
+        shift_audit[model]=sa
+
+    res={m:float(results[m]["observed_conditional_residual"]) for m in results}
+    out={
+      "label":label,
+      "coverage":{"pairs":int(len(pfinal)),"routes":int(pfinal.route_cluster.nunique()),"states":int(pfinal.State.nunique())},
+      "observed":{"route_new_species_beta":float(obs[0]),"extra_stop_beta":float(obs[1]),"concentration_beta":float(obs[2])},
+      "models":results,
+      "rainfall_training":{"fold_A":foldA,"fold_B":foldB},
+      "hydrology_training":hydro_audit,
+      "hydrology_shift_audit":shift_audit
+    }
+    if "M0" in res and "M1" in res:
+        base=res["M0"]
+        out["fraction_removed_current"]=float((res["M0"]-res["M1"])/base) if base!=0 else None
+        out["M1_sufficient"]=bool(not results["M1"]["above_upper_95"])
+    if all(m in res for m in ("M0","M1","M2","M3")):
+        base=res["M0"]
+        out["residual_decomposition"]={
+          "same_sample_M0_residual":base,
+          "M1_residual":res["M1"],"M2_residual":res["M2"],"M3_residual":res["M3"],
+          "fraction_removed_total":float((res["M0"]-res["M3"])/base) if base!=0 else None,
+          "fraction_removed_current":float((res["M0"]-res["M1"])/base) if base!=0 else None,
+          "increment_recent":float((res["M1"]-res["M2"])/base) if base!=0 else None,
+          "increment_variability":float((res["M2"]-res["M3"])/base) if base!=0 else None
+        }
+        out["M3_sufficient"]=bool(not results["M3"]["above_upper_95"])
+    return out
+
 def main():
     if not VAR_CSV.exists():
         raise RuntimeError(f"missing hydrology input: {VAR_CSV}")
 
     var=pd.read_csv(VAR_CSV)
-
     raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
-    pfinal,dfinal,hfinal,hydro,site,safe,fail=build_complete_sample(
-        raw,runs,psub,dsub,hsub,var
+
+    p1,d1,h1,hyd1,site,safe,fail1=build_complete_sample(
+        raw,runs,psub,dsub,hsub,var,"M1"
+    )
+    p3,d3,h3,hyd3,site,safe,fail3=build_complete_sample(
+        raw,runs,psub,dsub,hsub,var,"M3"
+    )
+
+    gate1=bool(
+        len(p1)>=1500 and len(p1)>0 and
+        p1.route_cluster.nunique()>=300 and p1.State.nunique()>=15
+    )
+    gate3=bool(
+        len(p3)>=1500 and len(p3)>0 and
+        p3.route_cluster.nunique()>=300 and p3.State.nunique()>=15
     )
 
     coverage={
-      "pairs":int(len(pfinal)),"routes":int(pfinal.route_cluster.nunique()) if len(pfinal) else 0,
-      "states":int(pfinal.State.nunique()) if len(pfinal) else 0,
-      "strict_geometry_routes":int(len(safe)),"failures":fail,
-      "gate_pass":bool(len(pfinal)>=1500 and pfinal.route_cluster.nunique()>=300 and pfinal.State.nunique()>=15) if len(pfinal) else False
+      "strict_geometry_routes":int(len(safe)),
+      "M1":{"pairs":int(len(p1)),"routes":int(p1.route_cluster.nunique()) if len(p1) else 0,
+            "states":int(p1.State.nunique()) if len(p1) else 0,"failures":fail1,"gate_pass":gate1},
+      "M3":{"pairs":int(len(p3)),"routes":int(p3.route_cluster.nunique()) if len(p3) else 0,
+            "states":int(p3.State.nunique()) if len(p3) else 0,"failures":fail3,"gate_pass":gate3}
     }
 
     output={
-      "analysis":"naamp_dynamic_hydrology_mechanism_v0_1",
+      "analysis":"naamp_dynamic_hydrology_mechanism_v0_2",
       "contract":"revision/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_EXTENSION_V0_4.md",
       "model_spec":"revision/NAAMP_DYNAMIC_HYDROLOGY_MODEL_SPEC_V0_1.md",
       "coverage":coverage,
@@ -333,82 +406,57 @@ def main():
       },
       "frog_endpoint_read":False
     }
-    if not coverage["gate_pass"]:
-        output["classification"]="hydrology_coverage_inconclusive"
+
+    if not gate1:
+        output["classification"]="current_hydrology_coverage_inconclusive"
         OUT.write_text(json.dumps(output,indent=2,sort_keys=True)+"\n")
         print(json.dumps(output,indent=2,sort_keys=True))
         return
 
-    # From this point the frozen frog endpoint is read.
-    # Internal variable H denotes current monthly water fraction W under v0.4.
     output["frog_endpoint_read"]=True
-    all_species=sorted({sp for spp in pools.values() for sp in spp})
 
-    # Existing principal rainfall-response coefficients remain the M0 source.
-    rainA,auditA,foldA=joint.fit_species_slopes(runs,sampled,ss,all_species,"A")
-    rainB,auditB,foldB=joint.fit_species_slopes(runs,sampled,ss,all_species,"B")
-    rain_slopes={"A":rainA,"B":rainB}
-
-    run_specs=build_run_specs(pfinal,dfinal,hydro,runs)
-    cells,callers=cell_frame(run_specs,ss)
-    hydro_coef,hydro_audit=fit_hydrology_coefficients(cells,callers,all_species)
-
-    obs_rows=np.asarray([flex.metrics(d["wet"],d["dry"]) for d in dfinal],float)
-    r,den=uniform.design_residual(pfinal)
-    obs=(r[:,None]*obs_rows).sum(axis=0)/den
-
-    results={}
-    shift_audit={}
-    for model in ("M0","M1","M2","M3"):
-        sim,sa=simulate_model(model,pfinal,dfinal,hfinal,hydro,rain_slopes,hydro_coef,r,den)
-        results[model]=flex.conditional(sim,obs)
-        shift_audit[model]=sa
-
-    res={m:float(results[m]["observed_conditional_residual"]) for m in results}
-    base=res["M0"]
-    def frac(a,b):
-        return float((a-b)/base) if base!=0 else None
-
-    decomposition={
-      "same_sample_M0_residual":base,
-      "M1_residual":res["M1"],"M2_residual":res["M2"],"M3_residual":res["M3"],
-      "fraction_removed_total":frac(res["M0"],res["M3"]),
-      "fraction_removed_current":frac(res["M0"],res["M1"]),
-      "increment_recent":frac(res["M1"],res["M2"]),
-      "increment_variability":frac(res["M2"],res["M3"])
-    }
-
-    if not results["M3"]["above_upper_95"]:
-        classification="dynamic_hydrology_sufficient"
-    elif decomposition["fraction_removed_total"] is not None and decomposition["fraction_removed_total"]>0:
-        classification="dynamic_hydrology_partial"
+    if gate3:
+        full=analyze_sample("M0-M3 common sample",p3,d3,h3,hyd3,runs,sampled,ss,pools,("M0","M1","M2","M3"))
+        output["full_sequence"]=full
+        if full["M3_sufficient"]:
+            classification="dynamic_hydrology_sufficient"
+        elif full["residual_decomposition"]["fraction_removed_total"] is not None and full["residual_decomposition"]["fraction_removed_total"]>0:
+            classification="dynamic_hydrology_partial"
+        else:
+            classification="dynamic_hydrology_not_supported_as_principal_mechanism"
     else:
-        classification="dynamic_hydrology_not_supported_as_principal_mechanism"
+        current=analyze_sample("M0-M1 current-water sample",p1,d1,h1,hyd1,runs,sampled,ss,pools,("M0","M1"))
+        output["current_only"]=current
+        if current["M1_sufficient"]:
+            classification="current_hydrology_sufficient_M3_inconclusive"
+        elif current["fraction_removed_current"] is not None and current["fraction_removed_current"]>0:
+            classification="current_hydrology_partial_M3_inconclusive"
+        else:
+            classification="current_hydrology_not_supported_M3_inconclusive"
 
-    output.update({
-      "observed":{
-        "route_new_species_beta":float(obs[0]),"extra_stop_beta":float(obs[1]),"concentration_beta":float(obs[2])
-      },
-      "models":results,
-      "residual_decomposition":decomposition,
-      "classification":classification,
-      "rainfall_training":{"fold_A":foldA,"fold_B":foldB},
-      "hydrology_training":hydro_audit,
-      "hydrology_shift_audit":shift_audit,
-      "interpretation_boundary":{
-        "reproductive_acoustic_activity":True,
-        "reproductive_success_inferred":False,
-        "unique_causal_mediation_proven":False,
-        "outcome_is_observational":True
-      }
-    })
+    output["classification"]=classification
+    output["interpretation_boundary"]={
+      "reproductive_acoustic_activity":True,
+      "reproductive_success_inferred":False,
+      "unique_causal_mediation_proven":False,
+      "outcome_is_observational":True
+    }
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(output,indent=2,sort_keys=True)+"\n")
-    print(json.dumps({
-      "analysis":output["analysis"],"coverage":coverage,"observed":output["observed"],
-      "models":{m:results[m] for m in results},"residual_decomposition":decomposition,
-      "classification":classification
-    },indent=2,sort_keys=True))
+    summary={"analysis":output["analysis"],"coverage":coverage,"classification":classification}
+    if "full_sequence" in output:
+        summary["full_sequence"]={
+          "observed":output["full_sequence"]["observed"],
+          "models":output["full_sequence"]["models"],
+          "residual_decomposition":output["full_sequence"]["residual_decomposition"]
+        }
+    if "current_only" in output:
+        summary["current_only"]={
+          "observed":output["current_only"]["observed"],
+          "models":output["current_only"]["models"],
+          "fraction_removed_current":output["current_only"]["fraction_removed_current"]
+        }
+    print(json.dumps(summary,indent=2,sort_keys=True))
 
 if __name__=="__main__":
     main()
