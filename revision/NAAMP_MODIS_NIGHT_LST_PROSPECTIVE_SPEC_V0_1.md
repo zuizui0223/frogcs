@@ -81,6 +81,10 @@ For each strict-coordinate-gate physical SiteID:
 
 If two focal stops map to the same MODIS pixel, keep the identical value for both rather than perturbing coordinates.
 
+If a SiteID lies on a MODIS tile boundary and more than one same-date Terra item contains the point, choose the lexicographically smallest item ID after verifying the point is within the raster bounds. Do not choose by LST or QC value.
+
+Report the number of unique MODIS pixels represented among the ten focal stops for each RunID as a resolution diagnostic; do not use that diagnostic to select a subset after outcome readback.
+
 ## Dynamic local thermal variable
 
 For each valid RunID × SiteID observation:
