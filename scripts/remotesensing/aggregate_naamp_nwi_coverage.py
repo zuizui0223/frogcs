@@ -22,11 +22,15 @@ files=sorted(INDIR.glob("NWI_SITE_ASSIGNMENTS_SHARD_*.csv"))
 if len(files)!=16: raise RuntimeError(f"expected 16 shards, found {len(files)}")
 df=pd.concat([pd.read_csv(p,dtype={"SiteID":str,"RouteNumber":str}) for p in files],ignore_index=True)
 if df.duplicated(["SiteID"]).any(): raise RuntimeError("duplicate SiteID assignment")
+for bc in ("query_success","code_join_success"):
+    if bc not in df.columns:
+        raise RuntimeError(f"missing boolean column {bc}")
+    df[bc]=df[bc].map(lambda x: str(x).strip().lower() in ("true","1","yes"))
 df.to_csv(OUTCSV,index=False)
 
 assign={
   str(r.SiteID):r for r in df.itertuples(index=False)
-  if bool(r.query_success) and bool(r.code_join_success)
+  if r.query_success and r.code_join_success
   and pd.notna(r.WATER_REGIME_NAME) and str(r.WATER_REGIME_NAME).strip()
   and pd.notna(r.WETLAND_TYPE) and str(r.WETLAND_TYPE).strip()
 }
