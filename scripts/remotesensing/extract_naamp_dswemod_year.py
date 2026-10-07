@@ -16,7 +16,7 @@ EXP=ROOT/"exploration"
 OUTDIR=ROOT/"remotesensing"/"dswemod_years"
 
 YEAR=int(os.environ["DSWEMOD_YEAR"])
-if not 2003<=YEAR<=2015:
+if YEAR not in ({2003} | set(range(2005,2016))):
     raise ValueError(YEAR)
 
 PARENT="609955c9d34ea221ce33c534"
@@ -141,8 +141,9 @@ runrow={str(r.RunID):r for r in runs.itertuples(index=False)}
 requests=defaultdict(set)  # month -> SiteIDs needed in YEAR
 
 for p,dct in zip(psub.itertuples(index=False),dsub):
-    # Product availability is fixed to 2003-2015 for both focal surveys.
-    if int(p.year_earlier)<2003 or int(p.year_later)>2015:
+    # Product availability repair: 2004 child TIFF is source-unavailable.
+    allowed_years={2003} | set(range(2005,2016))
+    if int(p.year_earlier) not in allowed_years or int(p.year_later) not in allowed_years:
         continue
     if str(p.RouteNumber) not in safe:
         continue
@@ -213,7 +214,7 @@ jsonout=OUTDIR/f"NAAMP_DSWEMOD_MONTHLY_{YEAR}.json"
 df.to_csv(csvout,index=False,float_format="%.8g")
 receipt={
  "analysis":"naamp_dswemod_monthly_year_extraction_v0_2",
- "contract":"revision/NAAMP_MODIS_DSWEMOD_MECHANISM_EXTENSION_V0_2.md",
+ "contract":"revision/NAAMP_MODIS_DSWEMOD_SOURCE_REPAIR_V0_3.md",
  "year":YEAR,"source_item":child["id"],"source_file":tif.get("name"),
  "source_mode":source_mode,"downloaded_bytes":downloaded_bytes,
  "extracted_tif_bytes":tmp.stat().st_size,
