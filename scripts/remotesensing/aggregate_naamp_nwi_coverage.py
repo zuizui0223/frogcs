@@ -24,7 +24,12 @@ df=pd.concat([pd.read_csv(p,dtype={"SiteID":str,"RouteNumber":str}) for p in fil
 if df.duplicated(["SiteID"]).any(): raise RuntimeError("duplicate SiteID assignment")
 df.to_csv(OUTCSV,index=False)
 
-assign={str(r.SiteID):r for r in df.itertuples(index=False) if bool(r.query_success) and pd.notna(r.WETLAND_TYPE)}
+assign={
+  str(r.SiteID):r for r in df.itertuples(index=False)
+  if bool(r.query_success) and bool(r.code_join_success)
+  and pd.notna(r.WATER_REGIME_NAME) and str(r.WATER_REGIME_NAME).strip()
+  and pd.notna(r.WETLAND_TYPE) and str(r.WETLAND_TYPE).strip()
+}
 raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
 eligible=set(runs.RunID.astype(str)); site=mem.site_map(raw,eligible); safe=hyd.strict_routes()
 pairs=[]; fail=Counter(); focal_siteids=set()
@@ -46,12 +51,15 @@ gate=bool(site_success_fraction>=.90 and len(pairs)>=1500 and routes>=300 and st
 
 out={
  "analysis":"naamp_nwi_coverage_v0_1",
- "contract":"revision/NAAMP_NWI_RAIN_FILTER_MECHANISM_CONTRACT_V0_1.md",
+ "contract":"revision/NAAMP_NWI_WATER_REGIME_RAIN_FILTER_EXTENSION_V0_2.md",
  "site_assignment_rows":int(len(df)),
  "principal_focal_siteids":int(len(focal_siteids)),
- "query_success_focal_siteids":int(success_siteids),
- "query_success_fraction":site_success_fraction,
- "wetland_type_counts":{str(k):int(v) for k,v in df.loc[df.query_success==True,"WETLAND_TYPE"].value_counts(dropna=True).to_dict().items()},
+ "primary_complete_focal_siteids":int(success_siteids),
+ "primary_complete_fraction":site_success_fraction,
+ "raw_query_success_focal_siteids":int(df.loc[df.SiteID.astype(str).isin(focal_siteids),"query_success"].fillna(False).sum()),
+ "code_join_success_focal_siteids":int(df.loc[df.SiteID.astype(str).isin(focal_siteids),"code_join_success"].fillna(False).sum()),
+ "water_regime_counts":{str(k):int(v) for k,v in df.loc[df.SiteID.astype(str).isin(focal_siteids),"WATER_REGIME_NAME"].value_counts(dropna=True).to_dict().items()},
+ "wetland_type_counts":{str(k):int(v) for k,v in df.loc[df.SiteID.astype(str).isin(focal_siteids),"WETLAND_TYPE"].value_counts(dropna=True).to_dict().items()},
  "pair_coverage":{"pairs":len(pairs),"routes":routes,"states":states,"failures":dict(fail)},
  "gate_pass":gate,
  "frog_endpoint_calculated":False
