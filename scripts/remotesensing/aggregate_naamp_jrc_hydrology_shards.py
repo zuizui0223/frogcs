@@ -106,18 +106,26 @@ for rid,spec in sorted(run_specs.items()):
 df=pd.DataFrame(rows);OUTCSV.parent.mkdir(exist_ok=True);df.to_csv(OUTCSV,index=False,float_format="%.8g")
 lookup={(str(r.RunID),str(r.SiteID)):r for r in df.itertuples(index=False)}
 
-complete=[];fail=Counter()
+current_complete=[]
+m3_complete=[]
+fail=Counter()
 for p in pair_specs:
-    ok=True
+    current_ok=True
+    full_ok=True
     for rid in (p["wet_RunID"],p["dry_RunID"]):
         for sid in p["siteids"]:
             r=lookup.get((rid,sid))
-            if r is None:fail["missing_run_site"]+=1;ok=False;break
-            if pd.isna(r.current_water_fraction_r250):fail["current_missing"]+=1;ok=False;break
-            if pd.isna(r.recent_wetness_3m_r250):fail["recent3_missing"]+=1;ok=False;break
-            if pd.isna(r.hydro_sd_12m_r250):fail["sd12_missing"]+=1;ok=False;break
-        if not ok:break
-    if ok:complete.append(p)
+            if r is None:
+                fail["missing_run_site"]+=1; current_ok=False; full_ok=False; break
+            if pd.isna(r.current_water_fraction_r250):
+                fail["current_missing"]+=1; current_ok=False; full_ok=False; break
+            if pd.isna(r.recent_wetness_3m_r250):
+                fail["recent3_missing"]+=1; full_ok=False
+            if pd.isna(r.hydro_sd_12m_r250):
+                fail["sd12_missing"]+=1; full_ok=False
+        if not current_ok: break
+    if current_ok: current_complete.append(p)
+    if current_ok and full_ok: m3_complete.append(p)
 
 out={
  "analysis":"naamp_jrc_v1_hydrology_variability_coverage_v0_2",
@@ -125,10 +133,19 @@ out={
  "model_spec":"revision/NAAMP_DYNAMIC_HYDROLOGY_MODEL_SPEC_V0_1.md",
  "source":{"jrc":"GSW v1.0 MonthlyHistory","coordinate_sha256":COORD_SHA},
  "shards":{"count":len(files),"monthly_rows":int(len(monthly)),"nonmissing_monthly_water":int(monthly.water_fraction_r250.notna().sum())},
- "coverage":{"strict_geometry_pair_specs":len(pair_specs),"m3_complete_pairs":len(complete),"m3_complete_routes":len({p["route_cluster"] for p in complete}),
-             "m3_complete_states":len({p["State"] for p in complete}),"failures":dict(fail),
+ "coverage":{
+             "strict_geometry_pair_specs":len(pair_specs),
+             "current_complete_pairs":len(current_complete),
+             "current_complete_routes":len({p["route_cluster"] for p in current_complete}),
+             "current_complete_states":len({p["State"] for p in current_complete}),
+             "m3_complete_pairs":len(m3_complete),
+             "m3_complete_routes":len({p["route_cluster"] for p in m3_complete}),
+             "m3_complete_states":len({p["State"] for p in m3_complete}),
+             "failures":dict(fail),
              "pair_gate":1500,"route_gate":300,"state_gate":15,
-             "gate_pass":bool(len(complete)>=1500 and len({p["route_cluster"] for p in complete})>=300 and len({p["State"] for p in complete})>=15)},
+             "M1_gate_pass":bool(len(current_complete)>=1500 and len({p["route_cluster"] for p in current_complete})>=300 and len({p["State"] for p in current_complete})>=15),
+             "M3_gate_pass":bool(len(m3_complete)>=1500 and len({p["route_cluster"] for p in m3_complete})>=300 and len({p["State"] for p in m3_complete})>=15)
+             },
  "run_site_rows":int(len(df)),
  "missingness":{"current_missing_rows":int(df.current_water_fraction_r250.isna().sum()),"recent3_missing_rows":int(df.recent_wetness_3m_r250.isna().sum()),"sd12_missing_rows":int(df.hydro_sd_12m_r250.isna().sum())},
  "exposure_csv":str(OUTCSV.relative_to(ROOT)),"exposure_csv_sha256":hashlib.sha256(OUTCSV.read_bytes()).hexdigest(),
