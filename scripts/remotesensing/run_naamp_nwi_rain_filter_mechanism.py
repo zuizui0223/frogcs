@@ -21,6 +21,7 @@ B=1000
 SEED0=2840320
 SEED1=2840321
 SEED2=2840322
+SEED3=2840323
 ANCHOR=.75
 MIN_POS=20
 MIN_ROUTES=5
@@ -329,15 +330,28 @@ def main():
 
     sim0,sa0=simulate("M0",p,d,h,regime_hab,rain,regime_delta,rr,den,SEED0)
     simr,sar=simulate("MNWI",p,d,h,regime_hab,rain,regime_delta,rr,den,SEED1)
+
+    regime_delta_wetland_only={}
+    for fold,fmap in regime_delta.items():
+        regime_delta_wetland_only[fold]={}
+        for sp,dmap in fmap.items():
+            z=dict(dmap)
+            z["no_NWI_wetland_500m"]=0.0
+            regime_delta_wetland_only[fold][sp]=z
+    simrw,sarw=simulate("MNWI",p,d,h,regime_hab,rain,regime_delta_wetland_only,rr,den,SEED3)
+
     simt,sat=simulate("MNWI",p,d,h,type_hab,rain,type_delta,rr,den,SEED2)
     m0=flex.conditional(sim0,obs)
     mr=flex.conditional(simr,obs)
+    mrw=flex.conditional(simrw,obs)
     mt=flex.conditional(simt,obs)
 
     r0=float(m0["observed_conditional_residual"])
     rr1=float(mr["observed_conditional_residual"])
+    rrw1=float(mrw["observed_conditional_residual"])
     rt1=float(mt["observed_conditional_residual"])
     frac_regime=float((r0-rr1)/r0) if r0!=0 else None
+    frac_regime_wetland_only=float((r0-rrw1)/r0) if r0!=0 else None
     frac_type=float((r0-rt1)/r0) if r0!=0 else None
     sufficient=bool(not mr["above_upper_95"])
 
@@ -347,8 +361,9 @@ def main():
         "extra_stop_beta":float(obs[1]),
         "concentration_beta":float(obs[2])
       },
-      "models":{"M0":m0,"M_REGIME":mr,"M_TYPE":mt},
+      "models":{"M0":m0,"M_REGIME":mr,"M_REGIME_WETLAND_ONLY":mrw,"M_TYPE":mt},
       "fraction_residual_removed_regime":frac_regime,
+      "fraction_residual_removed_regime_wetland_only":frac_regime_wetland_only,
       "fraction_residual_removed_type_secondary":frac_type,
       "regime_sufficient":sufficient,
       "training":{
@@ -356,7 +371,7 @@ def main():
         "wetland_type_secondary":type_audit,
         "rainfall":{"fold_A":foldA,"fold_B":foldB}
       },
-      "shift_audit":{"M0":sa0,"M_REGIME":sar,"M_TYPE":sat},
+      "shift_audit":{"M0":sa0,"M_REGIME":sar,"M_REGIME_WETLAND_ONLY":sarw,"M_TYPE":sat},
       "classification":"nwi_water_regime_filter_sufficient" if sufficient else (
         "nwi_water_regime_filter_partial" if frac_regime is not None and frac_regime>0
         else "nwi_water_regime_filter_not_supported"
@@ -372,6 +387,7 @@ def main():
       "observed":out["observed"],
       "models":out["models"],
       "fraction_residual_removed_regime":frac_regime,
+      "fraction_residual_removed_regime_wetland_only":frac_regime_wetland_only,
       "fraction_residual_removed_type_secondary":frac_type,
       "classification":out["classification"]
     },indent=2,sort_keys=True))
