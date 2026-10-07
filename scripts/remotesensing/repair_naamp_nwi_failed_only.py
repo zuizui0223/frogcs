@@ -14,7 +14,6 @@ IDX=int(os.environ.get("NWI_REPAIR_SHARD_INDEX","0"))
 COUNT=int(os.environ.get("NWI_REPAIR_SHARD_COUNT","8"))
 
 NWI="https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query"
-NWI_CODES="https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/1/query"
 RADIUS=500.0
 MARGIN=.01
 PAGE=1000
@@ -117,7 +116,6 @@ fail=fail[
   fail["SiteID"].astype(str).map(lambda s:int(hashlib.sha256(s.encode()).hexdigest()[:8],16)%COUNT==IDX)
 ].copy()
 
-code=fetch_code_table()
 tf=Transformer.from_crs("EPSG:4326","EPSG:5070",always_xy=True)
 rows=[]
 for n,r in enumerate(fail.itertuples(index=False),1):
@@ -154,9 +152,9 @@ for n,r in enumerate(fail.itertuples(index=False),1):
             dist,negarea,attr,a=choices[0]
             rec.update({"ATTRIBUTE":attr,"WETLAND_TYPE":str(a.get("WETLAND_TYPE") or ""),
                         "distance_m":dist,"area_in_500m_m2":-negarea})
-            z=code.get(attr)
-            if z is not None and z.get("WATER_REGIME_NAME"):
-                rec.update(z);rec["code_join_success"]=True
+            # Official WATER_REGIME join is intentionally deferred to the
+            # single aggregate job to avoid multiplying code-table API load.
+            rec["code_join_success"]=False
     except Exception as e:
         rec["error"]=type(e).__name__+": "+str(e)[:240]
     rows.append(rec)
@@ -173,7 +171,8 @@ receipt={
  "shard_index":IDX,"shard_count":COUNT,
  "input_failed_rows":int(len(fail)),
  "recovered_query_success":int(sum(bool(x.get("query_success")) for x in rows)),
- "recovered_primary_complete":int(sum(bool(x.get("query_success")) and bool(x.get("code_join_success")) for x in rows)),
+ "recovered_query_success":int(sum(bool(x.get("query_success")) for x in rows)),
+ "explicit_no_wetland_complete":int(sum(bool(x.get("query_success")) and x.get("WETLAND_TYPE")=="no_NWI_wetland_500m" for x in rows)),
  "frog_endpoint_calculated":False
 }
 outjson.write_text(json.dumps(receipt,indent=2)+"\n")
