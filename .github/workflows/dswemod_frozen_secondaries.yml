@@ -1,0 +1,53 @@
+name: DSWEmod frozen secondaries
+
+on:
+  push:
+    branches:
+      - remotesensing/dswemod-secondaries-run-v1
+    paths:
+      - ".github/workflows/dswemod_frozen_secondaries.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - name: Reuse frozen current-year artifacts
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 37613769915
+          pattern: dswemod-year-*
+          path: remotesensing/dswemod_secondary_inputs
+          merge-multiple: true
+      - name: Prepare predeclared secondary inputs
+        env:
+          DSWEMOD_SECONDARY_DIR: remotesensing/dswemod_secondary_inputs
+        run: python scripts/remotesensing/prepare_naamp_dswemod_secondaries.py
+      - name: Run classes 1-4 secondary
+        env:
+          NAAMP_DSWEMOD_1234_CSV: remotesensing/NAAMP_DSWEMOD_1234_CURRENT_SECONDARY_INPUT.csv
+        run: python scripts/remotesensing/run_naamp_dswemod_1234_secondary.py
+      - name: Run strong-chorus secondary
+        env:
+          NAAMP_DSWEMOD_123_CSV: remotesensing/NAAMP_DSWEMOD_123_CURRENT_SECONDARY_INPUT.csv
+        run: python scripts/remotesensing/run_naamp_dswemod_strong_chorus_secondary.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dswemod-frozen-secondaries
+          path: |
+            remotesensing/NAAMP_DSWEMOD_SECONDARY_INPUT_RECEIPT_V0_1.json
+            remotesensing/NAAMP_DSWEMOD_1234_SECONDARY_RECEIPT_V0_1.json
+            remotesensing/NAAMP_DSWEMOD_STRONG_CHORUS_SECONDARY_RECEIPT_V0_1.json
+          retention-days: 30
