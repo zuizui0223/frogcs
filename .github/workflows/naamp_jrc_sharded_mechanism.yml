@@ -1,0 +1,78 @@
+name: NAAMP JRC sharded hydrology mechanism
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_jrc_sharded_mechanism.yml"
+      - "scripts/remotesensing/extract_naamp_jrc_monthly_shard.py"
+      - "scripts/remotesensing/aggregate_naamp_jrc_hydrology_shards.py"
+      - "scripts/remotesensing/run_naamp_dynamic_hydrology_mechanism.py"
+      - "revision/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_EXTENSION_V0_4.md"
+      - "revision/NAAMP_DYNAMIC_HYDROLOGY_MODEL_SPEC_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install extraction dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy rasterio
+      - name: Extract deterministic monthly shard
+        env:
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_COUNT: 8
+        run: python scripts/remotesensing/extract_naamp_jrc_monthly_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jrc-monthly-shard-${{ matrix.shard }}
+          path: |
+            remotesensing/shards/jrc_monthly_shard_*.csv
+            remotesensing/shards/jrc_monthly_shard_*.json
+          retention-days: 7
+
+  aggregate_and_test:
+    needs: extract
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: jrc-monthly-shard-*
+          path: remotesensing/shard_inputs
+          merge-multiple: true
+      - name: Aggregate hydrology metrics and freeze coverage
+        env:
+          JRC_SHARD_DIR: remotesensing/shard_inputs
+        run: python scripts/remotesensing/aggregate_naamp_jrc_hydrology_shards.py
+      - name: Run frozen M0-M3 mechanism test
+        env:
+          NAAMP_HYDRO_VARIABILITY_CSV: remotesensing/NAAMP_JRC_V1_HYDROLOGY_VARIABILITY_V0_2.csv
+        run: python scripts/remotesensing/run_naamp_dynamic_hydrology_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-jrc-hydrology-mechanism-v04
+          path: |
+            remotesensing/NAAMP_JRC_V1_HYDROLOGY_VARIABILITY_V0_2.csv
+            remotesensing/NAAMP_JRC_V1_HYDROLOGY_VARIABILITY_COVERAGE_V0_2.json
+            remotesensing/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
