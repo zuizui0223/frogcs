@@ -3,7 +3,7 @@ name: NAAMP DSWEmod current mechanism from frozen years
 on:
   push:
     branches:
-      - remotesensing/naamp-dynamic-hydrology-v1
+      - remotesensing/dswemod-current-run-v1
     paths:
       - ".github/workflows/naamp_dswemod_current_from_frozen.yml"
       - "scripts/remotesensing/aggregate_naamp_dswemod_current_only.py"
