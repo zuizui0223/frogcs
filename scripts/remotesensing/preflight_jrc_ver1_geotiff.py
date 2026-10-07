@@ -26,6 +26,9 @@ with rasterio.Env(
             "transform":[float(x) for x in ds.transform[:6]],
             "dtype":str(ds.dtypes[0]),
             "nodata":ds.nodata,
+            "block_shapes":[list(x) for x in ds.block_shapes],
+            "compression":str(ds.compression),
+            "interleaving":ds.profile.get("interleave"),
             "sample_upper_left_values":vals,
             "raster_values_read":True,
             "frog_outcomes_read":False
