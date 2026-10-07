@@ -36,7 +36,7 @@ def expit(x):
 def matrix(df,with_recent,state_levels,run_levels):
     pieces=[
       np.ones((len(df),1),float),
-      df[["dry_x","mean_temp_c","sin_doy","cos_doy"]].to_numpy(float)
+      df[["dry_x","mean_temp_c","sin_doy","cos_doy","route_current","local_current"]].to_numpy(float)
     ]
     st=np.zeros((len(df),max(0,len(state_levels)-1)),float)
     smap={v:i for i,v in enumerate(state_levels[1:])}
