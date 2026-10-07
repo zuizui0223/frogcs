@@ -14,10 +14,6 @@ ROOT=Path(__file__).resolve().parents[2]
 EXP=ROOT/"exploration"
 OUT=ROOT/"remotesensing"/"NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_RECEIPT_V0_1.json"
 
-CURRENT_CSV=Path(os.environ.get(
-    "NAAMP_HYDRO_CURRENT_CSV",
-    str(ROOT/"remotesensing"/"NAAMP_JRC_V1_HYDROLOGY_EXPOSURES_V0_1.csv")
-))
 VAR_CSV=Path(os.environ.get(
     "NAAMP_HYDRO_VARIABILITY_CSV",
     str(ROOT/"remotesensing"/"NAAMP_JRC_V1_HYDROLOGY_VARIABILITY_V0_1.csv")
@@ -93,18 +89,11 @@ def run_months(runs):
       for r in runs.itertuples(index=False)
     }
 
-def build_complete_sample(raw,runs,psub,dsub,hsub,current,var):
+def build_complete_sample(raw,runs,psub,dsub,hsub,var):
     eligible=set(runs.RunID.astype(str))
     site=mem.site_map(raw,eligible)
     months=run_months(runs)
     safe=strict_routes()
-
-    cur={}
-    for r in current.itertuples(index=False):
-        key=(str(r.SiteID),int(r.year),int(r.month))
-        v=getattr(r,"hydrology_anomaly_r250")
-        if pd.notna(v):
-            cur[key]=float(v)
 
     vv={}
     for r in var.itertuples(index=False):
@@ -131,11 +120,10 @@ def build_complete_sample(raw,runs,psub,dsub,hsub,current,var):
         Hw=[]; Hd=[]; Rw=[]; Rd=[]; Sw=[]; Sd=[]
         ok=True
         for sid in ids:
-            a=cur.get((sid,wy,wm)); b=cur.get((sid,dy,dm))
             vw=vv.get((wetid,sid)); vd=vv.get((dryid,sid))
-            if a is None or b is None or vw is None or vd is None:
+            if vw is None or vd is None:
                 ok=False; break
-            Hw.append(a); Hd.append(b)
+            Hw.append(vw["current_water"]); Hd.append(vd["current_water"])
             Rw.append(vw["recent3"]); Rd.append(vd["recent3"])
             Sw.append(vw["sd12"]); Sd.append(vd["sd12"])
         if not ok:
@@ -313,15 +301,14 @@ def simulate_model(model,pfinal,dsub,hsub,hydro,rain_slopes,hydro_coef,r,den):
     }
 
 def main():
-    if not CURRENT_CSV.exists() or not VAR_CSV.exists():
-        raise RuntimeError(f"missing hydrology inputs: {CURRENT_CSV} {VAR_CSV}")
+    if not VAR_CSV.exists():
+        raise RuntimeError(f"missing hydrology input: {VAR_CSV}")
 
-    current=pd.read_csv(CURRENT_CSV)
     var=pd.read_csv(VAR_CSV)
 
     raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
     pfinal,dfinal,hfinal,hydro,site,safe,fail=build_complete_sample(
-        raw,runs,psub,dsub,hsub,current,var
+        raw,runs,psub,dsub,hsub,var
     )
 
     coverage={
@@ -333,12 +320,12 @@ def main():
 
     output={
       "analysis":"naamp_dynamic_hydrology_mechanism_v0_1",
-      "contract":"revision/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_EXTENSION_V0_3.md",
+      "contract":"revision/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_EXTENSION_V0_4.md",
       "model_spec":"revision/NAAMP_DYNAMIC_HYDROLOGY_MODEL_SPEC_V0_1.md",
       "coverage":coverage,
       "hydrology_sources":{
-        "current_csv_sha256":hashlib.sha256(CURRENT_CSV.read_bytes()).hexdigest(),
-        "variability_csv_sha256":hashlib.sha256(VAR_CSV.read_bytes()).hexdigest()
+        "variability_csv_sha256":hashlib.sha256(VAR_CSV.read_bytes()).hexdigest(),
+        "primary_M1_exposure":"within-SiteID wet-minus-dry current monthly water fraction"
       },
       "frog_endpoint_read":False
     }
@@ -349,6 +336,7 @@ def main():
         return
 
     # From this point the frozen frog endpoint is read.
+    # Internal variable H denotes current monthly water fraction W under v0.4.
     output["frog_endpoint_read"]=True
     all_species=sorted({sp for spp in pools.values() for sp in spp})
 
