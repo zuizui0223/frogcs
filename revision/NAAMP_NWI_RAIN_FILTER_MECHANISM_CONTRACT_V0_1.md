@@ -28,8 +28,8 @@ Use fields `ATTRIBUTE` and `WETLAND_TYPE` plus polygon geometry.
 
 For each strict-coordinate-gate SiteID:
 1. query NWI polygons intersecting a 500-m distance search from the stop coordinate;
-2. if one or more polygons are returned, choose the polygon with the smallest geodesic distance from the stop to the polygon boundary/interior; a polygon containing the stop has distance zero;
-3. ties are broken by largest polygon area within the 500-m search circle, then by lexicographically smallest ATTRIBUTE code;
+2. perform all local distance and area calculations in CONUS Albers Equal Area (EPSG:5070); choose the polygon with the smallest stop-to-polygon distance in that CRS; a polygon containing the stop has distance zero;
+3. ties are broken by largest polygon area intersecting the 500-m EPSG:5070 circle, then by lexicographically smallest ATTRIBUTE code;
 4. if no polygon occurs within 500 m, classify the stop as `no_NWI_wetland_500m`.
 
 No radius search is allowed after outcome readback.
