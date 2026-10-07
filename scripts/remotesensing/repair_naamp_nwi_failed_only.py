@@ -62,26 +62,26 @@ def geom_from_arc(g):
     return unary_union(polys) if polys else None
 
 def query_site(lon,lat):
-    feats=[];offset=0
-    while True:
-        params={
-          "where":"1=1",
-          "geometry":f"{lon-MARGIN},{lat-MARGIN},{lon+MARGIN},{lat+MARGIN}",
-          "geometryType":"esriGeometryEnvelope",
-          "inSR":"4326","spatialRel":"esriSpatialRelIntersects",
-          "outFields":"OBJECTID,ATTRIBUTE,WETLAND_TYPE",
-          "returnGeometry":"true","outSR":"5070",
-          "orderByFields":"OBJECTID",
-          "resultOffset":str(offset),"resultRecordCount":str(PAGE),"f":"json"
-        }
-        obj=json.loads(fetch(NWI+"?"+urllib.parse.urlencode(params)).decode("utf-8"))
-        if "error" in obj:raise RuntimeError(json.dumps(obj["error"]))
-        batch=obj.get("features") or []
-        feats.extend(batch)
-        if len(batch)<PAGE and not obj.get("exceededTransferLimit",False):break
-        if not batch:break
-        offset+=len(batch)
-    return feats
+    params={
+      "where":"1=1",
+      "geometry":f"{lon},{lat}",
+      "geometryType":"esriGeometryPoint",
+      "inSR":"4326",
+      "spatialRel":"esriSpatialRelIntersects",
+      "distance":"700",
+      "units":"esriSRUnit_Meter",
+      "outFields":"OBJECTID,ATTRIBUTE,WETLAND_TYPE",
+      "returnGeometry":"true",
+      "outSR":"5070",
+      "resultRecordCount":str(PAGE),
+      "f":"json"
+    }
+    obj=json.loads(fetch(NWI+"?"+urllib.parse.urlencode(params)).decode("utf-8"))
+    if "error" in obj:
+        raise RuntimeError(json.dumps(obj["error"]))
+    if obj.get("exceededTransferLimit",False):
+        raise RuntimeError("point-distance candidate set exceeded transfer limit")
+    return obj.get("features") or []
 
 def fetch_code_table():
     rows=[];offset=0
@@ -122,7 +122,7 @@ for n,r in enumerate(fail.itertuples(index=False),1):
     sid=str(r.SiteID);rid=str(r.RouteNumber);lat=float(r.lat);lon=float(r.lon)
     rec={"SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
          "query_success":False,"code_join_success":False,
-         "retrieval_mode":"failed_only_site_fallback",
+         "retrieval_mode":"failed_only_point_distance_700m",
          "ATTRIBUTE":None,"WETLAND_TYPE":None,
          "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
          "SYSTEM_NAME":None,"CLASS_NAME":None,
@@ -167,7 +167,7 @@ outjson=OUTDIR/f"NWI_FAILED_REPAIR_SHARD_{IDX:02d}.json"
 pd.DataFrame(rows).to_csv(outcsv,index=False)
 receipt={
  "analysis":"naamp_nwi_failed_only_repair_shard_v0_1",
- "contract":"revision/NAAMP_NWI_RETRIEVAL_REPAIR_V0_3.md",
+ "contract":"revision/NAAMP_NWI_POINT_DISTANCE_REPAIR_V0_4.md",
  "shard_index":IDX,"shard_count":COUNT,
  "input_failed_rows":int(len(fail)),
  "recovered_query_success":int(sum(bool(x.get("query_success")) for x in rows)),
