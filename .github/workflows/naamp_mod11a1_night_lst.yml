@@ -1,0 +1,84 @@
+name: NAAMP MOD11A1 nighttime LST mechanism
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_mod11a1_night_lst.yml"
+      - "scripts/remotesensing/extract_naamp_mod11a1_night_lst_shard.py"
+      - "scripts/remotesensing/aggregate_naamp_mod11a1_night_lst.py"
+      - "scripts/remotesensing/run_naamp_mod11a1_night_lst_mechanism.py"
+      - "revision/NAAMP_MODIS_NIGHT_LST_PROSPECTIVE_SPEC_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  extract:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy rasterio pyproj pystac-client planetary-computer
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-failed-only-repair-result
+          path: frozen_coords
+          github-token: ${{ github.token }}
+          run-id: 37633046871
+      - name: Extract MOD11A1 nighttime LST
+        env:
+          NAAMP_LST_COORD_ASSIGNMENTS: frozen_coords/NAAMP_NWI_SITE_ASSIGNMENTS_REPAIRED_V0_3.csv
+          MOD11A1_SHARD_INDEX: ${{ matrix.shard }}
+          MOD11A1_SHARD_COUNT: 16
+        run: python scripts/remotesensing/extract_naamp_mod11a1_night_lst_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mod11a1-lst-shard-${{ matrix.shard }}
+          path: |
+            remotesensing/mod11a1_shards/MOD11A1_NIGHT_LST_SHARD_*.csv
+            remotesensing/mod11a1_shards/MOD11A1_NIGHT_LST_SHARD_*.json
+          retention-days: 7
+
+  aggregate_and_test:
+    needs: extract
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mod11a1-lst-shard-*
+          path: remotesensing/mod11a1_inputs
+          merge-multiple: true
+      - name: Aggregate A/B coverage and select frozen temporal rule
+        env:
+          MOD11A1_SHARD_DIR: remotesensing/mod11a1_inputs
+        run: python scripts/remotesensing/aggregate_naamp_mod11a1_night_lst.py
+      - name: Run frozen nighttime LST mechanism
+        env:
+          NAAMP_LST_EXPOSURES: remotesensing/NAAMP_MOD11A1_NIGHT_LST_EXPOSURES_V0_1.csv
+          NAAMP_LST_COVERAGE: remotesensing/NAAMP_MOD11A1_NIGHT_LST_COVERAGE_V0_1.json
+        run: python scripts/remotesensing/run_naamp_mod11a1_night_lst_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-mod11a1-night-lst-result
+          path: |
+            remotesensing/NAAMP_MOD11A1_NIGHT_LST_EXPOSURES_V0_1.csv
+            remotesensing/NAAMP_MOD11A1_NIGHT_LST_COVERAGE_V0_1.json
+            remotesensing/NAAMP_MOD11A1_NIGHT_LST_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
