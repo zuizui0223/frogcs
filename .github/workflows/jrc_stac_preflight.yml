@@ -1,0 +1,25 @@
+name: JRC remote-sensing STAC preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/jrc_stac_preflight.yml"
+      - "scripts/remotesensing/preflight_jrc_planetary_computer.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect public STAC metadata only
+        run: python scripts/remotesensing/preflight_jrc_planetary_computer.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jrc-stac-preflight
+          path: remotesensing/JRC_PLANETARY_COMPUTER_STAC_PREFLIGHT_V0_1.json
