@@ -1,0 +1,27 @@
+name: NAAMP remote-sensing coordinate preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/naamp_remotesensing_coordinate_preflight.yml"
+      - "scripts/remotesensing/preflight_naamp_coordinates.py"
+      - "revision/NAAMP_DYNAMIC_HYDROLOGY_MECHANISM_EXTENSION_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run coordinate-only preflight
+        run: python scripts/remotesensing/preflight_naamp_coordinates.py
+      - name: Upload preflight receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-remotesensing-coordinate-preflight
+          path: remotesensing/NAAMP_COORDINATE_REMOTE_SENSING_PREFLIGHT_V0_1.json
