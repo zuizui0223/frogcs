@@ -44,7 +44,13 @@ A RunID is assigned by its survey year.
 
 ## Species pool
 
-Use the same route × RunNumber historical species pool already frozen in the NAAMP pipeline.
+For each State × RouteNumber × RunNumber stratum, construct the candidate species pool **from training-year runs only** (2003, 2005–2009).
+
+A species enters validation scoring for that stratum only if it occurred at least once in the training-period ten-stop surveys for that stratum.
+
+Validation-year observations must not add species to the pool.
+
+This makes both model fitting and candidate-species definition forward-looking with respect to 2010–2015.
 
 No species is selected based on temporal-holdout performance.
 
