@@ -59,6 +59,17 @@ Non-estimable regime interactions are zero and regime levels are never merged af
 
 Pair-level total wet incidence remains exactly matched, so the test concerns where activation is allocated rather than total activation amount.
 
+## Frozen primary-interpretation sensitivity
+
+M_REGIME_WETLAND_ONLY uses the same fitted WATER_REGIME_NAME interaction coefficients as M_REGIME, but sets the interaction deviation for the explicit `no_NWI_wetland_500m` level to zero at focal prediction.
+
+All mapped NWI water-regime interactions remain unchanged and the same focal-pair sample is retained.
+
+This sensitivity is not a separate fitted model and cannot replace M_REGIME. Its role is diagnostic:
+
+- if M_REGIME and M_REGIME_WETLAND_ONLY both reduce the residual similarly, support is attributable to differences among mapped hydroperiod regimes;
+- if only M_REGIME improves strongly, the effect is primarily mapped-wetland versus no-mapped-wetland contrast rather than water-regime structure.
+
 ## Frozen secondary biological model
 
 M_TYPE repeats the same joint interaction procedure using official `WETLAND_TYPE` on the identical primary-complete focal-pair sample.
@@ -77,7 +88,7 @@ HTTP/query failures and code-table join failures are missing.
 
 ## Diagnostics
 
-For M0, M_REGIME and M_TYPE report:
+For M0, M_REGIME, M_REGIME_WETLAND_ONLY and M_TYPE report:
 - observed concentration beta;
 - predicted concentration beta;
 - conditional residual;
@@ -101,6 +112,7 @@ This would not mean the NWI regime itself changed between surveys.
 
 After focal NWI values are read, do not change:
 - official WATER_REGIME_NAME primary grouping;
+- the fixed no-NWI-zero regime-only sensitivity;
 - WETLAND_TYPE secondary status;
 - 500-m nearest-polygon rule;
 - EPSG:5070 geometry;
