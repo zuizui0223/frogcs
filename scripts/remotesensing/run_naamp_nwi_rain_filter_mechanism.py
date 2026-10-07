@@ -262,9 +262,13 @@ def main():
         return
 
     adf=pd.read_csv(ASSIGN,dtype={"SiteID":str})
+    for bc in ("query_success","code_join_success"):
+        if bc not in adf.columns:
+            raise RuntimeError(f"missing boolean column {bc}")
+        adf[bc]=adf[bc].map(lambda x: str(x).strip().lower() in ("true","1","yes"))
     complete=adf[
-        adf["query_success"].fillna(False).astype(bool)
-        & adf["code_join_success"].fillna(False).astype(bool)
+        adf["query_success"]
+        & adf["code_join_success"]
         & adf["WATER_REGIME_NAME"].notna()
         & adf["WETLAND_TYPE"].notna()
     ].copy()
