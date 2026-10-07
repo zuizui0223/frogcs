@@ -289,9 +289,9 @@ for p in safe_pair_specs:
             row=lookup.get((sid,int(rm["year"]),int(rm["month"])))
             if row is None:
                 incomplete_reasons["missing_site_month_row"]+=1; ok=False; break
-            h=getattr(row,f"hydrology_anomaly_r{PRIMARY_RADIUS}")
-            if pd.isna(h):
-                incomplete_reasons["invalid_primary_hydrology"]+=1; ok=False; break
+            w=getattr(row,f"current_water_fraction_r{PRIMARY_RADIUS}")
+            if pd.isna(w):
+                incomplete_reasons["invalid_primary_current_water"]+=1; ok=False; break
         if not ok: break
     if ok:
         complete.append(p)
@@ -312,7 +312,8 @@ out={
         "valid_pixel_fraction_min":VALID_FRAC_MIN,
         "monthly_history_classes":{"0":"no_data","1":"non_water","2":"water"},
         "recurrence_validity":"has_observations bit0 == 1",
-        "hydrology_anomaly":"current monthly water fraction minus monthly recurrence fraction"
+        "primary_exposure":"current monthly water fraction; focal mechanism uses within-SiteID wet-minus-dry delta_W",
+        "monthly_recurrence_role":"descriptive only; does not determine eligibility"
     },
     "rows":{
         "hydrology_site_month_rows":int(len(df)),
@@ -323,9 +324,9 @@ out={
     "coverage":{
         "frozen_principal_pairs":int(len(psub)),
         "coordinate_safe_pair_specs":int(len(safe_pair_specs)),
-        "hydrology_complete_pairs":int(len(complete)),
-        "hydrology_complete_routes":int(len({p["route_cluster"] for p in complete})),
-        "hydrology_complete_states":int(len({p["State"] for p in complete})),
+        "current_water_complete_pairs":int(len(complete)),
+        "current_water_complete_routes":int(len({p["route_cluster"] for p in complete})),
+        "current_water_complete_states":int(len({p["State"] for p in complete})),
         "pre_hydrology_failures":dict(prefail),
         "hydrology_incomplete_reasons":dict(incomplete_reasons),
         "pair_threshold":1500,
@@ -333,8 +334,8 @@ out={
         "gate_pass":bool(len(complete)>=1500 and len({p["route_cluster"] for p in complete})>=300)
     },
     "primary_hydrology_distribution_response_blind":{
-        "nonmissing_site_month_rows":int(df[f"hydrology_anomaly_r{PRIMARY_RADIUS}"].notna().sum()),
-        "missing_site_month_rows":int(df[f"hydrology_anomaly_r{PRIMARY_RADIUS}"].isna().sum()),
+        "nonmissing_site_month_rows":int(df[f"current_water_fraction_r{PRIMARY_RADIUS}"].notna().sum()),
+        "missing_site_month_rows":int(df[f"current_water_fraction_r{PRIMARY_RADIUS}"].isna().sum()),
         "median_current_valid_fraction":float(df[f"current_valid_frac_r{PRIMARY_RADIUS}"].median()),
         "median_expected_valid_fraction":float(df[f"expected_valid_frac_r{PRIMARY_RADIUS}"].median())
     },
