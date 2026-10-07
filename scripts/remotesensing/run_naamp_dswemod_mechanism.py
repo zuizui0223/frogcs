@@ -161,7 +161,7 @@ def main():
 
     out={
       "analysis":"naamp_dswemod_mechanism_v0_2",
-      "contract":"revision/NAAMP_MODIS_DSWEMOD_MECHANISM_EXTENSION_V0_2.md",
+      "contract":"revision/NAAMP_MODIS_DSWEMOD_SOURCE_REPAIR_V0_3.md",
       "source_csv_sha256":hashlib.sha256(INCSV.read_bytes()).hexdigest(),
       "primary_r500":primary,
       "sensitivity_r250":sensitivity,
