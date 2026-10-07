@@ -65,9 +65,21 @@ Eligibility:
 
 Ineligible species use Laplace-smoothed training prevalence for both models and therefore contribute zero gain.
 
-### T0 — baseline
+### T0 — baseline + current hydrological state
 
-strong ~ log1p(DaysSinceRain) + mean air temperature + sin(doy) + cos(doy) + State + RunNumber
+strong ~
+- log1p(DaysSinceRain)
+- mean air temperature
+- sin(doy)
+- cos(doy)
+- State
+- RunNumber
+- route_current
+- local_current
+
+where:
+- route_current = mean 500-m DSWEmod_123 current-month state across the ten focal physical SiteIDs for the RunID;
+- local_current = SiteID current DSWEmod_123 minus route_current.
 
 ### T1 — recent hydrological memory
 
@@ -75,11 +87,12 @@ T0 + route_recent3
 
 where route_recent3 is the mean 500-m DSWEmod_123 recent_wetness_3m across the ten focal physical SiteIDs for that RunID.
 
-Do not include current-month DSWEmod or 12-month variability in this validation.
+Do not include 12-month variability in this validation.
 
 Rationale:
-- the validation target is the already observed incremental recent-3-month signal;
-- current and variability terms were not supported and are not allowed to dilute or rescue this focused test.
+- the discovered positive signal was specifically the frozen B1 -> B2 increment;
+- B1 already contained current route and local wetland state;
+- therefore temporal validation must ask whether recent3 adds information **beyond current state**, not merely beyond weather/season.
 
 Fit:
 - binomial GLM;
@@ -125,7 +138,7 @@ These are diagnostics only and cannot replace the primary bootstrap criterion.
 
 ## Interpretation
 
-Support would show that several months of wetland-state history contain predictive information about later strong reproductive acoustic activity that transfers forward in time beyond contemporaneous rain recency, air temperature and season.
+Support would show that several months of wetland-state history contain predictive information about later strong reproductive acoustic activity that transfers forward in time beyond contemporaneous rain recency, air temperature, season, and current route/local DSWEmod state.
 
 It would support a **hydrological-memory / breeding-readiness** hypothesis.
 
@@ -144,7 +157,7 @@ After temporal-holdout outcomes are evaluated, do not change:
 - CI>=2 threshold;
 - 3-month wetness definition;
 - 500-m DSWEmod class set;
-- baseline covariates;
+- baseline covariates, including route_current and local_current;
 - species eligibility;
 - ridge alpha;
 - equal-species weighting;
