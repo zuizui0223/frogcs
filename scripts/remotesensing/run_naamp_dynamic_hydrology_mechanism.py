@@ -182,6 +182,7 @@ def cell_frame(run_specs,ss):
     cells=pd.DataFrame(rows)
     for rawc,newc in [("H","H_c"),("recent","recent_c"),("sd","sd_c")]:
         cells[newc]=cells[rawc]-cells.groupby("SiteID")[rawc].transform("mean")
+        cells[newc]=cells[newc]-cells.groupby("RunID")[newc].transform("mean")
     return cells,callers
 
 def design_matrix(cells,mask,model,state_levels,run_levels):
