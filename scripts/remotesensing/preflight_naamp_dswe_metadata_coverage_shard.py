@@ -35,9 +35,20 @@ hyd=loadmod("hyd",RS/"run_naamp_dynamic_hydrology_mechanism.py")
 mem=flex.mem
 
 def fetch_bytes(url):
-    req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswe-coverage/0.1"})
-    with urllib.request.urlopen(req,timeout=180) as r:
-        return r.read()
+    last=None
+    for i in range(6):
+        try:
+            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-dswe-coverage/0.1"})
+            with urllib.request.urlopen(req,timeout=180) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            last=e
+            if e.code not in (403,429,500,502,503,504):
+                raise
+        except (urllib.error.URLError,TimeoutError) as e:
+            last=e
+        time.sleep(2*(i+1))
+    raise RuntimeError(f"coordinate fetch failed after retries: {last}")
 
 def post_search(body):
     raw=json.dumps(body).encode()
