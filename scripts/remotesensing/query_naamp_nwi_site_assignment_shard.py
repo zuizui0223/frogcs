@@ -35,9 +35,16 @@ hyd=loadmod("hyd",RS/"run_naamp_dynamic_hydrology_mechanism.py")
 mem=flex.mem
 
 def fetch(url,timeout=180):
-    req=urllib.request.Request(url,headers={"User-Agent":"frogcs-nwi-preflight/0.2"})
-    with urllib.request.urlopen(req,timeout=timeout) as r:
-        return r.read()
+    last=None
+    for i in range(6):
+        try:
+            req=urllib.request.Request(url,headers={"User-Agent":"frogcs-nwi-preflight/0.3"})
+            with urllib.request.urlopen(req,timeout=timeout) as r:
+                return r.read()
+        except Exception as e:
+            last=e
+            time.sleep(min(30.0,2.0*(i+1)))
+    raise last
 
 def signed_area(ring):
     s=0.0
@@ -134,6 +141,58 @@ def query_route_envelope(lons,lats):
         if not batch: break
     return feats
 
+def query_site_envelope(lon,lat):
+    # Retrieval-only fallback after route-envelope service failure.
+    # Exact scientific inclusion remains the frozen 500-m EPSG:5070 rule.
+    m=0.01
+    xmin,xmax=lon-m,lon+m
+    ymin,ymax=lat-m,lat+m
+    feats=[]; offset=0
+    while True:
+        params={
+          "where":"1=1",
+          "geometry":f"{xmin},{ymin},{xmax},{ymax}",
+          "geometryType":"esriGeometryEnvelope",
+          "inSR":"4326",
+          "spatialRel":"esriSpatialRelIntersects",
+          "outFields":"OBJECTID,ATTRIBUTE,WETLAND_TYPE",
+          "returnGeometry":"true",
+          "outSR":"5070",
+          "orderByFields":"OBJECTID",
+          "resultOffset":str(offset),
+          "resultRecordCount":str(PAGE),
+          "f":"json"
+        }
+        url=NWI+"?"+urllib.parse.urlencode(params)
+        last=None
+        for i in range(5):
+            try:
+                obj=json.loads(fetch(url,120).decode("utf-8"))
+                if "error" in obj:
+                    raise RuntimeError(json.dumps(obj["error"]))
+                break
+            except Exception as e:
+                last=e; time.sleep(1.5*(i+1))
+        else:
+            raise RuntimeError(f"NWI site fallback query failed: {last}")
+        batch=obj.get("features") or []
+        feats.extend(batch)
+        if len(batch)<PAGE and not obj.get("exceededTransferLimit",False):
+            break
+        offset += len(batch)
+        if not batch:
+            break
+    return feats
+
+def parse_features(feats):
+    parsed=[]
+    for ft in feats:
+        a=ft.get("attributes") or {}
+        g=geom_from_arc(ft.get("geometry") or {})
+        if g is not None:
+            parsed.append((a,g))
+    return parsed
+
 def fetch_code_table():
     rows=[]
     offset=0
@@ -206,28 +265,41 @@ rows=[]
 for n,rid in enumerate(assigned_routes,1):
     sids=sorted(route_sites[rid])
     lats=[coords[s][1] for s in sids]; lons=[coords[s][2] for s in sids]
+
+    route_parsed=None
+    route_error=None
     try:
-        feats=query_route_envelope(lons,lats)
-        parsed=[]
-        for ft in feats:
-            a=ft.get("attributes") or {}
-            g=geom_from_arc(ft.get("geometry") or {})
-            if g is None:continue
-            parsed.append((a,g))
-        for sid in sids:
-            _,lat,lon=coords[sid];x,y=tf.transform(lon,lat);pt=Point(x,y);circle=pt.buffer(RADIUS)
+        route_parsed=parse_features(query_route_envelope(lons,lats))
+    except Exception as e:
+        route_error=e
+
+    for sid in sids:
+        _,lat,lon=coords[sid]
+        try:
+            parsed=route_parsed
+            retrieval_mode="route_envelope"
+            if parsed is None:
+                parsed=parse_features(query_site_envelope(lon,lat))
+                retrieval_mode="site_fallback"
+
+            x,y=tf.transform(lon,lat); pt=Point(x,y); circle=pt.buffer(RADIUS)
             choices=[]
             for a,g in parsed:
                 dist=float(pt.distance(g))
-                if dist>RADIUS:continue
+                if dist>RADIUS:
+                    continue
                 area=float(g.intersection(circle).area)
                 choices.append((dist,-area,str(a.get("ATTRIBUTE") or ""),a))
-            rec={"SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
-                 "query_success":True,"route_feature_count":len(feats),
-                 "ATTRIBUTE":None,"WETLAND_TYPE":None,
-                 "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
-                 "SYSTEM_NAME":None,"CLASS_NAME":None,"code_join_success":False,
-                 "distance_m":None,"area_in_500m_m2":None}
+
+            rec={
+              "SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
+              "query_success":True,"retrieval_mode":retrieval_mode,
+              "route_feature_count":len(parsed),
+              "ATTRIBUTE":None,"WETLAND_TYPE":None,
+              "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
+              "SYSTEM_NAME":None,"CLASS_NAME":None,"code_join_success":False,
+              "distance_m":None,"area_in_500m_m2":None
+            }
             if not choices:
                 rec.update({
                   "ATTRIBUTE":"no_NWI_wetland_500m","WETLAND_TYPE":"no_NWI_wetland_500m",
@@ -241,23 +313,31 @@ for n,rid in enumerate(assigned_routes,1):
                 dist,negarea,attr,a=choices[0]
                 attr=str(a.get("ATTRIBUTE") or "")
                 code=code_table.get(attr)
-                rec.update({"ATTRIBUTE":attr,"WETLAND_TYPE":str(a.get("WETLAND_TYPE") or ""),
-                            "distance_m":dist,"area_in_500m_m2":-negarea})
+                rec.update({
+                  "ATTRIBUTE":attr,"WETLAND_TYPE":str(a.get("WETLAND_TYPE") or ""),
+                  "distance_m":dist,"area_in_500m_m2":-negarea
+                })
                 if code is not None and code.get("WATER_REGIME_NAME"):
                     rec.update(code)
                     rec["code_join_success"]=True
             rows.append(rec)
-    except Exception as e:
-        for sid in sids:
-            _,lat,lon=coords[sid]
-            rows.append({"SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
-                         "query_success":False,"route_feature_count":None,"ATTRIBUTE":None,"WETLAND_TYPE":None,
-                         "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
-                         "SYSTEM_NAME":None,"CLASS_NAME":None,"code_join_success":False,
-                         "distance_m":None,"area_in_500m_m2":None,
-                         "error":type(e).__name__+": "+str(e)[:240]})
+        except Exception as e:
+            rows.append({
+              "SiteID":sid,"RouteNumber":rid,"lat":lat,"lon":lon,
+              "query_success":False,"retrieval_mode":"site_fallback_failed",
+              "route_feature_count":None,"ATTRIBUTE":None,"WETLAND_TYPE":None,
+              "WATER_REGIME":None,"WATER_REGIME_NAME":None,"WATER_REGIME_SUBGROUP":None,
+              "SYSTEM_NAME":None,"CLASS_NAME":None,"code_join_success":False,
+              "distance_m":None,"area_in_500m_m2":None,
+              "error":type(e).__name__+": "+str(e)[:240],
+              "route_error":(type(route_error).__name__+": "+str(route_error)[:180]) if route_error is not None else None
+            })
+
     if n==1 or n%5==0 or n==len(assigned_routes):
-        print(json.dumps({"shard":SHARD_INDEX,"route":n,"routes":len(assigned_routes),"RouteNumber":rid}),flush=True)
+        print(json.dumps({
+          "shard":SHARD_INDEX,"route":n,"routes":len(assigned_routes),
+          "RouteNumber":rid,"route_fallback":bool(route_parsed is None)
+        }),flush=True)
 
 OUTDIR.mkdir(parents=True,exist_ok=True)
 csvout=OUTDIR/f"NWI_SITE_ASSIGNMENTS_SHARD_{SHARD_INDEX:02d}.csv"
@@ -265,7 +345,7 @@ jsonout=OUTDIR/f"NWI_SITE_ASSIGNMENTS_SHARD_{SHARD_INDEX:02d}.json"
 df=pd.DataFrame(rows);df.to_csv(csvout,index=False)
 receipt={
  "analysis":"naamp_nwi_site_assignment_shard_v0_2",
- "contract":"revision/NAAMP_NWI_WATER_REGIME_RAIN_FILTER_EXTENSION_V0_2.md",
+ "contract":"revision/NAAMP_NWI_RETRIEVAL_REPAIR_V0_3.md",
  "shard_index":SHARD_INDEX,"shard_count":SHARD_COUNT,
  "assigned_routes":len(assigned_routes),"assigned_siteids":len(df),
  "query_success":int(df.query_success.fillna(False).sum()) if len(df) else 0,
