@@ -1,0 +1,29 @@
+{
+  "analysis": "naamp_rs_coordinate_eligibility_v0_1",
+  "source": {
+    "sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "rows": 12064,
+    "routes": 1183
+  },
+  "summary": {
+    "eligible_routes": 1106,
+    "excluded_routes": 77,
+    "eligible_fraction": 0.9349112426035503,
+    "exclusion_reasons": {
+      "lt8_unambiguous_sites": 3,
+      "outside_conus_bounds": 1,
+      "robust_geometry_outlier": 37,
+      "route_span_gt30km": 21,
+      "site_gt15km_from_route_median": 51
+    },
+    "known_flagged_routes": {
+      "total": 5,
+      "eligible": [],
+      "excluded": ["270107","270218","350414","720214","880113"]
+    }
+  },
+  "workflow_run": 37562983426,
+  "artifact_id": 11456564839,
+  "outcomes_read": false,
+  "coordinates_repaired": false
+}
