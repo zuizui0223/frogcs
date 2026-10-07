@@ -10,6 +10,7 @@ on:
       - "scripts/remotesensing/aggregate_naamp_dswemod.py"
       - "scripts/remotesensing/run_naamp_dswemod_mechanism.py"
       - "revision/NAAMP_MODIS_DSWEMOD_MECHANISM_CONTRACT_V0_1.md"
+      - "revision/NAAMP_MODIS_DSWEMOD_MECHANISM_EXTENSION_V0_2.md"
   workflow_dispatch:
 
 permissions:
@@ -62,13 +63,13 @@ jobs:
         run: python scripts/remotesensing/aggregate_naamp_dswemod.py
       - name: Run frozen DSWEmod mechanism test
         env:
-          NAAMP_DSWEMOD_CSV: remotesensing/NAAMP_DSWEMOD_EXPOSURES_V0_1.csv
+          NAAMP_DSWEMOD_CSV: remotesensing/NAAMP_DSWEMOD_RUN_SITE_METRICS_V0_1.csv
         run: python scripts/remotesensing/run_naamp_dswemod_mechanism.py
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-dswemod-mechanism
           path: |
-            remotesensing/NAAMP_DSWEMOD_EXPOSURES_V0_1.csv
+            remotesensing/NAAMP_DSWEMOD_RUN_SITE_METRICS_V0_1.csv
             remotesensing/NAAMP_DSWEMOD_COVERAGE_V0_1.json
             remotesensing/NAAMP_DSWEMOD_MECHANISM_RECEIPT_V0_1.json
           retention-days: 30
