@@ -57,16 +57,32 @@ For each species, hydrology coefficients are estimated while controlling for:
 
 These broad terms are controls only. Their fitted coefficients are not added to the mechanism generator because the M0 comparator already contains the cross-fitted rainfall response.
 
+## Within-SiteID centering of hydrology covariates
+
+Hydrology coefficients target temporal wetland-state change, not static habitat differences.
+
+Before species-specific fitting, for each physical SiteID compute the mean of each hydrology covariate across the available focal RunIDs for that SiteID and center:
+
+- H_current_c = H_current - mean_site(H_current)
+- recent_wetness_3m_c = recent_wetness_3m - mean_site(recent_wetness_3m)
+- hydro_sd_12m_c = hydro_sd_12m - mean_site(hydro_sd_12m)
+
+Because a physical SiteID belongs to one route and therefore one deterministic route fold, this centering does not leak focal-route information across folds.
+
+The fitted hydrology coefficients therefore reflect within-site temporal association with calling.
+
+For focal-pair prediction, the centered site mean cancels exactly, so the applied shift remains beta times wet-minus-dry hydrology at the same SiteID.
+
 ## Nested species-specific hydrology models
 
 M1 training model:
-calling ~ broad controls + H_current
+calling ~ broad controls + H_current_c
 
 M2 training model:
-calling ~ broad controls + H_current + recent_wetness_3m
+calling ~ broad controls + H_current_c + recent_wetness_3m_c
 
 M3 training model:
-calling ~ broad controls + H_current + recent_wetness_3m + hydro_sd_12m
+calling ~ broad controls + H_current_c + recent_wetness_3m_c + hydro_sd_12m_c
 
 For M1–M3 coefficient comparison, training uses cells with all M3 variables available. Thus added-variable effects are not created by changing the training sample.
 
