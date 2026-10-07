@@ -1,0 +1,22 @@
+name: DSWEmod v0.2 code QA
+on:
+  push:
+    branches: [remotesensing/naamp-dynamic-hydrology-v1]
+    paths:
+      - ".github/workflows/dswemod_v02_code_qa.yml"
+      - "scripts/remotesensing/extract_naamp_dswemod_year.py"
+      - "scripts/remotesensing/aggregate_naamp_dswemod.py"
+      - "scripts/remotesensing/run_naamp_dswemod_mechanism.py"
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile scripts
+        run: |
+          python -m py_compile             scripts/remotesensing/extract_naamp_dswemod_year.py             scripts/remotesensing/aggregate_naamp_dswemod.py             scripts/remotesensing/run_naamp_dswemod_mechanism.py
