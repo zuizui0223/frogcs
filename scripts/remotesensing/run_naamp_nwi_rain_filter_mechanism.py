@@ -20,6 +20,7 @@ OUT=ROOT/"remotesensing"/"NAAMP_NWI_RAIN_FILTER_MECHANISM_RECEIPT_V0_1.json"
 B=1000
 SEED0=2840320
 SEED1=2840321
+SEED2=2840322
 ANCHOR=.75
 MIN_POS=20
 MIN_ROUTES=5
@@ -213,8 +214,8 @@ def fit_habitat_deltas(cells,callers,all_species):
         }
     return out,audit
 
-def simulate(model,pfinal,dsub,hsub,hab,rain_slopes,hab_delta,r,den):
-    rng=np.random.default_rng(SEED0 if model=="M0" else SEED1)
+def simulate(model,pfinal,dsub,hsub,hab,rain_slopes,hab_delta,r,den,seed):
+    rng=np.random.default_rng(seed)
     num=np.zeros((B,3),float)
     shifts=[]
     for i,(p,dct,ph,hb) in enumerate(zip(pfinal.itertuples(index=False),dsub,hsub,hab)):
@@ -244,67 +245,131 @@ def simulate(model,pfinal,dsub,hsub,hab,rain_slopes,hab_delta,r,den):
     }
 
 def main():
-    if not ASSIGN.exists() or not COVERAGE.exists():raise RuntimeError("missing NWI coverage inputs")
+    if not ASSIGN.exists() or not COVERAGE.exists():
+        raise RuntimeError("missing NWI coverage inputs")
     cov=json.load(open(COVERAGE))
     out={
-      "analysis":"naamp_nwi_rain_filter_mechanism_v0_1",
-      "contract":"revision/NAAMP_NWI_RAIN_FILTER_MECHANISM_CONTRACT_V0_1.md",
+      "analysis":"naamp_nwi_water_regime_rain_filter_v0_2",
+      "contract":"revision/NAAMP_NWI_WATER_REGIME_RAIN_FILTER_EXTENSION_V0_2.md",
       "coverage_receipt":cov,
       "assignment_sha256":hashlib.sha256(ASSIGN.read_bytes()).hexdigest(),
       "frog_endpoint_read":False
     }
     if not cov.get("gate_pass",False):
-        out["classification"]="nwi_coverage_inconclusive"
+        out["classification"]="nwi_water_regime_coverage_inconclusive"
         OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
-        print(json.dumps(out,indent=2,sort_keys=True));return
+        print(json.dumps(out,indent=2,sort_keys=True))
+        return
 
     adf=pd.read_csv(ASSIGN,dtype={"SiteID":str})
-    assign={
-      str(r.SiteID):str(r.WETLAND_TYPE)
-      for r in adf.itertuples(index=False)
-      if bool(r.query_success) and pd.notna(r.WETLAND_TYPE)
-    }
+    complete=adf[
+        adf["query_success"].fillna(False).astype(bool)
+        & adf["code_join_success"].fillna(False).astype(bool)
+        & adf["WATER_REGIME_NAME"].notna()
+        & adf["WETLAND_TYPE"].notna()
+    ].copy()
+    regime_assign={str(r.SiteID):str(r.WATER_REGIME_NAME) for r in complete.itertuples(index=False)}
+    type_assign={str(r.SiteID):str(r.WETLAND_TYPE) for r in complete.itertuples(index=False)}
+
     raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
-    p,d,h,hab,site,fail=build_complete_sample(raw,runs,psub,dsub,hsub,assign)
+    p,d,h,regime_hab,site,fail=build_complete_sample(
+        raw,runs,psub,dsub,hsub,regime_assign
+    )
+    p2,d2,h2,type_hab,site2,fail2=build_complete_sample(
+        raw,runs,psub,dsub,hsub,type_assign
+    )
+    keycols=["wet_RunID","dry_RunID"]
+    keys1=[tuple(map(str,x)) for x in p[keycols].to_numpy()] if len(p) else []
+    keys2=[tuple(map(str,x)) for x in p2[keycols].to_numpy()] if len(p2) else []
+    if keys1!=keys2:
+        raise RuntimeError("primary and secondary NWI samples differ")
+
     gate=bool(len(p)>=1500 and p.route_cluster.nunique()>=300 and p.State.nunique()>=15)
-    out["analysis_sample"]={"pairs":int(len(p)),"routes":int(p.route_cluster.nunique()) if len(p) else 0,
-                            "states":int(p.State.nunique()) if len(p) else 0,"failures":fail,"gate_pass":gate}
+    out["analysis_sample"]={
+      "pairs":int(len(p)),
+      "routes":int(p.route_cluster.nunique()) if len(p) else 0,
+      "states":int(p.State.nunique()) if len(p) else 0,
+      "primary_failures":fail,
+      "secondary_failures":fail2,
+      "gate_pass":gate
+    }
     if not gate:
-        out["classification"]="nwi_analysis_sample_inconclusive"
+        out["classification"]="nwi_water_regime_analysis_sample_inconclusive"
         OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
-        print(json.dumps(out,indent=2,sort_keys=True));return
+        print(json.dumps(out,indent=2,sort_keys=True))
+        return
 
     out["frog_endpoint_read"]=True
     all_species=sorted({sp for spp in pools.values() for sp in spp})
     rainA,audA,foldA=joint.fit_species_slopes(runs,sampled,ss,all_species,"A")
     rainB,audB,foldB=joint.fit_species_slopes(runs,sampled,ss,all_species,"B")
     rain={"A":rainA,"B":rainB}
-    cells,callers=build_training_cells(raw,runs,sampled,ss,site,assign)
-    hd,ha=fit_habitat_deltas(cells,callers,all_species)
+
+    regime_cells,regime_callers=build_training_cells(
+        raw,runs,sampled,ss,site,regime_assign
+    )
+    regime_delta,regime_audit=fit_habitat_deltas(
+        regime_cells,regime_callers,all_species
+    )
+
+    type_cells,type_callers=build_training_cells(
+        raw,runs,sampled,ss,site,type_assign
+    )
+    type_delta,type_audit=fit_habitat_deltas(
+        type_cells,type_callers,all_species
+    )
 
     obs_rows=np.asarray([flex.metrics(z["wet"],z["dry"]) for z in d],float)
     rr,den=uniform.design_residual(p)
     obs=(rr[:,None]*obs_rows).sum(axis=0)/den
-    sim0,sa0=simulate("M0",p,d,h,hab,rain,hd,rr,den)
-    sim1,sa1=simulate("MNWI",p,d,h,hab,rain,hd,rr,den)
-    m0=flex.conditional(sim0,obs);m1=flex.conditional(sim1,obs)
-    r0=float(m0["observed_conditional_residual"]);r1=float(m1["observed_conditional_residual"])
-    frac=float((r0-r1)/r0) if r0!=0 else None
-    sufficient=bool(not m1["above_upper_95"])
+
+    sim0,sa0=simulate("M0",p,d,h,regime_hab,rain,regime_delta,rr,den,SEED0)
+    simr,sar=simulate("MNWI",p,d,h,regime_hab,rain,regime_delta,rr,den,SEED1)
+    simt,sat=simulate("MNWI",p,d,h,type_hab,rain,type_delta,rr,den,SEED2)
+    m0=flex.conditional(sim0,obs)
+    mr=flex.conditional(simr,obs)
+    mt=flex.conditional(simt,obs)
+
+    r0=float(m0["observed_conditional_residual"])
+    rr1=float(mr["observed_conditional_residual"])
+    rt1=float(mt["observed_conditional_residual"])
+    frac_regime=float((r0-rr1)/r0) if r0!=0 else None
+    frac_type=float((r0-rt1)/r0) if r0!=0 else None
+    sufficient=bool(not mr["above_upper_95"])
+
     out.update({
-      "observed":{"route_new_species_beta":float(obs[0]),"extra_stop_beta":float(obs[1]),"concentration_beta":float(obs[2])},
-      "models":{"M0":m0,"M_NWI":m1},
-      "fraction_residual_removed":frac,
-      "NWI_sufficient":sufficient,
-      "habitat_training":ha,
-      "shift_audit":{"M0":sa0,"M_NWI":sa1},
-      "classification":"nwi_rain_filter_sufficient" if sufficient else ("nwi_rain_filter_partial" if frac is not None and frac>0 else "nwi_rain_filter_not_supported")
+      "observed":{
+        "route_new_species_beta":float(obs[0]),
+        "extra_stop_beta":float(obs[1]),
+        "concentration_beta":float(obs[2])
+      },
+      "models":{"M0":m0,"M_REGIME":mr,"M_TYPE":mt},
+      "fraction_residual_removed_regime":frac_regime,
+      "fraction_residual_removed_type_secondary":frac_type,
+      "regime_sufficient":sufficient,
+      "training":{
+        "water_regime":regime_audit,
+        "wetland_type_secondary":type_audit,
+        "rainfall":{"fold_A":foldA,"fold_B":foldB}
+      },
+      "shift_audit":{"M0":sa0,"M_REGIME":sar,"M_TYPE":sat},
+      "classification":"nwi_water_regime_filter_sufficient" if sufficient else (
+        "nwi_water_regime_filter_partial" if frac_regime is not None and frac_regime>0
+        else "nwi_water_regime_filter_not_supported"
+      ),
+      "secondary_boundary":{
+        "WETLAND_TYPE_cannot_rescue_primary":True
+      }
     })
     OUT.write_text(json.dumps(out,indent=2,sort_keys=True)+"\n")
     print(json.dumps({
-      "analysis":out["analysis"],"analysis_sample":out["analysis_sample"],
-      "observed":out["observed"],"models":out["models"],
-      "fraction_residual_removed":frac,"classification":out["classification"]
+      "analysis":out["analysis"],
+      "analysis_sample":out["analysis_sample"],
+      "observed":out["observed"],
+      "models":out["models"],
+      "fraction_residual_removed_regime":frac_regime,
+      "fraction_residual_removed_type_secondary":frac_type,
+      "classification":out["classification"]
     },indent=2,sort_keys=True))
 
 if __name__=="__main__":main()
