@@ -97,4 +97,43 @@ Do not promote remote-sensing hydrology as the mechanism in the current paper.
 
 The negative tests may be summarized as an additional limitation/robustness statement if space allows, but they do not justify expanding the main article around hydrology.
 
-The DSWEmod strong-chorus secondary remains a separately frozen biological bridge and is not included in this closure until its result is read.
+## Frozen DSWEmod secondaries
+
+### Classes 1–4 sensitivity
+
+Including the low-confidence class 4 did not rescue the mechanism:
+- 2,249 pairs, 372 routes, 19 states
+- M0 residual = 0.336522
+- classes 1–4 M1 residual = 0.342747
+- fraction removed = **-1.85%**
+- both remain above the null upper 95% bound, P = 0.000999
+
+Classification: **not supported**.
+
+### Strong-chorus spatial bridge
+
+Coverage:
+- 1,211 informative pair × taxon clusters
+- 263 routes
+- 45 taxa
+
+Observed mean DSWEmod_123 change at wet-survey CI>=2 stops minus other stops:
+- observed = **-0.000441**
+- permutation 95% = [-0.002297, +0.002384]
+- upper-tail P = **0.646**
+
+Classification: **not supported**.
+
+Thus partial/potential wetland increase is not preferentially aligned with the established silence → strong-chorus spatial transition.
+
+## Additional descriptive audit
+
+Among 32 taxa whose current DSWEmod coefficients were estimable in both deterministic route folds, coefficient signs agreed in only 14/32. Cross-fold coefficient correlation was weak (Pearson r≈0.09; Spearman ρ≈0.08).
+
+This is descriptive rather than a preregistered endpoint, but it gives no evidence for a nationally portable species-specific surface-hydrology sensitivity that could have been hidden by the concentration summary.
+
+## Final closure
+
+Do not further search JRC/DSWEmod radii, class combinations, temporal windows, or strong-chorus definitions for a favourable hydrology result.
+
+The remaining landscape follow-up must change the biological hypothesis, not retune surface-water measurement. The next frozen line is NWI wetland-type × rainfall filtering.
