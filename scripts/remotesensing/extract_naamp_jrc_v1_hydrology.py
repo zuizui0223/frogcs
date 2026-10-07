@@ -53,18 +53,19 @@ def fetch(url):
             last=e; time.sleep(2*(i+1))
     raise RuntimeError(f"download failed: {url}: {last}")
 
-def history_url(year,month,xoff,yoff):
+def history_url(year,month,rowoff,coloff):
     ym=f"{year:04d}_{month:02d}"
-    return f"{HIST_BASE}/{year:04d}/{ym}/{ym}-{xoff:010d}-{yoff:010d}.tif"
+    return f"{HIST_BASE}/{year:04d}/{ym}/{ym}-{rowoff:010d}-{coloff:010d}.tif"
 
-def recurrence_url(month,xoff,yoff):
-    return f"{REC_BASE}/monthlyRecurrence{month}/monthlyRecurrence{month}-{xoff:010d}-{yoff:010d}.tif"
+def recurrence_url(month,rowoff,coloff):
+    return f"{REC_BASE}/monthlyRecurrence{month}/monthlyRecurrence{month}-{rowoff:010d}-{coloff:010d}.tif"
 
-def hasobs_url(month,xoff,yoff):
-    return f"{REC_BASE}/has_observations{month}/has_observations{month}-{xoff:010d}-{yoff:010d}.tif"
+def hasobs_url(month,rowoff,coloff):
+    return f"{REC_BASE}/has_observations{month}/has_observations{month}-{rowoff:010d}-{coloff:010d}.tif"
 
 def tile_offsets_from_global(grow,gcol):
-    return (gcol//TILEPX)*TILEPX,(grow//TILEPX)*TILEPX
+    # JRC filenames are ROW_OFFSET-COLUMN_OFFSET, not column-row.
+    return (grow//TILEPX)*TILEPX,(gcol//TILEPX)*TILEPX
 
 def circle_pixels(lat,lon,radius_m):
     # Candidate pixel-centre bounds on the fixed JRC EPSG:4326 global grid.
@@ -133,11 +134,11 @@ class RemoteRasterSet:
         vals=np.empty(len(grows),dtype=np.uint8)
         groups=defaultdict(list)
         for i,(gr,gc) in enumerate(zip(grows,gcols)):
-            xoff,yoff=tile_offsets_from_global(int(gr),int(gc))
-            lr=int(gr-yoff); lc=int(gc-xoff)
-            groups[(xoff,yoff,lr//BLOCK,lc//BLOCK)].append((i,lr,lc))
-        for (xoff,yoff,br,bc),items in groups.items():
-            a=self.block(xoff,yoff,br,bc)
+            rowoff,coloff=tile_offsets_from_global(int(gr),int(gc))
+            lr=int(gr-rowoff); lc=int(gc-coloff)
+            groups[(rowoff,coloff,lr//BLOCK,lc//BLOCK)].append((i,lr,lc))
+        for (rowoff,coloff,br,bc),items in groups.items():
+            a=self.block(rowoff,coloff,br,bc)
             r0=br*BLOCK; c0=bc*BLOCK
             for i,lr,lc in items:
                 vals[i]=a[lr-r0,lc-c0]
