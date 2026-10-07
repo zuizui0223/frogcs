@@ -1,0 +1,30 @@
+{
+  "analysis": "naamp_coordinate_remote_sensing_preflight_v0_1",
+  "coordinate_source_sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+  "n_coordinate_rows": 12064,
+  "n_routes": 1183,
+  "rules": {
+    "latitude_bounds": [24, 50],
+    "longitude_bounds": [-125, -66],
+    "maximum_route_span_km": 100,
+    "manual_coordinate_repair": false
+  },
+  "geometry_quantiles_km": {
+    "q50": 13.510159188542792,
+    "q90": 20.3674316661544,
+    "q95": 22.389373322000157,
+    "q99": 37.537838691285955
+  },
+  "summary": {
+    "safe_routes": 1178,
+    "unsafe_routes": 5,
+    "safe_fraction": 0.9957734573119188,
+    "routes_outside_bounds": 1,
+    "routes_span_gt_100km": 5,
+    "max_route_span_km": 12498.242561688065
+  },
+  "unsafe_route_numbers": ["270107","270218","350414","720214","880113"],
+  "workflow_run": 37560857262,
+  "artifact_id": 11456971273,
+  "outcome_values_read": false
+}
