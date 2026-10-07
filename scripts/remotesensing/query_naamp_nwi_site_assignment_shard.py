@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from pyproj import Transformer
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point, Polygon, MultiPolygon
 from shapely.ops import unary_union
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -38,18 +38,62 @@ def fetch(url,timeout=180):
     with urllib.request.urlopen(req,timeout=timeout) as r:
         return r.read()
 
+def signed_area(ring):
+    s=0.0
+    for i in range(len(ring)-1):
+        x1,y1=ring[i]; x2,y2=ring[i+1]
+        s += x1*y2-x2*y1
+    return 0.5*s
+
 def geom_from_arc(g):
-    if not g or not g.get("rings"): return None
-    polys=[]
-    for ring in g["rings"]:
-        if len(ring)<4: continue
+    """Build Esri polygon rings without filling interior holes.
+
+    Esri exterior rings are clockwise; holes are counter-clockwise.
+    """
+    rings=[]
+    for ring in (g or {}).get("rings") or []:
+        if len(ring)<4:
+            continue
+        rr=[(float(x),float(y)) for x,y in ring]
+        if rr[0]!=rr[-1]:
+            rr.append(rr[0])
         try:
-            p=Polygon(ring)
-            if not p.is_valid: p=p.buffer(0)
-            if not p.is_empty and p.area>0: polys.append(p)
+            p=Polygon(rr)
+            if not p.is_valid:
+                p=p.buffer(0)
+            if p.is_empty or p.area<=0:
+                continue
+            rings.append((signed_area(rr),rr,p))
+        except Exception:
+            continue
+    if not rings:
+        return None
+
+    # In Esri polygons, clockwise rings are exteriors (negative signed area).
+    outers=[x for x in rings if x[0]<0]
+    holes=[x for x in rings if x[0]>=0]
+    # Fail-soft for sources whose orientation was normalized unexpectedly.
+    if not outers:
+        outers=rings
+        holes=[]
+
+    polys=[]
+    for _,orr,op in outers:
+        hs=[]
+        for _,hrr,hp in holes:
+            # representative_point avoids boundary ambiguity.
+            if op.contains(hp.representative_point()):
+                hs.append(hrr)
+        try:
+            q=Polygon(orr,holes=hs)
+            if not q.is_valid:
+                q=q.buffer(0)
+            if not q.is_empty:
+                polys.append(q)
         except Exception:
             pass
-    if not polys:return None
+    if not polys:
+        return None
     return unary_union(polys)
 
 def query_route_envelope(lons,lats):
@@ -65,7 +109,7 @@ def query_route_envelope(lons,lats):
           "spatialRel":"esriSpatialRelIntersects",
           "outFields":"OBJECTID,ATTRIBUTE,WETLAND_TYPE",
           "returnGeometry":"true",
-          "outSR":"3857",
+          "outSR":"5070",
           "orderByFields":"OBJECTID",
           "resultOffset":str(offset),
           "resultRecordCount":str(PAGE),
@@ -114,7 +158,7 @@ assigned_routes=[
  rid for rid in sorted(route_sites)
  if int(hashlib.sha256(rid.encode()).hexdigest()[:8],16)%SHARD_COUNT==SHARD_INDEX
 ]
-tf=Transformer.from_crs("EPSG:4326","EPSG:3857",always_xy=True)
+tf=Transformer.from_crs("EPSG:4326","EPSG:5070",always_xy=True)
 rows=[]
 for n,rid in enumerate(assigned_routes,1):
     sids=sorted(route_sites[rid])
@@ -170,6 +214,7 @@ receipt={
  "wetland_type_counts":{str(k):int(v) for k,v in df.WETLAND_TYPE.value_counts(dropna=True).to_dict().items()} if len(df) else {},
  "retrieval_margin_deg":RETRIEVAL_MARGIN_DEG,
  "scientific_distance_m":RADIUS,
+ "distance_area_crs":"EPSG:5070",
  "frog_endpoint_calculated":False
 }
 jsonout.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
