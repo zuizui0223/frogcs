@@ -1,0 +1,15 @@
+name: SiteID coordinate uniqueness audit
+on:
+  push:
+    branches: [remotesensing/naamp-dynamic-hydrology-v1]
+    paths:
+      - ".github/workflows/siteid_coordinate_uniqueness.yml"
+      - "scripts/remotesensing/audit_siteid_coordinate_uniqueness.py"
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/remotesensing/audit_siteid_coordinate_uniqueness.py
