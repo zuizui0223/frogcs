@@ -1,0 +1,24 @@
+name: JRC v1 remote range-access preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/naamp-dynamic-hydrology-v1
+    paths:
+      - ".github/workflows/jrc_ver1_remote_access_preflight.yml"
+      - "scripts/remotesensing/preflight_jrc_ver1_remote_access.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/remotesensing/preflight_jrc_ver1_remote_access.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jrc-ver1-remote-access-preflight
+          path: remotesensing/JRC_VER1_REMOTE_ACCESS_PREFLIGHT_V0_1.json
