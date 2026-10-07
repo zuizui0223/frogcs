@@ -1,5 +1,9 @@
 name: NAAMP MOD11A1 nighttime LST mechanism
 
+concurrency:
+  group: naamp-mod11a1-night-lst-mechanism
+  cancel-in-progress: true
+
 on:
   push:
     branches:
