@@ -281,6 +281,8 @@ def simulate_model(model,pfinal,dsub,hsub,hydro,rain_slopes,hydro_coef,r,den):
     num=np.zeros((B,3),float)
     shifts=[]
     for i,(p,dct,ph,h) in enumerate(zip(pfinal.itertuples(index=False),dsub,hsub,hydro)):
+        if len(dct["species"])==0:
+            continue
         test_fold=joint.fold_for_route(str(p.route_cluster))
         train_fold="B" if test_fold=="A" else "A"
         rs=rain_slopes[train_fold]
