@@ -31,15 +31,29 @@ for t in TESTS:
     ).items())
     if not items:
         raise RuntimeError(f"no Terra MOD11A1 item for {t}")
-    # A point should map to one tile; fail if ambiguous rather than selecting by value.
-    terra=[x for x in items if str(x.id).startswith("MOD11A1")]
-    if len(terra)!=1:
-        raise RuntimeError(f"expected one Terra tile, got {[x.id for x in items]}")
-    item=planetary_computer.sign(terra[0])
+    # MODIS tile boundaries can yield multiple STAC items for the search bbox.
+    # Select by geometry only: keep items whose LST raster actually contains the point,
+    # then use the lexicographically smallest item id if more than one contains it.
+    terra=sorted([x for x in items if str(x.id).startswith("MOD11A1")],key=lambda z:str(z.id))
     req_assets=["LST_Night_1km","QC_Night","Night_view_time"]
-    if any(k not in item.assets for k in req_assets):
-        raise RuntimeError(f"missing assets {item.id}: {sorted(item.assets)}")
-    rec={**t,"item_id":item.id,"assets":{}}
+    candidates=[]
+    for raw_item in terra:
+        item0=planetary_computer.sign(raw_item)
+        if any(k not in item0.assets for k in req_assets):
+            continue
+        try:
+            with rasterio.open(item0.assets["LST_Night_1km"].href) as ds0:
+                tf0=Transformer.from_crs("EPSG:4326",ds0.crs,always_xy=True)
+                x0,y0=tf0.transform(t["lon"],t["lat"])
+                row0,col0=ds0.index(x0,y0)
+                if 0<=row0<ds0.height and 0<=col0<ds0.width:
+                    candidates.append(item0)
+        except Exception:
+            continue
+    if not candidates:
+        raise RuntimeError(f"no returned Terra tile contains point for {t}; items={[x.id for x in terra]}")
+    item=sorted(candidates,key=lambda z:str(z.id))[0]
+    rec={**t,"item_id":item.id,"candidate_containing_items":[str(x.id) for x in candidates],"assets":{}}
     for key in req_assets:
         href=item.assets[key].href
         with rasterio.open(href) as ds:
@@ -47,7 +61,7 @@ for t in TESTS:
             x,y=tf.transform(t["lon"],t["lat"])
             row,col=ds.index(x,y)
             if not (0<=row<ds.height and 0<=col<ds.width):
-                raise RuntimeError(f"point out of tile for {item.id} {key}")
+                raise RuntimeError(f"point out of selected tile for {item.id} {key}")
             val=int(ds.read(1,window=Window(col,row,1,1))[0,0])
             rec["assets"][key]={
               "value":val,"crs":str(ds.crs),
