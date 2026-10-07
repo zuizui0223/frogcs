@@ -12,22 +12,22 @@ RBASE="https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GSWE/MonthlyRecurrence/V
 
 def tile(lat,lon):
     gc=int(math.floor((lon-OLON)/RES)); gr=int(math.floor((OLAT-lat)/RES))
-    x=(gc//PX)*PX; y=(gr//PX)*PX
-    return x,y,gr-y,gc-x
+    rowoff=(gr//PX)*PX; coloff=(gc//PX)*PX
+    return rowoff,coloff,gr-rowoff,gc-coloff
 
 out=[]
 with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR",CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif",GDAL_HTTP_MULTIRANGE="YES"):
   for lat,lon in PTS:
-    x,y,r,c=tile(lat,lon); ym=f"{YEAR:04d}_{MONTH:02d}"
+    rowoff,coloff,r,c=tile(lat,lon); ym=f"{YEAR:04d}_{MONTH:02d}"
     urls={
-      "history":f"{HBASE}/{YEAR}/{ym}/{ym}-{x:010d}-{y:010d}.tif",
-      "recurrence":f"{RBASE}/monthlyRecurrence{MONTH}/monthlyRecurrence{MONTH}-{x:010d}-{y:010d}.tif",
-      "hasobs":f"{RBASE}/has_observations{MONTH}/has_observations{MONTH}-{x:010d}-{y:010d}.tif",
+      "history":f"{HBASE}/{YEAR}/{ym}/{ym}-{rowoff:010d}-{coloff:010d}.tif",
+      "recurrence":f"{RBASE}/monthlyRecurrence{MONTH}/monthlyRecurrence{MONTH}-{rowoff:010d}-{coloff:010d}.tif",
+      "hasobs":f"{RBASE}/has_observations{MONTH}/has_observations{MONTH}-{rowoff:010d}-{coloff:010d}.tif",
     }
     vals={}
     for k,u in urls.items():
       with rasterio.open(u) as ds:
         a=ds.read(1,window=Window(max(0,c-2),max(0,r-2),5,5))
         vals[k]={"shape":list(a.shape),"unique":[int(v) for v in np.unique(a)[:20]],"min":int(a.min()),"max":int(a.max())}
-    out.append({"lat":lat,"lon":lon,"tile":[x,y],"values":vals})
+    out.append({"lat":lat,"lon":lon,"tile_offsets_row_col":[rowoff,coloff],"values":vals})
 print(json.dumps({"analysis":"jrc_three_product_io_smoke","points":out,"frog_data_used":False},indent=2))
