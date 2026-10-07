@@ -179,7 +179,10 @@ def cell_frame(run_specs,ss):
               "StopNumber":str(st),"SiteID":sid
             })
             callers.append(ss.get((rid,str(st)),set()))
-    return pd.DataFrame(rows),callers
+    cells=pd.DataFrame(rows)
+    for rawc,newc in [("H","H_c"),("recent","recent_c"),("sd","sd_c")]:
+        cells[newc]=cells[rawc]-cells.groupby("SiteID")[rawc].transform("mean")
+    return cells,callers
 
 def design_matrix(cells,mask,model,state_levels,run_levels):
     x=cells.loc[mask].copy()
@@ -200,9 +203,9 @@ def design_matrix(cells,mask,model,state_levels,run_levels):
     for i,v in enumerate(x["RunNumber"].astype(str)):
         j=rmap.get(v)
         if j is not None: rn[i,j]=1
-    hyd_cols=["H"]
-    if model in ("M2","M3"): hyd_cols.append("recent")
-    if model=="M3": hyd_cols.append("sd")
+    hyd_cols=["H_c"]
+    if model in ("M2","M3"): hyd_cols.append("recent_c")
+    if model=="M3": hyd_cols.append("sd_c")
     hyd=x[hyd_cols].to_numpy(float)
     X=np.column_stack([base,state,rn,hyd])
     return X,hyd_cols
