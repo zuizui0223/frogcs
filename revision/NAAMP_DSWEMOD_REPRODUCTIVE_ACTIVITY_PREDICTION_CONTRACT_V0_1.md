@@ -52,7 +52,9 @@ Fit each species separately.
 
 Eligibility: >=20 primary-positive cells in the training fold; positives on >=5 routes; at least one negative cell.
 
-For ineligible species, the hydrology model defaults to the baseline prediction rather than dropping the species.
+For ineligible species, use the Laplace-smoothed training-fold strong-chorus prevalence, (positive+0.5)/(n+1), as B0 and use the identical prediction for B1-B3. Thus ineligible species remain in scoring and contribute exactly zero hydrology gain rather than being dropped.
+
+For eligible species, if ordinary B0 fitting and the fixed ridge fallback both fail, use the same smoothed-prevalence fallback for B0-B3.
 
 B0 — weather/season baseline:
 strong ~ log1p(DaysSinceRain) + mean_air_temperature + sin(doy) + cos(doy) + State + RunNumber
