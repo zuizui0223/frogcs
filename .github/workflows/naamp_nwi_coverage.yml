@@ -8,6 +8,7 @@ on:
       - ".github/workflows/naamp_nwi_coverage.yml"
       - "scripts/remotesensing/query_naamp_nwi_site_assignment_shard.py"
       - "scripts/remotesensing/aggregate_naamp_nwi_coverage.py"
+      - "scripts/remotesensing/run_naamp_nwi_rain_filter_mechanism.py"
       - "revision/NAAMP_NWI_RAIN_FILTER_MECHANISM_CONTRACT_V0_1.md"
   workflow_dispatch:
 
@@ -58,10 +59,16 @@ jobs:
       - env:
           NWI_SHARD_DIR: remotesensing/nwi_inputs
         run: python scripts/remotesensing/aggregate_naamp_nwi_coverage.py
+      - name: Run frozen NWI rain-filter mechanism if coverage passes
+        env:
+          NAAMP_NWI_ASSIGNMENTS: remotesensing/NAAMP_NWI_SITE_ASSIGNMENTS_V0_1.csv
+          NAAMP_NWI_COVERAGE: remotesensing/NAAMP_NWI_COVERAGE_V0_1.json
+        run: python scripts/remotesensing/run_naamp_nwi_rain_filter_mechanism.py
       - uses: actions/upload-artifact@v4
         with:
           name: naamp-nwi-coverage
           path: |
             remotesensing/NAAMP_NWI_SITE_ASSIGNMENTS_V0_1.csv
             remotesensing/NAAMP_NWI_COVERAGE_V0_1.json
+            remotesensing/NAAMP_NWI_RAIN_FILTER_MECHANISM_RECEIPT_V0_1.json
           retention-days: 30
