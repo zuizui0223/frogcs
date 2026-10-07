@@ -49,7 +49,9 @@ M0 remains the existing principal comparator.
 
 M_REGIME adds species-specific rainfall redistribution by official WATER_REGIME_NAME.
 
-All water-regime interactions are estimated jointly within the opposite deterministic route fold. The fitting model controls for water-regime main effects, State, RunNumber, mean air temperature and annual sine/cosine.
+All water-regime interactions are estimated jointly within the opposite deterministic route fold. Before fitting interaction slopes, log(1+DaysSinceRain) is centered within physical SiteID across the available training runs. The fitting model also controls for water-regime main effects, State, RunNumber, mean air temperature and annual sine/cosine.
+
+Thus the interaction is learned from temporal changes in rainfall proximity at the same physical location, rather than from cross-site geographic differences in climatology.
 
 Habitat-specific dryness slopes are fit in one design matrix. Regime levels meeting the existing interaction gate (>=20 positive stop-cells and >=5 positive routes for that species) are centered by their training-cell-weighted mean; the sign-reversed centered deviations are added to the M0 species wet-response slope.
 
@@ -103,6 +105,7 @@ After focal NWI values are read, do not change:
 - 500-m nearest-polygon rule;
 - EPSG:5070 geometry;
 - interaction gates;
+- within-SiteID centering of log(1+DaysSinceRain);
 - joint within-fold fitting;
 - weighted-centering rule;
 - route folds;
