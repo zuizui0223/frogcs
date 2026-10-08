@@ -1,16 +1,3 @@
-# Climate × terrestrial landscape × NAAMP acoustic site use — independent study v1.1
-
-**Scientific status (2026-10-08):** the past-five-year climate-history add-on did **not** improve held-out strong-calling prediction in the frozen 9-route v0.9 pilot (test gain −0.002257 per stop); do not retune the pilot. A separate USGS Runs/Stops-only audit found 95/8,223 route × SiteIDs with nonconstant stop number and 28,330 adjacent-year same-season candidate stop comparisons with invariant stop numbering and geometry-only passing coordinates. **Exactly 0 historical physical stations have independent location corroboration; no real 30-m Annual NLCD land conversion × species calling allocation result exists.** Response-blind traffic/noise longitudinal coverage is a newly implemented gate, with actual-source execution separate from the frozen frog result.
-
-- [Actual negative acoustic forecast](V0_9_REAL_FROG_RESULT.md)
-- [Actual pinned USGS site-identity continuity result](V1_0_HISTORICAL_SITE_IDENTITY_GATE.md)
-- [Source-only roadside detection-confounder audit](V1_1_ROADSIDE_DETECTION_COVERAGE_GATE.md)
-- [Main two-scale biological inference contract](TWO_SCALE_CLIMATE_LANDSCAPE_INFERENCE_CONTRACT_V0_1.md)
-
-The rest of this README describes the historical v0.3 extraction prototype, retained for reproducibility.
-
----
-
 # Climate × remote sensing × NAAMP frog calling: independent v0.3 research package
 
 This is a separate, **response-blind environmental extraction prototype** developed on 2026-10-08. It **does not** contain actual NAAMP acoustic outcomes or a validated station-to-satellite overlay. It does **not** modify the submitted RC6 scientific story.
@@ -27,12 +14,12 @@ The 2001–2015 10-stop NAAMP network is suitable for a possible longitudinal st
 6. Run `scripts/build_climate_features.py` on separately downloaded Daymet/PRISM daily series (with 1981–2000 baseline) and `scripts/build_climate_trend_diagnostics.py` (1981–2015 descriptive site trends only).
 7. After freezing exposure availability, merge the environmental tables by exact `run_id,route_id,site_id,survey_date,coordinate_qc_status`. Only a separately approved response-stage study may then read taxon calling records.
 
-## v0.3 scientific changes
+## v0.3 scientific and implementation changes
 
-- Build a source-pinned, response-blind NAAMP surveyed-site opportunity panel from Runs and Stops only.
-- Compare exact consecutive years at the same verified physical site and survey round, within a 21-day season window.
-- Preserve JRC missing observations and distinguish visible water area from observed water-month frequency.
-- See `IMPLEMENTATION_STATUS_V0_3.md` for source and biological inference limits.
+- A site-by-survey **metadata-only** observation panel is generated from pinned NAAMP Runs and Stops. This does not use the sparse-positive `Counts.csv` or infer fake zeros.
+- Calendar-matched consecutive-year exposure comparisons are constructed for the same route/physical site/survey round before consulting any calling responses.
+- JRC visible **water area** and detected **water-month frequency** are separate, with observation-gap bounds. A detected pixel is not proof of adequate frog breeding water.
+- See `IMPLEMENTATION_STATUS_V0_3.md` for limitations, definitions and the status of actual public-data acquisition.
 
 ## Synthetic checks
 
@@ -55,6 +42,10 @@ Original NAAMP public dataset: https://doi.org/10.5066/F7G44NG0
 
 See `RESEARCH_SPEC.md` for competing ecological hypotheses and causal-inference limits. See `remote_sensing/EXPORT_CONTRACT.md` for extraction input/output schemas and commands.
 
-## Actual longitudinal Landsat coverage, outcome-blind
+## First real longitudinal coverage readout
 
-The real 3,811-run metadata feasibility audit (395 routes) and geographic sampling-bias check are documented in [`LANDSAT_LONGITUDINAL_METADATA_RESULT_V0_1.md`](LANDSAT_LONGITUDINAL_METADATA_RESULT_V0_1.md). Comparisons remain **scene-metadata only**, not verified QA-good satellite pixels or frog climate effects.
+See `LANDSAT_LONGITUDINAL_METADATA_RESULT_V0_1.md` for a source-pinned, outcome-blind analysis of 3,811 NAAMP runs across 395 routes and multi-year Landsat acquisition metadata. It does **not** demonstrate climate change effects on frogs, or guarantee QA-passing satellite pixels.
+
+## New source-backed land-cover results (v1.8, independent exploratory route)
+
+For Iowa NAAMP route 360417, actual USGS-authored **Annual NLCD Collection 1.0**, not the preferred 1.2, pixels were retrieved for 2004, 2009 and 2014. The additional source-only checks are now in [`V1_8_REAL_NLCD_C1V0_ECOLOGICAL_GROUP_CHANGE.md`](V1_8_REAL_NLCD_C1V0_ECOLOGICAL_GROUP_CHANGE.md) and [`V1_8_NLCD_SITE_SHIFT_QC.md`](V1_8_NLCD_SITE_SHIFT_QC.md). **No historical physical-site validation or new frog-landcover causal result exists.** Previous v0.9 negative held-out five-year climate acoustic forecast is unchanged; do not tune it after readout. The locked JAE RC6 is unaffected.

@@ -1,0 +1,85 @@
+name: Iowa annual NLCD C1V0 classification and geolocation QC v1.8
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_c1v0_two_audits_v18.yml'
+      - 'studies/climate_landscape/scripts/audit_c1v0_ecological_class_change_v18.py'
+      - 'studies/climate_landscape/scripts/audit_nlcd_geolocation_sensitivity_v18.py'
+      - 'studies/climate_landscape/tests/test_c1v0_ecological_class_change_v18.py'
+      - 'studies/climate_landscape/tests/test_nlcd_geolocation_sensitivity_v18.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frog-iowa360417-landsource-both-audits-v18
+  cancel-in-progress: false
+
+jobs:
+  source-only-original-mapped-change:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install geospatial dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Test both fixed-source categorical class and spatial sensitivity audits
+        run: |
+          python -m pytest -q \
+            studies/climate_landscape/tests/test_c1v0_ecological_class_change_v18.py \
+            studies/climate_landscape/tests/test_nlcd_geolocation_sensitivity_v18.py
+      - name: Retrieve original completed 2004 2009 2014 Annual NLCD source artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: iowa360417-annual-nlcd-C1V0-categorical-source-v16
+          run-id: 37754405051
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/official_public_c1v0_tiffs
+      - name: Repackage unchanged source and verify years
+        run: |
+          python - <<'PY'
+          import os, zipfile
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'official_public_c1v0_tiffs'
+          filenames=['receipt.json']+[f'arcgis_nlcd_C1V0_{year}_iowa_360417.tif'
+                                     for year in (2004,2009,2014)]
+          if sorted(p.name for p in root.iterdir()) != sorted(filenames):
+              raise ValueError('Original public GitHub artifact files drifted')
+          archive=Path(os.environ['RUNNER_TEMP'])/'original_three_year_c1v0.zip'
+          with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
+              for name in filenames:z.write(root/name,name)
+          print('Complete original C1V0, no pixel values altered')
+          PY
+      - name: Recompute class changes vs genuine changes between functional groups
+        run: |
+          mkdir -p "$RUNNER_TEMP/iowa_audit"
+          python studies/climate_landscape/scripts/audit_c1v0_ecological_class_change_v18.py \
+            --artifact "$RUNNER_TEMP/original_three_year_c1v0.zip" \
+            --source-stops studies/climate_landscape/reference_routes/iowa_dnr_360417_source_only_stops_v16.csv \
+            --out-json "$RUNNER_TEMP/iowa_audit/functional_groups.json" \
+            --out-csv "$RUNNER_TEMP/iowa_audit/functional_groups.csv"
+      - name: Compute predetermined six half-pixel and full-pixel position-shift audit
+        run: |
+          python studies/climate_landscape/scripts/audit_nlcd_geolocation_sensitivity_v18.py \
+            --artifact-zip "$RUNNER_TEMP/original_three_year_c1v0.zip" \
+            --station-csv studies/climate_landscape/reference_routes/iowa_dnr_360417_source_only_stops_v16.csv \
+            --outdir "$RUNNER_TEMP/iowa_audit/geolocation"
+      - name: Preserve source-only results without redistributing large rasters
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa360417-C1V0-environment-uncertainty-audit-v18
+          path: |
+            ${{ runner.temp }}/iowa_audit/functional_groups.json
+            ${{ runner.temp }}/iowa_audit/functional_groups.csv
+            ${{ runner.temp }}/iowa_audit/geolocation/receipt.json
+            ${{ runner.temp }}/iowa_audit/geolocation/site_scale_sensitivity.csv
+          if-no-files-found: error
+          retention-days: 30
