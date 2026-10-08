@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install repository metadata helper dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas
       - name: Audit original checksum-pinned Runs and Stops only
         run: python studies/climate_landscape/scripts/audit_original_naamp_stop_hydrology_header_v31.py
       - name: Upload source-only header receipt
