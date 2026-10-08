@@ -33,6 +33,6 @@ jobs:
           assert b.index('if gate.get("classification")') < b.index('flex.prepare_subset()')
           assert 'median(ndmi)' in a
           assert 'RADIUS=500.0' in a and 'VALID_MIN=.70' in a
-          assert 'scale' or 'SCALE=.0000275' in a
+          assert 'SCALE=.0000275' in a
           print("E3 postgate static QA PASSED; no frog endpoint accessed.")
           PY
