@@ -47,8 +47,14 @@ def metadata_tail(url,total_expected):
     cr=re.fullmatch(r"bytes (\d+)-(\d+)/(\d+)",content_range)
     if not cr:raise ValueError("Missing standard Content-Range")
     start,end,total=map(int,cr.groups())
+    info.update({'actual_download_zip_size_from_Content_Range':total,
+                 'catalog_zip_size':total_expected,
+                 'range_start':start,'range_end':end,
+                 'size_mismatch':total!=total_expected,
+                 'range_payload_mismatch':end-start+1!=len(raw)})
     if total!=total_expected or end-start+1!=len(raw):
-        raise ValueError("Official ZIP file length/range mismatches metadata")
+        info['status']='OFFICIAL_CATALOG_VS_RANGE_SIZE_MISMATCH_NO_PIXELS'
+        return info
     idx=raw.rfind(b"PK\x05\x06")
     if idx<0:raise ValueError("ZIP End of Central Directory missing from bounded tail")
     if idx+22>len(raw):raise ValueError("Truncated ZIP EOCD")
