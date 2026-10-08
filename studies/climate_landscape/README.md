@@ -15,6 +15,8 @@
 
 **Rain × historical-site interaction, v3.4:** [Source-grounded interaction audit and competing hydrology models](V3_4_RAIN_HISTORY_HYDROLOGY_INTERACTION_DECISION_SPEC.md) distinguishes the significant *directional rain-selective recurrence* (β=0.0245) and **post-hoc** deep-versus-shallow coupling (Δβ=0.0297) from the first-order rain×history null that **fails** to reproduce the conditional concentration result. Future-model predictions are frozen as a study-design aid only, **not a new same-data NAAMP outcome analysis**.
 
+**New ecological discriminator (v3.5):** [Rain-sound playback vs direct water-state manipulation](V3_5_RAIN_SOUND_VS_WATER_MECHANISM_DISCRIMINATION.md) adds an *independently documented* sensory cue route: a 2020 field playback experiment found that rain **sound itself** can elicit calling in one frog species. This does **not** explain RC6 by itself, but means even successfully obtaining historical wet/dry might not separate sound-triggered calling from true hydrological opportunity. The prospective, permission-dependent water × sound factorial and its conditional **spatial** endpoints are documented; **nothing has been field-tested**.
+
 **Current stop rule:** The USGS national archive alone cannot test direct local hydrology. Do not use present-day Iowa forms as historical data, select more forest-loss cells after response inspection, or fit a new acoustic model until archived field schema, historical stop identity and source comparability are independently verified.
 
 ---
