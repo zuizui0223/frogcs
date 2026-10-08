@@ -11,7 +11,7 @@ if (fields.indexOf('verification_source_id')===-1 ||
 }
 if (requests.filter(ee.Filter.neq('coordinate_qc_status','verified_external'))
     .size().getInfo()>0) throw Error('Unverified station(s)');
-var invalid=ee.Filter.not(ee.Filter.inList('buffer_m',[250,1000]));
+var invalid=ee.Filter.inList('buffer_m',[250,1000]).not();
 if (requests.filter(invalid).size().getInfo()>0) throw Error('Bad buffer sizes');
 
 var monthImages=ee.ImageCollection('JRC/GSW1_4/MonthlyHistory');
