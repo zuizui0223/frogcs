@@ -1,0 +1,58 @@
+name: Link completed Daymet histories to NAAMP survey years
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_landscape_daymet_survey_join.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  daymet-to-naamp-survey-years:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install climate study dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Download successful, frozen Daymet 12-route artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frog-independent-daymet-route-climate-v07
+          run-id: 37736273058
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: zuizui0223/frogcs
+          path: ${{ runner.temp }}/daymet_source
+      - name: Acquire pinned USGS Runs and Stops without Counts
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp_metadata"
+      - name: Run v0.8 source-only climate-survey join contract checks
+        run: python -m pytest -q studies/climate_landscape/qa/test_daymet_survey_exposure_panel.py
+      - name: Create dated NAAMP climate history survey panel
+        run: |
+          python studies/climate_landscape/scripts/build_daymet_survey_exposure_panel.py \
+            --sample "$RUNNER_TEMP/daymet_source/frog_daymet_route_sample.json" \
+            --climate-receipt "$RUNNER_TEMP/daymet_source/frog_daymet_route_climate_receipt.json" \
+            --runs "$RUNNER_TEMP/naamp_metadata/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp_metadata/Stops.csv" \
+            --out "$RUNNER_TEMP/frog_daymet_survey_climate.csv" \
+            --receipt "$RUNNER_TEMP/frog_daymet_survey_climate_receipt.json"
+      - name: Upload derived climate event exposures only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frog-daymet-survey-exposure-v08
+          path: |
+            ${{ runner.temp }}/frog_daymet_survey_climate.csv
+            ${{ runner.temp }}/frog_daymet_survey_climate_receipt.json
+          if-no-files-found: error
+          retention-days: 30
