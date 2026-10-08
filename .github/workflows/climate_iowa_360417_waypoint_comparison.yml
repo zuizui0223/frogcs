@@ -1,0 +1,49 @@
+name: Iowa route 360417 official waypoint-to-USGS comparison
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_360417_waypoint_comparison.yml'
+      - 'studies/climate_landscape/scripts/audit_iowa_360417_pdf_waypoints.py'
+      - 'studies/climate_landscape/tests/test_iowa_360417_pdf_waypoints.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  state-published-waypoints-vs-archived-stations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install required rasterless audit tools
+        run: |
+          python -m pip install -r studies/climate_landscape/requirements.txt
+          python -m pip install 'pymupdf>=1.24,<1.28'
+      - name: Unit test exact pre-declared comparison
+        run: python -m pytest -q studies/climate_landscape/tests/test_iowa_360417_pdf_waypoints.py
+      - name: Get pinned original USGS run/stop/coordinate records
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp_original"
+      - name: Match source-map site numbers to archived SiteID coordinates
+        run: |
+          python studies/climate_landscape/scripts/audit_iowa_360417_pdf_waypoints.py \
+            --runs "$RUNNER_TEMP/naamp_original/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp_original/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp_original/Coordinates.csv" \
+            --out "$RUNNER_TEMP/iowa_360417_site_crosscheck_v15.json" \
+            --image-dir "$RUNNER_TEMP/iowa_map_pages"
+      - name: Preserve small audit receipt and rendered pages
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iowa-360417-site-waypoint-crosscheck-v15
+          path: |
+            ${{ runner.temp }}/iowa_360417_site_crosscheck_v15.json
+            ${{ runner.temp }}/iowa_map_pages/*.png
+          if-no-files-found: warn
+          retention-days: 30
