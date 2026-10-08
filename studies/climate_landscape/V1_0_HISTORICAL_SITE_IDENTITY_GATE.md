@@ -30,3 +30,14 @@ An additional prior-study boundary matters: Cosentino et al. (2014, *Biological 
 4. Distinguish mapped forest→development, forest→agriculture, forest retention, class confidence, route road-traffic effects, and climate-specific annual precipitation/temperature history. Then use prospectively frozen species × route × physical-site allocation contrasts with temporal and geography blocks.
 
 If the site verification yields too few usable repeated physical locations, classify the 30m site-allocation experiment as **infeasible** rather than loosening the gate after inspecting frog responses. Remaining pilot climate-effects null stays intact.
+
+## Empirical readback, source-only QA (2026-10-08)
+
+GitHub Actions run [37744065229](https://github.com/zuizui0223/frogcs/actions/runs/37744065229) completed successfully with pinned USGS raw metadata. The file `receipts/site_identity/NAAMP_SITE_IDENTITY_STABILITY_ACTUAL_V1_0.json` is the exact source audit receipt.
+
+- 8,223 distinct route × SiteID keys, of which 6,423 were visited in at least two years.
+- 8,128 keys held one StopNumber throughout, **95** did not (93 of the 95 were surveyed in multiple years).
+- 29,986 site × adjacent-year × season-round matched opportunities; 29,558 held invariant StopNumber; **28,330** additionally passed the existing geometry-only coordinate screen.
+- 7,560 route × SiteID keys had invariant StopNumber and passed geometry-only checks. **Zero site locations were independently field-record verified.**
+
+The 95 inconsistent SiteIDs are indicators for record/route audits, **not 95 confirmed relocations**. The 28,330 comparisons are *potential* pairs, not independent species-level or route-level replicates. No 30-m land-cover overlay or frog spatial-allocation outcome was computed.

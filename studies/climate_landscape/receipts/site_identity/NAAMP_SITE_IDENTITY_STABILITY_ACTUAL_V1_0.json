@@ -1,0 +1,65 @@
+{
+  "analysis": "naamp_site_identity_temporal_consistency_geometry_only_v0_1",
+  "cohort_audit": {
+    "called_species_records_opened": false,
+    "counts_csv_opened": false,
+    "external_coordinate_verification_performed": false,
+    "n_complete_ten_stop_runs_with_identifiable_physical_sites": 7848,
+    "n_distinct_route_site_keys": 8223,
+    "n_distinct_routes": 807,
+    "n_filtered_run_candidates_before_stop_checks": 9401,
+    "n_invalid_date_rows": 10,
+    "n_runs_incomplete_number_of_stops": 426,
+    "n_runs_with_missing_or_repeated_site_id": 0,
+    "n_runs_with_observer_id": 7848,
+    "n_site_visits": 78480,
+    "not_identical_to_published_rc6_cohort_until_crosschecked": true,
+    "study": "separate climate landscape acoustic-site monitoring panel"
+  },
+  "coordinate_fix_after_frog_outcome": false,
+  "counts_csv_read": false,
+  "frog_response_read": false,
+  "geometry_audit": {
+    "bbox_conus": [
+      -125.0,
+      -66.0,
+      24.0,
+      50.0
+    ],
+    "coordinates_independently_verified": 0,
+    "distinct_route_site_keys": 12064,
+    "does_not_read_frog_response": true,
+    "meaning": "Geometry flagging only; even pass_unverified sites require independent verification",
+    "nearest_site_review_km": 25.0,
+    "route_max_review_km": 50.0,
+    "routes": 1183,
+    "source_rows": 12064,
+    "status_counts": {
+      "failed_domain": 1,
+      "pass_unverified": 11991,
+      "review_geometry": 72
+    }
+  },
+  "n_adjacent_year_pairs_consistent_and_geometry_pass_unverified": 28330,
+  "n_adjacent_year_pairs_consistent_stop_number": 29558,
+  "n_adjacent_year_pairs_requiring_independent_site_corroboration": 28330,
+  "n_adjacent_year_same_season_stop_pairs": 29986,
+  "n_consistent_site_keys_geometry_pass_unverified": 7560,
+  "n_pairs_true_physical_continuity_independently_confirmed": 0,
+  "n_repeated_year_sites_stop_number_changed": 93,
+  "n_route_site_keys": 8223,
+  "n_route_site_keys_consistent_stop_number": 8128,
+  "n_route_site_keys_stop_number_changed": 95,
+  "n_routes": 807,
+  "n_runs": 7848,
+  "n_sites_surveyed_two_or_more_years": 6423,
+  "n_surveys_stops": 78480,
+  "sites_externally_verified": 0,
+  "source_sha256": {
+    "Coordinates.csv": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f"
+  },
+  "status": "metadata_consistency_only_not_historical_field_site_verification",
+  "warning": "Stable recorded SiteID/StopNumber does not prove unchanged physical station or wetland. Satellite 30m site-level inference remains blocked."
+}
