@@ -13,11 +13,12 @@ import datetime as dt
 import hashlib
 import io
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
 REQUIRED = ("route_id", "route_type", "stop_number", "event_id", "survey_date", "wetdry")
-OPTIONAL = ("site_id", "source_form_version")
+OPTIONAL = ("site_id", "source_form_version", "stop_surveyed")
 MISSING = {"", "NA", "N/A", "NULL", "UNKNOWN", "UNK", "U", "?"}
 
 
@@ -37,6 +38,8 @@ def audit_csv(raw: str) -> dict:
     by_route_year = defaultdict(Counter)
     stop_obs = defaultdict(list)
     site_values = defaultdict(set)
+    site_id_blank_rows = Counter()
+    surveyed_by_event = defaultdict(list)
     n_missing = 0
     for row in records:
         if None in row:
@@ -46,6 +49,8 @@ def audit_csv(raw: str) -> dict:
         stop_text = row["stop_number"].strip()
         event = row["event_id"].strip()
         date_text = row["survey_date"].strip()
+        if not re.fullmatch(r"20[0-9]{2}-[0-9]{2}-[0-9]{2}", date_text):
+            raise ValueError("survey_date must be exactly YYYY-MM-DD")
         try:
             date = dt.date.fromisoformat(date_text)
         except ValueError as e:
@@ -76,6 +81,14 @@ def audit_csv(raw: str) -> dict:
         else:
             raise ValueError("unknown wetdry code; request original data dictionary")
         visits[skey].append(wd)
+        if "stop_surveyed" in row:
+            raw_surveyed = str(row["stop_surveyed"] or "").strip().upper()
+            if raw_surveyed not in ("Y", "YES", "1", "N", "NO", "0", "UNKNOWN", "NA", ""):
+                raise ValueError("unknown stop_surveyed code; request original dictionary")
+            surveyed = True if raw_surveyed in ("Y", "YES", "1") else False if raw_surveyed in ("N", "NO", "0") else None
+            if surveyed is False and wd is not None:
+                raise ValueError("non-surveyed stop cannot have observed W/D under canonical specification")
+            surveyed_by_event[skey].append(surveyed)
         by_route_year[(route, date.year)]["visits"] += 1
         if wd:
             by_route_year[(route, date.year)][wd] += 1
@@ -86,6 +99,8 @@ def audit_csv(raw: str) -> dict:
             val = row["site_id"].strip()
             if val:
                 site_values[(route, stop)].add(val)
+            else:
+                site_id_blank_rows[(route, stop)] += 1
     n_both = 0
     n_uniform = 0
     n_no_data = 0
@@ -95,6 +110,7 @@ def audit_csv(raw: str) -> dict:
     n_fully_observed = 0
     n_fully_observed_mixed = 0
     n_fully_observed_uniform = 0
+    n_full_wd_and_all_stops_surveyed = 0
     for (route, event), states in sorted(visits.items()):
         complete = len(states) == 10
         if complete:
@@ -105,6 +121,8 @@ def audit_csv(raw: str) -> dict:
         fully_observed = complete and all(x in ("W", "D") for x in states)
         if fully_observed:
             n_fully_observed += 1
+            if "stop_surveyed" in fields and surveyed_by_event[(route, event)] == [True] * 10:
+                n_full_wd_and_all_stops_surveyed += 1
             if found == {"W", "D"}:
                 n_fully_observed_mixed += 1
             else:
@@ -118,13 +136,21 @@ def audit_csv(raw: str) -> dict:
         else:
             n_uniform += 1
     switches = []
+    coherent_recorded_site_switches = []
+    ambiguous_recorded_site_switches = []
     for (route, stop), arr in sorted(stop_obs.items()):
         # Distinct dated within-site W and D statuses are a necessary *nominal*
         # temporal contrast; true field-site stability still requires external evidence.
         observed = {wd for _, _, wd in arr if wd is not None}
         if observed == {"W", "D"}:
-            switches.append({"route_id": route, "stop_number": stop,
-                             "n_observed": len([x for x in arr if x[2] is not None])})
+            item = {"route_id": route, "stop_number": stop,
+                    "n_observed": len([x for x in arr if x[2] is not None])}
+            switches.append(item)
+            # Recorded SiteID consistency is necessary, never sufficient to prove physical continuity.
+            if "site_id" in fields and len(site_values[(route, stop)]) == 1 and site_id_blank_rows[(route, stop)] == 0:
+                coherent_recorded_site_switches.append(item)
+            else:
+                ambiguous_recorded_site_switches.append(item)
     site_id_conflicts = [
         {"route_id": r, "stop_number": s, "site_id_values": sorted(vals)}
         for (r, s), vals in sorted(site_values.items()) if len(vals) > 1
@@ -149,10 +175,16 @@ def audit_csv(raw: str) -> dict:
         "n_fully_observed_10_stop_route_events": n_fully_observed,
         "n_fully_observed_10_stop_route_events_with_wet_and_dry": n_fully_observed_mixed,
         "n_fully_observed_10_stop_route_events_uniform": n_fully_observed_uniform,
+        "n_complete_wd_events_with_explicit_all_ten_stops_surveyed": n_full_wd_and_all_stops_surveyed,
+        "stop_surveyed_field_available": "stop_surveyed" in fields,
+        "site_id_field_available": "site_id" in fields,
         "n_route_events_with_only_one_observed_status": n_uniform,
         "n_route_events_with_all_wetdry_missing": n_no_data,
         "n_nominal_route_stops_with_within_stop_wet_and_dry": len(switches),
         "nominal_route_stops_with_both_statuses": switches,
+        "n_recorded_site_id_consistent_switches": len(coherent_recorded_site_switches),
+        "n_switches_with_missing_or_conflicting_recorded_site_id": len(ambiguous_recorded_site_switches),
+        "recorded_site_id_consistent_switches_not_field_verified": coherent_recorded_site_switches,
         "site_id_conflicts": site_id_conflicts,
         "route_year_coverage": route_years,
         "historical_physical_station_continuity_verified": False,
@@ -163,7 +195,9 @@ def audit_csv(raw: str) -> dict:
         "rc6_unchanged": True,
         "interpretation": (
             "Descriptive source adequacy only; full ten-stop route-event W/D is "
-            "evaluated separately from incomplete events. W/D within nominal route stops and "
+            "evaluated separately from incomplete events; explicit stop_surveyed is "
+            "required to count an event with all ten measured stops. Recorded SiteID "
+            "consistency alone cannot establish physical continuity. W/D within nominal route stops and "
             "within route events is necessary but not sufficient for a dynamic local "
             "hydrology test. Original field semantics, missingness and dated "
             "physical-site identity must be externally verified before analysis."
@@ -187,6 +221,8 @@ def synthetic_tests():
     assert result["n_complete_10_stop_route_events_with_wet_and_dry_stops"] == 0
     assert result["n_nominal_route_stops_with_within_stop_wet_and_dry"] == 2
     assert result["n_missing_wetdry"] == 1
+    assert result["n_recorded_site_id_consistent_switches"] == 0
+    assert result["n_complete_wd_events_with_explicit_all_ten_stops_surveyed"] == 0
     # Complete route opportunities and fully observed W/D are distinct.
     ten = header + "\n".join(
         f"360110,NAAMP,{i},X,2012-06-02,{('W' if i <= 5 else 'D')}"
@@ -202,6 +238,33 @@ def synthetic_tests():
     assert partial["n_complete_10_stop_route_events"] == 1
     assert partial["n_fully_observed_10_stop_route_events"] == 0
     assert partial["n_complete_10_stop_route_events_with_wet_and_dry_stops"] == 1
+    # Explicit surveyed-status and consistent SiteID are separate from nominal stop labels.
+    qualified = "route_id,route_type,stop_number,event_id,survey_date,wetdry,site_id,stop_surveyed\\n" + "\n".join(
+        f"360110,NAAMP,{i},X,2012-06-02,{('W' if i <= 5 else 'D')},SITE{i},Y"
+        for i in range(1, 11)
+    ) + "\n"
+    qa = audit_csv(qualified)
+    assert qa["n_complete_wd_events_with_explicit_all_ten_stops_surveyed"] == 1
+    assert qa["n_fully_observed_10_stop_route_events"] == 1
+    broken_survey = qualified.replace("SITE10,Y", "SITE10,N")
+    try:
+        audit_csv(broken_survey)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Non-surveyed stop with wetdry must be rejected")
+    two_events = qualified + "\n".join(
+        f"360110,NAAMP,{i},Y,2013-06-02,{('D' if i <= 5 else 'W')},SITE{i},Y"
+        for i in range(1, 11)
+    ) + "\n"
+    coherent = audit_csv(two_events)
+    assert coherent["n_recorded_site_id_consistent_switches"] == 10
+    site_changed = two_events.replace("360110,NAAMP,1,Y,2013-06-02,D,SITE1,Y", "360110,NAAMP,1,Y,2013-06-02,D,OTHER_SITE,Y")
+    inconsistent = audit_csv(site_changed)
+    assert inconsistent["n_recorded_site_id_consistent_switches"] == 9
+    assert inconsistent["n_switches_with_missing_or_conflicting_recorded_site_id"] == 1
+    missing_identity = two_events.replace("360110,NAAMP,1,Y,2013-06-02,D,SITE1,Y", "360110,NAAMP,1,Y,2013-06-02,D,,Y")
+    assert audit_csv(missing_identity)["n_recorded_site_id_consistent_switches"] == 9
     invalid = [
         ok + "360104,NAAMP,1,A,2011-04-14,W\n",
         ok.replace("2011-04-14", "2009-04-14"),
@@ -218,7 +281,7 @@ def synthetic_tests():
         except ValueError:
             continue
         raise AssertionError(f"Invalid fixture {i} did not fail closed")
-    print("PASS: 3 positive synthetic fixtures (including complete/missing W-D) and 6 negative fail-closed fixtures; no frog outcomes")
+    print("PASS: synthetic completeness, survey status, recorded SiteID consistency and invalid-field guards; no frog outcomes")
 
 
 def main():
