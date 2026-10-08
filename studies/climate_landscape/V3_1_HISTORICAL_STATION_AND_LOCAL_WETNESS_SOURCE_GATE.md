@@ -62,3 +62,29 @@ The current source-only v2.1 eligibility table has just **one pre-2012 recorded 
 Continue only if new **historically dated station evidence** or **historical stop-event wetness data** are located, and if a C1.2 same-version source is independently verified. Otherwise, retain the five-pixel measurement caution as a method/quality note; do not deepen frog-outcome selection, retune 2012, re-open the negative climate prediction, or elevate either site to a published causal finding.
 
 No new NAAMP species/call-index outcome was accessed for this document. No WFTS work was initiated. JAE RC6 remains unchanged.
+
+## Historical field-protocol finding, 1995–2003 (new provenance evidence)
+
+A much earlier primary public source corroborates that Iowa *actually collected* local water-state information long before the modern form:
+
+- Iowa DNR Wildlife Diversity Program, *Iowa's Frog and Toad Survey, 1995–2003* (historical report, published in 2005), [official state-hosted PDF](https://publications.iowa.gov/18993/1/2005_FrogToad_rpt.pdf), Methods p.1: at each listening site observers recorded general wetland condition **wet/dry** and **water temperature**. The report states that its typical routes contained **five volunteer-selected wetlands**, and its 1995–2003 locations had been GIS digitized.
+- The [current two-page Iowa DNR datasheet](https://www.iowadnr.gov/media/1759/download?inline=) explicitly includes **Site Wet or Dry (W/D)** at each numbered stop, including NAAMP route-format stops.
+- Shepherd (2025), [official DNR annual report](https://www.iowadnr.gov/media/9064/download?inline=), Methods pp.1–2 states that NAAMP's 84 random-route framework was added to Iowa's effort in 2010 and was absorbed into the Iowa DNR program after the USGS ended national coordination in 2015.
+
+**Important distinction:** the 1995–2003 historical evidence documents Iowa's **traditional volunteer-route recording practice**, not completeness of **2010–2015 USGS-delivered NAAMP Stops.csv** or Iowa's own original per-run digitized NAAMP exports. The original report's five-site route design is not interchangeable with NAAMP's ten-stop routes. This strengthens the case for **archive discovery**, *not* the inference that a matched hydrology-calling dataset is already usable.
+
+### Source-only NAAMP schema test, no results presumed
+
+Implementation: `scripts/audit_original_naamp_stop_hydrology_header_v31.py`; [GitHub Actions gate](https://github.com/zuizui0223/frogcs/actions/workflows/iowa_naamp_historical_wetness_schema_v31.yml). It downloads only checksum-pinned original `Runs.csv` and `Stops.csv`, inventories exact column names and any hydro/water/wet/dry candidates, and writes a source-only JSON receipt. No `Counts.csv` or calling response is accessed. A field with a suggestive name is *never* automatically treated as validated contemporaneous standing water.
+
+If the USGS export has **no wet/dry field**, this only establishes *non-preservation in that particular USGS export*. It does **not** show the original Iowa DNR paper forms or state-run system never collected the field. The right next access question is a **source-record archive search**, not a new frog outcome test.
+
+### Draft archival data request, not sent
+
+Dear Iowa DNR Volunteer Wildlife Monitoring Program,
+
+I am auditing historical site- and visit-level environmental metadata for the NAAMP-era frog and toad call survey in Iowa, especially 2010–2015. Historical Iowa DNR documentation (1995–2003 report) and the current datasheet mention wet/dry condition at each listening site. Could you tell me whether original 2010–2015 NAAMP-route forms, database tables, or archived exports retain the per-stop wet/dry field (and any recorded water temperature), including missing-data codes and protocol-year changes? I am particularly interested in source-only metadata and dated stop maps/relocation histories for Iowa routes 360104 (stop 3) and 360412 (stop 7). I do not need identifiable volunteer contact information or species call records for this first audit. Please also advise whether any original route-number to USGS RunID/SiteID crosswalk can be shared and under what data-use conditions.
+
+Thank you for considering this historical-data availability enquiry.
+
+**Contact verification:** the official 2025 report names Stephanie Shepherd and the current DNR survey page links its monitoring portal. Before actually sending a request, reconfirm the official programme contact and obtain author approval. This document does not authorize sending.
