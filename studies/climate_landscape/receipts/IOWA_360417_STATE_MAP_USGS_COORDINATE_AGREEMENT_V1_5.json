@@ -1,0 +1,82 @@
+{
+  "analysis": "iowa_360417_original_usgs_state_map_coordinate_agreement_v1_5",
+  "status": "MAP_VS_ARCHIVE_COORDINATE_AGREEMENT_ONLY",
+  "official_dnr_pdf_url": "https://www.iowadnr.gov/media/1999/download?inline=",
+  "original_workflow_run_url": "https://github.com/zuizui0223/frogcs/actions/runs/37749856908",
+  "original_artifact_url": "https://github.com/zuizui0223/frogcs/actions/runs/37749856908/artifacts/11537855061",
+  "pdf_sha256": "74c37c9ed7c3aaccd0a3eb3a0f6ab3834d404313380b8819987f2822add1c1b0",
+  "usgs_coordinates_sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+  "usgs_runs_sha256": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+  "usgs_stops_sha256": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+  "pdf_pages_containing_ten_row_coordinate_table": [
+    4,
+    5
+  ],
+  "route_id": "360417",
+  "region": "Iowa, Warren and Madison counties",
+  "n_eligible_runs": 27,
+  "n_sampled_years": 6,
+  "n_dnr_map_stops": 10,
+  "n_comparable_stops": 10,
+  "n_ambiguous_source_site_identifiers": 0,
+  "n_stops_within_100m": 10,
+  "n_stops_within_250m": 10,
+  "median_distance_m": 4.150085375314098,
+  "max_distance_m": 5.844303126278611,
+  "historical_field_site_continuity_externally_confirmed": 0,
+  "frog_counts_read": false,
+  "landcover_pixel_values_read": false,
+  "per_stop_distance_m": [
+    {
+      "stop_number": 1,
+      "usgs_site_id": "7271",
+      "distance_m": 5.601011038109978
+    },
+    {
+      "stop_number": 2,
+      "usgs_site_id": "7272",
+      "distance_m": 5.046833382593016
+    },
+    {
+      "stop_number": 3,
+      "usgs_site_id": "7273",
+      "distance_m": 3.72294431704202
+    },
+    {
+      "stop_number": 4,
+      "usgs_site_id": "7274",
+      "distance_m": 1.7420088709283326
+    },
+    {
+      "stop_number": 5,
+      "usgs_site_id": "7275",
+      "distance_m": 5.844303126278611
+    },
+    {
+      "stop_number": 6,
+      "usgs_site_id": "7276",
+      "distance_m": 4.692224042358996
+    },
+    {
+      "stop_number": 7,
+      "usgs_site_id": "7277",
+      "distance_m": 1.7278035514431702
+    },
+    {
+      "stop_number": 8,
+      "usgs_site_id": "7278",
+      "distance_m": 2.269204259247925
+    },
+    {
+      "stop_number": 9,
+      "usgs_site_id": "7279",
+      "distance_m": 4.577226433586175
+    },
+    {
+      "stop_number": 10,
+      "usgs_site_id": "7280",
+      "distance_m": 2.7058501695944814
+    }
+  ],
+  "interpretation": "Post-study state map and archived USGS coordinates agree numerically. Potential common coordinate origin; historical (2001-2015) physical station continuity remains unverified. No breeding/occupancy/landcover causal inference permitted."
+}
