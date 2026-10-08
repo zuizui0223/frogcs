@@ -1,0 +1,53 @@
+name: Independent Iowa DNR–USGS site map coordinate crosscheck
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_route_map_crosscheck.yml'
+      - 'studies/climate_landscape/scripts/audit_iowa_route_map_crosscheck.py'
+      - 'studies/climate_landscape/tests/test_iowa_route_map_crosscheck.py'
+      - 'studies/climate_landscape/reference_routes/iowa_dnr_360411_2020_route_waypoints.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: independent-iowa-naamp-route-map-crosscheck
+  cancel-in-progress: false
+
+jobs:
+  route-identity-metadata-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install reproducible analysis dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Verify route crosscheck synthetic controls
+        run: python -m pytest -q studies/climate_landscape/tests/test_iowa_route_map_crosscheck.py
+      - name: Fetch pinned official NAAMP metadata only, no Counts.csv
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp_sources"
+      - name: Crosscheck Iowa DNR public route map versus USGS archival coordinates
+        run: |
+          python studies/climate_landscape/scripts/audit_iowa_route_map_crosscheck.py \
+            --runs "$RUNNER_TEMP/naamp_sources/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp_sources/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp_sources/Coordinates.csv" \
+            --reference studies/climate_landscape/reference_routes/iowa_dnr_360411_2020_route_waypoints.csv \
+            --out "$RUNNER_TEMP/iowa_dnr_usgs_route_coordinate_crosscheck.json"
+      - name: Upload source-only spatial agreement receipt
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iowa-dnr-usgs-route-coordinate-crosscheck-v13
+          path: ${{ runner.temp }}/iowa_dnr_usgs_route_coordinate_crosscheck.json
+          if-no-files-found: error
+          retention-days: 30
