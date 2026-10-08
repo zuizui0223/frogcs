@@ -1,0 +1,64 @@
+# v3.1 — Iowa historical station / local-water-state source gate
+
+**Date:** 2026-10-08. **Classification:** source-only, response-blind follow-up to v3.0. **Scientific authority:** this is a separate exploratory climate–landscape study; it does not amend, reanalyse, or provide confirmation for locked JAE RC6.
+
+## Why this gate precedes another raster or acoustic test
+
+The frozen 2011–2013 Collection 1.0 screen found only five forest→nonforest 30 m cells within 250 m of 2/70 nominal Iowa stations (three near 360104 stop 3, SiteID 6613; two near 360412 stop 7, SiteID 7247). The subsequent original USDA Science TCC v2025.6 comparison found modeled 2011→2013 canopy differences of −15, −29, and −7 percentage points at the three 360104 cells, versus 0 and 0 at the two 360412 cells. These cells were selected **after inspection of categorical changes**; the comparisons do not establish a region-wide disturbance, calibrated image accuracy, loss of breeding water, or an effect on frogs. See the frozen v2.2, v2.3 and v3.0 reports.
+
+The independently published **Iowa DNR Frog and Toad Call Survey Results for Iowa, 2025** describes:
+- Iowa's participation in USGS NAAMP beginning in 2010 and the adoption of 84 NAAMP routes, with the state continuing routes after the national program ended in 2015;
+- ten approximately fixed stops on NAAMP-style routes, contrasted with traditional volunteer-selected routes;
+- **site-specific wet/dry status collected in its contemporary protocol** together with calling and observation covariates;
+- earlier protocol changes, notably five-minute listening starting in 2008 and species-identification changes around 2009.
+
+The contemporary 2025 wet/dry field is an important **data-availability lead**, *not proof that the original USGS 2009–2015 Stops.csv contains a usable wet/dry variable*. Equally, the Iowa DNR public 2021 station maps/description sheets are useful habitat-context documents but do not alone verify 2010–2015 stop continuity. The route-description sheets for 360104 and 360412 have blank route-establishment dates.
+
+An additional provenance issue must remain visible: the original NAAMP source metadata used in v2.1 include **2009** for route 360110, despite the later Iowa DNR report's broad statement that participation in NAAMP began in **2010**. This is a **record-provenance question**, not evidence of an invalid 2009 survey; reconcile the source date and route type before treating all early Iowa route records as a homogeneous program.
+
+## Frozen sources to reconcile
+
+1. Original checksum-pinned USGS NAAMP Runs.csv and Stops.csv, and coordinate source already used by the source-only cohort; hashes in v2.1 receipt. **Do not open Counts.csv** for any of the new routes.
+2. [Iowa DNR current survey and route map index](https://www.iowadnr.gov/programs-services/volunteer-opportunities/wildlife-monitoring/frogs-and-toads/survey); [official 360104 route description](https://www.iowadnr.gov/media/1953/download?inline=) and [360412 route description](https://www.iowadnr.gov/media/2011/download?inline=), both dated January 2021.
+3. [Iowa DNR 2025 annual report](https://www.iowadnr.gov/media/9064/download?inline=). Its contemporary protocol should not be assumed backward-compatible.
+4. [USGS NAAMP historical program/protocol](https://www.usgs.gov/centers/eesc/science/north-american-amphibian-monitoring-program) explicitly allows exceptional stop relocation and notes route-map updates were not always communicated.
+5. [USGS Annual NLCD Collection 1.2 Land Cover](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-land-cover-annual-nlcd-collection-12-land-cover) and [Collection 1.2 Land Cover Confidence](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-land-cover-annual-nlcd-collection-1-land-cover-confidence); do not substitute Collection 1.0 or a masked TCC layer for those missing original C1.2 raster outputs.
+
+## Source request / document search — narrowly scoped and not sent
+
+For the **original 2010–2015 NAAMP-era stations**, seek from Iowa DNR's volunteer monitoring program or original field archives:
+
+**A. Historical physical-site identity**
+- dated first-established route/stop waypoints, field maps or stop descriptions for **360104 stop 3 (SiteID 6613)** and **360412 stop 7 (SiteID 7247)**;
+- change logs for stop relocation, roadworks, inaccessible stops, renumbering or stop retirement during 2010–2015;
+- which station/coordinate version was active in **2010–2011**, **2012**, and **2013–2015**;
+- provenance for **360110's 2009** USGS source entry (if extending beyond the two focal source-QC sites).
+
+**B. Repeated local water state**
+- whether per-stop **wet/dry** (or standing-water presence, level, inundation, hydroperiod) was actually recorded **in the original 2010–2015 Iowa NAAMP surveys**, as distinct from current 2025 forms;
+- if yes, whether observations can be linked **without species outcomes** to date, original route number, stop number, physical SiteID and run identifier;
+- a field dictionary specifying unknown, skipped, missing, season and dry classifications; recording protocol changes, QA and archival coverage;
+- if unavailable, explicit acknowledgement of missingness/non-retention rather than treating a present-day protocol as evidence of historical hydrology.
+
+No request was sent by this audit; a public route PDF and stable archived SiteID remain **necessary but insufficient** for historical physical-site verification.
+
+## Data gates before any additional frog-response readback
+
+| Gate | Minimum verifiable result | If absent |
+| --- | --- | --- |
+| H1 historical site | Dated evidence that the *same physical listening stop* was occupied during the environmental and calling comparison years; relocation records accounted for | Station-level forest/canopy → calling inference prohibited |
+| H2 annual source identity | Original **C1.2** land-cover and confidence at the same preselected five 30 m cells and their buffer context, 2011–2013, with year, tile/grid, layer identities and content hashes | Keep older C1V0/TCC disagreement descriptive; do not relabel it latest NLCD validation |
+| H3 local water-state availability | Actual historical stop-event water state with a validated missingness policy, a source-only coverage table and no species-response columns | Do not claim a test of local hydrology; use only a future independently measured fixed-site study |
+| H4 independent ecological design | A source/geometry-driven inclusion rule and sufficient independent route/year/site contrasts fixed **before** looking at any newly selected frog outcomes | No new-route Counts.csv inspection to rescue an environmental exposure pattern |
+
+**Do not infer H3 from the 2025 Iowa survey document.** If future historical wet/dry data are obtained, treat them as an observation-process/hydrology proxy requiring validation, **not a measure of breeding success or water volume**. Freeze the response-blind input and coverage before specifying any acoustic allocation test.
+
+The current source-only v2.1 eligibility table has just **one pre-2012 recorded survey year** for 360104 (three runs in 2011) and **two pre-2012 years** for 360412 (four runs in 2010–2011), which further limits pretrend identification. A single 2012 category change is not a confirmed natural experiment.
+
+## Close-or-continue rule
+
+**Present classification: insufficiently identified environmental-to-acoustic causal mechanism.** The source-selected canopy candidate at 360104 remains interesting as a *terrestrial edge/buffer exposure*, not evidence that the water in the roadside drainage ditch changed or that reproductive activity moved. At 360412 the nominal NLCD loss is not reproduced by the independent quantitative canopy-output comparison.
+
+Continue only if new **historically dated station evidence** or **historical stop-event wetness data** are located, and if a C1.2 same-version source is independently verified. Otherwise, retain the five-pixel measurement caution as a method/quality note; do not deepen frog-outcome selection, retune 2012, re-open the negative climate prediction, or elevate either site to a published causal finding.
+
+No new NAAMP species/call-index outcome was accessed for this document. No WFTS work was initiated. JAE RC6 remains unchanged.
