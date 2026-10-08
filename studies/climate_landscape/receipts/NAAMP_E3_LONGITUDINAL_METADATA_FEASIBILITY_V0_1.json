@@ -1,0 +1,143 @@
+{
+  "QA_pixel_validity_checked": false,
+  "analysis": "e3_landsat_longitudinal_metadata_feasibility_v0_1",
+  "climate_or_biology_effect_estimated": false,
+  "cross_sensor_harmonisation_performed": false,
+  "groups": {
+    "adjacent_year": {
+      "pairs": 1817,
+      "routes": 337,
+      "same_sensor_and_scene_season_candidate_pairs": 1817,
+      "same_sensor_scene_candidate_pairs": 1817,
+      "year_gap_median": 1
+    },
+    "early_to_late_era": {
+      "pairs": 91,
+      "routes": 91,
+      "same_sensor_and_scene_season_candidate_pairs": 89,
+      "same_sensor_scene_candidate_pairs": 89,
+      "year_gap_median": 10
+    },
+    "exact_five_year": {
+      "pairs": 571,
+      "routes": 146,
+      "same_sensor_and_scene_season_candidate_pairs": 571,
+      "same_sensor_scene_candidate_pairs": 571,
+      "year_gap_median": 5
+    },
+    "one_long_gap_per_route": {
+      "pairs": 179,
+      "routes": 179,
+      "same_sensor_and_scene_season_candidate_pairs": 177,
+      "same_sensor_scene_candidate_pairs": 177,
+      "year_gap_median": 8
+    }
+  },
+  "image_lookback_days": 32,
+  "input_analysis": "naamp_e3_ndmi_metadata_coverage_v0_1",
+  "input_json_sha256": "f375494c3ee4897d45729866f771521753a1a9ed070908ce4002d1db3ab599ce",
+  "n_routes": 395,
+  "n_routes_at_least_two_survey_years": 389,
+  "n_routes_span_at_least_eight_years": 101,
+  "n_routes_span_at_least_five_years": 195,
+  "n_routes_with_full_scene_candidate": 395,
+  "n_survey_runs": 3811,
+  "note": "Potential route-year satellite coverage only: requires independent site verification, QA-complete pixels and frozen climate-response analysis.",
+  "physical_site_continuity_across_years_verified": false,
+  "population_scope": "frozen E3 principal-pair subset, not all 7,848 NAAMP runs",
+  "scene_acquisition_same_season_tolerance_days": 21,
+  "scientific_status": "metadata_only_no_pixel_or_frog_response",
+  "season_sensitivity": {
+    "14": {
+      "adjacent_year": {
+        "pairs": 1587,
+        "routes": 323,
+        "same_sensor_and_scene_season_candidate_pairs": 1585,
+        "same_sensor_scene_candidate_pairs": 1587,
+        "year_gap_median": 1
+      },
+      "early_to_late_era": {
+        "pairs": 87,
+        "routes": 87,
+        "same_sensor_and_scene_season_candidate_pairs": 84,
+        "same_sensor_scene_candidate_pairs": 84,
+        "year_gap_median": 10
+      },
+      "exact_five_year": {
+        "pairs": 510,
+        "routes": 142,
+        "same_sensor_and_scene_season_candidate_pairs": 510,
+        "same_sensor_scene_candidate_pairs": 510,
+        "year_gap_median": 5
+      },
+      "one_long_gap_per_route": {
+        "pairs": 174,
+        "routes": 174,
+        "same_sensor_and_scene_season_candidate_pairs": 171,
+        "same_sensor_scene_candidate_pairs": 171,
+        "year_gap_median": 8
+      }
+    },
+    "21": {
+      "adjacent_year": {
+        "pairs": 1817,
+        "routes": 337,
+        "same_sensor_and_scene_season_candidate_pairs": 1817,
+        "same_sensor_scene_candidate_pairs": 1817,
+        "year_gap_median": 1
+      },
+      "early_to_late_era": {
+        "pairs": 91,
+        "routes": 91,
+        "same_sensor_and_scene_season_candidate_pairs": 89,
+        "same_sensor_scene_candidate_pairs": 89,
+        "year_gap_median": 10
+      },
+      "exact_five_year": {
+        "pairs": 571,
+        "routes": 146,
+        "same_sensor_and_scene_season_candidate_pairs": 571,
+        "same_sensor_scene_candidate_pairs": 571,
+        "year_gap_median": 5
+      },
+      "one_long_gap_per_route": {
+        "pairs": 179,
+        "routes": 179,
+        "same_sensor_and_scene_season_candidate_pairs": 177,
+        "same_sensor_scene_candidate_pairs": 177,
+        "year_gap_median": 8
+      }
+    },
+    "7": {
+      "adjacent_year": {
+        "pairs": 1154,
+        "routes": 298,
+        "same_sensor_and_scene_season_candidate_pairs": 1154,
+        "same_sensor_scene_candidate_pairs": 1154,
+        "year_gap_median": 1
+      },
+      "early_to_late_era": {
+        "pairs": 81,
+        "routes": 81,
+        "same_sensor_and_scene_season_candidate_pairs": 78,
+        "same_sensor_scene_candidate_pairs": 78,
+        "year_gap_median": 10
+      },
+      "exact_five_year": {
+        "pairs": 342,
+        "routes": 130,
+        "same_sensor_and_scene_season_candidate_pairs": 341,
+        "same_sensor_scene_candidate_pairs": 342,
+        "year_gap_median": 5
+      },
+      "one_long_gap_per_route": {
+        "pairs": 164,
+        "routes": 164,
+        "same_sensor_and_scene_season_candidate_pairs": 161,
+        "same_sensor_scene_candidate_pairs": 161,
+        "year_gap_median": 8
+      }
+    }
+  },
+  "survey_date_season_tolerance_days": 21
+}
