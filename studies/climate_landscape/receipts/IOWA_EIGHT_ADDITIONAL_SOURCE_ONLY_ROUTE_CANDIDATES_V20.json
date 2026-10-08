@@ -1,0 +1,87 @@
+{
+  "analysis": "Iowa_NAAMP_source_only_extended_route_metadata_cohort_v20",
+  "source": "stored v1.4 Iowa DNR–USGS route index intersection, source-only, no frog outcomes",
+  "n_total_current_dnr_naamp_overlap": 56,
+  "rule": "n_years >= 5 AND n_site_ids == 10",
+  "n_candidates": 9,
+  "discovery_route": "360417",
+  "new_outcome_unread_route_codes": [
+    "360104",
+    "360109",
+    "360110",
+    "360125",
+    "360213",
+    "360219",
+    "360316",
+    "360412"
+  ],
+  "metadata": [
+    {
+      "n_runs": 14,
+      "n_site_ids": 10,
+      "n_stop_visits": 140,
+      "n_years": 5,
+      "route_id": "360104",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 13,
+      "n_site_ids": 10,
+      "n_stop_visits": 130,
+      "n_years": 5,
+      "route_id": "360109",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 18,
+      "n_site_ids": 10,
+      "n_stop_visits": 180,
+      "n_years": 6,
+      "route_id": "360110",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 14,
+      "n_site_ids": 10,
+      "n_stop_visits": 140,
+      "n_years": 6,
+      "route_id": "360125",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 11,
+      "n_site_ids": 10,
+      "n_stop_visits": 110,
+      "n_years": 5,
+      "route_id": "360213",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 14,
+      "n_site_ids": 10,
+      "n_stop_visits": 140,
+      "n_years": 6,
+      "route_id": "360219",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 11,
+      "n_site_ids": 10,
+      "n_stop_visits": 110,
+      "n_years": 6,
+      "route_id": "360316",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 10,
+      "n_site_ids": 10,
+      "n_stop_visits": 100,
+      "n_years": 5,
+      "route_id": "360412",
+      "source_coordinate_route_present": true
+    }
+  ],
+  "n_field_verified_historical_sites": 0,
+  "landcover_C1V2_pairwise_pixels_in_new_routes_collected": false,
+  "reason": "avoid treating single site stop 10 as an independently generalizable landcover effect"
+}
