@@ -1,0 +1,83 @@
+{
+  "E3_routes": 395,
+  "E3_runs": 3811,
+  "Landsat7_scan_line_corrector_failed_date": "2003-05-31",
+  "actual_scenes_pixel_values_computed": false,
+  "analysis": "landscape_2026_e3_slc_off_and_pilot_quality_audit_v0_1",
+  "frog_climate_effect_estimated": false,
+  "interpretation": "Source metadata cannot confirm QA-valid change maps; pilot samples are not representative, and USGS Annual NLCD pixel transitions remain uncomputed.",
+  "pilot_artifact_zip_sha256": {
+    "e3-ndmi-pixel-qa-11523329342.zip": "29da575b25b0f5b8b100264e4b6b88efef932271de38b375f4eea77163d7b577",
+    "e3-ndmi-pixel-qa-11523344164.zip": "3b4e03ff36f7b9c28621c552386f5f7af3db118ef0b6774212a1e089ef1ded82",
+    "e3-ndmi-pixel-qa-11523711227.zip": "c926802335a7707385b41b47791b8221671d4d8b512063b11fdf90af1ae953c7"
+  },
+  "pilot_is_only_18_hash_selected_runs_first_scene_only": true,
+  "pilot_qa": {
+    "by_era_shard": {
+      "0": {
+        "first_scene_all10_qa_pass": 0,
+        "n_qa_evaluated": 4,
+        "runs": 6,
+        "source_failed": 2
+      },
+      "1": {
+        "first_scene_all10_qa_pass": 1,
+        "n_qa_evaluated": 4,
+        "runs": 6,
+        "source_failed": 2
+      },
+      "2": {
+        "first_scene_all10_qa_pass": 2,
+        "n_qa_evaluated": 4,
+        "runs": 6,
+        "source_failed": 2
+      }
+    },
+    "n_first_scene_all10_fail": 9,
+    "n_first_scene_all10_pass": 3,
+    "n_not_evaluated_other": 0,
+    "n_pilot_runs": 18,
+    "n_qa_evaluated": 12,
+    "n_source_error": 6
+  },
+  "site_coordinates_not_externally_verified": true,
+  "source_frog_e3_sample_outcome_informed": true,
+  "source_sha256": "f375494c3ee4897d45729866f771521753a1a9ed070908ce4002d1db3ab599ce",
+  "strict_metadata_scene_pair_classification": {
+    "adjacent_year": {
+      "SLC_class_counts": {
+        "LC08_other_satellite": 150,
+        "LE07_both_post_SLC_off": 789,
+        "LE07_both_pre_SLC_off": 22,
+        "LE07_mixed_pre_post_SLC_off": 31,
+        "LT05_other_satellite": 429
+      },
+      "n_distinct_routes": 316,
+      "n_metadata_eligible_pairs": 1421,
+      "n_not_using_LE07": 579,
+      "n_with_LE07_SLC_OFF_on_either_image": 820
+    },
+    "early_to_late_era": {
+      "SLC_class_counts": {
+        "LE07_both_post_SLC_off": 21,
+        "LE07_mixed_pre_post_SLC_off": 32,
+        "LT05_other_satellite": 5
+      },
+      "n_distinct_routes": 58,
+      "n_metadata_eligible_pairs": 58,
+      "n_not_using_LE07": 5,
+      "n_with_LE07_SLC_OFF_on_either_image": 53
+    },
+    "one_long_gap_per_route": {
+      "SLC_class_counts": {
+        "LE07_both_post_SLC_off": 76,
+        "LE07_mixed_pre_post_SLC_off": 37,
+        "LT05_other_satellite": 10
+      },
+      "n_distinct_routes": 123,
+      "n_metadata_eligible_pairs": 123,
+      "n_not_using_LE07": 10,
+      "n_with_LE07_SLC_OFF_on_either_image": 113
+    }
+  }
+}

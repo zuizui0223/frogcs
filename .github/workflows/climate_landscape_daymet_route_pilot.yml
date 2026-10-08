@@ -1,0 +1,55 @@
+name: Independent Daymet route-climate pilot
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_landscape_daymet_route_pilot.yml'
+      - 'studies/climate_landscape/scripts/daymet_route_climate_pilot.py'
+      - 'studies/climate_landscape/tests/test_daymet_route_climate_pilot.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: independent-daymet-route-climate-pilot-v07
+  cancel-in-progress: false
+
+jobs:
+  source-only-daymet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install locked-source analysis requirements
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Run response-blind Daymet unit tests
+        run: python -m pytest -q studies/climate_landscape/tests/test_daymet_route_climate_pilot.py
+      - name: Fetch pinned USGS Runs Stops and geometry only
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp_metadata"
+      - name: Obtain actual 1981-2015 Daymet history on outcome-blind routes
+        run: |
+          python studies/climate_landscape/scripts/daymet_route_climate_pilot.py \
+            --runs "$RUNNER_TEMP/naamp_metadata/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp_metadata/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp_metadata/Coordinates.csv" \
+            --sample-out "$RUNNER_TEMP/frog_daymet_route_sample.json" \
+            --out "$RUNNER_TEMP/frog_daymet_route_climate_receipt.json"
+      - name: Save only climate screening output and source receipts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frog-independent-daymet-route-climate-v07
+          path: |
+            ${{ runner.temp }}/frog_daymet_route_sample.json
+            ${{ runner.temp }}/frog_daymet_route_climate_receipt.json
+            ${{ runner.temp }}/naamp_metadata/pinned_source_receipt.json
+          if-no-files-found: warn
+          retention-days: 30
