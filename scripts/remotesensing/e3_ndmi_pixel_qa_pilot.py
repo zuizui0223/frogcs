@@ -117,9 +117,9 @@ def inspect_one(run,coords):
             sat=shapes["qa_radsat"]
             nir_refl=shapes["nir08"]*SCALE+OFFSET
             swir_refl=shapes["swir16"]*SCALE+OFFSET
-            valid=((qa & maskbits)==0)&(sat==0)&
+            valid=(((qa & maskbits)==0)&(sat==0)&
                  np.isfinite(nir_refl)&np.isfinite(swir_refl)&
-                 (nir_refl>0)&(nir_refl<=1)&(swir_refl>0)&(swir_refl<=1)
+                 (nir_refl>0)&(nir_refl<=1)&(swir_refl>0)&(swir_refl<=1))
             frac=float((valid&circ).sum()/n)
             stops.append({"stop_index":ix+1,"valid_fraction":frac,
                           "passed_70pct":bool(frac>=.70),
@@ -134,12 +134,32 @@ obj=json.loads(META.read_text())
 if obj.get("classification")!="metadata_necessary_gate_pass":
     raise RuntimeError("metadata_necessary_gate_not_passed")
 rows=obj["metadata_run_rows"]
-# Metadata item doesn't contain SiteIDs; recover them outcome-blind from pinned
-# physical-coordinate table and a separate frozen RunID-to-SiteID mapping instead.
-# This pilot fails closed without the identity manifest.
-MANIFEST=Path(os.environ.get("E3_RUN_SITE_MANIFEST","remotesensing/E3_NDMI_RUN_SITE_MANIFEST_V0_1.json"))
-if not MANIFEST.exists(): raise RuntimeError("E3_RunID_SiteID_identity_manifest_missing")
-byrun=json.loads(MANIFEST.read_text())
+# Reconstruct the already-frozen RunID × ten-SiteID identity without
+# looking at NDMI, QA results, or the concentration endpoint.
+import importlib.util
+def loadmod(name,path):
+    spec=importlib.util.spec_from_file_location(name,path)
+    module=importlib.util.module_from_spec(spec)
+    assert spec.loader
+    spec.loader.exec_module(module)
+    return module
+flex=loadmod("flex",ROOT/"exploration"/"run_naamp_flexible_common_environment_null.py")
+hyd=loadmod("hyd",ROOT/"scripts"/"remotesensing"/"run_naamp_dynamic_hydrology_mechanism.py")
+mem=flex.mem
+raw,runs,pairs,pair_data,hist,pools,sampled,ss=flex.prepare_subset()
+site=mem.site_map(raw,set(runs.RunID.astype(str)))
+safe=hyd.strict_routes()
+byrun={}
+for p,d in zip(pairs.itertuples(index=False),pair_data):
+    if str(p.RouteNumber) not in safe:
+        continue
+    ids=mem.focal_siteids(p,d,site)
+    if ids is None or len(ids)!=10:
+        continue
+    for runid in (str(p.wet_RunID),str(p.dry_RunID)):
+        if runid in byrun and byrun[runid]!=list(ids):
+            raise RuntimeError("focal_site_identity_drift")
+        byrun[runid]=list(ids)
 cb=get(COORD_URL,decode_json=False)
 if hashlib.sha256(cb).hexdigest()!=COORD_SHA: raise RuntimeError("coordinate_sha_drift")
 import csv,io
