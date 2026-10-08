@@ -1,0 +1,70 @@
+name: USDA Science TCC Standard Error 2025.6 year catalog gate
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_usfs_science_tcc_se_source_v30.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-science-tcc-standard-error:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original USDA Science TCC SE mosaic items are available for exact years
+        run: |
+          python - <<'PY'
+          import urllib.parse,urllib.request,json,hashlib
+          from pathlib import Path
+          base='https://imagery.geoplatform.gov/iipp/rest/services/Vegetation/USFS_EDW_TCC_Science_SE_CONUS/ImageServer'
+          def fetch(endpoint,args):
+              req=urllib.request.Request(base+endpoint+'?'+urllib.parse.urlencode(args),
+                 headers={'User-Agent':'frogcs-USFS-ScienceTCC-SE-2025.6-QC/0.1'})
+              with urllib.request.urlopen(req,timeout=70) as r:
+                  url=urllib.parse.urlparse(r.geturl())
+                  if url.scheme!='https' or url.hostname!='imagery.geoplatform.gov':
+                      raise ValueError('Wrong USFS SE service URL host')
+                  raw=r.read(1_000_001)
+              if len(raw)>1_000_000:raise ValueError('Unexpected USFS metadata size')
+              obj=json.loads(raw)
+              if obj.get('error'):raise ValueError(str(obj['error'])[:160])
+              return obj,hashlib.sha256(raw).hexdigest()
+          out={'analysis':'USFS_Science_TCC_v2025_6_uncertainty_source_gate_v30',
+               'values_not_yet_read':True,'no_frog_counts_read':True,
+               'not_a_2012_forestloss_confirmation':True,'years':[]}
+          o,sha=fetch('',{'f':'json'})
+          out.update({'base_url':base,'root_sha256':sha,'bandCount':o.get('bandCount'),
+               'pixelType':o.get('pixelType'),
+               'nodata_values':[65534,65535],
+               'standard_error_model_units_divisor':100,
+               'fields':[q.get('name') for q in o.get('fields',[])]})
+          for year in (2011,2012,2013):
+              obj,digest=fetch('/query',{'where':f'beginyear <= {year} AND endyear >= {year}',
+                'outFields':'objectid,name,beginyear,endyear,dataset_name',
+                'returnGeometry':'false','f':'json'})
+              rows=[x.get('attributes',{}) for x in obj.get('features',[])]
+              rec={'year':year,'n_rows':len(rows),'source_response_sha256':digest,
+                   'items':rows,'source_year_unique_and_version_identified':
+                      len(rows)==1 and 'v2025_6' in str(rows[0].get('name','')) if rows else False}
+              out['years'].append(rec)
+              print(json.dumps({'year':year,'rows':rows,'verified':rec['source_year_unique_and_version_identified']},sort_keys=True),flush=True)
+          out['status']='SE_SOURCE_YEAR_IMAGES_AVAILABLE' if (
+            out['pixelType'] in ('U16','S16') and all(z['source_year_unique_and_version_identified'] for z in out['years'])
+            ) else 'SE_SOURCE_UNCERTAIN'
+          Path('usfs_tcc_science_se_source_v30.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'status':out['status'],'dtype':out['pixelType']},sort_keys=True))
+          PY
+      - name: Save independent original USDA SE source metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: usfs-science-tcc-SE-2011-2013-catalog-v30
+          path: usfs_tcc_science_se_source_v30.json
+          if-no-files-found: error
+          retention-days: 30
