@@ -21,3 +21,14 @@ All 3/3 nominal forest-loss cells at **360104 stop 3** exhibit substantial *mode
 **Biological implication:** The naive common-2012 forest-conversion treatment was rejected earlier (only 2/70 nominal 250m stops with even one C1V0 loss cell, and five cells total, with low C1V0 class confidence). The canopy data add one *possible local canopy-decline candidate* at 360104—not a replicated regional habitat intervention or evidence of frog movement. We still have **0 independently confirmed historical 2001–2015 physical stations, 0 original Annual NLCD C1.2 land-cover/confidence pixels**, and no frog outcomes examined for these newly selected routes. No species- or lag-window post hoc tuning will follow.
 
 **Next source gate:** determine whether dated Iowa route-station relocation records exist for 360104/360412, and independently obtain Annual NLCD C1.2 land-cover + confidence or comparable original imagery. If either fails, label the within-route acoustic adaptation/legacy mechanism untested. Do not promote these five environmentally postselected pixels as an ecological effect.
+
+
+## Listening-stop ecology, verified from separate DNR route descriptions
+
+Official post-study Iowa DNR route descriptions specify the **listening context**, rather than merely categorizing a generic land-cover pixel:
+
+- [Route 360104](https://www.iowadnr.gov/media/1953/download?inline=), stop 3 (SiteID 6613), is described as a **grassy roadside drainage ditch bordering a small woodlot** in Worth County. The large modeled canopy declines occur on that woodlot's **field-facing edge**. Tree canopy change is a potential *terrestrial-buffer* exposure, **not a direct measurement of water, breeding pools, reproductive fitness or a verified clearing date**.
+- [Route 360412](https://www.iowadnr.gov/media/2011/download?inline=), stop 7 (SiteID 7247), is described as a **gravel crossing of the Volga River** in Fayette County. The two older “forest loss” labels fall on visually open/agricultural ground, with Science TCC stable at 3%. These are consistent with raster category/boundary ambiguity, not a demonstrated change in the stream crossing.
+
+Both DNR documents are dated in **January 2021** with blank site establishment date. They are independent textual clues to recorded monitoring habitat type, but **do not resolve station relocation/continuity during NAAMP 2001–2015**. No other Iowa route is selected because of these text descriptions. This further distinguishes **a terrestrial canopy buffer changing near a listening stop** from **the aquatic reproductive site changing**.
+
