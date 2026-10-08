@@ -1,0 +1,98 @@
+name: Annual NLCD public ArcGIS ImageServer raw category pilot
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_arcgis_raw_v16.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-image-service-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install local raster reader
+        run: python -m pip install rasterio numpy
+      - name: Test year-specific public USGS-made ArcGIS NLCD raster, no frog outcomes
+        run: |
+          python - <<'PY'
+          import json,hashlib,urllib.request,urllib.parse
+          from pathlib import Path
+          import numpy as np,rasterio
+          base='https://di-nlcd.img.arcgis.com/arcgis/rest/services/USA_NLCD_Annual_LandCover/ImageServer'
+          allowed={11,12,21,22,23,24,31,41,42,43,52,71,81,82,90,95}
+          def get(endpoint,params,maxbytes=5_000_000):
+              url=base+endpoint+'?'+urllib.parse.urlencode(params)
+              req=urllib.request.Request(url,headers={'User-Agent':'frogcs-public-nlcd-imagery-v1.6','Accept':'application/json, image/tiff'})
+              with urllib.request.urlopen(req,timeout=110) as s:
+                  raw=s.read(maxbytes+1)
+                  typ=s.headers.get('Content-Type','')
+              if len(raw)>maxbytes:raise ValueError('Excessive image size')
+              return raw,typ
+          out={'analysis':'public_esri_hosted_annual_nlcd_raw_source_pilot_v16',
+               'endpoint':base,'requested_years':[2004,2009,2014],
+               'frog_outcomes_read':False,'post2015_map_does_not_verify_earlier_stations':True,
+               'C1_2_claim_authorized':False,'results':{}}
+          meta,ct=get('',{'f':'pjson'})
+          source=json.loads(meta)
+          out['service_metadata_sha256']=hashlib.sha256(meta).hexdigest()
+          out['service_time_info']=source.get('timeInfo')
+          out['pixel_type']=source.get('pixelType')
+          out['band_count']=source.get('bandCount')
+          out['time_extent']=source.get('timeInfo',{}).get('timeExtent')
+          if source.get('bandCount')!=1:
+              raise ValueError('Source not single-band raw raster')
+          for year in (2004,2009,2014):
+              record={'status':'not_queried'}
+              try:
+                  q,qt=get('/query',{'where':f'Year={year}','outFields':'OBJECTID,Name,Year,Version',
+                          'returnGeometry':'false','f':'json'},maxbytes=2500000)
+                  record['raster_items']=json.loads(q).get('features',[])[:8]
+                  rule={'mosaicMethod':'esriMosaicByAttribute','where':f'Year={year}',
+                        'sortField':'Year','sortValue':year,'ascending':True}
+                  params={'bbox':'181500,2049000,183300,2050800','bboxSR':'5070',
+                          'imageSR':'5070','size':'60,60','format':'tiff','pixelType':'U8',
+                          'mosaicRule':json.dumps(rule,separators=(',',':')),
+                          'renderingRule':json.dumps({'rasterFunction':'None'}),
+                          'f':'image'}
+                  blob,bt=get('/exportImage',params)
+                  rec={'source_sha256':hashlib.sha256(blob).hexdigest(),
+                       'bytes':len(blob),'content_type':bt,'first_bytes_hex':blob[:8].hex()}
+                  if blob[:4] not in (b'II*\x00',b'MM\x00*',b'II+\x00',b'MM\x00+'):
+                      rec.update({'status':'not_tiff','response':blob[:750].decode('utf8','replace')})
+                  else:
+                      p=Path(f'arcgis_annual_nlcd_v11_{year}_test.tif')
+                      p.write_bytes(blob)
+                      with rasterio.open(p) as src:
+                          a=src.read(1)
+                          code=set(map(int,np.unique(a)))
+                          rec.update({'status':'raw_category_tiff' if src.count==1 and code.issubset(allowed|{0,255}) else 'not_unambiguous_raw_categories',
+                                     'band_count':src.count,'crs':str(src.crs),
+                                     'res':list(src.res),'pixel_codes':sorted(code),
+                                     'shape':list(a.shape),'nodata':src.nodata})
+                  record.update(rec)
+              except Exception as e:
+                  record.update({'status':'request_failed','error':type(e).__name__+':'+str(e)[:350]})
+              out['results'][str(year)]=record
+              print(json.dumps({'year':year,'status':record.get('status'),'pixel_codes':record.get('pixel_codes'),
+                          'error':record.get('error')},sort_keys=True),flush=True)
+          Path('arcgis_annual_nlcd_raw_source_receipt_v16.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          if not any(z.get('status')=='raw_category_tiff' for z in out['results'].values()):
+              print('No verified original categorical TIFFs; source pilot classified unsuccessful')
+          PY
+      - name: Save source receipt and small raster examples only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-NLCD-annual-raw-arcgis-source-v16
+          path: |
+            arcgis_annual_nlcd_raw_source_receipt_v16.json
+            arcgis_annual_nlcd_v11_*_test.tif
+          if-no-files-found: error
+          retention-days: 30
