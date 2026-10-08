@@ -1,0 +1,89 @@
+name: USDA Forest Service Science TCC 2025.6 annual image catalog source audit
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_usfs_science_tcc_annual_source_v28.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-tree-canopy-source-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Query official USFS percent-canopy image-server metadata, NO frog outcomes
+        run: |
+          python - <<'PY'
+          import hashlib,json,urllib.parse,urllib.request
+          from pathlib import Path
+          bases={
+           'USFS_Science_TCC':'https://imagery.geoplatform.gov/iipp/rest/services/Vegetation/USFS_EDW_Science_TCC_CONUS/ImageServer',
+           'USFS_NLCD_TCC':'https://imagery.geoplatform.gov/iipp/rest/services/Vegetation/USFS_EDW_NLCD_TCC_CONUS/ImageServer'
+          }
+          outcome={'analysis':'2026_USDA_1985_2025_Science_TCC_Canopy_Source_Metadata_v28',
+                   'no_NAAMP_counts_opened':True,'no_treecanopy_pixels_opened':True,
+                   'not_a_ground_truth_dataset':True,
+                   'n_historical_NAAMP_sites_independently_field_verified':0,'services':[]}
+          def fetch(base,endpoint,params):
+              url=base+endpoint+'?'+urllib.parse.urlencode(params)
+              req=urllib.request.Request(url,headers={
+                  'User-Agent':'frogcs-USFS-tree-canopy-source-QC-v28',
+                  'Accept':'application/json'})
+              with urllib.request.urlopen(req,timeout=65) as r:
+                  u=urllib.parse.urlparse(r.geturl())
+                  if u.scheme!='https' or u.hostname!='imagery.geoplatform.gov':
+                      raise ValueError('Source redirect outside authorized host')
+                  raw=r.read(2_000_001)
+                  if len(raw)>2_000_000:raise ValueError('Source metadata payload >2MB')
+              obj=json.loads(raw)
+              if obj.get('error'):raise ValueError('REST error: '+str(obj['error'])[:130])
+              return obj,hashlib.sha256(raw).hexdigest()
+          for name,base in bases.items():
+              source={'name':name,'base':base,'query_provenance':[],'status':'NOT_VERIFIED'}
+              try:
+                  obj,digest=fetch(base,'',{'f':'pjson'})
+                  fields=[f['name'] for f in obj.get('fields',[])]
+                  source.update({'root_sha256':digest,'bandCount':obj.get('bandCount'),
+                    'pixelType':obj.get('pixelType'),'timeInfo':obj.get('timeInfo'),
+                    'fields':fields,'raster_function_names':[x.get('name') for x in obj.get('rasterFunctionInfos',[])],
+                    'serviceDescription_excerpt':str(obj.get('description') or obj.get('serviceDescription') or '')[:800]})
+                  if not all(x in fields for x in ('beginyear','endyear','name','objectid')):
+                      raise ValueError('Required time/image-identity fields absent')
+                  for year in (2011,2012,2013):
+                      options={
+                       'where':f'beginyear <= {year} AND endyear >= {year}',
+                       'outFields':'objectid,name,beginyear,endyear,productname,dataset_name,metadata',
+                       'returnGeometry':'false','resultRecordCount':'25','f':'json'}
+                      data,sha=fetch(base,'/query',options)
+                      rows=[x.get('attributes',{}) for x in data.get('features',[])]
+                      record={'year':year,'query_sha256':sha,'n_rows':len(rows),
+                        'exceededTransferLimit':data.get('exceededTransferLimit'),
+                        'rows':rows[:25]}
+                      source['query_provenance'].append(record)
+                      print(json.dumps({'service':name,'year':year,'n_rows':len(rows),
+                        'rows':rows[:10]},sort_keys=True),flush=True)
+                  source['status']='METADATA_AVAILABLE_PIXEL_VALUE_NOT_READ'
+              except Exception as e:
+                  source.update({'status':'CATALOG_NOT_VERIFIED','error_type':type(e).__name__,
+                                 'error':str(e)[:250]})
+              outcome['services'].append(source)
+          outcome['status']='SOURCE_CATALOG_SCREEN_COMPLETE_NO_TCC_PIXELS'
+          Path('usfs_tcc_2011_2013_source_metadata_v28.json').write_text(
+              json.dumps(outcome,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'status':outcome['status'],
+              'services':[{k:s.get(k) for k in ('name','status','bandCount','pixelType')} for s in outcome['services']]},sort_keys=True))
+          PY
+      - name: Preserve provenance and original catalog rows
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-usfs-science-tcc-2011-2013-metadata-v28
+          path: usfs_tcc_2011_2013_source_metadata_v28.json
+          if-no-files-found: error
+          retention-days: 30
