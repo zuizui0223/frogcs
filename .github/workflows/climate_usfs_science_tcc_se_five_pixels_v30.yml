@@ -1,0 +1,44 @@
+name: USDA Science TCC error-adjusted five mapped canopy pixels
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_usfs_science_tcc_se_five_pixels_v30.yml'
+      - 'studies/climate_landscape/scripts/audit_usfs_tcc_standard_error_five_cells_v30.py'
+      - 'studies/climate_landscape/tests/test_tcc_standard_error_five_cells_v30.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-tree-model-dispersion-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen science tools
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Fail-closed error scaling and no-p-value unit tests
+        run: python -m pytest -q studies/climate_landscape/tests/test_tcc_standard_error_five_cells_v30.py
+      - name: Download original USGS metadata, never species or Count data
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Read original USDA TCC Science predictions and 16-bit model dispersion, same five pixels
+        run: |
+          python studies/climate_landscape/scripts/audit_usfs_tcc_standard_error_five_cells_v30.py \
+            --runs "$RUNNER_TEMP/naamp/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp/Coordinates.csv" \
+            --out "$RUNNER_TEMP/tcc_se_loss_pixels_v30.json"
+      - name: Archive numeric model dispersion and immutable source hashes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: USDA-TCC-science-SE-five-loss-cells-v30
+          path: ${{ runner.temp }}/tcc_se_loss_pixels_v30.json
+          if-no-files-found: error
+          retention-days: 30
