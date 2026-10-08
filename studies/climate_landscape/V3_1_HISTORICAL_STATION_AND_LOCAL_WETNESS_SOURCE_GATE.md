@@ -88,3 +88,9 @@ I am auditing historical site- and visit-level environmental metadata for the NA
 Thank you for considering this historical-data availability enquiry.
 
 **Contact verification:** the official 2025 report names Stephanie Shepherd and the current DNR survey page links its monitoring portal. Before actually sending a request, reconfirm the official programme contact and obtain author approval. This document does not authorize sending.
+
+## National-versus-state form mismatch: independently verified protocol boundary
+
+The [USGS national NAAMP protocol](https://www.usgs.gov/centers/eesc/science/north-american-amphibian-monitoring-program) specifies route-start/end weather, **air temperature** at stops, 5-minute calling index, traffic, moonlight, and disruptive background noise. It does **not list stop-level wet/dry as a required national field** in its data-collection section. The same protocol says that stop relocation should generally be for safety rather than disappearance of habitat and that written relocation records were kept in most cases, but route-map updates were not always transmitted.
+
+**Inference, not a downloaded data result:** Iowa's state forms could include a valid extra W/D field that was omitted in the harmonized national archive. Therefore if the USGS `Stops.csv` lacks wet/dry, a targeted **state-native raw form/database export** is the only reliable route for recovering historic Iowa stop-event water condition. Never code "missing from USGS" as "all sites dry", "wetness not observed", or "field absent from the original Iowa survey".
