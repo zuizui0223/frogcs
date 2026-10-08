@@ -1,0 +1,24 @@
+{
+  "analysis": "naamp_iowa_dnr_2020_map_to_2001_2015_archive_crosscheck_v0_1",
+  "coordinate_error_threshold_m": 100.0,
+  "frog_outcomes_read": false,
+  "n_eligible_naamp_runs_for_route": 0,
+  "n_field_verification_of_2001_2015_station_history": 0,
+  "n_map_reference_stops": 10,
+  "n_naamp_coordinate_siteids_in_route": 0,
+  "nlcd_pixels_read": false,
+  "provenance_limit": "Two maps may share historical source coordinates. Map postdates study; coordinate agreement cannot establish field relocation history.",
+  "reference_creation_date": "2020-03-11",
+  "reference_document": "https://www.iowadnr.gov/media/2019/download?inline=",
+  "reference_route": "360411",
+  "sensitivity_error_threshold_m": 250.0,
+  "source_date_after_naamp_study_window": true,
+  "source_sha256": {
+    "Coordinates.csv": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "iowa_reference_csv": "502fadaecd2dd2c989317b8021a2e860830b6f62447c1a88782df09425fcbfa0"
+  },
+  "state": "Iowa",
+  "status": "ROUTE_NOT_IN_STANDARDIZED_NAAMP_COHORT"
+}

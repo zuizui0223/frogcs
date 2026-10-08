@@ -1,0 +1,51 @@
+name: Official Iowa DNR index vs historical NAAMP route keys
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_route_index_overlap.yml'
+      - 'studies/climate_landscape/scripts/audit_iowa_dnr_route_index_overlap.py'
+      - 'studies/climate_landscape/tests/test_iowa_dnr_route_index_overlap.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: official-iowa-route-index-join-v14
+  cancel-in-progress: false
+
+jobs:
+  public-route-key-join:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install reproducible requirements
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Run response-blind index parser and route-key unit tests
+        run: python -m pytest -q studies/climate_landscape/tests/test_iowa_dnr_route_index_overlap.py
+      - name: Download original USGS Runs Stops coordinates (never Counts)
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Compare current DNR 6-digit index to actual 2001-15 NAAMP metadata
+        run: |
+          python studies/climate_landscape/scripts/audit_iowa_dnr_route_index_overlap.py \
+            --runs "$RUNNER_TEMP/naamp/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp/Coordinates.csv" \
+            --out "$RUNNER_TEMP/iowa_dnr_naamp_route_index_overlap_v14.json"
+      - name: Upload source-only route index receipt
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iowa-dnr-naamp-route-index-overlap-v14
+          path: ${{ runner.temp }}/iowa_dnr_naamp_route_index_overlap_v14.json
+          if-no-files-found: ignore
+          retention-days: 30
