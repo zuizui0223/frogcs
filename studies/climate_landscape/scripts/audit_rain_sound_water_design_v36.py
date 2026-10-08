@@ -179,6 +179,20 @@ def synthetic_tests():
     expected = historical_overlap_distribution(q, 2, {0, 1})
     assert 1 < expected < 2
     assert expected > historical_overlap_distribution([0.5]*4, 2, {0, 1})
+    # Post-treatment k is a selection variable, not a randomized treatment.
+    # Sound affects site 2 only. Site 1 marginal call probability is unchanged,
+    # yet selecting observations with exactly k=1 creates a large change in
+    # site-1's conditional fraction. Do NOT interpret that as suppression of
+    # site 1 caused by sound.
+    p_control = [0.2, 0.2]
+    p_sound = [0.2, 0.8]
+    assert p_control[0] == p_sound[0]
+    control_site1_given_one = historical_overlap_distribution(p_control, 1, {0})
+    sound_site1_given_one = historical_overlap_distribution(p_sound, 1, {0})
+    assert abs(control_site1_given_one - 0.5) < 1e-12
+    assert sound_site1_given_one < 0.07
+    assert control_site1_given_one > sound_site1_given_one
+
     for bad_probs, bad_k in (([1.,0.2],1),([0.5,0.5],3)):
         try:
             conditional_exact_k_probs(bad_probs,bad_k)
@@ -195,7 +209,7 @@ def synthetic_tests():
     assert real_calls_control == real_calls_rain_sound
     assert detected_rain_sound < detected_control
     print("PASS: 6 treatment identifiability contrasts, exact-k site allocation,")
-    print("      detection-masking counterexample and invalid-input guards.")
+    print("      detection-masking and post-treatment-k selection counterexamples, invalid-input guards.")
     print("SYNTHETIC ONLY: no frog outcomes, field treatment, sound recordings or sample-size power.")
 
 
