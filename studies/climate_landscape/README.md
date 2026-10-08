@@ -13,6 +13,8 @@
 
 **Source-only design advance:** the [metadata feasibility script](scripts/audit_iowa_state_native_wetdry_feasibility_v32.py) now checks whether observed W/D varies outside additive nominal stop plus survey-event effects, by testing the crossed stop-event observation graph for inconsistent additive cycles. [Synthetic graph-rank QA SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/37780425241). This is a necessary identifiability check, **not a frog/hydrology result**. Historical site identity, survey-skip data and original W/D field semantics still require independent verification.
 
+**Rain × historical-site interaction, v3.4:** [Source-grounded interaction audit and competing hydrology models](V3_4_RAIN_HISTORY_HYDROLOGY_INTERACTION_DECISION_SPEC.md) distinguishes the significant *directional rain-selective recurrence* (β=0.0245) and **post-hoc** deep-versus-shallow coupling (Δβ=0.0297) from the first-order rain×history null that **fails** to reproduce the conditional concentration result. Future-model predictions are frozen as a study-design aid only, **not a new same-data NAAMP outcome analysis**.
+
 **Current stop rule:** The USGS national archive alone cannot test direct local hydrology. Do not use present-day Iowa forms as historical data, select more forest-loss cells after response inspection, or fit a new acoustic model until archived field schema, historical stop identity and source comparability are independently verified.
 
 ---
