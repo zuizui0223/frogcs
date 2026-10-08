@@ -3,6 +3,11 @@ name: E3 frozen postgate NDMI mechanism
 # This workflow is deliberately explicit. Only run it after the formal
 # pre-response pixel gate has completed. The check job enforces that gate.
 on:
+  push:
+    branches:
+      - remotesensing/e3-ndmi-postgate-run-v1
+    paths:
+      - ".github/workflows/e3_ndmi_postgate_mechanism.yml"
   workflow_dispatch:
 
 permissions:
