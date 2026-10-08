@@ -34,7 +34,11 @@ def service_summary(raw):
         raise ValueError("invalid entity list")
     return {"n_public_entity_sets":len(names),
             "target_entity_sets_present":{name:name in names for name in TARGETS},
-            "separate_SystematicFaunaSurvey_entity_set":any("SystematicFauna" in name for name in names)}
+            "separate_SystematicFaunaSurvey_entity_set":any("SystematicFauna" in name for name in names),
+            "entity_sets_named_visit_or_survey":sorted(
+                name for name in names if ("visit" in name.lower() or
+                                            "survey" in name.lower() or
+                                            "effort" in name.lower()))}
 
 def schema_summary(xml_bytes):
     root=ET.fromstring(xml_bytes)
@@ -147,6 +151,8 @@ def main():
         "service_status":result.get("service_status"),
         "schema_status":result.get("schema_status"),
         "target_entities":result.get("service_summary",{}).get("target_entity_sets_present"),
+        "visit_or_survey_named_public_entity_sets":result.get("service_summary",{}).get(
+            "entity_sets_named_visit_or_survey"),
         "target_schema_field_counts":{k:v.get("n_properties") for k,v in fields.items()},
         "field_names_matching_predeclared_keywords":filtered,
         "frog_call_values_read":False,
