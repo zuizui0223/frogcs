@@ -88,7 +88,7 @@ def test_full_synthetic_pipeline(tmp_path):
     water["water_area_m2"]=2000
     water["nonwater_area_m2"]=8000
     water["nodata_area_m2"]=0
-    water["source_image_id"]="SYNTH_JRC"
+    water["source_image_id"]=water.apply(lambda r:f"JRC/GSW1_4/MonthlyHistory/{int(r.year):04d}_{int(r.month):02d}",axis=1)
     water["source_version"]="JRC_GSW1_4"
     sat=satellite.build(verified,water,land)
     assert sat.iloc[0].b250_forest_change_prior5y_frac==pytest.approx(1)
@@ -114,7 +114,7 @@ def test_missing_month_is_not_dry():
     water["water_area_m2"]=2
     water["nonwater_area_m2"]=8
     water["nodata_area_m2"]=0
-    water["source_image_id"]="SYNTH_JRC"
+    water["source_image_id"]=water.apply(lambda r:f"JRC/GSW1_4/MonthlyHistory/{int(r.year):04d}_{int(r.month):02d}",axis=1)
     water["source_version"]="JRC_GSW1_4"
     water.loc[(water.year==2011)&(water.month==6),
               ["water_area_m2","nonwater_area_m2","nodata_area_m2"]]=[0,0,10]
