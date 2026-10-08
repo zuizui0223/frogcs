@@ -1,0 +1,46 @@
+name: USDA Tree Canopy 2011-2013 actual pixels vs five low-confidence C1V0 loss cells
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_usfs_science_tcc_five_cells_v29.yml'
+      - 'studies/climate_landscape/scripts/extract_usfs_science_tcc_at_five_nlcd_cells_v29.py'
+      - 'studies/climate_landscape/tests/test_usfs_science_tcc_five_cells_v29.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-matched-pixel-treecanopy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scientific geospatial dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Verify fail-closed source identity and same-cell matching
+        run: |
+          python -m compileall -q studies/climate_landscape/scripts/extract_usfs_science_tcc_at_five_nlcd_cells_v29.py
+          python -m pytest -q studies/climate_landscape/tests/test_usfs_science_tcc_five_cells_v29.py
+      - name: Get SHA256-pinned original USGS Runs Stops Coordinates (no frog outcomes)
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/original_naamp"
+      - name: Crosscheck five mapped C1V0 loss cells against USDA Science and NLCD TCC raw values
+        run: |
+          python studies/climate_landscape/scripts/extract_usfs_science_tcc_at_five_nlcd_cells_v29.py \
+            --runs "$RUNNER_TEMP/original_naamp/Runs.csv" \
+            --stops "$RUNNER_TEMP/original_naamp/Stops.csv" \
+            --coords "$RUNNER_TEMP/original_naamp/Coordinates.csv" \
+            --out "$RUNNER_TEMP/USFS_TCC_five_mapped_loss_cells_v29.json"
+      - name: Save original source-hashed response-blind real pixel receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: usfs-science-nlcd-tcc-2011-2013-five-cells-v29
+          path: ${{ runner.temp }}/USFS_TCC_five_mapped_loss_cells_v29.json
+          if-no-files-found: error
+          retention-days: 30
