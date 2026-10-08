@@ -44,7 +44,11 @@ def make(meta, climate, satellite):
     for name,src,cols in [('metadata',meta,METADATA),('climate',climate,CLIMATE),('satellite',satellite,SATELLITE)]:
         missing=cols-set(src.columns)
         if missing:raise ValueError(f'{name} missing {sorted(missing)}')
-    m=_date(meta[sorted(METADATA)],'metadata')
+    columns=sorted(METADATA | ({'observer_id'} if 'observer_id' in meta.columns else set()))
+    m=_date(meta[columns],'metadata')
+    if 'observer_id' not in m.columns:
+        m['observer_id']=''
+    m['observer_id']=m.observer_id.astype('string').fillna('').str.strip()
     c=_date(climate[sorted(CLIMATE)],'climate')
     s=_date(satellite[sorted(SATELLITE)],'satellite')
     if not s.coordinate_qc_status.eq('verified_external').all():
@@ -88,6 +92,7 @@ def make(meta, climate, satellite):
                     'to_date':b.survey_date.date().isoformat(),
                     'from_year':int(a.survey_year),'to_year':int(b.survey_year),
                     'season_day_difference':int(day_diff)}
+            record['same_observer']=bool(a.observer_id == b.observer_id) if (a.observer_id and b.observer_id) else None
             for f in FEATURES:
                 aa=getattr(a,f);bb=getattr(b,f)
                 record['delta_'+f]=(float(bb-aa) if np.isfinite(aa) and np.isfinite(bb) else np.nan)
@@ -108,6 +113,8 @@ def make(meta, climate, satellite):
          'n_site_round_strata':int(x[['route_id','site_id','survey_round']].drop_duplicates().shape[0]),
          'n_consecutive_same_season_site_pairs':len(t),
          'n_water_comparable_pairs':int(t.water_contrast_eligible.sum()) if len(t) else 0,
+         'n_same_observer_pairs':int(t.same_observer.eq(True).sum()) if len(t) else 0,
+         'n_observer_identity_missing_pairs':int(t.same_observer.isna().sum()) if len(t) else 0,
          'excluded_due_to_nonconsecutive_year':excluded_gap,
          'excluded_due_to_season_day_shift_over_21':excluded_doy,
          'exact_calendar_year_gap_required':1,
