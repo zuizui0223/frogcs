@@ -1,0 +1,44 @@
+name: Seven Iowa source-only C1V0 2011-2013 pixel screen
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_seven_iowa_nlcd_source_v22.yml'
+      - 'studies/climate_landscape/scripts/screen_seven_iowa_nlcd_c1v0_v22.py'
+      - 'studies/climate_landscape/tests/test_seven_iowa_source_v22.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seven-route-environmental-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scientific requirements
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Verify pixel and missingness gates with synthetic samples
+        run: python -m pytest -q studies/climate_landscape/tests/test_seven_iowa_source_v22.py
+      - name: Retrieve SHA256-pinned USGS original metadata without frog outcomes
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Query original Annual NLCD C1V0 class pixels on frozen seven routes
+        run: |
+          python studies/climate_landscape/scripts/screen_seven_iowa_nlcd_c1v0_v22.py \
+            --runs "$RUNNER_TEMP/naamp/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp/Coordinates.csv" \
+            --out-dir "$RUNNER_TEMP/seven_iowa_source"
+      - name: Retain real per-site class QA and source hashes (no frog Counts)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa-seven-route-nlcd-c1v0-source-v22
+          path: ${{ runner.temp }}/seven_iowa_source/environment_source_receipt.json
+          if-no-files-found: error
+          retention-days: 30
