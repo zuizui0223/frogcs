@@ -1,0 +1,74 @@
+name: NLCD WCS 2 official temporal slice diagnostic
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_wcs_time_diagnostic_v16.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wcs-bounded-schema-diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compare fixed official temporal request encodings on 1km AOI
+        run: |
+          python - <<'PY'
+          import urllib.request,urllib.parse,hashlib,json,xml.etree.ElementTree as ET
+          from pathlib import Path
+          base='https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wcs'
+          ident='mrlc_Land-Cover-Native_conus_year_data__Land-Cover-Native_conus_year_data'
+          variants=[
+             ('quoted', '2.0.1', {'subset':['X(183000,183900)','Y(2050000,2050900)','time("2004-01-01T00:00:00.000Z")']}),
+             ('no_quotes','2.0.1', {'subset':['X(183000,183900)','Y(2050000,2050900)','time(2004-01-01T00:00:00.000Z)']}),
+             ('short_timestamp','2.0.1', {'subset':['X(183000,183900)','Y(2050000,2050900)','time("2004-01-01T00:00:00Z")']}),
+             ('one_year_range','2.0.1',{'subset':['X(183000,183900)','Y(2050000,2050900)','time("2004-01-01T00:00:00.000Z","2004-12-31T23:59:59.000Z")']}),
+             ('extra_time_query','2.0.1',{'subset':['X(183000,183900)','Y(2050000,2050900)'],'time':'2004-01-01T00:00:00.000Z'}),
+             ('quoted_v200','2.0.0',{'subset':['X(183000,183900)','Y(2050000,2050900)','time("2004-01-01T00:00:00.000Z")']}),
+             ('full_uri_axis','2.0.1',{'subset':['X(183000,183900)','Y(2050000,2050900)','http://www.opengis.net/def/axis/OGC/0/time("2004-01-01T00:00:00.000Z")']}),
+          ]
+          rows=[]
+          for name,version,opts in variants:
+              params={'service':'WCS','version':version,'request':'GetCoverage',
+                      'coverageId':ident,'format':'image/geotiff',**opts}
+              u=base+'?'+urllib.parse.urlencode(params,doseq=True)
+              result={'variant':name,'version':version,'requested_year':2004,
+                  'bbox_epsg5070':[183000,2050000,183900,2050900],
+                  'no_frog_response':True}
+              try:
+                  req=urllib.request.Request(u,headers={'User-Agent':'frogcs-source-only-WCS-diagnostic/1.6'})
+                  with urllib.request.urlopen(req,timeout=90) as s:
+                      payload=s.read(1_800_001)
+                      result['http_status']=s.status
+                      result['mime_type']=s.headers.get('Content-Type')
+                  result['sha256']=hashlib.sha256(payload).hexdigest()
+                  result['bytes']=len(payload)
+                  result['tiff_header']=payload[:4] in (b'II*\x00',b'MM\x00*',b'II+\x00',b'MM\x00+')
+                  if payload.startswith(b'<?xml'):
+                      try:
+                          root=ET.fromstring(payload)
+                          result['exception_codes']=[e.attrib.get('exceptionCode') for e in root.iter() if e.tag.endswith('Exception')]
+                          result['exception_texts']=[e.text for e in root.iter() if e.tag.endswith('ExceptionText')]
+                      except Exception:
+                          result['xml_preview']=payload[:550].decode('utf8','replace')
+              except Exception as e:
+                  result['request_error']=type(e).__name__+':'+str(e)[:300]
+              rows.append(result)
+              print(json.dumps(result,sort_keys=True),flush=True)
+          out={'analysis':'source_only_NLCD_WCS_temporal_parameter_diagnostics_v16',
+               'no_outcome_read':True,'variants':rows}
+          Path('official_nlcd_wcs_temporal_diag_v16.json').write_text(json.dumps(out,indent=2)+'\n')
+          PY
+      - name: Preserve actual source diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-nlcd-wcs-time-variant-audit-v16
+          path: official_nlcd_wcs_temporal_diag_v16.json
+          if-no-files-found: error
