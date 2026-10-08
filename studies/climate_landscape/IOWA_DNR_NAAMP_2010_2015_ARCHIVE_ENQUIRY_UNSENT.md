@@ -38,3 +38,11 @@ Sincerely,
 - [2014 Iowa DNR report](https://publications.iowa.gov/19011/2/Iowa%27s%20frog%20and%20toad%20call%20survey%202014.pdf): documents that traditional and NAAMP collection fields mostly overlapped but were reported separately.
 - [Shepherd (2023) state report](https://www.iowadnr.gov/media/1751/download?inline=): Methods documents recording stop wet/dry; Results describes progressive integration of the two programmes toward 2010, while its demonstrated trends are mainly 2013 onward. It does **not** verify retention of each historical environmental field.
 - [State-native metadata adequacy specification v3.2](V3_2_STATE_ARCHIVE_RETROSPECTIVE_MERGE_AND_WETDRY_FEASIBILITY.md): ask for W/D completeness and within-site and within-route survey variation **before** considering frog-response analysis.
+
+## Official fallback if coordinator enquiry is inconclusive — NOT SUBMITTED
+
+The [Iowa DNR Open Records Request page](https://www.iowadnr.gov/about/contact/open-records-request) provides a formally documented state public-records request route ([Iowa request portal](https://iowaopenrecords.nextrequest.com/requests/new)) in addition to the subject custodian at `vwmp@dnr.iowa.gov`. This is **not an automatic data delivery service**; records may be unavailable, exempt, require redaction or incur copying costs. No formal request, charge, portal submission or email has been made.
+
+If an author decides to use that route, request *availability or a fee estimate first*, and scope requested materials narrowly to **2010–2015 Iowa ten-stop NAAMP route original blank protocols, original event-level environmental fields / W-D and skip-state metadata, original data dictionaries and dated route-stop relocation histories**. Do not request observer identities, personal details, species detections, or post-selected frog outcome subsets during source-only screening. Do not mistake the separate DNR OpenText environmental-compliance document index for a complete wildlife monitoring archive; the DNR's own page does not list VWMP among programmes indexed there.
+
+Access-path authority and stop decision: [V3_3_IOWA_OFFICIAL_RECORDS_ACCESS_DECISION_2026-10-08.md](V3_3_IOWA_OFFICIAL_RECORDS_ACCESS_DECISION_2026-10-08.md).
