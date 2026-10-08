@@ -126,7 +126,7 @@ jobs:
                 'pixelwise_aerial_photointerpretation_completed':False})
           out={'analysis':'iowa_two_source_mapped_change_pixel_aerial_alignment_v27',
                'scope':'two environmentally post-selected stops, source-only',
-               'n_total_nlcd_forest_loss_pixels_outlined':sum(x[3] for x in targets.values()),
+               'n_total_nlcd_forest_loss_pixels_outlined':sum(x[2] for x in targets.values()),
                'n_frog_outcomes_read':0,'confidence_for_2012_selected_pixels_previously_low':True,
                'collection_C1V0_not_C1V2':True,
                'n_historical_physically_verified_site_ids':0,
