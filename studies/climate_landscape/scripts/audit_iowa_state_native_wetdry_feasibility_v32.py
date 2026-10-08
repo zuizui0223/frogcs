@@ -92,6 +92,9 @@ def audit_csv(raw: str) -> dict:
     n_complete = 0
     n_complete_both = 0
     n_incomplete = 0
+    n_fully_observed = 0
+    n_fully_observed_mixed = 0
+    n_fully_observed_uniform = 0
     for (route, event), states in sorted(visits.items()):
         complete = len(states) == 10
         if complete:
@@ -99,6 +102,13 @@ def audit_csv(raw: str) -> dict:
         else:
             n_incomplete += 1
         found = {x for x in states if x is not None}
+        fully_observed = complete and all(x in ("W", "D") for x in states)
+        if fully_observed:
+            n_fully_observed += 1
+            if found == {"W", "D"}:
+                n_fully_observed_mixed += 1
+            else:
+                n_fully_observed_uniform += 1
         if found == {"W", "D"}:
             n_both += 1
             if complete:
@@ -136,6 +146,9 @@ def audit_csv(raw: str) -> dict:
         "n_complete_10_stop_route_events": n_complete,
         "n_incomplete_10_stop_route_events": n_incomplete,
         "n_complete_10_stop_route_events_with_wet_and_dry_stops": n_complete_both,
+        "n_fully_observed_10_stop_route_events": n_fully_observed,
+        "n_fully_observed_10_stop_route_events_with_wet_and_dry": n_fully_observed_mixed,
+        "n_fully_observed_10_stop_route_events_uniform": n_fully_observed_uniform,
         "n_route_events_with_only_one_observed_status": n_uniform,
         "n_route_events_with_all_wetdry_missing": n_no_data,
         "n_nominal_route_stops_with_within_stop_wet_and_dry": len(switches),
@@ -174,6 +187,21 @@ def synthetic_tests():
     assert result["n_complete_10_stop_route_events_with_wet_and_dry_stops"] == 0
     assert result["n_nominal_route_stops_with_within_stop_wet_and_dry"] == 2
     assert result["n_missing_wetdry"] == 1
+    # Complete route opportunities and fully observed W/D are distinct.
+    ten = header + "\\n".join(
+        f"360110,NAAMP,{i},X,2012-06-02,{('W' if i <= 5 else 'D')}"
+        for i in range(1, 11)
+    ) + "\\n"
+    full = audit_csv(ten)
+    assert full["n_complete_10_stop_route_events"] == 1
+    assert full["n_fully_observed_10_stop_route_events"] == 1
+    assert full["n_fully_observed_10_stop_route_events_with_wet_and_dry"] == 1
+    ten_missing = ten.replace("360110,NAAMP,10,X,2012-06-02,D",
+                              "360110,NAAMP,10,X,2012-06-02,UNKNOWN")
+    partial = audit_csv(ten_missing)
+    assert partial["n_complete_10_stop_route_events"] == 1
+    assert partial["n_fully_observed_10_stop_route_events"] == 0
+    assert partial["n_complete_10_stop_route_events_with_wet_and_dry_stops"] == 1
     invalid = [
         ok + "360104,NAAMP,1,A,2011-04-14,W\n",
         ok.replace("2011-04-14", "2009-04-14"),
@@ -190,7 +218,7 @@ def synthetic_tests():
         except ValueError:
             continue
         raise AssertionError(f"Invalid fixture {i} did not fail closed")
-    print("PASS: 1 positive synthetic fixture and 6 negative fail-closed fixtures; no frog outcomes")
+    print("PASS: 3 positive synthetic fixtures (including complete/missing W-D) and 6 negative fail-closed fixtures; no frog outcomes")
 
 
 def main():
@@ -213,6 +241,7 @@ def main():
     print(json.dumps({k: report[k] for k in [
         "n_stop_event_rows", "n_missing_wetdry",
         "n_complete_10_stop_route_events_with_wet_and_dry_stops",
+        "n_fully_observed_10_stop_route_events_with_wet_and_dry",
         "n_nominal_route_stops_with_within_stop_wet_and_dry",
         "counts_csv_read", "frog_response_read"]}, sort_keys=True))
 
