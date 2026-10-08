@@ -1,0 +1,60 @@
+# v3.2 — Iowa state-native NAAMP archive provenance and hydrology feasibility
+
+**Date:** 2026-10-08. **Status:** independently researched archival evidence and a response-blind *future-data* feasibility specification. **No 2010–2015 Iowa-native wet/dry values have been seen**. JAE RC6 is frozen and unchanged.
+
+## What new original Iowa sources establish
+
+### 2013: contemporaneous NAAMP data existed separately
+
+[Iowa DNR, *Iowa's Frog and Toad Call Survey 2013*](https://publications.iowa.gov/19011/56/Iowa%27s%20frog%20and%20toad%20survey%202013.pdf) describes **NAAMP monitoring separately from the traditional survey**, and its Table 2a explicitly summarizes **NAAMP species-detection records for 2010, 2011, 2012 and 2013**. The same report gives 37 NAAMP routes reporting data in 2013 (33 with three runs). This is contemporaneous evidence of an archived NAAMP-era *species-response programme*, **not evidence of stop-event water-state retention or a downloadable raw table**.
+
+### 2014: partial collection-protocol overlap, but no variable guarantee
+
+[Iowa DNR, *Iowa's Frog and Toad Call Survey 2014*](https://publications.iowa.gov/19011/2/Iowa%27s%20frog%20and%20toad%20call%20survey%202014.pdf) states that the ten-stop NAAMP routes were added in 2010 and that **most of the information collected overlapped** with the traditional survey; the report nevertheless presented the two survey types separately. The report lists environmental variables such as air and water temperature for the *traditional* survey, but does **not** individually prove that wet/dry or water temperature was captured, retained and joinable for every NAAMP route/stop/run from 2010 through 2015.
+
+### 2023: NAAMP and traditional programme data were joined retrospectively
+
+[Shepherd (2023), *Frog and Toad Call Survey Results for Iowa, 2023*](https://www.iowadnr.gov/media/1751/download?inline=), Methods p. 2, explicitly describes volunteers recording whether the wetland stop was **wet or dry**. Results p. 3 states that NAAMP and traditional datasets had previously been analyzed separately, but **were subsequently combined back to NAAMP's 2010 initiation**, enabling ten-year trend assessments. This is the most specific source lead for a **state-native historical crosswalk, cleaning procedure and possibly archived stop variables**. It does **not** establish whether the 2010–2015 wet/dry or water-temperature values survived the merger.
+
+### Contemporary public database and archive custody
+
+The [VWMP public portal](https://programs.iowadnr.gov/vwmp/) offers a county-select **Download Report** control; the public landing page describes volunteer login for data entry. The visible landing page alone does **not** establish historical row-level data downloads or the inclusion of wet/dry in downloaded reports. No login bypass, protected endpoint use, county-level report download or volunteer data retrieval was attempted.
+
+The [current Iowa DNR survey page](https://www.iowadnr.gov/programs-services/volunteer-opportunities/wildlife-monitoring/frogs-and-toads/survey) says monitors must **submit data online and mail paper datasheets**. Again, this establishes current handling rather than verified historical sheet preservation. Official custodian contact: **vwmp@dnr.iowa.gov**.
+
+### USGS export remains a definite negative
+
+The checksum-verified original [USGS `Stops.csv` schema audit](https://github.com/zuizui0223/frogcs/actions/runs/37774857243) counted **21,934 Runs** and **219,340 Stops** and found **zero direct wet/dry / local hydrology field names** in the 14-column national stop table. No `Counts.csv` was accessed. This result is unchanged.
+
+## The decisive custodian question is now narrower
+
+**Was per-stop wet/dry recorded and retained in Iowa's state-native **2010–2015 ten-stop NAAMP dataset**, and did the retrospective traditional+NAAMP database merger retain that field, rather than only species, date and route IDs?** Ask for:
+1. Annual blank survey sheets / instructions **specifically used on NAAMP ten-stop routes** in 2010, 2011, 2012, 2013, 2014 and 2015, especially the definitions of `Site Wet or Dry`.
+2. The native merged database **field list / dictionary** and the 2010–2015 old-to-new **route/stop/event identifier crosswalk**. If wet/dry was not included in the merge, ask whether pre-merge state spreadsheets or scanned paper forms survived.
+3. **Year × route type × event × stop metadata-only completeness**: number of observed W/D values, missing/unknown records, duplicate event keys, and whether the same stop is W and D on different visits.
+4. Stop establishment and relocation history; a 2021 route map cannot alone validate physical continuity during 2010–2015.
+5. Source-use restrictions, if any. No species call records or observer PII in the first enquiry.
+
+**Crucial distinction:** being present on a blank form is not evidence that a volunteer filled it in, data entry transcribed it, it survived the merge, or it varied sufficiently to discriminate environmental mechanisms.
+
+## Frozen acceptance workflow if Iowa-native source exists
+
+Before reading frog outcomes, ingest only a field-whitelisted environmental extract. The prescribed summary is **descriptive**, not a fitted frog model:
+- rows with verified original ten-stop NAAMP route type and 2010–2015 dates;
+- route-year / stop-event count and W/D completeness; missing/unknown stays **missing**, never coded dry;
+- frequency of W and D at each stable physical listening site, including **within-site W↔D changes** across visits;
+- **within-route-night mixtures** of wet and dry stops, needed to test the local environment hypothesis against a single common route-night state;
+- geography and time support; flag mismatched route/stop IDs, stop relocation, duplicated event keys and protocol changes;
+- evaluate *coverage of all available eligible routes*, not only the two sites previously highlighted by postselected satellite pixels.
+
+**If the same site is always wet (or always dry)**, its W/D value is confounded with stable site differences and **cannot test dynamic within-site local hydrology filtering**. If every route-night has uniform W/D, the data **cannot distinguish** shared weather activation from within-route local hydrological filtering. If W/D changes within sites but is a coarse observation, it is still not hydroperiod, water depth, breeding success or a movement observation.
+
+No arbitrary favourable minimum threshold is set before seeing the coverage distribution; before any outcome analysis, record a defensible prospective sample-size/informativeness rule **from metadata only**, then freeze it and prevent adaptive tuning.
+
+## Stop decisions
+
+- **National USGS source:** permanently insufficient for direct stop wet/dry.
+- **State-native Iowa source:** possible, **not retrieved**; specific retrospective data merger is a promising enquiry target.
+- **Forest canopy → frog relocation:** still unestablished, with original Annual NLCD C1.2 and independently dated 2010–2015 site continuity unavailable.
+- **Further NAAMP frog-outcome fitting:** not authorized; independent JAE RC6 unchanged.
+- **External email:** current branch has an **UNSENT** draft; no contact made by this audit.
