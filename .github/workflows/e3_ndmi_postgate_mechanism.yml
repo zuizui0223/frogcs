@@ -1,0 +1,141 @@
+name: E3 frozen postgate NDMI mechanism
+
+# This workflow is deliberately explicit. Only run it after the formal
+# pre-response pixel gate has completed. The check job enforces that gate.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      passed: ${{ steps.decision.outputs.passed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37723985357
+          name: e3-final-response-blind-pixel-coverage
+          path: remotesensing
+      - name: Check frozen QA gate before any NDMI extraction
+        id: decision
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path('remotesensing/E3_NDMI_FINAL_PIXEL_COVERAGE_V0_1.json')
+          z=json.loads(p.read_text())
+          passed=z.get('classification')=='E3_pixel_QA_coverage_gate_pass'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as h:
+              h.write('passed='+('true' if passed else 'false')+'\n')
+          print('E3 pre-response pixel QA:',z.get('classification'))
+          print('E3 confirmed pair coverage:',z.get('confirmed_coverage'))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-pre-response-go-no-go
+          path: remotesensing/E3_NDMI_FINAL_PIXEL_COVERAGE_V0_1.json
+
+  extract:
+    needs: check
+    if: needs.check.outputs.passed == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy rasterio
+      - uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37711943954
+          name: e3-ndmi-metadata-coverage-v01
+          path: remotesensing
+      - uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37723985357
+          name: e3-final-response-blind-pixel-coverage
+          path: remotesensing
+      - name: Extract frozen QA-qualified NDMI only
+        env:
+          E3_EXTRACTION_SHARD: ${{ matrix.shard }}
+          E3_EXTRACTION_SHARDS: "16"
+        run: python scripts/remotesensing/extract_e3_ndmi_postgate_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-ndmi-extracted-shard-${{ matrix.shard }}
+          path: |
+            remotesensing/e3_extracted/E3_NDMI_RUN_SITE_SHARD_*.csv
+            remotesensing/e3_extracted/E3_NDMI_RUN_SITE_SHARD_*.json
+          retention-days: 30
+
+  aggregate_and_test:
+    needs: [check,extract]
+    if: needs.check.outputs.passed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37723985357
+          name: e3-final-response-blind-pixel-coverage
+          path: remotesensing
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: e3-ndmi-extracted-shard-*
+          path: remotesensing/e3_extracted_inputs
+          merge-multiple: true
+      - name: Merge exact selected-run NDMI exposure sample
+        run: python scripts/remotesensing/aggregate_e3_ndmi_postgate.py
+      - name: Run frozen M0 versus M_E3 concentration test
+        run: python scripts/remotesensing/run_e3_ndmi_final_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-ndmi-final-mechanism
+          path: |
+            remotesensing/NAAMP_E3_NDMI_RUN_SITE_V0_1.csv
+            remotesensing/NAAMP_E3_NDMI_EXTRACTED_COVERAGE_V0_1.json
+            remotesensing/NAAMP_E3_NDMI_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
+
+  stop_if_coverage_fails:
+    needs: check
+    if: needs.check.outputs.passed == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37723985357
+          name: e3-final-response-blind-pixel-coverage
+          path: remotesensing
+      - name: Record inconclusive E3 without reading frog endpoints
+        run: python scripts/remotesensing/run_e3_ndmi_final_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-ndmi-coverage-inconclusive
+          path: remotesensing/NAAMP_E3_NDMI_MECHANISM_RECEIPT_V0_1.json
