@@ -1,0 +1,88 @@
+name: Annual NLCD C1.2 provenance and confidence preflight
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_annual_nlcd_c12_catalog_preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-version-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe original land-cover and confidence source year identities
+        run: |
+          python - <<'PY'
+          import hashlib,json,urllib.parse,urllib.request,time
+          from pathlib import Path
+          SERVICES={
+            'esri_landcover':'https://di-nlcd.img.arcgis.com/arcgis/rest/services/USA_NLCD_Annual_LandCover/ImageServer',
+            'esri_confidence':'https://di-nlcd.img.arcgis.com/arcgis/rest/services/USA_NLCD_Annual_LandCover_Confidence/ImageServer',
+            'esri_landcover_change':'https://di-nlcd.img.arcgis.com/arcgis/rest/services/USA_NLCD_Annual_LandCover_Change/ImageServer',
+            'federal_vegetation':'https://imagery.geoplatform.gov/iipp/rest/services/Vegetation/USFS_EDW_NLCD_Landcover_CONUS/ImageServer'
+          }
+          YEARS=(2011,2012,2013)
+          rows=[]
+          for key,base in SERVICES.items():
+            server=urllib.parse.urlparse(base).hostname
+            record={'service':key,'service_url':base,'year_rows':[],'no_frog_outcomes_read':True}
+            for year in YEARS:
+              params={'where':'Year='+str(year),'outFields':'OBJECTID,Name,Year,Version,ProductName',
+                'returnGeometry':'false','f':'json'}
+              url=base+'/query?'+urllib.parse.urlencode(params)
+              entry={'requested_year':year}
+              try:
+                req=urllib.request.Request(url,headers={'User-Agent':'frogcs-c12-provenance-gate-2026-10-08',
+                  'Accept':'application/json'})
+                with urllib.request.urlopen(req,timeout=45) as response:
+                  u=urllib.parse.urlparse(response.geturl())
+                  if u.scheme!='https' or u.hostname!=server:
+                    raise ValueError('ImageService redirected to a different host')
+                  raw=response.read(1_100_000)
+                  entry['http_status']=response.status
+                o=json.loads(raw)
+                if o.get('error'):raise ValueError('REST error '+str(o['error'])[:200])
+                attrs=[f.get('attributes',{}) for f in o.get('features',[])]
+                entry.update({'source_json_sha256':hashlib.sha256(raw).hexdigest(),
+                  'n_rows':len(attrs),'catalog_rows':attrs[:12],
+                  'all_rows_explicit_C1V2':bool(attrs) and all(
+                      'C1V2' in str(a.get('Name','')) and
+                      ('1.2' in str(a.get('Version','')) or 'C1V2' in str(a.get('Version','')))
+                      for a in attrs),
+                  'catalog_ready_for_C1V2':False})
+                entry['catalog_ready_for_C1V2']=(entry['n_rows']==1 and entry['all_rows_explicit_C1V2'])
+              except Exception as ex:
+                entry.update({'status':'UNRESOLVED_NOT_VALIDATED','error_type':type(ex).__name__,
+                              'error':str(ex)[:260],'catalog_ready_for_C1V2':False})
+              record['year_rows'].append(entry)
+              print(json.dumps({'service':key,'year':year,'catalog_version_rows':entry.get('catalog_rows'),
+                  'valid_c1v2':entry['catalog_ready_for_C1V2'],'error':entry.get('error')},sort_keys=True),flush=True)
+              time.sleep(0.3)
+            record['all_requested_years_proven_C1V2']=all(x['catalog_ready_for_C1V2'] for x in record['year_rows'])
+            rows.append(record)
+          result={'analysis':'annual_nlcd_collection_1_2_land_cover_and_confidence_catalog_gate_v2_3',
+            'year_scope':list(YEARS),'source_only':True,'not_a_landcover_change_effect':True,
+            'historical_field_station_verified':0,'no_new_frog_counts_read':True,
+            'services':rows,'decision':'UNRESOLVED_NOT_APPROVED_FOR_C1V2_JOIN'}
+          # Must have BOTH land cover and confidence catalogue-verified at same collection.
+          main={x['service']:x for x in rows}
+          if all(main[k]['all_requested_years_proven_C1V2'] for k in ('esri_landcover','esri_confidence')):
+            result['decision']='C1V2_BOTH_CATALOGUES_PROVEN_PIXELS_NOT_YET_VERIFIED'
+          Path('annual_nlcd_c12_catalog_gate_v23.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'decision':result['decision'],'n_services':len(rows)},sort_keys=True))
+          PY
+      - name: Preserve unmodified source catalogue responses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: annual-nlcd-c12-catalog-provenance-v23
+          path: annual_nlcd_c12_catalog_gate_v23.json
+          if-no-files-found: error
+          retention-days: 30
