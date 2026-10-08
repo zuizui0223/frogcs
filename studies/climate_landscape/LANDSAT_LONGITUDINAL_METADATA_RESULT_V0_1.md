@@ -23,6 +23,10 @@ For comparability, original NAAMP survey dates were matched *within route* acros
 
 Strict ±7-day survey-and-image-acquisition seasonal sensitivity still yielded **1,154 adjacent-year pairs (298 routes), 164 ≥5-year route pairs, and 81 early-to-late route pairs**. Matching at ±14 days yielded 1,587 adjacent pairs (323 routes), 174 ≥5-year route pairs, and 87 early-to-late route pairs. All counts are **metadata coverage only**: no guarantee of a clear usable scene, equal pixel support, stable coordinates or sensor harmonization.
 
+## Geographic selection and transferability risk
+
+The original metadata pool spans **395 routes in 20 states**. Among the 179 one-per-route ≥5-year comparisons, **17 states** remain; Kentucky, Tennessee and Texas have no eligible route. Among the 91 early-to-late comparisons, only **12 states** remain. Maine supplies **28 of 91** early-to-late routes (**30.8%**), compared with **45 of 395** (**11.4%**) in the initial metadata pool. Eight states have no early-to-late candidate (Georgia, Iowa, Kentucky, New York, North Carolina, South Carolina, Tennessee and Texas). These comparisons are therefore strongly shaped by monitoring history; their environmental associations cannot be sold as nationally representative North American trends. Future species–site model comparisons must report route/state support, block geography/time in held-out validation, and not extrapolate to unrepresented states.
+
 ## Crucial difference between satellite metadata and pixels
 
 A separately obtained deterministic, **diagnostic-only** E3 pixel-QA pilot ([run 37715319743](https://github.com/zuizui0223/frogcs/actions/runs/37715319743)) tested 18 survey runs using *only the first candidate* image: 12 raster QA checks were evaluable, 6 encountered retrieval errors, and just **3 of the 18** achieved the frozen ≥70% valid-pixel threshold simultaneously at all ten route stops for that first scene. The pilot is tiny and not a population-level success-rate estimate; fallback scenes could alter success rates. It demonstrates why 100% matching of scene timestamps should **not** be translated into 100% real Landsat land-condition coverage.

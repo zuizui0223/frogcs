@@ -3,6 +3,140 @@
   "analysis": "e3_landsat_longitudinal_metadata_feasibility_v0_1",
   "climate_or_biology_effect_estimated": false,
   "cross_sensor_harmonisation_performed": false,
+  "geographic_coverage": {
+    "all_routes_by_state": {
+      "Delaware": 12,
+      "Georgia": 20,
+      "Indiana": 36,
+      "Iowa": 27,
+      "Kentucky": 1,
+      "Maine": 45,
+      "Maryland": 29,
+      "Massachusetts": 14,
+      "Mississippi": 17,
+      "NewHampshire": 10,
+      "NewJersey": 25,
+      "NewYork": 17,
+      "NorthCarolina": 46,
+      "Pennsylvania": 16,
+      "SouthCarolina": 23,
+      "Tennessee": 10,
+      "Texas": 1,
+      "Vermont": 5,
+      "Virginia": 26,
+      "WestVirginia": 15
+    },
+    "all_states": 20,
+    "by_comparison": {
+      "adjacent_year": {
+        "routes_by_state": {
+          "Delaware": 10,
+          "Georgia": 18,
+          "Indiana": 27,
+          "Iowa": 26,
+          "Kentucky": 1,
+          "Maine": 40,
+          "Maryland": 25,
+          "Massachusetts": 14,
+          "Mississippi": 13,
+          "NewHampshire": 8,
+          "NewJersey": 21,
+          "NewYork": 15,
+          "NorthCarolina": 36,
+          "Pennsylvania": 15,
+          "SouthCarolina": 21,
+          "Tennessee": 8,
+          "Texas": 1,
+          "Vermont": 3,
+          "Virginia": 23,
+          "WestVirginia": 12
+        },
+        "states_absent": [],
+        "states_represented": 20
+      },
+      "early_to_late_era": {
+        "routes_by_state": {
+          "Delaware": 9,
+          "Indiana": 2,
+          "Maine": 28,
+          "Maryland": 9,
+          "Massachusetts": 6,
+          "Mississippi": 1,
+          "NewHampshire": 6,
+          "NewJersey": 9,
+          "Pennsylvania": 6,
+          "Vermont": 2,
+          "Virginia": 8,
+          "WestVirginia": 5
+        },
+        "states_absent": [
+          "Georgia",
+          "Iowa",
+          "Kentucky",
+          "NewYork",
+          "NorthCarolina",
+          "SouthCarolina",
+          "Tennessee",
+          "Texas"
+        ],
+        "states_represented": 12
+      },
+      "exact_five_year": {
+        "routes_by_state": {
+          "Delaware": 11,
+          "Georgia": 11,
+          "Indiana": 13,
+          "Iowa": 1,
+          "Maine": 22,
+          "Maryland": 10,
+          "Massachusetts": 10,
+          "Mississippi": 6,
+          "NewHampshire": 8,
+          "NewJersey": 11,
+          "NewYork": 2,
+          "NorthCarolina": 13,
+          "Pennsylvania": 5,
+          "SouthCarolina": 5,
+          "Vermont": 1,
+          "Virginia": 10,
+          "WestVirginia": 7
+        },
+        "states_absent": [
+          "Kentucky",
+          "Tennessee",
+          "Texas"
+        ],
+        "states_represented": 17
+      },
+      "one_long_gap_per_route": {
+        "routes_by_state": {
+          "Delaware": 11,
+          "Georgia": 11,
+          "Indiana": 15,
+          "Iowa": 1,
+          "Maine": 35,
+          "Maryland": 12,
+          "Massachusetts": 10,
+          "Mississippi": 6,
+          "NewHampshire": 8,
+          "NewJersey": 15,
+          "NewYork": 2,
+          "NorthCarolina": 17,
+          "Pennsylvania": 8,
+          "SouthCarolina": 5,
+          "Vermont": 2,
+          "Virginia": 13,
+          "WestVirginia": 8
+        },
+        "states_absent": [
+          "Kentucky",
+          "Tennessee",
+          "Texas"
+        ],
+        "states_represented": 17
+      }
+    }
+  },
   "groups": {
     "adjacent_year": {
       "pairs": 1817,

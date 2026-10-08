@@ -97,3 +97,16 @@ def test_stricter_date_matching_sensitivity_falls_between_windows():
     assert broad['groups']['adjacent_year']['pairs']==1
     with pytest.raises(ValueError,match='7/14/21'):
         m.audit(obj,season_days=30)
+
+
+
+def test_geographic_selection_is_reported_without_phantom_states():
+    o=fixture([row('a',2002,10,route='Maine:1'),
+               row('b',2014,11,route='Maine:1'),
+               row('c',2012,11,route='Georgia:2')])
+    summary,_=m.audit(o)
+    geo=summary['geographic_coverage']
+    assert geo['all_states']==2
+    assert geo['all_routes_by_state']=={'Georgia':1,'Maine':1}
+    assert geo['by_comparison']['early_to_late_era']['routes_by_state']=={'Maine':1}
+    assert geo['by_comparison']['early_to_late_era']['states_absent']==['Georgia']

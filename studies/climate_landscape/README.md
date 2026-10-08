@@ -41,3 +41,7 @@ Daymet single pixel calendar: https://daymet.ornl.gov/single-pixel-tool-guide â€
 Original NAAMP public dataset: https://doi.org/10.5066/F7G44NG0
 
 See `RESEARCH_SPEC.md` for competing ecological hypotheses and causal-inference limits. See `remote_sensing/EXPORT_CONTRACT.md` for extraction input/output schemas and commands.
+
+## Actual longitudinal Landsat coverage, outcome-blind
+
+The real 3,811-run metadata feasibility audit (395 routes) and geographic sampling-bias check are documented in [`LANDSAT_LONGITUDINAL_METADATA_RESULT_V0_1.md`](LANDSAT_LONGITUDINAL_METADATA_RESULT_V0_1.md). Comparisons remain **scene-metadata only**, not verified QA-good satellite pixels or frog climate effects.

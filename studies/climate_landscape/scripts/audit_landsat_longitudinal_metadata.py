@@ -163,6 +163,17 @@ def audit(obj:dict, *, season_days: int = SEASON_TOLERANCE_DAYS) -> tuple[dict,d
                       'same_sensor_scene_candidate_pairs':sum(p['common_sensor_candidate'] for p in pairs),
                       'same_sensor_and_scene_season_candidate_pairs':sum(p['common_sensor_season_scene_candidate'] for p in pairs),
                       'year_gap_median':sorted(p['gap_years'] for p in pairs)[len(pairs)//2] if pairs else None}
+    route_to_state={name:name.split(':',1)[0] for name in byroute}
+    state_overall=collections.Counter(route_to_state.values())
+    geography={}
+    for group_name, pairset in collections_out.items():
+        route_set={p['route'] for p in pairset}
+        count=collections.Counter(route_to_state[r] for r in route_set)
+        geography[group_name]={
+            'routes_by_state':dict(sorted(count.items())),
+            'states_represented':len(count),
+            'states_absent':sorted(set(state_overall)-set(count))
+        }
     routespans=[max(r['year'] for r in group)-min(r['year'] for r in group) for group in byroute.values()]
     result = {'analysis':'e3_landsat_longitudinal_metadata_feasibility_v0_1',
               'input_analysis':obj['analysis'],
@@ -177,6 +188,9 @@ def audit(obj:dict, *, season_days: int = SEASON_TOLERANCE_DAYS) -> tuple[dict,d
               'survey_date_season_tolerance_days':season_days,
               'scene_acquisition_same_season_tolerance_days':season_days,
               'groups':summary,
+              'geographic_coverage':{'all_routes_by_state':dict(sorted(state_overall.items())),
+                                     'all_states':len(state_overall),
+                                     'by_comparison':geography},
               'QA_pixel_validity_checked':False,
               'physical_site_continuity_across_years_verified':False,
               'cross_sensor_harmonisation_performed':False,
