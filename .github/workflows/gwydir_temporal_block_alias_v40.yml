@@ -1,0 +1,29 @@
+name: Gwydir published Table-2 block alias audit v4.0
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_gwydir_temporal_block_alias_v40.py"
+      - "studies/climate_landscape/reference_routes/GWYDIR_SARKER_2022_SIX_SITE_EXPOSURE_TABLE2_V39.csv"
+      - ".github/workflows/gwydir_temporal_block_alias_v40.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  weather-block-design:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit published environmental context and before-after alias (no frogs)
+        run: python studies/climate_landscape/scripts/audit_gwydir_temporal_block_alias_v40.py
+      - name: Upload exact source-only analysis receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: gwydir-weather-block-alias-v40
+          path: studies/climate_landscape/receipts/GWYDIR_TABLE2_WEATHER_BLOCK_AND_FLOW_TIME_IDENTIFIABILITY_V40.json
+          if-no-files-found: error
