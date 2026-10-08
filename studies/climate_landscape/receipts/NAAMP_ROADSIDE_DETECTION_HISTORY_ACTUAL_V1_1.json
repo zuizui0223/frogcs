@@ -1,0 +1,43 @@
+{
+  "analysis": "naamp_response_blind_traffic_detection_temporal_covariate_qc_v0_1",
+  "annual_landcover_read": false,
+  "cohort_receipt": {
+    "called_species_records_opened": false,
+    "counts_csv_opened": false,
+    "external_coordinate_verification_performed": false,
+    "n_complete_ten_stop_runs_with_identifiable_physical_sites": 7848,
+    "n_distinct_route_site_keys": 8223,
+    "n_distinct_routes": 807,
+    "n_filtered_run_candidates_before_stop_checks": 9401,
+    "n_invalid_date_rows": 10,
+    "n_runs_incomplete_number_of_stops": 426,
+    "n_runs_with_missing_or_repeated_site_id": 0,
+    "n_runs_with_observer_id": 7848,
+    "n_site_visits": 78480,
+    "not_identical_to_published_rc6_cohort_until_crosschecked": true,
+    "study": "separate climate landscape acoustic-site monitoring panel"
+  },
+  "data_release_gate": "comparable roadside listening conditions, not verified habitat conversion",
+  "frog_outcome_read": false,
+  "input_sha256": {
+    "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f"
+  },
+  "interpretation": "Traffic/noise changes may influence detection or behavior. They cannot be ignored when linking land-use change to acoustic site use.",
+  "median_car_count_change_in_comparable_pairs": 0.0,
+  "n_acoustic_impairment_valid_visits": 78480,
+  "n_adjacent_year_same_season_site_pairs": 29986,
+  "n_car_count_valid_visits": 64038,
+  "n_complete_acoustic_impairment_pairs": 29986,
+  "n_complete_car_count_pairs": 23107,
+  "n_complete_car_noise_observer_pairs": 23107,
+  "n_complete_timeout_pairs": 29986,
+  "n_decreasing_car_count_pairs": 7504,
+  "n_increasing_car_count_pairs": 7183,
+  "n_observer_id_complete_pairs": 29986,
+  "n_runs": 7848,
+  "n_same_observer_pairs": 27332,
+  "n_stops": 78480,
+  "n_timeout_valid_visits": 78480,
+  "n_unchanged_car_count_pairs": 8420
+}

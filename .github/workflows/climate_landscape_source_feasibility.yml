@@ -12,6 +12,7 @@ on:
       - 'studies/climate_landscape/scripts/audit_coordinates.py'
       - 'studies/climate_landscape/scripts/audit_naamp_historical_site_stability.py'
       - 'studies/climate_landscape/scripts/audit_naamp_roadside_detection_history.py'
+      - 'studies/climate_landscape/scripts/audit_naamp_survey_attrition.py'
       - 'studies/climate_landscape/tests/**'
       - 'studies/climate_landscape/requirements.txt'
   workflow_dispatch:
@@ -60,6 +61,12 @@ jobs:
             --runs "$RUNNER_TEMP/naamp_source_files/Runs.csv" \
             --stops "$RUNNER_TEMP/naamp_source_files/Stops.csv" \
             --out "$RUNNER_TEMP/naamp_source_files/roadside_detection_receipt.json"
+      - name: Audit skipped-stop and route-monitoring attrition (no frog outcomes)
+        run: |
+          python studies/climate_landscape/scripts/audit_naamp_survey_attrition.py \
+            --runs "$RUNNER_TEMP/naamp_source_files/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp_source_files/Stops.csv" \
+            --out "$RUNNER_TEMP/naamp_source_files/survey_attrition_receipt.json"
       - name: Upload only audited metadata receipts (no source CSVs)
         if: always()
         uses: actions/upload-artifact@v4
@@ -70,4 +77,5 @@ jobs:
             ${{ runner.temp }}/naamp_source_files/feasibility_receipt.json
             ${{ runner.temp }}/naamp_source_files/site_stability_receipt.json
             ${{ runner.temp }}/naamp_source_files/roadside_detection_receipt.json
+            ${{ runner.temp }}/naamp_source_files/survey_attrition_receipt.json
           if-no-files-found: error
