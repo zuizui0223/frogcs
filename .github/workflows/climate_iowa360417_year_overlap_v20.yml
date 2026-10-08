@@ -1,0 +1,87 @@
+name: Iowa 360417 actual NAAMP survey-year timing gate
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa360417_year_overlap_v20.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-year-timing-no-frog-outcomes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install study dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Download only pinned original NAAMP Runs and Stops
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py --output-dir "$RUNNER_TEMP/naamp"
+      - name: Audit all historical sampling years before opening frog counts
+        run: |
+          python - <<'PY'
+          import sys,json,hashlib
+          from pathlib import Path
+          import pandas as pd
+          sys.path.insert(0,"studies/climate_landscape/scripts")
+          from build_naamp_observation_panel import make,SOURCE_PINS
+          src=Path("/home/runner/work/frogcs/frogcs")
+          import os
+          d=Path(os.environ["RUNNER_TEMP"])/"naamp"
+          hashes={k:hashlib.sha256((d/k).read_bytes()).hexdigest() for k in SOURCE_PINS}
+          if hashes!=SOURCE_PINS:raise ValueError("USGS input hashes drifted")
+          r=pd.read_csv(d/"Runs.csv",dtype=str,keep_default_na=False)
+          s=pd.read_csv(d/"Stops.csv",dtype=str,keep_default_na=False)
+          panel,_=make(r,s)
+          p=panel[(panel.state=="Iowa")&(panel.route_number.astype(str)=="360417")].copy()
+          if p.empty or p.groupby("run_id").size().ne(10).any():
+              raise ValueError("Expected complete 10-stop survey runs")
+          p["stop_no"]=pd.to_numeric(p.stop_number,errors="raise").astype(int)
+          n=p.groupby("stop_no").site_id.nunique()
+          rev=p.groupby("site_id").stop_no.nunique()
+          if set(n.index)!=set(range(1,11)) or n.ne(1).any() or rev.ne(1).any():
+              raise ValueError("Historical stop and SiteID relation changed")
+          ev=p.drop_duplicates("run_id").sort_values(["survey_date","run_id"])
+          years=ev.survey_year.astype(int)
+          byyear=(ev.groupby("survey_year").agg(n_runs=("run_id","size"),
+                first_date=("survey_date","min"),last_date=("survey_date","max"),
+                n_observer_ids=("observer_id","nunique")).reset_index()
+                .sort_values("survey_year").to_dict(orient="records"))
+          gaps=[]
+          for pivot in (2006,2012):
+              pre=ev.loc[years<pivot];inyr=ev.loc[years==pivot];post=ev.loc[years>pivot]
+              gaps.append({"mapped_land_class_transition_year":pivot,
+                "n_pre_runs":len(pre),"n_pre_distinct_years":int(pre.survey_year.nunique()),
+                "n_same_year_runs_not_temporally_orderable":len(inyr),
+                "n_post_runs":len(post),"n_post_distinct_years":int(post.survey_year.nunique()),
+                "possible_pre_post_contrast":bool(len(pre) and len(post)),
+                "possible_two_distinct_years_after":bool(pre.survey_year.nunique()>=1 and post.survey_year.nunique()>=2)})
+          out={"analysis":"Iowa_360417_2001_2015_survey_year_exposure_alignment_v20",
+               "n_eligible_runs":int(ev.run_id.nunique()),"n_sampled_years":int(years.nunique()),
+               "n_historical_field_sites_independently_confirmed":0,
+               "landcover_source":"Annual NLCD C1V0, source-only mapped classes, NOT C1.2",
+               "mapped_transition_years_selected_after_landcover_readback":True,
+               "published_DNR_map_postdates_NAAMP_study":True,
+               "frog_counts_csv_used":False,"naamp_source_sha256":hashes,
+               "survey_years":byyear,"year_breaks":gaps,
+               "run_calendar":[{"run_id":str(z.run_id),"survey_date":str(z.survey_date),
+                 "year":int(z.survey_year),
+                 "latest_allowable_antecedent_landcover_year":int(z.survey_year)-1
+                 if int(z.survey_year)>2001 else None}
+                 for z in ev.itertuples(index=False)]}
+          Path("iowa360417_temporal_eligibility_receipt_v20.json").write_text(
+               json.dumps(out,indent=2,sort_keys=True)+"\n")
+          print(json.dumps({k:v for k,v in out.items() if k!="run_calendar"},indent=2,sort_keys=True))
+          PY
+      - name: Save exact actual-year feasibility receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa360417-naamp-source-year-timing-v20
+          path: iowa360417_temporal_eligibility_receipt_v20.json
+          if-no-files-found: error
