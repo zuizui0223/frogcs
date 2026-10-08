@@ -22,6 +22,7 @@ MIN_BASE_YEARS = 15
 MIN_DAYS_PER_BASE_MONTH_YEAR = 20
 MIN_DAYS_PER_COMPLETE_YEAR = 350
 WINDOWS = (7, 30, 90)
+CALENDAR_MODES = ('daymet365', 'gregorian')
 
 
 def _validate_columns(df: pd.DataFrame, needed: set[str], name: str) -> None:
@@ -104,7 +105,15 @@ def _prior_year_features(d: pd.DataFrame, survey_year: int, annual_t_ref: float,
     }
 
 
-def build_features(surveys: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFrame:
+def _daymet_structural_missing_date(d: pd.Timestamp) -> bool:
+    ts = pd.Timestamp(d)
+    return bool(ts.is_leap_year and ts.month == 12 and ts.day == 31)
+
+
+def build_features(surveys: pd.DataFrame, daily: pd.DataFrame,
+                   *, calendar_mode: str = 'daymet365') -> pd.DataFrame:
+    if calendar_mode not in CALENDAR_MODES:
+        raise ValueError('Unknown meteorological source calendar')
     s, d = prepare_inputs(surveys, daily)
     # Deliberately intended for pilot batches (e.g. one route/region at a time).
     # Precompute each site's reference once rather than for every survey run.
@@ -125,13 +134,22 @@ def build_features(surveys: pd.DataFrame, daily: pd.DataFrame) -> pd.DataFrame:
             "site_id": str(row.site_id), "survey_date": survey_date.date().isoformat(),
             "coordinate_qc_status": "verified_external",
             "climate_baseline": "1981-2000",
+            "climate_source_calendar": calendar_mode,
             "survey_day_weather_used": False,
         }
         for window in WINDOWS:
             dates = pd.date_range(end=survey_date - pd.Timedelta(days=1), periods=window, freq="D")
             q = ds.reindex(dates)
-            if q[["tmean_c", "precip_mm", "reference_tmean_c", "reference_precip_mm_day"]].isna().any().any():
-                raise ValueError(f"missing prior {window} days at {key} on {survey_date.date()}")
+            structural = pd.Series([calendar_mode == 'daymet365' and
+                                    _daymet_structural_missing_date(z) for z in dates],index=dates)
+            missing=q[['tmean_c','precip_mm','reference_tmean_c','reference_precip_mm_day']].isna().any(axis=1)
+            if (missing & ~structural).any():
+                raise ValueError(f'missing prior {window} days at {key} on {survey_date.date()}')
+            if (structural & ~missing).any() and calendar_mode == 'daymet365':
+                raise ValueError('Daymet record unexpectedly includes leap-year December 31')
+            q=q.loc[~missing]
+            result[f'observed_source_days_{window}d']=len(q)
+            result[f'missing_daymet_calendar_days_{window}d']=int(missing.sum())
             result[f"tmean_anomaly_{window}d_c"] = float((q.tmean_c-q.reference_tmean_c).mean())
             result[f"precip_sum_{window}d_mm"] = float(q.precip_mm.sum())
             result[f"precip_anomaly_{window}d_mm"] = float((q.precip_mm-q.reference_precip_mm_day).sum())
@@ -147,14 +165,18 @@ def main() -> None:
     ap.add_argument("--daily", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--receipt", required=True)
+    ap.add_argument('--calendar-mode',choices=CALENDAR_MODES,default='daymet365')
     args = ap.parse_args()
     result = build_features(pd.read_csv(args.surveys, dtype={"run_id":str,"route_id":str,"site_id":str}),
-                            pd.read_csv(args.daily, dtype={"route_id":str,"site_id":str}))
+                            pd.read_csv(args.daily, dtype={"route_id":str,"site_id":str}),
+                            calendar_mode=args.calendar_mode)
     out = Path(args.out); out.parent.mkdir(parents=True, exist_ok=True)
     result.to_csv(out, index=False)
     receipt = {"response_columns_read": False, "climate_baseline": "1981-2000",
                "n_survey_site_rows": len(result), "n_distinct_sites": len(set(zip(result.route_id, result.site_id))),
-               "survey_day_weather_used": False, "requires_externally_verified_coordinates": True,
+               "survey_day_weather_used": False, "source_calendar": args.calendar_mode,
+               "leap_year_dec31_not_filled": True,
+               "requires_externally_verified_coordinates": True,
                "not_a_climate_change_attribution_estimate": True}
     Path(args.receipt).write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
