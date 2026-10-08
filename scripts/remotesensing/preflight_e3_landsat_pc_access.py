@@ -17,7 +17,7 @@ import rasterio
 from rasterio.windows import Window
 from rasterio.warp import transform
 
-OUT = Path("remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_3.json")
+OUT = Path("remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_4.json")
 STAC = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
 SIGN = "https://planetarycomputer.microsoft.com/api/sas/v1/sign"
 COLLECTION = "landsat-c2-l2"
@@ -47,7 +47,14 @@ def json_request(url, body=None):
             if isinstance(ex, urllib.error.HTTPError) and ex.code not in (408, 429, 500, 502, 503, 504):
                 raise
             if attempt < 2:
-                time.sleep(1.5 * (attempt + 1))
+                delay=5.0 * (attempt + 1)
+                try:
+                    supplied=float(ex.headers.get("Retry-After","0"))
+                    if supplied>0:
+                        delay=max(delay,min(30.0,supplied))
+                except (ValueError, TypeError, AttributeError):
+                    pass
+                time.sleep(delay)
     raise last
 
 def sensor(item):
@@ -60,6 +67,8 @@ def sensor(item):
 def sign_asset(raw_href):
     if not str(raw_href).startswith("https://"):
         raise RuntimeError("asset_href_is_not_https")
+    # Public-service rate cap; never issue a burst of signed-asset requests.
+    time.sleep(3.0)
     url = SIGN + "?" + urllib.parse.urlencode({"href":raw_href})
     data = json_request(url)
     signed = data.get("href")
@@ -147,7 +156,7 @@ for test in TESTS:
         ordered=sorted(choices,key=lambda z:(
             not str(z.get('id','')).upper().endswith('_T1'),
             str(z.get('id'))
-        ))[:3]
+        ))[:1]
         rec['candidate_attempts']=[]
         passed_item=False
         for item in ordered:
@@ -174,6 +183,8 @@ for test in TESTS:
             except Exception as ex:
                 attempt['status']='stac_or_signing_error'
                 attempt['error_type']=type(ex).__name__
+                if isinstance(ex, urllib.error.HTTPError):
+                    attempt['http_error_code']=int(ex.code)
             rec['candidate_attempts'].append(attempt)
         if not passed_item:
             rec['status']='E3_public_asset_access_inconclusive'
@@ -188,9 +199,9 @@ for test in TESTS:
 
 passed=all(r["status"]=="all_required_assets_accessible" for r in results)
 receipt={
-  "analysis":"e3_landsat_pc_asset_access_preflight_v0_3",
+  "analysis":"e3_landsat_pc_asset_access_preflight_v0_4",
   "contract":"revision/NAAMP_E3_LANDSAT_NDMI_FINAL_ABIOTIC_CONTRACT_V0_1.md",
-  "access_repair":"revision/NAAMP_E3_LANDSAT_PC_ACCESS_REPAIR_V0_3.md",
+  "access_repair":"revision/NAAMP_E3_LANDSAT_PC_FINAL_NETWORK_GATE_V0_4.md",
   "collection":COLLECTION,
   "status":"E3_public_access_pass" if passed else "E3_public_asset_access_inconclusive",
   "frog_outcomes_read":False,
