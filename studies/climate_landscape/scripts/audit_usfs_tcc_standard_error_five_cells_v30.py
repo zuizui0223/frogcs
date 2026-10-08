@@ -89,11 +89,6 @@ def positions_at_nominal_site(site,bbox,shape):
     gx=bbox[0]+30*(cc+.5);gy=bbox[3]-30*(rr+.5)
     return (gx-x[0])**2+(gy-y[0])**2<=250**2
 
-def identify_five_cells(group,bbox):
-    year1,valid1,_=source_year(2011,*(*bbox,)) if False else (None,None,None)
-    # no source pixel data may be inferred from site coordinates alone
-    raise NotImplementedError
-
 def compare_annual_se(canopy_years,se_years):
     """No z-test: bound annual SE sum without assuming temporal independence."""
     if set(canopy_years)!=set(YEARS) or set(se_years)!=set(YEARS):
@@ -148,7 +143,6 @@ def main():
             # Match tree-cover model and U16 SE product on exact original grid.
             canopy={};se={};metas={}
             for year in YEARS:
-                catalog,sourcehash=get_catalog("Science_TCC",year)
                 from extract_usfs_science_tcc_at_five_nlcd_cells_v29 import image_raster
                 tcc,tccvalid,tccmeta=image_raster("Science_TCC",year,bbox,width,height)
                 searr,sevalid,semeta=se_image(year,bbox,width,height)
