@@ -1,0 +1,207 @@
+#!/usr/bin/env python3
+"""Source-blind Iowa NAAMP stop wet/dry feasibility census (v3.2).
+
+This code does NOT download or open USGS Counts.csv or Iowa frog responses.
+It accepts only an explicitly prepared, metadata-only environmental CSV.
+A current/old blank form is not a measurement. Do not synthesize W/D.
+No association, p-value or frog endpoint is computed by this program.
+"""
+from __future__ import annotations
+import argparse
+import csv
+import datetime as dt
+import hashlib
+import io
+import json
+from collections import Counter, defaultdict
+from pathlib import Path
+
+REQUIRED = ("route_id", "route_type", "stop_number", "event_id", "survey_date", "wetdry")
+OPTIONAL = ("site_id", "source_form_version")
+MISSING = {"", "NA", "N/A", "NULL", "UNKNOWN", "UNK", "U", "?"}
+
+
+def audit_csv(raw: str) -> dict:
+    reader = csv.DictReader(io.StringIO(raw))
+    fields = reader.fieldnames or []
+    if len(fields) != len(set(fields)):
+        raise ValueError("duplicate headers")
+    if set(REQUIRED) - set(fields) or set(fields) - set(REQUIRED + OPTIONAL):
+        raise ValueError("must be metadata-only exact canonical columns; no extra/outcome fields")
+    records = list(reader)
+    if not records:
+        raise ValueError("empty environmental source panel")
+    keys = set()
+    visits = defaultdict(list)
+    survey_keys = {}
+    by_route_year = defaultdict(Counter)
+    stop_obs = defaultdict(list)
+    site_values = defaultdict(set)
+    n_missing = 0
+    for row in records:
+        if None in row:
+            raise ValueError("more CSV values than header fields")
+        route = row["route_id"].strip()
+        rtype = row["route_type"].strip().upper()
+        stop_text = row["stop_number"].strip()
+        event = row["event_id"].strip()
+        date_text = row["survey_date"].strip()
+        try:
+            date = dt.date.fromisoformat(date_text)
+        except ValueError as e:
+            raise ValueError("survey_date must be ISO YYYY-MM-DD") from e
+        if not (2010 <= date.year <= 2015):
+            raise ValueError("data outside frozen Iowa NAAMP historical window 2010–2015")
+        if not route or not event or not stop_text.isdigit():
+            raise ValueError("invalid route, stop or event key")
+        stop = int(stop_text)
+        if not 1 <= stop <= 10 or rtype != "NAAMP":
+            raise ValueError("requires 10-stop NAAMP route type and stop 1–10")
+        identity = (route, event, stop)
+        if identity in keys:
+            raise ValueError("duplicate route/event/stop (no silent averaging)")
+        keys.add(identity)
+        skey = (route, event)
+        if skey in survey_keys and survey_keys[skey] != date_text:
+            raise ValueError("same route/event_id linked to multiple survey dates")
+        survey_keys[skey] = date_text
+        raw_wd = row["wetdry"].strip().upper()
+        if raw_wd in MISSING:
+            wd = None
+            n_missing += 1
+        elif raw_wd in ("W", "WET"):
+            wd = "W"
+        elif raw_wd in ("D", "DRY"):
+            wd = "D"
+        else:
+            raise ValueError("unknown wetdry code; request original data dictionary")
+        visits[skey].append(wd)
+        by_route_year[(route, date.year)]["visits"] += 1
+        if wd:
+            by_route_year[(route, date.year)][wd] += 1
+        else:
+            by_route_year[(route, date.year)]["missing"] += 1
+        stop_obs[(route, stop)].append((date, event, wd))
+        if "site_id" in row:
+            val = row["site_id"].strip()
+            if val:
+                site_values[(route, stop)].add(val)
+    variation = []
+    n_both = 0
+    n_uniform = 0
+    n_no_data = 0
+    for (route, event), states in sorted(visits.items()):
+        found = {x for x in states if x is not None}
+        if found == {"W", "D"}:
+            n_both += 1
+            variation.append({"route_id": route, "event_id": event})
+        elif not found:
+            n_no_data += 1
+        else:
+            n_uniform += 1
+    switches = []
+    for (route, stop), arr in sorted(stop_obs.items()):
+        # Distinct dated within-site W and D statuses are a necessary *nominal*
+        # temporal contrast; true field-site stability still requires external evidence.
+        observed = {wd for _, _, wd in arr if wd is not None}
+        if observed == {"W", "D"}:
+            switches.append({"route_id": route, "stop_number": stop,
+                             "n_observed": len([x for x in arr if x[2] is not None])})
+    site_id_conflicts = [
+        {"route_id": r, "stop_number": s, "site_id_values": sorted(vals)}
+        for (r, s), vals in sorted(site_values.items()) if len(vals) > 1
+    ]
+    route_years = [
+        {"route_id": r, "year": y, "stop_visits": c["visits"],
+         "wet": c["W"], "dry": c["D"], "missing": c["missing"]}
+        for (r, y), c in sorted(by_route_year.items())
+    ]
+    return {
+        "analysis": "iowa_naamp_state_native_wetdry_schema_coverage_v3_2",
+        "source_scope": "externally prepared metadata-only Iowa-native 2010–2015 NAAMP ten-stop rows",
+        "raw_source_discovery_or_authenticity_established": False,
+        "n_stop_event_rows": len(records),
+        "n_route_event_surveys": len(visits),
+        "n_nominal_route_stops": len(stop_obs),
+        "n_missing_wetdry": n_missing,
+        "n_route_events_with_wet_and_dry_stops": n_both,
+        "n_route_events_with_only_one_observed_status": n_uniform,
+        "n_route_events_with_all_wetdry_missing": n_no_data,
+        "n_nominal_route_stops_with_within_stop_wet_and_dry": len(switches),
+        "nominal_route_stops_with_both_statuses": switches,
+        "site_id_conflicts": site_id_conflicts,
+        "route_year_coverage": route_years,
+        "historical_physical_station_continuity_verified": False,
+        "wetdry_original_field_semantics_verified": False,
+        "counts_csv_read": False,
+        "frog_response_read": False,
+        "inferential_model_fitted": False,
+        "rc6_unchanged": True,
+        "interpretation": (
+            "Descriptive source adequacy only; W/D within nominal route stops and "
+            "within route events is necessary but not sufficient for a dynamic local "
+            "hydrology test. Original field semantics, missingness and dated "
+            "physical-site identity must be externally verified before analysis."
+        ),
+    }
+
+
+def synthetic_tests():
+    header = ",".join(REQUIRED) + "\n"
+    ok = header + "\n".join([
+        "360104,NAAMP,1,A,2011-04-14,W",
+        "360104,NAAMP,2,A,2011-04-14,D",
+        "360104,NAAMP,1,B,2013-05-07,D",
+        "360104,NAAMP,2,B,2013-05-07,W",
+        "360104,NAAMP,1,C,2014-04-21,UNKNOWN",
+    ]) + "\n"
+    result = audit_csv(ok)
+    assert result["n_stop_event_rows"] == 5
+    assert result["n_route_events_with_wet_and_dry_stops"] == 2
+    assert result["n_nominal_route_stops_with_within_stop_wet_and_dry"] == 2
+    assert result["n_missing_wetdry"] == 1
+    invalid = [
+        ok + "360104,NAAMP,1,A,2011-04-14,W\n",
+        ok.replace("2011-04-14", "2009-04-14"),
+        ok.replace("360104,NAAMP,1,C,2014-04-21,UNKNOWN",
+                   "360104,NAAMP,1,C,2014-04-21,3"),
+        ok.replace("NAAMP", "TRADITIONAL"),
+        ok.replace("360104,NAAMP,1,C,2014-04-21,UNKNOWN",
+                   "360104,NAAMP,11,C,2014-04-21,W"),
+        header.replace("wetdry", "wetdry,calling_index") + "360104,NAAMP,1,A,2011-04-14,W,3\n",
+    ]
+    for i, payload in enumerate(invalid):
+        try:
+            audit_csv(payload)
+        except ValueError:
+            continue
+        raise AssertionError(f"Invalid fixture {i} did not fail closed")
+    print("PASS: 1 positive synthetic fixture and 6 negative fail-closed fixtures; no frog outcomes")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--metadata-only-csv", type=Path)
+    parser.add_argument("--receipt", type=Path)
+    parser.add_argument("--self-test", action="store_true")
+    args = parser.parse_args()
+    if args.self_test:
+        synthetic_tests()
+        return
+    if not args.metadata_only_csv or not args.receipt:
+        parser.error("provide both metadata-only-csv and receipt (or --self-test)")
+    source = args.metadata_only_csv.read_bytes()
+    report = audit_csv(source.decode("utf-8-sig"))
+    report["provided_environmental_csv_sha256"] = hashlib.sha256(source).hexdigest()
+    args.receipt.parent.mkdir(parents=True, exist_ok=True)
+    args.receipt.write_text(json.dumps(report, sort_keys=True, indent=2) + "\n",
+                            encoding="utf-8")
+    print(json.dumps({k: report[k] for k in [
+        "n_stop_event_rows", "n_missing_wetdry",
+        "n_route_events_with_wet_and_dry_stops",
+        "n_nominal_route_stops_with_within_stop_wet_and_dry",
+        "counts_csv_read", "frog_response_read"]}, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()
