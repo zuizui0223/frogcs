@@ -86,15 +86,23 @@ def audit_csv(raw: str) -> dict:
             val = row["site_id"].strip()
             if val:
                 site_values[(route, stop)].add(val)
-    variation = []
     n_both = 0
     n_uniform = 0
     n_no_data = 0
+    n_complete = 0
+    n_complete_both = 0
+    n_incomplete = 0
     for (route, event), states in sorted(visits.items()):
+        complete = len(states) == 10
+        if complete:
+            n_complete += 1
+        else:
+            n_incomplete += 1
         found = {x for x in states if x is not None}
         if found == {"W", "D"}:
             n_both += 1
-            variation.append({"route_id": route, "event_id": event})
+            if complete:
+                n_complete_both += 1
         elif not found:
             n_no_data += 1
         else:
@@ -124,7 +132,10 @@ def audit_csv(raw: str) -> dict:
         "n_route_event_surveys": len(visits),
         "n_nominal_route_stops": len(stop_obs),
         "n_missing_wetdry": n_missing,
-        "n_route_events_with_wet_and_dry_stops": n_both,
+        "n_route_events_with_wet_and_dry_stops_including_incomplete": n_both,
+        "n_complete_10_stop_route_events": n_complete,
+        "n_incomplete_10_stop_route_events": n_incomplete,
+        "n_complete_10_stop_route_events_with_wet_and_dry_stops": n_complete_both,
         "n_route_events_with_only_one_observed_status": n_uniform,
         "n_route_events_with_all_wetdry_missing": n_no_data,
         "n_nominal_route_stops_with_within_stop_wet_and_dry": len(switches),
@@ -138,7 +149,8 @@ def audit_csv(raw: str) -> dict:
         "inferential_model_fitted": False,
         "rc6_unchanged": True,
         "interpretation": (
-            "Descriptive source adequacy only; W/D within nominal route stops and "
+            "Descriptive source adequacy only; full ten-stop route-event W/D is "
+            "evaluated separately from incomplete events. W/D within nominal route stops and "
             "within route events is necessary but not sufficient for a dynamic local "
             "hydrology test. Original field semantics, missingness and dated "
             "physical-site identity must be externally verified before analysis."
@@ -157,7 +169,9 @@ def synthetic_tests():
     ]) + "\n"
     result = audit_csv(ok)
     assert result["n_stop_event_rows"] == 5
-    assert result["n_route_events_with_wet_and_dry_stops"] == 2
+    assert result["n_route_events_with_wet_and_dry_stops_including_incomplete"] == 2
+    assert result["n_complete_10_stop_route_events"] == 0
+    assert result["n_complete_10_stop_route_events_with_wet_and_dry_stops"] == 0
     assert result["n_nominal_route_stops_with_within_stop_wet_and_dry"] == 2
     assert result["n_missing_wetdry"] == 1
     invalid = [
@@ -198,7 +212,7 @@ def main():
                             encoding="utf-8")
     print(json.dumps({k: report[k] for k in [
         "n_stop_event_rows", "n_missing_wetdry",
-        "n_route_events_with_wet_and_dry_stops",
+        "n_complete_10_stop_route_events_with_wet_and_dry_stops",
         "n_nominal_route_stops_with_within_stop_wet_and_dry",
         "counts_csv_read", "frog_response_read"]}, sort_keys=True))
 
