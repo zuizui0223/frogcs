@@ -1,0 +1,37 @@
+name: Terrestrial history metadata feasibility
+
+on:
+  push:
+    branches:
+      - remotesensing/terrestrial-time-history-feasibility-v1
+    paths:
+      - ".github/workflows/terrestrial_time_history_metadata_feasibility.yml"
+      - "scripts/remotesensing/audit_terrestrial_time_history_metadata.py"
+      - "revision/TERRESTRIAL_TEMPORAL_HISTORY_FEASIBILITY_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: e3-ndmi-metadata-coverage-v01
+          path: remotesensing
+          github-token: ${{ github.token }}
+          run-id: 37711943954
+      - name: Audit pre-survey scene timing without reading outcomes
+        run: python scripts/remotesensing/audit_terrestrial_time_history_metadata.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: terrestrial-time-history-metadata-feasibility-v01
+          path: remotesensing/TERRESTRIAL_TIME_HISTORY_METADATA_FEASIBILITY_V0_1.json
+          retention-days: 30
