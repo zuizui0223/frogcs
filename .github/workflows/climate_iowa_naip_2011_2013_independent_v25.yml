@@ -1,0 +1,129 @@
+name: Independent Iowa NAIP 2011-2013 aerial source check at two mapped changes
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_naip_2011_2013_independent_v25.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-aerial-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source QC dependencies
+        run: |
+          python -m pip install -r studies/climate_landscape/requirements.txt
+          python -m pip install pillow
+      - name: Download original source-pinned NAAMP coordinates only
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Get 2011 and 2013 original aerial image pairs (no frog counts)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,hashlib,json,urllib.parse,urllib.request,xml.etree.ElementTree as ET,io
+          import pandas as pd
+          from PIL import Image
+          from pyproj import Transformer
+          import sys
+          sys.path.insert(0,'studies/climate_landscape/scripts')
+          from audit_coordinates import audit as geometry_audit
+          from run_public_naamp_feasibility import COORD_SHA
+          base=Path(os.environ['RUNNER_TEMP'])/'naamp'
+          original=base/'Coordinates.csv'
+          if hashlib.sha256(original.read_bytes()).hexdigest()!=COORD_SHA:
+              raise ValueError('Original USGS NAAMP coordinate source hash mismatch')
+          coordinates=pd.read_csv(original,dtype={'RouteNumber':str,'SiteID':str})
+          geo,_=geometry_audit(coordinates)
+          # Chosen after C1V0 environment readback: not an independent random site sample.
+          targets={'360104':('6613',3),'360412':('7247',7)}
+          services={
+            2011:'https://ortho.gis.iastate.edu/arcgis/services/ortho/naip_2011_nc/ImageServer/WMSServer',
+            2013:'https://ortho.gis.iastate.edu/arcgis/services/ortho/naip_2013_nc/ImageServer/WMSServer'
+          }
+          outdir=Path('iowa_naip_2011_2013_two_sites_v25');outdir.mkdir(exist_ok=True)
+          receipt={'analysis':'independent_2011_2013_aerial_naip_nlcd_source_correspondence_v25',
+            'no_counts_csv_access':True,'n_historical_physical_stations_externally_verified':0,
+            'site_selection_after_NLCD_C1V0_readback':True,'classification_truth_not_established':True,
+            'images':[],'services':[]}
+          t=Transformer.from_crs('EPSG:4326','EPSG:3857',always_xy=True)
+          selected=[]
+          for route,(site,stop) in targets.items():
+              x=geo[(geo.route_id.astype(str)==route)&(geo.site_id.astype(str)==site)]
+              if len(x)!=1 or x.iloc[0].geometry_qc_status!='pass_unverified':
+                  raise ValueError('Frozen nominal route-site coordinate not geometry-pass')
+              r=x.iloc[0]
+              xx,yy=t.transform(float(r.longitude),float(r.latitude))
+              selected.append((route,site,stop,xx,yy))
+          for year,url in services.items():
+              service={'year':year,'official_wms':url}
+              def request(params):
+                  req=urllib.request.Request(url+'?'+urllib.parse.urlencode(params),
+                      headers={'Accept':'application/xml, image/png','User-Agent':'frogcs-independent-naip-source-v2.5'})
+                  with urllib.request.urlopen(req,timeout=85) as response:
+                      loc=urllib.parse.urlparse(response.geturl())
+                      if loc.scheme!='https' or loc.hostname!='ortho.gis.iastate.edu':
+                          raise ValueError('Source image redirected outside Iowa State')
+                      raw=response.read(2_000_001)
+                      mime=response.headers.get('Content-Type','')
+                  if len(raw)>2_000_000:raise ValueError('WMS source oversize')
+                  return raw,mime
+              try:
+                  raw,_=request({'SERVICE':'WMS','VERSION':'1.3.0','REQUEST':'GetCapabilities'})
+                  doc=ET.fromstring(raw)
+                  names=[(e.text or '').strip() for e in doc.iter() if e.tag.split('}')[-1]=='Name' and e.text]
+                  matching=sorted(set(x for x in names if f'naip_{year}_nc' in x.lower()))
+                  if len(matching)!=1:raise ValueError('Ambiguous/missing actual NAIP layer: '+repr(matching))
+                  layer=matching[0]
+                  service.update({'status':'layer_resolved','wms_layer':layer,
+                                  'capabilities_sha256':hashlib.sha256(raw).hexdigest()})
+                  for route,site,stop,xx,yy in selected:
+                      # Identical 700m Web Mercator frame and 600x600 image for the two years.
+                      bbox=','.join(f'{v:.3f}' for v in (xx-350,yy-350,xx+350,yy+350))
+                      params={'SERVICE':'WMS','VERSION':'1.3.0','REQUEST':'GetMap',
+                              'LAYERS':layer,'STYLES':'','CRS':'EPSG:3857',
+                              'BBOX':bbox,'WIDTH':600,'HEIGHT':600,
+                              'FORMAT':'image/png','TRANSPARENT':'FALSE'}
+                      image,mime=request(params)
+                      if not image.startswith(b'\x89PNG\r\n\x1a\n'):raise ValueError('Not PNG')
+                      obj=Image.open(io.BytesIO(image)).convert('RGB')
+                      span=[hi-lo for lo,hi in obj.getextrema()]
+                      if obj.size!=(600,600) or max(span)<3:raise ValueError('Blank/unexpected actual NAIP image')
+                      target=outdir/f'iowa_{route}_site{stop}_{year}_NAIP_nc.png'
+                      target.write_bytes(image)
+                      rec={'year':year,'route':route,'site_id':site,'stop_number':stop,
+                           'official_wms':url,'published_layer':layer,'same_3857_bbox_for_both_years':bbox,
+                           'image_size':list(obj.size),'RGB_channel_ranges':span,
+                           'mime_type':mime,'source_sha256':hashlib.sha256(image).hexdigest(),
+                           'source_bytes':len(image),'filename':target.name}
+                      receipt['images'].append(rec)
+                      print(json.dumps(rec,sort_keys=True),flush=True)
+              except Exception as e:
+                  service.update({'status':'source_unavailable','error_type':type(e).__name__,
+                                  'error':str(e)[:230]})
+                  print(json.dumps(service,sort_keys=True),flush=True)
+              receipt['services'].append(service)
+          receipt['n_original_images_downloaded']=len(receipt['images'])
+          receipt['n_complete_two_year_site_pairs']=sum(
+              sum(r['site_id']==site and r['year'] in (2011,2013) for r in receipt['images'])==2
+              for _,(site,_) in targets.items())
+          receipt['status']='FOUR_ORIGINAL_AERIAL_IMAGES_RETRIEVED' if len(receipt['images'])==4 else 'INCOMPLETE_AERIAL_SOURCE_PAIR'
+          (outdir/'receipt.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          if len(receipt['images'])==0:raise RuntimeError('Official Iowa NAIP data source unavailable')
+          PY
+      - name: Preserve actual historical aerial imagery and source data hashes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa-naip-2011-2013-source-pair-two-sites-v25
+          path: iowa_naip_2011_2013_two_sites_v25/
+          if-no-files-found: error
+          retention-days: 30
