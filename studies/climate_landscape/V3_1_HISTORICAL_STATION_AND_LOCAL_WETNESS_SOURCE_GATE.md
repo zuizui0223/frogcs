@@ -94,3 +94,21 @@ Thank you for considering this historical-data availability enquiry.
 The [USGS national NAAMP protocol](https://www.usgs.gov/centers/eesc/science/north-american-amphibian-monitoring-program) specifies route-start/end weather, **air temperature** at stops, 5-minute calling index, traffic, moonlight, and disruptive background noise. It does **not list stop-level wet/dry as a required national field** in its data-collection section. The same protocol says that stop relocation should generally be for safety rather than disappearance of habitat and that written relocation records were kept in most cases, but route-map updates were not always transmitted.
 
 **Inference, not a downloaded data result:** Iowa's state forms could include a valid extra W/D field that was omitted in the harmonized national archive. Therefore if the USGS `Stops.csv` lacks wet/dry, a targeted **state-native raw form/database export** is the only reliable route for recovering historic Iowa stop-event water condition. Never code "missing from USGS" as "all sites dry", "wetness not observed", or "field absent from the original Iowa survey".
+
+## Completed v3.1 USGS source-only result — authoritative closure
+
+[Successful original USGS `Runs.csv`/`Stops.csv` header audit 37774857243](https://github.com/zuizui0223/frogcs/actions/runs/37774857243) read the checksum-pinned original files (21,934 Runs; 219,340 Stops), without opening `Counts.csv`. It confirmed **zero stop-level wet/dry, water-level, inundation or related hydrology candidate column names** in the 14-column national Stops export. Actual list:
+
+`RunID, StopNumber, SiteID, AirTemp, Moon, SkippedStop, TimeOut, Noise, MassNoiseIndex, StartTime, SnowCover, CarCount, DateCreated, DateLastUpdated`.
+
+The machine-readable [Actions artifact 11549248353](https://github.com/zuizui0223/frogcs/actions/runs/37774857243/artifacts/11549248353) is frozen; see `V3_1_ACTUAL_USGS_WETNESS_SCHEMA_RESULT_2026-10-08.md`. This **closes the USGS export-only path** for directly testing local wetland water state. Do **not** treat raw-route/year header enumeration as the standardized eligible site-year cohort: 360104 raw records include 2010, whereas the separately screened v2.1 standardized cohort begins in 2011.
+
+### Verified archive custodian and access boundary
+
+- Current official program contact: **vwmp@dnr.iowa.gov**, on the [Iowa DNR Volunteer Wildlife Monitoring page](https://www.iowadnr.gov/programs-services/volunteer-opportunities/wildlife-monitoring) (also published in the [online program's About page](https://programs.iowadnr.gov/vwmp/Home/About)).
+- [The publicly accessible VWMP database home](https://programs.iowadnr.gov/vwmp/) presents a county selector and **Download Report** control, but data entry requires login. The public page does **not establish** that 2010–2015 site-event wet/dry, physical stop history, or raw survey records can be publicly exported; no private account or dataset was accessed.
+- The Iowa DNR instructs monitors both to enter surveys through the online portal **and** mail paper datasheets to the state. This demonstrates current original-paper custody workflow but **not historical record retention**.
+
+**Updated decision:** `historical_USGS_Stop_wetdry = NOT_PRESENT`; `Iowa_native_2010_2015_wetdry = UNKNOWN`; `historical_stop_relocation_logs = UNKNOWN`; `original_NLCD_C1_2_five_cells = NOT_OBTAINED`. Source custodian enquiry is the only remaining reasonable Iowa-water-state path before considering new ecology analysis. No email has been sent.
+
+Before drafting another analysis, first obtain a **yes/no records availability answer** and per-year schema coverage for NAAMP ten-stop routes, without personal details or calling responses. If historic stop-event wetness is absent, **stop this selected Iowa route hydrology mechanism line** instead of substituting atmospheric weather, contemporary wetness, or new satellite proxies as if direct historical hydroperiod.
