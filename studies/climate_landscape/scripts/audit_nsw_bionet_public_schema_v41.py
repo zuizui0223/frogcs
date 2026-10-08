@@ -136,7 +136,7 @@ def main():
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     # Show only FIELD NAMES relevant to opportunity/effort/source identity, never rows.
-    keywords=("event","date","survey","site","sample","count","abundan",
+    keywords=("event","date","survey","visit","site","sample","count","abundan",
               "repro","calling","water","rain","method","status","effort",
               "record","behav","measure","occurrence","observer")
     fields=result.get("schema_summary",{}).get("target_schema_fields",{})
