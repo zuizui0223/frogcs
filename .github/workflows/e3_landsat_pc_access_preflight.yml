@@ -1,0 +1,35 @@
+name: E3 Landsat Planetary Computer access preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/e3-pc-access-v1
+    paths:
+      - ".github/workflows/e3_landsat_pc_access_preflight.yml"
+      - "scripts/remotesensing/preflight_e3_landsat_pc_access.py"
+      - "revision/NAAMP_E3_LANDSAT_PC_ACCESS_REPAIR_V0_2.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install public-raster reader
+        run: python -m pip install --disable-pip-version-check rasterio
+      - name: Verify analysis syntax
+        run: python -m py_compile scripts/remotesensing/preflight_e3_landsat_pc_access.py
+      - name: Outcome-blind historical Landsat signed-asset access
+        run: python scripts/remotesensing/preflight_e3_landsat_pc_access.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-landsat-pc-access-v02
+          path: remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_2.json
+          retention-days: 30
