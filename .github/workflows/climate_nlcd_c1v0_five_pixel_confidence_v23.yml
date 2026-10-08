@@ -97,11 +97,12 @@ jobs:
               print(json.dumps({'route':route,'year':year,'confidence_min':int(conf.min()),'confidence_max':int(conf.max())}),flush=True)
             nominal=frame[(frame.site_id==site)&(frame.stop_number==stop)]
             if len(nominal)!=1:raise ValueError('Frozen previously mapped site identity not found')
-            yy,xx=transform('EPSG:4326','EPSG:5070',nominal.longitude.tolist(),nominal.latitude.tolist())
+            xx,yy=transform('EPSG:4326','EPSG:5070',nominal.longitude.tolist(),nominal.latitude.tolist())
             rr,cc=np.indices((h,w))
             pixel_x=bbox[0]+(cc+0.5)*30
             pixel_y=bbox[3]-(rr+0.5)*30
             circle=((pixel_x-xx[0])**2+(pixel_y-yy[0])**2)<=250**2
+            if int(circle.sum())<40:raise ValueError('Project x/y coordinate grid has no valid station buffer; fail before source comparison')
             old,valid_old=labels[2011];new,valid_new=labels[2012]
             after,valid_after=labels[2013]
             shared=circle&valid_old&valid_new&valid_after
