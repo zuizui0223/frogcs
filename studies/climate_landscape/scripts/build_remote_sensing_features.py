@@ -74,9 +74,14 @@ def _prep_monthly(monthly):
         w[col]=pd.to_numeric(w[col],errors="raise").astype(int)
     if not w.buffer_m.isin(BUFFER_M).all() or not w.month.between(1,12).all() or not w.year.between(1984,2021).all():
         raise ValueError("invalid JRC buffer or month/year")
+    if w.duplicated(["route_id","site_id","buffer_m","year","month"]).any():
+        raise ValueError("duplicate normalized monthly image keys")
     w=_prep_pixels(w,WATER_AREA_COLS,"JRC")
-    if not w.source_version.str.contains("JRC_GSW1_4",regex=False).all():
+    if not w.source_version.eq("JRC_GSW1_4").all():
         raise ValueError("monthly water must be JRC_GSW1_4 historical imagery")
+    expected=w.apply(lambda r:f"JRC/GSW1_4/MonthlyHistory/{int(r.year):04d}_{int(r.month):02d}",axis=1)
+    if not w.source_image_id.reset_index(drop=True).equals(expected.reset_index(drop=True).astype("string")):
+        raise ValueError("JRC source_image_id is inconsistent with image month/year")
     w["period"]=pd.PeriodIndex.from_fields(year=w.year,month=w.month,freq="M")
     w["observed_frac"]=(w.water_area_m2+w.nonwater_area_m2)/w[list(WATER_AREA_COLS)].sum(axis=1)
     w["visible_water_frac"]=np.where(w.observed_frac>=WATER_MIN_OBSERVED_FRACTION,
@@ -91,8 +96,10 @@ def _prep_annual(annual):
         a[col]=pd.to_numeric(a[col],errors="raise").astype(int)
     if not a.buffer_m.isin(BUFFER_M).all() or not a.year.between(1985,2025).all():
         raise ValueError("invalid Annual NLCD buffer/year")
+    if a.duplicated(["route_id","site_id","buffer_m","year"]).any():
+        raise ValueError("duplicate normalized landcover keys")
     a=_prep_pixels(a,LAND_AREA_COLS,"NLCD")
-    if not a.source_version.str.contains("ANNUAL_NLCD_C1_2",regex=False).all():
+    if not a.source_version.eq("ANNUAL_NLCD_C1_2").all():
         raise ValueError("Annual NLCD must identify official Collection 1.2")
     a["observed_frac"]=a[list(LAND_AREA_COLS[:-1])].sum(axis=1)/a[list(LAND_AREA_COLS)].sum(axis=1)
     for kind in ("forest","agriculture","developed","wetland","openwater"):
