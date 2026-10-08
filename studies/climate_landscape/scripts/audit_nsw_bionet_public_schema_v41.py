@@ -135,12 +135,20 @@ def main():
     path=Path(a.receipt)
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    # Show only FIELD NAMES relevant to opportunity/effort/source identity, never rows.
+    keywords=("event","date","survey","site","sample","count","abundan",
+              "repro","calling","water","rain","method","status","effort",
+              "record","behav","measure","occurrence","observer")
+    fields=result.get("schema_summary",{}).get("target_schema_fields",{})
+    filtered={name:[p for p in info["property_names"]
+                    if any(term in p.lower() for term in keywords)]
+              for name,info in fields.items()}
     print(json.dumps({
         "service_status":result.get("service_status"),
         "schema_status":result.get("schema_status"),
         "target_entities":result.get("service_summary",{}).get("target_entity_sets_present"),
-        "target_schema_field_counts":{k:v.get("n_properties") for k,v
-            in result.get("schema_summary",{}).get("target_schema_fields",{}).items()},
+        "target_schema_field_counts":{k:v.get("n_properties") for k,v in fields.items()},
+        "field_names_matching_predeclared_keywords":filtered,
         "frog_call_values_read":False,
     },sort_keys=True))
 
