@@ -1,0 +1,98 @@
+{
+  "analysis": "same_collection_C1V0_five_mapped_forest_loss_pixel_confidence_v23",
+  "source_run": "https://github.com/zuizui0223/frogcs/actions/runs/37765088259",
+  "source_artifact": "https://github.com/zuizui0223/frogcs/actions/runs/37765088259/artifacts/11544052209",
+  "source_collection": "C1V0 (Collection 1.0), not C1V2",
+  "years": [
+    2011,
+    2012,
+    2013
+  ],
+  "status": "SOURCE_CONFIDENCE_READBACK_COMPLETE_NONINFERENTIAL",
+  "change_sites_preselected_after_environmental_readback": true,
+  "n_original_declared_forest_loss_pixels": 5,
+  "loss_confidence_2012_scores": [
+    44,
+    46,
+    7,
+    39,
+    34
+  ],
+  "loss_confidence_2012_median": 39,
+  "loss_confidence_2012_min": 7,
+  "loss_confidence_2012_max": 46,
+  "stable_forest_control_n_pixels": 130,
+  "stable_forest_control_2012_median": 61,
+  "confidence_is_model_class_label_index_not_probability_of_true_change": true,
+  "pixel_records": [
+    {
+      "route": "360104",
+      "site_id": "6613",
+      "stop_no": 3,
+      "source_2011": [
+        41,
+        41,
+        41
+      ],
+      "source_2012": [
+        82,
+        82,
+        21
+      ],
+      "source_2013": [
+        82,
+        82,
+        21
+      ],
+      "confidence_2011": [
+        72,
+        63,
+        50
+      ],
+      "confidence_2012": [
+        44,
+        46,
+        7
+      ],
+      "confidence_2013": [
+        45,
+        46,
+        8
+      ],
+      "n_stable_forest_control_pixels": 14
+    },
+    {
+      "route": "360412",
+      "site_id": "7247",
+      "stop_no": 7,
+      "source_2011": [
+        41,
+        41
+      ],
+      "source_2012": [
+        82,
+        82
+      ],
+      "source_2013": [
+        82,
+        82
+      ],
+      "confidence_2011": [
+        32,
+        22
+      ],
+      "confidence_2012": [
+        39,
+        34
+      ],
+      "confidence_2013": [
+        41,
+        33
+      ],
+      "n_stable_forest_control_pixels": 116
+    }
+  ],
+  "historical_2001_2015_physical_sites_field_verified": 0,
+  "new_frog_counts_read": false,
+  "interpretation": "Two already selected sites and five mapped losses show lower model classification confidence than unchanged source-forest pixels. No field disturbance, climate cause, frog response or reliable causal effect established. Latest C1V2 and historical station documentation still needed."
+}
