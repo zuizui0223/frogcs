@@ -14,11 +14,11 @@
 
 ### 2023: NAAMP and traditional programme data were joined retrospectively
 
-[Shepherd (2023), *Frog and Toad Call Survey Results for Iowa, 2023*](https://www.iowadnr.gov/media/1751/download?inline=), Methods p. 2, explicitly describes volunteers recording whether the wetland stop was **wet or dry**. Results p. 3 states that NAAMP and traditional datasets had previously been analyzed separately, but **were subsequently combined back to NAAMP's 2010 initiation**, enabling ten-year trend assessments. This is the most specific source lead for a **state-native historical crosswalk, cleaning procedure and possibly archived stop variables**. It does **not** establish whether the 2010–2015 wet/dry or water-temperature values survived the merger.
+[Shepherd (2023), *Frog and Toad Call Survey Results for Iowa, 2023*](https://www.iowadnr.gov/media/1751/download?inline=), Methods p. 2, explicitly describes volunteers recording whether the wetland stop was **wet or dry**. Results p. 3 states that work **has been done to combine** formerly separate NAAMP and traditional records back towards the 2010 NAAMP start, enabling a ten-year trend assessment. However, its actual plotted long-term trends begin around **2013**, and Discussion p. 6 says the programme is **still gradually adding years of combined data**. Consequently this publication does **not** establish a fully harmonized 2010–2015 event-level table, much less the retention of original stop-event wet/dry or water-temperature fields. It is a valuable lead for a **state-native historical crosswalk or source archive**, not verification of its coverage.
 
 ### Contemporary public database and archive custody
 
-The [VWMP public portal](https://programs.iowadnr.gov/vwmp/) offers a county-select **Download Report** control; the public landing page describes volunteer login for data entry. The visible landing page alone does **not** establish historical row-level data downloads or the inclusion of wet/dry in downloaded reports. No login bypass, protected endpoint use, county-level report download or volunteer data retrieval was attempted.
+The [VWMP public portal](https://programs.iowadnr.gov/vwmp/) displays a county-select **Download Report** control; the public landing page describes volunteer login for data entry. The visible landing page alone does **not** establish historical row-level data downloads or the inclusion of wet/dry in downloaded reports. No login bypass, protected endpoint use, county-level report download or volunteer data retrieval was attempted.
 
 The [current Iowa DNR survey page](https://www.iowadnr.gov/programs-services/volunteer-opportunities/wildlife-monitoring/frogs-and-toads/survey) says monitors must **submit data online and mail paper datasheets**. Again, this establishes current handling rather than verified historical sheet preservation. Official custodian contact: **vwmp@dnr.iowa.gov**.
 
@@ -28,7 +28,7 @@ The checksum-verified original [USGS `Stops.csv` schema audit](https://github.co
 
 ## The decisive custodian question is now narrower
 
-**Was per-stop wet/dry recorded and retained in Iowa's state-native **2010–2015 ten-stop NAAMP dataset**, and did the retrospective traditional+NAAMP database merger retain that field, rather than only species, date and route IDs?** Ask for:
+**Was per-stop wet/dry recorded and retained in Iowa's original 2010–2015 ten-stop NAAMP surveys, and were any such raw fields included in the later **partially assembled** traditional+NAAMP combined database (rather than only response/date/route IDs)?** Ask for:
 1. Annual blank survey sheets / instructions **specifically used on NAAMP ten-stop routes** in 2010, 2011, 2012, 2013, 2014 and 2015, especially the definitions of `Site Wet or Dry`.
 2. The native merged database **field list / dictionary** and the 2010–2015 old-to-new **route/stop/event identifier crosswalk**. If wet/dry was not included in the merge, ask whether pre-merge state spreadsheets or scanned paper forms survived.
 3. **Year × route type × event × stop metadata-only completeness**: number of observed W/D values, missing/unknown records, duplicate event keys, and whether the same stop is W and D on different visits.
