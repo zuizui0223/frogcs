@@ -1,0 +1,35 @@
+{
+  "all_2004_2014_forest_change_is_mapping_proxy": true,
+  "analysis": "iowa360417_annual_nlcd_C1V0_center_shift_sensitivity_v18",
+  "data_source_is_C1V0_not_C1V2": true,
+  "frog_response_read": false,
+  "independent_historical_station_verifications": 0,
+  "interpretation": "Coordinate displacement stress test only; shift robustness cannot validate class changes against newest collection or independent field checks.",
+  "landcover_confidence_raster_read": false,
+  "n_buffer_radii": 2,
+  "n_shift_centers_per_buffer": 25,
+  "n_stops": 10,
+  "n_total_center_buffer_rows": 500,
+  "pixel_classification_uncertainty_NOT_measured": true,
+  "role": "postreadback_descriptive_geolocation_stress_test_not_confirmatory",
+  "shift_radii_m": [
+    0,
+    6,
+    15,
+    30
+  ],
+  "site_level_250m_30m_consistency_count": 2,
+  "site_level_250m_6m_consistency_count": 2,
+  "source_artifact_sha256": "570c17d302046eecccf1013ccd610c35c0172bccf32c052ae1dd34c7780ea82d",
+  "source_station_sha256": "8b7be934dc32aa71791b4e6c38295d25cbcebb66f2f6ab39714d41ce7b65f227",
+  "source_year_sha256": {
+    "2004": "8384900d2afb3afb63624bb5a2368cf3a2b6dde98d737e0fb6cc9bbf544b7290",
+    "2009": "e6207792fa973d97aaab49bfe226e71175ae4e8815ede11832d7b8301f34b0ad",
+    "2014": "dc776e204f7f2ee7de9ff2817b58c8ac86f7ed6e44ab320c1733ba1f6c4694c0"
+  },
+  "years": [
+    2004,
+    2009,
+    2014
+  ]
+}

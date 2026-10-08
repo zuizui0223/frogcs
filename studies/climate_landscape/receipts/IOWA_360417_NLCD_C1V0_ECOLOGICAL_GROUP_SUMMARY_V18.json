@@ -1,0 +1,63 @@
+{
+  "analysis": "iowa_360417_C1V0_functional_land_cover_reaudit_v18",
+  "coarse_class_dictionary": {
+    "1": "open_water",
+    "2": "ice_snow",
+    "3": "developed",
+    "4": "barren",
+    "5": "forest",
+    "6": "shrub",
+    "7": "grass",
+    "8": "agriculture",
+    "9": "wetland"
+  },
+  "frog_counts_or_acoustic_outcomes_read": false,
+  "full_per_site_transition_results_in": "receipts/iowa_360417_nlcd_c1v0_2004_2014_site_change_v18.csv",
+  "full_source_json_generated_by_pipeline": true,
+  "interpretation": "Environment-only categorical landcover screening; mapping classes and original station identities require independent confirmation before frog response analysis",
+  "n_historical_physical_sites_independently_field_verified": 0,
+  "nominal_buffer_m": [
+    250,
+    1000
+  ],
+  "not_collection_1_2": true,
+  "original_action_artifact": "https://github.com/zuizui0223/frogcs/actions/runs/37754405051/artifacts/11539925980",
+  "original_archive_sha256": "570c17d302046eecccf1013ccd610c35c0172bccf32c052ae1dd34c7780ea82d",
+  "original_stop_source_sha256": "8b7be934dc32aa71791b4e6c38295d25cbcebb66f2f6ab39714d41ce7b65f227",
+  "results_by_radius": {
+    "1000": {
+      "mean_between_group_change_pct_equal_site": 1.7298196048390444,
+      "mean_fine_change_pct_equal_site": 5.506203037334376,
+      "n_sites": 10,
+      "n_sites_any_between_group_change": 10,
+      "n_sites_any_forest_loss": 9,
+      "n_sites_any_forest_to_agriculture": 9,
+      "n_sites_any_forest_to_developed": 2,
+      "overlapping_buffers_not_independent": true,
+      "source_pixels_nominally_valid": true
+    },
+    "250": {
+      "mean_between_group_change_pct_equal_site": 2.0599079140513545,
+      "mean_fine_change_pct_equal_site": 4.697017162458903,
+      "n_sites": 10,
+      "n_sites_any_between_group_change": 7,
+      "n_sites_any_forest_loss": 3,
+      "n_sites_any_forest_to_agriculture": 3,
+      "n_sites_any_forest_to_developed": 1,
+      "overlapping_buffers_not_independent": true,
+      "source_pixels_nominally_valid": true
+    }
+  },
+  "source_name": "Annual_NLCD_Collection_1.0_CU_C1V0",
+  "study_route": "360417",
+  "year_source_shas": {
+    "2004": "8384900d2afb3afb63624bb5a2368cf3a2b6dde98d737e0fb6cc9bbf544b7290",
+    "2009": "e6207792fa973d97aaab49bfe226e71175ae4e8815ede11832d7b8301f34b0ad",
+    "2014": "dc776e204f7f2ee7de9ff2817b58c8ac86f7ed6e44ab320c1733ba1f6c4694c0"
+  },
+  "years": [
+    2004,
+    2009,
+    2014
+  ]
+}
