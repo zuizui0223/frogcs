@@ -1,0 +1,87 @@
+{
+  "claims": "exploratory prediction in fixed 12 route screen, not causal climate or abundance",
+  "classification": "COMPLETED_EXPLORATORY_TEMPORAL_HOLDOUT",
+  "daymet_climate_receipt_sha256": "edf40c289de39e5d100c0a4151865ceff7d2341c4e6cf72212a058096968dd9e",
+  "daymet_sample_sha256": "398f1e5003fe2d8e91b7a7357593d399ef3a9e871ed55a2b5dfd87a1d5b9646f",
+  "endpoint": "number_of_10_stops_with_at_least_one_CI2_or_CI3",
+  "endpoint_is_calling_only_not_breeding_success": true,
+  "geographically_or_temporally_generalizable": false,
+  "heldout_first_year": 2011,
+  "independent_site_coordinates_verified": false,
+  "mean_heldout_baseline_logloss": 0.5614683748203294,
+  "mean_heldout_extended_logloss": 0.563725583768575,
+  "mean_heldout_gain_positive_better": -0.002257208948245515,
+  "mean_route_equal_weight_gain_positive_better": -0.007275764579096147,
+  "min_test_runs": 20,
+  "min_train_runs": 30,
+  "models": "fixed_ridge_binomial_route_round_season_temp_rain_vs_plus_past5_climate",
+  "n_heldout_runs": 57,
+  "n_route_years": 92,
+  "n_routes_both_eras_sufficient": 9,
+  "n_routes_total": 12,
+  "n_runs_total": 213,
+  "n_stops_per_run": 10,
+  "n_strong_stop_visits_test": 412,
+  "n_strong_stop_visits_train": 739,
+  "n_training_runs": 113,
+  "no_testing_data_used_for_feature_scaling": true,
+  "not_pre_registered_before_prior_frog_inspection_in_repository": true,
+  "ridge_penalty": 1.0,
+  "route_equal_weight_gains": [
+    {
+      "gain": 0.06677056338902825,
+      "n": 4,
+      "route_id": "Delaware:211202"
+    },
+    {
+      "gain": 0.0024754499242642925,
+      "n": 12,
+      "route_id": "Kentucky:390103"
+    },
+    {
+      "gain": -0.012191320058943,
+      "n": 5,
+      "route_id": "Maine:440516"
+    },
+    {
+      "gain": 0.009949213835178859,
+      "n": 10,
+      "route_id": "Mississippi:510218"
+    },
+    {
+      "gain": -0.010333852061141253,
+      "n": 5,
+      "route_id": "NewJersey:591505"
+    },
+    {
+      "gain": 0.005500283786747081,
+      "n": 13,
+      "route_id": "NorthCarolina:630114"
+    },
+    {
+      "gain": -0.1142570448111796,
+      "n": 4,
+      "route_id": "Vermont:870407"
+    },
+    {
+      "gain": 0.020290926845679236,
+      "n": 2,
+      "route_id": "Virginia:880304"
+    },
+    {
+      "gain": -0.03368610206149919,
+      "n": 2,
+      "route_id": "WestVirginia:900110"
+    }
+  ],
+  "routes_with_negative_gain": 4,
+  "routes_with_positive_gain": 5,
+  "site_level_landscape_effects_computed": false,
+  "source_sample_preselected_without_frog_counts": true,
+  "source_sha256": {
+    "Counts.csv": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086",
+    "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f"
+  },
+  "time_cutoff_training_last_year": 2010
+}
