@@ -95,6 +95,25 @@ A reported `stop_surveyed=N` with an observed W/D value is rejected as an incons
 
 The extended synthetic test now covers full-ten W/D, missing W/D, skip contradictions, stable versus conflicting recorded SiteIDs and absent SiteID. **A passing workflow run must be confirmed before treating the updated parser as validated.** It uses no actual Iowa-native W/D values or frog species counts.
 
+## v3.3: measured W/D needs a crossed-site/event design
+
+The v3.2 source-only feasibility code now includes an **exact algebraic redundancy check** for locally observed wetness against the additive combination of nominal stop and survey-event effects, with [successful synthetic CI run 37780425241](https://github.com/zuizui0223/frogcs/actions/runs/37780425241). It treats each observed W/D as an edge between an event and a stop; missing observations contribute no edge.
+
+- If there are **no cycles** in the observation graph, even observed W/D changes cannot isolate a separate W/D effect after both sets of fixed effects; there are insufficient crossed comparisons.
+- If cycles exist but all W/D values satisfy `W(stop,event) = stop_constant + event_constant`, all variation is fully explained by additive stop and event effects.
+- If at least one observed cycle violates that equality, W/D contains algebraically distinguishable information after these fixed effects. This **does not** establish an effect size, causal mechanism, stable physical station, or adequate precision.
+
+Illustration (synthetic, two sites surveyed on two nights):
+
+| | Night A | Night B |
+| --- | --- | --- |
+| Site 1 | W | D |
+| Site 2 | D | W |
+
+Here the relative W/D position reverses across nights; the effect cannot be reduced to a fixed site propensity plus a single additive night shift. By contrast, both sites D on Night A and both W on Night B are fully represented by a night effect. Tests use fabricated fixtures only.
+
+Additionally, `stop_surveyed` and `site_id` are optional **explicit-source-only** columns. Unknown or absent `stop_surveyed` never becomes a verified ten-stop survey. An apparent within-stop W↔D transition with changing, missing or unverified site identity cannot establish change at one physical station. The [Iowa official public-records access document](V3_3_IOWA_OFFICIAL_RECORDS_ACCESS_DECISION_2026-10-08.md) describes the two verified archival access routes; no request was transmitted.
+
 ## Stop decisions
 
 - **National USGS source:** permanently insufficient for direct stop wet/dry.
