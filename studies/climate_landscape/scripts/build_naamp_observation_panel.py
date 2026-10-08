@@ -63,7 +63,8 @@ def make(runs:pd.DataFrame,stops:pd.DataFrame)->tuple[pd.DataFrame,dict]:
         eligible[rid]=dict(run_id=rid,state=state,route_number=route,route_id=f"{state}:{route}",
                            route_type=rtype,survey_round=int(runno),survey_year=yr,
                            survey_date=survey.strftime("%Y-%m-%d"),
-                           temp_scale=str(r["TempScale"]).strip())
+                           temp_scale=str(r["TempScale"]).strip(),
+                           observer_id=str(r.get("ObserverTrackingID","")).strip())
     grouped={r:[] for r in eligible}
     for s in stops.to_dict(orient="records"):
         rid=str(s["RunID"]).strip()
@@ -101,7 +102,7 @@ def make(runs:pd.DataFrame,stops:pd.DataFrame)->tuple[pd.DataFrame,dict]:
                            "site_id":str(s["SiteID"]).strip(),
                            "stop_number":stop})
         n_run_geometry_eligible+=1
-    columns=["run_id","state","route_number","route_id","route_type","survey_round",
+    columns=["run_id","state","route_number","route_id","route_type","survey_round","observer_id",
              "survey_year","survey_date","site_id","stop_number"]
     df=pd.DataFrame(output,columns=columns)
     if not df.empty:
@@ -114,6 +115,7 @@ def make(runs:pd.DataFrame,stops:pd.DataFrame)->tuple[pd.DataFrame,dict]:
              "n_site_visits":len(df),
              "n_distinct_route_site_keys":int(df[["route_id","site_id"]].drop_duplicates().shape[0]),
              "n_distinct_routes":df.route_id.nunique(),
+             "n_runs_with_observer_id":int(df.loc[df.observer_id.ne(""),"run_id"].nunique()) if not df.empty else 0,
              "n_invalid_date_rows":date_error,
              "n_runs_incomplete_number_of_stops":nonstandard_stops,
              "n_runs_with_missing_or_repeated_site_id":metadata_missing,
