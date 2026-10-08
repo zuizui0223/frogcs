@@ -6,6 +6,8 @@ on:
       - remotesensing/nwi-amount-reuse-v1
     paths:
       - ".github/workflows/nwi_wetland_amount_frozen_reuse.yml"
+      - "scripts/remotesensing/aggregate_naamp_nwi_wetland_amount.py"
+      - "revision/NWI_WETLAND_AMOUNT_COVERAGE_DENOMINATOR_FIX_2026-10-08.md"
   workflow_dispatch:
 
 permissions:
