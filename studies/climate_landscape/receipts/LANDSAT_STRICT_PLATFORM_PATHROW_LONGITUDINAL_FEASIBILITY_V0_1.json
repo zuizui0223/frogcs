@@ -1,0 +1,392 @@
+{
+  "acoustic_or_climate_effect_estimated": false,
+  "analysis": "frog_climate_strict_interannual_landsat_scene_pair_gate_v0_1",
+  "base_pairs": {
+    "adjacent_year": {
+      "pairs": 1817,
+      "routes": 337
+    },
+    "early_to_late_era": {
+      "pairs": 91,
+      "routes": 91
+    },
+    "exact_five_year": {
+      "pairs": 571,
+      "routes": 146
+    },
+    "one_long_gap_per_route": {
+      "pairs": 179,
+      "routes": 179
+    }
+  },
+  "comparators": {
+    "broad": {
+      "image_season_days": 21,
+      "max_image_lag": 32,
+      "max_lag_difference": 32
+    },
+    "same_season14": {
+      "image_season_days": 14,
+      "max_image_lag": 32,
+      "max_lag_difference": 32
+    },
+    "strict_season14_lag16": {
+      "image_season_days": 14,
+      "max_image_lag": 16,
+      "max_lag_difference": 7
+    }
+  },
+  "comparison_counts": {
+    "broad": {
+      "adjacent_year": {
+        "pairs": 1817,
+        "pairs_by_satellite_platform": {
+          "LC08": 186,
+          "LE07": 1114,
+          "LT05": 517
+        },
+        "pairs_by_state": {
+          "Delaware": 100,
+          "Georgia": 81,
+          "Indiana": 134,
+          "Iowa": 85,
+          "Kentucky": 1,
+          "Maine": 205,
+          "Maryland": 133,
+          "Massachusetts": 167,
+          "Mississippi": 67,
+          "NewHampshire": 68,
+          "NewJersey": 132,
+          "NewYork": 86,
+          "NorthCarolina": 151,
+          "Pennsylvania": 78,
+          "SouthCarolina": 104,
+          "Tennessee": 17,
+          "Texas": 2,
+          "Vermont": 14,
+          "Virginia": 124,
+          "WestVirginia": 68
+        },
+        "routes": 337,
+        "states": 20
+      },
+      "early_to_late_era": {
+        "pairs": 89,
+        "pairs_by_satellite_platform": {
+          "LE07": 81,
+          "LT05": 8
+        },
+        "pairs_by_state": {
+          "Delaware": 9,
+          "Indiana": 2,
+          "Maine": 28,
+          "Maryland": 8,
+          "Massachusetts": 5,
+          "Mississippi": 1,
+          "NewHampshire": 6,
+          "NewJersey": 9,
+          "Pennsylvania": 6,
+          "Vermont": 2,
+          "Virginia": 8,
+          "WestVirginia": 5
+        },
+        "routes": 89,
+        "states": 12
+      },
+      "exact_five_year": {
+        "pairs": 571,
+        "pairs_by_satellite_platform": {
+          "LE07": 440,
+          "LT05": 131
+        },
+        "pairs_by_state": {
+          "Delaware": 55,
+          "Georgia": 16,
+          "Indiana": 34,
+          "Iowa": 2,
+          "Maine": 75,
+          "Maryland": 44,
+          "Massachusetts": 69,
+          "Mississippi": 23,
+          "NewHampshire": 33,
+          "NewJersey": 49,
+          "NewYork": 5,
+          "NorthCarolina": 35,
+          "Pennsylvania": 47,
+          "SouthCarolina": 9,
+          "Vermont": 2,
+          "Virginia": 41,
+          "WestVirginia": 32
+        },
+        "routes": 146,
+        "states": 17
+      },
+      "one_long_gap_per_route": {
+        "pairs": 177,
+        "pairs_by_satellite_platform": {
+          "LE07": 161,
+          "LT05": 16
+        },
+        "pairs_by_state": {
+          "Delaware": 11,
+          "Georgia": 11,
+          "Indiana": 15,
+          "Iowa": 1,
+          "Maine": 35,
+          "Maryland": 11,
+          "Massachusetts": 9,
+          "Mississippi": 6,
+          "NewHampshire": 8,
+          "NewJersey": 15,
+          "NewYork": 2,
+          "NorthCarolina": 17,
+          "Pennsylvania": 8,
+          "SouthCarolina": 5,
+          "Vermont": 2,
+          "Virginia": 13,
+          "WestVirginia": 8
+        },
+        "routes": 177,
+        "states": 17
+      }
+    },
+    "same_season14": {
+      "adjacent_year": {
+        "pairs": 1814,
+        "pairs_by_satellite_platform": {
+          "LC08": 186,
+          "LE07": 1112,
+          "LT05": 516
+        },
+        "pairs_by_state": {
+          "Delaware": 100,
+          "Georgia": 81,
+          "Indiana": 134,
+          "Iowa": 85,
+          "Kentucky": 1,
+          "Maine": 205,
+          "Maryland": 133,
+          "Massachusetts": 165,
+          "Mississippi": 67,
+          "NewHampshire": 67,
+          "NewJersey": 132,
+          "NewYork": 86,
+          "NorthCarolina": 151,
+          "Pennsylvania": 78,
+          "SouthCarolina": 104,
+          "Tennessee": 17,
+          "Texas": 2,
+          "Vermont": 14,
+          "Virginia": 124,
+          "WestVirginia": 68
+        },
+        "routes": 337,
+        "states": 20
+      },
+      "early_to_late_era": {
+        "pairs": 89,
+        "pairs_by_satellite_platform": {
+          "LE07": 81,
+          "LT05": 8
+        },
+        "pairs_by_state": {
+          "Delaware": 9,
+          "Indiana": 2,
+          "Maine": 28,
+          "Maryland": 8,
+          "Massachusetts": 5,
+          "Mississippi": 1,
+          "NewHampshire": 6,
+          "NewJersey": 9,
+          "Pennsylvania": 6,
+          "Vermont": 2,
+          "Virginia": 8,
+          "WestVirginia": 5
+        },
+        "routes": 89,
+        "states": 12
+      },
+      "exact_five_year": {
+        "pairs": 571,
+        "pairs_by_satellite_platform": {
+          "LE07": 440,
+          "LT05": 131
+        },
+        "pairs_by_state": {
+          "Delaware": 55,
+          "Georgia": 16,
+          "Indiana": 34,
+          "Iowa": 2,
+          "Maine": 75,
+          "Maryland": 44,
+          "Massachusetts": 69,
+          "Mississippi": 23,
+          "NewHampshire": 33,
+          "NewJersey": 49,
+          "NewYork": 5,
+          "NorthCarolina": 35,
+          "Pennsylvania": 47,
+          "SouthCarolina": 9,
+          "Vermont": 2,
+          "Virginia": 41,
+          "WestVirginia": 32
+        },
+        "routes": 146,
+        "states": 17
+      },
+      "one_long_gap_per_route": {
+        "pairs": 176,
+        "pairs_by_satellite_platform": {
+          "LE07": 160,
+          "LT05": 16
+        },
+        "pairs_by_state": {
+          "Delaware": 11,
+          "Georgia": 10,
+          "Indiana": 15,
+          "Iowa": 1,
+          "Maine": 35,
+          "Maryland": 11,
+          "Massachusetts": 9,
+          "Mississippi": 6,
+          "NewHampshire": 8,
+          "NewJersey": 15,
+          "NewYork": 2,
+          "NorthCarolina": 17,
+          "Pennsylvania": 8,
+          "SouthCarolina": 5,
+          "Vermont": 2,
+          "Virginia": 13,
+          "WestVirginia": 8
+        },
+        "routes": 176,
+        "states": 17
+      }
+    },
+    "strict_season14_lag16": {
+      "adjacent_year": {
+        "pairs": 1421,
+        "pairs_by_satellite_platform": {
+          "LC08": 150,
+          "LE07": 842,
+          "LT05": 429
+        },
+        "pairs_by_state": {
+          "Delaware": 78,
+          "Georgia": 63,
+          "Indiana": 109,
+          "Iowa": 58,
+          "Maine": 149,
+          "Maryland": 112,
+          "Massachusetts": 140,
+          "Mississippi": 55,
+          "NewHampshire": 59,
+          "NewJersey": 106,
+          "NewYork": 74,
+          "NorthCarolina": 116,
+          "Pennsylvania": 58,
+          "SouthCarolina": 74,
+          "Tennessee": 10,
+          "Texas": 1,
+          "Vermont": 13,
+          "Virginia": 100,
+          "WestVirginia": 46
+        },
+        "routes": 316,
+        "states": 19
+      },
+      "early_to_late_era": {
+        "pairs": 58,
+        "pairs_by_satellite_platform": {
+          "LE07": 53,
+          "LT05": 5
+        },
+        "pairs_by_state": {
+          "Delaware": 7,
+          "Indiana": 2,
+          "Maine": 15,
+          "Maryland": 7,
+          "Massachusetts": 3,
+          "Mississippi": 1,
+          "NewHampshire": 6,
+          "NewJersey": 4,
+          "Pennsylvania": 3,
+          "Vermont": 1,
+          "Virginia": 6,
+          "WestVirginia": 3
+        },
+        "routes": 58,
+        "states": 12
+      },
+      "exact_five_year": {
+        "pairs": 428,
+        "pairs_by_satellite_platform": {
+          "LE07": 325,
+          "LT05": 103
+        },
+        "pairs_by_state": {
+          "Delaware": 42,
+          "Georgia": 11,
+          "Indiana": 28,
+          "Iowa": 2,
+          "Maine": 48,
+          "Maryland": 34,
+          "Massachusetts": 55,
+          "Mississippi": 19,
+          "NewHampshire": 29,
+          "NewJersey": 36,
+          "NewYork": 5,
+          "NorthCarolina": 23,
+          "Pennsylvania": 35,
+          "SouthCarolina": 5,
+          "Vermont": 1,
+          "Virginia": 29,
+          "WestVirginia": 26
+        },
+        "routes": 133,
+        "states": 17
+      },
+      "one_long_gap_per_route": {
+        "pairs": 123,
+        "pairs_by_satellite_platform": {
+          "LE07": 113,
+          "LT05": 10
+        },
+        "pairs_by_state": {
+          "Delaware": 9,
+          "Georgia": 8,
+          "Indiana": 10,
+          "Iowa": 1,
+          "Maine": 20,
+          "Maryland": 10,
+          "Massachusetts": 5,
+          "Mississippi": 5,
+          "NewHampshire": 8,
+          "NewJersey": 10,
+          "NewYork": 2,
+          "NorthCarolina": 11,
+          "Pennsylvania": 4,
+          "SouthCarolina": 3,
+          "Vermont": 1,
+          "Virginia": 10,
+          "WestVirginia": 6
+        },
+        "routes": 123,
+        "states": 17
+      }
+    }
+  },
+  "fixed_choice_bias_note": "The one_long_gap_per_route record was selected by maximum year gap before scene gate. These numbers are lower bounds for routes with ANY eligible scene pair, not route-optimized upper bounds.",
+  "land_change_estimated": false,
+  "n_routes": 395,
+  "n_source_runs": 3811,
+  "scene_pixel_qa_verified": false,
+  "source_analysis": "naamp_e3_ndmi_metadata_coverage_v0_1",
+  "source_is_not_outcome_independent_sample": true,
+  "source_is_selected_frog_e3_subset": true,
+  "source_population": "previous selected E3 2,916-principal-pair universe; not 7,848 full eligible runs",
+  "source_sha256": "f375494c3ee4897d45729866f771521753a1a9ed070908ce4002d1db3ab599ce",
+  "station_positions_independently_validated": false,
+  "this_analysis_reads_frog_response": false,
+  "this_analysis_reads_landsat_pixels": false
+}
