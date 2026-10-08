@@ -6,6 +6,7 @@ Uses only three unrelated test coordinates. Never reads NAAMP site or frog data.
 from __future__ import annotations
 
 import json
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -16,7 +17,7 @@ import rasterio
 from rasterio.windows import Window
 from rasterio.warp import transform
 
-OUT = Path("remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_2.json")
+OUT = Path("remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_3.json")
 STAC = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
 SIGN = "https://planetarycomputer.microsoft.com/api/sas/v1/sign"
 COLLECTION = "landsat-c2-l2"
@@ -36,8 +37,18 @@ def json_request(url, body=None):
         url, data=json.dumps(body).encode() if body is not None else None,
         headers=headers, method="POST" if body is not None else "GET"
     )
-    with urllib.request.urlopen(req, timeout=80) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    last=None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=80) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as ex:
+            last=ex
+            if isinstance(ex, urllib.error.HTTPError) and ex.code not in (408, 429, 500, 502, 503, 504):
+                raise
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise last
 
 def sensor(item):
     code = str(item.get("id","")).upper()
@@ -132,20 +143,40 @@ for test in TESTS:
             rec["status"]="no_matching_usgs_sensor_assets"
             results.append(rec)
             continue
-        item=sorted(choices,key=lambda z:str(z.get("id")))[0]
-        rec["chosen_item"]=str(item.get("id"))
-        rec["sensor"]=sensor(item)
-        rec["collection"]=item.get("collection")
-        rec["platform"]=str((item.get("properties") or {}).get("platform"))
-        rec["roles"]={}
-        for role,key in ROLES.items():
-            href=(item.get("assets") or {})[key].get("href")
-            signed=sign_asset(href)
-            rec["roles"][role]={"asset_key":key,
-                                "check":probe(signed,test["lon"],test["lat"])}
-        rec["status"]="all_required_assets_accessible" if all(
-            v["check"]["status"]=="geo_tiff_sample_ok" for v in rec["roles"].values()
-        ) else "E3_public_asset_access_inconclusive"
+        # Source-only Tier-1 preference and bounded deterministic alternatives.
+        ordered=sorted(choices,key=lambda z:(
+            not str(z.get('id','')).upper().endswith('_T1'),
+            str(z.get('id'))
+        ))[:3]
+        rec['candidate_attempts']=[]
+        passed_item=False
+        for item in ordered:
+            attempt={'item_id':str(item.get('id')), 'sensor':sensor(item), 'roles':{}}
+            try:
+                for role,key in ROLES.items():
+                    href=(item.get('assets') or {})[key].get('href')
+                    signed=sign_asset(href)
+                    attempt['roles'][role]={'asset_key':key,
+                        'check':probe(signed,test['lon'],test['lat'])}
+                if all(v['check']['status']=='geo_tiff_sample_ok'
+                       for v in attempt['roles'].values()):
+                    rec['chosen_item']=str(item.get('id'))
+                    rec['sensor']=sensor(item)
+                    rec['collection']=item.get('collection')
+                    rec['platform']=str((item.get('properties') or {}).get('platform'))
+                    rec['roles']=attempt['roles']
+                    rec['status']='all_required_assets_accessible'
+                    attempt['status']='success'
+                    rec['candidate_attempts'].append(attempt)
+                    passed_item=True
+                    break
+                attempt['status']='asset_access_inconclusive'
+            except Exception as ex:
+                attempt['status']='stac_or_signing_error'
+                attempt['error_type']=type(ex).__name__
+            rec['candidate_attempts'].append(attempt)
+        if not passed_item:
+            rec['status']='E3_public_asset_access_inconclusive'
     except Exception as ex:
         rec["status"]="stac_or_signing_error"
         rec["error_type"]=type(ex).__name__
@@ -157,9 +188,9 @@ for test in TESTS:
 
 passed=all(r["status"]=="all_required_assets_accessible" for r in results)
 receipt={
-  "analysis":"e3_landsat_pc_asset_access_preflight_v0_2",
+  "analysis":"e3_landsat_pc_asset_access_preflight_v0_3",
   "contract":"revision/NAAMP_E3_LANDSAT_NDMI_FINAL_ABIOTIC_CONTRACT_V0_1.md",
-  "access_repair":"revision/NAAMP_E3_LANDSAT_PC_ACCESS_REPAIR_V0_2.md",
+  "access_repair":"revision/NAAMP_E3_LANDSAT_PC_ACCESS_REPAIR_V0_3.md",
   "collection":COLLECTION,
   "status":"E3_public_access_pass" if passed else "E3_public_asset_access_inconclusive",
   "frog_outcomes_read":False,
