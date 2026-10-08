@@ -1,0 +1,86 @@
+name: Iowa official route PDF coordinate-text preflight
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_pdf_source_gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-state-route-documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF text reader
+        run: python -m pip install 'pymupdf>=1.24,<1.28'
+      - name: Check official PDF source identity and coordinate candidates
+        run: |
+          python - <<'PY'
+          import hashlib, json, re, urllib.parse, urllib.request
+          from pathlib import Path
+          import fitz
+          paths={
+              '360101':'https://www.iowadnr.gov/media/2010/download?inline=',
+              '360417':'https://www.iowadnr.gov/media/1999/download?inline='
+          }
+          results=[]
+          for route,url in paths.items():
+              rec={'route':route,'official_url':url,
+                   'frog_outcomes_read':False,'external_historical_site_verification':False}
+              try:
+                  req=urllib.request.Request(url,headers={'User-Agent':'frogcs-iowa-geo-provenance-v1.5',
+                      'Accept':'application/pdf'})
+                  with urllib.request.urlopen(req,timeout=100) as response:
+                      final=urllib.parse.urlparse(response.geturl())
+                      if final.scheme!='https' or final.hostname not in ('www.iowadnr.gov','iowadnr.gov'):
+                          raise ValueError('Redirect outside official Iowa DNR domain')
+                      payload=response.read(12_000_001)
+                  if not payload.startswith(b'%PDF-') or len(payload)>12_000_000:
+                      raise ValueError('Invalid/oversized official PDF')
+                  with fitz.open(stream=payload,filetype='pdf') as doc:
+                      page_text=[p.get_text('text',sort=True) for p in doc]
+                      meta=doc.metadata
+                  full='\n'.join(page_text)
+                  if not re.search(r'(?<!\d)'+route+r'(?!\d)',full):
+                      raise ValueError('Expected route ID absent in PDF text')
+                  lines=[]
+                  for pg,page in enumerate(page_text,1):
+                      for i,line in enumerate(page.splitlines(),1):
+                          s=' '.join(line.split())
+                          if (re.search(r'lat|lon|coord|site\s*num|stop\s*#|created\s+on',s,re.I) or
+                              re.search(r'(?<!\d)4[0-3]\.\d{3,}|-9[0-7]\.\d{3,}',s)):
+                              lines.append({'page':pg,'line':i,'text':s[:180]})
+                  rec.update({'status':'TEXT_EXTRACTED','pdf_sha256':hashlib.sha256(payload).hexdigest(),
+                    'pdf_bytes':len(payload),'n_pdf_pages':len(page_text),
+                    'n_pages_with_text':sum(bool(p.strip()) for p in page_text),
+                    'raw_text_sha256':hashlib.sha256(full.encode()).hexdigest(),
+                    'document_creation_metadata':meta.get('creationDate'),
+                    'created_on_text':list(dict.fromkeys(re.findall(r'Created\s+on\s*:\s*\d{1,2}/\d{1,2}/\d{4}',full,re.I))),
+                    'n_candidate_lines':len(lines),'candidate_lines':lines[:135]})
+              except Exception as e:
+                  rec.update({'status':'SOURCE_OR_TEXT_UNAVAILABLE','exception':type(e).__name__,
+                              'message':str(e)[:240]})
+              print(json.dumps({k:v for k,v in rec.items() if k!='candidate_lines'},sort_keys=True),flush=True)
+              results.append(rec)
+          out={'analysis':'official_iowa_dnr_360101_360417_pdf_text_source_gate_v15',
+               'n_independently_confirmed_historical_2001_2015_stops':0,
+               'date':'2026-10-08','no_counts_csv':True,
+               'not_a_landcover_or_frog_result':True,'routes':results}
+          dest=Path('iowa_dnr_route_pdf_text_gate_v15.json')
+          dest.write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          if all(r['status']!='TEXT_EXTRACTED' for r in results):
+              raise RuntimeError('No official PDFs could be read; source gate failed')
+          PY
+      - name: Preserve source-provenance and text-candidate receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa-dnr-pdf-text-gate-v15
+          path: iowa_dnr_route_pdf_text_gate_v15.json
+          if-no-files-found: error
