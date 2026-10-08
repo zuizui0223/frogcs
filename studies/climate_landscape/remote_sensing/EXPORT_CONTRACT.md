@@ -71,7 +71,7 @@ python scripts/build_remote_sensing_features.py \
 ```
 
 - **No survey-day or later images.** Water state uses last completed calendar month; rainfall/snow supplied by separate climate adapter uses strictly prior days. NLCD is **year preceding survey**; 5-year land-cover contrast is preceding year minus six years before survey.
-- Water measures: last month visible water fraction, fraction of 12 prior months adequately observed, mean water fraction of **at least 4 valid months**. Months with less than 50% observed pixel area remain NA, not classified dry.
+- Water measures: last month visible water fraction, fraction of 12 prior months adequately observed, mean water fraction of **at least 4 valid months** (area extent, NOT hydroperiod); frequency of satellite-visible water in adequately observed months requires **at least 9 valid months**, with a nominal ≥900 m² water detection threshold; the 12-month lower/upper bounds keep missing months unresolved. Months with less than 50% observed pixel area remain NA, not classified dry.
 - Land measures: forest, agriculture, developed, wetland and water fractions, local and landscape 250/1000-m scale, and prior-five-year fraction shifts.
 - **Same species calling twice is not proof of individual site fidelity.** The site-level acoustic endpoint requires a separate frozen response-stage analysis, after geometry and exposure QC are complete.
 - **Missing 30-m pond water is not proof of absence.** Microponds and shaded waters may be subpixel or cloud-limited; target a stratified ground-photo validation subset if possible.
@@ -84,3 +84,10 @@ python scripts/build_remote_sensing_features.py \
 - ORNL Daymet calendar caveat: https://daymet.ornl.gov/single-pixel-tool-guide
 
 This study is separate from the locked RC6 frogcs submission; neither the previous post-lock landscape-direction analysis nor its negative result is reclassified here.
+
+### v0.3: distinguish extent from persistence
+- `water_mean_visible_fraction_valid_months_12m`: average visible water share among sufficiently observed monthly images (≥4 observed months). This is **area extent**, NOT hydroperiod or persistence.
+- `water_detected_months_12m`: number of months meeting the ≥900 m² detectable water criterion, after adequate image coverage.
+- `water_detected_fraction_observed_12m`: rate over observed months; NA unless at least 9/12 were adequately observed.
+- `water_detection_lower_bound_12m` and `water_detection_upper_bound_12m`: if missing months were all dry vs all wet, bounding satellite-visible water detection (NOT true water availability at subpixel wetland scale).
+- These bounds indicate observation uncertainty but cannot bound unobserved small ponds. The classifications derive from **retrospective** mapping; prior-year product labels do not guarantee the classification algorithm lacked later supporting Landsat scenes.

@@ -19,6 +19,10 @@ import pandas as pd
 BUFFER_M=(250,1000)
 WATER_MIN_OBSERVED_FRACTION=0.5
 MIN_OBSERVED_MONTHS=4
+# A year of water detection cannot be called hydroperiod when observation
+# months are mostly cloudy. At least 9 adequate months for annual proxy.
+MIN_WATER_MONTHS_FOR_DETECTION_RATE=9
+VISIBLE_WATER_MIN_AREA_M2=900.0  # nominal 30 m pixel equivalent
 WATER_COLUMNS={"route_id","site_id","buffer_m","year","month","water_area_m2", "nonwater_area_m2", "nodata_area_m2", "source_image_id", "source_version"}
 LAND_COLUMNS={"route_id","site_id","buffer_m","year","forest_area_m2","agriculture_area_m2","developed_area_m2","wetland_area_m2","openwater_area_m2","other_area_m2","nodata_area_m2","source_image_id","source_version"}
 EVENT_COLUMNS={"run_id","route_id","site_id","survey_date","coordinate_qc_status"}
@@ -137,7 +141,21 @@ def build(events:pd.DataFrame,monthly:pd.DataFrame,annual:pd.DataFrame) -> pd.Da
             covered=int(observed.notna().sum())
             out[prefix+"water_months_observed_12m"]=covered
             out[prefix+"water_months_missing_12m"]=12-covered
-            out[prefix+"water_persistence_12m_frac"]=(float(observed.mean()) if covered>=MIN_OBSERVED_MONTHS else np.nan)
+            # Mean area share and frequency of detectable water are different.
+            # Neither is a direct estimate of field-measured hydroperiod.
+            out[prefix+"water_mean_visible_fraction_valid_months_12m"]=(
+                float(observed.mean()) if covered>=MIN_OBSERVED_MONTHS else np.nan)
+            water_a=obs.get("water_area_m2",pd.Series(index=window,dtype=float))
+            detected=(water_a >= VISIBLE_WATER_MIN_AREA_M2) & observed.notna()
+            n_detected=int(detected.sum())
+            out[prefix+"water_detected_months_12m"]=n_detected
+            out[prefix+"water_detected_fraction_observed_12m"]=(
+                float(n_detected/covered)
+                if covered>=MIN_WATER_MONTHS_FOR_DETECTION_RATE else np.nan)
+            # Bounds conservatively treat all missing months as dry or wet;
+            # this bounds *satellite-visible detection*, not true pond water.
+            out[prefix+"water_detection_lower_bound_12m"]=float(n_detected/12)
+            out[prefix+"water_detection_upper_bound_12m"]=float((n_detected+12-covered)/12)
             last=observed.loc[last_month]
             out[prefix+"water_frac_last_completed_month"]=(float(last) if pd.notna(last) else np.nan)
             lastrow=obs.loc[last_month]
@@ -172,9 +190,14 @@ def main():
     path=Path(args.out);path.parent.mkdir(parents=True,exist_ok=True)
     result.to_csv(path,index=False)
     rec={"schema":"climate_landscape_remote_sensing_features_v0_1","response_columns_read":False,
-         "all_sites_independently_verified":True,"no_future_imagery_used":True,
+         "all_sites_independently_verified":True,
+         "all_requested_image_period_labels_precede_survey":True,
+         "annual_nlcd_retrospective_algorithm_may_use_future_source_images":True,
          "water_min_observed_fraction":WATER_MIN_OBSERVED_FRACTION,
-         "water_persistence_min_valid_months":MIN_OBSERVED_MONTHS,
+         "water_mean_min_valid_months":MIN_OBSERVED_MONTHS,
+         "water_detection_fraction_min_valid_months":MIN_WATER_MONTHS_FOR_DETECTION_RATE,
+         "visible_water_min_area_m2":VISIBLE_WATER_MIN_AREA_M2,
+         "water_detection_bounds_are_not_true_hydroperiod":True,
          "n_event_rows":int(len(result)),"n_physical_sites":int(result[["route_id","site_id"]].drop_duplicates().shape[0]),
          "no_data_is_not_dry":True,"rc6_manuscript_untouched":True,
          "sha256":{"events":sha(args.events),"monthly_water":sha(args.monthly_water),

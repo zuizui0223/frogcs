@@ -1,4 +1,4 @@
-# Climate × remote sensing × NAAMP frog calling: independent v0.2 research package
+# Climate × remote sensing × NAAMP frog calling: independent v0.3 research package
 
 This is a separate, **response-blind environmental extraction prototype** developed on 2026-10-08. It **does not** contain actual NAAMP acoustic outcomes or a validated station-to-satellite overlay. It does **not** modify the submitted RC6 scientific story.
 
@@ -13,6 +13,13 @@ The 2001–2015 10-stop NAAMP network is suitable for a possible longitudinal st
 5. Run `scripts/build_remote_sensing_features.py` to derive strictly lagged water/landcover features, preserving missing imagery and last observation dates.
 6. Run `scripts/build_climate_features.py` on separately downloaded Daymet/PRISM daily series (with 1981–2000 baseline) and `scripts/build_climate_trend_diagnostics.py` (1981–2015 descriptive site trends only).
 7. After freezing exposure availability, merge the environmental tables by exact `run_id,route_id,site_id,survey_date,coordinate_qc_status`. Only a separately approved response-stage study may then read taxon calling records.
+
+## v0.3 scientific changes
+
+- Build a source-pinned, response-blind NAAMP surveyed-site opportunity panel from Runs and Stops only.
+- Compare exact consecutive years at the same verified physical site and survey round, within a 21-day season window.
+- Preserve JRC missing observations and distinguish visible water area from observed water-month frequency.
+- See `IMPLEMENTATION_STATUS_V0_3.md` for source and biological inference limits.
 
 ## Synthetic checks
 

@@ -27,7 +27,7 @@ def test_uses_last_completed_month_and_previous_annual():
     assert x.last_eligible_water_month=='2011-06'
     assert x.landcover_antecedent_year==2010
     assert x.b250_water_frac_last_completed_month==pytest.approx(0.2)
-    assert x.b250_water_persistence_12m_frac==pytest.approx(0.2)
+    assert x.b250_water_mean_visible_fraction_valid_months_12m==pytest.approx(0.2)
     assert x.b250_forest_frac_prior_year==pytest.approx(0.3)
     assert x.b250_forest_change_prior5y_frac==pytest.approx(-0.1)
     assert '2010' in x.b250_nlcd_last_source_image_id
@@ -47,7 +47,7 @@ def test_no_data_is_missing_not_dry():
     x=mod.build(e,m,l).iloc[0]
     assert np.isnan(x.b250_water_frac_last_completed_month)
     assert x.b250_water_months_observed_12m==11
-    assert x.b250_water_persistence_12m_frac==pytest.approx(0.2)
+    assert x.b250_water_mean_visible_fraction_valid_months_12m==pytest.approx(0.2)
     assert x.jrc_nodata_is_dry==False
 
 
@@ -56,7 +56,7 @@ def test_insufficient_observed_months_is_missing():
     q=m.month.isin([8,9,10,11,12,1,2,3,4,5])
     m.loc[q,['water_area_m2','nonwater_area_m2','nodata_area_m2']]=[0,0,100]
     x=mod.build(e,m,l).iloc[0]
-    assert np.isnan(x.b250_water_persistence_12m_frac)
+    assert np.isnan(x.b250_water_mean_visible_fraction_valid_months_12m)
 
 
 def test_unverified_sites_refused():
@@ -83,5 +83,41 @@ def test_missing_annual_not_assumed_unchanged():
 
 def test_source_image_month_mismatch_rejected():
     e,m,l=data();m.loc[0,"source_image_id"]="JRC/GSW1_4/MonthlyHistory/2020_01"
+    with pytest.raises(ValueError,match="source_image_id"):
+        mod.build(e,m,l)
+
+
+def test_visible_water_frequency_is_not_average_water_share():
+    e,m,l=data()
+    x=mod.build(e,m,l).iloc[0]
+    assert x.b250_water_mean_visible_fraction_valid_months_12m==pytest.approx(.2)
+    # Input wet pixels occupy 20% of valid area every month.
+    # Wet-month frequency is 100%; these measures are not interchangeable.
+    assert x.b250_water_detected_months_12m==0 # mock water area < 900 m² detection threshold
+    assert x.b250_water_detected_fraction_observed_12m==pytest.approx(0)
+    m["water_area_m2"]=2000
+    m["nonwater_area_m2"]=8000
+    y=mod.build(e,m,l).iloc[0]
+    assert y.b250_water_mean_visible_fraction_valid_months_12m==pytest.approx(.2)
+    assert y.b250_water_detected_fraction_observed_12m==pytest.approx(1)
+
+
+def test_missing_months_give_detection_interval_not_false_dry():
+    e,m,l=data()
+    m["water_area_m2"]=2000
+    m["nonwater_area_m2"]=8000
+    m.loc[(m.month>=1)&(m.month<=6),["water_area_m2","nonwater_area_m2","nodata_area_m2"]]=[0,0,100]
+    x=mod.build(e,m,l).iloc[0]
+    # 6 of the previous 12 calendar months observed (the July-Dec half-year).
+    assert x.b250_water_months_observed_12m==6
+    assert x.b250_water_detected_months_12m==6
+    assert np.isnan(x.b250_water_detected_fraction_observed_12m)
+    assert x.b250_water_detection_lower_bound_12m==pytest.approx(.5)
+    assert x.b250_water_detection_upper_bound_12m==pytest.approx(1)
+
+
+def test_strict_image_month_provenance():
+    e,m,l=data()
+    m.loc[0,"source_image_id"]="JRC/GSW1_4/MonthlyHistory/2020_01"
     with pytest.raises(ValueError,match="source_image_id"):
         mod.build(e,m,l)
