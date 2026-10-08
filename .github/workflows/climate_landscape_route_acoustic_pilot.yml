@@ -1,0 +1,66 @@
+name: Independent frog climate acoustic pilot v0.9
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_landscape_route_acoustic_pilot.yml'
+      - 'studies/climate_landscape/scripts/download_public_naamp_counts.py'
+      - 'studies/climate_landscape/scripts/route_climate_strong_calling_pilot.py'
+      - 'studies/climate_landscape/tests/test_route_climate_strong_calling_pilot.py'
+      - 'studies/climate_landscape/ROUTE_ACOUSTIC_EXPLORATORY_CONTRACT_V0_1.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frog-route-climate-acoustic-v09
+  cancel-in-progress: false
+
+jobs:
+  exploratory-strong-calling-heldout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install analysis dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Validate frozen route-climate endpoint (synthetic only)
+        run: python -m pytest -q studies/climate_landscape/tests/test_route_climate_strong_calling_pilot.py
+      - name: Retrieve successful response-blind 12-route Daymet pilot
+        uses: actions/download-artifact@v4
+        with:
+          name: frog-independent-daymet-route-climate-v07
+          run-id: 37736273058
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/daymet
+      - name: Obtain SHA256 pinned USGS Runs, Stops, coordinates
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Obtain SHA256 pinned positive acoustic records
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_counts.py \
+            --out "$RUNNER_TEMP/naamp/Counts.csv"
+      - name: Compare frozen route strong-calling prediction models on held-out years
+        run: |
+          python studies/climate_landscape/scripts/route_climate_strong_calling_pilot.py \
+            --sample "$RUNNER_TEMP/daymet/frog_daymet_route_sample.json" \
+            --climate-receipt "$RUNNER_TEMP/daymet/frog_daymet_route_climate_receipt.json" \
+            --runs "$RUNNER_TEMP/naamp/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp/Stops.csv" \
+            --counts "$RUNNER_TEMP/naamp/Counts.csv" \
+            --out "$RUNNER_TEMP/frog_strong_calling_heldout_v09.json"
+      - name: Export small inferential receipt only, never raw occurrence files
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frog-route-climate-strong-calling-heldout-v09
+          path: ${{ runner.temp }}/frog_strong_calling_heldout_v09.json
+          if-no-files-found: warn
+          retention-days: 30
