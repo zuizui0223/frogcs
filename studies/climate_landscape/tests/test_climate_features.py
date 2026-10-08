@@ -60,3 +60,29 @@ def test_climatology_rejects_insufficient_baseline(inputs):
     daily=daily[daily.date.dt.year>=1999]
     with pytest.raises(ValueError, match="insufficient"):
         mod.build_features(surveys,daily)
+
+
+def test_daymet_structural_missing_leap_dec31_not_imputed(inputs):
+    surveys, daily = inputs
+    surveys.loc[0,'survey_date']='2005-01-10'
+    daily=daily[daily.date!=pd.Timestamp('2004-12-31')]
+    x=mod.build_features(surveys,daily).iloc[0]
+    assert x['missing_daymet_calendar_days_30d']==1
+    assert x['observed_source_days_30d']==29
+    assert x['precip_sum_30d_mm']==pytest.approx(58)
+    assert x['missing_daymet_calendar_days_90d']==1
+
+
+def test_prism_gregorian_missing_leap_dec31_is_error(inputs):
+    surveys, daily=inputs
+    surveys.loc[0,'survey_date']='2005-01-10'
+    daily=daily[daily.date!=pd.Timestamp('2004-12-31')]
+    with pytest.raises(ValueError,match='missing prior'):
+        mod.build_features(surveys,daily,calendar_mode='gregorian')
+
+
+def test_daymet_dec31_record_in_leap_year_is_rejected(inputs):
+    surveys,daily=inputs
+    surveys.loc[0,'survey_date']='2005-01-10'
+    with pytest.raises(ValueError,match='Daymet record unexpectedly includes'):
+        mod.build_features(surveys,daily)
