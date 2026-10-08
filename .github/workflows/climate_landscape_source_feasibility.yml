@@ -1,0 +1,47 @@
+name: Climate-landscape NAAMP source feasibility
+
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_landscape_source_feasibility.yml'
+      - 'studies/climate_landscape/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-geometry-and-longitudinal-qc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned-by-PyPI scientific dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Run response-blind synthetic tests
+        run: python -m pytest -q studies/climate_landscape/tests
+      - name: Download exact USGS raw metadata input files (never Counts.csv)
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "${RUNNER_TEMP}/naamp_source_files"
+      - name: Audit actual surveyed fixed-site feasibility without frog outcomes
+        run: |
+          python studies/climate_landscape/scripts/run_public_naamp_feasibility.py \
+            --runs "${RUNNER_TEMP}/naamp_source_files/Runs.csv" \
+            --stops "${RUNNER_TEMP}/naamp_source_files/Stops.csv" \
+            --coords "${RUNNER_TEMP}/naamp_source_files/Coordinates.csv" \
+            --receipt "${RUNNER_TEMP}/naamp_source_files/feasibility_receipt.json"
+      - name: Upload only audited metadata receipts (no source CSVs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: climate-naamp-source-feasibility-receipt
+          path: |
+            ${RUNNER_TEMP}/naamp_source_files/pinned_source_receipt.json
+            ${RUNNER_TEMP}/naamp_source_files/feasibility_receipt.json
+          if-no-files-found: ignore
