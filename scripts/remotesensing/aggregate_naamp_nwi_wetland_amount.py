@@ -15,6 +15,7 @@ def loadmod(name,path):
     s=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(s);assert s.loader;s.loader.exec_module(m);return m
 flex=loadmod("flex",EXP/"run_naamp_flexible_common_environment_null.py")
 mem=flex.mem
+hyd=loadmod("hyd",ROOT/"scripts"/"remotesensing"/"run_naamp_dynamic_hydrology_mechanism.py")
 
 files=sorted(INDIR.glob("NWI_WETLAND_AMOUNT_SHARD_*.csv"))
 if len(files)!=8:raise RuntimeError(f"expected 8 shards, found {len(files)}")
@@ -31,8 +32,14 @@ assign={
 
 raw,runs,psub,dsub,hsub,pools,sampled,ss=flex.prepare_subset()
 eligible=set(runs.RunID.astype(str));site=mem.site_map(raw,eligible)
+strict=hyd.strict_routes()
 pairs=[];focal=set();fail=Counter()
 for p,dct in zip(psub.itertuples(index=False),dsub):
+    # The frozen 90% coverage denominator is STRICT-coordinate focal SiteIDs.
+    # Never include already-excluded routes in the availability denominator.
+    if str(p.RouteNumber) not in strict:
+        fail["strict_geometry"]+=1
+        continue
     ids=mem.focal_siteids(p,dct,site)
     if ids is None or len(ids)!=10:
         fail["siteid_identity"]+=1;continue
@@ -48,6 +55,8 @@ gate=bool(frac>=.90 and len(pairs)>=1500 and routes>=300 and states>=15)
 out={
  "analysis":"naamp_nwi_wetland_amount_coverage_v0_1",
  "contract":"revision/NAAMP_NWI_WETLAND_AMOUNT_RAIN_MECHANISM_CONTRACT_V0_1.md",
+ "coverage_denominator_correction":"revision/NWI_WETLAND_AMOUNT_COVERAGE_DENOMINATOR_FIX_2026-10-08.md",
+ "strict_geometry_routes":len(strict),
  "site_rows":int(len(df)),
  "principal_focal_siteids":int(len(focal)),
  "successful_focal_siteids":int(success),
