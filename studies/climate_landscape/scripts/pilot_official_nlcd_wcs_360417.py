@@ -15,7 +15,7 @@ from rasterio.warp import transform as project
 ROOT = Path(__file__).resolve().parents[1]
 STOPS = ROOT / 'reference_routes/iowa_dnr_360417_source_only_stops_v16.csv'
 BASE_URL = 'https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wcs'
-COVERAGE = 'mrlc_Land-Cover-Native_conus_year_data:Land-Cover-Native_conus_year_data'
+COVERAGE = 'mrlc_Land-Cover-Native_conus_year_data__Land-Cover-Native_conus_year_data'
 YEARS = (2004, 2009, 2014)
 BBOX = (179220, 2044410, 184320, 2056680)
 CLASSES = {11, 12, 21, 22, 23, 24, 31, 41, 42, 43, 52, 71, 81, 82, 90, 95}
@@ -28,13 +28,13 @@ def get_coverage(year):
     if year not in YEARS:
         raise ValueError('Year not frozen')
     params = {
-        'service': 'WCS', 'version': '1.0.0', 'request': 'GetCoverage',
-        'coverage': COVERAGE, 'CRS': 'EPSG:5070',
-        'BBOX': ','.join(map(str, BBOX)),
-        'time': f'{year}-01-01T00:00:00.000Z', 'format': 'image/geotiff',
-        'resx': '30', 'resy': '30',
+        'service': 'WCS', 'version': '2.0.1', 'request': 'GetCoverage',
+        'coverageId': COVERAGE,
+        'subset': [f'X({BBOX[0]},{BBOX[2]})', f'Y({BBOX[1]},{BBOX[3]})',
+                   f'time("{year}-01-01T00:00:00.000Z")'],
+        'format': 'image/geotiff',
     }
-    url = BASE_URL + '?' + urllib.parse.urlencode(params)
+    url = BASE_URL + '?' + urllib.parse.urlencode(params, doseq=True)
     req = urllib.request.Request(url, headers={'User-Agent': 'frogcs-nlcd-direct-source-1.6',
                                                 'Accept': 'image/tiff, image/geotiff'})
     with urllib.request.urlopen(req, timeout=155) as response:
@@ -45,7 +45,7 @@ def get_coverage(year):
         raise ValueError('Unexpected source host or overlarge response')
     if data[:4] not in (b'II*\x00', b'MM\x00*', b'II+\x00', b'MM\x00+'):
         raise ValueError('Official WCS response not GeoTIFF; starts ' + data[:2500].decode('utf8', 'replace'))
-    return data, {'http_content_type': content_type, 'requested_time': params['time'],
+    return data, {'http_content_type': content_type, 'requested_subsets': params['subset'],
                   'host': host, 'request_path': urllib.parse.urlparse(url).path}
 
 
@@ -144,6 +144,9 @@ def main():
     receipt = {'analysis':'iowa360417_official_annual_nlcd_WCS_pilot_v16',
                'status':'SOURCE_EXTRACTION_NOT_COMPLETE',
                'official_WCS_service':BASE_URL,'coverage':COVERAGE,
+               'wcs_version':'2.0.1',
+               'official_wcs2_capabilities_sha256':'f95b9effa4a6aedf9486bf155f6b9619ed50895632bcdb812643e5f191019ea7',
+               'official_describe_coverage_sha256':'1a3cba52dca82969d46c0f08aa02f5f2047b5c94edb87bc476c8d172bbad0ff9',
                'requested_years':list(YEARS),'bbox_epsg5070':list(BBOX),
                'source_station_table_sha256':hashlib.sha256(STOPS.read_bytes()).hexdigest(),
                'field_verified_historical_2001_2015_stops':0,
