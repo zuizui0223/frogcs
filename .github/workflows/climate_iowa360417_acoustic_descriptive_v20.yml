@@ -1,0 +1,49 @@
+name: Iowa 360417 descriptive all-taxa NLCD C1V0 acoustic bridge
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa360417_acoustic_descriptive_v20.yml'
+      - 'studies/climate_landscape/scripts/explore_iowa360417_acoustic_environment_v20.py'
+      - 'studies/climate_landscape/tests/test_iowa360417_acoustic_environment_v20.py'
+      - 'studies/climate_landscape/V2_0_SINGLE_ROUTE_ACOUSTIC_DESCRIPTIVE_CONTRACT.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  do-not-infer-causal-effects:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed study dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Validate source integrity and response-independent logic on fixtures
+        run: python -m pytest -q studies/climate_landscape/tests/test_iowa360417_acoustic_environment_v20.py
+      - name: Obtain original SHA256-pinned Runs and Stops
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Obtain original SHA256-pinned Counts, only after pre-outcome script and contract locked
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_counts.py \
+            --out "$RUNNER_TEMP/naamp/Counts.csv"
+      - name: Compare all taxa and all nominal sites in original repeat surveys
+        run: |
+          python studies/climate_landscape/scripts/explore_iowa360417_acoustic_environment_v20.py \
+            --runs "$RUNNER_TEMP/naamp/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp/Stops.csv" \
+            --counts "$RUNNER_TEMP/naamp/Counts.csv" \
+            --landcover studies/climate_landscape/receipts/annual_nlcd_c1v0_v19/annual_site_landcover_2001_2015.csv \
+            --out iowa360417_acoustic_nlcd_C1V0_exploratory_v20.json
+      - name: Persist bounded ecological readout, never raw Counts.csv
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa360417-acoustic-landcover-C1V0-posthoc-v20
+          path: iowa360417_acoustic_nlcd_C1V0_exploratory_v20.json
+          if-no-files-found: error
