@@ -1,50 +1,36 @@
-# Independent climate × terrestrial landscape × frog calling study (v0.1)
+# Climate × remote sensing × NAAMP frog calling: independent v0.2 research package
 
-**Date: 2026-10-08. Status: response-blind design, not a completed satellite overlay or climate-effect result.**
+This is a separate, **response-blind environmental extraction prototype** developed on 2026-10-08. It **does not** contain actual NAAMP acoustic outcomes or a validated station-to-satellite overlay. It does **not** modify the submitted RC6 scientific story.
 
-This is **not** an RC6/JAE manuscript change. The scientific claims and endpoints in `release/jae-multisite-rc6` remain frozen. The prior post-RC6 landscape exploration was closed; this is a separate study proposed by the user. WFTS was not pursued, and is not treated as evidence.
+The 2001–2015 10-stop NAAMP network is suitable for a possible longitudinal study of how hydroclimatic trends, water availability and terrestrial land-cover change relate to **where frogs are acoustically detected**, but not for concluding successful breeding, true absence, abundance or anthropogenic attribution without more evidence.
 
-## Core ecological question
+## Inputs and order
 
-Do multi-year hydroclimatic shifts and terrestrial land-cover changes change **where** frog species express breeding-season calling, beyond short-term rainfall-associated acoustic pulses?
+1. Obtain the pinned NAAMP coordinate table and run `scripts/audit_coordinates.py` (geometry-only); see `remote_sensing/EXPORT_CONTRACT.md` for source hash.
+2. Independently verify a subset of station identities/coordinates against field/route documentation, then prepare metadata-only surveyed stop records. Geometry-pass alone never creates `verified_external` status.
+3. Run `scripts/build_extraction_manifest.py` to list JRC water image-months and USGS Annual NLCD raster years strictly before each survey.
+4. Run the **unauthenticated local** annual NLCD GeoTIFF area extractor only after separately downloading/archiving official source files. For JRC, use the **unexecuted Google Earth Engine recipe** in `remote_sensing/jrc_monthly_export_gee.js` in an authenticated GEE workspace, with the verified site/month manifest uploaded.
+5. Run `scripts/build_remote_sensing_features.py` to derive strictly lagged water/landcover features, preserving missing imagery and last observation dates.
+6. Run `scripts/build_climate_features.py` on separately downloaded Daymet/PRISM daily series (with 1981–2000 baseline) and `scripts/build_climate_trend_diagnostics.py` (1981–2015 descriptive site trends only).
+7. After freezing exposure availability, merge the environmental tables by exact `run_id,route_id,site_id,survey_date,coordinate_qc_status`. Only a separately approved response-stage study may then read taxon calling records.
 
-Most importantly: do warming/early spring cues become decoupled from seasonally persistent water, and can terrestrial/forest/wetland buffers preserve recurrent calling locations? Calling detections are **not** reproductive success, true breeding, permanent occupancy, abundance, individual memory, or climate-change attribution.
+## Synthetic checks
 
-## Data design
+```bash
+pip install -r requirements.txt
+pytest -q tests
+```
 
-- Frog: NAAMP fixed stops surveyed in 2001–2015. Build the longitudinal panel from **all eligible survey opportunities** (7,848 ten-stop standardized runs), *not only* the RC6 4,236 wetter–drier matched comparisons; retain RunNumber, route, year, observation date, observer and skipped/missing status. Raw positive CallingIndex records are sparse: zero only at a genuinely surveyed eligible stop.
-- Climate: Daymet V4 (1980–; daily North American interpolated weather) as primary daily time series; PRISM 1981– daily CONUS independent check; GRIDMET/DROUGHT for multi-window SPEI/SPI/EDDI. Use a fixed 1981–2000 baseline and separate 7/30/90-day **strictly prior** weather exposures from prior five-complete-year climate-state anomalies.
-- Long-term trend diagnostics: describe 1981–2015 annual meteorological trend independently from frog outcomes. **Never** use a 1981–2015 full-period trend as a look-ahead predictor for an outcome in 2001–2014. Retrospective climate changes are not automatically anthropogenic causal attribution.
-- Terrestrial: USGS Annual NLCD Collection 1.2, 1985–2025, 30 m, forests/agriculture/wetlands/imperviousness; Landsat C2 verified cloud-masked acquisition-time reflectance and NDVI/NDWI. Calculate predeclared 250-m local and 1-km landscape buffer fractions around verified physical sites.
-- Surface water: JRC monthly water history 1984–2021, 30 m; water/nonwater/**no data** are distinct. It can miss small/canopy ponds and intra-monthly hydroperiod; the most recent fully *pre-survey* observation is a proxy, not water depth or larval survival. Do not use a full-month image including post-survey observations as a presurvey predictor.
-- Climate water deficit: TerraClimate is secondary only; its catalog explicitly warns that parent datasets determine trends, so do not use it for independent trend attribution.
+The test suite creates synthetic geographic rasters, synthetic Daymet timeseries and synthetic image-month totals. It ensures no survey-day/future imagery or weather leaks into features; no-data is not treated as dry; coordinates are never automatically externally verified. **Synthetic test values are not ecological results.**
 
-## Hard data-quality gate
+## Input ceilings
 
-NAAMP's pinned USGS site-coordinate source contains gross transcription errors, including +83.302° longitude in Route 270107, SiteID 4507 and multiple routes with implausible within-route separations. No site-level 30-m overlay or exact-distance ecology is allowed until a **response-blind, independently verified station coordinate/identity ledger** has been frozen. Do not repair coordinates after viewing species outcomes or relabel station moves as habitat changes. Track site-year identity, coordinate uncertainty, valid pixels, and acquisition dates.
+Official Annual NLCD Collection 1.2, CONUS, 30 m, 1985–2025: https://www.usgs.gov/centers/eros/science/usgs-eros-archive-land-cover-annual-nlcd-collection-1-land-cover
 
-## Three competing generators (to be compared out of block)
+JRC Monthly Water History, 30 m, 1984–2021: https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_MonthlyHistory
 
-1. **Fast cue:** recent rain and seasonal conditions, species-specific response, past acoustic site history.
-2. **Local environmental filter:** fast cue plus remotely visible seasonal water, preceding-year land cover, forest and impermeable cover, with hydroclimate state.
-3. **Decoupling and buffering:** slower warming/drought × local wetland persistence/terrestrial buffer interactions change the spatial selection of calling sites.
+Daymet single pixel calendar: https://daymet.ornl.gov/single-pixel-tool-guide — leap years have 365 Daymet records: Dec 31 is omitted. The climate adapter does not silently interpolate such gaps.
 
-Test both marginal species × site call intensity and **configuration of calling across stops conditional on total activity**. Distinguish acoustic shifts, sites not surveyed, and station relocation. Fit train-era (e.g. 2001–2010) to temporal holdout (2011–2015) and independently held-out geographical blocks; report route-clustered uncertainty. Freeze endpoint, scales, inclusion criteria and model family before outcome reading.
+Original NAAMP public dataset: https://doi.org/10.5066/F7G44NG0
 
-## Result interpretation
-
-There is no new positive frog–climate association to report yet. Climate-driven hydroperiod changes, frog breeding-site drying and call-phenology changes already have a substantial literature; the targeted gap is the multispecies **joint spatial reorganization of acoustic site use** under discordant short-term cues, persistent wetland availability, and terrestrial land-cover change. Detectable calling–water mismatch is not proof of failed reproduction.
-
-This branch is an independent planning lane. It does not re-open earlier failed dispersion/compactness tests and must not modify locked RC6 figures or claim receipts.
-
-## Data and literature entry points
-
-- NAAMP data: https://doi.org/10.5066/F7G44NG0
-- USGS Annual NLCD Collection 1.2: https://www.usgs.gov/centers/eros/science/about-annual-nlcd
-- Daymet V4: https://developers.google.com/earth-engine/datasets/catalog/NASA_ORNL_DAYMET_V4
-- GRIDMET drought: https://developers.google.com/earth-engine/datasets/catalog/GRIDMET_DROUGHT
-- JRC monthly surface water: https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_MonthlyHistory
-- USGS multi-year satellite-and-ground sensors caveat: https://www.usgs.gov/publications/multi-year-data-satellite-and-ground-based-sensors-show-details-and-scale-matter
-- USGS 2026 hydroperiod/breeding habitat forecast: https://www.usgs.gov/publications/climate-driven-changes-wetland-hydroperiods-predict-losses-habitat-suitability
-
-**Next gate:** verify stations without looking at calling responses; separately export dated climate and remotely sensed covariate tables and their source/QC metadata; only then join the NAAMP responses.
+See `RESEARCH_SPEC.md` for competing ecological hypotheses and causal-inference limits. See `remote_sensing/EXPORT_CONTRACT.md` for extraction input/output schemas and commands.
