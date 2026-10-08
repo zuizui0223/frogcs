@@ -15,6 +15,7 @@ import os
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 from datetime import date
 from pathlib import Path
 
@@ -51,7 +52,7 @@ def get(url,headers=None,decode_json=True):
     raise last
 
 def sign(href):
-    time.sleep(1.3)
+    time.sleep(3.0)
     o=get(SIGN+"?"+urllib.parse.urlencode({"href":href}))
     signed=o.get("href")
     if not isinstance(signed,str) or not signed.startswith("https://"):
@@ -177,6 +178,8 @@ for i,run in enumerate(runs,1):
             "scene_id":run["candidates"][0]["item_id"],
             "error_type":type(ex).__name__,
             "qa_coverage_evaluated":False}
+        if isinstance(ex,urllib.error.HTTPError):
+            rr["http_status"]=int(ex.code)
     results.append(rr)
     print(json.dumps({"era_shard":SHARD,"run":i,"runs":len(runs),
           "qa_coverage_evaluated":rr["qa_coverage_evaluated"],
