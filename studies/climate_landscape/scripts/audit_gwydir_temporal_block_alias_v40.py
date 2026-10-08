@@ -91,7 +91,7 @@ def audit(rows):
     if rank_base!=7 or rank_flow!=7:
         raise ValueError("unexpected site + relative-period alias rank")
     return {
-        "analysis":"gywdir_published_six_site_weather_block_rank_v4_0",
+        "analysis":"gwydir_published_six_site_weather_block_rank_v4_0",
         "source":"Sarker et al. 2022 Table 2, DOI 10.1016/j.ecolind.2022.109640",
         "source_type":"manually transcribed published environmental table; no acoustic response",
         "n_sites":6,
