@@ -44,7 +44,7 @@ def get_coverage(year):
     if host != 'dmsdata.cr.usgs.gov' or len(data) > MAX_BYTES:
         raise ValueError('Unexpected source host or overlarge response')
     if data[:4] not in (b'II*\x00', b'MM\x00*', b'II+\x00', b'MM\x00+'):
-        raise ValueError('Official WCS response not GeoTIFF; starts ' + data[:180].decode('utf8', 'replace'))
+        raise ValueError('Official WCS response not GeoTIFF; starts ' + data[:2500].decode('utf8', 'replace'))
     return data, {'http_content_type': content_type, 'requested_time': params['time'],
                   'host': host, 'request_path': urllib.parse.urlparse(url).path}
 
@@ -164,7 +164,7 @@ def main():
             receipt['status']='WCS_SOURCE_FAILURE_OR_INVALID_RASTER'
             receipt['failed_year']=year
             receipt['failure_type']=type(error).__name__
-            receipt['failure_details']=str(error)[:400]
+            receipt['failure_details']=str(error)[:2200]
             (root/'receipt.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
             raise
     receipt['site_radii']=summarize_pixels(saved,stations)
