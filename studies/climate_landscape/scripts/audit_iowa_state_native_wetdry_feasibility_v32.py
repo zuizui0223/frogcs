@@ -188,10 +188,10 @@ def synthetic_tests():
     assert result["n_nominal_route_stops_with_within_stop_wet_and_dry"] == 2
     assert result["n_missing_wetdry"] == 1
     # Complete route opportunities and fully observed W/D are distinct.
-    ten = header + "\\n".join(
+    ten = header + "\n".join(
         f"360110,NAAMP,{i},X,2012-06-02,{('W' if i <= 5 else 'D')}"
         for i in range(1, 11)
-    ) + "\\n"
+    ) + "\n"
     full = audit_csv(ten)
     assert full["n_complete_10_stop_route_events"] == 1
     assert full["n_fully_observed_10_stop_route_events"] == 1
