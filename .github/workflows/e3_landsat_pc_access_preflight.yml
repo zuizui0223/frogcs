@@ -7,7 +7,7 @@ on:
     paths:
       - ".github/workflows/e3_landsat_pc_access_preflight.yml"
       - "scripts/remotesensing/preflight_e3_landsat_pc_access.py"
-      - "revision/NAAMP_E3_LANDSAT_PC_ACCESS_REPAIR_V0_2.md"
+      - "revision/NAAMP_E3_LANDSAT_PC_ACCESS_REPAIR_V0_3.md"
   workflow_dispatch:
 
 permissions:
@@ -31,5 +31,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: e3-landsat-pc-access-v02
-          path: remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_2.json
+          path: remotesensing/E3_LANDSAT_C2L2_PC_ACCESS_PREFLIGHT_V0_3.json
           retention-days: 30
