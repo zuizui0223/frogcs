@@ -127,6 +127,14 @@ jobs:
               'historical_physical_station_externally_verified':False}
             expected={'360104':3,'360412':2}[route]
             if record['gross_mapped_loss_count']!=expected:
+              print(json.dumps({'status':'FROZEN_SOURCE_REPRODUCIBILITY_DRIFT',
+                'route':route,'site_id':site,'prior_expected_forest_loss':expected,
+                'fresh_forest_loss':record['gross_mapped_loss_count'],
+                'prior_nominal_pixels':{'360104':219,'360412':218}[route],
+                'fresh_nominal_pixels':record['nominal_250m_pixels'],
+                'bbox_epsg5070':bbox,
+                'label_year_shas':{str(y):provenance[str(y)]['label']['source_sha256'] for y in years},
+                'confidence_year_shas':{str(y):provenance[str(y)]['confidence']['tiff_sha256'] for y in years}},sort_keys=True),flush=True)
               raise ValueError('Mapped loss pixel count differs from prior frozen screen, do not posthoc repair')
             rows.append(record)
           result={'analysis':'selected_five_loss_pixels_same_collection_confidence_source_only_v23',
