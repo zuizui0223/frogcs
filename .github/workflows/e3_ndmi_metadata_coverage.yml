@@ -1,0 +1,65 @@
+name: E3 Landsat NDMI same-scene metadata coverage
+
+on:
+  push:
+    branches:
+      - remotesensing/e3-ndmi-coverage-v1
+    paths:
+      - '.github/workflows/e3_ndmi_metadata_coverage.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install fixed-pair and geometry dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy shapely pyproj
+      - name: Compile E3 metadata script
+        run: python -m py_compile scripts/remotesensing/e3_ndmi_metadata_coverage_shard.py
+      - name: Retrieve same-product metadata only
+        env:
+          E3_SHARD_INDEX: ${{ matrix.shard }}
+          E3_SHARD_COUNT: 8
+        run: python scripts/remotesensing/e3_ndmi_metadata_coverage_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-metadata-shard-${{ matrix.shard }}
+          path: remotesensing/e3_metadata_shards/e3_ndmi_metadata_shard_*.json
+          retention-days: 10
+
+  aggregate:
+    needs: extract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy shapely pyproj
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: e3-metadata-shard-*
+          path: remotesensing/e3_ndmi_shard_inputs
+          merge-multiple: true
+      - name: Apply necessary metadata coverage bound
+        env:
+          E3_SHARD_DIR: remotesensing/e3_ndmi_shard_inputs
+        run: python scripts/remotesensing/aggregate_e3_ndmi_metadata_coverage.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-ndmi-metadata-coverage-v01
+          path: remotesensing/E3_NDMI_METADATA_COVERAGE_V0_1.json
+          retention-days: 30
