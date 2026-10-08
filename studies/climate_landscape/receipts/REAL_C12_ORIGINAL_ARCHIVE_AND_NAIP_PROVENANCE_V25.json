@@ -1,0 +1,38 @@
+{
+  "analysis": "v25_NLCD_C1V2_archive_plus_independent_Iowa_NAIP_source_receipt",
+  "source_only": true,
+  "site_selection_post_NLCD_C1V0_environment_readback": true,
+  "frog_Counts_csv_read": false,
+  "historical_field_sites_independently_verified": 0,
+  "official_sciencebase_parent": "655ceb8ad34ee4b6e05cc51a",
+  "landcover_product_c1v2_item": "697b9279b66b0197c3043cc3",
+  "landcover_confidence_c1v2_item": "697b92b8b66b0197c3043cc7",
+  "landcover_change_c1v2_item": "697b9298b66b0197c3043cc5",
+  "official_c1v2_raster_pixels_downloaded": 0,
+  "year_2011_landcover_zip_bytes": 1384296189,
+  "year_2012_landcover_zip_bytes": 1388935096,
+  "year_2013_landcover_zip_bytes": 1389684449,
+  "year_2011_confidence_zip_bytes": 7668098587,
+  "year_2012_confidence_zip_bytes": 7696467112,
+  "year_2013_confidence_zip_bytes": 7696370727,
+  "source_run": "https://github.com/zuizui0223/frogcs/actions/runs/37766501003",
+  "aerial_run": "https://github.com/zuizui0223/frogcs/actions/runs/37766635939",
+  "original_NAIP_aerial_photo_count": 4,
+  "aerial_pair_years": [
+    2011,
+    2013
+  ],
+  "nominal_site_ids": [
+    "6613",
+    "7247"
+  ],
+  "aerial_images_are_not_quantitative_change_truth": true,
+  "prior_2012_C1V0_forest_loss_pixel_confidence_values": [
+    44,
+    46,
+    7,
+    39,
+    34
+  ],
+  "prior_2012_C1V0_forested_class_loss_not_accepted_as_verified_deforestation": true
+}
