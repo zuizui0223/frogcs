@@ -15,6 +15,14 @@ The [official BioNet terms](https://www.environment.nsw.gov.au/topics/animals-an
 
 Also, [official BioNet basic-access policy](https://www.environment.nsw.gov.au/topics/animals-and-plants/biodiversity/nsw-bionet/bionet-access) generalizes/withholds sensitive fauna location detail. The Feb 2026 release documentation also identifies `siteID`, `surveyID`, `eventID`, `visitID`, timestamps or effort/context fields as **conditionally withheld or generalized for sensitive species**. Hence a physically stable SiteID must be independently verified for eligible non-sensitive taxon/site records, rather than inferred from a published map point. Do **not** attempt to reverse masked coordinates.
 
+### 2026-10-09 source-only follow-up: no independently named public *fauna visit* entity was found
+
+A second live [BioNet schema audit, run 37800327766 (SUCCESS)](https://github.com/zuizui0223/frogcs/actions/runs/37800327766), inspected only official service/entity/field names. Of the current service-document entity set names containing **visit**, **survey** or **effort**, the only name was **`SystematicFloraSurvey_SiteData`** — not a systematic **fauna** survey-visit manifest. The service still exposes `visitID` as a property on **`SpeciesSightings_CoreDataExtended`**, but did **not** expose a separately named public `SystematicFaunaSurvey_VisitData` or equivalent `visit`-named fauna table through this audited service document.
+
+**Precisely bounded negative finding:** the inspected public entity *names* do not establish a complete public **fauna survey-visit denominator**. This is **not a proof** that complete fauna visit records are absent from the underlying NSW BioNet Atlas, from a differently named entity or via registered access. The [official systematic fauna data access page](https://www.environment.nsw.gov.au/topics/animals-and-plants/biodiversity/nsw-bionet/about-bionet-atlas/systematic-fauna-survey-data) says login is required to analyze/export systematic fauna survey records. Do not infer that public sighting rows enumerate all visited-with-no-calls occasions.
+
+The same checked extended entity published `siteID`, `surveyID`, `visitID`, `eventID`, `abundanceScore` and `samplingEffortValue` as **field definitions only**. No actual animal/survey rows, nonmissing-field rates, identifiers, coordinates or water observations were accessed. The saved public-meta field-name output is version-specific and should be rechecked after API migration.
+
 ## 2. Decision: one ID is not a survey denominator
 
 The published source [Ocock et al. 2024](https://doi.org/10.1071/MF23181) describes:
