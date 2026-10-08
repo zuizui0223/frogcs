@@ -1,6 +1,21 @@
-# Climate × remote sensing × NAAMP frog calling: independent v0.3 research package
+# Climate × remote sensing × NAAMP frog calling — independent study (source gate v3.1)
 
-This is a separate, **response-blind environmental extraction prototype** developed on 2026-10-08. It **does not** contain actual NAAMP acoustic outcomes or a validated station-to-satellite overlay. It does **not** modify the submitted RC6 scientific story.
+## Current status — 2026-10-08
+
+**Separate from locked JAE RC6. No manuscript, null model or accepted ecological result has changed.**
+
+- **Source-only Iowa archive verification (v3.1):** checksum-pinned 21,934 original Runs and 219,340 original Stops; **zero direct wet/dry, water level or inundation columns** in the national `Stops.csv`. [Successful original workflow](https://github.com/zuizui0223/frogcs/actions/runs/37774857243). Full interpretation: [v3.1 actual schema receipt](V3_1_ACTUAL_USGS_WETNESS_SCHEMA_RESULT_2026-10-08.md) and [historical state-native archive gate](V3_1_HISTORICAL_STATION_AND_LOCAL_WETNESS_SOURCE_GATE.md).
+- **Potential Iowa source not yet available:** historical 2010–2015 state-native wet/dry records and stop relocation logs remain **unknown**. [Iowa DNR enquiry draft (UNSENT)](IOWA_DNR_NAAMP_2010_2015_ARCHIVE_ENQUIRY_UNSENT.md).
+- **Land-cover source check:** v2.2 examined 7 new Iowa routes / 70 nominal stops without opening their frog calling outcomes. Five source-selected old NLCD C1V0 category-loss pixels did not support a common regional 2012 clearing event. Later USDA Science TCC gave mixed tree-canopy results; historical physical-site continuity is unverified. See [v3.0 canopy uncertainty result](V3_0_REAL_CANOPY_SE_INTERPRETATION_AND_NO_CAUSAL_CLAIM.md).
+- **Explored exception:** the earlier **Iowa 360417** v2.0 pilot **did** read actual `Counts.csv` (592 positive acoustic records) and is **post-hoc descriptive only**, not proof of a forest-caused frog response. The new 7 route outcome records remain unopened. See [v2.0 acoustic readout](V2_0_ACTUAL_FROG_ACOUSTIC_LANDCOVER_RESULT.md).
+
+**Current stop rule:** The USGS national archive alone cannot test direct local hydrology. Do not use present-day Iowa forms as historical data, select more forest-loss cells after response inspection, or fit a new acoustic model until archived field schema, historical stop identity and source comparability are independently verified.
+
+---
+
+## Historical v0.3 environment-extraction prototype
+
+The following describes the initial **response-blind environmental prototype**, not the later v2.0 descriptive acoustic pilot. This prototype by itself did not contain frog calls or validated historical station-to-satellite overlays.
 
 The 2001–2015 10-stop NAAMP network is suitable for a possible longitudinal study of how hydroclimatic trends, water availability and terrestrial land-cover change relate to **where frogs are acoustically detected**, but not for concluding successful breeding, true absence, abundance or anthropogenic attribution without more evidence.
 
