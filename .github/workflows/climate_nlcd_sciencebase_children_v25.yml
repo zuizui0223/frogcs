@@ -1,0 +1,32 @@
+name: Discover official ScienceBase Annual NLCD C1.2 child source files
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_sciencebase_children_v25.yml'
+      - 'studies/climate_landscape/scripts/discover_sciencebase_nlcd_c12_children_v25.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  metadata-no-original-raster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Enumerate official ScienceBase Collection 1.2 product children
+        run: |
+          python studies/climate_landscape/scripts/discover_sciencebase_nlcd_c12_children_v25.py \
+            --out "$RUNNER_TEMP/annual_nlcd_c12_children_v25.json"
+      - name: Preserve original source hashes and explicit source-only status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: annual-nlcd-c12-official-sciencebase-children-v25
+          path: ${{ runner.temp }}/annual_nlcd_c12_children_v25.json
+          if-no-files-found: error
+          retention-days: 30
