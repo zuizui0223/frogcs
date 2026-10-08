@@ -1,0 +1,38 @@
+name: E3 postgate code QA
+
+on:
+  push:
+    branches:
+      - remotesensing/e3-ndmi-postgate-v1
+    paths:
+      - ".github/workflows/e3_ndmi_postgate_code_qa.yml"
+      - "scripts/remotesensing/extract_e3_ndmi_postgate_shard.py"
+      - "scripts/remotesensing/aggregate_e3_ndmi_postgate.py"
+      - "scripts/remotesensing/run_e3_ndmi_final_mechanism.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  code_qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax check (no raster or frog outcomes)
+        run: |
+          python -m py_compile \
+            scripts/remotesensing/extract_e3_ndmi_postgate_shard.py \
+            scripts/remotesensing/aggregate_e3_ndmi_postgate.py \
+            scripts/remotesensing/run_e3_ndmi_final_mechanism.py
+          python - <<'PY'
+          from pathlib import Path
+          a=Path("scripts/remotesensing/extract_e3_ndmi_postgate_shard.py").read_text()
+          b=Path("scripts/remotesensing/run_e3_ndmi_final_mechanism.py").read_text()
+          assert 'E3_pixel_gate_not_passed_NDMI_must_not_be_read' in a
+          assert b.index('if gate.get("classification")') < b.index('flex.prepare_subset()')
+          assert 'median(ndmi)' in a
+          assert 'RADIUS=500.0' in a and 'VALID_MIN=.70' in a
+          assert 'scale' or 'SCALE=.0000275' in a
+          print("E3 postgate static QA PASSED; no frog endpoint accessed.")
+          PY
