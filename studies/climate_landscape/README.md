@@ -1,3 +1,16 @@
+# Climate × terrestrial landscape × NAAMP acoustic site use — independent study v1.1
+
+**Scientific status (2026-10-08):** the past-five-year climate-history add-on did **not** improve held-out strong-calling prediction in the frozen 9-route v0.9 pilot (test gain −0.002257 per stop); do not retune the pilot. A separate USGS Runs/Stops-only audit found 95/8,223 route × SiteIDs with nonconstant stop number and 28,330 adjacent-year same-season candidate stop comparisons with invariant stop numbering and geometry-only passing coordinates. **Exactly 0 historical physical stations have independent location corroboration; no real 30-m Annual NLCD land conversion × species calling allocation result exists.** Response-blind traffic/noise longitudinal coverage is a newly implemented gate, with actual-source execution separate from the frozen frog result.
+
+- [Actual negative acoustic forecast](V0_9_REAL_FROG_RESULT.md)
+- [Actual pinned USGS site-identity continuity result](V1_0_HISTORICAL_SITE_IDENTITY_GATE.md)
+- [Source-only roadside detection-confounder audit](V1_1_ROADSIDE_DETECTION_COVERAGE_GATE.md)
+- [Main two-scale biological inference contract](TWO_SCALE_CLIMATE_LANDSCAPE_INFERENCE_CONTRACT_V0_1.md)
+
+The rest of this README describes the historical v0.3 extraction prototype, retained for reproducibility.
+
+---
+
 # Climate × remote sensing × NAAMP frog calling: independent v0.3 research package
 
 This is a separate, **response-blind environmental extraction prototype** developed on 2026-10-08. It **does not** contain actual NAAMP acoustic outcomes or a validated station-to-satellite overlay. It does **not** modify the submitted RC6 scientific story.
