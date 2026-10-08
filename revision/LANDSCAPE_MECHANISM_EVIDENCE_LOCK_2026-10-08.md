@@ -37,6 +37,12 @@ Eight original/recovered source shards were frozen, and one code issue in the re
 
 The corrected frozen GitHub Actions run was **37705731375**. It classified the result `wetland_amount_filter_not_supported`.
 
+### Descriptive coefficient-stability QA (not a frozen hypothesis test)
+
+The final M_AREA artifact reports full-rank designs in both deterministic folds (28/28 columns each) and estimable wetland-area × rain coefficients for 42 taxa in fold A and 39 in fold B. Of the 39 taxa estimable in both, 24 had the same coefficient sign; the cross-fold Pearson correlation was -0.236. The actual magnitude of the added area-specific logit shift was modest (mean absolute 0.0413; 95th percentile 0.1552).
+
+This is a **post-readback descriptive audit**, not an inferential endpoint or evidence of a universally negative ecological effect. It is consistent with the frozen conclusion that a nationally portable wetland-area rain filter has not been demonstrated.
+
 ### Other tests and their different inference targets
 
 - DSWEmod classes 1–4 and 250-m named spatial sensitivities did not rescue the concentration mechanism.
