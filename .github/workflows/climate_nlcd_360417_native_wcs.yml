@@ -1,0 +1,35 @@
+name: Official Annual NLCD 2004 2009 2014 pixel WCS pilot
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_360417_native_wcs.yml'
+      - 'studies/climate_landscape/scripts/pilot_official_nlcd_wcs_360417.py'
+      - 'studies/climate_landscape/reference_routes/iowa_dnr_360417_source_only_stops_v16.csv'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-native-pixel-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install raster analysis requirements
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Fetch, inspect and compare original 30m annual category rasters
+        run: |
+          python studies/climate_landscape/scripts/pilot_official_nlcd_wcs_360417.py \
+            --output-dir "$RUNNER_TEMP/annual_nlcd_wcs_360417"
+      - name: Archive receipt and source-only clipped imagery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-annual-nlcd-360417-wcs-source-v16
+          path: ${{ runner.temp }}/annual_nlcd_wcs_360417/
+          if-no-files-found: error
+          retention-days: 30
