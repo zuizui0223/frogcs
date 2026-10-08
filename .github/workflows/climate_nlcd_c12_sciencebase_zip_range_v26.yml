@@ -1,0 +1,32 @@
+name: Official NLCD C1.2 2012 national ZIP bounded range feasibility
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_c12_sciencebase_zip_range_v26.yml'
+      - 'studies/climate_landscape/scripts/probe_official_c12_largezip_range_v26.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  central-directory-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe official source ZIP using <=128KB Range, no image download
+        run: |
+          python studies/climate_landscape/scripts/probe_official_c12_largezip_range_v26.py \
+            --out official_nlcd_c12_zip_range_receipt_v26.json
+      - name: Save immutable source-only ZIP range and compression receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-annual-nlcd-c12-zip-range-v26
+          path: official_nlcd_c12_zip_range_receipt_v26.json
+          if-no-files-found: error
+          retention-days: 30
