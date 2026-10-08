@@ -57,3 +57,15 @@ def test_no_coords_no_inference():
     c['coordinate_qc_status']='pass_unverified'
     with pytest.raises(ValueError,match='unverified'):
         m.make(a,b,c)
+
+
+def test_same_observer_comparison_is_explicitly_marked():
+    a,b,c=data()
+    a['observer_id']=['one','one','two']
+    pairs,r=m.make(a,b,c)
+    assert pairs.iloc[0].same_observer == True
+    assert r['n_same_observer_pairs']==1
+    a['observer_id']=['one','two','two']
+    pairs,r=m.make(a,b,c)
+    assert pairs.iloc[0].same_observer == False
+    assert r['n_same_observer_pairs']==0

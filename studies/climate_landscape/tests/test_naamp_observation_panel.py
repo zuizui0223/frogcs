@@ -49,3 +49,11 @@ def test_pre_2001_is_out_of_scope_not_date_error():
     run.loc[0,'SurveyDate']='05/10/1998'
     out,rec=m.make(run,stops)
     assert out.empty and rec['n_invalid_date_rows']==0
+
+
+def test_optional_observer_identity_retained_without_response_data():
+    run, stops=data()
+    run['ObserverTrackingID']='observer123'
+    x,receipt=m.make(run,stops)
+    assert x.observer_id.unique().tolist()==['observer123']
+    assert receipt['n_runs_with_observer_id']==1

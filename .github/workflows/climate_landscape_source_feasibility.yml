@@ -6,8 +6,17 @@ on:
       - study/climate-landscape-acoustic-sites-v0
     paths:
       - '.github/workflows/climate_landscape_source_feasibility.yml'
-      - 'studies/climate_landscape/**'
+      - 'studies/climate_landscape/scripts/run_public_naamp_feasibility.py'
+      - 'studies/climate_landscape/scripts/download_public_naamp_sources.py'
+      - 'studies/climate_landscape/scripts/build_naamp_observation_panel.py'
+      - 'studies/climate_landscape/scripts/audit_coordinates.py'
+      - 'studies/climate_landscape/tests/**'
+      - 'studies/climate_landscape/requirements.txt'
   workflow_dispatch:
+
+concurrency:
+  group: climate-naamp-source-feasibility
+  cancel-in-progress: true
 
 permissions:
   contents: read
