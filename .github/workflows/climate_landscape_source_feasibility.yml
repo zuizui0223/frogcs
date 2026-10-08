@@ -10,6 +10,7 @@ on:
       - 'studies/climate_landscape/scripts/download_public_naamp_sources.py'
       - 'studies/climate_landscape/scripts/build_naamp_observation_panel.py'
       - 'studies/climate_landscape/scripts/audit_coordinates.py'
+      - 'studies/climate_landscape/scripts/audit_naamp_historical_site_stability.py'
       - 'studies/climate_landscape/tests/**'
       - 'studies/climate_landscape/requirements.txt'
   workflow_dispatch:
@@ -45,6 +46,13 @@ jobs:
             --stops "${RUNNER_TEMP}/naamp_source_files/Stops.csv" \
             --coords "${RUNNER_TEMP}/naamp_source_files/Coordinates.csv" \
             --receipt "${RUNNER_TEMP}/naamp_source_files/feasibility_receipt.json"
+      - name: Audit historical SiteID and stop-position stability without frog outcomes
+        run: |
+          python studies/climate_landscape/scripts/audit_naamp_historical_site_stability.py \
+            --runs "$RUNNER_TEMP/naamp_source_files/Runs.csv" \
+            --stops "$RUNNER_TEMP/naamp_source_files/Stops.csv" \
+            --coords "$RUNNER_TEMP/naamp_source_files/Coordinates.csv" \
+            --out "$RUNNER_TEMP/naamp_source_files/site_stability_receipt.json"
       - name: Upload only audited metadata receipts (no source CSVs)
         if: always()
         uses: actions/upload-artifact@v4
@@ -53,4 +61,5 @@ jobs:
           path: |
             ${{ runner.temp }}/naamp_source_files/pinned_source_receipt.json
             ${{ runner.temp }}/naamp_source_files/feasibility_receipt.json
+            ${{ runner.temp }}/naamp_source_files/site_stability_receipt.json
           if-no-files-found: error
