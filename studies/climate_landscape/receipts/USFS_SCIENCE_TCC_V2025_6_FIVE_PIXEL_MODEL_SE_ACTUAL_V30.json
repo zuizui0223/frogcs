@@ -1,0 +1,133 @@
+{
+  "analysis": "Science_TCC_2025_6_five_C1V0_loss_cells_with_U16_SE_v30",
+  "status": "Five environmental-source pixels retrieved with three-year canopy and model-SE",
+  "cautions": {
+    "posthoc_environmental_site_selection": true,
+    "biological_outcomes_opened": false,
+    "physical_site_continuity_independently_verified": 0,
+    "modeled_se_is_not_temporal_confidence_interval": true,
+    "C1V2_original_pixels_not_extracted": true,
+    "SE_is_ensemble_dispersion_no_year_to_year_calibrated_ci": true
+  },
+  "official_source": "https://imagery.geoplatform.gov/iipp/rest/services/Vegetation/USFS_EDW_TCC_Science_SE_CONUS/ImageServer",
+  "original_raster_job": "https://github.com/zuizui0223/frogcs/actions/runs/37772164538",
+  "source_full_artifact": "https://github.com/zuizui0223/frogcs/actions/runs/37772164538/artifacts/11547428557",
+  "standard_error_original_encoding": "U16 divided by 100, 65534 and 65535 missing",
+  "source_years": [
+    2011,
+    2012,
+    2013
+  ],
+  "pixel_values": [
+    {
+      "route": "360104",
+      "site_id": "6613",
+      "stop": 3,
+      "C1V0_2011": 41,
+      "C1V0_2012": 82,
+      "canopy": [
+        23,
+        9,
+        8
+      ],
+      "SE": [
+        1.1,
+        1.36,
+        1.38
+      ],
+      "delta": -15,
+      "SEsum": 2.48,
+      "index": 1,
+      "SEsum_comparison_only": true,
+      "not_a_p_value": true
+    },
+    {
+      "route": "360104",
+      "site_id": "6613",
+      "stop": 3,
+      "C1V0_2011": 41,
+      "C1V0_2012": 82,
+      "canopy": [
+        35,
+        8,
+        6
+      ],
+      "SE": [
+        5.96,
+        2.04,
+        2.1
+      ],
+      "delta": -29,
+      "SEsum": 8.06,
+      "index": 2,
+      "SEsum_comparison_only": true,
+      "not_a_p_value": true
+    },
+    {
+      "route": "360104",
+      "site_id": "6613",
+      "stop": 3,
+      "C1V0_2011": 41,
+      "C1V0_2012": 23,
+      "canopy": [
+        9,
+        3,
+        2
+      ],
+      "SE": [
+        1.66,
+        1.72,
+        1.73
+      ],
+      "delta": -7,
+      "SEsum": 3.39,
+      "index": 3,
+      "SEsum_comparison_only": true,
+      "not_a_p_value": true
+    },
+    {
+      "route": "360412",
+      "site_id": "7247",
+      "stop": 7,
+      "C1V0_2011": 41,
+      "C1V0_2012": 82,
+      "canopy": [
+        3,
+        3,
+        3
+      ],
+      "SE": [
+        2.74,
+        2.63,
+        2.65
+      ],
+      "delta": 0,
+      "SEsum": 5.39,
+      "index": 4,
+      "SEsum_comparison_only": false,
+      "not_a_p_value": true
+    },
+    {
+      "route": "360412",
+      "site_id": "7247",
+      "stop": 7,
+      "C1V0_2011": 41,
+      "C1V0_2012": 82,
+      "canopy": [
+        3,
+        2,
+        3
+      ],
+      "SE": [
+        2.57,
+        2.75,
+        2.75
+      ],
+      "delta": 0,
+      "SEsum": 5.32,
+      "index": 5,
+      "SEsum_comparison_only": false,
+      "not_a_p_value": true
+    }
+  ]
+}
