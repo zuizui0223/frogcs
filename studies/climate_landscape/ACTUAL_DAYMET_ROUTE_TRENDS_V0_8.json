@@ -1,0 +1,175 @@
+{
+  "analysis": "frog_daymet_real_route_hydroclimate_screen_v0_8",
+  "coverage": {
+    "baseline": "1981-2000",
+    "climate_years": "1981-2015",
+    "daily_source_rows": 153300,
+    "n_complete_routes": 12,
+    "sample_represents": "12 deterministically chosen Eastern/Central US routes, one per state; not representative US/NAAMP"
+  },
+  "rows": [
+    {
+      "precip_trend_mm_per_decade": 53.35,
+      "prior5_precip_ratio_2001": 1.104091,
+      "prior5_precip_ratio_2015": 1.03081,
+      "prior5_tmean_anomaly_2001": 0.131293,
+      "prior5_tmean_anomaly_2015": 0.697296,
+      "route_id": "Delaware:211202",
+      "state": "Delaware",
+      "temp_trend_c_per_decade": 0.277781
+    },
+    {
+      "precip_trend_mm_per_decade": 19.55,
+      "prior5_precip_ratio_2001": 0.990002,
+      "prior5_precip_ratio_2015": 1.011534,
+      "prior5_tmean_anomaly_2001": 0.091187,
+      "prior5_tmean_anomaly_2015": 0.120628,
+      "route_id": "Indiana:350209",
+      "state": "Indiana",
+      "temp_trend_c_per_decade": 0.138505
+    },
+    {
+      "precip_trend_mm_per_decade": 53.852632,
+      "prior5_precip_ratio_2001": 1.057804,
+      "prior5_precip_ratio_2015": 1.028972,
+      "prior5_tmean_anomaly_2001": 0.058558,
+      "prior5_tmean_anomaly_2015": 0.295854,
+      "route_id": "Kentucky:390103",
+      "state": "Kentucky",
+      "temp_trend_c_per_decade": 0.116187
+    },
+    {
+      "precip_trend_mm_per_decade": 91.7875,
+      "prior5_precip_ratio_2001": 0.970108,
+      "prior5_precip_ratio_2015": 1.192503,
+      "prior5_tmean_anomaly_2001": 0.474568,
+      "prior5_tmean_anomaly_2015": 0.951741,
+      "route_id": "Maine:440516",
+      "state": "Maine",
+      "temp_trend_c_per_decade": 0.272117
+    },
+    {
+      "precip_trend_mm_per_decade": 45.86,
+      "prior5_precip_ratio_2001": 1.082845,
+      "prior5_precip_ratio_2015": 1.033456,
+      "prior5_tmean_anomaly_2001": 0.087497,
+      "prior5_tmean_anomaly_2015": 0.458292,
+      "route_id": "Maryland:460307",
+      "state": "Maryland",
+      "temp_trend_c_per_decade": 0.192644
+    },
+    {
+      "precip_trend_mm_per_decade": 10.033333,
+      "prior5_precip_ratio_2001": 0.948975,
+      "prior5_precip_ratio_2015": 0.965212,
+      "prior5_tmean_anomaly_2001": 0.213801,
+      "prior5_tmean_anomaly_2015": 0.02474,
+      "route_id": "Mississippi:510218",
+      "state": "Mississippi",
+      "temp_trend_c_per_decade": 0.128189
+    },
+    {
+      "precip_trend_mm_per_decade": -3.645455,
+      "prior5_precip_ratio_2001": 1.008545,
+      "prior5_precip_ratio_2015": 1.033719,
+      "prior5_tmean_anomaly_2001": 0.178694,
+      "prior5_tmean_anomaly_2015": 0.785351,
+      "route_id": "NewJersey:591505",
+      "state": "NewJersey",
+      "temp_trend_c_per_decade": 0.254882
+    },
+    {
+      "precip_trend_mm_per_decade": -17.866667,
+      "prior5_precip_ratio_2001": 1.006756,
+      "prior5_precip_ratio_2015": 0.918315,
+      "prior5_tmean_anomaly_2001": 0.033074,
+      "prior5_tmean_anomaly_2015": 0.1398,
+      "route_id": "NorthCarolina:630114",
+      "state": "NorthCarolina",
+      "temp_trend_c_per_decade": 0.1528
+    },
+    {
+      "precip_trend_mm_per_decade": 70.7375,
+      "prior5_precip_ratio_2001": 1.076965,
+      "prior5_precip_ratio_2015": 1.183852,
+      "prior5_tmean_anomaly_2001": 0.208279,
+      "prior5_tmean_anomaly_2015": 0.481555,
+      "route_id": "Pennsylvania:720106",
+      "state": "Pennsylvania",
+      "temp_trend_c_per_decade": 0.156307
+    },
+    {
+      "precip_trend_mm_per_decade": 42.644,
+      "prior5_precip_ratio_2001": 1.063973,
+      "prior5_precip_ratio_2015": 1.092319,
+      "prior5_tmean_anomaly_2001": 0.222655,
+      "prior5_tmean_anomaly_2015": 0.713168,
+      "route_id": "Vermont:870407",
+      "state": "Vermont",
+      "temp_trend_c_per_decade": 0.103001
+    },
+    {
+      "precip_trend_mm_per_decade": 23.766667,
+      "prior5_precip_ratio_2001": 1.042495,
+      "prior5_precip_ratio_2015": 1.053407,
+      "prior5_tmean_anomaly_2001": -0.133646,
+      "prior5_tmean_anomaly_2015": 0.024864,
+      "route_id": "Virginia:880304",
+      "state": "Virginia",
+      "temp_trend_c_per_decade": -0.008274
+    },
+    {
+      "precip_trend_mm_per_decade": 48.533333,
+      "prior5_precip_ratio_2001": 1.046848,
+      "prior5_precip_ratio_2015": 1.057478,
+      "prior5_tmean_anomaly_2001": -0.087325,
+      "prior5_tmean_anomaly_2015": -0.229996,
+      "route_id": "WestVirginia:900110",
+      "state": "WestVirginia",
+      "temp_trend_c_per_decade": -0.02591
+    }
+  ],
+  "scientific_limits": {
+    "anthropogenic_attribution_estimated": false,
+    "frog_outcomes_read": false,
+    "frog_response_estimated": false,
+    "site_level_landcover_extraction_complete": false,
+    "within_year_hydroperiod_measured": false
+  },
+  "source": {
+    "artifact_zip_sha256": "0339548e20e6b4e5cdbe7f119a429d8e250d61b93cd8ce53c23e2eb9a15fd72e",
+    "daymet_receipt_sha256": "edf40c289de39e5d100c0a4151865ceff7d2341c4e6cf72212a058096968dd9e",
+    "github_actions_artifact_id": 11532307596,
+    "github_actions_run_id": 37736273058,
+    "n_eligible_routes_for_climate_screen": 180,
+    "n_eligible_states_for_screen": 16,
+    "n_sampled_states": 12,
+    "route_coordinates_externally_verified": false,
+    "route_selection_sha256": "398f1e5003fe2d8e91b7a7357593d399ef3a9e871ed55a2b5dfd87a1d5b9646f",
+    "sample_uses_frog_counts": false,
+    "source_status": "complete_source_screening"
+  },
+  "study": "Independent climate-landscape acoustic sites; response-blind source screening",
+  "summary": {
+    "annual_precip_mm_per_decade": {
+      "max": 91.7875,
+      "median": 44.251999999999995,
+      "min": -17.866667,
+      "n_positive": 10
+    },
+    "delta_prior5_precip_ratio_2015_minus_2001": {
+      "median": 0.01357449999999999,
+      "n_positive": 8
+    },
+    "delta_prior5_temp_2015_minus_2001_c": {
+      "median": 0.255286,
+      "n_positive": 10
+    },
+    "temperature_c_per_decade": {
+      "max": 0.277781,
+      "median": 0.1456525,
+      "min": -0.02591,
+      "n_positive": 10
+    }
+  }
+}
