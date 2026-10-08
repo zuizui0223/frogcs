@@ -76,6 +76,23 @@ The script's `conditional_exact_k_probs` enumerates `choose(n,k)` subsets from i
 
 Do **not** treat `k≥4` as a discovered new biological threshold; that definition originates in post-hoc NAAMP exploration. In an independently planned study, fix the minimum detectable sites and spatial estimand before outcome readback, using a prospective pilot for feasibility.
 
+## Gate 3B — A conditional-on-k spatial difference is not automatically causal
+
+**This is an important restriction for frogcs-like experiments.** Total number of calling locations `k` is itself affected by the randomized water/sound treatment. Therefore comparisons among experimentally treated versus control route-nights **selected to have the same observed `k`** are conditioned on a *post-treatment outcome*. They can legitimately diagnose a joint spatial configuration generator **predictively**, but should **not be called a randomized direct causal treatment effect on location choice at fixed k** without additional identification assumptions.
+
+A two-site synthetic counterexample is now in the code:
+
+- Control: calling probabilities for sites 1 and 2 are `[0.2, 0.2]`; given **exactly one** calling site (`k=1`), each has probability **0.50** of being selected.
+- Sound treatment: calling probabilities are `[0.2, 0.8]`; site 1's *marginal probability is unchanged*. Yet conditioning on `k=1`, site 1's probability of being the sole active site becomes **0.0588**, entirely because sound increases activity at **site 2**.
+- Calling this a direct suppressive effect of sound at site 1 would be wrong; it is a contrast in **conditional composition** induced by the change at the other location.
+
+Accordingly freeze **two reporting tracks**:
+
+1. **Experimental (causal treatment contrast)**: intention-to-treat effects on objectively verified actual calling events or on the **entire joint vector** of calling states across independently assigned pond/clusters. Estimate at the unit of randomization and preserve all eligible outcomes, without selecting route-nights by their *realized post-treatment k*.
+2. **Configuration-generation (conditional predictive check)**: after fitting predictions on independent training blocks, compare observed site configurations to their exact-k conditional expectations, clearly declaring *k is observed and conditioned upon*. Failure/success evaluates adequacy of a spatial generator, **not a controlled direct causal effect at equal k**.
+
+If a causal estimand for *spatial allocation independent of magnitude* is desired, it requires an additional explicit potential-outcomes/separable-effects design and assumptions beyond this proposed factorial. Do not retrofit such claims after seeing the data.
+
 ## Practical sequence, not an overpromised full factorial
 
 **Phase A (feasibility and sound-first):** choose a naturally occupied and ethically appropriate target species with multiple genuinely independent wetlands; confirm site continuity, historical-chorus strata and measurable spatial separation. Calibrate detection and playback spillover *before* treatment. Use temporally crossed within-site acoustic treatments with washout, sham controls, fixed windows and genuine concurrent within-night controls. If auditory stimulation is not biologically effective, do not infer absence of all rainfall effects.
