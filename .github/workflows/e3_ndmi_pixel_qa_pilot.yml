@@ -1,0 +1,43 @@
+name: E3 Landsat pixel QA response-blind pilot
+on:
+  push:
+    branches: [remotesensing/e3-ndmi-coverage-v1]
+    paths:
+      - ".github/workflows/e3_ndmi_pixel_qa_pilot.yml"
+      - "scripts/remotesensing/e3_ndmi_pixel_qa_pilot.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  qa_pilot:
+    strategy:
+      fail-fast: false
+      matrix:
+        era: [0,1,2]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy rasterio
+      - run: python -m py_compile scripts/remotesensing/e3_ndmi_pixel_qa_pilot.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: e3-ndmi-metadata-coverage-v01
+          path: remotesensing
+          repository: ${{ github.repository }}
+          run-id: 37711943954
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pilot frozen QA and reflectance validity only
+        env:
+          E3_PILOT_SHARD: ${{ matrix.era }}
+          E3_METADATA_PATH: remotesensing/E3_NDMI_METADATA_COVERAGE_V0_1.json
+        run: python scripts/remotesensing/e3_ndmi_pixel_qa_pilot.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-ndmi-pixel-qa-pilot-${{ matrix.era }}
+          path: remotesensing/E3_NDMI_PIXEL_QA_PILOT_*.json
+          retention-days: 15
