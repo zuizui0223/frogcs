@@ -1,0 +1,155 @@
+name: Matched C1V0 confidence of five Iowa forest-loss class pixels
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_c1v0_five_pixel_confidence_v23.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-selected-pixel-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install GeoTIFF analysis dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Get original NAAMP metadata only (not Counts)
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py --output-dir "$RUNNER_TEMP/naamp"
+      - name: Extract same-collection label and confidence rasters at two preselected locations
+        run: |
+          python - <<'PY'
+          import sys,os,json,urllib.parse,urllib.request,hashlib,time
+          from pathlib import Path
+          from rasterio.io import MemoryFile
+          import numpy as np
+          import pandas as pd
+          from rasterio.warp import transform
+          sys.path.insert(0,'studies/climate_landscape/scripts')
+          from screen_seven_iowa_nlcd_c1v0_v22 import fixed_sources,shared_grid,source_year
+          from build_naamp_observation_panel import SOURCE_PINS
+          from run_public_naamp_feasibility import COORD_SHA
+          import arcgis_c1v0_full_aoi as original
+          years=(2011,2012,2013)
+          targets={'360104':('6613',3),'360412':('7247',7)}
+          api='https://di-nlcd.img.arcgis.com/arcgis/rest/services/USA_NLCD_Annual_LandCover_Confidence/ImageServer'
+          def read_json(endpoint,params):
+            u=api+endpoint+'?'+urllib.parse.urlencode(params)
+            req=urllib.request.Request(u,headers={'User-Agent':'frogcs-match-C1V0-label-confidence/2.3'})
+            with urllib.request.urlopen(req,timeout=65) as h:
+              redirect=urllib.parse.urlparse(h.geturl())
+              if redirect.scheme!='https' or redirect.hostname!='di-nlcd.img.arcgis.com':
+                raise ValueError('Unexpected confidence-service redirect')
+              return h.read(5_000_000)
+          def confidence(year,bbox,w,h):
+            q=read_json('/query',{'where':'Year='+str(year),
+              'outFields':'OBJECTID,Name,Year,Version','returnGeometry':'false','f':'json'})
+            obj=json.loads(q)
+            attrs=[r['attributes'] for r in obj.get('features',[])]
+            if len(attrs)!=1 or not attrs[0]['Name'].endswith(f'_LndCnf_{year}_CU_C1V0'):
+              raise ValueError('Exact same-source C1V0 confidence catalog year not available')
+            if '1.0' not in str(attrs[0].get('Version')):raise ValueError('Confidence collection differs from label')
+            ident=attrs[0]
+            rule={'mosaicMethod':'esriMosaicByAttribute',
+              'where':f'OBJECTID={ident["OBJECTID"]} AND Year={year}',
+              'sortField':'Year','sortValue':year,'ascending':True}
+            args={'bbox':','.join(str(x) for x in bbox),'bboxSR':5070,'imageSR':5070,
+              'size':f'{w},{h}','format':'tiff','pixelType':'U8',
+              'interpolation':'RSP_NearestNeighbor','renderingRule':json.dumps({'rasterFunction':'None'}),
+              'mosaicRule':json.dumps(rule,separators=(',',':')),'f':'image'}
+            blob=read_json('/exportImage',args)
+            if blob[:4] not in (b'II*\x00',b'MM\x00*',b'II+\x00',b'MM\x00+'):
+              raise ValueError('Confidence endpoint returned non-TIFF data')
+            with MemoryFile(blob) as m:
+              with m.open() as ds:
+                tr=ds.transform
+                grid=(tr.a,tr.b,tr.c,tr.d,tr.e,tr.f)
+                expected=(30,0,bbox[0],0,-30,bbox[3])
+                if ds.count!=1 or ds.crs.to_epsg()!=5070 or ds.shape!=(h,w) or not np.allclose(grid,expected,rtol=0,atol=1e-7):
+                  raise ValueError('Confidence image pixel grid not identical to class raster')
+                a=ds.read(1)
+            if np.any(a>100):
+              raise ValueError('Confidence values outside official 1..100 range')
+            return a,{'source_json_sha256':hashlib.sha256(q).hexdigest(),
+              'tiff_sha256':hashlib.sha256(blob).hexdigest(),
+              'catalog':ident,'confidence_missing_code_zero_count':int((a==0).sum())}
+          base=Path(os.environ['RUNNER_TEMP'])/'naamp'
+          data={k:pd.read_csv(base/k,dtype=str,keep_default_na=False) for k in ('Runs.csv','Stops.csv')}
+          coords=pd.read_csv(base/'Coordinates.csv',dtype={'RouteNumber':str,'SiteID':str})
+          # fixed_sources checks seven-route group unchanged, even though only two exposed routes are inspected.
+          stations,cohort=fixed_sources(data['Runs.csv'],data['Stops.csv'],coords)
+          rows=[]
+          for route,(site,stop) in targets.items():
+            frame=stations[stations.route_id.eq(route)].copy()
+            bbox,w,h=shared_grid(frame)
+            labels={};confidence_values={};provenance={}
+            for year in years:
+              lab,valid,labmeta=source_year(year,bbox,w,h)
+              conf,confmeta=confidence(year,bbox,w,h)
+              labels[year]=(lab,valid);confidence_values[year]=conf
+              provenance[str(year)]={'label':labmeta,'confidence':confmeta}
+              print(json.dumps({'route':route,'year':year,'confidence_min':int(conf.min()),'confidence_max':int(conf.max())}),flush=True)
+            nominal=frame[(frame.site_id==site)&(frame.stop_number==stop)]
+            if len(nominal)!=1:raise ValueError('Frozen previously mapped site identity not found')
+            yy,xx=transform('EPSG:4326','EPSG:5070',nominal.longitude.tolist(),nominal.latitude.tolist())
+            rr,cc=np.indices((h,w))
+            pixel_x=bbox[0]+(cc+0.5)*30
+            pixel_y=bbox[3]-(rr+0.5)*30
+            circle=((pixel_x-xx[0])**2+(pixel_y-yy[0])**2)<=250**2
+            old,valid_old=labels[2011];new,valid_new=labels[2012]
+            after,valid_after=labels[2013]
+            shared=circle&valid_old&valid_new&valid_after
+            if shared.sum()<0.8*circle.sum():raise ValueError('Insufficient aligned three-year source-pixel validity')
+            forest={41,42,43}
+            loss=shared & np.isin(old,list(forest)) & ~np.isin(new,list(forest))
+            persistent=loss & ~np.isin(after,list(forest))
+            ctrl=shared & np.isin(old,list(forest)) & np.isin(new,list(forest))
+            def snap(mask):
+              return {'n_pixels':int(mask.sum()),
+                'source_labels_2011':list(map(int,old[mask])),
+                'source_labels_2012':list(map(int,new[mask])),
+                'source_labels_2013':list(map(int,after[mask])),
+                'confidence_2011':list(map(int,confidence_values[2011][mask])),
+                'confidence_2012':list(map(int,confidence_values[2012][mask])),
+                'confidence_2013':list(map(int,confidence_values[2013][mask]))}
+            record={'route':route,'site_id':site,'stop_number':stop,
+              'nominal_250m_pixels':int(circle.sum()),'gross_mapped_loss_count':int(loss.sum()),
+              'mapped_loss_persisted_nonforest_in_2013':int(persistent.sum()),
+              'gross_loss_confidence':snap(loss),
+              'unchanged_forest_control_confidence':snap(ctrl),
+              'catalogue_provenance':provenance,
+              'historical_physical_station_externally_verified':False}
+            expected={'360104':3,'360412':2}[route]
+            if record['gross_mapped_loss_count']!=expected:
+              raise ValueError('Mapped loss pixel count differs from prior frozen screen, do not posthoc repair')
+            rows.append(record)
+          result={'analysis':'selected_five_loss_pixels_same_collection_confidence_source_only_v23',
+             'fixed_sites_chosen_after_C1V0_landcover_readback':True,
+             'selection_is_not_independent_confirmation':True,
+             'years':[2011,2012,2013],
+             'source_version':'Annual NLCD Collection 1.0 (C1V0) label+confidence, NOT C1.2',
+             'n_expected_loss_pixels':5,
+             'n_source_routes':2,
+             'no_new_route_frog_responders_read':True,
+             'n_historical_sites_independently_verified':0,
+             'results':rows,
+             'interpretation':'LandCover Confidence is model-assigned class confidence, not a field-validated probability of land conversion.'}
+          Path('iowa_five_loss_pixel_C1V0_confidence_v23.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'analysis':result['analysis'],
+             'n_expected_loss_pixels':5,
+             'counts':[z['gross_mapped_loss_count'] for z in rows]},sort_keys=True))
+          PY
+      - name: Preserve exact source hashes and per-pixel confidence (no frog records)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa-five-pixel-nlcd-c1v0-confidence-v23
+          path: iowa_five_loss_pixel_C1V0_confidence_v23.json
+          if-no-files-found: error
+          retention-days: 30
