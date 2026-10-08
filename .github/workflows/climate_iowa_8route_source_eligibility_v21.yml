@@ -1,0 +1,103 @@
+name: Iowa 8 route-independent site and survey-year eligibility census
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_8route_source_eligibility_v21.yml'
+      - 'studies/climate_landscape/receipts/IOWA_EIGHT_ADDITIONAL_SOURCE_ONLY_ROUTE_CANDIDATES_V20.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  eight-route-source-only-before-frog-outcomes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source QC dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Download pinned original USGS survey source, not Counts.csv
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py --output-dir "$RUNNER_TEMP/naamp"
+      - name: Verify eight route eligibility with 2001–2015 original metadata only
+        run: |
+          python - <<'PY'
+          import json,hashlib,os,sys
+          from pathlib import Path
+          import pandas as pd
+          sys.path.insert(0,"studies/climate_landscape/scripts")
+          from build_naamp_observation_panel import make,SOURCE_PINS
+          from audit_coordinates import audit as geometry_audit
+          from run_public_naamp_feasibility import COORD_SHA
+          selection=json.loads(Path("studies/climate_landscape/receipts/IOWA_EIGHT_ADDITIONAL_SOURCE_ONLY_ROUTE_CANDIDATES_V20.json").read_text())
+          names=selection['new_outcome_unread_route_codes']
+          if len(names)!=8 or len(set(names))!=8 or '360417' in names:
+              raise ValueError('8-route fixed source-only selection drift')
+          folder=Path(os.environ['RUNNER_TEMP'])/'naamp'
+          dig={name:hashlib.sha256((folder/name).read_bytes()).hexdigest()
+               for name in ('Runs.csv','Stops.csv','Coordinates.csv')}
+          if dig!={**SOURCE_PINS,'Coordinates.csv':COORD_SHA}:
+              raise ValueError('Pinned USGS source digests drifted')
+          r=pd.read_csv(folder/'Runs.csv',dtype=str,keep_default_na=False)
+          s=pd.read_csv(folder/'Stops.csv',dtype=str,keep_default_na=False)
+          coord=pd.read_csv(folder/'Coordinates.csv',dtype={'RouteNumber':str,'SiteID':str})
+          panel,cohort=make(r,s)
+          geom,_=geometry_audit(coord)
+          geo=geom.rename(columns={'route_id':'route_number'})
+          records=[]
+          for rid in names:
+              p=panel[(panel.state=='Iowa')&(panel.route_number.astype(str)==rid)].copy()
+              if p.empty: raise ValueError('Selected route missing: '+rid)
+              p['stop_num']=pd.to_numeric(p.stop_number,errors='raise').astype(int)
+              if p.groupby('run_id').size().ne(10).any():
+                  raise ValueError('Bad 10-stop run: '+rid)
+              bystop=p.groupby('stop_num').site_id.nunique()
+              bysite=p.groupby('site_id').stop_num.nunique()
+              stable=(len(bystop)==10 and set(bystop.index)==set(range(1,11))
+                      and bystop.eq(1).all() and bysite.eq(1).all())
+              cross=p[['site_id']].drop_duplicates().merge(
+                geo[geo.route_number==rid][['site_id','geometry_qc_status']],
+                on='site_id',how='left',validate='one_to_one')
+              valid=int(cross.geometry_qc_status.eq('pass_unverified').sum())
+              e=p.drop_duplicates('run_id').sort_values('survey_date')
+              year=e.survey_year.astype(int)
+              pre=e[year<2012];post=e[year>2012];same=e[year==2012]
+              records.append({'route_id':rid,'n_runs':int(e.run_id.nunique()),
+                'n_distinct_years':int(year.nunique()),
+                'survey_years':sorted(year.unique().tolist()),
+                'n_siteids':int(p.site_id.nunique()),
+                'stop_to_siteid_recorded_stable':bool(stable),
+                'n_geometry_pass_unverified_nominal_sites':valid,
+                'n_pre_2012_runs':len(pre),'n_pre_2012_years':int(pre.survey_year.nunique()),
+                'n_2012_runs_unordered':len(same),
+                'n_post_2012_runs':len(post),'n_post_2012_years':int(post.survey_year.nunique()),
+                'pre_and_2_post_years_exist':bool(pre.survey_year.nunique()>=1
+                                                and post.survey_year.nunique()>=2),
+                'n_unique_dates':int(e.survey_date.nunique()),
+                'n_observer_ids':int(e.observer_id.nunique())})
+          out={'analysis':'iowa_eight_routes_naamp_source_only_timing_eligibility_v21',
+               'routes':records,'n_routes':len(records),
+               'n_recorded_site_stable_routes':sum(x['stop_to_siteid_recorded_stable'] for x in records),
+               'n_pre_and_two_post_year_routes':sum(x['pre_and_2_post_years_exist'] for x in records),
+               'n_routes_all_10_sites_geometry_pass':sum(x['n_geometry_pass_unverified_nominal_sites']==10 for x in records),
+               'n_externally_verified_historical_field_stations':0,
+               'selected_after_discovery_route_but_without_new_route_frog_outcomes':True,
+               '2012_breakpoint_inherited_from_environmental_readback_at_discovery_route':True,
+               'source_hashes':dig,'frog_Counts_csv_opened':False,
+               'NLCD_C1V2_site_rasters_not_obtained_for_eight_routes':True,
+               'no_biological_effect_estimated':True}
+          Path('iowa_eight_route_source_eligibility_v21.json').write_text(
+            json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({k:v for k,v in out.items() if k not in ('source_hashes',)},indent=2,sort_keys=True))
+          PY
+      - name: Save source-only 8-route receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa-eight-route-source-only-eligibility-v21
+          path: iowa_eight_route_source_eligibility_v21.json
+          if-no-files-found: error
