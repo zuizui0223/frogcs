@@ -22,6 +22,55 @@ OPTIONAL = ("site_id", "source_form_version", "stop_surveyed")
 MISSING = {"", "NA", "N/A", "NULL", "UNKNOWN", "UNK", "U", "?"}
 
 
+def nonadditive_wd_on_observed_bipartite_graph(edges):
+    """Detect identifiable W/D variation after nominal stop + event fixed effects.
+
+    For observed edges (stop, event, wet_binary), test whether there exist
+    site potentials a_i and event potentials b_t such that W_it=a_i+b_t
+    on *all observed edges*. Inconsistent cycle => W/D variation outside
+    additive site/event fixed effects. An acyclic network is uninformative.
+    This is a metadata-only rank diagnostic, NOT causal identification or
+    physical-site validation.
+    """
+    graph = defaultdict(list)
+    for site, event, wet in edges:
+        if wet not in (0, 1):
+            raise ValueError("W/D graph accepts only binary observed water states")
+        a = ("site", str(site))
+        b = ("event", str(event))
+        graph[a].append((b, int(wet)))
+        graph[b].append((a, int(wet)))
+    potential = {}
+    components = 0
+    inconsistent = False
+    for start in sorted(graph):
+        if start in potential:
+            continue
+        components += 1
+        potential[start] = 0
+        frontier = [start]
+        while frontier:
+            node = frontier.pop()
+            for target, observed in graph[node]:
+                expected = observed - potential[node]
+                if target not in potential:
+                    potential[target] = expected
+                    frontier.append(target)
+                elif potential[target] != expected:
+                    inconsistent = True
+    n_edges = len(edges)
+    n_nodes = len(graph)
+    n_cycles = n_edges - n_nodes + components
+    if n_cycles < 0:
+        raise AssertionError("negative graph cycle rank")
+    return {"n_observed_edges": n_edges, "n_observed_nodes": n_nodes,
+            "n_components": components, "cycle_rank": n_cycles,
+            "has_fixed_effect_identifiability_contrast": bool(inconsistent),
+            "status": ("nonadditive_WD_observed" if inconsistent else
+                       "additive_on_observed_cycles" if n_cycles > 0 else
+                       "uninformative_no_observed_cycle")}
+
+
 def audit_csv(raw: str) -> dict:
     reader = csv.DictReader(io.StringIO(raw))
     fields = reader.fieldnames or []
@@ -40,6 +89,7 @@ def audit_csv(raw: str) -> dict:
     site_values = defaultdict(set)
     site_id_blank_rows = Counter()
     surveyed_by_event = defaultdict(list)
+    wd_edges_by_route = defaultdict(list)
     n_missing = 0
     for row in records:
         if None in row:
@@ -81,6 +131,8 @@ def audit_csv(raw: str) -> dict:
         else:
             raise ValueError("unknown wetdry code; request original data dictionary")
         visits[skey].append(wd)
+        if wd is not None:
+            wd_edges_by_route[route].append((stop, event, 1 if wd == "W" else 0))
         if "stop_surveyed" in row:
             raw_surveyed = str(row["stop_surveyed"] or "").strip().upper()
             if raw_surveyed not in ("Y", "YES", "1", "N", "NO", "0", "UNKNOWN", "NA", ""):
@@ -155,6 +207,12 @@ def audit_csv(raw: str) -> dict:
         {"route_id": r, "stop_number": s, "site_id_values": sorted(vals)}
         for (r, s), vals in sorted(site_values.items()) if len(vals) > 1
     ]
+    nominal_wd_ranks = [
+        {"route_id": route, **nonadditive_wd_on_observed_bipartite_graph(edges)}
+        for route, edges in sorted(wd_edges_by_route.items())
+    ]
+    n_with_cycles = sum(v["cycle_rank"] > 0 for v in nominal_wd_ranks)
+    n_nonadditive = sum(v["has_fixed_effect_identifiability_contrast"] for v in nominal_wd_ranks)
     route_years = [
         {"route_id": r, "year": y, "stop_visits": c["visits"],
          "wet": c["W"], "dry": c["D"], "missing": c["missing"]}
@@ -186,6 +244,9 @@ def audit_csv(raw: str) -> dict:
         "n_switches_with_missing_or_conflicting_recorded_site_id": len(ambiguous_recorded_site_switches),
         "recorded_site_id_consistent_switches_not_field_verified": coherent_recorded_site_switches,
         "site_id_conflicts": site_id_conflicts,
+        "nominal_wd_fixed_effect_rank_by_route": nominal_wd_ranks,
+        "n_nominal_routes_with_observed_bipartite_cycles": n_with_cycles,
+        "n_nominal_routes_with_WD_nonadditivity_after_stop_and_event_effects": n_nonadditive,
         "route_year_coverage": route_years,
         "historical_physical_station_continuity_verified": False,
         "wetdry_original_field_semantics_verified": False,
@@ -265,6 +326,21 @@ def synthetic_tests():
     assert inconsistent["n_switches_with_missing_or_conflicting_recorded_site_id"] == 1
     missing_identity = two_events.replace("360110,NAAMP,1,Y,2013-06-02,D,SITE1,Y", "360110,NAAMP,1,Y,2013-06-02,D,,Y")
     assert audit_csv(missing_identity)["n_recorded_site_id_consistent_switches"] == 9
+    # Necessary design-matrix rank check: within-site switching PLUS route
+    # W/D mixtures still require cross-classified connected observations.
+    shifting_groups = [("1", "a", 1), ("2", "a", 0),
+                       ("1", "b", 0), ("2", "b", 1)]
+    rank = nonadditive_wd_on_observed_bipartite_graph(shifting_groups)
+    assert rank["cycle_rank"] == 1 and rank["has_fixed_effect_identifiability_contrast"]
+    # A uniform night switch is absorbed by event fixed effects.
+    shared = [("1", "a", 0), ("2", "a", 0),
+              ("1", "b", 1), ("2", "b", 1)]
+    res = nonadditive_wd_on_observed_bipartite_graph(shared)
+    assert res["cycle_rank"] == 1 and not res["has_fixed_effect_identifiability_contrast"]
+    # Incomplete disconnected opportunities cannot supply a contrast.
+    no_cycle = nonadditive_wd_on_observed_bipartite_graph(shifting_groups[:3])
+    assert no_cycle["cycle_rank"] == 0
+    assert no_cycle["status"] == "uninformative_no_observed_cycle"
     invalid = [
         ok + "360104,NAAMP,1,A,2011-04-14,W\n",
         ok.replace("2011-04-14", "2009-04-14"),
@@ -281,7 +357,7 @@ def synthetic_tests():
         except ValueError:
             continue
         raise AssertionError(f"Invalid fixture {i} did not fail closed")
-    print("PASS: synthetic completeness, survey status, recorded SiteID consistency and invalid-field guards; no frog outcomes")
+    print("PASS: synthetic W/D schema, missingness, skip/site identity and additive fixed-effect rank checks; no frog outcomes")
 
 
 def main():
