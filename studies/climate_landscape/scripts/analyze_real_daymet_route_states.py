@@ -33,6 +33,7 @@ def summarize(obj):
     q['precip_slope_sign_matches_prior_shift']=np.sign(q.fullperiod_precip_slope_mm_decade)==np.sign(q.delta_prior5_precip_2015_minus_2001_ratio)
     results={'analysis':'route_antecedent_climate_state_vs_retrospective_trend_v0_1',
              'n_routes':len(q),'n_route_year_states':len(df),
+             'these_180_route_years_are_potential_exposure_years_not_180_actual_surveyed_route_years':True,
              'n_warming_fullperiod_slope':int((q.fullperiod_temp_slope_c_decade>0).sum()),
              'n_increasing_precip_fullperiod_slope':int((q.fullperiod_precip_slope_mm_decade>0).sum()),
              'n_warming_prior5_state_2001_to_2015':int((q.delta_prior5_temp_2015_minus_2001_c>0).sum()),
@@ -42,7 +43,7 @@ def summarize(obj):
              'median_delta_prior5_temp_c':float(q.delta_prior5_temp_2015_minus_2001_c.median()),
              'median_delta_prior5_precip_ratio':float(q.delta_prior5_precip_2015_minus_2001_ratio.median()),
              'baseline':'1981-2000','fullperiod_slope_period':'1981-2015',
-             'past_only_contrasts':'1996-2000 (survey 2001) vs 2010-2014 (survey 2015)',
+             'past_only_contrasts':'1996-2000 (candidate year 2001) vs 2010-2014 (candidate year 2015); both years are not necessarily sampled at each route',
              'sample_inference':'fixed 12-route metadata-selected Daymet screening; not population-representative',
              'no_frog_responses_read':True,'no_causal_climate_attribution':True,
              'route_summaries':q.reset_index().to_dict(orient='records')}
