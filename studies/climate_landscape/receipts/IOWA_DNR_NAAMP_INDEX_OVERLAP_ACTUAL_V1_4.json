@@ -1,0 +1,547 @@
+{
+  "analysis": "iowa_dnr_present_index_vs_historic_naamp_route_key_overlap_v0_1",
+  "coordinate_overlap_route_ids": [
+    "360101",
+    "360103",
+    "360104",
+    "360106",
+    "360107",
+    "360109",
+    "360110",
+    "360111",
+    "360113",
+    "360114",
+    "360115",
+    "360117",
+    "360118",
+    "360119",
+    "360120",
+    "360123",
+    "360124",
+    "360125",
+    "360201",
+    "360203",
+    "360204",
+    "360208",
+    "360209",
+    "360210",
+    "360211",
+    "360212",
+    "360213",
+    "360216",
+    "360217",
+    "360218",
+    "360219",
+    "360223",
+    "360225",
+    "360304",
+    "360308",
+    "360309",
+    "360310",
+    "360311",
+    "360313",
+    "360315",
+    "360316",
+    "360317",
+    "360319",
+    "360409",
+    "360412",
+    "360416",
+    "360417",
+    "360419",
+    "360423",
+    "360502",
+    "360508",
+    "360510",
+    "360511",
+    "360512",
+    "360516",
+    "360517",
+    "360519",
+    "360523",
+    "360612"
+  ],
+  "eligible_panel_cohort": {
+    "called_species_records_opened": false,
+    "counts_csv_opened": false,
+    "external_coordinate_verification_performed": false,
+    "n_complete_ten_stop_runs_with_identifiable_physical_sites": 7848,
+    "n_distinct_route_site_keys": 8223,
+    "n_distinct_routes": 807,
+    "n_filtered_run_candidates_before_stop_checks": 9401,
+    "n_invalid_date_rows": 10,
+    "n_runs_incomplete_number_of_stops": 426,
+    "n_runs_with_missing_or_repeated_site_id": 0,
+    "n_runs_with_observer_id": 7848,
+    "n_site_visits": 78480,
+    "not_identical_to_published_rc6_cohort_until_crosschecked": true,
+    "study": "separate climate landscape acoustic-site monitoring panel"
+  },
+  "first_metadata_only_eligible_match": "360101",
+  "frog_counts_csv_read": false,
+  "n_dnr_routes_matching_all_usgs_coordinate_route_ids": 59,
+  "n_dnr_routes_matching_standardized_naamp_iowa_cohort": 56,
+  "n_historical_field_sites_independently_verified": 0,
+  "n_published_six_digit_dnr_route_codes": 85,
+  "n_route_codes_parsed_from_current_html": 85,
+  "n_standardized_2001_2015_iowa_naamp_routes": 56,
+  "note": "A shared route code is NOT site-level validation; current DNR index may postdate all 2001-2015 surveys and may not be the same monitoring cohort. No aquatic/landcover or frog outcome used.",
+  "reference_route_360411_in_standardized_cohort": false,
+  "source_sha256": {
+    "Coordinates.csv": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "iowa_dnr_current_index_html": "4742a2187f444ce4e946186d95f5aa4f67b7bc550a4fc5e76a77bbc5dda91e15"
+  },
+  "source_url": "https://www.iowadnr.gov/programs-services/volunteer-opportunities/wildlife-monitoring/frogs-and-toads/survey",
+  "standardized_cohort_overlap_routes": [
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 2,
+      "route_id": "360101",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360103",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 14,
+      "n_site_ids": 10,
+      "n_stop_visits": 140,
+      "n_years": 5,
+      "route_id": "360104",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360106",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 7,
+      "n_site_ids": 10,
+      "n_stop_visits": 70,
+      "n_years": 3,
+      "route_id": "360107",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 13,
+      "n_site_ids": 10,
+      "n_stop_visits": 130,
+      "n_years": 5,
+      "route_id": "360109",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 18,
+      "n_site_ids": 10,
+      "n_stop_visits": 180,
+      "n_years": 6,
+      "route_id": "360110",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 5,
+      "n_site_ids": 10,
+      "n_stop_visits": 50,
+      "n_years": 2,
+      "route_id": "360111",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 8,
+      "n_site_ids": 10,
+      "n_stop_visits": 80,
+      "n_years": 3,
+      "route_id": "360113",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 2,
+      "route_id": "360114",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 12,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360115",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360117",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 5,
+      "n_site_ids": 10,
+      "n_stop_visits": 50,
+      "n_years": 1,
+      "route_id": "360118",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360119",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 16,
+      "n_site_ids": 12,
+      "n_stop_visits": 160,
+      "n_years": 6,
+      "route_id": "360123",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 14,
+      "n_site_ids": 10,
+      "n_stop_visits": 140,
+      "n_years": 6,
+      "route_id": "360125",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 2,
+      "route_id": "360201",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 1,
+      "n_site_ids": 10,
+      "n_stop_visits": 10,
+      "n_years": 1,
+      "route_id": "360203",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 8,
+      "n_site_ids": 10,
+      "n_stop_visits": 80,
+      "n_years": 3,
+      "route_id": "360204",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 12,
+      "n_site_ids": 10,
+      "n_stop_visits": 120,
+      "n_years": 4,
+      "route_id": "360208",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 10,
+      "n_site_ids": 10,
+      "n_stop_visits": 100,
+      "n_years": 2,
+      "route_id": "360209",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 8,
+      "n_site_ids": 10,
+      "n_stop_visits": 80,
+      "n_years": 3,
+      "route_id": "360210",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 12,
+      "n_site_ids": 10,
+      "n_stop_visits": 120,
+      "n_years": 4,
+      "route_id": "360211",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 5,
+      "n_site_ids": 10,
+      "n_stop_visits": 50,
+      "n_years": 3,
+      "route_id": "360212",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 11,
+      "n_site_ids": 10,
+      "n_stop_visits": 110,
+      "n_years": 5,
+      "route_id": "360213",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 2,
+      "route_id": "360216",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 15,
+      "n_site_ids": 11,
+      "n_stop_visits": 150,
+      "n_years": 5,
+      "route_id": "360217",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360218",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 14,
+      "n_site_ids": 10,
+      "n_stop_visits": 140,
+      "n_years": 6,
+      "route_id": "360219",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 2,
+      "route_id": "360223",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 9,
+      "n_site_ids": 10,
+      "n_stop_visits": 90,
+      "n_years": 3,
+      "route_id": "360225",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 5,
+      "n_site_ids": 10,
+      "n_stop_visits": 50,
+      "n_years": 2,
+      "route_id": "360304",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360308",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 3,
+      "route_id": "360309",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 3,
+      "n_site_ids": 10,
+      "n_stop_visits": 30,
+      "n_years": 1,
+      "route_id": "360310",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 10,
+      "n_site_ids": 10,
+      "n_stop_visits": 100,
+      "n_years": 4,
+      "route_id": "360313",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 2,
+      "n_site_ids": 10,
+      "n_stop_visits": 20,
+      "n_years": 2,
+      "route_id": "360315",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 11,
+      "n_site_ids": 10,
+      "n_stop_visits": 110,
+      "n_years": 6,
+      "route_id": "360316",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 11,
+      "n_site_ids": 10,
+      "n_stop_visits": 110,
+      "n_years": 4,
+      "route_id": "360317",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 11,
+      "n_site_ids": 10,
+      "n_stop_visits": 110,
+      "n_years": 4,
+      "route_id": "360319",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 10,
+      "n_site_ids": 10,
+      "n_stop_visits": 100,
+      "n_years": 4,
+      "route_id": "360409",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 10,
+      "n_site_ids": 10,
+      "n_stop_visits": 100,
+      "n_years": 5,
+      "route_id": "360412",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 17,
+      "n_site_ids": 13,
+      "n_stop_visits": 170,
+      "n_years": 6,
+      "route_id": "360416",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 27,
+      "n_site_ids": 10,
+      "n_stop_visits": 270,
+      "n_years": 6,
+      "route_id": "360417",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 9,
+      "n_site_ids": 10,
+      "n_stop_visits": 90,
+      "n_years": 3,
+      "route_id": "360419",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 7,
+      "n_site_ids": 10,
+      "n_stop_visits": 70,
+      "n_years": 4,
+      "route_id": "360423",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 7,
+      "n_site_ids": 10,
+      "n_stop_visits": 70,
+      "n_years": 3,
+      "route_id": "360502",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 2,
+      "route_id": "360508",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 8,
+      "n_site_ids": 10,
+      "n_stop_visits": 80,
+      "n_years": 3,
+      "route_id": "360510",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 16,
+      "n_site_ids": 10,
+      "n_stop_visits": 160,
+      "n_years": 4,
+      "route_id": "360511",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 2,
+      "n_site_ids": 10,
+      "n_stop_visits": 20,
+      "n_years": 2,
+      "route_id": "360512",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 4,
+      "n_site_ids": 10,
+      "n_stop_visits": 40,
+      "n_years": 3,
+      "route_id": "360516",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 1,
+      "route_id": "360517",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 3,
+      "n_site_ids": 10,
+      "n_stop_visits": 30,
+      "n_years": 1,
+      "route_id": "360519",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 8,
+      "n_site_ids": 10,
+      "n_stop_visits": 80,
+      "n_years": 3,
+      "route_id": "360523",
+      "source_coordinate_route_present": true
+    },
+    {
+      "n_runs": 6,
+      "n_site_ids": 10,
+      "n_stop_visits": 60,
+      "n_years": 2,
+      "route_id": "360612",
+      "source_coordinate_route_present": true
+    }
+  ]
+}
