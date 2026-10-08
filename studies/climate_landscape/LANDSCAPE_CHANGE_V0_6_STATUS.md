@@ -49,3 +49,7 @@ Do not conclude demographic occupancy, successful reproduction, individual site 
 ## Validated status
 
 Synthetic suite: **86 passed, 0 failed** (local, 2026-10-08). The real Landsat scene candidate counts above are independently reproducible from the frozen **publicly retrieved E3 metadata artifact**, but no actual NLCD 1.2 GeoTIFFs, Daymet/PRISM site series or new frog outcomes were measured in this study. The climate-landscape ScienceBase source-feasibility GitHub Actions job remains an unconfirmed run, not a receipt.
+
+## Post-audit correction (2026-10-08)
+
+A previous action ([37728326242](https://github.com/zuizui0223/frogcs/actions/runs/37728326242)) **actually passed** original USGS data downloads and full metadata-only site-repeat audit: 7848 eligible runs, 78480 surveyed stop visits, 8223 route–SiteID keys, 29986 candidate adjacent-year within-season **stop** comparisons (not independent route samples), 28751 geometry-pass candidate comparisons, and zero independently field-verified sites. The artifact upload failed silently due to a literal `${RUNNER_TEMP}` path; this workflow is fixed and full counts appear in `ACTUAL_NAAMP_LONGITUDINAL_FEASIBILITY_LOG_V0_1.md`. The original pending-status paragraph is superseded.

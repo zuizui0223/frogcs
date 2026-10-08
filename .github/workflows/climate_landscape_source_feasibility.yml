@@ -51,6 +51,6 @@ jobs:
         with:
           name: climate-naamp-source-feasibility-receipt
           path: |
-            ${RUNNER_TEMP}/naamp_source_files/pinned_source_receipt.json
-            ${RUNNER_TEMP}/naamp_source_files/feasibility_receipt.json
-          if-no-files-found: ignore
+            ${{ runner.temp }}/naamp_source_files/pinned_source_receipt.json
+            ${{ runner.temp }}/naamp_source_files/feasibility_receipt.json
+          if-no-files-found: error
