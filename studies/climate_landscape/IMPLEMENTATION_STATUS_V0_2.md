@@ -13,7 +13,7 @@ A downloadable, reproducible local package (v0.2) includes:
 6. `build_climate_trend_diagnostics.py`: 1981–2015 descriptive Theil–Sen climate trend, not an event predictor (because future years would leak into early outcomes).
 7. A synthetic raster-plus-climate join test demonstrating that the three environmental families share a single exact physical site and survey-date key.
 
-**Local synthetic checks: 30 passed, 0 failed (2026-10-08).** No real frog–satellite overlay performed and no biological effects estimated. The six Python analysis/extraction modules, Earth Engine extraction recipe, and a synthetic GitHub regression-test file are now committed under this independent branch. The downloadable local ZIP contains the extended 30-test suite; no real NAAMP satellite outcome estimates exist.
+**Local synthetic checks: 31 passed, 0 failed (2026-10-08).** No real frog–satellite overlay performed and no biological effects estimated. The six Python analysis/extraction modules, Earth Engine extraction recipe, detailed protocol, requirements and the entire 31-test suite are now synchronized in this independent branch. A downloadable local ZIP contains the same source package. No real NAAMP satellite outcome estimates exist.
 
 ## Main upstream data/access constraint
 
