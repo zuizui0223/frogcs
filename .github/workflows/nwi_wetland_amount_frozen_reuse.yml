@@ -1,0 +1,82 @@
+name: NWI wetland amount frozen artifact reuse
+
+on:
+  push:
+    branches:
+      - remotesensing/nwi-amount-reuse-v1
+    paths:
+      - ".github/workflows/nwi_wetland_amount_frozen_reuse.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  aggregate_and_test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install frozen analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy statsmodels patsy
+      - name: Reuse seven successful source-frozen shards
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          run-id: 37640400050
+          pattern: nwi-amount-shard-*
+          path: remotesensing/nwi_amount_inputs
+          merge-multiple: true
+          github-token: ${{ github.token }}
+      - name: Add verified recovered shard five
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          run-id: 37645588136
+          name: nwi-amount-shard-5-recovered
+          path: remotesensing/nwi_amount_inputs
+          github-token: ${{ github.token }}
+      - name: Confirm exact eight source shards before outcome readback
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root=Path("remotesensing/nwi_amount_inputs")
+          files=sorted(root.glob("NWI_WETLAND_AMOUNT_SHARD_*.csv"))
+          actual=[p.name for p in files]
+          expected=[f"NWI_WETLAND_AMOUNT_SHARD_{i:02d}.csv" for i in range(8)]
+          assert actual==expected, (actual, expected)
+          report={
+            "scientific_contract":"revision/NAAMP_NWI_WETLAND_AMOUNT_RAIN_MECHANISM_CONTRACT_V0_1.md",
+            "source_run_seven_shards":37640400050,
+            "recovered_shard5_run":37645588136,
+            "shards":{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
+            "frog_endpoint_read":False,
+            "retrieval_repair_only":True,
+          }
+          out=Path("remotesensing/NWI_WETLAND_AMOUNT_FROZEN_SHARD_MANIFEST.json")
+          out.write_text(json.dumps(report,indent=2)+"\n")
+          print(json.dumps(report,indent=2))
+          PY
+      - name: Aggregate before endpoint
+        env:
+          NWI_AMOUNT_SHARD_DIR: remotesensing/nwi_amount_inputs
+        run: python scripts/remotesensing/aggregate_naamp_nwi_wetland_amount.py
+      - name: Frozen wetland amount by rainfall mechanism test
+        env:
+          NAAMP_NWI_AMOUNT: remotesensing/NAAMP_NWI_WETLAND_AMOUNT_V0_1.csv
+          NAAMP_NWI_AMOUNT_COVERAGE: remotesensing/NAAMP_NWI_WETLAND_AMOUNT_COVERAGE_V0_1.json
+        run: python scripts/remotesensing/run_naamp_nwi_wetland_amount_mechanism.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nwi-wetland-amount-frozen-reuse-receipt
+          path: |
+            remotesensing/NWI_WETLAND_AMOUNT_FROZEN_SHARD_MANIFEST.json
+            remotesensing/NAAMP_NWI_WETLAND_AMOUNT_V0_1.csv
+            remotesensing/NAAMP_NWI_WETLAND_AMOUNT_COVERAGE_V0_1.json
+            remotesensing/NAAMP_NWI_WETLAND_AMOUNT_MECHANISM_RECEIPT_V0_1.json
+          retention-days: 30
