@@ -82,7 +82,8 @@ result=hyd.analyze_sample(
    "E3 Landsat NDMI 500m, frozen pixel-QA sample",
     p,d,h,exposures,runs,sampled,ss,pools,("M0","M1"))
 m0=result["models"]["M0"];m1=result["models"]["M1"]
-fraction=float(result["fraction_removed_current"])
+raw_fraction=result["fraction_removed_current"]
+fraction=float(raw_fraction) if raw_fraction is not None else None
 suff=bool(result["M1_sufficient"])
 out.update({
  "observed_concentration_beta":float(result["observed"]["concentration_beta"]),
@@ -90,6 +91,7 @@ out.update({
  "fraction_residual_removed":fraction,
  "E3_sufficient":suff,
  "classification":("E3_local_vegetation_moisture_sufficient" if suff
+     else "E3_residual_denominator_indeterminate" if fraction is None
      else "E3_local_vegetation_moisture_partial" if fraction>0
      else "E3_local_vegetation_moisture_not_supported"),
  "interpretation_boundary":{
