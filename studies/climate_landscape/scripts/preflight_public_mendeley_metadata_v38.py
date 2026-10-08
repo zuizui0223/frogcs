@@ -138,6 +138,7 @@ def main():
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"status": receipt["remote_status"],
+                      "http_status": receipt.get("http_status"),
                       "n_file_records": receipt.get("n_file_records", 0),
                       "outcomes_read": False}, sort_keys=True))
 
