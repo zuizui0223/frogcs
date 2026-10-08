@@ -6,6 +6,7 @@ This separate analysis does not change the frozen RC6 manuscript.
 from __future__ import annotations
 import argparse, hashlib, json
 from pathlib import Path
+from urllib.parse import urlparse
 from download_public_naamp_sources import fetch, METADATA
 
 COUNTS_PIN='60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086'
@@ -18,7 +19,7 @@ def main():
     targets=[x for x in obj.get('files',[]) if x.get('name')=='Counts.csv']
     if len(targets)!=1:raise RuntimeError('Official Counts.csv not uniquely identified')
     url=targets[0].get('downloadUri') or targets[0].get('url') or targets[0].get('uri')
-    if not url or not url.startswith('https://www.sciencebase.gov/'):
+    if not url or urlparse(url).scheme!='https' or urlparse(url).hostname not in ('www.sciencebase.gov','sciencebase.gov'):
         raise ValueError('Unexpected source of Counts.csv')
     raw=fetch(url)
     digest=hashlib.sha256(raw).hexdigest()
