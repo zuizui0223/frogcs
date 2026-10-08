@@ -239,7 +239,7 @@ def synthetic_tests():
     assert partial["n_fully_observed_10_stop_route_events"] == 0
     assert partial["n_complete_10_stop_route_events_with_wet_and_dry_stops"] == 1
     # Explicit surveyed-status and consistent SiteID are separate from nominal stop labels.
-    qualified = "route_id,route_type,stop_number,event_id,survey_date,wetdry,site_id,stop_surveyed\\n" + "\n".join(
+    qualified = "route_id,route_type,stop_number,event_id,survey_date,wetdry,site_id,stop_surveyed\n" + "\n".join(
         f"360110,NAAMP,{i},X,2012-06-02,{('W' if i <= 5 else 'D')},SITE{i},Y"
         for i in range(1, 11)
     ) + "\n"
