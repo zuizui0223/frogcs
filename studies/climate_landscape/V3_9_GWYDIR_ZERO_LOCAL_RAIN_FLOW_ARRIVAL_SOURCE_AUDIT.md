@@ -11,7 +11,7 @@ Sarker et al. (2022), *Ecological Indicators* **145:109640**, DOI [10.1016/j.eco
 
 ### Prespecified source-only pattern visible in Table 2
 
-| Flow-arrival recording site | Prior period rain (mm) | After period rain (mm) | Site environment |
+| Flow-arrival recording site | Prior 24-h rain (mm) | After 24-h rain (mm) | Site environment |
 | --- | ---: | ---: | --- |
 | Allambie Bridge (ALLB) | **0** | **0** | temporary river channel |
 | Gundare (GNDR) | **0** | **0** | permanent in-stream weir |
@@ -20,7 +20,7 @@ Sarker et al. (2022), *Ecological Indicators* **145:109640**, DOI [10.1016/j.eco
 | Tyreel (TYRL) | 0 | 4.6 | permanent in-stream weir |
 | Gingham Waterhole (GINW) | 35.5 | 0 | temporary floodplain wetland |
 
-**Two of six sites have zero reported rain in both recorded exposure periods** despite flow arrival. Three other sites have zero rain in the prior period and 4.6 mm in the after period. One site has 35.5 mm prior and zero after. These are the **paper's original rainfall summary fields**, not a guaranteed complete minute-by-minute rain-audio record. Do not infer there was no running-water or other acoustic cue, because a flow event itself produces sound.
+**Two of six sites have zero reported rain in the respective published before/after 24-hour rainfall summaries** despite flow arrival. Three other sites have zero rain in the prior period and 4.6 mm in the after period. One site has 35.5 mm prior and zero after. These are the **paper's 24-hour rainfall summaries** attached to flow-before/flow-after comparisons, not totals over the full four-night (or three-night) acoustic recording blocks. Zero in these two 24-hour windows does **not** establish rain-free conditions on every recorded night, and no direct rain-sound measurements were reported. Do not infer there was no running-water or other acoustic cue, because a flow event itself produces sound.
 
 **Published biological results** (from the original Sarker authors; not freshly calculated here): nocturnal chorusing species richness increased modestly overall, with three sites showing increased richness and others not, and certain species responding in opposite directions (e.g. *Limnodynastes tasmaniensis* increased, *L. fletcheri* decreased). Some acoustic taxa were only measured for one historical flow event per site. This pattern **supports the biological plausibility of direct hydrological opportunities with little local rainfall**; however **before–after observational comparisons cannot isolate the causal effect of water versus temperature, phenology, managed upstream operation, social cues or flow sounds**. A non-significant rain coefficient in the published model is also not equivalence/no-rain-causality proof.
 
@@ -42,10 +42,10 @@ river-flow arrival ──> new wetland water/inundation
 local rainfall ──> rain sound / immediate weather cue
 ```
 
-In sites without local recorded rain during those comparison windows, acoustic changes following flow arrival cannot all be described as **immediate local rainfall sound as a necessary condition**. This does **not** prove that the actual change was caused solely by water. The paper does not randomly assign local rain, river flow, temperature or site occupancy, and the local acoustic stimulus of running water remains distinct from rain sound.
+The two source-recorded zero-rain **24-hour contexts** create a valuable candidate decoupling interval, but without continuous rain/noise measurements one cannot categorically rule out acoustic rainfall cues across the complete before/after calling windows. This does **not** prove that the actual change was caused solely by water. The paper does not randomly assign local rain, river flow, temperature or site occupancy, and the local acoustic stimulus of running water remains distinct from rain sound.
 
-**The new research discriminant is an event-specific 2×2 exposure matrix, not just adding a rainfall interaction:**
-- **no local rain / physical inundation arrives** (Sarker-like natural water arrival);
+**The new research discriminant is a prospectively observed event-specific 2×2 exposure matrix, not just adding a rainfall interaction:**
+- **verified absence of local rain sound during observed water arrival** (a potential future design; Sarker's 24-hour table does *not* establish this over the entire acoustic window);
 - **local rain / no local water rise yet** (possible immediate rain-sound cue);
 - **rain + inundation**;
 - **neither**.
