@@ -1,0 +1,66 @@
+{
+  "analysis": "iowa_seven_routes_c1v0_2011_2013_actual_source_screen_v22",
+  "result": "EXPOSURE_INFEASIBLE_FOR_COMMON_2012_LOCAL_FOREST_LOSS_TREATMENT",
+  "artifact": "https://github.com/zuizui0223/frogcs/actions/runs/37763029907/artifacts/11543361593",
+  "receipt_sha256": "2c6f78c379f60becbccbebb9187427bdfe4b6bf93a4c1c915bcf796ed3f67015",
+  "dataset_version": "Annual NLCD C1V0, NOT C1.2",
+  "years": [
+    2011,
+    2012,
+    2013
+  ],
+  "routes": [
+    "360104",
+    "360110",
+    "360125",
+    "360213",
+    "360219",
+    "360316",
+    "360412"
+  ],
+  "routes_complete": 7,
+  "routes_failed": 0,
+  "n_nominal_stations": 70,
+  "n_buffer_records": 140,
+  "n_buffer_records_with_100pct_joint_valid_pixels": 140,
+  "n_independently_verified_historical_physical_stations": 0,
+  "new_route_frog_counts_read": false,
+  "window_selected_after_previous_exploratory_360417_landcover_readback": true,
+  "buffers": {
+    "250m": {
+      "stations_with_forest_loss": 2,
+      "total_stations": 70,
+      "gross_forest_loss_pixels": 5,
+      "gross_forest_gain_pixels": 12,
+      "forest_to_agriculture_pixels": 4,
+      "forest_to_developed_pixels": 1,
+      "forest_loss_pixels_still_nonforest_2013": 5
+    },
+    "1000m": {
+      "stations_with_forest_loss": 26,
+      "total_stations": 70,
+      "gross_forest_loss_pixels": 92,
+      "gross_forest_gain_pixels": 66,
+      "forest_to_agriculture_pixels": 62,
+      "forest_to_developed_pixels": 4,
+      "forest_loss_pixels_still_nonforest_2013": 91,
+      "buffers_can_overlap": true
+    }
+  },
+  "small_radius_loss_sites": [
+    {
+      "route": "360104",
+      "stop_no": 3,
+      "site_id": "6613",
+      "gross_forest_loss_pixels": 3
+    },
+    {
+      "route": "360412",
+      "stop_no": 7,
+      "site_id": "7247",
+      "gross_forest_loss_pixels": 2,
+      "net_forest_fraction_rose": true
+    }
+  ],
+  "interpretation": "Source-only mapped classes, not field-verified tree removal, reproductive activity changes or causal estimates. A common regional 2012 local deforestation treatment is not established."
+}
