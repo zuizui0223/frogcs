@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from rasterio.transform import from_origin
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[1]/'scripts'
 sys.path.insert(0,str(ROOT))
 spec=importlib.util.spec_from_file_location('aoi',ROOT/'arcgis_c1v0_full_aoi.py')
 aoi=importlib.util.module_from_spec(spec);spec.loader.exec_module(aoi)
