@@ -1,0 +1,72 @@
+name: Official Annual NLCD WCS 2 capability and axis verification
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_wcs_capability_v16.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  wcs-coverage-schema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ask original USGS WCS for accepted version / layer IDs / axes
+        run: |
+          python - <<'PY'
+          import json, hashlib, urllib.request, urllib.parse, xml.etree.ElementTree as ET
+          from pathlib import Path
+          base='https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wcs'
+          def call(params):
+              u=base+'?'+urllib.parse.urlencode(params)
+              r=urllib.request.Request(u,headers={'User-Agent':'frogcs-annual-nlcd-WCS-source-discovery/1.6'})
+              with urllib.request.urlopen(r,timeout=80) as s:
+                  raw=s.read(5_000_001)
+                  typ=s.headers.get('Content-Type','')
+              if len(raw)>5_000_000: raise ValueError('WCS XML too large')
+              return {'data':raw,'content_type':typ,'sha256':hashlib.sha256(raw).hexdigest()}
+          results={'source_host':'dmsdata.cr.usgs.gov','frog_counts_read':False,'site_changes_estimated':False}
+          for ver in ('2.0.1','2.0.0'):
+              try:
+                  cap=call({'service':'WCS','version':ver,'request':'GetCapabilities'})
+                  root=ET.fromstring(cap['data'])
+                  ids=[e.text for e in root.iter() if e.tag.split('}')[-1] in ('CoverageId','Identifier') and e.text]
+                  results[ver]={'success':True,'root_tag':root.tag,'coverage_ids':ids[:80],
+                               'mime_type':cap['content_type'],'sha256':cap['sha256']}
+                  select=[x for x in ids if 'Land-Cover' in x or 'Land_Cover' in x]
+                  for id in select[:2]:
+                      try:
+                          desc=call({'service':'WCS','version':ver,'request':'DescribeCoverage','coverageId':id})
+                          dr=ET.fromstring(desc['data'])
+                          envs=[{'tag':e.tag,'axis_labels':e.attrib.get('axisLabels'),
+                                 'srs':e.attrib.get('srsName')}
+                                for e in dr.iter() if e.tag.split('}')[-1]=='Envelope']
+                          times=[e.text for e in dr.iter() if e.tag.split('}')[-1] in
+                                 ('timePosition','beginPosition','endPosition')]
+                          results[ver]['describe_'+id]={'root_tag':dr.tag,
+                                     'envelopes':envs[:6],'time_examples':times[:9],
+                                     'text_preview':desc['data'][:2000].decode('utf8','replace'),
+                                     'sha256':desc['sha256']}
+                      except Exception as e:
+                          results[ver]['describe_'+id]={'error':type(e).__name__+':'+str(e)[:350]}
+              except Exception as e:
+                  results[ver]={'success':False,'error_type':type(e).__name__,
+                                'detail':str(e)[:250]}
+          p=Path('annual_nlcd_wcs_capability_v16.json')
+          p.write_text(json.dumps(results,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({k:{j:x for j,x in v.items() if not j.startswith('describe_')} if isinstance(v,dict) else v
+              for k,v in results.items()},indent=2))
+          PY
+      - name: Save capability source receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-nlcd-WCS-coverage-schema-v16
+          path: annual_nlcd_wcs_capability_v16.json
+          if-no-files-found: error
