@@ -1,0 +1,37 @@
+name: Iowa 360417 original Annual NLCD C1V0 full 2001-2015 environmental time-series
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_nlcd_c1v0_annual_series_v19.yml'
+      - 'studies/climate_landscape/scripts/annual_nlcd_c1v0_series_360417_v19.py'
+      - 'studies/climate_landscape/tests/test_annual_nlcd_c1v0_series_v19.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-annual-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-only scientific dependencies
+        run: python -m pip install -r studies/climate_landscape/requirements.txt
+      - name: Validate temporal, classification and station-identity gates
+        run: python -m pytest -q studies/climate_landscape/tests/test_annual_nlcd_c1v0_series_v19.py
+      - name: Extract all 15 yearly classified rasters with fixed Collection 1.0 source identity
+        run: |
+          python studies/climate_landscape/scripts/annual_nlcd_c1v0_series_360417_v19.py \
+            --out-dir "$RUNNER_TEMP/annual_series_iowa_360417"
+      - name: Preserve requested source years and fail-closed partial receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa360417-Annual-NLCD-C1V0-2001-2015-v19
+          path: ${{ runner.temp }}/annual_series_iowa_360417/
+          if-no-files-found: warn
+          retention-days: 30
