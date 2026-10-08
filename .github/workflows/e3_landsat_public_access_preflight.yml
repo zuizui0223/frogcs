@@ -1,0 +1,30 @@
+name: E3 Landsat public access preflight
+
+on:
+  push:
+    branches:
+      - remotesensing/last-abiotic-e3-v1
+    paths:
+      - ".github/workflows/e3_landsat_public_access_preflight.yml"
+      - "scripts/remotesensing/preflight_e3_landsat_public_assets.py"
+      - "revision/NAAMP_E3_LANDSAT_NDMI_FINAL_ABIOTIC_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python syntax check
+        run: python -m py_compile scripts/remotesensing/preflight_e3_landsat_public_assets.py
+      - name: Public source/access audit without frog data
+        run: python scripts/remotesensing/preflight_e3_landsat_public_assets.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: e3-landsat-public-access-preflight
+          path: remotesensing/E3_LANDSAT_C2L2_SR_PUBLIC_ASSET_PREFLIGHT_V0_1.json
+          retention-days: 30
