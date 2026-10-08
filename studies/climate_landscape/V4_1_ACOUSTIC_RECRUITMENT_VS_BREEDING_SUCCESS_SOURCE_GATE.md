@@ -60,6 +60,21 @@ The minimum independent target panel is **species × immutable physical wetland 
 
 Source availability gates: original Ocock raw **site-visit table, metadata dictionary, water/inundation series, true visit opportunities and breeding-stage linkages** have not been retrieved by this audit. The public journal HTML and NSW report validate the **published study**, not full raw-data accessibility or an external pre-specified validation cohort. A separate request would require user direction; no contacts were made.
 
+## 3B. An actual data path is named in the paper — but it is not the required joint panel
+
+A useful source-access clarification was found in the *original Ocock et al. (2024) article*, under **Data availability**:
+
+> Frog survey records are available through NSW BioNet; ancillary data are available on request.
+
+These are **two distinct retrieval routes**. Current official NSW documentation confirms:
+
+1. [NSW BioNet Species Sightings public access](https://www.environment.nsw.gov.au/topics/animals-and-plants/biodiversity/nsw-bionet/about-bionet-atlas/species-sightings-data) allows unauthenticated browsing and public-exported sightings. BioNet records include taxa, observation dates and some mapped sites, subject to coordinate generalisation for sensitive fauna. The [BioNet read-only OData service](https://www.environment.nsw.gov.au/topics/animals-and-plants/biodiversity/nsw-bionet/web-services) lists **Species Sightings**, but the displayed list of publicly web-served collections does **not** include a Systematic Fauna Survey collection.
+2. [NSW BioNet Systematic Fauna Survey data](https://www.environment.nsw.gov.au/topics/animals-and-plants/biodiversity/nsw-bionet/about-bionet-atlas/systematic-fauna-survey-data) requires **login access for analysis/export**. Even if original sightings were included in a public species search, such records do **not automatically include the surveyed-but-silent wetland visits, full audio categories or individual follow-up records needed to infer acoustic transitions**.
+3. The Ocock article's **ancillary hydrology/exposure inputs are on request**, not asserted as publicly linked by a stable `species×site×event` key. Do not silently convert a BioNet occurrence/nonoccurrence list into a repeated survey panel, and do not infer missing survey dates are biological absences.
+4. BioNet specifically **redacts or coarsens locations of sensitive species**. A coordinate-coarsened sighting cannot be joined to centimetre-scale water depth, stop-specific historical CI or an immutable physical wetland simply by geographic nearest-neighbour matching.
+
+**Decision:** the *species observation access route is now located and verified*, but a complete joined frog-calling × water-depth × antecedent hydroperiod × metamorph table is **NOT retrieved or verified**. The first actionable step for a separate future study is a **schema-only audit of public BioNet species sightings**, without claiming a joint hydro-ecological source; if the necessary survey opportunity and metadata keys are not there, the raw nonpublic ancillary records would require a separately authorised request to the data custodian. No emails, paid requests, login bypasses, original results or source data were accessed.
+
 ## 4. Sampling/selection biases the public sources warn about
 
 - **Water-dependent observation:** inundation may change which wetlands can be visited; not surveyed ≠ calling zero or no offspring. Test whether missing survey probability depends on site wetness/season, and never use imputed zeros to boost hydrology effects.
