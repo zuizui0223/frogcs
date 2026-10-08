@@ -1,0 +1,146 @@
+name: Locate five C1V0 mapped loss pixels on independent 2011-2013 NAIP photos
+on:
+  push:
+    branches:
+      - study/climate-landscape-acoustic-sites-v0
+    paths:
+      - '.github/workflows/climate_iowa_naip_nlcd_exact_pixel_overlay_v27.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-only-pixel-localization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install spatial tools and pillow
+        run: |
+          python -m pip install -r studies/climate_landscape/requirements.txt
+          python -m pip install pillow
+      - name: Retrieve original 2011-2013 aerial source photos from frozen job
+        uses: actions/download-artifact@v4
+        with:
+          name: iowa-naip-2011-2013-source-pair-two-sites-v25
+          run-id: 37766635939
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ runner.temp }}/naip
+      - name: Retrieve pinned USGS metadata WITHOUT frog outcomes
+        run: |
+          python studies/climate_landscape/scripts/download_public_naamp_sources.py \
+            --output-dir "$RUNNER_TEMP/naamp"
+      - name: Locate the exact original C1V0 loss pixel polygons on NAIP dates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json,hashlib,math,sys
+          import numpy as np,pandas as pd
+          from PIL import Image,ImageDraw
+          from pyproj import Transformer
+          sys.path.insert(0,'studies/climate_landscape/scripts')
+          from screen_seven_iowa_nlcd_c1v0_v22 import fixed_sources,shared_grid,source_year
+          root=Path(os.environ['RUNNER_TEMP'])
+          metadata=root/'naamp'
+          r=pd.read_csv(metadata/'Runs.csv',dtype=str,keep_default_na=False)
+          s=pd.read_csv(metadata/'Stops.csv',dtype=str,keep_default_na=False)
+          coords=pd.read_csv(metadata/'Coordinates.csv',dtype={'RouteNumber':str,'SiteID':str})
+          stations,_=fixed_sources(r,s,coords)
+          original=root/'naip'
+          naip=json.loads((original/'receipt.json').read_text())
+          if naip.get('status')!='FOUR_ORIGINAL_AERIAL_IMAGES_RETRIEVED':
+              raise ValueError('Expected full source-only aerial image pair artifact')
+          destination=Path('iowa_nlcd5_naip_geospatial_overlays_v27')
+          destination.mkdir(exist_ok=True)
+          targets={'360104':('6613',3,3),'360412':('7247',7,2)}
+          proj=Transformer.from_crs('EPSG:5070','EPSG:3857',always_xy=True)
+          source=[]
+          for route,(site,stop,expected) in targets.items():
+              subset=stations[stations.route_id.eq(route)].copy()
+              bbox,w,h=shared_grid(subset)
+              a,valid1,meta1=source_year(2011,bbox,w,h)
+              b,valid2,meta2=source_year(2012,bbox,w,h)
+              target=subset[(subset.site_id==site)&(subset.stop_number==stop)]
+              if len(target)!=1:raise ValueError('Ambiguous frozen physical SiteID')
+              q=target.iloc[0]
+              from pyproj import Transformer as T
+              to5070=T.from_crs('EPSG:4326','EPSG:5070',always_xy=True)
+              xc,yc=to5070.transform(float(q.longitude),float(q.latitude))
+              rr,cc=np.indices(a.shape)
+              xg=bbox[0]+30*(cc+0.5)
+              yg=bbox[3]-30*(rr+0.5)
+              circle=(xg-xc)**2+(yg-yc)**2<=250**2
+              lost=circle&valid1&valid2&np.isin(a,[41,42,43])&~np.isin(b,[41,42,43])
+              indices=np.argwhere(lost)
+              if len(indices)!=expected:raise ValueError(f'Unexpected C1V0 loss pixel count {route} {len(indices)}')
+              raws={}
+              views=[]
+              sourceimgs=[]
+              for year in (2011,2013):
+                  rec=[x for x in naip['images'] if x['year']==year and
+                       x['route']==route and x['site_id']==site]
+                  if len(rec)!=1:raise ValueError('Missing independent source photo')
+                  z=rec[0]
+                  img_path=original/z['filename']
+                  if hashlib.sha256(img_path.read_bytes()).hexdigest()!=z['source_sha256']:
+                      raise ValueError('Independent original aerial source digest mismatch')
+                  bounds=list(map(float,z['same_3857_bbox_for_both_years'].split(',')))
+                  if year==2011:first_bounds=bounds
+                  elif bounds!=first_bounds:raise ValueError('Aerial source windows not spatially identical')
+                  img=Image.open(img_path).convert('RGB')
+                  if img.size!=(600,600):raise ValueError('Aerial image shape changed')
+                  draw=ImageDraw.Draw(img)
+                  shapes=[]
+                  for iy,ix in indices:
+                      left=bbox[0]+ix*30
+                      top=bbox[3]-iy*30
+                      corners=[(left,top),(left+30,top),(left+30,top-30),(left,top-30)]
+                      poly=[]
+                      for px,py in corners:
+                          xx,yy=proj.transform(px,py)
+                          px_img=(xx-bounds[0])/(bounds[2]-bounds[0])*600
+                          py_img=(bounds[3]-yy)/(bounds[3]-bounds[1])*600
+                          poly.append((px_img,py_img))
+                      if any(not (-50<=x<=650 and -50<=y<=650) for x,y in poly):
+                          raise ValueError('NLCD C1V0 loss pixel falls outside NAIP window')
+                      draw.line(poly+[poly[0]],fill=(255,35,30),width=4)
+                      shapes.append({'row':int(iy),'col':int(ix),
+                        'nlcd_2011_code':int(a[iy,ix]),'nlcd_2012_code':int(b[iy,ix]),
+                        'polygon_in_NAIP_600px':[[round(px,2),round(py,2)] for px,py in poly]})
+                  views.append((year,img))
+                  if year==2011:geo_polys=shapes
+              board=Image.new('RGB',(1200,630),'white')
+              d=ImageDraw.Draw(board)
+              for i,(year,img) in enumerate(views):
+                  board.paste(img,(i*600,30))
+                  d.text((i*600+12,8),f'{route} stop {stop}, NAIP {year} (C1V0 loss cells outlined)',fill=(0,0,0))
+              fname=f'nlcd5_iowa_{route}_stop{stop}_NAIP2011_2013.png'
+              board.save(destination/fname)
+              source.append({'route':route,'site_id':site,'stop_number':stop,
+                'mapped_C1V0_2011_to_2012_forest_loss_pixel_count':expected,
+                'image_file':fname,'landcover_2011_meta':meta1,'landcover_2012_meta':meta2,
+                'loss_pixel_footprints':geo_polys,'historical_field_station_verified':False,
+                'pixelwise_aerial_photointerpretation_completed':False})
+          out={'analysis':'iowa_two_source_mapped_change_pixel_aerial_alignment_v27',
+               'scope':'two environmentally post-selected stops, source-only',
+               'n_total_nlcd_forest_loss_pixels_outlined':sum(x[3] for x in targets.values()),
+               'n_frog_outcomes_read':0,'confidence_for_2012_selected_pixels_previously_low':True,
+               'collection_C1V0_not_C1V2':True,
+               'n_historical_physically_verified_site_ids':0,
+               'status':'SOURCE_PIXEL_POLYGONS_LOCATED_ON_INDEPENDENT_NAIP_BUT_NOT_CLASSIFIED',
+               'sites':source}
+          (destination/'georeference_receipt.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({'status':out['status'],'n_sites':len(source),
+              'pixels_outlined':out['n_total_nlcd_forest_loss_pixels_outlined']}))
+          PY
+      - name: Upload annotated independent source-only alignment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iowa-nlcd5-NAIP-source-pixel-geospatial-alignment-v27
+          path: iowa_nlcd5_naip_geospatial_overlays_v27/
+          if-no-files-found: error
+          retention-days: 30
