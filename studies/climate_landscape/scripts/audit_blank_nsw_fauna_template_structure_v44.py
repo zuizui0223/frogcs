@@ -125,11 +125,14 @@ def main():
     except (ValueError,ET.ParseError,zipfile.BadZipFile) as e:
         receipt["status"]="SOURCE_SCHEMA_INVALID"
         receipt["error_type"]=type(e).__name__
+        receipt["error_detail"]=str(e)[:160]
     out=Path("studies/climate_landscape/receipts/NSW_BIONET_BLANK_FAUNA_TEMPLATE_V44.json")
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
     print(json.dumps({"status":receipt["status"],"http_status":receipt.get("http_status"),
         "sheet_count":receipt.get("structure",{}).get("sheet_count"),
+        "error_type":receipt.get("error_type"),
+        "error_detail":receipt.get("error_detail"),
         "sheets":[{"name":x["name"],"sample_rows":x["first_nonempty_rows"][:3]}
           for x in receipt.get("structure",{}).get("sheets",[])],
         "frog_records_read":False},sort_keys=True))
