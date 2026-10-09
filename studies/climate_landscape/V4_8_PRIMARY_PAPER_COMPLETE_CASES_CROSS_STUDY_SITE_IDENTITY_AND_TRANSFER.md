@@ -52,6 +52,25 @@ Published [Ocock et al. (2024)](https://doi.org/10.1071/MF23181) used **15 Gwydi
 
 A minimal source request should **first ask for the source-authoritative inclusion/exclusion relationship between the 15 Ocock and 16 Sarker Gwydir sampling sites**, without requesting sensitive coordinates. A simple non-reversible match/unknown/excluded table or a yes/no count plus reason is sufficient for the *source feasibility* stage.
 
+## 3B. Source-published taxon-specific spatial breadth is already heterogeneous — but it is *ever heard*, not strong history
+
+The original Ocock Table 2 reports `Number of sites calling recorded` across **the entire 2015–2020 observation period**. Among its six flow-dependent focal taxa:
+
+| Published flow-dependent taxon | Any calling recorded at how many of 29 wetlands (pooled years) |
+| --- | ---: |
+| `Crinia parinsignifera` | 27 |
+| `Limnodynastes fletcheri` | 27 |
+| `Limnodynastes salmini` | 14 |
+| `Limnodynastes tasmaniensis` | 29 |
+| `Litoria latopalmata` | 18 |
+| `Litoria peronii` | 26 |
+
+**This is real published taxon-level descriptive evidence.** It shows substantial heterogeneity in **cumulative reported calling-site breadth**, even among flow-dependent taxa. However, for the widely heard taxa a binary **ever-called-at-site** history is close to saturated; for `L. tasmaniensis` it is **29/29**, so it cannot distinguish historical `ever-called` sites from never-called sites in the same 29-site source frame.
+
+frogcs's relevant modifier is **strictly prior, species-specific STRONG chorusing** at actual physical sites, not species being heard at any point from 2015 through 2020. The published Table 2 does **not** show the year-specific onset of those sites, relative historic strong chorus category, nights with simultaneous cross-site calls, or the presence of animals at silent sites. Therefore this table cannot replace the source visit×species original audio categories.
+
+This matters biologically: a putative 'history' effect based merely on whether a taxon was *ever heard by 2020* would leak later detections into earlier events and, in several species, provide almost no within-assemblage site contrast. Treat Table 2 as **a preliminary choice of taxon breadth**, not an inferential temporal template.
+
 ## 4. A small, safe source-only decision package — no response rows required
 
 Once an original custodian provides it, these **aggregate** items decide the right research question before species observations are inspected:
