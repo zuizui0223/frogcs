@@ -35,6 +35,8 @@ def audit(raw:str)->dict:
     unique_keys=set()
     sites=set()
     nights=set()
+    completed_sites_by_night={}
+    opportunity_sites_by_night={}
     outcomes=Counter()
     complete=set()
     visit_ids=set()
@@ -71,6 +73,7 @@ def audit(raw:str)->dict:
         unique_keys.add(key)
         sites.add(site)
         nights.add(night)
+        opportunity_sites_by_night.setdefault(night,set()).add(site)
         outcomes[status]+=1
         if status=="COMPLETED":
             if method!="FIVE_MIN_LISTEN":
@@ -86,6 +89,7 @@ def audit(raw:str)->dict:
                 if abs(e-5.0)>0.001:
                     raise ValueError("cannot silently pool other acoustic protocols into published 5-min design")
             complete.add(visit)
+            completed_sites_by_night.setdefault(night,set()).add(site)
         elif method=="FIVE_MIN_LISTEN" and status=="NOT_VISITED":
             raise ValueError("not-visited cannot be recorded as completed frog listening method")
         if status!="COMPLETED" and r["auditory_effort_minutes"].strip().upper() not in MISSING:
@@ -96,6 +100,18 @@ def audit(raw:str)->dict:
         status="EFFORT_INCOMPLETE"
     if outside:
         status="OUTSIDE_PUBLISHED_YEAR_FRAME"
+    # The published "29 sites" and "95 survey nights" are a pooled frame.
+    # Actual same-night simultaneous independent SITE opportunity is narrower.
+    completed_widths=Counter(len(completed_sites_by_night.get(night,set())) for night in nights)
+    n_deep_capable=sum(len(completed_sites_by_night.get(night,set()))>=4 for night in nights)
+    if len(complete)==343 and len(nights)==95:
+        # If each source-defined night has >=1 site and 343 separate
+        # completed site visits across 95 nights, a >=4-site night must
+        # consume >=3 visits beyond the 95-night one-site baseline.
+        # This is a loose arithmetic upper bound, NOT observed breadth.
+        max_deep_by_totals=(343-95)//3
+    else:
+        max_deep_by_totals=None
     return {
         "analysis":"ocock_2024_original_survey_opportunity_structure_v45",
         "source":"source-extract metadata-only format, not publication response values",
@@ -103,6 +119,13 @@ def audit(raw:str)->dict:
         "observed_opportunity_counts":count,
         "n_rows":len(rows),
         "status_counts":dict(outcomes),
+        "completed_distinct_physical_sites_per_night_distribution":{
+            str(k):v for k,v in sorted(completed_widths.items())},
+        "n_nights_with_at_least_4_distinct_completed_sites":n_deep_capable,
+        "n_nights_with_fewer_than_4_distinct_completed_sites":len(nights)-n_deep_capable,
+        "max_nights_with_4plus_sites_from_343_visits_95_nights_one_site_baseline":max_deep_by_totals,
+        "n_nights_with_verified_species_specific_4plus_strong_calls":None,
+        "n_nights_with_verified_prior_history_and_metamorph_links":None,
         "completed_visits_missing_quantified_5min_effort":unknown_5min,
         "outside_2015_2020_years":outside,
         "status":status,
@@ -129,6 +152,9 @@ def synthetic_tests():
     assert z["status"]=="STRUCTURAL_MATCH_TO_PUBLISHED_COUNTS"
     assert z["observed_opportunity_counts"]==EXPECTED
     assert z["raw_source_provenance_verified"] is False
+    assert z["n_nights_with_at_least_4_distinct_completed_sites"] <= 82
+    assert z["n_nights_with_at_least_4_distinct_completed_sites"] > 0
+    assert z["n_nights_with_verified_species_specific_4plus_strong_calls"] is None
     negatives=[
         src.replace("V0,","V1,",1),
         src.replace("COMPLETED,FIVE_MIN_LISTEN,5","COMPLETED,FIVE_MIN_LISTEN,6",1),
@@ -158,7 +184,18 @@ def synthetic_tests():
     extra=audit(src+"S28,N94,Vextra,2015-12-10,NOT_VISITED,NOT_ASSESSED,,original_form\n")
     assert extra["observed_opportunity_counts"]==EXPECTED
     assert extra["status_counts"]["NOT_VISITED"]==1
-    print("PASS: 343 synthetic completed / 29 site / 95 survey-night opportunity check; "
+    assert extra["n_nights_with_at_least_4_distinct_completed_sites"] == z["n_nights_with_at_least_4_distinct_completed_sites"]
+    # A night with 4+ visits but repeated physical sites is NOT deep-capable.
+    h_small=h+"\n".join([
+        "A,N1,X1,2015-09-01,COMPLETED,FIVE_MIN_LISTEN,5,form",
+        "A,N1,X2,2015-09-01,COMPLETED,FIVE_MIN_LISTEN,5,form",
+        "B,N1,X3,2015-09-01,COMPLETED,FIVE_MIN_LISTEN,5,form",
+        "C,N1,X4,2015-09-01,COMPLETED,FIVE_MIN_LISTEN,5,form",
+    ])+"\n"
+    same=audit(h_small)
+    assert same["n_nights_with_at_least_4_distinct_completed_sites"]==0
+    assert same["completed_distinct_physical_sites_per_night_distribution"]=={"3":1}
+    print("PASS: 343 synthetic completed / 29 site / 95 survey-night opportunity and 4+ spatial opportunity check; "
           "8 invalid fixtures, missing visit, and unsurveyed visit; no frog outcomes")
 
 def main():
