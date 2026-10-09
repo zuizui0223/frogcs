@@ -23,6 +23,20 @@ A second live [BioNet schema audit, run 37800327766 (SUCCESS)](https://github.co
 
 The same checked extended entity published `siteID`, `surveyID`, `visitID`, `eventID`, `abundanceScore` and `samplingEffortValue` as **field definitions only**. No actual animal/survey rows, nonmissing-field rates, identifiers, coordinates or water observations were accessed. The saved public-meta field-name output is version-specific and should be rechecked after API migration.
 
+## v4.3 authoritative field-semantics correction — 2026-10-09
+
+The [official BioNet Species Sighting Data Standard v6.3 (February 2026)](https://www.environment.nsw.gov.au/sites/default/files/2026-02/bionet-species-sighting-data-standard-6-3-260021.pdf) was reviewed **as an actual data dictionary**, not inferred from OData field names. Detailed findings and page-level provenance: [v4.3 official field-semantics/zero policy](V4_3_BIONET_2026_CANONICAL_FIELD_SEMANTICS_AND_ZERO_POLICY.md).
+
+**Important substantive correction to v4.1/v4.2 schema optimism:** `abundanceScore` (PDF p.56; printed p.52) explicitly describes the **abundance of PLANTS in vegetation plots**, not the original frog 5-minute CallingIndex or Ocock acoustic categories. **Mapping this directly to a frog chorus index is invalid**.
+
+**Important identity correction:** `eventID` and `visitID` (PDF p.40; printed p.36) are documented as **duplicate keys for the SAME census**, not separate event and visit replications. `surveyID` groups a survey conducted across one or more sites; it is not an individual census count.
+
+**Important status distinction:** `occurrenceStatus` is a controlled presence/absence field and the standard allows **explicit 'Absent'** (PDF p.78 for legacy fields; current extended table gives the presence/absence definition). This means the schema is **not necessarily presence-only**. However a missing sighting row is **not** an explicit Absent, and a recorded taxon's absence is **not automatically the CI=0 acoustic state of a present but silent frog population**.
+
+**Access/effort caveats:** `samplingEffortValue` requires `samplingEffortUnit` and the original protocol; `startDateTime` can be time-generalized for sensitive taxa; `siteID/eventID/visitID/surveyID` can be withheld in public output. Neither a field name nor a generic reproductive stage tag authenticates a site-event metamorph-success record.
+
+The [fail-closed source semantic check](scripts/audit_bionet_semantics_source_gate_v43.py) now refuses default plant-abundance→frog-CI conversion, fabricated absence rows, double-counted visit aliases and invalid effort units. These are **synthetic source checks only**. The critical remaining blocker is still a complete *independently authenticated* 343-visit acoustic opportunity ledger and frog category/hydroperiod/metamorph crosswalk, not yet obtained.
+
 ## 2. Decision: one ID is not a survey denominator
 
 The published source [Ocock et al. 2024](https://doi.org/10.1071/MF23181) describes:
