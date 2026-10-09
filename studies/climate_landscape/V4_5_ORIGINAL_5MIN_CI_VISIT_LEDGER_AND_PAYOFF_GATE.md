@@ -19,6 +19,16 @@
 
 The positive class definitions contain **1/6/11/20**. A **zero** at site×night×species is admissible only if the original 5-minute listening was actually completed, the protocol included the taxon in the eligible detection frame, valid no-call coding and effort are source-authenticated, and acoustic detection/masking limitations have been assessed. Empty BioNet rows must not be recoded zero. A recent metamorph observed at a subsequent visit does not retrospectively validate a missing earlier auditory survey.
 
+## v4.6 essential spatial-availability correction — source publication margins do not specify true same-night breadth
+
+The original **29 physical sites, 343 completed site visits, 95 survey nights** imply only **3.61 sampled sites per night on average**. The published three marginal totals do **not** identify the count of nights with four or more independently surveyed wetlands — a necessary condition before even attempting to reproduce the frogcs `k≥4` within-taxon deep cross-site calling configuration.
+
+A synthetic-only [v4.6 mathematical/source-opportunity audit](V4_6_PUBLISHED_MARGINS_VS_NIGHTLY_MULTISITE_OPPORTUNITY.md), verified by [run 37896010971](https://github.com/zuizui0223/frogcs/actions/runs/37896010971), constructs three **FABRICATED** observation schedules that each have exactly **29 sites / 343 completed visits / 95 nights**, but only **3**, **58** and **82** nights with `≥4` distinct completed sites, respectively. None is the real Ocock schedule.
+
+The source-only ledger program now returns the **histogram of distinct physical wetlands actually surveyed per source-defined night**, the count of nights with `≥4`, and `null` for actual species-specific chorus or metamorph counts. Repeated surveys at one pond on a night are **one spatial site**, not independent locations. This distinction is prior to and independent of any inference about rain or breeding success.
+
+**New minimum custodian-data request:** ask **first** for only the anonymized histogram `n_distinct_5min_completed_wetlands_per_night` and original method/site-night linkage metadata (no protected coordinates, frog detection lists or private observer IDs). If full deep `k≥4` configurations are not observable in enough nights, no amount of later rain/water modelling can rescue an exact spatial replication.
+
 ## An executable authorized-source **opportunity-only** gate
 
 [Metadata-only checker](scripts/audit_ocock_visit_opportunity_manifest_v45.py) with [source-independent GitHub Actions 37893965568 (SUCCESS)](https://github.com/zuizui0223/frogcs/actions/runs/37893965568).
