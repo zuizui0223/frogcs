@@ -39,7 +39,7 @@ def parse_template(data:bytes)->dict:
             if name not in names:
                 raise ValueError("Missing XML part "+name)
             info=z.getinfo(name)
-            if info.file_size>2_000_000:
+            if info.file_size>8_000_000:
                 raise ValueError("XML part too large")
             return ET.fromstring(z.read(name))
         book=load("xl/workbook.xml")
@@ -66,33 +66,41 @@ def parse_template(data:bytes)->dict:
                 part="xl/"+target
             if ".." in part.split("/") or not re.fullmatch(r"xl/worksheets/sheet\d+\.xml",part):
                 raise ValueError("Unexpected external sheet target")
-            root=load(part)
+            # Huge preformatted official forms must be inspected as a stream:
+            # parse only the FIRST 8 worksheet rows, never decompress all
+            # 6,000+ template rows or execute workbook formulas/connections.
             previews=[]
-            rows=root.findall("s:sheetData/s:row",NS)
-            for row in rows[:8]:
-                cells=[]
-                for c in row.findall("s:c",NS)[:35]:
-                    value=c.find("s:v",NS)
-                    inline=c.find("s:is",NS)
-                    if value is not None:
-                        raw=value.text or ""
-                        if c.attrib.get("t")=="s":
-                            try:raw=shared[int(raw)]
-                            except (IndexError,ValueError):raw="[invalid shared string]"
-                        elif c.attrib.get("t") not in ("inlineStr","str"):
-                            # Numeric/formula values are not field header labels.
+            count_rows_scanned=0
+            with z.open(part) as worksheet:
+                for _,row in ET.iterparse(worksheet,events=("end",)):
+                    if row.tag!="{"+S+"}row":
+                        continue
+                    count_rows_scanned+=1
+                    cells=[]
+                    for c in row.findall("s:c",NS)[:35]:
+                        value=c.find("s:v",NS)
+                        inline=c.find("s:is",NS)
+                        if value is not None:
+                            raw=value.text or ""
+                            if c.attrib.get("t")=="s":
+                                try:raw=shared[int(raw)]
+                                except (IndexError,ValueError):raw="[invalid shared string]"
+                            elif c.attrib.get("t") not in ("inlineStr","str"):
+                                raw=""
+                        elif inline is not None:
+                            raw="".join(x.text or "" for x in inline.iter("{"+S+"}t"))
+                        else:
                             raw=""
-                    elif inline is not None:
-                        raw="".join(x.text or "" for x in inline.iter("{"+S+"}t"))
-                    else:
-                        raw=""
-                    raw=" ".join(raw.split())[:90]
-                    if raw and not raw.startswith("="):
-                        cells.append({"ref":c.attrib.get("r",""),"text":raw})
-                if cells:
-                    previews.append({"row":int(row.attrib.get("r","0")),"visible_texts":cells[:20]})
+                        raw=" ".join(raw.split())[:90]
+                        if raw and not raw.startswith("="):
+                            cells.append({"ref":c.attrib.get("r",""),"text":raw})
+                    if cells:
+                        previews.append({"row":int(row.attrib.get("r","0")),"visible_texts":cells[:20]})
+                    row.clear()
+                    if count_rows_scanned>=8:
+                        break
             sheets.append({"name":sheet_name,"first_nonempty_rows":previews[:5],
-                           "number_of_rows_in_template":len(rows)})
+                           "number_of_worksheet_rows_inspected":count_rows_scanned})
         if not sheets:
             raise ValueError("No workbook sheets")
         return {"sheet_count":len(sheets),"sheets":sheets}
