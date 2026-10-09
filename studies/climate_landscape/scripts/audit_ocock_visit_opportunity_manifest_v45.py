@@ -195,6 +195,37 @@ def synthetic_tests():
     same=audit(h_small)
     assert same["n_nights_with_at_least_4_distinct_completed_sites"]==0
     assert same["completed_distinct_physical_sites_per_night_distribution"]=={"3":1}
+    # Structural non-identifiability stress test: identical published
+    # TOTALS (29 wetlands, 343 visits, 95 nights) can mask radically
+    # different numbers of >=4-site nights. These are fabricated designs,
+    # NOT inferred scheduling histories for the Ocock project.
+    def fabricated_published_margin_frame(width_by_night):
+        assert len(width_by_night)==95
+        assert sum(width_by_night)==343
+        lines=[]
+        visit_num=0
+        for n,width in enumerate(width_by_night):
+            assert 1<=width<=29
+            for offset in range(width):
+                site=(n+offset)%29
+                lines.append(f"S{site},N{n},V{visit_num},{dates[n]},COMPLETED,FIVE_MIN_LISTEN,5,original_form")
+                visit_num+=1
+        return audit(h+"\n".join(lines)+"\n")
+
+    concentrated=fabricated_published_margin_frame([29,29,9]+[3]*92)
+    moderate=fabricated_published_margin_frame([4]*58+[3]*37)
+    expanded=fabricated_published_margin_frame([6]+[4]*81+[1]*13)
+    observed_nights=[
+        q["n_nights_with_at_least_4_distinct_completed_sites"]
+        for q in (concentrated,moderate,expanded)
+    ]
+    assert observed_nights==[3,58,82], observed_nights
+    for q in (concentrated,moderate,expanded):
+        assert q["observed_opportunity_counts"]==EXPECTED
+        assert q["status"]=="STRUCTURAL_MATCH_TO_PUBLISHED_COUNTS"
+        assert q["raw_source_provenance_verified"] is False
+    print("PASS: three SYNTHETIC scheduling patterns share 29/343/95 margins,"
+          " but permit respectively 3, 58, or 82 nights with >=4 sites")
     print("PASS: 343 synthetic completed / 29 site / 95 survey-night opportunity and 4+ spatial opportunity check; "
           "8 invalid fixtures, missing visit, and unsurveyed visit; no frog outcomes")
 
