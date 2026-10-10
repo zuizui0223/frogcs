@@ -1,0 +1,28 @@
+name: CEWH MDMS original location source metadata v5.5
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_mdms_official_public_source_v55.py"
+      - ".github/workflows/mdms_source_metadata_v55.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-source-metadata-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify original CEWH MDMS resource metadata (no site features)
+        run: python studies/climate_landscape/scripts/audit_mdms_official_public_source_v55.py
+      - name: Save public resource provenance only
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdms-cewh-public-source-metadata-v55
+          path: studies/climate_landscape/receipts/MDMS_SOURCE_METADATA_V55.json
+          if-no-files-found: error
