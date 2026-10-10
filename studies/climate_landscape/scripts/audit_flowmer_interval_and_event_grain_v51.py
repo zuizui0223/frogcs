@@ -70,6 +70,10 @@ def audit(raw):
     interval_start_days=defaultdict(set)
     months=defaultdict(set)
     source_versions=Counter()
+    # Audited source identities are held IN MEMORY only; output counts alone.
+    site_species_distinct_intervals=defaultdict(set)
+    site_species_distinct_start_years=defaultdict(set)
+    physical_site_distinct_intervals=defaultdict(set)
     missing_species_code_by_program=Counter()
     for r in rows:
         if not isinstance(r,dict) or set(r)-EXPECTED-{"_id"}:
@@ -117,7 +121,10 @@ def audit(raw):
                 interval_kind="OVER_31D"
             interval_kind_by_program[prog][interval_kind]+=1
             key=(prog,site,start.isoformat(),end.isoformat())
+            physical_site_distinct_intervals[(prog,site)].add((start.isoformat(),end.isoformat()))
             if species:
+                site_species_distinct_intervals[(prog,site,species)].add((start.isoformat(),end.isoformat()))
+                site_species_distinct_start_years[(prog,site,species)].add(start.year)
                 sp_key=key+(species,)
                 if sp_key in unique_species_event:
                     duplicate_species_events[prog]+=1
@@ -149,6 +156,18 @@ def audit(raw):
     spatial_by_program=defaultdict(Counter)
     for (prog,start,end),sites in sites_by_event.items():
         spatial_by_program[prog][len(sites)]+=1
+    repeated_by_program=defaultdict(Counter)
+    for (p,site,species),intervals in site_species_distinct_intervals.items():
+        repeated_by_program[p]["n_species_site_pairs_with_any_valid_interval"]+=1
+        if len(intervals)>=2:
+            repeated_by_program[p]["n_species_site_pairs_with_2plus_distinct_intervals"]+=1
+        if len(intervals)>=3:
+            repeated_by_program[p]["n_species_site_pairs_with_3plus_distinct_intervals"]+=1
+        if len(site_species_distinct_start_years[(p,site,species)])>=2:
+            repeated_by_program[p]["n_species_site_pairs_with_2plus_start_years"]+=1
+    for (p,site),intervals in physical_site_distinct_intervals.items():
+        if len(intervals)>=2:
+            repeated_by_program[p]["n_sites_with_2plus_distinct_intervals"]+=1
     result={
         "status":"SOURCE_GRAIN_AUDIT_COMPLETE",
         "declared_total_source_records":len(rows),
@@ -165,6 +184,9 @@ def audit(raw):
             for p in sorted(source_rows)
         },
         "n_unique_site_start_end_groups_by_program":dict(sorted(events_per_program.items())),
+        "source_species_site_and_site_repeat_eligibility_by_program":{
+            p:dict(sorted(repeated_by_program[p].items())) for p in sorted(source_rows)},
+        "repeat_eligibility_is_not_time_lagged_outcome_or_independent_absence":True,
         "n_records_without_source_species_code_by_program":dict(sorted(missing_species_code_by_program.items())),
         "full_species_event_key_support":sum(missing_species_code_by_program.values())==0,
         "n_duplicate_species_records_same_site_and_interval_by_program":dict(sorted(duplicate_species_events.items())),
@@ -200,6 +222,14 @@ def tests():
     assert q["n_duplicate_species_records_same_site_and_interval_by_program"]=={}
     assert q["sampleDate_record_dates_vs_interval_starts_distinct_by_program"]["X"]["source_rows_where_calendar_dates_differ"]==2
     assert q["interval_length_class_row_counts"]["1_to_7d"]==2
+    assert q["source_species_site_and_site_repeat_eligibility_by_program"]["X"]["n_species_site_pairs_with_any_valid_interval"]==2
+    assert q["source_species_site_and_site_repeat_eligibility_by_program"]["X"].get("n_species_site_pairs_with_2plus_distinct_intervals",0)==0
+    historical=dict(a,SampleDate="2019-07-06",sampleDateStart="2019-07-04T00:00:00",
+       **{"sampleDateEnd(Date/Time)":"2019-07-10T00:00:00"})
+    sequence={"success":True,"result":{"records":[a,historical],"total":2,"fields":fields}}
+    seq=audit(sequence)["source_species_site_and_site_repeat_eligibility_by_program"]["X"]
+    assert seq["n_species_site_pairs_with_2plus_distinct_intervals"]==1
+    assert seq["n_species_site_pairs_with_2plus_start_years"]==1
     blank_species=json.loads(json.dumps(payload))
     blank_species["result"]["records"][0]["speciesCode"]=None
     u=audit(blank_species)
@@ -254,6 +284,7 @@ def main():
         "record_vs_interval_start_date_QC":receipt.get("sampleDate_record_dates_vs_interval_starts_distinct_by_program"),
         "duplicate_species_keys_by_program":receipt.get("n_duplicate_species_records_same_site_and_interval_by_program"),
         "source_event_groups_by_program":receipt.get("n_unique_interval_start_end_event_groups_by_program"),
+        "source_repeat_eligibility_by_program":receipt.get("source_species_site_and_site_repeat_eligibility_by_program"),
         "program_event_counts":receipt.get("n_unique_site_start_end_groups_by_program"),
         "event_intervals_with_4plus_recorded_sites":receipt.get("n_interval_groups_with_4plus_listed_sites_by_program"),
         "invalid_calling_codes":receipt.get("unrecognized_callingEvidence_codes_count"),
