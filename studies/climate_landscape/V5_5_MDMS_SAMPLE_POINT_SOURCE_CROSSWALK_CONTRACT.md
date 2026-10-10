@@ -8,6 +8,12 @@ The Australian Government CEWH [MDMS sample points (Flow-MER monitoring location
 
 **Caution:** even an exact label match between resources does not prove a physical wetland identity, identity through time, biological independence, equal sample coverage, or that sample points correspond one-to-one to the original Wassens et al. 12 core wetlands or Ocock's 29 sites. The MDMS data may have a different version and include gauge/model nodes irrelevant to frog sampling.
 
+### Actual original MDMS file and source property schema (verified before join)
+
+[Original official GeoJSON schema CI 38014708544 — SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/38014708544) successfully fetched the actual **435,791-byte** [government `MDMS_Sample_Points_extracted_24Dec2022.geojson`](https://data.gov.au/data/dataset/mdms-monitoring-locations) and inspected **681 point features**, without emitting individual names or coordinate values. It contains source property **`NAME` (681 nonmissing)** and **`SAMO_ID` (681 nonmissing)**, plus `PROGRAM`, `POINT_CATE`, `DESCRIPTIO`, other fields and geolocation properties. `NAME` and `SAMO_ID` are *candidate* source label/name and ID keys, respectively; source semantics and physical-site unit identity are still not authenticated. The spatial file's date (extracted 24 Dec 2022) is a separate version from the frog record source.
+
+**Before viewing join results**, use source-only exact normalized `SamplePoint` string matching against `NAME` and `SAMO_ID` **separately**. No fuzzy, nearest-location, geometry or derived ID join. Report match cardinality, key duplicates and unmatched counts **only**, by broad `Program` label. A match does not prove one physical wetland per point.
+
 ## Source-only independent authentication plan
 
 The primary original government GeoJSON resource entry is `35b2b6d7-2557-49c9-bcc0-af98d17cb49a`, from the official MDMS dataset listing. First query its **CKAN resource_show metadata** for actual format/content URL, declared size, CKAN archival status and update date. Never use the reported Web Feature Service blindly to infer original field-site IDs.
