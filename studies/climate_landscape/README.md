@@ -1,8 +1,10 @@
-# Climate × remote sensing × NAAMP frog calling — independent study (source audits through v6.1)
+# Climate × remote sensing × NAAMP frog calling — independent study (source audits through v6.2)
 
 ## Current status — 2026-10-10
 
 **Separate from locked JAE RC6. No manuscript, null model or accepted ecological result has changed.**
+
+**v6.2 official public DATA PORTAL discovery and access boundary (2026-10-10):** The [operational Flow-MER CKAN dataset index](https://data.flow-mer.org.au/dataset/) lists **69 datasets**. [Page 3](https://data.flow-mer.org.au/dataset/?page=3) now explicitly includes **Flow-MER Frog Abundance 2014–2024**, a **qualitative basin-gauge ↔ monitoring-point** source, and the official [Data Standards](https://data.flow-mer.org.au/dataset/data-standards) resource is updated **2025-12-22**. This is **not** proof of actual 2023/24 animal observations, source continuity with the 2014–22 673-row file, or site-aligned local depth data. A [bounded official CKAN live QA (Actions **38057752707 SUCCESS**)](https://github.com/zuizui0223/frogcs/actions/runs/38057752707) tried the three exact package metadata endpoints, but **each returned HTTP 403**; no source rows, schema, 2014–24 row counts or PDF were read. [Full public catalogue/source access audit](V6_2_REAL_PORTAL_CATALOGUE_AND_CKAN_403_READOUT.md). Do not bypass 403, interpret 403 as dataset absence, or fit another frog outcome model. JAE RC6 unchanged; custodian inquiry remains unsent.
 
 **v6.1 synthetic-only source preflight is now tested:** [GitHub Actions **38056545252 SUCCESS**](https://github.com/zuizui0223/frogcs/actions/runs/38056545252) verifies that **3 recorders in 2 synthetic physical wetlands count as 2 wetland units**, absent audio/depth events do not become biological zeros, and contradictory deployments/unknown timezone and time-tolerance fail closed. [QA and scientific boundary](V6_1_PUBLIC_HYDROLOGY_SOURCE_GRAIN_AND_PROSPECTIVE_JOIN_GATE.md). **This is not a real wetland source join or frog observation analysis.**
 
