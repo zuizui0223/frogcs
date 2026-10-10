@@ -1,3 +1,5 @@
+> **2026-10-10 subsequent source update:** [v6.0 real 2016–2025 archived recording-source discovery](V6_0_REAL_MURRUMBIDGEE_ACOUSTIC_HYDROLOGY_ARCHIVE_AND_DISCRIMINATION.md) resolves the earlier *existence* uncertainty: the original 2025–26 government plan records **12 long-term acoustic stations** with five-minute/hour archives, and a later 2026 report actually uses recordings and human-verified frog detections. **Retention/third-party access of a complete site×timestamp scientific analysis table remains unverified.** v5.9's 3-vs-6 acoustic survey *bout* discrepancy concerns an older field protocol, not the continuous/automated recorder's 5-min/hour duty cycle; these must not be conflated.
+
 # v5.9 — original 2019 CEWH field-method reconciliation, not a new frog effect
 
 **2026-10-10 JST. Independent draft PR #135 only.** This is a cross-document *protocol provenance* finding: planned audio/adult/tadpole survey units are different, and the original plan itself gives different audio-repeat counts. JAE RC6/main, the 579-row Flow-MER descriptive result, and the 2014–22 frog response dataset are unchanged.
