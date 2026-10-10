@@ -1,0 +1,28 @@
+name: Flow-MER real source-only coverage v5.0
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_flowmer_real_source_coverage_v50.py"
+      - ".github/workflows/flowmer_real_source_coverage_v50.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  non-sensitive-source-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test no coordinates, source projection and fail-closed negative fixtures
+        run: python studies/climate_landscape/scripts/audit_flowmer_real_source_coverage_v50.py
+      - name: Upload aggregated source-only quality receipt, no species or site records
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-real-public-nonsensitive-source-coverage-v50
+          path: studies/climate_landscape/receipts/FLOW_MER_REAL_NON_SENSITIVE_SOURCE_COVERAGE_V50.json
+          if-no-files-found: error
