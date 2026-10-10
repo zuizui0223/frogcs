@@ -1,3 +1,5 @@
+> **SUPERSEDED as the next source-access enquiry** by [v6.0 acoustic × water original archive inventory request (UNSENT)](V6_0_CEWH_ACOUSTIC_HYDROLOGY_SOURCE_INVENTORY_REQUEST_UNSENT.md). The government's 2025–26 plan actually confirms twelve long-term recorders and 2016–25 archived recordings, and an August 2026 programme update documents real pilot use. The question is now availability of authorized non-sensitive *station × time × effort × hydrology* keys, not mere historical existence of recorders. Neither request has been sent. The older v5.9 source methods findings remain valid.
+
 # v5.9 — CEWH minimum ORIGINAL visit, wetland, larval source dictionary question (NOT SENT)
 
 **2026-10-10 JST. Author-review draft only. NOT SENT.** This replaces prior v5.8 generic metadata request after checking the original government 2019 Monitoring, Evaluation and Research Plan. Do not use PR drafting as authority to email third parties or disclose protected locations.
