@@ -37,9 +37,36 @@ The next bounded source-quality exercise may fetch all **673 public records** on
 4. nonmissingness and original variable types/ranges **as schema** for `callingEvidence, CPUEAdults, CPUETadpoles`; do **not** print Y/N rates, CPUE values, species frequencies or individual records at this source stage;
 5. whether the records appear to provide event IDs/methods/effort fields (the 16-column schema suggests **none**) and whether any source-preserved zero-call visit denominator can be established (**not from this API alone**).
 
-The QC script must discard record values after in-memory aggregation, write **only non-sensitive aggregated counters**, and avoid any model fit or post-hoc search for favourable species/calling results. No automatic join to protected coordinates. No ecological hypothesis is regarded as supported by a source-quality pass.
+The QC script must discard projected record values after in-memory aggregation, write **only non-sensitive aggregated counters**, and avoid any model fit or post-hoc search for favourable species/calling results. No automatic join to protected coordinates. No ecological hypothesis is regarded as supported by a source-quality pass.
 
 **Source admissibility conditions**: original field-name semantics and provenance established, no date parsing failures silently discarded, uncertainty about omitted completely silent sites kept visible. Treat records with `callingEvidence=N` as *a listed species not heard calling*, **not** evidence that a completely unlisted species or the entire wetland was listened to.
+
+## 3B. Executed real public source-coverage audit — v5.0 SUCCESS (2026-10-10)
+
+After the **zero-row source-field contract was fixed**, a constrained official CKAN request projected only these source fields:
+
+`Program, SamplePoint, SampleDate, sampleDateStart, callingEvidence, CPUEAdults, CPUETadpoles`.
+
+It **did not retrieve species names/codes, precise latitude/longitude, free-text descriptions, or individual observer fields**. It temporarily read the three response columns to assess **only their nonmissingness**, and permanently saved **aggregate counts**, never response values, site IDs, or sensitive coordinates. **No regression, response association, taxon-specific value or biological effect was computed.**
+
+[Government source-query CI run 38011319372 — SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/38011319372), script `scripts/audit_flowmer_real_source_coverage_v50.py`. The source was **673 records** in the publicly exposed 2014–2022 resource, split as follows:
+
+| Official Program field | Source species-level records | Unique named sample sites represented | Distinct `SampleDate` calendar days with >=1 record | Number of distinct sample-site × `SampleDate` day pairs | Days with >=4 recorded site names |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Gwydir River System | **36** | **6** | **4** | **12** | **0** |
+| Lachlan River System | **46** | **14** | **1** | **14** | **1** |
+| Murrumbidgee River | **591** | **28** | **24** | **103** | **7** |
+
+**All 673 rows** had non-missing values in `callingEvidence`, `CPUEAdults`, and `CPUETadpoles`. This is source-variable completeness **conditional on existing source rows**, not valid **zero-call/zero-tadpole completed-visit denominator coverage**.
+
+**Critical temporal correction validated before reporting:** the actual API exposes BOTH `SampleDate` (source record timestamp) and `sampleDateStart` (inclusive beginning of the observation interval). Do **not** treat repeated interval starts as nights. The output includes separate summaries from `SampleDate` and `sampleDateStart`, and their day-level agreement. Multiple observations sharing a calendar day are **not proof that the frogs were recorded during one simultaneous listening interval**. Source labels and calendar days are not a genuine acoustic-route network.
+
+**Real data adequacy decision:**
+- The **Gwydir subset has only 36 source rows, six listed sites, dates in 2015 and 2016**, and **zero days with ≥4 distinct sites represented by any species row**. It cannot establish Ocock's **15 Gwydir wetlands / 195 visit records / 2015–2020** frame, historical strong species-specific chorus across four sites, or independent held-out verification. Additional original site visits may exist outside this public file; a zero in the *extracted file* is **not** evidence that field monitoring never sampled more sites.
+- The **Murrumbidgee subset** spans 2014–2022, with 28 listed sites and seven dates containing records for ≥4 different listed sites. This is a **different ecological system/monitoring source**, not independent external replication of the specific Ocock Gwydir+Macquarie 29-site array; it may still permit a **narrow new question** about repeated calling Y/N versus tadpole CPUE if a source-authoritative visit denominator, timing and repeated site-level opportunities are proved.
+- **Lachlan** has one source record date, so despite 14 site names no prior-year recurrence/held-out temporal template is available in that version.
+
+**No new ecological statistical conclusion:** this is a real **source-coverage audit** (unlike earlier synthetic potential layouts), not a test that historically strong sites have better reproductive outcome or that rain changes configuration. The next mechanistic barrier is the **absence of documented complete survey-opportunity/negative records and hydrology link**, not discoverability of the Flow-MER open file.
 
 ## 4. New research decision
 
