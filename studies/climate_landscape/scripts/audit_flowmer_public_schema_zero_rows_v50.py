@@ -114,6 +114,8 @@ def main():
     print(json.dumps({"status":receipt["status"],
        "n_columns":receipt.get("n_columns"),"http_code":receipt.get("http_code"),
        "published_fields_confirmed":receipt.get("expected_published_variable_names_present"),
+       "exact_public_schema_field_names":[f["name"] for f in receipt.get("field_names_and_types",[])],
+       "declared_source_record_total":receipt.get("declared_total_rows"),
        "frog_data_analyzed":False},sort_keys=True))
 
 if __name__=="__main__":
