@@ -70,14 +70,18 @@ def audit(raw):
     interval_start_days=defaultdict(set)
     months=defaultdict(set)
     source_versions=Counter()
+    missing_species_code_by_program=Counter()
     for r in rows:
         if not isinstance(r,dict) or set(r)-EXPECTED-{"_id"}:
             raise ValueError("unapproved extra field")
         prog=str(r.get("Program") or "").strip()
         site=str(r.get("SamplePoint") or "").strip()
-        species=str(r.get("speciesCode") or "").strip()
-        if not prog or not site or not species:
-            raise ValueError("source with blank program/site/species identity")
+        raw_species=r.get("speciesCode")
+        species=str(raw_species if raw_species is not None else "").strip()
+        if not prog or not site:
+            raise ValueError("source with blank program/site identity")
+        if not species:
+            missing_species_code_by_program[prog]+=1
         if max(len(prog),len(site),len(species))>120:
             raise ValueError("unbounded source label")
         source_rows[prog]+=1
@@ -109,11 +113,16 @@ def audit(raw):
                 interval_kind="OVER_31D"
             interval_kind_by_program[prog][interval_kind]+=1
             key=(prog,site,start.isoformat(),end.isoformat())
-            sp_key=key+(species,)
-            if sp_key in unique_species_event:
-                duplicate_species_events[prog]+=1
-            unique_species_event.add(sp_key)
-            species_by_event[key].add(species)
+            if species:
+                sp_key=key+(species,)
+                if sp_key in unique_species_event:
+                    duplicate_species_events[prog]+=1
+                unique_species_event.add(sp_key)
+                species_by_event[key].add(species)
+            else:
+                # A blank or unknown source species code does not establish
+                # a species-negative row or a valid species-level join.
+                species_by_event[key]
             event=(prog,start.isoformat(),end.isoformat())
             sites_by_event[event].add(site)
             months[prog].add(start.strftime("%Y-%m"))
@@ -152,6 +161,8 @@ def audit(raw):
             for p in sorted(source_rows)
         },
         "n_unique_site_start_end_groups_by_program":dict(sorted(events_per_program.items())),
+        "n_records_without_source_species_code_by_program":dict(sorted(missing_species_code_by_program.items())),
+        "full_species_event_key_support":sum(missing_species_code_by_program.values())==0,
         "n_duplicate_species_records_same_site_and_interval_by_program":dict(sorted(duplicate_species_events.items())),
         "n_unique_interval_start_end_event_groups_by_program":{
             p:sum(c.values()) for p,c in sorted(spatial_by_program.items())},
@@ -185,6 +196,11 @@ def tests():
     assert q["n_duplicate_species_records_same_site_and_interval_by_program"]=={}
     assert q["sampleDate_record_dates_vs_interval_starts_distinct_by_program"]["X"]["source_rows_where_calendar_dates_differ"]==2
     assert q["interval_length_class_row_counts"]["1_to_7d"]==2
+    blank_species=json.loads(json.dumps(payload))
+    blank_species["result"]["records"][0]["speciesCode"]=None
+    u=audit(blank_species)
+    assert u["n_records_without_source_species_code_by_program"]["X"]==1
+    assert u["full_species_event_key_support"] is False
     assert q["unrecognized_callingEvidence_codes_count"]==0
     invalid=[
        {"success":True,"result":{"records":[dict(a,Latitude=-36)],"total":1,"fields":fields}},
@@ -233,6 +249,8 @@ def main():
         "program_event_counts":receipt.get("n_unique_site_start_end_groups_by_program"),
         "event_intervals_with_4plus_recorded_sites":receipt.get("n_interval_groups_with_4plus_listed_sites_by_program"),
         "invalid_calling_codes":receipt.get("unrecognized_callingEvidence_codes_count"),
+        "missing_species_codes":receipt.get("n_records_without_source_species_code_by_program"),
+        "full_species_event_key_support":receipt.get("full_species_event_key_support"),
         "invalid_cpue_counts":receipt.get("negative_nonnumeric_or_nonfinite_CPUE_field_counts"),
         "no_effect_model":True
         },sort_keys=True))
