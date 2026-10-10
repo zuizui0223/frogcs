@@ -93,7 +93,7 @@ def preflight(deployments, opportunities, depth_times, max_gap_seconds):
         "local_water_depth_values_read": False,
         "frog_call_values_read": False,
         "source_rights_verified": False,
-        "j a e".replace(" ", "") + "_RC6_changed": False,
+        "jae_RC6_changed": False,
     }
 
 def tests():
