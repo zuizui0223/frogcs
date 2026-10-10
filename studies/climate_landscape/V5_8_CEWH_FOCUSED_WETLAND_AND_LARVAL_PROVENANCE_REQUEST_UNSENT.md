@@ -1,3 +1,5 @@
+> **SUPERSEDED FOR SENDING** by [v5.9 focused original methods / wetland unit / larval-source query (NOT SENT)](V5_9_CEWH_ORIGINAL_ACOUSTIC_AND_WETLAND_LEDGER_QUERY_UNSENT.md). Both this version and v5.9 remain **UNSENT**. Do not send this old version. The later 2019 official plan reveals an unresolved 3×2 vs 6×2 acoustic protocol discrepancy.
+
 # v5.8 — CEWH minimal ecological-unit and larval-stage provenance enquiry (UNSENT)
 
 **Prepared 2026-10-10 JST. Not sent, not authorized for sending by this repository.** Human author review is required; do not insert unconfirmed author metadata into public version-control history. This is separate from the closed JAE RC6 manuscript.
