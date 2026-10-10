@@ -1,5 +1,9 @@
 # v6.2 — REAL official Flow-MER Portal 69-entry inventory and API 403 result
 
+> **Superseding v6.3 source-identity correction (2026-10-10):** The CKAN frog package slug `flow-mer-frog-abundance` used in this v6.2 run was **not independently verified**. Charles Sturt University and the Australian Research Data Commons both identify the canonical external dataset path as [`flow-mer-frogs`](https://researchdata.edu.au/flow-mer-program-frog-abundance/3535992). A separately frozen [correct-slug official API check v6.3](V6_3_REAL_CANONICAL_FROGS_SOURCE_AND_403_STOP.md) also returned **HTTP 403** ([real CI](https://github.com/zuizui0223/frogcs/actions/runs/38058441199)). This means package content and newer record schema remain **NOT RETRIEVED**; the registry's 2014–2024 coverage and `Open` access label are documentary metadata, not proof of a downloadable observational panel. Keep the v6.2 original run as a transparent historical audit, not an authoritative identity of the actual frog package. No animal data accessed and no JAE RC6 change.
+
+
+
 **2026-10-10 JST. Independent draft PR #135 only; JAE RC6/main unchanged.** Newly browsed government/Flow-MER public index and a live **source-only CKAN API request** have been checked. No new frog observational data, water values, coordinates, source-site IDs, protected recordings or custodial responses were accessed.
 
 ## Actual operational official Flow-MER Data Portal — PUBLIC HTML verified
