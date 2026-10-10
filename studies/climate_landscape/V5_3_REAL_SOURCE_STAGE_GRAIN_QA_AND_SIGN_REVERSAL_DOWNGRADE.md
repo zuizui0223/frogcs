@@ -1,5 +1,7 @@
 # v5.3 — Real 673-row frog monitoring audit: field observation method versus published species×site×period grain
 
+
+**v5.4 taxonomic correction (2026-10-10, actual government source):** [Aggregate source genus tie audit](V5_4_REAL_GENUS_CPUE_TIE_CLASSES_AND_SOURCE_CORRECTION.md), [GitHub Actions 38014198140 SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/38014198140), shows the **seven exactly equal POSITIVE tadpole CPUE cases** comprise only **one** pair of different `Limnodynastes` species, **one** other within-genus pair, and **five CROSS-GENUS pairs**. Thus seven positive coincidences are **NOT evidence that `Limnodynastes` pooled field tallies were systematically copied to all species rows**. Seven species codes each mapped to a single public speciesName; that does **not** verify larvae-to-species field identification. The original report's genus-pooled larvae note remains true, separate from the source table's CPUE ties. The v5.2 descriptive sign reversal stays a **table-level** result, not demonstrated conspecific reproductive payoff.
 **2026-10-10 JST. Real-source ecological *interpretability audit*, not a new biological effect estimate.**
 **CRITICAL: v5.2 numerical sign reversal stays true for the source rows, but a same-species reproductive-payoff interpretation is NOT currently supported.**
 
