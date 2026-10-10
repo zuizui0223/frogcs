@@ -26,6 +26,27 @@ If the official material is safely available as JSON under a bounded byte cap, i
 
 **Absolute source protection:** never publish any individual site label, species/coordinate value, point location, lat/long, WKT, geometry, or a reversible site hash; output aggregate counts and field/property **names only**. Do not attach/download private records. Fail closed on unknown official URL host, unexpectedly large GeoJSON or unknown feature properties. A failed API route indicates access/format limitations, not biological site mismatch.
 
+## Verified original name-level join — independently completed
+
+[Official government live join CI **38014812096 SUCCESS**](https://github.com/zuizui0223/frogcs/actions/runs/38014812096) read the government MDMS 681-feature GeoJSON and the frog source's **only `Program,SamplePoint` attributes** (673 source rows; zero frog outcomes). **All distinct frog SamplePoint labels** matched the official MDMS `NAME` field **once and only once**:
+
+| Program | Distinct frog source SamplePoint labels | Exactly one MDMS `NAME` match | Ambiguous matches | Unmatched |
+| --- | ---: | ---: | ---: | ---: |
+| Gwydir | 6 | **6** | 0 | 0 |
+| Lachlan | 14 | **14** | 0 | 0 |
+| Murrumbidgee | 28 | **28** | 0 | 0 |
+
+The MDMS file had **681/681 non-empty `NAME` attributes and 681 unique normalized `NAME` keys**, with no duplicates. `SAMO_ID` was also unique across the 681 features, but **matched zero** of the frog source's SamplePoint strings. Therefore `NAME` rather than `SAMO_ID` is the empirically validated **exact same government sample-point label** in the two released sources. **One-to-one across official government record systems has been established at the label-to-feature level**; it is still not proof of distinct ecological wetland basins or exact historical site continuity.
+
+### Follow-up geometry-only quality check, frozen BEFORE reading per-frog-feature geometry classes
+
+The next check will examine the already official MDMS point geometry in memory, **never publishing coordinates**:
+- count **exactly coincident** point geometry groups among the 6 / 14 / 28 one-to-one matched labels;
+- count whether matched features have missing/non-point geometries;
+- count how many distinct nonmissing source `POINT_CATE` / `PROGRAM` attribute categories appear **without outputting their values**, to flag potential heterogeneous point types.
+
+An exact noncoincident Point geometry is **not proof of an independent wetland**: different acoustic/vegetation/water sample locations can fall within the same wetland, and historical renamings/subpoints still require source monitoring protocols. Do not do nearest-coordinate/fuzzy matching or reconstruct sensitive locations. No frog outcomes accessed.
+
 ## Ecological decision
 
 - If exact original site-label linkage is source verified, we can say the government public records share a *name-level sample-point system*. It is still necessary to check physical wetland uniqueness, naming continuity, and original field monitoring event identities before revisiting 24-cluster bootstrap inference.
