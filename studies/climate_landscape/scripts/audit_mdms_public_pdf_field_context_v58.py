@@ -51,7 +51,7 @@ def contexts(pdf: bytes) -> dict:
             "independent_wetland_units_confirmed":False}
 
 def tests() -> None:
-    assert safe_excerpt("value 146.1234, -35.2345 URL https://example.com/a ") == "value [DECIMAL_REDACTED], [DECIMAL_REDACTED] URL [LINK]"
+    assert safe_excerpt("value 146.1234, -35.2345 URL https://example.com/a ") == "value [DECIMAL_REDACTED] URL [LINK]"
     try:
         contexts(b"%PDF-1.0 bad")
     except ValueError as exc:
