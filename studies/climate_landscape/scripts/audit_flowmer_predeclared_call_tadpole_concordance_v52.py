@@ -127,13 +127,38 @@ def build(payload):
         pair_rows[(r["site"],r["species"])].append((r["C"],r["T"]))
     within_pairs=[]
     within_rows=0
+    eligible_pair_keys=set()
+    within_pairs_by_site=collections.defaultdict(list)
     for key,values in pair_rows.items():
         if {c for c,t in values}=={0,1}:
             t_y=[t for c,t in values if c==1]
             t_n=[t for c,t in values if c==0]
-            within_pairs.append(sum(t_y)/len(t_y)-sum(t_n)/len(t_n))
+            difference=sum(t_y)/len(t_y)-sum(t_n)/len(t_n)
+            within_pairs.append(difference)
+            within_pairs_by_site[key[0]].append(difference)
+            eligible_pair_keys.add(key)
             within_rows+=len(values)
     within_admissible=(len(within_pairs)>=10 and within_rows>=20)
+    # POST-OUTCOME QC ONLY (not an additional frozen main comparison):
+    # Compare the pooled sign using the EXACT same 58 both-state pairs to
+    # separate target-subpopulation effects from equal-pair weighting effects.
+    restricted=[r for r in parsed if (r["site"],r["species"]) in eligible_pair_keys]
+    restricted_cells=collections.Counter((r["C"],r["T"]) for r in restricted)
+    restricted_y=sum(restricted_cells[(1,t)] for t in (0,1))
+    restricted_n=sum(restricted_cells[(0,t)] for t in (0,1))
+    restricted_pooled_delta=(restricted_cells[(1,1)]/restricted_y -
+                             restricted_cells[(0,1)]/restricted_n) if restricted_y and restricted_n else None
+    # Retrospective, explicitly labelled site-resampling sensitivity to
+    # paired equally weighted contrast (not a preregistered CI).
+    paired_sites=sorted(within_pairs_by_site)
+    paired_boot=[]
+    rng2=random.Random(SEED)
+    if within_admissible and paired_sites:
+        for i in range(BOOTSTRAP_DRAWS):
+            draw=[paired_sites[rng2.randrange(len(paired_sites))] for _ in paired_sites]
+            tmp=[v for site in draw for v in within_pairs_by_site[site]]
+            paired_boot.append(sum(tmp)/len(tmp))
+    paired_boot.sort()
 
     # Site-cluster bootstrap as frozen, no p-values and no fitting.
     boot=[]
@@ -167,6 +192,17 @@ def build(payload):
         "n_distinct_species_site_pairs_anonymized":len(pair_rows),
         "n_pairs_with_both_call_Y_and_call_N_on_distinct_intervals":len(within_pairs),
         "n_rows_in_pairs_with_both_call_states":within_rows,
+        "n_sample_sites_contributing_eligible_both_state_pairs":len(paired_sites),
+        "post_outcome_QC_restricted_to_same_both_state_pairs_pooled_risk_difference":restricted_pooled_delta,
+        "post_outcome_QC_restricted_pair_rows_2x2":{
+            "call_N_tadpole_zero":restricted_cells[(0,0)],
+            "call_N_tadpole_positive":restricted_cells[(0,1)],
+            "call_Y_tadpole_zero":restricted_cells[(1,0)],
+            "call_Y_tadpole_positive":restricted_cells[(1,1)]
+        },
+        "post_outcome_QC_within_pair_site_cluster_bootstrap_95pct":[
+             percentile(paired_boot,.025),percentile(paired_boot,.975)] if len(paired_boot)>=900 else None,
+        "post_outcome_QC_CIs_are_exploratory_not_in_original_frozen_contract":True,
         "two_by_two_source_rows":{
            "call_N_tadpole_zero":cells[(0,0)],
            "call_N_tadpole_positive":cells[(0,1)],
@@ -214,6 +250,7 @@ def fake_test():
     assert q["two_by_two_source_rows"]["call_N_tadpole_zero"]==1
     assert q["n_pairs_with_both_call_Y_and_call_N_on_distinct_intervals"]==1
     assert q["within_pair_contrast_status"]=="INSUFFICIENT_WITHIN_PAIR_CALL_VARIATION"
+    assert q["post_outcome_QC_restricted_to_same_both_state_pairs_pooled_risk_difference"]==1
     fail={"success":True,"result":{"fields":meta+[{"id":"Latitude"}],"total":5,
             "records":payload["result"]["records"]}}
     try:build(fail)
