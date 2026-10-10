@@ -55,6 +55,12 @@ The public 2026 pilot already reports stronger calling in watered wetlands, so t
 
 A significant gain would establish conditional **forecast information**, not individual memory, adaptation, hydrological causality, taxon movement or reproductive payoff. A non-gain with sufficient power would support the sufficiency of measured hydrology/stable propensity for that data frame, not all frog species universally.
 
+## 5. Smallest remaining real-world step
+
+The existing [v6.0 unsent official source inventory enquiry](V6_0_CEWH_ACOUSTIC_HYDROLOGY_SOURCE_INVENTORY_REQUEST_UNSENT.md) is amended to ask specifically for the **recorder × logger × wetland-year non-sensitive key**, opportunity/quality manifest and original data catalog/register reference. No protected coordinates, raw audio, unpublished frog responses or correspondence are needed yet.
+
+**NO email sent. NO source data acquired. NO NAAMP or public 579-row frog outcome refit. No change to RC6/main.** The source-only feasibility gate can be finalized before asking for any frog signal values.
+
 ## 6. Executed **synthetic-only** ecological-unit source preflight
 
 [GitHub Actions run **38056545252 — SUCCESS**](https://github.com/zuizui0223/frogcs/actions/runs/38056545252) executed [`scripts/preflight_audio_depth_unit_manifest_v61.py`](scripts/preflight_audio_depth_unit_manifest_v61.py) on deliberately fabricated recorder/depth opportunities. **No real wetland site, acoustic event or water-level value was queried.**
@@ -68,8 +74,3 @@ The tests demonstrate the correctness of source-preflight bookkeeping, **not bio
 
 The preflight requires an explicitly source-defined timestamp tolerance rather than choosing one to produce a favourable matched sample. The code has not passed a real source metadata preflight and does **not** establish there are 2, 12 or any other number of independently sampled wetland units in Murrumbidgee.
 
-## 5. Smallest remaining real-world step
-
-The existing [v6.0 unsent official source inventory enquiry](V6_0_CEWH_ACOUSTIC_HYDROLOGY_SOURCE_INVENTORY_REQUEST_UNSENT.md) is amended to ask specifically for the **recorder × logger × wetland-year non-sensitive key**, opportunity/quality manifest and original data catalog/register reference. No protected coordinates, raw audio, unpublished frog responses or correspondence are needed yet.
-
-**NO email sent. NO source data acquired. NO NAAMP or public 579-row frog outcome refit. No change to RC6/main.** The source-only feasibility gate can be finalized before asking for any frog signal values.
