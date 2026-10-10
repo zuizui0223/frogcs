@@ -1,5 +1,7 @@
 # v5.7 — one metadata-only CEWH source inquiry, NOT SENT
 
+> **Superseded for any future enquiry by [v5.8 focused metadata-only request](V5_8_CEWH_FOCUSED_WETLAND_AND_LARVAL_PROVENANCE_REQUEST_UNSENT.md).** The original government PDF actually defines `DESCRIPTIO` as an optional description, `DATATYPENA` as a data-type summary and `SAMPLECOUN` as record count. Do **not** send this broader v5.7 draft. Neither enquiry has been sent.
+
 **2026-10-10 JST.** Prepared for human author review only, NOT sent. Do not submit to a public forum, fill in a sender identity, or access protected locations from this repository. JAE RC6/main are submission-locked and are not part of this request.
 
 ## Official recipient and provenance
