@@ -167,7 +167,7 @@ def self_test():
         "properties":{"NAME":"River A","SAMO_ID":"9"}},
        {"type":"Feature","geometry":{"type":"Point","coordinates":[100,35]},
         "properties":{"NAME":"River A","SAMO_ID":"10"}},
-       {"type":"Feature","geometry":{"type":"Point","coordinates":[100,35]},
+       {"type":"Feature","geometry":{"type":"Point","coordinates":[101,36]},
         "properties":{"NAME":"River B","SAMO_ID":"11"}}]
     f={"success":True,"result":{"total":2,"fields":[{"id":"Program"},{"id":"SamplePoint"}],
         "records":[{"Program":"X","SamplePoint":" River  A "},
