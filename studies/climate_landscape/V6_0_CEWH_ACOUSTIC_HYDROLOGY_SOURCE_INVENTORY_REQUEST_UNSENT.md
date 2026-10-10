@@ -2,6 +2,8 @@
 
 **Prepared 2026-10-10 JST. Author-review draft. NOT SENT.** This supersedes the v5.9 request for purposes of the newly identified historical audio route; the older Flow-MER *frog-abundance CSV* stage mapping remains a secondary/conditional request, not an assumed join. Never commit personal contact details to the public repo or request protected site coordinates.
 
+> **v6.1 refinement — this remains the SINGLE unsent custodian message.** [Official public hydrology grain and full join/validation gate](V6_1_PUBLIC_HYDROLOGY_SOURCE_GRAIN_AND_PROSPECTIVE_JOIN_GATE.md) clarifies that annual CEW inundation raster, river-gauge daily discharge and plot-level vegetation inundation are **not** a substitute for source-matched recorder × physical wetland × depth logger × clock/quality observation data. The 2024–2030 government plan explicitly discusses pairing acoustic monitors with wetland depth loggers; paired record identities and source availability remain **unverified**. Do not send this email without author review and approval. No raw source data requested.
+
 ## Original source basis
 
 - [Government Flow-MER 2025–26 implementation plan, §6.3](https://www.dcceew.gov.au/sites/default/files/documents/flow-mer-murrumbidgee-annual-implementation-plan-2025-26.pdf) documents 12 long-term recording stations and archives including five minutes per hour, with historical frog recordings since 2016.
@@ -27,6 +29,8 @@ At this stage I am requesting **only a non-sensitive source/data-availability in
 2. Whether there is a stable **station → independent physical wetland** mapping across 2016–2025, including moved/replaced devices and temporary wetland substitutions, and whether matched depth/inundation/hydroperiod time series exist at compatible timestamps.
 3. Whether time-indexed, species-specific frog detections/annotations and validation subsets from the 2025–26 classifier research (including known false negatives and detection confidence) are stored with those same anonymous station IDs. Is there an approved route to obtain a non-sensitive derived summary, subject to a new study agreement?
 4. Whether the Nap Nap 2020 matched sound and water record is separately available as a complete time-stamped research table, beyond its public interactive nine-day demonstration.
+5. Whether a non-sensitive **recorder deployment ID → water-depth logger ID → independent wetland ecological unit** key and date-effective mappings exist, with depth logger measurement datum, wetland dry/wet thresholds and recorder/clock/quality/missing interval codes. A simple metadata-only example of columns and aggregate counts suffices; no animal values or locations.
+6. Whether the Flow-MER programme's planned secure **Data Register / public searchable metadata index** currently contains archive identifiers, custodians, consent/permissions or publication/reuse status for the recorded frog audio and depth datasets. A catalog reference alone would be useful.
 
 A yes/no answer, aggregate year-by-year station/coverage table, dataset dictionary, or referral is plenty for deciding scientific feasibility. I would only discuss data access or approved use after the source structure and rights are clarified.
 
