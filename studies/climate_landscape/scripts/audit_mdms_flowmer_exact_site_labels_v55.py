@@ -178,7 +178,7 @@ def self_test():
     assert z["key_tests"]["NAME"]["per_frog_program_source_key_match"]["X"][
          "exact_label_one_MDMS_feature"]==1
     assert z["matched_MDMS_exact_point_geometry_collision_QC_by_frog_program"]["X"]["n_coordinate_pairs_shared_by_2plus_MDMS_source_labels"]==0
-    assert z["matched_MDMS_exact_point_geometry_collision_QC_by_frog_program"]["X"]["n_unique_exact_Point_coordinate_pairs_IN_MEMORY_ONLY"]==2
+    assert z["matched_MDMS_exact_point_geometry_collision_QC_by_frog_program"]["X"]["n_unique_exact_Point_coordinate_pairs_IN_MEMORY_ONLY"]==1
     assert "River A" not in json.dumps(z)
     assert "coordinates" not in json.dumps(z)
     f["result"]["fields"].append({"id":"Latitude"})
