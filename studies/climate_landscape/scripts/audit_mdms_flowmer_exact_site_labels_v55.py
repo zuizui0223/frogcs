@@ -110,6 +110,56 @@ def audit(mdms,frog):
            "mdms_duplicate_label_key_groups":sum(len(ids)>1 for ids in m.values()),
            "mdms_features_under_duplicate_keys":sum(len(ids) for ids in m.values() if len(ids)>1),
            "per_frog_program_source_key_match":region}
+    # Additional pre-declared GEOMETRY-ONLY ecological unit diagnostic:
+    # Exact point-location collisions are checked IN MEMORY only and never
+    # expose site IDs, coordinates, point clusters, reversibly hashed positions.
+    official_name=lookup["NAME"]
+    site_geometry_checks={}
+    for program, samples in sorted(frog_sites.items()):
+        feature_indices=[
+            next(iter(official_name[label]))
+            for label in samples if label in official_name and len(official_name[label])==1
+        ]
+        coord_fingerprints=Counter()
+        geometry_types=Counter()
+        missing_geometries=0
+        categories=defaultdict(set)
+        attribute_nonmissing=Counter()
+        for index in feature_indices:
+            feat=features[index]
+            geom=feat.get("geometry")
+            if not isinstance(geom,dict):
+                missing_geometries+=1
+                geometry_types["NULL"]+=1
+                continue
+            typ=str(geom.get("type") or "UNKNOWN")
+            geometry_types[typ]+=1
+            # Only exact equality; never compute distances or reveal values.
+            if typ=="Point" and isinstance(geom.get("coordinates"),list) and len(geom["coordinates"])>=2:
+                coords=geom["coordinates"]
+                if all(isinstance(n,(int,float)) for n in coords[:2]):
+                    coord_fingerprints[(coords[0],coords[1])]+=1
+            for tag in ("POINT_CATE","PROGRAM"):
+                v=str(feat["properties"].get(tag) or "").strip()
+                if v:
+                    categories[tag].add(norm(v))
+                    attribute_nonmissing[tag]+=1
+        site_geometry_checks[program]={
+            "n_source_samplepoint_labels_with_unique_MDMS_NAME_match":len(feature_indices),
+            "n_unique_exact_Point_coordinate_pairs_IN_MEMORY_ONLY":len(coord_fingerprints),
+            "n_coordinate_pairs_shared_by_2plus_MDMS_source_labels":sum(n>1 for n in coord_fingerprints.values()),
+            "n_labels_on_repeated_exact_coordinates":sum(n for n in coord_fingerprints.values() if n>1),
+            "geometry_type_counts":dict(sorted(geometry_types.items())),
+            "n_missing_geometries":missing_geometries,
+            "attribute_number_distinct_VALUES_WITHOUT_VALUES":{
+                 tag:len(categories[tag]) for tag in ("POINT_CATE","PROGRAM")},
+            "attribute_nonmissing_feature_counts":dict(sorted(attribute_nonmissing.items())),
+            "exact_unique_coordinates_not_independent_wetland_proof":True
+        }
+    result["matched_MDMS_exact_point_geometry_collision_QC_by_frog_program"]=site_geometry_checks
+    flat=[k for s in frog_sites.values() for k in s]
+    result["sum_unique_site_labels_per_program"]=len(flat)
+    result["n_distinct_site_labels_across_ALL_three_frog_programs"]=len(set(flat))
     return result
 
 def self_test():
@@ -127,6 +177,8 @@ def self_test():
          "exact_label_2plus_MDMS_features_AMBIGUOUS"]==1
     assert z["key_tests"]["NAME"]["per_frog_program_source_key_match"]["X"][
          "exact_label_one_MDMS_feature"]==1
+    assert z["matched_MDMS_exact_point_geometry_collision_QC_by_frog_program"]["X"]["n_coordinate_pairs_shared_by_2plus_MDMS_source_labels"]==0
+    assert z["matched_MDMS_exact_point_geometry_collision_QC_by_frog_program"]["X"]["n_unique_exact_Point_coordinate_pairs_IN_MEMORY_ONLY"]==2
     assert "River A" not in json.dumps(z)
     assert "coordinates" not in json.dumps(z)
     f["result"]["fields"].append({"id":"Latitude"})
