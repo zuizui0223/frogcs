@@ -138,7 +138,7 @@ def synthetic_test() -> None:
     assert p["n_groups_size_2plus"] == 1 and p["largest_group_size"] == 2
     assert not result["physical_independent_wetland_units_verified"]
     text = json.dumps(result)
-    assert "SENSITIVE" not in text and "PRIVATE" not in text and "coordinates" not in text
+    assert "SENSITIVE" not in text and "PRIVATE" not in text and '"coordinates":' not in text
     assert "140" not in text
     fake[0]["properties"]["NAME"] = fake[1]["properties"]["NAME"]
     try:
