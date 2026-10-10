@@ -94,8 +94,12 @@ def audit(raw):
         if start is not None and end is not None:
             span_hours=(end-start).total_seconds()/3600
             if span_hours<=0:
-                good_span["nonpositive"]+=1
-                interval_kind="NONPOSITIVE"
+                if span_hours==0:
+                    good_span["zero_length"]+=1
+                    interval_kind="ZERO_LENGTH"
+                else:
+                    good_span["end_before_start"]+=1
+                    interval_kind="END_BEFORE_START"
             elif span_hours<=1:
                 good_span["0_to_1h"]+=1
                 interval_kind="0_TO_1H"
@@ -246,6 +250,10 @@ def main():
         "error_type":receipt.get("error_type"),
         "error_text":receipt.get("error_text"),
         "interval_class_counts":receipt.get("interval_length_class_row_counts"),
+        "interval_classes_by_program":receipt.get("interval_length_by_program"),
+        "record_vs_interval_start_date_QC":receipt.get("sampleDate_record_dates_vs_interval_starts_distinct_by_program"),
+        "duplicate_species_keys_by_program":receipt.get("n_duplicate_species_records_same_site_and_interval_by_program"),
+        "source_event_groups_by_program":receipt.get("n_unique_interval_start_end_event_groups_by_program"),
         "program_event_counts":receipt.get("n_unique_site_start_end_groups_by_program"),
         "event_intervals_with_4plus_recorded_sites":receipt.get("n_interval_groups_with_4plus_listed_sites_by_program"),
         "invalid_calling_codes":receipt.get("unrecognized_callingEvidence_codes_count"),
