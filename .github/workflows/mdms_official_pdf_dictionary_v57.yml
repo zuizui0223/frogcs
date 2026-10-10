@@ -1,0 +1,31 @@
+name: CEWH MDMS official metadata PDF field dictionary presence v5.7
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_mdms_official_metadata_pdf_v57.py"
+      - "studies/climate_landscape/V5_7_MDMS_PDF_DICTIONARY_PRESENCE_CONTRACT.md"
+      - ".github/workflows/mdms_official_pdf_dictionary_v57.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-pdf-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install small offline-capable PDF text parser
+        run: python -m pip install "pypdf==5.9.0"
+      - name: Probe only literal field tokens in official metadata PDF
+        run: python studies/climate_landscape/scripts/audit_mdms_official_metadata_pdf_v57.py
+      - name: Archive aggregate documentation signal only
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdms-official-pdf-dictionary-presence-v57
+          path: studies/climate_landscape/receipts/MDMS_METADATA_PDF_DICTIONARY_PRESENCE_V57.json
+          if-no-files-found: error
