@@ -5,6 +5,14 @@
 
 **Critical temporal provenance:** [v5.2 source-metadata-exposed, response-blind frozen plan](V5_2_PRE_RESPONSE_PERIOD_LEVEL_CALLING_TADPOLE_CONCORDANCE_CONTRACT.md) was committed as **`383494d` BEFORE** the first workflow that read Y/N frequencies and positive tadpole CPUE. The primary full-panel 2×2 and optional within-species×site contrast were frozen then. The **same-both-state-pairs restricted pooled contrast and its paired-cluster interval were added after viewing the initial results**, expressly as **post-outcome diagnostics**, not preregistered confirmation.
 
+## Updated v5.3 source-method interpretation (2026-10-10)
+
+**IMPORTANT QUALIFICATION:** [Source-backed v5.3 follow-up](V5_3_REAL_SOURCE_STAGE_GRAIN_QA_AND_SIGN_REVERSAL_DOWNGRADE.md) verified that adult frogs/calling were sampled with **two 20-minute nocturnal transects** but tadpole CPUE arose from **overnight fyke-net catches divided by net soak time**, with missing opportunities when wetlands were dry/shallow. The CEWO/CSU report's Table 4-23 expressly **pooled *Limnodynastes* tadpoles at genus**. Thus published `CPUETadpoles` is **not automatically identified conspecific offspring of every row's listed `speciesCode`**.
+
+Actual aggregate-only [v5.3 source-unit CI](https://github.com/zuizui0223/frogcs/actions/runs/38013002316) shows the **579 public species-labelled rows occupy only 98 site-label×period groups**, 3–7 species/group; seven groups have the **same positive tadpole CPUE in two or more different species rows**, not by itself proof of an error. The apparent >31-day durations are **published aggregation windows**, not 31-day continuous surveys; original physical site correspondence for 24 listed `SamplePoint` labels remains unverified.
+
+**Therefore revise the biological claim:** the pooled/within-pair sign reversal is a **real property of the released table**, but **species-specific reproductive payoff and ecological mechanism are NOT identifiable** without the original stage taxonomic crosswalk, visit timestamps, gear/effort and explicit genuine negatives. The bootstrap resamples public `SamplePoint` labels, **not 24 verified independent wetlands**. The original frozen v5.2 arithmetic below is retained unchanged for transparency; it is not being retuned after this audit.
+
 ## Source and fixed inclusion
 
 Actual official government [Flow-MER](https://data.gov.au/data/dataset/flow-mer-frog-abundance) records: **673** species-record rows across Gwydir 36, Murrumbidgee **591**, Lachlan 46.
