@@ -160,6 +160,20 @@ def audit(mdms,frog):
     flat=[k for s in frog_sites.values() for k in s]
     result["sum_unique_site_labels_per_program"]=len(flat)
     result["n_distinct_site_labels_across_ALL_three_frog_programs"]=len(set(flat))
+    # Catch exact geometry collisions also ACROSS the three programmes, not
+    # only within each programme's sample-name frame.
+    globally=Counter()
+    for name in set(flat):
+        if name in official_name and len(official_name[name])==1:
+            feat=features[next(iter(official_name[name]))]
+            geo=feat.get("geometry")
+            if isinstance(geo,dict) and geo.get("type")=="Point":
+                values=geo.get("coordinates")
+                if isinstance(values,list) and len(values)>=2 and all(
+                    isinstance(q,(int,float)) for q in values[:2]):
+                    globally[(values[0],values[1])]+=1
+    result["n_unique_exact_MDMS_Point_coordinates_ALL_programs"]=len(globally)
+    result["n_coordinate_collision_groups_between_ANY_source_programs"]=sum(v>1 for v in globally.values())
     return result
 
 def self_test():
