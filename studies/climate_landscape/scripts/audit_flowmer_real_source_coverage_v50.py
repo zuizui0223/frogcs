@@ -58,10 +58,10 @@ def summarize(obj):
     if observed_fields!=EXPECTED:
         raise ValueError("projection returned unexpected or sensitive columns")
     counts=Counter()
-    source_site_date=defaultdict(set)
+    primary_site_days=defaultdict(set)
+    start_site_days=defaultdict(set)
     source_sites=defaultdict(set)
     nonmissing=Counter()
-    unparsed=0
     years=defaultdict(Counter)
     date_source=Counter()
     for row in rows:
@@ -72,11 +72,9 @@ def summarize(obj):
         if not program or not point:
             counts["missing_program_or_site"]+=1
             continue
-        # Published census region names only; do not store point/coordinates.
         if len(program)>120 or len(point)>120:
             raise ValueError("unexpectedly long official region/site alias")
         counts["source_records"]+=1
-        counts["nonblank_program_site_rows"]+=1
         source_sites[program].add(point)
         for name in ("callingEvidence","CPUEAdults","CPUETadpoles"):
             if row.get(name) not in (None,"","NA","N/A"):
@@ -84,49 +82,58 @@ def summarize(obj):
         if all(row.get(name) not in (None,"","NA","N/A")
                for name in ("callingEvidence","CPUETadpoles")):
             nonmissing["callingEvidence_AND_CPUETadpoles"]+=1
-        start=calendar_date(row.get("sampleDateStart"))
+
+        # SampleDate is the publication-defined record timestamp. The start
+        # is an inclusive MEASUREMENT INTERVAL start, NOT a confirmed survey
+        # night. Do not silently coerce the two grains to be the same.
         primary=calendar_date(row.get("SampleDate"))
-        if start:
-            day=start
-            date_source["sampleDateStart_used"]+=1
-        elif primary:
-            day=primary
-            date_source["SampleDate_fallback_used"]+=1
+        start=calendar_date(row.get("sampleDateStart"))
+        if primary:
+            primary_site_days[(program,primary)].add(point)
+            years[program][primary[:4]]+=1
+            date_source["valid_SampleDate_record_date_rows"]+=1
         else:
-            day=None
-            unparsed+=1
-        if day:
-            source_site_date[(program,day)].add(point)
-            years[program][day[:4]]+=1
+            date_source["unparseable_or_missing_SampleDate"]+=1
+        if start:
+            start_site_days[(program,start)].add(point)
+            date_source["valid_sampleDateStart_interval_rows"]+=1
+        else:
+            date_source["unparseable_or_missing_sampleDateStart"]+=1
+        if primary and start and primary!=start:
+            date_source["record_date_differs_from_interval_start_date"]+=1
+
     reg_counts=Counter(str(row.get("Program") or "").strip() for row in rows)
-    # Region names are already government-published administrative source labels.
     programs={}
     for program in sorted(reg_counts):
         if not program:
             continue
-        widths=Counter(len(ids) for (p,d),ids in source_site_date.items() if p==program)
+        p_widths=[len(ids) for (reg,day),ids in primary_site_days.items() if reg==program]
+        s_widths=[len(ids) for (reg,day),ids in start_site_days.items() if reg==program]
         programs[program]={
             "n_species_level_source_rows":reg_counts[program],
             "n_distinct_recorded_sites_NO_COMPLETENESS_CLAIM":len(source_sites[program]),
-            "n_distinct_site_date_groups_WITH_AT_LEAST_ONE_RECORD":sum(widths.values()),
-            "n_calendar_dates_WITH_AT_LEAST_ONE_RECORD":sum(widths.values()),
-            "source_date_4plus_sites_WITH_ANY_SPECIES_RECORD":sum(v for k,v in widths.items() if k>=4),
-            "source_date_2plus_sites_WITH_ANY_SPECIES_RECORD":sum(v for k,v in widths.items() if k>=2),
-            "year_record_counts":dict(sorted(years[program].items()))
+            "n_SampleDate_calendar_days_WITH_SOURCE_ROWS":len(p_widths),
+            "n_SampleDate_site_day_pairs_WITH_SOURCE_ROWS":sum(p_widths),
+            "n_SampleDate_days_WITH_2plus_recorded_sites":sum(w>=2 for w in p_widths),
+            "n_SampleDate_days_WITH_4plus_recorded_sites":sum(w>=4 for w in p_widths),
+            "n_sampleDateStart_interval_start_days_WITH_SOURCE_ROWS":len(s_widths),
+            "n_sampleDateStart_start_day_site_pairs_WITH_SOURCE_ROWS":sum(s_widths),
+            "n_interval_start_days_WITH_4plus_recorded_sites":sum(w>=4 for w in s_widths),
+            "year_record_counts_by_SampleDate":dict(sorted(years[program].items()))
         }
     return {
-        "data_scope":"source-only actual official CKAN projected non-sensitive columns",
+        "data_scope":"public CKAN projected region/site/date columns; response fields used only for missingness",
         "source_row_total":result.get("total"),
         "program_record_support":programs,
         "n_nonmissing_by_published_outcome_field_ONLY":dict(nonmissing),
-        "n_unparsable_or_missing_survey_dates":unparsed,
-        "date_choice_counts":dict(date_source),
+        "date_field_completeness_and_disagreements":dict(date_source),
         "n_rows_without_public_program_or_site":counts["missing_program_or_site"],
         "source_visit_ledger_verified":False,
         "calling_YN_is_not_strong_chorus":True,
         "tadpole_CPUE_is_not_metamorph_success":True,
         "no_automatic_Ocock_site_crosswalk":True,
-        "region_date_site_group_is_not_a_completed_survey_night":True,
+        "same_date_source_rows_not_confirmed_simultaneous_five_min_survey_nights":True,
+        "sampleDateStart_interval_is_not_a_survey_night":True,
         "specimen_locations_saved":False,
         "raw_site_names_saved":False,
         "species_records_published":False,
@@ -149,6 +156,13 @@ def fake_test():
     s=summarize(good)
     assert s["program_record_support"]["Gwydir"]["n_distinct_recorded_sites_NO_COMPLETENESS_CLAIM"]==2
     assert s["n_nonmissing_by_published_outcome_field_ONLY"]["callingEvidence"]==2
+    assert s["program_record_support"]["Gwydir"]["n_SampleDate_calendar_days_WITH_SOURCE_ROWS"]==1
+    shifted=json.loads(json.dumps(good))
+    shifted["result"]["records"][1]["SampleDate"]="2016-09-02"
+    shifted_summary=summarize(shifted)
+    assert shifted_summary["program_record_support"]["Gwydir"]["n_SampleDate_calendar_days_WITH_SOURCE_ROWS"]==2
+    assert shifted_summary["program_record_support"]["Gwydir"]["n_sampleDateStart_interval_start_days_WITH_SOURCE_ROWS"]==1
+    assert shifted_summary["date_field_completeness_and_disagreements"]["record_date_differs_from_interval_start_date"]==1
     for bad in (
         {"success":True,"result":{"records":rows,"total":3,"fields":projected}},
         {"success":True,"result":{"records":[dict(rows[0],Latitude=-33)],"total":1,"fields":projected}},
