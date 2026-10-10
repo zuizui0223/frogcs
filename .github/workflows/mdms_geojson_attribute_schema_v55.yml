@@ -1,0 +1,28 @@
+name: CEWH MDMS official GeoJSON attribute schema v5.5
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_mdms_geojson_attribute_schema_v55.py"
+      - ".github/workflows/mdms_geojson_attribute_schema_v55.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-attribute-schema-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read official GeoJSON property field names and coverage without any coordinate data output
+        run: python studies/climate_landscape/scripts/audit_mdms_geojson_attribute_schema_v55.py
+      - name: Archive names/counts only
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdms-original-geojson-attribute-schema-only-v55
+          path: studies/climate_landscape/receipts/MDMS_GEOJSON_ATTRIBUTE_SCHEMA_V55.json
+          if-no-files-found: error
