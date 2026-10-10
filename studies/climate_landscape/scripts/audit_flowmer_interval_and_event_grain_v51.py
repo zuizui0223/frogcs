@@ -227,6 +227,8 @@ def main():
     out.write_text(json.dumps(receipt,sort_keys=True,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({
         "status":receipt["status"],
+        "error_type":receipt.get("error_type"),
+        "error_text":receipt.get("error_text"),
         "interval_class_counts":receipt.get("interval_length_class_row_counts"),
         "program_event_counts":receipt.get("n_unique_site_start_end_groups_by_program"),
         "event_intervals_with_4plus_recorded_sites":receipt.get("n_interval_groups_with_4plus_listed_sites_by_program"),
