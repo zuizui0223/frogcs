@@ -1,0 +1,28 @@
+name: Flow-MER predeclared period-level calling–tadpole concordance v5.2
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_flowmer_predeclared_call_tadpole_concordance_v52.py"
+      - ".github/workflows/flowmer_call_tadpole_concordance_v52.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen-descriptive-source-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run frozen exploratory descriptive with public projection and no coordinates
+        run: python studies/climate_landscape/scripts/audit_flowmer_predeclared_call_tadpole_concordance_v52.py
+      - name: Save aggregates only, no raw species/site records
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-frozen-period-calling-tadpole-aggregates-v52
+          path: studies/climate_landscape/receipts/FLOW_MER_LONG_INTERVAL_CONCORDANCE_V52.json
+          if-no-files-found: error
