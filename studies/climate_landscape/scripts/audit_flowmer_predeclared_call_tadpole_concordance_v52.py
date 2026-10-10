@@ -227,7 +227,8 @@ def build(payload):
         "no_sensitive_site_coordinates_requested_or_saved":True,
         "no_species_names_codes_or_site_names_published":True,
         "not_a_causal_effect_or_preregistered_confirmation":True,
-        "no_p_values_or_posthoc_subgroups":True,
+        "no_p_values_computed":True,
+        "same_pair_subset_restricted_pooled_delta_is_post_outcome_QC":True,
         "JAE_RC6_main_untouched":True
     }
 
