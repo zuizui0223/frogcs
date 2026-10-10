@@ -1,0 +1,29 @@
+name: Flow-MER canonical 2014–24 frogs source URI metadata audit v6.3
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/V6_3_CANONICAL_2014_2024_FROG_SOURCE_URI_AND_METADATA_CONTRACT.md"
+      - "studies/climate_landscape/scripts/audit_correct_official_flowmer_frogs_slug_v63.py"
+      - ".github/workflows/flowmer_canonical_frog_metadata_v63.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  correct-source-uri-no-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test official known slug; no animal observations or resource CSV downloads
+        run: python studies/climate_landscape/scripts/audit_correct_official_flowmer_frogs_slug_v63.py
+      - name: Keep normalized source-metadata receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-correct-frogs-package-metadata-only-v63
+          path: studies/climate_landscape/receipts/FLOWMER_CORRECT_FROGS_PACKAGE_METADATA_V63.json
+          if-no-files-found: error
