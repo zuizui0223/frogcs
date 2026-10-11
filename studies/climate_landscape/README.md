@@ -1,70 +1,71 @@
 # Independent frog acoustic–hydrology study
 
-**Current handoff — 2026-10-11. Status: BLOCKED — original matched recording and local-water data have not been obtained.**
+**Current handoff — 2026-10-11. Status: BLOCKED for ecological analysis — original matched recording and local-water metadata have not been obtained.**
 
-This is the independent study in draft PR #135, not the frozen JAE RC6 manuscript. Source audits and the v6.5–v6.8 synthetic checks do not establish a new effect in real frogs. No custodian email has been sent. Do not merge this work into `main` or reopen NAAMP analyses.
+This is independent draft PR #135, not the frozen JAE RC6 manuscript. No custodian email has been sent. Do not merge into `main` or reopen NAAMP analyses. Source audits and synthetic counterexamples do not establish a new effect in real frogs.
 
 ## Biological target
 
-**First question:** at comparable local water depth, does calling differ between rising and receding water, with season, solar time and recording quality represented?
+At comparable local water depth, does calling differ between rising and receding water, accounting for season, solar time and recording quality? Conditional on adequate source data, does calling in a strictly earlier wetting episode improve later forecasts beyond hydrological history, persistent species–wetland differences and measurement uncertainty?
 
-**Conditional second question:** does calling in a strictly earlier wetting episode improve later-episode forecasts beyond local hydrological history, persistent species–wetland differences and measurement uncertainty?
-
-These are untested observational questions. A positive forecast gain would not identify individual memory, social facilitation, adaptation or reproductive success.
+These remain untested observational questions. Prediction alone does not identify memory, social feedback, adaptation or reproductive success.
 
 ## Start here
 
 | Active document | Purpose |
 | --- | --- |
-| [Biological GO / LIMITED / STOP decision](V6_9_BIOLOGICAL_GO_LIMITED_STOP_AND_SOURCE_HANDOFF.md) | Required source evidence, restricted alternatives and interpretation boundaries |
-| [Single metadata enquiry — UNSENT](V6_0_CEWH_ACOUSTIC_HYDROLOGY_SOURCE_INVENTORY_REQUEST_UNSENT.md) | Three initial availability questions; author review and a separate sending decision are required |
-| [Canonical newer frog source and access boundary](V6_3_REAL_CANONICAL_FROGS_SOURCE_AND_403_STOP.md) | Correct source identity; the prior HTTP 403 did not retrieve a newer observation table |
+| [GO / LIMITED / STOP decision](V6_9_BIOLOGICAL_GO_LIMITED_STOP_AND_SOURCE_HANDOFF.md) | Required source evidence and interpretation boundaries |
+| [Single metadata enquiry — UNSENT](V6_0_CEWH_ACOUSTIC_HYDROLOGY_SOURCE_INVENTORY_REQUEST_UNSENT.md) | Three initial availability questions; separate author decision is required before sending |
+| [Newer frog-source identity](V6_3_REAL_CANONICAL_FROGS_SOURCE_AND_403_STOP.md) | Canonical identity and earlier unsuccessful metadata access, not a newer observation table |
+| [Public Nap Nap source receipt](receipts/NAPNAP_PUBLIC_DISPLAY_ASSET_INVENTORY_2026_10_11.json) | Dated HTML/script, HEAD, prefix and whole-file structural checks; historical scope retained |
 
-## What remains missing
+## What remains missing for the proposed analysis
 
-| Requirement | Current state | Minimum useful original evidence |
+| Requirement | Current state | Minimum useful evidence |
 | --- | --- | --- |
-| W — physical units | Not authenticated for the acoustic panel | Recorder–logger–physical wetland mapping with effective dates, moves and multiple instruments per wetland |
-| O — recording opportunities | Not obtained | Scheduled/valid/missing/uncertain intervals, duration, clocks and quality; missing recordings are not silence |
-| H — original local water history | Not obtained | Same-wetland dated logger history, datum, precision, calibration, gaps and shared-error information; the nine public display values below are not this record |
-| D — detection validity | Not obtained | Source classifier/annotation versions and validation across species, water states and noise conditions |
-| T — usable temporal support | Not established | Actual overlapping wetland coverage and repeated rising/receding episodes, with strictly earlier histories |
-| R — use of underlying archive | Not established | Custodian, source version, applicable licence or permission and permitted non-sensitive outputs |
+| W — physical units | Not authenticated for a multi-wetland acoustic panel | Recorder–logger–wetland mapping with effective dates, moves and shared instruments |
+| O — recording opportunities | Not obtained | Scheduled/valid/missing/uncertain intervals, duration, original clocks and quality |
+| H — original water history | Not obtained | Same-wetland dated logger history, datum, precision, calibration, gaps and shared-error information |
+| D — detection validity | Not obtained | Annotation/classifier versions and validation across species, water states and noise |
+| T — temporal support | Not established | Actual overlapping wetland coverage and repeated comparable rising/receding episodes |
+| R — underlying archive use | Not established | Custodian, source version, applicable licence/permission and permitted outputs |
 
-Distinct physical wetlands are the proposed sampling units, not a guarantee of statistical independence. Shared catchments, water deliveries and observation dates must still be represented in the design. Existing public metadata permissions do not automatically cover an unreleased audio/depth archive.
+Distinct wetlands are sampling units, not a guarantee of statistical independence. Catchment, water delivery and date dependence still need to be represented. Public display access does not establish permission to use an unreleased underlying archive.
 
-## Evidence already retained
+## Public Nap Nap example: format audit complete, source observation ledger still missing
 
-The [v6.9 decision](V6_9_BIOLOGICAL_GO_LIMITED_STOP_AND_SOURCE_HANDOFF.md) separates source discoveries, legacy published-table descriptions and artificial counterexamples. The older frog-abundance table is not an authenticated multi-wetland audio/depth panel or a species-specific recruitment dataset.
+The [original presentation](https://media.flow-mer.org.au/napnap/) shows one wetland over 30 August–7 September 2020. The [creators' article](https://journals.sagepub.com/doi/10.1177/14744740231197813) describes selection of the managed-water-arrival period through visualisation, not an outcome-blind evaluation window.
 
-The [v6.8 numerical receipt](V6_8_LOCAL_NUMERICAL_RECONSTRUCTION_AND_SYNTHETIC_STOP.md) records the completed [CI run 38108980247](https://github.com/zuizui0223/frogcs/actions/runs/38108980247). Its results are entirely synthetic: environmental history and measurement error can leave a predictive acoustic lag even when direct lag influence is zero. This is not empirical evidence of frog memory or a field power calculation.
+The checks below are cumulative, not competing descriptions of a single inspection. Earlier claims of no body download describe the earlier stages only.
 
-### Public Nap Nap example: actual display assets verified, original records still missing
-
-The [original presentation](https://media.flow-mer.org.au/napnap/) covers 30 August–7 September 2020 at one wetland. The [creators' article](https://journals.sagepub.com/doi/10.1177/14744740231197813) describes selecting the managed-water-arrival period through visualisation. It is a selected communication case, not an outcome-blind evaluation window.
-
-The bounded public-asset inspection on 2026-10-11 progressed beyond the earlier text-only check. [Actual execution 38126439272](https://github.com/zuizui0223/frogcs/actions/runs/38126439272) and the [compact source receipt](receipts/NAPNAP_PUBLIC_DISPLAY_ASSET_INVENTORY_2026_10_11.json) establish:
-
-| Verified public presentation property | Source-supported result | Limit |
+| Inspection | Verified result | Remaining limit |
 | --- | --- | --- |
-| Embedded `daysData` | Nine dated objects, each with `audio`, `date` and one numeric `depth` value | No hourly logger series or within-day observation timestamp; the daily statistic is undocumented |
-| Water display | The application uses `Math.floor(da.depth*100)` and the page labels cm | Display rounding is not instrument precision, calibration or measurement accuracy |
-| Adjacent daily depth values | Seven increases, one decrease, no equal differences | Not proof of monotonic rise, nor an authenticated recession event or matched-depth rise/fall comparison |
-| Daily audio assets | Nine source-constructed `audio/YYYYMMDD-stereo.mp3` URLs returned HTTP 200 and `audio/mpeg` to HEAD requests | No sound bodies downloaded; playback, actual duration, original clip completeness and quality were not tested |
-| Playback time mapping | `hourIndex*300+offsetTime`; inverse uses `floor(seek/300)` | Each display hour indexes a 300-second sampled block, not continuous elapsed wall time |
+| [HTML/script and HEAD check](https://github.com/zuizui0223/frogcs/actions/runs/38126439272) | Nine dated display objects, one depth value per day and nine responding daily audio URLs; seven display increases and one decrease | Daily statistic/time, calibrated water phase and original logger series remain unknown |
+| [MP3 prefix check](https://github.com/zuizui0223/frogcs/actions/runs/38147734152) | 8 KiB per asset; MPEG-2 Layer III, 24 kHz, two encoded channels; no explicit frame-count tag in parsed prefixes | Prefix-derived size/bitrate duration was conditional, not a full count |
+| [Whole-file frame-chain check](https://github.com/zuizui0223/frogcs/actions/runs/38148733736) | All nine complete public encoded bodies read transiently; each has 300,003 frames at 64 kbit/s and 24 kHz. Every byte belongs to the recognized outer metadata or contiguous frame chain | No audio decoding, payload/CRC verification, encoder-delay adjustment, source recording-quality or original timestamp validation |
 
-The public interface thus supplies a day-level display mapping, not the original recording-opportunity ledger. Do not treat a daily MP3 as uninterrupted 24-hour monitoring, infer 216 verified valid recordings, convert unrecorded intervals into silence, or copy a daily depth value across hours as though it were independently measured at every recording. The server's 2025 file-modification dates are not the 2020 recording dates.
+Each complete file contains **108 bytes of leading ID3v2 metadata, 57,600,576 MPEG-frame bytes and 128 bytes of trailing ID3v1 metadata**, totaling 57,600,812 bytes. Counting frames gives **300,003 × 576 / 24,000 = 7,200.072 seconds of encoded frame capacity** per daily asset. This is not an authenticated gapless playback duration or valid field-recording time. The previous conditional size estimate, 7,200.088 seconds, included the 128-byte trailing tag as though it were audio.
 
-Only the public HTML/linked JavaScript, embedded daily display metadata and audio response headers were read. No JavaScript was executed, no audio bodies or acoustic-response labels were acquired, no protected locations were requested, and no denied CKAN endpoint was retried. The source script is SHA-256 pinned in the receipt. Inspection code is retained at [the execution commit](https://github.com/zuizui0223/frogcs/blob/3374d13339ea319b1d78123c6e2b84f2346cc4ee/.github/workflows/napnap_public_asset_inventory.yml); the one-off workflow can be removed from the active tree after completion without losing its provenance.
+All nine complete-file hashes differ, ruling out identical whole files, not repeated/padded intervals or identical acoustic content within them. No header-chain break or truncated final frame was detected under the tested parser. An undamaged compressed frame header does not establish an undamaged audio payload, and whole-file structural consistency does not establish completeness of the original observation schedule.
 
-Keep this example **LIMITED to presentation/source feasibility**. The longer underlying archive may contain the necessary repeated episodes, calibrated logger histories and valid recording ledger; this display does not establish them. No frog effect or independent validation has been computed.
+The latest check read **518,407,308 encoded bytes** across nine files in runner memory. No sound was decoded, played, uploaded or redistributed, no species labels were inferred and no private records or coordinates were requested. Only metadata/hashes are retained. The parser passed nine tests, including truncation and corrupt-sync rejection, and matched mutagen 1.47.0 on 84 header configurations. Exact one-off [execution code](https://github.com/zuizui0223/frogcs/blob/6b23387c3416ca1241f798b275ce63332adf66cd/.github/workflows/napnap_whole_mp3_structure.yml) remains at a fixed commit; it is not a new scientific model.
 
-## Next permitted work
+### Timebase and ecological boundary
 
-Review the single enquiry and obtain original non-sensitive availability information through an explicitly approved route. Before any new response analysis, record which requirements are satisfied, fix source-specific quality rules and define temporal evaluation splits. Publicly exposed pilot summaries are not an untouched confirmation set. Without adequate source evidence, retain the LIMITED or STOP classification.
+The display uses `hourIndex*300+offsetTime`. Playback positions 299 and 300 seconds nominally map to 00:04:59 and 01:00:00. These are sampled blocks separated by unobserved time, not a continuously observed one-second transition. Uniform multiplication of playback time by 12 is also wrong. Original recorder timezone, clock calibration and daylight-saving handling remain unauthenticated.
 
-Do not add artificial scenarios, repeatedly probe denied APIs, infer wetland membership from descriptions or proximity, invent zeros, or change the frozen RC6 scientific package. General continuation does not authorize sending email, creating mailbox drafts or accepting new data-use terms.
+Do not turn each daily two-hour encoded asset into 24 hours of continuous monitoring, assert 216 valid original clips, infer uninterrupted chorus durations across sampled-block boundaries, or replicate one daily display-depth value into independent hourly measurements. Missing, unrecorded, unvalidated and valid-no-call remain distinct; unknown values are not zero.
+
+The bounded public-file format audit is now complete. Further file-format checks cannot establish the missing original recording/depth/quality ledger. Keep this example **LIMITED to presentation/source feasibility**. No empirical frog effect or independent validation has been computed.
+
+## Evidence and next action
+
+The [v6.9 decision](V6_9_BIOLOGICAL_GO_LIMITED_STOP_AND_SOURCE_HANDOFF.md) separates public-source discoveries, legacy table descriptions and synthetic results. The [v6.8 numerical receipt](V6_8_LOCAL_NUMERICAL_RECONSTRUCTION_AND_SYNTHETIC_STOP.md) records artificial counterexamples, not biological memory or field power.
+
+Review the one enquiry and obtain non-sensitive source availability information through an explicitly approved route. Before new response analysis, document which requirements pass, fix source-specific quality rules and define temporal evaluation splits. The longer archive may contain the missing comparisons; this selected public example does not establish them.
+
+Do not add artificial scenarios, repeatedly probe denied APIs, infer wetland membership from descriptions or proximity, invent zeros, or modify RC6. General continuation does not authorize email, mailbox drafts or acceptance of data-use terms.
 
 ## History
 
-All original specifications, source receipts, scripts and numerical outputs remain at their existing paths. The [complete pre-consolidation status narrative](https://github.com/zuizui0223/frogcs/blob/e338b09f74dce1b024e887299b9af8e341265e37/studies/climate_landscape/README.md) is preserved at a fixed commit. Historical pending/queued statements describe their recording time, not the current state. This page is the current entrypoint; v6.9 remains the decision authority.
+Existing specifications, receipts, scripts and numerical outputs remain at their paths. The [pre-consolidation narrative](https://github.com/zuizui0223/frogcs/blob/e338b09f74dce1b024e887299b9af8e341265e37/studies/climate_landscape/README.md) preserves earlier progress. Dated pending or no-download statements refer to their recording time. This README is the current entrypoint; v6.9 remains the ecological decision authority.
