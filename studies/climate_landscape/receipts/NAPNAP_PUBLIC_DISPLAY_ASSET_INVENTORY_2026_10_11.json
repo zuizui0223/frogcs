@@ -149,5 +149,77 @@
       "Source recording timestamps, gaps, duplicate/padded intervals, classifier validity and original local water history remain unverified.",
       "No new frog response, ecological effect, independent replication, data-use agreement or email action follows from this metadata check."
     ]
+  },
+  "whole_file_structure_review": {
+    "checked_utc": "2026-10-11T14:49:26.887796+00:00",
+    "verification_run": "https://github.com/zuizui0223/frogcs/actions/runs/38148733736",
+    "verification_job_id": 114497489284,
+    "verification_code_commit": "6b23387c3416ca1241f798b275ce63332adf66cd",
+    "verification_workflow_path": ".github/workflows/napnap_whole_mp3_structure.yml",
+    "metadata_artifact_id": 11705479484,
+    "result": "ALL_NINE_STRUCTURES_VERIFIED",
+    "request": "Ordinary public GET of the same nine source-listed files; redirects disabled, exact prior size and first-8192-byte hashes required",
+    "full_public_encoded_files_read_transiently": 9,
+    "http_200_complete_bodies": 9,
+    "total_encoded_body_bytes_read": 518407308,
+    "prior_prefix_hashes_matched": 9,
+    "distinct_full_file_sha256": 9,
+    "audio_payload_decoded_or_played": false,
+    "binary_files_committed_uploaded_or_redistributed": false,
+    "historical_scope_note": "Earlier no-full-download statements describe the earlier HEAD and prefix checks. This follow-up read all nine complete public encoded bodies in runner memory, retaining metadata only.",
+    "parser_validation": {
+      "unit_tests_passed": 9,
+      "reference": "mutagen 1.47.0 MPEGFrame",
+      "header_configurations_compared": 84,
+      "checks": ["counted duration", "outer metadata exclusion", "variable bitrates", "truncated frame", "corrupt sync without resynchronization", "unknown trailing bytes", "sample-rate changes", "malformed ID3", "reference header lengths"]
+    },
+    "common_structure_all_nine": {
+      "file_bytes": 57600812,
+      "leading_id3v2_bytes": 108,
+      "mpeg_frame_bytes": 57600576,
+      "trailing_id3v1_bytes": 128,
+      "mpeg_version": 2,
+      "layer": 3,
+      "sample_rate_hz": 24000,
+      "channels": 2,
+      "mpeg_frame_count": 300003,
+      "samples_per_frame": 576,
+      "encoded_samples_per_channel": 172801728,
+      "bitrate_frame_counts": {"64000": 300003},
+      "padding_bit_frames": 0,
+      "all_bytes_accounted_for": true,
+      "resynchronizations_performed": 0,
+      "encoded_frame_duration_seconds": 7200.072,
+      "duration_calculation": "300003*576/24000",
+      "duration_is_counted_frame_capacity_not_size_estimate": true,
+      "encoder_delay_and_end_padding_verified": false,
+      "gapless_playback_duration_seconds": null,
+      "original_valid_recorded_seconds": null,
+      "original_recording_completeness_verified": false,
+      "payload_integrity_or_crc_verified": false
+    },
+    "full_file_sha256_by_display_date": {
+      "20200830": "235445e1df78fac47fa5a6f9999ef0db4cb0f77c9f7b2c7d56b731e2225a0cd4",
+      "20200831": "80c895e11798492fc6fa90a40b3f99a1220bad5f8e2dd2eee2ea990cafbfdccd",
+      "20200901": "bb5f2ec6cb0c76918b0f1e137031968649774b963f677d7225d37462bb72082a",
+      "20200902": "0f074c0290e95eef4fd4405d5a75d48bfdfe1143fdb2e67d16e885ef5c935aa7",
+      "20200903": "f845f6c8bc78072c28dd2d50fb1daba7291eba8da50f7de1c884592393514863",
+      "20200904": "711caaa7373b24015ec7bd711a5f0e4cd0ffa5b6af7dc42e58182d902726db54",
+      "20200905": "6ecf571e6b8261fdf43374948a12db7ea388c9501b4b84b8fd3239114ed48940",
+      "20200906": "2688a4d7fa7de1f84c7c2ee985aea3f520469d14a0cd4cc5af59147777af5e9a",
+      "20200907": "b5e0224cafd84e3e734785887a33b86832914127b5297537b2e3657bfb4a2173"
+    },
+    "analysis_limits": [
+      "No header-chain break, partial final frame or unrecognized bytes were detected under this parser; compressed-payload validity was not decoded or CRC-checked.",
+      "Different full-file hashes exclude identical whole files, not repeated audio intervals, source padding or duplicate acoustic content.",
+      "7200.072 seconds is the duration represented by counted MPEG frames, before any unverified encoder-delay or padding adjustment; it is not 24 hours of continuous observation.",
+      "The 128-byte trailing ID3v1 tag accounts for the 0.016-second difference from the earlier size-based 7200.088-second estimate.",
+      "Daily display depth, original hourly timestamps, missing intervals, recording quality, water measurements, detection accuracy and underlying archive rights remain unverified.",
+      "This completes the bounded public-file format audit; further technical file checks cannot replace original observation metadata or establish a frog effect."
+    ],
+    "new_frog_effect_or_repeated_episode_test": false,
+    "source_rights_or_data_use_terms_accepted": false,
+    "email_sent": false,
+    "main_rc6_modified": false
   }
 }
