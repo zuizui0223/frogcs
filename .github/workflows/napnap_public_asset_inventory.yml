@@ -7,58 +7,68 @@ permissions: {}
 jobs:
   public-linked-assets:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 4
     steps:
-      - name: Inspect source-pinned application data references without executing JavaScript
+      - name: Verify display-date inventory and public audio headers without reading audio bodies
         shell: bash
         run: |
           python3 - <<'PY'
           from urllib.request import Request,build_opener,HTTPRedirectHandler
           from urllib.error import HTTPError,URLError
-          from html.parser import HTMLParser
+          from urllib.parse import urlsplit
           from hashlib import sha256
           from pathlib import Path
           from datetime import datetime,timezone
-          import json,re
+          import json,re,math
           ROOT='https://media.flow-mer.org.au/napnap/'
-          PINS={ROOT:'fb3b0ec7b20b42fbf13e3fc330c385b68a2b9e4a48f84420bdb8113e44aa9a92',ROOT+'scrolly-audio-unload.js':'b7a6e78fbb8cdbc44d96acc94767e3843be292f3e258b54c0f3aa6c5a205914b'}
+          SCRIPT=ROOT+'scrolly-audio-unload.js'
+          PIN='b7a6e78fbb8cdbc44d96acc94767e3843be292f3e258b54c0f3aa6c5a205914b'
           class NoRedirect(HTTPRedirectHandler):
               def redirect_request(self,*args,**kwargs): return None
-          def read(u):
-              if u not in PINS: raise ValueError('UNAPPROVED_URL')
-              with build_opener(NoRedirect).open(Request(u,headers={'User-Agent':'frogcs-public-asset-inventory/1.0'}),timeout=25) as r:
-                  b=r.read(200001)
-                  if r.status!=200 or len(b)>200000: raise ValueError('SIZE_OR_STATUS')
-              if sha256(b).hexdigest()!=PINS[u]: raise ValueError('SOURCE_CHANGED')
+          opener=build_opener(NoRedirect)
+          def read_script():
+              with opener.open(Request(SCRIPT,headers={'User-Agent':'frogcs-public-asset-inventory/1.0'}),timeout=25) as r:
+                  b=r.read(30001)
+                  if r.status!=200 or len(b)>30000: raise ValueError('SIZE_OR_STATUS')
+              if sha256(b).hexdigest()!=PIN: raise ValueError('SOURCE_CHANGED')
               return b.decode('utf-8-sig')
-          class InlineScripts(HTMLParser):
-              def __init__(self): super().__init__(); self.active=False; self.parts=[]; self.entries=[]
-              def handle_starttag(self,t,a):
-                  if t=='script': self.active='src' not in dict(a); self.parts=[]
-              def handle_data(self,x):
-                  if self.active: self.parts.append(x)
-              def handle_endtag(self,t):
-                  if t=='script' and self.active: self.entries.append(''.join(self.parts)); self.active=False
-          def excerpt(line):
-              if re.search(r'latitude|longitude|coordinate|api_key|password|token|statcounter',line,re.I): return '[OMITTED]'
-              if len(line)>350: return '[LONG_LINE_OMITTED]'
-              return re.sub(r'(?<!\w)[+-]?\d+\.\d{3,}', '[DECIMAL]',line.strip())[:300]
-          result={'status':'NOT_FETCHED','checked_utc':datetime.now(timezone.utc).isoformat(),'source_pins':PINS,'javascript_executed':False,'audio_or_separate_data_tables_requested':False,'numeric_source_rows_parsed':False}
+          def parse_days(source):
+              m=re.search(r'\blet\s+daysData\s*=\s*(\[.*?\]);',source,re.S)
+              if not m: raise ValueError('DAY_ARRAY_NOT_FOUND')
+              rows=json.loads(m.group(1))
+              if not isinstance(rows,list) or not 1<=len(rows)<=31: raise ValueError('DAY_ARRAY_SIZE')
+              for row in rows:
+                  if set(row)!={'audio','date','depth'}: raise ValueError('DAY_ARRAY_SCHEMA')
+                  if not re.fullmatch(r'\d{8}',row['date']): raise ValueError('DATE_SCHEMA')
+                  if type(row['depth']) not in (float,int) or not math.isfinite(row['depth']): raise ValueError('DEPTH_TYPE')
+                  datetime.strptime(row['date'],'%Y%m%d')
+              return rows
+          def head(u):
+              if not re.fullmatch(re.escape(ROOT)+r'audio/\d{8}-stereo\.mp3',u): raise ValueError('HEAD_URL_NOT_SOURCE_DERIVED')
+              with opener.open(Request(u,method='HEAD',headers={'User-Agent':'frogcs-public-asset-inventory/1.0'}),timeout=15) as r:
+                  return {'url':u,'status':r.status,'content_type':r.headers.get('Content-Type'),'content_length':r.headers.get('Content-Length'),'last_modified':r.headers.get('Last-Modified')}
+          assert len(parse_days('let daysData = [{"audio":"x.mp3","date":"20200101","depth":0.0}];'))==1
+          try: parse_days('let daysData = [{"audio":"x.mp3","date":"bad","depth":0.0}];')
+          except ValueError: pass
+          else: raise AssertionError('INVALID_DATE_ACCEPTED')
+          out={'checked_utc':datetime.now(timezone.utc).isoformat(),'source_script':SCRIPT,'script_sha256_required':PIN,'status':'NOT_READ','no_audio_bodies_downloaded':True,'no_acoustic_response_labels_parsed':True,'not_a_raw_logger_or_valid_recording_manifest':True,'daily_audio_headers':[]}
           try:
-              html=read(ROOT); script=read(ROOT+'scrolly-audio-unload.js')
-              ip=InlineScripts();ip.feed(html)
-              result['inline_script_metadata']=[{'characters':len(x),'assignment_names':sorted(set(re.findall(r'(?:var\s+|let\s+|const\s+)([A-Za-z_$][\w$]*)\s*=',x))),'object_key_names':sorted(set(re.findall(r'["\x27]([A-Za-z_][\w-]{0,50})["\x27]\s*:',x)))[:40]} for x in ip.entries]
-              result['application_reference_lines']=[{'line':i,'text':excerpt(x)} for i,x in enumerate(script.splitlines(),1) if re.search(r'\$http|fetch\(|\.txt|\.json|\.csv|depth|data\s*=|days\s*=|audios\s*=|sound\s*=|\.mp3|\.wav|date\s*=|date:',x,re.I)][:80]
-              result['html_data_elements']=[excerpt(x) for x in html.splitlines() if re.search(r'text/(?:csv|plain)|application/json|id=["\x27](?:data|days|depth)|\.csv|\.json|\.txt',x,re.I)][:30]
-              result['status']='PINNED_PUBLIC_CODE_REFERENCES_INSPECTED'
-          except HTTPError as e: result.update(status='HTTP_STOP',http_status=e.code)
-          except (URLError,TimeoutError) as e: result.update(status='NETWORK_STOP',error_type=type(e).__name__)
-          except (ValueError,UnicodeError) as e: result.update(status='CONTENT_STOP',error_code=str(e) if str(e)=='SOURCE_CHANGED' else type(e).__name__)
-          Path('napnap_public_asset_links.json').write_text(json.dumps(result,indent=2)+'\n')
-          print(json.dumps(result,sort_keys=True))
+              src=read_script(); rows=parse_days(src)
+              if '"audio/"+$scope.d.dateString+"-stereo.mp3"' not in src: raise ValueError('ACTUAL_AUDIO_PATH_TEMPLATE_CHANGED')
+              dates=[r['date'] for r in rows]
+              differences=[b['depth']-a['depth'] for a,b in zip(rows,rows[1:])]
+              out.update(display_row_count=len(rows),display_schema=['audio','date','depth'],display_dates=dates,distinct_dates=len(set(dates)),one_depth_number_per_day=True,daily_display_changes={'increases':sum(x>0 for x in differences),'decreases':sum(x<0 for x in differences),'equal':sum(x==0 for x in differences)},display_floor_to_integer_centimetres='Math.floor(da.depth*100)' in src)
+              out['time_mapping_source_lines']=[{'line':i,'code':x.strip()[:230]} for i,x in enumerate(src.splitlines(),1) if 140<=i<=310 and re.search(r'\b(?:300|3600|7200|120|12|24|60)\b|offset|duration|audioPath|src:|seek\(|Math.floor|\bsprite\b',x) and len(x)<300][:45]
+              for d in dates: out['daily_audio_headers'].append(head(ROOT+'audio/'+d+'-stereo.mp3'))
+              out['status']='DISPLAY_ARRAY_AND_DAILY_AUDIO_HEADERS_VERIFIED'
+          except HTTPError as e: out.update(status='HTTP_STOP',http_status=e.code)
+          except (URLError,TimeoutError) as e: out.update(status='NETWORK_STOP',error_type=type(e).__name__)
+          except (ValueError,UnicodeError,TypeError,KeyError) as e: out.update(status='CONTENT_STOP',error_type=type(e).__name__,reason=str(e) if str(e) in ('SOURCE_CHANGED','ACTUAL_AUDIO_PATH_TEMPLATE_CHANGED','DAY_ARRAY_NOT_FOUND') else 'SCHEMA_OR_CONTENT')
+          Path('napnap_public_asset_links.json').write_text(json.dumps(out,indent=2)+'\n')
+          print(json.dumps(out,sort_keys=True))
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: napnap-public-asset-links-no-observations
+          name: napnap-public-display-inventory-no-audio-bodies
           path: napnap_public_asset_links.json
           if-no-files-found: error
