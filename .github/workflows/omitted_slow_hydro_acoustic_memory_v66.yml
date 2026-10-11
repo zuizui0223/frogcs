@@ -1,0 +1,28 @@
+name: v6.6 omitted slow-water false acoustic-memory synthetic QA
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/test_omitted_slow_hydrology_acoustic_lag_v66.py"
+      - "studies/climate_landscape/V6_6_OMITTED_SLOW_HYDROLOGY_SPURIOUS_ACOUSTIC_MEMORY_CONTRACT.md"
+      - ".github/workflows/omitted_slow_hydro_acoustic_memory_v66.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-confounding-counterexample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical packages
+        run: python -m pip install "numpy>=1.26,<3" "scikit-learn>=1.5,<2"
+      - name: Test whether omitted slow water fabricates acoustic-memory predictive gain
+        run: python studies/climate_landscape/scripts/test_omitted_slow_hydrology_acoustic_lag_v66.py
