@@ -4,6 +4,14 @@
 
 This is independent draft PR #135, not the frozen JAE RC6 manuscript. No custodian email has been sent. Do not merge into `main` or reopen NAAMP analyses. Source audits and synthetic counterexamples do not establish a new effect in real frogs.
 
+## New official source-management lead (reviewed 2026-10-12)
+
+The [Murrumbidgee 2024–25 Flow-MER Annual Report (issued 22 January 2026)](https://www.dcceew.gov.au/sites/default/files/documents/murrumbidgee-mer-annual-report-2024-25.pdf), printed pp.22–23, 28, 63 and 98, identifies the original governance path that the public Nap Nap MP3s cannot supply. The Area team's **central Microsoft Access database** is described as authoritative for project **field data since 2014**. Hydrological and ancillary datasets are separately held as versioned, access-controlled project copies. A **Lead Data Manager**, **Data Quality and Systems Analyst** and **Spatial Data Manager** are defined roles; original exceptions may be marked by `qualityCode`/`evaluationCode`. These facts do **not** prove that raw autonomous recordings or their QA ledger are in Access.
+
+The report describes depth loggers deployed across **35 wetland sites** in 2024–25 and derived **daily depth time series**; its earlier monitoring table describes 32 loggers. The nominal counts must not be treated as an authenticated overlap with the **12 historical frog recording stations**, or as 35 fully paired, independent wetlands. The 2024–25 realized frog field procedure was **6 × 2-minute human call surveys**, **2 × 20-minute visual surveys** and 9 wetlands. Larvae not identifiable to one of two `Limnodynastes` frog species were recorded as a **species complex**. These human surveys must not be silently pooled with the 5-minute/hour passive audio archive, nor generalized to all previous years. The report's description of shared NSW Saving our Species–Flow-MER raw audio is in the **bittern/waterbird workstream**, a possible custodian lead rather than a verified join to the frog recognizer archives.
+
+**Next actionable evidence is specific:** ask the official CEWH contact to refer the [single updated UNSENT metadata enquiry](V6_0_CEWH_ACOUSTIC_HYDROLOGY_SOURCE_INVENTORY_REQUEST_UNSENT.md) to the **Lead Data Manager / Spatial Data Manager** and, if separate, the passive-acoustic archive custodian. Request existing identifiers/field dictionary and **non-sensitive year-by-year overlap counts**; do not seek institutional credentials or raw records. The fact that documented systems exist does **not clear** source gates W/O/H/D/T/R. Historical new-MDMS nonavailability was explicitly **as of 30 September 2025**, not a claim about current availability.
+
 ## Biological target
 
 At comparable local water depth, does calling differ between rising and receding water, accounting for season, solar time and recording quality? Conditional on adequate source data, does calling in a strictly earlier wetting episode improve later forecasts beyond hydrological history, persistent species–wetland differences and measurement uncertainty?
@@ -25,7 +33,7 @@ These remain untested observational questions. Prediction alone does not identif
 | --- | --- | --- |
 | W — physical units | Not authenticated for a multi-wetland acoustic panel | Recorder–logger–wetland mapping with effective dates, moves and shared instruments |
 | O — recording opportunities | Not obtained | Scheduled/valid/missing/uncertain intervals, duration, original clocks and quality |
-| H — original water history | Not obtained | Same-wetland dated logger history, datum, precision, calibration, gaps and shared-error information |
+| H — original water history | 2024–25 *daily summaries* documented at some wetland loggers, but no source time series or acoustic join obtained | Same-wetland date-effective logger IDs, original timestamps, datum, precision, calibration, gaps and error dependence |
 | D — detection validity | Not obtained | Annotation/classifier versions and validation across species, water states and noise |
 | T — temporal support | Not established | Actual overlapping wetland coverage and repeated comparable rising/receding episodes |
 | R — underlying archive use | Not established | Custodian, source version, applicable licence/permission and permitted outputs |
