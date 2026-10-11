@@ -2,7 +2,7 @@
 
 **Current handoff — 2026-10-11. Status: BLOCKED — original matched recording and local-water data have not been obtained.**
 
-This is the independent study in draft PR #135, not the frozen JAE RC6 manuscript. Source audits and the v6.5–v6.8 synthetic checks are complete. They do not establish a new effect in real frogs. No custodian email has been sent. Do not merge this work into `main` or reopen NAAMP analyses.
+This is the independent study in draft PR #135, not the frozen JAE RC6 manuscript. Source audits and the v6.5–v6.8 synthetic checks do not establish a new effect in real frogs. No custodian email has been sent. Do not merge this work into `main` or reopen NAAMP analyses.
 
 ## Biological target
 
@@ -26,7 +26,7 @@ These are untested observational questions. A positive forecast gain would not i
 | --- | --- | --- |
 | W — physical units | Not authenticated for the acoustic panel | Recorder–logger–physical wetland mapping with effective dates, moves and multiple instruments per wetland |
 | O — recording opportunities | Not obtained | Scheduled/valid/missing/uncertain intervals, duration, clocks and quality; missing recordings are not silence |
-| H — local water history | Not obtained | Same-wetland dated depth/inundation history, datum, precision, calibration, gaps and shared-error information |
+| H — original local water history | Not obtained | Same-wetland dated logger history, datum, precision, calibration, gaps and shared-error information; the nine public display values below are not this record |
 | D — detection validity | Not obtained | Source classifier/annotation versions and validation across species, water states and noise conditions |
 | T — usable temporal support | Not established | Actual overlapping wetland coverage and repeated rising/receding episodes, with strictly earlier histories |
 | R — use of underlying archive | Not established | Custodian, source version, applicable licence or permission and permitted non-sensitive outputs |
@@ -39,13 +39,25 @@ The [v6.9 decision](V6_9_BIOLOGICAL_GO_LIMITED_STOP_AND_SOURCE_HANDOFF.md) separ
 
 The [v6.8 numerical receipt](V6_8_LOCAL_NUMERICAL_RECONSTRUCTION_AND_SYNTHETIC_STOP.md) records the completed [CI run 38108980247](https://github.com/zuizui0223/frogcs/actions/runs/38108980247). Its results are entirely synthetic: environmental history and measurement error can leave a predictive acoustic lag even when direct lag influence is zero. This is not empirical evidence of frog memory or a field power calculation.
 
-### Public Nap Nap example: selected demonstration, not a new validation set
+### Public Nap Nap example: actual display assets verified, original records still missing
 
-Public texts checked 2026-10-11: the [original presentation](https://media.flow-mer.org.au/napnap/) covers 30 August–7 September 2020 at one wetland; its final dated narrative still describes rising water. The [creators' article, DOI 10.1177/14744740231197813](https://journals.sagepub.com/doi/10.1177/14744740231197813), explains that visualisation helped identify the period corresponding to managed water arrival. This was a selected communication case, not a documented outcome-blind evaluation window.
+The [original presentation](https://media.flow-mer.org.au/napnap/) covers 30 August–7 September 2020 at one wetland. The [creators' article](https://journals.sagepub.com/doi/10.1177/14744740231197813) describes selecting the managed-water-arrival period through visualisation. It is a selected communication case, not an outcome-blind evaluation window.
 
-Neither text establishes a matched same-depth recession comparison or independent repeated wetting episodes for this public window. This does not show that such observations are absent from the underlying longer archive. The reported hourly five-minute protocol is also not a verified complete file inventory: do not turn nine calendar days into 216 confirmed usable recordings.
+The bounded public-asset inspection on 2026-10-11 progressed beyond the earlier text-only check. [Actual execution 38126439272](https://github.com/zuizui0223/frogcs/actions/runs/38126439272) and the [compact source receipt](receipts/NAPNAP_PUBLIC_DISPLAY_ASSET_INVENTORY_2026_10_11.json) establish:
 
-This inspection read public page/article text only. Dynamic assets, numeric depth values, timezones, calibration and a downloadable timestamp-to-file manifest were not verified, and no sound files were downloaded. Keep the demonstration **LIMITED to illustration/source feasibility**; it does not clear the source gates for Q-A/Q-B. Future evaluation needs source-defined coverage and selection rules, not extraction of a favourable public example alone.
+| Verified public presentation property | Source-supported result | Limit |
+| --- | --- | --- |
+| Embedded `daysData` | Nine dated objects, each with `audio`, `date` and one numeric `depth` value | No hourly logger series or within-day observation timestamp; the daily statistic is undocumented |
+| Water display | The application uses `Math.floor(da.depth*100)` and the page labels cm | Display rounding is not instrument precision, calibration or measurement accuracy |
+| Adjacent daily depth values | Seven increases, one decrease, no equal differences | Not proof of monotonic rise, nor an authenticated recession event or matched-depth rise/fall comparison |
+| Daily audio assets | Nine source-constructed `audio/YYYYMMDD-stereo.mp3` URLs returned HTTP 200 and `audio/mpeg` to HEAD requests | No sound bodies downloaded; playback, actual duration, original clip completeness and quality were not tested |
+| Playback time mapping | `hourIndex*300+offsetTime`; inverse uses `floor(seek/300)` | Each display hour indexes a 300-second sampled block, not continuous elapsed wall time |
+
+The public interface thus supplies a day-level display mapping, not the original recording-opportunity ledger. Do not treat a daily MP3 as uninterrupted 24-hour monitoring, infer 216 verified valid recordings, convert unrecorded intervals into silence, or copy a daily depth value across hours as though it were independently measured at every recording. The server's 2025 file-modification dates are not the 2020 recording dates.
+
+Only the public HTML/linked JavaScript, embedded daily display metadata and audio response headers were read. No JavaScript was executed, no audio bodies or acoustic-response labels were acquired, no protected locations were requested, and no denied CKAN endpoint was retried. The source script is SHA-256 pinned in the receipt. Inspection code is retained at [the execution commit](https://github.com/zuizui0223/frogcs/blob/3374d13339ea319b1d78123c6e2b84f2346cc4ee/.github/workflows/napnap_public_asset_inventory.yml); the one-off workflow can be removed from the active tree after completion without losing its provenance.
+
+Keep this example **LIMITED to presentation/source feasibility**. The longer underlying archive may contain the necessary repeated episodes, calibrated logger histories and valid recording ledger; this display does not establish them. No frog effect or independent validation has been computed.
 
 ## Next permitted work
 
