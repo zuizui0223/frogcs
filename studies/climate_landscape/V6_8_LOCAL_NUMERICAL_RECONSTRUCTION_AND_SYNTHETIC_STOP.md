@@ -1,5 +1,8 @@
 # v6.8 — independent local numerical reconstruction of shared logger error counterexample
 
+> **Final v6.8 CI status update, 2026-10-11 JST:** The previously queued [GitHub Actions run 38108980247](https://github.com/zuizui0223/frogcs/actions/runs/38108980247) subsequently completed **SUCCESS**; its actual workflow logs reproduce **every five-seed local number below** (oracle, one logger, four independent, rho 0.75, rho 1 and wrong-wetland placebos). The historical statement further below that CI was "QUEUED" is preserved as the state *when that local comparison was first written*, not as current status. Both are entirely synthetic source-free results; no biological effect is established.
+
+
 **2026-10-11 JST — source-free SYNTHETIC calculation.** This is a preliminary **local re-execution of the same frozen formulas and logistic-model specification**, not an official completed GitHub Actions run, not biological data and not a field-instrument accuracy estimate. Independent draft PR #135 only. JAE RC6/main unaffected.
 
 ## Authority and execution distinction
