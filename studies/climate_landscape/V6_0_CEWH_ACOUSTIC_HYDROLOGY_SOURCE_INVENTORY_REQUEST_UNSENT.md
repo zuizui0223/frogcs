@@ -31,6 +31,7 @@ At this stage I am requesting **only a non-sensitive source/data-availability in
 4. Whether the Nap Nap 2020 matched sound and water record is separately available as a complete time-stamped research table, beyond its public interactive nine-day demonstration.
 5. Whether a non-sensitive **recorder deployment ID → water-depth logger ID → independent wetland ecological unit** key and date-effective mappings exist, with depth logger measurement datum, wetland dry/wet thresholds and recorder/clock/quality/missing interval codes. A simple metadata-only example of columns and aggregate counts suffices; no animal values or locations.
 6. Whether the Flow-MER programme's planned secure **Data Register / public searchable metadata index** currently contains archive identifiers, custodians, consent/permissions or publication/reuse status for the recorded frog audio and depth datasets. A catalog reference alone would be useful.
+7. For any depth loggers that can be linked to acoustic stations, is non-sensitive **instrument make/model and documented precision/resolution, vertical datum, calibration/maintenance record, drift or offset checks, observed gap-rate and any colocated-sensor agreement/covariance summary** available by monitoring year? Only the existence of such documentation and aggregate, non-identifying summaries are needed; no raw depth values or coordinates.
 
 A yes/no answer, aggregate year-by-year station/coverage table, dataset dictionary, or referral is plenty for deciding scientific feasibility. I would only discuss data access or approved use after the source structure and rights are clarified.
 
@@ -38,6 +39,8 @@ Thank you for your work preserving long-term wetland monitoring records.
 
 Sincerely,  
 [Author to supply confirmed identity and institution if choosing to send]
+
+> **v6.8 source request refinement:** [The synthetic shared-depth-error counterexample](V6_8_LOCAL_NUMERICAL_RECONSTRUCTION_AND_SYNTHETIC_STOP.md) shows why even multiple loggers may leave an incomplete hydrological history if their errors have common components. Item 7 therefore asks for **actual instrument quality metadata** rather than guessing real logger precision from artificial simulations. No message has been sent and no original animal or depth values are requested.
 
 ## Stop rules
 
