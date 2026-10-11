@@ -1,0 +1,60 @@
+{
+  "record_kind": "public_presentation_asset_verification_not_frog_effect",
+  "checked_utc": "2026-10-11T08:54:04.224754+00:00",
+  "source_page": "https://media.flow-mer.org.au/napnap/",
+  "source_page_sha256": "fb3b0ec7b20b42fbf13e3fc330c385b68a2b9e4a48f84420bdb8113e44aa9a92",
+  "source_script": "https://media.flow-mer.org.au/napnap/scrolly-audio-unload.js",
+  "source_script_sha256": "b7a6e78fbb8cdbc44d96acc94767e3843be292f3e258b54c0f3aa6c5a205914b",
+  "verification_run": "https://github.com/zuizui0223/frogcs/actions/runs/38126439272",
+  "verification_code_commit": "3374d13339ea319b1d78123c6e2b84f2346cc4ee",
+  "verification_workflow_path": ".github/workflows/napnap_public_asset_inventory.yml",
+  "earlier_discovery_runs": [38126213050, 38126333823],
+  "display_array": {
+    "name": "daysData",
+    "row_count": 9,
+    "fields": ["audio", "date", "depth"],
+    "dates": ["20200830", "20200831", "20200901", "20200902", "20200903", "20200904", "20200905", "20200906", "20200907"],
+    "distinct_dates": 9,
+    "numeric_depth_values_per_date": 1,
+    "display_transform": "Math.floor(da.depth*100)",
+    "display_unit_from_public_html": "cm",
+    "adjacent_daily_display_differences": {"increases": 7, "decreases": 1, "equal": 0},
+    "within_day_depth_observation_time": "not_documented_in_this_array",
+    "daily_depth_statistic": "not_documented; do not assume mean, maximum or midnight observation",
+    "physical_water_phase_classification": "not_established_by_daily_display_differences",
+    "calibration_or_instrument_accuracy": "not_established_by_display_precision"
+  },
+  "audio_headers": {
+    "method": "HEAD; response bodies not requested",
+    "source_constructed_path_pattern": "audio/YYYYMMDD-stereo.mp3",
+    "urls_checked": 9,
+    "http_200": 9,
+    "content_type": "audio/mpeg",
+    "content_length_bytes_each": 57600812,
+    "audio_bodies_downloaded": 0,
+    "playability_and_actual_duration": "not_tested",
+    "server_last_modified": "2025-06-04; this is not the recording date"
+  },
+  "interface_time_mapping": {
+    "source_seek_expression": "hourIndex*300+offsetTime",
+    "source_inverse_expression": "Math.floor($scope.sound.seek()/300)",
+    "audio_seconds_per_display_hour": 300,
+    "described_recording_schedule": "five minutes per hour",
+    "interpretation": "the interface indexes sampled hourly blocks inside a daily audio asset, not continuous elapsed wall time",
+    "original_hourly_file_manifest_and_gap_qc": "not_obtained",
+    "216_complete_valid_recordings_claim": "not_supported"
+  },
+  "scope": {
+    "wetlands_in_public_example": 1,
+    "javascript_executed": false,
+    "numeric_display_array_parsed": true,
+    "raw_logger_timeseries_obtained": false,
+    "acoustic_response_labels_parsed": false,
+    "sensitive_coordinates_requested": false,
+    "email_sent": false,
+    "independent_hysteresis_or_history_test": "not_performed",
+    "main_rc6_modified": false,
+    "access_path": "ordinary public HTML/JS GET and source-derived audio HEAD; no authentication or denied-API probing",
+    "reuse_license_for_audio_or_underlying_records": "not_verified"
+  }
+}
