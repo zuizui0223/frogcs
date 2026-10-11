@@ -1,0 +1,24 @@
+name: Rain sound x water design QA v3.6 (synthetic)
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_rain_sound_water_design_v36.py"
+      - ".github/workflows/rain_sound_water_design_qa_v36.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  design-identifiability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test factorial identifiability, fixed-k placement and masking (fabricated data)
+        run: python studies/climate_landscape/scripts/audit_rain_sound_water_design_v36.py

@@ -1,0 +1,28 @@
+name: Flow-MER species-stage CPUE source grain v5.3
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_flowmer_repeated_cpue_across_species_v53.py"
+      - ".github/workflows/flowmer_species_cpue_grain_v53.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-original-stage-grain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Source only repeated species-index vs shared tadpole CPUE audit
+        run: python studies/climate_landscape/scripts/audit_flowmer_repeated_cpue_across_species_v53.py
+      - name: Save aggregate non-sensitive source grain only
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-public-species-stage-cpue-grain-v53
+          path: studies/climate_landscape/receipts/FLOWMER_REAL_REPEATED_CPUE_SPECIES_GRAIN_V53.json
+          if-no-files-found: error

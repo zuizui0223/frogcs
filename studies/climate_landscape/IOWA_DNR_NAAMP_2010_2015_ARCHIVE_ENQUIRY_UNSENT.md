@@ -1,0 +1,48 @@
+# Iowa DNR 2010–2015 NAAMP field archive enquiry — UNSENT draft
+
+**Contact verified from official Iowa DNR website:** vwmp@dnr.iowa.gov  
+**Status:** Draft only. No email transmitted. No personal or private fields were accessed.  
+**Scientific status:** separate climate–landscape study, not JAE RC6 revision.
+
+## Email
+
+**To:** vwmp@dnr.iowa.gov  
+**Subject:** Historical Iowa NAAMP (2010–2015): stop-level wet/dry data and station records
+
+Dear Volunteer Wildlife Monitoring Program Coordinator,
+
+I am conducting a source-availability audit of historical frog and toad listening-stop environmental records from Iowa's NAAMP-era surveys (2010–2015). Your 2013 frog and toad survey report includes a NAAMP-only 2010–2013 summary (Table 2a), and the 2023 report describes work toward integrating NAAMP and traditional survey data back to the 2010 NAAMP start. Its demonstrated trend series begins around 2013, so completeness of the earlier combined data is still uncertain. The latter also describes the per-stop wet/dry observation. However, the national USGS NAAMP release's `Stops.csv` does not include a wet/dry or local-water-level field.
+
+Could you please advise whether the **original state-native 2010–2015 NAAMP records, or the later partially integrated multi-programme dataset**, retained any per-stop **Site Wet or Dry (W/D)** values or water temperatures (as distinct from species, route and visit-date records)? If the merger did not preserve those fields, might archived pre-merger NAAMP forms, spreadsheets, scanned paper sheets or data dictionaries still contain the original stop-event observations?
+
+I would initially need only (1) yes/no confirmation of field availability, (2) the **NAAMP route-year coverage and number of nonmissing W/D records**, (3) the meaning of 'wet' and 'dry' and any missing-value codes or form changes, and (4) whether a route/stop/survey-date or USGS SiteID/RunID crosswalk survived the merger. I am particularly trying to verify historical stop positions and any relocation logs for **routes 360104 (stop 3)** and **360412 (stop 7)**. If those records were not kept, a brief confirmation would also be extremely helpful.
+
+For this first audit, I am **not requesting species call records or identifiable volunteer information**. If records exist, please let me know the appropriate access and citation process.
+
+Thank you very much for your time and for maintaining the Iowa monitoring program.
+
+Sincerely,  
+[Researcher name and institutional affiliation — supply privately before sending]
+
+## Grounding and restrictions
+
+- [Successful source-only USGS schema QA](https://github.com/zuizui0223/frogcs/actions/runs/37774857243): 21,934 Runs, 219,340 Stops; zero direct local water-state columns in `Stops.csv`.
+- [Iowa DNR current data sheet](https://www.iowadnr.gov/media/1759/download?inline=) includes ten-stop `Site Wet or Dry (W/D)`; it does not validate earlier protocol years.
+- [Iowa DNR official VWMP contact](https://www.iowadnr.gov/programs-services/volunteer-opportunities/wildlife-monitoring): `vwmp@dnr.iowa.gov`; monitors now enter data online and mail paper forms, but historic retention is unknown.
+- The 1995–2003 traditional five-stop program is **not interchangeable** with 2010–2015 NAAMP ten-stop data.
+- An access response could inform a **future separate preregistered data study** only. Do not open new-route frog calling responses or retrofit locked RC6 results in order to rescue the proposed mechanism.
+
+## New original-source basis (added 2026-10-08; unsent)
+
+- [2013 Iowa DNR report](https://publications.iowa.gov/19011/56/Iowa%27s%20frog%20and%20toad%20survey%202013.pdf): Table 2a contains NAAMP results for **2010–2013**, proving contemporaneous NAAMP-era records were present for reporting.
+- [2014 Iowa DNR report](https://publications.iowa.gov/19011/2/Iowa%27s%20frog%20and%20toad%20call%20survey%202014.pdf): documents that traditional and NAAMP collection fields mostly overlapped but were reported separately.
+- [Shepherd (2023) state report](https://www.iowadnr.gov/media/1751/download?inline=): Methods documents recording stop wet/dry; Results describes progressive integration of the two programmes toward 2010, while its demonstrated trends are mainly 2013 onward. It does **not** verify retention of each historical environmental field.
+- [State-native metadata adequacy specification v3.2](V3_2_STATE_ARCHIVE_RETROSPECTIVE_MERGE_AND_WETDRY_FEASIBILITY.md): ask for W/D completeness and within-site and within-route survey variation **before** considering frog-response analysis.
+
+## Official fallback if coordinator enquiry is inconclusive — NOT SUBMITTED
+
+The [Iowa DNR Open Records Request page](https://www.iowadnr.gov/about/contact/open-records-request) provides a formally documented state public-records request route ([Iowa request portal](https://iowaopenrecords.nextrequest.com/requests/new)) in addition to the subject custodian at `vwmp@dnr.iowa.gov`. This is **not an automatic data delivery service**; records may be unavailable, exempt, require redaction or incur copying costs. No formal request, charge, portal submission or email has been made.
+
+If an author decides to use that route, request *availability or a fee estimate first*, and scope requested materials narrowly to **2010–2015 Iowa ten-stop NAAMP route original blank protocols, original event-level environmental fields / W-D and skip-state metadata, original data dictionaries and dated route-stop relocation histories**. Do not request observer identities, personal details, species detections, or post-selected frog outcome subsets during source-only screening. Do not mistake the separate DNR OpenText environmental-compliance document index for a complete wildlife monitoring archive; the DNR's own page does not list VWMP among programmes indexed there.
+
+Access-path authority and stop decision: [V3_3_IOWA_OFFICIAL_RECORDS_ACCESS_DECISION_2026-10-08.md](V3_3_IOWA_OFFICIAL_RECORDS_ACCESS_DECISION_2026-10-08.md).

@@ -1,0 +1,28 @@
+name: Flow-MER genus and tadpole stage source crosswalk v5.4
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_flowmer_genus_cpue_ties_v54.py"
+      - ".github/workflows/flowmer_genus_cpue_ties_v54.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-aggregate-genus-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compare real official source genus labels only within equal-positive CPUE groups
+        run: python studies/climate_landscape/scripts/audit_flowmer_genus_cpue_ties_v54.py
+      - name: Save non-identifying genus count receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-tadpole-genus-source-crosswalk-v54
+          path: studies/climate_landscape/receipts/FLOWMER_TADPOLE_GENUS_CROSSWALK_V54.json
+          if-no-files-found: error

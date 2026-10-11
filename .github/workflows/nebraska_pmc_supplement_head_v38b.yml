@@ -1,0 +1,28 @@
+name: Nebraska journal supplement source gate v3.8b
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/preflight_nebraska_pmc_supplement_head_v38b.py"
+      - ".github/workflows/nebraska_pmc_supplement_head_v38b.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  published-supplement-head:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe published journal supplement HEAD only
+        run: python studies/climate_landscape/scripts/preflight_nebraska_pmc_supplement_head_v38b.py
+      - name: Upload source-only HEAD receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nebraska-pmc-supplement-head-v38b
+          path: studies/climate_landscape/receipts/NEBRASKA_PMC_SUPPLEMENT_HEAD_V38B.json
+          if-no-files-found: error

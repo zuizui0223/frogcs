@@ -1,0 +1,22 @@
+name: v6.4 synthetic hydro-path and acoustic-history forecast-leakage QA
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/preflight_hydro_hysteresis_acoustic_history_v64.py"
+      - ".github/workflows/hydrology_hysteresis_history_qa_v64.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  hydrological-phase-and-history-leakage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify only synthetic rising and receding depth overlap and reject future labels
+        run: python studies/climate_landscape/scripts/preflight_hydro_hysteresis_acoustic_history_v64.py

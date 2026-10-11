@@ -1,0 +1,22 @@
+name: v6.1 synthetic recorder-wetland-depth source join preflight
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/preflight_audio_depth_unit_manifest_v61.py"
+      - ".github/workflows/independent_acoustic_wetland_depth_source_qa_v61.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-source-join-guardrails:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test fake independently defined wetland units and missing recorder/depth opportunities
+        run: python studies/climate_landscape/scripts/preflight_audio_depth_unit_manifest_v61.py

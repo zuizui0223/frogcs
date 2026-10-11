@@ -1,0 +1,32 @@
+name: Nebraska two-wetland source metadata v3.8
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/preflight_public_mendeley_metadata_v38.py"
+      - ".github/workflows/nebraska_mendeley_source_metadata_v38.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-only-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Synthetic source metadata contract check
+        run: python studies/climate_landscape/scripts/preflight_public_mendeley_metadata_v38.py --self-test
+      - name: Query frozen public dataset FILE METADATA ONLY
+        run: python studies/climate_landscape/scripts/preflight_public_mendeley_metadata_v38.py
+      - name: Upload bounded metadata receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nebraska-open-mendeley-file-metadata-v38
+          path: studies/climate_landscape/receipts/NEBRASKA_OPEN_METADATA_PREFLIGHT_V38.json
+          if-no-files-found: error
