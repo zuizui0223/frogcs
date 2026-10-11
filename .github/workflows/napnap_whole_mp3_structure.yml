@@ -1,0 +1,213 @@
+name: Nap Nap whole-file MPEG frame-chain check
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - .github/workflows/napnap_whole_mp3_structure.yml
+  workflow_dispatch:
+permissions: {}
+jobs:
+  whole-public-mp3-structure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Install pinned reference metadata parser
+        run: python3 -m pip install 'mutagen==1.47.0'
+      - name: Validate parser and inspect only source-listed complete public encoded files
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          """One-off, complete encoded-file structural audit; no audio decoding or species analysis.
+          Full bodies are read transiently, not committed, uploaded, played or redistributed.
+          Nominal encoded duration is not source recording completeness or gapless playback.
+          """
+          from collections import Counter
+          from datetime import datetime, timezone
+          from hashlib import sha256
+          from io import BytesIO
+          from pathlib import Path
+          from urllib.request import Request, build_opener, HTTPRedirectHandler
+          from urllib.error import HTTPError, URLError
+          import json, unittest
+          from mutagen.mp3 import MPEGFrame
+
+          def read_header(data, pos):
+              if pos + 4 > len(data): raise ValueError('TRUNCATED_HEADER')
+              word = int.from_bytes(data[pos:pos+4], 'big')
+              if word >> 21 != 0x7ff: raise ValueError('INVALID_FRAME_SYNC')
+              if ((word >> 19) & 3) != 2 or ((word >> 17) & 3) != 1:
+                  raise ValueError('UNEXPECTED_MPEG_VERSION_OR_LAYER')
+              br, sr = (word >> 12) & 15, (word >> 10) & 3
+              if br in (0,15) or sr == 3: raise ValueError('INVALID_FRAME_RATE')
+              bitrate = (0,8,16,24,32,40,48,56,64,80,96,112,128,144,160)[br]*1000
+              rate = (22050,24000,16000)[sr]
+              pad = (word >> 9) & 1
+              channels = 1 if ((word >> 6) & 3) == 3 else 2
+              return 72*bitrate//rate+pad, rate, bitrate, channels, pad
+
+          def inspect_structure(data):
+              pos = leading = 0
+              if data[:3] == b'ID3':
+                  if len(data)<10 or data[3] not in (2,3,4) or any(x&128 for x in data[6:10]):
+                      raise ValueError('INVALID_ID3_HEADER')
+                  size = sum(x << (7*(3-i)) for i,x in enumerate(data[6:10]))
+                  footer = 10 if data[3]==4 and data[5]&16 else 0
+                  leading = 10+size+footer
+                  if leading>len(data): raise ValueError('TRUNCATED_ID3_TAG')
+                  if footer and data[leading-10:leading-7]!=b'3DI': raise ValueError('INVALID_ID3_FOOTER')
+                  pos = leading
+              end = len(data)
+              trailing = 128 if end-pos>=128 and data[end-128:end-125]==b'TAG' else 0
+              end -= trailing
+              counts = Counter()
+              frame_count = samples = padded = 0
+              first_format = None
+              while pos < end:
+                  length, rate, bitrate, channels, pad = read_header(data,pos)
+                  if pos+length>end: raise ValueError('TRUNCATED_FINAL_FRAME')
+                  if first_format is None: first_format = (rate,channels)
+                  elif first_format!=(rate,channels): raise ValueError('FORMAT_CHANGE_WITHIN_FILE')
+                  counts[bitrate] += 1
+                  frame_count += 1
+                  samples += 576
+                  padded += pad
+                  pos += length
+              if not frame_count: raise ValueError('NO_MPEG_FRAMES')
+              return {'mpeg_frame_count':frame_count, 'sample_rate_hz':first_format[0],
+                  'channels':first_format[1], 'samples_per_frame':576,
+                  'encoded_samples_per_channel':samples,
+                  'encoded_frame_duration_seconds':samples/first_format[0],
+                  'bitrate_frame_counts':dict(sorted(counts.items())),
+                  'padding_bit_frames':padded, 'leading_id3v2_bytes':leading,
+                  'trailing_id3v1_bytes':trailing, 'mpeg_frame_bytes':end-leading,
+                  'all_bytes_accounted_for':pos+trailing==len(data),
+                  'resynchronizations_performed':0,
+                  'payload_decoded_or_crc_checked':False,
+                  'encoder_delay_and_end_padding_verified':False,
+                  'original_recording_completeness_verified':False}
+
+          def frame(bitrate_index=8, rate_index=1, pad=0):
+              rates=(22050,24000,16000)
+              bitrates=(0,8,16,24,32,40,48,56,64,80,96,112,128,144,160)
+              word=(0x7ff<<21)|(2<<19)|(1<<17)|(1<<16)|(bitrate_index<<12)|(rate_index<<10)|(pad<<9)
+              size=72000*bitrates[bitrate_index]//rates[rate_index]+pad
+              return word.to_bytes(4,'big')+bytes(size-4)
+
+          class Tests(unittest.TestCase):
+              def test_counts_frames(self):
+                  r=inspect_structure(frame()*3)
+                  self.assertEqual(r['mpeg_frame_count'],3)
+                  self.assertAlmostEqual(r['encoded_frame_duration_seconds'],0.072)
+              def test_outer_tags(self):
+                  tag=b'ID3\x03\x00\x00\x00\x00\x00\x03abc'
+                  r=inspect_structure(tag+frame()*2+b'TAG'+bytes(125))
+                  self.assertEqual((r['leading_id3v2_bytes'],r['trailing_id3v1_bytes']),(13,128))
+                  self.assertAlmostEqual(r['encoded_frame_duration_seconds'],0.048)
+              def test_variable_bitrate(self):
+                  r=inspect_structure(frame(8)+frame(9)+frame(7))
+                  self.assertEqual(len(r['bitrate_frame_counts']),3)
+                  self.assertAlmostEqual(r['encoded_frame_duration_seconds'],0.072)
+              def test_truncation(self):
+                  with self.assertRaisesRegex(ValueError,'TRUNCATED_FINAL_FRAME'):
+                      inspect_structure(frame()*2+frame()[:-1])
+              def test_no_resync(self):
+                  b=bytearray(frame()*3); b[192]=0
+                  with self.assertRaisesRegex(ValueError,'INVALID_FRAME_SYNC'): inspect_structure(bytes(b))
+              def test_unknown_tail(self):
+                  with self.assertRaises(ValueError): inspect_structure(frame()*3+b'junk')
+              def test_rate_change(self):
+                  with self.assertRaisesRegex(ValueError,'FORMAT_CHANGE'): inspect_structure(frame()+frame(rate_index=0))
+              def test_invalid_id3(self):
+                  with self.assertRaisesRegex(ValueError,'TRUNCATED_ID3'):
+                      inspect_structure(b'ID3\x03\x00\x00\x00\x00\x01\x00')
+              def test_mutagen_frame_reference(self):
+                  for br in range(1,15):
+                      for sr in range(3):
+                          for pad in range(2):
+                              b=frame(br,sr,pad); stream=BytesIO(b*2)
+                              ref=MPEGFrame(stream)
+                              length,rate,bitrate,channels,_=read_header(b,0)
+                              self.assertEqual((length,rate,bitrate,channels),
+                                  (stream.tell(),ref.sample_rate,ref.bitrate,ref.channels))
+          test_result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(Tests))
+          if not test_result.wasSuccessful(): raise SystemExit(1)
+
+          ROOT='https://media.flow-mer.org.au/napnap/audio/'
+          PINS={
+              '20200830':'d2a4dde0fa0a436570fc70bb35e897085d6c217b3a710dc13ff97ea3c4c575ca',
+              '20200831':'a92639523b7d39fd8d7b67c7c0023a4559b7a842d98eec3088a13fb51769a58b',
+              '20200901':'85c635e499f8dedf841f5c1eb00e24a4b1960521d4e5963b21a2555a999ea7c0',
+              '20200902':'00289c78e5b6887bc6640a605e6105e009d21616acff172ff623962f7fd5bc09',
+              '20200903':'f87def52338dda7cc519d6fd80a676a107f232842c290e959e106a8d132abb73',
+              '20200904':'bd59671c6fe8d0c5bb381ba93c03a01c8a07b097f617aa5b571b60bd11ee3fc9',
+              '20200905':'16c2f8a4a990fab0108f4357fd310e9cfe4628bf0f703a4ae47d5ee60778e69a',
+              '20200906':'308d272ebd3db8ea1c49bcccf32077dbfa6ffd5c16ac47098eefda32f5ba0686',
+              '20200907':'db33c71ca6f1ec49b8adb9c95a103f468560b49b97be5d582bd88a89ee0f7a1d'}
+          EXPECTED_SIZE=57600812
+          class NoRedirect(HTTPRedirectHandler):
+              def redirect_request(self,*a,**k): return None
+          opener=build_opener(NoRedirect)
+          report={'record_kind':'full_public_encoded_file_structure_not_ecological_outcome',
+              'checked_utc':datetime.now(timezone.utc).isoformat(),
+              'parser_reference':'mutagen 1.47.0; 84 header configurations checked',
+              'unit_tests_passed':test_result.testsRun,
+              'no_audio_decoding_or_playback':True,'binary_files_redistributed':False,
+              'original_recording_quality_verified':False,'source_rights_granted':False,
+              'new_species_observations_derived':False,'assets':[]}
+          for date,pin in PINS.items():
+              row={'display_date':date,'status':'NOT_FETCHED','response_body_bytes_read':0}
+              data=None
+              try:
+                  req=Request(ROOT+date+'-stereo.mp3',headers={'Accept-Encoding':'identity',
+                      'User-Agent':'frogcs-public-mp3-structure/1.0'})
+                  with opener.open(req,timeout=45) as response:
+                      row['http_status']=response.status
+                      if response.status!=200 or response.headers.get('Content-Type','').split(';')[0]!='audio/mpeg':
+                          raise ValueError('UNEXPECTED_HTTP_STATUS_OR_TYPE')
+                      if int(response.headers.get('Content-Length','-1'))!=EXPECTED_SIZE:
+                          raise ValueError('SOURCE_SIZE_CHANGED')
+                      if response.headers.get('Content-Encoding','identity')!='identity':
+                          raise ValueError('UNEXPECTED_CONTENT_ENCODING')
+                      prefix=response.read(8192)
+                      row['response_body_bytes_read']=len(prefix)
+                      if len(prefix)!=8192 or sha256(prefix).hexdigest()!=pin:
+                          raise ValueError('SOURCE_PREFIX_CHANGED')
+                      buf=BytesIO(); buf.write(prefix)
+                      while True:
+                          block=response.read(min(1048576,EXPECTED_SIZE-row['response_body_bytes_read']+1))
+                          if not block: break
+                          row['response_body_bytes_read']+=len(block)
+                          if row['response_body_bytes_read']>EXPECTED_SIZE: raise ValueError('SIZE_LIMIT_EXCEEDED')
+                          buf.write(block)
+                      data=buf.getvalue(); buf.close()
+                  if len(data)!=EXPECTED_SIZE: raise ValueError('INCOMPLETE_HTTP_BODY')
+                  row['full_file_sha256']=sha256(data).hexdigest()
+                  row['prefix_matches_prior_audit']=True
+                  row['structure']=inspect_structure(data)
+                  row['status']='WHOLE_FRAME_CHAIN_ACCOUNTED_NO_DECODING'
+              except HTTPError as e:
+                  row.update(status='HTTP_STOP',http_status=e.code)
+              except (URLError,TimeoutError) as e:
+                  row.update(status='NETWORK_STOP',error_type=type(e).__name__)
+              except ValueError as e:
+                  row.update(status='STRUCTURE_OR_SOURCE_STOP',error_code=str(e))
+              finally:
+                  data=None
+              report['assets'].append(row)
+              print('ASSET_RESULT '+json.dumps(row,sort_keys=True),flush=True)
+          good=[r for r in report['assets'] if r['status']=='WHOLE_FRAME_CHAIN_ACCOUNTED_NO_DECODING']
+          report['complete_bodies_read']=sum(r['response_body_bytes_read']==EXPECTED_SIZE for r in report['assets'])
+          report['total_body_bytes_read']=sum(r['response_body_bytes_read'] for r in report['assets'])
+          report['full_structures_verified']=len(good)
+          report['distinct_full_file_hashes']=len({r['full_file_sha256'] for r in good})
+          report['status']='ALL_NINE_STRUCTURES_VERIFIED' if len(good)==9 else 'PARTIAL_OR_BLOCKED'
+          report['interpretation']='MPEG frame chain and encoded sample duration only; payload validity, encoder delay, original timestamps, missing/padded clips, species and water measurements remain unverified.'
+          Path('napnap_whole_file_structure.json').write_text(json.dumps(report,indent=2)+'\n')
+          print('FINAL_REPORT '+json.dumps(report,sort_keys=True),flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: napnap-whole-file-structure-metadata-only
+          path: napnap_whole_file_structure.json
+          if-no-files-found: error
