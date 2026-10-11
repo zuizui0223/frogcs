@@ -39,6 +39,14 @@ The [v6.9 decision](V6_9_BIOLOGICAL_GO_LIMITED_STOP_AND_SOURCE_HANDOFF.md) separ
 
 The [v6.8 numerical receipt](V6_8_LOCAL_NUMERICAL_RECONSTRUCTION_AND_SYNTHETIC_STOP.md) records the completed [CI run 38108980247](https://github.com/zuizui0223/frogcs/actions/runs/38108980247). Its results are entirely synthetic: environmental history and measurement error can leave a predictive acoustic lag even when direct lag influence is zero. This is not empirical evidence of frog memory or a field power calculation.
 
+### Public Nap Nap example: selected demonstration, not a new validation set
+
+Public texts checked 2026-10-11: the [original presentation](https://media.flow-mer.org.au/napnap/) covers 30 August–7 September 2020 at one wetland; its final dated narrative still describes rising water. The [creators' article, DOI 10.1177/14744740231197813](https://journals.sagepub.com/doi/10.1177/14744740231197813), explains that visualisation helped identify the period corresponding to managed water arrival. This was a selected communication case, not a documented outcome-blind evaluation window.
+
+Neither text establishes a matched same-depth recession comparison or independent repeated wetting episodes for this public window. This does not show that such observations are absent from the underlying longer archive. The reported hourly five-minute protocol is also not a verified complete file inventory: do not turn nine calendar days into 216 confirmed usable recordings.
+
+This inspection read public page/article text only. Dynamic assets, numeric depth values, timezones, calibration and a downloadable timestamp-to-file manifest were not verified, and no sound files were downloaded. Keep the demonstration **LIMITED to illustration/source feasibility**; it does not clear the source gates for Q-A/Q-B. Future evaluation needs source-defined coverage and selection rules, not extraction of a favourable public example alone.
+
 ## Next permitted work
 
 Review the single enquiry and obtain original non-sensitive availability information through an explicitly approved route. Before any new response analysis, record which requirements are satisfied, fix source-specific quality rules and define temporal evaluation splits. Publicly exposed pilot summaries are not an untouched confirmation set. Without adequate source evidence, retain the LIMITED or STOP classification.
