@@ -81,3 +81,15 @@ Do **not** use an observed active-site count `k` to estimate the causal effect o
 No observations have been downloaded or modeled in v6.4. The historical acoustic archive exists, but the paired physical-unit/valid-opportunity/wetland-specific logger table and usage rights are **not obtained**. The university/ARDC registered `2014–2024` frog-abundance source returned official CKAN 403 on the verified canonical slug in v6.3 and cannot be silently used as a new sound-level dataset. The existing single metadata-only CEWH enquiry is **UNSENT**.
 
 **Work to do only after authorised source inventory:** source-only metadata eligibility gates, then freeze source-specific numeric QC thresholds, then access original species-call responses under approved rights; never reverse that order. JAE RC6 remains frozen at main `0871da0c97` and is not changed by this independent experiment design.
+
+
+## 6. Executed implementation QC — synthetic only
+
+- CI: [GitHub Actions **38107413290 — SUCCESS**](https://github.com/zuizui0223/frogcs/actions/runs/38107413290).
+- Code: [`scripts/preflight_hydro_hysteresis_acoustic_history_v64.py`](scripts/preflight_hydro_hysteresis_acoustic_history_v64.py), standard-library only.
+- Synthetic example uses **two invented wetlands**. One has a sensor-defined depth bin encountered while **rising and falling**; the other does not have matched rising/falling depths. The code counts **one** potentially informative synthetic wetland-depth stratum, but flags independent wetting episode/solar/seasonal comparability as **NOT VERIFIED**.
+- Hydrological phase uses **only the preceding measurement**, and a source-defined maximum instrument gap. It rejects missing depth/phase tolerances rather than selecting convenient thresholds after seeing frog outcomes.
+- A prior chorus score is accepted only if its complete acoustic episode ended **before both the target date and the frozen training cutoff**. A future evaluation-period episode is rejected; missing past history remains **missing**, never silently mapped to no calling.
+- No real acoustic score, water-depth value, station identifier, wetland ID, 2014–24 frogs resource, or sensitive source location was accessed. The test supports correct code behavior **only**, not hydrological hysteresis or acoustic carryover in real frogs.
+
+**Scientific status at v6.4:** `SOURCE_INVENTORY_NEEDED; HYSTERESIS_NOT_TESTED; ACOUSTIC_HISTORY_NOT_TESTED`. The next evidential step is still an approved, source-authenticated independent wetland/recorder/logger/effort/classifier manifest. The previous metadata-only custodian request is UNSENT.
