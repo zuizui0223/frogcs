@@ -56,5 +56,38 @@
     "main_rc6_modified": false,
     "access_path": "ordinary public HTML/JS GET and source-derived audio HEAD; no authentication or denied-API probing",
     "reuse_license_for_audio_or_underlying_records": "not_verified"
+  },
+  "derived_timebase_review": {
+    "review_date": "2026-10-11",
+    "evidence_basis": "Existing frozen receipt at fd2e6849827e19376adb30f96b4b242b44a304fd, executed inspection logs, and creators' public methods text; no new successful script or audio fetch in this follow-up",
+    "original_methods_article": "https://doi.org/10.1177/14744740231197813",
+    "source_time_mapping_rederived_not_executed_javascript": true,
+    "nominal_display_seconds_formula": "3600*floor(audio_seconds/300) + (audio_seconds % 300)",
+    "formula_scope": "Nominal interface clock within a daily asset, display_hour 0..23 and offset_seconds in [0,300); not authenticated recorder time or timezone",
+    "uniform_12x_time_scaling_valid": false,
+    "clock_examples": [
+      {"audio_seconds": 299, "nominal_display_clock": "00:04:59", "authenticated_recorder_timestamp": null},
+      {"audio_seconds": 300, "nominal_display_clock": "01:00:00", "authenticated_recorder_timestamp": null},
+      {"audio_seconds": 1800, "nominal_display_clock": "06:00:00", "authenticated_recorder_timestamp": null}
+    ],
+    "example_boundary": {
+      "audio_elapsed_seconds": 1,
+      "nominal_display_elapsed_seconds": 3301,
+      "unobserved_gap_can_be_called_silence": false,
+      "interpretation": "Audio position 299 to 300 seconds crosses an hourly sampling boundary; it is not a one-second continuous real-world transition"
+    },
+    "permitted_use": "Presentation-level source index for later original-record matching, not a recorder opportunity or species-response dataset",
+    "analysis_rules": [
+      "Presence in successive sampled blocks does not establish uninterrupted chorusing between them.",
+      "Do not estimate continuous bout durations or fine-scale temporal synchrony across concatenated hourly boundaries without original timestamps and observation gaps.",
+      "Do not replicate the one daily display-depth value into hourly independent water measurements or interpolate it as a verified local logger series.",
+      "Keep no-call, unrecorded, missing, and unvalidated observations distinct; unknown values remain null.",
+      "Device clocks, timezones, daylight-saving handling and solar-phase conversion remain unauthenticated.",
+      "No new frog effect, repeated-episode test, source-rights approval or email action follows from this clock calculation."
+    ],
+    "direct_script_retrieval_this_followup": "Unsuccessful: local execution environment DNS resolution failed; web tool did not return the script. This is a retrieval-environment limitation, not source absence or access denial.",
+    "new_audio_bodies_downloaded": 0,
+    "new_original_logger_values_accessed": false,
+    "new_standing_workflow_or_simulation_added": false
   }
 }
