@@ -1,0 +1,98 @@
+{
+  "record_kind": "published_coverage_audit_not_new_frog_analysis",
+  "review_date": "2026-10-12",
+  "verification": {
+    "run": "https://github.com/zuizui0223/frogcs/actions/runs/38196922401",
+    "code_commit": "00900f94b3c3ad8b6ef56cbece29f7ad3ab049cf",
+    "workflow_path": ".github/workflows/oneoff_source_coverage_pages.yml",
+    "artifact_id": 11724211195,
+    "method": "Ordinary public PDF retrieval in GitHub Actions, selected page rendering and visual inspection; offline literal-transcription and arithmetic checks; no OCR",
+    "web_screenshot_attempt": "Failed with cache-miss errors; local direct retrieval also failed DNS. Successfully downloaded rendered-page artifact from GitHub Actions instead.",
+    "bittern_report_url": "https://www.dcceew.gov.au/sites/default/files/documents/investigating-requirements-endangered-australasian-bittern-2024.pdf",
+    "bittern_report_sha256": "0c47a2dfe65879585efc8b010207c2c9693a542654f0583089e369ec80afa566",
+    "bittern_report_bytes": 1450062,
+    "bittern_report_visual_pages_1based": [4, 8],
+    "annual_report_url": "https://www.dcceew.gov.au/sites/default/files/documents/murrumbidgee-mer-annual-report-2024-25.pdf",
+    "annual_report_sha256": "9e7f5bfe220498b2c36a238d021b7ce6262a693d575600be74f1fb3e81a36fdb",
+    "annual_report_bytes": 5294207,
+    "annual_report_rendered_pages_1based": [63, 74, 75, 98]
+  },
+  "historical_archive_source": {
+    "source": "May 2024 bittern report, Methods PDF page 4; Table 2 PDF page 8",
+    "reported_recorder_deployment_date": "2016-05-17",
+    "reported_last_download_date": "2022-06-10",
+    "reported_long_term_recording_sites": 12,
+    "selected_bittern_screening_sites": 5,
+    "water_linkage_statement": "The Methods states that continuous water depth data were available from fixed loggers at each monitoring site. This is documentary evidence, not an acquired timestamped join.",
+    "site_selection": "Five sites prioritized using known or likely bittern occurrence; not a random or outcome-blind frog validation sample.",
+    "reported_gap_cause": "Flooding prevented recorder access, especially in 2021-22; whether this means no recording, delayed retrieval, or other missingness needs original interval records.",
+    "table_2_printed_years": ["2016-17", "2017-18", "2018-19", "2019-20", "2020-21", "2021-22", "2022-23"],
+    "table_2_literal_counts": {
+      "Bala": [284, 305, 315, 324, 79, 86, 8],
+      "Bayil": [399, 359, 318, 335, 78, 0, 0],
+      "Mercedes": [410, 206, 339, 321, 77, 0, 0],
+      "Nap Nap": [386, 305, 366, 169, 76, 210, 0],
+      "Two Bridges": [220, 319, 365, 346, 0, 184, 0]
+    },
+    "table_2_printed_row_totals": [1401, 1489, 1353, 1512, 1434],
+    "table_2_printed_column_totals": [1699, 1494, 1703, 1495, 310, 480, 8],
+    "table_2_printed_grand_total": 7189,
+    "row_column_grand_total_arithmetic_agrees": true,
+    "counts_above_any_single_366_day_year": [
+      {"site": "Bayil", "year": "2016-17", "reported_count": 399},
+      {"site": "Mercedes", "year": "2016-17", "reported_count": 410},
+      {"site": "Nap Nap", "year": "2016-17", "reported_count": 386}
+    ],
+    "conditional_july_june_calendar_check": {
+      "assumption": "Each year label means exactly 1 July to 30 June; not an authenticated definition of the table aggregation",
+      "additional_flag": {"site": "Nap Nap", "year": "2018-19", "reported_count": 366, "calendar_days_under_assumption": 365}
+    },
+    "chronology_to_clarify": "Methods says last download 2022-06-10; Table 2 includes a nonzero 2022-23 cell. Do not silently fix either date or heading.",
+    "confirmed_unique_site_days": null,
+    "confirmed_simultaneous_valid_days": null,
+    "inference": "The printed counts cannot yet be used as verified unique site-by-water-year day denominators. Possible period pooling, device-day aggregation or reporting errors are hypotheses, not established causes.",
+    "species_response_scope": "Bittern processing and validation do not supply calibrated frog detections or original frog negatives. Request original recordings or a species-appropriate derived product under the source terms."
+  },
+  "annual_2024_25_paired_work": {
+    "evidence": "Methods p63 and Figure 24 p75 document daily bittern calling and local water-depth analysis at eight sites using audio shared with NSW Saving our Species southern bell frog work. This establishes a published pairing precedent, not transfer of archive rights.",
+    "source_table": "Table 17, pp74-75, monitoring period columns only",
+    "published_intervals": {
+      "Bala Swamp": [["2024-04-04", "2024-05-14"], ["2024-08-09", "2025-03-27"]],
+      "Fairfax (Suicide) Swamp": [["2024-08-09", "2024-12-31"]],
+      "Narwie River": [["2024-07-09", "2025-02-25"]],
+      "Steam Engine Swamp": [["2024-04-03", "2025-02-25"]],
+      "Murrundi": [["2024-09-06", "2024-12-31"]],
+      "Forest": [["2024-08-16", "2024-12-31"]],
+      "Glen Dee": [["2024-09-01", "2024-12-31"]],
+      "Reedbeds": [["2024-08-05", "2024-12-31"]]
+    },
+    "nominal_common_calendar_window": {
+      "start": "2024-09-06",
+      "end": "2024-12-31",
+      "inclusive_days": 117,
+      "calculation": "Intersection of published monitoring date intervals, treating stated dates as inclusive",
+      "verified_valid_recording_or_water_days": null,
+      "is_approved_frog_analysis_window": false,
+      "limitation": "An envelope intersection does not prove any within-window day has complete, simultaneous, calibrated audio and depth observations. Do not multiply 117 by eight and call that usable independent replication."
+    },
+    "manual_frog_sites_table_26": ["Yarradda Lagoon", "Yarradda West Lagoon", "Narwie West Swamp", "Steam Engine Swamp", "Murrundi Swamp", "Paika Creek", "Paika Lake south west", "Hobblers Lake", "Cherax Lake"],
+    "literal_name_intersection": ["Steam Engine Swamp"],
+    "unresolved_name_pairs_not_joined": [["Murrundi", "Murrundi Swamp"], ["Narwie River", "Narwie West Swamp"]],
+    "name_comparison_interpretation": "Only a label comparison, not a count of actual wetland overlap and not a recorder-to-logger crosswalk. No fuzzy or spatial joins made.",
+    "same_as_historic_12_site_network": null
+  },
+  "source_request_priority": [
+    "Original date-effective IDs, recording-opportunity manifest and logger timestamps underlying the 2016 long-term network and 2024 bittern report, including the unscreened seven sites.",
+    "Definition and de-duplication of Table 2 usable-day counts, water-year boundaries and the apparent end-date mismatch.",
+    "Existing source keys behind 2024-25 Table 17 and Figure 24; whether that panel overlaps the historical network, and whether suitable frog outputs and approved reuse exist."
+  ],
+  "scope": {
+    "new_frog_effect_tested": false,
+    "raw_audio_downloaded_in_this_review": false,
+    "raw_logger_values_downloaded_in_this_review": false,
+    "sensitive_coordinates_extracted": false,
+    "underlying_archive_permission_granted": false,
+    "custodian_email_sent": false,
+    "main_rc6_modified": false
+  }
+}
