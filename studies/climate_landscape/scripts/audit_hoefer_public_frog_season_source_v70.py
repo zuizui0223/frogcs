@@ -17,7 +17,7 @@ import urllib.request,urllib.parse,urllib.error
 SOURCE="https://raw.githubusercontent.com/cheloniax/repo_PAM_frogs/v.2.0/data/frog_data_season.csv"
 BLOB="e5a419574be5e3f9922989f9aa6001fbb7f09d01"
 CAP=4_000_000
-PROFILE_FIELDS=("site","plot","season","Sampling.trip","SamplingDay","assessment.method","survey.method","date","date.time")
+PROFILE_FIELDS=("site","plot","season","sampling.trip","SamplingDay","assessment.method","survey.method","date","date.time")
 NO_EMIT=("common.name","scientific.name","family")
 EXPECTED_METHODS={"PAM.all","PAM.survey","OBM"}
 OUT="studies/climate_landscape/receipts/HOEFER_2026_PUBLIC_SEASON_SOURCE_PROFILE_V70.json"
@@ -36,7 +36,7 @@ def parse_rows(raw:bytes):
     n=0
     methods=Counter(); seasons=Counter()
     units=defaultdict(set); trips=defaultdict(set); dates=defaultdict(set)
-    site_ids=set(); plots=set(); siteplots=set()
+    site_ids=set(); plots=set(); siteplots=set(); distinct_trips=set(); observed_years=set()
     bad=Counter()
     # Avoid user-supplied dates/species/site printing. No taxa used in QC.
     for row in reader:
@@ -48,15 +48,15 @@ def parse_rows(raw:bytes):
         plot=(row.get("plot") or "").strip()
         meth=(row.get("assessment.method") or "").strip()
         season=(row.get("season") or row.get("SamplingPeriod") or "").strip()
-        trip=(row.get("Sampling.trip") or row.get("SamplingPeriod") or season).strip()
+        trip=(row.get("sampling.trip") or row.get("Sampling.trip") or row.get("SamplingPeriod") or season).strip()
         day=(row.get("date") or "").strip()
         if not site or not plot: bad["missing_site_or_plot"]+=1;continue
         if not meth: bad["missing_assessment_method"]+=1; continue
         site_ids.add(site); plots.add(plot);siteplots.add((site,plot))
         methods[meth]+=1
         if season:seasons[season]+=1
-        if trip:trips[(meth,site,plot)].add(trip)
-        if day:dates[(meth,site,plot)].add(day)
+        if trip:trips[(meth,site,plot)].add(trip); distinct_trips.add(trip)
+        if day:dates[(meth,site,plot)].add(day); observed_years.add(day[:4])
         if season:units[(meth,season)].add((site,plot))
         else:bad["missing_season_for_existing_detection"]+=1
     combinations={}
@@ -88,6 +88,8 @@ def parse_rows(raw:bytes):
         "n_distinct_source_plot_labels":len(plots),
         "n_distinct_site_plot_label_pairs":len(siteplots),
         "n_distinct_season_labels_with_positive_rows":len(seasons),
+        "n_distinct_source_trip_labels":len(distinct_trips),
+        "n_distinct_calendar_year_labels":len(observed_years),
         "n_distinct_site_plot_season_triples_with_positive_rows":
            len({(m,s,x) for (m,s),v in units.items() for x in v}),
         "source_method_positive_only_repetition":combinations,
