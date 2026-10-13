@@ -1,0 +1,29 @@
+name: Open published frog PAM seasonal source grain check v7.0
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/V7_0_PUBLIC_FROG_OBSERVATION_SOURCE_FIRST_CONTRACT.md"
+      - "studies/climate_landscape/scripts/audit_hoefer_public_frog_season_source_v70.py"
+      - ".github/workflows/public_frog_pam_grain_v70.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  published-data-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Source blob SHA-pinned, no location or species values emitted
+        run: python studies/climate_landscape/scripts/audit_hoefer_public_frog_season_source_v70.py
+      - name: Save aggregate method/site/season repeat-support receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: hoefer-public-frog-season-grain-v70
+          path: studies/climate_landscape/receipts/HOEFER_2026_PUBLIC_SEASON_SOURCE_PROFILE_V70.json
+          if-no-files-found: error
