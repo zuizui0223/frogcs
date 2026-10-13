@@ -1,5 +1,7 @@
 # v7.1 — FIRST ACTUAL public frog acoustic assemblage recurrence result (2019–2023)
 
+> **IMPORTANT v7.2 corrected southern-summer interpretation (2026-10-13):** This v7.1 receipt documents the original *calendar-year* grouping and must not be cited as the best seasonal comparison. [Actual source month audit](https://github.com/zuizui0223/frogcs/actions/runs/38364038791) identified **34 summer site×plot episodes spanning December→January**; faithful southern summer grouping reduces 216 original source cells to **197**. The [actual corrected v7.2 analysis](V7_2_REAL_FROG_SUMMER_YEAR_REPAIR_AND_DRY_WET_PLOT_RESULTS.md) replaces the ecological annual-minus-between-seasons contrast **+0.031310** with **+0.012978**, 3/6 sites positive, site-bootstrap **[−0.026417,+0.050185]**. The old v7.1 arithmetic is preserved as a transparent legacy binning result. No new biological memory or hydrological effect was discovered. Read the v7.2 correction FIRST. 
+
 **2026-10-13 JST. Ecological description from ORIGINAL published positive-detection rows, not synthetic data and not causal hydrology.** Independent frogcs draft PR #135; Journal of Animal Ecology RC6/main unchanged. Pre-outcome analysis and units [frozen before inspecting `scientific.name` similarity values](V7_1_PUBLIC_PAM_SEASONAL_RECURRENCE_FROZEN_ANALYSIS.md).
 
 ## Original open-data provenance
