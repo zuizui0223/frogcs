@@ -202,6 +202,7 @@ def test():
     assert len(frames)==6
     result=summarize(frames)
     assert result["site_fixed_exact_three_way_plot_grouping_reference"]["total_reference_assignments"]==729
+    assert sum(z["n_complete_four_plot_positive_groups"] for z in result["all_four_author_seasons_reported_in_fixed_order"].values())==result["n_complete_four_plot_positive_groups"], "SEASON_FRAME_COUNT_REPEATED"
     assert result["observed_equal_site_mean"]==1.0
     assert result["site_fixed_exact_three_way_plot_grouping_reference"]["fraction_reference_scores_greater_equal_observed"]==round(1/729,6)
     assert summarize(complete_groups(sample,dates,6))["status"]=="INSUFFICIENT_SITE_SUPPORT"
