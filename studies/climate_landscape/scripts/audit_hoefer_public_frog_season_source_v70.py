@@ -37,6 +37,7 @@ def parse_rows(raw:bytes):
     methods=Counter(); seasons=Counter()
     units=defaultdict(set); trips=defaultdict(set); dates=defaultdict(set)
     site_ids=set(); plots=set(); siteplots=set(); distinct_trips=set(); observed_years=set()
+    site_to_years=defaultdict(set); site_to_seasons=defaultdict(set); unit_to_years=defaultdict(set)
     bad=Counter()
     # Avoid user-supplied dates/species/site printing. No taxa used in QC.
     for row in reader:
@@ -54,9 +55,14 @@ def parse_rows(raw:bytes):
         if not meth: bad["missing_assessment_method"]+=1; continue
         site_ids.add(site); plots.add(plot);siteplots.add((site,plot))
         methods[meth]+=1
-        if season:seasons[season]+=1
+        if season:seasons[season]+=1; site_to_seasons[site].add(season)
         if trip:trips[(meth,site,plot)].add(trip); distinct_trips.add(trip)
-        if day:dates[(meth,site,plot)].add(day); observed_years.add(day[:4])
+        if day:
+            dates[(meth,site,plot)].add(day)
+            yr=day[:4]
+            if len(yr)==4 and yr.isdigit():
+                observed_years.add(yr);site_to_years[site].add(yr)
+                unit_to_years[(site,plot,season)].add(yr)
         if season:units[(meth,season)].add((site,plot))
         else:bad["missing_season_for_existing_detection"]+=1
     combinations={}
@@ -90,6 +96,11 @@ def parse_rows(raw:bytes):
         "n_distinct_season_labels_with_positive_rows":len(seasons),
         "n_distinct_source_trip_labels":len(distinct_trips),
         "n_distinct_calendar_year_labels":len(observed_years),
+        "calendar_year_minmax": [min(observed_years,default=None),max(observed_years,default=None)],
+        "n_sites_positive_records_in_2plus_calendar_years":sum(len(v)>=2 for v in site_to_years.values()),
+        "n_site_plot_season_keys_with_2plus_calendar_years":sum(len(v)>=2 for v in unit_to_years.values()),
+        "positive_season_labels_per_site_sorted_counts":sorted(len(v) for v in site_to_seasons.values()),
+        "positive_calendar_year_labels_per_site_sorted_counts":sorted(len(v) for v in site_to_years.values()),
         "n_distinct_site_plot_season_triples_with_positive_rows":
            len({(m,s,x) for (m,s),v in units.items() for x in v}),
         "source_method_positive_only_repetition":combinations,
