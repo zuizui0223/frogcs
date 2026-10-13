@@ -38,6 +38,8 @@ def parse_rows(raw:bytes):
     units=defaultdict(set); trips=defaultdict(set); dates=defaultdict(set)
     site_ids=set(); plots=set(); siteplots=set(); distinct_trips=set(); observed_years=set()
     site_to_years=defaultdict(set); site_to_seasons=defaultdict(set); unit_to_years=defaultdict(set)
+    site_to_plotlabels=defaultdict(set); season_month_counts=Counter()
+    summer_bio_year_to_cal_years=defaultdict(set); bio_cells=set(); cal_cells=set()
     bad=Counter()
     # Avoid user-supplied dates/species/site printing. No taxa used in QC.
     for row in reader:
@@ -53,7 +55,7 @@ def parse_rows(raw:bytes):
         day=(row.get("date") or "").strip()
         if not site or not plot: bad["missing_site_or_plot"]+=1;continue
         if not meth: bad["missing_assessment_method"]+=1; continue
-        site_ids.add(site); plots.add(plot);siteplots.add((site,plot))
+        site_ids.add(site); plots.add(plot);siteplots.add((site,plot));site_to_plotlabels[site].add(plot)
         methods[meth]+=1
         if season:seasons[season]+=1; site_to_seasons[site].add(season)
         if trip:trips[(meth,site,plot)].add(trip); distinct_trips.add(trip)
@@ -63,6 +65,15 @@ def parse_rows(raw:bytes):
             if len(yr)==4 and yr.isdigit():
                 observed_years.add(yr);site_to_years[site].add(yr)
                 unit_to_years[(site,plot,season)].add(yr)
+                month=day[5:7] if len(day)>=10 and day[4]=='-' and day[7]=='-' else '?'
+                if month in {f'{i:02d}' for i in range(1,13)}:
+                    season_month_counts[(season,month)]+=1
+                    cal_cells.add((site,plot,season,int(yr)))
+                    bio_year=int(yr)+int(season=='summer' and month=='12')
+                    bio_cells.add((site,plot,season,bio_year))
+                    if season=='summer':
+                        summer_bio_year_to_cal_years[(site,plot,bio_year)].add(int(yr))
+                else:bad['unparseable_month_column']+=1
         if season:units[(meth,season)].add((site,plot))
         else:bad["missing_season_for_existing_detection"]+=1
     combinations={}
@@ -92,6 +103,12 @@ def parse_rows(raw:bytes):
         "source_methods_positive_row_counts":dict(sorted(methods.items())),
         "n_distinct_source_site_labels":len(site_ids),
         "n_distinct_source_plot_labels":len(plots),
+        "source_plot_category_labels_ONLY_no_site_ids":sorted(plots),
+        "plot_category_labels_per_site_sorted":sorted(len(v) for v in site_to_plotlabels.values()),
+        "n_site_plot_season_calendar_year_positive_cells":len(cal_cells),
+        "n_site_plot_season_biological_summer_year_positive_cells":len(bio_cells),
+        "n_summer_site_plot_season_cells_spanning_2_calendar_years":sum(len(v)>1 for v in summer_bio_year_to_cal_years.values()),
+        "season_month_positive_ROW_counts":dict(sorted((a+"_"+b,v) for (a,b),v in season_month_counts.items())),
         "n_distinct_site_plot_label_pairs":len(siteplots),
         "n_distinct_season_labels_with_positive_rows":len(seasons),
         "n_distinct_source_trip_labels":len(distinct_trips),
