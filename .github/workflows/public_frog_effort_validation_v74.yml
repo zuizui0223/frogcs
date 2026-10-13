@@ -1,0 +1,27 @@
+name: One-off real public frog effort and manual match QC v7.4
+on:
+  push:
+    branches: [audit/iowa-station-waterstate-source-gate-v31]
+    paths:
+      - ".github/workflows/public_frog_effort_validation_v74.yml"
+      - "studies/climate_landscape/scripts/audit_public_hoefer_effort_and_manual_validation_v74.py"
+      - "studies/climate_landscape/V7_4_PUBLIC_RECORDER_EFFORT_AND_MANUAL_MATCH_SOURCE_QC_CONTRACT.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-author-denominator-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check original published site/season effort against candidate-validation manual labels and source positive days
+        run: python studies/climate_landscape/scripts/audit_public_hoefer_effort_and_manual_validation_v74.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-frog-source-effort-and-candidate-validation-v74
+          path: studies/climate_landscape/receipts/HOEFER_2026_REAL_ORIGINAL_EFFORT_VALIDATION_QC_V74.json
+          if-no-files-found: error
