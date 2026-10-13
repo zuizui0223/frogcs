@@ -1,8 +1,16 @@
 # Independent frog acoustic–hydrology study
 
-**Current handoff — 2026-10-13. Actual PUBLIC frog positive-detection assemblage analysis now available; Flow-MER recorder/depth hydrology and mechanism analysis still BLOCKED for lack of original matched source records.**
+**Current handoff — 2026-10-13. Actual PUBLIC frog assemblage contrasts retained as descriptive; v7.4 original recording-effort/candidate-validation source audit finds no source-grade plot×time opportunity or detection-correction crosswalk. Flow-MER hydrological mechanism analysis remains BLOCKED.**
 
 This remains independent draft PR #135, targeting `study/climate-landscape-acoustic-sites-v0`, not frozen JAE RC6/main. No custodian email has been sent. No new frog effect, memory mechanism or reproductive payoff is established.
+
+## v7.4 confirmed source-exposure and manual candidate QA (2026-10-13)
+
+**[Executed official-public-data source QA v7.4](V7_4_REAL_PUBLIC_FROG_EFFORT_AND_MATCH_VALIDATION_QC_RESULT.md)** · [pinned source-only contract](V7_4_PUBLIC_RECORDER_EFFORT_AND_MANUAL_MATCH_SOURCE_QC_CONTRACT.md) · [actual **CI 38410943930 SUCCESS**](https://github.com/zuizui0223/frogcs/actions/runs/38410943930) · [aggregate numerical receipt](receipts/HOEFER_2026_REAL_ORIGINAL_EFFORT_VALIDATION_QC_V74.json).
+
+- Original authors' R code supplies **whole-period site-level 4,951 `T_days`** summed over six sites and separately **site×season 4,875 `max_days`** summed over 24 entries; **76-day arithmetic difference**, 5/6 sites not exact. Distinct source calculations are **not proof of missing audio**; differences in coverage and time definitions remain unresolved. Site×plot×date **valid** recorder effort and explicit no-detection opportunities are still **not available** in this open detection table. Source site×season positive-detection dates occupy 21.6–100% of author season-day limits, but this is not an uptime measure.
+- Another original public file contains **251,281 manually assessed candidate acoustic matches**: 13,609 TRUE, 237,535 FALSE, 105 UNSURE, 32 unlabeled, among **115 reference call templates**; 37 templates have **zero** confirmed TRUE. **Candidate TRUE fraction 5.419% is NOT the accuracy, precision or ecological detection probability of the final 13,577 positive frog observations**. Author's code *selects* template classes with at least one true candidate. The validation file has only `MANUAL.ID`, `template`, `eucledian.distance`: **NO join key to actual site/plot/date/species records**, so a final-detection correction must not be invented.
+- These new original-data checks do **not** change the previously observed v7.2/v7.3 Jaccard arithmetic. They limit inference: **actual source-defined recording exposure is known only in coarser summaries, and candidate validation cannot be transferred rowwise**. Stop arbitrary public-source species/season reslicing; new source acquisition would require authorized underlying recorder-opportunity ledger/quality/calibration and exact validation crosswalk, not further synthetic mechanisms.
 
 ## v7.3 ACTUAL published frog waterbody-proximity grouping: final source-bounded check (2026-10-13)
 
