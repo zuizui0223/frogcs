@@ -73,7 +73,7 @@ def summarize(frames,site_threshold=3):
     for site,season,_,scores in frames:
         for k,value in enumerate(scores):
             by_site[site][k].append(value)
-            by_season[season][site].append(scores)
+        by_season[season][site].append(scores)  # one frame, not 3 partition choices
     sites=sorted(by_site)
     if len(sites)<site_threshold:
         return {
