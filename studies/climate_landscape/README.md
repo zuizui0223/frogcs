@@ -1,8 +1,17 @@
 # Independent frog acoustic–hydrology study
 
-**Current handoff — 2026-10-12. Documentary evidence of paired audio/depth work strengthened; the original recording-opportunity, local-water and identity tables for a new frog analysis are still NOT OBTAINED.**
+**Current handoff — 2026-10-13. Actual PUBLIC frog positive-detection assemblage analysis now available; Flow-MER recorder/depth hydrology and mechanism analysis still BLOCKED for lack of original matched source records.**
 
 This remains independent draft PR #135, targeting `study/climate-landscape-acoustic-sites-v0`, not frozen JAE RC6/main. No custodian email has been sent. No new frog effect, memory mechanism or reproductive payoff is established.
+
+## First independent PUBLIC frog-data ecology result (2026-10-13)
+
+The previous CEWH hydrological mechanism remains blocked, but **a separate, openly published frog PAM positive-detection dataset is now analyzable** without further custodian access: [Hoefer et al. (2026), Zenodo v2.0](https://zenodo.org/records/21634473) with [site×plot×season detections](https://github.com/cheloniax/repo_PAM_frogs/tree/v.2.0/data). Original Git blob SHA pinned, no raw animal records redistributed. An [outcome-blind source grain check](V7_0_PUBLIC_FROG_OBSERVATION_SOURCE_FIRST_CONTRACT.md) ([CI SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/38350097992)) preceded the [frozen analysis design](V7_1_PUBLIC_PAM_SEASONAL_RECURRENCE_FROZEN_ANALYSIS.md), which was [executed on public frog detections (CI **38350418671 SUCCESS**)](https://github.com/zuizui0223/frogcs/actions/runs/38350418671). Full [real-data result/limitations](V7_1_REAL_PUBLIC_FROG_SEASONAL_RECURRENCE_RESULT.md) and [aggregate reproducibility receipt](receipts/HOEFER_2026_REAL_SEASONAL_RECURRENCE_V71.json).
+
+- **Actual input:** 13,577 **positive species detection rows**, six study sites × four plots, four author seasons across five calendar years (2019–2023), 34 detected frog species, 216 nonempty site×plot×season×calendar-year detected assemblage cells. These are not complete listening denominators or effort-corrected occupancy.
+- **Same plot/season, adjacent calendar years:** six-site equal-weight mean Jaccard **0.473504** (118 within-site pairs). **Same plot/year, different seasons:** **0.442195** (246 pairs). **Same site/year/season, different plots:** **0.460211** (262 pairs). Public taxon identities are used *in memory* to form detected species lists, but no site/species identity or coordinates are printed.
+- **Frozen primary annual-versus-season contrast:** **+0.031310** Jaccard units, only **3/6 sites positive**, six-site descriptive bootstrap **[−0.008629,+0.074230]**: **modest, heterogeneous and interval includes zero**. Positive-detection dates ≥5 sensitivity gives **+0.035627**, positive in 5/6 sites, interval **[+0.010964,+0.068929]**, but this selection on positive days is **not source recording effort control** and does not confirm a general ecological advantage.
+- **Biological interpretation:** detected frog assemblages show moderate seasonal, annual and within-site spatial resemblance. The small direction toward greater same-season annual resemblance is **not consistent across all sites** in the unrestricted positive-cell frame. No frog absence, biological memory, wetland water causality, acoustic intensity or reproductive success tested. The source paper's observer-versus-PAM advantage is already known; this is a distinct **descriptive community timescale comparison**, not replication of Flow-MER hydrology Q-A/Q-B.
 
 ## Biological target
 
