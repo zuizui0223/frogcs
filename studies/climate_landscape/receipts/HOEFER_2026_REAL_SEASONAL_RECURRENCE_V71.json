@@ -1,0 +1,172 @@
+{
+  "calendar_year_as_original_field_not_resolved_wetland_event": true,
+  "comparisons": {
+    "annual_same_season_minus_within_year_different_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.008629,
+        0.07423
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.03131,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.473504,
+        "P": 0.460211,
+        "T": 0.442195
+      },
+      "n_pairs_by_axis": {
+        "A": 118,
+        "P": 262,
+        "T": 246
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 3,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.022435,
+        0.111987
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    },
+    "same_season_adjacent_plot_minus_within_year_different_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.034404,
+        0.077003
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.018016,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.473504,
+        "P": 0.460211,
+        "T": 0.442195
+      },
+      "n_pairs_by_axis": {
+        "A": 118,
+        "P": 262,
+        "T": 246
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 3,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.054403,
+        0.144729
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    }
+  },
+  "data_grain": "positive species detection rows collapsed to site x plot x author season x calendar year",
+  "hydrological_hysteresis_or_frog_memory_tested": false,
+  "main_rc6_changed": false,
+  "new_synthetic_ecological_model": false,
+  "positive_detection_day_support_ge5_sensitivity": {
+    "annual_same_season_minus_within_year_different_season": {
+      "bootstrap_site_percentile_interval_95": [
+        0.010964,
+        0.068929
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.035627,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.507866,
+        "P": 0.483948,
+        "T": 0.472239
+      },
+      "n_pairs_by_axis": {
+        "A": 87,
+        "P": 198,
+        "T": 184
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 5,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.008815,
+        0.110952
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    },
+    "same_season_adjacent_plot_minus_within_year_different_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.030198,
+        0.057868
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.011709,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.507866,
+        "P": 0.483948,
+        "T": 0.472239
+      },
+      "n_pairs_by_axis": {
+        "A": 87,
+        "P": 198,
+        "T": 184
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 2,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.03552,
+        0.105167
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    },
+    "threshold_distinct_positive_detection_dates_per_cell": 5
+  },
+  "reproductive_success_or_occupancy_estimated": false,
+  "site_names_taxon_names_or_coordinates_emitted": false,
+  "source": "Hoefer et al. 2026 Zenodo v2.0 / GitHub v.2.0",
+  "source_file": "data/frog_data_season.csv",
+  "source_git_blob_sha1": "e5a419574be5e3f9922989f9aa6001fbb7f09d01",
+  "source_has_full_recording_effort_denominators": false,
+  "source_record_profile": {
+    "n_calendar_years_with_any_source_positive": 5,
+    "n_detected_taxa_per_cell_minmedianmax": [
+      1,
+      4,
+      12
+    ],
+    "n_distinct_detected_taxon_labels": 34,
+    "n_original_positive_detection_rows": 13577,
+    "n_original_site_plot_keys": 24,
+    "n_positive_days_per_cell_minmedianmax": [
+      1,
+      15,
+      91
+    ],
+    "n_positive_site_plot_season_keys": 95,
+    "n_positive_site_plot_season_year_cells": 216,
+    "n_positive_site_plot_year_keys": 72,
+    "n_positive_species_missing_rows": 0,
+    "source_record_method_counts": {
+      "PAM.all": 13577
+    }
+  },
+  "source_sha256": "07a825f7b3269b7d15a353c11a099bceecafef4a5d9a5ffb8a80126bc18d4bc5",
+  "status": "REAL_PUBLIC_POSITIVE_DETECTION_ASSEMBLAGE_COMPARISON",
+  "unlisted_species_or_unsampled_cell_inferred_absent": false,
+  "original_ci_run": "https://github.com/zuizui0223/frogcs/actions/runs/38350418671",
+  "frozen_protocol": "studies/climate_landscape/V7_1_PUBLIC_PAM_SEASONAL_RECURRENCE_FROZEN_ANALYSIS.md",
+  "source_data_redistributed": false,
+  "observation_model_fitted": false
+}
