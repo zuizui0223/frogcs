@@ -2,7 +2,7 @@ name: One-off USGS 2024/2003-08 ARMI public survey source metadata check
 on:
   push:
     branches: [audit/iowa-station-waterstate-source-gate-v31]
-    paths: [.github/workflows/oneoff_usgs_armi_public_source_v80.yml]
+    paths: [.github/workflows/oneoff_usgs_armi_public_source_v80.yml, studies/climate_landscape/scripts/audit_usgs_armi2024_public_survey_schema_v80.py]
 permissions:
   contents: read
 jobs:
@@ -65,8 +65,13 @@ jobs:
           print('SOURCE_PREFLIGHT '+json.dumps(res,sort_keys=True),flush=True)
           Path('usgs_armi_source_metadata_receipt.json').write_text(json.dumps(res,indent=2)+'\n')
           PY
+      - uses: actions/checkout@v4
+      - name: Read public source survey CSV and output schema-only grain receipt
+        run: python3 studies/climate_landscape/scripts/audit_usgs_armi2024_public_survey_schema_v80.py
       - uses: actions/upload-artifact@v4
         with:
           name: official-usgs-armi-public-source-metadata-v80
-          path: usgs_armi_source_metadata_receipt.json
+          path: |
+            usgs_armi_source_metadata_receipt.json
+            studies/climate_landscape/receipts/USGS_ARMI2024_PUBLIC_ORIGINAL_CSV_GRAIN_V80.json
           if-no-files-found: error
