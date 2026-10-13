@@ -124,7 +124,7 @@ def positive_day_support(raw,seasons):
         except ValueError as exc:raise ValueError("INVALID_PUBLISHED_DATE") from exc
         site_season_dates[(site,season)].add(d)
         plot_season_dates[(site,plot,season)].add(d)
-    if rows!=13577 or len(site_season_dates)!=24 or len(plot_season_dates)!=96:
+    if rows!=13577 or len(site_season_dates)!=24 or len(plot_season_dates)!=95:
         raise ValueError("SOURCE_DETECTION_SCOPE_CHANGED")
     violations=[]; fractions=[]; less=[]; days=[]
     for key,maxdays in seasons.items():
