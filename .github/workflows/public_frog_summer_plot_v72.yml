@@ -1,0 +1,27 @@
+name: Public frog southern summer correction and plot labels v7.2
+on:
+  push:
+    branches: [audit/iowa-station-waterstate-source-gate-v31]
+    paths:
+      - studies/climate_landscape/scripts/analyze_hoefer_biological_summer_and_plot_category_v72.py
+      - studies/climate_landscape/V7_2_PUBLIC_FROG_SOUTHERN_SUMMER_REPAIR_AND_PLOT_LABEL_CONTRACT.md
+      - .github/workflows/public_frog_summer_plot_v72.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-public-source-seasonal-and-plot-analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Preserve pinned source and run frozen season + author plot-category comparison
+        run: python studies/climate_landscape/scripts/analyze_hoefer_biological_summer_and_plot_category_v72.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hoefer-public-frog-biological-summer-drywet-v72
+          path: studies/climate_landscape/receipts/HOEFER_2026_REAL_SOUTHERN_SUMMER_AND_DRY_WET_PLOT_V72.json
+          if-no-files-found: error
