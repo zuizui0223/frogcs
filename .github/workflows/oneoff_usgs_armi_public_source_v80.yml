@@ -2,7 +2,7 @@ name: One-off USGS 2024/2003-08 ARMI public survey source metadata check
 on:
   push:
     branches: [audit/iowa-station-waterstate-source-gate-v31]
-    paths: [.github/workflows/oneoff_usgs_armi_public_source_v80.yml, studies/climate_landscape/scripts/audit_usgs_armi2024_public_survey_schema_v80.py, studies/climate_landscape/scripts/audit_armi2024_original_visit_observer_v80.py]
+    paths: [.github/workflows/oneoff_usgs_armi_public_source_v80.yml, studies/climate_landscape/scripts/audit_usgs_armi2024_public_survey_schema_v80.py, studies/climate_landscape/scripts/audit_armi2024_original_visit_observer_v80.py, studies/climate_landscape/scripts/analyze_usgs_armi2024_paired_observer_calling_v80.py]
 permissions:
   contents: read
 jobs:
@@ -70,6 +70,8 @@ jobs:
         run: python3 studies/climate_landscape/scripts/audit_usgs_armi2024_public_survey_schema_v80.py
       - name: Read official FGDC dictionary and original observer site-date-clock survey grain, no source response effect
         run: python3 studies/climate_landscape/scripts/audit_armi2024_original_visit_observer_v80.py
+      - name: Execute pre-frozen original USGS pair-observer frog acoustic community analysis with explicit no-frog surveys
+        run: python3 studies/climate_landscape/scripts/analyze_usgs_armi2024_paired_observer_calling_v80.py
       - uses: actions/upload-artifact@v4
         with:
           name: official-usgs-armi-public-source-metadata-v80
@@ -77,4 +79,5 @@ jobs:
             usgs_armi_source_metadata_receipt.json
             studies/climate_landscape/receipts/USGS_ARMI2024_PUBLIC_ORIGINAL_CSV_GRAIN_V80.json
             studies/climate_landscape/receipts/USGS_ARMI2024_PUBLIC_OBSERVER_VISIT_GRAIN_V80.json
+            studies/climate_landscape/receipts/USGS_ARMI2024_REAL_PAIRED_OBSERVER_FROG_CALLING_V80.json
           if-no-files-found: error
