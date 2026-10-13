@@ -1,0 +1,224 @@
+{
+  "biological_summer_corrected_cell_count": 197,
+  "calendar_old_cell_count": 216,
+  "calendar_v71_primary_reference_reproduced": 0.03131,
+  "calendar_versus_biological_cycle_rule": "summer Dec->following year, all others ordinary year",
+  "corrected_temporal": {
+    "annual_same_season_vs_cross_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.026417,
+        0.050185
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.012978,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.451253,
+        "P": 0.451345,
+        "T": 0.438275
+      },
+      "n_pairs_by_axis": {
+        "A": 97,
+        "P": 233,
+        "T": 213
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 3,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.071365,
+        0.075563
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    },
+    "different_plots_vs_cross_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.059616,
+        0.085349
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.01307,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.451253,
+        "P": 0.451345,
+        "T": 0.438275
+      },
+      "n_pairs_by_axis": {
+        "A": 97,
+        "P": 233,
+        "T": 213
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 4,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.097782,
+        0.151329
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    }
+  },
+  "corrected_temporal_positive_dates_ge5": {
+    "annual_same_season_vs_cross_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.000631,
+        0.062058
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.033781,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.497453,
+        "P": 0.486126,
+        "T": 0.463672
+      },
+      "n_pairs_by_axis": {
+        "A": 68,
+        "P": 168,
+        "T": 160
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 5,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.044084,
+        0.075753
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    },
+    "different_plots_vs_cross_season": {
+      "bootstrap_site_percentile_interval_95": [
+        -0.042157,
+        0.090216
+      ],
+      "interval_caveat": "DESCRIPTIVE six-site resampling only; no source survey-design confidence level",
+      "mean_equal_site_difference": 0.022455,
+      "mean_similarity_by_axis_equal_sites": {
+        "A": 0.497453,
+        "P": 0.486126,
+        "T": 0.463672
+      },
+      "n_pairs_by_axis": {
+        "A": 68,
+        "P": 168,
+        "T": 160
+      },
+      "n_site_clusters_with_both": 6,
+      "n_sites_positive_direction": 3,
+      "n_sites_with_any_pair_by_axis": {
+        "A": 6,
+        "P": 6,
+        "T": 6
+      },
+      "n_sites_zero_difference": 0,
+      "site_contrast_minmax": [
+        -0.081288,
+        0.157287
+      ],
+      "status": "DESCRIPTIVE_SITE_PAIRED_CONTRAST"
+    }
+  },
+  "frozen_contract": "studies/climate_landscape/V7_2_PUBLIC_FROG_SOUTHERN_SUMMER_REPAIR_AND_PLOT_LABEL_CONTRACT.md",
+  "habitat_treatment_randomized": false,
+  "hydrological_hysteresis_or_memory_tested": false,
+  "nominal_DryWet_labels_as_measured_local_water": false,
+  "nominal_author_DryWet_plot_category": {
+    "all_positive_detected_cells": {
+      "mean_similarity_equal_site": {
+        "BETWEEN": 0.443978,
+        "WITHIN": 0.46776
+      },
+      "mean_site_difference": 0.023781,
+      "n_pairs": {
+        "BETWEEN": 158,
+        "WITHIN": 75
+      },
+      "n_sites_negative": 2,
+      "n_sites_positive": 4,
+      "n_sites_with_any_pairs": {
+        "BETWEEN": 6,
+        "WITHIN": 6
+      },
+      "n_sites_with_both": 6,
+      "site_bootstrap95": [
+        -0.020382,
+        0.067945
+      ],
+      "site_difference_minmax": [
+        -0.040875,
+        0.107275
+      ],
+      "status": "EXPLORATORY_AUTHOR_PLOT_LABEL_SIMILARITY",
+      "uncertainty_warning": "Six original sites only; not randomised habitat classes or effort-standardized acoustic opportunity"
+    },
+    "positive_detected_dates_ge5": {
+      "mean_similarity_equal_site": {
+        "BETWEEN": 0.462234,
+        "WITHIN": 0.528145
+      },
+      "mean_site_difference": 0.065911,
+      "n_pairs": {
+        "BETWEEN": 114,
+        "WITHIN": 54
+      },
+      "n_sites_negative": 1,
+      "n_sites_positive": 5,
+      "n_sites_with_any_pairs": {
+        "BETWEEN": 6,
+        "WITHIN": 6
+      },
+      "n_sites_with_both": 6,
+      "site_bootstrap95": [
+        0.019542,
+        0.108368
+      ],
+      "site_difference_minmax": [
+        -0.017384,
+        0.124458
+      ],
+      "status": "EXPLORATORY_AUTHOR_PLOT_LABEL_SIMILARITY",
+      "uncertainty_warning": "Six original sites only; not randomised habitat classes or effort-standardized acoustic opportunity"
+    }
+  },
+  "original_author_r_code": "https://github.com/cheloniax/repo_PAM_frogs/blob/v.2.0/scripts/R_code_biodiversityFrogs.qmd",
+  "original_git_blob_sha1": "e5a419574be5e3f9922989f9aa6001fbb7f09d01",
+  "original_source_sha256": "07a825f7b3269b7d15a353c11a099bceecafef4a5d9a5ffb8a80126bc18d4bc5",
+  "rc6_main_modified": false,
+  "site_species_coordinates_and_raw_rows_exported": false,
+  "source": "Hoefer et al. 2026 Zenodo v2.0 public original frog_data_season.csv",
+  "source_licence_for_audio_or_raw_file_redistribution_claimed": false,
+  "source_opportunities_including_valid_silent_recordings_verified": false,
+  "source_profile": {
+    "n_author_sites": 6,
+    "n_distinct_detected_taxon_labels": 34,
+    "n_nonblank_taxon_detection_rows": 13577,
+    "n_positive_site_plot_season_biological_year_cells": 197,
+    "source_cell_without_positive_records_not_fabricated": true,
+    "source_plot_classes": [
+      "DryA",
+      "DryB",
+      "WetA",
+      "WetB"
+    ],
+    "source_positive_detection_rows": 13577
+  },
+  "status": "ACTUAL_PUBLISHED_PUBLIC_FROG_SUMMER_REPAIR_AND_NOMINAL_PLOT_CATEGORY_ANALYSED",
+  "v72_results_are_after_v71_aggregate_exploration": true,
+  "verified_run": "https://github.com/zuizui0223/frogcs/actions/runs/38364526890",
+  "verified_job_id": 115186361007,
+  "metadata_only_no_raw_source_export": true,
+  "source_report_kind": "predeclared summertime repair plus exploratory original plot-type nominal contrast"
+}
