@@ -1,0 +1,28 @@
+name: One-off USGS 2003-08 versus 2024 taxon label and original visit-clock QC
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - ".github/workflows/oneoff_usgs_taxon_clock_v81.yml"
+      - "studies/climate_landscape/scripts/audit_usgs_armi_taxon_clock_source_v81.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-structural-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test and audit original taxon label differences and repeated observer start-time event keys
+        run: python studies/climate_landscape/scripts/audit_usgs_armi_taxon_clock_source_v81.py
+      - name: Retain only aggregate source-quality receipt; no frog list refit
+        uses: actions/upload-artifact@v4
+        with:
+          name: usgs-armi-source-taxon-clock-qc-v81
+          path: studies/climate_landscape/receipts/USGS_ARMI_V81_TAXON_CLOCK_SOURCE_DIAGNOSTIC.json
+          if-no-files-found: error
