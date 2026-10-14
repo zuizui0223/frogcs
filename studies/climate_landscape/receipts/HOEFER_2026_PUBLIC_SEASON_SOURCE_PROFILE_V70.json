@@ -1,0 +1,116 @@
+{
+  "calendar_year_minmax": [
+    "2019",
+    "2023"
+  ],
+  "expected_git_blob_sha1": "e5a419574be5e3f9922989f9aa6001fbb7f09d01",
+  "full_negative_survey_opportunities_unverified": true,
+  "git_blob_sha1": "e5a419574be5e3f9922989f9aa6001fbb7f09d01",
+  "local_water_history_link_unverified": true,
+  "n_distinct_calendar_year_labels": 5,
+  "n_distinct_season_labels_with_positive_rows": 4,
+  "n_distinct_site_plot_label_pairs": 24,
+  "n_distinct_site_plot_season_triples_with_positive_rows": 95,
+  "n_distinct_source_plot_labels": 4,
+  "n_distinct_source_site_labels": 6,
+  "n_distinct_source_trip_labels": 22,
+  "n_site_plot_season_biological_summer_year_positive_cells": 197,
+  "n_site_plot_season_calendar_year_positive_cells": 216,
+  "n_site_plot_season_keys_with_2plus_calendar_years": 73,
+  "n_sites_positive_records_in_2plus_calendar_years": 6,
+  "n_source_positive_detection_rows": 13577,
+  "n_summer_site_plot_season_cells_spanning_2_calendar_years": 34,
+  "no_animal_species_outcome_frequency_analysed": true,
+  "no_animals_or_sites_exported": true,
+  "no_jae_rc6_change": true,
+  "no_species_names_site_names_or_dates_exported": true,
+  "plot_category_labels_per_site_sorted": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "positive_calendar_year_labels_per_site_sorted_counts": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    5
+  ],
+  "positive_season_labels_per_site_sorted_counts": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "read_file_only_no_archived_audio": true,
+  "record_quality_flags": {},
+  "season_month_positive_ROW_counts": {
+    "autumn_03": 952,
+    "autumn_04": 694,
+    "autumn_05": 808,
+    "spring_09": 895,
+    "spring_10": 1675,
+    "spring_11": 1874,
+    "summer_01": 1632,
+    "summer_02": 1231,
+    "summer_12": 1592,
+    "winter_06": 659,
+    "winter_07": 736,
+    "winter_08": 829
+  },
+  "sha256": "07a825f7b3269b7d15a353c11a099bceecafef4a5d9a5ffb8a80126bc18d4bc5",
+  "site_plot_season_coverage_is_pos_detection_not_visit_effort": true,
+  "source": "https://raw.githubusercontent.com/cheloniax/repo_PAM_frogs/v.2.0/data/frog_data_season.csv",
+  "source_bytes": 1653167,
+  "source_columns": [
+    "date.time",
+    "date",
+    "site",
+    "plot",
+    "common.name",
+    "scientific.name",
+    "family",
+    "assessment.method",
+    "season",
+    "SamplingDay",
+    "sampling.trip"
+  ],
+  "source_method_positive_only_repetition": {
+    "PAM.all": {
+      "n_distinct_site_plot_source_dates_per_key_minmax": [
+        46,
+        484
+      ],
+      "n_positive_detection_rows": 13577,
+      "n_site_plot_keys_in_2plus_source_periods": 22,
+      "n_site_plot_keys_with_positive_detection": 24,
+      "n_site_plot_season_combinations_with_positive_detection": 95,
+      "seasonal_site_plot_positive_support_counts": {
+        "autumn": 24,
+        "spring": 23,
+        "summer": 24,
+        "winter": 24
+      }
+    }
+  },
+  "source_methods_positive_row_counts": {
+    "PAM.all": 13577
+  },
+  "source_plot_category_labels_ONLY_no_site_ids": [
+    "DryA",
+    "DryB",
+    "WetA",
+    "WetB"
+  ],
+  "source_version": "Hoefer et al. 2026 Zenodo v2.0 public GitHub v.2.0",
+  "status": "SOURCE_PROFILE_COMPLETED",
+  "previous_receipt_replaced_same_pinned_source": true,
+  "source_only_extended_season_plot_gate_run": "https://github.com/zuizui0223/frogcs/actions/runs/38364038791",
+  "author_season_bio_year_rule": "Southern summer December assigned to following year as verified from author code; no species similarities were computed in this audit"
+}

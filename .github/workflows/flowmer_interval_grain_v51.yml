@@ -1,0 +1,30 @@
+name: Flow-MER observational interval and event-grain gate v5.1
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_flowmer_interval_and_event_grain_v51.py"
+      - ".github/workflows/flowmer_interval_grain_v51.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-source-interval-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test interval-grain and non-location source guards
+        run: python studies/climate_landscape/scripts/audit_flowmer_interval_and_event_grain_v51.py --self-test
+      - name: Query public Flow-MER projected source and only aggregate interval metadata
+        run: python studies/climate_landscape/scripts/audit_flowmer_interval_and_event_grain_v51.py
+      - name: Save source-only bounded metadata receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-frog-interval-and-record-grain-v51
+          path: studies/climate_landscape/receipts/FLOW_MER_INTERVAL_AND_EVENT_GRAIN_V51.json
+          if-no-files-found: error

@@ -1,0 +1,29 @@
+name: CEWH MDMS aggregate parent-attribute feasibility gate v5.6
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_mdms_candidate_parent_attributes_v56.py"
+      - "studies/climate_landscape/V5_6_MDMS_CANDIDATE_PARENT_UNIT_ATTRIBUTE_CONTRACT.md"
+      - ".github/workflows/mdms_candidate_parent_attributes_v56.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  aggregate-only-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Only compare public metadata equality groups, never site values or coordinates
+        run: python studies/climate_landscape/scripts/audit_mdms_candidate_parent_attributes_v56.py
+      - name: Preserve aggregate source-only QA receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdms-parent-attribute-equality-only-v56
+          path: studies/climate_landscape/receipts/MDMS_CANDIDATE_PARENT_ATTRIBUTE_EQUALITY_V56.json
+          if-no-files-found: error

@@ -1,0 +1,124 @@
+{
+  "JAE_RC6_main_unchanged": true,
+  "ambiguous_original_clock_keys_not_assumed_corrupt_or_independent": true,
+  "existing_67_site_frozen_jaccard_unmodified": 0.416414,
+  "historic_sha256": "33bb028cf148a685d8af5a579786ce94bde045fa68d00f8c395713c6c06ae32b",
+  "n_source_geospatial_consistent_sites": 292,
+  "new2024_sha256": "dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4",
+  "new_diagnostics": {
+    "global_literal_taxon_alignment": {
+      "ITIS_example_taxon_note": "Acris crepitans blanchardi is an ITIS synonym of Acris blanchardi; Acris crepitans is a DISTINCT currently accepted species and must not be blindly merged.",
+      "ITIS_taxonomic_reference": "https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=774220",
+      "exact_literal_source_names_shared": 9,
+      "external_taxonomic_name_to_concept_matching_is_not_verified": true,
+      "historic_only_public_taxon_name_vocabulary": [
+        "Anaxyrus sp.",
+        "Lithobates palustris",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus"
+      ],
+      "historic_only_taxon_label_grammar": {
+        "binomial_literal": 4,
+        "uncertain_sp_or_affinity_label": 1
+      },
+      "historic_release_literal_taxon_count": 14,
+      "historic_release_only_taxon_count": 5,
+      "new_2024_literal_taxon_count": 10,
+      "new_only_public_taxon_name_vocabulary": [
+        "Anaxyrus woodhousii"
+      ],
+      "new_only_taxon_label_grammar": {
+        "binomial_literal": 1
+      },
+      "new_release_only_taxon_count": 1,
+      "source_synonym_mappings_performed": 0
+    },
+    "original_site_date_observer_multiple_times_quality": {
+      "history_2003_2008": {
+        "grouping": {
+          "n_distinct_start_time_method_event_keys_within_ambiguous_groups": 140,
+          "n_original_species_line_rows_within_ambiguous_groups": 446,
+          "n_source_same_site_date_observer_keys_with_multiple_clock_or_method": 69,
+          "n_source_site_date_observer_keys": 3230,
+          "source_event_multiplicity_may_be_true_repeat_surveys": true,
+          "source_repeat_ambiguity_caused_by": {
+            "both_clock_and_method_vary": 10,
+            "multiple_methods_only": 31,
+            "multiple_start_clocks_only": 28
+          }
+        },
+        "selected_67_sites_with_any_potential_missing_valid_historical_match": {
+          "n_sites": 0,
+          "original_67_site_cohort_still_unchanged": true
+        },
+        "selected_cohort_ambiguity": {
+          "era": "old",
+          "n_ambiguous_source_person_days_among_292_geo_consistent_sites": 27,
+          "n_ambiguous_source_person_days_among_67_frozen_selected_sites": 6,
+          "n_distinct_all_geometry_pass_sites_with_ambiguous_person_days": 20,
+          "n_distinct_original_matched_sites_with_ambiguous_person_days": 5
+        },
+        "source_opportunity_possible_unexamined_valid_visit_match": {
+          "n_geo_consistent_sites_with_a_historical_ambiguous_original_clock_event_potentially_matching_modern_mic_start": 2,
+          "n_historical_ambiguous_clock_events_with_source_method_month_start_match": 3,
+          "source_eligibility_only_not_observed_frog_reanalysis": true
+        }
+      },
+      "new_2024": {
+        "grouping": {
+          "n_distinct_start_time_method_event_keys_within_ambiguous_groups": 2,
+          "n_original_species_line_rows_within_ambiguous_groups": 3,
+          "n_source_same_site_date_observer_keys_with_multiple_clock_or_method": 1,
+          "n_source_site_date_observer_keys": 797,
+          "source_event_multiplicity_may_be_true_repeat_surveys": true,
+          "source_repeat_ambiguity_caused_by": {
+            "multiple_start_clocks_only": 1
+          }
+        },
+        "selected_cohort_ambiguity": {
+          "era": "new",
+          "n_ambiguous_source_person_days_among_292_geo_consistent_sites": 1,
+          "n_ambiguous_source_person_days_among_67_frozen_selected_sites": 0,
+          "n_distinct_all_geometry_pass_sites_with_ambiguous_person_days": 1,
+          "n_distinct_original_matched_sites_with_ambiguous_person_days": 0
+        }
+      }
+    },
+    "same_original_67_site_pair_label_impact_without_jaccard_refit": {
+      "does_not_refit_or_harmonise_original_jaccard": true,
+      "n_frozen_67_site_pairs": 67,
+      "n_selected_pairs_affected_by_any_era_private_literal_taxon": 2,
+      "no_taxon_by_site_or_time_table_published": true,
+      "released_species_labels_appear_only_in_global_vocabulary": true,
+      "selected_pairs_by_taxonomic_comparability_flag": {
+        "new_release_private_only": 2,
+        "no_release_private_taxon_in_either_selected_species_list": 65
+      }
+    }
+  },
+  "no_merged_taxonomic_concepts_or_refit": true,
+  "no_original_site_person_exact_dates_coordinates_or_taxon_by_site_values_published": true,
+  "not_an_occupancy_change_or_causal_water_test": true,
+  "original_separate_source_verification": "https://github.com/zuizui0223/frogcs/actions/runs/38493167832",
+  "plan_committed_before_this_diagnostic_result": true,
+  "previous_ecological_outcome_was_already_read": true,
+  "source_files": "USGS 2003-08 and 2024 ver.1.1 April 2026 CC0 original CSV",
+  "status": "ORIGINAL_USGS_PUBLIC_TAXON_NAME_AND_MULTI_CLOCK_SOURCE_QC_EXECUTED",
+  "verification": {
+    "original_data_comparison_run": "https://github.com/zuizui0223/frogcs/actions/runs/38493167832",
+    "new_source_only_qc_run": "https://github.com/zuizui0223/frogcs/actions/runs/38499111467",
+    "source_April_2026_USGS_release_versions_verified": true,
+    "frozen_67_matched_site_species_lists_not_changed": true,
+    "archive_sha256_original_both_checked": true,
+    "code_commit": "99b8474f91e2e6b0fd36e2b1bc0924a538bde79a",
+    "source_nonsensitive_taxon_vocabulary_only_no_site_taxon_pairs": true
+  },
+  "bound": {
+    "n_nonempty_union_original_frozen_jaccard_pairs": 66,
+    "n_with_era_private_taxon_label": 2,
+    "max_absolute_mean_jaccard_change_if_ONLY_those_comparisons_change_by_at_most_one": 0.030303,
+    "assumption": "Only literal era-private source taxon names are corrected; all other species concepts, detection, and site/event selection unchanged. This is a mathematical sensitivity bound, not an estimated correction or an adjusted ecological effect.",
+    "original_J_retained": 0.416414
+  }
+}

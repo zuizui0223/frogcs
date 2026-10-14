@@ -1,0 +1,29 @@
+name: Public 2019–23 frog detection assemblage recurrence v7.1
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/analyze_public_hoefer_seasonal_recurrence_v71.py"
+      - "studies/climate_landscape/V7_1_PUBLIC_PAM_SEASONAL_RECURRENCE_FROZEN_ANALYSIS.md"
+      - ".github/workflows/public_frog_seasonal_recurrence_v71.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproducible-public-detection-assemblage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read git-hash-pinned 2026 published frog detections and test fixed site/season contrasts
+        run: python studies/climate_landscape/scripts/analyze_public_hoefer_seasonal_recurrence_v71.py
+      - name: Archive aggregate-only observed results
+        uses: actions/upload-artifact@v4
+        with:
+          name: hoefer-frog-public-seasonal-recurrence-v71
+          path: studies/climate_landscape/receipts/HOEFER_2026_REAL_SEASONAL_RECURRENCE_V71.json
+          if-no-files-found: error

@@ -1,0 +1,24 @@
+name: Iowa native W-D metadata-only feasibility v3.2 (synthetic)
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_iowa_state_native_wetdry_feasibility_v32.py"
+      - ".github/workflows/iowa_wetdry_metadata_only_v32.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-fail-closed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test normalized wetdry metadata parser (no external datasets, no calls)
+        run: python studies/climate_landscape/scripts/audit_iowa_state_native_wetdry_feasibility_v32.py --self-test

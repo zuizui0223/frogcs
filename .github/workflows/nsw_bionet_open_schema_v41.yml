@@ -1,0 +1,32 @@
+name: NSW BioNet open frog source schema v4.1
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_nsw_bionet_public_schema_v41.py"
+      - ".github/workflows/nsw_bionet_open_schema_v41.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-schema-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify synthetic metadata parser and restrictions
+        run: python studies/climate_landscape/scripts/audit_nsw_bionet_public_schema_v41.py --self-test
+      - name: Query public OData service and schema only (NO species rows)
+        run: python studies/climate_landscape/scripts/audit_nsw_bionet_public_schema_v41.py
+      - name: Upload file/field-name receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsw-bionet-public-entity-field-schema-v41
+          path: studies/climate_landscape/receipts/NSW_BIONET_ODATA_PUBLIC_SCHEMA_V41.json
+          if-no-files-found: error

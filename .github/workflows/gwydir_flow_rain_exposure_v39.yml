@@ -1,0 +1,31 @@
+name: Gwydir published six-site rain-flow exposure audit v3.9
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_gwydir_flow_rain_table2_v39.py"
+      - "studies/climate_landscape/reference_routes/GWYDIR_SARKER_2022_SIX_SITE_EXPOSURE_TABLE2_V39.csv"
+      - ".github/workflows/gwydir_flow_rain_exposure_v39.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  published-exposure-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit published 6-site Table 2 rainfall exposure WITHOUT frog outcomes
+        run: python studies/climate_landscape/scripts/audit_gwydir_flow_rain_table2_v39.py
+      - name: Upload source-only audit receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: gwydir-published-flow-rain-source-v39
+          path: studies/climate_landscape/receipts/GWYDIR_SARKER_RAIN_WATER_DECOUPLING_SOURCE_AUDIT_V39.json
+          if-no-files-found: error

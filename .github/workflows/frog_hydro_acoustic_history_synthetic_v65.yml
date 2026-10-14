@@ -1,0 +1,28 @@
+name: v6.5 synthetic hydrological and acoustic-memory null discrimination QA
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/test_synthetic_hydro_memory_null_v65.py"
+      - "studies/climate_landscape/V6_5_SYNTHETIC_HYDROLOGY_ACOUSTIC_MEMORY_FALSE_POSITIVE_CONTRACT.md"
+      - ".github/workflows/frog_hydro_acoustic_history_synthetic_v65.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-mechanism-falsification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install bounded numerical QA dependencies
+        run: python -m pip install "numpy>=1.26,<3" "scikit-learn>=1.5,<2"
+      - name: Exercise synthetic null/hydro/carryover and wrong-history placebo
+        run: python studies/climate_landscape/scripts/test_synthetic_hydro_memory_null_v65.py

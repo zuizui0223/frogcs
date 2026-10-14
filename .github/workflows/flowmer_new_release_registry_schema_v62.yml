@@ -1,0 +1,29 @@
+name: Official Flow-MER CKAN metadata-only frog and gauge source verification v6.2
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_flowmer_public_ckan_schema_v62.py"
+      - "studies/climate_landscape/V6_2_OFFICIAL_DATA_PORTAL_METADATA_ONLY_CONTRACT.md"
+      - ".github/workflows/flowmer_new_release_registry_schema_v62.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-public-registry-schema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Query ONLY official CKAN package metadata and optional zero-row schema
+        run: python studies/climate_landscape/scripts/audit_flowmer_public_ckan_schema_v62.py
+      - name: Preserve no-observation source metadata receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: flowmer-2014-2024-source-metadata-only-v62
+          path: studies/climate_landscape/receipts/FLOWMER_PUBLIC_REGISTRY_METADATA_ONLY_V62.json
+          if-no-files-found: error

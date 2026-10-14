@@ -1,0 +1,79 @@
+{
+  "any_zero_code_inferred_from_missing_species": false,
+  "input_original_csv_sha256": "dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4",
+  "main_jae_rc6_unchanged": true,
+  "no_experiment_randomization_or_confirmatory_p_values": true,
+  "no_water_level_hysteresis_or_memory_fitness_claim": true,
+  "original_site_coordinates_or_taxon_names_exported": false,
+  "previous_2026_cricket_frog_northward_reexpansion_result_not_claimed_new": true,
+  "site_is_field_site_not_spatially_independent_wetland_authenticated": true,
+  "source_clock_or_method_noncomparable_pairs": {},
+  "source_doi": "https://doi.org/10.5066/P19ZCGWM",
+  "source_methods_almost_perfectly_confound_observer_identity": true,
+  "source_protocol": "studies/climate_landscape/USGS_ARMI2024_FROZEN_PAIRED_OBSERVER_DETECTION_DISCORDANCE.md",
+  "source_same_date_same_method_observer_pair_count_excluded": 1,
+  "source_survey_opportunities": {
+    "n_all_source_no_anuran_heard_rows": 220,
+    "n_ambiguous_original_observer_opportunities": 1,
+    "n_distinct_explicit_no_anuran_heard_opportunities": 220,
+    "n_distinct_source_site_ids": 343,
+    "n_original_site_date_observer_keys": 797,
+    "n_original_source_species_rows": 1934,
+    "n_valid_explicit_no_anuran_heard_opportunities": 220,
+    "n_valid_opportunities_with_any_species_reported": 576,
+    "n_valid_unambiguous_opportunities_after_one_multiple_time_exclusion": 796,
+    "no_frog_sentinel_and_genuine_species_mixed_in_a_source_visit": false,
+    "number_heard_is_range_or_count_not_proportional_singing_abundance": true,
+    "raw_site_or_observer_identifiers_published": false
+  },
+  "source_within_site_repeated_visit_detected_assemblages": {
+    "equal_site_mean_source_detected_assemblage_jaccard_if_nonempty_union": null,
+    "n_same_site_same_observer_same_method_date_pairs_within_30_days": 1,
+    "n_sites_with_repeated_same_observer_same_method_source_opportunities": 1,
+    "n_sites_with_temporal_pairs_nonempty_detected_taxon_union": 1,
+    "not_a_matched_control_for_same_night_observer_pair": true,
+    "source_visit_events_not_independent_frog_presence_states": true
+  },
+  "status": "ORIGINAL_CC0_USGS2024_REAL_FROG_SAME_SITE_PAIRED_OBSERVER_RESULT",
+  "strict_paired_dual_observer_mixed_method": {
+    "binary_anuran_call_presence_observer_device_package_crosstab": {
+      "both_explicitly_no_anurans_heard": 2,
+      "both_heard": 20,
+      "microphone_only_heard": 1
+    },
+    "mean_distinct_detected_frog_taxa_per_opportunity_by_method": {
+      "Ear": 1.869565,
+      "Microphone": 2.173913
+    },
+    "mean_jaccard_for_paired_positive_union_source_lists": 0.81746,
+    "mean_site_paired_microphone_minus_ear_detected_taxon_richness": 0.304348,
+    "median_jaccard_for_paired_positive_union_source_lists": 1,
+    "n_eligible_independent_observer_mixed_method_pairs": 23,
+    "n_original_physical_source_site_clusters": 23,
+    "n_paired_observer_both_no_frogs_separate": 2,
+    "n_paired_observer_species_lists_different_among_nonempty_union": 7,
+    "n_paired_observer_species_union_positive": 21,
+    "n_site_paired_method_observer_package_richness_neg": 1,
+    "n_site_paired_method_observer_package_richness_pos": 6,
+    "n_site_paired_richness_equal": 16,
+    "no_causal_microphone_advantage_claim": true,
+    "no_individual_site_or_species_records_exported": true,
+    "observer_identity_and_method_nearly_confounded": true,
+    "paired_median_microphone_minus_ear_detected_taxon_richness": 0,
+    "share_paired_opportunities_any_frog_status_discordant": 0.043478,
+    "site_bootstrap_95_DESCRIPTIVE": [
+      0.043478,
+      0.608696
+    ]
+  },
+  "verification": {
+    "run": "https://github.com/zuizui0223/frogcs/actions/runs/38423154215",
+    "job_id": 115385495662,
+    "code_commit_sha": "7662f265ec1b31fc8341bcab738220d02f2ecc77",
+    "protocol_frozen_before_species_outcomes": "studies/climate_landscape/USGS_ARMI2024_FROZEN_PAIRED_OBSERVER_DETECTION_DISCORDANCE.md",
+    "cross_tab_sums_to_matched_pairs": true,
+    "complete_visit_positive_plus_explicit_no_frog_sums_796": true,
+    "source_hash_expected": "dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4",
+    "no_row_level_site_or_personal_identifiers_exported": true
+  }
+}

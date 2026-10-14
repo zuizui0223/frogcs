@@ -1,0 +1,22 @@
+name: Ocock catchment-night opportunity v4.7 synthetic
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_ocock_catchment_night_aggregate_v47.py"
+      - ".github/workflows/ocock_catchment_night_v47.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-catchment-breadth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check six-year 95-night two-catchment ecological-scale opportunity
+        run: python studies/climate_landscape/scripts/audit_ocock_catchment_night_aggregate_v47.py --synthetic-test

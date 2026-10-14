@@ -1,0 +1,31 @@
+name: CEWH MDMS public PDF schema field-context audit v5.8
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_mdms_public_pdf_field_context_v58.py"
+      - "studies/climate_landscape/V5_8_MDMS_SOURCE_PDF_CONTEXT_INSPECTION_CONTRACT.md"
+      - ".github/workflows/mdms_public_pdf_field_context_v58.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-official-metadata-context-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PDF text extractor
+        run: python -m pip install "pypdf==5.9.0"
+      - name: Read tiny field descriptions from source-pinned official public PDF only
+        run: python studies/climate_landscape/scripts/audit_mdms_public_pdf_field_context_v58.py
+      - name: Preserve 3-field metadata-only output
+        uses: actions/upload-artifact@v4
+        with:
+          name: mdms-pdf-field-context-only-v58
+          path: studies/climate_landscape/receipts/MDMS_PUBLIC_PDF_FIELD_CONTEXT_V58.json
+          if-no-files-found: error

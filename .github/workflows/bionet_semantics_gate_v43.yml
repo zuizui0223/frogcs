@@ -1,0 +1,22 @@
+name: NSW BioNet official semantic safeguards v4.3
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_bionet_semantics_source_gate_v43.py"
+      - ".github/workflows/bionet_semantics_gate_v43.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  semantics-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test official BioNet v6.3 field semantics without actual fauna rows
+        run: python studies/climate_landscape/scripts/audit_bionet_semantics_source_gate_v43.py

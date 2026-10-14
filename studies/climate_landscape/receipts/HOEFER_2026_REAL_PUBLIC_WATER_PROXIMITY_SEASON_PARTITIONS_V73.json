@@ -1,0 +1,192 @@
+{
+  "all_four_positive_plots_matched_source_frames": {
+    "all_four_author_seasons_reported_in_fixed_order": {
+      "autumn": {
+        "equal_site_mean_grouping_score": 0.084673,
+        "n_complete_four_plot_positive_groups": 7,
+        "n_positive_sites": 4,
+        "n_sites_with_complete_frames": 4,
+        "range_site_mean_grouping_scores": [
+          0.05,
+          0.105357
+        ]
+      },
+      "spring": {
+        "equal_site_mean_grouping_score": 0.066925,
+        "n_complete_four_plot_positive_groups": 10,
+        "n_positive_sites": 3,
+        "n_sites_with_complete_frames": 5,
+        "range_site_mean_grouping_scores": [
+          -0.069742,
+          0.263889
+        ]
+      },
+      "summer": {
+        "equal_site_mean_grouping_score": 0.090724,
+        "n_complete_four_plot_positive_groups": 4,
+        "n_positive_sites": 3,
+        "n_sites_with_complete_frames": 4,
+        "range_site_mean_grouping_scores": [
+          -0.117857,
+          0.275
+        ]
+      },
+      "winter": {
+        "equal_site_mean_grouping_score": -0.001667,
+        "n_complete_four_plot_positive_groups": 5,
+        "n_positive_sites": 2,
+        "n_sites_with_complete_frames": 5,
+        "range_site_mean_grouping_scores": [
+          -0.208333,
+          0.208333
+        ]
+      }
+    },
+    "n_complete_four_plot_positive_groups": 26,
+    "n_sites_negative": 1,
+    "n_sites_positive": 4,
+    "n_sites_with_complete_groups": 6,
+    "observed_equal_site_mean": 0.035027,
+    "seasonal_heterogeneity": {
+      "n_sites_with_complete_four_plot_groups_in_every_season": 3,
+      "not_randomised_or_causal": true,
+      "observed_seasonal_max_minus_min": 0.232473,
+      "pseudo_label_partition_reference": {
+        "fraction_reference_greater_equal_observed": 0.111111,
+        "q025_q975": [
+          0.033436,
+          0.26934
+        ]
+      },
+      "site_fixed_label_reference_n": 27,
+      "status": "EXPLORATORY_SEASON_MODULATION_WITH_MATCHED_SITES"
+    },
+    "site_bootstrap_95_descriptive": [
+      -0.027797,
+      0.095111
+    ],
+    "site_fixed_exact_three_way_plot_grouping_reference": {
+      "NOT_a_randomisation_test_p_value": true,
+      "fraction_reference_scores_greater_equal_observed": 0.123457,
+      "n_possible_unordered_plot_partition_assignments_per_site": 3,
+      "reference_mean": 0,
+      "reference_q025_q975": [
+        -0.050532,
+        0.0532
+      ],
+      "source_grouping_not_randomly_assigned": true,
+      "total_reference_assignments": 729
+    },
+    "site_mean_minmax": [
+      -0.08578,
+      0.155397
+    ],
+    "status": "SOURCE_SITE_LEVEL_PUBLIC_ASSEMBLAGE_GROUPING_COMPUTED"
+  },
+  "author_plot_habitat_label_is_not_time_varying_water_depth": true,
+  "exploratory_not_preregistered_prior_v72_results_were_seen": true,
+  "min_five_positive_detection_days_in_each_of_four_plots": {
+    "all_four_author_seasons_reported_in_fixed_order": {
+      "autumn": {
+        "equal_site_mean_grouping_score": 0.077778,
+        "n_complete_four_plot_positive_groups": 6,
+        "n_positive_sites": 3,
+        "n_sites_with_complete_frames": 3,
+        "range_site_mean_grouping_scores": [
+          0.05,
+          0.102381
+        ]
+      },
+      "spring": {
+        "equal_site_mean_grouping_score": 0.031468,
+        "n_complete_four_plot_positive_groups": 7,
+        "n_positive_sites": 2,
+        "n_sites_with_complete_frames": 5,
+        "range_site_mean_grouping_scores": [
+          -0.091071,
+          0.263889
+        ]
+      },
+      "summer": {
+        "equal_site_mean_grouping_score": 0.029298,
+        "n_complete_four_plot_positive_groups": 3,
+        "n_positive_sites": 2,
+        "n_sites_with_complete_frames": 3,
+        "range_site_mean_grouping_scores": [
+          -0.117857,
+          0.117424
+        ]
+      },
+      "winter": {
+        "equal_site_mean_grouping_score": 0.033333,
+        "n_complete_four_plot_positive_groups": 1,
+        "n_positive_sites": 1,
+        "n_sites_with_complete_frames": 1,
+        "range_site_mean_grouping_scores": [
+          0.033333,
+          0.033333
+        ]
+      }
+    },
+    "n_complete_four_plot_positive_groups": 17,
+    "n_sites_negative": 1,
+    "n_sites_positive": 4,
+    "n_sites_with_complete_groups": 5,
+    "observed_equal_site_mean": 0.034618,
+    "seasonal_heterogeneity": {
+      "n_sites_with_complete_four_plot_groups_in_every_season": 0,
+      "observed_seasonal_max_minus_min": null,
+      "pseudo_label_partition_reference": null,
+      "status": "INSUFFICIENT_ALL_SEASON_SITES"
+    },
+    "site_bootstrap_95_descriptive": [
+      -0.033421,
+      0.089224
+    ],
+    "site_fixed_exact_three_way_plot_grouping_reference": {
+      "NOT_a_randomisation_test_p_value": true,
+      "fraction_reference_scores_greater_equal_observed": 0.127572,
+      "n_possible_unordered_plot_partition_assignments_per_site": 3,
+      "reference_mean": 0,
+      "reference_q025_q975": [
+        -0.053689,
+        0.053218
+      ],
+      "source_grouping_not_randomly_assigned": true,
+      "total_reference_assignments": 243
+    },
+    "site_mean_minmax": [
+      -0.08578,
+      0.125496
+    ],
+    "status": "SOURCE_SITE_LEVEL_PUBLIC_ASSEMBLAGE_GROUPING_COMPUTED"
+  },
+  "min_positive_date_threshold": 5,
+  "n_source_corrected_positive_cells": 197,
+  "n_source_site_labels": 6,
+  "negative_species_or_unsampled_recording_assumed_absent": false,
+  "no_hydrological_causality_memory_or_fitness_claim": true,
+  "plot_definition": {
+    "far_water": "DryA/DryB >500m from water source",
+    "near_water": "WetA/WetB <=50m from waterbody",
+    "not_measured_inundation_or_randomised": true,
+    "source": "Hoefer et al. (2026) frog study Figure 1 / authors same survey design 2025 mammal methods"
+  },
+  "rc6_main_unchanged": true,
+  "site_coordinates_species_names_and_raw_rows_published": false,
+  "source": "Hoefer et al. 2026, Zenodo v2.0, original frog_data_season.csv",
+  "source_git_blob_sha1": "e5a419574be5e3f9922989f9aa6001fbb7f09d01",
+  "source_has_actual_complete_recorder_effort_ledger": false,
+  "source_sha256": "07a825f7b3269b7d15a353c11a099bceecafef4a5d9a5ffb8a80126bc18d4bc5",
+  "source_total_positive_detection_rows": 13577,
+  "status": "ACTUAL_PUBLIC_FROG_DISTANCE_TO_WATER_PLOT_PARTITION_RESULT",
+  "verification": {
+    "status": "EXECUTED_AND_QC_MATCHED",
+    "officialRun": "https://github.com/zuizui0223/frogcs/actions/runs/38404243197",
+    "codeVersionSHA": "c99abafe1e534fb18a6642fc449b3c87a27de599",
+    "regressionRedRun": "https://github.com/zuizui0223/frogcs/actions/runs/38404155825",
+    "sourceReportedFullFrames": 26,
+    "sumAcrossSeasonFrames": 26,
+    "note": "Red-green fix: by_season frame append moved out of loop over three alternative 2+2 groupings; similarities unchanged while frame counts divide by 3"
+  }
+}

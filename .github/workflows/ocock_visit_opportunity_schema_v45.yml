@@ -1,0 +1,22 @@
+name: Ocock authorized visit ledger structure v4.5 (synthetic)
+on:
+  push:
+    branches:
+      - audit/iowa-station-waterstate-source-gate-v31
+    paths:
+      - "studies/climate_landscape/scripts/audit_ocock_visit_opportunity_manifest_v45.py"
+      - ".github/workflows/ocock_visit_opportunity_schema_v45.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-only-opportunity-denominator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test 29-site 343-visit 95-night design with zero source calls
+        run: python studies/climate_landscape/scripts/audit_ocock_visit_opportunity_manifest_v45.py --synthetic-test

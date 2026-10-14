@@ -1,0 +1,125 @@
+{
+  "actual_candidate_manual_validation": {
+    "MANUAL_ID_original_candidate_label_counts": {
+      "FALSE": 237535,
+      "MISSING": 32,
+      "OTHER": 0,
+      "TRUE": 13609,
+      "UNSURE": 105
+    },
+    "author_selected_filter": "R code removes UNSURE/NA and templates with zero manually TRUE reference matches before downstream logistic curve",
+    "fraction_true_among_decided_candidate_matches_NOT_recall_or_precision": 0.05419,
+    "global_candidate_label_fraction_estimates_species_detection_accuracy": false,
+    "manual_FALSE_is_an_original_recording_no_frog_opportunity": false,
+    "n_manually_true_or_false_labeled_candidates": 251144,
+    "n_original_distinct_reference_templates": 115,
+    "null_or_non_numeric_source_key_counts": {},
+    "original_validation_field_names_ONLY": [
+      "MANUAL.ID",
+      "template",
+      "eucledian.distance"
+    ],
+    "original_validation_rows": 251281,
+    "potential_site_plot_date_species_join_column_names_ONLY": [],
+    "rowwise_source_id_join_to_13577_pamall_species_observations_established": false,
+    "template_support": {
+      "n_templates_with_5plus_each_true_and_false": 70,
+      "n_templates_with_any_manual_true": 78,
+      "n_templates_with_both_true_and_false": 78,
+      "n_templates_with_just_true_labeled_records": 0,
+      "n_templates_with_no_true_but_any_false": 37
+    }
+  },
+  "actual_positive_detection_day_support": {
+    "WARNING": "Positive-detection dates are conditioned on calls and do NOT prove other dates were acoustically valid no-call opportunities. Ratios not occupancy/recorder uptime.",
+    "n_site_plot_season_keys_with_positive_detection_days": 95,
+    "n_site_season_positive_day_counts_exceed_author_max_days": 0,
+    "n_site_season_year_pooled_positive_day_keys": 24,
+    "positive_day_excess_days_sorted_without_names": [],
+    "positive_day_to_reported_season_max_day_ratio_minmedianmax": [
+      0.216,
+      0.7836,
+      1
+    ],
+    "positive_detection_calendar_days_per_site_season_minmedianmax": [
+      41,
+      130,
+      300
+    ],
+    "reported_site_season_max_minus_positive_calendar_days_minmedianmax": [
+      0,
+      54,
+      196
+    ],
+    "source_positive_detection_rows": 13577,
+    "unreported_species_or_missing_plot_day_inferred_zero": false
+  },
+  "all_source_site_species_plot_value_rows_omitted": true,
+  "main_rc6_modified": false,
+  "no_new_species_group_ecology_estimated": true,
+  "not_using_TinyFish_or_private_source": true,
+  "original_author": "Hoefer et al. (2026), Zenodo v2.0 public tagged GitHub",
+  "original_author_effort_numbers": {
+    "author_four_season_max_days_sum": 4875,
+    "author_site_whole_period_T_days_sum": 4951,
+    "differences_prove_raw_missing_audio": false,
+    "minmax_site_day_differences": [
+      0,
+      47
+    ],
+    "n_author_site_season_max_day_entries": 24,
+    "n_author_site_total_day_entries": 6,
+    "n_sites_with_any_difference": 5,
+    "n_sites_with_exact_arithmetic_equality": 1,
+    "per_plot_original_recorder_uptime_data_obtained": false,
+    "site_day_differences_sorted_without_site_identifiers": [
+      0,
+      1,
+      2,
+      6,
+      20,
+      47
+    ],
+    "source_denominator_grain": "author site total and site x season limit; NOT site x plot x season x cycle x timestamp actual valid recorder opportunities",
+    "total_minus_season_day_difference_sum": 76
+  },
+  "original_source_hashes": {
+    "author_r_code": {
+      "blob_sha1": "93c6e051ce446f76ac0730f52693bea9ebfc3963",
+      "bytes": 52645,
+      "sha256": "c9cedc298cc516e455e35afc9617d7baaec4a7a7f4ac1e698ee0158767aee216",
+      "tag_path": "scripts/R_code_biodiversityFrogs.qmd"
+    },
+    "candidate_manual_validation": {
+      "blob_sha1": "f2f7a5426be57e98387f06055c9361377f007ad4",
+      "bytes": 10192628,
+      "sha256": "4fc7e4ab9b86ed416544f34cf8003bab475ed3d16cdcfacc22b8d612a8bc9fa9",
+      "tag_path": "data/frogs_PAM_daily_all.csv"
+    },
+    "season_positive": {
+      "blob_sha1": "e5a419574be5e3f9922989f9aa6001fbb7f09d01",
+      "bytes": 1653167,
+      "sha256": "07a825f7b3269b7d15a353c11a099bceecafef4a5d9a5ffb8a80126bc18d4bc5",
+      "tag_path": "data/frog_data_season.csv"
+    }
+  },
+  "per_recorder_calendar_effort_and_quality_verified": false,
+  "public_repository": "https://github.com/cheloniax/repo_PAM_frogs/tree/v.2.0",
+  "results_v71_v72_v73_adjusted_for_real_effort": false,
+  "status": "PUBLIC_SOURCE_EFFORT_AND_MANUAL_VALIDATION_QC_COMPLETED",
+  "survey_opportunity_source_keys_joined": false,
+  "verification": {
+    "run": "https://github.com/zuizui0223/frogcs/actions/runs/38410943930",
+    "commit_of_execution": "98cf22c5d40760ef68ee13adb77d7f4a81f91072",
+    "job_id": 115342788751,
+    "checks": [
+      "all raw source Git blob hashes pinned",
+      "source author site total declarations matched each other",
+      "six site×four season values checked",
+      "6-site 76-day total difference reconciled by subtraction only",
+      "95 of 96 site plot season positive support preserved",
+      "raw MANUAL.ID candidate labels categorized without source identity fields",
+      "no rowwise crosswalk to main 13577 species source invented"
+    ]
+  }
+}
