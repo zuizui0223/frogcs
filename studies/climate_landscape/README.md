@@ -1,8 +1,12 @@
 # Independent frog acoustic–hydrology study
 
-**Current handoff — 2026-10-14. Two independent, public-original USGS ARMI surveys (2003–08 and 2024) are now matched for location, season, method and clock: 67 site pairs, mean recorded-species Jaccard 0.416. This is observed audible community comparison, not observer-calibrated actual occupancy change or a new range-shift result. 2024's 23 dual-observer pair check remains available. The CEWH Flow-MER hydrological mechanism remains BLOCKED.**
+**Current handoff — 2026-10-14. CC0 USGS 2003–08/2024 source-matched 67-site frog assemblage Jaccard = 0.416414; new v8.1 QA confirms just 2/67 comparisons involve era-private taxon names, and no excluded multi-clock visit changes the fixed eligible 67 sites. This remains recorded-species agreement, NOT detection-corrected ecological replacement. Flow-MER water-history mechanism remains BLOCKED.**
 
 This remains independent draft PR #135, targeting `study/climate-landscape-acoustic-sites-v0`, not frozen JAE RC6/main. No custodian email has been sent. No new frog effect, memory mechanism or reproductive payoff is established.
+
+## v8.1 actual source-name and original survey-clock QA (post-outcome, no refit)
+
+[**Confirmed public-source label/visit-key diagnostics**](USGS_ARMI_REAL_20Y_FROG_DETECTED_COMMUNITY_COMPARISON.md#executed-v81-outcome-independent-source-coding-result--no-original-jaccard-refit) · [**source-pinned CI 38499111467 SUCCESS**](https://github.com/zuizui0223/frogcs/actions/runs/38499111467) · [compact aggregate+public global taxonomy receipt](receipts/USGS_ARMI_V81_TAXON_CLOCK_SOURCE_DIAGNOSTIC.json). The 2003–08 and 2024 original files expose **14/10** literal recorded taxon labels (**9 exact shared**); **65/67** matched site-event comparisons involve no era-private label, and just **2/67** involve the 2024-only label `Anaxyrus woodhousii`. No taxon was remapped; if **only** these two labels could change Jaccard, the mean over 66 nonempty unions could shift by **at most 2/66≈0.0303**, not a model-adjusted effect. Historic same-site/date/observer keys include **69** with multiple clock/method event variants (**140** event keys). Those variants may be legitimate separate visits: **no** omitted variant would qualify as an alternate strictly matching event within the fixed 67-site sample; **two other** source sites might gain conditional eligible visits if their records were confirmed. Preserve the existing Jaccard **0.416414**; focus on observer/detection/field-effort comparability rather than hunting new significance.
 
 ## NEW: USGS original 2003–08 versus 2024 public frog source — spatially vetted sites and first genuine long-term detected community comparison (2026-10-14)
 
