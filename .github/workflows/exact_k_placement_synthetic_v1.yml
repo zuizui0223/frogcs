@@ -1,0 +1,30 @@
+name: Exact-k conditional placement synthetic QA
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/exact_k_placement_synthetic_v1.yml"
+      - "research/scripts/exact_k_placement_kernel_v0_1.py"
+      - "research/tests/test_exact_k_placement_kernel.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical packages
+        run: python -m pip install --disable-pip-version-check -q numpy scipy
+      - name: Syntax check
+        run: python -m compileall -q research/scripts research/tests
+      - name: Test exact-k conditional placement with synthetic records only
+        run: python -m unittest discover -s research/tests -p 'test_exact_k_placement_kernel.py' -v
