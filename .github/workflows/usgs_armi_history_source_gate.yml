@@ -1,0 +1,27 @@
+name: One-off official USGS ARMI 2003-08 vs 2024 source crosswalk
+on:
+  push:
+    branches: [audit/iowa-station-waterstate-source-gate-v31]
+    paths:
+      - "studies/climate_landscape/scripts/audit_usgs_armi_history2024_public_source_gate.py"
+      - ".github/workflows/usgs_armi_history_source_gate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-source-key-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Inspect original USGS 2003-2008 and 2024 CC0 releases without frog response values
+        run: python studies/climate_landscape/scripts/audit_usgs_armi_history2024_public_source_gate.py
+      - name: Retain only aggregate public source identity/effort metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: usgs-armi-2003-08-and-2024-source-only
+          path: studies/climate_landscape/receipts/USGS_ARMI_PUBLIC_2003_2008_2024_SOURCE_LINK_GATE.json
+          if-no-files-found: error
