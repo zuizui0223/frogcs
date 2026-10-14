@@ -139,7 +139,7 @@ def profile_csv(data:bytes):
 def tests():
     mock="Site,Site_original,Date,Observer,Method,Arrival_time,Species\nA,S1,2024-06-01,O1,Ear,20:12,Frog1\nA,S1,2024-06-01,O2,Microphone,20:14,Frog2\nA,S1,2024-07-01,O1,Ear,20:00,None\n"
     p,raw=profile_csv(mock.encode())
-    assert p["n_source_site_day_observer_keys"]==3
+    assert p["n_distinct_source_site_day_observer_keys"]==3
     assert p["n_site_days_with_multiple_observers"]==1
     assert p["n_sites_with_two_or_more_recorded_survey_dates"]==1
     assert "S1" not in json.dumps(p) and "Frog1" not in json.dumps(p)
