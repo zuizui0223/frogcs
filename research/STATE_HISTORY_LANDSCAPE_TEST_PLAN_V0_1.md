@@ -35,7 +35,7 @@ Do not rerun these same endpoints with new radii, guild thresholds, rain windows
 
 Use the original frozen NAAMP data and original `q` comparator only if exactly reproducible. This can characterize **which taxa / routes contribute** to the residual, but **not** confirm a new mechanism independently.
 
-- Population: use the exact eligible strictly prior SiteID-history population for the focal comparator (2,916 pairs, 439 routes, 20 States); report any loss under geographic, landscape or taxonomic metadata gates. **Do not silently substitute the 4,236-pair full set or 585-route study size**.
+- Population: use the exact eligible strictly prior SiteID-history population for the focal comparator (2,916 pairs, 439 routes, 20 States); report any loss under geographic, landscape or taxonomic metadata gates. **Do not silently substitute the 4,236-pair full set or 585-route study size**. A verified response-blind 2026-10-14 coordinate preflight found 1,028/1,183 public routes with exactly 10 unambiguous coordinates, but the intersection with the focal 439 routes **has not yet been established** (see `research/NAAMP_TERRESTRIAL_GEOMETRY_PREFLIGHT_RESULT_2026-10-14.md`).
 - For each taxon × route × eligible event, calculate cross-stop residual-pair products using the same `e = y - q` and denominator `sqrt(q(1-q))` conventions as the archived residual-dependence diagnostic. Preserve all eligible route events and their candidate taxon support, including events without positive outcomes.
 - These residual-pair summaries are **not the focal global conditional concentration coefficient**; call the new target `residual_stop_dependence`, and report direct conditional-concentration simulations separately if feasible.
 - Estimate latent variance attributable to taxon, route, taxon × route and route × event (where identifiable). Use partial pooling and account for very unequal cluster sizes, repeated pairs/routes, and uncertain per-cell residuals. Do not infer a taxon trait from its noisy unshrunk coefficient.
@@ -76,16 +76,16 @@ Use strictly historical `H_j` defined before every scored event. Estimate/fit fr
 (b) far-stop residual dependence, and
 (c) excess recurrent-strong-site alignment.
 
-A high predictive score for marginal calling **without reproducing the conditional configuration** is a **mechanism insufficiency result**.
+A high predictive score for marginal calling **without reproducing the conditional configuration** is a **mechanism insufficiency result**. CI>=1 fitted baseline probabilities must not be reused to model a CI>=2 or CI=3 site-placement vector; train/out-of-block-score a baseline for the SAME acoustic threshold. The exact-k kernel has a fail-closed threshold identity check.
 
 ## 3. Landscape sources and biological moderators
 
 ### Primary static landscape source (metadata-first)
 
 - Use one internally consistent official **NLCD** release for the historical NAAMP interval; do not mix C1.0 and C1.2 classes/confidence without an independently verified harmonization.
-- Freeze an exposure-year rule: the latest qualifying observation **no later than** the acoustic event; do not interpolate with future land cover to predict an earlier call.
-- Within-site terrestrial habitat: **300-m buffer**, predeclared forest classes 41/42/43 of the selected NLCD product. Record no-data, water, developed classes and the eligible pixel fraction.
-- Between-stop connectivity: a fixed **1-km graph neighbourhood**; use a predetermined connected-forest-pixel adjacency rule and count connected stop pairs. This is a landscape proxy, **not proof of dispersal or a single breeding population**. Avoid treating overlapping circles as independent area replicates.
+- Draft retrospective exposure-year rule: use the **preceding completed calendar year** (survey_year - 1) for site context; freeze this against the exact analysis clock before viewing new acoustic outcomes. Annual NLCD C1.2 was modelled and published retrospectively in 2026 and could involve imagery after historical survey years, so neither this rule nor a labelled-year layer alone authorizes a **prospective no-future-information** or causal claim.
+- Within-site terrestrial habitat: **300-m stop-centred buffer**, predeclared forest classes 41/42/43 of the selected NLCD C1.2 categorical raster. This is a listening-context proxy, **not** a 300-m terrestrial habitat buffer measured from a mapped pond edge. Record no-data, water, developed classes, the source's confidence field and eligible pixel fraction. Do not infer categories from WMS display colours.
+- Between-stop forest-patch connectivity: use a predeclared **route-wide raster envelope** (e.g. route convex hull plus 1 km) and an independently chosen 30-m forest pixel adjacency rule; compute actual same-patch connections between the ten 300-m forest neighbourhoods, accounting for corridors outside each individual buffer. This is a landscape proxy, **not proof of dispersal or a single breeding population**. A real 2026-10-14 geometry-only gate found median 7/45 pairs with overlapping 1-km circles and 116/1,028 routes with a fully linked buffer-overlap graph, but **buffer overlap must never substitute for a mapped forest-patch connection**. Avoid treating overlapping circles as independent area replicates.
 - Note the historical caveat: verified source coordinates do not establish physical stability of every listening station. Fail closed on known relocation/uncertainty.
 
 ### Prespecified taxon axis
@@ -120,7 +120,7 @@ FrogID's available opportunistic recording-level detections do not automatically
 ## 6. Immediate workflow
 
 1. Preserve the evidence audit and original Actions receipts; leave `main` and the submitted JAE paper alone.
-2. Conduct a **source-only** eligibility and overlap table for candidate independent repeated fixed-site programmes, and for NAAMP's historical stable-site and NLCD C1.2 coverage. Do not inspect new response outcomes at this stage.
+2. Retain the verified response-blind 1,028-route, exactly-ten-SiteID source gate and its artifact; determine the **actual intersection** with the frozen 439-route paper sample without changing outcomes. Conduct a **source-only** C1.2 original categorical raster and confidence access test, and candidate independent fixed-site programme eligibility inventory. Do not inspect new response outcomes at this stage.
 3. Freeze guild taxonomy, land-cover year/geometry, contrasts and analysis code on an independent revision **after** feasibility and **before** any new outcome readback.
 4. Run one prespecified independent analysis. Publish supported and negative components together; do not switch outcomes to rescue a gate or connectivity story.
 
