@@ -1,0 +1,36 @@
+name: NAAMP terrestrial geometry source-only preflight
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_landscape_geometry_source_only_v1.yml"
+      - "research/scripts/naamp_terrestrial_geometry_preflight_v1.py"
+      - "research/tests/test_naamp_terrestrial_geometry_preflight.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile audited source scripts
+        run: python -m compileall -q research/scripts research/tests
+      - name: Run offline synthetic regression tests (no frog outcomes)
+        run: python -m unittest discover -s research/tests -p 'test_naamp_terrestrial_geometry_preflight.py' -v
+      - name: Run SHA-pinned original NAAMP source-only geometry
+        run: python research/scripts/naamp_terrestrial_geometry_preflight_v1.py
+      - name: Upload source-only receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-terrestrial-geometry-source-only-v1
+          path: research/output/NAAMP_TERRESTRIAL_GEOMETRY_SOURCE_V0_1.json
+          if-no-files-found: error
