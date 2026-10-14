@@ -5,6 +5,7 @@ on:
     paths:
       - "studies/climate_landscape/scripts/audit_usgs_armi_history2024_public_source_gate.py"
       - ".github/workflows/usgs_armi_history_source_gate.yml"
+      - "studies/climate_landscape/scripts/audit_usgs_armi_revisit_source_geo_key.py"
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,9 +20,13 @@ jobs:
           python-version: "3.12"
       - name: Inspect original USGS 2003-2008 and 2024 CC0 releases without frog response values
         run: python studies/climate_landscape/scripts/audit_usgs_armi_history2024_public_source_gate.py
+      - name: Verify same source Site ID is spatially consistent across eras and compare method/month coverage
+        run: python studies/climate_landscape/scripts/audit_usgs_armi_revisit_source_geo_key.py
       - name: Retain only aggregate public source identity/effort metadata
         uses: actions/upload-artifact@v4
         with:
           name: usgs-armi-2003-08-and-2024-source-only
-          path: studies/climate_landscape/receipts/USGS_ARMI_PUBLIC_2003_2008_2024_SOURCE_LINK_GATE.json
+          path: |
+            studies/climate_landscape/receipts/USGS_ARMI_PUBLIC_2003_2008_2024_SOURCE_LINK_GATE.json
+            studies/climate_landscape/receipts/USGS_ARMI_2003_2008_2024_SITE_KEY_GEOSPATIAL_QC.json
           if-no-files-found: error
