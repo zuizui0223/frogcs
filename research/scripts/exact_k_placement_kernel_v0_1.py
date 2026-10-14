@@ -7,6 +7,9 @@ New history coefficients are therefore ADDITIONAL residual effects beyond q.
 
 The forest connection matrix must represent mapped forest-patch connections,
 not geometric proximity or overlap of buffers. Users must supply it externally.
+
+The frozen q for CI>=1 must NOT be reused with observed CI>=2/CI=3:
+the q_response_state and response_state are required to match exactly.
 """
 from __future__ import annotations
 from functools import lru_cache
@@ -35,10 +38,16 @@ def verified(event):
     valid source records but have no conditional placement information.
     """
     needed = {"q", "observed", "history", "forest", "connection",
-              "soil_change_z", "guild"}
+              "soil_change_z", "guild", "response_state",
+              "q_response_state", "connection_source"}
     missing = needed - set(event)
     if missing:
         raise ValueError(f"missing required event fields: {sorted(missing)}")
+    states = {"CI_ge_1", "CI_ge_2", "CI_eq_3"}
+    if event["response_state"] not in states or event["q_response_state"] != event["response_state"]:
+        raise ValueError("q probabilities and observed acoustic threshold must match")
+    if event["connection_source"] not in ("synthetic", "official_nlcd_forest_patch"):
+        raise ValueError("forest connections require independently classified patch data")
     q = np.asarray(event["q"], float)
     y = np.asarray(event["observed"], float)
     h = np.asarray(event["history"], float)
@@ -108,8 +117,12 @@ def event_pmf(event, beta):
     return choices_for_k(int(np.sum(event["observed"]))), probs, selected
 
 def event_logprob(event, beta):
-    _, probs, observed_index = event_pmf(event, beta)
-    return float(np.log(probs[observed_index]))
+    beta = np.asarray(beta, float)
+    if beta.shape != (len(FEATURE_NAMES),) or not np.isfinite(beta).all():
+        raise ValueError("invalid coefficient vector")
+    offset, X, observed_index = event_design(event)
+    score = offset + X @ beta
+    return float(score[observed_index] - logsumexp(score))
 
 def rank_of_features(events, active_features):
     indices = [FEATURE_NAMES.index(name) for name in active_features]
