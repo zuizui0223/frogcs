@@ -15,10 +15,13 @@ class CanaryTests(unittest.TestCase):
     def test_version_and_year_fixed_and_technical_only(self):
         for work in canary.WORKSPACES.values():
             url=canary.url_for_workspace(work)
-            self.assertIn("request=GetCoverage",url)
+            self.assertIn("REQUEST=GetCoverage",url)
             self.assertIn("2012-01-01",url)
-            self.assertIn("EPSG%3A5070",url)
-            self.assertIn("image%2Fgeotiff",url)
+            self.assertIn("SUBSET=X%28",url)
+            self.assertIn("SUBSET=Y%28",url)
+            self.assertIn("image%2Ftiff",url)
+            self.assertIn("COVERAGEID=",url)
+            self.assertIn("VERSION=2.0.1",url)
         self.assertEqual(canary.bbox5070(),canary.bbox5070())
 
     def test_numeric_tiff_values_extract(self):
