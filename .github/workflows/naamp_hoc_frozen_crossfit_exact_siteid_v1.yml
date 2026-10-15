@@ -1,0 +1,37 @@
+name: NAAMP original species-site-history null on exact-SiteID routes
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_hoc_frozen_crossfit_exact_siteid_v1.yml"
+      - "research/scripts/naamp_exact_siteid_crossfit_hoc_null_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen_2422_pair_outcome_sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install original NAAMP dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Compile method without mutating JAE main
+        run: python -m compileall -q research/scripts exploration scripts/naamp
+      - name: Run frozen B=1000 species and prior-SiteID null on pre-fixed 2422 source-complete pairs
+        run: python research/scripts/naamp_exact_siteid_crossfit_hoc_null_v0_1.py
+      - name: Preserve all empirical and stochastic results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-exact-siteid-2422-frozen-original-higher-order-null-v1
+          path: research/output/NAAMP_EXACT_SITEID_HOC_CROSSFIT_NULL_V0_1.json
+          if-no-files-found: warn
+          retention-days: 90
