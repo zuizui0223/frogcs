@@ -1,0 +1,34 @@
+name: Official WCS 2 coverage description source-only
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/mrlc_wcs2_description_v1.yml"
+      - "research/scripts/mrlc_wcs2_description_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  describe_no_pixel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Source only WCS2 coverage description
+        run: |
+          python -m compileall -q research/scripts/mrlc_wcs2_description_v0_1.py
+          python research/scripts/mrlc_wcs2_description_v0_1.py
+      - name: Preserve source-only WCS2 response
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-annual-nlcd-WCS2-cover-description-source-v1
+          path: research/output/MRLC_WCS2_DESCRIBE_2012_V0_1.json
+          if-no-files-found: warn
