@@ -66,6 +66,28 @@ class JointConcentrationTests(unittest.TestCase):
         self.assertEqual(base.total_K,treated.total_K)
         self.assertEqual(base.route_new_N,treated.route_new_N)
 
+    def test_complete_forest_graph_confounds_generic_dependence(self):
+        data=toy(linked=True)
+        generic=model.build(data,{"generic_same_taxon_pairs":0.8})
+        forest=model.build(data,{"forest_link":0.8})
+        # If every possible stop pair is forest-linked, a forest term is
+        # indistinguishable from a generic species-night coactivation term.
+        self.assertAlmostEqual(generic.logZ,forest.logZ,places=10)
+        self.assertAlmostEqual(generic.observed_logprob(),
+                               forest.observed_logprob(),places=10)
+
+    def test_generic_baseline_changes_C_when_network_has_no_forest_links(self):
+        data=toy(linked=False)
+        base=model.build(data,{})
+        generic=model.build(data,{"generic_same_taxon_pairs":1.1})
+        r0=np.random.default_rng(456)
+        r1=np.random.default_rng(456)
+        mean0=np.mean([model.concentration(base.draw(r0),base.dry)
+                       for _ in range(180)])
+        mean1=np.mean([model.concentration(generic.draw(r1),generic.dry)
+                       for _ in range(180)])
+        self.assertGreater(mean1,mean0+0.4)
+
     def test_zero_forest_links_implies_zero_link_effect(self):
         data=toy(linked=False)
         base=model.build(data,{})
