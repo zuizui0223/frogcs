@@ -40,8 +40,48 @@ def build():
                 pointmap[sid].add((float(r["lon"]),float(r["lat"])))
     if len(pointmap)!=10 or any(len(v)!=1 for v in pointmap.values()):
         raise ValueError("selected route lost exactly ten coordinate identities")
-    rows=[{"SiteID":sid,"lon":next(iter(vals))[0],
-           "lat":next(iter(vals))[1]} for sid,vals in sorted(pointmap.items())]
+    # Read the first chronologically eligible paired survey's actual
+    # StopNumber->SiteID identity from original Stops.csv (not Counts.csv).
+    # Sorting coordinate SiteIDs is not equivalent to ordering the 10 listening
+    # stops, and would silently corrupt temporal alignment later.
+    candidate_pairs=[p for p in panel["source_eligible_pairs"]
+                     if str(p["state"])+":"+str(p["route"])==selected]
+    candidate_pairs.sort(key=lambda p:(p["year_earlier"],str(p["runnumber"]),
+                                       str(p["dry_rid"]),str(p["wet_rid"])))
+    if not candidate_pairs:
+        raise ValueError("selected route has no eligible metadata survey pair")
+    selected_pair=candidate_pairs[0]
+    def identity_map(rid):
+        matches=[r for r in meta["Stops.csv"]
+                 if str(r.get("RunID") or "").strip()==str(rid)
+                 and str(r.get("SkippedStop") or "").strip()=="0"]
+        mapping_by_stop=defaultdict(set)
+        for record in matches:
+            st=str(record.get("StopNumber") or "").strip()
+            sid=str(record.get("SiteID") or "").strip()
+            if st and sid:
+                mapping_by_stop[st].add(sid)
+        if len(mapping_by_stop)!=10 or any(len(ids)!=1 for ids in mapping_by_stop.values()):
+            raise ValueError("reference survey does not have ten unique SiteIDs")
+        return {st:next(iter(ids)) for st,ids in mapping_by_stop.items()}
+    stop2site=identity_map(selected_pair["wet_rid"])
+    if identity_map(selected_pair["dry_rid"])!=stop2site:
+        raise ValueError("paired surveys disagree on physical stop identity")
+    if set(stop2site.values())!=set(pointmap) or len(set(stop2site.values()))!=10:
+        raise ValueError("survey SiteIDs do not match exact-ten coordinate identities")
+    rows=[{"StopNumber":st,"SiteID":sid,"lon":next(iter(pointmap[sid]))[0],
+           "lat":next(iter(pointmap[sid]))[1]}
+          for st,sid in sorted(stop2site.items(),key=lambda v:int(v[0]))]
+    point_table={
+        "route_number":route,"route_cluster":selected,
+        "reference_run_id":str(selected_pair["wet_rid"]),
+        "reference_pair_dry_run_id":str(selected_pair["dry_rid"]),
+        "physical_identity_from_pinned_Stops_csv":True,
+        "source_pins":dict(join.SOURCE_PINS,coordinates=geometry.COORD_SHA256),
+        "source_only_no_frog_counts":True,
+        "field_verified_historical_station_continuity":False,
+        "stops":rows
+    }
     proj=Transformer.from_crs("EPSG:4326","EPSG:5070",always_xy=True)
     inv=Transformer.from_crs("EPSG:5070","EPSG:4326",always_xy=True)
     xy=[proj.transform(r["lon"],r["lat"]) for r in rows]
@@ -79,7 +119,7 @@ def build():
              "C1V2_LndCnf_acquired":False,
              "source_landcover_pixel_identity_verified":False,
              "use":"Manual upload only to official MRLC Viewer as source-only technical AOI"}
-    return geo,receipt
+    return geo,receipt,point_table
 
 def main():
     ap=argparse.ArgumentParser()
@@ -87,10 +127,15 @@ def main():
        "research/output/NAAMP_SOURCE_ONLY_LANDSCAPE_MRLC_VIEWER_AOI_V0_1.geojson"))
     ap.add_argument("--receipt",type=Path,default=Path(
        "research/output/NAAMP_SOURCE_ONLY_MRLC_VIEWER_AOI_V0_1.json"))
-    a=ap.parse_args();geo,receipt=build()
+    ap.add_argument("--site-table",type=Path,default=Path(
+       "research/output/NAAMP_SOURCE_ONLY_DEL_210302_SITEID_STOP_TABLE_V0_1.json"))
+    a=ap.parse_args();geo,receipt,point_table=build()
     a.out.parent.mkdir(parents=True,exist_ok=True)
     a.out.write_text(json.dumps(geo,indent=2)+"\n",encoding="utf8")
     receipt["geojson_sha256"]=hashlib.sha256(a.out.read_bytes()).hexdigest()
+    a.site_table.write_text(json.dumps(point_table,indent=2,sort_keys=True)+"\n",encoding="utf8")
+    receipt["site_table_sha256"]=hashlib.sha256(a.site_table.read_bytes()).hexdigest()
+    receipt["siteid_stop_order_verified_from_both_survey_runs"]=True
     a.receipt.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf8")
     print(json.dumps(receipt,indent=2,sort_keys=True))
     # The response-blind polygon is public-source geography (no user data),
