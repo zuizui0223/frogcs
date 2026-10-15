@@ -25,6 +25,13 @@
 | Raster forest-patch component and site-pair extraction | [Forest feature extractor](scripts/nlcd_c1v2_forest_patch_features_v0_1.py) | Synthetic QA only |
 | Fixed-k conditional site allocation likelihood | [Exact-k kernel](scripts/exact_k_placement_kernel_v0_1.py) | Synthetic QA only |
 
+## 15 October method and source audit
+
+- [**WCS2, Collection 1.2 and concentration handoff**](NAAMP_TERRESTRIAL_WCS_AND_CONCENTRATION_AUDIT_2026-10-15.md): official WCS2 has 1985–2025, 30m data in EPSG:5070, but bounded 2012 GetCoverage returns an XML server exception rather than a GeoTIFF. The original C1V2 pixel identity remains unverified.
+- [**Exact-(K,N) whole-matrix concentration generator**](scripts/conditional_kn_concentration_kernel_v0_1.py) replaces the erroneous suggestion that per-species exact-k site placement can explain the algebraically fixed within-taxon C. **Ten synthetic tests PASS**, including the generic-vs-forest-pair non-identifiability check.
+- [**Official MRLC Viewer source-only AOI preparation**](scripts/create_source_only_mrlc_viewer_aoi_v0_1.py) uses only the first lexicographically selected route from the 358 paper source-eligible routes to create a convex-hull +1km GeoJSON. This is a source export aid; it is not a forest effect or field-site validation.
+- Comparison standard: **forest-linked same-taxon pairing must improve on generic same-taxon pairing**, using an independently validated forest-patch raster, a precommitted fixed-q baseline and geographically held-out events.
+
 ## Evidence links
 
 - [Original no-outcome geography screen](https://github.com/zuizui0223/frogcs/actions/runs/38563109769) — 1,028/1,183 exact-ten coordinate routes.
