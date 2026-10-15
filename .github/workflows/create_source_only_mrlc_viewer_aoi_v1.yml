@@ -1,0 +1,38 @@
+name: NAAMP source-only AOI for official NLCD viewer
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/create_source_only_mrlc_viewer_aoi_v1.yml"
+      - "research/scripts/create_source_only_mrlc_viewer_aoi_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  create_geography_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install area-projection libraries
+        run: python -m pip install --disable-pip-version-check -q pyproj shapely
+      - name: Build deterministic first-cohort source-only AOI
+        run: |
+          python -m compileall -q research/scripts
+          python research/scripts/create_source_only_mrlc_viewer_aoi_v0_1.py
+      - name: Archive GeoJSON and original-source provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-lexical-first-ten-stop-mrlc-viewer-source-only-AOI
+          path: |
+            research/output/NAAMP_SOURCE_ONLY_LANDSCAPE_MRLC_VIEWER_AOI_V0_1.geojson
+            research/output/NAAMP_SOURCE_ONLY_MRLC_VIEWER_AOI_V0_1.json
+          if-no-files-found: error
+          retention-days: 90
