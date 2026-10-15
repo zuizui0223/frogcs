@@ -65,7 +65,7 @@ def run():
                     if local(x.tag)=="CoverageId" and x.text and x.text.strip()]
             item["capabilities_metadata"]=meta
             item["covers"]=list(dict.fromkeys(covers))[:30]
-            exact=[x for x in covers if x.startswith(w+":")]
+            exact=[x for x in covers if x.startswith(w+"__") or x.startswith(w+":")]
             if len(exact)!=1:
                 raise ValueError(f"expected one coverage in {w}: {item['covers'][:4]}")
             item["chosen_cover_id"]=exact[0]
