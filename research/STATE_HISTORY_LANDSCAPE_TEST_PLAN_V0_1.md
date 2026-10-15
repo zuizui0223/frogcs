@@ -61,7 +61,7 @@ For an independent repeated panel, freeze outcome and sampling eligibility befor
 
 **Magnitude model (A):** predict strong calling (e.g. CI>=2) and number of strongly calling stops from hydric state change, known meteorology, sampling schedule, prior route propensity and taxon. Use a split trained on different routes and an earlier period; report held-out log loss and calibration. Positive predictive gain would not show that soil moisture explains the joint spatial configuration.
 
-**Placement model (B):** for each taxon × event with `k` strongly calling stops, condition exactly on observed `k`. Let `H_j` indicate a strictly-prior strong-chorus site; let `T_j` describe site terrestrial cover and `L_{jk}` the prespecified between-site land-connection matrix. Compare conditional subsets of fixed size `k` with a model that can add:
+**Placement model (B), for *where* at fixed species-specific depth only:** for each taxon × event with `k` strongly calling stops, condition exactly on observed `k`. Let `H_j` indicate a strictly-prior strong-chorus site; let `T_j` describe site terrestrial cover and `L_{jk}` the prespecified between-site land-connection matrix. Compare conditional subsets of fixed size `k` with a model that can add:
 
 - historical-site log odds `H_j`;
 - `H_j × Δsoil_event`, the **gating** hypothesis;
@@ -71,10 +71,16 @@ For an independent repeated panel, freeze outcome and sampling eligibility befor
 
 An event-constant route soil score **has no main-effect contrast within an exact-k placement likelihood**: it can only affect conditional placement through a site-varying interaction, or affect the magnitude model.
 
-Use strictly historical `H_j` defined before every scored event. Estimate/fit from geographically and temporally held-out training folds. Predeclared null generators preserve event activity amount, trained species propensities and prior-site information. The response to examine is:
-(a) residual high-order within-taxon concentration,
-(b) far-stop residual dependence, and
-(c) excess recurrent-strong-site alignment.
+Use strictly historical `H_j` defined before every scored event. Estimate/fit from geographically and temporally held-out training folds. Predeclared null generators preserve event activity amount, trained species propensities and prior-site information. These per-species exact-`k` comparisons assess **placement / recurrent-site alignment** and possibly forest-linked pair selection at an observed depth. They **cannot test high-order concentration** because fixing every species-specific `k_s` algebraically fixes `C = sum_s choose(max(k_s-1,0), 2)`. The original plan's earlier suggestion that exact-`k` placement alone could reproduce the focal JAE concentration is **withdrawn**.
+
+**Species-allocation model (C), separate from exact-`k` placement:** for a whole pair × route event, keep (i) total observed positive wet cells `K` and (ii) the number `N` of wet-positive species that were dry-route silent fixed, **without fixing `k_s` per species**. Start from the original cross-fitted, species×site `q` matrix at the SAME CallingIndex threshold. Add the prospectively defined within-taxon forest-patch pair energy `theta_link * sum_s sum_{j<l} y_sj y_sl L_jl`, plus separately frozen guild moderation and/or wetness×historical-site terms. Conditional normalizers and simulations use the implemented exact dynamic-programming `research/scripts/conditional_kn_concentration_kernel_v0_1.py`. Evaluate `C` and held-out matrix log likelihood versus the exact-(K,N) baseline, geographically blocked at **route**.
+
+This new exact-(K,N) conditioning defines **a distinct, explicitly post-hoc estimator**; it is not the JAE's original regression/simulation-conditioned β=1.6503 / residual=0.2969 and may have different sampling/error properties. The existing JAE SI already contains a separate exact-N,K structural diagnostic. No new NAAMP environmental mechanism is confirmed by writing this code.
+
+The independent validation would separately examine:
+(a) distribution of `C` under allocation model C,
+(b) near-versus-far residual dependence, and
+(c) excess recurrent-strong-site alignment under placement model B.
 
 A high predictive score for marginal calling **without reproducing the conditional configuration** is a **mechanism insufficiency result**. CI>=1 fitted baseline probabilities must not be reused to model a CI>=2 or CI=3 site-placement vector; train/out-of-block-score a baseline for the SAME acoustic threshold. The exact-k kernel has a fail-closed threshold identity check.
 
@@ -104,7 +110,7 @@ No selection of buffers, source releases, guild assignments or species subsets b
 
 - H-additive supported: `Δsoil` predicts event magnitude or breadth out of block, strictly prior site use predicts conditional placement, and soil × historical-site interaction is compatible with zero.
 - H-gating supported only if the predefined **primary** conditional site-history × soil coefficient is positive with complete 95% confidence interval above zero and the model improves held-out conditional placement over additive context.
-- H-terrestrial-connection supported only if a prospectively fixed guild × connectivity component improves out-of-block conditional high-order concentration and lag-profile predictions over the frozen first-order generator; a mere vegetation coefficient predicting pooled calling is insufficient.
+- H-terrestrial-connection supported only if prospectively fixed forest-patch connectivity improves geographically held-out **exact-(K,N) whole-matrix log score and the conditional distribution of C**, with an independently specified guild contrast, and does not fail prespecified lag-profile diagnostics. Fixed-species-k placement tests are a separate secondary outcome. A mere vegetation coefficient predicting pooled calling is insufficient.
 - No macro mechanism supported: positive marginal predictor associations persist but conditional high-order configuration remains unexplained, or data are non-identifiable / too sparse. **Report and stop.**
 
 Cluster uncertainty by the geographically appropriate route/unit; evaluate temporal transfer separately. Report multiplicity, calibration, effect sizes and uncertainty, negative controls for recording effort/protocol, missingness, route/guild overlap and whether one region drives the result.
