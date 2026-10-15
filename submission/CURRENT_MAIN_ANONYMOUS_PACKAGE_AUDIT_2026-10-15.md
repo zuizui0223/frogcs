@@ -32,9 +32,9 @@ Therefore the older **successful** artifact is *not byte-equivalent to what the
 current `main` submission workflow would package*. It is not acceptable to
 claim unchanged bytes solely because the numerical endpoint is unchanged.
 
-## Audit-only draft PR
+## Audit-only draft PR with minimal copy-edit
 
-This draft PR modifies **only the present operational audit note**.
+This draft PR modifies **the present audit note and five short, purely verbal cuts in the manuscript Introduction (−60 whitespace-delimited words)**. The frozen numerical endpoint, Abstract, Results, Discussion, references and figure legends remain unchanged by this copy-edit. The internal manuscript limit was found to be **8,000 words**, against the latest source count **8,034**; Introduction-only deduplication leaves **7,974** words and does not weaken the internal QA threshold.
 The pre-existing pull-request trigger on
 `.github/workflows/pulse_template_submission_pipeline.yml` is intended
 to rebuild/QA the current main manuscript and reviewer-code bundle.
