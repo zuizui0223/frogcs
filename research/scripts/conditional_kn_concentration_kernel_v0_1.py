@@ -183,16 +183,17 @@ def build(event,params=None,max_cells=650):
         opts.append(group);logs.append(row_lz)
     dp=np.full((S+1,K+1,nnew+1),-np.inf,dtype=float)
     dp[0,0,0]=0.0
+    # Vectorized dynamic programming over each taxon's possible depth (0..10).
+    # Avoids a Python triple-loop over all K,N states for large NAAMP matrices.
     for sp in range(S):
-        state=np.isfinite(dp[sp])
-        existing=np.argwhere(state)
         dry_silent=not dry[sp].any()
-        for kk,nn in existing:
-            for k in range(min(10,K-kk)+1):
-                step=int(k>0 and dry_silent)
-                if nn+step<=nnew:
-                    dp[sp+1,kk+k,nn+step]=np.logaddexp(
-                        dp[sp+1,kk+k,nn+step],dp[sp,kk,nn]+logs[sp][k])
+        for k in range(min(10,K)+1):
+            step=int(k>0 and dry_silent)
+            if step>nnew:
+                continue
+            source=dp[sp,:K-k+1,:nnew-step+1]+logs[sp][k]
+            target=dp[sp+1,k:K+1,step:nnew+1]
+            dp[sp+1,k:K+1,step:nnew+1]=np.logaddexp(target,source)
     z=dp[S,K,nnew]
     if not np.isfinite(z):
         raise ValueError("no feasible exact-K-and-route-new-N configurations")
