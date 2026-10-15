@@ -1,0 +1,30 @@
+name: C1V2 forest-patch metrics synthetic QA
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/nlcd_forest_patch_synthetic_v1.yml"
+      - "research/scripts/nlcd_c1v2_forest_patch_features_v0_1.py"
+      - "research/tests/test_nlcd_c1v2_forest_patch_features.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic_no_frog_or_real_raster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical geo dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy scipy rasterio shapely
+      - name: Static Python syntax QA
+        run: python -m compileall -q research/scripts research/tests
+      - name: Prove patch links differ from geometric proximity on synthetic 30m grids
+        run: python -m unittest discover -s research/tests -p "test_nlcd_c1v2_forest_patch_features.py" -v
