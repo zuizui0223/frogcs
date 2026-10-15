@@ -43,6 +43,8 @@ class PaperMetadataJoinTests(unittest.TestCase):
         self.assertEqual(result["reproduction"]["history_pairs"],1)
         self.assertEqual(result["intersection"]["source_exact10_pairs"],1)
         self.assertEqual(result["intersection"]["source_exact10_routes"],1)
+        self.assertEqual(result["intersection"]["source_siteid_exact10_pairs"],1)
+        self.assertEqual(result["intersection"]["source_siteid_exact10_routes"],1)
         self.assertFalse(result["analysis_caveats"]["frog_Counts_csv_opened"])
 
     def test_pre_history_missing_does_not_count(self):
@@ -63,6 +65,23 @@ class PaperMetadataJoinTests(unittest.TestCase):
         result=join.produce(data,cropped.encode(),enforce_pins=False)
         self.assertEqual(result["reproduction"]["history_pairs"],1)
         self.assertEqual(result["intersection"]["source_exact10_pairs"],0)
+
+    def test_exact_ten_coordinate_route_does_not_imply_survey_siteid_identity(self):
+        data,coords=fixtures()
+        lines=coords.decode().splitlines()
+        # Keep ten georeferenced stop coordinates, but mutate one physical
+        # SiteID as an outcome-independent geometry/source identity error.
+        rows=list(csv.DictReader(io.StringIO(coords.decode())))
+        rows[0]["SiteID"]="9999"
+        out=io.StringIO()
+        writer=csv.DictWriter(out,fieldnames=["RouteNumber","SiteID","lat","lon"])
+        writer.writeheader()
+        writer.writerows(rows)
+        result=join.produce(data,out.getvalue().encode(),enforce_pins=False)
+        self.assertEqual(result["intersection"]["source_exact10_pairs"],1)
+        self.assertEqual(result["intersection"]["source_siteid_exact10_pairs"],0)
+        self.assertEqual(result["intersection"]["geometry_pass_but_unmatched_siteid_pairs"],1)
+        self.assertEqual(result["coordinate_vs_survey_siteid_overlap_histogram"]["9"],1)
 
     def test_rain_tie_not_paired(self):
         data,coords=fixtures()
