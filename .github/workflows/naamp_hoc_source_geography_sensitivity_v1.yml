@@ -1,0 +1,38 @@
+name: NAAMP frozen higher-order source-geometry sensitivity
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_hoc_source_geography_sensitivity_v1.yml"
+      - "research/scripts/naamp_hoc_exact_siteid_geography_sensitivity_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen_geocoded_selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install unchanged archived analysis dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Compile existing and added source
+        run: |
+          python -m compileall -q scripts/naamp exploration research/scripts
+      - name: Reproduce 2916 original NAAMP matches and test pre-frozen 2422 site-ID source gate
+        run: python research/scripts/naamp_hoc_exact_siteid_geography_sensitivity_v0_1.py
+      - name: Archive exploratory 2916 vs 2422 vs excluded higher-order statistics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-hoc-original-forest-source-geography-gate-sensitivity-v1
+          path: research/output/NAAMP_ORIGINAL_HOC_SOURCE_GATE_SENSITIVITY_V0_1.json
+          if-no-files-found: warn
+          retention-days: 90
