@@ -16,6 +16,8 @@ import math
 import re
 import urllib.parse
 import urllib.request
+import urllib.error
+import time
 from collections import defaultdict, Counter
 from datetime import datetime
 from pathlib import Path
@@ -54,8 +56,24 @@ def get_pinned_sources(*, max_bytes=50_000_000):
         if parsed.scheme != "https" or parsed.hostname not in ALLOWED_HOSTS:
             raise ValueError("unverified ScienceBase file host")
         request = urllib.request.Request(uri, headers={"User-Agent": "frogcs-metadata-only-source-v1"})
-        with urllib.request.urlopen(request, timeout=150) as f:
-            payload = f.read(max_bytes + 1)
+        last_error = None
+        payload = None
+        for attempt in range(4):
+            try:
+                with urllib.request.urlopen(request, timeout=150) as f:
+                    payload = f.read(max_bytes + 1)
+                break
+            except urllib.error.HTTPError as exc:
+                last_error = exc
+                if exc.code not in {429,500,502,503,504} or attempt == 3:
+                    raise
+            except (urllib.error.URLError, TimeoutError) as exc:
+                last_error = exc
+                if attempt == 3:
+                    raise
+            time.sleep(2 * (attempt+1))
+        if payload is None:
+            raise RuntimeError(f"source download failed: {last_error}")
         if len(payload) > max_bytes:
             raise ValueError(f"source size exceeded for {name}")
         actual = hashlib.sha256(payload).hexdigest()
