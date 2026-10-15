@@ -1,0 +1,38 @@
+name: Official Annual NLCD 1.2 WCS source discovery
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/nlcd_c1v2_ogc_wcs_identity_v1.yml"
+      - "research/scripts/nlcd_c1v2_official_ogc_wcs_preflight_v0_1.py"
+      - "research/tests/test_nlcd_c1v2_official_ogc_wcs_preflight.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no_pixel_or_frog_data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Synthetic OGC source-gate QA
+        run: |
+          python -m compileall -q research/scripts research/tests
+          python -m unittest discover -s research/tests -p "test_nlcd_c1v2_official_ogc_wcs_preflight.py" -v
+      - name: Read bounded official Annual NLCD WMS and WCS metadata only
+        run: python research/scripts/nlcd_c1v2_official_ogc_wcs_preflight_v0_1.py
+      - name: Preserve OGC source-only receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nlcd-c1v2-official-wcs-source-only-v1
+          path: research/output/NLCD_C1V2_OFFICIAL_OGC_WCS_IDENTITY_V0_1.json
+          if-no-files-found: warn
+          retention-days: 60
