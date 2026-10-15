@@ -53,6 +53,11 @@ def parse_summary(root):
         vals=[x.text.strip() for x in root.iter()
               if local(x.tag)==tag and x.text and x.text.strip()]
         out[tag]=list(dict.fromkeys(vals))[:22]
+    out["spatial_axis_attributes"]=[
+        {"tag":local(x.tag),"attributes":dict(x.attrib)}
+        for x in root.iter()
+        if local(x.tag) in ("Envelope","EnvelopeWithTimePeriod","RectifiedGrid","GridEnvelope","boundedBy","origin")
+    ][:16]
     return out
 
 def run():
