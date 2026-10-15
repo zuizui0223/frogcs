@@ -6,7 +6,7 @@
 
 - **NAAMP matched pairs:** original paper populations reproduced from pinned survey metadata without reading frog `Counts.csv`: 4,236 overall; 2,916 with strictly prior physical-site history (439 routes, 20 states).
 - **Coordinate gate:** 1,028 of 1,183 coordinate source routes have ten unambiguous physical SiteIDs with no gross geometry errors.
-- **Intersection:** 2,422 of 2,916 paper pairs and 358 of 439 paper routes remain after the ten-coordinate source gate (all 20 states). This is **not actual 300-m positional accuracy or forest raster completeness**.
+- **Intersection:** 2,422 of 2,916 paper pairs and 358 of 439 paper routes remain after the ten-coordinate source gate (all 20 states). **Sampling is geographically uneven:** pair retention is just 1/26 (3.8%) in Kentucky, 124/233 (53.2%) in Indiana and 77/120 (64.2%) in Iowa versus 147/148 (99.3%) in South Carolina. This is **not actual 300-m positional accuracy or forest raster completeness**.
 - **C1V2 original pixels:** not acquired. Official land cover and confidence C1V2 catalog entries exist, but direct ScienceBase ZIP Range returns HTML; MRLC WMS capabilities alone are not raw categorical TIFF proof.
 - **Forest-patch algorithm:** written and tested on synthetic 30-m class + confidence arrays only. Connects two listening stops only if the same 8-neighbour forest component (codes 41/42/43) touches both 300-m buffers inside a fixed route hull+1,000 m window.
 - **Soil × history:** September 30 NAAMP post-hoc analyses support separate main associations but do not support the primary interaction between route-scale soil water and recurrent-site placement. See frozen audit.
@@ -28,7 +28,7 @@
 ## Evidence links
 
 - [Original no-outcome geography screen](https://github.com/zuizui0223/frogcs/actions/runs/38563109769) — 1,028/1,183 exact-ten coordinate routes.
-- [Frozen-paper metadata × coordinate join](https://github.com/zuizui0223/frogcs/actions/runs/38703262483) — 2,422 pairs / 358 routes.
+- [Frozen-paper metadata × coordinate join and state retention](https://github.com/zuizui0223/frogcs/actions/runs/38704933550) — 2,422 pairs / 358 routes; all 20 States, unequal completeness.
 - [USGS 2012 C1V2 archive/WMS source preflight](https://github.com/zuizui0223/frogcs/actions/runs/38703861726) — no original C1V2 numeric pixels.
 - [Exact-k synthetic QA](https://github.com/zuizui0223/frogcs/actions/runs/38563866657) — eight mathematical tests.
 - [30-m forest component synthetic QA](https://github.com/zuizui0223/frogcs/actions/runs/38704389950) — eight tests.
