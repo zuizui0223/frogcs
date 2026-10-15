@@ -34,7 +34,8 @@ FEATURES=("forest_link","terrestrial_guild_by_link",
 def fixed_subsets(n):
     if n<1 or n>10:
         raise ValueError("site count outside 1..10")
-    return {k:np.asarray(list(combinations(range(n),k)),dtype=int).reshape(-1,k)
+    return {k:(np.empty((1,0),dtype=int) if k==0 else
+               np.asarray(list(combinations(range(n),k)),dtype=int).reshape(-1,k))
             for k in range(n+1)}
 
 def concentration(wet,dry):
