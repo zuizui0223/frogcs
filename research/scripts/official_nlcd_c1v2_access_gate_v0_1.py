@@ -86,7 +86,7 @@ def archive_signature_probe(uri,catalog_bytes):
                 "first_four_hex":signature.hex(),
                 "is_zip_local_header":signature.startswith(b"PK\x03\x04"),
                 "is_zip_tail_or_central":(b"PK\x05\x06" in r["raw"] or b"PK\x01\x02" in r["raw"]),
-                "is_html":r["raw"].lstrip().lower().startswith((b"<!doctype html",b"<html")),
+                "is_html":("text/html" in r["content_type"].lower() or r["raw"].lstrip().lower().startswith((b"<!doctype html",b"<html"))),
                 "actual_host":r["actual_host"],
                 "catalog_bytes":catalog_bytes,"sha256_of_probe":r["sha256"],
                 "raw_C1V2_pixel_verified":False}
