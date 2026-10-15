@@ -1,0 +1,30 @@
+name: Exact-K and route-new-N concentration synthetic QA
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/exact_kn_concentration_synthetic_v1.yml"
+      - "research/scripts/conditional_kn_concentration_kernel_v0_1.py"
+      - "research/tests/test_conditional_kn_concentration_kernel.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install computational dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy scipy
+      - name: Syntax check and eight synthetic null tests
+        run: |
+          python -m compileall -q research/scripts research/tests
+          python -m unittest discover -s research/tests -p "test_conditional_kn_concentration_kernel.py" -v
