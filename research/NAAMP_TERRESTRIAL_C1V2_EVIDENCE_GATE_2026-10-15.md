@@ -20,6 +20,28 @@ frozen JAE submission or treating exposed landscape contrasts as confirmation.
 
 The complete route/pair keys are stored in the attached Actions artifact, not in the manuscript. Source route overlap alone is not outcome validation.
 
+
+
+## 1b. Unequal state retention: IMPORTANT macroecological selection caveat
+
+A second SHA-verified metadata-only workflow (six synthetic tests PASS, [original Actions run](https://github.com/zuizui0223/frogcs/actions/runs/38704933550), [full state-stratified receipt](https://github.com/zuizui0223/frogcs/actions/runs/38704933550/artifacts/11957987407)) reproduced the same global 2,422 pairs / 358 routes and measured complete-case retention by State:
+
+| State | Focal pairs | Source exact-ten pairs | Pair retention | Focal routes | Source exact-ten routes |
+|---|---:|---:|---:|---:|---:|
+| Kentucky | 26 | 1 | **3.8%** | 2 | 1 |
+| Indiana | 233 | 124 | **53.2%** | 39 | 25 |
+| Iowa | 120 | 77 | **64.2%** | 29 | 22 |
+| Tennessee | 30 | 23 | 76.7% | 11 | 9 |
+| North Carolina | 246 | 233 | 94.7% | 47 | 43 |
+| South Carolina | 148 | 147 | **99.3%** | 24 | 23 |
+
+All 20 paper States retain some data, but **their weights are not preserved**. This is selection on existing coordinate geometry, not on a frog outcome, but missing coordinates or route layout may associate with geography, habitat and taxon composition. Accordingly:
+
+- Do not equate retaining 83.1% of pairs with an unbiased regional or continental macroecological sample.
+- Report source-eligible versus excluded geography / route metadata and state-balanced effects **before** any spatial or species-guild mechanism inference.
+- Do not interpret the one Kentucky pair or one Texas route as state-general evidence. If State × guild overlap is inadequate, mark the moderator unidentifiable instead of optimizing subsets.
+- Any future model must carry the response-blind source selection and its spatial coverage limitation into inference, and must not claim a geographically uniform mechanism.
+
 ## 2. Official 2012 C1V2 landcover + confidence source gate
 
 [Source-only USGS audit success](https://github.com/zuizui0223/frogcs/actions/runs/38703861726) — [original machine receipt](https://github.com/zuizui0223/frogcs/actions/runs/38703861726/artifacts/11956974035).
