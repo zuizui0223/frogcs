@@ -93,4 +93,9 @@ def main():
     receipt["geojson_sha256"]=hashlib.sha256(a.out.read_bytes()).hexdigest()
     a.receipt.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf8")
     print(json.dumps(receipt,indent=2,sort_keys=True))
+    # The response-blind polygon is public-source geography (no user data),
+    # streamed once for independent immutable GitHub text-file verification.
+    print("SOURCE_ONLY_GEOJSON_BEGIN")
+    print(json.dumps(geo,separators=(",",":"),ensure_ascii=False))
+    print("SOURCE_ONLY_GEOJSON_END")
 if __name__=="__main__":main()
