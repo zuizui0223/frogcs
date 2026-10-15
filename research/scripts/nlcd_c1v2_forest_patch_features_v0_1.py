@@ -145,6 +145,9 @@ def run_files(cover_path,conf_path,route_json,manifest_json):
                    "original_cover_sha256":manifest["landcover"]["sha256"],
                    "original_conf_sha256":manifest["confidence"]["sha256"],
                    "no_anuran_counts_or_calls_accessed":True,
+                   "local_file_hashes_match_supplied_manifest":True,
+                   "independent_original_USGS_byte_provenance_verified":False,
+                   "independent_original_source_link_verification_required":True,
                    "independent_historical_fixed_station_truth":False,
                    "this_is_not_a_frog_effect":True})
     return result
