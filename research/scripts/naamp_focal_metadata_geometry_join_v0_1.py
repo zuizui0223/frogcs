@@ -229,7 +229,8 @@ def produce(meta, coordinates, *, enforce_pins):
     }
     if enforce_pins and any(counts.get(k)!=v for k,v in EXPECTED.items() if k in counts):
         raise ValueError(f"NAAMP metadata reproduction mismatch; DO NOT interpret overlap: {counts}")
-    geom=geometry.summarize(geometry.read_csv(coordinates),enforce_source_size=enforce_pins)
+    original_coordinate_rows=geometry.read_csv(coordinates)
+    geom=geometry.summarize(original_coordinate_rows,enforce_source_size=enforce_pins)
     chosen = {x["route_number"] for x in geom["route_records"]
               if x["complete_10_siteid_source_pass"]}
     if enforce_pins and len(chosen)!=EXPECTED["coordinate_10site_routes"]:
@@ -237,6 +238,30 @@ def produce(meta, coordinates, *, enforce_pins):
     hist_good = [p for p in hist if p["route"] in chosen]
     good_routes={p["route_cluster"] for p in hist_good}
     good_states={p["state"] for p in hist_good}
+    # Route number alone is insufficient: independently check that *each*
+    # matched survey pair's physical SiteIDs equal all ten official
+    # coordinates on the route. Original survey Runs/Stops only.
+    coord_siteids=defaultdict(set)
+    for row in original_coordinate_rows:
+        route=str(row.get("RouteNumber") or "").strip()
+        sid=str(row.get("SiteID") or "").strip()
+        if route in chosen and sid:
+            coord_siteids[route].add(sid)
+    if any(len(coord_siteids[r])!=10 for r in chosen):
+        raise ValueError("exact-ten coordinate route lost unique SiteIDs")
+    source_pair_siteid_overlap=Counter()
+    siteid_identical_pairs=[]
+    for p in hist_good:
+        survey_ids=stable_pair_siteids(p,sampled,siteids)
+        if survey_ids is None or len(set(survey_ids))!=10:
+            raise ValueError("paper prior-history pair lost ten stable physical stops")
+        n_overlap=len(set(survey_ids) & coord_siteids[p["route"]])
+        source_pair_siteid_overlap[n_overlap]+=1
+        if n_overlap==10:
+            siteid_identical_pairs.append(p)
+    exact_siteid_routes={p["route_cluster"] for p in siteid_identical_pairs}
+    if len(siteid_identical_pairs)>len(hist_good):
+        raise RuntimeError("site-ID pair subset paradox")
     denom={
         "focal_history_pairs":len(hist),"focal_history_routes":len(hist_routes),
         "source_exact10_pairs":len(hist_good),"source_exact10_routes":len(good_routes),
@@ -244,7 +269,15 @@ def produce(meta, coordinates, *, enforce_pins):
         "source_exact10_fraction_focal_pairs":len(hist_good)/len(hist) if hist else 0,
         "source_exact10_fraction_focal_routes":len(good_routes)/len(hist_routes) if hist_routes else 0,
         "focal_routes_excluded":len(hist_routes-good_routes),
-        "focal_pairs_excluded":len(hist)-len(hist_good)
+        "focal_pairs_excluded":len(hist)-len(hist_good),
+        "source_siteid_exact10_pairs":len(siteid_identical_pairs),
+        "source_siteid_exact10_routes":len(exact_siteid_routes),
+        "source_siteid_exact10_states":len({p["state"] for p in siteid_identical_pairs}),
+        "source_siteid_exact10_fraction_focal_pairs":len(siteid_identical_pairs)/len(hist) if hist else 0,
+        "source_siteid_exact10_fraction_focal_routes":len(exact_siteid_routes)/len(hist_routes) if hist_routes else 0,
+        "source_siteid_exact10_fraction_of_geometry_pairs":
+             len(siteid_identical_pairs)/len(hist_good) if hist_good else 0,
+        "geometry_pass_but_unmatched_siteid_pairs":len(hist_good)-len(siteid_identical_pairs)
     }
     route_state_counts=Counter(p["state"] for p in hist if p["route_cluster"] in good_routes)
     route_per_state=Counter(k.split(":")[0] for k in good_routes)
@@ -270,6 +303,12 @@ def produce(meta, coordinates, *, enforce_pins):
         "eligible_state_routes":dict(sorted(route_per_state.items())),
         "state_retention_by_paper_cohort":retention_by_state,
         "eligible_state_pairs":dict(sorted(route_state_counts.items())),
+        "coordinate_vs_survey_siteid_overlap_histogram":{
+            str(k):int(v) for k,v in sorted(source_pair_siteid_overlap.items())},
+        "source_siteid_exact10_routes":sorted(exact_siteid_routes),
+        "source_siteid_exact10_pairs":[
+            {k:p[k] for k in ("state","route","runnumber","year_earlier","year_later","wet_rid","dry_rid")}
+            for p in siteid_identical_pairs],
         "known_coordinate_unsafe_routes_in_focal": sorted(
             set(p["route"] for p in hist) &
             {"270107","270218","350414","720214","880113"}),
@@ -279,6 +318,8 @@ def produce(meta, coordinates, *, enforce_pins):
             "spatial_coordinate_precision_300m_proven":False,
             "historical_fixed_site_continuity_proven":False,
             "all_observed_sites_match_geometry_points":False,
+            "all_survey_siteids_identical_to_coordinates_in_exact10_subset":True,
+            "known_siteid_partial_overlap_excluded_from_exact10_subset":True,
             "source_only_eligibility_not_landcover_pixel_completeness":True,
             "route_numbers_only_not_sufficient_for_identical_historical_station_proof":True,
             "selection_locked_to_paper_metadata_gates":True
@@ -307,7 +348,9 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf8")
     print(json.dumps({k:result[k] for k in ("study","reproduction","intersection",
-                                            "eligible_state_routes","state_retention_by_paper_cohort","analysis_caveats")},
+                                            "eligible_state_routes","state_retention_by_paper_cohort",
+                                            "coordinate_vs_survey_siteid_overlap_histogram",
+                                            "analysis_caveats")},
                      indent=2,sort_keys=True))
 if __name__=="__main__":
     main()
