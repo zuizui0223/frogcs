@@ -8,10 +8,17 @@ within-taxon concentration statistic sum choose(max(k_s-1,0),2). It retains:
  - a fixed cross-fitted q[s,stop] first-order baseline for the SAME CI threshold.
 
 Optional predetermined interaction energies:
- - pairwise same-taxon active stops linked by a verified forest patch;
+ - generic same-taxon active-stop pairs, a baseline for non-independent calling;
+ - pairwise same-taxon active stops linked by a verified forest patch,
+   evaluated as ADDITIONAL to generic coactivation;
  - its interaction with an INDEPENDENT guild classification;
  - event-scale soil change × strictly-prior strong-site history;
  - site forest fraction and guild × site forest fraction.
+
+Identifiability note: if every stop pair is forest-connected, the generic
+same-taxon-pair statistic and forest-link-pair statistic coincide and cannot
+be separately estimated. A route-level positive link score alone is insufficient
+for mechanistic attribution; the null must include generic pair dependence.
 
 This is new, POST-HOC, exploratory methodological infrastructure.
 It does not reconstruct the original JAE null-regression-conditioned beta;
@@ -27,7 +34,7 @@ import math
 import numpy as np
 from scipy.special import logsumexp
 
-FEATURES=("forest_link","terrestrial_guild_by_link",
+FEATURES=("generic_same_taxon_pairs","forest_link","terrestrial_guild_by_link",
           "soil_by_prior_strong","site_forest","guild_by_site_forest")
 
 @lru_cache(maxsize=20)
@@ -174,8 +181,9 @@ def build(event,params=None,max_cells=650):
                 for i in range(k):
                     for j in range(i+1,k):
                         linked+=conn[comb[:,i],comb[:,j]]
-                feat=np.column_stack((linked,linked*guild[sp],
-                                      hist*soil,frst,frst*guild[sp]))
+                feat=np.column_stack((np.full(len(comb),k*(k-1)/2.0),linked,
+                                      linked*guild[sp],hist*soil,
+                                      frst,frst*guild[sp]))
                 logw=logodds[sp,comb].sum(axis=1)+feat@p
             row_lz.append(float(logsumexp(logw)))
             group.append({"subsets":comb,"logw":logw,
