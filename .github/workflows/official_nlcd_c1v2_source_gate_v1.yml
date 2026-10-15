@@ -1,0 +1,37 @@
+name: Official NLCD C1V2 categorical source access gate
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/official_nlcd_c1v2_source_gate_v1.yml"
+      - "research/scripts/official_nlcd_c1v2_access_gate_v0_1.py"
+      - "research/tests/test_official_nlcd_c1v2_access_gate.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalogue_not_outcomes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax and synthetic unit tests
+        run: |
+          python -m compileall -q research/scripts research/tests
+          python -m unittest discover -s research/tests -p 'test_official_nlcd_c1v2_access_gate.py' -v
+      - name: Read only official 2012 catalogue + bounded WMS/ZIP signatures
+        run: python research/scripts/official_nlcd_c1v2_access_gate_v0_1.py
+      - name: Archive official source-only receipt (even if source access inconclusive)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-nlcd-c1v2-raw-source-readiness-v1
+          path: research/output/OFFICIAL_NLCD_C1V2_ACCESS_GATE_V0_1.json
+          if-no-files-found: warn
