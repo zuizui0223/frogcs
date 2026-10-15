@@ -14,6 +14,7 @@ import io
 import json
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import numpy as np
@@ -74,6 +75,16 @@ def bounded_get(url):
 def inspect_numeric_raster(raw,mime):
     if not (raw.startswith(b"II\x2a\x00") or raw.startswith(b"MM\x00\x2a") or
             raw.startswith(b"II\x2b\x00") or raw.startswith(b"MM\x00\x2b")):
+        if raw.lstrip().startswith(b"<"):
+            try:
+                root=ET.fromstring(raw)
+                err="; ".join(x.text.strip() for x in root.iter()
+                    if x.tag.rsplit("}",1)[-1] in ("ServiceException","ExceptionText")
+                    and x.text and x.text.strip())
+                if err:
+                    raise ValueError("WCS service exception: "+err[:400])
+            except ET.ParseError:
+                pass
         raise ValueError("WCS returned non-TIFF payload; no image label extraction")
     if not any(x in mime.lower() for x in ("tiff","octet-stream")):
         raise ValueError("WCS MIME not GeoTIFF")
