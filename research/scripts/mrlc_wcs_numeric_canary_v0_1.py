@@ -45,16 +45,18 @@ def bbox5070():
             origin_x+WIDTH*GRID/2,origin_y+HEIGHT*GRID/2)
 
 def coverage_name(workspace):
-    return workspace+":"+workspace.removeprefix("mrlc_")
+    # Exact ID read in official 2026-10-15 WCS2 GetCapabilities / DescribeCoverage.
+    return workspace+"__"+workspace.removeprefix("mrlc_")
 
 def url_for_workspace(workspace):
     base=f"https://{HOST}/geoserver/{workspace}/wcs"
-    parms={
-      "service":"WCS","version":"1.0.0","request":"GetCoverage",
-      "coverage":coverage_name(workspace),"CRS":"EPSG:5070",
-      "BBOX":",".join(f"{x:.2f}" for x in bbox5070()),
-      "time":f"{SOURCE_YEAR}-01-01T00:00:00.000Z",
-      "format":"image/geotiff","resx":"30","resy":"30"}
+    xmin,ymin,xmax,ymax=bbox5070()
+    parms=[
+      ("SERVICE","WCS"),("VERSION","2.0.1"),("REQUEST","GetCoverage"),
+      ("COVERAGEID",coverage_name(workspace)),("FORMAT","image/tiff"),
+      ("SUBSET",f"X({xmin:.2f},{xmax:.2f})"),
+      ("SUBSET",f"Y({ymin:.2f},{ymax:.2f})"),
+      ("SUBSET",f'time("{SOURCE_YEAR}-01-01T00:00:00.000Z")')]
     return base+"?"+urllib.parse.urlencode(parms)
 
 def bounded_get(url):
