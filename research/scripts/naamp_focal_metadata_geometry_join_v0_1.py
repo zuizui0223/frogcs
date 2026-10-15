@@ -230,6 +230,19 @@ def produce(meta, coordinates, *, enforce_pins):
     }
     route_state_counts=Counter(p["state"] for p in hist if p["route_cluster"] in good_routes)
     route_per_state=Counter(k.split(":")[0] for k in good_routes)
+    baseline_route_states=Counter(k.split(":")[0] for k in hist_routes)
+    baseline_pair_states=Counter(p["state"] for p in hist)
+    retention_by_state = {
+        state: {
+            "focal_routes": baseline_route_states[state],
+            "source_exact10_routes": route_per_state[state],
+            "route_fraction": route_per_state[state]/baseline_route_states[state],
+            "focal_pairs": baseline_pair_states[state],
+            "source_exact10_pairs": route_state_counts[state],
+            "pair_fraction": route_state_counts[state]/baseline_pair_states[state]
+        }
+        for state in sorted(baseline_route_states)
+    }
     outputs = {
         "study":"naamp_focal_metadata_geometry_join_v0_1",
         "state":"source_only",
@@ -237,6 +250,7 @@ def produce(meta, coordinates, *, enforce_pins):
         "reproduction":counts,
         "intersection":denom,
         "eligible_state_routes":dict(sorted(route_per_state.items())),
+        "state_retention_by_paper_cohort":retention_by_state,
         "eligible_state_pairs":dict(sorted(route_state_counts.items())),
         "known_coordinate_unsafe_routes_in_focal": sorted(
             set(p["route"] for p in hist) &
@@ -275,7 +289,7 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf8")
     print(json.dumps({k:result[k] for k in ("study","reproduction","intersection",
-                                            "eligible_state_routes","analysis_caveats")},
+                                            "eligible_state_routes","state_retention_by_paper_cohort","analysis_caveats")},
                      indent=2,sort_keys=True))
 if __name__=="__main__":
     main()
