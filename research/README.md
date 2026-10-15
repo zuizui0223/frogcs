@@ -10,7 +10,11 @@
 - **C1V2 original pixels:** not acquired. Official land cover and confidence C1V2 catalog entries exist, but direct ScienceBase ZIP Range returns HTML; MRLC WMS capabilities alone are not raw categorical TIFF proof.
 - **Forest-patch algorithm:** written and tested on synthetic 30-m class + confidence arrays only. Connects two listening stops only if the same 8-neighbour forest component (codes 41/42/43) touches both 300-m buffers inside a fixed route hull+1,000 m window.
 - **Soil × history:** September 30 NAAMP post-hoc analyses support separate main associations but do not support the primary interaction between route-scale soil water and recurrent-site placement. See frozen audit.
-- **Original focal conditional residual:** has not been explained by a forest or terrestrial-connectivity model.
+- **Focal higher-order conditional residual survives source-complete selection:** exactly-ten original survey SiteIDs match all 10 coordinates for **2,422/2,422** focal pairs and 358 routes. On the archived original species+prior-SiteID+dry-persistence B=1000 null, observed β=**1.7184**, expected β=**1.4478**, conditional residual **+0.2706** versus null 95% interval **[-0.1449,+0.1396]**, Monte Carlo p=**0.000999**. Original 2,916-pair full result residual=+0.2969. **This is reused-NAAMP geographical sensitivity, not independent replication or a forest predictor.**
+
+## New source-quality robustness result
+
+[**Complete original-null evidence audit**](NAAMP_GEOGRAPHY_GATE_HIGHER_ORDER_NULL_RESULT_2026-10-15.md) — complete empirical subgroup regressions, SHA-pinned survey↔coordinate exact SiteID matching, and original unchanged species×SiteID crossfit null on 2,422 pairs. [Successful conditional-null Actions run](https://github.com/zuizui0223/frogcs/actions/runs/38726385727); [source-only geometry matching run](https://github.com/zuizui0223/frogcs/actions/runs/38725438609). No C1.2 GeoTIFF accessed. The [Delaware 210302 source-only GeoJSON](aoi/NAAMP_Delaware_210302_source_only_C1V2_request.geojson) and [StopNumber↔SiteID table artifact](https://github.com/zuizui0223/frogcs/actions/runs/38724734319/artifacts/11967790799) are ready for a human-initiated official MRLC Viewer data request (email required).
 
 ## Reproducible sources and scripts
 
