@@ -1,0 +1,38 @@
+name: NAAMP focal source-only 2916-pair geometry join
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_focal_metadata_geometry_join_v1.yml"
+      - "research/scripts/naamp_focal_metadata_geometry_join_v0_1.py"
+      - "research/scripts/naamp_terrestrial_geometry_preflight_v1.py"
+      - "research/tests/test_naamp_focal_metadata_geometry_join.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source_only_cohort:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Static syntax QA
+        run: python -m compileall -q research/scripts research/tests
+      - name: Synthetic-only cohort matching QA
+        run: python -m unittest discover -s research/tests -p "test_naamp_focal_metadata_geometry_join.py" -v
+      - name: Download pinned Runs+Stops only and intersect source-eligible route geometry
+        run: python research/scripts/naamp_focal_metadata_geometry_join_v0_1.py
+      - name: Preserve strict source-only cohort receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-focal-paper-cohort-source-only-geometry-v1
+          path: research/output/NAAMP_FOCAL_SOURCE_GEOMETRY_JOIN_V0_1.json
+          if-no-files-found: error
+          retention-days: 90
