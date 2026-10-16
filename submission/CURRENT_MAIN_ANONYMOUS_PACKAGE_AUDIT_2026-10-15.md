@@ -34,11 +34,39 @@ claim unchanged bytes solely because the numerical endpoint is unchanged.
 
 ## Audit-only draft PR with minimal copy-edit
 
-This draft PR modifies **operational audit notes and manuscript/cover-letter wording only**. First, five repetitive Introduction phrases were shortened by 60 whitespace-delimited words, restoring the 8,000-word internal manuscript safety target (8,034 → 7,974). A second purely narrative alignment on 2026-10-16 reframed Abstract points 1 and 5 and the Discussion Conclusion around **one spatial-unit question** (with Q1 state change and Q3 recurrent-site placement supporting the focal Q2), and aligned the anonymous cover letter. It leaves all frozen quantitative endpoints, Materials and Methods, Results, references, figures, figure legends and SI unchanged. Latest draft counts: **7,989 manuscript words, 317 abstract words, 403 cover-letter words**. [Full single-question claim/wording ledger](RC6_CENTRAL_QUESTION_AND_CONCLUSION_ALIGNMENT_2026-10-16.md). No internal or journal word-count limit was relaxed.
+This draft PR modifies **operational audit notes, manuscript/cover-letter wording, and Supporting Information Word table-rendering/QA only**. First, five repetitive Introduction phrases were shortened by 60 whitespace-delimited words, restoring the 8,000-word internal manuscript safety target (8,034 → 7,974). A second purely narrative alignment on 2026-10-16 reframed Abstract points 1 and 5 and the Discussion Conclusion around **one spatial-unit question** (with Q1 state change and Q3 recurrent-site placement supporting the focal Q2), and aligned the anonymous cover letter. It leaves all frozen quantitative endpoints, Materials and Methods, Results, references, figures, figure legends and SI unchanged. Latest draft counts: **7,989 manuscript words, 317 abstract words, 403 cover-letter words**. [Full single-question claim/wording ledger](RC6_CENTRAL_QUESTION_AND_CONCLUSION_ALIGNMENT_2026-10-16.md). No internal or journal word-count limit was relaxed.
 The pre-existing pull-request trigger on
-`.github/workflows/pulse_template_submission_pipeline.yml` is intended
-to rebuild/QA the current main manuscript and reviewer-code bundle.
-All scientific, formatting and anonymization scripts remain untouched.
+`.github/workflows/pulse_template_submission_pipeline.yml` rebuilds and checks
+the anonymous submission package. **No biological analysis scripts, figure inputs,
+numerical results or source NAAMP data were modified.**
+
+### 2026-10-16: actual SI DOCX table bug corrected
+
+Independent inspection of [artifact 12022169722](https://github.com/zuizui0223/frogcs/actions/runs/38846066120/artifacts/12022169722)
+found **14 Markdown table blocks (136 pipe lines) in the original SI source but
+zero Word tables in the generated Supporting_Information.docx**. All table
+headers, separators and content were merely printed as pipe-delimited paragraphs.
+
+Draft-only formatting fix:
+- `scripts/submission/build_jae_anonymous_docx.py` now converts all SI Markdown
+  grids to **genuine editable Word tables**, with cell word-wrap, repeated shaded
+  header rows and row-splitting safeguards. Source SI Markdown bytes and all
+  scientific interpretations remain unchanged; main manuscript has no tables.
+- `scripts/submission/check_anonymous_si_tables.py` and both JAE workflow paths
+  fail closed unless each of **14 tables / 122 actual data+header rows** retains
+  identical original cell text and repeat-header markup.
+- [SUCCESS workflow run 38854693187](https://github.com/zuizui0223/frogcs/actions/runs/38854693187):
+  `table_count=14`, `total_table_rows=122`,
+  `all_cells_exact_after_inline_markdown_cleanup=True`,
+  `markdown_pipe_rows_in_word_paragraphs=0`.
+- New audited [anonymous ZIP artifact 12026612177](https://github.com/zuizui0223/frogcs/actions/runs/38854693187/artifacts/12026612177):
+  `sha256:dc736146b3599c16672f15dfa8b9089d95d339110d1c59244616d9df1c35f2d5`.
+  The outer ZIP and every SHA256SUMS entry were independently verified. SI DOCX
+  renders as 64 A4 pages with readable headers and no text falling outside the
+  printable content bounds in LibreOffice PDF layout inspection.
+
+This is a substantive **submission-format fix**, not a change to any frozen
+acoustic estimate, comparison population, significance test or biological claim.
 
 ### Acceptance checks
 
@@ -49,7 +77,7 @@ All scientific, formatting and anonymization scripts remain untouched.
 - New manuscript count (including title page) still respects current JAE
   Research Article limit of 8,500 words; abstract ≤350; 8 alphabetized
   keywords; double-spacing and continuous line numbering.
-- Compare output files against prior artifact. Expected changes: Introduction deduplication, two Abstract statements, the Discussion Conclusion, cover-letter opening and audit/specification contents; **not** original frozen scientific results or Methods/Results/SI/figures.
+- Compare output files against prior artifact. Expected changes: introduction/Abstract/Discussion wording, cover-letter opening, audit/specification contents and **true SI Word table formatting only**; **not** original frozen scientific results, Methods, Results, Markdown SI source or figures.
 - Keep **both** artifact records and disclose which exact bundle was used
   for any actual submission.
 
