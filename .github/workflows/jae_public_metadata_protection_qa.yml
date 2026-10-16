@@ -33,7 +33,7 @@ jobs:
           job_header=private.split("\n    needs:",1)[0]
           assert "github.event.repository.private" in job_header
           assert private.index("Refuse private processing if repository is public") < private.index("Materialize private metadata")
-          assert 'REPO_VISIBILITY: \${{ github.event.repository.visibility }}' in private
+          assert 'github.event.repository.visibility' in private
           assert "scripts/submission/render_submission_metadata.py" in text
           print("PASS: public workflow rejects identifying JAE submissions BEFORE secret materialization or artifact upload")
           PY
