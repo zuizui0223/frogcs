@@ -15,6 +15,7 @@ on:
       - "revision/audit_current_endpoint_manuscript_v0_7.py"
       - "scripts/submission/build_jae_anonymous_docx.py"
       - "scripts/submission/check_anonymous_si_tables.py"
+      - "scripts/submission/assemble_private_jae_local.py"
       - "scripts/submission/render_submission_metadata.py"
       - "scripts/submission/build_anonymous_reviewer_bundle.py"
       - "submission/cover_letter.md"
@@ -188,6 +189,38 @@ jobs:
           rows={str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.rglob("*")) if p.is_file()}
           (out/"SHA256SUMS.json").write_text(json.dumps(rows,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print({"status":"PASS","files":len(rows)})
+          PY
+      - name: Smoke-test PRIVATE local bundle using synthetic author, keep outside public artifact
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from tempfile import TemporaryDirectory
+          from hashlib import sha256
+          from zipfile import ZIP_DEFLATED, ZipFile
+          import shutil
+          from scripts.submission.assemble_private_jae_local import build
+
+          root=Path("build/pulse-template-scientific-submission")
+          assert (root/"SHA256SUMS.json").is_file()
+          with TemporaryDirectory(prefix="jae-synthetic-local-") as t:
+              d=Path(t)
+              anon=d/"anonymous.zip"
+              with ZipFile(anon,"w",compression=ZIP_DEFLATED) as z:
+                  for p in sorted(root.rglob("*")):
+                      if p.is_file():
+                          z.write(p,p.relative_to(root).as_posix())
+              expected=sha256(anon.read_bytes()).hexdigest()
+              meta=d/"dummy-author.yml"
+              shutil.copyfile("submission/test_metadata.fixture.yml",meta)
+              private=d/"SYNTHETIC_ONLY_do_not_upload.zip"
+              receipt=build(anon,expected,meta,private)
+              assert receipt["status"]=="PASS"
+              assert receipt["no_public_upload"] is True
+              assert receipt["combined_word_count"]<=8500
+              with ZipFile(private) as z:
+                  assert "submission_files/Title_Page.docx" in z.namelist()
+                  assert "private/JAE_PORTAL_FIELDS.json" in z.namelist()
+          print("PASS: real anonymous package compatible with offline author title page assembly; synthetic metadata discarded")
           PY
       - uses: actions/upload-artifact@v4
         with:
