@@ -34,7 +34,7 @@ claim unchanged bytes solely because the numerical endpoint is unchanged.
 
 ## Audit-only draft PR with minimal copy-edit
 
-This draft PR modifies **the present audit note and five short, purely verbal cuts in the manuscript Introduction (−60 whitespace-delimited words)**. The frozen numerical endpoint, Abstract, Results, Discussion, references and figure legends remain unchanged by this copy-edit. The internal manuscript limit was found to be **8,000 words**, against the latest source count **8,034**; Introduction-only deduplication leaves **7,974** words and does not weaken the internal QA threshold.
+This draft PR modifies **operational audit notes and manuscript/cover-letter wording only**. First, five repetitive Introduction phrases were shortened by 60 whitespace-delimited words, restoring the 8,000-word internal manuscript safety target (8,034 → 7,974). A second purely narrative alignment on 2026-10-16 reframed Abstract points 1 and 5 and the Discussion Conclusion around **one spatial-unit question** (with Q1 state change and Q3 recurrent-site placement supporting the focal Q2), and aligned the anonymous cover letter. It leaves all frozen quantitative endpoints, Materials and Methods, Results, references, figures, figure legends and SI unchanged. Latest draft counts: **7,989 manuscript words, 317 abstract words, 403 cover-letter words**. [Full single-question claim/wording ledger](RC6_CENTRAL_QUESTION_AND_CONCLUSION_ALIGNMENT_2026-10-16.md). No internal or journal word-count limit was relaxed.
 The pre-existing pull-request trigger on
 `.github/workflows/pulse_template_submission_pipeline.yml` is intended
 to rebuild/QA the current main manuscript and reviewer-code bundle.
@@ -49,9 +49,7 @@ All scientific, formatting and anonymization scripts remain untouched.
 - New manuscript count (including title page) still respects current JAE
   Research Article limit of 8,500 words; abstract ≤350; 8 alphabetized
   keywords; double-spacing and continuous line numbering.
-- Compare output files against prior artifact. Expected changes: two
-  manuscript text passages plus audit/specification contents, not original
-  frozen scientific results.
+- Compare output files against prior artifact. Expected changes: Introduction deduplication, two Abstract statements, the Discussion Conclusion, cover-letter opening and audit/specification contents; **not** original frozen scientific results or Methods/Results/SI/figures.
 - Keep **both** artifact records and disclose which exact bundle was used
   for any actual submission.
 
