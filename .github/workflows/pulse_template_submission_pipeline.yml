@@ -195,8 +195,20 @@ jobs:
           path: build/pulse-template-scientific-submission/
           if-no-files-found: error
 
+  refuse-public-private-bundle:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_private_bundle && !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse identifiable author metadata in public Actions artifacts
+        run: |
+          echo "::error::PUBLIC REPOSITORY: do not upload names, email, title page, or portal metadata as downloadable Actions artifacts."
+          echo "::error::Use scripts/submission/assemble_private_jae_local.py offline with a private YAML and a verified anonymous ZIP."
+          exit 1
+
   private-bundle:
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_private_bundle }}
+    # On public repos the identifying title page, portal JSON and contributors
+    # must NEVER be uploaded as public-readable GitHub Actions artifacts.
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.build_private_bundle && github.event.repository.private }}
     needs: scientific-bundle
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -207,6 +219,14 @@ jobs:
           python-version: "3.12"
       - name: Install private-bundle dependencies
         run: python -m pip install --disable-pip-version-check -q python-docx==1.2.0 PyYAML==6.0.2 matplotlib numpy
+      - name: Fail closed if repository visibility changed after scheduling
+        env:
+          REPO_VISIBILITY: ${{ github.event.repository.visibility }}
+        run: |
+          if [ "$REPO_VISIBILITY" != "private" ]; then
+            echo "::error::Private author metadata processing is restricted to private GitHub repositories."
+            exit 1
+          fi
       - name: Materialize private metadata
         env:
           JAE_PULSE_TEMPLATE_METADATA_YAML: ${{ secrets.JAE_PULSE_TEMPLATE_METADATA_YAML }}
