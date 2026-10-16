@@ -2,7 +2,7 @@
 
 ## Abstract
 
-1. **Rainfall-sensitive calling is familiar in frogs, but it is unclear whether favourable nights simply increase local calling probabilities or reorganize activity across multiple sites within the same taxon.** We tested whether rain-associated acoustic activation is more concentrated within taxa than expected after accounting for species-specific rainfall response, prior physical-site use, dry-state persistence and the total amount of wet-state activation.
+1. **Rainfall-sensitive calling is familiar in frogs, but the spatial unit of reproductive acoustic activity under rain-favoured conditions remains unclear.** We tested whether activation is unusually concentrated within taxa across multiple sites beyond predictions based on species-specific rainfall response, prior physical-site use, dry-state persistence and total wet-state activation.
 
 2. **We analysed 4,236 wetter–drier comparisons across 53 taxa, 585 routes and 21 states over 15 years.** The focal endpoint used 2,916 comparisons with strictly prior site history. A route-cross-fitted comparator combined species-specific rainfall sensitivity, prior species × SiteID propensity, dry-state persistence and pair-level matching of expected wet incidence.
 
@@ -10,7 +10,7 @@
 
 4. **Two biological results clarify what that endpoint represents.** Rain-associated change often involved transitions from acoustic silence directly into overlapping or full chorus, rather than only intensification of already-calling cells. In addition, physical sites where a taxon had previously reached strong chorus were more likely to host strong wet-state chorusing again (β = 0.151, 95% CI 0.129–0.173).
 
-5. **Thus response magnitude did not fully describe the spatial pattern of chorus activation.** Activity remained taxon-concentrated at recurrent taxon-specific sites, and ignoring this dependence understated uncertainty: pair-clustered standard errors exceeded IID values in 38/39 eligible taxa (median **1.61-fold**), while route clustering increased the pooled rainfall-effect SE **2.69-fold**. The excess also persisted in post-hoc State-blocked and 2009–2015 temporal-block evaluations; these within-programme tests are not independent confirmation. The inference remains exploratory at manuscript level; transferability remains to be tested in independent monitoring programmes.
+5. **Thus response magnitude did not fully describe the spatial pattern of chorus activation.** Calling was more concentrated within taxa than predicted, while strong chorusing occurred preferentially at recurrent taxon-specific sites. Ignoring this dependence understated uncertainty: pair-clustered standard errors exceeded IID values in 38/39 eligible taxa (median **1.61-fold**), while route clustering increased the pooled rainfall-effect SE **2.69-fold**. The excess also persisted in post-hoc State-blocked and 2009–2015 temporal-block evaluations; these within-programme tests are not independent confirmation. The inference remains exploratory at manuscript level; transferability remains to be tested in independent monitoring programmes.
 
 ## Keywords
 
@@ -273,7 +273,7 @@ The integrated framing and added diagnostics remain post-hoc. Cross-fitting prev
 
 ### Conclusion
 
-The main finding is not simply that frogs call more after rain. Among taxa acoustically recruited on wetter surveys, calling incidences were **more concentrated within the same taxa than expected from species-specific rainfall response, prior physical-site use, dry-state persistence and total activation**. The excess formed a deep multi-site tail dominated by overlapping or full chorus and preferentially involved recurrent taxon-specific strong-chorus locations. Thus short behavioural pulses have at least two separable properties: **response magnitude** and **realised configuration**. Here, a given amount of activity was taxon-concentrated and history-dependent, lying between independent wetland responses and a uniform route-wide switch.
+The central question is **how frog reproductive acoustic activity is spatially organized when rain-associated conditions favour calling**. On wetter surveys, previously silent taxon × site combinations often entered overlapping or full chorus. Among taxa acoustically recruited on those surveys, calling incidences were **more concentrated within taxa across multiple route stops than predicted by species-specific rainfall response, prior physical-site use, dry-state persistence and total activation**. Strong chorusing also preferentially reappeared at historically strong taxon-specific physical sites. Thus, **response magnitude and realised configuration are distinct empirical properties**: activity extended beyond independent modelled local responses but remained more selective than a uniform route-wide switch. These acoustic patterns do not identify movement, literal synchrony or a unique causal mechanism.
 
 ## Data Availability
 
