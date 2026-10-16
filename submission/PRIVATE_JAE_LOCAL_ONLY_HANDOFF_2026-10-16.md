@@ -2,13 +2,13 @@
 
 **Do not enter real author identities/contact information into public GitHub files,
 public GitHub Actions logs, or public Actions artifacts.** The repository
-\`zuizui0223/frogcs\` is public. GitHub's public artifact APIs allow reading
-public-repo artifacts. A vulnerable \`build_private_bundle\` option existed in
-the \`main\` workflow but the targeted repository artifact-name query on
-2026-10-16 found zero \`frogcs-jae-pulse-template-initial-submission\` artifacts.
+`zuizui0223/frogcs` is public. GitHub's public artifact APIs allow reading
+public-repo artifacts. A vulnerable `build_private_bundle` option existed in
+the `main` workflow but the targeted repository artifact-name query on
+2026-10-16 found zero `frogcs-jae-pulse-template-initial-submission` artifacts.
 Security [PR #138](https://github.com/zuizui0223/frogcs/pull/138) separately
 blocks that option on public repositories. Until merged, **DO NOT activate
-\`build_private_bundle\` from \`main\`**.
+`build_private_bundle` from `main`**.
 
 This workflow does not send data to any server: it uses the local filesystem
 and the existing versioned Markdown-to-Word title-page renderer.
@@ -16,36 +16,37 @@ and the existing versioned Markdown-to-Word title-page renderer.
 ## Required sources
 
 1. An actual local checkout containing
-   \`scripts/submission/assemble_private_jae_local.py\` (draft
+   `scripts/submission/assemble_private_jae_local.py` (draft
    [PR #137](https://github.com/zuizui0223/frogcs/pull/137)), with Python 3.12,
-   \`python-docx==1.2.0\`, \`PyYAML==6.0.2\`.
-2. Latest anonymous scientific ZIP from
-   [successful run 38855058655](https://github.com/zuizui0223/frogcs/actions/runs/38855058655/artifacts/12026727588),
-   original file \`JAE_RC6_2026-10-16_FINAL_anon_tables.zip\`; expected SHA256:
-   \`6747f5def1f0155bcb80b4791d10eb1841086ce1db67a09aa982807e9e9ae4d3\`.
-   **Use the exact bytes**; renaming the file is acceptable, changing its
-   contents is not. The GitHub record shares the SHA256 and identity.
-3. A completed **private** copy of \`submission/metadata.template.yml\`,
+   `python-docx==1.2.0`, `PyYAML==6.0.2`.
+2. The latest **independently tested anonymous scientific ZIP** is
+   [run 38856905607, artifact 12027631736](https://github.com/zuizui0223/frogcs/actions/runs/38856905607/artifacts/12027631736),
+   SHA256: 3c88437548cc33e2ddf1be5475938128416a99758d88adafd82a94415a57cd4a.
+   The older, still valid [table-fixed artifact 12026727588](https://github.com/zuizui0223/frogcs/actions/runs/38855058655/artifacts/12026727588)
+   uses a different outer SHA256: 6747f5def1f0155bcb80b4791d10eb1841086ce1db67a09aa982807e9e9ae4d3.
+   Match the explicit --expected-zip-sha256 argument to the chosen local file.
+   Renaming the file is fine; changing ZIP contents is not.
+3. A completed **private** copy of `submission/metadata.template.yml`,
    kept **OUTSIDE** the public repository. Confirm author names/order,
    affiliations and addresses, corresponding author email/address,
    contribution roles, funding, acknowledgements, conflicts and
-   Inclusion statement. Six submission approvals are initially \`false\`
-   and must become \`true\` only after genuinely confirmed.
+   Inclusion statement. Six submission approvals are initially `false`
+   and must become `true` only after genuinely confirmed.
 
 ### Run locally
 
-From the cloned repository, with \`PRIVATE_YAML\` and \`PRIVATE_ZIP\`
+From the cloned repository, with `PRIVATE_YAML` and `PRIVATE_ZIP`
 located in your private local directory (not under Git):
 
-\`\`\`bash
+```bash
 python -m pip install python-docx==1.2.0 PyYAML==6.0.2
 
 python scripts/submission/assemble_private_jae_local.py \
-  --anonymous-zip "/path/private/JAE_RC6_2026-10-16_FINAL_anon_tables.zip" \
-  --expected-zip-sha256 "6747f5def1f0155bcb80b4791d10eb1841086ce1db67a09aa982807e9e9ae4d3" \
+  --anonymous-zip "/path/private/JAE_RC6_2026-10-16_privacy_safe_anonymous.zip" \
+  --expected-zip-sha256 "3c88437548cc33e2ddf1be5475938128416a99758d88adafd82a94415a57cd4a" \
   --private-metadata "/path/private/jae_authors_approved.yml" \
   --output "/path/private/JAE_PRIVATE_title_and_portal_LOCAL_ONLY.zip"
-\`\`\`
+```
 
 Windows PowerShell: use the same command on one line, with absolute Windows
 paths in quotation marks.
@@ -60,8 +61,8 @@ The local command refuses:
 
 The tool creates a locally held ZIP containing the frozen anonymous
 manuscript/SI/figure/reviewer-code files, a separate
-\`submission_files/Title_Page.docx\` and \`Title_Page.md\`, and
-\`private/JAE_PORTAL_FIELDS.json\`. A new \`SHA256SUMS.json\` verifies
+`submission_files/Title_Page.docx` and `Title_Page.md`, and
+`private/JAE_PORTAL_FIELDS.json`. A new `SHA256SUMS.json` verifies
 every member. The private ZIP is ordinary plaintext ZIP (not encrypted);
 **never upload the whole private ZIP as an anonymous reviewer attachment,
 public artifact or archive**. Unpack locally and upload the title page only
