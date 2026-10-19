@@ -33,7 +33,7 @@ jobs:
         with:
           name: existing-era5-environment-context-20261019
           path: frozen_environment
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
           run-id: 39195215959
       - name: Reconstruct original counts exactly and compare identical route FE model
         run: |
