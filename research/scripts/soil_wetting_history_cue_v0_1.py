@@ -221,7 +221,7 @@ def main_results(a,cols):
     results["holm_two"]=dict(zip(TRAJECTORY_TERMS,core.holm(pvals).tolist()))
     return results
 
-def sensitivity(a,cols):
+def sensitivity(a,cols,raw):
     out={}
     for label,subset,strata in [
         ("same_observer",a[a.same_observer].copy(),"route_cluster"),
@@ -235,9 +235,14 @@ def sensitivity(a,cols):
                             cols+["h7_delta"],strata)["strong_new_count"]
         out[label]={"pairs":fit["pairs"],"routes":fit["routes"],
                     "seven_day":fit["terms"].get("h7_delta")}
-    ay,years=core.design(a,True)
+    # Year-dummy design must be generated from the RAW pair panel.
+    # Redesigning an already-dummified matrix duplicates run_ columns and
+    # silently corrupts design dimensions / QR pivot indices.
+    ay,years=core.design(raw,True)
     for key in ["h7_delta","h24_delta","soil2_mid"]:
-        ay[key]=a[key].to_numpy()
+        ay[key]=raw[key].to_numpy()
+    if len(years)!=len(set(years)) or ay[years].shape[1]!=len(years):
+        raise ValueError("duplicate year-adjusted regression columns")
     fitted=core.absorb_fit(ay,["strong_new_count"],years+["soil2_mid","h7_delta"])["strong_new_count"]
     out["route_and_both_survey_years"]={
         "pairs":fitted["pairs"],"routes":fitted["routes"],
@@ -307,11 +312,21 @@ def run(args):
         mid=old.hydric.retry(lambda:old.hydric.build_midpoints(raw,runs),
                              "pinned USGS source coordinate midpoints")
         history=extract(mid,original,old)
+    # Persist already-verified ERA5 source bytes before any regressions run:
+    # a later sensitivity failure must not force re-downloading every pixel.
+    out=Path(args.outdir);out.mkdir(parents=True,exist_ok=True)
+    history.to_csv(out/"lagged_soil_by_run.csv.gz",index=False,compression="gzip")
     a=attach(pairs,history)
+    a.to_csv(out/"paired_environment_soil_trajectory.csv.gz",index=False,compression="gzip")
     sub=a[a.stable_sites].copy()
     if len(sub)<MIN_PAIRS or int(sub.route_cluster.nunique())<MIN_ROUTES:
         raise ValueError("predeclared historical ERA5 coverage minimum not met")
     x,cols=study_design(sub)
+    main_association=main_results(x,cols)
+    print("PRIMARY_ASSOCIATION_PRE_FURTHER_VALIDATION",json.dumps({
+        "seven_day":main_association["h7_delta"]["effect"],
+        "one_day":main_association["h24_delta"]["effect"],
+        "holm_two":main_association["holm_two"]},sort_keys=True),flush=True)
     result={
       "analysis":"NAAMP_current_equal_soil_antecedent_7d_24h_mechanism_2026_10_19",
       "source":{"environment_cache_manifest_sha256":
@@ -327,8 +342,8 @@ def run(args):
       "frozen_design":{"primary":"h7_delta","secondary":"h24_delta",
                        "past_only":True,"wet_dry_assignment_chronological":False,
                        "one_primary_test_plus_24h_sensitivity":True},
-      "observational_association":main_results(x,cols),
-      "sensitivity":sensitivity(x,cols),
+      "observational_association":main_association,
+      "sensitivity":sensitivity(x,cols,sub),
       "fixed_2008_temporal_transfer":temporal_test(x),
       "source_boundaries":{"not_groundwater_or_substrate_measured_at_pools":True,
                            "not_actual_breeding_success":True,
@@ -337,9 +352,6 @@ def run(args):
                            "not_sequential_wet_dry_survey":True,
                            "no_changes_to_main":True}
     }
-    out=Path(args.outdir);out.mkdir(parents=True,exist_ok=True)
-    history.to_csv(out/"lagged_soil_by_run.csv.gz",index=False,compression="gzip")
-    a.to_csv(out/"paired_environment_soil_trajectory.csv.gz",index=False,compression="gzip")
     (out/"RESULT.json").write_text(json.dumps(result,sort_keys=True,indent=2,allow_nan=False)+"\n")
     hashed={p.name:hashlib.sha256(p.read_bytes()).hexdigest()
             for p in out.iterdir() if p.is_file()}
