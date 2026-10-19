@@ -1,0 +1,58 @@
+name: NAAMP retrospective weekly soil-wetting trajectory mechanism
+
+on:
+  push:
+    branches: [research/state-history-hydric-synthesis-v1]
+    paths:
+      - ".github/workflows/naamp_soil_wetting_trajectory_20261019.yml"
+      - "research/scripts/soil_wetting_history_cue_v0_1.py"
+      - "research/scripts/test_soil_wetting_history_cue_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  existing_era5_antecedent_times:
+    runs-on: ubuntu-latest
+    timeout-minutes: 38
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/frogcs
+          ref: 80ef351a96abfc56b1dd52dd5ea7ba6eb21cd543
+          path: _soil_original
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install unchanged ERA5 and NAAMP dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 statsmodels==0.14.4 xarray icechunk timezonefinder 'numcodecs[pcodec]'
+      - name: Before-outcome chronological and strict join tests
+        run: python -m unittest discover -s research/scripts -p 'test_soil_wetting_history_cue_v0_1.py' -v
+      - name: Reuse pinned run-level soil and frog pair environmental files
+        uses: actions/download-artifact@v4
+        with:
+          name: existing-era5-environment-context-20261019
+          path: frozen_environment
+          github-token: ${{ github.token }}
+          run-id: 39195215959
+      - name: Extract only ERA5 lags -24h/-168h and perform frozen paired mechanism test
+        run: |
+          python research/scripts/soil_wetting_history_cue_v0_1.py \
+            --environment-cache frozen_environment \
+            --source-root _soil_original \
+            --outdir research/output/soil_history_20261019
+      - name: Archive all positive or negative source-verified results and historical run cache
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-soil-history-seven-day-24h-state-mechanism-v1
+          path: research/output/soil_history_20261019/
+          if-no-files-found: warn
+          retention-days: 90
