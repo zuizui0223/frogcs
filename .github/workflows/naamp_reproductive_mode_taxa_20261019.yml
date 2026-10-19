@@ -1,0 +1,39 @@
+name: NAAMP terrestrial oviposition versus burrowing aquatic breeder taxonomy check
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_reproductive_mode_taxa_20261019.yml"
+      - "research/scripts/naamp_reproductive_mode_source_coverage_v0_1.py"
+      - "research/scripts/test_naamp_reproductive_mode_source_coverage_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned_taxon_sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read scientific taxonomy with validated original source
+        run: python -m pip install --disable-pip-version-check -q numpy pandas statsmodels
+      - name: Test mode distinctions without acoustic or soil data
+        run: |
+          python -m unittest discover -s research/scripts -p 'test_naamp_reproductive_mode_source_coverage_v0_1.py' -v
+      - name: Tabulate specific actual NAAMP taxa in source-matched 10-stop surveys
+        run: python research/scripts/naamp_reproductive_mode_source_coverage_v0_1.py
+      - name: Archive only source-level aggregate taxon counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-terrestrial-eggs-vs-adult-burrows-source-coverage-v1
+          path: research/output/NAAMP_REPRODUCTIVE_MODE_SOURCE_COVERAGE_V0_1.json
+          if-no-files-found: warn
+          retention-days: 60
