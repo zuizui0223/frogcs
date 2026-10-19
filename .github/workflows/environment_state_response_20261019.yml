@@ -1,0 +1,43 @@
+name: Existing ERA5 soil and atmosphere - ecological state moderation
+on:
+  push:
+    branches: [research/state-history-hydric-synthesis-v1]
+    paths:
+      - research/scripts/environment_state_response.py
+      - research/scripts/test_environment_state_response.py
+      - .github/workflows/environment_state_response_20261019.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  environmental_contrasts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/frogcs
+          ref: 80ef351a96abfc56b1dd52dd5ea7ba6eb21cd543
+          path: _soil_original
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original remote environmental extraction stack
+        run: python -m pip install --disable-pip-version-check -q numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 statsmodels==0.14.4 patsy xarray icechunk timezonefinder 'numcodecs[pcodec]'
+      - name: Synthetic formula and chronology regression tests
+        run: python -m unittest discover -s research/scripts -p test_environment_state_response.py -v
+      - name: Reproduce archived soil values then execute three fixed environmental comparisons
+        run: python research/scripts/environment_state_response.py --source-root _soil_original
+      - name: Preserve run-level environment, joined aggregate outcomes and complete result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: existing-era5-environment-context-20261019
+          path: research/output/environment_context_20261019/
+          if-no-files-found: warn
+          retention-days: 90
