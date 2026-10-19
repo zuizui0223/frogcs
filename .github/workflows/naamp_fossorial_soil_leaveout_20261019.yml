@@ -1,0 +1,49 @@
+name: NAAMP soil slope after removing named reproductive-mode taxa
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_fossorial_soil_leaveout_20261019.yml"
+      - "research/scripts/naamp_fossorial_leaveout_soil_effect_v0_1.py"
+      - "research/scripts/test_naamp_fossorial_leaveout_soil_effect_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  acoustic_species_composition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install exact NAAMP + soil model dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Verify precommitted reproduction-mode and count-identity tests
+        run: |
+          python -m unittest discover -s research/scripts -p 'test_naamp_fossorial_leaveout_soil_effect_v0_1.py' -v
+      - name: Reuse original SHA-audited environmental cache; never re-extract ERA5
+        uses: actions/download-artifact@v4
+        with:
+          name: existing-era5-environment-context-20261019
+          path: frozen_environment
+          github-token: \${{ github.token }}
+          run-id: 39195215959
+      - name: Reconstruct original counts exactly and compare identical route FE model
+        run: |
+          python research/scripts/naamp_fossorial_leaveout_soil_effect_v0_1.py \
+            --environment-cache frozen_environment/paired_environment_and_chorus.csv.gz
+      - name: Archive only aggregate re-estimated soil slope and trait coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-burrowing-and-terrestrial-egg-frog-leaveout-soil-effect-v1
+          path: research/output/NAAMP_FOSSORIAL_LEAVEOUT_SOIL_V0_1.json
+          if-no-files-found: warn
+          retention-days: 60
