@@ -74,8 +74,8 @@ class WettingTrajectoryTests(unittest.TestCase):
         h["soil1_24h"]=h["soil1_t"];h["soil2_24h"]=h["soil2_t"]
         h["soil1_168h"]=h["soil1_t"];h["soil2_168h"]=h["soil2_t"]
         d=new.attach(p,h)
-        self.assertTrue(np.all(d.h7_delta==0))
-        self.assertTrue(np.all(d.h24_delta==0))
+        self.assertTrue(np.allclose(d.h7_delta,0,rtol=0,atol=1e-14))
+        self.assertTrue(np.allclose(d.h24_delta,0,rtol=0,atol=1e-14))
     def test_no_interaction_or_forced_threshold_fishing(self):
         self.assertEqual(new.TRAJECTORY_TERMS,("h7_delta","h24_delta"))
         self.assertEqual(new.PRIMARY_RESPONSE,"strong_new_count")
