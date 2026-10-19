@@ -162,7 +162,7 @@ def attach(pairs:pd.DataFrame,byrun:pd.DataFrame)->pd.DataFrame:
     for side,key in (("w","wet_RunID"),("d","dry_RunID")):
         x[key]=x[key].astype(str)
         src=byrun.rename(columns={"RunID":key,**{
-            n:n+"_"+side for n in required-{"RunID"}})
+            n:n+"_"+side for n in required-{"RunID"}}})
         x=x.merge(src,on=key,how="left",validate="many_to_one",sort=False,
                   indicator=True)
         if not (x["_merge"]=="both").all():
