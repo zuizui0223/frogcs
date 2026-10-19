@@ -1,0 +1,42 @@
+name: NAAMP recent history - metadata-only feasibility amendment
+
+on:
+  push:
+    branches: [research/state-history-hydric-synthesis-v1]
+    paths:
+      - research/scripts/recent_history_metadata_amendment.py
+      - .github/workflows/recent_history_metadata_amendment_20261019.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  metadata_then_forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install unchanged pinned numerical dependencies
+        run: python -m pip install -q numpy==2.2.6 scipy==1.15.3 pandas==2.2.3 statsmodels==0.14.4
+      - name: Verify chronological likelihood and source-only cutoff selection
+        run: |
+          python -m unittest discover -s research/scripts -p test_recent_site_history_forecast.py -v
+          python research/scripts/recent_history_metadata_amendment.py --self-test
+      - name: Metadata-only time cutoff before original acoustic outcomes are read
+        run: python research/scripts/recent_history_metadata_amendment.py
+      - name: Archive aggregate amended result with source plan
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recent-site-history-metadata-amendment-20261019
+          path: research/output/RECENT_HISTORY_AMENDED_2026-10-19.json
+          if-no-files-found: warn
+          retention-days: 90
