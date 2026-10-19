@@ -68,8 +68,10 @@ class CurveballTests(unittest.TestCase):
         self.assertFalse(target.coverage_gate(200,79))
         self.assertTrue(target.coverage_gate(200,80))
     def test_zeros_not_implicitly_species_detections(self):
-        raw={"1":{"Hyla cinerea"},"2":set(),"3":{"Acris crepitans","Hyla cinerea"}}
-        out=target.incidence_masks(["1","2","3"],raw)
+        raw={str(i):set() for i in range(1,11)}
+        raw["1"]={"Hyla cinerea"}
+        raw["3"]={"Acris crepitans","Hyla cinerea"}
+        out=target.incidence_masks([str(i) for i in range(1,11)],raw)
         self.assertEqual(out,{"Acris crepitans":0b100,"Hyla cinerea":0b101})
     def test_observed_margins_have_ten_stops(self):
         with self.assertRaisesRegex(ValueError,"ten"):
