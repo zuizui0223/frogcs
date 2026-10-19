@@ -1,0 +1,40 @@
+name: NAAMP fossorial adults aquatic egg laying trait sample gate
+
+on:
+  push:
+    branches:
+      - research/state-history-hydric-synthesis-v1
+    paths:
+      - ".github/workflows/naamp_fossorial_breeding_coverage_20261019.yml"
+      - "research/scripts/naamp_fossorial_breeding_coverage_v0_1.py"
+      - "research/scripts/test_naamp_fossorial_breeding_coverage_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned_original_species_support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install exact needed scientific reader dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas statsmodels
+      - name: Test precommitted taxon definitions and frequency rules
+        run: |
+          python -m compileall -q research/scripts/naamp_fossorial_breeding_coverage_v0_1.py research/scripts/test_naamp_fossorial_breeding_coverage_v0_1.py
+          python -m unittest discover -s research/scripts -p 'test_naamp_fossorial_breeding_coverage_v0_1.py' -v
+      - name: Use SHA256-pinned original NAAMP taxon and CallingIndex records
+        run: python research/scripts/naamp_fossorial_breeding_coverage_v0_1.py
+      - name: Preserve only aggregate trait-group coverage; never raw identifiers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-spadefoot-aquatic-oviposition-source-gate-20261019
+          path: research/output/NAAMP_FOSSORIAL_BREEDING_SAMPLE_COVERAGE_V0_1.json
+          if-no-files-found: warn
+          retention-days: 60
