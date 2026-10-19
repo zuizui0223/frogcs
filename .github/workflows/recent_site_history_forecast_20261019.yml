@@ -1,0 +1,41 @@
+name: NAAMP recent versus older site history - fixed conditional placement
+
+on:
+  push:
+    branches: [research/state-history-hydric-synthesis-v1]
+    paths:
+      - research/scripts/recent_site_history_forecast.py
+      - research/scripts/test_recent_site_history_forecast.py
+      - .github/workflows/recent_site_history_forecast_20261019.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fixed_time_split:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned numerical dependencies
+        run: python -m pip install -q numpy==2.2.6 scipy==1.15.3 pandas==2.2.3 statsmodels==0.14.4
+      - name: Check exact likelihood, history chronology and physical-site alignment
+        run: python -m unittest discover -s research/scripts -p test_recent_site_history_forecast.py -v
+      - name: Original pinned NAAMP sources and unchanged 2008 training cutoff
+        run: python research/scripts/recent_site_history_forecast.py
+      - name: Preserve aggregate results without raw rows or locations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recent-vs-older-naamp-site-history-20261019
+          path: research/output/RECENT_VS_OLDER_SITE_HISTORY_2026-10-19.json
+          if-no-files-found: warn
+          retention-days: 90
