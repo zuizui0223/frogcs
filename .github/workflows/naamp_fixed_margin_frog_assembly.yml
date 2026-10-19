@@ -1,0 +1,45 @@
+name: NAAMP species-pair fixed-margin segregation and rain context
+
+on:
+  push:
+    branches:
+      - research/naamp-fixed-margin-pairwise-assembly-2026-10-19
+    paths:
+      - "research/scripts/test_fixed_margin_frog_assembly.py"
+      - "research/scripts/fixed_margin_frog_assembly.py"
+      - ".github/workflows/naamp_fixed_margin_frog_assembly.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original_naamp_fixed_margin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned numeric stack
+        run: python -m pip install --disable-pip-version-check -q numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 statsmodels==0.14.4
+      - name: Independent synthetic margin, null and weighting QA
+        run: |
+          python -m unittest discover -s research/scripts -p test_fixed_margin_frog_assembly.py -v
+      - name: Original USGS NAAMP counts, deterministic degree-constrained Curveball
+        run: |
+          python research/scripts/fixed_margin_frog_assembly.py \
+            --outdir research/output/fixed_margin_assembly_20261019
+      - name: Preserve full results including uninformative sample gates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-species-pair-fixed-margin-assemblage-20261019
+          path: research/output/fixed_margin_assembly_20261019/
+          if-no-files-found: warn
+          retention-days: 90
