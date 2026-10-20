@@ -163,6 +163,75 @@ def coordinate_gate(src):
                      "excluded_examples":dict(list(dropped.items())[:15]),
                      "response_counts_read":False}
 
+
+def outcome_blind_matched_routes(src):
+    """Reconstruct the frozen matched route eligibility from SURVEY METADATA only.
+
+    Never access Counts.csv, CallingIndex, or historical frog response to choose routes.
+    """
+    import datetime
+    candidate={}
+    for r in src["Runs.csv"]:
+        yr=parse_year(r.get("SurveyYear")) or parse_year(r.get("SurveyDate"))
+        if yr is None or not 2001<=yr<=2015:continue
+        if (r.get("UnifiedProtocol") or "").strip()!="1":continue
+        rn=str(r.get("RunNumber") or "").strip()
+        route=str(r.get("RouteNumber") or "").strip()
+        state=str(r.get("State") or "").strip()
+        rtype=str(r.get("RouteType") or "").strip()
+        rid=str(r.get("RunID") or "").strip()
+        date=str(r.get("SurveyDate") or "").strip()
+        if not(rid and route and state and rtype and rn in {"1","2","3","4"}):continue
+        try:
+            parsed=False
+            for fmt in ("%m/%d/%Y","%m/%d/%y","%Y-%m-%d","%Y/%m/%d"):
+                try:datetime.datetime.strptime(date,fmt);parsed=True;break
+                except ValueError:pass
+            if not parsed:continue
+        except Exception:continue
+        rain=asfloat(r.get("DaysSinceRain"))
+        if not math.isfinite(rain) or not 0<=rain<=180:continue
+        candidate[rid]={"State":state,"RouteNumber":route,"RunNumber":rn,
+                        "SurveyYear":yr,"DaysSinceRain":rain,
+                        "TempScale":str(r.get("TempScale") or "").strip()}
+    sampled=defaultdict(set)
+    temps=defaultdict(list)
+    for s in src["Stops.csv"]:
+        rid=str(s.get("RunID") or "").strip()
+        if rid not in candidate or (s.get("SkippedStop") or "").strip()!="0":continue
+        st=str(s.get("StopNumber") or "").strip()
+        if not st:continue
+        sampled[rid].add(st)
+        temp=asfloat(s.get("AirTemp"))
+        sc=candidate[rid]["TempScale"]
+        if sc=="F":temp=(temp-32.0)*5.0/9.0
+        elif sc!="C":continue
+        if math.isfinite(temp):temps[rid].append(temp)
+    valid={}
+    for rid,r in candidate.items():
+        if len(sampled[rid])!=10 or len(temps[rid])<8:continue
+        mean=sum(temps[rid])/len(temps[rid])
+        if not -10<=mean<=45:continue
+        valid[rid]=r
+    strata=defaultdict(list)
+    for rid,r in valid.items():
+        key=(r["State"],r["RouteNumber"],r["RunNumber"])
+        strata[key].append((r["SurveyYear"],rid,r["DaysSinceRain"]))
+    matched_routes=set()
+    pair_count=0
+    for key,items in strata.items():
+        items.sort()
+        for a,b in zip(items,items[1:]):
+            if a[2]==b[2]:continue
+            pair_count+=1
+            matched_routes.add(key[:2])
+    checks={"n_unified_complete_runs":len(valid),"n_matched_pairs":pair_count,
+            "n_matched_routes":len(matched_routes),"frog_outcomes_read":False}
+    if (len(valid),pair_count,len(matched_routes))!=(7848,4236,585):
+        raise RuntimeError("Source-only matched route contract drift: "+str(checks))
+    return matched_routes,checks
+
+
 def select_pilot(routes,number_per_state=2):
     by=defaultdict(list)
     for key,info in routes.items():
@@ -272,12 +341,24 @@ def main():
     arg.add_argument("--mode",choices=("pilot","full"),default="pilot")
     arg.add_argument("--per-state",type=int,default=2)
     arg.add_argument("--workers",type=int,default=3)
+    arg.add_argument("--shard-id",type=int,default=None)
+    arg.add_argument("--shard-count",type=int,default=12)
     opts=arg.parse_args()
     if opts.mode=="pilot" and not (1<=opts.per_state<=4):
         raise SystemExit("--per-state out of pilot bounds")
+    if opts.shard_id is not None and not (opts.mode=="full" and 0<=opts.shard_id<opts.shard_count):
+        raise SystemExit("invalid shard configuration")
     source=read_source_only()
     routes,qc=coordinate_gate(source)
-    chosen=select_pilot(routes,opts.per_state) if opts.mode=="pilot" else list(routes.values())
+    pairchecks=None
+    if opts.mode=="pilot":
+        chosen=select_pilot(routes,opts.per_state)
+    else:
+        matched_route_keys,pairchecks=outcome_blind_matched_routes(source)
+        chosen=[info for key,info in routes.items() if key in matched_route_keys]
+        if opts.shard_id is not None:
+            chosen=[info for info in chosen if
+                    int(hashlib.sha256((info["state"]+"|"+info["route"]).encode()).hexdigest(),16)%opts.shard_count==opts.shard_id]
     allpoints=[]
     errors=[]
     classcounts=defaultdict(int)
@@ -303,6 +384,8 @@ def main():
     # A route with a successful query but no wetland features is NOT proof of absent vegetation.
     status={"analysis":"naamp_nwi_aquatic_vegetation_geospatial_preflight_v0_1",
             "mode":opts.mode,"contract":CONTRACT,
+            "shard_id":opts.shard_id,"shard_count":opts.shard_count if opts.shard_id is not None else None,
+            "matched_route_source_only_audit":pairchecks,
             "source":{"NAAMP":"USGS ScienceBase DOI 10.5066/F7G44NG0",
                       "NWI":"USFWS official NWI Wetlands MapServer/0",
                       "coordinate_sha256":COORD_SHA,
@@ -324,10 +407,11 @@ def main():
                 "NWI_emergent_and_aquatic_bed_distinct":True,
                 "invalid_route_coordinates_retrospectively_corrected":False,
                 "RC6_manuscript_changed":False}}
-    OUT.mkdir(parents=True,exist_ok=True)
-    (OUT/"geometry_nwi_preflight.json").write_text(json.dumps(status,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
+    dest=OUT if opts.shard_id is None else OUT/f"shard_{opts.shard_id:02d}"
+    dest.mkdir(parents=True,exist_ok=True)
+    (dest/"geometry_nwi_preflight.json").write_text(json.dumps(status,ensure_ascii=False,indent=2,sort_keys=True)+"\n")
     if allpoints:
-        with (OUT/"site_nwi_vegetation_context.csv").open("w",newline="",encoding="utf-8") as fh:
+        with (dest/"site_nwi_vegetation_context.csv").open("w",newline="",encoding="utf-8") as fh:
             writer=csv.DictWriter(fh,fieldnames=list(allpoints[0]))
             writer.writeheader()
             writer.writerows(sorted(allpoints,key=lambda x:(x["State"],x["RouteNumber"],x["SiteID"])))
