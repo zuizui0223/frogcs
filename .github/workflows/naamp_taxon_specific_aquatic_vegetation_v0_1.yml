@@ -1,0 +1,39 @@
+name: NAAMP taxon-specific NWI emergent vegetation associations
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-vegetation-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_taxon_specific_aquatic_vegetation_v0_1.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  species-by-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Test taxon-specific spatial allocation of strong calls, correct BH
+        run: |
+          python -m py_compile exploration/run_naamp_taxon_specific_aquatic_vegetation_v0_1.py
+          python -u exploration/run_naamp_taxon_specific_aquatic_vegetation_v0_1.py \
+            --nwi-sites build/vegetation_context/site_nwi_vegetation_context.csv \
+            --nwi-audit build/vegetation_context/geometry_nwi_preflight.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-taxon-specific-strong-calling-v0-1
+          path: build/aquatic_vegetation_ecology/taxon_specific_vegetation_v0_1.json
+          if-no-files-found: error
