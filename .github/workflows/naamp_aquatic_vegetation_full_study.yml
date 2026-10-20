@@ -1,0 +1,101 @@
+name: NAAMP NWI aquatic vegetation full study (independent RC6)
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-vegetation-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_aquatic_vegetation_full_study.yml"
+      - "exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py"
+      - "exploration/merge_naamp_nwi_aquatic_vegetation_shards_v0_1.py"
+      - "exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_1.py"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  geospatial-shards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check shapely==2.1.2 pyproj==3.7.2
+      - name: Verify geospatial source-only contracts and run matched-route NWI overlay
+        run: |
+          python -m py_compile exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py
+          python -u exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py --mode full --shard-id ${{ matrix.shard }} --shard-count 12 --workers 2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-aquatic-veg-shard-${{ matrix.shard }}
+          path: build/aquatic_vegetation/
+          if-no-files-found: warn
+
+  geospatial-merge:
+    runs-on: ubuntu-latest
+    needs: [geospatial-shards]
+    timeout-minutes: 10
+    outputs:
+      eligible: ${{ steps.audit.outputs.eligible }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: naamp-aquatic-veg-shard-*
+          path: build/vegetation_shards
+          merge-multiple: false
+      - name: Source-only coverage/coordinate verification before any frog outcome reads
+        id: audit
+        run: |
+          python -u exploration/merge_naamp_nwi_aquatic_vegetation_shards_v0_1.py --shard-root build/vegetation_shards --expected 12 --output build/vegetation_context
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context/
+          if-no-files-found: error
+
+  ecological-tests:
+    runs-on: ubuntu-latest
+    needs: [geospatial-merge]
+    if: ${{ needs.geospatial-merge.outputs.eligible == 'true' }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Reuse frozen checkerboard per-run residuals without retuning
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-checkerboard-exploratory-v0-1
+          run-id: 39436588431
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/checkerboard_reference
+      - name: Execute vegetation × historical site reuse and checkerboard models
+        run: |
+          python -m py_compile exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_1.py
+          python -u exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_1.py \
+            --nwi-sites build/vegetation_context/site_nwi_vegetation_context.csv \
+            --nwi-audit build/vegetation_context/geometry_nwi_preflight.json \
+            --checkerboard-run-level build/checkerboard_reference/primary_run_level.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-aquatic-vegetation-ecological-tests
+          path: build/aquatic_vegetation_ecology/
+          if-no-files-found: error
