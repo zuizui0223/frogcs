@@ -43,12 +43,35 @@ Numeric reproducibility record: `exploration/NAAMP_AQUATIC_VEGETATION_SCALE_STAB
 
 An acoustic checkerboard is not direct competition or occupancy-based exclusion. Static NWI wetland context is correlated with geography, hydrology, wetland size and land-use histories, so omitted site-quality and mapping-age differences remain explanations.
 
+## Q3 — taxon-specific calling placement × NWI emergent wetland vegetation
+
+Independently predeclared exploratory question (`exploration/NAAMP_FROG_TAXON_VEGETATION_PREFERENCE_CONTRACT_V0_1.md`), analysed using survey-run fixed effects, route-clustered standard errors and Benjamini–Hochberg FDR across 25 eligible taxa.
+
+**6,236** survey runs had complete ten-stop NWI/temperature/noise records; 49 taxon units had strong calls, 25 met predeclared sampling/variation thresholds. Taxon-wise coefficients were positive for 14 units, negative for 11. **Five positive taxon effects survived BH q<0.05; no negative effect did**.
+
+All effect units below mean the estimated difference in stop-level probability of **CI≥2**, conditional on the taxon calling strongly somewhere on the same surveyed route-night, associated with **+10 percentage points NWI mapped emergent-cover fraction** in a 250m buffer. Controls include total mapped wetland, woody wetland, site air temperature, acoustic masking and stop order.
+
+| NAAMP taxon unit | Adjusted β per +10pp PEM | 95% CI | BH q |
+|---|---:|---|---:|
+| `Hyla versicolor` | +0.1033 | +0.0666 to +0.1399 | 0.00000083 |
+| `Pseudacris maculata/triseriata complex` | +0.1208 | +0.0683 to +0.1733 | 0.00008218 |
+| `Pseudacris crucifer` | +0.0776 | +0.0430 to +0.1122 | 0.00008997 |
+| `Lithobates sylvaticus` | +0.0814 | +0.0376 to +0.1252 | 0.00167176 |
+| `Lithobates clamitans` | +0.0685 | +0.0221 to +0.1148 | 0.01900196 |
+
+The corresponding CI≥1 same-run sensitivities all had positive coefficient directions. These five are **taxon units** in monitoring records (including one complex), not proven phylogenetically independent species. The species-wise conditional spatial-placement estimand differs from the historical-site-reuse model, so the pooled nonsignificant vegetation slope does not itself prove positive/negative species effects cancel.
+
+**Interpretation boundary:** mapped NWI vegetation is not a time-matched observation of the actual 2001–2015 calling-site macrophytes, and positive stop associations do not prove plant preference behavior or biological causation. No frog species interaction mechanism or checkerboard generator is uniquely identified.
+
+Provenance: `exploration/NAAMP_TAXON_SPECIFIC_AQUATIC_VEGETATION_RESULT_V0_1.json`; [run 39455849996](https://github.com/zuizui0223/frogcs/actions/runs/39455849996).
+
 ## Important inferential hierarchy
 
 1. **Established in the new NAAMP analyses:** past species × SiteID strong-chorus records are informative beyond measured microtemperature, acoustic context and coarse mapped plant structure.
 2. **Unresolved:** whether persistent site quality, transient local hydrology, vegetation at the **actual survey date**, social calling context or demographic availability generates the recurrence.
 3. **Exploratory, not stable enough yet:** routes heterogeneous in NWI emergent cover may have *less*, rather than more, excess checkerboarding. The effect is sensitive to the geographic subset and should not be treated as confirmation.
-4. **Not tested:** plant species identity, true aquatic macrophyte cover, plant–frog co-occurrence at the same microhabitat, plant facilitation versus plant-driven interspecific segregation.
+4. **New exploratory taxa-level finding:** five taxon units have positive BH-corrected within-route associations between strong chorus placement and mapped emergent NWI wetlands. These are neither plant-causation tests nor confirmation of checkerboard-generating mechanisms.
+5. **Not tested:** plant species identity, true time-matched aquatic macrophyte cover, microhabitat plant–frog interactions, plant facilitation versus plant-driven interspecific segregation.
 
 ## Provenance
 
