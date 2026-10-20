@@ -109,7 +109,11 @@ def build_history(raw,runs,sets,nwi):
 
 def within_model(d,features,label):
     if len(d)==0:return {"status":"empty","model":label}
-    data=d.dropna(subset=["prior_site_strong","wet_strong"]+features).copy()
+    data=d.copy()
+    if "history_x_emergent" in features:
+        data["history_x_emergent"]=data.prior_site_strong.astype(float)*(
+            data.nwi_emergent_cover_250m.astype(float)-data.nwi_emergent_cover_250m.mean())
+    data=data.dropna(subset=["prior_site_strong","wet_strong"]+features).copy()
     if data.empty:return {"status":"no_complete_case","model":label}
     info=data.groupby("pair_species")["prior_site_strong"].nunique()
     data=data[data.pair_species.isin(info[info>1].index)].copy()
@@ -119,9 +123,6 @@ def within_model(d,features,label):
         return {"status":"insufficient_scope","model":label,
                 "n_stop_cells":len(data),"n_pair_species":n,"n_routes":k,
                 "requirement":"at least 350 informative pair-species and 200 routes"}
-    if "history_x_emergent" in features:
-        data["history_x_emergent"]=data.prior_site_strong.astype(float)*(
-            data.nwi_emergent_cover_250m.astype(float)-data.nwi_emergent_cover_250m.mean())
     # If historical strong calling and prior_any are collinear in this sample
     # reject rather than silently report a singular fitted effect.
     cols=["prior_site_strong"]+features
