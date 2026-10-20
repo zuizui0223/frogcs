@@ -63,7 +63,25 @@ The corresponding CI≥1 same-run sensitivities all had positive coefficient dir
 
 **Interpretation boundary:** mapped NWI vegetation is not a time-matched observation of the actual 2001–2015 calling-site macrophytes, and positive stop associations do not prove plant preference behavior or biological causation. No frog species interaction mechanism or checkerboard generator is uniquely identified.
 
-Provenance: `exploration/NAAMP_TAXON_SPECIFIC_AQUATIC_VEGETATION_RESULT_V0_1.json`; [run 39455849996](https://github.com/zuizui0223/frogcs/actions/runs/39455849996).
+### How large are those associations at realistic spatial contrast?
+
+A post-hoc exposure-scale audit calculated the actual SD of mapped PEM cover **within the same nightly ten-stop comparisons**. Among the five BH-positive continuous-cover taxa, within-run SD ranged **3.31–4.71 percentage points**, not 10 percentage points. Thus the tabulated +10pp exposure contrast is often approximately two-to-three SDs, and should **not** be mistaken for the average real difference between a pair of listening stations.
+
+Expected probability differences for a **one-within-run-SD** increase in mapped PEM cover were:
+
+- `Hyla versicolor`: **+0.0352**;
+- `Pseudacris maculata/triseriata complex`: **+0.0569**;
+- `Pseudacris crucifer`: **+0.0257**;
+- `Lithobates sylvaticus`: **+0.0300**;
+- `Lithobates clamitans`: **+0.0252**.
+
+In the **post-hoc binary map-overlap sensitivity** (`PEM polygon overlaps 250m buffer` versus `no PEM polygon mapped`), all five retained positive coefficient signs, but only **four** retained BH q<0.05; the `P. maculata/triseriata` complex had q=**0.221**. Across the same 25 taxa, 11 had positive binary slopes passing BH; these are **secondary post-hoc results**, not a new set of confirmatory discoveries. Recorded absence of a mapped PEM polygon is not true plant absence.
+
+These checks favour the restrained statement **some taxa are acoustically associated with mapped emergent-wetland structure**, not that a 10pp increase in actual macrophyte cover produces a 10pp chorus response. Differences between continuous area fraction and binary mapping presence underline the habitat-proxy and scale uncertainty.
+
+Provenance: `exploration/NAAMP_TAXON_NWI_EXPOSURE_SCALE_SENSITIVITY_RESULT_V0_1.json`; [run 39456810026](https://github.com/zuizui0223/frogcs/actions/runs/39456810026).
+
+Original primary taxon results: `exploration/NAAMP_TAXON_SPECIFIC_AQUATIC_VEGETATION_RESULT_V0_1.json`; [run 39455849996](https://github.com/zuizui0223/frogcs/actions/runs/39455849996).
 
 ## Important inferential hierarchy
 
