@@ -1,12 +1,6 @@
 name: NAAMP aquatic vegetation NWI geospatial preflight
 
 on:
-  push:
-    branches: [exploration/naamp-aquatic-vegetation-2026-10-21]
-    paths:
-      - "exploration/NAAMP_AQUATIC_VEGETATION_DESIGN_2026_10_21.md"
-      - "exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py"
-      - ".github/workflows/naamp_aquatic_vegetation_geospatial_preflight.yml"
   workflow_dispatch:
     inputs:
       full_geometry:
