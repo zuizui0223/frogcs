@@ -1,0 +1,401 @@
+{
+  "analysis": "naamp_nwi_species_conditional_checkerboard_crossfit_v0_1",
+  "provenance": {
+    "source_branch": "exploration/naamp-nwi-conditioned-checkerboard-2026-10-21",
+    "code_commit": "2eb9f4e232951e2f7f2c884b4529f918c252032b",
+    "successful_actions_run": 39516056663,
+    "job_id": 118948482285,
+    "artifact_id": 12307354933,
+    "frozen_fixed_fixed_baseline_run": 39436588431,
+    "NWI_geometry_run": 39450277196
+  },
+  "contract": "exploration/NAAMP_NWI_CONDITIONAL_CHECKERBOARD_CONTRACT_V0_1.md",
+  "status": "new_posthoc_exploration_not_independent_confirmation",
+  "source_synthetic_qa": {
+    "fixed_fixed_margins": "PASS",
+    "status": "PASS",
+    "weighted_two_by_two_stationary_probability": 0.8806,
+    "weighted_two_by_two_theoretical_probability": 0.8807970779778824
+  },
+  "source_data_coverage": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "settings": {
+    "burn_in_proposals_per_taxon": 40,
+    "fixed_col_margins": true,
+    "fixed_row_margins": true,
+    "fold": "SHA256 route_cluster -> A/B; trained only on opposite fold",
+    "frozen_RC6_not_modified": true,
+    "mapped_vegetation_not_time_matched": true,
+    "primary_any_CI123_secondary_strong_CI23": true,
+    "random_seed": 2840267,
+    "reference_fixed_fixed_draws": 399,
+    "theta_bounds": [
+      -3,
+      3
+    ],
+    "thin_proposals_per_taxon": 8,
+    "training": "exact fixed-k conditional logistic odds for taxa with >=30 informative records and >=12 routes",
+    "training_ridge": 3,
+    "weighted_sampler_draws": 199
+  },
+  "interpretation": {
+    "biologically_supported_plant_sensitivity_of_local_calling": true,
+    "plant_specific_checkerboard_explanation_supported": false,
+    "route_crossfit_plant_increment_significant": false,
+    "remaining_positive_checkerboard_residual": true,
+    "exclusive_social_or_competition_mechanism_identified": false,
+    "local_event_hydrology_controlled": false,
+    "NWI_vegetation_time_matched": false,
+    "independent_external_replication": false,
+    "RC6_manuscript_changed": false
+  },
+  "modes": {
+    "any": {
+      "training_folds": {
+        "A": {
+          "n_joint_negative_PEM_slopes": 2,
+          "n_joint_positive_PEM_slopes": 30,
+          "n_taxa_with_train_records": 48,
+          "n_training_taxa_joint_fitted": 32,
+          "n_training_taxa_wetland_fitted": 32
+        },
+        "B": {
+          "n_joint_negative_PEM_slopes": 9,
+          "n_joint_positive_PEM_slopes": 20,
+          "n_taxa_with_train_records": 46,
+          "n_training_taxa_joint_fitted": 29,
+          "n_training_taxa_wetland_fitted": 29
+        }
+      },
+      "heldout_conditional_location_logscore": {
+        "emergent_increment_over_wetland_total": 67.68985514404267,
+        "emergent_increment_per_cluster": 0.003978245967913175,
+        "folds": {
+          "A": {
+            "clusters": 8785,
+            "emergent_increment_over_wetland_per_cluster": 0.004813465774504384,
+            "uniform": -34758.26789354967,
+            "wetland": -34659.247696842416,
+            "wetland_and_emergent": -34616.961400013395,
+            "wetland_minus_uniform_per_cluster": 0.011271507877889258
+          },
+          "B": {
+            "clusters": 8230,
+            "emergent_increment_over_wetland_per_cluster": 0.003086702103890845,
+            "uniform": -32788.199156926385,
+            "wetland": -32711.971304796014,
+            "wetland_and_emergent": -32686.567746480992,
+            "wetland_minus_uniform_per_cluster": 0.009262193454480023
+          }
+        },
+        "total_clusters": 17015,
+        "wetland_minus_uniform_total": 175.24804883762772
+      },
+      "analysis": {
+        "n_heldout_runs": 3659,
+        "n_routes": 478,
+        "folds": {
+          "A": {
+            "emergent_gain_over_wetland": 0.0004511808562384754,
+            "fixed_excess": 0.047707793429679006,
+            "n_routes": 238,
+            "n_runs": 1855,
+            "wetland_and_emergent_residual": 0.04779892257800668,
+            "wetland_residual": 0.04825010343424515
+          },
+          "B": {
+            "emergent_gain_over_wetland": -0.00024261261573098024,
+            "fixed_excess": 0.05651828477670799,
+            "n_routes": 240,
+            "n_runs": 1804,
+            "wetland_and_emergent_residual": 0.056918465738480445,
+            "wetland_residual": 0.05667585312274946
+          }
+        },
+        "observed_mean_Cscore": 2.237014842829273,
+        "fixed_fixed_mean_Cscore": 2.1849632050732644,
+        "fixed_fixed_mean_excess": 0.052051637756008684,
+        "route_cluster_effects": {
+          "baseline_residual": {
+            "ci95": [
+              0.04266131099945742,
+              0.061441964512559906
+            ],
+            "mean": 0.05205163775600866,
+            "n_runs": 3659,
+            "p_two_sided": 1.7052421790258713e-27,
+            "routes": 478,
+            "se_route_cluster": 0.004791071076112083
+          },
+          "emergent_model_gain": {
+            "ci95": [
+              -0.0005378599603374552,
+              0.0007560984569450984
+            ],
+            "mean": 0.00010911924830382163,
+            "n_runs": 3659,
+            "p_two_sided": 0.7409717856956888,
+            "routes": 478,
+            "se_route_cluster": 0.0003300974985992428
+          },
+          "full_model_gain": {
+            "ci95": [
+              -0.0008313120096397966,
+              0.0003443095361851238
+            ],
+            "mean": -0.00024350123672733638,
+            "n_runs": 3659,
+            "p_two_sided": 0.4168391664112535,
+            "routes": 478,
+            "se_route_cluster": 0.00029990896646521904
+          },
+          "wetland_and_emergent_residual": {
+            "ci95": [
+              0.0429422947625571,
+              0.06164798322291489
+            ],
+            "mean": 0.052295138992735996,
+            "n_runs": 3659,
+            "p_two_sided": 6.024798388655454e-28,
+            "routes": 478,
+            "se_route_cluster": 0.004771946986757379
+          },
+          "wetland_model_gain": {
+            "ci95": [
+              -0.000928407816928318,
+              0.00022316684686600192
+            ],
+            "mean": -0.00035262048503115803,
+            "n_runs": 3659,
+            "p_two_sided": 0.23001886059730958,
+            "routes": 478,
+            "se_route_cluster": 0.00029377444506067306
+          },
+          "wetland_residual": {
+            "ci95": [
+              0.04303383466512717,
+              0.06177468181695249
+            ],
+            "mean": 0.05240425824103983,
+            "n_runs": 3659,
+            "p_two_sided": 5.875909853828405e-28,
+            "routes": 478,
+            "se_route_cluster": 0.004780916205514674
+          }
+        },
+        "generator": {
+          "wetland": {
+            "informative_reference_matrices": 2895,
+            "lack_of_Cscore_mixing_matrices": 0,
+            "mean_Cscore_residual": 0.05240425824103978,
+            "mean_accepted_given_feasible": 0.7017316011862312,
+            "mean_null_Cscore": 2.184610584588233,
+            "no_mixing_fraction_among_informative": 0,
+            "posthoc_vs_fixed_fraction_of_excess_explained": -0.006774435930031015,
+            "sampling_unreliable": false,
+            "simulation_null_ci95": [
+              2.1787396890710675,
+              2.1907676019055544
+            ],
+            "upper_tail_plus_one_p": 0.005
+          },
+          "wetland_and_emergent": {
+            "informative_reference_matrices": 2895,
+            "lack_of_Cscore_mixing_matrices": 0,
+            "mean_Cscore_residual": 0.05229513899273597,
+            "mean_accepted_given_feasible": 0.6932257306255522,
+            "mean_null_Cscore": 2.184719703836537,
+            "no_mixing_fraction_among_informative": 0,
+            "posthoc_vs_fixed_fraction_of_excess_explained": -0.004678070608822332,
+            "sampling_unreliable": false,
+            "simulation_null_ci95": [
+              2.178446037086723,
+              2.1902175922601566
+            ],
+            "upper_tail_plus_one_p": 0.005
+          }
+        }
+      }
+    },
+    "strong": {
+      "training_folds": {
+        "A": {
+          "n_joint_negative_PEM_slopes": 4,
+          "n_joint_positive_PEM_slopes": 23,
+          "n_taxa_with_train_records": 47,
+          "n_training_taxa_joint_fitted": 27,
+          "n_training_taxa_wetland_fitted": 27
+        },
+        "B": {
+          "n_joint_negative_PEM_slopes": 8,
+          "n_joint_positive_PEM_slopes": 17,
+          "n_taxa_with_train_records": 45,
+          "n_training_taxa_joint_fitted": 25,
+          "n_training_taxa_wetland_fitted": 25
+        }
+      },
+      "heldout_conditional_location_logscore": {
+        "emergent_increment_over_wetland_total": 25.38098457488013,
+        "emergent_increment_per_cluster": 0.003569256725478854,
+        "folds": {
+          "A": {
+            "clusters": 3674,
+            "emergent_increment_over_wetland_per_cluster": 0.0042067235464532116,
+            "uniform": -14320.5371862862,
+            "wetland": -14292.789072642896,
+            "wetland_and_emergent": -14277.333570333227,
+            "wetland_minus_uniform_per_cluster": 0.007552562232798977
+          },
+          "B": {
+            "clusters": 3437,
+            "emergent_increment_over_wetland_per_cluster": 0.002887833071053544,
+            "uniform": -13404.706573641026,
+            "wetland": -13393.291677803545,
+            "wetland_and_emergent": -13383.366195538334,
+            "wetland_minus_uniform_per_cluster": 0.003321180051638289
+          }
+        },
+        "total_clusters": 7111,
+        "wetland_minus_uniform_total": 39.16300948078424
+      },
+      "analysis": {
+        "n_heldout_runs": 1766,
+        "n_routes": 398,
+        "folds": {
+          "A": {
+            "emergent_gain_over_wetland": 0.000783213551373288,
+            "fixed_excess": 0.05798365438620561,
+            "n_routes": 195,
+            "n_runs": 903,
+            "wetland_and_emergent_residual": 0.05682929540339512,
+            "wetland_residual": 0.05761250895476841
+          },
+          "B": {
+            "emergent_gain_over_wetland": -0.000024046803133419158,
+            "fixed_excess": 0.060425606745926674,
+            "n_routes": 203,
+            "n_runs": 863,
+            "wetland_and_emergent_residual": 0.060128557760401775,
+            "wetland_residual": 0.06010451095726836
+          }
+        },
+        "observed_mean_Cscore": 2.357423245560278,
+        "fixed_fixed_mean_Cscore": 2.298246270173824,
+        "fixed_fixed_mean_excess": 0.05917697538645435,
+        "route_cluster_effects": {
+          "baseline_residual": {
+            "ci95": [
+              0.04408167830107716,
+              0.07427227247183152
+            ],
+            "mean": 0.05917697538645434,
+            "n_runs": 1766,
+            "p_two_sided": 1.5479793813640976e-14,
+            "routes": 398,
+            "se_route_cluster": 0.0077018237092349425
+          },
+          "emergent_model_gain": {
+            "ci95": [
+              -0.00076183860756887,
+              0.001539289848549548
+            ],
+            "mean": 0.00038872562049033904,
+            "n_runs": 1766,
+            "p_two_sided": 0.5078516399202966,
+            "routes": 398,
+            "se_route_cluster": 0.000587033352211935
+          },
+          "full_model_gain": {
+            "ci95": [
+              -0.00034439716773691407,
+              0.001815223256056121
+            ],
+            "mean": 0.0007354130441596035,
+            "n_runs": 1766,
+            "p_two_sided": 0.18192592441186362,
+            "routes": 398,
+            "se_route_cluster": 0.0005509337010342653
+          },
+          "wetland_and_emergent_residual": {
+            "ci95": [
+              0.04339582834738273,
+              0.07348729633720677
+            ],
+            "mean": 0.05844156234229475,
+            "n_runs": 1766,
+            "p_two_sided": 2.6778037283096144e-14,
+            "routes": 398,
+            "se_route_cluster": 0.007676535953512847
+          },
+          "wetland_model_gain": {
+            "ci95": [
+              -0.0006720438650113717,
+              0.001365418712349901
+            ],
+            "mean": 0.00034668742366926475,
+            "n_runs": 1766,
+            "p_two_sided": 0.5047714470131872,
+            "routes": 398,
+            "se_route_cluster": 0.0005197704124750551
+          },
+          "wetland_residual": {
+            "ci95": [
+              0.0436928627217041,
+              0.07396771320386608
+            ],
+            "mean": 0.05883028796278509,
+            "n_runs": 1766,
+            "p_two_sided": 2.5917782358527837e-14,
+            "routes": 398,
+            "se_route_cluster": 0.007723318061190445
+          }
+        },
+        "generator": {
+          "wetland": {
+            "informative_reference_matrices": 1314,
+            "lack_of_Cscore_mixing_matrices": 0,
+            "mean_Cscore_residual": 0.058830287962784666,
+            "mean_accepted_given_feasible": 0.693995968307628,
+            "mean_null_Cscore": 2.2985929575974935,
+            "no_mixing_fraction_among_informative": 0,
+            "posthoc_vs_fixed_fraction_of_excess_explained": 0.005858485017280194,
+            "sampling_unreliable": false,
+            "simulation_null_ci95": [
+              2.288095679330104,
+              2.30748785991283
+            ],
+            "upper_tail_plus_one_p": 0.005
+          },
+          "wetland_and_emergent": {
+            "informative_reference_matrices": 1314,
+            "lack_of_Cscore_mixing_matrices": 0,
+            "mean_Cscore_residual": 0.058441562342294695,
+            "mean_accepted_given_feasible": 0.6854028447759501,
+            "mean_null_Cscore": 2.2989816832179835,
+            "no_mixing_fraction_among_informative": 0,
+            "posthoc_vs_fixed_fraction_of_excess_explained": 0.01242735099854074,
+            "sampling_unreliable": false,
+            "simulation_null_ci95": [
+              2.2875673843270103,
+              2.310461057754375
+            ],
+            "upper_tail_plus_one_p": 0.005
+          }
+        }
+      }
+    }
+  }
+}
