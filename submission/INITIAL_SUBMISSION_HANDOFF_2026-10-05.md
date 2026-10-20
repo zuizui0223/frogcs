@@ -4,17 +4,17 @@
 
 Final pre-submission correction receipt: `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
 
-Final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
+Current initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-20.md` (supersedes the October 6 bundle; old receipt preserved)
 
 The scientific and technical initial-submission package is complete.
 
 Canonical scientific-bundle source:
-- commit: `e5eb94885346a1c0c3247a14eed0c847d3c3d775`
-- JAE pipeline run: **37458881761**
-- artifact ID: **11410907633**
-- digest: `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
+- commit: `ee204d09c745c955de7b78790f3b4cf99745eac3`
+- JAE pipeline run: **39425635411**
+- artifact ID: **12264629523**
+- digest: `sha256:e748d23811f9439018d47fb0f32cbbe65362617aee7b79f587d90dc68f57315f`
 
-The final conceptual framing distinguishes response magnitude from realised configuration without altering any numerical endpoint. Later receipt-only repository edits do not alter the canonical submission inputs.
+The final conceptual framing distinguishes response magnitude from realised configuration without altering any numerical endpoint. The October 20 manuscript copy edit restored the 8,000-word QA safety guard without changing scientific results; the October 6 artifact is historical. Later receipt/readiness-only repository edits do not alter the canonical submission inputs.
 
 The manuscript, Supporting Information, figures and scientific endpoints are closed. A finite public-data scale validation was subsequently completed and reclosed: blocked State/time transferability supported the conditional spatial-allocation result, while a future-rain negative control limited temporal interpretation of the 72-h rainfall-amount covariate. No further NAAMP analysis, WFTS work or landscape exploration is required for initial submission.
 
@@ -22,8 +22,8 @@ The manuscript, Supporting Information, figures and scientific endpoints are clo
 
 The final submission-facing packaging PR passed:
 
-- integrated manuscript QA — **SUCCESS** within JAE pipeline run **37458881761**
-- JAE submission pipeline — **SUCCESS** (run **37458881761**)
+- integrated manuscript QA — **SUCCESS** within JAE pipeline run **39425635411**
+- JAE submission pipeline — **SUCCESS** (run **39425635411**)
 - build pulse-template figures — **SUCCESS**
 - RC4 restored-analysis reproducibility smoke — **SUCCESS**
 - WFTS real-data authority lock — **SUCCESS**
@@ -48,12 +48,12 @@ The WFTS checks are historical-design integrity checks only. WFTS is not being p
 
 Current counts before final human metadata:
 
-- anonymous main manuscript: **7,977 words**
+- anonymous main manuscript: **7,991 words**
 - current title-page template: **158 words**
-- current combined count: approximately **8,135 words**
+- current combined count: approximately **8,149 words**
 - JAE Research Article limit: **8,500 words**
 
-Approximate remaining margin before final title-page metadata: **365 words**.
+Approximate remaining margin before final title-page metadata: **351 words**.
 
 Keep final author names, affiliations, acknowledgements, contributions and other title-page additions concise enough to remain within this margin.
 
