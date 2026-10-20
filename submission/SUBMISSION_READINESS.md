@@ -19,7 +19,7 @@
 - release receipt: `submission/RC6_RELEASE_RECEIPT.md`
 - final project closure: `submission/RC6_FINAL_PROJECT_CLOSURE_2026-10-05.md`
 - initial-submission handoff: `submission/INITIAL_SUBMISSION_HANDOFF_2026-10-05.md`
-- final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
+- final initial-submission receipt: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-20.md`
 - final pre-submission audit: `submission/FINAL_PRE_SUBMISSION_AUDIT_2026-10-05.md`
 
 Historical RC5 remains preserved at:
@@ -31,9 +31,9 @@ Historical RC5 remains preserved at:
 - [x] Research Article target
 - [x] anonymized main-manuscript track
 - [x] numbered English abstract
-- [x] abstract ≤350 words — **293**
+- [x] abstract ≤350 words — **277**
 - [x] ≤8 alphabetized keywords — **8**
-- [x] anonymous main manuscript **7,977** words; current title-page template **158** words; combined current count ≈ **8,135**, below the 8,500-word Research Article limit before final author metadata
+- [x] anonymous main manuscript **7,991** words; current title-page template **158** words; combined current count ≈ **8,149**, below the 8,500-word Research Article limit before final author metadata
 - [x] separate Supporting Information
 - [x] separate title-page template contains author/affiliation/corresponding-author, acknowledgements, COI and contributions fields
 - [x] optional anonymous cover letter ≤500 words — **400**
@@ -41,9 +41,10 @@ Historical RC5 remains preserved at:
 - [x] five reproducible main figures
 - [x] data/archive statement present
 - [x] anonymous reviewer-code bundle generated and identity-scanned in the submission pipeline
-- [x] final anonymous scientific submission artifact recorded — artifact ID **11410907633**, digest `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
+- [x] final anonymous scientific submission artifact recorded — artifact ID **12264629523**, digest `sha256:e748d23811f9439018d47fb0f32cbbe65362617aee7b79f587d90dc68f57315f`
 - [x] finite public-data scale validation completed and reclosed — blocked State/time transferability supported; future-rain negative control retained as an interpretation boundary
-- [x] RC6 manuscript QA — run **37250005953**, SUCCESS
+- [x] Current manuscript QA and anonymous JAE pipeline — commit `ee204d09`, run **39425635411**, SUCCESS
+- [x] Historical RC6 manuscript QA — run **37250005953**, SUCCESS
 - [x] RC6 anonymous scientific submission bundle — run **37250006172**, SUCCESS
 - [x] RC6 figure build — run **37189806897**, SUCCESS
 - [x] RC4 restored-analysis reproducibility smoke — run **37189806859**, SUCCESS
@@ -136,12 +137,12 @@ Historical RC6 release artifact:
 
 Current canonical initial-submission artifact:
 - artifact ID: **11410907633**
-- digest: `sha256:aa76a41a97058e63ba96845cfc7586363efbc5700dc1623ca5076fac486b54ba`
-- source scientific commit: `e5eb94885346a1c0c3247a14eed0c847d3c3d775`
-- JAE pipeline run: **37458881761**
-- authority: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-06.md`
+- digest: `sha256:e748d23811f9439018d47fb0f32cbbe65362617aee7b79f587d90dc68f57315f`
+- source scientific commit: `ee204d09c745c955de7b78790f3b4cf99745eac3`
+- JAE pipeline run: **39425635411**
+- authority: `submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-20.md`
 
-The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
+The 2026-10-06 submission artifact is superseded for current initial submission by the 2026-10-20 verified artifact. The private metadata bundle remains intentionally incomplete until final author metadata and approvals are supplied.
 
 ## Post-RC6 landscape exploration — closed
 
