@@ -1,0 +1,50 @@
+name: NAAMP aquatic vegetation NWI geospatial preflight
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-vegetation-2026-10-21]
+    paths:
+      - "exploration/NAAMP_AQUATIC_VEGETATION_DESIGN_2026_10_21.md"
+      - "exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py"
+      - ".github/workflows/naamp_aquatic_vegetation_geospatial_preflight.yml"
+  workflow_dispatch:
+    inputs:
+      full_geometry:
+        description: "Full route-level vegetation overlay, without frog outcomes"
+        type: boolean
+        default: false
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  source_and_nwi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install geometry-only dependencies
+        run: python -m pip install -q --disable-pip-version-check shapely==2.1.2 pyproj==3.7.2
+      - name: Syntax and contract check
+        run: |
+          python -m py_compile exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py
+          test -f exploration/NAAMP_AQUATIC_VEGETATION_DESIGN_2026_10_21.md
+      - name: Run official NWI overlap and source coordinate quality checks
+        env:
+          FULL_GEOMETRY: ${{ github.event_name == 'workflow_dispatch' && inputs.full_geometry }}
+        run: |
+          if [ "$FULL_GEOMETRY" = "true" ]; then
+            python -u exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py --mode full --workers 3
+          else
+            python -u exploration/run_naamp_nwi_aquatic_vegetation_preflight_v0_1.py --mode pilot --per-state 2 --workers 3
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-aquatic-vegetation-nwi-geospatial-audit
+          path: build/aquatic_vegetation/
+          if-no-files-found: warn
