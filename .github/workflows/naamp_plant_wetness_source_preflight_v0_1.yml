@@ -1,0 +1,52 @@
+name: NAAMP NWI-DSWE plant wetness source-only preflight
+
+on:
+  push:
+    branches: [exploration/naamp-plant-wetness-interaction-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_plant_wetness_source_preflight_v0_1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  outcome-blind-join:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      eligible: ${{ steps.preflight.outputs.eligible }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels shapely==2.1.2 pyproj==3.7.2
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 37615425574
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-dswemod-v02-reuse-result
+          path: build/dswemod_history
+      - name: Verify source-only linkage without loading Counts.csv
+        id: preflight
+        run: |
+          python -m py_compile exploration/run_naamp_plant_wetness_source_preflight_v0_1.py
+          python -u exploration/run_naamp_plant_wetness_source_preflight_v0_1.py \
+            --nwi build/vegetation_context/site_nwi_vegetation_context.csv \
+            --nwi-audit build/vegetation_context/geometry_nwi_preflight.json \
+            --dswe build/dswemod_history/NAAMP_DSWEMOD_RUN_SITE_METRICS_V0_1.csv \
+            --outdir build/plant_wetness_interaction
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-plant-wetness-source-only-crosswalk-v0-1
+          path: build/plant_wetness_interaction/
+          if-no-files-found: error
