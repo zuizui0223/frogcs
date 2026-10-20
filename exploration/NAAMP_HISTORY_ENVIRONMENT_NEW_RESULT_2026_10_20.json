@@ -1,0 +1,175 @@
+{
+  "analysis": "naamp_history_site_reuse_environment_sensitivity_v0_1",
+  "coverage": {
+    "air_temperature_model_rows": 12710,
+    "candidate_pair_species": 1964,
+    "candidate_routes": 334,
+    "candidate_rows": 19640,
+    "complete_detection_environment_rows": 10707,
+    "eligible_runs": 7848,
+    "excluded_pairs_duplicate_SiteID": 0,
+    "matched_pairs": 4236,
+    "stable_pairs": 4172,
+    "stop_environment_raw_record_coverage": {
+      "air_temp_c": 78392,
+      "log_car_count": 64038,
+      "sound_masking": 78480,
+      "timeout": 78480
+    }
+  },
+  "interpretation_boundary": {
+    "RC6_manuscript_or_submission_updated": false,
+    "causal_memory_or_philopatry_identified": false,
+    "environment_independence_claim": false,
+    "local_water_level_or_hydroperiod_measured": false,
+    "other_species_stop_night_activity_adjusted": true,
+    "persistent_habitat_quality_excluded": false,
+    "site_air_temperature_measured": true,
+    "species_identity_and_shared_route_night_weather_controlled": true,
+    "within_pair_species_fixed_effects": true
+  },
+  "model_full_environment_completecase_baseline": {
+    "condition_number": 1,
+    "included_covariates": [],
+    "label": "complete_environment_same_sample_baseline",
+    "n_groups": 1097,
+    "n_routes": 251,
+    "n_rows": 10707,
+    "n_species": 39,
+    "p_two_sided": 3.052029850680292e-38,
+    "prior_strong_probability_difference": 0.14653233786093373,
+    "removed_nonidentifiable_covariates": [],
+    "route_cluster_ci95": [
+      0.12432040781161996,
+      0.1687442679102475
+    ],
+    "route_cluster_se": 0.011332825615428976,
+    "same_observer_pairs": 591,
+    "status": "fitted"
+  },
+  "model_full_measured_environment_adjusted": {
+    "condition_number": 11.262951804871477,
+    "included_covariates": [
+      "air_temp_c",
+      "sound_masking",
+      "timeout",
+      "log_car_count",
+      "prior_site_any",
+      "other_strong_taxa",
+      "stop_2",
+      "stop_3",
+      "stop_4",
+      "stop_5",
+      "stop_6",
+      "stop_7",
+      "stop_8",
+      "stop_9",
+      "stop_10"
+    ],
+    "label": "complete_stop_environment_adjusted",
+    "n_groups": 1097,
+    "n_routes": 251,
+    "n_rows": 10707,
+    "n_species": 39,
+    "p_two_sided": 5.7606663825734704e-18,
+    "prior_strong_probability_difference": 0.1059498327779098,
+    "removed_nonidentifiable_covariates": [],
+    "route_cluster_ci95": [
+      0.08190757170604174,
+      0.12999209384977786
+    ],
+    "route_cluster_se": 0.012266685133762842,
+    "same_observer_pairs": 591,
+    "status": "fitted"
+  },
+  "model_measured_site_temperature_adjusted": {
+    "condition_number": 9.824320324834042,
+    "included_covariates": [
+      "air_temp_c",
+      "prior_site_any",
+      "other_strong_taxa",
+      "stop_2",
+      "stop_3",
+      "stop_4",
+      "stop_5",
+      "stop_6",
+      "stop_7",
+      "stop_8",
+      "stop_9",
+      "stop_10"
+    ],
+    "label": "site_air_temperature_prior_any_other_taxa_stop_position",
+    "n_groups": 1272,
+    "n_routes": 275,
+    "n_rows": 12710,
+    "n_species": 43,
+    "p_two_sided": 1.476583632212678e-20,
+    "prior_strong_probability_difference": 0.10878673387261029,
+    "removed_nonidentifiable_covariates": [],
+    "route_cluster_ci95": [
+      0.08584692054715096,
+      0.13172654719806962
+    ],
+    "route_cluster_se": 0.011704201457988849,
+    "same_observer_pairs": 658,
+    "status": "fitted"
+  },
+  "model_same_sample_baseline": {
+    "condition_number": 1,
+    "included_covariates": [],
+    "label": "same_sample_unadjusted_baseline",
+    "n_groups": 1272,
+    "n_routes": 275,
+    "n_rows": 12710,
+    "n_species": 43,
+    "p_two_sided": 4.479711958197479e-41,
+    "prior_strong_probability_difference": 0.150655189429245,
+    "removed_nonidentifiable_covariates": [],
+    "route_cluster_ci95": [
+      0.12865597267057036,
+      0.17265440618791963
+    ],
+    "route_cluster_se": 0.011224296432078168,
+    "same_observer_pairs": 658,
+    "status": "fitted"
+  },
+  "same_observer_sensitivity": {
+    "condition_number": 9.496540879388673,
+    "included_covariates": [
+      "air_temp_c",
+      "prior_site_any",
+      "other_strong_taxa",
+      "stop_2",
+      "stop_3",
+      "stop_4",
+      "stop_5",
+      "stop_6",
+      "stop_7",
+      "stop_8",
+      "stop_9",
+      "stop_10"
+    ],
+    "label": "same_observer_site_air_temperature_adjusted",
+    "n_groups": 973,
+    "n_routes": 235,
+    "n_rows": 9722,
+    "n_species": 42,
+    "p_two_sided": 1.4159210026489748e-18,
+    "prior_strong_probability_difference": 0.1158872409439046,
+    "removed_nonidentifiable_covariates": [],
+    "route_cluster_ci95": [
+      0.09006516474917702,
+      0.14170931713863216
+    ],
+    "route_cluster_se": 0.013174770760283772,
+    "same_observer_pairs": 658,
+    "status": "fitted"
+  },
+  "status": "new_posthoc_exploratory_not_RC6_confirmation",
+  "provenance": {
+    "run_id": 39436588431,
+    "job_id": 118675082013,
+    "workflow_commit": "caddec2a4b394f4dbd982fa4cf5f2815eb689c1a",
+    "source": "USGS NAAMP pinned source files, hashes enforced by existing loader"
+  }
+}
