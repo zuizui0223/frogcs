@@ -1,0 +1,97 @@
+name: NAAMP NWI cross-fitted species-filtered checkerboard test
+
+on:
+  push:
+    branches: [exploration/naamp-nwi-conditioned-checkerboard-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_nwi_conditional_checkerboard_crossfit_v0_1.yml"
+      - "exploration/NAAMP_NWI_CONDITIONAL_CHECKERBOARD_CONTRACT_V0_1.md"
+      - "exploration/run_naamp_nwi_conditional_checkerboard_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-margins-and-weighted-mh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install computation libraries
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Test weighted MH detailed balance, exact row and column margins
+        run: |
+          python -m py_compile exploration/run_naamp_nwi_conditional_checkerboard_v0_1.py
+          python exploration/run_naamp_nwi_conditional_checkerboard_v0_1.py --synthetic-only
+
+  route-heldout-vegetation-null:
+    runs-on: ubuntu-latest
+    needs: synthetic-margins-and-weighted-mh
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned scientific Python stack
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Obtain response-blind full NWI 12-shard source crosswalk
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Obtain frozen full-NAAMP checkerboard fixed-fixed reference
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39436588431
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-checkerboard-exploratory-v0-1
+          path: build/naamp_checkerboard_reference
+      - name: Inspect source and prevent original evidence/denominator changes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["mode"]=="full" and a["preflight_eligible"] and a["overlay"]["site_records"]==5147
+          assert len(a["overlay"]["shards"])==12
+          assert a["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          assert a["matched_route_source_only_audit"]["n_matched_pairs"]==4236
+          for s in ["primary_run_level.csv","strong_run_level.csv"]:
+              assert (Path("build/naamp_checkerboard_reference")/s).is_file(),s
+          print("PASS source-only NWI and frozen checkerboard references")
+          PY
+      - name: Estimate route-held-out taxon filters and simulate weighted Curveball null
+        run: |
+          python -u exploration/run_naamp_nwi_conditional_checkerboard_v0_1.py \
+            --ref-any build/naamp_checkerboard_reference/primary_run_level.csv \
+            --ref-strong build/naamp_checkerboard_reference/strong_run_level.csv \
+            --outdir build/nwi_conditional_checkerboard
+      - name: Check full null output and route-fold provenance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/nwi_conditional_checkerboard/result.json").read_text())
+          assert x["source_synthetic_qa"]["status"]=="PASS"
+          for mode in ("any","strong"):
+              result=x["modes"][mode]["checkerboard"]
+              assert result["n_heldout_runs"]>=100 and result["n_routes"]>=30
+              assert all(x["modes"][mode]["heldout_conditional_location_logscore"]["folds"][f]["clusters"]>0 for f in ("A","B"))
+              assert result["generator"]["wetland"]["upper_tail_plus_one_p"]>=1/200
+              assert result["generator"]["wetland_and_emergent"]["upper_tail_plus_one_p"]>=1/200
+          print("PASS two-mode crossfold conditional checkerboard results",x["source_data_coverage"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          path: build/nwi_conditional_checkerboard/
+          if-no-files-found: warn
