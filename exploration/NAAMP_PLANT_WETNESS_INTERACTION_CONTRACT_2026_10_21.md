@@ -2,11 +2,11 @@
 Date: 2026-10-21. **Separate user-directed exploratory work** beyond frozen JAE RC6.
 
 ## Biological question
-Does recent (three-month) satellite-measured inundation modify the spatial association between NWI mapped emergent wetlands and **which stops express a strong frog chorus**, after controlling for current water and static wetland availability? If it does, can that interaction explain any of the between-taxon checkerboard C-score excess while preserving marginal activity?
+Does a survey-month-inclusive three-month satellite wetness summary modify the spatial association between NWI mapped emergent wetlands and **which stops express a strong frog chorus**, after controlling for current water and static wetland availability? If it does, can that interaction explain any of the between-taxon checkerboard C-score excess while preserving marginal activity?
 
 This hypothesis is motivated by two already-known findings but is **not an independent replication**:
 1. Five NAAMP taxon units have positive cross-sectional NWI PEM associations with strong calling (BH q<0.05).
-2. Pre-October 21 MODIS DSWEmod strong-chorus prediction found a positive out-of-**route** increment of recent 3-month hydrology, but it **FAILED** 2003/2005–2009 → 2010–2015 temporal transfer (log-loss gain −0.003588, 95% CI −0.005858 to −0.002186). Do NOT describe this as a confirmed environmental-memory mechanism.
+2. Pre-October 21 MODIS DSWEmod strong-chorus prediction found a positive out-of-**route** increment of three-month hydrology, but it **FAILED** 2003/2005–2009 → 2010–2015 temporal transfer (log-loss gain −0.003588, 95% CI −0.005858 to −0.002186). Do NOT describe this as a confirmed environmental-memory mechanism.
 
 ## Frozen environmental sources
 - USGS NAAMP pinned Runs/Stops/Counts from ScienceBase original record; 7,848 eligible standardized 10-stop survey runs.
@@ -15,7 +15,7 @@ This hypothesis is motivated by two already-known findings but is **not an indep
 - Fixed current plant support = 250 m, water support = 500 m. No searches across support radii/classes/time lags.
 
 ## Source-only eligibility gate **before reading Counts outcomes**
-- Valid NAAMP complete 10-stop runs with valid temperature; every stop uniquely identifies a source-validated `State×RouteNumber×SiteID` in the NWI overlay, and every run×SiteID has a DSWEmod valid current and recent-three-month value.
+- Valid NAAMP complete 10-stop runs with valid temperature; every stop uniquely identifies a source-validated `State×RouteNumber×SiteID` in the NWI overlay, and every run×SiteID has a DSWEmod valid current and survey-month-inclusive three-month value.
 - Do not treat missing NWI or DSWEmod as absence.
 - Sample must contain ≥600 complete route-runs, ≥100 routes, ≥12 states, ≥100 pre-2010 and ≥200 later years; and ≥80 runs having both within-route NWI PEM variability and positive DSWEmod recent3 value. Otherwise *coverage-inconclusive* without reading frog outcomes.
 - A site is used only when station coordinates passed the pre-outcome NWI geometry exclusion (no post-hoc coordinate correction).
@@ -48,7 +48,7 @@ This hypothesis is motivated by two already-known findings but is **not an indep
 - For biological positive claim, require **both** route-fold held-out log-score gain CI >0 AND H1−H0 checkerboard C-score gain CI>0. To claim "explains checkerboard" additionally require H1-adjusted residual CI overlapping 0 and within the simulated 95% envelope; otherwise it is only partial.
 
 ## Strict limitations
-This is a **post-hoc observational test** within an already-explored archive. A successful NWI × DSWEmod interaction would not establish aquatic plant species identity, hydrological causation, spawning, abundance, individual habitat choice, or frog–frog social interactions. DSWEmod 3-mo summaries are strongly spatially aggregated and do not measure submerged water among plant stems. Wetland NWI temporal mismatch is material. Do not modify the RC6 paper, SI, or journal submission package in this branch.
+This is a **post-hoc observational test** within an already-explored archive. A successful NWI × DSWEmod interaction would not establish aquatic plant species identity, hydrological causation, spawning, abundance, individual habitat choice, or frog–frog social interactions. DSWEmod recent3 is the mean of the **survey calendar month and the previous two months**, NOT an exposure ending strictly before the survey day. The survey-month composite may contain observations later than the frog survey and must NOT be interpreted as a causal antecedent or leak-free prospective forecast. These summaries are strongly spatially aggregated and do not measure submerged water among plant stems. Wetland NWI temporal mismatch is material. Do not modify the RC6 paper, SI, or journal submission package in this branch.
 
 ## Code and outputs
 - Source-only preflight `exploration/run_naamp_plant_wetness_source_preflight_v0_1.py` (no Counts)
