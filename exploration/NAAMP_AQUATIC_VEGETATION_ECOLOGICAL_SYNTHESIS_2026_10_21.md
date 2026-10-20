@@ -83,13 +83,69 @@ Provenance: `exploration/NAAMP_TAXON_NWI_EXPOSURE_SCALE_SENSITIVITY_RESULT_V0_1.
 
 Original primary taxon results: `exploration/NAAMP_TAXON_SPECIFIC_AQUATIC_VEGETATION_RESULT_V0_1.json`; [run 39455849996](https://github.com/zuizui0223/frogcs/actions/runs/39455849996).
 
+## Q4 — Does taxon-specific mapped aquatic vegetation generate the checkerboard pattern?
+
+**Completed 2026-10-21.** This test specifically addresses the next mechanistic question after the five BH-positive taxon-level NWI PEM associations. It is an independent user-directed analysis design, **not independent biological confirmation**: the same NAAMP monitoring archive remains the source.
+
+Protocol: `exploration/NAAMP_NWI_CONDITIONAL_CHECKERBOARD_CONTRACT_V0_1.md`; result receipt: `exploration/NAAMP_NWI_CONDITIONAL_CHECKERBOARD_RESULT_V0_1.json`; [successful Actions 39516056663](https://github.com/zuizui0223/frogcs/actions/runs/39516056663).
+
+Three fixed-margin comparators, on the **same matrices** in each endpoint, all preserving (1) each taxon's calling-positive stop total and (2) the total number of calling taxa per stop:
+
+1. Frozen unweighted fixed-fixed Curveball prediction (399 draws);
+2. New taxon-specific mapped total-wetland response (199 Metropolis–Hastings-weighted draws);
+3. New taxon-specific mapped total-wetland + emergent PEM response (199 weighted draws).
+
+Taxon-specific weights come from exact fixed-k logistic location models trained on the **opposite deterministic route fold** (route A/B), with fixed ridge strength and coefficient bounds. Thus each tested route was absent from training. Weighted Curveball row/column conservation and detailed balance passed synthetic QA: two-state theoretical probability 0.880797, simulation 0.8806. Average feasible-swap acceptance was ~69–70%; no lack-of-score-mixing was found among 2,895 informative CI1–3 and 1,314 informative CI2–3 reference matrices.
+
+### Primary: all recorded frog calling (CI1–3)
+
+Population: **3,659 survey runs, 478 routes**; fixed observable margins.
+
+| Statistic | Estimated mean |
+|---|---:|
+| Observed between-taxon C-score | **2.237015** |
+| Unweighted fixed-fixed prediction | 2.184963 |
+| Species-specific total wetland prediction | 2.184611 |
+| Total wetland + species-specific emergent PEM prediction | 2.184720 |
+| Residual against unweighted fixed-fixed | **+0.052052** |
+| Residual after wetland + PEM | **+0.052295** |
+| **Incremental PEM-generated C-score over wetland only** | **+0.000109** (95% route CI **−0.000538 to +0.000756**, P=0.741) |
+
+The model after PEM retains a clearly positive route-clustered residual (95% CI **+0.04294 to +0.06165**) and exceeds the weighted null ensemble (plus-one upper-tail P=**0.005**, the floor from 199 draws). Its predicted mean is effectively unchanged from the original fixed-fixed expectation.
+
+The cross-fold **within-taxon calling-location** log-score improved slightly when adding PEM to mapped total wetland (~+0.00398 nats per detected taxon-run, in both route folds). Therefore PEM contains some transferable site-allocation signal without reproducing the **joint placement of different taxa**. Plant-generated C-score increments had different signs across folds (fold A +0.000451; fold B −0.000243), so they should not be promoted as a stable generative effect.
+
+### Secondary: strong chorus (CI2–3)
+
+Population: **1,766 survey runs, 398 routes**.
+
+- Observed C-score **2.357423**; fixed-fixed **2.298246**; wetland+PEM weighted null **2.298982**;
+- unexplained excess **+0.059177 before** versus **+0.058442 after** wetland+PEM;
+- incremental PEM-generated C-score **+0.000389** (95% CI −0.000762 to +0.001539, route-cluster P=0.508);
+- weighted-null upper-tail plus-one P=**0.005**; held-out PEM log-score improves ~+0.00357 nats per active taxon-run.
+
+### Ecological implication and non-implication
+
+**Positive but separate findings can coexist:**
+
+- A subset of frog taxa shows a real statistical association between recorded strong calling location and mapped PEM vegetation.
+- Species differ in the locations where they are recorded calling.
+- Their first-order vegetation-specific location tendencies do **not** explain the persistent between-taxon acoustic segregation once the same observed taxon/stop incidence totals are fixed.
+
+The negative falsification result specifically rejects the sufficiency of *this* fixed-margin generator with *these* cross-fitted **NWI landscape proxies**, not every habitat-filtering hypothesis. Local hydroperiod, exact-time inundation, water temperature, historical emergent vegetation, plant identity, wetland patch properties, route-level correlated acoustic detection and social/demographic processes remain unresolved. Positive checkerboarding is **not** proof of direct interspecific competition or species-level niche partitioning caused by aquatic plants.
+
+The result warrants a separate ecohydrological observation design rather than reopening the frozen RC6 manuscript.
+
+---
+
 ## Important inferential hierarchy
 
 1. **Established in the new NAAMP analyses:** past species × SiteID strong-chorus records are informative beyond measured microtemperature, acoustic context and coarse mapped plant structure.
 2. **Unresolved:** whether persistent site quality, transient local hydrology, vegetation at the **actual survey date**, social calling context or demographic availability generates the recurrence.
 3. **Exploratory, not stable enough yet:** routes heterogeneous in NWI emergent cover may have *less*, rather than more, excess checkerboarding. The effect is sensitive to the geographic subset and should not be treated as confirmation.
 4. **New exploratory taxa-level finding:** five taxon units have positive BH-corrected within-route associations between strong chorus placement and mapped emergent NWI wetlands. These are neither plant-causation tests nor confirmation of checkerboard-generating mechanisms.
-5. **Not tested:** plant species identity, true time-matched aquatic macrophyte cover, microhabitat plant–frog interactions, plant facilitation versus plant-driven interspecific segregation.
+5. **Directly tested negative sufficiency:** taxon-specific broad-wetland + PEM first-order habitat filtering did not reproduce the between-taxon fixed-margin checkerboard excess under route-held-out model fitting.
+6. **Not tested:** plant species identity, true time-matched aquatic macrophyte cover, microhabitat plant–frog interactions, plant facilitation or direct exclusion between frog species.
 
 ## Provenance
 
