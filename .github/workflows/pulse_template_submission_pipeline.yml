@@ -14,6 +14,7 @@ on:
       - "provenance/CURRENT_RESULTS.json"
       - "revision/audit_current_endpoint_manuscript_v0_7.py"
       - "scripts/submission/build_jae_anonymous_docx.py"
+      - "scripts/submission/check_anonymous_si_tables.py"
       - "scripts/submission/render_submission_metadata.py"
       - "scripts/submission/build_anonymous_reviewer_bundle.py"
       - "submission/cover_letter.md"
@@ -83,6 +84,8 @@ jobs:
         run: |
           python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript.md --output build/Manuscript.docx
           python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information.md --output build/Supporting_Information.docx
+      - name: Verify all fourteen Supporting Information Word tables
+        run: python scripts/submission/check_anonymous_si_tables.py --md paper/supporting_information.md --docx build/Supporting_Information.docx
       - name: Verify JAE formatting and anonymity
         run: |
           python - <<'PY'
@@ -250,6 +253,8 @@ jobs:
         run: |
           python scripts/submission/build_jae_anonymous_docx.py --source paper/manuscript.md --output build/Manuscript.docx
           python scripts/submission/build_jae_anonymous_docx.py --source paper/supporting_information.md --output build/Supporting_Information.docx
+      - name: Verify Supporting Information tables for private-repository builds
+        run: python scripts/submission/check_anonymous_si_tables.py --md paper/supporting_information.md --docx build/Supporting_Information.docx
       - name: Check combined JAE word count
         run: |
           python - <<'PY'

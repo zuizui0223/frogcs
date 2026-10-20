@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 from docx import Document
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -87,6 +88,86 @@ def add_page_field(paragraph):
     set_run_font(run, size=10)
 
 
+def is_markdown_table_divider(line):
+    """A markdown alignment row, e.g. |:---|---:|:---:|."""
+    if not line.strip().startswith("|"):
+        return False
+    cells = [c.strip() for c in line.strip().strip("|").split("|")]
+    return bool(cells) and all(re.fullmatch(r":?-{2,}:?", c) for c in cells)
+
+
+def table_cells(raw):
+    """The frozen SI uses ordinary pipe tables, not escaped interior pipes."""
+    if not raw.strip().startswith("|"):
+        raise ValueError("not a Markdown table row")
+    return [cell.strip() for cell in raw.strip().strip("|").split("|")]
+
+
+def add_markdown_table(doc, raw_lines, *, page_width_inches=6.27):
+    """Convert the SI's markdown grids into real, readable Word tables.
+
+    Fail closed rather than silently print a pipe-delimited row as a paragraph:
+    that defect concealed all fourteen SI tables during the first build.
+    """
+    if len(raw_lines) < 3 or not is_markdown_table_divider(raw_lines[1]):
+        raise ValueError("Markdown table is missing a header alignment rule")
+    rows = [table_cells(raw) for raw in raw_lines]
+    ncols = len(rows[0])
+    if ncols < 2 or ncols > 8 or any(len(r) != ncols for r in rows):
+        raise ValueError("Malformed Markdown table: column count not stable")
+    if any(is_markdown_table_divider(row) for row in raw_lines[2:]):
+        raise ValueError("Unexpected table divider in body")
+    rows.pop(1)  # Alignment syntax is not an actual Word row.
+
+    table = doc.add_table(rows=1, cols=ncols)
+    table.style = "Table Grid"
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    table.autofit = False
+
+    # Reserve a minimum width for numeric columns while assigning additional
+    # width to long-description columns. The 6.27in area is A4 minus margins.
+    maxlens = [max(len(row[i]) for row in rows) for i in range(ncols)]
+    weights = [max(8.0, min(65.0, float(x))) for x in maxlens]
+    minimum = 0.63 if ncols >= 5 else 0.77
+    remaining = page_width_inches - minimum * ncols
+    if remaining <= 0:
+        raise ValueError("too many columns for document page width")
+    widths = [minimum + remaining * w / sum(weights) for w in weights]
+    font_size = 8.4 if ncols >= 5 else 9.3
+
+    def fill_row(row, values, header):
+        row_pr = row._tr.get_or_add_trPr()
+        cant_split = OxmlElement("w:cantSplit")
+        row_pr.append(cant_split)
+        if header:
+            repeat = OxmlElement("w:tblHeader")
+            repeat.set(qn("w:val"), "true")
+            row_pr.append(repeat)
+        for i, text in enumerate(values):
+            cell = row.cells[i]
+            cell.width = Inches(widths[i])
+            cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            paragraph = cell.paragraphs[0]
+            add_inline(paragraph, text)
+            paragraph.paragraph_format.space_before = Pt(0)
+            paragraph.paragraph_format.space_after = Pt(1.5)
+            paragraph.paragraph_format.line_spacing = 1.1
+            paragraph.paragraph_format.keep_with_next = header
+            for run in paragraph.runs:
+                set_run_font(run, size=font_size)
+                if header:
+                    run.bold = True
+            if header:
+                shading = OxmlElement("w:shd")
+                shading.set(qn("w:fill"), "EEF2F6")
+                cell._tc.get_or_add_tcPr().append(shading)
+
+    fill_row(table.rows[0], rows[0], True)
+    for values in rows[1:]:
+        fill_row(table.add_row(), values, False)
+    return table
+
+
 def build():
     source = SRC.read_text(encoding="utf-8")
     title_line = next((x[2:].strip() for x in source.splitlines() if x.startswith("# ")), "")
@@ -118,7 +199,12 @@ def build():
     normal.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
 
     mode = "body"
-    for raw_line in source.splitlines():
+    raw_lines = source.splitlines()
+    position = 0
+    expected_tables = 0
+    while position < len(raw_lines):
+        raw_line = raw_lines[position]
+        position += 1
         line = raw_line.rstrip()
         if not line:
             continue
@@ -175,6 +261,15 @@ def build():
             format_paragraph(p, hanging=0.35)
             continue
 
+        if line.startswith("|"):
+            block = [line]
+            while position < len(raw_lines) and raw_lines[position].lstrip().startswith("|"):
+                block.append(raw_lines[position].rstrip())
+                position += 1
+            add_markdown_table(doc, block)
+            expected_tables += 1
+            continue
+
         p = doc.add_paragraph()
         add_inline(p, line)
         first_line = 0.3
@@ -182,17 +277,20 @@ def build():
             first_line = 0
         format_paragraph(p, first_line=first_line)
 
-        # Keep a pipe-delimited Markdown table header and separator with the
-        # first data row, avoiding orphaned headers at the bottom of a page.
-        if line.startswith("|") and re.match(r"^\|\s*:?-{2,}", line):
-            if len(doc.paragraphs) >= 2:
-                doc.paragraphs[-2].paragraph_format.keep_with_next = True
-            p.paragraph_format.keep_with_next = True
 
     for paragraph in doc.paragraphs:
         for run in paragraph.runs:
             if run.font.size is None:
                 set_run_font(run)
+
+    if len(doc.tables) != expected_tables or any(
+        p.text.lstrip().startswith("|") for p in doc.paragraphs
+    ):
+        raise ValueError("Markdown table text leaked into Word document")
+    if SRC.name == "supporting_information.md" and expected_tables != 14:
+        raise ValueError(
+            f"Supporting Information table count drift: {expected_tables}, expected 14"
+        )
 
     props = doc.core_properties
     props.title = title_line
