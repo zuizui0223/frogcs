@@ -1,0 +1,79 @@
+name: NAAMP NWI aquatic vegetation ecology (11-shard interim)
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-vegetation-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_aquatic_vegetation_interim_11shards_v0_2.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verified-interim-ecology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Fetch prespecified, completed geometry shards 0 to 9
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: naamp-aquatic-veg-shard-[0-9]
+          path: build/vegetation_shards
+          merge-multiple: false
+      - name: Fetch prespecified, completed geometry shard 10
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-aquatic-veg-shard-10
+          path: build/vegetation_shards/naamp-aquatic-veg-shard-10
+      - name: Merge available shard IDs 0-10 and verify blinded geospatial coverage
+        id: audit
+        run: |
+          python -u exploration/merge_naamp_nwi_aquatic_vegetation_shards_v0_1.py --shard-root build/vegetation_shards --expected 11 --output build/vegetation_context
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/vegetation_context/geometry_nwi_preflight.json")
+          v=json.loads(p.read_text())
+          assert sorted(x["shard"] for x in v["overlay"]["shards"])==list(range(11))
+          v["geographic_coverage"]={
+              "status":"interim_11_of_12_sha256_shards",
+              "missing_shard":11,
+              "original_full_run_id":39450277196,
+              "note":"Availability-limited partial geography, selected by original source-only SHA256 route sharding. Never interpret as final full-region estimate."}
+          p.write_text(json.dumps(v,indent=2,sort_keys=True)+"\n")
+          assert v["preflight_eligible"],"Incomplete NWI coverage gate"
+          print("PASS interim source-only geographic coverage",v["overlay"]["site_records"])
+          PY
+      - name: Download independently frozen NAAMP checkerboard run-level residuals
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39436588431
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-checkerboard-exploratory-v0-1
+          path: build/checkerboard_reference
+      - name: Compute exploratory site-history and checkerboard vegetation associations
+        run: |
+          python -m py_compile exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_2.py
+          python -u exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_2.py \
+            --nwi-sites build/vegetation_context/site_nwi_vegetation_context.csv \
+            --nwi-audit build/vegetation_context/geometry_nwi_preflight.json \
+            --checkerboard-run-level build/checkerboard_reference/primary_run_level.csv
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-nwi-aquatic-veg-11shards-ecological-v0-2
+          path: |
+            build/vegetation_context/geometry_nwi_preflight.json
+            build/aquatic_vegetation_ecology/result.json
+          if-no-files-found: warn
