@@ -1,0 +1,65 @@
+name: NAAMP aquatic vegetation full-data ecological audit v0.2
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-vegetation-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_aquatic_vegetation_full_ecology_v0_2.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  same-sample-vegetation-and-checkerboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install statistical dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Retrieve frozen response-blind FULL 12-shard validated vegetation crosswalk
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Refuse incomplete coordinate, vegetation, or route coverage
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/vegetation_context/geometry_nwi_preflight.json")
+          v=json.loads(p.read_text())
+          assert v["preflight_eligible"] and v["mode"]=="full"
+          assert len(v["overlay"]["shards"])==12
+          assert sorted(x["shard"] for x in v["overlay"]["shards"])==list(range(12))
+          assert v["matched_route_source_only_audit"]["n_matched_pairs"]==4236
+          assert v["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          assert v["overlay"]["routes_success"]==501 and v["overlay"]["site_records"]==5147
+          assert v["overlay"]["site_nwi_emergent_250m"]==1286
+          print("PASS: geographically vetted 12-shard study scope frozen")
+          PY
+      - name: Retrieve frozen checkerboard run-level diagnostic
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39436588431
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-checkerboard-exploratory-v0-1
+          path: build/checkerboard_reference
+      - name: Run same-complete-case site-history and vegetation × checkerboard tests
+        run: |
+          python -m py_compile exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_2.py
+          python -u exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_2.py \
+            --nwi-sites build/vegetation_context/site_nwi_vegetation_context.csv \
+            --nwi-audit build/vegetation_context/geometry_nwi_preflight.json \
+            --checkerboard-run-level build/checkerboard_reference/primary_run_level.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-aquatic-vegetation-full-ecological-v0-2
+          path: build/aquatic_vegetation_ecology/result.json
+          if-no-files-found: error
