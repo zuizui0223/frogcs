@@ -1,0 +1,32 @@
+{
+  "title": "New exploratory NAAMP site-history vs local context and checkerboard analysis",
+  "authorized_by": "Explicit user question on 2026-10-20: new analyses; historical site reuse independent of environmental conditions? checkerboard result?",
+  "authority": "Separate exploratory analysis. RC6 science lock and existing JAE submission artifact unchanged.",
+  "frozen_before_new_outcome_readback": true,
+  "source": "ScienceBase NAAMP item 583dc314e4b0d1899f9dea8d, Runs/Stops/Counts pinned SHA256 via scripts/naamp/run_naamp_ecological_pulse.py",
+  "history": {
+    "population": "Existing adjacent-year matched wetter–drier NAAMP comparisons; physically stable complete ten-stop SiteIDs; focal taxa acoustically route-new in wetter run but found on earlier route-runs; historical data strictly earlier than both focal years.",
+    "outcome": "wet CallingIndex >=2 at stop",
+    "exposure": "prior CI>=2 at same species×physical SiteID",
+    "unit": "species × pair × wet-stop; fixed effects species×pair",
+    "model0": "previously published fixed-effect linear probability model, re-estimated on exactly the eligible complete-case adjusted-model rows",
+    "model1": "model0 plus within-survey stop air-temperature (C), other species' same-stop CI>=2 count (target taxon excluded), number of other taxa with strictly-prior CI>=2 at that physical SiteID, and linear/quadratic standardized StopNumber",
+    "inference": "route-clustered sandwich SE; exact same rows in unadjusted and adjusted model; no interpretation as causal memory or independence from unmeasured hydrology.",
+    "decision": "Historical-site effect survives measured local context only if adjusted beta>0 and lower 95% route-clustered bound>0, n>=350 species-pair groups, n>=200 routes. Otherwise unresolved/not supported."
+  },
+  "checkerboard": {
+    "question": "Do active taxa at the ten wetland-associated stops segregate beyond what species' detected-stop totals and each stop's total taxon richness predict?",
+    "statistic": "Stone–Roberts C-score, mean over unordered observed taxon pairs: (r_i-s_ij)(r_j-s_ij), where r_i detected stop count and s_ij shared detected stops",
+    "population": "Eligible unified-protocol NAAMP route runs entering matched sample, 10 sampled stops, >=3 acoustically positive taxa; runs with no varying possible margins retained as zero information but flagged.",
+    "null": "Curveball random fixed-row/column-sum bipartite binary incidence matrices; 99 Monte Carlo draws, burn-in >=max(80,30 × active_taxa) trades, thinning >=max(20,8 × active_taxa) trades; seed=20261020",
+    "primary": "run-level C-score minus its fixed-marginal null mean; report mean residual (route-clustered CI) over unique eligible runs",
+    "secondary": "for matched wetter/drier pairs where both have checkerboard estimates, wet-minus-dry residual; route-clustered CI and model controlling rain contrast, temp/doy differences, year gap, State and RunNumber; false positive significance from many related routes avoided by route clustering",
+    "decision": "Checkerboard supported only if primary residual >0 with two-sided route-clustered 95% CI excluding zero; wetter-associated enhancement supported only if paired wet−dry difference>0 with 95% CI excluding zero.",
+    "boundaries": [
+      "Checkerboard segregation cannot establish biological competition, avoidance or stable exclusive habitat.",
+      "Within-taxon multi-stop clustering is mathematically different from between-taxon checkerboard segregation.",
+      "Observed acoustic detections are not occupancy or movement.",
+      "All tests are exploratory on previously inspected NAAMP data, not independent replication; local hydrology is not directly measured."
+    ]
+  }
+}
