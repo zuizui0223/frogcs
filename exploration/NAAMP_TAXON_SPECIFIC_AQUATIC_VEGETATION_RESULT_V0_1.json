@@ -1,0 +1,1722 @@
+{
+  "all_taxa": [
+    {
+      "active_runs": 741,
+      "n_stop_rows": 7410,
+      "positive_strong_sites": 2457,
+      "primary_BH_q": 0.7291871932501726,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.09409962057753561,
+          0.04313383232345132
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.4666798036801104,
+        "pem_beta_per_10pp": -0.025482894127042147,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.035009177205159614,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 182,
+      "runs_with_PEM_variation": 586,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.08796914903800095,
+          0.040106849289295074
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.46389814852867006,
+        "pem_beta_per_10pp": -0.023931149874352933,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.032673048927822954,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Acris crepitans"
+    },
+    {
+      "active_runs": 179,
+      "n_stop_rows": 1790,
+      "positive_strong_sites": 529,
+      "primary_BH_q": 0.062391985647922955,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.2947224590123609,
+          -0.031736150068255864
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.014974076555501509,
+        "pem_beta_per_10pp": -0.16322930454030837,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.06708957690511343,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 60,
+      "runs_with_PEM_variation": 93,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.29680149187443927,
+          -0.05274177455968462
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.004999469281350258,
+        "pem_beta_per_10pp": -0.17477163321706196,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.062261276033607406,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Acris crepitans/gryllus complex"
+    },
+    {
+      "active_runs": 286,
+      "n_stop_rows": 2860,
+      "positive_strong_sites": 787,
+      "primary_BH_q": 0.8014076471844633,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.04136108582551627,
+          0.07318538264015861
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.5860738843927553,
+        "pem_beta_per_10pp": 0.01591214840732117,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.029221574827191423,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 61,
+      "runs_with_PEM_variation": 177,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.06938116864655339,
+          0.052229925218880924
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.7822249866159925,
+        "pem_beta_per_10pp": -0.008575621713836232,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.03102380830073591,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Acris gryllus"
+    },
+    {
+      "active_runs": 1210,
+      "n_stop_rows": 12100,
+      "positive_strong_sites": 3199,
+      "primary_BH_q": 0.8014076471844633,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.027337564024099963,
+          0.048786802974649573
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.5807765946043832,
+        "pem_beta_per_10pp": 0.010724619475274807,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.019419838221316522,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 332,
+      "runs_with_PEM_variation": 1015,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.04562981667781962,
+          0.04836769988734651
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.9544749068134235,
+        "pem_beta_per_10pp": 0.0013689416047634444,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.023979398934522916,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Anaxyrus americanus"
+    },
+    {
+      "active_runs": 25,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 250,
+      "positive_strong_sites": 67,
+      "routes": 19,
+      "runs_with_PEM_variation": 19,
+      "status": "ineligible",
+      "taxon": "Anaxyrus americanus/terrestris complex"
+    },
+    {
+      "active_runs": 9,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 90,
+      "positive_strong_sites": 14,
+      "routes": 1,
+      "runs_with_PEM_variation": 9,
+      "status": "ineligible",
+      "taxon": "Anaxyrus cognatus"
+    },
+    {
+      "active_runs": 614,
+      "n_stop_rows": 6140,
+      "positive_strong_sites": 1763,
+      "primary_BH_q": 0.2581215462377796,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.0628712292614991,
+          0.004832465513591261
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.09292375664560065,
+        "pem_beta_per_10pp": -0.02901938187395392,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.017271668078885243,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 171,
+      "runs_with_PEM_variation": 433,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.07279892927531686,
+          0.011023624006874459
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.14861281579479158,
+        "pem_beta_per_10pp": -0.0308876526342212,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.021383697339178918,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Anaxyrus fowleri"
+    },
+    {
+      "active_runs": 11,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 110,
+      "positive_strong_sites": 13,
+      "routes": 3,
+      "runs_with_PEM_variation": 11,
+      "status": "ineligible",
+      "taxon": "Anaxyrus fowleri/woodhousii complex"
+    },
+    {
+      "active_runs": 11,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 110,
+      "positive_strong_sites": 28,
+      "routes": 5,
+      "runs_with_PEM_variation": 6,
+      "status": "ineligible",
+      "taxon": "Anaxyrus quercicus"
+    },
+    {
+      "active_runs": 202,
+      "n_stop_rows": 2020,
+      "positive_strong_sites": 654,
+      "primary_BH_q": 0.13782132077765435,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.08439879471592864,
+          -0.0011290115284823682
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.04410282264884939,
+        "pem_beta_per_10pp": -0.0427639031222055,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.021242681968716697,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 57,
+      "runs_with_PEM_variation": 128,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.06828086254442271,
+          0.011572847410338653
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.1639629663115475,
+        "pem_beta_per_10pp": -0.02835400756704203,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.020371218702138722,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Anaxyrus terrestris"
+    },
+    {
+      "active_runs": 121,
+      "n_stop_rows": 1210,
+      "positive_strong_sites": 230,
+      "primary_BH_q": 0.9617693407100713,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.05254946333742407,
+          0.06320273152151974
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.8568499070057539,
+        "pem_beta_per_10pp": 0.005326634092047833,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.029529163742798938,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 67,
+      "runs_with_PEM_variation": 81,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.09968107049196562,
+          0.05585017606669498
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.5807117051996169,
+        "pem_beta_per_10pp": -0.021915447212635324,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.03967706748324746,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Gastrophryne carolinensis"
+    },
+    {
+      "active_runs": 18,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 180,
+      "positive_strong_sites": 42,
+      "routes": 7,
+      "runs_with_PEM_variation": 18,
+      "status": "ineligible",
+      "taxon": "Hyla andersonii"
+    },
+    {
+      "active_runs": 74,
+      "eligibility_rule_failed": [
+        "active_runs",
+        "routes"
+      ],
+      "n_stop_rows": 740,
+      "positive_strong_sites": 170,
+      "routes": 22,
+      "runs_with_PEM_variation": 38,
+      "status": "ineligible",
+      "taxon": "Hyla avivoca"
+    },
+    {
+      "active_runs": 802,
+      "n_stop_rows": 8020,
+      "positive_strong_sites": 2469,
+      "primary_BH_q": 0.9617693407100713,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.041084095143619055,
+          0.047641386989313216
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.8848277934532656,
+        "pem_beta_per_10pp": 0.00327864592284708,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.022634467478174998,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 218,
+      "runs_with_PEM_variation": 525,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.05876845239930433,
+          0.03329874326352566
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.5876741580882436,
+        "pem_beta_per_10pp": -0.012734854567889337,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.023486961084245497,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla chrysoscelis"
+    },
+    {
+      "active_runs": 256,
+      "n_stop_rows": 2560,
+      "positive_strong_sites": 819,
+      "primary_BH_q": 0.06399373209962729,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          0.011747621656598144,
+          0.12479793650201723
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.017918244987895644,
+        "pem_beta_per_10pp": 0.06827277907930769,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.028839895971850903,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 101,
+      "runs_with_PEM_variation": 183,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.029118250002841156,
+          0.11162423603216776
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.25056874109336524,
+        "pem_beta_per_10pp": 0.0412529930146633,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.03590435516804587,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla chrysoscelis/versicolor complex"
+    },
+    {
+      "active_runs": 581,
+      "n_stop_rows": 5810,
+      "positive_strong_sites": 2301,
+      "primary_BH_q": 0.9617693407100713,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.03863901536274986,
+          0.05021220865815704
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.7984972709880196,
+        "pem_beta_per_10pp": 0.005786596647703589,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.02266654507984688,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 133,
+      "runs_with_PEM_variation": 379,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.04101340721830105,
+          0.042850183359572906
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.9657596997292982,
+        "pem_beta_per_10pp": 0.0009183880706359245,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.021394166229425454,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla cinerea"
+    },
+    {
+      "active_runs": 117,
+      "n_stop_rows": 1170,
+      "positive_strong_sites": 326,
+      "primary_BH_q": 0.59268119336026,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.03436880733427821,
+          0.10880977235790545
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.30819422054733525,
+        "pem_beta_per_10pp": 0.037220482511813625,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.036525819051155546,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 38,
+      "runs_with_PEM_variation": 69,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.017540878022706388,
+          0.10851058257355616
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.15722084189695867,
+        "pem_beta_per_10pp": 0.045484852275424884,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.032156575730610454,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla femoralis"
+    },
+    {
+      "active_runs": 190,
+      "n_stop_rows": 1900,
+      "positive_strong_sites": 447,
+      "primary_BH_q": 0.5524089898591509,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.09074997126196281,
+          0.02299965169566355
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.2430599555380264,
+        "pem_beta_per_10pp": -0.03387515978314963,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.029018294176543263,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 59,
+      "runs_with_PEM_variation": 136,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.09410552007580086,
+          0.018495250068301806
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.18814187435607255,
+        "pem_beta_per_10pp": -0.03780513500374953,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.028725214093800498,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla gratiosa"
+    },
+    {
+      "active_runs": 134,
+      "n_stop_rows": 1340,
+      "positive_strong_sites": 351,
+      "primary_BH_q": 0.9951899198618704,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.06283509457159864,
+          0.060289352297315954
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.9676749326609997,
+        "pem_beta_per_10pp": -0.0012728711371413383,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.0314098748344624,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 53,
+      "runs_with_PEM_variation": 81,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.043394745001040735,
+          0.07992524883601174
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.5615161759868944,
+        "pem_beta_per_10pp": 0.0182652519174855,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.03145976018176478,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla squirella"
+    },
+    {
+      "active_runs": 1205,
+      "n_stop_rows": 12050,
+      "positive_strong_sites": 4739,
+      "primary_BH_q": 8.278834104831322e-7,
+      "primary_BH_significant": true,
+      "primary_strong": {
+        "ci95": [
+          0.06662758214888928,
+          0.13990602410962588
+        ],
+        "design_rank": 6,
+        "p_two_sided": 3.311533641932529e-8,
+        "pem_beta_per_10pp": 0.10326680312925758,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.018693823595420017,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 250,
+      "runs_with_PEM_variation": 1120,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          0.049106793567019115,
+          0.13449081040684152
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.00002504133173151333,
+        "pem_beta_per_10pp": 0.09179880198693031,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.021782037198979327,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Hyla versicolor"
+    },
+    {
+      "active_runs": 2,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 20,
+      "positive_strong_sites": 7,
+      "routes": 1,
+      "runs_with_PEM_variation": 0,
+      "status": "ineligible",
+      "taxon": "Incilius nebulifer"
+    },
+    {
+      "active_runs": 1,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 10,
+      "positive_strong_sites": 1,
+      "routes": 1,
+      "runs_with_PEM_variation": 1,
+      "status": "ineligible",
+      "taxon": "Lithobates areolatus"
+    },
+    {
+      "active_runs": 28,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 280,
+      "positive_strong_sites": 33,
+      "routes": 9,
+      "runs_with_PEM_variation": 28,
+      "status": "ineligible",
+      "taxon": "Lithobates blairi"
+    },
+    {
+      "active_runs": 2,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 20,
+      "positive_strong_sites": 4,
+      "routes": 1,
+      "runs_with_PEM_variation": 2,
+      "status": "ineligible",
+      "taxon": "Lithobates capito"
+    },
+    {
+      "active_runs": 782,
+      "n_stop_rows": 7820,
+      "positive_strong_sites": 1278,
+      "primary_BH_q": 0.7291871932501726,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.05321498405631632,
+          0.022260597282234756
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.4214955693310476,
+        "pem_beta_per_10pp": -0.015477193387040783,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.019254328634070023,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 273,
+      "runs_with_PEM_variation": 626,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.06792814292426612,
+          0.02761231657514081
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.4082037948033177,
+        "pem_beta_per_10pp": -0.020157913174562652,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.024373014058681152,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Lithobates catesbeianus"
+    },
+    {
+      "active_runs": 1195,
+      "n_stop_rows": 11950,
+      "positive_strong_sites": 2355,
+      "primary_BH_q": 0.019001955955382715,
+      "primary_BH_significant": true,
+      "primary_strong": {
+        "ci95": [
+          0.02210363765040807,
+          0.11484039122418321
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.0038003911910765432,
+        "pem_beta_per_10pp": 0.06847201443729564,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.023657769812422787,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 334,
+      "runs_with_PEM_variation": 998,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          0.014833293572621226,
+          0.13374534346729786
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.014327630286330209,
+        "pem_beta_per_10pp": 0.07428931851995954,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.030335264023379948,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Lithobates clamitans"
+    },
+    {
+      "active_runs": 16,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 160,
+      "positive_strong_sites": 16,
+      "routes": 8,
+      "runs_with_PEM_variation": 12,
+      "status": "ineligible",
+      "taxon": "Lithobates grylio"
+    },
+    {
+      "active_runs": 284,
+      "n_stop_rows": 2840,
+      "positive_strong_sites": 433,
+      "primary_BH_q": 0.7291871932501726,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.14412690429641892,
+          0.0644310073097683
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.4538826028507831,
+        "pem_beta_per_10pp": -0.03984794849332531,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.053204526524789596,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 111,
+      "runs_with_PEM_variation": 233,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.1515554552350875,
+          0.14686477506912526
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.9754231047084772,
+        "pem_beta_per_10pp": -0.0023453400829811354,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.07612900865988188,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Lithobates palustris"
+    },
+    {
+      "active_runs": 44,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs"
+      ],
+      "n_stop_rows": 440,
+      "positive_strong_sites": 74,
+      "routes": 28,
+      "runs_with_PEM_variation": 43,
+      "status": "ineligible",
+      "taxon": "Lithobates pipiens"
+    },
+    {
+      "active_runs": 8,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 80,
+      "positive_strong_sites": 22,
+      "routes": 6,
+      "runs_with_PEM_variation": 6,
+      "status": "ineligible",
+      "taxon": "Lithobates septentrionalis"
+    },
+    {
+      "active_runs": 461,
+      "n_stop_rows": 4610,
+      "positive_strong_sites": 1091,
+      "primary_BH_q": 0.8014076471844633,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.03163328354095857,
+          0.018541481848463038
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.6090698118601922,
+        "pem_beta_per_10pp": -0.006545900846247767,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.01279992024986014,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 153,
+      "runs_with_PEM_variation": 326,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.036154939084511006,
+          0.0354722544647561
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.9850959232714679,
+        "pem_beta_per_10pp": -0.00034134230987745194,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.01827257901529142,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Lithobates sphenocephalus"
+    },
+    {
+      "active_runs": 575,
+      "n_stop_rows": 5750,
+      "positive_strong_sites": 2112,
+      "primary_BH_q": 0.0016717633554432627,
+      "primary_BH_significant": true,
+      "primary_strong": {
+        "ci95": [
+          0.03762419233488103,
+          0.12515450402756506
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.000267482136870922,
+        "pem_beta_per_10pp": 0.08138934818122305,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.02232957145720839,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 185,
+      "runs_with_PEM_variation": 538,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          0.04539155245914451,
+          0.1312992151927598
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.00005550222266898064,
+        "pem_beta_per_10pp": 0.08834538382595215,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.02191562278981756,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Lithobates sylvaticus"
+    },
+    {
+      "active_runs": 46,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes"
+      ],
+      "n_stop_rows": 460,
+      "positive_strong_sites": 76,
+      "routes": 19,
+      "runs_with_PEM_variation": 44,
+      "status": "ineligible",
+      "taxon": "Lithobates virgatipes"
+    },
+    {
+      "active_runs": 43,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 430,
+      "positive_strong_sites": 116,
+      "routes": 9,
+      "runs_with_PEM_variation": 23,
+      "status": "ineligible",
+      "taxon": "Pseudacris brachyphona"
+    },
+    {
+      "active_runs": 38,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 380,
+      "positive_strong_sites": 75,
+      "routes": 11,
+      "runs_with_PEM_variation": 22,
+      "status": "ineligible",
+      "taxon": "Pseudacris brimleyi"
+    },
+    {
+      "active_runs": 3357,
+      "n_stop_rows": 33570,
+      "positive_strong_sites": 20149,
+      "primary_BH_q": 0.00008997226176574543,
+      "primary_BH_significant": true,
+      "primary_strong": {
+        "ci95": [
+          0.04304377572499549,
+          0.11217761986755853
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.00001079667141188945,
+        "pem_beta_per_10pp": 0.07761069779627701,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.017636508805233667,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 462,
+      "runs_with_PEM_variation": 2742,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          0.03572467365162092,
+          0.09545742391809585
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.000016745743225467084,
+        "pem_beta_per_10pp": 0.06559104878485839,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.015238226502537611,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Pseudacris crucifer"
+    },
+    {
+      "active_runs": 251,
+      "n_stop_rows": 2510,
+      "positive_strong_sites": 939,
+      "primary_BH_q": 0.59268119336026,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.028295423594529592,
+          0.09496912494904493
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.2890795291818392,
+        "pem_beta_per_10pp": 0.03333685067725767,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.03144561571433699,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 74,
+      "runs_with_PEM_variation": 163,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.04961727237337278,
+          0.09218113710337832
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.556313729744351,
+        "pem_beta_per_10pp": 0.02128193236500277,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.036173728342775394,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Pseudacris feriarum"
+    },
+    {
+      "active_runs": 3,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 30,
+      "positive_strong_sites": 3,
+      "routes": 3,
+      "runs_with_PEM_variation": 1,
+      "status": "ineligible",
+      "taxon": "Pseudacris feriarum/fouquettei complex"
+    },
+    {
+      "active_runs": 11,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 110,
+      "positive_strong_sites": 23,
+      "routes": 5,
+      "runs_with_PEM_variation": 11,
+      "status": "ineligible",
+      "taxon": "Pseudacris feriarum/kalmi complex"
+    },
+    {
+      "active_runs": 45,
+      "eligibility_rule_failed": [
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 450,
+      "positive_strong_sites": 162,
+      "routes": 15,
+      "runs_with_PEM_variation": 12,
+      "status": "ineligible",
+      "taxon": "Pseudacris feriarum/triseriata complex"
+    },
+    {
+      "active_runs": 106,
+      "n_stop_rows": 1060,
+      "positive_strong_sites": 228,
+      "primary_BH_q": 0.9617693407100713,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.13019162394629688,
+          0.11057476945741535
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.8731241566183252,
+        "pem_beta_per_10pp": -0.009808427244440775,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.061421126944894607,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 34,
+      "runs_with_PEM_variation": 92,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.1173197540163996,
+          0.17596938965230746
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.6951039915955302,
+        "pem_beta_per_10pp": 0.029324817817953926,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.07482003393484125,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Pseudacris kalmi"
+    },
+    {
+      "active_runs": 224,
+      "n_stop_rows": 2240,
+      "positive_strong_sites": 997,
+      "primary_BH_q": 0.9951899198618704,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.09137833887185937,
+          0.09081792836997588
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.9951899198618704,
+        "pem_beta_per_10pp": -0.00028020525094174,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.04647949367411242,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 43,
+      "runs_with_PEM_variation": 220,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.05372946864690616,
+          0.13378874114872244
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.40271083536369423,
+        "pem_beta_per_10pp": 0.04002963625090814,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.04783715702807509,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Pseudacris maculata"
+    },
+    {
+      "active_runs": 198,
+      "n_stop_rows": 1980,
+      "positive_strong_sites": 661,
+      "primary_BH_q": 0.00008217849583724339,
+      "primary_BH_significant": true,
+      "primary_strong": {
+        "ci95": [
+          0.06825461014710837,
+          0.17329847129036258
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.000006574279666979471,
+        "pem_beta_per_10pp": 0.12077654071873548,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.02679739576130653,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 42,
+      "runs_with_PEM_variation": 143,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          0.05535370754284013,
+          0.17007827432499112
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.00011749312563963351,
+        "pem_beta_per_10pp": 0.11271599093391563,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.029267008906052293,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Pseudacris maculata/triseriata complex"
+    },
+    {
+      "active_runs": 87,
+      "n_stop_rows": 870,
+      "positive_strong_sites": 227,
+      "primary_BH_q": 0.4140833646669792,
+      "primary_BH_significant": false,
+      "primary_strong": {
+        "ci95": [
+          -0.045647483246587905,
+          0.2663074375101855
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.16563334586679168,
+        "pem_beta_per_10pp": 0.11032997713179879,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.07958179926198491,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "routes": 25,
+      "runs_with_PEM_variation": 52,
+      "same_runs_any_calling_sensitivity": {
+        "ci95": [
+          -0.021916092439873885,
+          0.2681887470422194
+        ],
+        "design_rank": 6,
+        "p_two_sided": 0.0961461324962178,
+        "pem_beta_per_10pp": 0.12313632730117274,
+        "predictors": [
+          "emergent_10pp",
+          "allwet_10pp",
+          "woody_10pp",
+          "stop_temp_c",
+          "sound_index",
+          "standardized_stop_number"
+        ],
+        "se_route_cluster": 0.07400769651136532,
+        "status": "fitted",
+        "unit": "difference in probability of CallingIndex≥2 per +10 percentage-point mapped NWI PEM cover"
+      },
+      "status": "fitted",
+      "taxon": "Pseudacris nigrita"
+    },
+    {
+      "active_runs": 35,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 350,
+      "positive_strong_sites": 105,
+      "routes": 22,
+      "runs_with_PEM_variation": 19,
+      "status": "ineligible",
+      "taxon": "Pseudacris nigrita/feriarum complex"
+    },
+    {
+      "active_runs": 72,
+      "eligibility_rule_failed": [
+        "active_runs"
+      ],
+      "n_stop_rows": 720,
+      "positive_strong_sites": 179,
+      "routes": 25,
+      "runs_with_PEM_variation": 51,
+      "status": "ineligible",
+      "taxon": "Pseudacris ocularis"
+    },
+    {
+      "active_runs": 24,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 240,
+      "positive_strong_sites": 36,
+      "routes": 9,
+      "runs_with_PEM_variation": 12,
+      "status": "ineligible",
+      "taxon": "Pseudacris ornata"
+    },
+    {
+      "active_runs": 29,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 290,
+      "positive_strong_sites": 69,
+      "routes": 24,
+      "runs_with_PEM_variation": 24,
+      "status": "ineligible",
+      "taxon": "Scaphiopus holbrookii"
+    },
+    {
+      "active_runs": 2,
+      "eligibility_rule_failed": [
+        "positive_strong_sites",
+        "active_runs",
+        "routes",
+        "runs_with_PEM_variation"
+      ],
+      "n_stop_rows": 20,
+      "positive_strong_sites": 2,
+      "routes": 1,
+      "runs_with_PEM_variation": 2,
+      "status": "ineligible",
+      "taxon": "Spea bombifrons"
+    }
+  ],
+  "analysis": "naamp_nwi_taxon_specific_aquatic_vegetation_v0_1",
+  "boundaries": {
+    "BH_multiplicity_over_all_eligible_taxa": true,
+    "RC6_paper_changed": false,
+    "contemporaneous_2001_2015_plant_vegetation_measured": false,
+    "frog_occupancy_inferred": false,
+    "individual_preference_proven": false,
+    "plant_species_or_real_cover_measured": false,
+    "sampling_conditioned_on_strong_calling": true
+  },
+  "contract": "exploration/NAAMP_FROG_TAXON_VEGETATION_PREFERENCE_CONTRACT_V0_1.md",
+  "model": "within survey-run LPM, route-cluster SE; controls total mapped wetland, woody wetland, air temperature, masking and stop number",
+  "primary_population": "species×run stop-level Strong CI>=2, restricted to species active on the route-run",
+  "sampling": {
+    "all_sites_nwi_and_stop_conditions_runs": 6236,
+    "eligible_source_runs": 7848,
+    "excluded_reason_counts": {
+      "duplicate_siteids": 0,
+      "missing_10_site_nwi_link": 1559,
+      "missing_ten_stop_conditions": 53
+    },
+    "n_taxa_with_any_strong_call_on_linked_runs": 49
+  },
+  "source_crosswalk": "USFWS NWI response-blind 12-shard run 39450277196",
+  "status": "posthoc_exploratory_not_RC6",
+  "summary": {
+    "BH_FDR_05_taxa": [
+      {
+        "BH_q": 8.278834104831322e-7,
+        "beta_10pp": 0.10326680312925758,
+        "ci95": [
+          0.06662758214888928,
+          0.13990602410962588
+        ],
+        "taxon": "Hyla versicolor"
+      },
+      {
+        "BH_q": 0.019001955955382715,
+        "beta_10pp": 0.06847201443729564,
+        "ci95": [
+          0.02210363765040807,
+          0.11484039122418321
+        ],
+        "taxon": "Lithobates clamitans"
+      },
+      {
+        "BH_q": 0.0016717633554432627,
+        "beta_10pp": 0.08138934818122305,
+        "ci95": [
+          0.03762419233488103,
+          0.12515450402756506
+        ],
+        "taxon": "Lithobates sylvaticus"
+      },
+      {
+        "BH_q": 0.00008997226176574543,
+        "beta_10pp": 0.07761069779627701,
+        "ci95": [
+          0.04304377572499549,
+          0.11217761986755853
+        ],
+        "taxon": "Pseudacris crucifer"
+      },
+      {
+        "BH_q": 0.00008217849583724339,
+        "beta_10pp": 0.12077654071873548,
+        "ci95": [
+          0.06825461014710837,
+          0.17329847129036258
+        ],
+        "taxon": "Pseudacris maculata/triseriata complex"
+      }
+    ],
+    "eligible_taxa": 25,
+    "negative_PEM_slopes": 11,
+    "positive_PEM_slopes": 14,
+    "total_taxa_with_strong_calls": 49
+  },
+  "thresholds": {
+    "min_active_runs": 80,
+    "min_positive_strong_sites": 120,
+    "min_routes": 25,
+    "min_within_PEM_variation_runs": 30
+  },
+  "provenance": {
+    "workflow_run": 39455849996,
+    "workflow_job": 118742382953,
+    "full_nwi_source_run": 39450277196,
+    "code_commit": "c06af44c39f88aff63fa7a2f4145cf4bc93609f1",
+    "source": "USGS NAAMP pinned source; USFWS mapped NWI 12-shard vegetation crosswalk",
+    "RC6_unmodified": true
+  }
+}
