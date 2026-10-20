@@ -1,0 +1,69 @@
+name: Verify official USGS NAAMP original CSV source and retrieve for site-history analysis
+
+on:
+  push:
+    branches: [research/naamp-fixed-margin-pairwise-assembly-2026-10-19]
+    paths: [.github/workflows/naamp_official_original_csv_retrieval.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pin_original_usgs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download official ScienceBase original files only after SHA256 checks
+        run: |
+          python - <<'PY'
+          import hashlib,importlib.util,json,os,pathlib,time
+          source=pathlib.Path("scripts/naamp/run_naamp_ecological_pulse.py")
+          s=importlib.util.spec_from_file_location("official",source)
+          x=importlib.util.module_from_spec(s);s.loader.exec_module(x)
+          out=pathlib.Path("research/output/pinned_official_naamp")
+          out.mkdir(parents=True,exist_ok=True)
+          item=None
+          for attempt in range(4):
+              try:
+                  item=x.get_json(x.ITEM_URL)
+                  break
+              except Exception as e:
+                  if attempt==3:raise
+                  print("Official metadata temporary fetch failure:",type(e).__name__,flush=True)
+                  time.sleep(5*(attempt+1))
+          provenance={"source":"USGS ScienceBase official item","item_url":x.ITEM_URL,
+                      "item_id":x.ITEM_ID,"sha256":{},"size_bytes":{}}
+          for name,expected in x.PINS.items():
+              url=x.find_file(item,name)
+              raw=None
+              for attempt in range(4):
+                  try:
+                      raw=x.get_bytes(url)
+                      break
+                  except Exception as e:
+                      if attempt==3:raise
+                      print(name,"temporary download failure:",type(e).__name__,flush=True)
+                      time.sleep(5*(attempt+1))
+              received=hashlib.sha256(raw).hexdigest()
+              if received!=expected:
+                  raise ValueError(name+" official-original SHA256 mismatch "+received)
+              (out/name).write_bytes(raw)
+              provenance["sha256"][name]=received
+              provenance["size_bytes"][name]=len(raw)
+              print("VERIFIED",name,len(raw),received,flush=True)
+          (out/"SOURCE_AUDIT.json").write_text(json.dumps(provenance,indent=2)+"\n")
+          assert set(provenance["sha256"])=={"Runs.csv","Stops.csv","Counts.csv"}
+          print("SOURCE_PIN_GATE_PASS")
+          PY
+      - name: Upload only previously public original USGS CSV data
+        uses: actions/upload-artifact@v4
+        with:
+          name: pinned-official-NAAMP-original-three-csv
+          path: research/output/pinned_official_naamp/
+          if-no-files-found: error
+          retention-days: 2
