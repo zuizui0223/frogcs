@@ -1,0 +1,58 @@
+name: NAAMP post-RC6 checkerboard and site environment exploration
+
+on:
+  push:
+    branches:
+      - exploration/naamp-checkerboard-environment-2026-10-20
+    paths:
+      - "exploration/run_naamp_checkerboard_fixedfixed_v0_1.py"
+      - "exploration/run_naamp_history_site_environment_v0_1.py"
+      - "exploration/NAAMP_CHECKERBOARD_ENVIRONMENT_CONTRACT_2026_10_20.md"
+      - ".github/workflows/naamp_checkerboard_history_environment_v0_1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checkerboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned analysis dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Syntax and freeze audit
+        run: |
+          python -m py_compile exploration/run_naamp_checkerboard_fixedfixed_v0_1.py
+          test -f exploration/NAAMP_CHECKERBOARD_ENVIRONMENT_CONTRACT_2026_10_20.md
+      - name: Execute predeclared acoustic checkerboard fixed-fixed test
+        run: python -u exploration/run_naamp_checkerboard_fixedfixed_v0_1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-checkerboard-exploratory-v0-1
+          path: build/naamp_checkerboard/
+          if-no-files-found: error
+
+  site-history-environment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Syntax QA
+        run: python -m py_compile exploration/run_naamp_history_site_environment_v0_1.py
+      - name: Test historical site reuse after measured local conditions
+        run: python -u exploration/run_naamp_history_site_environment_v0_1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-site-history-environment-exploratory-v0-1
+          path: build/naamp_history_environment/
+          if-no-files-found: error
