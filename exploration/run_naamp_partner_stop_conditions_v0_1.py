@@ -43,6 +43,7 @@ def imp(name,path):
     return obj
 
 prev=imp("same_night_partner_frozen",ROOT/"exploration/run_naamp_same_run_partner_switch_v0_1.py")
+pairmod=prev.pairmod
 prior=prev.prior
 source=imp("stop_observation_covariates",ROOT/"exploration/run_naamp_aquatic_vegetation_ecological_tests_v0_2.py")
 
