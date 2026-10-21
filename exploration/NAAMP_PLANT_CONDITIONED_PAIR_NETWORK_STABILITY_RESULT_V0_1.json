@@ -1,0 +1,602 @@
+{
+  "analysis": "naamp_acoustic_pair_network_temporal_geo_posthoc_audit_v0_1",
+  "coverage": {
+    "runs_early": 503,
+    "runs_late": 1263,
+    "source_BH_supported_edges": 21,
+    "source_network_pairs_tested": 112,
+    "source_pair_run_rows": 13175
+  },
+  "supported_edge_stability": {
+    "all_leave_state_omission_signs_stable": 17,
+    "cross_genus_original_edges": 15,
+    "direction_stable_both_time_and_route_folds": 10,
+    "incomplete_time_or_route_fold_coverage": 10,
+    "interval_stable_both_time_and_route_folds": 4,
+    "original_21_edges": 21
+  },
+  "supported_edges": [
+    {
+      "BH_q": 0.0235627280567888,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": false,
+      "mean": -0.12250538406317302,
+      "pair": "Acris crepitans || Anaxyrus americanus",
+      "time_early": {
+        "ci95": [
+          -0.48854740335442315,
+          -0.030715578220116058
+        ],
+        "mean_residual": -0.2596314907872696,
+        "n": 18,
+        "p": 0.026219247299281632,
+        "routes": 18,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          -0.1930816816246899,
+          -0.011465645173234118
+        ],
+        "mean_residual": -0.102273663398962,
+        "n": 122,
+        "p": 0.027283760963219682,
+        "routes": 62,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0026454028504189,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": false,
+      "mean": 0.1407035175879397,
+      "pair": "Acris crepitans || Lithobates catesbeianus",
+      "time_early": {
+        "ci95": [
+          -0.006369244413588215,
+          0.29465276729113393
+        ],
+        "mean_residual": 0.14414176143877286,
+        "n": 38,
+        "p": 0.060514903959643845,
+        "routes": 26,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          0.055163596449527175,
+          0.22410158190124296
+        ],
+        "mean_residual": 0.13963258917538507,
+        "n": 122,
+        "p": 0.00119552979613962,
+        "routes": 58,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0013930193904204,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": false,
+      "mean": 0.16818008169502482,
+      "pair": "Acris crepitans || Lithobates clamitans",
+      "time_early": {
+        "ci95": [
+          -0.004911865801724091,
+          0.3652429329019311
+        ],
+        "mean_residual": 0.1801655335501035,
+        "n": 34,
+        "p": 0.05639800519261389,
+        "routes": 28,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          0.07669905761041498,
+          0.2537121223771138
+        ],
+        "mean_residual": 0.16520558999376442,
+        "n": 137,
+        "p": 0.0002537420652397716,
+        "routes": 63,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0013930193904204,
+      "all_omit_state_sign_stable": false,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": -0.25645468722924974,
+      "pair": "Acris crepitans || Pseudacris maculata",
+      "time_early": {
+        "n": 0,
+        "routes": 0,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          -0.3819786830762143,
+          -0.13093069138228508
+        ],
+        "mean_residual": -0.2564546872292497,
+        "n": 58,
+        "p": 0.00006218836564377213,
+        "routes": 30,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0066198060380783,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": false,
+      "mean": 0.21960451608692816,
+      "pair": "Acris crepitans/gryllus complex || Hyla cinerea",
+      "time_early": {
+        "ci95": [
+          -0.21638380725399503,
+          0.4294491338871608
+        ],
+        "mean_residual": 0.10653266331658291,
+        "n": 15,
+        "p": 0.5178860598271059,
+        "routes": 11,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          0.11714301682950332,
+          0.3767782021687136
+        ],
+        "mean_residual": 0.24696060949910845,
+        "n": 62,
+        "p": 0.0001925698984998981,
+        "routes": 28,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0014511235696052,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": -0.1698971045704714,
+      "pair": "Acris gryllus || Gastrophryne carolinensis",
+      "time_early": {
+        "n": 3,
+        "routes": 3,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          -0.2769010315403371,
+          -0.1109355874520609
+        ],
+        "mean_residual": -0.19391830949619898,
+        "n": 39,
+        "p": 0.000004646535943930441,
+        "routes": 20,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0014511235696052,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.23794648920277062,
+      "pair": "Acris gryllus || Lithobates catesbeianus",
+      "time_early": {
+        "n": 7,
+        "routes": 6,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.07361342530032877,
+          0.33844687620720876
+        ],
+        "mean_residual": 0.20603015075376876,
+        "n": 30,
+        "p": 0.0022918303909085793,
+        "routes": 17,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.005202372361599,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": false,
+      "mean": -0.12241535546585385,
+      "pair": "Anaxyrus americanus || Lithobates clamitans",
+      "time_early": {
+        "ci95": [
+          -0.2085239211305873,
+          -0.0346148496463744
+        ],
+        "mean_residual": -0.12156938538848085,
+        "n": 52,
+        "p": 0.00614043904172031,
+        "routes": 39,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          -0.23311812808236038,
+          -0.012969452678587096
+        ],
+        "mean_residual": -0.12304379038047374,
+        "n": 70,
+        "p": 0.028459338018821844,
+        "routes": 50,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0385239505491955,
+      "all_omit_state_sign_stable": false,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.1399304213374565,
+      "pair": "Anaxyrus americanus || Pseudacris maculata",
+      "time_early": {
+        "n": 0,
+        "routes": 0,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.0381335085943441,
+          0.2417273340805689
+        ],
+        "mean_residual": 0.1399304213374565,
+        "n": 78,
+        "p": 0.007056333649677348,
+        "routes": 29,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.000008509943492214954,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": true,
+      "mean": -0.16651710935630532,
+      "pair": "Anaxyrus fowleri || Lithobates clamitans",
+      "time_early": {
+        "ci95": [
+          -0.2544313252119241,
+          -0.040189929208325315
+        ],
+        "mean_residual": -0.1473106272101247,
+        "n": 54,
+        "p": 0.007032310163741195,
+        "routes": 40,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          -0.24861883150210767,
+          -0.10261100187530575
+        ],
+        "mean_residual": -0.1756149166887067,
+        "n": 114,
+        "p": 0.0000024194739950996095,
+        "routes": 57,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0021878609270429,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.22228791013892993,
+      "pair": "Gastrophryne carolinensis || Hyla chrysoscelis",
+      "time_early": {
+        "n": 6,
+        "routes": 6,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.10458018515428942,
+          0.35047992552569274
+        ],
+        "mean_residual": 0.22753005533999107,
+        "n": 79,
+        "p": 0.0002866291715001963,
+        "routes": 46,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0112247097133817,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.27739965651040005,
+      "pair": "Hyla chrysoscelis || Hyla femoralis",
+      "time_early": {
+        "n": 7,
+        "routes": 6,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.09889556760692422,
+          0.4806689215053034
+        ],
+        "mean_residual": 0.2897822445561138,
+        "n": 72,
+        "p": 0.0029261400902538866,
+        "routes": 26,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0026454028504189,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.1726815897670169,
+      "pair": "Hyla chrysoscelis || Hyla squirella",
+      "time_early": {
+        "n": 3,
+        "routes": 3,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.057850678408524744,
+          0.25791735092734397
+        ],
+        "mean_residual": 0.15788401466793436,
+        "n": 74,
+        "p": 0.001978514970857182,
+        "routes": 36,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0014511235696052,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": true,
+      "mean": 0.2505304299274148,
+      "pair": "Hyla chrysoscelis || Hyla versicolor",
+      "time_early": {
+        "ci95": [
+          0.11826881755107677,
+          0.5890176146097276
+        ],
+        "mean_residual": 0.35364321608040217,
+        "n": 16,
+        "p": 0.0032317485196448345,
+        "routes": 13,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          0.08489953141212023,
+          0.3715720155116884
+        ],
+        "mean_residual": 0.2282357734619043,
+        "n": 74,
+        "p": 0.0018031711170139444,
+        "routes": 30,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.00654399997856,
+      "all_omit_state_sign_stable": false,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": -0.2547874507673503,
+      "pair": "Hyla cinerea || Pseudacris ocularis",
+      "time_early": {
+        "n": 1,
+        "routes": 1,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          -0.4059669615380724,
+          -0.10017485867409953
+        ],
+        "mean_residual": -0.25307091010608596,
+        "n": 36,
+        "p": 0.0011782294480080083,
+        "routes": 15,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0385239505491955,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.23831019504301165,
+      "pair": "Hyla femoralis || Hyla squirella",
+      "time_early": {
+        "n": 5,
+        "routes": 5,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.06148656676696221,
+          0.41645871519842026
+        ],
+        "mean_residual": 0.23897264098269122,
+        "n": 54,
+        "p": 0.008316200985795988,
+        "routes": 24,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0189197459730782,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.3991910773379091,
+      "pair": "Hyla femoralis || Pseudacris ocularis",
+      "time_early": {
+        "n": 2,
+        "routes": 2,
+        "status": "insufficient"
+      },
+      "time_late": {
+        "ci95": [
+          0.13114316481147248,
+          0.6857618731990935
+        ],
+        "mean_residual": 0.408452519005283,
+        "n": 39,
+        "p": 0.0038911203260079343,
+        "routes": 15,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 2.0732326742313237e-9,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": true,
+      "mean": 0.22389355414948497,
+      "pair": "Lithobates catesbeianus || Lithobates clamitans",
+      "time_early": {
+        "ci95": [
+          0.11076337609509052,
+          0.32781044539330384
+        ],
+        "mean_residual": 0.21928691074419718,
+        "n": 105,
+        "p": 0.00007483055729045547,
+        "routes": 70,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          0.14950271141050878,
+          0.3032200862512696
+        ],
+        "mean_residual": 0.22636139883088918,
+        "n": 196,
+        "p": 7.814367389422988e-9,
+        "routes": 103,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0113703039888106,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": true,
+      "interval_stable": true,
+      "mean": -0.1130467150567653,
+      "pair": "Lithobates catesbeianus || Pseudacris crucifer",
+      "time_early": {
+        "ci95": [
+          -0.2819808423297572,
+          -0.006482752238830269
+        ],
+        "mean_residual": -0.14423179728429372,
+        "n": 47,
+        "p": 0.04014985017620254,
+        "routes": 36,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          -0.17252201104361792,
+          -0.020260081235961777
+        ],
+        "mean_residual": -0.09639104613978984,
+        "n": 88,
+        "p": 0.013081147474022198,
+        "routes": 58,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0004025009542692,
+      "all_omit_state_sign_stable": true,
+      "direction_stable": false,
+      "interval_stable": false,
+      "mean": 0.12696510073302292,
+      "pair": "Lithobates sphenocephalus || Pseudacris crucifer",
+      "time_early": {
+        "ci95": [
+          -0.10672584193032553,
+          0.09248798598392685
+        ],
+        "mean_residual": -0.007118927973199338,
+        "n": 48,
+        "p": 0.8885975286476594,
+        "routes": 35,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          0.10275921608050718,
+          0.22688902512552284
+        ],
+        "mean_residual": 0.16482412060301502,
+        "n": 170,
+        "p": 1.939711557826117e-7,
+        "routes": 85,
+        "status": "fitted"
+      }
+    },
+    {
+      "BH_q": 0.0235042120017998,
+      "all_omit_state_sign_stable": false,
+      "direction_stable": true,
+      "interval_stable": false,
+      "mean": 0.0698949291914116,
+      "pair": "Pseudacris crucifer || Pseudacris kalmi",
+      "time_early": {
+        "ci95": [
+          -0.03621275501293696,
+          0.12666501631946958
+        ],
+        "mean_residual": 0.04522613065326631,
+        "n": 22,
+        "p": 0.2763995750304903,
+        "routes": 14,
+        "status": "fitted"
+      },
+      "time_late": {
+        "ci95": [
+          -0.01039556953151255,
+          0.1995230249906263
+        ],
+        "mean_residual": 0.09456372772955687,
+        "n": 22,
+        "p": 0.07742241565306991,
+        "routes": 12,
+        "status": "fitted"
+      }
+    }
+  ],
+  "provenance": {
+    "workflow_run": 39521559210,
+    "job_id": 118966352734,
+    "artifact_id": 12310624611,
+    "source_primary_pair_network_run": 39520831924,
+    "source_original_artifact_id": 12309939606
+  },
+  "boundaries": {
+    "posthoc_test_after_primary_edge_readback": true,
+    "temporal_and_route_splits_same_dataset": true,
+    "supports_direct_species_interaction": false
+  }
+}
