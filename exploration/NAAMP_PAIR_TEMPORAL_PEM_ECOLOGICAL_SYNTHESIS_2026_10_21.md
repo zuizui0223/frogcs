@@ -2,7 +2,7 @@
 
 ## Main result
 
-**Partner-specific frog acoustic spatial associations persist even when the positive and negative partners are recorded in the very same ten-stop survey run.** This strengthens the prior persistent pair-network finding against broad route/night/geographic sample-composition explanations. Two candidate PEM-specific pair moderators, however, failed stricter epoch/coverage robustness; there is still no evidence identifying a direct interspecific interaction or an irreducible three-taxon mechanism.
+**Partner-specific frog acoustic spatial associations persist even when the positive and negative partners are recorded in the same ten-stop survey run, and after additional opposite-route prediction controls for each stop's air temperature, sound masking and survey order.** This strongly weakens regional/survey-context and measured first-order site-environment explanations, but does not identify direct frog–frog causation, predator mediation or an irreducible three-taxon interaction. The two previously identified PEM-specific pair moderators did not survive stricter epoch/coverage robustness.
 
 This is a post-hoc observational extension of the already explored USGS NAAMP 2001–2015 survey archive; it does **not** identify competition, facilitation or trophic interaction and is **not** independent temporal validation because the historical NWI habitat coefficients were trained across both year blocks. Submission RC6 is unchanged.
 
@@ -108,6 +108,31 @@ Both comparisons show positive differences across geographic A/B route folds. On
 **Biological interpretation:** a partner-dependent **observational co-calling configuration** survives matching the actual survey route/night, recorded species context, total species/station activity margins and measured NWI plant/habitat effects. This makes a purely regional composition artifact less plausible. It **does not** prove that a calling green frog senses, attracts, facilitates or avoids either partner: finer stop-specific hydrology, predator/larval biotic contexts, phenological signal, species call detectability and sequential listening times remain possible common causes. The separate 3-taxon centered-moment null result still stands. This is **two pairwise effects observed together**, not proof of an irreducible third-order biological interaction.
 
 Files: `exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_CONTRACT_2026_10_21.md` and `exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_RESULT_V0_1.json`. Executed: [GitHub Actions 39597933440](https://github.com/zuizui0223/frogcs/actions/runs/39597933440), **SUCCESS**, artifact 12345635297.
+
+---
+
+## E. Shared-survey partner contrasts after directly measured stop conditions
+
+**New strengthening analysis:** [successfully executed workflow 39600168159](https://github.com/zuizui0223/frogcs/actions/runs/39600168159), `exploration/NAAMP_PARTNER_STOP_CONTEXT_RESULT_V0_1.json`. The fixed same-survey partner comparisons in section D were challenged with **three additional stop-specific covariates**: measured air-temperature departure from route-night mean, measured masking/noise index departure, and sequential survey-stop number. All other species, their observed ten-stop activity totals, each stop's observed species richness, the full NWI 250m cover and 3-taxon sample identities were left unchanged. Each species' new 5-parameter fixed-k calling-site model was fitted on the opposite geographic route fold, using the pre-fixed ridge/scale constraints; when a species was not estimable the original NWI coefficients were retained with three zero coefficients.
+
+**The extra predictors contain out-of-route transferable site-choice information**: among 21,949 informative CI1–3 taxon×run observations over 499 routes, the held-out conditional location log-score improves **+0.011099 nats** per taxon-run (2,000 route bootstrap 95% CI **+0.004516 to +0.018060**). For strong CI2–3, **14,132** taxon×run observations, gain **+0.019600 nats** (CI **+0.011813 to +0.028354**). Thus the extra stop controls are not simply noise even though they do not remove the focal pairwise effect.
+
+| Fixed three-species positive–negative contrast | Identical route-runs and routes | NWI-only D, new-seed M0 | NWI+temperature/noise/order D (M1) | 95% route CI(M1 D) | After controls |
+|---|---:|---:|---:|---|---|
+| `L. clamitans` with `L. catesbeianus` vs `A. fowleri`, CI1–3 | **538 / 175** | +0.054585 | **+0.052607** | **+0.043869 to +0.061345** | both positive/negative pair residuals supported |
+| `L. clamitans` with `L. catesbeianus` vs `H. versicolor`, CI1–3 | **744 / 198** | +0.045248 | **+0.044291** | **+0.038030 to +0.050552** | both positive/negative pair residuals supported |
+| `L. clamitans` vs `A. fowleri`, strong CI2–3 | **72 / 48** | +0.055653 | **+0.051082** | **+0.032667 to +0.069497** | both component residuals supported |
+| `L. clamitans` vs `H. versicolor`, strong CI2–3 | **171 / 81** | +0.023841 | +0.021582 | +0.008794 to +0.034369 | relative D positive, but negative component CI still covers 0 |
+
+For CI1–3, the adjusted components on the **same runs** were:
+- `L. clamitans` × `L. catesbeianus`: **+0.036293**, versus `L. clamitans` × `A. fowleri` **−0.016314**;
+- corresponding `L. clamitans` × `L. catesbeianus` **+0.034879**, versus `L. clamitans` × `H. versicolor` **−0.009412**.
+
+The new stop covariates account for only **0.001978** of the A. fowleri partner-contrast D and **0.000958** of the H. versicolor partner-contrast D (absolute probability units), so the large majority of the NWI-weighted residual partner difference remains. Both CI1–3 adjusted contrasts have route-clustered CIs wholly positive, BH q (over two original trios) <0.05, positive signs in both route folds, and positive year-block estimates. Strong CI2–3 A. fowleri also meets the full frozen rule; strong `H. versicolor` does **not**, due to an unconfirmed negative component.
+
+**What becomes more credible:** partner-identity-dependent *acoustic site allocation* in a shared survey is not solely a consequence of observed vegetation, stop temperature, noise masking, survey order, taxon stop incidence or observed stop richness. The null still omits local fish/odonate context, exact hydroperiod/water depth, time-specific acoustic overlap, calling height, species demography and latent microhabitat. Therefore **observational pair configuration, not direct interaction or attraction/avoidance**, remains the scientific claim.
+
+New contract `exploration/NAAMP_PARTNER_STOP_CONDITIONS_SENSITIVITY_CONTRACT_2026_10_21.md`; numeric result `exploration/NAAMP_PARTNER_STOP_CONTEXT_RESULT_V0_1.json`; success GitHub Actions [39600168159](https://github.com/zuizui0223/frogcs/actions/runs/39600168159), artifact ID 12345348385.
 
 ---
 
