@@ -1,0 +1,205 @@
+{
+  "analysis": "naamp_NWI_PEM_x_DSWEmod_survey_month_wetness_v0_1",
+  "boundaries": {
+    "NWI_mapped_PEM_not_historic_plant_measurement": true,
+    "RC6_science_or_submission_modified": false,
+    "frog_occupation_or_spawning_inferred": false,
+    "historical_DSWEmod_temporal_readiness_prediction_failed": true,
+    "recent3_includes_survey_month": true,
+    "recent3_may_use_post_survey_satellite_observations": true,
+    "species_competition_identified": false,
+    "water_depth_or_water_under_vegetation_measured": false
+  },
+  "checkerboard_same_run_fixed_fixed": {
+    "H0": {
+      "fraction_unmixed": 0,
+      "mean_accepted_fraction_given_feasible": 0.6542791472101512,
+      "null_95ci": [
+        2.322434145880576,
+        2.3527686602418725
+      ],
+      "null_Cscore_mean": 2.33608830718217,
+      "reference_informative_matrices": 622,
+      "sampling_unreliable": false,
+      "unmixed_matrices": 0,
+      "upper_tail_plus_one_P": 0.005
+    },
+    "H0_additive_excess": {
+      "ci95": [
+        0.038164409211654426,
+        0.08266351157139917
+      ],
+      "estimate": 0.0604139603915268,
+      "p_two_sided": 1.0270678261713857e-7,
+      "route_se": 0.011352020422504699
+    },
+    "H1": {
+      "fraction_unmixed": 0,
+      "mean_accepted_fraction_given_feasible": 0.6523475652284247,
+      "null_95ci": [
+        2.3194626795162514,
+        2.3477429138321995
+      ],
+      "null_Cscore_mean": 2.3345286523319553,
+      "reference_informative_matrices": 622,
+      "sampling_unreliable": false,
+      "unmixed_matrices": 0,
+      "upper_tail_plus_one_P": 0.005
+    },
+    "H1_plant_x_water_excess": {
+      "ci95": [
+        0.03961557496140694,
+        0.08433165552207621
+      ],
+      "estimate": 0.061973615241741574,
+      "p_two_sided": 5.5486415978588355e-8,
+      "route_se": 0.011407373021490193
+    },
+    "baseline_Cscore": 2.3355115538278803,
+    "folds": {
+      "A": {
+        "H1_mean_residual": 0.06492938674146337,
+        "mean_expected_gain": -0.0021036294054517465,
+        "n_runs": 431,
+        "routes": 119
+      },
+      "B": {
+        "H1_mean_residual": 0.05885885358800052,
+        "mean_expected_gain": -0.000986420049952872,
+        "n_runs": 409,
+        "routes": 123
+      }
+    },
+    "heldout_checkerboard_runs": 840,
+    "observed_Cscore": 2.3965022675736964,
+    "plant_x_water_expected_Cscore_increment": {
+      "ci95": [
+        -0.0030885159929755586,
+        -0.000030793707454031
+      ],
+      "estimate": -0.0015596548502147948,
+      "p_two_sided": 0.04556068199197897,
+      "route_se": 0.0007800455288057462
+    },
+    "reference_fixed_fixed_excess": {
+      "ci95": [
+        0.038411276774227454,
+        0.08357015071740412
+      ],
+      "estimate": 0.060990713745815786,
+      "p_two_sided": 1.1955167059035346e-7,
+      "route_se": 0.011520332592686422
+    },
+    "routes": 242
+  },
+  "classification": {
+    "H1_adjusted_checkerboard_excess_remains": true,
+    "H1_increases_checkerboard_expected_over_H0": false,
+    "full_checkerboard_explanation": false,
+    "route_heldout_interaction_prediction_supported": false,
+    "temporal_transfer_supported": false
+  },
+  "contract": "exploration/NAAMP_PLANT_WETNESS_INTERACTION_CONTRACT_2026_10_21.md",
+  "fit_summary": {
+    "early_only": {
+      "H1_negative_interactions": 10,
+      "H1_positive_interactions": 3,
+      "eligible_taxa_H0": 13,
+      "eligible_taxa_H1": 13,
+      "taxa_training": 44,
+      "time_training_early_only": true,
+      "trained_fold": "all_early_2003_2009"
+    },
+    "route_fold_training": {
+      "A": {
+        "H1_negative_interactions": 16,
+        "H1_positive_interactions": 8,
+        "eligible_taxa_H0": 24,
+        "eligible_taxa_H1": 24,
+        "taxa_training": 42,
+        "time_training_early_only": false,
+        "trained_fold": "A"
+      },
+      "B": {
+        "H1_negative_interactions": 14,
+        "H1_positive_interactions": 5,
+        "eligible_taxa_H0": 19,
+        "eligible_taxa_H1": 19,
+        "taxa_training": 42,
+        "time_training_early_only": false,
+        "trained_fold": "B"
+      }
+    }
+  },
+  "route_heldout_strong_chorus_location": {
+    "bootstrap_replicates": 2000,
+    "fold_mean": {
+      "A": -0.00004107344037357822,
+      "B": -0.0016341456944651356
+    },
+    "heldout_mean_increment_nats_per_taxon_run": -0.0008102215057444307,
+    "n_late": 4564,
+    "n_pre2010": 1718,
+    "n_routes": 335,
+    "n_taxa": 44,
+    "n_taxon_runs": 6282,
+    "positive_ci": false,
+    "route_bootstrap_95ci": [
+      -0.003350762361816939,
+      0.0017437269742550138
+    ],
+    "status": "fitted"
+  },
+  "source_coverage": {
+    "DSWEmod_source_run": 37615425574,
+    "NWI_overlay_run": 39450277196,
+    "any_taxon_active_run_clusters": 10204,
+    "early_runs": 829,
+    "late_runs": 1797,
+    "routes": 336,
+    "source_only_preflight_run": 39518202016,
+    "state_count": 18,
+    "strong_taxon_active_run_clusters": 6521,
+    "survey_runs": 2626
+  },
+  "status": "posthoc_exploratory_no_RC6_reopening",
+  "strict_year_holdout_strong_chorus_location": {
+    "bootstrap_replicates": 2000,
+    "fold_mean": {
+      "A": -0.001105960212269088,
+      "B": -0.0005527603829503287
+    },
+    "heldout_mean_increment_nats_per_taxon_run": -0.0008414812404081032,
+    "n_late": 4564,
+    "n_pre2010": 0,
+    "n_routes": 299,
+    "n_taxa": 44,
+    "n_taxon_runs": 4564,
+    "positive_ci": false,
+    "route_bootstrap_95ci": [
+      -0.004378741629129412,
+      0.0021231414439902606
+    ],
+    "status": "fitted"
+  },
+  "synthetic_QA": {
+    "H1_reduces_to_H0_at_zero_interaction": "PASS",
+    "interaction_algebra": "PASS",
+    "weighted_Curveball": {
+      "fixed_fixed_margins": "PASS",
+      "status": "PASS",
+      "weighted_two_by_two_stationary_probability": 0.8806,
+      "weighted_two_by_two_theoretical_probability": 0.8807970779778824
+    }
+  },
+  "provenance": {
+    "workflow_run": 39519040536,
+    "job_id": 118958259654,
+    "artifact_id": 12310221822,
+    "source_only_preflight_run": 39518202016,
+    "branch_commit": "9f2073e3941aa64129373f1e42d5d636481bd853",
+    "immutable_NWI_run": 39450277196,
+    "immutable_DSWE_run": 37615425574,
+    "old_fixedmargin_checkerboard_run": 39436588431
+  }
+}
