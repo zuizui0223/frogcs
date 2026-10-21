@@ -2,7 +2,7 @@
 
 ## Main result
 
-**The residual acoustic relationship between selected *pairs* of frog taxa is more persistent across survey years than a simple one-time composition anomaly.** Yet mapped emergent wetland vegetation modifies only a small fraction of the candidate pair associations, and the three widely supported pairs of interest do **not** show a BH-supported mapped-PEM moderation signal.
+**The residual acoustic relationship between selected *pairs* of frog taxa is more persistent across survey years than a simple one-time composition anomaly.** Two species-pair contrasts initially had BH-supported PEM-map moderation, but **neither survived the new stricter epoch/coverage robustness decision**; the three most stable pair links also have no BH-supported mapped-PEM moderation.
 
 This is a post-hoc observational extension of the already explored USGS NAAMP 2001–2015 survey archive; it does **not** identify competition, facilitation or trophic interaction and is **not** independent temporal validation because the historical NWI habitat coefficients were trained across both year blocks. Submission RC6 is unchanged.
 
@@ -64,6 +64,27 @@ The three fixed temporally stable motivating pairs did not have a supported meas
 - `A. fowleri` × `L. clamitans`: **−0.00705** (−0.02671 to +0.01261), BH q **0.845**.
 
 That distinction is ecologically useful: stable **pair identity** signals can be present without a detectable interaction with the mapped emergent wetland category. A PEM-dependent two-species contrast could reflect **unmeasured abiotic gradients** or third-party fish/insect abundance; do not equate a statistical moderator with a mechanistic mediator.
+
+## C. Follow-up falsification of the two PEM-moderation candidates (2026-10-21)
+
+Both candidate pairs were selected *after* observing their original full-period signed PEM-context contrasts. We froze the two names and tested the original 250m NWI PEM category without refitting any habitat coefficient or optimizing the location buffer. The original species×stop incidence margins, site richness and original C-scores were preserved in an independent 199-draw Curveball re-simulation.
+
+**Outcome:** both full-period contrasts replicate their previous magnitudes and signs under a new deterministic MCMC seed, but **neither passes the stricter predeclared robustness criteria**. This is a failure of temporal information and balanced spatial coverage, not evidence for a zero biological effect.
+
+| Pair | Full CI1–3 PEM minus unmapped residual | 2001–2009 | 2010–2015 | Balanced 3–7 sites each | Formal classification |
+|---|---:|---|---|---|---|
+| `Gastrophryne carolinensis` × `Hyla chrysoscelis` | **−0.10552**, 95% CI −0.16454 to −0.04650; 45 runs, 20 routes | 10 runs/9 routes; **underpowered** (direction −0.15316 descriptive only) | **−0.09191**, CI −0.15290 to −0.03092; 35 runs/18 routes | −0.11791, CI −0.20632 to −0.02951; 23 runs/10 routes | **fragile post-hoc candidate** |
+| `Hyla gratiosa` × `Lithobates sphenocephalus` | **+0.10176**, CI +0.04477 to +0.15875; 34 runs, 15 routes | 7 runs/7 routes; **underpowered** (+0.06775 descriptive) | **+0.11058**, CI +0.03510 to +0.18606; 27 runs/13 routes | 21 runs/**7 routes**, **underpowered** (+0.09521 descriptive) | **fragile post-hoc candidate** |
+
+Leaving one State out at a time retained the original contrast sign in **4/4** State omissions for the first pair, **3/3** for the second. However, the study data span only three or four States, and almost all early-period pairs fall below the pre-fixed minimum. Strong-call (CI2–3) secondary contrasts are **underpowered** for both candidates, notwithstanding a descriptive negative trend for the first pair.
+
+**Updated inference:** `PEM × species-pair` is a *hypothesis-generating candidate layer*, **not** an independently supported ecological interaction level. Do not publish the originally discovered two BH-positive moderator tests as a demonstrated vegetation-driven species relationship after the robustness gate fails.
+
+The partner-specific **pairwise acoustic network** remains a materially stronger finding: 14 year-stratified CI1–3 pair links and 2 strong-call links were retained under the separately frozen retrospective test. Those links are still not demonstrated direct biological interactions.
+
+New reproducibility: `exploration/NAAMP_PEM_MODERATOR_EPOCH_ROBUSTNESS_CONTRACT_V0_1.md`; `exploration/NAAMP_PEM_PAIR_EPOCH_ROBUSTNESS_RESULT_V0_1.json`; [successful workflow 39594685501](https://github.com/zuizui0223/frogcs/actions/runs/39594685501) (artifact 12344076046).
+
+---
 
 ## Hierarchical interpretation
 
