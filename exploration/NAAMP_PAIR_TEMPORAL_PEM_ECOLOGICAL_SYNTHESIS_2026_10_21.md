@@ -2,7 +2,7 @@
 
 ## Main result
 
-**The residual acoustic relationship between selected *pairs* of frog taxa is more persistent across survey years than a simple one-time composition anomaly.** Two species-pair contrasts initially had BH-supported PEM-map moderation, but **neither survived the new stricter epoch/coverage robustness decision**; the three most stable pair links also have no BH-supported mapped-PEM moderation.
+**Partner-specific frog acoustic spatial associations persist even when the positive and negative partners are recorded in the very same ten-stop survey run.** This strengthens the prior persistent pair-network finding against broad route/night/geographic sample-composition explanations. Two candidate PEM-specific pair moderators, however, failed stricter epoch/coverage robustness; there is still no evidence identifying a direct interspecific interaction or an irreducible three-taxon mechanism.
 
 This is a post-hoc observational extension of the already explored USGS NAAMP 2001–2015 survey archive; it does **not** identify competition, facilitation or trophic interaction and is **not** independent temporal validation because the historical NWI habitat coefficients were trained across both year blocks. Submission RC6 is unchanged.
 
@@ -83,6 +83,31 @@ Leaving one State out at a time retained the original contrast sign in **4/4** S
 The partner-specific **pairwise acoustic network** remains a materially stronger finding: 14 year-stratified CI1–3 pair links and 2 strong-call links were retained under the separately frozen retrospective test. Those links are still not demonstrated direct biological interactions.
 
 New reproducibility: `exploration/NAAMP_PEM_MODERATOR_EPOCH_ROBUSTNESS_CONTRACT_V0_1.md`; `exploration/NAAMP_PEM_PAIR_EPOCH_ROBUSTNESS_RESULT_V0_1.json`; [successful workflow 39594685501](https://github.com/zuizui0223/frogcs/actions/runs/39594685501) (artifact 12344076046).
+
+---
+
+## D. Falsification of route/night sample-composition confounding: same-survey partner contrast
+
+**New finding, 2026-10-21.** Earlier associations of different pairs might have arisen because the positive and negative pairs occur in different regions, seasons, or species communities. To test that alternative, retain *only those individual route-runs in which all three taxa were recorded at least once*. Compare the SAME `L. clamitans` individual species label's residual joint calling with its positive versus negative partner over the **same ten site columns**. This is a comparison of two *pairwise* edges conditional on a shared three-species survey, **not a third-order interaction coefficient**.
+
+Focal central species `Lithobates clamitans`, positive partner `Lithobates catesbeianus`; fixed negative partners `Anaxyrus fowleri` and `Hyla versicolor`, chosen from the previously BH-supported full-record network and fixed before this new common-run result readback.
+
+Each frozen route-run matrix preserves all species positive-stop counts, stop taxon richness, and original observed C-score. Null means come from 199 new NWI+PEM-weighted Curveball draws under the *previously frozen opposite-route-fold species/site model*; no habitat coefficient is refit and no alternative taxon is added after observing results.
+
+| Same-run comparison (CI1–3) | Surveys/routes/States | Residual `L. clamitans × L. catesbeianus` | Residual `L. clamitans × negative partner` | **Paired partner residual difference** (95% route CI) |
+|---|---:|---:|---:|---:|
+| Negative partner `A. fowleri` | **538 / 175 / 14** | **+0.03750** (CI +0.03160 to +0.04339) | **−0.01655** (CI −0.02182 to −0.01129) | **+0.05405** (CI **+0.04516 to +0.06295**), BH q=1.05×10⁻³² |
+| Negative partner `H. versicolor` | **744 / 198 / 15** | **+0.03579** (CI +0.03135 to +0.04024) | **−0.00962** (CI −0.01346 to −0.00577) | **+0.04541** (CI **+0.03911 to +0.05170**), BH q=4.44×10⁻⁴⁵ |
+
+Both comparisons show positive differences across geographic A/B route folds. On the same separately defined triples, the signed differences are positive with 95% CIs excluding zero in **both** 2001–2009 and 2010–2015 splits. Leave-one-State-out point estimates remain positive for **14/14** and **15/15** State omissions. However, the NWI first-order species coefficients were trained on both year periods, so none of these is a fully independent temporal test.
+
+**Strong-chorus secondary (CI2–3):**
+- `L. clamitans` + `L. catesbeianus` versus `A. fowleri`: **72 shared surveys / 48 routes**, same-run positive residual +0.03356 and negative residual −0.02083, paired difference **+0.05440** (CI +0.03561 to +0.07318); both component signed CIs exclude 0 and the contrast passes the frozen decision rule.
+- Versus `H. versicolor`: **171 surveys / 81 routes**; paired difference +0.02357 (CI +0.01025 to +0.03688), but the `L. clamitans × H. versicolor` negative component = −0.00338 (CI −0.01074 to +0.00398), **not** independently supported for strong-only calls. Do not headline this secondary as a robust positive-and-negative edge reversal.
+
+**Biological interpretation:** a partner-dependent **observational co-calling configuration** survives matching the actual survey route/night, recorded species context, total species/station activity margins and measured NWI plant/habitat effects. This makes a purely regional composition artifact less plausible. It **does not** prove that a calling green frog senses, attracts, facilitates or avoids either partner: finer stop-specific hydrology, predator/larval biotic contexts, phenological signal, species call detectability and sequential listening times remain possible common causes. The separate 3-taxon centered-moment null result still stands. This is **two pairwise effects observed together**, not proof of an irreducible third-order biological interaction.
+
+Files: `exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_CONTRACT_2026_10_21.md` and `exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_RESULT_V0_1.json`. Executed: [GitHub Actions 39597933440](https://github.com/zuizui0223/frogcs/actions/runs/39597933440), **SUCCESS**, artifact 12345635297.
 
 ---
 
