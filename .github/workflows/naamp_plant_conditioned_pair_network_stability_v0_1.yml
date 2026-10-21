@@ -1,0 +1,42 @@
+name: NAAMP plant-conditioned frog pair network holdout stability
+
+on:
+  push:
+    branches: [exploration/naamp-multilayer-biotic-network-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_plant_conditioned_pair_network_stability_v0_1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  geographic-temporal-repeatability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Retrieve original unmodified frog pair null and FDR ledger
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39520831924
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-crossfitted-strong-call-pair-network-v0-1
+          path: build/original_pair_network
+      - name: Verify original locked support counts and run post-hoc sensitivity
+        run: |
+          python -m py_compile exploration/run_naamp_plant_conditioned_pair_network_stability_v0_1.py
+          python -u exploration/run_naamp_plant_conditioned_pair_network_stability_v0_1.py \
+            --run-ledger build/original_pair_network/all_same_route_acoustic_pair_nulls.csv \
+            --pair-ledger build/original_pair_network/all_species_pairs_BH_ledger.csv \
+            --out build/plant_pair_network_stability/result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-nwi-pair-network-temporal-route-state-stability-v0-1
+          path: build/plant_pair_network_stability/result.json
+          if-no-files-found: error
