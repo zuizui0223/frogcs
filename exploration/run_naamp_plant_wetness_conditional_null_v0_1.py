@@ -36,6 +36,15 @@ LATE=set(range(2010,2016))
 MODELS={"H0":[0,1,2,3],"H1":[0,1,2,3,4]}
 Z=1.959963984540054
 
+def json_numpy(v):
+    """Serialize diagnostic scalars without changing analysis values."""
+    if isinstance(v,np.generic):
+        return v.item()
+    if isinstance(v,np.ndarray):
+        return v.tolist()
+    raise TypeError(f"Unserializable output type: {type(v).__name__}")
+
+
 def mod(label,path):
     spec=importlib.util.spec_from_file_location(label,path)
     module=importlib.util.module_from_spec(spec)
@@ -347,7 +356,7 @@ def main():
     parser.add_argument("--synthetic-only",action="store_true")
     args=parser.parse_args()
     tests=selftests()
-    print("PLANT_WETNESS_SYNTHETIC_QA",json.dumps(tests,sort_keys=True),flush=True)
+    print("PLANT_WETNESS_SYNTHETIC_QA",json.dumps(tests,sort_keys=True,default=json_numpy),flush=True)
     if args.synthetic_only:return
     if not(args.source_manifest and args.preflight and args.reference_strong):
         raise SystemExit("Missing response-blind source manifest, preflight or frozen checkerboard reference")
@@ -359,7 +368,7 @@ def main():
         coef,summ,details=train_models(training[fold],fold=fold)
         params[fold]=coef
         trained[fold]=summ
-        print("CROSSFIT_TRAIN_COMPLETE",fold,json.dumps(summ,sort_keys=True),flush=True)
+        print("CROSSFIT_TRAIN_COMPLETE",fold,json.dumps(summ,sort_keys=True,default=json_numpy),flush=True)
     route_scores=heldout_logscore(records,"strong",params)
     route_result=route_bootstrap(route_scores,BOOT_SEED)
     # Temporal training uses only early-year survey responses.
@@ -410,12 +419,12 @@ def main():
             "water_depth_or_water_under_vegetation_measured":False,
             "RC6_science_or_submission_modified":False}}
     args.outdir.mkdir(parents=True,exist_ok=True)
-    (args.outdir/"result.json").write_text(json.dumps(output,indent=2,sort_keys=True)+"\n")
+    (args.outdir/"result.json").write_text(json.dumps(output,indent=2,sort_keys=True,default=json_numpy)+"\n")
     df.to_csv(args.outdir/"checkerboard_per_run.csv",index=False)
     route_scores.to_csv(args.outdir/"route_heldout_taxon_run_scores.csv",index=False)
     future_scores.to_csv(args.outdir/"time_heldout_taxon_run_scores.csv",index=False)
     print("PLANT_WETNESS_INTERACTION_RESULT_BEGIN",flush=True)
-    print(json.dumps(output,sort_keys=True),flush=True)
+    print(json.dumps(output,sort_keys=True,default=json_numpy),flush=True)
     print("PLANT_WETNESS_INTERACTION_RESULT_END",flush=True)
 
 if __name__=="__main__":
