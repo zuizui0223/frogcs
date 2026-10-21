@@ -111,6 +111,27 @@ Files: `exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_CONTRACT_2026_10_21.md` and `e
 
 ---
 
+## E. Does strict prior species×SiteID use explain same-night partner contrast?
+
+**Completed new first-order falsification (2026-10-21).** Read previously frozen opposite-route NWI+PEM weights; for every tested species compute its past same-physical-site calling log odds using **only earlier survey years in the same route/season**. Require ≥2 prior seasonal survey runs and ≥8 previously visited physical SiteIDs before including a route-run. No current target year responses enter history, and no history effect strength is tuned after seeing the result.
+
+CI1–3 exact **same complete samples** with 199 weighted fixed-row-and-column Curveball draws under each model:
+
+| Same-run central frog `L. clamitans` positive partner `L. catesbeianus` versus | Eligible runs/routes | NWI-only contrast D | NWI + prior SiteID D (route 95% CI) | Original residual removed |
+|---|---:|---:|---|---:|
+| Negative `A. fowleri` | 271 / 102 | +0.06009 | **+0.04816** (+0.03662 to +0.05969) | **19.9%** |
+| Negative `H. versicolor` | 413 / 131 | +0.04433 | **+0.03352** (+0.02637 to +0.04067) | **24.4%** |
+
+In **both** target comparisons, the residual **positive** central-to-bullfrog and **negative** central-to-other-frog pair effects remain individually distinguishable from zero, and the D contrast remains positive in two geographic folds and both retrospective year strata. The fixed 0.5-history-strength secondary did not close the contrasts either. Historical sites substantially predict frog location itself (+0.473 nats/taxon×run for CI1–3, route bootstrap 95% +0.430 to +0.514), so their partial explanatory power is biologically and statistically meaningful.
+
+**Strong CI2–3 caveat:** the `A. fowleri` trio had only 34 eligible surveys and failed the coverage gate. The `H. versicolor` trio had 95 surveys and positive D (+0.01732, CI +0.00101 to +0.03364), but the negative central-to-Hyla component had a CI that included zero. Hence the full opposite-signed effect is supported for **any calling**, not as an independently robust CI2–3 generalization.
+
+Result and QA: `exploration/NAAMP_SAME_RUN_PRIOR_SITE_HISTORY_ECOLOGICAL_SYNTHESIS_2026_10_21.md` and `exploration/NAAMP_SAME_RUN_PRIOR_SITE_HISTORY_RESULT_V0_1.json`, [GitHub Actions 39603785733](https://github.com/zuizui0223/frogcs/actions/runs/39603785733) (SUCCESS).
+
+**Updated hierarchy:** static mapped plant preferences and past species×SiteID use jointly explain a portion of the acoustic placement, but cannot recover all residual partner-specific structure in the present same-survey CI1–3 sample. This is a **partial failure of the tested first-order generator**, not proof of current interspecific competition, biological facilitation or an irreducible 3-way interaction.
+
+---
+
 ## Hierarchical interpretation
 
 Observed order of support in the current NAAMP + mapped vegetation study:
