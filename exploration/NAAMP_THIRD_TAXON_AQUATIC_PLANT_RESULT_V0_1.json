@@ -1,0 +1,2031 @@
+{
+  "RC6_scientific_or_submission_package_changed": false,
+  "analysis": "naamp_nwi_three_taxon_acoustic_motifs_v0_1",
+  "causal_biotic_interactions_inferred": false,
+  "contract": "exploration/NAAMP_THIRD_TAXON_AQUATIC_PLANT_CONTRACT_2026_10_21.md",
+  "genuine_irreducible_higher_order_interaction_inferred": false,
+  "modes": {
+    "any": {
+      "classification": {
+        "T3_identifiable": true,
+        "causal_irreducible_three_body_interaction_supported": false,
+        "centered_triplet_excess_over_crossfit_NWI": false,
+        "plant_localized_triple_excess": false
+      },
+      "coverage": {
+        "n_routes": 478,
+        "n_runs": 3659,
+        "n_runs_with_PEM_heterogeneity": 2860,
+        "n_runs_with_no_successful_trade": 0,
+        "n_runs_with_null_T3_invariant": 751,
+        "n_runs_with_variable_null_T3": 2908,
+        "routes_with_variable_null_T3": 464,
+        "sample_from_prior_exact_Cscore_NWI": true
+      },
+      "global_motifs": {
+        "pair_sq": {
+          "cluster_inference": {
+            "ci95": [
+              0.00028748169441183817,
+              0.0004076423225068584
+            ],
+            "delta": 0.0003475620084593483,
+            "n_routes": 478,
+            "n_runs": 3659,
+            "p_two_sided": 8.476891119662357e-30,
+            "se_route": 0.000030653784723298995,
+            "status": "fitted"
+          },
+          "folds": {
+            "A": {
+              "excess": 0.0002942172495333178,
+              "n_routes": 238,
+              "n_runs": 1855
+            },
+            "B": {
+              "excess": 0.00040241485092486223,
+              "n_routes": 240,
+              "n_runs": 1804
+            }
+          },
+          "mean_delta": 0.00034756200845934845,
+          "null_ci95": [
+            0.0034772013651830605,
+            0.003556083760838468
+          ],
+          "null_mean": 0.0035147450492152964,
+          "observed_mean": 0.0038623070576746447,
+          "upper_tail_mc_p": 0.005
+        },
+        "pem_triad_sq": {
+          "cluster_inference": {
+            "ci95": [
+              -8.660708371845225e-8,
+              -5.6787321549181386e-9
+            ],
+            "delta": -4.614290793668519e-8,
+            "n_routes": 478,
+            "n_runs": 3659,
+            "p_two_sided": 0.025415718515461535,
+            "se_route": 2.0645367007222228e-8,
+            "status": "fitted"
+          },
+          "folds": {
+            "A": {
+              "excess": -1.9430441871254292e-8,
+              "n_routes": 238,
+              "n_runs": 1855
+            },
+            "B": {
+              "excess": -7.36105490405513e-8,
+              "n_routes": 240,
+              "n_runs": 1804
+            }
+          },
+          "mean_delta": -4.6142907936685216e-8,
+          "null_ci95": [
+            6.28630851065329e-7,
+            7.733730369781149e-7
+          ],
+          "null_mean": 6.843654871609553e-7,
+          "observed_mean": 6.382225792242702e-7,
+          "upper_tail_mc_p": 0.935
+        },
+        "triad_sq": {
+          "cluster_inference": {
+            "ci95": [
+              -0.000012197528143305272,
+              0.000008130157867575632
+            ],
+            "delta": -0.00000203368513786482,
+            "n_routes": 478,
+            "n_runs": 3659,
+            "p_two_sided": 0.694932949425616,
+            "se_route": 0.000005185729475445237,
+            "status": "fitted"
+          },
+          "folds": {
+            "A": {
+              "excess": 0.00000364447162999223,
+              "n_routes": 238,
+              "n_runs": 1855
+            },
+            "B": {
+              "excess": -0.000007872366293283235,
+              "n_routes": 240,
+              "n_runs": 1804
+            }
+          },
+          "mean_delta": -0.0000020336851378648184,
+          "null_ci95": [
+            0.00047000426933456176,
+            0.0004864259549107584
+          ],
+          "null_mean": 0.0004780052478559122,
+          "observed_mean": 0.00047597156271805087,
+          "upper_tail_mc_p": 0.67
+        }
+      },
+      "mode": "any",
+      "notes": [
+        "Third centered moment is a three-taxon pattern, NOT proof of an irreducible three-way biological interaction.",
+        "T2 departure is separately reported. Pairwise interactions can induce T3 departures even when pairwise terms are subtracted algebraically.",
+        "NWI habitat context is not temporally synchronized with NAAMP survey nights.",
+        "Sequential listening stops do not demonstrate simultaneous chorus interactions."
+      ],
+      "taxon_roles": {
+        "all_taxon_units": [
+          {
+            "BH_q": 0.8380821538067704,
+            "fold_deltas": {
+              "A": 0.000003398934890649634,
+              "B": 0.00000795023469594216
+            },
+            "mean_expected_role": 0.0005665886902834884,
+            "mean_observed_role": 0.0005724476315245936,
+            "n_routes": 197,
+            "n_runs": 790,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000020633709653391156,
+                0.00003235159213560158
+              ],
+              "delta": 0.000005858941241105212,
+              "n_routes": 197,
+              "n_runs": 790,
+              "p_two_sided": 0.6646858461226111,
+              "se_route": 0.000013516906995979018,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Acris crepitans",
+            "variable_triad_runs": 756
+          },
+          {
+            "BH_q": 0.559197924023876,
+            "fold_deltas": {
+              "A": 0.0000410590961792057,
+              "B": 0.000013578046652004499
+            },
+            "mean_expected_role": 0.0005672909854882511,
+            "mean_observed_role": 0.0005964927760338929,
+            "n_routes": 62,
+            "n_runs": 197,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000020623125485392963,
+                0.00007902670657667644
+              ],
+              "delta": 0.000029201790545641736,
+              "n_routes": 62,
+              "n_runs": 197,
+              "p_two_sided": 0.2506749314589789,
+              "se_route": 0.000025421342649174824,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Acris crepitans/gryllus complex",
+            "variable_triad_runs": 188
+          },
+          {
+            "BH_q": 0.7692891128145618,
+            "fold_deltas": {
+              "A": 0.00003130887314514866,
+              "B": -0.00001499525635794764
+            },
+            "mean_expected_role": 0.0005955161738068072,
+            "mean_observed_role": 0.0006079870315329943,
+            "n_routes": 67,
+            "n_runs": 322,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000022217417515302985,
+                0.00004715913296767724
+              ],
+              "delta": 0.00001247085772618713,
+              "n_routes": 67,
+              "n_runs": 322,
+              "p_two_sided": 0.48103993860266314,
+              "se_route": 0.000017698424825714557,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Acris gryllus",
+            "variable_triad_runs": 313
+          },
+          {
+            "BH_q": 0.4481632987686088,
+            "fold_deltas": {
+              "A": -0.00001240242667005472,
+              "B": -0.00001865045642231437
+            },
+            "mean_expected_role": 0.00040096563204994497,
+            "mean_observed_role": 0.0003854083411139369,
+            "n_routes": 351,
+            "n_runs": 1519,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000030863730304769715,
+                -2.5085156724645924e-7
+              ],
+              "delta": -0.000015557290936008087,
+              "n_routes": 351,
+              "n_runs": 1519,
+              "p_two_sided": 0.04636172056226987,
+              "se_route": 0.000007809551343543488,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Anaxyrus americanus",
+            "variable_triad_runs": 1168
+          },
+          {
+            "n_routes": 22,
+            "n_runs": 36,
+            "status": "ineligible",
+            "taxon": "Anaxyrus americanus/terrestris complex",
+            "variable_triad_runs": 32
+          },
+          {
+            "n_routes": 3,
+            "n_runs": 9,
+            "status": "ineligible",
+            "taxon": "Anaxyrus cognatus",
+            "variable_triad_runs": 8
+          },
+          {
+            "BH_q": 0.9400287582009148,
+            "fold_deltas": {
+              "A": 0.000024391026853954733,
+              "B": -0.000026715223211857557
+            },
+            "mean_expected_role": 0.0005467304774734183,
+            "mean_observed_role": 0.0005453888491420108,
+            "n_routes": 208,
+            "n_runs": 854,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00002715474243487423,
+                0.000024471485772059368
+              ],
+              "delta": -0.0000013416283314074323,
+              "n_routes": 208,
+              "n_runs": 854,
+              "p_two_sided": 0.918861053336619,
+              "se_route": 0.000013170198180720335,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Anaxyrus fowleri",
+            "variable_triad_runs": 817
+          },
+          {
+            "n_routes": 3,
+            "n_runs": 11,
+            "status": "ineligible",
+            "taxon": "Anaxyrus fowleri/woodhousii complex",
+            "variable_triad_runs": 11
+          },
+          {
+            "n_routes": 20,
+            "n_runs": 30,
+            "status": "ineligible",
+            "taxon": "Anaxyrus quercicus",
+            "variable_triad_runs": 28
+          },
+          {
+            "BH_q": 0.9400287582009148,
+            "fold_deltas": {
+              "A": 0.000004794776045978514,
+              "B": 4.420696312679823e-7
+            },
+            "mean_expected_role": 0.0005227745531708901,
+            "mean_observed_role": 0.0005260233679730233,
+            "n_routes": 69,
+            "n_runs": 290,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00003624362728378387,
+                0.00004274125688804997
+              ],
+              "delta": 0.00000324881480213305,
+              "n_routes": 69,
+              "n_runs": 290,
+              "p_two_sided": 0.8719083934013586,
+              "se_route": 0.000020149575399052362,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Anaxyrus terrestris",
+            "variable_triad_runs": 277
+          },
+          {
+            "BH_q": 0.7692891128145618,
+            "fold_deltas": {
+              "A": -0.000021363763016355914,
+              "B": -0.000015760344036229004
+            },
+            "mean_expected_role": 0.0005452040323540698,
+            "mean_observed_role": 0.0005265525625674563,
+            "n_routes": 85,
+            "n_runs": 188,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00006280485336946292,
+                0.000025501913796235652
+              ],
+              "delta": -0.00001865146978661363,
+              "n_routes": 85,
+              "n_runs": 188,
+              "p_two_sided": 0.40770631928846834,
+              "se_route": 0.000022527650472725796,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Gastrophryne carolinensis",
+            "variable_triad_runs": 185
+          },
+          {
+            "n_routes": 10,
+            "n_runs": 25,
+            "status": "ineligible",
+            "taxon": "Hyla andersonii",
+            "variable_triad_runs": 25
+          },
+          {
+            "BH_q": 0.8375540743129847,
+            "fold_deltas": {
+              "A": -0.000047028440195499935,
+              "B": 0.000010323979807648157
+            },
+            "mean_expected_role": 0.0005610724871694214,
+            "mean_observed_role": 0.0005456141864251956,
+            "n_routes": 25,
+            "n_runs": 109,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00007935596356837846,
+                0.00004843936207992697
+              ],
+              "delta": -0.000015458300744225747,
+              "n_routes": 25,
+              "n_runs": 109,
+              "p_two_sided": 0.6353858494788159,
+              "se_route": 0.000032601447438916906,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla avivoca",
+            "variable_triad_runs": 109
+          },
+          {
+            "BH_q": 0.7692891128145618,
+            "fold_deltas": {
+              "A": 0.000006404747698886959,
+              "B": 0.000008248649654352076
+            },
+            "mean_expected_role": 0.0005405264939184663,
+            "mean_observed_role": 0.000547831094057748,
+            "n_routes": 248,
+            "n_runs": 1043,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000014121806333998697,
+                0.000028731006612562155
+              ],
+              "delta": 0.00000730460013928173,
+              "n_routes": 248,
+              "n_runs": 1043,
+              "p_two_sided": 0.5040170049474715,
+              "se_route": 0.000010932040916205189,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla chrysoscelis",
+            "variable_triad_runs": 989
+          },
+          {
+            "BH_q": 0.7692891128145618,
+            "fold_deltas": {
+              "A": -0.000012694865936553876,
+              "B": -0.000021921257928602368
+            },
+            "mean_expected_role": 0.0005170192396094862,
+            "mean_observed_role": 0.000499374341143865,
+            "n_routes": 119,
+            "n_runs": 315,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00006246446244803668,
+                0.00002717466551679433
+              ],
+              "delta": -0.000017644898465621173,
+              "n_routes": 119,
+              "n_runs": 315,
+              "p_two_sided": 0.44034357612526287,
+              "se_route": 0.000022867544677323924,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla chrysoscelis/versicolor complex",
+            "variable_triad_runs": 290
+          },
+          {
+            "BH_q": 0.9400287582009148,
+            "fold_deltas": {
+              "A": 0.000020293728543690027,
+              "B": -0.00002085492605740403
+            },
+            "mean_expected_role": 0.000562268883356921,
+            "mean_observed_role": 0.0005631906803513947,
+            "n_routes": 140,
+            "n_runs": 616,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000023092554363531132,
+                0.000024936148352478485
+              ],
+              "delta": 9.217969944736747e-7,
+              "n_routes": 140,
+              "n_runs": 616,
+              "p_two_sided": 0.9400287582009148,
+              "se_route": 0.000012252445222170892,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla cinerea",
+            "variable_triad_runs": 600
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": 0.0000502916419196078,
+              "B": -0.00001279916878645823
+            },
+            "mean_expected_role": 0.0005240553429537508,
+            "mean_observed_role": 0.0005549636635118565,
+            "n_routes": 47,
+            "n_runs": 166,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000006975388839106902,
+                0.00006879202995531808
+              ],
+              "delta": 0.00003090832055810559,
+              "n_routes": 47,
+              "n_runs": 166,
+              "p_two_sided": 0.10980216475929726,
+              "se_route": 0.000019328778332680782,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla femoralis",
+            "variable_triad_runs": 163
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": -0.000016315214865112243,
+              "B": -0.000049284114423604975
+            },
+            "mean_expected_role": 0.0005493124353072874,
+            "mean_observed_role": 0.000520471917989822,
+            "n_routes": 68,
+            "n_runs": 229,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00006977962285410697,
+                0.0000120985882191762
+              ],
+              "delta": -0.000028840517317465383,
+              "n_routes": 68,
+              "n_runs": 229,
+              "p_two_sided": 0.16735805623289035,
+              "se_route": 0.00002088768255925314,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla gratiosa",
+            "variable_triad_runs": 226
+          },
+          {
+            "BH_q": 0.8375540743129847,
+            "fold_deltas": {
+              "A": -0.00001257376755496986,
+              "B": 0.00005914264965188248
+            },
+            "mean_expected_role": 0.0005058187949007886,
+            "mean_observed_role": 0.0005175407931750789,
+            "n_routes": 72,
+            "n_runs": 245,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00003387639253312382,
+                0.000057320389081704484
+              ],
+              "delta": 0.000011721998274290332,
+              "n_routes": 72,
+              "n_runs": 245,
+              "p_two_sided": 0.6143676327256093,
+              "se_route": 0.00002326491260405214,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla squirella",
+            "variable_triad_runs": 244
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": -0.00001539261122490847,
+              "B": -0.0000106641438285904
+            },
+            "mean_expected_role": 0.00047467314768766375,
+            "mean_observed_role": 0.00046172666379804933,
+            "n_routes": 266,
+            "n_runs": 1328,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00003111197110854793,
+                0.0000052190033293191205
+              ],
+              "delta": -0.000012946483889614405,
+              "n_routes": 266,
+              "n_runs": 1328,
+              "p_two_sided": 0.16245568059448745,
+              "se_route": 0.000009268276030692693,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla versicolor",
+            "variable_triad_runs": 1096
+          },
+          {
+            "n_routes": 2,
+            "n_runs": 3,
+            "status": "ineligible",
+            "taxon": "Incilius nebulifer",
+            "variable_triad_runs": 3
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 1,
+            "status": "ineligible",
+            "taxon": "Lithobates areolatus",
+            "variable_triad_runs": 0
+          },
+          {
+            "n_routes": 15,
+            "n_runs": 55,
+            "status": "ineligible",
+            "taxon": "Lithobates blairi",
+            "variable_triad_runs": 49
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 3,
+            "status": "ineligible",
+            "taxon": "Lithobates capito",
+            "variable_triad_runs": 2
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": 0.000021586337986920454,
+              "B": 0.000013387874399070854
+            },
+            "mean_expected_role": 0.000569778292837109,
+            "mean_observed_role": 0.0005873103514414219,
+            "n_routes": 415,
+            "n_runs": 1915,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.0000021693178947619456,
+                0.00003723343510338765
+              ],
+              "delta": 0.000017532058604312854,
+              "n_routes": 415,
+              "n_runs": 1915,
+              "p_two_sided": 0.08113251597860613,
+              "se_route": 0.00001005190740976709,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates catesbeianus",
+            "variable_triad_runs": 1707
+          },
+          {
+            "BH_q": 0.7692891128145618,
+            "fold_deltas": {
+              "A": 0.00001702600693604139,
+              "B": -0.000003176239772623331
+            },
+            "mean_expected_role": 0.0005690905414063556,
+            "mean_observed_role": 0.0005765882411118926,
+            "n_routes": 418,
+            "n_runs": 2169,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000009148736554949752,
+                0.000024144135966023757
+              ],
+              "delta": 0.0000074976997055370014,
+              "n_routes": 418,
+              "n_runs": 2169,
+              "p_two_sided": 0.3773525387849045,
+              "se_route": 0.000008493235789938857,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates clamitans",
+            "variable_triad_runs": 1901
+          },
+          {
+            "n_routes": 14,
+            "n_runs": 72,
+            "status": "ineligible",
+            "taxon": "Lithobates grylio",
+            "variable_triad_runs": 69
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": 0.00002270200802235556,
+              "B": 0.000014586389385432234
+            },
+            "mean_expected_role": 0.0003223586566707861,
+            "mean_observed_role": 0.00034086981244620595,
+            "n_routes": 210,
+            "n_runs": 610,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00000832963847643199,
+                0.00004535195002727146
+              ],
+              "delta": 0.000018511155775419734,
+              "n_routes": 210,
+              "n_runs": 610,
+              "p_two_sided": 0.17646537877615298,
+              "se_route": 0.00001369453442184065,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates palustris",
+            "variable_triad_runs": 448
+          },
+          {
+            "BH_q": 0.8375540743129847,
+            "fold_deltas": {
+              "A": 0.000052297800111669326,
+              "B": -0.000015467470241573263
+            },
+            "mean_expected_role": 0.0003568601053180722,
+            "mean_observed_role": 0.00037296030760130145,
+            "n_routes": 67,
+            "n_runs": 161,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00004578650456470982,
+                0.0000779869091311682
+              ],
+              "delta": 0.000016100202283229187,
+              "n_routes": 67,
+              "n_runs": 161,
+              "p_two_sided": 0.6101239582707694,
+              "se_route": 0.00003157543063856962,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates pipiens",
+            "variable_triad_runs": 119
+          },
+          {
+            "n_routes": 19,
+            "n_runs": 33,
+            "status": "ineligible",
+            "taxon": "Lithobates septentrionalis",
+            "variable_triad_runs": 26
+          },
+          {
+            "BH_q": 0.267411025367835,
+            "fold_deltas": {
+              "A": 0.0000322955454909147,
+              "B": 0.000024627475070485643
+            },
+            "mean_expected_role": 0.00041272601669507884,
+            "mean_observed_role": 0.000441408227797786,
+            "n_routes": 183,
+            "n_runs": 747,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                0.000007091752116529166,
+                0.00005027267008888516
+              ],
+              "delta": 0.000028682211102707164,
+              "n_routes": 183,
+              "n_runs": 747,
+              "p_two_sided": 0.009221069840270173,
+              "se_route": 0.000011015742715927836,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates sphenocephalus",
+            "variable_triad_runs": 603
+          },
+          {
+            "BH_q": 0.7692891128145618,
+            "fold_deltas": {
+              "A": 0.00003972741178419576,
+              "B": -0.00001894004166272478
+            },
+            "mean_expected_role": 0.0002676364660219649,
+            "mean_observed_role": 0.0002781434087148373,
+            "n_routes": 145,
+            "n_runs": 259,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000018763470555760914,
+                0.00003977735594150572
+              ],
+              "delta": 0.000010506942692872403,
+              "n_routes": 145,
+              "n_runs": 259,
+              "p_two_sided": 0.48171241950853894,
+              "se_route": 0.000014934158729198396,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates sylvaticus",
+            "variable_triad_runs": 135
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": 0.00004181211470302758,
+              "B": 0.00001745427855226808
+            },
+            "mean_expected_role": 0.0004895270352546531,
+            "mean_observed_role": 0.0005248768668972752,
+            "n_routes": 27,
+            "n_runs": 98,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000011972884363645506,
+                0.0000826725476488895
+              ],
+              "delta": 0.000035349831642622,
+              "n_routes": 27,
+              "n_runs": 98,
+              "p_two_sided": 0.1431711973449086,
+              "se_route": 0.000024144686524621397,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates virgatipes",
+            "variable_triad_runs": 94
+          },
+          {
+            "n_routes": 12,
+            "n_runs": 48,
+            "status": "ineligible",
+            "taxon": "Pseudacris brachyphona",
+            "variable_triad_runs": 35
+          },
+          {
+            "n_routes": 16,
+            "n_runs": 57,
+            "status": "ineligible",
+            "taxon": "Pseudacris brimleyi",
+            "variable_triad_runs": 49
+          },
+          {
+            "BH_q": 0.9400287582009148,
+            "fold_deltas": {
+              "A": 0.000006134191828821711,
+              "B": -0.000008301012864887152
+            },
+            "mean_expected_role": 0.0003679811362093259,
+            "mean_observed_role": 0.00036708066826632107,
+            "n_routes": 439,
+            "n_runs": 2091,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000014038855566863492,
+                0.000012237919680853801
+              ],
+              "delta": -9.004679430048456e-7,
+              "n_routes": 439,
+              "n_runs": 2091,
+              "p_two_sided": 0.8931413230256552,
+              "se_route": 0.00000670338216798501,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris crucifer",
+            "variable_triad_runs": 1522
+          },
+          {
+            "BH_q": 0.4481632987686088,
+            "fold_deltas": {
+              "A": -0.000031670437698769034,
+              "B": -0.00003956506645092426
+            },
+            "mean_expected_role": 0.00038147303288887686,
+            "mean_observed_role": 0.000346051753475283,
+            "n_routes": 76,
+            "n_runs": 221,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00006860595335695379,
+                -0.0000022366054702340323
+              ],
+              "delta": -0.00003542127941359391,
+              "n_routes": 76,
+              "n_runs": 221,
+              "p_two_sided": 0.03643287122682069,
+              "se_route": 0.00001693126720955913,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris feriarum",
+            "variable_triad_runs": 171
+          },
+          {
+            "n_routes": 3,
+            "n_runs": 4,
+            "status": "ineligible",
+            "taxon": "Pseudacris feriarum/fouquettei complex",
+            "variable_triad_runs": 1
+          },
+          {
+            "n_routes": 8,
+            "n_runs": 17,
+            "status": "ineligible",
+            "taxon": "Pseudacris feriarum/kalmi complex",
+            "variable_triad_runs": 14
+          },
+          {
+            "n_routes": 15,
+            "n_runs": 35,
+            "status": "ineligible",
+            "taxon": "Pseudacris feriarum/triseriata complex",
+            "variable_triad_runs": 28
+          },
+          {
+            "BH_q": 0.9400287582009148,
+            "fold_deltas": {
+              "A": 0.0000034955218268213048,
+              "B": -0.000012011232904448771
+            },
+            "mean_expected_role": 0.00034474053468400184,
+            "mean_observed_role": 0.0003407698412698413,
+            "n_routes": 34,
+            "n_runs": 108,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.0000596832598193906,
+                0.00005174187299106944
+              ],
+              "delta": -0.000003970693414160582,
+              "n_routes": 34,
+              "n_runs": 108,
+              "p_two_sided": 0.8889059533893325,
+              "se_route": 0.00002842530109975675,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris kalmi",
+            "variable_triad_runs": 75
+          },
+          {
+            "BH_q": 0.559197924023876,
+            "fold_deltas": {
+              "A": -0.000016727679402302874,
+              "B": -0.00004497390326575084
+            },
+            "mean_expected_role": 0.0004857180963320002,
+            "mean_observed_role": 0.00045236549659863947,
+            "n_routes": 39,
+            "n_runs": 175,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00008714569565467875,
+                0.000020440496187957117
+              ],
+              "delta": -0.00003335259973336082,
+              "n_routes": 39,
+              "n_runs": 175,
+              "p_two_sided": 0.22428610538677052,
+              "se_route": 0.00002744596142869513,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris maculata",
+            "variable_triad_runs": 152
+          },
+          {
+            "BH_q": 0.8957106660792817,
+            "fold_deltas": {
+              "A": 0.00001070510648480504,
+              "B": 0.00001281031794240694
+            },
+            "mean_expected_role": 0.0003941505277390971,
+            "mean_observed_role": 0.00040600969592656354,
+            "n_routes": 39,
+            "n_runs": 166,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00005854131520390342,
+                0.00008225965157883607
+              ],
+              "delta": 0.000011859168187466325,
+              "n_routes": 39,
+              "n_runs": 166,
+              "p_two_sided": 0.7412777926173366,
+              "se_route": 0.00003591927400027744,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris maculata/triseriata complex",
+            "variable_triad_runs": 130
+          },
+          {
+            "BH_q": 0.5117495984508436,
+            "fold_deltas": {
+              "A": 0.00003229064040752624,
+              "B": 0.000006244017862969909
+            },
+            "mean_expected_role": 0.0003226400060937471,
+            "mean_observed_role": 0.0003464896114173892,
+            "n_routes": 33,
+            "n_runs": 108,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00000751055044474426,
+                0.00005520976109202876
+              ],
+              "delta": 0.00002384960532364225,
+              "n_routes": 33,
+              "n_runs": 108,
+              "p_two_sided": 0.13607559757865736,
+              "se_route": 0.000016000373484284108,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris nigrita",
+            "variable_triad_runs": 86
+          },
+          {
+            "n_routes": 26,
+            "n_runs": 35,
+            "status": "ineligible",
+            "taxon": "Pseudacris nigrita/feriarum complex",
+            "variable_triad_runs": 24
+          },
+          {
+            "BH_q": 0.559197924023876,
+            "fold_deltas": {
+              "A": 0.000020565416678262447,
+              "B": 0.00003574523866016226
+            },
+            "mean_expected_role": 0.0004608511738103188,
+            "mean_observed_role": 0.00048588735997640096,
+            "n_routes": 34,
+            "n_runs": 146,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000017661541796783496,
+                0.000067733914128948
+              ],
+              "delta": 0.000025036186166082254,
+              "n_routes": 34,
+              "n_runs": 146,
+              "p_two_sided": 0.25045619789322926,
+              "se_route": 0.000021784955386762195,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris ocularis",
+            "variable_triad_runs": 140
+          },
+          {
+            "n_routes": 17,
+            "n_runs": 44,
+            "status": "ineligible",
+            "taxon": "Pseudacris ornata",
+            "variable_triad_runs": 37
+          },
+          {
+            "n_routes": 42,
+            "n_runs": 52,
+            "status": "ineligible",
+            "taxon": "Scaphiopus holbrookii",
+            "variable_triad_runs": 49
+          },
+          {
+            "n_routes": 3,
+            "n_runs": 4,
+            "status": "ineligible",
+            "taxon": "Spea bombifrons",
+            "variable_triad_runs": 4
+          }
+        ],
+        "candidate_hub_taxa": [],
+        "eligible_taxon_units": 29,
+        "min_counts": {
+          "routes": 25,
+          "runs": 80,
+          "variable_null_runs": 20
+        }
+      }
+    },
+    "strong": {
+      "classification": {
+        "T3_identifiable": true,
+        "causal_irreducible_three_body_interaction_supported": false,
+        "centered_triplet_excess_over_crossfit_NWI": false,
+        "plant_localized_triple_excess": false
+      },
+      "coverage": {
+        "n_routes": 398,
+        "n_runs": 1766,
+        "n_runs_with_PEM_heterogeneity": 1367,
+        "n_runs_with_no_successful_trade": 0,
+        "n_runs_with_null_T3_invariant": 443,
+        "n_runs_with_variable_null_T3": 1323,
+        "routes_with_variable_null_T3": 355,
+        "sample_from_prior_exact_Cscore_NWI": true
+      },
+      "global_motifs": {
+        "pair_sq": {
+          "cluster_inference": {
+            "ci95": [
+              0.0002761997951492426,
+              0.00046242858080562985
+            ],
+            "delta": 0.0003693141879774362,
+            "n_routes": 398,
+            "n_runs": 1766,
+            "p_two_sided": 7.623163168574101e-15,
+            "se_route": 0.000047508216254312885,
+            "status": "fitted"
+          },
+          "folds": {
+            "A": {
+              "excess": 0.00034002720436383777,
+              "n_routes": 195,
+              "n_runs": 903
+            },
+            "B": {
+              "excess": 0.0003999586215847127,
+              "n_routes": 203,
+              "n_runs": 863
+            }
+          },
+          "mean_delta": 0.0003693141879774363,
+          "null_ci95": [
+            0.0033312463414275346,
+            0.0034708328920984573
+          ],
+          "null_mean": 0.0033989792503697864,
+          "observed_mean": 0.0037682934383472325,
+          "upper_tail_mc_p": 0.005
+        },
+        "pem_triad_sq": {
+          "cluster_inference": {
+            "ci95": [
+              -1.3537704983439815e-7,
+              2.0941869837405178e-8
+            ],
+            "delta": -5.721758999849649e-8,
+            "n_routes": 398,
+            "n_runs": 1766,
+            "p_two_sided": 0.15133963884237314,
+            "se_route": 3.987800819423904e-8,
+            "status": "fitted"
+          },
+          "folds": {
+            "A": {
+              "excess": -7.676082505256178e-8,
+              "n_routes": 195,
+              "n_runs": 903
+            },
+            "B": {
+              "excess": -3.6768527131960105e-8,
+              "n_routes": 203,
+              "n_runs": 863
+            }
+          },
+          "mean_delta": -5.721758999849651e-8,
+          "null_ci95": [
+            5.463795986506266e-7,
+            7.052011199920852e-7
+          ],
+          "null_mean": 6.228348054982782e-7,
+          "observed_mean": 5.656172154997813e-7,
+          "upper_tail_mc_p": 0.93
+        },
+        "triad_sq": {
+          "cluster_inference": {
+            "ci95": [
+              -0.000003414948059611839,
+              0.000034581292632214785
+            ],
+            "delta": 0.000015583172286301473,
+            "n_routes": 398,
+            "n_runs": 1766,
+            "p_two_sided": 0.10791037540477452,
+            "se_route": 0.000009693096656759033,
+            "status": "fitted"
+          },
+          "folds": {
+            "A": {
+              "excess": 0.000032865173185829635,
+              "n_routes": 195,
+              "n_runs": 903
+            },
+            "B": {
+              "excess": -0.000002499848353645144,
+              "n_routes": 203,
+              "n_runs": 863
+            }
+          },
+          "mean_delta": 0.000015583172286301473,
+          "null_ci95": [
+            0.0004734412932716585,
+            0.0005026362811499563
+          ],
+          "null_mean": 0.00048740724580825036,
+          "observed_mean": 0.0005029904180945517,
+          "upper_tail_mc_p": 0.03
+        }
+      },
+      "mode": "strong",
+      "notes": [
+        "Third centered moment is a three-taxon pattern, NOT proof of an irreducible three-way biological interaction.",
+        "T2 departure is separately reported. Pairwise interactions can induce T3 departures even when pairwise terms are subtracted algebraically.",
+        "NWI habitat context is not temporally synchronized with NAAMP survey nights.",
+        "Sequential listening stops do not demonstrate simultaneous chorus interactions."
+      ],
+      "taxon_roles": {
+        "all_taxon_units": [
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000013663075065248779,
+              "B": -0.000015167280089031547
+            },
+            "mean_expected_role": 0.0005780196342633473,
+            "mean_observed_role": 0.0005761254298877426,
+            "n_routes": 153,
+            "n_runs": 467,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000036511303092282185,
+                0.000032722894341072495
+              ],
+              "delta": -0.0000018942043756048443,
+              "n_routes": 153,
+              "n_runs": 467,
+              "p_two_sided": 0.9145932046740255,
+              "se_route": 0.000017662109604937947,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Acris crepitans",
+            "variable_triad_runs": 410
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000030712814070351575,
+              "B": -0.00004794282506667967
+            },
+            "mean_expected_role": 0.0004988512155959393,
+            "mean_observed_role": 0.0004934249522249522,
+            "n_routes": 41,
+            "n_runs": 111,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00007019607682202964,
+                0.00005934355008005542
+              ],
+              "delta": -0.000005426263370987115,
+              "n_routes": 41,
+              "n_runs": 111,
+              "p_two_sided": 0.8695727602909605,
+              "se_route": 0.00003304643042522136,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Acris crepitans/gryllus complex",
+            "variable_triad_runs": 104
+          },
+          {
+            "BH_q": 0.5239392840964517,
+            "fold_deltas": {
+              "A": 0.00006920007742599164,
+              "B": -0.000009738829738032987
+            },
+            "mean_expected_role": 0.0005301898400642271,
+            "mean_observed_role": 0.0005666980468465318,
+            "n_routes": 52,
+            "n_runs": 198,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000024151329900952394,
+                0.00009716774346556174
+              ],
+              "delta": 0.000036508206782304675,
+              "n_routes": 52,
+              "n_runs": 198,
+              "p_two_sided": 0.23815422004384168,
+              "se_route": 0.00003094931190661245,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Acris gryllus",
+            "variable_triad_runs": 180
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000009335913196937116,
+              "B": -0.000018990882155761114
+            },
+            "mean_expected_role": 0.00042283697689233536,
+            "mean_observed_role": 0.00041833653356708423,
+            "n_routes": 229,
+            "n_runs": 563,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00004013047748803322,
+                0.00003112959083753084
+              ],
+              "delta": -0.000004500443325251189,
+              "n_routes": 229,
+              "n_runs": 563,
+              "p_two_sided": 0.8044719184243251,
+              "se_route": 0.00001817892290053654,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Anaxyrus americanus",
+            "variable_triad_runs": 409
+          },
+          {
+            "n_routes": 13,
+            "n_runs": 16,
+            "status": "ineligible",
+            "taxon": "Anaxyrus americanus/terrestris complex",
+            "variable_triad_runs": 14
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 2,
+            "status": "ineligible",
+            "taxon": "Anaxyrus cognatus",
+            "variable_triad_runs": 2
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.0000144859442391983,
+              "B": -0.00001107535170642367
+            },
+            "mean_expected_role": 0.0005194274018703817,
+            "mean_observed_role": 0.000520798761966458,
+            "n_routes": 143,
+            "n_runs": 421,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.0000367468919362798,
+                0.000039489612128432484
+              ],
+              "delta": 0.000001371360096076338,
+              "n_routes": 143,
+              "n_runs": 421,
+              "p_two_sided": 0.9437856859465266,
+              "se_route": 0.000019448445141353642,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Anaxyrus fowleri",
+            "variable_triad_runs": 367
+          },
+          {
+            "n_routes": 3,
+            "n_runs": 5,
+            "status": "ineligible",
+            "taxon": "Anaxyrus fowleri/woodhousii complex",
+            "variable_triad_runs": 5
+          },
+          {
+            "n_routes": 5,
+            "n_runs": 11,
+            "status": "ineligible",
+            "taxon": "Anaxyrus quercicus",
+            "variable_triad_runs": 11
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000026804352178775386,
+              "B": -0.000023474388471282014
+            },
+            "mean_expected_role": 0.0004713157866500067,
+            "mean_observed_role": 0.0004800460817323563,
+            "n_routes": 49,
+            "n_runs": 153,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000056935539979798833,
+                0.00007439613014449788
+              ],
+              "delta": 0.00000873029508234952,
+              "n_routes": 49,
+              "n_runs": 153,
+              "p_two_sided": 0.7944180514944039,
+              "se_route": 0.00003350359270890286,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Anaxyrus terrestris",
+            "variable_triad_runs": 146
+          },
+          {
+            "BH_q": 0.5239392840964517,
+            "fold_deltas": {
+              "A": 0.000014024589487843196,
+              "B": 0.000046860976407791997
+            },
+            "mean_expected_role": 0.0004365681368828077,
+            "mean_observed_role": 0.0004648315136191243,
+            "n_routes": 62,
+            "n_runs": 113,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000018688666273351078,
+                0.00007521541974598423
+              ],
+              "delta": 0.000028263376736316575,
+              "n_routes": 62,
+              "n_runs": 113,
+              "p_two_sided": 0.23806977046546185,
+              "se_route": 0.000023955564173637566,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Gastrophryne carolinensis",
+            "variable_triad_runs": 110
+          },
+          {
+            "n_routes": 7,
+            "n_runs": 12,
+            "status": "ineligible",
+            "taxon": "Hyla andersonii",
+            "variable_triad_runs": 11
+          },
+          {
+            "n_routes": 21,
+            "n_runs": 66,
+            "status": "ineligible",
+            "taxon": "Hyla avivoca",
+            "variable_triad_runs": 60
+          },
+          {
+            "BH_q": 0.4947844922301605,
+            "fold_deltas": {
+              "A": 0.000050099114396104456,
+              "B": -0.000008289190962135725
+            },
+            "mean_expected_role": 0.0005337670371543458,
+            "mean_observed_role": 0.0005564998975185021,
+            "n_routes": 187,
+            "n_runs": 559,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000010492872992305473,
+                0.000055958593720618387
+              ],
+              "delta": 0.000022732860364156457,
+              "n_routes": 187,
+              "n_runs": 559,
+              "p_two_sided": 0.1799216335382402,
+              "se_route": 0.000016952216274657227,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla chrysoscelis",
+            "variable_triad_runs": 505
+          },
+          {
+            "BH_q": 0.35596174987667684,
+            "fold_deltas": {
+              "A": -0.000055632343263938784,
+              "B": -0.000051853790022911456
+            },
+            "mean_expected_role": 0.0005394936435567938,
+            "mean_observed_role": 0.0004860383475244403,
+            "n_routes": 75,
+            "n_runs": 151,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00011346024477928792,
+                0.000006549652714580899
+              ],
+              "delta": -0.000053455296032353506,
+              "n_routes": 75,
+              "n_runs": 151,
+              "p_two_sided": 0.08080569747416409,
+              "se_route": 0.000030615332332760084,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla chrysoscelis/versicolor complex",
+            "variable_triad_runs": 133
+          },
+          {
+            "BH_q": 0.4630696846781112,
+            "fold_deltas": {
+              "A": 0.000022696256577359844,
+              "B": 0.000029762830748257953
+            },
+            "mean_expected_role": 0.0005532800727048376,
+            "mean_observed_role": 0.0005793819071958832,
+            "n_routes": 123,
+            "n_runs": 415,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000009204587825943309,
+                0.00006140825680803467
+              ],
+              "delta": 0.00002610183449104568,
+              "n_routes": 123,
+              "n_runs": 415,
+              "p_two_sided": 0.14734035421576266,
+              "se_route": 0.000018013811781992703,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla cinerea",
+            "variable_triad_runs": 374
+          },
+          {
+            "BH_q": 0.0649574665940842,
+            "fold_deltas": {
+              "A": 0.00007737913091933206,
+              "B": 0.00010621610888911684
+            },
+            "mean_expected_role": 0.0005775569343080673,
+            "mean_observed_role": 0.0006625533801628142,
+            "n_routes": 36,
+            "n_runs": 106,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                0.000021351581464327296,
+                0.00014864131024516645
+              ],
+              "delta": 0.00008499644585474686,
+              "n_routes": 36,
+              "n_runs": 106,
+              "p_two_sided": 0.008857836353738754,
+              "se_route": 0.00003247246627613678,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla femoralis",
+            "variable_triad_runs": 104
+          },
+          {
+            "BH_q": 0.6958002471132729,
+            "fold_deltas": {
+              "A": 0.000028674661005224803,
+              "B": 0.000007580433495799808
+            },
+            "mean_expected_role": 0.0005378588429388252,
+            "mean_observed_role": 0.0005589235611083713,
+            "n_routes": 54,
+            "n_runs": 158,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000029170020376420044,
+                0.00007129945671551238
+              ],
+              "delta": 0.000021064718169546168,
+              "n_routes": 54,
+              "n_runs": 158,
+              "p_two_sided": 0.4111546914760249,
+              "se_route": 0.000025630439611243587,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla gratiosa",
+            "variable_triad_runs": 145
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000028242425937524812,
+              "B": -0.00005570349818591026
+            },
+            "mean_expected_role": 0.0005197157857590018,
+            "mean_observed_role": 0.0005207126047441837,
+            "n_routes": 48,
+            "n_runs": 114,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00006108244842664687,
+                0.00006307608639701055
+              ],
+              "delta": 9.96818985181838e-7,
+              "n_routes": 48,
+              "n_runs": 114,
+              "p_two_sided": 0.9748934994460965,
+              "se_route": 0.000031673677629539144,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla squirella",
+            "variable_triad_runs": 110
+          },
+          {
+            "BH_q": 0.35596174987667684,
+            "fold_deltas": {
+              "A": 0.00005181710020691699,
+              "B": 0.000016120775788863513
+            },
+            "mean_expected_role": 0.0004973783130240499,
+            "mean_observed_role": 0.0005311846994535519,
+            "n_routes": 194,
+            "n_runs": 549,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000005348272930402525,
+                0.00007296104578940655
+              ],
+              "delta": 0.00003380638642950201,
+              "n_routes": 194,
+              "n_runs": 549,
+              "p_two_sided": 0.09059915621324559,
+              "se_route": 0.00001997723410672415,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Hyla versicolor",
+            "variable_triad_runs": 407
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 2,
+            "status": "ineligible",
+            "taxon": "Incilius nebulifer",
+            "variable_triad_runs": 2
+          },
+          {
+            "n_routes": 7,
+            "n_runs": 25,
+            "status": "ineligible",
+            "taxon": "Lithobates blairi",
+            "variable_triad_runs": 23
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 2,
+            "status": "ineligible",
+            "taxon": "Lithobates capito",
+            "variable_triad_runs": 2
+          },
+          {
+            "BH_q": 0.6958002471132729,
+            "fold_deltas": {
+              "A": 0.00003446022046100326,
+              "B": 3.263068589701442e-7
+            },
+            "mean_expected_role": 0.0004920089081511192,
+            "mean_observed_role": 0.0005076339735839737,
+            "n_routes": 202,
+            "n_runs": 444,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000021630221791419714,
+                0.0000528803526571284
+              ],
+              "delta": 0.000015625065432854343,
+              "n_routes": 202,
+              "n_runs": 444,
+              "p_two_sided": 0.4110659068490361,
+              "se_route": 0.000019008148883417762,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates catesbeianus",
+            "variable_triad_runs": 360
+          },
+          {
+            "BH_q": 0.03880178098159137,
+            "fold_deltas": {
+              "A": 0.00010038155680348605,
+              "B": -7.579714046421299e-7
+            },
+            "mean_expected_role": 0.0005010184680442472,
+            "mean_observed_role": 0.0005509132981231504,
+            "n_routes": 243,
+            "n_runs": 609,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                0.000016376775637953795,
+                0.00008341288451985259
+              ],
+              "delta": 0.0000498948300789032,
+              "n_routes": 243,
+              "n_runs": 609,
+              "p_two_sided": 0.0035274346346901245,
+              "se_route": 0.000017101362425705544,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates clamitans",
+            "variable_triad_runs": 485
+          },
+          {
+            "n_routes": 5,
+            "n_runs": 11,
+            "status": "ineligible",
+            "taxon": "Lithobates grylio",
+            "variable_triad_runs": 11
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000028635004596919443,
+              "B": -0.000010448641675811787
+            },
+            "mean_expected_role": 0.0002577159804279945,
+            "mean_observed_role": 0.0002654903885480573,
+            "n_routes": 81,
+            "n_runs": 163,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00004793839925243784,
+                0.00006348721549256361
+              ],
+              "delta": 0.000007774408120062887,
+              "n_routes": 81,
+              "n_runs": 163,
+              "p_two_sided": 0.7844674148257772,
+              "se_route": 0.000028425424044500942,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates palustris",
+            "variable_triad_runs": 97
+          },
+          {
+            "n_routes": 15,
+            "n_runs": 23,
+            "status": "ineligible",
+            "taxon": "Lithobates pipiens",
+            "variable_triad_runs": 15
+          },
+          {
+            "n_routes": 2,
+            "n_runs": 2,
+            "status": "ineligible",
+            "taxon": "Lithobates septentrionalis",
+            "variable_triad_runs": 1
+          },
+          {
+            "BH_q": 0.35596174987667684,
+            "fold_deltas": {
+              "A": 0.00002293330413305288,
+              "B": 0.00008043980001015181
+            },
+            "mean_expected_role": 0.0004215226253311964,
+            "mean_observed_role": 0.0004703743501412516,
+            "n_routes": 118,
+            "n_runs": 284,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000008856235489708745,
+                0.00010655968510981917
+              ],
+              "delta": 0.00004885172481005521,
+              "n_routes": 118,
+              "n_runs": 284,
+              "p_two_sided": 0.09708047723909367,
+              "se_route": 0.00002944337791661326,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates sphenocephalus",
+            "variable_triad_runs": 204
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.000025942296516596284,
+              "B": -0.00004913474348486626
+            },
+            "mean_expected_role": 0.00031632632000582644,
+            "mean_observed_role": 0.00030717826086956533,
+            "n_routes": 59,
+            "n_runs": 92,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.00006586683652724692,
+                0.00004757071825472453
+              ],
+              "delta": -0.0000091480591362612,
+              "n_routes": 59,
+              "n_runs": 92,
+              "p_two_sided": 0.7519124099528803,
+              "se_route": 0.000028938683485194734,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Lithobates sylvaticus",
+            "variable_triad_runs": 42
+          },
+          {
+            "n_routes": 12,
+            "n_runs": 26,
+            "status": "ineligible",
+            "taxon": "Lithobates virgatipes",
+            "variable_triad_runs": 24
+          },
+          {
+            "n_routes": 6,
+            "n_runs": 23,
+            "status": "ineligible",
+            "taxon": "Pseudacris brachyphona",
+            "variable_triad_runs": 11
+          },
+          {
+            "n_routes": 11,
+            "n_runs": 32,
+            "status": "ineligible",
+            "taxon": "Pseudacris brimleyi",
+            "variable_triad_runs": 25
+          },
+          {
+            "BH_q": 0.9748934994460965,
+            "fold_deltas": {
+              "A": 0.0000023863342785897077,
+              "B": 0.0000058692465343904704
+            },
+            "mean_expected_role": 0.00041424468616876924,
+            "mean_observed_role": 0.0004183464846927534,
+            "n_routes": 315,
+            "n_runs": 871,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000025022567531851506,
+                0.000033226164579819726
+              ],
+              "delta": 0.000004101798523984109,
+              "n_routes": 315,
+              "n_runs": 871,
+              "p_two_sided": 0.7825203139220741,
+              "se_route": 0.000014859643486086938,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris crucifer",
+            "variable_triad_runs": 572
+          },
+          {
+            "BH_q": 0.007530162577638243,
+            "fold_deltas": {
+              "A": -0.00010078191030739493,
+              "B": -0.00008622457968856639
+            },
+            "mean_expected_role": 0.00047199427786060973,
+            "mean_observed_role": 0.0003779311355311355,
+            "n_routes": 53,
+            "n_runs": 117,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.0001455460551586122,
+                -0.00004258022950033599
+              ],
+              "delta": -0.00009406314232947409,
+              "n_routes": 53,
+              "n_runs": 117,
+              "p_two_sided": 0.00034228011716537466,
+              "se_route": 0.000026267274927105168,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris feriarum",
+            "variable_triad_runs": 83
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 1,
+            "status": "ineligible",
+            "taxon": "Pseudacris feriarum/fouquettei complex",
+            "variable_triad_runs": 1
+          },
+          {
+            "n_routes": 3,
+            "n_runs": 4,
+            "status": "ineligible",
+            "taxon": "Pseudacris feriarum/kalmi complex",
+            "variable_triad_runs": 4
+          },
+          {
+            "n_routes": 10,
+            "n_runs": 16,
+            "status": "ineligible",
+            "taxon": "Pseudacris feriarum/triseriata complex",
+            "variable_triad_runs": 9
+          },
+          {
+            "n_routes": 20,
+            "n_runs": 45,
+            "status": "ineligible",
+            "taxon": "Pseudacris kalmi",
+            "variable_triad_runs": 24
+          },
+          {
+            "BH_q": 0.535410325693215,
+            "fold_deltas": {
+              "A": 0.0001381550736136827,
+              "B": 0.000006447814831734439
+            },
+            "mean_expected_role": 0.0005482123016516272,
+            "mean_observed_role": 0.0006084759856630824,
+            "n_routes": 33,
+            "n_runs": 93,
+            "positive_hub_candidate": false,
+            "stat": {
+              "ci95": [
+                -0.000046303091777516224,
+                0.00016683045980042674
+              ],
+              "delta": 0.00006026368401145526,
+              "n_routes": 33,
+              "n_runs": 93,
+              "p_two_sided": 0.2677051628466075,
+              "se_route": 0.00005437180306860566,
+              "status": "fitted"
+            },
+            "status": "fitted",
+            "taxon": "Pseudacris maculata",
+            "variable_triad_runs": 81
+          },
+          {
+            "n_routes": 27,
+            "n_runs": 70,
+            "status": "ineligible",
+            "taxon": "Pseudacris maculata/triseriata complex",
+            "variable_triad_runs": 52
+          },
+          {
+            "n_routes": 18,
+            "n_runs": 54,
+            "status": "ineligible",
+            "taxon": "Pseudacris nigrita",
+            "variable_triad_runs": 39
+          },
+          {
+            "n_routes": 12,
+            "n_runs": 15,
+            "status": "ineligible",
+            "taxon": "Pseudacris nigrita/feriarum complex",
+            "variable_triad_runs": 11
+          },
+          {
+            "n_routes": 23,
+            "n_runs": 62,
+            "status": "ineligible",
+            "taxon": "Pseudacris ocularis",
+            "variable_triad_runs": 57
+          },
+          {
+            "n_routes": 8,
+            "n_runs": 20,
+            "status": "ineligible",
+            "taxon": "Pseudacris ornata",
+            "variable_triad_runs": 15
+          },
+          {
+            "n_routes": 22,
+            "n_runs": 25,
+            "status": "ineligible",
+            "taxon": "Scaphiopus holbrookii",
+            "variable_triad_runs": 22
+          },
+          {
+            "n_routes": 1,
+            "n_runs": 1,
+            "status": "ineligible",
+            "taxon": "Spea bombifrons",
+            "variable_triad_runs": 1
+          }
+        ],
+        "candidate_hub_taxa": [],
+        "eligible_taxon_units": 22,
+        "min_counts": {
+          "routes": 25,
+          "runs": 80,
+          "variable_null_runs": 20
+        }
+      }
+    }
+  },
+  "sampling": {
+    "B": 199,
+    "burn_in": 40,
+    "preserves_site_richness": true,
+    "preserves_taxon_row_margins": true,
+    "route_fold_coefficients_reused_without_refit": true,
+    "seed": 2840279,
+    "thin": 8,
+    "weighted": true
+  },
+  "source": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "source_geometric_NWI_overlay_run": 39450277196,
+  "source_original_fixed_fixed_run": 39436588431,
+  "source_prior_weighted_NWI_crossfit_run": 39516056663,
+  "status": "new_posthoc_exploratory_not_RC6",
+  "synthetic_QA": {
+    "column_richness_only_triples_invariant": "PASS",
+    "fixed_fixed_margins": "PASS",
+    "nontrivial_third_moment": "PASS",
+    "status": "PASS"
+  },
+  "provenance": {
+    "workflow_run": 39527248267,
+    "job_id": 118984833214,
+    "artifact_id": 12313683533,
+    "source_code_commit": "582ec222fa538582af12a32b4a36859540a0d557",
+    "prior_NWI_weighted_run": 39516056663,
+    "NWI_source_run": 39450277196
+  }
+}
