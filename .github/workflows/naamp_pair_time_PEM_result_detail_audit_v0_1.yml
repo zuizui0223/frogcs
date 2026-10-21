@@ -1,0 +1,73 @@
+name: Frog pair PEM moderation source-result detail audit
+
+on:
+  push:
+    branches: [exploration/naamp-plant-pair-time-strata-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_pair_time_PEM_result_detail_audit_v0_1.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify-details:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-frog-pair-temporal-PEM-context-v0-1
+          run-id: 39592028334
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/frozen_pair_time
+      - name: Extract pair vegetation-context estimates without refitting
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          data=json.loads(Path("build/frozen_pair_time/result.json").read_text())
+          assert data["QA"]["status"]=="PASS"
+          assert data["modes"]["any"]["sample"]["n_runs"]==3659
+          assert data["modes"]["strong"]["sample"]["n_runs"]==1766
+          out={
+            "analysis":"NAAMP_pair_PEM_context_detail_audit_v0_1",
+            "source_run":39592028334,
+            "full_source_result":"naamp-frog-pair-temporal-PEM-context-v0-1/result.json",
+            "both_modes":{}
+          }
+          pairs=("Gastrophryne carolinensis || Hyla chrysoscelis",
+                 "Hyla gratiosa || Lithobates sphenocephalus")
+          for mode in ("any","strong"):
+            v=data["modes"][mode]
+            sel=v["PEM_context"]
+            detail={}
+            for name in pairs:
+              x=v["all_pairs"].get(name,{})
+              detail[name]={
+                "year_early":x.get("early"),
+                "year_late":x.get("late"),
+                "joint_runs":x.get("joint_runs"),
+                "PEM_mixed_routes":x.get("PEM_mixed_routes"),
+                "PEM_moderation":x.get("PEM_moderation")
+              }
+            out["both_modes"][mode]={
+              "BH_PEM_eligible":sel["eligible_pair_moderation_tests"],
+              "BH_supported":sel["BH_supported"],
+              "two_focal_vegetation_context_pairs":detail
+            }
+          print("FROG_PAIR_PEM_DETAIL_BEGIN")
+          print(json.dumps(out,sort_keys=True))
+          print("FROG_PAIR_PEM_DETAIL_END")
+          Path("build/frozen_pair_time/PEM_context_detail_audit.json").write_text(
+             json.dumps(out,indent=2,sort_keys=True)+"\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-frog-pair-PEM-context-focal-detail-v0-1
+          path: build/frozen_pair_time/PEM_context_detail_audit.json
+          if-no-files-found: error
