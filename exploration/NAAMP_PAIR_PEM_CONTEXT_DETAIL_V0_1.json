@@ -1,0 +1,244 @@
+{
+  "analysis": "NAAMP_pair_PEM_context_detail_audit_v0_1",
+  "both_modes": {
+    "any": {
+      "BH_PEM_eligible": 121,
+      "BH_supported": [
+        {
+          "PEM_minus_nonPEM_delta": -0.11277924011592352,
+          "ci95": [
+            -0.1714504384299998,
+            -0.05410804180184726
+          ],
+          "pair": "Gastrophryne carolinensis || Hyla chrysoscelis",
+          "q": 0.019952423821609583
+        },
+        {
+          "PEM_minus_nonPEM_delta": 0.10746854017989109,
+          "ci95": [
+            0.047553231544798,
+            0.1673838488149842
+          ],
+          "pair": "Hyla gratiosa || Lithobates sphenocephalus",
+          "q": 0.026551395915666205
+        }
+      ],
+      "two_focal_vegetation_context_pairs": {
+        "Gastrophryne carolinensis || Hyla chrysoscelis": {
+          "PEM_mixed_routes": 20,
+          "PEM_moderation": {
+            "BH_q": 0.019952423821609583,
+            "PEM_context_candidate": true,
+            "fit": {
+              "ci95": [
+                -0.1714504384299998,
+                -0.05410804180184726
+              ],
+              "delta": -0.11277924011592352,
+              "p_two_sided": 0.0001648960646414015,
+              "route_se": 0.02993483491373678,
+              "routes": 20,
+              "runs": 45,
+              "status": "fitted"
+            },
+            "folds": {
+              "A": {
+                "mean": -0.11517552489076778,
+                "n": 27,
+                "routes": 12
+              },
+              "B": {
+                "mean": -0.10918481295365716,
+                "n": 18,
+                "routes": 8
+              }
+            },
+            "mean_PEM_signed_residual": -0.06099199702214776,
+            "mean_nonPEM_signed_residual": 0.05178724309377576
+          },
+          "joint_runs": 142,
+          "year_early": {
+            "BH_q": 0.26716376689816973,
+            "discovery": false,
+            "fit": {
+              "ci95": [
+                -0.0040443555080666264,
+                0.039555243280260916
+              ],
+              "delta": 0.017755443886097146,
+              "p_two_sided": 0.11041148353616874,
+              "route_se": 0.011122551009160276,
+              "routes": 30,
+              "runs": 33,
+              "status": "fitted"
+            },
+            "folds": {
+              "A": {
+                "mean": 0.014472361809045228,
+                "n": 20,
+                "routes": 17
+              },
+              "B": {
+                "mean": 0.02280633938925397,
+                "n": 13,
+                "routes": 13
+              }
+            }
+          },
+          "year_late": {
+            "fit": {
+              "ci95": [
+                0.00787184148452466,
+                0.029894974245501617
+              ],
+              "delta": 0.01888340786501314,
+              "p_two_sided": 0.0007763721678813968,
+              "route_se": 0.005618249349144327,
+              "routes": 57,
+              "runs": 109,
+              "status": "fitted"
+            },
+            "folds": {
+              "A": {
+                "mean": 0.028423366834170856,
+                "n": 64,
+                "routes": 31
+              },
+              "B": {
+                "mean": 0.005315466219988831,
+                "n": 45,
+                "routes": 26
+              }
+            }
+          }
+        },
+        "Hyla gratiosa || Lithobates sphenocephalus": {
+          "PEM_mixed_routes": 15,
+          "PEM_moderation": {
+            "BH_q": 0.026551395915666205,
+            "PEM_context_candidate": true,
+            "fit": {
+              "ci95": [
+                0.047553231544798,
+                0.1673838488149842
+              ],
+              "delta": 0.10746854017989109,
+              "p_two_sided": 0.0004388660481928298,
+              "route_se": 0.030569596741418414,
+              "routes": 15,
+              "runs": 34,
+              "status": "fitted"
+            },
+            "folds": {
+              "A": {
+                "mean": 0.08528729959320412,
+                "n": 24,
+                "routes": 9
+              },
+              "B": {
+                "mean": 0.16070351758793971,
+                "n": 10,
+                "routes": 6
+              }
+            },
+            "mean_PEM_signed_residual": 0.07845846881466156,
+            "mean_nonPEM_signed_residual": -0.029010071365229494
+          },
+          "joint_runs": 68,
+          "year_early": {
+            "status": "not_eligible"
+          },
+          "year_late": {
+            "fit": {
+              "ci95": [
+                -0.011738743727319242,
+                0.00915439340427545
+              ],
+              "delta": -0.0012921751615218968,
+              "p_two_sided": 0.808442899868578,
+              "route_se": 0.0053299798609558885,
+              "routes": 31,
+              "runs": 56,
+              "status": "fitted"
+            },
+            "folds": {
+              "A": {
+                "mean": -0.004300572630594839,
+                "n": 43,
+                "routes": 21
+              },
+              "B": {
+                "mean": 0.008658678005411685,
+                "n": 13,
+                "routes": 10
+              }
+            }
+          }
+        }
+      }
+    },
+    "strong": {
+      "BH_PEM_eligible": 57,
+      "BH_supported": [],
+      "two_focal_vegetation_context_pairs": {
+        "Gastrophryne carolinensis || Hyla chrysoscelis": {
+          "PEM_mixed_routes": 16,
+          "PEM_moderation": {
+            "status": "not_eligible"
+          },
+          "joint_runs": 85,
+          "year_early": {
+            "status": "not_eligible"
+          },
+          "year_late": {
+            "fit": {
+              "ci95": [
+                0.014060440932750018,
+                0.03987590747596023
+              ],
+              "delta": 0.026968174204355124,
+              "p_two_sided": 0.000042224146031410245,
+              "route_se": 0.006585699213567014,
+              "routes": 41,
+              "runs": 66,
+              "status": "fitted"
+            },
+            "folds": {
+              "A": {
+                "mean": 0.03560660445082556,
+                "n": 42,
+                "routes": 25
+              },
+              "B": {
+                "mean": 0.011850921273031828,
+                "n": 24,
+                "routes": 16
+              }
+            }
+          }
+        },
+        "Hyla gratiosa || Lithobates sphenocephalus": {
+          "PEM_mixed_routes": 6,
+          "PEM_moderation": {
+            "status": "not_eligible"
+          },
+          "joint_runs": 21,
+          "year_early": {
+            "status": "not_eligible"
+          },
+          "year_late": {
+            "status": "not_eligible"
+          }
+        }
+      }
+    }
+  },
+  "full_source_result": "naamp-frog-pair-temporal-PEM-context-v0-1/result.json",
+  "source_run": 39592028334,
+  "provenance": {
+    "verification_workflow": 39592995660,
+    "job_id": 119198338704,
+    "full_raw_original_run": 39592028334,
+    "posthoc_same_source": true
+  }
+}
