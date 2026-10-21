@@ -1,0 +1,89 @@
+name: NAAMP NWI-conditioned frog-pair acoustic network
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-plant-third-taxon-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_nwi_frog_pair_network_v0_1.yml"
+      - "exploration/run_naamp_plant_conditioned_pair_network_v0_1.py"
+      - "exploration/NAAMP_PLANT_CONDITIONED_FROG_PAIR_NETWORK_CONTRACT_2026_10_21.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-pairwise-fixed-margins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Check exact pairwise overlap non-invariance and weighted margin preservation
+        run: |
+          python -m py_compile exploration/run_naamp_plant_conditioned_pair_network_v0_1.py
+          python exploration/run_naamp_plant_conditioned_pair_network_v0_1.py --synthetic-only
+
+  find_pairwise_species_network:
+    needs: synthetic-pairwise-fixed-margins
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/previous_nwi_conditional
+      - name: Confirm frozen NWI same run membership and coefficients
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["preflight_eligible"] and a["mode"]=="full"
+          assert a["overlay"]["site_records"]==5147
+          for mode in ("any","strong"):
+             prefix=Path("build/previous_nwi_conditional")
+             assert (prefix/f"{mode}_heldout_run_diagnostics.csv").exists()
+             assert (prefix/f"{mode}_train_coefficients.json").exists()
+          print("PASS pinned source and route-holdout authority")
+          PY
+      - name: Identify taxon-specific same-stop aggregation/segregation after NWI
+        run: |
+          python -u exploration/run_naamp_plant_conditioned_pair_network_v0_1.py \
+            --previous-nwi build/previous_nwi_conditional \
+            --outdir build/nwi_pair_network
+      - name: Check observed matched population and species-pair outputs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          x=json.loads(Path("build/nwi_pair_network/result.json").read_text())
+          assert x["synthetic_QA"]["status"]=="PASS"
+          assert x["modes"]["any"]["coverage"]["original_test_runs"]==3659
+          assert x["modes"]["strong"]["coverage"]["original_test_runs"]==1766
+          assert not x["inference_boundaries"]["biological_interaction_established"]
+          print("PASS conditional pair-identity association output")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-nwi-frog-pair-association-network-v0-1
+          path: build/nwi_pair_network/
+          if-no-files-found: warn
