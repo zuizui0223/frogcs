@@ -22,6 +22,35 @@ Could the observed relation between mapped emergent wetland plants and some frog
 
 Under the present NAAMP/NWI information, the smallest detectable unexplained level is **pair-identity co-calling structure**. The evidence does **not** force a distinct three-species interaction term or a causal chain from plants through frogs to other frogs. A true higher-order process could exist but be missed by 10-stop sequential acoustic sampling, weak regional coverage, taxonomic grouping and the choice of squared centered third moment.
 
+## Layer 2 identified: taxon-pair residual co-calling network
+
+The squared-pair aggregate above is not merely a diffuse variance: a new **taxon-pair identity scan** localized the departure to specific named pairs. This was frozen after the T2-positive/T3-negative first analysis and therefore is a **post-hoc exploratory network**; the statistical p/q values do not establish biological causality or independent replication.
+
+- **CI1–3:** 3,659 matched NWI survey runs / 478 routes. Among 127 eligible pairs of unambiguous species names, **43** had signed same-stop covariance residuals whose route-clustered 95% CI excluded zero, BH q<0.05 across eligible pairs and sign agreement in both spatial folds. **20** were positive (more co-calling within stops), **23** negative (more spatial segregation).
+- **CI2–3:** 1,766 survey runs / 398 routes, 57 tested pairs; **14** survived the analogous screen, of which 9 positive and 5 negative. Counts are conditional on enough positive detections for each pair, and the strong-call analysis is a separate sensitivity.
+- Taxonomically ambiguous `/ complex` labels were preserved as acoustic rows in the null but deliberately **not** entered into the named-species edge-testing family.
+
+| Species pair (unambiguous NAAMP taxon names) | CI1–3 difference in same-stop co-calling fraction over frozen NWI fixed-fixed null | BH q | Evidence in CI2–3? |
+|---|---:|---:|---|
+| `Lithobates catesbeianus` × `Lithobates clamitans` | **+0.03312**, 1,603 joint-positive runs / 373 routes | 3.53×10⁻⁷³ | **+0.02246**, q=3.87×10⁻¹⁰ |
+| `Acris crepitans` × `L. catesbeianus` | +0.02544, 563 runs / 170 routes | 2.96×10⁻¹⁷ | +0.01448, q=0.00133 |
+| `Hyla versicolor` × `L. catesbeianus` | **−0.01169**, 844 runs / 223 routes | 3.42×10⁻¹¹ | not supported as edge under strong-only criterion |
+| `Anaxyrus fowleri` × `L. clamitans` | **−0.01433**, 687 runs / 192 routes | 5.89×10⁻⁹ | **−0.01680**, q=0.00000456 |
+| `L. catesbeianus` × `Pseudacris crucifer` | −0.00811, 738 runs / 280 routes | 0.000112 | −0.01143, q=0.00965 |
+| `H. versicolor` × `L. clamitans` | **−0.00739**, 987 runs / 225 routes | 0.000115 | not supported as edge under strong-only criterion |
+
+Because individual species' ten-stop calling incidence and each stop's richness were held fixed, each pair delta is also the difference in proportion of sampled stops with **both taxa recorded**; e.g., +0.0331 corresponds to **3.31 percentage points of excess same-stop joint detection** relative to model expectation. This remains **not** proof of synchrony, physical contact or direct positive interaction: stops were surveyed sequentially, and one unobserved habitat filter could favour both taxa.
+
+**Unexpected plant-to-network link:** `Hyla versicolor` and `Lithobates clamitans` both had previously BH-supported *strong-call* associations with mapped emergent PEM wetland cover, yet their *any-calling* co-detection was **less** than the NWI cross-fitted, fixed-margin expectation. This is evidence that *similar first-order mapped vegetation associations do not guarantee shared acoustic site allocation*. The different CI thresholds (plant model strong, pair model any) and post-hoc finding must be explicit. It is **not** enough to claim direct interspecific avoidance or competition.
+
+In the primary edge network, `L. catesbeianus` and `L. clamitans` each had 11 supported signed links (graph degree **11**). Green frog (`L. clamitans`) was also one of the originally positive PEM-associated taxa, whereas bullfrog (`L. catesbeianus`) did not have a supported continuous PEM slope. Hence a vegetation-associated taxon may be central in **associational** network structure without aquatic plant effects sufficient to reconstruct the entire network. This does not identify ecological keystoneness or trophic mediation.
+
+**Connection to trophic ecology:** earlier experiments have documented larval green-frog/bullfrog environmental and predator-dependent interactions (Werner & McPeek 1994) and fish-mediated indirect benefits to bullfrog tadpoles (Adams et al. 2003). Positive co-calling between adult bullfrogs and green frogs in NAAMP is not a contradiction: adult acoustic spatial allocation and larval survival/competition are different life stages and response variables. This stage separation is a biologically important **hypothesis for follow-up**, not directly tested predation in NAAMP.
+
+Numeric evidence: `exploration/NAAMP_PLANT_CONDITIONED_FROG_PAIR_NETWORK_RESULT_V0_1.json`; [successful Actions 39528330890](https://github.com/zuizui0223/frogcs/actions/runs/39528330890), artifact ID 12314905287.
+
+---
+
 ## Biotic hierarchy worth testing, not inferred from NAAMP
 
 1. **Plant habitat engineering:** emergent stalks and floating/submerged vegetation can change breeding/calling surfaces, refuges, prey/predator encounter rates, and acoustic partitioning. Evidence: Burrow et al. 2022, *How plants affect amphibian populations* [Biological Reviews](https://doi.org/10.1111/brv.12861).
