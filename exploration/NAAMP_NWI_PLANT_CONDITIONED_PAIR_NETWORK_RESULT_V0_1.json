@@ -1,0 +1,467 @@
+{
+  "analysis": "naamp_nwi_plant_conditioned_acoustic_pair_network_v0_1",
+  "contract": "exploration/NAAMP_PLANT_CONDITIONED_SPECIES_PAIR_NETWORK_CONTRACT_2026_10_21.md",
+  "interpretation_boundary": {
+    "RC6_submission_modified": false,
+    "contemporaneous_NWI_macrophytes_measured": false,
+    "direct_species_competition_measured": false,
+    "fish_or_odonata_surveys_co_sampled": false,
+    "frog_calls_are_not_occupancy": true,
+    "pair_edges_are_conditional_acoustic_associations": true,
+    "simultaneous_calls_across_stops_observed": false,
+    "trophic_interactions_identified": false
+  },
+  "network": {
+    "n_BH_edges": 21,
+    "n_BH_excess_sharing": 14,
+    "n_BH_segregation": 7,
+    "n_eligible_pairs": 112,
+    "n_pair_units_observed": 489,
+    "species_network_degrees": {
+      "Acris crepitans": {
+        "negative_edges": 2,
+        "positive_edges": 2
+      },
+      "Acris crepitans/gryllus complex": {
+        "negative_edges": 0,
+        "positive_edges": 1
+      },
+      "Acris gryllus": {
+        "negative_edges": 1,
+        "positive_edges": 1
+      },
+      "Anaxyrus americanus": {
+        "negative_edges": 2,
+        "positive_edges": 1
+      },
+      "Anaxyrus fowleri": {
+        "negative_edges": 1,
+        "positive_edges": 0
+      },
+      "Gastrophryne carolinensis": {
+        "negative_edges": 1,
+        "positive_edges": 1
+      },
+      "Hyla chrysoscelis": {
+        "negative_edges": 0,
+        "positive_edges": 4
+      },
+      "Hyla cinerea": {
+        "negative_edges": 1,
+        "positive_edges": 1
+      },
+      "Hyla femoralis": {
+        "negative_edges": 0,
+        "positive_edges": 3
+      },
+      "Hyla squirella": {
+        "negative_edges": 0,
+        "positive_edges": 2
+      },
+      "Hyla versicolor": {
+        "negative_edges": 0,
+        "positive_edges": 1
+      },
+      "Lithobates catesbeianus": {
+        "negative_edges": 1,
+        "positive_edges": 3
+      },
+      "Lithobates clamitans": {
+        "negative_edges": 2,
+        "positive_edges": 2
+      },
+      "Lithobates sphenocephalus": {
+        "negative_edges": 0,
+        "positive_edges": 1
+      },
+      "Pseudacris crucifer": {
+        "negative_edges": 1,
+        "positive_edges": 2
+      },
+      "Pseudacris kalmi": {
+        "negative_edges": 0,
+        "positive_edges": 1
+      },
+      "Pseudacris maculata": {
+        "negative_edges": 1,
+        "positive_edges": 1
+      },
+      "Pseudacris ocularis": {
+        "negative_edges": 1,
+        "positive_edges": 1
+      }
+    },
+    "status": "fitted",
+    "top_nominal_nonsupported": [
+      {
+        "BH_q": 0.05047544892268478,
+        "estimate": 0.24040657834627685,
+        "pair": "Hyla chrysoscelis/versicolor complex || Pseudacris crucifer"
+      },
+      {
+        "BH_q": 0.06132552477037327,
+        "estimate": -0.10189838079285317,
+        "pair": "Anaxyrus americanus || Lithobates catesbeianus"
+      },
+      {
+        "BH_q": 0.06132552477037327,
+        "estimate": 0.23780668046112918,
+        "pair": "Lithobates clamitans || Lithobates sphenocephalus"
+      },
+      {
+        "BH_q": 0.06408830144461987,
+        "estimate": -0.15156137832017233,
+        "pair": "Acris crepitans/gryllus complex || Hyla chrysoscelis"
+      },
+      {
+        "BH_q": 0.12621669684739883,
+        "estimate": -0.1802033422928597,
+        "pair": "Hyla versicolor || Pseudacris maculata"
+      },
+      {
+        "BH_q": 0.1348271936001733,
+        "estimate": 0.1099024534436891,
+        "pair": "Hyla cinerea || Lithobates catesbeianus"
+      },
+      {
+        "BH_q": 0.1494153171971572,
+        "estimate": -0.08130395567581501,
+        "pair": "Anaxyrus americanus || Lithobates sylvaticus"
+      },
+      {
+        "BH_q": 0.1494153171971572,
+        "estimate": -0.16669554669901226,
+        "pair": "Hyla cinerea || Hyla femoralis"
+      },
+      {
+        "BH_q": 0.15563566351676764,
+        "estimate": 0.09348629942163648,
+        "pair": "Acris crepitans/gryllus complex || Anaxyrus fowleri"
+      },
+      {
+        "BH_q": 0.16812279180182402,
+        "estimate": 0.13752975403332454,
+        "pair": "Anaxyrus fowleri || Lithobates sphenocephalus"
+      }
+    ],
+    "top_supported_edges": [
+      {
+        "BH_q": 2.0732326742313237e-9,
+        "ci95": [
+          0.15856631584363912,
+          0.2892207924553308
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.22389355414948495,
+        "jointly_active_runs": 301,
+        "pair": "Lithobates catesbeianus || Lithobates clamitans",
+        "routes": 146
+      },
+      {
+        "BH_q": 0.000008509943492214954,
+        "ci95": [
+          -0.2286804043670028,
+          -0.104353814345608
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.1665171093563054,
+        "jointly_active_runs": 168,
+        "pair": "Anaxyrus fowleri || Lithobates clamitans",
+        "routes": 82
+      },
+      {
+        "BH_q": 0.00040250095426928867,
+        "ci95": [
+          0.0704202672989908,
+          0.18350993416705508
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.12696510073302295,
+        "jointly_active_runs": 218,
+        "pair": "Lithobates sphenocephalus || Pseudacris crucifer",
+        "routes": 107
+      },
+      {
+        "BH_q": 0.0013930193904204957,
+        "ci95": [
+          0.08638808039794217,
+          0.2499720829921075
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.16818008169502482,
+        "jointly_active_runs": 171,
+        "pair": "Acris crepitans || Lithobates clamitans",
+        "routes": 79
+      },
+      {
+        "BH_q": 0.0013930193904204957,
+        "ci95": [
+          -0.3819786830762143,
+          -0.13093069138228508
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.2564546872292497,
+        "jointly_active_runs": 58,
+        "pair": "Acris crepitans || Pseudacris maculata",
+        "routes": 30
+      },
+      {
+        "BH_q": 0.001451123569605265,
+        "ci95": [
+          -0.2554833618625551,
+          -0.0843108472783876
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.16989710457047136,
+        "jointly_active_runs": 42,
+        "pair": "Acris gryllus || Gastrophryne carolinensis",
+        "routes": 22
+      },
+      {
+        "BH_q": 0.001451123569605265,
+        "ci95": [
+          0.11953712761609964,
+          0.3563558507894417
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.23794648920277067,
+        "jointly_active_runs": 37,
+        "pair": "Acris gryllus || Lithobates catesbeianus",
+        "routes": 21
+      },
+      {
+        "BH_q": 0.001451123569605265,
+        "ci95": [
+          0.12403746306465294,
+          0.37702339679017693
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.2505304299274149,
+        "jointly_active_runs": 90,
+        "pair": "Hyla chrysoscelis || Hyla versicolor",
+        "routes": 41
+      },
+      {
+        "BH_q": 0.002187860927042937,
+        "ci95": [
+          0.10615267119392865,
+          0.33842314908393123
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.22228791013892996,
+        "jointly_active_runs": 85,
+        "pair": "Gastrophryne carolinensis || Hyla chrysoscelis",
+        "routes": 51
+      },
+      {
+        "BH_q": 0.002645402850418989,
+        "ci95": [
+          0.06520534099880533,
+          0.21620169417707408
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.1407035175879397,
+        "jointly_active_runs": 160,
+        "pair": "Acris crepitans || Lithobates catesbeianus",
+        "routes": 77
+      },
+      {
+        "BH_q": 0.002645402850418989,
+        "ci95": [
+          0.08001618551818003,
+          0.2653469940158539
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.17268158976701695,
+        "jointly_active_runs": 77,
+        "pair": "Hyla chrysoscelis || Hyla squirella",
+        "routes": 36
+      },
+      {
+        "BH_q": 0.0052023723615990496,
+        "ci95": [
+          -0.19192916229986723,
+          -0.052901548631840475
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.12241535546585385,
+        "jointly_active_runs": 122,
+        "pair": "Anaxyrus americanus || Lithobates clamitans",
+        "routes": 79
+      },
+      {
+        "BH_q": 0.006543999978560015,
+        "ci95": [
+          -0.4030963811520504,
+          -0.10647852038265038
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.2547874507673504,
+        "jointly_active_runs": 37,
+        "pair": "Hyla cinerea || Pseudacris ocularis",
+        "routes": 15
+      },
+      {
+        "BH_q": 0.006619806038078303,
+        "ci95": [
+          0.09086962935699239,
+          0.34833940281686376
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.21960451608692808,
+        "jointly_active_runs": 77,
+        "pair": "Acris crepitans/gryllus complex || Hyla cinerea",
+        "routes": 33
+      },
+      {
+        "BH_q": 0.011224709713381706,
+        "ci95": [
+          0.106106080475382,
+          0.4486932325454181
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.27739965651040005,
+        "jointly_active_runs": 79,
+        "pair": "Hyla chrysoscelis || Hyla femoralis",
+        "routes": 28
+      },
+      {
+        "BH_q": 0.011370303988810638,
+        "ci95": [
+          -0.18335207195548253,
+          -0.04274135815804804
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.11304671505676529,
+        "jointly_active_runs": 135,
+        "pair": "Lithobates catesbeianus || Pseudacris crucifer",
+        "routes": 87
+      },
+      {
+        "BH_q": 0.01891974597307826,
+        "ci95": [
+          0.13674135584227298,
+          0.6616407988335452
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.3991910773379091,
+        "jointly_active_runs": 41,
+        "pair": "Hyla femoralis || Pseudacris ocularis",
+        "routes": 16
+      },
+      {
+        "BH_q": 0.023504212001799824,
+        "ci95": [
+          0.02259401545981176,
+          0.11719584292301144
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.0698949291914116,
+        "jointly_active_runs": 44,
+        "pair": "Pseudacris crucifer || Pseudacris kalmi",
+        "routes": 19
+      },
+      {
+        "BH_q": 0.02356272805678889,
+        "ci95": [
+          -0.20592252885027348,
+          -0.039088239276072495
+        ],
+        "direction": "segregation",
+        "excess_sharing_per_route_run": -0.12250538406317299,
+        "jointly_active_runs": 140,
+        "pair": "Acris crepitans || Anaxyrus americanus",
+        "routes": 75
+      },
+      {
+        "BH_q": 0.03852395054919551,
+        "ci95": [
+          0.03813350859434407,
+          0.2417273340805689
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.13993042133745648,
+        "jointly_active_runs": 78,
+        "pair": "Anaxyrus americanus || Pseudacris maculata",
+        "routes": 29
+      },
+      {
+        "BH_q": 0.03852395054919551,
+        "ci95": [
+          0.06444029553409461,
+          0.4121800945519286
+        ],
+        "direction": "excess_sharing",
+        "excess_sharing_per_route_run": 0.23831019504301162,
+        "jointly_active_runs": 59,
+        "pair": "Hyla femoralis || Hyla squirella",
+        "routes": 27
+      }
+    ]
+  },
+  "original_geospatial_coverage": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "population": {
+    "explicit_taxon_complex_alias_exclusions": {
+      "explicit_taxon_complex_aliases_excluded": 70
+    },
+    "informative_original_Cscore_matrices": 1314,
+    "matched_frozen_strong_matrices": 1766,
+    "mean_accepted_fraction_PEM": 0.6856852968518177,
+    "mean_accepted_fraction_wetland": 0.694331528943599,
+    "n_routes": 398,
+    "no_mixing_on_informative": 0,
+    "pairwise_route_run_instances": 13175,
+    "unreliable_sampling": false
+  },
+  "source": {
+    "NWI_crosswalk_run": 39450277196,
+    "all_route_train_coefficients_reused_no_refitting": true,
+    "crossfit_weighted_null_run": 39516056663,
+    "fixed_margins": {
+      "each_stop_species_richness": true,
+      "each_taxon_stop_count": true
+    },
+    "frozen_strong_check_run": 39436588431
+  },
+  "status": "posthoc_exploratory_not_interaction_causality",
+  "synthetic_QA": {
+    "pair_overlap_semantics": "PASS",
+    "status": "PASS",
+    "taxon_complex_alias_rejection": "PASS",
+    "weighted_margins": "PASS",
+    "weighted_sampler_stationarity": {
+      "fixed_fixed_margins": "PASS",
+      "status": "PASS",
+      "weighted_two_by_two_stationary_probability": 0.8806,
+      "weighted_two_by_two_theoretical_probability": 0.8807970779778824
+    }
+  },
+  "thresholds": {
+    "FDR_method": "Benjamini-Hochberg 0.05 over all eligible pairs",
+    "independent_routes": 15,
+    "jointly_active_runs": 30,
+    "variable_fixed_margin_null_matrices": 10
+  },
+  "provenance": {
+    "source_run": 39520831924,
+    "job_id": 118964122787,
+    "original_artifact_id": 12309939606,
+    "crossfit_NWI_weights_from_run": 39516056663,
+    "original_frozen_strong_calling_Cscore": 39436588431,
+    "source_branch": "exploration/naamp-multilayer-biotic-network-2026-10-21"
+  }
+}
