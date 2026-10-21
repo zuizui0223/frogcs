@@ -1,0 +1,96 @@
+name: NAAMP same-run partner identity vs earlier SiteID history
+
+on:
+  push:
+    branches: [exploration/naamp-site-history-partner-null-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_partner_prior_site_history_null_v0_1.yml"
+      - "exploration/run_naamp_same_run_prior_site_history_null_v0_1.py"
+      - "exploration/NAAMP_PARTNER_SWITCH_PRIOR_SITE_HISTORY_NULL_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  weighted-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Confirm old fixed margins, empirical Bayes historical scores and reproducibility
+        run: |
+          python -m py_compile exploration/run_naamp_same_run_prior_site_history_null_v0_1.py
+          python exploration/run_naamp_same_run_prior_site_history_null_v0_1.py --synthetic-only
+
+  original-versus-earlier-site-history:
+    needs: weighted-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Fetch response-blind NWI geospatial buffer context
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Fetch frozen opposite-route NWI coefficients and all observed C-score references
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/nwi_frozen
+      - name: Verify original NWI research universe
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          g=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert g["preflight_eligible"] and g["mode"]=="full"
+          assert g["overlay"]["site_records"]==5147
+          assert len(g["overlay"]["shards"])==12
+          for m in ("any","strong"):
+              assert (Path("build/nwi_frozen")/f"{m}_train_coefficients.json").is_file()
+              assert (Path("build/nwi_frozen")/f"{m}_heldout_run_diagnostics.csv").is_file()
+          print("PASS unchanged NWI source and previously route-cross-fitted taxon preferences")
+          PY
+      - name: Reconstruct strictly older years then compare same-run partner contrast under NWI and history null
+        run: |
+          python -u exploration/run_naamp_same_run_prior_site_history_null_v0_1.py \
+            --frozen-nwi build/nwi_frozen \
+            --outdir build/prior_site_history_partner
+      - name: Reject mismatched original C-score population, unsupported causal language or wrong scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/prior_site_history_partner/result.json").read_text())
+          assert x["synthetic_QA"]["status"]=="PASS"
+          assert x["modes"]["any"]["coverage"]["original_NWI_matrices"]==3659
+          assert x["modes"]["strong"]["coverage"]["original_NWI_matrices"]==1766
+          assert x["modes"]["any"]["coverage"]["original_observed_Cscore_verified"]==3659
+          assert x["modes"]["strong"]["coverage"]["original_observed_Cscore_verified"]==1766
+          assert x["settings"]["only_strictly_prior_years_for_history"]
+          assert x["interpretation_boundary"]["causal_biotic_interactions_established"] is False
+          assert x["interpretation_boundary"]["no_frozen_RC6_paper_or_SI_change"]
+          print("PASS reference population, historical leak prevention, and post-hoc boundaries")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-same-survey-frog-partner-prior-SiteID-null-v0-1
+          path: build/prior_site_history_partner/
+          if-no-files-found: warn
