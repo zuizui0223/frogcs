@@ -1,0 +1,1270 @@
+{
+  "analysis": "naamp_frog_partner_specific_same_run_site_contrast_v0_1",
+  "contract": "exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_CONTRACT_2026_10_21.md",
+  "frozen_species": [
+    [
+      "Lithobates clamitans",
+      "Lithobates catesbeianus",
+      "Hyla versicolor"
+    ],
+    [
+      "Lithobates clamitans",
+      "Lithobates catesbeianus",
+      "Anaxyrus fowleri"
+    ]
+  ],
+  "interpretation_boundary": {
+    "RC6_manuscript_and_submission_changed": false,
+    "causal_biotic_interaction_inferred": false,
+    "original_first_order_NWI_trained_both_time_periods": true,
+    "shared_route_night_does_not_imply_simultaneous_signaling": true,
+    "species_coactivation_measured_only_acoustically": true,
+    "triad_is_common_survey_comparison_not_higher_order_interaction": true,
+    "unmeasured_hydrological_and_predator_context_remains": true
+  },
+  "modes": {
+    "any": {
+      "coverage": {
+        "focal_runs_with_zero_accepted_moves": 0,
+        "source_reference_matrices": 3659,
+        "with_any_focal_trio": 1127
+      },
+      "mode": "any",
+      "triads": {
+        "Lithobates clamitans || Lithobates catesbeianus || Anaxyrus fowleri": {
+          "D_BH_q_two_fixed_trios": 1.0512783603528786e-32,
+          "LOO_State_D": {
+            "all": [
+              {
+                "beta": 0.05418146768324382,
+                "ci95": [
+                  0.044684019501846056,
+                  0.06367891586464158
+                ],
+                "omit_state": "Delaware"
+              },
+              {
+                "beta": 0.05367282271228754,
+                "ci95": [
+                  0.04415518148615262,
+                  0.06319046393842247
+                ],
+                "omit_state": "Georgia"
+              },
+              {
+                "beta": 0.05131032738061015,
+                "ci95": [
+                  0.041504061389454706,
+                  0.061116593371765594
+                ],
+                "omit_state": "Indiana"
+              },
+              {
+                "beta": 0.053769781744543624,
+                "ci95": [
+                  0.04485673779803711,
+                  0.06268282569105013
+                ],
+                "omit_state": "Kentucky"
+              },
+              {
+                "beta": 0.05405544098140026,
+                "ci95": [
+                  0.04499456963826443,
+                  0.0631163123245361
+                ],
+                "omit_state": "Maryland"
+              },
+              {
+                "beta": 0.05370321758043953,
+                "ci95": [
+                  0.04479887241728339,
+                  0.06260756274359566
+                ],
+                "omit_state": "Massachusetts"
+              },
+              {
+                "beta": 0.05571859296482413,
+                "ci95": [
+                  0.046383685397471106,
+                  0.06505350053217715
+                ],
+                "omit_state": "Mississippi"
+              },
+              {
+                "beta": 0.055469496241538255,
+                "ci95": [
+                  0.04583110188993514,
+                  0.06510789059314137
+                ],
+                "omit_state": "NewJersey"
+              },
+              {
+                "beta": 0.0542694676389466,
+                "ci95": [
+                  0.045296328932485655,
+                  0.06324260634540754
+                ],
+                "omit_state": "NewYork"
+              },
+              {
+                "beta": 0.053625917397370576,
+                "ci95": [
+                  0.04457329134349198,
+                  0.06267854345124918
+                ],
+                "omit_state": "NorthCarolina"
+              },
+              {
+                "beta": 0.05422831101503792,
+                "ci95": [
+                  0.04532405776582357,
+                  0.06313256426425226
+                ],
+                "omit_state": "Pennsylvania"
+              },
+              {
+                "beta": 0.05497795490864283,
+                "ci95": [
+                  0.04585407559342753,
+                  0.06410183422385812
+                ],
+                "omit_state": "SouthCarolina"
+              },
+              {
+                "beta": 0.05346292531359083,
+                "ci95": [
+                  0.04446714913434088,
+                  0.062458701492840774
+                ],
+                "omit_state": "Tennessee"
+              },
+              {
+                "beta": 0.05393532077565742,
+                "ci95": [
+                  0.044315830665985434,
+                  0.06355481088532941
+                ],
+                "omit_state": "Virginia"
+              }
+            ],
+            "n_omit_states": 14,
+            "n_positive": 14,
+            "n_positive_ci": 14,
+            "positive_fraction": 1,
+            "range_beta": [
+              0.05131032738061015,
+              0.05571859296482413
+            ],
+            "status": "fitted"
+          },
+          "eligibility": "eligible",
+          "geographic_direction_stable": true,
+          "mean_PEM_cover_range": 0.0467542063197026,
+          "mean_weighted_trade_acceptance": 0.6988070805536913,
+          "n_routes": 175,
+          "n_same_run_triples": 538,
+          "n_states": 14,
+          "n_variably_randomizable": 520,
+          "species_trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Anaxyrus fowleri"
+          ],
+          "summary": {
+            "CN_resid": {
+              "early": {
+                "beta": -0.017765551897418123,
+                "ci95": [
+                  -0.025248169833519206,
+                  -0.010282933961317041
+                ],
+                "n_routes": 114,
+                "n_runs": 232,
+                "p_two_sided": 0.000003264578061790163,
+                "route_se": 0.003817732364024552,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.015150378759468987,
+                  "n_routes": 87,
+                  "n_runs": 268
+                },
+                "B": {
+                  "mean": -0.017949004280662574,
+                  "n_routes": 88,
+                  "n_runs": 270
+                }
+              },
+              "late": {
+                "beta": -0.015637008572273133,
+                "ci95": [
+                  -0.021950980823864652,
+                  -0.009323036320681613
+                ],
+                "n_routes": 119,
+                "n_runs": 306,
+                "p_two_sided": 0.0000012100034576578166,
+                "route_se": 0.00322147360941085,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": -0.016554893426239004,
+                "ci95": [
+                  -0.021816388374297134,
+                  -0.011293398478180873
+                ],
+                "n_routes": 175,
+                "n_runs": 538,
+                "p_two_sided": 6.96516679656616e-10,
+                "route_se": 0.002684485526040341,
+                "status": "fitted"
+              }
+            },
+            "CP_resid": {
+              "early": {
+                "beta": 0.0330965170680991,
+                "ci95": [
+                  0.02521785973730779,
+                  0.04097517439889041
+                ],
+                "n_routes": 114,
+                "n_runs": 232,
+                "p_two_sided": 1.8200334825891453e-16,
+                "route_se": 0.004019796992667802,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.03730030750768768,
+                  "n_routes": 87,
+                  "n_runs": 268
+                },
+                "B": {
+                  "mean": 0.03769402568397543,
+                  "n_routes": 88,
+                  "n_runs": 270
+                }
+              },
+              "late": {
+                "beta": 0.040834893421355135,
+                "ci95": [
+                  0.032721799511032865,
+                  0.048947987331677406
+                ],
+                "n_routes": 119,
+                "n_runs": 306,
+                "p_two_sided": 5.90889260652866e-23,
+                "route_se": 0.004139409690339885,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.037497898414003104,
+                "ci95": [
+                  0.031603031505788776,
+                  0.04339276532221743
+                ],
+                "n_routes": 175,
+                "n_runs": 538,
+                "p_two_sided": 1.1222778588629307e-35,
+                "route_se": 0.0030076404233507813,
+                "status": "fitted"
+              }
+            },
+            "D": {
+              "early": {
+                "beta": 0.050862068965517246,
+                "ci95": [
+                  0.03862125737908917,
+                  0.06310288055194532
+                ],
+                "n_routes": 114,
+                "n_runs": 232,
+                "p_two_sided": 3.8277691789967893e-16,
+                "route_se": 0.006245426795074827,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.05245068626715668,
+                  "n_routes": 87,
+                  "n_runs": 268
+                },
+                "B": {
+                  "mean": 0.055643029964638,
+                  "n_routes": 88,
+                  "n_runs": 270
+                }
+              },
+              "late": {
+                "beta": 0.056471901993628275,
+                "ci95": [
+                  0.04479950413502719,
+                  0.06814429985222936
+                ],
+                "n_routes": 119,
+                "n_runs": 306,
+                "p_two_sided": 2.4838871510093643e-21,
+                "route_se": 0.005955414462036788,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.05405279184024213,
+                "ci95": [
+                  0.045157528330494114,
+                  0.06294805534999015
+                ],
+                "n_routes": 175,
+                "n_runs": 538,
+                "p_two_sided": 1.0512783603528786e-32,
+                "route_se": 0.004538483145564265,
+                "status": "fitted"
+              }
+            }
+          },
+          "supported_within_run_partner_contrast_candidate": true,
+          "time": {
+            "early_runs": 232,
+            "late_runs": 306
+          },
+          "year_strata_sign_consistent": true
+        },
+        "Lithobates clamitans || Lithobates catesbeianus || Hyla versicolor": {
+          "D_BH_q_two_fixed_trios": 4.436623236754085e-45,
+          "LOO_State_D": {
+            "all": [
+              {
+                "beta": 0.04480215739833329,
+                "ci95": [
+                  0.03837535188248272,
+                  0.05122896291418386
+                ],
+                "omit_state": "Delaware"
+              },
+              {
+                "beta": 0.04440185423240232,
+                "ci95": [
+                  0.037780112271234366,
+                  0.05102359619357027
+                ],
+                "omit_state": "Indiana"
+              },
+              {
+                "beta": 0.0446286990508096,
+                "ci95": [
+                  0.03823267547565763,
+                  0.05102472262596157
+                ],
+                "omit_state": "Iowa"
+              },
+              {
+                "beta": 0.050749588207259264,
+                "ci95": [
+                  0.043726364820112384,
+                  0.05777281159440614
+                ],
+                "omit_state": "Maine"
+              },
+              {
+                "beta": 0.044750551062789266,
+                "ci95": [
+                  0.038242399293150396,
+                  0.05125870283242814
+                ],
+                "omit_state": "Maryland"
+              },
+              {
+                "beta": 0.04570634236270108,
+                "ci95": [
+                  0.039464667140759746,
+                  0.05194801758464242
+                ],
+                "omit_state": "Massachusetts"
+              },
+              {
+                "beta": 0.04559327248487334,
+                "ci95": [
+                  0.039249222822360035,
+                  0.051937322147386646
+                ],
+                "omit_state": "Mississippi"
+              },
+              {
+                "beta": 0.04617492561959943,
+                "ci95": [
+                  0.0396301742121347,
+                  0.05271967702706416
+                ],
+                "omit_state": "NewHampshire"
+              },
+              {
+                "beta": 0.044200260562069604,
+                "ci95": [
+                  0.03748510913149947,
+                  0.05091541199263974
+                ],
+                "omit_state": "NewJersey"
+              },
+              {
+                "beta": 0.04524801426487276,
+                "ci95": [
+                  0.038340962362977314,
+                  0.0521550661667682
+                ],
+                "omit_state": "NewYork"
+              },
+              {
+                "beta": 0.0449748743718593,
+                "ci95": [
+                  0.03867681702187487,
+                  0.051272931721843724
+                ],
+                "omit_state": "Pennsylvania"
+              },
+              {
+                "beta": 0.04499535722088703,
+                "ci95": [
+                  0.038687773808672166,
+                  0.051302940633101896
+                ],
+                "omit_state": "Tennessee"
+              },
+              {
+                "beta": 0.045725201349211805,
+                "ci95": [
+                  0.03935428624338726,
+                  0.052096116455036354
+                ],
+                "omit_state": "Vermont"
+              },
+              {
+                "beta": 0.045269502273271124,
+                "ci95": [
+                  0.038432573208030944,
+                  0.052106431338511304
+                ],
+                "omit_state": "Virginia"
+              },
+              {
+                "beta": 0.04462586907138431,
+                "ci95": [
+                  0.03834227714608679,
+                  0.050909460996681824
+                ],
+                "omit_state": "WestVirginia"
+              }
+            ],
+            "n_omit_states": 15,
+            "n_positive": 15,
+            "n_positive_ci": 15,
+            "positive_fraction": 1,
+            "range_beta": [
+              0.044200260562069604,
+              0.050749588207259264
+            ],
+            "status": "fitted"
+          },
+          "eligibility": "eligible",
+          "geographic_direction_stable": true,
+          "mean_PEM_cover_range": 0.07363861021505376,
+          "mean_weighted_trade_acceptance": 0.7060973423985936,
+          "n_routes": 198,
+          "n_same_run_triples": 744,
+          "n_states": 15,
+          "n_variably_randomizable": 622,
+          "species_trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Hyla versicolor"
+          ],
+          "summary": {
+            "CN_resid": {
+              "early": {
+                "beta": -0.009981155778894479,
+                "ci95": [
+                  -0.0150066695961526,
+                  -0.004955641961636357
+                ],
+                "n_routes": 151,
+                "n_runs": 400,
+                "p_two_sided": 0.00009914380599940404,
+                "route_se": 0.00256408477752588,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.01026029618994443,
+                  "n_routes": 102,
+                  "n_runs": 378
+                },
+                "B": {
+                  "mean": -0.008953236125985118,
+                  "n_routes": 96,
+                  "n_runs": 366
+                }
+              },
+              "late": {
+                "beta": -0.009194226948696968,
+                "ci95": [
+                  -0.014746250216410382,
+                  -0.0036422036809835552
+                ],
+                "n_routes": 120,
+                "n_runs": 344,
+                "p_two_sided": 0.0011715098607417626,
+                "route_se": 0.002832716984346174,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": -0.009617306964932184,
+                "ci95": [
+                  -0.013464985657074827,
+                  -0.00576962827278954
+                ],
+                "n_routes": 198,
+                "n_runs": 744,
+                "p_two_sided": 9.635146290772528e-7,
+                "route_se": 0.0019631374466534297,
+                "status": "fitted"
+              }
+            },
+            "CP_resid": {
+              "early": {
+                "beta": 0.03585050251256283,
+                "ci95": [
+                  0.02999281797952477,
+                  0.04170818704560089
+                ],
+                "n_routes": 151,
+                "n_runs": 400,
+                "p_two_sided": 3.752694987612155e-33,
+                "route_se": 0.0029886694751754274,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.03429581771290314,
+                  "n_routes": 102,
+                  "n_runs": 378
+                },
+                "B": {
+                  "mean": 0.037335585028969984,
+                  "n_routes": 96,
+                  "n_runs": 366
+                }
+              },
+              "late": {
+                "beta": 0.03572221572981184,
+                "ci95": [
+                  0.029977426068134763,
+                  0.04146700539148891
+                ],
+                "n_routes": 120,
+                "n_runs": 344,
+                "p_two_sided": 3.6265270605812314e-34,
+                "route_se": 0.002931068992589274,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.035791187118387635,
+                "ci95": [
+                  0.03134545629452695,
+                  0.04023691794224832
+                ],
+                "n_routes": 198,
+                "n_runs": 744,
+                "p_two_sided": 4.336215443486888e-56,
+                "route_se": 0.002268271692198447,
+                "status": "fitted"
+              }
+            },
+            "D": {
+              "early": {
+                "beta": 0.045831658291457314,
+                "ci95": [
+                  0.03756296155212219,
+                  0.05410035503079244
+                ],
+                "n_routes": 151,
+                "n_runs": 400,
+                "p_two_sided": 1.717052418389204e-27,
+                "route_se": 0.004218800347637789,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.04455611390284757,
+                  "n_routes": 102,
+                  "n_runs": 378
+                },
+                "B": {
+                  "mean": 0.04628882115495511,
+                  "n_routes": 96,
+                  "n_runs": 366
+                }
+              },
+              "late": {
+                "beta": 0.04491644267850881,
+                "ci95": [
+                  0.036263711815563524,
+                  0.0535691735414541
+                ],
+                "n_routes": 120,
+                "n_runs": 344,
+                "p_two_sided": 2.5851681655343766e-24,
+                "route_se": 0.004414739725421962,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.04540849408331982,
+                "ci95": [
+                  0.03911342443460908,
+                  0.051703563732030555
+                ],
+                "n_routes": 198,
+                "n_runs": 744,
+                "p_two_sided": 2.2183116183770426e-45,
+                "route_se": 0.0032118292470501714,
+                "status": "fitted"
+              }
+            }
+          },
+          "supported_within_run_partner_contrast_candidate": true,
+          "time": {
+            "early_runs": 400,
+            "late_runs": 344
+          },
+          "year_strata_sign_consistent": true
+        }
+      }
+    },
+    "strong": {
+      "coverage": {
+        "focal_runs_with_zero_accepted_moves": 0,
+        "source_reference_matrices": 1766,
+        "with_any_focal_trio": 225
+      },
+      "mode": "strong",
+      "triads": {
+        "Lithobates clamitans || Lithobates catesbeianus || Anaxyrus fowleri": {
+          "D_BH_q_two_fixed_trios": 2.777763050034429e-8,
+          "LOO_State_D": {
+            "all": [
+              {
+                "beta": 0.05187803423899156,
+                "ci95": [
+                  0.031276572825155474,
+                  0.07247949565282764
+                ],
+                "omit_state": "Delaware"
+              },
+              {
+                "beta": 0.047623362715215424,
+                "ci95": [
+                  0.02964402492652276,
+                  0.0656027005039081
+                ],
+                "omit_state": "Georgia"
+              },
+              {
+                "beta": 0.057950466618808344,
+                "ci95": [
+                  0.03622819083453756,
+                  0.07967274240307913
+                ],
+                "omit_state": "Indiana"
+              },
+              {
+                "beta": 0.05531177011819665,
+                "ci95": [
+                  0.0363666642890133,
+                  0.07425687594738001
+                ],
+                "omit_state": "Maryland"
+              },
+              {
+                "beta": 0.05331587515039991,
+                "ci95": [
+                  0.03435035208202675,
+                  0.07228139821877308
+                ],
+                "omit_state": "Massachusetts"
+              },
+              {
+                "beta": 0.053974417542256764,
+                "ci95": [
+                  0.03426146919581309,
+                  0.07368736588870044
+                ],
+                "omit_state": "Mississippi"
+              },
+              {
+                "beta": 0.05688892222305558,
+                "ci95": [
+                  0.03695892321137119,
+                  0.07681892123473998
+                ],
+                "omit_state": "NewJersey"
+              },
+              {
+                "beta": 0.05457445959958523,
+                "ci95": [
+                  0.03357874731450247,
+                  0.07557017188466798
+                ],
+                "omit_state": "NorthCarolina"
+              },
+              {
+                "beta": 0.05403779460683703,
+                "ci95": [
+                  0.034984555157088384,
+                  0.07309103405658568
+                ],
+                "omit_state": "SouthCarolina"
+              },
+              {
+                "beta": 0.05352133803345084,
+                "ci95": [
+                  0.03365053910998063,
+                  0.07339213695692105
+                ],
+                "omit_state": "Tennessee"
+              },
+              {
+                "beta": 0.058934377771209,
+                "ci95": [
+                  0.039876500741910945,
+                  0.07799225480050706
+                ],
+                "omit_state": "Virginia"
+              }
+            ],
+            "n_omit_states": 11,
+            "n_positive": 11,
+            "n_positive_ci": 11,
+            "positive_fraction": 1,
+            "range_beta": [
+              0.047623362715215424,
+              0.058934377771209
+            ],
+            "status": "fitted"
+          },
+          "eligibility": "eligible",
+          "geographic_direction_stable": true,
+          "mean_PEM_cover_range": 0.071066625,
+          "mean_weighted_trade_acceptance": 0.6617472178422277,
+          "n_routes": 48,
+          "n_same_run_triples": 72,
+          "n_states": 11,
+          "n_variably_randomizable": 66,
+          "species_trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Anaxyrus fowleri"
+          ],
+          "summary": {
+            "CN_resid": {
+              "early": {
+                "beta": -0.022535755701584843,
+                "ci95": [
+                  -0.03730102967215204,
+                  -0.007770481731017643
+                ],
+                "n_routes": 22,
+                "n_runs": 26,
+                "p_two_sided": 0.002776750516700726,
+                "route_se": 0.007533441474962702,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.010688055662930037,
+                  "n_routes": 19,
+                  "n_runs": 26
+                },
+                "B": {
+                  "mean": -0.026567620712256934,
+                  "n_routes": 29,
+                  "n_runs": 46
+                }
+              },
+              "late": {
+                "beta": -0.01987109460345204,
+                "ci95": [
+                  -0.030267672341617514,
+                  -0.009474516865286565
+                ],
+                "n_routes": 34,
+                "n_runs": 46,
+                "p_two_sided": 0.00017960433846235903,
+                "route_se": 0.005304473867975307,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": -0.020833333333333332,
+                "ci95": [
+                  -0.02946185014829264,
+                  -0.012204816518374026
+                ],
+                "n_routes": 48,
+                "n_runs": 72,
+                "p_two_sided": 0.000002220086449445885,
+                "route_se": 0.004402385392292893,
+                "status": "fitted"
+              }
+            },
+            "CP_resid": {
+              "early": {
+                "beta": 0.033591032083494385,
+                "ci95": [
+                  0.012201728419347514,
+                  0.05498033574764126
+                ],
+                "n_routes": 22,
+                "n_runs": 26,
+                "p_two_sided": 0.0020836430189654052,
+                "route_se": 0.010913110563695544,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.026227290297642057,
+                  "n_routes": 19,
+                  "n_runs": 26
+                },
+                "B": {
+                  "mean": 0.03771029058335154,
+                  "n_routes": 29,
+                  "n_runs": 46
+                }
+              },
+              "late": {
+                "beta": 0.03354817566091326,
+                "ci95": [
+                  0.016325409333114674,
+                  0.05077094198871185
+                ],
+                "n_routes": 34,
+                "n_runs": 46,
+                "p_two_sided": 0.00013464261205209285,
+                "route_se": 0.008787287145911645,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.03356365159128979,
+                "ci95": [
+                  0.01948751760099028,
+                  0.047639785581589295
+                ],
+                "n_routes": 48,
+                "n_runs": 72,
+                "p_two_sided": 0.000002962392491088192,
+                "route_se": 0.007181832983325335,
+                "status": "fitted"
+              }
+            },
+            "D": {
+              "early": {
+                "beta": 0.05612678778507923,
+                "ci95": [
+                  0.02720959803038602,
+                  0.08504397753977244
+                ],
+                "n_routes": 22,
+                "n_runs": 26,
+                "p_two_sided": 0.00014226898257235093,
+                "route_se": 0.014753939349288207,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.03691534596057209,
+                  "n_routes": 19,
+                  "n_runs": 26
+                },
+                "B": {
+                  "mean": 0.06427791129560849,
+                  "n_routes": 29,
+                  "n_runs": 46
+                }
+              },
+              "late": {
+                "beta": 0.053419270264365305,
+                "ci95": [
+                  0.03075362012370689,
+                  0.07608492040502372
+                ],
+                "n_routes": 34,
+                "n_runs": 46,
+                "p_two_sided": 0.000003850034058843826,
+                "route_se": 0.011564319711710099,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.05439698492462312,
+                "ci95": [
+                  0.03560918679307723,
+                  0.073184783056169
+                ],
+                "n_routes": 48,
+                "n_runs": 72,
+                "p_two_sided": 1.3888815250172146e-8,
+                "route_se": 0.009585787432698582,
+                "status": "fitted"
+              }
+            }
+          },
+          "supported_within_run_partner_contrast_candidate": true,
+          "time": {
+            "early_runs": 26,
+            "late_runs": 46
+          },
+          "year_strata_sign_consistent": true
+        },
+        "Lithobates clamitans || Lithobates catesbeianus || Hyla versicolor": {
+          "D_BH_q_two_fixed_trios": 0.0005226546471851839,
+          "LOO_State_D": {
+            "all": [
+              {
+                "beta": 0.023964132037432664,
+                "ci95": [
+                  0.010375007972685845,
+                  0.03755325610217948
+                ],
+                "omit_state": "Delaware"
+              },
+              {
+                "beta": 0.02175565326633165,
+                "ci95": [
+                  0.007930183888743888,
+                  0.03558112264391941
+                ],
+                "omit_state": "Indiana"
+              },
+              {
+                "beta": 0.021589985857430855,
+                "ci95": [
+                  0.008305658385803176,
+                  0.034874313329058534
+                ],
+                "omit_state": "Iowa"
+              },
+              {
+                "beta": 0.02693886097152429,
+                "ci95": [
+                  0.012533014187986349,
+                  0.04134470775506223
+                ],
+                "omit_state": "Maine"
+              },
+              {
+                "beta": 0.023258717831582162,
+                "ci95": [
+                  0.00950450690355979,
+                  0.03701292875960453
+                ],
+                "omit_state": "Maryland"
+              },
+              {
+                "beta": 0.023652638190954773,
+                "ci95": [
+                  0.009549953372496263,
+                  0.03775532300941328
+                ],
+                "omit_state": "Massachusetts"
+              },
+              {
+                "beta": 0.024632197130229468,
+                "ci95": [
+                  0.010956621603981927,
+                  0.03830777265647701
+                ],
+                "omit_state": "NewHampshire"
+              },
+              {
+                "beta": 0.023393282200476068,
+                "ci95": [
+                  0.009384985414674122,
+                  0.037401578986278015
+                ],
+                "omit_state": "NewJersey"
+              },
+              {
+                "beta": 0.024166607686318925,
+                "ci95": [
+                  0.009720997522463278,
+                  0.038612217850174574
+                ],
+                "omit_state": "NewYork"
+              },
+              {
+                "beta": 0.023372816463268727,
+                "ci95": [
+                  0.00982710807023389,
+                  0.036918524856303564
+                ],
+                "omit_state": "Pennsylvania"
+              },
+              {
+                "beta": 0.02417444364680546,
+                "ci95": [
+                  0.010698965480522448,
+                  0.037649921813088474
+                ],
+                "omit_state": "Tennessee"
+              },
+              {
+                "beta": 0.023507418042593924,
+                "ci95": [
+                  0.00996098980056143,
+                  0.03705384628462642
+                ],
+                "omit_state": "Vermont"
+              },
+              {
+                "beta": 0.023082077051926306,
+                "ci95": [
+                  0.008615794435444541,
+                  0.03754835966840807
+                ],
+                "omit_state": "Virginia"
+              },
+              {
+                "beta": 0.023369790127106112,
+                "ci95": [
+                  0.009983675051059808,
+                  0.03675590520315242
+                ],
+                "omit_state": "WestVirginia"
+              }
+            ],
+            "n_omit_states": 14,
+            "n_positive": 14,
+            "n_positive_ci": 14,
+            "positive_fraction": 1,
+            "range_beta": [
+              0.021589985857430855,
+              0.02693886097152429
+            ],
+            "status": "fitted"
+          },
+          "eligibility": "eligible",
+          "geographic_direction_stable": true,
+          "mean_PEM_cover_range": 0.07988369005847952,
+          "mean_weighted_trade_acceptance": 0.6833516886968051,
+          "n_routes": 81,
+          "n_same_run_triples": 171,
+          "n_states": 14,
+          "n_variably_randomizable": 130,
+          "species_trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Hyla versicolor"
+          ],
+          "summary": {
+            "CN_resid": {
+              "early": {
+                "beta": -0.005701842546063651,
+                "ci95": [
+                  -0.015729330122932872,
+                  0.004325645030805568
+                ],
+                "n_routes": 50,
+                "n_runs": 75,
+                "p_two_sided": 0.2650745307651037,
+                "route_se": 0.005116159100863466,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.0032576676485877656,
+                  "n_routes": 37,
+                  "n_runs": 87
+                },
+                "B": {
+                  "mean": -0.003505623354869585,
+                  "n_routes": 44,
+                  "n_runs": 84
+                }
+              },
+              "late": {
+                "beta": -0.0015651172529313217,
+                "ci95": [
+                  -0.011431780784461153,
+                  0.00830154627859851
+                ],
+                "n_routes": 50,
+                "n_runs": 96,
+                "p_two_sided": 0.7558745058861008,
+                "route_se": 0.00503410450873425,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": -0.0033794704516735712,
+                "ci95": [
+                  -0.01073561164093537,
+                  0.0039766707375882265
+                ],
+                "n_routes": 81,
+                "n_runs": 171,
+                "p_two_sided": 0.36789506580898257,
+                "route_se": 0.003753202225799097,
+                "status": "fitted"
+              }
+            },
+            "CP_resid": {
+              "early": {
+                "beta": 0.025594639865996645,
+                "ci95": [
+                  0.01198483664059118,
+                  0.039204443091402114
+                ],
+                "n_routes": 50,
+                "n_runs": 75,
+                "p_two_sided": 0.00022788276919095466,
+                "route_se": 0.006943904751698428,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.01904926933518166,
+                  "n_routes": 37,
+                  "n_runs": 87
+                },
+                "B": {
+                  "mean": 0.0213687485044269,
+                  "n_routes": 44,
+                  "n_runs": 84
+                }
+              },
+              "late": {
+                "beta": 0.01596524288107203,
+                "ci95": [
+                  0.0051247023100382035,
+                  0.026805783452105852
+                ],
+                "n_routes": 50,
+                "n_runs": 96,
+                "p_two_sided": 0.0038954353263663077,
+                "route_se": 0.00553098967967913,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.020188662611302123,
+                "ci95": [
+                  0.011183488808716476,
+                  0.029193836413887772
+                ],
+                "n_routes": 81,
+                "n_runs": 171,
+                "p_two_sided": 0.000011126573407018117,
+                "route_se": 0.004594560856024554,
+                "status": "fitted"
+              }
+            },
+            "D": {
+              "early": {
+                "beta": 0.0312964824120603,
+                "ci95": [
+                  0.01124241715306238,
+                  0.051350547671058226
+                ],
+                "n_routes": 50,
+                "n_runs": 75,
+                "p_two_sided": 0.0022227710971138713,
+                "route_se": 0.010231853961185935,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.02230693698376942,
+                  "n_routes": 37,
+                  "n_runs": 87
+                },
+                "B": {
+                  "mean": 0.02487437185929648,
+                  "n_routes": 44,
+                  "n_runs": 84
+                }
+              },
+              "late": {
+                "beta": 0.01753036013400335,
+                "ci95": [
+                  0.0009224681766538921,
+                  0.03413825209135281
+                ],
+                "n_routes": 50,
+                "n_runs": 96,
+                "p_two_sided": 0.03856221525118223,
+                "route_se": 0.008473569967790424,
+                "status": "fitted"
+              },
+              "overall": {
+                "beta": 0.0235681330629757,
+                "ci95": [
+                  0.010251776982343924,
+                  0.03688448914360747
+                ],
+                "n_routes": 81,
+                "n_runs": 171,
+                "p_two_sided": 0.0005226546471851839,
+                "route_se": 0.006794184069538774,
+                "status": "fitted"
+              }
+            }
+          },
+          "supported_within_run_partner_contrast_candidate": false,
+          "time": {
+            "early_runs": 75,
+            "late_runs": 96
+          },
+          "year_strata_sign_consistent": true
+        }
+      }
+    }
+  },
+  "settings": {
+    "burn_per_taxon": 40,
+    "draws": 199,
+    "preserves_stop_species_richness": true,
+    "preserves_taxon_positive_stop_margins": true,
+    "route_crossfit_habitat_weights_unchanged": true,
+    "same_10_stops_three_taxa_positive_somewhere": true,
+    "seed": 2840301,
+    "thin_per_taxon": 8
+  },
+  "source_NWI_crossfit_run": 39516056663,
+  "source_NWI_full_overlay_run": 39450277196,
+  "source_context": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "source_existing_pair_BH_screen_run": 39528330890,
+  "status": "posthoc_identical_route_night_partner_comparison_not_causal",
+  "synthetic_QA": {
+    "all_species_and_site_margins_fixed": true,
+    "same_matrix_partner_contrast_non_invariant": true,
+    "status": "PASS"
+  },
+  "provenance": {
+    "workflow_run": 39597933440,
+    "job_id": 119215016977,
+    "artifact_id": 12345635297,
+    "source_run_commit": "2f337db5c4a102fa00307bb1751b68c63f8dd664",
+    "frozen_source_NWI": 39450277196,
+    "frozen_crossfit_weights_and_reference": 39516056663,
+    "existing_discovery_BH_run": 39528330890
+  }
+}
