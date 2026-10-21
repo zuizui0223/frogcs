@@ -1,0 +1,99 @@
+name: NAAMP PEM frog-pair epoch robustness
+
+on:
+  push:
+    branches: [exploration/naamp-pem-pair-epoch-robustness-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_pem_pair_epoch_robustness_v0_1.yml"
+      - "exploration/run_naamp_pem_moderator_epoch_robustness_v0_1.py"
+      - "exploration/NAAMP_PEM_MODERATOR_EPOCH_ROBUSTNESS_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-fixed-margin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Syntax and PEM moderation non-invariance QA
+        run: |
+          python -m py_compile exploration/run_naamp_pem_moderator_epoch_robustness_v0_1.py
+          python exploration/run_naamp_pem_moderator_epoch_robustness_v0_1.py --synthetic-only
+
+  empirical-year-state-balance:
+    needs: synthetic-fixed-margin
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Download source-blind, validated full NWI station overlay
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Download frozen NWI route-fold species weights and identical fixed-margin reference
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/frozen_NWI_prior
+      - name: Verify source authority and fixed candidate set before result
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          nwi=Path("build/vegetation_context/geometry_nwi_preflight.json")
+          d=json.loads(nwi.read_text())
+          assert d["preflight_eligible"] and d["mode"]=="full"
+          assert d["overlay"]["site_records"]==5147 and len(d["overlay"]["shards"])==12
+          q=Path("build/frozen_NWI_prior")
+          for mode in ("any","strong"):
+              assert (q/f"{mode}_train_coefficients.json").is_file()
+              assert (q/f"{mode}_heldout_run_diagnostics.csv").is_file()
+          frozen=Path("exploration/NAAMP_PEM_MODERATOR_EPOCH_ROBUSTNESS_CONTRACT_V0_1.md").read_text()
+          assert "Gastrophryne carolinensis" in frozen
+          assert "Hyla gratiosa" in frozen
+          print("PASS pinned vegetation and prior NWI coefficients")
+          PY
+      - name: Retrospective date strata, equal-site fractions and state-block check
+        run: |
+          python -u exploration/run_naamp_pem_moderator_epoch_robustness_v0_1.py \
+            --source-dir build/frozen_NWI_prior \
+            --outdir build/naamp_pem_epoch_robustness
+      - name: Verify exact original population and noncausal boundaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("build/naamp_pem_epoch_robustness/result.json").read_text())
+          assert d["QA"]["status"]=="PASS"
+          assert d["modes"]["any"]["population"]["matched_original"]==3659
+          assert d["modes"]["strong"]["population"]["matched_original"]==1766
+          assert d["method"]["two_focal_pairs_selected_after_prior_all_year_analysis"] is True
+          for key in ("any","strong"):
+              assert len(d["modes"][key]["focal_pairs"])==2
+          for x in d["modes"]["any"]["focal_pairs"].values():
+              assert x["observed_matched_NWI_mixed_runs_QA"]
+          print("PASS untouched study sample, prior candidate membership and post-selection limits")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-pem-pair-epoch-state-balanced-robustness-v0-1
+          path: build/naamp_pem_epoch_robustness/
+          if-no-files-found: warn
