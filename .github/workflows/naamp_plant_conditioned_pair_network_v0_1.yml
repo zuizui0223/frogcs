@@ -1,0 +1,100 @@
+name: NAAMP plant-conditioned frog acoustic pair network (exploratory)
+
+on:
+  push:
+    branches: [exploration/naamp-multilayer-biotic-network-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_plant_conditioned_pair_network_v0_1.yml"
+      - "exploration/NAAMP_PLANT_CONDITIONED_SPECIES_PAIR_NETWORK_CONTRACT_2026_10_21.md"
+      - "exploration/run_naamp_plant_conditioned_pair_network_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-pair-and-margins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Verify exact margin, symmetric MH and taxonomic aliases
+        run: |
+          python -m py_compile exploration/run_naamp_plant_conditioned_pair_network_v0_1.py
+          python exploration/run_naamp_plant_conditioned_pair_network_v0_1.py --synthetic-only
+
+  historical-frog-pair-network:
+    needs: synthetic-pair-and-margins
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Fetch response-blind USFWS wetland + emergent polygon crosswalk
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Fetch route-cross-fitted prior NWI species-specific coefficients
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          path: build/nwi_prior_model
+      - name: Fetch original strong-calling fixed-margin checkerboard survey matrix ledger
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39436588431
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-checkerboard-exploratory-v0-1
+          path: build/frozen_checkerboard
+      - name: Verify exact fixed scientific source before reading species pair network
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["preflight_eligible"] and a["mode"]=="full"
+          assert a["overlay"]["site_records"]==5147 and len(a["overlay"]["shards"])==12
+          assert a["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          assert (Path("build/nwi_prior_model")/"strong_train_coefficients.json").is_file()
+          assert (Path("build/frozen_checkerboard")/"strong_run_level.csv").is_file()
+          print("PASS locked original plant, historical species coefficients and fixed-margin reference")
+          PY
+      - name: Estimate all frog taxon-pair residual edges, route-block CI, BH FDR
+        run: |
+          python -u exploration/run_naamp_plant_conditioned_pair_network_v0_1.py \
+            --frozen-coefficients build/nwi_prior_model/strong_train_coefficients.json \
+            --frozen-reference-strong build/frozen_checkerboard/strong_run_level.csv \
+            --outdir build/naamp_plant_conditioned_pair_network
+      - name: Confirm reproducibility sample, margins and network ledger
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("build/naamp_plant_conditioned_pair_network/result.json").read_text())
+          assert r["synthetic_QA"]["status"]=="PASS"
+          assert r["population"]["matched_frozen_strong_matrices"]==1766
+          assert r["population"]["n_routes"]==398
+          assert not r["population"]["unreliable_sampling"]
+          assert Path("build/naamp_plant_conditioned_pair_network/all_species_pairs_BH_ledger.csv").is_file()
+          assert r["source"]["all_route_train_coefficients_reused_no_refitting"] is True
+          print("PASS plant-conditioned acoustic pair network",r["network"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-nwi-crossfitted-strong-call-pair-network-v0-1
+          path: build/naamp_plant_conditioned_pair_network/
+          if-no-files-found: warn
