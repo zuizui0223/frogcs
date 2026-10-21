@@ -1,0 +1,92 @@
+name: NAAMP partner-specific same-route-run frog acoustic contrast
+
+on:
+  push:
+    branches: [exploration/naamp-same-night-partner-switching-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_same_run_partner_switch_v0_1.yml"
+      - "exploration/run_naamp_same_run_partner_switch_v0_1.py"
+      - "exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_CONTRACT_2026_10_21.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Confirm per-survey third-taxon contrast is not invariant under fixed margins
+        run: |
+          python -m py_compile exploration/run_naamp_same_run_partner_switch_v0_1.py
+          python exploration/run_naamp_same_run_partner_switch_v0_1.py --synthetic-only
+
+  empirical:
+    needs: synthetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/nwi_frozen
+      - name: Verify fixed original source and coefficients before observed triplets
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          audit=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert audit["preflight_eligible"] and audit["mode"]=="full"
+          assert audit["overlay"]["site_records"]==5147
+          assert len(audit["overlay"]["shards"])==12
+          root=Path("build/nwi_frozen")
+          for mode in ("any","strong"):
+              assert (root/f"{mode}_heldout_run_diagnostics.csv").exists()
+              assert (root/f"{mode}_train_coefficients.json").exists()
+          print("PASS original NWI route-fold and exact same 10-stop source")
+          PY
+      - name: Test conditional same-route positive and negative species partners
+        run: |
+          python -u exploration/run_naamp_same_run_partner_switch_v0_1.py \
+            --frozen-nwi build/nwi_frozen \
+            --outdir build/same_run_partner_switch
+      - name: Verify predeclared focal species and population
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/same_run_partner_switch/result.json").read_text())
+          assert x["synthetic_QA"]["status"]=="PASS"
+          assert len(x["frozen_species"])==2
+          assert x["modes"]["any"]["coverage"]["source_reference_matrices"]==3659
+          assert x["modes"]["strong"]["coverage"]["source_reference_matrices"]==1766
+          assert x["interpretation_boundary"]["causal_biotic_interaction_inferred"] is False
+          assert x["interpretation_boundary"]["RC6_manuscript_and_submission_changed"] is False
+          print("PASS fixed species, frozen margins and noncausal scope")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-same-route-partner-switch-frog-acoustic-v0-1
+          path: build/same_run_partner_switch/
+          if-no-files-found: warn
