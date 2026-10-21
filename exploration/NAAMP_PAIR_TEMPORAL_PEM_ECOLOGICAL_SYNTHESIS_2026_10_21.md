@@ -121,8 +121,8 @@ Files: `exploration/NAAMP_SAME_RUN_PARTNER_SWITCH_CONTRACT_2026_10_21.md` and `e
 |---|---:|---:|---:|---|---|
 | `L. clamitans` with `L. catesbeianus` vs `A. fowleri`, CI1–3 | **538 / 175** | +0.054585 | **+0.052607** | **+0.043869 to +0.061345** | both positive/negative pair residuals supported |
 | `L. clamitans` with `L. catesbeianus` vs `H. versicolor`, CI1–3 | **744 / 198** | +0.045248 | **+0.044291** | **+0.038030 to +0.050552** | both positive/negative pair residuals supported |
-| `L. clamitans` vs `A. fowleri`, strong CI2–3 | **72 / 48** | +0.055653 | **+0.051082** | **+0.032667 to +0.069497** | both component residuals supported |
-| `L. clamitans` vs `H. versicolor`, strong CI2–3 | **171 / 81** | +0.023841 | +0.021582 | +0.008794 to +0.034369 | relative D positive, but negative component CI still covers 0 |
+| `L. clamitans` with `L. catesbeianus` vs `A. fowleri`, strong CI2–3 | **72 / 48** | +0.055653 | **+0.051082** | **+0.032667 to +0.069497** | both component residuals supported |
+| `L. clamitans` with `L. catesbeianus` vs `H. versicolor`, strong CI2–3 | **171 / 81** | +0.023841 | +0.021582 | +0.008794 to +0.034369 | relative D positive, but negative component CI still covers 0 |
 
 For CI1–3, the adjusted components on the **same runs** were:
 - `L. clamitans` × `L. catesbeianus`: **+0.036293**, versus `L. clamitans` × `A. fowleri` **−0.016314**;
