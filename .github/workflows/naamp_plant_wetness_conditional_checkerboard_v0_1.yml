@@ -1,0 +1,97 @@
+name: NAAMP plant × DSWEmod wetness crossfit and checkerboard
+
+on:
+  push:
+    branches: [exploration/naamp-plant-wetness-interaction-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_plant_wetness_conditional_checkerboard_v0_1.yml"
+      - "exploration/run_naamp_plant_wetness_conditional_null_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-exact-k-and-margins:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Syntax, interaction identity and detailed balance tests
+        run: |
+          python -m py_compile exploration/run_naamp_plant_wetness_conditional_null_v0_1.py
+          python exploration/run_naamp_plant_wetness_conditional_null_v0_1.py --synthetic-only
+
+  source-frozen-ecology:
+    needs: synthetic-exact-k-and-margins
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Download Count-blind immutable NWI × DSWEmod source-only preflight
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39518202016
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-plant-wetness-source-only-crosswalk-v0-1
+          path: build/plant_wetness_interaction
+      - name: Download original fixed-fixed CI2–3 checkerboard C-score baseline
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39436588431
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-checkerboard-exploratory-v0-1
+          path: build/checkerboard_reference
+      - name: Fail closed on preflight drift before reading frog outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("build/plant_wetness_interaction/preflight.json").read_text())
+          assert a["preflight_eligible"] and not a["counts_outcome_file_read"]
+          assert all(a["gates"].values())
+          assert a["eligibility"]["complete_runs"]==2626
+          assert a["eligibility"]["routes"]==336
+          assert a["eligibility"]["states"]==18
+          assert a["source"]["DSWEmod_file_sha256"]=="9d2967923d7c31ace8007cf51f502c1dc56d41ffcf32383dc1b9edd133b94042"
+          assert Path("build/plant_wetness_interaction/response_blind_source_runs.jsonl").is_file()
+          assert Path("build/checkerboard_reference/strong_run_level.csv").is_file()
+          print("PASS pre-outcome NWI-DSWEmod intersection and frozen source identity")
+          PY
+      - name: Fit taxon-specific plant-by-recent-wetness interaction only on held-out routes, check future years and fixed checkerboard
+        run: |
+          python -u exploration/run_naamp_plant_wetness_conditional_null_v0_1.py \
+            --source-manifest build/plant_wetness_interaction/response_blind_source_runs.jsonl \
+            --preflight build/plant_wetness_interaction/preflight.json \
+            --reference-strong build/checkerboard_reference/strong_run_level.csv \
+            --outdir build/plant_wetness_joint
+      - name: Verify expected result and no silent model replacement
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("build/plant_wetness_joint/result.json").read_text())
+          assert j["synthetic_QA"]["H1_reduces_to_H0_at_zero_interaction"]=="PASS"
+          assert j["source_coverage"]["survey_runs"]==2626
+          assert j["route_heldout_strong_chorus_location"]["n_routes"]>=100
+          assert j["strict_year_holdout_strong_chorus_location"]["n_routes"]>=100
+          assert j["checkerboard_same_run_fixed_fixed"]["heldout_checkerboard_runs"]>=300
+          assert j["checkerboard_same_run_fixed_fixed"]["H1"]["sampling_unreliable"] is False
+          print("PASS route, future-year and weighted checkerboard evidence")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-plant-x-three-month-wetness-route-time-checkerboard-v0-1
+          path: build/plant_wetness_joint/
+          if-no-files-found: warn
