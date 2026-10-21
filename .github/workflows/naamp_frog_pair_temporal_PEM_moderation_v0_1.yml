@@ -1,0 +1,96 @@
+name: Frog pair network temporal and PEM context validation
+
+on:
+  push:
+    branches: [exploration/naamp-plant-pair-time-strata-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_frog_pair_temporal_PEM_moderation_v0_1.yml"
+      - "exploration/run_naamp_pair_temporal_pem_moderation_v0_1.py"
+      - "exploration/NAAMP_FROG_PAIR_TEMPORAL_PEM_MODERATION_CONTRACT_2026_10_21.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-PEM-and-temporal-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Syntax and fixed-margin nontrivial pair-identity QA
+        run: |
+          python -m py_compile exploration/run_naamp_pair_temporal_pem_moderation_v0_1.py
+          python exploration/run_naamp_pair_temporal_pem_moderation_v0_1.py --synthetic-only
+
+  retrospective-year-and-plant-site:
+    needs: synthetic-PEM-and-temporal-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Fetch unchanged outcome-blind 12-shard NWI site crosswalk
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Fetch unchanged opposite-route-fold taxon NWI coefficients and run reference
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/frozen_NWI_pair
+      - name: Verify frozen prior reference population before frog outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("build/vegetation_context")
+          meta=json.loads((root/"geometry_nwi_preflight.json").read_text())
+          assert meta["preflight_eligible"] and meta["mode"]=="full"
+          assert meta["overlay"]["site_records"]==5147
+          assert len(meta["overlay"]["shards"])==12
+          inp=Path("build/frozen_NWI_pair")
+          for x in ("any","strong"):
+              assert (inp/f"{x}_train_coefficients.json").exists()
+              assert (inp/f"{x}_heldout_run_diagnostics.csv").exists()
+          print("PASS NWI 12-shard blind geocoding and original species-fixed null authority")
+          PY
+      - name: Compute year-stratified taxa-pair deviations and within-route PEM moderation
+        run: |
+          python -u exploration/run_naamp_pair_temporal_pem_moderation_v0_1.py \
+            --frozen-inputs build/frozen_NWI_pair \
+            --outdir build/naamp_frog_pair_time_PEM
+      - name: Fail closed on sample drift and false temporal independence claims
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          r=json.loads(Path("build/naamp_frog_pair_time_PEM/result.json").read_text())
+          assert r["QA"]["status"]=="PASS"
+          assert r["modes"]["any"]["sample"]["n_runs"]==3659
+          assert r["modes"]["strong"]["sample"]["n_runs"]==1766
+          assert r["settings"]["NWI_coefficient_training_across_both_epochs"] is True
+          assert r["inference_boundaries"]["causal_pair_interactions_established"] is False
+          assert len(r["modes"]["any"]["focal_pairs"])==3
+          print("PASS original frozen NWI sample and observational result boundary")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-frog-pair-temporal-PEM-context-v0-1
+          path: build/naamp_frog_pair_time_PEM/
+          if-no-files-found: warn
