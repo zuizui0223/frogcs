@@ -32,6 +32,13 @@ BOOT_SEED=2840310
 RIDGE=3.0
 BETA_LIMIT=3.0
 SOURCE_NWI_RUN=39516056663
+
+def json_native(x):
+    """Only convert NumPy container/scalar wrappers in diagnostics."""
+    if isinstance(x,np.generic):return x.item()
+    if isinstance(x,np.ndarray):return x.tolist()
+    raise TypeError(f"Cannot JSON serialize {type(x).__name__}")
+
 EXPECTED={"any":{"Hyla versicolor":744,"Anaxyrus fowleri":538},
           "strong":{"Hyla versicolor":171,"Anaxyrus fowleri":72}}
 
@@ -163,7 +170,7 @@ def fit_all(records,mode,oldcoef):
                      "n_stop_order_positive":sum(x[4]>0 for x in b.values()),
                      "per_taxon":diagnostics}
         print("M1_TAXON_TRAIN_COMPLETE",mode,fold,
-              json.dumps({k:v for k,v in audit[fold].items() if k!="per_taxon"}),flush=True)
+              json.dumps({k:v for k,v in audit[fold].items() if k!="per_taxon"},default=json_native),flush=True)
     return trained,audit
 
 def coefficients_for_run(row,mode,trained,oldcoef):
@@ -325,7 +332,7 @@ def main():
     p.add_argument("--synthetic-only",action="store_true")
     arg=p.parse_args()
     q=synthetic()
-    print("STOP_CONTEXT_SYNTHETIC_QA",json.dumps(q),flush=True)
+    print("STOP_CONTEXT_SYNTHETIC_QA",json.dumps(q,default=json_native),flush=True)
     if arg.synthetic_only:return
     if arg.frozen_nwi is None:raise RuntimeError("Need original frozen NWI coefficients and C-score")
     records,refs,coef,source_scope=pairmod.prior_inputs(arg.frozen_nwi)
@@ -372,7 +379,7 @@ def main():
                "M1_CN":v.get("models",{}).get("M1",{}).get("CN",{}).get("overall"),
                "supported":v.get("stop_adjusted_partner_configuration_supported")}
                for name,v in contrasts.items()}
-        },sort_keys=True),flush=True)
+        },sort_keys=True,default=json_native),flush=True)
     result["interpretation_boundaries"]={
       "stop_noise_and_temperature_are_contemporaneous":True,
       "crossfit_first_order_NWI_source_trained_both_time_blocks":True,
@@ -380,9 +387,9 @@ def main():
       "biological_pairwise_causation_proven":False,
       "genuine_third_order_biotic_interactions_proven":False,
       "RC6_unchanged":True}
-    (arg.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
+    (arg.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True,default=json_native)+"\n")
     print("STOP_CONTEXT_PARTNER_RESULT_BEGIN",flush=True)
-    print(json.dumps(result,sort_keys=True),flush=True)
+    print(json.dumps(result,sort_keys=True,default=json_native),flush=True)
     print("STOP_CONTEXT_PARTNER_RESULT_END",flush=True)
 
 if __name__=="__main__":
