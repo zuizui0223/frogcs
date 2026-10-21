@@ -1,0 +1,795 @@
+{
+  "analysis": "naamp_same_run_partner_NWI_vs_strict_prior_SiteID_null_v0_1",
+  "contract": "exploration/NAAMP_PARTNER_SWITCH_PRIOR_SITE_HISTORY_NULL_CONTRACT_V0_1.md",
+  "interpretation_boundary": {
+    "NWI_is_not_time_matched_to_frog_surveys": true,
+    "causal_biotic_interactions_established": false,
+    "historical_species_site_use_is_not_an_individual_memory_test": true,
+    "no_frozen_RC6_paper_or_SI_change": true,
+    "no_test_of_simultaneous_call_communication": true,
+    "prior_use_can_include_historical_biotic_processes": true
+  },
+  "modes": {
+    "any": {
+      "coverage": {
+        "history_eligible_NWI_matrices": 1979,
+        "history_eligible_matrices_with_at_least_one_focal_trio": 606,
+        "history_eligible_taxon_runs_with_nonconstant_site_score": 8289,
+        "original_NWI_matrices": 3659,
+        "original_observed_Cscore_verified": 3659
+      },
+      "focal_trios": {
+        "Lithobates clamitans || Lithobates catesbeianus || Anaxyrus fowleri": {
+          "BH_q_two_frozen_trios": 2.815191465676024e-16,
+          "fraction_partner_contrast_removed": 0.19860519656853662,
+          "history_model_collapse": false,
+          "mean_n_SiteIDs_with_prior_visits": 9.99630996309963,
+          "mean_n_prior_same_season_runs": 3.7416974169741697,
+          "models": {
+            "N0_NWI_only": {
+              "CN": {
+                "beta": -0.019249383448608364,
+                "ci95": [
+                  -0.026182505419621416,
+                  -0.012316261477595312
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 5.276900802501551e-8,
+                "se": 0.0035373721281108396,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.04084073504051625,
+                "ci95": [
+                  0.032537021054076624,
+                  0.04914444902695588
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 5.427915280058817e-22,
+                "se": 0.004236666618334961,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.06009011848912459,
+                "ci95": [
+                  0.04787030010632455,
+                  0.07230993687192463
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 5.526020760103717e-22,
+                "se": 0.006234715780079842,
+                "status": "fitted"
+              }
+            },
+            "N1_NWI_plus_prior_SiteID": {
+              "CN": {
+                "beta": -0.015114316972315455,
+                "ci95": [
+                  -0.021909170956931977,
+                  -0.008319462987698934
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 0.000013024157280373854,
+                "se": 0.0034668259407894544,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.03304159172244989,
+                "ci95": [
+                  0.025846591317562,
+                  0.040236592127337774
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 2.2420081226908135e-19,
+                "se": 0.003670986029152134,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.04815590869476535,
+                "ci95": [
+                  0.03661893869554263,
+                  0.059692878693988066
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 2.815191465676024e-16,
+                "se": 0.005886317345739446,
+                "status": "fitted"
+              }
+            },
+            "Nhalf_NWI_plus_half_prior_SiteID": {
+              "CN": {
+                "beta": -0.017307941923640345,
+                "ci95": [
+                  -0.024283377860759306,
+                  -0.010332505986521384
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 0.000001155028017333603,
+                "se": 0.0035589612830339277,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.03725639266442915,
+                "ci95": [
+                  0.02930450575935678,
+                  0.04520827956950152
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 4.1973030549296505e-20,
+                "se": 0.004057159706910862,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.05456433458806951,
+                "ci95": [
+                  0.042460524852371846,
+                  0.06666814432376716
+                ],
+                "n_routes": 102,
+                "n_runs": 271,
+                "p_two_sided": 9.958381793877507e-19,
+                "se": 0.006175526607208585,
+                "status": "fitted"
+              }
+            }
+          },
+          "n_history_null_varying": 261,
+          "n_routes": 102,
+          "n_states": 12,
+          "n_trio_runs": 271,
+          "not_conclusive_for_individual_behavior": true,
+          "persistent_partner_identity_residual_candidate": true,
+          "residual_D_reduction_N1_relative_to_N0": {
+            "beta": 0.011934209794359255,
+            "ci95": [
+              0.00841869041326609,
+              0.01544972917545242
+            ],
+            "n_routes": 102,
+            "n_runs": 271,
+            "p_two_sided": 2.861411878797996e-11,
+            "se": 0.0017936652963131637,
+            "status": "fitted"
+          },
+          "route_fold_mean": {
+            "A": {
+              "baseline_D": 0.05591690848609244,
+              "history_D": 0.04186778965248779,
+              "n_runs": 142
+            },
+            "B": {
+              "baseline_D": 0.06468388453897393,
+              "history_D": 0.05507771415215613,
+              "n_runs": 129
+            }
+          },
+          "status": "fitted",
+          "time": {
+            "early": {
+              "difference_mean": 0.012466745492166717,
+              "history_model_mean": 0.05219479751699675,
+              "n_routes": 34,
+              "n_runs": 68,
+              "original_baseline_mean": 0.06466154300916346
+            },
+            "late": {
+              "difference_mean": 0.011755823452236552,
+              "history_model_mean": 0.04680298041933807,
+              "n_routes": 83,
+              "n_runs": 203,
+              "original_baseline_mean": 0.058558803871574625
+            }
+          },
+          "time_inference": {
+            "early": {
+              "NWI_D": {
+                "beta": 0.06466154300916346,
+                "ci95": [
+                  0.048013411879526555,
+                  0.08130967413880037
+                ],
+                "n_routes": 34,
+                "n_runs": 68,
+                "p_two_sided": 2.6879454798296504e-14,
+                "se": 0.00849410053498699,
+                "status": "fitted"
+              },
+              "NWI_plus_history_D": {
+                "beta": 0.052194797516996745,
+                "ci95": [
+                  0.035445592527117424,
+                  0.06894400250687607
+                ],
+                "n_routes": 34,
+                "n_runs": 68,
+                "p_two_sided": 1.0104672677010709e-9,
+                "se": 0.008545669778625992,
+                "status": "fitted"
+              }
+            },
+            "late": {
+              "NWI_D": {
+                "beta": 0.058558803871574604,
+                "ci95": [
+                  0.04328280393578582,
+                  0.07383480380736339
+                ],
+                "n_routes": 83,
+                "n_runs": 203,
+                "p_two_sided": 5.765588256640272e-14,
+                "se": 0.00779402073521959,
+                "status": "fitted"
+              },
+              "NWI_plus_history_D": {
+                "beta": 0.04680298041933806,
+                "ci95": [
+                  0.03240818091563573,
+                  0.06119777992304039
+                ],
+                "n_routes": 83,
+                "n_runs": 203,
+                "p_two_sided": 1.8586222871454982e-10,
+                "se": 0.007344420416521257,
+                "status": "fitted"
+              }
+            }
+          }
+        },
+        "Lithobates clamitans || Lithobates catesbeianus || Hyla versicolor": {
+          "BH_q_two_frozen_trios": 8.30058633421098e-20,
+          "fraction_partner_contrast_removed": 0.24387967943791838,
+          "history_model_collapse": false,
+          "mean_n_SiteIDs_with_prior_visits": 9.995157384987893,
+          "mean_n_prior_same_season_runs": 4.046004842615012,
+          "models": {
+            "N0_NWI_only": {
+              "CN": {
+                "beta": -0.009265455607334496,
+                "ci95": [
+                  -0.014582474151221072,
+                  -0.00394843706344792
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 0.000636789918983365,
+                "se": 0.00271281441180886,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.03506758976480465,
+                "ci95": [
+                  0.02954842367689101,
+                  0.0405867558527183
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 1.34368654865459e-35,
+                "se": 0.002815952809055739,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.044333045372139154,
+                "ci95": [
+                  0.03638615349814613,
+                  0.052279937246132176
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 7.929093134178646e-28,
+                "se": 0.004054611174836422,
+                "status": "fitted"
+              }
+            },
+            "N1_NWI_plus_prior_SiteID": {
+              "CN": {
+                "beta": -0.007245671456556393,
+                "ci95": [
+                  -0.012195680708579671,
+                  -0.0022956622045331157
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 0.004118563475280937,
+                "se": 0.0025255613322838167,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.026275445021718774,
+                "ci95": [
+                  0.021748523682320022,
+                  0.030802366361117526
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 5.497485913221139e-30,
+                "se": 0.0023096961858006223,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.033521116478275166,
+                "ci95": [
+                  0.026367419636843737,
+                  0.0406748133197066
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 4.15029316710549e-20,
+                "se": 0.0036499123952577076,
+                "status": "fitted"
+              }
+            },
+            "Nhalf_NWI_plus_half_prior_SiteID": {
+              "CN": {
+                "beta": -0.008251913319624762,
+                "ci95": [
+                  -0.013321931485367089,
+                  -0.003181895153882435
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 0.0014226357327833201,
+                "se": 0.0025867914950141856,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.030689768454865134,
+                "ci95": [
+                  0.025711741944915815,
+                  0.03566779496481445
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 1.2946576468542955e-33,
+                "se": 0.0025398561143038113,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.03894168177448989,
+                "ci95": [
+                  0.03154447888725353,
+                  0.04633888466172625
+                ],
+                "n_routes": 131,
+                "n_runs": 413,
+                "p_two_sided": 5.843127181660061e-25,
+                "se": 0.003774152456669893,
+                "status": "fitted"
+              }
+            }
+          },
+          "n_history_null_varying": 349,
+          "n_routes": 131,
+          "n_states": 13,
+          "n_trio_runs": 413,
+          "not_conclusive_for_individual_behavior": true,
+          "persistent_partner_identity_residual_candidate": true,
+          "residual_D_reduction_N1_relative_to_N0": {
+            "beta": 0.010811928893863999,
+            "ci95": [
+              0.0075088780568618625,
+              0.014114979730866135
+            ],
+            "n_routes": 131,
+            "n_runs": 413,
+            "p_two_sided": 1.4028650876790665e-10,
+            "se": 0.0016852609859447313,
+            "status": "fitted"
+          },
+          "route_fold_mean": {
+            "A": {
+              "baseline_D": 0.04329602558245775,
+              "history_D": 0.032880310644129745,
+              "n_runs": 220
+            },
+            "B": {
+              "baseline_D": 0.04551514046918531,
+              "history_D": 0.03425156872445127,
+              "n_runs": 193
+            }
+          },
+          "status": "fitted",
+          "time": {
+            "early": {
+              "difference_mean": 0.009704007844098543,
+              "history_model_mean": 0.03595416104914818,
+              "n_routes": 77,
+              "n_runs": 164,
+              "original_baseline_mean": 0.04565816889324672
+            },
+            "late": {
+              "difference_mean": 0.011541643962785817,
+              "history_model_mean": 0.03191862929103348,
+              "n_routes": 92,
+              "n_runs": 249,
+              "original_baseline_mean": 0.04346027325381929
+            }
+          },
+          "time_inference": {
+            "early": {
+              "NWI_D": {
+                "beta": 0.04565816889324672,
+                "ci95": [
+                  0.03267482018320029,
+                  0.05864151760329315
+                ],
+                "n_routes": 77,
+                "n_runs": 164,
+                "p_two_sided": 5.4801421825124016e-12,
+                "se": 0.006624279227811037,
+                "status": "fitted"
+              },
+              "NWI_plus_history_D": {
+                "beta": 0.035954161049148184,
+                "ci95": [
+                  0.023234350700801907,
+                  0.048673971397494464
+                ],
+                "n_routes": 77,
+                "n_runs": 164,
+                "p_two_sided": 3.023207650070459e-8,
+                "se": 0.006489818409255741,
+                "status": "fitted"
+              }
+            },
+            "late": {
+              "NWI_D": {
+                "beta": 0.04346027325381932,
+                "ci95": [
+                  0.03405901005438756,
+                  0.05286153645325108
+                ],
+                "n_routes": 92,
+                "n_runs": 249,
+                "p_two_sided": 1.2980010946676244e-19,
+                "se": 0.004796650996440611,
+                "status": "fitted"
+              },
+              "NWI_plus_history_D": {
+                "beta": 0.03191862929103348,
+                "ci95": [
+                  0.02334352898773861,
+                  0.04049372959432835
+                ],
+                "n_routes": 92,
+                "n_runs": 249,
+                "p_two_sided": 2.976242593117979e-13,
+                "se": 0.004375131569219723,
+                "status": "fitted"
+              }
+            }
+          }
+        }
+      },
+      "strict_prior_SiteID_heldout_call_site_logscore": {
+        "ci95_route_boot": [
+          0.42987936202696286,
+          0.5144300406361961
+        ],
+        "gain_CI_positive": true,
+        "mean_gain_nats_per_taxon_run": 0.4732821026243062,
+        "n_boot": 2000,
+        "n_routes": 344,
+        "n_taxon_runs": 9153,
+        "status": "fitted"
+      }
+    },
+    "strong": {
+      "coverage": {
+        "history_eligible_NWI_matrices": 967,
+        "history_eligible_matrices_with_at_least_one_focal_trio": 122,
+        "history_eligible_taxon_runs_with_nonconstant_site_score": 3196,
+        "original_NWI_matrices": 1766,
+        "original_observed_Cscore_verified": 1766
+      },
+      "focal_trios": {
+        "Lithobates clamitans || Lithobates catesbeianus || Anaxyrus fowleri": {
+          "n_history_null_varying": 29,
+          "n_routes": 22,
+          "n_trio_runs": 34,
+          "status": "insufficient_prior_history_scope"
+        },
+        "Lithobates clamitans || Lithobates catesbeianus || Hyla versicolor": {
+          "BH_q_two_frozen_trios": 0.0374388233308662,
+          "fraction_partner_contrast_removed": 0.296153019557275,
+          "history_model_collapse": true,
+          "mean_n_SiteIDs_with_prior_visits": 9.989473684210527,
+          "mean_n_prior_same_season_runs": 3.9789473684210526,
+          "models": {
+            "N0_NWI_only": {
+              "CN": {
+                "beta": -0.006887066913514943,
+                "ci95": [
+                  -0.01622547676327704,
+                  0.002451342936247153
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.14832555829704452,
+                "se": 0.004764582371626358,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.017725469452525795,
+                "ci95": [
+                  0.005454730248374366,
+                  0.029996208656677223
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.004636940212274051,
+                "se": 0.006260696268370978,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.024612536366040733,
+                "ci95": [
+                  0.006610820158234516,
+                  0.04261425257384695
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.0073682226928243185,
+                "se": 0.009184717856961382,
+                "status": "fitted"
+              }
+            },
+            "N1_NWI_plus_prior_SiteID": {
+              "CN": {
+                "beta": -0.004332187252049721,
+                "ci95": [
+                  -0.013510851892676498,
+                  0.004846477388577056
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.35492815446880366,
+                "se": 0.004683078216246275,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.01299127215022481,
+                "ci95": [
+                  0.002460418787925937,
+                  0.02352212551252368
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.015610874641336762,
+                "se": 0.005372983098345123,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.01732345940227453,
+                "ci95": [
+                  0.0010071532923713634,
+                  0.03363976551217769
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.0374388233308662,
+                "se": 0.008324798944574547,
+                "status": "fitted"
+              }
+            },
+            "Nhalf_NWI_plus_half_prior_SiteID": {
+              "CN": {
+                "beta": -0.005934937847130389,
+                "ci95": [
+                  -0.015238444297388212,
+                  0.003368568603127433
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.2111864335580187,
+                "se": 0.0047467741875068595,
+                "status": "fitted"
+              },
+              "CP": {
+                "beta": 0.014842634223750333,
+                "ci95": [
+                  0.003406312804652369,
+                  0.026278955642848295
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.010967267796834141,
+                "se": 0.0058349650857394365,
+                "status": "fitted"
+              },
+              "D": {
+                "beta": 0.02077757207088072,
+                "ci95": [
+                  0.0034189194176990866,
+                  0.03813622472406235
+                ],
+                "n_routes": 50,
+                "n_runs": 95,
+                "p_two_sided": 0.018976418892880466,
+                "se": 0.008856618177734117,
+                "status": "fitted"
+              }
+            }
+          },
+          "n_history_null_varying": 72,
+          "n_routes": 50,
+          "n_states": 12,
+          "n_trio_runs": 95,
+          "not_conclusive_for_individual_behavior": true,
+          "persistent_partner_identity_residual_candidate": false,
+          "residual_D_reduction_N1_relative_to_N0": {
+            "beta": 0.0072890769637662,
+            "ci95": [
+              0.0022572848932394564,
+              0.012320869034292943
+            ],
+            "n_routes": 50,
+            "n_runs": 95,
+            "p_two_sided": 0.004522498932644517,
+            "se": 0.002567288026829512,
+            "status": "fitted"
+          },
+          "route_fold_mean": {
+            "A": {
+              "baseline_D": 0.017793046866988002,
+              "history_D": 0.012255153317608453,
+              "n_runs": 49
+            },
+            "B": {
+              "baseline_D": 0.03187677518024907,
+              "history_D": 0.022722307188114486,
+              "n_runs": 46
+            }
+          },
+          "status": "fitted",
+          "time": {
+            "early": {
+              "difference_mean": 0.012892587939698493,
+              "history_model_mean": 0.019205402010050252,
+              "n_routes": 23,
+              "n_runs": 32,
+              "original_baseline_mean": 0.032097989949748745
+            },
+            "late": {
+              "difference_mean": 0.004442849166467256,
+              "history_model_mean": 0.016367552045944006,
+              "n_routes": 37,
+              "n_runs": 63,
+              "original_baseline_mean": 0.02081040121241126
+            }
+          },
+          "time_inference": {
+            "early": {
+              "NWI_D": {
+                "beta": 0.03209798994974876,
+                "ci95": [
+                  0.002931368692623823,
+                  0.061264611206873695
+                ],
+                "n_routes": 23,
+                "n_runs": 32,
+                "p_two_sided": 0.031009665866146282,
+                "se": 0.01488120265840981,
+                "status": "fitted"
+              },
+              "NWI_plus_history_D": {
+                "beta": 0.019205402010050256,
+                "ci95": [
+                  -0.004774485127654545,
+                  0.04318528914775506
+                ],
+                "n_routes": 23,
+                "n_runs": 32,
+                "p_two_sided": 0.11647844334555414,
+                "se": 0.012234861113191412,
+                "status": "fitted"
+              }
+            },
+            "late": {
+              "NWI_D": {
+                "beta": 0.020810401212411265,
+                "ci95": [
+                  -0.0008451343854830283,
+                  0.042465936810305555
+                ],
+                "n_routes": 37,
+                "n_runs": 63,
+                "p_two_sided": 0.05963616872353643,
+                "se": 0.01104894567895655,
+                "status": "fitted"
+              },
+              "NWI_plus_history_D": {
+                "beta": 0.016367552045944006,
+                "ci95": [
+                  -0.003707229833842876,
+                  0.03644233392573089
+                ],
+                "n_routes": 37,
+                "n_runs": 63,
+                "p_two_sided": 0.11003952843868295,
+                "se": 0.010242423859894469,
+                "status": "fitted"
+              }
+            }
+          }
+        }
+      },
+      "strict_prior_SiteID_heldout_call_site_logscore": {
+        "ci95_route_boot": [
+          0.3528957414054269,
+          0.44137665534904436
+        ],
+        "gain_CI_positive": true,
+        "mean_gain_nats_per_taxon_run": 0.3978978789801767,
+        "n_boot": 2000,
+        "n_routes": 273,
+        "n_taxon_runs": 3900,
+        "status": "fitted"
+      }
+    }
+  },
+  "prior_history_coverage": {
+    "any_nonzero_historical_score_taxa": 18276,
+    "checked_NWI_runs": 6236,
+    "insufficient_prior_stratum_or_site_support": 2929,
+    "prior_source_eligible_runs": 3307,
+    "strong_nonzero_historical_score_taxa": 13015
+  },
+  "settings": {
+    "B": 199,
+    "attenuation": 0.5,
+    "burn": 40,
+    "history_alpha": 4,
+    "history_only_same_stratum_season": true,
+    "history_strength": 1,
+    "nwi_heldout_route_weights_unchanged": true,
+    "only_strictly_prior_years_for_history": true,
+    "per_stop_taxon_richness_fixed": true,
+    "seed": 2840317,
+    "species_stop_row_sums_fixed": true,
+    "thin": 8
+  },
+  "source_NWI_crossfit_run": 39516056663,
+  "source_NWI_geography_run": 39450277196,
+  "source_context": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "source_same_run_partner_result_run": 39597933440,
+  "status": "posthoc_new_first_order_site_history_falsification_not_causal",
+  "synthetic_QA": {
+    "earlier_year_only_design": "PASS",
+    "historical_species_logodds": "PASS",
+    "status": "PASS",
+    "unseen_taxon_fails_neutral": "PASS",
+    "weighted_Curveball_fixed_margins": "PASS"
+  },
+  "provenance": {
+    "workflow_run": 39603785733,
+    "job_id": 119234895259,
+    "artifact_id": 12346753041,
+    "source_code_commit": "5f730f2c5abb51c1d69d9d5da914269e0b0d84dd",
+    "source_NWI_overlay_run": 39450277196,
+    "source_original_species_NWI_null_run": 39516056663,
+    "source_same_run_trio_run": 39597933440,
+    "original_RC6_is_unchanged": true
+  }
+}
