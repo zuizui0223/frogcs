@@ -1,0 +1,99 @@
+name: NAAMP aquatic plants third-taxon acoustic motifs
+
+on:
+  push:
+    branches: [exploration/naamp-aquatic-plant-third-taxon-2026-10-21]
+    paths:
+      - ".github/workflows/naamp_nwi_third_taxon_acoustic_motifs_v0_1.yml"
+      - "exploration/run_naamp_third_taxon_nwi_motifs_v0_1.py"
+      - "exploration/NAAMP_THIRD_TAXON_AQUATIC_PLANT_CONTRACT_2026_10_21.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  synthetic-identity-and-null-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical analysis dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Verify three-taxon statistic non-invariance and frozen fixed-fixed margins
+        run: |
+          python -m py_compile exploration/run_naamp_third_taxon_nwi_motifs_v0_1.py
+          python exploration/run_naamp_third_taxon_nwi_motifs_v0_1.py --synthetic-only
+
+  full-third-taxon-study:
+    needs: synthetic-identity-and-null-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/previous_nwi_conditional
+      - name: Validate frozen run-level reference and coefficient sources
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          prefix=Path("build/previous_nwi_conditional")
+          for mode in ("any","strong"):
+              for fn in (f"{mode}_heldout_run_diagnostics.csv",f"{mode}_train_coefficients.json"):
+                  assert (prefix/fn).is_file(),f"Missing frozen evidence: {fn}"
+          root=Path("build/vegetation_context")
+          a=json.loads((root/"geometry_nwi_preflight.json").read_text())
+          assert a["preflight_eligible"] and a["mode"]=="full"
+          assert a["overlay"]["site_records"]==5147
+          assert len(a["overlay"]["shards"])==12
+          print("PASS Frozen NWI route-fold coefficient and run membership authority")
+          PY
+      - name: Compute third-taxon co-calling moments under NWI-conditioned fixed margins
+        run: |
+          python -u exploration/run_naamp_third_taxon_nwi_motifs_v0_1.py \
+            --frozen-outputs build/previous_nwi_conditional \
+            --frozen-coefficients build/previous_nwi_conditional \
+            --outdir build/naamp_third_taxon_plant
+      - name: Validate output and all source/reference invariants
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o=json.loads(Path("build/naamp_third_taxon_plant/result.json").read_text())
+          assert o["synthetic_QA"]["status"]=="PASS"
+          assert o["sampling"]["preserves_taxon_row_margins"]
+          assert o["sampling"]["preserves_site_richness"]
+          for key in ("any","strong"):
+              x=o["modes"][key]
+              assert x["coverage"]["n_runs"]>=500
+              assert x["coverage"]["n_routes"]>=100
+              assert x["coverage"]["sample_from_prior_exact_Cscore_NWI"]
+              assert "triad_sq" in x["global_motifs"]
+          assert o["causal_biotic_interactions_inferred"] is False
+          print("PASS non-causal three-taxon motif outputs")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-plant-third-taxon-motifs-v0-1
+          path: build/naamp_third_taxon_plant/
+          if-no-files-found: warn
