@@ -1,0 +1,682 @@
+{
+  "NWI_plant_source_run": 39450277196,
+  "QA": {
+    "PEM_presence_groups_nonempty": "PASS",
+    "moderation_not_invariant": "PASS",
+    "row_col_margins": "PASS",
+    "status": "PASS"
+  },
+  "analysis": "naamp_PEM_pair_moderation_epoch_robustness_v0_1",
+  "contract": "exploration/NAAMP_PEM_MODERATOR_EPOCH_ROBUSTNESS_CONTRACT_V0_1.md",
+  "frozen_NWI_original_route_filter_run": 39516056663,
+  "method": {
+    "NWI_coefficients_trained_both_eras": true,
+    "PEM_presence_is_mapped_polygon_overlap_not_actual_vegetation": true,
+    "burn_per_taxon": 40,
+    "curveball_draws": 199,
+    "fixed_site_richness": true,
+    "fixed_species_row_sums": true,
+    "no_new_pair_selection_or_threshold_tuning": true,
+    "random_seed": 2840297,
+    "thin_per_taxon": 8,
+    "two_focal_pairs_selected_after_prior_all_year_analysis": true
+  },
+  "modes": {
+    "any": {
+      "focal_pairs": {
+        "Gastrophryne carolinensis || Hyla chrysoscelis": {
+          "balanced_PEM_3_to_7_stop_partition": {
+            "beta": -0.11791410468491527,
+            "ci95": [
+              -0.20631570707721553,
+              -0.02951250229261501
+            ],
+            "fold_means": {
+              "A": -0.12970881191672648,
+              "B": -0.09095477386934672
+            },
+            "n_PEM_site_count_quantiles": [
+              3,
+              3,
+              3,
+              4.5,
+              6
+            ],
+            "n_nonPEM_site_count_quantiles": [
+              4,
+              5.5,
+              7,
+              7,
+              7
+            ],
+            "p_two_sided_nominal": 0.008941318655442673,
+            "route_se": 0.04510368715425427,
+            "scope": {
+              "n": 23,
+              "n_fold_A": 16,
+              "n_fold_B": 7,
+              "n_null_variable": 23,
+              "routes": 10,
+              "states": 3
+            },
+            "status": "fitted"
+          },
+          "classification": "fragile_posthoc_PEM_candidate",
+          "full": {
+            "beta": -0.10552125707904605,
+            "ci95": [
+              -0.16453812302547077,
+              -0.046504391132621344
+            ],
+            "fold_means": {
+              "A": -0.10310680386057272,
+              "B": -0.10914293690675599
+            },
+            "n_PEM_site_count_quantiles": [
+              2,
+              2,
+              3,
+              3,
+              6
+            ],
+            "n_nonPEM_site_count_quantiles": [
+              4,
+              7,
+              7,
+              8,
+              8
+            ],
+            "p_two_sided_nominal": 0.0004576619133237938,
+            "route_se": 0.03011119919138424,
+            "scope": {
+              "n": 45,
+              "n_fold_A": 27,
+              "n_fold_B": 18,
+              "n_null_variable": 44,
+              "routes": 20,
+              "states": 4
+            },
+            "status": "fitted"
+          },
+          "leave_one_state_out": {
+            "all": [
+              {
+                "beta": -0.12145250059822926,
+                "ci95": [
+                  -0.19611710579114205,
+                  -0.04678789540531647
+                ],
+                "n_runs": 32,
+                "p": 0.001431824834358845,
+                "removed_State": "Georgia",
+                "routes": 11
+              },
+              {
+                "beta": -0.09609797105829904,
+                "ci95": [
+                  -0.16332597981558603,
+                  -0.028869962301012048
+                ],
+                "n_runs": 38,
+                "p": 0.005084384746360356,
+                "removed_State": "NorthCarolina",
+                "routes": 18
+              },
+              {
+                "beta": -0.10325628140703519,
+                "ci95": [
+                  -0.17049704930089055,
+                  -0.03601551351317982
+                ],
+                "n_runs": 25,
+                "p": 0.002614539503943475,
+                "removed_State": "SouthCarolina",
+                "routes": 13
+              },
+              {
+                "beta": -0.1031439937784159,
+                "ci95": [
+                  -0.16562077191280358,
+                  -0.04066721564402823
+                ],
+                "n_runs": 40,
+                "p": 0.001213285021570006,
+                "removed_State": "Virginia",
+                "routes": 18
+              }
+            ],
+            "fraction_original_direction": 1,
+            "n_CI_excludes_zero_original_direction": 4,
+            "n_point_estimates_original_direction": 4,
+            "n_states_checked": 4,
+            "range_beta": [
+              -0.12145250059822926,
+              -0.09609797105829904
+            ],
+            "status": "fitted"
+          },
+          "mode": "any",
+          "observed_matched_NWI_mixed_runs_QA": true,
+          "pair": [
+            "Gastrophryne carolinensis",
+            "Hyla chrysoscelis"
+          ],
+          "reference_full_PEM_effect": -0.11277924011592352,
+          "same_sign_simulation_QA": true,
+          "year_split": {
+            "early_2001_2009": {
+              "mean_delta": -0.15315625747786552,
+              "required_n": 12,
+              "required_routes": 6,
+              "scope": {
+                "n": 10,
+                "n_fold_A": 8,
+                "n_fold_B": 2,
+                "n_null_variable": 10,
+                "routes": 9,
+                "states": 4
+              },
+              "status": "underpowered"
+            },
+            "historical_year_split_not_independent_validation": true,
+            "late_2010_2015": {
+              "beta": -0.09191125696509758,
+              "ci95": [
+                -0.15290129854488702,
+                -0.03092121538530815
+              ],
+              "fold_means": {
+                "A": -0.08915284442261433,
+                "B": -0.09518687185929647
+              },
+              "n_PEM_site_count_quantiles": [
+                2,
+                2,
+                3,
+                3,
+                6
+              ],
+              "n_nonPEM_site_count_quantiles": [
+                4,
+                7,
+                7,
+                8,
+                8
+              ],
+              "p_two_sided_nominal": 0.0031404800497419755,
+              "route_se": 0.03111793995240275,
+              "scope": {
+                "n": 35,
+                "n_fold_A": 19,
+                "n_fold_B": 16,
+                "n_null_variable": 34,
+                "routes": 18,
+                "states": 4
+              },
+              "status": "fitted"
+            },
+            "original_NWI_filter_trained_across_both_epochs": true
+          }
+        },
+        "Hyla gratiosa || Lithobates sphenocephalus": {
+          "balanced_PEM_3_to_7_stop_partition": {
+            "mean_delta": 0.095213026584168,
+            "required_n": 20,
+            "required_routes": 10,
+            "scope": {
+              "n": 21,
+              "n_fold_A": 17,
+              "n_fold_B": 4,
+              "n_null_variable": 21,
+              "routes": 7,
+              "states": 2
+            },
+            "status": "underpowered"
+          },
+          "classification": "fragile_posthoc_PEM_candidate",
+          "full": {
+            "beta": 0.10176178511605648,
+            "ci95": [
+              0.044770397974001876,
+              0.15875317225811109
+            ],
+            "fold_means": {
+              "A": 0.08041322684852835,
+              "B": 0.15299832495812396
+            },
+            "n_PEM_site_count_quantiles": [
+              2,
+              2,
+              3,
+              4,
+              5
+            ],
+            "n_nonPEM_site_count_quantiles": [
+              5,
+              6,
+              7,
+              8,
+              8
+            ],
+            "p_two_sided_nominal": 0.0004658839501212655,
+            "route_se": 0.029077772648678953,
+            "scope": {
+              "n": 34,
+              "n_fold_A": 24,
+              "n_fold_B": 10,
+              "n_null_variable": 34,
+              "routes": 15,
+              "states": 3
+            },
+            "status": "fitted"
+          },
+          "leave_one_state_out": {
+            "all": [
+              {
+                "beta": 0.11107172768604932,
+                "ci95": [
+                  0.03962658655739394,
+                  0.1825168688147047
+                ],
+                "n_runs": 24,
+                "p": 0.0023110283039284594,
+                "removed_State": "Georgia",
+                "routes": 9
+              },
+              {
+                "beta": 0.0794040888968653,
+                "ci95": [
+                  0.026432774792658216,
+                  0.1323754030010724
+                ],
+                "n_runs": 32,
+                "p": 0.0033034841645092528,
+                "removed_State": "NorthCarolina",
+                "routes": 13
+              },
+              {
+                "beta": 0.1427624232272474,
+                "ci95": [
+                  0.020093083329651873,
+                  0.2654317631248429
+                ],
+                "n_runs": 12,
+                "p": 0.022548232909528433,
+                "removed_State": "SouthCarolina",
+                "routes": 8
+              }
+            ],
+            "fraction_original_direction": 1,
+            "n_CI_excludes_zero_original_direction": 3,
+            "n_point_estimates_original_direction": 3,
+            "n_states_checked": 3,
+            "range_beta": [
+              0.0794040888968653,
+              0.1427624232272474
+            ],
+            "status": "fitted"
+          },
+          "mode": "any",
+          "observed_matched_NWI_mixed_runs_QA": true,
+          "pair": [
+            "Hyla gratiosa",
+            "Lithobates sphenocephalus"
+          ],
+          "reference_full_PEM_effect": 0.10746854017989109,
+          "same_sign_simulation_QA": true,
+          "year_split": {
+            "early_2001_2009": {
+              "mean_delta": 0.06774775236727858,
+              "required_n": 12,
+              "required_routes": 6,
+              "scope": {
+                "n": 7,
+                "n_fold_A": 5,
+                "n_fold_B": 2,
+                "n_null_variable": 7,
+                "routes": 7,
+                "states": 2
+              },
+              "status": "underpowered"
+            },
+            "historical_year_split_not_independent_validation": true,
+            "late_2010_2015": {
+              "beta": 0.11058023805092482,
+              "ci95": [
+                0.03509586324760729,
+                0.18606461285424236
+              ],
+              "fold_means": {
+                "A": 0.0839013362552109,
+                "B": 0.1739426298157454
+              },
+              "n_PEM_site_count_quantiles": [
+                2,
+                2,
+                3,
+                3.5,
+                5
+              ],
+              "n_nonPEM_site_count_quantiles": [
+                5,
+                6.5,
+                7,
+                8,
+                8
+              ],
+              "p_two_sided_nominal": 0.00408873066574014,
+              "route_se": 0.038513143812196886,
+              "scope": {
+                "n": 27,
+                "n_fold_A": 19,
+                "n_fold_B": 8,
+                "n_null_variable": 27,
+                "routes": 13,
+                "states": 3
+              },
+              "status": "fitted"
+            },
+            "original_NWI_filter_trained_across_both_epochs": true
+          }
+        }
+      },
+      "population": {
+        "matched_original": 3659,
+        "mixed_PEM_runs": 2142,
+        "mixed_runs_with_either_candidate_pair": 66,
+        "null_original_Cscore_verified": true
+      }
+    },
+    "strong": {
+      "focal_pairs": {
+        "Gastrophryne carolinensis || Hyla chrysoscelis": {
+          "balanced_PEM_3_to_7_stop_partition": {
+            "mean_delta": -0.08669458403126747,
+            "required_n": 20,
+            "required_routes": 10,
+            "scope": {
+              "n": 15,
+              "n_fold_A": 10,
+              "n_fold_B": 5,
+              "n_null_variable": 15,
+              "routes": 9,
+              "states": 3
+            },
+            "status": "underpowered"
+          },
+          "classification": "underpowered",
+          "full": {
+            "beta": -0.08217207834042,
+            "ci95": [
+              -0.1304147191380845,
+              -0.03392943754275548
+            ],
+            "fold_means": {
+              "A": -0.0811630206168688,
+              "B": -0.08491094930434485
+            },
+            "n_PEM_site_count_quantiles": [
+              2,
+              2,
+              3,
+              3,
+              5
+            ],
+            "n_nonPEM_site_count_quantiles": [
+              5,
+              7,
+              7,
+              8,
+              8
+            ],
+            "p_two_sided_nominal": 0.0008425555167363841,
+            "route_se": 0.02461404453255076,
+            "scope": {
+              "n": 26,
+              "n_fold_A": 19,
+              "n_fold_B": 7,
+              "n_null_variable": 25,
+              "routes": 16,
+              "states": 4
+            },
+            "status": "fitted"
+          },
+          "leave_one_state_out": {
+            "all": [
+              {
+                "beta": -0.09305216558985399,
+                "ci95": [
+                  -0.1530238080988942,
+                  -0.03308052308081378
+                ],
+                "n_runs": 20,
+                "p": 0.0023572687185587815,
+                "removed_State": "Georgia",
+                "routes": 11
+              },
+              {
+                "beta": -0.08525090731434953,
+                "ci95": [
+                  -0.13690951785728778,
+                  -0.033592296771411304
+                ],
+                "n_runs": 24,
+                "p": 0.0012186474161670032,
+                "removed_State": "NorthCarolina",
+                "routes": 14
+              },
+              {
+                "beta": -0.051343523171412615,
+                "ci95": [
+                  -0.1321426189688689,
+                  0.029455572626043654
+                ],
+                "n_runs": 12,
+                "p": 0.2129653726579177,
+                "removed_State": "SouthCarolina",
+                "routes": 9
+              },
+              {
+                "beta": -0.08573794296156104,
+                "ci95": [
+                  -0.12897562035797244,
+                  -0.042500265565149645
+                ],
+                "n_runs": 22,
+                "p": 0.00010169947035561474,
+                "removed_State": "Virginia",
+                "routes": 14
+              }
+            ],
+            "fraction_original_direction": 1,
+            "n_CI_excludes_zero_original_direction": 3,
+            "n_point_estimates_original_direction": 4,
+            "n_states_checked": 4,
+            "range_beta": [
+              -0.09305216558985399,
+              -0.051343523171412615
+            ],
+            "status": "fitted"
+          },
+          "mode": "strong",
+          "observed_matched_NWI_mixed_runs_QA": null,
+          "pair": [
+            "Gastrophryne carolinensis",
+            "Hyla chrysoscelis"
+          ],
+          "reference_full_PEM_effect": null,
+          "same_sign_simulation_QA": null,
+          "year_split": {
+            "early_2001_2009": {
+              "mean_delta": -0.021539243838238825,
+              "required_n": 12,
+              "required_routes": 6,
+              "scope": {
+                "n": 6,
+                "n_fold_A": 5,
+                "n_fold_B": 1,
+                "n_null_variable": 6,
+                "routes": 6,
+                "states": 4
+              },
+              "status": "underpowered"
+            },
+            "historical_year_split_not_independent_validation": true,
+            "late_2010_2015": {
+              "beta": -0.1003619286910744,
+              "ci95": [
+                -0.14932871065214331,
+                -0.05139514673000549
+              ],
+              "fold_means": {
+                "A": -0.10737958499982907,
+                "B": -0.08398739730398021
+              },
+              "n_PEM_site_count_quantiles": [
+                2,
+                2,
+                3,
+                3,
+                5
+              ],
+              "n_nonPEM_site_count_quantiles": [
+                5,
+                7,
+                7,
+                8,
+                8
+              ],
+              "p_two_sided_nominal": 0.000058912061611706684,
+              "route_se": 0.02498351109883275,
+              "scope": {
+                "n": 20,
+                "n_fold_A": 14,
+                "n_fold_B": 6,
+                "n_null_variable": 19,
+                "routes": 14,
+                "states": 4
+              },
+              "status": "fitted"
+            },
+            "original_NWI_filter_trained_across_both_epochs": true
+          }
+        },
+        "Hyla gratiosa || Lithobates sphenocephalus": {
+          "balanced_PEM_3_to_7_stop_partition": {
+            "mean_delta": 0.031040918880114864,
+            "required_n": 20,
+            "required_routes": 10,
+            "scope": {
+              "n": 10,
+              "n_fold_A": 10,
+              "n_fold_B": 0,
+              "n_null_variable": 10,
+              "routes": 3,
+              "states": 1
+            },
+            "status": "underpowered"
+          },
+          "classification": "underpowered",
+          "full": {
+            "beta": 0.06862057540449504,
+            "ci95": [
+              -0.03459289095705477,
+              0.17183404176604483
+            ],
+            "fold_means": {
+              "A": 0.030674476277491355,
+              "B": 0.27732412060301503
+            },
+            "n_PEM_site_count_quantiles": [
+              2,
+              3,
+              3,
+              5,
+              5
+            ],
+            "n_nonPEM_site_count_quantiles": [
+              5,
+              5,
+              7,
+              7,
+              8
+            ],
+            "p_two_sided_nominal": 0.19255256860180447,
+            "route_se": 0.05266089947350281,
+            "scope": {
+              "n": 13,
+              "n_fold_A": 11,
+              "n_fold_B": 2,
+              "n_null_variable": 13,
+              "routes": 6,
+              "states": 3
+            },
+            "status": "fitted"
+          },
+          "leave_one_state_out": {
+            "n_states_checked": 0,
+            "status": "insufficient"
+          },
+          "mode": "strong",
+          "observed_matched_NWI_mixed_runs_QA": null,
+          "pair": [
+            "Hyla gratiosa",
+            "Lithobates sphenocephalus"
+          ],
+          "reference_full_PEM_effect": null,
+          "same_sign_simulation_QA": null,
+          "year_split": {
+            "early_2001_2009": {
+              "mean_delta": -0.03658770040679588,
+              "required_n": 12,
+              "required_routes": 6,
+              "scope": {
+                "n": 2,
+                "n_fold_A": 2,
+                "n_fold_B": 0,
+                "n_null_variable": 2,
+                "routes": 2,
+                "states": 1
+              },
+              "status": "underpowered"
+            },
+            "historical_year_split_not_independent_validation": true,
+            "late_2010_2015": {
+              "mean_delta": 0.08774935282472972,
+              "required_n": 12,
+              "required_routes": 6,
+              "scope": {
+                "n": 11,
+                "n_fold_A": 9,
+                "n_fold_B": 2,
+                "n_null_variable": 11,
+                "routes": 6,
+                "states": 3
+              },
+              "status": "underpowered"
+            },
+            "original_NWI_filter_trained_across_both_epochs": true
+          }
+        }
+      },
+      "population": {
+        "matched_original": 1766,
+        "mixed_PEM_runs": 1029,
+        "mixed_runs_with_either_candidate_pair": 34,
+        "null_original_Cscore_verified": true
+      }
+    }
+  },
+  "original_candidate_discovery_run": 39592028334,
+  "status": "post_selection_retrospective_exploration_not_independent_confirmation",
+  "provenance": {
+    "workflow_run": 39594685501,
+    "job_id": 119204146564,
+    "artifact_id": 12344076046,
+    "pre_outcome_plan": "exploration/NAAMP_PEM_MODERATOR_EPOCH_ROBUSTNESS_CONTRACT_V0_1.md",
+    "source_NWI_crossfit_run": 39516056663,
+    "source_candidates": 39592028334,
+    "code_run_commit": "c0f7a2290a621e2cec2d9b6a3205898111d7f4e1",
+    "RC6_untouched": true
+  }
+}
