@@ -41,6 +41,15 @@ TRIOS=[(C,P,x) for x in NEG]
 REQUIRED_SOURCE_ANY=3659
 REQUIRED_SOURCE_STRONG=1766
 
+def json_numpy_scalar(value):
+    """Serialize NumPy diagnostic scalars without changing fitted values."""
+    if isinstance(value,np.generic):
+        return value.item()
+    if isinstance(value,np.ndarray):
+        return value.tolist()
+    raise TypeError(f"Unsupported diagnostic type: {type(value).__name__}")
+
+
 def mod(name,path):
     sp=importlib.util.spec_from_file_location(name,path)
     m=importlib.util.module_from_spec(sp)
@@ -407,7 +416,7 @@ def main():
     p.add_argument("--synthetic-only",action="store_true")
     args=p.parse_args()
     qa=synthetic_qa()
-    print("PRIOR_SITE_HISTORY_SYNTHETIC_QA",json.dumps(qa,sort_keys=True),flush=True)
+    print("PRIOR_SITE_HISTORY_SYNTHETIC_QA",json.dumps(qa,sort_keys=True,default=json_numpy_scalar),flush=True)
     if args.synthetic_only:return
     if not args.frozen_nwi:raise RuntimeError("Frozen NWI source artifact required")
     records,refs,coefs,scope=pairmod.prior_inputs(args.frozen_nwi)
@@ -456,10 +465,10 @@ def main():
                  "BH_q":v.get("BH_q_two_frozen_trios"),
                  "persistence":v.get("persistent_partner_identity_residual_candidate")
             } for k,v in result["modes"][mode]["focal_trios"].items()}
-        },sort_keys=True),flush=True)
-    (args.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
+        },sort_keys=True,default=json_numpy_scalar),flush=True)
+    (args.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True,default=json_numpy_scalar)+"\n")
     print("PRIOR_SITE_HISTORY_PARTNER_RESULT_BEGIN",flush=True)
-    print(json.dumps(result,sort_keys=True),flush=True)
+    print(json.dumps(result,sort_keys=True,default=json_numpy_scalar),flush=True)
     print("PRIOR_SITE_HISTORY_PARTNER_RESULT_END",flush=True)
 
 if __name__=="__main__":
