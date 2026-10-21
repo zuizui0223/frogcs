@@ -27,6 +27,8 @@ For a target year, use only earlier-year surveys from exactly the same State × 
 
 The same sample is used for each N0/N1/Nhalf comparison within a particular trio. Historic information is not a simultaneous plant census; both underlying NWI mapping and original NWI first-order coefficients are temporally mismatched to one or more survey years.
 
+Weighted-null pair-contrast variation was observable in **261/271 (96.3%)** of the *A. fowleri* primary triple matrices and **349/413 (84.5%)** of the *H. versicolor* primary triple matrices. Thus both main estimates pass the separately frozen ≥80%-variable null diagnostic. The strong-chorus *H. versicolor* sensitivity varies in only **72/95 (75.8%)** and is separately non-confirmatory; 199 MCMC draws do not turn hard incidence margins into independent site experiments.
+
 ## Main primary CI1–3 result: historical site use explains **some, not all**, paired contrast
 
 | Central C = `L. clamitans`, P = `L. catesbeianus` | Against `A. fowleri` N | Against `H. versicolor` N |
