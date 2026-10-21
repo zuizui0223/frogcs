@@ -1,0 +1,974 @@
+{
+  "QA": {
+    "PEM_group_consistency": "PASS",
+    "fixed_margins": "PASS",
+    "pair_covariance_identical_to_prior": "PASS",
+    "pairwise_overlap_changes_under_fixed_margins": "PASS",
+    "status": "PASS"
+  },
+  "analysis": "naamp_NWI_pair_temporal_PEM_moderation_v0_1",
+  "contract": "exploration/NAAMP_FROG_PAIR_TEMPORAL_PEM_MODERATION_CONTRACT_2026_10_21.md",
+  "inference_boundaries": {
+    "PEM_polygon_overlap_does_not_equal_true_plant_presence": true,
+    "RC6_manuscript_modified": false,
+    "causal_pair_interactions_established": false,
+    "no_direct_predator_fish_or_invertebrate_records": true,
+    "temporal_year_split_is_not_independent_model_training": true
+  },
+  "modes": {
+    "any": {
+      "PEM_context": {
+        "BH_supported": [
+          {
+            "PEM_minus_nonPEM_delta": -0.11277924011592352,
+            "ci95": [
+              -0.1714504384299998,
+              -0.05410804180184726
+            ],
+            "pair": "Gastrophryne carolinensis || Hyla chrysoscelis",
+            "q": 0.019952423821609583
+          },
+          {
+            "PEM_minus_nonPEM_delta": 0.10746854017989109,
+            "ci95": [
+              0.047553231544798,
+              0.1673838488149842
+            ],
+            "pair": "Hyla gratiosa || Lithobates sphenocephalus",
+            "q": 0.026551395915666205
+          }
+        ],
+        "BH_supported_count": 2,
+        "causal_plant_mediation_identified": false,
+        "eligible_pair_moderation_tests": 121,
+        "mapped_PEM_overlap_is_not_actual_plant_absence": true
+      },
+      "focal_pairs": [
+        {
+          "pair": [
+            "Hyla versicolor",
+            "Lithobates clamitans"
+          ],
+          "result": {
+            "PEM_mixed_routes": 162,
+            "PEM_moderation": {
+              "BH_q": 0.7452873302949496,
+              "PEM_context_candidate": false,
+              "fit": {
+                "ci95": [
+                  -0.025226214465481872,
+                  0.006597371465760985
+                ],
+                "delta": -0.009314421499860443,
+                "p_two_sided": 0.2512490698699156,
+                "route_se": 0.0081184108948591,
+                "routes": 162,
+                "runs": 768,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.006859432228361351,
+                  "n": 379,
+                  "routes": 80
+                },
+                "B": {
+                  "mean": -0.011706300507310712,
+                  "n": 389,
+                  "routes": 82
+                }
+              },
+              "mean_PEM_signed_residual": -0.012411472977486659,
+              "mean_nonPEM_signed_residual": -0.0030970514776262185
+            },
+            "early": {
+              "BH_q": 0.012969144292085547,
+              "discovery": true,
+              "fit": {
+                "ci95": [
+                  -0.01126783605374905,
+                  -0.0024877342506028797
+                ],
+                "delta": -0.006877785152175965,
+                "p_two_sided": 0.0021360943539905607,
+                "route_se": 0.0022398630465667977,
+                "routes": 176,
+                "runs": 530,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.006750482450274168,
+                  "n": 263,
+                  "routes": 92
+                },
+                "B": {
+                  "mean": -0.007003180697494963,
+                  "n": 267,
+                  "routes": 84
+                }
+              }
+            },
+            "early_routes": 176,
+            "early_runs": 530,
+            "joint_runs": 987,
+            "late": {
+              "BH_q_among_early_discoveries": 0.0011503082417825825,
+              "fit": {
+                "ci95": [
+                  -0.012769643204166117,
+                  -0.003455904666478127
+                ],
+                "delta": -0.008112773935322122,
+                "p_two_sided": 0.000639060134323657,
+                "route_se": 0.0023759973681030805,
+                "routes": 141,
+                "runs": 457,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.00733220759668789,
+                  "n": 247,
+                  "routes": 67
+                },
+                "B": {
+                  "mean": -0.009030868628858574,
+                  "n": 210,
+                  "routes": 74
+                }
+              },
+              "temporal_persistence_pass": true
+            },
+            "late_routes": 141,
+            "late_runs": 457,
+            "n_runs_PEM_mixed": 768,
+            "pair": [
+              "Hyla versicolor",
+              "Lithobates clamitans"
+            ]
+          }
+        },
+        {
+          "pair": [
+            "Lithobates catesbeianus",
+            "Lithobates clamitans"
+          ],
+          "result": {
+            "PEM_mixed_routes": 206,
+            "PEM_moderation": {
+              "BH_q": 0.8631877577808456,
+              "PEM_context_candidate": false,
+              "fit": {
+                "ci95": [
+                  -0.011222360657524567,
+                  0.02230451764981847
+                ],
+                "delta": 0.005541078496146951,
+                "p_two_sided": 0.5170773331897508,
+                "route_se": 0.00855293224054084,
+                "routes": 206,
+                "runs": 904,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.002353258610804865,
+                  "n": 437,
+                  "routes": 103
+                },
+                "B": {
+                  "mean": 0.008524113378148004,
+                  "n": 467,
+                  "routes": 103
+                }
+              },
+              "mean_PEM_signed_residual": 0.0376427742907542,
+              "mean_nonPEM_signed_residual": 0.03210169579460725
+            },
+            "early": {
+              "BH_q": 1.3260480306472148e-39,
+              "discovery": true,
+              "fit": {
+                "ci95": [
+                  0.02675410218239208,
+                  0.035841817778020264
+                ],
+                "delta": 0.03129795998020617,
+                "p_two_sided": 1.5600565066437822e-41,
+                "route_se": 0.002318337394796774,
+                "routes": 262,
+                "runs": 721,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.030046882456977633,
+                  "n": 358,
+                  "routes": 134
+                },
+                "B": {
+                  "mean": 0.032531805030662976,
+                  "n": 363,
+                  "routes": 128
+                }
+              }
+            },
+            "early_routes": 262,
+            "early_runs": 721,
+            "joint_runs": 1603,
+            "late": {
+              "BH_q_among_early_discoveries": 9.321965655589897e-46,
+              "fit": {
+                "ci95": [
+                  0.029791578950032642,
+                  0.03917912490940061
+                ],
+                "delta": 0.03448535192971663,
+                "p_two_sided": 5.178869808661054e-47,
+                "route_se": 0.0023948261379841008,
+                "routes": 271,
+                "runs": 882,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.032083986813046125,
+                  "n": 471,
+                  "routes": 135
+                },
+                "B": {
+                  "mean": 0.03723728129699594,
+                  "n": 411,
+                  "routes": 136
+                }
+              },
+              "temporal_persistence_pass": true
+            },
+            "late_routes": 271,
+            "late_runs": 882,
+            "n_runs_PEM_mixed": 904,
+            "pair": [
+              "Lithobates catesbeianus",
+              "Lithobates clamitans"
+            ]
+          }
+        },
+        {
+          "pair": [
+            "Anaxyrus fowleri",
+            "Lithobates clamitans"
+          ],
+          "result": {
+            "PEM_mixed_routes": 82,
+            "PEM_moderation": {
+              "BH_q": 0.8454211596385846,
+              "PEM_context_candidate": false,
+              "fit": {
+                "ci95": [
+                  -0.02670739536630494,
+                  0.01260738220910875
+                ],
+                "delta": -0.007050006578598096,
+                "p_two_sided": 0.4820996695459697,
+                "route_se": 0.010029464287487843,
+                "routes": 82,
+                "runs": 311,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.013955895846308197,
+                  "n": 151,
+                  "routes": 40
+                },
+                "B": {
+                  "mean": -0.0005325735821966833,
+                  "n": 160,
+                  "routes": 42
+                }
+              },
+              "mean_PEM_signed_residual": -0.021246313484433347,
+              "mean_nonPEM_signed_residual": -0.014196306905835255
+            },
+            "early": {
+              "BH_q": 0.00007136200332499495,
+              "discovery": true,
+              "fit": {
+                "ci95": [
+                  -0.021264790654968405,
+                  -0.008761156072131118
+                ],
+                "delta": -0.015012973363549762,
+                "p_two_sided": 0.000002518658940882175,
+                "route_se": 0.003189761312316033,
+                "routes": 128,
+                "runs": 306,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.01285932769437247,
+                  "n": 161,
+                  "routes": 64
+                },
+                "B": {
+                  "mean": -0.017404262692774203,
+                  "n": 145,
+                  "routes": 64
+                }
+              }
+            },
+            "early_routes": 128,
+            "early_runs": 306,
+            "joint_runs": 687,
+            "late": {
+              "BH_q_among_early_discoveries": 0.0000016180403221533961,
+              "fit": {
+                "ci95": [
+                  -0.019340664622268564,
+                  -0.008520425605774514
+                ],
+                "delta": -0.013930545114021538,
+                "p_two_sided": 4.494556450426101e-7,
+                "route_se": 0.002760315776678223,
+                "routes": 133,
+                "runs": 381,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.012863229189425382,
+                  "n": 184,
+                  "routes": 64
+                },
+                "B": {
+                  "mean": -0.014927429023289016,
+                  "n": 197,
+                  "routes": 69
+                }
+              },
+              "temporal_persistence_pass": true
+            },
+            "late_routes": 133,
+            "late_runs": 381,
+            "n_runs_PEM_mixed": 311,
+            "pair": [
+              "Anaxyrus fowleri",
+              "Lithobates clamitans"
+            ]
+          }
+        }
+      ],
+      "mode": "any",
+      "sample": {
+        "PEM_mixed_routes": 274,
+        "PEM_mixed_runs": 2142,
+        "early_runs": 1573,
+        "late_runs": 2086,
+        "mean_feasible_trade_acceptance": 0.6936404302598741,
+        "n_runs": 3659,
+        "routes": 478
+      },
+      "temporal": {
+        "NWI_filter_training_includes_later_years": true,
+        "early_BH_discovered_count": 19,
+        "early_BH_discovered_pairs": [
+          {
+            "delta": -0.010942950044339336,
+            "early_q": 0.04679970993854934,
+            "pair": "Acris crepitans || Anaxyrus americanus"
+          },
+          {
+            "delta": 0.0230386907213664,
+            "early_q": 0.000019519966541997975,
+            "pair": "Acris crepitans || Lithobates catesbeianus"
+          },
+          {
+            "delta": 0.014381045009996233,
+            "early_q": 0.005723203901262851,
+            "pair": "Acris crepitans || Lithobates clamitans"
+          },
+          {
+            "delta": 0.025879396984924637,
+            "early_q": 0.02504992157733444,
+            "pair": "Acris gryllus || Lithobates catesbeianus"
+          },
+          {
+            "delta": -0.012770415785491158,
+            "early_q": 0.0006054000269450857,
+            "pair": "Anaxyrus americanus || Lithobates catesbeianus"
+          },
+          {
+            "delta": -0.007226157742892358,
+            "early_q": 0.00852390496334418,
+            "pair": "Anaxyrus americanus || Lithobates clamitans"
+          },
+          {
+            "delta": -0.015012973363549762,
+            "early_q": 0.00007136200332499495,
+            "pair": "Anaxyrus fowleri || Lithobates clamitans"
+          },
+          {
+            "delta": -0.015548898337843054,
+            "early_q": 0.0020436585140599555,
+            "pair": "Anaxyrus fowleri || Lithobates palustris"
+          },
+          {
+            "delta": -0.01316179109834889,
+            "early_q": 0.00040255281824560466,
+            "pair": "Hyla chrysoscelis || Lithobates catesbeianus"
+          },
+          {
+            "delta": -0.011181397181988368,
+            "early_q": 0.00852390496334418,
+            "pair": "Hyla chrysoscelis || Lithobates clamitans"
+          },
+          {
+            "delta": 0.025013958682300406,
+            "early_q": 0.037474991764906124,
+            "pair": "Hyla cinerea || Hyla gratiosa"
+          },
+          {
+            "delta": -0.009894258019957601,
+            "early_q": 0.00040841368822002084,
+            "pair": "Hyla versicolor || Lithobates catesbeianus"
+          },
+          {
+            "delta": -0.006877785152175965,
+            "early_q": 0.012969144292085547,
+            "pair": "Hyla versicolor || Lithobates clamitans"
+          },
+          {
+            "delta": 0.03129795998020617,
+            "early_q": 1.3260480306472148e-39,
+            "pair": "Lithobates catesbeianus || Lithobates clamitans"
+          },
+          {
+            "delta": 0.01462814070351759,
+            "early_q": 0.04374639377926988,
+            "pair": "Lithobates catesbeianus || Lithobates sphenocephalus"
+          },
+          {
+            "delta": -0.009743085400191297,
+            "early_q": 0.0020436585140599555,
+            "pair": "Lithobates catesbeianus || Pseudacris crucifer"
+          },
+          {
+            "delta": 0.028140703517587937,
+            "early_q": 0.0020436585140599555,
+            "pair": "Lithobates clamitans || Lithobates virgatipes"
+          },
+          {
+            "delta": 0.025257868288812504,
+            "early_q": 0.0020436585140599555,
+            "pair": "Lithobates palustris || Lithobates sphenocephalus"
+          },
+          {
+            "delta": -0.022314274073068067,
+            "early_q": 0.015729326702822045,
+            "pair": "Lithobates sphenocephalus || Pseudacris feriarum"
+          }
+        ],
+        "eligible_early_pairs": 85,
+        "independent_chronological_validation_claim": false,
+        "late_BH_persistent_count": 14,
+        "late_BH_persistent_pairs": [
+          {
+            "early_delta": -0.010942950044339336,
+            "late_delta": -0.007793685408172938,
+            "late_q": 0.029752489811004874,
+            "pair": "Acris crepitans || Anaxyrus americanus"
+          },
+          {
+            "early_delta": 0.0230386907213664,
+            "late_delta": 0.02677201798466015,
+            "late_q": 2.3736218258777424e-14,
+            "pair": "Acris crepitans || Lithobates catesbeianus"
+          },
+          {
+            "early_delta": 0.014381045009996233,
+            "late_delta": 0.02408818284973255,
+            "late_q": 1.9593292619889125e-12,
+            "pair": "Acris crepitans || Lithobates clamitans"
+          },
+          {
+            "early_delta": -0.012770415785491158,
+            "late_delta": -0.011891155122015303,
+            "late_q": 0.00016553509009924007,
+            "pair": "Anaxyrus americanus || Lithobates catesbeianus"
+          },
+          {
+            "early_delta": -0.007226157742892358,
+            "late_delta": -0.010207286432160805,
+            "late_q": 0.0001317324651082473,
+            "pair": "Anaxyrus americanus || Lithobates clamitans"
+          },
+          {
+            "early_delta": -0.015012973363549762,
+            "late_delta": -0.013930545114021538,
+            "late_q": 0.0000016180403221533961,
+            "pair": "Anaxyrus fowleri || Lithobates clamitans"
+          },
+          {
+            "early_delta": -0.01316179109834889,
+            "late_delta": -0.01074029943532093,
+            "late_q": 0.0005937624582699536,
+            "pair": "Hyla chrysoscelis || Lithobates catesbeianus"
+          },
+          {
+            "early_delta": -0.011181397181988368,
+            "late_delta": -0.0065713986599664955,
+            "late_q": 0.02832528570484919,
+            "pair": "Hyla chrysoscelis || Lithobates clamitans"
+          },
+          {
+            "early_delta": -0.009894258019957601,
+            "late_delta": -0.013535687918264303,
+            "late_q": 4.890433870841389e-9,
+            "pair": "Hyla versicolor || Lithobates catesbeianus"
+          },
+          {
+            "early_delta": -0.006877785152175965,
+            "late_delta": -0.008112773935322122,
+            "late_q": 0.0011503082417825825,
+            "pair": "Hyla versicolor || Lithobates clamitans"
+          },
+          {
+            "early_delta": 0.03129795998020617,
+            "late_delta": 0.03448535192971663,
+            "late_q": 9.321965655589897e-46,
+            "pair": "Lithobates catesbeianus || Lithobates clamitans"
+          },
+          {
+            "early_delta": -0.009743085400191297,
+            "late_delta": -0.006247676739863698,
+            "late_q": 0.018385637748638623,
+            "pair": "Lithobates catesbeianus || Pseudacris crucifer"
+          },
+          {
+            "early_delta": 0.025257868288812504,
+            "late_delta": 0.0286174462053859,
+            "late_q": 0.0009133808245053633,
+            "pair": "Lithobates palustris || Lithobates sphenocephalus"
+          },
+          {
+            "early_delta": -0.022314274073068067,
+            "late_delta": -0.012921751615218947,
+            "late_q": 0.019673273203383673,
+            "pair": "Lithobates sphenocephalus || Pseudacris feriarum"
+          }
+        ],
+        "late_eligible_early_discoveries": 18
+      }
+    },
+    "strong": {
+      "PEM_context": {
+        "BH_supported": [],
+        "BH_supported_count": 0,
+        "causal_plant_mediation_identified": false,
+        "eligible_pair_moderation_tests": 57,
+        "mapped_PEM_overlap_is_not_actual_plant_absence": true
+      },
+      "focal_pairs": [
+        {
+          "pair": [
+            "Hyla versicolor",
+            "Lithobates clamitans"
+          ],
+          "result": {
+            "PEM_mixed_routes": 95,
+            "PEM_moderation": {
+              "BH_q": 0.8051021097766595,
+              "PEM_context_candidate": false,
+              "fit": {
+                "ci95": [
+                  -0.04013548889849303,
+                  0.006028123296419809
+                ],
+                "delta": -0.01705368280103661,
+                "p_two_sided": 0.14759101565210797,
+                "route_se": 0.011776648081047796,
+                "routes": 95,
+                "runs": 235,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.010047716386614319,
+                  "n": 118,
+                  "routes": 43
+                },
+                "B": {
+                  "mean": -0.024119529270283012,
+                  "n": 117,
+                  "routes": 52
+                }
+              },
+              "mean_PEM_signed_residual": -0.012970271825184725,
+              "mean_nonPEM_signed_residual": 0.00408341097585188
+            },
+            "early": {
+              "BH_q": 0.5926068148236593,
+              "discovery": false,
+              "fit": {
+                "ci95": [
+                  -0.012133035433605029,
+                  0.0029528059278674003
+                ],
+                "delta": -0.004590114752868814,
+                "p_two_sided": 0.23298594529815786,
+                "route_se": 0.003848499635826888,
+                "routes": 74,
+                "runs": 134,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.003494746459570563,
+                  "n": 66,
+                  "routes": 38
+                },
+                "B": {
+                  "mean": -0.005653266331658297,
+                  "n": 68,
+                  "routes": 36
+                }
+              }
+            },
+            "early_routes": 74,
+            "early_runs": 134,
+            "joint_runs": 286,
+            "late": {
+              "fit": {
+                "ci95": [
+                  -0.008348177867532891,
+                  0.008348177867532905
+                ],
+                "delta": 7.299112261774993e-18,
+                "p_two_sided": 0.9999999999999987,
+                "route_se": 0.004259352688815846,
+                "routes": 80,
+                "runs": 152,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.0025876508981690226,
+                  "n": 87,
+                  "routes": 41
+                },
+                "B": {
+                  "mean": -0.003463471202164674,
+                  "n": 65,
+                  "routes": 39
+                }
+              }
+            },
+            "late_routes": 80,
+            "late_runs": 152,
+            "n_runs_PEM_mixed": 235,
+            "pair": [
+              "Hyla versicolor",
+              "Lithobates clamitans"
+            ]
+          }
+        },
+        {
+          "pair": [
+            "Lithobates catesbeianus",
+            "Lithobates clamitans"
+          ],
+          "result": {
+            "PEM_mixed_routes": 92,
+            "PEM_moderation": {
+              "BH_q": 0.9296467455454606,
+              "PEM_context_candidate": false,
+              "fit": {
+                "ci95": [
+                  -0.029757054116363927,
+                  0.02267134125925675
+                ],
+                "delta": -0.003542856428553588,
+                "p_two_sided": 0.7910944320035114,
+                "route_se": 0.013374836422803984,
+                "routes": 92,
+                "runs": 201,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.029787209171198124,
+                  "n": 87,
+                  "routes": 40
+                },
+                "B": {
+                  "mean": 0.016485728559254082,
+                  "n": 114,
+                  "routes": 52
+                }
+              },
+              "mean_PEM_signed_residual": 0.017457192382190508,
+              "mean_nonPEM_signed_residual": 0.021000048810744094
+            },
+            "early": {
+              "BH_q": 0.00006349710432435537,
+              "discovery": true,
+              "fit": {
+                "ci95": [
+                  0.01425832055122071,
+                  0.03412646049687697
+                ],
+                "delta": 0.024192390524048837,
+                "p_two_sided": 0.0000018142029806958676,
+                "route_se": 0.005068496182168042,
+                "routes": 82,
+                "runs": 119,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.025100076654458753,
+                  "n": 59,
+                  "routes": 39
+                },
+                "B": {
+                  "mean": 0.0232998324958124,
+                  "n": 60,
+                  "routes": 43
+                }
+              }
+            },
+            "early_routes": 82,
+            "early_runs": 119,
+            "joint_runs": 301,
+            "late": {
+              "BH_q_among_early_discoveries": 2.1162779797478097e-7,
+              "fit": {
+                "ci95": [
+                  0.01354090358756993,
+                  0.02935489408209707
+                ],
+                "delta": 0.0214478988348335,
+                "p_two_sided": 1.0581389898739049e-7,
+                "route_se": 0.004034255378993155,
+                "routes": 99,
+                "runs": 182,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": 0.015880685478675414,
+                  "n": 78,
+                  "routes": 44
+                },
+                "B": {
+                  "mean": 0.02562330885195207,
+                  "n": 104,
+                  "routes": 55
+                }
+              },
+              "temporal_persistence_pass": true
+            },
+            "late_routes": 99,
+            "late_runs": 182,
+            "n_runs_PEM_mixed": 201,
+            "pair": [
+              "Lithobates catesbeianus",
+              "Lithobates clamitans"
+            ]
+          }
+        },
+        {
+          "pair": [
+            "Anaxyrus fowleri",
+            "Lithobates clamitans"
+          ],
+          "result": {
+            "PEM_mixed_routes": 41,
+            "PEM_moderation": {
+              "BH_q": 0.875153534264042,
+              "PEM_context_candidate": false,
+              "fit": {
+                "ci95": [
+                  -0.028813792812246816,
+                  0.01621523837952156
+                ],
+                "delta": -0.006299277216362626,
+                "p_two_sided": 0.5834356895093613,
+                "route_se": 0.011487208833160107,
+                "routes": 41,
+                "runs": 78,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.01647998395338037,
+                  "n": 34,
+                  "routes": 21
+                },
+                "B": {
+                  "mean": 0.0015676325349692633,
+                  "n": 44,
+                  "routes": 20
+                }
+              },
+              "mean_PEM_signed_residual": -0.025756453206201933,
+              "mean_nonPEM_signed_residual": -0.019457175989839308
+            },
+            "early": {
+              "BH_q": 0.0044480696041734906,
+              "discovery": true,
+              "fit": {
+                "ci95": [
+                  -0.027794661683541333,
+                  -0.008401022620330996
+                ],
+                "delta": -0.018097842151936164,
+                "p_two_sided": 0.0002541754059527709,
+                "route_se": 0.004947447814394777,
+                "routes": 49,
+                "runs": 68,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.013383584589614746,
+                  "n": 30,
+                  "routes": 24
+                },
+                "B": {
+                  "mean": -0.021819624437979385,
+                  "n": 38,
+                  "routes": 25
+                }
+              }
+            },
+            "early_routes": 49,
+            "early_runs": 68,
+            "joint_runs": 168,
+            "late": {
+              "BH_q_among_early_discoveries": 0.00005940025058700858,
+              "fit": {
+                "ci95": [
+                  -0.022710936553237443,
+                  -0.007811676512089202
+                ],
+                "delta": -0.015261306532663322,
+                "p_two_sided": 0.00005940025058700858,
+                "route_se": 0.003800901485606803,
+                "routes": 53,
+                "runs": 100,
+                "status": "fitted"
+              },
+              "folds": {
+                "A": {
+                  "mean": -0.011955124459506843,
+                  "n": 43,
+                  "routes": 24
+                },
+                "B": {
+                  "mean": -0.01775544388609715,
+                  "n": 57,
+                  "routes": 29
+                }
+              },
+              "temporal_persistence_pass": true
+            },
+            "late_routes": 53,
+            "late_runs": 100,
+            "n_runs_PEM_mixed": 78,
+            "pair": [
+              "Anaxyrus fowleri",
+              "Lithobates clamitans"
+            ]
+          }
+        }
+      ],
+      "mode": "strong",
+      "sample": {
+        "PEM_mixed_routes": 231,
+        "PEM_mixed_runs": 1029,
+        "early_runs": 643,
+        "late_runs": 1123,
+        "mean_feasible_trade_acceptance": 0.6857309259968539,
+        "n_runs": 1766,
+        "routes": 398
+      },
+      "temporal": {
+        "NWI_filter_training_includes_later_years": true,
+        "early_BH_discovered_count": 2,
+        "early_BH_discovered_pairs": [
+          {
+            "delta": -0.018097842151936164,
+            "early_q": 0.0044480696041734906,
+            "pair": "Anaxyrus fowleri || Lithobates clamitans"
+          },
+          {
+            "delta": 0.024192390524048837,
+            "early_q": 0.00006349710432435537,
+            "pair": "Lithobates catesbeianus || Lithobates clamitans"
+          }
+        ],
+        "eligible_early_pairs": 35,
+        "independent_chronological_validation_claim": false,
+        "late_BH_persistent_count": 2,
+        "late_BH_persistent_pairs": [
+          {
+            "early_delta": -0.018097842151936164,
+            "late_delta": -0.015261306532663322,
+            "late_q": 0.00005940025058700858,
+            "pair": "Anaxyrus fowleri || Lithobates clamitans"
+          },
+          {
+            "early_delta": 0.024192390524048837,
+            "late_delta": 0.0214478988348335,
+            "late_q": 2.1162779797478097e-7,
+            "pair": "Lithobates catesbeianus || Lithobates clamitans"
+          }
+        ],
+        "late_eligible_early_discoveries": 2
+      }
+    }
+  },
+  "settings": {
+    "MCMC_draws": 199,
+    "NWI_coefficient_training_across_both_epochs": true,
+    "burn_per_taxon": 40,
+    "early_years": "2001-2009",
+    "fixed_stop_richness": true,
+    "fixed_taxon_stop_counts": true,
+    "late_years": "2010-2015",
+    "seed": 2840293,
+    "thin_per_taxon": 8
+  },
+  "source_NWI_geography_workflow": 39450277196,
+  "source_coverage": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "source_previous_pair_network_workflow": 39528330890,
+  "source_weighted_NWI_coefficients_workflow": 39516056663,
+  "status": "posthoc_temporal_split_and_within_route_PEM_heterogeneity_no_causal_interaction",
+  "provenance": {
+    "run_id": 39592028334,
+    "job_id": 119195297684,
+    "artifact_name": "naamp-frog-pair-temporal-PEM-context-v0-1",
+    "artifact_id": 12341634243,
+    "run_source_commit": "71b2a29ab9fbd5d3140b8b42090b84de2b59af9c",
+    "frozen_NWI_source_run": 39516056663,
+    "prior_pair_network_run": 39528330890,
+    "methodology_label": "posthoc retrospective year split, NWI species coefficients trained across all years"
+  }
+}
