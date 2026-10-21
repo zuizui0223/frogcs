@@ -1,0 +1,50 @@
+{
+  "analysis": "NAAMP_plant_x_recent_wetness_source_only_preflight_v0_1",
+  "counts_outcome_file_read": false,
+  "eligibility": {
+    "complete_runs": 2626,
+    "early_runs": 829,
+    "late_runs": 1797,
+    "plant_var_recent_positive_runs": 1484,
+    "routes": 336,
+    "states": 18,
+    "survey_month_inclusive_water_summary": true
+  },
+  "excluded": {
+    "not_ten_DSWE_run_sites": 2418,
+    "not_ten_NWI_sites": 1156,
+    "not_valid_dswe_year": 1264,
+    "water_missing_current_or_three_month": 384
+  },
+  "gates": {
+    "complete_runs_ge600": true,
+    "early_runs_ge100": true,
+    "late_runs_ge200": true,
+    "plant_var_plus_recent_nonzero_runs_ge80": true,
+    "routes_ge100": true,
+    "states_ge12": true
+  },
+  "interpretation": {
+    "2004_DSWE_source_unavailable": true,
+    "NWI_not_historical_vegetation": true,
+    "RC6_unmodified": true,
+    "survey_month_inclusive_3m_is_not_strict_antecedent": true
+  },
+  "preflight_eligible": true,
+  "rows_with_site_and_environment": 26260,
+  "source": {
+    "DSWEmod_file_sha256": "9d2967923d7c31ace8007cf51f502c1dc56d41ffcf32383dc1b9edd133b94042",
+    "DSWEmod_original_artifact_run": 37615425574,
+    "NAAMP_Runs_sha256": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "NAAMP_Stops_sha256": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "NWI_full_area_run": 39450277196
+  },
+  "source_runs": 7848,
+  "provenance": {
+    "workflow_run": 39518202016,
+    "workflow_job_id": 118955345705,
+    "artifact_id": 12309515497,
+    "manifest": "response_blind_source_runs.jsonl",
+    "program_branch": "exploration/naamp-plant-wetness-interaction-2026-10-21"
+  }
+}
