@@ -349,7 +349,7 @@ def main():
     for mode in ["any","strong"]:
         train,audits=fit_all(records,mode,coef[mode])
         scores=validate_locations(records,mode,train,coef[mode])
-        contrasts,scope=robust_stats(records,mode,train,coef[mode],refs[mode],{},arg.outdir)
+        contrasts,scope=robust_stats(records,mode,train,coef[mode],refs[mode],{rid:int(row["SurveyYear"]) for rid,row in records.items()},arg.outdir)
         result["modes"][mode]={"fit_summary":{k:{j:v for j,v in row.items() if j!="per_taxon"}
                                             for k,row in audits.items()},
                                "heldout_location":scores,
