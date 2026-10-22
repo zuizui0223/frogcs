@@ -1,0 +1,51 @@
+name: NPS Great Lakes independent frog source-only coverage audit
+
+on:
+  push:
+    branches: [exploration/nps-glkn-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/nps_glkn_independent_frog_source_only_v0_1.yml"
+      - "exploration/run_nps_glkn_independent_source_only_qa_v0_1.py"
+      - "exploration/NPS_GLKN_FROG_INDEPENDENT_SOURCE_ONLY_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-data-availability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install data quality dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas
+      - name: Download only NPS published CSV/XML and profile survey field grain, not frog detections
+        run: |
+          python -m py_compile exploration/run_nps_glkn_independent_source_only_qa_v0_1.py
+          python -u exploration/run_nps_glkn_independent_source_only_qa_v0_1.py \
+            --outdir build/nps_glkn_frog_source_only
+      - name: Verify no raw downloaded NPS source or frog calling outcomes exposed
+        if: success()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/nps_glkn_frog_source_only")
+          r=json.loads((p/"nps_glkn_source_only_result.json").read_text())
+          assert r["source_status"]=="source_schema_profiled_no_outcome"
+          assert not r["read_frog_detection_outcomes"]
+          assert not r["structure"]["no_species_acoustic_response_values_read"] is False
+          assert not [x for x in p.iterdir() if x.suffix.lower() in (".csv",".xml",".zip")]
+          assert r["frozen_JAE_RC6_edited"] is False
+          print("PASS independent NPS metadata only")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nps-glkn-independent-frog-source-only-audit-v0-1
+          path: build/nps_glkn_frog_source_only/nps_glkn_source_only_result.json
+          if-no-files-found: warn
