@@ -1,0 +1,49 @@
+name: Independent GLCWMP frog source-only Dryad audit
+
+on:
+  push:
+    branches: [exploration/glcwmp-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/glcwmp_independent_frog_source_only_qa_v0_1.yml"
+      - "exploration/run_glcwmp_independent_source_audit_v0_1.py"
+      - "exploration/GLCWMP_INDEPENDENT_FROG_PAIR_SOURCE_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dryad-pinned-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scientific library dependencies
+        run: python -m pip install -q --disable-pip-version-check pandas numpy
+      - name: Verify source archive hashes, key grain and environmental data schema without frog detection outcomes
+        run: |
+          python -m py_compile exploration/run_glcwmp_independent_source_audit_v0_1.py
+          python -u exploration/run_glcwmp_independent_source_audit_v0_1.py \
+             --outdir build/glcwmp_source_qa
+      - name: Prove only aggregate nonresponse receipt archived
+        if: success()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("build/glcwmp_source_qa/source_only_result.json").read_text())
+          assert d["frog_detection_outcomes_read"] is False
+          assert d["source_status"]=="source_structure_checked"
+          assert not any(p.suffix in (".csv",".zip") for p in Path("build/glcwmp_source_qa").iterdir())
+          assert d["frozen_RC6_modified"] is False
+          print("PASS source-only and no raw external source redistribution")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glcwmp-independent-source-only-frog-data-audit-v0-1
+          path: build/glcwmp_source_qa/source_only_result.json
+          if-no-files-found: warn
