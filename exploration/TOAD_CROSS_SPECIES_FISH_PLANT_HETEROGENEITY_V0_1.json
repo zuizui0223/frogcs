@@ -1,0 +1,105 @@
+{
+  "status": "posthoc_two_toad_effect_heterogeneity_analyzed",
+  "date": "2026-10-23",
+  "input": "exploration/FISH_MACROPHYTE_FACTORIAL_BLOCK_RESULT_V0_1.json",
+  "source_sha256": "86944f2d06b7e2739342a7b42ec4ff383df92d2cb8600a3d9c9c5de1f70758ae",
+  "not_predeclared": true,
+  "independent_blocks": 4,
+  "repeated_dates_are_not_replicates": true,
+  "taxa_assayed_at_different_times": true,
+  "inference": "Fish×plant treatment-response heterogeneity BETWEEN separately observed taxa; not a change in their interaction with one another",
+  "fdr_family": "two vegetation-level contrasts (aq, aq_lit), BH on block-t two-sided P",
+  "unadjusted_ci_not_simultaneous": true,
+  "causal_frog_frog_competition_identified": false,
+  "mediated_fish_insect_frog_path_identified": false,
+  "true_multi_biotaxon_higher_order_identified": false,
+  "RC6_unchanged": true,
+  "comparisons": [
+    {
+      "plant": "aq",
+      "taxon_contrast": "Bufo bufo minus Bufotes viridis in fish×plant choice-share effect",
+      "block_difference_pp": {
+        "A": 77.77777777777777,
+        "B": 22.222222222222214,
+        "C": 40.33333333333333,
+        "D": 76.11111111111111
+      },
+      "species_component_interactions_pp": {
+        "B. bufo": {
+          "A": 27.777777777777768,
+          "B": 9.722222222222213,
+          "C": 0.33333333333332993,
+          "D": -0.07936507936508047
+        },
+        "B. viridis": {
+          "A": -50,
+          "B": -12.5,
+          "C": -40,
+          "D": -76.19047619047619
+        }
+      },
+      "leave_one_block_out_pp": {
+        "A": 46.222222222222214,
+        "B": 64.74074074074073,
+        "C": 58.70370370370369,
+        "D": 46.77777777777777
+      },
+      "difference_pp": 54.11111111111111,
+      "ci95_unadjusted_pp": [
+        10.525541459528414,
+        97.6966807626938
+      ],
+      "p_two_sided_block_t3": 0.02892568948451424,
+      "test_stat_t3": 3.9509798083847776,
+      "standard_error_pp": 13.695618235323906,
+      "n_independent_blocks": 4,
+      "positive_blocks": 4,
+      "negative_blocks": 0,
+      "BH_q_two_inspected_plants": 0.05785137896902848,
+      "supported_after_BH": false
+    },
+    {
+      "plant": "aq_lit",
+      "taxon_contrast": "Bufo bufo minus Bufotes viridis in fish×plant choice-share effect",
+      "block_difference_pp": {
+        "A": 40.27777777777777,
+        "B": -9.722222222222227,
+        "C": 2.3333333333333344,
+        "D": 34.44444444444444
+      },
+      "species_component_interactions_pp": {
+        "B. bufo": {
+          "A": -9.722222222222227,
+          "B": -22.222222222222225,
+          "C": 9,
+          "D": 20.158730158730158
+        },
+        "B. viridis": {
+          "A": -50,
+          "B": -12.5,
+          "C": 6.666666666666665,
+          "D": -14.285714285714285
+        }
+      },
+      "leave_one_block_out_pp": {
+        "A": 9.018518518518519,
+        "B": 25.685185185185183,
+        "C": 21.666666666666664,
+        "D": 10.962962962962958
+      },
+      "difference_pp": 16.833333333333332,
+      "ci95_unadjusted_pp": [
+        -21.87452028014245,
+        55.541186946809106
+      ],
+      "p_two_sided_block_t3": 0.26035263637156925,
+      "test_stat_t3": 1.3839873429103127,
+      "standard_error_pp": 12.16292433566294,
+      "n_independent_blocks": 4,
+      "positive_blocks": 3,
+      "negative_blocks": 1,
+      "BH_q_two_inspected_plants": 0.26035263637156925,
+      "supported_after_BH": false
+    }
+  ]
+}
