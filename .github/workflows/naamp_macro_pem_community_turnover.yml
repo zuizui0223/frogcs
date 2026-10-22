@@ -1,0 +1,78 @@
+name: NAAMP macro frog community turnover across NWI PEM boundaries
+on:
+  push:
+    branches:
+      - exploration/naamp-macro-plant-niche-network-2026-10-23
+    paths:
+      - '.github/workflows/naamp_macro_pem_community_turnover.yml'
+      - 'exploration/run_naamp_macro_pem_community_turnover_v0_1.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  full-original-database-macro-turnover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original-source compatibility dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Reuse published validated full NAAMP-NWI site crosswalk (source-only 12-shard receipt)
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Confirm validated NWI geography before frog response readback
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert x['preflight_eligible'] and x['mode']=='full'
+          assert x['overlay']['site_records']==5147
+          assert x['overlay']['routes_success']==501
+          assert len(x['overlay']['shards'])==12
+          assert x['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS 501-route, 5147-site validated response-blind NWI source geometry')
+          PY
+      - name: Compute real-data multi-taxon Sorensen community turnover across mapped plant boundaries
+        run: |
+          python -u exploration/run_naamp_macro_pem_community_turnover_v0_1.py \
+            --out build/naamp_macro_pem_community_turnover_v0_1.json
+      - name: Validate full data population, route units and causality boundary
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          d=json.loads(Path('build/naamp_macro_pem_community_turnover_v0_1.json').read_text())
+          assert d['status']=='EXECUTED_real_macro_community_turnover'
+          assert d['original_data_scope']['source_complete_runs']==7848
+          assert d['original_data_scope']['ten_stop_vegetation_plus_observation_runs']==6236
+          assert d['synthetic_QA']['status']=='PASS'
+          for mode in ('any','strong'):
+              m=d['modes'][mode]
+              assert m['primary_model']['status']=='fitted'
+              assert m['coverage']['data_linked_ten_stop_runs']==6236
+              assert m['primary_model']['n_independent_routes']>30
+              assert m['primary_model']['n_station_pairs']>250
+              assert m['coverage']['within_run_station_pair_records']==m['primary_model']['n_station_pairs']
+              assert math.isfinite(m['primary_model']['estimates']['different_mapped_PEM_overlap']['beta'])
+              assert m['interpretation_classification'] in ('exploratory_macro_boundary_association','nonconfirmatory')
+          assert not d['inference_limits']['plant_causes_turnover']
+          assert not d['inference_limits']['frog_species_competition_established']
+          assert not d['inference_limits']['RC6_main_manuscript_SI_modified']
+          print('PASS original all-taxon NAAMP macro composition, proper independent route units, no unsupported causality')
+          PY
+      - name: Preserve derived macro statistics only (not original NAAMP/NWI files)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-macro-pem-community-turnover-v0-1
+          path: build/naamp_macro_pem_community_turnover_v0_1.json
+          if-no-files-found: warn
