@@ -1,0 +1,295 @@
+{
+  "analysis": "NPS_GLKN_independent_source_metadata_v0_2",
+  "contract": "exploration/NPS_GLKN_INDEPENDENT_SOURCE_SCOPE_EXTENSION_V0_2.md",
+  "files": {
+    "frog": {
+      "content_type": "application/vnd.ms-excel",
+      "final_host": "irma.nps.gov",
+      "http_status": 200,
+      "n_bytes": 68581307,
+      "no_raw_file_export": true,
+      "sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+      "url": "https://irma.nps.gov/DataStore/DownloadFile/763377?Reference=2320505"
+    },
+    "metadata": {
+      "content_type": "application/xml",
+      "final_host": "irma.nps.gov",
+      "http_status": 200,
+      "n_bytes": 131226,
+      "no_raw_file_export": true,
+      "sha256": "a37af87cd333168f52503f823041c4ab578b6968333c7d5f315604222ae4eb8f",
+      "url": "https://irma.nps.gov/DataStore/DownloadFile/763466?Reference=2320505"
+    }
+  },
+  "frozen_RC6_edited": false,
+  "read_detection_values": false,
+  "source_reference": 2320505,
+  "source_status": "source_only_metadata_and_grain_checked",
+  "structure": {
+    "all_columns": [
+      "FileName",
+      "ParkCode",
+      "SiteLocation",
+      "StartTime",
+      "EventYear",
+      "SoftwareDetectedStatus",
+      "SurveyorDetectedStatus",
+      "ManualCIV",
+      "ScientificName",
+      "CommonName",
+      "SpeciesCode",
+      "AutoRecognizerCode",
+      "Kingdom",
+      "Phylum",
+      "Class",
+      "Order",
+      "Family",
+      "Genus",
+      "Species",
+      "Surveyor1",
+      "Comment1",
+      "Surveyor2",
+      "Comment2",
+      "DurationMax_s",
+      "DurationMin_s",
+      "DurationMed_s",
+      "DurationMean_s",
+      "QualityMax",
+      "QualityMin",
+      "QualityMed",
+      "QualityMean",
+      "ScoreMax",
+      "ScoreMin",
+      "ScoreMed",
+      "ScoreMean",
+      "LevelMax_dB",
+      "LevelMin_dB",
+      "LevelMed_dB",
+      "LevelMean_dB",
+      "Hydroperiod",
+      "SMOrientation",
+      "DeploymentDate",
+      "FirstRecordDate",
+      "LastRecordDate",
+      "Firmware",
+      "Model",
+      "HighPassFilter_Hz",
+      "SamplingRate_Hz",
+      "Gain_dB",
+      "Preamp_dB",
+      "AvgTemperature_C",
+      "AvgPower_V",
+      "WavDuration_s",
+      "WavSize_B",
+      "RecordingLength_Hrs",
+      "Duration_FLAG",
+      "NoiseComment_FLAG"
+    ],
+    "all_source_structure_gates_pass": false,
+    "analysis": "NPS_GLKN_frog_source_key_grain_count_blind_v0_2",
+    "event_taxon_key": [
+      "ParkCode",
+      "SiteLocation",
+      "FileName",
+      "StartTime",
+      "ScientificName"
+    ],
+    "focal_taxon_identifiers": {
+      "bullfrog": {
+        "confirmed_taxon_labels": null,
+        "scientific_name_candidates": [
+          "Lithobates catesbeianus"
+        ]
+      },
+      "green_frog": {
+        "confirmed_taxon_labels": null,
+        "scientific_name_candidates": [
+          "Lithobates clamitans"
+        ]
+      }
+    },
+    "metadata_field_descriptions": {
+      "AvgTemperature_C": {
+        "XML_context_excerpt": "ppied AvgTemperature_C Average temperature in Celsius recorded by Songmeter (ARU) during the audio recording float celsius real <minimum exclusiv",
+        "name_appears": true
+      },
+      "DurationMax_s": {
+        "XML_context_excerpt": "eyor. DurationMax_s Maximum length of candidate vocalization in seconds during recording float second real 0.04</mi",
+        "name_appears": true
+      },
+      "EventYear": {
+        "XML_context_excerpt": "alues EventYear Calendar year of sampling date YYYY NA No missing values",
+        "name_appears": true
+      },
+      "FileName": {
+        "XML_context_excerpt": "FileName Name of audio file (wav) for record string Name of audio file (wav) for record <missingVal",
+        "name_appears": true
+      },
+      "Hydroperiod": {
+        "XML_context_excerpt": "unit from 2016 – 2023. A stratified random sample design was used by selecting 3 – 4 wetlands in each of the following hydroperiod categories: permanent, semi-permanent, or ephemeral, as determined by an initial site assessment (Casper et al. 2018). See Standard Operating Procedure (SOP) #3, “Selecting and Documenting Sites,” of the GLKN Amphibian Monitoring protocol for complete details on site selection criteria and the establishment ",
+        "name_appears": true
+      },
+      "LevelMax_dB": {
+        "XML_context_excerpt": "cies. LevelMax_dB Maximum level of candidate vocalization in decibels during the recording. Level indicates the peak signal level of the vocalization. float decibel natural",
+        "name_appears": true
+      },
+      "ManualCIV": {
+        "XML_context_excerpt": "alues ManualCIV Call Index Value (0-3; 0 = no frogs and 3 = full chorus) assigned manually by expert to indicate call intensity string 3 Surveyor heard a full chorus (cal",
+        "name_appears": true
+      },
+      "ParkCode": {
+        "XML_context_excerpt": "alues ParkCode National Park Service unit where sampling was conducted string APIS Apostle Islands National Lakeshore",
+        "name_appears": true
+      },
+      "ScientificName": {
+        "XML_context_excerpt": "pert. ScientificName Taxonomic name for the species observed string Taxonomic name for the species observed <mi",
+        "name_appears": true
+      },
+      "ScoreMax": {
+        "XML_context_excerpt": "cies. ScoreMax Maximum score of candidate vocalization during the recording. Score indicates how well the candidate matched the recognizer model. A successful match should fall in the same range as the recognizer's cross training results. The sensitivity control will also filter candidates based on their recognition scores. float",
+        "name_appears": true
+      },
+      "SiteLocation": {
+        "XML_context_excerpt": "alues SiteLocation Unique identifier for monitoring site string Unique identifier for monitoring site <missin",
+        "name_appears": true
+      },
+      "SoftwareDetectedStatus": {
+        "XML_context_excerpt": "alues SoftwareDetectedStatus Whether automated bioacoustics software detected the species within the recording string YES Bioacoustics software detected one or more vocalizations attr",
+        "name_appears": true
+      },
+      "SpeciesCode": {
+        "XML_context_excerpt": "alues SpeciesCode Four-letter species code used in monitoring protocol string Four-letter species code used in monitoring protocol </measu",
+        "name_appears": true
+      },
+      "StartTime": {
+        "XML_context_excerpt": "alues StartTime Date time at which the recording began date YYYY-MM-DDThh:mm:ss NA No missing values",
+        "name_appears": true
+      },
+      "SurveyorDetectedStatus": {
+        "XML_context_excerpt": "alues SurveyorDetectedStatus Whether a human expert confirmed the species is present within the recording string YES Surveyor manually verified the audio file and found the species pr",
+        "name_appears": true
+      }
+    },
+    "n_duplicate_event_taxon_rows_excess": 0,
+    "n_full_panel_sites": 0,
+    "n_invalid_event_taxon_or_year_rows": 0,
+    "n_nonduplicated_full_panel_recordings": 0,
+    "n_parks": 7,
+    "n_recordings_with_all_taxon_names_present": 0,
+    "n_recordings_with_at_least_8_taxon_rows": 13099,
+    "n_recordings_with_conflicting_AvgTemperature_metadata": 0,
+    "n_recordings_with_conflicting_Hydroperiod_metadata": 0,
+    "n_rows": 147913,
+    "n_site_locations_across_park": 66,
+    "n_taxon_units": 13,
+    "n_unique_recording_events": 16561,
+    "no_detection_outcomes_imputed": true,
+    "no_species_detection_data_read": true,
+    "original_event_key": [
+      "ParkCode",
+      "SiteLocation",
+      "FileName",
+      "StartTime"
+    ],
+    "park_code_labels": [
+      "APIS",
+      "GRPO",
+      "INDU",
+      "ISRO",
+      "MISS",
+      "PIRO",
+      "SLBE"
+    ],
+    "recording_rows_distribution": {
+      "7": 3462,
+      "8": 3207,
+      "9": 5041,
+      "10": 707,
+      "11": 4144
+    },
+    "recording_taxon_rows_distribution": {
+      "7": 3462,
+      "8": 3207,
+      "9": 5041,
+      "10": 707,
+      "11": 4144
+    },
+    "required_columns": [
+      "FileName",
+      "ParkCode",
+      "SiteLocation",
+      "StartTime",
+      "EventYear",
+      "ScientificName",
+      "SpeciesCode",
+      "Hydroperiod",
+      "AvgTemperature_C"
+    ],
+    "response_field_names_unread": [
+      "SoftwareDetectedStatus",
+      "SurveyorDetectedStatus",
+      "ManualCIV",
+      "DurationMax_s",
+      "ScoreMax",
+      "LevelMax_dB"
+    ],
+    "response_values_read": false,
+    "source_gates": {
+      "at_least_40_full_panel_sites": false,
+      "both_named_species_identifiers": true,
+      "consistent_hydroperiod_within_file": true,
+      "min_20_sites": true,
+      "min_2_park_units": true,
+      "min_total_100_recordings": true,
+      "no_duplicated_event_taxon_rows": true,
+      "some_full_taxon_panel_recordings": false
+    },
+    "source_schema_is_a_same_event_observation_not_NAAMP_routes": true,
+    "taxon_names": [
+      "Acris blanchardi",
+      "Anaxyrus americanus",
+      "Anaxyrus fowleri",
+      "Dryophytes chrysoscelis",
+      "Dryophytes versicolor",
+      "Lithobates catesbeianus",
+      "Lithobates clamitans",
+      "Lithobates palustris",
+      "Lithobates pipiens",
+      "Lithobates septentrionalis",
+      "Lithobates sylvaticus",
+      "Pseudacris crucifer",
+      "Pseudacris maculata/triseriata"
+    ],
+    "taxon_row_counts_without_detection": {
+      "Acris blanchardi": 7077,
+      "Anaxyrus americanus": 16561,
+      "Anaxyrus fowleri": 4121,
+      "Dryophytes chrysoscelis": 178,
+      "Dryophytes versicolor": 16438,
+      "Lithobates catesbeianus": 12499,
+      "Lithobates clamitans": 16561,
+      "Lithobates palustris": 6525,
+      "Lithobates pipiens": 16561,
+      "Lithobates septentrionalis": 1709,
+      "Lithobates sylvaticus": 16561,
+      "Pseudacris crucifer": 16561,
+      "Pseudacris maculata/triseriata": 16561
+    },
+    "years_of_recordings": {
+      "2016": 2048,
+      "2017": 1918,
+      "2018": 2188,
+      "2019": 2202,
+      "2020": 2192,
+      "2021": 2005,
+      "2022": 2085,
+      "2023": 1923
+    }
+  },
+  "provenance": {
+    "workflow_run": 39722310835,
+    "job_id": 119638338186,
+    "original_NPS_IRMA_reference": 2320505,
+    "no_NPS_raw_data_redistributed": true
+  }
+}
