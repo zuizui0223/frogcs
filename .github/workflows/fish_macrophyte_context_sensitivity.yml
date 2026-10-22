@@ -1,0 +1,44 @@
+name: Fish-macrophyte context sensitivity QA
+on:
+  push:
+    branches:
+      - exploration/fish-macrophyte-context-sensitivity-2026-10-22
+    paths:
+      - "exploration/run_fish_macrophyte_context_sensitivity_v0_1.py"
+      - "exploration/FISH_MACROPHYTE_FACTORIAL_BLOCK_RESULT_V0_1.json"
+      - "exploration/FISH_MACROPHYTE_CONTEXT_SENSITIVITY_RESULT_V0_1.json"
+      - ".github/workflows/fish_macrophyte_context_sensitivity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-pinned-sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recompute source-derived fish-stratum sensitivity
+        run: |
+          python exploration/run_fish_macrophyte_context_sensitivity_v0_1.py \
+            --input exploration/FISH_MACROPHYTE_FACTORIAL_BLOCK_RESULT_V0_1.json \
+            --output build/experiment_sensitivity_result.json
+      - name: Compare all exact test counts, p-values, q-values, omissions
+        run: |
+          python - <<'PY'
+          import json,math
+          a=json.load(open("build/experiment_sensitivity_result.json"))
+          b=json.load(open("exploration/FISH_MACROPHYTE_CONTEXT_SENSITIVITY_RESULT_V0_1.json"))
+          assert a["status"]==b["status"]=="executed_from_source_verified_block_contrasts"
+          assert len(a["species"])==len(b["species"])==8
+          for x,y in zip(a["species"],b["species"]):
+              for k in ("taxon","fish_status","plant_level","extreme_assignments","permutations","n_independent_blocks","positive_blocks"):
+                  assert x[k]==y[k], (k,x[k],y[k])
+              for k in ("effect_share_pp","p_exact_two_sided","bh_q"):
+                  assert math.isclose(x[k],y[k],abs_tol=1e-10), (k,x[k],y[k])
+              assert len(x["leave_one_block_out"])==len(y["leave_one_block_out"])==4
+              for v,w in zip(x["leave_one_block_out"],y["leave_one_block_out"]):
+                  assert v["omitted_block"]==w["omitted_block"]
+                  for k in ("p_exact_two_sided","effect_share_pp"):
+                      assert math.isclose(v[k],w[k],abs_tol=1e-10)
+          print("PASS 8 exact stratum contrasts + 32 LOBO comparisons; original H1 independently reproduced")
+          PY
