@@ -1,0 +1,50 @@
+name: Independent USGS Midwest ARMI 2024 source-only frog gate
+
+on:
+  push:
+    branches: [exploration/armi-independent-bull-green-2026-10-22]
+    paths:
+      - ".github/workflows/armi_2024_source_only_gate_v0_1.yml"
+      - "exploration/run_armi_2024_source_only_qa_v0_1.py"
+      - "exploration/ARMI_2024_INDEPENDENT_FROG_SOURCE_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original_source_and_grain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas
+      - name: Validate source code syntax and pinned ScienceBase CSV/XML, read only event keys
+        run: |
+          python -m py_compile exploration/run_armi_2024_source_only_qa_v0_1.py
+          python -u exploration/run_armi_2024_source_only_qa_v0_1.py \
+            --outdir build/armi_2024_source_only
+      - name: Verify no frog detection outcomes and unique source-only result
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=Path("build/armi_2024_source_only")
+          j=json.loads((q/"source_only_receipt.json").read_text())
+          assert j["source_release_verified"]
+          assert not j["frog_detection_values_read"]
+          assert j["preflight"]["source_metadata_semantics"]["raw_detection_outcomes_not_read"]
+          assert j["files"]["survey"]["MD5_official"]=="e201e24463d90e23c1f5f903e730e26c"
+          assert j["files"]["metadata"]["MD5_official"]=="a5a72215d0cd2ad0a027de814edfa701"
+          assert not [x for x in q.iterdir() if x.suffix in (".csv",".xml",".zip")]
+          print("PASS USGS ARMI new source SHA/MD5, no outcomes or raw data uploaded")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: usgs-armi-2024-independent-source-only-frog-qa-v0-1
+          path: build/armi_2024_source_only/source_only_receipt.json
+          if-no-files-found: warn
