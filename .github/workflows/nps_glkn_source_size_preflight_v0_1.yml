@@ -1,0 +1,30 @@
+name: NPS GLKN response-blind source size and range probe
+
+on:
+  push:
+    branches: [exploration/nps-glkn-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/nps_glkn_source_size_preflight_v0_1.yml"
+      - "exploration/run_nps_glkn_source_http_size_audit_v0_1.py"
+
+permissions:
+  contents: read
+
+jobs:
+  only_HTTP_metadata_and_1024_bytes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Query headers and short first lines without reading calling records
+        run: |
+          python -m py_compile exploration/run_nps_glkn_source_http_size_audit_v0_1.py
+          python -u exploration/run_nps_glkn_source_http_size_audit_v0_1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nps-glkn-response-blind-CSV-sizes-v0-1
+          path: build/nps_glkn_frog_source_only/http_size_preflight.json
+          if-no-files-found: error
