@@ -263,7 +263,7 @@ def synthetic_qa():
                          "n_runs":50+i+j,"n_routes":25+i+j,
                          "mean_null_pair_cov":.1+.001*(i+j),
                          "genus_same":int(i%5==j%5),
-                         "frequency_disparity":0.,"Y_pp":-3*abs(i-j)/10.,
+                         "frequency_disparity":abs(math.log((100.+i)/(100.+j))),"Y_pp":-3*abs(i-j)/10.,
                          "fold_A_pp":-3*abs(i-j)/10.,
                          "fold_B_pp":-3*abs(i-j)/10.,
                          "signed_edge_supported":False})
