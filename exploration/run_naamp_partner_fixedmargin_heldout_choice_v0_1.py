@@ -192,9 +192,11 @@ def train_both(events_by_run,stage):
     return {"stage":stage,"coefs":coefs,"audit":audits,
             "fitted":all(v["status"]=="fitted" for v in audits.values())}
 
-def bootstrap_route(table,seed):
+def bootstrap_route(table,seed,column="gain"):
     if table.empty:return {"status":"empty"}
-    p=table.groupby("route").gain.agg(["sum","size"])
+    if column not in ("gain","gain_P","gain_N"):
+        raise RuntimeError("Unregistered partner score component")
+    p=table.groupby("route")[column].agg(["sum","size"])
     totals=p["sum"].to_numpy(float)
     sizes=p["size"].to_numpy(float)
     n=len(p)
@@ -202,11 +204,11 @@ def bootstrap_route(table,seed):
     picks=np.random.default_rng(seed).integers(0,n,(BOOT,n))
     boots=totals[picks].sum(axis=1)/sizes[picks].sum(axis=1)
     ci=[float(x) for x in np.quantile(boots,[.025,.975])]
-    y=table.gain.to_numpy(float)
+    y=table[column].to_numpy(float)
     f=sm.OLS(y,np.ones((len(y),1))).fit(
         cov_type="cluster",cov_kwds={"groups":table.route.astype(str)})
     return {
-        "status":"fitted","n_runs":int(len(table)),
+        "status":"fitted","score_column":column,"n_runs":int(len(table)),
         "n_routes":int(n),
         "gain_nats_per_heldout_run":float(y.mean()),
         "route_bootstrap_ci95":ci,
@@ -214,7 +216,7 @@ def bootstrap_route(table,seed):
                               float(f.params[0]+Z*f.bse[0])],
         "p_two_sided_route_cluster":float(f.pvalues[0]),
         "positive_bootstrap_ci":bool(ci[0]>0),
-        "fold_means":{str(f):float(z.gain.mean())
+        "fold_means":{str(f):float(z[column].mean())
                       for f,z in table.groupby("fold")},
         "year_early":int((table.year<=2009).sum()),
         "year_late":int((table.year>=2010).sum()),
