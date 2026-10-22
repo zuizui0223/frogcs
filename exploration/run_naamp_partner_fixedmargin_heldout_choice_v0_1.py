@@ -269,26 +269,44 @@ def mode_events(mode,records,refs,coef,years,histories):
         index={t:i for i,t in enumerate(taxa)}
         if CENTRAL not in index or POSITIVE not in index:continue
         c_idx=index[CENTRAL];p_idx=index[POSITIVE]
-        base_coefs=coef[prior.complementary(row["fold"])]
-        matrix=np.stack([
-            np.asarray(base_coefs.get(t,{}).get("wetland_and_emergent",np.zeros(2)),float)
-            for t in taxa
-        ])@row["v"][:,[0,1]].T
+        # Nested two-stage geographic split: stage-2 training for fold F
+        # uses first-order NWI coefficients learned exclusively on F.
+        # Heldout fold not used anywhere in that stage-2 training offset.
+        def frozen_offset(fitted_route_fold):
+            source_weights=coef[fitted_route_fold]
+            return np.stack([
+                np.asarray(source_weights.get(t,{}).get(
+                    "wetland_and_emergent",np.zeros(2)),float)
+                for t in taxa
+            ])@row["v"][:,[0,1]].T
         hmat=np.stack([
             np.asarray(h["scores"][mode].get(t,np.zeros(10)),float)
             for t in taxa
         ])
-        offsets=matrix+hmat
-        if offsets.shape!=(len(taxa),10) or not np.isfinite(offsets).all():
-            raise RuntimeError("Bad fixed NWI+prior-SiteID offset")
+        offset_own_fold=frozen_offset(row["fold"])+hmat
+        offset_opposite_fold=frozen_offset(
+            prior.complementary(row["fold"]))+hmat
+        if (offset_own_fold.shape!=(len(taxa),10)
+            or offset_opposite_fold.shape!=(len(taxa),10)
+            or not np.isfinite(offset_own_fold).all()
+            or not np.isfinite(offset_opposite_fold).all()):
+            raise RuntimeError("Bad nested NWI+prior-SiteID offset")
         for negative in NEGATIVES:
             if negative not in index:continue
             n_idx=index[negative]
             events=[]
+            events_within_fold=[]
             for j in range(len(taxa)):
                 if j in {c_idx,p_idx,n_idx}:continue
-                event=exact_event(positions,c_idx,j,p_idx,n_idx,offsets)
-                if event is not None:events.append(event)
+                heldout_event=exact_event(
+                    positions,c_idx,j,p_idx,n_idx,offset_opposite_fold)
+                in_training_event=exact_event(
+                    positions,c_idx,j,p_idx,n_idx,offset_own_fold)
+                if (heldout_event is None)!=(in_training_event is None):
+                    raise RuntimeError("Nested first-order fold changed event membership")
+                if heldout_event is not None:
+                    events.append(heldout_event)
+                    events_within_fold.append(in_training_event)
             scope[f"{negative}_trio_coactive"]+=1
             if not events:continue
             scope[f"{negative}_trio_with_nonfocal_swaps"]+=1
@@ -297,6 +315,7 @@ def mode_events(mode,records,refs,coef,years,histories):
                 "RunID":rid,"route":row["route"],"fold":row["fold"],
                 "year":int(years[rid]),
                 "n_taxa":len(taxa),"events":events,
+                "events_within_training_fold":events_within_fold,
                 "n_events":len(events),
                 "variable_P":any(e["variable_P"] for e in events),
                 "variable_N":any(e["variable_N"] for e in events)}
@@ -330,8 +349,15 @@ def evaluate_one(trio_runs,mode,negative,outdir):
     fits={}
     predictions=[]
     for train_fold in ("A","B"):
-        train=folds[train_fold]
+        # Never allow original first-order NWI coefficients learned on
+        # the heldout route fold into stage-2 training events.
+        train={
+            rid:{**v,"events":v["events_within_training_fold"]}
+            for rid,v in folds[train_fold].items()
+        }
         test=folds[prior.complementary(train_fold)]
+        if any(row["fold"]!=train_fold for row in train.values()):
+            raise RuntimeError("Stage-2 training route leakage")
         fitted=train_both(train,"route_train_"+train_fold)
         fits[train_fold]={"audit":fitted["audit"],"fitted":fitted["fitted"]}
         if fitted["fitted"]:
@@ -439,7 +465,7 @@ def main():
     result={
         "analysis":"NAAMP_frog_partner_exact_fixed_margin_heldout_choice_v0_1",
         "status":"posthoc_partner_identity_predictive_question_not_causal",
-        "contract":"exploration/NAAMP_PARTNER_FIXED_MARGIN_HELDOUT_CHOICE_CONTRACT_2026_10_22.md",
+        "contract":"exploration/NAAMP_PARTNER_FIXED_MARGIN_HELDOUT_CHOICE_CONTRACT_V0_2.md",
         "source_NWI_crossfit_run":39516056663,
         "source_strict_prior_SiteID_null_run":39603785733,
         "source_same_survey_residual_trio_run":39597933440,
@@ -451,6 +477,7 @@ def main():
                       "exact_fixed_C_vs_other_row_swap":True,
                       "same_night_partner_presence_conditioned":True,
                       "opposite_geographic_route_fold_training":True,
+                      "first_order_NWI_nested_with_second_stage_training":True,
                       "original_species_site_NWI_coefficients_frozen":True,
                       "original_NWI_trained_both_eras":True,
                       "original_RC6_paper_unchanged":True},
