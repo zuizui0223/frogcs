@@ -1,0 +1,49 @@
+name: Fish macrophyte factorial experiment Figshare source QA
+
+on:
+  push:
+    branches: [exploration/fish-macrophyte-higher-order-mesocosm-2026-10-22]
+    paths:
+      - ".github/workflows/figshare_fish_macrophyte_source_only_v0_1.yml"
+      - "exploration/run_figshare_fish_macrophyte_source_only_v0_1.py"
+      - "exploration/FISH_MACROPHYTE_MULTI_TAXON_SOURCE_CONTRACT_2026_10_22.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  official_source_header_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify exact Figshare article v2 source xlsx and enumerate only worksheets and first header labels
+        run: |
+          python -m py_compile exploration/run_figshare_fish_macrophyte_source_only_v0_1.py
+          python -u exploration/run_figshare_fish_macrophyte_source_only_v0_1.py \
+            --outdir build/figshare_fish_plant_source
+      - name: Assert source QA has no numeric behavior or survival values
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/figshare_fish_plant_source")
+          q=json.loads((p/"source_only_schema.json").read_text())
+          assert q["status"]=="official_figshare_source_schema_verified"
+          assert not q["frog_outcomes_read"]
+          assert not q["all_numeric_choice_outcomes_read"]
+          assert q["source"]["actual_MD5"]=="e2d27edffb6c75b7208a609fafc79447"
+          assert not list(p.glob("*.xlsx"))
+          assert not q["RC6_modified"]
+          print("PASS official data source without experimental choice outcomes")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fish-macrophyte-figshare-factorial-source-sheets-only-v0-1
+          path: build/figshare_fish_plant_source/source_only_schema.json
+          if-no-files-found: warn
