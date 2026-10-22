@@ -1,0 +1,74 @@
+name: Plant x predators x frog higher-order design QA
+on:
+  push:
+    branches:
+      - exploration/plant-predator-higherorder-power-2026-10-23
+    paths:
+      - "exploration/run_plant_predator_higherorder_power_v0_1.py"
+      - ".github/workflows/plant_predator_higherorder_power_qa.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproducible-synthetic-calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Pin simulation runtime
+        run: python -m pip install "numpy==2.3.5" "scipy==1.17.0"
+      - name: Recompute full 80-scenario Monte Carlo grid (no live animal data)
+        run: |
+          python exploration/run_plant_predator_higherorder_power_v0_1.py \
+            --out build/plant_predator_higherorder_power_v0_1.json --reps 3000
+      - name: Verify strict scientific units, null calibration and key grid values
+        run: |
+          python - <<'PY'
+          import json, math
+          j=json.load(open("build/plant_predator_higherorder_power_v0_1.json"))
+          assert j["status"]=="SYNTHETIC_power_calibration_not_observed_frogs"
+          assert j["no_live_animal_experiment_performed"] is True
+          assert j["source_mechanistic_frog_survival_data_used"] is False
+          assert j["causal_mediation_identified"] is False
+          assert j["within_tank_20_tadpoles_not_20_replicates"]
+          assert len(j["designs"])==2
+          assert j["monte_carlo_reps_per_scenario"]==3000
+          a,b=j["designs"]
+          assert a["n_cells"]==8 and b["n_cells"]==16
+          assert len(a["grid"])==len(b["grid"])==40
+          assert abs(j["mathematical_link_scale_caution"]["logit_PFO_contrast"])<1e-10
+          assert abs(j["mathematical_link_scale_caution"]["risk_PFO_contrast"]+0.04568682285966855)<1e-8
+          def get(design,blocks,icc,delta):
+              rows=[x for x in design["grid"] if x["blocks"]==blocks and x["icc"]==icc and x["delta_risk_contrast"]==delta]
+              assert len(rows)==1
+              return rows[0]
+          for des in (a,b):
+              for x in des["grid"]:
+                  assert x["tanks"]==des["n_cells"]*x["blocks"]
+                  assert x["reps"]==3000
+                  assert not (x["delta_risk_contrast"]==0 and abs(x["power"]-1/60)>.02)
+          checkpoints=[
+            (a,8,.05,.20,.097),
+            (a,8,.20,.20,.058),
+            (a,64,.05,.20,.926),
+            (a,128,.20,.20,.889),
+            (b,8,.20,.40,.081),
+            (b,64,.20,.40,.838),
+          ]
+          for des,blocks,icc,delta,expected in checkpoints:
+              observed=get(des,blocks,icc,delta)["power"]
+              assert abs(observed-expected)<.005, (des["label"],blocks,icc,delta,observed)
+          assert a["grid80"][0]["first_grid_blocks_ge80pct"]==64
+          assert b["grid80"][4]["first_grid_blocks_ge80pct"]==64
+          print("PASS: 80 Monte Carlo scenarios, complete-tank replication, fixed scales, null calibration and predeclared checkpoints")
+          PY
+      - name: Archive numerical receipt outside version-controlled repository
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: plant-predator-higherorder-power-synthetic-only
+          path: build/plant_predator_higherorder_power_v0_1.json
+          if-no-files-found: warn
