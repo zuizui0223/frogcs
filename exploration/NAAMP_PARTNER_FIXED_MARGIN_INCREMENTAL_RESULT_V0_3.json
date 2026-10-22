@@ -1,0 +1,1019 @@
+{
+  "analysis": "NAAMP_frog_partner_exact_fixed_margin_heldout_choice_v0_3",
+  "contract": "exploration/NAAMP_PARTNER_FIXED_MARGIN_INCREMENTAL_CONTRACT_V0_3.md",
+  "historical_source_gate": {
+    "any_nonzero_historical_score_taxa": 18276,
+    "checked_NWI_runs": 6236,
+    "insufficient_prior_stratum_or_site_support": 2929,
+    "prior_source_eligible_runs": 3307,
+    "strong_nonzero_historical_score_taxa": 13015
+  },
+  "inference_boundaries": {
+    "aquatic_plant_species_measured": false,
+    "causal_social_acoustic_interaction_proven": false,
+    "conditional_pseudolikelihood_not_full_community_likelihood": true,
+    "first_order_NWI_coefficients_fit_crossroute_not_crosstime": true,
+    "fixed_margins_condition_on_observed_site_richness": true,
+    "frozen_RC6_manuscript_changed": false,
+    "incremental_negative_partner_selected_after_v0_2_readback": true,
+    "independent_mechanistic_biological_replication": false,
+    "other_species_rows_are_observed_not_intervened": true,
+    "species_SiteID_history_strictly_prior_years": true,
+    "survey_stops_sequential_not_simultaneous": true
+  },
+  "modes": {
+    "any": {
+      "partners": {
+        "Anaxyrus fowleri": {
+          "both_folds_expected_signs": true,
+          "both_heldout_fold_gains_positive": true,
+          "classification": "supported_predictive_partner_identity_candidate",
+          "early_trained_late_test": {
+            "early_training_audit": {
+              "M0_generic_richness": {
+                "bounds": [
+                  -3,
+                  3
+                ],
+                "coefficients": [
+                  0.5711935259819851
+                ],
+                "features": [
+                  "generic_other_taxa"
+                ],
+                "iterations": 4,
+                "matrix_rank": 1,
+                "optimizer_success": true,
+                "ridge": 3,
+                "status": "fitted",
+                "training_routes": 32,
+                "training_runs": 55,
+                "training_swap_events": 109
+              },
+              "M1_plus_partner_identity": {
+                "bounds": [
+                  -3,
+                  3
+                ],
+                "coefficients": [
+                  0.546854171499592,
+                  0.9701110880062461,
+                  -0.5339312294115607
+                ],
+                "features": [
+                  "generic_other_taxa",
+                  "positive_partner",
+                  "negative_partner"
+                ],
+                "iterations": 7,
+                "matrix_rank": 3,
+                "optimizer_success": true,
+                "ridge": 3,
+                "status": "fitted",
+                "training_routes": 32,
+                "training_runs": 55,
+                "training_swap_events": 109
+              },
+              "M_P_positive_partner": {
+                "bounds": [
+                  -3,
+                  3
+                ],
+                "coefficients": [
+                  0.5060715561722786,
+                  0.9713175454325067
+                ],
+                "features": [
+                  "generic_other_taxa",
+                  "positive_partner"
+                ],
+                "iterations": 6,
+                "matrix_rank": 2,
+                "optimizer_success": true,
+                "ridge": 3,
+                "status": "fitted",
+                "training_routes": 32,
+                "training_runs": 55,
+                "training_swap_events": 109
+              }
+            },
+            "fit_status": "fitted",
+            "late_negative_partner_increment": {
+              "bootstrap_replicates": 2000,
+              "fold_means": {
+                "A": 0.0094670134256097,
+                "B": 0.008332664824909646
+              },
+              "gain_nats_per_heldout_run": 0.008909036546346432,
+              "n_routes": 78,
+              "n_runs": 185,
+              "p_two_sided_route_cluster": 0.4439677445813117,
+              "positive_bootstrap_ci": false,
+              "route_bootstrap_ci95": [
+                -0.01334309666463867,
+                0.030859968334267053
+              ],
+              "route_cluster_ci95": [
+                -0.01390109561878823,
+                0.03171916871148109
+              ],
+              "score_column": "gain_N",
+              "status": "fitted",
+              "year_early": 0,
+              "year_late": 185
+            },
+            "late_positive_partner_increment": {
+              "bootstrap_replicates": 2000,
+              "fold_means": {
+                "A": 0.06186487624929171,
+                "B": 0.11316666483205605
+              },
+              "gain_nats_per_heldout_run": 0.08709981009270552,
+              "n_routes": 78,
+              "n_runs": 185,
+              "p_two_sided_route_cluster": 0.00006161727279480143,
+              "positive_bootstrap_ci": true,
+              "route_bootstrap_ci95": [
+                0.04542858725505063,
+                0.1306609632815223
+              ],
+              "route_cluster_ci95": [
+                0.04449124706305252,
+                0.1297083731223585
+              ],
+              "score_column": "gain_P",
+              "status": "fitted",
+              "year_early": 0,
+              "year_late": 185
+            },
+            "late_prediction": {
+              "bootstrap_replicates": 2000,
+              "fold_means": {
+                "A": 0.07133188967490142,
+                "B": 0.12149932965696568
+              },
+              "gain_nats_per_heldout_run": 0.09600884663905196,
+              "n_routes": 78,
+              "n_runs": 185,
+              "p_two_sided_route_cluster": 0.00025627604587394337,
+              "positive_bootstrap_ci": true,
+              "route_bootstrap_ci95": [
+                0.045633410653957436,
+                0.14690933116089883
+              ],
+              "route_cluster_ci95": [
+                0.04453763204061474,
+                0.1474800612374892
+              ],
+              "score_column": "gain",
+              "status": "fitted",
+              "year_early": 0,
+              "year_late": 185
+            },
+            "original_NWI_coefficients_trained_both_year_periods": true
+          },
+          "eligible": true,
+          "geographic_route_folds": {
+            "A": {
+              "audit": {
+                "M0_generic_richness": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.5594773709068217
+                  ],
+                  "features": [
+                    "generic_other_taxa"
+                  ],
+                  "iterations": 5,
+                  "matrix_rank": 1,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 52,
+                  "training_runs": 126,
+                  "training_swap_events": 274
+                },
+                "M1_plus_partner_identity": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.4682694157624808,
+                    0.9309127627701824,
+                    -0.3581086383610532
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner",
+                    "negative_partner"
+                  ],
+                  "iterations": 8,
+                  "matrix_rank": 3,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 52,
+                  "training_runs": 126,
+                  "training_swap_events": 274
+                },
+                "M_P_positive_partner": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.45404668741096293,
+                    0.9360900591488257
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner"
+                  ],
+                  "iterations": 6,
+                  "matrix_rank": 2,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 52,
+                  "training_runs": 126,
+                  "training_swap_events": 274
+                }
+              },
+              "coefficients": {
+                "M0_generic_richness": [
+                  0.5594773709068217
+                ],
+                "M1_plus_partner_identity": [
+                  0.4682694157624808,
+                  0.9309127627701824,
+                  -0.3581086383610532
+                ],
+                "M_P_positive_partner": [
+                  0.45404668741096293,
+                  0.9360900591488257
+                ]
+              },
+              "fitted": true
+            },
+            "B": {
+              "audit": {
+                "M0_generic_richness": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.35064911068965027
+                  ],
+                  "features": [
+                    "generic_other_taxa"
+                  ],
+                  "iterations": 4,
+                  "matrix_rank": 1,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 45,
+                  "training_runs": 114,
+                  "training_swap_events": 282
+                },
+                "M1_plus_partner_identity": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.29825322962863454,
+                    1.1647298223935056,
+                    -0.4437611815344908
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner",
+                    "negative_partner"
+                  ],
+                  "iterations": 7,
+                  "matrix_rank": 3,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 45,
+                  "training_runs": 114,
+                  "training_swap_events": 282
+                },
+                "M_P_positive_partner": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.2677625610543195,
+                    1.1474563299030054
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner"
+                  ],
+                  "iterations": 6,
+                  "matrix_rank": 2,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 45,
+                  "training_runs": 114,
+                  "training_swap_events": 282
+                }
+              },
+              "coefficients": {
+                "M0_generic_richness": [
+                  0.35064911068965027
+                ],
+                "M1_plus_partner_identity": [
+                  0.29825322962863454,
+                  1.1647298223935056,
+                  -0.4437611815344908
+                ],
+                "M_P_positive_partner": [
+                  0.2677625610543195,
+                  1.1474563299030054
+                ]
+              },
+              "fitted": true
+            }
+          },
+          "negative_partner_increment_BH_q_two_fixed_trios": 0.11446154654125709,
+          "negative_partner_increment_conditional_on_P": {
+            "bootstrap_replicates": 2000,
+            "fold_means": {
+              "A": 0.012013264858659944,
+              "B": 0.016691682132752288
+            },
+            "gain_nats_per_heldout_run": 0.014235513063853804,
+            "n_routes": 97,
+            "n_runs": 240,
+            "p_two_sided_route_cluster": 0.057230773270628546,
+            "positive_bootstrap_ci": false,
+            "route_bootstrap_ci95": [
+              -0.0010800824217232377,
+              0.028548523424912372
+            ],
+            "route_cluster_ci95": [
+              -0.00043734776445190394,
+              0.028908373892159514
+            ],
+            "score_column": "gain_N",
+            "status": "fitted",
+            "year_early": 55,
+            "year_late": 185
+          },
+          "negative_partner_increment_exploratory_supported": false,
+          "population": {
+            "fold_A": 126,
+            "fold_B": 114,
+            "median_alternates": 2,
+            "n_early": 55,
+            "n_events": 556,
+            "n_late": 185,
+            "n_routes": 97,
+            "n_runs": 240,
+            "n_runs_partner_N_variable": 201,
+            "n_runs_partner_P_variable": 215
+          },
+          "positive_partner_increment": {
+            "bootstrap_replicates": 2000,
+            "fold_means": {
+              "A": 0.07864836440481793,
+              "B": 0.11619864027433001
+            },
+            "gain_nats_per_heldout_run": 0.09648474544283617,
+            "n_routes": 97,
+            "n_runs": 240,
+            "p_two_sided_route_cluster": 0.000006694803892815453,
+            "positive_bootstrap_ci": true,
+            "route_bootstrap_ci95": [
+              0.056708101237681593,
+              0.13842354486731884
+            ],
+            "route_cluster_ci95": [
+              0.05449061106439929,
+              0.13847887982127305
+            ],
+            "score_column": "gain_P",
+            "status": "fitted",
+            "year_early": 55,
+            "year_late": 185
+          },
+          "rank_failures_fail_closed": true,
+          "route_heldout": {
+            "bootstrap_replicates": 2000,
+            "fold_means": {
+              "A": 0.09066162926347789,
+              "B": 0.1328903224070823
+            },
+            "gain_nats_per_heldout_run": 0.11072025850668998,
+            "n_routes": 97,
+            "n_runs": 240,
+            "p_two_sided_route_cluster": 0.0000030310566595994195,
+            "positive_bootstrap_ci": true,
+            "route_bootstrap_ci95": [
+              0.0644872238246838,
+              0.15593394487384626
+            ],
+            "route_cluster_ci95": [
+              0.06423889716908456,
+              0.15720161984429537
+            ],
+            "score_column": "gain",
+            "status": "fitted",
+            "year_early": 55,
+            "year_late": 185
+          },
+          "route_heldout_BH_q_two_focal_trios": 0.000006062113319198839,
+          "same_run_score_decomposition_verified": true,
+          "signed_partner_prediction_candidate": true,
+          "training_partner_direction": {
+            "A": {
+              "N": -0.3581086383610532,
+              "N_negative": true,
+              "P": 0.9309127627701824,
+              "P_positive": true,
+              "generic_richness": 0.4682694157624808
+            },
+            "B": {
+              "N": -0.4437611815344908,
+              "N_negative": true,
+              "P": 1.1647298223935056,
+              "P_positive": true,
+              "generic_richness": 0.29825322962863454
+            }
+          },
+          "trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Anaxyrus fowleri"
+          ]
+        },
+        "Hyla versicolor": {
+          "both_folds_expected_signs": false,
+          "both_heldout_fold_gains_positive": true,
+          "classification": "heldout_partner_increment_not_supported",
+          "early_trained_late_test": {
+            "early_training_audit": {
+              "M0_generic_richness": {
+                "bounds": [
+                  -3,
+                  3
+                ],
+                "coefficients": [
+                  0.3907558322217839
+                ],
+                "features": [
+                  "generic_other_taxa"
+                ],
+                "iterations": 4,
+                "matrix_rank": 1,
+                "optimizer_success": true,
+                "ridge": 3,
+                "status": "fitted",
+                "training_routes": 60,
+                "training_runs": 93,
+                "training_swap_events": 146
+              },
+              "M1_plus_partner_identity": {
+                "bounds": [
+                  -3,
+                  3
+                ],
+                "coefficients": [
+                  0.3105135668660728,
+                  1.165427336889804,
+                  0.15159169100205366
+                ],
+                "features": [
+                  "generic_other_taxa",
+                  "positive_partner",
+                  "negative_partner"
+                ],
+                "iterations": 6,
+                "matrix_rank": 3,
+                "optimizer_success": true,
+                "ridge": 3,
+                "status": "fitted",
+                "training_routes": 60,
+                "training_runs": 93,
+                "training_swap_events": 146
+              },
+              "M_P_positive_partner": {
+                "bounds": [
+                  -3,
+                  3
+                ],
+                "coefficients": [
+                  0.31284713118020335,
+                  1.1574773191669763
+                ],
+                "features": [
+                  "generic_other_taxa",
+                  "positive_partner"
+                ],
+                "iterations": 6,
+                "matrix_rank": 2,
+                "optimizer_success": true,
+                "ridge": 3,
+                "status": "fitted",
+                "training_routes": 60,
+                "training_runs": 93,
+                "training_swap_events": 146
+              }
+            },
+            "fit_status": "fitted",
+            "late_negative_partner_increment": {
+              "bootstrap_replicates": 2000,
+              "fold_means": {
+                "A": -0.008917771240548978,
+                "B": 0.0017409035429255988
+              },
+              "gain_nats_per_heldout_run": -0.003966103427753702,
+              "n_routes": 71,
+              "n_runs": 127,
+              "p_two_sided_route_cluster": 0.3300127521369205,
+              "positive_bootstrap_ci": false,
+              "route_bootstrap_ci95": [
+                -0.011748612603144496,
+                0.003717394071325274
+              ],
+              "route_cluster_ci95": [
+                -0.011946304753172996,
+                0.004014097897665591
+              ],
+              "score_column": "gain_N",
+              "status": "fitted",
+              "year_early": 0,
+              "year_late": 127
+            },
+            "late_positive_partner_increment": {
+              "bootstrap_replicates": 2000,
+              "fold_means": {
+                "A": 0.10822834398671465,
+                "B": 0.09417948466808679
+              },
+              "gain_nats_per_heldout_run": 0.1017017085552261,
+              "n_routes": 71,
+              "n_runs": 127,
+              "p_two_sided_route_cluster": 0.0005922654409013054,
+              "positive_bootstrap_ci": true,
+              "route_bootstrap_ci95": [
+                0.043598830803010045,
+                0.15784121291531872
+              ],
+              "route_cluster_ci95": [
+                0.04367433415240499,
+                0.15972908295804739
+              ],
+              "score_column": "gain_P",
+              "status": "fitted",
+              "year_early": 0,
+              "year_late": 127
+            },
+            "late_prediction": {
+              "bootstrap_replicates": 2000,
+              "fold_means": {
+                "A": 0.09931057274616566,
+                "B": 0.09592038821101241
+              },
+              "gain_nats_per_heldout_run": 0.09773560512747241,
+              "n_routes": 71,
+              "n_runs": 127,
+              "p_two_sided_route_cluster": 0.001098118998953434,
+              "positive_bootstrap_ci": true,
+              "route_bootstrap_ci95": [
+                0.039746445760926626,
+                0.15881453356761038
+              ],
+              "route_cluster_ci95": [
+                0.03904923204284024,
+                0.15642197821210457
+              ],
+              "score_column": "gain",
+              "status": "fitted",
+              "year_early": 0,
+              "year_late": 127
+            },
+            "original_NWI_coefficients_trained_both_year_periods": true
+          },
+          "eligible": true,
+          "geographic_route_folds": {
+            "A": {
+              "audit": {
+                "M0_generic_richness": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.48978086542435917
+                  ],
+                  "features": [
+                    "generic_other_taxa"
+                  ],
+                  "iterations": 4,
+                  "matrix_rank": 1,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 58,
+                  "training_runs": 113,
+                  "training_swap_events": 192
+                },
+                "M1_plus_partner_identity": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.42546273169495685,
+                    1.2483744533473806,
+                    -0.20393007360382354
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner",
+                    "negative_partner"
+                  ],
+                  "iterations": 6,
+                  "matrix_rank": 3,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 58,
+                  "training_runs": 113,
+                  "training_swap_events": 192
+                },
+                "M_P_positive_partner": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.4086430818906955,
+                    1.2464616177920675
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner"
+                  ],
+                  "iterations": 6,
+                  "matrix_rank": 2,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 58,
+                  "training_runs": 113,
+                  "training_swap_events": 192
+                }
+              },
+              "coefficients": {
+                "M0_generic_richness": [
+                  0.48978086542435917
+                ],
+                "M1_plus_partner_identity": [
+                  0.42546273169495685,
+                  1.2483744533473806,
+                  -0.20393007360382354
+                ],
+                "M_P_positive_partner": [
+                  0.4086430818906955,
+                  1.2464616177920675
+                ]
+              },
+              "fitted": true
+            },
+            "B": {
+              "audit": {
+                "M0_generic_richness": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.31638909994402425
+                  ],
+                  "features": [
+                    "generic_other_taxa"
+                  ],
+                  "iterations": 3,
+                  "matrix_rank": 1,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 53,
+                  "training_runs": 107,
+                  "training_swap_events": 187
+                },
+                "M1_plus_partner_identity": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.24033826533999844,
+                    0.9627916394748524,
+                    0.15637395542175983
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner",
+                    "negative_partner"
+                  ],
+                  "iterations": 6,
+                  "matrix_rank": 3,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 53,
+                  "training_runs": 107,
+                  "training_swap_events": 187
+                },
+                "M_P_positive_partner": {
+                  "bounds": [
+                    -3,
+                    3
+                  ],
+                  "coefficients": [
+                    0.2417985553519253,
+                    0.9533623519364184
+                  ],
+                  "features": [
+                    "generic_other_taxa",
+                    "positive_partner"
+                  ],
+                  "iterations": 5,
+                  "matrix_rank": 2,
+                  "optimizer_success": true,
+                  "ridge": 3,
+                  "status": "fitted",
+                  "training_routes": 53,
+                  "training_runs": 107,
+                  "training_swap_events": 187
+                }
+              },
+              "coefficients": {
+                "M0_generic_richness": [
+                  0.31638909994402425
+                ],
+                "M1_plus_partner_identity": [
+                  0.24033826533999844,
+                  0.9627916394748524,
+                  0.15637395542175983
+                ],
+                "M_P_positive_partner": [
+                  0.2417985553519253,
+                  0.9533623519364184
+                ]
+              },
+              "fitted": true
+            }
+          },
+          "negative_partner_increment_BH_q_two_fixed_trios": 0.1741114543523158,
+          "negative_partner_increment_conditional_on_P": {
+            "bootstrap_replicates": 2000,
+            "fold_means": {
+              "A": -0.004554827042320182,
+              "B": -0.007251189571881793
+            },
+            "gain_nats_per_heldout_run": -0.0058662397271524195,
+            "n_routes": 111,
+            "n_runs": 220,
+            "p_two_sided_route_cluster": 0.1741114543523158,
+            "positive_bootstrap_ci": false,
+            "route_bootstrap_ci95": [
+              -0.014833731046116084,
+              0.0021549185302880865
+            ],
+            "route_cluster_ci95": [
+              -0.01432590164540401,
+              0.0025934221910991727
+            ],
+            "score_column": "gain_N",
+            "status": "fitted",
+            "year_early": 93,
+            "year_late": 127
+          },
+          "negative_partner_increment_exploratory_supported": false,
+          "population": {
+            "fold_A": 113,
+            "fold_B": 107,
+            "median_alternates": 1,
+            "n_early": 93,
+            "n_events": 379,
+            "n_late": 127,
+            "n_routes": 111,
+            "n_runs": 220,
+            "n_runs_partner_N_variable": 152,
+            "n_runs_partner_P_variable": 195
+          },
+          "positive_partner_increment": {
+            "bootstrap_replicates": 2000,
+            "fold_means": {
+              "A": 0.12437380529776075,
+              "B": 0.09723897741368759
+            },
+            "gain_nats_per_heldout_run": 0.11117641173596153,
+            "n_routes": 111,
+            "n_runs": 220,
+            "p_two_sided_route_cluster": 0.000003325869071592414,
+            "positive_bootstrap_ci": true,
+            "route_bootstrap_ci95": [
+              0.06547526850815721,
+              0.15707592474922297
+            ],
+            "route_cluster_ci95": [
+              0.06431173928043196,
+              0.1580410841914911
+            ],
+            "score_column": "gain_P",
+            "status": "fitted",
+            "year_early": 93,
+            "year_late": 127
+          },
+          "rank_failures_fail_closed": true,
+          "route_heldout": {
+            "bootstrap_replicates": 2000,
+            "fold_means": {
+              "A": 0.11981897825544058,
+              "B": 0.08998778784180579
+            },
+            "gain_nats_per_heldout_run": 0.1053101720088091,
+            "n_routes": 111,
+            "n_runs": 220,
+            "p_two_sided_route_cluster": 0.00001662466409070677,
+            "positive_bootstrap_ci": true,
+            "route_bootstrap_ci95": [
+              0.05932184262757534,
+              0.15360580419104122
+            ],
+            "route_cluster_ci95": [
+              0.05737589162324042,
+              0.15324445239437787
+            ],
+            "score_column": "gain",
+            "status": "fitted",
+            "year_early": 93,
+            "year_late": 127
+          },
+          "route_heldout_BH_q_two_focal_trios": 0.00001662466409070677,
+          "same_run_score_decomposition_verified": true,
+          "signed_partner_prediction_candidate": false,
+          "training_partner_direction": {
+            "A": {
+              "N": -0.20393007360382354,
+              "N_negative": true,
+              "P": 1.2483744533473806,
+              "P_positive": true,
+              "generic_richness": 0.42546273169495685
+            },
+            "B": {
+              "N": 0.15637395542175983,
+              "N_negative": false,
+              "P": 0.9627916394748524,
+              "P_positive": true,
+              "generic_richness": 0.24033826533999844
+            }
+          },
+          "trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Hyla versicolor"
+          ]
+        }
+      },
+      "scope": {
+        "Anaxyrus fowleri_swap_events": 556,
+        "Anaxyrus fowleri_trio_coactive": 271,
+        "Anaxyrus fowleri_trio_with_nonfocal_swaps": 240,
+        "Hyla versicolor_swap_events": 379,
+        "Hyla versicolor_trio_coactive": 413,
+        "Hyla versicolor_trio_with_nonfocal_swaps": 220,
+        "original_observed_Cscore_verified": 3659,
+        "seasonal_prior_SiteID_eligible": 1979
+      }
+    },
+    "strong": {
+      "partners": {
+        "Anaxyrus fowleri": {
+          "classification": "insufficient_scope",
+          "eligible": false,
+          "population": {
+            "fold_A": 5,
+            "fold_B": 25,
+            "median_alternates": 2,
+            "n_early": 2,
+            "n_events": 67,
+            "n_late": 28,
+            "n_routes": 19,
+            "n_runs": 30,
+            "n_runs_partner_N_variable": 21,
+            "n_runs_partner_P_variable": 25
+          },
+          "rank_failures_fail_closed": true,
+          "trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Anaxyrus fowleri"
+          ]
+        },
+        "Hyla versicolor": {
+          "classification": "insufficient_scope",
+          "eligible": false,
+          "population": {
+            "fold_A": 14,
+            "fold_B": 22,
+            "median_alternates": 1,
+            "n_early": 9,
+            "n_events": 60,
+            "n_late": 27,
+            "n_routes": 27,
+            "n_runs": 36,
+            "n_runs_partner_N_variable": 24,
+            "n_runs_partner_P_variable": 27
+          },
+          "rank_failures_fail_closed": true,
+          "trio": [
+            "Lithobates clamitans",
+            "Lithobates catesbeianus",
+            "Hyla versicolor"
+          ]
+        }
+      },
+      "scope": {
+        "Anaxyrus fowleri_swap_events": 67,
+        "Anaxyrus fowleri_trio_coactive": 34,
+        "Anaxyrus fowleri_trio_with_nonfocal_swaps": 30,
+        "Hyla versicolor_swap_events": 60,
+        "Hyla versicolor_trio_coactive": 95,
+        "Hyla versicolor_trio_with_nonfocal_swaps": 36,
+        "original_observed_Cscore_verified": 1766,
+        "seasonal_prior_SiteID_eligible": 967
+      }
+    }
+  },
+  "parameters": {
+    "bootstrap": 2000,
+    "bound": 3,
+    "exact_fixed_C_vs_other_row_swap": true,
+    "first_order_NWI_nested_with_second_stage_training": true,
+    "incremental_P_plus_N_additivity_checked_per_run": true,
+    "nested_positive_then_negative_partner_models": true,
+    "opposite_geographic_route_fold_training": true,
+    "original_NWI_trained_both_eras": true,
+    "original_RC6_paper_unchanged": true,
+    "original_species_site_NWI_coefficients_frozen": true,
+    "ridge": 3,
+    "same_night_partner_presence_conditioned": true,
+    "site_history_strength": 1
+  },
+  "source_NWI_crossfit_run": 39516056663,
+  "source_NWI_geometry_run": 39450277196,
+  "source_context": {
+    "coordinate_blind_NWI_source_run": 39450277196,
+    "fold_run_counts": {
+      "A": 3080,
+      "B": 3156
+    },
+    "response_counts_not_used_for_geographic_selection": true,
+    "routes": 499,
+    "skipped": {
+      "missing_stop_temperature_or_noise": 53,
+      "no_complete_ten_site_vegetation": 1559
+    },
+    "source_complete_runs": 7848,
+    "ten_stop_vegetation_plus_observation_runs": 6236
+  },
+  "source_same_survey_residual_trio_run": 39597933440,
+  "source_strict_prior_SiteID_null_run": 39603785733,
+  "status": "posthoc_partner_identity_predictive_question_not_causal",
+  "synthetic_QA": {
+    "candidate_probabilities_normalized": true,
+    "exact_swap_fixed_row_column_margins": true,
+    "status": "PASS",
+    "synthetic_negative_partner_recovered": true,
+    "synthetic_positive_partner_recovered": true
+  },
+  "provenance": {
+    "run_id": 39713551897,
+    "job_id": 119610400460,
+    "artifact_id": 12397353997,
+    "code_sha": "19f4b0b27439b23fb721cd6c1d3fa1fe98318003",
+    "v0_2_primary_run_id": 39712895709,
+    "invalid_prelim_leaky_run_id": 39712455457,
+    "full_NWI_geospatial_run": 39450277196,
+    "original_strict_previous_year_SiteID_run": 39603785733,
+    "original_same_night_trio_run": 39597933440,
+    "posthoc_v0_3_selected_after_v0_2": true,
+    "RC6_frozen": true
+  }
+}
