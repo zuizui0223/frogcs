@@ -1,0 +1,50 @@
+name: NPS GLKN 68MB frog header-grain independent quality
+
+on:
+  push:
+    branches: [exploration/nps-glkn-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/nps_glkn_independent_frog_source_v0_2.yml"
+      - "exploration/run_nps_glkn_independent_source_only_qa_v0_2.py"
+      - "exploration/NPS_GLKN_INDEPENDENT_SOURCE_SCOPE_EXTENSION_V0_2.md"
+
+permissions:
+  contents: read
+
+jobs:
+  entire_source_key_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install source quality dependencies
+        run: python -m pip install -q --disable-pip-version-check numpy pandas
+      - name: Check source only park/recording/taxon metadata from official NPS
+        run: |
+          python -m py_compile exploration/run_nps_glkn_independent_source_only_qa_v0_2.py
+          python -u exploration/run_nps_glkn_independent_source_only_qa_v0_2.py \
+             --outdir build/nps_glkn_source_v02
+      - name: Ensure SHA and metadata only, no response readback or raw data redistribution
+        if: success()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/nps_glkn_source_v02")
+          r=json.loads((p/"nps_glkn_source_v02_result.json").read_text())
+          assert r["source_status"]=="source_only_metadata_and_grain_checked"
+          assert r["structure"]["no_species_detection_data_read"] is True
+          assert len(r["files"]["frog"]["sha256"])==64
+          assert r["files"]["metadata"]["sha256"]=="a37af87cd333168f52503f823041c4ab578b6968333c7d5f315604222ae4eb8f"
+          assert not [x for x in p.iterdir() if x.suffix in (".csv",".xml",".wav",".zip")]
+          print("PASS independent NPS source keys and exact nonresponse lineage")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nps-glkn-independent-frog-recording-taxon-qa-v0-2
+          path: build/nps_glkn_source_v02/nps_glkn_source_v02_result.json
+          if-no-files-found: warn
