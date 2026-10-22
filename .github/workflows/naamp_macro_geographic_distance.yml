@@ -1,0 +1,62 @@
+name: NAAMP all-taxon geodesic distance vs survey-order turnover
+on:
+  push:
+    branches:
+      - exploration/naamp-macro-plant-niche-network-2026-10-23
+    paths:
+      - '.github/workflows/naamp_macro_geographic_distance.yml'
+      - 'exploration/run_naamp_macro_actual_geographic_distance_v0_1.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-verified-physical-distance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-compatible numeric stack
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Use previously verified full NAAMP 12-shard NWI site coordinates
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Verify physical coordinates and compute original-NAAMP distance discrimination
+        run: |
+          python -u exploration/run_naamp_macro_actual_geographic_distance_v0_1.py \
+            --out build/naamp_macro_actual_geographic_distance_v0_1.json
+      - name: Check population held fixed, noncausal target and paired geographic model
+        run: |
+          python - <<'PY'
+          import json,math
+          j=json.load(open('build/naamp_macro_actual_geographic_distance_v0_1.json'))
+          assert j['status']=='EXECUTED_real_macro_geographic_distance_discrimination'
+          assert j['source_original_NAAMP']['ten_stop_vegetation_plus_observation_runs']==6236
+          assert j['source_geographic_coordinates']['matched_complete_NAAMP_runs_with_verified_physical_coords']==6236
+          assert j['previous_turnover_synthetic_QA']['status']=='PASS'
+          for mode,nr,npairs in (('any',282,106615),('strong',275,70385)):
+              x=j['modes'][mode]
+              assert x['model']['fit']['status']=='fitted'
+              assert x['model']['fit']['n_independent_routes']==nr
+              assert x['model']['fit']['n_station_pairs']==npairs
+              assert math.isfinite(x['model']['physical_log_distance']['beta'])
+              assert math.isfinite(x['model']['ordinal_stop_gap_adjusted']['beta'])
+              assert x['classification'] in ('exploratory_conditional_distance_association','nonconfirmatory')
+          assert not j['causal_boundaries']['frog_population_causality_identified']
+          assert j['causal_boundaries']['no_change_to_frozen_RC6']
+          print('PASS physical geodesic full NAAMP macro test, exact prior sample and noncausal labels')
+          PY
+      - name: Archive only computed geographic summary (not raw frog or NWI source files)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-macro-original-physical-distance-v0-1
+          path: build/naamp_macro_actual_geographic_distance_v0_1.json
+          if-no-files-found: warn
