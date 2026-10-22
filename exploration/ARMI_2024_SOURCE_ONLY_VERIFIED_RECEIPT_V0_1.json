@@ -1,0 +1,135 @@
+{
+  "RC6_edited": false,
+  "analysis": "independent_USGS_ARMI_2024_source_gate_v0_1",
+  "contract": "exploration/ARMI_2024_INDEPENDENT_FROG_SOURCE_CONTRACT_V0_1.md",
+  "files": {
+    "metadata": {
+      "MD5_official": "a5a72215d0cd2ad0a027de814edfa701",
+      "SHA256": "a41deac79d0f6be758101b27dc97014896b928723251b4544ddeefd6c4456a15",
+      "bytes": 41317,
+      "file_name": "ARMI_2024_cricket_frog_data_release_2025_v1.1.xml",
+      "official_source_verified": true,
+      "status": 200,
+      "url": "https://www.sciencebase.gov/catalog/file/get/68016413d4be0263cab109a8?f=__disk__a7%2Fb9%2F9b%2Fa7b99b29ed1611b7666ec1012a0da1bef21f9c77"
+    },
+    "survey": {
+      "MD5_official": "e201e24463d90e23c1f5f903e730e26c",
+      "SHA256": "dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4",
+      "bytes": 235391,
+      "file_name": "ARMI_2024_cricket_frog_data_release_2025_v1.1.csv",
+      "official_source_verified": true,
+      "status": 200,
+      "url": "https://www.sciencebase.gov/catalog/file/get/68016413d4be0263cab109a8?f=__disk__13%2F46%2F9a%2F13469adf4b11c2b0e99797f0e5b47a992130010e"
+    }
+  },
+  "frog_detection_values_read": false,
+  "preflight": {
+    "all_column_names": [
+      "Date",
+      "Arrival_time",
+      "Project",
+      "Site",
+      "Site_original",
+      "Latitude_WGS84",
+      "Longitude_WGS84",
+      "Observer",
+      "Method",
+      "Wind_Beaufort",
+      "Cloud_cover_percent",
+      "Species",
+      "Number_heard",
+      "Compass_direction",
+      "Comments"
+    ],
+    "analysis": "USGS_Midwest_ARMI_2024_pinned_source_only_v0_1",
+    "covariate_field_names": [
+      "Wind_Beaufort",
+      "Cloud_cover_percent"
+    ],
+    "data_version": "v1.1 revised 2026-04-02",
+    "fields_key_missing_rows": {
+      "Arrival_time": 0,
+      "Cloud_cover_percent": 0,
+      "Date": 0,
+      "Method": 0,
+      "Observer": 0,
+      "Project": 0,
+      "Site": 0,
+      "Wind_Beaufort": 0
+    },
+    "invalid_formatted_dates": 0,
+    "max_date": "2024-08-15",
+    "min_date": "2024-06-06",
+    "n_coverage_project_groups": 4,
+    "n_independent_unique_survey_visits": 798,
+    "n_invalid_visit_metadata_rows": 0,
+    "n_project_site_groups": 343,
+    "n_project_sites_with_both_observers": 297,
+    "n_record_rows": 1934,
+    "n_sites_with_repeat_visits": 318,
+    "n_valid_visit_metadata_rows": 1934,
+    "no_RAW_USGS_file_uploaded": true,
+    "number_heard_values_read": false,
+    "pre_outcome_gates": {
+      "at_least_two_projects": true,
+      "event_count_ge150": true,
+      "metadata_documents_complete_detected_species": true,
+      "metadata_documents_explicit_empty_survey": true,
+      "site_count_ge40": true,
+      "sites_with_two_or_more_visits_ge20": true,
+      "visit_key_completeness_ge90pct": true
+    },
+    "site_survey_visits_quantiles": {
+      "0": 1,
+      "1": 4,
+      "0.25": 2,
+      "0.5": 2,
+      "0.75": 3
+    },
+    "source_metadata_semantics": {
+      "original_csv_header_includes_species": true,
+      "raw_detection_outcomes_not_read": true,
+      "source_metadata_describes_all_species_heard": true,
+      "source_metadata_describes_empty_survey": true
+    },
+    "source_only_eligible": true,
+    "species_detection_values_read": false,
+    "survey_source_format": "positive_list_per_survey_event",
+    "surveys_per_project_metadata_only": {
+      "ARMI night surveys": 92,
+      "Cricket frog 2006": 123,
+      "Cricket frog 2007": 203,
+      "Cricket frog exploratory": 380
+    },
+    "visit_key_columns": [
+      "Project",
+      "Site",
+      "Date",
+      "Arrival_time",
+      "Observer",
+      "Method"
+    ],
+    "visit_rows_per_event": {
+      "1": 370,
+      "2": 121,
+      "3": 119,
+      "4": 84,
+      "5": 46,
+      "6": 27,
+      "7": 16,
+      "8": 11,
+      "9": 3,
+      "10": 1
+    }
+  },
+  "source_item_id": "68016413d4be0263cab109a8",
+  "source_release_verified": true,
+  "source_status": "source_only_preflight_verified",
+  "provenance": {
+    "original_source_only_GitHub_run": 39781861923,
+    "source_job_id": 119834863799,
+    "artifact_id": 12426583497,
+    "official_USGS_release_item": "68016413d4be0263cab109a8",
+    "no_outcome_cells_examined": true
+  }
+}
