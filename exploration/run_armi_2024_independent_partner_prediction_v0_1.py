@@ -305,11 +305,19 @@ def site_fixed_sensitivity(d):
                     cov_type="cluster",cov_kwds={"groups":t.site_key.astype(str)},
                     maxiter=200)
         beta=float(reg.params["bull"]);se=float(reg.bse["bull"])
+        pvalue=float(reg.pvalues["bull"])
+        # Site-fixed GLM has only 13 informative sites in this dataset and
+        # may have quasi/complete separation. Never serialize non-finite
+        # uncertainty or call a huge unstable coefficient a valid result.
+        if not np.isfinite([beta,se,pvalue]).all() or not bool(reg.converged):
+            return {"status":"quasi_separation_or_nonfinite_uncertainty",
+                    "sites":len(common),"n":len(t),
+                    "nuisance_site_FE_not_reliable":True}
         return {"status":"fitted","sites":len(common),"n":len(t),
             "beta_bull":beta,"ci95_beta":[beta-Z*se,beta+Z*se],
             "odds_ratio":float(np.exp(beta)),
             "ci95_or":[float(np.exp(beta-Z*se)),float(np.exp(beta+Z*se))],
-            "p_two_sided":float(reg.pvalues["bull"])}
+            "p_two_sided":pvalue}
     except Exception as ex:
         return {"status":"fit_unreliable","reason":str(ex)[:220],
                 "sites_with_both_outcome_variation":len(common)}
@@ -404,9 +412,9 @@ def main():
         result["site_fixed_effect"]=site_fixed_sensitivity(d)
         result["secondary_negative"]=secondary_negative(d)
         result["status"]=result["primary"]["classification"]
-    (arg.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
+    (arg.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True,allow_nan=False)+"\n")
     print("ARMI_2024_INDEPENDENT_RESULT_BEGIN",flush=True)
-    print(json.dumps(result,sort_keys=True),flush=True)
+    print(json.dumps(result,sort_keys=True,allow_nan=False),flush=True)
     print("ARMI_2024_INDEPENDENT_RESULT_END",flush=True)
 if __name__=="__main__":
     main()
