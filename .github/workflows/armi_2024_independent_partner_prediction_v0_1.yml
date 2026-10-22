@@ -1,0 +1,70 @@
+name: Independent USGS ARMI 2024 bullfrog-greenfrog site holdout
+
+on:
+  push:
+    branches: [exploration/armi-independent-bull-green-2026-10-22]
+    paths:
+      - ".github/workflows/armi_2024_independent_partner_prediction_v0_1.yml"
+      - "exploration/run_armi_2024_independent_partner_prediction_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-site-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels scikit-learn
+      - name: Validate disjoint project-site splits and Bernoulli log scores
+        run: |
+          python -m py_compile exploration/run_armi_2024_independent_partner_prediction_v0_1.py
+          python -u exploration/run_armi_2024_independent_partner_prediction_v0_1.py --synthetic-only
+
+  original_source_independent_frog_association:
+    needs: synthetic-site-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels scikit-learn
+      - name: Validate exact source revision, survey event keys, species record completeness and outcome gates
+        run: |
+          python -u exploration/run_armi_2024_independent_partner_prediction_v0_1.py \
+            --outdir build/armi_2024_independent
+      - name: Stop invalid inference and show frozen source outcome denominator
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/armi_2024_independent")
+          q=json.loads((p/"result.json").read_text())
+          assert q["synthetic_QA"]["status"]=="PASS"
+          assert q["source_verification"]["SHA256"]=="dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4"
+          assert q["metadata_verification"]["SHA256"]=="a41deac79d0f6be758101b27dc97014896b928723251b4544ddeefd6c4456a15"
+          assert q["source_grain"]["n_survey_visits"]==798
+          assert q["source_grain"]["n_project_site_groups"]==343
+          assert q["source_distinct_from_USGS_NAAMP"] is True
+          assert q["RC6_manuscript_SI_main_modified"] is False
+          if not q["analysis_completed"]:
+              assert "primary" not in q
+              print("PASS source/outcome QA fails closed with no unsupported biological finding")
+          else:
+              assert "primary" in q and "site_fixed_effect" in q
+              print("PASS independent ARMI survey positive-list study completed")
+          assert not [x for x in p.iterdir() if x.suffix in (".csv",".xml",".zip",".wav")]
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: usgs-armi-2024-independent-bull-green-site-cv-v0-1
+          path: build/armi_2024_independent/result.json
+          if-no-files-found: warn
