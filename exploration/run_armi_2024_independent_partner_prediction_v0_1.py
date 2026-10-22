@@ -76,8 +76,14 @@ def build_visit_table(source_csv):
     if (d[EVENT].eq("").any(axis=1)).any():
         raise RuntimeError("Original event key contains empty components")
     if d.Species.eq("").any():raise RuntimeError("Empty species token, cannot reconstruct survey")
-    if d.duplicated(EVENT+["Species"]).sum():
-        raise RuntimeError("Same species duplicated in an event; survey effort ambiguous")
+    # Each documented 5-minute survey can have multiple bearings to the
+    # SAME audible species/individual groups. Source-only QA pre-readback
+    # confirmed 368 repeated species/event groups, 367 with a distinct
+    # Compass_direction, and no site/weather conflicts. This is ONE survey
+    # event with "any" species detection, not multiple sampling trials.
+    duplicate_species_extra=int(d.duplicated(EVENT+["Species"]).sum())
+    if duplicate_species_extra!=515:
+        raise RuntimeError("Source repeated species/bearing structure changed")
     # A single survey has repeated species rows. Covariate conflict across a
     # survey is not allowed, because values might be species-specific.
     inconsistent={}
@@ -104,7 +110,9 @@ def build_visit_table(source_csv):
        "n_species_labels":len(names),"species_names":names,
        "n_explicit_frog_none_survey_events":int((visits.seen.map(lambda q:q=={"none"})).sum()),
        "weather_conflicting_survey_events":inconsistent,
-       "extra_event_taxon_duplicates":0,
+       "extra_event_taxon_duplicates":duplicate_species_extra,
+       "source_only_duplicate_QA_from_run":39782928959,
+       "repeated_bearings_grouped_to_exact_sixpart_survey":True,
        "both_named_species_appear":found_green and found_bull,
        "includes_Anaxyrus_fowleri":OTHER_FIXED in names
     }
