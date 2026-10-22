@@ -1,0 +1,49 @@
+name: NPS GLKN response-blind park-specific taxon panel and partner feasibility
+
+on:
+  push:
+    branches: [exploration/nps-glkn-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/nps_glkn_park_taxon_panel_source_only_v0_3.yml"
+      - "exploration/run_nps_glkn_park_panel_preflight_v0_3.py"
+      - "exploration/NPS_GLKN_PARK_SPECIFIC_TAXON_PANEL_CONTRACT_V0_3.md"
+
+permissions:
+  contents: read
+
+jobs:
+  source_only_named_partner_scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check pandas numpy
+      - name: Verify original NPS SHA then site and park panel without response columns
+        run: |
+          python -m py_compile exploration/run_nps_glkn_park_panel_preflight_v0_3.py
+          python -u exploration/run_nps_glkn_park_panel_preflight_v0_3.py \
+            --outdir build/nps_glkn_park_panel
+      - name: Check source-only and no raw NPS data in artifact directory
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/nps_glkn_park_panel")
+          x=json.loads((p/"nps_glkn_park_panel_source_only.json").read_text())
+          assert x["original_taxon_rows"]==147913
+          assert x["original_recording_events"]==16561
+          assert x["source_sha256"]=="b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2"
+          assert x["occurrence_fields_read"] is False
+          assert x["ManualCIV_values_read"] is False
+          assert not [z for z in p.iterdir() if z.suffix.lower() in (".csv",".zip",".xml")]
+          print("PASS independent NPS monitoring species-panel and named-pair sampling gate")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nps-glkn-source-only-park-specific-frog-panels-v0-3
+          path: build/nps_glkn_park_panel/nps_glkn_park_panel_source_only.json
+          if-no-files-found: warn
