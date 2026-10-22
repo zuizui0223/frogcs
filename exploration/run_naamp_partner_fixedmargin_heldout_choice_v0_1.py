@@ -389,6 +389,16 @@ def evaluate_one(trio_runs,mode,negative,outdir):
         signs[f]={"generic_richness":coef[0],"P":coef[1],"N":coef[2],
                   "P_positive":coef[1]>0,"N_negative":coef[2]<0}
     out["route_heldout"]=route
+    out["positive_partner_increment"]=bootstrap_route(
+        x,SEED+60+(0 if negative==NEGATIVES[0] else 1)
+          +(0 if mode=="any" else 20),"gain_P")
+    out["negative_partner_increment_conditional_on_P"]=bootstrap_route(
+        x,SEED+90+(0 if negative==NEGATIVES[0] else 1)
+          +(0 if mode=="any" else 20),"gain_N")
+    out["same_run_score_decomposition_verified"]=bool(
+        np.allclose(x.gain.to_numpy(),
+                    x.gain_P.to_numpy()+x.gain_N.to_numpy(),
+                    atol=1e-12,rtol=0))
     out["training_partner_direction"]=signs
     out["both_folds_expected_signs"]=bool(
        all(z["P_positive"] and z["N_negative"] for z in signs.values()))
@@ -405,6 +415,8 @@ def evaluate_one(trio_runs,mode,negative,outdir):
                 "fit_status":"fitted",
                 "early_training_audit":trained["audit"],
                 "late_prediction":bootstrap_route(predicted,SEED+140),
+                "late_positive_partner_increment":bootstrap_route(predicted,SEED+141,"gain_P"),
+                "late_negative_partner_increment":bootstrap_route(predicted,SEED+142,"gain_N"),
                 "original_NWI_coefficients_trained_both_year_periods":True}
         else:
             out["early_trained_late_test"]={"fit_status":"insufficient_or_failed","audit":trained["audit"]}
@@ -472,9 +484,9 @@ def main():
     records,refs,coefs,scope,years,histories,hist_audit=gather_source(args.frozen_nwi)
     args.outdir.mkdir(parents=True,exist_ok=True)
     result={
-        "analysis":"NAAMP_frog_partner_exact_fixed_margin_heldout_choice_v0_1",
+        "analysis":"NAAMP_frog_partner_exact_fixed_margin_heldout_choice_v0_3",
         "status":"posthoc_partner_identity_predictive_question_not_causal",
-        "contract":"exploration/NAAMP_PARTNER_FIXED_MARGIN_HELDOUT_CHOICE_CONTRACT_V0_2.md",
+        "contract":"exploration/NAAMP_PARTNER_FIXED_MARGIN_INCREMENTAL_CONTRACT_V0_3.md",
         "source_NWI_crossfit_run":39516056663,
         "source_strict_prior_SiteID_null_run":39603785733,
         "source_same_survey_residual_trio_run":39597933440,
@@ -487,6 +499,8 @@ def main():
                       "same_night_partner_presence_conditioned":True,
                       "opposite_geographic_route_fold_training":True,
                       "first_order_NWI_nested_with_second_stage_training":True,
+                      "nested_positive_then_negative_partner_models":True,
+                      "incremental_P_plus_N_additivity_checked_per_run":True,
                       "original_species_site_NWI_coefficients_frozen":True,
                       "original_NWI_trained_both_eras":True,
                       "original_RC6_paper_unchanged":True},
@@ -502,6 +516,8 @@ def main():
                 "classification":q.get("classification"),
                 "gain":q.get("route_heldout",{}).get("gain_nats_per_heldout_run"),
                 "CI":q.get("route_heldout",{}).get("route_bootstrap_ci95"),
+                "gain_P":q.get("positive_partner_increment",{}).get("gain_nats_per_heldout_run"),
+                "gain_N_given_P":q.get("negative_partner_increment_conditional_on_P",{}).get("gain_nats_per_heldout_run"),
                 "signed_betas":q.get("training_partner_direction"),
                 "temporal":q.get("early_trained_late_test",{}).get("late_prediction",{}).get("gain_nats_per_heldout_run")},sort_keys=True),flush=True)
         eligible_fit=[(n,x) for n,x in out["partners"].items() if x.get("classification")=="pending_fdr_gate"]
@@ -519,8 +535,26 @@ def main():
                     "supported_predictive_partner_identity_candidate"
                     if x["signed_partner_prediction_candidate"]
                     else "heldout_partner_increment_not_supported")
+        # Post-v0.2 specific negative-partner attribution. FDR is applied
+        # over BOTH preexisting eligible species trios, never a selected subset.
+        tests=[(name,x) for name,x in out["partners"].items()
+               if x.get("negative_partner_increment_conditional_on_P",{}).get("status")=="fitted"]
+        if tests:
+            q_neg=multipletests([
+                x["negative_partner_increment_conditional_on_P"]["p_two_sided_route_cluster"]
+                for _,x in tests],method="fdr_bh")[1]
+            for (name,item),q in zip(tests,q_neg):
+                item["negative_partner_increment_BH_q_two_fixed_trios"]=float(q)
+                inc=item["negative_partner_increment_conditional_on_P"]
+                trained_signs=all(z["N_negative"]
+                                  for z in item["training_partner_direction"].values())
+                item["negative_partner_increment_exploratory_supported"]=bool(
+                    q<.05 and inc["positive_bootstrap_ci"]
+                    and all(z>0 for z in inc["fold_means"].values())
+                    and trained_signs)
         result["modes"][mode]=out
     result["inference_boundaries"]={
+        "incremental_negative_partner_selected_after_v0_2_readback":True,
         "independent_mechanistic_biological_replication":False,
         "causal_social_acoustic_interaction_proven":False,
         "other_species_rows_are_observed_not_intervened":True,
