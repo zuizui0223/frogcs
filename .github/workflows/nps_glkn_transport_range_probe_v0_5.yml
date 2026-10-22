@@ -1,0 +1,43 @@
+name: NPS official range transfer response-blind diagnostic
+
+on:
+  push:
+    branches: [exploration/nps-glkn-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/nps_glkn_transport_range_probe_v0_5.yml"
+      - "exploration/run_nps_glkn_transport_range_diagnostic_v0_5.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  only_bounded_source_transport_metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe NPS HEAD, bounded direct GET, first/last 1KB official ranges
+        run: |
+          python -m py_compile exploration/run_nps_glkn_transport_range_diagnostic_v0_5.py
+          python -u exploration/run_nps_glkn_transport_range_diagnostic_v0_5.py
+      - name: Validate no frog outcomes or raw source were opened
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          d=json.loads(Path("build/nps_glkn_transfer_diag/report.json").read_text())
+          assert d["frog_outcomes_read"] is False
+          assert d["source_bytes_persisted"] is False
+          assert d["RC6_changed"] is False
+          print("PASS response-blind range eligibility documented:",d["source_Range_eligible"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nps-glkn-official-HTTP206-source-diagnostic-v0-5
+          path: build/nps_glkn_transfer_diag/report.json
+          if-no-files-found: warn
