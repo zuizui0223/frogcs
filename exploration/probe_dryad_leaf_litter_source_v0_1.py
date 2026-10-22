@@ -94,7 +94,7 @@ def run():
             return int(v["id"])
         for link in (v.get("_links") or {}).values():
             href=link.get("href","") if isinstance(link,dict) else ""
-            m=re.search(r"/versions/(\\d+)(?:$|[/?#])",href)
+            m=re.search(r"/versions/(\d+)(?:$|[/?#])",href)
             if m:return int(m.group(1))
         return None
     ids=[(get_version_id(v),v) for v in vs]
