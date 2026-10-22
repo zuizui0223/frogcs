@@ -1,0 +1,52 @@
+{
+  "analysis": "2024_USGS_ARMI_duplicate_species_survey_key_source_QA_v0_1",
+  "candidate_binary_any_species_by_survey_aggregation_only_pending_contract": true,
+  "duplicate_survey_species_groups": 368,
+  "entire_row_exact_duplicate_extras": 1,
+  "fields_varying_among_same_species_same_survey_groups": {
+    "Cloud_cover_percent": 0,
+    "Comments": 1,
+    "Compass_direction": 367,
+    "Latitude_WGS84": 0,
+    "Longitude_WGS84": 0,
+    "Number_heard": 101,
+    "Site_original": 0,
+    "Wind_Beaufort": 0
+  },
+  "frog_pair_joint_outcomes_read": false,
+  "no_species_association_test_computed": true,
+  "number_heard_and_compass_differences_are_record_detail_not_new_surveys": null,
+  "original_rows": 1934,
+  "original_unique_visit_sixpart_keys": 798,
+  "project_duplicate_rows": {
+    "ARMI night surveys": 197,
+    "Cricket frog 2006": 73,
+    "Cricket frog 2007": 116,
+    "Cricket frog exploratory": 497
+  },
+  "same_species_same_survey_extra_rows": 515,
+  "source_sha": "dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4",
+  "species_label_duplicate_rows": {
+    "Acris blanchardi": 126,
+    "Anaxyrus americanus": 31,
+    "Anaxyrus cognatus": 6,
+    "Dryophytes chrysoscelis": 30,
+    "Dryophytes versicolor": 222,
+    "Lithobates catesbeianus": 156,
+    "Lithobates clamitans": 287,
+    "Pseudacris maculata": 25
+  },
+  "survey_events_with_same_species_extra_rows": 275,
+  "within_survey_metadata_conflict_counts": {
+    "Cloud_cover_percent": 0,
+    "Latitude_WGS84": 0,
+    "Longitude_WGS84": 0,
+    "Site_original": 0,
+    "Wind_Beaufort": 0
+  },
+  "provenance": {
+    "original_workflow": 39782928959,
+    "job_id": 119838541595,
+    "only_survey_species_record_structure_examined": true
+  }
+}
