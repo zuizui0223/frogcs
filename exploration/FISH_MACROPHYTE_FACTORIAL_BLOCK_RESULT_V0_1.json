@@ -1,0 +1,963 @@
+{
+  "RC6_main_SI_submission_unchanged": true,
+  "analysis": "figshare_16627561_v2_fish_macrophyte_8taxon_factorial_block_contrasts_v0_1",
+  "contract": "exploration/FISH_MACROPHYTE_FACTORIAL_CAUSAL_CONTRACT_V0_1.md",
+  "experimental_dates_not_independent_replication": true,
+  "fish_predator_consumed_insects_directly_measured": false,
+  "hypotheses": {
+    "H1_randomized_plant_changes_toad_male_choice": {
+      "note": "Previously published experiment: treatment causes choice allocation only under design assumptions, not NAAMP frog acoustic calls",
+      "planned_contrasts": 4,
+      "supported_plant_choice_contrasts": 1
+    },
+    "H2_fish_x_plant_changes_toad_choice": {
+      "block_level_interaction_contrasts": [
+        {
+          "BH_q_four_H2_contrasts": 0.3246129219464026,
+          "ci95": [
+            -0.11306555063386473,
+            0.3018353919037059
+          ],
+          "classification": "nominal_or_inconclusive_effect_modification",
+          "effect": 0.09438492063492057,
+          "eligible": true,
+          "factorial_interaction_supported_after_BH": false,
+          "independent_blocks": 4,
+          "nominal_p_block_t": 0.24345969145980198,
+          "plant_added": "aq",
+          "species": "B. bufo",
+          "supports_nonzero_block_95CI": false
+        },
+        {
+          "BH_q_four_H2_contrasts": 0.9459450042147646,
+          "ci95": [
+            -0.3080074341273543,
+            0.2940788626987828
+          ],
+          "classification": "nominal_or_inconclusive_effect_modification",
+          "effect": -0.006964285714285735,
+          "eligible": true,
+          "factorial_interaction_supported_after_BH": false,
+          "independent_blocks": 4,
+          "nominal_p_block_t": 0.9459450042147646,
+          "plant_added": "aq_lit",
+          "species": "B. bufo",
+          "supports_nonzero_block_95CI": false
+        },
+        {
+          "BH_q_four_H2_contrasts": 0.17056919296158055,
+          "ci95": [
+            -0.8655804459992014,
+            -0.027871934953179522
+          ],
+          "classification": "nominal_or_inconclusive_effect_modification",
+          "effect": -0.44672619047619044,
+          "eligible": true,
+          "factorial_interaction_supported_after_BH": false,
+          "independent_blocks": 4,
+          "nominal_p_block_t": 0.042642298240395136,
+          "plant_added": "aq",
+          "species": "B. viridis",
+          "supports_nonzero_block_95CI": true
+        },
+        {
+          "BH_q_four_H2_contrasts": 0.3246129219464026,
+          "ci95": [
+            -0.5513569751454558,
+            0.20076173705021771
+          ],
+          "classification": "nominal_or_inconclusive_effect_modification",
+          "effect": -0.17529761904761904,
+          "eligible": true,
+          "factorial_interaction_supported_after_BH": false,
+          "independent_blocks": 4,
+          "nominal_p_block_t": 0.23458771047287408,
+          "plant_added": "aq_lit",
+          "species": "B. viridis",
+          "supports_nonzero_block_95CI": false
+        }
+      ],
+      "n_supported_after_BH": 0,
+      "scientific_boundary": "Factorial effect modification, NOT insect-mediated path"
+    },
+    "H3_taxon_x_fish_x_plant_responses": "noncausal_crossguild_heterogeneity_only",
+    "fish_insect_predator_mediated_tadpole_survival": "not_identifiable_in_source",
+    "irreducible_three_species_causal_interaction": "not_identifiable_in_source"
+  },
+  "planned_H1_permutation_family": [
+    {
+      "BH_q_four_H1_tests": 0.345679012345679,
+      "contrast": "aq",
+      "eligible": true,
+      "estimate": 0.12404761904761905,
+      "experimental_plant_choice_effect_supported": false,
+      "p_exact": 0.2345679012345679,
+      "taxon": "B. bufo"
+    },
+    {
+      "BH_q_four_H1_tests": 0.345679012345679,
+      "contrast": "aq_lit",
+      "eligible": true,
+      "estimate": 0.10248015873015874,
+      "experimental_plant_choice_effect_supported": false,
+      "p_exact": 0.3410493827160494,
+      "taxon": "B. bufo"
+    },
+    {
+      "BH_q_four_H1_tests": 0.024691358024691357,
+      "contrast": "aq",
+      "eligible": true,
+      "estimate": 0.4586309523809524,
+      "experimental_plant_choice_effect_supported": true,
+      "p_exact": 0.006172839506172839,
+      "taxon": "B. viridis"
+    },
+    {
+      "BH_q_four_H1_tests": 0.345679012345679,
+      "contrast": "aq_lit",
+      "eligible": true,
+      "estimate": 0.2086309523809524,
+      "experimental_plant_choice_effect_supported": false,
+      "p_exact": 0.345679012345679,
+      "taxon": "B. viridis"
+    }
+  ],
+  "source": {
+    "MD5": "e2d27edffb6c75b7208a609fafc79447",
+    "SHA256": "86944f2d06b7e2739342a7b42ec4ff383df92d2cb8600a3d9c9c5de1f70758ae",
+    "bytes": 70127,
+    "doi": "10.6084/m9.figshare.16627561.v2",
+    "raw_source_redistributed": false,
+    "verification": "PASS"
+  },
+  "source_quality": {
+    "Bufonidae": {
+      "event_gate": {
+        "B. bufo": {
+          "complete_normalized": 23,
+          "no_observed_choice": 1
+        },
+        "B. viridis": {
+          "complete_normalized": 22,
+          "no_observed_choice": 8
+        }
+      },
+      "original_rows": 324,
+      "outcome_col": "sexmale",
+      "rows_with_all_labels": 324,
+      "source_taxon_rows": {
+        "B. bufo": 144,
+        "B. viridis": 180
+      },
+      "structural_anomalies": {}
+    },
+    "Dytiscidae": {
+      "event_gate": {
+        "A. sulcatus": {
+          "complete_normalized": 22
+        },
+        "D. marginalis": {
+          "complete_normalized": 22
+        }
+      },
+      "original_rows": 264,
+      "outcome_col": "individuals",
+      "rows_with_all_labels": 264,
+      "source_taxon_rows": {
+        "A. sulcatus": 132,
+        "D. marginalis": 132
+      },
+      "structural_anomalies": {}
+    },
+    "Notonectidae": {
+      "event_gate": {
+        "N. glauca": {
+          "incomplete_six_treatment": 36
+        },
+        "N. obliqua": {
+          "incomplete_six_treatment": 28
+        }
+      },
+      "original_rows": 192,
+      "outcome_col": "individuals",
+      "rows_with_all_labels": 192,
+      "source_taxon_rows": {
+        "N. glauca": 108,
+        "N. obliqua": 84
+      },
+      "structural_anomalies": {}
+    },
+    "Odonata": {
+      "event_gate": {
+        "S. danae": {
+          "complete_normalized": 14
+        },
+        "S. sanguineum": {
+          "complete_normalized": 8
+        }
+      },
+      "original_rows": 384,
+      "outcome_col": "number of dips",
+      "rows_with_all_labels": 384,
+      "source_taxon_rows": {
+        "S. danae": 198,
+        "S. sanguineum": 186
+      },
+      "structural_anomalies": {}
+    }
+  },
+  "species": {
+    "A. sulcatus": {
+      "coverage": {
+        "events_by_block": {
+          "A": 6,
+          "B": 6,
+          "C": 5,
+          "D": 5
+        },
+        "n_blocks": 4,
+        "n_choice_events": 22,
+        "n_distinct_sampling_dates": 11,
+        "n_original_dips_or_individuals": 742
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "ci95": [
+            -0.13301215669363559,
+            0.04864203646619054
+          ],
+          "estimate": -0.04218506011372252,
+          "n_independent_blocks": 4,
+          "n_negative_blocks": 3,
+          "n_positive_blocks": 1,
+          "se_block": 0.028540024832191483,
+          "sign_consistency_fraction": 0.75,
+          "status": "fitted"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {
+            "A": -0.6319891928402567,
+            "B": -0.6179046754818078,
+            "C": 0.28099719887955177,
+            "D": -0.32962356792144026
+          },
+          "estimate": {
+            "ci95": [
+              -1.0042698556942553,
+              0.35500973701227884
+            ],
+            "estimate": -0.32463005934098826,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 3,
+            "n_positive_blocks": 1,
+            "se_block": 0.21355892013790906,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        },
+        "aq_lit": {
+          "blocks": {
+            "A": 0.04842789598108746,
+            "B": -0.40914570910033704,
+            "C": 0.5846998491704374,
+            "D": 0.15093725269488448
+          },
+          "estimate": {
+            "ci95": [
+              -0.5554036264945802,
+              0.7428632708676163
+            ],
+            "estimate": 0.09372982218651807,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 1,
+            "n_positive_blocks": 3,
+            "se_block": 0.20397310320785741,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        }
+      },
+      "functional_group": "diving_beetle",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": true,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": 0.06581912847288618,
+        "fish|aq_lit": 0.18463102938550507,
+        "fish|no": 0.18627225197102495,
+        "no_fish|aq": 0.3556675022094402,
+        "no_fish|aq_lit": 0.056119521594552794,
+        "no_fish|no": 0.15149056636659075
+      },
+      "sheet": "Dytiscidae",
+      "source_outcome_col": "individuals",
+      "taxon": "A. sulcatus"
+    },
+    "B. bufo": {
+      "H1_fishless_plant_contrasts": {
+        "aq": {
+          "block_ci": {
+            "ci95": [
+              -0.14719811062339025,
+              0.3952933487186283
+            ],
+            "estimate": 0.12404761904761905,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 1,
+            "n_positive_blocks": 3,
+            "se_block": 0.08523183226082061,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          },
+          "block_plant_effects": {
+            "A": -0.041666666666666664,
+            "B": 0.041666666666666664,
+            "C": 0.35333333333333333,
+            "D": 0.14285714285714288
+          },
+          "exact_randomization": {
+            "effect": 0.12404761904761905,
+            "extreme_assignments": 304,
+            "n_blocks": 4,
+            "p_exact_two_sided": 0.2345679012345679,
+            "permutations": 1296,
+            "test": "exact_fishless_plot_plant_label_permutations_per_block"
+          }
+        },
+        "aq_lit": {
+          "block_ci": {
+            "ci95": [
+              -0.14966645344229457,
+              0.3546267709026121
+            ],
+            "estimate": 0.10248015873015874,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 1,
+            "n_positive_blocks": 3,
+            "se_block": 0.07923043721234914,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          },
+          "block_plant_effects": {
+            "A": 0.22222222222222224,
+            "B": 0.20833333333333334,
+            "C": 0.1,
+            "D": -0.12063492063492062
+          },
+          "exact_randomization": {
+            "effect": 0.10248015873015874,
+            "extreme_assignments": 442,
+            "n_blocks": 4,
+            "p_exact_two_sided": 0.3410493827160494,
+            "permutations": 1296,
+            "test": "exact_fishless_plot_plant_label_permutations_per_block"
+          }
+        }
+      },
+      "coverage": {
+        "events_by_block": {
+          "A": 6,
+          "B": 6,
+          "C": 5,
+          "D": 6
+        },
+        "n_blocks": 4,
+        "n_choice_events": 23,
+        "n_distinct_sampling_dates": 6,
+        "n_original_dips_or_individuals": 77
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "ci95": [
+            -0.05871839334303837,
+            0.21342738805203304
+          ],
+          "estimate": 0.07735449735449733,
+          "n_independent_blocks": 4,
+          "n_negative_blocks": 1,
+          "n_positive_blocks": 3,
+          "se_block": 0.04275732491436493,
+          "sign_consistency_fraction": 0.75,
+          "status": "fitted"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {
+            "A": 0.2777777777777777,
+            "B": 0.09722222222222213,
+            "C": 0.0033333333333332993,
+            "D": -0.0007936507936508047
+          },
+          "estimate": {
+            "ci95": [
+              -0.11306555063386473,
+              0.3018353919037059
+            ],
+            "estimate": 0.09438492063492057,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 1,
+            "n_positive_blocks": 3,
+            "se_block": 0.06518585118761071,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        },
+        "aq_lit": {
+          "blocks": {
+            "A": -0.09722222222222227,
+            "B": -0.22222222222222227,
+            "C": 0.09,
+            "D": 0.2015873015873016
+          },
+          "estimate": {
+            "ci95": [
+              -0.3080074341273543,
+              0.2940788626987828
+            ],
+            "estimate": -0.006964285714285735,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 2,
+            "n_positive_blocks": 2,
+            "se_block": 0.09459488693124432,
+            "sign_consistency_fraction": 0.5,
+            "status": "fitted"
+          }
+        }
+      },
+      "functional_group": "toad",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": true,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": 0.3191269841269841,
+        "fish|aq_lit": 0.19621031746031745,
+        "fish|no": 0.10069444444444445,
+        "no_fish|aq": 0.17652777777777778,
+        "no_fish|aq_lit": 0.15496031746031746,
+        "no_fish|no": 0.052480158730158724
+      },
+      "sheet": "Bufonidae",
+      "source_outcome_col": "sexmale",
+      "taxon": "B. bufo"
+    },
+    "B. viridis": {
+      "H1_fishless_plant_contrasts": {
+        "aq": {
+          "block_ci": {
+            "ci95": [
+              0.00895493412732784,
+              0.908306970634577
+            ],
+            "estimate": 0.4586309523809524,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 0,
+            "n_positive_blocks": 4,
+            "se_block": 0.14129885475429474,
+            "sign_consistency_fraction": 1,
+            "status": "fitted"
+          },
+          "block_plant_effects": {
+            "A": 0.5,
+            "B": 0.125,
+            "C": 0.4,
+            "D": 0.8095238095238095
+          },
+          "exact_randomization": {
+            "effect": 0.4586309523809524,
+            "extreme_assignments": 8,
+            "n_blocks": 4,
+            "p_exact_two_sided": 0.006172839506172839,
+            "permutations": 1296,
+            "test": "exact_fishless_plot_plant_label_permutations_per_block"
+          }
+        },
+        "aq_lit": {
+          "block_ci": {
+            "ci95": [
+              -0.10476341403636621,
+              0.522025318798271
+            ],
+            "estimate": 0.2086309523809524,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 0,
+            "n_positive_blocks": 4,
+            "se_block": 0.09847593214597228,
+            "sign_consistency_fraction": 1,
+            "status": "fitted"
+          },
+          "block_plant_effects": {
+            "A": 0.5,
+            "B": 0.125,
+            "C": 0.06666666666666668,
+            "D": 0.14285714285714285
+          },
+          "exact_randomization": {
+            "effect": 0.2086309523809524,
+            "extreme_assignments": 448,
+            "n_blocks": 4,
+            "p_exact_two_sided": 0.345679012345679,
+            "permutations": 1296,
+            "test": "exact_fishless_plot_plant_label_permutations_per_block"
+          }
+        }
+      },
+      "coverage": {
+        "events_by_block": {
+          "A": 6,
+          "B": 4,
+          "C": 5,
+          "D": 7
+        },
+        "n_blocks": 4,
+        "n_choice_events": 22,
+        "n_distinct_sampling_dates": 9,
+        "n_original_dips_or_individuals": 42
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "ci95": [
+            -0.36987228697818797,
+            -0.23647691937101836
+          ],
+          "estimate": -0.30317460317460315,
+          "n_independent_blocks": 4,
+          "n_negative_blocks": 4,
+          "n_positive_blocks": 0,
+          "se_block": 0.020957991873373917,
+          "sign_consistency_fraction": 1,
+          "status": "fitted"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {
+            "A": -0.5,
+            "B": -0.125,
+            "C": -0.4,
+            "D": -0.7619047619047619
+          },
+          "estimate": {
+            "ci95": [
+              -0.8655804459992014,
+              -0.027871934953179522
+            ],
+            "estimate": -0.44672619047619044,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 4,
+            "n_positive_blocks": 0,
+            "se_block": 0.1316139269428054,
+            "sign_consistency_fraction": 1,
+            "status": "fitted"
+          }
+        },
+        "aq_lit": {
+          "blocks": {
+            "A": -0.5,
+            "B": -0.125,
+            "C": 0.06666666666666665,
+            "D": -0.14285714285714285
+          },
+          "estimate": {
+            "ci95": [
+              -0.5513569751454558,
+              0.20076173705021771
+            ],
+            "estimate": -0.17529761904761904,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 3,
+            "n_positive_blocks": 1,
+            "se_block": 0.11816675601831149,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        }
+      },
+      "functional_group": "toad",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": true,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": 0.011904761904761904,
+        "fish|aq_lit": 0.03333333333333333,
+        "fish|no": 0,
+        "no_fish|aq": 0.5544642857142857,
+        "no_fish|aq_lit": 0.30446428571428574,
+        "no_fish|no": 0.09583333333333333
+      },
+      "sheet": "Bufonidae",
+      "source_outcome_col": "sexmale",
+      "taxon": "B. viridis"
+    },
+    "D. marginalis": {
+      "coverage": {
+        "events_by_block": {
+          "A": 5,
+          "B": 5,
+          "C": 6,
+          "D": 6
+        },
+        "n_blocks": 4,
+        "n_choice_events": 22,
+        "n_distinct_sampling_dates": 11,
+        "n_original_dips_or_individuals": 355
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "ci95": [
+            -0.1560163943993929,
+            0.14347837197219743
+          ],
+          "estimate": -0.0062690112135977355,
+          "n_independent_blocks": 4,
+          "n_negative_blocks": 2,
+          "n_positive_blocks": 2,
+          "se_block": 0.04705417431149574,
+          "sign_consistency_fraction": 0.5,
+          "status": "fitted"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {
+            "A": -0.5008333333333332,
+            "B": -0.372156862745098,
+            "C": 0.25208607817303474,
+            "D": -0.09757834757834755
+          },
+          "estimate": {
+            "ci95": [
+              -0.7100411322545499,
+              0.3507998995126779
+            ],
+            "estimate": -0.17962061637093601,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 3,
+            "n_positive_blocks": 1,
+            "se_block": 0.1666706882070484,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        },
+        "aq_lit": {
+          "blocks": {
+            "A": -0.0019444444444443598,
+            "B": -0.296078431372549,
+            "C": 0.3828031871510133,
+            "D": 0.22115384615384615
+          },
+          "estimate": {
+            "ci95": [
+              -0.3917026944388581,
+              0.5446697731827911
+            ],
+            "estimate": 0.07648353937196652,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 2,
+            "n_positive_blocks": 2,
+            "se_block": 0.1471152028656417,
+            "sign_consistency_fraction": 0.5,
+            "status": "fitted"
+          }
+        }
+      },
+      "functional_group": "diving_beetle",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": true,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": 0.08871086701969055,
+        "fish|aq_lit": 0.19710177302568607,
+        "fish|no": 0.20478384313422676,
+        "no_fish|aq": 0.24022146893790114,
+        "no_fish|aq_lit": 0.09250821920099414,
+        "no_fish|no": 0.17667382868150133
+      },
+      "sheet": "Dytiscidae",
+      "source_outcome_col": "individuals",
+      "taxon": "D. marginalis"
+    },
+    "N. glauca": {
+      "coverage": {
+        "events_by_block": {},
+        "n_blocks": 0,
+        "n_choice_events": 0,
+        "n_distinct_sampling_dates": 0,
+        "n_original_dips_or_individuals": 0
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "n_blocks": 0,
+          "status": "underpowered_independent_blocks"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {},
+          "estimate": {
+            "n_blocks": 0,
+            "status": "underpowered_independent_blocks"
+          }
+        },
+        "aq_lit": {
+          "blocks": {},
+          "estimate": {
+            "n_blocks": 0,
+            "status": "underpowered_independent_blocks"
+          }
+        }
+      },
+      "functional_group": "water_bug",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": false,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": null,
+        "fish|aq_lit": null,
+        "fish|no": null,
+        "no_fish|aq": null,
+        "no_fish|aq_lit": null,
+        "no_fish|no": null
+      },
+      "sheet": "Notonectidae",
+      "source_outcome_col": "individuals",
+      "taxon": "N. glauca"
+    },
+    "N. obliqua": {
+      "coverage": {
+        "events_by_block": {},
+        "n_blocks": 0,
+        "n_choice_events": 0,
+        "n_distinct_sampling_dates": 0,
+        "n_original_dips_or_individuals": 0
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "n_blocks": 0,
+          "status": "underpowered_independent_blocks"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {},
+          "estimate": {
+            "n_blocks": 0,
+            "status": "underpowered_independent_blocks"
+          }
+        },
+        "aq_lit": {
+          "blocks": {},
+          "estimate": {
+            "n_blocks": 0,
+            "status": "underpowered_independent_blocks"
+          }
+        }
+      },
+      "functional_group": "water_bug",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": false,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": null,
+        "fish|aq_lit": null,
+        "fish|no": null,
+        "no_fish|aq": null,
+        "no_fish|aq_lit": null,
+        "no_fish|no": null
+      },
+      "sheet": "Notonectidae",
+      "source_outcome_col": "individuals",
+      "taxon": "N. obliqua"
+    },
+    "S. danae": {
+      "coverage": {
+        "events_by_block": {
+          "A": 4,
+          "B": 4,
+          "C": 2,
+          "D": 4
+        },
+        "n_blocks": 4,
+        "n_choice_events": 14,
+        "n_distinct_sampling_dates": 9,
+        "n_original_dips_or_individuals": 6640
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "ci95": [
+            -0.21871353571809232,
+            -0.0524768950608895
+          ],
+          "estimate": -0.1355952153894909,
+          "n_independent_blocks": 4,
+          "n_negative_blocks": 4,
+          "n_positive_blocks": 0,
+          "se_block": 0.026117744764649408,
+          "sign_consistency_fraction": 1,
+          "status": "fitted"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {
+            "A": -0.4451998316627259,
+            "B": -0.11679438817213944,
+            "C": 0.3554046711850711,
+            "D": -0.27262125200448917
+          },
+          "estimate": {
+            "ci95": [
+              -0.6672296411151112,
+              0.42762424078796946
+            ],
+            "estimate": -0.11980270016357086,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 3,
+            "n_positive_blocks": 1,
+            "se_block": 0.17201450973192098,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        },
+        "aq_lit": {
+          "blocks": {
+            "A": -0.24426912168177473,
+            "B": -0.4541531084461817,
+            "C": 0.3905064745996475,
+            "D": -0.06313149050044897
+          },
+          "estimate": {
+            "ci95": [
+              -0.6650009429865289,
+              0.47947731997215
+            ],
+            "estimate": -0.09276181150718947,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 3,
+            "n_positive_blocks": 1,
+            "se_block": 0.1798110876306916,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        }
+      },
+      "functional_group": "odonate",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": true,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": 0.058937876677703484,
+        "fish|aq_lit": 0.16713715405960938,
+        "fish|no": 0.07053214617845077,
+        "no_fish|aq": 0.24348095500717848,
+        "no_fish|aq_lit": 0.324639343732703,
+        "no_fish|no": 0.13527252434435488
+      },
+      "sheet": "Odonata",
+      "source_outcome_col": "number of dips",
+      "taxon": "S. danae"
+    },
+    "S. sanguineum": {
+      "coverage": {
+        "events_by_block": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2
+        },
+        "n_blocks": 4,
+        "n_choice_events": 8,
+        "n_distinct_sampling_dates": 8,
+        "n_original_dips_or_individuals": 6913
+      },
+      "fish_effect_across_plant_levels": {
+        "estimate": {
+          "ci95": [
+            -0.038510175407153076,
+            0.020095031447742072
+          ],
+          "estimate": -0.009207571979705504,
+          "n_independent_blocks": 4,
+          "n_negative_blocks": 1,
+          "n_positive_blocks": 0,
+          "se_block": 0.009207571979705504,
+          "sign_consistency_fraction": 0.25,
+          "status": "fitted"
+        }
+      },
+      "fish_x_plant_interaction": {
+        "aq": {
+          "blocks": {
+            "A": -0.4687581407465297,
+            "B": -0.05432551785487358,
+            "C": -0.06325030737563372,
+            "D": 0.027830728173846797
+          },
+          "estimate": {
+            "ci95": [
+              -0.4948158321852833,
+              0.2155642132836882
+            ],
+            "estimate": -0.13962580945079756,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 3,
+            "n_positive_blocks": 1,
+            "se_block": 0.11160911722054062,
+            "sign_consistency_fraction": 0.75,
+            "status": "fitted"
+          }
+        },
+        "aq_lit": {
+          "blocks": {
+            "A": -0.2791950429831417,
+            "B": -0.10865103570974716,
+            "C": 0.06325030737563372,
+            "D": 0.013915364086923399
+          },
+          "estimate": {
+            "ci95": [
+              -0.3204182726423248,
+              0.16507806902715896
+            ],
+            "estimate": -0.07767010180758294,
+            "n_independent_blocks": 4,
+            "n_negative_blocks": 2,
+            "n_positive_blocks": 2,
+            "se_block": 0.07627722435778896,
+            "sign_consistency_fraction": 0.5,
+            "status": "fitted"
+          }
+        }
+      },
+      "functional_group": "odonate",
+      "independent_experimental_unit": "block (not tank-date or individual)",
+      "inferential_gate": false,
+      "means_of_block_averaged_choice_shares": {
+        "fish|aq": 0.13549719409075078,
+        "fish|aq_lit": 0.1585653839345159,
+        "fish|no": 0.19212606400517507,
+        "no_fish|aq": 0.21189860510179367,
+        "no_fish|aq_lit": 0.17301108730234416,
+        "no_fish|no": 0.12890166556542043
+      },
+      "sheet": "Odonata",
+      "source_outcome_col": "number of dips",
+      "taxon": "S. sanguineum"
+    }
+  },
+  "status": "full_block_contrasts_computed",
+  "synthetic_QA": {
+    "fixed_block_plant_randomization": "PASS",
+    "six_treatments": "PASS",
+    "status": "PASS",
+    "strict_unique_tank_assignment": "PASS"
+  },
+  "third_species_causal_mediation_inferred": false,
+  "underlying_paper_has_prior_published_treatment_findings": true,
+  "provenance": {
+    "original_2021_experiment": "https://doi.org/10.1038/s41598-021-98632-2",
+    "figshare_v2": "https://doi.org/10.6084/m9.figshare.16627561.v2",
+    "source_only_QA_run": 39787757063,
+    "successfully_executed_inference_run": 39789338419,
+    "job_id": 119860868193,
+    "artifact_id": 12429668588,
+    "full_source_read_only_metadata_and_original_MD5": true,
+    "analysis_is_previous_experiment_reanalysis_not_new_field_experiment": true,
+    "no_RC6_science_or_main_changes": true
+  }
+}
