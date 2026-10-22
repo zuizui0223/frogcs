@@ -1,0 +1,94 @@
+{
+  "analysis": "NPS_GLKN_bullfrog_greenfrog_independent_validation_access_gate_v0_5",
+  "interpretation": "SOURCE_TRANSPORT_BLOCKED_NOT_A_NEGATIVE_BIOLOGICAL_RESULT",
+  "source_NPS_reference": 2320505,
+  "original_2016_2023_frog_source": {
+    "official_source_url": "https://irma.nps.gov/DataStore/DownloadFile/763377?Reference=2320505",
+    "original_expected_bytes": 68581307,
+    "previously_SHA_verified_file": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+    "previous_source_only_NPS_run": 39722310835,
+    "previous_source_only_park_panel_run": 39722811424,
+    "previously_verified_recordings": 16561,
+    "previously_verified_recording_taxon_rows": 147913,
+    "originally_explicit_bull_green_recordings": 12499
+  },
+  "tests": {
+    "source_primary_validation_attempt": 39772267174,
+    "source_same_official_URL_retry_attempt": 39772678418,
+    "source_silent_single_retrieval_errors": [
+      "Source size drift: 14538 != 68581307",
+      "Source size drift: 14538 != 68581307"
+    ],
+    "source_response_blind_range_probe": 39773281318,
+    "range_probe_job_id": 119805853200,
+    "original_source_headers_and_bounded_GET": {
+      "first_1024": {
+        "content_length": "14538",
+        "content_range": null,
+        "content_type": "text/html; charset=utf-8",
+        "final_host": "irma.nps.gov",
+        "http": 200,
+        "looks_like_HTML_or_security_check": true,
+        "method": "GET",
+        "preview_bytes_read": 1024,
+        "requested_range": [
+          0,
+          1023
+        ],
+        "source_raw_preview_discarded": true,
+        "status": "HTTP_response"
+      },
+      "head": {
+        "content_length": "14538",
+        "content_range": null,
+        "content_type": "text/html; charset=utf-8",
+        "final_host": "irma.nps.gov",
+        "http": 200,
+        "looks_like_HTML_or_security_check": false,
+        "method": "HEAD",
+        "preview_bytes_read": 0,
+        "requested_range": null,
+        "source_raw_preview_discarded": true,
+        "status": "HTTP_response"
+      },
+      "last_1024": {
+        "content_length": "14538",
+        "content_range": null,
+        "content_type": "text/html; charset=utf-8",
+        "final_host": "irma.nps.gov",
+        "http": 200,
+        "looks_like_HTML_or_security_check": true,
+        "method": "GET",
+        "preview_bytes_read": 1024,
+        "requested_range": [
+          68580283,
+          68581306
+        ],
+        "source_raw_preview_discarded": true,
+        "status": "HTTP_response"
+      },
+      "normal_GET_preview": {
+        "content_length": "14538",
+        "content_range": null,
+        "content_type": "text/html; charset=utf-8",
+        "final_host": "irma.nps.gov",
+        "http": 200,
+        "looks_like_HTML_or_security_check": true,
+        "method": "GET",
+        "preview_bytes_read": 14538,
+        "requested_range": null,
+        "source_raw_preview_discarded": true,
+        "status": "HTTP_response"
+      }
+    },
+    "byte_range_reconstruction_not_permitted": true,
+    "model_scientific_response_values_read": false,
+    "biological_predictions_completed": false
+  },
+  "contract": "exploration/NPS_GLKN_BULLFROG_GREENFROG_HELDOUT_VALIDATION_CONTRACT_V0_4.md",
+  "official_transfer_limitation": "exploration/NPS_GLKN_VERIFIED_RANGE_TRANSFER_EXTENSION_V0_5.md",
+  "disposition": "STOP_OFFICIAL_SOURCE_NOW_RETURNS_14538_BYTES_HTML_HTTP_200_INSTEAD_OF_FROG_CSV_AND_RANGE_NOT_SUPPORTED",
+  "next_use": "only rerun frozen QA and study if source becomes officially accessible and full hash verifies; do not relax outcomes or fill species absences",
+  "no_new_causal_interpretation": true,
+  "no_JAE_RC6_main_SI_modification": true
+}
