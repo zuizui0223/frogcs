@@ -163,6 +163,10 @@ def sample(groups,records,geo,clocks,mode,matched=False):
         groups["rows"].append({"route":run["route"],"state":run["state"],
                                "fold":run["fold"],"X":Xm,"Y":Ym,
                                "clock_available_pair_count":len(X),
+                               "raw_cross_count":nc,
+                               "raw_within_count":len(X)-nc,
+                               "raw_cross_sum":float(Y[X[:,0]==1].sum()),
+                               "raw_same_sum":float(Y[X[:,0]==0].sum()),
                                "mean_logkm":float(X[:,5].mean()),
                                "mean_logminutes":float(X[:,6].mean())})
         groups["number_valid_clock_pairs"]+=len(Y)
@@ -219,11 +223,13 @@ def assess(groups,mode):
                                    "max":max(values) if values else None}}
 
 def mode_output(records,geo,clocks,mode):
-    bag={"rows":[]}
+    bag=defaultdict(int)
+    bag["rows"]=[]
     sample(bag,records,geo,clocks,mode,matched=False)
     rows=bag.pop("rows")
     base=assess(rows,mode)
-    m={"rows":[]}
+    m=defaultdict(int)
+    m["rows"]=[]
     sample(m,records,geo,clocks,mode,matched=True)
     matchrows=m.pop("rows")
     matched=assess(matchrows,mode)
