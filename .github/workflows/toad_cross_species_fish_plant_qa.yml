@@ -1,0 +1,43 @@
+name: Posthoc two-toad fish plant heterogeneity QA
+on:
+  push:
+    branches:
+      - exploration/plant-mediated-cross-taxon-audit-2026-10-23
+    paths:
+      - "exploration/run_fish_plant_between_toad_responses_v0_1.py"
+      - "exploration/FISH_MACROPHYTE_FACTORIAL_BLOCK_RESULT_V0_1.json"
+      - "exploration/TOAD_CROSS_SPECIES_FISH_PLANT_HETEROGENEITY_V0_1.json"
+      - ".github/workflows/toad_cross_species_fish_plant_qa.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-block-inference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recalculate posthoc contrast with independent physical blocks
+        run: |
+          python exploration/run_fish_plant_between_toad_responses_v0_1.py \
+            --input exploration/FISH_MACROPHYTE_FACTORIAL_BLOCK_RESULT_V0_1.json \
+            --output build/toad_cross_taxon.json
+      - name: Assert both nominal and BH inference and do not promote species interaction
+        run: |
+          python - <<'PY'
+          import json,math
+          a=json.load(open("build/toad_cross_taxon.json"))
+          b=json.load(open("exploration/TOAD_CROSS_SPECIES_FISH_PLANT_HETEROGENEITY_V0_1.json"))
+          assert a["status"]==b["status"]=="posthoc_two_toad_effect_heterogeneity_analyzed"
+          assert not a["causal_frog_frog_competition_identified"]
+          assert not a["true_multi_biotaxon_higher_order_identified"]
+          assert all(not row["supported_after_BH"] for row in a["comparisons"])
+          assert len(a["comparisons"])==len(b["comparisons"])==2
+          for x,y in zip(a["comparisons"],b["comparisons"]):
+              assert x["plant"]==y["plant"]
+              for k in ("difference_pp","p_two_sided_block_t3","BH_q_two_inspected_plants"):
+                  assert math.isclose(x[k],y[k],abs_tol=1e-10), (k,x[k],y[k])
+              for u,v in zip(x["ci95_unadjusted_pp"],y["ci95_unadjusted_pp"]):
+                  assert math.isclose(u,v,abs_tol=1e-9)
+          print("PASS 2 posthoc four-block contrasts, BH non-support, noncausal boundaries")
+          PY
