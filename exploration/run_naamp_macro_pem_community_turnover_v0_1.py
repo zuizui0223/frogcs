@@ -74,14 +74,14 @@ def run_pairs(run,mode,matched_richness=False):
     Ym=Y-Y.mean()
     assert np.abs(Xm.mean(axis=0)).max()<1e-10
     assert abs(float(Ym.mean()))<1e-10
-    return {"route":run["route"],"state":run["state"],"fold":run["fold"],
+    return ({"route":run["route"],"state":run["state"],"fold":run["fold"],
             "X":Xm,"Y":Ym,
             "raw_cross_count":n_cross,"raw_within_count":len(X)-n_cross,
             "raw_cross_sum":float(Y[X[:,0]==1].sum()),
             "raw_same_sum":float(Y[X[:,0]==0].sum()),
             "n_stations_both_active":int(sum(bool(r) for r in richness)),
             "n_observed_taxa":len(run["activity"][mode])},
-            "ok",n_one_or_more,n_both_silent
+            "ok",n_one_or_more,n_both_silent)
 
 def assemble(records,mode,matched_richness=False):
     groups=[]
