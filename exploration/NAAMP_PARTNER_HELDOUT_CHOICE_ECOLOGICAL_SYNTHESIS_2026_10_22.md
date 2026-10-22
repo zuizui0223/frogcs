@@ -75,6 +75,22 @@ For strong acoustic CallingIndex 2–3, only **30** A. fowleri and **36** H. ver
 
 **Stop this round of source-relative exploratory model expansion.** Another retrospective parameter sweep would be less convincing than replicated wetland field monitoring measuring plants, hydrology, predators and frog sub-minute sound over time or a prospectively declared, independently sourced multi-taxonomic survey.
 
+## External validation attempt and explicit stop (2026-10-22)
+
+**External population metadata verified, but independent ecological validation not performed.** We followed the original NAAMP strong bullfrog-positive-partner signal into two independently collected frog monitoring programmes rather than retuning the same NAAMP archive.
+
+1. Tozer et al. Great Lakes CWMP Dryad 2025: original data file IDs and SHA256 frozen; official file/API access returned **HTTP 401**, official public UI **HTTP 403**. No calling outcomes read.
+2. NPS GLKN 2016–2023: source-only QA successfully verified **16,561** recordings, **147,913** explicit taxon rows, 66 station locations, and **12,499** recording opportunities having explicit labels for both `L. catesbeianus` and `L. clamitans`, across 50 sites in five parks. The original 68,581,307-byte NPS CSV had a verified SHA256 at that stage.
+3. A frozen independent expert-CI logistic prediction test was implemented with site-disjoint CV, fixed Hydroperiod/temperature/season controls, and outcome-QA gates **before** examining NPS detection values. At model execution, the official NPS URL returned a **14,538-byte HTML response** instead of the original CSV; direct retry and source-blind first/last Range probes produced the same HTML, not an HTTP 206 data range. **No expert detection/ManualCIV outcomes were read; neither positive nor negative external inference can be drawn.**
+
+This is a **source transport failure**, not a failure of the acoustic partner hypothesis. The 12,499 *source taxon-row opportunities* do **not** imply that both species were calling and must never be labelled co-detections. NPS repeated single-file recording design is also not the NAAMP fixed-10-stop spatial null; when source becomes available, the frozen weaker same-recording association question is the proper independent analogue.
+
+Primary source-only and failure receipts: `exploration/NPS_GLKN_SOURCE_ONLY_GRAIN_RECEIPT_V0_2.json`, `exploration/NPS_GLKN_PARK_PANEL_COVERAGE_RECEIPT_V0_3.json`, `exploration/NPS_GLKN_INDEPENDENT_RESPONSE_ACCESS_GATE_V0_5.json` and full summary `exploration/NPS_GLKN_EXTERNAL_FROG_VALIDATION_STATUS_2026_10_22.md`.
+
+**The strongest source-backed conclusion remains the internally geographically heldout, observational NAAMP bullfrog positive partner information. Independent-source biological replication and all causal mediation questions remain OPEN.**
+
+---
+
 ## Provenance
 
 - Preregistered original joint question `exploration/NAAMP_PARTNER_FIXED_MARGIN_HELDOUT_CHOICE_CONTRACT_2026_10_22.md`.
