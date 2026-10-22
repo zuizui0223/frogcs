@@ -386,23 +386,34 @@ def negative_increment(data,cols,base_source,neg_taxes):
           .join(p0[["gain"]].rename(columns={"gain":"old"}))
         merged["neg_gain"]=merged["new"]-merged["old"]
         ci=site_bootstrap(merged.rename(columns={"neg_gain":"gain"}),"gain",SEED+50+ix)
+        # Cluster the same-recording negative incremental scores by NPS site.
+        model=sm.OLS(merged["neg_gain"].astype(float).to_numpy(),
+                     np.ones((len(merged),1))).fit(
+                    cov_type="cluster",cov_kwds={"groups":merged.site_key.astype(str)})
+        beta=float(model.params[0])
+        se=float(model.bse[0])
+        coefs=[float(m1["full_model_train"][fold]["M1"]["coef_by_name"].get("negative",np.nan))
+               for fold in ("A","B")]
         comparisons[neg]={"status":"fitted","n":len(subset),
             "n_sites":int(subset.site_key.nunique()),
             "negative_manual_positive":positives,
             "increment_after_bullfrog":ci,
+            "site_cluster_inference":{
+                "beta_gain":beta,"se":se,"CI95":[beta-Z*se,beta+Z*se],
+                "p_two_sided":float(model.pvalues[0])},
+            "negative_regression_coefficients_by_training_fold":coefs,
             "nuisance_baseline":m0["logscore"],
             "full_partner_model":m1["logscore"]}
     eligible=[(n,r) for n,r in comparisons.items() if r.get("status")=="fitted"]
     if eligible:
-        # Use site-bootstrap sign as a predeclared directional exploratory
-        # analysis; no posthoc retuning, and avoid invalid normal P from
-        # assuming recordings are independent.
-        qs=[]
-        for n,r in eligible:
-            # Without stored route-block normal test, classify conservatively:
-            # bootstrap CI alone is not an inferential FDR P.
-            r["BH_FDR_note"]="NO_VALID_P_VALUE; not an established negative partner"
-            r["negative_increment_supported"]=False
+        qs=multipletests([r["site_cluster_inference"]["p_two_sided"]
+                         for n,r in eligible],method="fdr_bh")[1]
+        for (name,item),q in zip(eligible,qs):
+            item["BH_q"]=float(q)
+            item["negative_increment_supported"]=bool(
+                q<.05 and item["increment_after_bullfrog"]["positive_CI"]
+                and all(v<0 for v in item["negative_regression_coefficients_by_training_fold"])
+                and all(v>0 for v in item["increment_after_bullfrog"]["fold_means"].values()))
     return comparisons
 
 def synthetic_qa():
