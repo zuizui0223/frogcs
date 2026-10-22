@@ -1,0 +1,433 @@
+{
+  "status": "executed_from_source_verified_block_contrasts",
+  "date": "2026-10-22",
+  "input": "exploration/FISH_MACROPHYTE_FACTORIAL_BLOCK_RESULT_V0_1.json",
+  "source_sha256": "86944f2d06b7e2739342a7b42ec4ff383df92d2cb8600a3d9c9c5de1f70758ae",
+  "independent_blocks": 4,
+  "permutation_rule": "3! label relabelings per fish stratum per block; fixed through dates",
+  "estimand": "male observed-use choice share among 6 treatments, not occupancy, survival, or reproduction",
+  "fish_present_contrasts_posthoc": true,
+  "species": [
+    {
+      "taxon": "B. bufo",
+      "fish_status": "no_fish",
+      "plant_level": "aq",
+      "effect_share_pp": 12.404761904761905,
+      "p_exact_two_sided": 0.2345679012345679,
+      "extreme_assignments": 304,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": -4.166666666666666,
+        "B": 4.166666666666666,
+        "C": 35.333333333333336,
+        "D": 14.285714285714288
+      },
+      "positive_blocks": 3,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 17.92857142857143,
+          "p_exact_two_sided": 0.1574074074074074,
+          "extreme_assignments": 34,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 15.15079365079365,
+          "p_exact_two_sided": 0.25,
+          "extreme_assignments": 54,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 4.761904761904763,
+          "p_exact_two_sided": 0.6759259259259259,
+          "extreme_assignments": 146,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 11.777777777777777,
+          "p_exact_two_sided": 0.35185185185185186,
+          "extreme_assignments": 76,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.345679012345679
+    },
+    {
+      "taxon": "B. bufo",
+      "fish_status": "no_fish",
+      "plant_level": "aq_lit",
+      "effect_share_pp": 10.248015873015873,
+      "p_exact_two_sided": 0.3410493827160494,
+      "extreme_assignments": 442,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 22.222222222222225,
+        "B": 20.833333333333336,
+        "C": 10,
+        "D": -12.063492063492061
+      },
+      "positive_blocks": 3,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 6.256613756613757,
+          "p_exact_two_sided": 0.6388888888888888,
+          "extreme_assignments": 138,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 6.719576719576721,
+          "p_exact_two_sided": 0.6296296296296297,
+          "extreme_assignments": 136,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 10.33068783068783,
+          "p_exact_two_sided": 0.3611111111111111,
+          "extreme_assignments": 78,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 17.685185185185183,
+          "p_exact_two_sided": 0.16666666666666666,
+          "extreme_assignments": 36,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.345679012345679
+    },
+    {
+      "taxon": "B. viridis",
+      "fish_status": "no_fish",
+      "plant_level": "aq",
+      "effect_share_pp": 45.863095238095234,
+      "p_exact_two_sided": 0.006172839506172839,
+      "extreme_assignments": 8,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 50,
+        "B": 12.5,
+        "C": 40,
+        "D": 80.95238095238095
+      },
+      "positive_blocks": 4,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 44.48412698412699,
+          "p_exact_two_sided": 0.018518518518518517,
+          "extreme_assignments": 4,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 56.984126984126995,
+          "p_exact_two_sided": 0.018518518518518517,
+          "extreme_assignments": 4,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 47.817460317460316,
+          "p_exact_two_sided": 0.037037037037037035,
+          "extreme_assignments": 8,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 34.166666666666664,
+          "p_exact_two_sided": 0.037037037037037035,
+          "extreme_assignments": 8,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.024691358024691357
+    },
+    {
+      "taxon": "B. viridis",
+      "fish_status": "no_fish",
+      "plant_level": "aq_lit",
+      "effect_share_pp": 20.863095238095237,
+      "p_exact_two_sided": 0.345679012345679,
+      "extreme_assignments": 448,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 50,
+        "B": 12.5,
+        "C": 6.666666666666668,
+        "D": 14.285714285714285
+      },
+      "positive_blocks": 4,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 11.150793650793652,
+          "p_exact_two_sided": 0.7222222222222222,
+          "extreme_assignments": 156,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 23.65079365079365,
+          "p_exact_two_sided": 0.4444444444444444,
+          "extreme_assignments": 96,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 25.595238095238095,
+          "p_exact_two_sided": 0.37037037037037035,
+          "extreme_assignments": 80,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 23.055555555555554,
+          "p_exact_two_sided": 0.25925925925925924,
+          "extreme_assignments": 56,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.345679012345679
+    },
+    {
+      "taxon": "B. bufo",
+      "fish_status": "fish",
+      "plant_level": "aq",
+      "effect_share_pp": 21.84325396825396,
+      "p_exact_two_sided": 0.0030864197530864196,
+      "extreme_assignments": 4,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 23.611111111111104,
+        "B": 13.888888888888879,
+        "C": 35.666666666666664,
+        "D": 14.206349206349206
+      },
+      "positive_blocks": 4,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 21.25396825396825,
+          "p_exact_two_sided": 0.018518518518518517,
+          "extreme_assignments": 4,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 24.49470899470899,
+          "p_exact_two_sided": 0.009259259259259259,
+          "extreme_assignments": 2,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 17.235449735449727,
+          "p_exact_two_sided": 0.018518518518518517,
+          "extreme_assignments": 4,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 24.388888888888882,
+          "p_exact_two_sided": 0.018518518518518517,
+          "extreme_assignments": 4,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.012345679012345678
+    },
+    {
+      "taxon": "B. bufo",
+      "fish_status": "fish",
+      "plant_level": "aq_lit",
+      "effect_share_pp": 9.5515873015873,
+      "p_exact_two_sided": 0.2824074074074074,
+      "extreme_assignments": 366,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 12.499999999999996,
+        "B": -1.3888888888888924,
+        "C": 19,
+        "D": 8.095238095238097
+      },
+      "positive_blocks": 3,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 8.568783068783068,
+          "p_exact_two_sided": 0.48148148148148145,
+          "extreme_assignments": 104,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 13.198412698412698,
+          "p_exact_two_sided": 0.24074074074074073,
+          "extreme_assignments": 52,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 6.402116402116401,
+          "p_exact_two_sided": 0.4074074074074074,
+          "extreme_assignments": 88,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 10.037037037037035,
+          "p_exact_two_sided": 0.3888888888888889,
+          "extreme_assignments": 84,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.5648148148148148
+    },
+    {
+      "taxon": "B. viridis",
+      "fish_status": "fish",
+      "plant_level": "aq",
+      "effect_share_pp": 1.1904761904761918,
+      "p_exact_two_sided": 0.8888888888888888,
+      "extreme_assignments": 1152,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 4.761904761904767
+      },
+      "positive_blocks": 1,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 1.587301587301589,
+          "p_exact_two_sided": 0.8888888888888888,
+          "extreme_assignments": 192,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 1.587301587301589,
+          "p_exact_two_sided": 0.8888888888888888,
+          "extreme_assignments": 192,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 1.587301587301589,
+          "p_exact_two_sided": 0.6666666666666666,
+          "extreme_assignments": 144,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 0,
+          "p_exact_two_sided": 1,
+          "extreme_assignments": 216,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.8888888888888888
+    },
+    {
+      "taxon": "B. viridis",
+      "fish_status": "fish",
+      "plant_level": "aq_lit",
+      "effect_share_pp": 3.3333333333333335,
+      "p_exact_two_sided": 0.4444444444444444,
+      "extreme_assignments": 576,
+      "permutations": 1296,
+      "n_independent_blocks": 4,
+      "block_effects_pp": {
+        "A": 0,
+        "B": 0,
+        "C": 13.333333333333334,
+        "D": 0
+      },
+      "positive_blocks": 1,
+      "leave_one_block_out": [
+        {
+          "omitted_block": "A",
+          "effect_share_pp": 4.444444444444445,
+          "p_exact_two_sided": 0.4444444444444444,
+          "extreme_assignments": 96,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "B",
+          "effect_share_pp": 4.444444444444445,
+          "p_exact_two_sided": 0.4444444444444444,
+          "extreme_assignments": 96,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "C",
+          "effect_share_pp": 0,
+          "p_exact_two_sided": 1,
+          "extreme_assignments": 216,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        },
+        {
+          "omitted_block": "D",
+          "effect_share_pp": 4.444444444444445,
+          "p_exact_two_sided": 0.6666666666666666,
+          "extreme_assignments": 144,
+          "permutations": 216,
+          "n_independent_blocks": 3
+        }
+      ],
+      "bh_q": 0.5925925925925926
+    }
+  ],
+  "sensitivity": {},
+  "causal_mediation_identified": false,
+  "higher_order_species_interaction_identified": false,
+  "original_H2_factorial_BH_n_supported": 0,
+  "RC6_unchanged": true
+}
