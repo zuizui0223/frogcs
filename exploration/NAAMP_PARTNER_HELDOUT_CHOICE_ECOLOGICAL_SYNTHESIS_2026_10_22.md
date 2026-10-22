@@ -75,6 +75,22 @@ For strong acoustic CallingIndex 2–3, only **30** A. fowleri and **36** H. ver
 
 **Stop this round of source-relative exploratory model expansion.** Another retrospective parameter sweep would be less convincing than replicated wetland field monitoring measuring plants, hydrology, predators and frog sub-minute sound over time or a prospectively declared, independently sourced multi-taxonomic survey.
 
+## First completed independent-source outcome test — USGS ARMI 2024
+
+A separate Midwest USGS ARMI field programme (2024; `doi:10.5066/P19ZCGWM`) provided a source-complete 5-minute acoustic survey archive, avoiding the earlier NPS/Dryad source transport blockers. **This is a different statistical grain from NAAMP.**
+
+- Official v1.1 source `ARMI_2024_cricket_frog_data_release_2025_v1.1.csv` MD5 and SHA256 verified. Original **1,934** record rows correspond to **798** independently conducted 5-minute surveys at **343 Project×Site** groups. The same species could be heard from multiple compass bearings within one survey; source forensic QA confirmed **368** repeated species×survey groups (367 with different bearings) and the binary visit outcome correctly groups them, without adding pseudo-replicate visits.
+- Acoustic call detection: `L. clamitans` on **306/798** surveys; `L. catesbeianus` on **214/798**; both on **98**. Observation/source quality, date, time, wind, site disjoint and survey-row coverage all passed.
+- Fixed project-stratified **whole-site geographic A/B train/test** logistic models controlled original sampling project, listener, ear/microphone method, sky cover, Beaufort wind, date/season, listening hour, and nonfocal frog calls. Adding the bullfrog same-visit call indicator yields **+0.005321 nats/survey** heldout mean log score, 2,000-site-block bootstrap **95% CI −0.002335 to +0.013021**: **the independent positive partner gain is NOT supported** under the frozen CI gate. Fold coefficients for bullfrog are positive but not sufficient for a positive heldout confidence interval.
+- `Dryophytes versicolor` added after bullfrog has **−0.002081** nats/survey gain, CI **−0.007917 to +0.003733**: no signed negative partner transfer. A 13-site within-site fixed-effects sensitivity was **unidentifiable/quasi-separated**, so it cannot rescue or contradict the primary result.
+- Original project heterogeneity was strong; e.g. the historical **Cricket frog 2007** sampling subset recorded green frogs on **1/203** surveys and bullfrogs on **67/203**, **zero joint** calls. This is descriptive evidence of different calling/habitat/seasonal contexts and sampling designs, **not** a mechanistic proof.
+
+**Updated conclusion:** the positive NAAMP bullfrog partner signal is supported within NAAMP's *ten-stop fixed-margin calling-site allocation* estimand; a distinct independently sampled **recording-level detection** model did not demonstrate robust added bullfrog information. These do not directly conflict because the outcomes and sampling scales differ. The source-independent replication boundary is now evidenced empirically rather than merely unavailable.
+
+Results and protocol: `exploration/ARMI_2024_INDEPENDENT_FROG_PARTNER_ECOLOGICAL_SYNTHESIS_2026_10_22.md`, `exploration/ARMI_2024_INDEPENDENT_PARTNER_RESULT_V0_1.json`, [GitHub Actions 39783701641](https://github.com/zuizui0223/frogcs/actions/runs/39783701641), **SUCCESS**. This does not reopen frozen JAE RC6.
+
+---
+
 ## Provenance
 
 - Preregistered original joint question `exploration/NAAMP_PARTNER_FIXED_MARGIN_HELDOUT_CHOICE_CONTRACT_2026_10_22.md`.
