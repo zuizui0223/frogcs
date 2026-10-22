@@ -440,8 +440,37 @@ def main():
     print("NPS_FROG_HELDOUT_SYNTHETIC_QA",json.dumps(qa),flush=True)
     if args.synthetic_only:return
     source=imp(ROOT/"exploration/run_nps_glkn_independent_source_only_qa_v0_2.py")
-    payload,src=source.source(source.SRC["frog"]["url"],SOURCE_LEN,
-                                source.SRC["frog"]["max_bytes"],SOURCE_SHA)
+    # A prior independent QA fetched and SHA-validated the exact source.
+    # HTTP may transiently respond with a short error page. Retry ONCE from
+    # the identical official URL; never inspect or use nonmatching bytes.
+    import time
+    source_failures=[]
+    for attempt in range(2):
+        try:
+            payload,src=source.source(source.SRC["frog"]["url"],SOURCE_LEN,
+                                      source.SRC["frog"]["max_bytes"],SOURCE_SHA)
+            break
+        except Exception as ex:
+            source_failures.append(str(ex)[:280])
+            if attempt==0:
+                time.sleep(4)
+    else:
+        result={
+            "analysis":"NPS_GLKN_independent_bullfrog_greenfrog_site_heldout_v0_4",
+            "contract":"exploration/NPS_GLKN_BULLFROG_GREENFROG_HELDOUT_VALIDATION_CONTRACT_V0_4.md",
+            "status":"official_NPS_source_access_inconclusive",
+            "prior_verified_SHA":SOURCE_SHA,
+            "source_HTTP_failures":source_failures,
+            "no_frog_responses_read":True,
+            "no_biological_inference":True,
+            "original_RC6_main_and_submission_untouched":True,
+            "synthetic_QA":qa
+        }
+        (args.outdir/"result.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
+        print("NPS_FROG_INDEPENDENT_RESULT_BEGIN",flush=True)
+        print(json.dumps(result,sort_keys=True),flush=True)
+        print("NPS_FROG_INDEPENDENT_RESULT_END",flush=True)
+        return
     df=build_source_frame(payload)
     del payload
     species_qa,qa_info,gates,complete,alltaxa,panel=validate_recorder_outcomes(df)
