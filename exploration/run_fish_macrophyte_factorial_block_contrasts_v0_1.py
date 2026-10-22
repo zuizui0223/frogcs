@@ -389,8 +389,36 @@ def analyze(sheets):
               "supports_nonzero_block_95CI":bool(d["inferential_gate"] and
                 m["status"]=="fitted" and (m["ci95"][0]>0 or m["ci95"][1]<0))}
             )
+    # Finish the four-comparison family that was explicitly frozen before
+    # response readback in FISH_MACROPHYTE_FACTORIAL_CAUSAL_CONTRACT_V0_1.
+    # Student t with df=number of independent blocks-1 is exploratory
+    # with only four tanks blocks, and not equivalent to a strong-null exact
+    # factorial interaction randomization test.
+    h2p=[]
+    for x in evidence:
+        m=analysis["species"][x["species"]]["fish_x_plant_interaction"][x["plant_added"]]["estimate"]
+        if x["eligible"] and m["status"]=="fitted":
+            if m["se_block"]==0:
+                p=0.0 if abs(m["estimate"])>1e-12 else 1.0
+            else:
+                tstat=abs(m["estimate"]/m["se_block"])
+                p=float(2*students_t.sf(tstat,m["n_independent_blocks"]-1))
+        else:p=1.0
+        x["nominal_p_block_t"]=p
+        h2p.append(p)
+    h2q=bh_adjust(h2p)
+    for x,q in zip(evidence,h2q):
+        x["BH_q_four_H2_contrasts"]=q
+        x["factorial_interaction_supported_after_BH"]=bool(
+             x["eligible"] and x["supports_nonzero_block_95CI"] and q<.05)
+        x["classification"]=(
+             "factorial_interaction_supported_after_BH"
+             if x["factorial_interaction_supported_after_BH"]
+             else "nominal_or_inconclusive_effect_modification")
     analysis["hypotheses"]["H2_fish_x_plant_changes_toad_choice"]={
         "block_level_interaction_contrasts":evidence,
+        "n_supported_after_BH":sum(x["factorial_interaction_supported_after_BH"]
+                                   for x in evidence),
         "scientific_boundary":"Factorial effect modification, NOT insect-mediated path"}
     return analysis
 
