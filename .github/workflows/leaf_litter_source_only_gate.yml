@@ -1,0 +1,27 @@
+name: Leaf litter frog interaction Dryad source-only gate
+on:
+  push:
+    branches:
+      - exploration/leaf-litter-host-parasite-source-2026-10-22
+    paths:
+      - "exploration/probe_dryad_leaf_litter_source_v0_1.py"
+      - ".github/workflows/leaf_litter_source_only_gate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Dryad DOI, version, original XLSX and response-blind sheet metadata
+        run: |
+          python exploration/probe_dryad_leaf_litter_source_v0_1.py --out build/leaf_litter_source_schema.json
+      - name: Upload source-only QA receipt (no original dataset)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dryad-leaf-litter-source-gate
+          path: build/leaf_litter_source_schema.json
+          if-no-files-found: error
