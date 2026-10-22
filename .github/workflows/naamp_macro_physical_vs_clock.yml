@@ -1,0 +1,63 @@
+name: NAAMP macro physical km versus authentic stop-clock time
+on:
+  push:
+    branches:
+      - exploration/naamp-macro-plant-niche-network-2026-10-23
+    paths:
+      - '.github/workflows/naamp_macro_physical_vs_clock.yml'
+      - 'exploration/run_naamp_macro_actual_clock_vs_geodesic_v0_1.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  genuine-clock-distance-discrimination:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Use response-blind validated 12-shard NAAMP physical-site coordinates
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Refit observed acoustic turnover against actual stop-to-stop minutes and verified site distance
+        run: |
+          python -u exploration/run_naamp_macro_actual_clock_vs_geodesic_v0_1.py \
+            --out build/naamp_geo_vs_clock_macro_v0_1.json
+      - name: Scientific claim and sample check
+        run: |
+          python - <<'PY'
+          import json,math
+          j=json.load(open('build/naamp_geo_vs_clock_macro_v0_1.json'))
+          assert j['status']=='EXECUTED_time_pair_macro_check'
+          assert j['source_population']['ten_stop_vegetation_plus_observation_runs']==6236
+          assert j['clock_source_gate']['source_qualified_NAAMP_stop_rows']==62360
+          assert j['clock_source_gate']['parsed_HHMM_start_clocks']>30000
+          assert j['original_5term_synthetic_QA']['status']=='PASS'
+          for mode in ('any','strong'):
+              x=j['modes'][mode]
+              assert x['status']=='fitted'
+              assert x['fit']['full_physical_and_clock']['status']=='fitted'
+              assert x['fit']['geodesic_without_clock_same_sample']['status']=='fitted'
+              assert x['fit']['n_routes']>=100
+              assert math.isfinite(x['fit']['full_geodesic']['beta'])
+              assert math.isfinite(x['fit']['full_elapsed_clock']['beta'])
+              assert x['classification'] in ('exploratory_distance_after_clock_supported','nonconfirmatory','time_coverage_underpowered')
+          assert j['boundaries']['ecological_or_causal_frog_to_frog_interaction_proven'] is False
+          assert j['boundaries']['no_change_JAE_RC6_main_SI'] is True
+          print('PASS same-population real clock and physical km regressions; source and causal limits retained')
+          PY
+      - name: Preserve derived numerical macro receipt only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-macro-physical-versus-recorded-clock-v0-1
+          path: build/naamp_geo_vs_clock_macro_v0_1.json
+          if-no-files-found: warn
