@@ -1,0 +1,96 @@
+name: NAAMP frog partner fixed-margin heldout site-choice test
+
+on:
+  push:
+    branches: [exploration/naamp-partner-heldout-choice-2026-10-22]
+    paths:
+      - ".github/workflows/naamp_partner_exact_heldout_choice_v0_1.yml"
+      - "exploration/run_naamp_partner_fixedmargin_heldout_choice_v0_1.py"
+      - "exploration/NAAMP_PARTNER_FIXED_MARGIN_HELDOUT_CHOICE_CONTRACT_2026_10_22.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-swap-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical libraries
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Verify fixed margins, exact choice normalization and signed partner effect recovery
+        run: |
+          python -m py_compile exploration/run_naamp_partner_fixedmargin_heldout_choice_v0_1.py
+          python exploration/run_naamp_partner_fixedmargin_heldout_choice_v0_1.py --synthetic-only
+
+  full-science-heldout:
+    needs: exact-swap-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check numpy pandas scipy statsmodels
+      - name: Download complete independent response-blind NWI sites
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-vegetation-sites-validated
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/vegetation_context
+      - name: Download original route-crossfit NWI first-order coefficients and observed C-scores
+        uses: actions/download-artifact@v4
+        with:
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/nwi_frozen
+      - name: Check source provenance before conditioning on current frog call positions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert d["preflight_eligible"] and d["mode"]=="full"
+          assert d["overlay"]["site_records"]==5147
+          assert len(d["overlay"]["shards"])==12
+          for label in ("any","strong"):
+              assert (Path("build/nwi_frozen")/f"{label}_train_coefficients.json").is_file()
+              assert (Path("build/nwi_frozen")/f"{label}_heldout_run_diagnostics.csv").is_file()
+          print("PASS full NWI source geometry and exact original checked out data")
+          PY
+      - name: Score heldout swap assignments conditioned on all species and stop margins
+        run: |
+          python -u exploration/run_naamp_partner_fixedmargin_heldout_choice_v0_1.py \
+            --frozen-nwi build/nwi_frozen \
+            --outdir build/partner_choice_crossfit
+      - name: Reject source population drift and any mislabelled causal interpretation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("build/partner_choice_crossfit/result.json").read_text())
+          assert x["synthetic_QA"]["status"]=="PASS"
+          assert x["modes"]["any"]["scope"]["original_observed_Cscore_verified"]==3659
+          assert x["modes"]["strong"]["scope"]["original_observed_Cscore_verified"]==1766
+          assert set(x["modes"]["any"]["partners"])=={"Anaxyrus fowleri","Hyla versicolor"}
+          assert x["parameters"]["original_species_site_NWI_coefficients_frozen"]
+          assert not x["inference_boundaries"]["causal_social_acoustic_interaction_proven"]
+          assert x["inference_boundaries"]["frozen_RC6_manuscript_changed"] is False
+          print("PASS fixed-population pseudolikelihood heldout result")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-partner-exact-swap-heldout-choice-v0-1
+          path: build/partner_choice_crossfit/
+          if-no-files-found: warn
+          retention-days: 30
