@@ -1,0 +1,58 @@
+name: NAAMP macro plant-niche versus pair network
+on:
+  push:
+    branches:
+      - exploration/naamp-macro-plant-niche-network-2026-10-23
+    paths:
+      - 'exploration/run_naamp_macro_niche_network_v0_1.py'
+      - 'exploration/NAAMP_TAXON_SPECIFIC_AQUATIC_VEGETATION_RESULT_V0_1.json'
+      - 'exploration/NAAMP_PLANT_CONDITIONED_FROG_PAIR_NETWORK_RESULT_V0_1.json'
+      - '.github/workflows/naamp_macro_niche_network.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  macro-niche-network:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Pin analytic dependency
+        run: python -m pip install "numpy==2.3.5"
+      - name: Analyze real NAAMP and NWI cross-fitted residual network
+        run: |
+          python exploration/run_naamp_macro_niche_network_v0_1.py \
+            --plant exploration/NAAMP_TAXON_SPECIFIC_AQUATIC_VEGETATION_RESULT_V0_1.json \
+            --pairs exploration/NAAMP_PLANT_CONDITIONED_FROG_PAIR_NETWORK_RESULT_V0_1.json \
+            --out build/naamp_macro_niche_network_v0_1.json
+      - name: Gate result integrity and honest claim level
+        run: |
+          python - <<'PY'
+          import json,math
+          x=json.load(open('build/naamp_macro_niche_network_v0_1.json'))
+          assert x['status']=='EXECUTED_posthoc_macro_NAAMP_empirical_analysis'
+          assert x['original_NAAMP_surveys_NWI_complete']==6236
+          assert x['n_vegetation_slope_eligible_taxa']==25
+          assert x['synthetic_QA']['status']=='PASS'
+          assert x['strong_primary']['n_pairs']==57
+          assert x['any_secondary']['n_pairs']==110
+          assert x['strong_primary']['node_label_permutation']['permutations']==9999
+          assert x['strong_primary']['within_genus_permutation']['permutations']==3999
+          assert x['any_secondary']['node_label_permutation']['permutations']==9999
+          assert all(math.isfinite(x[k]['statistic']['b_pp_per_0p1_PEM_slope_gap']) for k in ['strong_primary','any_secondary'])
+          assert x['ecological_limits']['biotic_interactions_demonstrated'] is False
+          assert x['ecological_limits']['RC6_main_or_SI_modified'] is False
+          assert x['strong_primary']['macro_classification'] in (
+             'supported_nodal_exploratory_macro_pattern','nonconfirmatory_descriptive')
+          print('SUCCESS macro data source, 57+110 pairs, nodal inference, 2-level ecological limits')
+          PY
+      - name: Publish full numerical macro result as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-macro-niche-network-v0-1
+          path: build/naamp_macro_niche_network_v0_1.json
+          if-no-files-found: warn
