@@ -89,10 +89,18 @@ def run():
     versions=api("/datasets/"+encoded+"/versions")
     vs=find_embedded_rows(versions)
     if not vs:raise RuntimeError("Published Dryad dataset version records not returned")
-    vs=[v for v in vs if v.get("id") is not None]
-    if not vs:raise RuntimeError("No version with stable ID")
-    latest=max(vs,key=lambda x:(x.get("versionNumber",0),x.get("id",0)))
-    version_id=int(latest["id"])
+    def get_version_id(v):
+        if v.get("id") is not None:
+            return int(v["id"])
+        for link in (v.get("_links") or {}).values():
+            href=link.get("href","") if isinstance(link,dict) else ""
+            m=re.search(r"/versions/(\\d+)(?:$|[/?#])",href)
+            if m:return int(m.group(1))
+        return None
+    ids=[(get_version_id(v),v) for v in vs]
+    ids=[x for x in ids if x[0] is not None]
+    if not ids:raise RuntimeError("No version with stable ID or version link: "+str(vs[0].keys()))
+    version_id,latest=max(ids,key=lambda x:(int(x[1].get("versionNumber",0)),x[0]))
     files=api("/versions/"+str(version_id)+"/files")
     entries=find_embedded_rows(files)
     if not entries:raise RuntimeError("Dryad file list empty")
