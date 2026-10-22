@@ -1,0 +1,247 @@
+{
+  "study": "NAAMP frog macromodel 2026-10-23, all original sources cross-checked, independent of frozen RC6",
+  "status": "four_empirical_tests_executed_and_QA_SUCCESS",
+  "date": "2026-10-23",
+  "repository_branch": "exploration/naamp-macro-plant-niche-network-2026-10-23",
+  "RC6_main_manuscript_supporting_information_unchanged": true,
+  "source_original_USGS_NAAMP_runs": 7848,
+  "source_full_NWI_join_complete_runs": 6236,
+  "source_validated_site_records": 5147,
+  "runs": {
+    "niche": {
+      "id": 39869396031,
+      "job_id": 120139697463,
+      "source_url": "https://github.com/zuizui0223/frogcs/actions/runs/39869396031",
+      "conclusion": "success"
+    },
+    "turnover": {
+      "id": 39870416356,
+      "job_id": 120143147374,
+      "source_url": "https://github.com/zuizui0223/frogcs/actions/runs/39870416356",
+      "conclusion": "success"
+    },
+    "geodesic": {
+      "id": 39871101668,
+      "job_id": 120145455331,
+      "source_url": "https://github.com/zuizui0223/frogcs/actions/runs/39871101668",
+      "conclusion": "success"
+    },
+    "clock": {
+      "id": 39872141438,
+      "job_id": 120148891269,
+      "source_url": "https://github.com/zuizui0223/frogcs/actions/runs/39872141438",
+      "conclusion": "success"
+    }
+  },
+  "evidence": {
+    "niche_gap_vs_residual_pair": {
+      "eligible_PEM_slope_taxa": 25,
+      "strong": {
+        "n_pairs": 57,
+        "n_nodes": 20,
+        "coefficient_pp": -0.1213227400940112,
+        "one_sided_negative_node_perm_p": 0.3264,
+        "partial_R2": 0.002430990045011905,
+        "classification": "nonconfirmatory_descriptive"
+      },
+      "any": {
+        "n_pairs": 110,
+        "n_nodes": 22,
+        "coefficient_pp": -0.26559075033738117,
+        "one_sided_negative_node_perm_p": 0.1021,
+        "partial_R2": 0.009950331533400636
+      }
+    },
+    "community_turnover_vs_mapped_PEM": {
+      "any": {
+        "n_runs": 3249,
+        "n_routes": 282,
+        "n_states": 20,
+        "n_taxon_units": 48,
+        "n_station_pairs": 106615,
+        "PEM_boundary": {
+          "beta": 0.0024370537113003153,
+          "ci95": [
+            -0.0013161555959014153,
+            0.006190263018502046
+          ],
+          "p_two_sided": 0.20224806861958416,
+          "se_route": 0.0019066902312095458
+        },
+        "ordinal_stop_gap": {
+          "beta": 0.045533595938548554,
+          "ci95": [
+            0.035915249280414736,
+            0.05515194259668237
+          ],
+          "p_two_sided": 3.584081212691511e-18,
+          "se_route": 0.004886273616091994
+        }
+      },
+      "strong": {
+        "n_runs": 2481,
+        "n_routes": 275,
+        "n_states": 20,
+        "n_taxon_units": 47,
+        "n_station_pairs": 70385,
+        "PEM_boundary": {
+          "beta": 0.0015007120920138943,
+          "ci95": [
+            -0.0034275765653949677,
+            0.006429000749422756
+          ],
+          "p_two_sided": 0.5493508096681212,
+          "se_route": 0.002503372643040564
+        },
+        "ordinal_stop_gap": {
+          "beta": 0.05385897451688214,
+          "ci95": [
+            0.042395170433748006,
+            0.06532277860001627
+          ],
+          "p_two_sided": 6.6527654620920515e-18,
+          "se_route": 0.005823151913748349
+        }
+      }
+    },
+    "physical_geodesic_before_real_stop_time": {
+      "any": {
+        "beta_log1p_km": 0.015724755095435382,
+        "ci95": [
+          0.00873224509605738,
+          0.022717265094813383
+        ],
+        "p_two_sided": 0.000013713591105047565,
+        "delta_sorensen_1km_to_10km": 0.026806746249859924,
+        "stop_number_beta": 0.014673244019369593,
+        "stop_number_p": 0.10235585852239217,
+        "PEM_beta": 0.002038980635159713,
+        "PEM_p": 0.28589157380318564,
+        "geographic_fold_A_beta": 0.01732720392906385,
+        "geographic_fold_B_beta": 0.014460037197900073,
+        "states_omission_positive_fraction": 1,
+        "richness_matched_beta": 0.01774552838635338,
+        "route_equal_beta": 0.015856993264368485,
+        "n_station_pairs": 106615,
+        "n_routes": 282
+      },
+      "strong": {
+        "beta_log1p_km": 0.02169775431039931,
+        "ci95": [
+          0.013727269002052012,
+          0.02966823961874661
+        ],
+        "p_two_sided": 1.7748561171832396e-7,
+        "delta_sorensen_1km_to_10km": 0.03698920526651129,
+        "stop_number_beta": 0.01107270964687499,
+        "stop_number_p": 0.2654207559070318,
+        "PEM_beta": 0.0008761296544780237,
+        "PEM_p": 0.7285279040819659,
+        "geographic_fold_A_beta": 0.02395102252866827,
+        "geographic_fold_B_beta": 0.019830944297935155,
+        "states_omission_positive_fraction": 1,
+        "richness_matched_beta": 0.020847333347076072,
+        "route_equal_beta": 0.024660213450539,
+        "n_station_pairs": 70385,
+        "n_routes": 275
+      },
+      "validated_geodesic_quantiles_km_any": [
+        0,
+        2.396519518382128,
+        4.665685402327353,
+        8.022199367665294,
+        37.18820792208678
+      ]
+    },
+    "measured_stop_clock_conditioned_geographic_turnover": {
+      "clock_coverage": {
+        "fraction_parsed": 0.8419980756895445,
+        "max_plausible_pair_elapsed_minutes": 360,
+        "missing_or_nonHHMM_clocks": 9853,
+        "night_midnight_wrap_allowed": true,
+        "original_geometry_actions": 39450277196,
+        "parsed_HHMM_start_clocks": 52507,
+        "site_coordinates": "Validated USFWS NWI crosswalk raw latitude+longitude",
+        "source_qualified_NAAMP_stop_rows": 62360,
+        "time_out_is_binary_not_elapsed": true,
+        "time_source": "Original NAAMP Stops.csv StartTime"
+      },
+      "any": {
+        "status": "fitted",
+        "classification": "exploratory_distance_after_clock_supported",
+        "n_run_nights": 2520,
+        "n_station_pairs": 81279,
+        "physical_log1p_km": {
+          "beta": 0.01036184416057902,
+          "ci95": [
+            0.0002557852649215757,
+            0.020467903056236466
+          ],
+          "p": 0.04451758492506655
+        },
+        "elapsed_log1p_minutes": {
+          "beta": 0.017172312805907246,
+          "ci95": [
+            0.007708945190192702,
+            0.026635680421621788
+          ],
+          "p": 0.0004210617217841949
+        },
+        "delta_sorensen_1km_to_10km": 0.017664334064818953,
+        "delta_sorensen_10minutes_to_60minutes": 0.02941580420091285,
+        "physical_beta_without_clock_same_sample": 0.018190106452210534,
+        "geo_time_corr": 0.8990751519361204,
+        "fold_A_physical_beta": 0.010374439769996044,
+        "fold_B_physical_beta": 0.01032997653640279,
+        "richness_matched_beta": 0.013118864498581056,
+        "route_equal_beta": 0.013885910930978611,
+        "LOSO_n_states": 19,
+        "LOSO_sign_fraction": 1
+      },
+      "strong": {
+        "status": "fitted",
+        "classification": "nonconfirmatory",
+        "n_run_nights": 1882,
+        "n_station_pairs": 52336,
+        "physical_log1p_km": {
+          "beta": 0.012721342456554312,
+          "ci95": [
+            -0.0001918755164334266,
+            0.02563456042954205
+          ],
+          "p": 0.053475397347680996
+        },
+        "elapsed_log1p_minutes": {
+          "beta": 0.019178249720270043,
+          "ci95": [
+            0.0030975468464082313,
+            0.03525895259413185
+          ],
+          "p": 0.0196119301183745
+        },
+        "delta_sorensen_1km_to_10km": 0.021686684283522644,
+        "delta_sorensen_10minutes_to_60minutes": 0.032851931190865026,
+        "physical_beta_without_clock_same_sample": 0.02136023917829051,
+        "geo_time_corr": 0.8967806678594311,
+        "fold_A_physical_beta": 0.0118919433855469,
+        "fold_B_physical_beta": 0.012986083973496664,
+        "richness_matched_beta": 0.011107938799602797,
+        "route_equal_beta": 0.015049938381749247,
+        "LOSO_n_states": 19,
+        "LOSO_sign_fraction": 1
+      }
+    }
+  },
+  "limitations": {
+    "NWI_mapped_PEM_not_time_matched_to_2001_2015": true,
+    "NAAMP_listening_stops_not_simultaneous": true,
+    "time_clock_missing_not_imputed": true,
+    "clock_completeness_subset_of_original_runs": true,
+    "physical_log_distance_vs_time_correlation_about_0p9": true,
+    "times_and_distances_observational_not_randomized": true,
+    "no_causal_plant_frog_species_interaction_identified": true,
+    "no_fish_insect_trophic_interaction_measured": true,
+    "posthoc_sequential_tests_not_confirmation": true,
+    "strong_call_clock_adjusted_geographic_CI_includes_zero": true
+  }
+}
