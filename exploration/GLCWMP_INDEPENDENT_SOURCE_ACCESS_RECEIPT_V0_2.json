@@ -1,0 +1,26 @@
+{
+  "analysis": "independent_GLCWMP_source_only_qa_v0_1",
+  "analysis_permitted": false,
+  "dryad_version_id": 350431,
+  "failure_class": "RuntimeError",
+  "failure_message": "All permitted official Dryad API/UI byte channels blocked or mismatched pinned source: [{\"route\": \"official_Dryad_API_file\", \"file\": \"CWMP_MaxOcc.csv\", \"error\": \"HTTP 401 Unauthorized\"}, {\"route\": \"official_Dryad_API_file\", \"file\": \"README.md\", \"error\": \"HTTP 401 Unauthorized\"}, {\"route\": \"official_Dryad_API_zip\", \"error\": \"HTTP 401 Unauthorized\"}, {\"route\": \"official_Dryad_public_UI\", \"file\": \"CWMP_MaxOcc.csv\", \"error\": \"HTTP 403 Forbidden\"}, {\"route\": \"official_Dryad_public_UI\", \"file\": \"README.md\", \"error\": \"HTTP 403 Forbidden\"}]",
+  "frog_detection_outcomes_read": false,
+  "frozen_RC6_modified": false,
+  "source": "Tozer et al. 2025 / Dryad doi:10.5061/dryad.hmgqnk9v8",
+  "source_frozen_expected_SHA": {
+    "CWMP_MaxOcc.csv": "9b6e1b11d371a6bfac2b49e0aee369a57ed4fdeaeb7378c81ea79dc92c9b2587",
+    "README.md": "70a0753ddcfbde7fd41178045843c68333136495d4b64f63b3af6c579865c7e8"
+  },
+  "source_status": "blocked_or_invalid",
+  "provenance": {
+    "first_run_id": 39720879022,
+    "first_artifact_id": 12401141631,
+    "official_UI_followup_run_id": 39721164365,
+    "followup_job_id": 119634666403,
+    "followup_artifact_id": 12400804394,
+    "original_source_contract": "exploration/GLCWMP_INDEPENDENT_FROG_PAIR_SOURCE_CONTRACT_V0_1.md",
+    "correction": "exploration/GLCWMP_INDEPENDENT_FROG_PAIR_SOURCE_CONTRACT_V0_2.md",
+    "no_frog_detection_outcome_readback": true
+  },
+  "decision": "STOP_NO_SOURCE_BYTES_NO_INDEPENDENT_BIOLOGICAL_INFERENCE"
+}
