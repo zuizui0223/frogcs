@@ -104,16 +104,25 @@ def run():
     files=api("/versions/"+str(version_id)+"/files")
     entries=find_embedded_rows(files)
     if not entries:raise RuntimeError("Dryad file list empty")
+    # HAL file entries do not guarantee an integer 'id' field:
+    # inspect the documented stable /api/v2/files/{id} self reference.
+    def get_file_id(f):
+        if f.get("id") is not None:return int(f["id"])
+        for rel,obj in (f.get("_links") or {}).items():
+            href=obj.get("href","") if isinstance(obj,dict) else ""
+            m=re.search(r"/files/(\d+)(?:$|[/?#])",href)
+            if m:return int(m.group(1))
+        return None
     manifest=[]
     for f in entries:
         name=f.get("path") or f.get("name") or f.get("filename") or ""
-        manifest.append({"id":f.get("id"),"name":name,"size":f.get("size"),
+        manifest.append({"id":get_file_id(f),"name":name,"size":f.get("size"),
                          "digest":f.get("digest"),"digestType":f.get("digestType"),
                          "mimeType":f.get("mimeType")})
     names={x["name"].split("/")[-1] for x in manifest}
     if not EXPECTED.issubset(names):raise RuntimeError("Published Dryad workbook/readme not found: "+str(names))
     sample=next(x for x in manifest if x["name"].split("/")[-1].lower().endswith(".xlsx"))
-    if not isinstance(sample["id"],int):raise RuntimeError("No DOI-pinned workbook file ID")
+    if not isinstance(sample["id"],int):raise RuntimeError("No DOI-pinned workbook file ID: source HAL keys "+str(sorted(entries[0].keys()))+" link rels "+str(sorted(entries[0].get("_links",{}))))
     raw,_=fetch("/files/"+str(sample["id"])+"/download",maximum=3000000)
     if not raw.startswith(b"PK"):raise RuntimeError("Workbook downloaded but not XLSX ZIP")
     digest=hashlib.md5(raw).hexdigest()
