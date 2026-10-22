@@ -1,0 +1,45 @@
+name: ARMI 2024 same-species same-survey source duplicate audit
+
+on:
+  push:
+    branches: [exploration/armi-independent-bull-green-2026-10-22]
+    paths:
+      - ".github/workflows/armi_2024_duplicate_species_key_diagnostic_v0_1.yml"
+      - "exploration/run_armi_2024_event_species_duplicate_audit_v0_1.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source_key_qa_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check pandas numpy
+      - name: Diagnose rows repeated by exact survey and species; do not infer pair outcomes
+        run: |
+          python -m py_compile exploration/run_armi_2024_event_species_duplicate_audit_v0_1.py
+          python -u exploration/run_armi_2024_event_species_duplicate_audit_v0_1.py
+      - name: QA only
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("build/armi_dup_audit/receipt.json").read_text())
+          assert r["original_rows"]==1934
+          assert r["original_unique_visit_sixpart_keys"]==798
+          assert r["no_species_association_test_computed"]
+          assert r["frog_pair_joint_outcomes_read"] is False
+          print("PASS no pair outcome readback")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: usgs-armi-2024-same-survey-species-key-quality-v0-1
+          path: build/armi_dup_audit/receipt.json
+          if-no-files-found: warn
