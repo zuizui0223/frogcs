@@ -123,7 +123,11 @@ def run():
     if not EXPECTED.issubset(names):raise RuntimeError("Published Dryad workbook/readme not found: "+str(names))
     sample=next(x for x in manifest if x["name"].split("/")[-1].lower().endswith(".xlsx"))
     if not isinstance(sample["id"],int):raise RuntimeError("No DOI-pinned workbook file ID: source HAL keys "+str(sorted(entries[0].keys()))+" link rels "+str(sorted(entries[0].get("_links",{}))))
-    raw,_=fetch("/files/"+str(sample["id"])+"/download",maximum=3000000)
+    # Public Dryad web UI route: the REST /api/v2/files/{id}/download can
+    # return 401 without an API bearer token even for published metadata.
+    # File-stream IDs are exposed by the public landing page. Try exactly one
+    # public read-only UI route and fail closed on any error; no auth bypass.
+    raw,_=fetch("https://datadryad.org/downloads/file_stream/"+str(sample["id"]),maximum=3000000)
     if not raw.startswith(b"PK"):raise RuntimeError("Workbook downloaded but not XLSX ZIP")
     digest=hashlib.md5(raw).hexdigest()
     stated=sample.get("digest")
