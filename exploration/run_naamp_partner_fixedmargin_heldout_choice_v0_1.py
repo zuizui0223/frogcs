@@ -37,7 +37,7 @@ CENTRAL="Lithobates clamitans"
 POSITIVE="Lithobates catesbeianus"
 NEGATIVES=("Anaxyrus fowleri","Hyla versicolor")
 FEATURE_LABELS=("generic_other_taxa","positive_partner","negative_partner")
-MODEL_COLS={"M0_generic_richness":[0],"M1_plus_partner_identity":[0,1,2]}
+MODEL_COLS={"M0_generic_richness":[0],"M_P_positive_partner":[0,1],"M1_plus_partner_identity":[0,1,2]}
 BASE_ANY=3659
 BASE_STRONG=1766
 CACHE={}
@@ -224,16 +224,23 @@ def bootstrap_route(table,seed):
 def heldout_score(events_by_run,model):
     out=[]
     c0=model["coefs"]["M0_generic_richness"]
+    cp=model["coefs"]["M_P_positive_partner"]
     c1=model["coefs"]["M1_plus_partner_identity"]
     if not model["fitted"]:return pd.DataFrame()
     for rid,info in sorted(events_by_run.items()):
         events=info["events"]
         score0=float(np.mean([choose_event_probability(e,c0,[0]) for e in events]))
+        scorep=float(np.mean([choose_event_probability(e,cp,[0,1]) for e in events]))
         score1=float(np.mean([choose_event_probability(e,c1,[0,1,2]) for e in events]))
+        gain_P=scorep-score0
+        gain_N=score1-scorep
+        gain=score1-score0
+        if not np.isclose(gain,gain_P+gain_N,atol=1e-12,rtol=0):
+            raise RuntimeError("Nested positive+negative score decomposition changed sample")
         out.append({"RunID":rid,"route":info["route"],"fold":info["fold"],
                     "year":info["year"],"n_swaps":len(events),
-                    "gain":score1-score0,
-                    "log_M0":score0,"log_M1":score1})
+                    "gain":gain,"gain_P":gain_P,"gain_N":gain_N,
+                    "log_M0":score0,"log_M_P":scorep,"log_M1":score1})
     return pd.DataFrame(out)
 
 def gather_source(frozen_dir):
