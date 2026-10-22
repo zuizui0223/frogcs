@@ -1,0 +1,78 @@
+name: NPS independent frog bullfrog-greenfrog site holdout v0.4
+
+on:
+  push:
+    branches: [exploration/nps-glkn-independent-frog-network-2026-10-22]
+    paths:
+      - ".github/workflows/nps_glkn_bullfrog_greenfrog_site_holdout_v0_4.yml"
+      - "exploration/run_nps_glkn_bullfrog_greenfrog_heldout_v0_4.py"
+      - "exploration/NPS_GLKN_BULLFROG_GREENFROG_HELDOUT_VALIDATION_CONTRACT_V0_4.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-expert-and-site-QA:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fixed scientific packages
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy scikit-learn statsmodels
+      - name: Validate source independent site split and proper predictive scoring code
+        run: |
+          python -m py_compile exploration/run_nps_glkn_bullfrog_greenfrog_heldout_v0_4.py
+          python exploration/run_nps_glkn_bullfrog_greenfrog_heldout_v0_4.py --synthetic-only
+
+  quality-gated-independent-ecology:
+    needs: synthetic-expert-and-site-QA
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install fixed scientific packages
+        run: python -m pip install -q --disable-pip-version-check numpy pandas scipy scikit-learn statsmodels
+      - name: Independently inspect expert NPS CI/status then site-disjoint models only when all frozen gates pass
+        run: |
+          python -u exploration/run_nps_glkn_bullfrog_greenfrog_heldout_v0_4.py \
+            --outdir build/nps_frog_pair_independent_v04
+      - name: Validate QA receipt and model branch logic
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("build/nps_frog_pair_independent_v04/result.json").read_text())
+          assert j["synthetic_QA"]["status"]=="PASS"
+          assert j["source_coverage_and_outcome_QA"]["source_sha256"]=="b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2"
+          assert j["source_coverage_and_outcome_QA"]["original_rows"]==147913
+          assert j["inference_boundaries"]["original_RC6_main_and_submission_untouched"] is True
+          assert j["inference_boundaries"]["causal_interaction_proven"] is False
+          ready=j["source_coverage_and_outcome_QA"]["all_required_gates_pass"]
+          if not ready:
+              assert j["status"]=="measurement_QA_or_sample_gate_inconclusive"
+              assert j["analysis_completed"] is False
+              assert "primary_recording_logscore" not in j
+              print("PASS: source measurement QA gates fail closed, no invalid ecology inferred")
+          else:
+              assert j["analysis_completed"] is True
+              assert "primary_recording_logscore" in j
+              print("PASS independent NPS expert detection outcome quality and fixed predictive comparison")
+          PY
+      - name: Prove no source recording IDs/raw data are exported
+        if: always()
+        run: |
+          test ! -e build/nps_frog_pair_independent_v04/raw.csv
+          test ! -e build/nps_frog_pair_independent_v04/recording_ids.csv
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nps-glkn-independent-bullfrog-greenfrog-site-holdout-v0-4
+          path: build/nps_frog_pair_independent_v04/result.json
+          if-no-files-found: warn
