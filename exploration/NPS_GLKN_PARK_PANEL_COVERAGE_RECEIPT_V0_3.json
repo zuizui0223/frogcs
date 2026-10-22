@@ -1,0 +1,291 @@
+{
+  "ManualCIV_values_read": false,
+  "SoftwareDetectedStatus_values_read": false,
+  "SurveyorDetectedStatus_values_read": false,
+  "all_recordings_site_dates_3plus": 1,
+  "all_recordings_site_dates_6plus": 0,
+  "analysis": "NPS_GLKN_recording_park_site_species_panel_source_only_v0_3",
+  "contract": "exploration/NPS_GLKN_PARK_SPECIFIC_TAXON_PANEL_CONTRACT_V0_3.md",
+  "frozen_RC6_modified": false,
+  "frozen_source_only_sample_gates": {
+    "pair_1000_recording_events": true,
+    "pair_at_least_20_park_site_locations": true,
+    "pair_at_least_2_parks": true,
+    "pair_repeated_site_days_3plus_ge100": false,
+    "partner_rows_explicit_not_imputed": true,
+    "source_SHA_verified": true
+  },
+  "n_complete_park_panel_recordings": 5550,
+  "n_complete_site_panel_recordings": 5610,
+  "n_distinct_park_site_locations": 66,
+  "named_bullfrog_greenfrog_row_opportunities": {
+    "events_in_3plus_same_site_date": 0,
+    "n_frog_partner_species_rows_present_per_year": {
+      "2016": 1514,
+      "2017": 1428,
+      "2018": 1606,
+      "2019": 1608,
+      "2020": 1620,
+      "2021": 1579,
+      "2022": 1617,
+      "2023": 1527
+    },
+    "n_recordings_complete_park_panel": 4950,
+    "n_recordings_complete_site_panel": 5010,
+    "park_count": 5,
+    "park_site_count": 50,
+    "positive_row_pair_is_known_but_not_positive_call": true,
+    "recording_events": 12499,
+    "site_days": 12125,
+    "site_days_10plus_recordings": 0,
+    "site_days_3plus_recordings": 0,
+    "site_days_6plus_recordings": 0
+  },
+  "negative_partner_row_opportunities": {
+    "Anaxyrus fowleri": {
+      "parks": 2,
+      "recordings": 4121,
+      "site_count": 20
+    },
+    "Dryophytes versicolor": {
+      "parks": 5,
+      "recordings": 12376,
+      "site_count": 50
+    }
+  },
+  "next_inference": "freeze outcome model only if park/site panel and named pair gates permit",
+  "occurrence_fields_read": false,
+  "original_recording_events": 16561,
+  "original_taxon_rows": 147913,
+  "park_panel_completion_rate": 0.33512469053801097,
+  "park_panels": {
+    "APIS": {
+      "complete_park_recordings": 395,
+      "complete_site_recordings": 395,
+      "fraction_complete_park": 0.145007342143906,
+      "fraction_complete_site": 0.145007342143906,
+      "named_pair_row_present_recordings": 2724,
+      "named_pair_row_present_sites": 10,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 0,
+        "Dryophytes versicolor": 2724
+      },
+      "park_target_taxon_label_count": 10,
+      "park_taxon_labels": [
+        "Anaxyrus americanus",
+        "Dryophytes versicolor",
+        "Lithobates catesbeianus",
+        "Lithobates clamitans",
+        "Lithobates palustris",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 2724,
+      "site_count": 10
+    },
+    "GRPO": {
+      "complete_park_recordings": 225,
+      "complete_site_recordings": 225,
+      "fraction_complete_park": 0.16993957703927492,
+      "fraction_complete_site": 0.16993957703927492,
+      "named_pair_row_present_recordings": 0,
+      "named_pair_row_present_sites": 0,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 0,
+        "Dryophytes versicolor": 0
+      },
+      "park_target_taxon_label_count": 8,
+      "park_taxon_labels": [
+        "Anaxyrus americanus",
+        "Dryophytes versicolor",
+        "Lithobates clamitans",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 1324,
+      "site_count": 6
+    },
+    "INDU": {
+      "complete_park_recordings": 2074,
+      "complete_site_recordings": 2074,
+      "fraction_complete_park": 0.8818027210884354,
+      "fraction_complete_site": 0.8818027210884354,
+      "named_pair_row_present_recordings": 2352,
+      "named_pair_row_present_sites": 10,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 2074,
+        "Dryophytes versicolor": 2352
+      },
+      "park_target_taxon_label_count": 11,
+      "park_taxon_labels": [
+        "Acris blanchardi",
+        "Anaxyrus americanus",
+        "Anaxyrus fowleri",
+        "Dryophytes versicolor",
+        "Lithobates catesbeianus",
+        "Lithobates clamitans",
+        "Lithobates palustris",
+        "Lithobates pipiens",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 2352,
+      "site_count": 10
+    },
+    "ISRO": {
+      "complete_park_recordings": 375,
+      "complete_site_recordings": 375,
+      "fraction_complete_park": 0.13696128560993426,
+      "fraction_complete_site": 0.13696128560993426,
+      "named_pair_row_present_recordings": 0,
+      "named_pair_row_present_sites": 0,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 0,
+        "Dryophytes versicolor": 0
+      },
+      "park_target_taxon_label_count": 8,
+      "park_taxon_labels": [
+        "Anaxyrus americanus",
+        "Dryophytes versicolor",
+        "Lithobates clamitans",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 2738,
+      "site_count": 10
+    },
+    "MISS": {
+      "complete_park_recordings": 23,
+      "complete_site_recordings": 83,
+      "fraction_complete_park": 0.009708737864077669,
+      "fraction_complete_site": 0.03503588011819333,
+      "named_pair_row_present_recordings": 2369,
+      "named_pair_row_present_sites": 10,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 0,
+        "Dryophytes versicolor": 2246
+      },
+      "park_target_taxon_label_count": 11,
+      "park_taxon_labels": [
+        "Acris blanchardi",
+        "Anaxyrus americanus",
+        "Dryophytes chrysoscelis",
+        "Dryophytes versicolor",
+        "Lithobates catesbeianus",
+        "Lithobates clamitans",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 2369,
+      "site_count": 10
+    },
+    "PIRO": {
+      "complete_park_recordings": 411,
+      "complete_site_recordings": 411,
+      "fraction_complete_park": 0.15233506300963676,
+      "fraction_complete_site": 0.15233506300963676,
+      "named_pair_row_present_recordings": 2698,
+      "named_pair_row_present_sites": 10,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 0,
+        "Dryophytes versicolor": 2698
+      },
+      "park_target_taxon_label_count": 9,
+      "park_taxon_labels": [
+        "Anaxyrus americanus",
+        "Dryophytes versicolor",
+        "Lithobates catesbeianus",
+        "Lithobates clamitans",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 2698,
+      "site_count": 10
+    },
+    "SLBE": {
+      "complete_park_recordings": 2047,
+      "complete_site_recordings": 2047,
+      "fraction_complete_park": 0.8688455008488964,
+      "fraction_complete_site": 0.8688455008488964,
+      "named_pair_row_present_recordings": 2356,
+      "named_pair_row_present_sites": 10,
+      "negative_candidate_row_present": {
+        "Anaxyrus fowleri": 2047,
+        "Dryophytes versicolor": 2356
+      },
+      "park_target_taxon_label_count": 11,
+      "park_taxon_labels": [
+        "Acris blanchardi",
+        "Anaxyrus americanus",
+        "Anaxyrus fowleri",
+        "Dryophytes versicolor",
+        "Lithobates catesbeianus",
+        "Lithobates clamitans",
+        "Lithobates palustris",
+        "Lithobates pipiens",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer",
+        "Pseudacris maculata/triseriata"
+      ],
+      "recordings": 2356,
+      "site_count": 10
+    }
+  },
+  "park_site_taxon_panel_size_distribution": {
+    "8": 16,
+    "9": 10,
+    "10": 12,
+    "11": 28
+  },
+  "recording_environment": {
+    "AvgTemperature_finite_frac": 0.8851518628102167,
+    "AvgTemperature_missing_frac": 0.11484813718978322,
+    "Hydroperiod_categories": [
+      "Ephemeral",
+      "Permanent",
+      "Semi-permanent"
+    ],
+    "Hydroperiod_missing_frac": 0,
+    "no_site_event_hydroperiod_disagreement": true
+  },
+  "site_panel_completion_rate": 0.33874766016544894,
+  "source_bytes": 68581307,
+  "source_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+  "taxa_labels_globally": [
+    "Acris blanchardi",
+    "Anaxyrus americanus",
+    "Anaxyrus fowleri",
+    "Dryophytes chrysoscelis",
+    "Dryophytes versicolor",
+    "Lithobates catesbeianus",
+    "Lithobates clamitans",
+    "Lithobates palustris",
+    "Lithobates pipiens",
+    "Lithobates septentrionalis",
+    "Lithobates sylvaticus",
+    "Pseudacris crucifer",
+    "Pseudacris maculata/triseriata"
+  ],
+  "provenance": {
+    "workflow_run": 39722811424,
+    "job_id": 119639911771,
+    "original_NPS_IRMA_reference": 2320505,
+    "no_NPS_raw_data_redistributed": true
+  }
+}
