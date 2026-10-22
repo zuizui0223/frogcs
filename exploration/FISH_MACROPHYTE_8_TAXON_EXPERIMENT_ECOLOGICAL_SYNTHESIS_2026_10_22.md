@@ -22,6 +22,8 @@ Four predeclared fishless comparisons (2 toads × 2 plant levels vs no plants), 
 | `Bufotes viridis` | submerged+floating vs bare | **+45.86** | **0.00617** | **0.02469** | **experimental plant-choice effect supported** |
 | `Bufotes viridis` | submerged+floating+emergent vs bare | **+20.86** | 0.3457 | 0.3457 | not supported |
 
+The four independent block-specific fishless `aq−no` effects for `B. viridis` were **+50.0, +12.5, +40.0 and +80.95 percentage points** (4/4 positive). Their conservative **four-block Student-t 95% CI** for the equal-block mean is **+0.90 to +90.83 percentage points**, much wider than a row-level interval would be because only **four physical tank blocks** were randomized. This uncertainty matters, even though the exact treatment-label randomization test gives P=0.00617 after 8/1,296 equally likely assignments were as or more extreme than observed. No time point or animal is treated as an independent replicate.
+
 For `B. viridis`, average block-equal male choice fractions were:
 - no fish + bare plants: **9.58%** of all six-tank male selections;
 - no fish + submerged/floating plants: **55.45%**;
