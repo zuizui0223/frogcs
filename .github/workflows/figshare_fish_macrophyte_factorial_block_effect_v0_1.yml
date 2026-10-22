@@ -1,0 +1,53 @@
+name: Fish and aquatic macrophytes randomized 8-species experiment
+
+on:
+  push:
+    branches: [exploration/fish-macrophyte-higher-order-mesocosm-2026-10-22]
+    paths:
+      - ".github/workflows/figshare_fish_macrophyte_factorial_block_effect_v0_1.yml"
+      - "exploration/run_fish_macrophyte_factorial_block_contrasts_v0_1.py"
+      - "exploration/FISH_MACROPHYTE_FACTORIAL_CAUSAL_CONTRACT_V0_1.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify_original_2x3_tank_units_and_effects:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q --disable-pip-version-check scipy numpy
+      - name: Validate exact Figshare source and six treatment choice allocation by independent blocks
+        run: |
+          python -m py_compile exploration/run_fish_macrophyte_factorial_block_contrasts_v0_1.py
+          python -u exploration/run_fish_macrophyte_factorial_block_contrasts_v0_1.py \
+            --outdir build/fish_macrophyte_factorial
+      - name: Check source, treatment randomization and bounded interpretation
+        if: success()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("build/fish_macrophyte_factorial")
+          o=json.loads((p/"result.json").read_text())
+          assert o["status"]=="full_block_contrasts_computed"
+          assert o["synthetic_QA"]["status"]=="PASS"
+          assert o["source"]["SHA256"]=="86944f2d06b7e2739342a7b42ec4ff383df92d2cb8600a3d9c9c5de1f70758ae"
+          assert o["third_species_causal_mediation_inferred"] is False
+          assert o["fish_predator_consumed_insects_directly_measured"] is False
+          assert o["RC6_main_SI_submission_unchanged"] is True
+          assert len(o["planned_H1_permutation_family"])==4
+          assert not list(p.glob("*.xlsx"))
+          print("PASS original independent blocks and source conditional plant assignment under selected experiment")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fish-macrophyte-eight-taxon-randomized-block-contrasts-v0-1
+          path: build/fish_macrophyte_factorial/result.json
+          if-no-files-found: warn
