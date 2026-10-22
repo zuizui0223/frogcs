@@ -1,0 +1,282 @@
+{
+  "RC6_manuscript_SI_main_modified": false,
+  "analysis": "independent_USGS_ARMI_2024_bull_green_positive_list_site_holdout_v0_1",
+  "analysis_completed": true,
+  "detection_outcome_coverage": {
+    "both_frogs_same_survey": 98,
+    "bull_positive_sites": 133,
+    "by_project": {
+      "ARMI night surveys": {
+        "both": 32,
+        "bull": 40,
+        "green": 70,
+        "sites": 50,
+        "surveys": 92
+      },
+      "Cricket frog 2006": {
+        "both": 12,
+        "bull": 17,
+        "green": 51,
+        "sites": 59,
+        "surveys": 123
+      },
+      "Cricket frog 2007": {
+        "both": 0,
+        "bull": 67,
+        "green": 1,
+        "sites": 78,
+        "surveys": 203
+      },
+      "Cricket frog exploratory": {
+        "both": 54,
+        "bull": 90,
+        "green": 184,
+        "sites": 156,
+        "surveys": 380
+      }
+    },
+    "detected_bull_surveys": 214,
+    "detected_green_surveys": 306,
+    "folds": {
+      "A": {
+        "bull": 107,
+        "green": 154,
+        "n": 398,
+        "sites": 172
+      },
+      "B": {
+        "bull": 107,
+        "green": 152,
+        "n": 400,
+        "sites": 171
+      }
+    },
+    "green_positive_sites": 172,
+    "n_other_species_summary": {
+      "max": 4,
+      "median": 0,
+      "min": 0
+    },
+    "n_surveys": 798,
+    "negative_partner_detected_surveys": 245,
+    "negative_partner_positive_sites": 176,
+    "neither_frog_detected": 376,
+    "outcome_gate": {
+      "bull_positive_ge30": true,
+      "bull_positive_sites_ge10": true,
+      "green_positive_ge30": true,
+      "green_positive_sites_ge10": true,
+      "independent_projects_ge2": true,
+      "site_groups_ge40": true,
+      "training_fold_minimums": true
+    },
+    "projects": 4,
+    "sites": 343
+  },
+  "metadata_verification": {
+    "MD5_official": "a5a72215d0cd2ad0a027de814edfa701",
+    "SHA256": "a41deac79d0f6be758101b27dc97014896b928723251b4544ddeefd6c4456a15",
+    "bytes": 41317,
+    "file_name": "ARMI_2024_cricket_frog_data_release_2025_v1.1.xml",
+    "official_source_verified": true,
+    "status": 200,
+    "url": "https://www.sciencebase.gov/catalog/file/get/68016413d4be0263cab109a8?f=__disk__a7%2Fb9%2F9b%2Fa7b99b29ed1611b7666ec1012a0da1bef21f9c77"
+  },
+  "primary": {
+    "bullfrog_training_coef": {
+      "A": 0.71664142002276,
+      "B": 0.5504921043359351
+    },
+    "classification": "positive_partner_increment_not_supported",
+    "heldout_brier": {
+      "CI_positive": false,
+      "boot_reps": 2000,
+      "fold_means": {
+        "A": 0.0032575050075965483,
+        "B": 0.001172985244859837
+      },
+      "gain": 0.002212632946074387,
+      "n_surveys": 798,
+      "site_bootstrap_ci95": [
+        -0.0012461646979809924,
+        0.005678953081959473
+      ],
+      "sites": 343,
+      "status": "fitted"
+    },
+    "heldout_logscore": {
+      "CI_positive": false,
+      "boot_reps": 2000,
+      "fold_means": {
+        "A": 0.007186433305842058,
+        "B": 0.003463935444889923
+      },
+      "gain": 0.005320519591079083,
+      "n_surveys": 798,
+      "site_bootstrap_ci95": [
+        -0.002334881198120096,
+        0.013021079512356011
+      ],
+      "sites": 343,
+      "status": "fitted"
+    },
+    "models": "M0 same-project observer method weather season and other-call richness; M1 plus bullfrog",
+    "passes_all_positive_portability_gates": false,
+    "training_folds": {
+      "A": {
+        "M0": {
+          "coef_additional": {},
+          "iterations": 37,
+          "train_bull": 107,
+          "train_green": 154,
+          "train_n": 398
+        },
+        "M1": {
+          "coef_additional": {
+            "bull": 0.71664142002276
+          },
+          "iterations": 34,
+          "train_bull": 107,
+          "train_green": 154,
+          "train_n": 398
+        },
+        "heldout_sites": 171,
+        "heldout_surveys": 400
+      },
+      "B": {
+        "M0": {
+          "coef_additional": {},
+          "iterations": 32,
+          "train_bull": 107,
+          "train_green": 152,
+          "train_n": 400
+        },
+        "M1": {
+          "coef_additional": {
+            "bull": 0.5504921043359351
+          },
+          "iterations": 33,
+          "train_bull": 107,
+          "train_green": 152,
+          "train_n": 400
+        },
+        "heldout_sites": 172,
+        "heldout_surveys": 398
+      }
+    }
+  },
+  "science": {
+    "2024_surveys_targeted_cricket_frogs_not_random_wetlands": true,
+    "no_NAAMP_fixed_margin_replicate": true,
+    "no_plant_species_or_fish_odonate_data": true,
+    "positive_list_means_no_call_recorded_not_occupancy_absence": true,
+    "result_is_observational_not_causal": true,
+    "survey_length_5_minutes": true
+  },
+  "secondary_negative": {
+    "folds": {
+      "A": {
+        "n_test": 400,
+        "n_train": 398,
+        "negative_beta": 0.7315013584726029
+      },
+      "B": {
+        "n_test": 398,
+        "n_train": 400,
+        "negative_beta": 0.13264681971838033
+      }
+    },
+    "negative_addition_predictive_supported": false,
+    "nested_increment_after_bull": {
+      "CI_positive": false,
+      "boot_reps": 2000,
+      "fold_means": {
+        "A": 0.0019349135809674926,
+        "B": -0.006076610013168285
+      },
+      "gain": -0.002080887719351191,
+      "n_surveys": 798,
+      "site_bootstrap_ci95": [
+        -0.007916600963526707,
+        0.0037325670514013047
+      ],
+      "sites": 343,
+      "status": "fitted"
+    },
+    "source_negative": "Dryophytes versicolor",
+    "status": "fitted"
+  },
+  "site_fixed_effect": {
+    "n": 37,
+    "nuisance_site_FE_not_reliable": true,
+    "sites": 13,
+    "status": "quasi_separation_or_nonfinite_uncertainty"
+  },
+  "source_contract": "exploration/ARMI_2024_INDEPENDENT_FROG_SOURCE_CONTRACT_V0_1.md",
+  "source_distinct_from_USGS_NAAMP": true,
+  "source_grain": {
+    "both_named_species_appear": true,
+    "extra_event_taxon_duplicates": 515,
+    "includes_Anaxyrus_fowleri": false,
+    "n_explicit_frog_none_survey_events": 220,
+    "n_project_site_groups": 343,
+    "n_projects": 4,
+    "n_species_labels": 11,
+    "n_species_rows": 1934,
+    "n_survey_visits": 798,
+    "repeated_bearings_grouped_to_exact_sixpart_survey": true,
+    "source_only_duplicate_QA_from_run": 39782928959,
+    "species_names": [
+      "Acris blanchardi",
+      "Anaxyrus americanus",
+      "Anaxyrus cognatus",
+      "Anaxyrus woodhousii",
+      "Dryophytes chrysoscelis",
+      "Dryophytes versicolor",
+      "Lithobates catesbeianus",
+      "Lithobates clamitans",
+      "Pseudacris crucifer",
+      "Pseudacris maculata",
+      "none"
+    ],
+    "weather_conflicting_survey_events": {
+      "Cloud_cover_percent": 0,
+      "Wind_Beaufort": 0
+    }
+  },
+  "source_only_preflight_run": 39781861923,
+  "source_verification": {
+    "MD5_official": "e201e24463d90e23c1f5f903e730e26c",
+    "SHA256": "dafd388c7ccb79e08dbadd37a25c604473a8caf4ff5c8318532740acb56a04e4",
+    "bytes": 235391,
+    "file_name": "ARMI_2024_cricket_frog_data_release_2025_v1.1.csv",
+    "official_source_verified": true,
+    "status": 200,
+    "url": "https://www.sciencebase.gov/catalog/file/get/68016413d4be0263cab109a8?f=__disk__13%2F46%2F9a%2F13469adf4b11c2b0e99797f0e5b47a992130010e"
+  },
+  "status": "positive_partner_increment_not_supported",
+  "synthetic_QA": {
+    "binary_not_species_occupancy": "PASS",
+    "disjoint_site_fold": "PASS",
+    "proper_logscore": "PASS",
+    "status": "PASS"
+  },
+  "weather_and_time_QA": {
+    "all_original_798_observations_have_frozen_covariates": true,
+    "valid_dates": 798,
+    "valid_times": 798,
+    "valid_wind_0_to_6": 798
+  },
+  "provenance": {
+    "workflow_run": 39783701641,
+    "job_id": 119841471246,
+    "artifact_id": 12428505672,
+    "MD5_source_only_qa_run": 39781861923,
+    "species_bearing_qa_run": 39782928959,
+    "prior_scientific_contract": "exploration/ARMI_2024_INDEPENDENT_FROG_SOURCE_CONTRACT_V0_1.md",
+    "source_only_correction": "exploration/ARMI_2024_SURVEY_SPECIES_KEY_CORRECTION_V0_2.md",
+    "source_revision": "v1.1 April 2026",
+    "inference_grain": "one five-minute visit at 2024 Project×Site, not NAAMP ten-stop route-run",
+    "source_samples_independent_of_NAAMP": true
+  }
+}
