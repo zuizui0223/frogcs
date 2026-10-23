@@ -1,0 +1,115 @@
+name: NAAMP PEM frog temporal acoustic beta turnover nestedness
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-temporal-beta-partition-2026-10-23
+    paths:
+      - "exploration/run_naamp_pem_temporal_beta_turnover_v0_1.py"
+      - ".github/workflows/naamp_pem_temporal_beta_turnover.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-incidence-turnover-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install original NAAMP tested scientific stack
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Enumerate all 2-site taxa pools and verify beta Simpson nestedness identities with silence guards
+        run: |
+          python -m py_compile exploration/run_naamp_pem_temporal_beta_turnover_v0_1.py
+          python exploration/run_naamp_pem_temporal_beta_turnover_v0_1.py --synthetic-only
+  original-NAAMP-temporal-community:
+    needs: exact-incidence-turnover-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install original NAAMP numeric dependencies
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Reuse source-only original USFWS NWI physical-site buffers
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Confirm 12 original GIS NWI shards before reading frog source outcomes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert a['preflight_eligible'] and a['mode']=='full'
+          assert len(a['overlay']['shards'])==12 and a['overlay']['site_records']==5147
+          assert a['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS original vegetation map, 5147 SiteIDs, no outcome-selected GIS')
+          PY
+      - name: Execute exact same-site two-round frog beta replacement and nestedness in PEM versus other mapped wetlands
+        run: |
+          python -u exploration/run_naamp_pem_temporal_beta_turnover_v0_1.py \
+             --outdir build/naamp_pem_temporal_beta
+      - name: Verify six frozen turnover/sorensen/nestedness endpoints, route States and silent-source denominators
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          o=json.loads(Path('build/naamp_pem_temporal_beta/result.json').read_text())
+          assert o['status']=='real_source_complete_temporal_turnover_and_nestedness_macroanalysis_executed'
+          assert o['synthetic_QA']['status']=='PASS'
+          assert o['source']['original_NAAMP_standardized_route_nights']==7848
+          assert o['source']['original_NWI_complete_route_nights']==6236
+          assert o['source']['original_NWI_mapped_physical_SiteIDs']==5147
+          p=o['original_2869_same_site_acoustic_nights']
+          assert p['eligible_source_run_nights']==2869
+          assert p['eligible_unchanged_physical_site_route_year_groups']==1115
+          assert p['eligible_independent_physical_routes']==274 and p['eligible_states']==20
+          s=o['per_call_threshold_conditioning_and_sample']
+          assert s['geographically_eligible_original_round_pairs']==2475
+          assert s['geographically_eligible_original_route_years']==1115
+          for mode in ('any','strong'):
+              c=s['by_call_threshold'][mode]
+              assert c['n_original_round_pairs']==2475
+              assert c['n_valid_route_years']>=150 and c['n_valid_independent_routes']>=50
+              assert c['n_valid_states']>=5
+              assert c['n_original_round_pairs']==c['n_valid_same_site_two_round_pairs_both_habitat_both_active']+c['n_excluded_one_or_more_habitat_silent']
+          tests=o['six_frozen_two_sided_route_and_state_tests']
+          assert set(tests)=={
+            'delta_beta_sim_any','delta_beta_sor_any','delta_beta_sne_any',
+            'delta_beta_sim_strong','delta_beta_sor_strong','delta_beta_sne_strong'}
+          for mode in ('any','strong'):
+              t=tests['delta_beta_sor_'+mode]['route_equal_beta_component_contrast']
+              v=tests['delta_beta_sim_'+mode]['route_equal_beta_component_contrast']
+              w=tests['delta_beta_sne_'+mode]['route_equal_beta_component_contrast']
+              assert math.isclose(t,v+w,abs_tol=1e-10)
+          for key,q in tests.items():
+              assert q['n_independent_routes']>=50 and q['n_States']>=5
+              assert q['n_route_year_averaged_groups']>=150
+              assert q['route_signflip']['draws']==4999
+              assert q['omit_one_State']['n_estimable']==q['n_States']
+              assert 0<=q['BH_q_six_original']<=1
+              assert len(q['CI95_physical_route'])==len(q['CI95_States'])==2
+              assert math.isfinite(q['route_equal_beta_component_contrast'])
+          assert o['primary_turnover_verdict'] in (
+                'exploratory_PEM_specific_temporal_acoustic_replacement',
+                'no_robust_PEM_specific_temporal_replacement')
+          assert o['scientific_boundaries']['JAE_RC6_main_SI_manuscript_submissions_unmodified']
+          assert o['scientific_boundaries']['observed_activity_eligibility_is_an_explicit_conditional_population']
+          print('PASS exact source seasons, 6-route-cluster-tested components and original silence guard')
+          PY
+      - name: Archive aggregate-only science outcome without third-party raw amphibian records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-pem-temporal-beta-turnover-nestedness-v0-1
+          path: build/naamp_pem_temporal_beta/result.json
+          if-no-files-found: warn
