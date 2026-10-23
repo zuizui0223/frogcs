@@ -56,7 +56,7 @@ jobs:
               assert r['route_Student_CI95'][0]>0
               assert r['BH_q_four_post_readback_habitat_checks']<.05
               assert r['route_signflip']['p_two_sided_plus_one']==.0002
-              assert r['omit_one_State']['n_checked']==r['omit_one_State']['n_positive']==20
+              assert r['omit_one_State']['n_checks']==r['omit_one_State']['n_positive']==20
           assert orig['scientific_limits']['NWI_250m_PEM_polygon_not_botanical_2001_2015_cover']
           assert orig['scientific_limits']['not_causal_plant_or_multispecies_interaction']
           assert permanent['provenance']['JAE_RC6_main_original_authority_modified'] is False
