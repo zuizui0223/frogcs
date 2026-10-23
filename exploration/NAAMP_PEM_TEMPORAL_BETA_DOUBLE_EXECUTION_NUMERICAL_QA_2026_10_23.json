@@ -1,0 +1,33 @@
+{
+  "analysis": "NAAMP_temporal_beta_turnover_nestedness_two_independent_GitHub_Actions_recomputations_numeric_audit",
+  "date": "2026-10-23",
+  "status": "PASS",
+  "first_full_success_run": 39917395651,
+  "first_scientific_job": 120294039848,
+  "second_full_success_run": 39916111616,
+  "second_scientific_job": 120315809220,
+  "analysis_code": "exploration/run_naamp_pem_temporal_beta_turnover_v0_1.py",
+  "original_matched_round_pairs": 2475,
+  "any_call_evaluable_round_pairs": 2180,
+  "strong_call_evaluable_round_pairs": 1621,
+  "six_pre_frozen_endpoints": [
+    "delta_beta_sim_any",
+    "delta_beta_sim_strong",
+    "delta_beta_sne_any",
+    "delta_beta_sne_strong",
+    "delta_beta_sor_any",
+    "delta_beta_sor_strong"
+  ],
+  "max_absolute_difference_coefficients": 1.3877787807814457e-17,
+  "max_absolute_difference_any_reported_P_q_or_statistic": 9.992007221626409e-16,
+  "max_absolute_difference_CI_bound": 4.163336342344337e-17,
+  "entire_geographic_and_activity_eligibility_exactly_same": true,
+  "all_six_route_score_signflip_results_identical": true,
+  "source_repeated_original_NAAMP_archives_not_external_biological_replication": true,
+  "original_primary_both_active_any_call_effect": -0.032124949975309694,
+  "original_primary_BH_q": 0.010709843341797325,
+  "same_predeclared_exploratory_classification": "exploratory_PEM_specific_temporal_acoustic_replacement",
+  "all_three_gamma_beta_components_identity_confirmed": true,
+  "JAE_RC6_main_paper_SI_submission_unchanged": true,
+  "notes": "Two separate SUCCESS executions using the same biological source, the same scientific Python, different NWI artifact download transport. Floating point nonassociativity under original species-set iteration leads to harmless ~1e-15 rounding differences. These are reproducibility runs, NOT independent ecological replication."
+}
