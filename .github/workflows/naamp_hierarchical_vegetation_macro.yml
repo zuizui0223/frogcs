@@ -1,0 +1,95 @@
+name: NAAMP ecological vegetation hierarchy macroanalysis
+on:
+  push:
+    branches:
+      - exploration/naamp-plant-hierarchy-macro-2026-10-23
+    paths:
+      - "exploration/run_naamp_hierarchical_vegetation_macro_v0_1.py"
+      - ".github/workflows/naamp_hierarchical_vegetation_macro.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  synthetic-hierarchy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Verify exact 4-level variance partition on known synthetic nested communities
+        run: |
+          python -m py_compile exploration/run_naamp_hierarchical_vegetation_macro_v0_1.py
+          python exploration/run_naamp_hierarchical_vegetation_macro_v0_1.py --synthetic-only
+  continental-hierarchical-community:
+    needs: synthetic-hierarchy
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scientific dependency install
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Read existing geographically validated public NWI source (no new harvesting)
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Verify the full source-only NWI original geometry gate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          j=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert j["preflight_eligible"] and j["mode"]=="full"
+          assert len(j["overlay"]["shards"])==12 and j["overlay"]["site_records"]==5147
+          assert j["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          print("PASS full NWI source-only 12-shard geometry, 5,147 sites")
+          PY
+      - name: Compute ecological spatial and biological hierarchy from real NAAMP x NWI
+        run: |
+          python -u exploration/run_naamp_hierarchical_vegetation_macro_v0_1.py \
+            --outdir build/naamp_hierarchical_vegetation_macro
+      - name: Verify 6,236-night, 62,360-stop actual ecological analysis and scoped claims
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          x=json.loads(Path("build/naamp_hierarchical_vegetation_macro/result.json").read_text())
+          assert x["status"]=="empirical_multilevel_NAAMP_vegetation_macrostudy_executed"
+          assert x["source"]["NAAMP_standard_runs"]==7848
+          assert x["source"]["NWI_environment_complete_run_nights"]==6236
+          assert x["source"]["stop_records"]==62360
+          assert x["source"]["NWI_source_physical_site_records"]==5147
+          assert x["synthetic_QA"]["status"]=="PASS"
+          assert len(x["within_night_mapped_vegetation_richness_eight_tests"])==8
+          assert set(x["variance_partition"])=={
+            "pem","aquatic_bed","woody","all_wetland",
+            "alpha_any","alpha_strong","active_any"}
+          for source,v in x["variance_partition"].items():
+              for mode in ("state_equal","route_equal"):
+                  parts=v[mode]["pct_total_variance"]
+                  assert set(parts)=={"among_states","routes_within_state",
+                    "nights_within_route","stops_within_night"}
+                  assert abs(sum(parts.values())-100)<1e-7
+                  assert all(math.isfinite(val) and val>=-1e-8 for val in parts.values())
+          assert not x["scientific_limits"]["forecast_or_predictive_model_fitted"]
+          assert not x["scientific_limits"]["plant_causal_frog_effect_identified"]
+          assert not x["scientific_limits"]["three_biotic_species_causal_interaction_identified"]
+          assert not x["scientific_limits"]["JAE_RC6_main_paper_and_SI_modified"]
+          print("PASS real nested geography, full source, ecological contrast family, no causality overclaim")
+          PY
+      - name: Archive only aggregate scientific results as a workflow artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-hierarchical-vegetation-macro-v0-1
+          path: build/naamp_hierarchical_vegetation_macro/result.json
+          if-no-files-found: warn
