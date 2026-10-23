@@ -250,10 +250,31 @@ def analyze(stop,scope):
         be=extras["PEM_x_woody"]["beta_taxon_units_per_stop"]
         if not math.isclose(bt,ba+be,abs_tol=1e-9):
             raise RuntimeError("Interaction decomposition not exact across identical design")
+        decomposed={}
+        selected=("PEM_x_woody","PEM_effect_if_no_woody",
+                  "PEM_effect_if_woody",
+                  "woody_effect_if_no_PEM","woody_effect_if_PEM")
+        for key in selected:
+            yrec=total[key];arec=active[key];erec=extras[key]
+            by=yrec["beta_taxon_units_per_stop"]
+            av=arec["beta_taxon_units_per_stop"]
+            ex=erec["beta_taxon_units_per_stop"]
+            err=abs(by-av-ex)
+            if err>1e-9:
+                raise RuntimeError("Count = activation + extra taxa failed for "+key)
+            decomposed[key]={
+                "total_detected_taxon_units":yrec,
+                "at_least_one_acoustic_taxon_indicator":arec,
+                "additional_detected_taxon_units_beyond_first":erec,
+                "identity_absolute_roundoff":err,
+                "signed_aggregation_ratio_activation":av/by if abs(by)>1e-9 else None,
+                "signed_aggregation_ratio_extra_taxa":ex/by if abs(by)>1e-9 else None,
+                "ratios_are_signed_arithmetic_not_causal_or_variance_proportions":True}
         outputs[mode]={
             "count_model":total,
             "calling_activation_descriptive_interaction":active["PEM_x_woody"],
             "additional_taxa_beyond_first_descriptive_interaction":extras["PEM_x_woody"],
+            "post_readback_all_linear_contrasts_activation_and_extra":decomposed,
             "exact_sum_identity_verified":True,
             "identity_absolute_roundoff":abs(bt-ba-be),
             "acoustic_zeros_included":True}
@@ -362,6 +383,16 @@ def main():
             "pem_if_woody":res["count_model"]["PEM_effect_if_woody"],
             "activity_interaction":res["calling_activation_descriptive_interaction"],
             "extra_taxon_interaction":res["additional_taxa_beyond_first_descriptive_interaction"],
+            "post_readback_pem_decomposition":{
+               key:{
+                  "total_beta":part["total_detected_taxon_units"]["beta_taxon_units_per_stop"],
+                  "activation_beta":part["at_least_one_acoustic_taxon_indicator"]["beta_taxon_units_per_stop"],
+                  "activation_route_CI95":part["at_least_one_acoustic_taxon_indicator"]["CI95_route"],
+                  "extra_beta":part["additional_detected_taxon_units_beyond_first"]["beta_taxon_units_per_stop"],
+                  "extra_route_CI95":part["additional_detected_taxon_units_beyond_first"]["CI95_route"],
+                  "signed_activation_ratio":part["signed_aggregation_ratio_activation"],
+                  "signed_extra_ratio":part["signed_aggregation_ratio_extra_taxa"]}
+               for key,part in res["post_readback_all_linear_contrasts_activation_and_extra"].items()},
             "sum_identity":res["exact_sum_identity_verified"],
             "leave_one_state":{key:z for key,z in res["count_model"]["omit_one_State_interaction"].items() if key!="by_State"},
             "BH_supported":res["nonadditivity_route_BH_supported"],
