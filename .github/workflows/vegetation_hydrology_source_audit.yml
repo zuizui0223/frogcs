@@ -6,6 +6,7 @@ on:
       - research/vegetation-hydrology-feasibility-2026-10
     paths:
       - "studies/vegetation_hydrology/scripts/fetch_pinned_naamp_sources.py"
+      - "studies/vegetation_hydrology/scripts/audit_calendar_coverage.py"
       - ".github/workflows/vegetation_hydrology_source_audit.yml"
   workflow_dispatch:
 
@@ -39,6 +40,11 @@ jobs:
             --stops data/source/Stops.csv \
             --accepted-coordinates data/qc/accepted_coordinates.csv \
             --out data/qc/survey_site_calendar.csv
+      - name: Summarize real site-year coverage without frog outcomes
+        run: |
+          python scripts/audit_calendar_coverage.py \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out-dir data/qc
       - name: Publish source QC receipts without distributing full source CSVs
         if: always()
         uses: actions/upload-artifact@v4
@@ -48,4 +54,6 @@ jobs:
             studies/vegetation_hydrology/data/source/source_receipt.json
             studies/vegetation_hydrology/data/qc/coordinate_qc_report.json
             studies/vegetation_hydrology/data/qc/survey_site_calendar.audit.json
+            studies/vegetation_hydrology/data/qc/site_year_coverage.json
+            studies/vegetation_hydrology/data/qc/site_year_coverage_by_state.csv
           if-no-files-found: warn
