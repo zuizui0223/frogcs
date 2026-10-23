@@ -1,0 +1,429 @@
+{
+  "analysis": "NAAMP_PEM_two_round_acoustic_taxon_complementarity_decomposition",
+  "status": "executed_observational_taxonomic_and_relative_complementarity_postreadback_audit",
+  "source_Actions_run": 39906468671,
+  "original_full_source_job_id": 120259621060,
+  "original_result_artifact_id": 12480244019,
+  "date": "2026-10-23",
+  "previous_approved_absolute_bonus_source_Actions_run": 39905766189,
+  "retrospective_frozen_postreadback_spec": "exploration/NAAMP_PEM_SEASONAL_TAXON_CONTRIBUTION_POSTREADBACK_SPEC_2026_10_23.md",
+  "exact_conservation_QA": {
+    "later_only_and_earlier_only_exact": true,
+    "same_m_physical_site_no_replacement": true,
+    "source_biological_data_not_used_in_math_QA": true,
+    "status": "PASS",
+    "taxon_exact_temporal_bonus_conservation": true
+  },
+  "source_same_physical_site_year_round_cohort": {
+    "States": 20,
+    "all_round_pairs_averaged_within_route_year_before_route_inference": true,
+    "independent_physical_routes": 274,
+    "matched_physical_sites_same_m_across_both_rounds": true,
+    "no_outcome_filter_on_frog_acoustic_activity": true,
+    "per_route_year_round_pair_counts": {
+      "1": 558,
+      "3": 475,
+      "6": 82
+    },
+    "round_pair_counts": {
+      "1-2": 668,
+      "1-3": 647,
+      "1-4": 138,
+      "2-3": 725,
+      "2-4": 142,
+      "3-4": 155
+    },
+    "same_site_source_route_nights": 2869,
+    "source_round_pairs_all_combinations": 2475,
+    "source_same_site_same_year_route_groups": 1115
+  },
+  "taxon_contributions_by_call_threshold": {
+    "any": {
+      "all_taxon_contributions_sum_original_effect": 0.12779625975522307,
+      "genus_prefix_aggregate_descriptive": [
+        {
+          "delta_bonus": 0.08763490453260613,
+          "taxon_prefix": "Lithobates"
+        },
+        {
+          "delta_bonus": 0.022997528707469614,
+          "taxon_prefix": "Hyla"
+        },
+        {
+          "delta_bonus": 0.011755921346640847,
+          "taxon_prefix": "Acris"
+        },
+        {
+          "delta_bonus": 0.005635821936113039,
+          "taxon_prefix": "Anaxyrus"
+        },
+        {
+          "delta_bonus": 0.00040976362220279645,
+          "taxon_prefix": "Pseudacris"
+        },
+        {
+          "delta_bonus": 0.00011296489398679156,
+          "taxon_prefix": "Gastrophryne"
+        },
+        {
+          "delta_bonus": -0.00006082725060827242,
+          "taxon_prefix": "Spea"
+        },
+        {
+          "delta_bonus": -0.0006898180331878631,
+          "taxon_prefix": "Scaphiopus"
+        }
+      ],
+      "largest_five_fraction_of_positive_component": 0.5426442357190102,
+      "largest_one_fraction_of_positive_component": 0.1818255932074612,
+      "n_source_physical_routes_equal_weight": 274,
+      "net_temporal_bonus_without_biggest_taxon_descriptive": 0.10201374902550173,
+      "no_individual_species_statistical_tests": true,
+      "original_primary_effect_pinned": 0.12779625975522307,
+      "source_original_monitoring_taxon_labels_with_nonzero_components": 48,
+      "source_taxa_negative_contributions": 13,
+      "source_taxa_positive_contributions": 35,
+      "sum_negative_taxon_contributions": -0.014001769196090537,
+      "sum_positive_taxon_contributions": 0.1417980289513136,
+      "taxon_complexes_are_original_unmodified_acoustic_labels": true,
+      "temporal_direction_components_PEM_minus_other": {
+        "bonus": 0.12779625975522307,
+        "earlier_only": 0.07362002579546896,
+        "gamma_one": 0.31010942985601914,
+        "gamma_two": 0.43790568961124227,
+        "later_only": 0.18197249371497717
+      },
+      "top_negative_original_taxon_labels": [
+        {
+          "delta_bonus": -0.006218083822902209,
+          "taxon": "Pseudacris crucifer"
+        },
+        {
+          "delta_bonus": -0.0015655775692272043,
+          "taxon": "Anaxyrus fowleri/woodhousii complex"
+        },
+        {
+          "delta_bonus": -0.001448267871625536,
+          "taxon": "Anaxyrus cognatus"
+        },
+        {
+          "delta_bonus": -0.000897926080407832,
+          "taxon": "Pseudacris ocularis"
+        },
+        {
+          "delta_bonus": -0.0008374436554832804,
+          "taxon": "Pseudacris feriarum"
+        },
+        {
+          "delta_bonus": -0.000822039874220966,
+          "taxon": "Hyla versicolor"
+        },
+        {
+          "delta_bonus": -0.0006951685783802572,
+          "taxon": "Pseudacris brachyphona"
+        },
+        {
+          "delta_bonus": -0.0006898180331878631,
+          "taxon": "Scaphiopus holbrookii"
+        },
+        {
+          "delta_bonus": -0.00036496350364963507,
+          "taxon": "Lithobates areolatus"
+        },
+        {
+          "delta_bonus": -0.00026068821689259646,
+          "taxon": "Pseudacris feriarum/fouquettei complex"
+        },
+        {
+          "delta_bonus": -0.00012213725717375346,
+          "taxon": "Anaxyrus quercicus"
+        },
+        {
+          "delta_bonus": -0.00006082725060827242,
+          "taxon": "Spea bombifrons"
+        },
+        {
+          "delta_bonus": -0.000018827482331131918,
+          "taxon": "Pseudacris ornata"
+        }
+      ],
+      "top_positive_original_taxon_labels": [
+        {
+          "delta_bonus": 0.025782510729721354,
+          "taxon": "Lithobates clamitans"
+        },
+        {
+          "delta_bonus": 0.02068540682450572,
+          "taxon": "Lithobates catesbeianus"
+        },
+        {
+          "delta_bonus": 0.013849133413349604,
+          "taxon": "Lithobates sylvaticus"
+        },
+        {
+          "delta_bonus": 0.009075050871192687,
+          "taxon": "Lithobates palustris"
+        },
+        {
+          "delta_bonus": 0.007553781207978289,
+          "taxon": "Lithobates pipiens"
+        },
+        {
+          "delta_bonus": 0.005930893923594654,
+          "taxon": "Pseudacris kalmi"
+        },
+        {
+          "delta_bonus": 0.005863553856254586,
+          "taxon": "Acris gryllus"
+        },
+        {
+          "delta_bonus": 0.005449986023065619,
+          "taxon": "Hyla chrysoscelis"
+        },
+        {
+          "delta_bonus": 0.0051069235480080116,
+          "taxon": "Acris crepitans"
+        },
+        {
+          "delta_bonus": 0.004692826773118744,
+          "taxon": "Lithobates septentrionalis"
+        },
+        {
+          "delta_bonus": 0.004340082951266477,
+          "taxon": "Hyla chrysoscelis/versicolor complex"
+        },
+        {
+          "delta_bonus": 0.004081955535292347,
+          "taxon": "Anaxyrus fowleri"
+        },
+        {
+          "delta_bonus": 0.0033148518261048665,
+          "taxon": "Hyla cinerea"
+        },
+        {
+          "delta_bonus": 0.003145155061213455,
+          "taxon": "Hyla squirella"
+        },
+        {
+          "delta_bonus": 0.0030872243463484334,
+          "taxon": "Hyla gratiosa"
+        }
+      ]
+    },
+    "strong": {
+      "all_taxon_contributions_sum_original_effect": 0.12826328471249393,
+      "genus_prefix_aggregate_descriptive": [
+        {
+          "delta_bonus": 0.05837573069607305,
+          "taxon_prefix": "Lithobates"
+        },
+        {
+          "delta_bonus": 0.031017916954439374,
+          "taxon_prefix": "Hyla"
+        },
+        {
+          "delta_bonus": 0.01822686542544466,
+          "taxon_prefix": "Anaxyrus"
+        },
+        {
+          "delta_bonus": 0.01659395029670056,
+          "taxon_prefix": "Pseudacris"
+        },
+        {
+          "delta_bonus": 0.005384422016981975,
+          "taxon_prefix": "Acris"
+        },
+        {
+          "delta_bonus": 0.00030413625304136254,
+          "taxon_prefix": "Spea"
+        },
+        {
+          "delta_bonus": -0.00043665276329509954,
+          "taxon_prefix": "Gastrophryne"
+        },
+        {
+          "delta_bonus": -0.0012030841668919526,
+          "taxon_prefix": "Scaphiopus"
+        }
+      ],
+      "largest_five_fraction_of_positive_component": 0.4726429994614372,
+      "largest_one_fraction_of_positive_component": 0.17001491746651057,
+      "n_source_physical_routes_equal_weight": 274,
+      "net_temporal_bonus_without_biggest_taxon_descriptive": 0.10513743090320252,
+      "no_individual_species_statistical_tests": true,
+      "original_primary_effect_pinned": 0.12826328471249396,
+      "source_original_monitoring_taxon_labels_with_nonzero_components": 48,
+      "source_taxa_negative_contributions": 12,
+      "source_taxa_positive_contributions": 36,
+      "sum_negative_taxon_contributions": -0.007759213512385221,
+      "sum_positive_taxon_contributions": 0.13602249822487913,
+      "taxon_complexes_are_original_unmodified_acoustic_labels": true,
+      "temporal_direction_components_PEM_minus_other": {
+        "bonus": 0.12826328471249393,
+        "earlier_only": 0.12807559473444072,
+        "gamma_one": 0.20255570031964712,
+        "gamma_two": 0.33081898503214097,
+        "later_only": 0.12845097469054712
+      },
+      "top_negative_original_taxon_labels": [
+        {
+          "delta_bonus": -0.0017437145174371452,
+          "taxon": "Anaxyrus fowleri/woodhousii complex"
+        },
+        {
+          "delta_bonus": -0.0012527329002824312,
+          "taxon": "Pseudacris maculata/triseriata complex"
+        },
+        {
+          "delta_bonus": -0.0012030841668919526,
+          "taxon": "Scaphiopus holbrookii"
+        },
+        {
+          "delta_bonus": -0.0009016759029793455,
+          "taxon": "Hyla versicolor"
+        },
+        {
+          "delta_bonus": -0.0004562043795620438,
+          "taxon": "Pseudacris feriarum/fouquettei complex"
+        },
+        {
+          "delta_bonus": -0.00044606650446066503,
+          "taxon": "Anaxyrus cognatus"
+        },
+        {
+          "delta_bonus": -0.00043665276329509954,
+          "taxon": "Gastrophryne carolinensis"
+        },
+        {
+          "delta_bonus": -0.00041999768277140536,
+          "taxon": "Anaxyrus quercicus"
+        },
+        {
+          "delta_bonus": -0.00036496350364963507,
+          "taxon": "Lithobates areolatus"
+        },
+        {
+          "delta_bonus": -0.0003099293245278646,
+          "taxon": "Pseudacris brimleyi"
+        },
+        {
+          "delta_bonus": -0.00017379214459506436,
+          "taxon": "Pseudacris brachyphona"
+        },
+        {
+          "delta_bonus": -0.00005039972193256865,
+          "taxon": "Pseudacris feriarum/kalmi complex"
+        }
+      ],
+      "top_positive_original_taxon_labels": [
+        {
+          "delta_bonus": 0.023125853809291406,
+          "taxon": "Lithobates clamitans"
+        },
+        {
+          "delta_bonus": 0.012596849256672852,
+          "taxon": "Lithobates sylvaticus"
+        },
+        {
+          "delta_bonus": 0.010079018372813988,
+          "taxon": "Anaxyrus fowleri"
+        },
+        {
+          "delta_bonus": 0.009319484214339967,
+          "taxon": "Hyla chrysoscelis"
+        },
+        {
+          "delta_bonus": 0.009168875902126677,
+          "taxon": "Anaxyrus americanus"
+        },
+        {
+          "delta_bonus": 0.00829793927573733,
+          "taxon": "Hyla cinerea"
+        },
+        {
+          "delta_bonus": 0.007915341125390656,
+          "taxon": "Lithobates catesbeianus"
+        },
+        {
+          "delta_bonus": 0.005905144274648096,
+          "taxon": "Pseudacris crucifer"
+        },
+        {
+          "delta_bonus": 0.0051142120135429115,
+          "taxon": "Lithobates sphenocephalus"
+        },
+        {
+          "delta_bonus": 0.005034034294983202,
+          "taxon": "Pseudacris maculata"
+        },
+        {
+          "delta_bonus": 0.004760135806147277,
+          "taxon": "Hyla chrysoscelis/versicolor complex"
+        },
+        {
+          "delta_bonus": 0.003775601426148872,
+          "taxon": "Lithobates pipiens"
+        },
+        {
+          "delta_bonus": 0.003694543043691461,
+          "taxon": "Pseudacris kalmi"
+        },
+        {
+          "delta_bonus": 0.0031340516741976596,
+          "taxon": "Hyla femoralis"
+        },
+        {
+          "delta_bonus": 0.002897380566176186,
+          "taxon": "Lithobates virgatipes"
+        }
+      ]
+    }
+  },
+  "matched_normalized_bonus_descriptive_noninferential": {
+    "any": {
+      "State_equal_mean_normalized_bonus_PEM_minus_other": -0.01633506074181618,
+      "excluded_due_to_zero_pool_either_habitat": 32,
+      "fraction_valid": 0.9870707070707071,
+      "n_States": 20,
+      "n_all_original_round_pairs": 2475,
+      "n_independent_physical_routes": 272,
+      "n_negative_State_means": 15,
+      "n_paired_round_pairs_both_habitat_pools_nonempty": 2443,
+      "n_positive_State_means": 5,
+      "n_route_year_groups_both_nonempty": 1104,
+      "no_new_significance_tests_or_causal_effect_claims": true,
+      "route_equal_mean_normalized_bonus_PEM_minus_other": -0.01353528944932723
+    },
+    "strong": {
+      "State_equal_mean_normalized_bonus_PEM_minus_other": -0.012518845406363313,
+      "excluded_due_to_zero_pool_either_habitat": 130,
+      "fraction_valid": 0.9474747474747475,
+      "n_States": 20,
+      "n_all_original_round_pairs": 2475,
+      "n_independent_physical_routes": 267,
+      "n_negative_State_means": 14,
+      "n_paired_round_pairs_both_habitat_pools_nonempty": 2345,
+      "n_positive_State_means": 6,
+      "n_route_year_groups_both_nonempty": 1074,
+      "no_new_significance_tests_or_causal_effect_claims": true,
+      "route_equal_mean_normalized_bonus_PEM_minus_other": -0.010340922032934787
+    }
+  },
+  "verified_twoway_source_aggregation": {
+    "any_original_absolute_bonus": 0.12779625975522307,
+    "strong_original_absolute_bonus": 0.12826328471249396,
+    "whole_physical_route_contrast_conserved": true,
+    "no_additional_hypothesis_tests_conducted": true
+  },
+  "claims_boundary": {
+    "live_NWI_PEM_plant_species_not_observed": true,
+    "source_2001_2015_live_plant_biomass_not_measured": true,
+    "relative_temporal_bonus_difference_not_statistically_tested": true,
+    "individual_taxon_contributions_not_tests_for_lineage_preferences": true,
+    "monitored_taxon_complexes_retained": true,
+    "later_only_acoustic_detection_not_colonization": true,
+    "earlier_only_acoustic_detection_not_extinction": true,
+    "no_causal_plant_or_animal_species_interactions": true,
+    "original_frozen_JAE_RC6_main_SI_unchanged": true
+  }
+}
