@@ -66,7 +66,7 @@ jobs:
               assert raw['n_route_year_pairs']==1925 and raw['n_physical_routes']==238
               assert record_check['beta']==raw['log2_gap_beta_taxon_units_per_site_per_gap_doubling']
               assert record_check['CI95']==raw['log2_gap_95pct_route_CI']
-          assert source['limits']['not_predicting_any_future_site_outcomes']
+          assert source['limits']['not_prediction_or_heldout_forecast']
           assert source['limits']['frozen_JAE_RC6_main_manuscript_SI_untouched']
           receipt={'status':'PASS','source_original_full_scientific_output_action':39902559322,
                    'readback_independent_identical_for_all_four_temporal_slopes':True,
