@@ -1,0 +1,30 @@
+name: Annual NLCD C1.2 ScienceBase source identity and random-access check
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/probe_official_nlcd_c1v2.py"
+      - ".github/workflows/vegetation_hydrology_c1v2_probe.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all fifteen official source ZIPs and bounded remote ZIP range
+        run: python scripts/probe_official_nlcd_c1v2.py --out data/qc/c1v2_zip_probe_receipt.json
+      - name: Publish small metadata and range test
+        uses: actions/upload-artifact@v4
+        with:
+          name: usgs-annual-nlcd-c1v2-source-probe
+          path: studies/vegetation_hydrology/data/qc/c1v2_zip_probe_receipt.json
+          if-no-files-found: error
