@@ -1,0 +1,104 @@
+name: NAAMP exact vegetation rarefied frog-gamma ecology
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-rarefied-gamma-2026-10-23
+    paths:
+      - "exploration/run_naamp_rarefied_vegetation_gamma_v0_1.py"
+      - ".github/workflows/naamp_vegetation_rarefied_gamma.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-rarefaction-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Brute-force verify exact sampling probabilities and turnover/nestedness identity
+        run: |
+          python -m py_compile exploration/run_naamp_rarefied_vegetation_gamma_v0_1.py
+          python exploration/run_naamp_rarefied_vegetation_gamma_v0_1.py --synthetic-only
+  original-naamp-ecological-composition:
+    needs: exact-rarefaction-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse original tested scientific Python stack
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Retrieve geometrically and response-blind validated NWI public survey overlay
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Independently audit source identity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["mode"]=="full" and a["preflight_eligible"]
+          assert len(a["overlay"]["shards"])==12 and a["overlay"]["site_records"]==5147
+          assert a["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          print("PASS response-blind full NWI source, no new source collection")
+          PY
+      - name: Quantify actual 10-stop habitat-stratified frog acoustic gamma and beta
+        run: |
+          python -u exploration/run_naamp_rarefied_vegetation_gamma_v0_1.py \
+             --outdir build/naamp_rarefied_vegetation_gamma
+      - name: Verify actual source sample, 8 prior family tests, and no causality overclaim
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          x=json.loads(Path("build/naamp_rarefied_vegetation_gamma/result.json").read_text())
+          assert x["status"]=="source_matched_real_community_rarefaction_executed"
+          assert x["synthetic_QA"]["status"]=="PASS"
+          c=x["source_coverage"]
+          assert c["NAAMP_standardized_nights"]==7848
+          assert c["source_NWI_physical_sites"]==5147
+          assert c["NWI_complete_route_nights"]==6236
+          assert c["NWI_complete_stop_nights"]==62360
+          assert c["all_eligible_source_routes"]==499
+          assert c["all_eligible_source_states"]==20
+          assert len(x["main_m_at_least_2_stratified_gamma"])==8
+          assert len(x["m_at_least_1_coverage_sensitivity"])==8
+          assert set(x["PEM_subsampled_pool_composition"])=={"any","strong"}
+          for z in x["main_m_at_least_2_stratified_gamma"]:
+              assert z["habitat"] in ("pem","aquatic_bed","woody","all_wetland")
+              assert z["mode"] in ("any","strong")
+              assert 0<=z["BH_q_eight_primary"]<=1
+              if z["status"]=="estimated":
+                  assert z["routes"]>=30 and z["states"]>=5
+                  assert math.isclose(z["route_equal_delta_gamma"], 
+                         z["route_equal_expected_unique_positive"] - 
+                         z["route_equal_expected_unique_negative"],abs_tol=1e-10)
+                  assert z["route_sign_flip"]["draws"]==4999
+          for z in x["PEM_subsampled_pool_composition"].values():
+              if z["status"] in ("descriptive_valid","insufficient_both_nonempty_group_subsamples"):
+                  assert math.isclose(z["route_equal_beta_sorensen"],
+                    z["route_equal_beta_simpson_turnover"]+
+                    z["route_equal_beta_nestedness_resultant"],abs_tol=1e-10)
+          s=x["science_boundaries"]
+          assert not s["plant_causal_gamma_effect_identified"]
+          assert not s["species_interaction_or_three_body_effect_identified"]
+          assert not s["JAE_RC6_main_SI_submission_modified"]
+          print("PASS exact gamma, original sample, route inference, balanced species compositions")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-vegetation-rarefied-gamma-composition-v0-1
+          path: build/naamp_rarefied_vegetation_gamma/result.json
+          if-no-files-found: warn
