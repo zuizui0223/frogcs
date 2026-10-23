@@ -1,0 +1,78 @@
+name: NAAMP overlapping wetland vegetation adjusted community richness
+on:
+  push:
+    branches:
+      - exploration/naamp-plant-hierarchy-macro-2026-10-23
+    paths:
+      - "exploration/run_naamp_multitype_vegetation_hierarchy_v0_1.py"
+      - ".github/workflows/naamp_multitype_plant_hierarchy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  synthetic-plant-fixed-effects:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numeric stack
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Recover known adjusted vegetation effect in full-size synthetic 499-route model
+        run: |
+          python -m py_compile exploration/run_naamp_multitype_vegetation_hierarchy_v0_1.py
+          python exploration/run_naamp_multitype_vegetation_hierarchy_v0_1.py --synthetic-only
+  real-observational-macro-effect:
+    needs: synthetic-plant-fixed-effects
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Retrieve prior source-blind NWI 12-shard audit and original geometry
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Fit ecological conditional same-night vegetation strata (not prediction)
+        run: |
+          python -u exploration/run_naamp_multitype_vegetation_hierarchy_v0_1.py \
+             --outdir build/naamp_multitype_vegetation_hierarchy
+      - name: Validate full source scope, BH eight and geographic uncertainty
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          o=json.loads(Path("build/naamp_multitype_vegetation_hierarchy/result.json").read_text())
+          assert o["status"]=="real_NAAMP_multitype_context_model_completed"
+          assert o["source"]["NWI_environment_complete_run_nights"]==6236
+          assert o["source"]["stop_records"]==62360 and o["source"]["n_routes"]==499
+          assert set(o["models"])=={"any","strong"}
+          plants=("pem_present","woody_present","aquatic_bed_present","wetland_10pp")
+          for m in o["models"].values():
+             assert m["sample"]["routes"]==499 and m["sample"]["states"]==20
+             assert m["sample"]["n_model_predictors"]==15
+             for k in plants:
+                v=m[k]
+                assert math.isfinite(v["beta_taxon_units_per_stop"])
+                assert 0<=v["BH_q_eight_adjusted_contexts"]<=1
+                assert len(v["ci95_route"])==len(v["ci95_state"])==2
+             assert m["geographic_PEM_leave_one_state_out"]["n_states_fitted"]==20
+          assert o["scope_restrictions"]["not_a_causal_vegetation_or_interacting_frog_effect"]
+          assert o["scope_restrictions"]["no_JAE_RC6_changes"]
+          print("PASS source complete; 15 frozen covariates and State/route clustered inference")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-multitype-plant-hierarchy-v0-1
+          path: build/naamp_multitype_vegetation_hierarchy/result.json
+          if-no-files-found: warn
