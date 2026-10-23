@@ -1,0 +1,99 @@
+name: NAAMP wetland vegetation interannual acoustic anchoring gap hierarchy
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-temporal-memory-decay-2026-10-23
+    paths:
+      - "exploration/run_naamp_vegetation_temporal_anchoring_decay_v0_1.py"
+      - ".github/workflows/naamp_vegetation_temporal_anchoring_decay.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  known-temporal-gradient-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse original scientific Python stack
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Verify fixed-effects duration slope, route dependence and FWL identity on synthetic controls
+        run: |
+          python -m py_compile exploration/run_naamp_vegetation_temporal_anchoring_decay_v0_1.py
+          python exploration/run_naamp_vegetation_temporal_anchoring_decay_v0_1.py --synthetic-only
+  real-source-longitudinal-ecology:
+    needs: known-temporal-gradient-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse original NAAMP numeric dependencies
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Download unchanged source NWI outcome-blind mapping
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Audit original NWI geographic source before opening acoustic records
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert a['mode']=='full' and a['preflight_eligible']
+          assert len(a['overlay']['shards'])==12
+          assert a['overlay']['site_records']==5147
+          assert a['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS original source NWI 12-shard 5147 physical SiteIDs')
+          PY
+      - name: Analyse physical stop taxon re-detection versus elapsed monitoring-year gap
+        run: |
+          python -u exploration/run_naamp_vegetation_temporal_anchoring_decay_v0_1.py \
+            --outdir build/naamp_vegetation_memory_decay
+      - name: Independently verify full source cohort, robust route inference and no causal overclaim
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          r=json.loads(Path('build/naamp_vegetation_memory_decay/result.json').read_text())
+          assert r['status']=='real_NAAMP_longitudinal_wetland_acoustic_memory_decay_test_completed'
+          assert r['mathematical_QA']['status']=='PASS'
+          assert r['original_source']['NWI_environment_complete_nights']==6236
+          assert r['source_coverage']['source_matched_adjacent_year_pairs']==2403
+          assert r['source_coverage']['source_monitoring_routes']==273
+          assert r['source_coverage']['source_States']==20
+          assert r['original_matched_year_pair_scope']['physically_stable_vegetation_mixed_source_run_pairs']==2403
+          assert len(r['primary_and_secondary_elapsed_time_slopes'])==4
+          assert r['main_inference_verdict'] in (
+            'exploratory_route_robust_acoustic_memory_decay',
+            'no_supported_elapsed_year_decay_on_adjusted_same_footprint')
+          for key,m in r['primary_and_secondary_elapsed_time_slopes'].items():
+              assert m['n_route_year_pairs']==2403
+              assert m['n_physical_routes']==273 and m['n_states']==20
+              assert m['n_routes_with_within_round_yeargap_variation']>=80
+              assert len(m['log2_gap_95pct_route_CI'])==2
+              assert len(m['log2_gap_95pct_State_CI'])==2
+              assert 0<=m['BH_q_four_temporal_hypotheses']<=1
+              assert math.isfinite(m['log2_gap_beta_taxon_units_per_site_per_gap_doubling'])
+              assert m['whole_route_score_signflips']['route_score_flips']==4999
+          assert r['limits']['frozen_JAE_RC6_main_manuscript_SI_untouched']
+          assert r['limits']['NWI_category_not_contemporaneous_2001_2015_plant_structure']
+          assert r['limits']['acoustic_detections_not_occupancy_or_population_persistence']
+          print('PASS: 2403 physical stop temporal pairs / 273 routes / 20 States, honest ecological memory-duration inference')
+          PY
+      - name: Upload non-raw numerical macroecological result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-interannual-wetland-memory-decay-v0-1
+          path: build/naamp_vegetation_memory_decay/result.json
+          if-no-files-found: warn
