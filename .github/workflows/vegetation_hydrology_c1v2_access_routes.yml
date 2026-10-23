@@ -1,0 +1,29 @@
+name: NLCD C1V2 public range access alternatives
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/probe_c1v2_access_routes.py"
+      - ".github/workflows/vegetation_hydrology_c1v2_access_routes.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  access:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Bound public ranges; no full imagery downloads
+        run: python scripts/probe_c1v2_access_routes.py --out data/qc/c1v2_access_routes.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nlcd-c1v2-public-range-probe
+          path: studies/vegetation_hydrology/data/qc/c1v2_access_routes.json
+          if-no-files-found: error
