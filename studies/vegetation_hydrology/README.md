@@ -2,6 +2,17 @@
 
 **Status 2026-10-23:** environmental-data feasibility and outcome-blind geospatial preprocessing only. **Not** a new NAAMP frog-outcome analysis, a replication, or a modification of the frozen `frogcs` RC6 paper. No numerical vegetation or hydrology effect is established. Never infer breeding success, true occupancy, individual movement or synchronous calling from NAAMP's ordered acoustic stop surveys.
 
+## Full 2001–2015 environment panel — DONE, confirmed on real source data
+
+- **USGS Annual NLCD Collection 1.2 / C1V2 (June 2026)** was retrieved directly from MRLC/USGS for all **15 years** 2001–2015. [2001 real source run](https://github.com/zuizui0223/frogcs/actions/runs/39960285085): success. [2002–2015 14-year extraction matrix](https://github.com/zuizui0223/frogcs/actions/runs/39960918335): **15/15 successful jobs**, including shared outcome-blind NAAMP input preparation.
+- Exact USGS source SHA256 per year and original TIFF SHA256 are in each annual provenance receipt and the consolidated research artifact. All 64,779 calendar site-year keys matched, with **129,558 valid 100-/500-m categorical buffer rows**, 11,588 SiteIDs across 1,145 routes and 25 states. `Counts.csv` was never downloaded or analysed.
+- **Ecologically descriptive but not frog-outcome tested:** Site-balanced mean at 100m vs 500m: developed 35.2% vs 15.6%; forest 21.3% vs 31.4%; agriculture 23.7% vs 32.3%. Route-clustered bootstrap developed difference +19.6 percentage points (95% +19.0–20.1), forest difference −10.1 points (95% −10.7 to −9.5). This is the roadside survey setting; **not** frog habitat preference.
+- Of 7,010 sites followed at least 5 years apart, 500-m developed cover absolute first-to-last difference median 0.23 pp; only 1.28% changed by ≥10 pp. Annual land cover is comparatively stable at the measured scale, while the candidate wetland mechanism is **dynamic inundation**, still unmeasured.
+- Full research receipt: [FULL_ANNUAL_NLCD_C1V2_PANEL_2001_2015_2026-10-23.md](receipts/FULL_ANNUAL_NLCD_C1V2_PANEL_2001_2015_2026-10-23.md). The locally assembled full panel CSV, time series, summary JSON and year source artifacts were exported as a downloadable research ZIP in the conversation.
+- DSWE progression: `scripts/probe_dswe_site_survey_coverage.py` and `.github/workflows/vegetation_hydrology_dswe_metadata_pilot.yml` query the official Landsatlook `landsat-c2l3-dswe` catalogue for **strictly prior 30-day scene metadata** at a small sample of actual station-survey events. Presence of a scene does **not** establish usable cloud-free water pixels or true wetland depth.
+
+**Scientific state:** full annual vegetation environmental measurement succeeded. Water/hydroperiod reconstruction and relation to frog chorus outcomes have not been performed. Main JAE RC6 is frozen and unchanged.
+
 ## Ecological target
 
 The parent `frogcs` study found that rain-associated calling is disproportionately concentrated within taxa across separated fixed listening sites, with preferential re-expression at recurrent species-specific chorus locations. The unresolved causal/ecological alternative is **event-varying local wetland condition × taxon-specific breeding requirements**. Static habitat suitability is only partly proxied by previous species × physical SiteID chorus use; measured route-wide weather alone did not reproduce the conditional configuration.
