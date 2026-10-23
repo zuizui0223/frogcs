@@ -66,18 +66,18 @@ def synthetic_qa():
     assert simpson(A,A)==0.
     assert simpson({"a"},{"b"})==1.
     rng=np.random.default_rng(SEED+30)
-    # 8 runs on 3 physical routes, with known residual B coefficient +.3
-    # and a nuisance covariate x with structured within-run variability.
+    # 120 synthetic nights on 60 independent routes, known boundary
+    # difference +0.3 after a nuisance term and run fixed effects.
     data=[]
-    for run in range(8):
+    for run in range(120):
         for j in range(12):
             bb=int((j+run)%3==0)
             nu=((j%5)-2)/2
-            y=0.4 + 0.3*bb + 0.2*nu + 0.08*run
-            data.append({"route":f"r{run%3}","run_id":f"x{run}",
+            y=0.3 + 0.3*bb + 0.2*nu + 0.003*run
+            data.append({"route":f"r{run%60}","run_id":f"x{run}",
                          "boundary":bb,"Y":y,"nu":nu})
     d=pd.DataFrame(data)
-    f=estimate(d,"Y",("nu",),equal_route=True,with_wild=False)
+    f,_=fit_core(d,"Y",("nu",),equal_route=True)
     assert abs(f["boundary_beta"]-.3)<1e-10, f["boundary_beta"]
     return {"status":"PASS","sorensen_empty_denominator_guard":True,
             "simpson_community_definition":True,
