@@ -1,0 +1,98 @@
+name: NAAMP ecological frog seasonal complementarity taxon hierarchy audit
+on:
+  push:
+    branches:
+      - exploration/naamp-wetland-seasonal-complementarity-2026-10-23
+    paths:
+      - "exploration/run_naamp_wetland_seasonal_taxon_contributions_v0_1.py"
+      - ".github/workflows/naamp_wetland_seasonal_taxon_contributions.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  taxon-additive-mathematical-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original tested statistical runtime
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Validate exact taxon-specific seasonal bonus contributions and physical-site identity
+        run: |
+          python -m py_compile exploration/run_naamp_wetland_seasonal_taxon_contributions_v0_1.py
+          python exploration/run_naamp_wetland_seasonal_taxon_contributions_v0_1.py --synthetic-only
+  original-source-taxonomic-seasonal-accounting:
+    needs: taxon-additive-mathematical-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse exactly same original scientific runtime
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Retrieve original response-blind NWI wetland source-only polygons
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Audit original unchanged NWI 12-shard 5147 site geometry
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert a['mode']=='full' and a['preflight_eligible']
+          assert len(a['overlay']['shards'])==12 and a['overlay']['site_records']==5147
+          assert a['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS original USFWS NWI 5147 response-blind physical sites')
+          PY
+      - name: Compute whole-NAAMP original seasonal bonus distribution over taxon labels
+        run: |
+          python -u exploration/run_naamp_wetland_seasonal_taxon_contributions_v0_1.py \
+            --outdir build/naamp_vegetation_seasonal_taxa
+      - name: Verify exact original positive 274-route macro effect and absolute-versus-proportional caveat
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          o=json.loads(Path('build/naamp_vegetation_seasonal_taxa/result.json').read_text())
+          p=json.loads(Path('exploration/NAAMP_PEM_WETLAND_TWO_ROUND_TEMPORAL_COMPLEMENTARITY_AGGREGATE_2026_10_23.json').read_text())
+          assert o['status']=='executed_observational_taxonomic_and_relative_complementarity_postreadback_audit'
+          assert o['source_mathematical_QA']['status']=='PASS'
+          s=o['source_original_274_route_round_pairs']
+          assert s['source_same_site_same_year_route_groups']==1115
+          assert s['source_round_pairs_all_combinations']==2475
+          assert s['independent_physical_routes']==274 and s['States']==20
+          for name in ('any','strong'):
+              x=o['taxon_label_exact_contributions'][name]
+              expected=p['original_four_fixed_route_robust_tests']['delta_bonus_'+name]['route_equal_delta']
+              assert math.isclose(x['all_taxon_contributions_sum_original_effect'],expected,rel_tol=0,abs_tol=1e-10)
+              assert math.isclose(x['sum_positive_taxon_contributions']+x['sum_negative_taxon_contributions'],expected,abs_tol=1e-10)
+              y=x['temporal_direction_components_PEM_minus_other']
+              assert math.isclose(y['gamma_two']-y['gamma_one'],expected,abs_tol=1e-10)
+              assert math.isclose(.5*(y['later_only']+y['earlier_only']),expected,abs_tol=1e-10)
+              z=o['matched_normalized_bonus_descriptive_only'][name]
+              assert z['n_all_original_round_pairs']==2475
+              assert z['n_paired_round_pairs_both_habitat_pools_nonempty']+z['excluded_due_to_zero_pool_either_habitat']==2475
+              assert z['no_new_significance_tests_or_causal_effect_claims']
+              assert len(x['top_positive_original_taxon_labels'])>0
+              assert x['n_source_physical_routes_equal_weight']==274
+          assert o['scientific_limits']['relative_ratio_question_exploratory_no_new_statistical_tests']
+          assert o['scientific_limits']['frozen_main_JAE_RC6_SI_original_unmodified']
+          print('PASS all source taxa contributions match original 4-test supported macro phenomenon exactly')
+          PY
+      - name: Archive source aggregate without raw NAAMP observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-vegetation-seasonal-temporal-bonus-taxon-audit-v0-1
+          path: build/naamp_vegetation_seasonal_taxa/result.json
+          if-no-files-found: warn
