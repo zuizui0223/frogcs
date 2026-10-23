@@ -36,13 +36,18 @@ jobs:
           python-version: "3.12"
       - name: Install original NAAMP numeric dependencies
         run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
-      - name: Reuse source-only original USFWS NWI physical-site buffers
-        uses: actions/download-artifact@v4
-        with:
-          run-id: 39450277196
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          name: naamp-nwi-vegetation-sites-validated
-          path: build/vegetation_context
+      - name: Retrieve immutable original NWI mapped SiteID inputs by GitHub CLI transport
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p build/vegetation_context
+          gh run download 39450277196 --repo zuizui0223/frogcs \
+             --name naamp-nwi-vegetation-sites-validated \
+             --dir build/vegetation_context
+          test -s build/vegetation_context/site_nwi_vegetation_context.csv
+          test -s build/vegetation_context/geometry_nwi_preflight.json
+          echo "PASS: source NWI artifact fetched by GitHub CLI rather than Node Actions downloader"
       - name: Confirm 12 original GIS NWI shards before reading frog source outcomes
         run: |
           python - <<'PY'
