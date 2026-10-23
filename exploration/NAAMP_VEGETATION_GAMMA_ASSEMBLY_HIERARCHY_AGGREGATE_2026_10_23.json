@@ -1,0 +1,750 @@
+{
+  "title": "NAAMP vegetation community gamma / assembly hierarchy — aggregate numerical authority",
+  "date": "2026-10-23",
+  "exploratory_post_readback": true,
+  "source": {
+    "NAAMP_standardized_runs": 7848,
+    "NWI_complete_runs": 6236,
+    "NWI_site_nights": 62360,
+    "routes": 499,
+    "states": 20,
+    "NWI_original_SiteIDs": 5147,
+    "source_geography_action": 39450277196
+  },
+  "reproducibility": {
+    "source_aggregate_actions": [
+      39885012263,
+      39885710342
+    ],
+    "source_code": [
+      "exploration/run_naamp_rarefied_vegetation_gamma_v0_1.py",
+      "exploration/run_naamp_within_wetland_gamma_taxon_v0_1.py"
+    ],
+    "raw_third_party_source_committed": false,
+    "original_JAE_RC6_changed": false
+  },
+  "equal_effort_m2_gamma": [
+    {
+      "context": "pem",
+      "call_index": "any",
+      "n_route_nights": 3717,
+      "n_routes": 286,
+      "n_states": 20,
+      "mean_expected_positive": 2.689534541738766,
+      "mean_expected_negative": 2.3576935896820923,
+      "mean_shared": 1.8335285169995812,
+      "mean_unique_positive": 0.8560060247391847,
+      "mean_unique_negative": 0.5241650726825108,
+      "delta_gamma": 0.331840952056674,
+      "ci95": [
+        0.26724146948447586,
+        0.3964404346288722
+      ],
+      "p": 9.736667105403725e-21,
+      "q": 7.78933368432298e-20,
+      "state_positive": 19,
+      "LOO": {
+        "max": 0.36551326023420755,
+        "min": 0.3111409020871846,
+        "negative": 0,
+        "positive": 20,
+        "tested": 20
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "pem",
+      "call_index": "strong",
+      "n_route_nights": 3717,
+      "n_routes": 286,
+      "n_states": 20,
+      "mean_expected_positive": 1.6598902577767711,
+      "mean_expected_negative": 1.4233711957270856,
+      "mean_shared": 1.0636324428479595,
+      "mean_unique_positive": 0.5962578149288116,
+      "mean_unique_negative": 0.3597387528791259,
+      "delta_gamma": 0.23651906204968565,
+      "ci95": [
+        0.1863901880815844,
+        0.28664793601778693
+      ],
+      "p": 4.211985255380191e-18,
+      "q": 1.6847941021520764e-17,
+      "state_positive": 18,
+      "LOO": {
+        "max": 0.2623487229735925,
+        "min": 0.21412514669208488,
+        "negative": 0,
+        "positive": 20,
+        "tested": 20
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "aquatic_bed",
+      "call_index": "any",
+      "n_route_nights": 198,
+      "n_routes": 11,
+      "n_states": 5,
+      "mean_expected_positive": 2.448707530143454,
+      "mean_expected_negative": 2.1169148130127957,
+      "mean_shared": 1.7343006087886317,
+      "mean_unique_positive": 0.714406921354822,
+      "mean_unique_negative": 0.3826142042241641,
+      "delta_gamma": 0.3317927171306579,
+      "ci95": null,
+      "p": null,
+      "q": 1,
+      "state_positive": 3,
+      "LOO": {
+        "max": null,
+        "min": null,
+        "negative": 0,
+        "positive": 0,
+        "tested": 0
+      },
+      "classification": "underpowered"
+    },
+    {
+      "context": "aquatic_bed",
+      "call_index": "strong",
+      "n_route_nights": 198,
+      "n_routes": 11,
+      "n_states": 5,
+      "mean_expected_positive": 1.688328254592013,
+      "mean_expected_negative": 1.3552680834227304,
+      "mean_shared": 1.0615912657945126,
+      "mean_unique_positive": 0.6267369887975006,
+      "mean_unique_negative": 0.29367681762821785,
+      "delta_gamma": 0.33306017116928266,
+      "ci95": null,
+      "p": null,
+      "q": 1,
+      "state_positive": 3,
+      "LOO": {
+        "max": null,
+        "min": null,
+        "negative": 0,
+        "positive": 0,
+        "tested": 0
+      },
+      "classification": "underpowered"
+    },
+    {
+      "context": "woody",
+      "call_index": "any",
+      "n_route_nights": 3804,
+      "n_routes": 313,
+      "n_states": 20,
+      "mean_expected_positive": 2.6670777438438624,
+      "mean_expected_negative": 2.5145490312908794,
+      "mean_shared": 1.8637488203893948,
+      "mean_unique_positive": 0.8033289234544675,
+      "mean_unique_negative": 0.6508002109014844,
+      "delta_gamma": 0.15252871255298317,
+      "ci95": [
+        0.07360197629082245,
+        0.2314554488151439
+      ],
+      "p": 0.0001723272457410638,
+      "q": 0.00022976966098808504,
+      "state_positive": 13,
+      "LOO": {
+        "max": 0.17307975349216484,
+        "min": 0.1191932585517366,
+        "negative": 0,
+        "positive": 20,
+        "tested": 20
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "woody",
+      "call_index": "strong",
+      "n_route_nights": 3804,
+      "n_routes": 313,
+      "n_states": 20,
+      "mean_expected_positive": 1.615589166187813,
+      "mean_expected_negative": 1.4937209120503765,
+      "mean_shared": 1.0386265098876373,
+      "mean_unique_positive": 0.5769626563001757,
+      "mean_unique_negative": 0.45509440216273905,
+      "delta_gamma": 0.12186825413743672,
+      "ci95": [
+        0.06158872319635282,
+        0.18214778507852064
+      ],
+      "p": 0.00008647965665967796,
+      "q": 0.00013836745065548474,
+      "state_positive": 17,
+      "LOO": {
+        "max": 0.13596382433390597,
+        "min": 0.10401936899829722,
+        "negative": 0,
+        "positive": 20,
+        "tested": 20
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "all_wetland",
+      "call_index": "any",
+      "n_route_nights": 1154,
+      "n_routes": 100,
+      "n_states": 17,
+      "mean_expected_positive": 2.087615187602873,
+      "mean_expected_negative": 1.7310259051291998,
+      "mean_shared": 1.1893261901178434,
+      "mean_unique_positive": 0.8982889974850291,
+      "mean_unique_negative": 0.5416997150113566,
+      "delta_gamma": 0.3565892824736725,
+      "ci95": [
+        0.20035924742868516,
+        0.5128193175186598
+      ],
+      "p": 0.000016567028897403678,
+      "q": 0.000044178743726409806,
+      "state_positive": 14,
+      "LOO": {
+        "max": 0.3964554502850441,
+        "min": 0.3055835886100994,
+        "negative": 0,
+        "positive": 17,
+        "tested": 17
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "all_wetland",
+      "call_index": "strong",
+      "n_route_nights": 1154,
+      "n_routes": 100,
+      "n_states": 17,
+      "mean_expected_positive": 1.2009020383568725,
+      "mean_expected_negative": 0.9657300016991671,
+      "mean_shared": 0.6349236333270867,
+      "mean_unique_positive": 0.5659784050297857,
+      "mean_unique_negative": 0.33080636837208033,
+      "delta_gamma": 0.23517203665770545,
+      "ci95": [
+        0.1272135590653667,
+        0.3431305142500442
+      ],
+      "p": 0.00003680844885980117,
+      "q": 0.00007361689771960234,
+      "state_positive": 14,
+      "LOO": {
+        "max": 0.25253615637768895,
+        "min": 0.21939850230898558,
+        "negative": 0,
+        "positive": 17,
+        "tested": 17
+      },
+      "classification": "estimated"
+    }
+  ],
+  "within_mapped_wetland_m2_gamma": [
+    {
+      "context": "wetland_all",
+      "call_index": "any",
+      "n_route_nights": 3659,
+      "n_routes": 281,
+      "n_states": 20,
+      "mean_expected_positive": 2.6596402912097368,
+      "mean_expected_negative": 2.361275131021235,
+      "mean_shared": 1.8234484427278912,
+      "mean_unique_positive": 0.8361918484818449,
+      "mean_unique_negative": 0.5378266882933435,
+      "delta_gamma": 0.29836516018850134,
+      "ci95": [
+        0.23243121093677982,
+        0.36429910944022287
+      ],
+      "p": 6.771045076513568e-17,
+      "q": 4.062627045908141e-16,
+      "state_positive": 19,
+      "LOO": {
+        "max": 0.32850505332097885,
+        "min": 0.2781324237492149,
+        "negative": 0,
+        "positive": 20,
+        "tested": 20
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "wetland_all",
+      "call_index": "strong",
+      "n_route_nights": 3659,
+      "n_routes": 281,
+      "n_states": 20,
+      "mean_expected_positive": 1.6368319668547004,
+      "mean_expected_negative": 1.426607373187337,
+      "mean_shared": 1.057606442929455,
+      "mean_unique_positive": 0.5792255239252454,
+      "mean_unique_negative": 0.36900093025788216,
+      "delta_gamma": 0.21022459366736315,
+      "ci95": [
+        0.15952626737713288,
+        0.2609229199575934
+      ],
+      "p": 1.1260083206311498e-14,
+      "q": 3.3780249618934493e-14,
+      "state_positive": 18,
+      "LOO": {
+        "max": 0.23403301490249978,
+        "min": 0.1891319527589762,
+        "negative": 0,
+        "positive": 20,
+        "tested": 20
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "wetland_woody_overlap",
+      "call_index": "any",
+      "n_route_nights": 2552,
+      "n_routes": 184,
+      "n_states": 18,
+      "mean_expected_positive": 2.5726807015532964,
+      "mean_expected_negative": 2.2525706808027732,
+      "mean_shared": 1.7196816609273649,
+      "mean_unique_positive": 0.8529990406259317,
+      "mean_unique_negative": 0.5328890198754084,
+      "delta_gamma": 0.3201100207505233,
+      "ci95": [
+        0.2325513159158894,
+        0.4076687255851572
+      ],
+      "p": 1.399700016023482e-11,
+      "q": 2.799400032046964e-11,
+      "state_positive": 17,
+      "LOO": {
+        "max": 0.3807241307812634,
+        "min": 0.2886044095065366,
+        "negative": 0,
+        "positive": 18,
+        "tested": 18
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "wetland_woody_overlap",
+      "call_index": "strong",
+      "n_route_nights": 2552,
+      "n_routes": 184,
+      "n_states": 18,
+      "mean_expected_positive": 1.6255063507895853,
+      "mean_expected_negative": 1.4015502430046503,
+      "mean_shared": 1.0490723394339212,
+      "mean_unique_positive": 0.5764340113556639,
+      "mean_unique_negative": 0.35247790357072917,
+      "delta_gamma": 0.2239561077849346,
+      "ci95": [
+        0.16120472271288683,
+        0.2867074928569824
+      ],
+      "p": 3.7131729449453906e-11,
+      "q": 5.569759417418086e-11,
+      "state_positive": 17,
+      "LOO": {
+        "max": 0.2694060846142025,
+        "min": 0.20634061476829238,
+        "negative": 0,
+        "positive": 18,
+        "tested": 18
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "wetland_no_woody",
+      "call_index": "any",
+      "n_route_nights": 814,
+      "n_routes": 68,
+      "n_states": 13,
+      "mean_expected_positive": 2.357761116519603,
+      "mean_expected_negative": 2.1199728265936693,
+      "mean_shared": 1.583372320133952,
+      "mean_unique_positive": 0.7743887963856511,
+      "mean_unique_negative": 0.5366005064597176,
+      "delta_gamma": 0.23778828992593345,
+      "ci95": [
+        0.10657298755971145,
+        0.36900359229215546
+      ],
+      "p": 0.0005722752564991698,
+      "q": 0.0006867303077990038,
+      "state_positive": 9,
+      "LOO": {
+        "max": 0.31484956183233387,
+        "min": 0.1769132078845739,
+        "negative": 0,
+        "positive": 13,
+        "tested": 13
+      },
+      "classification": "estimated"
+    },
+    {
+      "context": "wetland_no_woody",
+      "call_index": "strong",
+      "n_route_nights": 814,
+      "n_routes": 68,
+      "n_states": 13,
+      "mean_expected_positive": 1.3414456510294757,
+      "mean_expected_negative": 1.219072227043755,
+      "mean_shared": 0.8252965561583503,
+      "mean_unique_positive": 0.5161490948711254,
+      "mean_unique_negative": 0.39377567088540466,
+      "delta_gamma": 0.12237342398572056,
+      "ci95": [
+        0.0001491556046165632,
+        0.24459769236682455
+      ],
+      "p": 0.04972896220126354,
+      "q": 0.04972896220126354,
+      "state_positive": 7,
+      "LOO": {
+        "max": 0.17802013268408906,
+        "min": 0.06413761234818352,
+        "negative": 0,
+        "positive": 13,
+        "tested": 13
+      },
+      "classification": "estimated"
+    }
+  ],
+  "PEM_199draw_beta_composition": {
+    "any": {
+      "fraction_subsamples_valid": 0.9065126547453436,
+      "n_route_nights_attempted": 3717,
+      "n_route_nights_with_any_valid_subsample": 3502,
+      "nestedness_fraction_of_route_balanced_Sorensen": 0.5915430491652753,
+      "numeric_sampling_draws_are_NOT_independent_biological_replicates": true,
+      "route_equal_beta_nestedness_resultant": 0.15547355200402643,
+      "route_equal_beta_simpson_turnover": 0.10735356129468392,
+      "route_equal_beta_sorensen": 0.2628271132987104,
+      "routes_with_valid_subsamples": 285,
+      "states_with_valid_subsamples": 20,
+      "status": "descriptive_valid",
+      "subsamples_attempted": 739683,
+      "subsamples_both_groups_nonempty": 670532,
+      "turnover_fraction_of_route_balanced_Sorensen": 0.4084569508347245
+    },
+    "strong": {
+      "fraction_subsamples_valid": 0.7483151566279068,
+      "n_route_nights_attempted": 3717,
+      "n_route_nights_with_any_valid_subsample": 3012,
+      "nestedness_fraction_of_route_balanced_Sorensen": 0.5753970476091398,
+      "numeric_sampling_draws_are_NOT_independent_biological_replicates": true,
+      "route_equal_beta_nestedness_resultant": 0.14205564302231938,
+      "route_equal_beta_simpson_turnover": 0.10482717226597878,
+      "route_equal_beta_sorensen": 0.2468828152882982,
+      "routes_with_valid_subsamples": 281,
+      "states_with_valid_subsamples": 20,
+      "status": "descriptive_valid",
+      "subsamples_attempted": 739683,
+      "subsamples_both_groups_nonempty": 553516,
+      "turnover_fraction_of_route_balanced_Sorensen": 0.42460295239086004
+    }
+  },
+  "within_wetland_taxon_contributions": {
+    "any": {
+      "n_taxa": 48,
+      "positive_taxa": 39,
+      "negative_taxa": 9,
+      "top_positive_fraction_1": 0.14606942058947914,
+      "top_positive_fraction_5": 0.49298884363543294,
+      "total": 0.2983651601885013,
+      "total_without_largest": 0.25360512864702073,
+      "positive_contribution_sum": 0.30642985616596913,
+      "negative_contribution_sum": -0.00806469597746782,
+      "top_positive": [
+        {
+          "delta_gamma": 0.04476003154148054,
+          "taxon": "Lithobates clamitans"
+        },
+        {
+          "delta_gamma": 0.028817134010834806,
+          "taxon": "Anaxyrus americanus"
+        },
+        {
+          "delta_gamma": 0.026937148236518937,
+          "taxon": "Pseudacris crucifer"
+        },
+        {
+          "delta_gamma": 0.026684839085894082,
+          "taxon": "Lithobates catesbeianus"
+        },
+        {
+          "delta_gamma": 0.0238673475719048,
+          "taxon": "Lithobates sylvaticus"
+        },
+        {
+          "delta_gamma": 0.015004578285237661,
+          "taxon": "Hyla versicolor"
+        },
+        {
+          "delta_gamma": 0.014962461237925363,
+          "taxon": "Lithobates sphenocephalus"
+        },
+        {
+          "delta_gamma": 0.01478240797376745,
+          "taxon": "Acris crepitans"
+        },
+        {
+          "delta_gamma": 0.012507277228172317,
+          "taxon": "Hyla cinerea"
+        },
+        {
+          "delta_gamma": 0.011673839742553975,
+          "taxon": "Lithobates palustris"
+        },
+        {
+          "delta_gamma": 0.009504112507137097,
+          "taxon": "Lithobates pipiens"
+        },
+        {
+          "delta_gamma": 0.009080343947659435,
+          "taxon": "Pseudacris kalmi"
+        },
+        {
+          "delta_gamma": 0.008314217981400043,
+          "taxon": "Hyla chrysoscelis"
+        },
+        {
+          "delta_gamma": 0.007874516157760988,
+          "taxon": "Hyla squirella"
+        },
+        {
+          "delta_gamma": 0.00786089240277606,
+          "taxon": "Anaxyrus fowleri"
+        }
+      ],
+      "top_negative": [
+        {
+          "delta_gamma": -0.003103993673388691,
+          "taxon": "Anaxyrus fowleri/woodhousii complex"
+        },
+        {
+          "delta_gamma": -0.0020448511551714394,
+          "taxon": "Anaxyrus cognatus"
+        },
+        {
+          "delta_gamma": -0.0007039224121074655,
+          "taxon": "Pseudacris feriarum/fouquettei complex"
+        },
+        {
+          "delta_gamma": -0.0006813518012544833,
+          "taxon": "Pseudacris brachyphona"
+        },
+        {
+          "delta_gamma": -0.00043021786034045913,
+          "taxon": "Pseudacris nigrita"
+        },
+        {
+          "delta_gamma": -0.00041382070891065616,
+          "taxon": "Pseudacris feriarum"
+        },
+        {
+          "delta_gamma": -0.0003958444812946912,
+          "taxon": "Pseudacris ornata"
+        },
+        {
+          "delta_gamma": -0.00027374760470845884,
+          "taxon": "Lithobates areolatus"
+        },
+        {
+          "delta_gamma": -0.000016946280291476034,
+          "taxon": "Spea bombifrons"
+        }
+      ],
+      "genus": [
+        {
+          "delta_gamma": 0.14487332959374272,
+          "taxon_prefix": "Lithobates"
+        },
+        {
+          "delta_gamma": 0.05084337345078089,
+          "taxon_prefix": "Hyla"
+        },
+        {
+          "delta_gamma": 0.042329473493325664,
+          "taxon_prefix": "Pseudacris"
+        },
+        {
+          "delta_gamma": 0.035079229256270064,
+          "taxon_prefix": "Anaxyrus"
+        },
+        {
+          "delta_gamma": 0.024327872402001217,
+          "taxon_prefix": "Acris"
+        },
+        {
+          "delta_gamma": 0.0006230675945771661,
+          "taxon_prefix": "Scaphiopus"
+        },
+        {
+          "delta_gamma": 0.00030576067809505176,
+          "taxon_prefix": "Gastrophryne"
+        },
+        {
+          "delta_gamma": -0.000016946280291476034,
+          "taxon_prefix": "Spea"
+        }
+      ]
+    },
+    "strong": {
+      "n_taxa": 48,
+      "positive_taxa": 37,
+      "negative_taxa": 11,
+      "top_positive_fraction_1": 0.17824821809001756,
+      "top_positive_fraction_5": 0.49053868695951247,
+      "total": 0.21022459366736315,
+      "total_without_largest": 0.17141191763255462,
+      "positive_contribution_sum": 0.21774509978667864,
+      "negative_contribution_sum": -0.0075205061193155155,
+      "top_positive": [
+        {
+          "delta_gamma": 0.03881267603480853,
+          "taxon": "Pseudacris crucifer"
+        },
+        {
+          "delta_gamma": 0.030592625897021736,
+          "taxon": "Lithobates clamitans"
+        },
+        {
+          "delta_gamma": 0.013741537674977067,
+          "taxon": "Lithobates sylvaticus"
+        },
+        {
+          "delta_gamma": 0.012006432628557075,
+          "taxon": "Hyla versicolor"
+        },
+        {
+          "delta_gamma": 0.011659123105860947,
+          "taxon": "Acris crepitans"
+        },
+        {
+          "delta_gamma": 0.010813761239101126,
+          "taxon": "Lithobates catesbeianus"
+        },
+        {
+          "delta_gamma": 0.010745684025840398,
+          "taxon": "Hyla cinerea"
+        },
+        {
+          "delta_gamma": 0.00938372112825963,
+          "taxon": "Anaxyrus americanus"
+        },
+        {
+          "delta_gamma": 0.008681580936505943,
+          "taxon": "Hyla chrysoscelis"
+        },
+        {
+          "delta_gamma": 0.006905585880189769,
+          "taxon": "Pseudacris kalmi"
+        },
+        {
+          "delta_gamma": 0.006321736630496419,
+          "taxon": "Anaxyrus fowleri"
+        },
+        {
+          "delta_gamma": 0.006290391844217467,
+          "taxon": "Pseudacris maculata"
+        },
+        {
+          "delta_gamma": 0.005764407045185438,
+          "taxon": "Lithobates sphenocephalus"
+        },
+        {
+          "delta_gamma": 0.005546213072311859,
+          "taxon": "Acris gryllus"
+        },
+        {
+          "delta_gamma": 0.00527872389367631,
+          "taxon": "Hyla chrysoscelis/versicolor complex"
+        }
+      ],
+      "top_negative": [
+        {
+          "delta_gamma": -0.002813082528385019,
+          "taxon": "Anaxyrus fowleri/woodhousii complex"
+        },
+        {
+          "delta_gamma": -0.001304863582443653,
+          "taxon": "Anaxyrus cognatus"
+        },
+        {
+          "delta_gamma": -0.000910654429724521,
+          "taxon": "Gastrophryne carolinensis"
+        },
+        {
+          "delta_gamma": -0.0008194000168789665,
+          "taxon": "Scaphiopus holbrookii"
+        },
+        {
+          "delta_gamma": -0.000387222504660227,
+          "taxon": "Anaxyrus quercicus"
+        },
+        {
+          "delta_gamma": -0.0003810600542222172,
+          "taxon": "Pseudacris nigrita"
+        },
+        {
+          "delta_gamma": -0.00027374760470845884,
+          "taxon": "Pseudacris feriarum/fouquettei complex"
+        },
+        {
+          "delta_gamma": -0.00027374760470845884,
+          "taxon": "Lithobates areolatus"
+        },
+        {
+          "delta_gamma": -0.00025594726785056884,
+          "taxon": "Pseudacris brachyphona"
+        },
+        {
+          "delta_gamma": -0.00008812065751567536,
+          "taxon": "Pseudacris feriarum/kalmi complex"
+        },
+        {
+          "delta_gamma": -0.000012659868217749744,
+          "taxon": "Lithobates septentrionalis"
+        }
+      ],
+      "genus": [
+        {
+          "delta_gamma": 0.07292140196420427,
+          "taxon_prefix": "Lithobates"
+        },
+        {
+          "delta_gamma": 0.057893617221527915,
+          "taxon_prefix": "Pseudacris"
+        },
+        {
+          "delta_gamma": 0.04605252263383336,
+          "taxon_prefix": "Hyla"
+        },
+        {
+          "delta_gamma": 0.020990235094063975,
+          "taxon_prefix": "Acris"
+        },
+        {
+          "delta_gamma": 0.013842676995964951,
+          "taxon_prefix": "Anaxyrus"
+        },
+        {
+          "delta_gamma": 0.0002541942043721403,
+          "taxon_prefix": "Spea"
+        },
+        {
+          "delta_gamma": -0.0008194000168789665,
+          "taxon_prefix": "Scaphiopus"
+        },
+        {
+          "delta_gamma": -0.000910654429724521,
+          "taxon_prefix": "Gastrophryne"
+        }
+      ]
+    }
+  }
+}
