@@ -177,7 +177,9 @@ def load_data():
             d={"state":state,"route":route,"run_id":rid,"year":year,
                "site_id":str(sid),"stop":int(st),"alpha_any":len(acts["any"][j]),
                "alpha_strong":len(acts["strong"][j]),
-               "active_any":float(bool(acts["any"][j]))}
+               "active_any":float(bool(acts["any"][j])),
+               "stop_air_temp_c":float(ss[j]["stop_air_temp_c"]),
+               "stop_sound_index":float(ss[j]["stop_sound_index"])}
             for p in range(len(FRACTIONS)):
                 d[FRACTIONS[p]]=float(v[j,p])
                 d[PRESENCE[p]]=int(v[j,p]>0)
