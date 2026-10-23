@@ -1,0 +1,261 @@
+{
+  "analysis": "NAAMP_PEM_wetland_elapsed_year_acoustic_site_identity_gap_macro_ecology",
+  "status": "real_NAAMP_longitudinal_wetland_acoustic_memory_decay_test_completed",
+  "date": "2026-10-23",
+  "original_full_source_result_Actions_run": 39902559322,
+  "original_full_source_result_artifact_id": 12479102856,
+  "scientific_compute_step_success": true,
+  "original_workflow_last_QA_key_error_not_scientific_failure": true,
+  "original_regression_source_pinned": true,
+  "total_source_same_physical_10stop_annual_pairs": 2403,
+  "source_unique_monitoring_routes": 273,
+  "source_unique_States": 20,
+  "source_route_round_FE_groups": 727,
+  "source_duration_informative_groups": 404,
+  "source_duration_informative_routes": 179,
+  "classification": "no_supported_elapsed_year_decay_on_adjusted_same_footprint",
+  "original_synthetic_QA": {
+    "FWL_full_regression_identity": true,
+    "known_gap_beta": -0.07,
+    "n_simulated_routes": 110,
+    "no_naamp_real_outcome_used_for_QA": true,
+    "recovered_gap_beta": -0.06987154570997266,
+    "status": "PASS",
+    "whole_physical_route_cluster_unit": true
+  },
+  "four_fixed_outcomes": {
+    "difference_PEM_minus_other_any": {
+      "beta_per_doubling_year_gap": 0.0013664731887911574,
+      "route_cluster_CI95": [
+        -0.014729492560417083,
+        0.017462438937999397
+      ],
+      "State_cluster_CI95": [
+        -0.010387320033851634,
+        0.01312026641143395
+      ],
+      "route_t_two_sided_P": 0.867387568278762,
+      "BH_q_all_four": 0.867387568278762,
+      "route_score_flip_P": 0.8528,
+      "route_round_FE_groups": 727,
+      "routes_with_identifiable_lag": 179,
+      "leave_one_State_out_signs": {
+        "n_estimable": 20,
+        "n_negative": 1,
+        "n_positive": 19,
+        "range": [
+          -0.0019530976475494934,
+          0.002933035790455021
+        ]
+      },
+      "descriptive_unadjusted_by_elapsed_years": {
+        "1year": {
+          "mean_route_balanced": -0.010385185396237128,
+          "n_routes": 240,
+          "route_year_pairs": 1573,
+          "without_other_covariate_adjustment": true
+        },
+        "2years": {
+          "mean_route_balanced": -0.000850097593237834,
+          "n_routes": 164,
+          "route_year_pairs": 402,
+          "without_other_covariate_adjustment": true
+        },
+        "3years": {
+          "mean_route_balanced": -0.012690367097583595,
+          "n_routes": 97,
+          "route_year_pairs": 182,
+          "without_other_covariate_adjustment": true
+        },
+        "4to14years": {
+          "mean_route_balanced": 0.004302142003754909,
+          "n_routes": 124,
+          "route_year_pairs": 246,
+          "without_other_covariate_adjustment": true
+        }
+      }
+    },
+    "difference_PEM_minus_other_strong": {
+      "beta_per_doubling_year_gap": -0.010241326104197248,
+      "route_cluster_CI95": [
+        -0.02202109254934244,
+        0.001538440340947942
+      ],
+      "State_cluster_CI95": [
+        -0.023925765946591904,
+        0.003443113738197409
+      ],
+      "route_t_two_sided_P": 0.08810882637425223,
+      "BH_q_all_four": 0.3524353054970089,
+      "route_score_flip_P": 0.0384,
+      "route_round_FE_groups": 727,
+      "routes_with_identifiable_lag": 179,
+      "leave_one_State_out_signs": {
+        "n_estimable": 20,
+        "n_negative": 20,
+        "n_positive": 0,
+        "range": [
+          -0.015100200964112308,
+          -0.00823591571475121
+        ]
+      },
+      "descriptive_unadjusted_by_elapsed_years": {
+        "1year": {
+          "mean_route_balanced": 0.0011267829338779622,
+          "n_routes": 240,
+          "route_year_pairs": 1573,
+          "without_other_covariate_adjustment": true
+        },
+        "2years": {
+          "mean_route_balanced": -0.0022551054974835434,
+          "n_routes": 164,
+          "route_year_pairs": 402,
+          "without_other_covariate_adjustment": true
+        },
+        "3years": {
+          "mean_route_balanced": -0.013010009272895872,
+          "n_routes": 97,
+          "route_year_pairs": 182,
+          "without_other_covariate_adjustment": true
+        },
+        "4to14years": {
+          "mean_route_balanced": -0.0031534284860897763,
+          "n_routes": 124,
+          "route_year_pairs": 246,
+          "without_other_covariate_adjustment": true
+        }
+      }
+    },
+    "mean_F_any": {
+      "beta_per_doubling_year_gap": -0.002180153354694858,
+      "route_cluster_CI95": [
+        -0.01375697138443381,
+        0.009396664675044094
+      ],
+      "State_cluster_CI95": [
+        -0.014055170817618746,
+        0.00969486410822903
+      ],
+      "route_t_two_sided_P": 0.7111113785986318,
+      "BH_q_all_four": 0.867387568278762,
+      "route_score_flip_P": 0.6868,
+      "route_round_FE_groups": 727,
+      "routes_with_identifiable_lag": 179,
+      "leave_one_State_out_signs": {
+        "n_estimable": 20,
+        "n_negative": 19,
+        "n_positive": 1,
+        "range": [
+          -0.004805821693661402,
+          0.00006665930047798642
+        ]
+      },
+      "descriptive_unadjusted_by_elapsed_years": {
+        "1year": {
+          "mean_route_balanced": 0.09864673209036807,
+          "n_routes": 240,
+          "route_year_pairs": 1573,
+          "without_other_covariate_adjustment": true
+        },
+        "2years": {
+          "mean_route_balanced": 0.0757440980287779,
+          "n_routes": 164,
+          "route_year_pairs": 402,
+          "without_other_covariate_adjustment": true
+        },
+        "3years": {
+          "mean_route_balanced": 0.08392601456390117,
+          "n_routes": 97,
+          "route_year_pairs": 182,
+          "without_other_covariate_adjustment": true
+        },
+        "4to14years": {
+          "mean_route_balanced": 0.06585688150708312,
+          "n_routes": 124,
+          "route_year_pairs": 246,
+          "without_other_covariate_adjustment": true
+        }
+      }
+    },
+    "mean_F_strong": {
+      "beta_per_doubling_year_gap": -0.0034043993201196094,
+      "route_cluster_CI95": [
+        -0.010922733695688622,
+        0.004113935055449404
+      ],
+      "State_cluster_CI95": [
+        -0.010268797891159944,
+        0.0034599992509207244
+      ],
+      "route_t_two_sided_P": 0.37346836430277996,
+      "BH_q_all_four": 0.7469367286055599,
+      "route_score_flip_P": 0.2902,
+      "route_round_FE_groups": 727,
+      "routes_with_identifiable_lag": 179,
+      "leave_one_State_out_signs": {
+        "n_estimable": 20,
+        "n_negative": 20,
+        "n_positive": 0,
+        "range": [
+          -0.005240559111310354,
+          -0.002389787800782883
+        ]
+      },
+      "descriptive_unadjusted_by_elapsed_years": {
+        "1year": {
+          "mean_route_balanced": 0.05835759519715388,
+          "n_routes": 240,
+          "route_year_pairs": 1573,
+          "without_other_covariate_adjustment": true
+        },
+        "2years": {
+          "mean_route_balanced": 0.047273015066460186,
+          "n_routes": 164,
+          "route_year_pairs": 402,
+          "without_other_covariate_adjustment": true
+        },
+        "3years": {
+          "mean_route_balanced": 0.045165514372988595,
+          "n_routes": 97,
+          "route_year_pairs": 182,
+          "without_other_covariate_adjustment": true
+        },
+        "4to14years": {
+          "mean_route_balanced": 0.04080962514934289,
+          "n_routes": 124,
+          "route_year_pairs": 246,
+          "without_other_covariate_adjustment": true
+        }
+      }
+    }
+  },
+  "same_ObserverTrackingID_original_subset": {
+    "any": {
+      "beta": -0.0022960326504205394,
+      "CI95": [
+        -0.014481490207395024,
+        0.009889424906553944
+      ],
+      "n_route_year_pairs": 1925,
+      "n_routes": 238
+    },
+    "strong": {
+      "beta": -0.004432289647989304,
+      "CI95": [
+        -0.013196160465708567,
+        0.004331581169729959
+      ],
+      "n_route_year_pairs": 1925,
+      "n_routes": 238
+    }
+  },
+  "scientific_boundaries": {
+    "elapsed_calendar_year_effect_not_supported_after_route_round_and_covariate_adjustment": true,
+    "source_original_year_gap_1_vs_multi_descriptives_not_independent_test": true,
+    "NWI_plant_class_not_observed_contemporaneous_botanical_vegetation": true,
+    "site_taxon_recurrence_not_individual_demographic_survival": true,
+    "source_studies_exploratory_not_independent_replications": true,
+    "causal_plant_or_frog_frog_interactions_not_identified": true,
+    "source_frozen_JAE_RC6_main_untouched": true
+  }
+}
