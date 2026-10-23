@@ -117,3 +117,38 @@ class TestNLCD(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class TestSparseNLCD(unittest.TestCase):
+    def test_sparse_calendar_prevents_all_year_and_unobserved_site_work(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            source=TestNLCD()
+            source.setUp()
+            try:
+                coords=root/'sites.csv'
+                write_csv(coords,['RouteNumber','SiteID','lat','lon','status'],[
+                    {'RouteNumber':'101','SiteID':'1','lat':source.lat,'lon':source.lon,'status':'accepted'},
+                    {'RouteNumber':'101','SiteID':'2','lat':source.lat+.02,'lon':source.lon+.02,'status':'accepted'}])
+                calendar=root/'calendar.csv'
+                write_csv(calendar,['RouteNumber','SiteID','SurveyYear'],[
+                    {'RouteNumber':'101','SiteID':'1','SurveyYear':'2001'},
+                    {'RouteNumber':'101','SiteID':'1','SurveyYear':'2001'}])
+                template=str(source.root/'annual_{year}.tif')
+                report=run(coords,template,[2001,2002],[100,500],root/'selected.csv',site_calendar_csv=calendar)
+                self.assertEqual((report['rows'],report['site_years_extracted'],report['full_site_year_grid']),(2,1,4))
+                self.assertTrue(report['sparse_calendar_applied'])
+                with (root/'selected.csv').open() as f:
+                    self.assertEqual({r['SiteID'] for r in csv.DictReader(f)},{'1'})
+            finally: source.tearDown()
+
+    def test_outcome_columns_in_calendar_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            coords=root/'sites.csv'
+            write_csv(coords,['RouteNumber','SiteID','lat','lon','status'],[
+                {'RouteNumber':'101','SiteID':'1','lat':40,'lon':-80,'status':'accepted'}])
+            calendar=root/'calendar.csv'
+            write_csv(calendar,['RouteNumber','SiteID','SurveyYear','CallingIndex'],[
+                {'RouteNumber':'101','SiteID':'1','SurveyYear':'2001','CallingIndex':'3'}])
+            with self.assertRaisesRegex(ValueError,'outcome-bearing'):
+                run(coords,str(root/'annual_{year}.tif'),[2001],[100],root/'output.csv',site_calendar_csv=calendar)
