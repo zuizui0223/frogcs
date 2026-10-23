@@ -1,0 +1,101 @@
+name: NAAMP PEM x woody wetland ecological architecture
+on:
+  push:
+    branches:
+      - exploration/naamp-wetland-architecture-interaction-2026-10-23
+    paths:
+      - "exploration/run_naamp_pem_woody_architecture_hierarchy_v0_1.py"
+      - ".github/workflows/naamp_pem_woody_architecture_hierarchy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  factorial-mathematical-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install scientific analysis dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Recover known interaction and verify exact response decomposition (no biological data)
+        run: |
+          python -m py_compile exploration/run_naamp_pem_woody_architecture_hierarchy_v0_1.py
+          python exploration/run_naamp_pem_woody_architecture_hierarchy_v0_1.py --synthetic-only
+  real-state-route-wetland-ecology:
+    needs: factorial-mathematical-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install previously validated NAAMP statistical stack
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Retrieve original 12-shard response-blind NWI geometry data
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Verify original USFWS polygon database source authority
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["preflight_eligible"] and a["mode"]=="full"
+          assert a["overlay"]["site_records"]==5147
+          assert len(a["overlay"]["shards"])==12
+          assert a["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          print("PASS NWI full 12-shard geometry, 5,147 sites, outcome-blind")
+          PY
+      - name: Execute within-wetland vegetation architecture interaction on original NAAMP taxon richness
+        run: |
+          python -u exploration/run_naamp_pem_woody_architecture_hierarchy_v0_1.py \
+            --outdir build/naamp_pem_woody_architecture
+      - name: Validate 16-variable four-cell ecology model, geographic replication, and exact biological limits
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          j=json.loads(Path("build/naamp_pem_woody_architecture/result.json").read_text())
+          assert j["status"]=="real_source_verified_nonpredictive_wetland_architecture_analysis"
+          assert j["source"]["NWI_complete_source_runs"]==6236
+          assert j["source"]["NWI_complete_source_stop_nights"]==62360
+          assert j["source"]["NAAMP_original_standardized_runs"]==7848
+          assert j["source"]["source_physical_SiteIDs"]==5147
+          d=j["model_population"]
+          assert d["wetland_only_site_nights_model"]>30000
+          assert d["wetland_only_physical_routes_model"]>250
+          assert d["wetland_only_states_model"]==20
+          assert all(d["all_wetland_stop_count_by_cell"][str(k)]>100 for k in range(4))
+          assert set(j["primary_and_activity_taxon_hierarchy"])=={"any","strong"}
+          for v in j["primary_and_activity_taxon_hierarchy"].values():
+              s=v["count_model"]
+              assert v["exact_sum_identity_verified"]
+              assert v["identity_absolute_roundoff"]<1e-9
+              assert s["PEM_x_woody"]["n_States"]==20
+              assert s["PEM_x_woody"]["n_routes"]>250
+              assert 0<=s["PEM_x_woody"]["BH_q_two_call_strength_tests"]<=1
+              assert len(s["PEM_x_woody"]["CI95_State"])==2
+              assert s["omit_one_State_interaction"]["n_estimable"]==20
+              assert len(s["full_beta"])==16
+          q=j["same_night_strict_complete_2x2"]
+          assert set(q["modes"])=={"any","strong"}
+          assert j["cautions"]["no_direct_causal_plant_interaction_identified"]
+          assert j["cautions"]["no_frog_frog_or_predator_insect_interactions_identified"]
+          assert j["cautions"]["main_JAE_RC6_SI_submission_modified"] is False
+          print("PASS 2x2 mapped habitat interaction, 499-route habitat source, activation and multi-taxon identity")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-pem-woody-architecture-ecology-v0-1
+          path: build/naamp_pem_woody_architecture/result.json
+          if-no-files-found: warn
