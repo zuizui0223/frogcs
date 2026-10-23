@@ -5,7 +5,6 @@ on:
       - exploration/naamp-wetland-spacetime-accumulation-2026-10-23
     paths:
       - "exploration/run_naamp_wetland_spacetime_accumulation_v0_1.py"
-      - ".github/workflows/naamp_wetland_spacetime_accumulation.yml"
   workflow_dispatch:
 permissions:
   contents: read
@@ -74,7 +73,7 @@ jobs:
           assert g['original_source_same_site_seasonal_run_nights']==2869
           assert g['n_physical_routes']==274 and g['n_states']==20
           assert g['source_paired_round_comparisons_all_R_choose_2']==2475
-          assert g['matched_physical_sites_same_m_across_both_rounds']
+          assert g['same_fixed_2_site_m_for_both_vegetation_classes']
           assert set(x['six_fixed_route_clustered_spacetime_endpoints'])=={
              'delta_I_any','delta_I_strong','delta_S_any',
              'delta_S_strong','delta_T_any','delta_T_strong'}
@@ -85,7 +84,9 @@ jobs:
               assert 0<=v['BH_q_six_frozen']<=1
               assert math.isfinite(v['route_equal_mean'])
               assert len(v['CI95_route'])==len(v['CI95_States'])==2
-              assert len(v['omit_one_State'].get('n_positive',[]))>=0 if False else True
+              assert v['omit_one_State']['n_estimable']==20
+              assert (v['omit_one_State']['n_positive']+
+                      v['omit_one_State']['n_negative'])==20
           d=x['ecological_hierarchical_descriptives']['habitat_spacetime_decomposition']
           for mode in ('any','strong'):
               for habitat in ('PEM','other','PEM_minus_other'):
