@@ -5,7 +5,12 @@
   "parent_study": "zuizui0223/frogcs RC6 frozen",
   "frog_outcomes_loaded": false,
   "coordinate_source": {
-    "required_columns": ["RouteNumber", "SiteID", "lat", "lon"],
+    "required_columns": [
+      "RouteNumber",
+      "SiteID",
+      "lat",
+      "lon"
+    ],
     "sha256_expected": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
     "coordinate_errors_reported": true,
     "review_span_km": 25,
@@ -18,14 +23,47 @@
   "acoustic_counts_access": "prohibited_before_environment_coverage_gates_and_protocol_freeze",
   "remote_sensing": {
     "annual_nlcd_version": "Collection 1.2 (June 2026)",
-    "annual_nlcd_years": [2001, 2015],
-    "annual_nlcd_radius_m": [100, 500],
+    "annual_nlcd_years": [
+      2001,
+      2015
+    ],
+    "annual_nlcd_radius_m": [
+      100,
+      500
+    ],
     "annual_nlcd_min_valid_pixel_fraction": 0.8,
     "annual_nlcd_metrics": {
-      "forest": [41, 42, 43], "woody_wetland": [90],
-      "emergent_wetland": [95], "open_water": [11],
-      "developed": [21, 22, 23, 24], "shrub": [52],
-      "grass_herb": [71, 72], "agriculture": [81, 82]
+      "forest": [
+        41,
+        42,
+        43
+      ],
+      "woody_wetland": [
+        90
+      ],
+      "emergent_wetland": [
+        95
+      ],
+      "open_water": [
+        11
+      ],
+      "developed": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "shrub": [
+        52
+      ],
+      "grass_herb": [
+        71,
+        72
+      ],
+      "agriculture": [
+        81,
+        82
+      ]
     },
     "dswe_acquisition_relative_to_survey": "strictly_prior_calendar_day",
     "dswe_lookback_days": 30,
@@ -47,5 +85,16 @@
     "annual NLCD is not dynamic emergent vegetation or percent canopy",
     "static NWI can be anachronistic for 2001-2015",
     "real data not ingested in this feasibility package"
-  ]
+  ],
+  "public_source_fetch": {
+    "service": "ScienceBase NAAMP item 583dc314e4b0d1899f9dea8d",
+    "pins_enforced": true,
+    "only_files": [
+      "Runs.csv",
+      "Stops.csv",
+      "NAAMP_SiteCoordinates.csv"
+    ],
+    "Counts.csv_downloaded": false,
+    "download_attempt_in_local_environment": "blocked_by_network"
+  }
 }
