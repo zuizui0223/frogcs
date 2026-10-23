@@ -358,6 +358,84 @@ def apply_BH(results):
             and ci is not None and ci[0]>0 and q[idx]<.05
             and x["omit_one_State"]["n_positive"]==x["omit_one_State"]["n_checked"])
 
+
+def post_readback_individual_habitat_recurring_taxa(df):
+    """Four post-readback route-cluster checks of each habitat's own F.
+    This is a SECONDARY analysis added after observing positive means in the
+    original execution; not an independent hypothesis or proof of site causality.
+    """
+    family=[]
+    for mode,th in MODES:
+        for envname in ("PEM","nonPEM"):
+            col=f"recurrence_excess_{envname}_{mode}"
+            route=df.groupby(["state","route"],sort=False)[col].mean().reset_index()
+            n=len(route);states=route.state.nunique()
+            mean=float(route[col].mean())
+            state_means=route.groupby("state")[col].mean()
+            o={"mode":mode,"habitat":envname,
+               "route_year_pairs":int(len(df)),
+               "physical_routes":int(n),"states":int(states),
+               "route_mean_excess_recalled_taxa":mean,
+               "State_equal_mean":float(state_means.mean()),
+               "positive_State_means":int((state_means>0).sum()),
+               "positive_route_fraction":float((route[col]>0).mean()),
+               "post_readback_individual_habitat_question":True,
+               "not_a_frog_demographic_persistence_estimate":True}
+            if n<30 or states<5 or len(df)<100:
+                o.update({"status":"insufficient_replication",
+                          "route_t_p":1.})
+                family.append(o);continue
+            x=route[col].to_numpy(dtype=float)
+            se=float(x.std(ddof=1)/math.sqrt(n))
+            if se<=1e-12:raise RuntimeError("No variance in within-habitat temporal recurrence")
+            ciwidth=float(student_t.ppf(.975,n-1))*se
+            p=float(2*student_t.sf(abs(mean/se),n-1))
+            o.update({"status":"estimated_post_readback",
+                      "route_se":se,
+                      "route_Student_CI95":[mean-ciwidth,mean+ciwidth],
+                      "route_t_p":p,
+                      "route_signflip":signflip(x,SEED+200+10*(th-1)+(0 if envname=="PEM" else 1))})
+            loo={state:float(route.loc[route.state!=state,col].mean())
+                 for state in state_means.index}
+            o["omit_one_State"]={
+                "n_checks":len(loo),
+                "n_positive":sum(z>0 for z in loo.values()),
+                "range":[min(loo.values()),max(loo.values())]}
+            for gap,part in (
+                ("one_year_gap",df.loc[df.year_gap==1]),
+                ("multi_year_gap",df.loc[df.year_gap>1])):
+                rr=part.groupby("route")[col].mean()
+                o[gap]={"n_run_pairs":int(len(part)),
+                        "n_routes":int(len(rr)),
+                        "route_mean":float(rr.mean()) if len(rr) else None}
+            same=df.loc[df.same_observer]
+            sr=same.groupby("route")[col].mean()
+            o["same_ObserverTrackingID_only"]={
+                "n_adjacent_survey_year_pairs":int(len(same)),
+                "n_routes":int(len(sr)),
+                "route_mean":float(sr.mean()) if len(sr) else None}
+            if len(sr)>=30 and len(same)>=100:
+                ss=float(sr.std(ddof=1)/math.sqrt(len(sr)))
+                if ss>0:
+                    sc=float(student_t.ppf(.975,len(sr)-1))
+                    o["same_ObserverTrackingID_only"]["route_CI95"]=[
+                        float(sr.mean()-sc*ss),float(sr.mean()+sc*ss)]
+            family.append(o)
+    if len(family)!=4:raise RuntimeError("Post-readback family 2 classes x 2 calling thresholds lost")
+    order=sorted(range(4),key=lambda i:family[i]["route_t_p"])
+    q=1.
+    for rank in range(4,0,-1):
+        i=order[rank-1]
+        q=min(q,4*family[i]["route_t_p"]/rank)
+        family[i]["BH_q_four_post_readback_habitat_checks"]=q
+        ci=family[i].get("route_Student_CI95")
+        family[i]["positive_acoustic_site_identity_excess_exploratory"]=bool(
+            family[i]["status"]=="estimated_post_readback"
+            and ci is not None and ci[0]>0 and q<.05
+            and family[i]["omit_one_State"]["n_positive"]==
+                 family[i]["omit_one_State"]["n_checks"])
+    return family
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--outdir",type=Path,
@@ -372,6 +450,7 @@ def main():
     output={mode:clustered_contrast(pairs,mode,SEED+offset)
             for offset,(mode,th) in enumerate(MODES)}
     apply_BH(output)
+    within_habitat_postreadback=post_readback_individual_habitat_recurring_taxa(pairs)
     out={
         "analysis":"NAAMP_hierarchical_NWI_PEM_interannual_exact_physical_site_recurrence",
         "status":"real_NAAMP_repeated_physical_site_temporal_vegetation_macroanalysis_completed",
@@ -382,6 +461,9 @@ def main():
         "original_source":source,
         "interannual_pairs_scope":coverage,
         "acoustic_results":output,
+        "post_readback_individual_habitat_route_tests":within_habitat_postreadback,
+        "post_readback_spec":"exploration/NAAMP_TEMPORAL_SITE_ANCHORING_POSTREADBACK_SPEC_2026_10_23.md",
+        "post_readback_tests_not_independent_original_hypothesis":True,
         "scientific_limits":{
             "not_predicting_any_future_site_outcomes":True,
             "survey_round_is_only_coarse_season_control":True,
@@ -400,6 +482,7 @@ def main():
         "status":out["status"],"synthetic_QA":qa,
         "original_source":source,"interannual_pairs_scope":coverage,
         "modes":output,
+        "within_habitat_postreadback":within_habitat_postreadback,
         "scientific_limits":out["scientific_limits"]},
         sort_keys=True,allow_nan=False),flush=True)
     print("NAAMP_TEMPORAL_PEM_FIDELITY_END",flush=True)
