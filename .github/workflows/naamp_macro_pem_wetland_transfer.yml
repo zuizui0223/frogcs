@@ -1,0 +1,89 @@
+name: NAAMP macro wetland versus PEM route-heldout transfer
+on:
+  push:
+    branches:
+      - exploration/naamp-macro-vegetation-boundary-turnover-2026-10-23
+    paths:
+      - "exploration/run_naamp_macro_pem_wetland_transfer_v0_1.py"
+      - ".github/workflows/naamp_macro_pem_wetland_transfer.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  synthetic-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Synthetic route holdout / known wetland effect recovery
+        run: |
+          python -m py_compile exploration/run_naamp_macro_pem_wetland_transfer_v0_1.py
+          python exploration/run_naamp_macro_pem_wetland_transfer_v0_1.py --synthetic-only
+  real-route-heldout-transfer:
+    needs: synthetic-transfer
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Reuse original response-blind NWI geography audit, no new literature
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Require full NWI source and 12 geometry shards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          x=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert x["preflight_eligible"] and x["mode"]=="full" and len(x["overlay"]["shards"])==12
+          assert x["overlay"]["site_records"]==5147
+          print("PASS response-blind NWI source")
+          PY
+      - name: Actual NAAMP cross-route prediction of acoustic turnover
+        run: |
+          python -u exploration/run_naamp_macro_pem_wetland_transfer_v0_1.py \
+            --outdir build/naamp_macro_wetland_transfer
+      - name: Check real sample, paired route loss, counterfactual limits
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          j=json.loads(Path("build/naamp_macro_wetland_transfer/result.json").read_text())
+          assert j["status"]=="empirical_NAAMP_whole_route_heldout_ecological_prediction_completed"
+          assert j["source"]["source_NAAMP_standard_runs"]==7848
+          assert j["source"]["source_10stop_NWI_complete"]==6236
+          assert j["synthetic_QA"]["status"]=="PASS"
+          assert set(j["results"])=={"any","strong"}
+          for name,mode in j["results"].items():
+              assert mode["n_stop_pairs"]>10000 and mode["n_heldout_routes"]>200
+              assert mode["n_survey_nights"]>1000
+              assert set(mode["mse_by_model"])=={"M0","M_PEM","M_WET","M_BOTH"}
+              assert set(mode["contrasts"])=={
+                "WET_over_M0","PEM_over_M0","PEM_increment_over_WET","WET_increment_over_PEM"}
+              for q in mode["contrasts"].values():
+                  assert q["n_independent_routes"]==mode["n_heldout_routes"]
+                  assert sum(q["folds"][f]["n_routes"] for f in ["A","B"])==mode["n_heldout_routes"]
+                  assert q["route_signflip"]["draws"]==4999
+                  assert math.isfinite(q["mean_gain_sorensen_squared"])
+          assert j["causal_plant_or_interspecific_interaction_established"] is False
+          assert j["frozen_JAE_RC6_main_SI_submission_unchanged"] is True
+          print("PASS full NAAMP heldout ecological macro-data pipeline")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-macro-wetland-vs-pem-transfer-v0-1
+          path: build/naamp_macro_wetland_transfer/result.json
+          if-no-files-found: warn
