@@ -31,7 +31,7 @@ The raw USGS NAAMP data are at [DOI 10.5066/F7G44NG0](https://doi.org/10.5066/F7
 0. `fetch_pinned_naamp_sources.py` (optional public-source fetch): download SHA256-pinned `Runs.csv`, `Stops.csv` and the coordinate CSV from ScienceBase. **Never fetch `Counts.csv`.** The GitHub source-audit workflow runs this first.
 1. `audit_site_coordinates.py`: ingest the original `RouteNumber,SiteID,lat,lon` CSV, verify checksum, quarantine malformed coordinates and geometrically implausible routes; do **not** substitute neighbouring-site locations. The 25/50 km flags are **review gates**, not ecological claims or proof of invalidity. Log held/accepted counts by geography before outcome access.
 2. `prepare_survey_site_calendar.py`: join accepted locations to NAAMP `Runs.csv` and `Stops.csv` using physical site IDs; never load `Counts.csv`. This is a *coverage calendar* and **not** the manuscript's exact eligible sample.
-3. `extract_nlcd_buffers.py`: use year-matched annual NLCD GeoTIFFs to extract class shares in **100 m and 500 m** buffers around accepted sites. Require >=80% valid pixel coverage; never classify no-data as non-water. Source rasters and checksums must be pinned before outputs are used.
+3. `extract_nlcd_buffers.py`: use year-matched annual NLCD GeoTIFFs to extract class shares in **100 m and 500 m** buffers around accepted sites; pass `--site-calendar` to process only actually visited physical site × year keys (64,779 in the verified outcome-blind frame, versus a 173,820 full grid). Require >=80% valid pixel coverage; never classify no-data as non-water. Source rasters and checksums must be pinned before outputs are used.
 4. Geospatial DSWE preprocessing (data acquisition still pending): classify per-scene water using explicit official band definitions and QA, construct `dswe_scenes.csv` (`RouteNumber,SiteID,radius_m,scene_id,acquisition_date,valid_pixel_n,water_pixel_n`), and run `summarize_dswe_visits.py` to compile **500-m**, **strictly earlier**, **30-day** site-survey water fractions. Require at least 50 valid scene-pixel observations, while preserving scene and cloud-coverage audits. This is a coverage/proxy choice, **not** proof the water state on the calling night was known.
 5. Feasibility audit only: summarize retention/geometry flags by study geography, year and ecological setting, then **freeze a separate inference protocol** (covariates, missing-data exclusions, outcome, testing family, blocked validation and independent replication) before linking acoustic outcomes.
 
@@ -55,7 +55,7 @@ The primary target is change in **conditional taxon-by-site configuration** at m
 
 ## Local execution
 
-Requirements: Python 3.10+, NumPy, rasterio, shapely for NLCD; standard library only for the other three scripts. All scripts intentionally have **no API calls**. Their inputs are downloaded **separately**, pinned and audited.
+Requirements: Python 3.10+, NumPy, rasterio and shapely for NLCD. The analysis/preprocessing scripts read supplied local inputs; separate explicit source-fetch and STAC-probe scripts use public HTTP endpoints and never read `Counts.csv`. USGS source files are SHA-pinned.
 
 ```bash
 python scripts/fetch_pinned_naamp_sources.py --out data/source
@@ -74,7 +74,8 @@ python scripts/extract_nlcd_buffers.py \
   --accepted-coordinates data/qc/accepted_coordinates.csv \
   --raster-template 'data/nlcd/annual_nlcd_{year}.tif' \
   --years 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 \
-  --radii-m 100 500 --out data/qc/nlcd_site_year.csv
+  --radii-m 100 500 --site-calendar data/qc/survey_site_calendar.csv \
+  --out data/qc/nlcd_site_year.csv
 
 python scripts/summarize_dswe_visits.py \
   --site-calendar data/qc/survey_site_calendar.csv \
@@ -85,7 +86,13 @@ python scripts/summarize_dswe_visits.py \
 python -m unittest discover -s tests -v
 ```
 
-These commands require independently obtained remote-sensing data. There are **no actual processed NAAMP coordinates, NLCD GeoTIFFs or DSWE scenes in this code-only package**. A separate GitHub Actions job attempts the pinned public-source download and writes QC receipts; its success is not assumed or reported here. Passed synthetic tests prove implementation behavior, not environmental coverage in the research sites.
+These commands require source-verified local NLCD rasters (Collection 1.2 for final work) and later DSWE scenes. The code-only repository does not store whole remote-sensing mosaics or site coordinates. **Public-source retrieval, coordinate QC, site-year audit, one real original NLCD categorical pixel and a five-NAAMP-site 100/500-m buffer pilot have all passed GitHub Actions.** The real-pixel/pilot source is historical **C1V1**, solely an access/processing smoke test, not the proposed C1.2 final environment or a frog-result analysis. See `receipts/NAAMP_SITE_YEAR_FEASIBILITY_2026-10-23.md`, `receipts/USGS_NLCD_ORIGINAL_BYTE_ACCESS_2026-10-23.md` and `receipts/REAL_NAAMP_2001_NLCD_PILOT_2026-10-23.md`.
+
+## Verified real-data feasibility (2026-10-23)
+
+- [NAAMP source and five-site original NLCD buffer workflow: SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/39935061682). 11,668 accepted/396 held physical-site keys; 64,779 observed site-year keys from 2001–2015; 5 actual year-2001 sampled sites × two radii, 10/10 buffers with sufficient pixels. All outcomes remain sealed.
+- [Remote categorical pixel STAC/OSN read: SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/39934759579): 206 Partial Content and C1V1 original-pixel read, not a rendered WMS image. **C1V1 is not C1.2**.
+- [Geospatial synthetic QA](https://github.com/zuizui0223/frogcs/actions/runs/39934528768): 14 unit tests passed; dynamic hydrology and ecological model fitting remain unexecuted.
 
 ## Parent-project boundary
 
