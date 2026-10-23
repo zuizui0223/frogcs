@@ -1,0 +1,90 @@
+name: NAAMP interannual wetland memory original scientific result readback
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-temporal-memory-decay-2026-10-23
+    paths:
+      - ".github/workflows/naamp_vegetation_temporal_decay_original_readback.yml"
+      - "exploration/NAAMP_WETLAND_INTERANNUAL_ACOUSTIC_MEMORY_DECAY_AGGREGATE_2026_10_23.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  immutable-result-consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve verified scientific compute output from original source Actions run
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39902559322
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-interannual-wetland-memory-decay-v0-1
+          path: build/original
+      - name: Compare unchanged complete result against versioned aggregate, four hypothesis family, route and State CIs
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          source=json.loads(Path('build/original/result.json').read_text())
+          record=json.loads(Path('exploration/NAAMP_WETLAND_INTERANNUAL_ACOUSTIC_MEMORY_DECAY_AGGREGATE_2026_10_23.json').read_text())
+          assert source['status']=='real_NAAMP_longitudinal_wetland_acoustic_memory_decay_test_completed'
+          assert record['status']==source['status']
+          assert source['mathematical_QA']['status']=='PASS'
+          assert source['original_temporal_source']['NWI_environment_complete_nights']==6236
+          assert source['source_coverage']['source_matched_adjacent_year_pairs']==2403
+          assert source['source_coverage']['source_monitoring_routes']==273
+          assert source['source_coverage']['source_States']==20
+          assert source['original_matched_year_pair_scope']['physically_stable_vegetation_mixed_source_run_pairs']==2403
+          assert record['total_source_same_physical_10stop_annual_pairs']==2403
+          assert record['classification']==source['main_inference_verdict']
+          assert source['main_inference_verdict']=='no_supported_elapsed_year_decay_on_adjusted_same_footprint'
+          assert set(source['primary_and_secondary_elapsed_time_slopes'])==set(record['four_fixed_outcomes'])
+          for key,m in record['four_fixed_outcomes'].items():
+              raw=source['primary_and_secondary_elapsed_time_slopes'][key]
+              assert math.isclose(m['beta_per_doubling_year_gap'],raw['log2_gap_beta_taxon_units_per_site_per_gap_doubling'],rel_tol=0,abs_tol=1e-13)
+              assert m['route_cluster_CI95']==raw['log2_gap_95pct_route_CI']
+              assert m['State_cluster_CI95']==raw['log2_gap_95pct_State_CI']
+              assert m['route_t_two_sided_P']==raw['route_cluster_Student_two_sided_P']
+              assert m['BH_q_all_four']==raw['BH_q_four_temporal_hypotheses']
+              assert m['route_score_flip_P']==raw['whole_route_score_signflips']['plus_one_two_sided_P']
+              assert m['descriptive_unadjusted_by_elapsed_years']==source['year_gap_bins_unadjusted'][key]
+              assert raw['n_physical_routes']==273 and raw['n_route_year_pairs']==2403
+              assert raw['whole_route_score_signflips']['route_score_flips']==4999
+              assert raw['n_routes_with_within_round_yeargap_variation']>=80
+              assert 0<=raw['BH_q_four_temporal_hypotheses']<=1
+              print('PASS',key,'beta=',m['beta_per_doubling_year_gap'],
+                    'CI=',m['route_cluster_CI95'],'BH_q=',m['BH_q_all_four'])
+          for mode,context in [('any','mean_F_any'),('strong','mean_F_strong')]:
+              raw=source['same_original_ObserverTrackingID_sensitivity'][context]
+              record_check=record['same_ObserverTrackingID_original_subset'][mode]
+              assert raw['n_route_year_pairs']==1925 and raw['n_physical_routes']==238
+              assert record_check['beta']==raw['log2_gap_beta_taxon_units_per_site_per_gap_doubling']
+              assert record_check['CI95']==raw['log2_gap_95pct_route_CI']
+          assert source['limits']['not_predicting_any_future_site_outcomes']
+          assert source['limits']['frozen_JAE_RC6_main_manuscript_SI_untouched']
+          receipt={'status':'PASS','source_original_full_scientific_output_action':39902559322,
+                   'readback_independent_identical_for_all_four_temporal_slopes':True,
+                   'original_run_final_QA_wrong_json_source_field':True,
+                   'source_historical_NAAMP_complete_survey_runs':6236,
+                   'source_exact_repeated_physical_SiteID_year_pairs':2403,
+                   'source_independent_routes':273,'geographic_states':20,
+                   'statistical_supported_adjusted_memory_decay':False,
+                   'source_original_JAE_RC6_main_unmodified':True}
+          Path('build/readback').mkdir(exist_ok=True,parents=True)
+          Path('build/readback/receipt.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          print('PASS complete original source artifact and saved numerical receipt; no expensive recompute')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-wetland-anchoring-timegap-result-verified
+          path: |
+            build/original/result.json
+            build/readback/receipt.json
+          if-no-files-found: warn
