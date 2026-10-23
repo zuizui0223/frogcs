@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "kind": "synthetic_fixture_unit_tests",
+  "n_tests": 5,
+  "n_passed": 5,
+  "n_failed": 0,
+  "test_runner": "PYTHONWARNINGS=error python -m unittest discover -s tests -v",
+  "actual_naamp_site_rows_loaded": 0,
+  "actual_nlcd_pixels_loaded": 0,
+  "actual_dswe_scenes_loaded": 0,
+  "frog_calling_outcomes_loaded": 0,
+  "constraint": "Remote source data inaccessible from this execution environment; no biological effect has been estimated."
+}
