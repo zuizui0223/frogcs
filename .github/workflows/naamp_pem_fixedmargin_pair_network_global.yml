@@ -1,0 +1,105 @@
+name: NAAMP vegetation-adjusted global frog pair-identity network
+on:
+  push:
+    branches:
+      - exploration/naamp-pem-fixedmargin-network-scale-2026-10-23
+    paths:
+      - "exploration/run_naamp_pem_fixedmargin_pair_network_global_v0_1.py"
+      - ".github/workflows/naamp_pem_fixedmargin_pair_network_global.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  mathematical-pair-richness-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Prove that total species-pair incidence is an invalid invariant, but pair identity is not
+        run: |
+          python -m py_compile exploration/run_naamp_pem_fixedmargin_pair_network_global_v0_1.py
+          python exploration/run_naamp_pem_fixedmargin_pair_network_global_v0_1.py --synthetic-only
+  real-continental-species-network:
+    needs: mathematical-pair-richness-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen source-compatible analytic stack
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Retrieve original response-blind full NWI 12-shard physical-site map
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Retrieve immutable opposite-route-fold NWI taxon preference null and sample membership
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39516056663
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-route-crossfit-weighted-checkerboard-v0-1
+          path: build/previous_nwi_conditional
+      - name: Verify source-only GIS provenance and exact original route-heldout model authority
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["preflight_eligible"] and a["mode"]=="full"
+          assert a["overlay"]["site_records"]==5147 and len(a["overlay"]["shards"])==12
+          assert a["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          p=Path("build/previous_nwi_conditional")
+          for name in ("any","strong"):
+              assert (p/f"{name}_train_coefficients.json").is_file()
+              assert (p/f"{name}_heldout_run_diagnostics.csv").is_file()
+          print("PASS original source NWI and original weighted-null authority")
+          PY
+      - name: Test PEM-stratified global species-pair identity beyond local richness with 199 exact fixed-margin draws per run
+        run: |
+          python -u exploration/run_naamp_pem_fixedmargin_pair_network_global_v0_1.py \
+            --previous-nwi build/previous_nwi_conditional \
+            --outdir build/naamp_pem_fixedmargin_pair_network
+      - name: Validate original source sample, whole-route null and cautious ecological interpretation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          o=json.loads(Path("build/naamp_pem_fixedmargin_pair_network/result.json").read_text())
+          assert o["status"]=="real_source_fixedmargin_PEM_conditioned_acoustic_pair_network_executed"
+          assert o["NWI_10stop_complete_run_nights"]==6236
+          assert o["mathematical_QA"]["status"]=="PASS"
+          for mode,expected_runs,expected_edges in [("any",3659,127),("strong",1766,57)]:
+              r=o["modes"][mode]
+              assert r["original_reference_route_nights"]==expected_runs
+              assert r["original_eligible_species_pair_labels"]==expected_edges
+              assert r["eligible_mixed_PEM_pair_labels"]>=20
+              assert 0<r["NWI_PEM_two_vs_two_mixed_route_nights"]<=expected_runs
+              assert r["simulated_mixed_route_nights_with_preexisting_labels"]>=200
+              assert r["null_weighted_curveball_draws"]==199
+              assert r["whole_physical_route_vector_signflips"]["draws"]==4999
+              assert r["whole_physical_route_vector_signflips"]["n_routes"]>=50
+              assert 0<r["plus_one_upper_tail_p_weighted_curveball"]<=1
+              assert 0<r["whole_physical_route_vector_signflips"]["plus_one_upper_tail_p"]<=1
+              assert r["classification"] in (
+                   "exploratory_global_PEM_conditioned_dyadic_pattern",
+                   "not_supported_by_fixed_margin_and_route_cluster_gates")
+          assert o["inferential_limits"]["acoustic_co_detection_not_species_species_interaction"]
+          assert o["inferential_limits"]["JAE_RC6_main_SI_untouched"]
+          print("PASS real continental plant-conditioned frog-pair identity network and fixed margins")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-vegetation-conditioned-global-pair-identity-network-v0-1
+          path: build/naamp_pem_fixedmargin_pair_network/result.json
+          if-no-files-found: warn
