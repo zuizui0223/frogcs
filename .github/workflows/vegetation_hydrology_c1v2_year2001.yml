@@ -1,0 +1,53 @@
+name: Real 2001 NLCD C1V2 full-year NAAMP buffer extraction
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/run_official_nlcd_c1v2_year.py"
+      - ".github/workflows/vegetation_hydrology_c1v2_year2001.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  year-2001:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: studies/vegetation_hydrology/requirements.txt
+      - run: python -m pip install -r requirements.txt
+      - name: Fetch pinned NAAMP sites and survey calendar (no counts)
+        run: |
+          python scripts/fetch_pinned_naamp_sources.py --out data/source
+          python scripts/audit_site_coordinates.py \
+            --coordinates data/source/NAAMP_SiteCoordinates.csv \
+            --expected-sha256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83 \
+            --out data/qc
+          python scripts/prepare_survey_site_calendar.py \
+            --runs data/source/Runs.csv \
+            --stops data/source/Stops.csv \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --out data/qc/survey_site_calendar.csv
+      - name: Download one verified C1V2 year, extract genuine sampled-site buffers and discard raster
+        run: |
+          python scripts/run_official_nlcd_c1v2_year.py \
+            --year 2001 \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out-dir data/qc/nlcd_c1v2
+      - name: Upload derived tables and receipts only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-original-nlcd-c1v2-2001-environment-only
+          path: |
+            studies/vegetation_hydrology/data/qc/nlcd_c1v2/*.csv
+            studies/vegetation_hydrology/data/qc/nlcd_c1v2/*receipt.json
+          if-no-files-found: warn
