@@ -5,7 +5,6 @@ on:
       - exploration/naamp-vegetation-temporal-memory-decay-2026-10-23
     paths:
       - "exploration/run_naamp_vegetation_temporal_anchoring_decay_v0_1.py"
-      - ".github/workflows/naamp_vegetation_temporal_anchoring_decay.yml"
   workflow_dispatch:
 permissions:
   contents: read
@@ -67,7 +66,7 @@ jobs:
           r=json.loads(Path('build/naamp_vegetation_memory_decay/result.json').read_text())
           assert r['status']=='real_NAAMP_longitudinal_wetland_acoustic_memory_decay_test_completed'
           assert r['mathematical_QA']['status']=='PASS'
-          assert r['original_source']['NWI_environment_complete_nights']==6236
+          assert r['original_temporal_source']['NWI_environment_complete_nights']==6236
           assert r['source_coverage']['source_matched_adjacent_year_pairs']==2403
           assert r['source_coverage']['source_monitoring_routes']==273
           assert r['source_coverage']['source_States']==20
