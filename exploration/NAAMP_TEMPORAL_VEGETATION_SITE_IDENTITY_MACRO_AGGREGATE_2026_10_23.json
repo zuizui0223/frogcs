@@ -1,0 +1,446 @@
+{
+  "analysis": "NAAMP_2001_2015_250m_NWI_PEM_interannual_acoustic_physical_site_identity",
+  "status": "real_NAAMP_repeated_physical_site_temporal_vegetation_macroanalysis_completed",
+  "date": "2026-10-23",
+  "source": {
+    "source_NAAMP_standardized_survey_runs": 7848,
+    "source_NWI_complete_survey_runs": 6236,
+    "original_NWI_250m_physical_site_records": 5147,
+    "original_monitoring_routes": 499,
+    "original_states": 20,
+    "original_response_blind_NWI_GIS_workflow": 39450277196,
+    "original_source_coverage_QA": {
+      "NWI_and_env_complete_run_nights": 6236,
+      "NWI_missing_full_10_stops": 1559,
+      "missing_sound_or_temperature": 53
+    }
+  },
+  "exact_matched_repeat_year_pairs": {
+    "adjacent_observed_year_pairs_before_SiteID_and_NWI_gate": 4069,
+    "equal_m_site_matching_distribution": {
+      "2": 743,
+      "3": 721,
+      "4": 775,
+      "5": 164
+    },
+    "exact_physical_SiteID_alignment": true,
+    "n_distinct_study_year_pair_windows": 97,
+    "n_physical_routes": 273,
+    "n_states": 20,
+    "no_frog_outcome_based_pair_sampling": true,
+    "physically_stable_vegetation_mixed_source_run_pairs": 2403,
+    "same_seasonal_RunNumber_across_years": true,
+    "source_NWI_complete_run_nights": 6236,
+    "source_exclusions": {
+      "adjacent_observed_year_pairs_before_SiteID_and_NWI_gate": 4069,
+      "ambiguous_duplicate_year_groups_excluded": 294,
+      "duplicate_year_survey_runs_excluded": 660,
+      "paired_year_exact_SiteIDs_and_mixed_PEM_wetland": 2403,
+      "same_observer_adjacent_pairs": 1925,
+      "same_route_moved_physical_station_SiteID_pairs_excluded": 71,
+      "static_environment_lacks_2_PEM_and_2_other_wetland_stops": 1595
+    },
+    "year_gap_distribution": {
+      "1": 1573,
+      "2": 402,
+      "3": 182,
+      "4": 98,
+      "5": 41,
+      "6": 38,
+      "7": 27,
+      "8": 16,
+      "9": 4,
+      "10": 5,
+      "11": 10,
+      "12": 4,
+      "13": 1,
+      "14": 2
+    }
+  },
+  "primary_predeclared_PEM_minus_nonPEM_temporal_site_identity": {
+    "any": {
+      "BH_q_two_call_modes": 0.7975322660233268,
+      "activation_site_identity_PEM_minus_other_descriptive": -0.010002050052434012,
+      "descriptive_year_gap": {
+        "exactly_one_year": {
+          "mean_route": -0.010385185396237128,
+          "route_pairs": 1573,
+          "routes": 240
+        },
+        "longer_than_one_year": {
+          "mean_route": -0.0009014814818249719,
+          "route_pairs": 830,
+          "routes": 218
+        }
+      },
+      "note": "A/B groups equal-m rarefaction recurrence beyond random B-site identity within each mapped wetland stratum",
+      "omit_one_State": {
+        "n_checked": 20,
+        "n_negative": 19,
+        "n_positive": 1,
+        "range": [
+          -0.007210802339852415,
+          0.00019569836433517846
+        ]
+      },
+      "physical_route_count": 273,
+      "positive_state_count": 9,
+      "positive_temporal_PEM_site_identity_excess_supported": false,
+      "route_Student_CI95": [
+        -0.016917495726774114,
+        0.007426176538383903
+      ],
+      "route_equal_mean": -0.004745659594195106,
+      "route_equal_mean_PEM_excess": 0.08387794901236785,
+      "route_equal_mean_PEM_other_site_taxa": 0.8270425153414489,
+      "route_equal_mean_PEM_same_site_taxa": 0.9589115293436647,
+      "route_equal_mean_nonPEM_other_site_taxa": 0.6140440859972026,
+      "route_equal_mean_other_wetland_excess": 0.08862360860656296,
+      "route_equal_mean_other_wetland_same_site_taxa": 0.7539414197253914,
+      "route_positive_fraction": 0.43223443223443225,
+      "route_se": 0.006182602069287938,
+      "route_t_two_sided_P": 0.44340083019043364,
+      "run_year_pair_count": 2403,
+      "same_ObserverTrackingID_only": {
+        "mean_route": -0.004893419113522094,
+        "route_CI95": [
+          -0.018696423518116838,
+          0.00890958529107265
+        ],
+        "route_year_pairs": 1925,
+        "routes": 238
+      },
+      "state_count": 20,
+      "state_equal_Student_CI95": [
+        -0.020614449842023017,
+        0.0141174644082108
+      ],
+      "state_equal_mean": -0.0032484927169061082,
+      "status": "estimated_observational_temporal_context",
+      "survey_pair_mean_unbalanced": -0.004593282867315325,
+      "whole_route_signflip": {
+        "assumes_independent_symmetric_physical_route_effects": true,
+        "draws": 4999,
+        "extreme": 2228,
+        "p_two_sided_plus_one": 0.4458
+      }
+    },
+    "strong": {
+      "BH_q_two_call_modes": 0.7975322660233268,
+      "activation_site_identity_PEM_minus_other_descriptive": -0.00592418376111963,
+      "descriptive_year_gap": {
+        "exactly_one_year": {
+          "mean_route": 0.0011267829338779622,
+          "route_pairs": 1573,
+          "routes": 240
+        },
+        "longer_than_one_year": {
+          "mean_route": -0.007140971024449071,
+          "route_pairs": 830,
+          "routes": 218
+        }
+      },
+      "note": "A/B groups equal-m rarefaction recurrence beyond random B-site identity within each mapped wetland stratum",
+      "omit_one_State": {
+        "n_checked": 20,
+        "n_negative": 17,
+        "n_positive": 3,
+        "range": [
+          -0.0025712590839320135,
+          0.002097324197151528
+        ]
+      },
+      "physical_route_count": 273,
+      "positive_state_count": 12,
+      "positive_temporal_PEM_site_identity_excess_supported": false,
+      "route_Student_CI95": [
+        -0.010271857839911355,
+        0.00790140049194615
+      ],
+      "route_equal_mean": -0.0011852286739826028,
+      "route_equal_mean_PEM_excess": 0.04837670151996131,
+      "route_equal_mean_PEM_other_site_taxa": 0.43906072681238967,
+      "route_equal_mean_PEM_same_site_taxa": 0.5142134725126681,
+      "route_equal_mean_nonPEM_other_site_taxa": 0.31454950885143007,
+      "route_equal_mean_other_wetland_excess": 0.049561930193943914,
+      "route_equal_mean_other_wetland_same_site_taxa": 0.3909704541161337,
+      "route_positive_fraction": 0.4432234432234432,
+      "route_se": 0.004615491999087556,
+      "route_t_two_sided_P": 0.7975322660233268,
+      "run_year_pair_count": 2403,
+      "same_ObserverTrackingID_only": {
+        "mean_route": -0.0008835577554548525,
+        "route_CI95": [
+          -0.01064539096397335,
+          0.008878275453063644
+        ],
+        "route_year_pairs": 1925,
+        "routes": 238
+      },
+      "state_count": 20,
+      "state_equal_Student_CI95": [
+        -0.008812159205458183,
+        0.015235023185537705
+      ],
+      "state_equal_mean": 0.0032114319900397605,
+      "status": "estimated_observational_temporal_context",
+      "survey_pair_mean_unbalanced": -0.002433086287643091,
+      "whole_route_signflip": {
+        "assumes_independent_symmetric_physical_route_effects": true,
+        "draws": 4999,
+        "extreme": 3999,
+        "p_two_sided_plus_one": 0.8
+      }
+    }
+  },
+  "secondary_postreadback_individual_wetland_fidelity": [
+    {
+      "BH_q_four_post_readback_habitat_checks": 2.6625436842938053e-37,
+      "State_equal_mean": 0.08496826326787763,
+      "habitat": "PEM",
+      "mode": "any",
+      "multi_year_gap": {
+        "n_routes": 218,
+        "n_run_pairs": 830,
+        "route_mean": 0.07020502024945834
+      },
+      "not_a_frog_demographic_persistence_estimate": true,
+      "omit_one_State": {
+        "n_checks": 20,
+        "n_positive": 20,
+        "range": [
+          0.08127840176673932,
+          0.08772679507736773
+        ]
+      },
+      "one_year_gap": {
+        "n_routes": 240,
+        "n_run_pairs": 1573,
+        "route_mean": 0.09345413939224952
+      },
+      "physical_routes": 273,
+      "positive_State_means": 19,
+      "positive_acoustic_site_identity_excess_exploratory": true,
+      "positive_route_fraction": 0.7838827838827839,
+      "post_readback_individual_habitat_question": true,
+      "route_Student_CI95": [
+        0.07289509715001559,
+        0.09486080087472011
+      ],
+      "route_mean_excess_recalled_taxa": 0.08387794901236785,
+      "route_se": 0.005578665528458322,
+      "route_signflip": {
+        "assumes_independent_symmetric_physical_route_effects": true,
+        "draws": 4999,
+        "extreme": 0,
+        "p_two_sided_plus_one": 0.0002
+      },
+      "route_t_p": 1.3312718421469026e-37,
+      "route_year_pairs": 2403,
+      "same_ObserverTrackingID_only": {
+        "n_adjacent_survey_year_pairs": 1925,
+        "n_routes": 238,
+        "route_CI95": [
+          0.08012959202505099,
+          0.1065060009079502
+        ],
+        "route_mean": 0.0933177964665006
+      },
+      "states": 20,
+      "status": "estimated_post_readback"
+    },
+    {
+      "BH_q_four_post_readback_habitat_checks": 1.4175056874921397e-54,
+      "State_equal_mean": 0.0882167559847837,
+      "habitat": "nonPEM",
+      "mode": "any",
+      "multi_year_gap": {
+        "n_routes": 218,
+        "n_run_pairs": 830,
+        "route_mean": 0.07110650173128329
+      },
+      "not_a_frog_demographic_persistence_estimate": true,
+      "omit_one_State": {
+        "n_checks": 20,
+        "n_positive": 20,
+        "range": [
+          0.08647667626647064,
+          0.09105792700002968
+        ]
+      },
+      "one_year_gap": {
+        "n_routes": 240,
+        "n_run_pairs": 1573,
+        "route_mean": 0.10383932478848662
+      },
+      "physical_routes": 273,
+      "positive_State_means": 20,
+      "positive_acoustic_site_identity_excess_exploratory": true,
+      "positive_route_fraction": 0.8791208791208791,
+      "post_readback_individual_habitat_question": true,
+      "route_Student_CI95": [
+        0.07987819618522224,
+        0.09736902102790362
+      ],
+      "route_mean_excess_recalled_taxa": 0.08862360860656293,
+      "route_se": 0.004442173255047021,
+      "route_signflip": {
+        "assumes_independent_symmetric_physical_route_effects": true,
+        "draws": 4999,
+        "extreme": 0,
+        "p_two_sided_plus_one": 0.0002
+      },
+      "route_t_p": 3.543764218730349e-55,
+      "route_year_pairs": 2403,
+      "same_ObserverTrackingID_only": {
+        "n_adjacent_survey_year_pairs": 1925,
+        "n_routes": 238,
+        "route_CI95": [
+          0.08793030932209313,
+          0.10849212183795225
+        ],
+        "route_mean": 0.09821121558002269
+      },
+      "states": 20,
+      "status": "estimated_post_readback"
+    },
+    {
+      "BH_q_four_post_readback_habitat_checks": 1.1754622080287903e-28,
+      "State_equal_mean": 0.04670324275463678,
+      "habitat": "PEM",
+      "mode": "strong",
+      "multi_year_gap": {
+        "n_routes": 218,
+        "n_run_pairs": 830,
+        "route_mean": 0.03525745004089805
+      },
+      "not_a_frog_demographic_persistence_estimate": true,
+      "omit_one_State": {
+        "n_checks": 20,
+        "n_positive": 20,
+        "range": [
+          0.04640893241686446,
+          0.05063513792261117
+        ]
+      },
+      "one_year_gap": {
+        "n_routes": 240,
+        "n_run_pairs": 1573,
+        "route_mean": 0.05892098666409287
+      },
+      "physical_routes": 273,
+      "positive_State_means": 18,
+      "positive_acoustic_site_identity_excess_exploratory": true,
+      "positive_route_fraction": 0.684981684981685,
+      "post_readback_individual_habitat_question": true,
+      "route_Student_CI95": [
+        0.040761123992752245,
+        0.05599227904717038
+      ],
+      "route_mean_excess_recalled_taxa": 0.04837670151996131,
+      "route_se": 0.0038682812408656017,
+      "route_signflip": {
+        "assumes_independent_symmetric_physical_route_effects": true,
+        "draws": 4999,
+        "extreme": 0,
+        "p_two_sided_plus_one": 0.0002
+      },
+      "route_t_p": 1.1754622080287903e-28,
+      "route_year_pairs": 2403,
+      "same_ObserverTrackingID_only": {
+        "n_adjacent_survey_year_pairs": 1925,
+        "n_routes": 238,
+        "route_CI95": [
+          0.04826683591911975,
+          0.06564791052758566
+        ],
+        "route_mean": 0.0569573732233527
+      },
+      "states": 20,
+      "status": "estimated_post_readback"
+    },
+    {
+      "BH_q_four_post_readback_habitat_checks": 1.2404688799464385e-35,
+      "State_equal_mean": 0.04349181076459702,
+      "habitat": "nonPEM",
+      "mode": "strong",
+      "multi_year_gap": {
+        "n_routes": 218,
+        "n_run_pairs": 830,
+        "route_mean": 0.04239842106534713
+      },
+      "not_a_frog_demographic_persistence_estimate": true,
+      "omit_one_State": {
+        "n_checks": 20,
+        "n_positive": 20,
+        "range": [
+          0.046425544610401985,
+          0.051803965363722844
+        ]
+      },
+      "one_year_gap": {
+        "n_routes": 240,
+        "n_run_pairs": 1573,
+        "route_mean": 0.05779420373021491
+      },
+      "physical_routes": 273,
+      "positive_State_means": 19,
+      "positive_acoustic_site_identity_excess_exploratory": true,
+      "positive_route_fraction": 0.7948717948717948,
+      "post_readback_individual_habitat_question": true,
+      "route_Student_CI95": [
+        0.042841822051423666,
+        0.05628203833646415
+      ],
+      "route_mean_excess_recalled_taxa": 0.04956193019394391,
+      "route_se": 0.003413433606502315,
+      "route_signflip": {
+        "assumes_independent_symmetric_physical_route_effects": true,
+        "draws": 4999,
+        "extreme": 0,
+        "p_two_sided_plus_one": 0.0002
+      },
+      "route_t_p": 9.30351659959829e-36,
+      "route_year_pairs": 2403,
+      "same_ObserverTrackingID_only": {
+        "n_adjacent_survey_year_pairs": 1925,
+        "n_routes": 238,
+        "route_CI95": [
+          0.049997475330784046,
+          0.06568438662683107
+        ],
+        "route_mean": 0.057840930978807555
+      },
+      "states": 20,
+      "status": "estimated_post_readback"
+    }
+  ],
+  "mathematical_exact_hypergeometric_permutation_validation": {
+    "exact_all_subset_all_permutation_identity": true,
+    "known_same_species_same_site_signal_detected": true,
+    "no_NAAMP_outcomes_used_for_QA": true,
+    "site_activation_formula_identical": true,
+    "status": "PASS",
+    "two_silent_sites_zero": true
+  },
+  "provenance": {
+    "original_pre_readback_script_action_run": 39900305024,
+    "final_recomputed_whole_source_action_run": 39900755251,
+    "final_original_action_result_artifact_id": 12479086077,
+    "exact_script": "exploration/run_naamp_vegetation_interannual_site_fidelity_v0_1.py",
+    "preanalysis_spec": "exploration/NAAMP_VEGETATION_INTERANNUAL_SITE_FIDELITY_SPEC_2026_10_23.md",
+    "secondary_postreadback_spec": "exploration/NAAMP_TEMPORAL_SITE_ANCHORING_POSTREADBACK_SPEC_2026_10_23.md",
+    "primary_effects_unchanged_after_secondary_addition": true,
+    "independent_new_biological_data_used": false,
+    "JAE_RC6_main_original_authority_modified": false
+  },
+  "interpretive_boundaries": {
+    "measured_true_botanical_PEM_cover_2001_2015": false,
+    "inferred_true_demographic_site_persistence": false,
+    "same_individual_frog_identity_known": false,
+    "geographic_and_microhabitat_confounders_eliminated": false,
+    "direct_species_competition_or_facilitation_proven": false,
+    "new_biotic_three_organism_interaction_proven": false,
+    "prediction_or_forecasting_model_used": false
+  }
+}
