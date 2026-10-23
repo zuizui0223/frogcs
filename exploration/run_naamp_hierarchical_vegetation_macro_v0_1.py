@@ -41,9 +41,9 @@ def load_module(name,path):
 def group_decomposition(stopdf,variables):
     """Law of total variance: State -> route -> run -> stop. No p-values."""
     keys=["state","route","run_id"]
-    run=stopdf.groupby(keys,sort=False)[variables].mean().reset_index()
-    route=run.groupby(["state","route"],sort=False)[variables].mean().reset_index()
-    state=route.groupby("state",sort=False)[variables].mean().reset_index()
+    run=stopdf.groupby(keys,sort=False)[list(variables)].mean().reset_index()
+    route=run.groupby(["state","route"],sort=False)[list(variables)].mean().reset_index()
+    state=route.groupby("state",sort=False)[list(variables)].mean().reset_index()
     ds=stopdf.merge(run,on=keys,how="left",suffixes=("","_run"),validate="many_to_one")
     dr=run.merge(route,on=["state","route"],how="left",
                  suffixes=("","_route"),validate="many_to_one")
