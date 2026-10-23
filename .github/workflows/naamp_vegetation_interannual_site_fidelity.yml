@@ -1,0 +1,105 @@
+name: NAAMP vegetation and frog interannual physical-site fidelity
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-site-fidelity-temporal-hierarchy-2026-10-23
+    paths:
+      - "exploration/run_naamp_vegetation_interannual_site_fidelity_v0_1.py"
+      - ".github/workflows/naamp_vegetation_interannual_site_fidelity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-combinatorial-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original compatible scientific libraries
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Brute-force enumerate all matching sites and all within-vegetation permutations
+        run: |
+          python -m py_compile exploration/run_naamp_vegetation_interannual_site_fidelity_v0_1.py
+          python exploration/run_naamp_vegetation_interannual_site_fidelity_v0_1.py --synthetic-only
+  original-interannual-ecology:
+    needs: exact-combinatorial-identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original compatible scientific libraries
+        run: python -m pip install --disable-pip-version-check -q numpy pandas scipy statsmodels
+      - name: Reuse original NWI vegetation GIS without collecting or cherry-picking
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Assert source NWI GIS geometry original 12-shard response-blind audit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert j['preflight_eligible'] and j['mode']=='full'
+          assert j['overlay']['site_records']==5147 and len(j['overlay']['shards'])==12
+          assert j['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS 12 shards / 5,147 NWI mapped physical sites, no response-based geography')
+          PY
+      - name: Quantify actual adjacent-year exact-physical-stop frog taxon recurrence by mapped wetland vegetation
+        run: |
+          python -u exploration/run_naamp_vegetation_interannual_site_fidelity_v0_1.py \
+            --outdir build/naamp_interannual_PEM_site_fidelity
+      - name: Verify source, repeated-site hierarchy, route inference and biological limits
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          f=Path('build/naamp_interannual_PEM_site_fidelity/result.json')
+          j=json.loads(f.read_text())
+          assert j['status']=='real_NAAMP_repeated_physical_site_temporal_vegetation_macroanalysis_completed'
+          assert j['synthetic_QA']['status']=='PASS'
+          o=j['original_source']
+          assert o['original_normalized_nights']==7848
+          assert o['NWI_environment_complete_nights']==6236
+          assert o['source_SiteID_records']==5147
+          assert o['source_physical_routes']==499 and o['source_states']==20
+          p=j['interannual_pairs_scope']
+          assert p['physically_stable_vegetation_mixed_source_run_pairs']>=100
+          assert p['n_physical_routes']>=30 and p['n_states']>=5
+          assert p['exact_physical_SiteID_alignment']
+          assert p['same_seasonal_RunNumber_across_years']
+          assert sum(int(v) for v in p['year_gap_distribution'].values())==p['physically_stable_vegetation_mixed_source_run_pairs']
+          for mode in ('any','strong'):
+              z=j['acoustic_results'][mode]
+              assert z['physical_route_count']==p['n_physical_routes']
+              assert z['run_year_pair_count']==p['physically_stable_vegetation_mixed_source_run_pairs']
+              assert z['status']=='estimated_observational_temporal_context'
+              assert math.isfinite(z['route_equal_mean'])
+              assert len(z['route_Student_CI95'])==2
+              assert 0<=z['BH_q_two_call_modes']<=1
+              assert z['whole_route_signflip']['draws']==4999
+              assert z['omit_one_State']['n_checked']==p['n_states']
+              assert z['route_equal_mean']==z['route_equal_mean_PEM_excess']-z['route_equal_mean_other_wetland_excess'] or math.isclose(
+                z['route_equal_mean'],z['route_equal_mean_PEM_excess']-z['route_equal_mean_other_wetland_excess'],abs_tol=1e-11)
+          limits=j['scientific_limits']
+          assert limits['not_predicting_any_future_site_outcomes']
+          assert limits['NWI_250m_PEM_polygon_not_botanical_2001_2015_cover']
+          assert limits['not_causal_plant_or_multispecies_interaction']
+          assert limits['JAE_RC6_original_and_main_untouched']
+          print('PASS original source and matched-physical-site temporal plant hierarchy without causality overclaim')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-PEM-interannual-exact-site-fidelity-macro-v0-1
+          path: build/naamp_interannual_PEM_site_fidelity/result.json
+          if-no-files-found: warn
