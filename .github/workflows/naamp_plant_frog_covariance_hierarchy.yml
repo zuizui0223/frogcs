@@ -1,0 +1,73 @@
+name: NAAMP plant frog ecological covariance hierarchy
+on:
+  push:
+    branches:
+      - exploration/naamp-plant-hierarchy-macro-2026-10-23
+    paths:
+      - "exploration/run_naamp_plant_frog_covariance_hierarchy_v0_1.py"
+      - ".github/workflows/naamp_plant_frog_covariance_hierarchy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  mathematical-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Recover exact independent State, route, night and stop covariance on toy data
+        run: |
+          python -m py_compile exploration/run_naamp_plant_frog_covariance_hierarchy_v0_1.py
+          python exploration/run_naamp_plant_frog_covariance_hierarchy_v0_1.py --synthetic-only
+  empirical-nested-covariance:
+    needs: mathematical-identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Calculate eight full-population plant–frog hierarchical covariances (not prediction)
+        run: |
+          python -u exploration/run_naamp_plant_frog_covariance_hierarchy_v0_1.py \
+             --outdir build/naamp_plant_frog_nested_covariance
+      - name: Verify exact level identity, sample and signed ecological components
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          o=json.loads(Path("build/naamp_plant_frog_nested_covariance/result.json").read_text())
+          assert o["status"]=="real_complete_population_four_scale_covariance_decomposed"
+          assert o["synthetic_QA"]["status"]=="PASS"
+          assert o["source_coverage"]=={"routes":499,"states":20,"nights":6236,"sites":62360}
+          assert len(o["covariance_decomposition"])==8
+          for entry in o["covariance_decomposition"].values():
+            for case in ("state_equal","route_equal"):
+              r=entry[case]
+              assert len(r["covariance_components"])==4
+              assert math.isclose(r["signed_covariance_total"],r["direct_weighted_covariance_QA"],rel_tol=2e-7,abs_tol=1e-9)
+              assert math.isclose(sum(r["absolute_magnitude_share_pct"].values()),100,abs_tol=1e-7)
+              assert -1-1e-7<=r["total_weighted_cross_variable_correlation"]<=1+1e-7
+          assert o["claim_boundaries"]["not_prediction"]
+          assert o["claim_boundaries"]["JAE_RC6_unchanged"]
+          print("PASS all 8 observational covariances exactly partitioned into ecological hierarchy")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-plant-frog-covariance-hierarchy-v0-1
+          path: build/naamp_plant_frog_nested_covariance/result.json
+          if-no-files-found: warn
