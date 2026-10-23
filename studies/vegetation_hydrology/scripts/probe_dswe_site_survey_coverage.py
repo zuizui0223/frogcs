@@ -78,7 +78,7 @@ def observe(entry):
               "stac_collection":COLLECTION,"query_url":url,
               "max_items":100,
               "numberMatched":None,"numberReturned":None,"candidate_scene_count":0,
-              "all_items_enumerated":False,"sample_scene_ids":[],"has_allmask_asset":False,
+              "all_items_enumerated":False,"sample_scene_ids":[],"sample_scene_assets":[],"has_allmask_asset":False,
               "qa_pixels_assessed":False,"water_fraction_estimated":False,
               "frog_outcomes_read":False})
     try:
@@ -100,7 +100,8 @@ def observe(entry):
         r["candidate_scene_count"]=len(good)
         r["has_allmask_asset"]=bool(good)
         r["sample_scene_ids"]=[{"id":t["id"],"date":t["acquisition_date"]} for t in good[:7]]
-        r["all_items_enumerated"]=len(scenes)<100 and not any(x.get("rel")=="next" for x in d.get("links",[]))
+        r["sample_scene_assets"]=good[:3]
+        r["all_items_enumerated"]=(isinstance(d.get("numberMatched"),int) and d["numberMatched"]==len(scenes))
         r["status"]="metadata_candidates_found" if good else "no_prior_scene_candidates"
         if not r["all_items_enumerated"]:r["status"]="incomplete_pagination"
     except Exception as ex:
