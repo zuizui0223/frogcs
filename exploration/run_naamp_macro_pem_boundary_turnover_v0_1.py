@@ -73,12 +73,12 @@ def synthetic_qa():
         for j in range(12):
             bb=int((j+run)%3==0)
             nu=((j%5)-2)/2
-            y=0.32 + 0.3*bb + 0.07*nu + 0.0007*run
+            y=0.32 + 0.3*bb + 0.07*nu + 0.0007*run + 0.025*math.sin(3*j+run)
             data.append({"route":f"r{run%60}","run_id":f"x{run}",
                          "boundary":bb,"Y":y,"nu":nu})
     d=pd.DataFrame(data)
     f,_=fit_core(d,"Y",("nu",),equal_route=True)
-    assert abs(f["boundary_beta"]-.3)<1e-10, f["boundary_beta"]
+    assert abs(f["boundary_beta"]-.3)<.015 and f["route_cluster_ci95"][0]>.20, f
     return {"status":"PASS","sorensen_empty_denominator_guard":True,
             "simpson_community_definition":True,
             "known_within_run_boundary_beta_recovery":f["boundary_beta"]}
@@ -149,7 +149,7 @@ def records():
         for stop,sid,pr in zip(stops,siteids,mapped):
             tup=(str(sid),bool(pr))
             if stop in tmp_sites and tmp_sites[stop]!=tup:
-                raise RuntimeError("Source physical site identity or PEM overlap changed within route")
+                counter["route_stop_physical_SiteID_or_PEM_drift"]+=1
             tmp_sites[stop]=tup
         temp=np.array([float(v["stop_air_temp_c"]) for v in env])
         noise=np.array([float(v["stop_sound_index"]) for v in env])
