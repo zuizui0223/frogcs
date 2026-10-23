@@ -1,0 +1,106 @@
+name: NAAMP wetland vegetation frog seasonal gamma and temporal complementarity
+on:
+  push:
+    branches:
+      - exploration/naamp-wetland-seasonal-complementarity-2026-10-23
+    paths:
+      - "exploration/run_naamp_wetland_seasonal_complementarity_v0_1.py"
+      - ".github/workflows/naamp_wetland_seasonal_complementarity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-two-round-rarefaction-math:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install previously source-validated scientific runtime
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Verify combinatorial two-round same-physical-site taxon inclusion by complete enumeration
+        run: |
+          python -m py_compile exploration/run_naamp_wetland_seasonal_complementarity_v0_1.py
+          python exploration/run_naamp_wetland_seasonal_complementarity_v0_1.py --synthetic-only
+  original-naamp-gamma-seasonal-complementarity:
+    needs: exact-two-round-rarefaction-math
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install same pinned scientific runtime
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Retrieve original outcome-blind 250m NWI wetland site polygons
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Validate full geographic source without using frog outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert a['mode']=='full' and a['preflight_eligible']
+          assert len(a['overlay']['shards'])==12 and a['overlay']['site_records']==5147
+          assert a['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS original 12 GIS shards and 5147 physical monitoring sites')
+          PY
+      - name: Calculate original NAAMP 1115 same-route-year seasonal gamma accumulation and taxon bonus
+        run: |
+          python -u exploration/run_naamp_wetland_seasonal_complementarity_v0_1.py \
+            --outdir build/naamp_wetland_seasonal_complementarity
+      - name: Verify exact ecological sampling hierarchy, four predeclared tests and no causal overclaim
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          x=json.loads(Path('build/naamp_wetland_seasonal_complementarity/result.json').read_text())
+          assert x['status']=='real_source_verified_equal_site_equal_two_round_frog_acoustic_complementarity_analysis'
+          assert x['synthetic_mathematical_QA']['status']=='PASS'
+          assert x['source_coverage']['source_NAAMP_standard_runs']==7848
+          assert x['source_coverage']['source_NWI_complete_run_nights']==6236
+          assert x['source_coverage']['source_NWI_original_physical_SiteIDs']==5147
+          s=x['original_withinyear_same_site_population']
+          assert s['eligible_source_run_nights']==2869
+          assert s['eligible_unchanged_physical_site_route_year_groups']==1115
+          assert s['eligible_independent_physical_routes']==274 and s['eligible_states']==20
+          c=x['two_round_full_source_sampling']
+          assert c['source_same_site_same_year_route_groups']==1115
+          assert c['same_site_source_route_nights']==2869
+          assert c['independent_physical_routes']==274 and c['States']==20
+          assert c['source_round_pairs_all_combinations']>1000
+          assert set(x['four_fixed_route_robust_ecological_tests'])=={
+            'delta_bonus_any','delta_bonus_strong',
+            'delta_gamma_two_any','delta_gamma_two_strong'}
+          for key,q in x['four_fixed_route_robust_ecological_tests'].items():
+              assert q['n_independent_physical_routes']==274 and q['n_States']==20
+              assert q['n_original_route_year_groups']==1115
+              assert q['route_signflip']['route_null_signflips']==4999
+              assert len(q['route_Student_CI95'])==len(q['State_CI95'])==2
+              assert math.isfinite(q['route_equal_delta'])
+              assert 0<=q['BH_q_four_fixed_tests']<=1
+              assert isinstance(q['supported_positive_observational_PEM_ecological_context'],bool)
+          assert x['primary_complementarity_verdict'] in (
+            'exploratory_positive_PEM_temporal_acoustic_complementarity',
+            'no_supported_additional_PEM_temporal_taxon_complementarity')
+          assert x['scientific_boundaries']['acoustic_later_new_not_actual_ecological_colonization']
+          assert x['scientific_boundaries']['no_predator_mediation_or_biotic_higher_order_causality']
+          assert x['scientific_boundaries']['JAE_RC6_main_manuscript_SI_unchanged']
+          print('PASS 1115 route-years, route-weighted ecology, exact source 2-round complementarity and calibrated FDR')
+          PY
+      - name: Archive aggregate ecological source result (no raw third-party data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-wetland-seasonal-complementarity-v0-1
+          path: build/naamp_wetland_seasonal_complementarity/result.json
+          if-no-files-found: warn
