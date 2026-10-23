@@ -1,0 +1,339 @@
+{
+  "analysis": "NAAMP_same_physical_site_wetland_PEM_2_round_temporal_acoustic_community_complementarity",
+  "status": "real_source_verified_equal_site_equal_two_round_frog_acoustic_complementarity_analysis",
+  "date": "2026-10-23",
+  "source_verified_GitHub_Action_run": 39905766189,
+  "original_scientific_result_job": 120257368183,
+  "source_result_artifact_id": 12480583178,
+  "source_sample": {
+    "source_NAAMP_standard_runs": 7848,
+    "source_NWI_complete_run_nights": 6236,
+    "source_NWI_original_physical_SiteIDs": 5147,
+    "source_all_complete_stop_nights": 62360,
+    "source_geo_exclusions": {
+      "NWI_environment_complete_run_nights": 6236,
+      "NWI_missing_complete_10stop_geography": 1559,
+      "missing_temperature_or_noise": 53
+    },
+    "source_routes": 499,
+    "source_states": 20,
+    "source_verified_geography_Actions_run": 39450277196
+  },
+  "eligible_site_temporal_hierarchy": {
+    "States": 20,
+    "all_round_pairs_averaged_within_route_year_before_route_inference": true,
+    "independent_physical_routes": 274,
+    "matched_physical_sites_same_m_across_both_rounds": true,
+    "no_outcome_filter_on_frog_acoustic_activity": true,
+    "per_route_year_round_pair_counts": {
+      "1": 558,
+      "3": 475,
+      "6": 82
+    },
+    "round_pair_counts": {
+      "1-2": 668,
+      "1-3": 647,
+      "1-4": 138,
+      "2-3": 725,
+      "2-4": 142,
+      "3-4": 155
+    },
+    "same_site_source_route_nights": 2869,
+    "source_round_pairs_all_combinations": 2475,
+    "source_same_site_same_year_route_groups": 1115
+  },
+  "verified_exact_hypergeometric_mathematics": {
+    "all_fixed_physical_site_subsets_enumerated": true,
+    "empty_ten_stop_silent_cases_handled": true,
+    "gamma_union_equals_single_plus_temporal_complementarity": true,
+    "joint_not_independent_resampling_across_rounds": true,
+    "known_no_temporal_taxon_turnover_has_zero_bonus": true,
+    "no_NAAMP_acoustic_biological_data_used": true,
+    "status": "PASS",
+    "temporal_bonus_equals_half_later_new_plus_earlier_only": true
+  },
+  "original_four_fixed_route_robust_tests": {
+    "delta_bonus_any": {
+      "BH_q_four_fixed_tests": 0.0000014052665871049704,
+      "State_CI95": [
+        0.05176735745714374,
+        0.2060749167427417
+      ],
+      "State_equal_delta": 0.1289211370999427,
+      "interpretation": "physical_route_equal_observational_PEM_minus_nonPEM_acoustic_taxon_pool_units",
+      "n_States": 20,
+      "n_independent_physical_routes": 274,
+      "n_original_route_year_groups": 1115,
+      "n_positive_State_means": 16,
+      "omit_one_State": {
+        "n_estimable": 20,
+        "n_negative": 0,
+        "n_positive": 20,
+        "range": [
+          0.11570719354148547,
+          0.14214554683104602
+        ]
+      },
+      "outcome": "delta_bonus_any",
+      "physical_routes_positive_fraction": 0.6167883211678832,
+      "route_Student_CI95": [
+        0.07680076845261219,
+        0.17879175105783396
+      ],
+      "route_cluster_se": 0.025903239892861418,
+      "route_equal_delta": 0.12779625975522307,
+      "route_signflip": {
+        "assumes_approximately_symmetric_independent_route_effects": true,
+        "extreme": 0,
+        "route_null_signflips": 4999,
+        "route_plus_one_two_sided_P": 0.0002,
+        "signflip_whole_route_once_not_survey_pair_or_individual_taxa": true
+      },
+      "route_t_two_sided_P": 0.0000014052665871049704,
+      "supported_positive_observational_PEM_ecological_context": true
+    },
+    "delta_bonus_strong": {
+      "BH_q_four_fixed_tests": 2.4835341742618458e-8,
+      "State_CI95": [
+        0.06142908425531317,
+        0.17037942780091064
+      ],
+      "State_equal_delta": 0.11590425602811191,
+      "interpretation": "physical_route_equal_observational_PEM_minus_nonPEM_acoustic_taxon_pool_units",
+      "n_States": 20,
+      "n_independent_physical_routes": 274,
+      "n_original_route_year_groups": 1115,
+      "n_positive_State_means": 18,
+      "omit_one_State": {
+        "n_estimable": 20,
+        "n_negative": 0,
+        "n_positive": 20,
+        "range": [
+          0.11613251254397672,
+          0.14636386793774747
+        ]
+      },
+      "outcome": "delta_bonus_strong",
+      "physical_routes_positive_fraction": 0.5985401459854015,
+      "route_Student_CI95": [
+        0.08470279919271792,
+        0.17182377023227
+      ],
+      "route_cluster_se": 0.022126617029190283,
+      "route_equal_delta": 0.12826328471249396,
+      "route_signflip": {
+        "assumes_approximately_symmetric_independent_route_effects": true,
+        "extreme": 0,
+        "route_null_signflips": 4999,
+        "route_plus_one_two_sided_P": 0.0002,
+        "signflip_whole_route_once_not_survey_pair_or_individual_taxa": true
+      },
+      "route_t_two_sided_P": 1.8626506306963843e-8,
+      "supported_positive_observational_PEM_ecological_context": true
+    },
+    "delta_gamma_two_any": {
+      "BH_q_four_fixed_tests": 4.913823862758978e-12,
+      "State_CI95": [
+        0.2940887893397941,
+        0.6484115926137566
+      ],
+      "State_equal_delta": 0.47125019097677534,
+      "interpretation": "physical_route_equal_observational_PEM_minus_nonPEM_acoustic_taxon_pool_units",
+      "n_States": 20,
+      "n_independent_physical_routes": 274,
+      "n_original_route_year_groups": 1115,
+      "n_positive_State_means": 18,
+      "omit_one_State": {
+        "n_estimable": 20,
+        "n_negative": 0,
+        "n_positive": 20,
+        "range": [
+          0.4036470133468165,
+          0.480990825863775
+        ]
+      },
+      "outcome": "delta_gamma_two_any",
+      "physical_routes_positive_fraction": 0.6751824817518248,
+      "route_Student_CI95": [
+        0.3221955526851221,
+        0.5536158265373624
+      ],
+      "route_cluster_se": 0.05877514576822358,
+      "route_equal_delta": 0.43790568961124227,
+      "route_signflip": {
+        "assumes_approximately_symmetric_independent_route_effects": true,
+        "extreme": 0,
+        "route_null_signflips": 4999,
+        "route_plus_one_two_sided_P": 0.0002,
+        "signflip_whole_route_once_not_survey_pair_or_individual_taxa": true
+      },
+      "route_t_two_sided_P": 1.2284559656897444e-12,
+      "supported_positive_observational_PEM_ecological_context": true
+    },
+    "delta_gamma_two_strong": {
+      "BH_q_four_fixed_tests": 6.183195450943474e-11,
+      "State_CI95": [
+        0.17993704605563385,
+        0.44741046252999794
+      ],
+      "State_equal_delta": 0.3136737542928159,
+      "interpretation": "physical_route_equal_observational_PEM_minus_nonPEM_acoustic_taxon_pool_units",
+      "n_States": 20,
+      "n_independent_physical_routes": 274,
+      "n_original_route_year_groups": 1115,
+      "n_positive_State_means": 18,
+      "omit_one_State": {
+        "n_estimable": 20,
+        "n_negative": 0,
+        "n_positive": 20,
+        "range": [
+          0.2938379539227871,
+          0.36901067064632487
+        ]
+      },
+      "outcome": "delta_gamma_two_strong",
+      "physical_routes_positive_fraction": 0.6532846715328468,
+      "route_Student_CI95": [
+        0.2367919141134195,
+        0.42484605595086267
+      ],
+      "route_cluster_se": 0.04776119833766637,
+      "route_equal_delta": 0.3308189850321411,
+      "route_signflip": {
+        "assumes_approximately_symmetric_independent_route_effects": true,
+        "extreme": 0,
+        "route_null_signflips": 4999,
+        "route_plus_one_two_sided_P": 0.0002,
+        "signflip_whole_route_once_not_survey_pair_or_individual_taxa": true
+      },
+      "route_t_two_sided_P": 3.091597725471737e-11,
+      "supported_positive_observational_PEM_ecological_context": true
+    }
+  },
+  "original_predeclared_classification": "exploratory_positive_PEM_temporal_acoustic_complementarity",
+  "two_round_acoustic_community_anatomy": {
+    "any": {
+      "PEM": {
+        "bonus_temporal_complementarity": 1.7390041582633695,
+        "first_heard_only_later_round": 1.9787904687422415,
+        "gamma_single_round_mean": 2.674964629453246,
+        "gamma_union_two_rounds": 4.413968787716616,
+        "heard_only_earlier_round": 1.499217847784497,
+        "n_route_years_with_nonempty_pools": 1109,
+        "n_routes_with_nonempty_normalized_bonus": 272,
+        "normalized_bonus_fraction_conditional_nonempty": 0.3848721957872361,
+        "route_years_total": 1115,
+        "shared_acoustic_taxa_across_round_pools": 0.9359604711898769
+      },
+      "other": {
+        "bonus_temporal_complementarity": 1.6112078985081462,
+        "first_heard_only_later_round": 1.7968179750272641,
+        "gamma_single_round_mean": 2.3648551995972267,
+        "gamma_union_two_rounds": 3.976063098105373,
+        "heard_only_earlier_round": 1.4255978219890282,
+        "n_route_years_with_nonempty_pools": 1110,
+        "n_routes_with_nonempty_normalized_bonus": 274,
+        "normalized_bonus_fraction_conditional_nonempty": 0.3983315721159374,
+        "route_years_total": 1115,
+        "shared_acoustic_taxa_across_round_pools": 0.7536473010890806
+      }
+    },
+    "strong": {
+      "PEM": {
+        "bonus_temporal_complementarity": 1.2012929445906504,
+        "first_heard_only_later_round": 1.162332494341097,
+        "gamma_single_round_mean": 1.6372712269675254,
+        "gamma_union_two_rounds": 2.8385641715581755,
+        "heard_only_earlier_round": 1.2402533948402044,
+        "n_route_years_with_nonempty_pools": 1091,
+        "n_routes_with_nonempty_normalized_bonus": 270,
+        "normalized_bonus_fraction_conditional_nonempty": 0.4156758584361741,
+        "route_years_total": 1115,
+        "shared_acoustic_taxa_across_round_pools": 0.43597828237687464
+      },
+      "other": {
+        "bonus_temporal_complementarity": 1.0730296598781568,
+        "first_heard_only_later_round": 1.0338815196505502,
+        "gamma_single_round_mean": 1.434715526647878,
+        "gamma_union_two_rounds": 2.5077451865260345,
+        "heard_only_earlier_round": 1.1121778001057634,
+        "n_route_years_with_nonempty_pools": 1086,
+        "n_routes_with_nonempty_normalized_bonus": 270,
+        "normalized_bonus_fraction_conditional_nonempty": 0.4226580503966816,
+        "route_years_total": 1115,
+        "shared_acoustic_taxa_across_round_pools": 0.3616858667697215
+      }
+    }
+  },
+  "source_round_pair_descriptive_diagnostics": {
+    "1-2": {
+      "States": 18,
+      "delta_bonus_any": 0.12980611738743117,
+      "delta_bonus_strong": 0.13260216735503724,
+      "delta_gamma_single_any": 0.2626610837787496,
+      "delta_gamma_single_strong": 0.20776489613702623,
+      "delta_gamma_two_any": 0.3924672011661808,
+      "delta_gamma_two_strong": 0.3403670634920634,
+      "independent_routes": 224,
+      "source_route_year_round_pairs": 668
+    },
+    "1-3": {
+      "States": 19,
+      "delta_bonus_any": 0.20186657609529945,
+      "delta_bonus_strong": 0.14658094404750938,
+      "delta_gamma_single_any": 0.2884803868033351,
+      "delta_gamma_single_strong": 0.20039954034482912,
+      "delta_gamma_two_any": 0.4903469628986345,
+      "delta_gamma_two_strong": 0.3469804843923384,
+      "independent_routes": 235,
+      "source_route_year_round_pairs": 647
+    },
+    "1-4": {
+      "States": 5,
+      "delta_bonus_any": 0.20621069538926678,
+      "delta_bonus_strong": 0.2705061728395062,
+      "delta_gamma_single_any": 0.26973122952884854,
+      "delta_gamma_single_strong": 0.2760617283950617,
+      "delta_gamma_two_any": 0.4759419249181154,
+      "delta_gamma_two_strong": 0.5465679012345679,
+      "independent_routes": 45,
+      "source_route_year_round_pairs": 138
+    },
+    "2-3": {
+      "States": 20,
+      "delta_bonus_any": 0.10123712351206446,
+      "delta_bonus_strong": 0.12041061653812538,
+      "delta_gamma_single_any": 0.34614166734813134,
+      "delta_gamma_single_strong": 0.2133883999379867,
+      "delta_gamma_two_any": 0.4473787908601958,
+      "delta_gamma_two_strong": 0.33379901647611204,
+      "independent_routes": 242,
+      "source_route_year_round_pairs": 725
+    },
+    "2-4": {
+      "States": 6,
+      "delta_bonus_any": 0.13515346174701764,
+      "delta_bonus_strong": 0.14734863329389727,
+      "delta_gamma_single_any": 0.2902924738736074,
+      "delta_gamma_single_strong": 0.16391825027112292,
+      "delta_gamma_two_any": 0.42544593562062494,
+      "delta_gamma_two_strong": 0.31126688356502025,
+      "independent_routes": 46,
+      "source_route_year_round_pairs": 142
+    },
+    "3-4": {
+      "States": 6,
+      "delta_bonus_any": -0.023355753968253977,
+      "delta_bonus_strong": 0.10535992063492067,
+      "delta_gamma_single_any": 0.3857367063492063,
+      "delta_gamma_single_strong": 0.29487777777777774,
+      "delta_gamma_two_any": 0.36238095238095236,
+      "delta_gamma_two_strong": 0.4002376984126984,
+      "independent_routes": 50,
+      "source_route_year_round_pairs": 155
+    }
+  },
+  "post_hoc_same_source_not_independent_biological_confirmation": true,
+  "source_static_NWI_buffer_PEM_not_direct_living_plants": true,
+  "original_JAE_RC6_main_manuscript_SI_unchanged": true
+}
