@@ -5,7 +5,6 @@ on:
       - exploration/naamp-pem-fixedmargin-network-scale-2026-10-23
     paths:
       - "exploration/run_naamp_pem_fixedmargin_pair_network_global_v0_1.py"
-      - ".github/workflows/naamp_pem_fixedmargin_pair_network_global.yml"
   workflow_dispatch:
 permissions:
   contents: read
@@ -82,7 +81,7 @@ jobs:
               r=o["modes"][mode]
               assert r["original_reference_route_nights"]==expected_runs
               assert r["original_eligible_species_pair_labels"]==expected_edges
-              assert r["eligible_mixed_PEM_pair_labels"]>=20
+              assert r["included_original_labels_with_20_mixed_nights_10_routes_5_null_variable_nights"]>=20
               assert 0<r["NWI_PEM_two_vs_two_mixed_route_nights"]<=expected_runs
               assert r["simulated_mixed_route_nights_with_preexisting_labels"]>=200
               assert r["null_weighted_curveball_draws"]==199
