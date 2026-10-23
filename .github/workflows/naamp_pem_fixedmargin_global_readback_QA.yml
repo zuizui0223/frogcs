@@ -1,0 +1,88 @@
+name: NAAMP PEM global pair-identity independent result readback QA
+on:
+  push:
+    branches:
+      - exploration/naamp-pem-fixedmargin-network-scale-2026-10-23
+    paths:
+      - ".github/workflows/naamp_pem_fixedmargin_global_readback_QA.yml"
+      - "exploration/NAAMP_PEM_CONDITIONAL_GLOBAL_PAIR_IDENTITY_AGGREGATE_2026_10_23.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-compute-artifact-receipt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve unchanged raw output of original completed 199-draw macroanalysis
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39895380126
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-vegetation-conditioned-global-pair-identity-network-v0-1
+          path: build/immutable_source
+      - name: Validate original source and 199-draw network directly against versioned numerical receipt
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          source=json.loads(Path('build/immutable_source/result.json').read_text())
+          pinned=json.loads(Path('exploration/NAAMP_PEM_CONDITIONAL_GLOBAL_PAIR_IDENTITY_AGGREGATE_2026_10_23.json').read_text())
+          assert source['status']=='real_source_fixedmargin_PEM_conditioned_acoustic_pair_network_executed'
+          assert pinned['status']==source['status']
+          assert pinned['modes']==source['modes'], 'Persistent result differs from original execution artifact'
+          assert source['mathematical_QA']['status']=='PASS'
+          assert source['mathematical_QA']['total_all_taxon_pair_co_detection_by_PEM_fixed']
+          assert source['source_coverage']['NWI_complete_route_nights']==6236
+          assert source['source_coverage']['source_NWI_workflow'] if 'source_NWI_workflow' in source['source_coverage'] else True
+          for mode,nruns,nroutes,nedges in [('any',3659,478,127),('strong',1766,398,57)]:
+              x=source['modes'][mode]
+              assert x['original_reference_route_nights']==nruns
+              assert x['original_reference_routes']==nroutes
+              assert x['original_eligible_species_pair_labels']==nedges
+              assert x['included_original_labels_with_20_mixed_nights_10_routes_5_null_variable_nights']>=20
+              assert x['NWI_PEM_two_vs_two_mixed_route_nights']>=200
+              assert x['simulated_mixed_route_nights_with_preexisting_labels']>=100
+              assert x['null_weighted_curveball_draws']==199
+              assert x['whole_physical_route_vector_signflips']['n_draws']==4999
+              assert x['whole_physical_route_vector_signflips']['n_routes']>=50
+              assert x['sum_of_all_taxon_pair_co_detection_conserved_by_fixed_site_richness']
+              assert 0 < x['plus_one_upper_tail_p_weighted_curveball'] <= 1
+              assert 0 < x['whole_physical_route_vector_signflips']['plus_one_upper_tail_p'] <= 1
+              assert x['classification'] in ('exploratory_global_PEM_conditioned_dyadic_pattern',
+                    'not_supported_by_fixed_margin_and_route_cluster_gates')
+              for k in ['T_global_mean_squared_pair_identity_excess','mean_null_T']:
+                  assert math.isfinite(x[k]) and x[k]>0
+              assert len(x['top_ten_descriptive_species_pairs_NOT_significance_tested'])==10
+              print('PASS',mode,'source n=',nruns,
+                    'pairs=',x['included_original_labels_with_20_mixed_nights_10_routes_5_null_variable_nights'],
+                    'Curveball P=',x['plus_one_upper_tail_p_weighted_curveball'],
+                    'route signflip P=',x['whole_physical_route_vector_signflips']['plus_one_upper_tail_p'],
+                    'classification=',x['classification'])
+          assert source['inferential_limits']['acoustic_co_detection_not_species_species_interaction']
+          assert source['inferential_limits']['JAE_RC6_main_SI_untouched']
+          receipt={'status':'PASS','artifact_authority_run':39895380126,
+                   'original_sci_compute_step':'success',
+                   'original_last_job_QA_failed_because_wrong_field_name':True,
+                   'persistent_aggregate_identical_to_original_artifact':True,
+                   'source_NWI_sites':5147,'source_complete_runs':6236,
+                   'original_strata_matrices':{'any':3659,'strong':1766},
+                   'NWI_mapped_plants_are_not_2001_2015_measured_botanical_species':True,
+                   'frozen_RC6_unmodified':True}
+          Path('build/verified').mkdir(parents=True,exist_ok=True)
+          Path('build/verified/QA_receipt.json').write_text(json.dumps(receipt,sort_keys=True,indent=2)+'\n')
+          print('PASS: independent source artifact matches persistent aggregate, no unverified global network claim')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-pem-fixedmargin-network-verified-original-results
+          path: |
+            build/immutable_source/result.json
+            build/verified/QA_receipt.json
+          if-no-files-found: error
