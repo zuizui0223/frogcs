@@ -75,7 +75,7 @@ def extract_point(ds, lat, lon, radius_m=500, min_coverage=0.8):
     return result
 
 
-def run(coords_csv, raster_template, years, radii, output, min_coverage=0.8):
+def run(coords_csv, raster_template, years, radii, output, min_coverage=0.8, site_calendar_csv=None):
     rasterio, *_ = _dependencies()
     with Path(coords_csv).open(newline="", encoding="utf-8-sig") as f:
         sites = list(csv.DictReader(f))
@@ -87,11 +87,34 @@ def run(coords_csv, raster_template, years, radii, output, min_coverage=0.8):
     keys = [(r["RouteNumber"], r["SiteID"]) for r in sites]
     if len(keys) != len(set(keys)):
         raise ValueError("duplicate RouteNumber × SiteID entries")
+    # Restrict extraction to SiteID x year combinations actually sampled.
+    # Use only the outcome-blind Runs + Stops calendar.
+    selected = None
+    if site_calendar_csv is not None:
+        allowed_keys = set(keys)
+        selected = {}
+        with Path(site_calendar_csv).open(newline="", encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f)
+            needed = {"RouteNumber", "SiteID", "SurveyYear"}
+            if not reader.fieldnames or not needed.issubset(reader.fieldnames):
+                raise ValueError("site-year calendar missing required fields")
+            if "CallingIndex" in reader.fieldnames or "Species" in reader.fieldnames:
+                raise ValueError("refuse outcome-bearing site-year calendar")
+            for row in reader:
+                yr = int(row["SurveyYear"])
+                key = (row["RouteNumber"].strip(), row["SiteID"].strip())
+                if yr in years:
+                    if key not in allowed_keys:
+                        raise ValueError("site-year calendar key outside accepted coordinates")
+                    selected.setdefault(yr, set()).add(key)
+        if not any(selected.values()):
+            raise ValueError("no eligible site-years in calendar")
+    selected_years = [y for y in years if selected is None or selected.get(y)]
     columns = ["RouteNumber", "SiteID", "year", "radius_m", "n_buffer_pixels", "n_valid_pixels", "coverage_fraction", "qc_status"] + METRIC_NAMES
     # Preflight all rasters before writing any output rows.
     if any(y < 2001 or y > 2015 for y in years):
         raise ValueError("years outside frozen NAAMP study period 2001–2015")
-    for year in years:
+    for year in selected_years:
         raster_path = Path(raster_template.format(year=year))
         if not raster_path.exists():
             raise FileNotFoundError(f"no NLCD raster for {year}: {raster_path}")
@@ -101,7 +124,7 @@ def run(coords_csv, raster_template, years, radii, output, min_coverage=0.8):
     with output.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=columns)
         writer.writeheader()
-        for year in years:
+        for year in selected_years:
             if not 2001 <= year <= 2015:
                 raise ValueError("year outside frozen NAAMP study period 2001–2015")
             raster_path = Path(raster_template.format(year=year))
@@ -111,6 +134,8 @@ def run(coords_csv, raster_template, years, radii, output, min_coverage=0.8):
                 if ds.count != 1:
                     raise ValueError(f"single-band categorical raster required: {raster_path}")
                 for site in sites:
+                    if selected is not None and (site["RouteNumber"], site["SiteID"]) not in selected[year]:
+                        continue
                     lat, lon = float(site["lat"]), float(site["lon"])
                     if not (math.isfinite(lat) and math.isfinite(lon) and 24<=lat<=51 and -126<=lon<=-66):
                         raise ValueError("coordinates outside study region")
@@ -118,7 +143,11 @@ def run(coords_csv, raster_template, years, radii, output, min_coverage=0.8):
                         result = extract_point(ds, lat, lon, radius, min_coverage)
                         writer.writerow({"RouteNumber": site["RouteNumber"], "SiteID": site["SiteID"], "year": year, **result})
                         nrows += 1
-    return {"rows": nrows, "unique_sites": len(sites), "years": list(years), "radii_m": list(radii),
+    return {"rows": nrows, "unique_sites_in_coordinate_reference": len(sites),
+            "site_years_extracted": nrows // len(radii),
+            "full_site_year_grid": len(sites)*len(years),
+            "sparse_calendar_applied": selected is not None,
+            "years": list(selected_years), "radii_m": list(radii),
             "min_coverage": min_coverage, "outcomes_read": False, "output": str(output)}
 
 
@@ -130,10 +159,11 @@ def main():
     p.add_argument("--years", required=True, nargs="+", type=int)
     p.add_argument("--radii-m", nargs="+", type=int, default=[100, 500])
     p.add_argument("--min-coverage", type=float, default=0.8)
+    p.add_argument("--site-calendar", default=None, help="Outcome-blind Runs+Stops site-year calendar; avoids unsurveyed site-years")
     args = p.parse_args()
     if any(r <= 0 for r in args.radii_m) or not 0 < args.min_coverage <= 1:
         p.error("radii > 0 and 0 < min-coverage <= 1 required")
-    print(json.dumps(run(args.accepted_coordinates, args.raster_template, args.years, args.radii_m, args.out, args.min_coverage), indent=2))
+    print(json.dumps(run(args.accepted_coordinates, args.raster_template, args.years, args.radii_m, args.out, args.min_coverage, args.site_calendar), indent=2))
 
 
 if __name__ == "__main__":
