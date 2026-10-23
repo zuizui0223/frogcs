@@ -1,0 +1,51 @@
+name: Public NAAMP coordinates and survey-site feasibility audit
+
+on:
+  push:
+    branches:
+      - research/vegetation-hydrology-feasibility-2026-10
+    paths:
+      - "studies/vegetation_hydrology/scripts/fetch_pinned_naamp_sources.py"
+      - ".github/workflows/vegetation_hydrology_source_audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  download-public-source-and-qc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch SHA256-pinned public NAAMP source; never Counts.csv
+        run: python scripts/fetch_pinned_naamp_sources.py --out data/source
+      - name: Geometry audit of source SiteIDs
+        run: |
+          python scripts/audit_site_coordinates.py \
+            --coordinates data/source/NAAMP_SiteCoordinates.csv \
+            --expected-sha256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83 \
+            --out data/qc
+      - name: Build site-calendar without frog observations
+        run: |
+          python scripts/prepare_survey_site_calendar.py \
+            --runs data/source/Runs.csv \
+            --stops data/source/Stops.csv \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --out data/qc/survey_site_calendar.csv
+      - name: Publish source QC receipts without distributing full source CSVs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vegetation-hydrology-source-feasibility-receipts
+          path: |
+            studies/vegetation_hydrology/data/source/source_receipt.json
+            studies/vegetation_hydrology/data/qc/coordinate_qc_report.json
+            studies/vegetation_hydrology/data/qc/survey_site_calendar.audit.json
+          if-no-files-found: warn
