@@ -13,6 +13,9 @@ from pathlib import Path
 from probe_official_nlcd_c1v2 import list_c1v2, request_data, parse_zip_tail
 
 BASE="https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/"
+def header(headers,name):
+    return next((v for k,v in headers.items() if k.lower()==name.lower()),None)
+
 def inspect(year,official):
     name=official['file']
     url=BASE+name
@@ -20,7 +23,7 @@ def inspect(year,official):
     try:
         code,headers,tail=request_data(url,"bytes=-65536",65536)
         out['http_status']=code
-        out['content_range']=headers.get('Content-Range')
+        out['content_range']=header(headers,'Content-Range')
         out['tail_bytes']=len(tail)
         expected=str(official['bytes'])
         if code!=206 or not out['content_range'] or not out['content_range'].endswith('/'+expected):
