@@ -1,0 +1,29 @@
+name: C1V2 MRLC ZIP central directory availability
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/probe_mrlc_c1v2_zip_index.py"
+      - ".github/workflows/vegetation_hydrology_c1v2_zip_index.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  indexing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check original C1V2 ZIP index metadata by 206 byte ranges
+        run: python scripts/probe_mrlc_c1v2_zip_index.py --out data/qc/c1v2_zip_index_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: annual-nlcd-c1v2-public-zip-index
+          path: studies/vegetation_hydrology/data/qc/c1v2_zip_index_receipt.json
+          if-no-files-found: error
