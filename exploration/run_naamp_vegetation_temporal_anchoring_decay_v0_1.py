@@ -279,7 +279,7 @@ def main():
     for j,mode in enumerate(MODELS):
         results[mode]=fit(d["frame"],d,mode,SEED+j)
     inference=BH(results)
-    same=d["frame"][d["frame"].same_observer].copy()
+    same=d["frame"].loc[d["frame"]["same_observer"].astype(float)==1.0].copy()
     same_sens={}
     if same.route.nunique()>=100 and len(same)>=500:
         ds=construct_design(same,remove_same_observer=True)
