@@ -1,0 +1,93 @@
+name: NAAMP macro PEM boundary turnover
+on:
+  push:
+    branches:
+      - exploration/naamp-macro-vegetation-boundary-turnover-2026-10-23
+    paths:
+      - "exploration/run_naamp_macro_pem_boundary_turnover_v0_1.py"
+      - ".github/workflows/naamp_macro_pem_boundary_turnover.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  synthetic-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original statistical stack
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Verify mathematical dissimilarity, empty sites and known FE effect before response
+        run: |
+          python -m py_compile exploration/run_naamp_macro_pem_boundary_turnover_v0_1.py
+          python exploration/run_naamp_macro_pem_boundary_turnover_v0_1.py --synthetic-only
+  macro-community:
+    needs: synthetic-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install previously successful scientific stack
+        run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Retrieve original outcome-blind complete 12-shard NWI crosswalk
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Confirm NWI external identity and completeness
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          j=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert j["mode"]=="full" and j["preflight_eligible"] and len(j["overlay"]["shards"])==12
+          assert j["overlay"]["site_records"]==5147 and j["overlay"]["routes_success"]==501
+          assert j["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          print("PASS NWI 12 shards / 5,147 physical sites and response-blind origin")
+          PY
+      - name: Execute 45 same-night site-pair acoustic turnover analysis with route clusters
+        run: |
+          python -u exploration/run_naamp_macro_pem_boundary_turnover_v0_1.py \
+             --outdir build/naamp_macro_pem_boundary
+      - name: Verify real macro sample and ecological claim limits
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          j=json.loads(Path("build/naamp_macro_pem_boundary/result.json").read_text())
+          assert j["status"]=="empirical_NAAMP_source_linked_macro_community_composition_test"
+          assert j["source"]["source_NAAMP_standard_runs"]==7848
+          assert j["source"]["source_10stop_NWI_complete"]==6236
+          assert j["source"]["NWI_matched_physical_site_records"]==5147
+          assert j["synthetic_QA"]["status"]=="PASS"
+          assert set(j["responses"])=={"any","strong"}
+          assert j["primary_decision"] in (
+              "exploratory_mapped_PEM_boundary_turnover_association",
+              "not_supported_by_route_robust_primary_gates")
+          for mode,x in j["responses"].items():
+              assert x["n_physical_routes"]>=50 and x["n_stop_pairs"]>500
+              assert x["n_survey_nights"]>100
+              assert 0<=x["same_PEM_pair_mean_dissimilarity"]<=1
+              assert 0<=x["cross_PEM_pair_mean_dissimilarity"]<=1
+              assert x["wild_route_score"]["draws"]==4999
+              assert math.isfinite(x["boundary_beta"]) and math.isfinite(x["p_cluster_t"])
+              assert x["within_run_FE"] is True and x["route_equal_weighted"] is True
+          assert j["inference_limits"]["observational_plant_or_interspecific_causality"] is False
+          assert j["inference_limits"]["JAE_RC6_main_or_SI_modified"] is False
+          print("PASS real same-night PEM-boundary Sorensen/Simpson with proper route-level uncertainty")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-macro-pem-boundary-turnover-v0-1
+          path: build/naamp_macro_pem_boundary/result.json
+          if-no-files-found: warn
