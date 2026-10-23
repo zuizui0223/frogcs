@@ -1,0 +1,30 @@
+name: Public NLCD metadata-only availability
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/probe_nlcd_service.py"
+      - ".github/workflows/vegetation_hydrology_nlcd_probe.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe MRLC Annual NLCD candidate URLs (HEAD only)
+        run: python scripts/probe_nlcd_service.py --out data/qc/nlcd_head_probe.json
+      - name: Publish metadata-only receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: annual-nlcd-head-only-probe
+          path: studies/vegetation_hydrology/data/qc/nlcd_head_probe.json
+          if-no-files-found: error
