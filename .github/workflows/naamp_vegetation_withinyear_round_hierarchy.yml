@@ -1,0 +1,110 @@
+name: NAAMP mapped wetland vegetation within-year chorus phenology hierarchy
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-withinyear-phenology-hierarchy-2026-10-23
+    paths:
+      - "exploration/run_naamp_vegetation_withinyear_round_hierarchy_v0_1.py"
+      - ".github/workflows/naamp_vegetation_withinyear_round_hierarchy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  mathematical-synthetic-phenology-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned compatible numeric stack
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Recover source-free seasonal slopes and exact activation plus extra-taxonomy identity
+        run: |
+          python -m py_compile exploration/run_naamp_vegetation_withinyear_round_hierarchy_v0_1.py
+          python exploration/run_naamp_vegetation_withinyear_round_hierarchy_v0_1.py --synthetic-only
+  original-naamp-seasonal-ecology:
+    needs: mathematical-synthetic-phenology-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reuse synthetic-gated numerical dependencies
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Retrieve response-blind original NWI 5147 physical-SiteID geometry
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Audit complete source map geometry before frog calling data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          a=json.loads(Path("build/vegetation_context/geometry_nwi_preflight.json").read_text())
+          assert a["preflight_eligible"] and a["mode"]=="full"
+          assert a["overlay"]["site_records"]==5147 and len(a["overlay"]["shards"])==12
+          assert a["matched_route_source_only_audit"]["frog_outcomes_read"] is False
+          print("PASS original NWI 12 shards 5147 physical sites")
+          PY
+      - name: Quantify actual PEM acoustic alpha gamma seasonal route-year hierarchy
+        run: |
+          python -u exploration/run_naamp_vegetation_withinyear_round_hierarchy_v0_1.py \
+            --outdir build/naamp_vegetation_withinyear_hierarchy
+      - name: Verify physical site fidelity, four frozen seasonal omnibus tests and zero causality overclaims
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          j=json.loads(Path("build/naamp_vegetation_withinyear_hierarchy/result.json").read_text())
+          assert j["status"]=="original_NAAMP_NWI_repeated_same_route_year_stops_phenological_ecology_completed"
+          assert j["synthetic_QA"]["status"]=="PASS"
+          assert j["source_coverage"]["source_NAAMP_standard_runs"]==7848
+          assert j["source_coverage"]["source_NWI_complete_run_nights"]==6236
+          assert j["source_coverage"]["source_NWI_original_physical_SiteIDs"]==5147
+          q=j["ecological_same_route_year_geography"]
+          assert q["eligible_unchanged_physical_site_route_year_groups"]>=100
+          assert q["eligible_independent_physical_routes"]>=50
+          assert q["eligible_states"]>=5
+          assert q["eligible_source_run_nights"]>=200
+          assert j["scientific_design"]["physical_route_year_round_FE"]
+          assert j["scientific_design"]["same_physical_site_10stops_all_rounds"]
+          assert j["scientific_design"]["within_wetland_PEM_vs_other_only"]
+          assert set(j["primary_and_secondary_categorical_round_effects"])=={
+            "alpha_any","alpha_strong","gamma_any","gamma_strong"}
+          for name,rec in j["primary_and_secondary_categorical_round_effects"].items():
+              assert set(rec["coefficients"])=={
+                "round2","round3","round4",
+                "tempdiff_PEMminus_other_C","noisediff_PEMminus_other"}
+              assert rec["independent_physical_routes"]==q["eligible_independent_physical_routes"]
+              assert rec["route_multiround_FWL_signflip"]["draws"]==4999
+              assert 0<=rec["BH_q_four_omnibus"]<=1
+              assert 0<rec["three_df_categorical_round_omnibus"]["route_Wald_F_two_sided_P"]<=1
+              assert len(rec["leave_one_State_out"]["coefficient_vectors_by_omitted_State"])==q["eligible_states"]
+              assert all(math.isfinite(rec["coefficients"][k]) for k in ("round2","round3","round4"))
+          for mode in ("any","strong"):
+              decomposition=j["acoustic_activation_vs_additional_taxa_exact_hierarchy"][mode]
+              assert decomposition["source_acoustic_taxon_count_identity_test"]=="PASS"
+              for row in decomposition["round_specific_components_without_new_inference_P"].values():
+                  assert row["absolute_roundoff"]<1e-10
+          assert j["joint_predeclared_classification"] in (
+            "exploratory_route_robust_withinyear_PEM_phenological_heterogeneity",
+            "not_supported_by_joint_withinyear_multilevel_gates")
+          assert j["scientific_limits"]["frozen_main_RC6_manuscript_SI_unchanged"]
+          assert j["scientific_limits"]["not_a_forecast_or_prediction"]
+          print("PASS original 6236 NWI complete nights and matched physical same-route-year round ecological decomposition")
+          PY
+      - name: Archive only scientific aggregates, no raw third-party data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-vegetation-withinyear-round-hierarchy-v0-1
+          path: build/naamp_vegetation_withinyear_hierarchy/result.json
+          if-no-files-found: warn
