@@ -1,0 +1,541 @@
+{
+  "analysis": "NAAMP_mapped_wetland_PEM_acoustic_metacommunity_withinyear_round_hierarchy",
+  "source_date": "2026-10-23",
+  "result_status": "original_NAAMP_NWI_repeated_same_route_year_stops_phenological_ecology_completed",
+  "ecological_classification": "not_supported_by_joint_withinyear_multilevel_gates",
+  "original_GitHub_Actions_run": 39904251155,
+  "original_results_artifact_id": 12479644916,
+  "locked_before_outcome_spec": "exploration/NAAMP_VEGETATION_WITHINYEAR_ROUND_HIERARCHY_SPEC_2026_10_23.md",
+  "source_coverage": {
+    "source_NAAMP_standard_runs": 7848,
+    "source_NWI_complete_run_nights": 6236,
+    "source_NWI_original_physical_SiteIDs": 5147,
+    "source_all_complete_stop_nights": 62360,
+    "source_geo_exclusions": {
+      "NWI_environment_complete_run_nights": 6236,
+      "NWI_missing_complete_10stop_geography": 1559,
+      "missing_temperature_or_noise": 53
+    },
+    "source_routes": 499,
+    "source_states": 20,
+    "source_verified_geography_Actions_run": 39450277196
+  },
+  "actual_geographic_and_seasonal_sampling": {
+    "eligible_independent_physical_routes": 274,
+    "eligible_source_run_nights": 2869,
+    "eligible_states": 20,
+    "eligible_unchanged_physical_site_route_year_groups": 1115,
+    "equal_rarefaction_m_distribution": {
+      "2": 900,
+      "3": 867,
+      "4": 901,
+      "5": 201
+    },
+    "fraction_groups_nonmonotonic_DOY": 0,
+    "mapped_250m_PEM_nonPEM_comparison_both_inside_wetlands": true,
+    "retained_original_taxon_complexes": true,
+    "route_year_groups_nonchronological_calendar_DOY": 0,
+    "sampled_route_year_groups_per_round": {
+      "1": 844,
+      "2": 924,
+      "3": 906,
+      "4": 195
+    },
+    "sampled_survey_round_count": {
+      "1": 844,
+      "2": 924,
+      "3": 906,
+      "4": 195
+    },
+    "source_complete_run_nights": 6236,
+    "source_only_exclusions": {
+      "accepted_source_route_year_groups": 1115,
+      "duplicate_source_route_year_round_cells": 294,
+      "duplicate_source_runs_excluded": 660,
+      "route_year_groups_lt_2_unique_rounds": 788,
+      "route_year_groups_no_2plus_PEM_vs_other_wetland": 775,
+      "route_year_groups_source": 2678,
+      "same_site_accepted_source_nights": 2869
+    },
+    "source_stop_SiteIDs_aligned_within_each_route_year": true
+  },
+  "design": {
+    "four_outcomes_BH_family": [
+      "alpha_any",
+      "alpha_strong",
+      "gamma_any",
+      "gamma_strong"
+    ],
+    "independent_physical_route_cluster": true,
+    "n_weighted_routes": 274,
+    "physical_route_year_round_FE": true,
+    "route_year_fixed_effect_groups": 1115,
+    "same_physical_site_10stops_all_rounds": true,
+    "survey_round_comparison_route_year_support": {
+      "2_versus_1": {
+        "independent_routes": 224,
+        "paired_route_year_groups": 668
+      },
+      "3_versus_1": {
+        "independent_routes": 235,
+        "paired_route_year_groups": 647
+      },
+      "4_versus_1": {
+        "independent_routes": 45,
+        "paired_route_year_groups": 138
+      }
+    },
+    "within_wetland_PEM_vs_other_only": true
+  },
+  "synthetic_QA": {
+    "status": "PASS",
+    "known_round_recovery": true,
+    "route_year_FE_and_acoustic_additivity": true
+  },
+  "four_declared_outcomes": {
+    "alpha_any": {
+      "round_differences_adjusted_against_round1": {
+        "round2": 0.08667451641432687,
+        "round3": 0.17009832902338026,
+        "round4": -0.06766517047972906
+      },
+      "CI95_route_by_round": {
+        "round2": [
+          -0.015031653417969151,
+          0.1883806862466229
+        ],
+        "round3": [
+          0.05565279984028075,
+          0.28454385820647976
+        ],
+        "round4": [
+          -0.31193164761764614,
+          0.176601306658188
+        ]
+      },
+      "omnibus_route_F": 3.4860952420679774,
+      "omnibus_route_P": 0.01631768370211039,
+      "omnibus_State_P": 0.12606928936999,
+      "four_test_BH_q": 0.06527073480844156,
+      "route_vector_FWL_score_flip_P": 0.0008,
+      "route_year_geography_omits": {
+        "round4_minus_round1_positive": 1,
+        "round4_minus_round1_negative": 19
+      },
+      "linear_round_slope_sensitivity": {
+        "description": "Secondary directional summary only; categorical three-degree test is primary",
+        "route_CI95": [
+          -0.00043564597836510954,
+          0.1062506161740977
+        ],
+        "slope_per_additional_survey_round": 0.052907485097866296
+      },
+      "descriptive_round_averages": {
+        "1": {
+          "n_route_year_nights": 844,
+          "physical_routes": 254,
+          "states": 19,
+          "DOY_median": 93,
+          "route_equal_plant_richness_contrast": 0.1877781377503678
+        },
+        "2": {
+          "n_route_year_nights": 924,
+          "physical_routes": 260,
+          "states": 20,
+          "DOY_median": 128,
+          "route_equal_plant_richness_contrast": 0.2797394110519111
+        },
+        "3": {
+          "n_route_year_nights": 906,
+          "physical_routes": 266,
+          "states": 20,
+          "DOY_median": 169,
+          "route_equal_plant_richness_contrast": 0.3476105858725354
+        },
+        "4": {
+          "n_route_year_nights": 195,
+          "physical_routes": 55,
+          "states": 6,
+          "DOY_median": 188,
+          "route_equal_plant_richness_contrast": 0.22328669346526492
+        }
+      }
+    },
+    "alpha_strong": {
+      "round_differences_adjusted_against_round1": {
+        "round2": -0.017988585851698394,
+        "round3": -0.004458129318225247,
+        "round4": -0.11449045748932689
+      },
+      "CI95_route_by_round": {
+        "round2": [
+          -0.09818308970096713,
+          0.062205917997570345
+        ],
+        "round3": [
+          -0.0874789351992752,
+          0.07856267656282472
+        ],
+        "round4": [
+          -0.2512551649477786,
+          0.022274249969124818
+        ]
+      },
+      "omnibus_route_F": 1.0522194763241484,
+      "omnibus_route_P": 0.36991024519332233,
+      "omnibus_State_P": 0.3050397871406061,
+      "four_test_BH_q": 0.4932136602577631,
+      "route_vector_FWL_score_flip_P": 0.1864,
+      "route_year_geography_omits": {
+        "round4_minus_round1_positive": 0,
+        "round4_minus_round1_negative": 20
+      },
+      "linear_round_slope_sensitivity": {
+        "description": "Secondary directional summary only; categorical three-degree test is primary",
+        "route_CI95": [
+          -0.048484057652668,
+          0.024417704995389825
+        ],
+        "slope_per_additional_survey_round": -0.01203317632863909
+      },
+      "descriptive_round_averages": {
+        "1": {
+          "n_route_year_nights": 844,
+          "physical_routes": 254,
+          "states": 19,
+          "DOY_median": 93,
+          "route_equal_plant_richness_contrast": 0.18265647665253965
+        },
+        "2": {
+          "n_route_year_nights": 924,
+          "physical_routes": 260,
+          "states": 20,
+          "DOY_median": 128,
+          "route_equal_plant_richness_contrast": 0.16724066938352655
+        },
+        "3": {
+          "n_route_year_nights": 906,
+          "physical_routes": 266,
+          "states": 20,
+          "DOY_median": 169,
+          "route_equal_plant_richness_contrast": 0.18213276504495624
+        },
+        "4": {
+          "n_route_year_nights": 195,
+          "physical_routes": 55,
+          "states": 6,
+          "DOY_median": 188,
+          "route_equal_plant_richness_contrast": 0.11418145743145744
+        }
+      }
+    },
+    "gamma_any": {
+      "round_differences_adjusted_against_round1": {
+        "round2": 0.07147280890385589,
+        "round3": 0.1930469257959607,
+        "round4": 0.05610224043156384
+      },
+      "CI95_route_by_round": {
+        "round2": [
+          -0.0983472221252618,
+          0.24129283993297357
+        ],
+        "round3": [
+          0.006491327237469119,
+          0.3796025243544523
+        ],
+        "round4": [
+          -0.34135147067012594,
+          0.45355595153325357
+        ]
+      },
+      "omnibus_route_F": 1.4243133576201188,
+      "omnibus_route_P": 0.23594032613849192,
+      "omnibus_State_P": 0.4387952129492786,
+      "four_test_BH_q": 0.47188065227698384,
+      "route_vector_FWL_score_flip_P": 0.0732,
+      "route_year_geography_omits": {
+        "round4_minus_round1_positive": 18,
+        "round4_minus_round1_negative": 2
+      },
+      "linear_round_slope_sensitivity": {
+        "description": "Secondary directional summary only; categorical three-degree test is primary",
+        "route_CI95": [
+          -0.013135171620731162,
+          0.16268134153653874
+        ],
+        "slope_per_additional_survey_round": 0.07477308495790379
+      },
+      "descriptive_round_averages": {
+        "1": {
+          "n_route_year_nights": 844,
+          "physical_routes": 254,
+          "states": 19,
+          "DOY_median": 93,
+          "route_equal_plant_richness_contrast": 0.21314609077544958
+        },
+        "2": {
+          "n_route_year_nights": 924,
+          "physical_routes": 260,
+          "states": 20,
+          "DOY_median": 128,
+          "route_equal_plant_richness_contrast": 0.30924092474985326
+        },
+        "3": {
+          "n_route_year_nights": 906,
+          "physical_routes": 266,
+          "states": 20,
+          "DOY_median": 169,
+          "route_equal_plant_richness_contrast": 0.4006550408953738
+        },
+        "4": {
+          "n_route_year_nights": 195,
+          "physical_routes": 55,
+          "states": 6,
+          "DOY_median": 188,
+          "route_equal_plant_richness_contrast": 0.288783755926613
+        }
+      }
+    },
+    "gamma_strong": {
+      "round_differences_adjusted_against_round1": {
+        "round2": -0.010387932343215875,
+        "round3": 0.015853265674644346,
+        "round4": -0.010757320972289557
+      },
+      "CI95_route_by_round": {
+        "round2": [
+          -0.146073357134474,
+          0.12529749244804228
+        ],
+        "round3": [
+          -0.13258281389417287,
+          0.16428934524346156
+        ],
+        "round4": [
+          -0.2920447672282509,
+          0.2705301252836718
+        ]
+      },
+      "omnibus_route_F": 0.06348207816002481,
+      "omnibus_route_P": 0.9790720574220693,
+      "omnibus_State_P": 0.9442173789210707,
+      "four_test_BH_q": 0.9790720574220693,
+      "route_vector_FWL_score_flip_P": 0.9582,
+      "route_year_geography_omits": {
+        "round4_minus_round1_positive": 3,
+        "round4_minus_round1_negative": 17
+      },
+      "linear_round_slope_sensitivity": {
+        "description": "Secondary directional summary only; categorical three-degree test is primary",
+        "route_CI95": [
+          -0.06016902118804271,
+          0.0712532306052846
+        ],
+        "slope_per_additional_survey_round": 0.0055421047086209475
+      },
+      "descriptive_round_averages": {
+        "1": {
+          "n_route_year_nights": 844,
+          "physical_routes": 254,
+          "states": 19,
+          "DOY_median": 93,
+          "route_equal_plant_richness_contrast": 0.20129362313206522
+        },
+        "2": {
+          "n_route_year_nights": 924,
+          "physical_routes": 260,
+          "states": 20,
+          "DOY_median": 128,
+          "route_equal_plant_richness_contrast": 0.20111310613989186
+        },
+        "3": {
+          "n_route_year_nights": 906,
+          "physical_routes": 266,
+          "states": 20,
+          "DOY_median": 169,
+          "route_equal_plant_richness_contrast": 0.22328851271654707
+        },
+        "4": {
+          "n_route_year_nights": 195,
+          "physical_routes": 55,
+          "states": 6,
+          "DOY_median": 188,
+          "route_equal_plant_richness_contrast": 0.2368703360131932
+        }
+      }
+    }
+  },
+  "exact_acoustic_activation_plus_additional_taxon_components": {
+    "any": {
+      "activation_route_CI95_by_round": {
+        "round2": [
+          -0.057379521439553036,
+          0.015541642632224687
+        ],
+        "round3": [
+          -0.011434152276458581,
+          0.07210141671243718
+        ],
+        "round4": [
+          -0.1252619127200615,
+          0.10766135956683129
+        ]
+      },
+      "additional_taxa_route_CI95_by_round": {
+        "round2": [
+          0.019032970824333653,
+          0.19615394081164844
+        ],
+        "round3": [
+          0.03619249130009708,
+          0.24333690231068486
+        ],
+        "round4": [
+          -0.23774461670671992,
+          0.12001482890049192
+        ]
+      },
+      "round_specific_components_without_new_inference_P": {
+        "noisediff_PEMminus_other": {
+          "absolute_roundoff": 0,
+          "acoustic_activation_beta": 0.003876442630349495,
+          "additional_taxa_beyond_first_beta": -0.25171356867071404,
+          "observed_alpha_beta": -0.24783712604036454
+        },
+        "round2": {
+          "absolute_roundoff": 1.3877787807814457e-17,
+          "acoustic_activation_beta": -0.020918939403664173,
+          "additional_taxa_beyond_first_beta": 0.10759345581799105,
+          "observed_alpha_beta": 0.08667451641432687
+        },
+        "round3": {
+          "absolute_roundoff": 0,
+          "acoustic_activation_beta": 0.0303336322179893,
+          "additional_taxa_beyond_first_beta": 0.13976469680539097,
+          "observed_alpha_beta": 0.17009832902338026
+        },
+        "round4": {
+          "absolute_roundoff": 4.163336342344337e-17,
+          "acoustic_activation_beta": -0.008800276576615107,
+          "additional_taxa_beyond_first_beta": -0.058864893903113995,
+          "observed_alpha_beta": -0.06766517047972906
+        },
+        "tempdiff_PEMminus_other_C": {
+          "absolute_roundoff": 3.469446951953614e-17,
+          "acoustic_activation_beta": 0.0055329510514205895,
+          "additional_taxa_beyond_first_beta": 0.011482068079762925,
+          "observed_alpha_beta": 0.01701501913118348
+        }
+      },
+      "source_acoustic_taxon_count_identity_test": "PASS"
+    },
+    "strong": {
+      "activation_route_CI95_by_round": {
+        "round2": [
+          -0.06785134611826574,
+          0.0259573909932476
+        ],
+        "round3": [
+          -0.04686562448451368,
+          0.05361022821000067
+        ],
+        "round4": [
+          -0.16688216367876246,
+          0.013654109845594106
+        ]
+      },
+      "additional_taxa_route_CI95_by_round": {
+        "round2": [
+          -0.05306970442320575,
+          0.05898648784482718
+        ],
+        "round3": [
+          -0.06302239900203793,
+          0.04736153664010055
+        ],
+        "round4": [
+          -0.11519352805682548,
+          0.0394406669113401
+        ]
+      },
+      "round_specific_components_without_new_inference_P": {
+        "noisediff_PEMminus_other": {
+          "absolute_roundoff": 1.3877787807814457e-17,
+          "acoustic_activation_beta": -0.05113386421147336,
+          "additional_taxa_beyond_first_beta": -0.0667324172578574,
+          "observed_alpha_beta": -0.11786628146933074
+        },
+        "round2": {
+          "absolute_roundoff": 4.0766001685454967e-17,
+          "acoustic_activation_beta": -0.020946977562509066,
+          "additional_taxa_beyond_first_beta": 0.0029583917108107127,
+          "observed_alpha_beta": -0.017988585851698394
+        },
+        "round3": {
+          "absolute_roundoff": 4.85722573273506e-17,
+          "acoustic_activation_beta": 0.0033723018627434933,
+          "additional_taxa_beyond_first_beta": -0.007830431180968692,
+          "observed_alpha_beta": -0.004458129318225247
+        },
+        "round4": {
+          "absolute_roundoff": 2.7755575615628914e-17,
+          "acoustic_activation_beta": -0.07661402691658417,
+          "additional_taxa_beyond_first_beta": -0.03787643057274269,
+          "observed_alpha_beta": -0.11449045748932689
+        },
+        "tempdiff_PEMminus_other_C": {
+          "absolute_roundoff": 6.938893903907228e-18,
+          "acoustic_activation_beta": 0.03856753975069874,
+          "additional_taxa_beyond_first_beta": -0.0068018944591355865,
+          "observed_alpha_beta": 0.03176564529156316
+        }
+      },
+      "source_acoustic_taxon_count_identity_test": "PASS"
+    }
+  },
+  "same_ObserverTrackingID_only_sensitivity": {
+    "status": "descriptive_only_not_independent_replication",
+    "routes": 271,
+    "route_year_groups": 1098,
+    "source_nights": 2812,
+    "outcomes": {
+      "alpha_any": {
+        "round_effects": {
+          "round2": 0.07298987503996375,
+          "round3": 0.15682694875444575,
+          "round4": -0.08597185340923354
+        },
+        "route_P": 0.029028243105737775,
+        "State_P": 0.21138482716546608,
+        "route_FWL_signflip_P": 0.0024
+      },
+      "alpha_strong": {
+        "round_effects": {
+          "round2": -0.01737618926090021,
+          "round3": 0.003922918292676518,
+          "round4": -0.12053736378282826
+        },
+        "route_P": 0.2929471173160071,
+        "State_P": 0.37247443614230663,
+        "route_FWL_signflip_P": 0.1256
+      }
+    }
+  },
+  "provenance": {
+    "original_biological_archive_previously_analyzed": true,
+    "no_independent_new_biological_data": true,
+    "original_JAE_RC6_main_and_SI_unchanged": true,
+    "raw_NAAMP_and_NWI_not_redistributed": true,
+    "source_code": "exploration/run_naamp_vegetation_withinyear_round_hierarchy_v0_1.py",
+    "original_action_scientific_job": 120252559388
+  },
+  "caveats": {
+    "descriptive_round4_only_six_states": true,
+    "mapped_NWI_PEM_does_not_measure_live_plant_species_or_dynamic_biomass": true,
+    "USGS_survey_round_order_not_uniform_calendar_date_across_states": true,
+    "observed_calling_taxa_not_abundance_or_reproduction": true,
+    "seasonal_interaction_not_FDR_supported": true,
+    "no_plant_causal_effect_or_animal_interaction_identified": true
+  }
+}
