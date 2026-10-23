@@ -73,7 +73,7 @@ def synthetic_qa():
         for j in range(12):
             bb=int((j+run)%3==0)
             nu=((j%5)-2)/2
-            y=0.3 + 0.3*bb + 0.2*nu + 0.003*run
+            y=0.32 + 0.3*bb + 0.07*nu + 0.0007*run
             data.append({"route":f"r{run%60}","run_id":f"x{run}",
                          "boundary":bb,"Y":y,"nu":nu})
     d=pd.DataFrame(data)
