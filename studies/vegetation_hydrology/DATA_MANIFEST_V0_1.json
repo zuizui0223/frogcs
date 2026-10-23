@@ -1,0 +1,47 @@
+{
+  "study": "frog_vegetation_hydrology_feasibility_v0_1",
+  "date": "2026-10-23",
+  "status": "outcome_blind_preprocessing_only",
+  "frozen_parent": "zuizui0223/frogcs RC6",
+  "naamp_years": [
+    2001,
+    2015
+  ],
+  "coordinate_sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+  "runs_sha256": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+  "stops_sha256": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+  "nlcd": {
+    "collection": "Annual NLCD 1.2",
+    "years": [
+      2001,
+      2015
+    ],
+    "radius_m": [
+      100,
+      500
+    ],
+    "min_valid_fraction": 0.8
+  },
+  "dswe": {
+    "collection": "USGS Landsat C2 Level-3",
+    "lookback_days": 30,
+    "exclude_same_day": true,
+    "radius_m": 500,
+    "min_valid_pixel_n": 50,
+    "band_class_semantics_pinned": false
+  },
+  "geometry": {
+    "review_span_km": 25,
+    "quarantine_span_km": 50,
+    "no_automatic_repair": true
+  },
+  "evidence": {
+    "synthetic_tests_passed": 5,
+    "actual_coordinates_processed": 0,
+    "nlcd_raster_pixels_processed": 0,
+    "dswe_scenes_processed": 0,
+    "calling_records_processed": 0
+  },
+  "inferential_protocol_frozen": false,
+  "independent_confirmation": false
+}
