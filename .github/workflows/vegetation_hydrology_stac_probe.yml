@@ -1,0 +1,29 @@
+name: NLCD STAC source and raw byte-range feasibility
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/probe_public_nlcd_stac.py"
+      - ".github/workflows/vegetation_hydrology_stac_probe.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-pixel-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify official STAC identity and small HTTP range only
+        run: python scripts/probe_public_nlcd_stac.py --out data/qc/nlcd_stac_byte_range_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nlcd-historical-stac-source-feasibility
+          path: studies/vegetation_hydrology/data/qc/nlcd_stac_byte_range_receipt.json
+          if-no-files-found: error
