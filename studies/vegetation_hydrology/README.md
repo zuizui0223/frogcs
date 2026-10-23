@@ -28,6 +28,7 @@ The raw USGS NAAMP data are at [DOI 10.5066/F7G44NG0](https://doi.org/10.5066/F7
 
 ## Pipeline (all steps before outcome access)
 
+0. `fetch_pinned_naamp_sources.py` (optional public-source fetch): download SHA256-pinned `Runs.csv`, `Stops.csv` and the coordinate CSV from ScienceBase. **Never fetch `Counts.csv`.** The GitHub source-audit workflow runs this first.
 1. `audit_site_coordinates.py`: ingest the original `RouteNumber,SiteID,lat,lon` CSV, verify checksum, quarantine malformed coordinates and geometrically implausible routes; do **not** substitute neighbouring-site locations. The 25/50 km flags are **review gates**, not ecological claims or proof of invalidity. Log held/accepted counts by geography before outcome access.
 2. `prepare_survey_site_calendar.py`: join accepted locations to NAAMP `Runs.csv` and `Stops.csv` using physical site IDs; never load `Counts.csv`. This is a *coverage calendar* and **not** the manuscript's exact eligible sample.
 3. `extract_nlcd_buffers.py`: use year-matched annual NLCD GeoTIFFs to extract class shares in **100 m and 500 m** buffers around accepted sites. Require >=80% valid pixel coverage; never classify no-data as non-water. Source rasters and checksums must be pinned before outputs are used.
@@ -57,6 +58,8 @@ The primary target is change in **conditional taxon-by-site configuration** at m
 Requirements: Python 3.10+, NumPy, rasterio, shapely for NLCD; standard library only for the other three scripts. All scripts intentionally have **no API calls**. Their inputs are downloaded **separately**, pinned and audited.
 
 ```bash
+python scripts/fetch_pinned_naamp_sources.py --out data/source
+
 python scripts/audit_site_coordinates.py \
   --coordinates data/source/NAAMP_SiteCoordinates.csv \
   --expected-sha256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83 \
@@ -82,7 +85,7 @@ python scripts/summarize_dswe_visits.py \
 python -m unittest discover -s tests -v
 ```
 
-These commands require independently obtained remote-sensing data. There are **no actual processed NAAMP coordinates, NLCD GeoTIFFs or DSWE scenes in this code-only package**. Passed synthetic tests prove implementation behavior, not environmental coverage in the research sites.
+These commands require independently obtained remote-sensing data. There are **no actual processed NAAMP coordinates, NLCD GeoTIFFs or DSWE scenes in this code-only package**. A separate GitHub Actions job attempts the pinned public-source download and writes QC receipts; its success is not assumed or reported here. Passed synthetic tests prove implementation behavior, not environmental coverage in the research sites.
 
 ## Parent-project boundary
 
