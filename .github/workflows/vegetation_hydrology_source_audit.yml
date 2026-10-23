@@ -7,6 +7,7 @@ on:
     paths:
       - "studies/vegetation_hydrology/scripts/fetch_pinned_naamp_sources.py"
       - "studies/vegetation_hydrology/scripts/audit_calendar_coverage.py"
+      - "studies/vegetation_hydrology/scripts/pilot_real_naamp_nlcd.py"
       - ".github/workflows/vegetation_hydrology_source_audit.yml"
   workflow_dispatch:
 
@@ -45,6 +46,14 @@ jobs:
           python scripts/audit_calendar_coverage.py \
             --site-calendar data/qc/survey_site_calendar.csv \
             --out-dir data/qc
+      - name: Install geospatial dependencies for historical NLCD pilot
+        run: python -m pip install -r requirements.txt
+      - name: Join five real NAAMP 2001 SiteIDs to raw historical land-cover buffers
+        run: |
+          python scripts/pilot_real_naamp_nlcd.py \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out data/qc/real_naamp_nlcd_c1v1_pilot.json
       - name: Publish source QC receipts without distributing full source CSVs
         if: always()
         uses: actions/upload-artifact@v4
@@ -56,4 +65,5 @@ jobs:
             studies/vegetation_hydrology/data/qc/survey_site_calendar.audit.json
             studies/vegetation_hydrology/data/qc/site_year_coverage.json
             studies/vegetation_hydrology/data/qc/site_year_coverage_by_state.csv
+            studies/vegetation_hydrology/data/qc/real_naamp_nlcd_c1v1_pilot.json
           if-no-files-found: warn
