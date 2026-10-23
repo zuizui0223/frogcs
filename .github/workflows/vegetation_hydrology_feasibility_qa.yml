@@ -1,0 +1,33 @@
+name: Vegetation and wetland hydrology feasibility QA
+
+on:
+  push:
+    branches:
+      - research/vegetation-hydrology-feasibility-2026-10
+    paths:
+      - "studies/vegetation_hydrology/**"
+      - ".github/workflows/vegetation_hydrology_feasibility_qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-preprocessing-checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: studies/vegetation_hydrology/requirements.txt
+      - name: Install tested dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run 5 outcome-blind synthetic tests
+        env:
+          PYTHONWARNINGS: error
+        run: python -m unittest discover -s tests -v
