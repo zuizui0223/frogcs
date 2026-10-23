@@ -1,0 +1,430 @@
+{
+  "analysis": "NAAMP_PEM_x_woody_wetland_architecture_and_acoustic_richness_accounting",
+  "date": "2026-10-23",
+  "status": "real_source_verified_nonpredictive_wetland_architecture_analysis",
+  "source": {
+    "NAAMP_standardized_runs": 7848,
+    "NWI_complete_route_nights": 6236,
+    "wetland_only_site_nights": 57821,
+    "physical_routes": 499,
+    "states": 20,
+    "original_NWI_physical_sites": 5147,
+    "original_NWI_source_gate": 39450277196
+  },
+  "habitat_2x2_coverage": {
+    "all_wetland_stop_count_by_cell": {
+      "0": 18503,
+      "1": 23477,
+      "2": 5169,
+      "3": 10672
+    },
+    "cell_legend": {
+      "0": "PEM0_woody0",
+      "1": "PEM0_woody1",
+      "2": "PEM1_woody0",
+      "3": "PEM1_woody1"
+    },
+    "distinct_wetland_SiteID_count_by_cell": {
+      "0": 1611,
+      "1": 1833,
+      "2": 439,
+      "3": 839
+    },
+    "geographic_states_by_cell": {
+      "0": 20,
+      "1": 20,
+      "2": 20,
+      "3": 19
+    },
+    "independent_physical_routes_by_cell": {
+      "0": 394,
+      "1": 424,
+      "2": 211,
+      "3": 323
+    },
+    "map_polygon_classes_are_not_live_plant_taxa": true,
+    "nwi_eligible_runs_excluded_fewer_than_two_wetland_sites": 0,
+    "original_source_physical_routes": 499,
+    "original_source_runs": 6236,
+    "original_source_site_nights": 62360,
+    "original_source_states": 20,
+    "physical_sites_in_wetlands_within_NAAMP_cohort": 4722,
+    "source_NWI_physical_sites": 5147,
+    "wetland_only_physical_routes_model": 499,
+    "wetland_only_route_nights_model": 6236,
+    "wetland_only_site_nights_before_geographic_run_requirement": 57821,
+    "wetland_only_site_nights_model": 57821,
+    "wetland_only_states_model": 20
+  },
+  "strict_all_four_site_cell_geometry": {
+    "modes": {
+      "any": {
+        "CI95_route": [
+          -0.2591273381458278,
+          0.09023123194449109
+        ],
+        "early_2001_2009_route_mean": -0.22018364677435362,
+        "late_2010_2015_route_mean": -0.05338467180398572,
+        "leave_one_State_out_all_positive": false,
+        "leave_one_State_out_range": [
+          -0.13049526435707146,
+          -0.052650472125165555
+        ],
+        "n_States_with_positive_means": 6,
+        "n_nights": 1256,
+        "p_route_t_no_BH": 0.3393113510909614,
+        "routes": 89,
+        "same_night_PEM_x_woody_raw_delta": -0.08444805310066833,
+        "state_equal_effect": -0.07103167619223241,
+        "states": 19,
+        "status": "estimated_exploratory"
+      },
+      "strong": {
+        "CI95_route": [
+          -0.19365980821175377,
+          0.05474507273956322
+        ],
+        "early_2001_2009_route_mean": -0.12150840438248267,
+        "late_2010_2015_route_mean": -0.05798516255040801,
+        "leave_one_State_out_all_positive": false,
+        "leave_one_State_out_range": [
+          -0.08691702912727223,
+          -0.03325235606322144
+        ],
+        "n_States_with_positive_means": 8,
+        "n_nights": 1256,
+        "p_route_t_no_BH": 0.26944647623901935,
+        "routes": 89,
+        "same_night_PEM_x_woody_raw_delta": -0.06945736773609527,
+        "state_equal_effect": -0.08329952841505653,
+        "states": 19,
+        "status": "estimated_exploratory"
+      }
+    },
+    "n_complete_four_cell_nights": 1256,
+    "n_complete_four_cell_routes": 89,
+    "n_complete_four_cell_states": 19,
+    "nights_with_complete_four_cell_map_fraction": 0.20141116100064144
+  },
+  "acoustic_calling_richness_decomposition": {
+    "any": {
+      "PEM_woody_interaction": {
+        "BH_q_two_call_strength_tests": 0.5001867962495158,
+        "CI95_State": [
+          -0.079364334894307,
+          0.13718768220200112
+        ],
+        "CI95_route": [
+          -0.04951278309556724,
+          0.10733613040326136
+        ],
+        "beta_taxon_units_per_stop": 0.028911673653847062,
+        "label": "PEM:woody factorial interaction",
+        "n_States": 20,
+        "n_routes": 499,
+        "p_two_sided_route_t": 0.46921342841281044,
+        "se_State": 0.05173185101246404,
+        "se_route": 0.039915967173905255
+      },
+      "PEM_effect_without_woody": {
+        "CI95_State": [
+          0.12251206702277197,
+          0.2866909932467421
+        ],
+        "CI95_route": [
+          0.1391097339197592,
+          0.2700933263497548
+        ],
+        "beta_taxon_units_per_stop": 0.20460153013475701,
+        "label": "PEM conditional on no mapped woody",
+        "n_States": 20,
+        "n_routes": 499,
+        "p_two_sided_route_t": 1.7075688874253806e-9,
+        "se_State": 0.03922050630000594,
+        "se_route": 0.03333358618257141
+      },
+      "PEM_effect_with_woody": {
+        "CI95_State": [
+          0.15199865472263616,
+          0.31502775285457196
+        ],
+        "CI95_route": [
+          0.18304780188817002,
+          0.2839786056890381
+        ],
+        "beta_taxon_units_per_stop": 0.23351320378860407,
+        "label": "PEM conditional on mapped woody",
+        "n_States": 20,
+        "n_routes": 499,
+        "p_two_sided_route_t": 2.3264268733246166e-18,
+        "se_State": 0.038945825249491375,
+        "se_route": 0.0256855502628739
+      },
+      "components": {
+        "PEM_effect_if_no_woody": {
+          "richness_count_delta": 0.20460153013475701,
+          "calling_activation_probability_delta": 0.07651629118376907,
+          "calling_activation_CI95_route": [
+            0.052951722324272546,
+            0.1000808600432656
+          ],
+          "additional_taxa_beyond_first_delta": 0.12808523895098867,
+          "additional_taxa_CI95_route": [
+            0.07734025167392208,
+            0.17883022622805525
+          ],
+          "signed_arithmetic_fraction_activation": 0.37397712095981406,
+          "signed_arithmetic_fraction_extra": 0.6260228790401895
+        },
+        "PEM_effect_if_woody": {
+          "richness_count_delta": 0.23351320378860407,
+          "calling_activation_probability_delta": 0.07498014287897627,
+          "calling_activation_CI95_route": [
+            0.05703614748889321,
+            0.09292413826905932
+          ],
+          "additional_taxa_beyond_first_delta": 0.15853306090962774,
+          "additional_taxa_CI95_route": [
+            0.11826553806680318,
+            0.1988005837524523
+          ],
+          "signed_arithmetic_fraction_activation": 0.32109594516485945,
+          "signed_arithmetic_fraction_extra": 0.6789040548351403
+        },
+        "PEM_x_woody": {
+          "richness_count_delta": 0.028911673653847062,
+          "calling_activation_probability_delta": -0.0015361483047927988,
+          "calling_activation_CI95_route": [
+            -0.02914075494542176,
+            0.02606845833583616
+          ],
+          "additional_taxa_beyond_first_delta": 0.03044782195863907,
+          "additional_taxa_CI95_route": [
+            -0.0313632598828786,
+            0.09225890380015675
+          ],
+          "signed_arithmetic_fraction_activation": -0.053132458645762104,
+          "signed_arithmetic_fraction_extra": 1.0531324586457347
+        },
+        "woody_effect_if_PEM": {
+          "richness_count_delta": 0.034759372038039076,
+          "calling_activation_probability_delta": 0.018940487577599023,
+          "calling_activation_CI95_route": [
+            -0.005377418753750925,
+            0.04325839390894897
+          ],
+          "additional_taxa_beyond_first_delta": 0.015818884460439185,
+          "additional_taxa_CI95_route": [
+            -0.040516171515914884,
+            0.07215394043679325
+          ],
+          "signed_arithmetic_fraction_activation": 0.5449030424620852,
+          "signed_arithmetic_fraction_extra": 0.45509695753788987
+        },
+        "woody_effect_if_no_PEM": {
+          "richness_count_delta": 0.005847698384192011,
+          "calling_activation_probability_delta": 0.020476635882391823,
+          "calling_activation_CI95_route": [
+            -0.0003119188804010936,
+            0.04126519064518474
+          ],
+          "additional_taxa_beyond_first_delta": -0.014628937498199884,
+          "additional_taxa_CI95_route": [
+            -0.05811719375213042,
+            0.028859318755730647
+          ],
+          "signed_arithmetic_fraction_activation": 3.5016573251701875,
+          "signed_arithmetic_fraction_extra": -2.5016573251701995
+        }
+      },
+      "strict_all_four_cells": {
+        "CI95_route": [
+          -0.2591273381458278,
+          0.09023123194449109
+        ],
+        "early_2001_2009_route_mean": -0.22018364677435362,
+        "late_2010_2015_route_mean": -0.05338467180398572,
+        "leave_one_State_out_all_positive": false,
+        "leave_one_State_out_range": [
+          -0.13049526435707146,
+          -0.052650472125165555
+        ],
+        "n_States_with_positive_means": 6,
+        "n_nights": 1256,
+        "p_route_t_no_BH": 0.3393113510909614,
+        "routes": 89,
+        "same_night_PEM_x_woody_raw_delta": -0.08444805310066833,
+        "state_equal_effect": -0.07103167619223241,
+        "states": 19,
+        "status": "estimated_exploratory"
+      }
+    },
+    "strong": {
+      "PEM_woody_interaction": {
+        "BH_q_two_call_strength_tests": 0.5001867962495158,
+        "CI95_State": [
+          -0.060547844628296224,
+          0.10014266879549873
+        ],
+        "CI95_route": [
+          -0.03785400549668967,
+          0.07744882966389217
+        ],
+        "beta_taxon_units_per_stop": 0.019797412083601255,
+        "label": "PEM:woody factorial interaction",
+        "n_States": 20,
+        "n_routes": 499,
+        "p_two_sided_route_t": 0.5001867962495158,
+        "se_State": 0.038387163560148777,
+        "se_route": 0.02934304153380295
+      },
+      "PEM_effect_without_woody": {
+        "CI95_State": [
+          0.07335914995969167,
+          0.18138334373057913
+        ],
+        "CI95_route": [
+          0.07917429719327615,
+          0.17556819649699465
+        ],
+        "beta_taxon_units_per_stop": 0.1273712468451354,
+        "label": "PEM conditional on no mapped woody",
+        "n_States": 20,
+        "n_routes": 499,
+        "p_two_sided_route_t": 3.032438917029592e-7,
+        "se_State": 0.025805769776837455,
+        "se_route": 0.024530968270944968
+      },
+      "PEM_effect_with_woody": {
+        "CI95_State": [
+          0.08744112389232986,
+          0.20689619396514344
+        ],
+        "CI95_route": [
+          0.11099256282252605,
+          0.18334475503494724
+        ],
+        "beta_taxon_units_per_stop": 0.14716865892873665,
+        "label": "PEM conditional on mapped woody",
+        "n_States": 20,
+        "n_routes": 499,
+        "p_two_sided_route_t": 9.260924208812197e-15,
+        "se_State": 0.028536478073727427,
+        "se_route": 0.01841267283839143
+      },
+      "components": {
+        "PEM_effect_if_no_woody": {
+          "richness_count_delta": 0.1273712468451354,
+          "calling_activation_probability_delta": 0.08431770630796268,
+          "calling_activation_CI95_route": [
+            0.05909383345181192,
+            0.10954157916411343
+          ],
+          "additional_taxa_beyond_first_delta": 0.04305354053717312,
+          "additional_taxa_CI95_route": [
+            0.01365333017066309,
+            0.07245375090368315
+          ],
+          "signed_arithmetic_fraction_activation": 0.6619838338434462,
+          "signed_arithmetic_fraction_extra": 0.33801616615655694
+        },
+        "PEM_effect_if_woody": {
+          "richness_count_delta": 0.14716865892873665,
+          "calling_activation_probability_delta": 0.08417970974408932,
+          "calling_activation_CI95_route": [
+            0.06441961664933299,
+            0.10393980283884566
+          ],
+          "additional_taxa_beyond_first_delta": 0.06298894918464637,
+          "additional_taxa_CI95_route": [
+            0.04057882337777111,
+            0.08539907499152163
+          ],
+          "signed_arithmetic_fraction_activation": 0.5719948143636451,
+          "signed_arithmetic_fraction_extra": 0.4280051856363484
+        },
+        "PEM_x_woody": {
+          "richness_count_delta": 0.019797412083601255,
+          "calling_activation_probability_delta": -0.0001379965638733487,
+          "calling_activation_CI95_route": [
+            -0.030940201577955444,
+            0.030664208450208747
+          ],
+          "additional_taxa_beyond_first_delta": 0.01993540864747325,
+          "additional_taxa_CI95_route": [
+            -0.014992572458934171,
+            0.05486338975388067
+          ],
+          "signed_arithmetic_fraction_activation": -0.006970434483588644,
+          "signed_arithmetic_fraction_extra": 1.0069704344835202
+        },
+        "woody_effect_if_PEM": {
+          "richness_count_delta": 0.04133157731388401,
+          "calling_activation_probability_delta": 0.019399106741524584,
+          "calling_activation_CI95_route": [
+            -0.007806459046590032,
+            0.0466046725296392
+          ],
+          "additional_taxa_beyond_first_delta": 0.02193247057235822,
+          "additional_taxa_CI95_route": [
+            -0.01079912373515763,
+            0.05466406487987407
+          ],
+          "signed_arithmetic_fraction_activation": 0.46935316777780167,
+          "signed_arithmetic_fraction_extra": 0.5306468322221691
+        },
+        "woody_effect_if_no_PEM": {
+          "richness_count_delta": 0.021534165230282752,
+          "calling_activation_probability_delta": 0.019537103305397933,
+          "calling_activation_CI95_route": [
+            -0.0039160526338770305,
+            0.042990259244672896
+          ],
+          "additional_taxa_beyond_first_delta": 0.001997061924884968,
+          "additional_taxa_CI95_route": [
+            -0.019676962102608175,
+            0.023671085952378112
+          ],
+          "signed_arithmetic_fraction_activation": 0.9072607689442068,
+          "signed_arithmetic_fraction_extra": 0.09273923105580006
+        }
+      },
+      "strict_all_four_cells": {
+        "CI95_route": [
+          -0.19365980821175377,
+          0.05474507273956322
+        ],
+        "early_2001_2009_route_mean": -0.12150840438248267,
+        "late_2010_2015_route_mean": -0.05798516255040801,
+        "leave_one_State_out_all_positive": false,
+        "leave_one_State_out_range": [
+          -0.08691702912727223,
+          -0.03325235606322144
+        ],
+        "n_States_with_positive_means": 8,
+        "n_nights": 1256,
+        "p_route_t_no_BH": 0.26944647623901935,
+        "routes": 89,
+        "same_night_PEM_x_woody_raw_delta": -0.06945736773609527,
+        "state_equal_effect": -0.08329952841505653,
+        "states": 19,
+        "status": "estimated_exploratory"
+      }
+    }
+  },
+  "provenance": {
+    "source_code": "exploration/run_naamp_pem_woody_architecture_hierarchy_v0_1.py",
+    "action_full_recompute_run": 39890059482,
+    "action_full_result_artifact_id": 12473894279,
+    "source_original_success_run": 39889716491,
+    "post_hoc_source_already_inspected": true,
+    "mathematical_decomposition_QA": "PASS",
+    "JAE_RC6_main_and_manuscript_unmodified": true
+  },
+  "boundaries": {
+    "NWI_polygon_overlap_is_not_live_plants": true,
+    "not_a_causal_plant_interaction": true,
+    "not_a_causal_frog_species_interaction": true,
+    "not_predictive_or_forecasting": true
+  }
+}
