@@ -78,6 +78,19 @@ jobs:
           assert p['exact_physical_SiteID_alignment']
           assert p['same_seasonal_RunNumber_across_years']
           assert sum(int(v) for v in p['year_gap_distribution'].values())==p['physically_stable_vegetation_mixed_source_run_pairs']
+          assert p['physically_stable_vegetation_mixed_source_run_pairs']==2403
+          assert p['n_physical_routes']==273 and p['n_states']==20
+          family=j['post_readback_individual_habitat_route_tests']
+          assert len(family)==4 and {(x['mode'],x['habitat']) for x in family}=={
+             ('any','PEM'),('any','nonPEM'),('strong','PEM'),('strong','nonPEM')}
+          for part in family:
+              assert part['status']=='estimated_post_readback'
+              assert part['physical_routes']==273
+              assert part['route_signflip']['draws']==4999
+              assert 0<=part['BH_q_four_post_readback_habitat_checks']<=1
+              assert part['post_readback_individual_habitat_question']
+              assert part['omit_one_State']['n_checks']==20
+          assert j['post_readback_tests_not_independent_original_hypothesis']
           for mode in ('any','strong'):
               z=j['acoustic_results'][mode]
               assert z['physical_route_count']==p['n_physical_routes']
@@ -88,8 +101,16 @@ jobs:
               assert 0<=z['BH_q_two_call_modes']<=1
               assert z['whole_route_signflip']['draws']==4999
               assert z['omit_one_State']['n_checked']==p['n_states']
-              assert z['route_equal_mean']==z['route_equal_mean_PEM_excess']-z['route_equal_mean_other_wetland_excess'] or math.isclose(
+              assert math.isclose(
                 z['route_equal_mean'],z['route_equal_mean_PEM_excess']-z['route_equal_mean_other_wetland_excess'],abs_tol=1e-11)
+              reference={'any':(-0.004745659594195106,0.44340083019043364),
+                         'strong':(-0.0011852286739826028,0.7975322660233268)}
+              b,p0=reference[mode]
+              assert math.isclose(z['route_equal_mean'],b,rel_tol=0,abs_tol=1e-10), 'Original primary ecological result drift'
+              assert math.isclose(z['route_t_two_sided_P'],p0,rel_tol=0,abs_tol=1e-9), 'Original primary inferential result drift'
+              for popname,key in (('PEM','route_equal_mean_PEM_excess'),('nonPEM','route_equal_mean_other_wetland_excess')):
+                  row=next(x for x in family if x['mode']==mode and x['habitat']==popname)
+                  assert math.isclose(z[key],row['route_mean_excess_recalled_taxa'],abs_tol=1e-11)
           limits=j['scientific_limits']
           assert limits['not_predicting_any_future_site_outcomes']
           assert limits['NWI_250m_PEM_polygon_not_botanical_2001_2015_cover']
