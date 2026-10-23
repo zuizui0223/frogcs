@@ -1,0 +1,419 @@
+{
+  "analysis": "NAAMP_NWI_vegetation_pair_identity_global_fixed_margin_ecological_network",
+  "status": "real_source_fixedmargin_PEM_conditioned_acoustic_pair_network_executed",
+  "date": "2026-10-23",
+  "independent_readback_from_logged_successful_scientific_step": true,
+  "full_workflow_final_QA_failed_due_to_mismatched_field_name": true,
+  "QA_fix_needed": "Original QA refers to eligible_mixed_PEM_pair_labels, but result key is included_original_labels_with_20_mixed_nights_10_routes_5_null_variable_nights.",
+  "source": {
+    "NWI_complete_surveys": 6236,
+    "original_any_call_Cscore_matrices": 3659,
+    "original_strong_call_Cscore_matrices": 1766,
+    "original_source_250m_NWI_workflow": 39450277196,
+    "original_route_heldout_habitat_source_workflow": 39516056663
+  },
+  "mathematical_QA": {
+    "fixed_species_and_site_margins": true,
+    "species_pair_identity_non_invariant": true,
+    "status": "PASS",
+    "synthetic_only_not_animal_outcomes": true,
+    "total_all_taxon_pair_co_detection_by_PEM_fixed": true
+  },
+  "modes": {
+    "any": {
+      "NWI_PEM_two_vs_two_mixed_route_nights": 2112,
+      "T_global_mean_squared_pair_identity_excess": 0.0009373873727312811,
+      "classification": "not_supported_by_fixed_margin_and_route_cluster_gates",
+      "eligible_pair_run_counts_min_median_max": [
+        24,
+        72,
+        901
+      ],
+      "excluded_previous_pair_labels_without_new_mixed_PEM_coverage": 7,
+      "geographic_original_route_folds": {
+        "A": {
+          "above_null_mean": true,
+          "mean_null_T": 0.0011473395034582148,
+          "n_edges": 118,
+          "n_negative_conditional_edges": 65,
+          "n_positive_conditional_edges": 53,
+          "observed_T": 0.0018041248535232656,
+          "status": "descriptive"
+        },
+        "B": {
+          "above_null_mean": true,
+          "mean_null_T": 0.0011367941229428022,
+          "n_edges": 114,
+          "n_negative_conditional_edges": 55,
+          "n_positive_conditional_edges": 59,
+          "observed_T": 0.002226536586303587,
+          "status": "descriptive"
+        }
+      },
+      "included_original_labels_with_20_mixed_nights_10_routes_5_null_variable_nights": 120,
+      "matrix_sample_QA_counts": {
+        "NWI_mapped_PEM_geography_ineligible": 1547,
+        "NWI_mixed_geography_2plus_each": 2112,
+        "NWI_mixed_pair_null_matrices_simulated": 2106,
+        "no_original_eligible_species_pairs_present": 6,
+        "original_Cscore_matrices_validated": 3659
+      },
+      "mean_absolute_pair_network_excess": 0.022885628648170946,
+      "mean_accepted_feasible_weighted_trade_fraction": 0.6918140637094022,
+      "mean_null_T": 0.0005922350343221726,
+      "mean_signed_pair_network_excess": -0.0024994289865310753,
+      "mode": "any",
+      "n_edges_negative": 60,
+      "n_edges_positive": 60,
+      "null_T_lag_one_draw_correlation": 0.12616981306221442,
+      "null_T_quantiles_2p5_50_97p5": [
+        0.00038444557039119155,
+        0.0005893465418532168,
+        0.0008220518944475734
+      ],
+      "null_weighted_curveball_draws": 199,
+      "original_eligible_species_pair_labels": 127,
+      "original_reference_route_nights": 3659,
+      "original_reference_routes": 478,
+      "plus_one_upper_tail_p_weighted_curveball": 0.005,
+      "prelocked_pair_inclusion": {
+        "min_matrices_variable_under_null": 5,
+        "min_mixed_coactive_nights": 20,
+        "min_routes": 10
+      },
+      "ratio_observed_to_null_T_mean": 1.582796218403634,
+      "route_fold_edge_sign_stability": {
+        "fraction_matching_signs": 0.48214285714285715,
+        "n_matching_signs": 54,
+        "n_preexisting_edge_labels_10plus_runs_per_fold": 112
+      },
+      "simulated_mixed_route_nights_with_preexisting_labels": 2106,
+      "sum_of_all_taxon_pair_co_detection_conserved_by_fixed_site_richness": true,
+      "top_ten_descriptive_species_pairs_NOT_significance_tested": [
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.04897835739544283,
+          "mean_observed_PEMminus_nonPEM": -0.05862433862433861,
+          "mean_residual_PEM_context": -0.10760269601978144,
+          "n_same_route_night_mixed_survey_pairs": 45,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Gastrophryne carolinensis",
+            "Hyla chrysoscelis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.016255296088284563,
+          "mean_observed_PEMminus_nonPEM": 0.1165266106442577,
+          "mean_residual_PEM_context": 0.10027131455597314,
+          "n_same_route_night_mixed_survey_pairs": 34,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Hyla gratiosa",
+            "Lithobates sphenocephalus"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.11298816520049806,
+          "mean_observed_PEMminus_nonPEM": 0.19487489911218722,
+          "mean_residual_PEM_context": 0.08188673391168916,
+          "n_same_route_night_mixed_survey_pairs": 59,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Acris crepitans",
+            "Hyla cinerea"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.0437193180911774,
+          "mean_observed_PEMminus_nonPEM": -0.030555555555555548,
+          "mean_residual_PEM_context": -0.07427487364673295,
+          "n_same_route_night_mixed_survey_pairs": 33,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Lithobates clamitans",
+            "Pseudacris ocularis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.026383305415968727,
+          "mean_observed_PEMminus_nonPEM": -0.0388392857142857,
+          "mean_residual_PEM_context": -0.06522259113025443,
+          "n_same_route_night_mixed_survey_pairs": 120,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Anaxyrus americanus",
+            "Pseudacris maculata"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.038985602616255874,
+          "mean_observed_PEMminus_nonPEM": -0.01722883597883597,
+          "mean_residual_PEM_context": -0.05621443859509184,
+          "n_same_route_night_mixed_survey_pairs": 36,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Hyla chrysoscelis",
+            "Pseudacris ocularis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.044992726292080204,
+          "mean_observed_PEMminus_nonPEM": -0.00973167044595616,
+          "mean_residual_PEM_context": -0.05472439673803636,
+          "n_same_route_night_mixed_survey_pairs": 63,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Hyla gratiosa",
+            "Lithobates clamitans"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.01445480202131104,
+          "mean_observed_PEMminus_nonPEM": -0.040266106442577033,
+          "mean_residual_PEM_context": -0.05472090846388807,
+          "n_same_route_night_mixed_survey_pairs": 68,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Anaxyrus terrestris",
+            "Hyla chrysoscelis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": -0.009655734814422983,
+          "mean_observed_PEMminus_nonPEM": -0.06265664160401001,
+          "mean_residual_PEM_context": -0.05300090678958702,
+          "n_same_route_night_mixed_survey_pairs": 38,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Anaxyrus americanus",
+            "Pseudacris feriarum"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.045453936348408705,
+          "mean_observed_PEMminus_nonPEM": -0.007285714285714285,
+          "mean_residual_PEM_context": -0.05273965063412299,
+          "n_same_route_night_mixed_survey_pairs": 25,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Anaxyrus terrestris",
+            "Gastrophryne carolinensis"
+          ]
+        }
+      ],
+      "whole_physical_route_vector_signflips": {
+        "entire_repeated_route_community_flipped_together": true,
+        "mean_signflip_null_T": 0.0008649365686169261,
+        "n_draws": 4999,
+        "n_routes": 269,
+        "plus_one_upper_tail_p": 0.3276,
+        "symmetric_route_contributions_assumed_no_randomized_plant_intervention": true
+      }
+    },
+    "strong": {
+      "NWI_PEM_two_vs_two_mixed_route_nights": 1014,
+      "T_global_mean_squared_pair_identity_excess": 0.000798559820496544,
+      "classification": "not_supported_by_fixed_margin_and_route_cluster_gates",
+      "eligible_pair_run_counts_min_median_max": [
+        26,
+        64,
+        245
+      ],
+      "excluded_previous_pair_labels_without_new_mixed_PEM_coverage": 2,
+      "geographic_original_route_folds": {
+        "A": {
+          "above_null_mean": true,
+          "mean_null_T": 0.0012140768822357527,
+          "n_edges": 54,
+          "n_negative_conditional_edges": 34,
+          "n_positive_conditional_edges": 20,
+          "observed_T": 0.0013526670738146728,
+          "status": "descriptive"
+        },
+        "B": {
+          "above_null_mean": true,
+          "mean_null_T": 0.0010195249928008107,
+          "n_edges": 49,
+          "n_negative_conditional_edges": 20,
+          "n_positive_conditional_edges": 29,
+          "observed_T": 0.0013418112199227623,
+          "status": "descriptive"
+        }
+      },
+      "included_original_labels_with_20_mixed_nights_10_routes_5_null_variable_nights": 55,
+      "matrix_sample_QA_counts": {
+        "NWI_mapped_PEM_geography_ineligible": 752,
+        "NWI_mixed_geography_2plus_each": 1014,
+        "NWI_mixed_pair_null_matrices_simulated": 994,
+        "no_original_eligible_species_pairs_present": 20,
+        "original_Cscore_matrices_validated": 1766
+      },
+      "mean_absolute_pair_network_excess": 0.02203287917173358,
+      "mean_accepted_feasible_weighted_trade_fraction": 0.6766103297844361,
+      "mean_null_T": 0.0006246475486106396,
+      "mean_signed_pair_network_excess": -0.002250078851994997,
+      "mode": "strong",
+      "n_edges_negative": 30,
+      "n_edges_positive": 25,
+      "null_T_lag_one_draw_correlation": -0.22832987008366654,
+      "null_T_quantiles_2p5_50_97p5": [
+        0.0003937172729991055,
+        0.0006207720511748015,
+        0.0009250332945431276
+      ],
+      "null_weighted_curveball_draws": 199,
+      "original_eligible_species_pair_labels": 57,
+      "original_reference_route_nights": 1766,
+      "original_reference_routes": 398,
+      "plus_one_upper_tail_p_weighted_curveball": 0.12,
+      "prelocked_pair_inclusion": {
+        "min_matrices_variable_under_null": 5,
+        "min_mixed_coactive_nights": 20,
+        "min_routes": 10
+      },
+      "ratio_observed_to_null_T_mean": 1.2784166403481858,
+      "route_fold_edge_sign_stability": {
+        "fraction_matching_signs": 0.4375,
+        "n_matching_signs": 21,
+        "n_preexisting_edge_labels_10plus_runs_per_fold": 48
+      },
+      "simulated_mixed_route_nights_with_preexisting_labels": 994,
+      "sum_of_all_taxon_pair_co_detection_conserved_by_fixed_site_richness": true,
+      "top_ten_descriptive_species_pairs_NOT_significance_tested": [
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.008634058571244503,
+          "mean_observed_PEMminus_nonPEM": -0.07344322344322343,
+          "mean_residual_PEM_context": -0.08207728201446793,
+          "n_same_route_night_mixed_survey_pairs": 26,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Gastrophryne carolinensis",
+            "Hyla chrysoscelis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.011236553754375425,
+          "mean_observed_PEMminus_nonPEM": -0.06281838316722037,
+          "mean_residual_PEM_context": -0.07405493692159579,
+          "n_same_route_night_mixed_survey_pairs": 43,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Pseudacris crucifer",
+            "Pseudacris feriarum"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.0541685402417635,
+          "mean_observed_PEMminus_nonPEM": 0.10286499215070642,
+          "mean_residual_PEM_context": 0.04869645190894292,
+          "n_same_route_night_mixed_survey_pairs": 91,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Acris crepitans",
+            "Lithobates catesbeianus"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.0002896879781301916,
+          "mean_observed_PEMminus_nonPEM": -0.04794372294372295,
+          "mean_residual_PEM_context": -0.04823341092185314,
+          "n_same_route_night_mixed_survey_pairs": 33,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Anaxyrus terrestris",
+            "Hyla chrysoscelis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.009898035149291431,
+          "mean_observed_PEMminus_nonPEM": 0.05401234567901234,
+          "mean_residual_PEM_context": 0.04411431052972091,
+          "n_same_route_night_mixed_survey_pairs": 27,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Hyla chrysoscelis",
+            "Hyla femoralis"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": -0.01176517508175799,
+          "mean_observed_PEMminus_nonPEM": -0.05525210084033612,
+          "mean_residual_PEM_context": -0.04348692575857813,
+          "n_same_route_night_mixed_survey_pairs": 51,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Hyla cinerea",
+            "Hyla gratiosa"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.025159385362185076,
+          "mean_observed_PEMminus_nonPEM": -0.017375283446712013,
+          "mean_residual_PEM_context": -0.042534668808897086,
+          "n_same_route_night_mixed_survey_pairs": 42,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Hyla cinerea",
+            "Hyla squirella"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": -0.020545613555304865,
+          "mean_observed_PEMminus_nonPEM": -0.06281179138321995,
+          "mean_residual_PEM_context": -0.042266177827915086,
+          "n_same_route_night_mixed_survey_pairs": 42,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Acris gryllus",
+            "Hyla gratiosa"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.05854516086928146,
+          "mean_observed_PEMminus_nonPEM": 0.10035173160173158,
+          "mean_residual_PEM_context": 0.04180657073245012,
+          "n_same_route_night_mixed_survey_pairs": 88,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Acris crepitans",
+            "Lithobates clamitans"
+          ]
+        },
+        {
+          "mean_crossfit_weighted_null_PEMminus_nonPEM": 0.03253507118927973,
+          "mean_observed_PEMminus_nonPEM": 0.07392113095238095,
+          "mean_residual_PEM_context": 0.041386059763101224,
+          "n_same_route_night_mixed_survey_pairs": 32,
+          "no_individual_edge_statistical_claim": true,
+          "taxon_pair": [
+            "Acris gryllus",
+            "Hyla femoralis"
+          ]
+        }
+      ],
+      "whole_physical_route_vector_signflips": {
+        "entire_repeated_route_community_flipped_together": true,
+        "mean_signflip_null_T": 0.0007625694750766324,
+        "n_draws": 4999,
+        "n_routes": 223,
+        "plus_one_upper_tail_p": 0.3844,
+        "symmetric_route_contributions_assumed_no_randomized_plant_intervention": true
+      }
+    }
+  },
+  "execution": {
+    "original_GitHub_Actions_run_id": 39895380126,
+    "original_job_id": 120224631088,
+    "original_scientific_compute_step_status": "success",
+    "original_last_validation_step_status": "failure",
+    "original_result_artifact_id": 12476157985,
+    "scientific_evidence_model": "observational exploratory and not causal"
+  },
+  "caution": {
+    "no_direct_frog_frog_interactions": true,
+    "no_plant_causal_interventions": true,
+    "not_direct_evidence_of_higher_order_biotic_interactions": true,
+    "positive_previous_alpha_gamma_not_retracted": true,
+    "no_main_RC6_change": true
+  }
+}
