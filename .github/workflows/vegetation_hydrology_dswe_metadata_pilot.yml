@@ -4,6 +4,7 @@ on:
     branches: [research/vegetation-hydrology-feasibility-2026-10]
     paths:
       - "studies/vegetation_hydrology/scripts/probe_dswe_site_survey_coverage.py"
+      - "studies/vegetation_hydrology/scripts/probe_dswe_actual_pixels.py"
       - ".github/workflows/vegetation_hydrology_dswe_metadata_pilot.yml"
   workflow_dispatch:
 permissions:
@@ -38,8 +39,17 @@ jobs:
             --accepted-coordinates data/qc/accepted_coordinates.csv \
             --site-calendar data/qc/survey_site_calendar.csv \
             --out data/qc/dswe_presurvey_stac_pilot.json
+      - name: Install native raster tools for C2 INWAM pilot
+        run: python -m pip install -r requirements.txt
+      - name: Audit prior C2 INWAM 500-m pixel sample (three real stations)
+        run: |
+          python scripts/probe_dswe_actual_pixels.py \
+            --stac-receipt data/qc/dswe_presurvey_stac_pilot.json \
+            --out data/qc/dswe_pre_survey_pixel_pilot.json
       - uses: actions/upload-artifact@v4
         with:
           name: dswe-presurvey-source-stac-metadata-pilot
-          path: studies/vegetation_hydrology/data/qc/dswe_presurvey_stac_pilot.json
+          path: |
+            studies/vegetation_hydrology/data/qc/dswe_presurvey_stac_pilot.json
+            studies/vegetation_hydrology/data/qc/dswe_pre_survey_pixel_pilot.json
           if-no-files-found: error
