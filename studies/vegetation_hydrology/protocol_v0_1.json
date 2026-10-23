@@ -1,0 +1,51 @@
+{
+  "study": "frog_vegetation_hydrology_feasibility_v0_1",
+  "date": "2026-10-23",
+  "analysis_status": "outcome_blind_feasibility_only",
+  "parent_study": "zuizui0223/frogcs RC6 frozen",
+  "frog_outcomes_loaded": false,
+  "coordinate_source": {
+    "required_columns": ["RouteNumber", "SiteID", "lat", "lon"],
+    "sha256_expected": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "coordinate_errors_reported": true,
+    "review_span_km": 25,
+    "quarantine_span_km": 50,
+    "geometry_flags_are_not_proof_of_error": true,
+    "allow_automatic_coordinate_repair": false
+  },
+  "NAAMP_Runs_csv_sha256": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+  "NAAMP_Stops_csv_sha256": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+  "acoustic_counts_access": "prohibited_before_environment_coverage_gates_and_protocol_freeze",
+  "remote_sensing": {
+    "annual_nlcd_version": "Collection 1.2 (June 2026)",
+    "annual_nlcd_years": [2001, 2015],
+    "annual_nlcd_radius_m": [100, 500],
+    "annual_nlcd_min_valid_pixel_fraction": 0.8,
+    "annual_nlcd_metrics": {
+      "forest": [41, 42, 43], "woody_wetland": [90],
+      "emergent_wetland": [95], "open_water": [11],
+      "developed": [21, 22, 23, 24], "shrub": [52],
+      "grass_herb": [71, 72], "agriculture": [81, 82]
+    },
+    "dswe_acquisition_relative_to_survey": "strictly_prior_calendar_day",
+    "dswe_lookback_days": 30,
+    "dswe_radius_m": 500,
+    "dswe_min_scene_valid_pixel_n": 50,
+    "dswe_input_band_classes": "not yet locked; must match official band and quality mask before scene extraction",
+    "nwi": "secondary_static_context_only; mapping-year metadata required"
+  },
+  "hypotheses": [
+    "annual habitat structure modulates taxon-specific recurrent site selection",
+    "survey-event wetland inundation filters spatial expression beyond historical site propensity",
+    "remaining route-scale taxon dependence assessed only if habitat and water proxies adequate"
+  ],
+  "primary_outcome_and_null_model_frozen": false,
+  "independent_validation_available": false,
+  "limitations": [
+    "NAAMP stop chronology is not simultaneous acoustic sampling",
+    "remote sensing water presence is not depth or hydroperiod",
+    "annual NLCD is not dynamic emergent vegetation or percent canopy",
+    "static NWI can be anachronistic for 2001-2015",
+    "real data not ingested in this feasibility package"
+  ]
+}
