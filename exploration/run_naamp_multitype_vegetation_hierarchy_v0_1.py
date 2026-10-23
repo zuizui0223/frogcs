@@ -109,7 +109,7 @@ def regression(sample,response):
         "max":max(values) if values else None,"all_states":leave}
     out["sample"]={"stop_rows":N,"runs":len(runs),"routes":len(routes),"states":len(states),
         "n_model_predictors":len(COLS),"fixed_predictors":list(COLS),
-        "fit_design_rank":rank,
+        "fit_design_rank":int(rank),
         "within_run_fixed_effects":True,
         "route_equal_weight":True,
         "outcome_count_not_binary_occupancy":True}
