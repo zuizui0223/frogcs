@@ -1,0 +1,75 @@
+name: NAAMP interannual vegetation site-fidelity aggregate QA
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-site-fidelity-temporal-hierarchy-2026-10-23
+    paths:
+      - ".github/workflows/naamp_vegetation_temporal_result_readback_QA.yml"
+      - "exploration/NAAMP_TEMPORAL_VEGETATION_SITE_IDENTITY_MACRO_AGGREGATE_2026_10_23.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  check_original_full_run_result:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve unchanged actual completed 2,403-survey-year macroanalysis result
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39900755251
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-PEM-interannual-exact-site-fidelity-macro-v0-1
+          path: build/source_temporal
+      - name: Compare versioned results to original Actions output, guard null and positive hierarchy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          orig=json.loads(Path('build/source_temporal/result.json').read_text())
+          permanent=json.loads(Path('exploration/NAAMP_TEMPORAL_VEGETATION_SITE_IDENTITY_MACRO_AGGREGATE_2026_10_23.json').read_text())
+          assert orig['status']==permanent['status']=='real_NAAMP_repeated_physical_site_temporal_vegetation_macroanalysis_completed'
+          assert orig['synthetic_QA']==permanent['mathematical_exact_hypergeometric_permutation_validation']
+          assert orig['interannual_pairs_scope']==permanent['exact_matched_repeat_year_pairs']
+          assert orig['acoustic_results']==permanent['primary_predeclared_PEM_minus_nonPEM_temporal_site_identity']
+          assert orig['post_readback_individual_habitat_route_tests']==permanent['secondary_postreadback_individual_wetland_fidelity']
+          assert orig['original_source']['NWI_environment_complete_nights']==6236
+          assert orig['original_source']['source_SiteID_records']==5147
+          assert orig['interannual_pairs_scope']['physically_stable_vegetation_mixed_source_run_pairs']==2403
+          assert orig['interannual_pairs_scope']['n_physical_routes']==273
+          assert orig['interannual_pairs_scope']['n_states']==20
+          assert orig['interannual_pairs_scope']['source_exclusions']['same_observer_adjacent_pairs']==1925
+          vals={'any':(-0.004745659594195106,0.44340083019043364),
+                'strong':(-0.0011852286739826028,0.7975322660233268)}
+          for mode,(effect,pval) in vals.items():
+              r=orig['acoustic_results'][mode]
+              assert math.isclose(r['route_equal_mean'],effect,abs_tol=1e-10)
+              assert math.isclose(r['route_t_two_sided_P'],pval,abs_tol=1e-10)
+              assert not r['positive_temporal_PEM_site_identity_excess_supported']
+              assert r['whole_route_signflip']['draws']==4999
+              assert r['same_ObserverTrackingID_only']['route_year_pairs']==1925
+          for r in orig['post_readback_individual_habitat_route_tests']:
+              assert r['status']=='estimated_post_readback'
+              assert r['positive_acoustic_site_identity_excess_exploratory']
+              assert r['route_Student_CI95'][0]>0
+              assert r['BH_q_four_post_readback_habitat_checks']<.05
+              assert r['route_signflip']['p_two_sided_plus_one']==.0002
+              assert r['omit_one_State']['n_checked']==r['omit_one_State']['n_positive']==20
+          assert orig['scientific_limits']['NWI_250m_PEM_polygon_not_botanical_2001_2015_cover']
+          assert orig['scientific_limits']['not_causal_plant_or_multispecies_interaction']
+          assert permanent['provenance']['JAE_RC6_main_original_authority_modified'] is False
+          Path('build/source_temporal/verified_QA.json').write_text(json.dumps({
+              'status':'PASS','original_empirical_Github_Actions_run':39900755251,
+              'number_of_exact_survey_year_revisits':2403,'independent_routes':273,
+              'original_primary_no_temporal_PEM_difference_preserved':True,
+              'post_readback_both_habitats_positive_temporal_identity':True,
+              'no_causal_biotic_interaction_inferred':True},indent=2)+'\n')
+          print('PASS: exact source artifact equals pinned ecological output; no original inference drift')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naamp-PEM-interannual-site-identity-verified-receipt
+          path: build/source_temporal/verified_QA.json
+          if-no-files-found: error
