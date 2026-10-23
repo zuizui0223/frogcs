@@ -38,8 +38,8 @@ jobs:
           assert pinned['modes']==source['modes'], 'Persistent result differs from original execution artifact'
           assert source['mathematical_QA']['status']=='PASS'
           assert source['mathematical_QA']['total_all_taxon_pair_co_detection_by_PEM_fixed']
-          assert source['source_coverage']['NWI_complete_route_nights']==6236
-          assert source['source_coverage']['source_NWI_workflow'] if 'source_NWI_workflow' in source['source_coverage'] else True
+          assert source['NWI_10stop_complete_run_nights']==6236
+          assert source['source_NWI_workflow']==39450277196
           for mode,nruns,nroutes,nedges in [('any',3659,478,127),('strong',1766,398,57)]:
               x=source['modes'][mode]
               assert x['original_reference_route_nights']==nruns
