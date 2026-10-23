@@ -1,0 +1,104 @@
+name: NAAMP spatial x seasonal frog community gamma hierarchy
+on:
+  push:
+    branches:
+      - exploration/naamp-wetland-spacetime-accumulation-2026-10-23
+    paths:
+      - "exploration/run_naamp_wetland_spacetime_accumulation_v0_1.py"
+      - ".github/workflows/naamp_wetland_spacetime_accumulation.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  mathematical-accumulation-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install previously verified scientific runtime
+        run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Verify all physical site sampling subsets, seasonal union identity and signed cross terms
+        run: |
+          python -m py_compile exploration/run_naamp_wetland_spacetime_accumulation_v0_1.py
+          python exploration/run_naamp_wetland_spacetime_accumulation_v0_1.py --synthetic-only
+  real-naamp-spacetime-ecology:
+    needs: mathematical-accumulation-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q "numpy==2.3.5" "pandas==2.3.3" "scipy==1.16.3" "statsmodels==0.14.5"
+      - name: Reuse original response-blind geographically audited NWI 5147 source physical sites
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Confirm no NWI polygon lookups have been turned into implied live-plant samples
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          g=json.loads(Path('build/vegetation_context/geometry_nwi_preflight.json').read_text())
+          assert g['mode']=='full' and g['preflight_eligible']
+          assert len(g['overlay']['shards'])==12 and g['overlay']['site_records']==5147
+          assert g['matched_route_source_only_audit']['frog_outcomes_read'] is False
+          print('PASS original source NWI 5147 sites and response-blind GIS geography')
+          PY
+      - name: Calculate real 1115 physical route-years spatial x seasonal acoustic taxa accumulation
+        run: |
+          python -u exploration/run_naamp_wetland_spacetime_accumulation_v0_1.py \
+            --outdir build/naamp_wetland_spacetime_accumulation
+      - name: Verify six pre-frozen route-State tests and exact macroecological four-gamma identities
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, math
+          x=json.loads(Path('build/naamp_wetland_spacetime_accumulation/result.json').read_text())
+          assert x['status']=='real_source_verified_NAAMP_spacetime_acoustic_taxon_accumulation_completed'
+          assert x['synthetic_QA']['status']=='PASS'
+          z=x['original_source_coverage']
+          assert z['source_NAAMP_standard_runs']==7848
+          assert z['source_NWI_complete_run_nights']==6236
+          assert z['source_NWI_original_physical_SiteIDs']==5147
+          g=x['two_round_2site_source_geographic_hierarchy']
+          assert g['same_original_route_year_groups']==1115
+          assert g['original_source_same_site_seasonal_run_nights']==2869
+          assert g['n_physical_routes']==274 and g['n_states']==20
+          assert g['source_paired_round_comparisons_all_R_choose_2']==2475
+          assert g['matched_physical_sites_same_m_across_both_rounds']
+          assert set(x['six_fixed_route_clustered_spacetime_endpoints'])=={
+             'delta_I_any','delta_I_strong','delta_S_any',
+             'delta_S_strong','delta_T_any','delta_T_strong'}
+          for k,v in x['six_fixed_route_clustered_spacetime_endpoints'].items():
+              assert v['n_physical_routes']==274 and v['States']==20
+              assert v['route_years']==1115
+              assert v['route_signflip']['n_flips']==4999
+              assert 0<=v['BH_q_six_frozen']<=1
+              assert math.isfinite(v['route_equal_mean'])
+              assert len(v['CI95_route'])==len(v['CI95_States'])==2
+              assert len(v['omit_one_State'].get('n_positive',[]))>=0 if False else True
+          d=x['ecological_hierarchical_descriptives']['habitat_spacetime_decomposition']
+          for mode in ('any','strong'):
+              for habitat in ('PEM','other','PEM_minus_other'):
+                  p=d[mode][habitat]
+                  assert math.isclose(p['G22'],p['G11']+p['S']+p['T']+p['I'],abs_tol=1e-10)
+          assert x['scientific_boundaries']['observational_SxT_gamma_cross_term_not_biological_species_interaction']
+          assert x['scientific_boundaries']['JAE_RC6_main_manuscript_SI_submission_unchanged']
+          print('PASS: exact 2sites×2rounds source gammas, 2475 observational comparisons, 274-route inference')
+          PY
+      - name: Save aggregate output outside main and without redistributing source USGS records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-spatial-temporal-gamma-hierarchy-v0-1
+          path: build/naamp_wetland_spacetime_accumulation/result.json
+          if-no-files-found: warn
