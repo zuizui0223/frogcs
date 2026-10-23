@@ -1,0 +1,101 @@
+name: NAAMP mapped wetland spatial and seasonal gamma original receipt QA
+on:
+  push:
+    branches:
+      - exploration/naamp-wetland-spacetime-accumulation-2026-10-23
+    paths:
+      - ".github/workflows/naamp_wetland_spacetime_original_result_QA.yml"
+      - "exploration/NAAMP_WETLAND_SPACETIME_ACOUSTIC_GAMMA_AGGREGATE_2026_10_23.json"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  immutable-original-GitHub-Actions-science:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original completed NAAMP 2475-roundpair exact combinatoric science artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39909317997
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-spatial-temporal-gamma-hierarchy-v0-1
+          path: build/original_spacetime
+      - name: Compare immutable source numerics to pinned original results and independently reconstruct each habitat S/T/I decomposition
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          source=json.loads(Path("build/original_spacetime/result.json").read_text())
+          pin=json.loads(Path("exploration/NAAMP_WETLAND_SPACETIME_ACOUSTIC_GAMMA_AGGREGATE_2026_10_23.json").read_text())
+          assert source["status"]=="real_source_verified_NAAMP_spacetime_acoustic_taxon_accumulation_completed"
+          assert pin["status"]==source["status"]
+          assert source["synthetic_QA"]["status"]=="PASS"
+          assert pin["source_mathematical_QA"]==source["synthetic_QA"]
+          assert source["original_source_coverage"]["source_NAAMP_standard_runs"]==7848
+          assert source["original_source_coverage"]["source_NWI_complete_run_nights"]==6236
+          assert source["original_source_coverage"]["source_NWI_original_physical_SiteIDs"]==5147
+          assert source["source_2869_withinyear_cohort"]["eligible_source_run_nights"]==2869
+          assert source["source_2869_withinyear_cohort"]["eligible_unchanged_physical_site_route_year_groups"]==1115
+          geo=source["two_round_2site_source_geographic_hierarchy"]
+          assert geo==pin["exact_same_site_two_round_source_hierarchy"]
+          assert geo["same_original_route_year_groups"]==1115
+          assert geo["source_paired_round_comparisons_all_R_choose_2"]==2475
+          assert geo["n_physical_routes"]==274 and geo["n_states"]==20
+          assert geo["same_fixed_2_site_m_for_both_vegetation_classes"]
+          assert source["six_fixed_route_clustered_spacetime_endpoints"]==pin["six_frozen_observational_inference_endpoints"]
+          assert source["ecological_hierarchical_descriptives"]==pin["spatial_temporal_community_architecture"]
+          assert source["primary_decision"]==pin["original_unmodified_classification"]
+          assert set(source["six_fixed_route_clustered_spacetime_endpoints"])=={
+               "delta_I_any","delta_I_strong","delta_S_any",
+               "delta_S_strong","delta_T_any","delta_T_strong"}
+          for key,x in source["six_fixed_route_clustered_spacetime_endpoints"].items():
+              assert x["n_physical_routes"]==274 and x["States"]==20 and x["route_years"]==1115
+              assert x["route_signflip"]["n_flips"]==4999
+              assert x["omit_one_State"]["n_estimable"]==20
+              assert 0<=x["BH_q_six_frozen"]<=1
+              assert math.isfinite(x["route_equal_mean"])
+              assert math.isfinite(x["route_Student_t_P"])
+              print("PASS",key,"beta",x["route_equal_mean"],"route P",x["route_Student_t_P"],"six-BH q",x["BH_q_six_frozen"])
+          for mode in ("any","strong"):
+              d=source["ecological_hierarchical_descriptives"]["habitat_spacetime_decomposition"][mode]
+              for habitat in ("PEM","other","PEM_minus_other"):
+                  z=d[habitat]
+                  assert math.isclose(z["G22"],z["G11"]+z["S"]+z["T"]+z["I"],abs_tol=1e-10)
+              for key in ("G11","G21","G12","G22","S","T","I"):
+                  assert math.isclose(d["PEM_minus_other"][key],
+                      d["PEM"][key]-d["other"][key],abs_tol=1e-10)
+          assert source["scientific_boundaries"]["observational_SxT_gamma_cross_term_not_biological_species_interaction"]
+          assert source["scientific_boundaries"]["JAE_RC6_main_manuscript_SI_submission_unchanged"]
+          receipt={
+            "status":"PASS",
+            "original_full_scientific_source_run":39909317997,
+            "original_science_step_executed":True,
+            "original_last_workflow_QA_failed_source_field_name":True,
+            "complete_original_numerical_artifact_equals_versioned_aggregate":True,
+            "taxon_spacetime_four_gamma_exact_conservation":True,
+            "source_route_years":1115,"source_round_pairs":2475,
+            "source_independent_routes":274,"source_States":20,
+            "6tests_route_and_state_checked":True,
+            "statistically_supported_PEM_extra_temporal_gamma":True,
+            "statistically_supported_PEM_extra_space_time_cross_term":False,
+            "JAE_RC6_manuscript_or_main_changed":False
+          }
+          Path("build/receipt").mkdir(parents=True,exist_ok=True)
+          Path("build/receipt/verified.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          print("PASS: entire original source verified, no expensive rerun or new biological p-value search")
+          PY
+      - name: Preserve original full numerical output and scientific source validation receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-wetland-spacetime-science-verified-original
+          path: |
+            build/original_spacetime/result.json
+            build/receipt/verified.json
+          if-no-files-found: warn
