@@ -1,0 +1,83 @@
+name: NAAMP within-wetland PEM and taxon-contribution macroecology
+on:
+  push:
+    branches:
+      - exploration/naamp-vegetation-rarefied-gamma-2026-10-23
+    paths:
+      - "exploration/run_naamp_within_wetland_gamma_taxon_v0_1.py"
+      - ".github/workflows/naamp_within_wetland_taxon_gamma.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-taxonomic-additivity-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Validate exact taxon contribution identity on known 2-site communities
+        run: |
+          python -m py_compile exploration/run_naamp_within_wetland_gamma_taxon_v0_1.py
+          python exploration/run_naamp_within_wetland_gamma_taxon_v0_1.py --synthetic-only
+  ecologically-conditioned-continental:
+    needs: exact-taxonomic-additivity-qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q numpy pandas scipy statsmodels
+      - name: Read original full response-blind NWI and NAAMP source gate
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39450277196
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: naamp-nwi-vegetation-sites-validated
+          path: build/vegetation_context
+      - name: Compute full NAAMP within-wetland gamma and taxon sign decomposition
+        run: |
+          python -u exploration/run_naamp_within_wetland_gamma_taxon_v0_1.py \
+            --outdir build/naamp_within_wetland_taxon_gamma
+      - name: Check exact original sample, six contrasts, conservation of gamma, scientific boundaries
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,math
+          x=json.loads(Path("build/naamp_within_wetland_taxon_gamma/result.json").read_text())
+          assert x["status"]=="original_empirical_within_wetland_compositional_hierarchy_computed"
+          assert x["synthetic_QA"]["status"]=="PASS"
+          assert x["source"]["initial_USGS_standardized_runs"]==7848
+          assert x["source"]["complete_route_nights"]==6236
+          assert x["source"]["complete_site_nights"]==62360
+          assert x["source"]["physical_routes"]==499 and x["source"]["states"]==20
+          assert len(x["wetland_only_and_woody_context_gamma_contrasts"])==6
+          assert set(x["taxon_specific_exact_gamma_sum_contributions"])=={"any","strong"}
+          for r in x["wetland_only_and_woody_context_gamma_contrasts"]:
+              assert 0<=r["BH_q_six"]<=1
+              if r["status"]=="estimated":
+                  assert r["routes"]>=30 and r["states"]>=5
+                  assert r["route_sign_flip"]["draws"]==4999
+                  assert math.isclose(r["route_equal_delta_gamma"], 
+                    r["route_equal_expected_unique_positive"]-
+                    r["route_equal_expected_unique_negative"],abs_tol=1e-9)
+          for mode,v in x["taxon_specific_exact_gamma_sum_contributions"].items():
+              assert math.isclose(v["sum_taxon_contributions_matches_route_mean"],
+                v["total_wetland_conditioned_gamma_effect"],abs_tol=1e-10)
+              assert v["n_source_taxon_labels"]>0
+          assert x["scientific_limits"]["JAE_RC6_unmodified"]
+          assert x["scientific_limits"]["higher_order_interspecific_interaction_not_identified"]
+          print("PASS within-wetland mapped architecture and species additive accounting")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-within-wetland-taxon-gamma-v0-1
+          path: build/naamp_within_wetland_taxon_gamma/result.json
+          if-no-files-found: warn
