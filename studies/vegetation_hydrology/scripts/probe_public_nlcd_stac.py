@@ -42,6 +42,41 @@ def small_range(url):
         result['detail']=type(ex).__name__+': '+str(getattr(ex,'code','')) 
     return result
 
+
+def single_original_pixel(url, *, lat=40.0, lon=-80.0):
+    """A fixed non-NAAMP pipeline smoke pixel, not an ecological estimate.
+
+    Only execute after the server returns a valid 206 TIFF byte range.
+    Dataset access uses GDAL /vsicurl/ range requests, never full download.
+    """
+    try:
+        import rasterio
+        from rasterio.windows import Window
+        from rasterio.warp import transform
+        with rasterio.Env(
+            GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR",
+            CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif",
+            GDAL_HTTP_MAX_RETRY="0",
+            GDAL_HTTP_TIMEOUT="12",
+            GDAL_HTTP_CONNECTTIMEOUT="8",
+        ):
+            with rasterio.open("/vsicurl/"+url) as ds:
+                x, y=transform("EPSG:4326",ds.crs,[lon],[lat])
+                row, col=ds.index(x[0],y[0])
+                if not (0<=row<ds.height and 0<=col<ds.width):
+                    raise ValueError("test point outside NLCD source bounds")
+                one=ds.read(1,window=Window(col,row,1,1),masked=True)
+                if one.size!=1 or bool(one.mask.all()):
+                    raise ValueError("test pixel missing/masked")
+                return {"ok":True,"longitude":lon,"latitude":lat,
+                        "categorical_value":int(one[0,0]),
+                        "width":ds.width,"height":ds.height,
+                        "crs":str(ds.crs),"source_version":"C1V1"}
+    except Exception as ex:
+        return {"ok":False,"error":type(ex).__name__+': '+str(ex)[:250],
+                "source_version":"C1V1"}
+
+
 def main():
     a=argparse.ArgumentParser(description=__doc__)
     a.add_argument('--out',type=Path,required=True)
@@ -58,6 +93,10 @@ def main():
         receipt.update({'stac_verified':True,
                         'original_asset_uri':metadata['assets']['tif-s3-osn']['href'],
                         'test_url':url,'probe':small_range(url)})
+        if receipt['probe']['status']==206 and receipt['probe']['raw_tiff_magic']:
+            receipt['single_real_pixel_smoke']=single_original_pixel(url)
+        else:
+            receipt['single_real_pixel_smoke']={'ok':False,'detail':'byte-range source gate failed'}
     except Exception as ex:
         receipt.update({'stac_verified':False,
                         'error':type(ex).__name__+': '+str(ex)[:150]})
