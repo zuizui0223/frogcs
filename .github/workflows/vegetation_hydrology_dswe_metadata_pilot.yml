@@ -1,0 +1,45 @@
+name: Landsat DSWE pre-survey scene availability pilot
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/probe_dswe_site_survey_coverage.py"
+      - ".github/workflows/vegetation_hydrology_dswe_metadata_pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historic-scene-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source verified NAAMP site+survey calendar only (not Counts.csv)
+        run: |
+          python scripts/fetch_pinned_naamp_sources.py --out data/source
+          python scripts/audit_site_coordinates.py \
+            --coordinates data/source/NAAMP_SiteCoordinates.csv \
+            --expected-sha256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83 \
+            --out data/qc
+          python scripts/prepare_survey_site_calendar.py \
+            --runs data/source/Runs.csv \
+            --stops data/source/Stops.csv \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --out data/qc/survey_site_calendar.csv
+      - name: Query official Landsat DSWE C2 STAC at strictly prior 30-day windows
+        run: |
+          python scripts/probe_dswe_site_survey_coverage.py \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out data/qc/dswe_presurvey_stac_pilot.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dswe-presurvey-source-stac-metadata-pilot
+          path: studies/vegetation_hydrology/data/qc/dswe_presurvey_stac_pilot.json
+          if-no-files-found: error
