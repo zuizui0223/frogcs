@@ -80,6 +80,16 @@ jobs:
               s=v["count_model"]
               assert v["exact_sum_identity_verified"]
               assert v["identity_absolute_roundoff"]<1e-9
+              decomposed=v["post_readback_all_linear_contrasts_activation_and_extra"]
+              assert set(decomposed)=={
+                "PEM_x_woody","PEM_effect_if_no_woody","PEM_effect_if_woody",
+                "woody_effect_if_no_PEM","woody_effect_if_PEM"}
+              for part in decomposed.values():
+                  total=part["total_detected_taxon_units"]["beta_taxon_units_per_stop"]
+                  active=part["at_least_one_acoustic_taxon_indicator"]["beta_taxon_units_per_stop"]
+                  extras=part["additional_detected_taxon_units_beyond_first"]["beta_taxon_units_per_stop"]
+                  assert abs(total-active-extras)<1e-9
+                  assert part["ratios_are_signed_arithmetic_not_causal_or_variance_proportions"]
               assert s["PEM_x_woody"]["n_States"]==20
               assert s["PEM_x_woody"]["n_routes"]>250
               assert 0<=s["PEM_x_woody"]["BH_q_two_call_strength_tests"]<=1
