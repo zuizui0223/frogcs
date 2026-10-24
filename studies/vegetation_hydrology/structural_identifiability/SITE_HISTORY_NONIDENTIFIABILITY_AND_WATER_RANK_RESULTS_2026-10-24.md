@@ -35,7 +35,7 @@ These environmental observations expose *low rank/support* for testing rapid, **
 ## Known-truth instrument experiment — assumptions, NOT real sensor accuracy
 Using the same **333 original ten-site habitat layouts** and a *synthetically imposed* event-dated local-water effect `γ=1.5`, generate `W~Bernoulli(expit(-0.5+1.5 wetland+1.0 openwater))` at two synthetic occasions and calculate the full exact-k probability distribution, not sampled calling outcomes. **80 RNG replicates** (seed 2840223); a route-month is completely observed with prechosen probability 0.79 except near-direct regime 0.95.
 
-Simulated classification sensitivities are NOT derived from actual JRC pixels. They are illustrative assumptions. Comparing the *expected* log-probability improvement over a static predictor to a true-water oracle:
+Simulated classification sensitivities are NOT derived from actual JRC pixels. They are illustrative assumptions. The proxy predictor uses the **posterior-mean plug-in** \`eta_proxy=eta_base+gamma E[W|classified Z]\` (where synthetic Z=0 means *classified non-water*, NOT JRC unobserved-code 0). Because exact-k probabilities are nonlinear, this plug-in is **not the fully Bayes-integrated optimum** \`E[P(Y|W)|Z]\`; the percentages are NOT universal attainable-information ceilings. Comparing the *expected* log-probability improvement of this specified plug-in over a static predictor to a true-water oracle:
 
 | Assumed hypothetical measurement regime | k=3 oracle nats | k=3 proxy nats | Information captured | k=5 captured |
 |---|---:|---:|---:|---:|
