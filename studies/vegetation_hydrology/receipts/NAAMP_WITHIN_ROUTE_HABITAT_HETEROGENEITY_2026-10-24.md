@@ -29,3 +29,15 @@ The spatial selection of road-acoustic stations can bias land cover, and 500-m a
 `studies/vegetation_hydrology/scripts/audit_route_habitat_contrast.py` (strict input checksum, physical site means, route-balanced contrasts, duplicate/field validation). Companion synthetic tests: `tests/test_route_habitat_contrast.py`. Numerical source table and report also produced in the conversation artifact `frogcs_route_habitat_qc_2026-10-24`.
 
 No changes to `main`, paper/figures, prior RC6 inference, or the WFTS-not-pursued decision.
+
+## Overlap and within-route covariate collinearity
+
+Of the 1,140 routes with ≥8 sites, **564 (49.5%)** have ≥10-percentage-point site contrasts in **both wetland vegetation and developed cover**. After averaging annual cover within each physical site and subtracting the route-specific mean from each 500-m site fraction, the *descriptive* within-route Pearson correlations are:
+
+- wetland vegetation vs developed cover: **−0.198**;
+- wetland vegetation vs forest: **−0.269**;
+- wetland vegetation vs agriculture: **−0.348**;
+- wetland vegetation vs open water: **−0.055**;
+- forest vs agriculture: **−0.512**.
+
+These are simple environment-only correlations across nested physical sites, **not effect sizes or uncertainty estimates for frog habitat use**. Nonzero composition dependence remains, and any later ecological model must guard against collinearity and road-related detection bias. The result supports including wetland vegetation and open water as **distinct prespecified axes**, rather than assuming they are interchangeable. Route means were removed only to describe *within-route* contrast availability, not to infer habitat causality.
