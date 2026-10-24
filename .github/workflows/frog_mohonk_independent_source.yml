@@ -1,0 +1,29 @@
+name: Mohonk vernal pool independent frog-salamander archive audit
+on:
+  push:
+    branches:
+      - research/ontogenetic-interaction-phenology-2026-10
+    paths:
+      - "ecology/data/mohonk/**"
+      - ".github/workflows/frog_mohonk_independent_source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-historical-pond-stage-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Retrieve and verify Mohonk Preserve original DwC archive
+        run: python ecology/data/mohonk/fetch_and_audit.py
+      - name: Publish public original archive and metadata receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mohonk_original_darwin_core_stage_records
+          path: data/mohonk_source/
+          if-no-files-found: warn
