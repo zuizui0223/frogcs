@@ -104,7 +104,7 @@ def water_fraction(ds,lat,lon,radius_m):
 def run(coords,calendar_path,out):
     import rasterio
     nine=read_sites(coords,calendar_path)
-    sites=[nine[k] for k in (0,3,6)]  # one deterministic state/event in 2001, 2008, 2015
+    sites=list(nine)  # all three state/event samples per year; 9 in total
     paths={}
     rec=[]
     transferred=0
@@ -134,7 +134,7 @@ def run(coords,calendar_path,out):
     report={"analysis":"jrc_fully_prior_month_naamp_site_pilot_v0_1",
             "dataset":"JRC Global Surface Water MonthlyHistory VER5-0",
             "data_producer":"EC JRC/Google", "citation":"Pekel et al. 2016 doi:10.1038/nature20584",
-            "status":"outcome_blind_environment_only", "sample_selection":"first state of each year (2001,2008,2015) from fixed 9-event DSWE metadata pilot",
+            "status":"outcome_blind_environment_only", "sample_selection":"all three alphabetically selected states per year (2001,2008,2015) from fixed outcome-blind 9-event DSWE metadata design",
             "previous_calendar_month_only":True,
             "same_month_and_future_data_excluded":True,
             "months_are_not_day_of_survey_state":True,
