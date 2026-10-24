@@ -1,0 +1,33 @@
+name: Takahashi salamander egg predation original Dryad source audit
+on:
+  push:
+    branches: [research/ontogenetic-interaction-phenology-2026-10]
+    paths:
+      - "ecology/dryad_takahashi/fetch_original_experiment.py"
+      - "ecology/dryad_takahashi/test_dryad_source.py"
+      - ".github/workflows/frog_dryad_salamander_experiment_source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-experimental-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify source mismatch and login-page rejection
+        run: python -m unittest -v ecology/dryad_takahashi/test_dryad_source.py
+      - name: Verify original egg-mass table via public Dryad download and SHA256
+        run: |
+          python ecology/dryad_takahashi/fetch_original_experiment.py \
+            --outdir data/dryad_takahashi
+      - name: Preserve complete retrieval proof or honest blocked receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-dryad-salamander-experiment-source-audit
+          path: data/dryad_takahashi/
+          if-no-files-found: warn
