@@ -1,0 +1,24 @@
+name: Independent frog wetland field-panel source-only validation
+on:
+  push:
+    branches:
+      - research/chorus-prospective-route-panel-2026-10-24
+    paths:
+      - "studies/vegetation_hydrology/prospective_route_panel/**"
+      - ".github/workflows/vegetation_hydrology_prospective_panel_qc.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prereadback-panel-qa:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology/prospective_route_panel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run five field-schema and environmental panel safety tests
+        run: python -m unittest -v test_field_validator.py
