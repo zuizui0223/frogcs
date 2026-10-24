@@ -1,0 +1,86 @@
+name: NAAMP full 15-year JRC original-water environmental reconciliation
+on:
+  push:
+    branches:
+      - research/vegetation-hydrology-feasibility-2026-10
+    paths:
+      - ".github/workflows/vegetation_hydrology_jrc_full_reconciliation.yml"
+      - "studies/vegetation_hydrology/scripts/audit_jrc_full_panel.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-year-and-calendar-reconciliation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install environment-only Python dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Check unobserved pixels and source consistency tests
+        run: python -m unittest discover -s tests -p test_audit_jrc_full_panel.py -v
+      - name: Restore 2001 reconciled data plus 84 water source shards and pinned calendar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/annual/2001 data/shard-artifacts data/year-shards data/source
+          gh run download 40059724239 --repo zuizui0223/frogcs --name naamp-2001-jrc-water-reconciled-42sources-7511site-months --dir data/annual/2001
+          gh run download 40059767782 --repo zuizui0223/frogcs --dir data/shard-artifacts
+          gh run download 39960918335 --repo zuizui0223/frogcs --name public-NAAMP-outcome-blind-site-frame --dir data/source
+      - name: Repackage provider shard receipts into exactly 84 independently validated archives
+        run: |
+          python - <<'PY'
+          import pathlib,zipfile
+          source=pathlib.Path('data/shard-artifacts')
+          output=pathlib.Path('data/year-shards')
+          n=0
+          for year in range(2002,2016):
+              for shard in range(6):
+                  name=f'naamp-jrc-{year}-shard{shard}-of6-environment-only'
+                  d=source/name
+                  if not d.is_dir():
+                      raise RuntimeError(f'missing source artifact {name}')
+                  cs=list(d.rglob('*_500m_sites.csv'))
+                  receipts=list(d.rglob('*_receipt.json'))
+                  if len(cs)!=1 or len(receipts)!=1:
+                      raise RuntimeError(f'incomplete files for {name}: {len(cs)} csv, {len(receipts)} receipts')
+                  dest=output/str(year)
+                  dest.mkdir(parents=True,exist_ok=True)
+                  with zipfile.ZipFile(dest/f'shard{shard}.zip','w',compression=zipfile.ZIP_DEFLATED) as z:
+                      for p in (cs[0],receipts[0]):z.write(p,arcname=p.name)
+                  n+=1
+          if n!=84:raise RuntimeError('source shard count !=84')
+          print(f'Validated presence of {n} shard artifacts')
+          PY
+      - name: Reconcile each original year to the exact original NAAMP survey calendar
+        run: |
+          set -euo pipefail
+          for yr in $(seq 2002 2015); do
+            python scripts/merge_jrc_shards.py \
+              --year "$yr" \
+              --shard-count 6 \
+              --shard-dir "data/year-shards/$yr" \
+              --coordinates data/source/accepted_coordinates.csv \
+              --site-calendar data/source/survey_site_calendar.csv \
+              --out-dir "data/annual/$yr"
+          done
+      - name: Fail closed unless all 15 original-year pixel rows, hashes and quotas match
+        run: |
+          python scripts/audit_jrc_full_panel.py \
+            --year-dir data/annual \
+            --source-workload feasibility/JRC_SOURCE_WORKLOAD_BY_YEAR_2001_2015.json \
+            --out-dir data/full-jrc
+      - name: Upload reconciled 15-year source-only water environment
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-full-jrc-2001-2015-172153-station-months
+          path: studies/vegetation_hydrology/data/full-jrc/
+          if-no-files-found: error
