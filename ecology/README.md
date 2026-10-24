@@ -1,4 +1,16 @@
 # Frog chorus as a temporal gateway into stage-structured interaction networks
+
+## Independent ecological result — Mohonk vernal pools (25 October 2026)
+
+A NEW empirical observation series has now been analysed independently of NAAMP: **11 ponds, 59 pond-years, 240 sampling dates (2016–2021)** from the original [Mohonk Preserve GBIF-US archive](https://doi.org/10.15468/dypfbs). Of **44 pond-years** where both wood-frog and spotted-salamander eggs were seen, first positive wood-frog egg detection preceded spotted-salamander egg detection in **29**, tied in **14**, and followed in **1**. Across **31 pond-date visits**, wood-frog tadpoles and spotted-salamander eggs were **co-detected**; these occurred in **29 of 59 pond-years**. No direct attacks or offspring survival were recorded.
+
+This is a **recurring cross-stage trophic opportunity**, not proof of predation or predator-driven fitness change. It complements, but does NOT replicate, the published experimental tadpole–egg interaction in Takahashi & Ruszala (2023), DOI 10.1002/ece3.10427. Nor is cross-life-stage seasonal overlap entirely new: Carroll, Saenz & Rudolf (2023), *Oikos*, DOI 10.1111/oik.09773 already measured adult-calling/larval overlap across nine amphibian species. The ecological step still lacking is an **actual interaction outcome** (direct predation/hatching survival) linked to the temporal stage overlap and real wetland conditions.
+
+- [Source-verified result and caveats](mohonk/MOHONK_WOODFROG_SALAMANDER_STAGE_PRIORITY_RESULT_2026-10-25.md)
+- [Ecology-first research note manuscript draft](mohonk/DRAFT_STAGE_ORDER_AND_TROPHIC_OPPORTUNITY_RESEARCH_NOTE_2026-10-25.md)
+- [Original-stage analysis script](data/mohonk/analyze_egg_stage_priority.py) and [4 synthetic quality tests](data/mohonk/test_stage_priority.py); [GitHub Actions SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/40112620306).
+- Mohonk data are independent of NAAMP; frozen JAE `main` is unchanged.
+
 Ecology-first research concept — 2026-10-24. **Ideas are hypotheses, not a new empirically demonstrated frogcs result.**
 
 ## The ecological paper, not a measurement-method paper
