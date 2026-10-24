@@ -1,0 +1,20 @@
+# Exploratory stage-overlap null, recorded BEFORE null-distribution computation
+Date: 2026-10-25
+
+**Scientific object:** an independent long-term field time series (Mohonk Preserve, DOI 10.15468/dypfbs), *not* the frogcs/NAAMP calling experiment. The biological aim is the temporal opportunity for *Lithobates sylvaticus* tadpoles and *Ambystoma maculatum* eggs to encounter one another in a vernal pool. The source records **co-detection, not predation**.
+
+**Exploratory transparency:** original pond-year first egg order (29 wood-first, 14 ties, 1 spotted-first) and 31 pond-day larva/egg co-detections were **already examined** before this new question. The source-wide marginal stage counts have also been inspected. This is an exploratory null-model benchmark, not a preregistered confirmatory test or independent hypothesis validation.
+
+**Fixed source:** original publisher GBIF DwC-A ZIP SHA256 `0309abd9afa4a224287d6853d79ae1f7111a3a7bb19b0d2337f05c280ef12b34`; `occurrence.txt` SHA256 `d52b288608a40c3b721f3561a57ace34728975522892a4fdc1d0b4f6ffb3610e`. Years **2016–2021** only, preserving assessed explicit zero cells. Unit `original pond × year × survey date`; **never** impute an unreported stage as zero.
+
+**Primary two-stage pair:** wood-frog `lifeStage=tadpole` and spotted-salamander `lifeStage=egg`. Secondary *different partner species*: wood-frog tadpole vs Jefferson salamander egg, a co-stage comparator **without validated tadpole→Jefferson egg predation**.
+
+**Sampling-schedule null:** for each pond-year keep the exact dates at which BOTH stage cells were assessed, n, and the numbers of frog-tadpole-positive dates a and salamander-egg-positive dates b. Randomly reallocate one stage's positive labels over its n sampled dates **within pond-year**, holding a and b fixed. Then observed joint positives `x` follow `Hypergeometric(N=n,K=a,draws=b)`. Convolve all pond-year exact hypergeometric distributions to evaluate the total overlap count, its expectation `Σab/n`, null 95% interval, and one-sided upper-tail exceedance; no independent pond-day binomial SE. Pond-year conditional permutation tests sampled-day co-alignment, NOT what happens between visits, predator behavior or hatching success.
+
+**Temporal-clustering sensitivity:** within each pond-year keep both observed binary stage sequences in date order and rotate the tadpole sequence cyclically by each possible shift, assigning each n possible shift equal weight. Convolve pooled pond-year circular-shift overlap distributions. This retains each stage's clustered pattern but wraps the end of the spring series to the beginning; it is a **sensitivity of sampled-event alignment**, not a realistic model of egg emergence dates. Use exact convolution rather than random Monte Carlo. Do not change pair, years, strata, thresholds or inference direction after outcomes.
+
+**Independent unit caveat:** years from the same 11 physical ponds are correlated. Exact conditional overlap distributions treat pond-year shifts as independently randomized; they are **descriptive reference distributions, not calibrated ecological independence p-values**. Report how many ponds carry the overlap and leave-one-pond-out sensitivity, and describe any upper-tail null exceedance only as within-sampling-date enrichment.
+
+**Time-order mechanism caveat:** frog egg first-positive survey date is an interval-censored proxy for breeding chronology; an observed tadpole date cannot be used to infer actual hatch lag without repeated hatching observations. Existing Takahashi & Ruszala lab predation results are from a separate system and cannot be multiplied by co-observation days to estimate annual predation, survival, or oxygen benefit.
+
+**Decision:** if the observed co-detection is not enriched compared with within-pond-year stage prevalence, the ecological result remains repeated encounter opportunity with no supported additional temporal alignment. If enriched, report more-than-chance *within-survey-day co-detection conditional on observed marginal frequencies*, not realized trophic interaction or fitness.
