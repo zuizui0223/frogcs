@@ -18,7 +18,8 @@ YEAR_START,YEAR_END=2001,2015
 JRC_REQUIRE=172153
 NLCD_REQUIRE=64779
 NO_FROG_FIELDS={"Species","CallingIndex","Abundance","Taxon"}
-NLCD_SHA="137ad705641e39b1a43acfb0d1c5c4aef1fce7024ccb788fb1efc67510a2c67a"
+NLCD_SHA="137ad705641e39b1a43acfb0d1c5c4aef1fce7024ccb788fb1efc67510a2c67a"  # LF-normalized original values
+NLCD_CRLF_SHA="b737c1e5d3177c96fd4ea0dcdcc0ceeb31e95a942e566dba6757d6d58bd36b0b"  # canonical csv.DictWriter output
 NAMES=("frac_woody_wetland","frac_emergent_wetland","frac_open_water",
        "frac_forest","frac_developed","frac_agriculture")
 
@@ -150,8 +151,10 @@ def main():
     raw=args.jrc.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=m.get("combined_csv_sha256"):
         raise ValueError("JRC full panel source checksum drift")
-    if hashlib.sha256(args.nlcd.read_bytes()).hexdigest()!=NLCD_SHA:
-        raise ValueError("NLCD C1V2 full panel source checksum drift")
+    nlcd_bytes=args.nlcd.read_bytes()
+    if (hashlib.sha256(nlcd_bytes).hexdigest()!=NLCD_CRLF_SHA or
+        hashlib.sha256(nlcd_bytes.replace(b"\r\n",b"\n")).hexdigest()!=NLCD_SHA):
+        raise ValueError("NLCD C1V2 data or expected line-ending normalisation drift")
     jrc=pd.read_csv(args.jrc,dtype={"RouteNumber":str,"SiteID":str,"SurveyYear":str,"PreviousMonth":str},low_memory=False)
     nlcd=pd.read_csv(args.nlcd,dtype={"RouteNumber":str,"SiteID":str},low_memory=False)
     if NO_FROG_FIELDS.intersection(jrc.columns)|NO_FROG_FIELDS.intersection(nlcd.columns):
