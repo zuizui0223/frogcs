@@ -1,0 +1,71 @@
+name: NAAMP NLCD x JRC full 15-year environmental identifiability
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - ".github/workflows/vegetation_hydrology_full_environment_identifiability.yml"
+      - "studies/vegetation_hydrology/scripts/audit_jrc_nlcd_identifiability.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  vegetation-water-observability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install environment-only numerical data tools
+        run: python -m pip install -r requirements.txt pandas
+      - name: Assert environment-only hypothesis tests and source gates
+        run: python -m unittest discover -s tests -p test_jrc_nlcd_identifiability.py -v
+      - name: Restore fully verified 15-year monthly original JRC water data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/verified-water data/annual-nlcd-source data/annual-nlcd-zips
+          gh run download 40061444450 --repo zuizui0223/frogcs --name naamp-full-jrc-2001-2015-172153-station-months --dir data/verified-water
+          gh run download 39960285085 --repo zuizui0223/frogcs --name naamp-original-nlcd-c1v2-2001-environment-only --dir data/annual-nlcd-source/2001
+          for year in $(seq 2002 2015); do
+            gh run download 39960918335 --repo zuizui0223/frogcs --name naamp-nlcd-c1v2-${year}-environment-only --dir data/annual-nlcd-source/${year}
+          done
+      - name: Repin and validate all 15 NLCD C1V2 annual source CSVs
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          for y in range(2001,2016):
+              root=Path('data/annual-nlcd-source')/str(y)
+              sources=list(root.rglob(f'nlcd_c1v2_{y}_site_year_buffers.csv'))
+              receipts=list(root.rglob(f'nlcd_c1v2_{y}_receipt.json'))
+              if len(sources)!=1 or len(receipts)!=1:
+                  raise RuntimeError(f'missing year={y}: CSVs={len(sources)},receipts={len(receipts)}')
+              with ZipFile(Path('data/annual-nlcd-zips')/f'annual_{y}.zip','w',compression=ZIP_DEFLATED) as out:
+                  for p in (sources[0],receipts[0]):out.write(p,arcname=p.name)
+          print('15 annual NLCD source archives and receipts prepared')
+          PY
+          python scripts/aggregate_nlcd_c1v2_panel.py \
+            --artifact-dir data/annual-nlcd-zips \
+            --out-dir data/completed-nlcd
+          echo '137ad705641e39b1a43acfb0d1c5c4aef1fce7024ccb788fb1efc67510a2c67a  data/completed-nlcd/nlcd_c1v2_2001_2015_site_year_buffers.csv' | sha256sum --check
+      - name: Join original water & vegetation and audit seasonally matched local water variation
+        run: |
+          python scripts/audit_jrc_nlcd_identifiability.py \
+            --jrc data/verified-water/jrc_2001_2015_previous_month_500m_environment_only.csv \
+            --jrc-manifest data/verified-water/jrc_2001_2015_full_environment_manifest.json \
+            --nlcd data/completed-nlcd/nlcd_c1v2_2001_2015_site_year_buffers.csv \
+            --out-dir data/full-environment-audit
+      - name: Publish environmental-only missingness and water/vegetation contrasts
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-2001-2015-vegetation-and-previous-month-water-QC
+          path: studies/vegetation_hydrology/data/full-environment-audit/
+          if-no-files-found: error
