@@ -1,0 +1,43 @@
+name: Independent original Dryad egg-predation factorial ecological verification
+on:
+  push:
+    branches:
+      - research/ontogenetic-interaction-phenology-2026-10
+    paths:
+      - "ecology/dryad_takahashi/reanalyse_original_factorial.py"
+      - "ecology/dryad_takahashi/test_factorial.py"
+      - ".github/workflows/frog_dryad_egg_survival_factorial.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-egg-mass-analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install NumPy only
+        run: python -m pip install 'numpy>=1.24,<3'
+      - name: Validate independent egg-mass unit and missing hatching periods
+        run: python -m unittest -v ecology/dryad_takahashi/test_factorial.py
+      - name: Restore exact SHA256-pinned publisher original egg-mass CSV
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/original_dryad
+          gh run download 40114789868 --repo zuizui0223/frogcs --name original-dryad-salamander-experiment-source-audit --dir data/original_dryad
+      - name: Independently re-tabulate eight treatment cells (32 egg masses)
+        run: |
+          python ecology/dryad_takahashi/reanalyse_original_factorial.py \
+            --source data/original_dryad/Hatch_w.csv \
+            --outdir data/reanalysis
+      - name: Preserve ecological reanalysis receipt and eight cell means
+        uses: actions/upload-artifact@v4
+        with:
+          name: takahashi_2023_original_32_egg_masses_reanalysis
+          path: data/reanalysis/
+          if-no-files-found: error
