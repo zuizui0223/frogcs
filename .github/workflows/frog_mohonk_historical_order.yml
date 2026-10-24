@@ -1,0 +1,39 @@
+name: Mohonk historical 1931-2021 egg ordering source-only sensitivity
+on:
+  push:
+    branches: [research/ontogenetic-interaction-phenology-2026-10]
+    paths:
+      - "ecology/data/mohonk/egg_order_historical_sensitivity.py"
+      - "ecology/data/mohonk/test_historical_order.py"
+      - ".github/workflows/frog_mohonk_historical_order.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  positive-only-records-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test first-positive detection and positive-only reporting rules
+        run: python -m unittest -v ecology/data/mohonk/test_historical_order.py
+      - name: Restore original GBIF archive independent of NAAMP
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/mohonk_source
+          gh run download 40111669598 --repo zuizui0223/frogcs --name mohonk_original_darwin_core_stage_records --dir data/mohonk_source
+      - name: Audit historical egg detection precedence without climate-trend inference
+        run: |
+          python ecology/data/mohonk/egg_order_historical_sensitivity.py \
+            --source data/mohonk_source/mohonk_original_dwca.zip \
+            --outdir data/mohonk_historical
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mohonk_1931_2021_egg_order_positive_only_sensitivity
+          path: data/mohonk_historical/
+          if-no-files-found: error
