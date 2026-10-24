@@ -1,0 +1,41 @@
+name: Independent Mohonk pond-stage ecological results
+on:
+  push:
+    branches:
+      - research/ontogenetic-interaction-phenology-2026-10
+    paths:
+      - "ecology/data/mohonk/analyze_egg_stage_priority.py"
+      - "ecology/data/mohonk/test_stage_priority.py"
+      - ".github/workflows/frog_mohonk_stage_priority.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  pond-year-stage-order:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify missing/zero and temporal-order negative controls
+        run: python -m unittest -v ecology/data/mohonk/test_stage_priority.py
+      - name: Restore the exact original CC0 Mohonk GBIF publisher archive (no NAAMP data)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/mohonk_source
+          gh run download 40111669598 --repo zuizui0223/frogcs --name mohonk_original_darwin_core_stage_records --dir data/mohonk_source
+      - name: Calculate 11-pool, 2016–2021 recorded stage order and co-detection
+        run: |
+          python ecology/data/mohonk/analyze_egg_stage_priority.py \
+            --source data/mohonk_source/mohonk_original_dwca.zip \
+            --out-dir data/mohonk_results
+      - name: Preserve source-linked, pond-pseudonymized derived ecological summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: mohonk_independent_frog_salamander_stage_priority_2016_2021
+          path: data/mohonk_results/
+          if-no-files-found: error
