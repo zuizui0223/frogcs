@@ -118,7 +118,10 @@ def main():
     p.add_argument("--source-workload",required=True,type=Path)
     p.add_argument("--out-dir",required=True,type=Path)
     args=p.parse_args()
-    expected=json.loads(args.source_workload.read_text(encoding="utf-8"))
+    workload=json.loads(args.source_workload.read_text(encoding="utf-8"))
+    expected=workload.get("per_year") if isinstance(workload,dict) else workload
+    if not isinstance(expected,list) or len(expected)!=15 or workload["total"]["visits"]!=EXPECTED_TOTAL_VISITS or workload["total"]["unique_site_month"]!=EXPECTED_TOTAL_SITE_MONTHS or workload["total"]["raster_months"]!=700:
+        raise ValueError("frozen source-workload inventory incomplete or inconsistent")
     rows,summary=combine(args.year_dir,expected)
     args.out_dir.mkdir(parents=True,exist_ok=True)
     csvout=args.out_dir/"jrc_2001_2015_previous_month_500m_environment_only.csv"
