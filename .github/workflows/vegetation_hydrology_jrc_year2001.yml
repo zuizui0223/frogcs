@@ -1,0 +1,50 @@
+name: Full 2001 NAAMP previous-month JRC water feasibility
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/run_jrc_prior_month_year.py"
+      - "studies/vegetation_hydrology/tests/test_jrc_year.py"
+      - ".github/workflows/vegetation_hydrology_jrc_year2001.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  all-source-months-2001:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install geospatial source-only dependencies
+        run: python -m pip install numpy rasterio pyproj
+      - name: Check source-only water extraction contract
+        run: python -m unittest discover -s tests -p test_jrc_year.py -v
+      - name: Restore exact outcome-blind NAAMP site/calendar source-frame artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/qc
+          gh run download 39960918335 --repo zuizui0223/frogcs --name public-NAAMP-outcome-blind-site-frame --dir data/qc
+      - name: Process each 2001 survey site by 10-degree tile and preceding month
+        run: |
+          python scripts/run_jrc_prior_month_year.py \
+            --year 2001 \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out-dir data/qc/jrc_2001
+      - name: Upload environment-only 2001 receipts and water pixels
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-2001-jrc-prior-month-water-source-only
+          path: |
+            studies/vegetation_hydrology/data/qc/jrc_2001/jrc_prev_month_2001_500m_sites.csv
+            studies/vegetation_hydrology/data/qc/jrc_2001/jrc_prev_month_2001_source_receipt.json
+          if-no-files-found: warn
