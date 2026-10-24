@@ -1,0 +1,43 @@
+name: Mohonk cross-stage co-detection exact null (independent ecology)
+on:
+  push:
+    branches:
+      - research/ontogenetic-interaction-phenology-2026-10
+    paths:
+      - "ecology/data/mohonk/analyze_stage_overlap_null.py"
+      - "ecology/data/mohonk/test_stage_overlap_null.py"
+      - ".github/workflows/frog_mohonk_stage_overlap_null.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  within-pond-year-exact-stage-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numpy for exact discrete convolutions
+        run: python -m pip install 'numpy>=1.24,<3'
+      - name: Test exact stage-label permutation, missingness and convolved reference law
+        run: python -m unittest -v ecology/data/mohonk/test_stage_overlap_null.py
+      - name: Restore exact original publisher archive; no NAAMP frog data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/mohonk_source
+          gh run download 40111669598 --repo zuizui0223/frogcs --name mohonk_original_darwin_core_stage_records --dir data/mohonk_source
+      - name: Run both partner species exact and temporal-clustering sensitive nulls
+        run: |
+          python ecology/data/mohonk/analyze_stage_overlap_null.py \
+            --source data/mohonk_source/mohonk_original_dwca.zip \
+            --outdir data/mohonk_stage_null
+      - name: Archive original-stage result with fixed-marginal/circular and leave-one-unit checks
+        uses: actions/upload-artifact@v4
+        with:
+          name: mohonk_independent_stage_co-detection_exact_null_2016_2021
+          path: data/mohonk_stage_null/
+          if-no-files-found: error
