@@ -1,0 +1,49 @@
+name: NAAMP 2002-2015 previous-month JRC water environment-only matrix
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-water-months:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        year: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install raster and geodesic dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Test previous-month water extraction contracts before each year
+        run: python -m unittest discover -s tests -p test_jrc_year.py -v
+      - name: Restore already checksum-validated source-only NAAMP station frame
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/qc
+          gh run download 39960918335 --repo zuizui0223/frogcs --name public-NAAMP-outcome-blind-site-frame --dir data/qc
+      - name: Extract full ${{ matrix.year }} calendar by original tile-month
+        run: |
+          python scripts/run_jrc_prior_month_year.py \
+            --year ${{ matrix.year }} \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out-dir data/qc/jrc_${{ matrix.year }}
+      - name: Archive environmental-only source manifest and measured water buffers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp-${{ matrix.year }}-jrc-previous-month-water-environment-only
+          path: |
+            studies/vegetation_hydrology/data/qc/jrc_${{ matrix.year }}/jrc_prev_month_${{ matrix.year }}_500m_sites.csv
+            studies/vegetation_hydrology/data/qc/jrc_${{ matrix.year }}/jrc_prev_month_${{ matrix.year }}_source_receipt.json
+          if-no-files-found: warn
