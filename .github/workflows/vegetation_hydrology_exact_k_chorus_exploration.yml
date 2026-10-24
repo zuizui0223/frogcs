@@ -1,0 +1,93 @@
+name: Exploratory exact-k NAAMP frog chorus placement by vegetation
+on:
+  push:
+    branches:
+      - research/chorus-habitat-conditional-exploration-2026-10
+    paths:
+      - ".github/workflows/vegetation_hydrology_exact_k_chorus_exploration.yml"
+      - "studies/vegetation_hydrology/ecological_exploration/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  frozen-model-and-source-guard-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install fixed model dependencies
+        run: python -m pip install -r studies/vegetation_hydrology/ecological_exploration/requirements.txt
+      - name: Verify pre-outcome exact-k enumerator and model/source gates
+        run: |
+          cd studies/vegetation_hydrology/ecological_exploration
+          python -m unittest discover -s tests -v
+  exploratory-NAAMP-outcome-readback:
+    needs: frozen-model-and-source-guard-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned model dependencies
+        run: python -m pip install -r studies/vegetation_hydrology/ecological_exploration/requirements.txt
+      - name: Restore source-verified NLCD, JRC water and accepted physical-site coordinates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/environment/water data/environment/nlcd/oldest data/environment/nlcd/other data/environment/original-geometry data/environment/assembled
+          gh run download 40061444450 --repo zuizui0223/frogcs --name naamp-full-jrc-2001-2015-172153-station-months --dir data/environment/water
+          gh run download 39960285085 --repo zuizui0223/frogcs --name naamp-original-nlcd-c1v2-2001-environment-only --dir data/environment/nlcd/oldest
+          gh run download 39960918335 --repo zuizui0223/frogcs --dir data/environment/nlcd/other
+          gh run download 39960918335 --repo zuizui0223/frogcs --name public-NAAMP-outcome-blind-site-frame --dir data/environment/original-geometry
+      - name: Assemble fifteen original-year USGS land-cover environment tables without acoustic data
+        run: |
+          python - <<'PY'
+          import pathlib,hashlib,pandas as pd
+          root=pathlib.Path('data/environment')
+          annual=sorted((root/'nlcd').rglob('nlcd_c1v2_*_site_year_buffers.csv'))
+          if len(annual)!=15:
+              raise RuntimeError(f'expect 15 original-year NLCD C1V2 annual tables: {len(annual)}')
+          checked=[];seen=set()
+          for f in annual:
+              year=int(f.name.split('_')[2])
+              if year in seen or not 2001<=year<=2015:raise RuntimeError('duplicate/missing source year')
+              seen.add(year)
+              receipt=f.with_name(f'nlcd_c1v2_{year}_receipt.json')
+              if not receipt.exists():raise RuntimeError('original-year provenance receipt missing')
+              import json
+              r=json.loads(receipt.read_text())
+              if r.get('year')!=year or 'Collection 1.2' not in r.get('version',''):
+                  raise RuntimeError('wrong NLCD collection/year source')
+              df=pd.read_csv(f,dtype={'RouteNumber':str,'SiteID':str})
+              if len(df)!=2*df[['RouteNumber','SiteID','year']].drop_duplicates().shape[0] or not (df.qc_status=='ok').all():
+                  raise RuntimeError('invalid original categorical environment coverage')
+              checked.append(df)
+          joined=pd.concat(checked,ignore_index=True)
+          if len(joined)!=129558 or joined[['RouteNumber','SiteID','year','radius_m']].duplicated().any():
+              raise RuntimeError('frozen full-year NLCD panel identity mismatch')
+          target=root/'assembled'/'nlcd_c1v2_2001_2015_site_year_buffers.csv'
+          joined.sort_values(['year','RouteNumber','SiteID','radius_m']).to_csv(target,index=False)
+          print('Full 15-year NLCD environmental source: 129558 site-year-buffer records')
+          PY
+      - name: Access original checksum-pinned NAAMP frog outcomes for new exploratory study only
+        run: |
+          python studies/vegetation_hydrology/ecological_exploration/run_exact_k_environment.py \
+            --repo-root . \
+            --nlcd data/environment/assembled/nlcd_c1v2_2001_2015_site_year_buffers.csv \
+            --water data/environment/water/jrc_2001_2015_previous_month_500m_environment_only.csv \
+            --coordinates data/environment/original-geometry/accepted_coordinates.csv \
+            --out data/environment/exploratory_acoustic_results.json
+      - name: Publish complete exploratory / non-estimability result, never to RC6
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exploratory-exact-k-frog-habitat-location-audit-not-independent-replication
+          path: data/environment/exploratory_acoustic_results.json
+          if-no-files-found: warn
