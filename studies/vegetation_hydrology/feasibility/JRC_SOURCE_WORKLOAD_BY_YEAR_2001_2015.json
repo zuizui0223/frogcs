@@ -1,0 +1,140 @@
+{
+  "analysis": "outcome_blind_previous_month_jrc_tile_grouping_v0_2",
+  "date": "2026-10-24",
+  "dataset": "EC JRC/Google MonthlyHistory VER5-0",
+  "source_frame": "NAAMP Runs + Stops + accepted SiteID coordinates (checksum pinned)",
+  "frogs_read": false,
+  "previous_calendar_month_only": true,
+  "total": {
+    "visits": 185221,
+    "unique_site_month": 172153,
+    "raster_months": 700
+  },
+  "per_year": [
+    {
+      "year": 2001,
+      "visits": 8394,
+      "unique_site_month": 7511,
+      "source_tile_month": 42,
+      "months": 8,
+      "sites": 2901
+    },
+    {
+      "year": 2002,
+      "visits": 10425,
+      "unique_site_month": 8385,
+      "source_tile_month": 51,
+      "months": 7,
+      "sites": 3173
+    },
+    {
+      "year": 2003,
+      "visits": 11256,
+      "unique_site_month": 10579,
+      "source_tile_month": 50,
+      "months": 9,
+      "sites": 4136
+    },
+    {
+      "year": 2004,
+      "visits": 12431,
+      "unique_site_month": 11883,
+      "source_tile_month": 53,
+      "months": 9,
+      "sites": 4590
+    },
+    {
+      "year": 2005,
+      "visits": 12288,
+      "unique_site_month": 11627,
+      "source_tile_month": 49,
+      "months": 8,
+      "sites": 4509
+    },
+    {
+      "year": 2006,
+      "visits": 8996,
+      "unique_site_month": 8687,
+      "source_tile_month": 46,
+      "months": 9,
+      "sites": 3125
+    },
+    {
+      "year": 2007,
+      "visits": 11040,
+      "unique_site_month": 10585,
+      "source_tile_month": 45,
+      "months": 9,
+      "sites": 3983
+    },
+    {
+      "year": 2008,
+      "visits": 12313,
+      "unique_site_month": 11737,
+      "source_tile_month": 46,
+      "months": 8,
+      "sites": 4491
+    },
+    {
+      "year": 2009,
+      "visits": 15368,
+      "unique_site_month": 14040,
+      "source_tile_month": 46,
+      "months": 10,
+      "sites": 5077
+    },
+    {
+      "year": 2010,
+      "visits": 15247,
+      "unique_site_month": 14462,
+      "source_tile_month": 53,
+      "months": 8,
+      "sites": 5362
+    },
+    {
+      "year": 2011,
+      "visits": 14349,
+      "unique_site_month": 13471,
+      "source_tile_month": 48,
+      "months": 8,
+      "sites": 5097
+    },
+    {
+      "year": 2012,
+      "visits": 15454,
+      "unique_site_month": 14545,
+      "source_tile_month": 50,
+      "months": 8,
+      "sites": 5331
+    },
+    {
+      "year": 2013,
+      "visits": 14010,
+      "unique_site_month": 12728,
+      "source_tile_month": 46,
+      "months": 8,
+      "sites": 4860
+    },
+    {
+      "year": 2014,
+      "visits": 11784,
+      "unique_site_month": 10748,
+      "source_tile_month": 38,
+      "months": 8,
+      "sites": 4075
+    },
+    {
+      "year": 2015,
+      "visits": 11866,
+      "unique_site_month": 11165,
+      "source_tile_month": 37,
+      "months": 8,
+      "sites": 4069
+    }
+  ],
+  "notes": [
+    "Group by full 10-degree JRC tile and previous whole calendar month; never by individual station download",
+    "Counts.csv excluded",
+    "Source file sizes are not inferred from counts; current water pixels remain an environmentally descriptive data series"
+  ]
+}
