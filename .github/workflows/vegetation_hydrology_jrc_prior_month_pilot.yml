@@ -1,0 +1,54 @@
+name: EC JRC strictly preceding month water at real NAAMP sites
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/pilot_jrc_prior_month.py"
+      - "studies/vegetation_hydrology/tests/test_jrc_prior_month.py"
+      - ".github/workflows/vegetation_hydrology_jrc_prior_month_pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-prior-month-water:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify JRC grid math before accessing sources
+        run: python -m unittest discover -s tests -p test_jrc_prior_month.py -v
+      - name: Download original USGS NAAMP Runs, Stops and coordinates (no Counts)
+        run: python scripts/fetch_pinned_naamp_sources.py --out data/source
+      - name: Geometry QC of original coordinate table
+        run: |
+          python scripts/audit_site_coordinates.py \
+            --coordinates data/source/NAAMP_SiteCoordinates.csv \
+            --expected-sha256 f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83 \
+            --out data/qc
+      - name: Build outcome-blind event calendar
+        run: |
+          python scripts/prepare_survey_site_calendar.py \
+            --runs data/source/Runs.csv \
+            --stops data/source/Stops.csv \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --out data/qc/survey_site_calendar.csv
+      - name: Install only raster extraction dependencies
+        run: python -m pip install numpy rasterio pyproj
+      - name: Read strictly preceding month at 3 real NAAMP survey events
+        run: |
+          python scripts/pilot_jrc_prior_month.py \
+            --accepted-coordinates data/qc/accepted_coordinates.csv \
+            --site-calendar data/qc/survey_site_calendar.csv \
+            --out data/qc/jrc_prior_month_real_naamp_pilot.json
+      - name: Publish only environmental pilot receipt (no frog outcomes)
+        uses: actions/upload-artifact@v4
+        with:
+          name: jrc-gsw-previous-month-real-naamp-3events
+          path: studies/vegetation_hydrology/data/qc/jrc_prior_month_real_naamp_pilot.json
+          if-no-files-found: error
