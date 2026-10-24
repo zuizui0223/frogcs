@@ -53,7 +53,7 @@ def acquire(outdir):
                 status=int(response.status)
                 raw=response.read(MAX_BYTES+1)
                 attempt.update(status=status,final_url=response.url,
-                    content_type=response.headers.get("Content-Type"),returned_bytes":len(raw))
+                    content_type=response.headers.get("Content-Type"),returned_bytes=len(raw))
             if len(raw)>MAX_BYTES:raise ValueError("original exceeds 5MB safety cap")
             source=extract_original(raw)
             if source is None:
