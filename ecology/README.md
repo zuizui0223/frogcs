@@ -1,5 +1,18 @@
 # Frog chorus as a temporal gateway into stage-structured interaction networks
 
+## New biological result: nonrandom stage co-detection, not merely method development (25 October 2026)
+
+The original **Mohonk 2016–2021 pond-stage archive** gave 31 co-detections of wood-frog tadpoles with spotted-salamander eggs across 235 fully assessed pond-dates, versus **23.869 expected** after holding each pond-year's sampled dates and both stages' positive-date totals fixed (**1.299×**; exploratory exact conditional tail **0.00507**, stage-series circular shift **0.00526**). The pattern is strongly year dependent: excluding **2020** gives 21 versus 17.902 (tail **0.118**). A distinct Jefferson-salamander egg comparison yielded nine versus 8.1 (tail 0.398). This quantifies **opportunities** for a known interaction; it cannot establish that any Mohonk egg was eaten.
+
+The original **Takahashi & Ruszala 2023 2×4 predator-density×jelly-layer experiment** was also recovered, original `Hatch_w.csv` **SHA256 `8bf8166185fb1607710bd3bfd9a81d9f82ea34c1d8ae8874f562d5bee70076db`**. In 32 egg masses (n=4/group), mean intact jelly hatch rose **72.26%→91.11%** from zero to high wood-frog tadpole density; jelly-removed hatch fell **90.69%→0%**, a descriptive factorial contrast of **109.55 percentage points**. This experimental result was **already published in 2023**, and it was not measured at Mohonk. There is no verified new field causal effect on embryo survival.
+
+The older Mohonk 1931–2015 positive-only records give 129 both-egg pond-years: 26 wood-frog-first, 98 same-first-date, five salamander-first. They are not comparable negative/effort observations with the 2016–2021 source and are retained only as a descriptive historical direction check, not a climate trend.
+
+**Current ecology-first draft:** [Stage-structured timing of frog–salamander encounters in vernal pools](DRAFT_INTEGRATED_STAGE_TIMING_PREDATION_NATURAL_HISTORY_2026-10-25.md). [Full source/result receipt](EMPIRICAL_STAGE_ALIGNMENT_PLUS_ORIGINAL_EGG_DEFENSE_EXPERIMENT_2026-10-25.md). Data and test code: `ecology/data/mohonk/analyze_stage_overlap_null.py`, `ecology/dryad_takahashi/reanalyse_original_factorial.py`. Verified [field exact null](https://github.com/zuizui0223/frogcs/actions/runs/40114746815) and [experimental egg masses](https://github.com/zuizui0223/frogcs/actions/runs/40115055827).
+
+**What remains unobserved:** direct wild tadpole attacks, egg damage, natural egg-mass hatching and oxygen/jelly mediation, adult chorus→egg laying delay, and dragonfly/salamander larval antagonism in these ponds. Do not claim a signed food-web link was demonstrated *in nature*. The original JAE frogcs `main` is unchanged.
+
+
 ## Independent ecological result — Mohonk vernal pools (25 October 2026)
 
 A NEW empirical observation series has now been analysed independently of NAAMP: **11 ponds, 59 pond-years, 240 sampling dates (2016–2021)** from the original [Mohonk Preserve GBIF-US archive](https://doi.org/10.15468/dypfbs). Of **44 pond-years** where both wood-frog and spotted-salamander eggs were seen, first positive wood-frog egg detection preceded spotted-salamander egg detection in **29**, tied in **14**, and followed in **1**. Across **31 pond-date visits**, wood-frog tadpoles and spotted-salamander eggs were **co-detected**; these occurred in **29 of 59 pond-years**. No direct attacks or offspring survival were recorded.
