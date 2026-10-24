@@ -1,11 +1,5 @@
 name: Exploratory exact-k NAAMP frog chorus placement by vegetation
 on:
-  push:
-    branches:
-      - research/chorus-habitat-conditional-exploration-2026-10
-    paths:
-      - ".github/workflows/vegetation_hydrology_exact_k_chorus_exploration.yml"
-      - "studies/vegetation_hydrology/ecological_exploration/**"
   workflow_dispatch:
 permissions:
   contents: read
