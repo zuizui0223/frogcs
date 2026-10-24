@@ -156,6 +156,7 @@ def main():
     nlcd=pd.read_csv(args.nlcd,dtype={"RouteNumber":str,"SiteID":str},low_memory=False)
     if NO_FROG_FIELDS.intersection(jrc.columns)|NO_FROG_FIELDS.intersection(nlcd.columns):
         raise ValueError("forbidden frog outcome columns")
+    jrc["SurveyYear"]=pd.to_numeric(jrc["SurveyYear"],errors="raise").astype(int)
     nlcd=nlcd[(nlcd.radius_m==500)&(nlcd.qc_status=="ok")].copy()
     if len(nlcd)!=NLCD_REQUIRE or nlcd[["RouteNumber","SiteID","year"]].duplicated().any():
         raise ValueError("NLCD year site coverage mismatch")
