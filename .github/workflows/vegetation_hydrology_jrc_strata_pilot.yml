@@ -1,0 +1,38 @@
+name: JRC prior-month water across nine fixed NLCD land-cover strata
+on:
+  push:
+    branches: [research/vegetation-hydrology-feasibility-2026-10]
+    paths:
+      - "studies/vegetation_hydrology/scripts/pilot_jrc_habitat_strata.py"
+      - "studies/vegetation_hydrology/tests/test_jrc_habitat_strata.py"
+      - "studies/vegetation_hydrology/feasibility/JRC_PRIOR_MONTH_ENVIRONMENT_STRATIFIED_N9_2026-10-24.csv"
+      - ".github/workflows/vegetation_hydrology_jrc_strata_pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-geospatial-source-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: studies/vegetation_hydrology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install source-raster dependencies
+        run: python -m pip install numpy rasterio pyproj
+      - name: Validate frozen habitat-stratified sample
+        run: python -m unittest discover -s tests -p test_jrc_habitat_strata.py -v
+      - name: Extract preceding-month real water-pixels at nine stratified locations
+        run: |
+          python scripts/pilot_jrc_habitat_strata.py \
+            --manifest feasibility/JRC_PRIOR_MONTH_ENVIRONMENT_STRATIFIED_N9_2026-10-24.csv \
+            --out data/qc/jrc_habitat_stratified_9event_pilot.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jrc-gsw-nlcd-stratified-9events-no-frog-outcomes
+          path: studies/vegetation_hydrology/data/qc/jrc_habitat_stratified_9event_pilot.json
+          if-no-files-found: error
