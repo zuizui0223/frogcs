@@ -45,3 +45,10 @@ This strong calendar-month sampling dependence means analyses conditioned only o
 
 ## Decision and bounds
 Year **2001 environmental coverage is complete at the JRC monthly-source level**, but this is **not complete hydrological characterization**: satellite missingness depends heavily on season, only observable surface water is classified, and temporal resolution is monthly. The full 2002–2015 source-only design may be executed using bounded deterministic shards, provided that full annual product completeness and absent source failures are checked. The frozen RC6 JAE manuscript remains unmodified. A new ecological outcome protocol must be frozen before opening frog response data, with route/time blocked evaluation and recognition that NAAMP reuse is not independent external validation.
+
+## Monolithic execution failure, diagnosed and repaired
+The original single-job 2001 runner [40057552583](https://github.com/zuizui0223/frogcs/actions/runs/40057552583) was **cancelled at the configured 35-minute job limit** after processing only **30 of 42** monthly source tiles. The job wrote no complete output artifact: the original implementation buffered results until all tiles finished. Its logs showed approximately 72 seconds per source tile, making the sequential budget insufficient.
+
+**Repair and retest:** split the same original source URL set by a stable SHA256-based six-way partition; each shard independently downloaded its assigned tiles, audited pixel no-observation categories, and uploaded partial provenance. [All 6 shard jobs succeeded](https://github.com/zuizui0223/frogcs/actions/runs/40059404586), covering **42/42** source tile-month URLs and **7,511/7,511** survey site-month keys. [A separate canonical merger passed](https://github.com/zuizui0223/frogcs/actions/runs/40059724239), and its original pixel counts/flags/hashes match a second independently derived local audit for all 7,511 records.
+
+Thus the recovered result is **not** a partial or substituted source. The original cancelled run remains historical failure provenance, not an alternative scientific estimate.
