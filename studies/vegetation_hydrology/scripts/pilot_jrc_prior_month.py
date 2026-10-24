@@ -36,7 +36,7 @@ def preceding_month(iso_date):
 def jrc_tile(lat,lon):
     if not (24 <= lat <= 51 and -126 <= lon <= -66):
         raise ValueError("outside CONUS study region")
-    north=math.ceil(lat/10.0)*10
+    north=(math.floor(lat/10.0)+1)*10
     west=math.floor(lon/10.0)*10
     # JRC tiles are 10 x 10 degrees, 40,000 px each, from (-180,80).
     y=int(round((80-north)*4000))
