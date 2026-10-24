@@ -16,7 +16,10 @@ from datetime import date
 from pathlib import Path
 
 import numpy as np
-from ecology.data.mohonk.analyze_egg_stage_priority import load_original
+if __package__:
+    from .analyze_egg_stage_priority import load_original
+else:
+    from analyze_egg_stage_priority import load_original
 
 WOOD="Lithobates sylvaticus"
 SPOT="Ambystoma maculatum"
