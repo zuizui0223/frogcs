@@ -1,6 +1,6 @@
 import unittest
 from run_exact_k_environment import (
-    WATER_CSV_SHA,PRIOR_ALPHA,PRIOR_BETA,MIN_PRIMARY_EVENTS,
+    JRC_SHA,PRIOR_ALPHA,PRIOR_BETA,MIN_PRIMARY_EVENTS,
     MIN_PRIMARY_ROUTES,MIN_SECONDARY_EVENTS,MIN_SECONDARY_ROUTES,
     MIN_SECONDARY_SPREAD_FRACTION
 )
@@ -15,6 +15,6 @@ class PreOutcomeGuards(unittest.TestCase):
         self.assertEqual((MIN_PRIMARY_EVENTS,MIN_PRIMARY_ROUTES),(200,50))
         self.assertEqual((MIN_SECONDARY_EVENTS,MIN_SECONDARY_ROUTES),(100,30))
         self.assertEqual(MIN_SECONDARY_SPREAD_FRACTION,.10)
-        self.assertEqual(WATER_CSV_SHA,"bd291a4f42a9768a4dfc2d92c68050344bde4e5b2bbb0a923a1218399e96f81b")
+        self.assertEqual(JRC_SHA,"bd291a4f42a9768a4dfc2d92c68050344bde4e5b2bbb0a923a1218399e96f81b")
 
 if __name__=="__main__":unittest.main()
