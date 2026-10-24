@@ -14,7 +14,7 @@ class StagePrioritySafety(unittest.TestCase):
            rec("2019-03-08",WOOD,"egg",1),rec("2019-03-08",SPOT,"egg",3),
            rec("2019-03-08",WOOD,"tadpole",2),rec("2019-03-08",SPOT,"tadpole",0)]
         s,by,_y,_e=compute(r)
-        self.assertEqual(s["pondyears"],1)
+        self.assertEqual(s["pond_years"],1)
         self.assertEqual(s["wood_frog_egg_first"],1)
         self.assertEqual(s["median_gap_days_spotted_minus_wood"],7)
         self.assertEqual(s["pond_dates_frog_tadpole_and_spotted_egg_codetected"],1)
