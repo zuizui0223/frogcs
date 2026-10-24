@@ -1,7 +1,9 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import sys
 P=Path(__file__).resolve().parents[1]/"scripts"/"pilot_jrc_prior_month.py"
+sys.path.insert(0,str(P.parent))
 S=importlib.util.spec_from_file_location("jrc_month_probe",P)
 m=importlib.util.module_from_spec(S)
 S.loader.exec_module(m)
