@@ -1,0 +1,91 @@
+{
+  "status": "POSTHOC_FIVE_ECOSYSTEM_TYPED_ONTOGENETIC_NETWORK_COMPARISON",
+  "as_of": "2026-10-25",
+  "source_snapshots": {
+    "preston": "studies/stage_reversal_acoustic/macro/results/PRESTON2012_ORIGINAL_STAGE_RECIPROCITY_EVIDENCE_TIER_V0_1.json",
+    "otago": "studies/stage_reversal_acoustic/macro/results/OTAGO2011_ORIGINAL_STAGE_RECIPROCITY_PARASITE_CLASS_V0_1.json",
+    "estuaries": "studies/stage_reversal_acoustic/macro/results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json"
+  },
+  "common_definition": "Each original local ecosystem independently analysed at source-stage genus+epithet; bidirectional *consumer-resource* edges at differing predator/prey developmental stage; typed Predation-only filter. Stage-shift candidate is not observed attack timing.",
+  "counts": {
+    "n_local_ecosystems": 5,
+    "n_independent_compilation_programmes": 3,
+    "total_stage_shift_candidates_mixed_links_or_source_predation_only": 806,
+    "total_candidate_stage_shift_predation_only": 31,
+    "typed_filter_retention_fraction": 0.038461538461538464,
+    "typed_filter_removed_fraction": 0.9615384615384616,
+    "estimated_bivalve_module_site_pairs": 20,
+    "preston_predation_only_original_stage_switch_source_tagged_both_directions_observed": 0,
+    "n_site_networks_without_direct_attack_evidence_field": 4
+  },
+  "local_ecosystems": [
+    {
+      "id": "CA_QUICK_POND",
+      "source_programme": "Preston2012",
+      "region": "California, freshwater pond",
+      "site": "Quick Pond",
+      "all_interaction_stage_shift": 11,
+      "predation_only_stage_shift": 11,
+      "n_bivalve_motifs": 0,
+      "observed_bidirectional_stage_switch_status": "SOURCE_TAGGED_OBSERVED_ZERO",
+      "source_heterogeneity_note": "Predation 50 original observed, 40 inferred and 910 modelled; 1 reciprocal observed pair larva↔larva only"
+    },
+    {
+      "id": "NZ_OTAGO_HARBOUR",
+      "source_programme": "Mouritsen2011",
+      "region": "New Zealand, intertidal",
+      "site": "Otago Harbour",
+      "all_interaction_stage_shift": 27,
+      "predation_only_stage_shift": 0,
+      "n_bivalve_motifs": 0,
+      "observed_bidirectional_stage_switch_status": "NOT_ESTIMABLE_ORIGINAL_LINK_EVIDENCE_BLANK",
+      "source_heterogeneity_note": "All 27 mixed-class stage shift candidates involve parasites; exact Predation-only stage shift zero"
+    },
+    {
+      "id": "HECHINGER_CSM",
+      "source_programme": "Hechinger2011",
+      "region": "California, salt marsh",
+      "site": "CSM",
+      "all_interaction_stage_shift": 268,
+      "predation_only_stage_shift": 10,
+      "n_bivalve_motifs": 10,
+      "observed_bidirectional_stage_switch_status": "NOT_ESTIMABLE_COMPILED_PROJECTED_META_LINKS",
+      "source_heterogeneity_note": "Strict original binomial stage resolution excludes unresolved Himasthla B; free-living links in the source paper primarily estimated, no dated direct attack source evidence"
+    },
+    {
+      "id": "HECHINGER_EPB",
+      "source_programme": "Hechinger2011",
+      "region": "Baja California, estuary",
+      "site": "EPB",
+      "all_interaction_stage_shift": 242,
+      "predation_only_stage_shift": 10,
+      "n_bivalve_motifs": 10,
+      "observed_bidirectional_stage_switch_status": "NOT_ESTIMABLE_COMPILED_PROJECTED_META_LINKS",
+      "source_heterogeneity_note": "Strict original binomial stage resolution excludes unresolved Himasthla B; free-living links in the source paper primarily estimated, no dated direct attack source evidence"
+    },
+    {
+      "id": "HECHINGER_BSQ",
+      "source_programme": "Hechinger2011",
+      "region": "Baja California, estuary",
+      "site": "BSQ",
+      "all_interaction_stage_shift": 258,
+      "predation_only_stage_shift": 0,
+      "n_bivalve_motifs": 0,
+      "observed_bidirectional_stage_switch_status": "NOT_ESTIMABLE_COMPILED_PROJECTED_META_LINKS",
+      "source_heterogeneity_note": "Strict original binomial stage resolution excludes unresolved Himasthla B; free-living links in the source paper primarily estimated, no dated direct attack source evidence"
+    }
+  ],
+  "source_independence": "Five site foodwebs from three original dataset/compilation programmes. CSM/EPB/BSQ are three correlated subsets of a single Hechinger metaweb, not independent direct-attack experiments. Linked pairs within each ecosystem are not independent ecological replicates.",
+  "typed_interaction_failure_modes": [
+    "Parasitism, trophic transmission, concomitant predation on symbionts, and micropredation misread as direct predation",
+    "Unresolved morphospecies taxon label Himasthla B adds 35 false 'species-binomial' candidates in 3 estuaries (803 vs 768)",
+    "Projected estuary free-living food web link mistaken for observed reciprocal attack, especially 20 adult bivalve-to-heterospecific-larva motifs",
+    "Observed-observed reciprocal larval predation misread as ontogenetic reversal when stage does not change"
+  ],
+  "ecological_claim_limit": "Macro result is cross-source data architecture/evidence-certainty heterogeneity. Cannot infer natural frequency or climate gradients of true reversed predator-prey attacks from unobserved or projected source links.",
+  "informational_layer_connections": {
+    "FrogID_Australian_seasonality": "AU_36_PANEL_STAGE_ACOUSTIC_PHASE_RESULTS_V0_1.json; source-visible seasonal overlap only",
+    "Thapa_predator_stage_odor": "THAPA_ORIGINAL_588_PAIL_REANALYSIS_20261025.json; six-clutch uncertainty interval crosses zero",
+    "sound_alarm": "NOT_TESTED_IN_ANY_THREE_SOURCE_PROGRAMMES"
+  }
+}
