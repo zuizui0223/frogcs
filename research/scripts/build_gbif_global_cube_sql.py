@@ -10,6 +10,8 @@ official GBIF download service to obtain a citable DOI.
 import argparse
 import csv
 import json
+import urllib.request
+import urllib.error
 from pathlib import Path
 
 API="https://api.gbif.org/v1/occurrence/download/request"
@@ -93,6 +95,30 @@ def create(a):
     }
     (out/"manifest.json").write_text(
         json.dumps(metadata,indent=2)+"\n",encoding="utf-8")
+    if a.validate:
+        validations={}
+        for name in RESOLUTIONS:
+            payload=json.loads((out/(name+".payload.json")).read_text(encoding="utf-8"))
+            target=VALIDATION
+            request=urllib.request.Request(
+                target,data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type":"application/json",
+                         "User-Agent":"FrogcsGlobalCubePreflight/0.1"},
+                method="POST")
+            try:
+                with urllib.request.urlopen(request,timeout=45) as resp:
+                    raw=resp.read(15000).decode("utf-8","replace")
+                    validations[name]={"http_status":getattr(resp,"status",200),
+                                       "response_excerpt":raw[:1200]}
+            except (urllib.error.HTTPError,urllib.error.URLError,TimeoutError) as exc:
+                detail=""
+                if isinstance(exc,urllib.error.HTTPError):
+                    detail=exc.read(3000).decode("utf-8","replace")
+                validations[name]={"validation_error":str(exc),
+                                   "response_excerpt":detail[:1200]}
+        (out/"gbif_sql_validation.json").write_text(
+            json.dumps(validations,indent=2)+"\n",encoding="utf-8")
+        metadata["sql_validation"]=validations
     print("BEGIN_GBIF_SQL_CUBE_MANIFEST")
     print(json.dumps(metadata,indent=2))
     print("END_GBIF_SQL_CUBE_MANIFEST")
@@ -112,6 +138,7 @@ if __name__=="__main__":
     p.add_argument("--species",default="research/results/global_globi_gbif/gbif_species_match_audit.csv")
     p.add_argument("--out",default="research/results/global_globi_gbif/gbif_bulk_cube")
     p.add_argument("--self-test",action="store_true")
+    p.add_argument("--validate",action="store_true",help="Non-authenticated GBIF SQL query validation only; NEVER submit download")
     a=p.parse_args()
     if a.self_test:selftest()
     else:create(a)
