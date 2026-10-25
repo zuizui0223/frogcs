@@ -6,6 +6,7 @@ on:
     paths:
       - research/scripts/global_globi_gbif_pilot.py
       - research/scripts/build_gbif_global_cube_sql.py
+      - research/scripts/gbif_global_lifestage_bridge.py
       - .github/workflows/research_global_globi_gbif_pilot.yml
   workflow_dispatch:
 permissions:
@@ -32,6 +33,13 @@ jobs:
             --species research/results/global_globi_gbif/gbif_species_match_audit.csv \
             --out research/results/global_globi_gbif/gbif_bulk_cube \
             --validate
+      - name: Compare GloBI predator/prey stage combinations to GBIF global stage country facets
+        run: |
+          python research/scripts/gbif_global_lifestage_bridge.py --self-test
+          python research/scripts/gbif_global_lifestage_bridge.py \
+            --taxa research/results/global_globi_gbif/gbif_species_match_audit.csv \
+            --edges research/results/global_globi_gbif/selected_trophic_pairs.csv \
+            --out research/results/global_globi_gbif/stage_bridge
       - uses: actions/upload-artifact@v4
         if: success()
         with:
