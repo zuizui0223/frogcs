@@ -280,7 +280,7 @@ def summarize(phase,width):
                  simultaneous_better=sum(z["shifted_minus_synchronous_fraction"]<-1e-9
                     for z in shifts if z["PEM"]==pem))
             for pem in PEM],
-        interpretation="Within this wholly synthetic annual network, shifts can help or hurt; these are not population frequencies from real NWI PEM wetlands."
+        interpretation="Actual toy outcome records the sign in shifted_better/synchrony_better; in the tested parameters, every nonzero predator-stage phase shift raised the strict pair-resident invasion screen relative to zero phase. This is imposed toy behavior, not a universal ecological law or NWI field result."
     )
     out["unbiased_width_vs_explicit_narrow_cost_stress"]=compare
     out["single_case_phase_sign_examples"]={
