@@ -1,0 +1,785 @@
+{
+  "source": "US NPS GLKN DOI 10.57830/2320505, 2016–2023, public domain",
+  "source_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+  "downloaded_bytes": 68581307,
+  "protocol": "research/NPS_GREEN_FROG_WOOD_FROG_ACOUSTIC_CROSSLAG_SPEC_2026-10-26.md",
+  "status": "exploratory_after_frogcs_Rc6_and_NPS_results",
+  "source_checks": {
+    "rows_raw": 147913,
+    "rows_valid": 147913,
+    "duplicate_audio_species_records": 0,
+    "scored_species_audio_rows": 147913,
+    "annual_species_site_year_rows": 4593,
+    "parks": 7,
+    "physical_station_ids": 66,
+    "taxa": 13,
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "hydroperiod_annual_counts": {
+      "Permanent": 1957,
+      "Semi-permanent": 1562,
+      "Ephemeral": 1074
+    },
+    "annual_strong_rate": 0.3172218593511866
+  },
+  "comparison_count": 6,
+  "comparisons": [
+    {
+      "comparison": "primary_green_prior_to_wood_call",
+      "role": "primary_negative",
+      "lag_species": "Lithobates clamitans",
+      "response_species": "Lithobates sylvaticus",
+      "no_missing_exposure_imputed_to_zero": true,
+      "lag_exact_previous_calendar_year": true,
+      "main_adjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.014321148927807066,
+        "site_cluster_cr1_se": 0.042553127683051965,
+        "site_cluster_approx_ci95": [
+          -0.06908298133097479,
+          0.09772527918658891
+        ],
+        "own_previous_year_beta": -0.16283966966768748,
+        "nuisance_kept": [
+          "generic_previous_strong_fraction",
+          "log_current_target_effort",
+          "log_own_previous_effort"
+        ],
+        "nuisance_dropped": [
+          "log_exposure_previous_effort"
+        ],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.00032444419027112683,
+        "residualization": {
+          "iterations": 14,
+          "error": 2.7388458564584337e-11,
+          "max_group1_demean_error": 5.156750026991119e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "unadjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": -0.01832142519396528,
+        "site_cluster_cr1_se": 0.044139281601783785,
+        "site_cluster_approx_ci95": [
+          -0.10483441713346149,
+          0.06819156674553094
+        ],
+        "own_previous_year_beta": -0.1632302742533345,
+        "nuisance_kept": [],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.0005588076651208458,
+        "residualization": {
+          "iterations": 14,
+          "error": 2.7388458564584337e-11,
+          "max_group1_demean_error": 5.156750026991119e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "leave_one_park_out": {
+        "APIS": {
+          "estimable": true,
+          "beta": 0.023685905094370636,
+          "reason": null
+        },
+        "GRPO": {
+          "estimable": true,
+          "beta": 0.027849410076928677,
+          "reason": null
+        },
+        "INDU": {
+          "estimable": true,
+          "beta": 0.01061240088815517,
+          "reason": null
+        },
+        "ISRO": {
+          "estimable": true,
+          "beta": 0.003684687018250654,
+          "reason": null
+        },
+        "MISS": {
+          "estimable": true,
+          "beta": 0.026410377229698363,
+          "reason": null
+        },
+        "PIRO": {
+          "estimable": true,
+          "beta": -0.015314995560710584,
+          "reason": null
+        },
+        "SLBE": {
+          "estimable": true,
+          "beta": 0.01759014443905761,
+          "reason": null
+        }
+      }
+    },
+    {
+      "comparison": "reverse_wood_prior_to_green_call",
+      "role": "reverse",
+      "lag_species": "Lithobates sylvaticus",
+      "response_species": "Lithobates clamitans",
+      "no_missing_exposure_imputed_to_zero": true,
+      "lag_exact_previous_calendar_year": true,
+      "main_adjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 61,
+        "exposure_levels": {
+          "0": 326,
+          "1": 105
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.1181198166698195,
+        "site_cluster_cr1_se": 0.056627131996951116,
+        "site_cluster_approx_ci95": [
+          0.007130637955795313,
+          0.22910899538384366
+        ],
+        "own_previous_year_beta": 0.07233376498815564,
+        "nuisance_kept": [
+          "generic_previous_strong_fraction",
+          "log_current_target_effort",
+          "log_own_previous_effort"
+        ],
+        "nuisance_dropped": [
+          "log_exposure_previous_effort"
+        ],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.009359309641331966,
+        "residualization": {
+          "iterations": 14,
+          "error": 2.349089177146522e-11,
+          "max_group1_demean_error": 4.42286683467939e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "unadjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 61,
+        "exposure_levels": {
+          "0": 326,
+          "1": 105
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.14652900804182425,
+        "site_cluster_cr1_se": 0.05333377133499705,
+        "site_cluster_approx_ci95": [
+          0.04199481622523003,
+          0.25106319985841846
+        ],
+        "own_previous_year_beta": 0.056169895077652084,
+        "nuisance_kept": [],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.013675796049068115,
+        "residualization": {
+          "iterations": 14,
+          "error": 2.349089177146522e-11,
+          "max_group1_demean_error": 4.42286683467939e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "leave_one_park_out": {
+        "APIS": {
+          "estimable": true,
+          "beta": 0.124879266137585,
+          "reason": null
+        },
+        "GRPO": {
+          "estimable": true,
+          "beta": 0.09621272759416491,
+          "reason": null
+        },
+        "INDU": {
+          "estimable": true,
+          "beta": 0.10224218056596375,
+          "reason": null
+        },
+        "ISRO": {
+          "estimable": true,
+          "beta": 0.11048739254720333,
+          "reason": null
+        },
+        "MISS": {
+          "estimable": true,
+          "beta": 0.12340521871468935,
+          "reason": null
+        },
+        "PIRO": {
+          "estimable": true,
+          "beta": 0.1820971543598381,
+          "reason": null
+        },
+        "SLBE": {
+          "estimable": true,
+          "beta": 0.09453219059907543,
+          "reason": null
+        }
+      }
+    },
+    {
+      "comparison": "secondary_green_prior_to_peeper_call",
+      "role": "secondary",
+      "lag_species": "Lithobates clamitans",
+      "response_species": "Pseudacris crucifer",
+      "no_missing_exposure_imputed_to_zero": true,
+      "lag_exact_previous_calendar_year": true,
+      "main_adjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.006524447132911724,
+        "site_cluster_cr1_se": 0.023525230145620808,
+        "site_cluster_approx_ci95": [
+          -0.039585003952505055,
+          0.052633898218328506
+        ],
+        "own_previous_year_beta": -0.14418794052758177,
+        "nuisance_kept": [
+          "generic_previous_strong_fraction",
+          "log_current_target_effort",
+          "log_own_previous_effort"
+        ],
+        "nuisance_dropped": [
+          "log_exposure_previous_effort"
+        ],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.0003352486285372092,
+        "residualization": {
+          "iterations": 14,
+          "error": 1.785717605530733e-11,
+          "max_group1_demean_error": 3.3619198694775522e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "unadjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.005149714374229304,
+        "site_cluster_cr1_se": 0.02305889076164947,
+        "site_cluster_approx_ci95": [
+          -0.04004571151860366,
+          0.05034514026706227
+        ],
+        "own_previous_year_beta": -0.14304660995257257,
+        "nuisance_kept": [],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.00022560775485970798,
+        "residualization": {
+          "iterations": 13,
+          "error": 8.454336338146819e-11,
+          "max_group1_demean_error": 1.5918093232425434e-11
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "leave_one_park_out": {
+        "APIS": {
+          "estimable": true,
+          "beta": 0.007807907819186906,
+          "reason": null
+        },
+        "GRPO": {
+          "estimable": true,
+          "beta": -0.011385848095975147,
+          "reason": null
+        },
+        "INDU": {
+          "estimable": true,
+          "beta": 0.009237436469335331,
+          "reason": null
+        },
+        "ISRO": {
+          "estimable": true,
+          "beta": 0.019887391932350326,
+          "reason": null
+        },
+        "MISS": {
+          "estimable": true,
+          "beta": 0.008194952327830796,
+          "reason": null
+        },
+        "PIRO": {
+          "estimable": true,
+          "beta": 0.027172706105142688,
+          "reason": null
+        },
+        "SLBE": {
+          "estimable": true,
+          "beta": -0.012812670129592297,
+          "reason": null
+        }
+      }
+    },
+    {
+      "comparison": "secondary_green_prior_to_american_toad_call",
+      "role": "secondary",
+      "lag_species": "Lithobates clamitans",
+      "response_species": "Anaxyrus americanus",
+      "no_missing_exposure_imputed_to_zero": true,
+      "lag_exact_previous_calendar_year": true,
+      "main_adjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.07142108120347584,
+        "site_cluster_cr1_se": 0.05962088711090667,
+        "site_cluster_approx_ci95": [
+          -0.045435857533901225,
+          0.18827801994085291
+        ],
+        "own_previous_year_beta": -0.11642366210486048,
+        "nuisance_kept": [
+          "generic_previous_strong_fraction",
+          "log_current_target_effort",
+          "log_own_previous_effort"
+        ],
+        "nuisance_dropped": [
+          "log_exposure_previous_effort"
+        ],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.005095914327235568,
+        "residualization": {
+          "iterations": 14,
+          "error": 6.780427410012026e-11,
+          "max_group1_demean_error": 1.2764717854147583e-11
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "unadjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.07253434678543982,
+        "site_cluster_cr1_se": 0.057360027271018646,
+        "site_cluster_approx_ci95": [
+          -0.039891306665756715,
+          0.18496000023663636
+        ],
+        "own_previous_year_beta": -0.11182412955754809,
+        "nuisance_kept": [],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.005557682964417368,
+        "residualization": {
+          "iterations": 14,
+          "error": 6.780427410012026e-11,
+          "max_group1_demean_error": 1.2764717854147583e-11
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "leave_one_park_out": {
+        "APIS": {
+          "estimable": true,
+          "beta": 0.08459256523191058,
+          "reason": null
+        },
+        "GRPO": {
+          "estimable": true,
+          "beta": 0.033081488530954675,
+          "reason": null
+        },
+        "INDU": {
+          "estimable": true,
+          "beta": 0.10360558318810324,
+          "reason": null
+        },
+        "ISRO": {
+          "estimable": true,
+          "beta": 0.10521134854681417,
+          "reason": null
+        },
+        "MISS": {
+          "estimable": true,
+          "beta": 0.08943582719451225,
+          "reason": null
+        },
+        "PIRO": {
+          "estimable": true,
+          "beta": 0.04241631977774287,
+          "reason": null
+        },
+        "SLBE": {
+          "estimable": true,
+          "beta": 0.04210199428403958,
+          "reason": null
+        }
+      }
+    },
+    {
+      "comparison": "gray_treefrog_context_control",
+      "role": "context_control",
+      "lag_species": "Lithobates clamitans",
+      "response_species": "Dryophytes versicolor",
+      "no_missing_exposure_imputed_to_zero": true,
+      "lag_exact_previous_calendar_year": true,
+      "main_adjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": 0.005427175500750087,
+        "site_cluster_cr1_se": 0.030276982048661038,
+        "site_cluster_approx_ci95": [
+          -0.05391570931462555,
+          0.06477006031612573
+        ],
+        "own_previous_year_beta": 0.034560441988541385,
+        "nuisance_kept": [
+          "generic_previous_strong_fraction",
+          "log_current_target_effort",
+          "log_own_previous_effort",
+          "log_exposure_previous_effort"
+        ],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.00006476143751714561,
+        "residualization": {
+          "iterations": 14,
+          "error": 3.7262185400724743e-11,
+          "max_group1_demean_error": 7.015094854218822e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "unadjusted": {
+        "eligible_rows": 431,
+        "parks": 7,
+        "stations": 66,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 49,
+        "site_lag_exposure_transitions": 82,
+        "exposure_levels": {
+          "0": 166,
+          "1": 265
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": -0.029345863559456283,
+        "site_cluster_cr1_se": 0.035851568594691345,
+        "site_cluster_approx_ci95": [
+          -0.09961493800505132,
+          0.04092321088613875
+        ],
+        "own_previous_year_beta": -0.007594963654269767,
+        "nuisance_kept": [],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.0018531625924821241,
+        "residualization": {
+          "iterations": 14,
+          "error": 3.7262185400724743e-11,
+          "max_group1_demean_error": 7.015094854218822e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "leave_one_park_out": {
+        "APIS": {
+          "estimable": true,
+          "beta": 0.0015269074919412595,
+          "reason": null
+        },
+        "GRPO": {
+          "estimable": true,
+          "beta": 0.006221672852924599,
+          "reason": null
+        },
+        "INDU": {
+          "estimable": true,
+          "beta": 0.007972878466185811,
+          "reason": null
+        },
+        "ISRO": {
+          "estimable": true,
+          "beta": -0.006563545501599984,
+          "reason": null
+        },
+        "MISS": {
+          "estimable": true,
+          "beta": 0.019865824742036492,
+          "reason": null
+        },
+        "PIRO": {
+          "estimable": true,
+          "beta": 0.027549265392092438,
+          "reason": null
+        },
+        "SLBE": {
+          "estimable": true,
+          "beta": -0.01742125719763848,
+          "reason": null
+        }
+      }
+    },
+    {
+      "comparison": "bullfrog_prior_to_wood_call",
+      "role": "secondary_predator_guild",
+      "lag_species": "Lithobates catesbeianus",
+      "response_species": "Lithobates sylvaticus",
+      "no_missing_exposure_imputed_to_zero": true,
+      "lag_exact_previous_calendar_year": true,
+      "main_adjusted": {
+        "eligible_rows": 333,
+        "parks": 5,
+        "stations": 50,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 35,
+        "site_lag_exposure_transitions": 11,
+        "exposure_levels": {
+          "0": 321,
+          "1": 12
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": -0.028258229965138704,
+        "site_cluster_cr1_se": 0.0792963703276382,
+        "site_cluster_approx_ci95": [
+          -0.18367911580730958,
+          0.12716265587703215
+        ],
+        "own_previous_year_beta": -0.17710527370585671,
+        "nuisance_kept": [
+          "generic_previous_strong_fraction",
+          "log_current_target_effort",
+          "log_own_previous_effort"
+        ],
+        "nuisance_dropped": [
+          "log_exposure_previous_effort"
+        ],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.00023392879537738968,
+        "residualization": {
+          "iterations": 10,
+          "error": 2.496841622345869e-11,
+          "max_group1_demean_error": 1.7285756159779453e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "unadjusted": {
+        "eligible_rows": 333,
+        "parks": 5,
+        "stations": 50,
+        "years": [
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "yearly_park_strata": 35,
+        "site_lag_exposure_transitions": 11,
+        "exposure_levels": {
+          "0": 321,
+          "1": 12
+        },
+        "estimable": true,
+        "primary_exposure_previous_year_beta_risk_difference": -0.03527257025432873,
+        "site_cluster_cr1_se": 0.07511763218660233,
+        "site_cluster_approx_ci95": [
+          -0.1825031293400693,
+          0.11195798883141184
+        ],
+        "own_previous_year_beta": -0.17397110962840984,
+        "nuisance_kept": [],
+        "nuisance_dropped": [],
+        "partial_in_sample_R2_add_exposure_after_own_and_nuisance": 0.0003575705359596386,
+        "residualization": {
+          "iterations": 10,
+          "error": 2.496841622345869e-11,
+          "max_group1_demean_error": 1.7285756159779453e-12
+        },
+        "notes": "Exploratory within-park×year and physical-station FE LPM; in-sample association only. CR1 normal CI diagnostic with few parks, not causal."
+      },
+      "leave_one_park_out": {
+        "APIS": {
+          "estimable": true,
+          "beta": -0.026794907897104495,
+          "reason": null
+        },
+        "INDU": {
+          "estimable": false,
+          "beta": null,
+          "reason": "Insufficient independent parks/stations or within-site previous-year exposure transitions"
+        },
+        "MISS": {
+          "estimable": true,
+          "beta": -0.02979968340983883,
+          "reason": null
+        },
+        "PIRO": {
+          "estimable": true,
+          "beta": -0.028756362342908102,
+          "reason": null
+        },
+        "SLBE": {
+          "estimable": true,
+          "beta": -0.02646760405873733,
+          "reason": null
+        }
+      }
+    }
+  ],
+  "main_claim_ceiling": "Acoustic year-lag association, not verified aquatic predators, direct predation or recruitment",
+  "dryad_carroll_independent_larval_validation": false,
+  "RC6_manuscript_reanalysed": false,
+  "run_provenance": {
+    "run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40208016713",
+    "job_id": 121213041966,
+    "source": "SHA-verified live original NPS",
+    "report_readback": "from GitHub Actions live stdout",
+    "rc6_untouched": true
+  }
+}
