@@ -1,6 +1,6 @@
 # Independent study: developmental trophic reversal × acoustic timing (2026-10-25)
 
-**STATUS: INDEPENDENT STAGE-TIMING METHODS + DIRECT SOURCE REGISTRY; NO NEW ACOUSTIC × STAGE EMPIRICAL TEST PASSED.** This branch must not be merged into, or used to reopen, frozen JAE RC6 scientific results. The frogcs RC6 mainline and 2001–2015 NAAMP conclusions remain unchanged.
+**STATUS: FIRST ORIGINAL ANAX XLSX SOURCE AUDIT VERIFIED (298 DATED SURVEYS, 233 EMERGENCE COUNTS); NO NEW ACOUSTIC × STAGE EFFECT OR ALARM SIGNAL TEST PASSED.** This branch must not be merged into, or used to reopen, frozen JAE RC6 scientific results. The frogcs RC6 mainline and 2001–2015 NAAMP conclusions remain unchanged.
 
 ## Ecological question
 
@@ -13,7 +13,7 @@ Separate hypotheses:
 
 ## Verified anchor and source timeline
 
-**Litoria aurea × Anax papuensis.** Beranek et al. 2023 Ecology (DOI 10.1002/ecy.4108) documents tadpoles eaten by larval dragonflies from antecedent original work and juvenile/adult frogs consuming dragonflies during larval/emergence stages. Nine wetlands were surveyed over 2016–2020; most documented emergence predation was in austral October–November. Original field data are published at DOI 10.17632/9swstxknpz.1. This paper supports stage-specific reversal, not measured frog-call warnings or population-scale reversal rates.
+**Litoria aurea × Anax papuensis.** Beranek et al. 2023 Ecology (DOI 10.1002/ecy.4108) documents tadpoles eaten by larval dragonflies from antecedent original work and juvenile/adult frogs consuming dragonflies during larval/emergence stages. The 2023 paper describes nine monitored wetlands across 2016–2020. The uploaded original XLSX provides verifiable numerical site/date emergence counts for 2018-09–2019-04 only (see source audit), plus a month-only predation summary. Original field data are published at DOI 10.17632/9swstxknpz.1. This paper supports stage-specific reversal, not measured frog-call warnings or population-scale reversal rates.
 
 **FrogID v7** — Australian Museum version released 2026-09-09, >1 million expert-validated frog *occurrence records* from 2017-11-10 to 2024-11-09 (228 species). Recorded call timestamps give potential seasonal cues, but occurrence exports generally do not identify exact oviposition or natural frog absences.
 
@@ -68,7 +68,7 @@ Independent earlier *Litoria aurea* calling-versus-tadpole monitoring (https://d
 - `protocol_v0_2.json`: a frozen source, estimand and comparison contract.
 - `registry/source_screen_v0_2.csv`: source-confirmed direct edges, model-inferred edges and nonreciprocal controls.
 - `src/stage_acoustic_screen.py`: fail-closed original-row gate, source-week opportunity accounting, stage-specific call lead/negative-lag scan; no pseudo-dated trophic switches.
-- `tests/test_stage_acoustic_screen.py`: source gate / denominator / stage ontology / lag regression tests.
+- `tests/test_stage_acoustic_screen.py` and `tests/test_anax_original_xlsx.py`: source gate / denominator / stage ontology / month reconciliation / lag regression tests (**18 tests passing in GitHub Actions**).
 - `.github/workflows/stage_reversal_acoustic_qa.yml`: branch + PR test automation.
 
 Run:
@@ -81,10 +81,15 @@ python studies/stage_reversal_acoustic/src/stage_acoustic_screen.py --out /tmp/s
 
 Real model execution requires three true event-derived matrices (original frog recordings by site-week, annotated stage survey opportunities by the SAME geography/season, and direct predation observations by pair and stage). Mere DOI availability and a passing parser test are not a real outcome.
 
-### Data access limitation
+### Original Anax spreadsheet: source audit complete, cross-source joining still blocked
 
-- The published Mendeley `Anax_emergence.xlsx` source is visible at DOI 10.17632/9swstxknpz.1, but original file bytes and cell headers have not yet been retrieved. No row-level counts have been claimed.
-- The public Mendeley API endpoint required authorization in a live retrieval check; the dataset landing page and original paper are inspectable.
+- The user supplied the **actual** Mendeley `Anax_emergence.xlsx` file, verified under SHA256 `25fabdd0df0d8b679ff23033abbb9fc175067c835f1bd1ef41a5fc4890360c74`. It is deliberately **not uploaded to GitHub**.
+- We verified 298 physical code × date numerical visits (2018-09-04–2019-04-09), 233 emerging dragonflies and 48 positive visits. The exact eight-month emergence aggregate was recomputed from raw counted rows and matches the workbook's author-provided K:M table. The author-provided `Predation` column sums to 14 but is monthly only with unknown individual date/site provenance.
+- Central emergence period: 25th percentile **2018-10-16**, median **2018-11-01**, 75th percentile **2018-11-14**; highest weekly count **62** in the week beginning 2018-10-29.
+- Article prose cites four study seasons and nine wetlands, while the original XLSX has one numeric counted season, eleven recurring labels (plus sixteen incidental codes) and differences in seasonal descriptive wording. Do not silently harmonize.
+- A same-study-site peer-reviewed paper (https://doi.org/10.1007/s10531-022-02387-9) explicitly names nine constructed wetlands: permanent `1B, 3A`; ephemeral `1A,2A,2B,2C,4A,4B,4C`. These **nine named codes** account for **189 emergence counts in 230 dated survey rows**, while the additional recurring code `14B` alone holds **44**. This is a strong source-ontology sensitivity, **not** verified identity equivalence for 14A/B.
+- See [frozen original audit receipt](results/ANAX_ORIGINAL_SOURCE_AUDIT_20261025.json), [full Japanese evidence report](results/ANAX_ORIGINAL_REANALYSIS_JA_20261025.md), [nine-wetland cross-paper ledger](registry/ANAX_NINE_WETLAND_SOURCE_MAP_V0_1.json), and reproducible local script `src/audit_anax_original_xlsx.py`.
+
 - FrogID v7 has public occurrence information, but its original **recording-opportunity** denominator and date/coordinate join to dragonfly emergence remain to be audited.
 - There is no documented same-recorder, same-event receiver behaviour or playback intervention in these linked sources.
 
@@ -92,4 +97,4 @@ The source-gate result is **NOT_ESTIMABLE**, not negative evidence. Do not execu
 
 ## Execution accounting
 
-Created 2026-10-25 on `study/stage-reversal-acoustic-macro-20261025`. The earlier standalone v0.1 eight tests passed locally, but its composite stage-opportunity crossing is intentionally *not* the inferential v0.2 endpoint. v0.2 files and an independent CI QA workflow are now committed to the branch. No new acoustic-stage association, predation-switch time, or acoustic alarm effect has been estimated. No frozen JAE RC6 manuscript / SI / results have been changed.
+Created 2026-10-25 on `study/stage-reversal-acoustic-macro-20261025`. The v0.2 QA is green (18/18 tests), and the original user-provided Anax spreadsheet has been analyzed and recorded under a pinned SHA, including one-season phenology and nine-wetland sensitivity. **The stage × frog-call joint analysis remains NOT_ESTIMABLE**, because the workbook contains no frogs calling, dated matched prey/predator attacks, or receiver responses. No frozen JAE RC6 manuscript / SI / results have been changed.
