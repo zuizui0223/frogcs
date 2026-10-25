@@ -23,12 +23,14 @@
   "preregistered_analyses": {
     "y": "recorded individual Change (verify sign and exact agreement with Post-Pre first; negative signifies fewer line crosses after cue)",
     "factors": "Conditioning stage (larval/adult/water) × test cue (larval/adult), separately by predator species",
-    "experimental_unit": "conditioning pail within clutch; individual trials are nested technical/biological observations, not independent conditioning replicates",
+    "experimental_unit": "18 independently conditioned Pail IDs per predator experiment; individual test responses are nested in Pail, Clutch mapping audited but not counted as extra units.",
     "contrast1": "For each clutch, pooled mean cross-stage response (larval-trained adult-cue and adult-trained larval-cue) minus same-test-cue sham-trained control, equal weight across two directions",
     "contrast2": "For each clutch, same-stage response (larval-trained larval-cue and adult-trained adult-cue) minus same-test-cue sham-trained controls; compare within-clutch to contrast1",
     "fallback_if_missing_clutch_crossing": "source-grain issue; use stratum aggregation with no inferential p value and explicitly report incomplete crossover",
-    "uncertainty": "Clutch-level 95% t interval with df=number of complete distinct clutches minus 1; n_clutches usually 6, never individual-level t or SEM as main",
+    "uncertainty": "Stratified conditioning-Pail bootstrap (6 pails per train treatment) over equal-pail group means, 10,000 deterministic draws seeded 20261025, 2.5%/97.5% percentile interval. NOT an exact randomized test.",
     "sensitivity": [
+      "leave-one-pail-out",
+      "source metadata 21 Beetle pail×clutch cells vs 18 actual conditioning pails",
       "leave-one-clutch-out signs and intervals",
       "same-vs-cross within-clutch contrast",
       "all actual measurement rows vs paper-protocol n discrepancy",
@@ -47,5 +49,25 @@
     "predator identity reset does not mean predator-prey attack direction switches",
     "source/publication counts must not be silently reconciled"
   ],
-  "next_macro_bridge": "stage-dependent information-transfer indicator under within-study physically distinct predator groups, not pooled comparable attack-rate"
+  "next_macro_bridge": "stage-dependent information-transfer indicator under within-study physically distinct predator groups, not pooled comparable attack-rate",
+  "schema_audit_amendment_before_outcome": {
+    "reason": "Original published experiment randomization at conditioning Pail; source shows 18 distinct Pail IDs for each experiment. Beetle sheet contains 21 distinct Pail×Clutch cells across those 18 pails; Clutch is NOT a valid unique independent conditioning-unit identifier.",
+    "counts": {
+      "Beetle": {
+        "rows": 308,
+        "distinctPails": 18,
+        "distinctClutches": 6,
+        "pailClutchCells": 21
+      },
+      "Salamader": {
+        "rows": 280,
+        "distinctPails": 18,
+        "distinctClutches": 6,
+        "pailClutchCells": 18
+      }
+    },
+    "analysis_unit_repaired": "Pail, not Pail×Clutch; means per Pail×test cue, equal Pail weighting and condition-label clustering. Clutch remains an audit/sensitivity variable, not independent replicate.",
+    "bootstrap": "resample complete pails within each conditioning treatment at original n=6 per treatment, 10k deterministic bootstrap draws, readout percentiles and leave-one-pail-out influence; no individual iid standard error.",
+    "model": "within-sheet independent conditioning pails; no cross-paper/multi-clade pseudoreplication; bootstrapped ratio of frozen factor contrasts"
+  }
 }
