@@ -39,7 +39,9 @@ AGG_COSTS=(0.,.3,.8)
 PHASE_SWEEPS=[(s,d) for s in S_PHASES for d in D_PHASES]
 
 
-def annual_map(state,param,edge,vegetation):
+def annual_map(state,param,edge,vegetation,
+               use_risk_cue=True,use_reverse_frog_dragonfly=True,
+               use_direct_dragonfly_frog=True):
     """Positivity-preserving three-guild annual Beverton–Holt map."""
     f,s,d=state[...,0],state[...,1],state[...,2]
     r=param["r"]
@@ -47,9 +49,9 @@ def annual_map(state,param,edge,vegetation):
     a=param["a"]
     benefit=param["benefit"]
     sf=edge["salamander_larva_eats_frog_tadpole"]
-    df=edge["dragonfly_nymph_eats_frog_tadpole"]
+    df=edge["dragonfly_nymph_eats_frog_tadpole"]*float(use_direct_dragonfly_frog)
     ds=edge["dragonfly_nymph_risk_to_salamander_larva"]
-    fd=edge["frog_adult_eats_emerging_dragonfly"]
+    fd=edge["frog_adult_eats_emerging_dragonfly"]*float(use_reverse_frog_dragonfly)
     shelter=math.exp(-1.3*vegetation)
     # All birth parameters are fixed per parameter draw across phase scenario.
     rf=r[:,0]*(1+benefit[:,0]*d/(50+d)*fd/.18)
@@ -57,7 +59,7 @@ def annual_map(state,param,edge,vegetation):
     rd=r[:,2]*(1+benefit[:,2]*
                 (f/(50+f)*df+s/(50+s)*ds)/.18)
     frog_loss=(a[:,0]*s*sf*shelter/
-               (1+param["dragonfly_risk"]*d*ds)
+               (1+float(use_risk_cue)*param["dragonfly_risk"]*d*ds)
                +a[:,1]*d*df*shelter)
     salamander_loss=a[:,2]*d*ds
     dragonfly_loss=a[:,3]*f*fd*(1+.7*vegetation)
@@ -72,8 +74,9 @@ def annual_map(state,param,edge,vegetation):
 
 
 def rare_invasion_criterion(param,edge,vegetation,
-                            years=YEARS,last=TAIL):
+                            years=YEARS,last=TAIL, switches=None):
     """Simulate exact two-resident systems then geometric rare-invader growth."""
+    switches=switches or {}
     n=len(param["r"])
     worlds=np.full((3,n,3),45.0)
     for missing in range(3):
@@ -85,10 +88,10 @@ def rare_invasion_criterion(param,edge,vegetation,
             for missing in range(3):
                 trial=worlds[missing].copy()
                 trial[:,missing]=EPS
-                rare_next=annual_map(trial,param,edge,vegetation)[:,missing]
+                rare_next=annual_map(trial,param,edge,vegetation,**switches)[:,missing]
                 logs[missing] += np.log(
                     np.maximum(rare_next/EPS,1.e-300))/last
-        worlds=annual_map(worlds,param,edge,vegetation)
+        worlds=annual_map(worlds,param,edge,vegetation,**switches)
         if year>=years-last:
             lowest=np.minimum(lowest,worlds)
     for i in range(3):
@@ -343,6 +346,11 @@ def selftest():
     p=params_for_site(draws,"PEM1C",stages,"weak_dragonfly_cue",.05,0.)
     a=annual_map(np.full((8,3),20.),p,edge,.35)
     assert a.shape==(8,3) and np.all(np.isfinite(a)) and np.all(a>0)
+    assert np.allclose(a,annual_map(np.full((8,3),20.),p,edge,.35,
+             use_risk_cue=True,use_reverse_frog_dragonfly=True,
+             use_direct_dragonfly_frog=True))
+    assert not np.allclose(a,annual_map(np.full((8,3),20.),p,edge,.35,
+             use_risk_cue=False))
     criterion=rare_invasion_criterion(p,edge,.35,years=55,last=12)
     assert 0<=criterion["all_three_can_invade_pair_residents_draws"]<=8
     assert 0<=criterion["resident_pair_viable_parameter_draws"]<=8
