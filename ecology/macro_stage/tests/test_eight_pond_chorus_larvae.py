@@ -22,4 +22,16 @@ class OriginalEightPondEcology(unittest.TestCase):
         self.assertEqual(r["fixed"]["observed"],1)
         self.assertAlmostEqual(r["fixed"]["expected"],4/3,places=6)
         self.assertEqual(g[0]["partner"],"Naiad")
+    def test_named_tadpole_exposure_not_pooled_community(self):
+        rows=[{"pond":1,"year":2002,"date":i,
+               "frog_larvae":2 if i<3 else 0,
+               "H.ver":1 if i==2 else 0,
+               "Naiad":1 if i>=2 else 0}
+              for i in range(4)]
+        pooled,_=enemy_reference(rows,"Naiad")
+        species,_=enemy_reference(rows,"Naiad",frog_taxon="H.ver")
+        self.assertEqual(pooled["fixed"]["observed"],1)
+        self.assertEqual(species["fixed"]["observed"],1)
+        self.assertAlmostEqual(species["fixed"]["expected"],.5,places=6)
+
 if __name__=="__main__":unittest.main()
