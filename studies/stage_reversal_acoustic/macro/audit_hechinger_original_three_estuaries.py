@@ -195,7 +195,9 @@ def validate(result,reference):
         raise ValueError("original source dimensions or common macro endpoint drift")
     for site in SITES:
         if result["sites"][site]!=source["sites"][site]:
-            raise ValueError("site original source prediction changed: "+site)
+            differences={k:{"frozen":source["sites"][site].get(k),"recomputed":v}
+                         for k,v in result["sites"][site].items() if source["sites"][site].get(k)!=v}
+            raise ValueError("site original source prediction changed: "+site+" "+json.dumps(differences,sort_keys=True)[:1600])
     return True
 
 def main():
