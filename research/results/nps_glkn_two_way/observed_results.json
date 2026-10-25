@@ -1,0 +1,355 @@
+{
+  "source": "NPS GLKN 2016–2023 DOI 10.57830/2320505",
+  "status": "exploratory_posthoc_not_preregistered",
+  "source_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+  "source_bytes": 68581307,
+  "spec": "research/NPS_TWO_WAY_SITE_YEAR_HISTORY_SPEC_V0_1.md",
+  "question": "Does same-species historical chorus persist after exact common station×year and species×park×year environment?",
+  "source_audit": {
+    "rows_raw": 147913,
+    "rows_valid": 147913,
+    "duplicate_audio_species_records": 0,
+    "scored_species_audio_rows": 147913,
+    "annual_species_site_year_rows": 4593,
+    "parks": 7,
+    "physical_station_ids": 66,
+    "taxa": 13,
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "hydroperiod_annual_counts": {
+      "Permanent": 1957,
+      "Semi-permanent": 1562,
+      "Ephemeral": 1074
+    },
+    "annual_strong_rate": 0.3172218593511866
+  },
+  "base_sample": 1815,
+  "main_models": {
+    "one_way_original_unadjusted": {
+      "name": "one_way_unadjusted",
+      "estimable": true,
+      "n_site_taxon_year": 1815,
+      "n_park_taxon_year_fe": 195,
+      "n_park_station_year_fe": 435,
+      "n_park_taxon_trajectories": 38,
+      "n_stations": 66,
+      "prior_history_covariates_kept": [],
+      "nuisance_rank_dropped": [],
+      "coefficient_prior_same_species_strong": 0.4673871339045918,
+      "coefficients_nuisance": {},
+      "cluster_se": {
+        "station": {
+          "clusters": 66,
+          "se": 0.03415255107522913,
+          "normal_approx_95ci": [
+            0.4004481337971427,
+            0.5343261340120409
+          ]
+        },
+        "park_taxon": {
+          "clusters": 38,
+          "se": 0.03892376764582398,
+          "normal_approx_95ci": [
+            0.3910965493187768,
+            0.5436777184904068
+          ]
+        }
+      },
+      "convergence": {
+        "iterations": 1,
+        "error": 0
+      },
+      "interpretation": "Post-hoc descriptive LPM with species×park×year fixed effects only; no individual memory or plant/predator cause"
+    },
+    "one_way_exact_adjustment": {
+      "name": "one_way_adjusted_same_sample",
+      "estimable": true,
+      "n_site_taxon_year": 1815,
+      "n_park_taxon_year_fe": 195,
+      "n_park_station_year_fe": 435,
+      "n_park_taxon_trajectories": 38,
+      "n_stations": 66,
+      "prior_history_covariates_kept": [
+        "other_prior_fixed",
+        "log_current_effort",
+        "log_prior_effort",
+        "prior_years_seen"
+      ],
+      "nuisance_rank_dropped": [
+        "other_prior_missing"
+      ],
+      "coefficient_prior_same_species_strong": 0.4669102678353383,
+      "coefficients_nuisance": {
+        "other_prior_fixed": -0.08161073432567627,
+        "log_current_effort": 0.2821784871775011,
+        "log_prior_effort": 0.17197373855821027,
+        "prior_years_seen": -0.03300911459048812
+      },
+      "cluster_se": {
+        "station": {
+          "clusters": 66,
+          "se": 0.03374867183178768,
+          "normal_approx_95ci": [
+            0.40076287104503444,
+            0.5330576646256422
+          ]
+        },
+        "park_taxon": {
+          "clusters": 38,
+          "se": 0.038061695249667724,
+          "normal_approx_95ci": [
+            0.3923093451459896,
+            0.541511190524687
+          ]
+        }
+      },
+      "convergence": {
+        "iterations": 1,
+        "error": 0
+      },
+      "interpretation": "Post-hoc descriptive LPM with species×park×year fixed effects only; no individual memory or plant/predator cause"
+    },
+    "two_way_unadjusted": {
+      "name": "two_way_unadjusted",
+      "estimable": true,
+      "n_site_taxon_year": 1815,
+      "n_park_taxon_year_fe": 195,
+      "n_park_station_year_fe": 435,
+      "n_park_taxon_trajectories": 38,
+      "n_stations": 66,
+      "prior_history_covariates_kept": [],
+      "nuisance_rank_dropped": [],
+      "coefficient_prior_same_species_strong": 0.4783588906256127,
+      "coefficients_nuisance": {},
+      "cluster_se": {
+        "station": {
+          "clusters": 66,
+          "se": 0.037704533499597855,
+          "normal_approx_95ci": [
+            0.40445800496640094,
+            0.5522597762848245
+          ]
+        },
+        "park_taxon": {
+          "clusters": 38,
+          "se": 0.04506875163277023,
+          "normal_approx_95ci": [
+            0.39002413742538306,
+            0.5666936438258423
+          ]
+        }
+      },
+      "convergence": {
+        "iterations": 2,
+        "error": 1.6653345369377348e-16,
+        "max_group1_demean_error": 5.551115123125783e-17
+      },
+      "interpretation": "Post-hoc descriptive LPM with species×park×year and station×park×year fixed effects; no individual memory or plant/predator cause"
+    },
+    "two_way_adjusted": {
+      "name": "two_way_adjusted",
+      "estimable": true,
+      "n_site_taxon_year": 1815,
+      "n_park_taxon_year_fe": 195,
+      "n_park_station_year_fe": 435,
+      "n_park_taxon_trajectories": 38,
+      "n_stations": 66,
+      "prior_history_covariates_kept": [
+        "other_prior_fixed",
+        "log_current_effort",
+        "log_prior_effort",
+        "prior_years_seen"
+      ],
+      "nuisance_rank_dropped": [
+        "other_prior_missing"
+      ],
+      "coefficient_prior_same_species_strong": 0.4057280071626169,
+      "coefficients_nuisance": {
+        "other_prior_fixed": -0.5521904568732667,
+        "log_current_effort": 0.12676918349255165,
+        "log_prior_effort": 2.0783714319159947,
+        "prior_years_seen": -0.3754531685655977
+      },
+      "cluster_se": {
+        "station": {
+          "clusters": 66,
+          "se": 0.23574178335116686,
+          "normal_approx_95ci": [
+            -0.05632588820567008,
+            0.8677819025309039
+          ]
+        },
+        "park_taxon": {
+          "clusters": 38,
+          "se": 0.26534348140047576,
+          "normal_approx_95ci": [
+            -0.11434521638231554,
+            0.9258012307075494
+          ]
+        }
+      },
+      "convergence": {
+        "iterations": 2,
+        "error": 1.0755285551056204e-15,
+        "max_group1_demean_error": 5.551115123125783e-17
+      },
+      "interpretation": "Post-hoc descriptive LPM with species×park×year and station×park×year fixed effects; no individual memory or plant/predator cause"
+    }
+  },
+  "same_species_weak_vs_strong": {
+    "n_eligible_rows": 1067,
+    "two_way_unadjusted": {
+      "name": "prior_weak_vs_strong_two_way",
+      "estimable": true,
+      "n_site_taxon_year": 1067,
+      "n_park_taxon_year_fe": 143,
+      "n_park_station_year_fe": 427,
+      "n_park_taxon_trajectories": 33,
+      "n_stations": 66,
+      "prior_history_covariates_kept": [],
+      "nuisance_rank_dropped": [],
+      "coefficient_prior_same_species_strong": 0.3777848867378598,
+      "coefficients_nuisance": {},
+      "cluster_se": {
+        "station": {
+          "clusters": 66,
+          "se": 0.04598199085408935,
+          "normal_approx_95ci": [
+            0.2876601846638447,
+            0.46790958881187494
+          ]
+        },
+        "park_taxon": {
+          "clusters": 33,
+          "se": 0.05854396225309068,
+          "normal_approx_95ci": [
+            0.2630387207218021,
+            0.4925310527539175
+          ]
+        }
+      },
+      "convergence": {
+        "iterations": 25,
+        "error": 9.896861108416033e-10,
+        "max_group1_demean_error": 5.298638472428507e-10
+      },
+      "interpretation": "Post-hoc descriptive LPM with species×park×year and station×park×year fixed effects; no individual memory or plant/predator cause"
+    },
+    "two_way_adjusted": {
+      "name": "prior_weak_vs_strong_two_way_adjusted",
+      "estimable": true,
+      "n_site_taxon_year": 1067,
+      "n_park_taxon_year_fe": 143,
+      "n_park_station_year_fe": 427,
+      "n_park_taxon_trajectories": 33,
+      "n_stations": 66,
+      "prior_history_covariates_kept": [
+        "other_prior_fixed",
+        "log_current_effort",
+        "log_prior_effort"
+      ],
+      "nuisance_rank_dropped": [
+        "other_prior_missing",
+        "prior_years_seen"
+      ],
+      "coefficient_prior_same_species_strong": 0.26698070428889353,
+      "coefficients_nuisance": {
+        "other_prior_fixed": -0.9045844471226143,
+        "log_current_effort": 2.050838792301781,
+        "log_prior_effort": 1.3950886807111798
+      },
+      "cluster_se": {
+        "station": {
+          "clusters": 66,
+          "se": 0.2597593004485842,
+          "normal_approx_95ci": [
+            -0.2421475245903315,
+            0.7761089331681186
+          ]
+        },
+        "park_taxon": {
+          "clusters": 33,
+          "se": 0.3018623188814285,
+          "normal_approx_95ci": [
+            -0.3246694407187063,
+            0.8586308492964934
+          ]
+        }
+      },
+      "convergence": {
+        "iterations": 25,
+        "error": 9.896861108416033e-10,
+        "max_group1_demean_error": 5.298638472428507e-10
+      },
+      "interpretation": "Post-hoc descriptive LPM with species×park×year and station×park×year fixed effects; no individual memory or plant/predator cause"
+    }
+  },
+  "leave_one_park_out": [
+    {
+      "park_excluded": "APIS",
+      "n": 1578,
+      "estimable": true,
+      "estimate": 0.32061198003641384,
+      "reason": null
+    },
+    {
+      "park_excluded": "GRPO",
+      "n": 1707,
+      "estimable": true,
+      "estimate": 0.09176148331795428,
+      "reason": null
+    },
+    {
+      "park_excluded": "INDU",
+      "n": 1424,
+      "estimable": true,
+      "estimate": 0.8047152749463451,
+      "reason": null
+    },
+    {
+      "park_excluded": "ISRO",
+      "n": 1545,
+      "estimable": true,
+      "estimate": 0.641373608433781,
+      "reason": null
+    },
+    {
+      "park_excluded": "MISS",
+      "n": 1495,
+      "estimable": true,
+      "estimate": 0.5836738485834793,
+      "reason": null
+    },
+    {
+      "park_excluded": "PIRO",
+      "n": 1568,
+      "estimable": true,
+      "estimate": 0.40518063018642847,
+      "reason": null
+    },
+    {
+      "park_excluded": "SLBE",
+      "n": 1573,
+      "estimable": true,
+      "estimate": 0.17265694239491464,
+      "reason": null
+    }
+  ],
+  "limits": [
+    "Observed acoustic persistence, not same-individual fidelity.",
+    "Station-year FE removes generic station-state but NOT taxon-specific plant preference or abundance.",
+    "Fixed annual maximum CIV depends on effort and phenology; coefficients are predictive associations.",
+    "NPS does not measure emergent macrophyte structure, predator stages or rainfall recency.",
+    "This analysis was conceived after primary NPS result was seen; not a new independent confirmatory test.",
+    "Site and park×species cluster normal intervals are diagnostic rather than causal.",
+    "No NAAMP conditional C or live pond geometry is estimated."
+  ]
+}
