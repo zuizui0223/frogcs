@@ -1,0 +1,22 @@
+name: Research — NPS cross-lag taxon roster (blind)
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/nps_crosslag_roster.py
+      - .github/workflows/research_nps_crosslag_roster.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-blind-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3
+      - name: SHA-verified source taxonomy and effort coverage (no outcome fit)
+        run: python research/scripts/nps_crosslag_roster.py
