@@ -32,6 +32,11 @@ SOURCES = (
 def download(fid, filename):
     urls = (f"https://datadryad.org/downloads/file_stream/{fid}",
             f"https://datadryad.org/api/v2/files/{fid}/download")
+    if fid == 2986323:
+        # NLM official 2026 PMC AWS article-version object, CC-BY supplement.
+        # Independent publication-source fallback; not asserted byte-identical to Dryad.
+        urls += ("https://pmc-oa-opendata.s3.amazonaws.com/"
+                 "PMC10965031.1/arae014_suppl_supplementary_data.xlsx",)
     errors = []
     for url in urls:
         try:
