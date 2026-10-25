@@ -12,6 +12,14 @@ Authority: [RC6 README](../README.md) is locked for submission; this file owns *
 4. **Only after G0–G3** consider a *future combined mechanism paper* connecting RC6's acoustic pattern to measured stage and recruitment outcomes. A successful G1 proxy calibration alone cannot demonstrate predation. If G2/G3 fail, report a valid separate acoustic-history/observability or hydrological-filtering result rather than rewriting RC6.
 5. **The execution entry point** is [STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json](STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json) and [scripts/stage_legacy_integration_gate.py](scripts/stage_legacy_integration_gate.py). Its status does not itself confer mechanistic evidence or release permission.
 
+## First prospective-extension readout, 2026-10-26
+
+The separately frozen post-hoc NPS green-frog prior acoustic → wood-frog current acoustic **H1A suppression prediction failed**: 431 eligible station-years across 66 recorder stations and seven parks, two-way station and park-year fixed-effect adjusted slope **+0.0143** (site-cluster approximate 95% interval **−0.0691 to +0.0977**). The reverse wood-frog prior → green-frog current acoustic association was **+0.1181** (+0.0071 to +0.2291) but cannot identify direction-specific predation. [Outcome, decision and QA](results/nps_stage_crosslag/REPORT.md); [original readout](results/nps_stage_crosslag/observed_results.json). There is **no** measured tadpole result in these contrasts.
+
+Carroll eight-pond Dryad G0 [access receipt](results/CARROLL_8POND_G0_SOURCE_ACCESS_RECEIPT_2026-10-26.json) reports public source manifest/sha only; original workbook and README downloads are HTTP 401/403 for the executable audit. The adjacent Zenodo author script refers to adult and manual intermediate Excel inputs not separately listed in Dryad, so the adult→larva bridge is **not yet reproducible**. Do not present it as calibration.
+
+**Stop rule now active:** no H1A negative signal hunting by changing species, time lag, effort rules or season cutoffs. H1B measured aquatic predation and H3 physical dry-down reset remain distinct future hypotheses, not defeated by a null adult-calling result.
+
 ## One biological question
 
 > When a wetland's past community leaves surviving aquatic life stages, how does that **latent ontogenetic legacy** constrain where, when, and which frogs call, reproduce, and recruit after changing rainfall and hydroperiod?
@@ -120,4 +128,4 @@ No external portfolio management repository or physical repository merge is requ
 
 ## Next executable gate
 
-Prepare a **source-blind Carroll workbook schema + coverage audit**: list observed species × pond × year × life-stage, effort and missingness, then verify whether separate prior-year stage and next-year responses actually co-occur. Only then select the primary lag, study population and endpoint. This is a coverage-first, not outcome-selection, gate. Re-use the existing NPS and GloBI source receipts within frogcs rather than copying the same datasets into new project roots.
+Carroll source metadata has been frozen, but raw acquisition is blocked by API authorization (401) and website access restrictions (403). The next **mechanistic** gate is a genuinely co-located, source-verifiable pond×year×stage×hydroperiod panel with both acoustic history and measured overwintering larvae / egg fate. The NPS adult-acoustic H1A suppression result is unsupported and must not be retuned. Reuse source receipts within frogcs; do not copy unrelated dataset tables into the research root.
