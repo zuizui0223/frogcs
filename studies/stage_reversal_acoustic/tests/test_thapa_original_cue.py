@@ -72,6 +72,26 @@ class OriginalStageCueMath(unittest.TestCase):
         self.assertEqual(src["systems"]["salamander"]["available_pail_count_by_group"]["sham"]["adult"],5)
         self.assertEqual(src["systems"]["beetle"]["n_pail_cue_pairs_complete"],18)
 
+    def test_original_posthoc_clutch_sensitivity_protects_claim_ceiling(self):
+        import json
+        source=json.loads((Path(__file__).resolve().parents[1]/"macro"/"results"/"THAPA_ORIGINAL_588_PAIL_REANALYSIS_20261025.json").read_text())
+        v=source["systems"]["salamander"]["posthoc_six_clutch_paired_sensitivity"]
+        self.assertEqual(v["n_clutches"],6)
+        self.assertEqual(v["n_positive_clutch_effects"],5)
+        self.assertAlmostEqual(v["mean_effect"],6.833565,places=5)
+        self.assertLess(v["two_sided_t95_df5"][0],0)
+        self.assertGreater(v["two_sided_t95_df5"][1],0)
+        self.assertLess(v["clutch_bootstrap95"][0],0)
+        self.assertGreater(v["clutch_bootstrap95"][1],0)
+
+    def test_six_clutch_benchmark_constant(self):
+        test=mod.matched_clutch_sensitivity([2.]*6)
+        self.assertEqual(test["n_clutches"],6)
+        self.assertEqual(test["mean_effect"],2.0)
+        self.assertEqual(test["clutch_bootstrap95"],(2.0,2.0))
+        with self.assertRaisesRegex(ValueError,"six valid"):
+            mod.matched_clutch_sensitivity([2.] * 5)
+
     def test_source_sha_and_provenance_frozen(self):
         self.assertEqual(len(mod.SOURCE_SHA256),64)
         self.assertIn("pmc-oa-opendata",mod.SRC)
