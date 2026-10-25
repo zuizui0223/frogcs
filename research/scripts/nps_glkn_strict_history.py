@@ -211,13 +211,24 @@ def fit_with_block_bootstrap(panel, target="strong", adjusted=False,
     if panel.empty:
         return {"estimable": False, "why": "No variation in prior site use"}
     xx, yy, cols = make_linear_design(panel, target, adjusted)
-    k = xx.shape[1]
     if not np.isfinite(xx).all() or not np.isfinite(yy).all():
         return {"estimable": False, "why": "Missing adjusted covariates"}
+    if np.sum(xx[:, 0] ** 2) <= 1e-12:
+        return {"estimable": False, "why": "Own-history predictor unidentifiable"}
+    # Remove only nuisance predictors with no within-stratum variation or
+    # exact linear dependence, preserving the focal predictor first.
+    keep = [0]
+    dropped = []
+    for col in range(1, xx.shape[1]):
+        cand = keep + [col]
+        if np.linalg.matrix_rank(xx[:, cand]) == len(cand):
+            keep = cand
+        else:
+            dropped.append(cols[col])
+    xx = xx[:, keep]
+    cols = [cols[j] for j in keep]
+    k = xx.shape[1]
     XtX, Xty = xx.T@xx, xx.T@yy
-    rank = int(np.linalg.matrix_rank(XtX))
-    if rank < k:
-        return {"estimable": False, "why": f"Rank deficiency ({rank}/{k})"}
     est = np.linalg.solve(XtX, Xty)
     cluster = (panel.ParkCode.astype(str) + ":" +
                panel.ScientificName.astype(str)).to_numpy()
@@ -249,6 +260,7 @@ def fit_with_block_bootstrap(panel, target="strong", adjusted=False,
             float(np.quantile(valid, .025)),
             float(np.quantile(valid, .975))] if len(valid) >= 500 else None,
         "valid_boot_replicates": int(len(valid)),
+        "nuisance_covariates_dropped_for_identifiability": dropped,
         "note": ("Within species×park×year risk-difference-style slope, "
                  "cluster bootstrap by species×park trajectories; "
                  "not randomization or causal individual fidelity"),
