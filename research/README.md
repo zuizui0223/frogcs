@@ -2,6 +2,15 @@
 
 Status 2026-10-25: **independent prospective macroecology branch**, not a reopening of RC6 JAE or WFTS; `main` manuscript unaffected.
 
+## Corrected PEM meaning and mechanistic triad hypothesis (2026-10-25)
+
+**PEM = USFWS NWI Palustrine Emergent Wetland (freshwater emergent marsh), NOT phylogenetic eigenvector maps.** PEM1A=temporarily flooded, PEM1C=seasonally flooded, PEM1F=semipermanently flooded; PEM1 stems persist. Verified from official NWI GIS code schema ([4-row official receipt](results/NWI_PEM_OFFICIAL_CODE_READINESS_2026-10-25.json)). None of the original NAAMP/NPS listening sites currently has a **source-verified site×NWI PEM wetland polygon** assignment — no PEM-specific acoustic effect is claimed.
+
+- **[PEM wetland frog breeding synchrony and salamander/odonate network evidence synthesis](results/PEM_THREE_GUILD_NETWORK_SYNTHESIS_2026-10-25.md)**: strict separation of experimentally supported wood-frog explosive breeding reducing older-tadpole cannibalism, predator/prey phenological size mismatch, wrong inducible predator-specific defensive morph, 2009 Hokkaido D⊣S⊣F indirect protection and 2023 Australian frog→emerging-dragonfly reverse feeding.
+- **[Species-stage and NWI source-anchored new study protocol](PEM_STAGE_CONSTRAINT_NETWORK_SPEC_V0_1.md)**: test whether persistent PEM hydrology/plant structure predicts historical species-specific frog chorus sites and modifies larval predator constraints; preserves frozen RC6 and known NAAMP coordinate geometry blockers.
+- **[Synthetic-only PEM1A/C/F seasonal triad model](scripts/simulate_pem_three_guild_stage_balance.py)** / [synthetic report JSON](results/pem_three_guild_stage_balance/synthetic_results.json) / [successful CI](https://github.com/zuizui0223/frogcs/actions/runs/40203066228). 128 arbitrary parameter draws, 432 wetland×stage scenarios, 216 paired frog synchrony contrasts. Without imposed concentrated-brood crowding, 108/108 favor a narrow synchronized pulse; with a deliberately strong alternative density/resource cost, 96/108 favor dispersed breeding, 12 tie. **These numbers do NOT estimate empirical PEM wetland responses or actual coexistence; they show mechanism-dependent sign reversal in a transparent toy model.**
+- **Next actual data**: response-blind corrected physical NAAMP coordinates, NWI Wetlands MapServer polygons (code `ATTRIBUTE`), local hydroperiod time series, stem-structure and egg/larva predator-stage/individual abundance panels. Do not merge GloBI/GBIF 1° overlap as verified local predator encounter.
+
 ## Current full-source science endpoint (supersedes API first-page pilots)
 
 **[Audited full-global GloBI × GBIF stage, seasonal null and rainfall results](results/FULL_GLOBAL_GLOBI_GBIF_STAGE_TESTS_2026-10-25.md)** is the current interpretation source. The older [API pilot synthesis](results/GLOBAL_GLOBI_GBIF_MACRO_SYNTHESIS_2026-10-25.md) is historical feasibility provenance, **not** the strongest current evidence.
