@@ -1,0 +1,30 @@
+name: Global geolocated GloBI stage-structured observations
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/global_georeferenced_globi.py
+      - .github/workflows/research_global_globi_geo.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  georeferenced:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Smoke test stage, taxon and geographic source filters
+        run: python research/scripts/global_georeferenced_globi.py --self-test
+      - name: Retrieve real GloBI georeferenced feeding associations from six broad global boxes
+        run: python research/scripts/global_georeferenced_globi.py --out research/results/global_globi_geo
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: globi-geo-observed-global-interaction-events
+          path: research/results/global_globi_geo
+          if-no-files-found: error
