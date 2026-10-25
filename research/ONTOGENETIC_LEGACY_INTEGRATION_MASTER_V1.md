@@ -1,7 +1,16 @@
-# Stage legacy → chorus configuration: one integrated research contract (v1)
+# frogcs: RC6-to-stage-legacy future integration — scientific contract v1.1
 
-Date: 2026-10-25. **PROSPECTIVE / RESEARCH-ONLY. NO NEW EMPIRICAL RESULT.**  
+Created: 2026-10-25; integration policy revised: 2026-10-26. **PROSPECTIVE / RESEARCH-ONLY. NO NEW EMPIRICAL RESULT.**  
 Authority: [RC6 README](../README.md) is locked for submission; this file owns *only the future stage–hydrology–community extension*. The former [stage reversal prospectus](ONTOGENETIC_TROPHIC_REVERSAL_PROSPECTIVE_V0_1.md), [local hydrology M0/M1/M2 proposal](../revision/PROSPECTIVE_LOCAL_HYDROLOGY_DISCRIMINATION_SPEC_V0_2.md), NPS acoustic-history contracts, GloBI stage-topology pilot, and synthetic network examples remain source-specific records; this one file is the coordinating prospective test contract.
+
+
+## Integration policy: one repository, two scientific release layers
+
+1. **Do not revise RC6**: \`frogcs/main\`, \`release/jae-multisite-rc6\`, and \`submission/jae-multisite-v6\` own the finished Journal of Animal Ecology acoustics article. Preserve its fixed NAAMP population, metrics, null models, manuscript and submission QA.
+2. **New scientific development stays in frogcs**: this branch \`integration/stage-legacy-unified-2026-10-25\` owns the acoustic-to-stage bridge, hydrology alternatives, evidence schema, new scripts and all later estimates. There is no independent integration or meta-repository to update; reference external methods or data without copying another repository's scientific ownership.
+3. **Keep observed evidence distinct**: locked NAAMP spatial configuration, observed NPS annual acoustic-history replication, GloBI-stage links, verified pond-stage data (future), and synthetic trophic simulations remain separate within the same source-evidence hierarchy; do not pool unlike estimands.
+4. **Only after G0–G3** consider a *future combined mechanism paper* connecting RC6's acoustic pattern to measured stage and recruitment outcomes. A successful G1 proxy calibration alone cannot demonstrate predation. If G2/G3 fail, report a valid separate acoustic-history/observability or hydrological-filtering result rather than rewriting RC6.
+5. **The execution entry point** is [STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json](STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json) and [scripts/stage_legacy_integration_gate.py](scripts/stage_legacy_integration_gate.py). Its status does not itself confer mechanistic evidence or release permission.
 
 ## One biological question
 
@@ -96,21 +105,19 @@ Carroll is a phenology/larval-count bridge; its available data do not by themsel
 4. **G3 recruitment and configuration:** propagate species-specific age-at-maturity distribution to future calls; evaluate spatial null after held-out magnitude/first-order adjustment; report cohort mediation only with linked cohorts.
 5. **G4 external generality:** independent taxa/regions and prospective recording. WFTS stays **NOT PURSUED** unless a new explicit separate study authorizes it.
 
-## Cross-repository interfaces (no transfer of evidence ownership)
+## Internal frogcs modules and their evidence ceiling
 
-| Repository | Typed adapter contribution only | Explicit ceiling |
+| Frogcs-owned component | Canonical local evidence/implementation | Contribution to future synthesis |
 |---|---|---|
-| `frogcs` | RC6 acoustic observation/space baseline; prospectus, NPS/Carroll bridge | Does not demonstrate predation |
-| `odsp` | Time × aquatic-depth/state axis to avoid flattening stage overlap into x–y | Abstract lens, not a fitted wetland model |
-| `eog` | Alternative stage-transition worlds, held-out forecast comparisons | Cannot turn proxy correlation into true cohort identity |
-| `crest` / `mrm` | Adequate hidden-state and competing-mechanism distinction | No empirical identification without interventions |
-| `ced` / `boundary` | Claim licensing and causal identification ceiling | No automatic causal upgrade |
-| `rec` / `tnoa` | Record-selection bias and uncertainty-preserving non-detection | Not a frog-specific detection calibration |
-| `mrod` | Value of next measurement (pond level, egg counts, size/stage census) | A proposed design, not acquired field evidence |
-| `theouni` | Owner of cross-repository *registry and handoff*, not model data | No physical merging of scientific histories |
+| **RC6 locked paper** | \`paper/\`, \`provenance/CURRENT_RESULTS.json\`, \`release/jae-multisite-rc6\` | Observed rain-associated chorus spatial configuration and own-site history. **Read-only**. |
+| **Independent acoustic history** | \`research/scripts/nps_glkn_strict_history.py\`, \`research/results/nps_glkn_history/\` | Species-specific strong calling history beyond broad hydroperiod class; not fish/tadpole or predation. |
+| **Phenology & same-waterbody proxy bridge** | Future Carroll coverage audit and stage-linked pond-year panel | Whether prior calls predict measured overwintered larva, with held-out source/pond/year evaluation. |
+| **Stage interaction topology** | \`research/STAGE_INTERACTION_EVIDENCE_V0_1.csv\`, frozen GloBI/source-QC results | Hypothesized size-stage predator/prey edges, *not* simultaneous local feeding. |
+| **Wetland-water and vegetation exposure** | Stage-hydrology design; future verified wetland surveys | Physical dry/reset timing, encounter conditions and competing habitat explanations. |
+| **Integrated model & QA** | This contract, manifest, \`research/scripts/stage_legacy_integration_gate.py\` | Model M0/M1/M2, response-blind checks, evidence gates, and shared reporting within frogcs. |
 
-**Research ownership:** Frog-stage ecology lives in `frogcs`'s prospective branch. The cross-repository **typed registry** lives in `theouni`. Publication unit is decided by the new target/outcome, not by number of repositories or amount of code. Distinct life-history case studies remain independent empirical systems. No changes here modify RC6 manuscript, WFTS decision, failed landscape trajectory prediction, or frozen NAAMP statistics.
+No external portfolio management repository or physical repository merge is required. Other projects' mathematical ideas can inform implementations, but the source-linked frog ecology, integration logic, data contracts, code, and eventual manuscript remain **within frogcs**. Re-use methods with correct attribution; do not equate mathematical analogy with new frog field evidence.
 
 ## Next executable gate
 
-Prepare a **source-blind Carroll workbook schema + coverage audit**: list observed species × pond × year × life-stage, effort and missingness, then verify whether separate prior-year stage and next-year responses actually co-occur. Only then select the primary lag, study population and endpoint. This requires no new NAAMP outcome fishing. Re-use the existing NPS and GloBI provenance rather than duplicating all data into one giant repository.
+Prepare a **source-blind Carroll workbook schema + coverage audit**: list observed species × pond × year × life-stage, effort and missingness, then verify whether separate prior-year stage and next-year responses actually co-occur. Only then select the primary lag, study population and endpoint. This is a coverage-first, not outcome-selection, gate. Re-use the existing NPS and GloBI source receipts within frogcs rather than copying the same datasets into new project roots.
