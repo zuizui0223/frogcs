@@ -1,0 +1,50 @@
+name: Expanded GloBI GBIF 78 stage-links matched prey control
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/expanded_globi_gbif_prey_specificity.py
+      - .github/workflows/research_expanded_stage_specificity.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  expanded-specificity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check stage/recorded status and expanded documented link schema
+        run: python research/scripts/expanded_globi_gbif_prey_specificity.py --self-test
+      - name: Reuse expanded GloBI-source-matched full GBIF Anura/Odonata stage cube
+        uses: actions/download-artifact@v4
+        with:
+          name: expanded-full-globi-anura-odonata-gbif1deg-stage-grid
+          run-id: 40194946916
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/expanded
+      - name: Reuse GloBI fixed full-stage provenance and guild taxonomy
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-full-globi-nonself-gbif-1degree-stage-grid
+          run-id: 40193636562
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/globi
+      - name: Compare source-linked prey with similarly seasonal and geographic documented alternative prey species
+        run: |
+          python research/scripts/expanded_globi_gbif_prey_specificity.py \
+            --gbif research/data/expanded/focal_full_Anura_Odonata_stage_grids.csv \
+            --edges research/data/expanded/source_fixed_nonself_stage_pair_grids.csv \
+            --provenance research/data/globi/full_nonself_staged_GloBI_provenance.csv \
+            --out research/results/expanded_stage_specificity
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: expanded-full-globi-gbif-stage-prey-specificity
+          path: research/results/expanded_stage_specificity
+          if-no-files-found: error
