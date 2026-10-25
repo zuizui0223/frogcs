@@ -1,0 +1,50 @@
+name: GloBI stage GBIF within-gridyear monthly rain contrast
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/globi_stage_worldclim_rain_contrast.py
+      - .github/workflows/research_globi_stage_worldclim_rain.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  gridded-rain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate real WorldClim rain join and staged month contrast algorithm
+        run: python research/scripts/globi_stage_worldclim_rain_contrast.py --self-test
+      - name: Reuse source-verified WorldClim monthly rain matched to actual GBIF 1degree stages
+        uses: actions/download-artifact@v4
+        with:
+          name: gbif-stage-worldclim-2010-2024-monthly-rain-source-join
+          run-id: 40194019270
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/climate
+      - name: Reuse fixed GloBI 24.45M nonself stage links and provenance
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-full-globi-nonself-gbif-1degree-stage-grid
+          run-id: 40193636562
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/globi
+      - name: Compare same grid-year months of joint vs single stage GBIF sightings under rain
+        run: |
+          python research/scripts/globi_stage_worldclim_rain_contrast.py \
+            --gbif-rain research/data/climate/gbif_stage_1degree_year_month_precipitation.csv \
+            --globi research/data/globi/nonself_stage_pair_grid_results.csv \
+            --provenance research/data/globi/full_nonself_staged_GloBI_provenance.csv \
+            --out research/results/globi_gbif_rain_contrast
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: global-stage-gbif-monthly-rain-within-gridyear-descriptive
+          path: research/results/globi_gbif_rain_contrast
+          if-no-files-found: error
