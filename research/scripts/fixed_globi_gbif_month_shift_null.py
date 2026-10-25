@@ -33,7 +33,8 @@ def rotate(mask,n):
 
 def read_cell_cubes(path):
     """Store bitset of occupied observed months per species×stage×grid×year."""
-    masks={t:collections.defaultdict(int) for t in THRESHOLDS}
+    masks={t:collections.defaultdict(lambda:collections.defaultdict(int))
+           for t in THRESHOLDS}
     n=0
     nrecords=0
     with Path(path).open(newline="",encoding="utf8") as f:
@@ -245,6 +246,21 @@ def synthetic():
     assert r["month_counts_all_phases"][10]==1
     assert r["one_sided_12_phase_rank_not_independent_p"]>=1/12
     assert compare_one({},q)["observed_exact_grid_year_month"]==0
+    # Prevent malformed nested bitmask aggregation dictionary in the live parser.
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        source=Path(td)/"fixture.csv"
+        source.write_text(
+            "species,stage,latcell,loncell,year,month,n_records\n"
+            "Anax junius,adult,30,-90,2021,4,2\n"
+            "Anax junius,adult,30,-90,2021,5,5\n"
+            "Anaxyrus boreas,aquatic_immature,30,-90,2021,4,1\n",
+            encoding="utf8")
+        masks,meta=read_cell_cubes(source)
+        assert meta["rows"]==3
+        assert masks[1][("Anax junius","adult")][(30,-90,2021)]==((1<<3)|(1<<4))
+        assert masks[5][("Anax junius","adult")][(30,-90,2021)]==(1<<4)
+
     print("MONTH_SHIFT_FULL_STAGE_SENSITIVITY_SYNTHETIC_QA_PASS")
 
 
