@@ -1,0 +1,76 @@
+{
+  "program": "frogcs-only stage legacy G0",
+  "audit_date": "2026-10-26",
+  "study": "Carroll, Saenz & Rudolf 2023 Tracking phenological distributions and interaction potential across life stages",
+  "original_dataset": {
+    "doi": "10.25338/B8G92P",
+    "dryad_version_id": 218704,
+    "version_publication_date": "2023-02-03",
+    "files": [
+      {
+        "name": "funneltrapdata.xlsx",
+        "file_id": 2077176,
+        "bytes": 196918,
+        "sha256": "302f1d976725ff926c682331a34e302262adbdb3be1f80fc67c1ccc990343f6f"
+      },
+      {
+        "name": "README.md",
+        "file_id": 2077175,
+        "bytes": 2963,
+        "sha256": "d2729af5cf0e685b15a26fc80f9ce589010c67e3cda545c9b2160c6b8906a5ff"
+      }
+    ],
+    "source_public_metadata_url": "https://datadryad.org/api/v2/versions/218704/files"
+  },
+  "github_actions_receipt": {
+    "run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40207244277",
+    "status": "SOURCE_BLOCKED_FAIL_CLOSED",
+    "workbook_api": "HTTP_401",
+    "workbook_file_stream": "HTTP_403",
+    "readme_api": "HTTP_401",
+    "readme_file_stream": "HTTP_403",
+    "received_valid_source_bytes": false,
+    "checked_workbook_sheets": false,
+    "checked_row_level_pond_stage_coverage": false
+  },
+  "independent_reproducibility_issue": {
+    "zenodo_doi": "10.5281/zenodo.7596609",
+    "available_software_file": "funneltrapdata_finalanalysis.R",
+    "visible_author_script_read_excel_sheets": [
+      "pond1",
+      "pond2",
+      "pond3",
+      "pond4",
+      "pond5",
+      "pond6",
+      "pond7",
+      "pond8"
+    ],
+    "author_script_references_unverified_inputs": [
+      "Adult_count",
+      "AdultRelativeFixed.xlsx",
+      "Adult_needstag_fixed.xlsx"
+    ],
+    "is_absence_in_workbook_proven": false,
+    "claim": "Author R code references additional adult data/state and manually modified Excel intermediates; not included as separately listed public files in the Dryad manifest. Full adult-call to tadpole reconstruction cannot be claimed reproducible without source verification.",
+    "source": "https://zenodo.org/records/7596609/files/funneltrapdata_finalanalysis.R?download=1"
+  },
+  "study_metadata_from_paper": {
+    "ponds": 8,
+    "years_covered_by_larval_capture": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006
+    ],
+    "adult_recording": "6 one-minute recordings per day",
+    "larval_capture": "2 funnel traps per pond, checked weekly",
+    "notes": "catch counts are not true abundances; pond size, fish, catchability and season may matter"
+  },
+  "g0_decision": "NOT_PASSED",
+  "proxy_validated": false,
+  "predation_effect_estimated": false,
+  "next_action": "Continue separately with public NPS pinned acoustic data, measuring strictly prior same-station other-taxon history with prespecified negative controls. If a verified source copy becomes available, rerun pinned Carroll script."
+}
