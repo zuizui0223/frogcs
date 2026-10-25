@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-25",
+  "status": "GLOBAL_1DEG_EARTHENV_STATIC_WETLAND_CONTEXT",
+  "dataset": "EarthEnv Global 1-km Consensus Land Cover v1 full (with DISCover), Tuanmu & Jetz 2014",
+  "source": "https://www.earthenv.org/landcover",
+  "license": "CC BY-NC 4.0. Credit original 2014 authors. No rights waived.",
+  "temporal_scope": "Composite of landcover inputs ~1992–2006, EarthEnv full v1.0",
+  "aggregation": "rasterio GDAL bilinear-free area average of original percentage consensus within 1degree geographic EPSG4326 cells; not equal-area global mean",
+  "download_receipts": {
+    "6": {
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_6.tif",
+      "bytes": 65617214,
+      "sha256": "ee3be3219e13d1ad498d5d8eaa933e110facf633bb1c2801d1dfd23bdfb5d5ee",
+      "md5": "eeee35aee13bf36d01a51d29c5b0932f",
+      "elapsed_seconds": 1.22,
+      "class_id": 6,
+      "class_description": "generic_herbaceous",
+      "raster": {
+        "crs": "EPSG:4326",
+        "width": 43200,
+        "height": 17520,
+        "transform": [
+          0.008333333333333335,
+          0,
+          -180.00000000000003,
+          0,
+          -0.008333333333333335,
+          90.00000000000001
+        ],
+        "bounds": [
+          -180.00000000000003,
+          -56.000000000000014,
+          180.00000000000003,
+          90.00000000000001
+        ],
+        "datatype": "uint8",
+        "nodata": 255,
+        "global_dst_valid_cells": 52560,
+        "dst_min_pct": 0,
+        "dst_max_pct": 89.94139099121094,
+        "dst_median_pct": 0,
+        "dst_positive_cells": 17536,
+        "dst_q90_pct": 6.828090190887451
+      }
+    },
+    "8": {
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_8.tif",
+      "bytes": 22102767,
+      "sha256": "ff4fd807761e06f740efbada3007d0449705ee77bd8e27bb491246e4a7a71e39",
+      "md5": "bc3012121de0ac7da139a3d5b0514d59",
+      "elapsed_seconds": 0.91,
+      "class_id": 8,
+      "class_description": "flooded_vegetation",
+      "raster": {
+        "crs": "EPSG:4326",
+        "width": 43200,
+        "height": 17520,
+        "transform": [
+          0.008333333333333335,
+          0,
+          -180.00000000000003,
+          0,
+          -0.008333333333333335,
+          90.00000000000001
+        ],
+        "bounds": [
+          -180.00000000000003,
+          -56.000000000000014,
+          180.00000000000003,
+          90.00000000000001
+        ],
+        "datatype": "uint8",
+        "nodata": 255,
+        "global_dst_valid_cells": 52560,
+        "dst_min_pct": 0,
+        "dst_max_pct": 49.24763870239258,
+        "dst_median_pct": 0,
+        "dst_positive_cells": 14917,
+        "dst_q90_pct": 0.3215347230434418
+      }
+    },
+    "12": {
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_12.tif",
+      "bytes": 28060356,
+      "sha256": "a944780bc2fcc42bf0bf4e3cff505016e2e4801a124a27d5333cafb6a37da68c",
+      "md5": "5ed6c0b3f0c61a090bae71bcc20ecf39",
+      "elapsed_seconds": 0.67,
+      "class_id": 12,
+      "class_description": "open_water",
+      "raster": {
+        "crs": "EPSG:4326",
+        "width": 43200,
+        "height": 17520,
+        "transform": [
+          0.008333333333333335,
+          0,
+          -180.00000000000003,
+          0,
+          -0.008333333333333335,
+          90.00000000000001
+        ],
+        "bounds": [
+          -180.00000000000003,
+          -56.000000000000014,
+          180.00000000000003,
+          90.00000000000001
+        ],
+        "datatype": "uint8",
+        "nodata": 255,
+        "global_dst_valid_cells": 52560,
+        "dst_min_pct": 0,
+        "dst_max_pct": 100,
+        "dst_median_pct": 100,
+        "dst_positive_cells": 50335,
+        "dst_q90_pct": 100
+      }
+    }
+  },
+  "total_world_1deg_cells": 64800,
+  "at_least_one_valid_layer_cells": 52560,
+  "all_three_valid_layer_cells": 52560,
+  "layer_summary": {
+    "6": {
+      "crs": "EPSG:4326",
+      "width": 43200,
+      "height": 17520,
+      "transform": [
+        0.008333333333333335,
+        0,
+        -180.00000000000003,
+        0,
+        -0.008333333333333335,
+        90.00000000000001
+      ],
+      "bounds": [
+        -180.00000000000003,
+        -56.000000000000014,
+        180.00000000000003,
+        90.00000000000001
+      ],
+      "datatype": "uint8",
+      "nodata": 255,
+      "global_dst_valid_cells": 52560,
+      "dst_min_pct": 0,
+      "dst_max_pct": 89.94139099121094,
+      "dst_median_pct": 0,
+      "dst_positive_cells": 17536,
+      "dst_q90_pct": 6.828090190887451
+    },
+    "8": {
+      "crs": "EPSG:4326",
+      "width": 43200,
+      "height": 17520,
+      "transform": [
+        0.008333333333333335,
+        0,
+        -180.00000000000003,
+        0,
+        -0.008333333333333335,
+        90.00000000000001
+      ],
+      "bounds": [
+        -180.00000000000003,
+        -56.000000000000014,
+        180.00000000000003,
+        90.00000000000001
+      ],
+      "datatype": "uint8",
+      "nodata": 255,
+      "global_dst_valid_cells": 52560,
+      "dst_min_pct": 0,
+      "dst_max_pct": 49.24763870239258,
+      "dst_median_pct": 0,
+      "dst_positive_cells": 14917,
+      "dst_q90_pct": 0.3215347230434418
+    },
+    "12": {
+      "crs": "EPSG:4326",
+      "width": 43200,
+      "height": 17520,
+      "transform": [
+        0.008333333333333335,
+        0,
+        -180.00000000000003,
+        0,
+        -0.008333333333333335,
+        90.00000000000001
+      ],
+      "bounds": [
+        -180.00000000000003,
+        -56.000000000000014,
+        180.00000000000003,
+        90.00000000000001
+      ],
+      "datatype": "uint8",
+      "nodata": 255,
+      "global_dst_valid_cells": 52560,
+      "dst_min_pct": 0,
+      "dst_max_pct": 100,
+      "dst_median_pct": 100,
+      "dst_positive_cells": 50335,
+      "dst_q90_pct": 100
+    }
+  },
+  "scientific_boundaries": [
+    "Regularly flooded vegetation is heterogeneous wetlands including non-emergent categories, not direct Typha/Phragmites or plant stem densities.",
+    "One-degree grid and old composited remote-sensing inputs do not describe event-level water depth or present-day vegetation change.",
+    "Missing southern-band pixels are not vegetation absent and must not be filled with zero.",
+    "Data are static historical land cover; not time-varying marsh cover or frog chorus.",
+    "Grid-level percentage consensus is not exact area fraction of wetland or area-weighted latitude fraction.",
+    "Independent occurrence sampling effort and matched prey controls are mandatory for ecological comparisons."
+  ]
+}
