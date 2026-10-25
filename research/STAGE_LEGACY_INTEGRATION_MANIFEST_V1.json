@@ -3,7 +3,7 @@
   "created_on": "2026-10-26",
   "repository": "zuizui0223/frogcs",
   "integration_scope": "frogcs research branch only; no writes to RC6 submission or other repositories",
-  "scientific_question": "Does inherited aquatic stage composition constrain later adult calling-site selection, juvenile survival, and multi-site community configuration across hydroperiod transitions?",
+  "scientific_question": "How environmental breeding opportunity and inherited aquatic stage composition jointly determine taxon-selective adult acoustic configuration and independent frog juvenile stage outcomes across wetlands?",
   "canonical_design": "research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md",
   "frozen_rc6": {
     "source_ref": "release/jae-multisite-rc6",
@@ -95,6 +95,43 @@
       ],
       "reverse_beta": 0.1181198166698195,
       "can_join": "Adult acoustic association only; no verified pond, egg, tadpole or recruitment join"
+    },
+    {
+      "id": "esgr_stage_abundance",
+      "role": "independent multi-pond annual larval abundance and occupancy; source verified only",
+      "external_doi": "10.5061/dryad.js47k",
+      "original_file_id": 38621,
+      "original_md5": "c0c50fc176eac6e054e5f75b8c7a24d9",
+      "readiness": "metadata_verified_original_workbook_stage_predator_columns_unchecked",
+      "can_join": "Only by original verified pond×year identifiers with actual stage/effort; no implicit predator data"
+    },
+    {
+      "id": "mohonk_edi",
+      "role": "same pool adult chorus, egg masses, tadpole counts and water environment possible",
+      "external_doi": "10.6073/pasta/9eb31b2e15146e6a71f3fea8d3724aaa",
+      "edi_release": "edi.398.4",
+      "gbif_mirror_doi": "10.15468/dypfbs",
+      "readiness": "dictionary_verified_raw_edi_source_403_in_initial_probe",
+      "can_join": "Only verified same pool×date source columns; egg and tadpole counts do not prove survival"
+    },
+    {
+      "id": "inbo_gbif_event_pair",
+      "role": "event-based adult chorus and larval census at possibly shared INBO exact location IDs",
+      "external_dois": [
+        "10.15468/d4bu8j",
+        "10.15468/swgure"
+      ],
+      "readiness": "publisher_sql_field_mapping_verified_actual_archives_and_site_overlap_unchecked",
+      "can_join": "Only exact original locationID/eventDate and taxon; never blurred coordinates"
+    },
+    {
+      "id": "stmarks_fish_hydroperiod",
+      "role": "fish×hydroperiod occurrence/detection counterfactual, separate from direct larval predation",
+      "external_doi": "10.5061/dryad.jp34d",
+      "original_file_id": 51835,
+      "original_md5": "12a7deaf1a8bf38fc122cb7661ee7f6c",
+      "readiness": "metadata_verified_original_workbook_not_parsed",
+      "can_join": "Verified same wetland×year encounter histories; no pond egg survival"
     }
   ],
   "endpoints": [
@@ -135,23 +172,23 @@
     },
     {
       "id": "G1",
-      "name": "held-out previous-call -> directly observed overwintered-larva calibration",
-      "status": "BLOCKED: no joint adult-acoustic & verified tadpole pond-year panel"
+      "name": "verified same-pond cross-stage transition evidence, adult chorus/egg/larva with temporal and detection controls",
+      "status": "PENDING_G0_QUALIFIED_INDEPENDENT_DATA"
     },
     {
       "id": "G2",
       "name": "stage-predation/competition vs dynamic hydrology discrimination",
-      "status": "BLOCKED: no measured same-pond egg survival/predator-stage exposure"
+      "status": "BLOCKED_UNTIL_PREDATOR_STAGE_PREY_FATE_AND_HYDROPERIOD_MEASURED_TOGETHER"
     },
     {
       "id": "G3",
-      "name": "cohort maturation plus spatial configuration prediction",
-      "status": "blocked_by_cohort_and_new_configuration_panel"
+      "name": "cross-geographic generality plus empirically constrained stage-network dynamics",
+      "status": "AWAITING_SOURCE_VALIDATED_STAGE_TRANSITIONS_AND_VITAL_RATES"
     },
     {
       "id": "G4",
-      "name": "independent evidence synthesis manuscript",
-      "status": "do_not_merge_with_rc6_until_G1_G3_valid"
+      "name": "single integrated flagship manuscript, with RC6 as frozen Part I",
+      "status": "EDITORIALLY_SELECTED_NOT_SCIENTIFICALLY_READY"
     }
   ],
   "prior_claims": {
@@ -171,8 +208,28 @@
     "No published mechanism language when measured hydroperiod, stage/predation exposure and event-level detection are absent.",
     "A same-year egg predation event cannot causally explain an earlier adult chorus from that cohort.",
     "Primary NPS green→wood directional acoustic suppression H1A not supported; do not post-hoc retune taxon, lag or window to obtain negative coefficients.",
-    "Carroll source metadata alone is not an acquired workbook or a verified adult-to-larval repeated-measures panel."
+    "Carroll source metadata alone is not an acquired workbook or a verified adult-to-larval repeated-measures panel.",
+    "Immediate RC6 stand-alone submission is on editorial hold per dated author decision; never claim the candidate is withdrawn or already submitted.",
+    "Use verified exact pond-level matched ecology for Part II, not merely a paper citation or 1-km co-occurrence. Stand-alone RC6 retained as fallback only after explicit future editorial decision."
   ],
   "last_checked_on": "2026-10-26",
-  "integration_status": "RC6_PROTECTED_H1A_NPS_UNSUPPORTED_CARROLL_RAW_ACCESS_BLOCKED_H1B_H3_UNTESTED"
+  "integration_status": "INTEGRATED_PAPER_ROUTE_DECIDED_Rc6_SCIENCE_PROTECTED_H1A_UNSUPPORTED_NEW_PARTII_SOURCE_G0_IN_PROGRESS",
+  "paper_strategy": {
+    "decision_authority": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
+    "decision_date": "2026-10-26",
+    "target": "one_conditional_integrated_flagship_manuscript_in_frogcs",
+    "rc6_standalone_submission": "deferred_not_deleted_not_claimed_submitted",
+    "rc6_scientific_source": "frozen_read_only",
+    "flagship_parts": [
+      "I: RC6 acoustic spatial configuration (frozen evidence)",
+      "II: source-verified stage-by-hydroperiod mechanistic discrimination (pending)",
+      "III: independent observational generality and empirically constrained dynamic model (pending)"
+    ],
+    "checkpoint": "2027-01-31",
+    "checkpoint_role": "provisional_author_editorial_review_only_no_auto_submission",
+    "fallback": "If G2 cannot qualify, reconsider narrower robust paper or preserved RC6 solo publication after explicit author decision",
+    "future_manuscript_ready": false
+  },
+  "source_inventory": "research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md",
+  "source_inventory_script": "research/scripts/part2_published_source_g0.py"
 }
