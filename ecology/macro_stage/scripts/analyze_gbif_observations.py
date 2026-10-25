@@ -137,7 +137,8 @@ def do_analysis(records):
 def write_csv(path,items):
     with path.open("w",newline="",encoding="utf-8") as f:
         if not items:return
-        w=csv.DictWriter(f,fieldnames=list(items[0]));w.writeheader();w.writerows(items)
+        fields=list(dict.fromkeys(k for item in items for k in item.keys()))
+        w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(items)
 
 def main():
     p=argparse.ArgumentParser()
