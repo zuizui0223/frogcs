@@ -1,0 +1,28 @@
+name: BioFresh European pond multi-guild source audit
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/audit_biofresh_ponds_schema.py
+      - .github/workflows/research_biofresh_schema.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  biofresh-public-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Inspect CC0 BioFresh DwC-A format and pond overlap, no response analysis
+        run: python research/scripts/audit_biofresh_ponds_schema.py --out research/results/biofresh_ponds_source_audit
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: biofresh-ponds-schema
+          path: research/results/biofresh_ponds_source_audit/schema_receipt.json
+          if-no-files-found: error
