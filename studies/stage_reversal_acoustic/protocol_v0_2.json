@@ -1,0 +1,88 @@
+{
+  "project": "frogcs/studies/stage_reversal_acoustic",
+  "version": "0.2",
+  "date": "2026-10-25",
+  "frozen_rc6_untouched": true,
+  "empirical_discovery_opened": false,
+  "primary_question": "Do frog advertisement calls predict a stage-dependent trophic vulnerability window beyond shared season, weather and observation effort? Warning-signal usage is a separate receiver-response estimand.",
+  "preregistration_stage": "METHODS_AND_SOURCE_GATE_ONLY",
+  "biological_hypotheses": {
+    "R": "Both opposite direction stage-specific trophic edges documented for an identical named species pair",
+    "P": "Positive frog-call lead improves held-out stage-window prediction beyond season/weather/effort controls and negative-lag placebo",
+    "W": "Short-latency heterospecific receiver response to calls or call cessation survives common disturbance controls or playback randomization"
+  },
+  "sources": [
+    {
+      "name": "Beranek2023",
+      "doi": "10.1002/ecy.4108",
+      "data_doi": "10.17632/9swstxknpz.1",
+      "window": "2016-2020",
+      "field_site_count": 9,
+      "role": "documented_trophic_reverse_direction_and_emergence_survey",
+      "has_frog_advertisement_recordings": "NOT_VERIFIED"
+    },
+    {
+      "name": "FrogID7",
+      "url": "https://australian.museum/blog/amri-news/frogid-dataset-7/",
+      "window": "2017-11-10 to 2024-11-09",
+      "role": "dated_caller_positive_records",
+      "has_all_recording_opportunities": "NOT_VERIFIED",
+      "has_receiver_behavior": "NO"
+    },
+    {
+      "name": "iNaturalist",
+      "url": "https://www.inaturalist.org/pages/annotations",
+      "role": "possible_stage_annotated_occurrences",
+      "availability_of_original_focal_source_events": "NOT_VERIFIED"
+    },
+    {
+      "name": "Šmejkal2017",
+      "doi": "10.1038/s41598-017-07339-w",
+      "role": "independent_fish_role_reversal_reference_no_frog_calls"
+    },
+    {
+      "name": "Takatsu2022",
+      "doi": "10.1002/ece3.8894",
+      "role": "nonreciprocal_salamander_size_mediated_predation_control"
+    }
+  ],
+  "source_gate": {
+    "require_observation_id": true,
+    "require_actual_observation_date": true,
+    "require_coordinate_uncertainty_filter": true,
+    "require_programme_specific_opportunity_denominator": true,
+    "require_complete_stage_ontology": true,
+    "require_same_spatial_cell_year_season": true,
+    "require_phenology_weather_effort_baseline": true,
+    "require_independent_geographic_or_year_holdout": true,
+    "minimum_descriptive_cell_seasons": 3,
+    "minimum_descriptive_matched_weeks_per_group": 4,
+    "require_same_pair_bidirectional_original_evidence": true
+  },
+  "outcome_lock": {
+    "lags_weeks": [
+      0,
+      1,
+      2,
+      4,
+      8
+    ],
+    "negative_lag_placebo": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "primary_effect": "heldout_predictive_log_score_delta_stage_window_or_receiver_risk",
+    "first_stage": "auditable co-observation and date overlap gate",
+    "explicit_nonclaims": [
+      "adult_calls_are_alarm",
+      "call_exposure_causes_predation",
+      "cooccurrence_proves_predation",
+      "stage_fraction_crossing_is_attack_direction_switch",
+      "frogid_occurrence_fraction_is_population_call_probability"
+    ]
+  },
+  "live_source_acquisition_status": "ORIGINAL_ROW_JOIN_NOT_AVAILABLE",
+  "original_data_analysed_this_extension": 0
+}
