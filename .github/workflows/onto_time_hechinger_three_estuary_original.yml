@@ -4,6 +4,8 @@ on:
     branches: [study/stage-reversal-acoustic-macro-20261025]
     paths:
       - 'studies/stage_reversal_acoustic/macro/audit_hechinger_original_three_estuaries.py'
+      - 'studies/stage_reversal_acoustic/macro/compare_five_foodweb_stage_evidence.py'
+      - 'studies/stage_reversal_acoustic/macro/results/ONTO_TIME_FIVE_ECOSYSTEM_EVIDENCE_TIER_COMPARISON_V0_1.json'
       - 'studies/stage_reversal_acoustic/macro/audit_hechinger_bivalve_mass_source.py'
       - 'studies/stage_reversal_acoustic/macro/results/HECHINGER2011_BIVALVE_MOTIF_STAGE_BODYMASS_SOURCE_AUDIT_V0_1.json'
       - 'studies/stage_reversal_acoustic/macro/results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json'
@@ -12,6 +14,8 @@ on:
   pull_request:
     paths:
       - 'studies/stage_reversal_acoustic/macro/audit_hechinger_original_three_estuaries.py'
+      - 'studies/stage_reversal_acoustic/macro/compare_five_foodweb_stage_evidence.py'
+      - 'studies/stage_reversal_acoustic/macro/results/ONTO_TIME_FIVE_ECOSYSTEM_EVIDENCE_TIER_COMPARISON_V0_1.json'
       - 'studies/stage_reversal_acoustic/macro/audit_hechinger_bivalve_mass_source.py'
       - 'studies/stage_reversal_acoustic/macro/results/HECHINGER2011_BIVALVE_MOTIF_STAGE_BODYMASS_SOURCE_AUDIT_V0_1.json'
       - 'studies/stage_reversal_acoustic/macro/results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json'
@@ -50,6 +54,10 @@ jobs:
         run: |
           python studies/stage_reversal_acoustic/macro/audit_hechinger_bivalve_mass_source.py \
             --out "${{ runner.temp }}/ontotime_bivalve_mass_source.json"
+      - name: Independently recompute typed-stage evidence in five original ecosystems
+        run: |
+          python studies/stage_reversal_acoustic/macro/compare_five_foodweb_stage_evidence.py \
+            --out "${{ runner.temp }}/ontotime_five_foodweb_repro.json"
       - name: Save aggregate source integrity result only
         uses: actions/upload-artifact@v4
         with:
@@ -57,4 +65,5 @@ jobs:
           path: |
             ${{ runner.temp }}/ontotime_three_estuary_repro.json
             ${{ runner.temp }}/ontotime_bivalve_mass_source.json
+            ${{ runner.temp }}/ontotime_five_foodweb_repro.json
           if-no-files-found: error
