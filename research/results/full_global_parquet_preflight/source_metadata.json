@@ -1,0 +1,4332 @@
+{
+  "date": "2026-10-25",
+  "status": "SOURCE_PREFLIGHT_ONLY_NO_GLOBAL_MODEL_FITTED",
+  "globi": {
+    "archive_file": {
+      "size": 2375721521,
+      "checksum": "md5:8212776b7ba0c4fa8de26a00b5ce8595",
+      "status": "completed",
+      "url": "https://zenodo.org/api/records/22691479/files/interactions.parquet/content"
+    },
+    "parquet": {
+      "url": "https://zenodo.org/api/records/22691479/files/interactions.parquet/content",
+      "http_bytes": 2375721521,
+      "range_supported": true,
+      "etag": null,
+      "reported_accept_ranges": null,
+      "footer_bytes": 2850646,
+      "num_rows": 24453954,
+      "num_row_groups": 198,
+      "schema_fields": [
+        {
+          "name": "sourceTaxonId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonIds",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonRank",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonPathNames",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonPathIds",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonPathRankNames",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonSpeciesName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonSpeciesId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonSubgenusName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonSubgenusId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonGenusName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonGenusId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonFamilyName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonFamilyId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonOrderName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonOrderId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonClassName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonClassId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonPhylumName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonPhylumId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonKingdomName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceTaxonKingdomId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceOccurrenceId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceInstitutionCode",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceCollectionCode",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceCatalogNumber",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceBasisOfRecordId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceBasisOfRecordName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceLifeStageId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceLifeStageName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceBodyPartId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceBodyPartName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourcePhysiologicalStateId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourcePhysiologicalStateName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceSexId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceSexName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "interactionTypeName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "interactionTypeId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonIds",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonRank",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonPathNames",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonPathIds",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonPathRankNames",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonSpeciesName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonSpeciesId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonSubgenusName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonSubgenusId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonGenusName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonGenusId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonFamilyName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonFamilyId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonOrderName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonOrderId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonClassName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonClassId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonPhylumName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonPhylumId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonKingdomName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetTaxonKingdomId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetOccurrenceId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetInstitutionCode",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetCollectionCode",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetCatalogNumber",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetBasisOfRecordId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetBasisOfRecordName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetLifeStageId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetLifeStageName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetBodyPartId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetBodyPartName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetPhysiologicalStateId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetPhysiologicalStateName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetSexId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "targetSexName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "decimalLatitude",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "decimalLongitude",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "localityId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "localityName",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "eventDate",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "argumentTypeId",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "referenceCitation",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "referenceDoi",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "referenceUrl",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceCitation",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceNamespace",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceArchiveURI",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceDOI",
+          "type": "BYTE_ARRAY"
+        },
+        {
+          "name": "sourceLastSeenAtUnixEpoch",
+          "type": "INT64"
+        }
+      ],
+      "first_row_group_rows": 123890,
+      "first_row_group_compressed_bytes": 116177252
+    }
+  },
+  "gbif": {
+    "anurans": {
+      "prefix": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/",
+      "number_files": 3,
+      "total_parquet_bytes": 2614176308,
+      "truncated": false,
+      "files": [
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_0.parquet",
+          "size": 2220701298
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_1.parquet",
+          "size": 345120202
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_2.parquet",
+          "size": 48354808
+        }
+      ],
+      "sample": {
+        "url": "https://gbif-public-data.s3.amazonaws.com/development/2026-08-01-DWCA/p_taxon/taxonpartition%3DAnimalia_Chordata_Amphibia_Anura/data_0.parquet",
+        "http_bytes": 2220701298,
+        "range_supported": true,
+        "etag": "\"0574fd9a0d9e447774b1239eb3a6b851-424\"",
+        "reported_accept_ranges": "bytes",
+        "footer_bytes": 6831784,
+        "num_rows": 9294656,
+        "num_row_groups": 95,
+        "schema_fields": [
+          {
+            "name": "gbifID",
+            "type": "INT64"
+          },
+          {
+            "name": "accessRights",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bibliographicCitation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "language",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "license",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "modified",
+            "type": "INT64"
+          },
+          {
+            "name": "publisher",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "references",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "rightsHolder",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "type",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "basisOfRecord",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "informationWithheld",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dataGeneralizations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dynamicProperties",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "catalogNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "individualCount",
+            "type": "INT64"
+          },
+          {
+            "name": "organismQuantity",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "organismQuantityType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sex",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lifeStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "reproductiveCondition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "caste",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "behavior",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vitality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "establishmentMeans",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "pathway",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "preparations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "disposition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOccurrences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedSequences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedTaxa",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismScope",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOrganisms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "previousIdentifications",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLabel",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialSampleID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentEventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventTime",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "startDayOfYear",
+            "type": "INT32"
+          },
+          {
+            "name": "endDayOfYear",
+            "type": "INT32"
+          },
+          {
+            "name": "year",
+            "type": "INT32"
+          },
+          {
+            "name": "month",
+            "type": "INT32"
+          },
+          {
+            "name": "day",
+            "type": "INT32"
+          },
+          {
+            "name": "verbatimEventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "habitat",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeValue",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingEffort",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNotes",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeographyID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeography",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "continent",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "waterBody",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "islandGroup",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "island",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "countryCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "stateProvince",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "county",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "municipality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLocality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimElevation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verticalDatum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimDepth",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "decimalLatitude",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "decimalLongitude",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "coordinatePrecision",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintWKT",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceSources",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "geologicalContextID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "group",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "formation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "member",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bed",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimIdentification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationQualifier",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dateidentified",
+            "type": "INT64"
+          },
+          {
+            "name": "identificationReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificNameID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingToID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonConceptID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedIn",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherClassification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "kingdom",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "phylum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "class",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "order",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "superfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "family",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "tribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subtribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genericName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subgenus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infragenericEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "specificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "cultivarEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vernacularName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonomicStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetKey",
+            "type": "FIXED_LEN_BYTE_ARRAY"
+          },
+          {
+            "name": "publishingCountry",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lastInterpreted",
+            "type": "INT64"
+          },
+          {
+            "name": "elevation",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "elevationAccuracy",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "depth",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "depthAccuracy",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "distanceFromCentroidInMeters",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "hasCoordinate",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "hasGeospatialIssues",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "taxonKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedTaxonKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "kingdomKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "phylumKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "classKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "orderKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "superfamilyKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "familyKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subfamilyKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "tribeKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subtribeKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genusKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subgenusKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "speciesKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "species",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedScientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimScientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "typifiedName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "protocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lastParsed",
+            "type": "INT64"
+          },
+          {
+            "name": "lastCrawled",
+            "type": "INT64"
+          },
+          {
+            "name": "isInvasive",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "repatriated",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "relativeOrganismQuantity",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "projectId",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "isSequenced",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "gbifRegion",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "publishedByGbifRegion",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level0Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level0Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level1Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level1Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level2Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level2Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level3Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level3Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "iucnRedListCategory",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "coordinates",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "gbifID",
+            "type": "INT64"
+          },
+          {
+            "name": "accessRights",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bibliographicCitation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "language",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "license",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "modified",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "publisher",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "references",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "rightsHolder",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "type",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "basisOfRecord",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "informationWithheld",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dataGeneralizations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dynamicProperties",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "catalogNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordedByID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "individualCount",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismQuantity",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismQuantityType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sex",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lifeStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "reproductiveCondition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "caste",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "behavior",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vitality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "establishmentMeans",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "pathway",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "preparations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "disposition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedMedia",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOccurrences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedSequences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedTaxa",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismScope",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOrganisms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "previousIdentifications",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLabel",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialSampleID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentEventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventTime",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "startDayOfYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "endDayOfYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "year",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "month",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "day",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimEventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "habitat",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeValue",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingEffort",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNotes",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "projectTitle",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "projectID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fundingAttribution",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fundingAttributionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeographyID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeography",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "continent",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "waterBody",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "islandGroup",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "island",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "country",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "countryCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "stateProvince",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "county",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "municipality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLocality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumElevationInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumElevationInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimElevation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verticalDatum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumDepthInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumDepthInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimDepth",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "decimalLatitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "decimalLongitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "geodeticDatum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "coordinatePrecision",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimCoordinates",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLatitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLongitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintWKT",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceSources",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "geologicalContextID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "group",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "formation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "member",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bed",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimIdentification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationQualifier",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "typeStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identifiedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identifiedByID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dateIdentified",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificNameID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingToID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonConceptID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedIn",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherClassification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "kingdom",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "phylum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "class",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "order",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "superfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "family",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "tribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subtribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genericName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subgenus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infragenericEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "specificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "cultivarEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificNameAuthorship",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vernacularName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonomicStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "type": "INT64"
+          },
+          {
+            "name": "gbifID",
+            "type": "INT64"
+          },
+          {
+            "name": "type",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "format",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identifier",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "references",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "title",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "description",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "source",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "audience",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "created",
+            "type": "INT64"
+          },
+          {
+            "name": "creator",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "contributor",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "publisher",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "license",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "rightsHolder",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "type": "INT64"
+          },
+          {
+            "name": "r0",
+            "type": "INT64"
+          },
+          {
+            "name": "r1",
+            "type": "INT64"
+          },
+          {
+            "name": "r2",
+            "type": "INT64"
+          },
+          {
+            "name": "r3",
+            "type": "INT64"
+          },
+          {
+            "name": "r4",
+            "type": "INT64"
+          },
+          {
+            "name": "r5",
+            "type": "INT64"
+          },
+          {
+            "name": "r6",
+            "type": "INT64"
+          },
+          {
+            "name": "r7",
+            "type": "INT64"
+          },
+          {
+            "name": "r8",
+            "type": "INT64"
+          },
+          {
+            "name": "r9",
+            "type": "INT64"
+          },
+          {
+            "name": "r10",
+            "type": "INT64"
+          },
+          {
+            "name": "r11",
+            "type": "INT64"
+          },
+          {
+            "name": "r12",
+            "type": "INT64"
+          },
+          {
+            "name": "r13",
+            "type": "INT64"
+          },
+          {
+            "name": "r14",
+            "type": "INT64"
+          },
+          {
+            "name": "r15",
+            "type": "INT64"
+          },
+          {
+            "name": "r16",
+            "type": "INT64"
+          },
+          {
+            "name": "r17",
+            "type": "INT64"
+          },
+          {
+            "name": "r18",
+            "type": "INT64"
+          },
+          {
+            "name": "r19",
+            "type": "INT64"
+          },
+          {
+            "name": "r20",
+            "type": "INT64"
+          },
+          {
+            "name": "r21",
+            "type": "INT64"
+          },
+          {
+            "name": "r22",
+            "type": "INT64"
+          },
+          {
+            "name": "r23",
+            "type": "INT64"
+          },
+          {
+            "name": "r0",
+            "type": "INT64"
+          },
+          {
+            "name": "r1",
+            "type": "INT64"
+          },
+          {
+            "name": "r2",
+            "type": "INT64"
+          },
+          {
+            "name": "r3",
+            "type": "INT64"
+          },
+          {
+            "name": "r4",
+            "type": "INT64"
+          },
+          {
+            "name": "r5",
+            "type": "INT64"
+          },
+          {
+            "name": "r6",
+            "type": "INT64"
+          },
+          {
+            "name": "r7",
+            "type": "INT64"
+          },
+          {
+            "name": "r8",
+            "type": "INT64"
+          },
+          {
+            "name": "r9",
+            "type": "INT64"
+          },
+          {
+            "name": "r10",
+            "type": "INT64"
+          },
+          {
+            "name": "r11",
+            "type": "INT64"
+          },
+          {
+            "name": "r12",
+            "type": "INT64"
+          },
+          {
+            "name": "r13",
+            "type": "INT64"
+          },
+          {
+            "name": "r14",
+            "type": "INT64"
+          },
+          {
+            "name": "r15",
+            "type": "INT64"
+          }
+        ],
+        "first_row_group_rows": 100352,
+        "first_row_group_compressed_bytes": 57977595
+      }
+    },
+    "odonates": {
+      "prefix": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/",
+      "number_files": 4,
+      "total_parquet_bytes": 4766811631,
+      "truncated": false,
+      "files": [
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_0.parquet",
+          "size": 3157948245
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_1.parquet",
+          "size": 925567365
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_2.parquet",
+          "size": 425057723
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_3.parquet",
+          "size": 258238298
+        }
+      ],
+      "sample": {
+        "url": "https://gbif-public-data.s3.amazonaws.com/development/2026-08-01-DWCA/p_taxon/taxonpartition%3DAnimalia_Arthropoda_Insecta_Odonata/data_0.parquet",
+        "http_bytes": 3157948245,
+        "range_supported": true,
+        "etag": "\"7368f8ca22b27394868c93b756ea092b-603\"",
+        "reported_accept_ranges": "bytes",
+        "footer_bytes": 7798596,
+        "num_rows": 11339776,
+        "num_row_groups": 113,
+        "schema_fields": [
+          {
+            "name": "gbifID",
+            "type": "INT64"
+          },
+          {
+            "name": "accessRights",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bibliographicCitation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "language",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "license",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "modified",
+            "type": "INT64"
+          },
+          {
+            "name": "publisher",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "references",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "rightsHolder",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "type",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "basisOfRecord",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "informationWithheld",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dataGeneralizations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dynamicProperties",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "catalogNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "individualCount",
+            "type": "INT64"
+          },
+          {
+            "name": "organismQuantity",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "organismQuantityType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sex",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lifeStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "reproductiveCondition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "caste",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "behavior",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vitality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "establishmentMeans",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "pathway",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "preparations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "disposition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOccurrences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedSequences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedTaxa",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismScope",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOrganisms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "previousIdentifications",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLabel",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialSampleID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentEventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventTime",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "startDayOfYear",
+            "type": "INT32"
+          },
+          {
+            "name": "endDayOfYear",
+            "type": "INT32"
+          },
+          {
+            "name": "year",
+            "type": "INT32"
+          },
+          {
+            "name": "month",
+            "type": "INT32"
+          },
+          {
+            "name": "day",
+            "type": "INT32"
+          },
+          {
+            "name": "verbatimEventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "habitat",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeValue",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingEffort",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNotes",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeographyID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeography",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "continent",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "waterBody",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "islandGroup",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "island",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "countryCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "stateProvince",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "county",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "municipality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLocality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimElevation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verticalDatum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimDepth",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "decimalLatitude",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "decimalLongitude",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "coordinatePrecision",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintWKT",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceSources",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "geologicalContextID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "group",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "formation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "member",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bed",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimIdentification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationQualifier",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dateidentified",
+            "type": "INT64"
+          },
+          {
+            "name": "identificationReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificNameID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingToID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonConceptID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedIn",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherClassification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "kingdom",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "phylum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "class",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "order",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "superfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "family",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "tribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subtribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genericName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subgenus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infragenericEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "specificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "cultivarEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vernacularName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonomicStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetKey",
+            "type": "FIXED_LEN_BYTE_ARRAY"
+          },
+          {
+            "name": "publishingCountry",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lastInterpreted",
+            "type": "INT64"
+          },
+          {
+            "name": "elevation",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "elevationAccuracy",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "depth",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "depthAccuracy",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "distanceFromCentroidInMeters",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "element",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "hasCoordinate",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "hasGeospatialIssues",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "taxonKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedTaxonKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "kingdomKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "phylumKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "classKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "orderKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "superfamilyKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "familyKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subfamilyKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "tribeKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subtribeKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genusKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subgenusKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "speciesKey",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "species",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedScientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimScientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "typifiedName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "protocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lastParsed",
+            "type": "INT64"
+          },
+          {
+            "name": "lastCrawled",
+            "type": "INT64"
+          },
+          {
+            "name": "isInvasive",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "repatriated",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "relativeOrganismQuantity",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "projectId",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "isSequenced",
+            "type": "BOOLEAN"
+          },
+          {
+            "name": "gbifRegion",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "publishedByGbifRegion",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level0Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level0Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level1Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level1Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level2Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level2Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level3Gid",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "level3Name",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "iucnRedListCategory",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "coordinates",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "gbifID",
+            "type": "INT64"
+          },
+          {
+            "name": "accessRights",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bibliographicCitation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "language",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "license",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "modified",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "publisher",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "references",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "rightsHolder",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "type",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "institutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "collectionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "datasetName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "basisOfRecord",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "informationWithheld",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dataGeneralizations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dynamicProperties",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "catalogNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "recordedByID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "individualCount",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismQuantity",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismQuantityType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sex",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lifeStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "reproductiveCondition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "caste",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "behavior",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vitality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "establishmentMeans",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "pathway",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "preparations",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "disposition",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedMedia",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOccurrences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedSequences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedTaxa",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismScope",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "associatedOrganisms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "previousIdentifications",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "organismRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLabel",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "materialSampleID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentEventID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventType",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNumber",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventTime",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "startDayOfYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "endDayOfYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "year",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "month",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "day",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimEventDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "habitat",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeValue",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "samplingEffort",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fieldNotes",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "eventRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "projectTitle",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "projectID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fundingAttribution",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "fundingAttributionID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeographyID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherGeography",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "continent",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "waterBody",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "islandGroup",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "island",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "country",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "countryCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "stateProvince",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "county",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "municipality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLocality",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumElevationInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumElevationInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimElevation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verticalDatum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumDepthInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumDepthInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimDepth",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "locationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "decimalLatitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "decimalLongitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "geodeticDatum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "coordinatePrecision",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimCoordinates",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLatitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimLongitude",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintWKT",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSRS",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferencedDate",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceSources",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "geologicalContextID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "group",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "formation",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "member",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "bed",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimIdentification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationQualifier",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "typeStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identifiedBy",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identifiedByID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "dateIdentified",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationReferences",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identificationRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificNameID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsageID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingToID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonConceptID",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "parentNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "originalNameUsage",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nameAccordingTo",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedIn",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "namePublishedInYear",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "higherClassification",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "kingdom",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "phylum",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "class",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "order",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "superfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "family",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subfamily",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "tribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subtribe",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "genericName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "subgenus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infragenericEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "specificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "cultivarEpithet",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "scientificNameAuthorship",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "vernacularName",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonomicStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "taxonRemarks",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "type": "INT64"
+          },
+          {
+            "name": "gbifID",
+            "type": "INT64"
+          },
+          {
+            "name": "type",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "format",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "identifier",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "references",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "title",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "description",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "source",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "audience",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "created",
+            "type": "INT64"
+          },
+          {
+            "name": "creator",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "contributor",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "publisher",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "license",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "rightsHolder",
+            "type": "BYTE_ARRAY"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "type": "INT64"
+          },
+          {
+            "name": "r0",
+            "type": "INT64"
+          },
+          {
+            "name": "r1",
+            "type": "INT64"
+          },
+          {
+            "name": "r2",
+            "type": "INT64"
+          },
+          {
+            "name": "r3",
+            "type": "INT64"
+          },
+          {
+            "name": "r4",
+            "type": "INT64"
+          },
+          {
+            "name": "r5",
+            "type": "INT64"
+          },
+          {
+            "name": "r6",
+            "type": "INT64"
+          },
+          {
+            "name": "r7",
+            "type": "INT64"
+          },
+          {
+            "name": "r8",
+            "type": "INT64"
+          },
+          {
+            "name": "r9",
+            "type": "INT64"
+          },
+          {
+            "name": "r10",
+            "type": "INT64"
+          },
+          {
+            "name": "r11",
+            "type": "INT64"
+          },
+          {
+            "name": "r12",
+            "type": "INT64"
+          },
+          {
+            "name": "r13",
+            "type": "INT64"
+          },
+          {
+            "name": "r14",
+            "type": "INT64"
+          },
+          {
+            "name": "r15",
+            "type": "INT64"
+          },
+          {
+            "name": "r16",
+            "type": "INT64"
+          },
+          {
+            "name": "r17",
+            "type": "INT64"
+          },
+          {
+            "name": "r18",
+            "type": "INT64"
+          },
+          {
+            "name": "r19",
+            "type": "INT64"
+          },
+          {
+            "name": "r20",
+            "type": "INT64"
+          },
+          {
+            "name": "r21",
+            "type": "INT64"
+          },
+          {
+            "name": "r22",
+            "type": "INT64"
+          },
+          {
+            "name": "r23",
+            "type": "INT64"
+          },
+          {
+            "name": "r0",
+            "type": "INT64"
+          },
+          {
+            "name": "r1",
+            "type": "INT64"
+          },
+          {
+            "name": "r2",
+            "type": "INT64"
+          },
+          {
+            "name": "r3",
+            "type": "INT64"
+          },
+          {
+            "name": "r4",
+            "type": "INT64"
+          },
+          {
+            "name": "r5",
+            "type": "INT64"
+          },
+          {
+            "name": "r6",
+            "type": "INT64"
+          },
+          {
+            "name": "r7",
+            "type": "INT64"
+          },
+          {
+            "name": "r8",
+            "type": "INT64"
+          },
+          {
+            "name": "r9",
+            "type": "INT64"
+          },
+          {
+            "name": "r10",
+            "type": "INT64"
+          },
+          {
+            "name": "r11",
+            "type": "INT64"
+          },
+          {
+            "name": "r12",
+            "type": "INT64"
+          },
+          {
+            "name": "r13",
+            "type": "INT64"
+          },
+          {
+            "name": "r14",
+            "type": "INT64"
+          },
+          {
+            "name": "r15",
+            "type": "INT64"
+          }
+        ],
+        "first_row_group_rows": 100352,
+        "first_row_group_compressed_bytes": 44151891
+      }
+    },
+    "october_snapshot_citation": "GBIF.org (1 October 2026) GBIF Occurrence Download https://doi.org/10.15468/dl.tup2g6\n"
+  },
+  "blockers": [],
+  "provenance": {
+    "globi_fixed_version": "10.5281/zenodo.22691479",
+    "gbif_development_status": "EXPERIMENTAL_partitioned_snapshot_NOT_officially_promised_stable",
+    "gbif_october_snapshot": "2026-10-01",
+    "gbif_aws_doc": "https://github.com/gbif/occurrence/blob/dev/aws-public-data.md"
+  }
+}
