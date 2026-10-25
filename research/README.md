@@ -1,3 +1,15 @@
+# Unified scientific entry point — stage legacy and chorus configuration
+
+**Active new research question (2026-10-25):** *Does an inherited, hidden aquatic stage structure constrain which species call, survive and recruit across rain and hydroperiod cycles?* This exploratory ecological programme does not revise the locked RC6 JAE paper.
+
+**[Read the integrated ontogenetic-legacy scientific contract](ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md)** before treating any of the historical projects, multiple hypothesis documents, real-data reports or toy-model outputs below as comparable stages of a single analysis. The contract separates adult calling from larval predation/survival and delayed recruitment, specifies calibration against independent pond observations, and keeps hydrology alternatives, measurement uncertainty and source provenance explicit.
+
+**Single next scientific gate:** Carroll et al. Dryad eight-pond dataset [DOI:10.25338/B8G92P](https://doi.org/10.25338/B8G92P), *response-blind species×pond×year×stage coverage and effort audit*, followed by a strictly temporally held-out call→larva proxy check only where that source supports it. **The previous-call variable is not measured overwintering tadpole biomass**, and NAAMP roadside stops are not mapped breeding ponds.
+
+**Repository relationship:** \`frogcs\` remains empirical source owner; \`theouni\` holds a separately typed portfolio bridge, and \`odsp/eog/crest/mrm/ced/boundary/rec/tnoa/mrod\` provide optional method or identification interfaces, not extra frogs' observations. Preserve all existing evidence readouts, including null and adverse results, below.
+
+---
+
 # frogcs research — frog chorus, wetland vegetation and stage-structured biotic interactions
 
 Status 2026-10-25: **independent prospective macroecology branch**, not a reopening of RC6 JAE or WFTS; `main` manuscript unaffected.
