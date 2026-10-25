@@ -1,0 +1,66 @@
+name: Fifteen region amphibian odonate macro ecology stage overlap analysis
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/analyze_gbif_macro.py"
+      - "ecology/macro_stage/tests/test_macro_overlap.py"
+      - ".github/workflows/frog_macro_stage_analysis.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  macro-interaction-window-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numerical ecology tooling
+        run: python -m pip install 'numpy>=1.24,<3'
+      - name: Unit-test stage overlap and effort normalization before results
+        run: python -m unittest -v ecology/macro_stage/tests/test_macro_overlap.py
+      - name: Restore 15 matched iNaturalist and 15 all-source original GBIF monthly receipts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/gbif_initial data/gbif_remaining data/gbif_shared data/monthly_mixed data/monthly_shared
+          gh run download 40149080917 --repo zuizui0223/frogcs --dir data/gbif_initial
+          gh run download 40149175967 --repo zuizui0223/frogcs --dir data/gbif_remaining
+          gh run download 40149401485 --repo zuizui0223/frogcs --dir data/gbif_shared
+          python - <<'PY'
+          from pathlib import Path
+          seen={"mixed":set(),"shared":set()}
+          targets=[("data/gbif_initial","data/monthly_mixed","mixed"),
+                   ("data/gbif_remaining","data/monthly_mixed","mixed"),
+                   ("data/gbif_shared","data/monthly_shared","shared")]
+          for root,out,scope in targets:
+              for file in Path(root).rglob("GBIF_MONTHLY_*.json"):
+                  if scope=="shared" and not file.name.endswith("_INAT.json"):
+                      raise RuntimeError("unmatched source included in shared platform")
+                  if scope=="mixed" and file.name.endswith("_INAT.json"):
+                      raise RuntimeError("shared source included in mixed comparison")
+                  if file.name in seen[scope]:
+                      raise RuntimeError("duplicate source region: "+file.name)
+                  seen[scope].add(file.name)
+                  Path(out,file.name).write_bytes(file.read_bytes())
+          if any(len(x)!=15 for x in seen.values()):
+              raise RuntimeError("source archive incomplete: "+str({k:len(v) for k,v in seen.items()}))
+          print("Both source scopes complete: 15 countries/latitude bands each")
+          PY
+      - name: Calculate habitat-stage seasonal overlap after source/region QC
+        run: |
+          python -m ecology.macro_stage.scripts.analyze_gbif_macro \
+            --shared data/monthly_shared \
+            --all-publishers data/monthly_mixed \
+            --outdir data/macro_stage_results
+      - name: Archive actual macro ecological tables and source receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: gbif_macro_stage_windows_15regions_matched_vs_mixed
+          path: data/macro_stage_results/
+          if-no-files-found: error
