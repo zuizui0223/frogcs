@@ -49,8 +49,9 @@ def reduced_record(row,region,group,stage,country,a,b):
         raise ValueError("GBIF wrong publisher data")
     if str(row.get("lifeStage","")).lower()!=stage.lower():
         raise ValueError("GBIF wrong original stage code")
-    if row.get("country")!=country:
-        raise ValueError("GBIF wrong country")
+    # GBIF occurrence.country is a full name; query filter uses ISO countryCode.
+    if row.get("countryCode")!=country:
+        raise ValueError("GBIF wrong ISO countryCode")
     lat=row.get("decimalLatitude");lon=row.get("decimalLongitude")
     if not isinstance(lat,(float,int)) or not isinstance(lon,(float,int)) or not a<=lat<=b:
         raise ValueError("GBIF occurrence outside requested latitude")
