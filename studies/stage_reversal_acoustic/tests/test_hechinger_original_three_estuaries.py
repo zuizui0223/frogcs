@@ -77,6 +77,18 @@ class OriginalThreeEstuaryStageQA(unittest.TestCase):
             self.assertEqual(motif["species"].__len__(),5 if expect else 0)
             self.assertEqual(expect,(5*4//2 if site!="BSQ" else 0))
 
+    def test_original_bivalve_body_mass_is_assigned_once_for_all_larvae(self):
+        source=json.loads((ROOT/"results"/"HECHINGER2011_BIVALVE_MOTIF_STAGE_BODYMASS_SOURCE_AUDIT_V0_1.json").read_text())
+        for site in ("CSM","EPB"):
+            data=source["sites"][site]
+            self.assertEqual(data["n_stage_motif_directed_links"],20)
+            self.assertEqual(data["n_distinct_larval_mass_values"],1)
+            self.assertEqual(data["larval_mass_values_g"],[0.0000363288])
+            self.assertEqual(data["larval_mass_estimation_methods"],["approximation"])
+            self.assertEqual(data["n_bilateral_species_pairs"],10)
+        self.assertEqual(source["role_reversal_claim"],
+                         "SIZE_CANDIDATE_ONLY_NO_DIRECT_PREDATION_RATE")
+
     def test_site_pair_directions_share_single_source_programme(self):
         source=json.loads(mod.FROZEN.read_text())
         self.assertEqual(set(source["sites"]),set(mod.SITES))
