@@ -1,0 +1,121 @@
+{
+  "status": "ORIGINAL_CROSS_SYSTEM_EVIDENCE_SCHEMA_WITH_DIRECTNESS_CLASSES_NOT_META_EFFECT",
+  "date": "2026-10-25",
+  "primary_independent_units": [
+    "source study programme",
+    "named species pair",
+    "stage-specific directed evidence",
+    "receiver cue experiment where available"
+  ],
+  "mechanisms": [
+    "TRUE_RECIPROCAL_STAGE_PREDATION",
+    "STAGE_SPECIFIC_RECIPROCAL_IGP",
+    "DIRECT_EARLY_PREDATION_PLUS_MODELLED_REVERSE",
+    "SIZE_REFUGE_WITH_PERSISTENT_NONCONSUMPTIVE_CUE",
+    "CHEMOSENSORY_PREDATOR_IDENTITY_RESET_NOT_REVERSAL",
+    "CONTEXT_DEPENDENT_STAGE_LIGHT_PREDATION",
+    "NONRECIPROCAL_GROWTH_PRESSURE_CONTROL"
+  ],
+  "comparison_cases": [
+    {
+      "id": "AUS_Litoria_Anax",
+      "taxa": "Litoria aurea × Anax papuensis",
+      "class": "TRUE_RECIPROCAL_STAGE_PREDATION",
+      "clock": "seasonal emergence",
+      "cue": "advertisement calls; receiver response untested",
+      "paper": "10.1002/ecy.4108",
+      "data": "10.17632/9swstxknpz.1",
+      "status": "ORIGINAL_ANAX_DATA_AUDITED",
+      "limit": "2018-19 counts measure emerging odonates, not time of direction switch"
+    },
+    {
+      "id": "CZE_asp_bleak",
+      "taxa": "Leuciscus aspius × Alburnus alburnus",
+      "class": "TRUE_RECIPROCAL_STAGE_PREDATION",
+      "clock": "tens of seconds egg drift",
+      "cue": "spawning visual/chemical opportunity unmeasured",
+      "paper": "10.1038/s41598-017-07339-w",
+      "data": null,
+      "status": "PRIMARY_ORIGINAL_REPORT_VERIFIED",
+      "limit": "egg loss is camera field not total recruitment"
+    },
+    {
+      "id": "BRA_predatory_mites",
+      "taxa": "Neoseiulus californicus × Phytoseiulus macropilis",
+      "class": "STAGE_SPECIFIC_RECIPROCAL_IGP",
+      "clock": "feeding/development stage",
+      "cue": "not measured",
+      "paper": "10.1007/s00442-018-4256-6",
+      "data": null,
+      "status": "PRIMARY_ORIGINAL_REPORT_VERIFIED",
+      "limit": "adult P macropilis vs juvenile stage asymmetry; no seasonal time"
+    },
+    {
+      "id": "SWE_pike_stickleback",
+      "taxa": "Esox lucius × Gasterosteus aculeatus",
+      "class": "DIRECT_EARLY_PREDATION_PLUS_MODELLED_REVERSE",
+      "clock": "body length 33-35 vs potential 78 and 175 mm",
+      "cue": "not measured",
+      "paper": "10.1111/1365-2656.12981",
+      "data": null,
+      "status": "DIRECT_AND_MODEL_SEPARATED",
+      "limit": "Pike-to-stickleback reversal based on gape ability model not directly observed attacks"
+    },
+    {
+      "id": "INVASIVE_Xenopus_Gambusia",
+      "taxa": "Xenopus laevis × Gambusia holbrooki",
+      "class": "CONTEXT_DEPENDENT_STAGE_LIGHT_PREDATION",
+      "clock": "stage × day/night light",
+      "cue": "light modulates juvenile fish vulnerability",
+      "paper": "10.3897/neobiota.102.145644",
+      "data": null,
+      "status": "PRIMARY_ORIGINAL_REPORT_VERIFIED",
+      "limit": "bidirectional feeding potential not uniform across life stages and lighting"
+    },
+    {
+      "id": "CAN_woodfrog_divingbeetle",
+      "taxa": "Lithobates sylvaticus × Dytiscus sp.",
+      "class": "CHEMOSENSORY_PREDATOR_STAGE_GENERALIZATION_NOT_REVERSAL",
+      "clock": "24 hours after cue training",
+      "cue": "chemical alarm cue conditioned predator odor",
+      "paper": "10.1093/beheco/arae014",
+      "data": "10.5061/dryad.prr4xgxtr",
+      "status": "ORIGINAL_PUBLISHED_DATA_METADATA_ONLY",
+      "limit": "receiver tadpoles generalize across beetle larval/adult odors, not an attack-direction switch"
+    },
+    {
+      "id": "CAN_woodfrog_salamander",
+      "taxa": "Lithobates sylvaticus × Ambystoma mavortium",
+      "class": "CHEMOSENSORY_PREDATOR_IDENTITY_RESET_NOT_REVERSAL",
+      "clock": "24 hours after cue training",
+      "cue": "chemical alarm cue conditioned predator odor",
+      "paper": "10.1093/beheco/arae014",
+      "data": "10.5061/dryad.prr4xgxtr",
+      "status": "ORIGINAL_PUBLISHED_DATA_METADATA_ONLY",
+      "limit": "does not generalize across salamander stages; same study programme as beetle"
+    },
+    {
+      "id": "JPN_Zhangixalus_Notonecta",
+      "taxa": "Zhangixalus arboreus × Notonecta triguttata",
+      "class": "SIZE_REFUGE_WITH_PERSISTENT_NONCONSUMPTIVE_CUE",
+      "clock": "early and late tadpole development",
+      "cue": "predator presence effects after outgrowing lethal window",
+      "paper": null,
+      "data": "10.5061/dryad.31zcrjdzw",
+      "status": "ORIGINAL_PUBLISHED_DATA_METADATA_ONLY",
+      "limit": "not a reciprocal predator/prey reversal or frog audio experiment"
+    },
+    {
+      "id": "JPN_Hynobius_Rana",
+      "taxa": "Hynobius retardatus × Rana pirica",
+      "class": "NONRECIPROCAL_GROWTH_PRESSURE_CONTROL",
+      "clock": "giant salamander larval growth",
+      "cue": "not measured",
+      "paper": "10.1002/ece3.8894",
+      "data": null,
+      "status": "ORIGINAL_PUBLISHED_REPORT",
+      "limit": "unidirectional salamander consumes tadpoles; no reciprocal edge"
+    }
+  ],
+  "claim_ceiling": "Evidence ledger across published original programmes; only Australian 36 band-year occurrence atlas has new pooled numerical macro analysis; no pooled reciprocal-predation effect inferred."
+}
