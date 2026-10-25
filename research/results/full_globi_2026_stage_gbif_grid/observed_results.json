@@ -1,0 +1,607 @@
+{
+  "date": "2026-10-25",
+  "status": "POSTHOC_GLOBAL_FIXED_GLOBI_GBIF_STAGE_GRID_REPAIR",
+  "source_integrity": {
+    "source_download": {
+      "bytes": 2375721521,
+      "md5": "8212776b7ba0c4fa8de26a00b5ce8595",
+      "elapsed_seconds": 372.21
+    },
+    "full_source_parquet_rows": 24453954,
+    "focal_rows": 77720,
+    "elapsed_seconds_total": 375.39
+  },
+  "full_globi_stages": {
+    "fixed_full_globi_source": "https://doi.org/10.5281/zenodo.22691479",
+    "globi_source_md5": "8212776b7ba0c4fa8de26a00b5ce8595",
+    "total_full_source_rows": 24453954,
+    "full_focal_feeding_rows": 77720,
+    "raw_both_stages_populated_rows": 1835,
+    "self_species_raw_stage_rows_excluded": 114,
+    "nonself_stage_unknown_or_not_canonical_excluded": 481,
+    "nonself_stage_ambiguous_composite_excluded": 23,
+    "valid_certain_nonself_raw_stage_rows": 1240,
+    "unique_valid_nonself_directed_stage_pairs": 881,
+    "unique_valid_nonself_directed_species_pairs": 768,
+    "distinct_both_direction_different_species_candidates": 29,
+    "reversal_candidate_examples": [
+      [
+        "Agabus bipustulatus",
+        "Agabus sturmii"
+      ],
+      [
+        "Agabus bipustulatus",
+        "Enallagma cyathigerum"
+      ],
+      [
+        "Agabus bipustulatus",
+        "Lestes sponsa"
+      ],
+      [
+        "Agabus bipustulatus",
+        "Notonecta glauca"
+      ],
+      [
+        "Agabus sturmii",
+        "Enallagma cyathigerum"
+      ],
+      [
+        "Agabus sturmii",
+        "Lestes sponsa"
+      ],
+      [
+        "Agabus sturmii",
+        "Notonecta glauca"
+      ],
+      [
+        "Amerana draytonii",
+        "Anax junius"
+      ],
+      [
+        "Amerana draytonii",
+        "Cephalogonimus americanus"
+      ],
+      [
+        "Amerana draytonii",
+        "Lethocerus americanus"
+      ],
+      [
+        "Amerana draytonii",
+        "Taricha torosa"
+      ],
+      [
+        "Anax junius",
+        "Anaxyrus boreas"
+      ],
+      [
+        "Anax junius",
+        "Lethocerus americanus"
+      ],
+      [
+        "Anax junius",
+        "Pseudacris regilla"
+      ],
+      [
+        "Anax junius",
+        "Taricha torosa"
+      ],
+      [
+        "Anaxyrus boreas",
+        "Cephalogonimus americanus"
+      ],
+      [
+        "Anaxyrus boreas",
+        "Lethocerus americanus"
+      ],
+      [
+        "Anaxyrus boreas",
+        "Taricha torosa"
+      ],
+      [
+        "Cephalogonimus americanus",
+        "Pseudacris regilla"
+      ],
+      [
+        "Cordulegaster boltonii",
+        "Plectrocnemia conspersa"
+      ]
+    ],
+    "n_distinct_original_source_dois": 3,
+    "n_distinct_reference_citations": 600,
+    "source_tier_record_counts": {
+      "OTHER_INDEXED_ASSOCIATION": 618,
+      "INAT_LINK_OR_ORIGINAL_OBSERVATION": 561,
+      "INTERPRETED_QUICK_POND_META_WEB": 61
+    },
+    "stage_exclusion_examples": [
+      [
+        [
+          "-999",
+          "-999"
+        ],
+        392
+      ],
+      [
+        [
+          "post-juvenile adult stage",
+          "-999"
+        ],
+        23
+      ],
+      [
+        [
+          "larval",
+          "cercaria"
+        ],
+        12
+      ],
+      [
+        [
+          "juv./adults",
+          "larvae"
+        ],
+        12
+      ],
+      [
+        [
+          "larval",
+          "-999"
+        ],
+        12
+      ],
+      [
+        [
+          "juv./adults",
+          "adults"
+        ],
+        5
+      ],
+      [
+        [
+          "juv./adults",
+          "juv./adults"
+        ],
+        4
+      ],
+      [
+        [
+          "adults",
+          "pupae"
+        ],
+        2
+      ],
+      [
+        [
+          "adult",
+          "metamorph"
+        ],
+        2
+      ],
+      [
+        [
+          "juvenile",
+          "neonate"
+        ],
+        2
+      ],
+      [
+        [
+          "adult",
+          "pupa"
+        ],
+        2
+      ],
+      [
+        [
+          "juvenile",
+          "-999"
+        ],
+        2
+      ],
+      [
+        [
+          "neonate",
+          "eft"
+        ],
+        1
+      ],
+      [
+        [
+          "Subadult",
+          "metamorph"
+        ],
+        1
+      ],
+      [
+        [
+          "neonate",
+          "juvenile"
+        ],
+        1
+      ]
+    ]
+  },
+  "gbif_grid": {
+    "stage_grid_source": "GBIF experimental August 2026 anonymous parquet Anura+Odonata",
+    "gbif_source_run": "https://github.com/zuizui0223/frogcs/actions/runs/40190152042",
+    "gbif_stage_grid_csv_rows": 655843,
+    "gbif_species_included": 59,
+    "gbif_reported_records_for_selected_species": 1253335,
+    "both_stage_grid_covered_patterns": 18,
+    "both_stage_covered_pairs_with_same_1deg_cell_year_month": 17,
+    "both_stage_covered_pairs_with_same_grid_year_month_atleast5_each": 12,
+    "source_patterns_without_both_species_in_previous_GBIF_scan": 863,
+    "source_patterns_species_present_but_stage_unreported": 0,
+    "candidate_pairs_with_positive_grid_examples": [
+      {
+        "pattern_id": 395,
+        "predator": "Erythemis simplicicollis",
+        "prey": "Perithemis tenera",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 8899,
+        "gbif_prey_stage_cells": 5758,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 471,
+        "shared_1deg_cell_year": 2339,
+        "shared_1deg_cell_year_month": 3783,
+        "shared_1deg_cell_year_month_both_atleast5": 503,
+        "source_rows": 14,
+        "distinct_reference_citations": 14,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/15374472 | https://www.inaturalist.org/observations/310949597 | https://www.inaturalist.org/observations/7323008 | https://www.inaturalist.org/observations/7368125 | https://www.inaturalist.org/observations/8322280",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 123,
+        "predator": "Anax junius",
+        "prey": "Plathemis lydia",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 7666,
+        "gbif_prey_stage_cells": 10269,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 654,
+        "shared_1deg_cell_year": 2494,
+        "shared_1deg_cell_year_month": 3193,
+        "shared_1deg_cell_year_month_both_atleast5": 347,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/852237",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 119,
+        "predator": "Anax junius",
+        "prey": "Erythemis simplicicollis",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 7666,
+        "gbif_prey_stage_cells": 8899,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 501,
+        "shared_1deg_cell_year": 2150,
+        "shared_1deg_cell_year_month": 2997,
+        "shared_1deg_cell_year_month_both_atleast5": 370,
+        "source_rows": 3,
+        "distinct_reference_citations": 2,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/137063773 | https://www.inaturalist.org/observations/16108008",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 381,
+        "predator": "Erythemis simplicicollis",
+        "prey": "Argia moesta",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 8899,
+        "gbif_prey_stage_cells": 3711,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 386,
+        "shared_1deg_cell_year": 1445,
+        "shared_1deg_cell_year_month": 2078,
+        "shared_1deg_cell_year_month_both_atleast5": 201,
+        "source_rows": 5,
+        "distinct_reference_citations": 5,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/15197138 | https://www.inaturalist.org/observations/18712729 | https://www.inaturalist.org/observations/231146545 | https://www.inaturalist.org/observations/239935909 | https://www.inaturalist.org/observations/28961030",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 392,
+        "predator": "Erythemis simplicicollis",
+        "prey": "Ischnura ramburii",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 8899,
+        "gbif_prey_stage_cells": 2931,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 221,
+        "shared_1deg_cell_year": 931,
+        "shared_1deg_cell_year_month": 1527,
+        "shared_1deg_cell_year_month_both_atleast5": 199,
+        "source_rows": 2,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/155995922",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 121,
+        "predator": "Anax junius",
+        "prey": "Pantala flavescens",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 7666,
+        "gbif_prey_stage_cells": 4650,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 551,
+        "shared_1deg_cell_year": 1354,
+        "shared_1deg_cell_year_month": 1498,
+        "shared_1deg_cell_year_month_both_atleast5": 79,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/16961848",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 660,
+        "predator": "Orthetrum sabina",
+        "prey": "Pantala flavescens",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 2258,
+        "gbif_prey_stage_cells": 4650,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 212,
+        "shared_1deg_cell_year": 348,
+        "shared_1deg_cell_year_month": 341,
+        "shared_1deg_cell_year_month_both_atleast5": 10,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/253150918",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 133,
+        "predator": "Anaxyrus boreas",
+        "prey": "Pseudacris regilla",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 928,
+        "gbif_prey_stage_cells": 1910,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 78,
+        "shared_1deg_cell_year": 259,
+        "shared_1deg_cell_year_month": 265,
+        "shared_1deg_cell_year_month_both_atleast5": 2,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+        "original_stages": "post-juvenile adult stage->post-juvenile adult stage",
+        "source_tiers": "INTERPRETED_QUICK_POND_META_WEB",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 437,
+        "predator": "Gomphurus externus",
+        "prey": "Pachydiplax longipennis",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 508,
+        "gbif_prey_stage_cells": 9465,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 121,
+        "shared_1deg_cell_year": 259,
+        "shared_1deg_cell_year_month": 241,
+        "shared_1deg_cell_year_month_both_atleast5": 12,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/22997905",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 439,
+        "predator": "Gomphurus vastus",
+        "prey": "Argia moesta",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 638,
+        "gbif_prey_stage_cells": 3711,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 146,
+        "shared_1deg_cell_year": 298,
+        "shared_1deg_cell_year_month": 230,
+        "shared_1deg_cell_year_month_both_atleast5": 8,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/29741976",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 401,
+        "predator": "Erythemis vesiculosa",
+        "prey": "Plathemis lydia",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 1463,
+        "gbif_prey_stage_cells": 10269,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 93,
+        "shared_1deg_cell_year": 174,
+        "shared_1deg_cell_year_month": 203,
+        "shared_1deg_cell_year_month_both_atleast5": 12,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/14448199",
+        "original_stages": "adult->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 129,
+        "predator": "Anaxyrus boreas",
+        "prey": "Anax junius",
+        "predator_stage": "adult",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 928,
+        "gbif_prey_stage_cells": 7666,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 67,
+        "shared_1deg_cell_year": 148,
+        "shared_1deg_cell_year_month": 97,
+        "shared_1deg_cell_year_month_both_atleast5": 0,
+        "source_rows": 2,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 1,
+        "source_dois": "10.1890/11-2194.1",
+        "citation_examples": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+        "original_stages": "post-juvenile adult stage->post-juvenile adult stage",
+        "source_tiers": "INTERPRETED_QUICK_POND_META_WEB; OTHER_INDEXED_ASSOCIATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 134,
+        "predator": "Anaxyrus boreas",
+        "prey": "Pseudacris regilla",
+        "predator_stage": "adult",
+        "prey_stage": "aquatic_immature",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 928,
+        "gbif_prey_stage_cells": 333,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 43,
+        "shared_1deg_cell_year": 100,
+        "shared_1deg_cell_year_month": 77,
+        "shared_1deg_cell_year_month_both_atleast5": 0,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+        "original_stages": "post-juvenile adult stage->larval",
+        "source_tiers": "INTERPRETED_QUICK_POND_META_WEB",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 572,
+        "predator": "Lithobates pipiens",
+        "prey": "Libellula luctuosa",
+        "predator_stage": "juvenile",
+        "prey_stage": "adult",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 132,
+        "gbif_prey_stage_cells": 6163,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 41,
+        "shared_1deg_cell_year": 56,
+        "shared_1deg_cell_year_month": 57,
+        "shared_1deg_cell_year_month_both_atleast5": 4,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "https://www.inaturalist.org/observations/18671570",
+        "original_stages": "juvenile->adult",
+        "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      },
+      {
+        "pattern_id": 696,
+        "predator": "Pseudacris regilla",
+        "prey": "Anax junius",
+        "predator_stage": "adult",
+        "prey_stage": "aquatic_immature",
+        "focal_gbif_predator_species_included": true,
+        "focal_gbif_prey_species_included": true,
+        "gbif_predator_stage_cells": 1910,
+        "gbif_prey_stage_cells": 128,
+        "gbif_both_stage_reporting_available": true,
+        "shared_1deg_spatial_cells": 17,
+        "shared_1deg_cell_year": 17,
+        "shared_1deg_cell_year_month": 12,
+        "shared_1deg_cell_year_month_both_atleast5": 0,
+        "source_rows": 1,
+        "distinct_reference_citations": 1,
+        "original_source_doi_count": 0,
+        "source_dois": "",
+        "citation_examples": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+        "original_stages": "post-juvenile adult stage->larval",
+        "source_tiers": "INTERPRETED_QUICK_POND_META_WEB",
+        "eligibility": "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER"
+      }
+    ]
+  },
+  "bounds": [
+    "Stage-directed GloBI association is NOT independently verified predation; raw sources may be inferred metawebs.",
+    "Only 61 source-selected GBIF Anura/Odonata taxa covered, not the entire global taxonomic pool.",
+    "Species stage absence in GBIF grid is an unmeasured/undetected reporting cell, not ecological absence.",
+    "One-degree cell×year×month observational concordance is NOT live local predator-prey contact or attack.",
+    "GBIF anonymous Parquet is experimental, with taxonomy and data-release mismatch relative to GloBI 2026-09.",
+    "Reference citation strings and GloBI source DOI are provenance fields, not independent attack event counts.",
+    "No claim of global trophic reversal prevalence or causal macrophyte/rainfall effects."
+  ]
+}
