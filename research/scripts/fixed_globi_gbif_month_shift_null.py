@@ -71,14 +71,25 @@ def read_cell_cubes(path):
                       stage_pairs_atleast5=len(masks[5]))
 
 
-def read_edges(path):
+def read_edges(path, provenance_path):
+    # Guilds are held in the full-source per-association provenance export;
+    # they are not duplicated in the compact stage-pair grid-result CSV.
+    guilds={}
+    with Path(provenance_path).open(newline="",encoding="utf8") as stream:
+        for rec in csv.DictReader(stream):
+            k=(rec["predator"],rec["predator_stage"],
+               rec["prey"],rec["prey_stage"])
+            value=(rec["predator_guild"],rec["prey_guild"])
+            if k in guilds and guilds[k]!=value:
+                raise ValueError("Conflicting guild taxonomy for "+str(k))
+            guilds[k]=value
     d=[]
     discarded=collections.Counter()
     seen=set()
     with Path(path).open(newline="",encoding="utf8") as f:
         reader=csv.DictReader(f)
         required={"predator","prey","predator_stage","prey_stage",
-                  "predator_guild","prey_guild","source_rows","source_tiers",
+                  "source_rows","source_tiers",
                   "distinct_reference_citations","eligibility"}
         if not required.issubset(reader.fieldnames or []):
             raise ValueError("Unexpected pinned GloBI source fields")
@@ -91,6 +102,10 @@ def read_edges(path):
             if row["eligibility"]!=ELIGIBLE:
                 discarded["missing_one_or_both_stage_in_gbif"]+=1
                 continue
+            if key not in guilds:
+                discarded["no_original_stage_taxonomy_provenance"]+=1
+                continue
+            row["predator_guild"],row["prey_guild"]=guilds[key]
             if key in seen:
                 discarded["duplicate_species_stage_edge"]+=1
                 continue
@@ -130,10 +145,10 @@ def compare_one(pred,prey):
     )
 
 
-def run(gbif,globi,out):
+def run(gbif,globi,provenance,out):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     masks,mc=read_cell_cubes(gbif)
-    edges,ex=read_edges(globi)
+    edges,ex=read_edges(globi,provenance)
     if len(edges)<5:
         raise RuntimeError("Fewer than five source eligible stage pairs")
     rows=[]
@@ -260,6 +275,24 @@ def synthetic():
         assert meta["rows"]==3
         assert masks[1][("Anax junius","adult")][(30,-90,2021)]==((1<<3)|(1<<4))
         assert masks[5][("Anax junius","adult")][(30,-90,2021)]==(1<<4)
+        prov=Path(td)/"provenance.csv"
+        prov.write_text(
+            "predator,prey,predator_stage,prey_stage,predator_guild,prey_guild\n"
+            "Anax junius,Anaxyrus boreas,adult,aquatic_immature,Odonata,Anura\n",
+            encoding="utf8")
+        edges=Path(td)/"compact.csv"
+        edges.write_text(
+            "predator,prey,predator_stage,prey_stage,source_rows,source_tiers,"
+            "distinct_reference_citations,eligibility\n"
+            "Anax junius,Anaxyrus boreas,adult,aquatic_immature,1,"
+            "INAT_LINK_OR_ORIGINAL_OBSERVATION,1,"
+            "GBIF_1DEG_REPORT_COMPATIBILITY_NOT_VERIFIED_ENCOUNTER\n",
+            encoding="utf8")
+        selected,removed=read_edges(edges,prov)
+        assert len(selected)==1
+        assert selected[0]["predator_guild"]=="Odonata"
+        assert selected[0]["prey_guild"]=="Anura"
+
 
     print("MONTH_SHIFT_FULL_STAGE_SENSITIVITY_SYNTHETIC_QA_PASS")
 
@@ -268,8 +301,9 @@ if __name__=="__main__":
     p=argparse.ArgumentParser()
     p.add_argument("--gbif",default="research/data/gbif_open_artifact/focal_stage_1deg_month_year.csv")
     p.add_argument("--globi",default="research/data/full_globi_artifact/nonself_stage_pair_grid_results.csv")
+    p.add_argument("--globi-provenance",default="research/data/full_globi_artifact/full_nonself_staged_GloBI_provenance.csv")
     p.add_argument("--out",default="research/results/month_shift_globi_gbif")
     p.add_argument("--self-test",action="store_true")
     a=p.parse_args()
     if a.self_test:synthetic()
-    else:run(a.gbif,a.globi,a.out)
+    else:run(a.gbif,a.globi,a.globi_provenance,a.out)
