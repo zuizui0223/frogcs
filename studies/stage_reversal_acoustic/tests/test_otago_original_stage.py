@@ -87,7 +87,7 @@ class OriginalFoodWebTypeIntegrity(unittest.TestCase):
 
     def test_pinned_original_external_source(self):
         self.assertEqual(len(mod.COMMIT),40)
-        self.assertEqual(mod.BLOBS["Otago_Data_Links.csv"],"d2c2765a8a798bbd72029c328302f095f97d095f")
+        self.assertEqual(mod.BLOBS["Otago_Data_Links.csv"],"d2c2765a8a798bbd72029c328302f095f97d095c")
         self.assertEqual(mod.BLOBS["Otago_Data_Nodes.csv"],"9303b47b997945cd37842df5fd23879fe864d114")
 
 if __name__=="__main__":unittest.main()
