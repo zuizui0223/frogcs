@@ -69,5 +69,16 @@
     "analysis_unit_repaired": "Pail, not Pail×Clutch; means per Pail×test cue, equal Pail weighting and condition-label clustering. Clutch remains an audit/sensitivity variable, not independent replicate.",
     "bootstrap": "resample complete pails within each conditioning treatment at original n=6 per treatment, 10k deterministic bootstrap draws, readout percentiles and leave-one-pail-out influence; no individual iid standard error.",
     "model": "within-sheet independent conditioning pails; no cross-paper/multi-clade pseudoreplication; bootstrapped ratio of frozen factor contrasts"
+  },
+  "source_only_second_amendment": {
+    "date": "2026-10-25",
+    "discovery": "Published original Salamader sheet has 17 complete Pail×test-cue pairs among 18 conditioning pails. Exactly one sham-conditioned Pail has larval test-cue records but no adult test-cue observations. Beetle 18/18 conditioning pails complete. Verified BEFORE opening any source response effect values.",
+    "analysis_repair": "Primary uses all available pail×cue cells with explicit changing denominators: sham-adult 5 pails, sham-larval 6, all other treatment-cue group cells 6. Stratified pail bootstrap samples intact pail records (including missing cue), skipping zero-eligible-cue draws rather than inventing missing response.",
+    "prespecified_sensitivity": "Repeat complete-pail-only analysis where sham larval count is reduced from 6 to 5; report signed difference from primary. Do not assume unobserved sham adult outcome was zero.",
+    "limits": [
+      "No valid individual-level independent replicates",
+      "Some original tests not in public workbook; no assertion their missingness is random",
+      "No causal comparison of species taxon mechanism independent of predator physiology/odor concentration"
+    ]
   }
 }
