@@ -1,12 +1,25 @@
-# Unified scientific entry point — stage legacy and chorus configuration
+# frogcs research — integrated stage-structured wetland ecology (prospective)
 
-**Active new research question (2026-10-25):** *Does an inherited, hidden aquatic stage structure constrain which species call, survive and recruit across rain and hydroperiod cycles?* This exploratory ecological programme does not revise the locked RC6 JAE paper.
+**Scientific release boundary (2026-10-26):** The Journal of Animal Ecology **RC6 remains the complete, unchanged submission candidate** in `main`, `release/jae-multisite-rc6` and `submission/jae-multisite-v6`. The new frog stage/hydrology/community analysis is deliberately separate and does not rewrite RC6, its NAAMP endpoints, published numerical receipts, or the WFTS decision.
 
-**[Read the integrated ontogenetic-legacy scientific contract](ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md)** before treating any of the historical projects, multiple hypothesis documents, real-data reports or toy-model outputs below as comparable stages of a single analysis. The contract separates adult calling from larval predation/survival and delayed recruitment, specifies calibration against independent pond observations, and keeps hydrology alternatives, measurement uncertainty and source provenance explicit.
+**Only one repository owns the integration: `zuizui0223/frogcs`.** The active work is on `integration/stage-legacy-unified-2026-10-25`. Data modules, scripts, source provenance, new tests and the eventual combined synthesis will live here, not in a separate integrator repository.
 
-**Single next scientific gate:** Carroll et al. Dryad eight-pond dataset [DOI:10.25338/B8G92P](https://doi.org/10.25338/B8G92P), *response-blind species×pond×year×stage coverage and effort audit*, followed by a strictly temporally held-out call→larva proxy check only where that source supports it. **The previous-call variable is not measured overwintering tadpole biomass**, and NAAMP roadside stops are not mapped breeding ponds.
+**One scientific question:** Does an inherited aquatic stage structure — overwintered larvae and predator/prey development — help explain how changing rain and wetland hydroperiod reorganise frogs' subsequent calling-site patterns, egg/larva survival, and future adult recruitment?
 
-**Repository relationship:** `frogcs` remains empirical source owner; `theouni` holds a separately typed portfolio bridge, and `odsp/eog/crest/mrm/ced/boundary/rec/tnoa/mrod` provide optional method or identification interfaces, not extra frogs' observations. Preserve all existing evidence readouts, including null and adverse results, below.
+**Core authority:** [future-integration scientific contract](ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md); [machine-readable evidence, release and gate manifest](STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json); [executable readiness/coverage preflight](scripts/stage_legacy_integration_gate.py). The preflight verifies existing RC6/NPS result receipts and refuses to call acoustic proxies measured predators. It does not refit current RC6.
+
+Run locally from repo root after checkout:
+
+```bash
+python research/scripts/stage_legacy_integration_gate.py --self-test
+python research/scripts/stage_legacy_integration_gate.py --out research/results/stage_legacy_integration/readiness.json
+# Only when a verified physical-pond coverage table actually exists:
+python research/scripts/stage_legacy_integration_gate.py --panel verified_pond_stage_coverage.csv
+```
+
+**Next scientific gate:** Carroll et al.'s eight-pond Dryad source (DOI [10.25338/B8G92P](https://doi.org/10.25338/B8G92P)), first auditing species × physical pond × year × stage and survey effort without examining response values; then, if eligible, testing out-of-pond/year whether strictly prior adult calls predict actually observed overwintered larvae. This is **not yet a fitted frogcs result**. Stage-specific predation and drought-reset effects require additional genuinely co-located, exposure-resolved observations or experiments.
+
+**Evidence already retained:** RC6 NAAMP spatial residual +0.2969 (acoustic only); NPS independent annual prior-site strong chorus +0.4642 after generic site/hydroperiod/effort adjustment (acoustic only); GloBI life-stage feeding-edge candidates (literature/source topology only); seasonal trophic toy results (synthetic only). These are complementary components, **not pooled effect sizes or proven causal links**.
 
 ---
 
