@@ -2,6 +2,15 @@
 
 Status 2026-10-25: **independent prospective macroecology branch**, not a reopening of RC6 JAE or WFTS; `main` manuscript unaffected.
 
+## 2026-10-25 real external-data milestone
+
+**[Integrated macro-ecological evidence synthesis](results/INTEGRATED_MACRO_ECOLOGICAL_SYNTHESIS_2026-10-25.md)** connects rainfall-driven RC6 chorus configuration, NPS 2016–2023 independent prior-site strong-call recurrence, 2024 Hungary emergent-plant survey, published fish × emergent vegetation occupancy and Typha plant manipulation. These are **distinct outcomes, not a pooled meta-analysis or proof of plant causality**.
+
+- **Independent NPS GLKN multi-year acoustic evidence:** [result/limitations](results/nps_glkn_history/REPORT.md), [JSON](results/nps_glkn_history/observed_results.json), [strict-prior code](scripts/nps_glkn_strict_history.py), [successful real-data run](https://github.com/zuizui0223/frogcs/actions/runs/40180516241). 147,913 scoring rows, 66 fixed sites, 7 parks, 2016–2023; species×park×year conditional annual history CI2/3 β=+0.467, adjusted for prior other-species chorus, broad hydroperiod class and effort +0.464 (95% park×taxon block CI +0.383 to +0.533). **NPS does not provide emergent macrophyte density or event rainfall**.
+- **Post-hoc stronger-site-history test:** [weak versus strong prior detection + leave-park-out](results/nps_glkn_weak_vs_strong/observed_results.json), [script](scripts/nps_glkn_weak_strong_sensitivity.py), [CI](https://github.com/zuizui0223/frogcs/actions/runs/40180841521). Conditional on historic species acoustic presence at the location, past strong vs past weak β adjusted **+0.389**, 95% CI **+0.296 to +0.462**; omitting each of 7 parks leaves β>0. **Post-readback sensitivity, not preregistered independent confirmation**.
+- **Hungary vegetation real data (2024):** [source-verified results](results/hungary_2024_screen/REPORT.md), [JSON](results/hungary_2024_screen/observed_results.json), [original CC-BY source and credit](external/zenodo_15044115/README.md), [code](scripts/hungary_vegetation_chorus.py), [CI](https://github.com/zuizui0223/frogcs/actions/runs/40179776959). 29 independent wetlands, 381 observation-method visits; weather/season Brier 0.2080, adding depth + wetland class 0.1742, adding emergent cover 0.1753 (no marginal CV improvement). Fish present at only 2 sites, so **cannot estimate emergent × predator**.
+- **No data merge across different wetlands without matching site IDs and time.** RC6/JAE `main` frozen; independent sources remain on this research branch.
+
 ## Start here
 
 1. **[New core question: rainfall × recurrent sites × macrophytes × stage interactions](CHORUS_WETLAND_VEGETATION_BIOTIC_HIERARCHY_V0_1.md)** — conceptual DAG, strict inferential boundaries, falsifiable tier sequence E0–E5, observational data contract, remote-sensing and published-data sources.
