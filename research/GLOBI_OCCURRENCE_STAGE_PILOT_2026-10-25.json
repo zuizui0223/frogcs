@@ -1,0 +1,332 @@
+{
+  "audit_date": "2026-10-25",
+  "dataset": "GloBI interactive API, LIVE unstable; not a versioned full dataset",
+  "design": "first 100 occurrence-level interaction records per broad clade (includeObservations=true), with feeding edge filter (eats/preysOn); NOT a representative ecological sample",
+  "queries": [
+    {
+      "taxon": "Anura",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 69,
+      "valid_stage_both": 24,
+      "source_stage_valid": 55,
+      "target_stage_valid": 38,
+      "study_cited": 100,
+      "distinct_study_citations": 60,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "preysOn",
+          54
+        ],
+        [
+          "eats",
+          46
+        ]
+      ]
+    },
+    {
+      "taxon": "Caudata",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Caudata&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 4,
+      "valid_stage_both": 1,
+      "source_stage_valid": 1,
+      "target_stage_valid": 4,
+      "study_cited": 100,
+      "distinct_study_citations": 22,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "preysOn",
+          56
+        ],
+        [
+          "eats",
+          44
+        ]
+      ]
+    },
+    {
+      "taxon": "Odonata",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Odonata&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 4,
+      "valid_stage_both": 0,
+      "source_stage_valid": 1,
+      "target_stage_valid": 3,
+      "study_cited": 100,
+      "distinct_study_citations": 3,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "preysOn",
+          100
+        ]
+      ]
+    },
+    {
+      "taxon": "Dytiscidae",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Dytiscidae&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 0,
+      "valid_stage_both": 0,
+      "source_stage_valid": 0,
+      "target_stage_valid": 0,
+      "study_cited": 100,
+      "distinct_study_citations": 8,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "preysOn",
+          100
+        ]
+      ]
+    },
+    {
+      "taxon": "Nepomorpha",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Nepomorpha&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 66,
+      "valid_stage_both": 0,
+      "source_stage_valid": 34,
+      "target_stage_valid": 32,
+      "study_cited": 100,
+      "distinct_study_citations": 2,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "preysOn",
+          100
+        ]
+      ]
+    },
+    {
+      "taxon": "Trichoptera",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Trichoptera&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 98,
+      "valid_stage_either": 21,
+      "valid_stage_both": 0,
+      "source_stage_valid": 21,
+      "target_stage_valid": 0,
+      "study_cited": 98,
+      "distinct_study_citations": 30,
+      "taxon_path_membership": 96,
+      "top_type": [
+        [
+          "eats",
+          75
+        ],
+        [
+          "preysOn",
+          23
+        ],
+        [
+          "parasiteOf",
+          2
+        ]
+      ]
+    },
+    {
+      "taxon": "Diptera",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Diptera&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 84,
+      "valid_stage_either": 39,
+      "valid_stage_both": 0,
+      "source_stage_valid": 39,
+      "target_stage_valid": 0,
+      "study_cited": 84,
+      "distinct_study_citations": 82,
+      "taxon_path_membership": 84,
+      "top_type": [
+        [
+          "eats",
+          84
+        ],
+        [
+          "parasiteOf",
+          16
+        ]
+      ]
+    },
+    {
+      "taxon": "Actinopterygii",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Actinopterygii&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 4,
+      "valid_stage_both": 0,
+      "source_stage_valid": 4,
+      "target_stage_valid": 0,
+      "study_cited": 100,
+      "distinct_study_citations": 4,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "eats",
+          80
+        ],
+        [
+          "preysOn",
+          20
+        ]
+      ]
+    },
+    {
+      "taxon": "Decapoda",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Decapoda&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 100,
+      "valid_stage_either": 0,
+      "valid_stage_both": 0,
+      "source_stage_valid": 0,
+      "target_stage_valid": 0,
+      "study_cited": 31,
+      "distinct_study_citations": 5,
+      "taxon_path_membership": 100,
+      "top_type": [
+        [
+          "eats",
+          72
+        ],
+        [
+          "preysOn",
+          28
+        ]
+      ]
+    },
+    {
+      "taxon": "Gastropoda",
+      "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Gastropoda&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "rows": 100,
+      "direct_predation_rows": 83,
+      "valid_stage_either": 29,
+      "valid_stage_both": 26,
+      "source_stage_valid": 27,
+      "target_stage_valid": 28,
+      "study_cited": 81,
+      "distinct_study_citations": 16,
+      "taxon_path_membership": 83,
+      "top_type": [
+        [
+          "eats",
+          43
+        ],
+        [
+          "preysOn",
+          40
+        ],
+        [
+          "parasiteOf",
+          11
+        ]
+      ]
+    }
+  ],
+  "summary": {
+    "requested_taxa": 10,
+    "rows": 1000,
+    "feeding_rows": 965,
+    "stage_either": 236,
+    "stage_both": 51,
+    "study_cited": 894
+  },
+  "examplars": [
+    {
+      "group": "Anura",
+      "source": "Osteopilus septentrionalis",
+      "stage_source": "adult",
+      "target": "Dryophytes cinereus",
+      "stage_target": null,
+      "type": "preysOn",
+      "citation": "https://www.inaturalist.org/observations/140501293"
+    },
+    {
+      "group": "Anura",
+      "source": "Osteopilus septentrionalis",
+      "stage_source": "adult",
+      "target": "Dryophytes squirellus",
+      "stage_target": null,
+      "type": "preysOn",
+      "citation": "https://www.inaturalist.org/observations/16274452"
+    },
+    {
+      "group": "Anura",
+      "source": "Osteopilus septentrionalis",
+      "stage_source": "adult",
+      "target": "Dryophytes squirellus",
+      "stage_target": null,
+      "type": "preysOn",
+      "citation": "https://www.inaturalist.org/observations/16274452"
+    },
+    {
+      "group": "Caudata",
+      "source": "Gyrinophilus porphyriticus",
+      "stage_source": null,
+      "target": "Desmognathus monticola",
+      "stage_target": "juvenile",
+      "type": "preysOn",
+      "citation": "https://www.inaturalist.org/observations/154918617"
+    },
+    {
+      "group": "Caudata",
+      "source": "Notophthalmus viridescens",
+      "stage_source": "adult",
+      "target": "Ambystoma opacum",
+      "stage_target": "larva",
+      "type": "preysOn",
+      "citation": "https://www.inaturalist.org/observations/265010181"
+    },
+    {
+      "group": "Caudata",
+      "source": "Plethodon cinereus",
+      "stage_source": null,
+      "target": "Enoplognatha ovata",
+      "stage_target": "juvenile",
+      "type": "preysOn",
+      "citation": "https://www.inaturalist.org/observations/175389521"
+    },
+    {
+      "group": "Diptera",
+      "source": "Cochliomyia macellaria",
+      "stage_source": "adult",
+      "target": "Didelphis virginiana",
+      "stage_target": null,
+      "type": "eats",
+      "citation": "https://www.inaturalist.org/observations/98564793"
+    },
+    {
+      "group": "Diptera",
+      "source": "Cochliomyia macellaria",
+      "stage_source": "adult",
+      "target": "Helianthus tuberosus",
+      "stage_target": null,
+      "type": "eats",
+      "citation": "https://www.inaturalist.org/observations/67693485"
+    },
+    {
+      "group": "Diptera",
+      "source": "Cochliomyia macellaria",
+      "stage_source": "adult",
+      "target": "Solidago canadensis",
+      "stage_target": null,
+      "type": "eats",
+      "citation": "https://www.inaturalist.org/observations/66175141"
+    }
+  ],
+  "notes": [
+    "Earlier no-includeObservations queries returned 0 life stages because they are distinct relationship summaries; those zero-stage counts are INVALID evidence about occurrence-level stage coverage.",
+    "Stage strings such as -999, missing, or unspecified are excluded from valid stages.",
+    "The first 100 records are not a uniform/random sample and are not independent; repeated interactions from one study and mismatched taxonomy require source-level QA.",
+    "The interactionType=eats query includes preysOn and may include other types; direct food web summary filters to eats/preysOn.",
+    "No predation mortality flux, population rate, causal sonic eavesdropping, or ontogenetic reversal is inferred from API association alone.",
+    "Stable full Zenodo release and original literature validation required for macroecological inference."
+  ]
+}
