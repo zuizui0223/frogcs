@@ -2,6 +2,17 @@
 
 **Research objective:** support or refute a **new** within-pond life-stage × predator × hydroperiod prediction independently of the frozen NAAMP acoustic pattern. This is **not** a meta-analysis of published effect estimates. Scope checked: ESGR, Mohonk/EDI, GBIF sampling-event pairs, additional independent hydroperiod control, historical Carroll. Check actual package bytes and columns before making any positive mechanism claim.
 
+## Executed original-file source and stage-bridge results — same day
+
+**[Real source-G0 result](results/part2_g0/observed_source_eligibility.json)** ([CI](https://github.com/zuizui0223/frogcs/actions/runs/40210077411)) verified:
+- INBO chorus `963` event records, larva `697` event records from two actual CC0 source ZIPs (published 2026 versions; source SHA recorded): **96 exact original common locationIDs**, **247 same-site/year units** with an adult chorus event strictly preceding a larval event. Publisher location labels agree for the shared IDs; coordinate precision was NOT used to match. **No predator/egg-survival inference**.
+- [Response-blind taxon G0.1](results/part2_g0/inbo_species_time_eligibility.json) ([CI](https://github.com/zuizui0223/frogcs/actions/runs/40210499491)): *Hyla arborea* **245** site-year paired *species survey opportunities*, **93** exact shared sites (2016–2025); *Pelobates fuscus* **2** site-years, thus **non-estimable** before any response effect was opened.
+- ESGR Dryad original workbook & St Marks original workbook each returned **HTTP401** in the actual source runner; native EDI Mohonk paired species and water CSV each returned **HTTP403**. Mohonk GBIF IPT mirror downloaded **13,862 occurrence records**, but its archive lacks original `locationID`, `ChorusCode`, `EggMass_n`, `TadLarv_n` and directly matched EDI pool water variables. **Do not replace native EDI with the flattened GBIF occurrence.**
+
+**[Real Hyla adult chorus→subsequent larva G1 readout](results/part2_inbo_hyla_g1/REPORT.md)** ([CI](https://github.com/zuizui0223/frogcs/actions/runs/40211162054)): 245 same-location/year cases at 93 sites, 149 later larva present / 96 explicitly absent, 212 prior adult chorus present / 33 absent. Site-group blocked Brier **M0 0.25823 → M1 0.24271**; BUT strictly later 2024–2025 year holdout **M0 0.27839 → M1 0.34786** (worse). All 245 selected events had **NO measured permanent-water-column value**; numeric larval sampling effort and measured predator density were missing, and source categorical effort was not included in M0. Therefore **no stable time-transfer, habitat-adjusted mechanism or stage-specific predation is demonstrated**. The result is a mixed exploratory cross-stage *recorded-presence* predictor only.
+
+The tables below retain the original **prospective metadata/source-list audit** for provenance, including pre-download "not yet audited" statuses. They are superseded for executed source-access and INBO G1 readouts by the source-backed G0/G0.1 and G1 reports above. Nothing here changes RC6.
+
 ## Source inventory, verified public metadata
 
 | Priority | Dataset / exact source | Unit and advertised measurements | What it can actually estimate | Missing or not-yet-verified | G0 |
