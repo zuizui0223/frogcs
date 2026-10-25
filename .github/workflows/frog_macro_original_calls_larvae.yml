@@ -1,0 +1,29 @@
+name: Original eight-pond six-year chorus and tadpole data acquisition
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/fetch_carroll_calls_tadpoles.py"
+      - ".github/workflows/frog_macro_original_calls_larvae.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  separate-pond-stage-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify original 2001–2006 eight-pond Carroll acoustic/larval workbook bytes
+        run: |
+          python ecology/macro_stage/scripts/fetch_carroll_calls_tadpoles.py \
+            --out data/carroll_stage_original
+      - name: Retain original workbook and source provenance for actual ecological analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: Carroll_2001_2006_8pond_acoustic_calls_larval_traps_original
+          path: data/carroll_stage_original/
+          if-no-files-found: error
