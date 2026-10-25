@@ -506,7 +506,7 @@
       "n_focal_call_positive_anchor_weeks": 2,
       "forward_r": -0.1095,
       "reverse_r": 0.1148,
-      "forward_minus_reverse_r": -0.2243
+      "forward_minus_reverse_r": -0.2244
     },
     {
       "lag_weeks": 2,
@@ -533,5 +533,5 @@
       "forward_minus_reverse_r": -0.257
     }
   ],
-  "matched_anchor_claim_ceiling": "Descriptive comparison only. Same-audio-anchor control prevents interpreting unequal source sample as direction preference, but the negative contrasts remain non-confirmatory one-season six-positive observations. No p-value."
+  "matched_anchor_claim_ceiling": "Descriptive only. Raw-double-precision correlation difference is rounded once, not computed by subtracting already-rounded displayed correlations. Same-anchor lag1 corrected from -0.2243 to -0.2244; all substantive conclusions unchanged."
 }
