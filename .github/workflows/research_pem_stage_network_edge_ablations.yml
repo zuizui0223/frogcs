@@ -1,0 +1,32 @@
+name: PEM three guild dragonfly salamander frog network edge knockout QA
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/pem_stage_edge_knockout_test.py
+      - .github/workflows/research_pem_stage_network_edge_ablations.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mechanism-ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numeric runtime
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
+      - name: Synthetic invariance and independent trophic mechanism knockout QA
+        run: python research/scripts/pem_stage_edge_knockout_test.py --self-test
+      - name: PEM1A C F seasonal phase and four trophic mechanism runs on identical annual toy ensembles
+        run: python research/scripts/pem_stage_edge_knockout_test.py --out research/results/pem_stage_edge_ablations
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: pem-three-guild-stage-mechanism-ablations-synthetic
+          path: research/results/pem_stage_edge_ablations/
+          if-no-files-found: error
