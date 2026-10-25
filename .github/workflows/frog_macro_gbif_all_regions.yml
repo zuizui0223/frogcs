@@ -1,0 +1,35 @@
+name: Macro amphibian odonate stage phenology fifteen latitude regions
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - ".github/workflows/frog_macro_gbif_all_regions.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  twelve_months_by_taxonomic_stage:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        region: [US25_30, US30_35, US40_45, CA45_50, CA50_55, CA55_60, FR40_50, DE45_55, GB50_60, JP30_40, JP40_45, AUminus40_30, AUminus30_20]
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate the fixed ecological-guild source strata
+        run: python -m unittest -v ecology/macro_stage/tests/test_gbif_regions.py
+      - name: Retrieve and checksum all aquatic-stage and year/maturity monthly counts
+        run: |
+          python ecology/macro_stage/scripts/run_gbif_region.py \
+            --region ${{ matrix.region }} \
+            --outdir ecology/macro_stage/data/monthly
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gbif_macro_monthly_${{ matrix.region }}
+          path: ecology/macro_stage/data/monthly/
+          if-no-files-found: error
