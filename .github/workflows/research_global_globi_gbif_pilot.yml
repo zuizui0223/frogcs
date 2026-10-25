@@ -5,6 +5,7 @@ on:
       - research/stage-structured-interactions-2026-10-25
     paths:
       - research/scripts/global_globi_gbif_pilot.py
+      - research/scripts/build_gbif_global_cube_sql.py
       - .github/workflows/research_global_globi_gbif_pilot.yml
   workflow_dispatch:
 permissions:
@@ -24,6 +25,12 @@ jobs:
         run: |
           python research/scripts/global_globi_gbif_pilot.py \
             --out research/results/global_globi_gbif
+      - name: Generate global 1-degree and half-degree GBIF bulk SQL payloads without submitting
+        run: |
+          python research/scripts/build_gbif_global_cube_sql.py --self-test
+          python research/scripts/build_gbif_global_cube_sql.py \
+            --species research/results/global_globi_gbif/gbif_species_match_audit.csv \
+            --out research/results/global_globi_gbif/gbif_bulk_cube
       - uses: actions/upload-artifact@v4
         if: success()
         with:
