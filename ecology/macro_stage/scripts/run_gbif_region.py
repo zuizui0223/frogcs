@@ -23,6 +23,7 @@ STAGES=[
 ]
 BASE="https://api.gbif.org/v1/occurrence/search"
 UA="frogcs-macro-stage-ecology-monthly/0.1"
+COMMON_INAT_GBIF_DATASET="50c9509d-22c7-4a22-a47d-8c48425ef4a7"
 
 def request(params):
     url=BASE+"?"+urllib.parse.urlencode(params,doseq=True)
@@ -56,7 +57,7 @@ def parse_month(d):
         months[m-1]=int(q["count"])
     return months,summary
 
-def harvest(region):
+def harvest(region, shared_dataset=False):
     country,a,b=REGIONS[region]
     records=[]
     for key,order,stage in STAGES:
@@ -65,6 +66,7 @@ def harvest(region):
           "limit":0,"facet":["month","datasetKey","basisOfRecord"],
           "facetLimit":50}
         if stage is not None:params["lifeStage"]=stage
+        if shared_dataset:params["datasetKey"]=COMMON_INAT_GBIF_DATASET
         d,provenance=request(params)
         monthly,facets=parse_month(d)
         if sum(monthly)>int(d["count"]):
@@ -83,6 +85,8 @@ def harvest(region):
             "original_query_date_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
             "region":region,"country":country,"lat_min":a,"lat_max":b,
             "years_inclusive":[2015,2025],
+            "source_restriction":"shared_iNaturalist_dataset" if shared_dataset else "all_publishers",
+            "dataset_key":COMMON_INAT_GBIF_DATASET if shared_dataset else None,
             "raw_stage_categories_preserved":True,
             "biological_stage_contact_observed":False,
             "life_stages_are_record_annotations_not_random_censuses":True,
@@ -93,10 +97,11 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--region",required=True,choices=sorted(REGIONS))
     p.add_argument("--outdir",type=Path,required=True)
+    p.add_argument("--shared-dataset",action="store_true",help="use same GBIF iNaturalist dataset key for all three orders")
     a=p.parse_args()
-    result=harvest(a.region)
+    result=harvest(a.region,a.shared_dataset)
     a.outdir.mkdir(parents=True,exist_ok=True)
-    (a.outdir/f"GBIF_MONTHLY_{a.region}.json").write_text(
+    (a.outdir/f"GBIF_MONTHLY_{a.region}{'_INAT' if a.shared_dataset else ''}.json").write_text(
         json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
 
 if __name__=="__main__":main()
