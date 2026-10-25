@@ -1,0 +1,30 @@
+name: GBIF global open taxon partition parquet schema
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/sample_gbif_open_taxon_parquet.py
+      - .github/workflows/research_gbif_anon_parquet_sample.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sample-stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Arrow with S3 support
+        run: python -m pip install --disable-pip-version-check 'pyarrow>=16,<25'
+      - name: Open public anonymous Anura and Odonata Parquet without full multi-GB download
+        run: python research/scripts/sample_gbif_open_taxon_parquet.py --out research/results/gbif_anon_taxon_partition_sample
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: gbif-public-anura-odonata-s3-schema
+          path: research/results/gbif_anon_taxon_partition_sample/observed_schema_samples.json
+          if-no-files-found: error
