@@ -23,7 +23,7 @@ import urllib.error
 REPO="OlffLab/2024-LCED-networks"
 COMMIT="3ce7d7e08ab4c2ccad7143757c98f9ddb496673f"
 PREFIX="data/Otago_data/"
-BLOBS={"Otago_Data_Links.csv":"d2c2765a8a798bbd72029c328302f095f97d095f",
+BLOBS={"Otago_Data_Links.csv":"d2c2765a8a798bbd72029c328302f095f97d095c",
        "Otago_Data_Nodes.csv":"9303b47b997945cd37842df5fd23879fe864d114"}
 EXPECTED_BYTES={"Otago_Data_Links.csv":87692,"Otago_Data_Nodes.csv":34193}
 PARASITE_GROUPS={"Trematode","Acanthocephalan"}
