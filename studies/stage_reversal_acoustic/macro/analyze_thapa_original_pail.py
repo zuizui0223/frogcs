@@ -116,6 +116,18 @@ def source_rows(wb, name):
             raise ValueError("unexpected missing beetle training-pail cue cells")
     elif len(empty)!=1 or gate["missing_cue_by_training"]!={"sham|adult":1}:
         raise ValueError("salamander cue missingness differs from frozen source-only amendment")
+    by_clutch=defaultdict(Counter)
+    for p in pails.values():
+        for clutch in p["clutches"]:
+            by_clutch[clutch][p["training"]]+=1
+    arm_shapes=Counter(tuple(by_clutch[clutch][key] for key in TRAIN)
+                      for clutch in by_clutch)
+    print("THAPA_POSTHOC_CLUTCH_DESIGN_DIAGNOSTIC",json.dumps({
+        "system":name,"n_clutches":len(by_clutch),
+        "clutch_conditioned_pail_arm_shape_counts":{
+            "/".join(str(i) for i in key):v for key,v in arm_shapes.items()},
+        "grain":"clutch x original conditioning pail, no individual response data"
+    }))
     grouped={t:[] for t in TRAIN}
     for p in pails.values():
         grouped[p["training"]].append({v:mean(p["values"][v]) for v in TEST})
