@@ -25,9 +25,15 @@ BINS=("near_zero","low_intermediate","relatively_high")
 DATE="2026-10-25"
 REPORTING_THRESHOLDS=(1,5)
 
-def bin_environment(flooded):
+def bin_environment(flooded,open_water=None):
     if flooded is None or not math.isfinite(flooded):
         return "missing"
+    if open_water is None or not math.isfinite(open_water):
+        return "missing_open_water"
+    # Correct source Q/C: 1deg cells that are majority ocean/large open water
+    # cannot be interpreted as land-dominant no-flooded-vegetation ponds.
+    if open_water >= 50:
+        return "ocean_dominated"
     if flooded < .01:
         return "near_zero"
     if flooded < 1.:
@@ -57,7 +63,7 @@ def read_earthenv(path):
                     raise ValueError("EarthEnv input percentage invalid")
             if cell in out:
                 raise ValueError("Duplicate EarthEnv global 1deg cell")
-            out[cell]=(bin_environment(flood),flood,water,herbs)
+            out[cell]=(bin_environment(flood,water),flood,water,herbs)
             stats[out[cell][0]]+=1
     if len(out)<50000:
         raise ValueError("Incomplete global raster EarthEnv input, len "+str(len(out)))
@@ -72,18 +78,21 @@ def split_by_habitat(masks,habitat):
         grouped[threshold]={tier:collections.defaultdict(dict) for tier in BINS}
         footprint=collections.Counter()
         missing=0
+        excluded=collections.Counter()
         for key,locations in masks[threshold].items():
             for cell_year,bitmask in locations.items():
                 (lat,lon,year)=cell_year
                 src=habitat.get((lat,lon))
                 if src is None or src[0] not in BINS:
                     missing+=1
+                    excluded[src[0] if src is not None else "no_earthenv"]+=1
                     continue
                 tier=src[0]
                 grouped[threshold][tier][key][cell_year]=bitmask
                 footprint[tier]+=1
         sourcecounts[threshold]={"by_tier":dict(footprint),
-                                 "unmapped_site_stage_grid_years":missing}
+                                 "unmapped_site_stage_grid_years":missing,
+                                 "excluded_by_grid_type":dict(excluded)}
     return grouped,sourcecounts
 
 
@@ -320,7 +329,7 @@ def calculate(gbif,wetland,matched,optional_rain=None):
             ))
     return rows,dict(
         date=DATE,
-        status="REAL_STATIC_EARTHENV_GLOBI_GBIF_MATCHED_STAGE_PREY_DIAGNOSTIC",
+        status="QA_LAND_DOMINANT_EARTHENV_LT50_OPENWATER_POSTHOC",
         earthenv_1deg_source="https://www.earthenv.org/landcover, Tuanmu & Jetz 2014, CC BY-NC 4.0",
         primary_source_GloBI="https://doi.org/10.5281/zenodo.22691479",
         primary_source_GBIF="https://github.com/zuizui0223/frogcs/actions/runs/40194946916",
@@ -375,11 +384,13 @@ def save(rows,summary,out):
 
 
 def selftest():
-    assert bin_environment(None)=="missing"
-    assert bin_environment(0)=="near_zero"
-    assert bin_environment(.0099)=="near_zero"
-    assert bin_environment(.2)=="low_intermediate"
-    assert bin_environment(1.)=="relatively_high"
+    assert bin_environment(None,0)=="missing"
+    assert bin_environment(0,0)=="near_zero"
+    assert bin_environment(.0099,0)=="near_zero"
+    assert bin_environment(.2,0)=="low_intermediate"
+    assert bin_environment(1.,0)=="relatively_high"
+    assert bin_environment(0,100)=="ocean_dominated"
+    assert bin_environment(.5,70)=="ocean_dominated"
     # Grid and year must be matched before reporting month and rain.
     pred={(52,5,2020):1<<2}
     prey={(52,5,2020):1<<2}
