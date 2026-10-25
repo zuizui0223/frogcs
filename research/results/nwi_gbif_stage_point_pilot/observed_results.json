@@ -1,0 +1,371 @@
+{
+  "date": "2026-10-25",
+  "source_GBIF": "https://api.gbif.org/v1/occurrence/search",
+  "source_USFWS_NWI": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
+  "fixed_selection": "5 strictly GBIF species matched taxa, 10 stage strata, default API head/middle/tail, up to 5 precise occurrence coordinates per source offset, 150 maximum NWI queries",
+  "source_results": [
+    {
+      "species": "Anax junius",
+      "guild": "Odonata",
+      "stage": "Nymph",
+      "gbif_exact_species_key": 5051741,
+      "gbif_reported_stage_records": 146,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 146,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 5,
+      "excluded_by_reason": {
+        "uncertainty_above_100m": 2
+      },
+      "source_precision_selected": 5,
+      "NWI_queries_succeeded": 5,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 2,
+      "points_inside_NWI_PEM": 0,
+      "NWI_PEM_fraction_of_queried_points": 0,
+      "PEM_codes": {},
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Anax junius",
+      "guild": "Odonata",
+      "stage": "Adult",
+      "gbif_exact_species_key": 5051741,
+      "gbif_reported_stage_records": 14300,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 6900,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 14000,
+          "returned": 300,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 15,
+      "excluded_by_reason": {
+        "missing_coordinate_uncertainty": 253,
+        "uncertainty_above_100m": 12
+      },
+      "source_precision_selected": 15,
+      "NWI_queries_succeeded": 15,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 7,
+      "points_inside_NWI_PEM": 1,
+      "NWI_PEM_fraction_of_queried_points": 0.06666666666666667,
+      "PEM_codes": {
+        "PEM1Fm": 1
+      },
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Taricha torosa",
+      "guild": "Caudata",
+      "stage": "Larva",
+      "gbif_exact_species_key": 2431913,
+      "gbif_reported_stage_records": 108,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 108,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 5,
+      "excluded_by_reason": {
+        "missing_coordinate_uncertainty": 5,
+        "uncertainty_above_100m": 3
+      },
+      "source_precision_selected": 5,
+      "NWI_queries_succeeded": 5,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 2,
+      "points_inside_NWI_PEM": 0,
+      "NWI_PEM_fraction_of_queried_points": 0,
+      "PEM_codes": {},
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Taricha torosa",
+      "guild": "Caudata",
+      "stage": "Adult",
+      "gbif_exact_species_key": 2431913,
+      "gbif_reported_stage_records": 10526,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 5100,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 10226,
+          "returned": 300,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 15,
+      "excluded_by_reason": {
+        "uncertainty_above_100m": 6,
+        "missing_coordinate_uncertainty": 17
+      },
+      "source_precision_selected": 15,
+      "NWI_queries_succeeded": 15,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 2,
+      "points_inside_NWI_PEM": 1,
+      "NWI_PEM_fraction_of_queried_points": 0.06666666666666667,
+      "PEM_codes": {
+        "PEM1C": 1
+      },
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Ambystoma maculatum",
+      "guild": "Caudata",
+      "stage": "Larva",
+      "gbif_exact_species_key": 2431951,
+      "gbif_reported_stage_records": 235,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 235,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 5,
+      "excluded_by_reason": {
+        "uncertainty_above_100m": 8,
+        "missing_coordinate_uncertainty": 3
+      },
+      "source_precision_selected": 5,
+      "NWI_queries_succeeded": 5,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 0,
+      "points_inside_NWI_PEM": 0,
+      "NWI_PEM_fraction_of_queried_points": 0,
+      "PEM_codes": {},
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Ambystoma maculatum",
+      "guild": "Caudata",
+      "stage": "Adult",
+      "gbif_exact_species_key": 2431951,
+      "gbif_reported_stage_records": 2055,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 900,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 1755,
+          "returned": 300,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 15,
+      "excluded_by_reason": {
+        "missing_coordinate_uncertainty": 5,
+        "uncertainty_above_100m": 2
+      },
+      "source_precision_selected": 15,
+      "NWI_queries_succeeded": 15,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 1,
+      "points_inside_NWI_PEM": 0,
+      "NWI_PEM_fraction_of_queried_points": 0,
+      "PEM_codes": {},
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Anaxyrus boreas",
+      "guild": "Anura",
+      "stage": "Larva",
+      "gbif_exact_species_key": 2422924,
+      "gbif_reported_stage_records": 177,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 177,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 5,
+      "excluded_by_reason": {
+        "uncertainty_above_100m": 4,
+        "missing_coordinate_uncertainty": 5
+      },
+      "source_precision_selected": 5,
+      "NWI_queries_succeeded": 5,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 3,
+      "points_inside_NWI_PEM": 0,
+      "NWI_PEM_fraction_of_queried_points": 0,
+      "PEM_codes": {},
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Anaxyrus boreas",
+      "guild": "Anura",
+      "stage": "Adult",
+      "gbif_exact_species_key": 2422924,
+      "gbif_reported_stage_records": 1043,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 300,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 743,
+          "returned": 300,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 15,
+      "excluded_by_reason": {
+        "missing_coordinate_uncertainty": 7,
+        "uncertainty_above_100m": 3
+      },
+      "source_precision_selected": 15,
+      "NWI_queries_succeeded": 15,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 1,
+      "points_inside_NWI_PEM": 1,
+      "NWI_PEM_fraction_of_queried_points": 0.06666666666666667,
+      "PEM_codes": {
+        "PEM1C": 1
+      },
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Pseudacris regilla",
+      "guild": "Anura",
+      "stage": "Larva",
+      "gbif_exact_species_key": 2428132,
+      "gbif_reported_stage_records": 674,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 300,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 374,
+          "returned": 300,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 15,
+      "excluded_by_reason": {
+        "uncertainty_above_100m": 3,
+        "missing_coordinate_uncertainty": 6
+      },
+      "source_precision_selected": 15,
+      "NWI_queries_succeeded": 15,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 6,
+      "points_inside_NWI_PEM": 1,
+      "NWI_PEM_fraction_of_queried_points": 0.06666666666666667,
+      "PEM_codes": {
+        "PEM1A": 1
+      },
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    },
+    {
+      "species": "Pseudacris regilla",
+      "guild": "Anura",
+      "stage": "Adult",
+      "gbif_exact_species_key": 2428132,
+      "gbif_reported_stage_records": 3733,
+      "fixed_offset_receipts": [
+        {
+          "offset": 0,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 1800,
+          "returned": 300,
+          "accepted": 5
+        },
+        {
+          "offset": 3433,
+          "returned": 300,
+          "accepted": 5
+        }
+      ],
+      "gbif_points_with_known_le100m_uncertainty": 15,
+      "excluded_by_reason": {
+        "uncertainty_above_100m": 10,
+        "missing_coordinate_uncertainty": 18
+      },
+      "source_precision_selected": 15,
+      "NWI_queries_succeeded": 15,
+      "NWI_queries_failed": 0,
+      "points_inside_mapped_NWI_polygon": 5,
+      "points_inside_NWI_PEM": 1,
+      "NWI_PEM_fraction_of_queried_points": 0.06666666666666667,
+      "PEM_codes": {
+        "PEM1C": 1
+      },
+      "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+    }
+  ],
+  "overall": {
+    "source_precision_selected": 110,
+    "NWI_queries_succeeded": 110,
+    "NWI_queries_failed": 0,
+    "points_inside_mapped_NWI_polygon": 29,
+    "points_inside_NWI_PEM": 5,
+    "NWI_PEM_fraction_of_queried_points": 0.045454545454545456,
+    "PEM_codes": {
+      "PEM1Fm": 1,
+      "PEM1C": 3,
+      "PEM1A": 1
+    },
+    "qualifier": "NONRANDOM_GBIF_LOCATION_PILOT_NOT_HABITAT_SELECTION"
+  },
+  "status": "REAL_SOURCE_GEO_FEASIBILITY_NOT_PEM_CAUSAL_HABITAT_OR_FROG_CHORUS",
+  "limitations": [
+    "Not a random sample: GBIF offset ordering, taxon detection and stage-label availability are strongly biased.",
+    "Only GBIF points with an explicitly documented coordinate uncertainty <=100m retained; unknown uncertainty is not treated as precise.",
+    "NWI point in mapped polygons does not show actual pond habitat occupancy or a predator-prey encounter.",
+    "No point intersected is not evidence of no wetland or avoidance of PEM; NWI source historical coverage and mapping accuracy vary.",
+    "NPS chorus recorder SiteLocation and original NAAMP physical site coordinates have not been independently geojoined to NWI official wetlands.",
+    "Original GloBI pair links and these five species are not a confirmed local frog-odonate-salamander trophic community.",
+    "No mortality, breeding pulses, larval recruitment, PEM habitat preference or stage-driven coexistence estimated."
+  ]
+}
