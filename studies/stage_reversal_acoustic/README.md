@@ -1,6 +1,6 @@
 # Independent study: developmental trophic reversal × acoustic timing (2026-10-25)
 
-**STATUS: NEW PROSPECTIVE DEVELOPMENT LANE, NO NEW EMPIRICAL TEST PASSED.** This branch must not be merged into, or used to reopen, frozen JAE RC6 scientific results. The frogcs RC6 mainline and 2001–2015 NAAMP conclusions remain unchanged.
+**STATUS: INDEPENDENT STAGE-TIMING METHODS + DIRECT SOURCE REGISTRY; NO NEW ACOUSTIC × STAGE EMPIRICAL TEST PASSED.** This branch must not be merged into, or used to reopen, frozen JAE RC6 scientific results. The frogcs RC6 mainline and 2001–2015 NAAMP conclusions remain unchanged.
 
 ## Ecological question
 
@@ -48,6 +48,48 @@ The result-bearing test would compare an out-of-block season/weather/recording-e
 - iNaturalist ontology https://www.inaturalist.org/pages/annotations
 - NAAMP DOI https://doi.org/10.5066/F7G44NG0
 
+## Confirmed external comparison frame (reviewed 2026-10-25)
+
+Do not pool heterogeneous study outcomes as a single meta-analytic effect.
+
+| System | Exactly what is observed | Reversal clock | Relation to calls |
+| --- | --- | --- | --- |
+| *Litoria aurea* × *Anax papuensis* | Trophic directions supported across Beranek (2023) and antecedent tadpole-predation work. Frogs consumed emerging and larval dragonflies. | Seasonal development / emergence; September–November window in one 9-wetland programme | FrogID calling could be prospective, but no original site-season-week linkage has been certified |
+| *Leuciscus aspius* × *Alburnus alburnus* | Adult bleak eat drifting asp eggs: 64/147 sampled bleak stomachs contained eggs; 21.2 ± 2.2% mortality over the 40-cm camera field; original paper also establishes adult bleak as asp prey | **Tens of seconds**, between egg release and adhesion | Independent non-acoustic time-resolution control; not 1/2/4-week lag data |
+| *Esox lucius* × *Gasterosteus aculeatus* | Sticklebacks consumed 97% of pike under 35 mm in a feeding trial vs 5% above 35 mm. Juvenile pike can potentially consume small adult sticklebacks from a modelled 78-mm threshold; all sticklebacks potentially at ~175 mm | **Body-size/gape transition**, not a directly observed predation-switch date | Independent non-acoustic size-axis control; reverse branch modelled rather than an observed feeding experiment |
+| *Hynobius retardatus* × frog tadpoles | Salamander cannibalism promotes giant larvae that take frog tadpoles more readily; does NOT demonstrate prey becoming predator of that salamander | Size-structured intensity change, **non-reciprocal control** | No warning/acoustic result |
+
+Sources: https://doi.org/10.1002/ecy.4108 ; https://doi.org/10.1038/s41598-017-07339-w ; https://doi.org/10.1111/1365-2656.12981 ; https://doi.org/10.1002/ece3.8894 .
+
+Independent earlier *Litoria aurea* calling-versus-tadpole monitoring (https://doi.org/10.1002/ece3.980) did not support calling-male counts as a reliable proxy for the number of breeding ponds. This is an important falsifier: calling cannot silently stand in for tadpole production.
+
+## Executable v0.2 — current branch
+
+- `protocol_v0_2.json`: a frozen source, estimand and comparison contract.
+- `registry/source_screen_v0_2.csv`: source-confirmed direct edges, model-inferred edges and nonreciprocal controls.
+- `src/stage_acoustic_screen.py`: fail-closed original-row gate, source-week opportunity accounting, stage-specific call lead/negative-lag scan; no pseudo-dated trophic switches.
+- `tests/test_stage_acoustic_screen.py`: source gate / denominator / stage ontology / lag regression tests.
+- `.github/workflows/stage_reversal_acoustic_qa.yml`: branch + PR test automation.
+
+Run:
+
+```bash
+python -m unittest discover -s studies/stage_reversal_acoustic/tests -v
+python studies/stage_reversal_acoustic/src/stage_acoustic_screen.py --out /tmp/stage_acoustic_readiness.json
+# Without verified original rows and a completed source gate, output MUST say NOT_ESTIMABLE.
+```
+
+Real model execution requires three true event-derived matrices (original frog recordings by site-week, annotated stage survey opportunities by the SAME geography/season, and direct predation observations by pair and stage). Mere DOI availability and a passing parser test are not a real outcome.
+
+### Data access limitation
+
+- The published Mendeley `Anax_emergence.xlsx` source is visible at DOI 10.17632/9swstxknpz.1, but original file bytes and cell headers have not yet been retrieved. No row-level counts have been claimed.
+- The public Mendeley API endpoint required authorization in a live retrieval check; the dataset landing page and original paper are inspectable.
+- FrogID v7 has public occurrence information, but its original **recording-opportunity** denominator and date/coordinate join to dragonfly emergence remain to be audited.
+- There is no documented same-recorder, same-event receiver behaviour or playback intervention in these linked sources.
+
+The source-gate result is **NOT_ESTIMABLE**, not negative evidence. Do not execute exploratory effect-hunting against available-but-noncommensurate rows.
+
 ## Execution accounting
 
-Created 2026-10-25 as separate exploratory study. A standalone stdlib-Python v0.1 descriptive implementation and eight local unit tests were generated separately, with all eight passing. They have **not yet been uploaded to this branch or run on original rows**; this GitHub branch contains the frozen source/claim contract and evidence registry only. No new biological result is claimed.
+Created 2026-10-25 on `study/stage-reversal-acoustic-macro-20261025`. The earlier standalone v0.1 eight tests passed locally, but its composite stage-opportunity crossing is intentionally *not* the inferential v0.2 endpoint. v0.2 files and an independent CI QA workflow are now committed to the branch. No new acoustic-stage association, predation-switch time, or acoustic alarm effect has been estimated. No frozen JAE RC6 manuscript / SI / results have been changed.
