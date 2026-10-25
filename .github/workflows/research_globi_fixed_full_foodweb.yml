@@ -1,0 +1,36 @@
+name: Full pinned GloBI 24M world feeding-stage aggregation
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/run_globi_fixed_full_foodweb.py
+      - .github/workflows/research_globi_fixed_full_foodweb.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-world-food-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify available scratch disk space
+        run: df -h /tmp
+      - name: Install local columnar query engine
+        run: python -m pip install --disable-pip-version-check 'duckdb>=1.2,<2'
+      - name: Smoke test SQL schema and source identity
+        run: python research/scripts/run_globi_fixed_full_foodweb.py --self-test
+      - name: Stream exact 2026-09-10 GloBI v0.11 Parquet and aggregate worldwide feeding interactions
+        run: |
+          python research/scripts/run_globi_fixed_full_foodweb.py \
+            --out research/results/globi_fixed_full_foodweb
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: full-world-globi-2026-fixed-24m-row-stage-foodweb
+          path: research/results/globi_fixed_full_foodweb/observed_results.json
+          if-no-files-found: error
