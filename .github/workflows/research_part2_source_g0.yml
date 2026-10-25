@@ -1,0 +1,41 @@
+name: Research — unified frog paper Part-II source gate
+on:
+  push:
+    branches:
+      - integration/stage-legacy-unified-2026-10-25
+    paths:
+      - research/scripts/part2_published_source_g0.py
+      - research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md
+      - .github/workflows/research_part2_source_g0.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-blind-qualified-panel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify script parses
+        run: python3 -m py_compile research/scripts/part2_published_source_g0.py
+      - name: Check source bytes, event fields and exact original site identifiers
+        run: python3 research/scripts/part2_published_source_g0.py --out /tmp/frogcs_part2_g0.json
+      - name: Validate source gate remains non-causal
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/frogcs_part2_g0.json'))
+          assert d['all_g0_g1_g2_recruitment_paper_claims'] is False
+          assert d['rc6_source_modified'] is False
+          assert d['source_data_redistributed'] is False
+          print('PART2_G0_SAFETY_PASS')
+          PY
+      - name: Upload source qualification receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: part2_published_source_g0_receipt
+          path: /tmp/frogcs_part2_g0.json
+          if-no-files-found: warn
