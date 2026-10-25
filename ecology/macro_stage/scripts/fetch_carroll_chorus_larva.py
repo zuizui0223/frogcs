@@ -63,6 +63,16 @@ def run(outdir):
             else:
                 target=p/"funneltrapdata.xlsx"
                 target.write_bytes(actual)
+                if zipfile.is_zipfile(io.BytesIO(raw)):
+                    with zipfile.ZipFile(io.BytesIO(raw)) as bundle:
+                        info=[n for n in bundle.namelist() if n.rsplit("/",1)[-1]=="README.md"]
+                        if len(info)==1:
+                            readme=bundle.read(info[0])
+                            if hashlib.sha256(readme).hexdigest()=="d2729af5cf0e685b15a26fc80f9ce589010c67e3cda545c9b2160c6b8906a5ff":
+                                (p/"CARROLL_ORIGINAL_README.md").write_bytes(readme)
+                                report["original_readme_verified"]=True
+                            else:
+                                report["original_readme_verified"]=False
                 attempt["result"]="original workbook checksum matches"
                 report.update(source_downloaded_and_sha_verified=True,
                     validated_source_url=url,source_content_sha256=EXPECTED_SHA)
