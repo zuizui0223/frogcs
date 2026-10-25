@@ -156,14 +156,6 @@ def audit_coverage(reader: csv.DictReader) -> dict:
     # Co-presence in a pond/year is only a coverage candidate. It does NOT
     # demonstrate stage overlap in days, predation, or recruitment.
     candidate_exposure = {
-        (p, y) for p, _, y in winter_verified
-        if any(p == pond and y == yr and taxon != ptaxon
-               for pond, taxon, yr in eggs
-               for pp, ptaxon, yy in winter_verified
-               if pp == p and yy == y)
-    }
-    # Better explicit pair matching for distinct predator/prey species.
-    candidate_exposure = {
         (pond, yr) for pond, taxon, yr in winter_verified
         if any(p == pond and y == yr and prey != taxon
                for p, prey, y in eggs)
