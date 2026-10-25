@@ -1,0 +1,29 @@
+name: Carroll pond chorus and larval original XLSX source verification
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/fetch_carroll_chorus_larva.py"
+      - ".github/workflows/frog_macro_carroll_chorus_larva_source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-published-independent-pond-acoustic-larval-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download Carroll et al published original XLSX from Dryad and validate original SHA256
+        run: |
+          python ecology/macro_stage/scripts/fetch_carroll_chorus_larva.py \
+            --outdir ecology/macro_stage/source_carroll
+      - name: Preserve original workbook and audit receipt, never guessed or generated egg rows
+        uses: actions/upload-artifact@v4
+        with:
+          name: carroll_original_8ponds_sixyears_adult_chorus_tadpole
+          path: ecology/macro_stage/source_carroll/
+          if-no-files-found: error
