@@ -131,6 +131,30 @@ def source_rows(wb, name):
     grouped={t:[] for t in TRAIN}
     for p in pails.values():
         grouped[p["training"]].append({v:mean(p["values"][v]) for v in TEST})
+    matched_clutch_contrasts=[]
+    if name=="salamander":
+        # This structural condition was inspected on original group labels only,
+        # and added as a post-hoc sensitivity AFTER the pail-level estimates.
+        if any(tuple(by_clutch[c][key] for key in TRAIN)!=(1,1,1)
+               for c in by_clutch):
+            raise ValueError("source not a complete 6-clutch × 3-training-arm design")
+        for clutch in sorted(by_clutch):
+            larval_trained=[p for p in pails.values()
+                            if clutch in p["clutches"] and p["training"]=="larval"]
+            adult_trained=[p for p in pails.values()
+                           if clutch in p["clutches"] and p["training"]=="adult"]
+            if len(larval_trained)!=1 or len(adult_trained)!=1:
+                raise ValueError("clutch-specific trained pails not unique")
+            lp=larval_trained[0]
+            ap=adult_trained[0]
+            la=mean(lp["values"]["adult"]);ll=mean(lp["values"]["larval"])
+            al=mean(ap["values"]["larval"]);aa=mean(ap["values"]["adult"])
+            if any(x is None for x in (la,ll,al,aa)):
+                raise ValueError("incomplete trained cue test within clutch")
+            # (cross - within) cancels both odor-specific sham terms algebraically.
+            matched_clutch_contrasts.append(((la-ll)+(al-aa))/2)
+        if len(matched_clutch_contrasts)!=6:
+            raise ValueError("unexpected source six-clutch design")
     return {
         "n_data_rows":count,"n_pails":len(pails),"n_distinct_clutches":
             len(set().union(*(p["clutches"] for p in pails.values()))),
@@ -141,6 +165,7 @@ def source_rows(wb, name):
         "pail_counts_by_training":dict(bytrain),
         "pail_test_cue_missingness":gate["missing_cue_by_training"],
         "n_pails_with_both_cues":gate["n_pails_with_both_cues"],
+        "clutch_paired_cross_minus_same":matched_clutch_contrasts,
         "grouped":grouped
     }
 
@@ -185,6 +210,28 @@ def bootstrap(grouped):
                  "bootstrap95":(rounded(percentile(v,.025)),rounded(percentile(v,.975))),
                  "n_training_pails":{t:len(grouped[t]) for t in TRAIN}}
             for key,v in bs.items()}
+
+def matched_clutch_sensitivity(values):
+    if len(values)!=6 or not all(math.isfinite(x) for x in values):
+        raise ValueError("clutch sensitivity requires six valid source contrasts")
+    location=mean(values)
+    variance=sum((x-location)**2 for x in values)/5
+    sd=math.sqrt(variance)
+    # Fixed 2-sided Student t 0.975, df=5; descriptive, normal-clutch assumption.
+    t97=2.570581835636314
+    half=t97*sd/math.sqrt(6)
+    rng=random.Random(SEED+100)
+    boot=[mean([values[rng.randrange(6)] for _ in range(6)])
+          for __ in range(B)]
+    return {"n_clutches":6,"mean_effect":rounded(location),
+            "sd_between_clutches":rounded(sd),
+            "two_sided_t95_df5":(rounded(location-half),rounded(location+half)),
+            "clutch_bootstrap95":(rounded(percentile(boot,.025)),
+                                  rounded(percentile(boot,.975))),
+            "n_positive_clutch_effects":sum(x>0 for x in values),
+            "min_effect":rounded(min(values)),"max_effect":rounded(max(values)),
+            "method":"posthoc clutch-matched trained pails, nonsham cross-minus-within difference; no new universal sign claim"}
+
 
 def influence(grouped):
     output={}
@@ -238,6 +285,9 @@ def analyze():
             "pail_level_mean_change":{t:{cue:rounded(mu[t][cue]) for cue in TEST} for t in TRAIN},
             "contrasts":stats,
             "leave_one_pail_out":influence(source["grouped"]),
+            "posthoc_six_clutch_paired_sensitivity":
+                matched_clutch_sensitivity(source["clutch_paired_cross_minus_same"])
+                if name=="salamander" else None,
             "within_study_sampling_limitation":"Original source row count differs from publication reported tested n; selection/omission mechanism not identified."
         }
     return out
