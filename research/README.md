@@ -2,6 +2,17 @@
 
 Status 2026-10-25: **independent prospective macroecology branch**, not a reopening of RC6 JAE or WFTS; `main` manuscript unaffected.
 
+## Current full-source science endpoint (supersedes API first-page pilots)
+
+**[Audited full-global GloBI × GBIF stage, seasonal null and rainfall results](results/FULL_GLOBAL_GLOBI_GBIF_STAGE_TESTS_2026-10-25.md)** is the current interpretation source. The older [API pilot synthesis](results/GLOBAL_GLOBI_GBIF_MACRO_SYNTHESIS_2026-10-25.md) is historical feasibility provenance, **not** the strongest current evidence.
+
+- **Whole GloBI v0.11** (24,453,954 fixed source rows, MD5-verified): 77,720 focal interactions; 1,240 certain nonself/stage-annotated raw rows; 881 directed species-stage patterns; 29 *unverified* reciprocal different-species candidate pairs. [Audited result](results/full_globi_2026_stage_gbif_grid/observed_results.json).
+- **Worldwide GBIF actual stage reporting at 1° year×month**, experimental August 2026: expanded 78 GloBI Anura/Odonata stage-directed patterns, 77 stage-data covered, 71 with co-reports same grid/year/month; still not documented local predation. [Source workflow](https://github.com/zuizui0223/frogcs/actions/runs/40194946916).
+- **Seasonal phase-negative control:** 16/18 primary staged pairs show more shared reporting months than their own 11 shifted-month comparisons. [Result](results/month_shift_globi_gbif/observed_results.json); generic phenological overlap and sampling effort remain alternatives.
+- **Prey-stage/guild/coverage-matched alternative partner null:** 56/77 expanded stage links have ≥2 matched comparators; only 31/56 (≥1) and 26/56 (≥5) have higher phase-concordance than alternative prey median. **Predation-specific temporal enhancement is not robustly established.** [Result](results/expanded_stage_specificity/observed_results.json).
+- **WorldClim real monthly rain, 2010–2024:** about 495,803 GBIF stage-grid records linked to precipitation. In within-grid-year comparisons, 10/15 GloBI pairs show wetter co-report months at ≥1 report (pair-median +3.38 mm/month); **not** NAAMP 72-hour rain gating or trophic causation. [Result](results/globi_gbif_rain_contrast/observed_results.json).
+- **Most important remaining gap:** true emergent macrophyte structural abundance, local water-level/hydroperiod and actual larval predator/prey stages sampled within the same wetland and date. GBIF plant sightings cannot substitute for these. Original JAE RC6 `main` remains unmodified.
+
 ## Primary research direction — GLOBAL GloBI × GBIF
 
 **[Global real-data macroecological synthesis, 2026-10-25](results/GLOBAL_GLOBI_GBIF_MACRO_SYNTHESIS_2026-10-25.md)** is now the primary research spine. The former wetland-specific comparison is **secondary ecological mechanism support**, not the primary discovery program. Publication-ready global inference requires version-pinned full GloBI and a citable GBIF bulk grid export; the completed data in this branch are explicitly exploratory API pilots.
