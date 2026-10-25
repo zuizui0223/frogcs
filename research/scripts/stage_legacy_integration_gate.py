@@ -97,6 +97,28 @@ def validate_receipts(manifest: dict) -> dict:
         nps_result["adjusted_strict_prior_strong"]["own_prior_strong_beta"],
         nps["expected_adjusted_beta"], "NPS adjusted same-species site-history beta")
 
+    cross_module = next((item for item in manifest["source_modules"]
+                         if item["id"] == "nps_acoustic_crosslag"), None)
+    require(cross_module is not None, "Missing frozen NPS other-species lag module")
+    cross = read_json(ROOT / cross_module["result"])
+    require(cross["source_sha256"] == nps_result["source_sha256"],
+            "Different pinned source in NPS cross-lag result")
+    require(cross["comparison_count"] == 6, "Different frozen NPS contrast count")
+    main_cross = next(c["main_adjusted"] for c in cross["comparisons"]
+                      if c["comparison"] == "primary_green_prior_to_wood_call")
+    require(main_cross["estimable"], "Frozen NPS primary is no longer estimable")
+    require(main_cross["eligible_rows"] == cross_module["eligible_rows"],
+            "NPS interspecific prior comparison sample drift")
+    check_numeric(main_cross["primary_exposure_previous_year_beta_risk_difference"],
+                  cross_module["primary_adjusted_beta"],
+                  "NPS green frog previous year to wood frog current acoustic beta")
+    require(main_cross["site_cluster_approx_ci95"][0] < 0 <
+            main_cross["site_cluster_approx_ci95"][1],
+            "Frozen NPS negative main hypothesis interpretation changed")
+    require(main_cross["primary_exposure_previous_year_beta_risk_difference"] >= 0,
+            "Cannot claim negative primary acoustic suppression from current result")
+    require(manifest["prior_claims"]["NPS_green_to_wood_annual_acoustic_suppression_supported"] is False,
+            "Do not promote nonsignificant/non-negative NPS H1A acoustic signal")
     require(not manifest["prior_claims"]["NAAMP_predator_proxy_validated"],
             "Proxy not yet validated from a co-located pond-stage panel")
     require(not manifest["prior_claims"]["drought_larval_reset_observed"],
@@ -111,6 +133,8 @@ def validate_receipts(manifest: dict) -> dict:
         "nps_independent_acoustic_history": "MATCHES_SOURCE_RECEIPT",
         "nps_informative_site_taxon_year_rows": nps["expected_informative_rows"],
         "nps_adjusted_history_beta": nps_beta,
+        "nps_green_prior_to_wood_acoustic_beta": main_cross["primary_exposure_previous_year_beta_risk_difference"],
+        "nps_primary_acoustic_suppression_supported": False,
         "scientific_conclusion": "ACOUSTIC_SPATIAL_AND_HISTORY_RESULTS_ONLY",
     }
 
