@@ -101,6 +101,17 @@ Compute changes in `C`, bounded residual `rho_b`, strictly-prior SiteID targetin
 2. **E3 further reduces excess** with reproducible `fish×emergent` or `odonate×refuge` effects: plant architecture filters animal interactions and organizes recurrent choruses.
 3. **E4 needed after E3**: species-specific route-night joint readiness or social/demographic carry-over may remain, without establishing any one mechanism. If none of the models predicts configuration after holdout, leave an unresolved mechanism.
 
+## 6a. Stronger biological prediction: rainfall chorus hotspots may decouple from recruitment hotspots
+
+**Prospective only, not a frogcs empirical result.** Rainfall may increase the intensity of adult choruses at historically strong locations while fish access, aquatic insect predator density and local plant architecture alter the *subsequent* fraction of eggs surviving to metamorphosis. The same site can be an **acoustic hotspot but not necessarily a recruitment hotspot**. Do not label it an “ecological trap” without evidence that attractiveness and realized fitness diverge.
+
+- Prediction A: in low-predator wetlands with adequate inundated egg substrate, prior-chorus × rain predicts later egg masses and larval stages at positive species-specific lags.
+- Prediction B: a wetland with new flood connectivity may gain fish predators; where emergent cover is sparse and open water dominates, larval survival could decline even as adult calling increases. This is motivated by external rainfall × fish × hydroperiod observations (Davis et al. 2017, DOI 10.1002/eap.1442), not directly measured in NAAMP.
+- Prediction C: fish × emergent-cover and odonate-larva × submerged-cover effects could have *opposite signs*, and high-density Typha-dominated stands may reduce oxygen and structural heterogeneity. A connected/harvested Typha restoration experiment (Lishawa et al. 2023, DOI 10.1111/fwb.14141; Dryad 10.5061/dryad.wdbrv15tb) can benchmark plant-management effects on fish, macroinvertebrate and larval amphibian presence **but lacks adult chorus histories**.
+- Prediction D: spring water connectivity can be replaced by late-summer local waterbody conditions as the main correlates of community composition when amphibian and aquatic insect larvae metamorphose. This seasonal switch is externally documented in 25 Japanese floodplain sites (Uno et al. 2025, DOI 10.1002/ece3.70880), **not a new NAAMP result or a direct emergent-plant test**.
+
+Design: estimate separate lagged event links `CI2plus_t → egg_mass_(t+species_delay) → tadpole_stage_(t+degree_days) → metamorph_output` with detection/effort and survival uncertainty; compare with a “chorus predicts only acoustic display” null. Include source-year/wetland identity and stage of fish/odonate/salamander. Never backfit future measured larvae to present-night calling or use simple presence to imply kill rates. Methylation-eDNA age/spawning assays are a **future** observation layer if separately validated in each focal species.
+
 ## 7. Data strategy — authentic macroecology, not just literature re-analysis
 
 1. **New harmonized worldwide wetland × species × year × season panel**: use independently sourced fixed-site acoustic and amphibian surveys with repeated site IDs; match independently measured or audited fish, odonate, salamander, frog egg/tadpole and hydrology. Keep dataset and evidence-level identifiers; do not treat GloBI feeding edges as demonstrated site-specific co-occurrence.
