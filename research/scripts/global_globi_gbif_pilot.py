@@ -414,9 +414,9 @@ def run(output_dir, second_page=False):
         selected_directions={f"{a}->{b}":n for (a,b),n in per_dir.items()},
         gbif_taxa_requested=len(allnames),
         gbif_trophic_taxa_accepted=sum(x["status"]=="accepted"
-                                        for x in taxa.values()),
+                                        for x in taxon.values()),
         gbif_trophic_taxa_unresolved=sum(x["status"]!="accepted"
-                                          for x in taxa.values()),
+                                          for x in taxon.values()),
         gbif_plants_accepted=sum(x["status"]=="accepted"
                                  for x in plants.values()),
         eligible_pairs_with_gbif_matches=len(accepted),
