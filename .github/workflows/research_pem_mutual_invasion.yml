@@ -1,0 +1,32 @@
+name: PEM frog salamander dragonfly strict resident invasion counterfactual
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/pem_three_guild_pair_resident_invasion.py
+      - .github/workflows/research_pem_mutual_invasion.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict-three-guild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install math dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
+      - name: Verify strict rare-invader growth and cohort-cost gate with synthetic data
+        run: python research/scripts/pem_three_guild_pair_resident_invasion.py --self-test
+      - name: Compare fixed frog pulse phase, hypothetical PEM wetness and predator cue mechanisms under 64 identical parameter draws
+        run: python research/scripts/pem_three_guild_pair_resident_invasion.py --out research/results/pem_mutual_invasion
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: pem-synthetic-stage-network-rare-invasion-outcomes
+          path: research/results/pem_mutual_invasion
+          if-no-files-found: error
