@@ -87,8 +87,8 @@ def run(source):
     return {"status":"ONE_SEASON_UNMATCHED_REGION_DESCRIPTIVE_ONLY",
             "n_frogid_recording_events":sum(r["unique_recording_events"] for r in source["weekly_source_aggregate"]),
             "n_focal_call_positive_events":sum(r["focal_positive_recording_events"] for r in source["weekly_source_aggregate"]),
-            "n_anax_positive_survey_weeks":sum(r.get("anax_emergers") is not None for r in source["weekly_source_aggregate"]),
-            "n_calendar_years_overlapping_one_breeding_season":original_years,
+            "n_anax_surveyed_weeks_including_zero_emergence":sum(r.get("anax_emergers") is not None for r in source["weekly_source_aggregate"]),
+            "calendar_years_within_single_breeding_season":original_years,
             "forward_and_reverse_lag_diagnostics":direct,"same_anchor_directional_diagnostics":same_anchor,
             "identification":"Cannot infer true warning, seasonally validated leading prediction, or predator/prey reversal date."}
 
