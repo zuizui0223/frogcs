@@ -46,7 +46,9 @@ def retrieve(name):
         with urllib.request.urlopen(req,timeout=30) as r: obj=json.load(r)
         raw=base64.b64decode(obj["content"])
     if len(raw)!=EXPECTED_BYTES[name] or githash(raw)!=BLOBS[name]:
-        raise ValueError("original source identity fails closed for "+name)
+        raise ValueError("original source identity fails closed for "+name+
+                         " bytes="+str(len(raw))+" expected="+str(EXPECTED_BYTES[name])+
+                         " computed_sha="+githash(raw)+" expected_sha="+BLOBS[name])
     return raw
 
 def csv_rows(content):
