@@ -1,6 +1,10 @@
-# frogcs research — integrated stage-structured wetland ecology (prospective)
+# frogcs research — one integrated ecology flagship (RC6 pattern + stage mechanisms)
 
-**Scientific release boundary (2026-10-26):** The Journal of Animal Ecology **RC6 remains the complete, unchanged submission candidate** in `main`, `release/jae-multisite-rc6` and `submission/jae-multisite-v6`. The new frog stage/hydrology/community analysis is deliberately separate and does not rewrite RC6, its NAAMP endpoints, published numerical receipts, or the WFTS decision.
+**Single-paper editorial direction (2026-10-26):** The **completed RC6 scientific result is frozen unchanged** in `main`, `release/jae-multisite-rc6` and `submission/jae-multisite-v6`, but **immediate stand-alone submission is deferred**. Its data/claim/QC history are Part I evidence for a **conditional future integrated ecological paper**; the new Part II/III science and eventual new manuscript are developed here, without rewriting the locked RC6 candidate. [Dated authority](INTEGRATED_PAPER_DECISION_2026-10-26.md). RC6 submission status is not asserted as submitted/withdrawn.
+
+**Observed new Part-II status, not mechanism proof:** [Source G0 (original files)](results/part2_g0/observed_source_eligibility.json) = INBO 96 exact shared locations, 247 paired years; [taxon G0.1](results/part2_g0/inbo_species_time_eligibility.json) = *Hyla arborea* 245 eligible site-years across 93 sites, *Pelobates fuscus* 2 (not estimable). [Outcome-bearing G1 report](results/part2_inbo_hyla_g1/REPORT.md) = **site-held-out Brier improves 0.2582→0.2427, but future-year (2024–25) Brier worsens 0.2784→0.3479**. The source measurements lack permanent-water-class values for all 245 focal matched events and do not measure predator stages or true egg/larval survival. **Time-transfer, trophic causality and H3 drying-reset remain unsupported/unidentified.**
+
+**Source qualifications and research gate:** [ESGR / Mohonk / GBIF event-source inventory](PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md); [Integrated science contract](ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md). Remaining key requirement = a matched *physical pond × predator stage/size × prey cohort fate × actual hydroperiod* dataset. Editorial review checkpoint proposed **2027-01-31**, not automatic submission.
 
 **Only one repository owns the integration: `zuizui0223/frogcs`.** The active work is on `integration/stage-legacy-unified-2026-10-25`. Data modules, scripts, source provenance, new tests and the eventual combined synthesis will live here, not in a separate integrator repository.
 
@@ -21,7 +25,7 @@ python research/scripts/stage_legacy_integration_gate.py --panel verified_pond_s
 
 **Carroll eight-pond source gate BLOCKED:** [provenance receipt](results/CARROLL_8POND_G0_SOURCE_ACCESS_RECEIPT_2026-10-26.json), [actual Dryad access CI](https://github.com/zuizui0223/frogcs/actions/runs/40207244277). Workbook file and README have public hashes/metadata, but raw download returned HTTP 401/403, so original stage rows **were not read**. The authors' Zenodo R script also references adult data and manually edited intermediary files not separately listed in the Dryad file manifest. Do not claim adult→larva calibration or hidden-predator validity.
 
-**Next biological gate:** verified same-pond measurement of overwintered tadpole stages, spring eggs/survival and physical dry/reflood conditions. H1B larval predation and H3 drought reset remain **untested**, and RC6 remains submission-frozen.
+**Next mechanistic gate G2:** verified same-pond predator-stage / prey-cohort fate and directly measured local wet/dry history. H1B larval predation and H3 drought reset remain **untested**, while RC6 remains scientifically frozen for possible future joint publication.
 
 **Evidence already retained:** RC6 NAAMP spatial residual +0.2969 (acoustic only); NPS independent annual prior-site strong chorus +0.4642 after generic site/hydroperiod/effort adjustment (acoustic only); GloBI life-stage feeding-edge candidates (literature/source topology only); seasonal trophic toy results (synthetic only). These are complementary components, **not pooled effect sizes or proven causal links**.
 
