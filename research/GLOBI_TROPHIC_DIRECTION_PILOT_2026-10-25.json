@@ -1,0 +1,196 @@
+{
+  "audit_date": "2026-10-25",
+  "mode": "GloBI occurrence-level observations, 100 rows max per directional clade-pair",
+  "scope": "Live unstable API pilot, NOT representative biological frequencies. Types eats/preysOn only. Taxonomic-path membership enforced.",
+  "summary": {
+    "pairs_requested": 10,
+    "rows_returned": 553,
+    "taxonomically_valid_food_rows": 516,
+    "stage_annotated_either": 157,
+    "stage_annotated_both": 88,
+    "candidate_reciprocal_species_pairs": 5,
+    "verified_stage_specific_reversals": 4,
+    "exported_stage_labeled_records": 130
+  },
+  "by_pair": [
+    {
+      "source_group": "Anura",
+      "target_group": "Odonata",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Anura&targetTaxon=Odonata&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 43,
+      "food_rows": 43,
+      "taxonomically_valid_food_rows": 43,
+      "stage_annotated_either": 33,
+      "stage_annotated_both": 26,
+      "both_binomial": 15,
+      "distinct_study_citations": 16,
+      "studied": 35
+    },
+    {
+      "source_group": "Odonata",
+      "target_group": "Anura",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Odonata&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 30,
+      "food_rows": 30,
+      "taxonomically_valid_food_rows": 27,
+      "stage_annotated_either": 8,
+      "stage_annotated_both": 8,
+      "both_binomial": 5,
+      "distinct_study_citations": 7,
+      "studied": 25
+    },
+    {
+      "source_group": "Caudata",
+      "target_group": "Anura",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Caudata&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 100,
+      "food_rows": 100,
+      "taxonomically_valid_food_rows": 96,
+      "stage_annotated_either": 26,
+      "stage_annotated_both": 8,
+      "both_binomial": 92,
+      "distinct_study_citations": 15,
+      "studied": 94
+    },
+    {
+      "source_group": "Anura",
+      "target_group": "Caudata",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Anura&targetTaxon=Caudata&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 100,
+      "food_rows": 100,
+      "taxonomically_valid_food_rows": 100,
+      "stage_annotated_either": 31,
+      "stage_annotated_both": 1,
+      "both_binomial": 97,
+      "distinct_study_citations": 7,
+      "studied": 99
+    },
+    {
+      "source_group": "Dytiscidae",
+      "target_group": "Anura",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Dytiscidae&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 100,
+      "food_rows": 100,
+      "taxonomically_valid_food_rows": 96,
+      "stage_annotated_either": 4,
+      "stage_annotated_both": 0,
+      "both_binomial": 85,
+      "distinct_study_citations": 10,
+      "studied": 96
+    },
+    {
+      "source_group": "Anura",
+      "target_group": "Dytiscidae",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Anura&targetTaxon=Dytiscidae&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 6,
+      "food_rows": 6,
+      "taxonomically_valid_food_rows": 6,
+      "stage_annotated_either": 4,
+      "stage_annotated_both": 2,
+      "both_binomial": 0,
+      "distinct_study_citations": 2,
+      "studied": 6
+    },
+    {
+      "source_group": "Actinopterygii",
+      "target_group": "Anura",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Actinopterygii&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 100,
+      "food_rows": 100,
+      "taxonomically_valid_food_rows": 89,
+      "stage_annotated_either": 7,
+      "stage_annotated_both": 7,
+      "both_binomial": 0,
+      "distinct_study_citations": 11,
+      "studied": 89
+    },
+    {
+      "source_group": "Anura",
+      "target_group": "Actinopterygii",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Anura&targetTaxon=Actinopterygii&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 14,
+      "food_rows": 9,
+      "taxonomically_valid_food_rows": 2,
+      "stage_annotated_either": 1,
+      "stage_annotated_both": 1,
+      "both_binomial": 1,
+      "distinct_study_citations": 2,
+      "studied": 2
+    },
+    {
+      "source_group": "Decapoda",
+      "target_group": "Anura",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Decapoda&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 11,
+      "food_rows": 11,
+      "taxonomically_valid_food_rows": 11,
+      "stage_annotated_either": 5,
+      "stage_annotated_both": 3,
+      "both_binomial": 4,
+      "distinct_study_citations": 11,
+      "studied": 11
+    },
+    {
+      "source_group": "Nepomorpha",
+      "target_group": "Anura",
+      "query_url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Nepomorpha&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name,source_taxon_path,source_specimen_life_stage,interaction_type,target_taxon_name,target_taxon_path,target_specimen_life_stage,study_citation,study_source_citation&limit=100&offset=0",
+      "total_rows": 49,
+      "food_rows": 49,
+      "taxonomically_valid_food_rows": 46,
+      "stage_annotated_either": 38,
+      "stage_annotated_both": 32,
+      "both_binomial": 16,
+      "distinct_study_citations": 9,
+      "studied": 42
+    }
+  ],
+  "reciprocal_candidate_examples": [
+    {
+      "pair": "Anax junius | Anaxyrus boreas",
+      "directions": [
+        "Anaxyrus boreas->Anax junius",
+        "Anax junius->Anaxyrus boreas"
+      ],
+      "fully_stage_documented_directed_edges": 2
+    },
+    {
+      "pair": "Anax junius | Pseudacris regilla",
+      "directions": [
+        "Pseudacris regilla->Anax junius",
+        "Anax junius->Pseudacris regilla"
+      ],
+      "fully_stage_documented_directed_edges": 2
+    },
+    {
+      "pair": "Amerana draytonii | Anax junius",
+      "directions": [
+        "Amerana draytonii->Anax junius",
+        "Anax junius->Amerana draytonii"
+      ],
+      "fully_stage_documented_directed_edges": 2
+    },
+    {
+      "pair": "Anaxyrus boreas | Taricha torosa",
+      "directions": [
+        "Taricha torosa->Anaxyrus boreas",
+        "Anaxyrus boreas->Taricha torosa"
+      ],
+      "fully_stage_documented_directed_edges": 2
+    },
+    {
+      "pair": "Ichthyosaura alpestris | Pelophylax lessonae",
+      "directions": [
+        "Ichthyosaura alpestris->Pelophylax lessonae",
+        "Pelophylax lessonae->Ichthyosaura alpestris"
+      ],
+      "fully_stage_documented_directed_edges": 0
+    }
+  ],
+  "notes": [
+    "GloBI occurrence-level includes source and target life-stage and individual study citation when available; default distinct interactions do not.",
+    "A reciprocal named species-pair occurrence is not evidence for a life-stage-dependent trophic reversal unless both directions are supported with correctly staged records and primary evidence.",
+    "Cross-pair queries may reach limit=100; count is lower bound on indexed record retrieval and cannot be used as prevalence.",
+    "Species path sanity checks reject examples like non-fish source taxa returned by Actinopterygii query.",
+    "Exact studies, duplicate event/records and taxonomic synonym canonicalization require verification before full analysis."
+  ]
+}
