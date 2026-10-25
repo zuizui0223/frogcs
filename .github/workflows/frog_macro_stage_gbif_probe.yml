@@ -1,0 +1,29 @@
+name: Independent macro amphibian–odonate stage data coverage
+on:
+  push:
+    branches:
+      - research/macro-stage-interactions-2026-10
+    paths:
+      - "ecology/macro_stage/scripts/probe_gbif_stage.py"
+      - ".github/workflows/frog_macro_stage_gbif_probe.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  authoritative-life-stage-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Probe actual GBIF stage-annotated Anura Caudata and Odonata data
+        run: |
+          python ecology/macro_stage/scripts/probe_gbif_stage.py \
+            --out ecology/macro_stage/data/gbif_life_stage_probe.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gbif_2015_2025_frog_salamander_odonate_stage_coverage
+          path: ecology/macro_stage/data/gbif_life_stage_probe.json
+          if-no-files-found: error
