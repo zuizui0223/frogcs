@@ -14,7 +14,7 @@
       "source_species_taxon_keys": 71,
       "query_api": "https://api.gbif.org/v1/occurrence/download/request",
       "validation_api": "https://api.gbif.org/v1/occurrence/download/request/validate",
-      "status": "PREPARED_NOT_SUBMITTED"
+      "status": "SQL_VALIDATED_BY_GBIF_HTTP_201_NOT_SUBMITTED"
     },
     "global_0p5deg": {
       "grid_resolution_seconds": 1800,
@@ -22,7 +22,7 @@
       "source_species_taxon_keys": 71,
       "query_api": "https://api.gbif.org/v1/occurrence/download/request",
       "validation_api": "https://api.gbif.org/v1/occurrence/download/request/validate",
-      "status": "PREPARED_NOT_SUBMITTED"
+      "status": "SQL_VALIDATED_BY_GBIF_HTTP_201_NOT_SUBMITTED"
     }
   },
   "expected_citation": "GBIF download DOI when user-authorized download succeeds",
@@ -33,5 +33,14 @@
     "Condition monthly / year resolution and taxon season and record effort.",
     "Wetland + emergent cover/hydroperiod raster masks must be independently joined and QAed.",
     "Native versus introduced and presence/range status need external taxonomic/native-range audit."
-  ]
+  ],
+  "official_sql_validation": {
+    "date": "2026-10-25",
+    "api": "https://api.gbif.org/v1/occurrence/download/request/validate",
+    "global_1deg_status": 201,
+    "global_0p5deg_status": 201,
+    "workflow": "https://github.com/zuizui0223/frogcs/actions/runs/40187531308",
+    "meaning": "The official GBIF API accepted SQL syntax. No download was submitted.",
+    "authenticated_download_submitted": false
+  }
 }
