@@ -23,6 +23,18 @@ Carroll eight-pond Dryad G0 [access receipt](results/CARROLL_8POND_G0_SOURCE_ACC
 
 **Stop rule now active:** no H1A negative signal hunting by changing species, time lag, effort rules or season cutoffs. H1B measured aquatic predation and H3 physical dry-down reset remain distinct future hypotheses, not defeated by a null adult-calling result.
 
+## Completed independent cross-stage test and actual data ceiling, 2026-10-26
+
+**[Live raw-source inventory](results/part2_g0/observed_source_eligibility.json)** / [source-blind taxon check](results/part2_g0/inbo_species_time_eligibility.json): INBO original CC0 chorus × larvae event archives have **96** exactly shared original location IDs and **247** date-ordered overlapping site-years. *Hyla arborea* contributes **245 source-site-years/93 sites** with preceding acoustic and later larva scoring opportunities; *Pelobates fuscus* is non-estimable (**2**). This is a bona fide same-source-station observational bridge, **not** a matched egg/larval survival or larval predator-density dataset.
+
+**[G1 empirical result](results/part2_inbo_hyla_g1/REPORT.md)**: 245 *Hyla* observed presence/absence outcomes (149 later larva present, 96 absent) with earlier adult calling (212 present, 33 absent). Added earlier recorded adult chorus modestly improves site-group held-out Brier **0.25823→0.24271**, but **worsens 2024–2025 year holdout 0.27839→0.34786** (35 site-years). The full first-stage H1A NPS test was already unsupported. **No stable temporal generality or trophic effect is established.**
+
+The 245 matched INBO larval events have **zero usable permanent-water-column covariates**, and the original event data contain no matched predator body-size/cohort density or independently identified egg survival. The baseline M0 is **timing and acoustic survey opportunity only**, not hydrology-adjusted, even if an old internal code key includes the word `hydrology`. Do not promote its site-block gain to *stage×hydroperiod* evidence.
+
+**Physical dataset access:** ESGR amphibian original and St Marks fish×wetland Dryad workbook each HTTP401; original Mohonk EDI species/water entity each HTTP403; Mohonk's GBIF occurrence mirror contains 13,862 rows but loses original pool ID and the local chorus/egg/tadpole environmental measurement table. [Source/claim inventory](PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md).
+
+**Publication disposition:** the one integrated ecology paper remains the intended future target, but **G2 fails the current evidence requirement (actual predator-stage, physical hydroperiod and offspring fate)** and the combined mechanistic paper is *not ready*. This is an evidentiary failure-to-identify, not a false negative about measured feeding rates.
+
 ## One biological question
 
 > When a wetland's past community leaves surviving aquatic life stages, how does that **latent ontogenetic legacy** constrain where, when, and which frogs call, reproduce, and recruit after changing rainfall and hydroperiod?
@@ -131,4 +143,4 @@ No external portfolio management repository or physical repository merge is requ
 
 ## Next executable gate
 
-Carroll source metadata has been frozen, but raw acquisition is blocked by API authorization (401) and website access restrictions (403). The next **mechanistic** gate is a genuinely co-located, source-verifiable pond×year×stage×hydroperiod panel with both acoustic history and measured overwintering larvae / egg fate. The NPS adult-acoustic H1A suppression result is unsupported and must not be retuned. Reuse source receipts within frogcs; do not copy unrelated dataset tables into the research root.
+Target **G2**: identify an original, stable pond×date×species×developmental-stage panel containing **directly observed predator-size/overwintered cohort**, explicitly surveyed prey eggs/tadpoles with repeated survival/recruitment observations, and **actual local wet/dry history**. ESGR long-term project documents predator communities but the currently available public Dryad file metadata certify only amphibian abundance/occupancy, not a corresponding predator matrix. Mohonk, INBO and St Marks are methodologically useful but their currently verified files cannot supply all G2 dimensions. No new speculative NAAMP lag searches to rescue H1A, and no independent datasets are falsely joined on generalized maps. Repeat source-blind auditing when a genuinely matched stage-exposure source is located. The provisional **2027-01-31 author-level editorial checkpoint** is a planning review, not an automatic submission action.
