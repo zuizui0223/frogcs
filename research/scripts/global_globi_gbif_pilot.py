@@ -346,6 +346,7 @@ def run(output_dir, second_page=False):
             n_gbif_countries_both=len(overlap),
             n_gbif_countries_both_min20=len(strict),
             any_both_stage_labeled=int(any(a and b for a,b in p_stages)),
+            paired_stage_patterns=json.dumps(p_stages, ensure_ascii=False),
             source_stages="; ".join(sorted({a for a,b in p_stages if a})),
             target_stages="; ".join(sorted({b for a,b in p_stages if b})),
             distinct_original_citations=len(p["studies"]),
@@ -379,7 +380,8 @@ def run(output_dir, second_page=False):
         "predator_gbif_taxon_key","prey_gbif_taxon_key",
         "n_gbif_countries_predator","n_gbif_countries_prey",
         "n_gbif_countries_both","n_gbif_countries_both_min20",
-        "any_both_stage_labeled","source_stages","target_stages",
+        "any_both_stage_labeled","paired_stage_patterns",
+        "source_stages","target_stages",
         "distinct_original_citations","example_source","source_record_count",
         "classification"])
     write_csv(out/"gbif_species_match_audit.csv",taxa_out,[
