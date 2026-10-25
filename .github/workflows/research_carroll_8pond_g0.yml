@@ -1,0 +1,31 @@
+name: Research — Carroll 8-pond response-blind source G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/carroll_source_g0.py
+      - .github/workflows/research_carroll_8pond_g0.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-dryad-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Load workbook parser
+        run: python -m pip install --disable-pip-version-check openpyxl==3.1.5
+      - name: Validate pinned original bytes and read schema, not response
+        run: |
+          python research/scripts/carroll_source_g0.py --out /tmp/carroll_source_G0.json
+      - name: Save audit receipt even if source blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: carroll_source_g0_receipt
+          path: /tmp/carroll_source_G0.json
+          if-no-files-found: warn
