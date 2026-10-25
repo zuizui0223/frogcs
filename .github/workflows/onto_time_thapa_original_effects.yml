@@ -1,0 +1,41 @@
+name: ONTO-TIME original predator-stage cue experimental readback
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/analyze_thapa_original_pail.py'
+      - 'studies/stage_reversal_acoustic/macro/THAPA_ORIGINAL_CUE_TRANSFER_PRE_ANALYSIS_CONTRACT_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_thapa_original_cue.py'
+      - '.github/workflows/onto_time_thapa_original_effects.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/analyze_thapa_original_pail.py'
+      - 'studies/stage_reversal_acoustic/macro/THAPA_ORIGINAL_CUE_TRANSFER_PRE_ANALYSIS_CONTRACT_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_thapa_original_cue.py'
+      - '.github/workflows/onto_time_thapa_original_effects.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pail_level_original_data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q openpyxl
+      - name: Verify pail rather than tadpole IID semantics
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -p "test_thapa_original_cue.py" -v
+      - name: Analyze official NLM version locked 588 original response rows, no raw redistribution
+        run: |
+          python studies/stage_reversal_acoustic/macro/analyze_thapa_original_pail.py \
+            --out "${{ runner.temp }}/onto_time_thapa_original_pail_level_group_results.json"
+      - name: Publish anonymized equal-conditioning-pail summary only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onto-time-predator-stage-cue-original-pail-summary
+          path: ${{ runner.temp }}/onto_time_thapa_original_pail_level_group_results.json
+          if-no-files-found: warn
