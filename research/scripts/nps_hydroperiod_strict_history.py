@@ -110,6 +110,10 @@ def within_class_stratified(panel,nboot=2000):
     out=[]
     for category in CLASSES:
         d=panel.loc[panel.hydroperiod==category].copy()
+        # The original adjusted NPS estimator accepts explicit missingness
+        # and zero-filled *indicator-gated* prior other-taxon auditory hotness.
+        d["other_prior_missing"]=d.other_prior_strong_fraction.isna().astype(int)
+        d["other_prior_fixed"]=d.other_prior_strong_fraction.fillna(0)
         qual, ngroups=informative_groups(d)   # original ≥4 + history variation
         z=fit_with_block_bootstrap(
             qual, "strong",True,nboot,seed=SEED+33)
