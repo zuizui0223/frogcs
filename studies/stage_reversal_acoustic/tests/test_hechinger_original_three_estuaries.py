@@ -77,6 +77,36 @@ class OriginalThreeEstuaryStageQA(unittest.TestCase):
             self.assertEqual(motif["species"].__len__(),5 if expect else 0)
             self.assertEqual(expect,(5*4//2 if site!="BSQ" else 0))
 
+    def test_five_source_comparison_excludes_projected_effects(self):
+        import importlib.util, sys
+        path=ROOT/"compare_five_foodweb_stage_evidence.py"
+        spec=importlib.util.spec_from_file_location("five_foodweb_evidence",path)
+        module=importlib.util.module_from_spec(spec)
+        sys.modules[spec.name]=module
+        spec.loader.exec_module(module)
+        src={key:json.loads(value.read_text(encoding="utf-8")) for key,value in module.SOURCES.items()}
+        result=module.compute(src)
+        self.assertTrue(module.validate(result))
+        stats=result["counts"]
+        self.assertEqual(stats["n_local_ecosystems"],5)
+        self.assertEqual(stats["n_independent_compilation_programmes"],3)
+        self.assertEqual(stats["total_stage_shift_candidates_mixed_links_or_source_predation_only"],806)
+        self.assertEqual(stats["total_candidate_stage_shift_predation_only"],31)
+        self.assertEqual(stats["estimated_bivalve_module_site_pairs"],20)
+        self.assertEqual(stats["n_site_networks_without_direct_attack_evidence_field"],4)
+
+    def test_five_source_preston_direct_observation_not_overclaimed(self):
+        import importlib.util
+        path=ROOT/"compare_five_foodweb_stage_evidence.py"
+        spec=importlib.util.spec_from_file_location("foodweb_evidence_b",path)
+        module=importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        src={key:json.loads(value.read_text(encoding="utf-8")) for key,value in module.SOURCES.items()}
+        r=module.compute(src)
+        self.assertEqual(next(x for x in r["site_values"] if x["id"]=="CA_QUICK_POND")
+                         ["observed_bidirectional_stage_switch_status"],
+                         "SOURCE_TAGGED_OBSERVED_ZERO")
+
     def test_original_bivalve_body_mass_is_assigned_once_for_all_larvae(self):
         source=json.loads((ROOT/"results"/"HECHINGER2011_BIVALVE_MOTIF_STAGE_BODYMASS_SOURCE_AUDIT_V0_1.json").read_text())
         for site in ("CSM","EPB"):
