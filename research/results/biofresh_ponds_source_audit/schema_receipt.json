@@ -1,0 +1,281 @@
+{
+  "doi": "10.13148/bf76",
+  "publisher": "BioFresh, CC0 v2.2 (2017-09-08)",
+  "source_url": "https://data.freshwaterbiodiversity.eu/ipt/archive.do?r=bf76&v=2.2",
+  "archive_sha256": "6828d58aa6651e831d1c96df564c9ae77c1ced329b4348dc9fee8029623a30bf",
+  "archive_bytes": 510185,
+  "archive_files": [
+    "eml.xml",
+    "occurrence.txt",
+    "meta.xml"
+  ],
+  "core_path": "occurrence.txt",
+  "mapped_fields": {
+    "1": "license",
+    "2": "rightsHolder",
+    "3": "bibliographicCitation",
+    "4": "datasetID",
+    "5": "institutionCode",
+    "6": "basisOfRecord",
+    "7": "dynamicProperties",
+    "8": "occurrenceID",
+    "9": "occurrenceRemarks",
+    "10": "individualCount",
+    "11": "locality",
+    "12": "decimalLatitude",
+    "13": "decimalLongitude",
+    "14": "scientificName",
+    "15": "kingdom",
+    "16": "genus",
+    "17": "specificEpithet"
+  },
+  "core_rows": 17532,
+  "reported_records_in_metadata": 17532,
+  "nonempty_fields": {
+    "locationID": 0,
+    "locality": 17532,
+    "decimalLatitude": 17532,
+    "decimalLongitude": 17532,
+    "class": 0,
+    "order": 0,
+    "family": 0,
+    "kingdom": 17532,
+    "phylum": 0,
+    "scientificName": 17532,
+    "taxonRank": 0,
+    "eventDate": 0,
+    "year": 0,
+    "datasetName": 0,
+    "basisOfRecord": 17532,
+    "occurrenceID": 17532,
+    "eventID": 0,
+    "country": 0,
+    "samplingProtocol": 0,
+    "occurrenceStatus": 0,
+    "individualCount": 13466,
+    "organismQuantity": 0,
+    "organismQuantityType": 0
+  },
+  "examples_of_identifiers": {
+    "locality": [
+      "107_Astarac region",
+      "10_Hydrobiologia (2005) 542:379–390",
+      "115_Astarac region",
+      "117_Astarac region",
+      "11_Hydrobiologia (2005) 542:379–390",
+      "125_Astarac region",
+      "127_Astarac region",
+      "129_Astarac region",
+      "12_Hydrobiologia (2005) 542:379–390",
+      "13_Hydrobiologia (2005) 542:379–390",
+      "14_Hydrobiologia (2005) 542:379–390",
+      "158_Astarac region",
+      "15_Hydrobiologia (2005) 542:379–390",
+      "176_Astarac region",
+      "1_Causses du Quercy"
+    ],
+    "decimalLatitude": [
+      "36.9475",
+      "36.98333333",
+      "36.9964",
+      "37.5",
+      "39.31138889",
+      "40.83333333",
+      "41.67718",
+      "41.69198",
+      "41.70346",
+      "41.70464",
+      "41.71089",
+      "41.72761",
+      "41.73671",
+      "41.76459",
+      "41.76543"
+    ],
+    "decimalLongitude": [
+      "-0.1955294",
+      "-0.21830373",
+      "-0.25543051",
+      "-0.33082937",
+      "-0.68993568",
+      "-0.7087041",
+      "-0.73679143",
+      "-1.683333333",
+      "-1.7",
+      "-2.65",
+      "-3.95",
+      "-6.358611111",
+      "-6.4173",
+      "-6.45",
+      "-6.9"
+    ],
+    "kingdom": [
+      "Animalia",
+      "Plantae"
+    ],
+    "scientificName": [
+      "Ablabesmyia longistyla",
+      "Ablabesmyia monilis",
+      "Abramis brama",
+      "Acanthocyclops americanus",
+      "Acanthocyclops robustus",
+      "Acartia tonsa",
+      "Acentria ephemerella",
+      "Acer opalus",
+      "Acer platanoides",
+      "Acer pseudoplatanus",
+      "Achillea millefolium",
+      "Achillea ptarmica",
+      "Achnanthidium minutissimum",
+      "Acilius canaliculatus",
+      "Acilius canaliculatus Lv."
+    ],
+    "basisOfRecord": [
+      "HumanObservation",
+      "Occurrence"
+    ],
+    "occurrenceID": [
+      "10-10-10097",
+      "10-10-10396",
+      "10-10-11047",
+      "10-10-11092",
+      "10-10-11206",
+      "10-10-11268",
+      "10-10-1186",
+      "10-10-1283",
+      "10-10-1385",
+      "10-10-3383",
+      "10-10-3968",
+      "10-10-5044",
+      "10-10-6485",
+      "10-10-67",
+      "10-10-9488"
+    ],
+    "individualCount": [
+      "(1-5)",
+      "(25-50)",
+      "(5-25)",
+      "(50-75)",
+      "(75-100)",
+      "0.0010",
+      "0.001178876",
+      "0.001232228",
+      "0.001337814",
+      "0.001360418",
+      "0.001425288",
+      "0.001455237",
+      "0.001749305",
+      "0.001905745",
+      "0.001967745"
+    ]
+  },
+  "taxon_classification_counts": {
+    "unresolved_other": 10971,
+    "macrophyte": 6561
+  },
+  "locality_group_overlap": {
+    "all_known_sites": 410,
+    "site_has_unresolved_other": 385,
+    "site_has_macrophyte": 179
+  },
+  "source_study_ids": 0,
+  "first_sample_identity_rows": [
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Triops cancriformis"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Metacyclops planus"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Scapholeberis mucronata"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Macrothrix rosea"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Simocephalus exspinosus"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Mixodiaptomus incrassatus"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Cletocampus retrogressus (Schmankevitch, 1875)"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Leydigia acanthocercoides"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Alona salina Alonso, 1995"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Alona azorica"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Diacyclops bicuspidatus"
+    },
+    {
+      "locality": "Doñana National Park",
+      "loc_id": null,
+      "year": null,
+      "dataset": "",
+      "group": "unresolved_other",
+      "name": "Eucyclops serrulatus"
+    }
+  ],
+  "data_access_advisory": "Source metadata asks publication advance notice to data owners 45 days and grants 30-day objection period. Respect if preparing publication.",
+  "analysis_boundary": "Locality strings may not be unique across source studies; no pooled occurrence-vs-absence claim before verifying study sampling and wetland IDs."
+}
