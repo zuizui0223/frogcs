@@ -40,6 +40,7 @@ jobs:
           python research/scripts/fixed_globi_gbif_month_shift_null.py \
             --gbif research/data/gbif_open_artifact/focal_stage_1deg_month_year.csv \
             --globi research/data/full_globi_artifact/nonself_stage_pair_grid_results.csv \
+            --globi-provenance research/data/full_globi_artifact/full_nonself_staged_GloBI_provenance.csv \
             --out research/results/month_shift_globi_gbif
       - uses: actions/upload-artifact@v4
         if: success()
