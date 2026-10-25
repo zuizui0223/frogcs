@@ -1,0 +1,28 @@
+name: Wetland hierarchy synthetic QA
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/compare_frog_vegetation_biotic.py
+      - .github/workflows/research_wetland_hierarchy_qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install minimal model dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scikit-learn
+      - name: Validate nested comparator execution and temporal leakage guard
+        run: python research/scripts/compare_frog_vegetation_biotic.py --self-test
