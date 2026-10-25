@@ -238,6 +238,50 @@ def summarize(phase,width):
             range_narrow_minus_diffuse=[
                 float(min(diffs)),float(max(diffs))],
         ))
+    # Phase-only comparisons hold PEΜ, plant, dragonfly cue, parameters,
+    # frog cohort width and all direct/indirect attack coefficients fixed.
+    shifts=[]
+    for pem in PEM:
+        for cover in VEGETATION:
+            for cue in RISK_REGIMES:
+                subset={(z["salamander_offset_fraction_year"],
+                         z["odonate_offset_fraction_year"]):z
+                        for z in phase if (
+                            z["pem_scenario"]==pem and
+                            z["submerged_cover_proxy"]==cover and
+                            z["dragonfly_to_salamander_cue_strength"]==cue)}
+                base=subset[(0.,0.)]["unconditional_mutual_invasion_draw_fraction"]
+                for ps,pd in PHASE_SWEEPS:
+                    if ps==0 and pd==0:
+                        continue
+                    other=subset[(ps,pd)]["unconditional_mutual_invasion_draw_fraction"]
+                    shifts.append(dict(
+                        PEM=pem,submerged_cover=cover,dragonfly_cue=cue,
+                        salamander_phase=ps,odonate_phase=pd,
+                        shifted_minus_synchronous_fraction=other-base))
+    out["phase_only_relative_to_zero_offset"]=dict(
+        paired_scenario_comparisons=len(shifts),
+        shifted_better=sum(z["shifted_minus_synchronous_fraction"]>1e-9
+                           for z in shifts),
+        synchrony_better=sum(z["shifted_minus_synchronous_fraction"]<-1e-9
+                             for z in shifts),
+        exact_equal=sum(abs(z["shifted_minus_synchronous_fraction"])<=1e-9
+                        for z in shifts),
+        median_shifted_minus_synchronized=float(np.median(
+            [z["shifted_minus_synchronous_fraction"] for z in shifts])),
+        min_to_max=[
+            float(min(z["shifted_minus_synchronous_fraction"] for z in shifts)),
+            float(max(z["shifted_minus_synchronous_fraction"] for z in shifts)),
+        ],
+        by_PEM=[
+            dict(pem=pem,
+                 phase_shift_better=sum(z["shifted_minus_synchronous_fraction"]>1e-9
+                    for z in shifts if z["PEM"]==pem),
+                 simultaneous_better=sum(z["shifted_minus_synchronous_fraction"]<-1e-9
+                    for z in shifts if z["PEM"]==pem))
+            for pem in PEM],
+        interpretation="Within this wholly synthetic annual network, shifts can help or hurt; these are not population frequencies from real NWI PEM wetlands."
+    )
     out["unbiased_width_vs_explicit_narrow_cost_stress"]=compare
     out["single_case_phase_sign_examples"]={
         "positive_invasion":next((
@@ -303,6 +347,7 @@ def selftest():
     assert 0<=criterion["all_three_can_invade_pair_residents_draws"]<=8
     assert 0<=criterion["resident_pair_viable_parameter_draws"]<=8
     assert criterion["unconditional_mutual_invasion_draw_fraction"]<=1
+    assert set(PEM)=={"PEM1A","PEM1C","PEM1F"}
     p2=params_for_site(draws,"PEM1C",stages,"weak_dragonfly_cue",
                        WIDTHS[0],aggregation_cost=.8)
     p3=params_for_site(draws,"PEM1C",stages,"weak_dragonfly_cue",
