@@ -1,12 +1,12 @@
 {
   "as_of": "2026-10-25",
   "programme": "independent_developmental_role_reversal_x_frog_call_timing",
-  "status": "SOURCE_GATED_SCREEN_QA_PASS_ORIGINAL_STAGE_ACOUSTIC_JOIN_NOT_ESTIMABLE",
-  "scientific_outcome": "NONE_NEW_FROM_ORIGINAL_JOIN",
+  "status": "REAL_ANAX_SOURCE_PHENOLOGY_AUDITED_JOINT_STAGE_ACOUSTIC_NOT_ESTIMABLE",
+  "scientific_outcome": "NEW_POSITIVE_DESCRIPTIVE_ANAX_2018_2019_EMERGENCE_WINDOW;NO_NEW_STAGE_CALL_ASSOCIATION",
   "original_rows_acquired_for_new_joint_analysis": {
     "frogid": 0,
     "inaturalist": 0,
-    "beranek_mendeley": 0
+    "beranek_mendeley_joined_to_frogid": 0
   },
   "prior_15_latitude_bands_reexecuted": false,
   "prior_5_observation_overlap_bands": "historical exploratory only",
@@ -28,17 +28,18 @@
   "repo_branch": "study/stage-reversal-acoustic-macro-20261025",
   "executable": "studies/stage_reversal_acoustic/src/stage_acoustic_screen.py",
   "unit_tests": {
-    "n": 15,
+    "n": 18,
     "result": "SUCCESS",
-    "workflow_run_id": 40158420603,
-    "url": "https://github.com/zuizui0223/frogcs/actions/runs/40158420603"
+    "workflow_run_id": 40159886976,
+    "url": "https://github.com/zuizui0223/frogcs/actions/runs/40159886976"
   },
   "fail_closed_no_input": {
     "status": "NOT_ESTIMABLE",
     "n_original_rows_analyzed": 0
   },
   "missing_inputs": [
-    "authenticated_original_anax_spreadsheet_rows",
+    "dated_predation_events_and_frog_life_stage_observations",
+    "true_2023_workbook_published_nine_wetland_physical_crosswalk",
     "FrogID_recording_opportunity_denominators",
     "stage_annotated_original_site_week_rows",
     "same_year_site_season_coordinate_and_sampling_overlap",
@@ -46,5 +47,48 @@
   ],
   "warning_signal_tested": false,
   "exact_predation_switch_time_estimated": false,
-  "frozen_jae_rc6_files_changed": false
+  "frozen_jae_rc6_files_changed": false,
+  "original_rows_acquired_for_source_only_emergence_analysis": {
+    "beranek_mendeley": 298,
+    "source_sha256": "25fabdd0df0d8b679ff23033abbb9fc175067c835f1bd1ef41a5fc4890360c74",
+    "date_window": "2018-09-04 to 2019-04-09"
+  },
+  "original_emergence_result": {
+    "n_valid_survey_rows": 298,
+    "n_emerging_dragons": 233,
+    "positive_survey_rows": 48,
+    "peak_week_start": "2018-10-29",
+    "peak_week_emergence": 62,
+    "median_date": "2018-11-01",
+    "iQR": [
+      "2018-10-16",
+      "2018-11-14"
+    ],
+    "n_month_only_author_predation": 14,
+    "individually_dated_predation": 0
+  },
+  "physical_site_source_crosswalk": {
+    "external_doi": "10.1007/s10531-022-02387-9",
+    "published_nine_codes": [
+      "1B",
+      "3A",
+      "1A",
+      "2A",
+      "2B",
+      "2C",
+      "4A",
+      "4B",
+      "4C"
+    ],
+    "nine_code_numeric_visits": 230,
+    "nine_code_emergence": 189,
+    "outside_nine_code_emergence": 44,
+    "unmatched_recurrent_labels": [
+      "14A",
+      "14B"
+    ],
+    "claim": "descriptive nine-name-code subset; 14A/14B biological site identity still unresolved"
+  },
+  "original_source_file_committed_to_github": false,
+  "github_source_audit_report": "studies/stage_reversal_acoustic/results/ANAX_ORIGINAL_REANALYSIS_JA_20261025.md"
 }
