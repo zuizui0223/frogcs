@@ -180,6 +180,7 @@
           "n_leave_one_pail_analyses": 18
         }
       },
+      "posthoc_six_clutch_paired_sensitivity": null,
       "within_study_sampling_limitation": "Original source row count differs from publication reported tested n; selection/omission mechanism not identified."
     },
     "salamander": {
@@ -352,6 +353,23 @@
           "n_leave_one_pail_analyses": 18
         }
       },
+      "posthoc_six_clutch_paired_sensitivity": {
+        "n_clutches": 6,
+        "mean_effect": 6.833565,
+        "sd_between_clutches": 11.796966,
+        "two_sided_t95_df5": [
+          -5.546592,
+          19.213722
+        ],
+        "clutch_bootstrap95": [
+          -1.003902,
+          15.985351
+        ],
+        "n_positive_clutch_effects": 5,
+        "min_effect": -8.642857,
+        "max_effect": 24.99504,
+        "method": "posthoc clutch-matched trained pails, nonsham cross-minus-within difference; no new universal sign claim"
+      },
       "within_study_sampling_limitation": "Original source row count differs from publication reported tested n; selection/omission mechanism not identified."
     }
   },
@@ -363,6 +381,9 @@
     "experimental_unit": "18 conditioning pails per predator type, six treatment pails per arm",
     "analysis_spec": "studies/stage_reversal_acoustic/macro/THAPA_ORIGINAL_CUE_TRANSFER_PRE_ANALYSIS_CONTRACT_V0_1.json",
     "status": "EXPLORATORY_ORIGINAL_SOURCE_REANALYSIS_NOT_MACRO_CONFIRMATION",
-    "raw_records_redistributed": false
+    "raw_records_redistributed": false,
+    "additional_hierarchy_check": "Six complete salamander clutches each with one sham, one larval-conditioned and one adult-conditioned pail (source label check); 5/6 clutch contrasts positive, 95% intervals cross 0.",
+    "original_reanalysis_actions": "https://github.com/zuizui0223/frogcs/actions/runs/40167386336",
+    "posthoc_disclosure": true
   }
 }
