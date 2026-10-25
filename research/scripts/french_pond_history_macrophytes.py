@@ -51,7 +51,7 @@ def load(folder):
 
 
 def eval_endpoint(df, outcome, predictors, n_boot=2000):
-    needed=list({outcome,AGE,*BASE,PLANT,COVER,*sum(predictors.values(),[])})
+    needed=list({outcome,*sum(predictors.values(),[])})
     dat=df.dropna(subset=needed).copy().reset_index(drop=True)
     require(len(dat)>=20,f"Insufficient endpoint observations: {outcome}")
     groups=dat.Etangs.astype(str).to_numpy()
