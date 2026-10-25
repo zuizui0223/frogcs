@@ -1,0 +1,31 @@
+name: NPS GLKN repeated-site chorus schema audit
+
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/audit_nps_glkn_schema.py
+      - .github/workflows/research_nps_glkn_schema_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nps-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Inspect official NPS public-domain monitoring source
+        run: python research/scripts/audit_nps_glkn_schema.py --out research/results/nps_glkn_schema
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: nps-glkn-schema-receipt
+          path: research/results/nps_glkn_schema/schema_receipt.json
+          if-no-files-found: error
