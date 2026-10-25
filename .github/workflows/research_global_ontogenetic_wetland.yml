@@ -1,0 +1,57 @@
+name: Global ontogenetic adult aquatic-immature wetland habitats
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/global_ontogenetic_earthenv_reporting.py
+      - .github/workflows/research_global_ontogenetic_wetland.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  stages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test same-taxon seasonal and latitude stratification
+        run: python research/scripts/global_ontogenetic_earthenv_reporting.py --self-test
+      - name: Get verified EarthEnv global old static flooded vegetation, open water, grass
+        uses: actions/download-artifact@v4
+        with:
+          name: earthenv-global-flooded-openwater-herbaceous-1deg
+          run-id: 40197871125
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/earthenv
+      - name: Get verified full Anura Odonata lifeStage GBIF 1deg and matched GloBI species
+        uses: actions/download-artifact@v4
+        with:
+          name: expanded-full-globi-anura-odonata-gbif1deg-stage-grid
+          run-id: 40194946916
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/expanded
+      - name: Get pinned complete GloBI original guild-provenance
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-full-globi-nonself-gbif-1degree-stage-grid
+          run-id: 40193636562
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/globi
+      - name: Compare adult and immature wetland background within species latitude band and seasonal calendar month
+        run: |
+          python research/scripts/global_ontogenetic_earthenv_reporting.py \
+            --gbif research/data/expanded/focal_full_Anura_Odonata_stage_grids.csv \
+            --earthenv research/data/earthenv/earthenv_1deg_landcover_background.csv \
+            --provenance research/data/globi/full_nonself_staged_GloBI_provenance.csv \
+            --out research/results/global_ontogenetic_wetland
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: global-ontogenetic-lifestage-wetland-contrasts
+          path: research/results/global_ontogenetic_wetland
+          if-no-files-found: error
