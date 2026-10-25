@@ -20,5 +20,6 @@ class RecordLevelStageMacro(unittest.TestCase):
         b={**a,"guild_stage":"salamander_egg"}
         _,_,_,grids,report=do_analysis([a,b])
         self.assertEqual(len(grids),1)
-        self.assertEqual(report["n_half_degree_grid_year_month_frog_and_partner_observation"][0]["both_positive_grid_year_month"],1)
+        found=next(q for q in report["n_half_degree_grid_year_month_frog_and_partner_observation"] if q["region"]=="US35_40" and q["partner_life_stage"]=="salamander_egg")
+        self.assertEqual(found["both_positive_grid_year_month"],1)
 if __name__=="__main__":unittest.main()
