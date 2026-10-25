@@ -1,0 +1,57 @@
+name: Original-species macro stage interaction years and common-grid observations
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/analyze_gbif_observations.py"
+      - "ecology/macro_stage/tests/test_record_level_macro.py"
+      - ".github/workflows/frog_macro_original_stage_year_analysis.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-date-species-grid-macro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numerical ecology dependency
+        run: python -m pip install 'numpy>=1.24,<3'
+      - name: Test stage-date/grid and absent-is-not-zero guards
+        run: python -m unittest -v ecology/macro_stage/tests/test_record_level_macro.py
+      - name: Restore all five original source-pinned GBIF iNaturalist stage-observation archives
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/gbif_original/archives data/gbif_original/flatten
+          gh run download 40150013130 --repo zuizui0223/frogcs --dir data/gbif_original/archives
+          python - <<'PY'
+          from pathlib import Path
+          root=Path("data/gbif_original/archives")
+          out=Path("data/gbif_original/flatten")
+          names={}
+          for path in root.rglob("macro_gbif_*"):
+              if not path.is_file():continue
+              if path.name in names:raise ValueError("GBIF regional source duplicate: "+path.name)
+              names[path.name]=path
+              (out/path.name).write_bytes(path.read_bytes())
+          n_csv=sum(x.endswith(".csv") for x in names)
+          n_json=sum(x.endswith(".json") for x in names)
+          if n_csv!=5 or n_json!=5:raise ValueError(f"five-region receipt incompleteness {n_csv} CSV {n_json} JSON")
+          print("Source verified for five original GBIF macro observation regions")
+          PY
+      - name: Year-specific amphibian cross-stage shifts and 0.5-degree observation concurrence
+        run: |
+          python -m ecology.macro_stage.scripts.analyze_gbif_observations \
+            --inputs data/gbif_original/flatten \
+            --outdir data/macro_stage_observation_results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gbif_macro_original_five_regions_eleven_years_stage_records
+          path: data/macro_stage_observation_results/
+          if-no-files-found: error
