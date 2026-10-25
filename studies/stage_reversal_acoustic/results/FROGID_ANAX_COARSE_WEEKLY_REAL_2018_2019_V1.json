@@ -498,5 +498,40 @@
     "No rainfall, recorder selection or local effort matched; observational weekly Pearson r values are purely exploratory without corrected p values.",
     "A zero source species-positive in FrogID week is not evidence of no callers; lack of Anax survey in week is represented null, not zero.",
     "Predation records are month-only and not attributable to the matching week/site. No dated biological role-switch or heterospecific alarm responses measured."
-  ]
+  ],
+  "matched_same_call_anchor_forward_vs_reverse_lags": [
+    {
+      "lag_weeks": 1,
+      "n_same_anchor_weeks": 19,
+      "n_focal_call_positive_anchor_weeks": 2,
+      "forward_r": -0.1095,
+      "reverse_r": 0.1148,
+      "forward_minus_reverse_r": -0.2243
+    },
+    {
+      "lag_weeks": 2,
+      "n_same_anchor_weeks": 19,
+      "n_focal_call_positive_anchor_weeks": 2,
+      "forward_r": -0.0608,
+      "reverse_r": 0.2851,
+      "forward_minus_reverse_r": -0.3459
+    },
+    {
+      "lag_weeks": 4,
+      "n_same_anchor_weeks": 18,
+      "n_focal_call_positive_anchor_weeks": 4,
+      "forward_r": 0.0201,
+      "reverse_r": 0.3116,
+      "forward_minus_reverse_r": -0.2915
+    },
+    {
+      "lag_weeks": 8,
+      "n_same_anchor_weeks": 10,
+      "n_focal_call_positive_anchor_weeks": 4,
+      "forward_r": -0.1719,
+      "reverse_r": 0.0851,
+      "forward_minus_reverse_r": -0.257
+    }
+  ],
+  "matched_anchor_claim_ceiling": "Descriptive comparison only. Same-audio-anchor control prevents interpreting unequal source sample as direction preference, but the negative contrasts remain non-confirmatory one-season six-positive observations. No p-value."
 }
