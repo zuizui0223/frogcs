@@ -49,3 +49,13 @@ EarthEnv 1° flooded-vegetation prevalence was downloaded and its global **margi
 - Compare general herbaceous and open water layer as negative/alternative **background habitat covariates** in a secondary descriptive cross-check, rather than deriving post-hoc a "best" flooded-vegetation threshold.
 - For rain, only join the existing CRU-WorldClim 2010–2024 observed grid-month rain file as source coverage QA; rain data are conditional on selected GBIF positive report grids and do not provide a complete 12-month climatic null for all expanded species; defer causal wet/rain effects and explicitly report nonmatching grid years.
 - **Null**: the difference between known vs undocumented same-guild/stage matched alternative prey remains roughly similar in relatively high vs near-zero flooded vegetation backgrounds. A positive contrast would only justify an externally testable hypothesis, not proof plant architecture mediates trophic interactions.
+
+
+## Post-readback spatial QA correction: ocean-dominated 1° cells (2026-10-25)
+
+The first EarthEnv × expanded GBIF matched-prey calculation exposed a substantial **ocean-dominated** confound: the `near_zero` flooded-vegetation class contains 1° grid cells with **median 100% open-water background**, because the global grid includes most open sea. This is *not* comparable to a zero-emergent, land-dominated pond habitat; it is the wrong counterfactual. This correction was designed after reading initial habitat results and is **post-hoc QA**, not an untouched confirmation.
+
+- In the revised **land-dominant** comparison, exclude/label separately any 1° EarthEnv grid with **open_water_pct >=50 percentage points**, before assigning flooded-vegetation tiers. Such coastal cells may still contain actual wetland and frog GBIF sightings, so absence in the restricted analysis is missing from the comparison, not a biological assertion of no wetland.
+- Keep three original flooded-vegetation tiers `near_zero(<0.01)`, `low_intermediate[0.01,1)`, `relatively_high(>=1)` within the **open_water_pct <50%** grid, with old 2014 source temporal and non-emergent-structure caveats. Missing EarthEnv raster pixels still excluded without zero fill.
+- Recompute **same original 56 matched directed-stage pairs**, exact fixed controls and GBIF thresholds of 1 and 5. Compare whether the **paired same-species high-minus-nearzero median** and number of eligible predator species persist. Do NOT treat differences as confirmed trophic effects.
+- Preserve full source audit and previous first run separately; the revised result should carry `QA_LAND_DOMINANT_EARTHENV_LT50_OPENWATER_POSTHOC` status and an explicit count of excluded ocean-dominated species-stage-grid-years.
