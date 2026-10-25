@@ -171,6 +171,13 @@ def execute(rows,eligibility):
     y=np.array([r["y_larval_record"] for r in rows],int)
     sites=np.array([r["site"] for r in rows])
     nsite=len(set(sites))
+    raw_water_counts=Counter((r["permanent_water"] or "MISSING") for r in rows)
+    raw_effort_counts=Counter((r["effort_type"] or "MISSING") for r in rows)
+    out["site_environment_source_qa"]={
+        "permanent_water_raw_labels":dict(sorted(raw_water_counts.items())),
+        "larval_effort_category_labels":dict(sorted(raw_effort_counts.items())),
+        "note":"Raw site-metadata category distribution at exact matched events; not outcome-selected"
+    }
     out.update({"complete_case_site_years":len(rows),"independent_site_ids":nsite,
                 "outcome_recorded_present":int(sum(y==1)),
                 "outcome_recorded_absent":int(sum(y==0)),
