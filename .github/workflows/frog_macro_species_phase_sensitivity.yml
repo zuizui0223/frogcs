@@ -1,0 +1,54 @@
+name: Macro phenological guild-shift validation using species and phase null
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/macro_species_phase_sensitivity.py"
+      - "ecology/macro_stage/tests/test_species_phase.py"
+      - ".github/workflows/frog_macro_species_phase_sensitivity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  annual-species-phase-robustness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numerical package
+        run: python -m pip install 'numpy>=1.24,<3'
+      - name: Check exact circular phase and minimum species/year guardrails
+        run: python -m unittest -v ecology/macro_stage/tests/test_species_phase.py
+      - name: Restore five SHA-validated original iNaturalist stage records
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p data/gbif_original/archives data/gbif_original/flatten
+          gh run download 40150013130 --repo zuizui0223/frogcs --dir data/gbif_original/archives
+          python - <<'PY'
+          from pathlib import Path
+          root=Path("data/gbif_original/archives")
+          out=Path("data/gbif_original/flatten")
+          names={}
+          for p in root.rglob("macro_gbif_*"):
+              if p.name in names:raise RuntimeError("duplicate GBIF source "+p.name)
+              names[p.name]=p
+              (out/p.name).write_bytes(p.read_bytes())
+          if len(names)!=10:raise RuntimeError(f"Expected five original tables and five receipts: {len(names)}")
+          print("Original stage metadata and per-request source SHA preserved")
+          PY
+      - name: Calculate year-specific and species-balanced phase-corrected stage overlap
+        run: |
+          python -m ecology.macro_stage.scripts.macro_species_phase_sensitivity \
+            --inputs data/gbif_original/flatten \
+            --outdir data/macro_phase
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macro_amphibian_stage_species_balanced_phase_null_2015_2025
+          path: data/macro_phase/
+          if-no-files-found: error
