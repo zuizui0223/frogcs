@@ -6,7 +6,7 @@
 
 **Single next scientific gate:** Carroll et al. Dryad eight-pond dataset [DOI:10.25338/B8G92P](https://doi.org/10.25338/B8G92P), *response-blind species×pond×year×stage coverage and effort audit*, followed by a strictly temporally held-out call→larva proxy check only where that source supports it. **The previous-call variable is not measured overwintering tadpole biomass**, and NAAMP roadside stops are not mapped breeding ponds.
 
-**Repository relationship:** \`frogcs\` remains empirical source owner; \`theouni\` holds a separately typed portfolio bridge, and \`odsp/eog/crest/mrm/ced/boundary/rec/tnoa/mrod\` provide optional method or identification interfaces, not extra frogs' observations. Preserve all existing evidence readouts, including null and adverse results, below.
+**Repository relationship:** `frogcs` remains empirical source owner; `theouni` holds a separately typed portfolio bridge, and `odsp/eog/crest/mrm/ced/boundary/rec/tnoa/mrod` provide optional method or identification interfaces, not extra frogs' observations. Preserve all existing evidence readouts, including null and adverse results, below.
 
 ---
 
