@@ -1,0 +1,45 @@
+name: Pinned full GloBI nonself stages to observed GBIF world-grid
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/full_globi_staged_gbif_grid.py
+      - .github/workflows/research_full_globi_to_gbif_stage_grid.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audited-full-link:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check disk, install DuckDB
+        run: |
+          df -h /tmp
+          python -m pip install --disable-pip-version-check 'duckdb>=1.2,<2'
+      - name: Verify nonself/cannibalism split and gridded-stage estimator
+        run: python research/scripts/full_globi_staged_gbif_grid.py --self-test
+      - name: Reuse successful entire GBIF Anura/Odonata year-month grid artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gbif-2026-anonymous-full-partition-stage-spatial-1degree
+          run-id: 40190152042
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/gbif_open_artifact
+      - name: Download MD5-fixed full 2026-09 GloBI and join all nonself stage relationships to GBIF gridded presence
+        run: |
+          python research/scripts/full_globi_staged_gbif_grid.py \
+            --gbif-artifact research/data/gbif_open_artifact \
+            --out research/results/full_globi_2026_stage_gbif_grid
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: fixed-full-globi-nonself-gbif-1degree-stage-grid
+          path: research/results/full_globi_2026_stage_gbif_grid
+          if-no-files-found: error
