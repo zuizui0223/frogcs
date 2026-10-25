@@ -1,0 +1,3585 @@
+{
+  "date": "2026-10-25",
+  "status": "FULL_GLOBI_VERSIONED_REAL_DATA_ANALYSIS",
+  "source": {
+    "doi": "https://doi.org/10.5281/zenodo.22691479",
+    "released": "2026-09-10",
+    "aggregate_license": "CC0, original sources to be cited individually",
+    "md5": "8212776b7ba0c4fa8de26a00b5ce8595",
+    "download_bytes": 2375721521,
+    "source_rows": 24453954,
+    "source_198_rowgroups": true,
+    "download_elapsed_seconds": 610.85,
+    "query_elapsed_seconds": 1.13
+  },
+  "focal_filter": "both species-level canonical names, documented eats/preysOn, at least one focal Anura/Caudata/Odonata or Dytiscidae family; GloBI interpreted taxon categories",
+  "scope": {
+    "eligible_rows": 77720,
+    "distinct_predator_species": 1467,
+    "distinct_prey_species": 3493,
+    "distinct_directed_pairs": 28958,
+    "self_feeding_source_rows": 572,
+    "self_feeding_species": 116,
+    "raw_both_stage_rows": 1835,
+    "raw_either_stage_rows": 38259,
+    "sourced_dataset_doi_rows": 1966
+  },
+  "edge_groups": [
+    {
+      "predator_guild": "other_predator",
+      "prey_guild": "Dytiscidae",
+      "n_source_rows": 21598,
+      "n_directed_binomial_pairs": 5608,
+      "n_predator_species": 96,
+      "n_prey_species": 122,
+      "predator_stage_any": 10559,
+      "prey_stage_any": 5302,
+      "both_stages_present": 31,
+      "rows_with_original_source_doi": 33,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 21598,
+      "distinct_reference_citations": 32,
+      "valid_geo_rows": 61
+    },
+    {
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "n_source_rows": 20502,
+      "n_directed_binomial_pairs": 6778,
+      "n_predator_species": 751,
+      "n_prey_species": 643,
+      "predator_stage_any": 3463,
+      "prey_stage_any": 3809,
+      "both_stages_present": 481,
+      "rows_with_original_source_doi": 1114,
+      "distinct_source_dois": 4,
+      "rows_with_ref": 20494,
+      "distinct_reference_citations": 4722,
+      "valid_geo_rows": 5931
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "n_source_rows": 8845,
+      "n_directed_binomial_pairs": 6660,
+      "n_predator_species": 87,
+      "n_prey_species": 1208,
+      "predator_stage_any": 1361,
+      "prey_stage_any": 506,
+      "both_stages_present": 446,
+      "rows_with_original_source_doi": 383,
+      "distinct_source_dois": 3,
+      "rows_with_ref": 8841,
+      "distinct_reference_citations": 200,
+      "valid_geo_rows": 940
+    },
+    {
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "n_source_rows": 6685,
+      "n_directed_binomial_pairs": 2031,
+      "n_predator_species": 300,
+      "n_prey_species": 238,
+      "predator_stage_any": 3073,
+      "prey_stage_any": 1793,
+      "both_stages_present": 220,
+      "rows_with_original_source_doi": 91,
+      "distinct_source_dois": 3,
+      "rows_with_ref": 6679,
+      "distinct_reference_citations": 766,
+      "valid_geo_rows": 1035
+    },
+    {
+      "predator_guild": "Actinopterygii",
+      "prey_guild": "Dytiscidae",
+      "n_source_rows": 6611,
+      "n_directed_binomial_pairs": 1651,
+      "n_predator_species": 16,
+      "n_prey_species": 110,
+      "predator_stage_any": 3303,
+      "prey_stage_any": 1651,
+      "both_stages_present": 1,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 6611,
+      "distinct_reference_citations": 7,
+      "valid_geo_rows": 1
+    },
+    {
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "n_source_rows": 4560,
+      "n_directed_binomial_pairs": 1965,
+      "n_predator_species": 175,
+      "n_prey_species": 141,
+      "predator_stage_any": 612,
+      "prey_stage_any": 588,
+      "both_stages_present": 64,
+      "rows_with_original_source_doi": 6,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 4554,
+      "distinct_reference_citations": 571,
+      "valid_geo_rows": 642
+    },
+    {
+      "predator_guild": "Actinopterygii",
+      "prey_guild": "Odonata",
+      "n_source_rows": 1700,
+      "n_directed_binomial_pairs": 420,
+      "n_predator_species": 22,
+      "n_prey_species": 38,
+      "predator_stage_any": 859,
+      "prey_stage_any": 429,
+      "both_stages_present": 8,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 1700,
+      "distinct_reference_citations": 10,
+      "valid_geo_rows": 6
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "other_prey",
+      "n_source_rows": 1206,
+      "n_directed_binomial_pairs": 914,
+      "n_predator_species": 12,
+      "n_prey_species": 268,
+      "predator_stage_any": 75,
+      "prey_stage_any": 64,
+      "both_stages_present": 64,
+      "rows_with_original_source_doi": 83,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 1206,
+      "distinct_reference_citations": 14,
+      "valid_geo_rows": 180
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "n_source_rows": 1019,
+      "n_directed_binomial_pairs": 334,
+      "n_predator_species": 121,
+      "n_prey_species": 202,
+      "predator_stage_any": 378,
+      "prey_stage_any": 462,
+      "both_stages_present": 199,
+      "rows_with_original_source_doi": 26,
+      "distinct_source_dois": 3,
+      "rows_with_ref": 1017,
+      "distinct_reference_citations": 771,
+      "valid_geo_rows": 968
+    },
+    {
+      "predator_guild": "Caudata",
+      "prey_guild": "other_prey",
+      "n_source_rows": 926,
+      "n_directed_binomial_pairs": 334,
+      "n_predator_species": 14,
+      "n_prey_species": 329,
+      "predator_stage_any": 622,
+      "prey_stage_any": 22,
+      "both_stages_present": 15,
+      "rows_with_original_source_doi": 5,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 921,
+      "distinct_reference_citations": 28,
+      "valid_geo_rows": 30
+    },
+    {
+      "predator_guild": "Anura",
+      "prey_guild": "other_prey",
+      "n_source_rows": 703,
+      "n_directed_binomial_pairs": 545,
+      "n_predator_species": 33,
+      "n_prey_species": 520,
+      "predator_stage_any": 96,
+      "prey_stage_any": 93,
+      "both_stages_present": 29,
+      "rows_with_original_source_doi": 23,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 703,
+      "distinct_reference_citations": 47,
+      "valid_geo_rows": 74
+    },
+    {
+      "predator_guild": "Anura",
+      "prey_guild": "Anura",
+      "n_source_rows": 645,
+      "n_directed_binomial_pairs": 216,
+      "n_predator_species": 31,
+      "n_prey_species": 66,
+      "predator_stage_any": 90,
+      "prey_stage_any": 58,
+      "both_stages_present": 18,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 643,
+      "distinct_reference_citations": 65,
+      "valid_geo_rows": 62
+    },
+    {
+      "predator_guild": "Caudata",
+      "prey_guild": "Anura",
+      "n_source_rows": 557,
+      "n_directed_binomial_pairs": 366,
+      "n_predator_species": 14,
+      "n_prey_species": 51,
+      "predator_stage_any": 63,
+      "prey_stage_any": 36,
+      "both_stages_present": 10,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 555,
+      "distinct_reference_citations": 14,
+      "valid_geo_rows": 5
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Anura",
+      "n_source_rows": 394,
+      "n_directed_binomial_pairs": 394,
+      "n_predator_species": 113,
+      "n_prey_species": 17,
+      "predator_stage_any": 2,
+      "prey_stage_any": 1,
+      "both_stages_present": 1,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 394,
+      "distinct_reference_citations": 4,
+      "valid_geo_rows": 2
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "Other_Hemiptera",
+      "n_source_rows": 374,
+      "n_directed_binomial_pairs": 139,
+      "n_predator_species": 23,
+      "n_prey_species": 97,
+      "predator_stage_any": 157,
+      "prey_stage_any": 73,
+      "both_stages_present": 67,
+      "rows_with_original_source_doi": 56,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 374,
+      "distinct_reference_citations": 29,
+      "valid_geo_rows": 112
+    },
+    {
+      "predator_guild": "Caudata",
+      "prey_guild": "Caudata",
+      "n_source_rows": 354,
+      "n_directed_binomial_pairs": 269,
+      "n_predator_species": 22,
+      "n_prey_species": 42,
+      "predator_stage_any": 30,
+      "prey_stage_any": 28,
+      "both_stages_present": 5,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 352,
+      "distinct_reference_citations": 25,
+      "valid_geo_rows": 15
+    },
+    {
+      "predator_guild": "Anura",
+      "prey_guild": "Caudata",
+      "n_source_rows": 296,
+      "n_directed_binomial_pairs": 123,
+      "n_predator_species": 10,
+      "n_prey_species": 31,
+      "predator_stage_any": 27,
+      "prey_stage_any": 15,
+      "both_stages_present": 3,
+      "rows_with_original_source_doi": 1,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 295,
+      "distinct_reference_citations": 6,
+      "valid_geo_rows": 1
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Other_Hemiptera",
+      "n_source_rows": 215,
+      "n_directed_binomial_pairs": 40,
+      "n_predator_species": 5,
+      "n_prey_species": 13,
+      "predator_stage_any": 48,
+      "prey_stage_any": 47,
+      "both_stages_present": 47,
+      "rows_with_original_source_doi": 51,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 215,
+      "distinct_reference_citations": 8,
+      "valid_geo_rows": 125
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Dytiscidae",
+      "n_source_rows": 142,
+      "n_directed_binomial_pairs": 39,
+      "n_predator_species": 6,
+      "n_prey_species": 16,
+      "predator_stage_any": 23,
+      "prey_stage_any": 23,
+      "both_stages_present": 23,
+      "rows_with_original_source_doi": 21,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 142,
+      "distinct_reference_citations": 6,
+      "valid_geo_rows": 84
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "Dytiscidae",
+      "n_source_rows": 135,
+      "n_directed_binomial_pairs": 57,
+      "n_predator_species": 5,
+      "n_prey_species": 15,
+      "predator_stage_any": 25,
+      "prey_stage_any": 24,
+      "both_stages_present": 24,
+      "rows_with_original_source_doi": 25,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 135,
+      "distinct_reference_citations": 8,
+      "valid_geo_rows": 49
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Odonata",
+      "n_source_rows": 82,
+      "n_directed_binomial_pairs": 10,
+      "n_predator_species": 4,
+      "n_prey_species": 4,
+      "predator_stage_any": 16,
+      "prey_stage_any": 16,
+      "both_stages_present": 16,
+      "rows_with_original_source_doi": 15,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 82,
+      "distinct_reference_citations": 6,
+      "valid_geo_rows": 50
+    },
+    {
+      "predator_guild": "Caudata",
+      "prey_guild": "Other_Hemiptera",
+      "n_source_rows": 53,
+      "n_directed_binomial_pairs": 18,
+      "n_predator_species": 2,
+      "n_prey_species": 18,
+      "predator_stage_any": 36,
+      "prey_stage_any": 2,
+      "both_stages_present": 2,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 53,
+      "distinct_reference_citations": 3,
+      "valid_geo_rows": 0
+    },
+    {
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Dytiscidae",
+      "n_source_rows": 29,
+      "n_directed_binomial_pairs": 6,
+      "n_predator_species": 2,
+      "n_prey_species": 6,
+      "predator_stage_any": 9,
+      "prey_stage_any": 8,
+      "both_stages_present": 8,
+      "rows_with_original_source_doi": 9,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 29,
+      "distinct_reference_citations": 8,
+      "valid_geo_rows": 13
+    },
+    {
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Odonata",
+      "n_source_rows": 20,
+      "n_directed_binomial_pairs": 5,
+      "n_predator_species": 4,
+      "n_prey_species": 4,
+      "predator_stage_any": 6,
+      "prey_stage_any": 8,
+      "both_stages_present": 6,
+      "rows_with_original_source_doi": 4,
+      "distinct_source_dois": 2,
+      "rows_with_ref": 20,
+      "distinct_reference_citations": 9,
+      "valid_geo_rows": 10
+    },
+    {
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Anura",
+      "n_source_rows": 15,
+      "n_directed_binomial_pairs": 6,
+      "n_predator_species": 4,
+      "n_prey_species": 6,
+      "predator_stage_any": 15,
+      "prey_stage_any": 12,
+      "both_stages_present": 12,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 15,
+      "distinct_reference_citations": 4,
+      "valid_geo_rows": 3
+    },
+    {
+      "predator_guild": "Anura",
+      "prey_guild": "Odonata",
+      "n_source_rows": 15,
+      "n_directed_binomial_pairs": 9,
+      "n_predator_species": 8,
+      "n_prey_species": 7,
+      "predator_stage_any": 10,
+      "prey_stage_any": 8,
+      "both_stages_present": 8,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 13,
+      "distinct_reference_citations": 8,
+      "valid_geo_rows": 9
+    },
+    {
+      "predator_guild": "Anura",
+      "prey_guild": "Other_Hemiptera",
+      "n_source_rows": 11,
+      "n_directed_binomial_pairs": 6,
+      "n_predator_species": 6,
+      "n_prey_species": 3,
+      "predator_stage_any": 7,
+      "prey_stage_any": 7,
+      "both_stages_present": 7,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 11,
+      "distinct_reference_citations": 6,
+      "valid_geo_rows": 6
+    },
+    {
+      "predator_guild": "Caudata",
+      "prey_guild": "Odonata",
+      "n_source_rows": 6,
+      "n_directed_binomial_pairs": 1,
+      "n_predator_species": 1,
+      "n_prey_species": 1,
+      "predator_stage_any": 6,
+      "prey_stage_any": 6,
+      "both_stages_present": 6,
+      "rows_with_original_source_doi": 3,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 3,
+      "distinct_reference_citations": 1,
+      "valid_geo_rows": 3
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "Anura",
+      "n_source_rows": 5,
+      "n_directed_binomial_pairs": 4,
+      "n_predator_species": 2,
+      "n_prey_species": 4,
+      "predator_stage_any": 4,
+      "prey_stage_any": 4,
+      "both_stages_present": 4,
+      "rows_with_original_source_doi": 1,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 4,
+      "distinct_reference_citations": 2,
+      "valid_geo_rows": 1
+    },
+    {
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Caudata",
+      "n_source_rows": 5,
+      "n_directed_binomial_pairs": 2,
+      "n_predator_species": 1,
+      "n_prey_species": 2,
+      "predator_stage_any": 5,
+      "prey_stage_any": 4,
+      "both_stages_present": 4,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 5,
+      "distinct_reference_citations": 2,
+      "valid_geo_rows": 1
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "Caudata",
+      "n_source_rows": 3,
+      "n_directed_binomial_pairs": 2,
+      "n_predator_species": 1,
+      "n_prey_species": 2,
+      "predator_stage_any": 2,
+      "prey_stage_any": 2,
+      "both_stages_present": 2,
+      "rows_with_original_source_doi": 1,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 2,
+      "distinct_reference_citations": 2,
+      "valid_geo_rows": 1
+    },
+    {
+      "predator_guild": "Caudata",
+      "prey_guild": "Dytiscidae",
+      "n_source_rows": 3,
+      "n_directed_binomial_pairs": 1,
+      "n_predator_species": 1,
+      "n_prey_species": 1,
+      "predator_stage_any": 2,
+      "prey_stage_any": 0,
+      "both_stages_present": 0,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 3,
+      "distinct_reference_citations": 2,
+      "valid_geo_rows": 0
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Actinopterygii",
+      "n_source_rows": 2,
+      "n_directed_binomial_pairs": 1,
+      "n_predator_species": 1,
+      "n_prey_species": 1,
+      "predator_stage_any": 2,
+      "prey_stage_any": 2,
+      "both_stages_present": 2,
+      "rows_with_original_source_doi": 2,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 2,
+      "distinct_reference_citations": 1,
+      "valid_geo_rows": 2
+    },
+    {
+      "predator_guild": "Odonata",
+      "prey_guild": "Actinopterygii",
+      "n_source_rows": 2,
+      "n_directed_binomial_pairs": 2,
+      "n_predator_species": 2,
+      "n_prey_species": 2,
+      "predator_stage_any": 1,
+      "prey_stage_any": 1,
+      "both_stages_present": 1,
+      "rows_with_original_source_doi": 1,
+      "distinct_source_dois": 1,
+      "rows_with_ref": 2,
+      "distinct_reference_citations": 2,
+      "valid_geo_rows": 2
+    },
+    {
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Caudata",
+      "n_source_rows": 1,
+      "n_directed_binomial_pairs": 1,
+      "n_predator_species": 1,
+      "n_prey_species": 1,
+      "predator_stage_any": 1,
+      "prey_stage_any": 0,
+      "both_stages_present": 0,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 1,
+      "distinct_reference_citations": 1,
+      "valid_geo_rows": 1
+    },
+    {
+      "predator_guild": "Anura",
+      "prey_guild": "Actinopterygii",
+      "n_source_rows": 1,
+      "n_directed_binomial_pairs": 1,
+      "n_predator_species": 1,
+      "n_prey_species": 1,
+      "predator_stage_any": 1,
+      "prey_stage_any": 1,
+      "both_stages_present": 1,
+      "rows_with_original_source_doi": 0,
+      "distinct_source_dois": 0,
+      "rows_with_ref": 1,
+      "distinct_reference_citations": 1,
+      "valid_geo_rows": 0
+    }
+  ],
+  "stage_labels_most_frequent": [
+    {
+      "side": "prey",
+      "stage": "(missing)",
+      "raw_records": 62615
+    },
+    {
+      "side": "predator",
+      "stage": "(missing)",
+      "raw_records": 52731
+    },
+    {
+      "side": "predator",
+      "stage": "Adult",
+      "raw_records": 11543
+    },
+    {
+      "side": "predator",
+      "stage": "Young",
+      "raw_records": 10595
+    },
+    {
+      "side": "prey",
+      "stage": "Young",
+      "raw_records": 9464
+    },
+    {
+      "side": "prey",
+      "stage": "adult",
+      "raw_records": 2898
+    },
+    {
+      "side": "predator",
+      "stage": "adult",
+      "raw_records": 1580
+    },
+    {
+      "side": "prey",
+      "stage": "Adult",
+      "raw_records": 1087
+    },
+    {
+      "side": "prey",
+      "stage": "-999",
+      "raw_records": 430
+    },
+    {
+      "side": "predator",
+      "stage": "-999",
+      "raw_records": 394
+    },
+    {
+      "side": "predator",
+      "stage": "post-juvenile adult stage",
+      "raw_records": 242
+    },
+    {
+      "side": "prey",
+      "stage": "juvenile",
+      "raw_records": 195
+    },
+    {
+      "side": "predator",
+      "stage": "juvenile",
+      "raw_records": 167
+    },
+    {
+      "side": "prey",
+      "stage": "Egg",
+      "raw_records": 162
+    },
+    {
+      "side": "prey",
+      "stage": "post-juvenile adult stage",
+      "raw_records": 157
+    },
+    {
+      "side": "prey",
+      "stage": "larva",
+      "raw_records": 150
+    },
+    {
+      "side": "predator",
+      "stage": "larvae",
+      "raw_records": 135
+    },
+    {
+      "side": "prey",
+      "stage": "larvae",
+      "raw_records": 129
+    },
+    {
+      "side": "predator",
+      "stage": "adults",
+      "raw_records": 105
+    },
+    {
+      "side": "prey",
+      "stage": "Egg, Young",
+      "raw_records": 105
+    },
+    {
+      "side": "prey",
+      "stage": "larval",
+      "raw_records": 104
+    },
+    {
+      "side": "prey",
+      "stage": "adults",
+      "raw_records": 92
+    },
+    {
+      "side": "predator",
+      "stage": "larva",
+      "raw_records": 82
+    },
+    {
+      "side": "predator",
+      "stage": "larval",
+      "raw_records": 79
+    },
+    {
+      "side": "predator",
+      "stage": "juv./adults",
+      "raw_records": 40
+    },
+    {
+      "side": "prey",
+      "stage": "tadpole",
+      "raw_records": 32
+    },
+    {
+      "side": "prey",
+      "stage": "egg_mass",
+      "raw_records": 24
+    },
+    {
+      "side": "prey",
+      "stage": "metamorph",
+      "raw_records": 13
+    },
+    {
+      "side": "prey",
+      "stage": "cercaria",
+      "raw_records": 12
+    },
+    {
+      "side": "prey",
+      "stage": "larva (poss adult also)",
+      "raw_records": 11
+    },
+    {
+      "side": "predator",
+      "stage": "recruits/juv.",
+      "raw_records": 6
+    },
+    {
+      "side": "predator",
+      "stage": "egg",
+      "raw_records": 6
+    },
+    {
+      "side": "prey",
+      "stage": "Subadult",
+      "raw_records": 6
+    },
+    {
+      "side": "predator",
+      "stage": "neonate",
+      "raw_records": 5
+    },
+    {
+      "side": "prey",
+      "stage": "juv./adults",
+      "raw_records": 5
+    },
+    {
+      "side": "prey",
+      "stage": "carrion (adult)",
+      "raw_records": 4
+    },
+    {
+      "side": "prey",
+      "stage": "larval stage",
+      "raw_records": 4
+    },
+    {
+      "side": "predator",
+      "stage": "Subadult",
+      "raw_records": 3
+    },
+    {
+      "side": "predator",
+      "stage": "nymph",
+      "raw_records": 3
+    },
+    {
+      "side": "prey",
+      "stage": "pupae",
+      "raw_records": 3
+    },
+    {
+      "side": "prey",
+      "stage": "egg",
+      "raw_records": 3
+    },
+    {
+      "side": "prey",
+      "stage": "immature",
+      "raw_records": 2
+    },
+    {
+      "side": "predator",
+      "stage": "Juvenile",
+      "raw_records": 2
+    },
+    {
+      "side": "prey",
+      "stage": "neotenic_adult",
+      "raw_records": 2
+    },
+    {
+      "side": "prey",
+      "stage": "carrion",
+      "raw_records": 2
+    },
+    {
+      "side": "prey",
+      "stage": "neonate",
+      "raw_records": 2
+    },
+    {
+      "side": "predator",
+      "stage": "juveniles",
+      "raw_records": 2
+    },
+    {
+      "side": "prey",
+      "stage": "pupa",
+      "raw_records": 2
+    },
+    {
+      "side": "prey",
+      "stage": "eft",
+      "raw_records": 1
+    },
+    {
+      "side": "prey",
+      "stage": "carrion (juvenile)",
+      "raw_records": 1
+    },
+    {
+      "side": "prey",
+      "stage": "nymphs",
+      "raw_records": 1
+    },
+    {
+      "side": "prey",
+      "stage": "nymph",
+      "raw_records": 1
+    },
+    {
+      "side": "prey",
+      "stage": "nymph stage",
+      "raw_records": 1
+    }
+  ],
+  "top_source_dois": [
+    {
+      "original_source_doi": "(missing)",
+      "records": 75754,
+      "directed_edges": 28859,
+      "staged_rows": 1096
+    },
+    {
+      "original_source_doi": "10.5886/f0xsbu",
+      "records": 1026,
+      "directed_edges": 5,
+      "staged_rows": 0
+    },
+    {
+      "original_source_doi": "10.1890/05-0379",
+      "records": 663,
+      "directed_edges": 547,
+      "staged_rows": 663
+    },
+    {
+      "original_source_doi": "10.5281/zenodo.13751",
+      "records": 232,
+      "directed_edges": 229,
+      "staged_rows": 31
+    },
+    {
+      "original_source_doi": "10.1890/11-2194.1",
+      "records": 45,
+      "directed_edges": 33,
+      "staged_rows": 45
+    }
+  ],
+  "candidate_reciprocal_different_species_pair_count": 131,
+  "reciprocal_candidate_examples": [
+    {
+      "species_a": "Cordulegaster boltonii",
+      "species_b": "Plectrocnemia conspersa",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 6,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 4,
+      "b_eats_a_staged": 4
+    },
+    {
+      "species_a": "Anax junius",
+      "species_b": "Taricha torosa",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 6,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 6
+    },
+    {
+      "species_a": "Cordulegaster boltonii",
+      "species_b": "Sialis fuliginosa",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 3,
+      "b_eats_a_staged": 3
+    },
+    {
+      "species_a": "Lethocerus americanus",
+      "species_b": "Taricha torosa",
+      "a_eats_b_rows": 4,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 4,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Anax junius",
+      "species_b": "Anaxyrus boreas",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 4
+    },
+    {
+      "species_a": "Anaxyrus boreas",
+      "species_b": "Taricha torosa",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 4
+    },
+    {
+      "species_a": "Anaxyrus boreas",
+      "species_b": "Lethocerus americanus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 4
+    },
+    {
+      "species_a": "Lethocerus americanus",
+      "species_b": "Pseudacris regilla",
+      "a_eats_b_rows": 4,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 4,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Amerana draytonii",
+      "species_b": "Lethocerus americanus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 4
+    },
+    {
+      "species_a": "Agabus bipustulatus",
+      "species_b": "Agabus sturmii",
+      "a_eats_b_rows": 9,
+      "b_eats_a_rows": 6,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Agabus bipustulatus",
+      "species_b": "Lestes sponsa",
+      "a_eats_b_rows": 7,
+      "b_eats_a_rows": 7,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Enallagma cyathigerum",
+      "species_b": "Lestes sponsa",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 8,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Agabus bipustulatus",
+      "species_b": "Notonecta glauca",
+      "a_eats_b_rows": 7,
+      "b_eats_a_rows": 6,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Lestes sponsa",
+      "species_b": "Notonecta glauca",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 8,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Agabus bipustulatus",
+      "species_b": "Enallagma cyathigerum",
+      "a_eats_b_rows": 9,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Agabus sturmii",
+      "species_b": "Lestes sponsa",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 7,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Enallagma cyathigerum",
+      "species_b": "Notonecta glauca",
+      "a_eats_b_rows": 4,
+      "b_eats_a_rows": 8,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Agabus sturmii",
+      "species_b": "Enallagma cyathigerum",
+      "a_eats_b_rows": 8,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Agabus sturmii",
+      "species_b": "Notonecta glauca",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 7,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Hydroporus erythrocephalus",
+      "species_b": "Sialis lutaria",
+      "a_eats_b_rows": 4,
+      "b_eats_a_rows": 8,
+      "a_eats_b_source_dois": 1,
+      "b_eats_a_source_dois": 2,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Amerana draytonii",
+      "species_b": "Taricha torosa",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 3,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 3
+    },
+    {
+      "species_a": "Anax junius",
+      "species_b": "Lethocerus americanus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 2
+    },
+    {
+      "species_a": "Amerana draytonii",
+      "species_b": "Anax junius",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Nycticorax nycticorax",
+      "species_b": "Xenopus laevis",
+      "a_eats_b_rows": 8,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Aeshna juncea",
+      "species_b": "Holocentropus picicornis",
+      "a_eats_b_rows": 8,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Agabus sturmii",
+      "species_b": "Holocentropus picicornis",
+      "a_eats_b_rows": 7,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Agabus bipustulatus",
+      "species_b": "Holocentropus picicornis",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 2,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 2,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Oreodytes davisii",
+      "species_b": "Sialis lutaria",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Oreodytes davisii",
+      "species_b": "Sigara lateralis",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Anaxyrus boreas",
+      "species_b": "Cephalogonimus americanus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Anax junius",
+      "species_b": "Pseudacris regilla",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Cephalogonimus americanus",
+      "species_b": "Pseudacris regilla",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Amerana draytonii",
+      "species_b": "Cephalogonimus americanus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 1
+    },
+    {
+      "species_a": "Dicamptodon tenebrosus",
+      "species_b": "Thamnophis sirtalis",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 1,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Anaxyrus fowleri",
+      "species_b": "Thamnophis sirtalis",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 36,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax lessonae",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 14,
+      "b_eats_a_rows": 14,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Bufo bufo",
+      "species_b": "Procyon lotor",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 19,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 9,
+      "b_eats_a_rows": 9,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax ridibundus",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 9,
+      "b_eats_a_rows": 9,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Celithemis fasciata",
+      "species_b": "Erythemis simplicicollis",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 12,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax lessonae",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 6,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Agabus bipustulatus",
+      "species_b": "Ilybius fuliginosus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 7,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 7,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 6,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Enallagma cyathigerum",
+      "species_b": "Ilybius fuliginosus",
+      "a_eats_b_rows": 3,
+      "b_eats_a_rows": 8,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ilybius fuliginosus",
+      "species_b": "Lestes sponsa",
+      "a_eats_b_rows": 6,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ardea cinerea",
+      "species_b": "Triturus cristatus",
+      "a_eats_b_rows": 10,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Euproctus montanus",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax ridibundus",
+      "species_b": "Triturus pygmaeus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax ridibundus",
+      "species_b": "Pleurodeles waltl",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Anas platyrhynchos",
+      "species_b": "Salamandra salamandra",
+      "a_eats_b_rows": 7,
+      "b_eats_a_rows": 3,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Motacilla cinerea",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 9,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelobates cultripes",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton ophryticus",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax cretensis",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Lissotriton italicus",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Holocentropus picicornis",
+      "species_b": "Ilybius fuliginosus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 8,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax epeiroticus",
+      "species_b": "Pelophylax ridibundus",
+      "a_eats_b_rows": 5,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax ridibundus",
+      "species_b": "Salamandra infraimmaculata",
+      "a_eats_b_rows": 4,
+      "b_eats_a_rows": 5,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Agabus sturmii",
+      "species_b": "Ilybius fuliginosus",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 7,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ilybius fuliginosus",
+      "species_b": "Notonecta glauca",
+      "a_eats_b_rows": 4,
+      "b_eats_a_rows": 4,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 1,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax lessonae",
+      "species_b": "Pleurodeles waltl",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax lessonae",
+      "species_b": "Triturus pygmaeus",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Diplacodes bipunctata",
+      "species_b": "Hemicordulia tau",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 3,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Bostrychia hagedash",
+      "species_b": "Xenopus laevis",
+      "a_eats_b_rows": 3,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Euproctus montanus",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelobates cultripes",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton ophryticus",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Batrachochytrium dendrobatidis",
+      "species_b": "Taricha torosa",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax cretensis",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Triturus carnifex",
+      "species_b": "Triturus pygmaeus",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Lissotriton italicus",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Lissotriton italicus",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Batrachochytrium dendrobatidis",
+      "species_b": "Pseudacris regilla",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax lessonae",
+      "species_b": "Salamandra infraimmaculata",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton ophryticus",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax epeiroticus",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Amerana draytonii",
+      "species_b": "Batrachochytrium dendrobatidis",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Triturus carnifex",
+      "species_b": "Triturus marmoratus",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pleurodeles waltl",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Pelophylax lessonae",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Discoglossus sardus",
+      "species_b": "Euproctus montanus",
+      "a_eats_b_rows": 2,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Anaxyrus boreas",
+      "species_b": "Batrachochytrium dendrobatidis",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 2,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pleurodeles waltl",
+      "species_b": "Triturus marmoratus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton ophryticus",
+      "species_b": "Triturus marmoratus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Galerucella nymphaeae",
+      "species_b": "Ischnura elegans",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Lissotriton italicus",
+      "species_b": "Ommatotriton ophryticus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Euproctus montanus",
+      "species_b": "Pleurodeles waltl",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Triturus pygmaeus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax epeiroticus",
+      "species_b": "Triturus pygmaeus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Pelophylax epeiroticus",
+      "species_b": "Triturus carnifex",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Pleurodeles waltl",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Pelophylax epeiroticus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Euproctus montanus",
+      "species_b": "Triturus marmoratus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Lissotriton italicus",
+      "species_b": "Pelophylax epeiroticus",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Pelophylax cretensis",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton ophryticus",
+      "species_b": "Pleurodeles waltl",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    },
+    {
+      "species_a": "Ommatotriton vittatus",
+      "species_b": "Salamandra infraimmaculata",
+      "a_eats_b_rows": 1,
+      "b_eats_a_rows": 1,
+      "a_eats_b_source_dois": 0,
+      "b_eats_a_source_dois": 0,
+      "a_eats_b_staged": 0,
+      "b_eats_a_staged": 0
+    }
+  ],
+  "top_stage_pattern_examples": [
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Anaxyrus americanus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 871,
+      "source_dataset_dois": 0,
+      "reference_citations": 483
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Erythemis simplicicollis",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 84,
+      "source_dataset_dois": 0,
+      "reference_citations": 83
+    },
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Anaxyrus americanus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 78,
+      "source_dataset_dois": 0,
+      "reference_citations": 45
+    },
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Lithobates pipiens",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "juvenile",
+      "source_rows": 49,
+      "source_dataset_dois": 0,
+      "reference_citations": 43
+    },
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Anaxyrus boreas",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "juvenile",
+      "source_rows": 34,
+      "source_dataset_dois": 0,
+      "reference_citations": 32
+    },
+    {
+      "predator": "Lycodon rufozonatus",
+      "prey": "Bufo gargarizans",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 27,
+      "source_dataset_dois": 0,
+      "reference_citations": 26
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Bufo bufo",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 22,
+      "source_dataset_dois": 0,
+      "reference_citations": 19
+    },
+    {
+      "predator": "Tropidonophis mairii",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 21,
+      "source_dataset_dois": 0,
+      "reference_citations": 21
+    },
+    {
+      "predator": "Dendrelaphis pictus",
+      "prey": "Polypedates leucomystax",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 20,
+      "source_dataset_dois": 0,
+      "reference_citations": 17
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Pachydiplax longipennis",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 20,
+      "source_dataset_dois": 0,
+      "reference_citations": 17
+    },
+    {
+      "predator": "Nerodia sipedon",
+      "prey": "Necturus maculosus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 19,
+      "source_dataset_dois": 0,
+      "reference_citations": 17
+    },
+    {
+      "predator": "Natrix helvetica",
+      "prey": "Sclerophrys gutturalis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 17,
+      "source_dataset_dois": 0,
+      "reference_citations": 15
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Erythemis simplicicollis",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 17,
+      "source_dataset_dois": 0,
+      "reference_citations": 13
+    },
+    {
+      "predator": "Heterodon platirhinos",
+      "prey": "Anaxyrus americanus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 17,
+      "source_dataset_dois": 0,
+      "reference_citations": 10
+    },
+    {
+      "predator": "Natrix helvetica",
+      "prey": "Bufo bufo",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 16,
+      "source_dataset_dois": 0,
+      "reference_citations": 13
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Perithemis tenera",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 16,
+      "source_dataset_dois": 0,
+      "reference_citations": 15
+    },
+    {
+      "predator": "Nerodia sipedon",
+      "prey": "Anaxyrus americanus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 15,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Nasiaeschna pentacantha",
+      "prey": "Nasiaeschna pentacantha",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 14,
+      "source_dataset_dois": 0,
+      "reference_citations": 14
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Perithemis tenera",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 14,
+      "source_dataset_dois": 0,
+      "reference_citations": 14
+    },
+    {
+      "predator": "Coluber constrictor",
+      "prey": "Lithobates sphenocephalus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 14,
+      "source_dataset_dois": 0,
+      "reference_citations": 13
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Pelophylax ridibundus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 14,
+      "source_dataset_dois": 0,
+      "reference_citations": 10
+    },
+    {
+      "predator": "Nerodia fasciata",
+      "prey": "Lithobates sphenocephalus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 13,
+      "source_dataset_dois": 0,
+      "reference_citations": 11
+    },
+    {
+      "predator": "Egretta caerulea",
+      "prey": "Lithobates grylio",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 13,
+      "source_dataset_dois": 0,
+      "reference_citations": 9
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Celithemis eponina",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 12,
+      "source_dataset_dois": 0,
+      "reference_citations": 10
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Pachydiplax longipennis",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 12,
+      "source_dataset_dois": 0,
+      "reference_citations": 10
+    },
+    {
+      "predator": "Crocodylus porosus",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "juvenile",
+      "prey_stage": "adult",
+      "source_rows": 12,
+      "source_dataset_dois": 0,
+      "reference_citations": 6
+    },
+    {
+      "predator": "Fowlea piscator",
+      "prey": "Duttaphrynus melanostictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 12,
+      "source_dataset_dois": 0,
+      "reference_citations": 10
+    },
+    {
+      "predator": "Ischnura ramburii",
+      "prey": "Ischnura ramburii",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 11,
+      "source_dataset_dois": 0,
+      "reference_citations": 11
+    },
+    {
+      "predator": "Amphiesma stolatum",
+      "prey": "Duttaphrynus melanostictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 10,
+      "source_dataset_dois": 0,
+      "reference_citations": 9
+    },
+    {
+      "predator": "Natrix maura",
+      "prey": "Pelophylax perezi",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 10,
+      "source_dataset_dois": 0,
+      "reference_citations": 10
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Anax junius",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 10,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Thamnophis saurita",
+      "prey": "Lithobates sphenocephalus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 10,
+      "source_dataset_dois": 0,
+      "reference_citations": 9
+    },
+    {
+      "predator": "Falco sparverius",
+      "prey": "Anax junius",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 9,
+      "source_dataset_dois": 0,
+      "reference_citations": 7
+    },
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Plethodon cinereus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 9,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Hyla arborea",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 9,
+      "source_dataset_dois": 0,
+      "reference_citations": 9
+    },
+    {
+      "predator": "Ptyas mucosa",
+      "prey": "Duttaphrynus melanostictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 9,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Hagenius brevistylus",
+      "prey": "Danaus plexippus",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 6
+    },
+    {
+      "predator": "Rhabdophis siamensis",
+      "prey": "Hoplobatrachus chinensis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Ceriagrion cerinorubellum",
+      "prey": "Ceriagrion cerinorubellum",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Merops apiaster",
+      "prey": "Anax parthenope",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Erythemis vesiculosa",
+      "prey": "Erythemis vesiculosa",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Orthetrum sabina",
+      "prey": "Orthetrum sabina",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Ardea cinerea",
+      "prey": "Rana temporaria",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Rana dalmatina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 7
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Rana arvalis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 7
+    },
+    {
+      "predator": "Farancia abacura",
+      "prey": "Amphiuma tridactylum",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Oligodon formosanus",
+      "prey": "Kaloula pulchra",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 8,
+      "source_dataset_dois": 0,
+      "reference_citations": 8
+    },
+    {
+      "predator": "Hagenius brevistylus",
+      "prey": "Danaus plexippus",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 7,
+      "source_dataset_dois": 0,
+      "reference_citations": 7
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Rana temporaria",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 7,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Causus rhombeatus",
+      "prey": "Sclerophrys gutturalis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "juvenile",
+      "source_rows": 7,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Hagenius brevistylus",
+      "prey": "Hagenius brevistylus",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 7,
+      "source_dataset_dois": 0,
+      "reference_citations": 7
+    },
+    {
+      "predator": "Morelia spilota",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 7,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Diadophis punctatus",
+      "prey": "Plethodon glutinosus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Celithemis eponina",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Tropidonophis mairii",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Triturus carnifex",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Gomphurus vastus",
+      "prey": "Gomphurus vastus",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 6
+    },
+    {
+      "predator": "Falco subbuteo",
+      "prey": "Sympetrum vulgatum",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 6,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Rhabdophis helleri",
+      "prey": "Polypedates megacephalus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 6
+    },
+    {
+      "predator": "Rhabdophis plumbicolor",
+      "prey": "Duttaphrynus melanostictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Thamnophis proximus",
+      "prey": "Lithobates sphenocephalus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Thamnophis elegans",
+      "prey": "Anaxyrus boreas",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "juvenile",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Triorla interrupta",
+      "prey": "Pantala flavescens",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 6,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Falco subbuteo",
+      "prey": "Sympetrum sanguineum",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 5,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Argia moesta",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Sympetrum vulgatum",
+      "prey": "Herina parva",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 5,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Rhabdophis lateralis",
+      "prey": "Pelophylax nigromaculatus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Egretta caerulea",
+      "prey": "Anax junius",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Nerodia sipedon",
+      "prey": "Necturus maculosus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Lithobates sphenocephalus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Rhinella marina",
+      "prey": "Rhinella marina",
+      "predator_guild": "Anura",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Anax junius",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Rhabdophis lateralis",
+      "prey": "Bufo sachalinensis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Drymarchon corais",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Leptophis diplotropis",
+      "prey": "Agalychnis dacnicolor",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Nycticorax nycticorax",
+      "prey": "Xenopus laevis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "juvenile",
+      "prey_stage": "(missing)",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Crotaphopeltis hotamboeia",
+      "prey": "Sclerophrys gutturalis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "juvenile",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Falco sparverius",
+      "prey": "Anax junius",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 5
+    },
+    {
+      "predator": "Dacelo novaeguineae",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Thamnophis atratus",
+      "prey": "Dicamptodon tenebrosus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Egretta caerulea",
+      "prey": "Anax junius",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Xenopeltis unicolor",
+      "prey": "Kaloula pulchra",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 5,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Sympetrum sanguineum",
+      "prey": "Herina parva",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 4,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Erythemis simplicicollis",
+      "prey": "Celithemis fasciata",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Natrix maura",
+      "prey": "Epidalea calamita",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Natrix maura",
+      "prey": "Pelobates cultripes",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Procyon lotor",
+      "prey": "Bufo bufo",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Rhipidura leucophrys",
+      "prey": "Hemicordulia tau",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Gasterosteus aculeatus",
+      "prey": "Erythromma lindenii",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "Young",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Rhabdophis helleri",
+      "prey": "Duttaphrynus melanostictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Nerodia sipedon",
+      "prey": "Anaxyrus americanus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Triturus cristatus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Ischnura senegalensis",
+      "prey": "Ischnura senegalensis",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Promachus hinei",
+      "prey": "Plathemis lydia",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Natrix tessellata",
+      "prey": "Salamandra infraimmaculata",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Orthetrum sabina",
+      "prey": "Sympetrum fonscolombii",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Danaus plexippus",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Ischnura ramburii",
+      "prey": "Ischnura ramburii",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Sandyrana infrafrenata",
+      "prey": "Sandyrana infrafrenata",
+      "predator_guild": "Anura",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Erythemis vesiculosa",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Dendrelaphis punctulatus",
+      "prey": "Sandyrana infrafrenata",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Natrix helvetica",
+      "prey": "Sclerophrys gutturalis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Agelaius phoeniceus",
+      "prey": "Erythemis simplicicollis",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Gasterosteus aculeatus",
+      "prey": "Erythromma lindenii",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "Young",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Sympetrum vulgatum",
+      "prey": "Sepedon spinipes",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 4,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Gasterosteus aculeatus",
+      "prey": "Erythromma lindenii",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "Adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Falco subbuteo",
+      "prey": "Somatochlora flavomaculata",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 4,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Somatochlora flavomaculata",
+      "prey": "Herina parva",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 4,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Dicrurus macrocercus",
+      "prey": "Pantala flavescens",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Nerodia erythrogaster",
+      "prey": "Incilius nebulifer",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Lycodon rufozonatus",
+      "prey": "Duttaphrynus melanostictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Agkistrodon contortrix",
+      "prey": "Plethodon glutinosus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "juvenile",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Mesotriton alpestris",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    },
+    {
+      "predator": "Fowlea piscator",
+      "prey": "Hoplobatrachus tigerinus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Gomphurus externus",
+      "prey": "Gomphurus externus",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 4
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Erythemis simplicicollis",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Larinioides cornutus",
+      "prey": "Sympetrum vulgatum",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "predator_stage": "-999",
+      "prey_stage": "-999",
+      "source_rows": 4,
+      "source_dataset_dois": 1,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Ardea herodias",
+      "prey": "Siren lacertina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "predator_stage": "(missing)",
+      "prey_stage": "adult",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 3
+    },
+    {
+      "predator": "Hierophis viridiflavus",
+      "prey": "Discoglossus pictus",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 1
+    },
+    {
+      "predator": "Eudocimus albus",
+      "prey": "Rhinella marina",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "predator_stage": "adult",
+      "prey_stage": "(missing)",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "reference_citations": 2
+    }
+  ],
+  "georeferenced_source_records_by_latitude": [
+    {
+      "absolute_latitude_band": "polar",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "source_rows": 2,
+      "source_dataset_dois": 0,
+      "both_stage_records": 0
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "source_rows": 4504,
+      "source_dataset_dois": 3,
+      "both_stage_records": 318
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "source_rows": 957,
+      "source_dataset_dois": 2,
+      "both_stage_records": 203
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "source_rows": 920,
+      "source_dataset_dois": 2,
+      "both_stage_records": 418
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "source_rows": 863,
+      "source_dataset_dois": 2,
+      "both_stage_records": 173
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "source_rows": 617,
+      "source_dataset_dois": 1,
+      "both_stage_records": 61
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "other_prey",
+      "source_rows": 180,
+      "source_dataset_dois": 1,
+      "both_stage_records": 62
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Other_Hemiptera",
+      "source_rows": 125,
+      "source_dataset_dois": 1,
+      "both_stage_records": 46
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "Other_Hemiptera",
+      "source_rows": 110,
+      "source_dataset_dois": 1,
+      "both_stage_records": 66
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Dytiscidae",
+      "source_rows": 84,
+      "source_dataset_dois": 1,
+      "both_stage_records": 23
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Anura",
+      "prey_guild": "other_prey",
+      "source_rows": 61,
+      "source_dataset_dois": 1,
+      "both_stage_records": 24
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "other_predator",
+      "prey_guild": "Dytiscidae",
+      "source_rows": 61,
+      "source_dataset_dois": 1,
+      "both_stage_records": 30
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Odonata",
+      "source_rows": 50,
+      "source_dataset_dois": 1,
+      "both_stage_records": 16
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "Dytiscidae",
+      "source_rows": 49,
+      "source_dataset_dois": 1,
+      "both_stage_records": 24
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Anura",
+      "prey_guild": "Anura",
+      "source_rows": 32,
+      "source_dataset_dois": 1,
+      "both_stage_records": 4
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Caudata",
+      "prey_guild": "other_prey",
+      "source_rows": 30,
+      "source_dataset_dois": 1,
+      "both_stage_records": 10
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Caudata",
+      "prey_guild": "Caudata",
+      "source_rows": 15,
+      "source_dataset_dois": 1,
+      "both_stage_records": 3
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Dytiscidae",
+      "source_rows": 13,
+      "source_dataset_dois": 1,
+      "both_stage_records": 8
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Odonata",
+      "source_rows": 10,
+      "source_dataset_dois": 1,
+      "both_stage_records": 4
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Anura",
+      "prey_guild": "Odonata",
+      "source_rows": 9,
+      "source_dataset_dois": 1,
+      "both_stage_records": 3
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Anura",
+      "prey_guild": "Other_Hemiptera",
+      "source_rows": 6,
+      "source_dataset_dois": 1,
+      "both_stage_records": 4
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Caudata",
+      "prey_guild": "Anura",
+      "source_rows": 5,
+      "source_dataset_dois": 1,
+      "both_stage_records": 2
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Actinopterygii",
+      "prey_guild": "Odonata",
+      "source_rows": 4,
+      "source_dataset_dois": 0,
+      "both_stage_records": 3
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Anura",
+      "source_rows": 3,
+      "source_dataset_dois": 0,
+      "both_stage_records": 0
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Caudata",
+      "prey_guild": "Odonata",
+      "source_rows": 3,
+      "source_dataset_dois": 1,
+      "both_stage_records": 3
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "Actinopterygii",
+      "source_rows": 2,
+      "source_dataset_dois": 1,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Anura",
+      "source_rows": 2,
+      "source_dataset_dois": 0,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Actinopterygii",
+      "source_rows": 2,
+      "source_dataset_dois": 1,
+      "both_stage_records": 2
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "Anura",
+      "source_rows": 1,
+      "source_dataset_dois": 1,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Dytiscidae",
+      "prey_guild": "Caudata",
+      "source_rows": 1,
+      "source_dataset_dois": 0,
+      "both_stage_records": 0
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Other_Hemiptera",
+      "prey_guild": "Caudata",
+      "source_rows": 1,
+      "source_dataset_dois": 0,
+      "both_stage_records": 0
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Actinopterygii",
+      "prey_guild": "Dytiscidae",
+      "source_rows": 1,
+      "source_dataset_dois": 0,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Odonata",
+      "prey_guild": "Caudata",
+      "source_rows": 1,
+      "source_dataset_dois": 1,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "temperate",
+      "predator_guild": "Anura",
+      "prey_guild": "Caudata",
+      "source_rows": 1,
+      "source_dataset_dois": 1,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "other_predator",
+      "prey_guild": "Anura",
+      "source_rows": 1425,
+      "source_dataset_dois": 0,
+      "both_stage_records": 156
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "Odonata",
+      "prey_guild": "Odonata",
+      "source_rows": 105,
+      "source_dataset_dois": 0,
+      "both_stage_records": 23
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "other_predator",
+      "prey_guild": "Odonata",
+      "source_rows": 78,
+      "source_dataset_dois": 0,
+      "both_stage_records": 12
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "Anura",
+      "prey_guild": "Anura",
+      "source_rows": 30,
+      "source_dataset_dois": 0,
+      "both_stage_records": 3
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "other_predator",
+      "prey_guild": "Caudata",
+      "source_rows": 25,
+      "source_dataset_dois": 0,
+      "both_stage_records": 3
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "Odonata",
+      "prey_guild": "other_prey",
+      "source_rows": 20,
+      "source_dataset_dois": 0,
+      "both_stage_records": 4
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "Anura",
+      "prey_guild": "other_prey",
+      "source_rows": 13,
+      "source_dataset_dois": 0,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "Actinopterygii",
+      "prey_guild": "Odonata",
+      "source_rows": 2,
+      "source_dataset_dois": 0,
+      "both_stage_records": 1
+    },
+    {
+      "absolute_latitude_band": "tropical",
+      "predator_guild": "Odonata",
+      "prey_guild": "Other_Hemiptera",
+      "source_rows": 2,
+      "source_dataset_dois": 0,
+      "both_stage_records": 0
+    }
+  ],
+  "bounds": [
+    "This scans full versioned GloBI 24.45M records (not an API first page) but is filtered to focal aquatic guilds.",
+    "GloBI indexed edges include literature-derived or inferred associations; not independent physical attacks or predation flux.",
+    "Different stage labels and source DOIs can be missing or repeated; source author attribution required.",
+    "GloBI source species names are not yet exhaustively canonicalized against GBIF taxon IDs.",
+    "Latitudes of source interaction records are not random or ecologically standardized samples.",
+    "A reciprocal named-species pair is a candidate *directional association*, not verified ontogenetic dominance reversal.",
+    "Historical frog chorus/vegetation/hydrology require independent observed site×time linkage.",
+    "This script does not access authenticated accounts, private data or GBIF bulk downloads."
+  ]
+}
