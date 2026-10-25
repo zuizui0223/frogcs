@@ -1,0 +1,29 @@
+name: Original 2001-2015 daily adult frog chorus at eight Texas ponds
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/fetch_carter_daily_calls.py"
+      - ".github/workflows/frog_macro_original_adult_chorus_source.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-integrity-and-ecological-stage-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Read exact Dryad original daily adult calling source and match publisher MD5
+        run: |
+          python ecology/macro_stage/scripts/fetch_carter_daily_calls.py \
+            --outdir ecology/macro_stage/source_carter
+      - name: Publish original acoustic source and provenance (distinct from larval time series)
+        uses: actions/upload-artifact@v4
+        with:
+          name: carter_daily_frog_adult_calls_8ponds_original_Dryad_2001_2015
+          path: ecology/macro_stage/source_carter/
+          if-no-files-found: error
