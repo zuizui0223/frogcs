@@ -1,0 +1,67 @@
+{
+  "audit_date": "2026-10-25",
+  "status": "frozen_RC6_source_extraction_only_no_new_NAAMP_result",
+  "source": "provenance/CURRENT_RESULTS.json on frogcs/main",
+  "primary": {
+    "matched_pairs": 4236,
+    "routes": 585,
+    "taxa": 53,
+    "states": 21,
+    "prior_site_history_pairs": 2916,
+    "multi_site_concentration": {
+      "observed_beta": 1.6503201354367818,
+      "comparator_beta": 1.3534664037854447,
+      "conditional_residual": 0.2968537316513371,
+      "null_95_ci": [
+        -0.13185369117339027,
+        0.11870819192117488
+      ],
+      "p_value": 0.000999000999000999
+    },
+    "prior_site_to_strong_call_beta": 0.1510940272028386,
+    "prior_site_to_strong_call_ci95": [
+      0.12912743790722594,
+      0.17306061649845125
+    ],
+    "rain_selective_prior_ci3_targeting_beta": 0.02448895976609234,
+    "rain_selective_prior_ci3_targeting_ci95": [
+      0.007001673669270292,
+      0.04197624586291439
+    ],
+    "direct_zero_to_strong_share": 0.8707082810857251
+  },
+  "posthoc": {
+    "flexible_weather": {
+      "pairs": 2916,
+      "conditional_residual": 0.26314385066701806,
+      "same_sample_reference_residual": 0.2968537316513371,
+      "residual_fraction_reduced": 0.11369534972375188,
+      "p": 0.000999000999000999
+    },
+    "actual_72h_rain": {
+      "pairs": 2835,
+      "linear_same_sample_residual": 0.3175801298,
+      "with_rainfall_residual": 0.2969861534,
+      "fraction_same_sample_residual_reduced": 0.064847,
+      "p": 0.000999000999000999
+    },
+    "other_taxon_stop_hotness": {
+      "pairs": 2835,
+      "rmse_before": 0.7752160787032109,
+      "rmse_after": 0.5810157811435136,
+      "concentration_residual": 0.3181568399323087,
+      "residual_p": 0.000999000999000999,
+      "note": "Stop-hotness residual is on its own comparator/sample; do not subtract directly from principal 2,916-pair residual."
+    },
+    "bounded_residual_dependence": {
+      "all": 0.17206769596558683,
+      "dry_silent": 0.28487700425848284,
+      "dry_active": 0.12729974469369246
+    }
+  },
+  "interpretation": {
+    "supported": "Existing weather, observation and generic other-taxa shared conditions do not fully predict taxon-specific route-night chorus allocation; strong calling preferentially recurs at historical SiteIDs.",
+    "not_supported": "No evidence from RC6 that emergent vegetation, aquatic predators, larvae, individual philopatry, pond occupancy, or trophic interactions cause the residual.",
+    "missing": "Event-level within-stop water depth/hydroperiod, emergent vegetation structure and composition, pond-level fish/odonate/salamander stages, exact pond geometry; direct data required."
+  }
+}
