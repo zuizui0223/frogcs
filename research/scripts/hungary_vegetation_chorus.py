@@ -34,6 +34,8 @@ NEWTS = ["Lissotriton vulgaris", "Triturus dobrogicus"]
 BASE = ["doy", "doy_sq", "temp", "humid", "prec"]
 TIERS = {
     "W0_weather_phenology": (BASE, []),
+    "W1a_plus_depth_only": (BASE + ["depth"], []),
+    "W1b_plus_class_only": (BASE, ["ci"]),
     "W1_plus_depth_context": (BASE + ["depth"], ["ci"]),
     "W2_plus_emergent": (BASE + ["depth", "cover_emerged"], ["ci"]),
     "W2alt_plus_submerged": (BASE + ["depth", "cover_submers"], ["ci"]),
@@ -153,6 +155,8 @@ def outcome_cv(frame, bootstrap=1000):
                 -(yy * np.log(pp) + (1 - yy) * np.log(1 - pp)))),
         }
     baseline_pairs = [
+        ("W1a_plus_depth_only", "W0_weather_phenology"),
+        ("W1b_plus_class_only", "W0_weather_phenology"),
         ("W1_plus_depth_context", "W0_weather_phenology"),
         ("W2_plus_emergent", "W1_plus_depth_context"),
         ("W2alt_plus_submerged", "W1_plus_depth_context"),
