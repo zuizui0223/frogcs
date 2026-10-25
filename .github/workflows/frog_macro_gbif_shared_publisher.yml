@@ -1,0 +1,36 @@
+name: Macro phenological interaction windows shared iNaturalist publisher
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - ".github/workflows/frog_macro_gbif_shared_publisher.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matched-observation-platform-stage-month:
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        region: [US25_30, US30_35, US35_40, US40_45, US45_50, CA45_50, CA50_55, CA55_60, FR40_50, DE45_55, GB50_60, JP30_40, JP40_45, AUminus40_30, AUminus30_20]
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify three-guild ecological stage definitions and latitude strata
+        run: python -m unittest -v ecology/macro_stage/tests/test_gbif_regions.py
+      - name: Fetch real monthly stages from the SAME verified iNaturalist GBIF dataset
+        run: |
+          python ecology/macro_stage/scripts/run_gbif_region.py \
+            --region ${{ matrix.region }} \
+            --shared-dataset \
+            --outdir ecology/macro_stage/data/shared
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gbif_shared_inat_${{ matrix.region }}
+          path: ecology/macro_stage/data/shared/
+          if-no-files-found: error
