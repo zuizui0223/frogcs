@@ -239,7 +239,7 @@ def selftest():
     masks={("A a","adult"):base,("B b","adult"):prey,
            ("C c","adult"):alt,("D d","adult"):prey}
     kinds={"B b":"Odonata","C c":"Odonata","D d":"Odonata"}
-    choices,err=candidate_preys(pair,masks,kinds,known=set())
+    choices,err=candidate_preys(pair,masks,kinds,links=set())
     assert len(choices)==2 and not err
     assert compare_one(base,prey)["observed_exact_grid_year_month"]==1
     assert compare_one(base,alt)["observed_exact_grid_year_month"]==0
