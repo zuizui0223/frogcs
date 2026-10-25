@@ -1,0 +1,37 @@
+name: North America 2015–2025 multi-species frog/salamander/dragonfly stage records
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/harvest_gbif_observations.py"
+      - "ecology/macro_stage/tests/test_gbif_observations.py"
+      - ".github/workflows/frog_macro_original_stage_observations.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cross-species-record-level-pond-window-qc:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        region: [US30_35, US35_40, US40_45, US45_50, CA45_50]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit-test stage IDs, exact source and coarse spatial grid
+        run: python -m unittest -v ecology/macro_stage/tests/test_gbif_observations.py
+      - name: Download every original staged observation without pagination truncation
+        run: |
+          python -m ecology.macro_stage.scripts.harvest_gbif_observations \
+            --region ${{ matrix.region }} \
+            --outdir data/macro_stage_original
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gbif_inat_original_stage_observations_${{ matrix.region }}
+          path: data/macro_stage_original/
+          if-no-files-found: error
