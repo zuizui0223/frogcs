@@ -82,7 +82,7 @@ class MacroSourceIntegrity(unittest.TestCase):
         self.assertEqual({(x["band"],x["year"]) for x in unfit},{("-14_-10",2018),("-14_-10",2020)})
     
     def test_source_ceiling_not_causal(self):
-        self.assertIn("not",self.out["claim_ceiling"].lower())
+        self.assertIn("no causal alarm",self.out["claim_ceiling"].lower())
 
 
 if __name__=="__main__":
