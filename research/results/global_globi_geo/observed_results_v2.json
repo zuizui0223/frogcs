@@ -1,0 +1,276 @@
+{
+  "date": "2026-10-25",
+  "method": "Live GloBI API geolocated feeding-association records; 6 world macroboxes, 8 query roles, capped 200/query, source-deduplicated",
+  "source": "https://api.globalbioticinteractions.org/interaction",
+  "published_stable_recommendation": "https://doi.org/10.5281/zenodo.3950589",
+  "n_successful_queries": 48,
+  "n_failed_queries": 0,
+  "rows_reported_before_dedup": 1783,
+  "eligible_before_dedup": 878,
+  "unique_geolocated_associations": 729,
+  "distinct_directed_species_pairs": 346,
+  "distinct_taxa": 338,
+  "stage_both_labeled": 77,
+  "stage_either_labeled": 359,
+  "distinct_study_citations": 610,
+  "reciprocal_binomial_pair_candidates": 1,
+  "conspecific_feeding_taxon_candidates": 18,
+  "conspecific_feeding_species_examples": [
+    "Acris blanchardi",
+    "Anaxyrus americanus",
+    "Anaxyrus boreas",
+    "Discoglossus pictus",
+    "Dryophytes cinereus",
+    "Hyla arborea",
+    "Hylarana daemeli",
+    "Incilius nebulifer",
+    "Limnodynastes peronii",
+    "Lithobates grylio",
+    "Lithobates pipiens",
+    "Osteopilus septentrionalis"
+  ],
+  "reciprocal_pair_examples": [
+    [
+      "Bostrychia hagedash",
+      "Xenopus laevis"
+    ]
+  ],
+  "macroboxes": [
+    {
+      "macrobox": "North_America",
+      "rows": 155,
+      "stage_both": 13,
+      "stage_at_least_one": 59,
+      "distinct_directed_binomial_edges": 76,
+      "study_citations": 150,
+      "iNaturalist_observation_links": 136,
+      "trophic_frogs_as_predator": 43,
+      "trophic_frogs_as_prey": 132,
+      "n_conspec_feeding": 13,
+      "predator_guild_counts": {
+        "Anura": 43,
+        "Reptilia": 71,
+        "Caudata": 2,
+        "Aves": 29,
+        "other": 8,
+        "Dytiscidae": 1,
+        "Mammalia": 1
+      }
+    },
+    {
+      "macrobox": "South_America",
+      "rows": 102,
+      "stage_both": 16,
+      "stage_at_least_one": 45,
+      "distinct_directed_binomial_edges": 77,
+      "study_citations": 62,
+      "iNaturalist_observation_links": 19,
+      "trophic_frogs_as_predator": 7,
+      "trophic_frogs_as_prey": 96,
+      "n_conspec_feeding": 0,
+      "predator_guild_counts": {
+        "Aves": 2,
+        "Reptilia": 79,
+        "other": 14,
+        "Anura": 7
+      }
+    },
+    {
+      "macrobox": "Europe_Mediterranean",
+      "rows": 108,
+      "stage_both": 26,
+      "stage_at_least_one": 95,
+      "distinct_directed_binomial_edges": 31,
+      "study_citations": 107,
+      "iNaturalist_observation_links": 102,
+      "trophic_frogs_as_predator": 12,
+      "trophic_frogs_as_prey": 101,
+      "n_conspec_feeding": 5,
+      "predator_guild_counts": {
+        "Aves": 19,
+        "Anura": 12,
+        "Reptilia": 47,
+        "other": 27,
+        "Caudata": 1,
+        "Mammalia": 2
+      }
+    },
+    {
+      "macrobox": "Africa",
+      "rows": 104,
+      "stage_both": 4,
+      "stage_at_least_one": 30,
+      "distinct_directed_binomial_edges": 62,
+      "study_citations": 80,
+      "iNaturalist_observation_links": 63,
+      "trophic_frogs_as_predator": 1,
+      "trophic_frogs_as_prey": 103,
+      "n_conspec_feeding": 0,
+      "predator_guild_counts": {
+        "Reptilia": 67,
+        "Aves": 27,
+        "other": 6,
+        "Mammalia": 3,
+        "Anura": 1
+      }
+    },
+    {
+      "macrobox": "Asia",
+      "rows": 118,
+      "stage_both": 7,
+      "stage_at_least_one": 55,
+      "distinct_directed_binomial_edges": 63,
+      "study_citations": 93,
+      "iNaturalist_observation_links": 78,
+      "trophic_frogs_as_predator": 8,
+      "trophic_frogs_as_prey": 111,
+      "n_conspec_feeding": 0,
+      "predator_guild_counts": {
+        "Reptilia": 89,
+        "Aves": 8,
+        "Anura": 8,
+        "other": 13
+      }
+    },
+    {
+      "macrobox": "Oceania",
+      "rows": 142,
+      "stage_both": 11,
+      "stage_at_least_one": 75,
+      "distinct_directed_binomial_edges": 41,
+      "study_citations": 118,
+      "iNaturalist_observation_links": 141,
+      "trophic_frogs_as_predator": 38,
+      "trophic_frogs_as_prey": 138,
+      "n_conspec_feeding": 32,
+      "predator_guild_counts": {
+        "Aves": 30,
+        "other": 6,
+        "Reptilia": 67,
+        "Anura": 38,
+        "Mammalia": 1
+      }
+    }
+  ],
+  "top_source_record_share": 0.012345679012345678,
+  "top_sources": [
+    {
+      "citation": "The Reptiles of China. 1935. The American Museum of Natural History.",
+      "count": 9
+    },
+    {
+      "citation": "Reptiles from Nyasaland and Tete. 1953. Bulletin of the Museum of Comparative Zoology 110: 143-322",
+      "count": 7
+    },
+    {
+      "citation": "An integrative approach to specialization: relationships among feeding morphology, mechanics, behaviour, performance and diet in two syntopic snakes. 2008. Journal of Zoology 275(1): 47-56",
+      "count": 6
+    },
+    {
+      "citation": "Diet and reproduction of the Western Indigo Snake Drymarchon corais (Serpentes: Colubridae) from the Brazilian Amazon. 2014. Herpetology Notes 7: 99-108",
+      "count": 6
+    },
+    {
+      "citation": "Sexual dimorphism, diet, reproduction, and their geographic variation in sympatric psammophiids, Psammophis crucifer and Psammophylax rhombeatus rhombeatus, from southern Africa. 2010. Copeia 2010(4): 578-590",
+      "count": 5
+    },
+    {
+      "citation": "LIMNONECTES LIMNOCHARIS (Paddy Frog): PREDATION. 2002. Herpetological Review 33(2): 126-126",
+      "count": 5
+    },
+    {
+      "citation": "Snake assemblages of Marajó Island, Pará state, Brazil. 2016. Zoologia 33(1): e20150020",
+      "count": 5
+    },
+    {
+      "citation": "The Biology of an Equatorial Herpetofauna in Amazonian Ecuador. 1978. Miscellaneous Publications of the University of Kansas Museum of Natural History 65: 1-352",
+      "count": 5
+    }
+  ],
+  "top_directed_pairs": [
+    {
+      "predator": "Natrix natrix",
+      "prey": "Rana temporaria",
+      "count": 40
+    },
+    {
+      "predator": "Dendrelaphis punctulatus",
+      "prey": "Sandyrana infrafrenata",
+      "count": 22
+    },
+    {
+      "predator": "Tropidonophis mairii",
+      "prey": "Rhinella marina",
+      "count": 21
+    },
+    {
+      "predator": "Natrix helvetica",
+      "prey": "Rana temporaria",
+      "count": 18
+    },
+    {
+      "predator": "Sandyrana infrafrenata",
+      "prey": "Sandyrana infrafrenata",
+      "count": 18
+    },
+    {
+      "predator": "Coluber constrictor",
+      "prey": "Osteopilus septentrionalis",
+      "count": 15
+    },
+    {
+      "predator": "Thamnophis sirtalis",
+      "prey": "Anaxyrus terrestris",
+      "count": 13
+    },
+    {
+      "predator": "Lycodonomorphus rufulus",
+      "prey": "Amietia fuscigula",
+      "count": 12
+    },
+    {
+      "predator": "Pantherophis quadrivittatus",
+      "prey": "Osteopilus septentrionalis",
+      "count": 12
+    },
+    {
+      "predator": "Crocodylus porosus",
+      "prey": "Rhinella marina",
+      "count": 11
+    },
+    {
+      "predator": "Natrix natrix",
+      "prey": "Bufo bufo",
+      "count": 10
+    },
+    {
+      "predator": "Ardea cinerea",
+      "prey": "Rana temporaria",
+      "count": 10
+    },
+    {
+      "predator": "Drymarchon corais",
+      "prey": "Rhinella marina",
+      "count": 10
+    },
+    {
+      "predator": "Dendrelaphis pictus",
+      "prey": "Fejervarya limnocharis",
+      "count": 8
+    },
+    {
+      "predator": "Rhinella marina",
+      "prey": "Rhinella marina",
+      "count": 8
+    }
+  ],
+  "query_errors": [],
+  "inferential_limits": [
+    "Bounding-box API pages are not a random or exhaustive sample of global interactions.",
+    "A coordinate is GloBI source record location, not verified evidence of a natural predation event or at-pond interaction intensity.",
+    "Records from the same study, iNaturalist occurrence or food-web list are nonindependent; latitude effects are sampling-dependent.",
+    "Macroboxes are coarse query geometries, not strictly political/ecological continents and may overlap; dedup attempted by citation and source occurrence.",
+    "No global frequency of trophic stage reversal and no statistical prevalence or P-value can be reported from this subset.",
+    "Macrophyte structure, rainfall, wetland hydroperiod and GBIF site records were not attached to GloBI source points."
+  ]
+}
