@@ -13,6 +13,22 @@ Keep three distinct biological responses:
 
 A fourth, weaker dataset class is **observation-level seasonal contact opportunity**. It can reveal geography of co-reporting seasons but cannot establish attacks, stage switching, risk perception, alarm function or causal effects. **Do not mix all four as a common response variable.**
 
+## New original-data macro result: five ecosystem source-ontology atlas (2026-10-25)
+
+Read [full Japanese ecological results and inferential limits](results/ONTO_TIME_FIVE_ECOSYSTEM_MACRO_ECOLOGY_FINDINGS_JA_20261025.md).
+
+- **5 local site foodwebs from 3 original compilation programmes**: Preston (one California freshwater pond); Mouritsen (one New Zealand intertidal habitat); Hechinger (3 US/Mexico salt-marsh/estuary sites with shared metaweb source). This is **not five independent predation-event studies**.
+- Original-source strict species-binomial/stage graphs give **806 structurally apparent stage-different reciprocal site×species-pair links**. Requiring exact source `Predation` type rather than mixing parasites, trophic transmission and micropredation gives only **31** (**−96.15%**). The loss is a *network-ontology/evidence validity* effect, **not** a measured ecological drop in stage reversals.
+- **20/31** strict-predation structural candidates belong to **two five-species bivalve adult→larva cliques** (10 pairs each in CSM and EPB), with no direct attack events supplied. The original larval body mass for all 40 directed candidate links is the *same model approximation*, **0.0000363288 g**. Median log10 adult/larval mass ratio CSM **5.855954**, EPB **5.127282** is partly an assigned source-size construct, not an observed feeding threshold.
+- The remaining **11/31** predation-only stage-difference candidates are in Preston Quick Pond, but no pair has both opposite stage-dependent directions classified `observed`. The one observed-observed reciprocal predator pair is *larval Anax junius ↔ larval Taricha torosa* (no stage change).
+- Otago's **27 apparent** mixed-class stage-difference reciprocal links all involve parasite life cycles and reduce to **0** under exact `Predation` filtering. Its original LinkEvidence is blank; absence of direct-event evidence must not be converted to absence of real predation.
+- Taxonomic source sensitivity: 3-estuary mixed-class stage candidates are **803** when the provisional name `Himasthla B` counts as a named species, but **768** under strict genus+two-letter lowercase species epithet (35 operational-label candidates excluded). **The pure-Predation 20 are unchanged.**
+- Pinned original Hechinger files: **11,270** projected metaweb links, **9,247** present in at least one estuary, **2,023** in none; summed site-presence links = **13,966**. Distinguish projected co-occurrence linkage from observed interactions.
+- [Five-ecosystem source table](results/ONTO_TIME_FIVE_ECOSYSTEM_EVIDENCE_TIER_COMPARISON_V0_1.json), [cross-source recomputation](compare_five_foodweb_stage_evidence.py), [Hechinger original typed stage audit](results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json), [body-mass assumption audit](results/HECHINGER2011_BIVALVE_MOTIF_STAGE_BODYMASS_SOURCE_AUDIT_V0_1.json).
+- [GitHub Actions source-pinned exact replay: 13/13 tests PASS](https://github.com/zuizui0223/frogcs/actions/runs/40172729617). The stage-node/typed-link/body-mass original-data readbacks all succeeded.
+
+**Research implication:** species-level food-web reciprocity, developmental stage-dependent *potential* consumption, source-confirmed direct role reversal, and receiver use of danger cues are separate estimands. None of the five site food-web sources contains a same-site/year acoustic warning response. Do **not** claim that frog calls predict a stage-switch date from these data.
+
 ## First independent macro analysis: Australia 2018–2023
 
 - Original public GBIF/FrogID, **108 date-scoped source API queries**, 6 latitude bands × 6 years × 3 record streams.
