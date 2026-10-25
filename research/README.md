@@ -2,6 +2,16 @@
 
 Status 2026-10-25: **independent prospective macroecology branch**, not a reopening of RC6 JAE or WFTS; `main` manuscript unaffected.
 
+## Primary research direction — GLOBAL GloBI × GBIF
+
+**[Global real-data macroecological synthesis, 2026-10-25](results/GLOBAL_GLOBI_GBIF_MACRO_SYNTHESIS_2026-10-25.md)** is now the primary research spine. The former wetland-specific comparison is **secondary ecological mechanism support**, not the primary discovery program. Publication-ready global inference requires version-pinned full GloBI and a citable GBIF bulk grid export; the completed data in this branch are explicitly exploratory API pilots.
+
+- [Geolocated GloBI six-world-region empirical audit](results/global_globi_geo/observed_results_v2.json): **729** documented association records, **346** directed binomial edges, **338** taxon names, **77** both-stage records, **610** source citations. [True source geometry/predation QA code](scripts/global_georeferenced_globi.py). Same-species cannibalism and different-species bidirectional feeding are **separate**; zero independently validated population-flux reversals.
+- [GloBI × GBIF globally matched species country opportunities](results/global_globi_gbif/observed_results.json): **58** GloBI edges with accepted GBIF pairs; **57** species pairs co-reported within at least one country; these do NOT establish pond encounters. [Code](scripts/global_globi_gbif_pilot.py).
+- [Worldwide GBIF life-stage bridge](results/global_globi_gbif/stage_bridge/observed_results.json): 64 eligible tropic species, **4,508,513** GBIF georeferenced records, **1,277,068** with recognized life-stage labels, 51 species having both adult and aquatic-immature records (minimum five of each), and 10 stage-specific GloBI pair patterns with GBIF country co-reporting. [Stage code](scripts/gbif_global_lifestage_bridge.py).
+- [Official validated 1° and 0.5° GBIF species × grid × month/year bulk-download SQL](results/global_globi_gbif/gbif_bulk_cube/manifest.json) and [generation code](scripts/build_gbif_global_cube_sql.py). GBIF SQL validation HTTP 201 on both, **download NOT submitted**, no GBIF download DOI yet. Source observation audit [global CI](https://github.com/zuizui0223/frogcs/actions/runs/40187649746).
+- **Wetland mechanism to test when aligned spatial/temporal evidence exists:** rainfall/hydroperiod → emergent-submerged plant structure → species×life-stage predator/prey pair encounter → adult frog acoustic chorus and historical site targeting. **GBIF plant occurrence ≠ plant stem structure; GloBI feeding edge ≠ realized local predation.**
+
 ## 2026-10-25 real external-data milestone
 
 **[Integrated macro-ecological evidence synthesis](results/INTEGRATED_MACRO_ECOLOGICAL_SYNTHESIS_2026-10-25.md)** connects rainfall-driven RC6 chorus configuration, NPS 2016–2023 independent prior-site strong-call recurrence, 2024 Hungary emergent-plant survey, published fish × emergent vegetation occupancy and Typha plant manipulation. These are **distinct outcomes, not a pooled meta-analysis or proof of plant causality**.
