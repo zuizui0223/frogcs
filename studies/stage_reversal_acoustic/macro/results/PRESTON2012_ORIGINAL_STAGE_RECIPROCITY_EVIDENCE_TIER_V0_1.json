@@ -1,0 +1,671 @@
+{
+  "title": "Source-strength audit of apparent ontogenetic reciprocal predation in a California pond's original food web",
+  "status": "FROZEN_SOURCE_COUNTS_DIRECT_OBSERVATION_AND_MODELLED_SEPARATED",
+  "date": "2026-10-25",
+  "source": {
+    "original_study": "Preston, Orlofske, McLaughlin & Johnson (2012), Food web including infectious agents for a California freshwater pond, Ecology 93:1760",
+    "doi": "10.1890/11-2194.1",
+    "GitHub_repo": "globalbioticinteractions/preston2012",
+    "GitHub_commit": "10676b041317d933f16c089b819f6669da42396b",
+    "source_files": [
+      {
+        "path": "Quick_Pond_Links.csv",
+        "blob_sha": "98c45c7a2081976f0a4c31db3c6646686b8277fa",
+        "bytes": 151964
+      },
+      {
+        "path": "Quick_Pond_Nodes.csv",
+        "blob_sha": "201dc6ace08a26d4d07825f6bae6a295bd735adc",
+        "bytes": 33833
+      }
+    ],
+    "original_globi_config_path": "globi.json",
+    "source_grain": "Consumer stage-node × Resource stage-node, with LinkEvidence observed/inferred/modelled"
+  },
+  "totals": {
+    "n_pond_nodes": 113,
+    "n_all_link_rows": 1905,
+    "all_link_evidence": {
+      "modelled": 1014,
+      "inferred": 743,
+      "observed": 148
+    },
+    "n_predation_link_rows": 1000,
+    "predation_link_evidence": {
+      "modelled": 910,
+      "inferred": 40,
+      "observed": 50
+    },
+    "n_stage_and_species_resolved_nonself_predation_edges": 126,
+    "n_unique_species_pairs_any_one_direction": 68,
+    "n_named_species_pairs_with_links_in_both_directions": 11,
+    "n_reciprocal_species_pairs_both_directions_source_class_observed": 1,
+    "n_reciprocal_pairs_with_both_source_class_observed_and_stage_change": 0
+  },
+  "evidence_downgrade": "At source granularity, all developmental reciprocal apparent links require at least one modeled or inferred direction; the sole observed-observed reciprocity is between larval Anax junius and larval Taricha torosa, which is mutual larval predation, not a developmental switch.",
+  "taxonomy_note": "Original source's Pseudiacris regilla source spelling is kept literally; no silent synonym repair.",
+  "reciprocity": [
+    {
+      "species_pair": "Anax junius::Letherocerus americanus",
+      "n_edges": 3,
+      "n_edges_observed": 0,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Anax junius",
+          "predator_stage": "larvae",
+          "prey": "Letherocerus americanus",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "54",
+            "35"
+          ],
+          "source_notes": "Folsom and Collins 1984, Van Buskirk 1988, Turner and Chislock 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "34",
+            "54"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "54"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        }
+      ]
+    },
+    {
+      "species_pair": "Letherocerus americanus::Taricha torosa",
+      "n_edges": 6,
+      "n_edges_observed": 1,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "adult",
+          "prey": "Letherocerus americanus",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "55",
+            "35"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "larvae",
+          "prey": "Letherocerus americanus",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "56",
+            "35"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Taricha torosa",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "34",
+            "55"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Taricha torosa",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "55"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Taricha torosa",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "34",
+            "56"
+          ],
+          "source_notes": ""
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Taricha torosa",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "56"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        }
+      ]
+    },
+    {
+      "species_pair": "Anaxyrus boreas::Letherocerus americanus",
+      "n_edges": 5,
+      "n_edges_observed": 1,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Anaxyrus boreas",
+          "predator_stage": "adult",
+          "prey": "Letherocerus americanus",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "57",
+            "35"
+          ],
+          "source_notes": "Campbell 1970, Miller 1978, Lannoo 2005"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "34",
+            "57"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "57"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "34",
+            "58"
+          ],
+          "source_notes": ""
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "58"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        }
+      ]
+    },
+    {
+      "species_pair": "Letherocerus americanus::Pseudiacris regilla",
+      "n_edges": 5,
+      "n_edges_observed": 1,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Pseudiacris regilla",
+          "predator_stage": "adult",
+          "prey": "Letherocerus americanus",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "59",
+            "35"
+          ],
+          "source_notes": "Johnson and Bury 1965, Lannoo 2005"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Pseudiacris regilla",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "34",
+            "59"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Pseudiacris regilla",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "59"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Pseudiacris regilla",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "34",
+            "60"
+          ],
+          "source_notes": ""
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Pseudiacris regilla",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "60"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        }
+      ]
+    },
+    {
+      "species_pair": "Letherocerus americanus::Rana draytonii",
+      "n_edges": 5,
+      "n_edges_observed": 1,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Rana draytonii",
+          "predator_stage": "adult",
+          "prey": "Letherocerus americanus",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "61",
+            "35"
+          ],
+          "source_notes": "Hayes and Tennant 1985, Lannoo 2005"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Rana draytonii",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "34",
+            "61"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Rana draytonii",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "61"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "adult",
+          "prey": "Rana draytonii",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "34",
+            "62"
+          ],
+          "source_notes": ""
+        },
+        {
+          "predator": "Letherocerus americanus",
+          "predator_stage": "larvae",
+          "prey": "Rana draytonii",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "35",
+            "62"
+          ],
+          "source_notes": "Cullen 1969, Hirai 2007"
+        }
+      ]
+    },
+    {
+      "species_pair": "Anax junius::Taricha torosa",
+      "n_edges": 4,
+      "n_edges_observed": 2,
+      "both_directions_observed": true,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "55",
+            "53"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "55",
+            "54"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "larvae",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "56",
+            "54"
+          ],
+          "source_notes": ""
+        },
+        {
+          "predator": "Anax junius",
+          "predator_stage": "larvae",
+          "prey": "Taricha torosa",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "54",
+            "56"
+          ],
+          "source_notes": ""
+        }
+      ]
+    },
+    {
+      "species_pair": "Anax junius::Anaxyrus boreas",
+      "n_edges": 3,
+      "n_edges_observed": 1,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Anaxyrus boreas",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "57",
+            "53"
+          ],
+          "source_notes": "Campbell 1970, Miller 1978, Lannoo 2005"
+        },
+        {
+          "predator": "Anaxyrus boreas",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "57",
+            "54"
+          ],
+          "source_notes": "Campbell 1970, Miller 1978, Lannoo 2005"
+        },
+        {
+          "predator": "Anax junius",
+          "predator_stage": "larvae",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "54",
+            "58"
+          ],
+          "source_notes": ""
+        }
+      ]
+    },
+    {
+      "species_pair": "Anax junius::Rana draytonii",
+      "n_edges": 3,
+      "n_edges_observed": 0,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Rana draytonii",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "61",
+            "53"
+          ],
+          "source_notes": "Hayes and Tennant 1985, Lannoo 2005"
+        },
+        {
+          "predator": "Rana draytonii",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "61",
+            "54"
+          ],
+          "source_notes": "Hayes and Tennant 1985, Lannoo 2005"
+        },
+        {
+          "predator": "Anax junius",
+          "predator_stage": "larvae",
+          "prey": "Rana draytonii",
+          "prey_stage": "larvae",
+          "evidence": "inferred",
+          "source_link_node_id_pair": [
+            "54",
+            "62"
+          ],
+          "source_notes": ""
+        }
+      ]
+    },
+    {
+      "species_pair": "Anax junius::Pseudiacris regilla",
+      "n_edges": 2,
+      "n_edges_observed": 1,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Pseudiacris regilla",
+          "predator_stage": "adult",
+          "prey": "Anax junius",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "59",
+            "54"
+          ],
+          "source_notes": "Johnson and Bury 1965, Lannoo 2005"
+        },
+        {
+          "predator": "Anax junius",
+          "predator_stage": "larvae",
+          "prey": "Pseudiacris regilla",
+          "prey_stage": "larvae",
+          "evidence": "observed",
+          "source_link_node_id_pair": [
+            "54",
+            "60"
+          ],
+          "source_notes": ""
+        }
+      ]
+    },
+    {
+      "species_pair": "Anaxyrus boreas::Taricha torosa",
+      "n_edges": 3,
+      "n_edges_observed": 0,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Anaxyrus boreas",
+          "predator_stage": "adult",
+          "prey": "Taricha torosa",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "57",
+            "56"
+          ],
+          "source_notes": "Campbell 1970, Miller 1978, Lannoo 2005"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "adult",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "55",
+            "58"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "larvae",
+          "prey": "Anaxyrus boreas",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "56",
+            "58"
+          ],
+          "source_notes": "Petranka 1998"
+        }
+      ]
+    },
+    {
+      "species_pair": "Rana draytonii::Taricha torosa",
+      "n_edges": 4,
+      "n_edges_observed": 0,
+      "both_directions_observed": false,
+      "both_observed_with_stage_transition": false,
+      "edges": [
+        {
+          "predator": "Rana draytonii",
+          "predator_stage": "adult",
+          "prey": "Taricha torosa",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "61",
+            "56"
+          ],
+          "source_notes": "Hayes and Tennant 1985, Lannoo 2005"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "adult",
+          "prey": "Rana draytonii",
+          "prey_stage": "adult",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "55",
+            "61"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "adult",
+          "prey": "Rana draytonii",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "55",
+            "62"
+          ],
+          "source_notes": "Petranka 1998"
+        },
+        {
+          "predator": "Taricha torosa",
+          "predator_stage": "larvae",
+          "prey": "Rana draytonii",
+          "prey_stage": "larvae",
+          "evidence": "modelled",
+          "source_link_node_id_pair": [
+            "56",
+            "62"
+          ],
+          "source_notes": "Petranka 1998"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Modelled/inferred links are not validated direct attack events, even when included by GloBI with stage metadata.",
+    "The food web describes one California pond and its literature/model-based reconstruction, not 11 independent freshwater field systems.",
+    "Neither source provides the exact date/size of a predator-prey role switch or a frog-call cue-receiver action.",
+    "The source categories observed/inferred/modelled are the original compilers' classifications, not validated event-level trial protocols.",
+    "Species-pair reciprocity and actual stage-driven predator-prey switching are separate estimands."
+  ]
+}

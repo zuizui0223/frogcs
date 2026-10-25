@@ -1,0 +1,37 @@
+name: ONTO-TIME experimental direct-risk original-data intake
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/source_audit_direct_risk.py'
+      - 'studies/stage_reversal_acoustic/macro/prospective_direct_risk_source_gate_v0_1.json'
+      - '.github/workflows/onto_time_direct_risk_original_source.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/source_audit_direct_risk.py'
+      - 'studies/stage_reversal_acoustic/macro/prospective_direct_risk_source_gate_v0_1.json'
+      - '.github/workflows/onto_time_direct_risk_original_source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  directly-read-public-experiments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -q openpyxl
+      - name: Fetch public source bytes and audit only schemas
+        run: |
+          python studies/stage_reversal_acoustic/macro/source_audit_direct_risk.py \
+            --out "${{ runner.temp }}/onto_time_direct_risk_schema_gate.json"
+      - name: Retain only provenance and schema; no unredacted source rows
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onto-time-dryad-public-original-schema-gate
+          path: ${{ runner.temp }}/onto_time_direct_risk_schema_gate.json
+          if-no-files-found: warn

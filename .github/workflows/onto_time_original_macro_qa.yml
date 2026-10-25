@@ -1,0 +1,47 @@
+name: ONTO-TIME independent AU macro source and reproducibility QA
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/**'
+      - 'studies/stage_reversal_acoustic/tests/test_australian_macro_stage_phase.py'
+      - '.github/workflows/onto_time_original_macro_qa.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/**'
+      - 'studies/stage_reversal_acoustic/tests/test_australian_macro_stage_phase.py'
+      - '.github/workflows/onto_time_original_macro_qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-phase-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run stage/source and non-causal claim gates
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -p "test_australian_macro_stage_phase.py" -v
+      - name: Recompute 36 original latitude-year panels
+        run: |
+          python studies/stage_reversal_acoustic/macro/analyze_australian_phase_atlas.py \
+            --out "${{ runner.temp }}/onto_time_au_macro_exact_recomputed.json"
+      - name: Verify aggregate only output
+        run: |
+          python - <<'PY'
+          import json,os
+          d=json.load(open(os.environ["RUNNER_TEMP"]+"/onto_time_au_macro_exact_recomputed.json"))
+          assert d["exact_calculation_readback"] is True
+          assert d["n_eligible"]==34
+          assert d["main"]["panels_excess_positive"]==17
+          assert d["main"]["panels_excess_nonpositive"]==17
+          PY
+      - name: Preserve reproducible phase readback
+        uses: actions/upload-artifact@v4
+        with:
+          name: onto-time-36-panel-original-aggregate-recomputed
+          path: ${{ runner.temp }}/onto_time_au_macro_exact_recomputed.json
+          if-no-files-found: error

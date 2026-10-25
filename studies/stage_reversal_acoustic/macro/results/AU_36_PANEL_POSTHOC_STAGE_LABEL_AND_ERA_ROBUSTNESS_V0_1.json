@@ -1,0 +1,706 @@
+{
+  "status": "POSTHOC_ORIGINAL_AU_DATA_OBSERVATION_BIAS_AND_ERA_STRESS_TEST",
+  "as_of": "2026-10-25",
+  "source_snapshot": "ORIGINAL_GBIF_AU_6LAT_6YEAR_3STREAM_MONTHLY_V0_1.json",
+  "note": "Sensitivity chosen after original 36-panel outcome readout, not confirmatory holdout validation.",
+  "source_count": 108,
+  "n_original_band_years": 36,
+  "n_fixed_original_eligible": 34,
+  "primary_mean_adult_surplus": 0.0037140896096421886,
+  "sensitivity_mean_all_odonata_surplus": 0.020152120954087884,
+  "adult_minus_all_surplus": -0.016438031344445696,
+  "n_sign_reversal_when_swapping_adult_stage_vs_all": 9,
+  "n_positive_explicit_adult": 17,
+  "n_positive_all_odonata": 22,
+  "band_summary": [
+    {
+      "lat_band": "-44_-38",
+      "n_eligible": 6,
+      "mean_explicit_adult_surplus": -0.03748071156505209,
+      "mean_all_odonata_surplus": -0.007488454517143611,
+      "adult_annotation_mean_fraction": 0.11216595989299,
+      "n_stage_option_sign_reversals": 3,
+      "period_2018_2020": {
+        "n": 3,
+        "adult": -0.0026455488612731246,
+        "all": 0.001972957214908866
+      },
+      "period_2021_2023": {
+        "n": 3,
+        "adult": -0.07231587426883106,
+        "all": -0.01694986624919609
+      },
+      "leave_one_year_out": [
+        {
+          "heldout_year": 2018,
+          "adult_excess_mean_remaining": -0.0694042071226437,
+          "all_excess_mean_remaining": -0.024307104163153192
+        },
+        {
+          "heldout_year": 2019,
+          "adult_excess_mean_remaining": -0.029704852408235727,
+          "all_excess_mean_remaining": 0.006086366863817838
+        },
+        {
+          "heldout_year": 2020,
+          "adult_excess_mean_remaining": -0.03423417278654421,
+          "all_excess_mean_remaining": -0.009921473291326966
+        },
+        {
+          "heldout_year": 2021,
+          "adult_excess_mean_remaining": -0.027877105127835877,
+          "all_excess_mean_remaining": -0.01024845008802372
+        },
+        {
+          "heldout_year": 2022,
+          "adult_excess_mean_remaining": -0.02929383954526421,
+          "all_excess_mean_remaining": -0.010290093769926411
+        },
+        {
+          "heldout_year": 2023,
+          "adult_excess_mean_remaining": -0.0343700923997888,
+          "all_excess_mean_remaining": 0.003750027345750784
+        }
+      ]
+    },
+    {
+      "lat_band": "-38_-32",
+      "n_eligible": 6,
+      "mean_explicit_adult_surplus": 0.027774174318691353,
+      "mean_all_odonata_surplus": 0.028944329052359264,
+      "adult_annotation_mean_fraction": 0.07984188363129414,
+      "n_stage_option_sign_reversals": 1,
+      "period_2018_2020": {
+        "n": 3,
+        "adult": 0.013545151369950695,
+        "all": 0.02956127057047142
+      },
+      "period_2021_2023": {
+        "n": 3,
+        "adult": 0.04200319726743201,
+        "all": 0.02832738753424711
+      },
+      "leave_one_year_out": [
+        {
+          "heldout_year": 2018,
+          "adult_excess_mean_remaining": 0.042884714456886665,
+          "all_excess_mean_remaining": 0.03742242783796708
+        },
+        {
+          "heldout_year": 2019,
+          "adult_excess_mean_remaining": 0.051004706929463295,
+          "all_excess_mean_remaining": 0.04307196935551396
+        },
+        {
+          "heldout_year": 2020,
+          "adult_excess_mean_remaining": -0.0020294846610314997,
+          "all_excess_mean_remaining": 0.005968425052729464
+        },
+        {
+          "heldout_year": 2021,
+          "adult_excess_mean_remaining": 0.020656351193709455,
+          "all_excess_mean_remaining": 0.022565449705129047
+        },
+        {
+          "heldout_year": 2022,
+          "adult_excess_mean_remaining": 0.01809139218761101,
+          "all_excess_mean_remaining": 0.03027002051076273
+        },
+        {
+          "heldout_year": 2023,
+          "adult_excess_mean_remaining": 0.0360373658055092,
+          "all_excess_mean_remaining": 0.034367681852053314
+        }
+      ]
+    },
+    {
+      "lat_band": "-32_-26",
+      "n_eligible": 6,
+      "mean_explicit_adult_surplus": 0.09730000706228893,
+      "mean_all_odonata_surplus": 0.10750170864956643,
+      "adult_annotation_mean_fraction": 0.22895708802688156,
+      "n_stage_option_sign_reversals": 0,
+      "period_2018_2020": {
+        "n": 3,
+        "adult": 0.08467584651045723,
+        "all": 0.08369594824158942
+      },
+      "period_2021_2023": {
+        "n": 3,
+        "adult": 0.10992416761412065,
+        "all": 0.13130746905754342
+      },
+      "leave_one_year_out": [
+        {
+          "heldout_year": 2018,
+          "adult_excess_mean_remaining": 0.0883363320047019,
+          "all_excess_mean_remaining": 0.09663018730888336
+        },
+        {
+          "heldout_year": 2019,
+          "adult_excess_mean_remaining": 0.13691968097240526,
+          "all_excess_mean_remaining": 0.1448612493329728
+        },
+        {
+          "heldout_year": 2020,
+          "adult_excess_mean_remaining": 0.07421850454085868,
+          "all_excess_mean_remaining": 0.09529714555162928
+        },
+        {
+          "heldout_year": 2021,
+          "adult_excess_mean_remaining": 0.08436424675959979,
+          "all_excess_mean_remaining": 0.09332486589334285
+        },
+        {
+          "heldout_year": 2022,
+          "adult_excess_mean_remaining": 0.0958503179894736,
+          "all_excess_mean_remaining": 0.10364786803149162
+        },
+        {
+          "heldout_year": 2023,
+          "adult_excess_mean_remaining": 0.10411096010669438,
+          "all_excess_mean_remaining": 0.1112489357790786
+        }
+      ]
+    },
+    {
+      "lat_band": "-26_-20",
+      "n_eligible": 6,
+      "mean_explicit_adult_surplus": -0.008854988031695937,
+      "mean_all_odonata_surplus": 0.06941040914990529,
+      "adult_annotation_mean_fraction": 0.16415839521613387,
+      "n_stage_option_sign_reversals": 2,
+      "period_2018_2020": {
+        "n": 3,
+        "adult": -0.004714813166722093,
+        "all": 0.02459388368922773
+      },
+      "period_2021_2023": {
+        "n": 3,
+        "adult": -0.01299516289666978,
+        "all": 0.11422693461058285
+      },
+      "leave_one_year_out": [
+        {
+          "heldout_year": 2018,
+          "adult_excess_mean_remaining": 0.00894702122968658,
+          "all_excess_mean_remaining": 0.09178528555905857
+        },
+        {
+          "heldout_year": 2019,
+          "adult_excess_mean_remaining": -0.018097228187672572,
+          "all_excess_mean_remaining": 0.09882382387032441
+        },
+        {
+          "heldout_year": 2020,
+          "adult_excess_mean_remaining": -0.019898862056086125,
+          "all_excess_mean_remaining": 0.04451203329673942
+        },
+        {
+          "heldout_year": 2021,
+          "adult_excess_mean_remaining": 0.005898010704255668,
+          "all_excess_mean_remaining": 0.06567398360952861
+        },
+        {
+          "heldout_year": 2022,
+          "adult_excess_mean_remaining": -0.016527726220121712,
+          "all_excess_mean_remaining": 0.06074340254072147
+        },
+        {
+          "heldout_year": 2023,
+          "adult_excess_mean_remaining": -0.013451143660237457,
+          "all_excess_mean_remaining": 0.05492392602305925
+        }
+      ]
+    },
+    {
+      "lat_band": "-20_-14",
+      "n_eligible": 6,
+      "mean_explicit_adult_surplus": 0.03137448287807785,
+      "mean_all_odonata_surplus": 0.017024710312891673,
+      "adult_annotation_mean_fraction": 0.14130577247890638,
+      "n_stage_option_sign_reversals": 3,
+      "period_2018_2020": {
+        "n": 3,
+        "adult": 0.02968650971095327,
+        "all": 0.007334092548637742
+      },
+      "period_2021_2023": {
+        "n": 3,
+        "adult": 0.033062456045202436,
+        "all": 0.026715328077145606
+      },
+      "leave_one_year_out": [
+        {
+          "heldout_year": 2018,
+          "adult_excess_mean_remaining": 0.05298609104258285,
+          "all_excess_mean_remaining": 0.01889213124215793
+        },
+        {
+          "heldout_year": 2019,
+          "adult_excess_mean_remaining": 0.026582705427603492,
+          "all_excess_mean_remaining": 0.03047419024142305
+        },
+        {
+          "heldout_year": 2020,
+          "adult_excess_mean_remaining": 0.01556743606432196,
+          "all_excess_mean_remaining": 0.007522180113646404
+        },
+        {
+          "heldout_year": 2021,
+          "adult_excess_mean_remaining": 0.012338239306689569,
+          "all_excess_mean_remaining": 0.020400130460988743
+        },
+        {
+          "heldout_year": 2022,
+          "adult_excess_mean_remaining": 0.03508592419357233,
+          "all_excess_mean_remaining": 0.01335117246925388
+        },
+        {
+          "heldout_year": 2023,
+          "adult_excess_mean_remaining": 0.045686501233696906,
+          "all_excess_mean_remaining": 0.011508457349880041
+        }
+      ]
+    },
+    {
+      "lat_band": "-14_-10",
+      "n_eligible": 4,
+      "mean_explicit_adult_surplus": -0.13359968531150657,
+      "mean_all_odonata_surplus": -0.1517960258616214,
+      "adult_annotation_mean_fraction": 0.1293849560671874,
+      "n_stage_option_sign_reversals": 0,
+      "period_2018_2020": {
+        "n": 1,
+        "adult": -0.13215814824725716,
+        "all": -0.11726803131481447
+      },
+      "period_2021_2023": {
+        "n": 3,
+        "adult": -0.13408019766625637,
+        "all": -0.1633053573772237
+      },
+      "leave_one_year_out": [
+        {
+          "heldout_year": 2019,
+          "adult_excess_mean_remaining": -0.13408019766625637,
+          "all_excess_mean_remaining": -0.1633053573772237
+        },
+        {
+          "heldout_year": 2021,
+          "adult_excess_mean_remaining": -0.15539881002247335,
+          "all_excess_mean_remaining": -0.16532143557821916
+        },
+        {
+          "heldout_year": 2022,
+          "adult_excess_mean_remaining": -0.13071445271745474,
+          "all_excess_mean_remaining": -0.14654748209686172
+        },
+        {
+          "heldout_year": 2023,
+          "adult_excess_mean_remaining": -0.11420528083984179,
+          "all_excess_mean_remaining": -0.13200982839418104
+        }
+      ]
+    }
+  ],
+  "original_panels": [
+    {
+      "lat_band": "-44_-38",
+      "year": 2018,
+      "eligible": true,
+      "focal_adult_n": 109,
+      "all_odonata_n": 404,
+      "stage_annotation_adult_fraction": 0.2698019801980198,
+      "surplus_explicit_adult": 0.12213676622290598,
+      "surplus_all_odonata": 0.0766047937129043,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-44_-38",
+      "year": 2019,
+      "eligible": true,
+      "focal_adult_n": 42,
+      "all_odonata_n": 329,
+      "stage_annotation_adult_fraction": 0.1276595744680851,
+      "surplus_explicit_adult": -0.0763600073491339,
+      "surplus_all_odonata": -0.07536256142195086,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-44_-38",
+      "year": 2020,
+      "eligible": true,
+      "focal_adult_n": 42,
+      "all_odonata_n": 985,
+      "stage_annotation_adult_fraction": 0.04263959390862944,
+      "surplus_explicit_adult": -0.05371340545759146,
+      "surplus_all_odonata": 0.00467663935377316,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-44_-38",
+      "year": 2021,
+      "eligible": true,
+      "focal_adult_n": 50,
+      "all_odonata_n": 864,
+      "stage_annotation_adult_fraction": 0.05787037037037037,
+      "surplus_explicit_adult": -0.08549874375113314,
+      "surplus_all_odonata": 0.00631152333725693,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-44_-38",
+      "year": 2022,
+      "eligible": true,
+      "focal_adult_n": 132,
+      "all_odonata_n": 1629,
+      "stage_annotation_adult_fraction": 0.08103130755064457,
+      "surplus_explicit_adult": -0.07841507166399148,
+      "surplus_all_odonata": 0.006519741746770391,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-44_-38",
+      "year": 2023,
+      "eligible": true,
+      "focal_adult_n": 133,
+      "all_odonata_n": 1415,
+      "stage_annotation_adult_fraction": 0.0939929328621908,
+      "surplus_explicit_adult": -0.05303380739136854,
+      "surplus_all_odonata": -0.06368086383161559,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-38_-32",
+      "year": 2018,
+      "eligible": true,
+      "focal_adult_n": 488,
+      "all_odonata_n": 3278,
+      "stage_annotation_adult_fraction": 0.14887126296522268,
+      "surplus_explicit_adult": -0.04777852637228519,
+      "surplus_all_odonata": -0.013446164875679789,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-38_-32",
+      "year": 2019,
+      "eligible": true,
+      "focal_adult_n": 540,
+      "all_odonata_n": 5614,
+      "stage_annotation_adult_fraction": 0.09618810117563235,
+      "surplus_explicit_adult": -0.08837848873516835,
+      "surplus_all_odonata": -0.04169387246341422,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-38_-32",
+      "year": 2020,
+      "eligible": true,
+      "focal_adult_n": 432,
+      "all_odonata_n": 6824,
+      "stage_annotation_adult_fraction": 0.06330597889800703,
+      "surplus_explicit_adult": 0.17679246921730563,
+      "surplus_all_odonata": 0.14382384905050827,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-38_-32",
+      "year": 2021,
+      "eligible": true,
+      "focal_adult_n": 385,
+      "all_odonata_n": 7149,
+      "stage_annotation_adult_fraction": 0.05385368583018604,
+      "surplus_explicit_adult": 0.06336328994360085,
+      "surplus_all_odonata": 0.06083872578851035,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-38_-32",
+      "year": 2022,
+      "eligible": true,
+      "focal_adult_n": 472,
+      "all_odonata_n": 9708,
+      "stage_annotation_adult_fraction": 0.048619695096827356,
+      "surplus_explicit_adult": 0.07618808497409307,
+      "surplus_all_odonata": 0.022315871760341943,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-38_-32",
+      "year": 2023,
+      "eligible": true,
+      "focal_adult_n": 756,
+      "all_odonata_n": 11083,
+      "stage_annotation_adult_fraction": 0.06821257782188939,
+      "surplus_explicit_adult": -0.013541783115397887,
+      "surplus_all_odonata": 0.0018275650538890353,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-32_-26",
+      "year": 2018,
+      "eligible": true,
+      "focal_adult_n": 351,
+      "all_odonata_n": 1877,
+      "stage_annotation_adult_fraction": 0.1870005327650506,
+      "surplus_explicit_adult": 0.14211838235022412,
+      "surplus_all_odonata": 0.16185931535298176,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-32_-26",
+      "year": 2019,
+      "eligible": true,
+      "focal_adult_n": 374,
+      "all_odonata_n": 1901,
+      "stage_annotation_adult_fraction": 0.19673855865334033,
+      "surplus_explicit_adult": -0.10079836248829266,
+      "surplus_all_odonata": -0.07929599476746563,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-32_-26",
+      "year": 2020,
+      "eligible": true,
+      "focal_adult_n": 936,
+      "all_odonata_n": 4021,
+      "stage_annotation_adult_fraction": 0.23277791594130814,
+      "surplus_explicit_adult": 0.21270751966944024,
+      "surplus_all_odonata": 0.16852452413925212,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-32_-26",
+      "year": 2021,
+      "eligible": true,
+      "focal_adult_n": 2656,
+      "all_odonata_n": 7244,
+      "stage_annotation_adult_fraction": 0.36664826062948647,
+      "surplus_explicit_adult": 0.16197880857573466,
+      "surplus_all_odonata": 0.1783859224306843,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-32_-26",
+      "year": 2022,
+      "eligible": true,
+      "focal_adult_n": 3094,
+      "all_odonata_n": 13886,
+      "stage_annotation_adult_fraction": 0.22281434538383985,
+      "surplus_explicit_adult": 0.10454845242636557,
+      "surplus_all_odonata": 0.12677091173994037,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-32_-26",
+      "year": 2023,
+      "eligible": true,
+      "focal_adult_n": 2270,
+      "all_odonata_n": 13531,
+      "stage_annotation_adult_fraction": 0.167762914788264,
+      "surplus_explicit_adult": 0.0632452418402617,
+      "surplus_all_odonata": 0.0887655730020056,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-26_-20",
+      "year": 2018,
+      "eligible": true,
+      "focal_adult_n": 204,
+      "all_odonata_n": 671,
+      "stage_annotation_adult_fraction": 0.30402384500745155,
+      "surplus_explicit_adult": -0.09786503433860852,
+      "surplus_all_odonata": -0.042463972895861124,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-26_-20",
+      "year": 2019,
+      "eligible": true,
+      "focal_adult_n": 71,
+      "all_odonata_n": 614,
+      "stage_annotation_adult_fraction": 0.11563517915309446,
+      "surplus_explicit_adult": 0.037356212748187234,
+      "surplus_all_odonata": -0.07765666445219033,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-26_-20",
+      "year": 2020,
+      "eligible": true,
+      "focal_adult_n": 228,
+      "all_odonata_n": 744,
+      "stage_annotation_adult_fraction": 0.3064516129032258,
+      "surplus_explicit_adult": 0.04636438209025501,
+      "surplus_all_odonata": 0.19390228841573465,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-26_-20",
+      "year": 2021,
+      "eligible": true,
+      "focal_adult_n": 140,
+      "all_odonata_n": 1543,
+      "stage_annotation_adult_fraction": 0.09073233959818536,
+      "surplus_explicit_adult": -0.08261998171145396,
+      "surplus_all_odonata": 0.08809253685178864,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-26_-20",
+      "year": 2022,
+      "eligible": true,
+      "focal_adult_n": 151,
+      "all_odonata_n": 1736,
+      "stage_annotation_adult_fraction": 0.0869815668202765,
+      "surplus_explicit_adult": 0.02950870291043295,
+      "surplus_all_odonata": 0.11274544219582439,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-26_-20",
+      "year": 2023,
+      "eligible": true,
+      "focal_adult_n": 98,
+      "all_odonata_n": 1208,
+      "stage_annotation_adult_fraction": 0.08112582781456953,
+      "surplus_explicit_adult": 0.014125790111011671,
+      "surplus_all_odonata": 0.1418428247841355,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-20_-14",
+      "year": 2018,
+      "eligible": true,
+      "focal_adult_n": 483,
+      "all_odonata_n": 1510,
+      "stage_annotation_adult_fraction": 0.31986754966887415,
+      "surplus_explicit_adult": -0.07668355794444714,
+      "surplus_all_odonata": 0.007687605666560404,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-20_-14",
+      "year": 2019,
+      "eligible": true,
+      "focal_adult_n": 193,
+      "all_odonata_n": 1409,
+      "stage_annotation_adult_fraction": 0.1369765791341377,
+      "surplus_explicit_adult": 0.055333370130449644,
+      "surplus_all_odonata": -0.0502226893297652,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-20_-14",
+      "year": 2020,
+      "eligible": true,
+      "focal_adult_n": 137,
+      "all_odonata_n": 949,
+      "stage_annotation_adult_fraction": 0.14436248682824027,
+      "surplus_explicit_adult": 0.1104097169468573,
+      "surplus_all_odonata": 0.06453736130911802,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-20_-14",
+      "year": 2021,
+      "eligible": true,
+      "focal_adult_n": 197,
+      "all_odonata_n": 2631,
+      "stage_annotation_adult_fraction": 0.07487647282402128,
+      "surplus_explicit_adult": 0.12655570073501926,
+      "surplus_all_odonata": 0.00014760957240633754,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-20_-14",
+      "year": 2022,
+      "eligible": true,
+      "focal_adult_n": 401,
+      "all_odonata_n": 3386,
+      "stage_annotation_adult_fraction": 0.1184288245717661,
+      "surplus_explicit_adult": 0.012817276300605474,
+      "surplus_all_odonata": 0.03539239953108064,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-20_-14",
+      "year": 2023,
+      "eligible": true,
+      "focal_adult_n": 134,
+      "all_odonata_n": 2513,
+      "stage_annotation_adult_fraction": 0.053322721846398725,
+      "surplus_explicit_adult": -0.04018560890001743,
+      "surplus_all_odonata": 0.04460597512794984,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-14_-10",
+      "year": 2018,
+      "eligible": false,
+      "focal_adult_n": 28,
+      "all_odonata_n": 157,
+      "stage_annotation_adult_fraction": 0.17834394904458598,
+      "surplus_explicit_adult": -0.24778289669414255,
+      "surplus_all_odonata": -0.24372391425969747,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-14_-10",
+      "year": 2019,
+      "eligible": true,
+      "focal_adult_n": 116,
+      "all_odonata_n": 753,
+      "stage_annotation_adult_fraction": 0.15405046480743692,
+      "surplus_explicit_adult": -0.13215814824725716,
+      "surplus_all_odonata": -0.11726803131481447,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-14_-10",
+      "year": 2020,
+      "eligible": false,
+      "focal_adult_n": 9,
+      "all_odonata_n": 130,
+      "stage_annotation_adult_fraction": 0.06923076923076923,
+      "surplus_explicit_adult": 0.12168610816542949,
+      "surplus_all_odonata": -0.08858508714685814,
+      "sign_reversed_by_annotation_choice": true
+    },
+    {
+      "lat_band": "-14_-10",
+      "year": 2021,
+      "eligible": true,
+      "focal_adult_n": 68,
+      "all_odonata_n": 649,
+      "stage_annotation_adult_fraction": 0.10477657935285054,
+      "surplus_explicit_adult": -0.06820231117860617,
+      "surplus_all_odonata": -0.11121979671182813,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-14_-10",
+      "year": 2022,
+      "eligible": true,
+      "focal_adult_n": 100,
+      "all_odonata_n": 674,
+      "stage_annotation_adult_fraction": 0.14836795252225518,
+      "surplus_explicit_adult": -0.14225538309366204,
+      "surplus_all_odonata": -0.16754165715590047,
+      "sign_reversed_by_annotation_choice": false
+    },
+    {
+      "lat_band": "-14_-10",
+      "year": 2023,
+      "eligible": true,
+      "focal_adult_n": 128,
+      "all_odonata_n": 1160,
+      "stage_annotation_adult_fraction": 0.1103448275862069,
+      "surplus_explicit_adult": -0.1917828987265009,
+      "surplus_all_odonata": -0.2111546182639425,
+      "sign_reversed_by_annotation_choice": false
+    }
+  ],
+  "interpretation_limit": "This is source reporting-season phase and stage labelling sensitivity, not an unbiased adult emergence or trophic direction effect. Band extremes were selected post hoc."
+}

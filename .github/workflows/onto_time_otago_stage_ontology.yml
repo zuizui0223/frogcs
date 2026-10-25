@@ -1,0 +1,39 @@
+name: ONTO-TIME original typed Otago stage and parasite-cycle evidence
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/audit_otago_original_stage_edges.py'
+      - 'studies/stage_reversal_acoustic/macro/results/OTAGO2011_ORIGINAL_STAGE_RECIPROCITY_PARASITE_CLASS_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_otago_original_stage.py'
+      - '.github/workflows/onto_time_otago_stage_ontology.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/audit_otago_original_stage_edges.py'
+      - 'studies/stage_reversal_acoustic/macro/results/OTAGO2011_ORIGINAL_STAGE_RECIPROCITY_PARASITE_CLASS_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_otago_original_stage.py'
+      - '.github/workflows/onto_time_otago_stage_ontology.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source_typed_foodweb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test stage and ontology classification against synthetic and original aggregates
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -p 'test_otago_original_stage.py' -v
+      - name: Replay source-pinned Otago 2011 1924 typed links and 180 nodes
+        run: |
+          python studies/stage_reversal_acoustic/macro/audit_otago_original_stage_edges.py \
+            --out "${{ runner.temp }}/onto_time_otago_stage_original_readback.json"
+      - name: Preserve source summaries, not raw third-party data
+        uses: actions/upload-artifact@v4
+        with:
+          name: onto-time-original-otago-typed-network-audit
+          path: ${{ runner.temp }}/onto_time_otago_stage_original_readback.json
+          if-no-files-found: error

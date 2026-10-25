@@ -1,0 +1,98 @@
+{
+  "as_of": "2026-10-25",
+  "version": "0.1",
+  "status": "MUTABLE_GLOBI_STAGE_METADATA_SCREEN_ONLY",
+  "source": "GloBI interaction.csv ?includeObservations=true",
+  "mutable_snapshot": true,
+  "records": [
+    {
+      "category": "anuran_to_odonate",
+      "n_indexed_records": 21,
+      "n_records_with_any_explicit_source_or_target_life_stage": 13,
+      "n_named_studies": 5,
+      "source_url": "https://api.globalbioticinteractions.org/interaction.csv?sourceTaxon=Anura&targetTaxon=Odonata&interactionType=preysOn&includeObservations=true&limit=1000",
+      "n_column_fields": 22,
+      "stage_combos": {
+        "Adult|?": 1,
+        "?|Adult": 1,
+        "post-juvenile adult stage|larval": 4,
+        "post-juvenile adult stage|post-juvenile adult stage": 4,
+        "juvenile|?": 1,
+        "?|adult": 1,
+        "juvenile|adult": 1
+      },
+      "readout": "indexed_row_not_independent_attack"
+    },
+    {
+      "category": "odonate_to_anuran",
+      "n_indexed_records": 9,
+      "n_records_with_any_explicit_source_or_target_life_stage": 2,
+      "n_named_studies": 3,
+      "source_url": "https://api.globalbioticinteractions.org/interaction.csv?sourceTaxon=Odonata&targetTaxon=Anura&interactionType=preysOn&includeObservations=true&limit=1000",
+      "n_column_fields": 22,
+      "stage_combos": {
+        "larval|larval": 2
+      },
+      "readout": "indexed_row_not_independent_attack"
+    },
+    {
+      "category": "anuran_to_dytiscid",
+      "n_indexed_records": 3,
+      "n_records_with_any_explicit_source_or_target_life_stage": 2,
+      "n_named_studies": 1,
+      "source_url": "https://api.globalbioticinteractions.org/interaction.csv?sourceTaxon=Anura&targetTaxon=Dytiscidae&interactionType=preysOn&includeObservations=true&limit=1000",
+      "n_column_fields": 22,
+      "stage_combos": {
+        "post-juvenile adult stage|-999": 1,
+        "post-juvenile adult stage|post-juvenile adult stage": 1
+      },
+      "readout": "indexed_row_not_independent_attack"
+    },
+    {
+      "category": "dytiscid_to_anuran",
+      "n_indexed_records": 395,
+      "n_records_with_any_explicit_source_or_target_life_stage": 3,
+      "n_named_studies": 4,
+      "source_url": "https://api.globalbioticinteractions.org/interaction.csv?sourceTaxon=Dytiscidae&targetTaxon=Anura&interactionType=preysOn&includeObservations=true&limit=1000",
+      "n_column_fields": 22,
+      "stage_combos": {
+        "larva|?": 2,
+        "larva|adult": 1
+      },
+      "readout": "indexed_row_not_independent_attack"
+    },
+    {
+      "category": "anuran_to_salamander",
+      "n_indexed_records": 50,
+      "n_records_with_any_explicit_source_or_target_life_stage": 37,
+      "n_named_studies": 3,
+      "source_url": "https://api.globalbioticinteractions.org/interaction.csv?sourceTaxon=Anura&targetTaxon=Caudata&interactionType=preysOn&includeObservations=true&limit=1000",
+      "n_column_fields": 22,
+      "stage_combos": {
+        "Adult|?": 12,
+        "Young|?": 12,
+        "?|Young": 12,
+        "post-juvenile adult stage|larval": 1
+      },
+      "readout": "indexed_row_not_independent_attack"
+    },
+    {
+      "category": "salamander_to_anuran",
+      "n_indexed_records": 114,
+      "n_records_with_any_explicit_source_or_target_life_stage": 81,
+      "n_named_studies": 6,
+      "source_url": "https://api.globalbioticinteractions.org/interaction.csv?sourceTaxon=Caudata&targetTaxon=Anura&interactionType=preysOn&includeObservations=true&limit=1000",
+      "n_column_fields": 22,
+      "stage_combos": {
+        "Adult|?": 26,
+        "Young|?": 26,
+        "?|Egg": 26,
+        "adult|adult": 1,
+        "larval|larval": 1,
+        "post-juvenile adult stage|larval": 1
+      },
+      "readout": "indexed_row_not_independent_attack"
+    }
+  ],
+  "claim_ceiling": "No inference of stage-specific trophic reversal from GloBI absence or unspecified lifeStage. Original experiments preserve source-level stage evidence separately."
+}

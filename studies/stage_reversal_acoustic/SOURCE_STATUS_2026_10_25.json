@@ -1,0 +1,142 @@
+{
+  "as_of": "2026-10-25",
+  "programme": "independent_developmental_role_reversal_x_frog_call_timing",
+  "status": "GBIF_ORIGINAL_2018_2019_BROAD_ACOUSTIC_SOURCE_AGGREGATE_MATCH_SITE_SPECIFIC_REVERSAL_NOT_ESTIMABLE",
+  "scientific_outcome": "ANAX_SEASONAL_EMERGENCE_WINDOW_AND_FROGID_BROAD_AREA_OCCURRENCE_WINDOW_VERIFIED;NO_EARLY_WARNING_OR_HETEROSPECIFIC_ALARM_INFERENCE",
+  "original_rows_acquired_for_new_joint_analysis": {
+    "frogid_coarse_2018_2019": 1731,
+    "anax_original_survey_rows": 298,
+    "source_level_overlap": "COARSE_REGION_WEEK_ONLY",
+    "exact_site_source_mapped_pairs": 0
+  },
+  "prior_15_latitude_bands_reexecuted": false,
+  "prior_5_observation_overlap_bands": "historical exploratory only",
+  "ecological_registries": {
+    "directly_documented_reciprocal_species_pairs": 2,
+    "documented_amphibian_odonate_pairs": 1,
+    "directly_observed_pike_to_stickleback_juvenile_direction": "NOT_ESTABLISHED_FROM_2019_GAPE_MODEL",
+    "context_dependent_xenopus_gambusia": "CANDIDATE",
+    "nonreciprocal_salamander_tadpole": "NEGATIVE_CONTROL"
+  },
+  "original_external_quantitative_evidence": "As published: asp eggs 21.2 ± 2.2% mortality over 40cm video; pike under/over 35mm 97%/5% in feeding trial; frog-dragonfly Oct-Nov predation.",
+  "staged_timelines": [
+    "SEASONAL_EMERGENCE",
+    "EGG_DRIFT_SECONDS",
+    "SIZE_THRESHOLD_MM",
+    "LIGHT_STAGE_CONTEXT",
+    "GROWTH_CANNIBALISM"
+  ],
+  "repo_branch": "study/stage-reversal-acoustic-macro-20261025",
+  "executable": "studies/stage_reversal_acoustic/src/stage_acoustic_screen.py",
+  "unit_tests": {
+    "n": 30,
+    "result": "SUCCESS",
+    "workflow_run_id": 40161894713,
+    "url": "https://github.com/zuizui0223/frogcs/actions/runs/40161894713"
+  },
+  "fail_closed_no_input": {
+    "status": "NOT_ESTIMABLE",
+    "n_original_rows_analyzed": 0
+  },
+  "missing_inputs": [
+    "independent years/seasons with same-wetland dragonfly emergence and egg/larva/attack stage recordings",
+    "verified same-physical-wetland sound observation and every survey opportunity, not 10-km-buffered FrogID occurrence",
+    "dated_predation_events_and_frog_life_stage_observations",
+    "true_2023_workbook_published_nine_wetland_physical_crosswalk",
+    "stage_annotated_original_site_week_rows",
+    "direct_receiver_response_or_playback_data"
+  ],
+  "warning_signal_tested": false,
+  "exact_predation_switch_time_estimated": false,
+  "frozen_jae_rc6_files_changed": false,
+  "original_rows_acquired_for_source_only_emergence_analysis": {
+    "beranek_mendeley": 298,
+    "source_sha256": "25fabdd0df0d8b679ff23033abbb9fc175067c835f1bd1ef41a5fc4890360c74",
+    "date_window": "2018-09-04 to 2019-04-09"
+  },
+  "original_emergence_result": {
+    "n_valid_survey_rows": 298,
+    "n_emerging_dragons": 233,
+    "positive_survey_rows": 48,
+    "peak_week_start": "2018-10-29",
+    "peak_week_emergence": 62,
+    "median_date": "2018-11-01",
+    "iQR": [
+      "2018-10-16",
+      "2018-11-14"
+    ],
+    "n_month_only_author_predation": 14,
+    "individually_dated_predation": 0
+  },
+  "physical_site_source_crosswalk": {
+    "external_doi": "10.1007/s10531-022-02387-9",
+    "published_nine_codes": [
+      "1B",
+      "3A",
+      "1A",
+      "2A",
+      "2B",
+      "2C",
+      "4A",
+      "4B",
+      "4C"
+    ],
+    "nine_code_numeric_visits": 230,
+    "nine_code_emergence": 189,
+    "outside_nine_code_emergence": 44,
+    "unmatched_recurrent_labels": [
+      "14A",
+      "14B"
+    ],
+    "claim": "descriptive nine-name-code subset; 14A/14B biological site identity still unresolved"
+  },
+  "original_source_file_committed_to_github": false,
+  "github_source_audit_report": "studies/stage_reversal_acoustic/results/ANAX_ORIGINAL_REANALYSIS_JA_20261025.md",
+  "original_frogid_external_source_coverage": {
+    "source_data": "GBIF FrogID dataset 47c9fee2-619a-481c-a114-386bc4748256, occurrence API",
+    "aggregation_only_sensitive_records_not_redistributed": true,
+    "timestamp_window": "2018-09-04 to 2019-04-09",
+    "regional_scope": "approx 70 x 80km Newcastle; not identical wetlands",
+    "source_species_occurrence_rows": 1731,
+    "source_rows_with_recording_event_id": 1720,
+    "source_rows_without_recording_event_id": 11,
+    "distinct_frog_positive_recordings_with_event_id": 982,
+    "focal_Litoria_aurea_positive_recordings": 6,
+    "source_positive_share_conditional_on_identified_frog_submission": 0.006109979633401222,
+    "gbif_source_readback_status": "ORIGINAL_GBIF_AGGREGATE_MATCH",
+    "readback_run": "https://github.com/zuizui0223/frogcs/actions/runs/40161894718",
+    "focal_first_source_positive": "2018-10-18",
+    "anax_original_first_emergence": "2018-09-25",
+    "anax_original_week_peak": "2018-10-29",
+    "lag_forward_r": {
+      "week0": 0.01104,
+      "week1": -0.09248,
+      "week2": 0.05833,
+      "week4": -0.06343,
+      "week8": -0.19224
+    },
+    "lag_negative_time_r": {
+      "week2": 0.45189,
+      "week4": 0.36396
+    },
+    "hypothesis_verdict": "ONE_SEASON_EXPLORATORY_POSITIVE_ACOUSTIC_LEAD_NOT_REPRODUCIBLY_SUPPORTED;PREDATOR_SWITCH_DATE_NOT_OBSERVED;WARNING_SIGNAL_NOT_TESTED",
+    "same_anchor_negative_time_sensitivity": {
+      "lag_1_forward_minus_reverse": -0.2244,
+      "lag_2": -0.3459,
+      "lag_4": -0.2915,
+      "lag_8": -0.257,
+      "claim": "Exploratory one-season only; no confident direction effects"
+    }
+  },
+  "next_same_site_original_candidate": {
+    "programme": "Kooragang Island Wide Survey (IWS) 2018-19",
+    "verified_metadata": "Records male-calling counts at pond survey visits as described in published programme methods",
+    "report_url": "https://www.csrg.site/services-2",
+    "date_wetland_raw_call_data_acquired": false
+  },
+  "document": "studies/stage_reversal_acoustic/results/FROGID_ANAX_ORIGINAL_BROAD_SEASON_READOUT_JA_20261025.md",
+  "reproducible_direct_code": [
+    "studies/stage_reversal_acoustic/src/reproduce_gbif_frogid_coarse.py",
+    "studies/stage_reversal_acoustic/src/analyze_merged_regional_lags.py"
+  ]
+}
