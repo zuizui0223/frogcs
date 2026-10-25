@@ -1,0 +1,68 @@
+{
+  "source": "USFWS National Wetlands Inventory official Wetlands/MapServer",
+  "date": "2026-10-25",
+  "rest_service": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer",
+  "wetland_polygon_layer": 0,
+  "cowardin_code_table_layer": 1,
+  "source_docs": [
+    "https://www.fws.gov/node/268025",
+    "https://www.fws.gov/program/national-wetlands-inventory/wetlands-data",
+    "https://www.fws.gov/program/national-wetlands-inventory/web-mapping-services"
+  ],
+  "polygon_fields": [
+    "OBJECTID",
+    "Shape",
+    "Shape_Length",
+    "Shape_Area",
+    "GlobalID",
+    "ATTRIBUTE",
+    "WETLAND_TYPE",
+    "QAQC_CODE",
+    "ACRES"
+  ],
+  "code_fields": [
+    "ATTRIBUTE",
+    "SYSTEM_NAME",
+    "CLASS_NAME",
+    "SUBCLASS_NAME",
+    "WATER_REGIME_NAME",
+    "WATER_REGIME_DEFINITION"
+  ],
+  "verified_code_examples": [
+    {
+      "attribute": "PEM1A",
+      "system": "Palustrine",
+      "class": "Emergent",
+      "subclass": "Persistent",
+      "water_regime": "Temporary Flooded",
+      "definition": "Surface water is present for brief periods (from a few days to a few weeks) during the growing season, but the water table usually lies well below the ground surface for the most of the season."
+    },
+    {
+      "attribute": "PEM1C",
+      "system": "Palustrine",
+      "class": "Emergent",
+      "subclass": "Persistent",
+      "water_regime": "Seasonally Flooded",
+      "definition": "Surface water is present for extended periods especially early in the growing season, but is absent by the end of the growing season in most years. The water table after flooding ceases is variable, extending from saturated to the surface to a water table well below the ground surface."
+    },
+    {
+      "attribute": "PEM1F",
+      "system": "Palustrine",
+      "class": "Emergent",
+      "subclass": "Persistent",
+      "water_regime": "Semipermanently Flooded",
+      "definition": "Surface water persists throughout the growing season in most years. When surface water is absent, the water table is usually at or very near the land surface."
+    },
+    {
+      "attribute": "PEM2F",
+      "system": "Palustrine",
+      "class": "Emergent",
+      "subclass": "Non persistent",
+      "water_regime": "Semipermanently Flooded",
+      "definition": "Surface water persists throughout the growing season in most years. When surface water is absent, the water table is usually at or very near the land surface."
+    }
+  ],
+  "interpretation": "NWI is mapped habitat class. NWI PEM is NOT phylogenetic eigenvector map PEM. No frogcs source currently contains response-blind verified NAAMP physical SiteID-to-NWI polygon matches and hence no directly tested PEM1A/C/F recurrence or interaction slopes.",
+  "geometry_caution": "USGS NAAMP original SiteID coordinate table had sign and site outliers; NWI source image dates and metadata must be reconciled before same-site linkage.",
+  "status": "OBSERVED_OFFICIAL_MAPPING_CODE_ONLY_NOT_SITE_OUTCOME"
+}
