@@ -56,6 +56,8 @@ class AnaxXlsxAuditTests(unittest.TestCase):
             self.assertEqual(result["monthly_predation_total"],0)
             self.assertEqual(result["unscorable_NA_rows"],1)
             self.assertEqual(result["site_label_count"],1)
+            self.assertEqual(result["same_site_published_nine_code_sensitivity"]["nine_code_emergence"],1)
+            self.assertEqual(result["same_site_published_nine_code_sensitivity"]["outside_nine_source_labels_emergence"],0)
             self.assertEqual(result["first_positive_date"],"2018-09-04")
             self.assertEqual(result["acoustic_link_status"],
                              "NOT_ESTIMABLE_NO_CALLS_OR_INDIVIDUAL_PREDATION_EVENTS")
