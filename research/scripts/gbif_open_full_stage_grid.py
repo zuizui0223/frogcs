@@ -80,7 +80,29 @@ def input_from_globi(p):
     # geographic GBIF overlap. Source selection was made before seeing GBIF grid.
     for name in HAND_FALLBACK:
         selected[name]=max(selected.get(name,0),1)
-    names=sorted(selected,key=lambda name:(-selected[name],name))[:MAX_TAXA]
+    # The GBIF public partitions scanned here contain Anura and Odonata,
+    # not reptiles/birds/other source prey guilds. Do not waste GBIF S3 scans
+    # on GloBI taxa absent by construction, and keep the fixed source examples.
+    focal=set(HAND_FALLBACK)
+    for row in pairs:
+        for field, guild in (("predator","predator_guild"),("prey","prey_guild")):
+            name=row.get(field)
+            if row.get(guild) in ("Anura","Odonata") and name and SPECIES_RE.fullmatch(name):
+                focal.add(name)
+    # Known source-defined reciprocal amphibian/odonate candidates
+    for row in reverse[:75]:
+        for field in ("species_a","species_b"):
+            name=row.get(field)
+            if name and name in selected and (
+                name in focal or name in HAND_FALLBACK):
+                focal.add(name)
+    names=sorted(focal,key=lambda name:(-selected.get(name,0),name))[:MAX_TAXA]
+    # Preserve the original globally motivated exemplars even if the
+    # candidate set exceeds capacity. Names are fixed *before* GBIF geography.
+    for exemplar in HAND_FALLBACK:
+        if exemplar not in names:
+            names[-1]=exemplar
+            names=sorted(set(names),key=lambda name:(-selected.get(name,0),name))
     edges=[]
     for row in pairs:
         a,b=row.get("predator"),row.get("prey")
