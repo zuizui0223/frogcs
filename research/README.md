@@ -10,6 +10,14 @@ Status 2026-10-25: **independent prospective macroecology branch**, not a reopen
 4. **[GloBI stage-interaction live API pilot](GLOBI_TROPHIC_DIRECTION_PILOT_2026-10-25.json)** / [observational sample](GLOBI_STAGE_OBSERVATIONS_SAMPLE_2026-10-25.csv) — independent-sources and stage-QC needed; no true global reversal rate estimated.
 5. **[Prospective held-out site-level comparison](scripts/compare_frog_vegetation_biotic.py)** — executable E0–E4 covariate-screening models (Brier, log loss); *not* conditional multi-site C or a joint causal model. Run `python research/scripts/compare_frog_vegetation_biotic.py --self-test` for synthetic-only data checks. E1–E4 require fully observed pond-event panels and cannot be run on NAAMP alone.
 
+## Next empirical datasets (source and compatibility checked)
+
+- [Ten-source availability and grain matrix](WETLAND_BIOTIC_MACRO_DATASET_MATRIX_2026-10-25.csv): distinguishes real acoustic histories from site-specific plants/fish, eggs/larvae, mesocosm interventions and stage-resolved food-web links. **Do not pool them as the same wetland observations without measured co-location.**
+- Most informative vegetation × fish benchmark: 55-wetland Australian Dryad DOI 10.5061/dryad.b8gtht7b5.
+- Most informative plant manipulation: 4 Great Lakes wetland Typha-removal/channel experiment, DOI 10.5061/dryad.wdbrv15tb (fish, aquatic invertebrates, plants, amphibian larvae, DO, 2 years).
+- Most informative development-stage turnover: 25 seasonal Hokkaido floodplain waterbodies (Rana pirica, Hynobius retardatus, macroinvertebrates and fish), DOI 10.1002/ece3.70880; **not** measured emergent architecture or frog chorus.
+- Dense **Typha dominance can be detrimental to habitat heterogeneity and oxygen even though some emergent cover is beneficial as refuge**. Model structural mosaic and plant identity, not just a monotone cover slope.
+
 ## Other relevant material
 
 - [Original stage-dependent food-web hypotheses](ONTOGENETIC_TROPHIC_REVERSAL_PROSPECTIVE_V0_1.md).
