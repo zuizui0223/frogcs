@@ -44,16 +44,18 @@
       "readiness": "observed",
       "expected_informative_rows": 1815,
       "expected_adjusted_beta": 0.46418762439474126,
-      "can_join": "within NPS recorder geography; hydroperiod is broad category"
+      "can_join": "within NPS recorder geography; hydroperiod is broad category",
+      "acoustic_own_history_supported": true
     },
     {
       "id": "carroll_8pond",
       "role": "adult-call to aquatic-larva proxy calibration",
       "granularity": "actual pond × taxon × event/stage × year",
       "external_doi": "10.25338/B8G92P",
-      "readiness": "source_identified_response_blind_schema_not_yet_verified",
-      "can_join": "same certified pond only",
-      "scientific_ceiling": "phenology and lagged larval-stage calibration if co-located taxon/time coverage passes"
+      "readiness": "source_metadata_sha_known_original_bytes_API401_and_public_stream403_reproduction_unverified",
+      "can_join": "Not yet: original workbook bytes not acquired; adult source series not proven reproducible from deposit",
+      "scientific_ceiling": "phenology and lagged larval-stage calibration if co-located taxon/time coverage passes",
+      "source_access_result": "research/results/CARROLL_8POND_G0_SOURCE_ACCESS_RECEIPT_2026-10-26.json"
     },
     {
       "id": "globi_stage",
@@ -76,6 +78,23 @@
       "granularity": "verified pond × taxon × stage × date",
       "readiness": "not_available_as_same_pond_joint_panel",
       "can_join": "requires direct counts and effort/detection or experiment"
+    },
+    {
+      "id": "nps_acoustic_crosslag",
+      "role": "prespecified-posthoc directional acoustics falsification, no larval stages",
+      "granularity": "park × fixed recorder station × focal species × year with exact prior year exposure",
+      "result": "research/results/nps_stage_crosslag/observed_results.json",
+      "report": "research/results/nps_stage_crosslag/REPORT.md",
+      "readiness": "observed_primary_suppression_not_supported",
+      "primary_pair": "Lithobates clamitans previous CI>=2 -> Lithobates sylvaticus current CI>=2",
+      "eligible_rows": 431,
+      "primary_adjusted_beta": 0.014321148927807066,
+      "ci95_station_cluster_approx": [
+        -0.06908298133097479,
+        0.09772527918658891
+      ],
+      "reverse_beta": 0.1181198166698195,
+      "can_join": "Adult acoustic association only; no verified pond, egg, tadpole or recruitment join"
     }
   ],
   "endpoints": [
@@ -112,17 +131,17 @@
     {
       "id": "G0",
       "name": "source-blind physical-site, species, time and stage coverage audit",
-      "status": "pending_joint_pond_panel"
+      "status": "Carroll Dryad metadata fixed, original bytes BLOCKED; no response-blind pond-stage schema"
     },
     {
       "id": "G1",
       "name": "held-out previous-call -> directly observed overwintered-larva calibration",
-      "status": "blocked_by_G0"
+      "status": "BLOCKED: no joint adult-acoustic & verified tadpole pond-year panel"
     },
     {
       "id": "G2",
       "name": "stage-predation/competition vs dynamic hydrology discrimination",
-      "status": "blocked_by_exposure_and_egg_survival"
+      "status": "BLOCKED: no measured same-pond egg survival/predator-stage exposure"
     },
     {
       "id": "G3",
@@ -140,13 +159,20 @@
     "NAAMP_predator_proxy_validated": false,
     "drought_larval_reset_observed": false,
     "stage_predation_population_effect_identified": false,
-    "RC6_spatial_residual_mechanism_identified": false
+    "RC6_spatial_residual_mechanism_identified": false,
+    "NPS_green_to_wood_annual_acoustic_suppression_supported": false,
+    "NPS_green_to_wood_annual_acoustic_beta": 0.014321148927807066,
+    "NPS_wood_to_green_reverse_acoustic_positive_exploratory": true
   },
   "stop_rules": [
     "No modification of frozen RC6 paper, submission, provenance, spatial generator or NAAMP analysis paths.",
     "Do not use global GloBI, GBIF, EarthEnv, NWI, ERA5 or JRC rows as a same-pond stage-specific predation measurement.",
     "No source-blind response reuse: NAAMP post-hoc interspecific H1 exploration is not prospective confirmation.",
     "No published mechanism language when measured hydroperiod, stage/predation exposure and event-level detection are absent.",
-    "A same-year egg predation event cannot causally explain an earlier adult chorus from that cohort."
-  ]
+    "A same-year egg predation event cannot causally explain an earlier adult chorus from that cohort.",
+    "Primary NPS green→wood directional acoustic suppression H1A not supported; do not post-hoc retune taxon, lag or window to obtain negative coefficients.",
+    "Carroll source metadata alone is not an acquired workbook or a verified adult-to-larval repeated-measures panel."
+  ],
+  "last_checked_on": "2026-10-26",
+  "integration_status": "RC6_PROTECTED_H1A_NPS_UNSUPPORTED_CARROLL_RAW_ACCESS_BLOCKED_H1B_H3_UNTESTED"
 }
