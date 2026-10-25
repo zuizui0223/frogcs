@@ -1,0 +1,50 @@
+name: GloBI GBIF guild matched prey specificity control
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/globi_gbif_prey_specificity_controls.py
+      - .github/workflows/research_globi_gbif_prey_specificity.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  matched-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run synthetic guild-and-stage match controls
+        run: python research/scripts/globi_gbif_prey_specificity_controls.py --self-test
+      - name: Read precomputed full GBIF Anura/Odonata stage-year/month cube
+        uses: actions/download-artifact@v4
+        with:
+          name: gbif-2026-anonymous-full-partition-stage-spatial-1degree
+          run-id: 40190152042
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/gbif_artifact
+      - name: Read full GloBI version-pinned species-stage edges and independent guild provenance
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-full-globi-nonself-gbif-1degree-stage-grid
+          run-id: 40193636562
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/globi_artifact
+      - name: Calculate stage and guild matched alternative prey month overlap
+        run: |
+          python research/scripts/globi_gbif_prey_specificity_controls.py \
+            --gbif research/data/gbif_artifact/focal_stage_1deg_month_year.csv \
+            --globi research/data/globi_artifact/nonself_stage_pair_grid_results.csv \
+            --provenance research/data/globi_artifact/full_nonself_staged_GloBI_provenance.csv \
+            --out research/results/guild_matched_specificity
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: global-guild-matched-prey-specificity-results
+          path: research/results/guild_matched_specificity
+          if-no-files-found: error
