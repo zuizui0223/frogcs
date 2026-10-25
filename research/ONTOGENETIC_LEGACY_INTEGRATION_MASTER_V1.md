@@ -11,7 +11,7 @@ Do not call an acoustic correlation "predation." Define *three different endpoin
 
 ### The one linked causal/observation system
 
-\`\`\`text
+```text
     atmospheric forcing + local hydroperiod H(i,t) + habitat V(i,t)
                      |                  |
                      v                  v
@@ -27,7 +27,7 @@ Do not call an acoustic correlation "predation." Define *three different endpoin
     Y_trap   <- actual larval abundance × catchability / effort
     Y_water  <- hydroperiod sensor / independently verified inundation
     Y_edge   <- recorded attack/experiment, not mere GloBI edge presence
-\`\`\`
+```
 
 Never equate NAAMP roadside stop with one pond, CallingIndex with abundance/spawning, a positive voice record with a surviving cohort, or overlap with attack events. Unobserved waterbody-to-stop mapping and detection must be treated as unresolved.
 
@@ -39,7 +39,7 @@ Never equate NAAMP roadside stop with one pond, CallingIndex with abundance/spaw
 
 **H1C (delayed cohort consequence).** Failed eggs or reduced metamorph recruitment in year t can affect reproductive adult calling only after the target species' age-at-first-breeding lag, often 1–3+ years, and with dispersal/survival uncertainty. A same-spring adult chorus cannot be a direct consequence of eggs eaten after that chorus. Species-, sex- and latitude-dependent maturity distributions are required before setting lags.
 
-**Primary inference hierarchy:** first calibrate \`P(L_predator(i,t) > 0 | C_predator(i,t-1), H, site, region, season)\` in a genuinely co-located multi-year acoustic + larval panel. If that mapping is not predictive out of pond/year, retain previous calling as an *acoustic-history covariate* and **do not** rename it "hidden predator pressure." Then assess H1B with direct larval measures; H1A remains an exploratory NAAMP prediction only.
+**Primary inference hierarchy:** first calibrate `P(L_predator(i,t) > 0 | C_predator(i,t-1), H, site, region, season)` in a genuinely co-located multi-year acoustic + larval panel. If that mapping is not predictive out of pond/year, retain previous calling as an *acoustic-history covariate* and **do not** rename it "hidden predator pressure." Then assess H1B with direct larval measures; H1A remains an exploratory NAAMP prediction only.
 
 ## All proposed tests inside one comparison ladder
 
@@ -49,15 +49,15 @@ Never equate NAAMP roadside stop with one pond, CallingIndex with abundance/spaw
 | **M1** | M0 + strictly preceding long-larval-period taxon calling history, reverse history, biologically defined early-breeder interaction; sensitivity for common-site other-taxon history | Extra held-out calling prediction attributable to a **proxy**, not mechanistic predation |
 | **M2** | M1 + **observed** wetland water level / verified dry-reflood state + **observed** tadpole stages, size, egg success, fish/odonate/salamander and habitat cover; interactions with stage/season/drying | Discriminate hydrological filtering, stage encounters, behavioural avoidance and delayed recruitment; causal claim requires exposure or intervention identification |
 
-This M0–M2 is **specific to the new ontogenetic programme**, not the locked RC6 local-hydrology M0/M1/M2 naming. Keep the two comparison families explicitly separate. For a fair test use identical eligible rows, exact outcome definitions, matched training blocks, held-out pond/year geography, and a null model preserving first-order calling magnitude. For an RC6-style configuration endpoint repeat exact-\`k\` conditional simulations only on new authorized data; do not compare residual differences across changed denominators.
+This M0–M2 is **specific to the new ontogenetic programme**, not the locked RC6 local-hydrology M0/M1/M2 naming. Keep the two comparison families explicitly separate. For a fair test use identical eligible rows, exact outcome definitions, matched training blocks, held-out pond/year geography, and a null model preserving first-order calling magnitude. For an RC6-style configuration endpoint repeat exact-`k` conditional simulations only on new authorized data; do not compare residual differences across changed denominators.
 
 ### H2: within-season interaction is stage-specific, not necessarily weaker later
 
-Predefine the biological stage-overlap window \`egg_focal × overwintered_tadpole_predator\` and size mismatch at each survey. NAAMP \`RunNumber\` targets geographically variable state/region breeding periods, and cannot by itself be treated as an equal-unit phenological clock. **No universal negative time trend** is assumed: egg predation may peak when eggs appear, competition later, and adult calling windows need not reflect either. Compare actual day-of-year relative to species/regional peak with temperature and length-of-season controls.
+Predefine the biological stage-overlap window `egg_focal × overwintered_tadpole_predator` and size mismatch at each survey. NAAMP `RunNumber` targets geographically variable state/region breeding periods, and cannot by itself be treated as an equal-unit phenological clock. **No universal negative time trend** is assumed: egg predation may peak when eggs appear, competition later, and adult calling windows need not reflect either. Compare actual day-of-year relative to species/regional peak with temperature and length-of-season controls.
 
 ### H3: drought reset as a conditional triple contrast, not generic dry-year response
 
-\`dried_in_warm_season(t-1)\` must be based on *same-pond measured hydroperiod* or independently validated sufficiently resolved imagery. ERA5-Land soil moisture (~9 km) is **meteorological drought context**, not direct pond drainage. JRC 30 m can miss small, shaded and ephemeral breeding ponds; do not assign 'all tadpoles killed' from either raster. After confirmed re-wetting, contrast (historically overwinterer-positive vs negative) × (dry-reset vs continuously wet) × (before vs after) on larval prey success, and separately on calling. Include water depth, hydroperiod, fish status, temperature and recolonization; drought also independently hurts focal prey. Assess pre-trends where possible. Same-year calls can respond to reflooding even without a predator mechanism.
+`dried_in_warm_season(t-1)` must be based on *same-pond measured hydroperiod* or independently validated sufficiently resolved imagery. ERA5-Land soil moisture (~9 km) is **meteorological drought context**, not direct pond drainage. JRC 30 m can miss small, shaded and ephemeral breeding ponds; do not assign 'all tadpoles killed' from either raster. After confirmed re-wetting, contrast (historically overwinterer-positive vs negative) × (dry-reset vs continuously wet) × (before vs after) on larval prey success, and separately on calling. Include water depth, hydroperiod, fish status, temperature and recolonization; drought also independently hurts focal prey. Assess pre-trends where possible. Same-year calls can respond to reflooding even without a predator mechanism.
 
 ### H4: spatial concentration and conditional residual
 
@@ -80,7 +80,7 @@ Postmetamorphic bullfrogs can prey on smaller anurans; however, same-night call 
 | Evidence source | Measured variables / observational unit | Valid role | Status as of 2026-10-25 |
 |---|---|---|---|
 | **NAAMP, frogcs RC6** | 53 taxon labels; roadside 5-minute ordinal call indices; fixed stops, dates and observers | Frozen broad-scale adult acoustic discovery, cross-lag **feasibility audit only** if separately authorized; no eggs/tadpoles | **Existing/locked**; several SiteID coordinate errors; not one pond per stop |
-| **NPS GLKN acoustic data** | 66 stations, seven parks, eight years; ManualCIV and broad \`Hydroperiod\` category; asynchronous repeated recordings | Independent focal own-history and hydroperiod association; cross-taxon acoustic proxy diagnostic if species overlap verified | Existing frogcs stage branch; no measured tadpole abundances |
+| **NPS GLKN acoustic data** | 66 stations, seven parks, eight years; ManualCIV and broad `Hydroperiod` category; asynchronous repeated recordings | Independent focal own-history and hydroperiod association; cross-taxon acoustic proxy diagnostic if species overlap verified | Existing frogcs stage branch; no measured tadpole abundances |
 | **Carroll, Saenz & Rudolf, 2023, Dryad** | Eight southeast-Texas ponds over six years; calling activity and weekly tadpole funnel traps | Co-located **call→larva proxy calibration**, stage phenology; not automatically *green frog→wood frog* and not a direct predation experiment | Public source located, DOI 10.25338/B8G92P; workbook/schema not yet independently ingested in this integration |
 | **Petranka & Kennedy, 1999** | Direct field/laboratory egg predation by overwintered green-frog tadpoles on wood-frog eggs | Focal **mechanistic precedent**; not a common-pond bridge with NAAMP | Published external evidence |
 | **GloBI, frogcs research** | Published interaction-edge records with variable predator/prey stage annotation | Candidate stage-edge **topology/QA**; no co-located stage abundance or feeding flux | Pilot available; non-random source sample |
@@ -100,16 +100,16 @@ Carroll is a phenology/larval-count bridge; its available data do not by themsel
 
 | Repository | Typed adapter contribution only | Explicit ceiling |
 |---|---|---|
-| \`frogcs\` | RC6 acoustic observation/space baseline; prospectus, NPS/Carroll bridge | Does not demonstrate predation |
-| \`odsp\` | Time × aquatic-depth/state axis to avoid flattening stage overlap into x–y | Abstract lens, not a fitted wetland model |
-| \`eog\` | Alternative stage-transition worlds, held-out forecast comparisons | Cannot turn proxy correlation into true cohort identity |
-| \`crest\` / \`mrm\` | Adequate hidden-state and competing-mechanism distinction | No empirical identification without interventions |
-| \`ced\` / \`boundary\` | Claim licensing and causal identification ceiling | No automatic causal upgrade |
-| \`rec\` / \`tnoa\` | Record-selection bias and uncertainty-preserving non-detection | Not a frog-specific detection calibration |
-| \`mrod\` | Value of next measurement (pond level, egg counts, size/stage census) | A proposed design, not acquired field evidence |
-| \`theouni\` | Owner of cross-repository *registry and handoff*, not model data | No physical merging of scientific histories |
+| `frogcs` | RC6 acoustic observation/space baseline; prospectus, NPS/Carroll bridge | Does not demonstrate predation |
+| `odsp` | Time × aquatic-depth/state axis to avoid flattening stage overlap into x–y | Abstract lens, not a fitted wetland model |
+| `eog` | Alternative stage-transition worlds, held-out forecast comparisons | Cannot turn proxy correlation into true cohort identity |
+| `crest` / `mrm` | Adequate hidden-state and competing-mechanism distinction | No empirical identification without interventions |
+| `ced` / `boundary` | Claim licensing and causal identification ceiling | No automatic causal upgrade |
+| `rec` / `tnoa` | Record-selection bias and uncertainty-preserving non-detection | Not a frog-specific detection calibration |
+| `mrod` | Value of next measurement (pond level, egg counts, size/stage census) | A proposed design, not acquired field evidence |
+| `theouni` | Owner of cross-repository *registry and handoff*, not model data | No physical merging of scientific histories |
 
-**Research ownership:** Frog-stage ecology lives in \`frogcs\`'s prospective branch. The cross-repository **typed registry** lives in \`theouni\`. Publication unit is decided by the new target/outcome, not by number of repositories or amount of code. Distinct life-history case studies remain independent empirical systems. No changes here modify RC6 manuscript, WFTS decision, failed landscape trajectory prediction, or frozen NAAMP statistics.
+**Research ownership:** Frog-stage ecology lives in `frogcs`'s prospective branch. The cross-repository **typed registry** lives in `theouni`. Publication unit is decided by the new target/outcome, not by number of repositories or amount of code. Distinct life-history case studies remain independent empirical systems. No changes here modify RC6 manuscript, WFTS decision, failed landscape trajectory prediction, or frozen NAAMP statistics.
 
 ## Next executable gate
 
