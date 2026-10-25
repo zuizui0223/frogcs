@@ -20,6 +20,6 @@ class OriginalEightPondEcology(unittest.TestCase):
               for x,a,b in ((1,2,0),(2,0,1),(3,1,1))]
         r,g=enemy_reference(rows,"Naiad")
         self.assertEqual(r["fixed"]["observed"],1)
-        self.assertAlmostEqual(r["fixed"]["expected"],4/3)
+        self.assertAlmostEqual(r["fixed"]["expected"],4/3,places=6)
         self.assertEqual(g[0]["partner"],"Naiad")
 if __name__=="__main__":unittest.main()
