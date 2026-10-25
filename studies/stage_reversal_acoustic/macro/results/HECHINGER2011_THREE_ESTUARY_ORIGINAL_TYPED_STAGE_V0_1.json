@@ -145,16 +145,16 @@
     "BSQ": {
       "site_nodes": 290,
       "site_present_links": 3997,
-      "stage_species_edges_all_classes": 1536,
-      "structural_reciprocal_all_classes": 284,
+      "stage_species_edges_all_classes": 1559,
+      "structural_reciprocal_all_classes": 285,
       "stage_shift_all_classes_strict_species": 258,
       "stage_shift_all_classes_including_parasite": 248,
       "stage_shift_all_classes_nonparasite": 10,
       "stage_shift_all_classes_with_morphospecies_placeholder": 267,
       "morphospecies_placeholder_extra_candidate_pairs": 9,
       "predation_only": {
-        "stage_species_edges": 345,
-        "unique_pairs": 343,
+        "stage_species_edges": 366,
+        "unique_pairs": 363,
         "structural_reciprocal_pairs": 0,
         "stage_shift_candidate_pairs": 0
       },
@@ -191,5 +191,16 @@
     "Do not combine trophic transmission, parasitism, micropredation and Predation under one interaction type."
   ],
   "direct_observed_stage_switch_events": "NOT_IDENTIFIABLE",
-  "acoustic_warning_events": "NOT_IN_SOURCE"
+  "acoustic_warning_events": "NOT_IN_SOURCE",
+  "corrected_after_original_quote_aware_tsv_replay": {
+    "scope": "BSQ site only",
+    "explanation": "The pinned original Metaweb_Nodes.txt includes quoted fields that a plain split on tabs does not parse correctly. Standard csv.DictReader and independent quote-aware parser both give 1559 stage-resolved links and 366 strictly predation-type links, vs incorrect 1536 and 345 in the initial snapshot. Original stage-shift candidates and conclusions unchanged.",
+    "corrected_fields": [
+      "stage_species_edges_all_classes",
+      "structural_reciprocal_all_classes",
+      "predation_only.stage_species_edges",
+      "predation_only.unique_pairs"
+    ],
+    "science_endpoint_changed": false
+  }
 }
