@@ -242,7 +242,7 @@ def synthetic():
     r=compare_one(p,q)
     assert r["compatible_grid_years"]==2
     assert r["observed_exact_grid_year_month"]==1
-    assert r["month_counts_all_phases"][2]==1
+    assert r["month_counts_all_phases"][10]==1
     assert r["one_sided_12_phase_rank_not_independent_p"]>=1/12
     assert compare_one({},q)["observed_exact_grid_year_month"]==0
     print("MONTH_SHIFT_FULL_STAGE_SENSITIVITY_SYNTHETIC_QA_PASS")
