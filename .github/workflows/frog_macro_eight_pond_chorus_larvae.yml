@@ -1,0 +1,43 @@
+name: Real pond chorus-to-tadpole and aquatic predator phenology ecology
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/reanalyse_eight_pond_chorus_larvae.py"
+      - "ecology/macro_stage/tests/test_eight_pond_chorus_larvae.py"
+      - ".github/workflows/frog_macro_eight_pond_chorus_larvae.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  biological-phenology-reanalysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Test exact aquatic guild overlap and frog code fidelity
+        run: python -m unittest -v ecology/macro_stage/tests/test_eight_pond_chorus_larvae.py
+      - name: Restore two checksum-verified original pond source XLSX workbooks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p data/adult data/larval data/pond_original
+          gh run download 40152198914 --repo zuizui0223/frogcs --name carter_daily_frog_adult_calls_8ponds_original_Dryad_2001_2015 --dir data/adult
+          gh run download 40158682712 --repo zuizui0223/frogcs --name Carroll_2001_2006_8pond_acoustic_calls_larval_traps_original --dir data/larval
+          cp data/adult/dailycalls_dryad.xlsx data/pond_original/
+          cp data/larval/funneltrapdata.xlsx data/pond_original/
+      - name: Link same-pond daily breeding chorus to aquatic larvae and potential predator stages
+        run: |
+          python -m ecology.macro_stage.scripts.reanalyse_eight_pond_chorus_larvae \
+            --source-dir data/pond_original \
+            --outdir data/pond_macro_result
+      - name: Save source-verified actual ecological output (not literature)
+        uses: actions/upload-artifact@v4
+        with:
+          name: eight_pond_2002_2006_chorus_larva_stage_interactions_verified
+          path: data/pond_macro_result/
+          if-no-files-found: error
