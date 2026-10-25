@@ -1,0 +1,16 @@
+# Real historical global monthly precipitation × GBIF developmental-stage grid (observational QA)
+
+2026-10-25. This is an ecological-background and data-availability join, NOT a test of the causal 72-hour rainfall effect from frozen NAAMP RC6. Research branch only.
+
+## Grounded data products
+- Independently computed **full anonymous GBIF August 2026 snapshot**, 61 focal Anura/Odonata taxa, about 4.0M valid documented georeferenced occurrences and 655,843 species×stage×1°×year×month records. Original successful workflow: https://github.com/zuizui0223/frogcs/actions/runs/40190152042. Reuse **exact** archived GBIF grid CSV, no substitute country facets.
+- [WorldClim monthly weather archive](https://www.worldclim.org/data/monthlywth.html) based on **CRU-TS v4.09 downscaled/bias-corrected with WorldClim 2.1**, precipitation monthly **mm** at 10 arcmin. Historical 2010–2019 archive: https://geodata.ucdavis.edu/climate/worldclim/2_1/hist/cts4.09/wc2.1_cruts4.09_10m_prec_2010-2019.zip ; 2020–2024: https://geodata.ucdavis.edu/climate/worldclim/2_1/hist/cts4.09/wc2.1_cruts4.09_10m_prec_2020-2024.zip .
+- Citation: Fick & Hijmans (2017), *International Journal of Climatology* DOI 10.1002/joc.5086; Harris et al. (2020), *Scientific Data* 7:109. A geographic modelled monthly exposure, **not observed precipitation at the actual GBIF site**, not frog chorus pulses and not predation flux.
+
+## Join rules and QC
+1. Use GBIF `latcell,loncell` integer 1-degree grid cell centers (`latitude = latcell+0.5`, `longitude=loncell+0.5`). Distinguish underlying 10-arc-minute raster resolution from coarse sampling at these centers; coastline centers may lie in ocean or masked tiles, and are NA, **not 0 mm rain**.
+2. Extract 180 WorldClim monthly GeoTiffs from the two separately downloaded ZIP archives; refuse archives with mismatched year-month counts, unreasonably large ZIP totals or wrong coordinate reference system (expect EPSG:4326). Record full ZIP SHA256 and uncompressed file names. Do not silently replace missing 2025/2026 values with older-year rainfall. Use **only 2010–2024**.
+3. Join to species×stage×grid×year×month rows, preserving the original GBIF `n_records`, but interpret it as **observation reporting** not abundance, independent biological visits or number of animals.
+4. Save source-grade monthly rain measurements and count missing/nonland cells, total joined rows, distinct grids, taxon×stage coverage, and observed month-year support. A separate output contains only unique grid×year×month climate values to avoid attributing multiple species reports as independent climate replicates.
+5. Calculate descriptive climate distribution by stage across **unique reporting cell-months**, not an uncorrected global stage-selection coefficient. Avoid p-value/significance and climate-caused encounter inference; spatial GBIF effort and life-stage detection are unequally sampled.
+6. This climate table is a candidate covariate for the later full-source GloBI-directed GBIF 1° grid overlap. The real biological pulse hypothesis needs site×night antecedent rain, actual wetland inundation and emergent vegetation structure, and adult chorus/larval stages in the same real waterbody.
