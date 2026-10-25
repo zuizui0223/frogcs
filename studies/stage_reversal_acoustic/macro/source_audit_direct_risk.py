@@ -95,17 +95,24 @@ def xlsx_schema(data):
         hdr=list(next(itr))
         count=0;missing=Counter()
         groups={}
+        pails=set();clutches=set();clutch_pails=set()
         fields=[str(v).strip() if v is not None else "" for v in hdr]
         for row in itr:
             if all(x is None for x in row):
                 continue
             count+=1
+            raw={fields[i]:v for i,v in enumerate(row) if i<len(fields)}
+            pails.add(str(raw.get("Pail")))
+            clutches.add(str(raw.get("Clutch")))
+            clutch_pails.add((str(raw.get("Clutch")),str(raw.get("Pail"))))
             for i,f in enumerate(fields):
                 if i>=len(row) or row[i] is None:
                     missing[f]+=1
-                if f.lower() in ("treatment","cue"):
+                if f.lower() in ("treatment","cue","tx"):
                     groups.setdefault(f,Counter())[str(row[i]) if i<len(row) else "null"]+=1
         sheets.append({"sheet":ws.title,"header":fields,"n_rows":count,
+                       "n_distinct_pails":len(pails),"n_distinct_clutches":len(clutches),
+                       "n_distinct_clutch_pails":len(clutch_pails),
                        "null_counts":dict(missing),"group_columns":{k:dict(v) for k,v in groups.items()}})
     return {"format":"xlsx","sheets":sheets}
 
