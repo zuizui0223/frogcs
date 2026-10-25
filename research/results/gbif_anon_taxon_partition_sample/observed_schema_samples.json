@@ -1,0 +1,409 @@
+{
+  "date": "2026-10-25",
+  "source": "https://gbif-public-data.s3.amazonaws.com/development/2026-08-01-DWCA/p_taxon/",
+  "experimental_public_snapshot": true,
+  "citable_full_snapshot_october": "https://doi.org/10.15468/dl.tup2g6",
+  "partition_samples": {
+    "Anura": {
+      "read_object": "gbif-public-data/development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_0.parquet",
+      "file_recorded_rowgroups": 95,
+      "file_total_records": 9294656,
+      "first_rowgroup_rows": 100352,
+      "selected_cols": [
+        "gbifID",
+        "speciesKey",
+        "species",
+        "lifeStage",
+        "occurrenceStatus",
+        "hasCoordinate",
+        "hasGeospatialIssues",
+        "year",
+        "month",
+        "decimalLatitude",
+        "decimalLongitude",
+        "coordinateUncertaintyInMeters",
+        "basisOfRecord"
+      ],
+      "first_rowgroup_valid_present_2010_2026": 72547,
+      "top_species_names": [
+        {
+          "species": "Colleeneremia pyrina",
+          "n": 17568,
+          "key": "V5HP5"
+        },
+        {
+          "species": "Cyclorana maini",
+          "n": 14475,
+          "key": "32WLR"
+        },
+        {
+          "species": "Colleeneremia rubella",
+          "n": 11698,
+          "key": "X2WZ"
+        },
+        {
+          "species": "Colleeneremia quiritatus",
+          "n": 9463,
+          "key": "V5PHX"
+        },
+        {
+          "species": "Drymomantis fallax",
+          "n": 9098,
+          "key": "V5PG2"
+        },
+        {
+          "species": "Cyclorana australis",
+          "n": 3329,
+          "key": "32WLG"
+        },
+        {
+          "species": "Cyclorana novaehollandiae",
+          "n": 1565,
+          "key": "32WLT"
+        },
+        {
+          "species": "Cyclorana alboguttata",
+          "n": 1437,
+          "key": "6C5W8"
+        },
+        {
+          "species": "Cyclorana brevipes",
+          "n": 888,
+          "key": "32WLH"
+        },
+        {
+          "species": "Cyclorana cultripes",
+          "n": 824,
+          "key": "32WLK"
+        },
+        {
+          "species": "Cyclorana longipes",
+          "n": 632,
+          "key": "32WLN"
+        },
+        {
+          "species": "Cyclorana platycephala",
+          "n": 535,
+          "key": "32WLW"
+        },
+        {
+          "species": "Drymomantis cooloolensis",
+          "n": 512,
+          "key": "V5MXS"
+        },
+        {
+          "species": "Cyclorana verrucosa",
+          "n": 277,
+          "key": "32WM3"
+        },
+        {
+          "species": "Cyclorana maculosa",
+          "n": 65,
+          "key": "32WLQ"
+        }
+      ],
+      "top_lifeStage": [
+        {
+          "stage": "Adult",
+          "n": 1186
+        },
+        {
+          "stage": "Juvenile",
+          "n": 59
+        },
+        {
+          "stage": "Larva",
+          "n": 7
+        },
+        {
+          "stage": "Unknown",
+          "n": 3
+        }
+      ],
+      "small_first_rows": [
+        {
+          "gbifID": "4076232056",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "Adult",
+          "year": 2023,
+          "lat": -25.934855,
+          "lon": 152.624983,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "4076266589",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "None",
+          "year": 2022,
+          "lat": -17.314592,
+          "lon": 145.96193,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "3988603032",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "None",
+          "year": 2022,
+          "lat": -25.072564,
+          "lon": 151.911317,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "5069895643",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "Adult",
+          "year": 2025,
+          "lat": -27.977231,
+          "lon": 152.711539,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "5104565526",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "None",
+          "year": 2025,
+          "lat": -27.700781,
+          "lon": 153.081897,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "4121056301",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "None",
+          "year": 2016,
+          "lat": -25.58704,
+          "lon": 151.656904,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "5837826680",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "Adult",
+          "year": 2024,
+          "lat": -27.545194,
+          "lon": 152.710412,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "4091432398",
+          "species": "Colleeneremia pyrina",
+          "speciesKey": "V5HP5",
+          "lifeStage": "None",
+          "year": 2018,
+          "lat": -18.421257,
+          "lon": 146.186534,
+          "hasGeospatialIssues": false
+        }
+      ],
+      "NOT_A_GLOBAL_ESTIMATE": "Only the first row group of one of multiple Parquet files per taxon partition."
+    },
+    "Odonata": {
+      "read_object": "gbif-public-data/development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_0.parquet",
+      "file_recorded_rowgroups": 113,
+      "file_total_records": 11339776,
+      "first_rowgroup_rows": 100352,
+      "selected_cols": [
+        "gbifID",
+        "speciesKey",
+        "species",
+        "lifeStage",
+        "occurrenceStatus",
+        "hasCoordinate",
+        "hasGeospatialIssues",
+        "year",
+        "month",
+        "decimalLatitude",
+        "decimalLongitude",
+        "coordinateUncertaintyInMeters",
+        "basisOfRecord"
+      ],
+      "first_rowgroup_valid_present_2010_2026": 87354,
+      "top_species_names": [
+        {
+          "species": "Anaciaeschna isoceles",
+          "n": 76226,
+          "key": "DBK8"
+        },
+        {
+          "species": "Anax ephippiger",
+          "n": 9261,
+          "key": "9WT5P"
+        },
+        {
+          "species": "Anax amazili",
+          "n": 696,
+          "key": "DJWP"
+        },
+        {
+          "species": "Anaciaeschna triangulifera",
+          "n": 487,
+          "key": "9WNM7"
+        },
+        {
+          "species": "Anaciaeschna jaspidea",
+          "n": 332,
+          "key": "DBK9"
+        },
+        {
+          "species": "Anax concolor",
+          "n": 161,
+          "key": "66M6B"
+        },
+        {
+          "species": "Anax aurantiacus",
+          "n": 89,
+          "key": "9X7LT"
+        },
+        {
+          "species": "Anaciaeschna martini",
+          "n": 77,
+          "key": "DBKB"
+        },
+        {
+          "species": "Anax congoliath",
+          "n": 15,
+          "key": "DJWV"
+        },
+        {
+          "species": "Anax chloromelas",
+          "n": 5,
+          "key": "DJWT"
+        },
+        {
+          "species": "Anaciaeschna melanostoma",
+          "n": 2,
+          "key": "DBKD"
+        },
+        {
+          "species": "Anaciaeschna montivagans",
+          "n": 1,
+          "key": "DBKF"
+        }
+      ],
+      "top_lifeStage": [
+        {
+          "stage": "Imago",
+          "n": 52219
+        },
+        {
+          "stage": "Unknown",
+          "n": 15668
+        },
+        {
+          "stage": "Adult",
+          "n": 5821
+        },
+        {
+          "stage": "Nymph",
+          "n": 81
+        },
+        {
+          "stage": "Larva",
+          "n": 36
+        },
+        {
+          "stage": "Subadult",
+          "n": 27
+        },
+        {
+          "stage": "Juvenile",
+          "n": 6
+        },
+        {
+          "stage": "Egg",
+          "n": 1
+        }
+      ],
+      "small_first_rows": [
+        {
+          "gbifID": "2834272582",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Unknown",
+          "year": 2019,
+          "lat": 53.15,
+          "lon": 6.5,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "4157716891",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Imago",
+          "year": 2023,
+          "lat": 52.35,
+          "lon": 4.95,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "1955582620",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Unknown",
+          "year": 2013,
+          "lat": 52.3,
+          "lon": 4.55,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "1955538143",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Unknown",
+          "year": 2013,
+          "lat": 52.7,
+          "lon": 5.25,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "3716526775",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Imago",
+          "year": 2020,
+          "lat": 51.65,
+          "lon": 5.1,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "3716496074",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Imago",
+          "year": 2020,
+          "lat": 52.1,
+          "lon": 4.3,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "3716496066",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Imago",
+          "year": 2020,
+          "lat": 52.1,
+          "lon": 4.65,
+          "hasGeospatialIssues": false
+        },
+        {
+          "gbifID": "3716361965",
+          "species": "Anaciaeschna isoceles",
+          "speciesKey": "DBK8",
+          "lifeStage": "Imago",
+          "year": 2020,
+          "lat": 52.45,
+          "lon": 4.9,
+          "hasGeospatialIssues": false
+        }
+      ],
+      "NOT_A_GLOBAL_ESTIMATE": "Only the first row group of one of multiple Parquet files per taxon partition."
+    }
+  }
+}
