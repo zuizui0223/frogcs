@@ -1,5 +1,16 @@
 # Frog chorus as a temporal gateway into stage-structured interaction networks
 
+## MACRO: stage-structured phenology beyond the 11-pond focal system (2026-10-25)
+
+**New original GBIF macro ecological finding:** In 2015–2025 iNaturalist stage-labelled records, frog-larva seasonal observation overlap with *salamander larvae* was greater than overlap with *salamander eggs* in **37/37 qualified region×years** across five North American latitude zones. After a 12-month circular phase/season-width reference, **31/37** remained positive, and treating each qualifying species equally preserved the direction in **5/5** regions. This is a robust **descriptive seasonal stage-availability asymmetry**, NOT witnessed predation, a same-pond ecological interaction, or a globally representative statement.
+
+Sources: 15 world-region GBIF stage-count panels (shared iNaturalist dataset vs all publishers) and **21,979 source-verified stage-coded original observations** for North America, with dates, original species keys and original coordinates reduced to a 0.5-degree bin. Zero GBIF photo reports never means biological absence. Some dragonfly records originate from different sampling programmes and the odonate overlap is observation-process-sensitive; no signed dragonfly predation effect is claimed.
+
+**[Macro original analysis and executable code](macro_stage/README.md)** | [Detailed source-verified macro conclusions](macro_stage/RESULTS_STAGE_WINDOW_MACRO_15_REGIONS_2015_2025.md).
+
+The ecology next question is when environmental change shifts **which larval enemy stage** is seasonally available and whether real predator–prey observations/egg/tadpole survival match this stage timing. Preserve the difference between regional *potential availability*, pond-scale stage co-detection (Mohonk) and directly observed predation (Takahashi's **already published** laboratory experiment).
+
+
 ## New biological result: nonrandom stage co-detection, not merely method development (25 October 2026)
 
 The original **Mohonk 2016–2021 pond-stage archive** gave 31 co-detections of wood-frog tadpoles with spotted-salamander eggs across 235 fully assessed pond-dates, versus **23.869 expected** after holding each pond-year's sampled dates and both stages' positive-date totals fixed (**1.299×**; exploratory exact conditional tail **0.00507**, stage-series circular shift **0.00526**). The pattern is strongly year dependent: excluding **2020** gives 21 versus 17.902 (tail **0.118**). A distinct Jefferson-salamander egg comparison yielded nine versus 8.1 (tail 0.398). This quantifies **opportunities** for a known interaction; it cannot establish that any Mohonk egg was eaten.
