@@ -1,19 +1,50 @@
 {
   "as_of": "2026-10-25",
-  "status": "PROTOCOL_ONLY_NO_NEW_EMPIRICAL_TEST",
-  "scientific_outcome": "NONE_NEW",
+  "programme": "independent_developmental_role_reversal_x_frog_call_timing",
+  "status": "SOURCE_GATED_SCREEN_QA_PASS_ORIGINAL_STAGE_ACOUSTIC_JOIN_NOT_ESTIMABLE",
+  "scientific_outcome": "NONE_NEW_FROM_ORIGINAL_JOIN",
   "original_rows_acquired_for_new_joint_analysis": {
     "frogid": 0,
     "inaturalist": 0,
     "beranek_mendeley": 0
   },
   "prior_15_latitude_bands_reexecuted": false,
-  "prior_5_observation_overlap_bands": "prior exploratory reporting only",
-  "documented_stage_direction_edges": 2,
-  "independent_stage_reversal_pairs": 1,
-  "stage_to_call_join_estimated": false,
-  "ecological_warning_effect_identified": false,
-  "github_branch_contains": "source/claim study contract, source edge registry, empirical readiness",
-  "locally_generated_executable": "stage_acoustic_macro_v0_1.zip outside repository, eight unit tests passed; no public actual-row results",
-  "frozen_frogcs_rc6_changed": false
+  "prior_5_observation_overlap_bands": "historical exploratory only",
+  "ecological_registries": {
+    "directly_documented_reciprocal_species_pairs": 2,
+    "documented_amphibian_odonate_pairs": 1,
+    "directly_observed_pike_to_stickleback_juvenile_direction": "NOT_ESTABLISHED_FROM_2019_GAPE_MODEL",
+    "context_dependent_xenopus_gambusia": "CANDIDATE",
+    "nonreciprocal_salamander_tadpole": "NEGATIVE_CONTROL"
+  },
+  "original_external_quantitative_evidence": "As published: asp eggs 21.2 ± 2.2% mortality over 40cm video; pike under/over 35mm 97%/5% in feeding trial; frog-dragonfly Oct-Nov predation.",
+  "staged_timelines": [
+    "SEASONAL_EMERGENCE",
+    "EGG_DRIFT_SECONDS",
+    "SIZE_THRESHOLD_MM",
+    "LIGHT_STAGE_CONTEXT",
+    "GROWTH_CANNIBALISM"
+  ],
+  "repo_branch": "study/stage-reversal-acoustic-macro-20261025",
+  "executable": "studies/stage_reversal_acoustic/src/stage_acoustic_screen.py",
+  "unit_tests": {
+    "n": 15,
+    "result": "SUCCESS",
+    "workflow_run_id": 40158420603,
+    "url": "https://github.com/zuizui0223/frogcs/actions/runs/40158420603"
+  },
+  "fail_closed_no_input": {
+    "status": "NOT_ESTIMABLE",
+    "n_original_rows_analyzed": 0
+  },
+  "missing_inputs": [
+    "authenticated_original_anax_spreadsheet_rows",
+    "FrogID_recording_opportunity_denominators",
+    "stage_annotated_original_site_week_rows",
+    "same_year_site_season_coordinate_and_sampling_overlap",
+    "direct_receiver_response_or_playback_data"
+  ],
+  "warning_signal_tested": false,
+  "exact_predation_switch_time_estimated": false,
+  "frozen_jae_rc6_files_changed": false
 }
