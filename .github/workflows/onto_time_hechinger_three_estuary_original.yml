@@ -1,0 +1,50 @@
+name: ONTO-TIME original Hechinger 3-estuary stage-network QA
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/audit_hechinger_original_three_estuaries.py'
+      - 'studies/stage_reversal_acoustic/macro/results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_hechinger_original_three_estuaries.py'
+      - '.github/workflows/onto_time_hechinger_three_estuary_original.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/audit_hechinger_original_three_estuaries.py'
+      - 'studies/stage_reversal_acoustic/macro/results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_hechinger_original_three_estuaries.py'
+      - '.github/workflows/onto_time_hechinger_three_estuary_original.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify_original_2011_three_estuaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Stage taxonomy and interaction-type guards
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -p 'test_hechinger_original_three_estuaries.py' -v
+      - name: Re-fetch pinned original sources and reproduce all 3 ecosystems
+        run: |
+          python studies/stage_reversal_acoustic/macro/audit_hechinger_original_three_estuaries.py \
+            --out "${{ runner.temp }}/ontotime_three_estuary_repro.json"
+      - name: Verify frozen source readback
+        run: |
+          python - <<'PY'
+          import json, os
+          f=os.environ["RUNNER_TEMP"]+"/ontotime_three_estuary_repro.json"
+          x=json.load(open(f))
+          assert x["exact_source_readback"] is True
+          assert x["totals"]["stage_shift_strict_species_all_classes"]==768
+          assert x["totals"]["strict_predation_stage_shift_site_pairs"]==20
+          assert x["totals"]["bivalve_module_site_pairs"]==20
+          PY
+      - name: Save aggregate source integrity result only
+        uses: actions/upload-artifact@v4
+        with:
+          name: ontotime-2011-three-estuary-stage-ontology
+          path: ${{ runner.temp }}/ontotime_three_estuary_repro.json
+          if-no-files-found: error
