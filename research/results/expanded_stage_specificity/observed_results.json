@@ -1,0 +1,81 @@
+{
+  "method": "Post-readback predator-fixed, guild+prey-stage and footprint matched nondocumented alternative prey; GBIF 1° stage-grid month phase ratio",
+  "source_GloBI": "https://doi.org/10.5281/zenodo.22691479",
+  "source_GBIF": "https://github.com/zuizui0223/frogcs/actions/runs/40190152042",
+  "unconditional_full_GloBI_eligible_stage_patterns": 77,
+  "GBIF_original_cube_QC": {
+    "rows": 238034,
+    "source_observations": 1970585,
+    "stage_pairs_atleast1": 180,
+    "stage_pairs_atleast5": 105
+  },
+  "GBIF_taxa_with_focal_guild_verified": 258,
+  "matched_exclusion_counts": {
+    "fewer_than_two_geography_and_effort_matched_undocumented_species": 21
+  },
+  "matched_pairs_each_threshold": [
+    {
+      "minimum_GBIF_records_per_taxon_stage_gridmonth": 1,
+      "matched_GloBI_directed_stage_pairs": 56,
+      "distinct_predator_species": 35,
+      "focal_phase_ratio_greater_than_median_control": 31,
+      "focal_phase_ratio_smaller_or_equal_than_controls": 25,
+      "mean_focal_minus_control_phase_ratio": 0.22491298603874788,
+      "median_focal_minus_control_phase_ratio": 0.09045862877374033,
+      "source_tiers": {
+        "iNaturalist": 50,
+        "Quick_Pond": 2,
+        "other": 4
+      },
+      "posthoc_predator_cluster_bootstrap_interval_95": [
+        -0.18591053281774966,
+        0.6949693344565162
+      ],
+      "bootstrap_qualification": "conditional on original matched GBIF source and prey control lists, not uncertainty in metaweb truth"
+    },
+    {
+      "minimum_GBIF_records_per_taxon_stage_gridmonth": 5,
+      "matched_GloBI_directed_stage_pairs": 56,
+      "distinct_predator_species": 35,
+      "focal_phase_ratio_greater_than_median_control": 26,
+      "focal_phase_ratio_smaller_or_equal_than_controls": 30,
+      "mean_focal_minus_control_phase_ratio": 0.34560066232547076,
+      "median_focal_minus_control_phase_ratio": -0.018509420294715362,
+      "source_tiers": {
+        "iNaturalist": 50,
+        "Quick_Pond": 2,
+        "other": 4
+      },
+      "posthoc_predator_cluster_bootstrap_interval_95": [
+        0.02769320412178104,
+        0.709330053239603
+      ],
+      "bootstrap_qualification": "conditional on original matched GBIF source and prey control lists, not uncertainty in metaweb truth"
+    }
+  ],
+  "boundaries": [
+    "These prey controls are UNDOCUMENTED in the available 881 complete-stage GloBI set, not demonstrated ecological non-prey.",
+    "Matching used prey-stage report volume and shared grid-year footprint before checking month synchrony.",
+    "A 1° cell across one month is not a pond, live attack, species encounter or local food web.",
+    "Repeated prey, predator, iNaturalist source and metaweb rows are not independent; phase ratios are observational and highly effort-biased.",
+    "Control species and focal interactions were defined using the same curated GloBI/GBIF ecosystem and might reflect unequal reporting.",
+    "Plant cover and rain effects are unmeasured here; do not infer causality or true stage-specific reversal.",
+    "Small focal set, no global prevalence, no p-value, and comparisons after viewing phase-shift data are exploratory."
+  ],
+  "study": "Post-readback application of same guild-stage prey control to expanded 2026-09 GloBI×2026-08 GBIF Anura/Odonata global stage links",
+  "GloBI_source": "https://doi.org/10.5281/zenodo.22691479",
+  "GBIF_source_run": "https://github.com/zuizui0223/frogcs/actions/runs/40194946916",
+  "full_source_eligible_anura_odonata_stage_links_before_QC": 78,
+  "full_source_eligible_both_stage_recorded_in_expanded_GBIF": 77,
+  "GBIF_full_expanded_grid_input_rows": 238034,
+  "matched_preys_are_not_known_true_negative_interactions": true,
+  "specificity_hypothesis_status": "POST_READBACK_EXPLORATORY_NOT_PREREGISTERED",
+  "scientific_bounds": [
+    "No actual predator-prey attack, abundance, wetland vegetation, rainfall or frog chorus was measured.",
+    "Same-guild/stage matched alternatives are undocumented in full-stage GloBI subset, not non-interactors.",
+    "The expanded sample is dominantly adult Anura/Odonata and thus does not validate worldwide larval role reversal.",
+    "GBIF source is anonymous 2026-08 experimental partitions, not official DOI-traceable October bulk download.",
+    "GBIF stage reporting within 1° month-year is highly seasonally and spatially biased.",
+    "If controls are too rare or 8 distinct predator taxa are unavailable, inferential uncertainty is not estimated."
+  ]
+}
