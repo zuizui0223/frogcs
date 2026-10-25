@@ -130,6 +130,7 @@ def main():
                 result.update({"status":"SOURCE_SCHEMA_VERIFIED","schema":schema})
                 print("SOURCE_SCHEMA_VERIFIED",label,len(raw),
                       "rows",schema.get("n_rows",sum(x["n_rows"] for x in schema.get("sheets",[]))))
+                print("SANITIZED_SOURCE_SCHEMA_JSON",label,json.dumps({"sha256":result["sha256"],"schema":schema},ensure_ascii=False))
             except Exception as ex:
                 result["status"]="SOURCE_PARSE_ERROR"
                 result["parse_error"]=type(ex).__name__+": "+str(ex)[:180]
