@@ -1,0 +1,22 @@
+name: Dryad open wetland raw access check
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/audit_dryad_file_access.py
+      - .github/workflows/research_dryad_access_check.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  access:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check public Dryad endpoint status
+        run: python research/scripts/audit_dryad_file_access.py
