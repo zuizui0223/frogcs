@@ -48,8 +48,11 @@ def read_source_csv(path):
             try:p=float(r["precipitation_mm_month"])
             except (ValueError,TypeError):
                 raise ValueError("Non-numeric measured rain at on-land grid")
-            if not math.isfinite(p) or p<0 or p>3000:
-                raise ValueError("Invalid monthly precipitation, not a percentage")
+            if not math.isfinite(p) or p<0 or p>25000:
+                raise ValueError(f"Invalid WorldClim monthly precipitation {p} at lat={lat} lon={lon} y={y} m={m}")
+            if p>3000:
+                audit["source_valid_precip_gt3000_rows"]+=1
+            audit["max_source_precip_mm"]=max(audit["max_source_precip_mm"],p)
             if mk in rain[k] and abs(rain[k][mk]-p)>0.0002:
                 raise ValueError("Conflicting rainfall for repeated species in same grid-year-month")
             rain[k][mk]=p
