@@ -9,8 +9,8 @@
     "stage_annotated_either": 157,
     "stage_annotated_both": 88,
     "candidate_reciprocal_species_pairs": 5,
-    "verified_stage_specific_reversals": 4,
-    "exported_stage_labeled_records": 130
+    "exported_stage_labeled_records": 130,
+    "staged_reciprocal_species_pair_candidates": 4
   },
   "by_pair": [
     {
@@ -191,6 +191,8 @@
     "A reciprocal named species-pair occurrence is not evidence for a life-stage-dependent trophic reversal unless both directions are supported with correctly staged records and primary evidence.",
     "Cross-pair queries may reach limit=100; count is lower bound on indexed record retrieval and cannot be used as prevalence.",
     "Species path sanity checks reject examples like non-fish source taxa returned by Actinopterygii query.",
-    "Exact studies, duplicate event/records and taxonomic synonym canonicalization require verification before full analysis."
-  ]
+    "Exact studies, duplicate event/records and taxonomic synonym canonicalization require verification before full analysis.",
+    "The original 2012 Quick Pond dataset explicitly mixes direct observations, published literature and inferred links. Verify per-edge evidence_type before labeling a reciprocal edge a witnessed predation reversal."
+  ],
+  "source_independence_warning": "The four staged reciprocal candidates are primarily from the same Preston et al. (2012) Quick Pond source, a curated mixed-evidence food web of 63 species/113 nodes/1905 links, not four independently confirmed events, and do not establish net predation dominance reversal. Individual link evidence type (field observation, literature, inferred) must be checked in original Quick_Pond_Links."
 }
