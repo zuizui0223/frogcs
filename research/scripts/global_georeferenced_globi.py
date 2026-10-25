@@ -95,8 +95,24 @@ def parse_record(r,origin,box,label,source,target):
         citation,x,y,stx,sty,
         f"{lat:.5f}",f"{lon:.5f}",id1,id2,
         ])).encode("utf8")).hexdigest()
+    source_path={p.strip() for p in str(r.get("source_taxon_path") or "").split("|")}
+    target_path={p.strip() for p in str(r.get("target_taxon_path") or "").split("|")}
+    predator_kind=(
+        "Anura" if "Anura" in source_path else
+        "Caudata" if "Caudata" in source_path else
+        "Odonata" if "Odonata" in source_path else
+        "Dytiscidae" if "Dytiscidae" in source_path else
+        "Nepomorpha" if "Nepomorpha" in source_path else
+        "Actinopterygii" if "Actinopterygii" in source_path else
+        "Reptilia" if "Reptilia" in source_path else
+        "Aves" if "Aves" in source_path else
+        "Mammalia" if "Mammalia" in source_path else "other")
     return dict(
         record_id=key[:24],box_label=origin,query_role=label,
+        predator_guild=predator_kind,
+        prey_is_anuran=int("Anura" in target_path),
+        predator_is_anuran=int("Anura" in source_path),
+        self_conspecific_feeding=int(x==y),
         predator=x,prey=y,
         predator_stage=stx,prey_stage=sty,
         predator_occurrence_id=id1,prey_occurrence_id=id2,
@@ -161,11 +177,15 @@ def run(folder):
             distinct_directed_binomial_edges=len(set((r["predator"],r["prey"]) for r in rr)),
             study_citations=len(set(r["study_citation"] for r in rr)),
             iNaturalist_observation_links=sum("inaturalist.org/observations/" in r["study_citation"] for r in rr),
-            trophic_frogs_as_predator=sum(r["query_role"]=="frog_consumes_any" for r in rr),
-            trophic_frogs_as_prey=sum(r["query_role"]=="any_consumes_frog" for r in rr)
+            trophic_frogs_as_predator=sum(r["predator_is_anuran"] for r in rr),
+            trophic_frogs_as_prey=sum(r["prey_is_anuran"] for r in rr),
+            n_conspec_feeding=sum(r["self_conspecific_feeding"] for r in rr),
+            predator_guild_counts=dict(collections.Counter(r["predator_guild"] for r in rr))
         ))
     rkeys=set((r["predator"],r["prey"]) for r in records)
-    reciprocal=sorted(set(tuple(sorted((a,b))) for a,b in rkeys if (b,a) in rkeys))
+    reciprocal=sorted(set(tuple(sorted((a,b))) for a,b in rkeys
+                          if a!=b and (b,a) in rkeys))
+    self_feeding=sorted(set(a for a,b in rkeys if a==b))
     perSource=collections.Counter(r["study_citation"] for r in records)
     rr=collections.Counter((r["predator"],r["prey"]) for r in records)
     summary={
@@ -185,6 +205,8 @@ def run(folder):
         "stage_either_labeled":sum(bool(r["predator_stage"] or r["prey_stage"]) for r in records),
         "distinct_study_citations":len(perSource),
         "reciprocal_binomial_pair_candidates":len(reciprocal),
+        "conspecific_feeding_taxon_candidates":len(self_feeding),
+        "conspecific_feeding_species_examples":self_feeding[:12],
         "reciprocal_pair_examples":reciprocal[:12],
         "macroboxes":groups,
         "top_source_record_share":perSource.most_common(1)[0][1]/len(records),
@@ -221,6 +243,8 @@ def test():
               latitude=35.0,longitude=-115.0,study_citation="doi:test")
     a=parse_record(data,"NA","testurl","frog_consumes_odonate","Anura","Odonata")
     assert a and a["stage_both"]==1 and a["absolute_latitude_band"]=="temperate"
+    assert a["predator_is_anuran"] == 1 and a["prey_is_anuran"] == 0
+    assert a["predator_guild"] == "Anura"
     assert parse_record(data,"NA","testurl","frog_consumes_caudata","Anura","Caudata") is None
     data["latitude"]=0;data["longitude"]=0
     assert parse_record(data,"NA","testurl","frog_consumes_odonate","Anura","Odonata") is None
