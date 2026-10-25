@@ -1,0 +1,152 @@
+{
+  "schema_version": "frogcs-stage-legacy/1.0",
+  "created_on": "2026-10-26",
+  "repository": "zuizui0223/frogcs",
+  "integration_scope": "frogcs research branch only; no writes to RC6 submission or other repositories",
+  "scientific_question": "Does inherited aquatic stage composition constrain later adult calling-site selection, juvenile survival, and multi-site community configuration across hydroperiod transitions?",
+  "canonical_design": "research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md",
+  "frozen_rc6": {
+    "source_ref": "release/jae-multisite-rc6",
+    "submission_ref": "submission/jae-multisite-v6",
+    "validated_scientific_commit": "ea2bea7fd9ac8856f880a7f3302e193fa19705bd",
+    "immutable_scientific_paths": [
+      "paper/",
+      "submission/",
+      "provenance/",
+      "figures_pulse_template/",
+      "scripts/naamp/"
+    ],
+    "source_result": "provenance/CURRENT_RESULTS.json",
+    "frozen_readout": {
+      "population_matched_pairs": 4236,
+      "principal_history_pairs": 2916,
+      "spatial_observed": 1.6503201354367818,
+      "spatial_null": 1.3534664037854447,
+      "spatial_residual": 0.2968537316513371,
+      "prior_site_beta": 0.1510940272028386
+    },
+    "claim_ceiling": "adult acoustic space use only; no larval density, predation, breeding success or causal rainfall inference"
+  },
+  "source_modules": [
+    {
+      "id": "naamp_rc6",
+      "role": "frozen adult acoustic discovery",
+      "granularity": "taxon × roadside listening stop × run",
+      "result": "provenance/CURRENT_RESULTS.json",
+      "readiness": "observed_locked",
+      "can_join": "only by aggregate result or independently verified physical waterbody"
+    },
+    {
+      "id": "nps_glkn",
+      "role": "independent adult acoustic historical-site persistence",
+      "granularity": "park × verified recorder station × taxon × year",
+      "result": "research/results/nps_glkn_history/observed_results.json",
+      "readiness": "observed",
+      "expected_informative_rows": 1815,
+      "expected_adjusted_beta": 0.46418762439474126,
+      "can_join": "within NPS recorder geography; hydroperiod is broad category"
+    },
+    {
+      "id": "carroll_8pond",
+      "role": "adult-call to aquatic-larva proxy calibration",
+      "granularity": "actual pond × taxon × event/stage × year",
+      "external_doi": "10.25338/B8G92P",
+      "readiness": "source_identified_response_blind_schema_not_yet_verified",
+      "can_join": "same certified pond only",
+      "scientific_ceiling": "phenology and lagged larval-stage calibration if co-located taxon/time coverage passes"
+    },
+    {
+      "id": "globi_stage",
+      "role": "independent literature-based predator/prey stage-edge topology",
+      "granularity": "cited edge × source × taxon × stage",
+      "result": "research/results/full_globi_2026_stage_gbif_grid/observed_results.json",
+      "readiness": "observed_topology_only",
+      "can_join": "never infer local predation from global/source edge"
+    },
+    {
+      "id": "hydroperiod_observed",
+      "role": "time-varying physical pond-water level and dry/reset events",
+      "granularity": "verified pond × date",
+      "readiness": "not_available_as_same_pond_joint_panel",
+      "can_join": "only with verified pond/date, not ERA5 or JRC alone"
+    },
+    {
+      "id": "larval_predation_survival",
+      "role": "measured egg/larval survival and predator-stage abundance",
+      "granularity": "verified pond × taxon × stage × date",
+      "readiness": "not_available_as_same_pond_joint_panel",
+      "can_join": "requires direct counts and effort/detection or experiment"
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "A",
+      "label": "same-year adult acoustic site-use",
+      "required": "adult call/effort and strictly prior species histories",
+      "unit": "taxon × site × date",
+      "claim": "behavioural/acoustic association"
+    },
+    {
+      "id": "B",
+      "label": "same-season egg/larval survival and stage-specific predation",
+      "required": "same wetland egg/larva/predator census and hydrology plus attack/exclusion information for causal predation",
+      "unit": "wetland × cohort × stage × date",
+      "claim": "ontogenetic interactions conditional on directly measured exposure"
+    },
+    {
+      "id": "C",
+      "label": "future adult recruitment after maturity lag",
+      "required": "longitudinal cohort survival/age at maturity and subsequent calling",
+      "unit": "wetland × taxon × cohort × future year",
+      "claim": "lagged cohort demographic effect"
+    },
+    {
+      "id": "D",
+      "label": "conditional spatial configuration",
+      "required": "new held-out monitoring panel with first-order state and total-activity conditioned null",
+      "unit": "species × multi-site route × run",
+      "claim": "extra spatial dependence conditional on baseline"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "name": "source-blind physical-site, species, time and stage coverage audit",
+      "status": "pending_joint_pond_panel"
+    },
+    {
+      "id": "G1",
+      "name": "held-out previous-call -> directly observed overwintered-larva calibration",
+      "status": "blocked_by_G0"
+    },
+    {
+      "id": "G2",
+      "name": "stage-predation/competition vs dynamic hydrology discrimination",
+      "status": "blocked_by_exposure_and_egg_survival"
+    },
+    {
+      "id": "G3",
+      "name": "cohort maturation plus spatial configuration prediction",
+      "status": "blocked_by_cohort_and_new_configuration_panel"
+    },
+    {
+      "id": "G4",
+      "name": "independent evidence synthesis manuscript",
+      "status": "do_not_merge_with_rc6_until_G1_G3_valid"
+    }
+  ],
+  "prior_claims": {
+    "acoustic_history_supported": true,
+    "NAAMP_predator_proxy_validated": false,
+    "drought_larval_reset_observed": false,
+    "stage_predation_population_effect_identified": false,
+    "RC6_spatial_residual_mechanism_identified": false
+  },
+  "stop_rules": [
+    "No modification of frozen RC6 paper, submission, provenance, spatial generator or NAAMP analysis paths.",
+    "Do not use global GloBI, GBIF, EarthEnv, NWI, ERA5 or JRC rows as a same-pond stage-specific predation measurement.",
+    "No source-blind response reuse: NAAMP post-hoc interspecific H1 exploration is not prospective confirmation.",
+    "No published mechanism language when measured hydroperiod, stage/predation exposure and event-level detection are absent.",
+    "A same-year egg predation event cannot causally explain an earlier adult chorus from that cohort."
+  ]
+}
