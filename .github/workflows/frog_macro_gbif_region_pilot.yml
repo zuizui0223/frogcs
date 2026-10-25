@@ -1,0 +1,38 @@
+name: Macro amphibian odonate life-stage seasonal counts North America pilot
+on:
+  push:
+    branches: [research/macro-stage-interactions-2026-10]
+    paths:
+      - "ecology/macro_stage/scripts/run_gbif_region.py"
+      - "ecology/macro_stage/tests/test_gbif_regions.py"
+      - ".github/workflows/frog_macro_gbif_region_pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  monthly-life-stage-by-latitude:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        region: [US35_40, US45_50]
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check taxon/region/month source contract
+        run: python -m unittest -v ecology/macro_stage/tests/test_gbif_regions.py
+      - name: Read verified GBIF 12-month stage frequencies and effort baselines
+        run: |
+          python ecology/macro_stage/scripts/run_gbif_region.py \
+            --region ${{ matrix.region }} \
+            --outdir ecology/macro_stage/data/monthly
+      - name: Preserve source-linked stage frequency and top dataset coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: gbif_macro_monthly_${{ matrix.region }}
+          path: ecology/macro_stage/data/monthly/
+          if-no-files-found: error
