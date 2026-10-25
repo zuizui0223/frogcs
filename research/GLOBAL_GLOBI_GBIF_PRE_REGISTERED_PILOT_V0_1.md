@@ -1,0 +1,46 @@
+# Global GloBI × GBIF stage-dependent trophic opportunity pilot — outcome-blind specification v0.1
+
+Date: 2026-10-25. **Scope explicitly moved from site-level FrogCS extensions to a new global macroecological interaction program.** Frozen RC6/JAE `main` untouched. This specification is written before new global pilot results are read; it is not independent preregistration of hypotheses because earlier smaller GloBI API stage results had been inspected.
+
+## Core question
+
+> Across the world, where are **documented, stage-dependent predator–prey species pairs** geographically plausible, and can the geographic extent of trophic opportunity be described better by the **joint distribution of both taxa** than by either taxon's distribution alone? How might recurring frog chorus hotspots, aquatic vegetation, local hydrology and predator stages modify that *possibility* at the local wetland scale?
+
+**Do not infer realized predation from GloBI × GBIF country co-reporting.** A country is neither a pond nor a wetland; GBIF presence does not prove contemporary local sympatry, coactivity, natural/native status, abundance, or predator-prey attack. GBIF observations include uneven sampling, collection bias and out-of-native-range introductions. GloBI link sources may be literature, inference or controlled experiment, not a direct wild observation.
+
+## Three distinct evidence layers
+
+**L0 — documented global directed food web:** occurrence-level GloBI `/interaction?includeObservations=true` with species-level canonical names, distinct origin citations and source/target stages if supplied. Taxon-path verification at both endpoints. Candidate reciprocal **links**, not predation-flux reversal. Avoid both sides represented by a higher taxonomic class as exact species edge.
+
+**L1 — geographically possible species pair:** use GBIF taxonomy match strictly, then source-taxon and target-taxon recorded-country facets. Record the number of countries containing >= 5 georeferenced **PRESENT** occurrences dated 2010–2026 for *each* taxon. Count countries where both taxa exceed the threshold. Record sensitivity at >= 20. Filter geospatial issues if API supports; keep total counts. False country-level species absence is possible. Country overlap is never a confirmed local interaction.
+
+**L2 — co-reported aquatic/emergent plant geography:** use GBIF species country facets for `Phragmites australis, Typha latifolia, Typha angustifolia, Schoenoplectus lacustris, Schoenoplectus tabernaemontani, Bolboschoenus maritimus, Eleocharis palustris`. A plant occurrence identifies country-level macrophyte reporting only, **not** persistent reed-bed coverage, waterlogged stem density, egg substrate, local sympatry, vegetation assemblage or effects on predators. No causal or inferential regression from this country-level proxy.
+
+**L3 — future validated wetland × time × stage × plant architecture:** 1°/2° grid from authenticated GBIF **bulk** georeferenced, presence-filtered export using pinned GBIF download DOI, checked spatial and time strata, checked ecoregion/continental biogeography and independent wetland habitat classifications. Crop to independently mapped wetlands (Global Surface Water/wetland polygons), local bathymetry, inundation and hydrological variability, and plant **community**, plus frog calling and fish/odonate/salamander field data. These measurements are **not contained** in the global GloBI × GBIF occurrence edge archive. Avoid turning spatial co-occurrence into attack occurrence. Prefer 10–25 km ecological grid where quality allows; compare 25/50/100 km resolutions instead of selecting after results.
+
+## Frozen pilot extraction
+
+- Date 2026-10-25, live GloBI API exploratory accession, documented API query strings/version/date, with exact pages 0–199 and 200–399 if first page full. Taxon pair-direction strata: Anura↔Odonata, Anura↔Caudata, Anura↔Dytiscidae, Anura↔Nepomorpha, Anura↔Actinopterygii, Anura↔Decapoda, Caudata↔Odonata, Caudata↔Dytiscidae, Odonata↔Actinopterygii (18 stratum directions). Select among verified binomial pairs with independent original citations; rank stage documentation and study diversity; limit any one source/citation and direction. Repeated rows from the same Quick Pond or other study are not independent biological replicates.
+- Non-random sorted API extraction is **only an availability pilot**. Do not extrapolate its fractions to global taxa or total network. Main macro inference requires pinned GloBI **complete versioned** release DOI [10.5281/zenodo.3950589](https://doi.org/10.5281/zenodo.3950589); estimated interaction TSV download can be gigabytes, so **stream into DuckDB**, do not import or commit raw dataset into public GitHub.
+- GBIF [API limit 300 records/page and max 100,000 results per paginated search](https://techdocs.gbif.org/en/openapi/v1/occurrence); use `occurrence/search?limit=0&facet=country&facetLimit=250&hasCoordinate=true&year=2010,2026&occurrenceStatus=PRESENT` for pilot **aggregate country facets**, which are not bounded by pagination of individual records. GBIF matching uses exact `species/match` and rejects ambiguous/higher-rank matches. Save accepted name/taxonKey/GBIF total + country reported counts.
+- GBIF real global grid/occurrence export requires the [authenticated bulk download API](https://techdocs.gbif.org/en/data-use/api-downloads), typically an account and download DOI. Do not request hundreds of thousands of paginated queries or imply a bulk export was completed without credentials.
+- Cap first pilot at 100 selected prey/predator species plus 7 plant species; report all rejected taxa, eligibility, per guild and source bias. Selection *before* GBIF geography. Never use a GloBI study's reported location to seed GBIF filters, and never use GBIF geographic outcome to selectively keep convenient links.
+- Per pair produce `n_countries_predator`, `n_countries_prey`, `n_countries_both`, `n_countries_both_min20`, `stage_source`, `stage_target`, `unique_citation_count`, `citation_examples`, `GBIF_match_confidence`; per country `n_pair_opportunity`, `n_distinct_frog_taxa`, `n_emergent_proxy_taxa`, `GBIF_total_separately`.
+- No significance or causality inference from country-level cooccurrence/plant counts; quantitative output is a *global data-product / opportunity map feasibility screen*, not a test of vegetation mediation or stage-directed mortality.
+- Pilot includes small self-test with synthetic country facets and reverse-edge logic. GitHub workflow returns original source URLs, GBIF API country tally, source rejections, QA, and exactly bounded summary outputs. Check GitHub read-only action success; retain under `research/results/global_globi_gbif/` without introducing giant raw files.
+
+## Hierarchy preserved from frogcs
+
+- **Timescale T0 (hours):** local rain/water availability changes the acoustic activation state of frogs. Existing RC6: 4,236 NAAMP matched pairs, first-order-conditioned within-taxon multi-site residual +0.2969. Not an occurrence/predation observation.
+- **T1 (seasons):** inundated emergent vegetation mosaic, fish/odonate/salamander and frog larvae alter prey/predator opportunities. Not globally measured by GBIF plant sightings alone.
+- **T2 (years):** the same frog taxa preferentially show high intensity at historical acoustic sites; NAAMP and independent 2016–23 NPS demonstrate this in different estimands. Not individual memory or confirmed wetland plant architecture.
+- **T3 (space):** GloBI trophic edges × GBIF ranges define world geographic opportunities and data gaps. Must not collapse T3 (potential) into T0–T2 (realized behavior). Scientific payoff is to predict **where and under what developmental and wetland conditions a realized trophic reversal or acoustic cue effect might occur**, then falsify in field surveys.
+
+## Sampling/negative controls and later escalation
+
+- Independent control network preserving predator/prey guild and taxonomic/geographical prevalence; nulls randomize prey partner within guild and matched occurrence reporting richness, *not* unlimited species pool. Preserve study block in uncertainty, leave-one-source and one-biogeographic-region-out tests.
+- Report source counts and number of independent study datasets; avoid "four global independently verified trophic reversals" based on one food-web list.
+- Use GBIF geospatial issue flags, introduced/captive flags where available, nonnative ranges and aquatic habitat constraints; remove human observations with obvious coordinate errors and spatial/temporal duplicates in actual bulk stage. Species distribution model / occupancy correction necessary for absent-cell inference.
+- **Hypothesis stage**: within true ponds, emergent plants' vertical structure may affect both calling/mating and aquatic predator encounter/emergence and stage transition. This is not tested by country-level plant presence. A later global wetland × stage meta-analysis should compare `weather/hydroperiod → +emergent/submerged architecture → +predator/prey stages → +frog chorus/historical-site` on the **same survey outcome** with block held-out evaluation.
+
+Do not treat this pilot's GBIF footprint or plants as a global test of trophic interaction prevalence or of frogcs residual explanations.
