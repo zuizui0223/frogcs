@@ -6,8 +6,8 @@ Authority: [RC6 README](../README.md) is locked for submission; this file owns *
 
 ## Integration policy: one repository, two scientific release layers
 
-1. **Do not revise RC6**: \`frogcs/main\`, \`release/jae-multisite-rc6\`, and \`submission/jae-multisite-v6\` own the finished Journal of Animal Ecology acoustics article. Preserve its fixed NAAMP population, metrics, null models, manuscript and submission QA.
-2. **New scientific development stays in frogcs**: this branch \`integration/stage-legacy-unified-2026-10-25\` owns the acoustic-to-stage bridge, hydrology alternatives, evidence schema, new scripts and all later estimates. There is no independent integration or meta-repository to update; reference external methods or data without copying another repository's scientific ownership.
+1. **Do not revise RC6**: `frogcs/main`, `release/jae-multisite-rc6`, and `submission/jae-multisite-v6` own the finished Journal of Animal Ecology acoustics article. Preserve its fixed NAAMP population, metrics, null models, manuscript and submission QA.
+2. **New scientific development stays in frogcs**: this branch `integration/stage-legacy-unified-2026-10-25` owns the acoustic-to-stage bridge, hydrology alternatives, evidence schema, new scripts and all later estimates. There is no independent integration or meta-repository to update; reference external methods or data without copying another repository's scientific ownership.
 3. **Keep observed evidence distinct**: locked NAAMP spatial configuration, observed NPS annual acoustic-history replication, GloBI-stage links, verified pond-stage data (future), and synthetic trophic simulations remain separate within the same source-evidence hierarchy; do not pool unlike estimands.
 4. **Only after G0–G3** consider a *future combined mechanism paper* connecting RC6's acoustic pattern to measured stage and recruitment outcomes. A successful G1 proxy calibration alone cannot demonstrate predation. If G2/G3 fail, report a valid separate acoustic-history/observability or hydrological-filtering result rather than rewriting RC6.
 5. **The execution entry point** is [STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json](STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json) and [scripts/stage_legacy_integration_gate.py](scripts/stage_legacy_integration_gate.py). Its status does not itself confer mechanistic evidence or release permission.
@@ -109,12 +109,12 @@ Carroll is a phenology/larval-count bridge; its available data do not by themsel
 
 | Frogcs-owned component | Canonical local evidence/implementation | Contribution to future synthesis |
 |---|---|---|
-| **RC6 locked paper** | \`paper/\`, \`provenance/CURRENT_RESULTS.json\`, \`release/jae-multisite-rc6\` | Observed rain-associated chorus spatial configuration and own-site history. **Read-only**. |
-| **Independent acoustic history** | \`research/scripts/nps_glkn_strict_history.py\`, \`research/results/nps_glkn_history/\` | Species-specific strong calling history beyond broad hydroperiod class; not fish/tadpole or predation. |
+| **RC6 locked paper** | `paper/`, `provenance/CURRENT_RESULTS.json`, `release/jae-multisite-rc6` | Observed rain-associated chorus spatial configuration and own-site history. **Read-only**. |
+| **Independent acoustic history** | `research/scripts/nps_glkn_strict_history.py`, `research/results/nps_glkn_history/` | Species-specific strong calling history beyond broad hydroperiod class; not fish/tadpole or predation. |
 | **Phenology & same-waterbody proxy bridge** | Future Carroll coverage audit and stage-linked pond-year panel | Whether prior calls predict measured overwintered larva, with held-out source/pond/year evaluation. |
-| **Stage interaction topology** | \`research/STAGE_INTERACTION_EVIDENCE_V0_1.csv\`, frozen GloBI/source-QC results | Hypothesized size-stage predator/prey edges, *not* simultaneous local feeding. |
+| **Stage interaction topology** | `research/STAGE_INTERACTION_EVIDENCE_V0_1.csv`, frozen GloBI/source-QC results | Hypothesized size-stage predator/prey edges, *not* simultaneous local feeding. |
 | **Wetland-water and vegetation exposure** | Stage-hydrology design; future verified wetland surveys | Physical dry/reset timing, encounter conditions and competing habitat explanations. |
-| **Integrated model & QA** | This contract, manifest, \`research/scripts/stage_legacy_integration_gate.py\` | Model M0/M1/M2, response-blind checks, evidence gates, and shared reporting within frogcs. |
+| **Integrated model & QA** | This contract, manifest, `research/scripts/stage_legacy_integration_gate.py` | Model M0/M1/M2, response-blind checks, evidence gates, and shared reporting within frogcs. |
 
 No external portfolio management repository or physical repository merge is required. Other projects' mathematical ideas can inform implementations, but the source-linked frog ecology, integration logic, data contracts, code, and eventual manuscript remain **within frogcs**. Re-use methods with correct attribution; do not equate mathematical analogy with new frog field evidence.
 
