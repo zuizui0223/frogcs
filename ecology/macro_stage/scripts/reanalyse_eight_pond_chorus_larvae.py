@@ -117,7 +117,7 @@ def circular(a,b):
         out[co]+=1/n
     return out
 
-def enemy_reference(traps,enemy):
+def enemy_reference(traps,enemy,frog_taxon=None):
     groups=defaultdict(list)
     for r in traps:groups[(r["pond"],r["year"])].append(r)
     result={};cellrows=[]
@@ -125,7 +125,7 @@ def enemy_reference(traps,enemy):
         law=[1.];obs=0;ex=0.
         for (pond,year),data in sorted(groups.items()):
             data=sorted(data,key=lambda r:r["date"])
-            frog=[r["frog_larvae"]>0 for r in data]
+            frog=[(r.get(frog_taxon) or 0)>0 for r in data] if frog_taxon else [r["frog_larvae"]>0 for r in data]
             partner=[(r.get(enemy) or 0)>0 for r in data]
             co=sum(x and y for x,y in zip(frog,partner))
             marginal=sum(frog)*sum(partner)/len(data)
@@ -183,6 +183,28 @@ def summarize(traps,calls,audit,historical_positive_calls,out):
                 r["fish"]=(r.get("Bass") or 0)+(r.get("GreenSunfish") or 0)
         guild[source],arr=enemy_reference(traps,source)
         cells.extend(arr)
+    taxon_naiad={}
+    for larva_code in ("R.cla","H.ver","B.woo","R.sph","P.cru"):
+        taxon_naiad[STAGE_CODES[larva_code]],_=enemy_reference(traps,"Naiad",frog_taxon=larva_code)
+    # Compare naiad-positive fractions with the SAME calendar and pond/year
+    # for two species; this conditions shared pond/year season and enemy prevalence.
+    paired_taxon=[]
+    for (pond,year),rs in sorted(by.items()):
+        frog_a=[(r.get("R.cla") or 0)>0 for r in rs]
+        frog_b=[(r.get("H.ver") or 0)>0 for r in rs]
+        if not any(frog_a) or not any(frog_b):continue
+        enemy=[(r.get("Naiad") or 0)>0 for r in rs]
+        delta=(sum(a and n for a,n in zip(frog_a,enemy))/sum(frog_a)
+               - sum(b and n for b,n in zip(frog_b,enemy))/sum(frog_b))
+        paired_taxon.append({"pond":pond,"year":year,
+            "R_cla_larval_weeks":sum(frog_a),"H_ver_larval_weeks":sum(frog_b),
+            "delta_co_captured_naiad_share_Rcla_minus_Hver":delta})
+    p3=[x for x in paired_taxon if min(x["R_cla_larval_weeks"],x["H_ver_larval_weeks"])>=3]
+    paired_summary={"eligible_same_pondyears":len(paired_taxon),
+        "Rclamitans_higher_overlap_n":sum(x["delta_co_captured_naiad_share_Rcla_minus_Hver"]>0 for x in paired_taxon),
+        "both_larval_species_ge3_weeks_n":len(p3),
+        "higher_with_ge3weeks_n":sum(x["delta_co_captured_naiad_share_Rcla_minus_Hver"]>0 for x in p3),
+        "median_naiad_overlap_fraction_difference_ge3weeks":statistics.median(x["delta_co_captured_naiad_share_Rcla_minus_Hver"] for x in p3) if p3 else None}
     taxon={}
     for sp in sorted(STAGE_CODES.values()):
         vv=[x for x in lags if x["species_code"]==sp]
@@ -208,6 +230,7 @@ def summarize(traps,calls,audit,historical_positive_calls,out):
             "pond_week_x_taxon_acoustic_trap_matches_ge5of7":paired,
             "pond_year_species_first_call_first_larva_pairs":len(lags),
             "source_qc":audit,"species_stage_lag":taxon,"cross_year_larval_carryover":carryover,"guild_week_alignment":guild,
+            "taxon_specific_naiad_alignment":taxon_naiad,"same_pond_year_Rclamitans_vs_Hversicolor_naiad":paired_summary,
             "aquatic_vegetation_measured":False,
             "co_captures_are_predation":False,
             "adult_chorus_equals_true_laying_date":False,
@@ -220,7 +243,7 @@ def summarize(traps,calls,audit,historical_positive_calls,out):
     write_csv("aquatic_pondyear_guild_cocapture.csv",cells)
     (out/"ecological_result.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
     print(json.dumps(result,indent=2,sort_keys=True))
-    if len(lags)!=102 or guild["Naiad"]["fixed"]["observed"]!=303 or len(valid_previous)!=20:
+    if len(lags)!=102 or guild["Naiad"]["fixed"]["observed"]!=303 or len(valid_previous)!=20 or taxon_naiad["RCL"]["fixed"]["observed"]!=223 or taxon_naiad["HV"]["fixed"]["observed"]!=30:
         raise RuntimeError("original-source analysis failed previously observed group counts")
     return result
 
