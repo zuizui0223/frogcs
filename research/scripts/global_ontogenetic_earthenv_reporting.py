@@ -105,9 +105,9 @@ def gather_groups(records,eligible_stage,geo,habitat):
     return qualifying,monthly,strict,dict(qa)
 
 
-def average(values,measure):
+def average(habitat,cells,measure):
     index={"flooded":1,"openwater":2,"herbaceous":3}[measure]
-    return statistics.mean(values[x][index] for x in values)
+    return statistics.mean(habitat[cell][index] for cell in cells)
 
 
 def stratum_estimates(groups,habitat,min_per_stage):
