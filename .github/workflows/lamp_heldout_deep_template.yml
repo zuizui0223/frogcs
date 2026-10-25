@@ -1,0 +1,31 @@
+name: LAMP held-out deep-template test
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "revision/LAMP_HELDOUT_DEEP_TEMPLATE_TEST_V0_1.md"
+      - "scripts/lamp/run_lamp_heldout_deep_template_v0_1.py"
+      - ".github/workflows/lamp_heldout_deep_template.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check pandas numpy
+      - name: Run frozen LAMP holdout test
+        run: python scripts/lamp/run_lamp_heldout_deep_template_v0_1.py
+      - name: Upload one-shot receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: lamp-heldout-deep-template-receipt
+          path: external/LAMP_HELDOUT_DEEP_TEMPLATE_RECEIPT_V0_1.json

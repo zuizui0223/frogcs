@@ -30,6 +30,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check -q matplotlib numpy
+      - name: External LAMP header preflight (draft branch only)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'external/lamp-validation-v1'
+        run: python scripts/lamp/preflight_lamp_public_holdout.py
       - name: Render canonical figures
         run: python revision/build_pulse_template_figures.py
 
