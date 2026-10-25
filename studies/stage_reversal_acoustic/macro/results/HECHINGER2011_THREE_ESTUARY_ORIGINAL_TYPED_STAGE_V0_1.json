@@ -1,0 +1,195 @@
+{
+  "status": "POSTHOC_ORIGINAL_ESTUARY_TYPED_STAGE_TAXONOMY_AUDIT",
+  "as_of": "2026-10-25",
+  "citation": "Hechinger et al. 2011, Ecology 92:791, DOI 10.1890/10-1383.1",
+  "source": {
+    "repo": "globalbioticinteractions/hechinger2011",
+    "pinned_git_commit": "28e6836db3fe18d17e029187971d94e9af8bf9d1",
+    "files": {
+      "Metaweb_Links.txt": "7defe6a366a2efb8fe738df8f51671d41328cce7",
+      "Metaweb_Nodes.txt": "7d4fc3a6707fb72fd90b0b146209e0f5b86851f6"
+    },
+    "notes": "Same 2011 source/metaweb; site flags for CSM/EPB/BSQ; free-living consumer resource links mostly estimated and original site links are not dated realized attacks"
+  },
+  "sites_metadata": {
+    "CSM": "Carpinteria Salt Marsh, California",
+    "EPB": "Estero de Punta Banda, Baja California",
+    "BSQ": "Bahía Falsa, Bahía San Quintín"
+  },
+  "meta": {
+    "n_meta_links": 11270,
+    "n_nodes_site_rows": 919,
+    "n_global_distinct_node_ids": 500,
+    "n_present_any_site": 9247,
+    "n_present_no_site": 2023,
+    "n_site_presence_links": 13966
+  },
+  "totals": {
+    "stage_shift_strict_species_all_classes": 768,
+    "stage_shift_with_morphospecies_placeholders": 803,
+    "non_species_placeholder_excess": 35,
+    "strict_predation_stage_shift_site_pairs": 20,
+    "bivalve_module_site_pairs": 20
+  },
+  "sites": {
+    "CSM": {
+      "site_nodes": 273,
+      "site_present_links": 3971,
+      "stage_species_edges_all_classes": 1948,
+      "structural_reciprocal_all_classes": 304,
+      "stage_shift_all_classes_strict_species": 268,
+      "stage_shift_all_classes_including_parasite": 239,
+      "stage_shift_all_classes_nonparasite": 29,
+      "stage_shift_all_classes_with_morphospecies_placeholder": 281,
+      "morphospecies_placeholder_extra_candidate_pairs": 13,
+      "predation_only": {
+        "stage_species_edges": 629,
+        "unique_pairs": 617,
+        "structural_reciprocal_pairs": 10,
+        "stage_shift_candidate_pairs": 10
+      },
+      "bivalve_motif": {
+        "n_pairs": 10,
+        "n_double_adult_to_other_species_larva": 10,
+        "species": [
+          "Macoma secta",
+          "Nuttallia nuttallii",
+          "Saxidomus nuttalli",
+          "Tagelus affinis",
+          "Tagelus californianus"
+        ],
+        "pair_names": [
+          "Macoma secta::Nuttallia nuttallii",
+          "Macoma secta::Saxidomus nuttalli",
+          "Macoma secta::Tagelus affinis",
+          "Macoma secta::Tagelus californianus",
+          "Nuttallia nuttallii::Saxidomus nuttalli",
+          "Nuttallia nuttallii::Tagelus affinis",
+          "Nuttallia nuttallii::Tagelus californianus",
+          "Saxidomus nuttalli::Tagelus affinis",
+          "Saxidomus nuttalli::Tagelus californianus",
+          "Tagelus affinis::Tagelus californianus"
+        ]
+      },
+      "site_link_type_counts": {
+        "commensalism": 1,
+        "concurrent predation on symbionts": 1215,
+        "detritivory": 45,
+        "macroparasitism": 511,
+        "micropredation": 90,
+        "parasite intraguild antagonism": 165,
+        "parasitic castration": 22,
+        "parasitoid infection": 1,
+        "pathogen infection": 62,
+        "predation": 874,
+        "predation on free-living non-feeding stage": 294,
+        "trophic transmission": 526,
+        "trophically transmitted parasitism": 165
+      }
+    },
+    "EPB": {
+      "site_nodes": 356,
+      "site_present_links": 5998,
+      "stage_species_edges_all_classes": 2189,
+      "structural_reciprocal_all_classes": 275,
+      "stage_shift_all_classes_strict_species": 242,
+      "stage_shift_all_classes_including_parasite": 215,
+      "stage_shift_all_classes_nonparasite": 27,
+      "stage_shift_all_classes_with_morphospecies_placeholder": 255,
+      "morphospecies_placeholder_extra_candidate_pairs": 13,
+      "predation_only": {
+        "stage_species_edges": 783,
+        "unique_pairs": 772,
+        "structural_reciprocal_pairs": 10,
+        "stage_shift_candidate_pairs": 10
+      },
+      "bivalve_motif": {
+        "n_pairs": 10,
+        "n_double_adult_to_other_species_larva": 10,
+        "species": [
+          "Chione californiensis",
+          "Chione fluctifraga",
+          "Geukensia demissa",
+          "Laevicardium substriatum",
+          "Tagelus affinis"
+        ],
+        "pair_names": [
+          "Chione californiensis::Chione fluctifraga",
+          "Chione californiensis::Geukensia demissa",
+          "Chione californiensis::Laevicardium substriatum",
+          "Chione californiensis::Tagelus affinis",
+          "Chione fluctifraga::Geukensia demissa",
+          "Chione fluctifraga::Laevicardium substriatum",
+          "Chione fluctifraga::Tagelus affinis",
+          "Geukensia demissa::Laevicardium substriatum",
+          "Geukensia demissa::Tagelus affinis",
+          "Laevicardium substriatum::Tagelus affinis"
+        ]
+      },
+      "site_link_type_counts": {
+        "commensalism": 1,
+        "concurrent predation on symbionts": 2039,
+        "detritivory": 59,
+        "macroparasitism": 556,
+        "micropredation": 97,
+        "parasite intraguild antagonism": 165,
+        "parasitic castration": 27,
+        "parasitoid infection": 6,
+        "pathogen infection": 71,
+        "predation": 1539,
+        "predation on free-living non-feeding stage": 673,
+        "trophic transmission": 581,
+        "trophically transmitted parasitism": 184
+      }
+    },
+    "BSQ": {
+      "site_nodes": 290,
+      "site_present_links": 3997,
+      "stage_species_edges_all_classes": 1536,
+      "structural_reciprocal_all_classes": 284,
+      "stage_shift_all_classes_strict_species": 258,
+      "stage_shift_all_classes_including_parasite": 248,
+      "stage_shift_all_classes_nonparasite": 10,
+      "stage_shift_all_classes_with_morphospecies_placeholder": 267,
+      "morphospecies_placeholder_extra_candidate_pairs": 9,
+      "predation_only": {
+        "stage_species_edges": 345,
+        "unique_pairs": 343,
+        "structural_reciprocal_pairs": 0,
+        "stage_shift_candidate_pairs": 0
+      },
+      "bivalve_motif": {
+        "n_pairs": 0,
+        "n_double_adult_to_other_species_larva": 0,
+        "species": [],
+        "pair_names": []
+      },
+      "site_link_type_counts": {
+        "commensalism": 1,
+        "concurrent predation on symbionts": 1114,
+        "detritivory": 55,
+        "macroparasitism": 583,
+        "micropredation": 83,
+        "parasite intraguild antagonism": 165,
+        "parasitic castration": 23,
+        "parasitoid infection": 1,
+        "pathogen infection": 55,
+        "predation": 967,
+        "predation on free-living non-feeding stage": 185,
+        "trophic transmission": 615,
+        "trophically transmitted parasitism": 150
+      }
+    }
+  },
+  "source_ontology": "Strict name filter requires genus + lower-case epithet ≥2 letters. A broader source-label filter would accept placeholder Himasthla B, adding 35 apparent parasite-linked candidates; both filters retain exactly 20 bivalve-larval stage-change predation-only site-pairs.",
+  "ecological_interpretation": "All 20 strict predation-only structural stage-shift site-pairs are two five-bivalve-species complete reciprocal adult-consumer → larval-resource cliques (10 per CSM and EPB). They do NOT form 20 independent directly observed attacks or time-resolved shifts.",
+  "validation_limitations": [
+    "No per-edge LinkEvidence/observed-vs-modelled and no date or direct attack event fields in Hechinger original Metaweb_Links.",
+    "Stage labels and typed inferred links document potential feeding opportunity, not measured reversal timing or receiver risk response.",
+    "Same source metaweb underlies 3 estuaries so site-level results are correlated.",
+    "Filter excludes genus only, higher taxa and non-binomial placeholders; adult-larva bivalve motifs still a potential prediction not confirmed realized ingestion.",
+    "Do not combine trophic transmission, parasitism, micropredation and Predation under one interaction type."
+  ],
+  "direct_observed_stage_switch_events": "NOT_IDENTIFIABLE",
+  "acoustic_warning_events": "NOT_IN_SOURCE"
+}
