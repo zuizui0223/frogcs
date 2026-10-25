@@ -104,16 +104,18 @@ def source_rows(wb, name):
     if bytrain!={"sham":6,"larval":6,"adult":6}:
         raise ValueError("source randomization pail counts are not six per arm: "+str(bytrain))
     empty=[p for p in pails.values() if not p["values"]["adult"] or not p["values"]["larval"]]
-    if empty:
-        print("PAIL_TEST_CUE_SCHEMA_GATE",json.dumps({
-           "system":name,
-           "n_pails":len(pails),
-           "n_pails_with_both_cues":len(pails)-len(empty),
-           "incomplete_by_training":dict(Counter(p["training"] for p in empty)),
-           "missing_cue_by_training":dict(Counter(p["training"]+"|"+c for p in empty
-                                                   for c in TEST if not p["values"][c]))
-        }))
-        raise ValueError("missing test-cue within experimental pail; no silent sample filtering")
+    gate={"system":name,"n_pails":len(pails),
+          "n_pails_with_both_cues":len(pails)-len(empty),
+          "incomplete_by_training":dict(Counter(p["training"] for p in empty)),
+          "missing_cue_by_training":dict(Counter(p["training"]+"|"+c for p in empty
+                                                  for c in TEST if not p["values"][c]))}
+    print("PAIL_TEST_CUE_SCHEMA_GATE",json.dumps(gate))
+    # This rule is declared in the original source-only analysis amendment.
+    if name=="beetle":
+        if empty:
+            raise ValueError("unexpected missing beetle training-pail cue cells")
+    elif len(empty)!=1 or gate["missing_cue_by_training"]!={"sham|adult":1}:
+        raise ValueError("salamander cue missingness differs from frozen source-only amendment")
     grouped={t:[] for t in TRAIN}
     for p in pails.values():
         grouped[p["training"]].append({v:mean(p["values"][v]) for v in TEST})
@@ -125,11 +127,15 @@ def source_rows(wb, name):
         "pre_below_6":pre_not_active,"source_train_cue_counts":
             {t:{c:rawgroups[(t,c)] for c in TEST} for t in TRAIN},
         "pail_counts_by_training":dict(bytrain),
+        "pail_test_cue_missingness":gate["missing_cue_by_training"],
+        "n_pails_with_both_cues":gate["n_pails_with_both_cues"],
         "grouped":grouped
     }
 
 def effects(grouped):
-    mu={t:{cue:mean([p[cue] for p in grouped[t]]) for cue in TEST} for t in TRAIN}
+    mu={t:{cue:mean([p[cue] for p in grouped[t] if p[cue] is not None]) for cue in TEST} for t in TRAIN}
+    if any(mu[t][cue] is None for t in TRAIN for cue in TEST):
+        raise ValueError("one treatment×test-cue cell has zero observed pail means")
     cross_larval_to_adult=mu["larval"]["adult"]-mu["sham"]["adult"]
     cross_adult_to_larval=mu["adult"]["larval"]-mu["sham"]["larval"]
     same_larval=mu["larval"]["larval"]-mu["sham"]["larval"]
@@ -146,13 +152,22 @@ def effects(grouped):
 def bootstrap(grouped):
     rng=random.Random(SEED)
     bs={x:[] for x in effects(grouped)[0]}
-    for _ in range(B):
+    attempts=0
+    while len(bs["cross_stage_mean"])<B and attempts<2*B:
+        attempts+=1
         sub={}
         for key in TRAIN:
             p=grouped[key];sub[key]=[p[rng.randrange(len(p))] for __ in p]
-        effects1,_=effects(sub)
+        try:
+            effects1,_=effects(sub)
+        except ValueError as e:
+            if "zero observed pail means" not in str(e):
+                raise
+            continue
         for key,val in effects1.items():
             bs[key].append(val)
+    if len(bs["cross_stage_mean"])!=B:
+        raise ValueError("insufficient original-pail bootstrap support")
     point,_=effects(grouped)
     return {key:{"estimate":rounded(point[key]),
                  "bootstrap95":(rounded(percentile(v,.025)),rounded(percentile(v,.975))),
@@ -204,6 +219,10 @@ def analyze():
             "n_paper_reported_tested":DOCUMENTED_2024_TESTED[name],
             "source_minus_published_reported_n":source["n_data_rows"]-DOCUMENTED_2024_TESTED[name],
             "group_cell_source_counts":source["source_train_cue_counts"],
+            "n_pail_cue_pairs_complete":source["n_pails_with_both_cues"],
+            "missing_pail_test_cue_cells":source["pail_test_cue_missingness"],
+            "available_pail_count_by_group":{t:{cue:sum(p[cue] is not None for p in source["grouped"][t]) for cue in TEST} for t in TRAIN},
+            "complete_pair_only_sensitivity":{k:rounded(v) for k,v in effects({t:[p for p in ps if all(p[c] is not None for c in TEST)] for t,ps in source["grouped"].items()})[0].items()},
             "pail_level_mean_change":{t:{cue:rounded(mu[t][cue]) for cue in TEST} for t in TRAIN},
             "contrasts":stats,
             "leave_one_pail_out":influence(source["grouped"]),
