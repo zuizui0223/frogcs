@@ -1,0 +1,57 @@
+{
+  "method": "Post-readback predator-fixed, guild+prey-stage and footprint matched nondocumented alternative prey; GBIF 1° stage-grid month phase ratio",
+  "source_GloBI": "https://doi.org/10.5281/zenodo.22691479",
+  "source_GBIF": "https://github.com/zuizui0223/frogcs/actions/runs/40190152042",
+  "unconditional_full_GloBI_eligible_stage_patterns": 18,
+  "GBIF_original_cube_QC": {
+    "rows": 655843,
+    "source_observations": 4026251,
+    "stage_pairs_atleast1": 257,
+    "stage_pairs_atleast5": 183
+  },
+  "GBIF_taxa_with_focal_guild_verified": 258,
+  "matched_exclusion_counts": {
+    "fewer_than_two_geography_and_effort_matched_undocumented_species": 7
+  },
+  "matched_pairs_each_threshold": [
+    {
+      "minimum_GBIF_records_per_taxon_stage_gridmonth": 1,
+      "matched_GloBI_directed_stage_pairs": 11,
+      "distinct_predator_species": 7,
+      "focal_phase_ratio_greater_than_median_control": 7,
+      "focal_phase_ratio_smaller_or_equal_than_controls": 4,
+      "mean_focal_minus_control_phase_ratio": -0.03025575744279675,
+      "median_focal_minus_control_phase_ratio": 0.05999269026107168,
+      "source_tiers": {
+        "iNaturalist": 10,
+        "Quick_Pond": 1
+      },
+      "posthoc_predator_cluster_bootstrap_interval_95": null,
+      "bootstrap_qualification": "not estimable with at least 8 independently labeled predator taxa"
+    },
+    {
+      "minimum_GBIF_records_per_taxon_stage_gridmonth": 5,
+      "matched_GloBI_directed_stage_pairs": 11,
+      "distinct_predator_species": 7,
+      "focal_phase_ratio_greater_than_median_control": 4,
+      "focal_phase_ratio_smaller_or_equal_than_controls": 7,
+      "mean_focal_minus_control_phase_ratio": -0.08220581710406084,
+      "median_focal_minus_control_phase_ratio": -0.0632129383842348,
+      "source_tiers": {
+        "iNaturalist": 10,
+        "Quick_Pond": 1
+      },
+      "posthoc_predator_cluster_bootstrap_interval_95": null,
+      "bootstrap_qualification": "not estimable with at least 8 independently labeled predator taxa"
+    }
+  ],
+  "boundaries": [
+    "These prey controls are UNDOCUMENTED in the available 881 complete-stage GloBI set, not demonstrated ecological non-prey.",
+    "Matching used prey-stage report volume and shared grid-year footprint before checking month synchrony.",
+    "A 1° cell across one month is not a pond, live attack, species encounter or local food web.",
+    "Repeated prey, predator, iNaturalist source and metaweb rows are not independent; phase ratios are observational and highly effort-biased.",
+    "Control species and focal interactions were defined using the same curated GloBI/GBIF ecosystem and might reflect unequal reporting.",
+    "Plant cover and rain effects are unmeasured here; do not infer causality or true stage-specific reversal.",
+    "Small focal set, no global prevalence, no p-value, and comparisons after viewing phase-shift data are exploratory."
+  ]
+}
