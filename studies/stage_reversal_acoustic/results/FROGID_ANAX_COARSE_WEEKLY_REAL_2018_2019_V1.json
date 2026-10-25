@@ -1,0 +1,502 @@
+{
+  "status": "ORIGINAL_SOURCES_BROAD_REGION_SINGLE_SEASON_DESCRIPTIVE_LAG_ONLY",
+  "scope": "Independent frogcs PR140 study; scientific JAE RC6 untouched",
+  "date_checked": "2026-10-25",
+  "original_sources": {
+    "anax": {
+      "doi": "10.17632/9swstxknpz.1",
+      "original_sha256": "25fabdd0df0d8b679ff23033abbb9fc175067c835f1bd1ef41a5fc4890360c74",
+      "season_data": "2018-09-04 through 2019-04-09",
+      "source_note": "Dated wetland emergence counts; author predation entries month-only without dates or wetland keys"
+    },
+    "frogid": {
+      "gbif_datasetKey": "47c9fee2-619a-481c-a114-386bc4748256",
+      "doi": "10.15468/wazqft",
+      "dataset_version": "7.0",
+      "gbif_interpreted_at": "2026-09-14",
+      "scientificName_query": "Litoria aurea",
+      "acceptedName": "Ranoidea aurea",
+      "source_query": "https://api.gbif.org/v1/occurrence/search?datasetKey=47c9fee2-619a-481c-a114-386bc4748256&eventDate=2018-09-04,2019-04-09&decimalLatitude=-33.25,-32.55&decimalLongitude=151.2,152.0&limit=0&facet=eventID&facetLimit=1800",
+      "scope": "coarse Newcastle macro region (70x80 km approx), NOT source wetland coincidence",
+      "sensitive_species_public_geoprivacy_m": 10000
+    }
+  },
+  "audited_totals": {
+    "GBIF_frog_occurrence_rows": 1731,
+    "GBIF_frog_rows_with_eventID": 1720,
+    "GBIF_frog_rows_missing_eventID": 11,
+    "GBIF_distinct_frog_positive_recording_eventIDs": 982,
+    "GBIF_focal_Litoria_positive_records": 6,
+    "GBIF_focal_distinct_positive_eventIDs": 6,
+    "focal_share_of_identified_frog_positive_recordings": 0.006109979633401222,
+    "Anax_valid_wetland_survey_visits": 298,
+    "Anax_emerging_individuals": 233,
+    "Anax_surveyed_ISO_weeks": 26,
+    "original_monthly_only_predation_records": 14
+  },
+  "week_diagnostics": {
+    "all_FrogID_weeks": 32,
+    "Anax_survey_weeks": 26,
+    "Anax_weekly_peak_start": "2018-10-29",
+    "Anax_weekly_peak_individuals": 62,
+    "focal_call_positive_event_weeks": 5,
+    "focal_call_positive_event_total": 6,
+    "first_focal_source_positive_date": "2018-10-18",
+    "first_Anax_emergence_date": "2018-09-25",
+    "Anax_peak_week_begins_after_first_source_positive_record_by_days": 11
+  },
+  "exploratory_temporal_correlations": [
+    {
+      "lag_weeks": 0,
+      "orientation": "CALLS_T_VS_EMERGENCE_T",
+      "n_pairs": 26,
+      "r": 0.01104
+    },
+    {
+      "lag_weeks": 1,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_PLUS_LAG",
+      "n_pairs": 25,
+      "r": -0.09248
+    },
+    {
+      "lag_weeks": 2,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_PLUS_LAG",
+      "n_pairs": 24,
+      "r": 0.05833
+    },
+    {
+      "lag_weeks": 4,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_PLUS_LAG",
+      "n_pairs": 22,
+      "r": -0.06343
+    },
+    {
+      "lag_weeks": 8,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_PLUS_LAG",
+      "n_pairs": 20,
+      "r": -0.19224
+    },
+    {
+      "lag_weeks": 1,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_MINUS_LAG_NEGATIVE_TIME_CONTROL",
+      "n_pairs": 25,
+      "r": 0.13809
+    },
+    {
+      "lag_weeks": 2,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_MINUS_LAG_NEGATIVE_TIME_CONTROL",
+      "n_pairs": 25,
+      "r": 0.45189
+    },
+    {
+      "lag_weeks": 4,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_MINUS_LAG_NEGATIVE_TIME_CONTROL",
+      "n_pairs": 24,
+      "r": 0.36396
+    },
+    {
+      "lag_weeks": 8,
+      "orientation": "CALLS_T_VS_EMERGENCE_T_MINUS_LAG_NEGATIVE_TIME_CONTROL",
+      "n_pairs": 21,
+      "r": 0.26065
+    }
+  ],
+  "weekly_source_aggregate": [
+    {
+      "week_start": "2018-09-03",
+      "species_rows": 45,
+      "unique_recording_events": 41,
+      "records_with_event_id": 45,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2018-09-10",
+      "species_rows": 59,
+      "unique_recording_events": 36,
+      "records_with_event_id": 59,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2018-09-17",
+      "species_rows": 34,
+      "unique_recording_events": 19,
+      "records_with_event_id": 34,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 14,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2018-09-24",
+      "species_rows": 30,
+      "unique_recording_events": 22,
+      "records_with_event_id": 30,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 19
+    },
+    {
+      "week_start": "2018-10-01",
+      "species_rows": 173,
+      "unique_recording_events": 82,
+      "records_with_event_id": 173,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": null,
+      "anax_emergers": null
+    },
+    {
+      "week_start": "2018-10-08",
+      "species_rows": 145,
+      "unique_recording_events": 65,
+      "records_with_event_id": 145,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 14,
+      "anax_emergers": 20
+    },
+    {
+      "week_start": "2018-10-15",
+      "species_rows": 223,
+      "unique_recording_events": 90,
+      "records_with_event_id": 219,
+      "missing_event_id_rows": 4,
+      "focal_positive_recording_events": 1,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 38
+    },
+    {
+      "week_start": "2018-10-22",
+      "species_rows": 96,
+      "unique_recording_events": 64,
+      "records_with_event_id": 93,
+      "missing_event_id_rows": 3,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": null,
+      "anax_emergers": null
+    },
+    {
+      "week_start": "2018-10-29",
+      "species_rows": 41,
+      "unique_recording_events": 25,
+      "records_with_event_id": 41,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 62
+    },
+    {
+      "week_start": "2018-11-05",
+      "species_rows": 160,
+      "unique_recording_events": 92,
+      "records_with_event_id": 159,
+      "missing_event_id_rows": 1,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 28
+    },
+    {
+      "week_start": "2018-11-12",
+      "species_rows": 160,
+      "unique_recording_events": 82,
+      "records_with_event_id": 160,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 2,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 11
+    },
+    {
+      "week_start": "2018-11-19",
+      "species_rows": 40,
+      "unique_recording_events": 25,
+      "records_with_event_id": 40,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 1,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 3
+    },
+    {
+      "week_start": "2018-11-26",
+      "species_rows": 120,
+      "unique_recording_events": 61,
+      "records_with_event_id": 120,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": null,
+      "anax_emergers": null
+    },
+    {
+      "week_start": "2018-12-03",
+      "species_rows": 40,
+      "unique_recording_events": 27,
+      "records_with_event_id": 40,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 1,
+      "anax_valid_wetland_visits": 12,
+      "anax_emergers": 7
+    },
+    {
+      "week_start": "2018-12-10",
+      "species_rows": 38,
+      "unique_recording_events": 32,
+      "records_with_event_id": 38,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 1,
+      "anax_valid_wetland_visits": 12,
+      "anax_emergers": 9
+    },
+    {
+      "week_start": "2018-12-17",
+      "species_rows": 36,
+      "unique_recording_events": 23,
+      "records_with_event_id": 36,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 4
+    },
+    {
+      "week_start": "2018-12-24",
+      "species_rows": 10,
+      "unique_recording_events": 7,
+      "records_with_event_id": 10,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 9
+    },
+    {
+      "week_start": "2018-12-31",
+      "species_rows": 13,
+      "unique_recording_events": 9,
+      "records_with_event_id": 13,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 13
+    },
+    {
+      "week_start": "2019-01-07",
+      "species_rows": 62,
+      "unique_recording_events": 30,
+      "records_with_event_id": 60,
+      "missing_event_id_rows": 2,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 4
+    },
+    {
+      "week_start": "2019-01-14",
+      "species_rows": 7,
+      "unique_recording_events": 6,
+      "records_with_event_id": 7,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 2
+    },
+    {
+      "week_start": "2019-01-21",
+      "species_rows": 11,
+      "unique_recording_events": 6,
+      "records_with_event_id": 10,
+      "missing_event_id_rows": 1,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2019-01-28",
+      "species_rows": 10,
+      "unique_recording_events": 10,
+      "records_with_event_id": 10,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 3
+    },
+    {
+      "week_start": "2019-02-04",
+      "species_rows": 6,
+      "unique_recording_events": 5,
+      "records_with_event_id": 6,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2019-02-11",
+      "species_rows": 4,
+      "unique_recording_events": 4,
+      "records_with_event_id": 4,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 14,
+      "anax_emergers": 1
+    },
+    {
+      "week_start": "2019-02-18",
+      "species_rows": 8,
+      "unique_recording_events": 7,
+      "records_with_event_id": 8,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 20,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2019-02-25",
+      "species_rows": 8,
+      "unique_recording_events": 8,
+      "records_with_event_id": 8,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2019-03-04",
+      "species_rows": 14,
+      "unique_recording_events": 12,
+      "records_with_event_id": 14,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": null,
+      "anax_emergers": null
+    },
+    {
+      "week_start": "2019-03-11",
+      "species_rows": 37,
+      "unique_recording_events": 27,
+      "records_with_event_id": 37,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2019-03-18",
+      "species_rows": 57,
+      "unique_recording_events": 33,
+      "records_with_event_id": 57,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 3,
+      "anax_emergers": 0
+    },
+    {
+      "week_start": "2019-03-25",
+      "species_rows": 5,
+      "unique_recording_events": 2,
+      "records_with_event_id": 5,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": null,
+      "anax_emergers": null
+    },
+    {
+      "week_start": "2019-04-01",
+      "species_rows": 38,
+      "unique_recording_events": 29,
+      "records_with_event_id": 38,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": null,
+      "anax_emergers": null
+    },
+    {
+      "week_start": "2019-04-08",
+      "species_rows": 1,
+      "unique_recording_events": 1,
+      "records_with_event_id": 1,
+      "missing_event_id_rows": 0,
+      "focal_positive_recording_events": 0,
+      "anax_valid_wetland_visits": 11,
+      "anax_emergers": 0
+    }
+  ],
+  "monthly_source_aggregate": [
+    {
+      "month": "2018-09",
+      "species_rows": 168,
+      "unique_recording_events": 118,
+      "focal_positive_recording_events": 0,
+      "anax_emergers": 19,
+      "anax_valid_wetland_visits": 47
+    },
+    {
+      "month": "2018-10",
+      "species_rows": 652,
+      "unique_recording_events": 309,
+      "focal_positive_recording_events": 1,
+      "anax_emergers": 81,
+      "anax_valid_wetland_visits": 29
+    },
+    {
+      "month": "2018-11",
+      "species_rows": 497,
+      "unique_recording_events": 270,
+      "focal_positive_recording_events": 3,
+      "anax_emergers": 81,
+      "anax_valid_wetland_visits": 40
+    },
+    {
+      "month": "2018-12",
+      "species_rows": 133,
+      "unique_recording_events": 96,
+      "focal_positive_recording_events": 2,
+      "anax_emergers": 29,
+      "anax_valid_wetland_visits": 46
+    },
+    {
+      "month": "2019-01",
+      "species_rows": 95,
+      "unique_recording_events": 53,
+      "focal_positive_recording_events": 0,
+      "anax_emergers": 19,
+      "anax_valid_wetland_visits": 44
+    },
+    {
+      "month": "2019-02",
+      "species_rows": 30,
+      "unique_recording_events": 28,
+      "focal_positive_recording_events": 0,
+      "anax_emergers": 4,
+      "anax_valid_wetland_visits": 67
+    },
+    {
+      "month": "2019-03",
+      "species_rows": 117,
+      "unique_recording_events": 78,
+      "focal_positive_recording_events": 0,
+      "anax_emergers": 0,
+      "anax_valid_wetland_visits": 14
+    },
+    {
+      "month": "2019-04",
+      "species_rows": 39,
+      "unique_recording_events": 30,
+      "focal_positive_recording_events": 0,
+      "anax_emergers": 0,
+      "anax_valid_wetland_visits": 11
+    }
+  ],
+  "inferential_ceiling": "NO_CALIBRATED_ACOUSTIC_EARLY_WARNING_OR_TROPHIC_SWITCH_DATE",
+  "source_alignment_limits": [
+    "FrogID data are occurrence-level call-positive species records, not standardized recording opportunities including silence. The denominator is 982 distinct submissions containing at least one identified frog species and with eventID.",
+    "11 taxon rows have missing eventID and are excluded from submission denominator; their 2018-2019 monthly occurrence counts remain in 1731.",
+    "Target species public coordinates are obscured to about 10km and 70x80km regional inclusion cannot prove wetland identity.",
+    "Only one Anax original observed season and six Litoria-positive source recordings; these are not six independent habitat replicates.",
+    "No rainfall, recorder selection or local effort matched; observational weekly Pearson r values are purely exploratory without corrected p values.",
+    "A zero source species-positive in FrogID week is not evidence of no callers; lack of Anax survey in week is represented null, not zero.",
+    "Predation records are month-only and not attributable to the matching week/site. No dated biological role-switch or heterospecific alarm responses measured."
+  ]
+}
