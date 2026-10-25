@@ -103,7 +103,16 @@ def source_rows(wb, name):
     bytrain=Counter(p["training"] for p in pails.values())
     if bytrain!={"sham":6,"larval":6,"adult":6}:
         raise ValueError("source randomization pail counts are not six per arm: "+str(bytrain))
-    if any(not p["values"]["adult"] or not p["values"]["larval"] for p in pails.values()):
+    empty=[p for p in pails.values() if not p["values"]["adult"] or not p["values"]["larval"]]
+    if empty:
+        print("PAIL_TEST_CUE_SCHEMA_GATE",json.dumps({
+           "system":name,
+           "n_pails":len(pails),
+           "n_pails_with_both_cues":len(pails)-len(empty),
+           "incomplete_by_training":dict(Counter(p["training"] for p in empty)),
+           "missing_cue_by_training":dict(Counter(p["training"]+"|"+c for p in empty
+                                                   for c in TEST if not p["values"][c]))
+        }))
         raise ValueError("missing test-cue within experimental pail; no silent sample filtering")
     grouped={t:[] for t in TRAIN}
     for p in pails.values():
