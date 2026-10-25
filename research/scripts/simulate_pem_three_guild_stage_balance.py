@@ -46,6 +46,7 @@ BREEDING = {
 S_PHASES = (-.12, 0., .12)
 D_PHASES = (-.18, 0., .18)
 VEGETATION = (.15, .7)
+CROWDING_COST=(0.,1.5) # alternative synthetic concentrated-pulse cohort competition assumption
 RISK_REGIMES = {
     "weak_dragonfly_cue":(.008,.055),
     "strong_dragonfly_cue":(.13,.28),
@@ -153,7 +154,7 @@ def net_dragonfly_hazard_derivative(p,edge,vegetation=.35):
     return direct+indirect
 
 
-def scenarios():
+def scenarios(crowding=0.):
     params=draw_parameter_ensemble(NUM_DRAWS)
     series=[]
     for pem in PEM:
@@ -176,6 +177,12 @@ def scenarios():
                                 stage["predator_satiation_attack_factor"])
                             p["r"][:,0]*=math.exp(-1.2*stage[
                                 "frog_older_to_younger_size_mismatch_pair_probability"])
+                            # Opposing mechanism: synchronized large cohorts may
+                            # deplete resources or aggregate predators; arbitrary
+                            # strength 0/1.5, NOT measured in any PEM wetland.
+                            pulse_crowding_factor=math.exp(-crowding*max(
+                                0.,(.09/max(sigma,.015)-1))/4.)
+                            p["r"][:,0]*=pulse_crowding_factor
                             sim=integrate_years(
                                 p,conditioned,vegetation=vegetation,
                                 years=YEARS,last=LAST_YEARS)
@@ -189,6 +196,8 @@ def scenarios():
                                 salamander_larval_shift_fraction_year=sp,
                                 dragonfly_larval_shift_fraction_year=dp,
                                 odonate_suppression_of_salamander=cue,
+                                pulse_crowding_cost_hypothesis=crowding,
+                                pulse_crowding_fecundity_factor_synthetic=pulse_crowding_factor,
                                 **stage,**edge,
                                 net_dragonfly_effect_lowers_frog_hazard_fraction_synthetic=float(np.mean(deriv<0)),
                                 median_signed_derivative_of_frog_kill_hazard_synthetic=float(np.median(deriv)),
@@ -204,11 +213,14 @@ def summarize(rows):
     out=[]
     for pem in PEM:
         for label in BREEDING:
+          for crowd in CROWDING_COST:
             ss=[x for x in rows
-                if x["site_class"]==pem and x["breeding_cohort_timing"]==label]
+                if x["site_class"]==pem and x["breeding_cohort_timing"]==label
+                and x["pulse_crowding_cost_hypothesis"]==crowd]
             out.append(dict(
                 PEM_class=pem,
                 frog_breeding=label,
+                opposing_pulse_crowding_assumption=crowd,
                 number_synthetic_scenarios=len(ss),
                 median_breeding_egg_to_metamorph_water_window_fraction=float(np.median(
                     [x["frog_egg_to_metamorph_wet_window_fraction"] for x in ss])),
@@ -229,23 +241,35 @@ def summarize(rows):
             ))
     # Focus does synchrony always improve 3guild persistence?
     f={}
-    for (pem,vegetation,sphase,dphase,cue) in {
+    for (pem,vegetation,sphase,dphase,cue,crowd) in {
         (x["site_class"],x["vegetation_refuge_proxy"],
          x["salamander_larval_shift_fraction_year"],
          x["dragonfly_larval_shift_fraction_year"],
-         x["odonate_suppression_of_salamander"]) for x in rows
+         x["odonate_suppression_of_salamander"],
+         x["pulse_crowding_cost_hypothesis"]) for x in rows
     }:
-        key=(pem,vegetation,sphase,dphase,cue)
+        key=(pem,vegetation,sphase,dphase,cue,crowd)
         items={x["breeding_cohort_timing"]:x for x in rows if (
             x["site_class"],x["vegetation_refuge_proxy"],
             x["salamander_larval_shift_fraction_year"],
             x["dragonfly_larval_shift_fraction_year"],
-            x["odonate_suppression_of_salamander"])==key}
+            x["odonate_suppression_of_salamander"],
+            x["pulse_crowding_cost_hypothesis"])==key}
         a=items["narrow_cohort"]["synthetic_3guild_persistence_fraction_from_four_initial_conditions"]
         b=items["broad_cohort"]["synthetic_3guild_persistence_fraction_from_four_initial_conditions"]
         f[key]=a-b
     diffs=list(f.values())
+    by_assumption={}
+    for crowd in CROWDING_COST:
+        valid=[v for k,v in f.items() if k[-1]==crowd]
+        by_assumption[str(crowd)]=dict(
+            scenario_pairs=len(valid),
+            narrow_higher=sum(v>1e-9 for v in valid),
+            diffuse_higher=sum(v< -1e-9 for v in valid),
+            ties=sum(abs(v)<=1e-9 for v in valid),
+            median_narrow_minus_diffuse=float(np.median(valid)))
     return out,dict(
+        comparison_by_assumed_density_crowding=by_assumption,
         comparison_scenarios=len(diffs),
         narrow_more_three_guild_persistence=sum(x>1e-9 for x in diffs),
         diffuse_more_three_guild_persistence=sum(x< -1e-9 for x in diffs),
@@ -268,7 +292,9 @@ def write(out,all_rows,table,phase_comparison):
         seed=SEED,draws=NUM_DRAWS,years=YEARS,
         source_code_in_repo="research/scripts/simulate_pem_three_guild_stage_balance.py",
         parameter_origin="USER-HYPOTHESIS_MOTIVATED_TOY_VALUES_NO_FITTED_PARAMETERS",
-        PEM_scenarios=PEM,per_class_breeding=table,
+        PEM_scenarios=PEM,
+        competing_mass_breeding_crowding_coefficients_synthetic=CROWDING_COST,
+        per_class_breeding=table,
         cohort_synchrony_persistence_comparison=phase_comparison,
         sample_case_with_dragonfly_net_frog_hazard_reduction=next(
             (x for x in all_rows if x[
@@ -283,6 +309,7 @@ def write(out,all_rows,table,phase_comparison):
             "Beverton-Holt persistence from all-present and rare-start initial conditions is NOT mathematical mutual invasion growth of each focal species into independent two-species resident attractors.",
             "A formula-induced positive/negative dragonfly effect reflects the presence of direct D→F attacks and indirect D⊣S⊣F suppression; not a real population benefit.",
             "Frog cohort age-size mismatch cannibalism comes from Gaussian brood timing illustrative formula, not empirically measured genotype/stage distributions.",
+            "The no-crowding scenario builds in predator dilution/cohort match, whereas high cost imposes density competition or predator aggregation; opposed assumptions produce a theoretical counterexample, not fitted PEM evidence.",
             "Do not transport the Australian frog/dragonfly species-pair direction reversal into the Japanese Rana/Hynobius/Aeshna identity.",
             "PEM1A/C/F are NWI classifications, not verified locations of any current frogcs acoustic stop; fixed 1990s-2000s EarthEnv is not same as PEM polygons.",
             "No field-calibrated plant refuge, dragonfly emergence, salamander attack, social chorus benefits, aquatic eDNA, or variation in water temperature is modeled.",
@@ -318,6 +345,8 @@ def selftest():
     far,_=scenario_edges("PEM1F",.018,0.,.18)
     assert edge_long["dragonfly_nymph_eats_frog_tadpole"] > far[
         "dragonfly_nymph_eats_frog_tadpole"]
+    assert math.exp(-1.5*max(0.,(.09/.018-1))/4)<.25
+    assert math.exp(-1.5*max(0.,(.09/.095-1))/4)==1.
     print("PEM_STAGE_TRIAD_SYNTHETIC_WETLAND_AND_COHORT_QA_PASS")
 
 
@@ -329,7 +358,7 @@ def main():
     if options.self_test:
         selftest()
     else:
-        rows=scenarios()
+        rows=[x for crowd in CROWDING_COST for x in scenarios(crowding=crowd)]
         groups,phase=summarize(rows)
         write(options.out,rows,groups,phase)
 
