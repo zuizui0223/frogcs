@@ -1,0 +1,13 @@
+# Girard, Robin & Wezel 2023 — Dombes fishpond macrophyte data
+
+Original publication: Girard L, Robin J, Wezel A (2023), *Drying out fish ponds, for an entire growth season, as an agroecological practice: maintaining primary producers for fish production and biodiversity conservation*, data DOI [10.5281/zenodo.8158543](https://doi.org/10.5281/zenodo.8158543). Licence reported by Zenodo for v1: **Creative Commons Attribution 1.0 Generic (CC BY 1.0)**. Retain creators/DOI/license in derivative data and figures.
+
+- `Girard_2023_Dataset.tab` is the original 2023 semi-colon-separated text obtained from Zenodo's public file endpoint; `Girard_2023_Metadata.tab` contains the original French variable-to-description mapping. Source URLs:
+  - https://zenodo.org/records/8158543/files/Girard%20et%20al.%20-%202023%20-%20Dataset.tab?download=1
+  - https://zenodo.org/records/8158543/files/Girard%20et%20al.%20-%202023%20-%20Metadata.tab?download=1
+- 134 observations from **85 distinct named ponds**; 29 names have ≥2 records, 78 records from those repeatedly represented ponds (2007–2014 combined; dataset lacks an explicit individual observation calendar year field).
+- `Evolage`: years since last pond dry-out; 1–20 years recorded, `Annee.d.eau` bins Y1/Y2/Y3/Y4/Y>5. It is a **past disturbance/history variable**, not “rain since last precipitation.”
+- Macrophyte species richness measured in 122 records, macrophyte coverage score in 122, benthic invertebrate density in **47**, net fish yield in **105**. Never assume 134 independent ponds.
+- **Data-quality caveats:** `recouvrement.plantes` has values >100 despite "% cover" in metadata (maximum 144.4); cannot treat as a probability/fraction, cannot impose an arbitrary 100% cutoff. We retain the provided measurement as a numeric coverage **index** and assess outlier influence. The `Densité.invertébrés` metadata displays `3.log(1+(100.EFF))` while source data include values in the thousands; transformations/units require source confirmation before reporting biological density per square meter.
+- All models are associative cross-sectional/partially repeated pond-level prediction screens: **no frogs, acoustic chorus, emerged-versus-submerged vegetation, taxon-specific predation events, eDNA, or controlled drying treatment** are in these files. Fish yield is also affected by fish stocking/management; do not claim plant impacts on natural fish abundance.
+- Data reanalysis script: `research/scripts/french_pond_history_macrophytes.py` (pond-blocked cross-validation, within-pond age perturbation); output is **supporting** mechanism benchmark, never a frogcs RC6 causal or independent frog-site-history confirmation.
