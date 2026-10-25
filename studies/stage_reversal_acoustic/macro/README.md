@@ -51,6 +51,25 @@ The nine named case contexts include direct reciprocal predation (frog×dragonfl
 
 **Nine documented contexts do not represent nine exchangeable effect sizes; we did not fit a pooled trophic-reversal meta-model.** Original study data for novel sensory-response systems are documented but not yet jointly available for such a model.
 
+## Second independent original-data layer: original stage-coded trophic edges × measured cue memory
+
+**Source-supported, but do not pool numerical endpoints across different experiments.** The new integration is documented in [the original-evidence macro synthesis (Japanese)](results/ONTO_TIME_ORIGINAL_STAGE_CUE_MACRO_SYNTHESIS_20261025.md).
+
+**Stage-resolved food-web reconstruction** — Independently replayed the [actual 2012 Quick Pond original source](https://github.com/globalbioticinteractions/preston2012), pinned commit `10676b041317d933f16c089b819f6669da42396b` and two file Git blob hashes. Of **1,905** source food-web links, **1,000 predation links** comprise **50 observed / 40 inferred / 910 modelled** source evidence categories. Under species-level stage labels, **126** non-self directed predation links form **68** species pairs, **11** of which have links in both directions. Only **one** reciprocal pair has two source-tagged `observed` directions, and it is **larval *Anax junius* ↔ larval *Taricha torosa***, not an ontogenetic switch. **Zero reciprocal species pairs have observed-to-observed trophic role transition across distinct stages.** e.g. larval *Anax junius* → larval *Anaxyrus boreas* is source-observed, but the reverse adult-toad → dragonfly links are only source-modelled. **This is an evidence-quality finding, not proof that natural stage reversals do not exist.** Data: [all 11 pairs and link evidence](results/PRESTON2012_ORIGINAL_STAGE_RECIPROCITY_EVIDENCE_TIER_V0_1.json). Re-run: [pinned original parser](audit_preston_original_stage_edges.py), [8/8 CI PASS](https://github.com/zuizui0223/frogcs/actions/runs/40167052076).
+
+**Source-original predator-stage odor learning experiment** — Retrieved 2024 Thapa et al. *Behavioral Ecology* source Excel (DOI [10.1093/beheco/arae014](https://doi.org/10.1093/beheco/arae014)) from **NLM/PMC official open data** `PMC10965031.1` (SHA256 `a200b66072c5de204efe91536066d66c9cf8b513c5075c321fc44391544d9fa5`). 588 published original rows across two experimental sheets (**308 beetle, 280 salamander**), each 18 independently conditioned pails (six per odor-training arm). Source-recorded tested n in article is larger (360 / 357); discrepancy unconfirmed. Salmonander control had one missing adult cue pail; no imputation. Equal-pail analysis of `post-pre` movement shows:
+
+| Predator source | Cross-stage cue transfer minus sham | Same-stage minus sham | Cross minus same (10k pail-bootstrap 95% percentile) |
+| --- | ---: | ---: | ---: |
+| Beetles | **−3.709** | **−4.130** | **+0.421** [−2.261,+3.520] |
+| Salamanders | **+0.789** | **−6.044** | **+6.834** [+0.026,+13.482] |
+
+Negative means stronger movement suppression relative to untrained sham exposed to same cue. Both average transfer directions preserved in the raw. Salamander source-derived cross–same difference maintains positive sign under all 18 leave-one-pail-out evaluations. These are **chemical predator odors**, not frog acoustic alarm signals and not experiments on the attack-direction switch. Raw XLSX itself is not redistributed. [Original pail-level 10k bootstrap results](results/THAPA_ORIGINAL_588_PAIL_REANALYSIS_20261025.json), [reproduce from NLM](analyze_thapa_original_pail.py), [8/8 CI PASS](https://github.com/zuizui0223/frogcs/actions/runs/40167052212).
+
+**Source accessibility:** Urushihara & Takatsu 2026 size refuge/backswimmer and Baker 2025 salamander predation Dryad original CSV downloads remain 401/unavailable (6 of 7 originally identified files); source metadata, headers/experimental design from public README are not original outcome tests.
+
+**New core framing:** ecological risk transition R(stage, environment), consumer stage-specific receiver recognition I(stage, modality) and realized spatiotemporal opportunity O(region,time) are *distinct state dimensions*. In no source are all three observed jointly for the same species pair/site/time. Therefore a universal joint effect or frog-call warning role remains a **future test**, not an established effect.
+
 ## Next scientifically discriminating macro dataset
 
 The required primary source is a **stage-specific directed trophic event**:
