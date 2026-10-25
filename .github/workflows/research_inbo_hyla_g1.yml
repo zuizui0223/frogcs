@@ -1,0 +1,44 @@
+name: Research — INBO same-site Hyla adult-to-larval G1
+on:
+  push:
+    branches:
+      - integration/stage-legacy-unified-2026-10-25
+    paths:
+      - research/scripts/inbo_hyla_acoustic_to_larva_g1.py
+      - research/INBO_HYLA_ACOUSTIC_TO_LARVA_G1_FROZEN_2026-10-26.md
+      - .github/workflows/research_inbo_hyla_g1.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  held-out-cross-stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact scientific solver
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 scikit-learn==1.6.1
+      - name: Verify forward within-site-stage estimate only
+        run: |
+          python research/scripts/inbo_hyla_acoustic_to_larva_g1.py --out /tmp/inbo_hyla_g1.json
+      - name: Confirm no trophic or RC6 causal conclusion
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/inbo_hyla_g1.json'))
+          assert x['causal_stage_predation_interpretation'] is False
+          assert x['reproduction_success_interpretation'] is False
+          assert x['no_reanalysis_of_RC6'] is True
+          assert x['raw_sensitive_location_ids_exported'] is False
+          print('INBO_G1_CLAIM_LIMITS_PASS')
+          PY
+      - name: Store aggregate raw-source experimental receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inbo_hyla_acoustic_to_larva_g1
+          path: /tmp/inbo_hyla_g1.json
+          if-no-files-found: warn
