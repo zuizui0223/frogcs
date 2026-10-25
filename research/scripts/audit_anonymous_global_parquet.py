@@ -89,7 +89,10 @@ def parquet_footer(url):
         raise RuntimeError("Range footer metadata response differs from expected size")
     # The Parquet footer can be parsed without actual row data.
     meta = pq.read_metadata(BufferReader(b"PAR1"+tail))
-    fields=[{"name":name, "type":str(meta.schema.column(i).physical_type)}
+    fields=[{"name":name,
+             "path":meta.schema.column(i).path,
+             "type":str(meta.schema.column(i).physical_type),
+             "logical":str(meta.schema.column(i).logical_type)}
             for i,name in enumerate(meta.schema.names)]
     return {
         "url":url,"http_bytes":length,"range_supported":True,
