@@ -118,8 +118,8 @@ def reduce_rowgroups(parquet,groups,names,counts,stats,per_species):
         frame["month"]=m
         frame["latcell"]=x
         frame["loncell"]=z
-        per_species.update({sp:per_species.get(sp,0)+int(n)
-                            for sp,n in frame.species.value_counts().items()})
+        for sp,n in frame.species.value_counts().items():
+            per_species[sp]+=int(n)
         grouped=frame.groupby(
             ["species","life_stage","latcell","loncell","year","month"],
             dropna=False).size()
