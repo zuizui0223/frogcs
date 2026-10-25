@@ -54,7 +54,7 @@ def validate_and_read(root):
         raise ValueError("Carroll original source digest changed")
     if hashlib.md5(b.read_bytes()).hexdigest()!=SOURCE_CALL_MD5:
         raise ValueError("Carter original source digest changed")
-    traps=[];calls=defaultdict(dict);audit=Counter()
+    traps=[];calls=defaultdict(dict);audit=Counter();historical_positive_calls=defaultdict(list)
     for pond in range(1,9):
         it=xml_rows(a,f"xl/worksheets/sheet{pond}.xml")
         header=next(it);labels={j:str(v) for j,v in header.items()}
@@ -76,7 +76,7 @@ def validate_and_read(root):
         if not all(isinstance(x,(float,int)) for x in (pond,yr,stamp)):
             audit["original_non_numeric_row"]+=1
             continue
-        if not 1<=pond<=8 or not START<=yr<=END:continue
+        if not 1<=pond<=8 or not START-1<=yr<=END:continue
         when=excel_date(stamp)
         if when.year!=yr:
             audit["original_year_calendar_conflict"]+=1
@@ -87,12 +87,14 @@ def validate_and_read(root):
         if not isinstance(count,(int,float)) or not 0<=count<=30:
             audit["missing_or_invalid_call_score"]+=1
             continue
+        if count>0:historical_positive_calls[int(pond),int(yr),sp].append(when)
+        if yr<START:continue
         day=(int(pond),when)
         if sp in calls[day]:raise ValueError("duplicate original calling taxon-day")
         calls[day][sp]=float(count)
     if len(traps)!=2080 or len(calls)!=13045:
         raise ValueError(f"source survey grain changed: weekly={len(traps)} call days={len(calls)}")
-    return traps,calls,dict(audit)
+    return traps,calls,dict(audit),historical_positive_calls
 
 def convolve(left,right):
     out=[0.]*(len(left)+len(right)-1)
@@ -142,7 +144,7 @@ def enemy_reference(traps,enemy):
           "conditional_upper_tail":round(sum(law[obs:]),8)}
     return result,cellrows
 
-def summarize(traps,calls,audit,out):
+def summarize(traps,calls,audit,historical_positive_calls,out):
     out.mkdir(parents=True,exist_ok=True)
     adults=defaultdict(list); weekly_calls=0
     for (pond,day),taxa in calls.items():
@@ -160,7 +162,11 @@ def summarize(traps,calls,audit,out):
             if positive and ac:
                 first_l=min(r["date"] for r in positive)
                 first_c=min(ac)
+                prior=historical_positive_calls.get((pond,year-1,sp),[])
+                last_prior=max(prior) if prior else None
                 lags.append({"pond":pond,"year":year,"species_code":sp,
+                  "last_previous_year_adult_call":str(last_prior) if last_prior else "",
+                  "days_first_larva_after_last_prior_year_call":(first_l-last_prior).days if last_prior else "",
                   "days_first_larva_minus_first_chorus":(first_l-first_c).days,
                   "first_larva_at_year_initial_trap":first_l==min(r["date"] for r in assessed),
                   "first_larval_catch":str(first_l),"first_adult_call":str(first_c)})
@@ -187,13 +193,21 @@ def summarize(traps,calls,audit,out):
           "larva_detected_before_call_n":sum(x<0 for x in t),
           "non_left_censored_groups_n":len(unleft),
           "non_left_censored_larva_before_call_n":sum(x["days_first_larva_minus_first_chorus"]<0 for x in unleft)}
+    prechorus_rcl=[r for r in lags if r["species_code"]=="RCL" and r["days_first_larva_minus_first_chorus"]<0]
+    valid_previous=[r for r in prechorus_rcl if r["last_previous_year_adult_call"]]
+    rcl_lag=[r["days_first_larva_after_last_prior_year_call"] for r in valid_previous]
+    carryover={"rcl_prior_larva_before_current_call_n":len(prechorus_rcl),
+        "rcl_prior_year_chorus_observed_for_prechorus_larva_n":len(valid_previous),
+        "rcl_median_days_since_prior_year_last_call":statistics.median(rcl_lag) if rcl_lag else None,
+        "rcl_prior_year_to_current_larva_interval_days_minmax":[min(rcl_lag),max(rcl_lag)] if rcl_lag else None,
+        "not_tracking_individual_cohorts":True}
     result={"analysis":"eight_pond_carter_carroll_2002_2006_exploratory_chorus_larva_enemy_windows",
             "source_Carroll_sha256":SOURCE_LARVA_SHA,"source_Carter_md5":SOURCE_CALL_MD5,
             "n_independent_ponds":8,"n_pondyears":len(by),
             "weekly_aquatic_trap_visits":len(traps),"daily_pond_acoustic_assessments_with_at_least_one_valid_taxon":len(calls),
             "pond_week_x_taxon_acoustic_trap_matches_ge5of7":paired,
             "pond_year_species_first_call_first_larva_pairs":len(lags),
-            "source_qc":audit,"species_stage_lag":taxon,"guild_week_alignment":guild,
+            "source_qc":audit,"species_stage_lag":taxon,"cross_year_larval_carryover":carryover,"guild_week_alignment":guild,
             "aquatic_vegetation_measured":False,
             "co_captures_are_predation":False,
             "adult_chorus_equals_true_laying_date":False,
@@ -206,7 +220,7 @@ def summarize(traps,calls,audit,out):
     write_csv("aquatic_pondyear_guild_cocapture.csv",cells)
     (out/"ecological_result.json").write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
     print(json.dumps(result,indent=2,sort_keys=True))
-    if len(lags)!=102 or guild["Naiad"]["fixed"]["observed"]!=303:
+    if len(lags)!=102 or guild["Naiad"]["fixed"]["observed"]!=303 or len(valid_previous)!=20:
         raise RuntimeError("original-source analysis failed previously observed group counts")
     return result
 
