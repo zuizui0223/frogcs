@@ -1,0 +1,150 @@
+{
+  "status": "SOURCE_BLIND_TAXON_SITE_OPPORTUNITY_ONLY",
+  "prior_design": "research/INBO_EXACT_LOCATION_CHORUS_LARVA_BRIDGE_G0_SPEC_2026-10-26.md",
+  "sources": {
+    "adult_chorus": {
+      "archive_sha256": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+      "source_events": 963,
+      "event_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "unique_locations": 186,
+      "species_row_events": 1436,
+      "reported_taxon_tokens": [
+        "Bufo bufo",
+        "Epidalea calamita",
+        "Hyla arborea",
+        "Pelobates fuscus",
+        "Pelophylax esculenta synklepton",
+        "Pelophylax kl. esculentus",
+        "Pelophylax lessonae",
+        "Pelophylax lessonae/ kl. esculentus",
+        "Pelophylax ridibundus",
+        "Rana arvalis",
+        "Rana temporaria"
+      ],
+      "focal_taxon_stage_label_counts": {
+        "Hyla arborea": {
+          "adult": 635
+        },
+        "Pelobates fuscus": {
+          "adult": 200
+        }
+      },
+      "physical_location_identifiers_exported": false,
+      "measured_covariate_types_present": []
+    },
+    "larval_census": {
+      "archive_sha256": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+      "source_events": 697,
+      "event_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "unique_locations": 217,
+      "species_row_events": 2995,
+      "reported_taxon_tokens": [
+        "Bufo bufo",
+        "Hyla arborea",
+        "Ichthyosaura alpestris",
+        "Lissotriton helveticus",
+        "Lissotriton spec.",
+        "Lissotriton vulgaris",
+        "Pelobates fuscus",
+        "Pelophylax esculenta synklepton",
+        "Pelophylax lessonae",
+        "Pelophylax ridibundus",
+        "Rana arvalis",
+        "Rana temporaria",
+        "Triturus cristatus"
+      ],
+      "focal_taxon_stage_label_counts": {
+        "Hyla arborea": {
+          "larva": 448,
+          "adult": 217,
+          "metamorph": 229
+        },
+        "Pelobates fuscus": {
+          "larva": 4,
+          "metamorph": 2,
+          "adult": 2
+        }
+      },
+      "physical_location_identifiers_exported": false,
+      "measured_covariate_types_present": [
+        "oppervlakte waterpartij",
+        "pH (zuurtegraad)",
+        "permanente waterkolom",
+        "sampling effort type",
+        "waterkwaliteit"
+      ]
+    }
+  },
+  "shared_exact_location_ID_count": 96,
+  "conflicting_nonempty_locality_label_sites": 0,
+  "within_source_alias_variation_sites": 0,
+  "focal_taxa": {
+    "Hyla arborea": {
+      "adult_annotated_species_events": 635,
+      "larval_annotated_species_events": 419,
+      "exact_same_site_year_taxon_coverage": 245,
+      "chorus_event_precedes_larval_event_site_year": 245,
+      "distinct_shared_locationIDs_without_export": 93,
+      "year_counts": {
+        "2016": 35,
+        "2017": 25,
+        "2018": 26,
+        "2019": 17,
+        "2020": 47,
+        "2021": 20,
+        "2022": 18,
+        "2023": 22,
+        "2024": 17,
+        "2025": 18
+      },
+      "source_overlap_has_10plus_sites": true,
+      "source_sample_contains_10plus_eligible_location_years": true,
+      "stage_presence_or_absence_NOT_OPENED": true
+    },
+    "Pelobates fuscus": {
+      "adult_annotated_species_events": 145,
+      "larval_annotated_species_events": 4,
+      "exact_same_site_year_taxon_coverage": 2,
+      "chorus_event_precedes_larval_event_site_year": 2,
+      "distinct_shared_locationIDs_without_export": 2,
+      "year_counts": {
+        "2019": 2
+      },
+      "source_overlap_has_10plus_sites": false,
+      "source_sample_contains_10plus_eligible_location_years": false,
+      "stage_presence_or_absence_NOT_OPENED": true
+    }
+  },
+  "no_stage_outcomes_or_egg_success_inspected": true,
+  "underlying_waterbody_identity_verified": false,
+  "site_identifiers_redistributed": false,
+  "cross_stage_predation_supported": false,
+  "readiness": "G1_FIT_NOT_AUTHORIZED_UNTIL_PHYSICAL_POND_AND_TRUE_SAMPLED_ZEROS_CHECKED",
+  "provenance": {
+    "source_workflow": "https://github.com/zuizui0223/frogcs/actions/runs/40210499491",
+    "job_id": 121220502377,
+    "post_selection_summary_only": true
+  }
+}
