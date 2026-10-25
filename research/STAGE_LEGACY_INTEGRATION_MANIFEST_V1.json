@@ -102,7 +102,7 @@
       "external_doi": "10.5061/dryad.js47k",
       "original_file_id": 38621,
       "original_md5": "c0c50fc176eac6e054e5f75b8c7a24d9",
-      "readiness": "metadata_verified_original_workbook_stage_predator_columns_unchecked",
+      "readiness": "original_metadata_pinned_workbook_HTTP401_no_response_or_predator_matrix",
       "can_join": "Only by original verified pond×year identifiers with actual stage/effort; no implicit predator data"
     },
     {
@@ -111,7 +111,7 @@
       "external_doi": "10.6073/pasta/9eb31b2e15146e6a71f3fea8d3724aaa",
       "edi_release": "edi.398.4",
       "gbif_mirror_doi": "10.15468/dypfbs",
-      "readiness": "dictionary_verified_raw_edi_source_403_in_initial_probe",
+      "readiness": "native_original_edi_species_and_water_HTTP403_GBIF_mirror_13862_rows_but_no_original_pool_and_stage_columns",
       "can_join": "Only verified same pool×date source columns; egg and tadpole counts do not prove survival"
     },
     {
@@ -121,8 +121,29 @@
         "10.15468/d4bu8j",
         "10.15468/swgure"
       ],
-      "readiness": "publisher_sql_field_mapping_verified_actual_archives_and_site_overlap_unchecked",
-      "can_join": "Only exact original locationID/eventDate and taxon; never blurred coordinates"
+      "readiness": "actual_original_CC0_archives_source_SHA_passed_96_shared_location_ids_247_site_years_245_Hyla_pairs_and_mixed_G1_performance",
+      "can_join": "Exact publisher locationID and same-year temporal order; Hyla 245 site-years / 93 sources. Incomplete local water and fish observations; cannot infer larval survival or trophic mechanism",
+      "source_qualification": "research/results/part2_g0/observed_source_eligibility.json",
+      "taxon_qualification": "research/results/part2_g0/inbo_species_time_eligibility.json",
+      "G1_report": "research/results/part2_inbo_hyla_g1/REPORT.md",
+      "G1_json": "research/results/part2_inbo_hyla_g1/observed_results.json",
+      "cross_stage_empirical_result": {
+        "species": "Hyla arborea",
+        "eligible_site_years": 245,
+        "distinct_site_ids": 93,
+        "next_larva_present": 149,
+        "next_larva_absent": 96,
+        "past_chorus_present": 212,
+        "past_chorus_absent": 33,
+        "source_heldout_Brier_M0": 0.2582270389347674,
+        "source_heldout_Brier_M1": 0.2427116177606475,
+        "late_years_Brier_M0": 0.27839159389033974,
+        "late_years_Brier_M1": 0.3478624500206191,
+        "observed_event_permanent_water_column_covariate_count": 0,
+        "stable_temporal_transfer_supported": false,
+        "predation_identified": false,
+        "note": "Explore stage detection and prior adult reporting; no source-verified predator cohort or survival"
+      }
     },
     {
       "id": "stmarks_fish_hydroperiod",
@@ -130,7 +151,7 @@
       "external_doi": "10.5061/dryad.jp34d",
       "original_file_id": 51835,
       "original_md5": "12a7deaf1a8bf38fc122cb7661ee7f6c",
-      "readiness": "metadata_verified_original_workbook_not_parsed",
+      "readiness": "original_metadata_pinned_workbook_HTTP401_not_inspected",
       "can_join": "Verified same wetland×year encounter histories; no pond egg survival"
     }
   ],
@@ -168,27 +189,27 @@
     {
       "id": "G0",
       "name": "source-blind physical-site, species, time and stage coverage audit",
-      "status": "Carroll Dryad metadata fixed, original bytes BLOCKED; no response-blind pond-stage schema"
+      "status": "INBO original source schemas source-SHA and 96 source exact location IDs, 245 Hyla site-years qualified; ESGR original and Mohonk EDI unavailable; physical pond identity not independently geocoded"
     },
     {
       "id": "G1",
       "name": "verified same-pond cross-stage transition evidence, adult chorus/egg/larva with temporal and detection controls",
-      "status": "PENDING_G0_QUALIFIED_INDEPENDENT_DATA"
+      "status": "INBO exploratory recorded Hyla forward acoustic→larva comparison executed: out-of-site Brier improves +0.0155, later-years Brier WORSENS -0.0695; water column absent; no general transfer"
     },
     {
       "id": "G2",
       "name": "stage-predation/competition vs dynamic hydrology discrimination",
-      "status": "BLOCKED_UNTIL_PREDATOR_STAGE_PREY_FATE_AND_HYDROPERIOD_MEASURED_TOGETHER"
+      "status": "UNIDENTIFIABLE_NO_SAME_POND_PREDATOR_SIZE_STAGE_DENSITY_OR_PREY_EGG_SURVIVAL_AND_OBSERVED_DRYDOWN"
     },
     {
       "id": "G3",
       "name": "cross-geographic generality plus empirically constrained stage-network dynamics",
-      "status": "AWAITING_SOURCE_VALIDATED_STAGE_TRANSITIONS_AND_VITAL_RATES"
+      "status": "MODEL_CALIBRATION_NOT_AUTHORIZED_FROM_SYNTHETIC_STAGE_EDGES_OR_G1_UNSTABLE_ACOUSTIC_LARVA_SIGNAL"
     },
     {
       "id": "G4",
       "name": "single integrated flagship manuscript, with RC6 as frozen Part I",
-      "status": "EDITORIALLY_SELECTED_NOT_SCIENTIFICALLY_READY"
+      "status": "SINGLE_INTEGRATED_PAPER_IN_DEVELOPMENT_NOT_READY_UNTIL_G2"
     }
   ],
   "prior_claims": {
@@ -199,7 +220,12 @@
     "RC6_spatial_residual_mechanism_identified": false,
     "NPS_green_to_wood_annual_acoustic_suppression_supported": false,
     "NPS_green_to_wood_annual_acoustic_beta": 0.014321148927807066,
-    "NPS_wood_to_green_reverse_acoustic_positive_exploratory": true
+    "NPS_wood_to_green_reverse_acoustic_positive_exploratory": true,
+    "INBO_Hyla_cross_stage_source_paired_245_site_years": true,
+    "INBO_Hyla_siteheldout_Brier_gain_0p0155": true,
+    "INBO_Hyla_lateyear_transfer_supported": false,
+    "INBO_Hyla_hydroperiod_adjusted": false,
+    "INBO_Hyla_stage_predation_identified": false
   },
   "stop_rules": [
     "No modification of frozen RC6 paper, submission, provenance, spatial generator or NAAMP analysis paths.",
@@ -210,10 +236,12 @@
     "Primary NPS green→wood directional acoustic suppression H1A not supported; do not post-hoc retune taxon, lag or window to obtain negative coefficients.",
     "Carroll source metadata alone is not an acquired workbook or a verified adult-to-larval repeated-measures panel.",
     "Immediate RC6 stand-alone submission is on editorial hold per dated author decision; never claim the candidate is withdrawn or already submitted.",
-    "Use verified exact pond-level matched ecology for Part II, not merely a paper citation or 1-km co-occurrence. Stand-alone RC6 retained as fallback only after explicit future editorial decision."
+    "Use verified exact pond-level matched ecology for Part II, not merely a paper citation or 1-km co-occurrence. Stand-alone RC6 retained as fallback only after explicit future editorial decision.",
+    "INBO G1 site-block gain fails independent future-year transport (M0 Brier 0.27839 vs M1 0.34786 in 2024–25); do not claim general predictive superiority.",
+    "INBO 245 matched Hyla records have no usable permanent-water-column measurement or numeric larval effort at the focal event; do not call their M0 hydroperiod adjusted."
   ],
   "last_checked_on": "2026-10-26",
-  "integration_status": "INTEGRATED_PAPER_ROUTE_DECIDED_Rc6_SCIENCE_PROTECTED_H1A_UNSUPPORTED_NEW_PARTII_SOURCE_G0_IN_PROGRESS",
+  "integration_status": "ONE_FLAGSHIP_POLICY_RC6_LOCKED_INBO_STAGE_BRIDGE_MEASURED_MIXED_SITE_GAIN_TIME_LOSS_PREDATION_NOT_IDENTIFIED",
   "paper_strategy": {
     "decision_authority": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
     "decision_date": "2026-10-26",
