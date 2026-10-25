@@ -1,0 +1,396 @@
+{
+  "date": "2026-10-25",
+  "status": "QA_LAND_DOMINANT_EARTHENV_LT50_OPENWATER_POSTHOC",
+  "earthenv_1deg_source": "https://www.earthenv.org/landcover, Tuanmu & Jetz 2014, CC BY-NC 4.0",
+  "primary_source_GloBI": "https://doi.org/10.5281/zenodo.22691479",
+  "primary_source_GBIF": "https://github.com/zuizui0223/frogcs/actions/runs/40194946916",
+  "climate_source": "WorldClim 2.1 CRU-TS4.09 historical monthly precipitation 2010–2024 partial GBIF-only cached grid months",
+  "gbif_source_QC": {
+    "rows": 238034,
+    "source_observations": 1970585,
+    "stage_pairs_atleast1": 180,
+    "stage_pairs_atleast5": 105
+  },
+  "static_habitat_raster_QC": {
+    "EarthEnv_grid_coverage": {
+      "ocean_dominated": 37309,
+      "near_zero": 5567,
+      "low_intermediate": 7190,
+      "relatively_high": 2494
+    },
+    "EarthEnv_by_flooded_fraction_bin": {
+      "near_zero": {
+        "global_1deg_cells": 5567,
+        "median_flooded_vegetation_pct": 0,
+        "median_open_water_pct": 0.01854,
+        "median_generic_herbaceous_pct": 2.48396
+      },
+      "low_intermediate": {
+        "global_1deg_cells": 7190,
+        "median_flooded_vegetation_pct": 0.139965,
+        "median_open_water_pct": 0.8078799999999999,
+        "median_generic_herbaceous_pct": 2.3639900000000003
+      },
+      "relatively_high": {
+        "global_1deg_cells": 2494,
+        "median_flooded_vegetation_pct": 2.509585,
+        "median_open_water_pct": 3.312885,
+        "median_generic_herbaceous_pct": 2.075865
+      }
+    }
+  },
+  "stage_grid_background_coverage": {
+    "1": {
+      "by_tier": {
+        "low_intermediate": 76399,
+        "relatively_high": 6661,
+        "near_zero": 25414
+      },
+      "unmapped_site_stage_grid_years": 16047,
+      "excluded_by_grid_type": {
+        "ocean_dominated": 16047
+      }
+    },
+    "5": {
+      "by_tier": {
+        "relatively_high": 1110,
+        "low_intermediate": 13442,
+        "near_zero": 3641
+      },
+      "unmapped_site_stage_grid_years": 3719,
+      "excluded_by_grid_type": {
+        "ocean_dominated": 3719
+      }
+    }
+  },
+  "source_matched_prey_documented_edges": 56,
+  "discarded_source_edges_by_bin_reason": {
+    "5|near_zero|insufficient_true_partner_gridyears": 34,
+    "5|low_intermediate|fewer_than_two_matched_alternatives": 2,
+    "5|relatively_high|insufficient_true_partner_gridyears": 43,
+    "1|near_zero|insufficient_true_partner_gridyears": 8,
+    "1|relatively_high|insufficient_true_partner_gridyears": 20,
+    "5|low_intermediate|insufficient_true_partner_gridyears": 16,
+    "1|low_intermediate|insufficient_true_partner_gridyears": 2,
+    "5|relatively_high|fewer_than_two_matched_alternatives": 5,
+    "5|near_zero|fewer_than_two_matched_alternatives": 2
+  },
+  "comparison_by_threshold_and_background": [
+    {
+      "threshold": 1,
+      "environment_tier": "near_zero",
+      "source_documented_staged_edges": 48,
+      "distinct_predator_taxa": 28,
+      "source_iNat_links": 45,
+      "source_curated_links": 1,
+      "documented_above_matched_alternative": 24,
+      "documented_below_equal_matched_alternative": 24,
+      "median_focal_minus_alternative_phase_ratio": 0.008375122365726462,
+      "mean_focal_minus_alternative_phase_ratio": 0.18225743406662384,
+      "within_pair_rain_comparisons": 46,
+      "median_focal_minus_matched_prey_month_rain_mm": -1.1905632108190112,
+      "interpretation": "POSTHOC_OBSERVATION_REPORTING_ECOLOGICAL_BACKGROUND_ONLY"
+    },
+    {
+      "threshold": 1,
+      "environment_tier": "low_intermediate",
+      "source_documented_staged_edges": 54,
+      "distinct_predator_taxa": 33,
+      "source_iNat_links": 49,
+      "source_curated_links": 1,
+      "documented_above_matched_alternative": 28,
+      "documented_below_equal_matched_alternative": 26,
+      "median_focal_minus_alternative_phase_ratio": 0.021108058608058644,
+      "mean_focal_minus_alternative_phase_ratio": 0.21429995355761267,
+      "within_pair_rain_comparisons": 54,
+      "median_focal_minus_matched_prey_month_rain_mm": -1.6342858532613533,
+      "interpretation": "POSTHOC_OBSERVATION_REPORTING_ECOLOGICAL_BACKGROUND_ONLY"
+    },
+    {
+      "threshold": 1,
+      "environment_tier": "relatively_high",
+      "source_documented_staged_edges": 36,
+      "distinct_predator_taxa": 23,
+      "source_iNat_links": 32,
+      "source_curated_links": 0,
+      "documented_above_matched_alternative": 21,
+      "documented_below_equal_matched_alternative": 15,
+      "median_focal_minus_alternative_phase_ratio": 0.13130182669713042,
+      "mean_focal_minus_alternative_phase_ratio": 0.23630142382549083,
+      "within_pair_rain_comparisons": 33,
+      "median_focal_minus_matched_prey_month_rain_mm": 1.1367607311827896,
+      "interpretation": "POSTHOC_OBSERVATION_REPORTING_ECOLOGICAL_BACKGROUND_ONLY"
+    },
+    {
+      "threshold": 5,
+      "environment_tier": "near_zero",
+      "source_documented_staged_edges": 20,
+      "distinct_predator_taxa": 7,
+      "source_iNat_links": 20,
+      "source_curated_links": 0,
+      "documented_above_matched_alternative": 13,
+      "documented_below_equal_matched_alternative": 7,
+      "median_focal_minus_alternative_phase_ratio": 0.4261386639676108,
+      "mean_focal_minus_alternative_phase_ratio": 0.2783193761536465,
+      "within_pair_rain_comparisons": 20,
+      "median_focal_minus_matched_prey_month_rain_mm": -4.228963690476185,
+      "interpretation": "POSTHOC_OBSERVATION_REPORTING_ECOLOGICAL_BACKGROUND_ONLY"
+    },
+    {
+      "threshold": 5,
+      "environment_tier": "low_intermediate",
+      "source_documented_staged_edges": 38,
+      "distinct_predator_taxa": 21,
+      "source_iNat_links": 38,
+      "source_curated_links": 0,
+      "documented_above_matched_alternative": 19,
+      "documented_below_equal_matched_alternative": 19,
+      "median_focal_minus_alternative_phase_ratio": -0.002775277248740049,
+      "mean_focal_minus_alternative_phase_ratio": 0.29278846302396516,
+      "within_pair_rain_comparisons": 35,
+      "median_focal_minus_matched_prey_month_rain_mm": 0.38125820512820496,
+      "interpretation": "POSTHOC_OBSERVATION_REPORTING_ECOLOGICAL_BACKGROUND_ONLY"
+    },
+    {
+      "threshold": 5,
+      "environment_tier": "relatively_high",
+      "source_documented_staged_edges": 8,
+      "distinct_predator_taxa": 6,
+      "source_iNat_links": 8,
+      "source_curated_links": 0,
+      "documented_above_matched_alternative": 5,
+      "documented_below_equal_matched_alternative": 3,
+      "median_focal_minus_alternative_phase_ratio": 0.7963987764182426,
+      "mean_focal_minus_alternative_phase_ratio": 0.6252971413666522,
+      "within_pair_rain_comparisons": 6,
+      "median_focal_minus_matched_prey_month_rain_mm": -1.2435934615384667,
+      "interpretation": "POSTHOC_OBSERVATION_REPORTING_ECOLOGICAL_BACKGROUND_ONLY"
+    }
+  ],
+  "source_pairs_with_both_nearzero_and_high_flooded_bins": [
+    {
+      "threshold": 1,
+      "n_matched_source_pairs": 32,
+      "unique_predator_species": 20,
+      "median_high_minus_nearzero_focal_specificity": -0.028117363791445027
+    },
+    {
+      "threshold": 5,
+      "n_matched_source_pairs": 5,
+      "unique_predator_species": 3,
+      "median_high_minus_nearzero_focal_specificity": 0.68603889943074
+    }
+  ],
+  "top_focal_paired_gradient": [
+    {
+      "threshold": 5,
+      "predator": "Erythemis simplicicollis",
+      "prey": "Perithemis tenera",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -1.8325986776197145,
+      "high_background_pair_gridyears": 15,
+      "nearzero_background_pair_gridyears": 45
+    },
+    {
+      "threshold": 1,
+      "predator": "Libellula needhami",
+      "prey": "Celithemis eponina",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -1.7403874974314673,
+      "high_background_pair_gridyears": 119,
+      "nearzero_background_pair_gridyears": 15
+    },
+    {
+      "threshold": 1,
+      "predator": "Acisoma panorpoides",
+      "prey": "Ischnura senegalensis",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -1.7341279232466205,
+      "high_background_pair_gridyears": 28,
+      "nearzero_background_pair_gridyears": 15
+    },
+    {
+      "threshold": 5,
+      "predator": "Anax junius",
+      "prey": "Tramea lacerata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 1.3559078403583542,
+      "high_background_pair_gridyears": 10,
+      "nearzero_background_pair_gridyears": 25
+    },
+    {
+      "threshold": 1,
+      "predator": "Erythemis simplicicollis",
+      "prey": "Perithemis tenera",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -1.3154847945629726,
+      "high_background_pair_gridyears": 187,
+      "nearzero_background_pair_gridyears": 466
+    },
+    {
+      "threshold": 5,
+      "predator": "Ischnura elegans",
+      "prey": "Coenagrion puella",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 1.2753922636502542,
+      "high_background_pair_gridyears": 43,
+      "nearzero_background_pair_gridyears": 314
+    },
+    {
+      "threshold": 1,
+      "predator": "Erythemis simplicicollis",
+      "prey": "Argia moesta",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 0.9954683011185115,
+      "high_background_pair_gridyears": 21,
+      "nearzero_background_pair_gridyears": 321
+    },
+    {
+      "threshold": 1,
+      "predator": "Phanogomphus lividus",
+      "prey": "Phanogomphus exilis",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.960139981864697,
+      "high_background_pair_gridyears": 13,
+      "nearzero_background_pair_gridyears": 79
+    },
+    {
+      "threshold": 1,
+      "predator": "Anax longipes",
+      "prey": "Pantala flavescens",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 0.8647692307692307,
+      "high_background_pair_gridyears": 27,
+      "nearzero_background_pair_gridyears": 38
+    },
+    {
+      "threshold": 1,
+      "predator": "Hagenius brevistylus",
+      "prey": "Dromogomphus spinosus",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 0.8223708412090658,
+      "high_background_pair_gridyears": 5,
+      "nearzero_background_pair_gridyears": 94
+    },
+    {
+      "threshold": 5,
+      "predator": "Anax junius",
+      "prey": "Plathemis lydia",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 0.68603889943074,
+      "high_background_pair_gridyears": 8,
+      "nearzero_background_pair_gridyears": 36
+    },
+    {
+      "threshold": 1,
+      "predator": "Enallagma cyathigerum",
+      "prey": "Lestes sponsa",
+      "predator_stage": "aquatic_immature",
+      "prey_stage": "aquatic_immature",
+      "high_minus_nearzero_specificity_ratio": 0.6557396705299299,
+      "high_background_pair_gridyears": 52,
+      "nearzero_background_pair_gridyears": 7
+    },
+    {
+      "threshold": 1,
+      "predator": "Erythemis simplicicollis",
+      "prey": "Celithemis elisa",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.4230681818181812,
+      "high_background_pair_gridyears": 43,
+      "nearzero_background_pair_gridyears": 214
+    },
+    {
+      "threshold": 1,
+      "predator": "Anax junius",
+      "prey": "Tramea lacerata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.41135168380220155,
+      "high_background_pair_gridyears": 63,
+      "nearzero_background_pair_gridyears": 438
+    },
+    {
+      "threshold": 1,
+      "predator": "Anax junius",
+      "prey": "Pantala hymenaea",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.3732392962204367,
+      "high_background_pair_gridyears": 27,
+      "nearzero_background_pair_gridyears": 200
+    },
+    {
+      "threshold": 1,
+      "predator": "Enallagma durum",
+      "prey": "Ischnura posita",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.37003551636730747,
+      "high_background_pair_gridyears": 25,
+      "nearzero_background_pair_gridyears": 9
+    },
+    {
+      "threshold": 1,
+      "predator": "Ischnura verticalis",
+      "prey": "Enallagma geminatum",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 0.36267902585736334,
+      "high_background_pair_gridyears": 10,
+      "nearzero_background_pair_gridyears": 182
+    },
+    {
+      "threshold": 1,
+      "predator": "Erythemis vesiculosa",
+      "prey": "Erythrodiplax umbrata",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.35932249440477726,
+      "high_background_pair_gridyears": 142,
+      "nearzero_background_pair_gridyears": 36
+    },
+    {
+      "threshold": 5,
+      "predator": "Anax junius",
+      "prey": "Erythemis simplicicollis",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": -0.30612488864622467,
+      "high_background_pair_gridyears": 13,
+      "nearzero_background_pair_gridyears": 32
+    },
+    {
+      "threshold": 1,
+      "predator": "Anax junius",
+      "prey": "Plathemis lydia",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "high_minus_nearzero_specificity_ratio": 0.3012213983307235,
+      "high_background_pair_gridyears": 68,
+      "nearzero_background_pair_gridyears": 560
+    }
+  ],
+  "limitations": [
+    "EarthEnv periodically flooded vegetation from mixed 1990s–2000s data is not live emergent stems, Typha or aquatic plant density.",
+    "GBIF 1° cell and month/year reports by separate taxa are NOT pond co-occurrence, observed attacks, mortality, or a causal food-web interaction.",
+    "Controls are undocumented in complete-staged GloBI subset, NOT independently verified as absent prey or noninteractors.",
+    "Some source pair controls have insufficient GBIF overlap in given wetland bins, so there is nonrandom within-tier sample selection and no global regression or P-values.",
+    "Stage reporting, citizen-science density, taxonomy and introduced status bias geographic and seasonal coincidence.",
+    "WorldClim cached months are conditioned on another GBIF focal sample; rain comparisons are low-confidence source coverage diagnostics, not 72-hour NAAMP rain response.",
+    "Multiple pair observations share predator, prey, GBIF records and source citation; source-level independent replication not achieved.",
+    "No direct world wetland inventory/geometry, wetland hydroperiod, future egg recruitment or frog chorus record was matched."
+  ]
+}
