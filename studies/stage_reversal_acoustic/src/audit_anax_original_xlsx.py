@@ -73,6 +73,7 @@ def audit(path, enforce_pin=True):
     positive = Counter()
     wetland = Counter()
     wet_counts = Counter()
+    wet_positive = Counter()
     weekly = defaultdict(lambda: {"valid_visits":0,"positive_visits":0,"emergence":0})
     all_dates = []
     positives = []
@@ -114,6 +115,7 @@ def audit(path, enforce_pin=True):
         positive[month] += n > 0
         wetland[site] += 1
         wet_counts[site] += n
+        wet_positive[site] += int(n>0)
         monday = d-timedelta(days=d.weekday())
         weekly[monday]["valid_visits"] += 1
         weekly[monday]["positive_visits"] += int(n>0)
@@ -145,6 +147,26 @@ def audit(path, enforce_pin=True):
             if acc >= total*q:
                 cumquant[str(q)] = d.isoformat()
                 break
+    paper_permanent = ["1B","3A"]
+    paper_ephemeral = ["1A","2A","2B","2C","4A","4B","4C"]
+    paper_nine = paper_permanent + paper_ephemeral
+    paper_nine_total = sum(wet_counts[s] for s in paper_nine)
+    source_map = {
+        "published_2022_nine_wetland_code_source_doi":"10.1007/s10531-022-02387-9",
+        "source_code_match_only_not_independent_site_validation":True,
+        "permanent_codes":paper_permanent,"ephemeral_codes":paper_ephemeral,
+        "nine_code_valid_visits":sum(wetland[s] for s in paper_nine),
+        "nine_code_positive_visits":sum(wet_positive[s] for s in paper_nine),
+        "nine_code_emergence":paper_nine_total,
+        "permanent_code_visits":sum(wetland[s] for s in paper_permanent),
+        "permanent_code_emergence":sum(wet_counts[s] for s in paper_permanent),
+        "ephemeral_code_visits":sum(wetland[s] for s in paper_ephemeral),
+        "ephemeral_code_emergence":sum(wet_counts[s] for s in paper_ephemeral),
+        "outside_nine_source_labels_valid_visits":nvis-sum(wetland[s] for s in paper_nine),
+        "outside_nine_source_labels_emergence":total-paper_nine_total,
+        "source_extra_label_14A":{"valid_visits":wetland["14A"],"emergence":wet_counts["14A"]},
+        "source_extra_label_14B":{"valid_visits":wetland["14B"],"emergence":wet_counts["14B"]}
+    }
     result = {
         "status":"ORIGINAL_EMERGENCE_MONTH_AND_WEEK_VERIFIED_ONLY",
         "input_source_sha256":sha,
@@ -167,6 +189,7 @@ def audit(path, enforce_pin=True):
         "emergence_total":total,
         "monthly_predation_total":npred,
         "monthly_subtotal_matches_raw":True,
+        "same_site_published_nine_code_sensitivity":source_map,
         "months":summary_months,
         "weekly":[{"week_start":d.isoformat(),**stats} for d,stats in sorted(weekly.items())],
         "acoustic_link_status":"NOT_ESTIMABLE_NO_CALLS_OR_INDIVIDUAL_PREDATION_EVENTS",
@@ -178,7 +201,7 @@ def audit(path, enforce_pin=True):
         ]
     }
     if enforce_pin:
-        if (nvis,total,npred,len(wetland),len(weekly),na_rows,orphan_dates,blank_rows) != (298,233,14,27,26,11,2,129):
+        if (nvis,total,npred,len(wetland),len(weekly),na_rows,orphan_dates,blank_rows,paper_nine_total) != (298,233,14,27,26,11,2,129,189):
             raise ValueError("source source-contract invariants unexpectedly changed")
     return result
 
