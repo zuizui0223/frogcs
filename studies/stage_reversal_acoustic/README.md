@@ -1,6 +1,6 @@
 # Independent study: developmental trophic reversal × acoustic timing (2026-10-25)
 
-**STATUS: FIRST ORIGINAL ANAX XLSX SOURCE AUDIT VERIFIED (298 DATED SURVEYS, 233 EMERGENCE COUNTS); NO NEW ACOUSTIC × STAGE EFFECT OR ALARM SIGNAL TEST PASSED.** This branch must not be merged into, or used to reopen, frozen JAE RC6 scientific results. The frogcs RC6 mainline and 2001–2015 NAAMP conclusions remain unchanged.
+**STATUS: ORIGINAL ANAX (298 visits/233 emergers) × ORIGINAL FROGID (982 distinct call-positive recordings / 6 focal calls) BROAD-REGION WEEKLY SOURCE READBACK VERIFIED; NO SUPPORTED EARLY-WARNING / EXACT ROLE-SWITCH / ALARM EFFECT.** This branch must not be merged into, or used to reopen, frozen JAE RC6 scientific results. The frogcs RC6 mainline and 2001–2015 NAAMP conclusions remain unchanged.
 
 ## Ecological question
 
@@ -90,11 +90,21 @@ Real model execution requires three true event-derived matrices (original frog r
 - A same-study-site peer-reviewed paper (https://doi.org/10.1007/s10531-022-02387-9) explicitly names nine constructed wetlands: permanent `1B, 3A`; ephemeral `1A,2A,2B,2C,4A,4B,4C`. These **nine named codes** account for **189 emergence counts in 230 dated survey rows**, while the additional recurring code `14B` alone holds **44**. This is a strong source-ontology sensitivity, **not** verified identity equivalence for 14A/B.
 - See [frozen original audit receipt](results/ANAX_ORIGINAL_SOURCE_AUDIT_20261025.json), [full Japanese evidence report](results/ANAX_ORIGINAL_REANALYSIS_JA_20261025.md), [nine-wetland cross-paper ledger](registry/ANAX_NINE_WETLAND_SOURCE_MAP_V0_1.json), and reproducible local script `src/audit_anax_original_xlsx.py`.
 
-- FrogID v7 has public occurrence information, but its original **recording-opportunity** denominator and date/coordinate join to dragonfly emergence remain to be audited.
+- FrogID v7 **original GBIF public API data have now been queried and verified** (1,731 species rows, 982 known positive frog-recording events, six focal positive events). These are **positive frog recording submissions**, not all independent recording opportunities including no-frog recordings; the public positions are ~10km generalized, so same-wetland coordinate matches are still absent. The regional time comparison does not resolve the stage×call mechanistic outcome.
 - There is no documented same-recorder, same-event receiver behaviour or playback intervention in these linked sources.
 
 The source-gate result is **NOT_ESTIMABLE**, not negative evidence. Do not execute exploratory effect-hunting against available-but-noncommensurate rows.
 
+## Independent original FrogID 2018–2019 broad-region weekly temporal screen (new)
+
+- [The actual GBIF 32-week original source × Anax original aggregate](results/FROGID_ANAX_COARSE_WEEKLY_REAL_2018_2019_V1.json) was recorded for the 2018-09-04–2019-04-09 overlap and a deliberately coarse ~70 × 80-km Newcastle region. 1,731 FrogID taxon-occurrence rows yielded 982 unique identifiable audio-submission eventIDs (11 source rows missing eventID), including just **six** unique `Litoria aurea` positive recordings.
+- The known 2018–2019 Anax original count series has 298 wetland visits, 233 emergers across 26 actually surveyed weeks; no unvisited weeks were encoded as zero.
+- One-season exploratory positive call→later emergence weekly Pearson r values at 0/1/2/4/8 weeks were **+0.011/−0.092/+0.058/−0.063/−0.192**; the *negative-time placebo* (Anax already emerged 2 weeks earlier) was **+0.452**. Neither is a confirmatory prediction result: only 6 focal calls, one original emergence season, broad regional rather than wetland matching, and unresolved confounding.
+- [Verified real-source readback GitHub Actions](https://github.com/zuizui0223/frogcs/actions/runs/40161409606) regenerated the EXACT 32-week numbers from 1,731 original GBIF species rows (`ORIGINAL_GBIF_AGGREGATE_MATCH`, difference 0). A separate [25/25 automatic regression test run](https://github.com/zuizui0223/frogcs/actions/runs/40161409593) passed. The code `src/reproduce_gbif_frogid_coarse.py` only exports aggregates, not sensitive coordinates/recording IDs.
+- [Detailed Japanese result and non-identification audit](results/FROGID_ANAX_ORIGINAL_BROAD_SEASON_READOUT_JA_20261025.md).
+- The next most relevant **same-site** external research source may be Kooragang Island-Wide Survey calling-male counts at pond survey visits (2018–19 reports at https://www.csrg.site/services-2), but their actual event-level site/date calling records were **not** obtained. Do not silently replace them with six buffered FrogID events or infer that they share the original Anax wetland code.
+- This does **not** demonstrate a positive frog acoustic early warning, a date of developmental predator–prey role reversal, or a receiver's heterospecific alarm response. New source-specific direct evidence is needed before these claims can be tested.
+
 ## Execution accounting
 
-Created 2026-10-25 on `study/stage-reversal-acoustic-macro-20261025`. The v0.2 QA is green (18/18 tests), and the original user-provided Anax spreadsheet has been analyzed and recorded under a pinned SHA, including one-season phenology and nine-wetland sensitivity. **The stage × frog-call joint analysis remains NOT_ESTIMABLE**, because the workbook contains no frogs calling, dated matched prey/predator attacks, or receiver responses. No frozen JAE RC6 manuscript / SI / results have been changed.
+Created 2026-10-25 on `study/stage-reversal-acoustic-macro-20261025`. The independent original source QA is green (25/25 unit tests; strict GBIF 32-week original-data readback matches all frozen aggregates), and the Anax spreadsheet is audited under its pinned SHA. **The narrow stage × sound × matched wetland predictive/receiver mechanism remains NOT_ESTIMABLE**, despite newly confirmed same-year coarse-region source coverage. No frozen JAE RC6 manuscript / SI / results have been changed.
