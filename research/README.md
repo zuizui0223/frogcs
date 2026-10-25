@@ -2,6 +2,16 @@
 
 Status 2026-10-25: **independent prospective macroecology branch**, not a reopening of RC6 JAE or WFTS; `main` manuscript unaffected.
 
+## PEM-stage network: observed wetland join and mechanism knockouts — current results
+
+[**2026-10-25 evidence synthesis: NWI actual mapped PEM × GBIF developmental stages, NPS acoustic site persistence, model mechanism knockouts**](results/PEM_STAGE_BIOTIC_HISTORY_NEW_EVIDENCE_2026-10-25.md). Keep these three types distinct: the first is a **nonrandom geographic source readiness audit**, the second **real acoustic history with broad wetland duration**, the third a **synthetic theoretical model**.
+
+- **Actual NWI PEM geometry join**: [110 precise GBIF observation points × official wetland polygons, JSON](results/nwi_gbif_stage_point_pilot/observed_results.json), [code](scripts/gbif_us_nwi_stage_point_pem_audit.py), [successful CI](https://github.com/zuizui0223/frogcs/actions/runs/40205269009). 110/110 official polygon point queries succeeded, 29 within any mapped NWI wetland and **five within PEM** (PEM1A 1, PEM1C 3, PEM1Fm 1). **Not estimates of animal PEM preference or same-wetland predator encounters; no NAAMP/NPS recorder coordinate was assigned.**
+- **NPS real historical call×Hydroperiod result** remains: ephemeral +0.352, semi-permanent +0.502, permanent +0.495 under a posthoc adjusted interaction model (different from direct NWI PEM typing); 1815 station×taxon×year rows. The ephemeral within-class fixed stratum has no independently estimable history effect.
+- **Mechanism ablation of seasonal F/S/D toy**: [source-labeled 432 synthetic settings](results/pem_stage_edge_ablations/synthetic_results.json), [code](scripts/pem_stage_edge_knockout_test.py), [successful CI](https://github.com/zuizui0223/frogcs/actions/runs/40205567800). Dropping the D-risk→S-foraging cue reduces all-three pair-resident invasibility in 29/108 contexts but **does not eliminate the toy's preference for predator-stage phase separation**; reverse frog→emerging-odonate feeding removal increases all-three invadability in 56/108 contexts and decreases in seven. **No ecological parameter was fitted**; cannot call these true natural coexistence or selective evolution of chorus synchrony.
+
+**Next scientific gate:** independent acoustic SiteLocation → actual NWI PEM polygon source crosswalk, **event-wise wet/dry and plant-stem architecture**, and observed frog egg/tadpole sizes, odonate nymph/emergence stages and salamander larval predator pressure in the *same wetland × time*. Never conflate stage/presence in GBIF or coarse EarthEnv with observed NWI PEM habitat function.
+
 ## Corrected PEM meaning and mechanistic triad hypothesis (2026-10-25)
 
 **PEM = USFWS NWI Palustrine Emergent Wetland (freshwater emergent marsh), NOT phylogenetic eigenvector maps.** PEM1A=temporarily flooded, PEM1C=seasonally flooded, PEM1F=semipermanently flooded; PEM1 stems persist. Verified from official NWI GIS code schema ([4-row official receipt](results/NWI_PEM_OFFICIAL_CODE_READINESS_2026-10-25.json)). None of the original NAAMP/NPS listening sites currently has a **source-verified site×NWI PEM wetland polygon** assignment — no PEM-specific acoustic effect is claimed.
