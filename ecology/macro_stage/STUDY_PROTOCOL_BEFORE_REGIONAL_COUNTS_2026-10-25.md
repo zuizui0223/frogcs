@@ -40,3 +40,10 @@ If macro source has enough actual data, next effort is **record-level stage-tagg
 
 ## Stopping & interpretation
 No `Counts.csv` NAAMP, no new broad literature searching, no post-hoc grouping based on sign. If GBIF stage coverage differs so strongly that stage-window overlap cannot be robustly compared between regions or label platforms, conclude insufficient ecological comparability and prioritize a macro species-stage event dataset with consistent source effort. A new *ecological conclusion* demands robust common-source cross-stage timing, not just millions of undifferentiated GBIF observations.
+
+## SOURCE-COMPARABILITY AMENDMENT, before full regional ecological model
+Two pilot stage-count bands revealed a major **publisher sampling-process imbalance**. In 35–40°N USA, `Odonata/Larva` is predominantly NEON benthic macroinvertebrate samples (original GBIF dataset UUID `f5cb509c-00bb-42f5-aafb-59b631722d60`), whereas frog and salamander eggs/larvae and Odonata/Nymph are primarily GBIF iNaturalist Research-grade Observations (original GBIF dataset UUID `50c9509d-22c7-4a22-a47d-8c48425ef4a7`). Inferences using pooled publishers therefore confound methods, wetlands vs streams, and timing.
+
+**Revised PRIMARY descriptive stream for the macro analysis:** query the SAME fixed iNaturalist GBIF dataset key `50c9509d-22c7-4a22-a47d-8c48425ef4a7` for all three orders and each predeclared stage in each region/month, with original API URLs and SHA256. Treat mixed-source counts as a separate sensitivity, not as independent confirmation. Even within a shared publisher, stage classification/photo submission, regional popularity, species composition and absence biases remain; do not interpret the sample as standardised biological census or true matched ponds.
+
+This source-comparability decision was made after inspecting **source metadata and monthly stage totals in two initial geographic pilot bands** and before the complete multi-region result was assembled. It is not an independent, blindly preregistered hypothesis. We will retain all results, including nonestimable regions, not choose signs or regions after examining overlaps.
