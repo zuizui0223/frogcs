@@ -1,0 +1,422 @@
+{
+  "status": "REAL_FACTORIAL_OBSERVATION_REANALYSIS_POST_PUBLICATION",
+  "source_dataset": "CSIC 10261/411885, Delgadillo-Mendez et al. 2025, CC BY 4.0",
+  "source_SHA256": "eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25",
+  "protocol": "research/FUSCUS_EXPERIMENT_G2B_FROZEN_ANALYSIS_2026-10-26.md",
+  "source_design": "2 temperatures x 2 water regimes x 2 predator cues, three original nests/clutches",
+  "experimentally_exposed_predator": "CHEMICAL_CUE_ONLY_NOT_CONSUMPTION",
+  "experimental_drawdown": "CONTROLLED_WATER_LEVEL_NOT_FIELD_WETLAND_DROUGHT",
+  "n_original_expected_allocation": 240,
+  "n_observed_individual_rows": 226,
+  "unlisted_planned_individuals": 14,
+  "intended_small_containers": 80,
+  "observed_small_containers": 79,
+  "thermal_bath_groups": 8,
+  "source_binary_survival_qc": {
+    "recorded_true": 213,
+    "recorded_false": 13,
+    "recorded_unknown": 0,
+    "source_rows": 226
+  },
+  "recorded_treatment_survival_bounds": [
+    {
+      "temperature_C": 30,
+      "predator_cue": "P",
+      "water_level": "HW",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 30,
+      "observed_survival_one": 29,
+      "observed_survival_zero": 1,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 0,
+      "missing_as_dead_lower_sensitivity": 0.9666666666666667,
+      "missing_as_survived_upper_sensitivity": 0.9666666666666667,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 30,
+      "predator_cue": "P",
+      "water_level": "DD",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 29,
+      "observed_survival_one": 28,
+      "observed_survival_zero": 1,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 1,
+      "missing_as_dead_lower_sensitivity": 0.9333333333333333,
+      "missing_as_survived_upper_sensitivity": 0.9666666666666667,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 30,
+      "predator_cue": "NP",
+      "water_level": "HW",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 29,
+      "observed_survival_one": 29,
+      "observed_survival_zero": 0,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 1,
+      "missing_as_dead_lower_sensitivity": 0.9666666666666667,
+      "missing_as_survived_upper_sensitivity": 1,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 30,
+      "predator_cue": "NP",
+      "water_level": "DD",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 30,
+      "observed_survival_one": 30,
+      "observed_survival_zero": 0,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 0,
+      "missing_as_dead_lower_sensitivity": 1,
+      "missing_as_survived_upper_sensitivity": 1,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 35,
+      "predator_cue": "P",
+      "water_level": "HW",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 29,
+      "observed_survival_one": 25,
+      "observed_survival_zero": 4,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 1,
+      "missing_as_dead_lower_sensitivity": 0.8333333333333334,
+      "missing_as_survived_upper_sensitivity": 0.8666666666666667,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 35,
+      "predator_cue": "P",
+      "water_level": "DD",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 24,
+      "observed_survival_one": 24,
+      "observed_survival_zero": 0,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 6,
+      "missing_as_dead_lower_sensitivity": 0.8,
+      "missing_as_survived_upper_sensitivity": 1,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 35,
+      "predator_cue": "NP",
+      "water_level": "HW",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 28,
+      "observed_survival_one": 25,
+      "observed_survival_zero": 3,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 2,
+      "missing_as_dead_lower_sensitivity": 0.8333333333333334,
+      "missing_as_survived_upper_sensitivity": 0.9,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    },
+    {
+      "temperature_C": 35,
+      "predator_cue": "NP",
+      "water_level": "DD",
+      "planned_initial_tadpoles": 30,
+      "rows_in_public_workbook": 27,
+      "observed_survival_one": 23,
+      "observed_survival_zero": 4,
+      "missing_survival_status_in_observed_rows": 0,
+      "unlisted_planned_animals": 3,
+      "missing_as_dead_lower_sensitivity": 0.7666666666666667,
+      "missing_as_survived_upper_sensitivity": 0.8666666666666667,
+      "cannot_treat_missing_as_death_without_source_verification": true
+    }
+  ],
+  "individual_stage_trait_qa": {
+    "mass46_missing": 13,
+    "time46_missing": 13
+  },
+  "survivor_conditional_endpoint_models": {
+    "mass": {
+      "n_containers_with_measured_survivor_endpoint": 79,
+      "n_survivor_measurements": 213,
+      "missing_small_containers": {},
+      "source_factorial_cell_means": [
+        {
+          "temperature_C": 30,
+          "predator_cue_present": false,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.20463333333333336
+        },
+        {
+          "temperature_C": 30,
+          "predator_cue_present": false,
+          "drydown": true,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.18833333333333332
+        },
+        {
+          "temperature_C": 30,
+          "predator_cue_present": true,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.20703333333333335
+        },
+        {
+          "temperature_C": 30,
+          "predator_cue_present": true,
+          "drydown": true,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.18919999999999998
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": false,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.24664999999999998
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": false,
+          "drydown": true,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.2126666666666667
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": true,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 0.23971666666666666
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": true,
+          "drydown": true,
+          "n_independent_small_containers": 9,
+          "mean_measured_survivor_container_endpoint": 0.22814814814814818
+        }
+      ],
+      "within_temperature_Pcue_x_water_difference_in_difference": [
+        {
+          "temperature_C": 30,
+          "cue_effect_drydown": 0.0008666666666666545,
+          "cue_effect_highwater": 0.0023999999999999855,
+          "difference_in_difference_raw_units": -0.001533333333333331,
+          "observational_survivors_only_unadjusted": true
+        },
+        {
+          "temperature_C": 35,
+          "cue_effect_drydown": 0.015481481481481485,
+          "cue_effect_highwater": -0.006933333333333319,
+          "difference_in_difference_raw_units": 0.022414814814814804,
+          "observational_survivors_only_unadjusted": true
+        }
+      ],
+      "leave_entire_thermal_bath_out": {
+        "estimable": true,
+        "models": {
+          "M0": {
+            "n_test_containers": 79,
+            "bath_equal_weight_LOBO_MSE_log_endpoint": 0.020890281991888512,
+            "container_weighted_LOBO_MSE_log_endpoint": 0.02056047784338002
+          },
+          "M1": {
+            "n_test_containers": 79,
+            "bath_equal_weight_LOBO_MSE_log_endpoint": 0.021248973407636068,
+            "container_weighted_LOBO_MSE_log_endpoint": 0.020842748136155526
+          },
+          "M2": {
+            "n_test_containers": 79,
+            "bath_equal_weight_LOBO_MSE_log_endpoint": 0.021315852082243535,
+            "container_weighted_LOBO_MSE_log_endpoint": 0.020912775865173403
+          }
+        },
+        "contrasts": {
+          "M1_vs_M0": {
+            "positive_is_addition_improves_MSE": true,
+            "bath_balanced_MSE_gain": -0.000358691415747557,
+            "bootstrap_95ci_conditional_on_fixed_LOBO_models": [
+              -0.001400294500736832,
+              0.00022045301976926344
+            ],
+            "n_independent_thermal_baths": 8,
+            "bootstrap_repetitions": 2000
+          },
+          "M2_vs_M1": {
+            "positive_is_addition_improves_MSE": true,
+            "bath_balanced_MSE_gain": -0.00006687867460746497,
+            "bootstrap_95ci_conditional_on_fixed_LOBO_models": [
+              -0.0001561603325980171,
+              0.000007392916197049894
+            ],
+            "n_independent_thermal_baths": 8,
+            "bootstrap_repetitions": 2000
+          },
+          "M2_vs_M0": {
+            "positive_is_addition_improves_MSE": true,
+            "bath_balanced_MSE_gain": -0.000425570090355022,
+            "bootstrap_95ci_conditional_on_fixed_LOBO_models": [
+              -0.0014593320538017075,
+              0.00015387669870744897
+            ],
+            "n_independent_thermal_baths": 8,
+            "bootstrap_repetitions": 2000
+          }
+        },
+        "metric": "squared error on log(container mean measured survivor phenotype)",
+        "heldout_group": "original 400-L experimental temperature bath",
+        "ridge_alpha_fixed": 10
+      },
+      "selection_on_surviving_stage": "These are survivors with observed metamorphs, NOT all allocated larvae"
+    },
+    "time": {
+      "n_containers_with_measured_survivor_endpoint": 79,
+      "n_survivor_measurements": 213,
+      "missing_small_containers": {},
+      "source_factorial_cell_means": [
+        {
+          "temperature_C": 30,
+          "predator_cue_present": false,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 31.983333333333338
+        },
+        {
+          "temperature_C": 30,
+          "predator_cue_present": false,
+          "drydown": true,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 35.16666666666667
+        },
+        {
+          "temperature_C": 30,
+          "predator_cue_present": true,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 33.45
+        },
+        {
+          "temperature_C": 30,
+          "predator_cue_present": true,
+          "drydown": true,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 34.15
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": false,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 34.41666666666667
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": false,
+          "drydown": true,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 35.1
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": true,
+          "drydown": false,
+          "n_independent_small_containers": 10,
+          "mean_measured_survivor_container_endpoint": 36.71666666666666
+        },
+        {
+          "temperature_C": 35,
+          "predator_cue_present": true,
+          "drydown": true,
+          "n_independent_small_containers": 9,
+          "mean_measured_survivor_container_endpoint": 36.12962962962963
+        }
+      ],
+      "within_temperature_Pcue_x_water_difference_in_difference": [
+        {
+          "temperature_C": 30,
+          "cue_effect_drydown": -1.0166666666666728,
+          "cue_effect_highwater": 1.466666666666665,
+          "difference_in_difference_raw_units": -2.483333333333338,
+          "observational_survivors_only_unadjusted": true
+        },
+        {
+          "temperature_C": 35,
+          "cue_effect_drydown": 1.029629629629632,
+          "cue_effect_highwater": 2.29999999999999,
+          "difference_in_difference_raw_units": -1.2703703703703582,
+          "observational_survivors_only_unadjusted": true
+        }
+      ],
+      "leave_entire_thermal_bath_out": {
+        "estimable": true,
+        "models": {
+          "M0": {
+            "n_test_containers": 79,
+            "bath_equal_weight_LOBO_MSE_log_endpoint": 0.01573077423110575,
+            "container_weighted_LOBO_MSE_log_endpoint": 0.016188917650566674
+          },
+          "M1": {
+            "n_test_containers": 79,
+            "bath_equal_weight_LOBO_MSE_log_endpoint": 0.016492058201910346,
+            "container_weighted_LOBO_MSE_log_endpoint": 0.016899478399610746
+          },
+          "M2": {
+            "n_test_containers": 79,
+            "bath_equal_weight_LOBO_MSE_log_endpoint": 0.01648453705884464,
+            "container_weighted_LOBO_MSE_log_endpoint": 0.01687673495210536
+          }
+        },
+        "contrasts": {
+          "M1_vs_M0": {
+            "positive_is_addition_improves_MSE": true,
+            "bath_balanced_MSE_gain": -0.0007612839708045992,
+            "bootstrap_95ci_conditional_on_fixed_LOBO_models": [
+              -0.0017339960701387683,
+              0.00007263772218638505
+            ],
+            "n_independent_thermal_baths": 8,
+            "bootstrap_repetitions": 2000
+          },
+          "M2_vs_M1": {
+            "positive_is_addition_improves_MSE": true,
+            "bath_balanced_MSE_gain": 0.000007521143065707852,
+            "bootstrap_95ci_conditional_on_fixed_LOBO_models": [
+              -0.00021760251209021106,
+              0.0002008357122892036
+            ],
+            "n_independent_thermal_baths": 8,
+            "bootstrap_repetitions": 2000
+          },
+          "M2_vs_M0": {
+            "positive_is_addition_improves_MSE": true,
+            "bath_balanced_MSE_gain": -0.0007537628277388914,
+            "bootstrap_95ci_conditional_on_fixed_LOBO_models": [
+              -0.0017820427942276506,
+              0.00006337760574279966
+            ],
+            "n_independent_thermal_baths": 8,
+            "bootstrap_repetitions": 2000
+          }
+        },
+        "metric": "squared error on log(container mean measured survivor phenotype)",
+        "heldout_group": "original 400-L experimental temperature bath",
+        "ridge_alpha_fixed": 10
+      },
+      "selection_on_surviving_stage": "These are survivors with observed metamorphs, NOT all allocated larvae"
+    }
+  },
+  "real_causal_pond_predation_identified": false,
+  "real_persistent_overwintered_larval_population_identified": false,
+  "hydroperiod_x_predator_stage_attack_identified": false,
+  "RC6_untouched": true,
+  "workflow": {
+    "url": "https://github.com/zuizui0223/frogcs/actions/runs/40258386081",
+    "job_id": 121365104407,
+    "conclusion": "success",
+    "github_commit": "cbba17e4e059de3c92a80304cd325b579e2a8258"
+  },
+  "research_claim_status": "Real experimental G2B stage phenotype; drydown and temperature manipulation plus predator chemical cues. Field-G2 direct predation remains not estimated."
+}
