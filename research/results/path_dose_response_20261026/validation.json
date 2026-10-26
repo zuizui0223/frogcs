@@ -1,0 +1,81 @@
+{
+  "classification": "SYNTHETIC_NOT_EMPIRICAL",
+  "n_scenarios": 12288,
+  "D_contrast": [
+    0.25,
+    2.0
+  ],
+  "S_contrast": [
+    0.0,
+    2.0
+  ],
+  "half_step_max_completion_error": 0.0007610746373201693,
+  "negative_sign_stable": true,
+  "independent_log_interaction_error": 1.3322676295501878e-15,
+  "variants": {
+    "full": {
+      "S_change_D_slope_F": {
+        "min": 0.03067245355542203,
+        "max": 0.3777620247612439,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      },
+      "S_change_D_slope_log_F": {
+        "min": 0.07527269759274227,
+        "max": 1.272920250229058,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      }
+    },
+    "independent": {
+      "S_change_D_slope_F": {
+        "min": 0.06722164184470054,
+        "max": 0.3528823668230305,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      },
+      "S_change_D_slope_log_F": {
+        "min": -1.3322676295501878e-15,
+        "max": 6.661338147750939e-16,
+        "negative": 0,
+        "positive": 0,
+        "n": 192
+      }
+    },
+    "no_cue": {
+      "S_change_D_slope_F": {
+        "min": 0.07216030775518928,
+        "max": 0.35596770838889263,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      },
+      "S_change_D_slope_log_F": {
+        "min": 0.03774921612854571,
+        "max": 2.4047280731420275,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      }
+    },
+    "no_intraguild": {
+      "S_change_D_slope_F": {
+        "min": 0.09150575648505725,
+        "max": 0.35555972836716443,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      },
+      "S_change_D_slope_log_F": {
+        "min": 0.054118780837240754,
+        "max": 0.8097179424181762,
+        "negative": 0,
+        "positive": 192,
+        "n": 192
+      }
+    }
+  }
+}

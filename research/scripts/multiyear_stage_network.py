@@ -10,7 +10,7 @@ from stage_vegetation_network import DEFAULT, simulate
 DEMOGRAPHY=dict(survival=(.4,.5,0.),conversion=(4.,4.,4.),juvenile=(.8,.8,.8),
                 delays=(2,2,1),capacity=1.,initial_scale=1.)
 
-def simulate_years(scenarios,years=80,dt=.25,**demography):
+def simulate_years(scenarios,years=80,dt=.25,source_cohorts=None,**demography):
     if set(demography)-set(DEMOGRAPHY):raise ValueError('Unknown demography')
     cfg={**DEMOGRAPHY,**demography}
     if not isinstance(years,int) or years<1:raise ValueError('Positive integer years required')
@@ -30,7 +30,13 @@ def simulate_years(scenarios,years=80,dt=.25,**demography):
                       for r in params.itertuples()],float)
     B=present*cfg['initial_scale'];s=arrays['survival'];b=arrays['conversion'];j=arrays['juvenile']
     m=arrays['delays'].astype(int);K=cfg['capacity']
-    immigrant=(1-rho)*(1-s)*present
+    source=present if source_cohorts is None else np.asarray(source_cohorts,dtype=float)
+    if source.shape!=present.shape or not np.isfinite(source).all() or (source<0).any():
+        raise ValueError('Sources must be finite nonnegative n-by-3 F/S/D values')
+    if ((present==0)&(source!=0)).any():raise ValueError('Source supplied for absent guild')
+    if source_cohorts is not None:
+        for k,g in enumerate('FSD'):params[g+'_source']=source[:,k]
+    immigrant=(1-rho)*(1-s)*source
     upper=np.maximum(B,(rho*b*K+immigrant)/(1-s))
     completed=[];frames=[]
     for year in range(years):

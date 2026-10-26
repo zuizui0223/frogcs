@@ -1,0 +1,22 @@
+{
+  "classification": "SYNTHETIC_NOT_EMPIRICAL",
+  "primary_scenarios": 3240,
+  "primary_years": 80,
+  "window_years": 20,
+  "source_grid": [
+    0.25,
+    1.0,
+    2.0
+  ],
+  "F_source": 1,
+  "primary_rho": 0.5,
+  "sensitivity_scope": "all vegetation roles only, all variants and contexts",
+  "numerics": {
+    "half_step_max_F_B_difference": 0.003777841268490789,
+    "half_step_negative_sign_disagreements": 0,
+    "horizon160_max_F_B_difference": 0.000456949197185752,
+    "horizon160_negative_sign_disagreements": 0
+  },
+  "calling_predicted": false,
+  "equilibrium_assumed": false
+}
