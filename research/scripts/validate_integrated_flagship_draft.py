@@ -23,6 +23,30 @@ def main():
     g0=load("research/results/part2_g0/observed_source_eligibility.json")
     tax=load("research/results/part2_g0/inbo_species_time_eligibility.json")
     hyla=load("research/results/part2_inbo_hyla_g1/observed_results.json")
+
+    full=load("research/results/full_globi_2026_stage_gbif_grid/observed_results.json")
+    shift=load("research/results/month_shift_globi_gbif/observed_results.json")
+    matched=load("research/results/expanded_stage_specificity/observed_results.json")
+    flooded=load("research/results/earthenv_gbif_matched_stage/observed_results.json")
+    monthly_rain=load("research/results/globi_gbif_rain_contrast/observed_results.json")
+    assert full["source_integrity"]["full_source_parquet_rows"]==24453954
+    assert full["full_globi_stages"]["valid_certain_nonself_raw_stage_rows"]==1240
+    assert full["full_globi_stages"]["unique_valid_nonself_directed_stage_pairs"]==881
+    sh=next(x for x in shift["per_threshold"] if x["threshold_records_per_species_stage_grid_month"]==1)
+    assert sh["all_eligible_gloBI_species_stage_pairs"]==18
+    assert sh["pairs_observed_above_11_shift_mean"]==16
+    assert sh["pooled_exact_reports_observed"]==16605
+    m1=next(x for x in matched["matched_pairs_each_threshold"] if x["minimum_GBIF_records_per_taxon_stage_gridmonth"]==1)
+    m5=next(x for x in matched["matched_pairs_each_threshold"] if x["minimum_GBIF_records_per_taxon_stage_gridmonth"]==5)
+    assert m1["matched_GloBI_directed_stage_pairs"]==56 and m1["focal_phase_ratio_greater_than_median_control"]==31
+    assert m5["matched_GloBI_directed_stage_pairs"]==56 and m5["focal_phase_ratio_greater_than_median_control"]==26
+    assert m5["median_focal_minus_control_phase_ratio"]<0
+    env=next(x for x in flooded["source_pairs_with_both_nearzero_and_high_flooded_bins"] if x["threshold"]==1)
+    assert env["n_matched_source_pairs"]==32
+    close(env["median_high_minus_nearzero_focal_specificity"],-0.028117363791445027)
+    rain=next(x for x in monthly_rain["per_threshold"] if x["min_records_per_taxon_stage_grid_month"]==1)
+    assert rain["pairs_with_enough_informative_grid_years"]==15
+    assert rain["pairs_where_monthly_rain_co_report_is_greater_than_single_report"]==10
     assert j["paper_strategy"]["target"]=="one_conditional_integrated_flagship_manuscript_in_frogcs"
     assert j["paper_strategy"]["rc6_standalone_submission"]=="deferred_not_deleted_not_claimed_submitted"
     assert j["paper_strategy"]["future_manuscript_ready"] is False
@@ -59,7 +83,8 @@ def main():
     for phrase in ("0.296854","+0.014321","0.242712","0.347862",
                    "not supporting the predicted negative suppression",
                    "no local hydroperiod term was fitted",
-                   "not estimable","not submission-ready"):
+                   "not estimable","not submission-ready",
+                   "16/18","31/56","26/56","not a demonstration of recorded predation"):
         assert phrase.lower() in txt.lower(),"Missing scientific claim boundary: "+phrase
     assert txt.count(chr(96)*3)%2==0
     links=re.findall(r"\[[^\]]+\]\(([^)\s]+)\)",txt)
@@ -74,6 +99,9 @@ def main():
           "one_integrated_paper_selected":True,"nps_H1A_negative_result_retained":True,
           "inbo_early_site_gain":round(b0-b1,6),
           "inbo_future_year_loss":round(t1-t0,6),
+          "global_stage_shift_above_null":16,
+          "global_matched_specificity_strict":26,
+          "global_predation_identified":False,
           "measured_stage_predation_identified":False,
           "relative_source_links_resolved":check,
           "manuscript_submission_ready":False},indent=2))
