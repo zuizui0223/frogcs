@@ -1,0 +1,27 @@
+name: Research - paced GBIF retrieval repair for fixed NAAMP neighborhoods
+on:
+  push:
+    branches: [research/naamp-prior-community-allocation-20261026]
+    paths:
+      - research/scripts/reliable_source_json.py
+      - research/scripts/repair_naamp_gbif_retrieval.py
+      - research/scripts/test_gbif_retrieval_retry.py
+      - .github/workflows/research_gbif_retrieval_repair.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  retrieval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 research/scripts/test_gbif_retrieval_retry.py
+      - name: Retry rate-limited queries without changing source population
+        run: python3 -u research/scripts/repair_naamp_gbif_retrieval.py --cache /tmp/gbif-cache --out /tmp/retrieval/observed_results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-gbif-paced-retrieval
+          path: /tmp/retrieval/
+          if-no-files-found: warn
