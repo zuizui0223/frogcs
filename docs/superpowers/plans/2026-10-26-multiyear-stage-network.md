@@ -22,10 +22,10 @@
 - [x] Add failing annual tests for delay/zero-return/absence/bounds; implement annual queue and outputs.
 - [x] Execute all864 primary scenarios, all-role sensitivity, half-step and horizon160 checks; save matched results.
 - [x] Create and visually inspect figures; write Japanese interpretation and English manuscript paragraphs.
-- [ ] Fresh review, full tests, original replay/snapshot checks, CI replay and draft PR update; export deliverables.
+- [x] Fresh review, full tests, original replay/snapshot checks, CI replay workflow and draft PR update; export deliverables.
 
 ## Ledger
 
 Design choices are authorized implementation details of the user's approved extension. Existing draft branch is suitable and reused. No graphify graph exists; source files provide the implementation evidence.
 
-RED→GREEN: optional input API failed before implementation; annual module absent before implementation; duplicate pairing test failed before rejection was added. All87 tests now pass. All7 old numerical seasonal tables replay exactly, and the894-file frozen snapshot verifies. Full annual rerun reproduced every original table exactly. Fresh source review found no recurrence blocker; requested preservation of all sensitivity arms is implemented as13 summary/trajectory pairs. Figures inspected. Half-step maximum final-window mean-density discrepancy0.00891 (all-role subset); report explicitly avoids universal convergence or equilibrium claims. CI and PR handoff pending.
+RED→GREEN: optional input API failed before implementation; annual module absent before implementation; duplicate pairing test failed before rejection was added. All87 tests now pass. All7 old numerical seasonal tables replay exactly, and the894-file frozen snapshot verifies. Full annual rerun reproduced every original table exactly. Fresh source review found no recurrence blocker; requested preservation of all sensitivity arms is implemented as13 summary/trajectory pairs. Figures inspected. Half-step maximum final-window mean-density discrepancy0.00891 (all-role subset); report explicitly avoids universal convergence or equilibrium claims. Review-requested horizon/figure scope labels are corrected. Draft PR142 updated and deliverables exported. CI runtime status is recorded by the PR checks, independently of this plan.
