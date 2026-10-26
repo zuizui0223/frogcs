@@ -1,0 +1,80 @@
+{
+  "dataset_id": "frogcs/native_species_occurrence_v1",
+  "created_on": "2026-10-26",
+  "repository": "zuizui0223/frogcs",
+  "branch": "integration/stage-legacy-unified-2026-10-25",
+  "priority": "SPECIES_OCCURRENCE_FIRST_STAGE_SECONDARY",
+  "contract": "research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md",
+  "report": "research/results/species_occurrence_first/REPORT_2026-10-26.md",
+  "original_canonical_generator": "research/scripts/build_common_ecology_units.py",
+  "species_projection": "research/scripts/project_species_occurrence.py",
+  "reporting_associations": "research/scripts/species_occurrence_associations.py",
+  "github_actions_run": "https://github.com/zuizui0223/frogcs/actions/runs/40265834563",
+  "github_actions_artifact": {
+    "id": 12626725122,
+    "name": "frogcs-species-only-occurrence-source-native",
+    "size_bytes_zip": 12425253,
+    "expires_at": "2027-01-24T03:47:58Z",
+    "artifact_is_ephemeral_reproducible_from_original_pinned_source": true
+  },
+  "logical_event_species_grain": [
+    "original_source_id",
+    "source_native_site_id_hashed_by_source_namespace",
+    "original_source_survey_event_token",
+    "date",
+    "species_source_verbatim_and_exact_match_binomial",
+    "survey_method"
+  ],
+  "source_id_caveat": "INBO adult and aquatic datasets use the same hashed publisher locationID for exact key comparisons; distinct regional monitoring networks have disjoint original physical sites",
+  "native_event_records": {
+    "naamp_positive_calls": 310683,
+    "nps_glkn": 147913,
+    "inbo_adult_chorus": 1286,
+    "inbo_larval_census": 1648,
+    "hungary_2024": 3411
+  },
+  "total_species_event_rows": 464941,
+  "separate_naamp_completed_survey_stops": 198757,
+  "output_artifact_files": {
+    "full_event_species": "species_occurrence_events.csv.gz",
+    "source_site_year_month_species": "species_occurrence_site_month.csv.gz",
+    "naamp_original_survey_effort": "naamp_surveyed_stop_opportunities.csv.gz",
+    "qa_profile": "observed_species_occurrence_profile.json",
+    "co_detection_and_habitat": "observed_species_associations.json"
+  },
+  "committed_report_receipts": [
+    "research/results/species_occurrence_first/observed_profile.json",
+    "research/results/species_occurrence_first/observed_correlations_summary.json"
+  ],
+  "source_pins": {
+    "NPS_GLKN_original_csv_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+    "INBO_adult_DWCA_sha256": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+    "INBO_aquatic_DWCA_sha256": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+    "Hungary_site_csv_md5": "795da443249760fbc0bf30249910a4ef",
+    "Hungary_survey_csv_md5": "edcd6f12518192c01e3dbae8521c16c9",
+    "NAAMP_Runs_csv_sha256": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+    "NAAMP_Stops_csv_sha256": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+    "NAAMP_Counts_csv_sha256": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+  },
+  "licensing": {
+    "Hungary": "CC BY 4.0 — Mizsei and Wenner (2025), DOI 10.5281/zenodo.15044115",
+    "INBO": "CC0 — original publisher Meetnetten.be, DOIs 10.15468/d4bu8j and 10.15468/swgure",
+    "NPS": "US National Park Service public domain, DOI 10.57830/2320505",
+    "NAAMP": "USGS North American Amphibian Monitoring Program, published original source distribution"
+  },
+  "quality_controls": {
+    "original_source_sha_enforced": true,
+    "stage_collapsed_within_only_same_event_species": true,
+    "hanging_Hungary_duplicate_source_survey_labels": 2,
+    "inconsistent_Hungary_species_statuses_left_unresolved": 5,
+    "original_NAAMP_taxon_complexes_not_silently_merged": true,
+    "NAAMP_9_exact_NPS_genus_species_name_matches_without_synonym_inference": true,
+    "naamp_noncalling_taxon_absences_not_generated": true,
+    "source_assessed_zero_not_biological_absence": true,
+    "GBIF_general_presence_only_not_pond_absence": true,
+    "source_native_site_and_method_retained": true,
+    "overlap_is_acoustic_or_source_report_not_predation": true,
+    "RC6_frozen_science_untouched": true
+  },
+  "current_evidence_ceiling": "source-event species occurrence, co-detection and survey-specific habitat association; no predation, competition, true individual occupancy or local wetland vegetation phenophase identified"
+}
