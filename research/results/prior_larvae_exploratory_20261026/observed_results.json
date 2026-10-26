@@ -1,0 +1,7345 @@
+{
+  "analysis": "Exploratory prior larvae to later chorus; not causal or recruitment",
+  "sources": {
+    "adult": {
+      "source_sha256": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+      "events": 963,
+      "source_event_years": {
+        "2016": 88,
+        "2017": 93,
+        "2018": 106,
+        "2019": 63,
+        "2020": 123,
+        "2021": 91,
+        "2022": 103,
+        "2023": 141,
+        "2024": 93,
+        "2025": 62
+      },
+      "status_counts": {
+        "Hyla arborea|present": 506,
+        "Hyla arborea|absent": 129,
+        "Pelobates fuscus|present": 81,
+        "Pelobates fuscus|absent": 119,
+        "Rana arvalis|present": 2,
+        "Rana temporaria|present": 3,
+        "Bufo bufo|present": 2,
+        "Pelophylax lessonae|present": 17,
+        "Pelophylax esculenta synklepton|present": 11,
+        "Pelophylax ridibundus|absent": 153,
+        "Pelophylax lessonae|absent": 97,
+        "Pelophylax ridibundus|present": 4,
+        "Pelophylax esculenta synklepton|absent": 13
+      },
+      "conflicting_event_species": 15
+    },
+    "larvae": {
+      "source_sha256": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+      "events": 697,
+      "source_event_years": {
+        "2016": 120,
+        "2017": 138,
+        "2018": 60,
+        "2019": 80,
+        "2020": 68,
+        "2021": 50,
+        "2022": 57,
+        "2023": 43,
+        "2024": 51,
+        "2025": 30
+      },
+      "status_counts": {
+        "Lissotriton vulgaris|present": 223,
+        "Hyla arborea|absent": 196,
+        "Hyla arborea|present": 252,
+        "Ichthyosaura alpestris|present": 240,
+        "Triturus cristatus|present": 166,
+        "Lissotriton helveticus|present": 10,
+        "Rana temporaria|present": 15,
+        "Triturus cristatus|absent": 221,
+        "Ichthyosaura alpestris|absent": 52,
+        "Lissotriton vulgaris|absent": 45,
+        "Bufo bufo|present": 19,
+        "Rana temporaria|absent": 31,
+        "Bufo bufo|absent": 23,
+        "Pelophylax ridibundus|present": 5,
+        "Pelophylax ridibundus|absent": 5,
+        "Pelophylax esculenta synklepton|present": 136,
+        "Rana arvalis|present": 2,
+        "Lissotriton spec.|present": 68,
+        "Lissotriton helveticus|absent": 9,
+        "Pelobates fuscus|present": 3,
+        "Pelobates fuscus|absent": 1,
+        "Pelophylax esculenta synklepton|absent": 19,
+        "Lissotriton spec.|absent": 5
+      },
+      "conflicting_event_species": 0
+    }
+  },
+  "shared_exact_sites": 96,
+  "source_identifiers_exported": false,
+  "results": [
+    {
+      "species": "Bufo bufo",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          314,
+          314
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          314,
+          314
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          314,
+          314
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            314,
+            314
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Bufo bufo",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          670,
+          670
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          670,
+          670
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          670,
+          670
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 1,
+          "sites": 1,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2020
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 1
+              },
+              "larval_surveys": {
+                "1": 1
+              }
+            }
+          },
+          "gap_days_range": [
+            670,
+            670
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Bufo bufo",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 5,
+        "sites": 5,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "3": 2,
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 5
+            }
+          }
+        },
+        "gap_days_range": [
+          1047,
+          1066
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 5,
+        "sites": 5,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "3": 2,
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 5
+            }
+          }
+        },
+        "gap_days_range": [
+          1047,
+          1066
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 5,
+        "sites": 5,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "3": 2,
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 5
+            }
+          }
+        },
+        "gap_days_range": [
+          1047,
+          1066
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 5,
+          "sites": 5,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              5
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "3": 2,
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 5
+              }
+            }
+          },
+          "gap_days_range": [
+            1047,
+            1066
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Hyla arborea",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 37,
+        "sites": 29,
+        "cells_x_rows_y_columns": [
+          [
+            2,
+            11
+          ],
+          [
+            1,
+            23
+          ]
+        ],
+        "chorus_rate_after_absence": 0.8461538461538461,
+        "chorus_rate_after_presence": 0.9583333333333334,
+        "difference_presence_minus_absence": 0.11217948717948723,
+        "site_bootstrap_ci95": [
+          -0.07692307692307687,
+          0.35238095238095235
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2021,
+          2023,
+          2025
+        ],
+        "within_site_exposure_switchers": 4,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "1": 3,
+              "2": 10
+            },
+            "larval_surveys": {
+              "1": 13
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "1": 10,
+              "2": 14
+            },
+            "larval_surveys": {
+              "1": 24
+            }
+          }
+        },
+        "gap_days_range": [
+          292,
+          357
+        ],
+        "bootstrap_degenerate": false
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 4,
+        "mean_within_site_difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "warning": "Different calendar years; site control is not time-varying confounder control.",
+        "bootstrap_degenerate": true
+      },
+      "first_survey": {
+        "site_years": 37,
+        "sites": 29,
+        "cells_x_rows_y_columns": [
+          [
+            2,
+            11
+          ],
+          [
+            2,
+            22
+          ]
+        ],
+        "chorus_rate_after_absence": 0.8461538461538461,
+        "chorus_rate_after_presence": 0.9166666666666666,
+        "difference_presence_minus_absence": 0.07051282051282048,
+        "site_bootstrap_ci95": [
+          -0.13793670598911076,
+          0.31822727272727297
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2021,
+          2023,
+          2025
+        ],
+        "within_site_exposure_switchers": 4,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "1": 3,
+              "2": 10
+            },
+            "larval_surveys": {
+              "1": 13
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "1": 10,
+              "2": 14
+            },
+            "larval_surveys": {
+              "1": 24
+            }
+          }
+        },
+        "gap_days_range": [
+          292,
+          357
+        ],
+        "bootstrap_degenerate": false
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 24,
+        "sites": 23,
+        "cells_x_rows_y_columns": [
+          [
+            1,
+            9
+          ],
+          [
+            1,
+            13
+          ]
+        ],
+        "chorus_rate_after_absence": 0.9,
+        "chorus_rate_after_presence": 0.9285714285714286,
+        "difference_presence_minus_absence": 0.02857142857142858,
+        "site_bootstrap_ci95": [
+          -0.1959090909090909,
+          0.2857142857142857
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2021,
+          2023,
+          2025
+        ],
+        "within_site_exposure_switchers": 1,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 10
+            },
+            "larval_surveys": {
+              "1": 10
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 14
+            },
+            "larval_surveys": {
+              "1": 14
+            }
+          }
+        },
+        "gap_days_range": [
+          292,
+          357
+        ],
+        "bootstrap_degenerate": false
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 3,
+          "sites": 3,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": 1.0,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 3
+              }
+            },
+            "1": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            }
+          },
+          "gap_days_range": [
+            324,
+            324
+          ]
+        },
+        "1": {
+          "site_years": 26,
+          "sites": 22,
+          "cells_x_rows_y_columns": [
+            [
+              1,
+              5
+            ],
+            [
+              0,
+              20
+            ]
+          ],
+          "chorus_rate_after_absence": 0.8333333333333334,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": 0.16666666666666663,
+          "site_bootstrap_ci95": [
+            0.0,
+            0.5
+          ],
+          "bootstrap_valid": 3995,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2017,
+            2020,
+            2021,
+            2023,
+            2025
+          ],
+          "within_site_exposure_switchers": 1,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "1": 3,
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 6
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "1": 10,
+                "2": 10
+              },
+              "larval_surveys": {
+                "1": 20
+              }
+            }
+          },
+          "gap_days_range": [
+            292,
+            326
+          ],
+          "bootstrap_degenerate": false
+        }
+      },
+      "history_missing_rows": 8
+    },
+    {
+      "species": "Hyla arborea",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 30,
+        "sites": 19,
+        "cells_x_rows_y_columns": [
+          [
+            4,
+            5
+          ],
+          [
+            0,
+            21
+          ]
+        ],
+        "chorus_rate_after_absence": 0.5555555555555556,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": 0.4444444444444444,
+        "site_bootstrap_ci95": [
+          0.0,
+          0.7777777777777778
+        ],
+        "bootstrap_valid": 3999,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2019,
+          2020,
+          2022
+        ],
+        "within_site_exposure_switchers": 2,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 9
+            },
+            "larval_surveys": {
+              "1": 9
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 20,
+              "1": 1
+            },
+            "larval_surveys": {
+              "1": 21
+            }
+          }
+        },
+        "gap_days_range": [
+          641,
+          700
+        ],
+        "bootstrap_degenerate": false
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 2,
+        "mean_within_site_difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "warning": "Different calendar years; site control is not time-varying confounder control.",
+        "bootstrap_degenerate": true
+      },
+      "first_survey": {
+        "site_years": 30,
+        "sites": 19,
+        "cells_x_rows_y_columns": [
+          [
+            4,
+            5
+          ],
+          [
+            1,
+            20
+          ]
+        ],
+        "chorus_rate_after_absence": 0.5555555555555556,
+        "chorus_rate_after_presence": 0.9523809523809523,
+        "difference_presence_minus_absence": 0.39682539682539675,
+        "site_bootstrap_ci95": [
+          -0.031771633384536604,
+          0.7346433645922119
+        ],
+        "bootstrap_valid": 3999,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2019,
+          2020,
+          2022
+        ],
+        "within_site_exposure_switchers": 2,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 9
+            },
+            "larval_surveys": {
+              "1": 9
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 20,
+              "1": 1
+            },
+            "larval_surveys": {
+              "1": 21
+            }
+          }
+        },
+        "gap_days_range": [
+          641,
+          700
+        ],
+        "bootstrap_degenerate": false
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 29,
+        "sites": 19,
+        "cells_x_rows_y_columns": [
+          [
+            4,
+            5
+          ],
+          [
+            0,
+            20
+          ]
+        ],
+        "chorus_rate_after_absence": 0.5555555555555556,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": 0.4444444444444444,
+        "site_bootstrap_ci95": [
+          0.0,
+          0.7777777777777778
+        ],
+        "bootstrap_valid": 3999,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2019,
+          2020,
+          2022
+        ],
+        "within_site_exposure_switchers": 1,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 9
+            },
+            "larval_surveys": {
+              "1": 9
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 20
+            },
+            "larval_surveys": {
+              "1": 20
+            }
+          }
+        },
+        "gap_days_range": [
+          641,
+          700
+        ],
+        "bootstrap_degenerate": false
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 3,
+          "sites": 3,
+          "cells_x_rows_y_columns": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": 0.3333333333333333,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2020
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 3
+              }
+            },
+            "1": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            }
+          },
+          "gap_days_range": [
+            662,
+            692
+          ]
+        },
+        "1": {
+          "site_years": 14,
+          "sites": 10,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              12
+            ]
+          ],
+          "chorus_rate_after_absence": 1.0,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": 0.0,
+          "site_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "bootstrap_valid": 3587,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2019,
+            2020,
+            2022
+          ],
+          "within_site_exposure_switchers": 1,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 11,
+                "1": 1
+              },
+              "larval_surveys": {
+                "1": 12
+              }
+            }
+          },
+          "gap_days_range": [
+            641,
+            700
+          ],
+          "bootstrap_degenerate": true
+        }
+      },
+      "history_missing_rows": 13
+    },
+    {
+      "species": "Hyla arborea",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 136,
+        "sites": 80,
+        "cells_x_rows_y_columns": [
+          [
+            16,
+            38
+          ],
+          [
+            6,
+            76
+          ]
+        ],
+        "chorus_rate_after_absence": 0.7037037037037037,
+        "chorus_rate_after_presence": 0.926829268292683,
+        "difference_presence_minus_absence": 0.22312556458897925,
+        "site_bootstrap_ci95": [
+          0.0720583435108594,
+          0.38082401620935463
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 13,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 51,
+              "4": 1,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 54
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 67,
+              "3": 6,
+              "1": 7,
+              "4": 2
+            },
+            "larval_surveys": {
+              "1": 82
+            }
+          }
+        },
+        "gap_days_range": [
+          972,
+          1093
+        ],
+        "bootstrap_degenerate": false
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 13,
+        "mean_within_site_difference": -0.038461538461538464,
+        "ci95": [
+          -0.34615384615384615,
+          0.2692307692307692
+        ],
+        "warning": "Different calendar years; site control is not time-varying confounder control.",
+        "bootstrap_degenerate": false
+      },
+      "first_survey": {
+        "site_years": 136,
+        "sites": 80,
+        "cells_x_rows_y_columns": [
+          [
+            27,
+            27
+          ],
+          [
+            11,
+            71
+          ]
+        ],
+        "chorus_rate_after_absence": 0.5,
+        "chorus_rate_after_presence": 0.8658536585365854,
+        "difference_presence_minus_absence": 0.36585365853658536,
+        "site_bootstrap_ci95": [
+          0.2090885040885041,
+          0.5194491185897435
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 13,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 51,
+              "4": 1,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 54
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 67,
+              "3": 6,
+              "1": 7,
+              "4": 2
+            },
+            "larval_surveys": {
+              "1": 82
+            }
+          }
+        },
+        "gap_days_range": [
+          972,
+          1093
+        ],
+        "bootstrap_degenerate": false
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 129,
+        "sites": 79,
+        "cells_x_rows_y_columns": [
+          [
+            16,
+            38
+          ],
+          [
+            3,
+            72
+          ]
+        ],
+        "chorus_rate_after_absence": 0.7037037037037037,
+        "chorus_rate_after_presence": 0.96,
+        "difference_presence_minus_absence": 0.25629629629629624,
+        "site_bootstrap_ci95": [
+          0.12116126473117497,
+          0.3995628415300547
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 11,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 51,
+              "4": 1,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 54
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 67,
+              "3": 6,
+              "4": 2
+            },
+            "larval_surveys": {
+              "1": 75
+            }
+          }
+        },
+        "gap_days_range": [
+          972,
+          1093
+        ],
+        "bootstrap_degenerate": false
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 14,
+          "sites": 13,
+          "cells_x_rows_y_columns": [
+            [
+              5,
+              6
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": 0.5454545454545454,
+          "chorus_rate_after_presence": 0.6666666666666666,
+          "difference_presence_minus_absence": 0.12121212121212122,
+          "site_bootstrap_ci95": [
+            -0.6666666666666666,
+            0.6923076923076923
+          ],
+          "bootstrap_valid": 3863,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 11
+              },
+              "larval_surveys": {
+                "1": 11
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 3
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        },
+        "1": {
+          "site_years": 119,
+          "sites": 75,
+          "cells_x_rows_y_columns": [
+            [
+              10,
+              30
+            ],
+            [
+              5,
+              74
+            ]
+          ],
+          "chorus_rate_after_absence": 0.75,
+          "chorus_rate_after_presence": 0.9367088607594937,
+          "difference_presence_minus_absence": 0.18670886075949367,
+          "site_bootstrap_ci95": [
+            0.04891964853549093,
+            0.33333634719710675
+          ],
+          "bootstrap_valid": 4000,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 9,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 37,
+                "4": 1,
+                "3": 2
+              },
+              "larval_surveys": {
+                "1": 40
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 64,
+                "3": 6,
+                "1": 7,
+                "4": 2
+              },
+              "larval_surveys": {
+                "1": 79
+              }
+            }
+          },
+          "gap_days_range": [
+            972,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        }
+      },
+      "history_missing_rows": 3
+    },
+    {
+      "species": "Ichthyosaura alpestris",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 13,
+        "sites": 11,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            12
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.9230769230769231,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 5,
+              "1": 8
+            },
+            "larval_surveys": {
+              "1": 13
+            }
+          }
+        },
+        "gap_days_range": [
+          295,
+          324
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 13,
+        "sites": 11,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            12
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.9230769230769231,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 5,
+              "1": 8
+            },
+            "larval_surveys": {
+              "1": 13
+            }
+          }
+        },
+        "gap_days_range": [
+          295,
+          324
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 5,
+        "sites": 5,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 5
+            },
+            "larval_surveys": {
+              "1": 5
+            }
+          }
+        },
+        "gap_days_range": [
+          318,
+          324
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            324,
+            324
+          ]
+        },
+        "1": {
+          "site_years": 10,
+          "sites": 9,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              9
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.9,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2017,
+            2020,
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2,
+                "1": 8
+              },
+              "larval_surveys": {
+                "1": 10
+              }
+            }
+          },
+          "gap_days_range": [
+            295,
+            324
+          ]
+        }
+      },
+      "history_missing_rows": 1
+    },
+    {
+      "species": "Ichthyosaura alpestris",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 6,
+        "sites": 6,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 6
+            },
+            "larval_surveys": {
+              "1": 6
+            }
+          }
+        },
+        "gap_days_range": [
+          651,
+          685
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 6,
+        "sites": 6,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 6
+            },
+            "larval_surveys": {
+              "1": 6
+            }
+          }
+        },
+        "gap_days_range": [
+          651,
+          685
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 6,
+        "sites": 6,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 6
+            },
+            "larval_surveys": {
+              "1": 6
+            }
+          }
+        },
+        "gap_days_range": [
+          651,
+          685
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 1,
+          "sites": 1,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2020
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 1
+              },
+              "larval_surveys": {
+                "1": 1
+              }
+            }
+          },
+          "gap_days_range": [
+            670,
+            670
+          ]
+        }
+      },
+      "history_missing_rows": 5
+    },
+    {
+      "species": "Ichthyosaura alpestris",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 44,
+        "sites": 31,
+        "cells_x_rows_y_columns": [
+          [
+            1,
+            5
+          ],
+          [
+            6,
+            32
+          ]
+        ],
+        "chorus_rate_after_absence": 0.8333333333333334,
+        "chorus_rate_after_presence": 0.8421052631578947,
+        "difference_presence_minus_absence": 0.00877192982456132,
+        "site_bootstrap_ci95": [
+          -0.25,
+          0.4270034843205574
+        ],
+        "bootstrap_valid": 3997,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 4,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 6
+            },
+            "larval_surveys": {
+              "1": 6
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 30,
+              "1": 3,
+              "3": 3,
+              "4": 2
+            },
+            "larval_surveys": {
+              "1": 38
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 4,
+        "mean_within_site_difference": -0.125,
+        "ci95": [
+          -0.375,
+          0.0
+        ],
+        "warning": "Different calendar years; site control is not time-varying confounder control.",
+        "bootstrap_degenerate": false
+      },
+      "first_survey": {
+        "site_years": 44,
+        "sites": 31,
+        "cells_x_rows_y_columns": [
+          [
+            4,
+            2
+          ],
+          [
+            10,
+            28
+          ]
+        ],
+        "chorus_rate_after_absence": 0.3333333333333333,
+        "chorus_rate_after_presence": 0.7368421052631579,
+        "difference_presence_minus_absence": 0.40350877192982454,
+        "site_bootstrap_ci95": [
+          -0.050000000000000044,
+          0.7948717948717948
+        ],
+        "bootstrap_valid": 3997,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 4,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 6
+            },
+            "larval_surveys": {
+              "1": 6
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 30,
+              "1": 3,
+              "3": 3,
+              "4": 2
+            },
+            "larval_surveys": {
+              "1": 38
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 41,
+        "sites": 31,
+        "cells_x_rows_y_columns": [
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            31
+          ]
+        ],
+        "chorus_rate_after_absence": 0.8333333333333334,
+        "chorus_rate_after_presence": 0.8857142857142857,
+        "difference_presence_minus_absence": 0.052380952380952306,
+        "site_bootstrap_ci95": [
+          -0.21052631578947367,
+          0.4681519629795491
+        ],
+        "bootstrap_valid": 3997,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 4,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 6
+            },
+            "larval_surveys": {
+              "1": 6
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 30,
+              "3": 3,
+              "4": 2
+            },
+            "larval_surveys": {
+              "1": 35
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 8,
+          "sites": 8,
+          "cells_x_rows_y_columns": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "chorus_rate_after_absence": 0.5,
+          "chorus_rate_after_presence": 0.6666666666666666,
+          "difference_presence_minus_absence": 0.16666666666666663,
+          "site_bootstrap_ci95": [
+            -0.5714285714285714,
+            0.8571428571428571
+          ],
+          "bootstrap_valid": 3588,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 6
+              },
+              "larval_surveys": {
+                "1": 6
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        },
+        "1": {
+          "site_years": 36,
+          "sites": 28,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              4
+            ],
+            [
+              4,
+              28
+            ]
+          ],
+          "chorus_rate_after_absence": 1.0,
+          "chorus_rate_after_presence": 0.875,
+          "difference_presence_minus_absence": -0.125,
+          "site_bootstrap_ci95": [
+            -0.24242424242424243,
+            -0.030303030303030276
+          ],
+          "bootstrap_valid": 3932,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2019,
+            2020,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 3,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 4
+              },
+              "larval_surveys": {
+                "1": 4
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 24,
+                "1": 3,
+                "3": 3,
+                "4": 2
+              },
+              "larval_surveys": {
+                "1": 32
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Lissotriton helveticus",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Lissotriton helveticus",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          651,
+          651
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          651,
+          651
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          651,
+          651
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 1
+    },
+    {
+      "species": "Lissotriton helveticus",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2,
+              "3": 1
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          1055,
+          1055
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.6666666666666666,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2,
+              "3": 1
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          1055,
+          1055
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2,
+              "3": 1
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          1055,
+          1055
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 3,
+          "sites": 3,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2,
+                "3": 1
+              },
+              "larval_surveys": {
+                "1": 3
+              }
+            }
+          },
+          "gap_days_range": [
+            1055,
+            1055
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Lissotriton spec.",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Lissotriton spec.",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          662
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          662
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          662
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 2
+    },
+    {
+      "species": "Lissotriton spec.",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 16,
+        "sites": 12,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            10
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.625,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2022,
+          2024
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 13,
+              "1": 3
+            },
+            "larval_surveys": {
+              "1": 16
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1066
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 16,
+        "sites": 12,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            10
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.625,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2022,
+          2024
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 13,
+              "1": 3
+            },
+            "larval_surveys": {
+              "1": 16
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1066
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 13,
+        "sites": 9,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.6923076923076923,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2024
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 13
+            },
+            "larval_surveys": {
+              "1": 13
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1066
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 3,
+          "sites": 3,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              1
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.3333333333333333,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2024
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 3
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1054
+          ]
+        },
+        "1": {
+          "site_years": 13,
+          "sites": 12,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              9
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.6923076923076923,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2022,
+            2024
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 10,
+                "1": 3
+              },
+              "larval_surveys": {
+                "1": 13
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1066
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Lissotriton vulgaris",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 17,
+        "sites": 13,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            16
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.9411764705882353,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 7,
+              "1": 10
+            },
+            "larval_surveys": {
+              "1": 17
+            }
+          }
+        },
+        "gap_days_range": [
+          295,
+          324
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 17,
+        "sites": 13,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            16
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.9411764705882353,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 7,
+              "1": 10
+            },
+            "larval_surveys": {
+              "1": 17
+            }
+          }
+        },
+        "gap_days_range": [
+          295,
+          324
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 7,
+        "sites": 7,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            7
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 7
+            },
+            "larval_surveys": {
+              "1": 7
+            }
+          }
+        },
+        "gap_days_range": [
+          318,
+          324
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            324,
+            324
+          ]
+        },
+        "1": {
+          "site_years": 14,
+          "sites": 11,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              13
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.9285714285714286,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2017,
+            2020,
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 4,
+                "1": 10
+              },
+              "larval_surveys": {
+                "1": 14
+              }
+            }
+          },
+          "gap_days_range": [
+            295,
+            324
+          ]
+        }
+      },
+      "history_missing_rows": 1
+    },
+    {
+      "species": "Lissotriton vulgaris",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          685
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          685
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018,
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          685
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 2
+    },
+    {
+      "species": "Lissotriton vulgaris",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 39,
+        "sites": 26,
+        "cells_x_rows_y_columns": [
+          [
+            1,
+            6
+          ],
+          [
+            2,
+            30
+          ]
+        ],
+        "chorus_rate_after_absence": 0.8571428571428571,
+        "chorus_rate_after_presence": 0.9375,
+        "difference_presence_minus_absence": 0.0803571428571429,
+        "site_bootstrap_ci95": [
+          -0.12508012820512818,
+          0.4583750000000002
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2022,
+          2023,
+          2025
+        ],
+        "within_site_exposure_switchers": 5,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 7
+            },
+            "larval_surveys": {
+              "1": 7
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 28,
+              "4": 1,
+              "3": 3
+            },
+            "larval_surveys": {
+              "1": 32
+            }
+          }
+        },
+        "gap_days_range": [
+          1009,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 5,
+        "mean_within_site_difference": -0.1,
+        "ci95": [
+          -0.3,
+          0.0
+        ],
+        "warning": "Different calendar years; site control is not time-varying confounder control.",
+        "bootstrap_degenerate": false
+      },
+      "first_survey": {
+        "site_years": 39,
+        "sites": 26,
+        "cells_x_rows_y_columns": [
+          [
+            4,
+            3
+          ],
+          [
+            7,
+            25
+          ]
+        ],
+        "chorus_rate_after_absence": 0.42857142857142855,
+        "chorus_rate_after_presence": 0.78125,
+        "difference_presence_minus_absence": 0.35267857142857145,
+        "site_bootstrap_ci95": [
+          -0.033333333333333326,
+          0.7631578947368421
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2022,
+          2023,
+          2025
+        ],
+        "within_site_exposure_switchers": 5,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 7
+            },
+            "larval_surveys": {
+              "1": 7
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 28,
+              "4": 1,
+              "3": 3
+            },
+            "larval_surveys": {
+              "1": 32
+            }
+          }
+        },
+        "gap_days_range": [
+          1009,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 39,
+        "sites": 26,
+        "cells_x_rows_y_columns": [
+          [
+            1,
+            6
+          ],
+          [
+            2,
+            30
+          ]
+        ],
+        "chorus_rate_after_absence": 0.8571428571428571,
+        "chorus_rate_after_presence": 0.9375,
+        "difference_presence_minus_absence": 0.0803571428571429,
+        "site_bootstrap_ci95": [
+          -0.12508012820512818,
+          0.4583750000000002
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2020,
+          2022,
+          2023,
+          2025
+        ],
+        "within_site_exposure_switchers": 5,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 7
+            },
+            "larval_surveys": {
+              "1": 7
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 28,
+              "4": 1,
+              "3": 3
+            },
+            "larval_surveys": {
+              "1": 32
+            }
+          }
+        },
+        "gap_days_range": [
+          1009,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 4,
+          "sites": 4,
+          "cells_x_rows_y_columns": [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": 0.5,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": 0.5,
+          "site_bootstrap_ci95": [
+            0.0,
+            1.0
+          ],
+          "bootstrap_valid": 3506,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023,
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            1017,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        },
+        "1": {
+          "site_years": 35,
+          "sites": 24,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              5
+            ],
+            [
+              2,
+              28
+            ]
+          ],
+          "chorus_rate_after_absence": 1.0,
+          "chorus_rate_after_presence": 0.9333333333333333,
+          "difference_presence_minus_absence": -0.06666666666666665,
+          "site_bootstrap_ci95": [
+            -0.15857894736842107,
+            0.0
+          ],
+          "bootstrap_valid": 3988,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2019,
+            2020,
+            2022,
+            2023,
+            2025
+          ],
+          "within_site_exposure_switchers": 4,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 5
+              },
+              "larval_surveys": {
+                "1": 5
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 26,
+                "4": 1,
+                "3": 3
+              },
+              "larval_surveys": {
+                "1": 30
+              }
+            }
+          },
+          "gap_days_range": [
+            1009,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelobates fuscus",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelobates fuscus",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelobates fuscus",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "4": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          1046,
+          1046
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "4": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          1046,
+          1046
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "4": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          1046,
+          1046
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 1,
+          "sites": 1,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "4": 1
+              },
+              "larval_surveys": {
+                "1": 1
+              }
+            }
+          },
+          "gap_days_range": [
+            1046,
+            1046
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelophylax esculenta synklepton",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          324,
+          324
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          324,
+          324
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          324,
+          324
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 1,
+          "sites": 1,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 1
+              },
+              "larval_surveys": {
+                "1": 1
+              }
+            }
+          },
+          "gap_days_range": [
+            324,
+            324
+          ]
+        },
+        "1": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            324,
+            324
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelophylax esculenta synklepton",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          670,
+          670
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          670,
+          670
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          670,
+          670
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 1,
+          "sites": 1,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2020
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 1
+              },
+              "larval_surveys": {
+                "1": 1
+              }
+            }
+          },
+          "gap_days_range": [
+            670,
+            670
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelophylax esculenta synklepton",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 32,
+        "sites": 24,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            22
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.6875,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 27,
+              "1": 3,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 32
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1066
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 32,
+        "sites": 24,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            14,
+            18
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.5625,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 27,
+              "1": 3,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 32
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1066
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 29,
+        "sites": 23,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            21
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.7241379310344828,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 27,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 29
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1066
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 5,
+          "sites": 5,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.6,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 5
+              },
+              "larval_surveys": {
+                "1": 5
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1054
+          ]
+        },
+        "1": {
+          "site_years": 27,
+          "sites": 24,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              19
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.7037037037037037,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 22,
+                "1": 3,
+                "3": 2
+              },
+              "larval_surveys": {
+                "1": 27
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1066
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelophylax ridibundus",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelophylax ridibundus",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Pelophylax ridibundus",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Rana arvalis",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Rana arvalis",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 0,
+        "sites": 0,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": null,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [],
+        "within_site_exposure_switchers": 0
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Rana arvalis",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          1064,
+          1066
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          1064,
+          1066
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2021
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          1064,
+          1066
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2021
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            1064,
+            1066
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Rana temporaria",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          314,
+          332
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          314,
+          332
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 3,
+        "sites": 3,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2025
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 3
+            },
+            "larval_surveys": {
+              "1": 3
+            }
+          }
+        },
+        "gap_days_range": [
+          314,
+          332
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 2
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            314,
+            314
+          ]
+        }
+      },
+      "history_missing_rows": 1
+    },
+    {
+      "species": "Rana temporaria",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          685,
+          685
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          685,
+          685
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2018
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          685,
+          685
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 1
+    },
+    {
+      "species": "Rana temporaria",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1,
+              "3": 1
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          1023,
+          1047
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1,
+              "3": 1
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          1023,
+          1047
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1,
+              "3": 1
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          1023,
+          1047
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 2,
+          "sites": 2,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              2
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 1.0,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2020,
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 1,
+                "3": 1
+              },
+              "larval_surveys": {
+                "1": 2
+              }
+            }
+          },
+          "gap_days_range": [
+            1023,
+            1047
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Triturus cristatus",
+      "lag_calendar_years": 1,
+      "annual_any": {
+        "site_years": 7,
+        "sites": 7,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.8571428571428571,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "1": 6,
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 7
+            }
+          }
+        },
+        "gap_days_range": [
+          295,
+          324
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 7,
+        "sites": 7,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            6
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 0.8571428571428571,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2017,
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "1": 6,
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 7
+            }
+          }
+        },
+        "gap_days_range": [
+          295,
+          324
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 1,
+        "sites": 1,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2023
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 1
+            },
+            "larval_surveys": {
+              "1": 1
+            }
+          }
+        },
+        "gap_days_range": [
+          324,
+          324
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 7,
+          "sites": 7,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": 0.8571428571428571,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2017,
+            2023
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {},
+              "larval_surveys": {}
+            },
+            "1": {
+              "adult_surveys": {
+                "1": 6,
+                "2": 1
+              },
+              "larval_surveys": {
+                "1": 7
+              }
+            }
+          },
+          "gap_days_range": [
+            295,
+            324
+          ]
+        }
+      },
+      "history_missing_rows": 0
+    },
+    {
+      "species": "Triturus cristatus",
+      "lag_calendar_years": 2,
+      "annual_any": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          662
+        ]
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 0,
+        "mean_within_site_difference": null,
+        "ci95": null,
+        "warning": "Different calendar years; site control is not time-varying confounder control."
+      },
+      "first_survey": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          662
+        ]
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 2,
+        "sites": 2,
+        "cells_x_rows_y_columns": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "chorus_rate_after_absence": null,
+        "chorus_rate_after_presence": 1.0,
+        "difference_presence_minus_absence": null,
+        "site_bootstrap_ci95": null,
+        "bootstrap_valid": 0,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2020
+        ],
+        "within_site_exposure_switchers": 0,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {},
+            "larval_surveys": {}
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 2
+            },
+            "larval_surveys": {
+              "1": 2
+            }
+          }
+        },
+        "gap_days_range": [
+          662,
+          662
+        ]
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        },
+        "1": {
+          "site_years": 0,
+          "sites": 0,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": null,
+          "chorus_rate_after_presence": null,
+          "difference_presence_minus_absence": null,
+          "site_bootstrap_ci95": null,
+          "bootstrap_valid": 0,
+          "bootstrap_replicates": 4000,
+          "years": [],
+          "within_site_exposure_switchers": 0
+        }
+      },
+      "history_missing_rows": 2
+    },
+    {
+      "species": "Triturus cristatus",
+      "lag_calendar_years": 3,
+      "annual_any": {
+        "site_years": 32,
+        "sites": 20,
+        "cells_x_rows_y_columns": [
+          [
+            2,
+            6
+          ],
+          [
+            7,
+            17
+          ]
+        ],
+        "chorus_rate_after_absence": 0.75,
+        "chorus_rate_after_presence": 0.7083333333333334,
+        "difference_presence_minus_absence": -0.04166666666666663,
+        "site_bootstrap_ci95": [
+          -0.34782608695652173,
+          0.2917361111111113
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 5,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 8
+            },
+            "larval_surveys": {
+              "1": 8
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 18,
+              "1": 2,
+              "4": 2,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 24
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "within_site_post_result": {
+        "post_result_sensitivity": true,
+        "switcher_sites": 5,
+        "mean_within_site_difference": -0.1,
+        "ci95": [
+          -0.3,
+          0.0
+        ],
+        "warning": "Different calendar years; site control is not time-varying confounder control.",
+        "bootstrap_degenerate": false
+      },
+      "first_survey": {
+        "site_years": 32,
+        "sites": 20,
+        "cells_x_rows_y_columns": [
+          [
+            5,
+            3
+          ],
+          [
+            8,
+            16
+          ]
+        ],
+        "chorus_rate_after_absence": 0.375,
+        "chorus_rate_after_presence": 0.6666666666666666,
+        "difference_presence_minus_absence": 0.29166666666666663,
+        "site_bootstrap_ci95": [
+          -0.071494708994709,
+          0.6400714285714288
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 5,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 8
+            },
+            "larval_surveys": {
+              "1": 8
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 18,
+              "1": 2,
+              "4": 2,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 24
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "two_or_more_adult_surveys": {
+        "site_years": 30,
+        "sites": 19,
+        "cells_x_rows_y_columns": [
+          [
+            2,
+            6
+          ],
+          [
+            5,
+            17
+          ]
+        ],
+        "chorus_rate_after_absence": 0.75,
+        "chorus_rate_after_presence": 0.7727272727272727,
+        "difference_presence_minus_absence": 0.022727272727272707,
+        "site_bootstrap_ci95": [
+          -0.2857142857142857,
+          0.3508771929824562
+        ],
+        "bootstrap_valid": 4000,
+        "bootstrap_replicates": 4000,
+        "years": [
+          2019,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
+        "within_site_exposure_switchers": 5,
+        "survey_counts_by_exposure": {
+          "0": {
+            "adult_surveys": {
+              "2": 8
+            },
+            "larval_surveys": {
+              "1": 8
+            }
+          },
+          "1": {
+            "adult_surveys": {
+              "2": 18,
+              "4": 2,
+              "3": 2
+            },
+            "larval_surveys": {
+              "1": 22
+            }
+          }
+        },
+        "gap_days_range": [
+          997,
+          1073
+        ],
+        "bootstrap_degenerate": false
+      },
+      "history_strata": {
+        "0": {
+          "site_years": 4,
+          "sites": 4,
+          "cells_x_rows_y_columns": [
+            [
+              2,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "chorus_rate_after_absence": 0.3333333333333333,
+          "chorus_rate_after_presence": 0.0,
+          "difference_presence_minus_absence": -0.3333333333333333,
+          "site_bootstrap_ci95": [
+            -1.0,
+            0.0
+          ],
+          "bootstrap_valid": 2717,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 0,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 3
+              },
+              "larval_surveys": {
+                "1": 3
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 1
+              },
+              "larval_surveys": {
+                "1": 1
+              }
+            }
+          },
+          "gap_days_range": [
+            998,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        },
+        "1": {
+          "site_years": 28,
+          "sites": 19,
+          "cells_x_rows_y_columns": [
+            [
+              0,
+              5
+            ],
+            [
+              6,
+              17
+            ]
+          ],
+          "chorus_rate_after_absence": 1.0,
+          "chorus_rate_after_presence": 0.7391304347826086,
+          "difference_presence_minus_absence": -0.26086956521739135,
+          "site_bootstrap_ci95": [
+            -0.4545454545454546,
+            -0.09999999999999998
+          ],
+          "bootstrap_valid": 3988,
+          "bootstrap_replicates": 4000,
+          "years": [
+            2019,
+            2021,
+            2022,
+            2023,
+            2024,
+            2025
+          ],
+          "within_site_exposure_switchers": 3,
+          "survey_counts_by_exposure": {
+            "0": {
+              "adult_surveys": {
+                "2": 5
+              },
+              "larval_surveys": {
+                "1": 5
+              }
+            },
+            "1": {
+              "adult_surveys": {
+                "2": 17,
+                "1": 2,
+                "4": 2,
+                "3": 2
+              },
+              "larval_surveys": {
+                "1": 23
+              }
+            }
+          },
+          "gap_days_range": [
+            997,
+            1073
+          ],
+          "bootstrap_degenerate": false
+        }
+      },
+      "history_missing_rows": 0
+    }
+  ]
+}

@@ -1,0 +1,549 @@
+{
+  "status": "CONDITIONAL_LINEAR_BRIDGE_ONLY",
+  "empirical_parameters": false,
+  "density_feedback": false,
+  "calling_observation_model": false,
+  "interpretation": "Adding a recruitment delay alone cannot turn the current stage-reversal effect into a frog population effect; future dragonfly density must feed back into seasonal hazards.",
+  "results": [
+    {
+      "vegetation": 0.0,
+      "guild": "F",
+      "delay": 1,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.2317277130509686,
+        "no_reverse": 0.2317277130509686
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "F",
+      "delay": 1,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.2317277130509686,
+        "no_reverse": 0.2317277130509686
+      },
+      "growth": {
+        "reverse": 0.5579319282627422,
+        "no_reverse": 0.5579319282627422
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "F",
+      "delay": 1,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.2317277130509686,
+        "no_reverse": 0.2317277130509686
+      },
+      "growth": {
+        "reverse": 0.7317277130509686,
+        "no_reverse": 0.7317277130509686
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "F",
+      "delay": 3,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.2317277130509686,
+        "no_reverse": 0.2317277130509686
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "F",
+      "delay": 3,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.2317277130509686,
+        "no_reverse": 0.2317277130509686
+      },
+      "growth": {
+        "reverse": 0.6409961247599858,
+        "no_reverse": 0.6409961247599858
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "F",
+      "delay": 3,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.2317277130509686,
+        "no_reverse": 0.2317277130509686
+      },
+      "growth": {
+        "reverse": 0.8335302565368163,
+        "no_reverse": 0.8335302565368163
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "S",
+      "delay": 1,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "S",
+      "delay": 1,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.7436910179680453,
+        "no_reverse": 0.7436910179680453
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "S",
+      "delay": 1,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 1.474764071872181,
+        "no_reverse": 1.474764071872181
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "S",
+      "delay": 3,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "S",
+      "delay": 3,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.8429522139660683,
+        "no_reverse": 0.8429522139660683
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "S",
+      "delay": 3,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 1.189232666745247,
+        "no_reverse": 1.189232666745247
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "D",
+      "delay": 1,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.4129837942116287,
+        "no_reverse": 0.4583741737686119
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "D",
+      "delay": 1,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.4129837942116287,
+        "no_reverse": 0.4583741737686119
+      },
+      "growth": {
+        "reverse": 0.6032459485529071,
+        "no_reverse": 0.614593543442153
+      },
+      "difference": -0.01134759488924586
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "D",
+      "delay": 1,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.4129837942116287,
+        "no_reverse": 0.4583741737686119
+      },
+      "growth": {
+        "reverse": 0.9129837942116287,
+        "no_reverse": 0.9583741737686119
+      },
+      "difference": -0.04539037955698322
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "D",
+      "delay": 3,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.4129837942116287,
+        "no_reverse": 0.4583741737686119
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "D",
+      "delay": 3,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.4129837942116287,
+        "no_reverse": 0.4583741737686119
+      },
+      "growth": {
+        "reverse": 0.7067187262457202,
+        "no_reverse": 0.7206523428514882
+      },
+      "difference": -0.013933616605767973
+    },
+    {
+      "vegetation": 0.0,
+      "guild": "D",
+      "delay": 3,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.4129837942116287,
+        "no_reverse": 0.4583741737686119
+      },
+      "growth": {
+        "reverse": 0.9538823977881219,
+        "no_reverse": 0.9786206258525629
+      },
+      "difference": -0.024738228064441037
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "F",
+      "delay": 1,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.2191936249992041,
+        "no_reverse": 0.2191936249992041
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "F",
+      "delay": 1,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.2191936249992041,
+        "no_reverse": 0.2191936249992041
+      },
+      "growth": {
+        "reverse": 0.554798406249801,
+        "no_reverse": 0.554798406249801
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "F",
+      "delay": 1,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.2191936249992041,
+        "no_reverse": 0.2191936249992041
+      },
+      "growth": {
+        "reverse": 0.7191936249992041,
+        "no_reverse": 0.7191936249992041
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "F",
+      "delay": 3,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.2191936249992041,
+        "no_reverse": 0.2191936249992041
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "F",
+      "delay": 3,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.2191936249992041,
+        "no_reverse": 0.2191936249992041
+      },
+      "growth": {
+        "reverse": 0.635630742661262,
+        "no_reverse": 0.635630742661262
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "F",
+      "delay": 3,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.2191936249992041,
+        "no_reverse": 0.2191936249992041
+      },
+      "growth": {
+        "reverse": 0.8233441928602279,
+        "no_reverse": 0.8233441928602279
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "S",
+      "delay": 1,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "S",
+      "delay": 1,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.7436910179680453,
+        "no_reverse": 0.7436910179680453
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "S",
+      "delay": 1,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 1.474764071872181,
+        "no_reverse": 1.474764071872181
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "S",
+      "delay": 3,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "S",
+      "delay": 3,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 0.8429522139660683,
+        "no_reverse": 0.8429522139660683
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "S",
+      "delay": 3,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.9747640718721812,
+        "no_reverse": 0.9747640718721812
+      },
+      "growth": {
+        "reverse": 1.189232666745247,
+        "no_reverse": 1.189232666745247
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "D",
+      "delay": 1,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.5210635614756975,
+        "no_reverse": 0.6036661671889391
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "D",
+      "delay": 1,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.5210635614756975,
+        "no_reverse": 0.6036661671889391
+      },
+      "growth": {
+        "reverse": 0.6302658903689244,
+        "no_reverse": 0.6509165417972348
+      },
+      "difference": -0.02065065142831035
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "D",
+      "delay": 1,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.5210635614756975,
+        "no_reverse": 0.6036661671889391
+      },
+      "growth": {
+        "reverse": 1.0210635614756975,
+        "no_reverse": 1.1036661671889392
+      },
+      "difference": -0.08260260571324163
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "D",
+      "delay": 3,
+      "retention": 0.0,
+      "completion": {
+        "reverse": 0.5210635614756975,
+        "no_reverse": 0.6036661671889391
+      },
+      "growth": {
+        "reverse": 0.5,
+        "no_reverse": 0.5
+      },
+      "difference": 0.0
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "D",
+      "delay": 3,
+      "retention": 0.25,
+      "completion": {
+        "reverse": 0.5210635614756975,
+        "no_reverse": 0.6036661671889391
+      },
+      "growth": {
+        "reverse": 0.7387140542827311,
+        "no_reverse": 0.7607601898808847
+      },
+      "difference": -0.022046135598153604
+    },
+    {
+      "vegetation": 1.0,
+      "guild": "D",
+      "delay": 3,
+      "retention": 1.0,
+      "completion": {
+        "reverse": 0.5210635614756975,
+        "no_reverse": 0.6036661671889391
+      },
+      "growth": {
+        "reverse": 1.010396119801478,
+        "no_reverse": 1.0487983798950709
+      },
+      "difference": -0.03840226009359293
+    }
+  ]
+}
