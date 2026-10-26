@@ -1,0 +1,105 @@
+{
+  "dataset": "EarthEnv full v1, Tuanmu & Jetz 2014, CC BY-NC 4.0",
+  "receipts": [
+    {
+      "band": 6,
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_6.tif",
+      "sha256": "ee3be3219e13d1ad498d5d8eaa933e110facf633bb1c2801d1dfd23bdfb5d5ee",
+      "bytes": 65617214
+    },
+    {
+      "band": 8,
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_8.tif",
+      "sha256": "ff4fd807761e06f740efbada3007d0449705ee77bd8e27bb491246e4a7a71e39",
+      "bytes": 22102767
+    },
+    {
+      "band": 12,
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_12.tif",
+      "sha256": "a944780bc2fcc42bf0bf4e3cff505016e2e4801a124a27d5333cafb6a37da68c",
+      "bytes": 28060356
+    }
+  ],
+  "raster_metadata": [
+    {
+      "band": 6,
+      "crs": "EPSG:4326",
+      "source_transform": [
+        0.008333333333333335,
+        0.0,
+        -180.00000000000003,
+        0.0,
+        -0.008333333333333335,
+        90.00000000000001,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "source_shape": [
+        17520,
+        43200
+      ],
+      "regional_shape": [
+        2858,
+        3811
+      ],
+      "nodata": 255.0
+    },
+    {
+      "band": 8,
+      "crs": "EPSG:4326",
+      "source_transform": [
+        0.008333333333333335,
+        0.0,
+        -180.00000000000003,
+        0.0,
+        -0.008333333333333335,
+        90.00000000000001,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "source_shape": [
+        17520,
+        43200
+      ],
+      "regional_shape": [
+        2858,
+        3811
+      ],
+      "nodata": 255.0
+    },
+    {
+      "band": 12,
+      "crs": "EPSG:4326",
+      "source_transform": [
+        0.008333333333333335,
+        0.0,
+        -180.00000000000003,
+        0.0,
+        -0.008333333333333335,
+        90.00000000000001,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "source_shape": [
+        17520,
+        43200
+      ],
+      "regional_shape": [
+        2858,
+        3811
+      ],
+      "nodata": 255.0
+    }
+  ],
+  "main_radius_m": 3000,
+  "sensitivity_radius_m": 1000,
+  "total_sites": 11947,
+  "primary_sites": 4248,
+  "interpretation": "Landscape context of consensus prevalence; not actual pond stem density, refuge use or current vegetation",
+  "time": "Static composite of historical input products, not a strict annual prior-history covariate",
+  "extraction": "Cell centres within approximate metric circle; cosine-latitude area weighting; values 0..100 valid; 255 missing",
+  "point_replay": "Exact agreement with previously saved flooded/open-water point samples"
+}
