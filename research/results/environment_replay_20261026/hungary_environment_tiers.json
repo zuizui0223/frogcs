@@ -1,0 +1,301 @@
+{
+  "study": "Mizsei & Wenner (2025), Zenodo 10.5281/zenodo.15044115, CC BY 4.0",
+  "study_design": "29 wetland sites, 2024 spring, cross-sectional site covariates, repeated non-standardizable methods",
+  "data_sha256": {
+    "wetland_amp_site_data.csv": "93064521563b04d8c264639463abf9806eea7aa34f502d7d45bedd42ebec0319",
+    "wetland_amp_surv_data.csv": "45146ee7a97c8086a53d13c3f19a060b51fe2ca1a42cb1aa9c42bbac67877ddd"
+  },
+  "n_site_rows": 29,
+  "n_survey_rows": 381,
+  "distinct_doy": 26,
+  "fish_positive_sites": 2,
+  "site_context_counts": {
+    "intervention": 13,
+    "artificial": 9,
+    "control": 7
+  },
+  "emergent_cover_min_max": [
+    1.0,
+    60.0
+  ],
+  "methods": {
+    "acoustic": {
+      "visits": 129,
+      "sites": 29,
+      "anuran_positive_visits": 40,
+      "anuran_positive_fraction": 0.31007751937984496,
+      "newt_positive_visits": 0
+    },
+    "visual": {
+      "visits": 129,
+      "sites": 29,
+      "anuran_positive_visits": 100,
+      "anuran_positive_fraction": 0.7751937984496124,
+      "newt_positive_visits": 12
+    },
+    "dipnet": {
+      "visits": 59,
+      "sites": 28,
+      "anuran_positive_visits": 51,
+      "anuran_positive_fraction": 0.864406779661017,
+      "newt_positive_visits": 35
+    },
+    "bottletrap": {
+      "visits": 64,
+      "sites": 29,
+      "anuran_positive_visits": 31,
+      "anuran_positive_fraction": 0.484375,
+      "newt_positive_visits": 25
+    }
+  },
+  "prediction_cv": {
+    "acoustic": {
+      "visits": 129,
+      "sites": 29,
+      "frog_positive_visits": 40,
+      "positive_visit_rate": 0.31007751937984496,
+      "models": {
+        "W0_weather_phenology": {
+          "site_balanced_brier": 0.20630383069267,
+          "visit_weighted_brier": 0.214614850118308,
+          "site_balanced_logloss": 0.5905801439884301,
+          "visit_weighted_logloss": 0.6077595613549458
+        },
+        "W1a_plus_depth_only": {
+          "site_balanced_brier": 0.20316980292332798,
+          "visit_weighted_brier": 0.21104839958886504,
+          "site_balanced_logloss": 0.5905729509461781,
+          "visit_weighted_logloss": 0.6069659305494325
+        },
+        "W1b_plus_class_only": {
+          "site_balanced_brier": 0.18000641205443946,
+          "visit_weighted_brier": 0.19069507430524155,
+          "site_balanced_logloss": 0.5275432490622228,
+          "visit_weighted_logloss": 0.5508687690450808
+        },
+        "W1_plus_depth_context": {
+          "site_balanced_brier": 0.17377309487118192,
+          "visit_weighted_brier": 0.1835410470949662,
+          "site_balanced_logloss": 0.5253550570135272,
+          "visit_weighted_logloss": 0.5466655580208117
+        },
+        "W2_plus_emergent": {
+          "site_balanced_brier": 0.17757725205322086,
+          "visit_weighted_brier": 0.1872790222045756,
+          "site_balanced_logloss": 0.5358949265588154,
+          "visit_weighted_logloss": 0.5569323124883957
+        },
+        "W2alt_plus_submerged": {
+          "site_balanced_brier": 0.1849950986590582,
+          "visit_weighted_brier": 0.18808727617532195,
+          "site_balanced_logloss": 0.5519799786143432,
+          "visit_weighted_logloss": 0.5573657256088329
+        },
+        "W3_both_plants_diversity": {
+          "site_balanced_brier": 0.19271897953703815,
+          "visit_weighted_brier": 0.19943654394044472,
+          "site_balanced_logloss": 0.5758658718234709,
+          "visit_weighted_logloss": 0.5894204777399397
+        }
+      },
+      "incremental": {
+        "W1a_plus_depth_only_versus_W0_weather_phenology": {
+          "site_balanced_brier_improvement": 0.0031340277693420347,
+          "cluster_bootstrap_95ci": [
+            -0.011250516222192747,
+            0.01620106772378756
+          ],
+          "bootstrap_fraction_positive": 0.687,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W1b_plus_class_only_versus_W0_weather_phenology": {
+          "site_balanced_brier_improvement": 0.026297418638230527,
+          "cluster_bootstrap_95ci": [
+            0.0012245806566171763,
+            0.048261772084846416
+          ],
+          "bootstrap_fraction_positive": 0.98,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W1_plus_depth_context_versus_W0_weather_phenology": {
+          "site_balanced_brier_improvement": 0.032530735821488126,
+          "cluster_bootstrap_95ci": [
+            0.008797855498238789,
+            0.055849199614642256
+          ],
+          "bootstrap_fraction_positive": 0.996,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W2_plus_emergent_versus_W1_plus_depth_context": {
+          "site_balanced_brier_improvement": -0.0038041571820389484,
+          "cluster_bootstrap_95ci": [
+            -0.009628582757514194,
+            0.0018646021819188462
+          ],
+          "bootstrap_fraction_positive": 0.096,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W2alt_plus_submerged_versus_W1_plus_depth_context": {
+          "site_balanced_brier_improvement": -0.011222003787876326,
+          "cluster_bootstrap_95ci": [
+            -0.03615020022451817,
+            0.004553428674876236
+          ],
+          "bootstrap_fraction_positive": 0.138,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W3_both_plants_diversity_versus_W1_plus_depth_context": {
+          "site_balanced_brier_improvement": -0.018945884665856248,
+          "cluster_bootstrap_95ci": [
+            -0.040840156744876926,
+            -0.0029650630191230772
+          ],
+          "bootstrap_fraction_positive": 0.002,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W3_both_plants_diversity_versus_W2_plus_emergent": {
+          "site_balanced_brier_improvement": -0.015141727483817301,
+          "cluster_bootstrap_95ci": [
+            -0.03815637067807689,
+            0.002807821743193038
+          ],
+          "bootstrap_fraction_positive": 0.059,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        }
+      }
+    },
+    "visual": {
+      "visits": 129,
+      "sites": 29,
+      "frog_positive_visits": 100,
+      "positive_visit_rate": 0.7751937984496124,
+      "models": {
+        "W0_weather_phenology": {
+          "site_balanced_brier": 0.1956209301998907,
+          "visit_weighted_brier": 0.18538635405170745,
+          "site_balanced_logloss": 0.5858386351144521,
+          "visit_weighted_logloss": 0.5621755140862574
+        },
+        "W1a_plus_depth_only": {
+          "site_balanced_brier": 0.20515200588356777,
+          "visit_weighted_brier": 0.1927175412010718,
+          "site_balanced_logloss": 0.6108534726039485,
+          "visit_weighted_logloss": 0.5803166051800944
+        },
+        "W1b_plus_class_only": {
+          "site_balanced_brier": 0.19094739667527325,
+          "visit_weighted_brier": 0.1857701895280144,
+          "site_balanced_logloss": 0.5774112335833996,
+          "visit_weighted_logloss": 0.569192143970335
+        },
+        "W1_plus_depth_context": {
+          "site_balanced_brier": 0.2093783103538592,
+          "visit_weighted_brier": 0.20091374778218923,
+          "site_balanced_logloss": 0.6263136835611026,
+          "visit_weighted_logloss": 0.609533781929103
+        },
+        "W2_plus_emergent": {
+          "site_balanced_brier": 0.2093058938886536,
+          "visit_weighted_brier": 0.19692930648695336,
+          "site_balanced_logloss": 0.6273221696519539,
+          "visit_weighted_logloss": 0.6008642094530723
+        },
+        "W2alt_plus_submerged": {
+          "site_balanced_brier": 0.2355067024065314,
+          "visit_weighted_brier": 0.21967516200337617,
+          "site_balanced_logloss": 0.7537050462706402,
+          "visit_weighted_logloss": 0.6900845252709764
+        },
+        "W3_both_plants_diversity": {
+          "site_balanced_brier": 0.25171452546082973,
+          "visit_weighted_brier": 0.23695694271845175,
+          "site_balanced_logloss": 0.8146474197978917,
+          "visit_weighted_logloss": 0.7470858329956976
+        }
+      },
+      "incremental": {
+        "W1a_plus_depth_only_versus_W0_weather_phenology": {
+          "site_balanced_brier_improvement": -0.009531075683677009,
+          "cluster_bootstrap_95ci": [
+            -0.027073623322626274,
+            0.003907861509807175
+          ],
+          "bootstrap_fraction_positive": 0.1,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W1b_plus_class_only_versus_W0_weather_phenology": {
+          "site_balanced_brier_improvement": 0.004673533524617449,
+          "cluster_bootstrap_95ci": [
+            -0.027337849635429824,
+            0.03712461522341907
+          ],
+          "bootstrap_fraction_positive": 0.619,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W1_plus_depth_context_versus_W0_weather_phenology": {
+          "site_balanced_brier_improvement": -0.013757380153968513,
+          "cluster_bootstrap_95ci": [
+            -0.05765505845388926,
+            0.019268177297392077
+          ],
+          "bootstrap_fraction_positive": 0.252,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W2_plus_emergent_versus_W1_plus_depth_context": {
+          "site_balanced_brier_improvement": 7.241646520567997e-05,
+          "cluster_bootstrap_95ci": [
+            -0.026581925725062888,
+            0.023240593472937034
+          ],
+          "bootstrap_fraction_positive": 0.511,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W2alt_plus_submerged_versus_W1_plus_depth_context": {
+          "site_balanced_brier_improvement": -0.02612839205267211,
+          "cluster_bootstrap_95ci": [
+            -0.06589132304251842,
+            0.001338891517311569
+          ],
+          "bootstrap_fraction_positive": 0.04,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W3_both_plants_diversity_versus_W1_plus_depth_context": {
+          "site_balanced_brier_improvement": -0.04233621510697054,
+          "cluster_bootstrap_95ci": [
+            -0.08735104160416071,
+            -0.0061725866631600085
+          ],
+          "bootstrap_fraction_positive": 0.009,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        },
+        "W3_both_plants_diversity_versus_W2_plus_emergent": {
+          "site_balanced_brier_improvement": -0.04240863157217621,
+          "cluster_bootstrap_95ci": [
+            -0.08890478186615057,
+            -0.0009749650631744439
+          ],
+          "bootstrap_fraction_positive": 0.023,
+          "interpretation": "exploratory CV prediction difference, not a causal estimate or fixed significance test"
+        }
+      }
+    }
+  },
+  "within_spring_acoustic_history": {
+    "sites_with_repeat": 29,
+    "later_visits": 100,
+    "first_visit_positive_sites": 7,
+    "later_rate_if_first_positive": 0.39285714285714285,
+    "later_rate_if_first_negative": 0.3055555555555556,
+    "boundary": "same-spring repeated detection; no independent year and no physical individual identity"
+  },
+  "boundaries": [
+    "No historic multi-year strong-chorus re-use: single 2024 season.",
+    "No ordinal CallingIndex, eggs, tadpole survival or predation.",
+    "Fish × emergent cover is NONESTIMABLE: only two fish sites.",
+    "Within-site static plants cannot identify plant-change causal effect.",
+    "Models predict acoustic detection, not true adult abundance/occupancy.",
+    "GroupKFold leaves out whole sites; no independent study/year holdout.",
+    "Bootstraps condition on fixed held-out predictions: exploratory.",
+    "Multiple tier comparisons are exploratory and not pre-registered."
+  ]
+}
