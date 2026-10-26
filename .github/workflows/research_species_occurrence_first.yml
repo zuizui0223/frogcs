@@ -59,6 +59,19 @@ jobs:
           assert 'protocol_nondetection' not in p['status_by_source']['naamp_positive_calls']
           assert q['regression_or_causal_community_competition_fit'] is False
           assert q['hungary']['independent_original_wetlands']==29
+          for pair in q['pairs']['pair_models']:
+              cells=[pair['co_detection_events_n11'],
+                     pair['a_detected_b_not_called_or_not_observed_n10'],
+                     pair['a_not_called_or_not_observed_b_detected_n01'],
+                     pair['both_protocol_not_detected_n00']]
+              assert pair['both_species_explicitly_assessed_original_events']==sum(cells)
+          green_peeper=next(x for x in q['pairs']['pair_models'] if
+                            x['source_id']=='nps_glkn' and
+                            x['species_a']=='Lithobates clamitans' and
+                            x['species_b']=='Pseudacris crucifer')
+          assert green_peeper['both_species_explicitly_assessed_original_events']==16561
+          assert p['contradictory_present_and_zero_within_original_survey_species_by_source']['hungary_2024']==5
+
           print('VERIFIED_SPECIES_OCCURRENCE_NATIVE_SURVEY_GRAIN_PASS')
           print(json.dumps({
             'row_counts':p['n_distinct_event_taxon_method_records_by_source'],
