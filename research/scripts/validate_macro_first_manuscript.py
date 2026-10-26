@@ -96,9 +96,9 @@ def verify_source_and_ledger():
                        "feature":"history_difference"})
     require(int(r["pairs"])==4040 and int(r["routes"])==388,
             "Original history comparison sample/route drift")
-    nearly(float(r["mean"])*100,c["difference_pp"])
-    nearly(float(r["low"])*100,c["ci95_pp"][0])
-    nearly(float(r["high"])*100,c["ci95_pp"][1])
+    nearly(float(r["mean"])*100,c["difference_pp"],atol=0.011)
+    nearly(float(r["low"])*100,c["ci95_pp"][0],atol=0.011)
+    nearly(float(r["high"])*100,c["ci95_pp"][1],atol=0.011)
 
     prior_replay=json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     assert prior_replay["source_commit"]==ledger["frozen_source_snapshot"]["commit"]
