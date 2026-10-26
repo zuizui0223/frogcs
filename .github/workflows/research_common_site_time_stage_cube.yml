@@ -4,6 +4,7 @@ on:
     branches: [integration/stage-legacy-unified-2026-10-25]
     paths:
       - research/scripts/build_common_ecology_units.py
+      - research/scripts/common_ecology_correlations.py
       - research/CANONICAL_SITE_TIME_STAGE_OBSERVATION_CONTRACT_V1.md
       - .github/workflows/research_common_site_time_stage_cube.yml
   workflow_dispatch:
@@ -19,11 +20,30 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install source-scoped numerical requirements
-        run: python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
       - name: Syntax and source provenance validation
         run: python3 -m py_compile research/scripts/build_common_ecology_units.py
       - name: Build source-namespaced canonical site/year/month/taxon/stage, no causal joins
         run: python3 research/scripts/build_common_ecology_units.py --out /tmp/frogcs_common_units
+      - name: Quantify predeclared correlations, co-reported developmental stage and acoustic timing
+        run: |
+          python3 -m py_compile research/scripts/common_ecology_correlations.py
+          python3 research/scripts/common_ecology_correlations.py \
+            --from-units /tmp/frogcs_common_units/common_observation_events.csv.gz \
+            --out /tmp/frogcs_common_units/observed_correlations.json
+      - name: Check non-identification of emergent sprouting and trophic predation
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('/tmp/frogcs_common_units/observed_correlations.json').read_text())
+          assert x['wetland_macrophyte_sprouting_dates_measured'] is False
+          assert x['joint_physical_pond_egg_survival_predator_size_water_drying_dataset_qualified'] is False
+          assert x['frog_RC6_rain_concentration_caused_by_aquatic_predators_identified'] is False
+          assert x['correlations']['Hungary_real_water_and_static_emergent_vegetation_vs_acoustic']['original_site_count']==29
+          assert x['correlations']['INBO_original_event_exact_location_phenology_and_other_species']['same_species_exact_site_year_pairs']==245
+          print('SOURCE_LEVEL_CORRELATIONS_WITHIN_VALID_SITE_STAGE_UNITS_PASS')
+          PY
       - name: Check source integrity, native wetland vs recording locations and missing stage zeros
         run: |
           python3 - <<'PY'
