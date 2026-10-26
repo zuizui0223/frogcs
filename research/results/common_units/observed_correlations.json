@@ -1,0 +1,486 @@
+{
+  "analysis_protocol": "research/CANONICAL_SITE_TIME_STAGE_OBSERVATION_CONTRACT_V1.md",
+  "status": "OBSERVATIONAL_CORRELATIONS_COMPUTED_POSTHOC_NO_JOINT_CAUSAL_G2",
+  "site_key_provenance": "source-namespaced hashed original wetland or recorder identifiers",
+  "source_site_year_month_primary_grain": true,
+  "correlations": {
+    "Hungary_real_water_and_static_emergent_vegetation_vs_acoustic": {
+      "status": "MEASURED_WETLAND_ACOUSTIC_CORRELATION_EXPLORATORY",
+      "original_site_count": 29,
+      "acoustic_visit_count": 129,
+      "one_year_only": 2024,
+      "acoustic_site_fraction_range": [
+        0,
+        0.75
+      ],
+      "fish_recorded_site_count": 2,
+      "emergent_cover_is_static_site_percent_not_sprouting_time": true,
+      "water_depth_unit_is_source_unknown": true,
+      "precip_unit_is_source_unknown": true,
+      "correlations": {
+        "measured_water_depth": {
+          "description": "depth observed at site vs fraction of adult acoustic surveys positive",
+          "n_site_or_siteyears": 29,
+          "independent_sites": 29,
+          "spearman_rho": 0.20567156257800462,
+          "statistic_is_exploratory_observational": true,
+          "status": "DESCRIPTIVE_ESTIMABLE",
+          "site_cluster_uncertainty": {
+            "estimable": true,
+            "source_site_groups": 29,
+            "conditional_site_bootstrap_valid_reps": 2000,
+            "conditional_site_bootstrap_CI95": [
+              -0.15374666862975614,
+              0.5294341215833359
+            ],
+            "random_seed": 20261026
+          }
+        },
+        "emergent_percent": {
+          "description": "static emergent plant percent vs acoustic frog-positive fraction",
+          "n_site_or_siteyears": 29,
+          "independent_sites": 29,
+          "spearman_rho": 0.06367325716078982,
+          "statistic_is_exploratory_observational": true,
+          "status": "DESCRIPTIVE_ESTIMABLE",
+          "site_cluster_uncertainty": {
+            "estimable": true,
+            "source_site_groups": 29,
+            "conditional_site_bootstrap_valid_reps": 2000,
+            "conditional_site_bootstrap_CI95": [
+              -0.3465979885111037,
+              0.46560882048716506
+            ],
+            "random_seed": 20261026
+          }
+        },
+        "submerged_percent": {
+          "description": "static submerged plant percent vs acoustic frog-positive fraction",
+          "n_site_or_siteyears": 29,
+          "independent_sites": 29,
+          "spearman_rho": 0.22019641904558646,
+          "statistic_is_exploratory_observational": true,
+          "status": "DESCRIPTIVE_ESTIMABLE",
+          "site_cluster_uncertainty": {
+            "estimable": true,
+            "source_site_groups": 29,
+            "conditional_site_bootstrap_valid_reps": 2000,
+            "conditional_site_bootstrap_CI95": [
+              -0.22281353968516812,
+              0.6170362720924534
+            ],
+            "random_seed": 20261026
+          }
+        },
+        "mean_spring_source_precip": {
+          "description": "mean recorded spring precip value at visits vs acoustic frog-positive fraction",
+          "n_site_or_siteyears": 29,
+          "independent_sites": 29,
+          "spearman_rho": -0.18333328190438108,
+          "statistic_is_exploratory_observational": true,
+          "status": "DESCRIPTIVE_ESTIMABLE",
+          "site_cluster_uncertainty": {
+            "estimable": true,
+            "source_site_groups": 29,
+            "conditional_site_bootstrap_valid_reps": 2000,
+            "conditional_site_bootstrap_CI95": [
+              -0.5302708891023347,
+              0.22063136349972642
+            ],
+            "random_seed": 20261026
+          }
+        }
+      },
+      "month_acoustic_fraction": [
+        {
+          "month": 3,
+          "visits": 18,
+          "distinct_wetlands": 14,
+          "acoustic_positive_fraction": 0.1111111111111111,
+          "mean_frog_species_per_audio_survey": 0.16666666666666666
+        },
+        {
+          "month": 4,
+          "visits": 81,
+          "distinct_wetlands": 26,
+          "acoustic_positive_fraction": 0.345679012345679,
+          "mean_frog_species_per_audio_survey": 0.5185185185185185
+        },
+        {
+          "month": 5,
+          "visits": 28,
+          "distinct_wetlands": 23,
+          "acoustic_positive_fraction": 0.35714285714285715,
+          "mean_frog_species_per_audio_survey": 0.5357142857142857
+        },
+        {
+          "month": 6,
+          "visits": 2,
+          "distinct_wetlands": 2,
+          "acoustic_positive_fraction": 0,
+          "mean_frog_species_per_audio_survey": 0
+        }
+      ],
+      "source_methods_cannot_be_pooled_as_the_same_detection_endpoint": true,
+      "acoustic_vs_visual_site_fraction_correlation": {
+        "description": "Different sampling methods, not identical true animal populations",
+        "n_site_or_siteyears": 29,
+        "independent_sites": 29,
+        "spearman_rho": 0.3842214544508408,
+        "statistic_is_exploratory_observational": true,
+        "status": "DESCRIPTIVE_ESTIMABLE",
+        "site_cluster_uncertainty": {
+          "estimable": true,
+          "source_site_groups": 29,
+          "conditional_site_bootstrap_valid_reps": 2000,
+          "conditional_site_bootstrap_CI95": [
+            -0.003702234111816336,
+            0.6715920893820078
+          ],
+          "random_seed": 20261026
+        }
+      },
+      "fish_x_emergent_shelter_effect_estimable": false,
+      "fish_habitat_reason": "Only 2/29 field wetland sites have fish reported: site-level intervention is extremely sparse"
+    },
+    "NPS_same_original_soundfile_multitaxon_chorus_vs_hydroperiod": {
+      "status": "OBSERVED_MULTI_TAXON_SAME_AUDIO_CHORUS_PHENOLOGY",
+      "original_species_audio_rows": 147913,
+      "unique_original_soundfile_events": 16561,
+      "audio_events_with_5plus_species_scored": 16561,
+      "physical_acoustic_stations": 66,
+      "source_hydroperiod_known_site_groups": 66,
+      "site_multi_species_strong_fraction_vs_hydroperiod_order_correlation": {
+        "description": "Static source broad water-persistence class vs fraction of same-source audio with ≥2 taxa CI≥2",
+        "n_site_or_siteyears": 66,
+        "independent_sites": 66,
+        "spearman_rho": -0.22953882993556368,
+        "statistic_is_exploratory_observational": true,
+        "status": "DESCRIPTIVE_ESTIMABLE",
+        "site_cluster_uncertainty": {
+          "estimable": true,
+          "source_site_groups": 66,
+          "conditional_site_bootstrap_valid_reps": 2000,
+          "conditional_site_bootstrap_CI95": [
+            -0.4596749145585209,
+            0.022746908947158938
+          ],
+          "random_seed": 20261026
+        }
+      },
+      "month_by_broad_hydroperiod": [
+        {
+          "hydroperiod": "Ephemeral",
+          "month": 3,
+          "source_audio_files": 61,
+          "source_sites": 9,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.26229508196721313
+        },
+        {
+          "hydroperiod": "Ephemeral",
+          "month": 4,
+          "source_audio_files": 440,
+          "source_sites": 14,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.23636363636363636
+        },
+        {
+          "hydroperiod": "Ephemeral",
+          "month": 5,
+          "source_audio_files": 966,
+          "source_sites": 15,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.2401656314699793
+        },
+        {
+          "hydroperiod": "Ephemeral",
+          "month": 6,
+          "source_audio_files": 1145,
+          "source_sites": 15,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.07510917030567686
+        },
+        {
+          "hydroperiod": "Ephemeral",
+          "month": 7,
+          "source_audio_files": 1064,
+          "source_sites": 15,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.008458646616541353
+        },
+        {
+          "hydroperiod": "Permanent",
+          "month": 3,
+          "source_audio_files": 59,
+          "source_sites": 11,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.01694915254237288
+        },
+        {
+          "hydroperiod": "Permanent",
+          "month": 4,
+          "source_audio_files": 532,
+          "source_sites": 27,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.046992481203007516
+        },
+        {
+          "hydroperiod": "Permanent",
+          "month": 5,
+          "source_audio_files": 1807,
+          "source_sites": 29,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.1466519092418373
+        },
+        {
+          "hydroperiod": "Permanent",
+          "month": 6,
+          "source_audio_files": 2453,
+          "source_sites": 29,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.10680799021606197
+        },
+        {
+          "hydroperiod": "Permanent",
+          "month": 7,
+          "source_audio_files": 2393,
+          "source_sites": 29,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.015879648976180525
+        },
+        {
+          "hydroperiod": "Permanent",
+          "month": 8,
+          "source_audio_files": 1,
+          "source_sites": 1,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0
+        },
+        {
+          "hydroperiod": "Semi-permanent",
+          "month": 3,
+          "source_audio_files": 76,
+          "source_sites": 10,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.21052631578947367
+        },
+        {
+          "hydroperiod": "Semi-permanent",
+          "month": 4,
+          "source_audio_files": 529,
+          "source_sites": 21,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.166351606805293
+        },
+        {
+          "hydroperiod": "Semi-permanent",
+          "month": 5,
+          "source_audio_files": 1413,
+          "source_sites": 22,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.25760792639773533
+        },
+        {
+          "hydroperiod": "Semi-permanent",
+          "month": 6,
+          "source_audio_files": 1827,
+          "source_sites": 22,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.16912972085385877
+        },
+        {
+          "hydroperiod": "Semi-permanent",
+          "month": 7,
+          "source_audio_files": 1793,
+          "source_sites": 22,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0.01784718349135527
+        },
+        {
+          "hydroperiod": "Semi-permanent",
+          "month": 8,
+          "source_audio_files": 2,
+          "source_sites": 2,
+          "fraction_audio_with_atleast2_simultaneous_CI2": 0
+        }
+      ],
+      "life_stage": "adult_acoustic_only",
+      "simultaneous_same_soundfile_co_chorus_not_larval_overlap": true,
+      "effort_gate": "Only source soundfiles with >=5 distinct manually scored species included; no frog absent imputation at unknown source"
+    },
+    "INBO_original_event_exact_location_phenology_and_other_species": {
+      "status": "INBO_SAME_SOURCE_LOCATION_STAGE_CORRELATION_EXPLORATORY",
+      "same_species_exact_site_year_pairs": 245,
+      "different_unique_original_sites": 93,
+      "contingency_strict_adult_prior_to_first_larva": {
+        "cell_counts": {
+          "prior_chorus_0|later_larva_0": 25,
+          "prior_chorus_0|later_larva_1": 8,
+          "prior_chorus_1|later_larva_0": 80,
+          "prior_chorus_1|later_larva_1": 132
+        },
+        "phi": 0.262299866078151,
+        "direction": "past recorded adult calling vs later explicitly assessed larva, not reproduction success",
+        "risk_difference": 0.3802172670097198
+      },
+      "other_anuran_adult_chorus_richness_vs_next_focal_larva": {
+        "description": "Previously acoustically reported other anuran species richness vs later focal larva detection; NOT underwater competitor density",
+        "n_site_or_siteyears": 245,
+        "independent_sites": 93,
+        "spearman_rho": -0.0762315589577247,
+        "statistic_is_exploratory_observational": true,
+        "status": "DESCRIPTIVE_ESTIMABLE",
+        "site_cluster_uncertainty": {
+          "estimable": true,
+          "source_site_groups": 93,
+          "conditional_site_bootstrap_valid_reps": 1992,
+          "conditional_site_bootstrap_CI95": [
+            -0.17485848304766555,
+            0.038251003255011774
+          ],
+          "random_seed": 20261026
+        }
+      },
+      "documented_other_anuran_prior_chorus_richness_distribution": {
+        "0": 239,
+        "1": 6
+      },
+      "positive_adult_to_positive_larva_report_lags": {
+        "eligible_source_site_years": 132,
+        "median_days": 53,
+        "iqr_days": [
+          39,
+          69
+        ],
+        "within_7_days": 0,
+        "within_14_days": 2,
+        "within_30_days": 10,
+        "within_60_days": 85,
+        "warning": "Detected dates of different stage records; not individual Gosner development speed or proven egg→larva cohorts"
+      },
+      "Hyla_larval_source_event_with_explicit_Caudata_larval_assessment": {
+        "event_count": 189,
+        "two_by_two": {
+          "focal_Hyla_0|other_Caudata_0": 9,
+          "focal_Hyla_0|other_Caudata_1": 55,
+          "focal_Hyla_1|other_Caudata_0": 3,
+          "focal_Hyla_1|other_Caudata_1": 122
+        },
+        "phi_binary_co_detection": 0.22633900066126317,
+        "caudata_not_diet_qualified_true_predator": true,
+        "same_event_not_synchronous_actual_feeding": true
+      },
+      "source_missing_physical_pond_confirmed": true,
+      "source_monthly_phenology_reporting_by_stages": [
+        {
+          "protocol": "source_adult_chorus",
+          "stage": "adult_acoustic",
+          "month": 3,
+          "assessed_records": 1,
+          "recorded_present": 1,
+          "recorded_absent": 0
+        },
+        {
+          "protocol": "source_adult_chorus",
+          "stage": "adult_acoustic",
+          "month": 4,
+          "assessed_records": 212,
+          "recorded_present": 172,
+          "recorded_absent": 40
+        },
+        {
+          "protocol": "source_adult_chorus",
+          "stage": "adult_acoustic",
+          "month": 5,
+          "assessed_records": 306,
+          "recorded_present": 252,
+          "recorded_absent": 54
+        },
+        {
+          "protocol": "source_adult_chorus",
+          "stage": "adult_acoustic",
+          "month": 6,
+          "assessed_records": 115,
+          "recorded_present": 80,
+          "recorded_absent": 35
+        },
+        {
+          "protocol": "source_adult_chorus",
+          "stage": "adult_acoustic",
+          "month": 7,
+          "assessed_records": 1,
+          "recorded_present": 1,
+          "recorded_absent": 0
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "adult",
+          "month": 5,
+          "assessed_records": 6,
+          "recorded_present": 0,
+          "recorded_absent": 6
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "adult",
+          "month": 6,
+          "assessed_records": 151,
+          "recorded_present": 1,
+          "recorded_absent": 150
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "adult",
+          "month": 7,
+          "assessed_records": 60,
+          "recorded_present": 0,
+          "recorded_absent": 60
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "aquatic_immature",
+          "month": 5,
+          "assessed_records": 6,
+          "recorded_present": 3,
+          "recorded_absent": 3
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "aquatic_immature",
+          "month": 6,
+          "assessed_records": 250,
+          "recorded_present": 142,
+          "recorded_absent": 108
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "aquatic_immature",
+          "month": 7,
+          "assessed_records": 192,
+          "recorded_present": 107,
+          "recorded_absent": 85
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "metamorph",
+          "month": 5,
+          "assessed_records": 6,
+          "recorded_present": 0,
+          "recorded_absent": 6
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "metamorph",
+          "month": 6,
+          "assessed_records": 152,
+          "recorded_present": 8,
+          "recorded_absent": 144
+        },
+        {
+          "protocol": "source_larval_census",
+          "stage": "metamorph",
+          "month": 7,
+          "assessed_records": 71,
+          "recorded_present": 19,
+          "recorded_absent": 52
+        }
+      ],
+      "stage_community_co_presence_not_species_interactions": true
+    }
+  },
+  "wetland_macrophyte_sprouting_dates_measured": false,
+  "wetland_plant_stem_height_density_and_actual_predation_refuge_measured": false,
+  "frog_RC6_rain_concentration_caused_by_aquatic_predators_identified": false,
+  "GBIF_reports_used_as_source_potential_stage_not_local_absence": true,
+  "joint_physical_pond_egg_survival_predator_size_water_drying_dataset_qualified": false,
+  "cross_study_effects_pooled_as_same_estimand": false,
+  "interpretation_note": "Within-source co-reporting/rank correlations, not field trophic causation; local rain and vegetation observations are incomplete and not shared with NPS or NAAMP acoustic stops.",
+  "workflow_url": "https://github.com/zuizui0223/frogcs/actions/runs/40262570250",
+  "independent_CI_source_job_id": 121377885802,
+  "evidence_qualification": "Exploratory source-native correlations only, no GBIF locality co-exposure or stage feeding inference"
+}
