@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pelophylax+cretensis&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:41.474678+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "d6ca202f6d25b00608c6b820abe6ed82264d993877b72317b83329edf7c4f6ef",
+  "response": {
+    "usageKey": 2426672,
+    "scientificName": "Pelophylax cretensis (Beerli, Hotz, Tunner, Heppich & Uzzell, 1994)",
+    "canonicalName": "Pelophylax cretensis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Pelophylax",
+    "species": "Pelophylax cretensis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2426629,
+    "speciesKey": 2426672,
+    "class": "Amphibia"
+  }
+}

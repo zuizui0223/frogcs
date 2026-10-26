@@ -1,0 +1,630 @@
+{
+  "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Odonata&targetTaxon=Caudata&includeObservations=true&fields=source_taxon_name%2Csource_taxon_path%2Csource_specimen_life_stage%2Cinteraction_type%2Ctarget_taxon_name%2Ctarget_taxon_path%2Ctarget_specimen_life_stage%2Cstudy_citation&limit=1000&offset=0",
+  "queried_at_utc": "2026-10-26T05:02:34.561398+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "9183f74e233ed0f46b34d3766cc8e7a9c62bc934db65c39c8f3fd9f654c4fcfd",
+  "response": {
+    "columns": [
+      "source_taxon_name",
+      "source_taxon_path",
+      "source_specimen_life_stage",
+      "interaction_type",
+      "target_taxon_name",
+      "target_taxon_path",
+      "target_specimen_life_stage",
+      "study_citation"
+    ],
+    "data": [
+      [
+        "Anisoptera",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera",
+        null,
+        "eatenBy",
+        "Notophthalmus viridescens",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Notophthalmus | Notophthalmus viridescens",
+        null,
+        "https://www.inaturalist.org/observations/118847767"
+      ],
+      [
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "post-juvenile adult stage",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        "post-juvenile adult stage",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "larval",
+        null
+      ],
+      [
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "larval",
+        null
+      ],
+      [
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "larval",
+        null
+      ],
+      [
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "preysOn",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "larval",
+        null
+      ],
+      [
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "preysOn",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "larval",
+        null
+      ],
+      [
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "post-juvenile adult stage",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "post-juvenile adult stage",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "preyedUponBy",
+        "Taricha torosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Taricha | Taricha torosa",
+        "larval",
+        null
+      ],
+      [
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        null,
+        "eats",
+        "Ambystoma tigrinum",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Ambystomatidae | Ambystoma | Ambystoma tigrinum",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Calopterygidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Calopterygoidea | Calopterygidae",
+        null,
+        "interactsWith",
+        "Eurycea",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Plethodontidae | Hemidactyliinae | Eurycea",
+        "larva",
+        "https://www.inaturalist.org/observations/66781109"
+      ],
+      [
+        "Sympetrum",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Sympetrum",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Somatochlora",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Anisoptera | Corduliidae | Somatochlora",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Libellula",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Libellula",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        null,
+        "preyedUponBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Enallagma",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Enallagma",
+        null,
+        "preyedUponBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Somatochlora",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Anisoptera | Corduliidae | Somatochlora",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Sympetrum",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Sympetrum",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Libellula",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Libellula",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Enallagma",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Enallagma",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Dorocordulia",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Anisoptera | Corduliidae | Dorocordulia",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Sympetrum",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Sympetrum",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Somatochlora",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Anisoptera | Corduliidae | Somatochlora",
+        null,
+        "preysOn",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Gomphidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Gomphidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Libellulidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Lestidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Anotogaster",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Cordulegastroidea | Cordulegastridae | Anotogaster",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Corduliidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Corduliidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Aeshnidae",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Calopterygidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Calopterygoidea | Calopterygidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Coenagrionidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Gomphidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Gomphidae",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Platycnemididae",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Zygoptera | Platycnemididae",
+        null,
+        "eatenBy",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Aeshnidae",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997) Predation and food web structure along a habitat duration gradient. Oecologia, 110, 567\u2013575. https://doi.org/10.1007/s004420050197."
+      ],
+      [
+        "Anotogaster",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Cordulegastroidea | Cordulegastridae | Anotogaster",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Kwon, S.-J., Jeon, Y.-C. & Kim, M.-C. (2013) \ubb3c\uc18d \uc0dd\ubb3c \ub3c4\uac10: \uc800\uc11c\uc131 \ub300\ud615\ubb34\ucc99\ucd94\ub3d9\ubb3c (Benthic macroinvertebrates) [In Korean Language], \uc790\uc5f0\uacfc\uc0dd\ud0dc (Nature and Ecology), Paju, 792."
+      ],
+      [
+        "Corduliidae",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Corduliidae",
+        null,
+        "eats",
+        "Gyrinus",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Neoptera | Endopterygota | Coleoptera | Adephaga | Gyrinidae | Gyrinus",
+        null,
+        "Schneider, D.W. (1997) Predation and food web structure along a habitat duration gradient. Oecologia, 110, 567\u2013575. https://doi.org/10.1007/s004420050197."
+      ],
+      [
+        "Anisoptera",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera",
+        null,
+        "preyedUponBy",
+        "Cynops ensicauda",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Cynops | Cynops ensicauda",
+        "adult",
+        "https://www.inaturalist.org/observations/317233263"
+      ],
+      [
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "eats",
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "eats",
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "post-juvenile adult stage",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "eats",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "post-juvenile adult stage",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "eats",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "post-juvenile adult stage",
+        "eatenBy",
+        "Taricha torosa",
+        "Amphibia | Caudata | Salamandridae | Taricha | Taricha torosa",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ]
+    ]
+  }
+}

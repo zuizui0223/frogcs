@@ -1,0 +1,740 @@
+{
+  "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Caudata&targetTaxon=Anura&includeObservations=true&fields=source_taxon_name%2Csource_taxon_path%2Csource_specimen_life_stage%2Cinteraction_type%2Ctarget_taxon_name%2Ctarget_taxon_path%2Ctarget_specimen_life_stage%2Cstudy_citation&limit=1000&offset=1000",
+  "queried_at_utc": "2026-10-26T05:02:29.704643+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "69a58c7386abafd65f0bd593b27757d64299357e3d3e4f3802b79ebed24eb53e",
+  "response": {
+    "columns": [
+      "source_taxon_name",
+      "source_taxon_path",
+      "source_specimen_life_stage",
+      "interaction_type",
+      "target_taxon_name",
+      "target_taxon_path",
+      "target_specimen_life_stage",
+      "study_citation"
+    ],
+    "data": [
+      [
+        "Triturus pygmaeus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus pygmaeus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Carascal L.M., Salvador A. (Eds.). 2005. Enciclopedia Virtual de los Vertebrados Espa\ufffdoles. Museo Nacional de Ciencias Naturales, Madrid."
+      ],
+      [
+        "Ommatotriton vittatus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Ommatotriton | Ommatotriton vittatus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Raffaelli, J. (2007): Les Urod\ufffdles du monde. Penclen, France."
+      ],
+      [
+        "Ommatotriton vittatus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Ommatotriton | Ommatotriton vittatus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Raffaelli, J. (2007): Les Urod\ufffdles du monde. Penclen, France."
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Triturus pygmaeus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus pygmaeus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Carascal L.M., Salvador A. (Eds.). 2005. Enciclopedia Virtual de los Vertebrados Espa\ufffdoles. Museo Nacional de Ciencias Naturales, Madrid."
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Ichthyosaura alpestris",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Ichthyosaura | Ichthyosaura alpestris",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Euproctus montanus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Euproctus | Euproctus montanus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Lanza B., Andreone F., Bologna M.A., Corti C., Razzetti E. (Eds.). 2007. Amphibia. Fauna d'Italia Vol. XLII. Calderini Editore, Bologna."
+      ],
+      [
+        "Calotriton asper",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Calotriton | Calotriton asper",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Calotriton asper",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Calotriton | Calotriton asper",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Pleurodeles waltl",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Pleurodeles | Pleurodeles waltl",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Pleurodeles waltl",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Pleurodeles | Pleurodeles waltl",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Salamandra infraimmaculata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Salamandrinae | Salamandra | Salamandra infraimmaculata",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Blaustein, L., Friedman, J., Fahima, T., 1996. Larval Salamandra drive temporary pool community dynamics: Evidence from an artificial pool experiment. Oikos 76, 392-402."
+      ],
+      [
+        "Salamandra infraimmaculata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Salamandrinae | Salamandra | Salamandra infraimmaculata",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Blaustein, L., Friedman, J., Fahima, T., 1996. Larval Salamandra drive temporary pool community dynamics: Evidence from an artificial pool experiment. Oikos 76, 392-402."
+      ],
+      [
+        "Lissotriton italicus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Lissotriton | Lissotriton italicus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Lanza B., Andreone F., Bologna M.A., Corti C., Razzetti E. (Eds.). 2007. Amphibia. Fauna d'Italia Vol. XLII. Calderini Editore, Bologna."
+      ],
+      [
+        "Lissotriton italicus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Lissotriton | Lissotriton italicus",
+        null,
+        "eats",
+        "Bufotes boulengeri",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Bufotes | Bufotes boulengeri",
+        null,
+        "Lanza B., Andreone F., Bologna M.A., Corti C., Razzetti E. (Eds.). 2007. Amphibia. Fauna d'Italia Vol. XLII. Calderini Editore, Bologna."
+      ],
+      [
+        "Paramesotriton hongkongensis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Paramesotriton | Paramesotriton hongkongensis",
+        null,
+        "interactsWith",
+        "Quasipaa exilispinosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Dicroglossidae | Dicroglossinae | Quasipaa | Quasipaa exilispinosa",
+        null,
+        "https://www.inaturalist.org/observations/125042122"
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Rana sierrae",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Rana | Rana sierrae",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Acris crepitans",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris crepitans",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Acris crepitans",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris crepitans",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Acris crepitans",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris crepitans",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Acris crepitans",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris crepitans",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Acris crepitans",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris crepitans",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Acris crepitans",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris crepitans",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Afrixalus fornasini",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hyperoliidae | Hyperoliinae | Afrixalus | Afrixalus fornasini",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Ceratophrys cranwelli",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ceratophryidae | Ceratophrys | Ceratophrys cranwelli",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Ceratophrys ornata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ceratophryidae | Ceratophrys | Ceratophrys ornata",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Ceratophrys ornata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ceratophryidae | Ceratophrys | Ceratophrys ornata",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Ceratophrys ornata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ceratophryidae | Ceratophrys | Ceratophrys ornata",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Batrachochytrium dendrobatidis",
+        "Eukaryota | Fungi | Chytridiomycota | Rhizophydiomycetes | Rhizophydiales | Batrachochytriaceae | Batrachochytrium | Batrachochytrium dendrobatidis",
+        null,
+        "hasHost",
+        "Amerana muscosa",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana muscosa",
+        null,
+        "Wardeh, M., Risley, C., McIntyre, M. et al. Database of host-pathogen and related species interactions, and their global distribution. Sci Data 2, 150049 (2015). https://doi.org/10.1038/sdata.2015.49. Accessed at <https://github.com/globalbioticinteractions/wardeh2015/archive/9017c75c40739bfcb7fe33ff6cb4a64b344d18f8.zip> on 13 Oct 2026."
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        null,
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Maiorano, L., Montemaggiori, A., Ficetola, G. F., O\u2019Connor, L., & Thuiller, W. (2021). Data from: Tetra-EU 1.0: a species-level trophic meta-web of European tetrapods (Version 3, p. 16654389 bytes) [Dataset]. Dryad. https://doi.org/10.5061/DRYAD.JM63XSJ7B"
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        null,
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        "Egg",
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        "Adult",
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        "Young",
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Ichthyosaura alpestris",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Ichthyosaura | Ichthyosaura alpestris",
+        "Adult",
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Ichthyosaura alpestris",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Ichthyosaura | Ichthyosaura alpestris",
+        "Young",
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Ichthyosaura alpestris",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Ichthyosaura | Ichthyosaura alpestris",
+        null,
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        "Egg",
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Ichthyosaura alpestris",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Ichthyosaura | Ichthyosaura alpestris",
+        null,
+        "preysOn",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Maiorano, L., Montemaggiori, A., Ficetola, G. F., O\u2019Connor, L., & Thuiller, W. (2021). Data from: Tetra-EU 1.0: a species-level trophic meta-web of European tetrapods (Version 3, p. 16654389 bytes) [Dataset]. Dryad. https://doi.org/10.5061/DRYAD.JM63XSJ7B"
+      ],
+      [
+        "Pleurodeles waltl",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Pleurodeles | Pleurodeles waltl",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Calotriton asper",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Calotriton | Calotriton asper",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Euproctus montanus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Euproctus | Euproctus montanus",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Lanza B., Andreone F., Bologna M.A., Corti C., Razzetti E. (Eds.). 2007. Amphibia. Fauna d'Italia Vol. XLII. Calderini Editore, Bologna."
+      ],
+      [
+        "Salamandra infraimmaculata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Salamandrinae | Salamandra | Salamandra infraimmaculata",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Blaustein, L., Friedman, J., Fahima, T., 1996. Larval Salamandra drive temporary pool community dynamics: Evidence from an artificial pool experiment. Oikos 76, 392-402."
+      ],
+      [
+        "Ichthyosaura alpestris",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Caudata | Salamandridae | Pleurodelinae | Ichthyosaura | Ichthyosaura alpestris",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Lissotriton italicus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Lissotriton | Lissotriton italicus",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Lanza B., Andreone F., Bologna M.A., Corti C., Razzetti E. (Eds.). 2007. Amphibia. Fauna d'Italia Vol. XLII. Calderini Editore, Bologna."
+      ],
+      [
+        "Triturus pygmaeus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus pygmaeus",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Carascal L.M., Salvador A. (Eds.). 2005. Enciclopedia Virtual de los Vertebrados Espa\ufffdoles. Museo Nacional de Ciencias Naturales, Madrid."
+      ],
+      [
+        "Triturus carnifex",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Triturus | Triturus carnifex",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "N\ufffdllert, A., N\ufffdllert, C., 1992. Die Amphibien Europas. Kosmos, Stuttgart."
+      ],
+      [
+        "Ommatotriton vittatus",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Caudata | Salamandroidea | Salamandridae | Pleurodelinae | Ommatotriton | Ommatotriton vittatus",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Raffaelli, J. (2007): Les Urod\ufffdles du monde. Penclen, France."
+      ],
+      [
+        "Ommatotriton ophryticus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Caudata | Salamandridae | Pleurodelinae | Ommatotriton | Ommatotriton ophryticus",
+        null,
+        "eats",
+        "Rana arvalis",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana | Rana arvalis",
+        null,
+        "Kuzmin, S.L. (2005): Ommatotriton ophryticus: Northern Banded Newt. In: AmphibiaWeb, p. http://amphibiaweb.org/species/6655.  University of California, Berkeley, CA, USA."
+      ]
+    ]
+  }
+}

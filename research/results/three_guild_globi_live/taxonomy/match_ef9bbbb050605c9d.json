@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pleurodeles+waltl&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:49.766261+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "b0bbbb2f6f5a9166bb5746cde583b7119954dae9686f175b8f38004fc260ae73",
+  "response": {
+    "usageKey": 2431875,
+    "scientificName": "Pleurodeles waltl Michahelles, 1830",
+    "canonicalName": "Pleurodeles waltl",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Pleurodeles",
+    "species": "Pleurodeles waltl",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431872,
+    "speciesKey": 2431875,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lithobates+septentrionalis&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:22.423635+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "0ba250186d92ca6f3c04d94997dcc356c823e9763fd193316570ebb26b7a0427",
+  "response": {
+    "usageKey": 2427047,
+    "scientificName": "Lithobates septentrionalis (Baird, 1854)",
+    "canonicalName": "Lithobates septentrionalis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "species": "Lithobates septentrionalis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "speciesKey": 2427047,
+    "class": "Amphibia"
+  }
+}

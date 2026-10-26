@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Osteopilus+septentrionalis&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:37.263279+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "4ffbeac081c410c8710b585ca47e92a8544af81c1c5be1524ec8df7d018444cb",
+  "response": {
+    "usageKey": 2428083,
+    "scientificName": "Osteopilus septentrionalis (Dum\u00e9ril & Bibron, 1841)",
+    "canonicalName": "Osteopilus septentrionalis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Osteopilus",
+    "species": "Osteopilus septentrionalis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2428077,
+    "speciesKey": 2428083,
+    "class": "Amphibia"
+  }
+}

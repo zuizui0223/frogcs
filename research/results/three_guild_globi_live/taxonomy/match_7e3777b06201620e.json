@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lissotriton+helveticus&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:16.533223+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "3b4b2be5fc782be33187c4e56c1fb6541a3438f94501627e61a13f9ca622cc0d",
+  "response": {
+    "usageKey": 5218410,
+    "scientificName": "Lissotriton helveticus (Razoumovsky, 1789)",
+    "canonicalName": "Lissotriton helveticus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Lissotriton",
+    "species": "Lissotriton helveticus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 5218404,
+    "speciesKey": 5218410,
+    "class": "Amphibia"
+  }
+}

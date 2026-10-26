@@ -1,0 +1,29 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Aquarana+catesbeiana&verbose=true&kingdom=Animalia&class=Amphibia",
+  "queried_at_utc": "2026-10-26T04:49:19.795670+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "f82129055b831fb37a0f51f82f829417b8f450d3ef94d9f65cd3096703ce6770",
+  "response": {
+    "usageKey": 11059103,
+    "acceptedUsageKey": 2427046,
+    "scientificName": "Aquarana Dubois, 1992",
+    "canonicalName": "Aquarana",
+    "rank": "GENUS",
+    "status": "SYNONYM",
+    "confidence": 99,
+    "note": "Similarity: name=100; classification=19; rank=0; status=0; score=119; singleMatch=5",
+    "matchType": "HIGHERRANK",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "class": "Amphibia"
+  }
+}

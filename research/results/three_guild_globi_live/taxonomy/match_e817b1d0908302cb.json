@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Triturus+pygmaeus&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:07:29.773910+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "2615941ffdc1cc0e7c82474cf1629ba1321794007b10e87a190d331739306bdb",
+  "response": {
+    "usageKey": 2431889,
+    "scientificName": "Triturus pygmaeus (Wolterstorff, 1905)",
+    "canonicalName": "Triturus pygmaeus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Triturus",
+    "species": "Triturus pygmaeus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431679,
+    "speciesKey": 2431889,
+    "class": "Amphibia"
+  }
+}

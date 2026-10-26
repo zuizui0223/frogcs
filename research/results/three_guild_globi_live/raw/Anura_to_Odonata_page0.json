@@ -1,0 +1,790 @@
+{
+  "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Anura&targetTaxon=Odonata&includeObservations=true&fields=source_taxon_name%2Csource_taxon_path%2Csource_specimen_life_stage%2Cinteraction_type%2Ctarget_taxon_name%2Ctarget_taxon_path%2Ctarget_specimen_life_stage%2Cstudy_citation&limit=1000&offset=0",
+  "queried_at_utc": "2026-10-26T05:02:25.354574+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "67a0db51d57d3c2326dc77c2fe264eb3201ecc17b7d259814451d54b352692ad",
+  "response": {
+    "columns": [
+      "source_taxon_name",
+      "source_taxon_path",
+      "source_specimen_life_stage",
+      "interaction_type",
+      "target_taxon_name",
+      "target_taxon_path",
+      "target_specimen_life_stage",
+      "study_citation"
+    ],
+    "data": [
+      [
+        "Pelophylax perezi",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Anura | Neobatrachia | Ranoidea | Ranidae | Pelophylax | Pelophylax perezi",
+        "adult",
+        "eats",
+        "Anisoptera",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera",
+        null,
+        "https://www.inaturalist.org/observations/57546877"
+      ],
+      [
+        "Anura",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura",
+        "Adult",
+        "preysOn",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Anura",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura",
+        null,
+        "preysOn",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        "Adult",
+        "Reji Chacko, M., Albouy, C., Altermatt, F., Br\u00e4ndle, M., Casanelles Abella, J., Boussange, V., Campell, F., Ellis, W. N., Fopp, F., Gossner, M. M., Ho., H., Joss, A., Kipf, P., Neff, F., Petrovi\u0107, A., Pri\u00e9, V., Tomanovi\u0107, \u017d., Zimmerli, N., Pellissier, L. (2024). trophiCH v1 - a food web for Switzerland. EnviDat. https://www.doi.org/10.16904/envidat.467. Accessed at <https://github.com/globalbioticinteractions/trophiCH/archive/9dcb8b2670c4675817c605f5add33cd183d3fb0e.zip> on 13 Oct 2026."
+      ],
+      [
+        "Anura",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura",
+        null,
+        "preysOn",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "Maibach, A., Gonseth, Y., Wildermuth, H., & Robert, P.-A. (2005). Odonata: Die Libellen der Schweiz. In Odonata die Libellen der Schweiz. Centre suisse de cartographie de la faune."
+      ],
+      [
+        "Lithobates pipiens",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Lithobates | Lithobates pipiens",
+        null,
+        "eatenBy",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Pseudacris triseriata",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris triseriata",
+        null,
+        "eatenBy",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Pseudacris crucifer",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris crucifer",
+        null,
+        "eatenBy",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Acris crepitans",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura | Hylidae | Acridinae | Acris | Acris crepitans",
+        null,
+        "eatenBy",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Acris blanchardi",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris blanchardi",
+        null,
+        "preysOn",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "https://www.inaturalist.org/observations/271581804"
+      ],
+      [
+        "Pseudacris crucifer",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura | Hylidae | Acridinae | Pseudacris | Pseudacris crucifer",
+        null,
+        "interactsWith",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "A. Thessen. 2014. Species associations extracted from EOL text data objects via text mining. Accessed at <https://github.com/EOL/pseudonitzchia/archive/e5838965a186fba4b7215cd0d179c4526773bad5.zip> on 13 Oct 2026."
+      ],
+      [
+        "Pseudacris streckeri",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura | Hylidae | Acridinae | Pseudacris | Pseudacris streckeri",
+        null,
+        "interactsWith",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "A. Thessen. 2014. Species associations extracted from EOL text data objects via text mining. Accessed at <https://github.com/EOL/pseudonitzchia/archive/e5838965a186fba4b7215cd0d179c4526773bad5.zip> on 13 Oct 2026."
+      ],
+      [
+        "Lithobates capito",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura | Ranidae | Lithobates | Lithobates capito",
+        null,
+        "interactsWith",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "A. Thessen. 2014. Species associations extracted from EOL text data objects via text mining. Accessed at <https://github.com/EOL/pseudonitzchia/archive/e5838965a186fba4b7215cd0d179c4526773bad5.zip> on 13 Oct 2026."
+      ],
+      [
+        "Anaxyrus canorus",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Hyloidea | Bufonidae | Anaxyrus | Anaxyrus canorus",
+        null,
+        "interactsWith",
+        "Odonata",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata",
+        null,
+        "A. Thessen. 2014. Species associations extracted from EOL text data objects via text mining. Accessed at <https://github.com/EOL/pseudonitzchia/archive/e5838965a186fba4b7215cd0d179c4526773bad5.zip> on 13 Oct 2026."
+      ],
+      [
+        "Anaxyrus americanus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus americanus",
+        null,
+        "eatenBy",
+        "Sympetrum",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Sympetrum",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Lithobates palustris",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Lithobates | Lithobates palustris",
+        null,
+        "eatenBy",
+        "Anax",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "eats",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "post-juvenile adult stage",
+        "eats",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "post-juvenile adult stage",
+        "eats",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "post-juvenile adult stage",
+        "eats",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "eats",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "post-juvenile adult stage",
+        "eats",
+        "Coenagrion",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Coenagrion",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "larval",
+        "preyedUponBy",
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Anax junius",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        null
+      ],
+      [
+        "Pelophylax ridibundus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Pelophylax | Pelophylax ridibundus",
+        null,
+        "preysOn",
+        "Sympetrum vulgatum",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Sympetrum | Sympetrum vulgatum",
+        null,
+        "https://www.inaturalist.org/observations/184289456"
+      ],
+      [
+        "Pelophylax ridibundus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Pelophylax | Pelophylax ridibundus",
+        null,
+        "eats",
+        "Sympetrum vulgatum",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Sympetrum | Sympetrum vulgatum",
+        null,
+        "https://www.inaturalist.org/observations/184289456"
+      ],
+      [
+        "Pelophylax ridibundus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Pelophylax | Pelophylax ridibundus",
+        "juvenile",
+        "preysOn",
+        "Sympetrum danae",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Libelluloidea | Libellulidae | Sympetrum | Sympetrum danae",
+        null,
+        "https://www.inaturalist.org/observations/69010575"
+      ],
+      [
+        "Anura",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura",
+        null,
+        "preysOn",
+        "Sympetrum danae",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Libelluloidea | Libellulidae | Sympetrum | Sympetrum danae",
+        null,
+        "https://www.inaturalist.org/observations/69010489"
+      ],
+      [
+        "Pelophylax ridibundus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Pelophylax | Pelophylax ridibundus",
+        null,
+        "preysOn",
+        "Sympetrum danae",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Libelluloidea | Libellulidae | Sympetrum | Sympetrum danae",
+        null,
+        "https://www.inaturalist.org/observations/69010489"
+      ],
+      [
+        "Pelophylax lessonae",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Pelophylax | Pelophylax lessonae",
+        null,
+        "preysOn",
+        "Libellula depressa",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Libelluloidea | Libellulidae | Libellula | Libellula depressa",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Pelophylax",
+        "Tetrapoda | Batrachomorpha | Amphibia | Lissamphibia | Batrachia | Salientia | Anura | Neobatrachia | Ranoidea | Ranidae | Pelophylax",
+        null,
+        "eats",
+        "Libellula depressa",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Libelluloidea | Libellulidae | Libellula | Libellula depressa",
+        "adult",
+        "https://www.inaturalist.org/observations/12797631"
+      ],
+      [
+        "Hyla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Hyla",
+        null,
+        "preyedUponBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Rana",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana",
+        null,
+        "preyedUponBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "Poelen, J. H. Global Biotic Interactions: Interpreted Data Products. Zenodo https://doi.org/10.5281/zenodo.5708970 (2021)."
+      ],
+      [
+        "Lithobates septentrionalis",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura | Ranidae | Lithobates | Lithobates septentrionalis",
+        null,
+        "eatenBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Rana",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana",
+        null,
+        "eatenBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "Schneider, D.W. (1997). Predation and Food Web Structure along a Habitat Duration Gradient. Oecologia. 110, pp. 567-575. "
+      ],
+      [
+        "Rana",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana",
+        null,
+        "preyedUponBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Hyla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Hyla",
+        null,
+        "preyedUponBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Rana",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Rana",
+        null,
+        "preyedUponBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Hyla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Hyla",
+        null,
+        "preyedUponBy",
+        "Aeshna",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Aeshna",
+        null,
+        "@article{Schneider_1997, doi = {10.1007/s004420050197}, url = {https://doi.org/10.1007%2Fs004420050197}, year = 1997, month = {may},\tpublisher = {Springer Nature}, volume = {110}, number = {4}, pages = {567--575}, author = {Daniel W. Schneider}, title = {Predation and food web structure along a habitat duration gradient}, journal = {Oecologia}}"
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Lestes",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera | Lestoidea | Lestidae | Lestes",
+        "larval",
+        null
+      ],
+      [
+        "Anaxyrus americanus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus americanus",
+        null,
+        "eatenBy",
+        "Libellula",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Libellula",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Bufo americanus",
+        "Life | Eukaryota | Opisthokonta | Animalia | Bilateria | Eubilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Dipnotetrapodomorpha | Tetrapodomorpha | Tetrapoda | Amphibia | Temnospondyli | Lissamphibia | Batrachia | Salientia | Anuri | Neobatrachia | Bufonidae | Bufo | Bufo americanus",
+        "tadpole",
+        "eatenBy",
+        "Libellula",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Libellula",
+        "nymph",
+        "Brockelman, W. Y. (1969). An analysis of density effects and predation in Bufo americanus tadpoles. Ecology, 50(4), 632-644."
+      ],
+      [
+        "Anura",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura",
+        null,
+        "preysOn",
+        "Anax imperator",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax imperator",
+        "adult",
+        "https://www.inaturalist.org/observations/21212619"
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "larval",
+        "preyedUponBy",
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        null
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "preysOn",
+        "Tramea",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Libelluloidea | Libellulidae | Tramea",
+        "post-juvenile adult stage",
+        null
+      ],
+      [
+        "Lithobates pipiens",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Lithobates | Lithobates pipiens",
+        "juvenile",
+        "preysOn",
+        "Libellula luctuosa",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Libellula | Libellula luctuosa",
+        "adult",
+        "https://www.inaturalist.org/observations/18671570"
+      ],
+      [
+        "Dryophytes cinereus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Dryophytes | Dryophytes cinereus",
+        null,
+        "eats",
+        "Erythemis simplicicollis",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Erythemis | Erythemis simplicicollis",
+        null,
+        "https://www.inaturalist.org/observations/115605488"
+      ],
+      [
+        "Bufo americanus",
+        "Life | Eukaryota | Opisthokonta | Animalia | Bilateria | Eubilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Dipnotetrapodomorpha | Tetrapodomorpha | Tetrapoda | Amphibia | Temnospondyli | Lissamphibia | Batrachia | Salientia | Anuri | Neobatrachia | Bufonidae | Bufo | Bufo americanus",
+        "tadpole",
+        "eatenBy",
+        "Leucorrhinia intacta",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Leucorrhinia | Leucorrhinia intacta",
+        "nymph",
+        "Brockelman, W. Y. (1969). An analysis of density effects and predation in Bufo americanus tadpoles. Ecology, 50(4), 632-644."
+      ],
+      [
+        "Anaxyrus americanus",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus americanus",
+        null,
+        "eatenBy",
+        "Leucorrhinia intacta",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Epiprocta | Anisoptera | Cavilabiata | Libellulidae | Leucorrhinia | Leucorrhinia intacta",
+        null,
+        "John David Curlis (Expert)"
+      ],
+      [
+        "Anura",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Anura",
+        null,
+        "eatenBy",
+        "Euphaea formosa",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Calopterygoidea | Euphaeidae | Euphaea | Euphaea formosa",
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4948598"
+      ],
+      [
+        "Anura",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Anura",
+        null,
+        "eatenBy",
+        "Euphaea formosa",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Calopterygoidea | Euphaeidae | Euphaea | Euphaea formosa",
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4948598"
+      ],
+      [
+        "Pleurodema",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Leptodactylidae | Leiuperinae | Pleurodema",
+        null,
+        "eatenBy",
+        "Rhionaeschna",
+        "Ecdysozoa | Arthropoda | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonatoptera | Odonata | Epiprocta | Aeshnoidea | Aeshnidae | Rhionaeschna",
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5804239"
+      ],
+      [
+        "Bufo americanus",
+        "Life | Eukaryota | Opisthokonta | Animalia | Bilateria | Eubilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Dipnotetrapodomorpha | Tetrapodomorpha | Tetrapoda | Amphibia | Temnospondyli | Lissamphibia | Batrachia | Salientia | Anuri | Neobatrachia | Bufonidae | Bufo | Bufo americanus",
+        "tadpole",
+        "eatenBy",
+        "Plathemis lydia",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Protostomia | Ecdysozoa | Arthropoda | Pancrustacea | Hexapoda | Insecta | Pterygota | Odonata | Anisoptera | Libelluloidea | Libellulidae | Plathemis | Plathemis lydia",
+        "adult",
+        "Brockelman, W. Y. (1969). An analysis of density effects and predation in Bufo americanus tadpoles. Ecology, 50(4), 632-644."
+      ],
+      [
+        "Anura",
+        "Life | Cellular Organisms | Eukaryota | Opisthokonta | Metazoa | Bilateria | Deuterostomia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Sarcopterygii | Tetrapoda | Lissamphibia | Anura",
+        null,
+        "preysOn",
+        "Lindenia tetraphylla",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Gomphoidea | Gomphidae | Lindenia | Lindenia tetraphylla",
+        null,
+        "https://www.inaturalist.org/observations/362486796"
+      ],
+      [
+        "Acris blanchardi",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Acris | Acris blanchardi",
+        "adult",
+        "eats",
+        "Argia sedula",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Zygoptera | Coenagrionoidea | Coenagrionidae | Argia | Argia sedula",
+        null,
+        "https://www.inaturalist.org/observations/12991811"
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "larval",
+        "eatenBy",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "larval",
+        "eatenBy",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "larval",
+        "eatenBy",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "post-juvenile adult stage",
+        "eats",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "eats",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "eats",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "post-juvenile adult stage",
+        "eats",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "post-juvenile adult stage",
+        "eats",
+        "Anax junius",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Aeshnoidea | Aeshnidae | Anax | Anax junius",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "larval",
+        "eatenBy",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "larval",
+        "eatenBy",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "larval",
+        "eatenBy",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "post-juvenile adult stage",
+        "eats",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "eats",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Anaxyrus boreas",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Bufonidae | Anaxyrus | Anaxyrus boreas",
+        "post-juvenile adult stage",
+        "eats",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "post-juvenile adult stage",
+        "eats",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Amerana draytonii",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Ranidae | Amerana | Amerana draytonii",
+        "post-juvenile adult stage",
+        "eats",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "post-juvenile adult stage",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Pseudacris regilla",
+        "Eukaryota | Animalia | Chordata | Vertebrata | Gnathostomata | Osteichthyes | Tetrapoda | Amphibia | Anura | Hylidae | Pseudacris | Pseudacris regilla",
+        "post-juvenile adult stage",
+        "eats",
+        "Tramea",
+        "Eukaryota | Animalia | Arthropoda | Hexapoda | Insecta | Odonata | Anisoptera | Libelluloidea | Libellulidae | Tramea",
+        "larval",
+        "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760."
+      ],
+      [
+        "Odorrana tormota",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Deuterostomia | Chordata | Craniata | Vertebrata | Gnathostomata | Teleostomi | Euteleostomi | Sarcopterygii | Dipnotetrapodomorpha | Tetrapoda | Amphibia | Batrachia | Anura | Neobatrachia | Ranoidea | Ranidae | Odorrana | Odorrana tormota",
+        null,
+        "eats",
+        "Zygoptera",
+        "root | cellular organisms | Eukaryota | Opisthokonta | Metazoa | Eumetazoa | Bilateria | Protostomia | Ecdysozoa | Panarthropoda | Arthropoda | Mandibulata | Pancrustacea | Hexapoda | Insecta | Dicondylia | Pterygota | Palaeoptera | Odonata | Zygoptera",
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6562124"
+      ]
+    ]
+  }
+}

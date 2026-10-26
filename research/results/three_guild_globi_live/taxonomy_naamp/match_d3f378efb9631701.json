@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pseudacris+maculata&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:43.207638+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "ebbe02d19e550bf408c54f0398444814ab3a9bf2bd6408aee00b020aa5438a6e",
+  "response": {
+    "usageKey": 2428169,
+    "scientificName": "Pseudacris maculata (Agassiz, 1850)",
+    "canonicalName": "Pseudacris maculata",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Pseudacris",
+    "species": "Pseudacris maculata",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2428124,
+    "speciesKey": 2428169,
+    "class": "Amphibia"
+  }
+}

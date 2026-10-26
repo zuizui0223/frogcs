@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Alytes+dickhilleni&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:23.457983+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "2167898c51fd0d48831e7e418723eb9d8d59c288aa58e2770d7ac5fc1323e7af",
+  "response": {
+    "usageKey": 2426613,
+    "scientificName": "Alytes dickhilleni Arntzen & Garc\u00eda-Par\u00eds, 1995",
+    "canonicalName": "Alytes dickhilleni",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Alytidae",
+    "genus": "Alytes",
+    "species": "Alytes dickhilleni",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6726,
+    "genusKey": 2426608,
+    "speciesKey": 2426613,
+    "class": "Amphibia"
+  }
+}

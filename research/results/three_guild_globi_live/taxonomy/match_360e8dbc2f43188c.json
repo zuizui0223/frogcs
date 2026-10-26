@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Dryophytes+eximius&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:56.400276+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "927d02e147acf7ce9dab75637e93c6be3568f4fe31152cfdcdb14a01af6edb31",
+  "response": {
+    "usageKey": 10867288,
+    "scientificName": "Dryophytes eximius (Baird, 1854)",
+    "canonicalName": "Dryophytes eximius",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Dryophytes",
+    "species": "Dryophytes eximius",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 4816258,
+    "speciesKey": 10867288,
+    "class": "Amphibia"
+  }
+}

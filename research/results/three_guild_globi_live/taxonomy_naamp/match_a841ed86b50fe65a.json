@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lithobates+virgatipes&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:36.096905+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "1f99007ecb7a5f4eef65dabe11745ec0e54ee29e76eff2a2d59f80fb1238c987",
+  "response": {
+    "usageKey": 2427187,
+    "scientificName": "Lithobates virgatipes (Cope, 1891)",
+    "canonicalName": "Lithobates virgatipes",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "species": "Lithobates virgatipes",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "speciesKey": 2427187,
+    "class": "Amphibia"
+  }
+}

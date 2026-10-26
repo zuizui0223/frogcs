@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Dicamptodon+copei&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:05:49.343437+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "c3275403013f8803179665ab81e9d7575e088d26992c2f1a90936bf8520e4f0f",
+  "response": {
+    "usageKey": 2432025,
+    "scientificName": "Dicamptodon copei Nussbaum, 1970",
+    "canonicalName": "Dicamptodon copei",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Ambystomatidae",
+    "genus": "Dicamptodon",
+    "species": "Dicamptodon copei",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 3101,
+    "genusKey": 2432019,
+    "speciesKey": 2432025,
+    "class": "Amphibia"
+  }
+}

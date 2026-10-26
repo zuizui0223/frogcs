@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Anaxyrus+fowleri&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:00.654798+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "ef54dd109537d8e959bd682d18921e6d82722603bc5439871cb87660d542796f",
+  "response": {
+    "usageKey": 2422905,
+    "scientificName": "Anaxyrus fowleri (Hinckley, 1882)",
+    "canonicalName": "Anaxyrus fowleri",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Bufonidae",
+    "genus": "Anaxyrus",
+    "species": "Anaxyrus fowleri",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6727,
+    "genusKey": 2422857,
+    "speciesKey": 2422905,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lithobates+sphenocephalus&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:23.613078+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "d3459b78b286446f572c899249ce5f9297b5150fb3cd4a8d2461e3b127a95d62",
+  "response": {
+    "usageKey": 2427093,
+    "scientificName": "Lithobates sphenocephalus (Cope, 1886)",
+    "canonicalName": "Lithobates sphenocephalus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "species": "Lithobates sphenocephalus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "speciesKey": 2427093,
+    "class": "Amphibia"
+  }
+}

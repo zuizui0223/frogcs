@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Chioglossa+lusitanica&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:05:48.160833+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "88007afcce7da20d40604acbcee6dd42f3de2bdd562846a0a40dfaf52322e791",
+  "response": {
+    "usageKey": 2431938,
+    "scientificName": "Chioglossa lusitanica Bocage, 1864",
+    "canonicalName": "Chioglossa lusitanica",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Chioglossa",
+    "species": "Chioglossa lusitanica",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431937,
+    "speciesKey": 2431938,
+    "class": "Amphibia"
+  }
+}

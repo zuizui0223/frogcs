@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Neurergus+strauchii&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:27.159457+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "fb7c92575766c32a35b0a701af1c6f70126a45cfc592fbf1c47cabe0220a9bcc",
+  "response": {
+    "usageKey": 2431868,
+    "scientificName": "Neurergus strauchii (Steindachner, 1887)",
+    "canonicalName": "Neurergus strauchii",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Neurergus",
+    "species": "Neurergus strauchii",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431867,
+    "speciesKey": 2431868,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Rana+arvalis&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:56.850748+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "292a557b2a6b13d058ab171c41a2a28d85c56824e567de95a593399399e0dcd3",
+  "response": {
+    "usageKey": 2426789,
+    "scientificName": "Rana arvalis Nilsson, 1842",
+    "canonicalName": "Rana arvalis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Rana",
+    "species": "Rana arvalis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2422253,
+    "speciesKey": 2426789,
+    "class": "Amphibia"
+  }
+}

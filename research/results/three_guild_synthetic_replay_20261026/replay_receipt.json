@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-26",
+  "code_commit": "22fb9e556f45a6328d9776d87e74b9ddd56c4a96",
+  "python": "3.10.11",
+  "numpy": "2.2.6",
+  "unchanged_script": "research/scripts/pem_stage_edge_knockout_test.py",
+  "script_sha256": "2f94160ff73ec567117e7fb25244a9afdfdade7a182d3b7fc68b8054febb136a",
+  "saved_result_object_exactly_reproduced": false,
+  "model_cases": 432,
+  "shared_synthetic_parameter_draws": 32,
+  "classification": "SYNTHETIC_REPLAY_NOT_EMPIRICAL",
+  "differences": [
+    [
+      "/knockouts/0/full_minus_knockout_median_rare_frog_log_growth",
+      0.07011112848768045,
+      0.07011112848768054,
+      9.71445146547012e-17
+    ],
+    [
+      "/knockouts/1/full_minus_knockout_median_rare_frog_log_growth",
+      0.11065382433161275,
+      0.11065382433161283,
+      8.326672684688674e-17
+    ],
+    [
+      "/knockouts/2/full_minus_knockout_median_rare_frog_log_growth",
+      -0.2054298407209399,
+      -0.20542984072093978,
+      1.1102230246251565e-16
+    ]
+  ],
+  "maximum_absolute_numeric_difference": 1.1102230246251565e-16
+}

@@ -1,0 +1,58 @@
+{
+  "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Lithobates+catesbeianus&targetTaxon=Anura&interactionType=eats&includeObservations=true&fields=source_taxon_name%2Ctarget_taxon_name%2Cinteraction_type%2Csource_specimen_life_stage%2Ctarget_specimen_life_stage%2Cstudy_citation&limit=5&offset=0",
+  "queried_at_utc": "2026-10-26T04:49:05.227898+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "11aa58e26c56fe27ea4d59bcb8289ca88b37bb17635dcdd5f66342ac2c7660e1",
+  "response": {
+    "columns": [
+      "source_taxon_name",
+      "target_taxon_name",
+      "interaction_type",
+      "source_specimen_life_stage",
+      "target_specimen_life_stage",
+      "study_citation"
+    ],
+    "data": [
+      [
+        "Lithobates catesbeianus",
+        "Anura",
+        "preysOn",
+        null,
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4567874"
+      ],
+      [
+        "Lithobates catesbeianus",
+        "Anura",
+        "preysOn",
+        null,
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4567874"
+      ],
+      [
+        "Lithobates catesbeianus",
+        "Anura",
+        "preysOn",
+        null,
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4567874"
+      ],
+      [
+        "Lithobates catesbeianus",
+        "Anaxyrus californicus",
+        "preysOn",
+        null,
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4488373"
+      ],
+      [
+        "Lithobates catesbeianus",
+        "Anaxyrus californicus",
+        "preysOn",
+        null,
+        null,
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4488373"
+      ]
+    ]
+  }
+}

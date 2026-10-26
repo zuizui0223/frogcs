@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pseudacris+feriarum&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:53.330836+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "9d1216d2877ad716aa62ef9eb2be85a509c6f389256ec3fbd13f6878ecf95d0a",
+  "response": {
+    "usageKey": 2428152,
+    "scientificName": "Pseudacris feriarum (Baird, 1854)",
+    "canonicalName": "Pseudacris feriarum",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Pseudacris",
+    "species": "Pseudacris feriarum",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2428124,
+    "speciesKey": 2428152,
+    "class": "Amphibia"
+  }
+}

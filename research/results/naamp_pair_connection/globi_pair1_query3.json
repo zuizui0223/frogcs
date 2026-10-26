@@ -1,0 +1,17 @@
+{
+  "url": "https://api.globalbioticinteractions.org/interaction?sourceTaxon=Rana+clamitans&targetTaxon=Lithobates+catesbeianus&includeObservations=true&fields=source_taxon_name%2Ctarget_taxon_name%2Cinteraction_type%2Csource_specimen_life_stage%2Ctarget_specimen_life_stage%2Cstudy_citation&limit=1000&offset=0",
+  "queried_at_utc": "2026-10-26T04:49:52.571290+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "0a93369d1491909fd1de6683f386ee5f6b5fbad5f97cecf3cab393efc166b9f3",
+  "response": {
+    "columns": [
+      "source_taxon_name",
+      "target_taxon_name",
+      "interaction_type",
+      "source_specimen_life_stage",
+      "target_specimen_life_stage",
+      "study_citation"
+    ],
+    "data": []
+  }
+}

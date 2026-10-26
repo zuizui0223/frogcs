@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Quasipaa+exilispinosa&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:55.674383+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "4d39bf7c9b2c726060f37affcf80afd6f6944b30254292d758213435c0d51f14",
+  "response": {
+    "usageKey": 2430525,
+    "scientificName": "Quasipaa exilispinosa (Liu & Hu, 1975)",
+    "canonicalName": "Quasipaa exilispinosa",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Dicroglossidae",
+    "genus": "Quasipaa",
+    "species": "Quasipaa exilispinosa",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6733,
+    "genusKey": 2430518,
+    "speciesKey": 2430525,
+    "class": "Amphibia"
+  }
+}

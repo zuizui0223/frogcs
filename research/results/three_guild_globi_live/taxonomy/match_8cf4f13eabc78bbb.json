@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pelobates+syriacus&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:35.482856+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "a96eab484a100c457dbfad1491821951f3c1db4e39fd43e35b9acc4eef68c931",
+  "response": {
+    "usageKey": 2430566,
+    "scientificName": "Pelobates syriacus Boettger, 1889",
+    "canonicalName": "Pelobates syriacus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Pelobatidae",
+    "genus": "Pelobates",
+    "species": "Pelobates syriacus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6743,
+    "genusKey": 2430563,
+    "speciesKey": 2430566,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Hyla+versicolor&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:21.864273+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "723040cb4b491e9e6eeebecbc95794ef7abcb8f598c43be6cddfc930783281a7",
+  "response": {
+    "usageKey": 2427583,
+    "acceptedUsageKey": 10806364,
+    "scientificName": "Hyla versicolor LeConte, 1825",
+    "canonicalName": "Hyla versicolor",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=0; score=150; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Dryophytes",
+    "species": "Dryophytes versicolor",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 4816258,
+    "speciesKey": 10806364,
+    "class": "Amphibia"
+  }
+}

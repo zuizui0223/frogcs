@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lissotriton+montandoni&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:18.884075+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "708cfdf02e43d19057f8ffa2ae352a48b56e998e1f36dce6cff7c049027237fd",
+  "response": {
+    "usageKey": 5218409,
+    "scientificName": "Lissotriton montandoni (Boulenger, 1880)",
+    "canonicalName": "Lissotriton montandoni",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Lissotriton",
+    "species": "Lissotriton montandoni",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 5218404,
+    "speciesKey": 5218409,
+    "class": "Amphibia"
+  }
+}

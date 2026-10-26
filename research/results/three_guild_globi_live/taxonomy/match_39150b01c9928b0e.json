@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Calotriton+asper&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:05:46.975234+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "e584b61aba7abecac2b17ba658c53545f6179b0f40238e3e32b8e4dfd5487dce",
+  "response": {
+    "usageKey": 2431824,
+    "scientificName": "Calotriton asper (Dug\u00e8s, 1852)",
+    "canonicalName": "Calotriton asper",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Calotriton",
+    "species": "Calotriton asper",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431823,
+    "speciesKey": 2431824,
+    "class": "Amphibia"
+  }
+}

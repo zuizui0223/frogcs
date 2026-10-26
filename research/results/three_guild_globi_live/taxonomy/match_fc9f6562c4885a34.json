@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Salamandra+infraimmaculata&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:07:12.123331+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "f00651ab9777f0c594a5d644535327e5ed1018aabe5e4b50aa8a21b92fe70d62",
+  "response": {
+    "usageKey": 2431777,
+    "scientificName": "Salamandra infraimmaculata Martens, 1885",
+    "canonicalName": "Salamandra infraimmaculata",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Salamandra",
+    "species": "Salamandra infraimmaculata",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 8024525,
+    "speciesKey": 2431777,
+    "class": "Amphibia"
+  }
+}

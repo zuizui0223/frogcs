@@ -1,0 +1,755 @@
+{
+  "date_utc": "2026-10-26T05:12:22.461495+00:00",
+  "source_geometry": {
+    "original_rows": 12064,
+    "raw_site_row_issues": {
+      "outside_contiguous_us_including_positive_longitude": 1
+    },
+    "candidate_distinct_route_labels": 1183,
+    "source_geometry_eligible_routes": 1170,
+    "geometry_rejected_routes": {
+      "source_geometry_gt40km_max_interstop_distance": 10,
+      "fewer_than_8_unique_site_ids": 3
+    },
+    "selected_source_routes": 24,
+    "selected_source_stops": 48,
+    "coordinates_original_sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "source_coordinate_errors_manually_repaired": false,
+    "source_route_night_phenotype_used": false,
+    "site_selection": "sha256 deterministic 24 source route IDs, within each first+last sorted SiteID; 40km max interstop geometry gate independent of biology"
+  },
+  "query_status": {
+    "COMPLETE": 144
+  },
+  "retrieval": {
+    "cache_hits": 155
+  },
+  "environment_receipts": {
+    "8": {
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_8.tif",
+      "bytes": 22102767,
+      "sha256": "ff4fd807761e06f740efbada3007d0449705ee77bd8e27bb491246e4a7a71e39",
+      "md5": "bc3012121de0ac7da139a3d5b0514d59",
+      "elapsed_seconds": 0.91,
+      "class_id": 8,
+      "class_description": "flooded_vegetation",
+      "raster": {
+        "crs": "EPSG:4326",
+        "width": 43200,
+        "height": 17520,
+        "transform": [
+          0.008333333333333335,
+          0,
+          -180.00000000000003,
+          0,
+          -0.008333333333333335,
+          90.00000000000001
+        ],
+        "bounds": [
+          -180.00000000000003,
+          -56.000000000000014,
+          180.00000000000003,
+          90.00000000000001
+        ],
+        "datatype": "uint8",
+        "nodata": 255,
+        "global_dst_valid_cells": 52560,
+        "dst_min_pct": 0,
+        "dst_max_pct": 49.24763870239258,
+        "dst_median_pct": 0,
+        "dst_positive_cells": 14917,
+        "dst_q90_pct": 0.3215347230434418
+      },
+      "reused_hash_verified_local_file": true
+    },
+    "12": {
+      "url": "https://data.earthenv.org/consensus_landcover/with_DISCover/consensus_full_class_12.tif",
+      "bytes": 28060356,
+      "sha256": "a944780bc2fcc42bf0bf4e3cff505016e2e4801a124a27d5333cafb6a37da68c",
+      "md5": "5ed6c0b3f0c61a090bae71bcc20ecf39",
+      "elapsed_seconds": 0.67,
+      "class_id": 12,
+      "class_description": "open_water",
+      "raster": {
+        "crs": "EPSG:4326",
+        "width": 43200,
+        "height": 17520,
+        "transform": [
+          0.008333333333333335,
+          0,
+          -180.00000000000003,
+          0,
+          -0.008333333333333335,
+          90.00000000000001
+        ],
+        "bounds": [
+          -180.00000000000003,
+          -56.000000000000014,
+          180.00000000000003,
+          90.00000000000001
+        ],
+        "datatype": "uint8",
+        "nodata": 255,
+        "global_dst_valid_cells": 52560,
+        "dst_min_pct": 0,
+        "dst_max_pct": 100,
+        "dst_median_pct": 100,
+        "dst_positive_cells": 50335,
+        "dst_q90_pct": 100
+      },
+      "reused_hash_verified_local_file": true
+    }
+  },
+  "overlap": [
+    {
+      "radius_km": 5,
+      "accuracy": "strict",
+      "complete_centers": 48,
+      "unique_occurrences": 96,
+      "memberships": 106,
+      "guild_counts": {
+        "Anura": {
+          "unique_occurrences": 45,
+          "species": 9,
+          "centers": 8,
+          "datasets": 4,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 43
+        },
+        "Caudata": {
+          "unique_occurrences": 17,
+          "species": 10,
+          "centers": 4,
+          "datasets": 2,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 13
+        },
+        "Odonata": {
+          "unique_occurrences": 34,
+          "species": 27,
+          "centers": 11,
+          "datasets": 2,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 17
+        }
+      },
+      "three_guild_centers": 1,
+      "three_guild_center_year_months": 0,
+      "pairs": [
+        {
+          "guild_a": "Anura",
+          "guild_b": "Caudata",
+          "neighborhood": {
+            "a": 8,
+            "b": 4,
+            "shared": 2,
+            "union": 10,
+            "jaccard": 0.2,
+            "sorensen": 0.3333333333333333
+          },
+          "neighborhood_year": {
+            "a": 9,
+            "b": 8,
+            "shared": 0,
+            "union": 17,
+            "jaccard": 0.0,
+            "sorensen": 0.0
+          },
+          "neighborhood_year_month": {
+            "a": 9,
+            "b": 9,
+            "shared": 0,
+            "union": 18,
+            "jaccard": 0.0,
+            "sorensen": 0.0
+          },
+          "seasonal_schoener_D": 0.5555555555555556,
+          "jointly_recorded_center_years": 0,
+          "mean_within_center_year_month_overlap": null,
+          "background_environment_schoener_D": 0.7777777777777778,
+          "occupied_environment_bins": [
+            3,
+            2
+          ]
+        },
+        {
+          "guild_a": "Anura",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 8,
+            "b": 11,
+            "shared": 5,
+            "union": 14,
+            "jaccard": 0.35714285714285715,
+            "sorensen": 0.5263157894736842
+          },
+          "neighborhood_year": {
+            "a": 9,
+            "b": 20,
+            "shared": 1,
+            "union": 28,
+            "jaccard": 0.03571428571428571,
+            "sorensen": 0.06896551724137931
+          },
+          "neighborhood_year_month": {
+            "a": 9,
+            "b": 24,
+            "shared": 1,
+            "union": 32,
+            "jaccard": 0.03125,
+            "sorensen": 0.06060606060606061
+          },
+          "seasonal_schoener_D": 0.5416666666666667,
+          "jointly_recorded_center_years": 1,
+          "mean_within_center_year_month_overlap": 0.5,
+          "background_environment_schoener_D": 0.75,
+          "occupied_environment_bins": [
+            3,
+            5
+          ]
+        },
+        {
+          "guild_a": "Caudata",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 4,
+            "b": 11,
+            "shared": 1,
+            "union": 14,
+            "jaccard": 0.07142857142857142,
+            "sorensen": 0.13333333333333333
+          },
+          "neighborhood_year": {
+            "a": 8,
+            "b": 20,
+            "shared": 1,
+            "union": 27,
+            "jaccard": 0.037037037037037035,
+            "sorensen": 0.07142857142857142
+          },
+          "neighborhood_year_month": {
+            "a": 9,
+            "b": 24,
+            "shared": 1,
+            "union": 32,
+            "jaccard": 0.03125,
+            "sorensen": 0.06060606060606061
+          },
+          "seasonal_schoener_D": 0.6527777777777777,
+          "jointly_recorded_center_years": 1,
+          "mean_within_center_year_month_overlap": 0.5,
+          "background_environment_schoener_D": 0.6666666666666667,
+          "occupied_environment_bins": [
+            2,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "radius_km": 5,
+      "accuracy": "strict_plus_unknown",
+      "complete_centers": 48,
+      "unique_occurrences": 253,
+      "memberships": 283,
+      "guild_counts": {
+        "Anura": {
+          "unique_occurrences": 90,
+          "species": 19,
+          "centers": 11,
+          "datasets": 8,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 84
+        },
+        "Caudata": {
+          "unique_occurrences": 63,
+          "species": 16,
+          "centers": 7,
+          "datasets": 7,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 40
+        },
+        "Odonata": {
+          "unique_occurrences": 100,
+          "species": 46,
+          "centers": 15,
+          "datasets": 5,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 23
+        }
+      },
+      "three_guild_centers": 4,
+      "three_guild_center_year_months": 0,
+      "pairs": [
+        {
+          "guild_a": "Anura",
+          "guild_b": "Caudata",
+          "neighborhood": {
+            "a": 11,
+            "b": 7,
+            "shared": 5,
+            "union": 13,
+            "jaccard": 0.38461538461538464,
+            "sorensen": 0.5555555555555556
+          },
+          "neighborhood_year": {
+            "a": 26,
+            "b": 15,
+            "shared": 3,
+            "union": 38,
+            "jaccard": 0.07894736842105263,
+            "sorensen": 0.14634146341463414
+          },
+          "neighborhood_year_month": {
+            "a": 37,
+            "b": 19,
+            "shared": 2,
+            "union": 54,
+            "jaccard": 0.037037037037037035,
+            "sorensen": 0.07142857142857142
+          },
+          "seasonal_schoener_D": 0.5376955903271694,
+          "jointly_recorded_center_years": 3,
+          "mean_within_center_year_month_overlap": 0.5,
+          "background_environment_schoener_D": 0.6756756756756757,
+          "occupied_environment_bins": [
+            4,
+            3
+          ]
+        },
+        {
+          "guild_a": "Anura",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 11,
+            "b": 15,
+            "shared": 8,
+            "union": 18,
+            "jaccard": 0.4444444444444444,
+            "sorensen": 0.6153846153846154
+          },
+          "neighborhood_year": {
+            "a": 26,
+            "b": 31,
+            "shared": 4,
+            "union": 53,
+            "jaccard": 0.07547169811320754,
+            "sorensen": 0.14035087719298245
+          },
+          "neighborhood_year_month": {
+            "a": 37,
+            "b": 41,
+            "shared": 4,
+            "union": 74,
+            "jaccard": 0.05405405405405406,
+            "sorensen": 0.10256410256410256
+          },
+          "seasonal_schoener_D": 0.6519446275543836,
+          "jointly_recorded_center_years": 4,
+          "mean_within_center_year_month_overlap": 0.30833333333333335,
+          "background_environment_schoener_D": 0.7244561634805537,
+          "occupied_environment_bins": [
+            4,
+            5
+          ]
+        },
+        {
+          "guild_a": "Caudata",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 7,
+            "b": 15,
+            "shared": 4,
+            "union": 18,
+            "jaccard": 0.2222222222222222,
+            "sorensen": 0.36363636363636365
+          },
+          "neighborhood_year": {
+            "a": 15,
+            "b": 31,
+            "shared": 3,
+            "union": 43,
+            "jaccard": 0.06976744186046512,
+            "sorensen": 0.13043478260869565
+          },
+          "neighborhood_year_month": {
+            "a": 19,
+            "b": 41,
+            "shared": 1,
+            "union": 59,
+            "jaccard": 0.01694915254237288,
+            "sorensen": 0.03333333333333333
+          },
+          "seasonal_schoener_D": 0.6611039794608472,
+          "jointly_recorded_center_years": 3,
+          "mean_within_center_year_month_overlap": 0.16666666666666666,
+          "background_environment_schoener_D": 0.8125802310654685,
+          "occupied_environment_bins": [
+            3,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "radius_km": 25,
+      "accuracy": "strict",
+      "complete_centers": 48,
+      "unique_occurrences": 1061,
+      "memberships": 1668,
+      "guild_counts": {
+        "Anura": {
+          "unique_occurrences": 349,
+          "species": 30,
+          "centers": 36,
+          "datasets": 6,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 317
+        },
+        "Caudata": {
+          "unique_occurrences": 196,
+          "species": 36,
+          "centers": 27,
+          "datasets": 5,
+          "unknown_month_unique_occurrences": 8,
+          "unlabelled_stage_unique_occurrences": 174
+        },
+        "Odonata": {
+          "unique_occurrences": 516,
+          "species": 139,
+          "centers": 39,
+          "datasets": 6,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 371
+        }
+      },
+      "three_guild_centers": 16,
+      "three_guild_center_year_months": 7,
+      "pairs": [
+        {
+          "guild_a": "Anura",
+          "guild_b": "Caudata",
+          "neighborhood": {
+            "a": 36,
+            "b": 27,
+            "shared": 21,
+            "union": 42,
+            "jaccard": 0.5,
+            "sorensen": 0.6666666666666666
+          },
+          "neighborhood_year": {
+            "a": 133,
+            "b": 87,
+            "shared": 40,
+            "union": 180,
+            "jaccard": 0.2222222222222222,
+            "sorensen": 0.36363636363636365
+          },
+          "neighborhood_year_month": {
+            "a": 199,
+            "b": 123,
+            "shared": 29,
+            "union": 293,
+            "jaccard": 0.09897610921501707,
+            "sorensen": 0.18012422360248448
+          },
+          "seasonal_schoener_D": 0.8695510070678596,
+          "jointly_recorded_center_years": 40,
+          "mean_within_center_year_month_overlap": 0.45249999999999996,
+          "background_environment_schoener_D": 0.8516158025901868,
+          "occupied_environment_bins": [
+            5,
+            3
+          ]
+        },
+        {
+          "guild_a": "Anura",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 36,
+            "b": 39,
+            "shared": 29,
+            "union": 46,
+            "jaccard": 0.6304347826086957,
+            "sorensen": 0.7733333333333333
+          },
+          "neighborhood_year": {
+            "a": 133,
+            "b": 170,
+            "shared": 71,
+            "union": 232,
+            "jaccard": 0.30603448275862066,
+            "sorensen": 0.46864686468646866
+          },
+          "neighborhood_year_month": {
+            "a": 199,
+            "b": 304,
+            "shared": 56,
+            "union": 447,
+            "jaccard": 0.12527964205816555,
+            "sorensen": 0.22266401590457258
+          },
+          "seasonal_schoener_D": 0.762199153663052,
+          "jointly_recorded_center_years": 71,
+          "mean_within_center_year_month_overlap": 0.31009389671361504,
+          "background_environment_schoener_D": 0.9418969849246231,
+          "occupied_environment_bins": [
+            5,
+            5
+          ]
+        },
+        {
+          "guild_a": "Caudata",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 27,
+            "b": 39,
+            "shared": 22,
+            "union": 44,
+            "jaccard": 0.5,
+            "sorensen": 0.6666666666666666
+          },
+          "neighborhood_year": {
+            "a": 87,
+            "b": 170,
+            "shared": 33,
+            "union": 224,
+            "jaccard": 0.14732142857142858,
+            "sorensen": 0.25680933852140075
+          },
+          "neighborhood_year_month": {
+            "a": 123,
+            "b": 304,
+            "shared": 25,
+            "union": 402,
+            "jaccard": 0.06218905472636816,
+            "sorensen": 0.117096018735363
+          },
+          "seasonal_schoener_D": 0.751711596063329,
+          "jointly_recorded_center_years": 33,
+          "mean_within_center_year_month_overlap": 0.29393939393939394,
+          "background_environment_schoener_D": 0.8121255883611468,
+          "occupied_environment_bins": [
+            3,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "radius_km": 25,
+      "accuracy": "strict_plus_unknown",
+      "complete_centers": 48,
+      "unique_occurrences": 4299,
+      "memberships": 7219,
+      "guild_counts": {
+        "Anura": {
+          "unique_occurrences": 1889,
+          "species": 36,
+          "centers": 41,
+          "datasets": 18,
+          "unknown_month_unique_occurrences": 604,
+          "unlabelled_stage_unique_occurrences": 1843
+        },
+        "Caudata": {
+          "unique_occurrences": 401,
+          "species": 42,
+          "centers": 32,
+          "datasets": 16,
+          "unknown_month_unique_occurrences": 28,
+          "unlabelled_stage_unique_occurrences": 308
+        },
+        "Odonata": {
+          "unique_occurrences": 2009,
+          "species": 207,
+          "centers": 47,
+          "datasets": 13,
+          "unknown_month_unique_occurrences": 0,
+          "unlabelled_stage_unique_occurrences": 503
+        }
+      },
+      "three_guild_centers": 28,
+      "three_guild_center_year_months": 15,
+      "pairs": [
+        {
+          "guild_a": "Anura",
+          "guild_b": "Caudata",
+          "neighborhood": {
+            "a": 41,
+            "b": 32,
+            "shared": 29,
+            "union": 44,
+            "jaccard": 0.6590909090909091,
+            "sorensen": 0.7945205479452054
+          },
+          "neighborhood_year": {
+            "a": 173,
+            "b": 127,
+            "shared": 67,
+            "union": 233,
+            "jaccard": 0.2875536480686695,
+            "sorensen": 0.44666666666666666
+          },
+          "neighborhood_year_month": {
+            "a": 352,
+            "b": 201,
+            "shared": 59,
+            "union": 494,
+            "jaccard": 0.1194331983805668,
+            "sorensen": 0.21338155515370705
+          },
+          "seasonal_schoener_D": 0.9036917684305744,
+          "jointly_recorded_center_years": 63,
+          "mean_within_center_year_month_overlap": 0.4164055521198378,
+          "background_environment_schoener_D": 0.7188206693803709,
+          "occupied_environment_bins": [
+            5,
+            4
+          ]
+        },
+        {
+          "guild_a": "Anura",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 41,
+            "b": 47,
+            "shared": 40,
+            "union": 48,
+            "jaccard": 0.8333333333333334,
+            "sorensen": 0.9090909090909091
+          },
+          "neighborhood_year": {
+            "a": 173,
+            "b": 294,
+            "shared": 109,
+            "union": 358,
+            "jaccard": 0.30446927374301674,
+            "sorensen": 0.4668094218415418
+          },
+          "neighborhood_year_month": {
+            "a": 352,
+            "b": 607,
+            "shared": 102,
+            "union": 857,
+            "jaccard": 0.11901983663943991,
+            "sorensen": 0.2127215849843587
+          },
+          "seasonal_schoener_D": 0.7480764190504718,
+          "jointly_recorded_center_years": 107,
+          "mean_within_center_year_month_overlap": 0.29174454828660434,
+          "background_environment_schoener_D": 0.771908229743897,
+          "occupied_environment_bins": [
+            5,
+            5
+          ]
+        },
+        {
+          "guild_a": "Caudata",
+          "guild_b": "Odonata",
+          "neighborhood": {
+            "a": 32,
+            "b": 47,
+            "shared": 31,
+            "union": 48,
+            "jaccard": 0.6458333333333334,
+            "sorensen": 0.7848101265822784
+          },
+          "neighborhood_year": {
+            "a": 127,
+            "b": 294,
+            "shared": 59,
+            "union": 362,
+            "jaccard": 0.16298342541436464,
+            "sorensen": 0.28028503562945367
+          },
+          "neighborhood_year_month": {
+            "a": 201,
+            "b": 607,
+            "shared": 45,
+            "union": 763,
+            "jaccard": 0.05897771952817824,
+            "sorensen": 0.11138613861386139
+          },
+          "seasonal_schoener_D": 0.7725704262870163,
+          "jointly_recorded_center_years": 55,
+          "mean_within_center_year_month_overlap": 0.2724242424242424,
+          "background_environment_schoener_D": 0.8915390100567999,
+          "occupied_environment_bins": [
+            4,
+            5
+          ]
+        }
+      ]
+    }
+  ],
+  "environment_diagnostics": {
+    "centers": 48,
+    "both_zero_centers": 36,
+    "distinct_value_pairs": 11,
+    "assignment": "landcover at listening center, not GBIF organism location or breeding pond"
+  },
+  "naamp_history": {
+    "source_sha256": {
+      "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+      "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+      "Counts.csv": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+    },
+    "eligible_complete_runs": 7848,
+    "selected_centers_with_completed_visits": 28,
+    "selected_completed_visits": 227,
+    "strong_visits": 133,
+    "silent_visits": 57,
+    "matched_strong_silent_visits": 5,
+    "independent_matched_routes": 3,
+    "mean_prior_strong_difference": 0.6833333333333333,
+    "equal_route_mean_prior_difference": 0.5277777777777777,
+    "equal_route_bootstrap_interval": null,
+    "matching_scope": "fixed48 endpoints; center landcover and same run",
+    "note": "Association with past calling, not causal memory; source-center background does not measure pond hydroperiod or plants."
+  },
+  "record_overlay": {
+    "rows": 227,
+    "same_month_support_visits": {
+      "Anura": 3,
+      "Caudata": 4,
+      "Odonata": 5
+    },
+    "exact_name_naamp_gbif_match_visits": 0,
+    "spatial_scope_km": 25,
+    "temporal_scope": "same calendar month/year, not necessarily same date",
+    "zero_means": "no retrieved record under specified filters, NOT biological absence"
+  },
+  "full_naamp_environment_matched_history": {
+    "source_sha256": {
+      "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+      "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+      "Counts.csv": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+    },
+    "eligible_complete_runs": 7848,
+    "selected_centers_with_completed_visits": 7619,
+    "selected_completed_visits": 74317,
+    "strong_visits": 42868,
+    "silent_visits": 18028,
+    "matched_strong_silent_visits": 4040,
+    "independent_matched_routes": 389,
+    "mean_prior_strong_difference": 0.31768836672775225,
+    "equal_route_mean_prior_difference": 0.27540838221331637,
+    "equal_route_bootstrap_interval": [
+      0.24861458543736584,
+      0.30108231625042964
+    ],
+    "matching_scope": "all geometry-valid source sites; current local temperature/noise/timeout and same run",
+    "note": "Association with past calling, not causal memory; source-center background does not measure pond hydroperiod or plants.",
+    "geometry_sites": 11947
+  },
+  "status": "COMPLETE_BOUNDED_PILOT",
+  "limits": [
+    "not verified ponds",
+    "no biological absences",
+    "overlapping circles not independent",
+    "no availability-corrected niche or causal competition",
+    "stage unknown retained",
+    "EarthEnv background is not measured hydroperiod/pond plants",
+    "original N/L/C not redefined"
+  ]
+}

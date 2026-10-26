@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Bombina+variegata&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:39.875349+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "f4452738137cc5b87efcc98568e23450ff822a0a6d37127e53773a9c0d514666",
+  "response": {
+    "usageKey": 2423435,
+    "scientificName": "Bombina variegata (Linnaeus, 1758)",
+    "canonicalName": "Bombina variegata",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Bombinatoridae",
+    "genus": "Bombina",
+    "species": "Bombina variegata",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 3077,
+    "genusKey": 2423434,
+    "speciesKey": 2423435,
+    "class": "Amphibia"
+  }
+}

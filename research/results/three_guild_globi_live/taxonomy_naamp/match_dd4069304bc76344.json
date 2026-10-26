@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Acris+crepitans&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:20:57.039109+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "76911193a1d0d54194a24c29543796ac41e24940a66e0ba5536e41bef3e78a28",
+  "response": {
+    "usageKey": 2427616,
+    "scientificName": "Acris crepitans Baird, 1854",
+    "canonicalName": "Acris crepitans",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Acris",
+    "species": "Acris crepitans",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2427609,
+    "speciesKey": 2427616,
+    "class": "Amphibia"
+  }
+}

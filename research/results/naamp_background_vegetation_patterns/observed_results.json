@@ -1,0 +1,44 @@
+{
+  "classification": "EXPLORATORY_OBSERVED_BACKGROUND_ASSOCIATION",
+  "input_sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+  "input_rows": 74317,
+  "valid_rows": 73137,
+  "comparisons": [
+    {
+      "variable": "source_center_flooded_vegetation",
+      "positive_means": "EarthEnv consensus value >0; zero is not verified absence of pond habitat",
+      "matched_run_noise_other_landcover_groups": 412,
+      "routes": 51,
+      "equal_route_mean_strong_call_difference": 0.010338313153696658,
+      "route_bootstrap_95ci": [
+        -0.06333288585980157,
+        0.08590572424379733
+      ],
+      "mean_air_temperature_difference": 0.08447735269944028,
+      "source_positive_visits": 622,
+      "source_zero_visits": 1916
+    },
+    {
+      "variable": "source_center_open_water",
+      "positive_means": "EarthEnv consensus value >0; zero is not verified absence of pond habitat",
+      "matched_run_noise_other_landcover_groups": 2330,
+      "routes": 206,
+      "equal_route_mean_strong_call_difference": 0.0156967423892652,
+      "route_bootstrap_95ci": [
+        -0.015172371692439771,
+        0.04591852406227418
+      ],
+      "mean_air_temperature_difference": 0.0384873742534687,
+      "source_positive_visits": 4986,
+      "source_zero_visits": 12122
+    }
+  ],
+  "design": "Within same RunID, same noise impairment and same binary other landcover class; route equal weights. Not history-adjusted.",
+  "limits": [
+    "not pond vegetation cover or measured hydroperiod",
+    "no predator niche or refuge function inferred directly",
+    "stable site suitability and species composition remain confounded",
+    "temperature not exactly matched; contrast reported",
+    "posthoc descriptive contrasts, not independent confirmatory tests"
+  ]
+}
