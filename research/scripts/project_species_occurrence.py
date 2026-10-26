@@ -22,7 +22,7 @@ from pathlib import Path
 FAKE_TAXON="*ALL_TAXA_SURVEY_OPPORTUNITY*"
 HEADER=[
  "source_id","site_token","site_type","source_event_token","date","year","month",
- "taxon","method","occurrence_status","raw_stage_row_count","source_score_max",
+ "taxon","source_taxon_verbatim","taxon_match_policy","method","occurrence_status","raw_stage_row_count","source_score_max",
  "precip_source_value","water_depth_source_value","source_hydroperiod",
  "emergent_cover_percent","submerged_cover_percent","fish_source_observed",
  "site_management_class","survey_assessment_semantics"]
@@ -150,6 +150,18 @@ def run(events,outdir):
                                   "FROM t ORDER BY src,event,sp,method"):
                 src,eid,site,kind,dt,yr,mon,sp,method,npres,nabs,nunknown,rawrows,score,\
                 rain,depth,hydro,emergent,submerged,fish,management=row
+                original_taxon=sp
+                if src=="naamp_positive_calls" and sp.startswith("NAAMP_CODE:"):
+                    original_taxon=sp[len("NAAMP_CODE:"):]
+                    if re.fullmatch(r"[A-Z][a-z]+ [a-z]+",original_taxon):
+                        projected_taxon=original_taxon
+                        match_policy="exact_verbatim_binomial_no_synonym_map"
+                    else:
+                        projected_taxon=sp
+                        match_policy="ambiguous_or_aggregate_original_label_kept_source_scoped"
+                else:
+                    projected_taxon=sp
+                    match_policy="source_verbatim_unresolved_taxonomic_synonyms"
                 st=status(npres,nabs,nunknown)
                 if src=="hungary_2024" and npres>0 and nabs>0:
                     # Native visit ID appears twice with contradictory 0 vs >0
@@ -166,10 +178,10 @@ def run(events,outdir):
                   "inbo_larval_census":"one_or_more_stage_assessments_not_whole_species_absence",
                   "naamp_positive_calls":"positive_only_no_species_assessed_zeros",
                 }[src]
-                wr.writerow([src,site,kind,eid,dt,yr,mon,sp,method,st,rawrows,
+                wr.writerow([src,site,kind,eid,dt,yr,mon,projected_taxon,original_taxon,match_policy,method,st,rawrows,
                              score,rain,depth,hydro,emergent,submerged,fish,management,sem])
                 source_events[src].add(eid);source_sites[src].add(site)
-                source_taxa[src].add(sp);source_months[src].add((yr,mon))
+                source_taxa[src].add(projected_taxon);source_months[src].add((yr,mon))
                 source_method[src][method]+=1;source_status[src][st]+=1
                 for key,val in [("rain",rain),("depth",depth),("hydroperiod",hydro),
                                 ("emergent",emergent),("submerged",submerged),("fish",fish)]:
@@ -178,7 +190,7 @@ def run(events,outdir):
                 rich["assessed"]+=1
                 rich["detected"]+=int(st=="recorded_present")
                 rich["uncertain"]+=int(st=="unresolved")
-                mm=site_month[(src,site,yr,mon,sp,method)]
+                mm=site_month[(src,site,yr,mon,projected_taxon,method)]
                 mm["assessed"]+=int(st!="unresolved")
                 mm["present"]+=int(st=="recorded_present")
                 mm["nondetect"]+=int(st=="protocol_nondetection")
@@ -228,6 +240,9 @@ def run(events,outdir):
           "cross_source_exact_name_overlap":overlaps,
           "naamp_completed_stop_survey_opportunities":tally["naamp_completed_stop_events"],
           "no_taxon_absences_generated_from_naamp_positive_only":True,
+          "NAAMP_unambiguous_original_Latin_binomials_extracted_for_exact_source_name_matching":True,
+          "ambiguous_NAAMP_complexes_left_original_and_source_scoped":True,
+          "no_unverified_taxonomic_synonym_mapping":True,
           "no_native_species_codes_force_matched_to_binomials":True,
           "life_stage_removed_from_occurrence_primary_key":True,
           "underlying_source_stage_labels_still_available_in_upstream_artifact":True,
