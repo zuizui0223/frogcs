@@ -213,13 +213,15 @@ def run(events,outdir):
         # species codes to scientific names, or unverified synonym collapse.
         is_binomial=lambda n: bool(re.match(r"^[A-Z][a-z]+ [a-z][a-z.-]+(?: |$)",n))
         overlaps=[]
-        sources=["hungary_2024","inbo_adult_chorus","inbo_larval_census","nps_glkn"]
+        sources=["hungary_2024","inbo_adult_chorus","inbo_larval_census","nps_glkn","naamp_positive_calls"]
         for i,a in enumerate(sources):
             for b in sources[i+1:]:
                 common=sorted(sp for sp in source_taxa[a]&source_taxa[b] if is_binomial(sp))
                 overlaps.append({"source_a":a,"source_b":b,"identical_verbatim_taxon_names":common,
                                  "n":len(common),"taxonomic_synonym_mapping_performed":False,
-                                 "same_physical_sites":False})
+                                 "same_physical_sites":False,
+                                 "publisher_exact_locationID_can_join_within_INBO":(
+                                     a.startswith("inbo_") and b.startswith("inbo_"))})
         profile={
           "status":"VERIFIED_SPECIES_OCCURRENCE_FIRST_CANONICAL",
           "source_records_before_stage_collapse":dict(orig),
