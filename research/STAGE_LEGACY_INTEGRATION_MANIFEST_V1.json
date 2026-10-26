@@ -302,10 +302,12 @@
     "Global 1-degree stage/time co-reporting cannot establish live same-pond predator-prey encounters; 16/18 general shifted-month gain is not a predation-specific effect.",
     "Expanded predator-fixed matched alternative prey strict pattern 26/56 and median focal-minus-alternative -0.0185 must remain visible; do not cherry-pick exploratory positive mean.",
     "Original source-planned 240 Fuscus tadpoles and 80 containers appear as only 226 source rows and 79 container IDs; never silently treat 14 missing animals as deaths, fit unique all-cohort survival, or replace their unknown fate with convenient zeros.",
-    "Fuscus predator chemical cue and controlled lab drawdown are not live overwintered predator abundance, a measured predation event, or observed field drying/refilling."
+    "Fuscus predator chemical cue and controlled lab drawdown are not live overwintered predator abundance, a measured predation event, or observed field drying/refilling.",
+    "Scientific priority 2026-10-26: species occurrence native survey × source site × date × method first; developmental-stage strata paused until species occurrence, assessed survey denominators and cross-source taxonomy pass.",
+    "Hungary reused source event identifiers occur twice for bottle traps; five species-level 0-vs-detection contradictions remain unresolved rather than silently counted present."
   ],
   "last_checked_on": "2026-10-26",
-  "integration_status": "ONE_FLAGSHIP_V0_3_WITH_REAL_FACTORIAL_G2B_ABIOTIC_STAGE_RESPONSE_PREDATOR_CUE_PREDICTIVE_NONBENEFIT_FIELD_G2_STILL_UNIDENTIFIED_RC6_LOCKED",
+  "integration_status": "ONE_INTEGRATED_PAPER_SOURCE_NATIVE_SPECIES_OCCURRENCE_FIRST_STAGE_AS_OPTIONAL_CONTEXT_FIELD_RC6_LOCKED",
   "paper_strategy": {
     "decision_authority": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
     "decision_date": "2026-10-26",
@@ -322,10 +324,29 @@
     "fallback": "If G2 cannot qualify, reconsider narrower robust paper or preserved RC6 solo publication after explicit author decision",
     "future_manuscript_ready": false,
     "manuscript_path": "research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md",
-    "manuscript_version": "v0.3 working draft, original factorial developmental stage experiment added, not submission ready",
+    "manuscript_version": "v0.3 preexisting working draft; species-first source occurrence projection under new analysis",
     "global_macro_claim_ceiling": "seasonal stage-reporting coincidence, not verified predator-specific phase, predation rate or amphibian population dynamics",
     "external_mechanistic_G2B": "controlled cue and artificial water-level factorial verified, but real field aquatic predation/drought reset G2 still blocked"
   },
   "source_inventory": "research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md",
-  "source_inventory_script": "research/scripts/part2_published_source_g0.py"
+  "source_inventory_script": "research/scripts/part2_published_source_g0.py",
+  "current_priority": {
+    "decision_date": "2026-10-26",
+    "priority": "SOURCE_NATIVE_SPECIES_OCCURRENCE_FIRST",
+    "contract": "research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md",
+    "occurrence_projector": "research/scripts/project_species_occurrence.py",
+    "cooccurrence_correlations": "research/scripts/species_occurrence_associations.py",
+    "workflow": ".github/workflows/research_species_occurrence_first.yml",
+    "unit": "data_source x original source site x survey event/date x species x method; source stage only provenance",
+    "produce": [
+      "species_occurrence_events.csv.gz",
+      "species_occurrence_site_month.csv.gz",
+      "observed_species_occurrence_profile.json",
+      "observed_species_associations.json"
+    ],
+    "stage_focused_mechanistic_models": "PAUSED_AS_PRIMARY_RESEARCH_TARGET_NOT_DELETED",
+    "GBIF_global_occurrence": "PRESENCE_ONLY_SEPARATE_GRID_OR_DATASET_NOT_ASSUMED_POND",
+    "experimental_predation_programme": "RETAIN_AS_SECONDARY_WHEN_SAME_SOURCE_POND_COMPARABLE",
+    "no_modification_to_rc6_submission": true
+  }
 }
