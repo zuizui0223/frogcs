@@ -176,6 +176,37 @@
         "validated_predation_stage_mediation": false
       },
       "can_join": "Evidence comparison by data-level and macro observation contract only; never attach GBIF 1deg reporting or GloBI edges to NAAMP/NPS listening sites as measured feeding"
+    },
+    {
+      "id": "fuscus_controlled_stage_g2b",
+      "role": "published 2×2×2 laboratory temperature × water-level drawdown × predator chemical cue experimental tadpole stage-development response",
+      "external_doi": "10.1111/fwb.70124",
+      "source_repository": "CSIC 10261/411885",
+      "original_excel_sha256": "eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25",
+      "source_assignment_g0": "research/results/part2_g2/fuscus_assignment_g0.json",
+      "frozen_analysis_plan": "research/FUSCUS_EXPERIMENT_G2B_FROZEN_ANALYSIS_2026-10-26.md",
+      "result": "research/results/part2_g2/fuscus_factorial_observed_results.json",
+      "report": "research/results/part2_g2/FUSCUS_G2B_REAL_EXPERIMENT_REPORT_2026-10-26.md",
+      "readiness": "genuine_original_stage_risk_cue_and_experimental_drawdown_fit_complete_bathheldout_biotic_predictor_did_not_improve",
+      "granularity": "226 source tadpole individuals, 79 original small exposure containers, 8 large thermal bath groups, 3 original nests; recorded metamorphs only for endpoint",
+      "evidence": {
+        "planned_tadpoles": 240,
+        "observed_rows": 226,
+        "listed_metamorph_survivors": 213,
+        "listed_nonsurvivors": 13,
+        "unlisted_initial_animals": 14,
+        "observed_small_containers": 79,
+        "original_large_bath_pools": 8,
+        "mass_log_mse_m0": 0.020890281991888512,
+        "mass_log_mse_m1": 0.021248973407636068,
+        "mass_log_mse_m2": 0.021315852082243535,
+        "time_log_mse_m0": 0.01573077423110575,
+        "time_log_mse_m1": 0.016492058201910346,
+        "time_log_mse_m2": 0.01648453705884464,
+        "all_cohort_survival_fate_verified": false,
+        "actual_prey_predation_rate_observed": false
+      },
+      "can_join": "only as independent experimental mechanism case with explicit species and method differences. Never merge its container rows with NAAMP acoustic stops or interpret cue as consumptive predation."
     }
   ],
   "endpoints": [
@@ -222,7 +253,7 @@
     {
       "id": "G2",
       "name": "stage-predation/competition vs dynamic hydrology discrimination",
-      "status": "UNIDENTIFIABLE_NO_SAME_POND_PREDATOR_SIZE_STAGE_DENSITY_OR_PREY_EGG_SURVIVAL_AND_OBSERVED_DRYDOWN"
+      "status": "UNIDENTIFIABLE_FOR_FIELD_PREDATION_AND_POND_HYDROPERIOD;_CONTROLLED_LAB_G2B_STAGE_WATER_X_PREDATOR_CUE_EXPERIMENT_EXECUTED_ABIOTIC_BATHHELDOUT_M0_BEATS_CUE_M1_M2"
     },
     {
       "id": "G3",
@@ -251,7 +282,10 @@
     "INBO_Hyla_stage_predation_identified": false,
     "World_GloBI_GBIF_stage_reporting_phase_above_month_shift_16_of_18": true,
     "World_predator_prey_partner_specific_stage_seasonality_established": false,
-    "World_flooded_vegetation_trophic_specificity_established": false
+    "World_flooded_vegetation_trophic_specificity_established": false,
+    "FUSCUS_predator_cue_improves_leave_thermal_bathout_stage_mass_prediction": false,
+    "FUSCUS_controlled_lab_cue_by_drawdown_interaction_predictive_gain_established": false,
+    "FUSCUS_original_240_assigned_survival_completely_recorded": false
   },
   "stop_rules": [
     "No modification of frozen RC6 paper, submission, provenance, spatial generator or NAAMP analysis paths.",
@@ -266,10 +300,12 @@
     "INBO G1 site-block gain fails independent future-year transport (M0 Brier 0.27839 vs M1 0.34786 in 2024–25); do not claim general predictive superiority.",
     "INBO 245 matched Hyla records have no usable permanent-water-column measurement or numeric larval effort at the focal event; do not call their M0 hydroperiod adjusted.",
     "Global 1-degree stage/time co-reporting cannot establish live same-pond predator-prey encounters; 16/18 general shifted-month gain is not a predation-specific effect.",
-    "Expanded predator-fixed matched alternative prey strict pattern 26/56 and median focal-minus-alternative -0.0185 must remain visible; do not cherry-pick exploratory positive mean."
+    "Expanded predator-fixed matched alternative prey strict pattern 26/56 and median focal-minus-alternative -0.0185 must remain visible; do not cherry-pick exploratory positive mean.",
+    "Original source-planned 240 Fuscus tadpoles and 80 containers appear as only 226 source rows and 79 container IDs; never silently treat 14 missing animals as deaths, fit unique all-cohort survival, or replace their unknown fate with convenient zeros.",
+    "Fuscus predator chemical cue and controlled lab drawdown are not live overwintered predator abundance, a measured predation event, or observed field drying/refilling."
   ],
   "last_checked_on": "2026-10-26",
-  "integration_status": "ONE_INTEGRATED_PAPER_DRAFT_V0_2_RC6_LOCKED_G1_MIXED_WORLD_STAGE_SEASONALITY_PRESENT_TROPHIC_SPECIFICITY_NOT_VERIFIED_G2_UNIDENTIFIED",
+  "integration_status": "ONE_FLAGSHIP_V0_3_WITH_REAL_FACTORIAL_G2B_ABIOTIC_STAGE_RESPONSE_PREDATOR_CUE_PREDICTIVE_NONBENEFIT_FIELD_G2_STILL_UNIDENTIFIED_RC6_LOCKED",
   "paper_strategy": {
     "decision_authority": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
     "decision_date": "2026-10-26",
@@ -286,8 +322,9 @@
     "fallback": "If G2 cannot qualify, reconsider narrower robust paper or preserved RC6 solo publication after explicit author decision",
     "future_manuscript_ready": false,
     "manuscript_path": "research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md",
-    "manuscript_version": "v0.2 working draft, not submission ready",
-    "global_macro_claim_ceiling": "seasonal stage-reporting coincidence, not verified predator-specific phase, predation rate or amphibian population dynamics"
+    "manuscript_version": "v0.3 working draft, original factorial developmental stage experiment added, not submission ready",
+    "global_macro_claim_ceiling": "seasonal stage-reporting coincidence, not verified predator-specific phase, predation rate or amphibian population dynamics",
+    "external_mechanistic_G2B": "controlled cue and artificial water-level factorial verified, but real field aquatic predation/drought reset G2 still blocked"
   },
   "source_inventory": "research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md",
   "source_inventory_script": "research/scripts/part2_published_source_g0.py"
