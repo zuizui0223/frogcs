@@ -12,7 +12,13 @@ DEFAULT = dict(community='FSD',roles=15,refuge_order='S',vegetation=0.,
 ENDPOINTS=['F_completed','S_completed','D_completed']
 
 
-def simulate(parameters,dt=.25,initial_cohorts=None):
+def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),size_gate=None):
+    durations=np.asarray(stage_durations,dtype=float)
+    if durations.shape!=(3,) or not np.isfinite(durations).all() or (durations<=0).any():
+        raise ValueError('Three finite positive aquatic durations required')
+    if size_gate is not None and (not np.isfinite(size_gate) or not 0<=size_gate<=1):
+        raise ValueError('Constant size gate must lie in [0,1]')
+    ft,st,dt_aquatic=durations
     if not np.isfinite(dt) or dt<=0 or abs(120/dt-round(120/dt))>1e-8:
         raise ValueError('dt must divide the 120-day observation period')
     for row in parameters:
@@ -26,7 +32,7 @@ def simulate(parameters,dt=.25,initial_cohorts=None):
     if ((p[numeric]<0).any().any() or (p.vegetation>1).any() or (p.water>120).any()
             or (p.roles>15).any() or (p.roles%1!=0).any()):raise ValueError('Out-of-range parameter')
     events=np.column_stack([p.f_arrival,p.s_arrival,p.d_arrival,p.water,
-                            p.f_arrival+45,p.s_arrival+70,p.d_arrival+60,p.d_arrival+65])
+                            p.f_arrival+ft,p.s_arrival+st,p.d_arrival+dt_aquatic,p.d_arrival+dt_aquatic+5])
     if not np.allclose(events/dt,np.round(events/dt),rtol=0,atol=1e-8):
         raise ValueError('Event times must align with integration grid')
     if (p[['f_arrival','s_arrival','d_arrival']]>120).any().any():raise ValueError('Arrival outside season')
@@ -57,10 +63,10 @@ def simulate(parameters,dt=.25,initial_cohorts=None):
         s+=np.isclose(t,sa,rtol=0,atol=1e-9)*sinit
         d+=np.isclose(t,dd,rtol=0,atol=1e-9)*dinit
         # Transitions at the boundary precede drying at the same time.
-        m=t>=fa+45;fp+=np.where(m,f,0);f=np.where(m,0,f)
-        m=t>=sa+70;sp+=np.where(m,s,0);s=np.where(m,0,s)
-        m=t>=dd+60;de+=np.where(m,d,0);d=np.where(m,0,d)
-        m=t>=dd+65;da+=np.where(m,de,0);de=np.where(m,0,de)
+        m=t>=fa+ft;fp+=np.where(m,f,0);f=np.where(m,0,f)
+        m=t>=sa+st;sp+=np.where(m,s,0);s=np.where(m,0,s)
+        m=t>=dd+dt_aquatic;de+=np.where(m,d,0);d=np.where(m,0,d)
+        m=t>=dd+dt_aquatic+5;da+=np.where(m,de,0);de=np.where(m,0,de)
         dry=t>=water
         for key,a in [('F_dry',f),('S_dry',s),('D_dry',d)]:death[key]+=np.where(dry,a,0)
         f=np.where(dry,0,f);s=np.where(dry,0,s);d=np.where(dry,0,d)
@@ -68,10 +74,14 @@ def simulate(parameters,dt=.25,initial_cohorts=None):
         fs=.15+.020*np.maximum(t-fa,0);ss=.15+.014*np.maximum(t-sa,0);ds=.15+.015*np.maximum(t-dd,0)
         # All hazards use the same start-of-step cohort state.
         suppressed=1/(1+cue*d)
-        hsf=.035*scale*s*sigmoid(8*(ss-fs))*sf_cover*suppressed
-        hdf=.025*scale*d*sigmoid(3*(ds-.5*fs))*df_cover
-        hds=.025*scale*d*sigmoid(8*(ds-ss))*ds_cover*intraguild
-        hsd=.020*scale*s*sigmoid(8*(ss-ds))*suppressed*reciprocal*intraguild
+        gsf=sigmoid(8*(ss-fs)) if size_gate is None else size_gate
+        gdf=sigmoid(3*(ds-.5*fs)) if size_gate is None else size_gate
+        gds=sigmoid(8*(ds-ss)) if size_gate is None else size_gate
+        gsd=sigmoid(8*(ss-ds)) if size_gate is None else size_gate
+        hsf=.035*scale*s*gsf*sf_cover*suppressed
+        hdf=.025*scale*d*gdf*df_cover
+        hds=.025*scale*d*gds*ds_cover*intraguild
+        hsd=.020*scale*s*gsd*suppressed*reciprocal*intraguild
         hfe=.060*scale*fp*np.exp(.4*stem)*reverse
         hfail=.100*np.exp(-.8*stem)
         hf=hsf+hdf;loss=f*(-np.expm1(-hf*dt))

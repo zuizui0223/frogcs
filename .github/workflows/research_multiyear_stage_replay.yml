@@ -5,6 +5,7 @@ on:
       - 'research/scripts/*multiyear_stage*'
       - 'research/scripts/stage_vegetation_network.py'
       - 'research/scripts/*source_gradient.py'
+      - 'research/scripts/*stage_timing.py'
       - 'research/results/multiyear_stage_network_20261026/**'
       - '.github/workflows/research_multiyear_stage_replay.yml'
   workflow_dispatch:
@@ -25,6 +26,7 @@ jobs:
       - run: python -m pip install numpy==2.2.6 pandas==2.3.3
       - run: python -m unittest discover -s research/scripts -p test_multiyear_stage_network.py
       - run: python -m unittest discover -s research/scripts -p test_source_gradient.py
+      - run: python -m unittest discover -s research/scripts -p test_stage_timing.py
       - run: python research/scripts/multiyear_stage_network.py --out /tmp/multiyear-replay
       - name: Compare every saved numerical table
         run: |

@@ -10,7 +10,7 @@ from stage_vegetation_network import DEFAULT, simulate
 DEMOGRAPHY=dict(survival=(.4,.5,0.),conversion=(4.,4.,4.),juvenile=(.8,.8,.8),
                 delays=(2,2,1),capacity=1.,initial_scale=1.)
 
-def simulate_years(scenarios,years=80,dt=.25,source_cohorts=None,**demography):
+def simulate_years(scenarios,years=80,dt=.25,source_cohorts=None,seasonal_options=None,**demography):
     if set(demography)-set(DEMOGRAPHY):raise ValueError('Unknown demography')
     cfg={**DEMOGRAPHY,**demography}
     if not isinstance(years,int) or years<1:raise ValueError('Positive integer years required')
@@ -40,7 +40,7 @@ def simulate_years(scenarios,years=80,dt=.25,source_cohorts=None,**demography):
     upper=np.maximum(B,(rho*b*K+immigrant)/(1-s))
     completed=[];frames=[]
     for year in range(years):
-        season=simulate(kernel,dt=dt,initial_cohorts=B)
+        season=simulate(kernel,dt=dt,initial_cohorts=B,**(seasonal_options or {}))
         C=season[[g+'_completed' for g in 'FSD']].to_numpy(float)
         completed.append(C)
         due=np.zeros_like(B)
