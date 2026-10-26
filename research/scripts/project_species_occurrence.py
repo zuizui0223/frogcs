@@ -136,6 +136,8 @@ def run(events,outdir):
         source_status=defaultdict(Counter)
         source_meta=defaultdict(Counter)
         stage_extra=defaultdict(int)
+        original_native_duplicate_extra=Counter()
+        source_status_conflicts=Counter()
         richness=defaultdict(lambda:{"assessed":0,"detected":0,"uncertain":0})
         site_month=defaultdict(lambda:{"assessed":0,"present":0,"nondetect":0,"unknown":0,"max_score":None})
         # A fixed event's source site/date/taxon must be preserved, never
@@ -149,6 +151,13 @@ def run(events,outdir):
                 src,eid,site,kind,dt,yr,mon,sp,method,npres,nabs,nunknown,rawrows,score,\
                 rain,depth,hydro,emergent,submerged,fish,management=row
                 st=status(npres,nabs,nunknown)
+                if src=="hungary_2024" and npres>0 and nabs>0:
+                    # Native visit ID appears twice with contradictory 0 vs >0
+                    # for the same species. Do not select a convenient status.
+                    st="unresolved"
+                    source_status_conflicts[src]+=1
+                if src=="hungary_2024" and rawrows>1:
+                    original_native_duplicate_extra[src]+=rawrows-1
                 if src.startswith("inbo_") and rawrows>1:stage_extra[src]+=rawrows-1
                 sem={
                   "nps_glkn":"species_scored_no_call_not_biological_absence",
@@ -204,6 +213,8 @@ def run(events,outdir):
           "source_records_before_stage_collapse":dict(orig),
           "n_distinct_event_taxon_method_records_by_source":{s:sum(source_method[s].values()) for s in source_method},
           "deduplicated_stage_rows_by_source":dict(stage_extra),
+          "duplicate_original_survey_species_rows_by_source":dict(original_native_duplicate_extra),
+          "contradictory_present_and_zero_within_original_survey_species_by_source":dict(source_status_conflicts),
           "n_observation_events_by_source":total_events,
           "distinct_original_source_site_tokens_by_source":{s:len(v) for s,v in source_sites.items()},
           "native_taxon_labels_count_by_source":{s:len(v) for s,v in source_taxa.items()},
