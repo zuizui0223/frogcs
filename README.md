@@ -1,4 +1,6 @@
-# frogcs — integrated amphibian community ecology (active research branch)
+# frogcs — integrated amphibian community ecology
+
+**Current result snapshot (2026-10-26):** [Macro-analysis results](research/FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md) · [Vegetation and three-guild associations](research/REMOTE_VEGETATION_NETWORK_REPORT_2026-10-26.md) · [Previous-year water and prior use](research/PRIOR_WATER_NETWORK_REPORT_2026-10-26.md) · [Evidence audit](research/RESEARCH_COMPLETION_AUDIT_2026-10-26.md). This snapshot preserves exploratory associations, all reported sensitivities and their interpretation limits. Landscape vegetation is not measured pond structure; modeled niches are not observed predator densities; calling activity is not breeding success. Historical plans and earlier prediction-focused analyses below remain provenance, not the current result summary.
 
 **This branch is the ongoing single-paper research workspace; the published-facing RC6 scientific package below remains preserved as a historical stand-alone candidate, not the current editorial submission plan.** The 2026-10-26 editorial decision defers immediate stand-alone submission while investigating whether a larger, single, evidence-backed amphibian wetland community paper is defensible. **No predation-mediated explanation has yet been established.**
 
