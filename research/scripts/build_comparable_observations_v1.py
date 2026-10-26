@@ -250,6 +250,13 @@ def main():
     print("BEGIN_COMPARABLE_DB_V1")
     print(json.dumps(q,ensure_ascii=False,indent=2))
     print("END_COMPARABLE_DB_V1")
+    # Anonymized/source-aggregated canonical data only. Print a bounded
+    # machine-readable attachment so an authenticated reviewer can check
+    # the exact persistent Git commit against this independent CI run.
+    print("BEGIN_COMPARABLE_DB_V1_CANONICAL_CSV")
+    print((args.out/"canonical_source_stage_month_aggregates.csv").read_text(
+        encoding="utf-8"))
+    print("END_COMPARABLE_DB_V1_CANONICAL_CSV")
 
 if __name__=="__main__":
     main()
