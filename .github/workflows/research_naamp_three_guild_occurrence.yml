@@ -1,0 +1,39 @@
+name: Research - occurrence-first NAAMP three-guild overlap
+on:
+  push:
+    branches: [research/naamp-prior-community-allocation-20261026]
+    paths:
+      - research/scripts/naamp_three_guild_occurrence.py
+      - research/scripts/test_naamp_three_guild_occurrence.py
+      - .github/workflows/research_naamp_three_guild_occurrence.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  patterns:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 statsmodels==0.14.6 rasterio==1.4.3
+      - uses: actions/cache@v4
+        with:
+          path: /tmp/three-guild-cache
+          key: naamp-three-guild-2001-2015-25km-v1
+      - run: python research/scripts/test_naamp_three_guild_occurrence.py
+      - name: Retrieve all-stage occurrences and compare recording neighborhoods
+        run: python -u research/scripts/naamp_three_guild_occurrence.py --cache /tmp/three-guild-cache --out /tmp/three-guild
+      - name: Preserve frozen analyses
+        run: git diff --exit-code -- paper submission provenance scripts/naamp exploration
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-three-guild-occurrence-patterns
+          path: /tmp/three-guild/
+          if-no-files-found: warn
