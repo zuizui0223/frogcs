@@ -140,6 +140,37 @@
           "random_seed": 20261026
         }
       },
+      "emergent_plant_partial_acoustic_rank_after_depth_rain_class_effort": {
+        "status": "DESCRIPTIVE_ADJUSTED_RANK_ASSOCIATION",
+        "n_independent_original_wetlands": 29,
+        "rank_residualized_pearson_r": 0.18157059648381513,
+        "fixed_nuisances": [
+          "measured_water_depth",
+          "mean_spring_source_precip",
+          "n_audio_visits",
+          "management"
+        ],
+        "note": "Postreadback descriptive partial rank; 29 single-year sites, no within-site plant changes or stem structure"
+      },
+      "emergent_static_cover_vs_first_observed_call_day": {
+        "description": "Static emergent percent vs first POSITIVELY RECORDED chorus survey day; not plant sprouting and not species first actual breeding date",
+        "n_site_or_siteyears": 19,
+        "independent_sites": 19,
+        "spearman_rho": -0.18430522923103618,
+        "statistic_is_exploratory_observational": true,
+        "status": "DESCRIPTIVE_ESTIMABLE",
+        "site_cluster_uncertainty": {
+          "estimable": true,
+          "source_site_groups": 19,
+          "conditional_site_bootstrap_valid_reps": 2000,
+          "conditional_site_bootstrap_CI95": [
+            -0.6733916116210282,
+            0.34426044239378173
+          ],
+          "random_seed": 20261026
+        }
+      },
+      "source_plant_phenophase_not_measured": true,
       "fish_x_emergent_shelter_effect_estimable": false,
       "fish_habitat_reason": "Only 2/29 field wetland sites have fish reported: site-level intervention is extremely sparse"
     },
@@ -324,7 +355,24 @@
             0.038251003255011774
           ],
           "random_seed": 20261026
-        }
+        },
+        "site_years_with_any_other_frog_chorus_reported": 6,
+        "effective_competition_hypothesis_estimable": false,
+        "scientific_decision": "SPARSE_EXPOSURE_ONLY_SIX_SITEYEARS_DO_NOT_CLAIM_ENEMY_RELEASE_CORRELATION",
+        "raw_rank_correlation_exploratory_diagnostic_only": true
+      },
+      "two_species_larval_first_positive_survey_date_phase_comparison": {
+        "same_original_location_years_with_both_positive_stage_records": 107,
+        "first_larva_positive_dates_equal_count": 107,
+        "first_larva_record_absolute_day_diff_median": 0,
+        "first_larva_record_abs_day_diff_iqr": [
+          0,
+          0
+        ],
+        "reported_within_7_days": 107,
+        "reported_within_30_days": 107,
+        "shared_protocol_survey_schedule_may_explain_date_overlap": true,
+        "actual_gosner_stage_size_or_cross_species_developmental_rate_measured": false
       },
       "documented_other_anuran_prior_chorus_richness_distribution": {
         "0": 239,
@@ -480,7 +528,7 @@
   "joint_physical_pond_egg_survival_predator_size_water_drying_dataset_qualified": false,
   "cross_study_effects_pooled_as_same_estimand": false,
   "interpretation_note": "Within-source co-reporting/rank correlations, not field trophic causation; local rain and vegetation observations are incomplete and not shared with NPS or NAAMP acoustic stops.",
-  "workflow_url": "https://github.com/zuizui0223/frogcs/actions/runs/40262570250",
-  "independent_CI_source_job_id": 121377885802,
-  "evidence_qualification": "Exploratory source-native correlations only, no GBIF locality co-exposure or stage feeding inference"
+  "workflow_url": "https://github.com/zuizui0223/frogcs/actions/runs/40263090203",
+  "independent_CI_source_job_id": 121379471680,
+  "evidence_qualification": "Source-native correlations; 107 of 107 first recorded Hyla/Caudata larval positive dates equal due same-survey schedule, not biological stage matching. Prior other-anuran call detected in only 6/245 Hyla site-years, competition contrast not estimable."
 }
