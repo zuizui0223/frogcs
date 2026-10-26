@@ -153,7 +153,7 @@ def read_inbo(tag):
                 assert eid not in events
                 events[eid]=(site,dt)
                 aliases[site].add((r.get("locality") or "").strip().lower())
-        observed=defaultdict(lambda:defaultdict(set))
+        observed=defaultdict(lambda:defaultdict(lambda:defaultdict(set)))
         conflicting=0
         for node in ext:
             rows=iter(part_rows(z,node))
@@ -199,10 +199,15 @@ def inbo():
         dic={}
         for (site,yr),events in src["states"][label].items():
             if site not in safe:continue
-            bad={k for k,ss in events.items() if len(ss)>1}
-            if bad:continue
-            pos=sorted(dt for (eid,dt),ss in events.items() if "present" in ss)
-            all_days=sorted(dt for eid,dt in events)
+            # Other-anuran/Caudata guilds naturally contain mixed species
+            # detections in one event; some species absent while others present
+            # is NOT a contradictory survey result. A guild is positive when
+            # at least one constituent taxon is explicitly present.
+            ambiguous=[(eid,dt) for (eid,dt),ss in events.items()
+                       if len(ss)>1 and label in ("hyla_adult_call","hyla_larva")]
+            valid={k:ss for k,ss in events.items() if k not in ambiguous}
+            pos=sorted(dt for (eid,dt),ss in valid.items() if "present" in ss)
+            all_days=sorted(dt for eid,dt in valid)
             dic[(site,yr)]={"positives":pos,"sampled":all_days}
         available[label]=dic
     head=available["hyla_adult_call"]
