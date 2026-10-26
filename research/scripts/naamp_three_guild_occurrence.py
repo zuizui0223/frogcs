@@ -1,7 +1,7 @@
 """Occurrence-first NAAMP-centered pilot; recording neighborhoods are NOT ponds."""
 import argparse, csv, gzip, hashlib, io, itertools, json, math
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlencode
 import numpy as np
@@ -55,17 +55,24 @@ def fetch_occurrences(sample,client,out):
                         year='2001,2015',occurrenceStatus='PRESENT',taxonKey=geo.TAXA[guild],
                         decimalLatitude=f'{lat-dlat:.6f},{lat+dlat:.6f}',decimalLongitude=f'{lon-dlon:.6f},{lon+dlon:.6f}')
             query=dict(center=center,guild=guild,status='INCOMPLETE',pages=0,total_bbox=None)
+            qa=Counter()
             try:
                 for page in range(20):
                     obj=client.get(geo.GBIF+'?'+urlencode({**params,'offset':300*page}))
                     if not isinstance(obj.get('results'),list) or not isinstance(obj.get('count'),int):raise ValueError('GBIF schema')
                     query.update(pages=page+1,total_bbox=obj['count'])
                     for r in obj['results']:
+                        qa['bbox_rows_read']+=1
                         try:
                             dist=geo.hav(lat,lon,float(r['decimalLatitude']),float(r['decimalLongitude']))
-                            key=str(r['key']);year=int(r['year']);month=int(r['month'])
-                        except (KeyError,ValueError,TypeError):continue
-                        if dist>25 or not 2001<=year<=2015 or not 1<=month<=12 or not r.get('speciesKey') or not r.get('species'):continue
+                            key=str(r['key']);year=int(r['year'])
+                        except (KeyError,ValueError,TypeError):qa['invalid_coordinate_id_year']+=1;continue
+                        try:month=int(r['month'])
+                        except (KeyError,ValueError,TypeError):month=None
+                        if month is not None and not 1<=month<=12:month=None
+                        if dist>25:qa['outside_circle']+=1;continue
+                        if not 2001<=year<=2015:qa['invalid_year']+=1;continue
+                        if not r.get('speciesKey') or not r.get('species'):qa['unresolved_species']+=1;continue
                         rec=dict(id=key,guild=guild,species=r['species'],species_key=str(r['speciesKey']),
                                  year=year,month=month,stage_raw=r.get('lifeStage') or '',dataset=r.get('datasetKey'),
                                  quality=quality(r),uncertainty=r.get('coordinateUncertaintyInMeters'))
@@ -75,7 +82,7 @@ def fetch_occurrences(sample,client,out):
                         query['status']='COMPLETE';break
                 if query['status']!='COMPLETE':query['status']='PAGE_CAP'
             except Exception as exc:query['status']='ERROR';query['error']=str(exc)[:250]
-            queries.append(query)
+            query['row_screen_counts']=dict(qa);queries.append(query)
         print('GBIF center complete',i+1,'unique records',len(records),flush=True)
     writecsv(out/'occurrences.csv.gz',list(records.values()))
     writecsv(out/'neighborhood_membership.csv.gz',list(members.values()))
@@ -114,7 +121,8 @@ def summaries(records,members,queries,env):
             if accuracy=='strict' and r['quality']!='strict':continue
             rows.append({**r,'center':m['center']})
         sets={g:set(r['center'] for r in rows if r['guild']==g) for g in GUILDS}
-        cubes={g:set((r['center'],r['year'],r['month']) for r in rows if r['guild']==g) for g in GUILDS}
+        annual={g:set((r['center'],r['year']) for r in rows if r['guild']==g) for g in GUILDS}
+        cubes={g:set((r['center'],r['year'],r['month']) for r in rows if r['guild']==g and r['month'] is not None) for g in GUILDS}
         pairs=[]
         for a,b in itertools.combinations(GUILDS,2):
             seasonal=[];hab=[]
@@ -126,19 +134,51 @@ def summaries(records,members,queries,env):
                     code=tuple(int(np.digitize(v,[1,10,30,60])) for v in env[c]);bins[code]+=1
                 hab.append(bins)
             keys=sorted(set(hab[0])|set(hab[1]))
+            common_years={x[:2] for x in cubes[a]}&{x[:2] for x in cubes[b]}
+            within=[]
+            for cy in common_years:
+                ma={x[2] for x in cubes[a] if x[:2]==cy};mb={x[2] for x in cubes[b] if x[:2]==cy}
+                within.append(schoener([int(m in ma) for m in range(1,13)],[int(m in mb) for m in range(1,13)]))
             pairs.append(dict(guild_a=a,guild_b=b,neighborhood=overlap(sets[a],sets[b]),
-                         neighborhood_year=overlap({x[:2] for x in cubes[a]},{x[:2] for x in cubes[b]}),
+                         neighborhood_year=overlap(annual[a],annual[b]),
                          neighborhood_year_month=overlap(cubes[a],cubes[b]),
                          seasonal_schoener_D=schoener(*seasonal),
-                         background_environment_schoener_D=schoener(*[[v[k] for k in keys] for v in hab])))
+                         jointly_recorded_center_years=len(within),
+                         mean_within_center_year_month_overlap=float(np.mean(within)) if within else None,
+                         background_environment_schoener_D=schoener(*[[v[k] for k in keys] for v in hab]),
+                         occupied_environment_bins=[len(h) for h in hab]))
         results.append(dict(radius_km=radius,accuracy=accuracy,complete_centers=len(complete),
             unique_occurrences=len({r['id'] for r in rows}),memberships=len(rows),
             guild_counts={g:dict(unique_occurrences=len({r['id'] for r in rows if r['guild']==g}),
                 species=len({r['species_key'] for r in rows if r['guild']==g}),centers=len(sets[g]),
                 datasets=len({r['dataset'] for r in rows if r['guild']==g and r['dataset']}),
+                unknown_month_unique_occurrences=len({r['id'] for r in rows if r['guild']==g and r['month'] is None}),
                 unlabelled_stage_unique_occurrences=len({r['id'] for r in rows if r['guild']==g and not r['stage_raw']})) for g in GUILDS},
             three_guild_centers=len(set.intersection(*sets.values())),three_guild_center_year_months=len(set.intersection(*cubes.values())),pairs=pairs))
     return results
+
+def overlay_occurrences(records,members,queries,rows,radius=25):
+    """Record support, not absence/exposure: same center-period and strictly prior years."""
+    complete={q['center'] for q in queries if all(z['status']=='COMPLETE' for z in queries if z['center']==q['center'])}
+    monthly=defaultdict(set);annual=defaultdict(set);names=defaultdict(set)
+    for m in members:
+        r=records[m['id']]
+        if m['center'] not in complete or m['distance_km']>radius or r['quality']!='strict':continue
+        annual[(m['center'],r['year'],r['guild'])].add(r['species_key'])
+        if r['month'] is not None:
+            monthly[(m['center'],r['year'],r['month'],r['guild'])].add(r['species_key'])
+            names[(m['center'],r['year'],r['month'])].add(r['species'])
+    out=[]
+    for row in rows:
+        r=dict(row);c=r['site'];y=int(r['year']);month=int(r['month']);valid=c in complete
+        r['gbif_complete_neighborhood']=valid
+        for g in GUILDS:
+            r[g+'_same_month_recorded_species']=len(monthly[(c,y,month,g)]) if valid else None
+            prior=set().union(*(annual[(c,yy,g)] for yy in range(2001,y)))
+            r[g+'_prior_years_recorded_species']=len(prior) if valid else None
+        r['same_month_exact_name_naamp_gbif_matches']=len(set(r['source_taxa'].split('|'))&names[(c,y,month)]) if valid else None
+        out.append(r)
+    return out
 
 def naamp_history(sample,env,cache,out):
     base=loadmod('occurrence_naamp_base',ROOT/'scripts/naamp/run_naamp_ecological_pulse.py')
@@ -165,7 +205,8 @@ def naamp_history(sample,env,cache,out):
         key=(rid,sid)
         if key in seen:raise ValueError('Duplicate completed site survey')
         seen.add(key);m=metadata[rid];ci=counts[(rid,st)]
-        rows.append(dict(run=token(rid),route=token(m.route_cluster),site=centers[sid],year=int(m.SurveyYear),
+        date=(datetime(int(m.SurveyYear),1,1)+timedelta(days=int(m.doy)-1)).date()
+        rows.append(dict(run=token(rid),route=token(m.route_cluster),site=centers[sid],year=int(m.SurveyYear),date=date.isoformat(),month=date.month,doy=int(m.doy),
                          season=str(m.RunNumber),any=int(ci>=1),strong=int(ci>=2),env=env[centers[sid]],
                          source_taxa=sorted(taxa[(rid,st)])))
     bysite=defaultdict(list)
@@ -192,7 +233,17 @@ def main():
     writecsv(a.out/'center_environment.csv',rows)
     result=dict(date_utc=datetime.now(timezone.utc).isoformat(),source_geometry=geometry,query_status=dict(Counter(q['status'] for q in queries)),
                 retrieval=dict(client.audit),environment_receipts=receipts,overlap=summaries(records,members,queries,env))
-    try:result['naamp_history']=naamp_history(sample,env,a.cache,a.out)
+    result['environment_diagnostics']=dict(centers=len(env),both_zero_centers=sum(v==[0,0] for v in env.values()),distinct_value_pairs=len({tuple(v) for v in env.values()}),
+        assignment='landcover at listening center, not GBIF organism location or breeding pond')
+    try:
+        result['naamp_history']=naamp_history(sample,env,a.cache,a.out)
+        with gzip.open(a.out/'naamp_completed_site_surveys.csv.gz','rt',encoding='utf8') as f:visits=list(csv.DictReader(f))
+        joined=overlay_occurrences(records,members,queries,visits)
+        writecsv(a.out/'naamp_gbif_center_month_overlay.csv.gz',joined)
+        result['record_overlay']=dict(rows=len(joined),same_month_support_visits={g:sum((r[g+'_same_month_recorded_species'] or 0)>0 for r in joined) for g in GUILDS},
+           exact_name_naamp_gbif_match_visits=sum((r['same_month_exact_name_naamp_gbif_matches'] or 0)>0 for r in joined),
+           spatial_scope_km=25,temporal_scope='same calendar month/year, not necessarily same date',
+           zero_means='no retrieved record under specified filters, NOT biological absence')
     except Exception as exc:result['naamp_history']={'status':'FAILED','error':str(exc)}
     result['status']='COMPLETE_BOUNDED_PILOT' if all(q['status']=='COMPLETE' for q in queries) and result['naamp_history'].get('status')!='FAILED' else 'INCOMPLETE_EXPLICIT_GAPS'
     result['limits']=['not verified ponds','no biological absences','overlapping circles not independent','no availability-corrected niche or causal competition',
