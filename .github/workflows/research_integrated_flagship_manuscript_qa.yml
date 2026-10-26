@@ -1,0 +1,39 @@
+name: Research — integrated flagship manuscript evidence QA
+
+on:
+  push:
+    branches:
+      - integration/stage-legacy-unified-2026-10-25
+    paths:
+      - research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md
+      - research/scripts/validate_integrated_flagship_draft.py
+      - research/STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json
+      - .github/workflows/research_integrated_flagship_manuscript_qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manuscript-evidence-and-release-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fail if frozen RC6 files were changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git diff --name-only origin/main...HEAD > /tmp/frogcs_branch_paths.txt
+          if grep -E '^(paper/|submission/|provenance/|scripts/naamp/|figures_pulse_template/)' /tmp/frogcs_branch_paths.txt; then
+            echo "::error::RC6 scientific/submission files modified in integration branch"
+            exit 1
+          fi
+          echo "PASS: all frozen RC6 scientific and submission paths unchanged"
+      - name: Verify Python
+        run: python3 -m py_compile research/scripts/validate_integrated_flagship_draft.py
+      - name: Verify all measured and unsupported claims
+        run: python3 research/scripts/validate_integrated_flagship_draft.py
