@@ -7,6 +7,23 @@ archived RC6 manuscript or treat the older integrated draft's prediction criteri
 
 ## 論文の主筋
 
+**焦点生物は一貫してカエルとする。** 三群を同じ重みで説明する群集全体の論文ではなく、
+鳴き声の集中というカエルの繁殖活動を起点に、トンボとの関連を第三者の有尾類と植生の文脈へ
+順に置き直す。面白さは単なる捕食関係の存在ではなく、二者関係が第三者で変わり、さらに
+その変わり方が生息場所の条件に依存し得る、という階層にある。
+
+| 階層 | カエルを中心とする問い | 実測の支え | シミュレーションの役割 |
+|---|---|---|---|
+| 二者の関連 | トンボに適した環境でカエルは強く鳴くか | 全域で弱い負の関連 | D→Fの直接経路を基準にする |
+| 第三者による条件差 | その関連は有尾類にも適した環境で変わるか | 高有尾類適合度の地点でより強い負の関連 | Sを除く／加える対応比較で直接・間接経路を分ける |
+| 環境による関係の変化 | 植生は二者の関連と第三者による条件差に関わるか | O×Vは負、S×Vは正の成分。O×S×Vは正の推定だが背景・尺度依存 | 植生経路を個別に切替え、第三者効果の変化を比較する |
+| 時間的な成立条件 | これらの経路はどの段階の重なりで作用するか | 現地での段階別相互作用は未観測 | 到着・変態・羽化と経路除去で作用するコホートを限定する |
+
+第3階層について、O×VとS×Vの符号差だけでは「第三者効果が植生で変わった」とは言えない。
+後者に直接対応する統計項はO×S×Vであり、その不確実性を本文に残す。
+「生物間相互作用の階層を実証した」ではなく、「階層的な条件付き関連を記述し、その機構を検討した」
+という主張にする。段階は説明の時間軸で、実測の新たな階層を発見したとは扱わない。
+
 出発点は、繁殖活動を示す強い鳴き声が繰り返し記録される場所の特徴である。
 4,248音響地点で見られたトンボ類適合度との弱い負の関連は、池性有尾類に適した地点で強い。
 さらに冠水植生との交互作用にはトンボ類で負、有尾類で正の成分がある。
@@ -19,6 +36,13 @@ archived RC6 manuscript or treat the older integrated draft's prediction criteri
 水面・過去利用は背景の補助結果として残すが、植生との交互作用モデルがそれらをすべて調整したとは書かない。
 
 ## 1. Main empirical finding: conditional association rather than a uniform habitat response
+
+Our focal response is frog breeding activity. We use odonates as the initial ecological comparison,
+urodeles as a potential third-party context, and vegetation as a possible modifier of those relationships.
+This hierarchy organizes the interpretation of conditional associations; it is not a causal sequence
+identified by successively adding statistical terms. A habitat-dependent third-party association is
+specifically addressed by the three-way term, whose uncertainty remains greater than that of the
+whole-area odonate-by-vegetation term.
 
 Repeated strong calling was associated with the environmental suitability of other aquatic animal groups,
 but the association depended on community and landscape context. Across 4,248 acoustic sites, the weak
