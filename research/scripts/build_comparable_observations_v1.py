@@ -158,9 +158,11 @@ def finalize(group,registry):
         source,year,month,taxon,stage,method=k
         require(source in lookup,"Source not registered")
         both=g["presence_events"]&g["absent_events"]
-        require(not both,"Conflicting positive/absent same source-event-taxon-stage")
-        present=g["presence_events"]
-        absent=g["absent_events"]
+        # Duplicate source occurrence rows can report opposite states for
+        # the same taxon×stage×survey. Quarantine those AS AMBIGUOUS rather
+        # than treating them as positive, negative, or dropping the source.
+        present=g["presence_events"]-both
+        absent=g["absent_events"]-both
         any_unknown=g["unassessed_events"]
         row={
             "source_id":source,
@@ -172,6 +174,7 @@ def finalize(group,registry):
             "present_report_events":len(present),
             "explicit_non_detected_report_events":len(absent),
             "unassessed_or_unknown_report_events":len(any_unknown),
+            "ambiguous_both_present_and_absent_source_events":len(both),
             "distinct_original_source_locations":len(g["sites"]),
             "rain_event_covariate_n":len(g["rain_values"]),
             "rain_event_sampled_mean":(sum(g["rain_values"].values())/len(g["rain_values"])
@@ -231,6 +234,7 @@ def main():
        "data_sources_in_registry":len(reg["source_modules"]),
        "source_files_ingested_as_original_records":3,
        "monthly_taxon_stage_aggregate_rows":len(rows),
+       "conflicting_same_event_source_status_total":sum(r["ambiguous_both_present_and_absent_source_events"] for r in rows),
        "observed_sources":bysource,
        "source_immutable_originals":True,
        "roadside_stop_never_treated_as_an_INBO_pond":True,
