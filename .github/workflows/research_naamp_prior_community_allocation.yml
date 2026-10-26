@@ -1,0 +1,36 @@
+name: Research - NAAMP prior community conditional allocation
+on:
+  push:
+    branches: [research/naamp-prior-community-allocation-20261026]
+    paths:
+      - research/scripts/naamp_prior_community_allocation.py
+      - research/scripts/test_naamp_prior_community_allocation.py
+      - research/NAAMP_PRIOR_COMMUNITY_ALLOCATION_CONTRACT_2026-10-26.md
+      - .github/workflows/research_naamp_prior_community_allocation.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  allocation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 statsmodels==0.14.6 patsy==1.0.2
+      - run: python research/scripts/test_naamp_prior_community_allocation.py
+      - name: Hash-validated original NAAMP, frozen paired cohort, route heldout comparison
+        run: python -u research/scripts/naamp_prior_community_allocation.py --cache /tmp/naamp-source --out /tmp/allocation/observed_results.json
+      - name: Verify original tracked scientific outputs unchanged
+        run: git diff --exit-code -- paper submission provenance scripts/naamp exploration
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: naamp-prior-community-allocation
+          path: /tmp/allocation/
+          if-no-files-found: warn
