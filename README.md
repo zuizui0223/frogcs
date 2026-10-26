@@ -1,3 +1,17 @@
+# frogcs — integrated amphibian community ecology (active research branch)
+
+**This branch is the ongoing single-paper research workspace; the published-facing RC6 scientific package below remains preserved as a historical stand-alone candidate, not the current editorial submission plan.** The 2026-10-26 editorial decision defers immediate stand-alone submission while investigating whether a larger, single, evidence-backed amphibian wetland community paper is defensible. **No predation-mediated explanation has yet been established.**
+
+**Start here:** [working integrated manuscript v0.2](research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md) · [dated one-paper editorial decision](research/INTEGRATED_PAPER_DECISION_2026-10-26.md) · [scientific integration contract](research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md) · [data eligibility and experiment gates](research/STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json) · [research index](research/README.md).
+
+**Measured evidence so far:** NAAMP RC6 rain-associated acoustic spatial concentration excess **+0.2969**; independent NPS previous-year green-frog→wood-frog acoustic suppression **not supported**; INBO exact-site *Hyla arborea* adult-to-larval reporting association shows a small site-heldout gain but **adverse future-year transfer**; global GloBI × GBIF stages exhibit broad seasonal co-reporting, while stage/guild-matched predator-prey-specific phase excess is **not robust**. Same-pond measured predator stage × prey survival × wet/dry history remains the primary missing mechanism.
+
+**Scientific safeguard:** the RC6 manuscript, SI, frozen provenance, analysis scripts and release branches remain unchanged. This branch-level README note does not alter the original paper files or claim that the stand-alone RC6 manuscript has been submitted or withdrawn.
+
+---
+
+## Archived RC6 scientific and submission candidate (unchanged below)
+
 # frogcs — RC6 frog chorus analysis
 
 ## Current paper
