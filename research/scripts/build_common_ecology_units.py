@@ -157,7 +157,7 @@ def load_hungary(sink):
             check(method in ("acoustic","visual","dipnet","bottletrap"),"Unknown survey method")
             sink.emit({
               "source_id":"hungary_2024","site_token":srcid,"site_type":"field_wetland",
-              "location_verification":"source_measured_field_site","source_event_token":hashed("HUNevent",row["surv"]+"|"+taxon),
+              "location_verification":"source_measured_field_site","source_event_token":hashed("HUNevent",row["surv"]),
               "date":str(ds),"year":ds.year,"month":ds.month,"day_of_year":ds.timetuple().tm_yday,
               "taxon":taxon,"stage":stage("",method),"survey_method":method,
               "status":"recorded_present" if qty>0 else "recorded_absent",
@@ -263,7 +263,7 @@ def load_nps(sink):
           "source_id":"nps_glkn","site_token":hashed("NPS_STATION",str(row.ParkCode)+"|"+str(row.SiteLocation)),
           "site_type":"acoustic_recorder_station_not_pond",
           "location_verification":"original_NPS_recorder_station_ID",
-          "source_event_token":hashed("NPS_soundfile",str(row.ParkCode)+"|"+str(row.FileName)+"|"+str(row.ScientificName)),
+          "source_event_token":hashed("NPS_soundfile",str(row.ParkCode)+"|"+str(row.SiteLocation)+"|"+str(row.FileName)),
           "date":str(dt),"year":dt.year,"month":dt.month,"day_of_year":dt.timetuple().tm_yday,
           "taxon":str(row.ScientificName),"stage":"adult_acoustic",
           "survey_method":"manual_audio",
@@ -349,7 +349,7 @@ def load_naamp(sink):
           "source_id":"naamp_positive_calls","site_token":token,
           "site_type":"roadside_acoustic_listening_stop_not_pond",
           "location_verification":"source_siteID_only_not_independently_repaired",
-          "source_event_token":hashed("NAAMP_RUN_STOP_SP",rid+"|"+stop+"|"+species),
+          "source_event_token":hashed("NAAMP_RUN_STOP",rid+"|"+stop),
           "date":str(day),"year":day.year,"month":day.month,
           "day_of_year":day.timetuple().tm_yday,
           "taxon":"NAAMP_CODE:"+species,"stage":"adult_acoustic",
