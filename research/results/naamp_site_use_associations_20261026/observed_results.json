@@ -1,0 +1,31 @@
+{
+  "input_rows": 74317,
+  "valid_completed_rows": 73211,
+  "all_sites": 7609,
+  "primary_before_join": 4248,
+  "primary_complete_sites": 4248,
+  "primary_routes": 432,
+  "valid_year_range": [
+    2001,
+    2015
+  ],
+  "primary_use_classes": {
+    "intermediate": 2330,
+    "high": 1249,
+    "low": 669
+  },
+  "missing_feature_join_sites": 0,
+  "physical_sites_with_multiple_route_labels": 10,
+  "route_labels_before": 748,
+  "route_components_after": 747,
+  "rows_sharing_site_date_season": 848,
+  "bootstrap_replicates": 1000,
+  "source_survey_sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+  "estimand": "Association of calling-use frequency and recurring-year use with saved environmental/SDM characteristics",
+  "limitations": [
+    "Acoustic locations are not delineated ponds; calling is not breeding success",
+    "Rank associations are descriptive, not causal preference or competition",
+    "Bootstrap does not propagate SDM fitting uncertainty; no multiplicity correction",
+    "Existing SDM pool contains 28 modeled interaction-associated species, not total regional diversity"
+  ]
+}
