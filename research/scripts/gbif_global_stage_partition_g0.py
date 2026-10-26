@@ -54,7 +54,13 @@ def main():
     names=sorted({unquote(s[len(PREFIX):].split("/")[0]).replace("taxonpartition=","")
                   for s in collected if s and s.startswith(PREFIX)})
     if not names:raise ValueError("No GBIF experimental partitions discovered")
-    chosen=[v for v in names if any(t in v for t in TOKENS) or v in FALLBACK]
+    chosen=[v for v in names if any(t in v for t in TOKENS) or v in FALLBACK
+            or v.endswith("_Amphibia__PARTIAL")
+            or v.endswith("_Amphibia")
+            or v.endswith("_Insecta__PARTIAL")
+            or v.endswith("_Insecta_Diptera")
+            or "_Insecta_Diptera_" in v
+            or v.endswith("_Insecta_Ephemeroptera")]
     # Some orders are directly order-partitioned and have no family suffix.
     chosen+= [v for v in names if v.endswith("_Amphibia_Caudata") or
               v.endswith("_Insecta_Ephemeroptera") or
@@ -77,6 +83,7 @@ def main():
         "source_prefix":"s3://gbif-public-data/"+PREFIX,
         "source_doi":"10.15468/dl.8yrbe7",
         "source_s3_partition_count":len(names),
+        "source_partition_names":names,
         "source_guild_partition_names":chosen,
         "by_partition":group,
         "diptera_chironomidae_family_filter_must_be_source_verified":
