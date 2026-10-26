@@ -1,0 +1,39 @@
+name: Research - broad species SDM pilot
+on:
+  push:
+    branches: [research/naamp-prior-community-allocation-20261026]
+    paths:
+      - research/scripts/broad_species_sdm.py
+      - research/scripts/test_broad_species_sdm.py
+      - .github/workflows/research_broad_species_sdm.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sdm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.6.1 statsmodels==0.14.6 rasterio==1.4.3
+      - uses: actions/cache@v4
+        with:
+          path: /tmp/broad-sdm-cache
+          key: broad-species-sdm-1980-2015-v1
+      - run: python research/scripts/test_broad_species_sdm.py
+      - name: Expand occurrences, validate species models, project to NAAMP
+        run: python -u research/scripts/broad_species_sdm.py --cache /tmp/broad-sdm-cache --out /tmp/broad-sdm --project-naamp
+      - name: Preserve frozen analyses
+        run: git diff --exit-code -- paper submission provenance scripts/naamp exploration
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: broad-species-sdm-pilot
+          path: /tmp/broad-sdm/
+          if-no-files-found: warn
