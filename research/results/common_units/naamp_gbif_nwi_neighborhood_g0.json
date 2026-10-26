@@ -1,0 +1,118 @@
+{
+  "source_geographic_integrity": {
+    "original_rows": 12064,
+    "raw_site_row_issues": {
+      "outside_contiguous_us_including_positive_longitude": 1
+    },
+    "candidate_distinct_route_labels": 1183,
+    "source_geometry_eligible_routes": 1170,
+    "geometry_rejected_routes": {
+      "source_geometry_gt40km_max_interstop_distance": 10,
+      "fewer_than_8_unique_site_ids": 3
+    },
+    "selected_source_routes": 24,
+    "selected_source_stops": 48,
+    "coordinates_original_sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "source_coordinate_errors_manually_repaired": false,
+    "source_route_night_phenotype_used": false,
+    "site_selection": "sha256 deterministic 24 source route IDs, within each first+last sorted SiteID; 40km max interstop geometry gate independent of biology"
+  },
+  "GBIF_recording_coverage": {
+    "Anura": {
+      "source_queries": 48,
+      "successful": 17,
+      "errors": {
+        "HTTPError: HTTP Error 429: Too Many Requests": 31
+      },
+      "source_bbox_total_reported_sum": 8,
+      "searches_exhaustive": 17,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 2,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 0,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 0,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "sample_complete_for_absence": false,
+      "reporting_only": true
+    },
+    "Caudata": {
+      "source_queries": 48,
+      "successful": 29,
+      "errors": {
+        "HTTPError: HTTP Error 429: Too Many Requests": 19
+      },
+      "source_bbox_total_reported_sum": 12,
+      "searches_exhaustive": 29,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 1,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 1,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 1,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "sample_complete_for_absence": false,
+      "reporting_only": true
+    },
+    "Odonata": {
+      "source_queries": 48,
+      "successful": 23,
+      "errors": {
+        "HTTPError: HTTP Error 429: Too Many Requests": 25
+      },
+      "source_bbox_total_reported_sum": 29,
+      "searches_exhaustive": 23,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 3,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 0,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 0,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "sample_complete_for_absence": false,
+      "reporting_only": true
+    },
+    "all_taxa_background": {
+      "source_queries": 48,
+      "successful": 26,
+      "errors": {
+        "HTTPError: HTTP Error 429: Too Many Requests": 22
+      },
+      "source_bbox_total_reported_sum": 46441,
+      "searches_exhaustive": 18,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 5,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 0,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 0,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "sample_complete_for_absence": false,
+      "reporting_only": true
+    }
+  },
+  "NWI_original_recorder_point_QA": {
+    "queries": 48,
+    "successes": 48,
+    "errors": {},
+    "recorder_points_intersect_any_NWI_polygon": 9,
+    "recorder_points_intersect_PEM_polygon": 0,
+    "cowardin_code_instances": {
+      "PFO3A": 1,
+      "PFO2/EM5C": 1,
+      "PSS1D": 2,
+      "PFO1/3B": 1,
+      "PSS1E": 1,
+      "PFO1C": 1,
+      "PUBFb": 1,
+      "PSS1/EM1C": 1
+    },
+    "NWI_point_not_actual_breeding_wetland": true
+  },
+  "stage_proxy_source_coverage_gate_eligible": false,
+  "same_physical_breeding_pond_verified": false,
+  "source_pond_predator_or_competitor_abundance_observed": false,
+  "rain_source_at_site_or_real_pond_water_level_loaded": false,
+  "emergent_vegetation_cover_or_stem_density_measured_at_site": false,
+  "original_2026_research_sampled_NAAMP_chorus_values_read": false,
+  "GBIF_counts_are_species_recording_effort_not_predator_or_competition_intensity": true,
+  "biological_predation_or_facilitation_claim_permitted": false,
+  "source_rows_redistributed": false,
+  "status": "SOURCE_BLIND_G0_ACOUSTIC_STOP_NEIGHBORHOOD_NOT_VERIFIED_POND",
+  "protocol": "research/CHORUS_SITE_ENV_ENEMY_STAGE_GBIF_HYPOTHESES_2026-10-26.md",
+  "sensitivity_boundary": "GBIF 2010–2015 georeferenced presence reports within up to 5 km of acoustic points are neither co-occurring pond-level animals nor source-verified stage encounters.",
+  "source_audit_run": "https://github.com/zuizui0223/frogcs/actions/runs/40261164561",
+  "conclusion": "FAILED_ELIGIBILITY_NOT_FAILED_ACTION: GBIF stage-precision overlaps insufficient and HTTP429 censored requests; NWI recorder point not a pond. Do not treat no reports as absence."
+}
