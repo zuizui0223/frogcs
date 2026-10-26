@@ -44,6 +44,48 @@ def matched_history(rows):
                         chosen_prior=chosen['prior'],silent_prior=silent['prior']))
     return out
 
+def matched_history_all(rows):
+    """Disjoint greedy matches within a run, using environment only, never prior outcomes."""
+    by=defaultdict(list);out=[]
+    for r in rows:
+        if r['prior_n']<2 or r.get('timeout')!=0 or r.get('noise') is None or r.get('air') is None or any(v is None for v in r['env']):continue
+        by[r['run']].append(r)
+    for run,rs in by.items():
+        candidates=[]
+        for a in rs:
+            if not a['strong']:continue
+            for b in rs:
+                if b['any'] or a['noise']!=b['noise'] or abs(a['air']-b['air'])>2:continue
+                diff=[abs(x-y) for x,y in zip(a['env'],b['env'])]
+                if max(diff)>10:continue
+                candidates.append((sum(diff)/10+abs(a['air']-b['air'])/2,a['site'],b['site'],a,b))
+        used=set()
+        for score,sa,sb,a,b in sorted(candidates,key=lambda x:x[:3]):
+            if sa in used or sb in used:continue
+            used.update([sa,sb]);out.append(dict(run=run,route=a['route'],chosen_site=sa,silent_site=sb,
+                history_difference=a['prior']-b['prior'],chosen_prior=a['prior'],silent_prior=b['prior'],matching_distance=score))
+    return out
+
+def all_geometry():
+    b=geo.get_bytes(geo.COORD_URL)
+    if hashlib.sha256(b).hexdigest()!=geo.COORD_SHA:raise ValueError('coordinate drift')
+    groups=defaultdict(dict);bad=set()
+    for r in csv.DictReader(io.StringIO(b.decode('utf-8-sig'))):
+        try:lat,lon=float(r['lat']),float(r['lon'])
+        except (ValueError,TypeError):continue
+        sid=r['SiteID'].strip();rt=r['RouteNumber'].strip()
+        if not sid or not rt or not 24<=lat<=50 or not -125<=lon<=-66:continue
+        if sid in groups[rt] and groups[rt][sid]!=(lat,lon):bad.add(rt)
+        groups[rt][sid]=(lat,lon)
+    out=[]
+    for rt,points in groups.items():
+        if rt in bad or len(points)<8:continue
+        coords=list(points.values())
+        if max(geo.hav(*a,*b) for i,a in enumerate(coords) for b in coords[i+1:])>40:continue
+        out.extend((rt,sid,*xy) for sid,xy in points.items())
+    if len({r[1] for r in out})!=len(out):raise ValueError('SiteID occurs in multiple geometry routes')
+    return out
+
 def token(text):return hashlib.sha256(str(text).encode()).hexdigest()[:16]
 
 def fetch_occurrences(sample,client,out):
@@ -101,7 +143,10 @@ def environments(sample,cache):
     values={token(s):[] for _,s,_,_ in sample};receipts={}
     for cls in (8,12):
         path=cache/f'earthenv_{cls}.tif'
-        receipt=env.get(env.BASE+str(cls)+'.tif',path)
+        if path.exists():
+            receipt=dict(pins[str(cls)]);receipt['reused_hash_verified_local_file']=True
+            if hashlib.sha256(path.read_bytes()).hexdigest()!=receipt['sha256']:raise ValueError('Cached EarthEnv drift')
+        else:receipt=env.get(env.BASE+str(cls)+'.tif',path)
         if receipt['sha256']!=pins[str(cls)]['sha256']:raise ValueError('EarthEnv source hash drift')
         receipts[str(cls)]=receipt
         with rasterio.open(path) as src:
@@ -180,7 +225,7 @@ def overlay_occurrences(records,members,queries,rows,radius=25):
         out.append(r)
     return out
 
-def naamp_history(sample,env,cache,out):
+def naamp_history(sample,env,cache,out,full=False):
     base=loadmod('occurrence_naamp_base',ROOT/'scripts/naamp/run_naamp_ecological_pulse.py')
     raw={};item=None
     for name,sha in base.PINS.items():
@@ -206,21 +251,38 @@ def naamp_history(sample,env,cache,out):
         if key in seen:raise ValueError('Duplicate completed site survey')
         seen.add(key);m=metadata[rid];ci=counts[(rid,st)]
         date=(datetime(int(m.SurveyYear),1,1)+timedelta(days=int(m.doy)-1)).date()
-        rows.append(dict(run=token(rid),route=token(m.route_cluster),site=centers[sid],year=int(m.SurveyYear),date=date.isoformat(),month=date.month,doy=int(m.doy),
+        def num(value):
+            try:v=float(value);return v if math.isfinite(v) else None
+            except (ValueError,TypeError):return None
+        air=num(r.get('AirTemp'));mass=num(r.get('MassNoiseIndex'));noise=num(r.get('Noise'));timeout=num(r.get('TimeOut'))
+        if air is not None:
+            air=(air-32)*5/9 if m.TempScale=='F' else air if m.TempScale=='C' else None
+        if air is not None and not -10<=air<=45:air=None
+        noise=int(mass>=2) if mass is not None and 0<=mass<=4 else int(noise) if noise in (0,1) else None
+        rows.append(dict(run=token(rid),route=token(m.route_cluster),site=centers[sid],year=int(m.SurveyYear),date=date.isoformat(),month=date.month,doy=int(m.doy),air=air,noise=noise,timeout=timeout,
                          season=str(m.RunNumber),any=int(ci>=1),strong=int(ci>=2),env=env[centers[sid]],
                          source_taxa=sorted(taxa[(rid,st)])))
     bysite=defaultdict(list)
     for r in rows:bysite[r['site']].append(r)
     for r in rows:r['prior_n'],r['prior']=prior_fraction(bysite[r['site']],r['year'],r['season'])
-    matched=matched_history(rows)
+    matched=matched_history_all(rows) if full else matched_history(rows)
     detail=[{**r,'source_taxa':'|'.join(r['source_taxa']),'env':json.dumps(r['env'])} for r in rows]
     writecsv(out/'naamp_completed_site_surveys.csv.gz',detail)
     writecsv(out/'matched_strong_silent_history.csv',matched)
+    routes=defaultdict(list)
+    for r in matched:routes[r['route']].append(r['history_difference'])
+    route_means=np.array([np.mean(v) for v in routes.values()]);interval=None
+    if full and len(routes)>=10:
+        rng=np.random.default_rng(20261026);ix=rng.integers(0,len(routes),size=(2000,len(routes)))
+        interval=np.quantile(route_means[ix].mean(axis=1),[.025,.975]).tolist()
     return dict(source_sha256=base.PINS,eligible_complete_runs=len(runs),selected_centers_with_completed_visits=len(bysite),
                 selected_completed_visits=len(rows),strong_visits=sum(r['strong'] for r in rows),silent_visits=sum(not r['any'] for r in rows),
                 matched_strong_silent_visits=len(matched),independent_matched_routes=len({r['route'] for r in matched}),
                 mean_prior_strong_difference=float(np.mean([r['history_difference'] for r in matched])) if matched else None,
-                uncertainty_interval=None,note='Descriptive pilot; center landcover similarity is not complete pond environmental matching.')
+                equal_route_mean_prior_difference=float(route_means.mean()) if len(route_means) else None,
+                equal_route_bootstrap_interval=interval,
+                matching_scope='all geometry-valid source sites; current local temperature/noise/timeout and same run' if full else 'fixed48 endpoints; center landcover and same run',
+                note='Association with past calling, not causal memory; source-center background does not measure pond hydroperiod or plants.')
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--cache',type=Path,required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
@@ -245,7 +307,13 @@ def main():
            spatial_scope_km=25,temporal_scope='same calendar month/year, not necessarily same date',
            zero_means='no retrieved record under specified filters, NOT biological absence')
     except Exception as exc:result['naamp_history']={'status':'FAILED','error':str(exc)}
-    result['status']='COMPLETE_BOUNDED_PILOT' if all(q['status']=='COMPLETE' for q in queries) and result['naamp_history'].get('status')!='FAILED' else 'INCOMPLETE_EXPLICIT_GAPS'
+    try:
+        allsites=all_geometry();allenvironments,_=environments(allsites,a.cache)
+        target=a.out/'full_naamp_history';target.mkdir(exist_ok=True)
+        result['full_naamp_environment_matched_history']=naamp_history(allsites,allenvironments,a.cache,target,full=True)
+        result['full_naamp_environment_matched_history']['geometry_sites']=len(allsites)
+    except Exception as exc:result['full_naamp_environment_matched_history']={'status':'FAILED','error':str(exc)}
+    result['status']='COMPLETE_BOUNDED_PILOT' if all(q['status']=='COMPLETE' for q in queries) and result['naamp_history'].get('status')!='FAILED' and result['full_naamp_environment_matched_history'].get('status')!='FAILED' else 'INCOMPLETE_EXPLICIT_GAPS'
     result['limits']=['not verified ponds','no biological absences','overlapping circles not independent','no availability-corrected niche or causal competition',
                       'stage unknown retained','EarthEnv background is not measured hydroperiod/pond plants','original N/L/C not redefined']
     (a.out/'observed_results.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf8')

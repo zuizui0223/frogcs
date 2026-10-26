@@ -1,5 +1,5 @@
 import unittest
-from naamp_three_guild_occurrence import overlap, schoener, quality, prior_fraction, matched_history, summaries, overlay_occurrences
+from naamp_three_guild_occurrence import overlap, schoener, quality, prior_fraction, matched_history, matched_history_all, summaries, overlay_occurrences
 
 class Patterns(unittest.TestCase):
     def test_overlap(self):
@@ -37,5 +37,13 @@ class Patterns(unittest.TestCase):
         self.assertEqual(out['Caudata_prior_years_recorded_species'],1)
         self.assertEqual(out['Caudata_same_month_recorded_species'],1)
         self.assertEqual(out['same_month_exact_name_naamp_gbif_matches'],1)
+    def test_environment_matching_disjoint_and_history_blind(self):
+        common=dict(run='r',route='x',prior_n=3,env=[0,0],noise=0,timeout=0,air=20)
+        rows=[dict(common,site='a',any=1,strong=1,prior=.9),dict(common,site='b',any=1,strong=1,prior=.1),dict(common,site='c',any=0,strong=0,prior=.8)]
+        result=matched_history_all(rows)
+        self.assertEqual(len(result),1)
+        self.assertEqual(result[0]['chosen_site'],'a')
+        rows[0]['prior']=0;rows[1]['prior']=1
+        self.assertEqual(matched_history_all(rows)[0]['chosen_site'],'a')
 
 if __name__=='__main__':unittest.main()
