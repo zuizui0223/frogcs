@@ -1,0 +1,47 @@
+name: Research - macro-first manuscript source and RC6 safeguards
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/MACRO_FIRST_EDITORIAL_DECISION_2026-10-26.md'
+      - 'research/MACRO_FIRST_EVIDENCE_LEDGER_2026-10-26.json'
+      - 'research/manuscript/MACRO_ECOLOGY_MAIN_DRAFT_V0_1.md'
+      - 'research/manuscript/README.md'
+      - 'research/scripts/validate_macro_first_manuscript.py'
+      - '.github/workflows/research_macro_first_editorial_qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macro-paper-and-frozen-science:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check no RC6 source or frozen pre-editorial research file has changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=65e5a6f16550c6212dc6318fc8d73f7971e2cbed
+          git cat-file -e "$base^{commit}"
+          git diff --name-only "$base" HEAD > /tmp/macro_first_changed.txt
+          if grep -E '^(paper/|submission/|provenance/|figures_pulse_template/|scripts/naamp/|exploration/)' /tmp/macro_first_changed.txt; then
+            echo "::error::Original frozen RC6 paper, science, or exploration path changed"
+            exit 1
+          fi
+          if grep -E '^(README.md|research/README.md|research/reproducibility/)' /tmp/macro_first_changed.txt; then
+            echo "::error::Original historical macro snapshot entry/receipt changed"
+            exit 1
+          fi
+          echo 'PASS: editorial-only research files; original RC6 and 894-file historical snapshot retained'
+      - name: Original 894-file macro source snapshot must still verify
+        run: python research/scripts/verify_macro_snapshot.py
+      - name: Macro-first academic draft must match pinned empirical results
+        run: |
+          python -m py_compile research/scripts/validate_macro_first_manuscript.py
+          python research/scripts/validate_macro_first_manuscript.py
