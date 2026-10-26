@@ -1,0 +1,245 @@
+{
+  "schema": "frogcs-common-site×year×month×taxon×stage×method/1.0",
+  "contract": "research/CANONICAL_SITE_TIME_STAGE_OBSERVATION_CONTRACT_V1.md",
+  "sources": {
+    "hungary": {
+      "status": "SOURCE_AUTHENTICATED_CROSSWALK_BUILT",
+      "details": {
+        "original_files": {
+          "wetland_amp_site_data.csv": {
+            "bytes": 1885,
+            "md5": "795da443249760fbc0bf30249910a4ef"
+          },
+          "wetland_amp_surv_data.csv": {
+            "bytes": 41135,
+            "md5": "edcd6f12518192c01e3dbae8521c16c9"
+          }
+        },
+        "original_site_rows": 29,
+        "original_survey_rows": 381
+      }
+    },
+    "inbo": {
+      "status": "SOURCE_AUTHENTICATED_CROSSWALK_BUILT",
+      "details": {
+        "adult_chorus": {
+          "doi": "10.15468/d4bu8j",
+          "sha256": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+          "bytes": 44543,
+          "read_species_stage_rows": 1436,
+          "event_records": 963
+        },
+        "larval_census": {
+          "doi": "10.15468/swgure",
+          "sha256": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+          "bytes": 63088,
+          "read_species_stage_rows": 2995,
+          "event_records": 697
+        }
+      }
+    },
+    "nps": {
+      "status": "SOURCE_AUTHENTICATED_CROSSWALK_BUILT",
+      "details": {
+        "download_bytes": 68581307,
+        "source_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+        "raw_source_rows": 147913,
+        "unparseable_source_start_times": 0
+      }
+    },
+    "naamp": {
+      "status": "SOURCE_AUTHENTICATED_CROSSWALK_BUILT",
+      "details": {
+        "original_sha256": {
+          "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+          "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+          "Counts.csv": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+        },
+        "original_source_counts": {
+          "Runs.csv": 21934,
+          "Stops.csv": 219340,
+          "Counts.csv": 337848
+        },
+        "standardized_completed_stop_opportunities": 198757,
+        "positive_standardized_call_rows": 310683,
+        "exact_RC6_4236_paired_outcome_recomputed": false
+      }
+    }
+  },
+  "profile": {
+    "total_source_specific_observation_rows": {
+      "hungary_2024": 3429,
+      "inbo_adult_chorus": 1436,
+      "inbo_larval_census": 2995,
+      "nps_glkn": 147913,
+      "naamp_surveyed_stops": 198757,
+      "naamp_positive_calls": 310683
+    },
+    "unique_native_site_tokens_by_source": {
+      "hungary_2024": 29,
+      "inbo_adult_chorus": 186,
+      "inbo_larval_census": 217,
+      "nps_glkn": 66,
+      "naamp_surveyed_stops": 13028,
+      "naamp_positive_calls": 12649
+    },
+    "unique_year_months_by_source": {
+      "hungary_2024": 4,
+      "inbo_adult_chorus": 35,
+      "inbo_larval_census": 25,
+      "nps_glkn": 40,
+      "naamp_surveyed_stops": 129,
+      "naamp_positive_calls": 128
+    },
+    "recorded_status_counts_by_source": {
+      "hungary_2024": {
+        "recorded_absent": 2913,
+        "recorded_present": 516
+      },
+      "inbo_adult_chorus": {
+        "recorded_present": 763,
+        "recorded_absent": 673
+      },
+      "inbo_larval_census": {
+        "recorded_present": 1279,
+        "recorded_absent": 1716
+      },
+      "nps_glkn": {
+        "recorded_no_call": 128945,
+        "recorded_present": 18968
+      },
+      "naamp_surveyed_stops": {
+        "unknown": 198757
+      },
+      "naamp_positive_calls": {
+        "recorded_present": 310683
+      }
+    },
+    "stage_and_method_row_counts": [
+      {
+        "source": "hungary_2024",
+        "stage": "adult_acoustic",
+        "method": "acoustic",
+        "rows": 1161
+      },
+      {
+        "source": "hungary_2024",
+        "stage": "unspecified",
+        "method": "bottletrap",
+        "rows": 576
+      },
+      {
+        "source": "hungary_2024",
+        "stage": "unspecified",
+        "method": "dipnet",
+        "rows": 531
+      },
+      {
+        "source": "hungary_2024",
+        "stage": "unspecified",
+        "method": "visual",
+        "rows": 1161
+      },
+      {
+        "source": "inbo_adult_chorus",
+        "stage": "adult_acoustic",
+        "method": "chorus",
+        "rows": 1436
+      },
+      {
+        "source": "inbo_larval_census",
+        "stage": "adult",
+        "method": "larval_census",
+        "rows": 643
+      },
+      {
+        "source": "inbo_larval_census",
+        "stage": "aquatic_immature",
+        "method": "larval_census",
+        "rows": 1746
+      },
+      {
+        "source": "inbo_larval_census",
+        "stage": "metamorph",
+        "method": "larval_census",
+        "rows": 606
+      },
+      {
+        "source": "naamp_positive_calls",
+        "stage": "adult_acoustic",
+        "method": "naamp_acoustic",
+        "rows": 310683
+      },
+      {
+        "source": "naamp_surveyed_stops",
+        "stage": "adult_acoustic",
+        "method": "naamp_acoustic",
+        "rows": 198757
+      },
+      {
+        "source": "nps_glkn",
+        "stage": "adult_acoustic",
+        "method": "manual_audio",
+        "rows": 147913
+      }
+    ],
+    "environment_covariate_nonmissing_row_counts": [
+      {
+        "source": "hungary_2024",
+        "field": "emergent_cover_percent",
+        "n_record_rows": 3429
+      },
+      {
+        "source": "hungary_2024",
+        "field": "fish_source_observed",
+        "n_record_rows": 3429
+      },
+      {
+        "source": "hungary_2024",
+        "field": "precip_source_value",
+        "n_record_rows": 3429
+      },
+      {
+        "source": "hungary_2024",
+        "field": "submerged_cover_percent",
+        "n_record_rows": 3429
+      },
+      {
+        "source": "hungary_2024",
+        "field": "temperature_C",
+        "n_record_rows": 3429
+      },
+      {
+        "source": "hungary_2024",
+        "field": "water_depth_source_value",
+        "n_record_rows": 3429
+      },
+      {
+        "source": "naamp_positive_calls",
+        "field": "rain_days_since",
+        "n_record_rows": 139607
+      },
+      {
+        "source": "naamp_surveyed_stops",
+        "field": "rain_days_since",
+        "n_record_rows": 93383
+      },
+      {
+        "source": "nps_glkn",
+        "field": "source_hydroperiod",
+        "n_record_rows": 147913
+      }
+    ],
+    "site_year_month_taxon_stage_method_cells": 506653
+  },
+  "source_namespace_disjoint_even_when_taxa_names_equal": true,
+  "raw_wildlife_source_site_ids_exported": false,
+  "naamp_rc6_spatial_metric_recomputed": false,
+  "GBIF_1degree_stage_grid_mixed_with_real_ponds": false,
+  "GBIF_macro_module_source": "research/manuscript/GLOBAL_STAGE_MACRO_EVIDENCE_GATE_V1.md",
+  "common_water_plant_predator_stage_cohort_fate_measured_in_one_original_unit": false,
+  "source_data_artifact_only_not_committed": true,
+  "same_species_monthly_records_are_observation_effort_not_population_counts": true,
+  "github_actions_original_receipt": "https://github.com/zuizui0223/frogcs/actions/runs/40262146062",
+  "eligibility_note": "NAAMP source native 198,757 standardized completed stops and 310,683 positive call rows, NOT exact RC6 eligible 4,236 paired comparisons; GBIF macro remains physically distinct 1-degree month grids."
+}
