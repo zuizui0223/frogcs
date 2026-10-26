@@ -24,6 +24,28 @@ def main():
     tax=load("research/results/part2_g0/inbo_species_time_eligibility.json")
     hyla=load("research/results/part2_inbo_hyla_g1/observed_results.json")
 
+    fuscus=load("research/results/part2_g2/fuscus_factorial_observed_results.json")
+    assert fuscus["source_SHA256"]=="eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25"
+    assert fuscus["n_original_expected_allocation"]==240
+    assert fuscus["n_observed_individual_rows"]==226
+    assert fuscus["unlisted_planned_individuals"]==14
+    assert fuscus["observed_small_containers"]==79
+    assert fuscus["thermal_bath_groups"]==8
+    assert fuscus["source_binary_survival_qc"]["recorded_true"]==213
+    assert fuscus["source_binary_survival_qc"]["recorded_false"]==13
+    assert fuscus["real_causal_pond_predation_identified"] is False
+    assert fuscus["hydroperiod_x_predator_stage_attack_identified"] is False
+    for endpoint in ("mass","time"):
+        fit=fuscus["survivor_conditional_endpoint_models"][endpoint]["leave_entire_thermal_bath_out"]
+        assert fit["estimable"]
+        assert fuscus["survivor_conditional_endpoint_models"][endpoint]["n_containers_with_measured_survivor_endpoint"]==79
+        a=fit["models"]
+        assert a["M0"]["bath_equal_weight_LOBO_MSE_log_endpoint"]<a["M1"]["bath_equal_weight_LOBO_MSE_log_endpoint"]
+        assert a["M0"]["bath_equal_weight_LOBO_MSE_log_endpoint"]<a["M2"]["bath_equal_weight_LOBO_MSE_log_endpoint"]
+    close(fuscus["survivor_conditional_endpoint_models"]["mass"]["leave_entire_thermal_bath_out"]["models"]["M0"]["bath_equal_weight_LOBO_MSE_log_endpoint"],0.020890281991888512)
+    assert j["prior_claims"]["FUSCUS_predator_cue_improves_leave_thermal_bathout_stage_mass_prediction"] is False
+    assert next(g for g in j["gates"] if g["id"]=="G2")["status"].startswith("UNIDENTIFIABLE")
+
     full=load("research/results/full_globi_2026_stage_gbif_grid/observed_results.json")
     shift=load("research/results/month_shift_globi_gbif/observed_results.json")
     matched=load("research/results/expanded_stage_specificity/observed_results.json")
@@ -84,7 +106,9 @@ def main():
                    "not supporting the predicted negative suppression",
                    "no local hydroperiod term was fitted",
                    "not estimable","not submission-ready",
-                   "16/18","31/56","26/56","not a demonstration of recorded predation"):
+                   "16/18","31/56","26/56","not a demonstration of recorded predation",
+                   "0.020890","0.021249","0.021316","0.015731","0.016492","0.016485",
+                   "14","a predator chemical cue"):
         assert phrase.lower() in txt.lower(),"Missing scientific claim boundary: "+phrase
     assert txt.count(chr(96)*3)%2==0
     links=re.findall(r"\[[^\]]+\]\(([^)\s]+)\)",txt)
@@ -102,6 +126,12 @@ def main():
           "global_stage_shift_above_null":16,
           "global_matched_specificity_strict":26,
           "global_predation_identified":False,
+          "g2b_factorial_79_containers":True,
+          "g2b_thermal_baths":8,
+          "g2b_recorded_survivors":213,
+          "g2b_missing_original_records":14,
+          "g2b_predator_cue_outofbath_predictive_gain_supported":False,
+          "g2b_field_direct_predation_claim_authorized":False,
           "measured_stage_predation_identified":False,
           "relative_source_links_resolved":check,
           "manuscript_submission_ready":False},indent=2))
