@@ -224,3 +224,9 @@ Empirical tables: `../results/naamp_remote_vegetation_20261026/network_rank_coef
 `../results/naamp_odonata_caudata_associations_20261026/stratified_correlations.csv`.
 Independent literature audit: [primary evidence](VEGETATION_THREE_GUILD_PRIMARY_EVIDENCE_2026-10-26.md).
 Model design: [stage/vegetation assumptions](STAGE_VEGETATION_MODEL_DESIGN_2026-10-26.md).
+
+## Added temporal evidence and annual feedback extension
+
+The one-season claims above remain scoped to that model. The [INBO temporal analysis](PRIOR_LARVAE_CHORUS_RESULTS_2026-10-26.md) found a positive between-site association between larval detection and chorus detection three calendar years later, but the within-site sensitivity was inconclusive. It does not estimate recruitment or validate the trophic pathway.
+
+The [multiyear extension](MULTIYEAR_STAGE_NETWORK_RESULTS_2026-10-26.md) now closes the previously missing annual density feedback. Reduced odonate emergence changes later odonate cohort inputs, which changes both direct frog predation and suppression of caudate activity. In synthetic examples, a benefit of stage-reversed predation in the two-guild system becomes a cost after adding caudates; changing which predator the vegetation refuge protects against can preserve or amplify a benefit instead. The matched effects depend on arbitrary demographic assumptions, and some settings approach extinction. This is a conditional mechanism demonstration, not a fit to the empirical O×S, O×V, or three-way coefficients, nor a conversion from recruitment to calling.

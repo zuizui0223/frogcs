@@ -12,7 +12,7 @@ DEFAULT = dict(community='FSD',roles=15,refuge_order='S',vegetation=0.,
 ENDPOINTS=['F_completed','S_completed','D_completed']
 
 
-def simulate(parameters,dt=.25):
+def simulate(parameters,dt=.25,initial_cohorts=None):
     if not np.isfinite(dt) or dt<=0 or abs(120/dt-round(120/dt))>1e-8:
         raise ValueError('dt must divide the 120-day observation period')
     for row in parameters:
@@ -42,11 +42,18 @@ def simulate(parameters,dt=.25):
     scale=p.attack_scale.to_numpy(float);cue=p.cue.to_numpy(float)
     fa=p.f_arrival.to_numpy(float);sa=p.s_arrival.to_numpy(float);dd=p.d_arrival.to_numpy(float)
     sinit=p.community.isin(['FS','FSD']).to_numpy(float);dinit=p.community.isin(['FD','FSD']).to_numpy(float)
+    present=np.column_stack([np.ones(n),sinit,dinit])
+    initial=present if initial_cohorts is None else np.asarray(initial_cohorts,dtype=float)
+    if initial.shape!=(n,3) or not np.isfinite(initial).all() or (initial<0).any():
+        raise ValueError('Initial cohorts must be finite nonnegative n-by-3 F/S/D densities')
+    if ((present==0)&(initial!=0)).any():raise ValueError('Density supplied for absent guild')
+    finit,sinit,dinit=initial.T
+    intraguild=p.intraguild.to_numpy(bool);reciprocal=p.reciprocal.to_numpy(bool);reverse=p.reverse.to_numpy(bool)
     water=p.water.to_numpy(float)
     sigmoid=lambda z:1/(1+np.exp(-np.clip(z,-60,60)))
     for step in range(round(120/dt)+1):
         t=step*dt
-        f+=np.isclose(t,fa,rtol=0,atol=1e-9)
+        f+=np.isclose(t,fa,rtol=0,atol=1e-9)*finit
         s+=np.isclose(t,sa,rtol=0,atol=1e-9)*sinit
         d+=np.isclose(t,dd,rtol=0,atol=1e-9)*dinit
         # Transitions at the boundary precede drying at the same time.
@@ -63,9 +70,9 @@ def simulate(parameters,dt=.25):
         suppressed=1/(1+cue*d)
         hsf=.035*scale*s*sigmoid(8*(ss-fs))*sf_cover*suppressed
         hdf=.025*scale*d*sigmoid(3*(ds-.5*fs))*df_cover
-        hds=.025*scale*d*sigmoid(8*(ds-ss))*ds_cover*p.intraguild.to_numpy(bool)
-        hsd=.020*scale*s*sigmoid(8*(ss-ds))*suppressed*p.reciprocal.to_numpy(bool)*p.intraguild.to_numpy(bool)
-        hfe=.060*scale*fp*np.exp(.4*stem)*p.reverse.to_numpy(bool)
+        hds=.025*scale*d*sigmoid(8*(ds-ss))*ds_cover*intraguild
+        hsd=.020*scale*s*sigmoid(8*(ss-ds))*suppressed*reciprocal*intraguild
+        hfe=.060*scale*fp*np.exp(.4*stem)*reverse
         hfail=.100*np.exp(-.8*stem)
         hf=hsf+hdf;loss=f*(-np.expm1(-hf*dt))
         bys=loss*np.divide(hsf,hf,out=zero(),where=hf>0)
@@ -78,9 +85,9 @@ def simulate(parameters,dt=.25):
     for key,val in [('F_completed',fp),('S_completed',sp),('D_completed',da),
                     ('F_survived',f+fp),('S_survived',s+sp),('D_survived',d+de+da)]:out[key]=val
     for key,val in death.items():out[key.replace('_by_','_killed_by_')]=val
-    for g,initial in [('F',np.ones(n)),('S',sinit),('D',dinit)]:
+    for g,start in [('F',finit),('S',sinit),('D',dinit)]:
         out[g+'_dead']=sum(val for key,val in death.items() if key.startswith(g+'_'))
-        if not np.allclose(out[g+'_dead']+out[g+'_survived'],initial,rtol=0,atol=1e-11):
+        if not np.allclose(out[g+'_dead']+out[g+'_survived'],start,rtol=0,atol=1e-11):
             raise AssertionError('Cohort accounting failed: '+g)
         if (out[g+'_survived']<0).any():raise AssertionError('Negative cohort')
     return out

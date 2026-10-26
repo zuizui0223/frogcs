@@ -1,0 +1,148 @@
+{
+  "classification": "SYNTHETIC_COUPLED_ANNUAL_FEEDBACK_NOT_EMPIRICAL",
+  "scenarios": 864,
+  "years": 80,
+  "summary_last_years": 20,
+  "demography": {
+    "survival": [
+      0.4,
+      0.5,
+      0.0
+    ],
+    "conversion": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "juvenile": [
+      0.8,
+      0.8,
+      0.8
+    ],
+    "delays": [
+      2,
+      2,
+      1
+    ],
+    "capacity": 1.0,
+    "initial_scale": 1.0
+  },
+  "counts_by_community_return": {
+    "FD|rho=0.0": {
+      "F_B": {
+        "negative": 0,
+        "near_zero": 72,
+        "positive": 0
+      },
+      "F_C": {
+        "negative": 0,
+        "near_zero": 72,
+        "positive": 0
+      },
+      "delta_F_B_range": [
+        0.0,
+        0.0
+      ]
+    },
+    "FD|rho=0.5": {
+      "F_B": {
+        "negative": 0,
+        "near_zero": 5,
+        "positive": 67
+      },
+      "F_C": {
+        "negative": 0,
+        "near_zero": 6,
+        "positive": 66
+      },
+      "delta_F_B_range": [
+        0.00018836564190372052,
+        0.288542069489677
+      ]
+    },
+    "FD|rho=1.0": {
+      "F_B": {
+        "negative": 0,
+        "near_zero": 44,
+        "positive": 28
+      },
+      "F_C": {
+        "negative": 0,
+        "near_zero": 44,
+        "positive": 28
+      },
+      "delta_F_B_range": [
+        1.0910924417819259e-26,
+        3.279961872639804
+      ]
+    },
+    "FSD|rho=0.0": {
+      "F_B": {
+        "negative": 0,
+        "near_zero": 72,
+        "positive": 0
+      },
+      "F_C": {
+        "negative": 0,
+        "near_zero": 72,
+        "positive": 0
+      },
+      "delta_F_B_range": [
+        0.0,
+        0.0
+      ]
+    },
+    "FSD|rho=0.5": {
+      "F_B": {
+        "negative": 22,
+        "near_zero": 46,
+        "positive": 4
+      },
+      "F_C": {
+        "negative": 5,
+        "near_zero": 64,
+        "positive": 3
+      },
+      "delta_F_B_range": [
+        -0.06132165034627812,
+        0.19235471351698252
+      ]
+    },
+    "FSD|rho=1.0": {
+      "F_B": {
+        "negative": 0,
+        "near_zero": 71,
+        "positive": 1
+      },
+      "F_C": {
+        "negative": 0,
+        "near_zero": 72,
+        "positive": 0
+      },
+      "delta_F_B_range": [
+        -5.435996510940594e-05,
+        0.013336371768597935
+      ]
+    }
+  },
+  "half_step_max_abs_mean_density_difference": 0.008908495844942799,
+  "half_step_scope": "all-role subset only",
+  "sensitivity_variants": [
+    "base",
+    "short_delay",
+    "long_delay",
+    "low_conversion",
+    "high_conversion",
+    "low_juvenile_survival",
+    "full_juvenile_survival",
+    "no_adult_carryover",
+    "initial_low",
+    "initial_high",
+    "horizon160",
+    "half_step",
+    "no_cue"
+  ],
+  "equilibrium_assumed": false,
+  "calling_predicted": false,
+  "local_return_zero_max_F_effect": 0.0
+}
