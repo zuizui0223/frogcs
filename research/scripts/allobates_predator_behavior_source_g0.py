@@ -73,6 +73,7 @@ def profile(rows,cols,tag):
     source_pools=defaultdict(set)
     sizes=[];origin_counts=[]
     status=Counter();trials=Counter();batches=Counter()
+    pool_individuals=defaultdict(set);bucket_batches=defaultdict(set);batch_predator=defaultdict(set)
     for r in rows:
         # ONLY metadata/predictor fields, never the behavioral outcome.
         tid=norm_id(r["TadpoleID"])
@@ -87,6 +88,12 @@ def profile(rows,cols,tag):
         rowkeys.add(k)
         status[p]+=1
         source_pools[pool].add(p)
+        pool_individuals[(pool,p)].add(tid)
+        if "Batch" in r:
+            batch=str(r.get("Batch") or "").strip()
+            if batch:
+                bucket_batches[pool].add(batch)
+                batch_predator[batch].add(p)
         individuals[tid].append((pool,p,trial))
         trials[trial]+=1
         if "Batch" in r:batches[norm_id(r.get("Batch"))]+=1
@@ -107,6 +114,18 @@ def profile(rows,cols,tag):
         "rows_by_predator":dict(status),
         "unique_buckets_by_predator":dict(Counter(next(iter(st)) for st in source_pools.values() if len(st)==1)),
         "bucket_codes_with_conflicting_predator_status":len(conflict_pools),
+        "source_pools_repeated_over_multiple_batches":sum(len(x)>1 for x in bucket_batches.values()),
+        "distinct_pool_by_batch_and_predator":{
+            b:{p:sum(any(r.get("Batch","").strip()==b and
+                       r.get("Bucket","").strip()==pool and
+                       norm_status(r.get("PredatorYN"))==p for r in rows)
+                     for pool in source_pools) for p in ("Y","N")}
+            for b in sorted(batch_predator)
+        },
+        "independent_pools_by_predator_have_sampled_individuals":{
+            p:sorted(len(ids) for (pool,status),ids in pool_individuals.items() if status==p)
+            for p in ("Y","N")
+        },
         "trials_per_number":dict(trials),
         "batches_per_label":dict(batches),
         "size_range":[min(sizes),max(sizes)],
