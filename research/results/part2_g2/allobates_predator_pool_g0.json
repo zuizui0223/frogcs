@@ -1,0 +1,191 @@
+{
+  "source": "10.5281/zenodo.18956129",
+  "status": "PINNED_SOURCE_SCHEMA_BLIND_G0_COMPLETED",
+  "assays": {
+    "novel": {
+      "assay": "novel",
+      "row_count": 849,
+      "column_names": [
+        "TadpoleID",
+        "DateHouse",
+        "Bucket",
+        "Trial",
+        "Vid",
+        "DateTrial",
+        "Behav",
+        "CumlDist",
+        "Time",
+        "whichbehaviourfirst",
+        "TadpoleNo",
+        "PredatorNo",
+        "PredatorYN",
+        "SIZE",
+        "size_fromvideo"
+      ],
+      "individuals": 221,
+      "raw_bucket_label_count": 11,
+      "rows_by_predator": {
+        "Y": 168,
+        "N": 681
+      },
+      "unique_buckets_by_predator": {
+        "Y": 7,
+        "N": 4
+      },
+      "bucket_codes_with_conflicting_predator_status": 0,
+      "source_pools_repeated_over_multiple_batches": 0,
+      "distinct_pool_by_batch_and_predator": {},
+      "independent_pools_by_predator_have_sampled_individuals": {
+        "Y": [
+          1,
+          1,
+          2,
+          3,
+          9,
+          13,
+          19
+        ],
+        "N": [
+          36,
+          40,
+          47,
+          50
+        ]
+      },
+      "trials_per_number": {
+        "1": 220,
+        "2": 217,
+        "3": 208,
+        "4": 204
+      },
+      "batches_per_label": {},
+      "size_range": [
+        0.375,
+        1.119
+      ],
+      "origin_pool_conspecific_count_range": [
+        1,
+        100
+      ],
+      "outcomes_inspected": false,
+      "source": {
+        "md5": "67c34ace991c80db7331654554535faa",
+        "bytes": 77076,
+        "url": "https://zenodo.org/records/18956129/files/novelenvironment_results.csv?download=1"
+      }
+    },
+    "shelter": {
+      "assay": "shelter",
+      "row_count": 848,
+      "column_names": [
+        "TadpoleID",
+        "DateHouse",
+        "Bucket",
+        "Trial",
+        "DateTrial",
+        "Behav",
+        "TimeUncovered",
+        "CrossingNumber",
+        "TimeToEmerge",
+        "Time",
+        "whichbehaviourfirst",
+        "TadpoleNo",
+        "PredatorYN",
+        "SIZE",
+        "size_fromvideo",
+        "Batch"
+      ],
+      "individuals": 220,
+      "raw_bucket_label_count": 11,
+      "rows_by_predator": {
+        "Y": 168,
+        "N": 680
+      },
+      "unique_buckets_by_predator": {
+        "Y": 7,
+        "N": 4
+      },
+      "bucket_codes_with_conflicting_predator_status": 0,
+      "source_pools_repeated_over_multiple_batches": 8,
+      "distinct_pool_by_batch_and_predator": {
+        "1": {
+          "Y": 4,
+          "N": 3
+        },
+        "2": {
+          "Y": 2,
+          "N": 4
+        },
+        "3": {
+          "Y": 3,
+          "N": 4
+        },
+        "4": {
+          "Y": 2,
+          "N": 4
+        },
+        "5": {
+          "Y": 1,
+          "N": 4
+        }
+      },
+      "independent_pools_by_predator_have_sampled_individuals": {
+        "Y": [
+          1,
+          1,
+          2,
+          3,
+          9,
+          13,
+          19
+        ],
+        "N": [
+          36,
+          40,
+          47,
+          49
+        ]
+      },
+      "trials_per_number": {
+        "1": 219,
+        "2": 217,
+        "3": 208,
+        "4": 204
+      },
+      "batches_per_label": {
+        "1": 156,
+        "2": 169,
+        "3": 168,
+        "4": 178,
+        "5": 177
+      },
+      "size_range": [
+        0.375,
+        1.119
+      ],
+      "origin_pool_conspecific_count_range": [
+        1,
+        100
+      ],
+      "outcomes_inspected": false,
+      "source": {
+        "md5": "514c72d739f88d2f4a83f13d366950dc",
+        "bytes": 57545,
+        "url": "https://zenodo.org/records/18956129/files/shelterassay_results.csv?download=1"
+      }
+    }
+  },
+  "individual_ids_both_assays": 220,
+  "novel_only_ids": 1,
+  "shelter_only_ids": 0,
+  "cross_assay_pool_or_predator_state_conflicts": 0,
+  "source_pool_level_predator_treatment_randomized": false,
+  "source_status_measures_predator_presence_in_origin_pool": true,
+  "stage": "Allobates femoralis tadpole individual behavior measured after field origin",
+  "original_pool_is_biological_replication_unit_not_individual": true,
+  "abiotic_hydroperiod_documented": false,
+  "stage_specific_attack_or_prey_survival_documented": false,
+  "source_data_not_redistributed": true,
+  "fitness_or_causal_predation_effect_authorized": false,
+  "github_actions_log_job_id": 121360856803
+}
