@@ -1,0 +1,84 @@
+{
+  "status": "SOURCE_BLIND_CROSS_TAXON_STAGE_AND_CHORUS_TIMING_G0",
+  "source_DOIs": [
+    "10.15468/d4bu8j",
+    "10.15468/swgure"
+  ],
+  "source_sha256": {
+    "chorus": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+    "larva": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920"
+  },
+  "source_exact_locationID_overlap": 96,
+  "locality_conflicts": 0,
+  "hyla_choir_site_years_exact_source_sites": 314,
+  "hyla_choir_source_sites": 94,
+  "previous_year_other_taxon_larva_sampling": {
+    "other_anuran_larva": {
+      "eligible_previous_year_site_years": 6,
+      "eligible_previous_year_sites": 6,
+      "eligible_previous_year_years": [
+        2017,
+        2023,
+        2025
+      ],
+      "eligible_same_year_site_years": 63,
+      "eligible_same_year_sites": 35,
+      "same_year_census_cannot_explain_earlier_adult_call_without_temporal_precedence": true
+    },
+    "caudata_larva": {
+      "eligible_previous_year_site_years": 17,
+      "eligible_previous_year_sites": 13,
+      "eligible_previous_year_years": [
+        2017,
+        2020,
+        2023
+      ],
+      "eligible_same_year_site_years": 94,
+      "eligible_same_year_sites": 51,
+      "same_year_census_cannot_explain_earlier_adult_call_without_temporal_precedence": true
+    },
+    "hyla_larva": {
+      "eligible_previous_year_site_years": 37,
+      "eligible_previous_year_sites": 29,
+      "eligible_previous_year_years": [
+        2017,
+        2020,
+        2021,
+        2023,
+        2025
+      ],
+      "eligible_same_year_site_years": 245,
+      "eligible_same_year_sites": 93,
+      "same_year_census_cannot_explain_earlier_adult_call_without_temporal_precedence": true
+    }
+  },
+  "joint_previous_year_other_anuran_and_caudata_larva_site_years": 3,
+  "same_year_hyla_and_caudata_larva_site_years": 110,
+  "same_year_same_census_hyla_and_caudata_larva_events": 150,
+  "same_year_nearest_larva_stage_recording_gap_days": {
+    "n": 110,
+    "min": 0,
+    "median": 0,
+    "max": 0
+  },
+  "preceding_adult_call_and_later_same_taxon_larva_site_years": 245,
+  "independent_prior_stage_exposure_presence_or_count_inspected": false,
+  "other_larvae_automatically_competitors": false,
+  "caudata_larvae_automatically_predators": false,
+  "ontogenetic_stage_size_similarity_measured": false,
+  "real_wetland_hydroperiod_measured_for_join": false,
+  "weather_or_emergent_vegetation_available_in_linked_INBO": false,
+  "source_keys_exported": false,
+  "next_endpoint_G1_status": "ONLY_IF_PREVIOUS_YEAR_COVERAGE_AND_SAMPLED_ZEROS_MEET_FROZEN_THRESHOLDS",
+  "provenance": {
+    "run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40260929065",
+    "job_id": 121372944853,
+    "status": "success",
+    "source_zips_verified": true
+  },
+  "qualification": {
+    "other_frog_larva": "BELOW_FROZEN_30_OPPORTUNITY_FLOOR",
+    "caudata_larva": "BELOW_FROZEN_30_OPPORTUNITY_FLOOR",
+    "test_outcomes_read": false
+  }
+}
