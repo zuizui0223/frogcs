@@ -1,0 +1,458 @@
+{
+  "status": "VERIFIED_SPECIES_OCCURRENCE_FIRST_CANONICAL",
+  "source_records_before_stage_collapse": {
+    "hungary_2024": 3429,
+    "inbo_adult_chorus": 1436,
+    "inbo_larval_census": 2995,
+    "nps_glkn": 147913,
+    "naamp_surveyed_stops": 198757,
+    "naamp_positive_calls": 310683
+  },
+  "n_distinct_event_taxon_method_records_by_source": {
+    "hungary_2024": 3411,
+    "inbo_adult_chorus": 1286,
+    "inbo_larval_census": 1648,
+    "naamp_positive_calls": 310683,
+    "nps_glkn": 147913
+  },
+  "deduplicated_stage_rows_by_source": {
+    "inbo_adult_chorus": 150,
+    "inbo_larval_census": 1347
+  },
+  "duplicate_original_survey_species_rows_by_source": {
+    "hungary_2024": 18
+  },
+  "contradictory_present_and_zero_within_original_survey_species_by_source": {
+    "hungary_2024": 5
+  },
+  "n_observation_events_by_source": {
+    "hungary_2024": 379,
+    "inbo_adult_chorus": 963,
+    "inbo_larval_census": 697,
+    "naamp_positive_calls": 152639,
+    "nps_glkn": 16561
+  },
+  "distinct_original_source_site_tokens_by_source": {
+    "hungary_2024": 29,
+    "inbo_adult_chorus": 186,
+    "inbo_larval_census": 217,
+    "naamp_positive_calls": 12649,
+    "nps_glkn": 66
+  },
+  "native_taxon_labels_count_by_source": {
+    "hungary_2024": 9,
+    "inbo_adult_chorus": 11,
+    "inbo_larval_census": 13,
+    "naamp_positive_calls": 68,
+    "nps_glkn": 13
+  },
+  "native_taxon_names_by_source": {
+    "hungary_2024": [
+      "Bombina bombina",
+      "Bufo bufo",
+      "Bufotes viridis",
+      "Hyla arborea",
+      "Lissotriton vulgaris",
+      "Pelobates fuscus",
+      "Pelophylax ridibundus",
+      "Rana dalmatina",
+      "Triturus dobrogicus"
+    ],
+    "inbo_adult_chorus": [
+      "Bufo bufo",
+      "Epidalea calamita",
+      "Hyla arborea",
+      "Pelobates fuscus",
+      "Pelophylax esculenta synklepton",
+      "Pelophylax kl. esculentus",
+      "Pelophylax lessonae",
+      "Pelophylax lessonae/ kl. esculentus",
+      "Pelophylax ridibundus",
+      "Rana arvalis",
+      "Rana temporaria"
+    ],
+    "inbo_larval_census": [
+      "Bufo bufo",
+      "Hyla arborea",
+      "Ichthyosaura alpestris",
+      "Lissotriton helveticus",
+      "Lissotriton spec.",
+      "Lissotriton vulgaris",
+      "Pelobates fuscus",
+      "Pelophylax esculenta synklepton",
+      "Pelophylax lessonae",
+      "Pelophylax ridibundus",
+      "Rana arvalis",
+      "Rana temporaria",
+      "Triturus cristatus"
+    ],
+    "naamp_positive_calls": [
+      "Acris crepitans",
+      "Acris gryllus",
+      "Anaxyrus americanus",
+      "Anaxyrus cognatus",
+      "Anaxyrus fowleri",
+      "Anaxyrus hemiophrys",
+      "Anaxyrus quercicus",
+      "Anaxyrus terrestris",
+      "Eleutherodactylus cystignathoides",
+      "Eleutherodactylus marnockii",
+      "Eleutherodactylus planirostris",
+      "Gastrophryne carolinensis",
+      "Gastrophryne olivacea",
+      "Hyla andersonii",
+      "Hyla avivoca",
+      "Hyla chrysoscelis",
+      "Hyla cinerea",
+      "Hyla femoralis",
+      "Hyla gratiosa",
+      "Hyla squirella",
+      "Hyla versicolor",
+      "Incilius nebulifer",
+      "Lithobates areolatus",
+      "Lithobates berlandieri",
+      "Lithobates blairi",
+      "Lithobates capito",
+      "Lithobates catesbeianus",
+      "Lithobates clamitans",
+      "Lithobates grylio",
+      "Lithobates heckscheri",
+      "Lithobates okaloosae",
+      "Lithobates palustris",
+      "Lithobates pipiens",
+      "Lithobates septentrionalis",
+      "Lithobates sphenocephalus",
+      "Lithobates sylvaticus",
+      "Lithobates virgatipes",
+      "NAAMP_CODE:Acris crepitans/gryllus complex",
+      "NAAMP_CODE:Anaxyrus americanus/terrestris complex",
+      "NAAMP_CODE:Anaxyrus fowleri/woodhousii complex",
+      "NAAMP_CODE:Hyla chrysoscelis/versicolor complex",
+      "NAAMP_CODE:Hyla chrysoscelis/versicolor complex complex",
+      "NAAMP_CODE:Pseudacris feriarum/fouquettei complex",
+      "NAAMP_CODE:Pseudacris feriarum/kalmi complex",
+      "NAAMP_CODE:Pseudacris feriarum/triseriata complex",
+      "NAAMP_CODE:Pseudacris maculata/feriarum complex",
+      "NAAMP_CODE:Pseudacris maculata/triseriata complex",
+      "NAAMP_CODE:Pseudacris nigrita/feriarum complex",
+      "Osteopilus septentrionalis",
+      "Pseudacris brachyphona",
+      "Pseudacris brimleyi",
+      "Pseudacris clarkii",
+      "Pseudacris crucifer",
+      "Pseudacris feriarum",
+      "Pseudacris fouquettei",
+      "Pseudacris illinoensis",
+      "Pseudacris kalmi",
+      "Pseudacris maculata",
+      "Pseudacris nigrita",
+      "Pseudacris ocularis",
+      "Pseudacris ornata",
+      "Pseudacris streckeri",
+      "Pseudacris triseriata",
+      "Rhinella marina",
+      "Scaphiopus couchii",
+      "Scaphiopus holbrookii",
+      "Scaphiopus hurterii",
+      "Spea bombifrons"
+    ],
+    "nps_glkn": [
+      "Acris blanchardi",
+      "Anaxyrus americanus",
+      "Anaxyrus fowleri",
+      "Dryophytes chrysoscelis",
+      "Dryophytes versicolor",
+      "Lithobates catesbeianus",
+      "Lithobates clamitans",
+      "Lithobates palustris",
+      "Lithobates pipiens",
+      "Lithobates septentrionalis",
+      "Lithobates sylvaticus",
+      "Pseudacris crucifer",
+      "Pseudacris maculata/triseriata"
+    ]
+  },
+  "year_month_coverage_by_source": {
+    "hungary_2024": 4,
+    "inbo_adult_chorus": 35,
+    "inbo_larval_census": 25,
+    "naamp_positive_calls": 128,
+    "nps_glkn": 40
+  },
+  "status_by_source": {
+    "hungary_2024": {
+      "protocol_nondetection": 2895,
+      "recorded_present": 511,
+      "unresolved": 5
+    },
+    "inbo_adult_chorus": {
+      "recorded_present": 704,
+      "protocol_nondetection": 582
+    },
+    "inbo_larval_census": {
+      "recorded_present": 1065,
+      "protocol_nondetection": 583
+    },
+    "naamp_positive_calls": {
+      "recorded_present": 310683
+    },
+    "nps_glkn": {
+      "protocol_nondetection": 128945,
+      "recorded_present": 18968
+    }
+  },
+  "method_scoped_species_record_counts": {
+    "hungary_2024": {
+      "bottletrap": 558,
+      "dipnet": 531,
+      "visual": 1161,
+      "acoustic": 1161
+    },
+    "inbo_adult_chorus": {
+      "chorus": 1286
+    },
+    "inbo_larval_census": {
+      "larval_census": 1648
+    },
+    "naamp_positive_calls": {
+      "naamp_acoustic": 310683
+    },
+    "nps_glkn": {
+      "manual_audio": 147913
+    }
+  },
+  "environment_field_nonmissing_event_species_rows": {
+    "hungary_2024": {
+      "rain": 3411,
+      "depth": 3411,
+      "emergent": 3411,
+      "submerged": 3411,
+      "fish": 3411
+    },
+    "nps_glkn": {
+      "hydroperiod": 147913
+    }
+  },
+  "original_site_taxon_month_method_cells": 320424,
+  "source_event_method_richness_histogram": {
+    "hungary_2024": {
+      "assessed_9": 379,
+      "detected_2": 70,
+      "detected_1": 101,
+      "detected_4": 24,
+      "detected_0": 138,
+      "detected_7": 3,
+      "detected_5": 9,
+      "detected_3": 32,
+      "detected_6": 2
+    },
+    "inbo_adult_chorus": {
+      "assessed_1": 793,
+      "detected_1": 663,
+      "assessed_2": 53,
+      "detected_2": 14,
+      "assessed_3": 99,
+      "detected_0": 282,
+      "assessed_5": 18,
+      "detected_4": 1,
+      "detected_3": 3
+    },
+    "inbo_larval_census": {
+      "assessed_4": 120,
+      "detected_4": 65,
+      "assessed_1": 304,
+      "detected_0": 237,
+      "assessed_7": 2,
+      "detected_6": 5,
+      "assessed_2": 87,
+      "detected_1": 161,
+      "detected_3": 106,
+      "assessed_3": 128,
+      "detected_2": 107,
+      "assessed_5": 44,
+      "assessed_6": 12,
+      "detected_5": 15,
+      "detected_7": 1
+    },
+    "naamp_positive_calls": {
+      "assessed_1": 58326,
+      "detected_1": 58326,
+      "assessed_3": 28048,
+      "detected_3": 28048,
+      "assessed_2": 51561,
+      "detected_2": 51561,
+      "assessed_4": 10218,
+      "detected_4": 10218,
+      "assessed_5": 3220,
+      "detected_5": 3220,
+      "assessed_6": 892,
+      "detected_6": 892,
+      "assessed_8": 66,
+      "detected_8": 66,
+      "assessed_7": 271,
+      "detected_7": 271,
+      "assessed_9": 30,
+      "detected_9": 30,
+      "assessed_10": 5,
+      "detected_10": 5,
+      "assessed_11": 2,
+      "detected_11": 2
+    },
+    "nps_glkn": {
+      "assessed_10": 707,
+      "detected_2": 3836,
+      "assessed_9": 5041,
+      "detected_0": 3830,
+      "assessed_8": 3207,
+      "detected_3": 1023,
+      "assessed_11": 4144,
+      "detected_1": 7755,
+      "assessed_7": 3462,
+      "detected_4": 113,
+      "detected_5": 4
+    }
+  },
+  "cross_source_exact_name_overlap": [
+    {
+      "source_a": "hungary_2024",
+      "source_b": "inbo_adult_chorus",
+      "identical_verbatim_taxon_names": [
+        "Bufo bufo",
+        "Hyla arborea",
+        "Pelobates fuscus",
+        "Pelophylax ridibundus"
+      ],
+      "n": 4,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "hungary_2024",
+      "source_b": "inbo_larval_census",
+      "identical_verbatim_taxon_names": [
+        "Bufo bufo",
+        "Hyla arborea",
+        "Lissotriton vulgaris",
+        "Pelobates fuscus",
+        "Pelophylax ridibundus"
+      ],
+      "n": 5,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "hungary_2024",
+      "source_b": "nps_glkn",
+      "identical_verbatim_taxon_names": [],
+      "n": 0,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "hungary_2024",
+      "source_b": "naamp_positive_calls",
+      "identical_verbatim_taxon_names": [],
+      "n": 0,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "inbo_adult_chorus",
+      "source_b": "inbo_larval_census",
+      "identical_verbatim_taxon_names": [
+        "Bufo bufo",
+        "Hyla arborea",
+        "Pelobates fuscus",
+        "Pelophylax esculenta synklepton",
+        "Pelophylax lessonae",
+        "Pelophylax ridibundus",
+        "Rana arvalis",
+        "Rana temporaria"
+      ],
+      "n": 8,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": true
+    },
+    {
+      "source_a": "inbo_adult_chorus",
+      "source_b": "nps_glkn",
+      "identical_verbatim_taxon_names": [],
+      "n": 0,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "inbo_adult_chorus",
+      "source_b": "naamp_positive_calls",
+      "identical_verbatim_taxon_names": [],
+      "n": 0,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "inbo_larval_census",
+      "source_b": "nps_glkn",
+      "identical_verbatim_taxon_names": [],
+      "n": 0,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "inbo_larval_census",
+      "source_b": "naamp_positive_calls",
+      "identical_verbatim_taxon_names": [],
+      "n": 0,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    },
+    {
+      "source_a": "nps_glkn",
+      "source_b": "naamp_positive_calls",
+      "identical_verbatim_taxon_names": [
+        "Anaxyrus americanus",
+        "Anaxyrus fowleri",
+        "Lithobates catesbeianus",
+        "Lithobates clamitans",
+        "Lithobates palustris",
+        "Lithobates pipiens",
+        "Lithobates septentrionalis",
+        "Lithobates sylvaticus",
+        "Pseudacris crucifer"
+      ],
+      "n": 9,
+      "taxonomic_synonym_mapping_performed": false,
+      "same_physical_sites": false,
+      "publisher_exact_locationID_can_join_within_INBO": false
+    }
+  ],
+  "naamp_completed_stop_survey_opportunities": 198757,
+  "no_taxon_absences_generated_from_naamp_positive_only": true,
+  "NAAMP_unambiguous_original_Latin_binomials_extracted_for_exact_source_name_matching": true,
+  "ambiguous_NAAMP_complexes_left_original_and_source_scoped": true,
+  "no_unverified_taxonomic_synonym_mapping": true,
+  "no_native_species_codes_force_matched_to_binomials": true,
+  "life_stage_removed_from_occurrence_primary_key": true,
+  "underlying_source_stage_labels_still_available_in_upstream_artifact": true,
+  "do_not_interpret_shared_taxon_names_as_same_sampling_unit": true,
+  "GBIF_1_degree_presence_only_not_merged_with_ponds": true,
+  "no_predation_competition_or_persistency_claim_from_source_status": true,
+  "raw_location_tokens_committed": false,
+  "input": "/tmp/frogcs_original_source_units/common_observation_events.csv.gz",
+  "canonical_event_table_filename": "species_occurrence_events.csv.gz",
+  "canonical_site_month_table_filename": "species_occurrence_site_month.csv.gz",
+  "naamp_survey_opportunities_filename": "naamp_surveyed_stop_opportunities.csv.gz",
+  "run_provenance": {
+    "github_actions_run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40265169372",
+    "job_id": 121385879188,
+    "classification": "verified native original survey occurrence; no species absence invented; stage not analysis key"
+  }
+}
