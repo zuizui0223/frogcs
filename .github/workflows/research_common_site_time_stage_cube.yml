@@ -1,0 +1,49 @@
+name: Research — common site×month ecological observation cube
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/build_common_ecology_units.py
+      - research/CANONICAL_SITE_TIME_STAGE_OBSERVATION_CONTRACT_V1.md
+      - .github/workflows/research_common_site_time_stage_cube.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  harmonize-frog-observational-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-scoped numerical requirements
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3
+      - name: Syntax and source provenance validation
+        run: python3 -m py_compile research/scripts/build_common_ecology_units.py
+      - name: Build source-namespaced canonical site/year/month/taxon/stage, no causal joins
+        run: python3 research/scripts/build_common_ecology_units.py --out /tmp/frogcs_common_units
+      - name: Check source integrity, native wetland vs recording locations and missing stage zeros
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('/tmp/frogcs_common_units/observed_profile.json').read_text())
+          assert x['raw_wildlife_source_site_ids_exported'] is False
+          assert x['naamp_rc6_spatial_metric_recomputed'] is False
+          assert x['GBIF_1degree_stage_grid_mixed_with_real_ponds'] is False
+          assert x['common_water_plant_predator_stage_cohort_fate_measured_in_one_original_unit'] is False
+          assert x['sources']['inbo']['status']=='SOURCE_AUTHENTICATED_CROSSWALK_BUILT'
+          assert x['sources']['hungary']['status']=='SOURCE_AUTHENTICATED_CROSSWALK_BUILT'
+          assert x['sources']['nps']['status']=='SOURCE_AUTHENTICATED_CROSSWALK_BUILT'
+          assert x['profile']['total_source_specific_observation_rows']['nps_glkn']==147913
+          print('CANONICAL_CROSS_DATASET_UNIT_WITH_SOURCE_CEILINGS_PASS')
+          PY
+      - name: Publish event-level and coarsened source-native tables as ephemeral artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs_common_ecology_units_2026-10-26
+          path: /tmp/frogcs_common_units/
+          if-no-files-found: warn
