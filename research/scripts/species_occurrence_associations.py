@@ -29,7 +29,7 @@ def pair_phi(n11,n10,n01,n00):
     return (n11*n00-n10*n01)/math.sqrt(val) if val else None
 
 def pair_audit(events):
-    edges=defaultdict(lambda:{"cells":Counter(),"site_cells":defaultdict(Counter)})
+    edges=defaultdict(lambda:{"cells":Counter(),"site_cells":defaultdict(Counter),"site_year_month_cells":defaultdict(Counter)})
     source_events=Counter()
     positive_only=Counter()
     richer=defaultdict(Counter)
@@ -56,6 +56,7 @@ def pair_audit(events):
                 cell=f"{s1}{s2}"
                 ent=edges[key];ent["cells"][cell]+=1
                 ent["site_cells"][items[0]["site_token"]][cell]+=1
+                ent["site_year_month_cells"][(items[0]["site_token"],items[0]["year"],items[0]["month"])][cell]+=1
             if src=="naamp_positive_calls":
                 # Presence-only: pair counting without any missing-based zero.
                 for a,b in combinations(sorted(present),2):
@@ -79,6 +80,44 @@ def pair_audit(events):
                 if z is not None:p.append(z)
             if len(p)>=700:
                 interval=[float(z) for z in np.quantile(p,[.025,.975])]
+        # Compare observed co-detection with the independence expectation
+        # conditional on each same-site × calendar-year × month survey margin.
+        # This does NOT remove hour-of-day, weather and detection bias.
+        informative=0;informative_events=0
+        observed11=0.0;expected11=0.0
+        site_excess=defaultdict(lambda:[0.0,0])
+        for (site,year,month),cellcounts in o["site_year_month_cells"].items():
+            n=sum(cellcounts.values())
+            ap=cellcounts["11"]+cellcounts["10"]
+            bp=cellcounts["11"]+cellcounts["01"]
+            if n<2 or ap in (0,n) or bp in (0,n):
+                continue
+            informative+=1;informative_events+=n
+            obs=cellcounts["11"]
+            exp=ap*bp/n
+            observed11+=obs;expected11+=exp
+            site_excess[site][0]+=obs-exp
+            site_excess[site][1]+=n
+        conditional={"conditioning":"source native site × calendar year × month, species event-assessment margins",
+                     "n_informative_site_year_month_strata":informative,
+                     "n_original_sites_in_informative_strata":len(site_excess),
+                     "n_both_species_assessed_in_informative_strata":informative_events,
+                     "n_exact_co_detections_observed":int(observed11),
+                     "independence_expected_co_detections_given_source_site_month":float(expected11),
+                     "excess_joint_detection_per_100_same_stratum_assessments":(
+                         float(100*(observed11-expected11)/informative_events)
+                         if informative_events else None),
+                     "site_bootstrap_95ci_conditional_on_fixed_strata":None,
+                     "within_site_month_signal_estimable":False,
+                     "inference_ceiling":"Within-site-month reporting residual, not competition or direct species interactions"}
+        if informative>=10 and len(site_excess)>=5 and informative_events>=50:
+            vals=np.array(list(site_excess.values()),dtype=float)
+            idx=rng.integers(0,len(vals),size=(NBOOT,len(vals)))
+            numer=np.sum(vals[idx,0],axis=1)
+            denom=np.sum(vals[idx,1],axis=1)
+            scored=100*numer/denom
+            conditional["site_bootstrap_95ci_conditional_on_fixed_strata"]=[float(z) for z in np.quantile(scored,[.025,.975])]
+            conditional["within_site_month_signal_estimable"]=True
         records.append({
           "source_id":src,"method":method,"species_a":a,"species_b":b,
           "both_species_explicitly_assessed_original_events":n,
@@ -89,6 +128,7 @@ def pair_audit(events):
           "both_protocol_not_detected_n00":n00,
           "phi_same_event":rho,
           "site_resample_ci95_phi":interval,
+          "season_site_conditioned_co_detection":conditional,
           "estimable_reporting_association":interval is not None,
           "source_stop_semantics":"Detection-scoped 0; not verified ecological species absence",
           "actual_biotic_competition_identified":False,
