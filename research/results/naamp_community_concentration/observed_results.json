@@ -1,0 +1,118 @@
+{
+  "coverage": {
+    "pairs": 2878,
+    "routes": 433,
+    "species_stop_cells": 189070
+  },
+  "folds": {
+    "A": {
+      "environment_training": {
+        "training_fold": "A",
+        "n_runs": 3939,
+        "n_routes": 398,
+        "n_species_total": 53,
+        "n_species_estimable": 43
+      },
+      "beta": 0.19231422715949312,
+      "boundary_optimum": false,
+      "training_pairs": 1514,
+      "test_pairs": 1364,
+      "environment_species_estimable": 43,
+      "heldout_gain_per_cell": 0.0004705736752235922
+    },
+    "B": {
+      "environment_training": {
+        "training_fold": "B",
+        "n_runs": 3909,
+        "n_routes": 409,
+        "n_species_total": 53,
+        "n_species_estimable": 42
+      },
+      "beta": 0.1599476048212688,
+      "boundary_optimum": false,
+      "training_pairs": 1364,
+      "test_pairs": 1514,
+      "environment_species_estimable": 42,
+      "heldout_gain_per_cell": 0.0006649844067573994
+    }
+  },
+  "observed_N_L_C": [
+    0.19901218428037334,
+    0.6872475974621598,
+    1.669352651531856
+  ],
+  "models": {
+    "M0_environment_own_history_dry_anchor": {
+      "raw_predicted_N_L_C_mean": [
+        0.23804707274193118,
+        0.5527450711971292,
+        1.0426784834292606
+      ],
+      "conditional_C": {
+        "predicted_concentration_beta": 1.3580566667993608,
+        "observed_concentration_beta": 1.669352651531856,
+        "observed_conditional_residual": 0.3112959847324952,
+        "null_residual_ci95": [
+          -0.12368355444740511,
+          0.12744909188062548
+        ],
+        "conditional_upper_tail_p": 0.0004997501249375312,
+        "above_upper_95": true,
+        "null_regression_r2": 0.5971022956410873
+      }
+    },
+    "M1_add_prior_other_taxa": {
+      "raw_predicted_N_L_C_mean": [
+        0.24006073610953724,
+        0.5521302240373821,
+        1.024823089611327
+      ],
+      "conditional_C": {
+        "predicted_concentration_beta": 1.3349177273498278,
+        "observed_concentration_beta": 1.669352651531856,
+        "observed_conditional_residual": 0.33443492418202814,
+        "null_residual_ci95": [
+          -0.12113007851723889,
+          0.1237066423628634
+        ],
+        "conditional_upper_tail_p": 0.0004997501249375312,
+        "above_upper_95": true,
+        "null_regression_r2": 0.602395244736986
+      }
+    }
+  },
+  "M0_minus_M1_conditional_C_residual": -0.023138939449532936,
+  "oracle_total_calibrated_logscore_gain_per_cell": 0.0005730899386917288,
+  "fixed_model_route_bootstrap_95ci_gain_per_cell": [
+    0.00025032223873067843,
+    0.000896656834531929
+  ],
+  "simulation_draws": 2000,
+  "simulation_seed": 20261027,
+  "independent_simulation_per_species_stop": true,
+  "heldout_response_total_used_for_calibration": true,
+  "unconditional_prediction": false,
+  "same_subset_comparison": true,
+  "causal_competition_fraction_identified": false,
+  "direct_local_water_vegetation_adjustment": false,
+  "model_refitting_in_bootstrap": false,
+  "analysis": "NAAMP_prior_community_original_concentration_diagnostic_v1",
+  "status": "POSTHOC_EXPLORATORY_ORACLE_TOTAL_CONFIGURATION",
+  "contract": "research/NAAMP_COMMUNITY_CONCENTRATION_CONTRACT_2026-10-26.md",
+  "provenance": {
+    "full_history_pairs": 2916,
+    "full_history_routes": 439,
+    "full_history_observed_N_L_C": [
+      0.19820082505375816,
+      0.6809252254809651,
+      1.6503201354367851
+    ],
+    "excluded_missing_history_pairs": 38,
+    "source_sha256": {
+      "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+      "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+      "Counts.csv": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+    }
+  },
+  "code_sha256": "fdf54c1cca6e1f8af91897c35e65bae8966dcbedd27b1ff048d12964ea86856e"
+}
