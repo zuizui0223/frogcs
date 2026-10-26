@@ -87,17 +87,17 @@ def pair_audit(events):
         observed11=0.0;expected11=0.0
         site_excess=defaultdict(lambda:[0.0,0])
         for (site,year,month),cellcounts in o["site_year_month_cells"].items():
-            n=sum(cellcounts.values())
+            n_stratum=sum(cellcounts.values())
             ap=cellcounts["11"]+cellcounts["10"]
             bp=cellcounts["11"]+cellcounts["01"]
-            if n<2 or ap in (0,n) or bp in (0,n):
+            if n_stratum<2 or ap in (0,n_stratum) or bp in (0,n_stratum):
                 continue
-            informative+=1;informative_events+=n
+            informative+=1;informative_events+=n_stratum
             obs=cellcounts["11"]
-            exp=ap*bp/n
+            exp=ap*bp/n_stratum
             observed11+=obs;expected11+=exp
             site_excess[site][0]+=obs-exp
-            site_excess[site][1]+=n
+            site_excess[site][1]+=n_stratum
         conditional={"conditioning":"source native site × calendar year × month, species event-assessment margins",
                      "n_informative_site_year_month_strata":informative,
                      "n_original_sites_in_informative_strata":len(site_excess),
@@ -118,6 +118,8 @@ def pair_audit(events):
             scored=100*numer/denom
             conditional["site_bootstrap_95ci_conditional_on_fixed_strata"]=[float(z) for z in np.quantile(scored,[.025,.975])]
             conditional["within_site_month_signal_estimable"]=True
+        if n!=n11+n10+n01+n00:
+            raise ValueError("Pair contingency sample denominator corrupted")
         records.append({
           "source_id":src,"method":method,"species_a":a,"species_b":b,
           "both_species_explicitly_assessed_original_events":n,
