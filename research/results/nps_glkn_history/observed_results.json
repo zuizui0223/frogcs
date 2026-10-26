@@ -1,0 +1,190 @@
+{
+  "source": "US NPS GLKN, DOI 10.57830/2320505, public domain",
+  "source_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+  "source_bytes": 68581307,
+  "contract": "research/NPS_GLKN_STRICT_HISTORY_HYDROPERIOD_CONTRACT_V0_1.md",
+  "schema_check": {
+    "rows_raw": 147913,
+    "rows_valid": 147913,
+    "duplicate_audio_species_records": 0,
+    "scored_species_audio_rows": 147913,
+    "annual_species_site_year_rows": 4593,
+    "parks": 7,
+    "physical_station_ids": 66,
+    "taxa": 13,
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "hydroperiod_annual_counts": {
+      "Permanent": 1957,
+      "Semi-permanent": 1562,
+      "Ephemeral": 1074
+    },
+    "annual_strong_rate": 0.3172218593511866
+  },
+  "strictly_prior_year_rows": 3947,
+  "all_candidate_park_taxon_year_groups": 451,
+  "informative_site_taxon_year_rows": 1815,
+  "informative_strata": 195,
+  "informative_species": 9,
+  "informative_sites": 66,
+  "informative_years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "informative_hydroperiod_counts": {
+    "Permanent": 769,
+    "Semi-permanent": 614,
+    "Ephemeral": 432
+  },
+  "crude_prior_strong_risk": {
+    "0": 0.11901983663943991,
+    "1": 0.6691022964509394
+  },
+  "main_strict_prior_strong": {
+    "estimable": true,
+    "outcome": "strong",
+    "adjusted": false,
+    "n_site_taxon_year_rows": 1815,
+    "n_park_species_clusters": 38,
+    "n_park_species_year_strata": 195,
+    "coefficients": {
+      "own_prior_strong": 0.4673871339045916
+    },
+    "own_prior_strong_beta": 0.4673871339045916,
+    "ci95_park_species_block": [
+      0.3941115858426876,
+      0.5371398262556353
+    ],
+    "valid_boot_replicates": 2000,
+    "nuisance_covariates_dropped_for_identifiability": [],
+    "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+  },
+  "adjusted_strict_prior_strong": {
+    "estimable": true,
+    "outcome": "strong",
+    "adjusted": true,
+    "n_site_taxon_year_rows": 1815,
+    "n_park_species_clusters": 38,
+    "n_park_species_year_strata": 195,
+    "coefficients": {
+      "own_prior_strong": 0.46418762439474126,
+      "other_prior_fixed": -0.10377805910934387,
+      "log_current_effort": 0.2811728620840743,
+      "log_prior_effort": 0.16644786531300235,
+      "prior_years_seen": -0.03424459148575431,
+      "hydro_Permanent": -0.028988024766031812,
+      "hydro_Semi-permanent": -0.008020128379597095
+    },
+    "own_prior_strong_beta": 0.46418762439474126,
+    "ci95_park_species_block": [
+      0.3825656449992106,
+      0.5330791236678137
+    ],
+    "valid_boot_replicates": 2000,
+    "nuisance_covariates_dropped_for_identifiability": [
+      "other_prior_missing"
+    ],
+    "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+  },
+  "temporal_subgroups": {
+    "early_2017_2020": {
+      "estimable": true,
+      "outcome": "strong",
+      "adjusted": false,
+      "n_site_taxon_year_rows": 1060,
+      "n_park_species_clusters": 37,
+      "n_park_species_year_strata": 116,
+      "coefficients": {
+        "own_prior_strong": 0.46293378580374106
+      },
+      "own_prior_strong_beta": 0.46293378580374106,
+      "ci95_park_species_block": [
+        0.3646905075412949,
+        0.5497532740815811
+      ],
+      "valid_boot_replicates": 2000,
+      "nuisance_covariates_dropped_for_identifiability": [],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    },
+    "later_2021_2023": {
+      "estimable": true,
+      "outcome": "strong",
+      "adjusted": false,
+      "n_site_taxon_year_rows": 755,
+      "n_park_species_clusters": 30,
+      "n_park_species_year_strata": 79,
+      "coefficients": {
+        "own_prior_strong": 0.47389123807650685
+      },
+      "own_prior_strong_beta": 0.47389123807650685,
+      "ci95_park_species_block": [
+        0.3581746624319849,
+        0.5873518871907847
+      ],
+      "valid_boot_replicates": 2000,
+      "nuisance_covariates_dropped_for_identifiability": [],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    }
+  },
+  "secondary_thresholds": {
+    "any_call": {
+      "estimable": true,
+      "outcome": "any_call",
+      "adjusted": false,
+      "n_site_taxon_year_rows": 1815,
+      "n_park_species_clusters": 38,
+      "n_park_species_year_strata": 195,
+      "coefficients": {
+        "own_prior_strong": 0.4835257066120988
+      },
+      "own_prior_strong_beta": 0.4835257066120988,
+      "ci95_park_species_block": [
+        0.4066238260141196,
+        0.556361895759282
+      ],
+      "valid_boot_replicates": 2000,
+      "nuisance_covariates_dropped_for_identifiability": [],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    },
+    "full": {
+      "estimable": true,
+      "outcome": "full",
+      "adjusted": false,
+      "n_site_taxon_year_rows": 1815,
+      "n_park_species_clusters": 38,
+      "n_park_species_year_strata": 195,
+      "coefficients": {
+        "own_prior_strong": 0.27759304258856643
+      },
+      "own_prior_strong_beta": 0.27759304258856643,
+      "ci95_park_species_block": [
+        0.18933890648693386,
+        0.3634020588417963
+      ],
+      "valid_boot_replicates": 2000,
+      "nuisance_covariates_dropped_for_identifiability": [],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    }
+  },
+  "falsification_limits": [
+    "Not NPS rainfall-conditioned activation geometry or frogcs RC6 C.",
+    "Max call index increases mechanically with recordings per year.",
+    "Site use = acoustic use; no individuals, breeding success, fish or emergent plant density.",
+    "Hydroperiod is categorical; not measured water level at each recording.",
+    "Residual association can arise from stable unmeasured habitat suitability.",
+    "Within park×taxon×year selection requires historical contrast; external generality restricted."
+  ]
+}

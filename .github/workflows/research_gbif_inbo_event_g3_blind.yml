@@ -1,0 +1,37 @@
+name: Research - INBO GBIF same-event stage audit G3
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/gbif_inbo_event_g3_blind.py
+      - .github/workflows/research_gbif_inbo_event_g3_blind.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  event-source-stage-opportunity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-blind code syntax
+        run: python3 -m py_compile research/scripts/gbif_inbo_event_g3_blind.py
+      - name: Actual source event stage coverage no abundance or zeros
+        run: python3 research/scripts/gbif_inbo_event_g3_blind.py --out /tmp/gbif_inbo_event_g3_blind.json
+      - name: Fail closed on unmeasured trophic controls
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/gbif_inbo_event_g3_blind.json'))
+          assert d['source_coverage_only'] is True
+          assert d['has_source_assessed_nonpredatory_benthos_control'] is False
+          assert d['G3_same_event_predator_prey_negative_control_test_eligible'] is False
+          assert all(x['all_raw_site_keys_kept_private'] for x in d['sources'].values())
+          print('EVENT_SOURCE_BLIND_G3_QA_PASS')
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inbo_g3_sameevent_blind
+          path: /tmp/gbif_inbo_event_g3_blind.json
+          if-no-files-found: warn

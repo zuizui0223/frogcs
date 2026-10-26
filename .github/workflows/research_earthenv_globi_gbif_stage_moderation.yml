@@ -1,0 +1,65 @@
+name: Global EarthEnv wetland by GloBI GBIF matched-stage interactions
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/earthenv_wetland_matched_stage_links.py
+      - .github/workflows/research_earthenv_globi_gbif_stage_moderation.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-audited-global-ecology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check fixed EarthEnv habitat bin and source-stage rain aggregation
+        run: python research/scripts/earthenv_wetland_matched_stage_links.py --self-test
+      - name: Read audited EarthEnv three global 1degree static wetland classes
+        uses: actions/download-artifact@v4
+        with:
+          name: earthenv-global-flooded-openwater-herbaceous-1deg
+          run-id: 40197871125
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/earthenv
+      - name: Read source-complete Anura and Odonata GBIF experimental stage grid
+        uses: actions/download-artifact@v4
+        with:
+          name: expanded-full-globi-anura-odonata-gbif1deg-stage-grid
+          run-id: 40194946916
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/expanded
+      - name: Read matched GloBI predator-prey and same-guild alternative prey comparisons
+        uses: actions/download-artifact@v4
+        with:
+          name: expanded-full-globi-gbif-stage-prey-specificity
+          run-id: 40195786751
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/matched
+      - name: Read WorldClim monthly rainfall on audited GBIF-reporting grid months
+        uses: actions/download-artifact@v4
+        with:
+          name: gbif-stage-worldclim-2010-2024-monthly-rain-source-join
+          run-id: 40194019270
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/rain
+      - name: Compare known versus matched prey monthly GBIF reporting in flooded vegetation strata
+        run: |
+          python research/scripts/earthenv_wetland_matched_stage_links.py \
+            --gbif research/data/expanded/focal_full_Anura_Odonata_stage_grids.csv \
+            --matched research/data/matched/matched_prey_control_comparisons.csv \
+            --earthenv research/data/earthenv/earthenv_1deg_landcover_background.csv \
+            --rain research/data/rain/unique_geographic_rain_exposure_cells.csv \
+            --out research/results/earthenv_gbif_matched_stage
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: global-earthenv-gbif-flooded-wetland-matched-stage-prey
+          path: research/results/earthenv_gbif_matched_stage
+          if-no-files-found: error

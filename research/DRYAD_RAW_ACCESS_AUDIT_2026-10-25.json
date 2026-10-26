@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-25",
+  "method": "official public-archive links tested from GitHub Actions Ubuntu 24.04, source-blind",
+  "workflow": "https://github.com/zuizui0223/frogcs/actions/runs/40181208313",
+  "outcomes": [
+    {
+      "study": "Hamer 2021, 55 Australian wetlands",
+      "url": "https://datadryad.org/api/v2/files/453628/download",
+      "status": "HTTP 401 Unauthorized",
+      "file": "Kooragang_site_covariates.csv"
+    },
+    {
+      "study": "Hamer 2021, 55 Australian wetlands",
+      "url": "https://datadryad.org/downloads/file_stream/453628",
+      "status": "HTTP 403 Forbidden",
+      "file": "Kooragang_site_covariates.csv"
+    },
+    {
+      "study": "Hamer 2021, 55 Australian wetlands",
+      "url": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.b8gtht7b5/download",
+      "status": "HTTP 401 Unauthorized",
+      "file": "full zipped original site/species data"
+    },
+    {
+      "study": "Lishawa 2023 Great Lakes Typha experiment",
+      "url": "https://datadryad.org/api/v2/files/2825922/download",
+      "status": "HTTP 401 Unauthorized",
+      "file": "Lishawa_et_al_data.xlsx"
+    }
+  ],
+  "conclusion": "Raw Hamer/Lishawa models were NOT refit. Metadata and published article results were verifiable, but official raw file endpoints deny this execution environment. After multiple methods returned 401/403, stop blind retries. Continue with actual accessible 2024 Zenodo Hungary and U.S. NPS 2016-23 direct CSV datasets. Do not claim data private; error is for this execution context.",
+  "original_doi": [
+    "https://doi.org/10.5061/dryad.b8gtht7b5",
+    "https://doi.org/10.5061/dryad.wdbrv15tb"
+  ]
+}

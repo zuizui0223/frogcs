@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Hyla+sarda&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:08.261380+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "29c1d0f334c40cc3b4f44940024d2e8e2ddc906aafe195dce82ef2a34d61bb92",
+  "response": {
+    "usageKey": 2427563,
+    "scientificName": "Hyla sarda (De Betta, 1853)",
+    "canonicalName": "Hyla sarda",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Hyla",
+    "species": "Hyla sarda",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2423589,
+    "speciesKey": 2427563,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Anaxyrus+boreas&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:34.005538+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "9c0148d72790719a9a010d0d54021587823b2c2c598838bd54c72b7e49dffc43",
+  "response": {
+    "usageKey": 2422924,
+    "scientificName": "Anaxyrus boreas (Baird & Girard, 1852)",
+    "canonicalName": "Anaxyrus boreas",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Bufonidae",
+    "genus": "Anaxyrus",
+    "species": "Anaxyrus boreas",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6727,
+    "genusKey": 2422857,
+    "speciesKey": 2422924,
+    "class": "Amphibia"
+  }
+}

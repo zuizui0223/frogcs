@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lithobates+blairi&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:26.567234+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "3b6d78992e8f3a0607fffe6324a998a5a16ee9475e1dee46c72391bf9179c4fe",
+  "response": {
+    "usageKey": 2427062,
+    "scientificName": "Lithobates blairi (Mecham, Littlejohn, Oldham, Brown & Brown, 1973)",
+    "canonicalName": "Lithobates blairi",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "species": "Lithobates blairi",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "speciesKey": 2427062,
+    "class": "Amphibia"
+  }
+}

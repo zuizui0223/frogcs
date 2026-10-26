@@ -1,0 +1,30 @@
+name: Global GloBI GBIF full archive preflight
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/audit_anonymous_global_parquet.py
+      - .github/workflows/research_global_parquet_preflight.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-full-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install PyArrow reader for remote Parquet metadata only
+        run: python -m pip install --disable-pip-version-check 'pyarrow>=16,<25'
+      - name: Audit anonymous GloBI and GBIF row-group schema without bulk download
+        run: python research/scripts/audit_anonymous_global_parquet.py --out research/results/full_global_parquet_preflight
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: full-global-parquet-source-metadata
+          path: research/results/full_global_parquet_preflight/source_metadata.json
+          if-no-files-found: error

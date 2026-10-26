@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Neurergus+crocatus&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:25.980024+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "d2e18859ed72dbc35f4733d92ca4fe36527b07044391cbb48f6f79bd18383a96",
+  "response": {
+    "usageKey": 2431869,
+    "scientificName": "Neurergus crocatus Cope, 1862",
+    "canonicalName": "Neurergus crocatus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Neurergus",
+    "species": "Neurergus crocatus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431867,
+    "speciesKey": 2431869,
+    "class": "Amphibia"
+  }
+}

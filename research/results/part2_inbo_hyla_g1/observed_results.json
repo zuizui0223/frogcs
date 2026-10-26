@@ -1,0 +1,114 @@
+{
+  "status": "EMPIRICAL_G1_FIT_EXPLORATORY",
+  "source_blind_eligibility": {
+    "shared_site_ids": 96,
+    "distinct_eligible_raw_site_year_rows": 245,
+    "discards": {},
+    "locality_contradictions": 0
+  },
+  "site_environment_source_qa": {
+    "permanent_water_raw_labels": {
+      "MISSING": 245
+    },
+    "larval_effort_category_labels": {
+      "MISSING": 80,
+      "alleen metamorfen op land geteld": 4,
+      "sweep for larvae only": 147,
+      "sweep for larvae, metamorphs counted on land": 14
+    },
+    "note": "Raw site-metadata category distribution at exact matched events; not outcome-selected"
+  },
+  "complete_case_site_years": 245,
+  "independent_site_ids": 93,
+  "outcome_recorded_present": 149,
+  "outcome_recorded_absent": 96,
+  "prior_choir_recorded_present": 212,
+  "prior_choir_recorded_absent": 33,
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "simultaneous_measured_predator_stage": false,
+  "true_larval_survival_recorded": false,
+  "real_drought_drydown_recorded": false,
+  "model_config": {
+    "use_permanent": false,
+    "permanent_water_coverage": 0,
+    "permanent_water_levels": [],
+    "effort_type_observed_fraction": 0.673469387755102,
+    "sampling_effort_numeric_measured": false
+  },
+  "models": {
+    "M0_time_hydrology_recording": {
+      "held_out_site_group_brier": 0.2582270389347674,
+      "held_out_site_group_logloss": 0.7187547127299845,
+      "probability_range": [
+        0.36928515344425017,
+        0.8444754524683429
+      ]
+    },
+    "M1_add_prior_chorus": {
+      "held_out_site_group_brier": 0.2427116177606475,
+      "held_out_site_group_logloss": 0.6937721414447393,
+      "probability_range": [
+        0.08563749545635368,
+        0.8768088046709073
+      ]
+    }
+  },
+  "M1_minus_M0_heldout_BRIER_improvement_observation_weighted": 0.015515421174119876,
+  "M1_minus_M0_heldout_LOGLOSS_improvement_observation_weighted": 0.02498257128524512,
+  "site_equal_weight_bootstrap_CI95_BRIER_gain": [
+    0.0011219949920136694,
+    0.044648707439605806
+  ],
+  "site_equal_weight_bootstrap_CI95_LOGLOSS_gain": [
+    -0.007940502627644994,
+    0.09625102495942121
+  ],
+  "site_block_bootstrap_conditions": "2000 resamples of source-site mean OOF differences, not refitted",
+  "note": "Same species cross-stage recorded call→larva, not wetland-specific trophic predation or larval survival.",
+  "temporal_2024_2025_validation": {
+    "estimable": true,
+    "n_future_rows": 35,
+    "n_future_distinct_sites": 34,
+    "models": {
+      "M0": {
+        "brier": 0.27839159389033974,
+        "logloss": 0.7506062633825082
+      },
+      "M1": {
+        "brier": 0.3478624500206191,
+        "logloss": 1.0091532803328447
+      }
+    }
+  },
+  "source": "INBO Meetnetten.be original 2026 event DwC-A versions; CC0",
+  "original_DOIs": [
+    "10.15468/d4bu8j",
+    "10.15468/swgure"
+  ],
+  "prior_outcome_blind_frozen_spec": "research/INBO_HYLA_ACOUSTIC_TO_LARVA_G1_FROZEN_2026-10-26.md",
+  "focal_taxon": "Hyla arborea",
+  "comparison_species_Pelobates_fuscus": "NOT_ESTIMABLE_AT_G0_1_2_SITE_YEARS",
+  "no_reanalysis_of_RC6": true,
+  "raw_sensitive_location_ids_exported": false,
+  "causal_stage_predation_interpretation": false,
+  "reproduction_success_interpretation": false,
+  "run_provenance": {
+    "url": "https://github.com/zuizui0223/frogcs/actions/runs/40211162054",
+    "job_id": 121222484272,
+    "status": "completed_successfully",
+    "source": "Pinned original INBO source archives (raw binaries not redistributed)",
+    "original_analysis_source": "research/scripts/inbo_hyla_acoustic_to_larva_g1.py"
+  },
+  "reporting_decision": "SITE_HELDOUT_IMPROVES_SMALL; TEMPORAL_HOLDOUT_WORSENS; NO_WATER_COLUMN_IN_FOCAL_SAMPLE; NOT_A_GENERAL_STAGE_OR_PREDATION_MECHANISM"
+}

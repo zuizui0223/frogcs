@@ -1,0 +1,285 @@
+{
+  "status": "REAL_WITHIN_SOURCE_ASSOCIATION_AND_STAGE_PHENOLOGY_EXPLORATORY",
+  "report_date": "2026-10-26",
+  "hungary": {
+    "source": "HUNGARY_2024",
+    "record_grain": "actual wetland×dated acoustic observation, stage=adult_call report",
+    "n_wetland_sites": 29,
+    "n_acoustic_surveys": 129,
+    "n_distinct_days": 26,
+    "frogs_positive_survey_count": 40,
+    "sufficient_multi_site_dates_3plus": 18,
+    "calendar_months": {
+      "3": {
+        "survey_events": 18,
+        "frog_call_detected_events": 2,
+        "surveyed_wetland_sites": 14,
+        "prec_mean_over_sampled_events": 0.21111111111111114,
+        "frog_call_fraction_surveyed_events": 0.1111111111111111
+      },
+      "4": {
+        "survey_events": 81,
+        "frog_call_detected_events": 28,
+        "surveyed_wetland_sites": 26,
+        "prec_mean_over_sampled_events": 0.23333333333333336,
+        "frog_call_fraction_surveyed_events": 0.345679012345679
+      },
+      "5": {
+        "survey_events": 28,
+        "frog_call_detected_events": 10,
+        "surveyed_wetland_sites": 23,
+        "prec_mean_over_sampled_events": 0.010714285714285716,
+        "frog_call_fraction_surveyed_events": 0.35714285714285715
+      },
+      "6": {
+        "survey_events": 2,
+        "frog_call_detected_events": 0,
+        "surveyed_wetland_sites": 2,
+        "prec_mean_over_sampled_events": 0,
+        "frog_call_fraction_surveyed_events": 0
+      }
+    },
+    "taxa_call_report_counts": {
+      "Pelobates fuscus": 5,
+      "Rana dalmatina": 0,
+      "Bombina bombina": 8,
+      "Hyla arborea": 18,
+      "Pelophylax ridibundus": 16,
+      "Bufotes viridis": 13,
+      "Bufo bufo": 0
+    },
+    "site_and_date_exploratory_correlations": {
+      "source_site_call_fraction_vs_cover_emerged": {
+        "descriptive_spearman_r": 0.06367325716078982,
+        "source_units": 29,
+        "observations": 29,
+        "site_bootstrap_ci95_conditional": [
+          -0.37392783824546827,
+          0.4484910385449598
+        ],
+        "successful_bootstrap_draws": 1000,
+        "causal_interpretation_permitted": false
+      },
+      "source_site_call_fraction_vs_cover_submers": {
+        "descriptive_spearman_r": 0.22019641904558646,
+        "source_units": 29,
+        "observations": 29,
+        "site_bootstrap_ci95_conditional": [
+          -0.208592887609466,
+          0.6010873342033789
+        ],
+        "successful_bootstrap_draws": 1000,
+        "causal_interpretation_permitted": false
+      },
+      "source_site_call_fraction_vs_depth": {
+        "descriptive_spearman_r": 0.2056715625780046,
+        "source_units": 29,
+        "observations": 29,
+        "site_bootstrap_ci95_conditional": [
+          -0.17533207440148132,
+          0.5446159145311127
+        ],
+        "successful_bootstrap_draws": 1000,
+        "causal_interpretation_permitted": false
+      },
+      "visit_call_report_vs_rain": {
+        "descriptive_spearman_r": -0.22727346336120507,
+        "source_units": 29,
+        "observations": 129,
+        "site_bootstrap_ci95_conditional": [
+          -0.30957642270103913,
+          -0.13732171185251874
+        ],
+        "successful_bootstrap_draws": 1000,
+        "causal_interpretation_permitted": false
+      },
+      "date_frog_fraction_vs_rain": {
+        "descriptive_spearman_r": -0.3331165871827842,
+        "independent_observed_calendar_dates": 26,
+        "observational_confounding": "DOY/field schedule/temperature; not rainfall manipulation"
+      }
+    },
+    "plant_emergence_dates_measured": false,
+    "individual_shelter_use_measured": false,
+    "only_once_site_plant_coverage_measured": true,
+    "water_depth_measured_not_permanence": true,
+    "source_plant_covariates_pct": [
+      "cover_emerged",
+      "cover_submers"
+    ],
+    "strong_chorus_intensity_measured": false,
+    "rain_variable_not_naamp_72h": true,
+    "all_raw_source_site_IDs_withheld": true
+  },
+  "inbo": {
+    "source": "INBO_CHORUS x INBO_LARVA",
+    "source_original_dataset_doI": [
+      "10.15468/d4bu8j",
+      "10.15468/swgure"
+    ],
+    "original_source_sha256": [
+      "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+      "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920"
+    ],
+    "support": "exact publisher source location ID × year, not NAAMP stop or photo grid",
+    "date_based_seasonal_stages_from_actual_surveyed_reports": true,
+    "calendar_climate_or_water_effects_not_jointly_measured": true,
+    "base": {
+      "site_year_chorus_assessed": 314,
+      "distinct_chorus_assessed_sites": 94,
+      "source_exact_locations_shared": 96
+    },
+    "phenology": {
+      "hyla_larva": {
+        "site_years_with_both_stage_sampling_opportunities": 245,
+        "site_years_with_positive_reports_in_both_stage_methods": 144,
+        "distinct_source_sites_of_positive_pairs": 66,
+        "two_stages_are_same_species": true,
+        "seasonal_first_report_summary": {
+          "first_record_lag_median_days": 51,
+          "first_record_lag_quartiles_days": [
+            39,
+            69
+          ],
+          "first_record_lag_minmax_days": [
+            8,
+            93
+          ],
+          "n_larval_first_positive_after_call_first_positive": 144,
+          "n_larval_first_positive_same_day": 0,
+          "n_larval_first_positive_before_call_first_positive": 0,
+          "same_calendar_month_fraction_among_positive_both": 0.013888888888888888,
+          "first_call_vs_larval_first_positive_DOY_correlation": {
+            "descriptive_spearman_r": 0.1310360966671822,
+            "source_units": 66,
+            "observations": 144,
+            "site_bootstrap_ci95_conditional": [
+              -0.005554632035395827,
+              0.2601987423465621
+            ],
+            "successful_bootstrap_draws": 1000,
+            "causal_interpretation_permitted": false
+          },
+          "year_coverage": {
+            "2016": 25,
+            "2017": 21,
+            "2018": 14,
+            "2019": 10,
+            "2020": 36,
+            "2021": 4,
+            "2022": 4,
+            "2023": 19,
+            "2024": 5,
+            "2025": 6
+          }
+        },
+        "same_calendar_month_report_does_not_prove_trophic_encounter": true
+      },
+      "caudata_larva": {
+        "site_years_with_both_stage_sampling_opportunities": 94,
+        "site_years_with_positive_reports_in_both_stage_methods": 75,
+        "distinct_source_sites_of_positive_pairs": 48,
+        "related_taxa_not_verified_trophic": true,
+        "seasonal_first_report_summary": {
+          "first_record_lag_median_days": 50,
+          "first_record_lag_quartiles_days": [
+            42,
+            68
+          ],
+          "first_record_lag_minmax_days": [
+            8,
+            93
+          ],
+          "n_larval_first_positive_after_call_first_positive": 75,
+          "n_larval_first_positive_same_day": 0,
+          "n_larval_first_positive_before_call_first_positive": 0,
+          "same_calendar_month_fraction_among_positive_both": 0.06666666666666667,
+          "first_call_vs_larval_first_positive_DOY_correlation": {
+            "descriptive_spearman_r": 0.29870627939676964,
+            "source_units": 48,
+            "observations": 75,
+            "site_bootstrap_ci95_conditional": [
+              0.1090825357328817,
+              0.4841483347689628
+            ],
+            "successful_bootstrap_draws": 1000,
+            "causal_interpretation_permitted": false
+          },
+          "year_coverage": {
+            "2016": 11,
+            "2017": 3,
+            "2018": 10,
+            "2019": 12,
+            "2020": 11,
+            "2021": 5,
+            "2022": 7,
+            "2023": 8,
+            "2024": 1,
+            "2025": 7
+          }
+        },
+        "same_calendar_month_report_does_not_prove_trophic_encounter": true
+      },
+      "other_anuran_larva": {
+        "site_years_with_both_stage_sampling_opportunities": 63,
+        "site_years_with_positive_reports_in_both_stage_methods": 46,
+        "distinct_source_sites_of_positive_pairs": 31,
+        "related_taxa_not_verified_trophic": true,
+        "seasonal_first_report_summary": {
+          "first_record_lag_median_days": 57,
+          "first_record_lag_quartiles_days": [
+            47.75,
+            76.5
+          ],
+          "first_record_lag_minmax_days": [
+            8,
+            93
+          ],
+          "n_larval_first_positive_after_call_first_positive": 46,
+          "n_larval_first_positive_same_day": 0,
+          "n_larval_first_positive_before_call_first_positive": 0,
+          "same_calendar_month_fraction_among_positive_both": 0.043478260869565216,
+          "first_call_vs_larval_first_positive_DOY_correlation": {
+            "descriptive_spearman_r": 0.08261151109060422,
+            "source_units": 31,
+            "observations": 46,
+            "site_bootstrap_ci95_conditional": [
+              -0.19436659565310563,
+              0.370729998500977
+            ],
+            "successful_bootstrap_draws": 1000,
+            "causal_interpretation_permitted": false
+          },
+          "year_coverage": {
+            "2017": 1,
+            "2018": 12,
+            "2019": 3,
+            "2020": 3,
+            "2021": 8,
+            "2022": 5,
+            "2024": 11,
+            "2025": 3
+          }
+        },
+        "same_calendar_month_report_does_not_prove_trophic_encounter": true
+      }
+    },
+    "source_site_years_with_all_three_stage_survey_opportunities": 94,
+    "all_three_source_positive_site_years": 53,
+    "difference_first_hyla_larva_vs_first_caudata_larva_median_days": 0,
+    "numeric_Gosner_or_predator_vs_prey_size_measured": false,
+    "emergent_vegetation_phenophase_measured": false,
+    "true_survival_or_direct_predation_measured": false,
+    "raw_original_site_identifiers_disclosed": false,
+    "interpretation": "first detections vs known survey times, phenological co-reporting not true onset, no measured feeding/competition"
+  },
+  "no_cross_source_pseudo_pond_join": true,
+  "no_inference_of_actual_vegetation_emergence_or_shelter_use": true,
+  "no_causal_predation_or_interference_claim_authorized": true,
+  "workflow_provenance": {
+    "run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40262283932",
+    "job_id": 121377026941,
+    "conclusion": "success",
+    "source_method": "original source hashes validated in CI"
+  }
+}

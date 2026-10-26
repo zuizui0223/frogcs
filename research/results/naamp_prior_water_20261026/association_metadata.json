@@ -1,0 +1,19 @@
+{
+  "fixed_pairs": 4040,
+  "route_components": 388,
+  "all_preceding_year_verified": true,
+  "water_stratum_cuts": [
+    35.95406449552805,
+    56.582705699347265
+  ],
+  "water_stratum_definition": "Symmetric pair mean prior frequency among water-positive pixels; only both-side defined pairs",
+  "water_strata_pairs": 3907,
+  "water_strata_pair_counts": {
+    "0": 1303,
+    "1": 1302,
+    "2": 1302
+  },
+  "uncertainty": "2000 route-component bootstraps; fitted niches fixed; no multiple-testing correction",
+  "joint_table": "Saved all prior-water, remote vegetation, three-guild suitability and strict history fields for the same fixed pairs",
+  "interpretation": "Joint descriptive table and conditional contrasts, not multivariable causal effects or measured plant use"
+}

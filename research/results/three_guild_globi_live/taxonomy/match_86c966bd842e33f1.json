@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Ommatotriton+vittatus&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:30.733373+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "3c10a4e906c11950903725f1714cb6e85fdfb5913314361f58bd5d7de6a828cf",
+  "response": {
+    "usageKey": 2431811,
+    "scientificName": "Ommatotriton vittatus (Gray, 1835)",
+    "canonicalName": "Ommatotriton vittatus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Ommatotriton",
+    "species": "Ommatotriton vittatus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431810,
+    "speciesKey": 2431811,
+    "class": "Amphibia"
+  }
+}

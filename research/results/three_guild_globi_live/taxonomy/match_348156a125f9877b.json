@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Bufotes+boulengeri&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:43.408624+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "0815cad545de329624e0cf1db37e351bdc236f9040d9bc3084df243096732135",
+  "response": {
+    "usageKey": 10400305,
+    "scientificName": "Bufotes boulengeri (Lataste, 1879)",
+    "canonicalName": "Bufotes boulengeri",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Bufonidae",
+    "genus": "Bufotes",
+    "species": "Bufotes boulengeri",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6727,
+    "genusKey": 4817029,
+    "speciesKey": 10400305,
+    "class": "Amphibia"
+  }
+}

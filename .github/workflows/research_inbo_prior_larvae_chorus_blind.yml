@@ -1,0 +1,37 @@
+name: Research - exact site previous-year larval competition availability G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/inbo_prior_larvae_chorus_stage_blind.py
+      - .github/workflows/research_inbo_prior_larvae_chorus_blind.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strictly-prior-stage-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile original source audit
+        run: python3 -m py_compile research/scripts/inbo_prior_larvae_chorus_stage_blind.py
+      - name: Audit strictly-prior same location stages blind to calling outcomes
+        run: python3 research/scripts/inbo_prior_larvae_chorus_stage_blind.py --out /tmp/lagged_source_g0.json
+      - name: Confirm stage association has not been fit
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/lagged_source_g0.json'))
+          assert d['independent_prior_stage_exposure_presence_or_count_inspected'] is False
+          assert d['source_keys_exported'] is False
+          assert d['caudata_larvae_automatically_predators'] is False
+          assert d['other_larvae_automatically_competitors'] is False
+          print('G0_STAGE_TEMPORAL_PRECEDENCE_QA_PASS')
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs_exact_site_prior_larval_sampling_G0
+          path: /tmp/lagged_source_g0.json
+          if-no-files-found: warn

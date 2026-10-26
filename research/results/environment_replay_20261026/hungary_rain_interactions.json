@@ -1,0 +1,116 @@
+{
+  "status": "OBSERVED_EXPLORATORY_RAIN_WETLAND_PLANT_ACOUSTIC_SITE_TEST",
+  "study": "Mizsei & Wenner (2025), Zenodo 10.5281/zenodo.15044115, CC BY 4.0",
+  "source_experiment": "Observational one-year Hungarian restored wetlands, not randomized rain",
+  "frozen_postRC6_protocol": "research/CHORUS_RAIN_VEGETATION_HYDROPERIOD_STAGE_COMPETITION_SPEC_2026-10-26.md",
+  "n_sites": 29,
+  "n_acoustic_visits": 129,
+  "n_acoustic_frog_positive_visits": 40,
+  "n_acoustic_dates": 26,
+  "days_with_3plus_source_sites": 18,
+  "days_with_5plus_source_sites": 16,
+  "prec_missing": 0,
+  "prec_observed_range": [
+    0.0,
+    2.6
+  ],
+  "source_emergent_cover_pct_range": [
+    1.0,
+    60.0
+  ],
+  "source_submerged_cover_pct_range": [
+    0.0,
+    96.0
+  ],
+  "source_one_time_water_depth_range": [
+    11.0,
+    180.0
+  ],
+  "previous_2026_10_25_archived_W1_site_Brier": 0.17419253217986866,
+  "current_environment_original_baseline_site_Brier": 0.17377309487118192,
+  "current_vs_archived_W1_implementation_drift": -0.00041943730868673756,
+  "baseline_compatibility_within_0p002": true,
+  "method_note": "New models compared on same rows/current environment; old archived fit differs slightly, do not subtract coefficients across distinct execution environments.",
+  "models": {
+    "E1_weather_depth_site_context": {
+      "site_equal_weight_brier": 0.17377309487118192,
+      "site_equal_weight_logloss": 0.5253550570135272,
+      "individual_visit_brier": 0.1835410470949662,
+      "individual_visit_logloss": 0.5466655580208117
+    },
+    "E2_rain_x_emergent": {
+      "site_equal_weight_brier": 0.1774841449187323,
+      "site_equal_weight_logloss": 0.5351598656147839,
+      "individual_visit_brier": 0.18715769755898956,
+      "individual_visit_logloss": 0.556093247472677
+    },
+    "E3_plus_rain_x_depth": {
+      "site_equal_weight_brier": 0.17740989739626867,
+      "site_equal_weight_logloss": 0.5349426252531269,
+      "individual_visit_brier": 0.18704379024438791,
+      "individual_visit_logloss": 0.5557519585499203
+    }
+  },
+  "frozen_addition_comparisons": {
+    "E2_rain_x_emergent_vs_E1_weather_depth_site_context": {
+      "brier_site": {
+        "positive_means_added_term_helps": true,
+        "site_equal_weight_heldout_gain": -0.003711050047550382,
+        "ci95_site_resample_conditional_oof": [
+          -0.009584542514584423,
+          0.0024167625088366
+        ]
+      },
+      "logloss_site": {
+        "positive_means_added_term_helps": true,
+        "site_equal_weight_heldout_gain": -0.009804808601256685,
+        "ci95_site_resample_conditional_oof": [
+          -0.02639521126458943,
+          0.006990274230804424
+        ]
+      }
+    },
+    "E3_plus_rain_x_depth_vs_E2_rain_x_emergent": {
+      "brier_site": {
+        "positive_means_added_term_helps": true,
+        "site_equal_weight_heldout_gain": 7.424752246358513e-05,
+        "ci95_site_resample_conditional_oof": [
+          -0.0002918769703921854,
+          0.0005385246236628647
+        ]
+      },
+      "logloss_site": {
+        "positive_means_added_term_helps": true,
+        "site_equal_weight_heldout_gain": 0.00021724036165704126,
+        "ci95_site_resample_conditional_oof": [
+          -0.0006867987611155207,
+          0.0013028439780958404
+        ]
+      }
+    },
+    "E3_plus_rain_x_depth_vs_E1_weather_depth_site_context": {
+      "brier_site": {
+        "positive_means_added_term_helps": true,
+        "site_equal_weight_heldout_gain": -0.0036368025250867967,
+        "ci95_site_resample_conditional_oof": [
+          -0.009516819287562352,
+          0.0025521684060743044
+        ]
+      },
+      "logloss_site": {
+        "positive_means_added_term_helps": true,
+        "site_equal_weight_heldout_gain": -0.009587568239599643,
+        "ci95_site_resample_conditional_oof": [
+          -0.026158425463252727,
+          0.007230767160360634
+        ]
+      }
+    }
+  },
+  "source_rain_is_72h_NAAMP_contrast": false,
+  "source_depth_is_hydroperiod_duration": false,
+  "true_RC6_multisite_concentration_C_estimated": false,
+  "source_predator_stage_abundance_measured": false,
+  "frog_competition_causally_identified": false,
+  "description": "Binary frog acoustic detection, not calling intensity or breeding success"
+}

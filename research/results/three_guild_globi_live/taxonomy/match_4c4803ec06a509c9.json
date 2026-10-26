@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Salamandra+corsica&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:07:10.932630+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "64dbd349ec538011dd44f998d3f9dd97d4445864e7fa6a5f17299c663e19b5dc",
+  "response": {
+    "usageKey": 2431779,
+    "scientificName": "Salamandra corsica Savi, 1838",
+    "canonicalName": "Salamandra corsica",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Salamandra",
+    "species": "Salamandra corsica",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 8024525,
+    "speciesKey": 2431779,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,54 @@
+import unittest
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
+import numpy as np
+from broad_species_sdm import thin, fold, evaluate, in_domain, fit_models
+from shapely.geometry import box
+
+
+class SDMTests(unittest.TestCase):
+    def test_zero_retained_species_remains_in_coverage(self):
+        species=dict(species_key='1',species='Test species',guild='Anura')
+        records=[dict(**species,id='1',lon=-150,lat=40)]
+        with tempfile.TemporaryDirectory() as tmp, patch('broad_species_sdm.sample',side_effect=lambda paths,rows:np.zeros((len(rows),6))):
+            result=fit_models(records,[],Path(tmp),[],box(-125,24,-66,50),[species])
+        self.assertEqual(result,[dict(**species,status='insufficient_cells',cells=0)])
+
+    def test_records_and_background_use_same_domain_mask(self):
+        rows = [dict(lon=-100,lat=40), dict(lon=-100,lat=55)]
+        self.assertEqual(in_domain(box(-125,24,-66,50), rows).tolist(), [True,False])
+
+    def test_duplicate_cell_does_not_increase_sample_size(self):
+        rows = [dict(id='20', lon=-80.01, lat=35.01),
+                dict(id='3', lon=-80.02, lat=35.02),
+                dict(id='4', lon=-82.01, lat=35.01)]
+        kept = thin(rows)
+        self.assertEqual({r['id'] for r in kept}, {'3','4'})
+        self.assertEqual(kept, thin(list(reversed(rows))))
+
+    def test_whole_block_stays_together(self):
+        for size in (2,4):
+            self.assertEqual(fold(-79.9,32.1,size), fold(-78.1,33.9,size))
+
+    def test_missing_heldout_positive_is_not_success(self):
+        x = np.arange(360).reshape(60,6)
+        y = np.r_[np.ones(30), np.zeros(30)]
+        rows = [dict(lon=-80,lat=36)]*60
+        result = evaluate(x,y,rows,2)
+        self.assertTrue(all(r['auc'] is None for r in result))
+
+    def test_known_environment_signal_predicts_in_heldout_blocks(self):
+        rng = np.random.default_rng(7)
+        y = np.r_[np.ones(200), np.zeros(200)]
+        x = rng.normal(size=(400,6))
+        x[:,0] += 4*y
+        rows = [dict(lon=float(a),lat=float(b)) for a,b in
+                zip(rng.uniform(-120,-70,400),rng.uniform(25,48,400))]
+        result = evaluate(x,y,rows,2)
+        self.assertEqual(len([r for r in result if r['auc'] is not None]),5)
+        self.assertTrue(all(r['auc'] > .9 for r in result))
+
+
+if __name__ == '__main__':
+    unittest.main()

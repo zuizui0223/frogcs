@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Ommatotriton+ophryticus&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:29.541478+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "895b6edc100b6887bd509df81dc81c20113a1188d7f77ce9b90539b3eeab76a9",
+  "response": {
+    "usageKey": 2431813,
+    "scientificName": "Ommatotriton ophryticus (Berthold, 1846)",
+    "canonicalName": "Ommatotriton ophryticus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Ommatotriton",
+    "species": "Ommatotriton ophryticus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431810,
+    "speciesKey": 2431813,
+    "class": "Amphibia"
+  }
+}

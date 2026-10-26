@@ -1,0 +1,121 @@
+{
+  "source_geographic_integrity": {
+    "original_rows": 12064,
+    "raw_site_row_issues": {
+      "outside_contiguous_us_including_positive_longitude": 1
+    },
+    "candidate_distinct_route_labels": 1183,
+    "source_geometry_eligible_routes": 1170,
+    "geometry_rejected_routes": {
+      "source_geometry_gt40km_max_interstop_distance": 10,
+      "fewer_than_8_unique_site_ids": 3
+    },
+    "selected_source_routes": 24,
+    "selected_source_stops": 48,
+    "coordinates_original_sha256": "f71a87df9fc94e0d6c5d4466b4745c3bbaff874cbe7c28796b3f9eb44c2e6e83",
+    "source_coordinate_errors_manually_repaired": false,
+    "source_route_night_phenotype_used": false,
+    "site_selection": "sha256 deterministic 24 source route IDs, within each first+last sorted SiteID; 40km max interstop geometry gate independent of biology"
+  },
+  "GBIF_recording_coverage": {
+    "Anura": {
+      "source_queries": 48,
+      "successful": 48,
+      "errors": {},
+      "source_bbox_total_reported_sum": 82,
+      "searches_exhaustive": 48,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 6,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 0,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 0,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "reporting_only": true,
+      "all_retrieved_searches_exhaustive": true,
+      "biological_absence_inferable": false
+    },
+    "Caudata": {
+      "source_queries": 48,
+      "successful": 48,
+      "errors": {},
+      "source_bbox_total_reported_sum": 19,
+      "searches_exhaustive": 48,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 2,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 1,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 1,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "reporting_only": true,
+      "all_retrieved_searches_exhaustive": true,
+      "biological_absence_inferable": false
+    },
+    "Odonata": {
+      "source_queries": 48,
+      "successful": 48,
+      "errors": {},
+      "source_bbox_total_reported_sum": 61,
+      "searches_exhaustive": 48,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 8,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 0,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 0,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "reporting_only": true,
+      "all_retrieved_searches_exhaustive": true,
+      "biological_absence_inferable": false
+    },
+    "all_taxa_background": {
+      "source_queries": 48,
+      "successful": 48,
+      "errors": {},
+      "source_bbox_total_reported_sum": 105143,
+      "searches_exhaustive": 26,
+      "neighborhoods_with_georeferenced_records_source_precision_le1km": 13,
+      "neighborhoods_with_explicit_aquatic_lifestage_record": 0,
+      "precise_larval_stage_record_count_across_neighborhoods_can_overlap": 0,
+      "source_keys_count_is_per_neighborhood_not_global": true,
+      "neighborhoods_with_3plus_staged_source_keys": 0,
+      "reporting_only": true,
+      "all_retrieved_searches_exhaustive": false,
+      "biological_absence_inferable": false
+    }
+  },
+  "NWI_original_recorder_point_QA": {
+    "queries": 48,
+    "successes": 48,
+    "errors": {},
+    "recorder_points_intersect_any_NWI_polygon": 9,
+    "recorder_points_intersect_PEM_polygon": 0,
+    "cowardin_code_instances": {
+      "PFO3A": 1,
+      "PFO2/EM5C": 1,
+      "PSS1D": 2,
+      "PFO1/3B": 1,
+      "PSS1E": 1,
+      "PFO1C": 1,
+      "PUBFb": 1,
+      "PSS1/EM1C": 1
+    },
+    "NWI_point_not_actual_breeding_wetland": true
+  },
+  "stage_proxy_source_coverage_gate_eligible": false,
+  "same_physical_breeding_pond_verified": false,
+  "source_pond_predator_or_competitor_abundance_observed": false,
+  "rain_source_at_site_or_real_pond_water_level_loaded": false,
+  "emergent_vegetation_cover_or_stem_density_measured_at_site": false,
+  "original_2026_research_sampled_NAAMP_chorus_values_read": false,
+  "GBIF_counts_are_species_recording_effort_not_predator_or_competition_intensity": true,
+  "biological_predation_or_facilitation_claim_permitted": false,
+  "source_rows_redistributed": false,
+  "status": "RETRIEVAL_COMPLETE_WITH_EXPLICIT_PAGE_LIMITS",
+  "retrieval_audit": {
+    "http_attempts": 240,
+    "successful_requests": 240
+  },
+  "retrieved_at_utc": "2026-10-26T04:35:54.875611+00:00",
+  "repair_scope": "Same 48 fixed neighborhoods and first-page queries; no new sites/radius/time/species selection",
+  "old_429_failed_requests": 97,
+  "all_GBIF_requests_succeeded": true,
+  "life_stage_is_optional_not_primary_eligibility_gate": true,
+  "background_first_page_not_complete_circle_effort": true,
+  "protocol": "research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md"
+}

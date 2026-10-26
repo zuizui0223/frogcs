@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pseudacris+streckeri&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:47.946373+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "045a19592cb27f8f24567c395d773dee11d0bb287c47d20b7cbb2d7d7994aa5b",
+  "response": {
+    "usageKey": 2428160,
+    "scientificName": "Pseudacris streckeri Wright & Wright, 1933",
+    "canonicalName": "Pseudacris streckeri",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Pseudacris",
+    "species": "Pseudacris streckeri",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2428124,
+    "speciesKey": 2428160,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "date": "2026-10-25",
+  "status": "REAL_GLOBI_GBIF_WORLDCLIM_2010_2024_MONTHLY_RAIN_DESCRIPTIVE",
+  "source_fixed_globi": "https://doi.org/10.5281/zenodo.22691479",
+  "source_GBIF_stage": "https://github.com/zuizui0223/frogcs/actions/runs/40190152042",
+  "source_precip": "WorldClim 2.1 CRU-TS4.09 historical 2010-2024 https://www.worldclim.org/data/monthlywth.html",
+  "input_join": "research/results/gbif_worldclim_monthly_rain/observed_results.json",
+  "main_description": "Within a single 1° grid-year with both species stages recorded, monthly precipitation when both are observed minus when exactly one is observed",
+  "source_row_quality": {
+    "rows": 542757,
+    "missing_climate_rows": 46954,
+    "max_source_precip_mm": 3124.9375,
+    "onland_rows": 495803,
+    "source_valid_precip_gt3000_rows": 1,
+    "unique_species_stage": 252,
+    "unique_grid_years": 38025,
+    "unique_grid_year_months": 146550
+  },
+  "GloBI_stage_pairs_total": 18,
+  "GloBI_source_exclusions": {
+    "missing_one_or_both_stage_in_gbif": 863
+  },
+  "per_threshold": [
+    {
+      "min_records_per_taxon_stage_grid_month": 1,
+      "all_candidate_species_stage_pairs": 18,
+      "pairs_with_enough_informative_grid_years": 15,
+      "pairs_insufficient": 3,
+      "pairs_where_monthly_rain_co_report_is_greater_than_single_report": 10,
+      "pairs_where_monthly_rain_co_report_is_lower": 5,
+      "median_pair_mean_rain_difference_mm_month": 3.375667758347263,
+      "weighted_mean_grid_year_delta_not_reported_as_global_effect": true,
+      "most_informative_pairs": [
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Perithemis tenera",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 1116,
+          "mean_within_grid_year_rain_difference_mm_month": 6.004747193349264,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 1111,
+          "mean_within_grid_year_rain_difference_mm_month": 3.375667758347263,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Erythemis simplicicollis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 1035,
+          "mean_within_grid_year_rain_difference_mm_month": 2.848595599378882,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 744,
+          "mean_within_grid_year_rain_difference_mm_month": 3.4208990674603172,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 594,
+          "mean_within_grid_year_rain_difference_mm_month": 6.4860433537758535,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Ischnura ramburii",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 458,
+          "mean_within_grid_year_rain_difference_mm_month": 9.181297093643863,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus vastus",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 125,
+          "mean_within_grid_year_rain_difference_mm_month": -13.979257580952382,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus externus",
+          "prey": "Pachydiplax longipennis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 120,
+          "mean_within_grid_year_rain_difference_mm_month": 23.473332109126982,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anaxyrus boreas",
+          "prey": "Pseudacris regilla",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 98,
+          "mean_within_grid_year_rain_difference_mm_month": 1.557186559766763,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INTERPRETED_QUICK_POND_META_WEB"
+        },
+        {
+          "predator": "Orthetrum sabina",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 97,
+          "mean_within_grid_year_rain_difference_mm_month": 27.547388897070853,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis vesiculosa",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 88,
+          "mean_within_grid_year_rain_difference_mm_month": -1.2486084821428571,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anaxyrus boreas",
+          "prey": "Anax junius",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 42,
+          "mean_within_grid_year_rain_difference_mm_month": -23.868363737889094,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INTERPRETED_QUICK_POND_META_WEB; OTHER_INDEXED_ASSOCIATION"
+        }
+      ]
+    },
+    {
+      "min_records_per_taxon_stage_grid_month": 5,
+      "all_candidate_species_stage_pairs": 18,
+      "pairs_with_enough_informative_grid_years": 8,
+      "pairs_insufficient": 10,
+      "pairs_where_monthly_rain_co_report_is_greater_than_single_report": 7,
+      "pairs_where_monthly_rain_co_report_is_lower": 1,
+      "median_pair_mean_rain_difference_mm_month": 6.716039968777166,
+      "weighted_mean_grid_year_delta_not_reported_as_global_effect": true,
+      "most_informative_pairs": [
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Perithemis tenera",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 145,
+          "mean_within_grid_year_rain_difference_mm_month": 8.355981022988507,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Erythemis simplicicollis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 116,
+          "mean_within_grid_year_rain_difference_mm_month": 0.5694711781609182,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 101,
+          "mean_within_grid_year_rain_difference_mm_month": 8.707388448844885,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 63,
+          "mean_within_grid_year_rain_difference_mm_month": 10.48100507936508,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Ischnura ramburii",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 46,
+          "mean_within_grid_year_rain_difference_mm_month": -13.134610564182196,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 34,
+          "mean_within_grid_year_rain_difference_mm_month": 5.076098914565826,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis vesiculosa",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 8,
+          "mean_within_grid_year_rain_difference_mm_month": 0.4132379166666662,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus externus",
+          "prey": "Pachydiplax longipennis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "informative_grid_years_with_both_month_categories": 6,
+          "mean_within_grid_year_rain_difference_mm_month": 14.28231722222222,
+          "status": "DESCRIPTIVE_NONCAUSAL",
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "This is not true animal co-occurrence within a pond or realized predation.",
+    "Actual CRU-WorldClim monthly rain is NOT same as NAAMP antecedent 72-hour rain or local water depth/hydroperiod.",
+    "GBIF stage reporting, effort, accessibility and taxonomic coverage vary seasonally; a wet-month correlation could arise without biotic interaction.",
+    "Rain was sampled at the centre of 1degree cells, not frog chorus GPS or original GloBI interaction event sites.",
+    "Only world land cells with source precipitation and GBIF reported stage records were used; absence is missing, not true absence.",
+    "Repeated grid-year observations and duplicated GloBI source metawebs preclude independent P-values.",
+    "No emergent/submerged plant stem structure, native range or species-specific demography is represented.",
+    "All stage links come from a nonrepresentative subset of taxa with GBIF observed stages.",
+    "The reported pair mean effects are descriptive exploratory within-space-year contrasts, not predation or chorusing causal effects."
+  ]
+}

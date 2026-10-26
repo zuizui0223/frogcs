@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Acris+gryllus&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:20:58.294940+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "46592dc1bddd28c5272e7f45f020631e7f11f1a7087c2559653f5f4d473d8724",
+  "response": {
+    "usageKey": 2427618,
+    "scientificName": "Acris gryllus (LeConte, 1825)",
+    "canonicalName": "Acris gryllus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Acris",
+    "species": "Acris gryllus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2427609,
+    "speciesKey": 2427618,
+    "class": "Amphibia"
+  }
+}

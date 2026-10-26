@@ -1,0 +1,362 @@
+{
+  "study": "Real global within same-taxon latitude-10deg band seasonal month amphibian/dragonfly adult vs aquatic immature GBIF reported EarthEnv flooded habitat background",
+  "date": "2026-10-25",
+  "analysis_status": "EXPLORATORY_REPORTED_LIFESTAGE_ENV_ASSOCIATION_NOT_TRUE_NICHE_OR_ABUNDANCE",
+  "focal_full_GloBI_doi": "https://doi.org/10.5281/zenodo.22691479",
+  "full_GBIF_stage_grid_source": "https://github.com/zuizui0223/frogcs/actions/runs/40194946916",
+  "EarthEnv_raster_source": "Tuanmu and Jetz (2014), 1-km consensus land cover EarthEnv class 8/12/6 CC BY-NC 4.0",
+  "source_gbif_QC": {
+    "all_stage_grid_rows": 238034,
+    "invalid_or_partial_2026_rows_excluded": 11140,
+    "non_adult_aquatic_stage_rows_excluded": 3392
+  },
+  "stage_species_source_volume_eligible": 22,
+  "species_with_qualifying_month_latband_comparisons": 21,
+  "main_month_latband_comparison_strata": 179,
+  "strictly_same_year_month_latband_strata": 718,
+  "strict_strata_distinct_species": 21,
+  "habitat_source_and_exclusion_QC": {
+    "excluded_species_insufficient_report_volume": 84685,
+    "retained_observed_gbif_stage_gridmonth_rows": 115864,
+    "open_water_majority_1deg_excluded": 22953
+  },
+  "source_validated_earthenv_grid_class_coverage": {
+    "ocean_dominated": 37309,
+    "near_zero": 5567,
+    "low_intermediate": 7190,
+    "relatively_high": 2494
+  },
+  "species_stage_results": [
+    {
+      "guild": "Anura",
+      "eligible_species_reporting_both_stages": 2,
+      "species_with_enough_1deg_latband_month_strata": 2,
+      "n_latband_month_strata": 27,
+      "flooded_median_of_species_month_latband_mean_deltas_pct": 0.012949611963464398,
+      "flooded_equal_species_mean_delta_pct": 0.012949611963464398,
+      "flooded_species_positive_delta": 1,
+      "flooded_species_negative_delta": 1,
+      "flooded_species_cluster_bootstrap_mean_interval_95": null,
+      "openwater_median_of_species_month_latband_mean_deltas_pct": 0.8118977510819133,
+      "openwater_equal_species_mean_delta_pct": 0.8118977510819133,
+      "openwater_species_positive_delta": 1,
+      "openwater_species_negative_delta": 1,
+      "openwater_species_cluster_bootstrap_mean_interval_95": null,
+      "herbaceous_median_of_species_month_latband_mean_deltas_pct": -0.46375545628300013,
+      "herbaceous_equal_species_mean_delta_pct": -0.46375545628300013,
+      "herbaceous_species_positive_delta": 1,
+      "herbaceous_species_negative_delta": 1,
+      "herbaceous_species_cluster_bootstrap_mean_interval_95": null
+    },
+    {
+      "guild": "Odonata",
+      "eligible_species_reporting_both_stages": 19,
+      "species_with_enough_1deg_latband_month_strata": 19,
+      "n_latband_month_strata": 152,
+      "flooded_median_of_species_month_latband_mean_deltas_pct": 0.006991282415501171,
+      "flooded_equal_species_mean_delta_pct": 0.09924499558035384,
+      "flooded_species_positive_delta": 11,
+      "flooded_species_negative_delta": 8,
+      "flooded_species_cluster_bootstrap_mean_interval_95": [
+        -0.004035605232073462,
+        0.21519442213960302
+      ],
+      "openwater_median_of_species_month_latband_mean_deltas_pct": 1.039725991028214,
+      "openwater_equal_species_mean_delta_pct": 1.2852112655800156,
+      "openwater_species_positive_delta": 13,
+      "openwater_species_negative_delta": 6,
+      "openwater_species_cluster_bootstrap_mean_interval_95": [
+        0.02315389497870071,
+        2.531127215635041
+      ],
+      "herbaceous_median_of_species_month_latband_mean_deltas_pct": 0.827221241720631,
+      "herbaceous_equal_species_mean_delta_pct": 1.0456066367103953,
+      "herbaceous_species_positive_delta": 10,
+      "herbaceous_species_negative_delta": 9,
+      "herbaceous_species_cluster_bootstrap_mean_interval_95": [
+        -1.137333370710135,
+        3.2784380783046796
+      ]
+    }
+  ],
+  "top_species_by_strata": [
+    {
+      "species": "Ischnura elegans",
+      "guild": "Odonata",
+      "n_latband_month_strata": 16,
+      "n_total_distinct_grid_cells_immature": 265,
+      "n_total_distinct_grid_cells_adult": 1896,
+      "mean_immature_minus_adult_flooded_pct": 0.24062707632171898,
+      "median_immature_minus_adult_flooded_pct": 0.2746828429149212,
+      "mean_immature_minus_adult_openwater_pct": 2.442943608693292,
+      "median_immature_minus_adult_openwater_pct": 2.7865826759880923,
+      "mean_immature_minus_adult_herbaceous_pct": 2.1627901582791207,
+      "median_immature_minus_adult_herbaceous_pct": -0.005064009379509571
+    },
+    {
+      "species": "Pseudacris regilla",
+      "guild": "Anura",
+      "n_latband_month_strata": 14,
+      "n_total_distinct_grid_cells_immature": 122,
+      "n_total_distinct_grid_cells_adult": 417,
+      "mean_immature_minus_adult_flooded_pct": 0.04148649440472164,
+      "median_immature_minus_adult_flooded_pct": 0.04138800112612613,
+      "mean_immature_minus_adult_openwater_pct": 2.034058860162165,
+      "median_immature_minus_adult_openwater_pct": 1.7121281393665164,
+      "mean_immature_minus_adult_herbaceous_pct": -1.451387780927288,
+      "median_immature_minus_adult_herbaceous_pct": -0.5807906250000001
+    },
+    {
+      "species": "Aeshna juncea",
+      "guild": "Odonata",
+      "n_latband_month_strata": 13,
+      "n_total_distinct_grid_cells_immature": 159,
+      "n_total_distinct_grid_cells_adult": 908,
+      "mean_immature_minus_adult_flooded_pct": 0.3183764616547839,
+      "median_immature_minus_adult_flooded_pct": 0.46309548567870484,
+      "mean_immature_minus_adult_openwater_pct": 3.6090657382829545,
+      "median_immature_minus_adult_openwater_pct": 2.429630488888888,
+      "mean_immature_minus_adult_herbaceous_pct": 3.4999380798887327,
+      "median_immature_minus_adult_herbaceous_pct": 3.9755786507936515
+    },
+    {
+      "species": "Anaxyrus boreas",
+      "guild": "Anura",
+      "n_latband_month_strata": 13,
+      "n_total_distinct_grid_cells_immature": 152,
+      "n_total_distinct_grid_cells_adult": 313,
+      "mean_immature_minus_adult_flooded_pct": -0.015587270477792839,
+      "median_immature_minus_adult_flooded_pct": 0.013067186147186147,
+      "mean_immature_minus_adult_openwater_pct": -0.41026335799833835,
+      "median_immature_minus_adult_openwater_pct": 0.14760805555555567,
+      "mean_immature_minus_adult_herbaceous_pct": 0.5238768683612877,
+      "median_immature_minus_adult_herbaceous_pct": 0.16526999999999958
+    },
+    {
+      "species": "Coenagrion puella",
+      "guild": "Odonata",
+      "n_latband_month_strata": 13,
+      "n_total_distinct_grid_cells_immature": 137,
+      "n_total_distinct_grid_cells_adult": 1531,
+      "mean_immature_minus_adult_flooded_pct": 0.13185014827272348,
+      "median_immature_minus_adult_flooded_pct": 0.08262681693121693,
+      "mean_immature_minus_adult_openwater_pct": 1.3346968883608321,
+      "median_immature_minus_adult_openwater_pct": 1.7662511770244818,
+      "mean_immature_minus_adult_herbaceous_pct": 2.046685819235736,
+      "median_immature_minus_adult_herbaceous_pct": -0.5989130329670331
+    },
+    {
+      "species": "Orthetrum cancellatum",
+      "guild": "Odonata",
+      "n_latband_month_strata": 12,
+      "n_total_distinct_grid_cells_immature": 107,
+      "n_total_distinct_grid_cells_adult": 1701,
+      "mean_immature_minus_adult_flooded_pct": -0.025630997721226376,
+      "median_immature_minus_adult_flooded_pct": -0.044891298076923075,
+      "mean_immature_minus_adult_openwater_pct": -0.6909681886671221,
+      "median_immature_minus_adult_openwater_pct": -0.24405209134615324,
+      "mean_immature_minus_adult_herbaceous_pct": 0.827221241720631,
+      "median_immature_minus_adult_herbaceous_pct": 0.3299025388638466
+    },
+    {
+      "species": "Enallagma cyathigerum",
+      "guild": "Odonata",
+      "n_latband_month_strata": 11,
+      "n_total_distinct_grid_cells_immature": 184,
+      "n_total_distinct_grid_cells_adult": 1105,
+      "mean_immature_minus_adult_flooded_pct": 0.4464228306241038,
+      "median_immature_minus_adult_flooded_pct": 0.34302699999999997,
+      "mean_immature_minus_adult_openwater_pct": 5.420668931637689,
+      "median_immature_minus_adult_openwater_pct": 4.989120757575758,
+      "mean_immature_minus_adult_herbaceous_pct": 7.18270271532487,
+      "median_immature_minus_adult_herbaceous_pct": 6.842809479747306
+    },
+    {
+      "species": "Hagenius brevistylus",
+      "guild": "Odonata",
+      "n_latband_month_strata": 11,
+      "n_total_distinct_grid_cells_immature": 312,
+      "n_total_distinct_grid_cells_adult": 637,
+      "mean_immature_minus_adult_flooded_pct": -0.0008481320627899729,
+      "median_immature_minus_adult_flooded_pct": 0.011793916666666654,
+      "mean_immature_minus_adult_openwater_pct": 0.6283712491259582,
+      "median_immature_minus_adult_openwater_pct": 2.2778133268356076,
+      "mean_immature_minus_adult_herbaceous_pct": -2.5315192472103996,
+      "median_immature_minus_adult_herbaceous_pct": -2.9056104166666668
+    },
+    {
+      "species": "Anax junius",
+      "guild": "Odonata",
+      "n_latband_month_strata": 10,
+      "n_total_distinct_grid_cells_immature": 75,
+      "n_total_distinct_grid_cells_adult": 1431,
+      "mean_immature_minus_adult_flooded_pct": -0.06106135703706046,
+      "median_immature_minus_adult_flooded_pct": -0.023936520018621975,
+      "mean_immature_minus_adult_openwater_pct": -2.326460992395456,
+      "median_immature_minus_adult_openwater_pct": -3.139820203104589,
+      "mean_immature_minus_adult_herbaceous_pct": -2.3811842555637988,
+      "median_immature_minus_adult_herbaceous_pct": -2.849489304040548
+    },
+    {
+      "species": "Chalcolestes viridis",
+      "guild": "Odonata",
+      "n_latband_month_strata": 9,
+      "n_total_distinct_grid_cells_immature": 45,
+      "n_total_distinct_grid_cells_adult": 457,
+      "mean_immature_minus_adult_flooded_pct": 0.0006403203637852571,
+      "median_immature_minus_adult_flooded_pct": 0.01614208791208792,
+      "mean_immature_minus_adult_openwater_pct": -1.951807839391707,
+      "median_immature_minus_adult_openwater_pct": 1.5815820286885245,
+      "mean_immature_minus_adult_herbaceous_pct": 1.963385916223767,
+      "median_immature_minus_adult_herbaceous_pct": 2.2903909999999996
+    },
+    {
+      "species": "Sympetrum sanguineum",
+      "guild": "Odonata",
+      "n_latband_month_strata": 9,
+      "n_total_distinct_grid_cells_immature": 57,
+      "n_total_distinct_grid_cells_adult": 1427,
+      "mean_immature_minus_adult_flooded_pct": -0.04317888751836951,
+      "median_immature_minus_adult_flooded_pct": -0.03269116487455198,
+      "mean_immature_minus_adult_openwater_pct": 0.8893116397756455,
+      "median_immature_minus_adult_openwater_pct": 2.2633203138528133,
+      "mean_immature_minus_adult_herbaceous_pct": -0.060021211366110244,
+      "median_immature_minus_adult_herbaceous_pct": -0.8703909146341464
+    },
+    {
+      "species": "Erythemis simplicicollis",
+      "guild": "Odonata",
+      "n_latband_month_strata": 7,
+      "n_total_distinct_grid_cells_immature": 31,
+      "n_total_distinct_grid_cells_adult": 809,
+      "mean_immature_minus_adult_flooded_pct": 0.18718372561439417,
+      "median_immature_minus_adult_flooded_pct": -0.010841316793893135,
+      "mean_immature_minus_adult_openwater_pct": 2.2651991003561958,
+      "median_immature_minus_adult_openwater_pct": 0.695285575757576,
+      "mean_immature_minus_adult_herbaceous_pct": -1.928139038655806,
+      "median_immature_minus_adult_herbaceous_pct": -1.893744485436894
+    },
+    {
+      "species": "Lestes sponsa",
+      "guild": "Odonata",
+      "n_latband_month_strata": 7,
+      "n_total_distinct_grid_cells_immature": 96,
+      "n_total_distinct_grid_cells_adult": 742,
+      "mean_immature_minus_adult_flooded_pct": 0.2477190000340331,
+      "median_immature_minus_adult_flooded_pct": 0.3814592650753769,
+      "mean_immature_minus_adult_openwater_pct": 2.682748919071826,
+      "median_immature_minus_adult_openwater_pct": 3.765608101604279,
+      "mean_immature_minus_adult_herbaceous_pct": 10.183620719099139,
+      "median_immature_minus_adult_herbaceous_pct": 10.214164713178295
+    },
+    {
+      "species": "Sympetrum danae",
+      "guild": "Odonata",
+      "n_latband_month_strata": 7,
+      "n_total_distinct_grid_cells_immature": 79,
+      "n_total_distinct_grid_cells_adult": 775,
+      "mean_immature_minus_adult_flooded_pct": 0.8653059003382287,
+      "median_immature_minus_adult_flooded_pct": 0.7683248770491804,
+      "mean_immature_minus_adult_openwater_pct": 4.757177504403646,
+      "median_immature_minus_adult_openwater_pct": 3.785396828358209,
+      "mean_immature_minus_adult_herbaceous_pct": 11.583690004342685,
+      "median_immature_minus_adult_herbaceous_pct": 15.251864999999995
+    },
+    {
+      "species": "Pachydiplax longipennis",
+      "guild": "Odonata",
+      "n_latband_month_strata": 6,
+      "n_total_distinct_grid_cells_immature": 24,
+      "n_total_distinct_grid_cells_adult": 852,
+      "mean_immature_minus_adult_flooded_pct": -0.18098580091088762,
+      "median_immature_minus_adult_flooded_pct": -0.21294764982047654,
+      "mean_immature_minus_adult_openwater_pct": -4.296572435154849,
+      "median_immature_minus_adult_openwater_pct": -3.4770163408588113,
+      "mean_immature_minus_adult_herbaceous_pct": -4.76681264865865,
+      "median_immature_minus_adult_herbaceous_pct": -4.08709359375
+    },
+    {
+      "species": "Basiaeschna janata",
+      "guild": "Odonata",
+      "n_latband_month_strata": 5,
+      "n_total_distinct_grid_cells_immature": 21,
+      "n_total_distinct_grid_cells_adult": 227,
+      "mean_immature_minus_adult_flooded_pct": 0.010690445543768978,
+      "median_immature_minus_adult_flooded_pct": -0.044896527777777764,
+      "mean_immature_minus_adult_openwater_pct": 6.487897217382927,
+      "median_immature_minus_adult_openwater_pct": 8.413617314814813,
+      "mean_immature_minus_adult_herbaceous_pct": -1.4815301328596036,
+      "median_immature_minus_adult_herbaceous_pct": -0.42836791666666674
+    },
+    {
+      "species": "Hetaerina americana",
+      "guild": "Odonata",
+      "n_latband_month_strata": 4,
+      "n_total_distinct_grid_cells_immature": 13,
+      "n_total_distinct_grid_cells_adult": 284,
+      "mean_immature_minus_adult_flooded_pct": 0.006991282415501171,
+      "median_immature_minus_adult_flooded_pct": 0.004748502331002335,
+      "mean_immature_minus_adult_openwater_pct": -0.4632843531468529,
+      "median_immature_minus_adult_openwater_pct": -0.33951800080128214,
+      "mean_immature_minus_adult_herbaceous_pct": -6.8809797840180655,
+      "median_immature_minus_adult_herbaceous_pct": -6.114331671401516
+    },
+    {
+      "species": "Phanogomphus lividus",
+      "guild": "Odonata",
+      "n_latband_month_strata": 4,
+      "n_total_distinct_grid_cells_immature": 17,
+      "n_total_distinct_grid_cells_adult": 159,
+      "mean_immature_minus_adult_flooded_pct": -0.00020681145893487393,
+      "median_immature_minus_adult_flooded_pct": -0.054730922531769303,
+      "mean_immature_minus_adult_openwater_pct": -2.7573957269288027,
+      "median_immature_minus_adult_openwater_pct": -1.8724878694420226,
+      "mean_immature_minus_adult_herbaceous_pct": 1.279031969673381,
+      "median_immature_minus_adult_herbaceous_pct": 1.6015463074291298
+    },
+    {
+      "species": "Epitheca princeps",
+      "guild": "Odonata",
+      "n_latband_month_strata": 3,
+      "n_total_distinct_grid_cells_immature": 15,
+      "n_total_distinct_grid_cells_adult": 368,
+      "mean_immature_minus_adult_flooded_pct": 0.024531461337513067,
+      "median_immature_minus_adult_flooded_pct": 0.029298257575757575,
+      "mean_immature_minus_adult_openwater_pct": 0.5765872192615812,
+      "median_immature_minus_adult_openwater_pct": 0.8292422727272726,
+      "mean_immature_minus_adult_herbaceous_pct": -6.084311209247649,
+      "median_immature_minus_adult_herbaceous_pct": -6.529990250000001
+    },
+    {
+      "species": "Plathemis lydia",
+      "guild": "Odonata",
+      "n_latband_month_strata": 3,
+      "n_total_distinct_grid_cells_immature": 14,
+      "n_total_distinct_grid_cells_adult": 295,
+      "mean_immature_minus_adult_flooded_pct": -0.002510801586364686,
+      "median_immature_minus_adult_flooded_pct": -0.027348720930232565,
+      "mean_immature_minus_adult_openwater_pct": 1.039725991028214,
+      "median_immature_minus_adult_openwater_pct": -1.1429736548223355,
+      "mean_immature_minus_adult_herbaceous_pct": -0.34772621943118737,
+      "median_immature_minus_adult_herbaceous_pct": -1.5817491666666665
+    }
+  ],
+  "limitations": [
+    "GBIF lifeStage labels are observational and detection-biased; more larvae being reported in one region does not show true biological abundance or larval residence.",
+    "Stage observations can be different times/places/individuals across years; no individual development trajectories or actual feeding interactions were monitored.",
+    "Old EarthEnv regularly flooded vegetation consensus maps historical 1990s–2000s landscape context, not current Typha or Phragmites stand stem density.",
+    "Latitude band and calendar-month matching control coarse climate and timing but not observer sampling design, country/elevation or longitude/continental taxonomic reporting.",
+    "Land-dominant 1degree restriction excludes ocean majority coastal wetlands and underreports coastal stage sampling.",
+    "Different GBIF taxon-stage presence and synonyms in experimental August 2026 taxonomy are not fully canonicalized to GloBI species.",
+    "No causal wetland structure, rainfall, predator prey attack frequency, demographic role reversal or frog chorusing effect is established.",
+    "Multiple seasonal strata per species are correlated; any species-bootstrap intervals are exploratory and only shown for at least 8 source taxa."
+  ],
+  "exclusion_in_matching": {
+    "month_latband": {
+      "insufficient_stage_geo_grid_cells": 617
+    },
+    "stricter_same_year_month_latband": {
+      "insufficient_stage_geo_grid_cells": 6681
+    }
+  }
+}

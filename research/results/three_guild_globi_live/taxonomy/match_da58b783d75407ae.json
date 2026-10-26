@@ -1,0 +1,29 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Amerana+draytonii&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:30.500749+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "e695699894615166ca7641a8af910244d9123577025938c54de74cd0408afae6",
+  "response": {
+    "usageKey": 4816407,
+    "acceptedUsageKey": 2422253,
+    "scientificName": "Amerana Dubois, 1992",
+    "canonicalName": "Amerana",
+    "rank": "GENUS",
+    "status": "SYNONYM",
+    "confidence": 100,
+    "note": "Similarity: name=100; classification=34; rank=0; status=0; score=134; nextMatch=5",
+    "matchType": "HIGHERRANK",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Rana",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2422253,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Acris+blanchardi&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:21.024505+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "2a184cc062d3e7bb4305a5c88d9ddd07a223f718441f219a49b75c63317ee0e3",
+  "response": {
+    "usageKey": 2427610,
+    "scientificName": "Acris blanchardi Harper, 1947",
+    "canonicalName": "Acris blanchardi",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Acris",
+    "species": "Acris blanchardi",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2427609,
+    "speciesKey": 2427610,
+    "class": "Amphibia"
+  }
+}

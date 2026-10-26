@@ -1,0 +1,12 @@
+{
+  "vegetation_indicator": "EarthEnv flooded vegetation cover > 0",
+  "positive_sites": 46,
+  "positive_routes": 27,
+  "zero_sites": 4202,
+  "varying_routes": 27,
+  "seed": 20261028,
+  "bootstrap": 1000,
+  "model": "Rank-standardized Y ~ O + S + V + O:S + O:V + S:V + O:S:V; V is 0/1",
+  "scope": "Association modification, not measured predation, plant use or a calibrated interaction network",
+  "limits": "Only 46 mapped-positive sites; coarse landcover cannot distinguish refuge, spawning substrate or emergence substrate. No multiplicity adjustment or SDM uncertainty propagation."
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Paramesotriton+hongkongensis&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:31.910743+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "1ca3b210a78a701e48e543e35e8b337131cde701d26a755e09e90e2ffcbfebcf",
+  "response": {
+    "usageKey": 2431847,
+    "scientificName": "Paramesotriton hongkongensis (Myers & Leviton, 1962)",
+    "canonicalName": "Paramesotriton hongkongensis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Paramesotriton",
+    "species": "Paramesotriton hongkongensis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431841,
+    "speciesKey": 2431847,
+    "class": "Amphibia"
+  }
+}

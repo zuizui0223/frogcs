@@ -1,0 +1,120 @@
+{
+  "source_sha256": {
+    "research\\results\\naamp_three_guild_occurrence\\occurrences.csv.gz": "47efff9048ab627d508d3e8199a8e6caaba31c938383f0a144f6b033015ee492",
+    "research\\results\\naamp_three_guild_occurrence\\neighborhood_membership.csv.gz": "48122f03c0690f58dd9e5ad52eed6b036623890bdbbe6b388913eeeaed6a83a9",
+    "research\\results\\three_guild_globi_live\\taxon_crosswalk.json": "749659cf7a5a196ce443480627487a21773ae16d0401ffc54134bfcd14d22089",
+    "research\\results\\three_guild_globi_live\\naamp_taxon_crosswalk.json": "4e814f897d61dd422409f2008ff7e9126e416822277254d713d8468c93d4ede0",
+    "research\\results\\three_guild_globi_live\\direction_normalized_species_edges.csv": "8c0ada386e375ac2503a4f7e73c28b854fb46c8cee95fb041163d1c67bd922c4"
+  },
+  "literature_name_edges": 659,
+  "accepted_key_edges": 645,
+  "unresolved_name_edges": 14,
+  "variants": [
+    {
+      "radius_km": 5,
+      "accuracy": "strict",
+      "eligible_resolved_edges": 645,
+      "both_species_anywhere": 3,
+      "any_shared_center": 0,
+      "any_shared_center_year": 0,
+      "any_shared_center_year_month": 0,
+      "shared_month_edges_by_relation": {}
+    },
+    {
+      "radius_km": 5,
+      "accuracy": "strict_plus_unknown",
+      "eligible_resolved_edges": 645,
+      "both_species_anywhere": 4,
+      "any_shared_center": 0,
+      "any_shared_center_year": 0,
+      "any_shared_center_year_month": 0,
+      "shared_month_edges_by_relation": {}
+    },
+    {
+      "radius_km": 25,
+      "accuracy": "strict",
+      "eligible_resolved_edges": 645,
+      "both_species_anywhere": 13,
+      "any_shared_center": 8,
+      "any_shared_center_year": 7,
+      "any_shared_center_year_month": 1,
+      "shared_month_edges_by_relation": {
+        "ecologicallyRelatedTo": 1
+      }
+    },
+    {
+      "radius_km": 25,
+      "accuracy": "strict_plus_unknown",
+      "eligible_resolved_edges": 645,
+      "both_species_anywhere": 15,
+      "any_shared_center": 10,
+      "any_shared_center_year": 7,
+      "any_shared_center_year_month": 3,
+      "shared_month_edges_by_relation": {
+        "ecologicallyRelatedTo": 1,
+        "eats": 1,
+        "coOccursWith": 1
+      }
+    }
+  ],
+  "naamp_species_names_mapped": {
+    "Lithobates sylvaticus": 17,
+    "Pseudacris crucifer": 109,
+    "Anaxyrus americanus": 10,
+    "Lithobates palustris": 6,
+    "Pseudacris nigrita": 3,
+    "Lithobates sphenocephalus": 10,
+    "Acris gryllus": 5,
+    "Hyla cinerea": 14,
+    "Anaxyrus terrestris": 10,
+    "Pseudacris ocularis": 1,
+    "Hyla squirella": 3,
+    "Gastrophryne carolinensis": 9,
+    "Pseudacris kalmi": 1,
+    "Lithobates clamitans": 30,
+    "Anaxyrus fowleri": 6,
+    "Hyla chrysoscelis": 14,
+    "Pseudacris brachyphona": 3,
+    "Hyla versicolor": 12,
+    "Lithobates pipiens": 1,
+    "Pseudacris feriarum": 7,
+    "Pseudacris brimleyi": 1,
+    "Acris crepitans": 3,
+    "Lithobates catesbeianus": 5,
+    "Lithobates septentrionalis": 3,
+    "Hyla gratiosa": 3,
+    "Lithobates virgatipes": 2,
+    "Hyla femoralis": 3
+  },
+  "naamp_species_names_unresolved": {
+    "Hyla chrysoscelis/versicolor complex": 2,
+    "Acris crepitans/gryllus complex": 11
+  },
+  "naamp_taxonomic_bridge_scope": {
+    "EXACT_ACCEPTED_SPECIES_BRIDGE": 48
+  },
+  "naamp_record_support_sensitivity": [
+    {
+      "accuracy": "strict",
+      "source_edge_support_rows": 0,
+      "visits_same_year": 0,
+      "visits_same_month": 0
+    },
+    {
+      "accuracy": "strict_plus_unknown",
+      "source_edge_support_rows": 0,
+      "visits_same_year": 0,
+      "visits_same_month": 0
+    }
+  ],
+  "no_local_interaction_observed": true,
+  "life_stage_not_required": true,
+  "limits": [
+    "literature relations are not local realized edges",
+    "ecologicallyRelatedTo is not proof of competition",
+    "unknown/missing edge not absence",
+    "NAAMP complex labels not forced to species; species bridge is source-eligible cohort, not every raw NAAMP label",
+    "spatial and temporal reporting, not simultaneous pond contact",
+    "no observation-effort correction"
+  ]
+}

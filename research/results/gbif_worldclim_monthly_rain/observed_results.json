@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-25",
+  "source_rain": "WorldClim 2.1 downscaled historical CRU-TS4.09 precipitation 10 arcmin 2010–2024",
+  "source_GBIF": "Anonymous experimental 2026-08 Anura/Odonata species stage 1° month/year aggregate",
+  "citations": [
+    "Fick & Hijmans 2017 DOI:10.1002/joc.5086",
+    "Harris et al 2020 Scientific Data 7:109"
+  ],
+  "source_zip_receipts": [
+    {
+      "url": "https://geodata.ucdavis.edu/climate/worldclim/2_1/hist/cts4.09/wc2.1_cruts4.09_10m_prec_2010-2019.zip",
+      "bytes": 218030570,
+      "sha256": "a3ee5571a8f08ff8db4bdd6748e96586bc2f21127e5f368334351773af3429a6",
+      "included_months": 120,
+      "raster_file_count": 120
+    },
+    {
+      "url": "https://geodata.ucdavis.edu/climate/worldclim/2_1/hist/cts4.09/wc2.1_cruts4.09_10m_prec_2020-2024.zip",
+      "bytes": 108904511,
+      "sha256": "062c36b16f90154be23140f0ba64b3eeb0c7660d2b628caba2d9a51ced51f786",
+      "included_months": 60,
+      "raster_file_count": 60
+    }
+  ],
+  "observed_stage_grid_rows_2010_2024": 542757,
+  "observed_stage_grid_rows_with_precipitation": 495803,
+  "observed_stage_grid_rows_missing_or_nonland": 46954,
+  "unique_world_grid_year_month_rain_cells": 166330,
+  "unique_world_grid_year_month_cells_with_rain": 146550,
+  "species_with_precipitation": 59,
+  "stage_coverages": {
+    "adult": {
+      "reporting_cells_with_rain": 133971,
+      "median_mm_per_month": 75.287,
+      "p25_mm": 45.519,
+      "p75_mm": 111.547
+    },
+    "aquatic_immature": {
+      "reporting_cells_with_rain": 7998,
+      "median_mm_per_month": 65.186,
+      "p25_mm": 39.893,
+      "p75_mm": 95.303
+    },
+    "egg": {
+      "reporting_cells_with_rain": 4428,
+      "median_mm_per_month": 55.28,
+      "p25_mm": 33.931,
+      "p75_mm": 84.88
+    },
+    "juvenile": {
+      "reporting_cells_with_rain": 19340,
+      "median_mm_per_month": 70.891,
+      "p25_mm": 46.55,
+      "p75_mm": 101.431
+    },
+    "unlabelled": {
+      "reporting_cells_with_rain": 330066,
+      "median_mm_per_month": 71.812,
+      "p25_mm": 42.019,
+      "p75_mm": 110.656
+    }
+  },
+  "warnings": [
+    "Climatological monthly CRU downscaled to 10 arcmin within 1° GBIF-cell centroid; not actual sensor rainfall at frog chorus stations.",
+    "Monthly precipitation does NOT encode 0–72 h rain pulse from NAAMP, or hydroperiod/standing-water presence.",
+    "1° grid centroid may fall offshore even for a coastal onshore occurrence; masked values are kept missing.",
+    "GBIF life-stage record geography is observation-effort biased and source-stage proportions do not estimate cohort demography.",
+    "Rain by stage are descriptive reporting-location distributions, NOT a causal or ecological preference estimate.",
+    "2025 and 2026 have no source precipitation under this version of monthly weather and were not interpolated.",
+    "No aquatic predator real attacks, plant stem architecture, frog chorus or same-pond reproduction measured."
+  ]
+}

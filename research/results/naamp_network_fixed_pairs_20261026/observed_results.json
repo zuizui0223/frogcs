@@ -1,0 +1,13 @@
+{
+  "pair_source_sha256": "3e0df64ce1d668f0e3743c8d0370faabf4bd75adb033adfda2ba9a6a278fa7a7",
+  "pairs": 4040,
+  "routes": 388,
+  "original_routes": 389,
+  "shared_physical_sites": 6,
+  "rematched": false,
+  "bootstrap": 2000,
+  "weighting": "Each route equal weight within each stratum",
+  "strata": "Both endpoints low, middle or high Caudata suitability; cross-boundary pairs retained as mixed",
+  "cuts": "Fixed from prior 4248-site predictor-only tertiles",
+  "limits": "Matched habitat restricts local niche variation. No causal preference or predation claim. No SDM uncertainty propagation or multiple-testing adjustment."
+}

@@ -1,0 +1,33 @@
+name: Global GloBI stage matched GBIF 0.5 1 2 degree grid
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/gbif_stage_gridded_overlap.py
+      - .github/workflows/research_global_stage_grid.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  global-stage-grid:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Synthetic checks for geogrid and uncertain source stages
+        run: python research/scripts/gbif_stage_gridded_overlap.py --self-test
+      - name: Query real GBIF georeferenced life stage observations and compute gridded month-year overlaps
+        run: |
+          python research/scripts/gbif_stage_gridded_overlap.py \
+            --source research/results/global_globi_gbif/stage_bridge/observed_results.json \
+            --out research/results/gbif_stage_grid
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: globi-gbif-real-stage-grid-and-source-audit
+          path: research/results/gbif_stage_grid/
+          if-no-files-found: error

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Alytes+muletensis&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:24.633879+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "cf4bff570d0cdf18e4e9276d8db37c0180769c19d7177e37a8dfc94668306378",
+  "response": {
+    "usageKey": 2426609,
+    "scientificName": "Alytes muletensis (Sanch\u00edz & Adrover, 1979)",
+    "canonicalName": "Alytes muletensis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Alytidae",
+    "genus": "Alytes",
+    "species": "Alytes muletensis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6726,
+    "genusKey": 2426608,
+    "speciesKey": 2426609,
+    "class": "Amphibia"
+  }
+}

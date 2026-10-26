@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pseudacris+regilla&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:54.508368+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "975d4c946c592869f75a825cf493d916ddd61bab4f9fed17acce27e8f5994360",
+  "response": {
+    "usageKey": 2428132,
+    "scientificName": "Pseudacris regilla (Baird & Girard, 1852)",
+    "canonicalName": "Pseudacris regilla",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Pseudacris",
+    "species": "Pseudacris regilla",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2428124,
+    "speciesKey": 2428132,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-25",
+  "classification": "SYNTHETIC_INVARIANT_TEST_NOT_EMPIRICAL_PEM_OR_FROGCS_EFFECT",
+  "method": "Seasonal named feeding motifs aggregated to annual Beverton-Holt 3lineage toy, missing-species resident pair then rare invasion log growth, no fit",
+  "original_model": "research/scripts/simulate_seasonal_trophic_network.py",
+  "original_PEM_scenarios": "research/scripts/simulate_pem_three_guild_stage_balance.py",
+  "fixed_test_protocol": "research/PEM_TRIAD_MUTUAL_INVASIBILITY_COUNTERFACTUAL_SPEC_2026-10-25.md",
+  "primary_tests": {
+    "parameter_draws": 64,
+    "phase_scenarios": 108,
+    "width_scenarios": 648,
+    "wetland_scenarios": {
+      "PEM1A": {
+        "wet_start": 0.105,
+        "wet_end": 0.44,
+        "salamander_background_recruit": 0.88,
+        "odonate_background_recruit": 0.62
+      },
+      "PEM1C": {
+        "wet_start": 0.08,
+        "wet_end": 0.73,
+        "salamander_background_recruit": 0.98,
+        "odonate_background_recruit": 0.85
+      },
+      "PEM1F": {
+        "wet_start": 0.045,
+        "wet_end": 0.94,
+        "salamander_background_recruit": 1,
+        "odonate_background_recruit": 1
+      }
+    },
+    "phase_only_fixed_frog_cohort_width": 0.05,
+    "frog_rare_invasion_against_pair_residents": {
+      "positive_scenario_count": 107,
+      "negative_scenario_count": 1
+    },
+    "direct_plus_indirect_dragonfly_hazard_sensitivity": {
+      "contexts_with_some_parameter_draws_D_net_reduces_F_hazard": 100,
+      "contexts_with_any_parameter_draws_D_net_increases_F_hazard": 108,
+      "median_parameter_fraction_net_protection": 0.1171875
+    },
+    "phase_by_PEM": [
+      {
+        "scenario": "PEM1A",
+        "sampled_synthetic_phase_contexts": 36,
+        "pair_resident_viable_in_any_draw_scenarios": 36,
+        "scenarios_with_some_all_three_invasions": 36,
+        "min_to_max_all_three_invader_fraction": [
+          0.375,
+          0.90625
+        ],
+        "med_all_three_invader_fraction": 0.640625
+      },
+      {
+        "scenario": "PEM1C",
+        "sampled_synthetic_phase_contexts": 36,
+        "pair_resident_viable_in_any_draw_scenarios": 36,
+        "scenarios_with_some_all_three_invasions": 36,
+        "min_to_max_all_three_invader_fraction": [
+          0.21875,
+          0.90625
+        ],
+        "med_all_three_invader_fraction": 0.4296875
+      },
+      {
+        "scenario": "PEM1F",
+        "sampled_synthetic_phase_contexts": 36,
+        "pair_resident_viable_in_any_draw_scenarios": 36,
+        "scenarios_with_some_all_three_invasions": 36,
+        "min_to_max_all_three_invader_fraction": [
+          0.140625,
+          0.765625
+        ],
+        "med_all_three_invader_fraction": 0.3828125
+      }
+    ],
+    "phase_only_relative_to_zero_offset": {
+      "paired_scenario_comparisons": 96,
+      "shifted_better": 96,
+      "synchrony_better": 0,
+      "exact_equal": 0,
+      "median_shifted_minus_synchronized": 0.171875,
+      "min_to_max": [
+        0.03125,
+        0.609375
+      ],
+      "by_PEM": [
+        {
+          "pem": "PEM1A",
+          "phase_shift_better": 32,
+          "simultaneous_better": 0
+        },
+        {
+          "pem": "PEM1C",
+          "phase_shift_better": 32,
+          "simultaneous_better": 0
+        },
+        {
+          "pem": "PEM1F",
+          "phase_shift_better": 32,
+          "simultaneous_better": 0
+        }
+      ],
+      "interpretation": "Actual toy outcome records the sign in shifted_better/synchrony_better; in the tested parameters, every nonzero predator-stage phase shift raised the strict pair-resident invasion screen relative to zero phase. This is imposed toy behavior, not a universal ecological law or NWI field result."
+    },
+    "unbiased_width_vs_explicit_narrow_cost_stress": [
+      {
+        "hypothetical_narrow_cohort_cost": 0,
+        "matched_phase_hydro_cover_cue_contexts": 108,
+        "narrow_supports_more_all_three_invasion": 108,
+        "diffuse_supports_more_all_three_invasion": 0,
+        "equal_invasion": 0,
+        "median_narrow_minus_diffuse_strict_invasion": 0.2421875,
+        "range_narrow_minus_diffuse": [
+          0.046875,
+          0.65625
+        ]
+      },
+      {
+        "hypothetical_narrow_cohort_cost": 0.3,
+        "matched_phase_hydro_cover_cue_contexts": 108,
+        "narrow_supports_more_all_three_invasion": 0,
+        "diffuse_supports_more_all_three_invasion": 108,
+        "equal_invasion": 0,
+        "median_narrow_minus_diffuse_strict_invasion": -0.28125,
+        "range_narrow_minus_diffuse": [
+          -0.75,
+          -0.109375
+        ]
+      },
+      {
+        "hypothetical_narrow_cohort_cost": 0.8,
+        "matched_phase_hydro_cover_cue_contexts": 108,
+        "narrow_supports_more_all_three_invasion": 0,
+        "diffuse_supports_more_all_three_invasion": 108,
+        "equal_invasion": 0,
+        "median_narrow_minus_diffuse_strict_invasion": -0.296875,
+        "range_narrow_minus_diffuse": [
+          -0.78125,
+          -0.109375
+        ]
+      }
+    ],
+    "single_case_phase_sign_examples": {
+      "positive_invasion": {
+        "pem_scenario": "PEM1A",
+        "salamander_offset_fraction_year": -0.12,
+        "odonate_offset_fraction_year": -0.18,
+        "submerged_cover_proxy": 0.15,
+        "dragonfly_to_salamander_cue_strength": "weak_dragonfly_cue",
+        "unconditional_mutual_invasion_draw_fraction": 0.484375
+      },
+      "frog_hazard_reducing_dragonfly": {
+        "pem_scenario": "PEM1A",
+        "salamander_offset_fraction_year": 0,
+        "odonate_offset_fraction_year": 0.18,
+        "local_fraction_parameter_draws_D_direct_minus_indirect_lowers_tadpole_hazard": 0.5
+      }
+    }
+  },
+  "limitations": [
+    "All hydrology windows, attack strengths, predator phase offsets, plant cover and 64 ensemble draws were invented to challenge hypotheses, not measured at NWI PEM1A/C/F ponds.",
+    "Annual state variables F S D are not literal sampled eggs/larvae/adults; stage-specific interactions enter through seasonal overlap kernels.",
+    "Two-species resident invasion-when-rare calculations are stronger than starting populations all together, but not a mathematical proof of global permanence with cycles/alternative attractors.",
+    "Narrow aggregation-cost parameter is invented and explicitly stress-tested; neither a frog chorus fitness cost nor a measured predator saturation coefficient.",
+    "Japanese salamander-dragonfly-frog indirect motif and Australian reverse adult-frog→emerging dragonfly motif are combined as generic theoretical interactions, not asserted for one local observed species assemblage.",
+    "GBIF GloBI and NAAMP do not measure attack rates, PEM classification at real audio sites, species-specific recruitment nor emergence density.",
+    "Never interpret fractions of arbitrarily drawn parameter sets or scenarios as the fraction of natural wetlands where coexistence occurs."
+  ]
+}

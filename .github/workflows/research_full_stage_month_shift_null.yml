@@ -1,0 +1,50 @@
+name: Full GloBI GBIF stage seasonal phase shift null
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/fixed_globi_gbif_month_shift_null.py
+      - .github/workflows/research_full_stage_month_shift_null.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  seasonal-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify stage-year-month bitset shift and nonoverlap logic
+        run: python research/scripts/fixed_globi_gbif_month_shift_null.py --self-test
+      - name: Reuse verified entire GBIF Anura and Odonata 1degree stage-year-month cube
+        uses: actions/download-artifact@v4
+        with:
+          name: gbif-2026-anonymous-full-partition-stage-spatial-1degree
+          run-id: 40190152042
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/gbif_open_artifact
+      - name: Reuse verified pinned full GloBI nonself stage candidate output
+        uses: actions/download-artifact@v4
+        with:
+          name: fixed-full-globi-nonself-gbif-1degree-stage-grid
+          run-id: 40193636562
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/full_globi_artifact
+      - name: Evaluate observed same-month stage overlap versus 11 fixed phase offsets
+        run: |
+          python research/scripts/fixed_globi_gbif_month_shift_null.py \
+            --gbif research/data/gbif_open_artifact/focal_stage_1deg_month_year.csv \
+            --globi research/data/full_globi_artifact/nonself_stage_pair_grid_results.csv \
+            --globi-provenance research/data/full_globi_artifact/full_nonself_staged_GloBI_provenance.csv \
+            --out research/results/month_shift_globi_gbif
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: full-globi-gbif-observed-month-shift-null
+          path: research/results/month_shift_globi_gbif
+          if-no-files-found: error

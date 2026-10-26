@@ -1,0 +1,4476 @@
+{
+  "source_commit": "b8d30ea2d2766c8508a7d7e133a141afb0bf6de4",
+  "scope": "Tracked research payload, research workflows and root README at source_commit",
+  "files": [
+    {
+      "path": ".github/workflows/research_allobates_predator_behavior_g0.yml",
+      "mode": "text_lf",
+      "sha256": "5989103e1dd18432d3b78e9c74be1c2ab1746c929c072d25a43692e6b19b1cb8"
+    },
+    {
+      "path": ".github/workflows/research_archive_globi_fixed_receipt.yml",
+      "mode": "text_lf",
+      "sha256": "281f14844a70d2f8d923d6bee5b82abe2ee6010e98251509bd576b1d551a8347"
+    },
+    {
+      "path": ".github/workflows/research_biofresh_schema.yml",
+      "mode": "text_lf",
+      "sha256": "24433f91b218959d2fb78c8bb61c26d5d75b8fc2aadbeeadaaadef70817991e7"
+    },
+    {
+      "path": ".github/workflows/research_broad_species_sdm.yml",
+      "mode": "text_lf",
+      "sha256": "c59fc9b73ef0a45c2dbecb15baeffeb08bf09bccba050f238b2379812b468e4e"
+    },
+    {
+      "path": ".github/workflows/research_carroll_8pond_g0.yml",
+      "mode": "text_lf",
+      "sha256": "522996a3b06b5e2060456c8ff0414dce5f2c20e3826ff3d08966fbe3fd216ab9"
+    },
+    {
+      "path": ".github/workflows/research_common_site_time_stage_cube.yml",
+      "mode": "text_lf",
+      "sha256": "418958d22aa58d30f8bf8a276a2642de814562c77f1dbd87f2a4402b1ce857d3"
+    },
+    {
+      "path": ".github/workflows/research_comparable_db_v1.yml",
+      "mode": "text_lf",
+      "sha256": "249b6fe9a33a48e6b25f489d972f2bb7b4811aaf7e5b1a2072b6441f44dfe818"
+    },
+    {
+      "path": ".github/workflows/research_dryad_access_check.yml",
+      "mode": "text_lf",
+      "sha256": "134ffaa03d7585aaac074d253ed294df566d2650648a8a4731690e1a3952821c"
+    },
+    {
+      "path": ".github/workflows/research_earthenv_globi_gbif_stage_moderation.yml",
+      "mode": "text_lf",
+      "sha256": "d8f24341de30719188c03984cba59e286fe750bb3c23181b3352779ffdc571d7"
+    },
+    {
+      "path": ".github/workflows/research_earthenv_wetland_1deg.yml",
+      "mode": "text_lf",
+      "sha256": "da0844da37a1a3af4c418392dd62c5467e73d75ba9bd318ca18daa930a0eefec"
+    },
+    {
+      "path": ".github/workflows/research_expanded_stage_specificity.yml",
+      "mode": "text_lf",
+      "sha256": "27933d2c18554abab582ad3a409f7196116bf08a5ac03851e4370d290c901e38"
+    },
+    {
+      "path": ".github/workflows/research_french_pond_hydro_macro.yml",
+      "mode": "text_lf",
+      "sha256": "276b41c330ed42f81d9783bbbd8e35e1c7ca8e824920a560fd6309a4e2b9a370"
+    },
+    {
+      "path": ".github/workflows/research_full_globi_gbif_expanded_stage_grid.yml",
+      "mode": "text_lf",
+      "sha256": "4243f9e4486db1a0a427d234d9b2f742de78aaee5cffb55a237204e35ee79df0"
+    },
+    {
+      "path": ".github/workflows/research_full_globi_to_gbif_stage_grid.yml",
+      "mode": "text_lf",
+      "sha256": "036e8fdd549c8875cb3475013bb52e94c2ca88dab7cf280515829c9bc4536823"
+    },
+    {
+      "path": ".github/workflows/research_full_stage_month_shift_null.yml",
+      "mode": "text_lf",
+      "sha256": "fb9b61bd183d8fa3efae38fe1b6a12d5d453fbc0c682f6c0bc309e50c4246931"
+    },
+    {
+      "path": ".github/workflows/research_fuscus_factorial_assignment_g0.yml",
+      "mode": "text_lf",
+      "sha256": "ab1350cd3d3029fd9f132bad3ed224fc6ae2d452fe336d8dda1fc86ec8242e81"
+    },
+    {
+      "path": ".github/workflows/research_fuscus_factorial_g0.yml",
+      "mode": "text_lf",
+      "sha256": "1f5405b49e182422bfeacb3fb763d730b435202e3e3d381f995870e362d76359"
+    },
+    {
+      "path": ".github/workflows/research_fuscus_g2b_observed.yml",
+      "mode": "text_lf",
+      "sha256": "3eb8af3d6a34f56d28f7a8d49a5922911bb1d978a6d8fc572989b187d14d1b93"
+    },
+    {
+      "path": ".github/workflows/research_gbif_anon_parquet_sample.yml",
+      "mode": "text_lf",
+      "sha256": "d2fdfbe8bfce2fb41ec127c4d2a1029ab3564d9697ed49e149f46e8f887eba0d"
+    },
+    {
+      "path": ".github/workflows/research_gbif_global_stage_partition_g0.yml",
+      "mode": "text_lf",
+      "sha256": "f68e4f9415d6939ae1c5d9efc6bbb6363d3d97be97db247c45b629d4298b23b9"
+    },
+    {
+      "path": ".github/workflows/research_gbif_inbo_event_g3_blind.yml",
+      "mode": "text_lf",
+      "sha256": "046e1f6d5a9df4db07d9077b49a420815b38e62c5340ac46d9beaf32a87afcad"
+    },
+    {
+      "path": ".github/workflows/research_gbif_open_full_stage_grid.yml",
+      "mode": "text_lf",
+      "sha256": "6166d3729f5d5a03bb38193973b544183b41349e98d5258eb4132f6158e8ae84"
+    },
+    {
+      "path": ".github/workflows/research_gbif_retrieval_repair.yml",
+      "mode": "text_lf",
+      "sha256": "1adfb155a55383985a4a2c96b6480a846ac0778560536503daa4e4891c3a8903"
+    },
+    {
+      "path": ".github/workflows/research_gbif_worldclim_monthly.yml",
+      "mode": "text_lf",
+      "sha256": "2055bdb33eefdb2570e89050242d02de661030db427233cd62ecbc6f9e49175d"
+    },
+    {
+      "path": ".github/workflows/research_global_globi_gbif_pilot.yml",
+      "mode": "text_lf",
+      "sha256": "19378acac8ca9b9d2b04e0d18cd3026895cc40ae3bad42fe672df59727b49f45"
+    },
+    {
+      "path": ".github/workflows/research_global_globi_geo.yml",
+      "mode": "text_lf",
+      "sha256": "b976baebfe8af4a0b03b377b272a6230f97230b626fa7d79b9d305a730d8f8fa"
+    },
+    {
+      "path": ".github/workflows/research_global_ontogenetic_wetland.yml",
+      "mode": "text_lf",
+      "sha256": "6ad088911efeb2a99feadcb5c4d2f6b91430f54d9b0e032be15fb7b8e611d2ba"
+    },
+    {
+      "path": ".github/workflows/research_global_parquet_preflight.yml",
+      "mode": "text_lf",
+      "sha256": "4a5f3e261805872806700d02ddd9c3c4bd4d828149718daac4d4a6cab8fae531"
+    },
+    {
+      "path": ".github/workflows/research_global_stage_grid.yml",
+      "mode": "text_lf",
+      "sha256": "b1285fda1fea6f421bf5700f316ba9e15e5e5a5f3b56aa7ae46e8ee51f7c4a29"
+    },
+    {
+      "path": ".github/workflows/research_globi_fixed_full_foodweb.yml",
+      "mode": "text_lf",
+      "sha256": "c50473639e78a86f2dd48e1e7eefd93f1735f8f1d7e3241eb192c4a5cc851229"
+    },
+    {
+      "path": ".github/workflows/research_globi_gbif_prey_specificity.yml",
+      "mode": "text_lf",
+      "sha256": "602625910a73cc19a8c667e14e43b3fc009d2eb2af248b5df2e568ee54612e08"
+    },
+    {
+      "path": ".github/workflows/research_globi_stage_worldclim_rain.yml",
+      "mode": "text_lf",
+      "sha256": "3ca8db2fde84a5d6dd836459399fca398b961986b773427845b0718c97175a0a"
+    },
+    {
+      "path": ".github/workflows/research_hungary_vegetation_screen.yml",
+      "mode": "text_lf",
+      "sha256": "7358284b23bcd71cf1fce5109ab2e19344decee83200d816cce5f71d351fa718"
+    },
+    {
+      "path": ".github/workflows/research_inbo_hyla_g1.yml",
+      "mode": "text_lf",
+      "sha256": "488727c3c7cfda2c4587770dcc5a14339dc1600a3d6ecd2124ee36fb9b8bfe0f"
+    },
+    {
+      "path": ".github/workflows/research_inbo_prior_larvae_chorus_blind.yml",
+      "mode": "text_lf",
+      "sha256": "3c41aac42ba753c29c4da745d3cce2b61fd66e453c05761340dd739647c4e34e"
+    },
+    {
+      "path": ".github/workflows/research_inbo_stage_taxon_g0.yml",
+      "mode": "text_lf",
+      "sha256": "ad41d62ec582b58ba879442a2053d6223a37cb782183cfc3c928056109a4c510"
+    },
+    {
+      "path": ".github/workflows/research_integrated_flagship_manuscript_qa.yml",
+      "mode": "text_lf",
+      "sha256": "79c20f1b330913da948fe47e27d66c9976d309ac78917a2be8d37df37a2227d9"
+    },
+    {
+      "path": ".github/workflows/research_naamp_community_concentration.yml",
+      "mode": "text_lf",
+      "sha256": "202fffbd0b8ab59b12984da85256ab51afc6d935892fd075feb1a6f4d8c53ff1"
+    },
+    {
+      "path": ".github/workflows/research_naamp_gbif_wetland_g0.yml",
+      "mode": "text_lf",
+      "sha256": "1d019b15e05310e4cf83c481a647e8474cbd02aa0ec6892f47e03a774875eb5b"
+    },
+    {
+      "path": ".github/workflows/research_naamp_prior_community_allocation.yml",
+      "mode": "text_lf",
+      "sha256": "1e50f81095cd388b007cfd9422eed17d8340f1fa479bf2a877815698b8d1ee11"
+    },
+    {
+      "path": ".github/workflows/research_naamp_three_guild_occurrence.yml",
+      "mode": "text_lf",
+      "sha256": "e958720d085accbe31b4cd60dc1357809f167cac28cd6985a9229e8b3fc62cb6"
+    },
+    {
+      "path": ".github/workflows/research_nps_crosslag_roster.yml",
+      "mode": "text_lf",
+      "sha256": "580615802d3583aa19446a032365e3b4190f43bfd413412aafe14aa39ad6e984"
+    },
+    {
+      "path": ".github/workflows/research_nps_glkn_schema_audit.yml",
+      "mode": "text_lf",
+      "sha256": "1c5ed9e5984dff72a2e9e82e5909dfc124eef1396af4fe369d25ebc62a62102e"
+    },
+    {
+      "path": ".github/workflows/research_nps_glkn_strict_history.yml",
+      "mode": "text_lf",
+      "sha256": "c2ba47e0fde49ae5ff2a30fa39bafe143fbde28b981fc43e698f7d6cd1e40fbc"
+    },
+    {
+      "path": ".github/workflows/research_nps_hydroperiod_history.yml",
+      "mode": "text_lf",
+      "sha256": "1c5baa3164d2bf881a70dd0b283fb3e1afa48e17a39f2f6e5d75ef8f14999f21"
+    },
+    {
+      "path": ".github/workflows/research_nps_stage_crosslag.yml",
+      "mode": "text_lf",
+      "sha256": "0b80b974dfa91ff6bb4bf4608357253570a7fdbcb895edcbb841091ee0bc82ef"
+    },
+    {
+      "path": ".github/workflows/research_nps_two_way_fe.yml",
+      "mode": "text_lf",
+      "sha256": "3f330205500e4f402faa5f83db849f3bbca9d9a7e5a3da3da7e8add495ef4d54"
+    },
+    {
+      "path": ".github/workflows/research_nps_weak_strong_sensitivity.yml",
+      "mode": "text_lf",
+      "sha256": "99914f664b93843f1ecb2327fae157df7264ccf833dcd746864df55b3c5b8d11"
+    },
+    {
+      "path": ".github/workflows/research_nwi_pem_verified_site_overlay.yml",
+      "mode": "text_lf",
+      "sha256": "d82f6369f1abc9451445ab2edd9ad004955ff5067a3d8d9c5957ffae813d9393"
+    },
+    {
+      "path": ".github/workflows/research_part2_source_g0.yml",
+      "mode": "text_lf",
+      "sha256": "eb1d0ce8d1b17ad9ac2ef86406370739edde58c5d53b0702ba512498094fab0b"
+    },
+    {
+      "path": ".github/workflows/research_pem_mutual_invasion.yml",
+      "mode": "text_lf",
+      "sha256": "41f0834015b6f8ad92b4a711e4240c3ba3b65ebc722a65d2db1b62d4dbe7b9bd"
+    },
+    {
+      "path": ".github/workflows/research_pem_stage_network_edge_ablations.yml",
+      "mode": "text_lf",
+      "sha256": "1cfdc6dd1ccced5fb8d87251e81ddf6e3dce9d421fb10c0ff9053625ed378006"
+    },
+    {
+      "path": ".github/workflows/research_pem_stage_triads_synthetic.yml",
+      "mode": "text_lf",
+      "sha256": "b26bab062b72febb7a7ce5f531131c12c6ac58d4cfbef7f58f964743a74c700a"
+    },
+    {
+      "path": ".github/workflows/research_rain_vegetation_wetland_site_test.yml",
+      "mode": "text_lf",
+      "sha256": "a97694bab1c06e07bf63dd4cfabf1244fc1967cf1c0c63d785b94dcf0b696da1"
+    },
+    {
+      "path": ".github/workflows/research_species_occurrence_first.yml",
+      "mode": "text_lf",
+      "sha256": "67bf67a1bda10a0364388154168363fb7fbbcbf7092bf851e4143949c7c13b29"
+    },
+    {
+      "path": ".github/workflows/research_species_occurrence_receipt_qa.yml",
+      "mode": "text_lf",
+      "sha256": "8eef0b408a9ae480f37a9d2cac68aace1f424288e20848b66f5392b9aad3e3e0"
+    },
+    {
+      "path": ".github/workflows/research_stage_legacy_integration_qa.yml",
+      "mode": "text_lf",
+      "sha256": "b239556cea30d2676d5b73df2580f23598059bcaaa5f3b79a8bfeaa6985bbe93"
+    },
+    {
+      "path": ".github/workflows/research_synthetic_seasonal_coexistence.yml",
+      "mode": "text_lf",
+      "sha256": "ea9a73d4213ab08ac922a4aa520851e9f4b42da0cdec12a87d436f64f60a12ed"
+    },
+    {
+      "path": ".github/workflows/research_us_nwi_gbif_stage_point_pilot.yml",
+      "mode": "text_lf",
+      "sha256": "93bdb51fed1624b3de29f213b4a5cf0294b04f900b8c2376c5a1de0914689ddd"
+    },
+    {
+      "path": ".github/workflows/research_wetland_hierarchy_qa.yml",
+      "mode": "text_lf",
+      "sha256": "b70c295d1f5f805af5be87231861ad2f91570ec8e219585368841508afd0debb"
+    },
+    {
+      "path": "README.md",
+      "mode": "text_lf",
+      "sha256": "0d0f7804f7bef248e5e584f5376c2e350e7734e1cec026c71ed76c147ffa227e"
+    },
+    {
+      "path": "research/CANONICAL_SITE_TIME_STAGE_OBSERVATION_CONTRACT_V1.md",
+      "mode": "text_lf",
+      "sha256": "b0b6b6fe097aa2373a2002c75a61c90cf74b7582e2262da5622828e73d9b1ba6"
+    },
+    {
+      "path": "research/CHORUS_EAVESDROPPER_EVIDENCE_2026-10-25.csv",
+      "mode": "text_lf",
+      "sha256": "0e11c10fe66971739c53884fa1ef6ccdef83acecda6e943f63721253d39a8212"
+    },
+    {
+      "path": "research/CHORUS_HISTORY_PEM_STAGE_NETWORK_COEXISTENCE_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "5769e8134137dd87cba0be93a870c706569ddd7b0a8b713f8f3362aefcd918d4"
+    },
+    {
+      "path": "research/CHORUS_RAIN_VEGETATION_HYDROPERIOD_STAGE_COMPETITION_SPEC_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "16bcd8e96b2f54c4545ba7aa5593cf5aa7aa7b6ee18cff339fe688681925fd37"
+    },
+    {
+      "path": "research/CHORUS_SITE_ENV_ENEMY_STAGE_GBIF_HYPOTHESES_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "84d33f8f752edd4f2b41b5c9b65d34ae336bf0a285d5797a0ae76d9912d293ed"
+    },
+    {
+      "path": "research/CHORUS_WETLAND_VEGETATION_BIOTIC_HIERARCHY_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "0e841d115354e93179759aaf788cdc1443eef6d2a1709a435362fe4303ed1ce8"
+    },
+    {
+      "path": "research/DRYAD_RAW_ACCESS_AUDIT_2026-10-25.json",
+      "mode": "text_lf",
+      "sha256": "499971c50393666da472e781970feea804358a7696071dad840871bd651e373d"
+    },
+    {
+      "path": "research/EARTHENV_WETLAND_MACRO_ALIGNMENT_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "d3af5a36ded1dcd420ca30988bbe2275450ef0885aa7d7223688e5745aff51e1"
+    },
+    {
+      "path": "research/EDNA_METHYLATION_READINESS_2026-10-25.csv",
+      "mode": "text_lf",
+      "sha256": "10f2d773cc07f4abfb98e51454315e35a49df580eb89467f0a6f0d5dacaac0db"
+    },
+    {
+      "path": "research/EMERGENT_VEGETATION_HIERARCHY_EVIDENCE_2026-10-25.csv",
+      "mode": "text_lf",
+      "sha256": "e77db6cbc37790d8c01000c59c011b1a8047044489953ea1a801610b4ac44c45"
+    },
+    {
+      "path": "research/EXISTING_DATA_PATTERN_AUDIT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "e40c2fa8600d2bf33c6fc357381410736442922246b4788077c1ee7ab927c0a5"
+    },
+    {
+      "path": "research/FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "49004842d58eb6af2c09e31f29e00c032b0ad6acd6b3bb15f87f42d58cece76b"
+    },
+    {
+      "path": "research/FULL_GLOBI_TO_GBIF_NONSELF_STAGE_GRID_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "e40a4dbb7e1cd934df80c987b7656f69373b584303b65726b721db360e49dfd2"
+    },
+    {
+      "path": "research/FUSCUS_EXPERIMENT_G2B_FROZEN_ANALYSIS_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "baf439c8ab6aaf51d96aa24795302f4fa9709906cc70711e3a458c4b2db9e4f7"
+    },
+    {
+      "path": "research/GBIF_1DEG_WORLDCLIM_DATED_RAIN_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "8286d6c0e65f012bfdad4c7a0e6db7b871ca34772da0fd447052cf04e5db4d46"
+    },
+    {
+      "path": "research/GBIF_FULL_GLOBI_ANURA_ODONATA_EXPANDED_GRID_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "057d923b45ff5e66959c9b52a0f6a24a9cede64ed7863a45c2c3b33cd3d49d99"
+    },
+    {
+      "path": "research/GBIF_GLOBAL_STAGE_EVENT_BLIND_G0_PROTOCOL_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "01fcb408c37cdd074e092b74716885c190c062abac94239ee39d3702c5dc1fc0"
+    },
+    {
+      "path": "research/GBIF_STAGE_GRID_MONTH_PROSPECTIVE_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "aa8b72821c83ced2c688f1114a27f5fb65db988908295365f7381a79d4730f3a"
+    },
+    {
+      "path": "research/GLOBAL_GEOREFERENCED_GLOBI_RECORDS_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "21b33acfa3cdff0349ac749ce1f56149140aedf545b016355e7b847f58ea2f8d"
+    },
+    {
+      "path": "research/GLOBAL_GLOBI_GBIF_PREY_SPECIFICITY_CONTROL_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "6684df32160033d98b591aff8b4e0ca1a179fe1841cf79cfdc36b4948cd4ead9"
+    },
+    {
+      "path": "research/GLOBAL_GLOBI_GBIF_PRE_REGISTERED_PILOT_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "dc7688e80a479e163cee1b163901f240aa440ab2b12453f1b833d0a11fa27a6f"
+    },
+    {
+      "path": "research/GLOBAL_ONTOGENETIC_WETLAND_NICHE_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "112bc5b9e227b7cc6eea326034929013c0d50c1cf1b11f96156e39e8272a61cd"
+    },
+    {
+      "path": "research/GLOBAL_RAIN_STAGE_GRID_COPRESENCE_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "0c4ef256f774034281342d2185dce0091359e12f975cb1b0d318dc941d100244"
+    },
+    {
+      "path": "research/GLOBAL_STAGE_PHENOLOGY_SHIFT_NULL_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "c2a80759422bac4eb2f63bc1f9e9d0a0cdb123e028d9531d57ae78c69d319fa9"
+    },
+    {
+      "path": "research/GLOBI_OCCURRENCE_STAGE_PILOT_2026-10-25.json",
+      "mode": "text_lf",
+      "sha256": "081eb49adcadddd847a6c9e8e8f1754fa3c75546fa93b499fd0b7a6843b4a1e2"
+    },
+    {
+      "path": "research/GLOBI_STAGE_OBSERVATIONS_SAMPLE_2026-10-25.csv",
+      "mode": "text_lf",
+      "sha256": "e0b96ba46611f9978da7da1fd330d2879ef67cf5273e1d5d618f119608c31bfd"
+    },
+    {
+      "path": "research/GLOBI_TROPHIC_DIRECTION_PILOT_2026-10-25.json",
+      "mode": "text_lf",
+      "sha256": "46a7763293ba5e42c87712fab93289352b35b04b9fd86e0bb42703dd975d0417"
+    },
+    {
+      "path": "research/HYDROPERIOD_JOIN_FEASIBILITY_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "31f53cfc10f627d623122504e72232bb362d1cd93561287db6a0a542d73b8857"
+    },
+    {
+      "path": "research/INBO_EXACT_LOCATION_CHORUS_LARVA_BRIDGE_G0_SPEC_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "6ab43f34224caa837acf7b7c9b689f7c6ab280da7145aaad4d1861cfb8dfbc58"
+    },
+    {
+      "path": "research/INBO_HYLA_ACOUSTIC_TO_LARVA_G1_FROZEN_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "cdaa7aca4f60c42701fc48d9fe62259651e28f3d3ac0a0bf4601c853be0187f6"
+    },
+    {
+      "path": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "fc680685ef2861c1cff1aaa3bfedf12ff1859a0e8e706303d202f5542ce94ef8"
+    },
+    {
+      "path": "research/MACRO_PATTERN_SYNTHESIS_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "e89357e7bee04f4c07cc56418856de1f970b540f20d385cb8abbbb04855a30ae"
+    },
+    {
+      "path": "research/MACRO_PATTERN_TO_METH_EDNA_POSITIONING_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "480b9ba412b78921ac84fa35759ebf91b5ae6ba3edcaa7d463074b1f10d5e2e4"
+    },
+    {
+      "path": "research/NAAMP_COMMUNITY_CONCENTRATION_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "ffdb186c3151915adc7445657de01803a2ee56081a59253fc9fe153701e86305"
+    },
+    {
+      "path": "research/NAAMP_GBIF_GLOBI_CONNECTION_AUDIT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "a27119ab6bbd441309df613b99dd0e53db0f88feb7b093d6416d36f27b4b7d0e"
+    },
+    {
+      "path": "research/NAAMP_HYPOTHESIS_AUDIT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "22c501472bc4fc07b5b77844ac0920bd12361be44039bd8a81b4b5e0fd08eca9"
+    },
+    {
+      "path": "research/NAAMP_INTERACTION_SSDM_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "aad9faff8057729fbf1a5b4d94879acadb60eb3b681b5cf6eb1c5e56a1deba19"
+    },
+    {
+      "path": "research/NAAMP_PAIR_ECOLOGY_SOURCES_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "f41c4afeb965af78657c1a034df572ea66d2ffe681fbad6284e39f96614e0c19"
+    },
+    {
+      "path": "research/NAAMP_PAIR_ENVIRONMENT_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "17448ce0fe17ccaf8e53c8d4f04f770d5d8978ed483ba6a2c5c5bd0c5f990957"
+    },
+    {
+      "path": "research/NAAMP_PAIR_ENVIRONMENT_PLAN_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "ebdcdbdbaac0583fb6741393649d17637ad73c37b72600c76bb6d6bfe8fc9105"
+    },
+    {
+      "path": "research/NAAMP_PRIOR_COMMUNITY_ALLOCATION_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "a1ae17af6724d3f2f9f1d5e8b1bdfe2ea01f926cb30b71fcd56ac67a28de75b4"
+    },
+    {
+      "path": "research/NAAMP_SITE_USE_ASSOCIATION_PLAN_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "0d17991cc3ab2ea9b22131e14cf183671ffe4b4386e10da95276d7b4f314ae2c"
+    },
+    {
+      "path": "research/NAAMP_SITE_USE_ASSOCIATION_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "a025510f0c80af9ebb063e60329535751de9843cbf00ed96d7d43f4440ea5326"
+    },
+    {
+      "path": "research/NAAMP_THREE_GUILD_OCCURRENCE_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "9f1083e7c4efc5106dd65cbb67e27c696acff4d7068d690b6510c09e9214f134"
+    },
+    {
+      "path": "research/NAAMP_THREE_GUILD_PATTERN_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "888371d4d4104c41a4f90fc3bcfddb9f1a0860d10724ae0348e1b706a19eedef"
+    },
+    {
+      "path": "research/NAAMP_TO_STAGE_VEGETATION_NETWORK_HYPOTHESIS_MAP_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "67bc814ad13f2cad757a032ebf700b227498b495f9f58ea77ce36e3ae3a1f5af"
+    },
+    {
+      "path": "research/NETWORK_FIXED_PAIR_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "62e2ca575279f77cd487d98a60c0e7e531dcb6b8b8524a0399c97fabf891d266"
+    },
+    {
+      "path": "research/NPS_GLKN_HISTORY_WEAK_VS_STRONG_SENSITIVITY_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "54703f280cc306bb0d80c0475a3145184be070533bf56545276f2700cc494a83"
+    },
+    {
+      "path": "research/NPS_GLKN_STRICT_HISTORY_HYDROPERIOD_CONTRACT_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "d87741a106c5d40a293edcd8deedc7e45c5e9d19a3559897b16eb2c78950bceb"
+    },
+    {
+      "path": "research/NPS_GREEN_FROG_WOOD_FROG_ACOUSTIC_CROSSLAG_SPEC_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "44c7f43dbe36ef2ede2ba6678069806c88956530311a2e0aa365a41975bd4986"
+    },
+    {
+      "path": "research/NPS_HYDROPERIOD_HISTORY_MODERATION_SPEC_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "b986ccdaab1733f2c5b21b8aa0cfa4737e3fc6720c708485e0cf52efd85f318c"
+    },
+    {
+      "path": "research/NPS_TWO_WAY_SITE_YEAR_HISTORY_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "80c47ab27f5f5be80c7b0d2cfce704eb1e5e55f746c1053059e1dc7dffc7c2c0"
+    },
+    {
+      "path": "research/NWI_GBIF_FOCAL_STAGE_PEM_GEO_QA_SPEC_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "c461dcf359d501e3c6db2e6715d1f918e8920f4b8653496c85d0d5373e42789a"
+    },
+    {
+      "path": "research/ODONATA_CAUDATA_VEGETATION_PATTERN_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "f4ab61eefba2648373c0d45f2b3da19ae8adc0a5db0a455b324151207d8409c1"
+    },
+    {
+      "path": "research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md",
+      "mode": "text_lf",
+      "sha256": "05ab36cefbaf6fb4d106034abdcfe4be38e4ac5832a3ec4f8d569d82a5ee9f6b"
+    },
+    {
+      "path": "research/ONTOGENETIC_TROPHIC_REVERSAL_PROSPECTIVE_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "2951e0b2fa773dffbef7c06cfc9de3e27e2d15774d6da59a12efa1488f5744e1"
+    },
+    {
+      "path": "research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "ab97f53533619d784ffda87c86488c4a8dc3cac9d0b18fdb495fd4d7f01f4ffb"
+    },
+    {
+      "path": "research/PEM_STAGE_CONSTRAINT_NETWORK_SPEC_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "47d31866bc5273efb04a1768a36185709469f115ce8505d6524ab5e9c804e116"
+    },
+    {
+      "path": "research/PEM_TRIAD_MUTUAL_INVASIBILITY_COUNTERFACTUAL_SPEC_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "3699688febed620ef399749680b57b22b537f660fd5c4b1ee996410f6a7e6218"
+    },
+    {
+      "path": "research/PEM_TRIAD_STAGE_NETWORK_EDGE_ABLATION_SPEC_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "59fe37eb0ed9fddff88a8edd1df0eb48da7ed80e165e55284f9f3039a1e628b6"
+    },
+    {
+      "path": "research/PRIOR_WATER_NETWORK_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "cafb5cff3ddc5411c1e3b482d66ec3b9f5adbd048d0869417535e54a64e8fb79"
+    },
+    {
+      "path": "research/RC6_TO_VEGETATION_BIOTIC_BRIDGE_2026-10-25.json",
+      "mode": "text_lf",
+      "sha256": "481e211e19389df0c79ba65fb27addf933514b39c98032923560afef043e569f"
+    },
+    {
+      "path": "research/README.md",
+      "mode": "text_lf",
+      "sha256": "496646dd298d3b095d18fb7c2560a65813be212d30d5ca7c5c84ff490f4f582d"
+    },
+    {
+      "path": "research/REGIONAL_INTERACTION_SDM_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "42961f7a42c90d0f6795dfdf1c4c0f324acf7bf7d03a86a938f42d29e540cc4b"
+    },
+    {
+      "path": "research/REGIONAL_SPECIES_POOL_SOURCES_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "eade21947ee00fb86b7cd547e7c48523513670e43783f3ca43e80cae8ca5929c"
+    },
+    {
+      "path": "research/REMOTE_VEGETATION_NETWORK_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "16fc2e072f206b0a558cdc84f37f7059b0d5f487d644436700e2fbd209823ab3"
+    },
+    {
+      "path": "research/RESEARCH_COMPLETION_AUDIT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "bd63fa50d50cf8be663872e23e93960b115649d642d28338918c568fb80b6d53"
+    },
+    {
+      "path": "research/SDM_EXPANSION_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "a51f848e9c9592aba60b32cdaf296345ae907a7f4e6365a2ffde2feef766fce6"
+    },
+    {
+      "path": "research/SDM_SOURCE_METHOD_FEASIBILITY_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "4289557ebf5fbd2bf8c9dc084058d50ae47c3c1532e5fb4134446570b4730e79"
+    },
+    {
+      "path": "research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "a68fef84e24f57077d8fbccf33bbe58aed00d85417c5e0fa02b987f4a12cc545"
+    },
+    {
+      "path": "research/SSDM_PILOT_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "c4f0d41306d3be526e296f5ea9427b95b5c18e872a89c879889dc12c446364cf"
+    },
+    {
+      "path": "research/STAGE_INTERACTION_EVIDENCE_V0_1.csv",
+      "mode": "text_lf",
+      "sha256": "41c14f57c5cad12acd5178f13827ce6c863256574c0c5ecc824309ec52d4d21b"
+    },
+    {
+      "path": "research/STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json",
+      "mode": "text_lf",
+      "sha256": "f1a800595c2e266a7daecd96e12d3d7363e4b3348e61ba2e1cc0535dce61308d"
+    },
+    {
+      "path": "research/STAGE_MACRO_CHORUS_METHEDNA_PROGRAM_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "1b9071d04894d7566fb44500417aba607c575530df740971884b1fd5aa6de730"
+    },
+    {
+      "path": "research/THREE_GUILD_DELAY_TOY_CONTRACT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "be8417dd6b29cfaf7f224339dd41bb9d5ce32d19c0bd3de024095b8ab26fb5fd"
+    },
+    {
+      "path": "research/VEGETATION_RELATIVE_NICHE_INTERPRETATION_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "43a3e946ce9ddb9f33583154d3ee8225d187f1169b9ea9fc8cfb449c92a1e2d4"
+    },
+    {
+      "path": "research/WETLAND_BIOTIC_MACRO_DATASET_MATRIX_2026-10-25.csv",
+      "mode": "text_lf",
+      "sha256": "57af2524b4cbbaf2b00b7d3a687c7ada76acecc83caae9db0718c489887d592f"
+    },
+    {
+      "path": "research/comparable_db/SCHEMA_AND_RULES_V1.md",
+      "mode": "text_lf",
+      "sha256": "2687b290e5105f0acc6fdb85d91f6bb5bea4e060bc252843ad04e5f746042350"
+    },
+    {
+      "path": "research/comparable_db/SOURCE_REGISTRY_V1.json",
+      "mode": "text_lf",
+      "sha256": "88563dab09f2c718a4140aa2bc87f5d3d65802607b0d843410771a438c2b9849"
+    },
+    {
+      "path": "research/external/zenodo_15044115/README.md",
+      "mode": "text_lf",
+      "sha256": "0209826065916e0d7cf16a31922deafa398fb3e15bfdae52d4fd7d2bd4ac8f01"
+    },
+    {
+      "path": "research/external/zenodo_15044115/wetland_amp_site_data.csv",
+      "mode": "text_lf",
+      "sha256": "51d61bcbed4aca067b6d38c93ebf450a914e1733567c6c53955412111b0a09c3"
+    },
+    {
+      "path": "research/external/zenodo_15044115/wetland_amp_surv_data.csv",
+      "mode": "text_lf",
+      "sha256": "63d66ffee3e474b962271fe09c356ebe9ab5573f01be8651817fd49f376717ee"
+    },
+    {
+      "path": "research/external/zenodo_8158543/Girard_2023_Dataset.tab",
+      "mode": "text_lf",
+      "sha256": "b068622fedc4f0634d95e226ac953f235ea8aad1bb57ddb04457e915cc1acc32"
+    },
+    {
+      "path": "research/external/zenodo_8158543/Girard_2023_Metadata.tab",
+      "mode": "text_lf",
+      "sha256": "7695745c56b5a75b50d7b83ca635d8ade60affe959f888d31bedcc4984785a6f"
+    },
+    {
+      "path": "research/external/zenodo_8158543/README.md",
+      "mode": "text_lf",
+      "sha256": "91919c1b1b8e6f305dd5f87481cf3649cdc03f44280cfdc47a3df025f7319f9b"
+    },
+    {
+      "path": "research/manuscript/GLOBAL_STAGE_MACRO_EVIDENCE_GATE_V1.md",
+      "mode": "text_lf",
+      "sha256": "c332e53ff894dfb30b64c377916045f23e60240b61f4fc71873b9c56b0c636ca"
+    },
+    {
+      "path": "research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md",
+      "mode": "text_lf",
+      "sha256": "3e5546ecbc99f9e34bd06bb5a6ac868ad2eee133cb80ea3a18d6063d5f225393"
+    },
+    {
+      "path": "research/results/.gitattributes",
+      "mode": "text_lf",
+      "sha256": "66d155c9a3577e538fd64aaea1bad8bdeb2f59e61ac81c93374911c32bd5a502"
+    },
+    {
+      "path": "research/results/CARROLL_8POND_G0_SOURCE_ACCESS_RECEIPT_2026-10-26.json",
+      "mode": "text_lf",
+      "sha256": "d5bb223ede070b98233ba40ec042d0b6495e0590c619c6a1d88980b58cc64a3f"
+    },
+    {
+      "path": "research/results/FULL_GLOBAL_GLOBI_GBIF_STAGE_TESTS_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "d5d660126aaa9f678186d491ac17914e25610bda4e796fdf2dcbedf32f3dfc84"
+    },
+    {
+      "path": "research/results/GLOBAL_GLOBI_GBIF_MACRO_SYNTHESIS_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "54d33648b3bddfaf6325795899a88f8e9e30ec620c38b8bdd185c98df4087216"
+    },
+    {
+      "path": "research/results/GLOBAL_WETLAND_ONTOGENETIC_INTERACTIONS_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "e4a8c090035263334cb76c317a5ec78e5aabdfd49e4072a98e2b7b16d1132d8d"
+    },
+    {
+      "path": "research/results/INTEGRATED_MACRO_ECOLOGICAL_SYNTHESIS_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "9e447c5a1a174986573ddea5a4fe13a0ec587478fb3e979e104678e111b08b8b"
+    },
+    {
+      "path": "research/results/NWI_PEM_OFFICIAL_CODE_READINESS_2026-10-25.json",
+      "mode": "text_lf",
+      "sha256": "63c6e38cac3a1d57546629b57a70fe3217e4aa33d2878dd4f30ce7e8e3067d8d"
+    },
+    {
+      "path": "research/results/PEM_CHORUS_HISTORY_STAGE_NETWORK_SYNTHESIS_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "301049f0c006bdfaf5900bca389484cdb0a05630ab17fc71830109ece26e9c40"
+    },
+    {
+      "path": "research/results/PEM_STAGE_BIOTIC_HISTORY_NEW_EVIDENCE_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "5e6b6b0b7bfe07732a548abe6aadb8562a127dc9b159272fdd2df6e384eed342"
+    },
+    {
+      "path": "research/results/PEM_THREE_GUILD_NETWORK_SYNTHESIS_2026-10-25.md",
+      "mode": "text_lf",
+      "sha256": "bcaaebab2eb2e7dd5db23c6d98b73bba059fe4800e62e1295d7164899a9216c1"
+    },
+    {
+      "path": "research/results/biofresh_ponds_source_audit/schema_receipt.json",
+      "mode": "text_lf",
+      "sha256": "40e0ba4060ffbf85ff957c419347799c4b46b500976cb37d0066ef09101092e9"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/background.csv.gz",
+      "mode": "binary",
+      "sha256": "c6903c37aa266db210c3798b2d8e71584be8bba1e8abae3be3f6a88f5d4f55f5"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/domain_receipt.json",
+      "mode": "text_lf",
+      "sha256": "c9637a5aaa23d0bd70aaa1a6af3d49812b4d758ab24ba5b92d2ef517f2e810fd"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/domain_screen.json",
+      "mode": "text_lf",
+      "sha256": "5a06bf9d7cc25dec4168a44a8d22c555e8ef9fa45a8d21deec99dea72ad952f3"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/environment_receipts.json",
+      "mode": "text_lf",
+      "sha256": "ce199969ed0fa3dee58f0ba5739ed7f7a2bd66ad1324aefd8aadf105679e8323"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/globi_links_between_modeled_species.csv",
+      "mode": "text_lf",
+      "sha256": "cea50490e7973abfd483c3a374397e4866a07de756f9f09800e19521be8adf4a"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/inventory.json",
+      "mode": "text_lf",
+      "sha256": "3406c75e7d923e3d9f18eed86021f3f2bb84f4a05aeb723c7abbf3e24a74101f"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/matched_summary.json",
+      "mode": "text_lf",
+      "sha256": "1085b135a3c9dae5db4f7b4ffd30a01dbf70736cdd284e2acdcdcb3fddc2b752"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/models.json",
+      "mode": "text_lf",
+      "sha256": "23d9980a4d335302872b5f62a606801430f2fbd7772b40c31e2e9d29d9beae1a"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/naamp_site_environment.csv.gz",
+      "mode": "binary",
+      "sha256": "49ebcc6cd2b671b39fe71088721b010f9a1b9eefd1bc59d06e82375cc307cc66"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/naamp_species_suitability.csv.gz",
+      "mode": "binary",
+      "sha256": "43a6b3bae4e00fb6d7f0006de43e5097e48df8c490a9c7cd4ace04757095eaec"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_1427951.csv.gz",
+      "mode": "binary",
+      "sha256": "89148570ec4224cbd8247eef9fbe458e6c654e034f67ba66a11bccbed1e59653"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_1428054.csv.gz",
+      "mode": "binary",
+      "sha256": "4b30b4b3fe45fedb8313bd6050ef268f4c5923cb50aa613ba6d97671768972d5"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_1429340.csv.gz",
+      "mode": "binary",
+      "sha256": "a9dfdb18f82d47bffec4f69ca6046dc94c0f50cbf985a275460d4cd7a1c2eb14"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2422872.csv.gz",
+      "mode": "binary",
+      "sha256": "4eae21e1867fd8e756cb6201ba3bde93472a7bf8d7613ccabd63613c74ace942"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2427091.csv.gz",
+      "mode": "binary",
+      "sha256": "4ba7d672848981ea002a48b853ff8918ae5060daf95d3523d9d98e945c11f105"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2427093.csv.gz",
+      "mode": "binary",
+      "sha256": "7dd0ed46c7db50e0c224bd20fa75c0e54d861e228d08448bd3339c32aa2820ca"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2427172.csv.gz",
+      "mode": "binary",
+      "sha256": "b73ba379e27fe01db1ec9c9bead5220e39a2a2debb15596d4523c319a27a9f52"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2427616.csv.gz",
+      "mode": "binary",
+      "sha256": "38b90d6704b4707eca72f4db7c5b4c2232745c0f2a83145840020e31362e1ae4"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2431199.csv.gz",
+      "mode": "binary",
+      "sha256": "daabdbf8fcc7669a3eeb13ea16a413ac8bf9ff2c26faf748011ae5dcaa795ac5"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2431459.csv.gz",
+      "mode": "binary",
+      "sha256": "1431f75642237e7357a1b17a54f2ff7ce448f5affcf4151bed9562c046fd0c54"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2431491.csv.gz",
+      "mode": "binary",
+      "sha256": "e65591df4e5b13f916006fa5f54ba8caf6b3cdcce3f7d6222a56e0c3fe5ad69a"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2431951.csv.gz",
+      "mode": "binary",
+      "sha256": "3e09bd410e5a67b2e62969eeb4027506b08c56857f5915fa4ad6206bc24d5597"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2431993.csv.gz",
+      "mode": "binary",
+      "sha256": "f70f960124f679be9a9582e2381769680e323d7adeceb706afed5a41f659d8cc"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_2432006.csv.gz",
+      "mode": "binary",
+      "sha256": "6e9a39846ded913559960250ed0e1601dd8288c3af8e22cdffb33a9d3d296e27"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_4302510.csv.gz",
+      "mode": "binary",
+      "sha256": "21a2c2a9d0eb96539505bb41b8c00b242160eb777b3d4f604335040dab957343"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_5051741.csv.gz",
+      "mode": "binary",
+      "sha256": "ab9a933bf29f836ed61ce07462bdbcc7083f28157118766ded158667306dc0f3"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_5218366.csv.gz",
+      "mode": "binary",
+      "sha256": "b6a888e9f6774a872ddc8ccfbce039e7d59a24872a78c522ff084e7e24a804df"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/occurrences_5218390.csv.gz",
+      "mode": "binary",
+      "sha256": "3060358179f423e16e465b583bd698cdec30ebd3149416a5056349128fb7f9e7"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/predicted_background_overlap.csv",
+      "mode": "text_lf",
+      "sha256": "69948a5e84808b64c9a02bc09d7501347d50325064bf3463073f5bb182735a02"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_1427951.json",
+      "mode": "text_lf",
+      "sha256": "1493a36dd5479be6739534591287745972f4603349cf5bf412d42a487c279b65"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_1428054.json",
+      "mode": "text_lf",
+      "sha256": "b0656fda6d419396a0c61e4360d30251d82ffd06d417fb08f8d646066caa8a10"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_1429340.json",
+      "mode": "text_lf",
+      "sha256": "32005f32f2b246e0fe35b76ea928483fff9d85ab086ce4080a2a9df54d92e481"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2422872.json",
+      "mode": "text_lf",
+      "sha256": "2ce74ad42825b6f5c98514d102efff6980602d81dcf50b799d33d7365a659f96"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2427091.json",
+      "mode": "text_lf",
+      "sha256": "34f5e347c504f0ebbf01e7294c61207d97ff4f510da08a30d90a2941a85ee38a"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2427093.json",
+      "mode": "text_lf",
+      "sha256": "79e8aa00737a64890f99a8531c94f3a11d6bdf27469df69ab4f843b096fd1f11"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2427172.json",
+      "mode": "text_lf",
+      "sha256": "b8c877dc94a5ecb0e44b44c0c956023653616bc569ebcaa8bd6b8b51670dcb4f"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2427616.json",
+      "mode": "text_lf",
+      "sha256": "f5b59f034eabb5901b7ee72baaaf2a46869e3162cfe5433ca0ec8aeac93a3c04"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2431199.json",
+      "mode": "text_lf",
+      "sha256": "e711a0030dc3b80d7be10fd53c3fce826618c552e51c2688b507b7f0b12c6991"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2431459.json",
+      "mode": "text_lf",
+      "sha256": "0ea1a08c9e54980144db06232e957d9bde3a213e7f989bae180d4858288030db"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2431491.json",
+      "mode": "text_lf",
+      "sha256": "1317e46ccbe0acbb47d742f587c65416c822cd94a63e6760bd4775ccc81b1557"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2431951.json",
+      "mode": "text_lf",
+      "sha256": "90cb336250ce802d136367b462176c819781f243199b10015f7e18dbd51faa41"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2431993.json",
+      "mode": "text_lf",
+      "sha256": "d49e011e5751c48a8c378f8f146e8ffa1637b3a28e9ab2a3044b4d35be51e09f"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_2432006.json",
+      "mode": "text_lf",
+      "sha256": "30480aa1f0b3217eb134f3f20d194926199fbc7e50cbef7fea6c668ab34b3a3b"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_4302510.json",
+      "mode": "text_lf",
+      "sha256": "68ac65513f5d1e195fe5df6627441f87adea8047428198beb8bce8be4bc69da0"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_5051741.json",
+      "mode": "text_lf",
+      "sha256": "de9bb33aff8a5c55b52c14f40734b1ddb52b6891cebd4d8a23896d300b58000e"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_5218366.json",
+      "mode": "text_lf",
+      "sha256": "6b1a9d3773efe309d68b9934ad9d15faf44b5c3333bd84e35009875407ea7781"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/query_5218390.json",
+      "mode": "text_lf",
+      "sha256": "78581aefccc7f43e00840d56f08b4e64efc805e5893c985bb95137a6ba28fc93"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/retrieval.json",
+      "mode": "text_lf",
+      "sha256": "698d7173ff86bc07a35ec68dd89601054e791005fc8d2144b4fa1235e972f506"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/run_summary.json",
+      "mode": "text_lf",
+      "sha256": "0a7d56d6e1a01e251f387ac5e59be8509b9127842b1aaa3ba15b59bf929518aa"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/species_inventory.csv",
+      "mode": "text_lf",
+      "sha256": "20a825f618e2b69a49b68178b2b1b4fdb661ad441e717c38aeec9e56c9126edf"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/species_matched_comparison.csv",
+      "mode": "text_lf",
+      "sha256": "7ad83d4b5fce755dc12135b6c66b7a6bb7e7ea70ccaaa08d1ad13b9eeceb5ecf"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/training_presence_environment.csv.gz",
+      "mode": "binary",
+      "sha256": "6375661124d17e26277da9b75ec8937aae74105132603e7446a7ce7d1a933db3"
+    },
+    {
+      "path": "research/results/broad_species_sdm_20261026/us_domain.geojson",
+      "mode": "text_lf",
+      "sha256": "86e6a69ba2a1333cb7d216317ab790157c376876d19d4322f3a48cef5ce8e5f8"
+    },
+    {
+      "path": "research/results/chorus_rain_vegetation_stage/hungary_rain_x_wetland_source_results.json",
+      "mode": "text_lf",
+      "sha256": "6ef028b176732c66fe3d5a12b312dba19f801750da50e695be5f41fd3a625924"
+    },
+    {
+      "path": "research/results/chorus_rain_vegetation_stage/inbo_prior_species_stage_G0.json",
+      "mode": "text_lf",
+      "sha256": "a1b9479276c629abef97c46f8806736a8ba10ba7b0026aa1a5258440b567877e"
+    },
+    {
+      "path": "research/results/common_units/ECOLOGICAL_CORRELATIONS_AND_SHARED_PATTERNS_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "96f662c69b060e1d5559b03a919bb15467c50a4da1e296b3c3e77996e4ffd57b"
+    },
+    {
+      "path": "research/results/common_units/naamp_gbif_nwi_neighborhood_g0.json",
+      "mode": "text_lf",
+      "sha256": "da4831ee15f91be3421916aa89e2c82465b53aec835b793d5bf10497f8190632"
+    },
+    {
+      "path": "research/results/common_units/observed_correlations.json",
+      "mode": "text_lf",
+      "sha256": "008b856a742cce791b12a941731ae6eae080a63b4ce976cd79ed38e8cf5fe8a3"
+    },
+    {
+      "path": "research/results/common_units/observed_profile.json",
+      "mode": "text_lf",
+      "sha256": "a65708cade2df8513cc523403156d4e1f2b2af31cbc5e43019e0542b6a6fea13"
+    },
+    {
+      "path": "research/results/comparable_db_v1/canonical_source_stage_month_aggregates.csv",
+      "mode": "text_lf",
+      "sha256": "38c76eb74d4328f1ab1f8b2dc9e3467112833bbc807d0f85451e6be76e101e5f"
+    },
+    {
+      "path": "research/results/comparable_db_v1/coverage_receipt.json",
+      "mode": "text_lf",
+      "sha256": "fd4267f274abe9411e9a0de560e7fbad4ea4d59aa8efff06d1ea98ccb60a523e"
+    },
+    {
+      "path": "research/results/comparable_db_v1/observed_correlations_v1.json",
+      "mode": "text_lf",
+      "sha256": "1d13a633ad4a1bc63e7f8a5516852fa5ac407dcc6c8f6cd75322f3ec6dda0571"
+    },
+    {
+      "path": "research/results/earthenv_gbif_matched_stage/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "1a36c4f38cf58bf7d0ae61855e05641337604262ca7e2f100fc44d4e303bf815"
+    },
+    {
+      "path": "research/results/earthenv_wetland_1deg/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "6efb9cb58df4b598ddc09176e067a7c6db19616603cfddcc1979169869990aa0"
+    },
+    {
+      "path": "research/results/environment_replay_20261026/REPORT_JA.md",
+      "mode": "text_lf",
+      "sha256": "c8e0cfd70c3a88c22c43a1488bcef803b69062cd0513846478a44056c74c4357"
+    },
+    {
+      "path": "research/results/environment_replay_20261026/hungary_environment_tiers.json",
+      "mode": "text_lf",
+      "sha256": "1b6bf9208f819ee7d3dcaf6d227fee13f8272f91b2176ccfcbe0b7c2c4912855"
+    },
+    {
+      "path": "research/results/environment_replay_20261026/hungary_rain_interactions.json",
+      "mode": "text_lf",
+      "sha256": "d513328a8ee8ea48eefb70925908a4f5caa231bf33a43bc093b0ce2b249972c5"
+    },
+    {
+      "path": "research/results/environment_replay_20261026/nps_hydroperiod_history.json",
+      "mode": "text_lf",
+      "sha256": "4d2b200067e2c340036828ac6ec991d48f7364bee4121125aec4044d555c7bde"
+    },
+    {
+      "path": "research/results/environment_replay_20261026/replay_receipt.json",
+      "mode": "text_lf",
+      "sha256": "1db242e48a0657a20439627e0ae109311285cc775b956d7113aa355e1e7c71fb"
+    },
+    {
+      "path": "research/results/expanded_stage_specificity/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "577a73bff64278ff612e4fb793d490e2737afc806d16ebe667d26e8e219de5af"
+    },
+    {
+      "path": "research/results/full_global_parquet_preflight/source_metadata.json",
+      "mode": "text_lf",
+      "sha256": "00230c6ff362b54d702aeed20770dd54513cf9391c5b385d1a49df5220fe5658"
+    },
+    {
+      "path": "research/results/full_global_parquet_preflight/source_metadata_v2.json",
+      "mode": "text_lf",
+      "sha256": "dc3489b48f42d86c72654a1fc3a3f01df857612ac602ea8609061d31e5e702f1"
+    },
+    {
+      "path": "research/results/full_globi_2026_stage_gbif_grid/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "f19e1169df416d799d79ab6614344e90c53f8ac94a4bf367a9d1bea86ecaab38"
+    },
+    {
+      "path": "research/results/gbif_anon_taxon_partition_sample/observed_schema_samples.json",
+      "mode": "text_lf",
+      "sha256": "96665734e86bd591076aea40a609c8029e135be43078dbcc6329260bb6cb2e96"
+    },
+    {
+      "path": "research/results/gbif_worldclim_monthly_rain/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "85510237815c8ef67672fcf0c37fa951aa812603268dd029ea713c2089c12e0b"
+    },
+    {
+      "path": "research/results/global_globi_gbif/gbif_bulk_cube/global_0p5deg.payload.json",
+      "mode": "text_lf",
+      "sha256": "f5e0b61fa2abb47d2a864a38d25d67a1e32fbf02bd8b8557a1e0fe9a55e4b472"
+    },
+    {
+      "path": "research/results/global_globi_gbif/gbif_bulk_cube/global_1deg.payload.json",
+      "mode": "text_lf",
+      "sha256": "9616b1f2f1161a890d31483d40b939919f9acf72081eee422914816f804516f9"
+    },
+    {
+      "path": "research/results/global_globi_gbif/gbif_bulk_cube/manifest.json",
+      "mode": "text_lf",
+      "sha256": "0219b43da2a6501b9c606cef5891b00329f921c1d093a566b90e1e1c2d308fe3"
+    },
+    {
+      "path": "research/results/global_globi_gbif/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "c09280f83a6aeed43d781140cc130275da0931b589b6ff1b0753e39362b46df3"
+    },
+    {
+      "path": "research/results/global_globi_gbif/observed_results_v2.json",
+      "mode": "text_lf",
+      "sha256": "c09280f83a6aeed43d781140cc130275da0931b589b6ff1b0753e39362b46df3"
+    },
+    {
+      "path": "research/results/global_globi_gbif/stage_bridge/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "cb85b0900b199833fdd236c0f52de5efa147947240c5946043650d5578e0d083"
+    },
+    {
+      "path": "research/results/global_globi_geo/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "36d1e50557af064a27470c1cbcda6ac67dfa55659de64e8761fc19c2cfacd133"
+    },
+    {
+      "path": "research/results/global_globi_geo/observed_results_v2.json",
+      "mode": "text_lf",
+      "sha256": "1d2a55e889186b01161fce4c0de1bf9fdeea13cc0d748e3fca1092e149fee220"
+    },
+    {
+      "path": "research/results/global_ontogenetic_wetland/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "3f15dabc9e9430dafa8d244fb2366908eddc14151ae9adb6a5785c389e10d9bd"
+    },
+    {
+      "path": "research/results/globi_fixed_full_foodweb/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "6ef15bde167f3920b5b3ccd7186880d253934a2c74220f556c37c12765b737d3"
+    },
+    {
+      "path": "research/results/globi_gbif_rain_contrast/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "937b0a61335f8bcd26656419d93c0271790af3f1a1620a4f2a8968b4068c3432"
+    },
+    {
+      "path": "research/results/guild_matched_specificity/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "36ef5d20a41cd509ec75f6b9798783ab4dc1844b95fd41fa2ec51e656a3adcee"
+    },
+    {
+      "path": "research/results/hungary_2024_screen/REPORT.md",
+      "mode": "text_lf",
+      "sha256": "1df8dca106a2470d3818240e0cf26d83b1c0e09d6ebc4d0b9aa924b8d34e655c"
+    },
+    {
+      "path": "research/results/hungary_2024_screen/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "c8131879cd5072d4f8797abd511402d62601b985291a4eba2809b38314b839b6"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/background.csv.gz",
+      "mode": "binary",
+      "sha256": "44337993800f15cc3872c72f881197f51304058e593553155eb746410043ad5c"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/domain_receipt.json",
+      "mode": "text_lf",
+      "sha256": "c9637a5aaa23d0bd70aaa1a6af3d49812b4d758ab24ba5b92d2ef517f2e810fd"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/domain_screen.json",
+      "mode": "text_lf",
+      "sha256": "4e30d2f3c54df7798667348e245dadfd5bd5226a0566baf19e2a01b94064eeea"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/environment_receipts.json",
+      "mode": "text_lf",
+      "sha256": "ce199969ed0fa3dee58f0ba5739ed7f7a2bd66ad1324aefd8aadf105679e8323"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/globi_links_between_modeled_species.csv",
+      "mode": "text_lf",
+      "sha256": "71723b3c7fadf3286630f756d737ce2df6d267c7b4825396dd2afedee3822af3"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/inventory.json",
+      "mode": "text_lf",
+      "sha256": "5021dd7d36df9e18071104e96969adb7bd0db160639d56af2e17f318b3745726"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/matched_summary.json",
+      "mode": "text_lf",
+      "sha256": "c132095d4bb43a4749999c7c641d7c13ad42859d2fabbf6ce90682289fdf3ff0"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/models.json",
+      "mode": "text_lf",
+      "sha256": "eb31b1d3bed1db3e68a0722e089d1da4008e4c485bcfe964eb0d9b66b6a19205"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/naamp_site_environment.csv.gz",
+      "mode": "binary",
+      "sha256": "f3f3f9baf2ebea69712a80a5cee201ea358bb8394a151e87213927d0e8ae2399"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/naamp_species_suitability.csv.gz",
+      "mode": "binary",
+      "sha256": "a2a7018e747349ff94b0b98c36fed0958458f652bfa658568c3a498141bdb637"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_10806364.csv.gz",
+      "mode": "binary",
+      "sha256": "1c9d45baa2d01041c2b323b11cd2179b387a9bccb445905fcbf2705b4ac2ca71"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_10810025.csv.gz",
+      "mode": "binary",
+      "sha256": "92b69a78d21292374190b821c729e6fd0bfcbcd15047adf8fd4fea8a005f3ccf"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_1427951.csv.gz",
+      "mode": "binary",
+      "sha256": "89148570ec4224cbd8247eef9fbe458e6c654e034f67ba66a11bccbed1e59653"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_1428334.csv.gz",
+      "mode": "binary",
+      "sha256": "ff0c714e632c86e59bef2398ad48a707794ec7f48d7d2ba658879c97a20fe76c"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_1429172.csv.gz",
+      "mode": "binary",
+      "sha256": "c2cd8281f91ea476ef11c701d01c7223a2fef3dca3e63e5d9b396f65df478a5c"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_1429340.csv.gz",
+      "mode": "binary",
+      "sha256": "a9dfdb18f82d47bffec4f69ca6046dc94c0f50cbf985a275460d4cd7a1c2eb14"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2422872.csv.gz",
+      "mode": "binary",
+      "sha256": "4eae21e1867fd8e756cb6201ba3bde93472a7bf8d7613ccabd63613c74ace942"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427047.csv.gz",
+      "mode": "binary",
+      "sha256": "74dbbf1ce696f52665ab2897763480e7d04673b3f5d01a4848ecf172bf41d373"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427056.csv.gz",
+      "mode": "binary",
+      "sha256": "03c4ff00804146be8a3377401c04de07d2ad157e8722d4a05c2bcf6a17a541f1"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427072.csv.gz",
+      "mode": "binary",
+      "sha256": "51fd39e09d2e31c274043b76bc496bbeef31e58180d4e054f149e413938be6ec"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427091.csv.gz",
+      "mode": "binary",
+      "sha256": "4ba7d672848981ea002a48b853ff8918ae5060daf95d3523d9d98e945c11f105"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427093.csv.gz",
+      "mode": "binary",
+      "sha256": "7dd0ed46c7db50e0c224bd20fa75c0e54d861e228d08448bd3339c32aa2820ca"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427120.csv.gz",
+      "mode": "binary",
+      "sha256": "d639368ba8b8d3e370b92317f8679f47b3e87a78b196c8ffa8a9441954ea4745"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427185.csv.gz",
+      "mode": "binary",
+      "sha256": "a0e7139ea0ea072e29773d8876ed182302c670005c66e2ed1a55f055ecae9d57"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427610.csv.gz",
+      "mode": "binary",
+      "sha256": "a83cee097b114a94466299125e94cf65d6d7def439ee56bc752ee8e97a031c3a"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2427616.csv.gz",
+      "mode": "binary",
+      "sha256": "38b90d6704b4707eca72f4db7c5b4c2232745c0f2a83145840020e31362e1ae4"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2428141.csv.gz",
+      "mode": "binary",
+      "sha256": "5410a6b69ee483ce8d0f740a47d04d2dd5a20354ada9fe11e794c2fcba6f9ce6"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2428152.csv.gz",
+      "mode": "binary",
+      "sha256": "7eaa47d051b038e2d8695dff5ca3f6bdb5d6b0aea30d1f32965bc4e96b25d888"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2428160.csv.gz",
+      "mode": "binary",
+      "sha256": "ee3eac7be45cb4d2d68c0be193619d4849da617f2d6720ef443efb9feb348d5a"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2428182.csv.gz",
+      "mode": "binary",
+      "sha256": "2a8906fb7abf30a1a142f80f849bc0f340ca181c0404b314e3dd2068ff6a0728"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2429796.csv.gz",
+      "mode": "binary",
+      "sha256": "a1dcdb73996187a95d04570d1c912e742c800b12469cfa83c4b246e802a985c2"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2431491.csv.gz",
+      "mode": "binary",
+      "sha256": "e65591df4e5b13f916006fa5f54ba8caf6b3cdcce3f7d6222a56e0c3fe5ad69a"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2431951.csv.gz",
+      "mode": "binary",
+      "sha256": "3e09bd410e5a67b2e62969eeb4027506b08c56857f5915fa4ad6206bc24d5597"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2431978.csv.gz",
+      "mode": "binary",
+      "sha256": "6110e870d1496cd59da10c791f4545ef87c8207529712e369ca64a491473522b"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2431993.csv.gz",
+      "mode": "binary",
+      "sha256": "f70f960124f679be9a9582e2381769680e323d7adeceb706afed5a41f659d8cc"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_2432014.csv.gz",
+      "mode": "binary",
+      "sha256": "984adcf08e616af7629893198f0027d4d4fe170046cd0dfdd5efb0715a7b261d"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_5051506.csv.gz",
+      "mode": "binary",
+      "sha256": "fbd7a765f838363ef36b5aca5e7b7747514a3d99f28bb2c816c1c609fce820ca"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_5051741.csv.gz",
+      "mode": "binary",
+      "sha256": "ab9a933bf29f836ed61ce07462bdbcc7083f28157118766ded158667306dc0f3"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_5218348.csv.gz",
+      "mode": "binary",
+      "sha256": "d933ab0559a54cfec8f942cf5293e94893379dc5da92603891cc48a04e9b22f1"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/occurrences_5218390.csv.gz",
+      "mode": "binary",
+      "sha256": "3060358179f423e16e465b583bd698cdec30ebd3149416a5056349128fb7f9e7"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/predicted_background_overlap.csv",
+      "mode": "text_lf",
+      "sha256": "5db16a7e4e9bb91142ede6a09d8b8ea10b55e09bfd940241562f89987622f430"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_10806364.json",
+      "mode": "text_lf",
+      "sha256": "fe60fe6236e74b064dbe65358f2bc38091f3f19507cd5dbc9bcae83753bbe4de"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_10810025.json",
+      "mode": "text_lf",
+      "sha256": "58ad9e07d79f710f67a121d8d22e3da1cd26850d6650ebc395d71101b091ad4f"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_1427951.json",
+      "mode": "text_lf",
+      "sha256": "6ee31a088c0b418dfde285d99f2e308c1d59179c88634a261c290f82d0eff056"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_1428334.json",
+      "mode": "text_lf",
+      "sha256": "c58f996c50a6feba7f86cced266b4112e16ebe0c342a49e527b44d759f1258ed"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_1429172.json",
+      "mode": "text_lf",
+      "sha256": "7175a336f5efd43297e24191361c9adad6aa7b05d12b8f0b71c52552da726d3a"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_1429340.json",
+      "mode": "text_lf",
+      "sha256": "7b98a0a3dd2fec635ccedadd59ff510f846a3e346dec089c3f2ba899e3fc1c87"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2422872.json",
+      "mode": "text_lf",
+      "sha256": "ebbd631cc458a116514cd355d0dd3a92b8a0ba933d46b7c6c263348d393bd55d"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427047.json",
+      "mode": "text_lf",
+      "sha256": "3038c400d4a690395fb3dd8d37105d681e7c27e43bbca1a36ffcf924a4021b27"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427056.json",
+      "mode": "text_lf",
+      "sha256": "0ef2095274f9a463fefdd8e80398d44206417613dfb321ea34506d956b868c32"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427072.json",
+      "mode": "text_lf",
+      "sha256": "8f2a3327c576c7ce7e589761fce068836ac98f288fef47560c84fa9113f8b655"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427091.json",
+      "mode": "text_lf",
+      "sha256": "061bf48f1adfe1cbfb82f6c6ddbdd95d89ef343d9c240ff5540d271be7e3a0db"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427093.json",
+      "mode": "text_lf",
+      "sha256": "07eb8d7118924f403aa0ce1480094312ef522abbc8bfafed78078d5537c31359"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427120.json",
+      "mode": "text_lf",
+      "sha256": "1cd14a8c3dfa367498236f62590cb3b4bee2a06abaacf40cfe52e8099e698a7a"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427185.json",
+      "mode": "text_lf",
+      "sha256": "56df81fe0041c9f11fd3267789ba9e290b04251c0f7f7fc3b1beef6f8757177f"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427610.json",
+      "mode": "text_lf",
+      "sha256": "08421d8523dfb5b4bd58ebed1a87858a82a303fae66035fe587c7b9a16fb4b09"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2427616.json",
+      "mode": "text_lf",
+      "sha256": "84c210fe7e190b7f70c93a1f0e9535b5283f820d792be5d01c9de380ba4bccda"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2428141.json",
+      "mode": "text_lf",
+      "sha256": "c38cfe027ad4c2bf58e2becedbb2f055f7701460b51f789686c277999a1535c9"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2428152.json",
+      "mode": "text_lf",
+      "sha256": "0335c629f358f4daec4753440042e1e8abbdd7ab7c169e77b2c902352697c14a"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2428160.json",
+      "mode": "text_lf",
+      "sha256": "e77b55ddef603d5292deb1b0223802304b2f8f675a5a8af8f00872a39db1659d"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2428182.json",
+      "mode": "text_lf",
+      "sha256": "fa86486b979ab79f0c6317cf843e08d38773bc2d89699d318ea517e0fc9751c5"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2429796.json",
+      "mode": "text_lf",
+      "sha256": "1d823ab6d48ca796ae09afbe4c89b5db6a57a5fea5835c40950af6c72eb9bb3b"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2431491.json",
+      "mode": "text_lf",
+      "sha256": "219e1f14c0498b6f8270ff1fc84690f1e54d6d3d18040718c2f6ff4de4a6ec79"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2431951.json",
+      "mode": "text_lf",
+      "sha256": "333254755726b7516b2011cf69a4a4332054c36b90ba45ac69a15c0cc060ffa5"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2431978.json",
+      "mode": "text_lf",
+      "sha256": "3b3c466122eacbae28246719b102b5d98c0963c130213afe5aa31ba0cfed73d7"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2431993.json",
+      "mode": "text_lf",
+      "sha256": "e9ace55926cce41797f24ee3b7d8b5aaae8c59ae368840212429087f14e1b651"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_2432014.json",
+      "mode": "text_lf",
+      "sha256": "d47703e63a2618779e28e2d05efc27e7a6f04db80acb2b2c214b0afb9a93747f"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_5051506.json",
+      "mode": "text_lf",
+      "sha256": "55a449ffa689195fa5074abadeeb34aa3f4e1db1aca7d8c754588973b3a1e9e4"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_5051741.json",
+      "mode": "text_lf",
+      "sha256": "8c1e68c1bc37ccc1c3d97749a39598a3050eb1e3136ccf291095c799c4ee4ad2"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_5218348.json",
+      "mode": "text_lf",
+      "sha256": "124977bcbea01faed200267e1ab6742567c05d5029b1f66a4340bdc2385500a9"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/query_5218390.json",
+      "mode": "text_lf",
+      "sha256": "6361ab9f0347ed8b3180b3e7c17bafb9b44f16027fe877492299bf40b1a1658e"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/retrieval.json",
+      "mode": "text_lf",
+      "sha256": "003d2a74485425fe8c934ea3fd5680b606289e90ed4d1d4695ec13a7c5bd1d54"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/run_summary.json",
+      "mode": "text_lf",
+      "sha256": "9618beeb5169761267426e141f9cb8d8581873ec541178625b20a480fac0bf19"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/species_inventory.csv",
+      "mode": "text_lf",
+      "sha256": "54f951537bff4598cd35d87f4ea530695f78bf1017bf4a7bc8533ea4a806f9d0"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/species_matched_comparison.csv",
+      "mode": "text_lf",
+      "sha256": "6b4802a6ae4ebc7c84e6db3936f83424abbb042c7c43bb68351b8f215c5370c8"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/allocation_model_comparison.csv",
+      "mode": "text_lf",
+      "sha256": "bca9fed29478ff5f7b13e7241624cdb2f5b128560c03711bf0b857d1fa33fa74"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/allocation_route_scores.csv",
+      "mode": "text_lf",
+      "sha256": "402fa217fc6b38b19ad7c804c536719c0ff80a3c6634d26e9926591c5f144cba"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/heldout_threshold_retention.csv",
+      "mode": "text_lf",
+      "sha256": "905ab7e9aadfa6c7c3153d8aaf994108a2ca4a41e0f6bda07aaf4ad3c068fd89"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/matched_group_comparison.csv",
+      "mode": "text_lf",
+      "sha256": "ccb6f9ae65e7bae6b6abf98310c8424bd0c08e50486af03b79de7f4b40e344e1"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/naamp_group_potential_richness.csv.gz",
+      "mode": "binary",
+      "sha256": "9157158ade16a4d7b89d44b17f1ccab939335d7408e1925ae91c223e99bd34d5"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "a0bfb31a9cdef6f7730ec662abd06700732ee9b5802857f7b95266a0320c5bb7"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/source_replay_checks.csv",
+      "mode": "text_lf",
+      "sha256": "589cc21e71e5e0fdc9516234fa2294a633ae5120908dd1e2553590ed9e538da2"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/ssdm/species_thresholds.csv",
+      "mode": "text_lf",
+      "sha256": "c0c20f27a6317abd2b9147864ed085e1fe391a7f673cbc042eae2121669db713"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/training_presence_environment.csv.gz",
+      "mode": "binary",
+      "sha256": "e2725ac724c1f702d85599065f326c504639955eb580dc5f5fb38653f0387295"
+    },
+    {
+      "path": "research/results/interaction_species_sdm_20261026/us_domain.geojson",
+      "mode": "text_lf",
+      "sha256": "86e6a69ba2a1333cb7d216317ab790157c376876d19d4322f3a48cef5ce8e5f8"
+    },
+    {
+      "path": "research/results/month_shift_globi_gbif/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "e2c490ab0cb361d9f806d16a7b9764b80a795aecd35f04bf4fa9f50710f629f3"
+    },
+    {
+      "path": "research/results/naamp_background_vegetation_patterns/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "cfd3d62d4d4a3c7f0988efb2d9f1f5a853b3241fb8010c3820d4141d316833b5"
+    },
+    {
+      "path": "research/results/naamp_community_concentration/REPORT_JA.md",
+      "mode": "text_lf",
+      "sha256": "5d0c883f514d1cb087ca50b7755cadc8ac502b6f33a87c1ea4e2c027f9f0a110"
+    },
+    {
+      "path": "research/results/naamp_community_concentration/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "51bba720016c25918cc04f07518c825c8a7c66cd29d5b8bd0d98eb128f5168d7"
+    },
+    {
+      "path": "research/results/naamp_gbif_retrieval_repair/REPORT_JA.md",
+      "mode": "text_lf",
+      "sha256": "c55b451fab287a5a1627bd5e74669e81dd19a629ded5b837d85bf2a08946c844"
+    },
+    {
+      "path": "research/results/naamp_gbif_retrieval_repair/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "2d5666673d31cb9682c12189d1405a419f2e09a35ae5fe151d6c9ce6312bd734"
+    },
+    {
+      "path": "research/results/naamp_network_fixed_pairs_20261026/fixed_pair_strata.csv.gz",
+      "mode": "binary",
+      "sha256": "4ce82ee9a3087b3b437df06e325116995693766a5b383870c1e9699f2c543556"
+    },
+    {
+      "path": "research/results/naamp_network_fixed_pairs_20261026/high_low_difference_contrasts.csv",
+      "mode": "text_lf",
+      "sha256": "42071616ec0008791b3a37f98d0c2a242bbdf2e62657aca4ee7f4e572aa81d31"
+    },
+    {
+      "path": "research/results/naamp_network_fixed_pairs_20261026/history_independent_replay.json",
+      "mode": "text_lf",
+      "sha256": "f758234bd911e5edfa7de3d823485e23f5c3eb84ab23393b519f275ce810e71b"
+    },
+    {
+      "path": "research/results/naamp_network_fixed_pairs_20261026/matched_stratum_differences.csv",
+      "mode": "text_lf",
+      "sha256": "97dbd1ac3643f388b577708682772e09362c5121da898b6d8de8df6fcbf3da94"
+    },
+    {
+      "path": "research/results/naamp_network_fixed_pairs_20261026/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "e0f0f1abe85e42328a95f1b15868fe50fc3fe8d105c350b33ffd906f3b12a004"
+    },
+    {
+      "path": "research/results/naamp_network_fixed_pairs_20261026/route_components.csv",
+      "mode": "text_lf",
+      "sha256": "ab78e007bc22c897de28f3cc895cf94c969ef4514a7e86a56a1820b2180dc0d3"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/binned_site_patterns.csv",
+      "mode": "text_lf",
+      "sha256": "011fc68854c39dd2a1d92620e9f692be4da1e934619c80ac93c2aaae20a07e57"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/continuous_rank_interactions.csv",
+      "mode": "text_lf",
+      "sha256": "9f2344580d44a51d80dff230195b017da9b25f0f1d45751eea1aa455bab722f6"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/high_low_contrasts.csv",
+      "mode": "text_lf",
+      "sha256": "be8c8fbb5a4692132217d7af12aff09cdf6e7cbf15c8e64216e78a372d94b653"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "9ee725d861304313f8b7236d58deb5899937481934212377d53021e10c3d371b"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/predictor_config.csv",
+      "mode": "text_lf",
+      "sha256": "d38bcc55e41b4724bd6fbcafbfd2406c23f3061de44480d738e64c933db58a61"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/stratified_correlations.csv",
+      "mode": "text_lf",
+      "sha256": "11f3c44a6c7cf185a8fce362366f84dacd93bc34a7534b955955326e911189a0"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/three_guild_niche_pattern.png",
+      "mode": "binary",
+      "sha256": "63ca1cc84b2c6287129acab3b2e282a2714fdf3b90a397dec52967fd2f4fb5ed"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/vegetation_coverage.csv",
+      "mode": "text_lf",
+      "sha256": "c676f67a55a5d0e4cbcc7705bfc468e4f999bb5cee67983ac24531d885cfa5ad"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/vegetation_network_metadata.json",
+      "mode": "text_lf",
+      "sha256": "15d4bd460beb2e170c1cc8823c5e25845a18a852267a576aec20a5e5176bee2e"
+    },
+    {
+      "path": "research/results/naamp_odonata_caudata_associations_20261026/vegetation_network_rank_interactions.csv",
+      "mode": "text_lf",
+      "sha256": "fe03ef753a633e889df38439b07ca8fe9cafeae09bf6fb08f54b7117a4fc4f5d"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Aquarana_catesbeiana.json",
+      "mode": "text_lf",
+      "sha256": "d11ffcf681f9fa2ef43208f1a64ad291cc8cdcbe336c98a8dced8350c0856834"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Aquarana_clamitans.json",
+      "mode": "text_lf",
+      "sha256": "fde744921ce05997f7432636411216e0fad7537582ca1648434054d883165133"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Dryophytes_chrysoscelis.json",
+      "mode": "text_lf",
+      "sha256": "6e17371a3369739c0ed23e9b2b1bd922c3ec22137b583a7b7451572993821c01"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Dryophytes_versicolor.json",
+      "mode": "text_lf",
+      "sha256": "8c99bd50dbcbd5c2f81a8c1655f04678171f060ccca0c97208f71a351409084d"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Hyla_chrysoscelis.json",
+      "mode": "text_lf",
+      "sha256": "0e3aadfdbfae1a799009e1075fe7a920897d823b2d5148617f338ed129400e35"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Hyla_versicolor.json",
+      "mode": "text_lf",
+      "sha256": "49afe065804798fc1852464e916429b76569792db90ec55e69d94ad16b507e83"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Lithobates_catesbeianus.json",
+      "mode": "text_lf",
+      "sha256": "2672e3235388920e943b3ab25fcb1a52a84d17a19f4e7bd09bc89535642c0705"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Lithobates_clamitans.json",
+      "mode": "text_lf",
+      "sha256": "fb9286bab7f8c94db5a5a13fa11c6f54516ade68c1f9a4e819f53fdce1dc7890"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Rana_catesbeiana.json",
+      "mode": "text_lf",
+      "sha256": "e7552fdd6bdedb45a4247502e4924646ceadaa8d97df532dd800a820660c484f"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_Rana_clamitans.json",
+      "mode": "text_lf",
+      "sha256": "1747eec5a36eab3fbce7e29757874925accbd8412e2f1797b10db9754a883c57"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_accepted_10806364.json",
+      "mode": "text_lf",
+      "sha256": "f5723f254418839d577cc35cb2648b1e148cc2793dff6bb0108d5fc0a8839443"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/gbif_accepted_10863553.json",
+      "mode": "text_lf",
+      "sha256": "2c225e64e471683582b41d23485f73dc1ddf44905972bd090fe280d3af6b6dab"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_control_bullfrog_anura.json",
+      "mode": "text_lf",
+      "sha256": "4f20aa35ff3fb76c7d660a038f9ac8254ff9aef053c952ac629a7ed8fa9df85c"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_control_bullfrog_prey.json",
+      "mode": "text_lf",
+      "sha256": "bad56c186642818b489f20c526fd4a8ee25bbb865f527c9a065972044a397596"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_explicit_eats.json",
+      "mode": "text_lf",
+      "sha256": "6df87837948f9e7ceeb4b89ad4a0aa32498547de6b2d57c8861955ac9bf066cd"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_live_attempt.json",
+      "mode": "text_lf",
+      "sha256": "f9c8be6a7270750b619aa292a9baad3a806cedf789005b9d2597a4dd7c0afa51"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_name_Hyla_versicolor.json",
+      "mode": "text_lf",
+      "sha256": "da883d4c588160f0c87ce8609236cfaa13406a2be95d15b1f28ebeb22f809ab3"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_name_Lithobates_catesbeianus.json",
+      "mode": "text_lf",
+      "sha256": "de7d303c986f30dbdfba6e5413940ef3c1a62c5f3254be93c31e28168ae3a2b1"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_name_Rana_catesbeiana.json",
+      "mode": "text_lf",
+      "sha256": "eae829b1f49dc6714b610d795df78f30e8b2d4088905cd94680d15dcbee404b1"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query1.json",
+      "mode": "text_lf",
+      "sha256": "efd4f243915c7eb9286395ddcef966bfccffde91fe68cc402b8cc840a2e0d4bf"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query2.json",
+      "mode": "text_lf",
+      "sha256": "e60ace7991492016da7519b1da3ce4bc0a91414977c6b376f208865a7043bede"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query3.json",
+      "mode": "text_lf",
+      "sha256": "4e74ebdc4ab14dc1a1ebcc2ef379c948c6779306d4d47bfb1b144ed6be045cd6"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query4.json",
+      "mode": "text_lf",
+      "sha256": "cd3ec16f7bea43997e71e278dd2d9172b5798ee95a56be53688beb33b8b101ce"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query5.json",
+      "mode": "text_lf",
+      "sha256": "1f9193c3f8ab97e7f027d442aebbd8a5573bf5a1417403a360f4e02927fd41fe"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query6.json",
+      "mode": "text_lf",
+      "sha256": "c634a348dadbab8993789d503bb984f94d4ae016d461c6afaccbb2a026c67bc5"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query7.json",
+      "mode": "text_lf",
+      "sha256": "35ac494305eee902c70753f2be41859a79dfba4ff09b87831b85ca90fd205b35"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair1_query8.json",
+      "mode": "text_lf",
+      "sha256": "7cb97f2e4598c5454668e988815d629f7f7d188ba6a6f723e66cf47237d9ead6"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query1.json",
+      "mode": "text_lf",
+      "sha256": "7416dbd1b8794bed3386e124368b76f9e6a8fbd3cdecdfd06753e29528bfa82d"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query2.json",
+      "mode": "text_lf",
+      "sha256": "5d5ec0b92b79eca834acd97ac799ddde0156101414815e029b2b558c28742ba9"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query3.json",
+      "mode": "text_lf",
+      "sha256": "d3481a89f0e9b10b1fe81e47b9824e29d312393b844ea4b754003cd5a0291b54"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query4.json",
+      "mode": "text_lf",
+      "sha256": "fc9110ffca0f37311c68d55f2c68a2c46ef7913aaac846416f4f7344df69e67a"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query5.json",
+      "mode": "text_lf",
+      "sha256": "8589e749d0172a8cdb36ad19dc6699e0a3bf25f19ce675d7b515922f8cd2bd61"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query6.json",
+      "mode": "text_lf",
+      "sha256": "4185cd7769f1683642247cfcd09232584d9e2291b55de1ecd2f969a042d07bb4"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query7.json",
+      "mode": "text_lf",
+      "sha256": "d279ba387c9e18870290685c3d40abba4adb83e67f7d6e5f994a93c36f1e4716"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_pair2_query8.json",
+      "mode": "text_lf",
+      "sha256": "030025be074842bd91408dcaf70a23bbbff9b01147e65585cc65c82b1fb05111"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/globi_positive_source_control.json",
+      "mode": "text_lf",
+      "sha256": "996cd3e3733fba9cfa65308c61efab0b8b0cfd1e09f6cba2913405f1808f9354"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "ab9d8e27d26aaed21df85605696061a616ba7ebb04074f970b926620f7fa7a6f"
+    },
+    {
+      "path": "research/results/naamp_pair_connection/staged_global_exact_name_audit.json",
+      "mode": "text_lf",
+      "sha256": "f6d2b43b81121a478d92afc04529994f06e3a2fb6163069af3111ade6833fc19"
+    },
+    {
+      "path": "research/results/naamp_prior_community_allocation/REPORT_JA.md",
+      "mode": "text_lf",
+      "sha256": "11a663ccb94f5ddf32ab97aa4769c35a577ab215fbaa198e25cc1963675bb53a"
+    },
+    {
+      "path": "research/results/naamp_prior_community_allocation/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "5c5306d49826904a99eef98959cf542fb76a4313a58672622c024074c38e85f0"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/association_metadata.json",
+      "mode": "text_lf",
+      "sha256": "ae190ad8905d7298d7bd3c2fb72d1b49b25835f97b9cc19f1861ab18075fa302"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/completion_verification.json",
+      "mode": "text_lf",
+      "sha256": "2918d5c386e7cb1e172e9f3839f530df63ab1cf7bf12593e630158113900326d"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/fixed_pairs_joint_ecological_context.csv.gz",
+      "mode": "binary",
+      "sha256": "532d9c1eb81f2bde816d7fc1cbb39185b7b2bfbefe1e95274ff75a13103f9111"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/matched_water_coverage.csv",
+      "mode": "text_lf",
+      "sha256": "3cc23b373a5bf6249c2a5f700ebec00e37a92f58063bbfd1c11933a63e94dc8f"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/matched_water_differences.csv",
+      "mode": "text_lf",
+      "sha256": "73de7970af4163c753f8fca9f11361d27290be2672dfd890ad431af3c5a5558f"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "a8fd369fa9c746ca04b1af797a13d9647789e4afbf61ca4b7af36acedbec766d"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/prior_year_site_water_context.csv.gz",
+      "mode": "binary",
+      "sha256": "2d2bd1fbdeb0b29630b111c3120b5ebbceff81b4a95d4000820024e666d3c3ea"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/progress.json",
+      "mode": "text_lf",
+      "sha256": "4da35d86ce3e2317d6c186577886faa1178071a83e35e3d992ebfbc5f9f5e81c"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/source_receipts.csv",
+      "mode": "text_lf",
+      "sha256": "26536ae83c3baa139558ab85d5784f4164a08d04845ee8fb5f3c574d8c53071b"
+    },
+    {
+      "path": "research/results/naamp_prior_water_20261026/water_stratified_joint_differences.csv",
+      "mode": "text_lf",
+      "sha256": "99ed0a3d2c31cfbd17d19812f551e57951218b3fa9f4ed139edd9764d08f82ad"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/coverage.csv",
+      "mode": "text_lf",
+      "sha256": "1acefe1903c36c262e7fd0a174e8aa32803f3213a62d32eccbe8ad6095d3b216"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/marginal_context_correlations.csv",
+      "mode": "text_lf",
+      "sha256": "13d779de50d9b4daa4d44666d7b34801c0ba4f69cf0aedba59f4fd1b6cf75fed"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/network_metadata.json",
+      "mode": "text_lf",
+      "sha256": "e46672afa779666b7bbc5191834e17457d881db25f412c23de9387c16a06f9dc"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/network_rank_coefficients.csv",
+      "mode": "text_lf",
+      "sha256": "e44fa9906af0333290ce3b74eb56362482af41cb468c7c3bcef3cf1d11bcea6b"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "2686d6167377172bd3d2ef3f9138cdccc8815b7da9c37a7b38e8fd75ac87fbfd"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/one_km_sensitivity_coefficients.csv",
+      "mode": "text_lf",
+      "sha256": "758385655107e2d9b45d571b0681af5707f7ba50f31b4dd0f8fe1574e6a88167"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz",
+      "mode": "binary",
+      "sha256": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/site_landscape_context.csv.gz",
+      "mode": "binary",
+      "sha256": "cef6ba0e4caa3f0e43670b738844641191299348ee21ab83c4280afe735d81d0"
+    },
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/vegetation_network_coefficients.png",
+      "mode": "binary",
+      "sha256": "f81a555f44e26328b3729f246c786946c18cae1e46bc7cb6dbecf3156d498437"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/all_site_characteristics.csv.gz",
+      "mode": "binary",
+      "sha256": "3b67f678ccd14fc5f4eab6e94972b9383a369c406a8c2cec7556522947b662ad"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/exploratory_species_correlations.csv",
+      "mode": "text_lf",
+      "sha256": "71e1a5346ccebc36215ddc0ad881f05299ea03c5779bb66326bd141804517698"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/geography_effort_context.csv",
+      "mode": "text_lf",
+      "sha256": "f8a0284c0ab563b96a5df72e64ec0482816687bb61b8ad233b7cf57e7beb3ae0"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "ac5e1d99314537d3add4e8fffe3edba79492de2af9231b02bd4e8bf52ff7ec7c"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/primary_correlations.csv",
+      "mode": "text_lf",
+      "sha256": "2856fb69348aea0bf3256c1e3d19fe472a13434b38ebf9f2dacbbb3aa902afa7"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/primary_site_characteristics.csv.gz",
+      "mode": "binary",
+      "sha256": "dde3779f039188d65f1805de9015113a41527a6f464738498b23cd94bb64c5b0"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/route_identity_components.csv",
+      "mode": "text_lf",
+      "sha256": "09140eaf16b8df3db0ebab9e9ea60eed0607787bca4efebc04d8425976249753"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/sensitivity_correlations.csv",
+      "mode": "text_lf",
+      "sha256": "835de091fdfdf4a1cd296cf0cc023a808b80a4567b4df1a7180368ce380614ac"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/site_use_correlations.png",
+      "mode": "binary",
+      "sha256": "e20fc07b5a1d88ea8329cb918b397f4aad0cdf39d3e023aa5ab943307fbc51b6"
+    },
+    {
+      "path": "research/results/naamp_site_use_associations_20261026/use_class_characteristics.csv",
+      "mode": "text_lf",
+      "sha256": "34dceb1927347f2fa35e20a22c05b5e52a7c6f79ffa3adcbf7820a822c426930"
+    },
+    {
+      "path": "research/results/naamp_three_guild_globi_overlay/literature_edge_occurrence_overlap_25km_strict.csv",
+      "mode": "text_lf",
+      "sha256": "5e34c8f181a1c7f2f4cb0f97323c7c21a5fe3b4f1dbe997834e678d78327e926"
+    },
+    {
+      "path": "research/results/naamp_three_guild_globi_overlay/literature_edge_occurrence_overlap_25km_strict_plus_unknown.csv",
+      "mode": "text_lf",
+      "sha256": "e93190cecf665dd3b1907d7edf801c3a9d64384e51b7f71db835a522b9f01296"
+    },
+    {
+      "path": "research/results/naamp_three_guild_globi_overlay/literature_edge_occurrence_overlap_5km_strict.csv",
+      "mode": "text_lf",
+      "sha256": "c9355037a8b4449e889e2c911c6f7e600a406da6e2bf2dddc88b816ca953e017"
+    },
+    {
+      "path": "research/results/naamp_three_guild_globi_overlay/literature_edge_occurrence_overlap_5km_strict_plus_unknown.csv",
+      "mode": "text_lf",
+      "sha256": "e9b3dd6896ab884bf1922f0dc69c0fc66002088892e204be85ea82c53de496e6"
+    },
+    {
+      "path": "research/results/naamp_three_guild_globi_overlay/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "4a6de1c74a7f3d795f0e6b9b3ebf3748abad9fc9516f190c74a83cc1dcbf8aef"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/center_environment.csv",
+      "mode": "text_lf",
+      "sha256": "f2f40cba5ec42aac69b7b679cfa014fec9cc4a70e224b1e606e9beb7cff0fcfb"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/full_naamp_history/matched_strong_silent_history.csv",
+      "mode": "text_lf",
+      "sha256": "dd4c56933be67b82f68b8b1660f372a2c4b574f64d9b0e6c0cab4b8f00344426"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz",
+      "mode": "binary",
+      "sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/matched_strong_silent_history.csv",
+      "mode": "text_lf",
+      "sha256": "b8cd4e908caca02e6c63c9bd1bcf3005a33d786aaf3689c984e99cfa1146ffb3"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/naamp_completed_site_surveys.csv.gz",
+      "mode": "binary",
+      "sha256": "613e950ac30ebfe5fbc899ccfb11dbe3d0d6e4fb11a3d7566fd885a18df9e799"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/naamp_gbif_center_month_overlay.csv.gz",
+      "mode": "binary",
+      "sha256": "64e2a0aa51c408baf633a599d5ed5acd001faea040010cb500be361e0a0df8a2"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/neighborhood_membership.csv.gz",
+      "mode": "binary",
+      "sha256": "48122f03c0690f58dd9e5ad52eed6b036623890bdbbe6b388913eeeaed6a83a9"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "d01681a08c3f14c41c152ac09476b5b535d7b8c43d40834dc0ca4e945435f78d"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/occurrences.csv.gz",
+      "mode": "binary",
+      "sha256": "47efff9048ab627d508d3e8199a8e6caaba31c938383f0a144f6b033015ee492"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/queries.json",
+      "mode": "text_lf",
+      "sha256": "49b3120b8b1fa88b456e7e923c62de24ce3d1ebdbd8963dc456d4360b8772730"
+    },
+    {
+      "path": "research/results/nps_glkn_history/REPORT.md",
+      "mode": "text_lf",
+      "sha256": "9ca9dcf5198b4e904ceccc6a1e9f54904acdaa968da2524c5636909f4ab260e4"
+    },
+    {
+      "path": "research/results/nps_glkn_history/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "069a678e529aeb837a85a84c0f7fb44974bc3731892b3d9d41cc83f55d625430"
+    },
+    {
+      "path": "research/results/nps_glkn_schema/schema_receipt.json",
+      "mode": "text_lf",
+      "sha256": "7729b91044ddbfffe52c81a0c9dfcb1290cff5ece3f0bd5ba70f4261616f507c"
+    },
+    {
+      "path": "research/results/nps_glkn_two_way/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "3a560fba8c8cc68a406590e8d7ffd70b9fce7f30727d901d70d4ebe0f647b68d"
+    },
+    {
+      "path": "research/results/nps_glkn_weak_vs_strong/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "a827737f34cca989db32ed190981e62966c8484dcd9aafa613a01b1867caab63"
+    },
+    {
+      "path": "research/results/nps_hydroperiod_history/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "6dce9fac5bdad25fb40cc64dd10e0a1b5719873846a69eaf3c0751ffbf61e4d6"
+    },
+    {
+      "path": "research/results/nps_stage_crosslag/REPORT.md",
+      "mode": "text_lf",
+      "sha256": "45fbe88f849b39bd30bfec8fd8901d195774fb059dac41746e01dfbc968de0e1"
+    },
+    {
+      "path": "research/results/nps_stage_crosslag/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "0d7dd25713f69cd17f6e733d3fd901bc2b64cc4ebd89cf7e5bfa95b26d52ce26"
+    },
+    {
+      "path": "research/results/nwi_gbif_stage_point_pilot/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "e75e3f481c3d4bcfe19e7be437e2610cf216a9b29cea382179294ade0e7ceba9"
+    },
+    {
+      "path": "research/results/part2_g0/inbo_species_time_eligibility.json",
+      "mode": "text_lf",
+      "sha256": "44a73242b26b00da969652053effd6082b182c730fb2b05b3ba56b42a9ead31a"
+    },
+    {
+      "path": "research/results/part2_g0/observed_source_eligibility.json",
+      "mode": "text_lf",
+      "sha256": "4dc4dca17803b646bfbb4f2c47b896ab7ada7619e7e471d4a9e9099d6a29a51c"
+    },
+    {
+      "path": "research/results/part2_g2/FUSCUS_G2B_REAL_EXPERIMENT_REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "252d81f2ced2bcac9b71583c72f22d48ea754de4ff236b97d3e9a51d2cb49e00"
+    },
+    {
+      "path": "research/results/part2_g2/allobates_predator_pool_g0.json",
+      "mode": "text_lf",
+      "sha256": "4057c0da217787e64dadab5d6eb332920a4067341b98ba93708cdd413518d485"
+    },
+    {
+      "path": "research/results/part2_g2/fuscus_assignment_g0.json",
+      "mode": "text_lf",
+      "sha256": "04ba0f8aba1829f0d52cec2b17b351d385daa07e7edf16d3b5bb41a2181f33b1"
+    },
+    {
+      "path": "research/results/part2_g2/fuscus_factorial_observed_results.json",
+      "mode": "text_lf",
+      "sha256": "0d9462d892f6754e26d3982625a0648d63b5ab105d08e22c90df05ee2fceecfa"
+    },
+    {
+      "path": "research/results/part2_g2/fuscus_workbook_schema_g0.json",
+      "mode": "text_lf",
+      "sha256": "94df2b324c1f4356658cdeee42e445b2237c1d85cb708a95d606bb0276e12d88"
+    },
+    {
+      "path": "research/results/part2_inbo_hyla_g1/REPORT.md",
+      "mode": "text_lf",
+      "sha256": "bf493f2e4e49d1ecea1fc65324e27e81dbf93c47d56207633b2a141f337f9623"
+    },
+    {
+      "path": "research/results/part2_inbo_hyla_g1/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "4354575beea567295b23e168b45baf6472dc91fe4b16fc17cdc7fc2bae0ca76b"
+    },
+    {
+      "path": "research/results/pem_mutual_invasion/synthetic_results.json",
+      "mode": "text_lf",
+      "sha256": "f34075085a500a5ef5e8a6795b578e3d9d8042fb23488bbc403c3ff0c6d30fe6"
+    },
+    {
+      "path": "research/results/pem_stage_edge_ablations/synthetic_results.json",
+      "mode": "text_lf",
+      "sha256": "97e2e28bf3a68552418382f4b0aadc5ed0ae19c70c0ecdfb3b3b79b3de6abed6"
+    },
+    {
+      "path": "research/results/pem_three_guild_stage_balance/initial_no_crowding_synthetic_receipt.json",
+      "mode": "text_lf",
+      "sha256": "7a4aad217d2d9abcba4d013fc7c74b0e6110d581fd77c8c6d785d43029f02c56"
+    },
+    {
+      "path": "research/results/pem_three_guild_stage_balance/synthetic_results.json",
+      "mode": "text_lf",
+      "sha256": "a24eab1f902ca4bfd12ad14490b551ae6ec75d53ef649df002bf6deb3f5d36a6"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/NA_Odonata_Checklist_2024.pdf",
+      "mode": "binary",
+      "sha256": "2b918da16f898664fdb01cd9f54872a368945ca74eb3fd43fc13b4e671444e4e"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/NA_Odonata_Checklist_2024.txt",
+      "mode": "text_lf",
+      "sha256": "d64f569c60bb740d512b638c0bc42df0966dfb91781672dfdde513bde241d13f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_atlas.html",
+      "mode": "text_lf",
+      "sha256": "21c31fa5470b72d2f451f89ab11ec5a1ab07fa47f3f089d634e37818de1cb613"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_atlas_map.js",
+      "mode": "text_lf",
+      "sha256": "6f1e3f46081828507783f3232a5bb10badf14464bf8cf2f07fe38a3b05d4d336"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_eastern_state_union_candidates.csv",
+      "mode": "text_lf",
+      "sha256": "68eb47c5ffe9bc95e3028544d83abafad3163852d5a4123ef8d489d26d069d36"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_select2cascade.js",
+      "mode": "text_lf",
+      "sha256": "694fd301164bfb5d757a8cbd739e1d3264f5afbf185e3faf5952d2dbf78ffcb3"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_AL.json",
+      "mode": "text_lf",
+      "sha256": "3aab39c17f99a2971ce8690d5f2eed848c0859241e43eef20b10d0de097dc74a"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_AR.json",
+      "mode": "text_lf",
+      "sha256": "7ebda273ca8358ec1c5f7a8a099ae3b11ea24dd6a9a73a41cf2e9444370b5a31"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_CT.json",
+      "mode": "text_lf",
+      "sha256": "fbe2fb0280f3ac0683f414fe33fe94b0642810b26bc5acf25f160269e73e6a09"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_DE.json",
+      "mode": "text_lf",
+      "sha256": "67059de36865fa563e7ce9204223b11b041106c06cf70e4e7fb3c51250ee2c28"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_FL.json",
+      "mode": "text_lf",
+      "sha256": "bd50b56d6a6d58698b048c71319db41aa000600be16c9376787a9fe7be7b6cb2"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_GA.json",
+      "mode": "text_lf",
+      "sha256": "e591b3b0d85f2434cb754718e225484c5634012e9ede4656121230dab19338e6"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_IA.json",
+      "mode": "text_lf",
+      "sha256": "3c5589576cccce4e19e1df4b602f489039cdc3ac47b73a7fc674e20e56895856"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_IL.json",
+      "mode": "text_lf",
+      "sha256": "fe472cc904ad73dd399f3796bc970fe5164b9871a2b56a7b5a87832ae41d6b52"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_IN.json",
+      "mode": "text_lf",
+      "sha256": "93c16d7ce1a52e5c6b54ab3e2646bd24065b2ed2190e573bf22c72e0155cd2b8"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_KS.json",
+      "mode": "text_lf",
+      "sha256": "9603aa7c1e656dadc2a9cfb0f7d0ce52c3850b91b83136b790c5cd05219b520b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_KY.json",
+      "mode": "text_lf",
+      "sha256": "bda5e538fd5f17d61108cfcf7720c51b7f2769aeb342cbbfbeca222c4b31d946"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_LA.json",
+      "mode": "text_lf",
+      "sha256": "2111f65a6e914f63bb7b55bcf891e54d6ffa457ab81aa5639bb488c339543b59"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_MA.json",
+      "mode": "text_lf",
+      "sha256": "dcb9b0871a184b2b26a771962b6e13542c0be49ea1fb8664fefd151a6f852ff7"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_MD.json",
+      "mode": "text_lf",
+      "sha256": "7d33a18ca0b24b99e2753ea26be0f8d00bd85435045b6817a22b1731136fcd62"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_ME.json",
+      "mode": "text_lf",
+      "sha256": "dcf22f266ce2b9b66a7331b2dd58df4be0b228fd3ff0160d32466a4022e94f9f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_MI.json",
+      "mode": "text_lf",
+      "sha256": "9f902f833406af65384aced32c344184fb9d56f9b2a1024663ed5194f7ea6df5"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_MN.json",
+      "mode": "text_lf",
+      "sha256": "e535c1d94d562d74b84c79aa7935df8e925971875a757cd132297b6452a7e766"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_MO.json",
+      "mode": "text_lf",
+      "sha256": "6d54792cac7e45e050063057f5c7e76c8c81e1a9bfd264f57d217ec8057bed4b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_MS.json",
+      "mode": "text_lf",
+      "sha256": "b7f3bf430d27fc1cd5a9cbf6c110991f2b6a91bf34e8a30b020823246b194a19"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_NC.json",
+      "mode": "text_lf",
+      "sha256": "eeed78321bca5fdfcffac4d2243d05ceba3808759ebd66baea75fa45b7786cb8"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_ND.json",
+      "mode": "text_lf",
+      "sha256": "7378531aa1ee3c9f3e27e99ca0063fe0d1bd88aa039cfcfa640c0bcacd807c65"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_NE.json",
+      "mode": "text_lf",
+      "sha256": "d4dce5daaabe4f6268686da21e76e17176058ba6808e6eb2d50db3d0e75bba2c"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_NH.json",
+      "mode": "text_lf",
+      "sha256": "4dce378bb8b55e07912cdf837c4f686a8de29f76d03fce9ab503c60ebdbae780"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_NJ.json",
+      "mode": "text_lf",
+      "sha256": "f110f543d2ed9dc7f2bba92fcd51a1b63e88b82fe96932c7c3e72d7066a36bba"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_NY.json",
+      "mode": "text_lf",
+      "sha256": "0712cc148c86db969b3081c93efb85e2cc488a60ea4629c957c4eb62e67d59fa"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_OH.json",
+      "mode": "text_lf",
+      "sha256": "2a47e391ff8fa87e5d95c512d8ac75b1e9446b5a2d37f89c4035db5ab1cbeb91"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_OK.json",
+      "mode": "text_lf",
+      "sha256": "1a82c576983c730c00a9455aeb219656b4fb556b4cdab183207c0b08e93e0093"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_PA.json",
+      "mode": "text_lf",
+      "sha256": "0f4c50d77d18d6dae5cbc0a99b59d2c88054455319cc0c04159b0e90b2d2a5f5"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_RI.json",
+      "mode": "text_lf",
+      "sha256": "dd40dea91cc72b58b526a039af0478e5deab45cb2936b936ee08cfe915534b3b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_SC.json",
+      "mode": "text_lf",
+      "sha256": "6324b29c116ac5821866d09f8ec441dbca9be145b677d300c07a0e4e35d6cf5b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_SD.json",
+      "mode": "text_lf",
+      "sha256": "db94ecc3a51ef6efd21da40924b754fd7503994a338b720f1c191452210c1f55"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_TN.json",
+      "mode": "text_lf",
+      "sha256": "f5f8ccada4b32ffb11cf49f52818ba80d6e7213b6282dae338b2ecf9404dd55e"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_TX.json",
+      "mode": "text_lf",
+      "sha256": "a515f7c5f675a619002f8cbcfcc990a7c7968591dcc0a89b92602610e4ee87ea"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_VA.json",
+      "mode": "text_lf",
+      "sha256": "1e9acdd3210e97df489eaa5dd6391f9cfd1fc1575a364f788f5eef42174c3f77"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_VT.json",
+      "mode": "text_lf",
+      "sha256": "541bbe6d308ee089e97401d9c4836b91598369cbc86c9b8224e86254cf6f12bf"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_WI.json",
+      "mode": "text_lf",
+      "sha256": "ca487c47e5fb22fa9ac73af8fc96991dfdb57f70dbf5748fb23f93e30ba375c4"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_WV.json",
+      "mode": "text_lf",
+      "sha256": "ec5248318dbc539ed69c81b2f04ab430fb4a93a08867765773a99401750f37cb"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_species_all.json",
+      "mode": "text_lf",
+      "sha256": "f20cc57300ac44031a5c5d679839b7b0a6281f07944da8ccd884793201b46f7f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_state_options.json",
+      "mode": "text_lf",
+      "sha256": "49719f5ebff9f26fcc0044388be6c781f84e903e88ae56f3c53aeb1c6fe48594"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/armi_state_union_manifest.json",
+      "mode": "text_lf",
+      "sha256": "780dcab6c95c859562ef15558aa7f7bbb2ebdc5d0921d424135b92308dde6e31"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/checklist_candidates.csv",
+      "mode": "text_lf",
+      "sha256": "2fc32a0caa7d110c0982197533797af8121aa97225e6c50929b4cda0fcbe7a55"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/checklist_extraction_manifest.json",
+      "mode": "text_lf",
+      "sha256": "dce779d6f7aa33e7bc18c348bb930ac4a7ed255045a90aebede71efd0bf36911"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/checklist_not_in_regional_query.csv",
+      "mode": "text_lf",
+      "sha256": "91fcd5a36bba9cc4f4985b2b5dbced5339e6c2fbce6cefe6f4ab4b30af82c3bc"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/checklist_taxon_crosswalk.csv",
+      "mode": "text_lf",
+      "sha256": "92ba4e0a7c293c5b04180d9c6085c81e006ac6aa7054cce03450807af544b32f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Anura_broad_historical_strict.json",
+      "mode": "text_lf",
+      "sha256": "283d9fb773322ad2ea7f7050b20c096ae00ce34b823d18c06e2b992cfb3c877c"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Anura_regional_all_dates.json",
+      "mode": "text_lf",
+      "sha256": "bb4edb995be068bfd11fd3e21b34256abfc124023a6974a87a08aa3348f8d29f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Anura_regional_historical_strict.json",
+      "mode": "text_lf",
+      "sha256": "16a9e879d7d4ccb1cafb6d0350975452953e79ca33331ef6f311f4b7475fadc7"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Caudata_broad_historical_strict.json",
+      "mode": "text_lf",
+      "sha256": "1a3b17ef813a50efa4718098c1660be97f710297a8f467b7a193fc79472cb241"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Caudata_regional_all_dates.json",
+      "mode": "text_lf",
+      "sha256": "0786aeabfecc9ab7bdddc691d9618b3cc9b48bcca7dca16f055e3e1cfb5af649"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Caudata_regional_historical_strict.json",
+      "mode": "text_lf",
+      "sha256": "f6a895074bb33aa04711491a652f748f36d1955b6fa11fa53361c34bcc3f9f4e"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Odonata_broad_historical_strict.json",
+      "mode": "text_lf",
+      "sha256": "a280003344156ba4022e4e93c0dfca8e5bf543dd4eaaf014528a72fc7abf28ee"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Odonata_regional_all_dates.json",
+      "mode": "text_lf",
+      "sha256": "8da01afa97565bcd49afb6f5d67a72a5af7ba037398a277ad4ce20ec87768d68"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/facet_Odonata_regional_historical_strict.json",
+      "mode": "text_lf",
+      "sha256": "6a4209130a78ca07e112046ac62ce8e6f98d107abf0201bad2880892e1217cf9"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/gbif_dataset_attribution.csv",
+      "mode": "text_lf",
+      "sha256": "9777ecce10880548f50e1174e7fb0dea1df0392e72697ff11a234f1fed26614d"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/gbif_dataset_attribution_manifest.json",
+      "mode": "text_lf",
+      "sha256": "f2b44dfce2daff8765cde5efd0f5a61559033908d8fcfd10ee732cfca4b7eae7"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/gbif_globi_inventory_summary.json",
+      "mode": "text_lf",
+      "sha256": "f8462218573e2932be1a9119a1f473c7f65a29db4adda730bdf8181d1b9ffc83"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/gbif_regional_species_inventory.csv",
+      "mode": "text_lf",
+      "sha256": "59adba26c706ad356d0c36cd30643279c5b8e6ac9a170d0514ccafbab0ca80f5"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/globi_region_unconfirmed.csv",
+      "mode": "text_lf",
+      "sha256": "7b5d689fdfde431525fc667584bc9b32ca799a2be8ba3f7db254b6983e165269"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/globi_regionally_supported_edges.csv",
+      "mode": "text_lf",
+      "sha256": "b57fb9f29cbb65b6ce5e907cebb218a1b4b2dafb34b4699bf58639e4c247cf2c"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/higher_taxon_counterpart_evidence.csv",
+      "mode": "text_lf",
+      "sha256": "386b1e4ee14d188f3628a24666f4bc70ab02d923548f61aba944214265a767e9"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/042051f6-e602-4281-8ac3-d683811f0631.json",
+      "mode": "text_lf",
+      "sha256": "4dedd7b5047e1916bb80c797571f615955248012ed84af1785954877f07e93cb"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/08e03b4d-a30e-4dfd-978c-36712c7ccbd6.json",
+      "mode": "text_lf",
+      "sha256": "920f9375faf3b7b0c8d5a43c636e1b5a9e38aad2d66f34c24b0b962f9e0e2bc5"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/09435c69-7ec7-46f4-b52f-5131baa10143.json",
+      "mode": "text_lf",
+      "sha256": "140859482e738a4395a56466cc2666f93ec281e0bc47f58453301c12bd957169"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/09c4287e-e6d5-4552-a07f-bff8a00833d8.json",
+      "mode": "text_lf",
+      "sha256": "46ea83ec41761528fd193b5cf84f4eaeb0f7170d06ee6a5bb7cdd263021b119e"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/13e7869e-0c76-473a-a227-53d6e3d6fbf2.json",
+      "mode": "text_lf",
+      "sha256": "35505754ed97a01b2b04f3b182a2c26096a76133990f688aef670208014f5efc"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/13fdfab7-e281-428d-8c1f-e72eb7398e97.json",
+      "mode": "text_lf",
+      "sha256": "98943006e06c0187a5246a702ed62bc9e83d3bf1436ddc074543cf6b60184d0c"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/26098c25-8f7f-4c71-97ac-1d3db181c65e.json",
+      "mode": "text_lf",
+      "sha256": "ee3d3b02630fc3c3241d80dd33d5514f7dee5eab64a9da129317396c6fde14e5"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/2e64dedd-0996-4cd6-b6cd-4f055a46c38c.json",
+      "mode": "text_lf",
+      "sha256": "56e7919c96df43040d30179602ff73e91a142f0c3e0c997e01714cafbe6bd4c3"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/323b0e80-5e4b-4cc4-936a-d93fc8cae9bc.json",
+      "mode": "text_lf",
+      "sha256": "b29937dabe77de1dba7ab611c207d404ba9cd6028911f4c423c62b81e1b9d872"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/395dfaad-8b0d-47e2-a2ea-bf8a3fd5c10c.json",
+      "mode": "text_lf",
+      "sha256": "1c95b9c35f0baf7f58432d3f16142a3fd889808cc705bb6057d0a1af689a2304"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/410461b6-368c-4970-8cb5-c043c28c08dd.json",
+      "mode": "text_lf",
+      "sha256": "1b8c52283849874ce62930a0ff768904c9f14ec71acce388715b2859f14f484a"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/4bfac3ea-8763-4f4b-a71a-76a6f5f243d3.json",
+      "mode": "text_lf",
+      "sha256": "a86d747eaf212a4685f487d94c9d43b293cfd9a7192fbebd2c5be8b775efdc8f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/50c9509d-22c7-4a22-a47d-8c48425ef4a7.json",
+      "mode": "text_lf",
+      "sha256": "86c5e417e917f2b6bf8c625e9d0bfa1c998b9f8686278ec7284e393753ed3ef8"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/5378e1cf-522d-4469-8776-b709579b4a3e.json",
+      "mode": "text_lf",
+      "sha256": "adcdf5f18f2d686753be7f24da2cb7994b4ae8db3b93128ae43afa527c25c331"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/5d283bb6-64dd-4626-8b3b-a4e8db5415c3.json",
+      "mode": "text_lf",
+      "sha256": "48eb1b802c6ef629b253b1cc3210c692e3a0be5fc70c0e2bb84ad9d5fbc9dd4b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/5e015b88-67d3-474b-8e96-a537c9ef0210.json",
+      "mode": "text_lf",
+      "sha256": "283981dc4e79129703da4fbccb2f26fa5b60c91aa7f681176cfa2bacdb8841af"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/68513375-3aa5-4f6f-9975-d97d56c21d61.json",
+      "mode": "text_lf",
+      "sha256": "b256902f19ddd05ae8c2514e6436ad862aba3c2355a2dbe71861540b5b3c9b0c"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/6ac3f774-d9fb-4796-b3e9-92bf6c81c084.json",
+      "mode": "text_lf",
+      "sha256": "5f01b694c4d2c69c3548010a9efe7eb809d248b7161a2c9b3aa575c349ddf56f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/6ce9819a-d82b-41e1-9059-0dd201f15993.json",
+      "mode": "text_lf",
+      "sha256": "0c53332189dd6b6e720f93a17803fa4852ad02002d45c5f783b93dde9f24da22"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/71e82020-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "422343932eea2405e2018158d8e9679193d7246667b1321fba4aac478f1c9eb3"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/76525e81-9210-401d-a90d-5509f771c0e7.json",
+      "mode": "text_lf",
+      "sha256": "62fe6824d5228a2a99c8b91d25bb7b5652bf22eb282cceb832543706928269ec"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/76dd8f0d-2daa-4a69-9fcd-55e04230334a.json",
+      "mode": "text_lf",
+      "sha256": "4861a487bc00704f9d7a0179a91af1487020415048ee75dc23c252fb825ee64c"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/78122332-6315-41bd-914b-e9c1342d9093.json",
+      "mode": "text_lf",
+      "sha256": "d72297c11175c7ad681230bac9e234c7680ed5999c7767fb7955d7b08c291e69"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/78e2c7a4-4ee4-40bf-8401-e45be3c004ba.json",
+      "mode": "text_lf",
+      "sha256": "180c5dbc7d8099c082cd6193ff8b588471c8a847e0c50777cc34a82ce1b56558"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/78f98484-a7ef-4e6c-8b51-7464f1209591.json",
+      "mode": "text_lf",
+      "sha256": "24fa06b3e648fcfb45dc5ccd9022459f8819574f8c7069dab29001d017748210"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/821cc27a-e3bb-4bc5-ac34-89ada245069d.json",
+      "mode": "text_lf",
+      "sha256": "8e60ed029637f79c2bfd4a939af3ed766dfcedecd9603692462adb911505cea8"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/832b8188-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "071479775e5df682b2148935aff1164e7e7bcc82b63504fcb6890573696c8317"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/847aa410-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "f09525e1747da3cb2b0bb29d4db6a6f19f070086f88921f357c747c96d5f399b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/84b4d6e4-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "e282e2afa5940053d633be350d682f897e7a2025002446c982a0872157804a61"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/852628c6-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "e09d9b9de8e930eda959afbac84193a8bdeb27135d01e52e8afae1c3523930db"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/861d3d64-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "598fa9802ea1105a549d6ebbc877ea8393fb9609d191acd8756b84c445484e64"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/8a863029-f435-446a-821e-275f4f641165.json",
+      "mode": "text_lf",
+      "sha256": "c4535d52d36c4a8e43461ba518e61341402a4a1c8267beb5c38ad23f799e934a"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/8e479b8f-ac16-4bed-a11a-bc7e27c31663.json",
+      "mode": "text_lf",
+      "sha256": "a7413a11d0953ca5d773f2e52046086188d10e238ac2594944b8a1ba6748e8ec"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/8eddc200-f535-4c65-9b4d-f723eafe607e.json",
+      "mode": "text_lf",
+      "sha256": "cfc3594443e5a0e530b7c32f7830726464176476438734db6d98f26e038bb529"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/91025c69-111a-45c0-8440-59cb9efbdff7.json",
+      "mode": "text_lf",
+      "sha256": "2da2799acd9de5bb6b036d50321c317487515acc1f512dd0ba5def58bc31698e"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/94c283b2-b82d-499b-be0b-4f888b2fa55a.json",
+      "mode": "text_lf",
+      "sha256": "ccf5da3508a83bc8bb061155b938c7342a32e9af513902872253beba3a706b37"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/94f657f2-f623-490c-81be-992b053b6327.json",
+      "mode": "text_lf",
+      "sha256": "f53435f57bc21995807f687d08d204ded467fb1ceb831fb7985fec3e995f538e"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/96404cc2-f762-11e1-a439-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "91a0c2570fdc1ab04414e0f32aaa6d7f75927d308b840328c7e6792bba6e1604"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/97ce9818-7028-42a0-9743-ccb5897dec1f.json",
+      "mode": "text_lf",
+      "sha256": "7a5221ecdccd82ac05cef214fbb1da5597433715f020108f1fdfab3824953f0d"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/9b12d595-11ea-4128-88ea-ed378eb9ea9a.json",
+      "mode": "text_lf",
+      "sha256": "e2c563497a3eaaeb130c55fb698a3adcfd78a69d9a337c130a8fb0b49a393a75"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/9d691e2b-fdf1-4d06-beae-f95fb2bbe69c.json",
+      "mode": "text_lf",
+      "sha256": "887ea4ef45fbabd290d7cddc4189c11cbda4c039fa5f01a7ef2387a4d06ae6be"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/9daa591f-4ea3-45e9-8603-2d21c7b3ff42.json",
+      "mode": "text_lf",
+      "sha256": "5b330dd42c02ba53d4afdcc30d34591fc8914c3b6193f3100ff14f5fcc78af86"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/a56671b7-f619-4f49-9250-dfa7c0b298dc.json",
+      "mode": "text_lf",
+      "sha256": "b254d22bf8130e30ee6e7aaaa7c84ca7955508c0fad271219386b2c603ce3f11"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/a8ee9bc6-5914-427d-9fba-f8545250ac34.json",
+      "mode": "text_lf",
+      "sha256": "f057b499a80737ebba13282e4fd583c8cf449d7312d6cae14fc9fa0a43524291"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/aae308f4-9f9c-4cdd-b4ef-c026f48be551.json",
+      "mode": "text_lf",
+      "sha256": "94c6f275988def7bf9ea11b7b042f181c712f82e225fcf2ed0a0f792e52f2d99"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/ae24fb7b-af3c-478c-a1ed-2215a90793cc.json",
+      "mode": "text_lf",
+      "sha256": "2e3c1c70fd0963a5b360071075579d76caeec232363661107df67f7d60f9a860"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/b11cbb9e-8ee0-4d9a-8eac-da5d5ab53a31.json",
+      "mode": "text_lf",
+      "sha256": "ec71ce0faa40d6f0d7ab54ab51504813755bb5cbc4694152951905ee748b8fde"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/b4d30e1c-65a6-43a6-b0c5-526a414596b3.json",
+      "mode": "text_lf",
+      "sha256": "e2b0274428e5123076099b9c159469ec4f863d1f942e222b37fde20fb4fa4654"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/be819513-ce32-4c12-9360-a8c20af85fc2.json",
+      "mode": "text_lf",
+      "sha256": "ba04eb787d661248bc3fa3dd0d83f1a3a4884a81250233002dd30907835e45f3"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/c113d947-5dcf-4a52-aaa2-735dba1089b7.json",
+      "mode": "text_lf",
+      "sha256": "39acdb7b38c7cbf4104c5520ff6fa02506442cc2ae21fa3b1bdc76d11658c18d"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/c8e9fe8e-391b-44b9-ad94-a5d15f4b5788.json",
+      "mode": "text_lf",
+      "sha256": "5ca9ec6733ed7a01aabb21989662bb1494600e968dabd9d26237a6a7ba15dcc1"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/cece4fc2-1fec-4bb5-a335-7252548e3f0b.json",
+      "mode": "text_lf",
+      "sha256": "d4ab7843e94ee3a4abcde787127eec92741e1ca988812845e13551ae6445d380"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/d4f0993a-0f72-445e-8d5c-1b685e5268b1.json",
+      "mode": "text_lf",
+      "sha256": "2ae3c0b672014dc105edddb2e473055f65f0c583276c3bac92310db39eca5f91"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/d5fafa95-7de2-48c0-bf10-3480bcca4a2b.json",
+      "mode": "text_lf",
+      "sha256": "b59ee557d04e625bd50f18b8dc11eca623b07a9265823793bdcb104f16a2ebd1"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/d6097f75-f99e-4c2a-b8a5-b0fc213ecbd0.json",
+      "mode": "text_lf",
+      "sha256": "8004c6e94b0fdf32fdc649d43ee72ca907b65d7ca0948987321d4447bd4e6413"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/dab57200-c600-4f26-b657-cf217443034e.json",
+      "mode": "text_lf",
+      "sha256": "13b2cf6f46df0fd47ca1b42214b2d6ba1eb4e4f948314181d8cdb7d81a82dcbb"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/db47a906-257f-40a8-8638-4cb1bf092c2b.json",
+      "mode": "text_lf",
+      "sha256": "4544de07c77d2fabafc77b0be8bc8aa2319dbf4ffbf72e1c87a8ac760342b345"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/dce00a1f-f6b4-4e11-9771-92c62c40ad80.json",
+      "mode": "text_lf",
+      "sha256": "5789b86f0c8ed6207750cc8f755a1ddd4d59cc5e0d23b0708ed9174bf23fcdaf"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/e1beb83c-9b83-4d17-ac5e-d24e09507ec5.json",
+      "mode": "text_lf",
+      "sha256": "a9a4c1394002c51d0457930ddadd862a9b64373e597bed535f26b48163523a5b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/e6c97f6e-e952-11e2-961f-00145eb45e9a.json",
+      "mode": "text_lf",
+      "sha256": "80df8487d4cabde77c95a0b902d3cb45ae08cd37be4bd73395143b5dc14e410d"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/f0abd990-8209-44b2-891d-04a3cb30830b.json",
+      "mode": "text_lf",
+      "sha256": "f02b10d7a34def630542116f14b392ae32196dfa244c7124e049080d406613b0"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/fb639e31-52eb-4998-afb1-984ee12aca0f.json",
+      "mode": "text_lf",
+      "sha256": "6352a389162d6194446746be86269f41b3cc24f2f31bea1f953bbc1005815766"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/rawDatasetReceipts/fca6147f-6460-445a-9e6a-5ebc5eddf703.json",
+      "mode": "text_lf",
+      "sha256": "09247f1bb63731d632d018d8793324a6f12f1d7eea4090effcab09900d703c7f"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/reviewed_globi_edges.csv",
+      "mode": "text_lf",
+      "sha256": "cac33f7a3d454de666ef74eadec97997bb9f7f00e3e476592f8cd6497a384a35"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/reviewed_interaction_model_pool.csv",
+      "mode": "text_lf",
+      "sha256": "8f59a923840ecc26cb6a4d92e2df4415e4da214707412bde39ce32a47ec404f4"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/reviewed_pool_summary.json",
+      "mode": "text_lf",
+      "sha256": "f0b4f35788321cd255744eacfa00322a74941a4a848105d8e5f0abfc3118b47b"
+    },
+    {
+      "path": "research/results/regional_species_pool_20261026/reviewed_species_inventory.csv",
+      "mode": "text_lf",
+      "sha256": "b1175ee916b8762871e5f0ed0444844bc89d894befb58c9af552506fc8640d3e"
+    },
+    {
+      "path": "research/results/species_occurrence_first/DATASET_MANIFEST_V1.json",
+      "mode": "text_lf",
+      "sha256": "338e87c7ebcb0c76f46fd9c52628658da01036b8570a7d78c7f47dd0a81afc3b"
+    },
+    {
+      "path": "research/results/species_occurrence_first/REPORT_2026-10-26.md",
+      "mode": "text_lf",
+      "sha256": "61c455619754afe139a226b5410fbd45b0031187043e0658065aec875b98ff8e"
+    },
+    {
+      "path": "research/results/species_occurrence_first/observed_correlations_summary.json",
+      "mode": "text_lf",
+      "sha256": "82b10dd598d3963bb0e67152a001911b683ed70ee6f48d3448580a6a5598fda7"
+    },
+    {
+      "path": "research/results/species_occurrence_first/observed_profile.json",
+      "mode": "text_lf",
+      "sha256": "7dc4c6f3b30c9c7dcd8757b6532a5a4d52135295097a9a58e2270a59844e710b"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/allocation_model_comparison.csv",
+      "mode": "text_lf",
+      "sha256": "33ade636322784465f41041df142bfb832507726f1d9f4d0c7359768babf33ea"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/allocation_route_scores.csv",
+      "mode": "text_lf",
+      "sha256": "bbd4358bbbd935fad2c27dbba95e716d2f0838185607fbb33bee1f21eeab9351"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/heldout_threshold_retention.csv",
+      "mode": "text_lf",
+      "sha256": "fef2612f54776d5e2f9fa4312bc741edeb42d1d7e03d9114a8456ec53c1fa26b"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/matched_group_comparison.csv",
+      "mode": "text_lf",
+      "sha256": "6c2b3faa0746afdefe2ab39082cc58db8785de2316954da61f625dd9ce63766a"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/naamp_group_potential_richness.csv.gz",
+      "mode": "binary",
+      "sha256": "a2a6d53bc84e0d7757dc77f82c2d9178a082e5f9107d5c512c5b3b79d3222c43"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "30b8c831715ccc7aca1a69079659b7bbcfaabd762b18d6735a107ddc7a43daa8"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/source_replay_checks.csv",
+      "mode": "text_lf",
+      "sha256": "881d6355176fb93250dc0875e66f910abae3b06a2f3d2e32ec6c1377322ee7c1"
+    },
+    {
+      "path": "research/results/ssdm_pilot_20261026/species_thresholds.csv",
+      "mode": "text_lf",
+      "sha256": "7a8ca994214dd5e2a3dfc90b3a88136631c2b798696a973a4c1a676fb94c28e6"
+    },
+    {
+      "path": "research/results/synthetic_stage_network/synthetic_results_summary.json",
+      "mode": "text_lf",
+      "sha256": "01a627e682f30d59682764eff92c401801f59a8ef27216fcbd2fdf1634f6792f"
+    },
+    {
+      "path": "research/results/three_guild_delay_toy/all_synthetic_scenarios.csv",
+      "mode": "text_lf",
+      "sha256": "a7746bfdf7b71b31162623ee6bf5ba6d44a4acb65f292da782347b19e7e05351"
+    },
+    {
+      "path": "research/results/three_guild_delay_toy/synthetic_results.json",
+      "mode": "text_lf",
+      "sha256": "fa43ee00bbec1cbb6df98ea495e769ef7b1c6137bf05b4871908d47735b26d16"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/REPORT_JA.md",
+      "mode": "text_lf",
+      "sha256": "8c34f203ab3b7ece07b396573ab453e2800618a71f835194a2075e2afe217328"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/direction_normalized_species_edges.csv",
+      "mode": "text_lf",
+      "sha256": "816c335498fe8728e763948e4c6dd3c5f941c2a40171d01f84b5cc269dc5bcc1"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/naamp_taxon_crosswalk.json",
+      "mode": "text_lf",
+      "sha256": "5f8306f3dbf7533ecf8bca932c4e0b0b6e69e4bb3ce796299b78597c9534c0eb"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/normalized_source_rows.csv",
+      "mode": "text_lf",
+      "sha256": "9dad210a94fde60ced415e76418b059c5d85fe3d77cd9a44f82e10f1c296b1d0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/observed_results.json",
+      "mode": "text_lf",
+      "sha256": "58edd9addbc2b16edbd2c8d3eb71f5ec31e186b08dcd5fb65c252c636a7dfba8"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Anura_to_Caudata_page0.json",
+      "mode": "text_lf",
+      "sha256": "7d5c069d3a642418f44bc838d49bdd5cffff838d9f8d62c87a49604d2c96159c"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Anura_to_Caudata_page1.json",
+      "mode": "text_lf",
+      "sha256": "79b21955f665e3ffdfe0b807edbfad53297316b16687802826061880e5773d73"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Anura_to_Odonata_page0.json",
+      "mode": "text_lf",
+      "sha256": "9436a7f1a0c86140d72f4556427df77ae8b8c4b113be659752c8ac5bc9a8ecb4"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Caudata_to_Anura_page0.json",
+      "mode": "text_lf",
+      "sha256": "3739ad818f5e3f530c181e6e78df68580a5427bcb61e17c1a8fe8cfbe5ac597e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Caudata_to_Anura_page1.json",
+      "mode": "text_lf",
+      "sha256": "43433206a550a5625dc2f5ff778b536a618ab9a6b92231c6205dc0c89987ac7b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Caudata_to_Odonata_page0.json",
+      "mode": "text_lf",
+      "sha256": "52bab54bf5f39e48052d29677b7f73ce6a64cb0555f166355f66471f7ca262a8"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Odonata_to_Anura_page0.json",
+      "mode": "text_lf",
+      "sha256": "a3e486edb837509b0b8737978ee9de819c0e719bb333567ce63628190384b25b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/raw/Odonata_to_Caudata_page0.json",
+      "mode": "text_lf",
+      "sha256": "a8c107eb59645c099133561638b930dec0c413ff97b990b64f16cbfd08c2c465"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/species_edges.csv",
+      "mode": "text_lf",
+      "sha256": "2fabf803d878fe74001ecb95eba21d68aed8fea8842867393147e12585348a48"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxon_crosswalk.json",
+      "mode": "text_lf",
+      "sha256": "256d0d3aa9e9c65ddc7b757df638b96922dba429e701a62dedcc634d1c0731b7"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/accepted_2427072.json",
+      "mode": "text_lf",
+      "sha256": "dce5211e3262dc54ed2684d48c9bf4fa27cf87557135a525da4e82fc90ed9d87"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_00ea63f7f489fe1e.json",
+      "mode": "text_lf",
+      "sha256": "d5f3bb3d9d47b0284881f77435e7af80c7ee94bc94cf388d8e2a2d3fbb23af26"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_013bea6664d025f9.json",
+      "mode": "text_lf",
+      "sha256": "c51f234a3bc06f0aa579739217eb6e4f6fef4827e805807f1b96ea7e212b974f"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_036b1607f62cde6a.json",
+      "mode": "text_lf",
+      "sha256": "5f437aad3d00da14b1d458bcf761fcfcb6f2fe9abae3a6cb857fa08d62a2f47e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_054088a28ffc22ea.json",
+      "mode": "text_lf",
+      "sha256": "d07f35914a3c4f94c008596547d733def9a2871a24f1881c81efe0ca976b1b21"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_06c29c15e5711311.json",
+      "mode": "text_lf",
+      "sha256": "4a4a822d58f4bf258b120098ca1f3fd3b0790aa80989e3174e7584c3ea8e8875"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_09271c43eb207481.json",
+      "mode": "text_lf",
+      "sha256": "62b606f434691adfeccc96ea643d1e02a3dd05e6a4edf946255067c31c96b9f0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_099660f0fdcbbb9c.json",
+      "mode": "text_lf",
+      "sha256": "842643a7f1301d7f9830a2dd50ff552cded635c4291924e7cab7ab939958add4"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_0a03962a30761d76.json",
+      "mode": "text_lf",
+      "sha256": "08be91390dae75decb2384740d1f0b18ccfff9b751abb88d6fc578f4c0439eab"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_0a62305809bba42f.json",
+      "mode": "text_lf",
+      "sha256": "8fd75d9a07aab7e2865d13282e21ff853a4539b8fa4eb11367093ccf4270581f"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_11341aff4cb77a26.json",
+      "mode": "text_lf",
+      "sha256": "e01e5f33c86513beddfa6498fc098ab15683ab4846a1fef23ba9c2c91c7e4e54"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_113db15c52f0243a.json",
+      "mode": "text_lf",
+      "sha256": "bec77e2fe901a78c9876649f65eb8e2bbb7496b916323eb07956ec62d559b937"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_1315f6b603dbf4e8.json",
+      "mode": "text_lf",
+      "sha256": "c4cffca03338230400ee9f9b8d3bc7407abbb185816fe43482564898f09eaf18"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_1ce651ddd987083f.json",
+      "mode": "text_lf",
+      "sha256": "7b965ae6d23ab93a1a88ad40b385fbce4ff3e42fa4a8628f843b3a4f051ca8f0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_1cff7c8809643dc7.json",
+      "mode": "text_lf",
+      "sha256": "431931d6d98b1798c6501c922b580c8f814c061fa99c69ab22e81a3833d142ca"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_1f83b2cbcc0873fe.json",
+      "mode": "text_lf",
+      "sha256": "eec0399971b685754b758a5ffc284deee99d59409965173daa4de3f871ba3b3e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_1fa0e5756cb870c8.json",
+      "mode": "text_lf",
+      "sha256": "7a374176b028df3356ef12b3d1bd97800ca8970a341016a1b739fe5fe10abc80"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_1fdf364a74597211.json",
+      "mode": "text_lf",
+      "sha256": "9419626c486d9362c92372e3f4de4ee7d268ed42e70e947f6d8b3023ed445261"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_267e1a83e8c96b47.json",
+      "mode": "text_lf",
+      "sha256": "6addc3d3b7b5d26eff3a5ebf996497d30a04c60f2a9419bb508cec7b2a815078"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_27193a1556832110.json",
+      "mode": "text_lf",
+      "sha256": "0b79a82dde435aaf3b222104d602a410226124f3c42e29d2d27e8c78639826ee"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_2725d336cb760a2e.json",
+      "mode": "text_lf",
+      "sha256": "77979a579336aecca014fdf69dff3f03d88bfca51129d2a5a45568784489635f"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_296df35183e891b6.json",
+      "mode": "text_lf",
+      "sha256": "cc38fe9437e34871ae852a2f9334b5a31453e32279539a88d4501dc3b5147777"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_2b4f596b5f7719ca.json",
+      "mode": "text_lf",
+      "sha256": "6dfaba942771712c5cc9d148c3486cb7b9fb0b7023db92b657e45e9a05725dd3"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_2d2dbc7ec26b7b9d.json",
+      "mode": "text_lf",
+      "sha256": "b7326115c5e48e87d6a5e14818e7f41c0770b96763adb80682bbf2b66113311b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_2e291f4c0fd46178.json",
+      "mode": "text_lf",
+      "sha256": "15765c4068dfe507804ae7babc0bfc85b30a01ea644fb44f14b0b7fcc6b8ff7f"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_3154c19daffecfad.json",
+      "mode": "text_lf",
+      "sha256": "ff43e68087666d4231e007b3b15173decaf92c1f3ef1f63481cf442ea886c7f8"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_31837a1e9e671ec4.json",
+      "mode": "text_lf",
+      "sha256": "b9c3c58325be3a636b3792b76329a66a83859bc2f0d9d7f45b7bffb0fe0cec55"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_32b85ee306eb4304.json",
+      "mode": "text_lf",
+      "sha256": "42a0b0b027c6b665ad43369a317d7de565fb89a317573b4c06379d54c09da190"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_348156a125f9877b.json",
+      "mode": "text_lf",
+      "sha256": "f796d4d1012b6208fdfebd4fdd52f3c6faaeaa838ce88a5f31600f2962cc3e73"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_360e8dbc2f43188c.json",
+      "mode": "text_lf",
+      "sha256": "46a2f2157cbf5aa7e77309625d8feea680c8c78ca7f59004743ea8822ebed3ee"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_39150b01c9928b0e.json",
+      "mode": "text_lf",
+      "sha256": "eab3f4aa7a22ec384a997f52968f163c83d68b5b12cb742adb4079c42fbe6664"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_3a323c9846f8bf7b.json",
+      "mode": "text_lf",
+      "sha256": "649042802d1e756c39782776d314d300ab7adda73cf9de8a90050768450067c9"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_3d7206d90c5c42bb.json",
+      "mode": "text_lf",
+      "sha256": "5d777fd51d7068101ae80cdf7fb8a414c6a28167748ad8e7d22bf24082ecddf8"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_4284e338648afae1.json",
+      "mode": "text_lf",
+      "sha256": "647692e457eb93260b470bdc7798a84ce366a783c8ef7c914a32e935dd1d45a3"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_42a760a2784a8977.json",
+      "mode": "text_lf",
+      "sha256": "24be7abf6c43240b9e164b08abbc285cdeb0234c79267c3ac8d936ab4a5d9afb"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_43f02d0775264e85.json",
+      "mode": "text_lf",
+      "sha256": "456ef0f67f7696ec231d2a7be356096a492d8ec2b082c9109517a7b3c857c1e5"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_47c800eefb25e2b0.json",
+      "mode": "text_lf",
+      "sha256": "dd656580d80c55de60e262de685fe043218c1651f9638c7693c693ae066633ac"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_4c4803ec06a509c9.json",
+      "mode": "text_lf",
+      "sha256": "816d641be59959085085cfe05bb85de1dffdf6fe55f08294b1fef26071e7b7bc"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_4c6de0128ab1d673.json",
+      "mode": "text_lf",
+      "sha256": "863a7f9753be96cda0d029f8b148922f9e199428240481eaddb8f3d4cf37f254"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_4fcca42e611bd59e.json",
+      "mode": "text_lf",
+      "sha256": "6a7c04fb117f6360f1ca9def1f8359bf7ada384d71ddc9d7fa6c0dcd0812e80b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_52e7d7533afa2736.json",
+      "mode": "text_lf",
+      "sha256": "183142349b496357d231b0a09a1cafd7f47b9a3593ee0eb4e506f969b21a3094"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_53492bb0e6d431ca.json",
+      "mode": "text_lf",
+      "sha256": "4066f3d279e34a1d679bcbe49c7120bffe064042b811055d1c0c6c571d8e8d03"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_56a876f78586708e.json",
+      "mode": "text_lf",
+      "sha256": "85c5b0d654a278d78e4c759a562c49f38081bbfd037512b22c18aff657d516d4"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_59d0a91764d22da6.json",
+      "mode": "text_lf",
+      "sha256": "e77c1a201c683b2aaba410603ebc35b520df8eeaa1c6cd968b6161f123a4a8c6"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_5a3a139c0bf2d2eb.json",
+      "mode": "text_lf",
+      "sha256": "30326e16f0a6a8feaf8a95542d665598aab640b61aab432cfc873e89fd8bf7bc"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_5a7d02dcc8c0988c.json",
+      "mode": "text_lf",
+      "sha256": "8ade3a16a492da205f7417de89587552c9dc22731927ac2cc3491888e719399e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_5a8cc82fc7616bf8.json",
+      "mode": "text_lf",
+      "sha256": "e475661824f0852a19cb4e9e405fca130d345f7af5b49e04b3b4a03b5e88901b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_655d2488bb871009.json",
+      "mode": "text_lf",
+      "sha256": "021c781e51cd8281da92a1e9d3a26c62f53ce4b09f609d8dcb883a87372e5c5e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_6886519160047b84.json",
+      "mode": "text_lf",
+      "sha256": "4aa0c79b496fb8b0cef86159e8e1050c8cd538ec4fb6f091f3aaf18ac4279440"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_6892cfb85dca39e3.json",
+      "mode": "text_lf",
+      "sha256": "892c1062a5cad56a7d19f9a3a3d0c809100aba568cced780eab285c1d1ea4dcf"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_69932e87405683db.json",
+      "mode": "text_lf",
+      "sha256": "40a953b8c49cc7810dc9c3d182fa8ad33d04909b2932aa62b114f3c16d9144b8"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_699dec50921de3ee.json",
+      "mode": "text_lf",
+      "sha256": "ed1fce2d0e8a91a0bc67a0d58853847fcf3622f7de6635edf4b9cc3e8c41c4d4"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_6a573b793b58bea1.json",
+      "mode": "text_lf",
+      "sha256": "a2bdcb9ff98da90f4b69bbcc8067143da5be681b071436760cb45da4983c9342"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_6a6b6394fddb6890.json",
+      "mode": "text_lf",
+      "sha256": "64888194125a82bae999d8fd9f081f755b6b318f8e26db53634bf170725a19bb"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_6b0ae8fcc8d0cec8.json",
+      "mode": "text_lf",
+      "sha256": "2364b7d81b89f8b25c8ca32703110d6609e0faf52bbbbb44bbccc0678cd2f269"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_6b6e05e2b1cb3ccf.json",
+      "mode": "text_lf",
+      "sha256": "ea42d03cd0721bd8d3333ebf7d482e14465c38cfbd60ffe35afee0a211374e9e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_70d31c48a2e0a5b9.json",
+      "mode": "text_lf",
+      "sha256": "e573204b6390bb68190787acf5b87400c0e1d697184038515370831321435545"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_7473384d4bcc9dc0.json",
+      "mode": "text_lf",
+      "sha256": "711d9b599691cde01c91f01afcde53d1e3b42e50bfddabdf49900d828f143837"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_7bf59e0b1b256d19.json",
+      "mode": "text_lf",
+      "sha256": "62255670fb6b5d69ab92c82a561da6c1c6c3614c27a9a7894cda2442540b4104"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_7e3777b06201620e.json",
+      "mode": "text_lf",
+      "sha256": "2e66c2df8f91c1833c6d706731e4cb786360d0909546fbbee28c99af275aafa0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_7f5d7b028323971d.json",
+      "mode": "text_lf",
+      "sha256": "dcac8b59b3a9d8826ca87ed00fc595a118badec7407d47d5adce59496059ed65"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_85cff129c4d5628b.json",
+      "mode": "text_lf",
+      "sha256": "cffb5b9969998e63c7806ebd67bb63bebde9391eb455cd49c2a4402813c23969"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_86c966bd842e33f1.json",
+      "mode": "text_lf",
+      "sha256": "d90cea3785bafb79e6e7ebea12eb57f125112dd904fb15e04eb6c739a2323781"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_89c50eaa0ca91bd9.json",
+      "mode": "text_lf",
+      "sha256": "5e53c66fd76b923c5a39da3d666dfdcdbd0da5424257378bffa84ee298cbd33a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_8bcb776be9dc071f.json",
+      "mode": "text_lf",
+      "sha256": "e017ef3d01a4cbf6f67ec04e38bc91af14f64f5df2fe976150222842fe75b242"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_8ce06b86560c1b98.json",
+      "mode": "text_lf",
+      "sha256": "910793fc6cfe66622714970b9e14571a9a44ac8301cf717cdd226e8d6d471a25"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_8cf4f13eabc78bbb.json",
+      "mode": "text_lf",
+      "sha256": "ffcb1e549de8ceb717b74e395ad540b197350e57324113853b4e066734b416c3"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_8e87628436f379f0.json",
+      "mode": "text_lf",
+      "sha256": "db6f393272cb236a1dd90cea24e1e67b35c6999aa1783bf9d0dfaf8aca2c1d2f"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_9124b033b21c0c2c.json",
+      "mode": "text_lf",
+      "sha256": "354d380560ec711fb7115fa3dc969dac30a5869ae64b3f848d9ec0c2899335ab"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_94a81bf7e61d46e8.json",
+      "mode": "text_lf",
+      "sha256": "5271f5265b2cbb1a20c5618a4a6b82fe69aee6dd87c9523b1f17f6081f4882fe"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_9785765465c87fa3.json",
+      "mode": "text_lf",
+      "sha256": "9115231de25acb1c1be54c3526c8ad347270629f1dfc46bb6a96eb50b87cb21a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_97980f8c8b98b9f1.json",
+      "mode": "text_lf",
+      "sha256": "49bfd8028f3e6e4c48e34e7b576c0557ab95239d10004460f7c50e1561555f54"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_97c21d22aa2c4c52.json",
+      "mode": "text_lf",
+      "sha256": "e1f033839754230476f6a3f18625c88c7c2cd0bcfafb1c4a1c40f68954f6da19"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_9b211800e30bfc89.json",
+      "mode": "text_lf",
+      "sha256": "43332785366a811e93b31bdd54362773cd5bf3b383b5335fc670c1bdb3e43ba0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_9cdd0bcd2a451531.json",
+      "mode": "text_lf",
+      "sha256": "6609d7177c0be5e4e18206a99180d9e40f5207c34cc2715dc6112680c2da62ab"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_9dfd1a90b24047a4.json",
+      "mode": "text_lf",
+      "sha256": "45a919009d8989ac0cca4f46e245893f2540bbe334bee7a64d085427c821cd06"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_9f1c0b27b2ad85f6.json",
+      "mode": "text_lf",
+      "sha256": "dec82010abe758fc290283b19fb281cfe9890c459128625f82a766fd437266f1"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_a0ca3c6a5a07f740.json",
+      "mode": "text_lf",
+      "sha256": "9b4fd37719a85f99860b2cdfe694260fcef72b31e2795714257be7de2d6101fb"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_a100a4cebe93d375.json",
+      "mode": "text_lf",
+      "sha256": "0ac710d9c2ffe7b09a0dfafcda5582e5b400492dade949b2c93eae06b36017bc"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_a831b64b27c8443a.json",
+      "mode": "text_lf",
+      "sha256": "b2f5603c2c332a86e0ceab1ae936a0527928cc9ece9ed9fa2186cf44cdb77841"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_aa3b5eac4895c1f1.json",
+      "mode": "text_lf",
+      "sha256": "e67c4c5973325db7f8e74025dcd05f0177f4421d34a8687374155e8f81f98458"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_aca4df0aa2c05778.json",
+      "mode": "text_lf",
+      "sha256": "d676f03fa19b58940f24e7a45f87c0a0f0d28be5e824d6c9065d0bc22239811a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_aedb4ed454233a7f.json",
+      "mode": "text_lf",
+      "sha256": "7e5bd8eeecd5c5433f018926c360fcd753e2ae9bf24410e709738e516654cf9c"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_b25f42e7dd6f3202.json",
+      "mode": "text_lf",
+      "sha256": "f9c5e8323ec2fb36de0364f94f26a91d7140ec82d164fda0116bdb01255708d7"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_b3220eabba88905a.json",
+      "mode": "text_lf",
+      "sha256": "fa3e8b46a34e9b94957cb6e1b5d908be95cd0477c367a67b0ca74b4b00f3f2e5"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_b4fd11a1d0d53d05.json",
+      "mode": "text_lf",
+      "sha256": "613db05fc4bf8540466bac56432f9f77ff9d8d459b800aeb8a8a615e97b55add"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_b59cd13b5503e206.json",
+      "mode": "text_lf",
+      "sha256": "62108c78a8211b33c429d2236064814994673130eb0a7e588349416ab058802c"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_c0c894401861039d.json",
+      "mode": "text_lf",
+      "sha256": "01b8124b99bd67699e7690819015248e72db12db5aab3cc31cb01f75c4e028a9"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_c4e68c1b5ad215c4.json",
+      "mode": "text_lf",
+      "sha256": "8643ed3328d31b7886c2665837d1b3b5d6bcb1832ee942f678ef4e6317e0890b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_cc7931d7aec07d5e.json",
+      "mode": "text_lf",
+      "sha256": "05f7419e64cd3e6858aa1b2240d3166b18919851553b1e44a977bfb95a2a1ebd"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_d32c6501f4a4992e.json",
+      "mode": "text_lf",
+      "sha256": "26d27a3fdb920c6555fcfc9f1a61f52f5cc5a3f60abc7386adcc72bb7014c33b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_d395668d73a52c38.json",
+      "mode": "text_lf",
+      "sha256": "0d35a741b7d36703f43e3cef14a79f23510b59f0ca586eb04bdc253e399fbac0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_d40c0ab028eb5cd4.json",
+      "mode": "text_lf",
+      "sha256": "8334d54f98d58c8fd2921e122e82d036ab92d5ff400aa09790eef52268933dd9"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_d491f084f2177422.json",
+      "mode": "text_lf",
+      "sha256": "d533e1f09a2a9d65394f82579aceafd800547f709720c098db6cc6f74c723331"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_d5b99624d9f676ac.json",
+      "mode": "text_lf",
+      "sha256": "1d84b25033225df7169b37baf59d19ae4bbb4e357a9c7ca58debec3608f48cda"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_da58b783d75407ae.json",
+      "mode": "text_lf",
+      "sha256": "78a6b27657866605324de9bc7b6ead4db43d9edd59316f4786434281222d6cf0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_da58c961cfbccb2f.json",
+      "mode": "text_lf",
+      "sha256": "f4e14d299ce64f61181b90cddd591735608af299853d76f1d6ae6d32f8d4f778"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_dbb17290c3bdf032.json",
+      "mode": "text_lf",
+      "sha256": "73fd0207af3dd47be679591d0f4fb10c5c54df836594967779d7ea0ea82cc0b5"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_de06d3a163452c30.json",
+      "mode": "text_lf",
+      "sha256": "e838738b8ce8547aceee654baf16e06774c01e3d99d6081f643d68224f5ab34a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_de3b95812d0828b9.json",
+      "mode": "text_lf",
+      "sha256": "53179ad053539b91eeb63e97e61252573afc6a05c447ed94559d90d5636c0764"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_e502635861d85718.json",
+      "mode": "text_lf",
+      "sha256": "b9cfcac3104544ab202f6c42c352fac03c1f94eac0d11f7c7203158a76deaa8c"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_e817b1d0908302cb.json",
+      "mode": "text_lf",
+      "sha256": "aa4d91baeee4aad103cbb20dc27f1e0c0b823e51acd96ff1d177f1ca697e294e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_ef9bbbb050605c9d.json",
+      "mode": "text_lf",
+      "sha256": "07a47e5aa4b166b8836b8a5f42a579a28a49f7cd530c554fafa8f9f52916a7e7"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_f06f91da7b78bb53.json",
+      "mode": "text_lf",
+      "sha256": "0f96b4d63dd840d31483b1faf862a335acc2b629e6b2dedb84b9bed65d0c16ee"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_f2a61ef3aa39702c.json",
+      "mode": "text_lf",
+      "sha256": "fa0e2921620f63abe6ce9b0973d50dee3a6cbbf78e2ee854eea662dffaeff5fa"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_f62d133de55809a5.json",
+      "mode": "text_lf",
+      "sha256": "0566366d81d4ca45ec6ccd85ca8366f00d77d950d6d11d1cd84ef4fddd00c495"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_fc23b6bae89a97db.json",
+      "mode": "text_lf",
+      "sha256": "bcf2e7b07764a335dba904e65fa70eb01bdb09d033ae3e90d90961cd5beef4b7"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_fc9f6562c4885a34.json",
+      "mode": "text_lf",
+      "sha256": "ce69353a3a8d02d4b1ab10a83699545b8759b28b5eacce438759fe56a325a172"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_fddd9cb4be924123.json",
+      "mode": "text_lf",
+      "sha256": "9affdc3f2ceb35bbfd4cc1ddf6e387886162de6fc53dd6f0c66be631f9057f4d"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy/match_fecdda25cab4689c.json",
+      "mode": "text_lf",
+      "sha256": "8891da8e093298bee3459039d11d8c64ce103e06e5e0bb4e42a12ecf32619c52"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10740745.json",
+      "mode": "text_lf",
+      "sha256": "c2a2a244f728b293e02e58d00f74d2817d164cdec1a2b5faf9b8813106fa92b8"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10770209.json",
+      "mode": "text_lf",
+      "sha256": "eba17678a5f45a5885795e44f5571bb3c8f18d0780835b7c97f3a3d35e3fae3b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10771002.json",
+      "mode": "text_lf",
+      "sha256": "f4b354041f928174136b7c5d3d730da1d5eed33c8787514399e5834cfedb15ae"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10806364.json",
+      "mode": "text_lf",
+      "sha256": "99aa68c99635a1c3f04e4680d783571bc766bce1ab94490cce134536f193f118"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10810025.json",
+      "mode": "text_lf",
+      "sha256": "0ac65751648f626a64d46e7498b3958c11302167c70e801e8ee8cc92821b0769"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10843277.json",
+      "mode": "text_lf",
+      "sha256": "f378598ab2feed043a539ed6444dfc6c2822b85a7b276bbf4862b64f056f6368"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/accepted_10863553.json",
+      "mode": "text_lf",
+      "sha256": "dba73a51ffed13ee8bcc298ac586e72c709dffc699943cfa1557b1d360ef6edf"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_00ea63f7f489fe1e.json",
+      "mode": "text_lf",
+      "sha256": "d5f3bb3d9d47b0284881f77435e7af80c7ee94bc94cf388d8e2a2d3fbb23af26"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_0d5b0a819fe70c7b.json",
+      "mode": "text_lf",
+      "sha256": "72cfce78b74aa5852c2b99b2db531d3a66b30ad89aa989fc36a1fb592c14d8b4"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_113db15c52f0243a.json",
+      "mode": "text_lf",
+      "sha256": "bec77e2fe901a78c9876649f65eb8e2bbb7496b916323eb07956ec62d559b937"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_14701e38dd0cfe71.json",
+      "mode": "text_lf",
+      "sha256": "b9cf5ea534205efac2ad23c175027f1c03a3ef86d8431add52aa24e3d2032064"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_202de872a83eb914.json",
+      "mode": "text_lf",
+      "sha256": "62d9e2b8be84a75d1516add96e0de3d94fa3fce254b7f674219d5dc9df0dddd5"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_20782e090434f513.json",
+      "mode": "text_lf",
+      "sha256": "3b95d6a9972801d6c38a1246fca0cd32e0af5b0e9780f57489382e11c7f80c88"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_26c4ab4db130d3f1.json",
+      "mode": "text_lf",
+      "sha256": "990af845def7936ecc6249d86671d904bfb6c1f88fe5c348fcd944064649e874"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_27193a1556832110.json",
+      "mode": "text_lf",
+      "sha256": "0b79a82dde435aaf3b222104d602a410226124f3c42e29d2d27e8c78639826ee"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_2b791f78137a2f7b.json",
+      "mode": "text_lf",
+      "sha256": "d5493b94c656af4f844990af3ac6b3055ebf0cc1eeda137dd97ce914009f4944"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_2ef568fb1983f391.json",
+      "mode": "text_lf",
+      "sha256": "c9239140c5c8b8768b270b7dceee90504a8f8550514eedbaa8a85c3aca7a0046"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_2f2d23137b40b0c1.json",
+      "mode": "text_lf",
+      "sha256": "d25f5f12884607948de0785206747e14ddab385e045af0bdace6d7d316cf628f"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_369dd204bbd46697.json",
+      "mode": "text_lf",
+      "sha256": "29b3c3a80f8e48ac1d1da55029ecfa729b96a7f5a06927011c341bf1d062b6a2"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_3d077c8dfa6b4803.json",
+      "mode": "text_lf",
+      "sha256": "d2b71308932a34d301166b17565589b37df3528481e6e402c941bd22ace0307c"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_3dba862e68ff70ef.json",
+      "mode": "text_lf",
+      "sha256": "6f4bc00cfa19e426889a6773ba289605942cccf8a90fabd1b1b5dca028fda2de"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_3e411fe65e207997.json",
+      "mode": "text_lf",
+      "sha256": "1555be4ed8338406077b600777fcb4ac59837d81b9d9c26f36f9a861e42f20a9"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_53492bb0e6d431ca.json",
+      "mode": "text_lf",
+      "sha256": "4066f3d279e34a1d679bcbe49c7120bffe064042b811055d1c0c6c571d8e8d03"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_53a3f7b228cfbb28.json",
+      "mode": "text_lf",
+      "sha256": "4a8832163572e9faa1d23beffb938d0296e5a0038c3fd5bfd0c31ed95ab59ed2"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_55c9cfa4b11a2964.json",
+      "mode": "text_lf",
+      "sha256": "e31fbfa5321937717983762a4e3b1b3b229f7e1e0f4f3f103025936948699641"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_5fd6469c26b8ec32.json",
+      "mode": "text_lf",
+      "sha256": "10ec12d8a334a2c08cc7be4138eadcdc01e4b3b91c7bb3bf5df89f50f408d73a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_67702bdc4a51586d.json",
+      "mode": "text_lf",
+      "sha256": "c282732b5800a2e6fda150060c5831cc5e528ab37c6886a3b2642a52665ef8cc"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_6915b62629621d98.json",
+      "mode": "text_lf",
+      "sha256": "6ae0212ef6cd513d31620e138d866f06c09ffe380cc0ff9ef5dc292d594049b0"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_76d49ccfa50f7198.json",
+      "mode": "text_lf",
+      "sha256": "8458643493a1df8fe854e03890a325c0c1a6ae5d02add923a516ea8714b4906e"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_7c820ba7613b993d.json",
+      "mode": "text_lf",
+      "sha256": "1843fe00f80368c7cb5d1d0f31f76e66e24e5e1e63ce7ce2fae4622fb3511958"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_7d6ce4538ff2704b.json",
+      "mode": "text_lf",
+      "sha256": "1d4150356cdabbee165041075040222275c5ba21169cd8e4808af363618eddc7"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_84d3c45cc8c5a9a0.json",
+      "mode": "text_lf",
+      "sha256": "c73539c5cfc66625f12d30c3de485efa0b6156110c1f9b29659541ccc9b02d8a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_85c043d162f1a3f5.json",
+      "mode": "text_lf",
+      "sha256": "b095e2419d98633c04428ada0455b57f620a01b8ecdea925c26f6b076510fdb5"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_8b8d451a24fd5b1f.json",
+      "mode": "text_lf",
+      "sha256": "b8e83c74d7afbb97f75e4004e049517dfe0e384b4fdb29229254c20f7dc7c1ed"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_91d77ac104b0fb06.json",
+      "mode": "text_lf",
+      "sha256": "e32afee85c0cb233b57cd1ecc5f21b5212db7350974be8092fe62b4e6a1bb5a7"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_92851dce07ae7b09.json",
+      "mode": "text_lf",
+      "sha256": "9c3de5828ca283d2d37f438bb0ad4b5931cb2a83ef6750babe1307769431d6df"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_a2fdaf49945ab46b.json",
+      "mode": "text_lf",
+      "sha256": "7d59a3cbaa6bfa747f5997be3e07c35707d362c171660e1d6de48d22412db6f3"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_a6e66ed742f324ef.json",
+      "mode": "text_lf",
+      "sha256": "2c2cc754bd2838c592d34b5d9dd88ec9234c78eaaa0ca9044233c6b51f3f7902"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_a841ed86b50fe65a.json",
+      "mode": "text_lf",
+      "sha256": "46d83a3bb319d0fc9ab98581d81b655bfb9b12d582edcc585fff95651a0de70d"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_aa3b5eac4895c1f1.json",
+      "mode": "text_lf",
+      "sha256": "e67c4c5973325db7f8e74025dcd05f0177f4421d34a8687374155e8f81f98458"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_aec5a02dcf6c055f.json",
+      "mode": "text_lf",
+      "sha256": "beb8370818fe30048761f22719a8d23c550f6e9e380668fb41dd427de5a1df6a"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_aedb4ed454233a7f.json",
+      "mode": "text_lf",
+      "sha256": "7e5bd8eeecd5c5433f018926c360fcd753e2ae9bf24410e709738e516654cf9c"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_b439496fbba57d2f.json",
+      "mode": "text_lf",
+      "sha256": "171a6b6fd03efb9cacb465c63ffbcad743370db8bf1ad95cdecaf10267f1ac30"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_c25b247aa36f9c92.json",
+      "mode": "text_lf",
+      "sha256": "090c8d391fc9f7e3a225bcdac4d5b2c807cedb8c10dec0257840f52244e63135"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_d3f378efb9631701.json",
+      "mode": "text_lf",
+      "sha256": "4b6472579d4922e94ca7acd5fbaf3beae6bac4e6b2d627a927a2cfc0734ed89b"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_d491f084f2177422.json",
+      "mode": "text_lf",
+      "sha256": "d533e1f09a2a9d65394f82579aceafd800547f709720c098db6cc6f74c723331"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_d7b621083e24532c.json",
+      "mode": "text_lf",
+      "sha256": "bcabcc5dd969ac1828a25747139119032a9a7d0b506300d799350e2581e0ea19"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_dd4069304bc76344.json",
+      "mode": "text_lf",
+      "sha256": "a62d5043dcf80919f3714491166729447264150e7de5273c1bb3bbd54d1b86ec"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_e769c9b7a7d41bb1.json",
+      "mode": "text_lf",
+      "sha256": "020c357cf2ba88bfef292fdac4a85d52a852cb3d60d8a2cb14f831fd91447136"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_e79b5be8e5a64e8b.json",
+      "mode": "text_lf",
+      "sha256": "410eba39ee82d1f6191e41e1df01c68ac3d86af7b42c68be10028cd3b1272d59"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_e9a3684d7d44c037.json",
+      "mode": "text_lf",
+      "sha256": "1866bf22b29007d7332ae9d9bea0717a7d1b798e6646675dd4ba8ec8b5c3efc9"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_e9b0e230faf74df4.json",
+      "mode": "text_lf",
+      "sha256": "064e27ab3de6193e37cba3b9b25c12aca8ec57a15e4ad3eca7008d00773d8792"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_ecf05eb8ee714313.json",
+      "mode": "text_lf",
+      "sha256": "8d8f916db2f608aa51b6b6378ac4ae8f83ed102737444c6bd5ca11bfde7b2268"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_f11f9624719330f2.json",
+      "mode": "text_lf",
+      "sha256": "c7fe268aa5047e1ef93216832febf691c5c08930f706e7a55a0c124aa579a5bf"
+    },
+    {
+      "path": "research/results/three_guild_globi_live/taxonomy_naamp/match_f2970476d6844d6b.json",
+      "mode": "text_lf",
+      "sha256": "46a003fe66d75a43b26efd487d645ea1f8d7829b080508dc8b1cb0312a5ce2cd"
+    },
+    {
+      "path": "research/results/three_guild_synthetic_replay_20261026/replay_receipt.json",
+      "mode": "text_lf",
+      "sha256": "b656b1b1818acfa581da01408b633a95b95e19ec8ea2b74d9359b770b6afb8d1"
+    },
+    {
+      "path": "research/scripts/allobates_predator_behavior_source_g0.py",
+      "mode": "text_lf",
+      "sha256": "f97e1723f2a80e15ca4c17766c6422c2e26a5bb39e74a91893160bbffd3e0e28"
+    },
+    {
+      "path": "research/scripts/audit_anonymous_global_parquet.py",
+      "mode": "text_lf",
+      "sha256": "60b9c7bda08c25f40c4f6a2c87257c6d6354df4be8e5543d1c73d04266f02956"
+    },
+    {
+      "path": "research/scripts/audit_biofresh_ponds_schema.py",
+      "mode": "text_lf",
+      "sha256": "eea5b6567e362ff0df838e6b7160845bd1e8a6dacbae22018e7c035f53370301"
+    },
+    {
+      "path": "research/scripts/audit_dryad_file_access.py",
+      "mode": "text_lf",
+      "sha256": "1346b85d4bf342585c89fd109784dabf7bef6305e60e56ff1cc15f58b566ac39"
+    },
+    {
+      "path": "research/scripts/audit_nps_glkn_schema.py",
+      "mode": "text_lf",
+      "sha256": "51b4215657fbd921b87d0d3807aaafe08f11eeda227008ccc5d4168bec5333e5"
+    },
+    {
+      "path": "research/scripts/broad_species_sdm.py",
+      "mode": "text_lf",
+      "sha256": "d71b473b44fdc7ea412a7ed3c7051a98249ddcd1f42a8ec1843290836eb89855"
+    },
+    {
+      "path": "research/scripts/build_common_ecology_units.py",
+      "mode": "text_lf",
+      "sha256": "1ae713f73977c6001dcc5e4c24cb05e08ec1e0dfe45808adf7fcba1b654f4272"
+    },
+    {
+      "path": "research/scripts/build_comparable_observations_v1.py",
+      "mode": "text_lf",
+      "sha256": "5eda4539accaa6ee9c0db34c6f4a1f166ce9cccb14dd297daabbcaa85fff4cc0"
+    },
+    {
+      "path": "research/scripts/build_gbif_global_cube_sql.py",
+      "mode": "text_lf",
+      "sha256": "2a614c61a34acdc70de6c8f339a80d72803f7ffb3fd93b7ccbf9582df405845f"
+    },
+    {
+      "path": "research/scripts/carroll_source_g0.py",
+      "mode": "text_lf",
+      "sha256": "00632a0253ce077e061e5bb32b2ec9e78c5e3b2389c9d8ce5a5cdcc6a6111995"
+    },
+    {
+      "path": "research/scripts/common_ecology_correlations.py",
+      "mode": "text_lf",
+      "sha256": "35594969d0266c65f9d6a925cb5ce747f5bac719f26e60d4b2c2ede16787cbdb"
+    },
+    {
+      "path": "research/scripts/compare_frog_vegetation_biotic.py",
+      "mode": "text_lf",
+      "sha256": "86b0bd192c528a7c4176dbb433b5e45da1607f9591725bb5adf9a1bd5a0c1189"
+    },
+    {
+      "path": "research/scripts/earthenv_global_flooded_vegetation_1deg.py",
+      "mode": "text_lf",
+      "sha256": "b776e8e020e353980f0d77f64f7ef68c5d3f6fb25e9ff04b735d3bac624c64b7"
+    },
+    {
+      "path": "research/scripts/earthenv_wetland_matched_stage_links.py",
+      "mode": "text_lf",
+      "sha256": "fdeb7d97ab93190068a7bacac55f4a632c9a9b85ec21cb027ad49d9c0743b478"
+    },
+    {
+      "path": "research/scripts/expand_full_globi_gbif_anura_odonata.py",
+      "mode": "text_lf",
+      "sha256": "4bf0cdc1cdf08820ad1eab1a3bee36f3c1d091ee67244512a4ce54204eaff187"
+    },
+    {
+      "path": "research/scripts/expanded_globi_gbif_prey_specificity.py",
+      "mode": "text_lf",
+      "sha256": "c403e6ef9242e445330c5bdf4ecef4e16ee4b4b597eef5a4d2e272e2bf689f1e"
+    },
+    {
+      "path": "research/scripts/fixed_globi_gbif_month_shift_null.py",
+      "mode": "text_lf",
+      "sha256": "5eb0a2693a2cba5775e2e6ee6d444e82db62d980002c81ba2039e49a1368aa7a"
+    },
+    {
+      "path": "research/scripts/french_pond_history_macrophytes.py",
+      "mode": "text_lf",
+      "sha256": "e728b36ecc1b58adb9f8dcd7e7e48fb30f5086192ca3e1929496b4ee19a948fb"
+    },
+    {
+      "path": "research/scripts/full_globi_staged_gbif_grid.py",
+      "mode": "text_lf",
+      "sha256": "852300d9ddff77f03bf438a79d65974f5ee628129f1cc324b586371ee054d406"
+    },
+    {
+      "path": "research/scripts/fuscus_factorial_assignment_g0.py",
+      "mode": "text_lf",
+      "sha256": "22899fafdae2d40a1c9606260db0b26f2c9e7fb78d01d961f4c772349685d9d4"
+    },
+    {
+      "path": "research/scripts/fuscus_factorial_experiment_g2b.py",
+      "mode": "text_lf",
+      "sha256": "28fa31ce19d2b4e8517b8960a65174ebe853e032e753af0cbf3d66b48db394e0"
+    },
+    {
+      "path": "research/scripts/fuscus_factorial_source_g0.py",
+      "mode": "text_lf",
+      "sha256": "81d57d0060d3a790dab14b10a5cffd59dd2a556c76d822477f0c7db1cb35341f"
+    },
+    {
+      "path": "research/scripts/fuscus_pinned_ooxml.py",
+      "mode": "text_lf",
+      "sha256": "5e1ed3cced3c375cbb332c097f9cd5da9afe4016d8b7a27409b13dafd4ccf464"
+    },
+    {
+      "path": "research/scripts/gbif_global_lifestage_bridge.py",
+      "mode": "text_lf",
+      "sha256": "0cc8506f2ca6cbaea8a958d12cfefbb6b43e7389246550a767b7e5978df937c2"
+    },
+    {
+      "path": "research/scripts/gbif_global_stage_partition_g0.py",
+      "mode": "text_lf",
+      "sha256": "af6e93f073660db110474857b05d9d28507249063b7ae06b1828c84d935bc020"
+    },
+    {
+      "path": "research/scripts/gbif_inbo_event_g3_blind.py",
+      "mode": "text_lf",
+      "sha256": "374db26f7a5246528052648305854224426b7a3fbfa60c5fc19024f3fdf85a95"
+    },
+    {
+      "path": "research/scripts/gbif_open_full_stage_grid.py",
+      "mode": "text_lf",
+      "sha256": "f7927fa398c93018bea1b827c550625f9851e91ac1f89086c9f4986634de1566"
+    },
+    {
+      "path": "research/scripts/gbif_stage_gridded_overlap.py",
+      "mode": "text_lf",
+      "sha256": "1efac38272e9b8f0293fee16807c3f07cdee9605bffe38bcb88a6302aa53d348"
+    },
+    {
+      "path": "research/scripts/gbif_stage_worldclim_dated_rain.py",
+      "mode": "text_lf",
+      "sha256": "37f34845606c3e2b9b1417af0cd08eb93a78e478fa9497d3fa972199bd142405"
+    },
+    {
+      "path": "research/scripts/gbif_us_nwi_stage_point_pem_audit.py",
+      "mode": "text_lf",
+      "sha256": "43ae03e1f654a0c4baeb854f9067f76c9249562e2bb044ea3c5dc392dcf23f75"
+    },
+    {
+      "path": "research/scripts/global_georeferenced_globi.py",
+      "mode": "text_lf",
+      "sha256": "942e5af47317798ebf9b9eb3fc527f17f0a2695e4f75c2920535a4f6383ad2fd"
+    },
+    {
+      "path": "research/scripts/global_globi_gbif_pilot.py",
+      "mode": "text_lf",
+      "sha256": "5e90aa0ba1896ca5e82434a408e6ff1d30b27a57235beb1b59724047b0dc14c3"
+    },
+    {
+      "path": "research/scripts/global_ontogenetic_earthenv_reporting.py",
+      "mode": "text_lf",
+      "sha256": "1c2dddca5c4464c65d65f1ebe0de8860e149da5db14cdc4cc9525ec06ac70618"
+    },
+    {
+      "path": "research/scripts/globi_gbif_prey_specificity_controls.py",
+      "mode": "text_lf",
+      "sha256": "8a22d514ffab1cbd6a48235f334ac265ddb77ddd52630d4158875de2d572d1b1"
+    },
+    {
+      "path": "research/scripts/globi_stage_macro.py",
+      "mode": "text_lf",
+      "sha256": "b7c0d987d4f97202a1383b44ffd3efc6a4577ec20de31d3d0db09d295738af83"
+    },
+    {
+      "path": "research/scripts/globi_stage_worldclim_rain_contrast.py",
+      "mode": "text_lf",
+      "sha256": "c482005b61eb2c0cfa8bc98dbdba5908f90b8901ff148c961e92a24d9f46524f"
+    },
+    {
+      "path": "research/scripts/hungary_rain_vegetation_site_allocation.py",
+      "mode": "text_lf",
+      "sha256": "874779ea6c6c559262658d1c48bdef9f081588d83b6feb1c7852d558535bb810"
+    },
+    {
+      "path": "research/scripts/hungary_vegetation_chorus.py",
+      "mode": "text_lf",
+      "sha256": "ff7cf781efa120e54d1d0725581108f269809bf9988f27a27dd251ba8b29175a"
+    },
+    {
+      "path": "research/scripts/inbo_hyla_acoustic_to_larva_g1.py",
+      "mode": "text_lf",
+      "sha256": "64eb19f0a7c56b36606f055146986135cb58b5032d4b4b78802ae2bc81b67912"
+    },
+    {
+      "path": "research/scripts/inbo_prior_larvae_chorus_stage_blind.py",
+      "mode": "text_lf",
+      "sha256": "6fb797f6af20dd1bd81f011d3ec4a548a1d6429819a77978de4e1f25cba86326"
+    },
+    {
+      "path": "research/scripts/inbo_stage_taxon_g0.py",
+      "mode": "text_lf",
+      "sha256": "110551a6b9530562b5774e4c57cf8a9b536e76ce3c7895130c54ab7353d30533"
+    },
+    {
+      "path": "research/scripts/naamp_background_vegetation_patterns.py",
+      "mode": "text_lf",
+      "sha256": "7135f49b267dbc441cca5b49bbb1f7d3a78434881f4465bf5be8f4e26086b426"
+    },
+    {
+      "path": "research/scripts/naamp_community_concentration.py",
+      "mode": "text_lf",
+      "sha256": "fdf54c1cca6e1f8af91897c35e65bae8966dcbedd27b1ff048d12964ea86856e"
+    },
+    {
+      "path": "research/scripts/naamp_gbif_wetland_geo_g0.py",
+      "mode": "text_lf",
+      "sha256": "e0f8d5ce290fc8d59ff205ea6021705208319a111b249c514b5d37b46629dc0b"
+    },
+    {
+      "path": "research/scripts/naamp_network_fixed_pairs.py",
+      "mode": "text_lf",
+      "sha256": "0cba40402c15916c1c59176198d14e3ace1c08e6ac13197aa700ed189cb6a856"
+    },
+    {
+      "path": "research/scripts/naamp_odonata_caudata_associations.py",
+      "mode": "text_lf",
+      "sha256": "cec03a2518e192fb6fc57879c997e604cb0947ffb6e001ce334a37a066bdba36"
+    },
+    {
+      "path": "research/scripts/naamp_pair_connection.py",
+      "mode": "text_lf",
+      "sha256": "13784ffc53c1fef0589a3b6e034360683e4d62bf6f74af2239c9c4731f1e78ea"
+    },
+    {
+      "path": "research/scripts/naamp_prior_community_allocation.py",
+      "mode": "text_lf",
+      "sha256": "c07aebad0d6050451489b2b86a8e6aae3437f928c54294d59bb74bb25d6de9e6"
+    },
+    {
+      "path": "research/scripts/naamp_prior_water_associations.py",
+      "mode": "text_lf",
+      "sha256": "0834bbc978c9098380e24a7c00f05305db601eeb08b22affd4662f6278419e98"
+    },
+    {
+      "path": "research/scripts/naamp_prior_water_context.py",
+      "mode": "text_lf",
+      "sha256": "1c898611cee10d3303e9289f6b50cc6fe96c93368907b034275158dd4e0baf71"
+    },
+    {
+      "path": "research/scripts/naamp_remote_vegetation_context.py",
+      "mode": "text_lf",
+      "sha256": "9ae74092b1576a6987dbaa2c26f2e0f90ac526a081fba34ff903e3a643148996"
+    },
+    {
+      "path": "research/scripts/naamp_remote_vegetation_network.py",
+      "mode": "text_lf",
+      "sha256": "29043d6bc0b38ae55b69d6ce9a0940a64eeca4cafc5d8b7bf97d833250033f74"
+    },
+    {
+      "path": "research/scripts/naamp_site_use_associations.py",
+      "mode": "text_lf",
+      "sha256": "4860f17bf9299dc85bc59fae0b5403ad7455a30e26c0bc2f9c46f31f4ac9c154"
+    },
+    {
+      "path": "research/scripts/naamp_three_guild_occurrence.py",
+      "mode": "text_lf",
+      "sha256": "23dcda5a045fa66f69ad2a1f2d5b67783a14abe615a72b50c6e4797bb4cb70e0"
+    },
+    {
+      "path": "research/scripts/naamp_vegetation_network_associations.py",
+      "mode": "text_lf",
+      "sha256": "bbc9b2baea3f51b980938b1d62b6838e16759c5cff3631801676305c47b52868"
+    },
+    {
+      "path": "research/scripts/nps_crosslag_roster.py",
+      "mode": "text_lf",
+      "sha256": "abf2d2c385eddbc4cd71358d5ae774baccb4a0b9bd822e4e93956692ba0ad54c"
+    },
+    {
+      "path": "research/scripts/nps_glkn_strict_history.py",
+      "mode": "text_lf",
+      "sha256": "0e1068ba4bebc99506d26159b0183dafc94e5254fd8aa3602aab204147cc5d71"
+    },
+    {
+      "path": "research/scripts/nps_glkn_two_way_fe.py",
+      "mode": "text_lf",
+      "sha256": "44603a270f4373a7131f45d52334f4d6010bac9035c35322e3c834c256df4034"
+    },
+    {
+      "path": "research/scripts/nps_glkn_weak_strong_sensitivity.py",
+      "mode": "text_lf",
+      "sha256": "636f89c169f9a2420386c9994aeb00175fea06c4c5c6717fddc16633898eb5d7"
+    },
+    {
+      "path": "research/scripts/nps_hydroperiod_strict_history.py",
+      "mode": "text_lf",
+      "sha256": "f1e41c5504da9ebfc72bc38560fa21aeb46f8cbbf9da1760b34ac40505b856d6"
+    },
+    {
+      "path": "research/scripts/nps_stage_crosslag.py",
+      "mode": "text_lf",
+      "sha256": "7d1894eb54237ad21bc2092c2f16f96aea8c2274177e38133fde10d7084b7834"
+    },
+    {
+      "path": "research/scripts/nwi_pem_verified_site_overlay.py",
+      "mode": "text_lf",
+      "sha256": "c4b264da38422213a93db1c271bc2432d12881ca8682bd3fd779f46c4f1b2ce4"
+    },
+    {
+      "path": "research/scripts/part2_published_source_g0.py",
+      "mode": "text_lf",
+      "sha256": "7bbb6731caf9fc42b84513522beab9cb897da9e84fd410838e77b686558cb957"
+    },
+    {
+      "path": "research/scripts/pem_stage_edge_knockout_test.py",
+      "mode": "text_lf",
+      "sha256": "73a8381006c644827fdc37e89b673c1f2899eb11d65ba83f60d8f85dcf482955"
+    },
+    {
+      "path": "research/scripts/pem_three_guild_pair_resident_invasion.py",
+      "mode": "text_lf",
+      "sha256": "7e3a5b50776df35a9242488e29f49f32c167b595039ae1e30efccbc96e890c08"
+    },
+    {
+      "path": "research/scripts/plot_broad_species_sdm.py",
+      "mode": "text_lf",
+      "sha256": "ece8c102d52dd6907649913aa1bbe5007c36c4e403e558c72ddf3c1b26db377c"
+    },
+    {
+      "path": "research/scripts/plot_ssdm_maps.py",
+      "mode": "text_lf",
+      "sha256": "01874209ed20c596a7681dd37d4e079833ef7a830210efd6d4061c8696c7c40b"
+    },
+    {
+      "path": "research/scripts/plot_three_guild_patterns.py",
+      "mode": "text_lf",
+      "sha256": "3e35048d091be864c49d11a9234a97160cd5808a86e411d1ebb6ca19500f8758"
+    },
+    {
+      "path": "research/scripts/project_species_occurrence.py",
+      "mode": "text_lf",
+      "sha256": "2f9e2dcb3d42a3b83203fdf1c810906dcf120cea6bb169dd69da965d83dc933c"
+    },
+    {
+      "path": "research/scripts/reconcile_species_pool.py",
+      "mode": "text_lf",
+      "sha256": "59158276cbf59d87a8ede48f33271369e8ef7c274576c297f765be2e609a0752"
+    },
+    {
+      "path": "research/scripts/regional_species_pool.py",
+      "mode": "text_lf",
+      "sha256": "e729b1a66ed99b4eade5181bcb6fb6ade0ade8494a861e2aa5c14c34763fe014"
+    },
+    {
+      "path": "research/scripts/reliable_source_json.py",
+      "mode": "text_lf",
+      "sha256": "bf10bd88c5ae1728d548f8e841c3237a0945b807cb6e6f1ca8e426bc625988c1"
+    },
+    {
+      "path": "research/scripts/repair_naamp_gbif_retrieval.py",
+      "mode": "text_lf",
+      "sha256": "c2d3da9c379ebe619872477a4bf9a947560a4869657a72442bfafd1393ef33e8"
+    },
+    {
+      "path": "research/scripts/report_naamp_site_use.py",
+      "mode": "text_lf",
+      "sha256": "7301ed4023fc72db402ee23581a87e68dc08abe25a30814440542c278498e7b0"
+    },
+    {
+      "path": "research/scripts/report_remote_vegetation_network.py",
+      "mode": "text_lf",
+      "sha256": "8ff75e5d32591d83292fff9a2f384248abe749be6db478421c6c3c2a7765a767"
+    },
+    {
+      "path": "research/scripts/run_globi_fixed_full_foodweb.py",
+      "mode": "text_lf",
+      "sha256": "7d644448c7bbb583d38d165705d5d065e5049d2d82604cadb025df71b3367871"
+    },
+    {
+      "path": "research/scripts/sample_gbif_open_taxon_parquet.py",
+      "mode": "text_lf",
+      "sha256": "782d3c27a5fde186ac0c1cd62d946955de8ed4c68af06eb42aa5a4271ed49462"
+    },
+    {
+      "path": "research/scripts/simulate_pem_three_guild_stage_balance.py",
+      "mode": "text_lf",
+      "sha256": "1115b7c474a8317a310fef8c8d5dcf9169b472986883e51d4cb04c015e0a3880"
+    },
+    {
+      "path": "research/scripts/simulate_seasonal_trophic_network.py",
+      "mode": "text_lf",
+      "sha256": "8fda30d48d4fdd9314e31289a74d5dee9c67e07dbde465d5dbdfb5a0a29b921b"
+    },
+    {
+      "path": "research/scripts/species_occurrence_associations.py",
+      "mode": "text_lf",
+      "sha256": "abe592adeb0dc124a450aa060a087f6c002aaba2f5fc633ae6661b995dd62605"
+    },
+    {
+      "path": "research/scripts/stack_species_sdm.py",
+      "mode": "text_lf",
+      "sha256": "7d6af58759cb26b61dcd33cdd500ca54b05f8e15a58c4543a4a71c75205005cd"
+    },
+    {
+      "path": "research/scripts/stage_legacy_integration_gate.py",
+      "mode": "text_lf",
+      "sha256": "22fdf1f125eaf481012f4c5c6c0cde1fc123ca81d45d66b687ac0124693bd82f"
+    },
+    {
+      "path": "research/scripts/summarize_broad_species_sdm.py",
+      "mode": "text_lf",
+      "sha256": "a144fa2e721cfc64f37c3d18846c624ebac7cec2df9991c8bbbe5679265eed1b"
+    },
+    {
+      "path": "research/scripts/test_broad_species_sdm.py",
+      "mode": "text_lf",
+      "sha256": "11138d5377b4b7247b8d2dc9f80152a75d040ee8e8785aa6705409b5dca9dd35"
+    },
+    {
+      "path": "research/scripts/test_gbif_retrieval_retry.py",
+      "mode": "text_lf",
+      "sha256": "8fdbae640ea5f14add77158b0b79ef224d1a5d640c73e886a46120c507186ee1"
+    },
+    {
+      "path": "research/scripts/test_naamp_community_concentration.py",
+      "mode": "text_lf",
+      "sha256": "f182697f6fa5c6a42f013c98cbf534685faec2a005d52896043b4b9bb1f381c5"
+    },
+    {
+      "path": "research/scripts/test_naamp_network_associations.py",
+      "mode": "text_lf",
+      "sha256": "456989a2e4e94fb044c83e7d7778befe5f6d4adb80c3dbc8704f4be71fcee3f0"
+    },
+    {
+      "path": "research/scripts/test_naamp_pair_connection.py",
+      "mode": "text_lf",
+      "sha256": "2405cee8bdec661c6c23d3a05e9d116e8ed7f9a9ce34b08279e4d23e5e8b92c1"
+    },
+    {
+      "path": "research/scripts/test_naamp_prior_community_allocation.py",
+      "mode": "text_lf",
+      "sha256": "7b1d8ffbd6873eddad95760f7197de9ad416d9ca7e0ef40b3b8fc8a512eeaad8"
+    },
+    {
+      "path": "research/scripts/test_naamp_site_use_associations.py",
+      "mode": "text_lf",
+      "sha256": "009e33a04ee011c09a2f814a19afc67b73450b886d5df3d3a71fc65b87b2bb53"
+    },
+    {
+      "path": "research/scripts/test_naamp_three_guild_occurrence.py",
+      "mode": "text_lf",
+      "sha256": "3e68f295f8a79baca55bb54cca4be4203a77de25cd8d3a5f0aeba226822facb8"
+    },
+    {
+      "path": "research/scripts/test_prior_water_context.py",
+      "mode": "text_lf",
+      "sha256": "ab53ae6d9daca2784b656838c913cf4b0b61ccbc5f2b35bdc121973d0165f96a"
+    },
+    {
+      "path": "research/scripts/test_remote_vegetation_context.py",
+      "mode": "text_lf",
+      "sha256": "7b4968cdec4dfd61973b138e9b3396141e90000945eca896ba872f6206060912"
+    },
+    {
+      "path": "research/scripts/test_seasonality_and_vegetation_v1.py",
+      "mode": "text_lf",
+      "sha256": "2122bfc0305e542ed33678b5b5f54d806fcf06c7671d737ab415e26373004205"
+    },
+    {
+      "path": "research/scripts/test_three_guild_delay_toy.py",
+      "mode": "text_lf",
+      "sha256": "ccefc369966d373862864255993e65fd4afb5474c896dfde54b7f9dfd211b392"
+    },
+    {
+      "path": "research/scripts/test_three_guild_globi_live.py",
+      "mode": "text_lf",
+      "sha256": "3226a843c981f83ac20209500b39aad9d771249566ed4eea9b1fd89481adb6b9"
+    },
+    {
+      "path": "research/scripts/test_three_guild_occurrence_globi_overlay.py",
+      "mode": "text_lf",
+      "sha256": "6fb6ff9c47c3f00d5a01986f86e81fa6c6b2459c8240225fd618d79b5ce6b0bd"
+    },
+    {
+      "path": "research/scripts/test_three_guild_taxon_crosswalk.py",
+      "mode": "text_lf",
+      "sha256": "cffe1f834dadaf1ab31f1ee6aa817ebc46549744b5cb19f96e90397a933484ee"
+    },
+    {
+      "path": "research/scripts/three_guild_delay_toy.py",
+      "mode": "text_lf",
+      "sha256": "2943e0c9cc4132d8b91c30eee9f519d3a2166b60931ab47906d5644895533607"
+    },
+    {
+      "path": "research/scripts/three_guild_globi_live.py",
+      "mode": "text_lf",
+      "sha256": "df3402d2aa33c99ebb723da8a169fb4e783da2251cb1f71206565ebfff94a5dc"
+    },
+    {
+      "path": "research/scripts/three_guild_occurrence_globi_overlay.py",
+      "mode": "text_lf",
+      "sha256": "f2f1a53b93c2d96e96352ef130d5ca1bb4cafa656d5d88fbba3b261685dfe6d2"
+    },
+    {
+      "path": "research/scripts/three_guild_taxon_crosswalk.py",
+      "mode": "text_lf",
+      "sha256": "4173cec25f2b7e3f065012a69c25cdc3fb7b95d24394b65ead1b926ef202f482"
+    },
+    {
+      "path": "research/scripts/validate_integrated_flagship_draft.py",
+      "mode": "text_lf",
+      "sha256": "7d51103bea60bd66793376a69160df81824dba7bc8ba0227764370fd07ec880d"
+    },
+    {
+      "path": "research/scripts/validate_species_occurrence_release.py",
+      "mode": "text_lf",
+      "sha256": "bcc75c7799f51bff7262de54ee3c5ea390471dfd632e0b82bc3bdf5229c3a708"
+    }
+  ]
+}

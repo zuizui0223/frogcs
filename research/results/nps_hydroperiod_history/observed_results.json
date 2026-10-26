@@ -1,0 +1,243 @@
+{
+  "source": "NPS GLKN public-domain DOI 10.57830/2320505",
+  "method": "Posthoc hydrological-broad-class moderation of prior own-species strong acoustic site",
+  "not_nwi_pem": true,
+  "source_sha256": "b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+  "input_original_audio_file_bytes": 68581307,
+  "original_strict_prior_sample_1815": 1815,
+  "original_eligible_strata": 195,
+  "source_qc_summary": {
+    "rows_raw": 147913,
+    "rows_valid": 147913,
+    "duplicate_audio_species_records": 0,
+    "scored_species_audio_rows": 147913,
+    "annual_species_site_year_rows": 4593,
+    "parks": 7,
+    "physical_station_ids": 66,
+    "taxa": 13,
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "hydroperiod_annual_counts": {
+      "Permanent": 1957,
+      "Semi-permanent": 1562,
+      "Ephemeral": 1074
+    },
+    "annual_strong_rate": 0.3172218593511866
+  },
+  "original_samples_hydroperiod_and_history": [
+    {
+      "NPS_Hydroperiod": "Ephemeral",
+      "strict_prior_strong_ci2plus": 0,
+      "site_taxon_year_cells": 165,
+      "later_strong_ci2plus_cells": 31,
+      "later_strong_fraction": 0.18787878787878787,
+      "distinct_siteIDs": 15,
+      "park_taxon_trajectories": 29
+    },
+    {
+      "NPS_Hydroperiod": "Ephemeral",
+      "strict_prior_strong_ci2plus": 1,
+      "site_taxon_year_cells": 267,
+      "later_strong_ci2plus_cells": 165,
+      "later_strong_fraction": 0.6179775280898876,
+      "distinct_siteIDs": 15,
+      "park_taxon_trajectories": 29
+    },
+    {
+      "NPS_Hydroperiod": "Semi-permanent",
+      "strict_prior_strong_ci2plus": 0,
+      "site_taxon_year_cells": 301,
+      "later_strong_ci2plus_cells": 35,
+      "later_strong_fraction": 0.11627906976744186,
+      "distinct_siteIDs": 22,
+      "park_taxon_trajectories": 33
+    },
+    {
+      "NPS_Hydroperiod": "Semi-permanent",
+      "strict_prior_strong_ci2plus": 1,
+      "site_taxon_year_cells": 313,
+      "later_strong_ci2plus_cells": 215,
+      "later_strong_fraction": 0.6869009584664537,
+      "distinct_siteIDs": 22,
+      "park_taxon_trajectories": 33
+    },
+    {
+      "NPS_Hydroperiod": "Permanent",
+      "strict_prior_strong_ci2plus": 0,
+      "site_taxon_year_cells": 391,
+      "later_strong_ci2plus_cells": 36,
+      "later_strong_fraction": 0.09207161125319693,
+      "distinct_siteIDs": 29,
+      "park_taxon_trajectories": 35
+    },
+    {
+      "NPS_Hydroperiod": "Permanent",
+      "strict_prior_strong_ci2plus": 1,
+      "site_taxon_year_cells": 378,
+      "later_strong_ci2plus_cells": 261,
+      "later_strong_fraction": 0.6904761904761905,
+      "distinct_siteIDs": 28,
+      "park_taxon_trajectories": 32
+    }
+  ],
+  "main_interaction": {
+    "estimable": true,
+    "sample_rows": 1815,
+    "strata_park_taxon_year": 195,
+    "park_taxon_trajectory_clusters": 38,
+    "nuisance_covariates_kept": [
+      "hydro_semi",
+      "hydro_permanent",
+      "other_prior_fixed",
+      "log_current_effort",
+      "log_prior_effort",
+      "prior_years_seen"
+    ],
+    "nuisance_rank_dropped": [
+      "other_prior_missing"
+    ],
+    "n_params": 9,
+    "valid_bootstrap_draws": 2000,
+    "hydroperiod_prior_strong_slope": {
+      "Ephemeral": {
+        "coefficient_risk_difference_scale": 0.35226095245881667,
+        "cluster_bootstrap_ci95": [
+          0.2515737058440161,
+          0.4417279868351647
+        ]
+      },
+      "Semi-permanent": {
+        "coefficient_risk_difference_scale": 0.5022450699924274,
+        "cluster_bootstrap_ci95": [
+          0.3961358644903656,
+          0.6028155104071266
+        ]
+      },
+      "Permanent": {
+        "coefficient_risk_difference_scale": 0.4950344959689218,
+        "cluster_bootstrap_ci95": [
+          0.41115076231480346,
+          0.5676399699035256
+        ]
+      },
+      "Semi_minus_Ephemeral": {
+        "coefficient_risk_difference_scale": 0.1499841175336107,
+        "cluster_bootstrap_ci95": [
+          0.043603725524596716,
+          0.26331041189185245
+        ]
+      },
+      "Permanent_minus_Ephemeral": {
+        "coefficient_risk_difference_scale": 0.14277354351010516,
+        "cluster_bootstrap_ci95": [
+          0.044970551418812614,
+          0.24264885974125544
+        ]
+      }
+    },
+    "method": "within park×frog taxon×year demeaned LPM with prior-site history × broad hydroperiod class and source-linked effort",
+    "interpretation": "posthoc association only; no NWI PEM field assignment"
+  },
+  "additional_within_hydroperiod_strata": [
+    {
+      "NPS_Hydroperiod": "Ephemeral",
+      "all_original_informative_rows_in_class": 432,
+      "ever_strong_before": 267,
+      "later_strong_total": 196,
+      "distinct_sites": 15,
+      "candidate_strata": 171,
+      "within_category_informative_rows": 0,
+      "within_category_informative_strata": 0,
+      "strict_prior_strong_slope_after_covariates": {
+        "estimable": false,
+        "why": "No variation in prior site use"
+      }
+    },
+    {
+      "NPS_Hydroperiod": "Semi-permanent",
+      "all_original_informative_rows_in_class": 614,
+      "ever_strong_before": 313,
+      "later_strong_total": 250,
+      "distinct_sites": 22,
+      "candidate_strata": 195,
+      "within_category_informative_rows": 212,
+      "within_category_informative_strata": 53,
+      "strict_prior_strong_slope_after_covariates": {
+        "estimable": true,
+        "outcome": "strong",
+        "adjusted": true,
+        "n_site_taxon_year_rows": 212,
+        "n_park_species_clusters": 10,
+        "n_park_species_year_strata": 53,
+        "coefficients": {
+          "own_prior_strong": 0.4651491093442194,
+          "other_prior_fixed": -0.914624591096276,
+          "log_current_effort": 0.7692163645395047,
+          "log_prior_effort": -0.7482208471646249,
+          "prior_years_seen": 0.25271127953747907
+        },
+        "own_prior_strong_beta": 0.4651491093442194,
+        "ci95_park_species_block": [
+          0.27850153189878324,
+          0.6335585126158325
+        ],
+        "valid_boot_replicates": 2000,
+        "nuisance_covariates_dropped_for_identifiability": [
+          "other_prior_missing"
+        ],
+        "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+      }
+    },
+    {
+      "NPS_Hydroperiod": "Permanent",
+      "all_original_informative_rows_in_class": 769,
+      "ever_strong_before": 378,
+      "later_strong_total": 297,
+      "distinct_sites": 29,
+      "candidate_strata": 195,
+      "within_category_informative_rows": 339,
+      "within_category_informative_strata": 69,
+      "strict_prior_strong_slope_after_covariates": {
+        "estimable": true,
+        "outcome": "strong",
+        "adjusted": true,
+        "n_site_taxon_year_rows": 339,
+        "n_park_species_clusters": 20,
+        "n_park_species_year_strata": 69,
+        "coefficients": {
+          "own_prior_strong": 0.45522653488446485,
+          "other_prior_fixed": -0.6112481315353414,
+          "log_current_effort": 0.17380045223535134,
+          "log_prior_effort": -0.05594369394891617,
+          "prior_years_seen": 0.09504747903972988
+        },
+        "own_prior_strong_beta": 0.45522653488446485,
+        "ci95_park_species_block": [
+          0.31257673209024894,
+          0.5525368594092742
+        ],
+        "valid_boot_replicates": 2000,
+        "nuisance_covariates_dropped_for_identifiability": [
+          "other_prior_missing"
+        ],
+        "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+      }
+    }
+  ],
+  "constraints": [
+    "These are NPS field Hydroperiod labels, not USFWS NWI PEM1A/C/F map codes and not contemporaneous pond water depths.",
+    "Fixed recorder SiteLocation strings have no verified geocoordinates in NPS audio CSV; do not assign to arbitrary NWI polygons.",
+    "The original NPS strong-site history effect may reflect persistent species-specific habitat and detectability, not same frog revisiting a pond.",
+    "Interaction and within-class results are exploratory after main NPS effect was seen, not independently prespecified JAE endpoints.",
+    "65+ reported station/taxon/year cells are not independent reproducing breeding populations.",
+    "No salamander/dragonfly aquatic stage observation, aquatic predator attack, emergent stem density or adult chorus to tadpole recruitment data."
+  ]
+}

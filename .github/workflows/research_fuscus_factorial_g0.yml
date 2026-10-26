@@ -1,0 +1,25 @@
+name: Research — factorial frog drying predator-cue G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/fuscus_factorial_source_g0.py
+      - .github/workflows/research_fuscus_factorial_g0.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect-original-frog-factorial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m py_compile research/scripts/fuscus_factorial_source_g0.py
+      - name: Source-blind source-workbook original Excel structural check
+        run: python3 research/scripts/fuscus_factorial_source_g0.py --out /tmp/frog_fuscus_G0.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuscus_predator_drydown_source_G0
+          path: /tmp/frog_fuscus_G0.json
+          if-no-files-found: warn

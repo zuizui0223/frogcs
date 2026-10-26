@@ -1,0 +1,38 @@
+name: Research — Allobates predator behavior source G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/allobates_predator_behavior_source_g0.py
+      - .github/workflows/research_allobates_predator_behavior_g0.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-original-independent-pool-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static source-blind script syntax
+        run: python3 -m py_compile research/scripts/allobates_predator_behavior_source_g0.py
+      - name: Read only source metadata / pool coverage from exact-MD5 Zenodo records
+        run: python3 research/scripts/allobates_predator_behavior_source_g0.py --out /tmp/allobates_predator_g0.json
+      - name: Ensure field predation is not conflated with hydroperiod or attack
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/allobates_predator_g0.json'))
+          assert x['source_data_not_redistributed'] is True
+          assert x['fitness_or_causal_predation_effect_authorized'] is False
+          assert x['abiotic_hydroperiod_documented'] is False
+          assert x['stage_specific_attack_or_prey_survival_documented'] is False
+          assert all(not a['outcomes_inspected'] for a in x['assays'].values())
+          print('ALLOBATES_BLIND_SOURCE_G0_OK')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allobates_predator_g0_receipt
+          path: /tmp/allobates_predator_g0.json
+          if-no-files-found: warn

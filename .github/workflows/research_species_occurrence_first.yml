@@ -1,0 +1,89 @@
+name: Research - species occurrence first harmonized monitoring
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md
+      - research/scripts/project_species_occurrence.py
+      - research/scripts/species_occurrence_associations.py
+      - .github/workflows/research_species_occurrence_first.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-survey-event-species:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned source requirements
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify species-only projection and analysis syntax
+        run: |
+          python -m py_compile research/scripts/build_common_ecology_units.py
+          python -m py_compile research/scripts/project_species_occurrence.py
+          python -m py_compile research/scripts/species_occurrence_associations.py
+      - name: Verify four native source archives, maintain original event and method
+        run: python research/scripts/build_common_ecology_units.py --out /tmp/frogcs_original_source_units
+      - name: Collapse only duplicate life-stage rows within ORIGINAL event and species
+        run: |
+          python research/scripts/project_species_occurrence.py \
+            --from-units /tmp/frogcs_original_source_units/common_observation_events.csv.gz \
+            --out /tmp/frogcs_species_occurrence
+      - name: Species co-reporting and wetland rain, depth, vegetation associations
+        run: |
+          python research/scripts/species_occurrence_associations.py \
+            --event-table /tmp/frogcs_species_occurrence/species_occurrence_events.csv.gz \
+            --out /tmp/frogcs_species_occurrence/observed_species_associations.json
+      - name: Original status and collapse QC with no synthetic missing taxon zeros
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/frogcs_species_occurrence')
+          p=json.loads((root/'observed_species_occurrence_profile.json').read_text())
+          q=json.loads((root/'observed_species_associations.json').read_text())
+          assert p['naamp_completed_stop_survey_opportunities']==198757
+          assert p['source_records_before_stage_collapse']['naamp_positive_calls']==310683
+          assert p['source_records_before_stage_collapse']['nps_glkn']==147913
+          assert p['source_records_before_stage_collapse']['hungary_2024']==3429
+          assert p['source_records_before_stage_collapse']['inbo_adult_chorus']==1436
+          assert p['source_records_before_stage_collapse']['inbo_larval_census']==2995
+          assert p['no_taxon_absences_generated_from_naamp_positive_only']
+          assert p['life_stage_removed_from_occurrence_primary_key']
+          assert p['GBIF_1_degree_presence_only_not_merged_with_ponds']
+          assert p['status_by_source']['naamp_positive_calls']['recorded_present']>0
+          assert 'protocol_nondetection' not in p['status_by_source']['naamp_positive_calls']
+          assert q['regression_or_causal_community_competition_fit'] is False
+          assert q['hungary']['independent_original_wetlands']==29
+          for pair in q['pairs']['pair_models']:
+              cells=[pair['co_detection_events_n11'],
+                     pair['a_detected_b_not_called_or_not_observed_n10'],
+                     pair['a_not_called_or_not_observed_b_detected_n01'],
+                     pair['both_protocol_not_detected_n00']]
+              assert pair['both_species_explicitly_assessed_original_events']==sum(cells)
+          green_peeper=next(x for x in q['pairs']['pair_models'] if
+                            x['source_id']=='nps_glkn' and
+                            x['species_a']=='Lithobates clamitans' and
+                            x['species_b']=='Pseudacris crucifer')
+          assert green_peeper['both_species_explicitly_assessed_original_events']==16561
+          assert p['contradictory_present_and_zero_within_original_survey_species_by_source']['hungary_2024']==5
+
+          print('VERIFIED_SPECIES_OCCURRENCE_NATIVE_SURVEY_GRAIN_PASS')
+          print(json.dumps({
+            'row_counts':p['n_distinct_event_taxon_method_records_by_source'],
+            'site_counts':p['distinct_original_source_site_tokens_by_source'],
+            'stage_rows_deduplicated':p['deduplicated_stage_rows_by_source'],
+            'survey_event_qualified_pairs':q['pairs']['pairs_meeting_fixed_n30_sites5_and_usable_site_CI']
+          },indent=2))
+          PY
+      - name: Save event-level comparable species records as noncommitted artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-species-only-occurrence-source-native
+          path: /tmp/frogcs_species_occurrence
+          if-no-files-found: warn

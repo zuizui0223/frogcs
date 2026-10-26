@@ -1,0 +1,252 @@
+{
+  "date": "2026-10-25",
+  "source": "GBIF occurrence SEARCH facet=lifeStage and country conditioned on exact lifeStage; GloBI source linked species pairs",
+  "staging": "GloBI joint life-stage pattern must exist; species names matched in prior GBIF pilot",
+  "taxa_queried": 64,
+  "taxa_with_lifestage_facet": 61,
+  "taxa_with_adults_and_aquatic_immatures": 51,
+  "total_occurrence_records_among_taxa": 4508513,
+  "raw_lifestage_annotation_records_among_taxa": 1277068,
+  "raw_lifestage_record_annotation_ratio": 0.2832570295350152,
+  "gloBI_staged_trophic_links": 8,
+  "retained_joint_predator_prey_stage_patterns": 10,
+  "distinct_staged_trophic_species_pairs": 8,
+  "taxon_stage_country_queries": 15,
+  "stage_country_pair_with_overlap_min1": 10,
+  "stage_country_pair_with_overlap_min5": 10,
+  "stage_pairs_examples": [
+    {
+      "predator": "Lissotriton helveticus",
+      "prey": "Rana temporaria",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "original_predator_stage": "adult",
+      "original_prey_stage": "adult",
+      "source": "https://www.inaturalist.org/observations/316251544",
+      "predator_guild": "Caudata",
+      "prey_guild": "Anura",
+      "countries_stage_co_report_min1": 11,
+      "countries_stage_co_report_min5": 9,
+      "example_co_report_countries": "AD;BE;CH;CZ;DE;ES;FR;GB;IM;LU;NL",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Anaxyrus boreas",
+      "predator_stage": "aquatic_immature",
+      "prey_stage": "aquatic_immature",
+      "original_predator_stage": "larval",
+      "original_prey_stage": "larval",
+      "source": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+      "predator_guild": "Odonata",
+      "prey_guild": "Anura",
+      "countries_stage_co_report_min1": 3,
+      "countries_stage_co_report_min5": 2,
+      "example_co_report_countries": "CA;MX;US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Goniopsis cruentata",
+      "prey": "Leptodactylus macrosternum",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "original_predator_stage": "juv./adults",
+      "original_prey_stage": "adults",
+      "source": "Andrade, E.B., T.B. Lima-Junior, J.M.A. Leite-Junior and J.R.S.A. Leite. 2012. Predation by native fish and feeding by crab species on <i>Leptodactylus macrosternum</i> Miranda-Ribeiro, 1926 (Anura: Leptodactylidae) in northeastern, Brazil. Herpetology Notes 5:173-175.",
+      "predator_guild": "Decapoda",
+      "prey_guild": "Anura",
+      "countries_stage_co_report_min1": 3,
+      "countries_stage_co_report_min5": 1,
+      "example_co_report_countries": "BR;CO;VE",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Anaxyrus boreas",
+      "prey": "Lethocerus americanus",
+      "predator_stage": "adult",
+      "prey_stage": "aquatic_immature",
+      "original_predator_stage": "post-juvenile adult stage",
+      "original_prey_stage": "larval",
+      "source": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+      "predator_guild": "Anura",
+      "prey_guild": "Nepomorpha",
+      "countries_stage_co_report_min1": 2,
+      "countries_stage_co_report_min5": 2,
+      "example_co_report_countries": "CA;US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Lithobates pipiens",
+      "prey": "Libellula luctuosa",
+      "predator_stage": "juvenile",
+      "prey_stage": "adult",
+      "original_predator_stage": "juvenile",
+      "original_prey_stage": "adult",
+      "source": "https://www.inaturalist.org/observations/18671570",
+      "predator_guild": "Anura",
+      "prey_guild": "Odonata",
+      "countries_stage_co_report_min1": 2,
+      "countries_stage_co_report_min5": 2,
+      "example_co_report_countries": "CA;US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Anax junius",
+      "prey": "Taricha torosa",
+      "predator_stage": "aquatic_immature",
+      "prey_stage": "aquatic_immature",
+      "original_predator_stage": "larval",
+      "original_prey_stage": "larval",
+      "source": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+      "predator_guild": "Odonata",
+      "prey_guild": "Caudata",
+      "countries_stage_co_report_min1": 1,
+      "countries_stage_co_report_min5": 1,
+      "example_co_report_countries": "US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Rhinella marina",
+      "prey": "Platygobio gracilis",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "original_predator_stage": "juv./adults",
+      "original_prey_stage": "adults",
+      "source": "Brandt, L.A. and F.J. Mazzotti. 2009. Marine toads (<i>Bufo marinus</i>). Wildlife Ecology and Conservation Department, Florida Cooperative Extension Service, Institute of Food and Agricultural Sciences, University of Florida http://edis.ifas.ufl.edu/pdffiles/UW/UW04600.pdf [Accessed 17/01/2011].",
+      "predator_guild": "Anura",
+      "prey_guild": "Actinopterygii",
+      "countries_stage_co_report_min1": 1,
+      "countries_stage_co_report_min5": 1,
+      "example_co_report_countries": "US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Taricha torosa",
+      "prey": "Anax junius",
+      "predator_stage": "aquatic_immature",
+      "prey_stage": "aquatic_immature",
+      "original_predator_stage": "larval",
+      "original_prey_stage": "larval",
+      "source": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+      "predator_guild": "Caudata",
+      "prey_guild": "Odonata",
+      "countries_stage_co_report_min1": 1,
+      "countries_stage_co_report_min5": 1,
+      "example_co_report_countries": "US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Taricha torosa",
+      "prey": "Anax junius",
+      "predator_stage": "adult",
+      "prey_stage": "aquatic_immature",
+      "original_predator_stage": "post-juvenile adult stage",
+      "original_prey_stage": "larval",
+      "source": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+      "predator_guild": "Caudata",
+      "prey_guild": "Odonata",
+      "countries_stage_co_report_min1": 1,
+      "countries_stage_co_report_min5": 1,
+      "example_co_report_countries": "US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    },
+    {
+      "predator": "Taricha torosa",
+      "prey": "Anax junius",
+      "predator_stage": "adult",
+      "prey_stage": "adult",
+      "original_predator_stage": "post-juvenile adult stage",
+      "original_prey_stage": "post-juvenile adult stage",
+      "source": "Preston, D.L., Orlofske, S.A., McLaughlin, J.P., and Johnson, P.T.J. (2012). Food web including infectious agents for a California freshwater pond. Ecology. 93(7), pp. 1760.",
+      "predator_guild": "Caudata",
+      "prey_guild": "Odonata",
+      "countries_stage_co_report_min1": 1,
+      "countries_stage_co_report_min5": 1,
+      "example_co_report_countries": "US",
+      "inference": "GBIF_STAGE_COUNTRY_CO_REPORT_ONLY"
+    }
+  ],
+  "largest_lifestage_sample_taxa": [
+    {
+      "taxon": "Coenagrion puella",
+      "staged": 303088,
+      "adult": 301303,
+      "aquatic": 754,
+      "egg": 3
+    },
+    {
+      "taxon": "Libellula depressa",
+      "staged": 142079,
+      "adult": 141101,
+      "aquatic": 559,
+      "egg": 2
+    },
+    {
+      "taxon": "Bufo bufo",
+      "staged": 132647,
+      "adult": 84897,
+      "aquatic": 8998,
+      "egg": 3489
+    },
+    {
+      "taxon": "Rana temporaria",
+      "staged": 116188,
+      "adult": 65860,
+      "aquatic": 8820,
+      "egg": 16306
+    },
+    {
+      "taxon": "Sympetrum vulgatum",
+      "staged": 81809,
+      "adult": 81506,
+      "aquatic": 17,
+      "egg": 2
+    },
+    {
+      "taxon": "Lissotriton vulgaris",
+      "staged": 73622,
+      "adult": 56349,
+      "aquatic": 7708,
+      "egg": 382
+    },
+    {
+      "taxon": "Sympetrum danae",
+      "staged": 63872,
+      "adult": 62895,
+      "aquatic": 628,
+      "egg": 0
+    },
+    {
+      "taxon": "Triturus cristatus",
+      "staged": 37819,
+      "adult": 29744,
+      "aquatic": 3629,
+      "egg": 1318
+    },
+    {
+      "taxon": "Erythemis simplicicollis",
+      "staged": 32210,
+      "adult": 32128,
+      "aquatic": 81,
+      "egg": 1
+    },
+    {
+      "taxon": "Hyla arborea",
+      "staged": 29111,
+      "adult": 19417,
+      "aquatic": 1210,
+      "egg": 85
+    }
+  ],
+  "failures": [],
+  "stage_country_query_errors": [],
+  "interpretation_boundaries": [
+    "Missing lifeStage record fields in GBIF DO NOT mean no immatures or adults in nature.",
+    "GBIF lifeStage vocabulary and GloBI stage terms were loosely normalized; no actual developmental timing was measured.",
+    "GBIF stage observations are not prey/predator overlap at a pond or synchronized in calendar year.",
+    "Country stage co-reporting does not establish ontogenetic feeding reversal, direction dominance, or any predation rate.",
+    "GloBI documented pair stages were preserved jointly, not cross-combined into unsupported pairs.",
+    "GBIF data are biased by species, survey method, geography and observer; these are data availability results only.",
+    "Global wetland macrophyte structure, local rainfall, freshwater fish and frog chorus history remain unjoined."
+  ]
+}

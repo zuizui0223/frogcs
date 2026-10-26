@@ -1,0 +1,420 @@
+{
+  "status": "REAL_GLOBI_GBIF_STAGE_MONTH_SHIFT_NULL_EXPLORATORY",
+  "analysis_date": "2026-10-25",
+  "source_frozen_globi": "https://doi.org/10.5281/zenodo.22691479",
+  "source_gbif_1deg": "https://github.com/zuizui0223/frogcs/actions/runs/40190152042",
+  "temporal_null": "11 cyclic prey-month shifts within original grid×year",
+  "source_population": "nonself GloBI stage links with both partners represented by positive GBIF Anura/Odonata stage observations",
+  "input_gbif_1deg_aggregate": {
+    "rows": 655843,
+    "source_observations": 4026251,
+    "stage_pairs_atleast1": 257,
+    "stage_pairs_atleast5": 183
+  },
+  "source_edges_read": 18,
+  "source_edge_discard_counts": {
+    "missing_one_or_both_stage_in_gbif": 863
+  },
+  "per_threshold": [
+    {
+      "threshold_records_per_species_stage_grid_month": 1,
+      "all_eligible_gloBI_species_stage_pairs": 18,
+      "pairs_with_shared_grid_year": 18,
+      "pairs_no_shared_grid_year": 0,
+      "pairs_with_shared_year_but_no_same_month": 1,
+      "pairs_with_same_grid_year_month": 17,
+      "pairs_observed_above_11_shift_mean": 16,
+      "pairs_observed_below_shift_mean": 1,
+      "pooled_exact_reports_observed": 16605,
+      "pooled_11_shift_mean_sum": 6804.818181818182,
+      "source_category_counts": {
+        "Quick_Pond": 7,
+        "iNaturalist": 11
+      },
+      "independent_strata_count": 7,
+      "strata": [
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Anura",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Anura",
+          "predator_stage": "adult",
+          "prey_stage": "aquatic_immature",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Odonata",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Odonata",
+          "predator_stage": "adult",
+          "prey_stage": "aquatic_immature",
+          "candidate_pairs": 2
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Odonata",
+          "predator_stage": "juvenile",
+          "prey_stage": "adult",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Odonata",
+          "prey_guild": "Anura",
+          "predator_stage": "aquatic_immature",
+          "prey_stage": "aquatic_immature",
+          "candidate_pairs": 2
+        },
+        {
+          "predator_guild": "Odonata",
+          "prey_guild": "Odonata",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "candidate_pairs": 10
+        }
+      ],
+      "top_congruence_pairs": [
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Perithemis tenera",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 3783,
+          "month_shift_null_mean": 1231.4545454545455,
+          "observed_minus_shifted_mean": 2551.5454545454545,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 3193,
+          "month_shift_null_mean": 1369.5454545454545,
+          "observed_minus_shifted_mean": 1823.4545454545455,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Erythemis simplicicollis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 2997,
+          "month_shift_null_mean": 1376.4545454545455,
+          "observed_minus_shifted_mean": 1620.5454545454545,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 2078,
+          "month_shift_null_mean": 703,
+          "observed_minus_shifted_mean": 1375,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 1498,
+          "month_shift_null_mean": 565.8181818181819,
+          "observed_minus_shifted_mean": 932.1818181818181,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Ischnura ramburii",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 1527,
+          "month_shift_null_mean": 790.9090909090909,
+          "observed_minus_shifted_mean": 736.0909090909091,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Orthetrum sabina",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 341,
+          "month_shift_null_mean": 166.27272727272728,
+          "observed_minus_shifted_mean": 174.72727272727272,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus vastus",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 230,
+          "month_shift_null_mean": 69.9090909090909,
+          "observed_minus_shifted_mean": 160.0909090909091,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus externus",
+          "prey": "Pachydiplax longipennis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 241,
+          "month_shift_null_mean": 87.54545454545455,
+          "observed_minus_shifted_mean": 153.45454545454544,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis vesiculosa",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 203,
+          "month_shift_null_mean": 100.27272727272727,
+          "observed_minus_shifted_mean": 102.72727272727273,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anaxyrus boreas",
+          "prey": "Pseudacris regilla",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 265,
+          "month_shift_null_mean": 198.72727272727272,
+          "observed_minus_shifted_mean": 66.27272727272728,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INTERPRETED_QUICK_POND_META_WEB"
+        },
+        {
+          "predator": "Lithobates pipiens",
+          "prey": "Libellula luctuosa",
+          "predator_stage": "juvenile",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 57,
+          "month_shift_null_mean": 17.454545454545453,
+          "observed_minus_shifted_mean": 39.54545454545455,
+          "one_sided_12_phase_rank_not_independent_p": 0.16666666666666666,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        }
+      ]
+    },
+    {
+      "threshold_records_per_species_stage_grid_month": 5,
+      "all_eligible_gloBI_species_stage_pairs": 18,
+      "pairs_with_shared_grid_year": 14,
+      "pairs_no_shared_grid_year": 4,
+      "pairs_with_shared_year_but_no_same_month": 2,
+      "pairs_with_same_grid_year_month": 12,
+      "pairs_observed_above_11_shift_mean": 12,
+      "pairs_observed_below_shift_mean": 2,
+      "pooled_exact_reports_observed": 1747,
+      "pooled_11_shift_mean_sum": 562.4545454545454,
+      "source_category_counts": {
+        "iNaturalist": 11,
+        "Quick_Pond": 3
+      },
+      "independent_strata_count": 5,
+      "strata": [
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Anura",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Anura",
+          "predator_stage": "adult",
+          "prey_stage": "aquatic_immature",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Odonata",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Anura",
+          "prey_guild": "Odonata",
+          "predator_stage": "juvenile",
+          "prey_stage": "adult",
+          "candidate_pairs": 1
+        },
+        {
+          "predator_guild": "Odonata",
+          "prey_guild": "Odonata",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "candidate_pairs": 10
+        }
+      ],
+      "top_congruence_pairs": [
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Perithemis tenera",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 503,
+          "month_shift_null_mean": 125.9090909090909,
+          "observed_minus_shifted_mean": 377.0909090909091,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Erythemis simplicicollis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 370,
+          "month_shift_null_mean": 130.27272727272728,
+          "observed_minus_shifted_mean": 239.72727272727272,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 347,
+          "month_shift_null_mean": 126.81818181818181,
+          "observed_minus_shifted_mean": 220.1818181818182,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 201,
+          "month_shift_null_mean": 56.45454545454545,
+          "observed_minus_shifted_mean": 144.54545454545456,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis simplicicollis",
+          "prey": "Ischnura ramburii",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 199,
+          "month_shift_null_mean": 82.18181818181819,
+          "observed_minus_shifted_mean": 116.81818181818181,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anax junius",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 79,
+          "month_shift_null_mean": 22.636363636363637,
+          "observed_minus_shifted_mean": 56.36363636363636,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Orthetrum sabina",
+          "prey": "Pantala flavescens",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 10,
+          "month_shift_null_mean": 1.1818181818181819,
+          "observed_minus_shifted_mean": 8.818181818181818,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus vastus",
+          "prey": "Argia moesta",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 8,
+          "month_shift_null_mean": 1.6363636363636365,
+          "observed_minus_shifted_mean": 6.363636363636363,
+          "one_sided_12_phase_rank_not_independent_p": 0.08333333333333333,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Erythemis vesiculosa",
+          "prey": "Plathemis lydia",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 12,
+          "month_shift_null_mean": 5.818181818181818,
+          "observed_minus_shifted_mean": 6.181818181818182,
+          "one_sided_12_phase_rank_not_independent_p": 0.16666666666666666,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Gomphurus externus",
+          "prey": "Pachydiplax longipennis",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 12,
+          "month_shift_null_mean": 7.545454545454546,
+          "observed_minus_shifted_mean": 4.454545454545454,
+          "one_sided_12_phase_rank_not_independent_p": 0.5,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Lithobates pipiens",
+          "prey": "Libellula luctuosa",
+          "predator_stage": "juvenile",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 4,
+          "month_shift_null_mean": 0.6363636363636364,
+          "observed_minus_shifted_mean": 3.3636363636363638,
+          "one_sided_12_phase_rank_not_independent_p": 0.16666666666666666,
+          "source_tiers": "INAT_LINK_OR_ORIGINAL_OBSERVATION"
+        },
+        {
+          "predator": "Anaxyrus boreas",
+          "prey": "Pseudacris regilla",
+          "predator_stage": "adult",
+          "prey_stage": "adult",
+          "observed_exact_grid_year_month": 2,
+          "month_shift_null_mean": 0.9090909090909091,
+          "observed_minus_shifted_mean": 1.0909090909090908,
+          "one_sided_12_phase_rank_not_independent_p": 0.16666666666666666,
+          "source_tiers": "INTERPRETED_QUICK_POND_META_WEB"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    "Months shifted represent expected recording concordance under arbitrary relative phase, not a causal predator-prey or climatic null model.",
+    "Same 1deg grid-year-month GBIF stage observations are not contemporaneous encounters at any pond, and source sightings may include introduced populations.",
+    "GBIF experimental August 2026 source is NOT the official DOI citable full October release; true global extrapolation is unauthorized.",
+    "Many edges share literature/web datasets. Aggregated shifted expected counts and 12-phase ranks have correlated error and are NOT independent P-values.",
+    "A paired stage GloBI link is an index record, possibly inferred, not verified predation; no demonstrated demographic role reversal.",
+    "GBIF stage underreporting, citizen science effort, rainy-season access, phenological survey bias and taxonomic inconsistencies are not corrected.",
+    "No actual emergent reed-cover, wetland morphology, rainfall time series, chorus or eDNA measurement was used in this null.",
+    "Multiple trophic candidate pairs are exploratory; do not claim confirmed worldwide seasonal predation synchronization."
+  ]
+}

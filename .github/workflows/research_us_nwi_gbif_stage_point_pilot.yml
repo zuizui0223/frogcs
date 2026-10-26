@@ -1,0 +1,32 @@
+name: GBIF aquatic stages inside actual USFWS NWI PEM wetland polygons
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/gbif_us_nwi_stage_point_pem_audit.py
+      - .github/workflows/research_us_nwi_gbif_stage_point_pilot.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-nwi-pem-observation-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pre-result coordinate, stage and hard NWI request caps
+        run: python research/scripts/gbif_us_nwi_stage_point_pem_audit.py --self-test
+      - name: Retrieve exact GBIF stage points and official NWI PEM polygons
+        run: |
+          python research/scripts/gbif_us_nwi_stage_point_pem_audit.py \
+            --out research/results/nwi_gbif_stage_point_pilot
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: gbif-us-nwi-actual-pem-stage-point-qa
+          path: research/results/nwi_gbif_stage_point_pilot/
+          if-no-files-found: error

@@ -1,0 +1,36 @@
+name: Research - global GBIF stage partition source G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/gbif_global_stage_partition_g0.py
+      - .github/workflows/research_gbif_global_stage_partition_g0.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-blind-global-partitions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m py_compile research/scripts/gbif_global_stage_partition_g0.py
+      - name: Read official anonymous S3 partitions, no response values
+        run: python3 research/scripts/gbif_global_stage_partition_g0.py --out /tmp/gbif_stage_partition_g0.json
+      - name: Validate source blindness and candidate taxonomic coverage
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/gbif_stage_partition_g0.json'))
+          assert d['source_s3_partition_count'] >= 30
+          assert d['life_stage_record_counts_computed'] is False
+          assert d['prey_ratio_or_pairwise_overlap_inspected'] is False
+          assert d['g1_g2_g3_results_not_estimated'] is True
+          print('GLOBAL_SOURCE_BLIND_PARTITION_G0_PASS')
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gbif-stage-source-partitions-g0
+          path: /tmp/gbif_stage_partition_g0.json
+          if-no-files-found: warn

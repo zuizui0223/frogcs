@@ -1,0 +1,31 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Hyla+avivoca&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:08.979851+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "603b163af6d92f5a00d2c9d2028a13711fe9b6c38d12556b7424aa96dd696ca0",
+  "response": {
+    "usageKey": 2427594,
+    "acceptedUsageKey": 10771002,
+    "scientificName": "Hyla avivoca Viosca, 1928",
+    "canonicalName": "Hyla avivoca",
+    "rank": "SPECIES",
+    "status": "SYNONYM",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=0; score=150; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Dryophytes",
+    "species": "Dryophytes avivoca",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 4816258,
+    "speciesKey": 10771002,
+    "class": "Amphibia"
+  }
+}

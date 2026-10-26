@@ -1,0 +1,352 @@
+{
+  "schema_version": "frogcs-stage-legacy/1.0",
+  "created_on": "2026-10-26",
+  "repository": "zuizui0223/frogcs",
+  "integration_scope": "frogcs research branch only; no writes to RC6 submission or other repositories",
+  "scientific_question": "How environmental breeding opportunity and inherited aquatic stage composition jointly determine taxon-selective adult acoustic configuration and independent frog juvenile stage outcomes across wetlands?",
+  "canonical_design": "research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md",
+  "frozen_rc6": {
+    "source_ref": "release/jae-multisite-rc6",
+    "submission_ref": "submission/jae-multisite-v6",
+    "validated_scientific_commit": "ea2bea7fd9ac8856f880a7f3302e193fa19705bd",
+    "immutable_scientific_paths": [
+      "paper/",
+      "submission/",
+      "provenance/",
+      "figures_pulse_template/",
+      "scripts/naamp/"
+    ],
+    "source_result": "provenance/CURRENT_RESULTS.json",
+    "frozen_readout": {
+      "population_matched_pairs": 4236,
+      "principal_history_pairs": 2916,
+      "spatial_observed": 1.6503201354367818,
+      "spatial_null": 1.3534664037854447,
+      "spatial_residual": 0.2968537316513371,
+      "prior_site_beta": 0.1510940272028386
+    },
+    "claim_ceiling": "adult acoustic space use only; no larval density, predation, breeding success or causal rainfall inference"
+  },
+  "source_modules": [
+    {
+      "id": "naamp_rc6",
+      "role": "frozen adult acoustic discovery",
+      "granularity": "taxon × roadside listening stop × run",
+      "result": "provenance/CURRENT_RESULTS.json",
+      "readiness": "observed_locked",
+      "can_join": "only by aggregate result or independently verified physical waterbody"
+    },
+    {
+      "id": "nps_glkn",
+      "role": "independent adult acoustic historical-site persistence",
+      "granularity": "park × verified recorder station × taxon × year",
+      "result": "research/results/nps_glkn_history/observed_results.json",
+      "readiness": "observed",
+      "expected_informative_rows": 1815,
+      "expected_adjusted_beta": 0.46418762439474126,
+      "can_join": "within NPS recorder geography; hydroperiod is broad category",
+      "acoustic_own_history_supported": true
+    },
+    {
+      "id": "carroll_8pond",
+      "role": "adult-call to aquatic-larva proxy calibration",
+      "granularity": "actual pond × taxon × event/stage × year",
+      "external_doi": "10.25338/B8G92P",
+      "readiness": "source_metadata_sha_known_original_bytes_API401_and_public_stream403_reproduction_unverified",
+      "can_join": "Not yet: original workbook bytes not acquired; adult source series not proven reproducible from deposit",
+      "scientific_ceiling": "phenology and lagged larval-stage calibration if co-located taxon/time coverage passes",
+      "source_access_result": "research/results/CARROLL_8POND_G0_SOURCE_ACCESS_RECEIPT_2026-10-26.json"
+    },
+    {
+      "id": "globi_stage",
+      "role": "independent literature-based predator/prey stage-edge topology",
+      "granularity": "cited edge × source × taxon × stage",
+      "result": "research/results/full_globi_2026_stage_gbif_grid/observed_results.json",
+      "readiness": "observed_topology_only",
+      "can_join": "never infer local predation from global/source edge"
+    },
+    {
+      "id": "hydroperiod_observed",
+      "role": "time-varying physical pond-water level and dry/reset events",
+      "granularity": "verified pond × date",
+      "readiness": "not_available_as_same_pond_joint_panel",
+      "can_join": "only with verified pond/date, not ERA5 or JRC alone"
+    },
+    {
+      "id": "larval_predation_survival",
+      "role": "measured egg/larval survival and predator-stage abundance",
+      "granularity": "verified pond × taxon × stage × date",
+      "readiness": "not_available_as_same_pond_joint_panel",
+      "can_join": "requires direct counts and effort/detection or experiment"
+    },
+    {
+      "id": "nps_acoustic_crosslag",
+      "role": "prespecified-posthoc directional acoustics falsification, no larval stages",
+      "granularity": "park × fixed recorder station × focal species × year with exact prior year exposure",
+      "result": "research/results/nps_stage_crosslag/observed_results.json",
+      "report": "research/results/nps_stage_crosslag/REPORT.md",
+      "readiness": "observed_primary_suppression_not_supported",
+      "primary_pair": "Lithobates clamitans previous CI>=2 -> Lithobates sylvaticus current CI>=2",
+      "eligible_rows": 431,
+      "primary_adjusted_beta": 0.014321148927807066,
+      "ci95_station_cluster_approx": [
+        -0.06908298133097479,
+        0.09772527918658891
+      ],
+      "reverse_beta": 0.1181198166698195,
+      "can_join": "Adult acoustic association only; no verified pond, egg, tadpole or recruitment join"
+    },
+    {
+      "id": "esgr_stage_abundance",
+      "role": "independent multi-pond annual larval abundance and occupancy; source verified only",
+      "external_doi": "10.5061/dryad.js47k",
+      "original_file_id": 38621,
+      "original_md5": "c0c50fc176eac6e054e5f75b8c7a24d9",
+      "readiness": "original_metadata_pinned_workbook_HTTP401_no_response_or_predator_matrix",
+      "can_join": "Only by original verified pond×year identifiers with actual stage/effort; no implicit predator data"
+    },
+    {
+      "id": "mohonk_edi",
+      "role": "same pool adult chorus, egg masses, tadpole counts and water environment possible",
+      "external_doi": "10.6073/pasta/9eb31b2e15146e6a71f3fea8d3724aaa",
+      "edi_release": "edi.398.4",
+      "gbif_mirror_doi": "10.15468/dypfbs",
+      "readiness": "native_original_edi_species_and_water_HTTP403_GBIF_mirror_13862_rows_but_no_original_pool_and_stage_columns",
+      "can_join": "Only verified same pool×date source columns; egg and tadpole counts do not prove survival"
+    },
+    {
+      "id": "inbo_gbif_event_pair",
+      "role": "event-based adult chorus and larval census at possibly shared INBO exact location IDs",
+      "external_dois": [
+        "10.15468/d4bu8j",
+        "10.15468/swgure"
+      ],
+      "readiness": "actual_original_CC0_archives_source_SHA_passed_96_shared_location_ids_247_site_years_245_Hyla_pairs_and_mixed_G1_performance",
+      "can_join": "Exact publisher locationID and same-year temporal order; Hyla 245 site-years / 93 sources. Incomplete local water and fish observations; cannot infer larval survival or trophic mechanism",
+      "source_qualification": "research/results/part2_g0/observed_source_eligibility.json",
+      "taxon_qualification": "research/results/part2_g0/inbo_species_time_eligibility.json",
+      "G1_report": "research/results/part2_inbo_hyla_g1/REPORT.md",
+      "G1_json": "research/results/part2_inbo_hyla_g1/observed_results.json",
+      "cross_stage_empirical_result": {
+        "species": "Hyla arborea",
+        "eligible_site_years": 245,
+        "distinct_site_ids": 93,
+        "next_larva_present": 149,
+        "next_larva_absent": 96,
+        "past_chorus_present": 212,
+        "past_chorus_absent": 33,
+        "source_heldout_Brier_M0": 0.2582270389347674,
+        "source_heldout_Brier_M1": 0.2427116177606475,
+        "late_years_Brier_M0": 0.27839159389033974,
+        "late_years_Brier_M1": 0.3478624500206191,
+        "observed_event_permanent_water_column_covariate_count": 0,
+        "stable_temporal_transfer_supported": false,
+        "predation_identified": false,
+        "note": "Explore stage detection and prior adult reporting; no source-verified predator cohort or survival"
+      }
+    },
+    {
+      "id": "stmarks_fish_hydroperiod",
+      "role": "fish×hydroperiod occurrence/detection counterfactual, separate from direct larval predation",
+      "external_doi": "10.5061/dryad.jp34d",
+      "original_file_id": 51835,
+      "original_md5": "12a7deaf1a8bf38fc122cb7661ee7f6c",
+      "readiness": "original_metadata_pinned_workbook_HTTP401_not_inspected",
+      "can_join": "Verified same wetland×year encounter histories; no pond egg survival"
+    },
+    {
+      "id": "world_macro_stage_reporting",
+      "role": "world-scale source-selected GloBI feeding-stage topology × experimental GBIF 1deg month reports and matched prey-specificity countertest",
+      "granularity": "GloBI directed source stage edge and GBIF species×stage×1deg cell×year×month (not same pond)",
+      "origin_and_methods": "research/manuscript/GLOBAL_STAGE_MACRO_EVIDENCE_GATE_V1.md",
+      "source_full": "research/results/full_globi_2026_stage_gbif_grid/observed_results.json",
+      "source_phase": "research/results/month_shift_globi_gbif/observed_results.json",
+      "source_specificity": "research/results/expanded_stage_specificity/observed_results.json",
+      "source_wetland_background": "research/results/earthenv_gbif_matched_stage/observed_results.json",
+      "readiness": "observed_source_selected_global_phase_pattern_partner_specificity_not_robust",
+      "summary": {
+        "full_source_GloBI_rows": 24453954,
+        "certain_staged_nonself_rows": 1240,
+        "unique_directed_stage_patterns": 881,
+        "initial_phase_above_11_shift_mean": "16/18",
+        "expanded_matched_partner_focal_above_control_at1": "31/56",
+        "expanded_matched_partner_focal_above_control_at5": "26/56",
+        "high_minus_low_flooded_background_median": -0.028117363791445027,
+        "is_pond_trophic_event": false,
+        "validated_predation_stage_mediation": false
+      },
+      "can_join": "Evidence comparison by data-level and macro observation contract only; never attach GBIF 1deg reporting or GloBI edges to NAAMP/NPS listening sites as measured feeding"
+    },
+    {
+      "id": "fuscus_controlled_stage_g2b",
+      "role": "published 2×2×2 laboratory temperature × water-level drawdown × predator chemical cue experimental tadpole stage-development response",
+      "external_doi": "10.1111/fwb.70124",
+      "source_repository": "CSIC 10261/411885",
+      "original_excel_sha256": "eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25",
+      "source_assignment_g0": "research/results/part2_g2/fuscus_assignment_g0.json",
+      "frozen_analysis_plan": "research/FUSCUS_EXPERIMENT_G2B_FROZEN_ANALYSIS_2026-10-26.md",
+      "result": "research/results/part2_g2/fuscus_factorial_observed_results.json",
+      "report": "research/results/part2_g2/FUSCUS_G2B_REAL_EXPERIMENT_REPORT_2026-10-26.md",
+      "readiness": "genuine_original_stage_risk_cue_and_experimental_drawdown_fit_complete_bathheldout_biotic_predictor_did_not_improve",
+      "granularity": "226 source tadpole individuals, 79 original small exposure containers, 8 large thermal bath groups, 3 original nests; recorded metamorphs only for endpoint",
+      "evidence": {
+        "planned_tadpoles": 240,
+        "observed_rows": 226,
+        "listed_metamorph_survivors": 213,
+        "listed_nonsurvivors": 13,
+        "unlisted_initial_animals": 14,
+        "observed_small_containers": 79,
+        "original_large_bath_pools": 8,
+        "mass_log_mse_m0": 0.020890281991888512,
+        "mass_log_mse_m1": 0.021248973407636068,
+        "mass_log_mse_m2": 0.021315852082243535,
+        "time_log_mse_m0": 0.01573077423110575,
+        "time_log_mse_m1": 0.016492058201910346,
+        "time_log_mse_m2": 0.01648453705884464,
+        "all_cohort_survival_fate_verified": false,
+        "actual_prey_predation_rate_observed": false
+      },
+      "can_join": "only as independent experimental mechanism case with explicit species and method differences. Never merge its container rows with NAAMP acoustic stops or interpret cue as consumptive predation."
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "A",
+      "label": "same-year adult acoustic site-use",
+      "required": "adult call/effort and strictly prior species histories",
+      "unit": "taxon × site × date",
+      "claim": "behavioural/acoustic association"
+    },
+    {
+      "id": "B",
+      "label": "same-season egg/larval survival and stage-specific predation",
+      "required": "same wetland egg/larva/predator census and hydrology plus attack/exclusion information for causal predation",
+      "unit": "wetland × cohort × stage × date",
+      "claim": "ontogenetic interactions conditional on directly measured exposure"
+    },
+    {
+      "id": "C",
+      "label": "future adult recruitment after maturity lag",
+      "required": "longitudinal cohort survival/age at maturity and subsequent calling",
+      "unit": "wetland × taxon × cohort × future year",
+      "claim": "lagged cohort demographic effect"
+    },
+    {
+      "id": "D",
+      "label": "conditional spatial configuration",
+      "required": "new held-out monitoring panel with first-order state and total-activity conditioned null",
+      "unit": "species × multi-site route × run",
+      "claim": "extra spatial dependence conditional on baseline"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "name": "source-blind physical-site, species, time and stage coverage audit",
+      "status": "INBO original source schemas source-SHA and 96 source exact location IDs, 245 Hyla site-years qualified; ESGR original and Mohonk EDI unavailable; physical pond identity not independently geocoded"
+    },
+    {
+      "id": "G1",
+      "name": "verified same-pond cross-stage transition evidence, adult chorus/egg/larva with temporal and detection controls",
+      "status": "INBO exploratory recorded Hyla forward acoustic→larva comparison executed: out-of-site Brier improves +0.0155, later-years Brier WORSENS -0.0695; water column absent; no general transfer"
+    },
+    {
+      "id": "G2",
+      "name": "stage-predation/competition vs dynamic hydrology discrimination",
+      "status": "UNIDENTIFIABLE_FOR_FIELD_PREDATION_AND_POND_HYDROPERIOD;_CONTROLLED_LAB_G2B_STAGE_WATER_X_PREDATOR_CUE_EXPERIMENT_EXECUTED_ABIOTIC_BATHHELDOUT_M0_BEATS_CUE_M1_M2"
+    },
+    {
+      "id": "G3",
+      "name": "cross-geographic generality plus empirically constrained stage-network dynamics",
+      "status": "GLOBAL_GLOBI_GBIF_SOURCE_PHASE_PATTERN_OBSERVED_16_18;_PREY_SPECIFICITY_FAILS_26_56_STRICT;_CALIBRATED_STAGE_NETWORK_NOT_READY"
+    },
+    {
+      "id": "G4",
+      "name": "single integrated flagship manuscript, with RC6 as frozen Part I",
+      "status": "SINGLE_INTEGRATED_PAPER_IN_DEVELOPMENT_NOT_READY_UNTIL_G2"
+    }
+  ],
+  "prior_claims": {
+    "acoustic_history_supported": true,
+    "NAAMP_predator_proxy_validated": false,
+    "drought_larval_reset_observed": false,
+    "stage_predation_population_effect_identified": false,
+    "RC6_spatial_residual_mechanism_identified": false,
+    "NPS_green_to_wood_annual_acoustic_suppression_supported": false,
+    "NPS_green_to_wood_annual_acoustic_beta": 0.014321148927807066,
+    "NPS_wood_to_green_reverse_acoustic_positive_exploratory": true,
+    "INBO_Hyla_cross_stage_source_paired_245_site_years": true,
+    "INBO_Hyla_siteheldout_Brier_gain_0p0155": true,
+    "INBO_Hyla_lateyear_transfer_supported": false,
+    "INBO_Hyla_hydroperiod_adjusted": false,
+    "INBO_Hyla_stage_predation_identified": false,
+    "World_GloBI_GBIF_stage_reporting_phase_above_month_shift_16_of_18": true,
+    "World_predator_prey_partner_specific_stage_seasonality_established": false,
+    "World_flooded_vegetation_trophic_specificity_established": false,
+    "FUSCUS_predator_cue_improves_leave_thermal_bathout_stage_mass_prediction": false,
+    "FUSCUS_controlled_lab_cue_by_drawdown_interaction_predictive_gain_established": false,
+    "FUSCUS_original_240_assigned_survival_completely_recorded": false
+  },
+  "stop_rules": [
+    "No modification of frozen RC6 paper, submission, provenance, spatial generator or NAAMP analysis paths.",
+    "Do not use global GloBI, GBIF, EarthEnv, NWI, ERA5 or JRC rows as a same-pond stage-specific predation measurement.",
+    "No source-blind response reuse: NAAMP post-hoc interspecific H1 exploration is not prospective confirmation.",
+    "No published mechanism language when measured hydroperiod, stage/predation exposure and event-level detection are absent.",
+    "A same-year egg predation event cannot causally explain an earlier adult chorus from that cohort.",
+    "Primary NPS green→wood directional acoustic suppression H1A not supported; do not post-hoc retune taxon, lag or window to obtain negative coefficients.",
+    "Carroll source metadata alone is not an acquired workbook or a verified adult-to-larval repeated-measures panel.",
+    "Immediate RC6 stand-alone submission is on editorial hold per dated author decision; never claim the candidate is withdrawn or already submitted.",
+    "Use verified exact pond-level matched ecology for Part II, not merely a paper citation or 1-km co-occurrence. Stand-alone RC6 retained as fallback only after explicit future editorial decision.",
+    "INBO G1 site-block gain fails independent future-year transport (M0 Brier 0.27839 vs M1 0.34786 in 2024–25); do not claim general predictive superiority.",
+    "INBO 245 matched Hyla records have no usable permanent-water-column measurement or numeric larval effort at the focal event; do not call their M0 hydroperiod adjusted.",
+    "Global 1-degree stage/time co-reporting cannot establish live same-pond predator-prey encounters; 16/18 general shifted-month gain is not a predation-specific effect.",
+    "Expanded predator-fixed matched alternative prey strict pattern 26/56 and median focal-minus-alternative -0.0185 must remain visible; do not cherry-pick exploratory positive mean.",
+    "Original source-planned 240 Fuscus tadpoles and 80 containers appear as only 226 source rows and 79 container IDs; never silently treat 14 missing animals as deaths, fit unique all-cohort survival, or replace their unknown fate with convenient zeros.",
+    "Fuscus predator chemical cue and controlled lab drawdown are not live overwintered predator abundance, a measured predation event, or observed field drying/refilling.",
+    "Scientific priority 2026-10-26: species occurrence native survey × source site × date × method first; developmental-stage strata paused until species occurrence, assessed survey denominators and cross-source taxonomy pass.",
+    "Hungary reused source event identifiers occur twice for bottle traps; five species-level 0-vs-detection contradictions remain unresolved rather than silently counted present."
+  ],
+  "last_checked_on": "2026-10-26",
+  "integration_status": "ONE_INTEGRATED_PAPER_SOURCE_NATIVE_SPECIES_OCCURRENCE_FIRST_STAGE_AS_OPTIONAL_CONTEXT_FIELD_RC6_LOCKED",
+  "paper_strategy": {
+    "decision_authority": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
+    "decision_date": "2026-10-26",
+    "target": "one_conditional_integrated_flagship_manuscript_in_frogcs",
+    "rc6_standalone_submission": "deferred_not_deleted_not_claimed_submitted",
+    "rc6_scientific_source": "frozen_read_only",
+    "flagship_parts": [
+      "I: RC6 acoustic spatial configuration (frozen evidence)",
+      "II: source-verified stage-by-hydroperiod mechanistic discrimination (pending)",
+      "III: independent observational generality and empirically constrained dynamic model (pending)"
+    ],
+    "checkpoint": "2027-01-31",
+    "checkpoint_role": "provisional_author_editorial_review_only_no_auto_submission",
+    "fallback": "If G2 cannot qualify, reconsider narrower robust paper or preserved RC6 solo publication after explicit author decision",
+    "future_manuscript_ready": false,
+    "manuscript_path": "research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md",
+    "manuscript_version": "v0.3 preexisting working draft; species-first source occurrence projection under new analysis",
+    "global_macro_claim_ceiling": "seasonal stage-reporting coincidence, not verified predator-specific phase, predation rate or amphibian population dynamics",
+    "external_mechanistic_G2B": "controlled cue and artificial water-level factorial verified, but real field aquatic predation/drought reset G2 still blocked"
+  },
+  "source_inventory": "research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md",
+  "source_inventory_script": "research/scripts/part2_published_source_g0.py",
+  "current_priority": {
+    "decision_date": "2026-10-26",
+    "priority": "SOURCE_NATIVE_SPECIES_OCCURRENCE_FIRST",
+    "contract": "research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md",
+    "occurrence_projector": "research/scripts/project_species_occurrence.py",
+    "cooccurrence_correlations": "research/scripts/species_occurrence_associations.py",
+    "workflow": ".github/workflows/research_species_occurrence_first.yml",
+    "unit": "data_source x original source site x survey event/date x species x method; source stage only provenance",
+    "produce": [
+      "species_occurrence_events.csv.gz",
+      "species_occurrence_site_month.csv.gz",
+      "observed_species_occurrence_profile.json",
+      "observed_species_associations.json"
+    ],
+    "stage_focused_mechanistic_models": "PAUSED_AS_PRIMARY_RESEARCH_TARGET_NOT_DELETED",
+    "GBIF_global_occurrence": "PRESENCE_ONLY_SEPARATE_GRID_OR_DATASET_NOT_ASSUMED_POND",
+    "experimental_predation_programme": "RETAIN_AS_SECONDARY_WHEN_SAME_SOURCE_POND_COMPARABLE",
+    "no_modification_to_rc6_submission": true
+  }
+}

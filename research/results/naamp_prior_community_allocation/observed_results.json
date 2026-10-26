@@ -1,0 +1,49 @@
+{
+  "folds": {
+    "A": {
+      "training_routes": 190,
+      "training_clusters": 1540,
+      "beta": 0.28761692191959154,
+      "boundary_optimum": false,
+      "test_clusters": 1517,
+      "test_mean_logscore_gain": 0.04151547584658632
+    },
+    "B": {
+      "training_routes": 188,
+      "training_clusters": 1517,
+      "beta": 0.2826935813176635,
+      "boundary_optimum": false,
+      "test_clusters": 1540,
+      "test_mean_logscore_gain": 0.03909872604113858
+    }
+  },
+  "clusters": 3057,
+  "routes": 378,
+  "taxa": 47,
+  "constant_exposure_clusters": 16,
+  "heldout_mean_logscore_gain_nats_per_cluster": 0.04029800947419851,
+  "route_bootstrap_95ci_fixed_fitted_models": [
+    0.025260354892861398,
+    0.056012522645140395
+  ],
+  "decision": "POSITIVE_HISTORY_ASSOCIATION_WITH_HELDOUT_GAIN",
+  "bootstrap_refits_models": false,
+  "original_RC6_concentration_residual_explained": false,
+  "competition_identified": false,
+  "stop_level_habitat_fully_controlled": false,
+  "analysis": "NAAMP_prior_other_taxon_history_exact_k_allocation_v1",
+  "contract": "research/NAAMP_PRIOR_COMMUNITY_ALLOCATION_CONTRACT_2026-10-26.md",
+  "provenance": {
+    "frozen_pairs": 2916,
+    "frozen_routes": 439,
+    "pairs_excluded_for_any_unobserved_prior_stop": 38,
+    "source_sha256": {
+      "Runs.csv": "ec6b314fe4cd8ec8c048a973e576c8810ea12b21c739c1140e3a12123c611730",
+      "Stops.csv": "28138cdaab43a56ecad8df3b523060c812edfad018c20c67b14581c569a84b0f",
+      "Counts.csv": "60a3f6bc29402cd81fb01155923baaa07bccd172bce8b94fe1051d3ae25e7086"
+    }
+  },
+  "code_sha256": "c07aebad0d6050451489b2b86a8e6aae3437f928c54294d59bb74bb25d6de9e6",
+  "status": "POSTHOC_EXPLORATORY_LOCATION_ALLOCATION_NOT_CAUSAL",
+  "limitation": "Route-night-common weather cancels conditional on k; unmeasured local habitat/detection remain. CI>=1, not strong-call endpoint."
+}

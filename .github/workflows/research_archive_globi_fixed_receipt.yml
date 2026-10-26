@@ -1,0 +1,55 @@
+name: Archive pinned GloBI full-data result from verified CI artifact
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - .github/workflows/research_archive_globi_fixed_receipt.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  promote-small-reviewed-result:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Retrieve exact successful full-data analysis artifact (not 2.4GB source)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/full_globi_verified
+          gh run download 40189035965 --repo zuizui0223/frogcs \
+            --name full-world-globi-2026-fixed-24m-row-stage-foodweb \
+            --dir /tmp/full_globi_verified
+      - name: Verify immutable release counts and stage/reciprocal caveats
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/full_globi_verified/observed_results.json')
+          assert p.is_file(), 'Missing full provenance output'
+          assert p.stat().st_size < 1000000, 'Do not put giant JSON on branch'
+          d=json.loads(p.read_text())
+          assert d['source']['source_rows']==24453954
+          assert d['source']['md5']=='8212776b7ba0c4fa8de26a00b5ce8595'
+          assert d['scope']['eligible_rows']>=1000
+          assert d['candidate_reciprocal_different_species_pair_count']>=1
+          out=Path('research/results/globi_fixed_full_foodweb')
+          out.mkdir(parents=True,exist_ok=True)
+          (out/'observed_results.json').write_text(
+              json.dumps(d,indent=2,ensure_ascii=False)+'\n')
+          print('VERIFIED_RESTORED_FULL_GLOBI_RESULT', d['scope'],
+                'reciprocal_pairs', d['candidate_reciprocal_different_species_pair_count'])
+          PY
+      - name: Commit only source-backed small JSON to research branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/globi_fixed_full_foodweb/observed_results.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Archive verified full 24.45M-row fixed GloBI trophic results"
+          git push origin HEAD:refs/heads/research/stage-structured-interactions-2026-10-25

@@ -1,0 +1,43 @@
+name: Real monthly 2010-2024 WorldClim rain on global GBIF stage reporting grids
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/gbif_stage_worldclim_dated_rain.py
+      - .github/workflows/research_gbif_worldclim_monthly.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  public_monthly_climate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scientific raster readers
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'rasterio>=1.3,<2'
+      - name: Source and date parsing synthetic QA
+        run: python research/scripts/gbif_stage_worldclim_dated_rain.py --self-test
+      - name: Restore successful original GBIF public occurrence-stage month/year cube
+        uses: actions/download-artifact@v4
+        with:
+          name: gbif-2026-anonymous-full-partition-stage-spatial-1degree
+          run-id: 40190152042
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: research/data/gbif_open_artifact
+      - name: Join source-attributed CRU downscaled real 2010–2024 month-year precipitation
+        run: |
+          python research/scripts/gbif_stage_worldclim_dated_rain.py \
+            --src research/data/gbif_open_artifact \
+            --out research/results/gbif_worldclim_monthly_rain
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: gbif-stage-worldclim-2010-2024-monthly-rain-source-join
+          path: research/results/gbif_worldclim_monthly_rain/
+          if-no-files-found: error

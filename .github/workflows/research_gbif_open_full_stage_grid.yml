@@ -1,0 +1,37 @@
+name: Global GBIF full amphibian dragonfly stage 1-degree grids
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/gbif_open_full_stage_grid.py
+      - research/results/globi_fixed_full_foodweb/observed_results.json
+      - .github/workflows/research_gbif_open_full_stage_grid.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  anonymous-published-s3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install S3 native and tabular analysis deps
+        run: python -m pip install --disable-pip-version-check 'pyarrow>=16,<25' 'pandas>=2.2,<3'
+      - name: Check stage-grid and strict source-stage co-report synthetic fixtures
+        run: python research/scripts/gbif_open_full_stage_grid.py --self-test
+      - name: Read source-pruned rowgroups from all Anura/Odonata public S3 partitions
+        run: |
+          python research/scripts/gbif_open_full_stage_grid.py \
+            --globi-results research/results/globi_fixed_full_foodweb/observed_results.json \
+            --out research/results/gbif_open_stage_1deg
+      - name: Preserve only site×species×stage grid outputs, never full raw source
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gbif-2026-anonymous-full-partition-stage-spatial-1degree
+          path: research/results/gbif_open_stage_1deg/
+          if-no-files-found: error

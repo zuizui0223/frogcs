@@ -1,0 +1,132 @@
+{
+  "classification": "ONLY_SYNTHETIC_MECHANISTIC_CONSTRAINT_NOT_REAL_PEM_WETLAND",
+  "study": "Causal knockouts of the chosen seasonal toy map to test whether three trophic motifs are needed for phase asymmetry",
+  "source_protocol": "research/PEM_TRIAD_STAGE_NETWORK_EDGE_ABLATION_SPEC_2026-10-25.md",
+  "settings": {
+    "wetland_windows": [
+      "PEM1A",
+      "PEM1C",
+      "PEM1F"
+    ],
+    "stage_phase_salamander": [
+      -0.12,
+      0,
+      0.12
+    ],
+    "stage_phase_odonate": [
+      -0.18,
+      0,
+      0.18
+    ],
+    "shelter": [
+      0.15,
+      0.7
+    ],
+    "risk_regime": [
+      "weak_dragonfly_cue",
+      "strong_dragonfly_cue"
+    ],
+    "n_shared_synthetic_parameter_draws": 32,
+    "frog_breeding_width": 0.05
+  },
+  "total_synthetic_model_cases": 432,
+  "matched_setting_count": 108,
+  "knockouts": [
+    {
+      "knockout": "no_risk_cue",
+      "matched_synthetic_settings": 108,
+      "removing_this_edge_hurts_all_three_invasion": 29,
+      "removing_this_edge_helps_all_three_invasion": 0,
+      "removing_this_edge_changes_nothing": 79,
+      "full_minus_knockout_median_invasion": 0,
+      "full_minus_knockout_range": [
+        0,
+        0.09375
+      ],
+      "full_minus_knockout_median_rare_frog_log_growth": 0.07011112848768045
+    },
+    {
+      "knockout": "no_reverse_frog_dragonfly",
+      "matched_synthetic_settings": 108,
+      "removing_this_edge_hurts_all_three_invasion": 7,
+      "removing_this_edge_helps_all_three_invasion": 56,
+      "removing_this_edge_changes_nothing": 45,
+      "full_minus_knockout_median_invasion": -0.03125,
+      "full_minus_knockout_range": [
+        -0.3125,
+        0.03125
+      ],
+      "full_minus_knockout_median_rare_frog_log_growth": 0.11065382433161275
+    },
+    {
+      "knockout": "no_direct_dragonfly_frog",
+      "matched_synthetic_settings": 108,
+      "removing_this_edge_hurts_all_three_invasion": 28,
+      "removing_this_edge_helps_all_three_invasion": 48,
+      "removing_this_edge_changes_nothing": 32,
+      "full_minus_knockout_median_invasion": 0,
+      "full_minus_knockout_range": [
+        -0.125,
+        0.09375
+      ],
+      "full_minus_knockout_median_rare_frog_log_growth": -0.2054298407209399
+    }
+  ],
+  "relative_phenology_results_by_knockout": [
+    {
+      "mechanism": "full",
+      "same_draw_comparisons": 96,
+      "nonzero_phase_offset_increases_invasion": 86,
+      "zero_phase_synchrony_better": 0,
+      "ties": 10,
+      "median_shift_minus_synchronized": 0.1875,
+      "min_max": [
+        0,
+        0.53125
+      ]
+    },
+    {
+      "mechanism": "no_risk_cue",
+      "same_draw_comparisons": 96,
+      "nonzero_phase_offset_increases_invasion": 86,
+      "zero_phase_synchrony_better": 0,
+      "ties": 10,
+      "median_shift_minus_synchronized": 0.1875,
+      "min_max": [
+        0,
+        0.53125
+      ]
+    },
+    {
+      "mechanism": "no_reverse_frog_dragonfly",
+      "same_draw_comparisons": 96,
+      "nonzero_phase_offset_increases_invasion": 96,
+      "zero_phase_synchrony_better": 0,
+      "ties": 0,
+      "median_shift_minus_synchronized": 0.21875,
+      "min_max": [
+        0.03125,
+        0.59375
+      ]
+    },
+    {
+      "mechanism": "no_direct_dragonfly_frog",
+      "same_draw_comparisons": 96,
+      "nonzero_phase_offset_increases_invasion": 90,
+      "zero_phase_synchrony_better": 0,
+      "ties": 6,
+      "median_shift_minus_synchronized": 0.140625,
+      "min_max": [
+        0,
+        0.5
+      ]
+    }
+  ],
+  "warnings": [
+    "All network growth/attack and hydrology parameters are chosen for conceptual sensitivity, not calibrated NWI, NAAMP, NPS or GloBI predation data.",
+    "Removing one edge also removes its trophic contribution in the annual map; effects are model-specific and not a causal experiment with real biota.",
+    "Reverse frog to emerging odonate link comes from an Australian species pair, while D→S→F behavioural effect comes from Japanese system; toy merges generic motifs only.",
+    "This pair-resident rarity screen is stronger than nonzero counts, but by itself not a global mathematical theorem for robust coexistence.",
+    "Identical generic annual populations and stage activity kernels are not an individual-based or PDE stage-structured demographic calibration."
+  ]
+}

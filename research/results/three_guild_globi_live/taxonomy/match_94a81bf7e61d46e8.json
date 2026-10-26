@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lissotriton+vulgaris&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:20.058335+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "35a978111f7540e6a954cb7b45452013d9f888aa55f2cd69f163ff4924876905",
+  "response": {
+    "usageKey": 5218405,
+    "scientificName": "Lissotriton vulgaris (Linnaeus, 1758)",
+    "canonicalName": "Lissotriton vulgaris",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Lissotriton",
+    "species": "Lissotriton vulgaris",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 5218404,
+    "speciesKey": 5218405,
+    "class": "Amphibia"
+  }
+}

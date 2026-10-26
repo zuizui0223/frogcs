@@ -1,0 +1,6444 @@
+{
+  "date": "2026-10-25",
+  "status": "SOURCE_PREFLIGHT_ONLY_NO_GLOBAL_MODEL_FITTED",
+  "globi": {
+    "archive_file": {
+      "size": 2375721521,
+      "checksum": "md5:8212776b7ba0c4fa8de26a00b5ce8595",
+      "status": "completed",
+      "url": "https://zenodo.org/api/records/22691479/files/interactions.parquet/content"
+    },
+    "parquet": {
+      "url": "https://zenodo.org/api/records/22691479/files/interactions.parquet/content",
+      "http_bytes": 2375721521,
+      "range_supported": true,
+      "etag": null,
+      "reported_accept_ranges": null,
+      "footer_bytes": 2850646,
+      "num_rows": 24453954,
+      "num_row_groups": 198,
+      "schema_fields": [
+        {
+          "name": "sourceTaxonId",
+          "path": "sourceTaxonId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonIds",
+          "path": "sourceTaxonIds",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonName",
+          "path": "sourceTaxonName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonRank",
+          "path": "sourceTaxonRank",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonPathNames",
+          "path": "sourceTaxonPathNames",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonPathIds",
+          "path": "sourceTaxonPathIds",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonPathRankNames",
+          "path": "sourceTaxonPathRankNames",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonSpeciesName",
+          "path": "sourceTaxonSpeciesName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonSpeciesId",
+          "path": "sourceTaxonSpeciesId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonSubgenusName",
+          "path": "sourceTaxonSubgenusName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonSubgenusId",
+          "path": "sourceTaxonSubgenusId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonGenusName",
+          "path": "sourceTaxonGenusName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonGenusId",
+          "path": "sourceTaxonGenusId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonFamilyName",
+          "path": "sourceTaxonFamilyName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonFamilyId",
+          "path": "sourceTaxonFamilyId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonOrderName",
+          "path": "sourceTaxonOrderName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonOrderId",
+          "path": "sourceTaxonOrderId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonClassName",
+          "path": "sourceTaxonClassName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonClassId",
+          "path": "sourceTaxonClassId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonPhylumName",
+          "path": "sourceTaxonPhylumName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonPhylumId",
+          "path": "sourceTaxonPhylumId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonKingdomName",
+          "path": "sourceTaxonKingdomName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceTaxonKingdomId",
+          "path": "sourceTaxonKingdomId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceId",
+          "path": "sourceId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceOccurrenceId",
+          "path": "sourceOccurrenceId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceInstitutionCode",
+          "path": "sourceInstitutionCode",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceCollectionCode",
+          "path": "sourceCollectionCode",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceCatalogNumber",
+          "path": "sourceCatalogNumber",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceBasisOfRecordId",
+          "path": "sourceBasisOfRecordId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceBasisOfRecordName",
+          "path": "sourceBasisOfRecordName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceLifeStageId",
+          "path": "sourceLifeStageId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceLifeStageName",
+          "path": "sourceLifeStageName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceBodyPartId",
+          "path": "sourceBodyPartId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceBodyPartName",
+          "path": "sourceBodyPartName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourcePhysiologicalStateId",
+          "path": "sourcePhysiologicalStateId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourcePhysiologicalStateName",
+          "path": "sourcePhysiologicalStateName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceSexId",
+          "path": "sourceSexId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceSexName",
+          "path": "sourceSexName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "interactionTypeName",
+          "path": "interactionTypeName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "interactionTypeId",
+          "path": "interactionTypeId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonId",
+          "path": "targetTaxonId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonIds",
+          "path": "targetTaxonIds",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonName",
+          "path": "targetTaxonName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonRank",
+          "path": "targetTaxonRank",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonPathNames",
+          "path": "targetTaxonPathNames",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonPathIds",
+          "path": "targetTaxonPathIds",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonPathRankNames",
+          "path": "targetTaxonPathRankNames",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonSpeciesName",
+          "path": "targetTaxonSpeciesName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonSpeciesId",
+          "path": "targetTaxonSpeciesId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonSubgenusName",
+          "path": "targetTaxonSubgenusName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonSubgenusId",
+          "path": "targetTaxonSubgenusId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonGenusName",
+          "path": "targetTaxonGenusName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonGenusId",
+          "path": "targetTaxonGenusId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonFamilyName",
+          "path": "targetTaxonFamilyName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonFamilyId",
+          "path": "targetTaxonFamilyId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonOrderName",
+          "path": "targetTaxonOrderName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonOrderId",
+          "path": "targetTaxonOrderId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonClassName",
+          "path": "targetTaxonClassName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonClassId",
+          "path": "targetTaxonClassId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonPhylumName",
+          "path": "targetTaxonPhylumName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonPhylumId",
+          "path": "targetTaxonPhylumId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonKingdomName",
+          "path": "targetTaxonKingdomName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetTaxonKingdomId",
+          "path": "targetTaxonKingdomId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetId",
+          "path": "targetId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetOccurrenceId",
+          "path": "targetOccurrenceId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetInstitutionCode",
+          "path": "targetInstitutionCode",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetCollectionCode",
+          "path": "targetCollectionCode",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetCatalogNumber",
+          "path": "targetCatalogNumber",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetBasisOfRecordId",
+          "path": "targetBasisOfRecordId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetBasisOfRecordName",
+          "path": "targetBasisOfRecordName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetLifeStageId",
+          "path": "targetLifeStageId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetLifeStageName",
+          "path": "targetLifeStageName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetBodyPartId",
+          "path": "targetBodyPartId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetBodyPartName",
+          "path": "targetBodyPartName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetPhysiologicalStateId",
+          "path": "targetPhysiologicalStateId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetPhysiologicalStateName",
+          "path": "targetPhysiologicalStateName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetSexId",
+          "path": "targetSexId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "targetSexName",
+          "path": "targetSexName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "decimalLatitude",
+          "path": "decimalLatitude",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "decimalLongitude",
+          "path": "decimalLongitude",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "localityId",
+          "path": "localityId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "localityName",
+          "path": "localityName",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "eventDate",
+          "path": "eventDate",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "argumentTypeId",
+          "path": "argumentTypeId",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "referenceCitation",
+          "path": "referenceCitation",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "referenceDoi",
+          "path": "referenceDoi",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "referenceUrl",
+          "path": "referenceUrl",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceCitation",
+          "path": "sourceCitation",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceNamespace",
+          "path": "sourceNamespace",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceArchiveURI",
+          "path": "sourceArchiveURI",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceDOI",
+          "path": "sourceDOI",
+          "type": "BYTE_ARRAY",
+          "logical": "String"
+        },
+        {
+          "name": "sourceLastSeenAtUnixEpoch",
+          "path": "sourceLastSeenAtUnixEpoch",
+          "type": "INT64",
+          "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+        }
+      ],
+      "first_row_group_rows": 123890,
+      "first_row_group_compressed_bytes": 116177252
+    }
+  },
+  "gbif": {
+    "anurans": {
+      "prefix": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/",
+      "number_files": 3,
+      "total_parquet_bytes": 2614176308,
+      "truncated": false,
+      "files": [
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_0.parquet",
+          "size": 2220701298
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_1.parquet",
+          "size": 345120202
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Chordata_Amphibia_Anura/data_2.parquet",
+          "size": 48354808
+        }
+      ],
+      "sample": {
+        "url": "https://gbif-public-data.s3.amazonaws.com/development/2026-08-01-DWCA/p_taxon/taxonpartition%3DAnimalia_Chordata_Amphibia_Anura/data_0.parquet",
+        "http_bytes": 2220701298,
+        "range_supported": true,
+        "etag": "\"0574fd9a0d9e447774b1239eb3a6b851-424\"",
+        "reported_accept_ranges": "bytes",
+        "footer_bytes": 6831784,
+        "num_rows": 9294656,
+        "num_row_groups": 95,
+        "schema_fields": [
+          {
+            "name": "gbifID",
+            "path": "gbifID",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "accessRights",
+            "path": "accessRights",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bibliographicCitation",
+            "path": "bibliographicCitation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "language",
+            "path": "language",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "license",
+            "path": "license",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "modified",
+            "path": "modified",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "publisher",
+            "path": "publisher",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "references",
+            "path": "references",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "rightsHolder",
+            "path": "rightsHolder",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "type",
+            "path": "type",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionID",
+            "path": "institutionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionID",
+            "path": "collectionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetID",
+            "path": "datasetID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionCode",
+            "path": "institutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionCode",
+            "path": "collectionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetName",
+            "path": "datasetName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "path": "ownerInstitutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "basisOfRecord",
+            "path": "basisOfRecord",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "informationWithheld",
+            "path": "informationWithheld",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dataGeneralizations",
+            "path": "dataGeneralizations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dynamicProperties",
+            "path": "dynamicProperties",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceID",
+            "path": "occurrenceID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "catalogNumber",
+            "path": "catalogNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordNumber",
+            "path": "recordNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "recordedBy.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "recordedByID.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "individualCount",
+            "path": "individualCount",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "organismQuantity",
+            "path": "organismQuantity",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "organismQuantityType",
+            "path": "organismQuantityType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sex",
+            "path": "sex",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lifeStage",
+            "path": "lifeStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "reproductiveCondition",
+            "path": "reproductiveCondition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "caste",
+            "path": "caste",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "behavior",
+            "path": "behavior",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vitality",
+            "path": "vitality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "establishmentMeans",
+            "path": "establishmentMeans",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "path": "degreeOfEstablishment",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "pathway",
+            "path": "pathway",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "path": "georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceStatus",
+            "path": "occurrenceStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "preparations",
+            "path": "preparations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "disposition",
+            "path": "disposition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOccurrences",
+            "path": "associatedOccurrences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedReferences",
+            "path": "associatedReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedSequences",
+            "path": "associatedSequences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedTaxa",
+            "path": "associatedTaxa",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "path": "otherCatalogNumbers",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "path": "occurrenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismID",
+            "path": "organismID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismName",
+            "path": "organismName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismScope",
+            "path": "organismScope",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOrganisms",
+            "path": "associatedOrganisms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "previousIdentifications",
+            "path": "previousIdentifications",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismRemarks",
+            "path": "organismRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityID",
+            "path": "materialEntityID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "path": "materialEntityRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLabel",
+            "path": "verbatimLabel",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialSampleID",
+            "path": "materialSampleID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventID",
+            "path": "eventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentEventID",
+            "path": "parentEventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventType",
+            "path": "eventType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNumber",
+            "path": "fieldNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventDate",
+            "path": "eventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventTime",
+            "path": "eventTime",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "startDayOfYear",
+            "path": "startDayOfYear",
+            "type": "INT32",
+            "logical": "Int(bitWidth=16, isSigned=false)"
+          },
+          {
+            "name": "endDayOfYear",
+            "path": "endDayOfYear",
+            "type": "INT32",
+            "logical": "Int(bitWidth=16, isSigned=false)"
+          },
+          {
+            "name": "year",
+            "path": "year",
+            "type": "INT32",
+            "logical": "Int(bitWidth=16, isSigned=false)"
+          },
+          {
+            "name": "month",
+            "path": "month",
+            "type": "INT32",
+            "logical": "Int(bitWidth=8, isSigned=false)"
+          },
+          {
+            "name": "day",
+            "path": "day",
+            "type": "INT32",
+            "logical": "Int(bitWidth=8, isSigned=false)"
+          },
+          {
+            "name": "verbatimEventDate",
+            "path": "verbatimEventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "habitat",
+            "path": "habitat",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingProtocol",
+            "path": "samplingProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeValue",
+            "path": "sampleSizeValue",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "path": "sampleSizeUnit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingEffort",
+            "path": "samplingEffort",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNotes",
+            "path": "fieldNotes",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventRemarks",
+            "path": "eventRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationID",
+            "path": "locationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeographyID",
+            "path": "higherGeographyID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeography",
+            "path": "higherGeography",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "continent",
+            "path": "continent",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "waterBody",
+            "path": "waterBody",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "islandGroup",
+            "path": "islandGroup",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "island",
+            "path": "island",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "countryCode",
+            "path": "countryCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "stateProvince",
+            "path": "stateProvince",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "county",
+            "path": "county",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "municipality",
+            "path": "municipality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locality",
+            "path": "locality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLocality",
+            "path": "verbatimLocality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimElevation",
+            "path": "verbatimElevation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verticalDatum",
+            "path": "verticalDatum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimDepth",
+            "path": "verbatimDepth",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "path": "minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "path": "maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationAccordingTo",
+            "path": "locationAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationRemarks",
+            "path": "locationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "decimalLatitude",
+            "path": "decimalLatitude",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "decimalLongitude",
+            "path": "decimalLongitude",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "path": "coordinateUncertaintyInMeters",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "coordinatePrecision",
+            "path": "coordinatePrecision",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "path": "pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "path": "verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimSRS",
+            "path": "verbatimSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintWKT",
+            "path": "footprintWKT",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSRS",
+            "path": "footprintSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "path": "footprintSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedBy",
+            "path": "georeferencedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedDate",
+            "path": "georeferencedDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "path": "georeferenceProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceSources",
+            "path": "georeferenceSources",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "path": "georeferenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "geologicalContextID",
+            "path": "geologicalContextID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "path": "earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "path": "latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "path": "earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "path": "latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "path": "earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "path": "latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "path": "earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "path": "latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "path": "earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "path": "latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "path": "lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "path": "highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "path": "lithostratigraphicTerms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "group",
+            "path": "group",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "formation",
+            "path": "formation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "member",
+            "path": "member",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bed",
+            "path": "bed",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationID",
+            "path": "identificationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimIdentification",
+            "path": "verbatimIdentification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationQualifier",
+            "path": "identificationQualifier",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "typestatus.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "identifiedby.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "identifiedbyid.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dateidentified",
+            "path": "dateidentified",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "identificationReferences",
+            "path": "identificationReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "path": "identificationVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationRemarks",
+            "path": "identificationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonID",
+            "path": "taxonID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificNameID",
+            "path": "scientificNameID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "path": "acceptedNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsageID",
+            "path": "parentNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsageID",
+            "path": "originalNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingToID",
+            "path": "nameAccordingToID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInID",
+            "path": "namePublishedInID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonConceptID",
+            "path": "taxonConceptID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificName",
+            "path": "scientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "path": "acceptedNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsage",
+            "path": "parentNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsage",
+            "path": "originalNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingTo",
+            "path": "nameAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedIn",
+            "path": "namePublishedIn",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInYear",
+            "path": "namePublishedInYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherClassification",
+            "path": "higherClassification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "kingdom",
+            "path": "kingdom",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "phylum",
+            "path": "phylum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "class",
+            "path": "class",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "order",
+            "path": "order",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "superfamily",
+            "path": "superfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "family",
+            "path": "family",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subfamily",
+            "path": "subfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "tribe",
+            "path": "tribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subtribe",
+            "path": "subtribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genus",
+            "path": "genus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genericName",
+            "path": "genericName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subgenus",
+            "path": "subgenus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infragenericEpithet",
+            "path": "infragenericEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "specificEpithet",
+            "path": "specificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "path": "infraspecificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "cultivarEpithet",
+            "path": "cultivarEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRank",
+            "path": "taxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "path": "verbatimTaxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vernacularName",
+            "path": "vernacularName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "path": "nomenclaturalCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonomicStatus",
+            "path": "taxonomicStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "path": "nomenclaturalStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRemarks",
+            "path": "taxonRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetKey",
+            "path": "datasetKey",
+            "type": "FIXED_LEN_BYTE_ARRAY",
+            "logical": "UUID"
+          },
+          {
+            "name": "publishingCountry",
+            "path": "publishingCountry",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lastInterpreted",
+            "path": "lastInterpreted",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "elevation",
+            "path": "elevation",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "elevationAccuracy",
+            "path": "elevationAccuracy",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "depth",
+            "path": "depth",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "depthAccuracy",
+            "path": "depthAccuracy",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "distanceFromCentroidInMeters",
+            "path": "distanceFromCentroidInMeters",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "element",
+            "path": "issue.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "taxonomicissue.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "nontaxonomicissue.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "mediatype.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "hasCoordinate",
+            "path": "hasCoordinate",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "hasGeospatialIssues",
+            "path": "hasGeospatialIssues",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "taxonKey",
+            "path": "taxonKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedTaxonKey",
+            "path": "acceptedTaxonKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "kingdomKey",
+            "path": "kingdomKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "phylumKey",
+            "path": "phylumKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "classKey",
+            "path": "classKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "orderKey",
+            "path": "orderKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "superfamilyKey",
+            "path": "superfamilyKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "familyKey",
+            "path": "familyKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subfamilyKey",
+            "path": "subfamilyKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "tribeKey",
+            "path": "tribeKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subtribeKey",
+            "path": "subtribeKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genusKey",
+            "path": "genusKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subgenusKey",
+            "path": "subgenusKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "speciesKey",
+            "path": "speciesKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "species",
+            "path": "species",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedScientificName",
+            "path": "acceptedScientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimScientificName",
+            "path": "verbatimScientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "typifiedName",
+            "path": "typifiedName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "protocol",
+            "path": "protocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lastParsed",
+            "path": "lastParsed",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "lastCrawled",
+            "path": "lastCrawled",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "isInvasive",
+            "path": "isInvasive",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "repatriated",
+            "path": "repatriated",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "relativeOrganismQuantity",
+            "path": "relativeOrganismQuantity",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "projectId",
+            "path": "projectId",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "isSequenced",
+            "path": "isSequenced",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "gbifRegion",
+            "path": "gbifRegion",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "publishedByGbifRegion",
+            "path": "publishedByGbifRegion",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level0Gid",
+            "path": "level0Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level0Name",
+            "path": "level0Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level1Gid",
+            "path": "level1Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level1Name",
+            "path": "level1Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level2Gid",
+            "path": "level2Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level2Name",
+            "path": "level2Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level3Gid",
+            "path": "level3Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level3Name",
+            "path": "level3Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "iucnRedListCategory",
+            "path": "iucnRedListCategory",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "coordinates",
+            "path": "coordinates",
+            "type": "BYTE_ARRAY",
+            "logical": "Geometry(crs=)"
+          },
+          {
+            "name": "gbifID",
+            "path": "verbatim.gbifID",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "accessRights",
+            "path": "verbatim.accessRights",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bibliographicCitation",
+            "path": "verbatim.bibliographicCitation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "language",
+            "path": "verbatim.language",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "license",
+            "path": "verbatim.license",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "modified",
+            "path": "verbatim.modified",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "publisher",
+            "path": "verbatim.publisher",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "references",
+            "path": "verbatim.references",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "rightsHolder",
+            "path": "verbatim.rightsHolder",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "type",
+            "path": "verbatim.type",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionID",
+            "path": "verbatim.institutionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionID",
+            "path": "verbatim.collectionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetID",
+            "path": "verbatim.datasetID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionCode",
+            "path": "verbatim.institutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionCode",
+            "path": "verbatim.collectionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetName",
+            "path": "verbatim.datasetName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "path": "verbatim.ownerInstitutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "basisOfRecord",
+            "path": "verbatim.basisOfRecord",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "informationWithheld",
+            "path": "verbatim.informationWithheld",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dataGeneralizations",
+            "path": "verbatim.dataGeneralizations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dynamicProperties",
+            "path": "verbatim.dynamicProperties",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceID",
+            "path": "verbatim.occurrenceID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "catalogNumber",
+            "path": "verbatim.catalogNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordNumber",
+            "path": "verbatim.recordNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordedBy",
+            "path": "verbatim.recordedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordedByID",
+            "path": "verbatim.recordedByID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "individualCount",
+            "path": "verbatim.individualCount",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismQuantity",
+            "path": "verbatim.organismQuantity",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismQuantityType",
+            "path": "verbatim.organismQuantityType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sex",
+            "path": "verbatim.sex",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lifeStage",
+            "path": "verbatim.lifeStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "reproductiveCondition",
+            "path": "verbatim.reproductiveCondition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "caste",
+            "path": "verbatim.caste",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "behavior",
+            "path": "verbatim.behavior",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vitality",
+            "path": "verbatim.vitality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "establishmentMeans",
+            "path": "verbatim.establishmentMeans",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "path": "verbatim.degreeOfEstablishment",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "pathway",
+            "path": "verbatim.pathway",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "path": "verbatim.georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceStatus",
+            "path": "verbatim.occurrenceStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "preparations",
+            "path": "verbatim.preparations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "disposition",
+            "path": "verbatim.disposition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedMedia",
+            "path": "verbatim.associatedMedia",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOccurrences",
+            "path": "verbatim.associatedOccurrences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedReferences",
+            "path": "verbatim.associatedReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedSequences",
+            "path": "verbatim.associatedSequences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedTaxa",
+            "path": "verbatim.associatedTaxa",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "path": "verbatim.otherCatalogNumbers",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "path": "verbatim.occurrenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismID",
+            "path": "verbatim.organismID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismName",
+            "path": "verbatim.organismName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismScope",
+            "path": "verbatim.organismScope",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOrganisms",
+            "path": "verbatim.associatedOrganisms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "previousIdentifications",
+            "path": "verbatim.previousIdentifications",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismRemarks",
+            "path": "verbatim.organismRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityID",
+            "path": "verbatim.materialEntityID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "path": "verbatim.materialEntityRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLabel",
+            "path": "verbatim.verbatimLabel",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialSampleID",
+            "path": "verbatim.materialSampleID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventID",
+            "path": "verbatim.eventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentEventID",
+            "path": "verbatim.parentEventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventType",
+            "path": "verbatim.eventType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNumber",
+            "path": "verbatim.fieldNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventDate",
+            "path": "verbatim.eventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventTime",
+            "path": "verbatim.eventTime",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "startDayOfYear",
+            "path": "verbatim.startDayOfYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "endDayOfYear",
+            "path": "verbatim.endDayOfYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "year",
+            "path": "verbatim.year",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "month",
+            "path": "verbatim.month",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "day",
+            "path": "verbatim.day",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimEventDate",
+            "path": "verbatim.verbatimEventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "habitat",
+            "path": "verbatim.habitat",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingProtocol",
+            "path": "verbatim.samplingProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeValue",
+            "path": "verbatim.sampleSizeValue",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "path": "verbatim.sampleSizeUnit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingEffort",
+            "path": "verbatim.samplingEffort",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNotes",
+            "path": "verbatim.fieldNotes",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventRemarks",
+            "path": "verbatim.eventRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "projectTitle",
+            "path": "verbatim.projectTitle",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "projectID",
+            "path": "verbatim.projectID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fundingAttribution",
+            "path": "verbatim.fundingAttribution",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fundingAttributionID",
+            "path": "verbatim.fundingAttributionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationID",
+            "path": "verbatim.locationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeographyID",
+            "path": "verbatim.higherGeographyID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeography",
+            "path": "verbatim.higherGeography",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "continent",
+            "path": "verbatim.continent",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "waterBody",
+            "path": "verbatim.waterBody",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "islandGroup",
+            "path": "verbatim.islandGroup",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "island",
+            "path": "verbatim.island",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "country",
+            "path": "verbatim.country",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "countryCode",
+            "path": "verbatim.countryCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "stateProvince",
+            "path": "verbatim.stateProvince",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "county",
+            "path": "verbatim.county",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "municipality",
+            "path": "verbatim.municipality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locality",
+            "path": "verbatim.locality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLocality",
+            "path": "verbatim.verbatimLocality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumElevationInMeters",
+            "path": "verbatim.minimumElevationInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumElevationInMeters",
+            "path": "verbatim.maximumElevationInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimElevation",
+            "path": "verbatim.verbatimElevation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verticalDatum",
+            "path": "verbatim.verticalDatum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumDepthInMeters",
+            "path": "verbatim.minimumDepthInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumDepthInMeters",
+            "path": "verbatim.maximumDepthInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimDepth",
+            "path": "verbatim.verbatimDepth",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "path": "verbatim.minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "path": "verbatim.maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationAccordingTo",
+            "path": "verbatim.locationAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationRemarks",
+            "path": "verbatim.locationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "decimalLatitude",
+            "path": "verbatim.decimalLatitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "decimalLongitude",
+            "path": "verbatim.decimalLongitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "geodeticDatum",
+            "path": "verbatim.geodeticDatum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "path": "verbatim.coordinateUncertaintyInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "coordinatePrecision",
+            "path": "verbatim.coordinatePrecision",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "path": "verbatim.pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimCoordinates",
+            "path": "verbatim.verbatimCoordinates",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLatitude",
+            "path": "verbatim.verbatimLatitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLongitude",
+            "path": "verbatim.verbatimLongitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "path": "verbatim.verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimSRS",
+            "path": "verbatim.verbatimSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintWKT",
+            "path": "verbatim.footprintWKT",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSRS",
+            "path": "verbatim.footprintSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "path": "verbatim.footprintSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedBy",
+            "path": "verbatim.georeferencedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedDate",
+            "path": "verbatim.georeferencedDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "path": "verbatim.georeferenceProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceSources",
+            "path": "verbatim.georeferenceSources",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "path": "verbatim.georeferenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "geologicalContextID",
+            "path": "verbatim.geologicalContextID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "path": "verbatim.earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "path": "verbatim.latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "path": "verbatim.earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "path": "verbatim.latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "path": "verbatim.earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "path": "verbatim.latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "path": "verbatim.earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "path": "verbatim.latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "path": "verbatim.earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "path": "verbatim.latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "path": "verbatim.lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "path": "verbatim.highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "path": "verbatim.lithostratigraphicTerms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "group",
+            "path": "verbatim.group",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "formation",
+            "path": "verbatim.formation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "member",
+            "path": "verbatim.member",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bed",
+            "path": "verbatim.bed",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationID",
+            "path": "verbatim.identificationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimIdentification",
+            "path": "verbatim.verbatimIdentification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationQualifier",
+            "path": "verbatim.identificationQualifier",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "typeStatus",
+            "path": "verbatim.typeStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identifiedBy",
+            "path": "verbatim.identifiedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identifiedByID",
+            "path": "verbatim.identifiedByID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dateIdentified",
+            "path": "verbatim.dateIdentified",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationReferences",
+            "path": "verbatim.identificationReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "path": "verbatim.identificationVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationRemarks",
+            "path": "verbatim.identificationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonID",
+            "path": "verbatim.taxonID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificNameID",
+            "path": "verbatim.scientificNameID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "path": "verbatim.acceptedNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsageID",
+            "path": "verbatim.parentNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsageID",
+            "path": "verbatim.originalNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingToID",
+            "path": "verbatim.nameAccordingToID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInID",
+            "path": "verbatim.namePublishedInID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonConceptID",
+            "path": "verbatim.taxonConceptID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificName",
+            "path": "verbatim.scientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "path": "verbatim.acceptedNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsage",
+            "path": "verbatim.parentNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsage",
+            "path": "verbatim.originalNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingTo",
+            "path": "verbatim.nameAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedIn",
+            "path": "verbatim.namePublishedIn",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInYear",
+            "path": "verbatim.namePublishedInYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherClassification",
+            "path": "verbatim.higherClassification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "kingdom",
+            "path": "verbatim.kingdom",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "phylum",
+            "path": "verbatim.phylum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "class",
+            "path": "verbatim.class",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "order",
+            "path": "verbatim.order",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "superfamily",
+            "path": "verbatim.superfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "family",
+            "path": "verbatim.family",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subfamily",
+            "path": "verbatim.subfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "tribe",
+            "path": "verbatim.tribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subtribe",
+            "path": "verbatim.subtribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genus",
+            "path": "verbatim.genus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genericName",
+            "path": "verbatim.genericName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subgenus",
+            "path": "verbatim.subgenus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infragenericEpithet",
+            "path": "verbatim.infragenericEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "specificEpithet",
+            "path": "verbatim.specificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "path": "verbatim.infraspecificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "cultivarEpithet",
+            "path": "verbatim.cultivarEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRank",
+            "path": "verbatim.taxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "path": "verbatim.verbatimTaxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificNameAuthorship",
+            "path": "verbatim.scientificNameAuthorship",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vernacularName",
+            "path": "verbatim.vernacularName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "path": "verbatim.nomenclaturalCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonomicStatus",
+            "path": "verbatim.taxonomicStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "path": "verbatim.nomenclaturalStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRemarks",
+            "path": "verbatim.taxonRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "path": "verbatim.gbifid_div1000000",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "gbifID",
+            "path": "multimedia.list.element.gbifID",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "type",
+            "path": "multimedia.list.element.type",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "format",
+            "path": "multimedia.list.element.format",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identifier",
+            "path": "multimedia.list.element.identifier",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "references",
+            "path": "multimedia.list.element.references",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "title",
+            "path": "multimedia.list.element.title",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "description",
+            "path": "multimedia.list.element.description",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "source",
+            "path": "multimedia.list.element.source",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "audience",
+            "path": "multimedia.list.element.audience",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "created",
+            "path": "multimedia.list.element.created",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "creator",
+            "path": "multimedia.list.element.creator",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "contributor",
+            "path": "multimedia.list.element.contributor",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "publisher",
+            "path": "multimedia.list.element.publisher",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "license",
+            "path": "multimedia.list.element.license",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "rightsHolder",
+            "path": "multimedia.list.element.rightsHolder",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "path": "multimedia.list.element.gbifid_div1000000",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r0",
+            "path": "a5_cell.r0",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r1",
+            "path": "a5_cell.r1",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r2",
+            "path": "a5_cell.r2",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r3",
+            "path": "a5_cell.r3",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r4",
+            "path": "a5_cell.r4",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r5",
+            "path": "a5_cell.r5",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r6",
+            "path": "a5_cell.r6",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r7",
+            "path": "a5_cell.r7",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r8",
+            "path": "a5_cell.r8",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r9",
+            "path": "a5_cell.r9",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r10",
+            "path": "a5_cell.r10",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r11",
+            "path": "a5_cell.r11",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r12",
+            "path": "a5_cell.r12",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r13",
+            "path": "a5_cell.r13",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r14",
+            "path": "a5_cell.r14",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r15",
+            "path": "a5_cell.r15",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r16",
+            "path": "a5_cell.r16",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r17",
+            "path": "a5_cell.r17",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r18",
+            "path": "a5_cell.r18",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r19",
+            "path": "a5_cell.r19",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r20",
+            "path": "a5_cell.r20",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r21",
+            "path": "a5_cell.r21",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r22",
+            "path": "a5_cell.r22",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r23",
+            "path": "a5_cell.r23",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r0",
+            "path": "h3_cell.r0",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r1",
+            "path": "h3_cell.r1",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r2",
+            "path": "h3_cell.r2",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r3",
+            "path": "h3_cell.r3",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r4",
+            "path": "h3_cell.r4",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r5",
+            "path": "h3_cell.r5",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r6",
+            "path": "h3_cell.r6",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r7",
+            "path": "h3_cell.r7",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r8",
+            "path": "h3_cell.r8",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r9",
+            "path": "h3_cell.r9",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r10",
+            "path": "h3_cell.r10",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r11",
+            "path": "h3_cell.r11",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r12",
+            "path": "h3_cell.r12",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r13",
+            "path": "h3_cell.r13",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r14",
+            "path": "h3_cell.r14",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r15",
+            "path": "h3_cell.r15",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          }
+        ],
+        "first_row_group_rows": 100352,
+        "first_row_group_compressed_bytes": 57977595
+      }
+    },
+    "odonates": {
+      "prefix": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/",
+      "number_files": 4,
+      "total_parquet_bytes": 4766811631,
+      "truncated": false,
+      "files": [
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_0.parquet",
+          "size": 3157948245
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_1.parquet",
+          "size": 925567365
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_2.parquet",
+          "size": 425057723
+        },
+        {
+          "key": "development/2026-08-01-DWCA/p_taxon/taxonpartition=Animalia_Arthropoda_Insecta_Odonata/data_3.parquet",
+          "size": 258238298
+        }
+      ],
+      "sample": {
+        "url": "https://gbif-public-data.s3.amazonaws.com/development/2026-08-01-DWCA/p_taxon/taxonpartition%3DAnimalia_Arthropoda_Insecta_Odonata/data_0.parquet",
+        "http_bytes": 3157948245,
+        "range_supported": true,
+        "etag": "\"7368f8ca22b27394868c93b756ea092b-603\"",
+        "reported_accept_ranges": "bytes",
+        "footer_bytes": 7798596,
+        "num_rows": 11339776,
+        "num_row_groups": 113,
+        "schema_fields": [
+          {
+            "name": "gbifID",
+            "path": "gbifID",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "accessRights",
+            "path": "accessRights",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bibliographicCitation",
+            "path": "bibliographicCitation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "language",
+            "path": "language",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "license",
+            "path": "license",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "modified",
+            "path": "modified",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "publisher",
+            "path": "publisher",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "references",
+            "path": "references",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "rightsHolder",
+            "path": "rightsHolder",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "type",
+            "path": "type",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionID",
+            "path": "institutionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionID",
+            "path": "collectionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetID",
+            "path": "datasetID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionCode",
+            "path": "institutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionCode",
+            "path": "collectionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetName",
+            "path": "datasetName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "path": "ownerInstitutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "basisOfRecord",
+            "path": "basisOfRecord",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "informationWithheld",
+            "path": "informationWithheld",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dataGeneralizations",
+            "path": "dataGeneralizations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dynamicProperties",
+            "path": "dynamicProperties",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceID",
+            "path": "occurrenceID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "catalogNumber",
+            "path": "catalogNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordNumber",
+            "path": "recordNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "recordedBy.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "recordedByID.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "individualCount",
+            "path": "individualCount",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "organismQuantity",
+            "path": "organismQuantity",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "organismQuantityType",
+            "path": "organismQuantityType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sex",
+            "path": "sex",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lifeStage",
+            "path": "lifeStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "reproductiveCondition",
+            "path": "reproductiveCondition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "caste",
+            "path": "caste",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "behavior",
+            "path": "behavior",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vitality",
+            "path": "vitality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "establishmentMeans",
+            "path": "establishmentMeans",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "path": "degreeOfEstablishment",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "pathway",
+            "path": "pathway",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "path": "georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceStatus",
+            "path": "occurrenceStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "preparations",
+            "path": "preparations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "disposition",
+            "path": "disposition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOccurrences",
+            "path": "associatedOccurrences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedReferences",
+            "path": "associatedReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedSequences",
+            "path": "associatedSequences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedTaxa",
+            "path": "associatedTaxa",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "path": "otherCatalogNumbers",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "path": "occurrenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismID",
+            "path": "organismID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismName",
+            "path": "organismName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismScope",
+            "path": "organismScope",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOrganisms",
+            "path": "associatedOrganisms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "previousIdentifications",
+            "path": "previousIdentifications",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismRemarks",
+            "path": "organismRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityID",
+            "path": "materialEntityID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "path": "materialEntityRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLabel",
+            "path": "verbatimLabel",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialSampleID",
+            "path": "materialSampleID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventID",
+            "path": "eventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentEventID",
+            "path": "parentEventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventType",
+            "path": "eventType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNumber",
+            "path": "fieldNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventDate",
+            "path": "eventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventTime",
+            "path": "eventTime",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "startDayOfYear",
+            "path": "startDayOfYear",
+            "type": "INT32",
+            "logical": "Int(bitWidth=16, isSigned=false)"
+          },
+          {
+            "name": "endDayOfYear",
+            "path": "endDayOfYear",
+            "type": "INT32",
+            "logical": "Int(bitWidth=16, isSigned=false)"
+          },
+          {
+            "name": "year",
+            "path": "year",
+            "type": "INT32",
+            "logical": "Int(bitWidth=16, isSigned=false)"
+          },
+          {
+            "name": "month",
+            "path": "month",
+            "type": "INT32",
+            "logical": "Int(bitWidth=8, isSigned=false)"
+          },
+          {
+            "name": "day",
+            "path": "day",
+            "type": "INT32",
+            "logical": "Int(bitWidth=8, isSigned=false)"
+          },
+          {
+            "name": "verbatimEventDate",
+            "path": "verbatimEventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "habitat",
+            "path": "habitat",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingProtocol",
+            "path": "samplingProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeValue",
+            "path": "sampleSizeValue",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "path": "sampleSizeUnit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingEffort",
+            "path": "samplingEffort",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNotes",
+            "path": "fieldNotes",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventRemarks",
+            "path": "eventRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationID",
+            "path": "locationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeographyID",
+            "path": "higherGeographyID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeography",
+            "path": "higherGeography",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "continent",
+            "path": "continent",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "waterBody",
+            "path": "waterBody",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "islandGroup",
+            "path": "islandGroup",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "island",
+            "path": "island",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "countryCode",
+            "path": "countryCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "stateProvince",
+            "path": "stateProvince",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "county",
+            "path": "county",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "municipality",
+            "path": "municipality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locality",
+            "path": "locality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLocality",
+            "path": "verbatimLocality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimElevation",
+            "path": "verbatimElevation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verticalDatum",
+            "path": "verticalDatum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimDepth",
+            "path": "verbatimDepth",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "path": "minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "path": "maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationAccordingTo",
+            "path": "locationAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationRemarks",
+            "path": "locationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "decimalLatitude",
+            "path": "decimalLatitude",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "decimalLongitude",
+            "path": "decimalLongitude",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "path": "coordinateUncertaintyInMeters",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "coordinatePrecision",
+            "path": "coordinatePrecision",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "path": "pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "path": "verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimSRS",
+            "path": "verbatimSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintWKT",
+            "path": "footprintWKT",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSRS",
+            "path": "footprintSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "path": "footprintSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedBy",
+            "path": "georeferencedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedDate",
+            "path": "georeferencedDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "path": "georeferenceProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceSources",
+            "path": "georeferenceSources",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "path": "georeferenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "geologicalContextID",
+            "path": "geologicalContextID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "path": "earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "path": "latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "path": "earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "path": "latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "path": "earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "path": "latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "path": "earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "path": "latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "path": "earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "path": "latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "path": "lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "path": "highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "path": "lithostratigraphicTerms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "group",
+            "path": "group",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "formation",
+            "path": "formation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "member",
+            "path": "member",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bed",
+            "path": "bed",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationID",
+            "path": "identificationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimIdentification",
+            "path": "verbatimIdentification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationQualifier",
+            "path": "identificationQualifier",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "typestatus.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "identifiedby.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "identifiedbyid.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dateidentified",
+            "path": "dateidentified",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "identificationReferences",
+            "path": "identificationReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "path": "identificationVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationRemarks",
+            "path": "identificationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonID",
+            "path": "taxonID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificNameID",
+            "path": "scientificNameID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "path": "acceptedNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsageID",
+            "path": "parentNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsageID",
+            "path": "originalNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingToID",
+            "path": "nameAccordingToID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInID",
+            "path": "namePublishedInID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonConceptID",
+            "path": "taxonConceptID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificName",
+            "path": "scientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "path": "acceptedNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsage",
+            "path": "parentNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsage",
+            "path": "originalNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingTo",
+            "path": "nameAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedIn",
+            "path": "namePublishedIn",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInYear",
+            "path": "namePublishedInYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherClassification",
+            "path": "higherClassification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "kingdom",
+            "path": "kingdom",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "phylum",
+            "path": "phylum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "class",
+            "path": "class",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "order",
+            "path": "order",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "superfamily",
+            "path": "superfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "family",
+            "path": "family",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subfamily",
+            "path": "subfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "tribe",
+            "path": "tribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subtribe",
+            "path": "subtribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genus",
+            "path": "genus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genericName",
+            "path": "genericName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subgenus",
+            "path": "subgenus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infragenericEpithet",
+            "path": "infragenericEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "specificEpithet",
+            "path": "specificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "path": "infraspecificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "cultivarEpithet",
+            "path": "cultivarEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRank",
+            "path": "taxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "path": "verbatimTaxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vernacularName",
+            "path": "vernacularName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "path": "nomenclaturalCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonomicStatus",
+            "path": "taxonomicStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "path": "nomenclaturalStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRemarks",
+            "path": "taxonRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetKey",
+            "path": "datasetKey",
+            "type": "FIXED_LEN_BYTE_ARRAY",
+            "logical": "UUID"
+          },
+          {
+            "name": "publishingCountry",
+            "path": "publishingCountry",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lastInterpreted",
+            "path": "lastInterpreted",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "elevation",
+            "path": "elevation",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "elevationAccuracy",
+            "path": "elevationAccuracy",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "depth",
+            "path": "depth",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "depthAccuracy",
+            "path": "depthAccuracy",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "distanceFromCentroidInMeters",
+            "path": "distanceFromCentroidInMeters",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "element",
+            "path": "issue.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "taxonomicissue.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "nontaxonomicissue.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "element",
+            "path": "mediatype.list.element",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "hasCoordinate",
+            "path": "hasCoordinate",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "hasGeospatialIssues",
+            "path": "hasGeospatialIssues",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "taxonKey",
+            "path": "taxonKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedTaxonKey",
+            "path": "acceptedTaxonKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "kingdomKey",
+            "path": "kingdomKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "phylumKey",
+            "path": "phylumKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "classKey",
+            "path": "classKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "orderKey",
+            "path": "orderKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "superfamilyKey",
+            "path": "superfamilyKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "familyKey",
+            "path": "familyKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subfamilyKey",
+            "path": "subfamilyKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "tribeKey",
+            "path": "tribeKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subtribeKey",
+            "path": "subtribeKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genusKey",
+            "path": "genusKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subgenusKey",
+            "path": "subgenusKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "speciesKey",
+            "path": "speciesKey",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "species",
+            "path": "species",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedScientificName",
+            "path": "acceptedScientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimScientificName",
+            "path": "verbatimScientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "typifiedName",
+            "path": "typifiedName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "protocol",
+            "path": "protocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lastParsed",
+            "path": "lastParsed",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "lastCrawled",
+            "path": "lastCrawled",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "isInvasive",
+            "path": "isInvasive",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "repatriated",
+            "path": "repatriated",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "relativeOrganismQuantity",
+            "path": "relativeOrganismQuantity",
+            "type": "DOUBLE",
+            "logical": "None"
+          },
+          {
+            "name": "projectId",
+            "path": "projectId",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "isSequenced",
+            "path": "isSequenced",
+            "type": "BOOLEAN",
+            "logical": "None"
+          },
+          {
+            "name": "gbifRegion",
+            "path": "gbifRegion",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "publishedByGbifRegion",
+            "path": "publishedByGbifRegion",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level0Gid",
+            "path": "level0Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level0Name",
+            "path": "level0Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level1Gid",
+            "path": "level1Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level1Name",
+            "path": "level1Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level2Gid",
+            "path": "level2Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level2Name",
+            "path": "level2Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level3Gid",
+            "path": "level3Gid",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "level3Name",
+            "path": "level3Name",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "iucnRedListCategory",
+            "path": "iucnRedListCategory",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "coordinates",
+            "path": "coordinates",
+            "type": "BYTE_ARRAY",
+            "logical": "Geometry(crs=)"
+          },
+          {
+            "name": "gbifID",
+            "path": "verbatim.gbifID",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "accessRights",
+            "path": "verbatim.accessRights",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bibliographicCitation",
+            "path": "verbatim.bibliographicCitation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "language",
+            "path": "verbatim.language",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "license",
+            "path": "verbatim.license",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "modified",
+            "path": "verbatim.modified",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "publisher",
+            "path": "verbatim.publisher",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "references",
+            "path": "verbatim.references",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "rightsHolder",
+            "path": "verbatim.rightsHolder",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "type",
+            "path": "verbatim.type",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionID",
+            "path": "verbatim.institutionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionID",
+            "path": "verbatim.collectionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetID",
+            "path": "verbatim.datasetID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "institutionCode",
+            "path": "verbatim.institutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "collectionCode",
+            "path": "verbatim.collectionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "datasetName",
+            "path": "verbatim.datasetName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "ownerInstitutionCode",
+            "path": "verbatim.ownerInstitutionCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "basisOfRecord",
+            "path": "verbatim.basisOfRecord",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "informationWithheld",
+            "path": "verbatim.informationWithheld",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dataGeneralizations",
+            "path": "verbatim.dataGeneralizations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dynamicProperties",
+            "path": "verbatim.dynamicProperties",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceID",
+            "path": "verbatim.occurrenceID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "catalogNumber",
+            "path": "verbatim.catalogNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordNumber",
+            "path": "verbatim.recordNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordedBy",
+            "path": "verbatim.recordedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "recordedByID",
+            "path": "verbatim.recordedByID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "individualCount",
+            "path": "verbatim.individualCount",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismQuantity",
+            "path": "verbatim.organismQuantity",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismQuantityType",
+            "path": "verbatim.organismQuantityType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sex",
+            "path": "verbatim.sex",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lifeStage",
+            "path": "verbatim.lifeStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "reproductiveCondition",
+            "path": "verbatim.reproductiveCondition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "caste",
+            "path": "verbatim.caste",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "behavior",
+            "path": "verbatim.behavior",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vitality",
+            "path": "verbatim.vitality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "establishmentMeans",
+            "path": "verbatim.establishmentMeans",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "degreeOfEstablishment",
+            "path": "verbatim.degreeOfEstablishment",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "pathway",
+            "path": "verbatim.pathway",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceVerificationStatus",
+            "path": "verbatim.georeferenceVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceStatus",
+            "path": "verbatim.occurrenceStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "preparations",
+            "path": "verbatim.preparations",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "disposition",
+            "path": "verbatim.disposition",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedMedia",
+            "path": "verbatim.associatedMedia",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOccurrences",
+            "path": "verbatim.associatedOccurrences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedReferences",
+            "path": "verbatim.associatedReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedSequences",
+            "path": "verbatim.associatedSequences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedTaxa",
+            "path": "verbatim.associatedTaxa",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "otherCatalogNumbers",
+            "path": "verbatim.otherCatalogNumbers",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "occurrenceRemarks",
+            "path": "verbatim.occurrenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismID",
+            "path": "verbatim.organismID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismName",
+            "path": "verbatim.organismName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismScope",
+            "path": "verbatim.organismScope",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "associatedOrganisms",
+            "path": "verbatim.associatedOrganisms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "previousIdentifications",
+            "path": "verbatim.previousIdentifications",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "organismRemarks",
+            "path": "verbatim.organismRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityID",
+            "path": "verbatim.materialEntityID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialEntityRemarks",
+            "path": "verbatim.materialEntityRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLabel",
+            "path": "verbatim.verbatimLabel",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "materialSampleID",
+            "path": "verbatim.materialSampleID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventID",
+            "path": "verbatim.eventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentEventID",
+            "path": "verbatim.parentEventID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventType",
+            "path": "verbatim.eventType",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNumber",
+            "path": "verbatim.fieldNumber",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventDate",
+            "path": "verbatim.eventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventTime",
+            "path": "verbatim.eventTime",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "startDayOfYear",
+            "path": "verbatim.startDayOfYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "endDayOfYear",
+            "path": "verbatim.endDayOfYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "year",
+            "path": "verbatim.year",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "month",
+            "path": "verbatim.month",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "day",
+            "path": "verbatim.day",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimEventDate",
+            "path": "verbatim.verbatimEventDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "habitat",
+            "path": "verbatim.habitat",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingProtocol",
+            "path": "verbatim.samplingProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeValue",
+            "path": "verbatim.sampleSizeValue",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "sampleSizeUnit",
+            "path": "verbatim.sampleSizeUnit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "samplingEffort",
+            "path": "verbatim.samplingEffort",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fieldNotes",
+            "path": "verbatim.fieldNotes",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "eventRemarks",
+            "path": "verbatim.eventRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "projectTitle",
+            "path": "verbatim.projectTitle",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "projectID",
+            "path": "verbatim.projectID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fundingAttribution",
+            "path": "verbatim.fundingAttribution",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "fundingAttributionID",
+            "path": "verbatim.fundingAttributionID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationID",
+            "path": "verbatim.locationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeographyID",
+            "path": "verbatim.higherGeographyID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherGeography",
+            "path": "verbatim.higherGeography",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "continent",
+            "path": "verbatim.continent",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "waterBody",
+            "path": "verbatim.waterBody",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "islandGroup",
+            "path": "verbatim.islandGroup",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "island",
+            "path": "verbatim.island",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "country",
+            "path": "verbatim.country",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "countryCode",
+            "path": "verbatim.countryCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "stateProvince",
+            "path": "verbatim.stateProvince",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "county",
+            "path": "verbatim.county",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "municipality",
+            "path": "verbatim.municipality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locality",
+            "path": "verbatim.locality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLocality",
+            "path": "verbatim.verbatimLocality",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumElevationInMeters",
+            "path": "verbatim.minimumElevationInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumElevationInMeters",
+            "path": "verbatim.maximumElevationInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimElevation",
+            "path": "verbatim.verbatimElevation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verticalDatum",
+            "path": "verbatim.verticalDatum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumDepthInMeters",
+            "path": "verbatim.minimumDepthInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumDepthInMeters",
+            "path": "verbatim.maximumDepthInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimDepth",
+            "path": "verbatim.verbatimDepth",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "minimumDistanceAboveSurfaceInMeters",
+            "path": "verbatim.minimumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "maximumDistanceAboveSurfaceInMeters",
+            "path": "verbatim.maximumDistanceAboveSurfaceInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationAccordingTo",
+            "path": "verbatim.locationAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "locationRemarks",
+            "path": "verbatim.locationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "decimalLatitude",
+            "path": "verbatim.decimalLatitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "decimalLongitude",
+            "path": "verbatim.decimalLongitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "geodeticDatum",
+            "path": "verbatim.geodeticDatum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "coordinateUncertaintyInMeters",
+            "path": "verbatim.coordinateUncertaintyInMeters",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "coordinatePrecision",
+            "path": "verbatim.coordinatePrecision",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "pointRadiusSpatialFit",
+            "path": "verbatim.pointRadiusSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimCoordinates",
+            "path": "verbatim.verbatimCoordinates",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLatitude",
+            "path": "verbatim.verbatimLatitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimLongitude",
+            "path": "verbatim.verbatimLongitude",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimCoordinateSystem",
+            "path": "verbatim.verbatimCoordinateSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimSRS",
+            "path": "verbatim.verbatimSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintWKT",
+            "path": "verbatim.footprintWKT",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSRS",
+            "path": "verbatim.footprintSRS",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "footprintSpatialFit",
+            "path": "verbatim.footprintSpatialFit",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedBy",
+            "path": "verbatim.georeferencedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferencedDate",
+            "path": "verbatim.georeferencedDate",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceProtocol",
+            "path": "verbatim.georeferenceProtocol",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceSources",
+            "path": "verbatim.georeferenceSources",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "georeferenceRemarks",
+            "path": "verbatim.georeferenceRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "geologicalContextID",
+            "path": "verbatim.geologicalContextID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEonOrLowestEonothem",
+            "path": "verbatim.earliestEonOrLowestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEonOrHighestEonothem",
+            "path": "verbatim.latestEonOrHighestEonothem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEraOrLowestErathem",
+            "path": "verbatim.earliestEraOrLowestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEraOrHighestErathem",
+            "path": "verbatim.latestEraOrHighestErathem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestPeriodOrLowestSystem",
+            "path": "verbatim.earliestPeriodOrLowestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestPeriodOrHighestSystem",
+            "path": "verbatim.latestPeriodOrHighestSystem",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestEpochOrLowestSeries",
+            "path": "verbatim.earliestEpochOrLowestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestEpochOrHighestSeries",
+            "path": "verbatim.latestEpochOrHighestSeries",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "earliestAgeOrLowestStage",
+            "path": "verbatim.earliestAgeOrLowestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "latestAgeOrHighestStage",
+            "path": "verbatim.latestAgeOrHighestStage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lowestBiostratigraphicZone",
+            "path": "verbatim.lowestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "highestBiostratigraphicZone",
+            "path": "verbatim.highestBiostratigraphicZone",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "lithostratigraphicTerms",
+            "path": "verbatim.lithostratigraphicTerms",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "group",
+            "path": "verbatim.group",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "formation",
+            "path": "verbatim.formation",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "member",
+            "path": "verbatim.member",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "bed",
+            "path": "verbatim.bed",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationID",
+            "path": "verbatim.identificationID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimIdentification",
+            "path": "verbatim.verbatimIdentification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationQualifier",
+            "path": "verbatim.identificationQualifier",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "typeStatus",
+            "path": "verbatim.typeStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identifiedBy",
+            "path": "verbatim.identifiedBy",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identifiedByID",
+            "path": "verbatim.identifiedByID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "dateIdentified",
+            "path": "verbatim.dateIdentified",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationReferences",
+            "path": "verbatim.identificationReferences",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationVerificationStatus",
+            "path": "verbatim.identificationVerificationStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identificationRemarks",
+            "path": "verbatim.identificationRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonID",
+            "path": "verbatim.taxonID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificNameID",
+            "path": "verbatim.scientificNameID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsageID",
+            "path": "verbatim.acceptedNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsageID",
+            "path": "verbatim.parentNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsageID",
+            "path": "verbatim.originalNameUsageID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingToID",
+            "path": "verbatim.nameAccordingToID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInID",
+            "path": "verbatim.namePublishedInID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonConceptID",
+            "path": "verbatim.taxonConceptID",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificName",
+            "path": "verbatim.scientificName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "acceptedNameUsage",
+            "path": "verbatim.acceptedNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "parentNameUsage",
+            "path": "verbatim.parentNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "originalNameUsage",
+            "path": "verbatim.originalNameUsage",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nameAccordingTo",
+            "path": "verbatim.nameAccordingTo",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedIn",
+            "path": "verbatim.namePublishedIn",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "namePublishedInYear",
+            "path": "verbatim.namePublishedInYear",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "higherClassification",
+            "path": "verbatim.higherClassification",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "kingdom",
+            "path": "verbatim.kingdom",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "phylum",
+            "path": "verbatim.phylum",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "class",
+            "path": "verbatim.class",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "order",
+            "path": "verbatim.order",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "superfamily",
+            "path": "verbatim.superfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "family",
+            "path": "verbatim.family",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subfamily",
+            "path": "verbatim.subfamily",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "tribe",
+            "path": "verbatim.tribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subtribe",
+            "path": "verbatim.subtribe",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genus",
+            "path": "verbatim.genus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "genericName",
+            "path": "verbatim.genericName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "subgenus",
+            "path": "verbatim.subgenus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infragenericEpithet",
+            "path": "verbatim.infragenericEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "specificEpithet",
+            "path": "verbatim.specificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "infraspecificEpithet",
+            "path": "verbatim.infraspecificEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "cultivarEpithet",
+            "path": "verbatim.cultivarEpithet",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRank",
+            "path": "verbatim.taxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "verbatimTaxonRank",
+            "path": "verbatim.verbatimTaxonRank",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "scientificNameAuthorship",
+            "path": "verbatim.scientificNameAuthorship",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "vernacularName",
+            "path": "verbatim.vernacularName",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalCode",
+            "path": "verbatim.nomenclaturalCode",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonomicStatus",
+            "path": "verbatim.taxonomicStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "nomenclaturalStatus",
+            "path": "verbatim.nomenclaturalStatus",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "taxonRemarks",
+            "path": "verbatim.taxonRemarks",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "path": "verbatim.gbifid_div1000000",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "gbifID",
+            "path": "multimedia.list.element.gbifID",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=true)"
+          },
+          {
+            "name": "type",
+            "path": "multimedia.list.element.type",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "format",
+            "path": "multimedia.list.element.format",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "identifier",
+            "path": "multimedia.list.element.identifier",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "references",
+            "path": "multimedia.list.element.references",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "title",
+            "path": "multimedia.list.element.title",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "description",
+            "path": "multimedia.list.element.description",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "source",
+            "path": "multimedia.list.element.source",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "audience",
+            "path": "multimedia.list.element.audience",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "created",
+            "path": "multimedia.list.element.created",
+            "type": "INT64",
+            "logical": "Timestamp(isAdjustedToUTC=true, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)"
+          },
+          {
+            "name": "creator",
+            "path": "multimedia.list.element.creator",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "contributor",
+            "path": "multimedia.list.element.contributor",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "publisher",
+            "path": "multimedia.list.element.publisher",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "license",
+            "path": "multimedia.list.element.license",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "rightsHolder",
+            "path": "multimedia.list.element.rightsHolder",
+            "type": "BYTE_ARRAY",
+            "logical": "String"
+          },
+          {
+            "name": "gbifid_div1000000",
+            "path": "multimedia.list.element.gbifid_div1000000",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r0",
+            "path": "a5_cell.r0",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r1",
+            "path": "a5_cell.r1",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r2",
+            "path": "a5_cell.r2",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r3",
+            "path": "a5_cell.r3",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r4",
+            "path": "a5_cell.r4",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r5",
+            "path": "a5_cell.r5",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r6",
+            "path": "a5_cell.r6",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r7",
+            "path": "a5_cell.r7",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r8",
+            "path": "a5_cell.r8",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r9",
+            "path": "a5_cell.r9",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r10",
+            "path": "a5_cell.r10",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r11",
+            "path": "a5_cell.r11",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r12",
+            "path": "a5_cell.r12",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r13",
+            "path": "a5_cell.r13",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r14",
+            "path": "a5_cell.r14",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r15",
+            "path": "a5_cell.r15",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r16",
+            "path": "a5_cell.r16",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r17",
+            "path": "a5_cell.r17",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r18",
+            "path": "a5_cell.r18",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r19",
+            "path": "a5_cell.r19",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r20",
+            "path": "a5_cell.r20",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r21",
+            "path": "a5_cell.r21",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r22",
+            "path": "a5_cell.r22",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r23",
+            "path": "a5_cell.r23",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r0",
+            "path": "h3_cell.r0",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r1",
+            "path": "h3_cell.r1",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r2",
+            "path": "h3_cell.r2",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r3",
+            "path": "h3_cell.r3",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r4",
+            "path": "h3_cell.r4",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r5",
+            "path": "h3_cell.r5",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r6",
+            "path": "h3_cell.r6",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r7",
+            "path": "h3_cell.r7",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r8",
+            "path": "h3_cell.r8",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r9",
+            "path": "h3_cell.r9",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r10",
+            "path": "h3_cell.r10",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r11",
+            "path": "h3_cell.r11",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r12",
+            "path": "h3_cell.r12",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r13",
+            "path": "h3_cell.r13",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r14",
+            "path": "h3_cell.r14",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          },
+          {
+            "name": "r15",
+            "path": "h3_cell.r15",
+            "type": "INT64",
+            "logical": "Int(bitWidth=64, isSigned=false)"
+          }
+        ],
+        "first_row_group_rows": 100352,
+        "first_row_group_compressed_bytes": 44151891
+      }
+    },
+    "october_snapshot_citation": "GBIF.org (1 October 2026) GBIF Occurrence Download https://doi.org/10.15468/dl.tup2g6\n"
+  },
+  "blockers": [],
+  "provenance": {
+    "globi_fixed_version": "10.5281/zenodo.22691479",
+    "gbif_development_status": "EXPERIMENTAL_partitioned_snapshot_NOT_officially_promised_stable",
+    "gbif_october_snapshot": "2026-10-01",
+    "gbif_aws_doc": "https://github.com/gbif/occurrence/blob/dev/aws-public-data.md"
+  }
+}

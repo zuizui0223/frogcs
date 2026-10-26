@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lissotriton+boscai&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:15.339036+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "e7b081b0bdfc5a000cf2333a65663c8bfad1bf6307b3bf3027636c90896fbad5",
+  "response": {
+    "usageKey": 5218408,
+    "scientificName": "Lissotriton boscai (Lataste, 1879)",
+    "canonicalName": "Lissotriton boscai",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Lissotriton",
+    "species": "Lissotriton boscai",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 5218404,
+    "speciesKey": 5218408,
+    "class": "Amphibia"
+  }
+}

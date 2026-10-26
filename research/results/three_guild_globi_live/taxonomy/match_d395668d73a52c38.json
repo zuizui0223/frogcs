@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Calotriton+arnoldi&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:05:45.790531+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "c95bba5473288fed1ef1851b6e1d195388e7d239bfdd0e0d919f2e0f4ac4d724",
+  "response": {
+    "usageKey": 2431827,
+    "scientificName": "Calotriton arnoldi Carranza & Amat, 2005",
+    "canonicalName": "Calotriton arnoldi",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Calotriton",
+    "species": "Calotriton arnoldi",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431823,
+    "speciesKey": 2431827,
+    "class": "Amphibia"
+  }
+}

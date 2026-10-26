@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pseudacris+brachyphona&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:38.447224+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "e07010b7592749f1588a83ef8572620632a72383da5d583a1a8ec36f0f90a021",
+  "response": {
+    "usageKey": 2428144,
+    "scientificName": "Pseudacris brachyphona (Cope, 1889)",
+    "canonicalName": "Pseudacris brachyphona",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Pseudacris",
+    "species": "Pseudacris brachyphona",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 2428124,
+    "speciesKey": 2428144,
+    "class": "Amphibia"
+  }
+}

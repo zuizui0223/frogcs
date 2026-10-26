@@ -1,0 +1,128 @@
+{
+  "source": "NPS GLKN DOI 10.57830/2320505 fixed 2016–2023 release",
+  "posthoc": true,
+  "contract": "research/NPS_GLKN_HISTORY_WEAK_VS_STRONG_SENSITIVITY_V0_1.md",
+  "prior_positive_site_taxon_years": 1969,
+  "historical_prior_weak_n": 415,
+  "historical_prior_strong_n": 1554,
+  "eligible_strata_considered": 308,
+  "informative_rows": 1067,
+  "informative_strata": 143,
+  "weak_versus_strong_results": {
+    "unadjusted": {
+      "estimable": true,
+      "outcome": "strong",
+      "adjusted": false,
+      "n_site_taxon_year_rows": 1067,
+      "n_park_species_clusters": 33,
+      "n_park_species_year_strata": 143,
+      "coefficients": {
+        "own_prior_strong": 0.38608790712596697
+      },
+      "own_prior_strong_beta": 0.38608790712596697,
+      "ci95_park_species_block": [
+        0.29380239476527376,
+        0.4633229430577195
+      ],
+      "valid_boot_replicates": 2000,
+      "nuisance_covariates_dropped_for_identifiability": [],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    },
+    "adjusted": {
+      "estimable": true,
+      "outcome": "strong",
+      "adjusted": true,
+      "n_site_taxon_year_rows": 1067,
+      "n_park_species_clusters": 33,
+      "n_park_species_year_strata": 143,
+      "coefficients": {
+        "own_prior_strong": 0.3888539780155359,
+        "other_prior_fixed": -0.10569220915611494,
+        "log_current_effort": 0.4087253425288121,
+        "log_prior_effort": 0.2812426960708261,
+        "prior_years_seen": -0.07800449649659057,
+        "hydro_Permanent": -0.040466297005374074,
+        "hydro_Semi-permanent": -0.02974826191559675
+      },
+      "own_prior_strong_beta": 0.3888539780155359,
+      "ci95_park_species_block": [
+        0.29647382718033277,
+        0.4620652014748837
+      ],
+      "valid_boot_replicates": 2000,
+      "nuisance_covariates_dropped_for_identifiability": [
+        "other_prior_missing"
+      ],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    }
+  },
+  "leave_one_park_out_main": [
+    {
+      "omitted_park": "APIS",
+      "n": 1578,
+      "coefficient": 0.4522661523625847,
+      "estimable": true
+    },
+    {
+      "omitted_park": "GRPO",
+      "n": 1707,
+      "coefficient": 0.4896449451991753,
+      "estimable": true
+    },
+    {
+      "omitted_park": "INDU",
+      "n": 1424,
+      "coefficient": 0.5057453575459115,
+      "estimable": true
+    },
+    {
+      "omitted_park": "ISRO",
+      "n": 1545,
+      "coefficient": 0.45285106772143224,
+      "estimable": true
+    },
+    {
+      "omitted_park": "MISS",
+      "n": 1495,
+      "coefficient": 0.4745940384559389,
+      "estimable": true
+    },
+    {
+      "omitted_park": "PIRO",
+      "n": 1568,
+      "coefficient": 0.4720434879076992,
+      "estimable": true
+    },
+    {
+      "omitted_park": "SLBE",
+      "n": 1573,
+      "coefficient": 0.4266512770869017,
+      "estimable": true
+    }
+  ],
+  "high_current_effort_sensitivity": {
+    "threshold_species_scored_recordings": 10,
+    "groups_considered": 435,
+    "informative_rows": 1803,
+    "unadjusted": {
+      "estimable": true,
+      "outcome": "strong",
+      "adjusted": false,
+      "n_site_taxon_year_rows": 1803,
+      "n_park_species_clusters": 38,
+      "n_park_species_year_strata": 195,
+      "coefficients": {
+        "own_prior_strong": 0.4706998584844978
+      },
+      "own_prior_strong_beta": 0.4706998584844978,
+      "ci95_park_species_block": [
+        0.3905341019435047,
+        0.5411222722348089
+      ],
+      "valid_boot_replicates": 500,
+      "nuisance_covariates_dropped_for_identifiability": [],
+      "note": "Within species×park×year risk-difference-style slope, cluster bootstrap by species×park trajectories; not randomization or causal individual fidelity"
+    }
+  },
+  "boundary": "Acoustic observation-history strengths; does not identify behavior, real abundance or plant effects"
+}

@@ -1,0 +1,40 @@
+name: Research — INBO taxon/site/date G0.1
+on:
+  push:
+    branches:
+      - integration/stage-legacy-unified-2026-10-25
+    paths:
+      - research/scripts/inbo_stage_taxon_g0.py
+      - .github/workflows/research_inbo_stage_taxon_g0.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  data-opportunity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify schema audit syntax
+        run: python3 -m py_compile research/scripts/inbo_stage_taxon_g0.py
+      - name: Run source-digest-pinned site/time/taxon G0.1 only
+        run: python3 research/scripts/inbo_stage_taxon_g0.py --out /tmp/inbo_taxon_g0.json
+      - name: Assert raw response fields never inspected
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/inbo_taxon_g0.json'))
+          assert d["no_stage_outcomes_or_egg_success_inspected"] is True
+          assert d["cross_stage_predation_supported"] is False
+          assert d["site_identifiers_redistributed"] is False
+          print("SOURCE_BLIND_G0_1_PASS")
+          PY
+      - name: Store aggregate audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inbo_stage_taxon_g0_receipt
+          path: /tmp/inbo_taxon_g0.json
+          if-no-files-found: warn

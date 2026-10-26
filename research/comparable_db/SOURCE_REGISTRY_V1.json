@@ -1,0 +1,243 @@
+{
+  "schema_version": "frogcs-comparable-observations/1.0",
+  "authority": "research/comparable_db/SCHEMA_AND_RULES_V1.md",
+  "data_level": "source registry of original, source-pinned and distinct spatial support levels",
+  "created_on": "2026-10-26",
+  "source_count": 8,
+  "canonical_key": "source_id × original location (never cross-source inferred) × year × month × taxon × stage × method",
+  "no_implicit_geographic_or_lifestage_join": true,
+  "source_modules": [
+    {
+      "source_id": "NAAMP_RC6",
+      "source_doi": "JAE candidate / NAAMP public data",
+      "result_receipt": "provenance/CURRENT_RESULTS.json",
+      "method": "sequential roadside acoustic stops",
+      "spatial_support": "roadside_stop",
+      "time_support": "matched route-night sequential stops",
+      "observed_stages": [
+        "adult_call"
+      ],
+      "years_available": "RC6 source-defined",
+      "original_data_checksum": "frozen_provenance",
+      "verified_native_pond_id": false,
+      "has_rain": true,
+      "rain_measurement": "NAAMP rain-match / separate ERA5 antecedent analysis; not field pond wetness",
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": null,
+      "has_plant_cover": false,
+      "plant_measurement": null,
+      "has_predator_or_competitor_stage": false,
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "NAAMP_RC6"
+      ],
+      "safe_inference": "within-taxonomic route multi-stop acoustic concentration; no observed pond-specific predation",
+      "publication_status": "RC6 science locked, stand-alone submission deferred"
+    },
+    {
+      "source_id": "NPS_GLKN",
+      "source_doi": "10.57830/2320505",
+      "result_receipt": "research/results/nps_hydroperiod_history/observed_results.json",
+      "method": "species-by-station acoustic recording",
+      "spatial_support": "audio_recorder_station",
+      "time_support": "annual maximum over 2016–2023",
+      "observed_stages": [
+        "adult_call"
+      ],
+      "years_available": "2016–2023",
+      "original_data_checksum": "sha256:b1c11cf70472a906e6c238a690a5a12373cdd20ef4d5e180fa3f376d520118c2",
+      "verified_native_pond_id": false,
+      "has_rain": false,
+      "rain_measurement": null,
+      "has_hydroperiod": true,
+      "hydroperiod_measurement": "broad categorical Permanent/Semi-permanent/Ephemeral, not dynamic dry-down",
+      "has_plant_cover": false,
+      "plant_measurement": null,
+      "has_predator_or_competitor_stage": false,
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "NPS_GLKN"
+      ],
+      "safe_inference": "prior same-taxon acoustic use associated with current strong calls across broad class; no stage mechanism",
+      "publication_status": "research/observed"
+    },
+    {
+      "source_id": "HUNGARY_2024",
+      "source_doi": "10.5281/zenodo.15044115",
+      "result_receipt": "research/results/hungary_2024_screen/observed_results.json",
+      "method": "acoustic/visual/dipnet/bottletrap visits",
+      "spatial_support": "actual_wetland",
+      "time_support": "dated visits March–May 2024",
+      "observed_stages": [
+        "adult_call",
+        "method_specific_undetermined_stage"
+      ],
+      "years_available": "2024",
+      "original_data_checksum": "source MD5 survey edcd6f12518192c01e3dbae8521c16c9 site 795da443249760fbc0bf30249910a4ef",
+      "verified_native_pond_id": true,
+      "has_rain": true,
+      "rain_measurement": "field prec recorded per survey, units/source interval distinct from NAAMP",
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": "one-time site water depth, NOT hydroperiod duration",
+      "has_plant_cover": true,
+      "plant_measurement": "site-level emergent and submerged cover percentages, NOT dated plant emergence or refuge use",
+      "has_predator_or_competitor_stage": false,
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "HUNGARY_2024"
+      ],
+      "safe_inference": "2024 wetland presence-only call patterns and rain×cover associations; no direct larval stage taxonomy",
+      "publication_status": "research/observed"
+    },
+    {
+      "source_id": "INBO_CHORUS",
+      "source_doi": "10.15468/d4bu8j",
+      "result_receipt": "research/results/part2_g0/observed_source_eligibility.json",
+      "method": "adult amphibian calling event",
+      "spatial_support": "publisher_source_location",
+      "time_support": "dated events 2016–2025",
+      "observed_stages": [
+        "adult_call"
+      ],
+      "years_available": "2016–2025",
+      "original_data_checksum": "sha256:686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+      "verified_native_pond_id": false,
+      "has_rain": false,
+      "rain_measurement": null,
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": null,
+      "has_plant_cover": false,
+      "plant_measurement": null,
+      "has_predator_or_competitor_stage": false,
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "INBO_CHORUS",
+        "INBO_LARVA"
+      ],
+      "safe_inference": "publisher exact locationID adult chorus reporting status; no intensity/individual breeding measurement",
+      "publication_status": "research/observed"
+    },
+    {
+      "source_id": "INBO_LARVA",
+      "source_doi": "10.15468/swgure",
+      "result_receipt": "research/results/part2_g0/inbo_species_time_eligibility.json",
+      "method": "amphibian larvae/metamorph survey (no insects sampled)",
+      "spatial_support": "publisher_source_location",
+      "time_support": "dated events 2016–2025",
+      "observed_stages": [
+        "larva",
+        "adult",
+        "metamorph"
+      ],
+      "years_available": "2016–2025",
+      "original_data_checksum": "sha256:c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+      "verified_native_pond_id": false,
+      "has_rain": false,
+      "rain_measurement": null,
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": "permanent water column type sparsely supplied but 0/245 selected Hyla match rows",
+      "has_plant_cover": false,
+      "plant_measurement": null,
+      "has_predator_or_competitor_stage": true,
+      "predator_or_competitor_stage_qualification": "other anuran and caudata larva label only; not verified feeding or stage size",
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "INBO_CHORUS",
+        "INBO_LARVA"
+      ],
+      "safe_inference": "cross-stage source reports at original locationID; non-detections observed, true survival/diet not",
+      "publication_status": "research/observed"
+    },
+    {
+      "source_id": "GLOBAL_GLOBI_RELATIONS",
+      "source_doi": "10.5281/zenodo.22691479",
+      "result_receipt": "research/results/full_globi_2026_stage_gbif_grid/observed_results.json",
+      "method": "indexed literature/observation trophic relation",
+      "spatial_support": "directed_literature_edge",
+      "time_support": "source-specific or undated",
+      "observed_stages": [
+        "source-labelled_predator_stage",
+        "source-labelled_prey_stage"
+      ],
+      "years_available": "varies by original source",
+      "original_data_checksum": "md5:8212776b7ba0c4fa8de26a00b5ce8595",
+      "verified_native_pond_id": false,
+      "has_rain": false,
+      "rain_measurement": null,
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": null,
+      "has_plant_cover": false,
+      "plant_measurement": null,
+      "has_predator_or_competitor_stage": true,
+      "predator_or_competitor_stage_qualification": "stage-labelled source-directed edge, not local realized predation",
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "GLOBAL_GBIF_STAGE_REPORTS"
+      ],
+      "safe_inference": "candidate diet network topology, source-selected and heterogeneous",
+      "publication_status": "research/observed"
+    },
+    {
+      "source_id": "GLOBAL_GBIF_STAGE_REPORTS",
+      "source_doi": "experimental anonymous GBIF 2026-08 (not version-stable DOI)",
+      "result_receipt": "research/results/expanded_stage_specificity/observed_results.json",
+      "method": "opportunistic species occurrence with lifeStage label",
+      "spatial_support": "coarse_grid",
+      "time_support": "1° grid×year×month stage reports; dated events from 2010–2025",
+      "observed_stages": [
+        "adult",
+        "egg",
+        "larva",
+        "juvenile",
+        "unknown"
+      ],
+      "years_available": "2010–2025 eligibility",
+      "original_data_checksum": "experimental source snapshot, query versions not independently DOI-pinned",
+      "verified_native_pond_id": false,
+      "has_rain": false,
+      "rain_measurement": "external WorldClim historical grid-month only; not antecedent pond rain",
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": "static EarthEnv flooded cover, not actual seasonal wetness",
+      "has_plant_cover": false,
+      "plant_measurement": "static flooded vegetation background only, not emergence or shelter",
+      "has_predator_or_competitor_stage": true,
+      "predator_or_competitor_stage_qualification": "GBIF report of taxa, not interactions; nonpredator controls not verified",
+      "has_reproduction_success": false,
+      "joinable_with": [
+        "GLOBAL_GLOBI_RELATIONS"
+      ],
+      "safe_inference": "monthly geospatial stage reporting and source effort only; no survival or attacks",
+      "publication_status": "research/exploratory"
+    },
+    {
+      "source_id": "FUSCUS_LAB_G2B",
+      "source_doi": "10.1111/fwb.70124, hdl 10261/411885",
+      "result_receipt": "research/results/part2_g2/fuscus_factorial_observed_results.json",
+      "method": "randomized lab cue/water/temperature exposures",
+      "spatial_support": "lab_container",
+      "time_support": "development to Gosner 46",
+      "observed_stages": [
+        "larva",
+        "metamorph"
+      ],
+      "years_available": "published source experiment",
+      "original_data_checksum": "sha256:eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25",
+      "verified_native_pond_id": false,
+      "has_rain": false,
+      "rain_measurement": null,
+      "has_hydroperiod": false,
+      "hydroperiod_measurement": "experimentally lowered water level only",
+      "has_plant_cover": false,
+      "plant_measurement": null,
+      "has_predator_or_competitor_stage": false,
+      "predator_or_competitor_stage_qualification": "predator chemical cue, not actual predator abundance or consumption",
+      "has_reproduction_success": true,
+      "reproduction_success_qualification": "observed G46 survival/status, 14 of 240 expected rows unlisted",
+      "joinable_with": [
+        "FUSCUS_LAB_G2B"
+      ],
+      "safe_inference": "experimental treatment contrasts for metamorph mass/time and survival sensitivity, not natural pond demography",
+      "publication_status": "research/observed"
+    }
+  ]
+}

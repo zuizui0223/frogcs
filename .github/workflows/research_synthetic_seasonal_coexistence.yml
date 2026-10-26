@@ -1,0 +1,34 @@
+name: Synthetic seasonal frog salamander dragonfly network QA
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/simulate_seasonal_trophic_network.py
+      - .github/workflows/research_synthetic_seasonal_coexistence.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage-phase-counterexample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numeric library
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3'
+      - name: Check positivity stage windows and initial-condition diagnostics
+        run: python research/scripts/simulate_seasonal_trophic_network.py --self-test
+      - name: Run reproducible arbitrary-parameter three-guild phase coexistence exploration
+        run: |
+          python research/scripts/simulate_seasonal_trophic_network.py \
+            --out research/results/synthetic_stage_network
+      - name: Archive explicitly synthetic mathematical outputs only
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-three-guild-stage-phenology-coexistence
+          path: research/results/synthetic_stage_network
+          if-no-files-found: error

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lithobates+clamitans&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:30.137727+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "e278fa5f89ab0f6d3d6f27da8c39328d8fc10798d3523002fb28e7b68abb72df",
+  "response": {
+    "usageKey": 2427172,
+    "scientificName": "Lithobates clamitans (Latreille, 1801)",
+    "canonicalName": "Lithobates clamitans",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "species": "Lithobates clamitans",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "speciesKey": 2427172,
+    "class": "Amphibia"
+  }
+}

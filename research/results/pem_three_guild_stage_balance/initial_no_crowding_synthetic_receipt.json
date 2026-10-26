@@ -1,0 +1,187 @@
+{
+  "type": "SYNTHETIC_ONLY_NOT_OBSERVED_PEM_OR_GLOBI_OUTCOME",
+  "model": "Beverton-Holt 3annual lineages with fixed within-year stage-specific interaction kernels, weak/strong dragonfly cues, PEM hydrology windows, frog size mismatch and stylized predator satiation",
+  "seed": 20261025,
+  "draws": 128,
+  "years": 250,
+  "source_code_in_repo": "research/scripts/simulate_pem_three_guild_stage_balance.py",
+  "parameter_origin": "USER-HYPOTHESIS_MOTIVATED_TOY_VALUES_NO_FITTED_PARAMETERS",
+  "PEM_scenarios": {
+    "PEM1A": {
+      "wet_start": 0.105,
+      "wet_end": 0.44,
+      "salamander_background_recruit": 0.88,
+      "odonate_background_recruit": 0.62
+    },
+    "PEM1C": {
+      "wet_start": 0.08,
+      "wet_end": 0.73,
+      "salamander_background_recruit": 0.98,
+      "odonate_background_recruit": 0.85
+    },
+    "PEM1F": {
+      "wet_start": 0.045,
+      "wet_end": 0.94,
+      "salamander_background_recruit": 1,
+      "odonate_background_recruit": 1
+    }
+  },
+  "per_class_breeding": [
+    {
+      "PEM_class": "PEM1A",
+      "frog_breeding": "narrow_cohort",
+      "number_synthetic_scenarios": 36,
+      "median_breeding_egg_to_metamorph_water_window_fraction": 0.9971168910598331,
+      "median_cohort_size_mismatch": 0.024754291673078854,
+      "min_apparent_persistence_fraction": 0.765625,
+      "max_apparent_persistence_fraction": 0.921875,
+      "median_apparent_persistence_fraction": 0.87109375,
+      "scenario_fraction_with_some_parameter_draws_showing_indirect_protective_dragonfly_hazard": 0.9444444444444444
+    },
+    {
+      "PEM_class": "PEM1A",
+      "frog_breeding": "broad_cohort",
+      "number_synthetic_scenarios": 36,
+      "median_breeding_egg_to_metamorph_water_window_fraction": 0.5730149707985008,
+      "median_cohort_size_mismatch": 0.35488631803664655,
+      "min_apparent_persistence_fraction": 0,
+      "max_apparent_persistence_fraction": 0.0625,
+      "median_apparent_persistence_fraction": 0.0078125,
+      "scenario_fraction_with_some_parameter_draws_showing_indirect_protective_dragonfly_hazard": 0.9444444444444444
+    },
+    {
+      "PEM_class": "PEM1C",
+      "frog_breeding": "narrow_cohort",
+      "number_synthetic_scenarios": 36,
+      "median_breeding_egg_to_metamorph_water_window_fraction": 0.9999999999999523,
+      "median_cohort_size_mismatch": 0.024754291673078854,
+      "min_apparent_persistence_fraction": 0.609375,
+      "max_apparent_persistence_fraction": 1,
+      "median_apparent_persistence_fraction": 0.765625,
+      "scenario_fraction_with_some_parameter_draws_showing_indirect_protective_dragonfly_hazard": 0.9444444444444444
+    },
+    {
+      "PEM_class": "PEM1C",
+      "frog_breeding": "broad_cohort",
+      "number_synthetic_scenarios": 36,
+      "median_breeding_egg_to_metamorph_water_window_fraction": 0.9202718926287495,
+      "median_cohort_size_mismatch": 0.35488631803664655,
+      "min_apparent_persistence_fraction": 0.1640625,
+      "max_apparent_persistence_fraction": 0.578125,
+      "median_apparent_persistence_fraction": 0.35546875,
+      "scenario_fraction_with_some_parameter_draws_showing_indirect_protective_dragonfly_hazard": 0.9444444444444444
+    },
+    {
+      "PEM_class": "PEM1F",
+      "frog_breeding": "narrow_cohort",
+      "number_synthetic_scenarios": 36,
+      "median_breeding_egg_to_metamorph_water_window_fraction": 1,
+      "median_cohort_size_mismatch": 0.024754291673078854,
+      "min_apparent_persistence_fraction": 0.59375,
+      "max_apparent_persistence_fraction": 0.9765625,
+      "median_apparent_persistence_fraction": 0.73828125,
+      "scenario_fraction_with_some_parameter_draws_showing_indirect_protective_dragonfly_hazard": 0.9444444444444444
+    },
+    {
+      "PEM_class": "PEM1F",
+      "frog_breeding": "broad_cohort",
+      "number_synthetic_scenarios": 36,
+      "median_breeding_egg_to_metamorph_water_window_fraction": 0.96428936111821,
+      "median_cohort_size_mismatch": 0.35488631803664655,
+      "min_apparent_persistence_fraction": 0.1796875,
+      "max_apparent_persistence_fraction": 0.71875,
+      "median_apparent_persistence_fraction": 0.47265625,
+      "scenario_fraction_with_some_parameter_draws_showing_indirect_protective_dragonfly_hazard": 0.9444444444444444
+    }
+  ],
+  "cohort_synchrony_persistence_comparison": {
+    "comparison_scenarios": 108,
+    "narrow_more_three_guild_persistence": 108,
+    "diffuse_more_three_guild_persistence": 0,
+    "tied_three_guild_persistence": 0,
+    "range_narrow_minus_diffuse": [
+      0.0546875,
+      0.921875
+    ],
+    "interpretation": "Synthetic parameter ensemble may show different signs, not actual wetland frequencies."
+  },
+  "sample_case_with_dragonfly_net_frog_hazard_reduction": {
+    "site_class": "PEM1A",
+    "breeding_cohort_timing": "narrow_cohort",
+    "frog_breeding_std_fraction_year": 0.018,
+    "vegetation_refuge_proxy": 0.15,
+    "salamander_larval_shift_fraction_year": -0.12,
+    "dragonfly_larval_shift_fraction_year": -0.18,
+    "odonate_suppression_of_salamander": "strong_dragonfly_cue",
+    "frog_egg_to_metamorph_wet_window_fraction": 0.9971168910598331,
+    "frog_older_to_younger_size_mismatch_pair_probability": 0.024754291673078854,
+    "predator_satiation_attack_factor": 0.3846153846153846,
+    "annual_flooded_fraction": 0.3333333333333333,
+    "annual_available_emergence_exposure": 0.032685716260343625,
+    "salamander_larva_eats_frog_tadpole": 0.09627925008450668,
+    "dragonfly_nymph_eats_frog_tadpole": 0.07873848772443517,
+    "dragonfly_nymph_risk_to_salamander_larva": 0.1715952267559849,
+    "frog_adult_eats_emerging_dragonfly": 0.000663068203314322,
+    "net_dragonfly_effect_lowers_frog_hazard_fraction_synthetic": 0.328125,
+    "median_signed_derivative_of_frog_kill_hazard_synthetic": 0.00039171350894695307,
+    "synthetic_3guild_persistence_fraction_from_four_initial_conditions": 0.78125,
+    "synthetic_3guild_persistence_parameter_draws": 100
+  },
+  "positive_reverse_edge_window_examples": [
+    {
+      "site_class": "PEM1F",
+      "breeding_cohort_timing": "broad_cohort",
+      "frog_breeding_std_fraction_year": 0.095,
+      "vegetation_refuge_proxy": 0.15,
+      "salamander_larval_shift_fraction_year": -0.12,
+      "dragonfly_larval_shift_fraction_year": 0,
+      "odonate_suppression_of_salamander": "weak_dragonfly_cue",
+      "frog_egg_to_metamorph_wet_window_fraction": 0.96428936111821,
+      "frog_older_to_younger_size_mismatch_pair_probability": 0.35488631803664655,
+      "predator_satiation_attack_factor": 1,
+      "annual_flooded_fraction": 0.8958333333333334,
+      "annual_available_emergence_exposure": 0.18791518367643198,
+      "salamander_larva_eats_frog_tadpole": 0.16592076749590093,
+      "dragonfly_nymph_eats_frog_tadpole": 0.1798713307355099,
+      "dragonfly_nymph_risk_to_salamander_larva": 0.12240731452291807,
+      "frog_adult_eats_emerging_dragonfly": 0.17098888655057423,
+      "net_dragonfly_effect_lowers_frog_hazard_fraction_synthetic": 0.0234375,
+      "median_signed_derivative_of_frog_kill_hazard_synthetic": 0.0056856637521431625,
+      "synthetic_3guild_persistence_fraction_from_four_initial_conditions": 0.1875,
+      "synthetic_3guild_persistence_parameter_draws": 24
+    },
+    {
+      "site_class": "PEM1F",
+      "breeding_cohort_timing": "broad_cohort",
+      "frog_breeding_std_fraction_year": 0.095,
+      "vegetation_refuge_proxy": 0.15,
+      "salamander_larval_shift_fraction_year": -0.12,
+      "dragonfly_larval_shift_fraction_year": 0,
+      "odonate_suppression_of_salamander": "strong_dragonfly_cue",
+      "frog_egg_to_metamorph_wet_window_fraction": 0.96428936111821,
+      "frog_older_to_younger_size_mismatch_pair_probability": 0.35488631803664655,
+      "predator_satiation_attack_factor": 1,
+      "annual_flooded_fraction": 0.8958333333333334,
+      "annual_available_emergence_exposure": 0.18791518367643198,
+      "salamander_larva_eats_frog_tadpole": 0.16592076749590093,
+      "dragonfly_nymph_eats_frog_tadpole": 0.1798713307355099,
+      "dragonfly_nymph_risk_to_salamander_larva": 0.12240731452291807,
+      "frog_adult_eats_emerging_dragonfly": 0.17098888655057423,
+      "net_dragonfly_effect_lowers_frog_hazard_fraction_synthetic": 0.203125,
+      "median_signed_derivative_of_frog_kill_hazard_synthetic": 0.00356443670167874,
+      "synthetic_3guild_persistence_fraction_from_four_initial_conditions": 0.2109375,
+      "synthetic_3guild_persistence_parameter_draws": 27
+    }
+  ],
+  "strict_limits": [
+    "This is not measured NAAMP/NPS habitat classification, actual frog breeding, GloBI encounters, GBIF population statistics or real coexistence.",
+    "PEM water windows and 128 parameter draws are illustrative and physically imposed; they do not come from actual NWI wetlands.",
+    "Frog tadpoles and salamander/odonate larvae are seasonal activity kernels, not independent age-structured cohort census compartments.",
+    "Beverton-Holt persistence from all-present and rare-start initial conditions is NOT mathematical mutual invasion growth of each focal species into independent two-species resident attractors.",
+    "A formula-induced positive/negative dragonfly effect reflects the presence of direct D→F attacks and indirect D⊣S⊣F suppression; not a real population benefit.",
+    "Frog cohort age-size mismatch cannibalism comes from Gaussian brood timing illustrative formula, not empirically measured genotype/stage distributions.",
+    "Do not transport the Australian frog/dragonfly species-pair direction reversal into the Japanese Rana/Hynobius/Aeshna identity.",
+    "PEM1A/C/F are NWI classifications, not verified locations of any current frogcs acoustic stop; fixed 1990s-2000s EarthEnv is not same as PEM polygons.",
+    "No field-calibrated plant refuge, dragonfly emergence, salamander attack, social chorus benefits, aquatic eDNA, or variation in water temperature is modeled."
+  ]
+}

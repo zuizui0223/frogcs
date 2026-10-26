@@ -1,0 +1,52 @@
+name: Research — stage-legacy integration QA
+
+on:
+  push:
+    branches:
+      - integration/stage-legacy-unified-2026-10-25
+    paths:
+      - research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md
+      - research/STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json
+      - research/README.md
+      - research/scripts/stage_legacy_integration_gate.py
+      - .github/workflows/research_stage_legacy_integration_qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage-legacy-preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout all history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Preserve locked JAE RC6 science
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          changed="$(git diff --name-only origin/main...HEAD)"
+          echo "$changed"
+          if printf '%s\n' "$changed" | grep -E '^(paper/|submission/|provenance/|figures_pulse_template/|scripts/naamp/)'; then
+            echo "::error::Prospective research touched a locked RC6 scientific path"
+            exit 1
+          fi
+      - name: Check pinned acoustic receipts and synthetic coverage fail-closed rules
+        run: |
+          python3 research/scripts/stage_legacy_integration_gate.py --self-test --out /tmp/stage_legacy_preflight.json
+          python3 -m json.tool /tmp/stage_legacy_preflight.json > /dev/null
+      - name: Print mechanistic release status
+        run: |
+          python3 - <<'PY'
+          import json
+          with open("/tmp/stage_legacy_preflight.json", encoding="utf-8") as handle:
+              r=json.load(handle)
+          assert r["mechanistic_inference_authorized"] is False
+          assert r["integrated_paper_ready"] is False
+          assert r["existing_receipts"]["rc6_science_lock"] == "MATCHES_FROZEN_READOUT_NO_REFIT"
+          assert r["existing_receipts"]["nps_independent_acoustic_history"] == "MATCHES_SOURCE_RECEIPT"
+          print("PASS: RC6 retained; cross-stage mechanism remains unproven.")
+          PY

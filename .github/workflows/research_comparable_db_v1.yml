@@ -1,0 +1,57 @@
+name: Research - comparable source stage-month observations v1
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/build_comparable_observations_v1.py
+      - research/scripts/test_seasonality_and_vegetation_v1.py
+      - research/comparable_db/SCHEMA_AND_RULES_V1.md
+      - research/comparable_db/SOURCE_REGISTRY_V1.json
+      - .github/workflows/research_comparable_db_v1.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-normalized-observations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 pandas==2.2.3 scikit-learn==1.6.1
+      - name: Validate comparable source schemas
+        run: |
+          python3 -m py_compile research/scripts/build_comparable_observations_v1.py research/scripts/test_seasonality_and_vegetation_v1.py
+      - name: Original ZIP/CSV source hashes to one comparable stage-month panel
+        run: python research/scripts/build_comparable_observations_v1.py --out /tmp/frogcs_comparable_db_v1
+      - name: Original source seasonal-stage overlap and wetland rain/vegetation correlations
+        run: python research/scripts/test_seasonality_and_vegetation_v1.py --out /tmp/frogcs_comparable_db_v1/observed_correlations_v1.json
+      - name: Prevent false cross-source pond identity and causal predation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/frogcs_comparable_db_v1")
+          q=json.loads((root/"coverage_receipt.json").read_text())
+          r=json.loads((root/"observed_correlations_v1.json").read_text())
+          assert q["data_sources_in_registry"]>=8
+          assert q["source_files_ingested_as_original_records"]==3
+          assert q["roadside_stop_never_treated_as_an_INBO_pond"]
+          assert q["cross_study_call_and_predation_causal_link_identified"] is False
+          assert q["all_original_site_ids_withheld"]
+          assert r["no_inference_of_actual_vegetation_emergence_or_shelter_use"]
+          assert r["no_cross_source_pseudo_pond_join"]
+          assert r["inbo"]["numeric_Gosner_or_predator_vs_prey_size_measured"] is False
+          assert r["hungary"]["strong_chorus_intensity_measured"] is False
+          print("COMPARABLE_DB_CLAIM_GATE_PASS")
+          PY
+      - name: Save source-supported model receipts and canonical aggregate view
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: comparable_db_v1_source_stage_month_and_correlations
+          path: /tmp/frogcs_comparable_db_v1/
+          if-no-files-found: warn

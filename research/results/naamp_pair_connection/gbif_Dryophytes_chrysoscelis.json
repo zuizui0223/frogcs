@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Dryophytes+chrysoscelis&verbose=true&kingdom=Animalia&class=Amphibia",
+  "queried_at_utc": "2026-10-26T04:49:47.054373+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "6ff113d367adee92eebdf2360ecb2d0c4afb94a819a8fb70a27dba3b69d9c326",
+  "response": {
+    "usageKey": 10863553,
+    "scientificName": "Dryophytes chrysoscelis (Cope, 1880)",
+    "canonicalName": "Dryophytes chrysoscelis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=19; rank=6; status=1; score=136; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Hylidae",
+    "genus": "Dryophytes",
+    "species": "Dryophytes chrysoscelis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6735,
+    "genusKey": 4816258,
+    "speciesKey": 10863553,
+    "class": "Amphibia"
+  }
+}

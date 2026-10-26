@@ -1,0 +1,30 @@
+name: NPS chorus history two-way station-year FE
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/nps_glkn_two_way_fe.py
+      - .github/workflows/research_nps_two_way_fe.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-source-two-way:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numeric dependencies
+        run: python -m pip install --disable-pip-version-check 'numpy>=1.26,<3' 'pandas>=2.1,<3'
+      - name: Run source-pinned two-way historical chorus test
+        run: python research/scripts/nps_glkn_two_way_fe.py --out research/results/nps_glkn_two_way
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: nps-two-way-species-site-year-fe
+          path: research/results/nps_glkn_two_way/observed_results.json
+          if-no-files-found: error

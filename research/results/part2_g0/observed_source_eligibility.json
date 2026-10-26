@@ -1,0 +1,354 @@
+{
+  "programme": "frogcs/part2-g0",
+  "status": "RAW_SOURCE_COVERAGE_ONLY_NO_BIOLOGICAL_EFFECTS",
+  "refs": {
+    "esgr_amphibian_workbook": {
+      "id": "esgr_amphibian_workbook",
+      "url": "https://datadryad.org/api/v2/files/38621/download",
+      "format": "xlsx",
+      "status": "blocked_or_invalid",
+      "reason": "HTTP Error 401: Unauthorized"
+    },
+    "stmarks_encounter_workbook": {
+      "id": "stmarks_encounter_workbook",
+      "url": "https://datadryad.org/api/v2/files/51835/download",
+      "format": "xlsx",
+      "status": "blocked_or_invalid",
+      "reason": "HTTP Error 401: Unauthorized"
+    },
+    "mohonk_edi_species": {
+      "id": "mohonk_edi_species",
+      "url": "https://pasta.lternet.edu/package/data/eml/edi/398/4/737389d6c2090ee27a3084898f2e7853",
+      "format": "csv",
+      "status": "blocked_or_invalid",
+      "reason": "HTTP Error 403: Forbidden"
+    },
+    "mohonk_edi_water": {
+      "id": "mohonk_edi_water",
+      "url": "https://pasta.lternet.edu/package/data/eml/edi/398/4/5835a29e0fbe1ba179ee5ffe27121df6",
+      "format": "csv",
+      "status": "blocked_or_invalid",
+      "reason": "HTTP Error 403: Forbidden"
+    },
+    "inbo_chorus": {
+      "id": "inbo_chorus",
+      "url": "https://ipt.inbo.be/archive.do?r=meetnetten-amphibia-roepkoren-occurrences",
+      "format": "dwca",
+      "status": "verified_dwca",
+      "http": "200",
+      "bytes": 44543,
+      "sha256": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+      "content_type": "application/zip;charset=UTF-8",
+      "schema": {
+        "core": {
+          "file": "event.txt",
+          "rows": 963,
+          "columns": [
+            "accessRights",
+            "continent",
+            "coordinateUncertaintyInMeters",
+            "countryCode",
+            "dataGeneralizations",
+            "datasetID",
+            "datasetName",
+            "decimalLatitude",
+            "decimalLongitude",
+            "dynamicProperties",
+            "eventDate",
+            "eventID",
+            "eventRemarks",
+            "geodeticDatum",
+            "georeferenceRemarks",
+            "informationWithheld",
+            "institutionCode",
+            "language",
+            "license",
+            "locality",
+            "locationID",
+            "parentEventID",
+            "rightsHolder",
+            "samplingProtocol",
+            "type"
+          ],
+          "important_fields": [
+            "eventDate",
+            "eventID",
+            "locationID",
+            "parentEventID",
+            "samplingProtocol"
+          ],
+          "location_id_nonblank_rows": 963,
+          "locations": 186,
+          "years": [
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "distinct_site_years": 454,
+          "source_original_location_ids_exported": false
+        },
+        "extensions": [
+          {
+            "file": "occurrence.txt",
+            "rows": 1436,
+            "columns": [
+              "basisOfRecord",
+              "class",
+              "collectionCode",
+              "dynamicProperties",
+              "eventID",
+              "individualCount",
+              "kingdom",
+              "lifeStage",
+              "nomenclaturalCode",
+              "occurrenceID",
+              "occurrenceRemarks",
+              "occurrenceStatus",
+              "phylum",
+              "recordedBy",
+              "scientificName",
+              "sex",
+              "taxonRank",
+              "vernacularName"
+            ],
+            "important_fields": [
+              "eventID",
+              "individualCount",
+              "lifeStage",
+              "occurrenceStatus",
+              "scientificName"
+            ],
+            "location_id_nonblank_rows": 0,
+            "locations": 0,
+            "years": [],
+            "distinct_site_years": 0,
+            "source_original_location_ids_exported": false
+          }
+        ],
+        "archive_entry_count": 4,
+        "entries": [
+          "eml.xml",
+          "event.txt",
+          "meta.xml",
+          "occurrence.txt"
+        ]
+      }
+    },
+    "inbo_larva": {
+      "id": "inbo_larva",
+      "url": "https://ipt.inbo.be/archive.do?r=meetnetten-amfibieen-larven-metamorfen-occurrences",
+      "format": "dwca",
+      "status": "verified_dwca",
+      "http": "200",
+      "bytes": 63088,
+      "sha256": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+      "content_type": "application/zip;charset=UTF-8",
+      "schema": {
+        "core": {
+          "file": "event.txt",
+          "rows": 697,
+          "columns": [
+            "accessRights",
+            "continent",
+            "coordinateUncertaintyInMeters",
+            "countryCode",
+            "dataGeneralizations",
+            "datasetID",
+            "datasetName",
+            "decimalLatitude",
+            "decimalLongitude",
+            "dynamicProperties",
+            "eventDate",
+            "eventID",
+            "eventRemarks",
+            "geodeticDatum",
+            "georeferenceRemarks",
+            "informationWithheld",
+            "institutionCode",
+            "language",
+            "license",
+            "locality",
+            "locationID",
+            "parentEventID",
+            "rightsHolder",
+            "samplingProtocol",
+            "type"
+          ],
+          "important_fields": [
+            "eventDate",
+            "eventID",
+            "locationID",
+            "parentEventID",
+            "samplingProtocol"
+          ],
+          "location_id_nonblank_rows": 697,
+          "locations": 217,
+          "years": [
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ],
+          "distinct_site_years": 518,
+          "source_original_location_ids_exported": false
+        },
+        "extensions": [
+          {
+            "file": "occurrence.txt",
+            "rows": 2995,
+            "columns": [
+              "basisOfRecord",
+              "class",
+              "collectionCode",
+              "dynamicProperties",
+              "eventID",
+              "identificationVerificationStatus",
+              "individualCount",
+              "kingdom",
+              "lifeStage",
+              "nomenclaturalCode",
+              "occurrenceID",
+              "occurrenceRemarks",
+              "occurrenceStatus",
+              "phylum",
+              "recordedBy",
+              "scientificName",
+              "taxonRank",
+              "vernacularName"
+            ],
+            "important_fields": [
+              "eventID",
+              "individualCount",
+              "lifeStage",
+              "occurrenceStatus",
+              "scientificName"
+            ],
+            "location_id_nonblank_rows": 0,
+            "locations": 0,
+            "years": [],
+            "distinct_site_years": 0,
+            "source_original_location_ids_exported": false
+          },
+          {
+            "file": "measurementorfacts.txt",
+            "rows": 3741,
+            "columns": [
+              "measurementType",
+              "measurementUnit",
+              "measurementValue"
+            ],
+            "important_fields": [],
+            "location_id_nonblank_rows": 0,
+            "locations": 0,
+            "years": [],
+            "distinct_site_years": 0,
+            "source_original_location_ids_exported": false
+          }
+        ],
+        "archive_entry_count": 5,
+        "entries": [
+          "eml.xml",
+          "event.txt",
+          "measurementorfacts.txt",
+          "meta.xml",
+          "occurrence.txt"
+        ]
+      }
+    },
+    "mohonk_ipt": {
+      "id": "mohonk_ipt",
+      "url": "https://ipt.gbif.us/archive.do?r=mohonk-amphibian-spring-sampling&v=1.1",
+      "format": "dwca",
+      "status": "verified_dwca",
+      "http": "200",
+      "bytes": 173366,
+      "sha256": "0309abd9afa4a224287d6853d79ae1f7111a3a7bb19b0d2337f05c280ef12b34",
+      "content_type": "application/zip",
+      "schema": {
+        "core": {
+          "file": "occurrence.txt",
+          "rows": 13862,
+          "columns": [
+            "basisOfRecord",
+            "class",
+            "continent",
+            "country",
+            "countryCode",
+            "dataGeneralizations",
+            "decimalLatitude",
+            "decimalLongitude",
+            "eventDate",
+            "family",
+            "genus",
+            "geodeticDatum",
+            "individualCount",
+            "infraspecificEpithet",
+            "kingdom",
+            "lifeStage",
+            "occurrenceID",
+            "order",
+            "phylum",
+            "scientificName",
+            "scientificNameAuthorship",
+            "specificEpithet",
+            "stateProvince",
+            "taxonID",
+            "verbatimElevation"
+          ],
+          "important_fields": [
+            "eventDate",
+            "individualCount",
+            "lifeStage",
+            "scientificName"
+          ],
+          "location_id_nonblank_rows": 0,
+          "locations": 0,
+          "years": [],
+          "distinct_site_years": 0,
+          "source_original_location_ids_exported": false
+        },
+        "extensions": [],
+        "archive_entry_count": 3,
+        "entries": [
+          "eml.xml",
+          "meta.xml",
+          "occurrence.txt"
+        ]
+      }
+    }
+  },
+  "inbo_between_protocol_join": {
+    "status": "ID_OVERLAP_CHECKED_NOT_POND_GEOMETRY",
+    "exact_shared_location_ids": 96,
+    "exact_shared_site_years": 247,
+    "site_years_with_chorus_before_larval_census": 247,
+    "coordinates_not_used": true,
+    "source_ids_exported": false,
+    "same_physical_pond_confirmed": false,
+    "reproductive_success_or_predation_claim": false
+  },
+  "all_g0_g1_g2_recruitment_paper_claims": false,
+  "rc6_source_modified": false,
+  "source_data_redistributed": false,
+  "interpretation_guard": "Source may measure calls, eggs or aquatic stages separately; true survival, predation, and summer hydroperiod resets require extra validation.",
+  "provenance": {
+    "workflow_url": "https://github.com/zuizui0223/frogcs/actions/runs/40210077411",
+    "job_id": 121219223186,
+    "status": "CI success",
+    "data_sources": "original source archive HTTP downloads, raw data not redistributed",
+    "results": "SOURCE_BLIND_AUDIT_ONLY_NOT_FROG_PREDATION_ESTIMATE"
+  }
+}

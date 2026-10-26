@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Euproctus+platycephalus&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:02.349941+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "ac904a9ba809b776365498cdd471a4ba1d8e69eb5d14c0f134275d3a75c53bb0",
+  "response": {
+    "usageKey": 2431941,
+    "scientificName": "Euproctus platycephalus (Gravenhorst, 1829)",
+    "canonicalName": "Euproctus platycephalus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Euproctus",
+    "species": "Euproctus platycephalus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431939,
+    "speciesKey": 2431941,
+    "class": "Amphibia"
+  }
+}

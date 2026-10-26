@@ -1,0 +1,242 @@
+{
+  "record": "10261/411885",
+  "url": "https://digital.csic.es/bitstream/10261/411885/1/Delgadillo%20et%20al.%2c%20dataset_fuscus.xlsx",
+  "source_type": "source-registered Excel original",
+  "factorial_a_priori": [
+    "temperature_30_vs_35",
+    "water_high_vs_drydown",
+    "predator_cue_absent_vs_present"
+  ],
+  "source_study_design": "80 containers, three tadpoles per container, 3 clutches; bath-pool nesting must be checked",
+  "source_bytes_expected": 59841,
+  "status": "SOURCE_DIGEST_OBTAINED_AND_RESPONSE_BLIND_WORKBOOK_SCHEMA",
+  "outcome_inference_authorized": false,
+  "actual_predator_consumption_measured": false,
+  "natural_pond_hydroperiod_measured": false,
+  "download_sha256": "eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25",
+  "download_bytes": 59841,
+  "schema": {
+    "workbook_sheets": [
+      {
+        "sheet": "data_fuscus",
+        "dimension_rows_max": 227,
+        "dimension_columns_max": 32,
+        "first_four_rows_string_label_candidates": [
+          {
+            "row_1_based": 1,
+            "text_labels_only": [
+              {
+                "column_index_1_based": 1,
+                "label": "Temperature"
+              },
+              {
+                "column_index_1_based": 2,
+                "label": "Pool"
+              },
+              {
+                "column_index_1_based": 3,
+                "label": "Predator"
+              },
+              {
+                "column_index_1_based": 4,
+                "label": "water_level"
+              },
+              {
+                "column_index_1_based": 5,
+                "label": "Nest"
+              },
+              {
+                "column_index_1_based": 6,
+                "label": "Replicate"
+              },
+              {
+                "column_index_1_based": 7,
+                "label": "ID_tadpole"
+              },
+              {
+                "column_index_1_based": 8,
+                "label": "tadpole_density"
+              },
+              {
+                "column_index_1_based": 9,
+                "label": "fat_bodies (g)"
+              },
+              {
+                "column_index_1_based": 10,
+                "label": "fb_mass/total mass"
+              },
+              {
+                "column_index_1_based": 11,
+                "label": "start_date"
+              },
+              {
+                "column_index_1_based": 12,
+                "label": "date_G42"
+              },
+              {
+                "column_index_1_based": 13,
+                "label": "time_to_42"
+              },
+              {
+                "column_index_1_based": 14,
+                "label": "mass_42"
+              },
+              {
+                "column_index_1_based": 15,
+                "label": "date_G46"
+              },
+              {
+                "column_index_1_based": 16,
+                "label": "time_to_46"
+              },
+              {
+                "column_index_1_based": 17,
+                "label": "mass_46"
+              },
+              {
+                "column_index_1_based": 18,
+                "label": "survival_G46"
+              },
+              {
+                "column_index_1_based": 19,
+                "label": "BL"
+              },
+              {
+                "column_index_1_based": 20,
+                "label": "HW"
+              },
+              {
+                "column_index_1_based": 21,
+                "label": "FL"
+              },
+              {
+                "column_index_1_based": 22,
+                "label": "TL"
+              },
+              {
+                "column_index_1_based": 23,
+                "label": "FTL"
+              },
+              {
+                "column_index_1_based": 24,
+                "label": "TW"
+              },
+              {
+                "column_index_1_based": 25,
+                "label": "FW"
+              },
+              {
+                "column_index_1_based": 26,
+                "label": "SL"
+              },
+              {
+                "column_index_1_based": 27,
+                "label": "LL"
+              },
+              {
+                "column_index_1_based": 28,
+                "label": "PC_Body_size"
+              },
+              {
+                "column_index_1_based": 29,
+                "label": "PC_Snout_l"
+              },
+              {
+                "column_index_1_based": 30,
+                "label": "T_animal"
+              },
+              {
+                "column_index_1_based": 31,
+                "label": "velocity"
+              },
+              {
+                "column_index_1_based": 32,
+                "label": "acceleration"
+              }
+            ]
+          },
+          {
+            "row_1_based": 2,
+            "text_labels_only": [
+              {
+                "column_index_1_based": 3,
+                "label": "P"
+              },
+              {
+                "column_index_1_based": 4,
+                "label": "HW"
+              },
+              {
+                "column_index_1_based": 5,
+                "label": "LF51"
+              },
+              {
+                "column_index_1_based": 6,
+                "label": "1_1"
+              },
+              {
+                "column_index_1_based": 7,
+                "label": "1.1_1"
+              }
+            ]
+          },
+          {
+            "row_1_based": 3,
+            "text_labels_only": [
+              {
+                "column_index_1_based": 3,
+                "label": "P"
+              },
+              {
+                "column_index_1_based": 4,
+                "label": "HW"
+              },
+              {
+                "column_index_1_based": 5,
+                "label": "LF51"
+              },
+              {
+                "column_index_1_based": 6,
+                "label": "1_1"
+              },
+              {
+                "column_index_1_based": 7,
+                "label": "1.1_2"
+              }
+            ]
+          },
+          {
+            "row_1_based": 4,
+            "text_labels_only": [
+              {
+                "column_index_1_based": 3,
+                "label": "P"
+              },
+              {
+                "column_index_1_based": 4,
+                "label": "HW"
+              },
+              {
+                "column_index_1_based": 5,
+                "label": "LF51"
+              },
+              {
+                "column_index_1_based": 6,
+                "label": "1_1"
+              },
+              {
+                "column_index_1_based": 7,
+                "label": "1.1_3"
+              }
+            ]
+          }
+        ],
+        "original_outcome_values_extracted": false
+      }
+    ],
+    "zip_entries": 10,
+    "shared_string_entries": 351,
+    "outcome_cells_read": false
+  },
+  "github_actions_log_job_id": 121362010599
+}

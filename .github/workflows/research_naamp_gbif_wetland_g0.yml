@@ -1,0 +1,45 @@
+name: Research — NAAMP acoustic neighborhoods x GBIF stage x NWI source G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/naamp_gbif_wetland_geo_g0.py
+      - research/CHORUS_SITE_ENV_ENEMY_STAGE_GBIF_HYPOTHESES_2026-10-26.md
+      - .github/workflows/research_naamp_gbif_wetland_g0.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  response-blind-geometry-gbif-wetland:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify source file before use
+        run: python3 -m py_compile research/scripts/naamp_gbif_wetland_geo_g0.py
+      - name: Original USGS SHA-pinned acoustic stops, biological-source blind GBIF and official wetland geometry
+        run: python3 research/scripts/naamp_gbif_wetland_geo_g0.py --out /tmp/naamp_gbif_nwi_g0.json
+      - name: No inferred pond predators, no privileged or frozen RC6 science changed
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/naamp_gbif_nwi_g0.json')
+          assert p.exists()
+          x=json.loads(p.read_text())
+          if x["status"]!="BLOCKED_FAIL_CLOSED":
+              assert x["same_physical_breeding_pond_verified"] is False
+              assert x["source_pond_predator_or_competitor_abundance_observed"] is False
+              assert x["original_2026_research_sampled_NAAMP_chorus_values_read"] is False
+              assert x["biological_predation_or_facilitation_claim_permitted"] is False
+              print('GBIF_NWI_ACOUSTIC_STOP_OBSERVABILITY_ONLY_PASS')
+          else:
+              print('G0 blocked; no biological analysis authorized')
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naamp_gbif_nwi_acoustic_stop_source_g0_receipt
+          path: /tmp/naamp_gbif_nwi_g0.json
+          if-no-files-found: warn

@@ -1,0 +1,119 @@
+{
+  "schema_version": "frogcs-comparable-observations/1.0",
+  "created_on": "2026-10-26",
+  "status": "REAL_SOURCE_STAGE_MONTH_AGGREGATES_NO_SAME_POND_CROSS_SOURCE_JOIN",
+  "data_sources_in_registry": 8,
+  "source_files_ingested_as_original_records": 3,
+  "monthly_taxon_stage_aggregate_rows": 561,
+  "conflicting_same_event_source_status_total": 23,
+  "observed_sources": {
+    "HUNGARY_2024": {
+      "aggregate_rows": 126,
+      "source_methods": [
+        "acoustic",
+        "bottletrap",
+        "dipnet",
+        "visual"
+      ],
+      "stages_recorded": [
+        "adult_call",
+        "method_stage_unknown"
+      ],
+      "observed_years": [
+        2024
+      ],
+      "taxa_with_observed_status": 9,
+      "source_original_QC": {
+        "native_sites": 29,
+        "native_visits": 381,
+        "country": "Hungary",
+        "years": [
+          2024
+        ],
+        "methods": [
+          "acoustic",
+          "visual",
+          "dipnet",
+          "bottletrap"
+        ],
+        "stage_scope": "other survey methods did NOT distinguish larva from adult, never infer aquatic immature"
+      }
+    },
+    "INBO_CHORUS": {
+      "aggregate_rows": 92,
+      "source_methods": [
+        "adult_choir"
+      ],
+      "stages_recorded": [
+        "adult_call"
+      ],
+      "observed_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "taxa_with_observed_status": 11,
+      "source_original_QC": {
+        "original_event_rows": 963,
+        "original_taxon_stage_rows": 1436,
+        "source_status_assessed_rows": 1436,
+        "source_status_unknown_rows": 0,
+        "source_sha256": "686c5a7aacc8f49e41a0642ecaa9efd8c3564304b0a4d4b027f3df2debec69fd",
+        "doi": "10.15468/d4bu8j"
+      }
+    },
+    "INBO_LARVA": {
+      "aggregate_rows": 343,
+      "source_methods": [
+        "amphibian_larval_monitor"
+      ],
+      "stages_recorded": [
+        "adult",
+        "larva",
+        "metamorph"
+      ],
+      "observed_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "taxa_with_observed_status": 13,
+      "source_original_QC": {
+        "original_event_rows": 697,
+        "original_taxon_stage_rows": 2995,
+        "source_status_assessed_rows": 2995,
+        "source_status_unknown_rows": 0,
+        "source_sha256": "c2cc960122ea398545edb661318160cd2b5b66a75a73dba8f7a3f61bd9c4f920",
+        "doi": "10.15468/swgure"
+      }
+    }
+  },
+  "source_immutable_originals": true,
+  "roadside_stop_never_treated_as_an_INBO_pond": true,
+  "GBIF_global_grid_has_no_actual_pond_identity": true,
+  "missing_stages_or_plant_phenology_never_zero_imputed": true,
+  "unobserved_permanence_or_predators_not_assumed_zero": true,
+  "cross_study_call_and_predation_causal_link_identified": false,
+  "all_original_site_ids_withheld": true,
+  "normalization_warning": "Monthly event-report counts and stage labels are not occupancy/density or cohort survival; DO NOT pool acoustic activity levels across methods.",
+  "workflow_provenance": {
+    "run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40262283932",
+    "job_id": 121377026941,
+    "conclusion": "success",
+    "source_method": "original source hashes validated in CI"
+  }
+}

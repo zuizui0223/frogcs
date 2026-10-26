@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-26",
+  "code_commit": "bfd66ab209e9b9f6ce008f134af9e348db4a8e0e",
+  "python": "3.10.11",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.15.3",
+    "sklearn": "1.7.2",
+    "statsmodels": "0.14.6"
+  },
+  "script_sha256": {
+    "hungary_rain_vegetation_site_allocation.py": "d762800859b6adadfce9663e931f4c0ab8324a39513ac32d043a5a59c1d3f9d1",
+    "hungary_vegetation_chorus.py": "49531e50ed29a034766bfe0a678874aec9b5f06b4e534f366222d55d61eaf57e",
+    "nps_hydroperiod_strict_history.py": "a2534748f0fcb90ce928ce0de6e528c0a2d2b939ce22a2789a867bbc22ccd1bf"
+  },
+  "result_sha256": {
+    "hungary_environment_tiers.json": "3585a548f607cb7fcf5b0967172f086308bb39bf1a1097392ecd684e59f7f996",
+    "hungary_rain_interactions.json": "43e8dbaf602fb018e7f434c5327a287a576f29bedced00e5e6f01a215035abea",
+    "nps_hydroperiod_history.json": "ef0af73bb33d5837e519ca7c4cc191ea628015784a2c2b503a13d0ef0e06cc95"
+  },
+  "shared_numeric_comparisons": [
+    {
+      "replay": "hungary_rain_interactions.json",
+      "previous": "chorus_rain_vegetation_stage/hungary_rain_x_wetland_source_results.json",
+      "shared_numeric_leaves": 48,
+      "maximum_absolute_difference": 7.73686670285656e-16,
+      "largest_difference_path": "/frozen_addition_comparisons/E3_plus_rain_x_depth_vs_E1_weather_depth_site_context/logloss_site/ci95_site_resample_conditional_oof/0"
+    },
+    {
+      "replay": "nps_hydroperiod_history.json",
+      "previous": "nps_hydroperiod_history/observed_results.json",
+      "shared_numeric_leaves": 124,
+      "maximum_absolute_difference": 4.440892098500626e-15,
+      "largest_difference_path": "/additional_within_hydroperiod_strata/1/strict_prior_strong_slope_after_covariates/coefficients/log_prior_effort"
+    }
+  ],
+  "note": "Comparisons cover shared numeric leaves, not equality of whole artifacts. Source checksums and source-native cohorts are recorded in the result files. Existing results were not overwritten."
+}

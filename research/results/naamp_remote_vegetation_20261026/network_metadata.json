@@ -1,0 +1,14 @@
+{
+  "sites": 4248,
+  "route_components": 432,
+  "bootstrap": 1000,
+  "seed": 20261031,
+  "main_radius_m": 3000,
+  "sensitivity_radius_m": 1000,
+  "all_lower_order_terms": true,
+  "vegetation_metrics": "Separate models for mean and spatial SD of flooded consensus; not independently identified structural effects",
+  "scaling": "Odonata, Caudata, vegetation and outcome ranked and standardized within each bootstrap draw",
+  "scope": "Landscape modification of associations; does not demonstrate refuge use, predation or emergence substrate",
+  "sensitivity_uncertainty": "1-km coefficients are point sensitivities only",
+  "uncertainty": "Conditional on fitted species scores; no multiple-testing adjustment"
+}

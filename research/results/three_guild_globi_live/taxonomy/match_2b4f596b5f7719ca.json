@@ -1,0 +1,28 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Pelophylax+grafi&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:06:43.866404+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "43851c9a7a313f40efceb8d927ac56802b1fd500432a26f6b86b2a5cea4dec9e",
+  "response": {
+    "usageKey": 2426629,
+    "scientificName": "Pelophylax Fitzinger, 1843",
+    "canonicalName": "Pelophylax",
+    "rank": "GENUS",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=100; classification=34; rank=0; status=1; score=135; nextMatch=5",
+    "matchType": "HIGHERRANK",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Pelophylax",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2426629,
+    "class": "Amphibia"
+  }
+}

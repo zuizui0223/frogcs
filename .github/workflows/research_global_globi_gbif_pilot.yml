@@ -1,0 +1,48 @@
+name: Global GloBI GBIF trophic opportunity pilot
+on:
+  push:
+    branches:
+      - research/stage-structured-interactions-2026-10-25
+    paths:
+      - research/scripts/global_globi_gbif_pilot.py
+      - research/scripts/build_gbif_global_cube_sql.py
+      - research/scripts/gbif_global_lifestage_bridge.py
+      - .github/workflows/research_global_globi_gbif_pilot.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  global-stage-trophic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run pure-Python synthetic source and spatial QC
+        run: python research/scripts/global_globi_gbif_pilot.py --self-test
+      - name: Query actual GloBI occurrence stages and GBIF accepted taxa global country facets
+        run: |
+          python research/scripts/global_globi_gbif_pilot.py \
+            --out research/results/global_globi_gbif
+      - name: Generate global 1-degree and half-degree GBIF bulk SQL payloads without submitting
+        run: |
+          python research/scripts/build_gbif_global_cube_sql.py --self-test
+          python research/scripts/build_gbif_global_cube_sql.py \
+            --species research/results/global_globi_gbif/gbif_species_match_audit.csv \
+            --out research/results/global_globi_gbif/gbif_bulk_cube \
+            --validate
+      - name: Compare GloBI predator/prey stage combinations to GBIF global stage country facets
+        run: |
+          python research/scripts/gbif_global_lifestage_bridge.py --self-test
+          python research/scripts/gbif_global_lifestage_bridge.py \
+            --taxa research/results/global_globi_gbif/gbif_species_match_audit.csv \
+            --edges research/results/global_globi_gbif/selected_trophic_pairs.csv \
+            --out research/results/global_globi_gbif/stage_bridge
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: global-globi-gbif-exploratory-country-opportunity
+          path: research/results/global_globi_gbif/
+          if-no-files-found: error

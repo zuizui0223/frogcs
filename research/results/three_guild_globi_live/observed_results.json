@@ -1,0 +1,147 @@
+{
+  "date_utc": "2026-10-26T05:02:36.278794+00:00",
+  "query_directions": [
+    {
+      "source_guild": "Anura",
+      "target_guild": "Caudata",
+      "pages": [
+        {
+          "receipt": "raw/Anura_to_Caudata_page0.json",
+          "status": "SUCCESS",
+          "offset": 0
+        },
+        {
+          "receipt": "raw/Anura_to_Caudata_page1.json",
+          "status": "SUCCESS",
+          "offset": 1000
+        }
+      ],
+      "returned_rows": 1072,
+      "exhausted": true,
+      "capped": false,
+      "failed": false,
+      "repeated_page": false
+    },
+    {
+      "source_guild": "Anura",
+      "target_guild": "Odonata",
+      "pages": [
+        {
+          "receipt": "raw/Anura_to_Odonata_page0.json",
+          "status": "SUCCESS",
+          "offset": 0
+        }
+      ],
+      "returned_rows": 77,
+      "exhausted": true,
+      "capped": false,
+      "failed": false,
+      "repeated_page": false
+    },
+    {
+      "source_guild": "Caudata",
+      "target_guild": "Anura",
+      "pages": [
+        {
+          "receipt": "raw/Caudata_to_Anura_page0.json",
+          "status": "SUCCESS",
+          "offset": 0
+        },
+        {
+          "receipt": "raw/Caudata_to_Anura_page1.json",
+          "status": "SUCCESS",
+          "offset": 1000
+        }
+      ],
+      "returned_rows": 1072,
+      "exhausted": true,
+      "capped": false,
+      "failed": false,
+      "repeated_page": false
+    },
+    {
+      "source_guild": "Caudata",
+      "target_guild": "Odonata",
+      "pages": [
+        {
+          "receipt": "raw/Caudata_to_Odonata_page0.json",
+          "status": "SUCCESS",
+          "offset": 0
+        }
+      ],
+      "returned_rows": 61,
+      "exhausted": true,
+      "capped": false,
+      "failed": false,
+      "repeated_page": false
+    },
+    {
+      "source_guild": "Odonata",
+      "target_guild": "Anura",
+      "pages": [
+        {
+          "receipt": "raw/Odonata_to_Anura_page0.json",
+          "status": "SUCCESS",
+          "offset": 0
+        }
+      ],
+      "returned_rows": 77,
+      "exhausted": true,
+      "capped": false,
+      "failed": false,
+      "repeated_page": false
+    },
+    {
+      "source_guild": "Odonata",
+      "target_guild": "Caudata",
+      "pages": [
+        {
+          "receipt": "raw/Odonata_to_Caudata_page0.json",
+          "status": "SUCCESS",
+          "offset": 0
+        }
+      ],
+      "returned_rows": 61,
+      "exhausted": true,
+      "capped": false,
+      "failed": false,
+      "repeated_page": false
+    }
+  ],
+  "page_size": 1000,
+  "max_pages_per_direction": 10,
+  "status": "COMPLETE_BOUNDED_LIVE_QUERY",
+  "returned_rows": 2420,
+  "qualification_counts": {
+    "eligible_named_edge": 1994,
+    "not_two_binomial_form_names": 186,
+    "target_guild_unverified": 120,
+    "source_guild_unverified": 120
+  },
+  "species_name_relation_edges": 1318,
+  "source_taxon_names": 109,
+  "direction_normalized_species_edges": 659,
+  "inverse_and_symmetric_query_edges_not_independent": true,
+  "target_taxon_names": 109,
+  "interaction_type_counts_rows": {
+    "eats": 885,
+    "eatenBy": 885,
+    "interactsWith": 48,
+    "preyedUponBy": 215,
+    "coOccursWith": 18,
+    "preysOn": 215,
+    "ecologicallyRelatedTo": 2,
+    "hostOf": 76,
+    "hasHost": 76
+  },
+  "life_stage_required": false,
+  "interaction_type_filter": null,
+  "source_citation_required": false,
+  "source_citation_missing_rows": 54,
+  "no_gbif_or_naamp_site_time_join_yet": true,
+  "missing_edge_is_not_absence": true,
+  "multiple_rows_not_independent_observations": true,
+  "live_api_not_stable_release": true,
+  "exhausted_means_pagination_end_not_global_biological_completeness": true,
+  "api_documentation": "https://github.com/globalbioticinteractions/globalbioticinteractions/wiki/API"
+}

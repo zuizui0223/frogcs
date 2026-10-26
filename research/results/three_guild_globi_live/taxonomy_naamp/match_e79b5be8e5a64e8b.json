@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Anaxyrus+quercicus&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:01.838751+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "6e22cf418045104f143ceefe3160e7b227e6a35bbe2d92b7a84740e90f388c1b",
+  "response": {
+    "usageKey": 2422914,
+    "scientificName": "Anaxyrus quercicus (Holbrook, 1840)",
+    "canonicalName": "Anaxyrus quercicus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Bufonidae",
+    "genus": "Anaxyrus",
+    "species": "Anaxyrus quercicus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6727,
+    "genusKey": 2422857,
+    "speciesKey": 2422914,
+    "class": "Amphibia"
+  }
+}

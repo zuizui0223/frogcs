@@ -1,0 +1,46 @@
+{
+  "input": "research/results/global_globi_gbif/gbif_species_match_audit.csv",
+  "accepted_rows": 71,
+  "accepted_unique_gbif_species_keys": 71,
+  "rejected": 2,
+  "period": [
+    2010,
+    2026
+  ],
+  "resolutions": {
+    "global_1deg": {
+      "grid_resolution_seconds": 3600,
+      "file": "global_1deg.payload.json",
+      "source_species_taxon_keys": 71,
+      "query_api": "https://api.gbif.org/v1/occurrence/download/request",
+      "validation_api": "https://api.gbif.org/v1/occurrence/download/request/validate",
+      "status": "SQL_VALIDATED_BY_GBIF_HTTP_201_NOT_SUBMITTED"
+    },
+    "global_0p5deg": {
+      "grid_resolution_seconds": 1800,
+      "file": "global_0p5deg.payload.json",
+      "source_species_taxon_keys": 71,
+      "query_api": "https://api.gbif.org/v1/occurrence/download/request",
+      "validation_api": "https://api.gbif.org/v1/occurrence/download/request/validate",
+      "status": "SQL_VALIDATED_BY_GBIF_HTTP_201_NOT_SUBMITTED"
+    }
+  },
+  "expected_citation": "GBIF download DOI when user-authorized download succeeds",
+  "warnings": [
+    "No credentials stored or download initiated.",
+    "GBIF aggregated country facet results in earlier pilot are not fine-scale co-occurrence.",
+    "A 1° occurrence cube is still not an observation of predator–prey interactions.",
+    "Condition monthly / year resolution and taxon season and record effort.",
+    "Wetland + emergent cover/hydroperiod raster masks must be independently joined and QAed.",
+    "Native versus introduced and presence/range status need external taxonomic/native-range audit."
+  ],
+  "official_sql_validation": {
+    "date": "2026-10-25",
+    "api": "https://api.gbif.org/v1/occurrence/download/request/validate",
+    "global_1deg_status": 201,
+    "global_0p5deg_status": 201,
+    "workflow": "https://github.com/zuizui0223/frogcs/actions/runs/40187531308",
+    "meaning": "The official GBIF API accepted SQL syntax. No download was submitted.",
+    "authenticated_download_submitted": false
+  }
+}

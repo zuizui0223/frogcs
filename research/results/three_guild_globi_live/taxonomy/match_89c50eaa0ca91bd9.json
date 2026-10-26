@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Bufo+verrucosissimus&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:05:42.213098+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "fddf5e9d39d57df960ab1b129ad75757da7a74a8b9af5f01235af1dc8b366a2f",
+  "response": {
+    "usageKey": 5217159,
+    "scientificName": "Bufo verrucosissimus (Pallas, 1814)",
+    "canonicalName": "Bufo verrucosissimus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Bufonidae",
+    "genus": "Bufo",
+    "species": "Bufo verrucosissimus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6727,
+    "genusKey": 7580221,
+    "speciesKey": 5217159,
+    "class": "Amphibia"
+  }
+}

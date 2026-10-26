@@ -1,3 +1,21 @@
+# frogcs — integrated amphibian community ecology
+
+**Current result snapshot (2026-10-26):** [Macro-analysis results](research/FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md) · [Vegetation and three-guild associations](research/REMOTE_VEGETATION_NETWORK_REPORT_2026-10-26.md) · [Previous-year water and prior use](research/PRIOR_WATER_NETWORK_REPORT_2026-10-26.md) · [Evidence audit](research/RESEARCH_COMPLETION_AUDIT_2026-10-26.md). This snapshot preserves exploratory associations, all reported sensitivities and their interpretation limits. Landscape vegetation is not measured pond structure; modeled niches are not observed predator densities; calling activity is not breeding success. Historical plans and earlier prediction-focused analyses below remain provenance, not the current result summary.
+
+**This branch is the ongoing single-paper research workspace; the published-facing RC6 scientific package below remains preserved as a historical stand-alone candidate, not the current editorial submission plan.** The 2026-10-26 editorial decision defers immediate stand-alone submission while investigating whether a larger, single, evidence-backed amphibian wetland community paper is defensible. **No predation-mediated explanation has yet been established.**
+
+**Current active research layer: SPECIES OCCURRENCE FIRST (2026-10-26).** [Source-authenticated survey-event×species common database and biological zero rules](research/SPECIES_OCCURRENCE_FIRST_CONTRACT_2026-10-26.md), [native survey species profile](research/results/species_occurrence_first/observed_profile.json), [original-event species co-reporting and field habitat associations](research/results/species_occurrence_first/observed_correlations_summary.json), and [reproducible, source-pinned common dataset workflow](https://github.com/zuizui0223/frogcs/actions/workflows/research_species_occurrence_first.yml). Stage-specific risk and predator models remain secondary; NAAMP roadside stops, NPS recorders and separate field wetland sites never become the same physical pond by concatenating tables.
+
+**Start here:** [working integrated manuscript v0.3](research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md) · [dated one-paper editorial decision](research/INTEGRATED_PAPER_DECISION_2026-10-26.md) · [scientific integration contract](research/ONTOGENETIC_LEGACY_INTEGRATION_MASTER_V1.md) · [data eligibility and experiment gates](research/STAGE_LEGACY_INTEGRATION_MANIFEST_V1.json) · [research index](research/README.md).
+
+**Measured evidence so far:** NAAMP RC6 rain-associated acoustic spatial concentration excess **+0.2969**; independent NPS previous-year green-frog→wood-frog acoustic suppression **not supported**; INBO exact-site *Hyla arborea* adult-to-larval reporting association shows a small site-heldout gain but **adverse future-year transfer**; global GloBI × GBIF stages exhibit broad seasonal co-reporting, while stage/guild-matched predator-prey-specific phase excess is **not robust**. **New G2B controlled experiment:** original *Leptodactylus fuscus* water drawdown × predator chemical cue × temperature developmental data were actually reanalysed ([report](research/results/part2_g2/FUSCUS_G2B_REAL_EXPERIMENT_REPORT_2026-10-26.md)): 79 treatment containers nested in eight temperature baths, 14 original expected tadpole records absent, and no bath-heldout predictive improvement in metamorph mass or development time after predator-cue terms were added to temperature/water/clutch. This is not evidence of consumption, and **same-pond measured predator-stage × prey survival × natural wet/dry history remains the primary missing field mechanism**.
+
+**Scientific safeguard:** the RC6 manuscript, SI, frozen provenance, analysis scripts and release branches remain unchanged. This branch-level README note does not alter the original paper files or claim that the stand-alone RC6 manuscript has been submitted or withdrawn.
+
+---
+
+## Archived RC6 scientific and submission candidate (unchanged below)
+
 # frogcs — RC6 frog chorus analysis
 
 ## Current paper

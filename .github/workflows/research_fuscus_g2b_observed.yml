@@ -1,0 +1,43 @@
+name: Research — frog factorial predator cues x drydown G2B observed
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/fuscus_factorial_experiment_g2b.py
+      - research/FUSCUS_EXPERIMENT_G2B_FROZEN_ANALYSIS_2026-10-26.md
+      - .github/workflows/research_fuscus_g2b_observed.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  observed-tadpole-stage-drydown-predator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install locked numerical solvers
+        run: python -m pip install --disable-pip-version-check numpy==2.2.6 scikit-learn==1.6.1
+      - name: Verify source handling and analysis syntax
+        run: python3 -m py_compile research/scripts/fuscus_factorial_experiment_g2b.py
+      - name: 'Run frozen factorial analysis: pinned source, entire thermal baths held out'
+        run: python3 research/scripts/fuscus_factorial_experiment_g2b.py --out /tmp/frogcs_fuscus_g2b.json
+      - name: Prevent field predation/RC6 causal claims
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/frogcs_fuscus_g2b.json'))
+          assert d["real_causal_pond_predation_identified"] is False
+          assert d["hydroperiod_x_predator_stage_attack_identified"] is False
+          assert d["RC6_untouched"] is True
+          assert d["thermal_bath_groups"] == 8
+          print("EXPERIMENTAL_RISK_CUE_CLAIM_GATE_PASS")
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuscus_g2b_experimental_stage_observation
+          path: /tmp/frogcs_fuscus_g2b.json
+          if-no-files-found: warn

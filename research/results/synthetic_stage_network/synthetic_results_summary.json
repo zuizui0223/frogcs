@@ -1,0 +1,38 @@
+{
+  "study_type": "SYNTHETIC_DETERMINISTIC_THOUGHT_EXPERIMENT",
+  "random_seed": 20261025,
+  "draws": 256,
+  "years": 550,
+  "last_years_for_survival": 50,
+  "vegetation_fixed": 0.35,
+  "rare_species_initial_conditions": "each one of F,S,D initially 0.15, others 45; plus all initially 45",
+  "phenological_offsets_tested": 18,
+  "weakest_parameter_coexistence_example": {
+    "salamander_offset_of_annual_cycle": 0.13,
+    "dragonfly_offset_of_annual_cycle": 0,
+    "salamander_larva_eats_frog_tadpole": 0.12248267321563448,
+    "dragonfly_nymph_eats_frog_tadpole": 0.18863000633181545,
+    "dragonfly_nymph_risk_to_salamander_larva": 0.15184273548641533,
+    "frog_adult_eats_emerging_dragonfly": 0.15532836140659784,
+    "robust_three_guild_persistence_fraction_synthetic": 0.4609375,
+    "robust_persistent_draws_synthetic": 118
+  },
+  "strongest_parameter_coexistence_example": {
+    "salamander_offset_of_annual_cycle": 0.26,
+    "dragonfly_offset_of_annual_cycle": 0.5,
+    "salamander_larva_eats_frog_tadpole": 0.03859456559978402,
+    "dragonfly_nymph_eats_frog_tadpole": 0.0029306325082030103,
+    "dragonfly_nymph_risk_to_salamander_larva": 0.04824025187713309,
+    "frog_adult_eats_emerging_dragonfly": 0.000267473119747595,
+    "robust_three_guild_persistence_fraction_synthetic": 0.92578125,
+    "robust_persistent_draws_synthetic": 237
+  },
+  "interpretation": "No general theorem that more synchronized development increases coexistence. This annual-map model may display nonmonotonic or opposing regimes.",
+  "important_cautions": [
+    "Artificial parameter ensemble, synthetic populations, no fitted field feeding, no real wetland life cycle.",
+    "Stage-specific phenology is exogenously imposed. This is NOT a fully stage-structured demographic model or verified ABM/PDE.",
+    "Persistent abundance above threshold from 4 starts is not mathematical mutual invasibility.",
+    "The real Japanese dragonfly-salamander-frog cue experiments and Australian frog-dragonfly role reversal are different species/community systems.",
+    "No claims about natural trophic dominance, wetland vegetation effects, frog chorus, eDNA or global coexistence fractions."
+  ]
+}

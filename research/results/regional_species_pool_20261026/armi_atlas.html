@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+	<head>
+				<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">		
+		<meta name="description" content="Provide essential scientific information to managers to help arrest or reverse amphibian population declines." />
+		<meta name="keywords" content="ARMI, amphibian, amphibian research, amphibian monitoring, Geological Survey, amphibian decline, disease, invasive species, status, habitat, restoration, management, endangered, threatened, modeling, occupancy" />
+		<meta name="classification" content="Government, US Geological Survey, Amphibian research" />
+		<meta name="publisher" content="USGS - U.S. Geological Survey" />
+		<meta name="author" content="Amphibian Research and Monitoring Initiative" />
+		<meta name="expires" content="never" />
+		<meta name="robots" content="index, follow" />
+		
+		<link href="/styles/common.css" rel="stylesheet" type="text/css" />
+		<link href="/styles/sticky-footer.css" rel="stylesheet" type="text/css" />
+		<link href="/styles/bootstrap-accessibility.css" rel="stylesheet" type="text/css" />
+		<!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
+		<script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOI" id="_fed_an_ua_tag"></script>		<title>National Amphibian Atlas - ARMI</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.css" integrity="sha256-RTALnHN76PJ32RJx2mxggy+RUt9TIRV+mfPLSLbI75A=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spin.js/4.1.0/spin.min.css" integrity="sha512-ssYEuK9Epo/48VIlBWTFosf1izrgGZqEMELJP+L7Clh0nvaOSTg87dM+Z8L+KKjrPdMbMvKYOOnzBOkNMhWFsg==" crossorigin="anonymous" />		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="../styles/select2-bootstrap4.min.css" />
+		
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@2.2.0/Control.FullScreen.css" integrity="sha256-MflZPm5xURTiMHa6EWKPaKMBAltEuF/7cPykvJR1IU4=" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spin.js@4.1.1/spin.css" integrity="sha256-3qCmChPc+hEJcxAP876uwVhbJXShT4zDgHCDfXE+ZkQ=" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css"> -->
+		<link rel="stylesheet" href="../styles/leaflet-big-image.min.css"/>
+		<link rel="stylesheet" href="../styles/map-legend.css"/>		
+		<style type="text/css">
+			.leaflet-container a.btn {color: white !important;}
+			.leaflet-control-zoomhome{font-size: 20px;}			
+			
+			#hiddenTooltip {
+				z-index: 1000;
+				margin-top: 23px;
+				margin-right: 40px;
+			}			
+			
+			[data-toggle="collapse"] i:before{
+				content: "\f146";
+			}
+
+			[data-toggle="collapse"].collapsed i:before{
+				content: "\f0fe";
+			}
+			
+			/* no way to set position of spin.js when using through leaflet.ajax */
+			.spinner {top: 50% !important; left: 50% !important;}
+			
+			#resultsContainer { display: none;}
+			
+			.speciesPopup {width: 280px; min-height: 100px; max-height: 200px; overflow: auto;}
+			#legendRichness, #legendSpeciesBoundary {
+				display:none;
+			}			
+			.easyPrintSizeMode {			
+				margin-top: 5px;
+				margin-left: -4px;
+			}
+
+			#map-logo {
+				position: absolute;
+				bottom: 2em;
+				left: 1em;
+				z-index: 1000;
+			}
+
+			
+			
+		</style>
+	</head>
+	<body >
+				<!-- BEGIN USGS Applications Header Template -->
+		<header id="navbar" class="header-nav"  role="banner">
+		  <div class="tmp-container">
+			  <!-- primary navigation bar -->
+				<!-- search bar-->
+			  <div class="header-search">
+			    <a class="logo-header" href="https://www.usgs.gov/" title="Go to USGS Homepage">
+				  <img class="img"  src="/images/logo.png"  alt="USGS logo" />
+				</a>
+				
+				<form id="search_form" action="https://search.usa.gov/search" accept-charset="UTF-8" method="get">
+					<span id="btnUSGSSearch" class="fa fa-search" data-toggle="collapse" href="#mobileUSGSSearch" role="button" aria-expanded="false" aria-controls="mobileUSGSSearch"></span>
+					<input name="utf8" type="hidden" value="&#x2713;" />
+					<input type="hidden" name="affiliate" id="affiliate" value="armi" />
+					<div id="USGSSearchWrapper" class="fa-wrapper" style="color: white; font-size: 10pt;" >
+						<input type="text" name="query" id="query" autocomplete="off" class="usagov-search-autocomplete form-control" style="margin-top: 20px;" placeholder="Search..." title="Enter your search" />
+						<!--<input type="submit" name="commit" value="Search" data-disable-with="Search" />-->
+						<button name="commit" id="submit-button" class="fa fa-search" type="submit" data-disable-with="Search">
+							<span class="only">Search</span>
+						</button>
+					</div>
+				</form>
+								
+					<!--<form accept-charset="UTF-8" action="https://search.usa.gov/search" id="search_form"  method="get">
+						<span id="btnUSGSSearch" class="fa fa-search" data-toggle="collapse" href="#mobileUSGSSearch" role="button" aria-expanded="false" aria-controls="mobileUSGSSearch"></span>
+						
+						<div style="margin:0;padding:0;display:inline">
+							<input name="utf8" type="hidden" value="&#x2713;" />
+						</div>
+						<input id="affiliate" name="affiliate" type="hidden" value="usgs" />
+						<input type="hidden" name="sitelimit" id="sitelimit" value="armi.usgs.gov" />
+						<div id="USGSSearchWrapper" class="fa-wrapper" style="color: white; font-size: 10pt;" >
+							<input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="text" maxlength="255" title="Enter your search" placeholder="Search..." 
+								style="padding: 2px; background-color: rgb(255, 255, 255); height: 36px; width: 220px; margin-top: 20px;" />
+							<button name="commit" id="submit-button" class="fa fa-search" type="submit">
+								<span class="only">Search</span>
+							</button>
+							<div style="padding-top:5px;" >
+								<input type="radio" id="allusgs" name="scope" value="all" class="scope" onclick="searchScope(2)" /> <label for="allusgs">All USGS</label>
+								<input type="radio" id="siteonly" name="scope" value="site" class="scope" onclick="searchScope(1)" checked /> <label for="siteonly" >This site only</label><br />
+							</div>
+						</div>-->
+						<!--<input name="commit" id="submit-button" type="submit" value="Go" class="btn" />-->
+					<!--</form>-->			
+			  </div>
+			  <!-- end search bar-->
+			</div> 
+			<!-- end header-container-->
+		</header>
+		
+		<!-- Dam mobile usgs search -->
+		<div id="mobileUSGSSearch" class="collapse" >
+			<form id="search_form2" action="https://search.usa.gov/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+				<input type="hidden" name="affiliate" id="affiliate2" value="armi" />				
+				<div class="col">
+					<div class="input-group mb-3 mt-3">
+						<input type="text" name="query" id="query2" autocomplete="off" class="usagov-search-autocomplete form-control" aria-describedby="button-addon2" placeholder="Search..." />
+						<div class="input-group-append">
+							<input class="btn btn-primary" type="submit" name="commit" value="Search" data-disable-with="Search" id="button-addon2"/>								
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>		
+		
+		<!-- END USGS Applications Header Template -->
+		<!-- menu navbar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+			  <a class="navbar-brand" href="/index.php">
+				<img src="/images/armi_logo_green.png" alt="ARMI Logo" class="armi-logo float-left"> <span class="logo-text float-left">Ecosystems Mission Area<br />Species Management Research Program</span>
+			  </a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">	
+				  <!-- <li class="nav-item"><a class="nav-link text-success font-italic" href="/amphibian-week/" title="Get more information on Amphibian Week">Amphibian Week</a></li> -->
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Topics
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <!-- <a class="dropdown-item" href="/topic.php?topic=Climate+Change" title="View Climate Change topic">Climate Change</a> -->
+					  <a class="dropdown-item" href="/topic.php?topic=Disease" title="View Diease topic">Disease</a>				  
+					  <a class="dropdown-item" href="/topic.php?topic=Drought" title="View Drough topic">Drought</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Fire" title="View Fire topic">Fire</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Invasive+Species" title="View Invasive Species topic">Invasive Species</a>				  
+					  <a class="dropdown-item" href="/topic.php?topic=Management" title="View Management topic">Management</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Monitoring+and+Population+Ecology" title="View Monitoring & Population Ecology topic">Monitoring and Population Ecology</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Quantitative+Developments" title="View Quantitative Developments topic">Quantitative Developments</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Species+and+their+Ecology" title="View Species and their Ecology topic">Species and their Ecology</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Stressors" title="View Stressors topic">Stressors</a>
+					  <a class="dropdown-item" href="/topic.php?topic=Water" title="View Water topic">Water</a>				  
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Resources
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="/spatial/" title="Go to ARMI Spatial Search tool">Spatial Search</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="/gallery/" title="View Amphibian Taxonomy Gallery">Gallery</a>
+					  <a class="dropdown-item" href="/projects/estimates_datasets.php" title="View ARMI Trend Data">Trend Data</a>
+					  <!--<a class="dropdown-item" href="/projects/estimates_datasets.php">Trend Data</a>-->
+					  <a class="dropdown-item" href="/Bsal-studies/" title="View ARMI Bsal Studies">Bsal Studies</a>				  
+					  <a class="dropdown-item" href="/atlas/" title="Go to the National Amphibian Atlas">National Amphibian Atlas</a>
+					  <a class="dropdown-item" href="/amphibian-week/" title="Get more information on Amphibian Week">Amphibian Week</a>
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Publications
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="/search/" title="Search ARMI Database">Search ARMI Database</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="/recent.php" title="View ARMI's Recent Papers & Reports">Recent ARMI Papers & Reports</a>
+					  <!--<a class="dropdown-item" href="/annual_updates.php">Annual Updates</a>-->
+					  <a class="dropdown-item" href="/story/" title="View ARMI News & Stories">News & Stories</a>
+					  <a class="dropdown-item" href="/charts.php" title="View ARMI Publication Statistics">ARMI Publication Statistics</a>
+					</div>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  About Us
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="/timeline.php">ARMI Timeline</a> 
+					  	<a class="dropdown-item" href="/program_background.php" title="View ARMI Program Background">Program Background</a>
+						<!--<a class="dropdown-item" href="/program_design.php">Program Design</a> 
+						<a class="dropdown-item" href="/amphibian_monitoring.php">Designing and Implementing a Monitoring Program</a>
+						<div class="dropdown-divider"></div>-->
+						<a class="dropdown-item" href="/regions.php" title="View ARMI Regions and People">Regions and People</a>
+						<!--<a class="dropdown-item" href="/contact.php">Contact Information</a>-->
+					</div>
+				  </li>
+				</ul>			
+			  </div>
+			</div>
+		</nav>
+
+		<!-- <div class="alert alert-warning">
+			<div class="tmp-container">
+				<strong>Notice:</strong> Because of the federal government shutdown, <em>armi.usgs.gov</em> is not being updated and the agency will not be able to respond to inquiries until appropriations are enacted. For more information please visit: <a href="https://www.doi.gov/shutdown">https://www.doi.gov/shutdown</a>
+			</div>
+		</div> -->
+				<main class="container">
+			<div class="row mb-5 mt-3">
+				
+				<div class="col-lg-12">
+					<a href="../spatial" class="float-right btn btn-primary" title="ARMI product spatial search"><i class="fa fa-map-marker"></i> Spatial Search</a>
+					<h1>National Amphibian Atlas</h1>
+				</div>
+			</div>
+			<div class="row mb-3 mt-3">
+				<div class="col-lg-12">
+					The National Amphibian Atlas provides county-level distribution data for all amphibians in the US.  The records are currently being updated.  The last major update was 2021.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="search-tab" data-toggle="tab" href="#search" role="tab" aria-controls="search" aria-selected="true">Species by County</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="richness-tab" data-toggle="tab" href="#richness" role="tab" aria-controls="richness" aria-selected="false">Species Richness Layer</a>
+						</li>						
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="search" role="tabpanel" aria-labelledby="search-tab">
+							<div class="row mt-3">
+								<div class="col-sm-3">
+									<div class="form-group">
+										<label for="ddlStates">States</label>
+										
+				<select name='states' id='ddlStates' class='form-control form-control-sm' data-width='100%'>
+					<option value=''>-Select-</option>
+					<option value='AL'>Alabama</option>
+					<option value='AK'>Alaska</option>
+					<option value='AS'>American Samoa</option>
+					<option value='AZ'>Arizona</option>
+					<option value='AR'>Arkansas</option>
+					<option value='CA'>California</option>
+					<option value='CO'>Colorado</option>
+					<option value='CT'>Connecticut</option>
+					<option value='DE'>Delaware</option>
+					<option value='FL'>Florida</option>
+					<option value='GA'>Georgia</option>
+					<option value='GU'>Guam</option>
+					<option value='HI'>Hawaii</option>
+					<option value='ID'>Idaho</option>
+					<option value='IL'>Illinois</option>
+					<option value='IN'>Indiana</option>
+					<option value='IA'>Iowa</option>
+					<option value='KS'>Kansas</option>
+					<option value='KY'>Kentucky</option>
+					<option value='LA'>Louisiana</option>
+					<option value='ME'>Maine</option>
+					<option value='MD'>Maryland</option>
+					<option value='MA'>Massachusetts</option>
+					<option value='MI'>Michigan</option>
+					<option value='MN'>Minnesota</option>
+					<option value='MS'>Mississippi</option>
+					<option value='MO'>Missouri</option>
+					<option value='MT'>Montana</option>
+					<option value='NE'>Nebraska</option>
+					<option value='NV'>Nevada</option>
+					<option value='NH'>New Hampshire</option>
+					<option value='NJ'>New Jersey</option>
+					<option value='NM'>New Mexico</option>
+					<option value='NY'>New York</option>
+					<option value='NC'>North Carolina</option>
+					<option value='ND'>North Dakota</option>
+					<option value='MP'>Northern Mariana Islands</option>
+					<option value='OH'>Ohio</option>
+					<option value='OK'>Oklahoma</option>
+					<option value='OR'>Oregon</option>
+					<option value='PA'>Pennsylvania</option>
+					<option value='PR'>Puerto Rico</option>
+					<option value='RI'>Rhode Island</option>
+					<option value='SC'>South Carolina</option>
+					<option value='SD'>South Dakota</option>
+					<option value='TN'>Tennessee</option>
+					<option value='TX'>Texas</option>
+					<option value='UT'>Utah</option>
+					<option value='VT'>Vermont</option>
+					<option value='VI'>Virgin Islands</option>
+					<option value='VA'>Virginia</option>
+					<option value='WA'>Washington</option>
+					<option value='WV'>West Virginia</option>
+					<option value='WI'>Wisconsin</option>
+					<option value='WY'>Wyoming</option>
+				</select>									</div>
+								</div>
+								<div class="col-sm-9">
+									<div class="form-group">
+										<label for="ddlCounties">Counties</label>
+										<select name="counties[]" id="ddlCounties" class="form-control" multiple="multiple" data-width="100%">
+											<option>-Please state first-</option>
+										</select>
+										<div class="form-text float-right" id="downloadSpecies"></div>
+										<small class="form-text">Hold <kbd>CTRL</kbd> and click on county names to select multiple.</small>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group mb-3">
+										<label for="ddlSpecies">Species</label>
+										<select name="species[]" id="ddlSpecies" class="form-control form-control-sm" multiple="multiple" data-width="100%"></select>
+										
+										<div id="btnDownload" class="btn-group float-right form-text text-primary" role="group" style="display:none;">
+											<span id="btnGroupDrop1" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											  <i class='fa fa-download'></i> Download Species Boundary
+											</span>
+											<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+											  <a id="downloadEsriJSON" class="dropdown-item text-primary" href="#">Esri JSON</a>
+											  <a id="downloadGeoJSON"class="dropdown-item text-primary" href="#">GeoJSON</a>
+											</div>
+										</div>
+										<small class="form-text text-muted">Hold <kbd>CTRL</kbd> and click on species names to select multiple.</small>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="richness" role="tabpanel" aria-labelledby="richness-tab">
+							<div class="row mt-3">
+								<div class="col">Species richness layer by county. Click on a county to see a list of species recorded in it.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			
+			<div class="form-group">
+				<div id="validation" class="text-danger"></div>
+			</div>
+			<div class="row mb-1">
+				<div class="col">
+					<button id="btnExportMap" class="btn btn-success float-right btn-sm"><i class="fa fa-download"></i> Save as Image</button>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col">										
+					<div id="mapDiv" style=" height: 430px;">
+						<div id="map-logo">
+							<img src="/images/armi_logo_green.png" style="height: 50px;" />
+						</div>	
+										
+						<div id="legend" class="accordion">
+							<div class="card mb-0">
+								<h5 class="card-header collapsed" id="headingOne" data-toggle="collapse" href="#allLegends">
+									Legend
+								</h5>
+								<div class="card-body collapse" id="allLegends" aria-labelledby="headingOne" data-parent="#legend">
+									<table id="legendSpeciesBoundary" class="mb-3 mt-3">
+									</table>
+									
+									<table id="legendRichness" class="mb-3 mt-3" >
+										<tbody style="font-size: 11pt">											
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: white; padding-top: .2px; margin-right: 1em; border: 1px solid rgba(253, 207, 106, 0.5);"></div>
+												</td>
+												<td>0 species</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: rgba(251, 247, 186, 0.65); padding-top: .2px; margin-right: 1em; border: 1px solid rgba(253, 207, 106, 0.5);"></div>
+												</td>
+												<td>1 - 2</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: rgba(253, 207, 106, 0.65); padding-top: .2px; margin-right: 1em; border: 1px solid rgba(253, 207, 106, .7);"></div>
+												</td>
+												<td>3 - 6</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: rgba(239, 144, 87, 0.65); padding-top: .2px; margin-right: 1em; border: 1px solid rgba(239, 144, 87, .5);"></div>
+												</td>
+												<td>7 - 14</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: rgba(223, 66, 44, .65); padding-top: .2px; margin-right: 1em; border: 1px solid rgba(223, 66, 44, .5);"></div>
+												</td>
+												<td>15 - 25</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: rgba(165, 48, 41, .65); padding-top: .2px; margin-right: 1em; border: 1px solid rgba(165, 48, 41, 1);"></div>
+												</td>
+												<td>26 - 40</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="pull-left" style="width: 30px; height: 15px; background-color: rgba(165, 48, 41, .85); padding-top: .2px; margin-right: 1em; border: 1px solid rgba(165, 48, 41, 1);"></div>
+												</td>
+												<td>More than 40</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>							  
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+			
+			<div id="results-sk-wave" class="sk-wave">
+				<div class="sk-rect sk-rect1"></div>
+				<div class="sk-rect sk-rect2"></div>
+				<div class="sk-rect sk-rect3"></div>
+				<div class="sk-rect sk-rect4"></div>
+				<div class="sk-rect sk-rect5"></div>
+			</div>
+			<div id="resultsContainer" class="row mb-3 mt-5"   >
+				<div class="col">										
+					<h2>Results</h2>	
+					
+					<div class="alert alert-info">Katie's curated data will be displayed here.</div>
+					<div id="errorMessage"></div>
+
+				</div>
+			</div>	
+						<div class="row mt-5 mb-5 text-muted">
+				<div class="col">*Species downloads are in Excel format.</div>
+			</div>
+		</main>
+				
+		<a id="testScroll" class="btn btn-secondary btn-circle" href="#" title="Click to go back to the top."><i class="fa fa-chevron-up"></i></a>
+		<!-- BEGIN USGS Footer Template -->
+		<footer class="footer">
+			<div class="container">
+				<div class="row mt-5">
+					<div class="col-lg-3  col-sm-6 pb-5">
+						<h5>ARMI Topics</h5>
+						<a href="/topic.php?topic=Climate+Change" title="View Climate Change topic">Climate Change</a><br />
+						<a href="/topic.php?topic=Disease" title="View Diease topic">Disease</a><br />
+						<a href="/topic.php?topic=Drought" title="View Drough topic">Drought</a><br />
+						<a href="/topic.php?topic=Fire" title="View Fire topic">Fire</a><br />
+						<a href="/topic.php?topic=Invasive+Species" title="View Invasive Species topic">Invasive Species</a><br />
+						<a href="/topic.php?topic=Management" title="View Management topic">Management</a><br />
+						<a href="/topic.php?topic=Monitoring+and+Population+Ecology" title="View Monitoring & Population Ecology topic">Monitoring & Population Ecology</a><br />
+						<a href="/topic.php?topic=Quantitative+Developments" title="View Quantitative Developments topic">Quantitative Developments</a><br />
+						<a href="/topic.php?topic=Species+and+their+Ecology" title="View Species and their Ecology topic">Species and their Ecology</a><br />
+						<a href="/topic.php?topic=Stressors" title="View Stressors topic">Stressors</a><br />
+						<a href="/topic.php?topic=Water" title="View Water topic">Water</a>
+					</div>
+					<div class="col-lg-2 col-sm-6 pb-5">
+						<h5>Resources</h5>
+						<a href="/spatial/" title="Go to ARMI Spatial Search tool">Spatial Search</a><br />
+						<a href="/gallery/" title="View Amphibian Taxonomy Gallery">Gallery</a><br />
+						<a href="/projects/estimates_datasets.php" title="View ARMI Trend Data">Trend Data</a><br />
+						<a href="/Bsal-studies/" title="View ARMI Bsal Studies">Bsal Studies</a><br />
+						<a href="/atlas" title="Go to the National Amphibian Atlas">National Amphibian Atlas</a>
+					</div>
+					<div class="col-lg-2 col-sm-6 pb-5">
+						<h5>Publications</h5>
+						<a href="/search/" title="Search ARMI Database">Search ARMI Database</a><br />
+						<a href="/recent.php" title="View ARMI's Recent Papers & Reports">Recent ARMI Papers & Reports</a><br />
+						<a href="/story/" title="View ARMI News & Stories">News & Stories</a><br />
+						<a href="/charts.php" title="View ARMI Publication Statistics">ARMI Publication Statistics</a>
+					</div>
+					<div class="col-lg-2 col-sm-6 pb-5">
+						<h5>About ARMI</h5>
+						<a href="/program_background.php" title="View ARMI Program Background">Program Background</a><br />
+						<a href="/regions.php" title="View ARMI Regions and People">Regions and People</a><br />
+					</div>
+					<div class="col-lg-2  col-sm-6 pb-5">
+						<h5>Legal</h5>
+						<a href="https://www.usgs.gov/accessibility" title="View USGS Accessibility">Accessibility</a><br />
+						<a href="https://www.usgs.gov/foia" title="View USGS FOIA">FOIA</a><br />
+						<a href="https://www.usgs.gov/legal" title="View USGS Legal Details">Legal</a><br />
+						<a href="https://www.doi.gov/privacy" title="View USGS Privavy Policy">Privacy Policy</a><br />
+						<a href="https://answers.usgs.gov/" title="Contact USGS">Contact USGS</a><br />
+						<a href="https://www.usgs.gov/sitemap" title="View USGS sitemap">Sitemap</a>
+					</div>
+					<div class="col-lg-1 col-sm-6 pb-5">
+						<div class="social-media row">
+							<div class="col-lg-6 col-sm-4 col-2">
+								<a href="https://facebook.com/usgeologicalsurvey" target="_blank" title="Follow us on Facebook">
+									<i class="fa fa-facebook-square"><span class="only">Facebook</span></i>
+								</a>
+							</div>
+							<div class="col-lg-6 col-sm-4 col-2">
+								<a href="https://flickr.com/usgeologicalsurvey" target="_blank" title="Follow us on Flickr">
+									<i class="fa fa-flickr"><span class="only">Flickr</span></i>
+								</a>
+							</div>
+							<div class="col-lg-6 col-sm-4 col-2">
+								<a href="https://instagram.com/usgs" target="_blank" title="Follow us on Instagram">
+									<i class="fa fa-instagram"><span class="only">Instagram</span></i>
+								</a>
+							</div>
+							<div class="col-lg-6 col-sm-4 col-2">
+								<a href="https://github.com/usgs" target="_blank" title="Follow us on Github">
+									<i class="fa fa-github"><span class="only">Github</span></i>
+								</a>
+							</div>
+							<div class="col-lg-6 col-sm-4 col-2">
+								<a href="https://twitter.com/usgs" target="_blank" title="Follow us on Twitter">
+									<i class="fa fa-twitter-square"><span class="only">Twitter</span></i>
+								</a>
+							</div>
+							<div class="col-lg-6 col-sm-4 col-2">
+								<a href="http://youtube.com/usgs" target="_blank" title="Follow us on Youtube">
+									<i class="fa fa-youtube-play"><span class="only">YouTube</span></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" integrity="sha512-ubuT8Z88WxezgSqf3RLuNi5lmjstiJcyezx34yIU2gAHonIi27Na7atqzUZCOoY4CExaoFumzOsFQ2Ch+I/HCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js" integrity="sha512-7rusk8kGPFynZWu26OKbTeI+QPoYchtxsmPeBqkHIEXJxeun4yJ4ISYe7C6sz9wdxeE1Gk3VxsIWgCZTc+vX3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script type="application/javascript" src="https://www2.usgs.gov/scripts/analytics/usgs-analytics.js"></script>			
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script type="text/javascript">
+			// <!-- Google Tag Manager -->
+			// (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			// new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			// j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			// 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			// })(window,document,'script','dataLayer','GTM-TKQR8KP');
+			// <!-- End Google Tag Manager -->
+			
+			//<!-- USA Search -->		
+			//<![CDATA[
+				  var usasearch_config = { siteHandle:"armi" };
+
+				  var script = document.createElement("script");
+				  script.type = "text/javascript";
+				  script.src = "//search.usa.gov/javascripts/remote.loader.js";
+				  document.getElementsByTagName("head")[0].appendChild(script);
+			//]]><!-- End USA Search -->
+			
+			//<![CDATA[
+		
+			//<!-- scroll to top -->
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 50) {
+					$("#testScroll").fadeIn();
+				} else {
+					$("#testScroll").fadeOut();
+				}
+			});
+			// scroll body to 0px on click
+			$('#testScroll').click(function () {
+				$('body,html').animate({
+					scrollTop: 0
+				}, 800);
+				return false;
+			});	
+			//<!-- end scroll to top -->
+		</script>
+		
+		 
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" ></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>				
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js" integrity="sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw==" crossorigin="anonymous"></script>
+		
+		<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/leaflet-ajax@2.1.0/dist/leaflet.ajax.min.js" integrity="sha256-rVeyUZMfAHhQJ7hvWaHrKknTDdqGcn1gxBBJA++E4z8=" crossorigin="anonymous"></script> -->
+		
+		<script src="../scripts/polyfills.js"></script>
+		<script src="../scripts/select2cascade.js"></script>
+		<script src="../scripts/leaflet.zoomhome.min.js" type="text/javascript"></script>
+		<script src="../scripts/spin.min.js"></script>
+		<script src="../scripts/leaflet.spin.min.js"></script>
+		<script src="../scripts/leaflet-export-image.js"></script>
+		<script src="atlas-map.js"></script>
+		
+		<script type="text/javascript">
+			
+			$(function() {
+				$('.navbar a:contains("Resources")').parent().addClass('active');
+				
+				var speciesURL = "../scripts/select2.php?ddl=species";
+				getSpecies(speciesURL);
+			
+				var select2Options = { 
+					width: 'resolve',					
+					theme: 'bootstrap4',
+				};
+								
+				var countyUrl =  '../scripts/select2.php?ddl=counties&statecode=:statecode:'; 				
+				
+				$('#ddlStates').select2(select2Options); 
+				$('#ddlCounties').select2(select2Options);				
+				
+				var cascadLoadingCounties = new Select2CascadeCounties($('#ddlStates'), $('#ddlCounties'), countyUrl, select2Options);
+				cascadLoadingCounties.then( function(parent, child, items) {
+					// Dump response data
+					//console.log(items);
+				});
+								
+			});	
+			
+			$("#btnExportMap").on("click", function() {
+				printer.printMap('CurrentSize', 'ARMI-Atlas');
+			});
+			
+		</script>
+	<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5075570bfc8fd8a',t:'MTc5Mjk5NTQwMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+

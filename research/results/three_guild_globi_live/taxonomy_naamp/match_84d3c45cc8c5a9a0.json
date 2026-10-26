@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Lithobates+areolatus&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:21:25.404838+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "4869fa22a08ba81505d9d7cc5bef53c7b43f3f4a24d10721ce8ce61b24d1fcb2",
+  "response": {
+    "usageKey": 2427133,
+    "scientificName": "Lithobates areolatus (Baird & Girard, 1852)",
+    "canonicalName": "Lithobates areolatus",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Lithobates",
+    "species": "Lithobates areolatus",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2427046,
+    "speciesKey": 2427133,
+    "class": "Amphibia"
+  }
+}

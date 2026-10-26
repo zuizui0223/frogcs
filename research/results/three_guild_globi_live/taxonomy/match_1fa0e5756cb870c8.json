@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Ichthyosaura+alpestris&verbose=true&kingdom=Animalia&class=Amphibia&order=Caudata",
+  "queried_at_utc": "2026-10-26T05:06:10.617901+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "5d8e5125a7c47bf11169b410901ae961389cf2e95376810d05033ac3cb8c2633",
+  "response": {
+    "usageKey": 2431783,
+    "scientificName": "Ichthyosaura alpestris (Laurenti, 1768)",
+    "canonicalName": "Ichthyosaura alpestris",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Caudata",
+    "family": "Salamandridae",
+    "genus": "Ichthyosaura",
+    "species": "Ichthyosaura alpestris",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 953,
+    "familyKey": 6750,
+    "genusKey": 2431782,
+    "speciesKey": 2431783,
+    "class": "Amphibia"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "url": "https://api.gbif.org/v1/species/match?name=Rana+tavasensis&verbose=true&kingdom=Animalia&class=Amphibia&order=Anura",
+  "queried_at_utc": "2026-10-26T05:07:08.590986+00:00",
+  "status": "SUCCESS",
+  "response_sha256": "513fe50132fb8216a4f84c342d4d28adb511318b42814c6c2e5e56f37ae1deea",
+  "response": {
+    "usageKey": 2426770,
+    "scientificName": "Rana tavasensis Baran & Atat\u00fcr, 1986",
+    "canonicalName": "Rana tavasensis",
+    "rank": "SPECIES",
+    "status": "ACCEPTED",
+    "confidence": 100,
+    "note": "Similarity: name=110; authorship=0; classification=34; rank=6; status=1; score=151; singleMatch=5",
+    "matchType": "EXACT",
+    "kingdom": "Animalia",
+    "phylum": "Chordata",
+    "order": "Anura",
+    "family": "Ranidae",
+    "genus": "Rana",
+    "species": "Rana tavasensis",
+    "kingdomKey": 1,
+    "phylumKey": 44,
+    "classKey": 131,
+    "orderKey": 952,
+    "familyKey": 6746,
+    "genusKey": 2422253,
+    "speciesKey": 2426770,
+    "class": "Amphibia"
+  }
+}

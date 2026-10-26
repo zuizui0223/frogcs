@@ -1,0 +1,1067 @@
+{
+  "status": "OBSERVED_SOURCE_ONLY_SPECIES_CO_DETECTION_EXPLORATORY",
+  "n_paired_original_source_event_species_contingencies": 1181,
+  "n_inference_ready_co_assessed_species_pairs": 150,
+  "source_event_counts": {
+    "hungary_2024": 379,
+    "inbo_adult_chorus": 963,
+    "inbo_larval_census": 697,
+    "naamp_positive_calls": 152639,
+    "nps_glkn": 16561
+  },
+  "top_lowest_phi": [
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Hyla arborea",
+      "species_b": "Pelophylax ridibundus",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 1,
+      "a_detected_b_not_called_or_not_observed_n10": 39,
+      "a_not_called_or_not_observed_b_detected_n01": 3,
+      "both_protocol_not_detected_n00": 16,
+      "phi_same_event": -0.24700357396248182,
+      "site_resample_ci95_phi": [
+        -0.5029366616206756,
+        0.1072112534837795
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "nps_glkn",
+      "method": "manual_audio",
+      "species_a": "Lithobates clamitans",
+      "species_b": "Pseudacris crucifer",
+      "both_species_explicitly_assessed_original_events": 16561,
+      "distinct_original_sites_with_joint_assessment": 66,
+      "co_detection_events_n11": 1560,
+      "a_detected_b_not_called_or_not_observed_n10": 4826,
+      "a_not_called_or_not_observed_b_detected_n01": 5010,
+      "both_protocol_not_detected_n00": 5165,
+      "phi_same_event": -0.24684218161273777,
+      "site_resample_ci95_phi": [
+        -0.3072160407596824,
+        -0.17935539619239443
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 337,
+        "n_original_sites_in_informative_strata": 52,
+        "n_both_species_assessed_in_informative_strata": 4030,
+        "n_exact_co_detections_observed": 914,
+        "independence_expected_co_detections_given_source_site_month": 1011.2608949744788,
+        "excess_joint_detection_per_100_same_stratum_assessments": -2.4134217115255283,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -3.350019387125032,
+          -1.5960901449409195
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Lissotriton vulgaris",
+      "species_b": "Pelophylax ridibundus",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 1,
+      "a_detected_b_not_called_or_not_observed_n10": 34,
+      "a_not_called_or_not_observed_b_detected_n01": 3,
+      "both_protocol_not_detected_n00": 21,
+      "phi_same_event": -0.18842305260569037,
+      "site_resample_ci95_phi": [
+        -0.44091241676413623,
+        0.15093883565825253
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "nps_glkn",
+      "method": "manual_audio",
+      "species_a": "Lithobates clamitans",
+      "species_b": "Lithobates sylvaticus",
+      "both_species_explicitly_assessed_original_events": 16561,
+      "distinct_original_sites_with_joint_assessment": 66,
+      "co_detection_events_n11": 5,
+      "a_detected_b_not_called_or_not_observed_n10": 6381,
+      "a_not_called_or_not_observed_b_detected_n01": 558,
+      "both_protocol_not_detected_n00": 9617,
+      "phi_same_event": -0.14519418742774454,
+      "site_resample_ci95_phi": [
+        -0.17370762938899934,
+        -0.11888849316341422
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 28,
+        "n_original_sites_in_informative_strata": 17,
+        "n_both_species_assessed_in_informative_strata": 283,
+        "n_exact_co_detections_observed": 5,
+        "independence_expected_co_detections_given_source_site_month": 14.238339438339437,
+        "excess_joint_detection_per_100_same_stratum_assessments": -3.2644308969397304,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -4.513286698252309,
+          -2.1914007412882897
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "nps_glkn",
+      "method": "manual_audio",
+      "species_a": "Lithobates clamitans",
+      "species_b": "Pseudacris maculata/triseriata",
+      "both_species_explicitly_assessed_original_events": 16561,
+      "distinct_original_sites_with_joint_assessment": 66,
+      "co_detection_events_n11": 3,
+      "a_detected_b_not_called_or_not_observed_n10": 6383,
+      "a_not_called_or_not_observed_b_detected_n01": 489,
+      "both_protocol_not_detected_n00": 9686,
+      "phi_same_event": -0.1364309822845672,
+      "site_resample_ci95_phi": [
+        -0.1792088889952377,
+        -0.08717743980618708
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 13,
+        "n_original_sites_in_informative_strata": 7,
+        "n_both_species_assessed_in_informative_strata": 102,
+        "n_exact_co_detections_observed": 3,
+        "independence_expected_co_detections_given_source_site_month": 5.505555555555555,
+        "excess_joint_detection_per_100_same_stratum_assessments": -2.4564270152505436,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -4.700033569825237,
+          0.7169065387348945
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Bufotes viridis",
+      "species_b": "Lissotriton vulgaris",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 1,
+      "a_detected_b_not_called_or_not_observed_n10": 2,
+      "a_not_called_or_not_observed_b_detected_n01": 34,
+      "both_protocol_not_detected_n00": 22,
+      "phi_same_event": -0.12245134162498848,
+      "site_resample_ci95_phi": [
+        -0.3337959093369877,
+        0.13713244419949588
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "nps_glkn",
+      "method": "manual_audio",
+      "species_a": "Lithobates catesbeianus",
+      "species_b": "Pseudacris crucifer",
+      "both_species_explicitly_assessed_original_events": 12499,
+      "distinct_original_sites_with_joint_assessment": 50,
+      "co_detection_events_n11": 5,
+      "a_detected_b_not_called_or_not_observed_n10": 266,
+      "a_not_called_or_not_observed_b_detected_n01": 4993,
+      "both_protocol_not_detected_n00": 7235,
+      "phi_same_event": -0.11591242910469463,
+      "site_resample_ci95_phi": [
+        -0.17245646787173627,
+        -0.05342203214767247
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 14,
+        "n_original_sites_in_informative_strata": 6,
+        "n_both_species_assessed_in_informative_strata": 122,
+        "n_exact_co_detections_observed": 5,
+        "independence_expected_co_detections_given_source_site_month": 12.30465367965368,
+        "excess_joint_detection_per_100_same_stratum_assessments": -5.987421048896459,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -8.408108608698631,
+          -3.0493357217495145
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "visual",
+      "species_a": "Lissotriton vulgaris",
+      "species_b": "Pelophylax ridibundus",
+      "both_species_explicitly_assessed_original_events": 129,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 1,
+      "a_detected_b_not_called_or_not_observed_n10": 10,
+      "a_not_called_or_not_observed_b_detected_n01": 29,
+      "both_protocol_not_detected_n00": 89,
+      "phi_same_event": -0.10237183464849674,
+      "site_resample_ci95_phi": [
+        -0.18296084473721974,
+        0.004061233342289957
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 2,
+        "n_original_sites_in_informative_strata": 2,
+        "n_both_species_assessed_in_informative_strata": 6,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 0.75,
+        "excess_joint_detection_per_100_same_stratum_assessments": 4.166666666666667,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "visual",
+      "species_a": "Bombina bombina",
+      "species_b": "Lissotriton vulgaris",
+      "both_species_explicitly_assessed_original_events": 129,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 0,
+      "a_detected_b_not_called_or_not_observed_n10": 13,
+      "a_not_called_or_not_observed_b_detected_n01": 11,
+      "both_protocol_not_detected_n00": 105,
+      "phi_same_event": -0.10221109017615004,
+      "site_resample_ci95_phi": [
+        -0.16221844603879532,
+        -0.04835061831444986
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "visual",
+      "species_a": "Pelophylax ridibundus",
+      "species_b": "Rana dalmatina",
+      "both_species_explicitly_assessed_original_events": 129,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 6,
+      "a_detected_b_not_called_or_not_observed_n10": 24,
+      "a_not_called_or_not_observed_b_detected_n01": 30,
+      "both_protocol_not_detected_n00": 69,
+      "phi_same_event": -0.0970399305771884,
+      "site_resample_ci95_phi": [
+        -0.29089449576270315,
+        0.1401357005205674
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 2,
+        "n_original_sites_in_informative_strata": 2,
+        "n_both_species_assessed_in_informative_strata": 8,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 1,
+        "excess_joint_detection_per_100_same_stratum_assessments": 0,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "inbo_larval_census",
+      "method": "larval_census",
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Rana temporaria",
+      "both_species_explicitly_assessed_original_events": 42,
+      "distinct_original_sites_with_joint_assessment": 16,
+      "co_detection_events_n11": 10,
+      "a_detected_b_not_called_or_not_observed_n10": 27,
+      "a_not_called_or_not_observed_b_detected_n01": 2,
+      "both_protocol_not_detected_n00": 3,
+      "phi_same_event": -0.09299811099505542,
+      "site_resample_ci95_phi": [
+        -0.4016632088371218,
+        0.2
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "bottletrap",
+      "species_a": "Pelobates fuscus",
+      "species_b": "Triturus dobrogicus",
+      "both_species_explicitly_assessed_original_events": 60,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 0,
+      "a_detected_b_not_called_or_not_observed_n10": 5,
+      "a_not_called_or_not_observed_b_detected_n01": 5,
+      "both_protocol_not_detected_n00": 50,
+      "phi_same_event": -0.09090909090909091,
+      "site_resample_ci95_phi": [
+        -0.1569468681552101,
+        -0.03604920469572501
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    }
+  ],
+  "top_highest_phi": [
+    {
+      "source_id": "inbo_larval_census",
+      "method": "larval_census",
+      "species_a": "Lissotriton vulgaris",
+      "species_b": "Pelophylax esculenta synklepton",
+      "both_species_explicitly_assessed_original_events": 58,
+      "distinct_original_sites_with_joint_assessment": 35,
+      "co_detection_events_n11": 46,
+      "a_detected_b_not_called_or_not_observed_n10": 2,
+      "a_not_called_or_not_observed_b_detected_n01": 1,
+      "both_protocol_not_detected_n00": 9,
+      "phi_same_event": 0.8270491617341799,
+      "site_resample_ci95_phi": [
+        0.5757120627708396,
+        1
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Bombina bombina",
+      "species_b": "Pelobates fuscus",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 12,
+      "a_detected_b_not_called_or_not_observed_n10": 9,
+      "a_not_called_or_not_observed_b_detected_n01": 1,
+      "both_protocol_not_detected_n00": 37,
+      "phi_same_event": 0.6297051124769104,
+      "site_resample_ci95_phi": [
+        0.47916531364351683,
+        0.7910296844752615
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "bottletrap",
+      "species_a": "Bombina bombina",
+      "species_b": "Pelobates fuscus",
+      "both_species_explicitly_assessed_original_events": 60,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 2,
+      "a_detected_b_not_called_or_not_observed_n10": 0,
+      "a_not_called_or_not_observed_b_detected_n01": 3,
+      "both_protocol_not_detected_n00": 55,
+      "phi_same_event": 0.6158817620514396,
+      "site_resample_ci95_phi": [
+        0.38993176791040124,
+        1
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 3,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 0.6666666666666666,
+        "excess_joint_detection_per_100_same_stratum_assessments": 11.111111111111112,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "inbo_larval_census",
+      "method": "larval_census",
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Pelophylax esculenta synklepton",
+      "both_species_explicitly_assessed_original_events": 75,
+      "distinct_original_sites_with_joint_assessment": 43,
+      "co_detection_events_n11": 60,
+      "a_detected_b_not_called_or_not_observed_n10": 6,
+      "a_not_called_or_not_observed_b_detected_n01": 2,
+      "both_protocol_not_detected_n00": 7,
+      "phi_same_event": 0.5896569472475084,
+      "site_resample_ci95_phi": [
+        0.30822306897583407,
+        0.815113772779521
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "inbo_larval_census",
+      "method": "larval_census",
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Lissotriton vulgaris",
+      "both_species_explicitly_assessed_original_events": 216,
+      "distinct_original_sites_with_joint_assessment": 105,
+      "co_detection_events_n11": 159,
+      "a_detected_b_not_called_or_not_observed_n10": 11,
+      "a_not_called_or_not_observed_b_detected_n01": 20,
+      "both_protocol_not_detected_n00": 26,
+      "phi_same_event": 0.5438636928938223,
+      "site_resample_ci95_phi": [
+        0.3412620076291262,
+        0.7727874706350936
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 10,
+        "n_exact_co_detections_observed": 6,
+        "independence_expected_co_detections_given_source_site_month": 6.3,
+        "excess_joint_detection_per_100_same_stratum_assessments": -2.9999999999999982,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "bottletrap",
+      "species_a": "Bufo bufo",
+      "species_b": "Hyla arborea",
+      "both_species_explicitly_assessed_original_events": 61,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 8,
+      "a_detected_b_not_called_or_not_observed_n10": 3,
+      "a_not_called_or_not_observed_b_detected_n01": 10,
+      "both_protocol_not_detected_n00": 40,
+      "phi_same_event": 0.4444738068759794,
+      "site_resample_ci95_phi": [
+        0.13282526116577525,
+        0.718661773009599
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 4,
+        "n_original_sites_in_informative_strata": 4,
+        "n_both_species_assessed_in_informative_strata": 11,
+        "n_exact_co_detections_observed": 4,
+        "independence_expected_co_detections_given_source_site_month": 2.833333333333333,
+        "excess_joint_detection_per_100_same_stratum_assessments": 10.606060606060609,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "acoustic",
+      "species_a": "Bufotes viridis",
+      "species_b": "Pelophylax ridibundus",
+      "both_species_explicitly_assessed_original_events": 129,
+      "distinct_original_sites_with_joint_assessment": 29,
+      "co_detection_events_n11": 7,
+      "a_detected_b_not_called_or_not_observed_n10": 6,
+      "a_not_called_or_not_observed_b_detected_n01": 9,
+      "both_protocol_not_detected_n00": 107,
+      "phi_same_event": 0.4209058101480759,
+      "site_resample_ci95_phi": [
+        0.14097309009630146,
+        0.6534930147561449
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 2,
+        "n_original_sites_in_informative_strata": 2,
+        "n_both_species_assessed_in_informative_strata": 7,
+        "n_exact_co_detections_observed": 2,
+        "independence_expected_co_detections_given_source_site_month": 0.8333333333333333,
+        "excess_joint_detection_per_100_same_stratum_assessments": 16.666666666666668,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "inbo_larval_census",
+      "method": "larval_census",
+      "species_a": "Ichthyosaura alpestris",
+      "species_b": "Triturus cristatus",
+      "both_species_explicitly_assessed_original_events": 217,
+      "distinct_original_sites_with_joint_assessment": 110,
+      "co_detection_events_n11": 120,
+      "a_detected_b_not_called_or_not_observed_n10": 63,
+      "a_not_called_or_not_observed_b_detected_n01": 3,
+      "both_protocol_not_detected_n00": 31,
+      "phi_same_event": 0.41630941396477744,
+      "site_resample_ci95_phi": [
+        0.305502302109805,
+        0.5200016359633373
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 10,
+        "n_exact_co_detections_observed": 4,
+        "independence_expected_co_detections_given_source_site_month": 2.8,
+        "excess_joint_detection_per_100_same_stratum_assessments": 12.000000000000002,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Bombina bombina",
+      "species_b": "Hyla arborea",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 19,
+      "a_detected_b_not_called_or_not_observed_n10": 2,
+      "a_not_called_or_not_observed_b_detected_n01": 21,
+      "both_protocol_not_detected_n00": 17,
+      "phi_same_event": 0.3608262111822866,
+      "site_resample_ci95_phi": [
+        0.16595155318223606,
+        0.5545697041484935
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 3,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 0.6666666666666666,
+        "excess_joint_detection_per_100_same_stratum_assessments": 11.111111111111112,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Lissotriton vulgaris",
+      "species_b": "Pelobates fuscus",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 12,
+      "a_detected_b_not_called_or_not_observed_n10": 23,
+      "a_not_called_or_not_observed_b_detected_n01": 1,
+      "both_protocol_not_detected_n00": 23,
+      "phi_same_event": 0.356968822065373,
+      "site_resample_ci95_phi": [
+        0.1391754976793203,
+        0.5373949608899388
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "inbo_larval_census",
+      "method": "larval_census",
+      "species_a": "Hyla arborea",
+      "species_b": "Pelophylax esculenta synklepton",
+      "both_species_explicitly_assessed_original_events": 70,
+      "distinct_original_sites_with_joint_assessment": 38,
+      "co_detection_events_n11": 47,
+      "a_detected_b_not_called_or_not_observed_n10": 0,
+      "a_not_called_or_not_observed_b_detected_n01": 19,
+      "both_protocol_not_detected_n00": 4,
+      "phi_same_event": 0.351919262509781,
+      "site_resample_ci95_phi": [
+        0.17240328194582286,
+        0.5237477675204777
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    },
+    {
+      "source_id": "hungary_2024",
+      "method": "dipnet",
+      "species_a": "Pelobates fuscus",
+      "species_b": "Triturus dobrogicus",
+      "both_species_explicitly_assessed_original_events": 59,
+      "distinct_original_sites_with_joint_assessment": 28,
+      "co_detection_events_n11": 3,
+      "a_detected_b_not_called_or_not_observed_n10": 10,
+      "a_not_called_or_not_observed_b_detected_n01": 1,
+      "both_protocol_not_detected_n00": 45,
+      "phi_same_event": 0.34462603276994996,
+      "site_resample_ci95_phi": [
+        -0.08178608201095307,
+        0.6213894823971785
+      ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
+      "estimable_reporting_association": true,
+      "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
+      "actual_biotic_competition_identified": false
+    }
+  ],
+  "hungary_species": [
+    {
+      "species": "Bombina bombina",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 5,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.3773258316048898
+        },
+        "source_one_time_water_depth": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.2339327769647045
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.09549480885458009
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.0608532056512718
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Bufo bufo",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 0,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "source_one_time_water_depth": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Bufotes viridis",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 8,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.11349746064357359
+        },
+        "source_one_time_water_depth": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.41844715480614936
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.10413510112636788
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.07041084674986636
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Hyla arborea",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 13,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.020887532880062124
+        },
+        "source_one_time_water_depth": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.02702675009954088
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.13764704868287797
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.15729102626659075
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Lissotriton vulgaris",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 0,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "source_one_time_water_depth": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Pelobates fuscus",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 4,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "source_one_time_water_depth": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Pelophylax ridibundus",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 10,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.06797078407159535
+        },
+        "source_one_time_water_depth": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.3676768528037938
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": 0.06685689987023836
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "DESCRIPTIVE_SPEARMAN_NO_CAUSAL_CLAIM",
+          "n_sites": 29,
+          "rho": -0.031211664462191313
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Rana dalmatina",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 0,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "source_one_time_water_depth": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    },
+    {
+      "species": "Triturus dobrogicus",
+      "sites_scored_under_acoustic_protocol": 29,
+      "sites_with_positive_acoustic_detection": 0,
+      "source_acoustic_events_scored": 129,
+      "environment_associations": {
+        "rain_at_visited_days": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "source_one_time_water_depth": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_emergent_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        },
+        "static_submerged_plant_cover_pct": {
+          "status": "INSUFFICIENT_SITE_COVERAGE_OR_DETECTION_VARIATION",
+          "n_sites": 29,
+          "spearman_rho": null
+        }
+      },
+      "not_CI2plus_and_not_pond_predator_count": true
+    }
+  ],
+  "no_inferred_competition_from_cooccurrence": true,
+  "run_provenance": {
+    "github_actions_run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40265834563",
+    "job_id": 121387941161,
+    "status": "all source and species co-occurrence QA PASS",
+    "raw_tables_published_as_workflow_artifact": true
+  },
+  "all_complete_pairwise_results_available_in_github_actions_artifact": true
+}
