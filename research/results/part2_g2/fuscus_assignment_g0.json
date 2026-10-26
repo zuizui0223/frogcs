@@ -1,0 +1,109 @@
+{
+  "status": "RESPONSE_BLIND_ASSIGNMENT_ELIGIBILITY",
+  "dataset": "Leptodactylus fuscus 2×2×2 water-level×predator cue×temperature trial",
+  "source": "http://hdl.handle.net/10261/411885",
+  "source_sha256": "eb76b0ec8162278c14860fddcfe30a487ff9e8fc4b8fe40311f88dabe0fd9b25",
+  "columns": [
+    "Temperature",
+    "Pool",
+    "Predator",
+    "water_level",
+    "Nest",
+    "Replicate",
+    "ID_tadpole",
+    "tadpole_density",
+    "fat_bodies (g)",
+    "fb_mass/total mass",
+    "start_date",
+    "date_G42",
+    "time_to_42",
+    "mass_42",
+    "date_G46",
+    "time_to_46",
+    "mass_46",
+    "survival_G46",
+    "BL",
+    "HW",
+    "FL",
+    "TL",
+    "FTL",
+    "TW",
+    "FW",
+    "SL",
+    "LL",
+    "PC_Body_size",
+    "PC_Snout_l",
+    "T_animal",
+    "velocity",
+    "acceleration"
+  ],
+  "analyzed_treatment_columns": [
+    "Temperature",
+    "Pool",
+    "Predator",
+    "water_level",
+    "Nest",
+    "Replicate",
+    "ID_tadpole",
+    "tadpole_density"
+  ],
+  "data_rows": 226,
+  "distinct_individual_ids": 226,
+  "distinct_small_replicate_containers": 79,
+  "distinct_large_temperature_bath_pools": 8,
+  "treatment_value_observed": {
+    "Temperature": {
+      "30": 118,
+      "35": 108
+    },
+    "Predator": {
+      "P": 112,
+      "NP": 114
+    },
+    "water_level": {
+      "HW": 116,
+      "DD": 110
+    },
+    "Nest": {
+      "LF51": 84,
+      "LF50": 76,
+      "LF77": 66
+    },
+    "Pool": {
+      "1": 24,
+      "2": 36,
+      "3": 35,
+      "4": 23,
+      "5": 20,
+      "6": 30,
+      "7": 35,
+      "8": 23
+    }
+  },
+  "small_containers_per_factorial_cell": {
+    "30|NP|DD": 10,
+    "30|NP|HW": 10,
+    "30|P|DD": 10,
+    "30|P|HW": 10,
+    "35|NP|DD": 10,
+    "35|NP|HW": 10,
+    "35|P|DD": 9,
+    "35|P|HW": 10
+  },
+  "individuals_per_container_range": [
+    1,
+    3
+  ],
+  "containers_with_less_than_three_source_rows": 10,
+  "empty_or_missing_predictor_field_rows": {},
+  "one_temperature_per_large_pool": true,
+  "source_target_protocol": "80 small containers randomized over eight treatment combos; up to three tadpoles/container; temperature assigned within eight water bath pools",
+  "source_has_actual_survival_count_denominator_verified": false,
+  "source_has_treatment_interaction_estimable": true,
+  "source_has_3_predator_cue_factorial_levels": false,
+  "outcome_columns_read": false,
+  "original_raw_data_redistributed": false,
+  "lab_predator_cue_is_predator_consumption": false,
+  "controlled_drydown_is_observed_natural_pond_drought": false,
+  "github_actions_log_job_id": 121362830559
+}
