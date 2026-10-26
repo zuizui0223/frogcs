@@ -1,0 +1,34 @@
+{
+  "records": 36627,
+  "unique_ids": 36627,
+  "records_by_guild": {
+    "Anura": 20256,
+    "Caudata": 8006,
+    "Odonata": 8365
+  },
+  "selected_species": 30,
+  "fitted_species": 28,
+  "unmodeled_species": [
+    {
+      "species_key": "2427047",
+      "species": "Lithobates septentrionalis",
+      "guild": "Anura",
+      "status": "insufficient_cells",
+      "cells": 18
+    },
+    {
+      "species_key": "2428160",
+      "species": "Pseudacris streckeri",
+      "guild": "Anura",
+      "status": "insufficient_cells",
+      "cells": 17
+    }
+  ],
+  "projected_sites": 11947,
+  "interpretation": "Relative climate/landscape suitability, not calibrated occupancy probability",
+  "source_audit": {
+    "http_attempts": 71,
+    "successful_requests": 71,
+    "cache_hits": 23
+  }
+}

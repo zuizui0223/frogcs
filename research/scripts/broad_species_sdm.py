@@ -251,7 +251,8 @@ def in_domain(domain, rows):
     return np.asarray(contains_xy(domain, [r['lon'] for r in rows], [r['lat'] for r in rows]), dtype=bool)
 
 
-def fit_models(records, paths, out, sites, domain):
+def fit_models(records, paths, out, sites, domain, species_inventory=None):
+    expected={str(r['species_key']):r for r in (species_inventory if species_inventory is not None else records)}
     inside = in_domain(domain, records)
     write_json(out / 'domain_screen.json', dict(retrieved=len(records), retained=int(inside.sum()),
                excluded_outside_generalized_us_polygon=int((~inside).sum())))
@@ -268,18 +269,18 @@ def fit_models(records, paths, out, sites, domain):
     sx = sample(paths, sites) if sites else np.empty((0, 6))
     write_csv(out / 'naamp_site_environment.csv.gz', [{**r, **dict(zip(['bio1','bio4','bio12','bio15','flooded','water'], x))} for r,x in zip(sites,sx)])
     thinned = []
-    for sid in sorted({r['species_key'] for r in records}):
+    for sid in sorted(expected):
         thinned.extend(thin([r for r in records if r['species_key'] == sid]))
     tx = sample(paths, thinned)
     valid = np.isfinite(tx).all(axis=1)
     thinned, tx = [r for i,r in enumerate(thinned) if valid[i]], tx[valid]
     write_csv(out / 'training_presence_environment.csv.gz', [{**r, **dict(zip(['bio1','bio4','bio12','bio15','flooded','water'], x))} for r,x in zip(thinned,tx)])
     results, predictions, bg_predictions = [], [], {}
-    for sid in sorted({r['species_key'] for r in records}):
+    for sid in sorted(expected):
         idx = np.array([r['species_key'] == sid for r in thinned])
         pr = [r for r in thinned if r['species_key'] == sid]
         if len(pr) < 30:
-            source_row=next(r for r in records if r['species_key']==sid)
+            source_row=expected[sid]
             results.append(dict(species_key=sid,species=source_row['species'],guild=source_row['guild'],
                                 status='insufficient_cells', cells=len(pr)))
             continue
@@ -377,7 +378,8 @@ def main():
     if args.project_naamp:
         from naamp_three_guild_occurrence import all_geometry, token
         sites = [dict(route=rt, site=token(sid), lat=lat, lon=lon) for rt,sid,lat,lon in all_geometry()]
-    results = fit_models(records, paths, args.out, sites, us_domain(args.cache, args.out))
+    results = fit_models(records, paths, args.out, sites, us_domain(args.cache, args.out),
+                         species_inventory=[r for r in inv if r['selected']])
     write_json(args.out/'run_summary.json', dict(records=len(records), unique_ids=len({r['id'] for r in records}),
                records_by_guild=dict(Counter(r['guild'] for r in records)),
                selected_species=sum(r['selected'] for r in inv),

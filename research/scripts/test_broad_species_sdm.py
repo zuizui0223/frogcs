@@ -1,10 +1,20 @@
 import unittest
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
 import numpy as np
-from broad_species_sdm import thin, fold, evaluate, in_domain
+from broad_species_sdm import thin, fold, evaluate, in_domain, fit_models
 from shapely.geometry import box
 
 
 class SDMTests(unittest.TestCase):
+    def test_zero_retained_species_remains_in_coverage(self):
+        species=dict(species_key='1',species='Test species',guild='Anura')
+        records=[dict(**species,id='1',lon=-150,lat=40)]
+        with tempfile.TemporaryDirectory() as tmp, patch('broad_species_sdm.sample',side_effect=lambda paths,rows:np.zeros((len(rows),6))):
+            result=fit_models(records,[],Path(tmp),[],box(-125,24,-66,50),[species])
+        self.assertEqual(result,[dict(**species,status='insufficient_cells',cells=0)])
+
     def test_records_and_background_use_same_domain_mask(self):
         rows = [dict(lon=-100,lat=40), dict(lon=-100,lat=55)]
         self.assertEqual(in_domain(box(-125,24,-66,50), rows).tolist(), [True,False])
