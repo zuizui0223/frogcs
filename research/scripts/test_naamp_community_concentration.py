@@ -24,6 +24,15 @@ class ConcentrationTests(unittest.TestCase):
         np.testing.assert_allclose(model.probabilities(3),[0,0,1,1,1],atol=1e-12)
         self.assertTrue(np.isfinite(model.logscores(3)).all())
 
+    def test_empty_species_pair_kept_with_zero_score(self):
+        m=ProfiledPairs([np.zeros(0),np.zeros(3),np.zeros(0)],
+                        [np.zeros(0),np.zeros(3),np.zeros(0)],
+                        [np.zeros(0),np.array([1,0,0]),np.zeros(0)])
+        np.testing.assert_allclose(m.probabilities(0),[1/3]*3)
+        self.assertEqual(m.logscores(0)[0],0)
+        self.assertEqual(m.logscores(0)[2],0)
+        np.testing.assert_equal(endpoint(np.empty((0,10),bool),np.empty((0,10),bool)),[0,0,0])
+
     def test_endpoints(self):
         w=np.array([[1,1,1,1],[0,1,0,0],[1,1,1,1]],bool)
         d=np.array([[0,0,0,0],[0,0,0,0],[1,0,0,0]],bool)

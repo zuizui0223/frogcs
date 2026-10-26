@@ -27,25 +27,31 @@ class ProfiledPairs:
         self.eta=np.concatenate([np.ravel(o) for o in offsets])
         self.x=np.concatenate([np.ravel(x) for x in xs])
         self.y=np.concatenate([np.ravel(y) for y in ys]).astype(float)
-        self.target=np.add.reduceat(self.y,self.start)
+        self.active=np.flatnonzero(self.n>0)
+        self.astart=self.start[self.active]
+        self.an=self.n[self.active]
+        self.target=np.add.reduceat(self.y,self.astart) if len(self.active) else np.zeros(0)
         if not (np.isfinite(self.eta).all() and np.isfinite(self.x).all()):raise ValueError('Nonfinite model inputs')
     def probabilities(self,beta):
+        if not len(self.active):return np.zeros(0)
         eta=self.eta+beta*self.x
-        bound=np.maximum.reduceat(np.abs(eta),self.start)+40
+        bound=np.maximum.reduceat(np.abs(eta),self.astart)+40
         lo=-bound; hi=bound
         for _ in range(55):
             mid=(lo+hi)/2
-            total=np.add.reduceat(expit(eta+np.repeat(mid,self.n)),self.start)
+            total=np.add.reduceat(expit(eta+np.repeat(mid,self.an)),self.astart)
             below=total<self.target
             lo=np.where(below,mid,lo); hi=np.where(below,hi,mid)
-        q=expit(eta+np.repeat((lo+hi)/2,self.n))
-        q[np.repeat(self.target==0,self.n)]=0
-        q[np.repeat(self.target==self.n,self.n)]=1
-        if not np.allclose(np.add.reduceat(q,self.start),self.target,atol=1e-8,rtol=0):raise ValueError('Pair-total calibration failed')
+        q=expit(eta+np.repeat((lo+hi)/2,self.an))
+        q[np.repeat(self.target==0,self.an)]=0
+        q[np.repeat(self.target==self.an,self.an)]=1
+        if not np.allclose(np.add.reduceat(q,self.astart),self.target,atol=1e-8,rtol=0):raise ValueError('Pair-total calibration failed')
         return q
     def logscores(self,beta):
         q=np.clip(self.probabilities(beta),1e-12,1-1e-12)
-        return np.add.reduceat(self.y*np.log(q)+(1-self.y)*np.log1p(-q),self.start)
+        scores=np.zeros(len(self.n))
+        if len(self.active):scores[self.active]=np.add.reduceat(self.y*np.log(q)+(1-self.y)*np.log1p(-q),self.astart)
+        return scores
 
 def load_cohort(cache):
     flex=loadmod('concentration_flex',ROOT/'exploration/run_naamp_flexible_common_environment_null.py')
@@ -82,8 +88,8 @@ def load_cohort(cache):
                 for sp in run_species.get((rid,sid),set()):
                     if sp in lookup:count[lookup[sp],j]+=1
         if np.any(exposure<=0):continue
-        x=np.array([other_history(count,exposure,i) for i in range(len(lookup))])
-        xs.append(x-x.mean()); keep.append(idx)
+        x=np.array([other_history(count,exposure,i) for i in range(len(lookup))]) if lookup else np.empty((0,10))
+        xs.append(x-x.mean() if x.size else x); keep.append(idx)
     audit={'full_history_pairs':len(pairs),'full_history_routes':int(pairs.route_cluster.nunique()),
            'full_history_observed_N_L_C':obs.tolist(),'excluded_missing_history_pairs':len(pairs)-len(keep),
            'source_sha256':mem.base.PINS}
