@@ -26,6 +26,18 @@
         -0.5029366616206756,
         0.1072112534837795
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -43,9 +55,24 @@
       "both_protocol_not_detected_n00": 5165,
       "phi_same_event": -0.24684218161273777,
       "site_resample_ci95_phi": [
-        -0.3079346275190476,
-        -0.18199698405927422
+        -0.3072160407596824,
+        -0.17935539619239443
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 337,
+        "n_original_sites_in_informative_strata": 52,
+        "n_both_species_assessed_in_informative_strata": 4030,
+        "n_exact_co_detections_observed": 914,
+        "independence_expected_co_detections_given_source_site_month": 1011.2608949744788,
+        "excess_joint_detection_per_100_same_stratum_assessments": -2.4134217115255283,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -3.350019387125032,
+          -1.5960901449409195
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -66,6 +93,18 @@
         -0.44091241676413623,
         0.15093883565825253
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -83,9 +122,24 @@
       "both_protocol_not_detected_n00": 9617,
       "phi_same_event": -0.14519418742774454,
       "site_resample_ci95_phi": [
-        -0.17363573793007062,
-        -0.1174493796062837
+        -0.17370762938899934,
+        -0.11888849316341422
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 28,
+        "n_original_sites_in_informative_strata": 17,
+        "n_both_species_assessed_in_informative_strata": 283,
+        "n_exact_co_detections_observed": 5,
+        "independence_expected_co_detections_given_source_site_month": 14.238339438339437,
+        "excess_joint_detection_per_100_same_stratum_assessments": -3.2644308969397304,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -4.513286698252309,
+          -2.1914007412882897
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -103,9 +157,24 @@
       "both_protocol_not_detected_n00": 9686,
       "phi_same_event": -0.1364309822845672,
       "site_resample_ci95_phi": [
-        -0.17785109323983914,
-        -0.08410360185901294
+        -0.1792088889952377,
+        -0.08717743980618708
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 13,
+        "n_original_sites_in_informative_strata": 7,
+        "n_both_species_assessed_in_informative_strata": 102,
+        "n_exact_co_detections_observed": 3,
+        "independence_expected_co_detections_given_source_site_month": 5.505555555555555,
+        "excess_joint_detection_per_100_same_stratum_assessments": -2.4564270152505436,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -4.700033569825237,
+          0.7169065387348945
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -126,6 +195,18 @@
         -0.3337959093369877,
         0.13713244419949588
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -143,9 +224,24 @@
       "both_protocol_not_detected_n00": 7235,
       "phi_same_event": -0.11591242910469463,
       "site_resample_ci95_phi": [
-        -0.17863665778849677,
-        -0.049598202399107665
+        -0.17245646787173627,
+        -0.05342203214767247
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 14,
+        "n_original_sites_in_informative_strata": 6,
+        "n_both_species_assessed_in_informative_strata": 122,
+        "n_exact_co_detections_observed": 5,
+        "independence_expected_co_detections_given_source_site_month": 12.30465367965368,
+        "excess_joint_detection_per_100_same_stratum_assessments": -5.987421048896459,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": [
+          -8.408108608698631,
+          -3.0493357217495145
+        ],
+        "within_site_month_signal_estimable": true,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -166,6 +262,18 @@
         -0.18296084473721974,
         0.004061233342289957
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 2,
+        "n_original_sites_in_informative_strata": 2,
+        "n_both_species_assessed_in_informative_strata": 6,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 0.75,
+        "excess_joint_detection_per_100_same_stratum_assessments": 4.166666666666667,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -186,6 +294,18 @@
         -0.16221844603879532,
         -0.04835061831444986
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -206,6 +326,18 @@
         -0.29089449576270315,
         0.1401357005205674
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 2,
+        "n_original_sites_in_informative_strata": 2,
+        "n_both_species_assessed_in_informative_strata": 8,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 1,
+        "excess_joint_detection_per_100_same_stratum_assessments": 0,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -226,6 +358,18 @@
         -0.4016632088371218,
         0.2
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -246,6 +390,18 @@
         -0.1569468681552101,
         -0.03604920469572501
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -268,6 +424,18 @@
         0.5757120627708396,
         1
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -288,6 +456,18 @@
         0.47916531364351683,
         0.7910296844752615
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -308,6 +488,18 @@
         0.38993176791040124,
         1
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 3,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 0.6666666666666666,
+        "excess_joint_detection_per_100_same_stratum_assessments": 11.111111111111112,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -328,6 +520,18 @@
         0.30822306897583407,
         0.815113772779521
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -348,6 +552,18 @@
         0.3412620076291262,
         0.7727874706350936
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 10,
+        "n_exact_co_detections_observed": 6,
+        "independence_expected_co_detections_given_source_site_month": 6.3,
+        "excess_joint_detection_per_100_same_stratum_assessments": -2.9999999999999982,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -368,6 +584,18 @@
         0.13282526116577525,
         0.718661773009599
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 4,
+        "n_original_sites_in_informative_strata": 4,
+        "n_both_species_assessed_in_informative_strata": 11,
+        "n_exact_co_detections_observed": 4,
+        "independence_expected_co_detections_given_source_site_month": 2.833333333333333,
+        "excess_joint_detection_per_100_same_stratum_assessments": 10.606060606060609,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -388,6 +616,18 @@
         0.14097309009630146,
         0.6534930147561449
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 2,
+        "n_original_sites_in_informative_strata": 2,
+        "n_both_species_assessed_in_informative_strata": 7,
+        "n_exact_co_detections_observed": 2,
+        "independence_expected_co_detections_given_source_site_month": 0.8333333333333333,
+        "excess_joint_detection_per_100_same_stratum_assessments": 16.666666666666668,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -408,6 +648,18 @@
         0.305502302109805,
         0.5200016359633373
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 10,
+        "n_exact_co_detections_observed": 4,
+        "independence_expected_co_detections_given_source_site_month": 2.8,
+        "excess_joint_detection_per_100_same_stratum_assessments": 12.000000000000002,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -428,6 +680,18 @@
         0.16595155318223606,
         0.5545697041484935
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 1,
+        "n_original_sites_in_informative_strata": 1,
+        "n_both_species_assessed_in_informative_strata": 3,
+        "n_exact_co_detections_observed": 1,
+        "independence_expected_co_detections_given_source_site_month": 0.6666666666666666,
+        "excess_joint_detection_per_100_same_stratum_assessments": 11.111111111111112,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -448,6 +712,18 @@
         0.1391754976793203,
         0.5373949608899388
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -468,6 +744,18 @@
         0.17240328194582286,
         0.5237477675204777
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -488,6 +776,18 @@
         -0.08178608201095307,
         0.6213894823971785
       ],
+      "season_site_conditioned_co_detection": {
+        "conditioning": "source native site × calendar year × month, species event-assessment margins",
+        "n_informative_site_year_month_strata": 0,
+        "n_original_sites_in_informative_strata": 0,
+        "n_both_species_assessed_in_informative_strata": 0,
+        "n_exact_co_detections_observed": 0,
+        "independence_expected_co_detections_given_source_site_month": 0,
+        "excess_joint_detection_per_100_same_stratum_assessments": null,
+        "site_bootstrap_95ci_conditional_on_fixed_strata": null,
+        "within_site_month_signal_estimable": false,
+        "inference_ceiling": "Within-site-month reporting residual, not competition or direct species interactions"
+      },
       "estimable_reporting_association": true,
       "source_stop_semantics": "Detection-scoped 0; not verified ecological species absence",
       "actual_biotic_competition_identified": false
@@ -758,9 +1058,10 @@
   ],
   "no_inferred_competition_from_cooccurrence": true,
   "run_provenance": {
-    "github_actions_run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40265169372",
-    "job_id": 121385879188,
-    "classification": "verified native original survey occurrence; no species absence invented; stage not analysis key"
+    "github_actions_run_url": "https://github.com/zuizui0223/frogcs/actions/runs/40265834563",
+    "job_id": 121387941161,
+    "status": "all source and species co-occurrence QA PASS",
+    "raw_tables_published_as_workflow_artifact": true
   },
   "all_complete_pairwise_results_available_in_github_actions_artifact": true
 }
