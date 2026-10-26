@@ -5,6 +5,8 @@ Working discussion and manuscript architecture, 2026-10-26. Based on empirical s
 This document develops the current association-first manuscript direction. It does not replace the
 archived RC6 manuscript or treat the older integrated draft's prediction criteria as prerequisites.
 
+The consolidated [two-part manuscript draft](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) organizes the current argument as macroecological associations followed by stage-structured mechanism simulations, with a shared introduction and integrated discussion.
+
 ## 論文の主筋
 
 **焦点生物は一貫してカエルとする。** 三群を同じ重みで説明する群集全体の論文ではなく、
