@@ -59,7 +59,7 @@ def prepare(rows):
     counts=Counter()
     errors=Counter()
     assignments={}
-    observed_survival={}
+    observed_survival=defaultdict(int)
     for r in rows:
         group=code(r["Replicate"])
         animal=code(r["ID_tadpole"])
