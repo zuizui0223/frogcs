@@ -9,6 +9,10 @@ First executable pilot: retain the original strict-pilot species as candidates;
 inventory all their GBIF counts over contiguous US (24–50 N, 125–66 W),
 1980–2015, reported coordinate uncertainty 0–1,000 m. Select the five largest
 candidate species per order by this count, independently of NAAMP outcomes.
+Add three life-history-defined pond-breeding candidates, Ambystoma maculatum,
+A. tigrinum and A. opacum, from the same original species list. This addition
+was fixed before any SDM results were inspected; it avoids treating direct-
+developing and stream salamanders as pond larval predators. Total: 18 species.
 Save the complete candidate inventory, including species not selected. This is
 a data-rich feasibility pilot, not a representative sample of each order.
 Unknown life stage does not exclude a record. Remove fossil/living specimens
@@ -45,3 +49,12 @@ scores may distinguish regions while having little resolution within routes.
 Primary references and source endpoints are recorded in
 SDM_SOURCE_METHOD_FEASIBILITY_2026-10-26.md. Water persistence and the joint
 history/vegetation/mechanism comparison remain distinct downstream analyses.
+
+Review correction before accepting results: apply the same Natural Earth 1:110-million
+USA polygon to occurrences AND uniform backgrounds; save the geometry and
+source hash. The coarse polygon can exclude coastal records; report exclusions.
+This prevents Canada/Mexico-only background points when queries require US.
+The initial uncorrected workflow is source acquisition only; do not use its
+model results as scientific evidence. Reuse its source cache in corrected runs.
+The overlap output is geographic overlap of normalized fitted score surfaces
+on common background, not independently measured environmental niche overlap.

@@ -1,9 +1,14 @@
 import unittest
 import numpy as np
-from broad_species_sdm import thin, fold, evaluate
+from broad_species_sdm import thin, fold, evaluate, in_domain
+from shapely.geometry import box
 
 
 class SDMTests(unittest.TestCase):
+    def test_records_and_background_use_same_domain_mask(self):
+        rows = [dict(lon=-100,lat=40), dict(lon=-100,lat=55)]
+        self.assertEqual(in_domain(box(-125,24,-66,50), rows).tolist(), [True,False])
+
     def test_duplicate_cell_does_not_increase_sample_size(self):
         rows = [dict(id='20', lon=-80.01, lat=35.01),
                 dict(id='3', lon=-80.02, lat=35.02),

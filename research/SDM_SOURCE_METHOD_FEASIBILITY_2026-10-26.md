@@ -31,3 +31,21 @@
 種別SDMはNAAMPの強い鳴き声／無声ラベルを使わずに学習・評価する。投影後、固定matched pairs内で、他群適性、植生、持続性、自種の厳密な過去利用を比較する。可能なら種別予測の不確実性を後段でも伝える。GBIFにNAAMP由来記録が混在する場合はdataset単位で除外し、同じ観察の再利用を避ける。
 
 現在までの広域記録を学習に使う場合、得られるのは後知恵を含む地域的適性地図であって各訪問日前の予測ではない。今回緩めた同時期制約とは整合するが、strict priorである自種利用履歴とは明確に分ける。これにより環境的に近い生物の配置を検討できる。適性の残差や重なりだけで競争・捕食が成立したとは判定しない。
+
+## 15種pilotのCaudata：池の幼生仮説への適否
+
+記録数上位で選ぶことと、池の水生幼生の比較に適した種を選ぶことは異なる。指定された5種を公的種アカウントと発生研究で点検した。広域SDMには全種を残せるが、5種の平均を「池の幼生捕食者適性」と呼ばない。
+
+| 種 | 生活史・水域 | 池の幼生仮説での位置づけ |
+|---|---|---|
+| *Notophthalmus viridescens* | 幼生は植生のある小水域、成体も池・湖・湿地等を利用。eftは陸生 | 5種中では池への適合が明確。ただし全段階SDMには陸生eftも含まれる。[Kansas州公式](https://kdwpt.ks.gov/Services/Threatened-and-Endangered-Wildlife/All-Threatened-and-Endangered-Species/EASTERN-NEWT) |
+| *Pseudotriton ruber* | 主に湧水・滲出水・源流で水生幼生期が1年以上。静水池の幼生記録も例外的にある | 流水／湧水群として分離。池の代表種と一括しない。[North Carolina州アカウント](https://auth1.dpr.ncparks.gov/amphibians/view.php?sciName=Pseudotriton+ruber) |
+| *Plethodon cinereus* | 直接発生し、自由生活する水生幼生を持たない | **池の幼生ニッチから除外**。森林・湿潤陸生環境の比較対象には使える。[発生過程の一次研究](https://pmc.ncbi.nlm.nih.gov/articles/PMC9385146/) |
+| *Desmognathus ochrophaeus* | 幼生は滲出水や浅く流れの遅い渓流部分を利用。成体には陸生利用もある | 渓流・滲出水群。池の幼生と機能的に同じ群にしない。[Virginia DWR公式](https://dwr.virginia.gov/wildlife/information/allegheny-mountain-dusky-salamander/) |
+| *Eurycea cirrigera* | 渓流で産卵、水生幼生期1–3年。周辺森林も利用 | 渓流群。池・一時水域の仮説とは分ける。[Illinois DNR公式](https://dnr.illinois.gov/education/wildaboutpages/wildaboutsalamanders/wassoutherntwolinedsalamander.html) |
+
+次の機構対象候補は、独立した生活史根拠から *Ambystoma maculatum*、*A. opacum*、*A. tigrinum* とする。USGSのDelaware Water Gap調査報告では、前二者は季節的水域に水生幼生を持ち、*A. maculatum*は春に水中産卵、*A. opacum*は晩夏〜秋に乾いた池底等へ産卵し、再冠水で孵化して越冬する。この違いは水域持続性と発育の先行・後行を比較する直接の根拠になる。[USGS 2020報告](https://pubs.usgs.gov/sir/2020/5081/sir20205081.pdf)
+
+*A. tigrinum*も魚のいない池で繁殖し、水生幼生を経る候補。ただし西部の古い資料は現在別種とされる分類群を同名に含みうるため、GBIF accepted taxonと地域を固定する。ここでは東部種を明記したMissouri州の資料を根拠にする。[Missouri Department of Conservation 2026](https://mdc.mo.gov/magazines/missouri-conservationist/2026-02/wild-guide-eastern-tiger-salamander)
+
+この候補選定は今回のSDM性能やNAAMPとの関連の強さで決めない。池種・流水種・直接発生種を対照として残すことで、他群適性の関連が一般的な森林／湿潤環境なのか、池で発育する生活史に特有なのかを次に比較できる。候補の存在は当該NAAMP地点での幼生の実在や捕食を保証しない。

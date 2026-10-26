@@ -5,6 +5,7 @@ on:
     paths:
       - research/scripts/broad_species_sdm.py
       - research/scripts/test_broad_species_sdm.py
+      - research/scripts/summarize_broad_species_sdm.py
       - .github/workflows/research_broad_species_sdm.yml
   workflow_dispatch:
 permissions:
@@ -21,16 +22,37 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.6.1 statsmodels==0.14.6 rasterio==1.4.3
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.6.1 statsmodels==0.14.6 rasterio==1.4.3 shapely==2.1.2
       - uses: actions/cache@v4
         with:
           path: /tmp/broad-sdm-cache
           key: broad-species-sdm-1980-2015-v1
+      - uses: actions/cache/restore@v4
+        with:
+          path: /tmp/three-guild-cache
+          key: naamp-three-guild-2001-2015-25km-v1
+      - name: Reuse hash-verified EarthEnv source downloads
+        run: |
+          mkdir -p /tmp/broad-sdm-cache
+          for n in 8 12; do
+            if [ -f /tmp/three-guild-cache/earthenv_$n.tif ]; then
+              cp /tmp/three-guild-cache/earthenv_$n.tif /tmp/broad-sdm-cache/
+            fi
+          done
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: broad-species-sdm-pilot
+          run-id: 40275998522
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/previous-sdm
       - run: python research/scripts/test_broad_species_sdm.py
       - name: Expand occurrences, validate species models, project to NAAMP
-        run: python -u research/scripts/broad_species_sdm.py --cache /tmp/broad-sdm-cache --out /tmp/broad-sdm --project-naamp
+        run: python -u research/scripts/broad_species_sdm.py --cache /tmp/broad-sdm-cache --out /tmp/broad-sdm --project-naamp --occurrences-from /tmp/previous-sdm
       - name: Preserve frozen analyses
         run: git diff --exit-code -- paper submission provenance scripts/naamp exploration
+      - name: Compare fixed NAAMP strong-call and silent pairs
+        run: python research/scripts/summarize_broad_species_sdm.py --results /tmp/broad-sdm
       - uses: actions/upload-artifact@v4
         if: always()
         with:

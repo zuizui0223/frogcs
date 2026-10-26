@@ -6,14 +6,18 @@ import hashlib
 import itertools
 import json
 import math
+import shutil
 import urllib.request
 import zipfile
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlencode
 
 import numpy as np
 import rasterio
+from shapely.geometry import shape
+from shapely import contains_xy
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
 from sklearn.pipeline import make_pipeline
@@ -84,9 +88,14 @@ def inventory(client, out):
         species.sort(key=lambda r: (-r['broad_count'], r['species_key']))
         for r in species[:5]:
             r['selected'] = True
+        for r in species:
+            if r['species'] in ('Ambystoma maculatum', 'Ambystoma tigrinum', 'Ambystoma opacum'):
+                r['selected'] = True
+            r['selection_reason'] = ('pond_breeding_stage_hypothesis' if r['species'].startswith('Ambystoma ') and r['selected']
+                                     else 'top_five_record_count' if r['selected'] else 'not_in_initial_model_cohort')
         rows.extend(species)
     write_csv(out / 'species_inventory.csv', rows)
-    write_json(out / 'inventory.json', dict(query=QUERY, order_counts=totals,
+    write_json(out / 'inventory.json', dict(date_utc=datetime.now(timezone.utc).isoformat(), query=QUERY, order_counts=totals,
                                          candidate_species=len(rows), selected_species=sum(r['selected'] for r in rows)))
     return rows
 
@@ -101,7 +110,7 @@ def retrieve(client, inventory_rows, out):
         receipt_file = out / f'query_{sid}.json'
         if filename.exists() and receipt_file.exists():
             receipt = json.loads(receipt_file.read_text())
-            if receipt.get('complete'):
+            if receipt.get('complete') and receipt.get('query') == QUERY:
                 with gzip.open(filename, 'rt', encoding='utf8') as f:
                     cached = list(csv.DictReader(f))
                 for r in cached:
@@ -147,7 +156,8 @@ def retrieve(client, inventory_rows, out):
                 break
             if not obj['results']:
                 raise ValueError('Unexpected empty intermediate GBIF page')
-        receipt = dict(species_key=sid, count=count, complete=True, kept=len(found), screens=dict(qa))
+        receipt = dict(species_key=sid, query=QUERY, date_utc=datetime.now(timezone.utc).isoformat(),
+                       count=count, complete=True, kept=len(found), screens=dict(qa))
         write_csv(filename, found)
         write_json(receipt_file, receipt)
         rows.extend(found)
@@ -160,7 +170,9 @@ def retrieve(client, inventory_rows, out):
 def download(url, path):
     if not path.exists():
         tmp = path.with_suffix('.part')
-        urllib.request.urlretrieve(url, tmp)
+        request = urllib.request.Request(url, headers={'User-Agent':'Frogcs-EcologyMacro/1.0', 'Accept':'application/octet-stream,*/*'})
+        with urllib.request.urlopen(request, timeout=180) as src, open(tmp, 'wb') as dest:
+            shutil.copyfileobj(src, dest)
         tmp.replace(path)
     return dict(url=url, bytes=path.stat().st_size, sha256=hashlib.sha256(path.read_bytes()).hexdigest())
 
@@ -224,17 +236,37 @@ def evaluate(x, y, xy, size):
     return values
 
 
-def fit_models(records, paths, out, sites):
+def us_domain(cache, out):
+    url = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson'
+    path = cache / 'ne_110m_admin_0_countries.geojson'
+    receipt = download(url, path)
+    features = json.loads(path.read_text(encoding='utf8'))['features']
+    us = next(f for f in features if f['properties']['ADM0_A3'] == 'USA')
+    write_json(out / 'us_domain.geojson', us)
+    write_json(out / 'domain_receipt.json', receipt)
+    return shape(us['geometry'])
+
+
+def in_domain(domain, rows):
+    return np.asarray(contains_xy(domain, [r['lon'] for r in rows], [r['lat'] for r in rows]), dtype=bool)
+
+
+def fit_models(records, paths, out, sites, domain):
+    inside = in_domain(domain, records)
+    write_json(out / 'domain_screen.json', dict(retrieved=len(records), retained=int(inside.sum()),
+               excluded_outside_generalized_us_polygon=int((~inside).sum())))
+    records = [r for r, keep in zip(records, inside) if keep]
     rng = np.random.default_rng(20261026)
     # Uniform area on the sphere, restricted to continental-US rectangle and climate land mask.
     lat = np.degrees(np.arcsin(rng.uniform(np.sin(np.radians(24)), np.sin(np.radians(50)), 10000)))
     lon = rng.uniform(-125, -66, 10000)
     bg = [dict(lon=float(a), lat=float(b)) for a, b in zip(lon, lat)]
     bx = sample(paths, bg)
-    keep = np.flatnonzero(np.isfinite(bx).all(axis=1))[:4000]
+    keep = np.flatnonzero(np.isfinite(bx).all(axis=1) & in_domain(domain, bg))[:4000]
     bg, bx = [bg[i] for i in keep], bx[keep]
     write_csv(out / 'background.csv.gz', [{**r, **dict(zip(['bio1','bio4','bio12','bio15','flooded','water'], x))} for r,x in zip(bg,bx)])
     sx = sample(paths, sites) if sites else np.empty((0, 6))
+    write_csv(out / 'naamp_site_environment.csv.gz', [{**r, **dict(zip(['bio1','bio4','bio12','bio15','flooded','water'], x))} for r,x in zip(sites,sx)])
     thinned = []
     for sid in sorted({r['species_key'] for r in records}):
         thinned.extend(thin([r for r in records if r['species_key'] == sid]))
@@ -296,9 +328,24 @@ def main():
     ap.add_argument('--out', type=Path, required=True)
     ap.add_argument('--inventory-only', action='store_true')
     ap.add_argument('--project-naamp', action='store_true')
+    ap.add_argument('--occurrences-from', type=Path)
     args = ap.parse_args()
     args.cache.mkdir(parents=True, exist_ok=True)
     args.out.mkdir(parents=True, exist_ok=True)
+    if args.occurrences_from and (args.occurrences_from/'inventory.json').exists():
+        source_inventory = args.occurrences_from/'inventory.json'
+        previous_query = json.loads(source_inventory.read_text())['query']
+        if previous_query != QUERY:
+            raise ValueError('Cannot reuse occurrences with a different retrieval scope')
+        for receipt_path in args.occurrences_from.glob('query_*.json'):
+            receipt = json.loads(receipt_path.read_text())
+            sid = receipt['species_key']
+            data = args.occurrences_from/f'occurrences_{sid}.csv.gz'
+            if receipt.get('complete') and data.exists():
+                receipt['query'] = previous_query
+                receipt['reused_inventory_sha256'] = hashlib.sha256(source_inventory.read_bytes()).hexdigest()
+                shutil.copyfile(data, args.out/data.name)
+                write_json(args.out/receipt_path.name, receipt)
     client = ReliableJSON(args.cache/'json', interval=.6)
     inv = inventory(client, args.out)
     print('inventory', json.loads((args.out/'inventory.json').read_text()), flush=True)
@@ -310,7 +357,7 @@ def main():
     if args.project_naamp:
         from naamp_three_guild_occurrence import all_geometry, token
         sites = [dict(route=rt, site=token(sid), lat=lat, lon=lon) for rt,sid,lat,lon in all_geometry()]
-    results = fit_models(records, paths, args.out, sites)
+    results = fit_models(records, paths, args.out, sites, us_domain(args.cache, args.out))
     write_json(args.out/'run_summary.json', dict(records=len(records), unique_ids=len({r['id'] for r in records}),
                records_by_guild=dict(Counter(r['guild'] for r in records)),
                fitted_species=len({r['species_key'] for r in results if r['status']=='fit'}),
