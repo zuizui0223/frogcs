@@ -153,6 +153,29 @@
       "original_md5": "12a7deaf1a8bf38fc122cb7661ee7f6c",
       "readiness": "original_metadata_pinned_workbook_HTTP401_not_inspected",
       "can_join": "Verified same wetland×year encounter histories; no pond egg survival"
+    },
+    {
+      "id": "world_macro_stage_reporting",
+      "role": "world-scale source-selected GloBI feeding-stage topology × experimental GBIF 1deg month reports and matched prey-specificity countertest",
+      "granularity": "GloBI directed source stage edge and GBIF species×stage×1deg cell×year×month (not same pond)",
+      "origin_and_methods": "research/manuscript/GLOBAL_STAGE_MACRO_EVIDENCE_GATE_V1.md",
+      "source_full": "research/results/full_globi_2026_stage_gbif_grid/observed_results.json",
+      "source_phase": "research/results/month_shift_globi_gbif/observed_results.json",
+      "source_specificity": "research/results/expanded_stage_specificity/observed_results.json",
+      "source_wetland_background": "research/results/earthenv_gbif_matched_stage/observed_results.json",
+      "readiness": "observed_source_selected_global_phase_pattern_partner_specificity_not_robust",
+      "summary": {
+        "full_source_GloBI_rows": 24453954,
+        "certain_staged_nonself_rows": 1240,
+        "unique_directed_stage_patterns": 881,
+        "initial_phase_above_11_shift_mean": "16/18",
+        "expanded_matched_partner_focal_above_control_at1": "31/56",
+        "expanded_matched_partner_focal_above_control_at5": "26/56",
+        "high_minus_low_flooded_background_median": -0.028117363791445027,
+        "is_pond_trophic_event": false,
+        "validated_predation_stage_mediation": false
+      },
+      "can_join": "Evidence comparison by data-level and macro observation contract only; never attach GBIF 1deg reporting or GloBI edges to NAAMP/NPS listening sites as measured feeding"
     }
   ],
   "endpoints": [
@@ -204,7 +227,7 @@
     {
       "id": "G3",
       "name": "cross-geographic generality plus empirically constrained stage-network dynamics",
-      "status": "MODEL_CALIBRATION_NOT_AUTHORIZED_FROM_SYNTHETIC_STAGE_EDGES_OR_G1_UNSTABLE_ACOUSTIC_LARVA_SIGNAL"
+      "status": "GLOBAL_GLOBI_GBIF_SOURCE_PHASE_PATTERN_OBSERVED_16_18;_PREY_SPECIFICITY_FAILS_26_56_STRICT;_CALIBRATED_STAGE_NETWORK_NOT_READY"
     },
     {
       "id": "G4",
@@ -225,7 +248,10 @@
     "INBO_Hyla_siteheldout_Brier_gain_0p0155": true,
     "INBO_Hyla_lateyear_transfer_supported": false,
     "INBO_Hyla_hydroperiod_adjusted": false,
-    "INBO_Hyla_stage_predation_identified": false
+    "INBO_Hyla_stage_predation_identified": false,
+    "World_GloBI_GBIF_stage_reporting_phase_above_month_shift_16_of_18": true,
+    "World_predator_prey_partner_specific_stage_seasonality_established": false,
+    "World_flooded_vegetation_trophic_specificity_established": false
   },
   "stop_rules": [
     "No modification of frozen RC6 paper, submission, provenance, spatial generator or NAAMP analysis paths.",
@@ -238,10 +264,12 @@
     "Immediate RC6 stand-alone submission is on editorial hold per dated author decision; never claim the candidate is withdrawn or already submitted.",
     "Use verified exact pond-level matched ecology for Part II, not merely a paper citation or 1-km co-occurrence. Stand-alone RC6 retained as fallback only after explicit future editorial decision.",
     "INBO G1 site-block gain fails independent future-year transport (M0 Brier 0.27839 vs M1 0.34786 in 2024–25); do not claim general predictive superiority.",
-    "INBO 245 matched Hyla records have no usable permanent-water-column measurement or numeric larval effort at the focal event; do not call their M0 hydroperiod adjusted."
+    "INBO 245 matched Hyla records have no usable permanent-water-column measurement or numeric larval effort at the focal event; do not call their M0 hydroperiod adjusted.",
+    "Global 1-degree stage/time co-reporting cannot establish live same-pond predator-prey encounters; 16/18 general shifted-month gain is not a predation-specific effect.",
+    "Expanded predator-fixed matched alternative prey strict pattern 26/56 and median focal-minus-alternative -0.0185 must remain visible; do not cherry-pick exploratory positive mean."
   ],
   "last_checked_on": "2026-10-26",
-  "integration_status": "ONE_FLAGSHIP_POLICY_RC6_LOCKED_INBO_STAGE_BRIDGE_MEASURED_MIXED_SITE_GAIN_TIME_LOSS_PREDATION_NOT_IDENTIFIED",
+  "integration_status": "ONE_INTEGRATED_PAPER_DRAFT_V0_2_RC6_LOCKED_G1_MIXED_WORLD_STAGE_SEASONALITY_PRESENT_TROPHIC_SPECIFICITY_NOT_VERIFIED_G2_UNIDENTIFIED",
   "paper_strategy": {
     "decision_authority": "research/INTEGRATED_PAPER_DECISION_2026-10-26.md",
     "decision_date": "2026-10-26",
@@ -256,7 +284,10 @@
     "checkpoint": "2027-01-31",
     "checkpoint_role": "provisional_author_editorial_review_only_no_auto_submission",
     "fallback": "If G2 cannot qualify, reconsider narrower robust paper or preserved RC6 solo publication after explicit author decision",
-    "future_manuscript_ready": false
+    "future_manuscript_ready": false,
+    "manuscript_path": "research/manuscript/INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md",
+    "manuscript_version": "v0.2 working draft, not submission ready",
+    "global_macro_claim_ceiling": "seasonal stage-reporting coincidence, not verified predator-specific phase, predation rate or amphibian population dynamics"
   },
   "source_inventory": "research/PART2_POND_STAGE_SOURCE_INVENTORY_2026-10-26.md",
   "source_inventory_script": "research/scripts/part2_published_source_g0.py"
