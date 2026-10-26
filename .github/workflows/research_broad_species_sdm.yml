@@ -1,4 +1,4 @@
-name: Research - broad species SDM pilot
+name: Research - regional interaction species SDM
 on:
   push:
     branches: [research/naamp-prior-community-allocation-20261026]
@@ -6,6 +6,8 @@ on:
       - research/scripts/broad_species_sdm.py
       - research/scripts/test_broad_species_sdm.py
       - research/scripts/summarize_broad_species_sdm.py
+      - research/scripts/stack_species_sdm.py
+      - research/results/regional_species_pool_20261026/reviewed_species_inventory.csv
       - .github/workflows/research_broad_species_sdm.yml
   workflow_dispatch:
 permissions:
@@ -13,7 +15,7 @@ permissions:
 jobs:
   sdm:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
@@ -43,19 +45,21 @@ jobs:
         continue-on-error: true
         with:
           name: broad-species-sdm-pilot
-          run-id: 40275998522
+          run-id: 40276858237
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: /tmp/previous-sdm
       - run: python research/scripts/test_broad_species_sdm.py
       - name: Expand occurrences, validate species models, project to NAAMP
-        run: python -u research/scripts/broad_species_sdm.py --cache /tmp/broad-sdm-cache --out /tmp/broad-sdm --project-naamp --occurrences-from /tmp/previous-sdm
+        run: python -u research/scripts/broad_species_sdm.py --cache /tmp/broad-sdm-cache --out /tmp/broad-sdm --project-naamp --occurrences-from /tmp/previous-sdm --species-manifest research/results/regional_species_pool_20261026/reviewed_species_inventory.csv
       - name: Preserve frozen analyses
         run: git diff --exit-code -- paper submission provenance scripts/naamp exploration
       - name: Compare fixed NAAMP strong-call and silent pairs
         run: python research/scripts/summarize_broad_species_sdm.py --results /tmp/broad-sdm
+      - name: Stack potential diversity in the evidence-selected species pool
+        run: python research/scripts/stack_species_sdm.py --results /tmp/broad-sdm --out /tmp/broad-sdm/ssdm --source-commit "$GITHUB_SHA" --source-run "$GITHUB_RUN_ID"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: broad-species-sdm-pilot
+          name: regional-interaction-species-sdm
           path: /tmp/broad-sdm/
           if-no-files-found: warn

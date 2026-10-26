@@ -1,0 +1,33 @@
+{
+  "independent_checklist_rows": 674,
+  "checklist_mapping_status": {
+    "EXACT_ACCEPTED_NAME": 663,
+    "EXACT_ACCEPTED_OR_SYNONYM": 10,
+    "PROVISIONAL_NAME": 1
+  },
+  "original_regional_candidate_rows": 823,
+  "candidates_without_independent_support": 202,
+  "interaction_model_species_by_guild": {
+    "Anura": 17,
+    "Caudata": 7,
+    "Odonata": 6
+  },
+  "interaction_model_evidence_tiers": {
+    "regional_species_pair": 20,
+    "named_species_higher_taxon_counterpart": 10
+  },
+  "verified_named_globi_relations": 16,
+  "relation_types": {
+    "eats": 8,
+    "ecologicallyRelatedTo": 1,
+    "interactsWith": 3,
+    "preysOn": 2,
+    "coOccursWith": 2
+  },
+  "limitations": [
+    "ARMI state union broader than focal box; DSA checklist covers Canada and continental US",
+    "Checklist support plus GBIF regional records is candidate evidence, not verified presence in a particular pond",
+    "Unmatched checklist names and GBIF-only candidates remain review items, not absences",
+    "GloBI evidence is literature/database-level, not an interaction observed at NAAMP sites"
+  ]
+}

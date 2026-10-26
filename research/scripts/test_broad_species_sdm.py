@@ -28,6 +28,17 @@ class SDMTests(unittest.TestCase):
         result = evaluate(x,y,rows,2)
         self.assertTrue(all(r['auc'] is None for r in result))
 
+    def test_known_environment_signal_predicts_in_heldout_blocks(self):
+        rng = np.random.default_rng(7)
+        y = np.r_[np.ones(200), np.zeros(200)]
+        x = rng.normal(size=(400,6))
+        x[:,0] += 4*y
+        rows = [dict(lon=float(a),lat=float(b)) for a,b in
+                zip(rng.uniform(-120,-70,400),rng.uniform(25,48,400))]
+        result = evaluate(x,y,rows,2)
+        self.assertEqual(len([r for r in result if r['auc'] is not None]),5)
+        self.assertTrue(all(r['auc'] > .9 for r in result))
+
 
 if __name__ == '__main__':
     unittest.main()

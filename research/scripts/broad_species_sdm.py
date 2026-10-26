@@ -279,7 +279,9 @@ def fit_models(records, paths, out, sites, domain):
         idx = np.array([r['species_key'] == sid for r in thinned])
         pr = [r for r in thinned if r['species_key'] == sid]
         if len(pr) < 30:
-            results.append(dict(species_key=sid, status='insufficient_cells', cells=len(pr)))
+            source_row=next(r for r in records if r['species_key']==sid)
+            results.append(dict(species_key=sid,species=source_row['species'],guild=source_row['guild'],
+                                status='insufficient_cells', cells=len(pr)))
             continue
         px = tx[idx]
         for kind in ('uniform', 'target_group'):
@@ -329,9 +331,15 @@ def main():
     ap.add_argument('--inventory-only', action='store_true')
     ap.add_argument('--project-naamp', action='store_true')
     ap.add_argument('--occurrences-from', type=Path)
+    ap.add_argument('--species-manifest', type=Path)
     args = ap.parse_args()
     args.cache.mkdir(parents=True, exist_ok=True)
     args.out.mkdir(parents=True, exist_ok=True)
+    manifest=None
+    if args.species_manifest:
+        with open(args.species_manifest,encoding='utf8',newline='') as f:
+            manifest=list(csv.DictReader(f))
+        selected_manifest_keys={r['species_key'] for r in manifest if r['selected_for_interaction_sdm'].lower()=='true'}
     if args.occurrences_from and (args.occurrences_from/'inventory.json').exists():
         source_inventory = args.occurrences_from/'inventory.json'
         previous_query = json.loads(source_inventory.read_text())['query']
@@ -340,6 +348,8 @@ def main():
         for receipt_path in args.occurrences_from.glob('query_*.json'):
             receipt = json.loads(receipt_path.read_text())
             sid = receipt['species_key']
+            if manifest is not None and sid not in selected_manifest_keys:
+                continue
             data = args.occurrences_from/f'occurrences_{sid}.csv.gz'
             if receipt.get('complete') and data.exists():
                 receipt['query'] = previous_query
@@ -347,7 +357,17 @@ def main():
                 shutil.copyfile(data, args.out/data.name)
                 write_json(args.out/receipt_path.name, receipt)
     client = ReliableJSON(args.cache/'json', interval=.6)
-    inv = inventory(client, args.out)
+    if args.species_manifest:
+        inv=[dict(guild=r['guild'],species=r['species'],species_key=r['species_key'],
+                  broad_count=int(r['broad_historical_strict_count']),
+                  selected=r['selected_for_interaction_sdm'].lower()=='true',
+                  selection_reason=r['selection_reason'],evidence_tier=r['evidence_tier']) for r in manifest]
+        write_csv(args.out/'species_inventory.csv',inv)
+        write_json(args.out/'inventory.json',dict(query=QUERY,candidate_species=len(inv),
+                   selected_species=sum(r['selected'] for r in inv),source_manifest=str(args.species_manifest),
+                   source_manifest_sha256=hashlib.sha256(args.species_manifest.read_bytes()).hexdigest()))
+    else:
+        inv = inventory(client, args.out)
     print('inventory', json.loads((args.out/'inventory.json').read_text()), flush=True)
     if args.inventory_only:
         return
@@ -360,7 +380,9 @@ def main():
     results = fit_models(records, paths, args.out, sites, us_domain(args.cache, args.out))
     write_json(args.out/'run_summary.json', dict(records=len(records), unique_ids=len({r['id'] for r in records}),
                records_by_guild=dict(Counter(r['guild'] for r in records)),
+               selected_species=sum(r['selected'] for r in inv),
                fitted_species=len({r['species_key'] for r in results if r['status']=='fit'}),
+               unmodeled_species=[r for r in results if r['status']!='fit'],
                projected_sites=len(sites), interpretation='Relative climate/landscape suitability, not calibrated occupancy probability',
                source_audit=dict(client.audit)))
 
