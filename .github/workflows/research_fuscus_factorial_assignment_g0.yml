@@ -1,0 +1,38 @@
+name: Research — fuscus factorial response-blind treatment G0
+on:
+  push:
+    branches: [integration/stage-legacy-unified-2026-10-25]
+    paths:
+      - research/scripts/fuscus_pinned_ooxml.py
+      - research/scripts/fuscus_factorial_assignment_g0.py
+      - .github/workflows/research_fuscus_factorial_assignment_g0.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  randomization-unit-eligibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify source parser
+        run: python3 -m py_compile research/scripts/fuscus_pinned_ooxml.py research/scripts/fuscus_factorial_assignment_g0.py
+      - name: Source-pinned strictly treatment columns only
+        run: python3 research/scripts/fuscus_factorial_assignment_g0.py --out /tmp/fuscus_assigment_g0.json
+      - name: Independent replicates and response blindness
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/fuscus_assigment_g0.json'))
+          assert x['outcome_columns_read'] is False
+          assert x['one_temperature_per_large_pool'] is True
+          assert x['lab_predator_cue_is_predator_consumption'] is False
+          assert x['controlled_drydown_is_observed_natural_pond_drought'] is False
+          print('FUSCUS_TREATMENT_G0_PASS')
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuscus_response_blind_assignment_G0
+          path: /tmp/fuscus_assigment_g0.json
+          if-no-files-found: warn
