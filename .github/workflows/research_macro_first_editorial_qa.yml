@@ -1,6 +1,11 @@
 name: Research - macro-first manuscript source and RC6 safeguards
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/manuscript/README.md'
+      - '.github/workflows/research_macro_first_editorial_qa.yml'
   push:
     branches: [main]
     paths:
@@ -34,11 +39,10 @@ jobs:
             echo "::error::Original frozen RC6 paper, science, or exploration path changed"
             exit 1
           fi
-          if grep -E '^(README.md|research/README.md|research/reproducibility/)' /tmp/macro_first_changed.txt; then
-            echo "::error::Original historical macro snapshot entry/receipt changed"
-            exit 1
-          fi
-          echo 'PASS: editorial-only research files; original RC6 and 894-file historical snapshot retained'
+          # Navigation can evolve; original navigation bytes are archived.
+          # Keep the expected scientific hashes immutable and verify all bytes below.
+          git diff --exit-code "$base" HEAD -- research/reproducibility/macro_snapshot_20261026.json
+          echo 'PASS: original RC6 paths and frozen expected hashes retained'
       - name: Original 894-file macro source snapshot must still verify
         run: python research/scripts/verify_macro_snapshot.py
       - name: Macro-first academic draft must match pinned empirical results

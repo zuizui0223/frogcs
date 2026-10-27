@@ -1,22 +1,21 @@
-# frogcs — current manuscript: macroecological community context
+# 現行原稿 — マクロ解析と三者関係シミュレーション
 
-**Current paper (2026-10-26):** [Where frogs call: three-guild niche associations across wetland vegetation and antecedent surface water](MACRO_ECOLOGY_MAIN_DRAFT_V0_1.md). **Working macroecology v0.1; not ready for submission.** This is the reader-facing manuscript for the *current main research objective*.
+2026-10-27、PR #142で統合した現在の原稿は[二部構成の論文](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)です。
 
-The manuscript starts from **28 modeled species in Anura/Caudata/Odonata, 4,248 repeatedly surveyed listening sites, 4,040 fixed within-run contrasts, static landscape vegetation, antecedent satellite water and strictly past site use**. Its main empirical conclusion is the **Caudata-dependent difference in the broad-region Odonata niche suitability × frog calling association**. It retains the negative/local/background results and never equates fitted Odonata niches to measured larval predators.
+## 現行の入口
 
-## Read in this order
+1. [論文本文](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)
+2. [最新の考察・結論](ECOLOGICAL_DISCUSSION_CONCLUSION_2026-10-27.md)
+3. [最終機構比較と成立条件](FINAL_MECHANISM_COMPARISON_2026-10-27.md)
+4. [植生機能の一次文献](VEGETATION_FUNCTION_EVIDENCE_2026-10-27.md)
+5. [再現手順](../README.md)
 
-1. [Active macro main draft](MACRO_ECOLOGY_MAIN_DRAFT_V0_1.md): revised title, abstract, full narrative, methods, main figures, critical negative controls.
-2. [Author-directed editorial switch](../MACRO_FIRST_EDITORIAL_DECISION_2026-10-26.md): what supersedes the old two- and three-part integrated narrative.
-3. [Source-backed macro results](../FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md): five principal findings and methodological caveats.
-4. [The complete provenance and test audit](../RESEARCH_COMPLETION_AUDIT_2026-10-26.md) / [frozen macro replay](../reproducibility/README.md): reproducible coefficients and environmental inputs, distinct raw acquisition versus offline replay stages.
-5. [Machine-readable macro-first evidence ledger](../MACRO_FIRST_EVIDENCE_LEDGER_2026-10-26.json): source trace for headline estimates and claim ceilings.
+マクロの観測関連と、限られた条件で成立したモデルの説明候補を区別します。野外の原因同定や、モデルによるマクロ全体の適合を主張しません。
 
-## Where RC6 and stage studies now belong
+## 以前の構成と原資料
 
-- **RC6:** a **short historical explanation** for why spatial acoustic configuration led to a broader community macroecology question; no main RC6 figure, concentration null, or RC6 effect as an abstract-leading result. The original source candidate remains immutable under `paper/`, `submission/`, and the historical `release/jae-multisite-rc6` and `submission/jae-multisite-v6` refs.
-- **Earlier stage-first integration v0.3:** [historical working draft](INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md), **not** the current paper. Its NPS/INBO laboratory outcomes, other taxa co-detections and developmental hypotheses remain supporting context, not proof of the main three-guild association.
-- **Species occurrence-first harmonization:** a reproducible core layer, but NAAMP positive-only source records, NPS manually scored zeros, INBO two protocols, Hungarian visits and opportunistic GBIF records have different original observation denominators.
-- **Future mechanisms:** direct pond ID and pond-level water/vegetation/predator stage/fate data can test hypotheses later; their absence must not erase measured exploratory landscape correlations.
+- [マクロ単独原稿](MACRO_ECOLOGY_MAIN_DRAFT_V0_1.md)と[当時の編集方針](../MACRO_FIRST_EDITORIAL_DECISION_2026-10-26.md)：以前の構成。観測結果の記述と[根拠台帳](../MACRO_FIRST_EVIDENCE_LEDGER_2026-10-26.json)は参照資料として保持。
+- [旧統合原稿](INTEGRATED_FROG_ECOLOGY_DRAFT_V0_1.md)：固定資料に含まれる過去の構成。
+- [旧機構解釈と完了済み計画](../../legacy/README.md)：現行結論とは区別する検証履歴。
 
-The fixed 894-file [macro snapshot](../reproducibility/macro_snapshot_20261026.json) includes root/previous research entrypoints and is intentionally left **byte-for-byte unchanged**. Thus editorial supersession is implemented here via new documents rather than silently weakening or regenerating earlier SHA256 verification.
+[894ファイルの固定スナップショット](../reproducibility/macro_snapshot_20261026.json)の期待ハッシュは変更していません。旧README2件のみ原本保存先を明示して検証し、科学的な入力・結果は原位置で検証します。詳細は[再現性資料](../reproducibility/README.md)を参照してください。
