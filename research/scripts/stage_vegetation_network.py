@@ -48,12 +48,12 @@ def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),s
     # 0 removes only this directed pathway. Arrays allow matched batched runs.
     names=['edge_SF','edge_DF','edge_DS','edge_SD','edge_FE','cue_SF','cue_SD',
            'cover_SF','cover_DF','cover_DS','support_DF','support_DS',
-           'emerge_survival','emerge_exposure']
+           'emerge_survival','emerge_exposure','cover_SD']
     controls=pathway_controls or {}
     if set(controls)-set(names):raise ValueError('Unknown pathway control')
     c={}
     for name in names:
-        a=np.asarray(controls.get(name,1.),float)
+        a=np.asarray(controls.get(name,0. if name=='cover_SD' else 1.),float)
         if a.shape not in ((),(n,)) or not np.isfinite(a).all() or (a<0).any() or (a>1).any():
             raise ValueError('Pathway controls must be scalar or n-vector in [0,1]')
         c[name]=a
@@ -115,7 +115,8 @@ def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),s
             # Response family is evidence-informed; density scale is synthetic.
             hdf*=((1-v)*2/(1+f)+v*2*f/(1+f*f))
         hds=.025*scale*d*gds*ds_cover*intraguild*c['edge_DS']
-        hsd=.020*scale*s*gsd*suppressed_sd*reciprocal*intraguild*c['edge_SD']
+        # Optional D refuge from S; default zero preserves previous models.
+        hsd=.020*scale*s*gsd*suppressed_sd*reciprocal*intraguild*c['edge_SD']*np.exp(-.8*refuge*c['cover_SD'])
         hfe=.060*scale*fp*np.exp(.4*stem*c['emerge_exposure'])*reverse*c['edge_FE']
         hfail=.100*np.exp(-.8*stem*c['emerge_survival'])
         if diagnostics:
