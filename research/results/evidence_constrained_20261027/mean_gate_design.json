@@ -1,0 +1,10 @@
+{
+  "rationale": "Added after initial stage grid. Constant common gates also change mean susceptibility; this control matches the mean separately for each overlapping predator-prey pair.",
+  "weighting": "Unweighted mean over .25-day active aquatic overlap, independent of realized densities; not an exact density-weighted hazard match.",
+  "profiles": [
+    "refuge_only",
+    "litter_response"
+  ],
+  "size_gate": 1,
+  "pathway_scaling": "edge_SF/DF/DS/SD receive their corresponding time-mean logistic gate"
+}

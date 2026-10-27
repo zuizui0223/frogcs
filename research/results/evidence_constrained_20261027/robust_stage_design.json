@@ -1,0 +1,27 @@
+{
+  "reason": "First full-range representatives failed low local return or conversion; scan the already-defined stage grid under the same four sensitivity settings.",
+  "no_new_stage_or_rate_values": true,
+  "profiles": [
+    "refuge_only",
+    "litter_response"
+  ],
+  "checks": {
+    "rho25": {},
+    "rho75": {},
+    "conversion2": {
+      "conversion": [
+        2,
+        2,
+        2
+      ]
+    },
+    "conversion8": {
+      "conversion": [
+        8,
+        8,
+        8
+      ]
+    }
+  },
+  "selection": "Require full-range F_B joint match under baseline and all four demographic checks, then first numeric stage tuple. Exploratory selection, not independent confirmation."
+}

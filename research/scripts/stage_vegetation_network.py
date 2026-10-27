@@ -13,19 +13,25 @@ ENDPOINTS=['F_completed','S_completed','D_completed']
 
 
 def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),size_gate=None,
-             pathway_controls=None,diagnostics=False):
+             pathway_controls=None,diagnostics=False,functional_response=None,
+             behavioral_refuge=False,emergence_delay=0):
     durations=np.asarray(stage_durations,dtype=float)
-    if durations.shape!=(3,) or not np.isfinite(durations).all() or (durations<=0).any():
+    if durations.shape not in ((3,),(len(parameters),3)) or not np.isfinite(durations).all() or (durations<=0).any():
         raise ValueError('Three finite positive aquatic durations required')
     if size_gate is not None and (not np.isfinite(size_gate) or not 0<=size_gate<=1):
         raise ValueError('Constant size gate must lie in [0,1]')
-    ft,st,dt_aquatic=durations
+    ft,st,dt_aquatic=durations if durations.ndim==1 else durations.T
     if not np.isfinite(dt) or dt<=0 or abs(120/dt-round(120/dt))>1e-8:
         raise ValueError('dt must divide the 120-day observation period')
     for row in parameters:
         if set(row)-set(DEFAULT):raise ValueError('Unknown parameter')
     p=pd.DataFrame([{**DEFAULT,**row} for row in parameters])
     if p.empty:raise ValueError('No scenarios')
+    if functional_response not in (None,'litter'):raise ValueError('Unknown functional response')
+    delay=np.asarray(emergence_delay,float)
+    if delay.shape not in ((),(len(p),)) or not np.isfinite(delay).all() or (delay<0).any():
+        raise ValueError('Emergence delay must be nonnegative scalar or scenario vector')
+    dt_aquatic=dt_aquatic+delay
     numeric=['vegetation','f_arrival','s_arrival','d_arrival','attack_scale','cue','water','roles']
     if not np.isfinite(p[numeric].to_numpy(float)).all():raise ValueError('Non-finite input')
     if not p.community.isin(['F','FS','FD','FSD']).all() or not p.refuge_order.isin(['S','equal','D']).all():
@@ -97,8 +103,17 @@ def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),s
         gdf=sigmoid(3*(ds-.5*fs)) if size_gate is None else size_gate
         gds=sigmoid(8*(ds-ss)) if size_gate is None else size_gate
         gsd=sigmoid(8*(ss-ds)) if size_gate is None else size_gate
-        hsf=.035*scale*s*gsf*sf_cover*suppressed_sf*c['edge_SF']
+        # Risk-induced F refuge: evidence for a D-triggered reduction of newt
+        # feeding; this response shape/strength is synthetic, not fitted.
+        current_sf_cover=(np.exp(-r_s*refuge*c['cover_SF']*d/(1+d))
+                          if behavioral_refuge else sf_cover)
+        hsf=.035*scale*s*gsf*current_sf_cover*suppressed_sf*c['edge_SF']
         hdf=.025*scale*d*gdf*df_cover*c['edge_DF']
+        if functional_response=='litter':
+            # Per-prey hazards yield type II (no cover) and type III (cover)
+            # total consumption at infinitesimal dt. Both normalized at F=1.
+            # Response family is evidence-informed; density scale is synthetic.
+            hdf*=((1-v)*2/(1+f)+v*2*f/(1+f*f))
         hds=.025*scale*d*gds*ds_cover*intraguild*c['edge_DS']
         hsd=.020*scale*s*gsd*suppressed_sd*reciprocal*intraguild*c['edge_SD']
         hfe=.060*scale*fp*np.exp(.4*stem*c['emerge_exposure'])*reverse*c['edge_FE']
