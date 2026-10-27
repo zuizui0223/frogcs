@@ -1,0 +1,75 @@
+{
+  "classification": "SYNTHETIC_NOT_EMPIRICAL",
+  "scenarios": 18432,
+  "paired_contexts": 4608,
+  "dt": 0.25,
+  "half_step_dt": 0.125,
+  "half_step_max_abs_completion_difference": 0.0005593513473650114,
+  "contrast_sign_threshold": 0.002,
+  "contrast_counts": {
+    "D_effect_without_S": {
+      "negative": 4608,
+      "near_zero": 0,
+      "positive": 0
+    },
+    "D_effect_with_S": {
+      "negative": 3496,
+      "near_zero": 68,
+      "positive": 1044
+    },
+    "S_effect_with_D": {
+      "negative": 4234,
+      "near_zero": 88,
+      "positive": 286
+    },
+    "nonadditivity": {
+      "negative": 0,
+      "near_zero": 0,
+      "positive": 4608
+    },
+    "log_survival_interaction": {
+      "negative": 0,
+      "near_zero": 0,
+      "positive": 4608
+    }
+  },
+  "ablation_audits": [
+    {
+      "variant": "no_reverse",
+      "max_abs_completion_change": {
+        "F_completed": 0.0,
+        "S_completed": 0.0,
+        "D_completed": 0.3669710691037946
+      }
+    },
+    {
+      "variant": "no_reciprocal",
+      "max_abs_completion_change": {
+        "F_completed": 0.23927602214717103,
+        "S_completed": 0.18555191023399104,
+        "D_completed": 0.5626323600257578
+      }
+    },
+    {
+      "variant": "independent_predators",
+      "max_abs_completion_change": {
+        "F_completed": 0.48263537401131806,
+        "S_completed": 0.9625191357816671,
+        "D_completed": 0.5669212154372891
+      },
+      "max_abs_log_survival_interaction": 2.55351295663786e-15
+    },
+    {
+      "variant": "dry60",
+      "max_abs_completion_change": {
+        "F_completed": 1.0,
+        "S_completed": 1.0,
+        "D_completed": 0.7987841802276874
+      }
+    }
+  ],
+  "scope": "One-season normalized cohort completion; no calling prediction, fit, reproduction, or coexistence claim",
+  "nonadditivity_null": "Raw difference-of-differences includes survival-scale nonlinearity; use log_survival_interaction for multiplicative-hazard null",
+  "design": "research/manuscript/STAGE_VEGETATION_MODEL_DESIGN_2026-10-26.md",
+  "emergence_only_causality": "Emergence benefits cannot affect earlier same-season larval F survival; no recruitment feedback"
+}

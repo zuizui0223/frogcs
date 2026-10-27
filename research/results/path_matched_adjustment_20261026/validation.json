@@ -1,0 +1,132 @@
+{
+  "classification": "EXPLORATORY_MATCHED_CONDITIONAL_ASSOCIATION",
+  "source_sha256": "532d9c1eb81f2bde816d7fc1cbb39185b7b2bfbefe1e95274ff75a13103f9111",
+  "scaling": "Fixed standardized ranks over the 8,080 paired endpoints; repeated sites retain pair frequency",
+  "uncertainty": "Route-component clustered sandwich, t interval; conditional on fitted SDM, matching and scaling; no multiplicity adjustment",
+  "weighting": "Equal pair weight; not equal route weight",
+  "same_cohort_all_models": true,
+  "rematched": false,
+  "interpretation": "Conditional strong-versus-silent association, not the primary site-level strong-visit fraction estimand; prior use can be mediator or shared habitat proxy",
+  "fits": [
+    {
+      "n": 4040,
+      "route_components": 388,
+      "rank": 7,
+      "condition_scaled_design": 2.240438573700427,
+      "max_scaled_gradient": 1.2345111126973923e-11,
+      "optimizer_success": true,
+      "background": "uniform",
+      "specification": "network",
+      "zero_difference_fraction": {
+        "O": 0.6368811881188119,
+        "S": 0.6378712871287129,
+        "V": 0.869059405940594,
+        "O:S": 0.6361386138613861,
+        "O:V": 0.5769801980198019,
+        "S:V": 0.5769801980198019,
+        "O:S:V": 0.5769801980198019
+      }
+    },
+    {
+      "n": 4040,
+      "route_components": 388,
+      "rank": 8,
+      "condition_scaled_design": 2.2498011814031176,
+      "max_scaled_gradient": 6.053477136500091e-11,
+      "optimizer_success": true,
+      "background": "uniform",
+      "specification": "plus_water",
+      "zero_difference_fraction": {
+        "O": 0.6368811881188119,
+        "S": 0.6378712871287129,
+        "V": 0.869059405940594,
+        "O:S": 0.6361386138613861,
+        "O:V": 0.5769801980198019,
+        "S:V": 0.5769801980198019,
+        "O:S:V": 0.5769801980198019,
+        "prior_water": 0.008415841584158416
+      }
+    },
+    {
+      "n": 4040,
+      "route_components": 388,
+      "rank": 9,
+      "condition_scaled_design": 2.256335451029143,
+      "max_scaled_gradient": 1.6352605188543948e-11,
+      "optimizer_success": true,
+      "background": "uniform",
+      "specification": "plus_water_history",
+      "zero_difference_fraction": {
+        "O": 0.6368811881188119,
+        "S": 0.6378712871287129,
+        "V": 0.869059405940594,
+        "O:S": 0.6361386138613861,
+        "O:V": 0.5769801980198019,
+        "S:V": 0.5769801980198019,
+        "O:S:V": 0.5769801980198019,
+        "prior_water": 0.008415841584158416,
+        "prior_use": 0.23663366336633662
+      }
+    },
+    {
+      "n": 4040,
+      "route_components": 388,
+      "rank": 7,
+      "condition_scaled_design": 2.671179375635202,
+      "max_scaled_gradient": 7.707507239701099e-11,
+      "optimizer_success": true,
+      "background": "target_group",
+      "specification": "network",
+      "zero_difference_fraction": {
+        "O": 0.6361386138613861,
+        "S": 0.6376237623762376,
+        "V": 0.869059405940594,
+        "O:S": 0.6361386138613861,
+        "O:V": 0.5769801980198019,
+        "S:V": 0.5784653465346534,
+        "O:S:V": 0.5769801980198019
+      }
+    },
+    {
+      "n": 4040,
+      "route_components": 388,
+      "rank": 8,
+      "condition_scaled_design": 2.6895879003567074,
+      "max_scaled_gradient": 4.354407868382225e-12,
+      "optimizer_success": true,
+      "background": "target_group",
+      "specification": "plus_water",
+      "zero_difference_fraction": {
+        "O": 0.6361386138613861,
+        "S": 0.6376237623762376,
+        "V": 0.869059405940594,
+        "O:S": 0.6361386138613861,
+        "O:V": 0.5769801980198019,
+        "S:V": 0.5784653465346534,
+        "O:S:V": 0.5769801980198019,
+        "prior_water": 0.008415841584158416
+      }
+    },
+    {
+      "n": 4040,
+      "route_components": 388,
+      "rank": 9,
+      "condition_scaled_design": 2.689835121405227,
+      "max_scaled_gradient": 3.4444557327385375e-11,
+      "optimizer_success": true,
+      "background": "target_group",
+      "specification": "plus_water_history",
+      "zero_difference_fraction": {
+        "O": 0.6361386138613861,
+        "S": 0.6376237623762376,
+        "V": 0.869059405940594,
+        "O:S": 0.6361386138613861,
+        "O:V": 0.5769801980198019,
+        "S:V": 0.5784653465346534,
+        "O:S:V": 0.5769801980198019,
+        "prior_water": 0.008415841584158416,
+        "prior_use": 0.23663366336633662
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "primary_scenarios": 25920,
+  "stage_scenarios": 34992,
+  "mean_gate_scenarios": 8748,
+  "demographic_grid_scenarios": 34992,
+  "total_scenario_evaluations_including_checks": 107388,
+  "max_selected_rerun_error": 0.0,
+  "cohort_accounting_errors": {
+    "F": 2.6385144069607236e-15,
+    "S": 1.3322676295501878e-15,
+    "D": 5.995204332975845e-15
+  },
+  "all_selected_numerical_checks_pass": true,
+  "all_five_settings_matching_stage_contexts": {
+    "refuge_only": 27
+  },
+  "selection": "Prioritize S-mediated D suppression plus F refuge; reciprocal predation can amplify but is not universally necessary. No field causal identification or likelihood-based ranking.",
+  "comparison_caveat": "Stage grid uses attack_scale=3 for refuge_only and 1.5 for litter_response; counts are not probabilities or a fair-rate model competition.",
+  "selected_explanatory_core": "110110: S eats F, D eats F, S eats D, vegetation reduces S eating F",
+  "selected_core_baseline_and_six_checks_pass": true,
+  "minimal_subsets": [
+    "010101",
+    "110110"
+  ],
+  "counterfactual_scope": "Removing a documented edge identifies sufficiency, not its absence in nature."
+}

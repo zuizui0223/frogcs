@@ -1,0 +1,173 @@
+{
+  "classification": "EVIDENCE_INFORMED_SYNTHETIC_NOT_EMPIRICALLY_PARAMETERIZED",
+  "profiles": [
+    "refuge_only",
+    "litter_response",
+    "risk_refuge",
+    "timing_shift",
+    "combined"
+  ],
+  "timings": {
+    "baseline": [
+      [
+        50,
+        0,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "same_start": [
+      [
+        20,
+        20,
+        20
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "same_exit": [
+      [
+        50,
+        25,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "no_triple_overlap": [
+      [
+        75,
+        0,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "equal_duration": [
+      [
+        50,
+        0,
+        35
+      ],
+      [
+        60,
+        60,
+        60
+      ]
+    ],
+    "fully_aligned": [
+      [
+        20,
+        20,
+        20
+      ],
+      [
+        60,
+        60,
+        60
+      ]
+    ],
+    "D_first": [
+      [
+        50,
+        35,
+        0
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "F_first": [
+      [
+        10,
+        30,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ]
+  },
+  "refuge_orders": [
+    "S",
+    "equal",
+    "D"
+  ],
+  "attack_scales": [
+    0.5,
+    1.5,
+    3.0
+  ],
+  "cue_SF": [
+    0,
+    3
+  ],
+  "cue_SD": 0,
+  "reverse": [
+    false,
+    true
+  ],
+  "source_grid": [
+    0.25,
+    1,
+    2
+  ],
+  "vegetation": [
+    0,
+    1
+  ],
+  "years": 80,
+  "dt": 0.25,
+  "window": 20,
+  "primary_rectangle": {
+    "D": [
+      0.25,
+      2
+    ],
+    "S": [
+      0.25,
+      2
+    ]
+  },
+  "previous_local_rectangle": {
+    "D": [
+      1,
+      2
+    ],
+    "S": [
+      0.25,
+      2
+    ]
+  },
+  "literature": "research/manuscript/EVIDENCE_CONSTRAINED_MECHANISMS_2026-10-27.md",
+  "fixed_unverified_functions_removed": [
+    "cue_SD",
+    "support_DF",
+    "support_DS",
+    "cover_DS",
+    "emerge_survival",
+    "emerge_exposure"
+  ],
+  "remaining_assumptions": "All numeric rates, exposure functions, size-gate shapes, stage durations, local recruitment, and calling correspondence are unfitted. Qualitative mechanism support is not validation of their combination.",
+  "new_response": "D eats F hazard multiplier: (1-V)*2/(1+F)+V*2F/(1+F^2); arbitrary density scale 1, equal at F=1",
+  "risk_refuge": "S eats F cover exp(-rS*V*D/(1+D)); D-induced F hiding; shape and V scaling synthetic",
+  "emergence_timing": "V adds 5 days to aquatic D period, no survival or exposure multiplier",
+  "selection": "All contexts/ranges reported. First full-range matching context per profile else first prior-local match for numerical sensitivity, ordered by context keys."
+}

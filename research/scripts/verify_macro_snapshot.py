@@ -15,8 +15,18 @@ MANIFEST = ROOT / 'research/reproducibility/macro_snapshot_20261026.json'
 
 
 def verify(root, manifest):
+    # The frozen README bytes remain archived; current navigation can evolve.
+    # Never change the frozen expected hashes or silently skip a missing file.
+    overrides_path = root / 'research/reproducibility/snapshot_path_overrides_20261027.json'
+    overrides = json.loads(overrides_path.read_text(encoding='utf-8')) if overrides_path.exists() else {}
+    allowed = {'README.md', 'research/README.md'}
+    if not set(overrides) <= allowed:
+        raise ValueError('Only archived navigation files may override snapshot paths')
+    if not set(overrides) <= {entry['path'] for entry in manifest['files']}:
+        raise ValueError('Override does not belong to snapshot')
     for entry in manifest['files']:
-        path = root / entry['path']
+        path = root / overrides.get(entry['path'], entry['path'])
+        path.resolve().relative_to(root.resolve())
         data = path.read_bytes()
         if entry['mode'] == 'text_lf':
             data = data.replace(b'\r\n', b'\n')

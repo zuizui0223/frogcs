@@ -1,0 +1,33 @@
+{
+  "selection": "First full-range dynamic-stage success sorted by profile,S arrival,D arrival,F duration,S duration,D duration; no selection by effect magnitude.",
+  "interventions": {
+    "full": {},
+    "no_D_eats_S": {
+      "edge_DS": 0
+    },
+    "no_S_eats_D": {
+      "edge_SD": 0
+    },
+    "no_S_eats_F": {
+      "edge_SF": 0
+    },
+    "no_D_eats_F": {
+      "edge_DF": 0
+    },
+    "no_SF_refuge": {
+      "cover_SF": 0
+    },
+    "no_DF_refuge": {
+      "cover_DF": 0
+    }
+  },
+  "checks": [
+    "half_step",
+    "horizon160",
+    "rho25",
+    "rho75",
+    "conversion2",
+    "conversion8"
+  ],
+  "stage_grid_was_exploratory": true
+}

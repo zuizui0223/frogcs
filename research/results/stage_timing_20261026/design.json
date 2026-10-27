@@ -1,0 +1,82 @@
+{
+  "classification": "SYNTHETIC_EXPLORATORY",
+  "contexts": {
+    "baseline": [
+      [
+        50,
+        0,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "same_start": [
+      [
+        20,
+        20,
+        20
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "same_exit": [
+      [
+        50,
+        25,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "no_triple_overlap": [
+      [
+        75,
+        0,
+        35
+      ],
+      [
+        45,
+        70,
+        60
+      ]
+    ],
+    "equal_duration": [
+      [
+        50,
+        0,
+        35
+      ],
+      [
+        60,
+        60,
+        60
+      ]
+    ],
+    "fully_aligned": [
+      [
+        20,
+        20,
+        20
+      ],
+      [
+        60,
+        60,
+        60
+      ]
+    ]
+  },
+  "scenarios": 1728,
+  "years": 80,
+  "window": 20,
+  "constant_gate_caveat": "Changes mean attack rates as well as removes size dependence; three levels tested",
+  "missing": "No calibration to stage observations, no emergence survival or field calling fit"
+}

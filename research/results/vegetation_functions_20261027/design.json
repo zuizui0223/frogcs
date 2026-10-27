@@ -1,0 +1,37 @@
+{
+  "F_protection": [
+    0,
+    1
+  ],
+  "S_protection": [
+    0,
+    1
+  ],
+  "D_protection": [
+    0,
+    1
+  ],
+  "emergence": [
+    "none",
+    "survival",
+    "timing"
+  ],
+  "stage_settings": 81,
+  "cells_per_setting": 18,
+  "total_scenarios": 34992,
+  "years": 80,
+  "dt": 0.25,
+  "source_range": [
+    0.25,
+    1,
+    2
+  ],
+  "rho": 0.5,
+  "attack": 3,
+  "cue": 0,
+  "reverse": false,
+  "coefficients": "F hazard reduction exp(-1.25 V); S/D protection exp(-0.8 V); emergence-stage loss hazard 0.1 exp(-0.8 V); timing +5V days aquatic. All strengths synthetic; timing magnitude motivated by one study, not universal.",
+  "scope": "Factorial independent functions, not presumed vegetation tradeoffs. No foraging boost. Emergence survival is generic stage loss proxy, not empirically measured intrinsic molting failure. Predation-size structure fixed to prior audited model.",
+  "criterion": "Full supply range, three directions in F_B/log_F_B/log_F_fraction/negative_H; not fitted macro regression coefficients.",
+  "fixed_before_run": true
+}

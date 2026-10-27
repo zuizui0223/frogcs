@@ -1,0 +1,15 @@
+background,group,vegetation_metric,radius_m,within_route,term,beta,low,high,valid_bootstraps
+uniform,pond_breeding_Caudata,mean,3000,False,Odonata,-0.0894527206486173,-0.1486531809522384,-0.0272066039645804,1000
+uniform,pond_breeding_Caudata,mean,3000,False,Caudata,0.0055314676278995,-0.0634941951350394,0.0736328830425465,1000
+uniform,pond_breeding_Caudata,mean,3000,False,vegetation,0.1157782771999531,0.0620476628496887,0.1655165506512096,1000
+uniform,pond_breeding_Caudata,mean,3000,False,Odonata:Caudata,-0.1655897267486281,-0.2294027969522367,-0.1075582299317749,1000
+uniform,pond_breeding_Caudata,mean,3000,False,Odonata:vegetation,-0.0874975344894891,-0.1241846140643394,-0.0477814569881616,1000
+uniform,pond_breeding_Caudata,mean,3000,False,Caudata:vegetation,0.0583382820276133,0.0152920501108326,0.1013519318721609,1000
+uniform,pond_breeding_Caudata,mean,3000,False,Odonata:Caudata:vegetation,0.0370372440211405,0.0078921226683767,0.0680503932732554,1000
+target_group,pond_breeding_Caudata,mean,3000,False,Odonata,-0.1072863389206242,-0.1750492436725924,-0.0358395400450677,1000
+target_group,pond_breeding_Caudata,mean,3000,False,Caudata,0.1627796082113063,0.0890234470465615,0.2327572773171767,1000
+target_group,pond_breeding_Caudata,mean,3000,False,vegetation,0.0764433002484442,0.0219597082465976,0.1279142935086194,1000
+target_group,pond_breeding_Caudata,mean,3000,False,Odonata:Caudata,-0.0860010342845702,-0.1514549079091737,-0.0226075186602122,1000
+target_group,pond_breeding_Caudata,mean,3000,False,Odonata:vegetation,-0.0644886211482715,-0.1146591682240633,-0.0138121294130787,1000
+target_group,pond_breeding_Caudata,mean,3000,False,Caudata:vegetation,0.0463811437191145,-0.0220189962744307,0.1089782176025074,1000
+target_group,pond_breeding_Caudata,mean,3000,False,Odonata:Caudata:vegetation,0.0272999679557335,-0.0237768986202905,0.0730234252950332,1000

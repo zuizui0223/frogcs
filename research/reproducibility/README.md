@@ -6,6 +6,14 @@ These include input tables, full coefficients, uncertainty, sensitivity results,
 SHA256 uses LF-normalized bytes for text (Windows checkout compatibility), exact bytes for binary files.
 The new verification wrapper and this documentation are versioned by the enclosing Git commit, not self-hashed.
 
+After the 2026-10-27 navigation cleanup, the original root and research READMEs
+are preserved under `legacy/frozen_navigation_20261026/`. The explicit mapping
+in `snapshot_path_overrides_20261027.json` redirects only these two navigation
+files during verification. Their original expected hashes and the frozen
+manifest are unchanged. All scientific inputs, scripts and results still verify
+at their original paths. Current READMEs describe the latest research and are
+versioned normally, rather than masquerading as the old frozen navigation.
+
 ## Offline verification and numerical replay
 
 From the repository root, in a dedicated Python 3.10 environment:

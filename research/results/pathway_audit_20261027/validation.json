@@ -1,0 +1,480 @@
+{
+  "classification": "MODEL_INTERNAL_PATHWAY_AUDIT_NOT_FIELD_CAUSAL_IDENTIFICATION",
+  "scenarios": 1188,
+  "years": 80,
+  "window": 20,
+  "baseline_max_abs_error": 4.440892098500626e-16,
+  "selected_context": {
+    "roles": 15,
+    "refuge_order": "S",
+    "f_arrival": 50,
+    "attack_scale": 1.5,
+    "rho": 0.5
+  },
+  "source_values": [
+    0.25,
+    1,
+    2
+  ],
+  "vegetation": [
+    0,
+    1
+  ],
+  "variants": {
+    "full": {},
+    "no_edge_SF": {
+      "edge_SF": 0.0
+    },
+    "no_edge_DF": {
+      "edge_DF": 0.0
+    },
+    "no_edge_DS": {
+      "edge_DS": 0.0
+    },
+    "no_edge_SD": {
+      "edge_SD": 0.0
+    },
+    "no_edge_FE": {
+      "edge_FE": 0.0
+    },
+    "no_cue_SF": {
+      "cue_SF": 0.0
+    },
+    "no_cue_SD": {
+      "cue_SD": 0.0
+    },
+    "no_cover_SF": {
+      "cover_SF": 0.0
+    },
+    "no_cover_DF": {
+      "cover_DF": 0.0
+    },
+    "no_cover_DS": {
+      "cover_DS": 0.0
+    },
+    "no_support_DF": {
+      "support_DF": 0.0
+    },
+    "no_support_DS": {
+      "support_DS": 0.0
+    },
+    "no_emerge_survival": {
+      "emerge_survival": 0.0
+    },
+    "no_emerge_exposure": {
+      "emerge_exposure": 0.0
+    },
+    "no_frog_refuge": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0
+    },
+    "no_D_support": {
+      "support_DF": 0.0,
+      "support_DS": 0.0
+    },
+    "no_emergence": {
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "pred_0000": {
+      "edge_DS": 0.0,
+      "edge_SD": 0.0,
+      "cue_SF": 0.0,
+      "cue_SD": 0.0
+    },
+    "pred_0001": {
+      "edge_DS": 0.0,
+      "edge_SD": 0.0,
+      "cue_SF": 0.0,
+      "cue_SD": 1.0
+    },
+    "pred_0010": {
+      "edge_DS": 0.0,
+      "edge_SD": 0.0,
+      "cue_SF": 1.0,
+      "cue_SD": 0.0
+    },
+    "pred_0011": {
+      "edge_DS": 0.0,
+      "edge_SD": 0.0,
+      "cue_SF": 1.0,
+      "cue_SD": 1.0
+    },
+    "pred_0100": {
+      "edge_DS": 0.0,
+      "edge_SD": 1.0,
+      "cue_SF": 0.0,
+      "cue_SD": 0.0
+    },
+    "pred_0101": {
+      "edge_DS": 0.0,
+      "edge_SD": 1.0,
+      "cue_SF": 0.0,
+      "cue_SD": 1.0
+    },
+    "pred_0110": {
+      "edge_DS": 0.0,
+      "edge_SD": 1.0,
+      "cue_SF": 1.0,
+      "cue_SD": 0.0
+    },
+    "pred_0111": {
+      "edge_DS": 0.0,
+      "edge_SD": 1.0,
+      "cue_SF": 1.0,
+      "cue_SD": 1.0
+    },
+    "pred_1000": {
+      "edge_DS": 1.0,
+      "edge_SD": 0.0,
+      "cue_SF": 0.0,
+      "cue_SD": 0.0
+    },
+    "pred_1001": {
+      "edge_DS": 1.0,
+      "edge_SD": 0.0,
+      "cue_SF": 0.0,
+      "cue_SD": 1.0
+    },
+    "pred_1010": {
+      "edge_DS": 1.0,
+      "edge_SD": 0.0,
+      "cue_SF": 1.0,
+      "cue_SD": 0.0
+    },
+    "pred_1011": {
+      "edge_DS": 1.0,
+      "edge_SD": 0.0,
+      "cue_SF": 1.0,
+      "cue_SD": 1.0
+    },
+    "pred_1100": {
+      "edge_DS": 1.0,
+      "edge_SD": 1.0,
+      "cue_SF": 0.0,
+      "cue_SD": 0.0
+    },
+    "pred_1101": {
+      "edge_DS": 1.0,
+      "edge_SD": 1.0,
+      "cue_SF": 0.0,
+      "cue_SD": 1.0
+    },
+    "pred_1110": {
+      "edge_DS": 1.0,
+      "edge_SD": 1.0,
+      "cue_SF": 1.0,
+      "cue_SD": 0.0
+    },
+    "pred_1111": {
+      "edge_DS": 1.0,
+      "edge_SD": 1.0,
+      "cue_SF": 1.0,
+      "cue_SD": 1.0
+    },
+    "veg_00000": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_00001": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_00010": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_00011": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_00100": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_00101": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_00110": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_00111": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_01000": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_01001": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_01010": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_01011": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_01100": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_01101": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_01110": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_01111": {
+      "cover_SF": 0.0,
+      "cover_DF": 0.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_10000": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_10001": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_10010": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_10011": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_10100": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_10101": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_10110": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_10111": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 0.0,
+      "support_DS": 0.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_11000": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_11001": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_11010": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_11011": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 0.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_11100": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_11101": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 0.0,
+      "emerge_exposure": 1.0
+    },
+    "veg_11110": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 0.0
+    },
+    "veg_11111": {
+      "cover_SF": 1.0,
+      "cover_DF": 1.0,
+      "support_DF": 1.0,
+      "support_DS": 1.0,
+      "cover_DS": 1.0,
+      "emerge_survival": 1.0,
+      "emerge_exposure": 1.0
+    }
+  },
+  "predator_factorial_order": [
+    "edge_DS",
+    "edge_SD",
+    "cue_SF",
+    "cue_SD"
+  ],
+  "vegetation_factorial_order": [
+    "frog_refuge",
+    "D_support",
+    "S_refuge",
+    "emerge_survival",
+    "emerge_exposure"
+  ],
+  "hazard_convention": "SF means S eats F; cues separately suppress S feeding on F or D",
+  "fixed_cohort_replay": "Mean baseline last20 cohorts, kept identical across interventions within each source/vegetation cell",
+  "no_empirical_fit": true
+}

@@ -1,0 +1,40 @@
+{
+  "candidate": "111110",
+  "F_arrival": 20,
+  "F_duration": 45,
+  "S_arrival": [
+    0,
+    20,
+    40
+  ],
+  "D_arrival": [
+    0,
+    20,
+    40
+  ],
+  "S_duration": [
+    40,
+    60,
+    80
+  ],
+  "D_duration": [
+    40,
+    60,
+    70
+  ],
+  "modes": [
+    "dynamic",
+    "mean_matched",
+    "D_disadvantage",
+    "balanced",
+    "D_advantage"
+  ],
+  "fixed_attack": 3,
+  "years": 80,
+  "rho": 0.5,
+  "cue": 0,
+  "reverse": false,
+  "criterion": "F_B, log_F_B, log_F_fraction and negative_H all pass full supply .25 to 2; threshold 1e-6",
+  "size_control": "Mean-matched removes time variation preserving unweighted overlap gate separately per edge. Directional controls fix DS/SD at .2/.8, .5/.5 or .8/.2, holding SF/DF at mean matched. Synthetic susceptibility, not measured lengths.",
+  "scope": "81 timing-duration settings; fixed frog development; no density-linked timing; settings fixed before run"
+}

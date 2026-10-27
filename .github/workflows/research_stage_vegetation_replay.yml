@@ -1,0 +1,47 @@
+name: Research stage vegetation replay
+on:
+  pull_request:
+    paths:
+      - 'research/scripts/*stage_vegetation*'
+      - 'research/results/stage_vegetation_network_20261026/**'
+      - '.github/workflows/research_stage_vegetation_replay.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage-vegetation-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3
+      - run: python -m unittest discover -s research/scripts -p test_stage_vegetation_network.py
+      - run: python research/scripts/stage_vegetation_network.py --out /tmp/stage-vegetation-replay
+      - name: Compare every saved numerical table
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import numpy as np
+          import pandas as pd
+          saved=Path('research/results/stage_vegetation_network_20261026')
+          replay=Path('/tmp/stage-vegetation-replay')
+          for path in sorted(saved.glob('*.csv*')):
+              pd.testing.assert_frame_equal(pd.read_csv(path),pd.read_csv(replay/path.name),
+                                            check_exact=False,rtol=1e-10,atol=1e-12)
+              print('PASS',path.name)
+          a=json.loads((saved/'synthetic_results.json').read_text())
+          b=json.loads((replay/'synthetic_results.json').read_text())
+          assert a['scenarios']==b['scenarios']==18432
+          assert a['contrast_counts']==b['contrast_counts']
+          assert b['half_step_max_abs_completion_difference']<.005
+          print('PASS numerical stability and all contrast categories')
+          PY
+      - run: python research/scripts/verify_macro_snapshot.py
+      - run: git diff --exit-code
