@@ -78,7 +78,7 @@ def main():
     tables+='\n### 時間平均を保ったサイズ関数対照\n\n'
     tables+=md(meancheck)
     tables+='\n時間平均対照の結果は、サイズ関数の刻々の変化と、経路ごとの平均的な捕食しやすさを区別する材料である。文献で支持されたサイズ依存性の存在を、今回の成長率・期間の実測根拠と同一視しない。\n\n### 完了した検証の範囲\n\n定義した格子・感度・再計算を含め107,388シナリオ評価を保存した。これは独立な107,388実証でも、自然界の全機構の網羅でもない。基準結果の再現・コホート収支・選定代表の数値安定性を検査し、失敗した設定も全て残した。マクロ解析の原因を同定した結論ではなく、既存の結果を説明できる機構の候補を絞った結論である。\n'
-    path=OUT.parents[1]/'manuscript/EVIDENCE_CONSTRAINED_RESULTS_2026-10-27.md'
+    path=OUT.parents[2]/'legacy/mechanism_iterations/research/manuscript/EVIDENCE_CONSTRAINED_RESULTS_2026-10-27.md'
     s=path.read_text(encoding='utf-8')
     marker='\n## 最小経路の組合せ'
     appendix=marker+s.split(marker,1)[1] if marker in s else ''

@@ -5,7 +5,7 @@ Working discussion and manuscript architecture, 2026-10-26. Based on empirical s
 This document develops the current association-first manuscript direction. It does not replace the
 archived RC6 manuscript or treat the older integrated draft's prediction criteria as prerequisites.
 
-The consolidated [two-part manuscript draft](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) organizes the current argument as macroecological associations followed by stage-structured mechanism simulations, with a shared introduction and integrated discussion.
+The consolidated [two-part manuscript draft](../../../../research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) organizes the current argument as macroecological associations followed by stage-structured mechanism simulations, with a shared introduction and integrated discussion.
 
 ## 論文の主筋
 
@@ -224,8 +224,8 @@ Do not interpret unobserved combinations of ranks as supported local ecological 
 
 Empirical tables: `../results/naamp_remote_vegetation_20261026/network_rank_coefficients.csv`,
 `../results/naamp_odonata_caudata_associations_20261026/stratified_correlations.csv`.
-Independent literature audit: [primary evidence](VEGETATION_THREE_GUILD_PRIMARY_EVIDENCE_2026-10-26.md).
-Model design: [stage/vegetation assumptions](STAGE_VEGETATION_MODEL_DESIGN_2026-10-26.md).
+Independent literature audit: [primary evidence](../../../../research/manuscript/VEGETATION_THREE_GUILD_PRIMARY_EVIDENCE_2026-10-26.md).
+Model design: [stage/vegetation assumptions](../../../../research/manuscript/STAGE_VEGETATION_MODEL_DESIGN_2026-10-26.md).
 
 ## Added temporal evidence and annual feedback extension
 

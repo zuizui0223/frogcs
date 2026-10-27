@@ -132,11 +132,11 @@ negative means more detrimental or less beneficial. D: odonate completion with/w
 predation during emergence. Other settings are specified above; all conditions are saved separately.
 These are deterministic hypothetical scenarios, without statistical confidence intervals or empirical fit.
 
-![Synthetic illustration](../results/stage_vegetation_network_20261026/stage_vegetation_network.png)
+![Synthetic illustration](../../../../research/results/stage_vegetation_network_20261026/stage_vegetation_network.png)
 
 ## 資料
 
 [考察原稿](THREE_GUILD_VEGETATION_DISCUSSION_V1_2026-10-26.md)・
-[一次文献](VEGETATION_THREE_GUILD_PRIMARY_EVIDENCE_2026-10-26.md)・
-[仕様](STAGE_VEGETATION_MODEL_DESIGN_2026-10-26.md)。
+[一次文献](../../../../research/manuscript/VEGETATION_THREE_GUILD_PRIMARY_EVIDENCE_2026-10-26.md)・
+[仕様](../../../../research/manuscript/STAGE_VEGETATION_MODEL_DESIGN_2026-10-26.md)。
 全出力は `research/results/stage_vegetation_network_20261026/`。

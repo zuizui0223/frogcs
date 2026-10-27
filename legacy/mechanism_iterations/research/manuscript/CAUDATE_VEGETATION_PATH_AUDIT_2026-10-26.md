@@ -6,7 +6,7 @@
 
 The third party matters because it gives D two opposing routes to F: direct predation harms F, whereas suppression/removal of an F predator can benefit F. Vegetation can change their relative weights. This explains why a pairwise account can be incomplete, but **D suppressing S alone predicts a positive indirect F response and cannot explain the observed strengthening of a negative O–calling association at high S suitability**. A negative net D effect can coexist with antagonism between predators; negative net effects do not establish synergistic predation.
 
-The empirical target remains conditional association: weak negative O–calling overall, more negative at high pond-S suitability; O×V negative; S×V positive point estimates with a target-group interval spanning zero; O×S×V uncertain across specifications. Opposite O×V and S×V signs do not themselves demonstrate vegetation modification of the third-party effect. The three-way term addresses that question. Suitability is not local density and landscape flooded vegetation is not measured pond refuge structure. See [current manuscript](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md).
+The empirical target remains conditional association: weak negative O–calling overall, more negative at high pond-S suitability; O×V negative; S×V positive point estimates with a target-group interval spanning zero; O×S×V uncertain across specifications. Opposite O×V and S×V signs do not themselves demonstrate vegetation modification of the third-party effect. The three-way term addresses that question. Suitability is not local density and landscape flooded vegetation is not measured pond refuge structure. See [current manuscript](../../../../research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md).
 
 ## Three primary studies: what travels and what does not
 
@@ -38,7 +38,7 @@ The two behavioral chains have the same positive indirect sign for F but differe
 
 ## Vegetation changes particular edges, not a single ecological quality
 
-The following are code-level assumptions, verified in [seasonal model source](../scripts/stage_vegetation_network.py), not estimates of field effects.
+The following are code-level assumptions, verified in [seasonal model source](../../../../research/scripts/stage_vegetation_network.py), not estimates of field effects.
 
 | Model role | Implemented edge | Consequence for F and boundary |
 |---|---|---|

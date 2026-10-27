@@ -92,6 +92,6 @@ python research/scripts/summarize_vegetation_functions.py
 
 全成功・失敗と数値は `research/results/vegetation_functions_20261027/`。マクロの発声・適合度・景観被覆はモデルの生残・供給・保護機能と同じ測定ではない。現段階の判断は「基準係数ではカエル保護だけが最も広く成立するが、有尾類保護を含む代替も残り、植生機能は識別できない」である。
 '''
- (ROOT/'manuscript/VEGETATION_FUNCTION_COMPARISON_2026-10-27.md').write_text(text,encoding='utf-8')
+ (ROOT.parent/'legacy/mechanism_iterations/research/manuscript/VEGETATION_FUNCTION_COMPARISON_2026-10-27.md').write_text(text,encoding='utf-8')
  print(table.to_string(index=False));print(json.dumps(validation,indent=2))
 if __name__=='__main__':main()
