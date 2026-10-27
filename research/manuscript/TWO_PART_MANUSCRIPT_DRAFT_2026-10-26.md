@@ -287,3 +287,8 @@ flowchart TB
 - Hossie, T. J. & Murray, D. L. (2010). You can't run but you can hide: refuge use in frog tadpoles elicits density-dependent predation by dragonfly larvae. *Oecologia*, 163, 395–404. https://doi.org/10.1007/s00442-010-1568-6
 - Kishida, O., Trussell, G. C. & Nishimura, K. (2009). Top-down effects on antagonistic inducible defense and offense. *Ecology*, 90, 1217–1226. https://doi.org/10.1890/08-0238.1
 - Klečka, J. & Boukal, D. S. (2014). The effect of habitat structure on prey mortality depends on predator and prey microhabitat use. *Oecologia*, 176, 183–191. https://doi.org/10.1007/s00442-014-3007-6
+
+
+## 発生段階・サイズ関係の追加検証
+
+ヤゴ→有尾類捕食を含む候補111110について、81通りの登場・水中期間を比較した。21条件で、翌季指数とその対数・対数生残・累積危険の全てで三方向が一致した。各経路の時間平均サイズ感受性を固定しても同じ21条件が成立した。一方、ヤゴ優位の相互捕食感受性では同時登場でも成立した。したがって、刻々の成長や先行自体を必要条件とはせず、捕食方向と水中期の重複の組合せを説明候補とする。成功21配置は半刻み・160季節の両方で維持された。詳細は [発生段階・サイズ監査](STAGE_HAZARD_MECHANISM_AUDIT_2026-10-27.md)。人口学条件への依存と野外因果の未同定は残る。
