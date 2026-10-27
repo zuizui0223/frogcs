@@ -12,7 +12,8 @@ DEFAULT = dict(community='FSD',roles=15,refuge_order='S',vegetation=0.,
 ENDPOINTS=['F_completed','S_completed','D_completed']
 
 
-def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),size_gate=None):
+def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),size_gate=None,
+             pathway_controls=None,diagnostics=False):
     durations=np.asarray(stage_durations,dtype=float)
     if durations.shape!=(3,) or not np.isfinite(durations).all() or (durations<=0).any():
         raise ValueError('Three finite positive aquatic durations required')
@@ -37,14 +38,31 @@ def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),s
         raise ValueError('Event times must align with integration grid')
     if (p[['f_arrival','s_arrival','d_arrival']]>120).any().any():raise ValueError('Arrival outside season')
     n=len(p);zero=lambda:np.zeros(n)
+    # Optional interventions: multiplier 1 retains the original mechanism;
+    # 0 removes only this directed pathway. Arrays allow matched batched runs.
+    names=['edge_SF','edge_DF','edge_DS','edge_SD','edge_FE','cue_SF','cue_SD',
+           'cover_SF','cover_DF','cover_DS','support_DF','support_DS',
+           'emerge_survival','emerge_exposure']
+    controls=pathway_controls or {}
+    if set(controls)-set(names):raise ValueError('Unknown pathway control')
+    c={}
+    for name in names:
+        a=np.asarray(controls.get(name,1.),float)
+        if a.shape not in ((),(n,)) or not np.isfinite(a).all() or (a<0).any() or (a>1).any():
+            raise ValueError('Pathway controls must be scalar or n-vector in [0,1]')
+        c[name]=a
+    audit={k:zero() for k in ['H_SF','H_DF','H_DS','H_SD','S_days_Fwindow',
+                             'S_active_Fwindow','D_days_Fwindow','S_days_Dwindow',
+                             'S_active_Dwindow','H_FE','H_failure']}
     f,s,d,fp,sp,de,da=[zero() for _ in range(7)]
     death={k:zero() for k in ['F_by_S','F_by_D','S_by_D','D_by_S','D_by_F','D_failure','F_dry','S_dry','D_dry']}
     v=p.vegetation.to_numpy(float);roles=p.roles.to_numpy(int)
     refuge=((roles&1)>0)*v;support=((roles&2)>0)*v;sref=((roles&4)>0)*v;stem=((roles&8)>0)*v
     r_s=np.select([p.refuge_order=='S',p.refuge_order=='D'],[1.25,.25],default=.75)
     r_d=1.5-r_s
-    sf_cover=np.exp(-r_s*refuge);df_cover=np.exp(-r_d*refuge+.8*support)
-    ds_cover=np.exp(-.8*sref+.8*support)
+    sf_cover=np.exp(-r_s*refuge*c['cover_SF'])
+    df_cover=np.exp(-r_d*refuge*c['cover_DF']+.8*support*c['support_DF'])
+    ds_cover=np.exp(-.8*sref*c['cover_DS']+.8*support*c['support_DS'])
     scale=p.attack_scale.to_numpy(float);cue=p.cue.to_numpy(float)
     fa=p.f_arrival.to_numpy(float);sa=p.s_arrival.to_numpy(float);dd=p.d_arrival.to_numpy(float)
     sinit=p.community.isin(['FS','FSD']).to_numpy(float);dinit=p.community.isin(['FD','FSD']).to_numpy(float)
@@ -73,17 +91,28 @@ def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),s
         if step==round(120/dt):break
         fs=.15+.020*np.maximum(t-fa,0);ss=.15+.014*np.maximum(t-sa,0);ds=.15+.015*np.maximum(t-dd,0)
         # All hazards use the same start-of-step cohort state.
-        suppressed=1/(1+cue*d)
+        suppressed_sf=1/(1+cue*d*c['cue_SF'])
+        suppressed_sd=1/(1+cue*d*c['cue_SD'])
         gsf=sigmoid(8*(ss-fs)) if size_gate is None else size_gate
         gdf=sigmoid(3*(ds-.5*fs)) if size_gate is None else size_gate
         gds=sigmoid(8*(ds-ss)) if size_gate is None else size_gate
         gsd=sigmoid(8*(ss-ds)) if size_gate is None else size_gate
-        hsf=.035*scale*s*gsf*sf_cover*suppressed
-        hdf=.025*scale*d*gdf*df_cover
-        hds=.025*scale*d*gds*ds_cover*intraguild
-        hsd=.020*scale*s*gsd*suppressed*reciprocal*intraguild
-        hfe=.060*scale*fp*np.exp(.4*stem)*reverse
-        hfail=.100*np.exp(-.8*stem)
+        hsf=.035*scale*s*gsf*sf_cover*suppressed_sf*c['edge_SF']
+        hdf=.025*scale*d*gdf*df_cover*c['edge_DF']
+        hds=.025*scale*d*gds*ds_cover*intraguild*c['edge_DS']
+        hsd=.020*scale*s*gsd*suppressed_sd*reciprocal*intraguild*c['edge_SD']
+        hfe=.060*scale*fp*np.exp(.4*stem*c['emerge_exposure'])*reverse*c['edge_FE']
+        hfail=.100*np.exp(-.8*stem*c['emerge_survival'])
+        if diagnostics:
+            fw=(t>=fa)&(t<fa+ft)&(t<water)
+            sw=(t>=sa)&(t<sa+st)&(t<water)
+            dw=(t>=dd)&(t<dd+dt_aquatic)&(t<water)
+            ew=(t>=dd+dt_aquatic)&(t<dd+dt_aquatic+5)
+            vals={'H_SF':hsf*fw,'H_DF':hdf*fw,'H_DS':hds*sw,'H_SD':hsd*dw,
+                  'S_days_Fwindow':s*fw,'S_active_Fwindow':s*suppressed_sf*fw,
+                  'D_days_Fwindow':d*fw,'S_days_Dwindow':s*dw,
+                  'S_active_Dwindow':s*suppressed_sd*dw,'H_FE':hfe*ew,'H_failure':hfail*ew}
+            for key,val in vals.items():audit[key]+=val*dt
         hf=hsf+hdf;loss=f*(-np.expm1(-hf*dt))
         bys=loss*np.divide(hsf,hf,out=zero(),where=hf>0)
         death['F_by_S']+=bys;death['F_by_D']+=loss-bys;f-=loss
@@ -95,6 +124,8 @@ def simulate(parameters,dt=.25,initial_cohorts=None,stage_durations=(45,70,60),s
     for key,val in [('F_completed',fp),('S_completed',sp),('D_completed',da),
                     ('F_survived',f+fp),('S_survived',s+sp),('D_survived',d+de+da)]:out[key]=val
     for key,val in death.items():out[key.replace('_by_','_killed_by_')]=val
+    if diagnostics:
+        for key,val in audit.items():out['audit_'+key]=val
     for g,start in [('F',finit),('S',sinit),('D',dinit)]:
         out[g+'_dead']=sum(val for key,val in death.items() if key.startswith(g+'_'))
         if not np.allclose(out[g+'_dead']+out[g+'_survived'],start,rtol=0,atol=1e-11):

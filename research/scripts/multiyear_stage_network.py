@@ -59,6 +59,9 @@ def simulate_years(scenarios,years=80,dt=.25,source_cohorts=None,seasonal_option
             frame[g+'_next_B']=next_B[:,k]
         for col in ('F_killed_by_S','F_killed_by_D','S_killed_by_D','D_killed_by_S','D_killed_by_F'):
             frame[col]=season[col].to_numpy()
+        if (seasonal_options or {}).get('diagnostics',False):
+            for col in [x for x in season if x.startswith('audit_')]+['D_failure','F_dry','S_dry','D_dry']:
+                frame[col]=season[col].to_numpy()
         frames.append(frame);B=next_B
     return pd.concat(frames,ignore_index=True)
 
