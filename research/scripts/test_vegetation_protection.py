@@ -18,4 +18,3 @@ class VegetationProtection(unittest.TestCase):
  def test_no_vegetation_means_no_protection(self):
   pd.testing.assert_frame_equal(simulate([{'vegetation':0}],pathway_controls={'cover_SD':0}),simulate([{'vegetation':0}],pathway_controls={'cover_SD':1}),check_exact=True)
 if __name__=='__main__':unittest.main()
-
