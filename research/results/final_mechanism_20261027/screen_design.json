@@ -1,0 +1,42 @@
+{
+  "raw_logical_combinations": 12288,
+  "canonical_models": 3600,
+  "contexts": [
+    {
+      "f_arrival": 20,
+      "s_arrival": 40,
+      "d_arrival": 20,
+      "F_duration": 45,
+      "S_duration": 40,
+      "D_duration": 40
+    },
+    {
+      "f_arrival": 20,
+      "s_arrival": 40,
+      "d_arrival": 20,
+      "F_duration": 45,
+      "S_duration": 40,
+      "D_duration": 60
+    },
+    {
+      "f_arrival": 20,
+      "s_arrival": 0,
+      "d_arrival": 20,
+      "F_duration": 45,
+      "S_duration": 60,
+      "D_duration": 60
+    }
+  ],
+  "years": 40,
+  "window": 10,
+  "dt": 0.5,
+  "scope": "Exhaustive canonical existing catalog at three contexts; coarse screen not impossibility proof",
+  "exclusions": [
+    "cue_SD unsupported inhibition",
+    "explicit egg stage",
+    "emergence exposure boost",
+    "abiotic confounding",
+    "species-specific toxicity",
+    "explicit size distributions"
+  ]
+}

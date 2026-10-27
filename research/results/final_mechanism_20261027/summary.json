@@ -1,0 +1,49 @@
+{
+  "catalog_models": 3600,
+  "screen_scenario_evaluations": 194400,
+  "screen_model_contexts": 10800,
+  "screen_joint": 4,
+  "screen_floor_avoiding": 0,
+  "finalists": 20,
+  "validation_blocks": 24,
+  "validation_scenario_evaluations": 9720,
+  "validation_joint": 1,
+  "validation_floor_avoiding": 1,
+  "leader": 1479,
+  "reduced_candidate": 1455,
+  "reduced_joint": 1,
+  "factorial_successes": [
+    {
+      "model_id": 200007,
+      "check": "base"
+    },
+    {
+      "model_id": 200015,
+      "check": "base"
+    },
+    {
+      "model_id": 200007,
+      "check": "half_step"
+    },
+    {
+      "model_id": 200015,
+      "check": "half_step"
+    },
+    {
+      "model_id": 200007,
+      "check": "long_run"
+    },
+    {
+      "model_id": 200015,
+      "check": "long_run"
+    }
+  ],
+  "total_scenario_evaluations": 213336,
+  "conclusion": "Conditional leading family; no robust field cause identified",
+  "fixed_criterion_not_changed": true,
+  "post_selection_diagnostics": [
+    "rank resolution",
+    "factorial reduction",
+    "reduced replay of same 24 nuisance blocks"
+  ]
+}
