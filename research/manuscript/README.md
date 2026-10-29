@@ -12,6 +12,8 @@
 
 続く検証：[尺度を固定した機構と鳴き声接続の切り分け](MECHANISM_OBSERVATION_SEPARATION_2026-10-29.md)。54条件すべての格子細分化と、鳴き声確認頻度／確認時強度の共通地点解析。[独立校正で識別できる範囲](OBSERVATION_BRIDGE_IDENTIFIABILITY_2026-10-29.md)も保持します。
 
+追加機構：[共有採餌時間と発生段階による捕食方向逆転](LITERATURE_MECHANISM_EXTENSION_2026-10-29.md)。文献で方向を制約した追加／除去検査であり、全マクロ関係の再現成功とはしません。[一次根拠と外挿の区別](ADDED_MECHANISM_PRIMARY_EVIDENCE_2026-10-29.md)。
+
 追加更新：[公開データによる校正・独立検査](PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md)、[モデルと最新マクロ結果の整合性](MODEL_MACRO_COMPATIBILITY_UPDATE_2026-10-29.md)。三者項の正符号を固定した調整目標にはしません。
 
 2026-10-29のNEE検討：[環境・空間・観測条件の追加検証](NEE_EVIDENCE_PROGRESS_2026-10-29.md)と[ストーリー更新](NEE_STORY_AND_FIGURE_PLAN_2026-10-29.md)。以下は2026-10-27に固定した原稿・結果です。
