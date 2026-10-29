@@ -4,6 +4,7 @@
 
 ## 現在の成果物
 
+- [NEE方針に沿った追加検証・ゲート判定（2026-10-29）](research/manuscript/NEE_EVIDENCE_PROGRESS_2026-10-29.md) / [ストーリーと図構成](research/manuscript/NEE_STORY_AND_FIGURE_PLAN_2026-10-29.md)
 - [論文原稿：マクロ解析とシミュレーション](research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)
 - [最新の考察・結論](research/manuscript/ECOLOGICAL_DISCUSSION_CONCLUSION_2026-10-27.md)
 - [最終機構比較：3,600構成と追加検証](research/manuscript/FINAL_MECHANISM_COMPARISON_2026-10-27.md)
