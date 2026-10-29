@@ -1,0 +1,785 @@
+{
+  "status": "OK",
+  "data": {
+    "id": 221898,
+    "identifier": "YFE6IJ",
+    "persistentUrl": "https://doi.org/10.57745/YFE6IJ",
+    "protocol": "doi",
+    "authority": "10.57745",
+    "publisher": "Recherche Data Gouv",
+    "publicationDate": "2024-07-08",
+    "storageIdentifier": "inrae://10.57745/YFE6IJ",
+    "metadataLanguage": "en",
+    "latestVersion": {
+      "id": 272815,
+      "datasetId": 221898,
+      "datasetPersistentId": "doi:10.57745/YFE6IJ",
+      "storageIdentifier": "inrae://10.57745/YFE6IJ",
+      "versionNumber": 1,
+      "versionMinorNumber": 0,
+      "versionState": "RELEASED",
+      "UNF": "UNF:6:BLVOGiz/aLJxfEyqqO4znA==",
+      "lastUpdateTime": "2024-07-08T06:40:31Z",
+      "releaseTime": "2024-07-08T06:40:31Z",
+      "createTime": "2024-07-08T06:38:37Z",
+      "publicationDate": "2024-07-08",
+      "citationDate": "2024-07-08",
+      "license": {
+        "name": "etalab 2.0",
+        "uri": "https://spdx.org/licenses/etalab-2.0.html",
+        "iconUri": "https://entrepot.recherche.data.gouv.fr/assets/licence-ouverte.png"
+      },
+      "fileAccessRequest": false,
+      "metadataBlocks": {
+        "citation": {
+          "displayName": "Citation Metadata",
+          "name": "citation",
+          "fields": [
+            {
+              "typeName": "title",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "Donn\u00e9es de r\u00e9plication pour\u00a0: Increased drying threatens alpine pond biodiversity more than temperature increase in a changing climate"
+            },
+            {
+              "typeName": "datasetContact",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "datasetContactName": {
+                    "typeName": "datasetContactName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Lamouille H\u00e9bert, Marie"
+                  },
+                  "datasetContactAffiliation": {
+                    "typeName": "datasetContactAffiliation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "INRAE"
+                  },
+                  "datasetContactEmail": {
+                    "typeName": "datasetContactEmail",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "marie.lamouille-hebert@inrae.fr"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "author",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "authorName": {
+                    "typeName": "authorName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Lamouille H\u00e9bert, Marie"
+                  },
+                  "authorAffiliation": {
+                    "typeName": "authorAffiliation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "INRAE"
+                  },
+                  "authorIdentifier": {
+                    "typeName": "authorIdentifier",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "0000-0001-9433-7170"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "producer",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "producerName": {
+                    "typeName": "producerName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Lamouille H\u00e9bert, Marie"
+                  },
+                  "producerAffiliation": {
+                    "typeName": "producerAffiliation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "INRAE"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "distributor",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "distributorName": {
+                    "typeName": "distributorName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Entrep\u00f4t-Catalogue Recherche Data Gouv"
+                  },
+                  "distributorURL": {
+                    "typeName": "distributorURL",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "https://entrepot.recherche.data.gouv.fr"
+                  },
+                  "distributorLogoURL": {
+                    "typeName": "distributorLogoURL",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "https://s3.fr-par.scw.cloud/rdg-portal/logos-macarons/Macarons%20Recherche%20Data%20Gouv_Entrep%C3%B4t.png"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "dsDescription",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "dsDescriptionValue": {
+                    "typeName": "dsDescriptionValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Data repository for \u2018Increased drying threatens alpine pond biodiversity more than temperature increase in a changing climate\u2019\nPrepared by Marie Lamouille-H\u00e9bert (marie.hebert@fne-aura.org)"
+                  },
+                  "dsDescriptionLanguage": {
+                    "typeName": "dsDescriptionLanguage",
+                    "multiple": false,
+                    "typeClass": "controlledVocabulary",
+                    "value": "English"
+                  },
+                  "dsDescriptionDate": {
+                    "typeName": "dsDescriptionDate",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "2024"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "subject",
+              "multiple": true,
+              "typeClass": "controlledVocabulary",
+              "value": [
+                "Earth and Environmental Sciences"
+              ]
+            },
+            {
+              "typeName": "keyword",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "conservation"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "freshwater"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "distribution"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "occupancy"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "models"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "kindOfData",
+              "multiple": true,
+              "typeClass": "controlledVocabulary",
+              "value": [
+                "Dataset"
+              ]
+            },
+            {
+              "typeName": "publication",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "publicationRelationType": {
+                    "typeName": "publicationRelationType",
+                    "multiple": false,
+                    "typeClass": "controlledVocabulary",
+                    "value": "IsCitedBy"
+                  },
+                  "publicationCitation": {
+                    "typeName": "publicationCitation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Lamouille-H\u00e9bert, M., Arthaud, F., Besnard, A., Logez, M, Datry, T. (in prep). Increased drying threatens alpine pond biodiversity more than temperature increase in a changing climate."
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "depositor",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "Lamouille H\u00e9bert, Marie"
+            },
+            {
+              "typeName": "dateOfDeposit",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "2024-07-08"
+            }
+          ]
+        }
+      },
+      "files": [
+        {
+          "description": "coords.csv: the coordinates of the 73 ponds where there is data on the following covariates: connectivity covariates and drying gradient",
+          "label": "coords.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_73",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221914,
+            "persistentId": "doi:10.57745/D0MYXL",
+            "pidURL": "https://doi.org/10.57745/D0MYXL",
+            "filename": "coords.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 2913,
+            "description": "coords.csv: the coordinates of the 73 ponds where there is data on the following covariates: connectivity covariates and drying gradient",
+            "storageIdentifier": "inrae://prod-datainra:190910df391-10ea8392cb52",
+            "rootDataFileId": -1,
+            "md5": "45fcbf939ead41727aa8f9438bcf263f",
+            "checksum": {
+              "type": "MD5",
+              "value": "45fcbf939ead41727aa8f9438bcf263f"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "coords.csv: the coordinates of the 59 ponds where there is data on the following covariates: number of ice days ",
+          "label": "coords.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_59",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221913,
+            "persistentId": "doi:10.57745/FRF3RG",
+            "pidURL": "https://doi.org/10.57745/FRF3RG",
+            "filename": "coords.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 2358,
+            "description": "coords.csv: the coordinates of the 59 ponds where there is data on the following covariates: number of ice days ",
+            "storageIdentifier": "inrae://prod-datainra:190910b9b65-6a7cb637a6a4",
+            "rootDataFileId": -1,
+            "md5": "33ba3a7779b5ad24027caa5ed49c5b79",
+            "checksum": {
+              "type": "MD5",
+              "value": "33ba3a7779b5ad24027caa5ed49c5b79"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "coords.csv: the coordinates of the 58 ponds where there is data on the following covariates: number of dry days and temperatures",
+          "label": "coords.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_58",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221917,
+            "persistentId": "doi:10.57745/RER3EP",
+            "pidURL": "https://doi.org/10.57745/RER3EP",
+            "filename": "coords.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 2319,
+            "description": "coords.csv: the coordinates of the 58 ponds where there is data on the following covariates: number of dry days and temperatures",
+            "storageIdentifier": "inrae://prod-datainra:1909109b704-5c2faa748f6f",
+            "rootDataFileId": -1,
+            "md5": "8ab7fae8440a53142bd45ba3f53f5dd3",
+            "checksum": {
+              "type": "MD5",
+              "value": "8ab7fae8440a53142bd45ba3f53f5dd3"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "Function.R: functions script linked with the \u201cMain_script.R\u201d",
+          "label": "Function-1.R",
+          "restricted": false,
+          "directoryLabel": "code",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221905,
+            "persistentId": "doi:10.57745/ZSWD9T",
+            "pidURL": "https://doi.org/10.57745/ZSWD9T",
+            "filename": "Function-1.R",
+            "contentType": "type/x-r-syntax",
+            "filesize": 2481,
+            "description": "Function.R: functions script linked with the \u201cMain_script.R\u201d",
+            "storageIdentifier": "inrae://prod-datainra:190910851b7-c62ec2905307",
+            "rootDataFileId": -1,
+            "md5": "1667d4d2527deaf60781e1781b7f3dd6",
+            "checksum": {
+              "type": "MD5",
+              "value": "1667d4d2527deaf60781e1781b7f3dd6"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "Main_script.R: principal script to reproduce this analysis",
+          "label": "Main_script-2.R",
+          "restricted": false,
+          "directoryLabel": "code",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221907,
+            "persistentId": "doi:10.57745/WDBK9U",
+            "pidURL": "https://doi.org/10.57745/WDBK9U",
+            "filename": "Main_script-2.R",
+            "contentType": "type/x-r-syntax",
+            "filesize": 14555,
+            "description": "Main_script.R: principal script to reproduce this analysis",
+            "storageIdentifier": "inrae://prod-datainra:1909107d376-68030492486e",
+            "rootDataFileId": -1,
+            "md5": "61a95ef21fe42c3bee033a40f3c7713a",
+            "checksum": {
+              "type": "MD5",
+              "value": "61a95ef21fe42c3bee033a40f3c7713a"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "method4.csv: the different methods employed for species detection across the 59 ponds",
+          "label": "method4.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_59",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221908,
+            "persistentId": "doi:10.57745/BGRLEG",
+            "pidURL": "https://doi.org/10.57745/BGRLEG",
+            "filename": "method4.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 3544,
+            "description": "method4.csv: the different methods employed for species detection across the 59 ponds",
+            "storageIdentifier": "inrae://prod-datainra:190910ba119-e1f058e7117b",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 3563,
+            "originalFileName": "method4.csv",
+            "UNF": "UNF:6:+4nd0Q3PpJ0dbmV8iXkPZg==",
+            "rootDataFileId": -1,
+            "md5": "975cf7c76c470b512d98ed40c47d54fa",
+            "checksum": {
+              "type": "MD5",
+              "value": "975cf7c76c470b512d98ed40c47d54fa"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "method4.csv: the different methods employed for species detection across the 73 ponds",
+          "label": "method4.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_73",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221916,
+            "persistentId": "doi:10.57745/J8IBGX",
+            "pidURL": "https://doi.org/10.57745/J8IBGX",
+            "filename": "method4.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 4380,
+            "description": "method4.csv: the different methods employed for species detection across the 73 ponds",
+            "storageIdentifier": "inrae://prod-datainra:190910df9ee-af5ab6bec419",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 4385,
+            "originalFileName": "method4.csv",
+            "UNF": "UNF:6:SHrbHOWebR1sHIXzZucCLA==",
+            "rootDataFileId": -1,
+            "md5": "096598dfbf35f63a0381b87d0b59c169",
+            "checksum": {
+              "type": "MD5",
+              "value": "096598dfbf35f63a0381b87d0b59c169"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "method4.csv: the different methods employed for species detection across the 58 ponds",
+          "label": "method4.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_58",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221909,
+            "persistentId": "doi:10.57745/AZOITU",
+            "pidURL": "https://doi.org/10.57745/AZOITU",
+            "filename": "method4.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 3484,
+            "description": "method4.csv: the different methods employed for species detection across the 58 ponds",
+            "storageIdentifier": "inrae://prod-datainra:190910a85c8-5a7b71936f2e",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 3504,
+            "originalFileName": "method4.csv",
+            "UNF": "UNF:6:mi4anbXvXn0fQeH/0lMgWw==",
+            "rootDataFileId": -1,
+            "md5": "1d65e9a3060315a9867a7674472d3c23",
+            "checksum": {
+              "type": "MD5",
+              "value": "1d65e9a3060315a9867a7674472d3c23"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "occ.cov_2.csv: the values of the different covariates across the 58 ponds: number of dry days and temperature covariates",
+          "label": "occ.cov_2.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_58",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221900,
+            "persistentId": "doi:10.57745/W6JVGR",
+            "pidURL": "https://doi.org/10.57745/W6JVGR",
+            "filename": "occ.cov_2.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 2017,
+            "description": "occ.cov_2.csv: the values of the different covariates across the 58 ponds: number of dry days and temperature covariates",
+            "storageIdentifier": "inrae://prod-datainra:190910a87ee-ce37fa5aba94",
+            "rootDataFileId": -1,
+            "md5": "1e55f924c0bf49cf44217fffe12d06ba",
+            "checksum": {
+              "type": "MD5",
+              "value": "1e55f924c0bf49cf44217fffe12d06ba"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "occ.cov_2.csv: the values of the different covariates across the 73 ponds: connectivity and drying gradient",
+          "label": "occ.cov_2.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_73",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221904,
+            "persistentId": "doi:10.57745/6IZRD5",
+            "pidURL": "https://doi.org/10.57745/6IZRD5",
+            "filename": "occ.cov_2.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 22420,
+            "description": "occ.cov_2.csv: the values of the different covariates across the 73 ponds: connectivity and drying gradient",
+            "storageIdentifier": "inrae://prod-datainra:190910decc1-995640092f80",
+            "rootDataFileId": -1,
+            "md5": "335bcd1aa2614ea719ef8b1691541cab",
+            "checksum": {
+              "type": "MD5",
+              "value": "335bcd1aa2614ea719ef8b1691541cab"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "occ.cov_2.csv: the values of the different covariates across the 59 ponds: number of ice days",
+          "label": "occ.cov_2.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_59",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221912,
+            "persistentId": "doi:10.57745/EN6ISQ",
+            "pidURL": "https://doi.org/10.57745/EN6ISQ",
+            "filename": "occ.cov_2.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 1414,
+            "description": "occ.cov_2.csv: the values of the different covariates across the 59 ponds: number of ice days",
+            "storageIdentifier": "inrae://prod-datainra:190910b9568-d3652c959a26",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 1378,
+            "originalFileName": "occ.cov_2.csv",
+            "UNF": "UNF:6:9aeknPTensJysmKYGNuNJQ==",
+            "rootDataFileId": -1,
+            "md5": "f8370b79b78948439609e036fc5d485a",
+            "checksum": {
+              "type": "MD5",
+              "value": "f8370b79b78948439609e036fc5d485a"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "README_Technical_documentation_CCeffectsonAP_LamouilleHebertetal2024.pdf : documentation for this repository",
+          "label": "README_Technical_documentation_CCeffectsonAP_LamouilleHebertetal2024.docx",
+          "restricted": false,
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221906,
+            "persistentId": "doi:10.57745/GEWQEF",
+            "pidURL": "https://doi.org/10.57745/GEWQEF",
+            "filename": "README_Technical_documentation_CCeffectsonAP_LamouilleHebertetal2024.docx",
+            "contentType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "filesize": 18464,
+            "description": "README_Technical_documentation_CCeffectsonAP_LamouilleHebertetal2024.pdf : documentation for this repository",
+            "storageIdentifier": "inrae://prod-datainra:190910476f4-63538460432f",
+            "rootDataFileId": -1,
+            "md5": "518e4413edf6ed978756b9e6b60c46c5",
+            "checksum": {
+              "type": "MD5",
+              "value": "518e4413edf6ed978756b9e6b60c46c5"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "Scenari.csv: The list of 104 models created and utilized to run the script",
+          "label": "Scenari.csv",
+          "restricted": false,
+          "directoryLabel": "data",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221901,
+            "persistentId": "doi:10.57745/D5R4FO",
+            "pidURL": "https://doi.org/10.57745/D5R4FO",
+            "filename": "Scenari.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 11768,
+            "description": "Scenari.csv: The list of 104 models created and utilized to run the script",
+            "storageIdentifier": "inrae://prod-datainra:1909108f65f-6bbbd6021d96",
+            "rootDataFileId": -1,
+            "md5": "3385522a0e9f8a409a63591b923f3d3a",
+            "checksum": {
+              "type": "MD5",
+              "value": "3385522a0e9f8a409a63591b923f3d3a"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "session4.csv: the temporal replicates employed for species detection across the 73 ponds",
+          "label": "session4.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_73",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221910,
+            "persistentId": "doi:10.57745/VMC8KV",
+            "pidURL": "https://doi.org/10.57745/VMC8KV",
+            "filename": "session4.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 5256,
+            "description": "session4.csv: the temporal replicates employed for species detection across the 73 ponds",
+            "storageIdentifier": "inrae://prod-datainra:190910def30-cf3f176ec76b",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 5303,
+            "originalFileName": "session4.csv",
+            "UNF": "UNF:6:pDP7Bsvnl2tPskwABRcnnQ==",
+            "rootDataFileId": -1,
+            "md5": "c26b2b8686e81cc07a957d30102e98aa",
+            "checksum": {
+              "type": "MD5",
+              "value": "c26b2b8686e81cc07a957d30102e98aa"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "session4.csv: the temporal replicates employed for species detection across the 59 ponds",
+          "label": "session4.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_59",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221902,
+            "persistentId": "doi:10.57745/QPGNAV",
+            "pidURL": "https://doi.org/10.57745/QPGNAV",
+            "filename": "session4.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 4252,
+            "description": "session4.csv: the temporal replicates employed for species detection across the 59 ponds",
+            "storageIdentifier": "inrae://prod-datainra:190910b978d-b82bc7ade0c5",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 4313,
+            "originalFileName": "session4.csv",
+            "UNF": "UNF:6:AF5/qAT1xMHV1adCODItzw==",
+            "rootDataFileId": -1,
+            "md5": "b26871a97d3edbf6cdfad9e5c4320084",
+            "checksum": {
+              "type": "MD5",
+              "value": "b26871a97d3edbf6cdfad9e5c4320084"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "session4.csv: the temporal replicates employed for species detection across the 58 ponds",
+          "label": "session4.tab",
+          "restricted": false,
+          "directoryLabel": "data/N_58",
+          "version": 3,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221911,
+            "persistentId": "doi:10.57745/CQ5EBA",
+            "pidURL": "https://doi.org/10.57745/CQ5EBA",
+            "filename": "session4.tab",
+            "contentType": "text/tab-separated-values",
+            "filesize": 4180,
+            "description": "session4.csv: the temporal replicates employed for species detection across the 58 ponds",
+            "storageIdentifier": "inrae://prod-datainra:190910a89c6-cf5bc8adb563",
+            "originalFileFormat": "text/comma-separated-values",
+            "originalFormatLabel": "Comma Separated Values",
+            "originalFileSize": 4242,
+            "originalFileName": "session4.csv",
+            "UNF": "UNF:6:kB2NHggxuaiTKuscQEocRQ==",
+            "rootDataFileId": -1,
+            "md5": "bda408906d25aa6a5946fc84d2505221",
+            "checksum": {
+              "type": "MD5",
+              "value": "bda408906d25aa6a5946fc84d2505221"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv: the species detection-non-detection matrix for the 59 sampled ponds.",
+          "label": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_59",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221903,
+            "persistentId": "doi:10.57745/Y2FDKY",
+            "pidURL": "https://doi.org/10.57745/Y2FDKY",
+            "filename": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 30161,
+            "description": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv: the species detection-non-detection matrix for the 59 sampled ponds.",
+            "storageIdentifier": "inrae://prod-datainra:190910b9986-7beca12efe74",
+            "rootDataFileId": -1,
+            "md5": "ba9483bc85b3549b8f8355aabab065eb",
+            "checksum": {
+              "type": "MD5",
+              "value": "ba9483bc85b3549b8f8355aabab065eb"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv: the species detection-non-detection matrix for the 58 sampled ponds.",
+          "label": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_58",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221915,
+            "persistentId": "doi:10.57745/KKDHMJ",
+            "pidURL": "https://doi.org/10.57745/KKDHMJ",
+            "filename": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 29770,
+            "description": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv: the species detection-non-detection matrix for the 58 sampled ponds.",
+            "storageIdentifier": "inrae://prod-datainra:190910a8f4c-51116822e845",
+            "rootDataFileId": -1,
+            "md5": "4f8211c27f277fd4a2c69b9830524d1b",
+            "checksum": {
+              "type": "MD5",
+              "value": "4f8211c27f277fd4a2c69b9830524d1b"
+            },
+            "creationDate": "2024-07-08"
+          }
+        },
+        {
+          "description": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv: the species detection-non-detection matrix for the 73 sampled ponds.",
+          "label": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv",
+          "restricted": false,
+          "directoryLabel": "data/N_73",
+          "version": 1,
+          "datasetVersionId": 272815,
+          "dataFile": {
+            "id": 221899,
+            "persistentId": "doi:10.57745/CYYMEU",
+            "pidURL": "https://doi.org/10.57745/CYYMEU",
+            "filename": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv",
+            "contentType": "text/comma-separated-values",
+            "filesize": 35804,
+            "description": "TableAnalyse_RNN74_Odo_Amphi_Macrophytes_sitesOK.csv: the species detection-non-detection matrix for the 73 sampled ponds.",
+            "storageIdentifier": "inrae://prod-datainra:190910df156-79b937802022",
+            "rootDataFileId": -1,
+            "md5": "d0263149585b11a04c1fae5c9fca21db",
+            "checksum": {
+              "type": "MD5",
+              "value": "d0263149585b11a04c1fae5c9fca21db"
+            },
+            "creationDate": "2024-07-08"
+          }
+        }
+      ]
+    }
+  }
+}

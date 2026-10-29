@@ -1,3 +1,5 @@
+> 最新更新：[2026-10-29追加検証とゲート判定](NEE_FOLLOWUP_AND_GATE_UPDATE_2026-10-29.md)、[統合作業稿](working_20261029/MANUSCRIPT_JA.md)。以下の方針・履歴を保持し、到達点は最新更新で判断する。
+
 # High-impact single-paper strategy: frogcs macroecology × stage-structured mechanism
 
 **Decision date: 2026-10-27 (JST). Editorial roadmap only; no empirical result added, no manuscript submitted.** Current source of truth: `main` at source commit `a817d41425902b1778f4c3c26059eebb112146f2`. Current paper: [two-part working manuscript](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) and [final conditional mechanism comparison](FINAL_MECHANISM_COMPARISON_2026-10-27.md). RC6 remains a historical motivating acoustic analysis, not the headline result, separate publication, or supposed independent replication.
@@ -63,6 +65,8 @@ Compare a small, predeclared **minimal mechanism family** (shared-environment-on
 RC6 within-taxon spatial concentration goes in the **Introduction as historical motivation, not Results Figure 1**; its original frozen release refs and reproducibility payload remain unchanged.
 
 ## Current decision
+
+**2026-10-29 evidence update:** [Public-data calibration and independent pond audit](PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md) and [fixed-model compatibility](MODEL_MACRO_COMPATIBILITY_UPDATE_2026-10-29.md) supersede the requirement to force a positive three-way sign in a revised analysis. The original positive estimate remains recorded above. The fully adjusted estimate has an interval including zero and a small negative synthetic coefficient, so the updated target is the full uncertain coefficient vector on calibrated observation scales, not the old sign alone. This reduces one apparent contradiction but does not establish model fit; G2/G3 remain unmet. No simulator retuning was performed.
 
 **Journal target for research design:** Nature Ecology & Evolution Article (high-risk stretch). **Next alternative:** Ecology Letters Letter, depending on actual evidence outcome. PNAS/Nature Communications remain context-dependent alternatives. **NOT currently submission-ready at any of these tiers.**
 

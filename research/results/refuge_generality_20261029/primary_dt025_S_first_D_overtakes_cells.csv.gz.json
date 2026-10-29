@@ -1,0 +1,43 @@
+{
+  "computation": {
+    "dt": 0.25,
+    "years": 80,
+    "window": 20,
+    "conversion": 4.0,
+    "demography": {
+      "survival": [
+        0.4,
+        0.5,
+        0.0
+      ],
+      "conversion": [
+        4.0,
+        4.0,
+        4.0
+      ],
+      "juvenile": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "delays": [
+        2,
+        2,
+        1
+      ],
+      "capacity": 1.0,
+      "initial_scale": 1.0
+    },
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "source_hashes": {
+      "run_refuge_generality.py": "a363650fdb6f3c47aab81d38554e997cfe6c7c0e403c8ebf41c10f75f399b254",
+      "refuge_response_20261029.py": "c5042b3e3c95757d38c3f380ec22f06df93f9d3bd6c82a080ccb1a9480633953",
+      "stage_refuge_generality_20261029.py": "f3a48e028b8e29dbc92ebad46d3862c33cc330f37bf47f54b7a5ec39811bb98c",
+      "refuge_annual_summary_20261029.py": "f338e550abfe60d86a34e67a142780fa4a8d80561ec0f7785b75452dd77b82d5",
+      "multiyear_stage_network.py": "d22371a8e00f574b3f0f829ab89064c0f3e4060b2021351a4628a0e1dc323b22",
+      "run_literature_extension.py": "b1e30fa60226218271ed078fced1e49ff1b31ab3c76d65c5951cc783a67aeaa8"
+    }
+  },
+  "output_sha256": "9a8c8985da1f42cbe6b487b541efff602c8b6943a78419074de4fbe3fc73d2ed"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "source": "Uno et al. 2025 author Dryad metadata",
+    "url": "https://datadryad.org/dataset/doi:10.5061/dryad.gmsbcc2xh",
+    "checked_jst": "2026-10-29",
+    "unit": "site x season",
+    "coverage": "25 waterbodies, three seasons",
+    "amphibian_measure": "larval presence/absence, not density",
+    "calling": false,
+    "raw_acquired": false,
+    "raw_downloads": [
+      {
+        "url": "https://datadryad.org/downloads/file_stream/3806214",
+        "status": 403
+      },
+      {
+        "url": "https://datadryad.org/downloads/file_stream/3806215",
+        "status": 403
+      },
+      {
+        "url": "https://datadryad.org/downloads/file_stream/3806222",
+        "status": 403
+      }
+    ],
+    "join_verified": false
+  },
+  {
+    "source": "BayesFR author documentation for Hossie and Murray 2010 FoRAGE data",
+    "url": "https://benjamin-rosenbaum.github.io/BayesFR/Tutorial_02.html",
+    "checked_jst": "2026-10-29",
+    "unit": "feeding trial",
+    "raw_acquired": false,
+    "three_guild": false,
+    "independent_of_prior_model_selection": false,
+    "reason": "Study already informed functional-response mechanism; no prey replacement requires depletion-aware likelihood"
+  }
+]

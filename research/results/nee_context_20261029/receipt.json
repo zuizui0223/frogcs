@@ -1,0 +1,27 @@
+{
+  "seed": 20261029,
+  "bootstrap": 999,
+  "reference_cohort": 4248,
+  "models": 84,
+  "focal_tests": 336,
+  "source_commit": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "inputs": [
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz",
+      "sha256": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz",
+      "sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c"
+    }
+  ],
+  "point_replay": true,
+  "limits": [
+    "Fixed-cohort ranks; bootstrap does not refit SDMs",
+    "Geographic sensitivity is not independent validation",
+    "Survey controls do not estimate detection probability",
+    "BH applies to the new focal interaction family only",
+    "Climate/space adjustment does not identify predation",
+    "Between-route products are averages of site products, not products of route means"
+  ]
+}

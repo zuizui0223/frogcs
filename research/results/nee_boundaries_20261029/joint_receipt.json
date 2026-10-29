@@ -1,0 +1,14 @@
+{
+  "replicates": 49,
+  "nuisance": "300 ExtraTrees,leaf20,5 spatial folds; every draw refitted",
+  "site_bootstrap_seed": 20261030,
+  "sdm_bootstrap_seed": 20261029,
+  "independent_resampling_layers": true,
+  "rank_reference": "fixed cohort; guild ranks recomputed per SDM draw",
+  "limits": [
+    "49 draws characterize stability, not precise interval tails",
+    "One nuisance specification",
+    "Missing data bias, structural SDM choices, measurement error and calling-density mapping not covered",
+    "Not external validation"
+  ]
+}

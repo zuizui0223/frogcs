@@ -1,0 +1,147 @@
+{
+  "_links": {
+    "self": {
+      "href": "/api/v2/versions/341259/files"
+    },
+    "first": {
+      "href": "/api/v2/versions/341259/files"
+    },
+    "last": {
+      "href": "/api/v2/versions/341259/files?page=1"
+    }
+  },
+  "count": 4,
+  "total": 4,
+  "_embedded": {
+    "stash:files": [
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v2/files/3806214"
+          },
+          "stash:dataset": {
+            "href": "/api/v2/datasets/doi%3A10.5061%2Fdryad.gmsbcc2xh"
+          },
+          "stash:version": {
+            "href": "/api/v2/versions/341259"
+          },
+          "stash:files": {
+            "href": "/api/v2/versions/341259/files"
+          },
+          "stash:download": {
+            "href": "/api/v2/files/3806214/download"
+          },
+          "curies": [
+            {
+              "name": "stash",
+              "href": "https://github.com/datadryad/dryad-app/blob/main/documentation/apis/link_relations.md#{rel}",
+              "templated": "true"
+            }
+          ]
+        },
+        "path": "2021onlyseasonalUryu_comm_update2.csv",
+        "size": 21761,
+        "mimeType": "text/csv",
+        "status": "copied",
+        "digest": "df063157c030db4a3561506f370be724a013829936c9af592a6c20b0ddf7ac8a",
+        "digestType": "sha-256"
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v2/files/3806215"
+          },
+          "stash:dataset": {
+            "href": "/api/v2/datasets/doi%3A10.5061%2Fdryad.gmsbcc2xh"
+          },
+          "stash:version": {
+            "href": "/api/v2/versions/341259"
+          },
+          "stash:files": {
+            "href": "/api/v2/versions/341259/files"
+          },
+          "stash:download": {
+            "href": "/api/v2/files/3806215/download"
+          },
+          "curies": [
+            {
+              "name": "stash",
+              "href": "https://github.com/datadryad/dryad-app/blob/main/documentation/apis/link_relations.md#{rel}",
+              "templated": "true"
+            }
+          ]
+        },
+        "path": "2021seasonalUryu_chemistryFINAL.csv",
+        "size": 5491,
+        "mimeType": "text/csv",
+        "status": "copied",
+        "digest": "4c40d46e8b1b31858df27c5d82830ab16a6917ca7a4e1ea154a1680cfdc5efa2",
+        "digestType": "sha-256"
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v2/files/3806222"
+          },
+          "stash:dataset": {
+            "href": "/api/v2/datasets/doi%3A10.5061%2Fdryad.gmsbcc2xh"
+          },
+          "stash:version": {
+            "href": "/api/v2/versions/341259"
+          },
+          "stash:files": {
+            "href": "/api/v2/versions/341259/files"
+          },
+          "stash:download": {
+            "href": "/api/v2/files/3806222/download"
+          },
+          "curies": [
+            {
+              "name": "stash",
+              "href": "https://github.com/datadryad/dryad-app/blob/main/documentation/apis/link_relations.md#{rel}",
+              "templated": "true"
+            }
+          ]
+        },
+        "path": "2021seasonalUryu_connectivityFINAL.csv",
+        "size": 1364,
+        "mimeType": "text/csv",
+        "status": "created",
+        "digest": "2543c605d314004dd5a666940c462256621881ad2a0b65f225c84e2827acdd17",
+        "digestType": "sha-256"
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "/api/v2/files/3806217"
+          },
+          "stash:dataset": {
+            "href": "/api/v2/datasets/doi%3A10.5061%2Fdryad.gmsbcc2xh"
+          },
+          "stash:version": {
+            "href": "/api/v2/versions/341259"
+          },
+          "stash:files": {
+            "href": "/api/v2/versions/341259/files"
+          },
+          "stash:download": {
+            "href": "/api/v2/files/3806217/download"
+          },
+          "curies": [
+            {
+              "name": "stash",
+              "href": "https://github.com/datadryad/dryad-app/blob/main/documentation/apis/link_relations.md#{rel}",
+              "templated": "true"
+            }
+          ]
+        },
+        "path": "README.md",
+        "size": 2834,
+        "mimeType": "text/markdown",
+        "status": "copied",
+        "digest": "afca011e5bba13ed9990c0ab5aac8513f1bb002b5bcd91ad8b942dc738ae96a6",
+        "digestType": "sha-256"
+      }
+    ]
+  }
+}

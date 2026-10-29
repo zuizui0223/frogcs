@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?><eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="doi:10.5063/F1RX99KB" system="https://arcticdata.io" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+  <dataset id="urn-uuid-0f75ef8d-5aa9-4439-bd2c-74fa720218ba"><title>The FoRAGE (Functional Responses from Around the Globe in all Ecosystems) database: a compilation of functional responses for consumers and parasitoids, V5 (2024).</title><creator id="2573060642149793">
+      <individualName><givenName>John</givenName><surName>DeLong</surName></individualName><organizationName>University of Nebraska - Lincoln</organizationName><positionName>Associate Professor</positionName>
+      
+      
+      <address><deliveryPoint>410A Manter Hall</deliveryPoint>
+        
+        <city>Lincoln</city>
+        <administrativeArea>NE</administrativeArea>
+        <postalCode>68588</postalCode>
+        <country>USA</country>
+      </address><phone phonetype="voice">(402) 472 - 7752</phone><electronicMailAddress>jpdelong@unl.edu</electronicMailAddress><onlineUrl>johnpauldelong.weebly.com</onlineUrl>
+      
+      
+      
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-0558-8213</userId>
+    </creator><creator id="5615919212310163">
+      <individualName><givenName>Stella</givenName><surName>Uiterwaal</surName></individualName><organizationName>University of Nebraska - Lincoln</organizationName><electronicMailAddress>suiterwaal@huskers.unl.edu</electronicMailAddress>
+      
+      
+    </creator><pubDate>2018</pubDate>
+    
+    
+    
+    
+    <abstract><para>This dataset contains 3,013 functional responses for all types of consumers from around the globe. We obtained original functional response curves from publications, standardized the spatial and temporal units of prey density and foraging rate, and refit the curves using standardized methods. The functional response data are augmented with additional information on the habitat and dimensionality of the foraging interaction, predator and prey types and body masses, temperature, and size of the experimental unit. The purpose of the dataset is to provide a global view on the magnitude of predator-prey interaction strengths and to identify the main drivers of variation in functional responses. The FoRAGE database is a living dataset and is intended to be expanded upon the acquisition of additional functional responses. This is the second 2023 update, v4, that includes 139 new rows, additional mass estimates, and a handful of corrections from v3.</para></abstract><keywordSet><keyword>Functional response</keyword><keyword>Interaction strength</keyword><keyword>Predator prey interaction</keyword><keyword>Foraging rate</keyword><keywordThesaurus>None</keywordThesaurus></keywordSet>
+    
+    <intellectualRights><para>This work is dedicated to the public domain under the Creative Commons Universal 1.0 Public Domain Dedication. To view a copy of this dedication, visit https://creativecommons.org/publicdomain/zero/1.0/.</para></intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Data represent foraging interactions from around the world.</geographicDescription>
+        <boundingCoordinates><westBoundingCoordinate>0</westBoundingCoordinate><eastBoundingCoordinate>0</eastBoundingCoordinate><northBoundingCoordinate>0</northBoundingCoordinate><southBoundingCoordinate>0</southBoundingCoordinate></boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage><singleDateTime><calendarDate>2018</calendarDate></singleDateTime></temporalCoverage>
+      <taxonomicCoverage><generalTaxonomicCoverage>All foraging interactions of any taxonomic type were included.</generalTaxonomicCoverage><taxonomicClassification><taxonRankName>domain</taxonRankName><taxonRankValue>Eukarya</taxonRankValue></taxonomicClassification></taxonomicCoverage>
+    </coverage><annotation><propertyURI label="Data Sensitivity Category">http://purl.dataone.org/odo/SENSO_00000005</propertyURI><valueURI label="Non-sensitive data">http://purl.dataone.org/odo/SENSO_00000002</valueURI></annotation><contact id="9627464078022664">
+      <individualName><givenName>John</givenName><surName>DeLong</surName></individualName><electronicMailAddress>jpdelong@unl.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0003-0558-8213</userId>
+    </contact><methods><methodStep>
+        <description>
+          <para>Functional response curves were extracted from the literature, converted to standardized units, and refit using standardized methods. See associated data paper.</para>
+        </description>
+      </methodStep>
+      
+    </methods><project>
+      <title>The FoRAGE (Functional Responses from Around the Globe in all Ecosystems) database: a compilation of functional responses for consumers and parasitoids</title>
+      <personnel id="1129187675850135">
+        <individualName>
+          <givenName>John</givenName>
+          <surName>DeLong</surName>
+        </individualName>
+        <organizationName>University of Nebraska - Lincoln</organizationName>
+        <positionName>Associate Professor</positionName>
+        <role>principalInvestigator</role>
+      </personnel>
+      <personnel id="5936555418906097">
+        <individualName>
+          <givenName>Stella</givenName>
+          <surName>Uiterwaal</surName>
+        </individualName>
+        <organizationName>University of Nebraska - Lincoln</organizationName>
+        <role>principalInvestigator</role>
+      </personnel>
+      <funding>
+        
+        
+        
+      <para>James S. McDonnell Foundation Studying Complex Systems Scholar Award</para><para>Binational Science Foundation grant number 2014295</para><para>Graduate Research Fellowships Program (DGE-1610400)</para></funding>
+    </project><otherEntity id="urn-uuid-f4fab29f-ff87-4eb3-92b4-d2b0fcb519a6">
+      <entityName>FoRAGE_db_V5_Dec_20_2024_sources_and_meta</entityName>
+      <entityDescription>Type II functional response parameters for 3229 predator-prey and parasitoid-host interactions, along with associated data on the habitat and dimensionality of the interaction, the predator and prey type and body mass, temperature, and size of experimental arenas. This is the 2024 update.</entityDescription>
+      <attributeList>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      <attribute id="P3d02y1TZ4sdWOwmhgZkapJ6IArbcM">
+          <attributeName>Data set</attributeName><attributeLabel>Data set</attributeLabel>
+          
+          <attributeDefinition>Unique ID number for each functional response curve which matches to data in the original curves file.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="kMboEdvTPFkdExZns9URhUNszgEPbd">
+          <attributeName>Source</attributeName><attributeLabel>Source</attributeLabel>
+          
+          <attributeDefinition>Publication from which the functional response was obtained</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="CmUlTWIUNI7r1Wu4zQFwu97SWJcFAJ">
+          <attributeName>Type of consumer (predator or parasitoid)</attributeName><attributeLabel>Predation or Parasitism</attributeLabel>
+          
+          <attributeDefinition>Type of consumer-resource interaction, either “Pred” for a predator-prey relationship or “Par” for a parasitoid-host relationship.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="xWLXavJdy0velISvGE3EbSBtfZmKTy">
+          <attributeName>Dim</attributeName><attributeLabel>Foraging dimension</attributeLabel>
+          
+          <attributeDefinition>Dimensions in which the functional response was produced. 2.5 indicates neither a purely 2-dimensional nor a purely 3-dimensional interaction (e.g. foraging on living plants or spider webs)</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="vLPmEmf1zIPkQlkJVRsGe1G4hbMIM9">
+          <attributeName>Field?</attributeName><attributeLabel>Field setting?</attributeLabel>
+          
+          <attributeDefinition>Whether the functional response was obtained from the field (designated 'Y') or experimentally in a laboratory (blank).</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="Tff807txZe3azmKZZsublRSFbvkAuw">
+          <attributeName>Habitat</attributeName><attributeLabel>Habitat</attributeLabel>
+          
+          <attributeDefinition>Interactions that occur in aquatic or terrestrial habitats</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="IGg1VgAVVT4Qske5qJi1ASKhutl3bT">
+          <attributeName>Fresh or Marine</attributeName><attributeLabel>Fresh or marine</attributeLabel>
+          
+          <attributeDefinition>Salinity of the water in which the functional response was performed, either freshwater or marine.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="7QaSDZW0ckedR3Iww6DMm2v5Hmu2iP">
+          <attributeName>Predator cellularity</attributeName><attributeLabel>Predator cellularity</attributeLabel>
+          
+          <attributeDefinition>Cellularity of the consumer, either metazoan or unicellular.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="EXTkVbICN9yP4GQvZPy3465zMtEXyk">
+          <attributeName>Vert/invert</attributeName><attributeLabel>Vertebrate, invertebrate, or protozoan</attributeLabel>
+          
+          <attributeDefinition>Whether the consumer is a vertebrate, invertebrate, or protozoan.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="GSOGndXeLrd081vhUnk7xm1uIZ8Kfk">
+          <attributeName>Major grouping 1</attributeName><attributeLabel>Predator major grouping 1</attributeLabel>
+          
+          <attributeDefinition>Broad taxonomic group of the consumer.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="MdV6sMt1MFWHm54typEaQXqTyPxMTo">
+          <attributeName>Major grouping 2</attributeName><attributeLabel>Predator major grouping 2</attributeLabel>
+          
+          <attributeDefinition>Narrower taxonomic group of the consumer.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="2Wp07syK5RuNM4tTRxgUFnt8VEggkJ">
+          <attributeName>Predator scientific name</attributeName><attributeLabel>Predator scientific name</attributeLabel>
+          
+          <attributeDefinition>Predator scientific name</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="PwDft2sdVqywTVBfmmfi3gZpVnTlaA">
+          <attributeName>Predator type</attributeName><attributeLabel>Predator type</attributeLabel>
+          
+          <attributeDefinition>Additional information about consumer identity, such as sex or age.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="VK6FbR1Ii6wruLXBtkJs2n28l8IIZ8">
+          <attributeName>Trophic level predator</attributeName><attributeLabel>Trophic level predator</attributeLabel>
+          
+          <attributeDefinition>Trophic level of the predator</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="tX7dftlOudUGZXknL5EMmdALkD5fTJ">
+          <attributeName>Prey cellularity</attributeName><attributeLabel>Prey cellularity</attributeLabel>
+          
+          <attributeDefinition>Cellularity of the resource, either metazoan, unicellular, or non living food.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="TgoKBZ3KzEcpUTLrcfpuQxDgGu7NCw">
+          <attributeName>Vert/invert</attributeName><attributeLabel>Vert/invert</attributeLabel>
+          
+          <attributeDefinition>Whether the resource is a vertebrate, invertebrate, or protozoan.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="xtErgInAu081dDEf27wClGUGqZMbqT">
+          <attributeName>Major grouping 1</attributeName><attributeLabel>Major grouping 1</attributeLabel>
+          
+          <attributeDefinition>Broad taxonomic group of the resource</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="zeFwc8DWVkgOAWCuFCJtcTSmIK4MVw">
+          <attributeName>Major grouping 2</attributeName><attributeLabel>Major grouping 2</attributeLabel>
+          
+          <attributeDefinition>Narrower taxonomic group of the resource.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="9rTTES1kPrXN7tTFX2MK3i57iECsWg">
+          <attributeName>Prey</attributeName><attributeLabel>Prey</attributeLabel>
+          
+          <attributeDefinition>Common name or other descriptor of resource.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="l5FAcG7Vzg1UQcQMlo9UnuAnPg0m4H">
+          <attributeName>Prey scientific name</attributeName><attributeLabel>Prey scientific name</attributeLabel>
+          
+          <attributeDefinition>Prey scientific name</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="HfweybGIfVbXHD4lTTX0wdTEe4beHo">
+          <attributeName>Prey type</attributeName><attributeLabel>Prey type</attributeLabel>
+          
+          <attributeDefinition>Additional information about resource identity, such as sex or age.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="ySyBTQfRTZGMVFse5quoymnksl4mJ6">
+          <attributeName>Trophic level prey</attributeName><attributeLabel>Trophic level prey</attributeLabel>
+          
+          <attributeDefinition>Trophic level of the prey</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="Nuzp0nPnf8aoqdw8wTxnuvt1bczsah">
+          <attributeName>Data is</attributeName><attributeLabel>Data type</attributeLabel>
+          
+          <attributeDefinition>Format of the data as presented in the original source, either mean (average foraging rates for given densities) or point (data points each corresponding to a single foraging rate).</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="rCyCanabVsVFWf51kUGPGEluOaLo46">
+          <attributeName>Prey replaced?</attributeName><attributeLabel>Prey replaced?</attributeLabel>
+          
+          <attributeDefinition>Whether consumed resources were replaced throughout the experiment (Y/N).</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="KNNSE2xHQeKlEhSnD8ufBggfu63ed2">
+          <attributeName>Hours starved</attributeName><attributeLabel>Hours starved</attributeLabel>
+          
+          <attributeDefinition>How many hours did the experimenters starve the predators before initiating trials.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>hour</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="P2wxbTd6bsE186RJtXG8eb3KTxLSiT">
+          <attributeName>Temp (C )</attributeName><attributeLabel>Temp (C )</attributeLabel>
+          
+          <attributeDefinition>Temperature during the foraging trial in C. If the consumer was an endotherm, we used body temperature of 37C for mammal and 42C for birds</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>celsius</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale><annotation><propertyURI label="contains measurements of type">http://ecoinformatics.org/oboe/oboe.1.2/oboe-core.owl#containsMeasurementsOfType</propertyURI><valueURI label="near surface air temperature">http://purl.dataone.org/odo/ECSO_00003057</valueURI></annotation>
+        </attribute><attribute id="SE8utNc9nN0DBITEcIAEu3koecu7pn">
+          <attributeName>Interference</attributeName><attributeLabel>Interference</attributeLabel>
+          
+          <attributeDefinition>Whether the study explicitly looked at the effect of predator abundance on the functional response, and therefore have multiple original curves for different numbers of predators. These are connected by a Y.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="ZyKPBROMpoFcm5WTXqWa3PTPhpw6km">
+          <attributeName>Pred per arena</attributeName><attributeLabel>Pred per arena</attributeLabel>
+          
+          <attributeDefinition>How many predators were in the foraging arena</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="8eWgVPaALbesOKS0SHT5vJRO3pQGZ0">
+          <attributeName>2D Arena size (cm2)</attributeName><attributeLabel>2D Arena size (cm2)</attributeLabel>
+          
+          <attributeDefinition>Size of the foraging arena in cm^2, generally the area of the arena bottom.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="T4ZXmHJB5LoQNEoDtJcapPeOvUIB7y">
+          <attributeName>3D arena size (cm3)</attributeName><attributeLabel>3D arena size (cm3)</attributeLabel>
+          
+          <attributeDefinition>Size of the foraging arena in cm^3</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="9pr4CUWwTssBMENiFovOlZ3xp7KWeN">
+          <attributeName>Predator mass (mg)</attributeName><attributeLabel>Predator mass (mg)</attributeLabel>
+          
+          <attributeDefinition>Body mass of the predator in mg</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>milligram</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="F6MzQxZncXqehPNRbeKSCGA0k83x1C">
+          <attributeName>Predator mass source code</attributeName><attributeLabel>Predator mass source code</attributeLabel>
+          
+          <attributeDefinition>How body mass was estimated.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="qmhsTqTpQFq64gnNfNKGF9wB42VR03">
+          <attributeName>Predator mass identifier</attributeName><attributeLabel>Predator mass identifier</attributeLabel>
+          
+          <attributeDefinition>For that predator species, identifier of which estimate was used.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="KkbUyQxNCiUUVIcxzTvz8Kc7KvG5C8">
+          <attributeName>Prey mass (mg)</attributeName><attributeLabel>Prey mass</attributeLabel>
+          
+          <attributeDefinition>Body mass of the prey in mg</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>milligram</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="0MUnPplVdVr9W9JPGyvr142SgCsExQ">
+          <attributeName>Prey mass source code</attributeName><attributeLabel>Prey mass source code</attributeLabel>
+          
+          <attributeDefinition>How body mass was estimated.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="66XNBHe0o0I3XR6HryMvDbEGzCyBoz">
+          <attributeName>Prey mass identifier</attributeName><attributeLabel>Prey mass identifier</attributeLabel>
+          
+          <attributeDefinition>For that prey species, identifier of which estimate was used.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="2xGpUsNe4Ub0ZWPXIuyLQw39OgRhrv">
+          <attributeName>Mean R2 of fits</attributeName><attributeLabel>Mean R2 of fits</attributeLabel>
+          
+          <attributeDefinition>Mean R squared across all bootstrapped fits.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="w6kR24Df5zvOhcI1qvH1imHkznm1dA">
+          <attributeName>Fitted a</attributeName><attributeLabel>Fitted a</attributeLabel>
+          
+          <attributeDefinition>Median estimate of space clearance rate</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="lXHK6z8dPNAJRZE6TCOK6sdrlgZ9QW">
+          <attributeName>CI a low</attributeName><attributeLabel>CI a low</attributeLabel>
+          
+          <attributeDefinition>The lower 95% confidence interval on the estimate of a in units of either m^2 or m^2.5 or m^3 per predator per day</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="X343I2FAGHSXo6u8ZryPHFXgwK0LlT"><attributeName>CI a hi</attributeName><attributeLabel>CI a hi</attributeLabel><attributeDefinition>The upper 95% confidence interval on the estimate of a in units of either m^2 or m^2.5 or m^3 per predator per day</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="xqN8pHIJvErqrpMdGVv9dp7yAvdTze"><attributeName>Fittted h (day)</attributeName><attributeLabel>Fittted h (day)</attributeLabel><attributeDefinition>The fitted estimate of handling time in days</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="nK3cQhTvyszu4IEQXGrgPkyaGNcVTL"><attributeName>CI h low</attributeName><attributeLabel>Ci h low</attributeLabel><attributeDefinition>The lower 95% confidence interval on the estimate of h in days</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="GW03sF3WAv1oJD03RouC8pJTORcABM"><attributeName>CI h hi</attributeName><attributeLabel>CI h hi</attributeLabel><attributeDefinition>The upper 95% confidence interval on the estimate of h in days</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="uvKp1GmGVXafzkdKT18zGnp15KIivF"><attributeName>Notes 1</attributeName><attributeLabel>Notes</attributeLabel><attributeDefinition>Any explanatory or other information that seemed relevant</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute></attributeList>
+      <entityType>application/vnd.ms-excel</entityType>
+    </otherEntity><otherEntity id="urn-uuid-a8a43be5-0dac-4978-ad96-cf535e223398">
+      <entityName>FoRAGE_db_V5_Dec_20_2024_original_curves.csv</entityName>
+      <attributeList>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      <attribute id="gXoTfpNgvmlIBVkk1knxyOy2NT8cPT">
+          <attributeName>Data set</attributeName><attributeLabel>Data set</attributeLabel>
+          
+          <attributeDefinition>Unique ID number for each functional response curve which matches to descriptive information in the data set file.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="T9yUeAFZCKCT4T5N2SCOfQ7k0S57Up">
+          <attributeName>Source</attributeName><attributeLabel>Source</attributeLabel>
+          
+          <attributeDefinition>Publication from which the data was obtained.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="U3wkswTBIAn7G3vgZm7Lwcz3Lr7Bwg">
+          <attributeName>Predator</attributeName><attributeLabel>Predator name</attributeLabel>
+          
+          <attributeDefinition>Most current scientific name of the consumer.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="KRSOhR411QMsPurHb4kaefEXmG4U7q">
+          <attributeName>Prey</attributeName><attributeLabel>Prey name</attributeLabel>
+          
+          <attributeDefinition>Most current scientific name of the resource species.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="2axFUllREHtpcGgQn1vmgmTZeVDshg">
+          <attributeName>Data origin</attributeName><attributeLabel>Figure</attributeLabel>
+          
+          <attributeDefinition>Specific figure or table number in the source from which data was digitized.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="LsIbh8GJIvm8U8pULfXdDfJX2yN3Hu">
+          <attributeName>Rate is</attributeName><attributeLabel>Rate is</attributeLabel>
+          
+          <attributeDefinition>The rate or amount of foraging can be presented either as a mean across multiple replicates (mean) or as all of the individual replicates separately (point).</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="bZBpil0amMT2hCf8z1OqJnO77CAie6">
+          <attributeName>Original x</attributeName><attributeLabel>Original x</attributeLabel>
+          
+          <attributeDefinition>The originally presented abundance of prey in the experiments.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="hwR4kVq2L34umXrbWFf48IJisVfJ21">
+          <attributeName>Original x units</attributeName><attributeLabel>Original x units</attributeLabel>
+          
+          <attributeDefinition>Units of the prey abundance originally used in the publication.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal>
+              <nonNumericDomain>
+                <textDomain>
+                  <definition>Any text</definition>
+                  
+                <pattern>*</pattern></textDomain>
+              </nonNumericDomain>
+            </nominal></measurementScale>
+        </attribute><attribute id="ycAqBUST6E438NNNtDAOlPIdaTHCQF">
+          <attributeName>Original y</attributeName><attributeLabel>Original y</attributeLabel>
+          
+          <attributeDefinition>The original foraging rate or amount values from the source publication.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain>
+              
+              
+            </ratio></measurementScale>
+        </attribute><attribute id="p23IHiGq9X49Z1xndDKeRIK2iJEoGC">
+          <attributeName>Original y units</attributeName><attributeLabel>Original y units</attributeLabel>
+          
+          <attributeDefinition>The original units of the reported foraging rate or amount from the source publication.</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="LGbTBT2rXofh05xIBZ1QGO3iRdB09P">
+          <attributeName>Original error</attributeName><attributeLabel>Original error</attributeLabel>
+          
+          <attributeDefinition>The original value of the error presented in the source publication.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="qt73H7uU7ARhIEVOf6vH3yosLmhTep">
+          <attributeName>Original error units</attributeName><attributeLabel>Original error units</attributeLabel>
+          
+          <attributeDefinition>Original type of foraging rate error, such as SE (standard error), SD (standard deviation), or 95%CI (95% confidence interval)</attributeDefinition>
+          <measurementScale>
+            
+          <nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale>
+        </attribute><attribute id="e5rlO8L0xmxylgzlUZPwxBMvf0DhVm">
+          <attributeName>Trial duration (h)</attributeName><attributeLabel>Trial duration (h)</attributeLabel>
+          
+          <attributeDefinition>The length of the foraging trial in hours.</attributeDefinition>
+          <measurementScale>
+            
+          <ratio><unit><standardUnit>hour</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale>
+        </attribute><attribute id="dBZQp7wgMQawn6UDiZblalxpLlS0ZR"><attributeName>Sample size (per density)</attributeName><attributeLabel>Sample size (per density)</attributeLabel><attributeDefinition>Number of replicates per density, if data is presented as means.</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="vlTc6OBvGHuuJPAU2rCH2p75yLI8qW"><attributeName>2D Arena size</attributeName><attributeLabel>2D Arena size</attributeLabel><attributeDefinition>Area of the foraging arena in either cm^2 or m^2</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="vQ7GDKUaBNGLdkh0WapGDtMv7DDzMQ"><attributeName>2D Arena units</attributeName><attributeLabel>2D Arena units</attributeLabel><attributeDefinition>Units of the 2D arena area</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="OpGA3UDnxxUkx7TtRszzhOK3zxBMbb"><attributeName>3D Arena size</attributeName><attributeLabel>3D Arena size</attributeLabel><attributeDefinition>Area of the foraging arena in either cm^3 or m^3</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="o1HA0oNw99swqWZfBc5brTFZrIK9FB"><attributeName>3D Arena units</attributeName><attributeLabel>3D Arena units</attributeLabel><attributeDefinition>Units of the 3D arena area</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="flQNQiRAZ55DohpL1La9uiFPvPDP9g"><attributeName>2D Prey density</attributeName><attributeLabel>2D Prey density</attributeLabel><attributeDefinition>The density of prey in the foraging arena, units either prey per m^2 or cm^2</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="S552l6TiGoimZwGNimyXPt8DaOm23s"><attributeName>Units</attributeName><attributeLabel>Units for 2D prey density</attributeLabel><attributeDefinition>The units of prey density in the 2D arenas</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="EUopAnN74h4ccxXo4UFNxX8qkXlyxQ"><attributeName>3D Prey density</attributeName><attributeLabel>3D Prey density</attributeLabel><attributeDefinition>The density of prey in the foraging arena, units either prey per m^3 or cm^3</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="11mUWFFEebmfQO98m3N80d9rZwbgLK"><attributeName>Units</attributeName><attributeLabel>Units for 3D prey density</attributeLabel><attributeDefinition>The units of prey density in the 3D arenas</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="DoNtzAcvyIwohBKTtWrtqILW5S2Pz8"><attributeName>Foraging rate</attributeName><attributeLabel>Foraging rate</attributeLabel><attributeDefinition>The rate of foraging in the trial, as per predator per day</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="yJT8LD4OT7HSu7TKZnT3bJ1UK2iH0X"><attributeName>Units</attributeName><attributeLabel>Units</attributeLabel><attributeDefinition>Units of the foraging rate, as prey per predator per day</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="vvqUBVn7fSbDfQ8DoBsqAKMp0ArM2q"><attributeName>Standard Error</attributeName><attributeLabel>Standard Error</attributeLabel><attributeDefinition>The standard error of the foraging rate for data that are presented as means across prey levels. These were sometimes not reported.</attributeDefinition><measurementScale><ratio><unit><standardUnit>dimensionless</standardUnit></unit><numericDomain><numberType>real</numberType></numericDomain></ratio></measurementScale></attribute><attribute id="ICOu4ICf0SlZcuUivGyvoiinUzbwko"><attributeName>Notes 1</attributeName><attributeLabel>Notes 1</attributeLabel><attributeDefinition>Additional explanatory information</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="JqGQSH70mMIuD2TOToqULyAOb4Zr1K"><attributeName>Notes 2</attributeName><attributeLabel>Notes 2</attributeLabel><attributeDefinition>Additional explanatory information</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="MhE3ka9xbP3UFOXJgbywylL4X2X9KT"><attributeName>Notes 3</attributeName><attributeLabel>Notes 3</attributeLabel><attributeDefinition>Additional explanatory information</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute><attribute id="ZoOfNnWHmS4XrZHishb33JSFa5Nz3J"><attributeName>Notes 4</attributeName><attributeLabel>Notes 4</attributeLabel><attributeDefinition>Additional explanatory information</attributeDefinition><measurementScale><nominal><nonNumericDomain><textDomain><definition>Any text</definition><pattern>*</pattern></textDomain></nonNumericDomain></nominal></measurementScale></attribute></attributeList>
+      <entityType>application/vnd.ms-excel</entityType>
+    </otherEntity>
+    
+    
+    
+    
+    
+  </dataset>
+</eml:eml>

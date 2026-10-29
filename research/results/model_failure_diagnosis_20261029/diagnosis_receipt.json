@@ -1,0 +1,59 @@
+{
+  "original_models": [
+    1479,
+    1455
+  ],
+  "new_unique_contexts": 27,
+  "supply_cells_per_context": 18,
+  "base_scenario_evaluations": 972,
+  "numerical_check_scenario_evaluations": 594,
+  "original_model_changed": false,
+  "new_candidate_selected": false,
+  "field_calibration": false,
+  "numerical_checks": [
+    {
+      "check": "half_step",
+      "cases": 16,
+      "changed_joint": 1,
+      "changed_conditional": 1,
+      "max_abs_hazard_SD_change": 5.07328538009999e-05
+    },
+    {
+      "check": "long_run",
+      "cases": 16,
+      "changed_joint": 0,
+      "changed_conditional": 0,
+      "max_abs_hazard_SD_change": 1.1561565562700181e-05
+    }
+  ],
+  "quarter_step_rejects_reduced_F75_boundary": true,
+  "baseline_highV_F_during_D_exposure": [
+    1.0807106807417286,
+    2.4357408815070176
+  ],
+  "baseline_highV_D_hazard_fraction_at_F_above1": 1.0,
+  "original_inputs": [
+    {
+      "path": "research/results/final_mechanism_20261027/validation_design.json",
+      "sha256": "5927eda324231c7b2d53e35a0110dcb00f7c08ef8b43e1b0a848b97bf85d6c38"
+    },
+    {
+      "path": "research/results/final_mechanism_20261027/validation_scores.csv",
+      "sha256": "a84a6d2d544d2a55fe0bdcd7757784dbc5301ed9dabca23f02702da504edbf9d"
+    },
+    {
+      "path": "research/results/final_mechanism_20261027/reduced_validation_scores.csv",
+      "sha256": "b88c9e35d5ff5557f192603007a0f6957c9862667b947af618d4d2c25e7d9549"
+    },
+    {
+      "path": "research/results/final_mechanism_20261027/winner_rank_cells.csv.gz",
+      "sha256": "278b3e77676562626a46a692a236fefeba1ffd79b05a19862eed323a6977ea8a"
+    }
+  ],
+  "limits": [
+    "Local one-factor contrasts do not estimate frequency in nature",
+    "Algebraic hazard decomposition is not an independent intervention effect",
+    "Rank interaction signs depend on response scale and the synthetic grid",
+    "No suitability-density-calling observation bridge has been calibrated"
+  ]
+}

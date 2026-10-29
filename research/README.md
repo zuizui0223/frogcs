@@ -1,5 +1,13 @@
 # 現行研究の入口
 
+実地点との照合：[相殺条件と4,248地点の植生文脈](manuscript/MECHANISM_SITE_CONFRONTATION_2026-10-29.md)。景観植生で検査できる部分と、未測定の発生段階を分けています。
+
+機構診断：[有尾類作用の相殺・時間的条件・順位化](manuscript/WEAK_THIRD_GUILD_MECHANISM_DIAGNOSIS_2026-10-29.md)。固定モデルの27対照条件と季節内の危険分解を追加しました。
+
+最新の実行結果：[公開データで埋めた接続と残る課題](manuscript/PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md)。44池日の発声―雄数、73池の段階別三群、固定モデルと最新マクロ係数を検査しました。
+
+NEEを目指す最新段階：[追加検証とG1/G2/G3判定](manuscript/NEE_EVIDENCE_PROGRESS_2026-10-29.md)、[全新規結果](results/nee_context_20261029/)。原スナップショットと2026-10-27のシミュレーション結果は保持し、今回の84モデルを別出力に保存しています。
+
 ## 読む順番
 
 1. [二部構成の論文原稿](manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)

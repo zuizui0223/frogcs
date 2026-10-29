@@ -1,0 +1,29 @@
+{
+  "inputs": [
+    {
+      "path": "research/results/final_mechanism_20261027/validation_scores.csv",
+      "sha256": "a84a6d2d544d2a55fe0bdcd7757784dbc5301ed9dabca23f02702da504edbf9d"
+    },
+    {
+      "path": "research/results/final_mechanism_20261027/reduced_validation_scores.csv",
+      "sha256": "b88c9e35d5ff5557f192603007a0f6957c9862667b947af618d4d2c25e7d9549"
+    },
+    {
+      "path": "research/results/final_mechanism_20261027/winner_rank_resolution.csv",
+      "sha256": "2c933a63c7985f2c7d45fbc0e8b6c07518c96f7125779da76398b2a154db6dc1"
+    },
+    {
+      "path": "research/results/final_mechanism_20261027/macro_targets.csv",
+      "sha256": "b6b5623cc794434095b3d2ebe12e58911ef58e201b87ade2a52ada71521fd2cd"
+    },
+    {
+      "path": "research/results/nee_context_20261029/coefficients.csv",
+      "sha256": "36834cc1ae6dc554a2cb3f5b02cb3db4633bd61c4aeec826f5ecc8381cc805ac"
+    }
+  ],
+  "model_retuned": false,
+  "candidate_reselected": false,
+  "calibrated_observation_model": false,
+  "statistical_equivalence_test": false,
+  "note": "Four marginal interval inclusions do not constitute a joint test. Different observables and predictor distributions prevent calibration or fit claims."
+}

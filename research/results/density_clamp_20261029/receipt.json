@@ -1,0 +1,22 @@
+{
+  "scope": "within-season synthetic intervention; no annual recurrence or field calibration",
+  "cells_per_dt": 13824,
+  "dt": [
+    0.25,
+    0.125
+  ],
+  "F0": [
+    1,
+    3,
+    6
+  ],
+  "source_hashes": {
+    "research/scripts/run_density_clamp.py": "ab2f870410fc2f53d5336ab76763b2120e0d2e8dbc75285f9698683b6e057aca",
+    "research/scripts/stage_density_clamp_20261029.py": "28314e3aff4ea34f253d6ddf8538545449a9a47bf7faa550b2269c93f3bdc942",
+    "research/scripts/refuge_response_20261029.py": "c5042b3e3c95757d38c3f380ec22f06df93f9d3bd6c82a080ccb1a9480633953",
+    "research/scripts/run_literature_extension.py": "b1e30fa60226218271ed078fced1e49ff1b31ab3c76d65c5951cc783a67aeaa8"
+  },
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "cache_reuse": false
+}
