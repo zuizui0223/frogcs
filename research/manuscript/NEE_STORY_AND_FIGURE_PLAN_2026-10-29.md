@@ -1,3 +1,5 @@
+> 最新更新：[2026-10-29追加検証とゲート判定](NEE_FOLLOWUP_AND_GATE_UPDATE_2026-10-29.md)、[統合作業稿](working_20261029/MANUSCRIPT_JA.md)。以下の方針・履歴を保持し、到達点は最新更新で判断する。
+
 # NEE向けストーリーの更新 — 結果を先に、機構の制約を後に
 
 研究方針はHIGH_IMPACT_SUBMISSION_GATES_2026-10-27.md、今回の実証進捗は[NEE追加検証](NEE_EVIDENCE_PROGRESS_2026-10-29.md)に従う。これは投稿原稿の完成や新しい一般原理の確立を宣言する文書ではない。

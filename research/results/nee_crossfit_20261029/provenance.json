@@ -1,0 +1,19 @@
+{
+  "base_commit": "0900d29269ea6cb65399b9c13db07d7094d5be7d",
+  "python": "3.10.11",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "sklearn": "1.7.2",
+  "inputs_sha256": {
+    "research/scripts/nee_shared_environment_crossfit.py": "668b821cc93520e3c6d5cf38e473035997d7039513d5c844b21b6cad7aa87fbe",
+    "research/scripts/nee_context_robustness.py": "43f25802b8a872344533cbb7bb82ecfc86dee19cfdc35fc1104697eda303ae01",
+    "research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+    "research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c"
+  },
+  "checks": {
+    "unit_tests": 150,
+    "frozen_snapshot_files": 894,
+    "figure_visual_review": 4
+  },
+  "nee_submission_ready": false
+}

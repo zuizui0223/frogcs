@@ -1,0 +1,21 @@
+{
+  "audit_date": "2026-10-29",
+  "attempts": [
+    {
+      "url": "https://datadryad.org/api/v2/files/839314/download",
+      "http_status": 401
+    },
+    {
+      "url": "https://datadryad.org/downloads/file_stream/839314",
+      "http_status": 403
+    },
+    {
+      "url": "https://datadryad.org/downloads/file_stream/2077176",
+      "http_status": 403
+    },
+    {
+      "url": "https://datadryad.org/downloads/file_stream/2077175",
+      "http_status": 403
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+> 最新更新：[2026-10-29追加検証とゲート判定](NEE_FOLLOWUP_AND_GATE_UPDATE_2026-10-29.md)、[統合作業稿](working_20261029/MANUSCRIPT_JA.md)。以下の方針・履歴を保持し、到達点は最新更新で判断する。
+
 # High-impact single-paper strategy: frogcs macroecology × stage-structured mechanism
 
 **Decision date: 2026-10-27 (JST). Editorial roadmap only; no empirical result added, no manuscript submitted.** Current source of truth: `main` at source commit `a817d41425902b1778f4c3c26059eebb112146f2`. Current paper: [two-part working manuscript](TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) and [final conditional mechanism comparison](FINAL_MECHANISM_COMPARISON_2026-10-27.md). RC6 remains a historical motivating acoustic analysis, not the headline result, separate publication, or supposed independent replication.
