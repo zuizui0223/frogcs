@@ -1,0 +1,77 @@
+{
+  "source_doi": "10.1038/s41598-025-11706-3",
+  "source_sha256": "226bccda9731ed565d3c8db7dbfe30b4153a2973651cc6f329655980646904ba",
+  "rows": 44,
+  "ponds": 2,
+  "dates": 22,
+  "date_min": "2023-04-14",
+  "date_max": "2023-07-02",
+  "missing_cells": 0,
+  "duplicate_pond_date_rows": 0,
+  "seed": 20261029,
+  "models": [
+    {
+      "metric": "N_call_sec_hour",
+      "call_slope": 0.06427460406988239,
+      "call_slope_ci95": [
+        -0.07182912774188707,
+        0.2044149066842285
+      ],
+      "valid_bootstraps": 999,
+      "spearman": {
+        "pooled": 0.3058387953003003,
+        "Rosarium": 0.29631899261121636,
+        "Water Garden": 0.3229480416604079
+      },
+      "leave_date_out": {
+        "n": 44,
+        "groups": 22,
+        "baseline_log_mse": 0.4088588008207888,
+        "with_calls_log_mse": 0.437294245665576,
+        "delta_log_mse": 0.02843544484478709
+      },
+      "leave_pond_out": {
+        "n": 44,
+        "groups": 2,
+        "baseline_log_mse": 3.5450330116869733,
+        "with_calls_log_mse": 3.6381671865022,
+        "delta_log_mse": 0.09313417481522777
+      }
+    },
+    {
+      "metric": "N_call_night",
+      "call_slope": 0.09658524197920054,
+      "call_slope_ci95": [
+        -0.07421651769309992,
+        0.2467689538768284
+      ],
+      "valid_bootstraps": 999,
+      "spearman": {
+        "pooled": 0.3551207652757664,
+        "Rosarium": 0.3942389312814856,
+        "Water Garden": 0.3462754141243204
+      },
+      "leave_date_out": {
+        "n": 44,
+        "groups": 22,
+        "baseline_log_mse": 0.4088588008207888,
+        "with_calls_log_mse": 0.4267204529787113,
+        "delta_log_mse": 0.0178616521579225
+      },
+      "leave_pond_out": {
+        "n": 44,
+        "groups": 2,
+        "baseline_log_mse": 3.5450330116869733,
+        "with_calls_log_mse": 3.4451166528301855,
+        "delta_log_mse": -0.09991635885678858
+      }
+    }
+  ],
+  "limits": [
+    "Adult male visual counts, not detection-corrected population density",
+    "Automatic call counts, not calling-male counts or NAAMP index",
+    "Only two artificial ponds, one season, no developmental stages or predators",
+    "Same-date folds preserve pond context; only two leave-pond-out folds",
+    "Exploratory external measurement audit, not independent three-guild validation"
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "url": "https://datadryad.org/api/v2/files/3806214/download",
+    "status": 401,
+    "path": "2021onlyseasonalUryu_comm_update2.csv",
+    "sha256": "1ac025323ea66e58c9a8a0b960db5a839ef812e1ff8bfea2f3aff74dc3961296",
+    "expected_sha256": "df063157c030db4a3561506f370be724a013829936c9af592a6c20b0ddf7ac8a"
+  },
+  {
+    "url": "https://datadryad.org/api/v2/files/3806215/download",
+    "status": 401,
+    "path": "2021seasonalUryu_chemistryFINAL.csv",
+    "sha256": "1ac025323ea66e58c9a8a0b960db5a839ef812e1ff8bfea2f3aff74dc3961296",
+    "expected_sha256": "4c40d46e8b1b31858df27c5d82830ab16a6917ca7a4e1ea154a1680cfdc5efa2"
+  },
+  {
+    "url": "https://datadryad.org/api/v2/files/3806222/download",
+    "status": 401,
+    "path": "2021seasonalUryu_connectivityFINAL.csv",
+    "sha256": "1ac025323ea66e58c9a8a0b960db5a839ef812e1ff8bfea2f3aff74dc3961296",
+    "expected_sha256": "2543c605d314004dd5a666940c462256621881ad2a0b65f225c84e2827acdd17"
+  },
+  {
+    "url": "https://datadryad.org/api/v2/files/3806217/download",
+    "status": 401,
+    "path": "README.md",
+    "sha256": "1ac025323ea66e58c9a8a0b960db5a839ef812e1ff8bfea2f3aff74dc3961296",
+    "expected_sha256": "afca011e5bba13ed9990c0ab5aac8513f1bb002b5bcd91ad8b942dc738ae96a6"
+  },
+  {
+    "url": "https://datadryad.org/downloads/file_stream/3806214",
+    "status": 403,
+    "path": "2021onlyseasonalUryu_comm_update2.csv",
+    "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+    "expected_sha256": "df063157c030db4a3561506f370be724a013829936c9af592a6c20b0ddf7ac8a"
+  },
+  {
+    "url": "https://datadryad.org/downloads/file_stream/3806215",
+    "status": 403,
+    "path": "2021seasonalUryu_chemistryFINAL.csv",
+    "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+    "expected_sha256": "4c40d46e8b1b31858df27c5d82830ab16a6917ca7a4e1ea154a1680cfdc5efa2"
+  },
+  {
+    "url": "https://datadryad.org/downloads/file_stream/3806222",
+    "status": 403,
+    "path": "2021seasonalUryu_connectivityFINAL.csv",
+    "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+    "expected_sha256": "2543c605d314004dd5a666940c462256621881ad2a0b65f225c84e2827acdd17"
+  },
+  {
+    "url": "https://datadryad.org/downloads/file_stream/3806217",
+    "status": 403,
+    "path": "README.md",
+    "sha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+    "expected_sha256": "afca011e5bba13ed9990c0ab5aac8513f1bb002b5bcd91ad8b942dc738ae96a6"
+  }
+]

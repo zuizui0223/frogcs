@@ -64,6 +64,8 @@ RC6 within-taxon spatial concentration goes in the **Introduction as historical 
 
 ## Current decision
 
+**2026-10-29 evidence update:** [Public-data calibration and independent pond audit](PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md) and [fixed-model compatibility](MODEL_MACRO_COMPATIBILITY_UPDATE_2026-10-29.md) supersede the requirement to force a positive three-way sign in a revised analysis. The original positive estimate remains recorded above. The fully adjusted estimate has an interval including zero and a small negative synthetic coefficient, so the updated target is the full uncertain coefficient vector on calibrated observation scales, not the old sign alone. This reduces one apparent contradiction but does not establish model fit; G2/G3 remain unmet. No simulator retuning was performed.
+
 **Journal target for research design:** Nature Ecology & Evolution Article (high-risk stretch). **Next alternative:** Ecology Letters Letter, depending on actual evidence outcome. PNAS/Nature Communications remain context-dependent alternatives. **NOT currently submission-ready at any of these tiers.**
 
 Do not edit pinned original `paper/`, `submission/`, `provenance/`, `research/reproducibility/`, `research/results/final_mechanism_20261027/` or current main 2026-10-27 empirical receipts when updating the editorial target. This note changes **research ambition and explicit evidence gates only**, not science or past commitments.
