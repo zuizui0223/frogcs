@@ -43,3 +43,9 @@ target-group背景でも柔軟調整後のOVは負で区間がゼロを含まな
 `python research/scripts/nee_shared_environment_crossfit.py`、`python research/scripts/nee_external_prey_check.py`、`python research/scripts/build_working_manuscript_figures.py`で追加結果と図を生成する。原データ取得履歴、分割、残差、全係数、図入力ハッシュを保存した。固定済み894ファイルと旧カーネルは変更しない。
 
 [日本語統合作業稿・英語要旨・4図](working_20261029/MANUSCRIPT_JA.md)と[主張と根拠の対応](working_20261029/EVIDENCE_AND_GATES.md)を作成した。完全な投稿用方法・書誌・データ公開・独立検証は未完成である。
+
+## 追加：植生機能の一般性と新規性
+
+[最新の固定比較](REFUGE_GENERALITY_AND_NOVELTY_RESULT_2026-10-29.md)では、三方向を両文脈端で満たす危険対比は経路あり18/270、なし0/270。成立した設定は基準登場条件とカエルを有尾類から保護する機能を含むが、カエル＋有尾類保護を区別できない。順位マクロへの同時適合・密度接続は未達。既存4248地点でのS文脈によるOV差も識別できなかった。
+
+一般的な植生・捕食者間捕食・間接利益の原理には先例があり、新原理としてNEE新規性を確立したとは判断しない。G1一部、G2/G3未達を維持する。公開図抽出91点を原著126反復として再解析しない。

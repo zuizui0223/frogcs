@@ -1,0 +1,105 @@
+{
+  "retrieved_utc": "2026-10-29",
+  "git_commit": "7de6b4d047d9d66a91c845a67ffa2a51a9c77986",
+  "files": [
+    {
+      "url": "https://raw.githubusercontent.com/benjamin-rosenbaum/BayesFR/7de6b4d047d9d66a91c845a67ffa2a51a9c77986/data/df_Hossie_and_Murray_2010_OECOLOGIA.rda",
+      "file": "df_Hossie_and_Murray_2010_OECOLOGIA.rda",
+      "sha256": "8a6d6ce941fad23e45e71f6cc52fee882a0adaf9d3e7bbf1ae666160cd3f412f",
+      "bytes": 496
+    },
+    {
+      "url": "https://raw.githubusercontent.com/benjamin-rosenbaum/BayesFR/7de6b4d047d9d66a91c845a67ffa2a51a9c77986/R/df_Hossie_and_Murray_2010_OECOLOGIA.R",
+      "file": "df_Hossie_and_Murray_2010_OECOLOGIA.R",
+      "sha256": "04eaa7b6ae873e5c6c537681e45c69992926a9fbbd6ab52220459c5447b294b4",
+      "bytes": 1389
+    },
+    {
+      "url": "https://raw.githubusercontent.com/benjamin-rosenbaum/BayesFR/7de6b4d047d9d66a91c845a67ffa2a51a9c77986/DESCRIPTION",
+      "file": "DESCRIPTION",
+      "sha256": "87d962d4d8077a8f143ee989f1e80a4c878219d88063dc9645566caf696b2c9f",
+      "bytes": 1777
+    },
+    {
+      "url": "https://www.thomashossie.ca/uploads/6/0/6/0/60609931/hossie_and_murray_2010_-_oecologia.pdf",
+      "file": "hossie_murray_2010_author_copy.pdf",
+      "sha256": "59e5c7d78c47a85efcd1f15676619cff4a9172329769e53b8a5675d12ff46f22",
+      "bytes": 295494
+    },
+    {
+      "url": "https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn:uuid:a8a43be5-0dac-4978-ad96-cf535e223398",
+      "file": "FoRAGE_db_V5_Dec_20_2024_original_curves.csv",
+      "sha256": "23fdcbc5025a634a7ad8834416cc6a8fa5ff181e73f17900acd36925b3fc114d",
+      "bytes": 16005590
+    },
+    {
+      "url": "https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn:uuid:f4fab29f-ff87-4eb3-92b4-d2b0fcb519a6",
+      "file": "FoRAGE_db_V5_Dec_20_2024_sources_and_meta.csv",
+      "sha256": "1741d485f3de18506470fe2857e2f6f3bf17b33b142c1ae7bcb3f3e91487819a",
+      "bytes": 1505758
+    },
+    {
+      "url": "https://knb.ecoinformatics.org/knb/d1/mn/v2/object/doi:10.5063/F1RX99KB",
+      "file": "forage_metadata_response.xml",
+      "sha256": "bc38a6fd17c42224a322a86d5a7fb1dd13678fd003e2b83780670ce045d44dde"
+    },
+    {
+      "file": "hossie2010_compiled.csv",
+      "sha256": "2957f036dde5bf16e46ec13b89a3cfe0ca3df3ad857e3a958a348e5c12620d31",
+      "kind": "derived subset/export"
+    },
+    {
+      "file": "hossie2010_forage_original_curves.csv",
+      "sha256": "0066a934252d56c78a7a10ce8a398acebfa381b48ae4ca7a894c303835379614",
+      "kind": "derived subset/export"
+    },
+    {
+      "file": "hossie2010_forage_sources_meta.csv",
+      "sha256": "77efee6088eb1d47f9f36d970907b7954c30c0b7b1868dc34d072d412675a1b6",
+      "kind": "derived subset/export"
+    }
+  ],
+  "classification": "Figure-extracted compiled observations; not complete original trial data",
+  "original_doi": "10.1007/s00442-010-1568-6",
+  "forage_doi": "10.5063/F1RX99KB",
+  "license_scope": "BayesFR package GPL >=3; FoRAGE V5 EML CC0 1.0; original author-hosted article separate rights",
+  "rows": 91,
+  "original_trials_reported": 126,
+  "missing_multiplicity_warning": "Original paper reports7replicates per6density x3cover; graph-extracted91points do not preserve all126trials",
+  "subset_rule": {
+    "curves": "Source == Hossie and Murray 2010 OECOLOGIA; remove empty Unnamed columns",
+    "meta": "Source == Hossie and Murray 2010 OEC"
+  },
+  "schema": {
+    "N0": "initial tadpoles",
+    "NE": "figure endpoint prey killed, labelled eaten by compilation",
+    "Time": "24 hours, nonreplacement",
+    "ID": "Figure1a none;1c low;1e high litter"
+  },
+  "bayesfr_forage_values_match": false,
+  "full_archive_local_path": "C:\\Users\\zuizui\\Documents\\Codex\\2026-10-26\\got\\work\\forage_v5_source_archive",
+  "bayesfr_forage_values_match_after_whitespace_trim": false,
+  "treatment_label_crosswalk": [
+    {
+      "forage_ID": 506,
+      "forage_data_origin": "Figure 1a",
+      "bayesfr_and_primary_figure": "Figure 1a",
+      "cover": "none"
+    },
+    {
+      "forage_ID": 507,
+      "forage_data_origin": "Figure 1b",
+      "bayesfr_and_primary_figure": "Figure 1c",
+      "cover": "low"
+    },
+    {
+      "forage_ID": 508,
+      "forage_data_origin": "Figure 1c",
+      "bayesfr_and_primary_figure": "Figure 1e",
+      "cover": "high"
+    }
+  ],
+  "numeric_and_taxon_values_match": true,
+  "label_discrepancy": "FoRAGE figure1b/1c labels for low/high differ from actual primaryfigure1c/1e; BayesFR uses latter",
+  "endpoint": "24h tadpole disappearance/survivor-count based loss, figure labelled killed; not directly observed ingestion"
+}
