@@ -41,3 +41,5 @@
 [894ファイルの固定スナップショット](../reproducibility/macro_snapshot_20261026.json)の期待ハッシュは変更していません。旧README2件のみ原本保存先を明示して検証し、科学的な入力・結果は原位置で検証します。詳細は[再現性資料](../reproducibility/README.md)を参照してください。
 
 - 2026-10-29 追加：[植生機能の一般性・新規性・既存データ識別](REFUGE_GENERALITY_AND_NOVELTY_RESULT_2026-10-29.md)。有限格子での危険方向とマクロ順位適合を区別し、NEE未達を維持。
+
+- 次段階：[密度固定・年初状態・保護対象の切り分け](DENSITY_CLAMP_DISCRIMINATION_2026-10-29.md)。旧多年設定の経路必要性は単季には一般化できない。
