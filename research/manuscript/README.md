@@ -4,6 +4,8 @@
 
 ## 現行の入口
 
+機構の追加検証：[弱い第三者作用と24条件の失敗理由](WEAK_THIRD_GUILD_MECHANISM_DIAGNOSIS_2026-10-29.md)。相殺・登場時期・個体群補充・順位化を分けた現在のモデル内解釈です。
+
 追加更新：[公開データによる校正・独立検査](PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md)、[モデルと最新マクロ結果の整合性](MODEL_MACRO_COMPATIBILITY_UPDATE_2026-10-29.md)。三者項の正符号を固定した調整目標にはしません。
 
 2026-10-29のNEE検討：[環境・空間・観測条件の追加検証](NEE_EVIDENCE_PROGRESS_2026-10-29.md)と[ストーリー更新](NEE_STORY_AND_FIGURE_PLAN_2026-10-29.md)。以下は2026-10-27に固定した原稿・結果です。
