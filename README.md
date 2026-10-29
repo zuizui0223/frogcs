@@ -4,6 +4,7 @@
 
 ## 現在の成果物
 
+- [相殺が弱まる条件と実際の発声地点との照合](research/manuscript/MECHANISM_SITE_CONFRONTATION_2026-10-29.md)
 - [有尾類の作用が弱い理由と1/24成立の切り分け](research/manuscript/WEAK_THIRD_GUILD_MECHANISM_DIAGNOSIS_2026-10-29.md)
 - [公開データの校正・独立検査とモデル整合性の更新（2026-10-29）](research/manuscript/PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md)
 - [NEE方針に沿った追加検証・ゲート判定（2026-10-29）](research/manuscript/NEE_EVIDENCE_PROGRESS_2026-10-29.md) / [ストーリーと図構成](research/manuscript/NEE_STORY_AND_FIGURE_PLAN_2026-10-29.md)

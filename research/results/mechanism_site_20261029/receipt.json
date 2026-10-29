@@ -1,0 +1,24 @@
+{
+  "sites": 4248,
+  "zero_detected": 3742,
+  "positive_detected": 506,
+  "observed_positive_median": 0.7977916721709977,
+  "rank_v0": -0.3667419852683555,
+  "rank_positive_median": 2.7121512033086685,
+  "seed": 20261029,
+  "bootstrap": 999,
+  "original_global_coefficients_replayed": true,
+  "stage_observed_at_macro_sites": false,
+  "model_parameters_fitted_to_sites": false,
+  "note": "Zero remote detection is not absence of pond refuge. A conditional coefficient is not a site-specific causal effect. All comparisons exploratory.",
+  "inputs": [
+    {
+      "path": "research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz",
+      "sha256": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff"
+    },
+    {
+      "path": "research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz",
+      "sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c"
+    }
+  ]
+}

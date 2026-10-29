@@ -4,6 +4,8 @@
 
 ## 現行の入口
 
+実地点の追加検証：[相殺が弱まる条件とマクロ地点の照合](MECHANISM_SITE_CONFRONTATION_2026-10-29.md)。順位尺度での不一致を含む現在の到達点です。
+
 機構の追加検証：[弱い第三者作用と24条件の失敗理由](WEAK_THIRD_GUILD_MECHANISM_DIAGNOSIS_2026-10-29.md)。相殺・登場時期・個体群補充・順位化を分けた現在のモデル内解釈です。
 
 追加更新：[公開データによる校正・独立検査](PUBLIC_DATA_GAP_CLOSURE_2026-10-29.md)、[モデルと最新マクロ結果の整合性](MODEL_MACRO_COMPATIBILITY_UPDATE_2026-10-29.md)。三者項の正符号を固定した調整目標にはしません。
