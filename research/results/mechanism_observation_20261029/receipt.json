@@ -1,0 +1,18 @@
+{
+  "fixed_estimator": "rank O/S/Y, binary V, seven-term OLS; no scale selection",
+  "mechanism_primary": "predictor-only empirical rank-bin weights, all 54 local contexts",
+  "macro_reference_sites": 4248,
+  "component_sites": 4182,
+  "excluded_zero_any": 66,
+  "model_refit": false,
+  "observation_calibration": false,
+  "seed": 20261029,
+  "input_sha256": {
+    "research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+    "research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+    "research/results/model_failure_diagnosis_20261029/counterfactual_None_cells.csv.gz": "6864051b63de1aea1b7ac81fecf4def60f5ccd27f56f6b26c33e764c6af3cd8d",
+    "research/results/model_failure_diagnosis_20261029/counterfactual_0.5_cells.csv.gz": "2c73c731e64b76a857797968671abebb342d6f2acd7828cc7ffca668422ea138",
+    "research/results/model_failure_diagnosis_20261029/counterfactual_half_step_cells.csv.gz": "ea2952255fe1b864d8885d2e776ca0656f2aea57fdc6b098425e6e1ebe9c068e",
+    "research/results/model_failure_diagnosis_20261029/counterfactual_long_run_cells.csv.gz": "ac32ea65b9a999ccff390583d484ea630df125a03e067975b31e57d3c8261dad"
+  }
+}
