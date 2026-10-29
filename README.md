@@ -1,10 +1,12 @@
 # frogcs — カエルの発声・植生・三者関係
 
+最新：[追加実測なしの頑健性・増幅相殺境界検証](research/manuscript/NEE_EXISTING_DATA_BOUNDARIES_2026-10-29.md)。植生×トンボは同時再適合49回で両背景すべて負。モデルでは植生の作用方向に対するヤゴ→有尾類経路の寄与を、共通餌減少から分離。NEE達成とは判定しません。
+
 現在の研究は、北米4,248地点の発声パターンのマクロ解析と、カエル・ヤゴ・有尾類の機構シミュレーションを組み合わせるものです。
 
 ## 現在の成果物
 
-- [最新の統合論文作業稿・4図](research/manuscript/working_20261029/MANUSCRIPT_JA.md)
+- [最新の統合論文作業稿・6図](research/manuscript/working_20261029/MANUSCRIPT_JA.md)
 - [共有環境の追加検証とNEE判定](research/manuscript/NEE_FOLLOWUP_AND_GATE_UPDATE_2026-10-29.md)
 
 - [相殺が弱まる条件と実際の発声地点との照合](research/manuscript/MECHANISM_SITE_CONFRONTATION_2026-10-29.md)

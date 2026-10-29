@@ -1,16 +1,16 @@
 # カエルの鳴き声と捕食者群の文脈依存的な関連：植生、捕食飽和、発生段階による増幅と相殺
 
-**日本語作業稿・2026-10-29。** マクロ解析と機構モデルを一つの論文として統合する。2026-10-27固定稿を上書きせず、その後の共有環境・尺度・経路分離検査を反映した。投稿準備完了稿ではない。
+**日本語作業稿・2026-10-29。** マクロ解析と機構モデルを一つの論文として統合する。2026-10-27固定稿を上書きせず、その後の共有環境・尺度・経路分離検査を反映した。投稿準備完了稿ではない。追加の季節・種組成・環境支持域・SDM再適合・経路境界検証は[2026-10-29詳細報告](../NEE_EXISTING_DATA_BOUNDARIES_2026-10-29.md)に保存した。
 
 English working title: **Vegetation and predator-guild context in frog calling: separating trophic amplification from compensatory effects**
 
 ## 要旨
 
-繁殖期の鳴き声は、カエルによる場所利用と活動の集中を広域で捉える手掛かりとなる。しかし、捕食者群との関連には、共有する環境条件と生物間相互作用の双方が含まれ得る。本研究では北米4,248音響調査地点、63,180回の調査から強い鳴き声の頻度を求め、トンボ類・池性有尾類の環境適合度と景観植生との条件付き関連を解析した。線形の調査・環境・地理調整では、uniform背景のトンボ類×有尾類およびトンボ類×植生の係数は負だった。空間的に分離したデータで共有環境の非線形構造を調整すると、植生×トンボ類の関連は残る一方、有尾類×トンボ類は弱まり、不確実になった。鳴き声確認頻度と確認時の強い鳴き声割合の分解は、観測された関連が活動の複数側面に現れることを示した。段階構造モデルでは、有尾類のカエル捕食の飽和と、ヤゴ処理によるカエル捕食減少を分離した。前者は高植生での捕食危険の増幅を強め、後者は相殺したが、順位上の改善は捕食危険全体の増大を意味しなかった。捕食優位の季節内逆転も、その順序で作用方向を変えた。本研究は広域の鳴き声の関連から検証すべき捕食過程を絞り込む一方、野外の第三者作用を共有環境から識別するには、対応する段階別個体数と発声の独立観測が必要であることを示す。
+繁殖期の鳴き声は、カエルによる場所利用と活動の集中を広域で捉える手掛かりとなる。しかし、捕食者群との関連には、共有する環境条件と生物間相互作用の双方が含まれ得る。本研究では北米4,248音響調査地点、63,180回の調査から強い鳴き声の頻度を求め、トンボ類・池性有尾類の環境適合度と景観植生との条件付き関連を解析した。線形の調査・環境・地理調整では、uniform背景のトンボ類×有尾類およびトンボ類×植生の係数は負だった。空間的に分離したデータで共有環境の非線形構造を調整すると、植生×トンボ類の関連は残る一方、有尾類×トンボ類は弱まり、不確実になった。SDM・地点・環境調整を同時に再適合した49回でも植生×トンボ類は両背景ですべて負だったが、有尾類×トンボ類には符号変動が残った。鳴き声確認頻度と確認時の強い鳴き声割合の分解は、観測された関連が活動の複数側面に現れることを示した。段階構造モデルでは、有尾類のカエル捕食の飽和と、ヤゴ処理によるカエル捕食減少を分離した。前者は高植生での捕食危険の増幅を強め、後者は相殺したが、順位上の改善は捕食危険全体の増大を意味しなかった。捕食優位の季節内逆転も、その順序で作用方向を変えた。共通餌減少を残した経路除去では、植生×ヤゴの危険の方向を左右したのは主にヤゴ→有尾類経路であり、双方向捕食そのものは必須ではなかった。本研究は広域の鳴き声の関連から検証すべき捕食過程を絞り込む一方、野外の第三者作用を共有環境から識別するには、対応する段階別個体数と発声の独立観測が必要であることを示す。
 
 ## English abstract
 
-Frog calling provides a broad-scale record of breeding activity, but associations with predator guilds may reflect both shared habitat and trophic processes. We analysed strong-call frequency across 4,248 North American listening sites and examined its associations with odonate suitability, pond-breeding caudate suitability and landscape vegetation. Under linear survey, environmental and spatial adjustment, odonate-by-caudate and odonate-by-vegetation associations were negative under uniform-background suitability models. Spatially cross-fitted, flexible environmental adjustment retained the vegetation association but attenuated the caudate association. Decomposing calling into detection frequency and conditional strong-call frequency identified multiple observational components of these patterns. Stage-structured models then separated saturation of caudate predation on frogs from the cost of processing alternative prey. Saturation increased trophic amplification under high vegetation, whereas alternative-prey processing counteracted it. Stronger rank-scale interactions did not imply stronger amplification throughout the modeled density range. Ontogenetic reversals also changed interaction direction according to their temporal order. Together, these analyses narrow mechanistic hypotheses arising from acoustic macroecology while showing why contextual associations alone do not identify field trophic pathways.
+Frog calling provides a broad-scale record of breeding activity, but associations with predator guilds may reflect both shared habitat and trophic processes. We analysed strong-call frequency across 4,248 North American listening sites and examined its associations with odonate suitability, pond-breeding caudate suitability and landscape vegetation. Under linear survey, environmental and spatial adjustment, odonate-by-caudate and odonate-by-vegetation associations were negative under uniform-background suitability models. Spatially cross-fitted environmental adjustment retained the vegetation association but attenuated the caudate association. Joint SDM and site-block refitting retained negative vegetation associations across 49 stability draws in both background specifications. Decomposing calling into detection frequency and conditional strong-call frequency identified multiple observational components of these patterns. Stage-structured models then separated saturation of caudate predation on frogs from the cost of processing alternative prey. Saturation increased trophic amplification under high vegetation, whereas alternative-prey processing counteracted it. Stronger rank-scale interactions did not imply stronger amplification throughout the modeled density range. Ontogenetic reversals changed interaction direction according to temporal order. Edge removals retaining shared-prey depletion implicated odonate predation on caudates in the modeled vegetation contrast; reciprocal predation was not necessary in the tested contexts. Together, these analyses narrow mechanistic hypotheses arising from acoustic macroecology while showing why contextual associations alone do not identify field trophic pathways.
 
 ## はじめに
 
@@ -52,6 +52,12 @@ GBIF出現記録とGloBI相互作用情報に基づく既存の種候補・分�
 
 発生段階の検査では、D優位からS優位へ交差する条件と逆順の条件を設定し、S/D間サイズゲートを最初の共存時点に固定した対照と比較した。成長率・処理係数はいずれも合成値であり、文献は経路の候補を制約する根拠とした。
 
+### 追加の不確実性と境界診断
+
+調査回次と暦四半期の発声分母・調査共変量を再集計し、候補捕食者11種の一種除去を行った。有尾類適合度の上下三分位を識別する環境分類器を空間交差適合し、確率0.1–0.9を環境重複域の感度解析とした。残る共変量差を報告し、環境マッチングとは扱わない。原SDMを数値再現後、258地理ブロックから49回再抽出して両背景の11種を再学習した。さらにNAAMP地点ブロック再抽出と環境補助モデル再学習を組み合わせた。49回は安定性診断であり、精密な信頼区間や符号の事後確率には用いない。
+
+局所ヤゴ危険の密度微分を導き、年次モデルの最後20年の各年状態をすべて再生して、危険差をF/D/S状態に対称配分した。和が元の危険差に一致することを検証したが、独立操作による媒介効果とは解釈しない。共通餌の非線形応答を維持したS→D、D→Sの各除去と両除去を比較し、dt半減を行った。
+
 ## 結果
 
 ### 植生との関連は柔軟な共有環境調整でも残る
@@ -76,6 +82,16 @@ FFでSVの過大さは小さくなったが、uniformの三つの周辺区間へ
 
 両捕食者の共有制約を含む条件で、D優位からS優位へ変わるサイズ動態を許すとOSは+0.0353から−0.0553へ変わった。逆順では−0.0635から+0.0753へ変わった（図4）。捕食損失の優位も季節内で交代したが、いずれも三つのマクロ関係全体を説明しなかった。変態後カエルによる羽化中トンボ捕食の追加も、今回の不一致を解消しなかった。
 
+### 再適合と支持域は、植生と有尾類の結果を分ける
+
+SDMだけの再学習ではuniformのOS、OVは49回すべて負だった。地点抽出と柔軟環境調整の再学習も含めると、OSの負の回数はuniform46/49、target-group34/49、OVは両方49/49だった（図5）。有尾類適合度上下三分位の環境重複域にはuniform31.3%、target-group22.5%の地点しか残らず、最大標準化環境差も1.09、0.93残った。期間と捕食者種組成の感度解析は一部の負の関連を維持したが、独立な三者作用の識別にはならなかった。
+
+### 食べ合いは、増幅そのものと植生の作用方向に異なる寄与を持つ
+
+高植生でのヤゴ危険はh_D=2ADF/(1+F²+cS)で、F減少による局所増幅の境界はF²>1+cSだった。FとcSは合成モデルの尺度であり、野外閾値ではない。基準登場条件・高植生ではFF追加により総OS危険が+0.001185から+0.003313へ増えたが、その主因は有尾類経路の相殺が−0.003678から−0.001766へ弱まったことであり、F密度を通じたヤゴ経路の寄与は+0.004938から+0.005218への小さい変化だった（図6）。
+
+同じFF条件で、食べ合いを両方除くとOV危険は低Sで−0.013652、高Sで−0.068671だった。両方維持すると+0.036859、+0.036932となり、D→Sだけを除くと負へ戻った。S→Dだけを除いても正は残った。3段階条件×5処理条件の総危険の六隅点方向が全て一致した数は、双方向あり4/15、D→S除去0/15、S→D除去5/15、両除去0/15だった。これは有限のモデル診断であり、マクロの順位係数の再現率や成立確率ではない。
+
 ## 考察
 
 ### 鳴き声から見える生態学的文脈
@@ -86,7 +102,11 @@ FFでSVの過大さは小さくなったが、uniformの三つの周辺区間へ
 
 ### 植生保護は、捕食者間の利益と害の釣り合いを変え得る
 
-モデルで有尾類のカエル捕食を飽和させると、カエル密度の低下によって残存個体の危険が上がり得る一方、植生で捕獲が減ると処理負担も下がり、植生保護の効果が部分的に相殺された。ヤゴを処理する時間は逆にカエル捕食を減らす。この二つを一括して採餌時間の共有と呼ぶと、増幅の原因を誤読する。
+有尾類がカエル密度を減らすと、非線形応答の条件によって残存個体のヤゴからの危険は増し得る。しかしFF追加による高植生の正味増幅の改善は、この密度経路の大幅な増強ではなく、有尾類経路による相殺の縮小が主だった。FDは相殺を強めた。したがって「採餌の飽和がヤゴの害を強める」と一括することは適切でない。
+
+植生×ヤゴの方向については、ヤゴがカエルの捕食者である有尾類を減らす利益を持つ一方、植生がカエルを有尾類から保護すれば、その間接利益の余地が小さくなる説明が候補となる。今回の経路除去はD→Sへの依存を示したが、景観植生が野外でこの保護を担うことや、適合度が実際の捕食者量を表すことは確認していない。
+
+餌減少・非線形応答による多捕食者効果、およびサイズ・成長を含む期待値には先例がある［7,8］。本研究の境界式を新しい普遍則とは位置付けず、既知の効果を残した対照から植生の作用方向に関わる経路を絞るために用いる。
 
 重要なのは、捕食者同士の拮抗と、カエルへの正味の増幅が両立し得ることである。ただし本研究の追加モデルでは、その両立は密度と植生の条件に依存した。強い順位係数を見つけることより、捕食者別の危険を加算し、どの相殺が残るかを示す方が機構の解釈に有効だった。
 
@@ -102,7 +122,7 @@ FFでSVの過大さは小さくなったが、uniformの三つの周辺区間へ
 
 ## 結論
 
-カエルの強い鳴き声とトンボ類の環境適合度の関連は、植生の文脈に依存していた。有尾類に伴う関連には共有環境への感度が残った。段階構造モデルは、捕食飽和による増幅と代替餌処理による相殺を分離し、植生と発生段階がその釣り合いを変え得ることを示した。これらは野外機構の同定ではなく、広域の鳴き声パターンを具体的な捕食・加入・発声の検証へ接続する結果である。
+カエルの強い鳴き声とトンボ類適合度の植生依存的な関連は、分布モデル・地点・環境調整の再適合でも残った。有尾類の増幅については環境の重複不足と推定感度が残る。モデルでは共通餌の減少だけでも増幅が生じる一方、植生によるヤゴの作用方向には、ヤゴが有尾類を減らす経路が寄与した。逆向きの捕食や季節内逆転は、今回の方向を生む必須条件ではなかった。これらは野外原因の同定ではなく、植生が直接保護と捕食者間の相殺をどう変えるかを独立に検証するための予測である。
 
 ## 図と説明
 
@@ -122,6 +142,14 @@ FFでSVの過大さは小さくなったが、uniformの三つの周辺区間へ
 
 **図4．** 両捕食者の共有処理制約下で、S/D間サイズゲートを最初の共存時点に固定した場合と、成長に応じた交差を許した場合。9×9格子・uniform対応重み。合成成長速度の診断であり、野外で逆転時期を測定した結果ではない。
 
+![図5 再適合の安定性](figures/fig5_joint_uncertainty.png)
+
+**図5．** SDM学習地理ブロックとNAAMP地点ブロックを独立再抽出し、各回で環境補助モデルも再適合した49回。線は中央値、点は反復値。精密な95%区間や符号の確率を示す図ではない。
+
+![図6 境界と経路除去](figures/fig6_amplification_boundary.png)
+
+**図6．** Aは仮定した高植生応答の局所密度弾性。代替餌処理負荷の曲線は解析的拡張で、B/Cの追跡モデルではヤゴ側共有処理はゼロ。Bは基準登場順・高植生における総OS危険の代数的分解。CはFF条件の植生×ヤゴ危険を、食べ合いの各方向を除いて比較。モデル供給量の隅点比較で、鳴き声の順位回帰係数ではない。
+
 ## 参照文献
 
 1. Davenport & Chalcraft (2013). [10.1002/ece3.691](https://doi.org/10.1002/ece3.691).
@@ -130,5 +158,8 @@ FFでSVの過大さは小さくなったが、uniformの三つの周辺区間へ
 4. Hopkins, Gall & Brodie (2011). [10.1111/j.1439-0310.2011.01963.x](https://doi.org/10.1111/j.1439-0310.2011.01963.x).
 5. Parris, Davis & Collins (2004). [10.1139/Z04-127](https://doi.org/10.1139/Z04-127).
 6. Beranek, Clulow & Mahony (2023). [10.1002/ecy.4108](https://doi.org/10.1002/ecy.4108).
+
+7. McCoy, Stier & Osenberg (2012). [10.1111/ele.12005](https://doi.org/10.1111/ele.12005).
+8. McCoy et al. (2022). [10.7717/peerj.13920](https://doi.org/10.7717/peerj.13920).
 
 本稿の参照文献は作業用の主要文献である。データ出典・SDM仕様の完全な投稿用記述、書誌整形、著者・貢献・資金・データ公開文は投稿前に確定する。数値根拠と更新判断は同ディレクトリのEVIDENCE_AND_GATES.mdに対応付ける。

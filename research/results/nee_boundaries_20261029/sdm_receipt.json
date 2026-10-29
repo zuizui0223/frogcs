@@ -1,0 +1,10 @@
+{
+  "replicates": 49,
+  "seed": 20261029,
+  "blocks": 258,
+  "species": 11,
+  "resampling": "same 2-degree geographic block weights across species and backgrounds",
+  "uncertainty": "SDM training resampling only; observation model/site sample fixed",
+  "reference_background": "original4000 points re-scored for each fit",
+  "interpretation": "finite-replicate stability, not joint95percent confidence intervals"
+}

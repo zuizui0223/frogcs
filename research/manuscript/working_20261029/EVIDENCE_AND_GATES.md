@@ -18,3 +18,13 @@
 G1は一部到達、G2・G3は未達。現在の結論は「植生の文脈依存的な関連は比較的残るが、有尾類の第三者作用の野外識別は未解決。モデルは飽和・代替餌処理・発生段階の作用を区別する検証仮説を与える」である。NEE達成と判定しない。
 
 詳細は同時更新のNEE_FOLLOWUP_AND_GATE_UPDATE_2026-10-29.mdとNEE_EXTERNAL_RAW_AUDIT_2026-10-29.mdを参照。投稿前には完全なデータ・SDM方法、書誌、著者情報、公開パッケージ、独立検証を完成させる必要がある。
+
+## 追加境界検証の対応
+
+- 図5：nee_boundaries_20261029/joint_refit_coefficients.csv、uncertainty_summary.csv。49回、両背景。有限反復の安定性であり精密な95%区間ではない。
+- 支持域・季節・種組成：strata_coefficients.csv、strata_diagnostics.csv、support_balance.csv、support_coverage.csv。原表seasonは調査回次。期間ごとの調査条件を再集計。カエル種別強度は原表403で未実施。
+- 図6：dt025_OS_paths.csv、network_null_all_physical_contrasts.csv。dt0125で符号を確認。F状態・D状態・有尾類経路の配分は代数的であり媒介因果効果ではない。
+- 理論境界：nee_boundaries.pyと一次文献監査。既知の非線形餌減少・体サイズ効果に対する対照として用い、新原理とは称さない。
+- 追跡は各年の20初期状態を再生。コピーしたカーネルは観測用コールバックのみで原カーネルと出力一致テストあり。
+
+最新判定はNEE_EXISTING_DATA_BOUNDARIES_2026-10-29.md。今回の検証目標の実施とNEE達成を分ける。図5/6の入力ハッシュはfigures/boundary_sources.json。
