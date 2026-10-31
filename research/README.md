@@ -1,5 +1,8 @@
 # 現行研究の入口
 
+**最新（2026-10-31）：方向だけのPOMで「不一致の最小条件」を定量化。** 4,248地点・63,180回の強発声について、トンボ類×植生（OV）負と、`ΔS = cor(O,発声 | 有尾類適合度高) - cor(O,発声 | 適合度低)` 負を**同時**に実現する構成が、uniformの既存132（完全に同じF_B面をまとめた104群）で0件、実際に80年を再実行した8パラメータ×24構造＝192構成でも0件。target-groupの固定132にはその2条件の1構成があるが、OS負を加えると0件。元の率の再計算ではtarget-groupも2条件で0件。**単に捕食の負方向が出るかではなく、植生条件と有尾類条件の双方の相関変化方向が同時に生じるかが、現行モデルの中心的な失敗。** [実測・最小不一致の全結果](MACRO_SIGNED_CONTEXT_MINIMAL_CONTRADICTION_RESULT_2026-10-31.md)／[30通りの部分条件](results/macro_signed_context_tradeoff_20261031/all_nonempty_direction_subsets.csv)／[検証CI](https://github.com/zuizui0223/frogcs/actions/runs/41167054391)。これは同じNAAMP標本での探索的なパターン指向比較であり、機構の因果推定でもABC事後確率でもない。
+
+
 **2026-10-31更新：方向だけのマクロPOMで識別すべき問題を絞った。** [132構成の実地点符号＋低S三値・人工観測ノイズ比較](MACRO_DIRECTIONAL_POM_RESULTS_2026-10-31.md)では、低SのO–鳴き声相関が「ほぼゼロ」になる観測bootstrap頻度がuniform93.3%、target-group93.5%。OS/OV等の確かな符号と**低Sほぼゼロを同時に満たす既存132構成は両背景0**。方向署名の最良群はuniform `case_015`代表、target-group `case_005`代表。ただし観測ノイズ事前分布は仮定的で、事後確率や因果性を示さない。
 
 [実際の8パラメータ80年再計算の方向評価](results/macro_directional_process_rate_20261031/)も実行し、構造群の別パラメータ保持回復率は13.5%/20.8%。[有尾類存在がヤゴ→カエル捕食危険を増幅するという追加の仮説的モデル](MACRO_S_FACILITATED_DANGER_POM_RESULTS_2026-10-31.md)では、元のF_B面を1e-15程度で再現する派生モデルで増幅なし・中・強を比較したが、どれも全部の方向を再現せず、量的距離は悪化した。**POMが主解析、ABM/PDEは補助、結果はモデルの再現限界を含めて報告する。** [PR #146](https://github.com/zuizui0223/frogcs/pull/146)はDraft。
