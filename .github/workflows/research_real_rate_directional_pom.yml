@@ -1,0 +1,96 @@
+name: Frogcs real-rate directional POM check
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/directional_process_rate_8.py
+      - research/scripts/test_directional_process_rate_8.py
+      - .github/workflows/research_real_rate_directional_pom.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reuse-genuine-demographic-process-draws:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deterministic numeric packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify readout completeness
+        run: python -m unittest discover -s research/scripts -p 'test_directional_process_rate_8.py' -v
+      - name: Download verified 80-year process-parameter source from prior successful action
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-process-rate-POM-real-simulator-20261031
+          run-id: 41163370575
+          github-token: ${{ github.token }}
+          path: research/results/macro_pom_process_prior_20261031
+      - name: Check genuine simulated-rate library was downloaded
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/results/macro_pom_process_prior_20261031')
+          for name in ['real_simulator_F_B_cells.csv.gz','process_prior_predictive_patterns.csv',
+                       'hypothetical_process_rate_draws.csv','receipt.json']:
+              f=p/name
+              if not f.is_file() or f.stat().st_size<50:raise SystemExit('Missing prior simulation '+str(f))
+              print(name, f.stat().st_size)
+          receipt=json.loads((p/'receipt.json').read_text())
+          assert receipt['model_original_replayed'] and receipt['n_draws']==8
+          PY
+      - name: Directional stage-structure scoring over all eight actual rate draws
+        run: python -u research/scripts/directional_process_rate_8.py --run
+      - name: Audit groups and field-bootstrap uncertainty treatment
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          root=Path('research/results/macro_directional_process_rate_20261031')
+          c=pd.read_csv(root/'process_case_signs.csv')
+          g=pd.read_csv(root/'structural_group_agreement.csv')
+          o=pd.read_csv(root/'observed_signs.csv')
+          r=pd.read_csv(root/'rate_draw_recovery.csv')
+          assert len(c)==384 and len(g)==24 and len(o)==12 and len(r)==8*12*2
+          assert c.groupby(['background','draw']).case.nunique().eq(24).all()
+          assert g.groupby('background').structural_group.nunique().eq(12).all()
+          assert (g.n_actual_rate_draws==8).all()
+          assert g.strict_joint_match_frequency.between(0,1).all()
+          print('REAL_PROCESS_DIRECTIONAL_AUDIT_OK',len(c),len(g),len(r))
+          PY
+      - name: Show complete group directional evidence
+        run: |
+          echo '===== structural_group_agreement.csv ====='
+          cat research/results/macro_directional_process_rate_20261031/structural_group_agreement.csv
+          echo '===== observed_signs.csv ====='
+          cat research/results/macro_directional_process_rate_20261031/observed_signs.csv
+          python - <<'PY'
+          import pandas as pd
+          p='research/results/macro_directional_process_rate_20261031/'
+          c=pd.read_csv(p+'process_case_signs.csv')
+          print('===== full-direction and low-S ternary matches across eight real demographic rate draws =====')
+          print(c.groupby('background').deterministic_selected_matches.agg(['max','min']).to_csv())
+          r=pd.read_csv(p+'rate_draw_recovery.csv')
+          print('===== heldout rate draw recoverability =====')
+          print(r.groupby('background').recovered.agg(['mean','size']).to_csv())
+          PY
+      - name: Preserve auditable process-rate directional results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-eight-process-draws-direction-only-20261031
+          path: research/results/macro_directional_process_rate_20261031/
+          if-no-files-found: warn
+          retention-days: 30
