@@ -41,7 +41,8 @@ jobs:
           r=Path('research/results/model_native_abc_rf_20261031')
           a=json.loads((r/'original_receipt.json').read_text())
           t=pd.read_csv(r/'original_prior_predictive_reference.csv.gz')
-          assert len(t)==4*4 and t.structure_id.nunique()==4
+          assert len(t)==4*4*2 and t.structure_id.nunique()==4
+          assert t.groupby(['structure_id','draw']).reverse_on.nunique().eq(2).all()
           assert a['original_source_replay_max_error']['F_B']<=1e-8
           assert a['original_source_replay_max_error']['F_fraction']<=1e-8
           assert all(t[[f'sign_log_{z}' for z in ('OS','OV','SV','OSV')]].isin([-1,0,1]).all())
