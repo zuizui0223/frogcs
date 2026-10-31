@@ -1,53 +1,78 @@
-# frogcs — unified manuscript source/claim and figure audit (2026-10-31)
+# frogcs — high-tier macro→mechanism single-paper claim / figure audit (2026-10-31)
 
-**Scope:** one integrated manuscript, not three submissions. [Working English manuscript](ONE_INTEGRATED_FROGCS_MANUSCRIPT_DRAFT_2026-10-31.md). This audit preserves the original numerical authorities and flags any cross-study interpretation that remains unsupported.
+**Editorial authority:** [new macro-first English manuscript](MACRO_TO_MECHANISM_HIGH_IMPACT_MANUSCRIPT_2026-10-31.md) and [high-tier first-shot plan](FROGCS_PUBLICATION_PORTFOLIO_AND_SUBMISSION_DECISION_2026-10-31.md). The earlier five-figure pulse-first ledger is superseded; previous git revisions preserve its historical content.
 
-## A. Source hierarchy / no silent independent replication
+## I. Exact source denominators and what is not evidence
 
-| Evidence unit | Exact authoritative files | Dataset grain | Not independent from |
+| Source and data unit | Source evidence | Main text role | Unacceptable interpretation |
 |---|---|---|---|
-| RC6 pulse spatial allocation | [archived manuscript](../paper/manuscript.md), [original RC6 release](../submission/RC6_RELEASE_RECEIPT.md), [focal endpoint](../revision/CURRENT_ENDPOINT_PAPER_SPINE_V0_2.md) | 4,236 paired wetter/drier route runs ×53 taxa; 2,916 prior-history-eligible comparisons | Macro NAAMP sample: some source monitoring records are shared. Not independent ecological replication |
-| Macro calling×guild suitability | [final macro numerical report](../research/FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md), [main integrated study](../research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) | 4,248 physical acoustic locations; 28 SDM species; 432 route components | RC6 uses same NAAMP programme but different filters, units and reference periods |
-| Main stage-network screen | [final mechanism report](../research/manuscript/FINAL_MECHANISM_COMPARISON_2026-10-27.md) | 3,600 candidate configurations; 20 candidates×24 nuisance contexts | Later PR finite-N models share some original seasonal biology but use different outputs and assumptions |
-| Finite-N/q stage model | [q3/6/9/12 verified report](https://github.com/zuizui0223/frogcs/blob/research/SF-population-scale-intermediate-q6-q9-20261031/research/SF_PREDATION_Q3_Q6_Q9_Q12_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md), [source audit run](https://github.com/zuizui0223/frogcs/actions/runs/41202367237) | Original 120-day F/S/D trophic + 80-year delayed cohort model, 8 synthetic ring patches, 12 independent RNG seeds/fixed condition | Cannot be used as numerical fit or independent validation of adult NAAMP vocal activity |
-| Frozen RC6 submission package | [RC6 readiness](../submission/SUBMISSION_READINESS.md), [October20 final source receipt](../submission/FINAL_INITIAL_SUBMISSION_RECEIPT_2026-10-20.md) | Source files and QA for a now-superseded JAE-formatted separate draft | The *single integrated* manuscript must be formatted and QA'd afresh |
+| **4,248 acoustic listening locations** | [Main 2026-10-26 macro report](../research/FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md) and [original manuscript](../research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md) | **MAIN empirical question** | 4,248 physically independent ponds; directly measured adult frog abundance, larval predation or reproductive success |
+| **28 source-modelled potential guild taxa** (Anura15, Caudata7, Odonata6) | GBIF occurrence-derived SDMs and GloBI candidate evidence, 30 candidates with 28 meeting modelling eligibility | Environmental suitability in macro patterns | All potential species present at sampled acoustic locations; direct nymph density or true local interaction |
+| **4,040 strictly prior calling site comparison pairs** | Main fixed network matched pairs; +27.68 percentage points historical calling | Secondary empirical context | Individual return / site fidelity or recruitment |
+| **3,907 prior-year water-eligible matched pairs** | Satellite water *conditional detection frequency* −1.481 points | Secondary site hydrological context | Direct pond inundation duration, area-specific water persistence or a predation condition |
+| **3,600 biological process structures**; **20×24 followup** | [original mechanism report](../research/manuscript/FINAL_MECHANISM_COMPARISON_2026-10-27.md) | **MAIN mechanism feasibility / failure test** | 3,600 independent ecological hypotheses or fitted empirical ecological models; one-of-24 as a posterior |
+| **source 120-day +80year finite-N model** | [Original source PR #146–155](https://github.com/zuizui0223/frogcs/pulls) and [q3/6/9/12 verified source](https://github.com/zuizui0223/frogcs/blob/research/SF-population-scale-intermediate-q6-q9-20261031/research/SF_PREDATION_Q3_Q6_Q9_Q12_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) | Mechanism's conditional prediction and population-scale counterexamples | Explaining local NAAMP adult calls, actual S→F mortality or measured frog demographics |
+| **RC6 historical rainfall / spatial concentration** | [old source manuscript](../paper/manuscript.md) and [author's main source editorial decision](../research/MACRO_FIRST_EDITORIAL_DECISION_2026-10-26.md) | **ONE short Introduction motivation only** | Abstract headline, main Results, Figure 1, independently replicated ecological evidence, or a second submission |
 
-The single manuscript does not imply a pre-existing independent natural-site dataset testing both acoustic pulse and actual larval predation at the same physical pond/time. No WFTS data were requested or analysed, and WFTS must not appear as external confirmation or a required gate.
+Both the current macro and historic RC6 share the NAAMP monitoring programme. **No independent acoustic replication** should be inferred. Uniform and target-group are two specifications of the same GBIF occurrence sources.
 
-## B. Claim ledger
+## II. Claims for the only four main figures
 
-| ID | Claim permitted in manuscript | Source/number | Qualification required |
-|---|---|---|---|
-| E1 | Rain-related chorus activity includes direct silent→strong states | RC6 original Results, 4,236 pairs, 53 taxa | The transition is observed CI0→CI2/3, not colonization or new adults |
-| E2 | Within-taxon multi-site concentration exceeds first-order null | observed1.650 vs 1.353, residual0.297, P=0.000999, 2,916 history-eligible | Comparator represents species rainfall sensitivity, past physical-site propensity, dry persistence and matched expected incidence; sequential stops ≠ simultaneous calling or movement |
-| E3 | Deep spread and earlier taxon-specific site targeting | third-and-later stops CI2/3 97.3%; β0.151 [0.129,0.173] | Study-specific conditioning and historical physical-site; not known individual site fidelity |
-| E4 | Calling–odonate relation weak at regional scale | 4,248 sites, regional Spearman uniform−0.095/target-group−0.086 | Environmental suitability is not local nymph density; within-route weaker |
-| E5 | Third-guild context changes the regional correlation | high−low caudate high−low uniform −0.385 [−0.509,−0.240], target-group −0.179 [−0.328,−0.029] | Backgrounds are same occurrence source; low stratum uniform +0.101 vs target-group −0.004, so do not claim robust sign flip |
-| E6 | Landscape vegetation interactions are conditional | O×V −0.087/−0.064, S×V +0.058/+0.046, three-way +0.037 [+0.008,+0.068] / +0.027 [−0.024,+0.073] | Target-group S×V and both-area three-way uncertainties; 1-km EarthEnv summarized at 3km ≠ pond vegetation refuge |
-| E7 | Physical sites with strong calls were used before | matched4,040; prior strong calling difference+27.68 pp [25.07,30.17] | Does not show true individual return, breeding success or larval survival |
-| E8 | Previous year satellite water detection differs | matched3,907 water-detected eligible pairs; −1.481 pp [−2.601,−0.294] | Frequency conditional on detected water pixels is not pond hydroperiod; water area had no similarly clear difference |
-| M1 | Some stage-structured networks can reproduce restricted directional contrasts | 3,600 source catalogue; finalist1/24 of common sensitivity conditions | Parameter search makes its occurrence no independent empirical validation |
-| M2 | Model did not reproduce empirical three-way direction | empirical macro uniform positive +0.037, model coarse −0.0482 / fine −0.0104 | Distinct statistical predictors, so not a formal model likelihood rejection; report mismatch anyway |
-| M3 | Species' arrival order was NOT isolated by early finite-N contrast | both contexts D arrival0/S arrival20; changed S growth0.014→0.030 and D aquatic duration40→60 | Historical name D_first_S_overtakes is a label, not actual arrival-order experiment |
-| M4 | Single growth-factor sign reversal not general over rate IDs | growth sign reversal original rate ID0 yes, rateID4/8/12 no, among 4 hypothetical LHS draws | Synthetic rates not an ecological posterior; one of four selected vector classes |
-| M5 | rho and conversion are structurally nonidentifiable when immigration OFF | local annual recruitment proportional to rho×conversion | Do not label two independently supported mechanisms; migration vs recolonization and environmental suitability are not equivalent |
-| M6 | In selected synthetic q3/high-recruitment regime, S→F direct predation is necessary/sufficient for strict sign pattern | [PR #153 full edge audit](https://github.com/zuizui0223/frogcs/actions/runs/41200093960) | Required *for model-defined strict growth-dependent reversal*, not natural ecological necessity/sufficiency |
-| M7 | q alters strict sign reversal | q3:2/2, q6:1/2, q9:0/2, q12:0/2 source plant inputs, 12seed each, high recruitment, OFF immigration | q6/q9 added after q12 failure; count per density unit arbitrary; one plant function inactive when D→S disabled |
-| M8 | Original FE reverse predation is a null in PR149–152 two-context source | F completed day65; D emergence ends by day45/65; exact zero | PR148 third scenario D later, FE active; PR147 different individual ABM, do not generalize null |
-| M9 | Reoccupation is not identical to long-run rescue | year-to-year exact integer0→positive return events, 3y persistence, year80 occupancy separately | No parent UID and no field colonization / acoustic observation process |
+### Figure 1 — Third-guild conditionality (macro principal result)
 
-## C. Five-figure manuscript structure
+- Pooled odonate suitability vs frog strong-calling rho: **−0.095 uniform / −0.086 target-group** (whole region).
+- Low/high pond-breeding Caudata suitability stratum rho: **+0.101 / −0.284** uniform and **−0.004 / −0.183** target-group.
+- High-minus-low difference: **−0.385 [−0.509,−0.240]** and **−0.179 [−0.328,−0.029]**, with route-group resampling.
+- **Supported:** contextual difference in correlation strength persists across the two backgrounds. **Not supported:** positive-to-negative sign flip under both backgrounds; direct predation; within-pond mechanism.
+- **High-tier unresolved gate:** disentangle between-region shared climatic/geographic suitability versus within-route variation and survey detection/effort. Current within-route result is weaker. Original source code/outputs are authoritative, no post hoc selection of best geographical subset.
 
-1. **Fig1: short behavioural pulse**. Do not show independent-site movements; show sequential route stop sampling, original one focal comparator.
-2. **Fig2: prior physical-site use and water detection**. Show β0.151 from RC6 and +27.68pp from macro as different measures; −1.481pp in different eligibility set.
-3. **Fig3: modelled three-guild suitability and vegetation**. Report BOTH SDM backgrounds, high-v-low caudate heterogeneity, whole-region vs weaker within-route and uncertain three-way.
-4. **Fig4: main 3,600 mechanism screen**. Include the one-of-24 conditional success and original observed-vs-model three-way sign discrepancy prominently.
-5. **Fig5: finite-N stage/predation/recruitment/synthetic q boundary**. Keep q3,q6,q9,q12; all-active/SF-only/no-SF/no-predation; 12 independent source seed labels and floor/ceiling, no observed wetland demographic labels.
+### Figure 2 — Landscape vegetation, site history and hydrological eligibility
 
-No figure files were rendered or validated at this stage. Source run artifacts and original output CSVs must be transformed into final resolution-appropriate figures later; never replace an absent original-data figure with a visually persuasive but ungrounded illustration.
+- Whole-region 3km model O×Caudata **−0.166 [−0.229,−0.108] uniform / −0.086 [−0.151,−0.023] target-group**.
+- O×V **−0.087 [−0.124,−0.048] / −0.064 [−0.115,−0.014]**.
+- S×V **+0.058 [+0.015,+0.101] / +0.046 [−0.022,+0.109]**.
+- O×S×V **+0.037 [+0.008,+0.068] / +0.027 [−0.024,+0.073]**. **Not robust across original source background/within-route/radius**.
+- Historical same-physical-site calling difference **+27.68 points [25.07,30.17] /4,040 matched pairs**; water detection frequency **−1.481 points [−2.601,−0.294] /3,907 eligible pairs**.
+- Historical calling is not individual field philopatry; satellite detected-water frequency is not original site hydroperiod or seasonal salinity. These are a distinct site-environment analysis, not adjustments that remove all confounding from the main three-way relationship.
 
-## D. Journal and submission gate
+### Figure 3 — Original process-model feasibility and negative evidence
 
-Current first target: [Freshwater Biology Research Article](https://onlinelibrary.wiley.com/page/journal/13652427/homepage/productinformation.html), because it accepts freshwater behavioural, population, community, geographically broad and theoretically informed work. An ambitious alternative is [Journal of Animal Ecology](https://besjournals.onlinelibrary.wiley.com/hub/journal/13652656/aims-and-scope/read-full-aims-and-scope) if the one-paper novelty is defensible to a broad animal-ecology readership; existing JAE QA is for a **different earlier manuscript**. The same **one manuscript** may be submitted sequentially to an alternative journal following an editorial decision, never simultaneously to multiple journals.
+- Original catalogue **3,600** unique process structures; **20 candidate configurations ×24 common sensitivity contexts**.
+- Winner 1479 and reduced1455 matched three target pairwise directions and hazard/survival in **only 1/24 contexts**. Not observational fitted likelihood or valid unique mechanism selection.
+- Observed macro O×S×V 3-way **+0.037** uniform; source model candidate **−0.0482 at coarse 3-level rank grid / −0.0104 at fine 21-level grid**. **Full macro pattern not reproduced**.
+- Candidate model's direct and indirect pathways, vegetation refuge, nonlinear odonate capture have source justification but do not establish actual field interactions. Distinct source predictors (supplies, refuge multiplier and juvenile hazards) vs macro predictors (SDM suitability, EarthEnv 3km vegetation and adult calling).
+- **High-tier unresolved gate:** define observation-to-process mapping or a genuinely discriminating prediction. Preserving the failure is essential to avoid a fabricated full-fit narrative.
 
-**Pre-submission checks pending:** exact source and reference cross-check, Figures1–5, linked SI with all failures, source-data archive/code-access terms, author affiliations, funding, ethics/permissions if applicable, CRediT/COI statements, coauthor sign-off and fresh target-journal manuscript/format QA. **No journal submission has yet occurred.**
+### Figure 4 — Demographic conditionality and finite-N limitations
+
+- Original source **120-day stage-specific predation +80-year lagged recruitment**, synthetic eight-ring-patch movement fraction .15, model-native end-of-year80 F occupied-patch count, not adult CallingIndex.
+- In original rateID12+rho(ID0) high synthetic recruitment / immigration OFF and q3, S-larva→F-larva edge removal eliminates strict low-growth positive / high-growth negative movement effect; **S→F-only preserves** it. This is model-native **conditional necessary and sufficient for strict sign criterion**, not nature.
+- q population count-per-density scale is arbitrary; strict sign reversal over two fixed plant-input settings with active S→F: **q3 2/2, q6 1/2, q9 0/2, q12 0/2**. Test 12 RNG seeds per frozen condition. q6/q9 follow q12 findings (exploratory).
+- Only **1/4 hypothetical process-rate vectors** showed original S-growth-induced strict reversal. With immigration OFF, rho×conversion is a **product** (structural non-identifiability): not separate independent biological mechanisms.
+- In the SF-only network, the nominal vegetation mechanism protecting salamanders from odonates is **inactivated** if odonate→salamander predation is removed. Two input plant configurations are not independent tests of two fully active plant pathways.
+- F-completed→emerging-D reverse predation FE is stage-nonoverlapping and zero in the finite-N two-context subset; it is active in the third developmental context of PR148 and not comparable to the PR147 individual ABM.
+- **High-tier unresolved gate:** source population q scale and process rates lack field calibration; model does not map to adult calling.
+
+## III. One manuscript, not a results catalogue
+
+**Authoritative flow:** macro conditioned contrast → vegetation/environment/history patterns → stage mechanism screen including mismatch → scale- and recruitment-limited alternative demographic outcomes.
+
+**What gets demoted:**
+- RC6 full old 4,236 wet/dry comparisons and within-taxon concentration: Introduction's idea history and provenance only.
+- Early PR146 rate screens, late q grids and every per-shard technical test: SI/provenance, not five or ten extra Results.
+- Large numbers of synthetic return events (hundreds of thousands) as if independent tests: SI receipts only, never ecological sample size.
+- After-results selected mechanism labels or q thresholds as field validated general ecological processes.
+
+## IV. High-tier editorial go/no-go
+
+| Gate | Minimum for ambition | Current status |
+|---|---|---|
+| **G1 / field-context discrimination** | Show whether macro contrast remains beyond geography/shared environment/survey effects, with robust within-region or held-out variation | **NOT ESTABLISHED**. Existing within-route weaker, both-background regional difference supported |
+| **G2 / observation-to-process mapping** | Compare ecological model and measured macro coefficient on a justified common process/observation scale, including observed positive three-way and background sensitivity | **NOT ESTABLISHED**. Model currently wrong-sign three-way; no real co-pond predator density |
+| **G3 / broad theory/independent prediction** | One testable principle whose predictions generalize to relevant biological-rate/population ranges and independent data | **NOT ESTABLISHED**. Current q3 necessary/sufficient sign pattern breaks with q/biological rate |
+
+**Working journal ambition** (official verified 2026 criteria): [Nature Ecology & Evolution](https://www.nature.com/natecolevol/content) stretch, [Ecology Letters](https://onlinelibrary.wiley.com/page/journal/14610248/homepage/ForAuthors.html) first-shot development goal if gates are addressed, [Global Ecology and Biogeography](https://onlinelibrary.wiley.com/page/journal/14668238/homepage/productinformation.html) strong macro-focused target otherwise. These are **alternative sequential destinations for the same manuscript**, not parallel or split papers.
+
+## V. Real submission state
+
+[High-tier macro-first draft](MACRO_TO_MECHANISM_HIGH_IMPACT_MANUSCRIPT_2026-10-31.md) now has one Abstract, Introduction, Materials & Methods, Results, Discussion, Conclusion and four-figure design. **No actual Figures1–4 were produced yet.** No article has been submitted, reviewed, accepted or authorized by all coauthors. Original code, raw data and PR #146–155 source outcomes unchanged. Target-specific final figure, SI, reference, author, code/data policy and submission QA remain to be done.
