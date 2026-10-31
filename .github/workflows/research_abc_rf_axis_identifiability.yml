@@ -52,11 +52,11 @@ jobs:
           c=pd.read_csv(p/'conditional_abc_posterior_concentration.csv')
           r=json.loads((p/'abc_rf_axis_receipt.json').read_text())
           assert len(a)==12 and len(b)==3*(9+4+4) and len(c)==3
-          assert a.groupby('scale').axis.nunique().eq(4).all()
+          assert a.groupby('scale')['axis'].nunique().eq(4).all()
           assert a.n_heldout.eq(624).all()
           assert c.n_classes.eq(12).all()
           assert c.conditional_effective_number_of_models.between(1,12.000001).all()
-          assert (b.groupby(['scale','axis']).count.sum().unstack().eq(624)).all().all()
+          assert (b.groupby(['scale','axis'])['count'].sum().unstack().eq(624)).all().all()
           assert r['holdout_rate_draws']==624
           print('GENUINE_ABC_RF_AXIS_RECOVERY_AUDIT_SUCCESS')
           PY
