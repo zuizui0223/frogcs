@@ -1,0 +1,42 @@
+name: Frogcs D-E source-locked actual 4248-site six-pattern emission smoke
+
+on:
+  push:
+    branches:
+      - research/common-engine-D-E-nuisance-pom-20261101
+    paths:
+      - research/scripts/D_E_same_theta_4248_site_proxy_POM.py
+      - research/scripts/test_D_E_same_theta_site_proxy_POM.py
+      - .github/workflows/research_D_E_4248site_trilinear_source_smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  true-original-naamp-six-pattern-and-fixed-emission-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 19d45ffb833e2970aff8d88de101736aee289d26
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/literature_extension_20261029
+            research/results/naamp_remote_vegetation_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+            research/results/scale_comparison_20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original source numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Test actual 4248-site source and six original statistical definitions
+        run: python -m unittest discover -s paper/research/scripts -p test_D_E_same_theta_site_proxy_POM.py -v
