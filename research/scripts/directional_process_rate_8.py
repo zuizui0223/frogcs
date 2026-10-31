@@ -21,6 +21,7 @@ from select_macro_trophic_scenarios import ROOT, SITE, VISITS, LEVELS, load_coho
 from pattern_oriented_abc_pilot import (
     SEED, PATTERNS, BACKGROUNDS, N_BOOT,
     get_design, stats_from_y, compare_frozen_macro, bootstrap_observed,
+    site_response,
 )
 from directional_pom_132 import (
     LOW_S, observational_categories,
@@ -72,6 +73,7 @@ def evaluate_rate_direction(d,cells,model_meta,n_reps=REPS_PER_RATE):
                                                n_boot=N_BOOT)
         ostates,delta=observational_categories(boot)
         selected=selected_directional_constraints(ostates)
+        point_state,_=observational_categories(obsvec[None,:],threshold=delta)
         nuisance=nuisance_draws(d,n_reps,SEED+40000+
                                 (0 if bg=="uniform" else 10000))
         by_group=defaultdict(list);by_draw=defaultdict(list)
@@ -88,13 +90,13 @@ def evaluate_rate_direction(d,cells,model_meta,n_reps=REPS_PER_RATE):
                 by_group[group].append(states)
                 by_draw[(draw,group)].append(states)
                 deterministic=stats_from_y(
-                    __import__("pattern_oriented_abc_pilot").site_response(d,bg,grid),
+                    site_response(d,bg,grid),
                     design)
                 cat,_=observational_categories(deterministic[None,:],threshold=delta)
                 row=dict(background=bg,draw=draw,case=int(case),structural_group=group,
                          deterministic_selected_matches=int(
                              np.sum(cat[0,list(selected)] ==
-                                    observational_categories(obsvec[None,:],threshold=delta)[0,list(selected)])),
+                                    point_state[0,list(selected)])),
                          selected_constraint_count=len(selected))
                 for i,p in enumerate(PATTERNS):
                     row["model_"+p]=float(deterministic[i])
