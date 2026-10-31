@@ -1,0 +1,61 @@
+name: Frogcs intrinsic 2x2x2 POM original 80-year baseline
+
+on:
+  push:
+    branches: [research/multigeneration-reversal-abm-pde-20261031]
+    paths:
+      - research/MACRO_2X2X2_POM_ABC_REJECTION_PROTOCOL_2026-10-31.md
+      - research/scripts/abc_intrinsic_factorial.py
+      - research/scripts/test_abc_intrinsic_factorial.py
+      - .github/workflows/research_abc_intrinsic_factorial.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-intrinsic-signs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Validate interactions are true 2x2x2 model-derived differences
+        run: python -m unittest discover -s research/scripts -p 'test_abc_intrinsic_factorial.py' -v
+      - name: Compute exact signs from archived 80y simulation without site or acoustic mapping
+        run: python -u research/scripts/abc_intrinsic_factorial.py --run
+      - name: Audit all 24 source models and 12 structures on both scales
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/macro_intrinsic_factorial_abc_20261031')
+          a=pd.read_csv(p/'archived_intrinsic_24_factors.csv')
+          c=pd.read_csv(p/'archived_intrinsic_12_classes.csv')
+          assert len(a)==48 and len(c)==24
+          assert a.groupby('scale').case.nunique().eq(24).all()
+          assert c.groupby('scale').structural_class.nunique().eq(12).all()
+          assert a.n_matching_signs.between(0,4).all()
+          assert set(a.scale)=={'log_F_B','raw_F_B'}
+          print('INTRINSIC_FACTORIAL_POM_SUCCESS',len(a),'case/scales',int(a.matching_target.sum()),'exact matches')
+          PY
+      - name: Print compact fixed-rate POM evidence
+        run: |
+          echo '===== archived_intrinsic_12_classes.csv ====='
+          cat research/results/macro_intrinsic_factorial_abc_20261031/archived_intrinsic_12_classes.csv
+          echo '===== archived_intrinsic_24_factors.csv ====='
+          cat research/results/macro_intrinsic_factorial_abc_20261031/archived_intrinsic_24_factors.csv
+      - name: Retain all eight-corner sign contrasts and SHA receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-intrinsic-2x2x2-POM-20261031
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn
