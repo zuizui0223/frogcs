@@ -67,13 +67,16 @@ class EqualDiffusionRateABCOutputTests(unittest.TestCase):
 
     def test_missing_one_prior_seed_or_stochastic_arm_fails_closed(self):
         x=source_fixture()
+        incomplete=x[~((x.mobility=="S_adult_022")&
+                       (x.guild=="S")&(x.seed==SEEDS[-1])&(x.reverse==True))]
         with self.assertRaises(AssertionError):
-            paired_effects(x.iloc[:-1])
+            paired_effects(incomplete)
         s,r,i=paired_effects(x)
         with self.assertRaises(AssertionError):
             summarize_four_seed(s.iloc[:-1],r,i)
+        duplicate=x[x.guild=="S"].iloc[[0]]
         with self.assertRaises(AssertionError):
-            paired_effects(pd.concat([x,x.iloc[[0]]],ignore_index=True))
+            paired_effects(pd.concat([x,duplicate],ignore_index=True))
 
 
 if __name__=="__main__":
