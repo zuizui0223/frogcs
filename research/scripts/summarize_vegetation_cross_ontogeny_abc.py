@@ -55,8 +55,20 @@ def load_archived_cross_sources(folder=OUT):
                 rate_ids=p.draw.to_numpy(int)
                 first_rate=p[list(key)].copy()
             else:
-                pd.testing.assert_frame_equal(first_rate,p[list(key)],
-                    check_exact=True)
+                # CSV decimal formatting introduces ~1e-16 noise.
+                # Preserve exact original draw IDs and integer maturation lags,
+                # and keep continuous biological parameters numerically equal
+                # to within 1e-13 (far stricter than any biological scale).
+                if (not np.array_equal(first_rate["draw"].to_numpy(int),
+                                       p["draw"].to_numpy(int))
+                    or not np.array_equal(first_rate["f_delay"].to_numpy(int),
+                                          p["f_delay"].to_numpy(int))):
+                    raise AssertionError("Different biological rate IDs/maturity classes")
+                continuous=[k for k in key if k not in ("draw","f_delay")]
+                if not np.allclose(first_rate[continuous].to_numpy(float),
+                                   p[continuous].to_numpy(float),
+                                   rtol=0,atol=1e-13):
+                    raise AssertionError("Original six cohorts have unequal prior parameters")
             x=pd.read_csv(file)
             if len(x)!=12*2*64*2 or x.structure_id.nunique()!=24:
                 raise AssertionError("Cross role shard incomplete")
