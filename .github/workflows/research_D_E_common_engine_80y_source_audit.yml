@@ -1,0 +1,53 @@
+name: Frogcs independent true80y D-E same-engine nuisance and long-run audit
+
+on:
+  push:
+    branches:
+      - research/common-engine-D-E-nuisance-pom-20261101
+    paths:
+      - .github/workflows/research_D_E_common_engine_80y_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-all-original-80year-source-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_SOURCE_RUN: '41213962559'
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 19d45ffb833e2970aff8d88de101736aee289d26
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/literature_extension_20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source and independent audit dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download all sixteen true80y original-source q-mobility-seed artifacts
+        run: |
+          mkdir -p paper/research/results/D_E_common_engine_20261101/all_original_shards
+          gh run download "$ORIGINAL_SOURCE_RUN" --repo "${{ github.repository }}" --pattern "frogcs-DE-80y-*" --dir paper/research/results/D_E_common_engine_20261101/all_original_shards
+      - name: Recompute every true source four-direction sign and matched year80 outcome from original source receipts
+        run: |
+          python paper/research/scripts/audit_D_E_common_engine_nuisance_80y.py --input paper/research/results/D_E_common_engine_20261101/all_original_shards --output paper/research/results/D_E_common_engine_20261101/audited_true80
+      - name: Preserve complete original biological source and all rate-nuisance-effect tables
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-D-E-same-source-true80y-q-mobility-prior-audited
+          path: paper/research/results/D_E_common_engine_20261101/audited_true80/
+          if-no-files-found: warn
+          retention-days: 30
