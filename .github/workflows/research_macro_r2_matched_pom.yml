@@ -1,0 +1,187 @@
+name: Frogcs observed-R2-matched acoustic directional POM
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MACRO_R2_MATCHED_DIRECTIONAL_POM_PROTOCOL_2026-10-31.md
+      - research/scripts/r2_calibrated_directional_pom.py
+      - research/scripts/test_r2_calibrated_directional_pom.py
+      - research/scripts/summarize_r2_matched_directional.py
+      - .github/workflows/research_macro_r2_matched_pom.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed scientific dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Exact rank-R2 and synthetic source-noise invariants
+        run: python -m unittest discover -s research/scripts -p 'test_r2_calibrated_directional_pom.py' -v
+
+  evaluate:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        family: [frozen132, realrate192, facilitation72]
+        noise_type: [iid, spatial_block_025]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Get original genuine 80-year model-rate draws from previous success
+        if: matrix.family == 'realrate192'
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-process-rate-POM-real-simulator-20261031
+          run-id: 41163370575
+          github-token: ${{ github.token }}
+          path: research/results/macro_pom_process_prior_20261031
+      - name: Get separate real 80-year hypothesized danger amplification model
+        if: matrix.family == 'facilitation72'
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-S-facilitated-danger-POM-20261031
+          run-id: 41164886106
+          github-token: ${{ github.token }}
+          path: research/results/macro_s_facilitated_danger_20261031
+      - name: Run fixed 8-term observed-R2 calibration and independent 128-replicate directional test
+        run: |
+          python -u research/scripts/r2_calibrated_directional_pom.py --run \
+            --family ${{ matrix.family }} --noise-type ${{ matrix.noise_type }} \
+            --cal-reps 16 --eval-reps 128
+      - name: Audit complete model labels and truthful calibration-failure flags
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import numpy as np
+          import pandas as pd
+          import os
+          family=os.environ['FAMILY'];noise=os.environ['NOISE_TYPE']
+          p=Path('research/results/macro_r2_matched_directional_20261031')
+          stem=family+'_'+noise
+          s=pd.read_csv(p/(stem+'_source_group_scores.csv'))
+          r=pd.read_csv(p/(stem+'_candidate_scores.csv'))
+          o=pd.read_csv(p/(stem+'_observed_r2_and_patterns.csv'))
+          summ=pd.read_csv(p/(stem+'_family_summary.csv'))
+          labels={'frozen132':132,'realrate192':192,'facilitation72':72}[family]
+          assert len(r)==labels*2*2 and len(o)==2*5 and len(summ)==8
+          assert len(s)==4*s.source_group.nunique()
+          assert set(r.mode)=={'rank_signal','log_signal'}
+          assert set(r.background)=={'uniform','target_group'}
+          assert set(r.calibration_status).issubset({
+             'MATCHED_R2','MATCHED_WITHOUT_NOISE',
+             'NOISE_ONLY_R2_UNREACHABLE','NOISE_R2_NOT_BRACKETED','APPROXIMATE_R2_UNMATCHED'})
+          assert r.modal_complete_count.between(0,128).all()
+          assert r.soft_joint_agreement.between(0,1).all()
+          assert np.isfinite(o.r2_observed).all()
+          print('PER_FAMILY_R2_POM_AUDIT',family,noise,len(r),'labels',s.source_group.nunique(),'distinct groups')
+          PY
+        env:
+          FAMILY: ${{ matrix.family }}
+          NOISE_TYPE: ${{ matrix.noise_type }}
+      - name: Print calibrated-vs-unreachable summary and top groups
+        run: |
+          p=research/results/macro_r2_matched_directional_20261031
+          cat "$p/${{ matrix.family }}_${{ matrix.noise_type }}_family_summary.csv"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import pandas as pd
+          f=os.environ['FAMILY'];t=os.environ['NOISE_TYPE']
+          p=Path('research/results/macro_r2_matched_directional_20261031')
+          g=pd.read_csv(p/(f+'_'+t+'_source_group_scores.csv'))
+          g=g[g.calibration_status.isin(['MATCHED_R2','MATCHED_WITHOUT_NOISE'])]
+          print('TOP_R2_MATCHED_DIRECTIONS')
+          print(g.sort_values(['background','mode','soft_joint_agreement'],
+             ascending=[True,True,False]).groupby(['background','mode']).head(6).to_csv(index=False))
+          PY
+        env:
+          FAMILY: ${{ matrix.family }}
+          NOISE_TYPE: ${{ matrix.noise_type }}
+      - name: Keep all labels, calibrated group scores, reported non-reachability and source SHA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-r2-${{ matrix.family }}-${{ matrix.noise_type }}
+          path: research/results/macro_r2_matched_directional_20261031/
+          if-no-files-found: warn
+          retention-days: 30
+
+  summarize:
+    needs: evaluate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned scientific packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Combine all six source-backed family/noise artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-r2-*
+          merge-multiple: true
+          path: research/results/macro_r2_matched_directional_20261031
+      - name: Verify and summarize matched-only and unreachable families
+        run: python -u research/scripts/summarize_r2_matched_directional.py --run
+      - name: Audit six-source complete evidence and background support
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/macro_r2_matched_directional_20261031')
+          s=pd.read_csv(p/'source_family_summary.csv')
+          x=pd.read_csv(p/'all_source_group_scores.csv')
+          z=pd.read_csv(p/'cross_background_directional_matches.csv')
+          obs=pd.read_csv(p/'unique_observed_r2_and_patterns.csv')
+          assert len(s)==3*2*2*2 and len(z)==3*2*2
+          assert len(obs)==2*5
+          assert s.groupby(['family','noise_type']).size().eq(4).all()
+          assert (s.n_source_groups==s.n_r2_matched_groups+s.n_r2_unreachable_groups+
+                 s.n_r2_not_bracketed+s.n_r2_unconverged).all()
+          assert x.groupby(['family','noise_type','background','mode']).source_group.nunique().ge(1).all()
+          print('ALL_THREE_FAMILY_R2_MATCHED_POM_SUCCESS',len(s),'family/noise/mode/background rows')
+          PY
+      - name: Persist concise all-family matched-R2 comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-R2-calibrated-POM-all-family-summary-20261031
+          path: |
+            research/results/macro_r2_matched_directional_20261031/source_family_summary.csv
+            research/results/macro_r2_matched_directional_20261031/all_source_group_scores.csv
+            research/results/macro_r2_matched_directional_20261031/top5_eligible_source_groups.csv
+            research/results/macro_r2_matched_directional_20261031/cross_background_directional_matches.csv
+            research/results/macro_r2_matched_directional_20261031/unique_observed_r2_and_patterns.csv
+          if-no-files-found: warn
+          retention-days: 30
