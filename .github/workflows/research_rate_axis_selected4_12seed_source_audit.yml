@@ -1,0 +1,57 @@
+name: Frogcs selected original rate axes full12seed source audit
+
+on:
+  push:
+    branches:
+      - research/rate-axis-swap-growth-rescue-20261031
+    paths:
+      - .github/workflows/research_rate_axis_selected4_12seed_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  confirm-all-four-post-pilot-axes-on-new-independent-seeds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR151_SOURCE_RUN: '41195960127'
+      PR151_SOURCE_ARTIFACT: frogcs-growth-duration-four-rate-12seed-verified
+      SCREEN_RUN: '41197208457'
+      SCREEN_ARTIFACT: frogcs-rate-axis-all16-true80y-four-seed-audited
+      NEW8_RUN: '41197418760'
+      BASE_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/old_PR151
+      SCREEN_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/initial_all16
+      NEW_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/four_axes_new8
+      OUT_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/verified_12seed
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Fetch genuine original PR151 ID0 and ID12 source outcomes for all twelve seeds
+        run: |
+          mkdir -p "$BASE_DIR"
+          gh run download "$PR151_SOURCE_RUN" --repo "${{ github.repository }}" --name "$PR151_SOURCE_ARTIFACT" --dir "$BASE_DIR"
+      - name: Fetch complete outcome-unselected sixteen-axis old four-seed screen
+        run: |
+          mkdir -p "$SCREEN_DIR"
+          gh run download "$SCREEN_RUN" --repo "${{ github.repository }}" --name "$SCREEN_ARTIFACT" --dir "$SCREEN_DIR"
+      - name: Fetch all sixteen new true source-shards on eight independent RNG seeds
+        run: |
+          mkdir -p "$NEW_DIR"
+          gh run download "$NEW8_RUN" --repo "${{ github.repository }}" --pattern "frogcs-rate-axis-add8-*" --dir "$NEW_DIR"
+      - name: Verify fixed original biology, 12 genuine seeds, exact 0-to-positive event ledger and plant role effects
+        run: python research/scripts/audit_rate_axis_selected_four_12seed.py --pr151-original "$BASE_DIR" --original4screen "$SCREEN_DIR" --new8shards "$NEW_DIR" --out "$OUT_DIR"
+      - name: Preserve scientific results including unsupported sign patterns
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-four-original-rate-axes-12seed-source-verified
+          path: research/results/growth_rescue_rate_axis_swaps_20261031/verified_12seed/
+          retention-days: 30
+          if-no-files-found: warn
