@@ -1,0 +1,44 @@
+name: Frogcs audit completed 80y common-kernel spatial pilot
+
+on:
+  push:
+    branches:
+      - research/common-kernel-spatial-cohort-20261031
+    paths:
+      - research/scripts/audit_spatial_cohort_80y_result.py
+      - .github/workflows/research_spatial_cohort_80y_artifact_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-and-model-result-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41190618714'
+      SOURCE_ARTIFACT: frogcs-80year-spatial-cohort-4rate-3plant-3order-4movement
+      RESULTS_DIR: research/results/common_kernel_spatial_cohort_20261031
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Fetch real successful 80y source artifact, no rerun
+        run: |
+          mkdir -p "$RESULTS_DIR"
+          gh run download "$SOURCE_RUN" --repo "${{ github.repository }}" --name "$SOURCE_ARTIFACT" --dir "$RESULTS_DIR"
+      - name: Audit full 80y factorial and paired sign changes
+        run: python research/scripts/audit_spatial_cohort_80y_result.py --source-dir "$RESULTS_DIR"
+      - name: Preserve audited numerical tables and finished report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-80year-common-kernel-spatial-pilot-audited
+          path: research/results/common_kernel_spatial_cohort_20261031/
+          retention-days: 30
+          if-no-files-found: warn
