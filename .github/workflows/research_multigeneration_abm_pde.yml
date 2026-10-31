@@ -1,0 +1,57 @@
+name: Multigeneration stage-reversal ABM and PDE
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/multigeneration_reversal.py
+      - research/scripts/test_multigeneration_reversal.py
+      - research/MULTIGENERATION_ABM_PDE_PLAN_2026-10-31.md
+      - .github/workflows/research_multigeneration_abm_pde.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-simulate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install reproducible minimal packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Check individual and PDE structural invariants
+        run: python -m unittest discover -s research/scripts -p 'test_multigeneration_reversal.py' -v
+      - name: Execute fixed 20-year synthetic counterfactual
+        run: python -u research/scripts/multigeneration_reversal.py --run --years 20
+      - name: Inspect yearly and lagged results
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          root=Path('research/results/multigeneration_reversal_20261031')
+          a=pd.read_csv(root/'annual_stage_trajectories.csv')
+          b=pd.read_csv(root/'reverse_on_minus_off.csv')
+          assert len(a)==10*21 and len(b)==5*21
+          assert set(a['model'])=={'abm','pde'}
+          assert set(a.reverse)=={True,False}
+          assert (a['n_total']>=0).all()
+          print('TRAJECTORIES',len(a),'CONTRASTS',len(b))
+          print(b[b.year.isin((1,2,5,10,20))].to_string(index=False))
+          PY
+      - name: Save synthetic exploratory results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-multigeneration-abm-pde-20261031
+          path: research/results/multigeneration_reversal_20261031/
+          if-no-files-found: warn
+          retention-days: 30
