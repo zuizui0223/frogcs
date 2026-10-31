@@ -1,0 +1,45 @@
+name: Frogcs post-source 80y finite-N seed-block uncertainty gate
+
+on:
+  push:
+    branches:
+      - research/finite-n-stage-bridge-20261031
+    paths:
+      - .github/workflows/research_finite_n_80year_seed_audit.yml
+      - research/scripts/diagnose_finite_n_80y_seed_blocks.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify-seed-replication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41191851194'
+      SOURCE_ARTIFACT: frogcs-finite-n-80y-verified-integrated
+      SOURCE_DIR: research/results/finite_n_stage_bridge_20261031/verified_source
+      OUTPUT: research/results/finite_n_stage_bridge_20261031/seed_audit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download immutable successful original finite-N source result
+        run: |
+          mkdir -p "$SOURCE_DIR"
+          gh run download "$SOURCE_RUN" --repo "${{ github.repository }}" --name "$SOURCE_ARTIFACT" --dir "$SOURCE_DIR"
+      - name: Do not inflate sources to independent seeds
+        run: python research/scripts/diagnose_finite_n_80y_seed_blocks.py --source "$SOURCE_DIR" --out "$OUTPUT"
+      - name: Preserve seed-level uncertainty and claim ceiling
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-finite-n-80y-4seed-block-stability
+          path: research/results/finite_n_stage_bridge_20261031/seed_audit/
+          retention-days: 30
+          if-no-files-found: warn
