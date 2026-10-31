@@ -1,5 +1,8 @@
 # 現行研究の入口
 
+**[補助PR #147：分散・局所絶滅／再占有・真正親子系譜（2026-10-31）](https://github.com/zuizui0223/frogcs/pull/147)**：既存の**7段階確率ABM＋PDE**を変更せず、出生UID/親UID、死亡済みの祖先、始祖の出生パッチ、世代、確認できる生存者の移動、ギルドごとの年末局所絶滅・再占有を記録できるようにした。20年間×8パッチ×4 seed×分散ON/OFF×F成体→羽化期トンボ捕食逆転ON/OFFの全16件が[実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41186529509)。**有尾類の年20占有パッチは分散なし／ありで捕食逆転OFF時2.25／4.00、局所再占有回数0／2.75**（4種の確率的経路の平均）。Fの系譜は孫以降・始祖の故郷と別のパッチへの展開まで追跡。捕食逆転ONでは合成の強いF→D効果によりDは分散あっても年20で全パッチ消失。[完全な結果・推定上限](DISPERSAL_LOCAL_EXTINCTION_PEDIGREE_RESULT_2026-10-31.md)、[ソースベースの台帳](results/stochastic_pedigree_metapop_20261031/metapopulation_seed_level_summary.csv)。**PR #146の別式の真正80年ABCを置換・校正するものではない**。分散率・再定着・親子は現実のNAAMP観測ではなく合成の結果で、音響の過去利用地再発声を直接説明したと主張しない。
+
+
 ## PR #146 最新追加：main重複構造を修正した108クラス植生ABC（2026-10-31）
 
 **[完全な108モデル構造の訂正・3事前分布感度・生態学的解釈](VEGETATION_MAIN_CANONICAL_108_PRIOR_RESULT_2026-10-31.md)**。18,432件の実際の80年間シミュレーションで、植生によるカエルの有尾類からの保護(`cover_SF=0`)がOFFなら`risk_refuge`ON/OFFは同一構造となることを**4,608対、F_B・全4交互作用係数の数値誤差0**で確認。完全144要因実験の結果は保存しつつ、mainと同じ独立構造としては**108クラス**へ正規化。等108構造事前、等12植物機能事前、mainの3,600モデル中の植物役割頻度による事前の3方式を比較。[成功CI #41185620627](https://github.com/zuizui0223/frogcs/actions/runs/41185620627)、[3構造事前×2尺度の比較表](results/macro_vegetation_cross_ontogeny_20261031/canonical_prior_comparison.csv)。
