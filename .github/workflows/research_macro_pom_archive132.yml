@@ -1,0 +1,77 @@
+name: Frogcs complete 132-case macro POM audit
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/pattern_oriented_archive132.py
+      - research/scripts/test_pattern_oriented_archive132.py
+      - research/MACRO_POM_COMPLETE_CATALOG_132_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_macro_pom_archive132.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entire-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin numeric dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test 132-case coverage and exact source-grid verification
+        run: python -m unittest discover -s research/scripts -p 'test_pattern_oriented_archive132.py' -v
+      - name: Recompare every already simulated structure on real 4248 NAAMP sites
+        run: python -u research/scripts/pattern_oriented_archive132.py --run --reference-per-case 32 --pseudo-per-case 6
+      - name: Verify all 132 sources and absolute observed-pattern coverage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          import numpy as np
+          p=Path('research/results/macro_pom_catalog132_20261031')
+          s=pd.read_csv(p/'catalog132_summary.csv')
+          rank=pd.read_csv(p/'compact_full_ranking.csv')
+          c=pd.read_csv(p/'all_case_pattern_distances.csv')
+          eg=pd.read_csv(p/'exact_surface_equivalence.csv')
+          recovery=pd.read_csv(p/'pseudo_recovery_records.csv')
+          prior=pd.read_csv(p/'toy_conditional_abc_mass.csv')
+          assert len(rank)==264 and len(c)==264
+          assert rank.groupby('background').case.nunique().eq(132).all()
+          assert int(eg.n_cases.sum())==132
+          assert len(recovery)==132*6*2
+          assert len(s)==2 and s.n_candidates.eq(132).all()
+          assert prior.groupby('background').illustrative_mass.sum().between(.999999,1.000001).all()
+          assert np.isfinite(c.distance_mahalanobis).all()
+          print('FULL_CATALOG_AUDIT_OK',len(rank),'comparisons',len(eg),'exact groups',len(recovery),'synthetic pseudo targets')
+          PY
+      - name: Log durable summary, all-case ranking, equivalence and conditional weights
+        run: |
+          for f in catalog132_summary.csv compact_full_ranking.csv exact_surface_equivalence.csv toy_conditional_abc_mass.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_pom_catalog132_20261031/$f"
+          done
+          python - <<'PY'
+          import pandas as pd
+          x=pd.read_csv('research/results/macro_pom_catalog132_20261031/pseudo_recovery_records.csv')
+          print('===== synthetic group recovery confusion =====')
+          print(x.groupby(['background','true_group','predicted_group']).size().to_csv())
+          PY
+      - name: Retain complete POM output and pseudo-ABC diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-full-132-macro-pom-20261031
+          path: research/results/macro_pom_catalog132_20261031/
+          if-no-files-found: warn
+          retention-days: 30
