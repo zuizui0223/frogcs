@@ -1,0 +1,88 @@
+name: Frogcs main-canonical vegetation prior 108-class audit
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/VEGETATION_MAIN_CANONICAL_PRIOR_AUDIT_PROTOCOL_2026-10-31.md
+      - research/scripts/canonical_main_vegetation_prior.py
+      - research/scripts/test_canonical_main_vegetation_prior.py
+      - .github/workflows/research_canonical_vegetation_prior.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  no-duplicated-risk-main-model-class:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Test exact risk-refuge duplication and all 3600 main catalog vegetation role frequencies
+        run: python -m unittest discover -s research/scripts -p 'test_canonical_main_vegetation_prior.py' -v
+      - name: Download source-audited full 18432 actual 80-year models and paired original-256 replay
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41185224109
+          name: frogcs-crossveg-144class-80year-abc-source-reuse-20261031
+          github-token: ${{ github.token }}
+          path: research/results/macro_vegetation_cross_ontogeny_20261031
+      - name: Collapse non-distinct source hypotheses; compare canonical, equal-role and full-main-role-prior densities
+        run: python -u research/scripts/canonical_main_vegetation_prior.py --run --bootstrap 999
+      - name: Verify every matched real 80-year source, 108 canonical classes and conditional prior shares
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          import json
+          p=Path('research/results/macro_vegetation_cross_ontogeny_20261031')
+          x=pd.read_csv(p/'canonical_model_prior_class_shares.csv')
+          marg=pd.read_csv(p/'canonical_model_prior_marginals.csv')
+          comparisons=pd.read_csv(p/'canonical_prior_comparison.csv')
+          freq=pd.read_csv(p/'main_catalog_role_multiplicities.csv')
+          r=json.loads((p/'canonical_main_prior_receipt.json').read_text())
+          assert len(x)==2*3*108
+          assert len(marg)>=150 and len(comparisons)==6
+          assert len(freq)==12 and freq.n_of_3600_main.sum()==3600
+          assert x.groupby(['scale','structural_prior']).conditional_model_share.sum().between(.999999,1.000001).all()
+          assert marg.groupby(['scale','structural_prior','dimension']).conditional_share.sum().between(.999999,1.000001).all()
+          assert r['canonical_distinct_classes']==108
+          assert r['exact_main_canonical_risk_equivalence']['n_exactly_equal_risk_pairs']==4608
+          assert r['exact_main_canonical_risk_equivalence']['max_difference_F_B_and_pattern_metrics']<1e-10
+          print('MAIN_CANONICAL_108_80Y_ABC_PRIOR_AUDIT_SUCCESS')
+          PY
+      - name: Display concise all-sensitivity role/ontogeny results
+        run: |
+          for file in canonical_prior_comparison.csv main_catalog_role_multiplicities.csv; do
+            echo "===== $file ====="
+            cat "research/results/macro_vegetation_cross_ontogeny_20261031/$file"
+          done
+          echo '===== original-order, feeding and plant-role model-mass profiles ====='
+          python - <<'PY'
+          import pandas as pd
+          p='research/results/macro_vegetation_cross_ontogeny_20261031/'
+          x=pd.read_csv(p+'canonical_model_prior_marginals.csv')
+          x=x[x.dimension.isin(['context','family','plant_model'])]
+          print(x.to_csv(index=False))
+          PY
+      - name: Save full canonicalized model posterior, bootstrap shares and source/redundancy receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-canonical-main-vegetation-108class-80year-abc-20261031
+          path: |
+            research/results/macro_vegetation_cross_ontogeny_20261031/canonical_*.csv
+            research/results/macro_vegetation_cross_ontogeny_20261031/main_catalog_role_multiplicities.csv
+            research/results/macro_vegetation_cross_ontogeny_20261031/canonical_main_prior_receipt.json
+          retention-days: 30
+          if-no-files-found: warn
