@@ -1,0 +1,102 @@
+name: Frogcs 12-context structural-type POM final comparison
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MACRO_STRUCTURAL_TYPE_DIRECTIONAL_POM_PROTOCOL_2026-10-31.md
+      - research/scripts/summarize_pom_structural_types.py
+      - research/scripts/test_summarize_pom_structural_types.py
+      - .github/workflows/research_macro_structural_type_pom.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  structure-level-pom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin prior numeric ecosystem
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test 12 biological types and matched reversal/facilitation accounting
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_pom_structural_types.py' -v
+      - name: Download entire previously successful 12-condition source and alias evidence
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41177017159
+          name: frogcs-naamp-empirical-icc-12-context-final-audit-20261031
+          github-token: ${{ github.token }}
+          path: research/results/macro_empirical_block_pom_20261031
+      - name: Reconcile full biological-case metadata and all 12 nuisance conditions before selection
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('research/results/macro_empirical_block_pom_20261031')
+          for name in ['all_group_three_noise_scores.csv','frozen132_candidate_scores.csv',
+                       'realrate192_candidate_scores.csv','facilitation72_candidate_scores.csv']:
+              f=p/name
+              if not f.is_file() or f.stat().st_size<100:
+                  raise SystemExit('Missing source evidence: '+str(f))
+              print(name,f.stat().st_size)
+          PY
+      - name: Balanced type-level scores, matched handling difference, reversal source equivalence and wider 132 sensitivity
+        run: python -u research/scripts/summarize_pom_structural_types.py --run
+      - name: Audit full 12 contexts without duplicate response surfaces
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          import json
+          from pathlib import Path
+          root=Path('research/results/macro_pom_structural_type_20261031')
+          t=pd.read_csv(root/'balanced_type_across_12_conditions.csv')
+          p=pd.read_csv(root/'balanced_type_per_condition.csv')
+          h=pd.read_csv(root/'matched_shared_both_vs_baseline.csv')
+          r=pd.read_csv(root/'matched_reversal_on_vs_off.csv')
+          hs=pd.read_csv(root/'shared_both_vs_baseline_summary.csv')
+          et=pd.read_csv(root/'expanded_full132_type_summary.csv')
+          d=pd.read_csv(root/'matched_danger_type_effects.csv')
+          aliases=pd.read_csv(root/'source_alias_to_biological_design.csv')
+          receipt=json.loads((root/'receipt.json').read_text())
+          assert len(t)==36 and len(p)==432
+          assert p.groupby('family').size().eq(144).all()
+          assert t.groupby('family').size().eq(12).all()
+          assert t.n_conditions.eq(12).all()
+          assert len(h)==216 and hs.n_paired_contexts.eq(72).all()
+          assert len(r)==144+1152+432
+          assert len(d)==576 and len(aliases)==132+192+72
+          assert et.n_contexts.eq(12).all()
+          assert receipt['n_original_case_labels']==396
+          assert receipt['no_posterior_model_probability']
+          assert t.mean_rank_percentile.between(0,1).all()
+          assert p.n_rate_draws.between(1,8).all()
+          print('STRUCTURAL_TYPE_POM_AUDIT_SUCCESS',
+                len(t),'type panels,',len(p),'source-equal-weighted nuisance contexts')
+          PY
+      - name: Print inspectable type winners, consistent shared processing and reversible-edge equivalence
+        run: |
+          for f in balanced_type_across_12_conditions.csv shared_both_vs_baseline_summary.csv reversal_identifiability_summary.csv matched_danger_by_handling.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_pom_structural_type_20261031/$f"
+          done
+          echo '===== matched handling by noise/context ====='
+          cat research/results/macro_pom_structural_type_20261031/shared_both_vs_baseline_by_condition.csv
+      - name: Preserve full type audit, source SHA and matched-rate structure comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-12-context-structural-type-pom-20261031
+          path: research/results/macro_pom_structural_type_20261031/
+          if-no-files-found: warn
+          retention-days: 30
