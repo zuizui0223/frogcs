@@ -33,8 +33,8 @@ def grouped_sufficient(residual,groups):
         raise ValueError("Residual/group shape or finite check failed")
     ids,categories=pd.factorize(group,sort=True)
     counts=np.bincount(ids).astype(float)
-    if len(counts)<3 or any(counts<2):
-        raise ValueError("Need at least three independent groups with >=2 sites each")
+    if len(counts)<3 or np.sum(counts)>0 and np.sum(counts)==len(counts):
+        raise ValueError("Need >=3 groups and within-group replicate support")
     total=np.bincount(ids,weights=v)
     ss=np.bincount(ids,weights=v*v)
     means=total/counts
@@ -48,7 +48,7 @@ def unequal_icc(stats):
     n=np.asarray(s["n"],float)
     m=np.asarray(s["mean"],float)
     within=np.asarray(s["withinSS"],float)
-    if len(n)<3 or any(n<2) or any(within<0) or not np.isfinite(m).all():
+    if len(n)<3 or any(n<1) or any(within<0) or not np.isfinite(m).all():
         raise ValueError("Bad group sufficient statistics")
     N=n.sum()
     B=len(n)
