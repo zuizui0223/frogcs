@@ -1,5 +1,17 @@
 # 現行研究の入口
 
+## 独立探索：世代間の捕食関係逆転（PR #146）
+
+[20年の空間ABM＋反応拡散PDE実装](scripts/multigeneration_reversal.py)は、従来の決定論的な年次コホートモデルを**改変せず**、カエルの変態後段階→トンボ羽化期の捕食が翌年以降の個体群・局所的な消失・移動へどう波及し得るかを比較します。親個体IDと世代番号を追跡するABM、同じ捕食危険を用いた7段階の空間PDEを、8パッチ・20年で実行しました。8テストとGitHub Actionsの全シナリオ再計算は成功しています。
+
+- [固定パイロット結果](MULTIGENERATION_ABM_PDE_PILOT_RESULT_2026-10-31.md)
+- [追加・探索的な捕食率／分散／第三者作用の結果と限界](MULTIGENERATION_SENSITIVITY_RESULT_2026-10-31.md)
+- [後付け感度格子の設計](MULTIGENERATION_POST_PILOT_SENSITIVITY_2026-10-31.md)
+- [PR #146](https://github.com/zuizui0223/frogcs/pull/146)
+
+**これは合成モデルの可能性検証であり、NAAMPの発声パターンを説明したものではありません。** 変態後の繁殖前カエルを成体と一括していること、羽化窓が実際の一夜より長いこと、捕食率・池間移動を未校正であることが次版の主要課題です。PR #145の発声観測橋渡しとは別成果物で、今回の陰性結果を上書きしません。
+
+
 実地点との照合：[相殺条件と4,248地点の植生文脈](manuscript/MECHANISM_SITE_CONFRONTATION_2026-10-29.md)。景観植生で検査できる部分と、未測定の発生段階を分けています。
 
 機構診断：[有尾類作用の相殺・時間的条件・順位化](manuscript/WEAK_THIRD_GUILD_MECHANISM_DIAGNOSIS_2026-10-29.md)。固定モデルの27対照条件と季節内の危険分解を追加しました。
