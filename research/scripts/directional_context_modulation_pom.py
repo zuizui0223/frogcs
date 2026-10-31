@@ -193,7 +193,7 @@ def rank_fixed_132(d, bg, design, observed_boot, selected, observed_dir,
                 row["sim_negative_frequency_"+k]=float((sim[:,i]<0).mean())
             case_rows.append(row)
     cases=pd.DataFrame(case_rows)
-    if len(cases)!=132 or cases.case.nunique()!=132:
+    if len(cases)!=len(all_surfaces) or cases.case.nunique()!=len(all_surfaces):
         raise AssertionError("Missing case labels in signed contrast POM")
     # Direction signature groups are much coarser than biological structures.
     by_sign=defaultdict(list)
@@ -305,7 +305,7 @@ def run(n_model=N_MODEL,n_recovery=N_RECOVERY,source_real_dir=None):
     actual_cells=None;actual_meta=None
     actual_paths=[]
     if source_real_dir is not None:
-        src=Path(source_real_dir)
+        src=Path(source_real_dir).resolve()
         actual_paths=[src/"real_simulator_F_B_cells.csv.gz",
                       src/"process_prior_predictive_patterns.csv"]
         for p in actual_paths:
