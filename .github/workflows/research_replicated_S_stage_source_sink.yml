@@ -1,0 +1,167 @@
+name: Frogcs replicated 12-seed S-stage rate source-sink rescue POM
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/REPLICATED_S_STAGE_RATE_SOURCE_SINK_PROTOCOL_2026-10-31.md
+      - research/scripts/replicate_S_stage_source_sink.py
+      - research/scripts/test_replicate_S_stage_source_sink.py
+      - research/scripts/summarize_replicated_S_stage_source_sink.py
+      - research/scripts/test_summarize_replicated_S_stage_source_sink.py
+      - .github/workflows/research_replicated_S_stage_source_sink.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify mathematically closed local demography and original S source rate settings
+        run: python -m unittest discover -s research/scripts -p 'test_replicate_S_stage_source_sink.py' -v
+      - name: Verify new 12-seed joint stage-rate-trophic contrasts and nonindependent patch accounting
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_replicated_S_stage_source_sink.py' -v
+
+  new-8-actual-stochastic-seeds:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        mode: [S_larva_005, S_adult_005, S_larva_022, S_adult_022]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Run genuine 20-year 8 new seeds x two reversal arms on unchanged original ABM
+        run: python -u research/scripts/replicate_S_stage_source_sink.py --run --mode ${{ matrix.mode }}
+      - name: Audit all 16 original S-stage simulator runs plus per-patch/year exact birth/death/movement balances
+        env:
+          MODE: ${{ matrix.mode }}
+        run: |
+          python - <<'PY'
+          import os,json
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/replicated_S_stage_source_sink_20261031')
+          mode=os.environ['MODE']
+          s=pd.read_csv(p/(mode+'_new_seed_guild_source_sink_summary.csv'))
+          f=pd.read_csv(p/(mode+'_new_seed_local_flux.csv.gz'))
+          r=pd.read_csv(p/(mode+'_new_seed_all_parent_UIDs.csv.gz'))
+          move=pd.read_csv(p/(mode+'_new_seed_surviving_movement_UIDs.csv.gz'))
+          rc=json.loads((p/(mode+'_new_seed_receipt.json')).read_text())
+          assert len(s)==16*3 and len(f)==16*20*3*8
+          assert s.max_abs_local_source_sink_residual.eq(0).all()
+          assert f.identity_residual.eq(0).all()
+          assert f.groupby(['reverse','seed','year','guild']).net_surviving_migration.sum().eq(0).all()
+          assert f.births.sum()==r.parent_uid.ge(0).sum()
+          assert f.deaths.sum()==r.alive.eq(False).sum()
+          assert len(move)==int(f.inbound.sum())
+          assert set(s.seed)==set(range(105,113))
+          assert rc['every_patch_year_source_sink_identity_exact']
+          assert rc['n_total_ever_lived_uids']==len(r)
+          print('NEW_EIGHT_SEED_GENUINE_S_STAGE_SOURCE_SINK_OK',mode,len(s),'guild/arm rows')
+          PY
+      - name: Preserve complete per-UID ancestor history and complete patch-year source/sink results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-replicated-S-source-sink-${{ matrix.mode }}-20261031
+          path: research/results/replicated_S_stage_source_sink_20261031/
+          if-no-files-found: warn
+          retention-days: 30
+
+  all-12-seeds-compare:
+    needs: new-8-actual-stochastic-seeds
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Retrieve exactly original 32 real 20-year stage-rate ABMs with deceased ancestor UIDs
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41188431040
+          pattern: frogcs-equal-rate-S-stage-*-20y
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/equal_rate_S_stage_dispersal_20261031
+      - name: Retrieve all four new complete 8-seed stage/rate sources
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-replicated-S-source-sink-*
+          merge-multiple: true
+          path: research/results/replicated_S_stage_source_sink_20261031
+      - name: Independently verify original source balances and aggregate twelve seed-matched ecological contrasts
+        run: python -u research/scripts/summarize_replicated_S_stage_source_sink.py --run
+      - name: Verify exact 96 original/new ABM paths, closed source-sink and 9999 seed bootstrap replicates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import pandas as pd
+          p=Path('research/results/replicated_S_stage_source_sink_20261031')
+          g=pd.read_csv(p/'replicated_12seed_all_guild_source_sink.csv')
+          q=pd.read_csv(p/'replicated_12seed_S_conditions.csv')
+          a=pd.read_csv(p/'replicated_12seed_paired_effects.csv')
+          s=pd.read_csv(p/'replicated_12seed_paired_bootstrap_summary.csv')
+          r=json.loads((p/'replicated_12seed_receipt.json').read_text())
+          assert len(g)==96*3 and len(q)==8 and len(a)==12*2*len(s.metric.unique())
+          assert g.groupby(['mobility','reverse','guild']).seed.nunique().eq(12).all()
+          assert g.max_abs_local_source_sink_residual.eq(0).all()
+          assert g.n_recolonizations.eq(
+              g.n_return_followups_eligible+g.n_return_censored).all()
+          assert q.n_seeds.eq(12).all()
+          assert s.n_seed_replicates.eq(12).all()
+          assert r['actual_20year_model_runs']==96
+          assert r['new_original_kernel_runs']==64 and r['previous_runs_reused']==32
+          print('TWELVE_SEED_STOCHASTIC_SOURCE_SINK_STAGE_RATE_INTERACTION_SUCCESS',len(s))
+          PY
+      - name: Show stage×rate×predation source-sink results and uncertainty
+        run: |
+          echo '===== replicated_12seed_S_conditions.csv ====='
+          cat research/results/replicated_S_stage_source_sink_20261031/replicated_12seed_S_conditions.csv
+          python - <<'PY'
+          import pandas as pd
+          p='research/results/replicated_S_stage_source_sink_20261031/'
+          a=pd.read_csv(p+'replicated_12seed_paired_bootstrap_summary.csv')
+          a=a[a.metric.isin(['occupied_year20','n_local_extinctions','n_recolonizations',
+                              'total_births','total_deaths','n_surviving_moves'])]
+          print('===== matched stage and movement effects with 12 seed-level replicates =====')
+          print(a.to_csv(index=False))
+          PY
+      - name: Retain full true source + pairwise original/new seed and 9999-replicate uncertainty
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-12seed-S-stage-rate-source-sink-verified-20261031
+          path: |
+            research/results/replicated_S_stage_source_sink_20261031/replicated_12seed_*.csv
+            research/results/replicated_S_stage_source_sink_20261031/replicated_12seed_receipt.json
+          if-no-files-found: warn
+          retention-days: 30
