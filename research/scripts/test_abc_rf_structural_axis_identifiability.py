@@ -41,7 +41,7 @@ class ActualRFAttributeTests(unittest.TestCase):
         self.assertEqual(len(b),3*(3**2+2**2+2**2))
         self.assertTrue(a.n_heldout.eq(EXPECTED_HELD).all())
         self.assertTrue(a.heldout_accuracy.between(0,1).all())
-        self.assertTrue(a.groupby("scale").axis.nunique().eq(4).all())
+        self.assertTrue(a.groupby("scale")["axis"].nunique().eq(4).all())
         self.assertTrue(a[a.axis=="full_12_classes"].heldout_accuracy.eq(.5).all())
         self.assertTrue(set(AXES).issubset(set(a.axis)))
 
