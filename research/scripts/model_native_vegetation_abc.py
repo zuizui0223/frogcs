@@ -25,6 +25,7 @@ from model_native_2x2x2_prior import (
 )
 from run_macro_process_prior_predictive import anchor_values
 
+OUT=ROOT/"research/results/macro_intrinsic_factorial_abc_20261031"
 PILOT_DRAWS=64
 PLANT_FLAGS=("cover_SF","cover_DF","cover_DS","litter")
 CONTEXT="original"
