@@ -1,0 +1,51 @@
+name: Frogcs recovery power for spatial mixing versus time-varying shared environment
+
+on:
+  push:
+    branches:
+      - research/spatial-dispersal-identifiability-pilot-20261031
+    paths:
+      - research/scripts/recover_dispersal_vs_spatiotemporal_environment.py
+      - research/scripts/test_recover_dispersal_vs_spatiotemporal_environment.py
+      - .github/workflows/research_spatiotemporal_environment_null_recovery.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-naamp-mask-with-temporal-local-environmental-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: editorial
+      - uses: actions/checkout@v4
+        with:
+          ref: c5ad81b1fb29a9bb92d742ee7004ae66a404dca9
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/naamp_remote_vegetation_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical source dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Verify stable source mixing and environment null before real source input
+        run: |
+          python -m unittest discover -s editorial/research/scripts -p test_observed_neighbour_lag_dispersal_identifiability.py -v
+          python -m unittest discover -s editorial/research/scripts -p test_recover_dispersal_vs_spatiotemporal_environment.py -v
+      - name: Generate stable diffusion-like counterfactuals versus nonmigration spatial weather
+        run: |
+          python editorial/research/scripts/recover_dispersal_vs_spatiotemporal_environment.py --source-root source --out editorial/research/results/naamp_spatial_recovery_stress_20261031 --reps 48
+      - name: Keep aggregate full model-recovery data and original-source SHA receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-NAAMP-mixing-vs-local-environment-recoverability-48seeds
+          path: editorial/research/results/naamp_spatial_recovery_stress_20261031/
+          retention-days: 30
+          if-no-files-found: warn
