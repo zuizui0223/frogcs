@@ -21,7 +21,7 @@ import pandas as pd
 from select_macro_trophic_scenarios import ROOT
 from run_macro_process_prior_predictive import prior_draws,anchor_values,batch_simulate
 from abc_intrinsic_factorial import (
-    OUT,LEVELS,eight_corners,catalogue_structure,subset_corners,
+    OUT,LEVELS,DESIGN,eight_corners,catalogue_structure,subset_corners,
     summarize_factorial,METRICS
 )
 from multiyear_stage_network import DEMOGRAPHY
