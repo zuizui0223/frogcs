@@ -13,6 +13,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from model_native_2x2x2_prior import matching_prior_draws
+
 RATE_IDS=(0,4,8,12)
 ALL_SEEDS=tuple(range(101,113))
 SEED_SHARDS=((101,102,103,104),(105,106,107,108),(109,110,111,112))
@@ -169,6 +171,11 @@ def analyze(full,new_events,out):
     ):
         df.to_csv(out/name,index=False,
                   compression={"method":"gzip","mtime":0} if name.endswith(".gz") else None)
+    prior=matching_prior_draws(256)
+    prior=prior[prior.draw.isin(RATE_IDS)].sort_values("draw").reset_index(drop=True)
+    if list(prior.draw)!=list(RATE_IDS) or len(prior)!=4:
+        raise AssertionError("Frozen original source LHS rate vector identities changed")
+    prior.to_csv(out/"exact_original_four_LHS_prior_rate_vectors.csv",index=False)
     main=f_effect[["draw","plant_model","growth_main_mean",
                    "growth_main_MC_lower","growth_main_MC_upper",
                    "D_period_main_mean","D_period_main_MC_lower",
@@ -192,6 +199,10 @@ def analyze(full,new_events,out):
         "## Main rate × plant conditional 2×2 effects (frog F, year80 occupancy)",
         "",
         main.to_markdown(index=False,floatfmt=".4f"),
+        "",
+        "## Original frozen hypothetical rate vectors used (NOT field estimates)",
+        "",
+        prior.to_markdown(index=False,floatfmt=".4f"),
         "",
         "Every contrast is movement ON−OFF, averaged over 2 predation reversal"
         " states and 8 fixed source factorial vertices. Bootstrap MC intervals"
