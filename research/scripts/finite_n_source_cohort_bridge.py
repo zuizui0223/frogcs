@@ -498,9 +498,13 @@ if __name__=="__main__":
     p.add_argument("--seeds",type=int,default=len(SEEDS))
     p.add_argument("--scales",type=int,nargs="+",default=SCALES)
     p.add_argument("--dt",type=float,default=DT)
+    p.add_argument("--immigration",choices=("both","off","on"),default="both")
     a=p.parse_args()
     if not a.run:p.error("Explicit --run required")
     if a.seeds<1 or a.seeds>len(SEEDS):
         p.error("Choose 1..4 predeclared seed labels")
+    immigration_states=((False,True) if a.immigration=="both" else
+                        (False,) if a.immigration=="off" else (True,))
     run(years=a.years,draws=a.draws,seeds=SEEDS[:a.seeds],
-        scales=tuple(a.scales),dt=a.dt)
+        scales=tuple(a.scales),immigration_states=immigration_states,
+        dt=a.dt)
