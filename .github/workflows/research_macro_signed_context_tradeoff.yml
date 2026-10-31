@@ -1,0 +1,89 @@
+name: Frogcs directional pattern bottleneck diagnosis
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MACRO_SIGNED_CONTEXT_TRADEOFF_PROTOCOL_2026-10-31.md
+      - research/scripts/diagnose_signed_context_tradeoff.py
+      - research/scripts/test_diagnose_signed_context_tradeoff.py
+      - .github/workflows/research_macro_signed_context_tradeoff.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  minimal-incompatible-sign-sets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin numeric dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Validate minimal-subset logic and real-rate source provenance
+        run: python -m unittest discover -s research/scripts -p 'test_diagnose_signed_context_tradeoff.py' -v
+      - name: Read fixed-site and actual rate signed-context outputs from successful workflow
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-context-modulation-signed-pom-20261031
+          run-id: 41166641637
+          github-token: ${{ github.token }}
+          path: research/results/macro_signed_context_modulation_20261031
+      - name: Read original true 80-year simulation outputs from successful workflow
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-process-rate-POM-real-simulator-20261031
+          run-id: 41163370575
+          github-token: ${{ github.token }}
+          path: research/results/macro_pom_process_prior_20261031
+      - name: Compute all 15 nonempty directional subsets in both SDM backgrounds
+        run: python -u research/scripts/diagnose_signed_context_tradeoff.py --run
+      - name: Verify source grid identity, minimal conflicts and threshold audit
+        run: |
+          python - <<'PY'
+          import json
+          import pandas as pd
+          from pathlib import Path
+          root=Path('research/results/macro_signed_context_tradeoff_20261031')
+          a=pd.read_csv(root/'all_nonempty_direction_subsets.csv')
+          m=pd.read_csv(root/'minimal_incompatible_direction_sets.csv')
+          t=pd.read_csv(root/'observed_sign_threshold_sensitivity.csv')
+          receipt=json.loads((root/'receipt.json').read_text())
+          assert len(a)==30 and len(t)==4
+          assert a.groupby('background').subset.nunique().eq(15).all()
+          assert a.n_frozen_cases.between(0,132).all()
+          assert a.n_frozen_source_groups.between(0,104).all()
+          assert a.n_real_rate_configs.between(0,192).all()
+          assert m.n_constraints.ge(2).all()
+          target=a[(a.background=='uniform')&
+                   (a.subset=='OV;delta_S_high_minus_low')]
+          assert len(target)==1
+          assert target.n_frozen_cases.iloc[0]==0
+          assert receipt['model_data_not_refitted']
+          assert receipt['source_replay']['max_recomputed_delta_S_discrepancy']<1e-9
+          assert receipt['source_replay']['max_recomputed_delta_V_discrepancy']<1e-9
+          print('SIGN_CONSTRAINT_LATTICE_SUCCESS',len(a),'subsets',len(m),'minimal failures')
+          PY
+      - name: Print entire compact subset and failure evidence
+        run: |
+          for f in all_nonempty_direction_subsets.csv minimal_incompatible_direction_sets.csv observed_sign_threshold_sensitivity.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_signed_context_tradeoff_20261031/$f"
+          done
+      - name: Retain complete sourced sign-constraint audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-signed-context-minimal-conflicts-20261031
+          path: research/results/macro_signed_context_tradeoff_20261031/
+          if-no-files-found: warn
+          retention-days: 30
