@@ -67,7 +67,7 @@ class RealProcessPriorTests(unittest.TestCase):
                 c=dict(row)
                 c["case"]=f"case_{case*2+int(row['case'][-3:]):03d}"
                 extra.append(c)
-        synthetic=pd.DataFrame(extra)
+        synthetic=pd.DataFrame(rows+extra)
         inv={bg:np.eye(len(PATTERNS)) for bg in BACKGROUNDS}
         records=pseudo_recovery(synthetic,inv,{},4)
         self.assertEqual(len(records),2*4*24)
