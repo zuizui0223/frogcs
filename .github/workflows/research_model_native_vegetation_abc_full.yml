@@ -1,14 +1,6 @@
 name: Frogcs 256-draw full vegetation-role stage POM ABC
 
 on:
-  push:
-    branches:
-      - research/multigeneration-reversal-abm-pde-20261031
-    paths:
-      - research/scripts/model_native_vegetation_abc.py
-      - research/scripts/summarize_model_native_vegetation_abc.py
-      - research/VEGETATION_MECHANISM_IDENTIFICATION_ABC_PROTOCOL_2026-10-31.md
-      - .github/workflows/research_model_native_vegetation_abc_full.yml
   workflow_dispatch:
 
 permissions:
