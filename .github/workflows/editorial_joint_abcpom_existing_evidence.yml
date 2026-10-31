@@ -1,0 +1,49 @@
+name: Frogcs joint ABC-POM source identity and adequacy inventory
+
+on:
+  push:
+    branches:
+      - editorial/frogcs-publication-plan-20261031
+    paths:
+      - .github/workflows/editorial_joint_abcpom_existing_evidence.yml
+      - research/scripts/audit_joint_abcpom_existing_layers_20261031.py
+      - editorial/JOINT_MACRO_DEMOGRAPHY_ABC_POM_PROTOCOL_2026-10-31.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-source-joint-inference-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ABC_SHA: 'c5ad81b1fb29a9bb92d742ee7004ae66a404dca9'
+      Q_SHA: '19d45ffb833e2970aff8d88de101736aee289d26'
+      INPUT_DIR: research/results/editorial_joint_abcpom_20261031/source
+      OUT_DIR: research/results/editorial_joint_abcpom_20261031/verified
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch original compact site-POM, genuine ABC and finite-N outcomes by PINNED source commit
+        run: |
+          set -euo pipefail
+          mkdir -p "$INPUT_DIR"
+          gh api "repos/${{ github.repository }}/contents/research/results/macro_pom_catalog132_20261031/catalog132_summary.csv?ref=$ABC_SHA" --jq '.content' | base64 -d > "$INPUT_DIR/site_132_summary.csv"
+          gh api "repos/${{ github.repository }}/contents/research/results/macro_pom_catalog132_20261031/compact_full_ranking.csv?ref=$ABC_SHA" --jq '.content' | base64 -d > "$INPUT_DIR/site_132_ranking.csv"
+          gh api "repos/${{ github.repository }}/contents/research/results/model_native_abc_rf_20261031/abc_rejection_model_acceptance.csv?ref=$ABC_SHA" --jq '.content' | base64 -d > "$INPUT_DIR/native_abc.csv"
+          gh api "repos/${{ github.repository }}/contents/research/results/macro_vegetation_cross_ontogeny_20261031/canonical_prior_comparison.csv?ref=$ABC_SHA" --jq '.content' | base64 -d > "$INPUT_DIR/plant_prior.csv"
+          gh api "repos/${{ github.repository }}/contents/research/results/SF_predation_intermediate_q6_q9_20261031/verified_four_q_strict_reversal_counts.csv?ref=$Q_SHA" --jq '.content' | base64 -d > "$INPUT_DIR/q_grids.csv"
+      - name: Source-invariant comparison — do NOT derive fake field posterior
+        run: python research/scripts/audit_joint_abcpom_existing_layers_20261031.py --input-dir "$INPUT_DIR" --out "$OUT_DIR"
+      - name: Keep compact verified cross-layer audit and explicit non-joining result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-joint-abcpom-existing-evidence-gate
+          path: research/results/editorial_joint_abcpom_20261031/verified/
+          retention-days: 30
+          if-no-files-found: warn
