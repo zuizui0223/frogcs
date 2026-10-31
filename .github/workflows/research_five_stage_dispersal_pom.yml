@@ -1,0 +1,84 @@
+name: Frogcs five-mode dispersal rescue and lineage POM
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/scripts/summarize_stage_dispersal_pom.py
+      - research/scripts/test_summarize_stage_dispersal_pom.py
+      - .github/workflows/research_five_stage_dispersal_pom.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  all-five-mobility-mechanisms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pinned original numerical packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test same-seed mobility pairing, stage-only movement and right-censored persistence
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_stage_dispersal_pom.py' -v
+      - name: Retrieve only 24 completed NEW stage-ablation models from 3 successful artifacts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41187861082
+          pattern: frogcs-stage-dispersal-20y-*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/stage_specific_dispersal_pom_20261031
+      - name: Retrieve source-backed original 16-model UID parent and extinction persistence analysis
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41187578282
+          name: frogcs-source-backed-recolonization-persistence-20261031
+          github-token: ${{ github.token }}
+          path: research/results/recolonization_establishment_20261031
+      - name: Combine 16 OLD and 24 NEW genuine ABM arms without re-executing any stochastic process
+        run: python -u research/scripts/summarize_stage_dispersal_pom.py --run
+      - name: Audit original 5-mobility regimes, 4 true seed groups and every operational rescue outcome
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/stage_dispersal_persistence_pom_20261031')
+          a=pd.read_csv(p/'stage_dispersal_all_five_modes_seed_guild.csv')
+          pair=pd.read_csv(p/'stage_dispersal_matched_seed_contrasts.csv')
+          motif=pd.read_csv(p/'stage_dispersal_model_native_pom_motifs.csv')
+          receipt=json.loads((p/'receipt.json').read_text())
+          assert len(a)==120 and len(pair)==168 and len(motif)==30
+          assert a.groupby(['mobility','reverse','guild']).seed.nunique().eq(4).all()
+          assert pair.groupby(['mobility','baseline','reverse','guild']).seed.nunique().eq(4).all()
+          assert motif.n_stochastic_seeds.eq(4).all()
+          assert motif.n_two_year_persistent_birth_events.le(motif.n_valid_two_year_followup_events).all()
+          assert a[a.mobility=='off'].n_recolonizations.eq(0).all()
+          assert set(a.mobility)=={'off','original','adult_only','aquatic_only','S_only'}
+          assert receipt['original_20year_arms_reused']==16 and receipt['new_20year_arms_run']==24
+          assert receipt['original_seven_stage_kernel_unmodified']
+          print('FIVE_STAGE_STOCHASTIC_RESCUE_POM_SOURCE_AUDIT_SUCCESS',len(a),'guild/seed records')
+          PY
+      - name: Print full compact five-mode ecological mechanism and persistence contrasts
+        run: |
+          echo '===== stage_dispersal_model_native_pom_motifs.csv ====='
+          cat research/results/stage_dispersal_persistence_pom_20261031/stage_dispersal_model_native_pom_motifs.csv
+          echo '===== stage_dispersal_all_five_modes_seed_guild.csv ====='
+          cat research/results/stage_dispersal_persistence_pom_20261031/stage_dispersal_all_five_modes_seed_guild.csv
+      - name: Preserve full five-mode POM, paired 4 independent seed contrasts and source SHA receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-five-mode-stage-specific-dispersal-pom-20261031
+          path: research/results/stage_dispersal_persistence_pom_20261031/
+          if-no-files-found: warn
+          retention-days: 30
