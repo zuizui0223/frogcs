@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 import pandas as pd
 from acoustic_mechanism_cv import (
-    ARMS, BACKGROUNDS, assign_spatial_folds, extract_frozen_surfaces,
+    ARMS, BACKGROUNDS, REPLACEMENTS, assign_spatial_folds, extract_frozen_surfaces,
     candidate_surface, log_score, out_of_block_predictions, paired_block_interval,
     pattern_diagnostic, prepare_sites, rank_bin,
 )
@@ -92,7 +92,7 @@ class AcousticBridgeTests(unittest.TestCase):
         qa=a[a.fold==0].sort_values(['background','candidate','site'])
         qb=b[b.fold==0].sort_values(['background','candidate','site'])
         np.testing.assert_allclose(qa.predicted,qb.predicted,rtol=0,atol=1e-13)
-        self.assertEqual(len(a),len(self.d)*len(BACKGROUNDS)*(len(ARMS)+2))
+        self.assertEqual(len(a),len(self.d)*len(BACKGROUNDS)*(len(ARMS)+len(REPLACEMENTS)+2))
         self.assertTrue(a.predicted.between(0,1,inclusive='neither').all())
 
     def test_paired_scores_and_observed_pattern(self):
@@ -101,7 +101,8 @@ class AcousticBridgeTests(unittest.TestCase):
         self.assertEqual(len(scores),len(BACKGROUNDS)*(len(ARMS)+2))
         self.assertEqual(len(foldscores),len(scores)*5)
         self.assertTrue(scores.nll_per_survey.between(0,np.inf,inclusive='neither').all())
-        self.assertTrue(scores[scores.candidate.isin(ARMS)].gain_low_conditional.notna().all())
+        self.assertTrue(scores[scores.candidate.isin(ARMS)].gain_vs_interaction_null_low_conditional.notna().all())
+        self.assertTrue(scores[scores.candidate.isin(REPLACEMENTS)].gain_vs_additive_null.notna().all())
         diag=pattern_diagnostic(self.d,predictions)
         self.assertEqual(len(diag),len(scores)+2)
         self.assertTrue(np.isfinite(diag[['OV','OS','SV','OSV']].to_numpy()).all())
