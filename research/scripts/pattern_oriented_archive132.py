@@ -18,7 +18,7 @@ from pattern_oriented_abc_pilot import (
     PATTERNS, HOLDOUT, BACKGROUNDS, N_BOOT, SEED, ACCEPT_FRACTION,
     NOISE_RANGE, WARP_RANGE, COV_SHRINK, EIGEN_FLOOR,
     get_design, stats_from_y, compare_frozen_macro, bootstrap_observed,
-    group_exact_surfaces, pattern_assessment, prior_reference,
+    bootstrap_heldout, group_exact_surfaces, pattern_assessment, prior_reference,
     conditional_abc, recovery_matrix, MACRO,
 )
 
@@ -95,8 +95,14 @@ def run(n_ref=N_REF,n_pseudo=N_PSEUDO):
         bootdata.append(boot)
         for k,p in zip(HOLDOUT,heldout):
             helddata.append(dict(background=background,pattern=k,observed=float(p)))
+        heldboot=bootstrap_heldout(sites.strong_rate,design,sites.spatial_block,
+                                   n_boot=N_BOOT,seed=SEED)
+        hb=pd.DataFrame(heldboot,columns=HOLDOUT)
+        hb["background"]=background
+        hb.to_csv(OUT/("heldout_bootstrap_"+background+".csv"),index=False)
         all_case=pattern_assessment(sites,background,design,surfaces,
-                                     observed,heldout,invcov,draws)
+                                     observed,heldout,invcov,draws,
+                                     holdout_draw=heldboot)
         all_case["equivalence_group"]=all_case.case.map(aliases)
         full.append(all_case)
         for row in all_case.to_dict("records"):
@@ -144,6 +150,7 @@ def run(n_ref=N_REF,n_pseudo=N_PSEUDO):
     # Compact all-case ranking (every case, shorter columns) and scenario metadata.
     rankcols=["background","case","equivalence_group","context","family","edge","risk",
               "distance_mahalanobis","fitted_patterns_within_marginal_95",
+              "heldout_patterns_within_95",
               "model_OS","obs_OS","model_OV","obs_OV","model_SV","obs_SV","model_OSV","obs_OSV",
               "model_O_with_S_low","obs_O_with_S_low",
               "model_O_with_S_high","obs_O_with_S_high"]
@@ -160,6 +167,7 @@ def run(n_ref=N_REF,n_pseudo=N_PSEUDO):
                             best_case=best.case,best_group=best.equivalence_group,
                             best_distance=float(best.distance_mahalanobis),
                             best_patterns_within_observed_95=int(best.fitted_patterns_within_marginal_95),
+                            best_unseen_patterns_within_observed_95=int(best.heldout_patterns_within_95),
                             n_all_six_patterns_within_95=int((q.fitted_patterns_within_marginal_95==6).sum()),
                             no_adequate_six_pattern_case=bool(nofit),
                             illustrative_top_group=pop.equivalence_group.iloc[0],
