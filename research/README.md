@@ -1,5 +1,12 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #154 — q=3からq=12への人口規模感度（反転は再現しない）
+
+[Draft PR #154](https://github.com/zuizui0223/frogcs/pull/154) / [source検証済み12seed q3-vs-q12レポート](SF_PREDATION_Q3_Q12_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [真正q12の80年24実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41201004560) / [旧q3＋新q12の12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41201411618)。
+
+PR153では固定合成人口尺度q3で「S→F直接捕食がS成長に伴う分散効果の正→負反転に必要かつ十分」。**今回qだけを12へ変更した新24ジョブでは同じ正→負反転が全ネットワーク0/2植生条件に消失**した。S→Fが自然の湿地で無効になったわけではなく、q12ではS低成長時の80年末占有が8/8（天井）、S高成長時は多くが0/8（床）になり、移動による正負差の余地が狭まった。旧q3真正12seedは元artifactを再利用し、新q12の117,424件の合成整数ゼロ→正再占有イベントと147,456件のモデル×ギルド出力を完全監査。qは野外個体数の実測ではなく、有限個体のBinomial/Poisson離散性を変更する合成尺度。**旧「必要十分」はq3条件付きモデル内部と明示して保持する**。
+
+
 ## 2026-10-31: PR #153 — S→F捕食経路は固定合成モデルの条件付き反転に必要かつ十分（真正80年12seed）
 
 [Draft PR #153](https://github.com/zuizui0223/frogcs/pull/153) / [最終12seed十分性結果](SF_ONLY_TROPHIC_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [必要性12seed検証](PREDATOR_EDGE_LOCAL_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [全24単経路削除元モデルSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41198781275) / [全12十分性元モデルSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199700200) / [十分性独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41200093960)。
