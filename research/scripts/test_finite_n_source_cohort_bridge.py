@@ -103,15 +103,19 @@ class FiniteNSourceBridgeTests(unittest.TestCase):
         H[1,0,0,0]=2
         H[2,0,0,0]=1
         H[3,0,0,0]=1
+        H[4,0,0,0]=1
         H[4,0,1,0]=1
         loc=np.zeros((years,1,8,3),dtype=np.int32)
         loc[0,0,0,0]=2
         loc[1,0,0,0]=1
         loc[3,0,1,0]=1
         zeros=np.zeros_like(loc)
+        deaths=np.zeros_like(loc)
+        deaths[1,0,0,0]=2
         # No model execution in this bookkeeping-only fixture.
         states=dict(hist=H,local_recruits=loc,
-                    external=zeros,arrivals=zeros,departures=zeros)
+                    external=zeros,arrivals=zeros,departures=zeros,
+                    deaths=deaths)
         summary,events=summarize_finite_group(
             g,states,scale=3,seed=101,mode="off",
             immigration=False,years=years)
@@ -120,6 +124,9 @@ class FiniteNSourceBridgeTests(unittest.TestCase):
         self.assertEqual(int(f.n_2y_observable_returns),1)
         self.assertEqual(int(f.n_2y_persistent_returns),1)
         self.assertEqual(int(f.n_2y_persistent_with_recruitment),1)
+        self.assertEqual(int(f.n_3y_observable_returns),1)
+        self.assertEqual(int(f.n_3y_persistent_returns),1)
+        self.assertEqual(int(f.n_3y_persistent_with_recruitment),1)
         f_events=events[events.guild=="F"]
         self.assertEqual(set(f_events.cause_label),{"delayed_local_recruitment"})
         self.assertEqual(int(f_events.followup_2y_observable.sum()),1)
