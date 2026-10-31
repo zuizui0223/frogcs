@@ -147,10 +147,16 @@ def validate_archive_anchor(grid,archived,atol=1e-8):
                                          rtol=0,atol=1e-9):
         raise AssertionError("Archived fixed-case source coordinate mismatch")
     error={}
-    for col in ("F_B","F_fraction","F_B_sd"):
+    # F_B_sd = sqrt(E[B²]-E[B]²) is cancellation-sensitive near
+    # stationary zero variance; a few 1e-8 may appear even when raw
+    # B and survival agree to 1e-9. Keep biological endpoints strict.
+    tolerances={"F_B":atol,"F_fraction":atol,"F_B_sd":1e-7}
+    for col,limit in tolerances.items():
         value=float(np.abs(a[col].to_numpy(float)-b[col].to_numpy(float)).max())
         error[col]=value
-        if value>atol:raise AssertionError("Unchanged baseline mismatch "+col+": "+str(value))
+        if value>limit:
+            raise AssertionError("Unchanged baseline mismatch "+col+
+                                 ": "+str(value)+" exceeds "+str(limit))
     return error
 
 
