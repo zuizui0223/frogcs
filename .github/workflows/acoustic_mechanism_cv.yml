@@ -1,0 +1,61 @@
+name: Frogcs acoustic mechanism heldout bridge
+
+on:
+  push:
+    branches:
+      - research/acoustic-observation-bridge-20261031
+    paths:
+      - research/scripts/acoustic_mechanism_cv.py
+      - research/scripts/test_acoustic_mechanism_cv.py
+      - research/ACOUSTIC_OBSERVATION_BRIDGE_PR_PLAN_2026-10-31.md
+      - .github/workflows/acoustic_mechanism_cv.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-and-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed minimum dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test synthetic invariants and leakage protection
+        run: python -m unittest discover -s research/scripts -p 'test_acoustic_mechanism_cv.py' -v
+      - name: Verify fixed empirical source files are available
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          required = [
+              Path('research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz'),
+              Path('research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz'),
+              Path('research/results/handling_factorial_20261029/dense21_cells.csv.gz'),
+          ]
+          missing = [str(p) for p in required if not p.is_file()]
+          if missing:
+              raise SystemExit('Missing pinned full-data inputs: '+str(missing))
+          print([(str(p), p.stat().st_size) for p in required])
+          PY
+      - name: Recompute spatially heldout acoustic mechanism comparison
+        run: python -u research/scripts/acoustic_mechanism_cv.py --run
+      - name: Show complete candidate and fold results
+        run: |
+          cat research/results/acoustic_bridge_20261031/candidate_scores.csv
+          cat research/results/acoustic_bridge_20261031/fold_scores.csv
+          cat research/results/acoustic_bridge_20261031/observed_predicted_interactions.csv
+      - name: Preserve comparison evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: acoustic-bridge-cv-20261031
+          path: research/results/acoustic_bridge_20261031/
+          if-no-files-found: warn
+          retention-days: 30
