@@ -1,5 +1,14 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #149 — 有限個体の局所消失・再占有（独立Draft）
+
+[Draft PR #149](https://github.com/zuizui0223/frogcs/pull/149) / [事前仕様](FINITE_N_SOURCE_COHORT_BRIDGE_PROTOCOL_2026-10-31.md) / [20年方法試行と整数会計の成功CI](https://github.com/zuizui0223/frogcs/actions/runs/41191695453) / [80年4シャード実測CI](https://github.com/zuizui0223/frogcs/actions/runs/41191851194)。
+
+PR #146/#148の120日季節内捕食モデルを変えず、源の80年成熟遅延・年次個体群方程式を**条件付き期待値**として保持し、Binomial季節完了・生残、Poisson局所加入・外部流入、整数総数保存の8パッチ移動を導入した。正真正銘のN=0→N>0を追跡し、外部流入／パッチ間移動／以前の幼生コホートの遅延加入を区別する。PR #147の別式の7段階UID ABMと同じ分散率・出生系譜ではない。
+
+20年方法試行は元F_B等3指標の数値差0、source/censoring tests SUCCESS、合成の0→正イベント26,935。3年追跡可能な23,075件のうち9,996件は3年度の占有継続＋その期間内の局所加入を伴う。しかしこれは多処理を合計した**合成イベント数**であり独立な野外サンプルではない。2年より長い観察が必要なのはF成熟2/3年のモデル仕様とも関係する。80年本解析は4 seed×q3/12×外部移入ON/OFF×4年次移動方式で実行・集計する。元条件が成立するまで真の生態学的な外部予測とは呼ばない。
+
+
 ## 2026-10-31: PR #148 — source-locked 80年空間コホート比較
 
 [Draft PR #148](https://github.com/zuizui0223/frogcs/pull/148) / [実行済み80年結果](SPATIAL_COHORT_80Y_AUDITED_RESULT_2026-10-31.md) / [接続仕様](COMMON_KERNEL_SPATIAL_COHORT_BRIDGE_PROTOCOL_2026-10-31.md) / [成功した元モデル実行](https://github.com/zuizui0223/frogcs/actions/runs/41190618714) / [独立結果監査](https://github.com/zuizui0223/frogcs/actions/runs/41190816068)。
