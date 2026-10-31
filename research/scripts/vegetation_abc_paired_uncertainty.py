@@ -29,7 +29,7 @@ ENDPOINTS=("gain_acceptance","delta_beta_OS","delta_beta_OV",
 
 def paired_draw_interval(group,draws=N_DRAWS,bs=N_BOOT,seed=SEED):
     """Mean pairwise ON−OFF per independent prior vector with 1999 shared resamples."""
-    if group.draw.nunique()!=draws or group[["draw","reverse_on"]].isna().any().any():
+    if group.draw.nunique()!=draws or group["draw"].isna().any():
         raise ValueError("Missing matched 256 original prior draw IDs")
     matrix=group.groupby("draw")[list(ENDPOINTS)].mean().sort_index()
     if len(matrix)!=draws or not np.isfinite(matrix.to_numpy(float)).all():
