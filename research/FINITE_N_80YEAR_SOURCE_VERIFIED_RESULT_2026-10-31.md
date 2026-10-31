@@ -57,3 +57,20 @@
 - [4シャード独立監査](scripts/audit_finite_n_80y_shards.py)
 - [事前固定プロトコル](FINITE_N_SOURCE_COHORT_BRIDGE_PROTOCOL_2026-10-31.md)
 - [成功したGitHub Actionsと全CSV/artifact](https://github.com/zuizui0223/frogcs/actions/runs/41191851194)
+
+
+## 追加監査：独立乱数系列4単位での方向一致
+
+[元の80年出力だけを再利用したseed-block監査 SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41192574552)。**64元モデル頂点を独立乱数反復と扱わず**、各seedについてモデル条件64件の平均移動差を作り、4seed間でその方向を比較した。
+
+| 比較（both − 移動OFF、80年末占有パッチ） | 4seed平均差 | seed別平均差の最小〜最大 | 正の方向になったseed |
+|---|---:|---:|---:|
+| q=3・外部流入OFF・カエルF | +1.992 | +1.828〜+2.047 | 4/4 |
+| q=12・外部流入OFF・トンボD | +4.930 | +4.594〜+5.297 | 4/4 |
+| q=3・外部流入OFF・トンボD | 0 | 0〜0 | 0/4（全て同数） |
+| q=3・外部流入ON・トンボD | +0.547 | +0.453〜+0.594 | 4/4 |
+| q=12・外部流入ON・カエルF | +0.039 | 0〜+0.063 | 3/4（1seedは同数） |
+
+この監査により、上記のモデル平均差が**特定の1seedだけによるものではない**と判定できた。ただし4seedは非常に少なく、条件ごとの乱数反復数・地域・捕食率を広げた外部再現ではない。各処理は同じseedラベルだが個体の乱数履歴が同一ではない。bootstrap区間は合成モデル内の有限4seedに条件付くMC区間であり、現地の生態学的信頼区間とは解釈しない。
+
+[ブロック診断コード](scripts/diagnose_finite_n_80y_seed_blocks.py)／[成功監査の元CSV・artifact](https://github.com/zuizui0223/frogcs/actions/runs/41192574552)。
