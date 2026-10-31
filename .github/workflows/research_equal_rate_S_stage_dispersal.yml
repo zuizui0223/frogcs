@@ -1,0 +1,89 @@
+name: Frogcs matched diffusion rate S larva/adult stage rescue experiment
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/EQUAL_RATE_S_STAGE_DISPERSAL_PROTOCOL_2026-10-31.md
+      - research/scripts/run_equal_rate_S_stage_dispersal.py
+      - research/scripts/test_run_equal_rate_S_stage_dispersal.py
+      - .github/workflows/research_equal_rate_S_stage_dispersal.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-biological-rates-and-parentage-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test original kernel unchanged, same per-capita rates, single-stage movement and true parent ledger
+        run: python -m unittest discover -s research/scripts -p 'test_run_equal_rate_S_stage_dispersal.py' -v
+      - name: Original full source path and pedigree tests
+        run: python -m unittest discover -s research/scripts -p 'test_tracked_spatial_pedigree.py' -v
+
+  four-s-source-stage-by-rate-ablation:
+    needs: source-biological-rates-and-parentage-tests
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        mode: [S_larva_005, S_adult_005, S_larva_022, S_adult_022]
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Source stochastic ABM full 20-year four-seed and both reversal arms with only one S stage mobile
+        run: python -u research/scripts/run_equal_rate_S_stage_dispersal.py --run --mode ${{ matrix.mode }}
+      - name: Audit all true S stage/rate source combinations and original model hashes
+        env:
+          MODE: ${{ matrix.mode }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json
+          import pandas as pd
+          p=Path('research/results/equal_rate_S_stage_dispersal_20261031')
+          mode=os.environ['MODE']
+          s=pd.read_csv(p/(mode+'_seed_summary.csv'))
+          l=pd.read_csv(p/(mode+'_lineage.csv'))
+          reg=pd.read_csv(p/(mode+'_registry.csv.gz'))
+          rc=json.loads((p/(mode+'_receipt.json')).read_text())
+          assert len(s)==24 and len(l)==24 and rc['n_new_actual_stochastic_runs']==8
+          assert s.groupby(['reverse','guild']).seed.nunique().eq(4).all()
+          assert s.n_occupied_year_end.between(0,8).all()
+          assert s.n_recolonizations.eq(s.n_return_events_recovered).all()
+          assert len(reg)==rc['n_simulated_individuals_ever_alive']
+          assert reg.groupby(['reverse','seed']).uid.nunique().sum()==len(reg)
+          assert rc['original_ABM_kernel_unchanged']
+          assert rc['stage_rates_equal_but_realized_migrant_flux_can_differ']
+          print('SAME_DIFFUSION_S_STAGE_80? NO: TRUE_20Y_ABM_SOURCE_AUDIT_SUCCESS',mode)
+          PY
+      - name: Print stage-specific source census and genuine parent birth records
+        run: |
+          echo '===== ${{ matrix.mode }}_seed_summary.csv ====='
+          cat research/results/equal_rate_S_stage_dispersal_20261031/${{ matrix.mode }}_seed_summary.csv
+      - name: Preserve complete 20y parent UID registry, original source SHA, patch immigration and birth events
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-equal-rate-S-stage-${{ matrix.mode }}-20y
+          path: research/results/equal_rate_S_stage_dispersal_20261031/
+          if-no-files-found: warn
+          retention-days: 30
