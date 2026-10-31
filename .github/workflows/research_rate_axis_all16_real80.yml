@@ -1,0 +1,50 @@
+name: Frogcs true 80y source eight-rate single-axis swap factorial
+
+on:
+  push:
+    branches:
+      - research/rate-axis-swap-growth-rescue-20261031
+    paths:
+      - .github/workflows/research_rate_axis_all16_real80.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  actual-80-year-one-axis-biological-rate-contrast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        base_id: [0, 12]
+        axis:
+          - attack_scale
+          - s_growth_multiplier
+          - d_growth_multiplier
+          - rho
+          - conversion
+          - f_juvenile_survival
+          - f_adult_survival
+          - f_delay
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Use the original published model requirements
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Assert all original LHS dimensions, four-year replay and integer conservation
+        run: python -m unittest discover -s research/scripts -p test_rate_axis_synthetic_growth_rescue_80y.py -v
+      - name: Run TRUE unmodified source seasonal kernel plus 80year finite-N source, both movement treatments
+        run: python research/scripts/rate_axis_synthetic_growth_rescue_80y.py --run --base-rate-id ${{ matrix.base_id }} --axis ${{ matrix.axis }}
+      - name: Preserve each true original biology source and exact event/censor receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-rate-axis-80y-base${{ matrix.base_id }}-axis${{ matrix.axis }}
+          path: research/results/growth_rescue_rate_axis_swaps_20261031/
+          if-no-files-found: warn
+          retention-days: 30
