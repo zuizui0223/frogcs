@@ -1,0 +1,46 @@
+name: Frogcs 80year original rate-axis selected four axes eight NEW seeds
+
+on:
+  push:
+    branches:
+      - research/rate-axis-swap-growth-rescue-20261031
+    paths:
+      - .github/workflows/research_rate_axis_selected4_extra8_80y.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  true-80year-independent-confirmation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        base_id: [0, 12]
+        axis:
+          - attack_scale
+          - conversion
+          - rho
+          - f_adult_survival
+        seed_start: [105, 109]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Retest original source axes and mass-accounting invariants
+        run: python -m unittest discover -s research/scripts -p test_rate_axis_synthetic_growth_rescue_80y.py -v
+      - name: Execute actual original 80year biological cohort model with independent new RNG labels
+        run: python research/scripts/rate_axis_synthetic_growth_rescue_80y.py --run --base-rate-id ${{ matrix.base_id }} --axis ${{ matrix.axis }} --seed-start ${{ matrix.seed_start }}
+      - name: Preserve all true source outputs and 0-to-positive patch event ledgers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-rate-axis-add8-base${{ matrix.base_id }}-axis${{ matrix.axis }}-seeds${{ matrix.seed_start }}
+          path: research/results/growth_rescue_rate_axis_swaps_20261031/
+          if-no-files-found: warn
+          retention-days: 30

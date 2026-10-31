@@ -1,5 +1,12 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #152 — 生物率を1つだけ交換したときの分散救済の条件依存（12seed検証済み）
+
+[Draft PR #152](https://github.com/zuizui0223/frogcs/pull/152) / [12seed最終結果](RATE_AXIS_SELECTED_FOUR_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [全8率×双方向4seed結果](RATE_AXIS_ALL16_FOURSEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [80年16条件全実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41196851204) / [4率軸×追加8seed全実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197418760) / [12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197815433)。
+
+元の生物率ID0/12の8率軸を1つずつ双方へ交換した16条件を真正80年間×4seedで全件監査し、初回結果を見てから選んだ4率軸は新seed105–112も追加して12seedで確認。**ID12の既存7率を固定した場合、ρまたはconversionをID0値に交換すると成長依存の正→負の分散効果が2植物機能×12/12seedで出現**。ID0で攻撃倍率またはF成体生残をID12へ交換すると元の反転が消えるが、逆方向は対称でない。ρとconversionは外部流入OFFの年次加入式で**ρ×conversionという同一の積**で作用し、二つの独立機構とは区別できない（[構造的非識別の数値テストSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197668836)）。局所加入強度×捕食・成体生残の背景に依存するモデル内効果と整理し、一般性・野外因果は主張しない。
+
+
 ## 2026-10-31: PR #151 — 4率×12seedの生物率感度（結論確定）
 
 [Draft PR #151](https://github.com/zuizui0223/frogcs/pull/151) / [全率ID0・4・8・12の監査済みレポート](S_GROWTH_D_DURATION_FOUR_RATE_12SEED_VERIFIED_RESULT_2026-10-31.md) / [真正追加80年9シャードSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195587548) / [全4率×12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195960127)。

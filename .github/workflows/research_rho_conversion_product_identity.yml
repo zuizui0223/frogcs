@@ -1,0 +1,26 @@
+name: Frogcs rho times conversion structural identifiability proof
+
+on:
+  push:
+    branches:
+      - research/rate-axis-swap-growth-rescue-20261031
+    paths:
+      - research/scripts/test_rho_conversion_product_identifiability.py
+      - .github/workflows/research_rho_conversion_product_identity.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-stochastic-and-original-kernel-equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Source-level product identifiability and external immigration negative control
+        run: python -m unittest discover -s research/scripts -p test_rho_conversion_product_identifiability.py -v

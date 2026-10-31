@@ -1,0 +1,51 @@
+name: Frogcs audit all 16 80year rate axis interventions versus verified original endpoints
+
+on:
+  push:
+    branches:
+      - research/rate-axis-swap-growth-rescue-20261031
+    paths:
+      - .github/workflows/research_rate_axis_all16_independent_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audited-all-eight-axes-both-backgrounds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_RUN: '41195960127'
+      ORIGINAL_ARTIFACT: frogcs-growth-duration-four-rate-12seed-verified
+      SWAP_RUN: '41196851204'
+      ORIGINAL_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/original_pr151_rate_sources
+      SWAP_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/all_16_actual_swaps
+      OUT_DIR: research/results/growth_rescue_rate_axis_swaps_20261031/audited_all16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source and audit dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Fetch the existing complete original ID0/ID12 source endpoints from PR151
+        run: |
+          mkdir -p "$ORIGINAL_DIR"
+          gh run download "$ORIGINAL_RUN" --repo "${{ github.repository }}" --name "$ORIGINAL_ARTIFACT" --dir "$ORIGINAL_DIR"
+      - name: Fetch all 16 genuinely executed 80year counterfactual source runs
+        run: |
+          mkdir -p "$SWAP_DIR"
+          gh run download "$SWAP_RUN" --repo "${{ github.repository }}" --pattern "frogcs-rate-axis-80y-*" --dir "$SWAP_DIR"
+      - name: Audit biological source, true events, all plant factors and original rate axes
+        run: python research/scripts/audit_growth_rescue_original_rate_axis_swaps.py --original "$ORIGINAL_DIR" --swap-shards "$SWAP_DIR" --out "$OUT_DIR"
+      - name: Preserve all 16 unselected source findings and independent receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-rate-axis-all16-true80y-four-seed-audited
+          path: research/results/growth_rescue_rate_axis_swaps_20261031/audited_all16/
+          if-no-files-found: warn
+          retention-days: 30
