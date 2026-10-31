@@ -1,0 +1,29 @@
+name: Frogcs eight biological rate-axis swap source and integer tests
+
+on:
+  push:
+    branches:
+      - research/rate-axis-swap-growth-rescue-20261031
+    paths:
+      - research/scripts/rate_axis_synthetic_growth_rescue_80y.py
+      - research/scripts/test_rate_axis_synthetic_growth_rescue_80y.py
+      - research/PRIOR_RATE_AXIS_SINGLE_SWAP_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_rate_axis_single_swap_source_smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source requirements
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Test all eight × both directions original LHS source biology
+        run: python -m unittest discover -s research/scripts -p test_rate_axis_synthetic_growth_rescue_80y.py -v
