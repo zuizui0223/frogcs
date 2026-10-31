@@ -1,16 +1,6 @@
 name: Frogcs genuine vegetation roles 80-year POM ABC pilot
 
 on:
-  push:
-    branches:
-      - research/multigeneration-reversal-abm-pde-20261031
-    paths:
-      - research/VEGETATION_MECHANISM_IDENTIFICATION_ABC_PROTOCOL_2026-10-31.md
-      - research/scripts/model_native_vegetation_abc.py
-      - research/scripts/test_model_native_vegetation_abc.py
-      - research/scripts/summarize_model_native_vegetation_abc.py
-      - research/scripts/test_summarize_model_native_vegetation_abc.py
-      - .github/workflows/research_model_native_vegetation_abc.yml
   workflow_dispatch:
 
 permissions:
