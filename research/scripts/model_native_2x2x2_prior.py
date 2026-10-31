@@ -1,7 +1,8 @@
 """Full 80-year frogcs stage-network prior predictive on model-native 2x2x2 cubes.
 
-Each of 12 structural classes gets SAME 256 predeclared hypothetical parameter
-draws, including a balanced latent frog-postmetamorph→emerging-D reversal ON/OFF.
+Each of 12 structural classes gets SAME 256 predeclared hypothetical rate
+draws, with BOTH frog-postmetamorph→emerging-D reversal ON/OFF outcomes
+evaluated at every draw, then integrated with exactly equal prior weight.
 Vectorized annual dynamics are numerically checked against the ORIGINAL
 unmodified extension_annual_summary_20261029 model at 24 scenario x 8 corners.
 
@@ -67,10 +68,8 @@ def model_names(design):
 def matching_prior_draws(n=N_DRAWS,seed=20261031):
     x=prior_draws(n,seed=seed)
     if len(x)!=n:raise AssertionError("Incomplete real process prior")
-    on=np.repeat([0,1],n//2)
-    x["reverse_on"]=on[np.random.default_rng(seed+2).permutation(n)].astype(int)
-    if x.reverse_on.value_counts().to_dict()!={0:n//2,1:n//2}:
-        raise AssertionError("Latent reversal draws not balanced")
+    # Reverse predation is integrated by *paired* full simulation at each
+    # rate draw (0.5 each), avoiding finite-nuisance sampling noise.
     return x
 
 
@@ -78,7 +77,7 @@ def cube_design(structures,draws,anchor_both_edges=False):
     records=[]
     for struct in structures.to_dict("records"):
         for theta in draws.to_dict("records"):
-            edges=(False,True) if anchor_both_edges else (bool(theta["reverse_on"]),)
+            edges=(False,True)  # exact 0.5/0.5 latent-edge prior at every draw
             for reverse in edges:
                 for vertex,(v,s,d) in enumerate(VERTICES):
                     records.append(dict(
@@ -222,7 +221,8 @@ def categorized_sign(values,epsilon=EPS):
 
 def summarize_cube_output(results,epsilon=EPS):
     records=[]
-    for (structure,draw),g in results.groupby(["structure_id","draw"],sort=True):
+    for (structure,draw,reverse),g in results.groupby(
+            ["structure_id","draw","reverse_on"],sort=True):
         if len(g)!=8 or g.vertex.nunique()!=8 or set(g.vertex)!=set(range(8)):
             raise AssertionError("Lost model-native factorial grid cell")
         g=g.sort_values("vertex")
@@ -249,7 +249,7 @@ def summarize_cube_output(results,epsilon=EPS):
                     categorized_sign(delta,epsilon=alternative),TARGET))
         records.append(rec)
     a=pd.DataFrame(records)
-    if a.duplicated(["structure_id","draw"]).any():
+    if a.duplicated(["structure_id","draw","reverse_on"]).any():
         raise AssertionError("Duplicate model/parameter draw summary")
     return a
 
@@ -301,9 +301,10 @@ def run(context,n=N_DRAWS,out=OUT):
           "structure_classes",len(selected),"prior_draws",len(priors),flush=True)
     realized=annual_recurrence_batch(cube)
     ref=summarize_cube_output(realized)
-    if len(ref)!=4*n or ref.structure_id.nunique()!=4:
+    if len(ref)!=4*n*2 or ref.structure_id.nunique()!=4:
         raise AssertionError("Incomplete ABC reference draws")
-    if ref.groupby("structure_id").draw.nunique().ne(n).any():
+    if (ref.groupby("structure_id").draw.nunique().ne(n).any() or
+        ref.groupby(["structure_id","draw"]).reverse_on.nunique().ne(2).any()):
         raise AssertionError("Not equal structural model prior")
     prefix=context
     ref.to_csv(out/(prefix+"_prior_predictive_reference.csv.gz"),index=False,
@@ -311,12 +312,30 @@ def run(context,n=N_DRAWS,out=OUT):
     priors.to_csv(out/(prefix+"_parameter_draws.csv"),index=False)
     models.to_csv(out/(prefix+"_structure_inventory.csv"),index=False)
     original.to_csv(out/(prefix+"_anchor_24_corner_replay.csv"),index=False)
+    # Matched rate-draw reversal ablation: do not silently call on/off
+    # equivalent merely because many frozen source grids were identical.
+    key=["structure_id","draw"]
+    off=ref[ref.reverse_on==0].set_index(key)
+    on=ref[ref.reverse_on==1].set_index(key)
+    if len(off)!=len(on) or not off.index.equals(on.index):
+        raise AssertionError("Exact reversal-pair rate-draw matching failed")
+    flags={}
+    for mode in ("log","raw"):
+        signs=[f"sign_{mode}_{k}" for k in METRICS]
+        flags[mode]=np.all(off[signs].to_numpy()==on[signs].to_numpy(),axis=1)
+    paired=pd.DataFrame(dict(structure_id=[q[0] for q in on.index],
+                             draw=[int(q[1]) for q in on.index],
+                             log_sign_vector_identical=flags["log"],
+                             raw_sign_vector_identical=flags["raw"]))
+    paired.to_csv(out/(prefix+"_reverse_edge_signature_pairs.csv"),index=False)
     score=[]
     for structure,g in ref.groupby("structure_id"):
-        score.append(dict(context=context,structure_id=structure,n_draws=len(g),
+        score.append(dict(context=context,structure_id=structure,n_simulator_runs=len(g),
+                          n_rate_draws=int(g.draw.nunique()),
                           acceptance_log=int(g.matches_log.sum()),
                           acceptance_raw=int(g.matches_raw.sum()),
                           n_reversed_on=int(g.reverse_on.sum()),
+                 n_reversed_off=int((1-g.reverse_on).sum()),
                           n_log_symmetric_zero_patterns=int(
                             g[[f"sign_log_{k}" for k in METRICS]].eq(0).any(axis=1).sum())))
     pd.DataFrame(score).to_csv(out/(prefix+"_source_run_diagnostics.csv"),index=False)
@@ -328,7 +347,7 @@ def run(context,n=N_DRAWS,out=OUT):
                  n_source_vertices=len(realized),n_original_replay_vertices=24*8,
                  original_source_replay_max_error=checks,dt=DT,years=YEARS,window=WINDOW,
                  log_f_b_primary=True,raw_f_b_sensitivity=True,
-                 reversing_predation_latent_balanced=True,
+                 reversal_prior="Bernoulli(0.5), exactly evaluated both ON/OFF at every parameter draw",
                  source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                                 for p in [DESIGN,*SOURCES]},
                  script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
