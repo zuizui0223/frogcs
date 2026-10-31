@@ -501,12 +501,20 @@ if __name__=="__main__":
     p.add_argument("--scales",type=int,nargs="+",default=SCALES)
     p.add_argument("--dt",type=float,default=DT)
     p.add_argument("--immigration",choices=("both","off","on"),default="both")
+    p.add_argument("--seed-start",type=int,default=101)
+    p.add_argument("--movement-modes",nargs="+",choices=MOVEMENT_MODES,
+                   default=MOVEMENT_MODES)
     a=p.parse_args()
     if not a.run:p.error("Explicit --run required")
-    if a.seeds<1 or a.seeds>len(SEEDS):
-        p.error("Choose 1..4 predeclared seed labels")
+    all_seed_labels=tuple(range(101,113))
+    if a.seeds<1 or a.seed_start not in all_seed_labels:
+        p.error("Choose 1..12 consecutive predeclared seed labels 101–112")
+    first=all_seed_labels.index(a.seed_start)
+    selected_seeds=all_seed_labels[first:first+a.seeds]
+    if len(selected_seeds)!=a.seeds or len(set(a.movement_modes))!=len(a.movement_modes):
+        p.error("Source seed labels or movement conditions incomplete")
     immigration_states=((False,True) if a.immigration=="both" else
                         (False,) if a.immigration=="off" else (True,))
-    run(years=a.years,draws=a.draws,seeds=SEEDS[:a.seeds],
+    run(years=a.years,draws=a.draws,seeds=selected_seeds,
         scales=tuple(a.scales),immigration_states=immigration_states,
-        dt=a.dt)
+        movement_modes=tuple(a.movement_modes),dt=a.dt)
