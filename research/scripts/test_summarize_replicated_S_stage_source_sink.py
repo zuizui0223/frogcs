@@ -83,7 +83,7 @@ class TwelveSeedStochasticReplicateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             matched_stage_rate_trophic_pom(b,n_boot=99)
         b=a.copy()
-        b.loc[0,"seed"]=101
+        b.loc[0,"seed"]=999
         with self.assertRaises(ValueError):
             matched_stage_rate_trophic_pom(b,n_boot=99)
 
