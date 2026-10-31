@@ -74,7 +74,7 @@ class PatternABCFixtureTests(unittest.TestCase):
         self.assertTrue(np.isfinite(sample.min_distance_sq).all())
 
     def test_fixed_real_site_projection_changes_with_site_source_mapping(self):
-        x=self.surfaces["case_084"]
+        x=next(iter(self.surfaces.values()))
         a=site_response(self.d,"uniform",x,warps=(1.,1.))
         b=site_response(self.d,"uniform",x,warps=(.65,1.35))
         self.assertGreater(np.count_nonzero(a!=b),0)
