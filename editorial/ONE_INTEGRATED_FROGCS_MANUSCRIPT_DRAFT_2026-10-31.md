@@ -1,3 +1,5 @@
+> **SUPERSEDED EDITORIAL DRAFT — 2026-10-31. NOT FOR SUBMISSION.** The author selected **MACROECOLOGY → MECHANISM** as the single-paper main narrative and demoted RC6 rain-associated spatial chorus concentration to **historical motivation only**. The authoritative revised manuscript is [MACRO_TO_MECHANISM_HIGH_IMPACT_MANUSCRIPT_2026-10-31.md](MACRO_TO_MECHANISM_HIGH_IMPACT_MANUSCRIPT_2026-10-31.md). This older pulse-first version is retained solely to preserve the change history; do not use its Abstract, Results ordering, or figure plan for submission. The original science/snapshots are not changed.
+
 # Spatially structured frog calling across rainfall pulses and freshwater community contexts: limits of stage-structured demographic explanations
 
 **Single integrated research manuscript — working draft 2026-10-31. NOT submitted or approved by coauthors.**
