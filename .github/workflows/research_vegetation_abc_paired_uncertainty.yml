@@ -1,0 +1,74 @@
+name: Frogcs 256-draw paired vegetation role uncertainty
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/vegetation_abc_paired_uncertainty.py
+      - research/scripts/test_vegetation_abc_paired_uncertainty.py
+      - .github/workflows/research_vegetation_abc_paired_uncertainty.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  genuine-matched-plant-effect-uncertainty:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen science dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Verify original 256-rate draw pair resampling and functional interactions
+        run: python -m unittest discover -s research/scripts -p 'test_vegetation_abc_paired_uncertainty.py' -v
+      - name: Load true original-kernel full 256 common demographic draws for every vegetation role
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41183066399
+          pattern: frogcs-native-full256-vegetation-SF*-L*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_intrinsic_factorial_abc_20261031
+      - name: Bootstrap whole rate IDs across candidate plant mechanisms rather than pseudo-independent corners
+        run: python -u research/scripts/vegetation_abc_paired_uncertainty.py --run
+      - name: Audit paired-biology source effects and uncertainty
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          import numpy as np
+          from pathlib import Path
+          p=Path("research/results/macro_intrinsic_factorial_abc_20261031")
+          x=pd.read_csv(p/"full256_vegetation_paired_main_effects.csv")
+          all=pd.read_csv(p/"full256_vegetation_paired_bootstrap_by_axis.csv")
+          z=pd.read_csv(p/"full256_vegetation_function_interactions.csv")
+          assert len(x)==8 and set(x.plant_axis)=={'cover_SF','cover_DF','cover_DS','litter'}
+          assert x.n_independent_rate_draws.eq(256).all()
+          assert x.lower.le(x.upper).all()
+          assert all.n_independent_rate_draws.eq(256).all()
+          assert z.n_independent_draws.eq(256).all()
+          assert np.isfinite(x[['mean','lower','upper']]).all().all()
+          print('VEGETATION_PATH_ON_OFF_PAIRED_256_CONFIDENCE_AUDIT_SUCCESS')
+          PY
+      - name: Print exact plant and next-stage pathway interaction CIs
+        run: |
+          for f in full256_vegetation_paired_main_effects.csv full256_vegetation_function_interactions.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_intrinsic_factorial_abc_20261031/$f"
+          done
+      - name: Retain complete provenance and 256-rate matched bootstraps
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-vegetation-abc-256-shared-rate-effect-intervals
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn
