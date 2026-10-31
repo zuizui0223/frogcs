@@ -40,7 +40,7 @@ def legal_plant_inventory():
         name=f"SF{sf}_DF{df}_DS{ds}_L{litter}"
         plants.append(dict(plant_model=name,cover_SF=sf,
                            cover_DF=df,cover_DS=ds,litter=litter))
-    out=pd.DataFrame(plants).sort_values(PLANT_FLAGS).reset_index(drop=True)
+    out=pd.DataFrame(plants).sort_values(list(PLANT_FLAGS)).reset_index(drop=True)
     if len(out)!=12 or out.duplicated(list(PLANT_FLAGS)).any():
         raise AssertionError("Main's 12 legal plant subroles not complete")
     # Original existing true 80-year ABC fixed model is fully represented.
