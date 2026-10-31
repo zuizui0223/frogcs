@@ -189,7 +189,8 @@ def rank_direction_groups(d,bg,all_surfaces,eqgroups,observed,boot,nreps=N_MODEL
         key_by_sig[sign]=min(classes)
     sig_rows=[]
     for sign,classes in signature_to_groups.items():
-        result=[r for r in rows if r["case"]==min(eqgroups[c]) for c in classes]
+        result=[r for cls in classes for r in rows
+                if r["case"]==min(eqgroups[cls])]
         sig_rows.append(dict(background=bg,directional_signature=sign,
                              direction_group=key_by_sig[sign],
                              n_exact_source_groups=len(classes),
@@ -205,7 +206,7 @@ def rank_direction_groups(d,bg,all_surfaces,eqgroups,observed,boot,nreps=N_MODEL
     # Independent pseudo targets validate whether a categorical model can
     # be returned to its *direction* group when its exact source is hidden.
     names=sorted(class_prob)
-    signature_by_group={cls:"{},{}".format("", "") for cls in names}
+    signature_by_group={}
     for sign,classes in signature_to_groups.items():
         for cls in classes:signature_by_group[cls]=key_by_sig[sign]
     # Equal-weight priors over signatures rather than group multiplicities.
