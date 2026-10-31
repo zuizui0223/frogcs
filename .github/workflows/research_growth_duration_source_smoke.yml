@@ -1,0 +1,39 @@
+name: Frogcs isolate S growth and D aquatic duration with real source
+
+on:
+  push:
+    branches:
+      - research/growth-duration-isolation-20261031
+    paths:
+      - research/scripts/isolate_S_growth_D_duration_finite80y.py
+      - research/scripts/test_isolate_S_growth_D_duration_finite80y.py
+      - research/S_GROWTH_D_AQUATIC_DURATION_FACTORIAL_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_growth_duration_source_smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-isolation-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original analysis requirements
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Verify original and D-first share arrival order and source factorial has no other changed axis
+        run: python -m unittest discover -s research/scripts -p test_isolate_S_growth_D_duration_finite80y.py -v
+      - name: Execute four-year source-locked independent biology smoke (NOT ecological conclusion)
+        run: python research/scripts/isolate_S_growth_D_duration_finite80y.py --run --seed-start 101 --seeds 1 --years 4 --scale 3
+      - name: Keep prespecified source receipt and event ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-growth-duration-source-4year-smoke
+          path: research/results/growth_duration_isolation_20261031/
+          if-no-files-found: warn
+          retention-days: 30
