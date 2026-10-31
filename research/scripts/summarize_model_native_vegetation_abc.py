@@ -144,6 +144,7 @@ def paired_role_effects(x,scale):
         else:
             restrict=np.ones(len(x),bool)
         sub=x.loc[restrict].copy()
+        sub[f"matches_{scale}"]=sub[f"matches_{scale}"].astype(int)
         keys=["risk","draw","reverse_on",*rest]
         piv=sub.pivot(index=keys,columns=role,
                       values=[f"matches_{scale}",*[f"beta_{scale}_{m}" for m in METRICS]])
