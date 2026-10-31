@@ -1,0 +1,79 @@
+name: Frogcs recolonization persistence versus transient return
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/RECOLONIZATION_PERSISTENCE_PEDIGREE_PROTOCOL_2026-10-31.md
+      - research/scripts/assess_recolonization_establishment.py
+      - research/scripts/test_assess_recolonization_establishment.py
+      - .github/workflows/research_recolonization_establishment.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  actual-UID-and-census-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned source pandas and numpy
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Unit-test source year censoring, natal-parent attribution and exact annual birth counts
+        run: python -m unittest discover -s research/scripts -p 'test_assess_recolonization_establishment.py' -v
+      - name: Retrieve complete 20-year ABM source trajectories/parent registry from successful original run
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-stochastic-lineage-metapop-20y-20261031
+          run-id: 41186773263
+          github-token: ${{ github.token }}
+          path: research/results/stochastic_pedigree_metapop_20261031
+      - name: Validate 1M+ individual parents and distinguish transient vs persistent patch reoccupancy
+        run: python -u research/scripts/assess_recolonization_establishment.py --run
+      - name: Verify real UID/patch birth identities, every source arm and next-year censoring
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import pandas as pd
+          p=Path('research/results/recolonization_establishment_20261031')
+          e=pd.read_csv(p/'recolonization_event_followup.csv')
+          r=pd.read_csv(p/'recolonization_replicate_summary.csv')
+          s=pd.read_csv(p/'recolonization_cohort_conditions.csv')
+          receipt=json.loads((p/'receipt.json').read_text())
+          assert len(r)==48 and len(s)==12
+          assert r.groupby(['mobility','reverse']).guild.nunique().eq(3).all()
+          assert s.n_seeds.eq(4).all()
+          assert e.year_of_recolonization.between(1,20).all()
+          assert (r.n_eligible_two_followups<=r.n_recolonization_events).all()
+          assert (r.n_two_census_persistent_plus_local_births<=r.n_eligible_two_followups).all()
+          assert r[r.mobility=='off'].n_recolonization_events.eq(0).all()
+          assert e[e.two_census_followups_observed].retained_at_two_followups.notna().all()
+          assert receipt['annual_births_exactly_reconciled_to_all_children']
+          assert receipt['stages_F_D_reconciled_with_original_annual_totals']
+          assert receipt['n_ever_lived_individual_records']>1000000
+          print('SOURCE_UID_PATCH_PERSISTENCE_AUDIT_SUCCESS',len(e),'recolonization episodes,',len(r),'stochastic arm/guild groups')
+          PY
+      - name: Print individual event detail and condition-level persistence counts
+        run: |
+          for file in recolonization_event_followup.csv recolonization_cohort_conditions.csv; do
+            echo "===== $file ====="
+            cat "research/results/recolonization_establishment_20261031/$file"
+          done
+      - name: Preserve exact full original registry/census SHA, censored episodes and natal-parent birth origins
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-source-backed-recolonization-persistence-20261031
+          path: research/results/recolonization_establishment_20261031/
+          if-no-files-found: warn
+          retention-days: 30
