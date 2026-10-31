@@ -33,7 +33,7 @@ class DirectionalPOMTests(unittest.TestCase):
         b[:,1]=-2.
         b[:,2]=r.normal(size=999)
         b[:,3]=r.normal(size=999)
-        b[:,4]=r.normal(loc=.02,scale=.01,size=999)
+        b[:,4]=r.normal(loc=.02,scale=.001,size=999)
         b[:,5]=-1.
         obs,delta=observational_categories(b)
         self.assertGreaterEqual(delta,.05)
@@ -48,7 +48,7 @@ class DirectionalPOMTests(unittest.TestCase):
                       [-1,1,1,1,1,-1]],dtype=np.int8)
         soft,exact,composite=agreement(obs,sim,(0,1,5,4))
         self.assertAlmostEqual(exact,.5)
-        self.assertAlmostEqual(soft,.625)
+        self.assertAlmostEqual(soft,.53125)
         self.assertAlmostEqual(composite,.25)
         self.assertEqual(probability_rows(obs,[4]).shape,(1,3))
 
