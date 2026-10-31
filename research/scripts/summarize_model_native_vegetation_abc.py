@@ -63,12 +63,12 @@ def load_evidence(folder=OUT,n=N_DRAWS):
     return union
 
 
-def class_draw_matrix(x,scale):
+def class_draw_matrix(x,scale,n=N_DRAWS):
     accepted=f"matches_{scale}"
     by=x.groupby(["structure_id","draw"],sort=True).agg(
         accepted_rate=(accepted,"mean"),n_edges=("reverse_on","nunique"),
         n_rows=("reverse_on","size")).reset_index()
-    if len(by)!=24*N_DRAWS or by.n_edges.ne(2).any() or by.n_rows.ne(2).any():
+    if len(by)!=24*n or by.n_edges.ne(2).any() or by.n_rows.ne(2).any():
         raise AssertionError("Bad matched 64 real draws and 2 reversible edge states")
     classes=sorted(by.structure_id.unique())
     draws=sorted(by.draw.unique())
@@ -79,15 +79,15 @@ def class_draw_matrix(x,scale):
     return classes,np.asarray(draws),mat
 
 
-def bootstrap_abc(x,n_boot=BOOT):
+def bootstrap_abc(x,n_boot=BOOT,n=N_DRAWS):
     rng=np.random.default_rng(SEED)
-    ix=rng.integers(0,N_DRAWS,size=(n_boot,N_DRAWS))
+    ix=rng.integers(0,N_DRAWS,size=(n_boot,n))
     records=[];marginal=[]
     classes=x[["structure_id","plant_model","risk",
                "cover_SF","cover_DF","cover_DS","litter"]].drop_duplicates()
     if len(classes)!=24:raise AssertionError("Risk×plant subcatalog not unique")
     for scale in SCALES:
-        names,draws,mat=class_draw_matrix(x,scale)
+        names,draws,mat=class_draw_matrix(x,scale,n=n)
         hits=mat.sum(axis=0)
         total=hits.sum()
         if total<=0: raise ValueError("No target-sign-producing original model under prior")
@@ -95,7 +95,7 @@ def bootstrap_abc(x,n_boot=BOOT):
         bootstrap=mat[ix].sum(axis=1)
         if np.any(bootstrap.sum(axis=1)<=0):
             raise ValueError("At least one shared-draw bootstrap had no compatible models")
-        bootrates=bootstrap/N_DRAWS
+        bootrates=bootstrap/n
         bootshares=bootstrap/bootstrap.sum(axis=1,keepdims=True)
         for j,model in enumerate(names):
             meta=classes.set_index("structure_id").loc[model]
@@ -104,10 +104,10 @@ def bootstrap_abc(x,n_boot=BOOT):
                 plant_model=str(meta.plant_model),risk=bool(meta.risk),
                 cover_SF=int(meta.cover_SF),cover_DF=int(meta.cover_DF),
                 cover_DS=int(meta.cover_DS),litter=int(meta.litter),
-                n_independent_rate_draws=N_DRAWS,
+                n_independent_rate_draws=n,
                 n_reversal_states_per_draw=2,
                 effective_accepted_rate_draws=float(hits[j]),
-                acceptance=float(hits[j]/N_DRAWS),
+                acceptance=float(hits[j]/n),
                 acceptance_boot_ci_low=float(np.quantile(bootrates[:,j],.025)),
                 acceptance_boot_ci_high=float(np.quantile(bootrates[:,j],.975)),
                 conditional_abc_share=float(shares[j]),
@@ -122,7 +122,7 @@ def bootstrap_abc(x,n_boot=BOOT):
             p=bootshares[:,jj].sum(axis=1)
             marginal.append(dict(scale=scale,plant_model=plant,
                                  n_risk_classes=len(jj),
-                                 n_prior_rate_draws=N_DRAWS,
+                                 n_prior_rate_draws=n,
                                  total_accepted_weight=float(hits[jj].sum()),
                                  conditional_abc_plant_share=float(shares[jj].sum()),
                                  bootstrap_ci_low=float(np.quantile(p,.025)),
@@ -174,10 +174,10 @@ def paired_role_effects(x,scale):
     return rows,pd.DataFrame(summary)
 
 
-def run(path=OUT):
+def run(path=OUT,n=N_DRAWS):
     path=Path(path);path.mkdir(parents=True,exist_ok=True)
-    a=load_evidence(path)
-    classes,plants=bootstrap_abc(a)
+    a=load_evidence(path,n=n)
+    classes,plants=bootstrap_abc(a,n=n)
     contrasts=[];summary=[]
     for scale in SCALES:
         table,stats=paired_role_effects(a,scale)
@@ -193,13 +193,14 @@ def run(path=OUT):
     print("VEGETATION_MAIN_LEGAL_PILOT_ABC\n"+classes.to_string(index=False),flush=True)
     print("VEGETATION_ROLE_SHARES\n"+plants.to_string(index=False),flush=True)
     print("VEGETATION_PATH_ON_OFF_PAIRED_EFFECTS\n"+summary.to_string(index=False),flush=True)
-    print("VEGETATION_ABC_FIRST_STAGE_ONLY 12 legal plant roles, 64 shared synthetic rate draws",flush=True)
+    print("VEGETATION_ABC_FIRST_STAGE_ONLY 12 legal plant roles, matched synthetic rate draws",flush=True)
     return classes,plants,summary
 
 
 if __name__=="__main__":
     p=argparse.ArgumentParser()
     p.add_argument("--run",action="store_true")
+    p.add_argument("--draws",type=int,default=N_DRAWS)
     args=p.parse_args()
     if not args.run:p.error("Explicit --run required")
-    run()
+    run(n=args.draws)
