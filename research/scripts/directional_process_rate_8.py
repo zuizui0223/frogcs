@@ -175,6 +175,14 @@ def run():
     if not all(x in cells for x in ("F_B","draw","case","vegetation","S_source","D_source")):
         raise ValueError("Missing demographic source fields")
     tables=evaluate_rate_direction(d,cells,metadata)
+    rec=tables["rate_draw_recovery"]
+    confusion=(rec.groupby(["background","true_group","predicted_group"])
+               .size().rename("n").reset_index())
+    confusion["n_true_group"]=confusion.groupby(
+        ["background","true_group"]).n.transform("sum")
+    confusion["fraction_of_true_group"]=confusion.n/confusion.n_true_group
+    if int(confusion.n.sum())!=len(rec):raise AssertionError("Dropped heldout rate draws")
+    tables["structural_rate_draw_confusion"]=confusion
     for name,frame in tables.items():frame.to_csv(OUT/(name+".csv"),index=False)
     receipt=dict(status="DIRECTIONAL_REANALYSIS_OF_EIGHT_ACTUAL_UNCALIBRATED_PROCESS_DRAWS",
                  original_run="https://github.com/zuizui0223/frogcs/actions/runs/41163370575",
