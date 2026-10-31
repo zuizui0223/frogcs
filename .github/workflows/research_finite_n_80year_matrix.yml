@@ -1,0 +1,67 @@
+name: Frogcs genuine 80y finite-N trophic cohort immigration and movement
+
+on:
+  push:
+    branches:
+      - research/finite-n-stage-bridge-20261031
+    paths:
+      - .github/workflows/research_finite_n_80year_matrix.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-seasonal-kernel-finite-n:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        scale: [3, 12]
+        immigration: ["off", "on"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Test source identity, integer conservation and right censor
+        run: python -m unittest discover -s research/scripts -p test_finite_n_source_cohort_bridge.py -v
+      - name: Genuine original 120-day capture kernel plus 80-year finite-N cohort dynamics
+        run: python research/scripts/finite_n_source_cohort_bridge.py --run --years 80 --draws 1 --seeds 4 --scales ${{ matrix.scale }} --immigration ${{ matrix.immigration }}
+      - name: Retain one exact biological source shard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-finite-n-80y-source-q${{ matrix.scale }}-imm${{ matrix.immigration }}
+          path: research/results/finite_n_stage_bridge_20261031/
+          retention-days: 30
+          if-no-files-found: warn
+
+  verify-four-shards-and-ecological-claims:
+    needs: original-seasonal-kernel-finite-n
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-finite-n-80y-source-*
+          path: research/results/finite_n_stage_bridge_20261031/shards
+          merge-multiple: false
+      - name: Audit 80y complete events, source replay, sign contrast and movement
+        run: python research/scripts/audit_finite_n_80y_shards.py --shards-root research/results/finite_n_stage_bridge_20261031/shards --out research/results/finite_n_stage_bridge_20261031/AUDITED_80YEAR
+      - name: Preserve source and independent derived results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-finite-n-80y-verified-integrated
+          path: research/results/finite_n_stage_bridge_20261031/AUDITED_80YEAR/
+          retention-days: 30
+          if-no-files-found: warn
