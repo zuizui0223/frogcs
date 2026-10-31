@@ -53,6 +53,11 @@ CONTEXTS = ("original","S_growth_fast_only",
 PLANTS = ("SF0_DF0_DS1_L0","SF1_DF0_DS0_L1")
 BASES = (0,12)
 SEEDS = (101,102,103,104)
+SEED_SHARDS = (
+    (101,102,103,104),
+    (105,106,107,108),
+    (109,110,111,112),
+)
 YEARS = 80
 TRANSFER = .15
 SCALE = 3
@@ -146,9 +151,9 @@ def verify_complete_swap_positive_control():
 
 
 def simulate_axis(base_id,axis,*,years=YEARS,seeds=SEEDS,transfer=TRANSFER):
-    if (years!=YEARS or tuple(seeds)!=SEEDS or
+    if (years!=YEARS or tuple(seeds) not in SEED_SHARDS or
         not np.isclose(transfer,TRANSFER)):
-        raise ValueError("Use only the prespecified 80year 4seed first-pass source design")
+        raise ValueError("Use only the fixed 80year distinct four-seed source shard labels")
     source=swap_fixed_rate_axis(base_id,axis)
     if not verify_complete_swap_positive_control():
         raise AssertionError("Donor endpoint reconstruction failed")
@@ -247,6 +252,8 @@ if __name__=="__main__":
     p.add_argument("--run",action="store_true")
     p.add_argument("--base-rate-id",type=int,choices=BASES,required=True)
     p.add_argument("--axis",choices=AXES,required=True)
+    p.add_argument("--seed-start",type=int,choices=(101,105,109),default=101)
     args=p.parse_args()
     if not args.run:p.error("Explicit --run required")
-    simulate_axis(args.base_rate_id,args.axis)
+    simulate_axis(args.base_rate_id,args.axis,
+                  seeds=tuple(range(args.seed_start,args.seed_start+4)))
