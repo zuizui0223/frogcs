@@ -1,5 +1,12 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #151 — S成長効果の生物学的率に対する感度
+
+[Draft PR #151](https://github.com/zuizui0223/frogcs/pull/151) / [元率draw ID4・8・12による80年実行](https://github.com/zuizui0223/frogcs/actions/runs/41195587548) / [事前固定した検証仕様](S_GROWTH_D_DURATION_RATE_DRAW_ROBUSTNESS_PROTOCOL_2026-10-31.md)。
+
+PR #150の**S成長率増加が分散による80年後の占有効果を正→負へ切り替える**という結果は、未校正の生物率draw ID0の限定条件だった。この一般性を確認するため、元256個の仮説的LHS率drawで事前選定していたID4・8・12に変更して、同じS成長×D水中期間の2×2因子実験、植物2役割、逆転捕食ON/OFF、12独立乱数系列、q3、外部流入OFF、移動15%を保持して真正80年モデルを計算する。結果を見てから支持する率だけを選ばず、全率drawの肯定・否定を残す。野外の真の生物率事後分布ではない。
+
+
 ## 2026-10-31: PR #150 — 12seedによるS成長率×D水中期間の因子分離（結果確定）
 
 [PR #150 (Draft)](https://github.com/zuizui0223/frogcs/pull/150) / [検証済み2×2結果](S_GROWTH_D_DURATION_12SEED_VERIFIED_RESULT_2026-10-31.md) / [真正80年追加実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41194882028) / [旧12seed＋新2セルの独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195118831)。
