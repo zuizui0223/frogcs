@@ -376,6 +376,8 @@ def summarize_finite_group(group, outputs, *, scale, seed, mode, immigration,
                 first_year_occupied_patches=int((H[0,i,:,g]>0).sum()),
                 final_occupied_patches=int((H[-1,i,:,g]>0).sum()),
                 final_individual_count=int(H[-1,i,:,g].sum()),
+                mean_cohort_B_last_window=float(
+                    H[max(0,years-WINDOW):years,i,:,g].mean()/scale),
                 n_local_extinctions=int(extinct.sum()),
                 n_local_returns=return_total,
                 n_2y_observable_returns=int(
