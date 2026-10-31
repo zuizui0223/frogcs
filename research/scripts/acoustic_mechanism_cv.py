@@ -26,6 +26,7 @@ SURFACES = ROOT / 'research/results/handling_factorial_20261029/dense21_cells.cs
 OUT = ROOT / 'research/results/acoustic_bridge_20261031'
 SEED = 20261031
 ARMS = ('0000', '1000', '0100', '1100', '1111')
+REPLACEMENTS = tuple('replace_' + arm for arm in ARMS)
 BACKGROUNDS = ('uniform', 'target_group')
 SURVEY = ('n_visits', 'n_years', 'mean_air', 'mean_noise', 'season_2', 'season_3', 'season_4', 'mean_doy')
 ENV = ('bio1', 'bio4', 'bio12', 'bio15', 'water_3000m_mean', 'herbaceous_3000m_mean')
@@ -192,10 +193,12 @@ def out_of_block_predictions(d: pd.DataFrame, surfaces: dict, folds: np.ndarray)
     for bg in BACKGROUNDS:
         predictions = candidate_surface(d, bg, surfaces)
         baseline = base_matrix(d, bg, interactions=True)
-        options = {'env_interactions': baseline}
+        additive = base_matrix(d, bg, interactions=False)
+        options = {'env_interactions': baseline, 'env_additive': additive}
         options.update({arm: np.column_stack([baseline, feature]) for arm, feature in predictions.items()})
-        # Additive null is secondary; primary benchmark is the environment-interaction null.
-        options['env_additive'] = base_matrix(d, bg, interactions=False)
+        # Exploratory extension AFTER first primary results: structural response
+        # surfaces replace, rather than augment, four free empirical interactions.
+        options.update({'replace_'+arm: np.column_stack([additive, feature]) for arm, feature in predictions.items()})
         for fold in range(int(np.max(folds)) + 1):
             test = folds == fold
             train = ~test
@@ -213,8 +216,8 @@ def out_of_block_predictions(d: pd.DataFrame, surfaces: dict, folds: np.ndarray)
     return result
 
 
-def paired_block_interval(data: pd.DataFrame, baseline: str = 'env_interactions', reps: int = 999):
-    """Conditional outer-block bootstrap; never refits the observation model."""
+def paired_block_interval(data: pd.DataFrame, reps: int = 999):
+    """Paired block intervals; conditional on frozen spatial CV predictions."""
     rows=[];fold=[]
     for (bg, arm), group in data.groupby(['background', 'candidate']):
         n=group.n.to_numpy(dtype=float);k=group.k.to_numpy(dtype=float);p=group.predicted.to_numpy()
@@ -228,23 +231,25 @@ def paired_block_interval(data: pd.DataFrame, baseline: str = 'env_interactions'
                              positive_vegetation_sites=int(g.V.sum()),nll_per_survey=float(g.loss.sum()/g.n.sum())))
     summary=pd.DataFrame(rows);fold_scores=pd.DataFrame(fold)
     for bg in BACKGROUNDS:
-        b=data[(data.background==bg)&(data.candidate==baseline)][['site','spatial_block','n','k','predicted']].rename(columns={'predicted':'p_null'})
-        for arm in ARMS:
-            g=data[(data.background==bg)&(data.candidate==arm)][['site','spatial_block','n','k','predicted']]
-            pair=g.merge(b,on=['site','spatial_block','n','k'],validate='one_to_one')
-            if len(pair)!=len(g) or len(pair)!=len(b):
-                raise ValueError('Unpaired held-out comparison')
-            lossdiff=log_score(pair.k,pair.n,pair.p_null)-log_score(pair.k,pair.n,pair.predicted)
-            block=pair.assign(delta=lossdiff).groupby('spatial_block')[['delta','n']].sum()
-            vec=block[['delta','n']].to_numpy(dtype=float)
-            rng=np.random.default_rng(SEED)
-            draw=rng.integers(0,len(vec),size=(reps,len(vec)))
-            bootstrap=vec[draw].sum(axis=1)
-            improvement=bootstrap[:,0]/bootstrap[:,1]
-            mask=(summary.background==bg)&(summary.candidate==arm)
-            summary.loc[mask,'gain_vs_interaction_null'] = float(lossdiff.sum()/pair.n.sum())
-            summary.loc[mask,'gain_low_conditional'] = float(np.quantile(improvement,.025))
-            summary.loc[mask,'gain_high_conditional'] = float(np.quantile(improvement,.975))
+        for base,label in [('env_interactions','interaction'),('env_additive','additive')]:
+            b=data[(data.background==bg)&(data.candidate==base)][['site','spatial_block','n','k','predicted']].rename(columns={'predicted':'p_null'})
+            for arm in ARMS + REPLACEMENTS:
+                g=data[(data.background==bg)&(data.candidate==arm)][['site','spatial_block','n','k','predicted']]
+                pair=g.merge(b,on=['site','spatial_block','n','k'],validate='one_to_one')
+                if len(pair)!=len(g) or len(pair)!=len(b):
+                    raise ValueError('Unpaired held-out comparison')
+                lossdiff=log_score(pair.k,pair.n,pair.p_null)-log_score(pair.k,pair.n,pair.predicted)
+                block=pair.assign(delta=lossdiff).groupby('spatial_block')[['delta','n']].sum()
+                vec=block[['delta','n']].to_numpy(dtype=float)
+                rng=np.random.default_rng(SEED)
+                draw=rng.integers(0,len(vec),size=(reps,len(vec)))
+                bootstrap=vec[draw].sum(axis=1)
+                improvement=bootstrap[:,0]/bootstrap[:,1]
+                mask=(summary.background==bg)&(summary.candidate==arm)
+                prefix='gain_vs_'+label+'_null'
+                summary.loc[mask,prefix] = float(lossdiff.sum()/pair.n.sum())
+                summary.loc[mask,prefix+'_low_conditional'] = float(np.quantile(improvement,.025))
+                summary.loc[mask,prefix+'_high_conditional'] = float(np.quantile(improvement,.975))
     return summary,fold_scores
 
 
@@ -267,7 +272,7 @@ def pattern_diagnostic(d: pd.DataFrame, predictions: pd.DataFrame):
         if np.linalg.matrix_rank(focal, tol=1e-8) < 7:
             raise ValueError('Unidentified focal interaction terms')
         z=np.column_stack([x,nuisance])
-        for candidate in ('observed', 'env_interactions', 'env_additive') + ARMS:
+        for candidate in ('observed', 'env_interactions', 'env_additive') + ARMS + REPLACEMENTS:
             if candidate=='observed':
                 y=d.k.to_numpy()/d.n.to_numpy()
             else:
@@ -306,7 +311,7 @@ def run():
                  sources={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in (SITE,VISITS,SURFACES)},
                  runtime={'python':platform.python_version(),'numpy':np.__version__,'pandas':pd.__version__})
     (OUT/'receipt.json').write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-    print(score[['background','candidate','nll_per_survey','gain_vs_interaction_null']].to_string(index=False))
+    print(score[['background','candidate','nll_per_survey','gain_vs_interaction_null','gain_vs_additive_null']].to_string(index=False))
 
 
 if __name__=='__main__':
