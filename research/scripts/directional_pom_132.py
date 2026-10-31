@@ -316,6 +316,14 @@ def run(nreps=N_MODEL_REPS,nrecovery=N_RECOVERY_REPS,out=OUT):
                 recovery=pd.concat(recoveries,ignore_index=True),
                 summary=pd.DataFrame(summary),
                 unselected_pattern_diagnostics=pd.concat(holdouts,ignore_index=True))
+    rec=tables["recovery"]
+    confusion=(rec.groupby(["background","true_direction_group","predicted_direction_group"])
+               .size().rename("n").reset_index())
+    confusion["n_true_group"]=(confusion.groupby(
+        ["background","true_direction_group"]).n.transform("sum"))
+    confusion["fraction_of_true_group"]=confusion.n/confusion.n_true_group
+    if int(confusion.n.sum())!=len(rec):raise AssertionError("Dropped pseudo recovery rows")
+    tables["directional_recovery_confusion"]=confusion
     for label,frame in tables.items():frame.to_csv(out/(label+".csv"),index=False)
     receipt=dict(status="DIRECTION_ONLY_POM_NOT_TRUE_BIOLOGICAL_MODEL_POSTERIOR",
                  n_cases=len(surfaces),n_original_sites=len(d),
