@@ -21,9 +21,9 @@ The same four are also computed on untransformed `F_B` as a **pre-declared sensi
 
 **12 primary structural classes** = 3 stage arrival/size contexts (`original`, `D_first_S_overtakes`, `S_first_D_overtakes`) ×2 handling families (`baseline`, `shared_both`) ×2 behavioral-refuge switches. Exactly **12 model classes**, not the entire earlier 3,600 exploratory designs or a claim that all 132 cases are equivalent.
 
-The frog postmetamorphic→emerging dragonfly reversal is a **latent Bernoulli(0.5) structural nuisance** within each class, balanced across draws. It is **not** presumed always indistinguishable: store the reversal value and model source ID in every simulation and assess if outputs/signs actually differ. If it changes signs, optionally stratify before claiming merged classes.
+The frog postmetamorphic→emerging dragonfly reversal is a **latent Bernoulli(0.5) structural nuisance** within each class. Every draw is evaluated with BOTH edges ON/OFF and averaged with equal prior weight, eliminating Monte Carlo imbalance between the two nuisance states. It is **not** presumed always indistinguishable: store paired outcomes and compare sign vectors at exactly matching rate vectors. If it changes signs, report this as nuisance sensitivity, not verified equivalence.
 
-Before inspecting outcomes, draw **N=128 parameter vectors per class** (pilot; scalable CLI), using identical Latin-hypercube draws shared among the 12 classes to reduce Monte Carlo imbalance. Fixed hypothetical ranges copied from the *previously documented* process-prior stress test:
+Before inspecting outcomes, draw **N=256 rate vectors per class**, each evaluated under both latent reversal states (**512 actual full 80-y simulator runs per class**, with an optional earlier tiny CLI smoke test), using identical Latin-hypercube draws shared among the 12 classes to reduce Monte Carlo imbalance. Fixed hypothetical ranges copied from the *previously documented* process-prior stress test:
 - global attack multiplier `logUniform(.25,1)`;
 - relative S growth and D growth `Uniform(.75,1.25)` each;
 - local return/mixing `rho Uniform(.55,.90)`;
@@ -40,7 +40,7 @@ Before inspecting outcomes, draw **N=128 parameter vectors per class** (pilot; s
 
 The code uses the original `stage_network_extension_20261029.simulate` (unmodified) on a vectorized ensemble of 8-cell treatment blocks, and implements the annual recruitment recurrence **identically** to the unmodified `extension_annual_summary_20261029.summarize_years`, with per-row variable demographic parameters. Before reporting any inference, rerun all 24 original baseline source cases' **8 corner cells** and match the archived `primary_0_dynamic_cells.csv.gz`, `primary_1_dynamic_cells.csv.gz` preseason F_B and F_fraction to absolute tolerance `1e-8`. Any failure blocks analysis. Test annual offspring maturation timing (F delay2/3, S2, D1), positivity, propensity to recompute identical result with same seed, 8-vertex complete shape, high-order contrast scale sensitivity, and exact on/off identity controls.
 
-**Computational batching** is permitted to share one kernel call across parameter draws and classes, but it must not replace the actual 80-year model with interpolated outcomes or a single-season proxy. Store every **12×128 =1536** actual parameter×class draw, eight source cells each, plus source hashes. The pair on/off may be merged only if the computed outputs are indistinguishable, not by assumption.
+**Computational batching** is permitted to share one kernel call across parameter draws and classes, but it must not replace the actual 80-year model with interpolated outcomes or a single-season proxy. Store every **12×256×2 =6144** actual parameter×class×reversal full-model run, eight source cells each (49,152 vertices), plus source hashes. The paired reversal ON/OFF must be compared at exactly matched rate draws (not assumed identical) and then marginalized at 1/2 each for each model class.
 
 ## POM and ABC model choice
 
