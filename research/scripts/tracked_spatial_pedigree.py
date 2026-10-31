@@ -399,6 +399,8 @@ def run_experiment(years=YEARS,dt=DT,seeds=SEEDS,out=OUT):
                  death_patch_last_observed_before_tick_not_exact_predation_location=True,
                  parenthood_is_single_model_breeder_not_genetically_resolved_paternity=True,
                  local_extinction_means_zero_living_guild_individuals_at_annual_census=True,
+                 original_seven_stage_kernel_sha256=hashlib.sha256(
+                     Path(__file__).with_name("multigeneration_reversal.py").read_bytes()).hexdigest(),
                  source_code_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     (out/"receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
     print("METAPOP_PEDIGREE_SUMMARY\n"+summary.to_string(index=False),flush=True)
