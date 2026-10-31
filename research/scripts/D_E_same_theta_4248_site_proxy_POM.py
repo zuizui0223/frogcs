@@ -276,7 +276,7 @@ def six_pattern_site_POM(data,source,F_background,out,boot=999):
         8,"distance_mahalanobis")
     print("TOP_SAME_THETA_FIELD_PROXY_CANDIDATES_"+F_background.upper()+"\n"+
           top[["network","context","plant_model","draw","scale",
-               "movement","seed","distance_mahalanobis",
+               "movement","n_original_stochastic_seeds","distance_mahalanobis",
                "n_six_inside_marginal_95",
                "obs_O_with_S_low","model_O_with_S_low",
                "obs_OSV","model_OSV"]].to_string(index=False),flush=True)
