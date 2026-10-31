@@ -176,7 +176,61 @@ def six_pattern_site_POM(data,source,F_background,out,boot=999):
         set(result.background)!={F_background} or
         result.n_six_inside_marginal_95.isna().any()):
         raise AssertionError("Actual NAAMP site POM incomplete or outcome-selected")
+    # The expected conditional acoustic summary of each fixed biological
+    # model (not 4 artificially independent model classes) is the mean of
+    # its four stochastic seed-resolved SIX effect vectors. The seed
+    # distribution is numeric uncertainty, not a prior on trophic structure.
+    groups=["background","network","scale","movement","structure_id","draw"]
+    expected=[]
+    for key,g in result.groupby(groups,sort=True):
+        if (len(g)!=4 or set(g.seed)!={101,102,103,104} or
+            g.context.nunique()!=1 or g.plant_model.nunique()!=1):
+            raise AssertionError("Same-theta original stochastic seed ensemble incomplete")
+        val=dict(zip(groups,key))
+        val.update(context=g.context.iloc[0],
+                   plant_model=g.plant_model.iloc[0],
+                   n_original_stochastic_seeds=4,
+                   mean_year80_occupied_frog_patches=float(
+                       g.mean_year80_occupied_frog_patches.mean()),
+                   mean_model_local_reoccupation_events=float(
+                       g.mean_model_local_reoccupation_events.mean()),
+                   mean_model_local_extinctions=float(
+                       g.mean_model_local_extinctions.mean()),
+                   rank_emission="SIX_SITE_STATISTICS_AVERAGED_OVER_FOUR_SEEDS_NOT_RANK_OF_MEAN_F_B",
+                   field_mechanism_posterior=False)
+        good=g[g.status.eq("VALID_MODEL_NATIVE_SITE_PROXY")]
+        val["n_finite_seed_effect_vectors"]=len(good)
+        if len(good)!=4:
+            val.update(status="INCOMPLETE_OR_DEGENERATE_SEED_ENSEMBLE",
+                       n_six_inside_marginal_95=0,
+                       all_six_inside_marginal_95=False,
+                       distance_mahalanobis=np.nan)
+            expected.append(val)
+            continue
+        fit=np.asarray([float(good["model_"+name].mean())
+                        for name in PATTERNS])
+        diff=fit-observed
+        count=int(((fit>=low)&(fit<=high)).sum())
+        val.update(status="VALID_FOUR_SEED_EXPECTED_SITE_PROXY",
+                   n_six_inside_marginal_95=count,
+                   all_six_inside_marginal_95=bool(count==6),
+                   distance_mahalanobis=float(diff@inv@diff))
+        for i,pattern in enumerate(PATTERNS):
+            val["obs_"+pattern]=float(observed[i])
+            val["model_"+pattern]=float(fit[i])
+            val["residual_"+pattern]=float(diff[i])
+        for pattern in HOLDOUT:
+            val["observed_holdout_"+pattern]=float(good["observed_holdout_"+pattern].iat[0])
+            val["model_holdout_"+pattern]=float(good["model_holdout_"+pattern].mean())
+            val["holdout_inside_observed_95_"+pattern]=bool(
+                (good["holdout_inside_observed_95_"+pattern]).all())
+        expected.append(val)
+    marginal=pd.DataFrame(expected)
+    if (len(marginal)!=768 or marginal.duplicated(groups).any()):
+        raise AssertionError("Original full 4seed source expected model universe lost")
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
+    marginal.to_csv(out/("four_seed_expected_site_proxy_POM_"+F_background+".csv"),
+                    index=False)
     result.to_csv(out/("same_theta_80y_4248_site_proxy_POM_"+F_background+".csv.gz"),
                   index=False,compression={"method":"gzip","mtime":0})
     diagnostics=dict(diagnostics)
@@ -191,11 +245,16 @@ def six_pattern_site_POM(data,source,F_background,out,boot=999):
          n_same_theta_80y_model_cases=len(result),
          n_valid_proxy_cases=int(result.status.eq("VALID_MODEL_NATIVE_SITE_PROXY").sum()),
          n_degenerate_model_cases=int(result.status.eq("DEGENERATE_SITE_PREDICTION").sum()),
-         n_all_six_marginal_pattern_cases=int(
+         n_expected_four_seed_source_models=len(marginal),
+         n_expected_four_seed_valid=int(
+             marginal.status.eq("VALID_FOUR_SEED_EXPECTED_SITE_PROXY").sum()),
+         n_expected_four_seed_all_six=int(
+             marginal.all_six_inside_marginal_95.sum()),
+         n_per_seed_model_patterns_inside_all_six=int(
              result.get("all_six_inside_marginal_95",pd.Series(False,index=result.index))
                    .fillna(False).sum()),
-         absolute_min_valid_mahalanobis=float(result.distance_mahalanobis.min())
-              if np.isfinite(result.distance_mahalanobis).any() else None,
+         absolute_min_expected_mahalanobis=float(marginal.distance_mahalanobis.min())
+              if np.isfinite(marginal.distance_mahalanobis).any() else None,
          source_unchanged_biological_theta_from_same_80year_run=True,
          original_source_2x2x2_coarse_interpolation=True,
          original_macro_132_scenario_9x9_grids_not_numerically_replicated=True,
@@ -208,10 +267,12 @@ def six_pattern_site_POM(data,source,F_background,out,boot=999):
     print("TRUE80Y_SAME_THETA_SITE_POM_"+F_background.upper(),
           json.dumps({k:v for k,v in report.items() if k in (
               "n_same_theta_80y_model_cases","n_valid_proxy_cases",
-              "n_all_six_marginal_pattern_cases",
-              "absolute_min_valid_mahalanobis",
+              "n_expected_four_seed_source_models",
+              "n_expected_four_seed_valid",
+              "n_expected_four_seed_all_six",
+              "absolute_min_expected_mahalanobis",
               "n_degenerate_model_cases")}),flush=True)
-    top=result[result.status.eq("VALID_MODEL_NATIVE_SITE_PROXY")].nsmallest(
+    top=marginal[marginal.status.eq("VALID_FOUR_SEED_EXPECTED_SITE_PROXY")].nsmallest(
         8,"distance_mahalanobis")
     print("TOP_SAME_THETA_FIELD_PROXY_CANDIDATES_"+F_background.upper()+"\n"+
           top[["network","context","plant_model","draw","scale",
