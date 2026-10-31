@@ -274,7 +274,7 @@ def run(source_root,out,reps=REPS,bootstrap=BOOT):
     for i in range(reps):
         for label,coupling in (("SHARED_ENVIRONMENT_NO_MIGRATION",0.),
                               ("SPATIAL_NEIGHBOUR_LAG",.65)):
-            vals=simulate_source_panel(annual,geometry,seed=SEED+i,coupling=coupling) if False else simulate_source_panel(
+            vals=simulate_source_panel(
                 annual,geometry,seed=SEED+i,neighbour_coupling=coupling)
             a=fixed_effect_association(panel,values=vals,n_boot=0)
             draws.append(dict(model=label,replicate=i,synthetic_coupling=coupling,
