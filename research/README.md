@@ -1,5 +1,12 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #155 — 合成人口尺度q3/6/9/12でのS→F捕食×分散の反転境界（全4尺度12seed監査SUCCESS）
+
+[Draft PR #155](https://github.com/zuizui0223/frogcs/pull/155) / [元捕食カーネルからの全4尺度80年結果](SF_PREDATION_Q3_Q6_Q9_Q12_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [q6/q9真正24ジョブ全SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41201977583) / [旧q3/q12＋新q6/q9の12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41202367237)。
+
+元の局所加入の強い仮想率ID12+ρ(ID0)、外部移入OFF、8環状合成パッチ、年次移動15%、元2植生設定とS成長×D期間の4条件を保って、**合成人口尺度q3/6/9/12**を比較した。S→Fだけ有効のとき、S成長による移動の年80末F占有効果の厳密な正→負反転は **q3:2/2植物設定、q6:1/2、q9:0/2、q12:0/2**。全4捕食方向ONでも同じ2→1→0→0、S→Fを除去・全捕食OFFでは常に0/2。S→F-onlyのS成長修飾の平均はq3の−4.930から、q6 −1.063、q9 +0.083、q12 +0.292パッチへ変化。これは**条件付きモデル内の人口規模×捕食×局所加入の相互依存**で、自然の実個体数閾値ではない。q6/q9はq12で反転が消えた結果を見た後の探索であり、野外因果や事前登録された独立検証とは扱わない。
+
+
 ## 2026-10-31: PR #154 — q=3からq=12への人口規模感度（反転は再現しない）
 
 [Draft PR #154](https://github.com/zuizui0223/frogcs/pull/154) / [source検証済み12seed q3-vs-q12レポート](SF_PREDATION_Q3_Q12_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [真正q12の80年24実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41201004560) / [旧q3＋新q12の12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41201411618)。

@@ -1,0 +1,42 @@
+name: Frogcs genuine original 80y intermediate q6 and q9 population sources
+
+on:
+  push:
+    branches:
+      - research/SF-population-scale-intermediate-q6-q9-20261031
+    paths:
+      - .github/workflows/research_SF_population_q6_q9_true80.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  actual-trophic-source-80y-q6-q9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        q: [6,9]
+        network: ["all_active","SF_only","no_SF","no_direct_predation"]
+        seed_start: [101,105,109]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Confirm original trophic source and q6/q9 finite stochastic accounting
+        run: python -m unittest discover -s research/scripts -p test_SF_predation_intermediate_q6_q9.py -v
+      - name: Genuine original 120day trophic and 80year delayed-recruitment simulation
+        run: python research/scripts/run_SF_predation_intermediate_q6_q9_80y.py --run --regime rate12_rho0 --network ${{ matrix.network }} --seed-start ${{ matrix.seed_start }} --scale ${{ matrix.q }}
+      - name: Preserve all source output, event count, and right-censor details
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-q69-source-q${{ matrix.q }}-network${{ matrix.network }}-seed${{ matrix.seed_start }}
+          path: research/results/SF_predation_intermediate_q6_q9_20261031/
+          if-no-files-found: warn
+          retention-days: 30

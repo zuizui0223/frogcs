@@ -1,0 +1,27 @@
+name: Frogcs original finite population q6 q9 source identity smoke
+
+on:
+  push:
+    branches:
+      - research/SF-population-scale-intermediate-q6-q9-20261031
+    paths:
+      - research/scripts/run_SF_predation_intermediate_q6_q9_80y.py
+      - research/scripts/test_SF_predation_intermediate_q6_q9.py
+      - .github/workflows/research_SF_population_q6_q9_smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-rate-and-integer-accounting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Source-locked intermediate count model and movement controls
+        run: python -m unittest discover -s research/scripts -p test_SF_predation_intermediate_q6_q9.py -v
