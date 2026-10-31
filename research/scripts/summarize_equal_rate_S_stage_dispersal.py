@@ -77,8 +77,9 @@ def input_modes(source=OUT):
         or allrows.n_two_year_retained.gt(allrows.n_two_year_followup_eligible).any()
         or allrows.n_two_census_persistence_plus_local_births.gt(
             allrows.n_two_year_retained).any()
-        or allrows.n_two_year_followup_eligible+allrows.n_return_events_right_censored_at_2years
-           != allrows.n_recolonizations).any():
+        or (allrows.n_two_year_followup_eligible+
+            allrows.n_return_events_right_censored_at_2years
+            !=allrows.n_recolonizations).any()):
         raise AssertionError("Stage/census source local rescue and censoring inconsistent")
     return allrows,receipts
 
