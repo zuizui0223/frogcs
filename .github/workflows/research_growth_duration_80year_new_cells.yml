@@ -1,0 +1,39 @@
+name: Frogcs S growth versus D aquatic duration 80y source factorial
+
+on:
+  push:
+    branches:
+      - research/growth-duration-isolation-20261031
+    paths:
+      - .github/workflows/research_growth_duration_80year_new_cells.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  missing-two-factor-arms-real-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        seed_start: [101, 105, 109]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Assert original model arrival days same and only growth/period differ
+        run: python -m unittest discover -s research/scripts -p test_isolate_S_growth_D_duration_finite80y.py -v
+      - name: Execute true 80-year source for two never-tested single-change scenarios
+        run: python research/scripts/isolate_S_growth_D_duration_finite80y.py --run --seed-start ${{ matrix.seed_start }} --seeds 4 --years 80 --scale 3 --transfer 0.15
+      - name: Preserve genuine source output and all model-native return events
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-growth-duration-80y-seeds${{ matrix.seed_start }}
+          path: research/results/growth_duration_isolation_20261031/
+          if-no-files-found: warn
+          retention-days: 30
