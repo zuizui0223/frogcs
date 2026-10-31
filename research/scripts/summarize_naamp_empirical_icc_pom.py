@@ -157,8 +157,7 @@ def run(new=ROOT,old=OLD):
         frame.to_csv(new/(name+".csv"),index=False)
     print("THREE_NOISE_CONSENSUS\n"+coverage.to_string(index=False),flush=True)
     print("OBSERVED_ICC_PAIRED_DANGER\n"+pair_summary.to_string(index=False),flush=True)
-    print("ALL_EMPIRICAL_ICC_FAMILIES\n"+newsummaries if False else
-          "ALL_EMPIRICAL_ICC_FAMILIES\n"+rawsummaries.to_string(index=False),flush=True)
+    print("ALL_EMPIRICAL_ICC_FAMILIES\n"+rawsummaries.to_string(index=False),flush=True)
     return dict(coverage=coverage,paired=pair_summary,stability=stable,
                 full=combined,new_summary=new_summary)
 
