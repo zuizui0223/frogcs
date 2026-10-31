@@ -1,0 +1,61 @@
+name: Frogcs model-native factorial POM source smoke
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/model_native_2x2x2_prior.py
+      - research/scripts/test_model_native_2x2x2_prior.py
+      - research/MODEL_NATIVE_DIRECTIONAL_ABC_RF_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_model_native_abc_smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  model-native-original-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin original stage-network science environment
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test vectorized actual annual demographic recurrence against unmodified source
+        run: python -m unittest discover -s research/scripts -p 'test_model_native_2x2x2_prior.py' -v
+      - name: Verify all 24 frozen original model corners and run smallest real 80-year pilot
+        run: python -u research/scripts/model_native_2x2x2_prior.py --run --context original --draws 4
+      - name: Confirm original 80-year F_B, F_fraction replay and factorial signs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import pandas as pd
+          r=Path('research/results/model_native_abc_rf_20261031')
+          a=json.loads((r/'original_receipt.json').read_text())
+          t=pd.read_csv(r/'original_prior_predictive_reference.csv.gz')
+          assert len(t)==4*4 and t.structure_id.nunique()==4
+          assert a['original_source_replay_max_error']['F_B']<=1e-8
+          assert a['original_source_replay_max_error']['F_fraction']<=1e-8
+          assert all(t[[f'sign_log_{z}' for z in ('OS','OV','SV','OSV')]].isin([-1,0,1]).all())
+          print('ORIGINAL_MODEL_NATIVE_2X2X2_SMOKE_SUCCESS')
+          PY
+      - name: Print all 4-draw source scenarios and preserve exact baseline
+        run: |
+          cat research/results/model_native_abc_rf_20261031/original_source_run_diagnostics.csv
+          cat research/results/model_native_abc_rf_20261031/original_parameter_draws.csv
+      - name: Save complete baseline audit and synthetic prior predictive samples
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-model-native-80y-2x2x2-smoke-20261031
+          path: research/results/model_native_abc_rf_20261031/
+          if-no-files-found: warn
+          retention-days: 30
