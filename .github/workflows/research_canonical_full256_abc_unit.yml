@@ -1,0 +1,29 @@
+name: Frogcs 108 plant classes x 256 rates exact ABC aggregator synthetic validation
+
+on:
+  push:
+    branches: [research/multigeneration-reversal-abm-pde-20261031]
+    paths:
+      - research/scripts/summarize_canonical_vegetation_full256_abc.py
+      - research/scripts/test_summarize_canonical_vegetation_full256_abc.py
+      - .github/workflows/research_canonical_full256_abc_unit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-pruning-draw-and-main-prior-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Validate 108 classes, all 256 paired biological draws, three main structural priors and original role ON/OFF
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_canonical_vegetation_full256_abc.py' -v

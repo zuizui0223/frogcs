@@ -1,0 +1,136 @@
+name: Frogcs 256-draw full vegetation-role stage POM ABC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  true-process-rate-256:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        cover_sf: [0,1]
+        litter: [0,1]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed original stage-model dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Actual original 80-year seasonal plus recruitment under 256 common demographic rate draws
+        run: |
+          python -u research/scripts/model_native_vegetation_abc.py --run \
+            --cover-sf ${{ matrix.cover_sf }} --litter ${{ matrix.litter }} --draws 256
+      - name: Verify source replay, exact 2x2x2 outputs and main-canonical plant roles
+        env:
+          COVER_SF: ${{ matrix.cover_sf }}
+          LITTER: ${{ matrix.litter }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          import pandas as pd
+          sf=int(os.environ['COVER_SF']);litter=int(os.environ['LITTER'])
+          stem=f"SF{sf}_L{litter}"
+          root=Path("research/results/macro_intrinsic_factorial_abc_20261031")
+          z=pd.read_csv(root/(stem+'_prior_vegetation_signs.csv.gz'))
+          draw=pd.read_csv(root/(stem+'_rate_draws.csv'))
+          meta=json.loads((root/(stem+'_receipt.json')).read_text())
+          nroles=2 if litter else 4
+          assert len(z)==nroles*2*256*2 and len(draw)==256
+          assert z.groupby(['structure_id','draw']).reverse_on.nunique().eq(2).all()
+          assert z.groupby(['structure_id','reverse_on']).draw.nunique().eq(256).all()
+          assert z.groupby(['plant_model','risk','draw']).reverse_on.nunique().eq(2).all()
+          assert draw.f_delay.value_counts().to_dict()=={2:128,3:128}
+          assert meta['original_full_80year_archive_replay']['F_B']<=1e-8
+          assert meta['original_full_80year_archive_replay']['F_fraction']<=1e-8
+          assert meta['n_80year_process_runs']==nroles*2*256*2
+          print('FULL_256_PROR_AND_EIGHT_TREATMENT_F_B_REPLAY_SUCCESS',stem,len(z))
+          PY
+      - name: Print exact signed model function evidence per 256 shared draws
+        run: |
+          cat research/results/macro_intrinsic_factorial_abc_20261031/SF${{ matrix.cover_sf }}_L${{ matrix.litter }}_plant_pom_summary.csv
+      - name: Retain entire 256-draw source ledger and SHA256 original scientific baseline
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-native-full256-vegetation-SF${{ matrix.cover_sf }}-L${{ matrix.litter }}
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn
+
+  full-vegetation-model-selection:
+    needs: true-process-rate-256
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Download four complete full 256-draw main-legal vegetation source artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-native-full256-vegetation-SF*-L*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_intrinsic_factorial_abc_20261031
+      - name: Compute genuine 256-rate exact-four-sign POM and paired vegetation mechanism contrasts
+        run: python -u research/scripts/summarize_model_native_vegetation_abc.py --run --draws 256
+      - name: Validate all 12 vegetation roles x 2 refuge modes and original old-ABC benchmark
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          import numpy as np
+          root=Path("research/results/macro_intrinsic_factorial_abc_20261031")
+          a=pd.read_csv(root/"vegetation_abc_class_selection.csv")
+          plant=pd.read_csv(root/"vegetation_abc_plant_function_shares.csv")
+          effect=pd.read_csv(root/"vegetation_paired_function_summary.csv")
+          catalog=pd.read_csv(root/"plant_roles_in_main_3600.csv")
+          original=pd.read_csv("research/results/model_native_abc_rf_20261031/abc_rejection_model_acceptance.csv")
+          assert len(a)==24*2 and len(plant)==12*2 and len(effect)==8
+          assert catalog.matching_main_3600_models.sum()==3600
+          assert a.n_independent_rate_draws.eq(256).all()
+          assert a.n_reversal_states_per_draw.eq(2).all()
+          assert a.groupby('scale').conditional_abc_share.sum().between(.999999,1.000001).all()
+          for risk,n in [(False,65),(True,48)]:
+              row=a[(a.scale=='log')&(a.risk==risk)&
+                    (a.plant_model=='SF1_DF0_DS0_L1')]
+              old=original[(original.scale=='log')&
+                    (original.structure_id==f"original__baseline__risk{int(risk)}")]
+              assert len(row)==len(old)==1
+              assert np.isclose(row.acceptance.iloc[0],n/256)
+              assert np.isclose(old.acceptance_rate.iloc[0],row.acceptance.iloc[0],atol=1e-12)
+          assert effect.n_independent_draws.eq(256).all()
+          print('FULL_256_MAIN_LEGAL_PLANT_ABC_COMPLETE',len(a),'class-scale rows',
+                len(plant),'plant-scale groups')
+          PY
+      - name: Print full 256-draw plant roles, per-role acceptance and pathways
+        run: |
+          for f in vegetation_abc_class_selection.csv vegetation_abc_plant_function_shares.csv vegetation_paired_function_summary.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_intrinsic_factorial_abc_20261031/$f"
+          done
+      - name: Retain all original 256-prior simulations, matched source sign patterns and plant path sensitivity
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-full256-vegetation-role-abc-result
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn

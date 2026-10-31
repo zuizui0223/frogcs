@@ -1,0 +1,95 @@
+name: Frogcs NAAMP empirical-block ICC three-noise mechanism comparison
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/summarize_naamp_empirical_icc_pom.py
+      - research/scripts/test_summarize_naamp_empirical_icc_pom.py
+      - .github/workflows/research_macro_empirical_icc_summary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-all-three-noise-assumptions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact pinned science stack
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Check 12-way source group preservation and original case-paired D→F amplification comparisons
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_naamp_empirical_icc_pom.py' -v
+      - name: Read all three source-backed NAAMP-derived ICC case catalogs
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41176772932
+          pattern: frogcs-empirical-icc-POM-*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_empirical_block_pom_20261031
+      - name: Read all prior iid and arbitrary 0.25-block source comparisons
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41168203797
+          name: frogcs-r2-matched-final-audited-six-family-summary
+          github-token: ${{ github.token }}
+          path: research/results/macro_r2_matched_directional_20261031
+      - name: Compare iid versus .25 arbitrary block versus measured NAAMP residual ICC
+        run: python -u research/scripts/summarize_naamp_empirical_icc_pom.py --run
+      - name: Verify full 280-source-group x 12-context completeness and paired danger comparisons
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          root=Path('research/results/macro_empirical_block_pom_20261031')
+          total=pd.read_csv(root/'all_group_three_noise_scores.csv')
+          stable=pd.read_csv(root/'source_three_noise_12_context_stability.csv')
+          cover=pd.read_csv(root/'three_noise_family_coverage.csv')
+          compare=pd.read_csv(root/'empirical_icc_vs_older_025_iid.csv')
+          pair=pd.read_csv(root/'empirical_icc_paired_facilitation_cases.csv')
+          ps=pd.read_csv(root/'empirical_icc_paired_facilitation_summary.csv')
+          assert len(total)==(104+128+48)*12
+          assert len(stable)==104+128+48 and len(cover)==3
+          assert len(compare)==36 and len(pair)==192 and len(ps)==8
+          assert stable.n_conditions.eq(12).all()
+          assert (stable.n_contexts_with_any_exact<=12).all()
+          assert stable.n_r2_calibrated.between(0,12).all()
+          assert pair.groupby(['case','treatment']).size().eq(4).all()
+          assert ps.n_cases.eq(24).all()
+          assert cover.n_source_groups.to_list()==[48,104,128]
+          print('NAAMP_RESIDUAL_ICC_THREE_NOISE_AUDIT_SUCCESS',
+                len(stable),'source groups, 12 observed settings, 192 exact structural contrasts')
+          PY
+      - name: Print concise final three-noise mechanisms and paired amplification comparison
+        run: |
+          for name in three_noise_family_coverage.csv empirical_icc_paired_facilitation_summary.csv; do
+            echo "===== $name ====="
+            cat "research/results/macro_empirical_block_pom_20261031/$name"
+          done
+          python - <<'PY'
+          import pandas as pd
+          root='research/results/macro_empirical_block_pom_20261031/'
+          x=pd.read_csv(root+'source_three_noise_12_context_stability.csv')
+          print('===== top 6 worst-case joint direction groups per family =====')
+          print(x.sort_values(['family','min_joint_soft_score'],ascending=[True,False])
+                 .groupby('family').head(6).to_csv(index=False))
+          PY
+      - name: Preserve all source comparisons and matched amplification data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-naamp-empirical-icc-12-context-final-audit-20261031
+          path: research/results/macro_empirical_block_pom_20261031/
+          if-no-files-found: warn
+          retention-days: 30

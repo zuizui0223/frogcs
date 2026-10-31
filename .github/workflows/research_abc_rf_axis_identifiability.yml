@@ -1,0 +1,79 @@
+name: Frogcs genuine ABC-RF structural-axis identifiability
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/abc_rf_structural_axis_identifiability.py
+      - research/scripts/test_abc_rf_structural_axis_identifiability.py
+      - .github/workflows/research_abc_rf_axis_identifiability.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  true-model-80year-holdout-decomposition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin original RF and numeric dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Check exact 12-structure independent-draw OOF axes and ABC entropy
+        run: python -m unittest discover -s research/scripts -p 'test_abc_rf_structural_axis_identifiability.py' -v
+      - name: Reuse corrected independently validated genuine 80-year ABC-RF artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41178551739
+          name: frogcs-model-native-genuine-abc-rf-corrected-independent-rate-20261031
+          github-token: ${{ github.token }}
+          path: research/results/model_native_abc_rf_20261031
+      - name: Determine which stage/handling/refuge axes are identifiable from four signs
+        run: python -u research/scripts/abc_rf_structural_axis_identifiability.py --run
+      - name: Check 624 heldout draws per scale and complete three-axis predictions
+        run: |
+          python - <<'PY'
+          import json
+          import numpy as np
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/model_native_abc_rf_20261031')
+          a=pd.read_csv(p/'rf_structural_axis_recoverability.csv')
+          b=pd.read_csv(p/'rf_structural_axis_confusion.csv')
+          c=pd.read_csv(p/'conditional_abc_posterior_concentration.csv')
+          r=json.loads((p/'abc_rf_axis_receipt.json').read_text())
+          assert len(a)==12 and len(b)==3*(9+4+4) and len(c)==3
+          assert a.groupby('scale')['axis'].nunique().eq(4).all()
+          assert a.n_heldout.eq(624).all()
+          assert c.n_classes.eq(12).all()
+          assert c.conditional_effective_number_of_models.between(1,12.000001).all()
+          assert (b.groupby(['scale','axis'])['count'].sum().unstack().eq(624)).all().all()
+          assert r['holdout_rate_draws']==624
+          print('GENUINE_ABC_RF_AXIS_RECOVERY_AUDIT_SUCCESS')
+          PY
+      - name: Print genuine OOF source-based axis and posterior concentration
+        run: |
+          for name in rf_structural_axis_recoverability.csv conditional_abc_posterior_concentration.csv; do
+            echo "===== $name ====="
+            cat "research/results/model_native_abc_rf_20261031/$name"
+          done
+      - name: Keep exact source-linked structural recoverability and entropy summaries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-80year-abc-rf-stage-handling-risk-axis-recovery
+          path: |
+            research/results/model_native_abc_rf_20261031/rf_structural_axis_recoverability.csv
+            research/results/model_native_abc_rf_20261031/rf_structural_axis_confusion.csv
+            research/results/model_native_abc_rf_20261031/conditional_abc_posterior_concentration.csv
+            research/results/model_native_abc_rf_20261031/abc_rf_axis_receipt.json
+          retention-days: 30

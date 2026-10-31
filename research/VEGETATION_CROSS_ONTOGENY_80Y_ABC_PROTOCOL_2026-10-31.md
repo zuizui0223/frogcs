@@ -1,0 +1,30 @@
+# Cross-ontogeny × vegetation-roles endogenous 80-year ABC POM (2026-10-31)
+
+## Why this extension is necessary
+
+The fully successful 12-plant mechanism × 256 biological-rate draw ABC is **conditional on the original stage-arrival ordering and baseline shared-handling regime**, even though the earlier fixed-vegetation 12-structure ABC favored that condition. If the plant function producing `OS− OV− SV+ OSV+` changes with ontogenetic timing or feeding-handling budget, “vegetation protects frogs from salamanders” cannot be promoted to a general mechanistic rule. The original `main` 3,600-catalog exploration included both plant and trophic axes; its *entire model space is not yet replaced*.
+
+## Stage-2 fully crossed limited structural model-space pilot
+
+Compare **all 12 legal main-catalog plant roles** (`cover_SF,cover_DF,cover_DS,litter`, with `cover_DF*litter=0`) across **3 original stage-arrival contexts ×2 handling contexts ×2 behavioral refuge switches**. Integrate the frog postmetamorph→emerging dragonfly `reverse_on` OFF/ON at equal weight for every common biological-rate vector. This defines **144 structural × plant classes** and **64 rate vectors ×2 reversal nuisance states** = **18,432 genuine 80-year model runs** (147,456 source-factorial vertices at 8 per run). Each year's seasonal trophic 120-day kernel uses the unchanged original `stage_network_extension_20261029`, and cohort recurrence is the unchanged vectorized original annual equation; the last 20 years' mean F_B supplies the outcome.
+
+**Rate matching:** draw vectors are a deterministic predictor/outcome-blind **64-row subset of the already completed 256 genuine independent process-rate Latin-hypercube prior draws**, e.g. every fourth original draw ID (`0,4,8,…,252`). This allows precise same-parameter, same-background **factorial comparisons with the already completed 256 vegetation × original-order/handling results**. Preserve original draw IDs, not reindex to 0..63. Rates are the same synthetic, not literature-calibrated, ranges used in PR #146; this pilot does **not** add 18,432 independently field-calibrated simulations.
+
+**Original-model replay required in each of six context×handling shards before running alternative plants:** (i) copied annual recurrence with `SF1,DF0,DS0,litter1` agrees exactly with the original independently implemented seasonal/annual recurrence for every risk/reversal×8 corners at the archive anchor; (ii) agrees with the full frozen 80-year saved original case outputs (F_B and F_fraction tolerance 1e−8, near-zero SD tolerance 1e−7). No vegetation results accepted if replay fails. **Reproduction within original context/baseline under the selected 64 prior draw IDs** must also exactly match the saved 256-run vegetation source for the same class, rate draw and reverse mode; fail closed if the original source cannot be accessed or compared.
+
+## Fixed POM/ABC
+
+No field-site distribution, no rank saturation, no observation noise. Main *pre-adjustment* targets are the four-directional signs `OS− OV− SV+ OSV+`; 2×2×2 **plant V=0/1 × S source 0.25/2 × D source 0.25/2** endogenous response factorial. Primary log(F_B), separate raw(F_B) sensitivity, original epsilon 1e−9. Binary exact-rejection acceptance, no search of favorable thresholds.
+
+For each of 144 classes, per shared rate ID and two reversal ON/OFF states:
+`p(class)=sum(reverse-averaged target sign hits)/64`. Equal class structural prior yields normalized **model-conditional** shares only. Marginalize across stage timing (3), feeding/handling (2), risk refuge (2), and plant function (12) without favoring axis types based on catalog multiplicities. Report paired ON−OFF *differences* in acceptance for **cover_SF, cover_DF, cover_DS, litter** at the same rate draw, reversal state, context, handling, risk and other legal plant variables. For litter effect, restrict cover_DF=0; for DF refuge effect restrict litter=0.
+
+**Interactions with ontogenetic and handling axes** are primary next insight: quantify by context and feeding type, not just the pooled effect. Use shared 64-rate-vector bootstrap (999 resamples) for every axis effect and disclose changes across stage contexts. Count independent **draw IDs** (64), not 18,432 model outputs. Paired bootstrapping holds reverse, original context, handling, risk and all plant roles together.
+
+Scientific hierarchy: the 64-draw cross-axes design is an *executed conditional feasibility pilot*, not a converged ABC posterior for 144 competing structures. Do not claim `main` 3,600 models were fully tested; other main axes (egg/emergence support/timing, S↔D edge ablation, cue behavior, protective support) remain fixed. The main original 256-rate vegetation results retain their higher precision for that context. If pilot qualitative effects differ sharply, next action is pre-specified **256×144 full model run** with no class outcome-based pruning (but only after source anchor and rate-matched checks).
+
+## Biological interpretation
+
+`cover_SF` = vegetation sheltering frog aquatic stages from S predation, which attenuates a *negative* interaction, not proof S is a net frog mutualist. `cover_DS` = shelter of S from D predation, potentially reducing D’s indirect relief of frog predation. `cover_DF` = shelter of F from D direct attack, potentially affecting the sign of OV in the *opposite* direction from the four observed field association targets. `litter` = hypothetical nonlinear D-on-F functional response switching with vegetation/F density, which can change the triple sign without monotone reduction of risk. The V source is model presence/absence, unlike the field 3-km remote vegetation proxy; O/S are model initial source densities, unlike species distribution suitability. No ecological causality or calibrated ABC field posterior implied.
+
+The previously frozen raw 256-rate vegetation experiment and its paired 1,999-bootstrap effects remain untouched, as does `main`, PR #144/#145, and the original 120-day/80-year model kernels.

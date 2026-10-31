@@ -1,0 +1,115 @@
+name: Frogcs signed ecological context modulation
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MACRO_DIRECTIONAL_CONTEXT_CONTRAST_PROTOCOL_2026-10-31.md
+      - research/scripts/directional_context_modulation_pom.py
+      - research/scripts/test_directional_context_modulation_pom.py
+      - .github/workflows/research_macro_signed_context_pom.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  observed-and-genuine-demography:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed numeric dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test paired S and V contrasts plus exact duplicate and recovery invariants
+        run: python -m unittest discover -s research/scripts -p 'test_directional_context_modulation_pom.py' -v
+      - name: Reuse prior 80-year biological-process reruns without rerunning or retuning them
+        uses: actions/download-artifact@v4
+        with:
+          name: frogcs-process-rate-POM-real-simulator-20261031
+          run-id: 41163370575
+          github-token: ${{ github.token }}
+          path: research/results/macro_pom_process_prior_20261031
+      - name: Verify original 80-year-rate source artifact is pinned
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/results/macro_pom_process_prior_20261031')
+          src=['real_simulator_F_B_cells.csv.gz','process_prior_predictive_patterns.csv','receipt.json']
+          for name in src:
+              f=p/name
+              if not f.is_file() or f.stat().st_size<100:
+                  raise SystemExit('Missing genuine 80-year source '+str(f))
+              print(str(f),f.stat().st_size)
+          r=json.loads((p/'receipt.json').read_text())
+          assert r['model_original_replayed'] and r['n_draws']==8
+          PY
+      - name: Shared-block observed contrasts and entire frozen 132 plus genuine eight-rate analysis
+        run: |
+          python -u research/scripts/directional_context_modulation_pom.py --run \
+            --model-reps 48 --recovery-reps 8 \
+            --actual-rate-dir research/results/macro_pom_process_prior_20261031
+      - name: Verify every observed/background/source/draw direction and pseudo confusion
+        run: |
+          python - <<'PY'
+          import json
+          import numpy as np
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/macro_signed_context_modulation_20261031')
+          obs=pd.read_csv(p/'observed_signed_context.csv')
+          fixed=pd.read_csv(p/'fixed_case_scores.csv')
+          groups=pd.read_csv(p/'directional_signatures.csv')
+          rec=pd.read_csv(p/'pseudo_recovery_records.csv')
+          conf=pd.read_csv(p/'pseudo_recovery_confusion.csv')
+          rate=pd.read_csv(p/'real_rate_case_scores.csv')
+          total=pd.read_csv(p/'real_rate_structural_groups.csv')
+          cross=pd.read_csv(p/'cross_background_fixed_cases.csv')
+          summary=pd.read_csv(p/'summary.csv')
+          receipt=json.loads((p/'receipt.json').read_text())
+          assert len(obs)==8 and len(fixed)==132*2 and len(cross)==132
+          assert fixed.groupby('background').case.nunique().eq(132).all()
+          assert groups.groupby('background').n_cases.sum().eq(132).all()
+          assert len(rec)==104*8*2 and int(conf.n.sum())==len(rec)
+          assert conf.groupby(['background','true_signature']).fraction.sum().between(.999999,1.000001).all()
+          assert len(rate)==8*24*2 and len(total)==12*2
+          assert set(obs.metric)=={'OS','OV','delta_S_high_minus_low','delta_V_positive_minus_zero'}
+          assert set(summary.background)=={'uniform','target_group'}
+          assert receipt['source_groups']==104
+          assert np.isfinite(obs.observed).all()
+          assert rate.joint_soft.between(0,1).all()
+          print('SIGNED_CONTEXT_AUDIT_SUCCESS',len(fixed),'frozen case comparisons',len(rate),'genuine rate comparisons')
+          PY
+      - name: Print entire compact sign evidence and cross-background intersection
+        run: |
+          for f in observed_signed_context.csv summary.csv directional_signatures.csv real_rate_structural_groups.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_signed_context_modulation_20261031/$f"
+          done
+          python - <<'PY'
+          import pandas as pd
+          p='research/results/macro_signed_context_modulation_20261031/'
+          c=pd.read_csv(p+'cross_background_fixed_cases.csv')
+          print('===== cases with robust signed contexts in both SDM backgrounds =====')
+          print(c[c.both_backgrounds_pass].to_csv(index=False))
+          x=pd.read_csv(p+'real_rate_case_scores.csv')
+          print('===== real-demography full directional sign matches by background =====')
+          print(x.groupby('background').all_selected_signs_match.agg(['sum','size']).to_csv())
+          PY
+      - name: Store source-linked sign evidence and original-input SHA256
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-context-modulation-signed-pom-20261031
+          path: research/results/macro_signed_context_modulation_20261031/
+          if-no-files-found: warn
+          retention-days: 30

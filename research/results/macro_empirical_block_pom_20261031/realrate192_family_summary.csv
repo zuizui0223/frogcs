@@ -1,0 +1,5 @@
+family,background,mode,n_source_groups,n_r2_matched,n_r2_not_matched,n_group_with_any_full_sign_match,n_group_with_ge_10pct_full_sign_match,best_source_group,best_joint_score,best_full_sign_frequency,best_lowS_zero_frequency,empirical_icc,empirical_alpha,status
+realrate192,uniform,rank_signal,128,128,0,126,24,d04_case_030,0.344581031226539,0.28125,0.71875,0.1327397305885019,0.3912242263206438,CONDITIONAL_OBSERVED_RESIDUAL_ICC_NOT_CAUSAL
+realrate192,uniform,log_signal,128,128,0,111,34,d04_case_035,0.3334923363304712,0.2734375,0.78125,0.1327397305885019,0.3912242263206438,CONDITIONAL_OBSERVED_RESIDUAL_ICC_NOT_CAUSAL
+realrate192,target_group,rank_signal,128,128,0,87,7,d03_case_030,0.2971856286217858,0.2578125,0.6015625,0.1341736508278153,0.3936572183335968,CONDITIONAL_OBSERVED_RESIDUAL_ICC_NOT_CAUSAL
+realrate192,target_group,log_signal,128,128,0,75,12,d03_case_035,0.3709304855392501,0.375,0.78125,0.1341736508278153,0.3936572183335968,CONDITIONAL_OBSERVED_RESIDUAL_ICC_NOT_CAUSAL

@@ -1,0 +1,85 @@
+name: Frogcs correct 256-draw vegetation ABC bootstrap audit
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/summarize_model_native_vegetation_abc.py
+      - research/scripts/test_summarize_model_native_vegetation_abc.py
+      - .github/workflows/research_vegetation_abc_from_successful_source.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-reuse-sample-all-256:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned original scientific dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Regression-test no 64-of-256 bootstrap truncation and legal paired vegetation comparisons
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_model_native_vegetation_abc.py' -v
+      - name: Read all 256 genuine 80y pre-verified source runs from successful workflow
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41183066399
+          pattern: frogcs-native-full256-vegetation-SF*-L*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_intrinsic_factorial_abc_20261031
+      - name: Recompute exact four sign ABC and all 999 block bootstrap CIs using ALL 256 independent rate IDs
+        run: python -u research/scripts/summarize_model_native_vegetation_abc.py --run --draws 256
+      - name: Audit numerically matched old-ABC baseline and well-centered paired confidence intervals
+        run: |
+          python - <<'PY'
+          import numpy as np
+          import pandas as pd
+          from pathlib import Path
+          p=Path("research/results/macro_intrinsic_factorial_abc_20261031")
+          x=pd.read_csv(p/"vegetation_abc_class_selection.csv")
+          y=pd.read_csv(p/"vegetation_abc_plant_function_shares.csv")
+          z=pd.read_csv(p/"vegetation_paired_function_summary.csv")
+          old=pd.read_csv("research/results/model_native_abc_rf_20261031/abc_rejection_model_acceptance.csv")
+          assert len(x)==48 and len(y)==24 and len(z)==8
+          assert x.n_independent_rate_draws.eq(256).all()
+          assert x.acceptance_boot_ci_low.le(x.acceptance_boot_ci_high).all()
+          assert x.share_boot_ci_low.le(x.share_boot_ci_high).all()
+          assert y.bootstrap_ci_low.le(y.bootstrap_ci_high).all()
+          assert x.groupby('scale').conditional_abc_share.sum().between(.999999,1.000001).all()
+          assert y.groupby('scale').conditional_abc_plant_share.sum().between(.999999,1.000001).all()
+          for risk,n in [(False,65),(True,48)]:
+              q=x[(x.scale=='log')&(x.risk==risk)&
+                  (x.plant_model=='SF1_DF0_DS0_L1')]
+              o=old[(old.scale=='log')&
+                  (old.structure_id==f"original__baseline__risk{int(risk)}")]
+              assert len(q)==len(o)==1
+              assert np.isclose(q.acceptance.iloc[0],n/256)
+              assert np.isclose(o.acceptance_rate.iloc[0],q.acceptance.iloc[0],atol=1e-12)
+              assert q.acceptance_boot_ci_low.iloc[0]<=q.acceptance.iloc[0]<=q.acceptance_boot_ci_high.iloc[0]
+          print('FULL_SOURCE_256_BOOTSTRAP_AND_BASELINE_REPLAY_SUCCESS')
+          PY
+      - name: Print corrected 256 full prior ABC scientific outcomes
+        run: |
+          for f in vegetation_abc_class_selection.csv vegetation_abc_plant_function_shares.csv vegetation_paired_function_summary.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_intrinsic_factorial_abc_20261031/$f"
+          done
+      - name: Preserve validated complete source and bootstrap class intervals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-vegroles-full256-corrected-999-paired-bootstrap
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn

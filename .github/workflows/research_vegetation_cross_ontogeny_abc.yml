@@ -1,0 +1,168 @@
+name: Frogcs crossed vegetation × stage-order 80-year POM ABC
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/VEGETATION_CROSS_ONTOGENY_80Y_ABC_PROTOCOL_2026-10-31.md
+      - research/scripts/run_vegetation_cross_ontogeny_80y.py
+      - research/scripts/test_run_vegetation_cross_ontogeny_80y.py
+      - research/scripts/summarize_vegetation_cross_ontogeny_abc.py
+      - research/scripts/test_summarize_vegetation_cross_ontogeny_abc.py
+      - .github/workflows/research_vegetation_cross_ontogeny_abc.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Verify genuine source-matched 64-parent-rate design, all six original annual replay paths
+        run: python -m unittest discover -s research/scripts -p 'test_run_vegetation_cross_ontogeny_80y.py' -v
+      - name: Verify full 144-class sign ABC and exact paired vegetation-role score algebra
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_vegetation_cross_ontogeny_abc.py' -v
+
+  actual-80year-six-contexts:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        context: [original, D_first_S_overtakes, S_first_D_overtakes]
+        family: [baseline, shared_both]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: True original 80-y seasonal+cohort model run for all 12 roles and both risk and reversal states
+        run: |
+          python -u research/scripts/run_vegetation_cross_ontogeny_80y.py --run \
+            --context ${{ matrix.context }} --family ${{ matrix.family }}
+      - name: Audit complete per-shard 3072 genuine model instances and common original rate subset
+        env:
+          CONTEXT: ${{ matrix.context }}
+          FAMILY: ${{ matrix.family }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          import pandas as pd
+          ctx=os.environ['CONTEXT'];family=os.environ['FAMILY']
+          p=Path('research/results/macro_vegetation_cross_ontogeny_20261031')
+          name=f'{ctx}__{family}'
+          df=pd.read_csv(p/(name+'_actual_80year_model_signs.csv.gz'))
+          rates=pd.read_csv(p/(name+'_matched_parent256_rate_draws.csv'))
+          receipt=json.loads((p/(name+'_receipt.json')).read_text())
+          assert len(df)==12*2*64*2 and df.structure_id.nunique()==24
+          assert len(rates)==64 and rates.draw.nunique()==64
+          assert df.groupby(['structure_id','draw']).reverse_on.nunique().eq(2).all()
+          assert df.groupby(['structure_id','reverse_on']).draw.nunique().eq(64).all()
+          assert receipt['n_actual_80year_model_runs']==3072
+          assert receipt['n_8vertex_source_treatments']==3072*8
+          assert receipt['original_baseline_replay']['archive_F_B']<=1e-8
+          assert receipt['original_baseline_replay']['archive_F_fraction']<=1e-8
+          print('SIX_STAGE_PLANT_80Y_SOURCE_AUDIT_OK',name,'3072 real simulations')
+          PY
+      - name: Preserve source-backed full 80-y sign profiles and exact matched prior vectors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-crossveg-${{ matrix.context }}-${{ matrix.family }}-64
+          path: research/results/macro_vegetation_cross_ontogeny_20261031/
+          if-no-files-found: warn
+          retention-days: 30
+
+  compare-across-stage-and-vegetation:
+    needs: actual-80year-six-contexts
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Download all six genuinely completed cross-stage source sharded datasets
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-crossveg-*-64
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_vegetation_cross_ontogeny_20261031
+      - name: Download separately verified original 256-rate × 12-plant-role source for actual 64-ID replay
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41183066399
+          pattern: frogcs-native-full256-vegetation-SF*-L*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_intrinsic_factorial_abc_20261031
+      - name: True 144-class plant × stage-order × handling ABC with paired vegetation ablations
+        run: |
+          python -u research/scripts/summarize_vegetation_cross_ontogeny_abc.py --run \
+            --original-full256 research/results/macro_intrinsic_factorial_abc_20261031 \
+            --bootstrap 999
+      - name: Audit zero-pruning, original same-rate alignment, all paired source classes and 999 draw-CIs
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          import json
+          import numpy as np
+          from pathlib import Path
+          p=Path('research/results/macro_vegetation_cross_ontogeny_20261031')
+          cls=pd.read_csv(p/'cross_ontogeny_144class_abc.csv')
+          axis=pd.read_csv(p/'cross_ontogeny_factor_marginals.csv')
+          context=pd.read_csv(p/'cross_ontogeny_context_plant_shares.csv')
+          pairs=pd.read_csv(p/'cross_ontogeny_vegetation_paired_effects.csv')
+          r=json.loads((p/'cross_ontogeny_abc_receipt.json').read_text())
+          assert len(cls)==2*144
+          assert cls.groupby('scale').structure_id.nunique().eq(144).all()
+          assert cls.groupby('scale').conditional_model_share.sum().between(.999999,1.000001).all()
+          assert len(pairs)==2*3*2*4
+          assert pairs.n_independent_draws.eq(64).all()
+          assert len(context)==2*3*2*12
+          assert len(axis)>35
+          assert r['n_actual_80year_runs']==18432
+          assert r['original_256_vegetation_replay']['n_paired_sources']==3072
+          assert max(r['original_256_vegetation_replay']['numerical_contrast_max_errors'].values())<1e-8
+          print('CROSSED_ONTOGENY_VEGETATION_ABC_INDEPENDENT_SOURCE_SUCCESS',len(cls),'class/scales',len(pairs),'paired effects')
+          PY
+      - name: Print descriptive conditional plant effects by stage-timing and feeding mode
+        run: |
+          echo '===== cross_ontogeny_factor_marginals.csv ====='
+          cat research/results/macro_vegetation_cross_ontogeny_20261031/cross_ontogeny_factor_marginals.csv
+          echo '===== cross_ontogeny_vegetation_paired_effects.csv ====='
+          cat research/results/macro_vegetation_cross_ontogeny_20261031/cross_ontogeny_vegetation_paired_effects.csv
+          echo '===== cross_ontogeny_context_plant_shares.csv ====='
+          cat research/results/macro_vegetation_cross_ontogeny_20261031/cross_ontogeny_context_plant_shares.csv
+      - name: Retain 144-class ABC distribution, paired 64-rate bootstrap and all original SHA receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-vegetation-144class-cross-80y-abc-20261031
+          path: research/results/macro_vegetation_cross_ontogeny_20261031/
+          if-no-files-found: warn
+          retention-days: 30

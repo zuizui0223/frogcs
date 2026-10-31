@@ -1,0 +1,157 @@
+name: Frogcs macro-first scenario selection
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/select_macro_trophic_scenarios.py
+      - research/scripts/test_select_macro_trophic_scenarios.py
+      - research/scripts/diagnose_macro_reversal_edge.py
+      - research/scripts/diagnose_macro_scenario_information.py
+      - research/scripts/test_diagnose_macro_scenario_information.py
+      - research/scripts/diagnose_monotone_observation_link.py
+      - research/scripts/test_diagnose_monotone_observation_link.py
+      - research/MACRO_NONNEGATIVE_OBSERVATION_LINK_PLAN_2026-10-31.md
+      - research/MACRO_FIRST_SCENARIO_SELECTION_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_macro_scenario_selection.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heldout-scenario-selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned minimal analysis packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Validate nested selection, source grid, holdout leakage and scoring
+        run: python -m unittest discover -s research/scripts -p 'test_select_macro_trophic_scenarios.py' -v
+      - name: Verify information audit and no heldout leakage on synthetic fixtures
+        run: python -m unittest discover -s research/scripts -p 'test_diagnose_macro_scenario_information.py' -v
+      - name: Verify frozen site and 80-year model sources exist
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = [
+              'research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz',
+              'research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz',
+              'research/results/literature_extension_20261029/primary_0_dynamic_cells.csv.gz',
+              'research/results/literature_extension_20261029/primary_1_dynamic_cells.csv.gz',
+          ]
+          for name in files:
+              f=Path(name)
+              if not f.is_file() or f.stat().st_size==0:
+                  raise SystemExit('Missing required frozen original source: '+name)
+              print(name, f.stat().st_size)
+          PY
+      - name: Run 5 outer by 3 inner block CV over fixed 24 scenarios and two nulls
+        run: python -u research/scripts/select_macro_trophic_scenarios.py --run
+      - name: Verify every full-data candidate is selected without outer target leakage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/macro_scenario_selection_20261031')
+          pred=pd.read_csv(p/'outer_heldout_probabilities.csv')
+          inner=pd.read_csv(p/'inner_candidate_scores.csv')
+          choice=pd.read_csv(p/'outer_chosen_scenarios.csv')
+          gain=pd.read_csv(p/'paired_null_comparisons.csv')
+          assert len(pred)==4248*2*3, len(pred)
+          assert len(inner)==2*5*(24+2), len(inner)
+          assert len(choice)==10 and len(gain)==6, (len(choice),len(gain))
+          assert choice.test_vegetated.min()>0
+          assert pred.groupby(['background','candidate','site']).size().max()==1
+          assert (pred.n>0).all() and pred.predicted.between(0,1,inclusive='neither').all()
+          assert set(gain.reference)=={'selected_environment','env_additive','env_interactions'}
+          print('AUDIT OK: 4248 sites, 2 backgrounds, 24 scenarios, 10 nested selections, 6 paired reference contrasts')
+          PY
+      - name: Post-selection paired 12 reversal-on/off contrasts (exploratory only)
+        run: python -u research/scripts/diagnose_macro_reversal_edge.py --run
+      - name: Verify complete exact reversal-pair design and retain compact evidence
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/macro_scenario_selection_20261031')
+          s=pd.read_csv(p/'post_selection_reversal_edge_pairs.csv')
+          b=pd.read_csv(p/'post_selection_reversal_edge_blocks.csv')
+          assert len(s)==24 and len(b)==24*56
+          assert set(s.background)=={'uniform','target_group'}
+          assert s.groupby(['background','context','family','risk']).size().eq(1).all()
+          assert (s.n_visits==63180).all()
+          print('REVERSAL PAIR AUDIT OK')
+          PY
+      - name: Show complete small source-backed comparison receipts
+        run: |
+          for f in outer_model_scores.csv paired_null_comparisons.csv scenario_frequency.csv observed_predicted_interactions.csv outer_chosen_scenarios.csv post_selection_reversal_edge_pairs.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_scenario_selection_20261031/$f"
+          done
+          echo '===== scenario_metadata.json ====='
+          cat research/results/macro_scenario_selection_20261031/scenario_metadata.json
+      - name: Diagnose whether model signal survives environmental adjustment and where prediction fails
+        run: python -u research/scripts/diagnose_macro_scenario_information.py --run
+      - name: Audit fixed-result exact replay and stratum support
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          root=Path('research/results/macro_scenario_selection_20261031/information_diagnostic')
+          i=pd.read_csv(root/'scenario_information.csv')
+          s=pd.read_csv(root/'selected_fold_mechanism_slopes.csv')
+          c=pd.read_csv(root/'vegetation_stratified_heldout_scores.csv')
+          r=pd.read_csv(root/'reversal_surface_identity.csv')
+          assert len(i)==48 and len(s)==10 and len(c)==18 and len(r)==12
+          assert c[c.vegetation_support=='V_positive'].n_sites.eq(506).all()
+          assert c[c.vegetation_support=='V_zero'].n_sites.eq(3742).all()
+          assert c.n_visits.gt(0).all()
+          print('INFORMATION AUDIT OK: 24 scenarios x 2 backgrounds; exact CV score replay; positive 506/zero 3742')
+          PY
+      - name: Validate assumed nonnegative cohort-to-calling observation link
+        run: python -m unittest discover -s research/scripts -p 'test_diagnose_monotone_observation_link.py' -v
+      - name: Rerun fixed chosen scenarios with nonnegative link only
+        run: python -u research/scripts/diagnose_monotone_observation_link.py --run
+      - name: Audit unchanged candidate identities and score support
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/macro_scenario_selection_20261031/monotone_link_sensitivity')
+          a=pd.read_csv(p/'selected_fold_link_sign_sensitivity.csv')
+          b=pd.read_csv(p/'nonnegative_link_heldout_scores.csv')
+          assert len(a)==10 and len(b)==30
+          assert a.nonnegative_standardized_slope.ge(0).all()
+          assert b[b.vegetation_support=='V_positive'].n_sites.eq(506).all()
+          assert b[b.vegetation_support=='V_zero'].n_sites.eq(3742).all()
+          print('NONNEGATIVE LINK SENSITIVITY OK',int(a.coefficient_at_boundary.sum()),'of 10 zero slopes')
+          PY
+      - name: Print exact diagnostic CSV values for durable audit
+        run: |
+          for f in \
+            information_diagnostic/scenario_information.csv \
+            information_diagnostic/selected_fold_mechanism_slopes.csv \
+            information_diagnostic/vegetation_stratified_heldout_scores.csv \
+            information_diagnostic/reversal_surface_identity.csv \
+            monotone_link_sensitivity/selected_fold_link_sign_sensitivity.csv \
+            monotone_link_sensitivity/nonnegative_link_heldout_scores.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_scenario_selection_20261031/$f"
+          done
+      - name: Archive all site-level predictions and methodological receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-macro-first-nested-scenario-selection-20261031
+          path: research/results/macro_scenario_selection_20261031/
+          if-no-files-found: warn
+          retention-days: 30

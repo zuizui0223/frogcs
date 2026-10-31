@@ -1,0 +1,145 @@
+name: Frogcs genuine vegetation roles 80-year POM ABC pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Assert legal 3600 catalog roles, original annual kernel clone and exact reversal pairs
+        run: python -m unittest discover -s research/scripts -p 'test_model_native_vegetation_abc.py' -v
+      - name: Assert 12 vegetation roles, 64 matched prior IDs and legal ablation directions
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_model_native_vegetation_abc.py' -v
+
+  genuine-80-year-vegetation:
+    needs: tests
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        cover_sf: [0,1]
+        litter: [0,1]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Compare unchanged original full 80-year outputs before running true plant controls
+        run: |
+          python -u research/scripts/model_native_vegetation_abc.py --run \
+            --cover-sf ${{ matrix.cover_sf }} --litter ${{ matrix.litter }} --draws 64
+      - name: Audit every exact risk- and reverse-paired real rate source and models
+        env:
+          SF: ${{ matrix.cover_sf }}
+          LIT: ${{ matrix.litter }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          import pandas as pd
+          sf=int(os.environ["SF"]);litter=int(os.environ["LIT"])
+          p=Path('research/results/macro_intrinsic_factorial_abc_20261031')
+          name=f"SF{sf}_L{litter}"
+          a=pd.read_csv(p/(name+'_prior_vegetation_signs.csv.gz'))
+          r=pd.read_csv(p/(name+'_rate_draws.csv'))
+          b=pd.read_csv(p/(name+'_plant_pom_summary.csv'))
+          source=json.loads((p/(name+'_receipt.json')).read_text())
+          n_veg=2 if litter else 4
+          assert len(a)==n_veg*2*64*2 and len(r)==64 and len(b)==n_veg*2
+          assert a.groupby(['structure_id','draw']).reverse_on.nunique().eq(2).all()
+          assert a.groupby(['plant_model','risk']).draw.nunique().eq(64).all()
+          assert a.matches_log.isin([True,False]).all()
+          assert source['original_full_80year_archive_replay']['F_B']<=1e-8
+          assert source['original_full_80year_archive_replay']['F_fraction']<=1e-8
+          assert source['source_context']=='original' and source['source_handling']=='baseline'
+          print('REAL_80YEAR_LEGAL_PLANT_ABLATION_OK',name,len(a),'demographic simulations')
+          PY
+      - name: Print complete per-role prior acceptance (no candidate pruning)
+        run: |
+          cat research/results/macro_intrinsic_factorial_abc_20261031/SF${{ matrix.cover_sf }}_L${{ matrix.litter }}_plant_pom_summary.csv
+      - name: Keep full actual-model outcome source, 64 matched rate draw IDs and baseline receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-native-vegetation-SF${{ matrix.cover_sf }}-L${{ matrix.litter }}-20261031
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn
+
+  integrate-legal-plant-models:
+    needs: genuine-80-year-vegetation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Retrieve four unfiltered true-seasonal-annual vegetation mechanism catalogs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-native-vegetation-SF*-L*-20261031
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_intrinsic_factorial_abc_20261031
+      - name: Aggregate 12 main-canonical vegetation functions into exact 4-sign conditional ABC
+        run: python -u research/scripts/summarize_model_native_vegetation_abc.py --run
+      - name: Verify all 24 plant/risk classes, paired 64 draws, and original main catalog subsets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          import numpy as np
+          p=Path("research/results/macro_intrinsic_factorial_abc_20261031")
+          a=pd.read_csv(p/"vegetation_abc_class_selection.csv")
+          roles=pd.read_csv(p/"vegetation_abc_plant_function_shares.csv")
+          pairs=pd.read_csv(p/"vegetation_paired_function_summary.csv")
+          catalog=pd.read_csv(p/"plant_roles_in_main_3600.csv")
+          assert len(a)==24*2 and len(roles)==12*2 and len(pairs)==4*2 and len(catalog)==12
+          assert catalog.matching_main_3600_models.sum()==3600
+          assert a.groupby("scale").conditional_abc_share.sum().between(.999999,1.000001).all()
+          assert roles.groupby("scale").conditional_abc_plant_share.sum().between(.999999,1.000001).all()
+          assert a.n_independent_rate_draws.eq(64).all()
+          assert pairs.n_independent_draws.eq(64).all()
+          assert a.n_reversal_states_per_draw.eq(2).all()
+          assert a.acceptance.between(0,1).all()
+          print('LEGAL_PLANT_ABC_POM_PILOT_SUCCESS',len(a),'case/scale rows')
+          PY
+      - name: Print both population scales, model and vegetation functional contrasts
+        run: |
+          for f in vegetation_abc_class_selection.csv vegetation_abc_plant_function_shares.csv vegetation_paired_function_summary.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_intrinsic_factorial_abc_20261031/$f"
+          done
+      - name: Retain exact source-case ABC table, whole main-axis inventory and matched vegetation effects
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-native-vegetation-12role-80year-abc-integrated-20261031
+          path: research/results/macro_intrinsic_factorial_abc_20261031/
+          retention-days: 30
+          if-no-files-found: warn

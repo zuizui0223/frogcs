@@ -1,0 +1,81 @@
+name: Frogcs paired-prior genuine ABC audit
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/audit_paired_genuine_abc.py
+      - research/scripts/test_audit_paired_genuine_abc.py
+      - .github/workflows/research_model_native_abc_paired_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  rate-draw-robustness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin source-backed math/ABC-RF versions
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Verify paired-rate resampling, reverse-edge identities and true source groups
+        run: python -m unittest discover -s research/scripts -p 'test_audit_paired_genuine_abc.py' -v
+      - name: Retrieve 6144 actual 80-year simulations and ABC-RF outcome from successful source run
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41178134567
+          name: frogcs-genuine-80y-native-four-sign-abc-rf-20261031
+          github-token: ${{ github.token }}
+          path: research/results/model_native_abc_rf_20261031
+      - name: Bootstrap 256 shared biological-rate IDs, retaining paired reversal edges and all structural classes
+        run: python -u research/scripts/audit_paired_genuine_abc.py --run --bootstrap 1999
+      - name: Ensure three-scale class shares, parameter-draw correlation and zero-tolerance audit
+        run: |
+          python - <<'PY'
+          import numpy as np
+          import pandas as pd
+          import json
+          from pathlib import Path
+          p=Path('research/results/model_native_abc_rf_20261031')
+          cl=pd.read_csv(p/'paired_prior_class_intervals.csv')
+          groups=pd.read_csv(p/'paired_prior_higher_level_intervals.csv')
+          edges=pd.read_csv(p/'paired_reverse_edge_identifiability.csv')
+          sens=pd.read_csv(p/'factorial_sign_precision_sensitivity.csv')
+          doc=json.loads((p/'paired_prior_abc_receipt.json').read_text())
+          assert len(cl)==36 and len(groups)==3*(3+2+2)
+          assert len(edges)==24 and len(sens)==3*2*12
+          assert cl.groupby('scale').structure_id.nunique().eq(12).all()
+          assert cl.n_effective_paired_rate_draws.eq(256).all()
+          assert cl.n_reversal_edge_states_per_rate.eq(2).all()
+          assert cl.n_accepted.between(0,512).all()
+          assert cl.paired_draw_abc_share_ci_low.le(cl.paired_draw_abc_share_ci_high).all()
+          assert np.allclose(cl.groupby('scale').conditional_abc_share.sum().values,1)
+          assert edges.n_identical_all_four_signs.between(0,256).all()
+          assert edges.n_identical_ABC_acceptance.between(0,256).all()
+          assert doc['actual_rate_draws_per_model']==256
+          print('PAIRED_GENUINE_ABC_SUCCESS',len(cl),'class/scale posteriors',len(edges),'edge checks')
+          PY
+      - name: Print complete exact class probability and shared rate uncertainty evidence
+        run: |
+          for f in paired_prior_class_intervals.csv paired_prior_higher_level_intervals.csv paired_reverse_edge_identifiability.csv factorial_sign_precision_sensitivity.csv; do
+            echo "===== $f ====="
+            cat "research/results/model_native_abc_rf_20261031/$f"
+          done
+      - name: Retain all actual 80-year rate draws, OOB error and paired ABC audit files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-genuine-80y-abc-paired-rate-uncertainty-20261031
+          path: research/results/model_native_abc_rf_20261031/
+          retention-days: 30
+          if-no-files-found: warn

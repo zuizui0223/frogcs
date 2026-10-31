@@ -1,0 +1,87 @@
+name: Frogcs R2-matched paired facilitation and robust consensus
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - .github/workflows/research_macro_r2_facilitation_pairs.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  paired-hypothesis-and-across-noise-robustness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test exact matched-structure facilitation and eight-way consistency
+        run: python -m unittest discover -s research/scripts -p 'test_audit_r2_facilitation_pairs.py' -v
+      - name: Download completed original six-source R2 evaluation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41167879936
+          pattern: frogcs-r2-*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_r2_matched_directional_20261031
+      - name: Compare all neutral vs moderate vs strong same-case experiments and all eight observation conditions
+        run: python -u research/scripts/audit_r2_facilitation_pairs.py --run
+      - name: Verify no same-structure mismatch, no missing observations and no source duplication
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/macro_r2_matched_directional_20261031')
+          a=pd.read_csv(p/'paired_hypothesis_case_differences.csv')
+          s=pd.read_csv(p/'amplification_paired_summary.csv')
+          c=pd.read_csv(p/'amplification_eight_condition_stability.csv')
+          g=pd.read_csv(p/'all_group_eight_condition_stability.csv')
+          t=pd.read_csv(p/'family_eight_condition_coverage.csv')
+          assert len(a)==2*2*2*24*2 and len(s)==16
+          assert len(c)==24*2 and len(g)==104+128+48 and len(t)==3
+          assert a.groupby(['case','hypothesis']).size().eq(8).all()
+          assert s.n_cases.eq(24).all()
+          assert (s.positive_gain_cases+s.negative_gain_cases+s.equal_gain_cases==24).all()
+          assert g.n_conditions.eq(8).all()
+          assert g.n_r2_matched_conditions.eq(8).all()
+          assert g.n_conditions_with_any_complete.between(0,8).all()
+          print('MATCHED_HYPOTHESIS_PAIR_AUDIT_SUCCESS')
+          PY
+      - name: Show matched mechanism effects and robust entire source competition
+        run: |
+          for f in amplification_paired_summary.csv amplification_eight_condition_stability.csv family_eight_condition_coverage.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_r2_matched_directional_20261031/$f"
+          done
+          echo '===== MOST ROBUST MODEL GROUPS ====='
+          python - <<'PY'
+          import pandas as pd
+          p='research/results/macro_r2_matched_directional_20261031/'
+          x=pd.read_csv(p+'all_group_eight_condition_stability.csv')
+          print(x.sort_values(['family','minimum_soft'],ascending=[True,False])
+                 .groupby('family').head(10).to_csv(index=False))
+          PY
+      - name: Preserve fully audited matched-structure and stable-group evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-r2-matched-facilitation-paired-consensus-audit
+          path: |
+            research/results/macro_r2_matched_directional_20261031/paired_hypothesis_case_differences.csv
+            research/results/macro_r2_matched_directional_20261031/amplification_paired_summary.csv
+            research/results/macro_r2_matched_directional_20261031/amplification_eight_condition_stability.csv
+            research/results/macro_r2_matched_directional_20261031/all_group_eight_condition_stability.csv
+            research/results/macro_r2_matched_directional_20261031/family_eight_condition_coverage.csv
+          retention-days: 30

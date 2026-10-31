@@ -1,0 +1,98 @@
+name: Frogcs remaining original 192-rate true 80-year canonical vegetation models
+
+on:
+  push:
+    branches: [research/multigeneration-reversal-abm-pde-20261031]
+    paths:
+      - research/VEGETATION_MAIN_CANONICAL_FULL256_POM_ABC_PROTOCOL_2026-10-31.md
+      - research/scripts/run_missing192_canonical_vegetation_80y.py
+      - research/scripts/test_run_missing192_canonical_vegetation_80y.py
+      - .github/workflows/research_canonical_vegetation_missing192.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Check five independent structural shards, old-256 exact prior-ID complement and original seasonal recurrence
+        run: python -m unittest discover -s research/scripts -p 'test_run_missing192_canonical_vegetation_80y.py' -v
+
+  run-only-missing-192:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      max-parallel: 3
+      fail-fast: false
+      matrix:
+        include:
+          - context: original
+            family: shared_both
+          - context: D_first_S_overtakes
+            family: baseline
+          - context: D_first_S_overtakes
+            family: shared_both
+          - context: S_first_D_overtakes
+            family: baseline
+          - context: S_first_D_overtakes
+            family: shared_both
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Reproduce all four original 80y season+year outcomes then execute missing 192 genuine demographic rate draws
+        run: |
+          python -u research/scripts/run_missing192_canonical_vegetation_80y.py --run \
+            --context ${{ matrix.context }} --family ${{ matrix.family }}
+      - name: Verify exact 18 main-canonical plant classes and the previously uncomputed 192 source IDs
+        env:
+          CONTEXT: ${{ matrix.context }}
+          FAMILY: ${{ matrix.family }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          import pandas as pd
+          import numpy as np
+          p=Path('research/results/macro_vegetation_full256_canonical_20261031')
+          stem=os.environ['CONTEXT']+'__'+os.environ['FAMILY']
+          df=pd.read_csv(p/(stem+'_missing192_actual_80year_signs.csv.gz'))
+          theta=pd.read_csv(p/(stem+'_missing192_original_rate_draws.csv'))
+          r=json.loads((p/(stem+'_receipt.json')).read_text())
+          assert len(df)==18*192*2 and df.structure_id.nunique()==18
+          assert len(theta)==192 and theta.draw.nunique()==192
+          assert theta.draw.mod(4).ne(0).all()
+          assert df.groupby(['structure_id','draw']).reverse_on.nunique().eq(2).all()
+          assert (df.cover_SF.eq(0)&df.risk.eq(True)).sum()==0
+          assert r['n_original_80year_runs']==18*192*2
+          assert r['n_8vertex_source_treatments']==18*192*2*8
+          assert r['original_archive_and_old_annual_replay']['archive_F_B']<1e-8
+          assert r['original_archive_and_old_annual_replay']['archive_F_fraction']<1e-8
+          print('GENUINE_MISSING192_80Y_SOURCE_SUCCESS',stem,6912,'new simulations')
+          PY
+      - name: Preserve all novel F_B annual source contrasts, every input rate ID and original frozen SHA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-canonical192-${{ matrix.context }}-${{ matrix.family }}
+          path: research/results/macro_vegetation_full256_canonical_20261031/
+          if-no-files-found: warn
+          retention-days: 30

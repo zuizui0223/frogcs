@@ -1,0 +1,16 @@
+# Macro-first no-winner diagnosis: frozen follow-up audit
+
+**When:** 2026-10-31, after reading the completed 24-scenario nested CV (PR #146). This is a **post-result diagnostic**, not a newly preregistered positive winner search. Parent [macro-first protocol](MACRO_FIRST_SCENARIO_SELECTION_PROTOCOL_2026-10-31.md) and full outer CV scores stay fixed. Neither numerical search nor ABM/PDE is required here.
+
+## Why these three analyses
+
+The nested predictor failed to improve both SDM backgrounds and reproduced a too-weak OV and opposite-signed OS interaction. Three *distinct* explanations remain possible: (1) source model surfaces do not carry ecologically distinctive predictors once O, S, V and survey/environment/space predictors are known; (2) the acoustic observation operator fits unexpected signs for the model's F_B signal; (3) the principal OV evidence lies in the **506** remote-vegetation-positive sites but pooled log scoring is dominated by the **3,742** zero-class sites. These are not interchangeable with biological disproof.
+
+## Predeclare the limited diagnostics before executing
+
+1. **Mechanism basis independence:** For every **existing** 24-case F_B surface and both SDM backgrounds, map ranks to the fixed 9×9 grid with frozen source-proxy assumptions. Calculate the unpenalized *linear* fraction of variation in `log(F_B)` remaining after projection on (a) O, S, V + site/effort/environment/spatial controls and (b) those plus empirical OS/OV/SV/OSV. This is a collinearity/information diagnostic only. No outcome-based model selection, and residual information does not establish ecological identification.
+2. **Selected acoustic link sign:** Replay the unchanged outer-selected scenario per fold (the `outer_chosen_scenarios.csv` receipts), fit the exact original ridge-binomial link on outer TRAIN sites and record the standardized slope on the source model's `log(F_B)` feature. Validate exact numerical replay of the 2026-10-31 committed prediction NLL. A positive slope corresponds to higher *hypothetical* cohort size predicting higher adult call probability after controls; a negative slope requires separate biological explanation and cannot be called direct calibration.
+3. **Conditional prediction by vegetation support:** Use those unchanged **outer fold predictions**, pair selected mechanism with its fold-specific selected null and both fixed environmental nulls. Calculate per-visit NLL differences separately for observed `flooded_3000m_mean > 0` and `= 0`, plus all sites. Preserve sample count, visits and 999 paired spatial-block bootstrap intervals. Do not choose a winner by cherry-picking one stratum. The vegetation flag is a 3 km landscape proxy, not measured in-pond structure.
+4. **Reversal identifiability:** Compare F_B grids for exact 12 matched reverse-on/off pairs and report zero vs nonzero grid differences independent of observed outcomes. A zero surface difference cannot be identified by an observation-link whose only mechanistic input is F_B.
+
+All final numeric outputs must be committed as durable small summaries with source/model hashes and a GitHub Actions full-data verification. No research source or old outputs are modified. A no-winner result remains valid even if a diagnostic supports a reason for the mismatch.

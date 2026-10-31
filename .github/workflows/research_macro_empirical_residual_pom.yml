@@ -1,0 +1,120 @@
+name: Frogcs empirical-residual-ICC directional POM
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MACRO_OBSERVED_RESIDUAL_SPATIAL_NOISE_PROTOCOL_2026-10-31.md
+      - research/scripts/evaluate_naamp_empirical_block_pom.py
+      - research/scripts/test_evaluate_naamp_empirical_block_pom.py
+      - .github/workflows/research_macro_empirical_residual_pom.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test exact empirical ICC source and unchanged site POM estimands
+        run: python -m unittest discover -s research/scripts -p 'test_evaluate_naamp_empirical_block_pom.py' -v
+
+  matched-scenarios:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      max-parallel: 3
+      fail-fast: false
+      matrix:
+        family: [frozen132, realrate192, facilitation72]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin same statistical versions as prior successful NAAMP source
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Reuse real 80-year seasonal/annual process rate draw artifact
+        if: matrix.family == 'realrate192'
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41163370575
+          name: frogcs-process-rate-POM-real-simulator-20261031
+          github-token: ${{ github.token }}
+          path: research/results/macro_pom_process_prior_20261031
+      - name: Reuse validated S-mediated D-on-F hazard amplification artifact
+        if: matrix.family == 'facilitation72'
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41164886106
+          name: frogcs-S-facilitated-danger-POM-20261031
+          github-token: ${{ github.token }}
+          path: research/results/macro_s_facilitated_danger_20261031
+      - name: R2 match with NAAMP-derived 2-degree residual ICC for both backgrounds and signal modes
+        run: |
+          python -u research/scripts/evaluate_naamp_empirical_block_pom.py --run \
+            --family ${{ matrix.family }} --cal-reps 16 --eval-reps 128
+      - name: Verify all source hypotheses, R2 and noise-level provenance
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          import pandas as pd
+          import numpy as np
+          fam=os.environ['FAMILY']
+          p=Path('research/results/macro_empirical_block_pom_20261031')
+          g=pd.read_csv(p/(fam+'_source_group_scores.csv'))
+          s=pd.read_csv(p/(fam+'_candidate_scores.csv'))
+          summary=pd.read_csv(p/(fam+'_family_summary.csv'))
+          obs=pd.read_csv(p/(fam+'_observed_icc_and_patterns.csv'))
+          both=pd.read_csv(p/(fam+'_cross_background_groups.csv'))
+          rc=json.loads((p/(fam+'_receipt.json')).read_text())
+          labels={'frozen132':132,'realrate192':192,'facilitation72':72}[fam]
+          groups={'frozen132':104,'realrate192':128,'facilitation72':48}[fam]
+          assert len(g)==groups*4 and len(s)==labels*4
+          assert len(summary)==4 and len(obs)==10 and len(both)==2
+          assert g.source_group.nunique()==groups and s.model_label.nunique()==labels
+          assert g.calibration_status.isin(['MATCHED_R2','MATCHED_WITHOUT_NOISE',
+              'NOISE_ONLY_R2_UNREACHABLE','NOISE_R2_NOT_BRACKETED',
+              'APPROXIMATE_R2_UNMATCHED']).all()
+          assert g.modal_complete_count.between(0,128).all()
+          assert g.soft_joint_agreement.between(0,1).all()
+          assert (g.icc_residual>0).all() and np.isfinite(g.alpha_block).all()
+          assert rc['n_groups']==groups and rc['independent_eval_fields']==128
+          print('NAAMP_EMPIRICAL_ICC_POM_FAMILY_AUDIT_SUCCESS',fam,labels,groups)
+          PY
+        env:
+          FAMILY: ${{ matrix.family }}
+      - name: Print every source-backed per-family summary
+        run: |
+          p=research/results/macro_empirical_block_pom_20261031
+          echo '===== ${{ matrix.family }} family ====='
+          cat "$p/${{ matrix.family }}_family_summary.csv"
+          echo '===== ${{ matrix.family }} cross background ====='
+          cat "$p/${{ matrix.family }}_cross_background_groups.csv"
+      - name: Preserve all full group/label fit, calibration and source receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-empirical-icc-POM-${{ matrix.family }}-20261031
+          path: research/results/macro_empirical_block_pom_20261031/
+          if-no-files-found: warn
+          retention-days: 30
