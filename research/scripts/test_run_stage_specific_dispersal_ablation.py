@@ -52,7 +52,7 @@ class StageDiffusionHypothesisTests(unittest.TestCase):
         self.assertNotEqual(a["movements"].stage.value_counts().to_dict(),
                             b["movements"].stage.value_counts().to_dict())
 
-    def test_mode_summary_maintains_no-recolonization_negative_fixture(self):
+    def test_mode_summary_maintains_no_recolonization_negative_fixture(self):
         patch=[]
         for reverse in (False,True):
             for seed in SEEDS:
