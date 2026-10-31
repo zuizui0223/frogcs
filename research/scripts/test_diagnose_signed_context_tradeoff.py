@@ -21,7 +21,7 @@ def small_fixture():
         for case,pattern in enumerate(patterns):
             frozen.append(dict(background=bg,case=f"case_{case:03d}",
                                source_group=f"case_{case:03d}",
-                               **{"model_sign_"+n:int(v) for n,v in zip(METRICS,pattern)}))
+                               **{n:int(v) for n,v in zip(METRICS,pattern)}))
             rate.append(dict(background=bg,case=f"case_{case:03d}",
                              rate_draw=0,structural_group=f"group_{case}",
                              **dict(zip(METRICS,pattern))))
