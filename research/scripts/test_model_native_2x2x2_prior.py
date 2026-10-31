@@ -35,11 +35,12 @@ class ModelNativePriorTests(unittest.TestCase):
     def test_priors_are_reproducible_balanced_and_same_across_structures(self):
         other=matching_prior_draws(4,seed=20261031)
         pd.testing.assert_frame_equal(self.draws,other)
-        self.assertEqual(self.draws.reverse_on.value_counts().to_dict(),{0:2,1:2})
+        self.assertNotIn("reverse_on",self.draws.columns)
         self.assertEqual(self.draws.f_delay.value_counts().to_dict(),{2:2,3:2})
         grid=cube_design(self.structures[self.structures.context=="original"],self.draws)
-        self.assertEqual(len(grid),4*4*8)
-        self.assertTrue(grid.groupby(["structure_id","draw"]).vertex.nunique().eq(8).all())
+        self.assertEqual(len(grid),4*4*2*8)
+        self.assertTrue(grid.groupby(["structure_id","draw"]).reverse_on.nunique().eq(2).all())
+        self.assertTrue(grid.groupby(["structure_id","draw","reverse_on"]).vertex.nunique().eq(8).all())
         self.assertEqual(set(grid.vegetation),{0,1})
         self.assertEqual(set(grid.S_source),{.25,2.})
         self.assertEqual(set(grid.D_source),{.25,2.})
@@ -65,7 +66,7 @@ class ModelNativePriorTests(unittest.TestCase):
         frame=cube_design(structures,d)
         out=annual_recurrence_batch(frame,years=5,window=2,dt=.5)
         for draw in d.itertuples(index=False):
-            g=frame[frame.draw==draw.draw].sort_values("vertex")
+            g=frame[frame.draw==draw.draw].sort_values(["reverse_on","vertex"])
             n=len(g)
             scenarios=[dict(community="FSD",roles=15,refuge_order="D",
                             vegetation=float(x.vegetation),
@@ -95,7 +96,7 @@ class ModelNativePriorTests(unittest.TestCase):
                                 survival=(draw.f_adult_survival,.5,0.),
                                 juvenile=(draw.f_juvenile_survival,.8,.8),
                                 delays=(int(draw.f_delay),2,1))
-            computed=out[out.draw==draw.draw].sort_values("vertex")
+            computed=out[out.draw==draw.draw].sort_values(["reverse_on","vertex"])
             np.testing.assert_allclose(computed.F_B,raw.F_B,atol=1e-10,rtol=0)
             np.testing.assert_allclose(computed.F_fraction,raw.F_fraction,
                                        atol=1e-10,rtol=0)
@@ -110,7 +111,7 @@ class ModelNativePriorTests(unittest.TestCase):
              +(r.vertex//4)*(r.vertex//2%2)*(r.vertex%2)
              for r in rows.itertuples(index=False)]))
         x=summarize_cube_output(rows)
-        self.assertEqual(len(x),4)
+        self.assertEqual(len(x),8)
         self.assertTrue(x.matches_log.all())
         self.assertTrue(x[[f"sign_log_{p}" for p in METRICS]].eq([-1,-1,1,1]).all().all())
         with self.assertRaises(AssertionError):
