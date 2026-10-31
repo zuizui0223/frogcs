@@ -7,6 +7,7 @@ on:
     paths:
       - research/scripts/select_macro_trophic_scenarios.py
       - research/scripts/test_select_macro_trophic_scenarios.py
+      - research/scripts/diagnose_macro_reversal_edge.py
       - research/MACRO_FIRST_SCENARIO_SELECTION_PROTOCOL_2026-10-31.md
       - .github/workflows/research_macro_scenario_selection.yml
   workflow_dispatch:
@@ -67,6 +68,30 @@ jobs:
           assert set(gain.reference)=={'selected_environment','env_additive','env_interactions'}
           print('AUDIT OK: 4248 sites, 2 backgrounds, 24 scenarios, 10 nested selections, 6 paired reference contrasts')
           PY
+      - name: Post-selection paired 12 reversal-on/off contrasts (exploratory only)
+        run: python -u research/scripts/diagnose_macro_reversal_edge.py --run
+      - name: Verify complete exact reversal-pair design and retain compact evidence
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/macro_scenario_selection_20261031')
+          s=pd.read_csv(p/'post_selection_reversal_edge_pairs.csv')
+          b=pd.read_csv(p/'post_selection_reversal_edge_blocks.csv')
+          assert len(s)==24 and len(b)==24*56
+          assert set(s.background)=={'uniform','target_group'}
+          assert s.groupby(['background','context','family','risk']).size().eq(1).all()
+          assert (s.n_visits==63180).all()
+          print('REVERSAL PAIR AUDIT OK')
+          PY
+      - name: Show complete small source-backed comparison receipts
+        run: |
+          for f in outer_model_scores.csv paired_null_comparisons.csv scenario_frequency.csv observed_predicted_interactions.csv outer_chosen_scenarios.csv post_selection_reversal_edge_pairs.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_scenario_selection_20261031/$f"
+          done
+          echo '===== scenario_metadata.json ====='
+          cat research/results/macro_scenario_selection_20261031/scenario_metadata.json
       - name: Archive all site-level predictions and methodological receipts
         if: always()
         uses: actions/upload-artifact@v4
