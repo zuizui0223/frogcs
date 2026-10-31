@@ -79,17 +79,20 @@ class TruePriorRegionTests(unittest.TestCase):
         self.assertEqual(k.n_prior_draws.tolist(),[64]*4)
 
     def test_matched_refuge_bootstrap_preserves_shared_draws(self):
-        weights=independent_prior_weights(self.reference,"log")
-        weights["scale"]="log"
+        weights=pd.concat([
+            independent_prior_weights(self.reference,scale).assign(scale=scale)
+            for scale in ("log","raw")
+        ],ignore_index=True)
         r,t=pair_refuge_original(weights,n_boot=99)
-        self.assertEqual(len(r),N_PRIOR_DRAWS)
-        self.assertEqual(len(t),1)
-        self.assertEqual(t.n_both.iloc[0],48)
-        self.assertEqual(t.n_off_only.iloc[0],16)
-        self.assertEqual(t.n_on_only.iloc[0],0)
-        self.assertEqual(t.n_neither.iloc[0],192)
-        self.assertAlmostEqual(t.mean_off_minus_on.iloc[0],16/N_PRIOR_DRAWS)
-        self.assertGreater(t.paired_bootstrap_95_low.iloc[0],0.)
+        self.assertEqual(len(r),N_PRIOR_DRAWS*2)
+        self.assertEqual(len(t),2)
+        for row in t.itertuples():
+            self.assertEqual(row.n_both,48)
+            self.assertEqual(row.n_off_only,16)
+            self.assertEqual(row.n_on_only,0)
+            self.assertEqual(row.n_neither,192)
+            self.assertAlmostEqual(row.mean_off_minus_on,16/N_PRIOR_DRAWS)
+            self.assertGreater(row.paired_bootstrap_95_low,0.)
 
     def test_discordant_reversal_weight_is_not_double_counted(self):
         modified=self.reference.copy()
