@@ -125,8 +125,18 @@ def audited_one(mode,reverse,seed,years=YEARS,dt=DT):
         raise AssertionError("Source annual mortality and global dead UID registry disagree")
     if len(result["movements"])!=int(full.inbound.sum()):
         raise AssertionError("Source movement events counted twice or omitted")
-    linked=attach_validated_births(result["patch"],result["registry"])
-    source_annual_stage_audit(linked,result["annual"])
+    # The source tracer returns one arm's raw UID/patch tables; the shared
+    # source-census auditor expects the same explicit arm keys as its archived
+    # four-seed data. These are labels only, not alterations of the simulator.
+    labeled={}
+    for name in ("patch","registry","annual","movements"):
+        fragment=result[name].copy()
+        fragment["mobility"]=mode
+        fragment["reverse"]=bool(reverse)
+        fragment["seed"]=int(seed)
+        labeled[name]=fragment
+    linked=attach_validated_births(labeled["patch"],labeled["registry"])
+    source_annual_stage_audit(linked,labeled["annual"])
     events=event_table(linked)
     label=f"{mode}"
     full["mobility"]=label
@@ -171,7 +181,9 @@ def audited_one(mode,reverse,seed,years=YEARS,dt=DT):
     annual["mobility"]=label;annual["stage_mobility"]=mode.rsplit("_",1)[0]
     annual["diffusion"]=DIFFUSION_VALUES[mode.rsplit("_",1)[1]]
     annual["reverse"]=bool(reverse);annual["seed"]=seed
-    return full,pd.DataFrame(summary),annual,events,result
+    labeled_result=dict(result)
+    labeled_result.update(labeled)
+    return full,pd.DataFrame(summary),annual,events,labeled_result
 
 
 def run(mode,out=OUT):
