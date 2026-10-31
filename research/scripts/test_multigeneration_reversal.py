@@ -62,7 +62,7 @@ class SpatialReversalTests(unittest.TestCase):
     def test_second_generation_is_real_individual_ancestry(self):
         x=np.zeros((7,2),int);x[FA]=4
         p=replace(inert(),maturation=(20.,0.,0.,0.,0.,0.,0.),
-                  fecundity=(0.,20.,0.,0.,0.,0.,0.),capacity=1e6)
+                  fecundity=(0.,6.,0.,0.,0.,0.,0.),capacity=40.)
         traj,agents=simulate_abm(x,[0.,0.],p,years=2,dt=.05,seed=7)
         self.assertGreater(agents.generation.max(),1)
         self.assertTrue((agents.parent[agents.generation>0] >= 0).all())
