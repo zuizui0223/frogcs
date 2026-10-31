@@ -175,7 +175,7 @@ def predictor_design(d,background,scenario_values):
     return all_design
 
 
-def fit_predict(x_train,k_train,n_train,x_test,return_mechanism_slope=False):
+def fit_predict(x_train,k_train,n_train,x_test,return_mechanism_slope=False,nonnegative_mechanism=False):
     """Regularized site-binomial observation link; train means and SD from train."""
     mu=x_train.mean(axis=0);sd=x_train.std(axis=0)
     keep=sd>1e-11
@@ -190,7 +190,14 @@ def fit_predict(x_train,k_train,n_train,x_test,return_mechanism_slope=False):
         grad=z.T@(n_train*expit(eta)-k_train)
         grad[1:]+=RIDGE*beta[1:]
         return float(nll),grad
-    opt=minimize(objective,init,method="L-BFGS-B",jac=True,options={"maxiter":400,"ftol":1e-11})
+    if nonnegative_mechanism and keep[-1]:
+        # Exploratory, explicitly assumed monotone cohort->call observation link.
+        # A zero boundary coefficient reduces to the additive environmental null.
+        bounds=[(None,None)]*(len(init)-1)+[(0.,None)]
+        opt=minimize(objective,init,method="L-BFGS-B",jac=True,
+                     bounds=bounds,options={"maxiter":400,"ftol":1e-11})
+    else:
+        opt=minimize(objective,init,method="L-BFGS-B",jac=True,options={"maxiter":400,"ftol":1e-11})
     if not opt.success and np.linalg.norm(opt.jac,ord=np.inf)>.1:
         raise RuntimeError("Binomial fit failed: "+str(opt.message))
     p=np.clip(expit(xt@opt.x),1e-10,1-1e-10)
