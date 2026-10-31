@@ -204,14 +204,28 @@ def make_source_group(group, patches=PATCHES):
 
 
 def simulate_finite_group(group, *, scale, seed, mode, immigration=True,
-                          years=YEARS, dt=DT, transfer=MOVE_FRAC):
-    """True integer 0-based extirpation events for every guild and patch."""
+                          years=YEARS, dt=DT, transfer=MOVE_FRAC,
+                          edge_off=None):
+    """Same original finite source; optional SINGLE directed seasonal edge ablated.
+
+    edge_off=None exactly preserves all earlier PR149–152 results and RNG.
+    Each non-None name merely sets one original seasonal kernel edge multiplier
+    from 1 to 0; no changes to source year recurrence or sampling law.
+    """
     if years < 4 or dt <= 0 or not 1 <= int(scale) <= 500:
         raise ValueError("Finite biological simulation design required")
     n = len(group)
     params, season_opts, source, rho, survival, conv, juvenile, delay = (
         make_source_group(group)
     )
+    if edge_off is not None:
+        if edge_off not in ("SF","DF","DS","SD","FE"):
+            raise ValueError("Only one defined directed trophic edge can be ablated")
+        edge_name="edge_"+edge_off
+        season_opts["pathway_controls"]={
+            **season_opts["pathway_controls"],
+            edge_name:np.zeros(len(params),dtype=float)
+        }
     patches=PATCHES
     # Reproducibility must be independent of dictionary hash randomization.
     # Each experiment arm has its own RNG, matched seed LABELS are not
