@@ -39,10 +39,11 @@ def load_prior_modes(original=SOURCE_ORIGINAL_SUMMARY,
         raise AssertionError("No all-vs-none original mobility control")
     if not set(prior.guild)==set(GUILDS):
         raise AssertionError("Missing original F/S/D spatial records")
-    d=prior.merge(rescue,on=list(ARM),how="inner",validate="one_to_one")
+    d=prior.merge(rescue,on=list(ARM),how="inner",validate="one_to_one",
+                  suffixes=("_source","_uid"))
     if len(d)!=48:raise AssertionError("Missing original source ancestry rescue episodes")
     checks=[
-        ("n_recolonization_events","n_recolonization_events"),
+        ("n_recolonization_events_source","n_recolonization_events_uid"),
         ("n_recolonizations_with_surviving_immigrant",
          "n_recolonizations_with_survivor_movements"),
     ]
@@ -51,7 +52,7 @@ def load_prior_modes(original=SOURCE_ORIGINAL_SUMMARY,
             raise AssertionError("Original move/recolonization receipts disagree")
     rename=dict(n_occupied_end="occupied_year20",
                 n_local_extinction_events="n_extinctions",
-                n_recolonization_events="n_recolonizations",
+                n_recolonization_events_source="n_recolonizations",
                 n_survivor_movements="n_observed_survivor_movements",
                 n_living_elsewhere_than_ancestor_patch="n_living_elsewhere_than_founder_patch",
                 n_multisite_founder_lineages="n_multisite_founder_lineages",
