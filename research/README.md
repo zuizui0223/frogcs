@@ -1,5 +1,16 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #153 — 80年捕食エッジ×局所加入の必要性検査（12seed成功）
+
+[Draft PR #153](https://github.com/zuizui0223/frogcs/pull/153) / [検証済み生物学的結果](PREDATOR_EDGE_LOCAL_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [捕食時間窓・元カーネル活性テストSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199068663) / [真正80年24本SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41198781275) / [全24本の12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199156266)。
+
+PR152の局所加入強度（外部流入OFFのρ×conversion）を操作した率ID12背景において、**有尾類幼生→カエル幼生（S→F）捕食経路をOFFにすると、分散の年80占有効果がS成長で正→負に反転する現象が2植物機能×12/12seedで消失**。一方D→F、D→S、S→Dそれぞれの単独OFFでは同じ厳密反転が残った。**この固定モデル内の反転がS→F経路に依存する**ことが分かったが、野外因果やその1経路だけで十分かは別問題として扱う。
+
+**時間窓の訂正**：#149〜152の2発生条件では、カエルが捕食可能な完成段階に入る65日目までにD羽化移行期が終わるため、完成F→羽化D（edge_FE）は数値上厳密ゼロ。PR148の第3条件ではD羽化80〜85日目にF完成後の時間が重なり、FEは**実際に作動する**ので、PR148全体やPR147の別ABMへFE-nullを一般化しない。元#149〜152のPR本文には限定範囲の訂正を付記した。
+
+**次工程として追加実行中**：[S→Fだけを残した条件 vs 直接捕食すべてOFFの真正80年12seed](https://github.com/zuizui0223/frogcs/actions/runs/41199700200)。この検査は最初のS→F必要性結果を見た後の独立な十分性実験であり、結果が成功するまで十分性は主張しない。
+
+
 ## 2026-10-31: PR #152 — 生物率を1つだけ交換したときの分散救済の条件依存（12seed検証済み）
 
 [Draft PR #152](https://github.com/zuizui0223/frogcs/pull/152) / [12seed最終結果](RATE_AXIS_SELECTED_FOUR_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [全8率×双方向4seed結果](RATE_AXIS_ALL16_FOURSEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [80年16条件全実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41196851204) / [4率軸×追加8seed全実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197418760) / [12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197815433)。
