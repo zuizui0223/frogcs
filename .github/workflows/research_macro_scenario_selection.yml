@@ -10,6 +10,9 @@ on:
       - research/scripts/diagnose_macro_reversal_edge.py
       - research/scripts/diagnose_macro_scenario_information.py
       - research/scripts/test_diagnose_macro_scenario_information.py
+      - research/scripts/diagnose_monotone_observation_link.py
+      - research/scripts/test_diagnose_monotone_observation_link.py
+      - research/MACRO_NONNEGATIVE_OBSERVATION_LINK_PLAN_2026-10-31.md
       - research/MACRO_FIRST_SCENARIO_SELECTION_PROTOCOL_2026-10-31.md
       - .github/workflows/research_macro_scenario_selection.yml
   workflow_dispatch:
@@ -114,6 +117,36 @@ jobs:
           assert c.n_visits.gt(0).all()
           print('INFORMATION AUDIT OK: 24 scenarios x 2 backgrounds; exact CV score replay; positive 506/zero 3742')
           PY
+      - name: Validate assumed nonnegative cohort-to-calling observation link
+        run: python -m unittest discover -s research/scripts -p 'test_diagnose_monotone_observation_link.py' -v
+      - name: Rerun fixed chosen scenarios with nonnegative link only
+        run: python -u research/scripts/diagnose_monotone_observation_link.py --run
+      - name: Audit unchanged candidate identities and score support
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/macro_scenario_selection_20261031/monotone_link_sensitivity')
+          a=pd.read_csv(p/'selected_fold_link_sign_sensitivity.csv')
+          b=pd.read_csv(p/'nonnegative_link_heldout_scores.csv')
+          assert len(a)==10 and len(b)==30
+          assert a.nonnegative_standardized_slope.ge(0).all()
+          assert b[b.vegetation_support=='V_positive'].n_sites.eq(506).all()
+          assert b[b.vegetation_support=='V_zero'].n_sites.eq(3742).all()
+          print('NONNEGATIVE LINK SENSITIVITY OK',int(a.coefficient_at_boundary.sum()),'of 10 zero slopes')
+          PY
+      - name: Print exact diagnostic CSV values for durable audit
+        run: |
+          for f in \
+            information_diagnostic/scenario_information.csv \
+            information_diagnostic/selected_fold_mechanism_slopes.csv \
+            information_diagnostic/vegetation_stratified_heldout_scores.csv \
+            information_diagnostic/reversal_surface_identity.csv \
+            monotone_link_sensitivity/selected_fold_link_sign_sensitivity.csv \
+            monotone_link_sensitivity/nonnegative_link_heldout_scores.csv; do
+            echo "===== $f ====="
+            cat "research/results/macro_scenario_selection_20261031/$f"
+          done
       - name: Archive all site-level predictions and methodological receipts
         if: always()
         uses: actions/upload-artifact@v4
