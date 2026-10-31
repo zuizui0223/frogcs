@@ -170,6 +170,52 @@ def bootstrap_observed(y,design,groups,n_boot=N_BOOT,seed=SEED):
                              covariance_condition=float(np.linalg.cond(cov)))
 
 
+def bootstrap_heldout(y,design,spatial_blocks,n_boot=N_BOOT,seed=SEED):
+    """Observed-only spatial bootstrap for four patterns not used for ranking.
+
+    Whole spatial blocks (containing whole routes) are resampled, while global
+    predictor/response ranks and original within-route centers stay fixed.
+    """
+    x=design["x"][:,1:];y=rankz(y)
+    route=design["route_group"];nroute=int(route.max()+1)
+    count=np.bincount(route)
+    xm=np.zeros((nroute,7));np.add.at(xm,route,x)
+    xcenter=x-xm[route]/count[route,None]
+    ys=np.bincount(route,weights=y)
+    ycenter=y-ys[route]/count[route]
+    gid,_=pd.factorize(spatial_blocks,sort=True);k=int(gid.max()+1)
+    xx=np.zeros((k,7,7));xy=np.zeros((k,7))
+    np.add.at(xx,gid,xcenter[:,:,None]*xcenter[:,None,:])
+    np.add.at(xy,gid,xcenter*ycenter[:,None])
+    moments={}
+    for name in ("V_zero","V_positive"):
+        mask=design["masks"][name];o=design["o"][mask];yy=y[mask]
+        z=np.column_stack([np.ones(mask.sum()),o,yy,o*o,yy*yy,o*yy])
+        g=np.zeros((k,6))
+        np.add.at(g,gid[mask],z)
+        moments[name]=g
+    rng=np.random.default_rng(seed+137)
+    weights=rng.multinomial(k,np.repeat(1/k,k),size=n_boot)
+    out=[]
+    for w in weights:
+        A=np.einsum("b,bij->ij",w,xx)
+        if np.linalg.matrix_rank(A)<7:continue
+        beta=np.linalg.solve(A,w@xy)
+        cc=[]
+        valid=True
+        for name in ("V_zero","V_positive"):
+            n,sx,sy,sxx,syy,sxy=w@moments[name]
+            if n<4:valid=False;break
+            vx=sxx-sx*sx/n;vy=syy-sy*sy/n
+            if vx<=1e-10 or vy<=1e-10:valid=False;break
+            cc.append(float((sxy-sx*sy/n)/np.sqrt(vx*vy)))
+        if valid:out.append([cc[0],cc[1],beta[3],beta[4]])
+    result=np.asarray(out)
+    if result.shape[0]<.9*n_boot or result.shape[1]!=len(HOLDOUT):
+        raise ValueError("Insufficient independent spatial support for heldout pattern CI")
+    return result
+
+
 def site_response(d,background,grid,warps=(1.,1.)):
     """Look up the saved F_B cell using only *predictor* rank mappings."""
     o=d[f"mean_suitability_Odonata_{background}"].to_numpy(float)
@@ -269,7 +315,7 @@ def recovery_matrix(d,background,design,surfaces,equivalence,reference,inverse_c
     return pd.DataFrame(rows)
 
 
-def pattern_assessment(d,background,design,surfaces,observed,holdobs,inv,observed_draw):
+def pattern_assessment(d,background,design,surfaces,observed,holdobs,inv,observed_draw,holdout_draw=None):
     rows=[]
     obs_ci=np.quantile(observed_draw,[.025,.975],axis=0)
     pattern_sds=observed_draw.std(axis=0,ddof=1)
@@ -287,6 +333,14 @@ def pattern_assessment(d,background,design,surfaces,observed,holdobs,inv,observe
         for i,name in enumerate(HOLDOUT):
             row["model_holdout_"+name]=float(hold[i])
             row["obs_holdout_"+name]=float(holdobs[i])
+        if holdout_draw is not None:
+            lo,hi=np.quantile(holdout_draw,[.025,.975],axis=0)
+            match=(hold>=lo)&(hold<=hi)
+            row["heldout_patterns_within_95"]=int(match.sum())
+            for i,name in enumerate(HOLDOUT):
+                row["holdout_within_95_"+name]=bool(match[i])
+                row["holdout_low_"+name]=float(lo[i])
+                row["holdout_high_"+name]=float(hi[i])
         rows.append(row)
     return pd.DataFrame(rows)
 
@@ -310,7 +364,9 @@ def run(n_reference=N_REFERENCE_PER_CASE,n_pseudo=N_PSEUDO_PER_CASE):
         compare_frozen_macro(o,bg)
         boot,cov,inv,diagnostics=bootstrap_observed(obs,design,d.spatial_block,
                                                      n_boot=N_BOOT,seed=SEED)
-        measured=pattern_assessment(d,bg,design,surfaces,o,h,inv,boot)
+        heldboot=bootstrap_heldout(obs,design,d.spatial_block,n_boot=N_BOOT,seed=SEED)
+        measured=pattern_assessment(d,bg,design,surfaces,o,h,inv,boot,
+                                    holdout_draw=heldboot)
         for row in measured.to_dict("records"):
             row["equivalence_group"]=eq[row["case"]]
             result.append(row)
@@ -333,6 +389,9 @@ def run(n_reference=N_REFERENCE_PER_CASE,n_pseudo=N_PSEUDO_PER_CASE):
         libraries.append(library)
         boot_df=pd.DataFrame(boot,columns=PATTERNS);boot_df["background"]=bg
         bootall.append(boot_df)
+        heldboot_df=pd.DataFrame(heldboot,columns=HOLDOUT)
+        heldboot_df["background"]=bg
+        heldboot_df.to_csv(OUT/("heldout_bootstrap_"+bg+".csv"),index=False)
         for name,value in zip(HOLDOUT,h):
             holdouts.append(dict(background=bg,pattern=name,observed=value,
                                  status="NOT_USED_FOR_PATTERN_SELECTION"))
