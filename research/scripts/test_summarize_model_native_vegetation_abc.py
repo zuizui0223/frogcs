@@ -78,6 +78,27 @@ class PlantABCAggregatorTests(unittest.TestCase):
             rawsumm.plant_axis=="litter","mean_acceptance_gain"].iloc[0]),1.)
         self.assertTrue(np.isfinite(raw[["gain_acceptance","delta_beta_OS"]]).all().all())
 
+
+    def test_256_bootstrap_uses_the_entire_rate_draw_index_not_just_first64(self):
+        # Regression test: if the old hardcoded 0..63 bootstrap index is used,
+        # a group with early 64 acceptances is spuriously assigned rate 1
+        # instead of the real 64/256, and the CI misses the point estimate.
+        sections=[self.ref.assign(draw=self.ref.draw+64*i)
+                  for i in range(4)]
+        full=pd.concat(sections,ignore_index=True)
+        mask=(full.plant_model=="SF1_DF0_DS0_L1")&(full.risk==False)
+        full.loc[mask,"matches_log"]=(full.loc[mask,"draw"]<64)
+        table,_=bootstrap_abc(full,n_boot=399,n=256)
+        row=table[(table.scale=="log")&
+                  (table.plant_model=="SF1_DF0_DS0_L1")&
+                  (table.risk==False)]
+        self.assertEqual(len(row),1)
+        x=row.iloc[0]
+        self.assertAlmostEqual(x.acceptance,.25)
+        self.assertLess(x.acceptance_boot_ci_low,.25)
+        self.assertGreater(x.acceptance_boot_ci_high,.25)
+        self.assertLess(x.acceptance_boot_ci_high,.40)
+
     def test_lost_partner_is_fatal_not_silently_averaged(self):
         r=self.ref.iloc[:-1]
         with self.assertRaises((AssertionError,ValueError)):
