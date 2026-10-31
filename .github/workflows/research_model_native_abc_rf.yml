@@ -138,11 +138,16 @@ jobs:
           assert len(confusion)==12*12*3
           assert r.n_actual_simulations.eq(512).all()
           assert r.n_process_rate_draws.eq(256).all()
-          assert params.n_actual_priors.eq(512).all()
+          assert params.n_actual_priors.eq(256).all()
+          assert params.n_independent_accepted_rate_draws.between(0,256).all()
+          assert r.n_unique_accepted_rate_draws.between(0,256).all()
+          assert r.acceptance_ci_low.le(r.acceptance_rate).all()
+          assert r.acceptance_ci_high.ge(r.acceptance_rate).all()
           assert r.groupby('scale').n_accepted.sum().ge(0).all()
           assert r.groupby('scale').conditional_abc_model_share.sum().between(.999999,1.000001).all() or r.n_accepted.sum()==0
           assert clf.prior_oob_error.between(0,1).all()
           assert clf.holdout_model_accuracy.between(0,1).all()
+          assert clf.independent_rf_training_units.eq(12*256).all()
           assert clf.conditional_rf_selected_class_support.between(0,1).all()
           assert confusion.groupby(['scale','true_structure']).fraction.sum().between(.999999,1.000001).all()
           assert int(eq.groupby('scale').n_structures.sum().min())==12
