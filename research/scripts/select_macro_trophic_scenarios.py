@@ -175,7 +175,7 @@ def predictor_design(d,background,scenario_values):
     return all_design
 
 
-def fit_predict(x_train,k_train,n_train,x_test):
+def fit_predict(x_train,k_train,n_train,x_test,return_mechanism_slope=False):
     """Regularized site-binomial observation link; train means and SD from train."""
     mu=x_train.mean(axis=0);sd=x_train.std(axis=0)
     keep=sd>1e-11
@@ -193,8 +193,14 @@ def fit_predict(x_train,k_train,n_train,x_test):
     opt=minimize(objective,init,method="L-BFGS-B",jac=True,options={"maxiter":400,"ftol":1e-11})
     if not opt.success and np.linalg.norm(opt.jac,ord=np.inf)>.1:
         raise RuntimeError("Binomial fit failed: "+str(opt.message))
-    p=expit(xt@opt.x)
-    return np.clip(p,1e-10,1-1e-10)
+    p=np.clip(expit(xt@opt.x),1e-10,1-1e-10)
+    if return_mechanism_slope:
+        # The last input column is log(F_B) in the mechanism-only designs.
+        # A removed zero-variance predictor has no identifiable slope.
+        if not keep[-1]:
+            return p,float("nan")
+        return p,float(opt.x[-1])
+    return p
 
 
 def neglog(k,n,p):
