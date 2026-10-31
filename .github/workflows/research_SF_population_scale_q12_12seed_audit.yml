@@ -1,0 +1,50 @@
+name: Frogcs independently audit original q3 and true q12 80year 12seed SF predation
+
+on:
+  push:
+    branches:
+      - research/SF-predation-population-scale-20261031
+    paths:
+      - .github/workflows/research_SF_population_scale_q12_12seed_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-original-source-count-and-population-scale-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OLD_RUN: '41200093960'
+      OLD_ARTIFACT: frogcs-SF-only-and-all-trophic-edges-off-12seed-verified
+      NEW_RUN: '41201004560'
+      OLD_DIR: research/results/SF_predation_population_scale_q12_20261031/pr153_old_q3
+      NEW_DIR: research/results/SF_predation_population_scale_q12_20261031/q12_genuine_24shards
+      OUT_DIR: research/results/SF_predation_population_scale_q12_20261031/verified_audit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download immutable actual original q3 PR153 12seed source, not resimulated
+        run: |
+          mkdir -p "$OLD_DIR"
+          gh run download "$OLD_RUN" --repo "${{ github.repository }}" --name "$OLD_ARTIFACT" --dir "$OLD_DIR"
+      - name: Download all 24 genuine q12 source trajectories and integer reoccupation ledgers
+        run: |
+          mkdir -p "$NEW_DIR"
+          gh run download "$NEW_RUN" --repo "${{ github.repository }}" --pattern "frogcs-q12-SF-source-*" --dir "$NEW_DIR"
+      - name: Audit all source factors, source replay, true 0-to-positive events, right censor and 12seed stage effects
+        run: python research/scripts/audit_SF_predation_q3_q12_12seed.py --q3-source "$OLD_DIR" --q12-shards "$NEW_DIR" --out "$OUT_DIR"
+      - name: Save source-verified q3 versus q12 ecological sensitivity report and all outcomes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-80y-SF-predation-q3-vs-q12-12seed-audited
+          path: research/results/SF_predation_population_scale_q12_20261031/verified_audit/
+          if-no-files-found: warn
+          retention-days: 30
