@@ -1,0 +1,77 @@
+name: Frogcs S larva/adult rate-matched stage POM audit
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/scripts/summarize_equal_rate_S_stage_dispersal.py
+      - research/scripts/test_summarize_equal_rate_S_stage_dispersal.py
+      - .github/workflows/research_equal_rate_S_stage_summary.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  four-rate-stage-evidence-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Test paired S-stage-by-rate algebra and complete four independent stochastic seeds
+        run: python -m unittest discover -s research/scripts -p 'test_summarize_equal_rate_S_stage_dispersal.py' -v
+      - name: Download 32 actual source stochastic 20-year S-stage mobility trials in four physical stages
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41188431040
+          pattern: frogcs-equal-rate-S-stage-*-20y
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/equal_rate_S_stage_dispersal_20261031
+      - name: Match S adult versus larval rescue at EXACT identical per-capita stage diffusion coefficient
+        run: python -u research/scripts/summarize_equal_rate_S_stage_dispersal.py --run
+      - name: Verify all S parent/offspring stage-rate source trials and event censoring
+        run: |
+          python - <<'PY'
+          import json
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/equal_rate_S_stage_dispersal_20261031')
+          a=pd.read_csv(p/'equal_rate_S_stage_all_seed_guild.csv')
+          st=pd.read_csv(p/'equal_rate_S_stage_paired_stage_effects.csv')
+          ra=pd.read_csv(p/'equal_rate_S_stage_paired_rate_effects.csv')
+          inter=pd.read_csv(p/'equal_rate_S_stage_rate_interaction.csv')
+          summary=pd.read_csv(p/'equal_rate_S_stage_effect_summary.csv')
+          rc=json.loads((p/'equal_rate_S_stage_comparison_receipt.json').read_text())
+          assert len(a)==4*2*4*3 and len(st)==16 and len(ra)==16
+          assert len(inter)==8 and len(summary)==10
+          assert a.groupby(['mobility','reverse','guild']).seed.nunique().eq(4).all()
+          assert (a.n_two_year_followup_eligible+a.n_return_events_right_censored_at_2years==a.n_recolonizations).all()
+          assert a.n_two_year_retained.le(a.n_two_year_followup_eligible).all()
+          assert summary.n_stochastic_seed_pairs.eq(4).all()
+          assert rc['n_new_actual_20y_model_arms']==32
+          assert rc['equal_diffusion_does_not_imply_equal_realized_migrant_flux']
+          print('EQUAL_S_STAGE_FOUR_RATE_PAIRED_SOURCE_AUDIT_SUCCESS',len(a),'seed/guild stage-rate records')
+          PY
+      - name: Print complete 20-year stage and rate effects
+        run: |
+          for file in equal_rate_S_stage_effect_summary.csv equal_rate_S_stage_all_seed_guild.csv; do
+            echo "===== $file ====="
+            cat "research/results/equal_rate_S_stage_dispersal_20261031/$file"
+          done
+      - name: Preserve all equal-per-capita modeled S movement, true parent genealogy, rate and contrast receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-S-larva-adult-equal-rate-mobility-pom-20261031
+          path: research/results/equal_rate_S_stage_dispersal_20261031/
+          if-no-files-found: warn
+          retention-days: 30
