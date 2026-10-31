@@ -1,0 +1,173 @@
+name: Frogcs genuine 80-year 2x2x2 directional ABC-RF
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MODEL_NATIVE_DIRECTIONAL_ABC_RF_PROTOCOL_2026-10-31.md
+      - research/scripts/model_native_2x2x2_prior.py
+      - research/scripts/test_model_native_2x2x2_prior.py
+      - research/scripts/model_native_abc_rf.py
+      - research/scripts/test_model_native_abc_rf.py
+      - .github/workflows/research_model_native_abc_rf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin stage-network and scikit-learn versions
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Test exact original demographic recursion and eight factorial treatments
+        run: python -m unittest discover -s research/scripts -p 'test_model_native_2x2x2_prior.py' -v
+      - name: Test ABC-RF two-stage OOB error, sign ABC acceptance and rate-draw holdout
+        run: python -m unittest discover -s research/scripts -p 'test_model_native_abc_rf.py' -v
+
+  actual-seasonal-annual-prior:
+    needs: tests
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        context: [original, D_first_S_overtakes, S_first_D_overtakes]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned actual model dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Replay original 24 source mechanisms before 256 true rate draws per each of four models
+        run: |
+          python -u research/scripts/model_native_2x2x2_prior.py --run \
+              --context ${{ matrix.context }} --draws 256
+      - name: Audit 80-year source replay, exact reverse pairs and 2x2x2 four signed interactions
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          import pandas as pd
+          name=os.environ['CONTEXT']
+          p=Path('research/results/model_native_abc_rf_20261031')
+          r=pd.read_csv(p/(name+'_prior_predictive_reference.csv.gz'))
+          prior=pd.read_csv(p/(name+'_parameter_draws.csv'))
+          pair=pd.read_csv(p/(name+'_reverse_edge_signature_pairs.csv'))
+          anchor=pd.read_csv(p/(name+'_anchor_24_corner_replay.csv'))
+          doc=json.loads((p/(name+'_receipt.json')).read_text())
+          assert len(r)==4*256*2 and len(prior)==256 and len(pair)==4*256 and len(anchor)==192
+          assert r.groupby('structure_id').size().eq(2*256).all()
+          assert r.groupby(['structure_id','draw']).reverse_on.nunique().eq(2).all()
+          assert r[['min_F_B','max_F_B']].gt(0).all().all()
+          assert prior.f_delay.value_counts().to_dict()=={2:128,3:128}
+          assert doc['original_source_replay_max_error']['F_B']<=1e-8
+          assert doc['original_source_replay_max_error']['F_fraction']<=1e-8
+          assert doc['n_source_vertices']==4*256*2*8
+          print('GENUINE_80Y_PRIOR_FACTORIAL_CONTEXT_SUCCESS',name,2048,'model/reverse/rate replicates')
+          PY
+        env:
+          CONTEXT: ${{ matrix.context }}
+      - name: Print all structural-model four-sign acceptances, no filtering
+        run: |
+          cat research/results/model_native_abc_rf_20261031/${{ matrix.context }}_source_run_diagnostics.csv
+      - name: Preserve full 80-year parameter-realized prior source, matched reversal pairs and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-native-abc-prior-${{ matrix.context }}-20261031
+          path: research/results/model_native_abc_rf_20261031/
+          if-no-files-found: warn
+          retention-days: 30
+
+  infer-conditional-model-choice:
+    needs: actual-seasonal-annual-prior
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned model choice dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Collect all 12 structural classes, with true 80-year outputs and 50/50 reversal nuisances
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-native-abc-prior-*-20261031
+          merge-multiple: true
+          path: research/results/model_native_abc_rf_20261031
+      - name: Calculate exact four-sign ABC, conditional class probabilities and two-stage OOB ABC-RF
+        run: python -u research/scripts/model_native_abc_rf.py --run
+      - name: Verify balanced prior, 16-pattern capacity, RF prior error, actual parameter marginal tables
+        run: |
+          python - <<'PY'
+          import json
+          import numpy as np
+          import pandas as pd
+          from pathlib import Path
+          root=Path('research/results/model_native_abc_rf_20261031')
+          r=pd.read_csv(root/'abc_rejection_model_acceptance.csv')
+          params=pd.read_csv(root/'posterior_parameter_ranges.csv')
+          clf=pd.read_csv(root/'abc_rf_model_choice.csv')
+          confusion=pd.read_csv(root/'abc_rf_holdout_confusion.csv')
+          eq=pd.read_csv(root/'sign_fingerprint_equivalence.csv')
+          receipt=json.loads((root/'abc_rf_receipt.json').read_text())
+          assert len(r)==12*3 and len(params)==12*3*8 and len(clf)==3
+          assert len(confusion)==12*12*3
+          assert r.n_actual_simulations.eq(512).all()
+          assert r.n_process_rate_draws.eq(256).all()
+          assert params.n_actual_priors.eq(512).all()
+          assert r.groupby('scale').n_accepted.sum().ge(0).all()
+          assert r.groupby('scale').conditional_abc_model_share.sum().between(.999999,1.000001).all() or r.n_accepted.sum()==0
+          assert clf.prior_oob_error.between(0,1).all()
+          assert clf.holdout_model_accuracy.between(0,1).all()
+          assert clf.conditional_rf_selected_class_support.between(0,1).all()
+          assert confusion.groupby(['scale','true_structure']).fraction.sum().between(.999999,1.000001).all()
+          assert int(eq.groupby('scale').n_structures.sum().min())==12
+          assert receipt['actual_model_simulations']==6144
+          print('ACTUAL_80Y_2X2X2_ABC_RF_SUCCESS',len(r),
+                'equal structural priors, 6144 full-demography samples')
+          PY
+      - name: Show exact POM acceptance, RF selected-class support and confusion error
+        run: |
+          for file in abc_rejection_model_acceptance.csv abc_rf_model_choice.csv sign_fingerprint_equivalence.csv; do
+            echo "===== $file ====="
+            cat "research/results/model_native_abc_rf_20261031/$file"
+          done
+          echo '===== accepted parameter ranges (top 20) ====='
+          python - <<'PY'
+          import pandas as pd
+          p='research/results/model_native_abc_rf_20261031/'
+          x=pd.read_csv(p+'posterior_parameter_ranges.csv')
+          print(x[(x.scale=='log')&(x.n_enough_for_interpretation)].head(20).to_csv(index=False))
+          PY
+      - name: Keep full simulated rate priors, literal ABC, OOB RF confusion, posterior marginals and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-genuine-80y-native-four-sign-abc-rf-20261031
+          path: research/results/model_native_abc_rf_20261031/
+          if-no-files-found: warn
+          retention-days: 30
