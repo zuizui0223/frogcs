@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           run-id: 41168203797
-          name: frogcs-R2-calibrated-POM-all-family-summary-20261031
+          name: frogcs-r2-matched-final-audited-six-family-summary
           github-token: ${{ github.token }}
           path: research/results/macro_r2_matched_directional_20261031
       - name: Compare iid versus .25 arbitrary block versus measured NAAMP residual ICC
