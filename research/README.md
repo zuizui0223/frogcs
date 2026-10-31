@@ -1,5 +1,8 @@
 # 現行研究の入口
 
+2026-10-31の追加検査（[研究PR #145](https://github.com/zuizui0223/frogcs/pull/145)）では、既存の三群シミュレーション出力をNAAMPの**強発声頻度**へ接続し、4,248地点・63,180調査の空間ブロック外予測で競合環境モデルと比較した。[固定比較の結果](ACOUSTIC_BRIDGE_FIRST_REAL_DATA_RESULT_2026-10-31.md)および[探索的な置換比較](ACOUSTIC_BRIDGE_EXPLORATORY_EMPIRICAL_RESULT_2026-10-31.md)では、**両背景で環境モデルを明確に上回る機構候補は確認できなかった**。予測プログラムは[acoustic_mechanism_cv.py](scripts/acoustic_mechanism_cv.py)、小さな根拠表は[acoustic_bridge_20261031](results/acoustic_bridge_20261031/)。これは野外機構の因果同定・観測校正ではなく、最良モデルの主張は保留する。
+
+
 実地点との照合：[相殺条件と4,248地点の植生文脈](manuscript/MECHANISM_SITE_CONFRONTATION_2026-10-29.md)。景観植生で検査できる部分と、未測定の発生段階を分けています。
 
 機構診断：[有尾類作用の相殺・時間的条件・順位化](manuscript/WEAK_THIRD_GUILD_MECHANISM_DIAGNOSIS_2026-10-29.md)。固定モデルの27対照条件と季節内の危険分解を追加しました。
