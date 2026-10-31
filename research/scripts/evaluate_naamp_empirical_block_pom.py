@@ -62,7 +62,7 @@ def evaluate(family,cal=16,n_eval=N_EVAL_COMPARE,out=OUT,icc_path=SOURCE):
         raise AssertionError("NAAMP original observation ledger changed")
     icc=read_icc(icc_path)
     grids,labels,alias,groups,provenance=source_families(family)
-    rows=[];summary=[];observations=[]
+    rows=[];label_rows=[];summary=[];observations=[]
     for bg in BACKGROUNDS:
         context=observed_context(site,bg)
         ref=icc.loc[bg]
@@ -125,6 +125,11 @@ def evaluate(family,cal=16,n_eval=N_EVAL_COMPARE,out=OUT,icc_path=SOURCE):
                          "delta_V_positive_minus_zero","O_with_S_low"][j]
                         for j in context["selected"]))
                 rows.append(row)
+                for case in members:
+                    label_rows.append(dict(**row,model_label=case,
+                                           case=labels[case]["case"],
+                                           rate_draw=labels[case]["rate_draw"],
+                                           hypothesis=labels[case]["hypothesis"]))
                 if idx%40==0:
                     print("EMPIRICAL_ICC_POM",family,bg,mode,idx+1,"of",len(groups),
                           "icc",round(correlation,6),
@@ -156,12 +161,16 @@ def evaluate(family,cal=16,n_eval=N_EVAL_COMPARE,out=OUT,icc_path=SOURCE):
                                     n_source_groups=len(groups),n_r2_matched=0,
                                     n_r2_not_matched=len(groups),
                                     status="ALL_NOISE_R2_UNREACHABLE"))
-    score=pd.DataFrame(rows);summ=pd.DataFrame(summary);ob=pd.DataFrame(observations)
-    if len(score)!=len(groups)*len(BACKGROUNDS)*len(MODES) or len(summ)!=4 or len(ob)!=10:
+    score=pd.DataFrame(rows);labels_df=pd.DataFrame(label_rows)
+    summ=pd.DataFrame(summary);ob=pd.DataFrame(observations)
+    if (len(score)!=len(groups)*len(BACKGROUNDS)*len(MODES)
+        or len(labels_df)!=len(grids)*len(BACKGROUNDS)*len(MODES)
+        or labels_df.duplicated(["background","mode","model_label"]).any()
+        or len(summ)!=4 or len(ob)!=10):
         raise AssertionError("Incomplete empirical ICC source/background/mode matrix")
     # Exact-source groups must be identified even when scenario labels repeat.
-    for name,df in [("source_group_scores",score),("family_summary",summ),
-                    ("observed_icc_and_patterns",ob)]:
+    for name,df in [("source_group_scores",score),("candidate_scores",labels_df),
+                    ("family_summary",summ),("observed_icc_and_patterns",ob)]:
         df.to_csv(out/(family+"_"+name+".csv"),index=False)
     allmatched=score[score.calibration_status.isin(MATCH)]
     intersection=[]
@@ -189,7 +198,7 @@ def evaluate(family,cal=16,n_eval=N_EVAL_COMPARE,out=OUT,icc_path=SOURCE):
     (out/(family+"_receipt.json")).write_text(json.dumps(record,indent=2)+"\n")
     print("EMPIRICAL_ICC_FAMILY_SUMMARY\n"+summ.to_string(index=False),flush=True)
     print("EMPIRICAL_ICC_BOTH_SDM_BACKGROUND\n"+both.to_string(index=False),flush=True)
-    return dict(scores=score,summary=summ,observed=ob,both=both)
+    return dict(scores=score,labels=labels_df,summary=summ,observed=ob,both=both)
 
 
 def main():
