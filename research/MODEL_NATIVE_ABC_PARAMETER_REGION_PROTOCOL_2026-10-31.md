@@ -1,0 +1,26 @@
+# Model-native conditional ABC: prior-to-accepted biological parameter regimes and matched refuge effect
+
+**Status:** post-result parameter inference within the **already successfully executed** genuine seasonal 120d + delayed annual 80-year source simulator. No simulator reruns or prior retuning. Inputs are three immutable successful GitHub Actions artifacts from [run 41178134567](https://github.com/zuizui0223/frogcs/actions/runs/41178134567) plus source SHA receipts.
+
+## Rationale
+
+Four corrected `main` environment-unadjusted target signs (OS−, OV−, SV+, OSV+) and the model's exact 2×2×2 source factorial identify **which structures tend to generate** the sign quartet under declared hypothetical priors. Main `log(F_B)` conditional ABC evidence from 256 matched rate draws per class found original timing+baseline handling+refuge OFF: 65 independent accepted draws / 256 (25.39%), refuge ON: 48/256 (18.75%). Because ON/OFF *reverse predation* pairs share a rate vector and had identical acceptance states, these are **not 130 and 96 independent successes**.
+
+The next question is the positive conditional biological parameter region: *which actual simulated parameter values produce the quartet, and how does switching the already-implemented behavioral refuge change acceptance at the identical parameter draw?*
+
+## Fixed analysis before reading accepted-prior quartiles
+
+- Include all **12 structural classes** for acceptance tally, especially both original-baseline structures; use the actual 256 shared independent LHS draws per class from `original_parameter_draws.csv` and actual `original_prior_predictive_reference.csv.gz`.
+- All 8 documented prior axes (attack scale, S growth multiplier, D growth multiplier, rho, conversion, F juvenile survival, F adult survival, F maturation 2/3 years). Their **numeric ranges are illustrative, not independently calibrated**.
+- For every `structure_id × draw`, integrate the two matched reverse-predation ON/OFF states with equal 1/2 prior weight. This creates one independent *rate-draw-level* observation `accepted_weight = (I_off + I_on)/2`. Preserve discordance if any (do not assume equality on all future datasets).
+- Determine each continuous variable's **four quartile bins using the original 256-draw prior ranks** with exactly 64 draws in each bin, not fitted thresholds from the 65 accepted draws. For maturation, use its two original prior levels (128 each). For every class×variable×bin, sum accepted_weight, divide by original 64 or 128 prior draws, and compute ratio relative to the class-level unconditional accepted rate. Report accepted weighted effective count, median prior and accepted q10/50/90, monotone increasing/decreasing bin pattern (descriptive), and preserve zero/low-n bins rather than multiplying them away.
+- Report log main; raw F_B **predeclared scale sensitivity**. Do not choose an ecological label after seeing which parameter is favorable. An across-bin association can reflect correlated survival/recruitment and nonlinear simulator interactions, not an estimated causal parameter effect.
+- For a matched **risk0 vs risk1** test within the original timing × baseline handling, report the 256 true draws as four paired categories: both pass / only refuge OFF passes / only refuge ON passes / neither passes. This is more defensible than treating the same 256 parameter vectors as two unrelated binomial experiments. For the 256 original LHS rows, bootstrap the draw IDs 999 times (reapplying one sampled ID simultaneously to both risks) for the risk0−risk1 acceptance-rate difference and the shared-class target acceptance. Never count paired reversal edges as independent.
+- Compare relative support of stage timing, handling and refuge aggregated over classes under 1/12 equal structure prior, but retain the already audited [higher-level paired prior intervals](results/model_native_abc_rf_20261031/paired_prior_higher_level_intervals.csv). No new posterior from model RF vote share.
+- **Identifiability gate:** retain RF holdout accuracy ~0.223 versus random 1/12 and the fact that only 4 signs give a coarse classification. A parameter region is **conditional on the chosen structure**, not proof that the structure is true.
+
+## Acceptance/caveats
+
+A result may state “within this numerical prior and these twelve model types, a lower attack multiplier / higher F survival / etc. was more frequently present among 4-direction matches,” only if the real source-backed table shows the enrichment. Do not conflate F_B (water-year-start aquatic frog cohort) with observed adult calling males or claim species-general predation rates. Posterior distributions and exact ABC class shares are conditional on assumptions already selected with awareness of NAAMP; no independent field causal validation, no calibrated ecological model posterior.
+
+Outputs: `prior_quartile_acceptance.csv`, `prior_enrichment_summary.csv`, `matched_refuge_draw_outcomes.csv`, `paired_risk_acceptance.csv`, full source SHA256 receipt. Run using GitHub Actions, add focused CI tests and report both positive conditional findings and remaining uncertainty to PR #146. Original `main`, PR #144/#145 and original seasonal/annual kernel unchanged.
