@@ -81,7 +81,7 @@ def class_draw_matrix(x,scale,n=N_DRAWS):
 
 def bootstrap_abc(x,n_boot=BOOT,n=N_DRAWS):
     rng=np.random.default_rng(SEED)
-    ix=rng.integers(0,N_DRAWS,size=(n_boot,n))
+    ix=rng.integers(0,n,size=(n_boot,n))
     records=[];marginal=[]
     classes=x[["structure_id","plant_model","risk",
                "cover_SF","cover_DF","cover_DS","litter"]].drop_duplicates()
