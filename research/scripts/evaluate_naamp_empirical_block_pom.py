@@ -166,7 +166,7 @@ def evaluate(family,cal=16,n_eval=N_EVAL_COMPARE,out=OUT,icc_path=SOURCE):
     allmatched=score[score.calibration_status.isin(MATCH)]
     intersection=[]
     for mode in MODES:
-        q=allmatched[(allmatched.mode==mode)&(allmatched.modal_complete_count>0)]
+        q=allmatched[(allmatched['mode']==mode)&(allmatched.modal_complete_count>0)]
         x=q.groupby("source_group").background.nunique()
         both=sorted(x[x==2].index)
         intersection.append(dict(family=family,mode=mode,
