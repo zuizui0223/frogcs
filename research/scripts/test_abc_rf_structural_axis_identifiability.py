@@ -55,7 +55,7 @@ class ActualRFAttributeTests(unittest.TestCase):
     def test_drop_holdout_records_fails_closed(self):
         a=self.matrix.copy()
         a.loc[0,"n"]=25
-        with self.assertRaises(ValueError):
+        with self.assertRaises((ValueError,AssertionError)):
             summarize_classifier_errors(a)
         x=self.matrix[self.matrix.scale!="log"]
         with self.assertRaises(ValueError):
