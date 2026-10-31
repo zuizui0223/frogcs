@@ -215,8 +215,9 @@ def conditional_abc(reference,observed,inverse_cov,accept_fraction=ACCEPT_FRACTI
     accepted["distance_squared"]=d2[ordered]
     # Equal prior for exact-source equivalence classes, *not case counts*.
     total=reference.groupby("equivalence_group").size()
-    mass=(accepted.groupby("equivalence_group").size()/total).reindex(
-        total.index,fill_value=0.).astype(float)
+    accepted_counts=accepted.groupby("equivalence_group").size().reindex(
+        total.index,fill_value=0)
+    mass=(accepted_counts/total).astype(float)
     if mass.sum()<=0:raise AssertionError("No accepted model")
     mass/=mass.sum()
     return mass,accepted,float(np.max(d2[ordered])),float(np.min(d2))
