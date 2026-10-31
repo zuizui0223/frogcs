@@ -1,0 +1,44 @@
+name: Frogcs audit 12seed stage-plant rescue direction intervals
+
+on:
+  push:
+    branches:
+      - research/finite-n-stage-bridge-20261031
+    paths:
+      - .github/workflows/research_finite_n_stage_plant_seed_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  twelve-seed-conditional-ontogeny-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41193107034'
+      SOURCE_NAME: frogcs-finite-n-80year-12seed-verified
+      SOURCE_DIR: research/results/finite_n_stage_bridge_20261031/source12
+      OUT_DIR: research/results/finite_n_stage_bridge_20261031/stage_plant_audit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'tabulate>=0.9,<1'
+      - name: Retrieve actual 12 independent source seed summary
+        run: |
+          mkdir -p "$SOURCE_DIR"
+          gh run download "$SOURCE_RUN" --repo "${{ github.repository }}" --name "$SOURCE_NAME" --dir "$SOURCE_DIR"
+      - name: Recalculate stage-order by vegetation effect conditional on seed
+        run: python research/scripts/audit_finite_n_stage_plant_12seed.py --source "$SOURCE_DIR/12seed_stage_plant_seed_deltas.csv" --out "$OUT_DIR"
+      - name: Save validated conditional intervals and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-finite-n-12seed-stage-plant-conditional-audit
+          path: research/results/finite_n_stage_bridge_20261031/stage_plant_audit/
+          retention-days: 30
+          if-no-files-found: warn
