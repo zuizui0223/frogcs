@@ -1,0 +1,90 @@
+name: Frogcs original-rate ABC-RF independent-draw uncertainty audit
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - .github/workflows/research_model_native_abc_rerun_from_source.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-immutable-abc-rf-inference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin scikit-learn and source numeric versions
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Check paired draw-confidence and RF deduplication synthetic invariants
+        run: python -m unittest discover -s research/scripts -p 'test_model_native_abc_rf.py' -v
+      - name: Download fully successful real 80y model-native source and original SHA receipts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41178134567
+          name: frogcs-genuine-80y-native-four-sign-abc-rf-20261031
+          github-token: ${{ github.token }}
+          path: research/results/model_native_abc_rf_20261031
+      - name: Rerun ABC acceptance confidence per 256 rate draws and deduplicated OOB classifier
+        run: python -u research/scripts/model_native_abc_rf.py --run
+      - name: Verify exact model source, corrected independent-parameter uncertainty, and honest 12-class errors
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          import json
+          from pathlib import Path
+          root=Path('research/results/model_native_abc_rf_20261031')
+          rate=pd.read_csv(root/'abc_rejection_model_acceptance.csv')
+          par=pd.read_csv(root/'posterior_parameter_ranges.csv')
+          rf=pd.read_csv(root/'abc_rf_model_choice.csv')
+          conf=pd.read_csv(root/'abc_rf_holdout_confusion.csv')
+          fingerprint=pd.read_csv(root/'sign_fingerprint_equivalence.csv')
+          receipt=json.loads((root/'abc_rf_receipt.json').read_text())
+          assert len(rate)==12*3 and len(par)==12*3*8 and len(rf)==3
+          assert len(conf)==12*12*3
+          assert rate.n_actual_simulations.eq(512).all()
+          assert rate.n_process_rate_draws.eq(256).all()
+          assert par.n_actual_priors.eq(256).all()
+          assert rate.acceptance_ci_low.le(rate.acceptance_rate).all()
+          assert rate.acceptance_ci_high.ge(rate.acceptance_rate).all()
+          assert par.n_independent_accepted_rate_draws.between(0,256).all()
+          assert rf.independent_rf_training_units.eq(12*256).all()
+          assert rf.n_reference_train.eq(12*204).all()
+          assert rf.n_reference_holdout.eq(12*52).all()
+          assert conf.groupby(['scale','true_structure']).fraction.sum().between(.999999,1.000001).all()
+          assert rate.groupby('scale').conditional_abc_model_share.sum().between(.999999,1.000001).all()
+          assert fingerprint.groupby('scale').n_structures.sum().eq(12).all()
+          assert receipt['actual_model_simulations']==6144
+          print('INDEPENDENT_RATE_DRAW_ABCRF_AUDIT_SUCCESS')
+          PY
+      - name: Print full corrected acceptance, class error and informative posterior-rate quantiles
+        run: |
+          for f in abc_rejection_model_acceptance.csv abc_rf_model_choice.csv sign_fingerprint_equivalence.csv; do
+            echo "===== $f ====="
+            cat "research/results/model_native_abc_rf_20261031/$f"
+          done
+          python - <<'PY'
+          import pandas as pd
+          x=pd.read_csv('research/results/model_native_abc_rf_20261031/posterior_parameter_ranges.csv')
+          x=x[(x.scale=='log')&(x.n_enough_for_interpretation)]
+          print('===== informative prior-to-accepted rate distributions =====')
+          print(x.to_csv(index=False))
+          PY
+      - name: Archive audited actual 80y model-choice posterior and original source receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-model-native-genuine-abc-rf-corrected-independent-rate-20261031
+          path: research/results/model_native_abc_rf_20261031/
+          if-no-files-found: warn
+          retention-days: 30
