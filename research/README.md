@@ -1,5 +1,27 @@
 # 現行研究の入口
 
+## 2026-10-31: 発生順序という表現の訂正・PR #150の単独因子分解
+
+[検証中のDraft PR #150](https://github.com/zuizui0223/frogcs/pull/150) / [事前固定した2×2設計](S_GROWTH_D_AQUATIC_DURATION_FACTORIAL_PROTOCOL_2026-10-31.md) / [再現テストSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41194747767)。
+
+**厳密な訂正：** #149で比較した original と D_first_S_overtakes は**ともにD登場0日、S登場20日**。相違するのはS成長率（0.014と0.030）とD水中期間（40日と60日）である。「到来順序だけを変えた」とは言えない。既報12seedの数値結果は変わらないが、解釈は「成長・水中滞在期間の複合変更で分散効果が反転した」に修正。両因子の単独効果・交互作用は、元の2条件を再利用し、欠けていた2条件だけ新しい80年シミュレーションで試験する。結果は本計算と独立監査が成功したときのみ採用する。
+
+
+## 2026-10-31: PR #149 の最新12seed主結果
+
+**最新の12seed主結果：** [検証済み80年・発生順序×植生×分散の独立12seed結論](FINITE_N_80YEAR_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [8新規実計算SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41192793427) / [元4seed＋新8seedの独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41193107034) / [発生順序・植物機能別12seed区間監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41193373502)。
+
+外部流入OFF・少数個体q3のFでは、年次移動あり−なしによる80年末の占有差は元の発生順序で **+3.79〜+4.60/8**、ヤゴ先行・有尾類が追い越す発生順序で **−0.19〜−0.29/8**（2植生機能、12独立seed）。**S成長率とD水中期間を同時に変更した複合設定で分散による空間維持の符号が逆転するモデル内結果**を真正元捕食カーネルと有限N導入により確認。外部流入OFF・q12のDでは移動による長期占有増加も再現したが、q3のDでは移動で再占有しても年80占有は0。いずれも仮想率・有限モデルの結果であり、野外における捕食・定着因果を直接推定したものではない。旧4seedレポートは履歴として保持し、科学的な主張は12seed版を優先する。
+
+## 2026-10-31: PR #149 — 有限個体の局所消失・再占有（独立Draft）
+
+[Draft PR #149](https://github.com/zuizui0223/frogcs/pull/149) / [事前仕様](FINITE_N_SOURCE_COHORT_BRIDGE_PROTOCOL_2026-10-31.md) / [20年方法試行と整数会計の成功CI](https://github.com/zuizui0223/frogcs/actions/runs/41191695453) / [80年4シャード実測・独立監査 SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41191851194) / [検証済み80年結果](FINITE_N_80YEAR_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [4seedブロック監査 SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41192574552)。
+
+PR #146/#148の120日季節内捕食モデルを変えず、源の80年成熟遅延・年次個体群方程式を**条件付き期待値**として保持し、Binomial季節完了・生残、Poisson局所加入・外部流入、整数総数保存の8パッチ移動を導入した。正真正銘のN=0→N>0を追跡し、外部流入／パッチ間移動／以前の幼生コホートの遅延加入を区別する。PR #147の別式の7段階UID ABMと同じ分散率・出生系譜ではない。
+
+20年方法試行は元F_B等3指標の数値差0、source/censoring tests SUCCESS、合成の0→正イベント26,935。3年追跡可能な23,075件のうち9,996件は3年度の占有継続＋その期間内の局所加入を伴う。しかしこれは多処理を合計した**合成イベント数**であり独立な野外サンプルではない。2年より長い観察が必要なのはF成熟2/3年のモデル仕様とも関係する。80年本解析は4 seed×q3/12×外部移入ON/OFF×4年次移動方式で**真正実行・独立監査SUCCESS**。モデル内の典型例は外部流入OFFのq3カエル（年80占有0.555→2.547/8）、q12トンボ（0.273→5.203/8）。4seedを独立ブロックとした方向チェックはどちらも4/4が正。反面q3トンボは移動後の局所再占有が増えても年80占有0/8であり、**再占有≠人口維持**。合成率・4seedという条件のもとでのモデル結果であり、実湿地における分散の効果を確定したものではない。
+
+
 ## 2026-10-31: PR #148 — source-locked 80年空間コホート比較
 
 [Draft PR #148](https://github.com/zuizui0223/frogcs/pull/148) / [実行済み80年結果](SPATIAL_COHORT_80Y_AUDITED_RESULT_2026-10-31.md) / [接続仕様](COMMON_KERNEL_SPATIAL_COHORT_BRIDGE_PROTOCOL_2026-10-31.md) / [成功した元モデル実行](https://github.com/zuizui0223/frogcs/actions/runs/41190618714) / [独立結果監査](https://github.com/zuizui0223/frogcs/actions/runs/41190816068)。

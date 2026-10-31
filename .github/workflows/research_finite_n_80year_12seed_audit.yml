@@ -1,0 +1,50 @@
+name: Frogcs combine first4 and eight NEW 80y finite-N seeds
+
+on:
+  push:
+    branches:
+      - research/finite-n-stage-bridge-20261031
+    paths:
+      - .github/workflows/research_finite_n_80year_12seed_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-original-and-new-eight-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_RUN: '41191851194'
+      ORIGINAL_NAME: frogcs-finite-n-80y-verified-integrated
+      EXTRA_RUN: '41192793427'
+      ORIGINAL_DIR: research/results/finite_n_stage_bridge_20261031/source4
+      EXTRA_DIR: research/results/finite_n_stage_bridge_20261031/extra8
+      OUT_DIR: research/results/finite_n_stage_bridge_20261031/audited12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Fetch original exact 4-seed completed 80-year source
+        run: |
+          mkdir -p "$ORIGINAL_DIR"
+          gh run download "$ORIGINAL_RUN" --repo "${{ github.repository }}" --name "$ORIGINAL_NAME" --dir "$ORIGINAL_DIR"
+      - name: Fetch EIGHT separately executed new true 80-year sources
+        run: |
+          mkdir -p "$EXTRA_DIR"
+          gh run download "$EXTRA_RUN" --repo "${{ github.repository }}" --pattern "frogcs-finite-n-extra8-source-*" --dir "$EXTRA_DIR"
+      - name: Verify 12 genuinely independent seed labels and stage/plant model contrasts
+        run: python research/scripts/audit_finite_n_80y_12seed.py --original "$ORIGINAL_DIR" --extra-shards "$EXTRA_DIR" --out "$OUT_DIR"
+      - name: Retain all verified seed-level model evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-finite-n-80year-12seed-verified
+          path: research/results/finite_n_stage_bridge_20261031/audited12/
+          retention-days: 30
+          if-no-files-found: warn
