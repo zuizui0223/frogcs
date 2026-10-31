@@ -241,8 +241,10 @@ def abm_step(pop, vegetation, params, dt, time, rng, reverse=True, s_to_d=False,
     pop.stage, pop.cell, pop.age = stages, cells, ages
     pop.uid, pop.parent, pop.generation = uids, parents, generations
     pop.validate(n_cells)
-    if n_start + len(stages) - int(survivors.sum()) - int(dead.sum()) != len(stages):
-        raise AssertionError("Agent birth/death accounting failed")
+    newborn_count = len(stages) - int(survivors.sum())
+    if (newborn_count < 0 or n_start + newborn_count - int(dead.sum()) != len(stages)
+            or by_edge.sum() > dead.sum()):
+        raise AssertionError("Agent birth/death or predation accounting failed")
     return by_edge
 
 
