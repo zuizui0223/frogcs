@@ -1,3 +1,5 @@
+> **SUPERSEDED AS ACTIVE ANALYSIS (2026-10-31).** The user returned the project to **biotic interactions as the main causal hypothesis axis**. The active specification is [BIOTIC_INTERACTION_ABC_POM_PRIMARY_PROTOCOL_2026-10-31.md](BIOTIC_INTERACTION_ABC_POM_PRIMARY_PROTOCOL_2026-10-31.md). The below older proposal to fit dispersal/long-run demographics as a major ABC–POM selection step is retained for provenance only. Direct and indirect predation, ontogeny, edge-specific vegetation and *quantitative* six-pattern site adequacy are now primary; PR157 animal dispersal inference and q-grid dynamics are parked/secondary. No new field sampling is required.
+
 # One-pipeline macroecology → mechanism → demographic ABC–POM (2026-10-31)
 
 **New scientific integration specification for the SINGLE frogcs macro-first paper.** The historical separate "mechanism catalog" and "dispersal/population boundary" results become one mechanistic result, tested at two successively stronger levels. This is an execution specification, NOT a claim that a common field-conditioned posterior exists already.
