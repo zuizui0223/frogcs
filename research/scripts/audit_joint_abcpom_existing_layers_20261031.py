@@ -148,7 +148,7 @@ def audit(folder):
     report=dict(
         status="EXISTING_SOURCE_ABC_POM_LAYERS_AUDITED_NOT_JOINT_POSTERIOR",
         site_real_world=dict(
-            4248 if False else "n_acoustic_sites":4248,
+            n_acoustic_sites=4248,
             n_backgrounds=2,n_fixed_source_models_per_background=132,
             n_distinct_models=104,n_site_models_adequate_to_all_six=0,
             background_rows=site,
