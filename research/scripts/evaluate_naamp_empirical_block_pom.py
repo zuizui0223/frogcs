@@ -43,11 +43,11 @@ def read_icc(path=SOURCE):
     if s.sites.ne(4248).any() or s.completed_surveys.ne(63180).any() or s.n_spatial_blocks.ne(56).any():
         raise AssertionError("Residual spatial grouping not comparable to 4248-site cohort")
     for row in s.itertuples(index=False):
+        if not np.isfinite(row.icc) or not 0<=row.icc<1:
+            raise ValueError("Invalid empirical-block correlation")
         if not np.isclose(row.alpha_block_to_site**2,
                           row.icc/(1-row.icc),rtol=0,atol=1e-12):
             raise AssertionError("Residual ICC does not match Gaussian amplitude")
-        if not 0<=row.icc<1:
-            raise ValueError("Invalid empirical-block correlation")
         if not 0<=row.spatial_icc_ci_low<=row.spatial_icc_ci_high<1:
             raise ValueError("Invalid empirical block interval")
     return s.set_index("background")
