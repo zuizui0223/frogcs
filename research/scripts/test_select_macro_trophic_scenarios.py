@@ -5,6 +5,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
+from diagnose_macro_reversal_edge import compare_all_pairs, matched_pairs
 from select_macro_trophic_scenarios import (
     CONTEXTS, EDGES, FAMILIES, LEVELS, NULLS, SEED,
     assign_folds, candidate_scores_at_sites, fixed_nested_comparison,
@@ -119,6 +120,16 @@ class ScenarioSelectionTests(unittest.TestCase):
         self.assertTrue((gains.n_visits==90*8).all())
         self.assertAlmostEqual(float(neglog(np.array([1,0]),np.array([1,1]),np.array([.9,.2])).sum()),
                                -np.log(.9)-np.log(.8))
+
+    def test_all_twelve_exact_edge_toggle_pairs(self):
+        pairs=matched_pairs(self.meta)
+        self.assertEqual(len(pairs),12)
+        self.assertTrue(all(p["off"]!=p["on"] for p in pairs))
+        results,blocks=compare_all_pairs(self.data,self.surfaces,self.meta,self.folds,reps=39)
+        self.assertEqual(len(results),24)
+        self.assertEqual(len(blocks),24*15)
+        self.assertTrue(np.isfinite(results.gain_on_vs_off).all())
+        self.assertTrue((results.n_visits==90*8).all())
 
     def test_transport_remains_outcome_blind(self):
         a=candidate_scores_at_sites(self.data,"uniform",self.surfaces)
