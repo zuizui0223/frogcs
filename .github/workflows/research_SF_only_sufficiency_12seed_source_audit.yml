@@ -1,0 +1,50 @@
+name: Frogcs audit 12seed SF-only sufficiency vs no direct predation 80y
+
+on:
+  push:
+    branches:
+      - research/predator-edge-recruitment-gate-20261031
+    paths:
+      - .github/workflows/research_SF_only_sufficiency_12seed_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audited-original-12seed-SF-necessity-and-sufficiency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41199156266'
+      SOURCE_ARTIFACT: frogcs-four-active-edge-two-recruitment-12seed-verified
+      SF_RUN: '41199700200'
+      BASE_DIR: research/results/SF_only_sufficiency_80y_20261031/original_necessity_source
+      NEW_DIR: research/results/SF_only_sufficiency_80y_20261031/new_true80y_12shards
+      OUT_DIR: research/results/SF_only_sufficiency_80y_20261031/audited_sufficiency
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download immutable source-verified old 12seed all-active and single-edge removal results
+        run: |
+          mkdir -p "$BASE_DIR"
+          gh run download "$SOURCE_RUN" --repo "${{ github.repository }}" --name "$SOURCE_ARTIFACT" --dir "$BASE_DIR"
+      - name: Download all 12 genuine new 80year S-to-F-sole and total-direct-null biological simulations
+        run: |
+          mkdir -p "$NEW_DIR"
+          gh run download "$SF_RUN" --repo "${{ github.repository }}" --pattern "frogcs-SF-suff-80y-*" --dir "$NEW_DIR"
+      - name: Audit 12seed fixed demographic/plant context reversal and 0-to-positive source events
+        run: python research/scripts/audit_SF_only_network_sufficiency_12seed.py --necessity-source "$BASE_DIR" --sufficiency-shards "$NEW_DIR" --out "$OUT_DIR"
+      - name: Preserve original 80year source, MC intervals, and verified sufficient/insufficient status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-SF-only-and-all-trophic-edges-off-12seed-verified
+          path: research/results/SF_only_sufficiency_80y_20261031/audited_sufficiency/
+          if-no-files-found: warn
+          retention-days: 30

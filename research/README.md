@@ -1,5 +1,14 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #153 — S→F捕食経路は固定合成モデルの条件付き反転に必要かつ十分（真正80年12seed）
+
+[Draft PR #153](https://github.com/zuizui0223/frogcs/pull/153) / [最終12seed十分性結果](SF_ONLY_TROPHIC_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [必要性12seed検証](PREDATOR_EDGE_LOCAL_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [全24単経路削除元モデルSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41198781275) / [全12十分性元モデルSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199700200) / [十分性独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41200093960)。
+
+外部移入OFF、8合成パッチ、q3、年間分散15%、元仮説率ID12にrho(ID0)だけ導入した強い局所加入背景では、有尾類幼生→カエル幼生捕食（S→F）の単独削除で分散効果の正→負反転が消失。**逆にS→Fだけ残して他の3有効捕食方向を除去しても反転が2植物設定×各12/12seedで維持**。直接捕食すべて無効では反転しない。局所加入が弱いID12ではS→Fのみでも反転しない。これは元の120日捕食＋80年成熟・加入の**モデル内での必要・十分・局所加入依存性**であり野外の必要十分性ではない。
+
+カエルが完成段階になる65日目より前にD羽化が終わるため、今回の元2発生条件でFE（完成F→羽化D）は厳密ゼロ。PR148の別のS先行条件ではFEが非ゼロであるため、その結果をこのsubsetへ混ぜない。SF0_DF0_DS1_L0の植物保護はSF-only条件ではD→S除去で無効になるので、「2植物機能で独立に十分性が生物学的に再現」とは言わない。
+
+
 ## 2026-10-31: PR #152 — 生物率を1つだけ交換したときの分散救済の条件依存（12seed検証済み）
 
 [Draft PR #152](https://github.com/zuizui0223/frogcs/pull/152) / [12seed最終結果](RATE_AXIS_SELECTED_FOUR_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [全8率×双方向4seed結果](RATE_AXIS_ALL16_FOURSEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [80年16条件全実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41196851204) / [4率軸×追加8seed全実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197418760) / [12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41197815433)。

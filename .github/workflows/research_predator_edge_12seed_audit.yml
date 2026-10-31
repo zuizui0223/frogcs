@@ -1,0 +1,57 @@
+name: Frogcs independent audit four active trophic edges x two local recruitment regimes (12seed)
+
+on:
+  push:
+    branches:
+      - research/predator-edge-recruitment-gate-20261031
+    paths:
+      - .github/workflows/research_predator_edge_12seed_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-locked-12seed-directed-predator-edge-inference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR151_RUN: '41195960127'
+      PR151_ARTIFACT: frogcs-growth-duration-four-rate-12seed-verified
+      PR152_RUN: '41197815433'
+      PR152_ARTIFACT: frogcs-four-original-rate-axes-12seed-source-verified
+      EDGE_RUN: '41198781275'
+      PR151_DIR: research/results/predator_edge_recruitment_80y_20261031/original_rate12
+      PR152_DIR: research/results/predator_edge_recruitment_80y_20261031/original_rho_changed
+      NEW_DIR: research/results/predator_edge_recruitment_80y_20261031/new_four_edge_24shards
+      OUT_DIR: research/results/predator_edge_recruitment_80y_20261031/verified_all_four_edges
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download genuine source-verified original biological rate ID12 12seed baseline
+        run: |
+          mkdir -p "$PR151_DIR"
+          gh run download "$PR151_RUN" --repo "${{ github.repository }}" --name "$PR151_ARTIFACT" --dir "$PR151_DIR"
+      - name: Download genuine source-verified rho swap with all original 12seed biological conditions
+        run: |
+          mkdir -p "$PR152_DIR"
+          gh run download "$PR152_RUN" --repo "${{ github.repository }}" --name "$PR152_ARTIFACT" --dir "$PR152_DIR"
+      - name: Download ALL 24 actual true 80year single-edge source trajectories and event ledgers
+        run: |
+          mkdir -p "$NEW_DIR"
+          gh run download "$EDGE_RUN" --repo "${{ github.repository }}" --pattern "frogcs-predator-edge-80y-*" --dir "$NEW_DIR"
+      - name: Audit integer 0-to-positive returns, original source replay, 12seed 2x2 signs and trophic edges
+        run: python research/scripts/audit_predator_edge_recruitment_12seed.py --pr151 "$PR151_DIR" --pr152 "$PR152_DIR" --new-shards "$NEW_DIR" --out "$OUT_DIR"
+      - name: Keep full verified model-source, post-removal occupancy signs and censor counts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-four-active-edge-two-recruitment-12seed-verified
+          path: research/results/predator_edge_recruitment_80y_20261031/verified_all_four_edges/
+          if-no-files-found: warn
+          retention-days: 30
