@@ -1,5 +1,17 @@
 # 現行研究の入口
 
+## PR #146 最新の主線：観測R²にノイズを合わせた方向POM（2026-10-31）
+
+[132固定構成・192実際の80年再計算・危険増幅72構成を一度に評価した完全結果](MACRO_R2_MATCHED_DIRECTIONAL_POM_RESULTS_2026-10-31.md)。NAAMP 4,248地点・63,180調査の同じ8項順位回帰R²（uniform 4.70%、target-group 5.18%）だけで各出力の観測ノイズ量を校正し、独立128反復で**OS−・OV−・ΔS−・ΔV−・低Sほぼゼロ**の5条件を評価した。ノイズなしの決定論的全一致0/132・0/192という不一致は、**R²を合わせると複数シナリオで非ゼロ頻度の一致を生成**できるため、観測過程に依存することが判明。ただしノイズ空間構造・変換によって順位が大きく変動し、全8観測条件で厳密5方向一致頻度≥10%の出力群は**132/192/72構成すべて0**。危険増幅型は同じ24構造の中・強増幅 vs 増幅なしの対比較で、**16集計すべて平均類似度が低下**。最良の野外機構・ABC事後確率は未確定。
+
+- [全6系列（独立／空間誤差×132／192／増幅）実計算のSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41168178231)
+- [6系列統合・R²校正監査のSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41168203797)
+- [元構造を固定した増幅の対比較・全8条件のSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41168371045)
+- [保存済みの全系列概要](results/macro_r2_matched_directional_20261031/source_family_summary.csv)／[危険増幅の対照別数値](results/macro_r2_matched_directional_20261031/amplification_paired_summary.csv)／[研究用の固定仕様](MACRO_R2_MATCHED_DIRECTIONAL_POM_PROTOCOL_2026-10-31.md)
+
+この結果は**観測R²を事後に合わせた感度解析**で、モデルの生物学的正しさや成体カエルの発声検出過程を独立校正したものではない。順位を先に取ると振幅情報は回復できないため、log(F_B)へのノイズ追加も同列の感度検査として保持する。POMが主解析、ABM/PDEは必要時のみ補助。PRはDraftのまま、原本・main・PR #144/#145は不変更。
+
+
 **最新（2026-10-31）：方向だけのPOMで「不一致の最小条件」を定量化。** 4,248地点・63,180回の強発声について、トンボ類×植生（OV）負と、`ΔS = cor(O,発声 | 有尾類適合度高) - cor(O,発声 | 適合度低)` 負を**同時**に実現する構成が、uniformの既存132（完全に同じF_B面をまとめた104群）で0件、実際に80年を再実行した8パラメータ×24構造＝192構成でも0件。target-groupの固定132にはその2条件の1構成があるが、OS負を加えると0件。元の率の再計算ではtarget-groupも2条件で0件。**単に捕食の負方向が出るかではなく、植生条件と有尾類条件の双方の相関変化方向が同時に生じるかが、現行モデルの中心的な失敗。** [実測・最小不一致の全結果](MACRO_SIGNED_CONTEXT_MINIMAL_CONTRADICTION_RESULT_2026-10-31.md)／[30通りの部分条件](results/macro_signed_context_tradeoff_20261031/all_nonempty_direction_subsets.csv)／[検証CI](https://github.com/zuizui0223/frogcs/actions/runs/41167054391)。これは同じNAAMP標本での探索的なパターン指向比較であり、機構の因果推定でもABC事後確率でもない。
 
 
