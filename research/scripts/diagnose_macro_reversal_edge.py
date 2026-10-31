@@ -94,7 +94,7 @@ def run():
                  matched="Same growth, stage arrival, handling/refuge, vegetation mapping; only original F adult→D emerging edge toggle",
                  seed_derived_block_bootstrap_conditional=True,
                  caveat="Case84 was selected by looking at same cohort nested results; pair checks cannot confirm it independently",
-                 sources={str(path.relative_to(OUT.parents[1])):hashlib.sha256(path.read_bytes()).hexdigest()
+                 sources={str(path.relative_to(OUT.parents[2])):hashlib.sha256(path.read_bytes()).hexdigest()
                           for path in SOURCES},
                  code_sha256=hashlib.sha256(__import__("pathlib").Path(__file__).read_bytes()).hexdigest())
     (OUT/"post_selection_reversal_receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
