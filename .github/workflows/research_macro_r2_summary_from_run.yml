@@ -1,0 +1,80 @@
+name: Frogcs R2 matched POM verified six-family summary
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - .github/workflows/research_macro_r2_summary_from_run.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reuse-all-six-successful-evaluation-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned analysis dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Retrieve all six successfully evaluated source families (first full run)
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41167879936
+          pattern: frogcs-r2-*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/macro_r2_matched_directional_20261031
+      - name: Recompute corrected 24-row family/noise/background/mode comparison
+        run: python -u research/scripts/summarize_r2_matched_directional.py --run
+      - name: Verify source coverage, calibration failures and cross-background consistency
+        run: |
+          python - <<'PY'
+          import json
+          import numpy as np
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/macro_r2_matched_directional_20261031')
+          s=pd.read_csv(p/'source_family_summary.csv')
+          allrows=pd.read_csv(p/'all_source_group_scores.csv')
+          cross=pd.read_csv(p/'cross_background_directional_matches.csv')
+          observed=pd.read_csv(p/'unique_observed_r2_and_patterns.csv')
+          assert len(s)==24 and len(cross)==12 and len(observed)==10
+          assert s.groupby(['family','noise_type']).size().eq(4).all()
+          assert allrows.groupby(['family','noise_type','background','mode']).source_group.nunique().ge(1).all()
+          assert s.n_source_groups.eq(
+              s.n_r2_matched_groups+s.n_r2_unreachable_groups+
+              s.n_r2_not_bracketed+s.n_r2_unconverged).all()
+          assert s.groupby(['family','noise_type']).n_r2_matched_groups.min().ge(1).all()
+          assert cross.n_both_backgrounds_with_joint_simulated_match.between(0,192).all()
+          print('SIX_MODEL_FAMILY_SUMMARY_AUDIT_SUCCESS')
+          PY
+      - name: Print source-verified final R2 and matched directional results
+        run: |
+          cat research/results/macro_r2_matched_directional_20261031/source_family_summary.csv
+          echo '===== CROSS BACKGROUND ====='
+          cat research/results/macro_r2_matched_directional_20261031/cross_background_directional_matches.csv
+          echo '===== OBSERVED R2 ====='
+          cat research/results/macro_r2_matched_directional_20261031/unique_observed_r2_and_patterns.csv
+          echo '===== TOP 5 MATCHED ====='
+          cat research/results/macro_r2_matched_directional_20261031/top5_eligible_source_groups.csv
+      - name: Preserve all-family fully auditable R2 matched science summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-r2-matched-final-audited-six-family-summary
+          path: |
+            research/results/macro_r2_matched_directional_20261031/source_family_summary.csv
+            research/results/macro_r2_matched_directional_20261031/cross_background_directional_matches.csv
+            research/results/macro_r2_matched_directional_20261031/top5_eligible_source_groups.csv
+            research/results/macro_r2_matched_directional_20261031/unique_observed_r2_and_patterns.csv
+            research/results/macro_r2_matched_directional_20261031/all_source_group_scores.csv
+          retention-days: 30
