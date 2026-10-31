@@ -1,0 +1,41 @@
+name: Frogcs 80y q12 population-scale S-to-F predation necessity sufficiency
+
+on:
+  push:
+    branches:
+      - research/SF-predation-population-scale-20261031
+    paths:
+      - .github/workflows/research_SF_population_scale_q12_true80.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  true-80year-q12-original-seasonal-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        regime: ["rate12_base","rate12_rho0"]
+        network: ["all_active","SF_only","no_SF","no_direct_predation"]
+        seed_start: [101,105,109]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Gate original source controls before biological simulation
+        run: python -m unittest discover -s research/scripts -p test_SF_predation_population_scale_q12.py -v
+      - name: Actual q12 finite-N original seasonal trophic and 80y lagged cohort model
+        run: python research/scripts/run_SF_predation_population_scale_q12_80y.py --run --regime ${{ matrix.regime }} --network ${{ matrix.network }} --seed-start ${{ matrix.seed_start }}
+      - name: Preserve genuine 80year q12 source and right-censored local return ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-q12-SF-source-regime${{ matrix.regime }}-network${{ matrix.network }}-seeds${{ matrix.seed_start }}
+          path: research/results/SF_predation_population_scale_q12_20261031/
+          if-no-files-found: warn
+          retention-days: 30
