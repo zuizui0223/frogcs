@@ -1,0 +1,93 @@
+name: Frogcs spatial individual pedigree, dispersal and local extirpation
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/DISPERSAL_LOCAL_EXTINCTION_PEDIGREE_PROTOCOL_2026-10-31.md
+      - research/scripts/tracked_spatial_pedigree.py
+      - research/scripts/test_tracked_spatial_pedigree.py
+      - .github/workflows/research_spatial_pedigree.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unchanged-abm-and-full-pedigree-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install same scientific backend
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Replay original unmodified stochastic ABM trajectories and all pedigree conservation tests
+        run: python -m unittest discover -s research/scripts -p 'test_tracked_spatial_pedigree.py' -v
+      - name: Retain original ABM and PDE 7-stage process-level tests
+        run: python -m unittest discover -s research/scripts -p 'test_multigeneration_reversal.py' -v
+
+  all-spatial-lineage-cases:
+    needs: unchanged-abm-and-full-pedigree-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical runtime (no new spatial fitting libraries)
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Simulate stochastic 7-stage ABM, 20 years x 8 patches x 4 seeds x reverse/mobility pairs, and original PDE
+        run: |
+          python -u research/scripts/tracked_spatial_pedigree.py --run \
+            --years 20 --dt 0.05 --seeds 101 102 103 104
+      - name: Verify lasting extinct ancestors, all parents, patch events and dispersal control
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import numpy as np
+          import pandas as pd
+          p=Path('research/results/stochastic_pedigree_metapop_20261031')
+          s=pd.read_csv(p/'metapopulation_seed_level_summary.csv')
+          years=pd.read_csv(p/'annual_stage_and_demographic_events.csv')
+          patch=pd.read_csv(p/'patch_extirpation_recolonization.csv.gz')
+          reg=pd.read_csv(p/'registry_all_simulated_uids.csv.gz')
+          lin=pd.read_csv(p/'lineage_generation_and_spatial_reach.csv')
+          receipt=json.loads((p/'receipt.json').read_text())
+          assert len(s)==2*2*4*3 and len(lin)==len(s)
+          assert len(years)==20*2*2*4
+          assert len(patch)==21*8*3*2*2*4
+          assert len(reg)==receipt['n_simulated_ever_lived_unique_ids']
+          assert reg.groupby(['mobility','reverse','seed']).uid.nunique().sum()==len(reg)
+          assert (reg.loc[reg.parent_uid>=0,'parent_uid']<reg.loc[reg.parent_uid>=0,'uid']).all()
+          assert (reg.generation>=0).all()
+          assert (s.n_occupied_end.between(0,8)).all()
+          assert s[s.mobility=='off'].n_survivor_movements.eq(0).all()
+          assert s[s.mobility=='off'].n_recolonizations_with_surviving_immigrant.eq(0).all()
+          assert receipt['not_same_kernel_as_original_80year_ABC']
+          print('REAL_ABM_PDE_PEDIGREE_LOCAL_EXTIRPATION_AUDIT_SUCCESS')
+          PY
+      - name: Print model-native movement, colonization and genealogy results
+        run: |
+          echo '===== metapopulation_seed_level_summary.csv ====='
+          cat research/results/stochastic_pedigree_metapop_20261031/metapopulation_seed_level_summary.csv
+          echo '===== lineage_generation_and_spatial_reach.csv ====='
+          cat research/results/stochastic_pedigree_metapop_20261031/lineage_generation_and_spatial_reach.csv
+      - name: Keep all living and dead parents, direct child IDs, spatial movements, extinctions and source SHA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-stochastic-lineage-metapop-20y-20261031
+          path: research/results/stochastic_pedigree_metapop_20261031/
+          retention-days: 30
+          if-no-files-found: warn
