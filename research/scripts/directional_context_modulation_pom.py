@@ -209,7 +209,7 @@ def rank_fixed_132(d, bg, design, observed_boot, selected, observed_dir,
                                    representative_case=min(labels),
                                    members=";".join(sorted(labels)),
                                    mean_joint_soft=float(np.mean([r.joint_soft for r in sources])),
-                                   best_joint_soft=float(max(r.joint_soft for r in sources])),
+                                   best_joint_soft=float(max(r.joint_soft for r in sources)),
                                    exactly_observed_compatible=bool(
                                        all(r.all_selected_signs_match for r in sources))))
     signatures=pd.DataFrame(signature_rows)
