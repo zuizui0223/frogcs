@@ -63,6 +63,9 @@ jobs:
           g=pd.read_csv(root/'structural_group_agreement.csv')
           o=pd.read_csv(root/'observed_signs.csv')
           r=pd.read_csv(root/'rate_draw_recovery.csv')
+          confusion=pd.read_csv(root/'structural_rate_draw_confusion.csv')
+          assert int(confusion.n.sum())==len(r)
+          assert confusion.groupby(['background','true_group']).fraction_of_true_group.sum().between(.99999,1.00001).all()
           assert len(c)==384 and len(g)==24 and len(o)==12 and len(r)==8*12*2
           assert c.groupby(['background','draw']).case.nunique().eq(24).all()
           assert g.groupby('background').structural_group.nunique().eq(12).all()
