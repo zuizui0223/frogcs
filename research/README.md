@@ -1,5 +1,12 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #151 — 4率×12seedの生物率感度（結論確定）
+
+[Draft PR #151](https://github.com/zuizui0223/frogcs/pull/151) / [全率ID0・4・8・12の監査済みレポート](S_GROWTH_D_DURATION_FOUR_RATE_12SEED_VERIFIED_RESULT_2026-10-31.md) / [真正追加80年9シャードSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195587548) / [全4率×12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195960127)。
+
+PR150の「S成長高速化だけで分散効果が正から負へ反転」は元の仮想率ID0では支持されるが、**ID4・8・12では2植生役割のいずれでも再現されず**、4固定率中1率でのみ反転。率ID4は移動が一貫して負、ID8は0付近〜負、ID12は移動が一貫して正（成長高速化はその正効果を弱めることがある）。S成長・D水中期間の効果は背景の仮想捕食・生残・加入パラメータに依存し、**普遍的な成長主因説は支持されない**。これは野外の機構推定ではなく合成モデル内の率感度。
+
+
 ## 2026-10-31: PR #150 — 12seedによるS成長率×D水中期間の因子分離（結果確定）
 
 [PR #150 (Draft)](https://github.com/zuizui0223/frogcs/pull/150) / [検証済み2×2結果](S_GROWTH_D_DURATION_12SEED_VERIFIED_RESULT_2026-10-31.md) / [真正80年追加実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41194882028) / [旧12seed＋新2セルの独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195118831)。

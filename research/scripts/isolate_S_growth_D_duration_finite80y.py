@@ -43,9 +43,10 @@ def _ordered(source):
     return source.sort_values(keys).reset_index(drop=True)
 
 
-def source_factorial():
-    """Input is original PR149 source draw=0. New treatments vary one variable each."""
-    all_orig=source_cube(1)
+def source_factorial(input_source_cube=None):
+    """Verify original source for ONE fixed rate draw, then build missing factor cells."""
+    all_orig=(source_cube(1) if input_source_cube is None
+              else input_source_cube.copy())
     original=_ordered(all_orig[all_orig.context.eq("original")])
     dfirst=_ordered(all_orig[all_orig.context.eq("D_first_S_overtakes")])
     if len(original)!=32 or len(dfirst)!=32:

@@ -1,0 +1,50 @@
+name: Frogcs audit four biological rate 12seed growth-duration factorial
+
+on:
+  push:
+    branches:
+      - research/growth-duration-rate-stress-20261031
+    paths:
+      - .github/workflows/research_growth_duration_four_rate_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-four-rate-nonselected-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_RUN: '41195118831'
+      ORIGINAL_ARTIFACT: frogcs-12seed-growth-duration-factorial-audited
+      EXTRA_RUN: '41195587548'
+      ORIGINAL_DIR: research/results/growth_duration_rate_stress_20261031/old_draw0_source
+      EXTRA_DIR: research/results/growth_duration_rate_stress_20261031/three_new_rate_sources
+      OUT_DIR: research/results/growth_duration_rate_stress_20261031/audited_four_rates
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download exact original rate draw0 full 12seed 2x2 source
+        run: |
+          mkdir -p "$ORIGINAL_DIR"
+          gh run download "$ORIGINAL_RUN" --repo "${{ github.repository }}" --name "$ORIGINAL_ARTIFACT" --dir "$ORIGINAL_DIR"
+      - name: Download all NINE genuinely executed original-LHS rate source shards
+        run: |
+          mkdir -p "$EXTRA_DIR"
+          gh run download "$EXTRA_RUN" --repo "${{ github.repository }}" --pattern "frogcs-growth-duration-rateprior-*" --dir "$EXTRA_DIR"
+      - name: Verify entire four-rate ×12 independent RNG seed ×2x2 source and calculate conditional effects
+        run: python research/scripts/audit_growth_duration_four_rate_draws.py --original "$ORIGINAL_DIR" --new9 "$EXTRA_DIR" --output "$OUT_DIR"
+      - name: Keep source-paired full results, MC intervals, original LHS parameter rates and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-growth-duration-four-rate-12seed-verified
+          path: research/results/growth_duration_rate_stress_20261031/audited_four_rates/
+          if-no-files-found: warn
+          retention-days: 30

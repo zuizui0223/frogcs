@@ -1,0 +1,42 @@
+name: Frogcs genuine 80y S growth x D aquatic duration across 3 new rate draws
+
+on:
+  push:
+    branches:
+      - research/growth-duration-rate-stress-20261031
+    paths:
+      - .github/workflows/research_growth_duration_rate_stress_full80.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-biological-source-rate-stress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        rate_draw: [4, 8, 12]
+        seed_start: [101, 105, 109]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Assert no source parameter contamination and all 2x2 cells
+        run: |
+          python -m unittest discover -s research/scripts -p test_growth_duration_rate_stress_80y.py -v
+          python -m unittest discover -s research/scripts -p test_isolate_S_growth_D_duration_finite80y.py -v
+      - name: Run source-locked original 80y biological response for nonzero prior draw
+        run: python research/scripts/run_growth_duration_rate_stress_80y.py --run --rate-draw ${{ matrix.rate_draw }} --seed-start ${{ matrix.seed_start }}
+      - name: Save true 80y demographic source/return events and immutable receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-growth-duration-rateprior-draw${{ matrix.rate_draw }}-seeds${{ matrix.seed_start }}
+          path: research/results/growth_duration_rate_stress_20261031/
+          if-no-files-found: warn
+          retention-days: 30
