@@ -200,6 +200,12 @@ def fit_predict(x_train,k_train,n_train,x_test,return_mechanism_slope=False,nonn
         opt=minimize(objective,init,method="L-BFGS-B",jac=True,options={"maxiter":400,"ftol":1e-11})
     if not opt.success and np.linalg.norm(opt.jac,ord=np.inf)>.1:
         raise RuntimeError("Binomial fit failed: "+str(opt.message))
+    if nonnegative_mechanism and keep[-1] and opt.x[-1] <= 2e-6:
+        # The exact convex constrained optimum is on the zero-slope boundary.
+        # Numerically stop at the reduced additive model rather than retaining
+        # a slightly underconverged zero coefficient and nuisance estimates.
+        additive=fit_predict(x_train[:,:-1],k_train,n_train,x_test[:,:-1])
+        return (additive,0.) if return_mechanism_slope else additive
     p=np.clip(expit(xt@opt.x),1e-10,1-1e-10)
     if return_mechanism_slope:
         # The last input column is log(F_B) in the mechanism-only designs.
