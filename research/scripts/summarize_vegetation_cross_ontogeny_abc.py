@@ -147,7 +147,7 @@ def marginalize_sources(rows,n_boot=BOOT):
         denominator=totals.sum()
         if denominator<=0:
             raise ValueError("No source model produces four main signs")
-        chosen=a[indices,:,:].sum(axis=1)
+        chosen=a[indices].sum(axis=1)
         if np.any(chosen.sum(axis=1)<=0):
             raise ValueError("No ABC matches in at least one paired draw bootstrap")
         rates=totals/N_DRAWS
