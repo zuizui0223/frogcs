@@ -1,0 +1,44 @@
+name: Frogcs actual 80y SF-only sufficiency and no-direct-predation controls
+
+on:
+  push:
+    branches:
+      - research/predator-edge-recruitment-gate-20261031
+    paths:
+      - .github/workflows/research_SF_only_sufficiency_true80.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  sole-active-pathway-vs-zero-trophic-predation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        regime: ["rate12_base","rate12_rho0"]
+        arm: ["SF_only","no_direct_predation"]
+        seed_start: [101,105,109]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Confirm original finite source default unchanged, SF-only actual hazard and no-predation null
+        run: |
+          python -m unittest discover -s research/scripts -p test_SF_only_trophic_network_sufficiency.py -v
+          python -m unittest discover -s research/scripts -p test_predator_edge_recruitment_source.py -v
+      - name: Compute genuine eighty-year single-pathway sufficiency and predator-absent null
+        run: python research/scripts/run_SF_only_network_sufficiency_80y.py --run --regime ${{ matrix.regime }} --arm ${{ matrix.arm }} --seed-start ${{ matrix.seed_start }}
+      - name: Preserve true cohort/edge source and individual return events
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-SF-suff-80y-regime${{ matrix.regime }}-arm${{ matrix.arm }}-seed${{ matrix.seed_start }}
+          path: research/results/SF_only_sufficiency_80y_20261031/
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,30 @@
+name: Frogcs SF only original seasonal hazard sufficiency gates
+
+on:
+  push:
+    branches:
+      - research/predator-edge-recruitment-gate-20261031
+    paths:
+      - research/scripts/finite_n_source_cohort_bridge.py
+      - research/scripts/test_SF_only_trophic_network_sufficiency.py
+      - .github/workflows/research_SF_only_trophic_source_smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  existing-biology-and-all-predator-null-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Require original default source and exact sole SF hazard/null all predators
+        run: |
+          python -m unittest discover -s research/scripts -p test_SF_only_trophic_network_sufficiency.py -v
+          python -m unittest discover -s research/scripts -p test_predator_edge_recruitment_source.py -v
+          python -m unittest discover -s research/scripts -p test_finite_n_source_cohort_bridge.py -v

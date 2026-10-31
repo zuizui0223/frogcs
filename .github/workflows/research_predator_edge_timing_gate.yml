@@ -1,0 +1,30 @@
+name: Frogcs actual trophic edge activity and F-to-D emergence timing gate
+
+on:
+  push:
+    branches:
+      - research/predator-edge-recruitment-gate-20261031
+    paths:
+      - research/scripts/finite_n_source_cohort_bridge.py
+      - research/scripts/test_predator_edge_recruitment_source.py
+      - research/PREDATOR_EDGE_LOCAL_RECRUITMENT_80Y_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_predator_edge_timing_gate.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-original-directed-hazard-windows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Verify original cohort output unchanged and FE stage windows nonoverlapping
+        run: python -m unittest discover -s research/scripts -p test_predator_edge_recruitment_source.py -v
+      - name: Verify all original finite-N year and movement accounting tests unchanged
+        run: python -m unittest discover -s research/scripts -p test_finite_n_source_cohort_bridge.py -v
