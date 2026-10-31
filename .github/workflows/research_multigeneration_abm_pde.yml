@@ -7,6 +7,7 @@ on:
     paths:
       - research/scripts/multigeneration_reversal.py
       - research/scripts/test_multigeneration_reversal.py
+      - research/scripts/multigeneration_reversal_sensitivity.py
       - research/MULTIGENERATION_ABM_PDE_PLAN_2026-10-31.md
       - .github/workflows/research_multigeneration_abm_pde.yml
   workflow_dispatch:
@@ -46,6 +47,22 @@ jobs:
           assert (a['n_total']>=0).all()
           print('TRAJECTORIES',len(a),'CONTRASTS',len(b))
           print(b[b.year.isin((1,2,5,10,20))].to_string(index=False))
+          PY
+      - name: Test post-pilot reversal-rate, mobility and third-guild sensitivity
+        run: python -u research/scripts/multigeneration_reversal_sensitivity.py --run
+      - name: Audit all post-pilot sensitivity cells
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          root=Path('research/results/multigeneration_reversal_20261031')
+          a=pd.read_csv(root/'post_pilot_sensitivity_endpoints.csv')
+          b=pd.read_csv(root/'post_pilot_sensitivity_contrasts.csv')
+          assert len(a)==240 and len(b)==1200, (len(a),len(b))
+          assert a.groupby(['method','seed','mobility','third_guild','a_fe']).year.nunique().eq(5).all()
+          assert b[b.a_fe==0.].delta.eq(0).all()
+          assert b.groupby(['method','seed','mobility','third_guild','year','measure']).a_fe.nunique().eq(4).all()
+          print('AUDIT SUCCESS',len(a),'endpoint rows',len(b),'contrast rows')
           PY
       - name: Save synthetic exploratory results
         if: always()
