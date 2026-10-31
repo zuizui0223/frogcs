@@ -14,6 +14,7 @@ import numpy as np
 from rate_axis_synthetic_growth_rescue_80y import (
     original_rate_factorial,swap_fixed_rate_axis
 )
+from spatial_cohort_80y_bridge import pilot_cube
 from finite_n_source_cohort_bridge import (
     make_source_group,simulate_finite_group,seasonal_kernel
 )
@@ -61,6 +62,40 @@ class OriginalTrophicEdgeSourceTests(unittest.TestCase):
             self.assertEqual(float(outcomes["D_killed_by_F"].abs().max()),0.)
             self.assertEqual(float(outcomes["audit_H_FE"].abs().max()),0.)
             self.assertEqual(float(outcomes["D_dead"].isna().sum()),0.)
+
+    def test_pr148_third_context_has_FE_opportunity_do_not_overgeneralize(self):
+        # PR148 included S_first_D_overtakes. D arrives on day20 and
+        # stays aquatic for 60 days, so its emerging cohort is exposed on
+        # day80-85 AFTER frog F completes on day65. PR149-152 did NOT
+        # retain this third ontogenetic order.
+        pr148=pilot_cube(1)
+        g=pr148[
+            pr148.context.eq("S_first_D_overtakes")&
+            pr148.plant_model.eq("SF0_DF0_DS1_L0")&
+            pr148.reverse_on.eq(1)
+        ].reset_index(drop=True)
+        self.assertEqual(len(g),8)
+        params,opts,*_=make_source_group(g)
+        durations=opts["stage_durations"]
+        f_time=np.array([p["f_arrival"] for p in params])+durations[:,0]
+        d_emerge=np.array([p["d_arrival"] for p in params])+durations[:,2]
+        self.assertTrue(np.all(f_time==65))
+        self.assertTrue(np.all(d_emerge==80))
+        original=seasonal_kernel(
+            params,initial_cohorts=np.ones((len(params),3)),
+            dt=.25,diagnostics=True,**opts)
+        self.assertGreater(float(original["audit_H_FE"].sum()),0.,
+                           "PR148 third source context should have possible FE capture")
+        self.assertGreater(float(original["D_killed_by_F"].sum()),0.)
+        controls=dict(opts)
+        controls["pathway_controls"]={
+            **opts["pathway_controls"],
+            "edge_FE":np.zeros(len(params))
+        }
+        reduced=seasonal_kernel(
+            params,initial_cohorts=np.ones((len(params),3)),
+            dt=.25,diagnostics=True,**controls)
+        self.assertEqual(float(reduced["D_killed_by_F"].abs().max()),0.)
 
     def test_each_other_directed_edge_actually_works_and_ablation_zeroes_its_hazard(self):
         group=exposed_source()
