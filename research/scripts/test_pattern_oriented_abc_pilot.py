@@ -7,7 +7,7 @@ from test_select_macro_trophic_scenarios import test_sites, source_fixture
 from select_macro_trophic_scenarios import load_cohort, scenario_surfaces
 from pattern_oriented_abc_pilot import (
     PATTERNS, HOLDOUT, rankz, get_design, stats_from_y,
-    bootstrap_observed, group_exact_surfaces, pattern_assessment,
+    bootstrap_observed, bootstrap_heldout, group_exact_surfaces, pattern_assessment,
     site_response, prior_reference, conditional_abc, recovery_matrix,
     multivariate_distance
 )
@@ -46,6 +46,18 @@ class PatternABCFixtureTests(unittest.TestCase):
         np.testing.assert_allclose(cov@inv,np.eye(6),atol=1e-6)
         self.assertTrue(np.all(np.linalg.eigvalsh(cov)>0))
         self.assertGreaterEqual(meta["n_spatial_blocks"],15)
+
+    def test_unseen_pattern_bootstrap_and_overlap_audit(self):
+        draws=bootstrap_heldout(self.obs,self.design,self.d.spatial_block,n_boot=99)
+        self.assertEqual(draws.shape[1],len(HOLDOUT))
+        self.assertGreaterEqual(len(draws),90)
+        self.assertTrue(np.isfinite(draws).all())
+        observed,held=stats_from_y(self.obs,self.design,holdout=True)
+        boot,cov,inv,_=bootstrap_observed(self.obs,self.design,self.d.spatial_block,n_boot=99)
+        assessment=pattern_assessment(self.d,"uniform",self.design,self.surfaces,
+                                       observed,held,inv,boot,holdout_draw=draws)
+        self.assertEqual(len(assessment),24)
+        self.assertTrue(assessment.heldout_patterns_within_95.between(0,4).all())
 
     def test_exact_duplicate_source_grids_are_grouped(self):
         duplicate={k:v.copy() for k,v in self.surfaces.items()}
