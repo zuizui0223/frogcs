@@ -98,7 +98,7 @@ class AcousticBridgeTests(unittest.TestCase):
     def test_paired_scores_and_observed_pattern(self):
         predictions=out_of_block_predictions(self.d,self.surfaces,self.folds)
         scores,foldscores=paired_block_interval(predictions,reps=199)
-        self.assertEqual(len(scores),len(BACKGROUNDS)*(len(ARMS)+2))
+        self.assertEqual(len(scores),len(BACKGROUNDS)*(len(ARMS)+len(REPLACEMENTS)+2))
         self.assertEqual(len(foldscores),len(scores)*5)
         self.assertTrue(scores.nll_per_survey.between(0,np.inf,inclusive='neither').all())
         self.assertTrue(scores[scores.candidate.isin(ARMS)].gain_vs_interaction_null_low_conditional.notna().all())
