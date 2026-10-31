@@ -229,6 +229,7 @@ def simulate_finite_group(group, *, scale, seed, mode, immigration=True,
     immigrant_hist=np.zeros_like(recruit_hist)
     arrival_hist=np.zeros_like(recruit_hist)
     departure_hist=np.zeros_like(recruit_hist)
+    death_hist=np.zeros_like(recruit_hist)
     hist[0]=N
     prev1=np.zeros_like(N)
     prev2=np.zeros_like(N)
@@ -263,12 +264,14 @@ def simulate_finite_group(group, *, scale, seed, mode, immigration=True,
         immigrant_hist[year]=ledger["external"]
         arrival_hist[year]=ledger["arrivals"]
         departure_hist[year]=ledger["departures"]
+        death_hist[year]=N-ledger["survivors"]
         prev2,prev1=prev1,complete
         N=next_n
     return {
         "hist":hist,"local_recruits":recruit_hist,
         "external":immigrant_hist,"arrivals":arrival_hist,
         "departures":departure_hist,
+        "deaths":death_hist,
     }
 
 
@@ -280,10 +283,15 @@ def summarize_finite_group(group, outputs, *, scale, seed, mode, immigration,
     ext=outputs["external"]
     arrivals=outputs["arrivals"]
     departures=outputs["departures"]
+    deaths=outputs["deaths"]
     if H.shape[0] != years+1 or H.shape[-1] != 3:
         raise AssertionError("Missing complete annual source patch censuses")
     if not np.array_equal(arrivals.sum(axis=2),departures.sum(axis=2)):
         raise AssertionError("Non-conservative source movement in saved output")
+    expected_final=(H[0].sum(axis=1)+local.sum(axis=(0,2))+
+                    ext.sum(axis=(0,2))-deaths.sum(axis=(0,2)))
+    if not np.array_equal(H[-1].sum(axis=1), expected_final):
+        raise AssertionError("Source annual births/deaths/immigration conservation failed")
     if not immigration and ext.any():
         raise AssertionError("Source immigration OFF produced outside individuals")
     if mode=="off" and (arrivals.any() or departures.any()):
@@ -313,6 +321,8 @@ def summarize_finite_group(group, outputs, *, scale, seed, mode, immigration,
                 raise AssertionError("Negative integer censuses")
             two_op=0
             two_birth=0
+            three_op=0
+            three_birth=0
             return_total=int(returned.sum())
             for y,p in zip(*np.where(returned)):
                 census_year=int(y+1)
@@ -324,27 +334,43 @@ def summarize_finite_group(group, outputs, *, scale, seed, mode, immigration,
                 follow_local=int(local[census_year,i,p,g]) if census_year<years else 0
                 two_op+=int(two)
                 two_birth+=int(two and follow_local>0)
-                # Earlier maturation can re-occupy a patch even if it had
-                # zero at the previous annual census: do not label all
-                # reoccupancy as immigration-mediated.
-                contributors=int(ext_g[y,p]>0)+int(arr_g[y,p]>0)+int(local_g[y,p]>0)
+                # The source F maturation delay can be three years;
+                # immediate next-year local recruitment should NOT be
+                # interpreted as an unbiased test of colonist reproduction.
+                observable3=census_year+3<=years
+                three=bool(observable3 and all(
+                    H[census_year+k,i,p,g]>0 for k in (1,2,3)
+                ))
+                follow_local3=int(local[census_year:census_year+3,i,p,g].sum()) if observable3 else 0
+                three_op+=int(three)
+                three_birth+=int(three and follow_local3>0)
+                # At a prior zero patch, the carryover term is zero.
+                # Only recruits remaining *after* departing the patch
+                # can be considered the local source of reoccupancy.
+                local_stayed=max(0,int(local_g[y,p])-int(dep_g[y,p]))
+                contributors=int(ext_g[y,p]>0)+int(arr_g[y,p]>0)+int(local_stayed>0)
                 events.append(dict(**identity,guild=name,patch=int(p),
                       census_year=census_year,
                       count_at_return=int(b[y,p]),
                       immigrant_at_return=int(ext_g[y,p]),
                       moved_in_at_return=int(arr_g[y,p]),
                       local_due_recruits_at_return=int(local_g[y,p]),
+                      local_due_recruits_remaining=int(local_stayed),
                       return_sources=contributors,
                       cause_label=("mixed" if contributors>1 else
                         "external" if ext_g[y,p]>0 else
                         "moved_between_patches" if arr_g[y,p]>0 else
-                        "delayed_local_recruitment" if local_g[y,p]>0 else
+                        "delayed_local_recruitment" if local_stayed>0 else
                         "unclassified"),
                       followup_2y_observable=int(observable),
                       occupied_both_followups=int(two),
                       post_return_local_recruits=int(follow_local),
-                      operational_2y_reproduction=int(two and follow_local>0)))
-            if two_birth>two_op or two_op>return_total:
+                      operational_2y_reproduction=int(two and follow_local>0),
+                      followup_3y_observable=int(observable3),
+                      occupied_three_followups=int(three),
+                      post_return_local_recruits_first3=int(follow_local3),
+                      operational_3y_recruitment=int(three and follow_local3>0)))
+            if three_birth>three_op or three_op>return_total or two_birth>two_op or two_op>return_total:
                 raise AssertionError("Invalid post-return persistence")
             summaries.append(dict(**identity,guild=name,
                 first_year_occupied_patches=int((H[0,i,:,g]>0).sum()),
@@ -356,7 +382,12 @@ def summarize_finite_group(group, outputs, *, scale, seed, mode, immigration,
                     sum((y+1+2<=years) for y,p in zip(*np.where(returned)))),
                 n_2y_persistent_returns=two_op,
                 n_2y_persistent_with_recruitment=two_birth,
+                n_3y_observable_returns=int(
+                    sum((y+1+3<=years) for y,p in zip(*np.where(returned)))),
+                n_3y_persistent_returns=three_op,
+                n_3y_persistent_with_recruitment=three_birth,
                 n_local_recruits=int(local_g.sum()),
+                n_total_deaths=int(deaths[:,i,:,g].sum()),
                 n_external_immigrants=int(ext_g.sum()),
                 n_recorded_migration_arrivals=int(arr_g.sum()),
                 n_recorded_migration_departures=int(dep_g.sum()),
@@ -425,6 +456,9 @@ def run(*, years=YEARS, draws=1, seeds=SEEDS,
             total_2y_observable_returns=("n_2y_observable_returns","sum"),
             total_2y_persistent=("n_2y_persistent_returns","sum"),
             total_2y_with_recruitment=("n_2y_persistent_with_recruitment","sum"),
+            total_3y_observable_returns=("n_3y_observable_returns","sum"),
+            total_3y_persistent=("n_3y_persistent_returns","sum"),
+            total_3y_with_recruitment=("n_3y_persistent_with_recruitment","sum"),
             mean_external_immigrants=("n_external_immigrants","mean"))
        .reset_index())
     grouped.to_csv(OUT/"finite_aggregated_condition_summary.csv",index=False)
@@ -441,6 +475,8 @@ def run(*, years=YEARS, draws=1, seeds=SEEDS,
        observed_actual_0_to_positive_events=len(events),
        total_yearly_returns=int(summary.n_local_returns.sum()),
        total_followup_2y_observable=int(summary.n_2y_observable_returns.sum()),
+       total_followup_3y_observable=int(summary.n_3y_observable_returns.sum()),
+       total_3y_persistent_with_recruitment=int(summary.n_3y_persistent_with_recruitment.sum()),
        annual_count_summaries_not_acoustic_or_parent_uid=True,
        source_trophic_kernel_directly_called=True,
        new_binomial_poisson_demographic_sampling=True,
