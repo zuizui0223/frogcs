@@ -1,0 +1,96 @@
+name: Frogcs stage-specific dispersal 20-year ABM/PDE ablations
+
+on:
+  push:
+    branches: [research/pedigree-metapop-20261031]
+    paths:
+      - research/STAGE_SPECIFIC_DISPERSAL_POM_PROTOCOL_2026-10-31.md
+      - research/scripts/run_stage_specific_dispersal_ablation.py
+      - research/scripts/test_run_stage_specific_dispersal_ablation.py
+      - .github/workflows/research_stage_dispersal_ablation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage-ablation-source-identity-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Check original 7-stage stochastic kernel and legal mobility interventions
+        run: python -m unittest discover -s research/scripts -p 'test_run_stage_specific_dispersal_ablation.py' -v
+      - name: Check all genealogical/patch/birth followup source contracts
+        run: python -m unittest discover -s research/scripts -p 'test_assess_recolonization_establishment.py' -v
+      - name: Original full ABM/PDE process kernel tests unchanged
+        run: python -m unittest discover -s research/scripts -p 'test_multigeneration_reversal.py' -v
+
+  new-stochastic-stage-ablation:
+    needs: stage-ablation-source-identity-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    strategy:
+      max-parallel: 3
+      fail-fast: false
+      matrix:
+        mode: [adult_only, aquatic_only, S_only]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned original ABM and PDE runtime
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Execute 20y × 4 stochastic seeds × reversal OFF/ON with only named source stages mobile
+        run: python -u research/scripts/run_stage_specific_dispersal_ablation.py --run --mode ${{ matrix.mode }}
+      - name: Audit all true stochastic individual/census and PDE outputs per mobility mechanism
+        env:
+          MODE: ${{ matrix.mode }}
+        run: |
+          python - <<'PY'
+          import os,json
+          import pandas as pd
+          from pathlib import Path
+          m=os.environ['MODE']
+          p=Path('research/results/stage_specific_dispersal_pom_20261031')
+          c=pd.read_csv(p/(m+'_stage_mobility_seed_summary.csv'))
+          a=pd.read_csv(p/(m+'_annual_population_events.csv'))
+          patch=pd.read_csv(p/(m+'_patch_occupancy_and_births.csv.gz'))
+          lineage=pd.read_csv(p/(m+'_living_lineage_ancestry.csv'))
+          rc=json.loads((p/(m+'_receipt.json')).read_text())
+          assert len(c)==24 and len(a)==160 and len(patch)==8*21*8*3
+          assert len(lineage)==24
+          assert c.groupby(['reverse','guild']).seed.nunique().eq(4).all()
+          assert c.n_occupied_year_end.between(0,8).all()
+          assert c.n_recolonizations.eq(c.n_return_events_recovered).all()
+          assert c.n_two_year_followup_eligible.le(c.n_recolonizations).all()
+          assert rc['n_new_true_20y_stochastic_arms']==8
+          assert rc['all_birth_uid_and_patch_counts_reconciled']
+          assert rc['original_stochastic_kernel_unchanged']
+          print('SOURCE_STAGE_SPECIFIC_RESCUE_AUDIT_SUCCESS',m,len(c),'seed/guild rows')
+          PY
+      - name: Print full conditional patch rescue, stage-specific occupancy and parent-origin census
+        env:
+          MODE: ${{ matrix.mode }}
+        run: |
+          echo "===== ${{ matrix.mode }}_stage_mobility_seed_summary.csv ====="
+          cat "research/results/stage_specific_dispersal_pom_20261031/${{ matrix.mode }}_stage_mobility_seed_summary.csv"
+      - name: Preserve all original stochastic births, ancestor UIDs, survivor moves and source SHA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-stage-dispersal-20y-${{ matrix.mode }}
+          path: research/results/stage_specific_dispersal_pom_20261031/
+          retention-days: 30
+          if-no-files-found: warn
