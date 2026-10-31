@@ -1,0 +1,50 @@
+name: Frogcs audit verified 12seed S growth x D aquatic duration source factorial
+
+on:
+  push:
+    branches:
+      - research/growth-duration-isolation-20261031
+    paths:
+      - .github/workflows/research_growth_duration_12seed_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  independent-twelve-seed-factorial-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OLD_RUN: '41193107034'
+      OLD_NAME: frogcs-finite-n-80year-12seed-verified
+      NEW_RUN: '41194882028'
+      OLD_DIR: research/results/growth_duration_isolation_20261031/pr149_12seed
+      NEW_DIR: research/results/growth_duration_isolation_20261031/new_missing_cells
+      OUT_DIR: research/results/growth_duration_isolation_20261031/audited_2x2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2' 'tabulate>=0.9,<1'
+      - name: Download immutable old 12 independent seed source — no rerun
+        run: |
+          mkdir -p "$OLD_DIR"
+          gh run download "$OLD_RUN" --repo "${{ github.repository }}" --name "$OLD_NAME" --dir "$OLD_DIR"
+      - name: Download all three successful NEW true 80-year growth/period source shards
+        run: |
+          mkdir -p "$NEW_DIR"
+          gh run download "$NEW_RUN" --repo "${{ github.repository }}" --pattern "frogcs-growth-duration-80y-seeds*" --dir "$NEW_DIR"
+      - name: Verify 2x2 intervention and compute genuine 12seed main plus interaction effects
+        run: python research/scripts/audit_S_growth_D_duration_12seed.py --old12 "$OLD_DIR" --new3 "$NEW_DIR" --output "$OUT_DIR"
+      - name: Preserve independent source outcome summaries and all model-native results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-12seed-growth-duration-factorial-audited
+          path: research/results/growth_duration_isolation_20261031/audited_2x2/
+          if-no-files-found: warn
+          retention-days: 30
