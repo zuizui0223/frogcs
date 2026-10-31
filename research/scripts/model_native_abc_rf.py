@@ -89,14 +89,16 @@ def features(ref,scale,seed=SEED):
     if scale not in SCALES:raise ValueError("Unknown response scale prior")
     if scale in ("log","raw"):
         return ref[[f"sign_{scale}_{k}" for k in METRICS]].to_numpy(dtype=np.int8)
-    n=ref.draw.nunique()
-    keys=[(i,j) for i in sorted(ref.draw.unique()) for j in (0,1)]
-    if len(keys)!=2*n:raise AssertionError("Incomplete latent reversal pairs")
-    decision=np.array([0,1]*n,int)
+    unique=np.sort(ref.draw.unique())
+    if len(unique)%2:raise ValueError("Need balanced number of process draws")
+    decision=np.array([0,1]*(len(unique)//2),int)
     rng=np.random.default_rng(seed+9)
     decision=decision[rng.permutation(len(decision))]
-    map_to_scale=dict(zip(keys,decision))
-    want=np.asarray([map_to_scale[(int(r.draw),int(r.reverse_on))]
+    map_to_scale=dict(zip(unique,decision))
+    # Response scale is a latent model-wide observation convention,
+    # drawn independently of trophic-reversal state but identically across
+    # all 12 structures at the same process-rate draw.
+    want=np.asarray([map_to_scale[int(r.draw)]
                      for r in ref.itertuples(index=False)],int)
     if want.mean()!=.5:
         raise AssertionError("Unbalanced 50/50 response-scale nuisance")
@@ -124,12 +126,36 @@ def reject_four_sign_abc(ref,params,scale,seed=SEED):
     rows=[];marginal=[]
     for cls,g in allq.groupby("structure_id"):
         n=len(g);k=int(g.accepted.sum())
-        lo,hi=wilson_ci(k,n)
+        byrate=g.groupby("draw").accepted.agg(["mean","size"]).sort_index()
+        if len(byrate)*2!=n or not byrate["size"].eq(2).all():
+            raise AssertionError("Each independent process rate needs both predation edges")
+        weighted=byrate["mean"].to_numpy(float)
+        if not np.isin(weighted,[0.,.5,1.]).all():
+            raise AssertionError("Invalid paired reversal weighting")
+        empirical=float(weighted.mean())
+        if not np.isclose(empirical,k/n,rtol=0,atol=1e-12):
+            raise AssertionError("Unbalanced latent reversal prior")
+        # Two reversal outcomes share one process parameter draw. They are
+        # NOT independent Bernoulli trials for a confidence interval.
+        if np.isin(weighted,[0.,1.]).all():
+            lo,hi=wilson_ci(int(weighted.sum()),len(weighted))
+            method="WILSON_OVER_256_INDEPENDENT_RATE_VECTORS"
+        else:
+            rng=np.random.default_rng(seed+191)
+            pick=rng.integers(0,len(weighted),size=(1999,len(weighted)))
+            values=weighted[pick].mean(axis=1)
+            lo,hi=map(float,np.quantile(values,[.025,.975]))
+            method="PAIRED_RATE_DRAW_BOOTSTRAP_1999"
+        independent_accepted=int(np.sum(weighted>0))
         rows.append(dict(scale=scale,structure_id=cls,context=g.context.iloc[0],
                          family=g.family.iloc[0],risk=bool(g.risk.iloc[0]),
-                         n_actual_simulations=n,n_process_rate_draws=g.draw.nunique(),
-                         n_accepted=k,acceptance_rate=k/n,
-                         acceptance_wilson_low=lo,acceptance_wilson_high=hi,
+                         n_actual_simulations=n,n_process_rate_draws=len(weighted),
+                         n_accepted=k,n_unique_accepted_rate_draws=independent_accepted,
+                         n_fully_accepted_rate_draws=int(np.sum(weighted==1)),
+                         n_half_accepted_rate_draws=int(np.sum(weighted==.5)),
+                         acceptance_rate=empirical,
+                         acceptance_ci_low=lo,acceptance_ci_high=hi,
+                         acceptance_ci_method=method,
                          reversal_on_given_match=float(g.loc[g.accepted,"reverse_on"].mean())
                           if k else np.nan))
         accepted=g[g.accepted]
@@ -137,12 +163,14 @@ def reject_four_sign_abc(ref,params,scale,seed=SEED):
             x=accepted[p].to_numpy(float)
             priorvalues=g[p].to_numpy(float)
             marginal.append(dict(scale=scale,structure_id=cls,parameter=p,
-                                 n_accepted=k,n_actual_priors=len(g),
+                                 n_accepted=k,
+                                 n_independent_accepted_rate_draws=independent_accepted,
+                                 n_actual_priors=len(weighted),
                                  prior_median=float(np.median(priorvalues)),
                                  accepted_q10=float(np.quantile(x,.1)) if k else np.nan,
                                  accepted_median=float(np.median(x)) if k else np.nan,
                                  accepted_q90=float(np.quantile(x,.9)) if k else np.nan,
-                                 n_enough_for_interpretation=bool(k>=MIN_ACCEPTED_FOR_STABLE_QUANTILES)))
+                                 n_enough_for_interpretation=bool(independent_accepted>=MIN_ACCEPTED_FOR_STABLE_QUANTILES)))
     table=pd.DataFrame(rows)
     if len(table)!=RF_N_CLASSES or table.n_actual_simulations.nunique()!=1:
         raise AssertionError("Unequal class priors in model-type ABC")
@@ -155,9 +183,24 @@ def reject_four_sign_abc(ref,params,scale,seed=SEED):
 
 
 def rf_model_choice(ref,scale,seed=SEED):
-    x=features(ref,scale,seed)
-    labels=ref.structure_id.to_numpy(str)
-    draws=np.asarray(ref.draw,int)
+    # Paired predation ON/OFF simulated at the exact same rate vector is a
+    # two-state latent nuisance, *not* two independent RF training records.
+    # Integrate with one balanced reverse state per independent rate vector,
+    # using identical decisions for every structural class.
+    unique_draws=np.sort(ref.draw.unique())
+    if len(unique_draws)%2:raise ValueError("Balanced latent reversal needs even process draws")
+    chosen=np.array([0,1]*(len(unique_draws)//2),dtype=int)
+    chosen=chosen[np.random.default_rng(seed+13).permutation(len(chosen))]
+    states=dict(zip(unique_draws,chosen))
+    selection=np.asarray([int(r.reverse_on)==states[int(r.draw)]
+                          for r in ref.itertuples(index=False)],dtype=bool)
+    sampled=ref.loc[selection].reset_index(drop=True)
+    if (len(sampled)*2!=len(ref) or
+        sampled.groupby(["structure_id","draw"]).size().ne(1).any()):
+        raise AssertionError("Duplicate paired reverse training rows or missing class")
+    x=features(sampled,scale,seed)
+    labels=sampled.structure_id.to_numpy(str)
+    draws=np.asarray(sampled.draw,int)
     unique=np.unique(draws)
     training_ids,held_ids=train_test_split(unique,test_size=.2,random_state=seed+10,
                                            shuffle=True)
@@ -210,6 +253,9 @@ def rf_model_choice(ref,scale,seed=SEED):
               training_unique_sign_patterns=len(np.unique(x[train],axis=0)),
               n_process_draws_train=len(training_ids),
               n_process_draws_holdout=len(held_ids),
+              actual_latent_predation_ensemble_size=int(len(ref)),
+              independent_rf_training_units=int(len(sampled)),
+              reversal_integration="one balanced ON/OFF nuisance per independent process-rate vector",
               n_reference_train=int(train.sum()),n_reference_holdout=int(hold.sum()),
               reference_exact_target_sign_rows=int(matches.sum()),
               selected_structure_target_sign_rows=int(
