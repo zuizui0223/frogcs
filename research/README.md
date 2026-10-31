@@ -1,5 +1,11 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #149 の最新12seed主結果
+
+**最新の12seed主結果：** [検証済み80年・発生順序×植生×分散の独立12seed結論](FINITE_N_80YEAR_12SEED_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [8新規実計算SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41192793427) / [元4seed＋新8seedの独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41193107034) / [発生順序・植物機能別12seed区間監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41193373502)。
+
+外部流入OFF・少数個体q3のFでは、年次移動あり−なしによる80年末の占有差は元の発生順序で **+3.79〜+4.60/8**、ヤゴ先行・有尾類が追い越す発生順序で **−0.19〜−0.29/8**（2植生機能、12独立seed）。**発生順序で分散による空間維持の符号が逆転するモデル内結果**を真正元捕食カーネルと有限N導入により確認。外部流入OFF・q12のDでは移動による長期占有増加も再現したが、q3のDでは移動で再占有しても年80占有は0。いずれも仮想率・有限モデルの結果であり、野外における捕食・定着因果を直接推定したものではない。旧4seedレポートは履歴として保持し、科学的な主張は12seed版を優先する。
+
 ## 2026-10-31: PR #149 — 有限個体の局所消失・再占有（独立Draft）
 
 [Draft PR #149](https://github.com/zuizui0223/frogcs/pull/149) / [事前仕様](FINITE_N_SOURCE_COHORT_BRIDGE_PROTOCOL_2026-10-31.md) / [20年方法試行と整数会計の成功CI](https://github.com/zuizui0223/frogcs/actions/runs/41191695453) / [80年4シャード実測・独立監査 SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41191851194) / [検証済み80年結果](FINITE_N_80YEAR_SOURCE_VERIFIED_RESULT_2026-10-31.md) / [4seedブロック監査 SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41192574552)。
