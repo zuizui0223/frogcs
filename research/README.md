@@ -1,14 +1,12 @@
 # 現行研究の入口
 
-## 2026-10-31: PR #153 — 80年捕食エッジ×局所加入の必要性検査（12seed成功）
+## 2026-10-31: PR #153 — S→F捕食経路は固定合成モデルの条件付き反転に必要かつ十分（真正80年12seed）
 
-[Draft PR #153](https://github.com/zuizui0223/frogcs/pull/153) / [検証済み生物学的結果](PREDATOR_EDGE_LOCAL_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [捕食時間窓・元カーネル活性テストSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199068663) / [真正80年24本SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41198781275) / [全24本の12seed独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199156266)。
+[Draft PR #153](https://github.com/zuizui0223/frogcs/pull/153) / [最終12seed十分性結果](SF_ONLY_TROPHIC_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [必要性12seed検証](PREDATOR_EDGE_LOCAL_RECRUITMENT_12SEED_VERIFIED_RESULT_2026-10-31.md) / [全24単経路削除元モデルSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41198781275) / [全12十分性元モデルSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41199700200) / [十分性独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41200093960)。
 
-PR152の局所加入強度（外部流入OFFのρ×conversion）を操作した率ID12背景において、**有尾類幼生→カエル幼生（S→F）捕食経路をOFFにすると、分散の年80占有効果がS成長で正→負に反転する現象が2植物機能×12/12seedで消失**。一方D→F、D→S、S→Dそれぞれの単独OFFでは同じ厳密反転が残った。**この固定モデル内の反転がS→F経路に依存する**ことが分かったが、野外因果やその1経路だけで十分かは別問題として扱う。
+外部移入OFF、8合成パッチ、q3、年間分散15%、元仮説率ID12にrho(ID0)だけ導入した強い局所加入背景では、有尾類幼生→カエル幼生捕食（S→F）の単独削除で分散効果の正→負反転が消失。**逆にS→Fだけ残して他の3有効捕食方向を除去しても反転が2植物設定×各12/12seedで維持**。直接捕食すべて無効では反転しない。局所加入が弱いID12ではS→Fのみでも反転しない。これは元の120日捕食＋80年成熟・加入の**モデル内での必要・十分・局所加入依存性**であり野外の必要十分性ではない。
 
-**時間窓の訂正**：#149〜152の2発生条件では、カエルが捕食可能な完成段階に入る65日目までにD羽化移行期が終わるため、完成F→羽化D（edge_FE）は数値上厳密ゼロ。PR148の第3条件ではD羽化80〜85日目にF完成後の時間が重なり、FEは**実際に作動する**ので、PR148全体やPR147の別ABMへFE-nullを一般化しない。元#149〜152のPR本文には限定範囲の訂正を付記した。
-
-**次工程として追加実行中**：[S→Fだけを残した条件 vs 直接捕食すべてOFFの真正80年12seed](https://github.com/zuizui0223/frogcs/actions/runs/41199700200)。この検査は最初のS→F必要性結果を見た後の独立な十分性実験であり、結果が成功するまで十分性は主張しない。
+カエルが完成段階になる65日目より前にD羽化が終わるため、今回の元2発生条件でFE（完成F→羽化D）は厳密ゼロ。PR148の別のS先行条件ではFEが非ゼロであるため、その結果をこのsubsetへ混ぜない。SF0_DF0_DS1_L0の植物保護はSF-only条件ではD→S除去で無効になるので、「2植物機能で独立に十分性が生物学的に再現」とは言わない。
 
 
 ## 2026-10-31: PR #152 — 生物率を1つだけ交換したときの分散救済の条件依存（12seed検証済み）
