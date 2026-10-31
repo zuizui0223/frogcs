@@ -178,13 +178,23 @@ def run(mode,out=OUT):
     if mode not in NEW_MODES:
         raise ValueError("Mode not originally prespecified")
     out.mkdir(parents=True,exist_ok=True)
-    flows=[];summaries=[];annual=[];events=[];total_registry=0
+    flows=[];summaries=[];annual=[];events=[];registries=[];movements=[];lineages=[];total_registry=0
     for reverse in (False,True):
         for seed in NEW_SEEDS:
             flow,summary,year,episode,real=audited_one(mode,reverse,seed)
             flows.append(flow);summaries.append(summary);annual.append(year)
             if len(episode):events.append(episode)
             total_registry+=len(real["registry"])
+            for field,destination in (("registry",registries),
+                                      ("movements",movements),
+                                      ("lineages",lineages)):
+                fragment=real[field].copy()
+                if fragment.empty:
+                    continue
+                fragment["mobility"]=mode
+                fragment["reverse"]=bool(reverse)
+                fragment["seed"]=int(seed)
+                destination.append(fragment)
             print("S_STAGE_NEW_SEED_REAL_20Y",mode,reverse,seed,
                   "S year20 occupied",int(summary[summary.guild=="S"].occupied_year20.iloc[0]),
                   "S births",int(summary[summary.guild=="S"].total_births.iloc[0]),
@@ -199,6 +209,13 @@ def run(mode,out=OUT):
         len(allflow)!=len(NEW_SEEDS)*2*3*PATCHES*YEARS or
         len(allannual)!=len(NEW_SEEDS)*2*YEARS):
         raise AssertionError("Unexpected genuine stochastic source grain")
+    lineage=pd.concat(lineages,ignore_index=True)
+    registry=pd.concat(registries,ignore_index=True)
+    moves=pd.concat(movements,ignore_index=True) if movements else pd.DataFrame()
+    if len(lineage)!=len(NEW_SEEDS)*2*3 or len(registry)!=total_registry:
+        raise AssertionError("Full source ancestry history was not preserved")
+    if len(moves)!=int(compact.n_surviving_moves.sum()):
+        raise AssertionError("Individual movement sources are missing or double counted")
     if compact.max_abs_local_source_sink_residual.ne(0).any():
         raise AssertionError("Unresolved local births/deaths/observed survivor migration ledger")
     for field,table in [("new_seed_guild_source_sink_summary",compact),
@@ -207,6 +224,11 @@ def run(mode,out=OUT):
     allflow.to_csv(out/(mode+"_new_seed_local_flux.csv.gz"),
                    index=False,compression={"method":"gzip","mtime":0})
     e.to_csv(out/(mode+"_new_seed_return_episodes.csv"),index=False)
+    lineage.to_csv(out/(mode+"_new_seed_lineage_summary.csv"),index=False)
+    registry.to_csv(out/(mode+"_new_seed_all_parent_UIDs.csv.gz"),index=False,
+                    compression={"method":"gzip","mtime":0})
+    moves.to_csv(out/(mode+"_new_seed_surviving_movement_UIDs.csv.gz"),index=False,
+                 compression={"method":"gzip","mtime":0})
     receipt=dict(status="NEW_EIGHT_SEEDS_TRUE_20YEAR_S_STAGE_RATE_SOURCE_SINK",
                  source_genuine_ABM_unchanged=True,
                  mode=mode,original_4_seed_ids=list(PARENT_SEEDS),
