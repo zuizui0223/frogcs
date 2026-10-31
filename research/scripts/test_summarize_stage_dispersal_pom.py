@@ -1,10 +1,12 @@
 """Synthetic controls for five-stage-model POM: seed pairing and censoring."""
 import unittest
+import tempfile
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
 from summarize_stage_dispersal_pom import (
-    MODES,SEEDS,GUILDS,complete_source_table,paired_dispersal_effects,
+    MODES,SEEDS,GUILDS,load_prior_modes,complete_source_table,paired_dispersal_effects,
     model_native_motifs
 )
 
@@ -81,6 +83,43 @@ class FiveStageMigrationPOMTests(unittest.TestCase):
         self.assertEqual(on.n_seed_replicates_with_recolonization,4)
         self.assertEqual(on.n_seed_replicates_with_birth_plus_2year_persistence,4)
         self.assertEqual(on.n_seed_replicates_exceeding_same_seed_no_mobility_occupancy,4)
+
+    def test_original_source_and_uid_recolonization_counts_join_without_suffix_collision(self):
+        x=matched_five_modes()
+        o=x[x.mobility.isin(("off","original"))].copy()
+        frame=pd.DataFrame(dict(
+            mobility=o.mobility,reverse=o.reverse,seed=o.seed,guild=o.guild,
+            n_occupied_end=o.occupied_year20,
+            n_local_extinction_events=o.n_extinctions,
+            n_recolonization_events=o.n_recolonizations,
+            n_survivor_movements=o.n_observed_survivor_movements,
+            n_living_elsewhere_than_ancestor_patch=o.n_living_elsewhere_than_founder_patch,
+            n_multisite_founder_lineages=o.n_multisite_founder_lineages,
+            n_living_grandchild_or_later=o.n_living_grandchild_or_later,
+            n_recolonizations_with_surviving_immigrant=o.n_recolonizations))
+        follow=pd.DataFrame(dict(
+            mobility=o.mobility,reverse=o.reverse,seed=o.seed,guild=o.guild,
+            n_recolonization_events=o.n_recolonizations,
+            n_recolonizations_with_survivor_movements=o.n_recolonizations,
+            n_eligible_two_followups=o.n_two_followups_eligible,
+            n_retained_two_followups=o.n_two_followups_retained,
+            n_two_census_persistent_plus_local_births=o.n_two_followups_and_local_birth,
+            n_recolonizations_censored_at_second_followup=o.n_two_followups_censored,
+            n_with_postreturn_external_natal_parent_births=o.n_postreturn_outside_parent_birth_events))
+        with tempfile.TemporaryDirectory() as tmp:
+            original=Path(tmp)/"original.csv"
+            uid=Path(tmp)/"uid.csv"
+            frame.to_csv(original,index=False)
+            follow.to_csv(uid,index=False)
+            result=load_prior_modes(original,uid)
+            self.assertEqual(len(result),48)
+            self.assertTrue(result.n_recolonizations.eq(o.n_recolonizations).all())
+            self.assertTrue(result.n_two_followups_censored.ge(0).all())
+            incorrect=follow.copy()
+            incorrect.iloc[0,incorrect.columns.get_loc("n_recolonization_events")]=99
+            incorrect.to_csv(uid,index=False)
+            with self.assertRaises(AssertionError):
+                load_prior_modes(original,uid)
 
     def test_broken_annual_censoring_and_double_seeds_fail(self):
         a=matched_five_modes()
