@@ -230,6 +230,7 @@ def observed_context(d,bg):
         raise AssertionError("Inconsistent observed sign benchmark")
     return dict(bg=bg,design=design,q=q,pinv=pinv,target_r2=observed_r2,
                 selected=tuple(selected)+(4,),observed_boot5=state,
+                observed_boot4=boot4,observed_boot6=boot6,
                 modal=modal,delta=delta,point=point,obs_table=obs_table)
 
 
@@ -306,12 +307,10 @@ def evaluate_family(family,noise_type="iid",cal_reps=N_CAL,eval_reps=N_EVAL,
         for i,name in enumerate(FIVE):
             if i<4:
                 vals=np.mean(obs_state[:,i]==-1)
-                low,high=np.quantile(joint_observed_bootstrap(
-                    d.strong_rate,d,design,n_boot=999,seed=SEED)[:,i],[.025,.975])
+                low,high=np.quantile(context["observed_boot4"][:,i],[.025,.975])
             else:
                 vals=np.mean(obs_state[:,4]==0)
-                bs=bootstrap_observed(d.strong_rate,design,d.spatial_block,n_boot=999,seed=SEED)[0][:,4]
-                low,high=np.quantile(bs,[.025,.975])
+                low,high=np.quantile(context["observed_boot6"][:,4],[.025,.975])
             observed.append(dict(family=family,noise_type=noise_type,
                                  background=bg,pattern=name,observed_value=context["point"][i],
                                  observed_bootstrap_low=float(low),observed_bootstrap_high=float(high),
