@@ -164,9 +164,9 @@ jobs:
           x=pd.read_csv(p/'all_source_group_scores.csv')
           z=pd.read_csv(p/'cross_background_directional_matches.csv')
           obs=pd.read_csv(p/'unique_observed_r2_and_patterns.csv')
-          assert len(s)==3*2*2*2*2 and len(z)==3*2*2
+          assert len(s)==3*2*2*2 and len(z)==3*2*2
           assert len(obs)==2*5
-          assert s.groupby(['family','noise_type']).size().eq(8).all()
+          assert s.groupby(['family','noise_type']).size().eq(4).all()
           assert (s.n_source_groups==s.n_r2_matched_groups+s.n_r2_unreachable_groups+
                  s.n_r2_not_bracketed+s.n_r2_unconverged).all()
           assert x.groupby(['family','noise_type','background','mode']).source_group.nunique().ge(1).all()

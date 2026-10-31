@@ -111,7 +111,7 @@ def combine(folder):
         for noise in NOISE_TYPES:
             for mode in MODES:
                 group=scores[(scores.family==family)&(scores.noise_type==noise)&
-                             (scores.mode==mode)&
+                             (scores['mode']==mode)&
                              (scores.calibration_status.isin(N_CALIBRATED))]
                 passes=group[group.modal_complete_count>0]
                 v=passes.groupby("source_group").background.nunique()
