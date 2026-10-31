@@ -29,13 +29,15 @@ N_REPS=48
 SOURCE_NEAR_FAR=.003714030411959474
 
 
-def stable_synthetic_panel(annual,geometry,*,seed,kind,mixing):
+def stable_synthetic_panel(annual,geometry,*,seed,kind,mixing,environment_near=.38):
     if kind not in ("SHARED_ROUTE_ENV","LOCAL_ENV_PERSISTENCE","STABLE_NEIGHBOUR_MIXING"):
         raise ValueError("Unknown numerical null or spatial-mixing alternative")
     if mixing not in MIXING:
         raise ValueError("Model source mixing fraction not prespecified")
     if kind!="STABLE_NEIGHBOUR_MIXING" and mixing!=0.:
         raise ValueError("Environment-only null cannot be assigned organism mixing")
+    if environment_near not in (0.,.12,.25,.38,.5):
+        raise ValueError("Local environment propagation not predeclared")
     g=geometry.drop_duplicates("site").reset_index(drop=True)
     n=len(g)
     ids={s:i for i,s in enumerate(g.site)}
@@ -58,7 +60,7 @@ def stable_synthetic_panel(annual,geometry,*,seed,kind,mixing):
         if kind=="LOCAL_ENV_PERSISTENCE":
             # Dynamic spatially correlated weather/hydroperiod proxy: NO
             # organism moves; the local environment spreads/autocorrelates.
-            env_now=(.45*local_env_prev+.38*local_env_prev[near]
+            env_now=(.45*local_env_prev+environment_near*local_env_prev[near]
                      +.22*site_bias+.42*route_shock[route]
                      +rng.normal(scale=.60,size=n))
             frog_now=(.55*frogs_prev+.65*env_now+.28*site_bias
