@@ -113,6 +113,25 @@ def summarize(source,out):
             r["delta_"+metric+"_zero_seed_blocks"]=int((a==0).sum())
         results.append(r)
     combined=pd.DataFrame(results)
+    # Do not hide the very stage×plant context that motivates this bridge.
+    # Source model names are original context__handling__risk__plant labels.
+    d["context"]=d.structure_id.astype(str).str.split("__").str[0]
+    d["plant_model"]=d.structure_id.astype(str).str.split("__").str[-1]
+    if (set(d.context)!={"original","D_first_S_overtakes"} or
+        set(d.plant_model)!={"SF1_DF0_DS0_L1","SF0_DF0_DS1_L0"}):
+        raise AssertionError("Original source ontogeny/plant-role labels changed")
+    disagg_by_seed=(d.groupby(["scale","immigration","context","plant_model",
+                               "guild","seed"],sort=True)[list(METRICS)]
+                     .mean().reset_index())
+    disagg=(disagg_by_seed.groupby(["scale","immigration","context","plant_model",
+                                    "guild"],sort=True)
+            .agg(n_independent_seeds=("seed","size"),
+                 mean_delta_occupancy=("final_occupied_patches","mean"),
+                 mean_delta_returns=("n_local_returns","mean"),
+                 mean_delta_extinctions=("n_local_extinctions","mean"))
+            .reset_index())
+    if not disagg.n_independent_seeds.eq(12).all():
+        raise AssertionError("Missing source 12seed by stage × plant context")
     means=(x.groupby(["scale","immigration","movement","guild"],sort=True)
            .agg(n_seed_scenarios=("seed","size"),
                 mean_final_occupied=("final_occupied_patches","mean"),
@@ -127,6 +146,8 @@ def summarize(source,out):
     vals.to_csv(out/"paired_seed_block_deltas_12.csv",index=False)
     combined.to_csv(out/"comparison_12seed_block_intervals.csv",index=False)
     means.to_csv(out/"12seed_source_condition_means.csv",index=False)
+    disagg_by_seed.to_csv(out/"12seed_stage_plant_seed_deltas.csv",index=False)
+    disagg.to_csv(out/"12seed_stage_plant_interactions.csv",index=False)
     slim=combined[["scale","immigration","guild",
                    "delta_final_occupied_patches_orig4",
                    "delta_final_occupied_patches_new8",
@@ -152,6 +173,11 @@ def summarize(source,out):
         "",
         means.to_markdown(index=False,floatfmt=".3f"),
         "",
+        "## Stage order × plant mechanism: own-immigration-OFF context differences",
+        "",
+        disagg[(disagg.immigration==0)&
+               (disagg.guild.isin(("F","D")))].to_markdown(index=False,floatfmt=".3f"),
+        "",
         "Only 12 seed labels are independent replicate units; 64 fixed model"
         " source treatment corners, patches and event rows are not additional"
         " random replication. Bootstrap 9999 resamples 12 seed-block means"
@@ -173,6 +199,7 @@ def summarize(source,out):
     print(json.dumps(receipt),flush=True)
     print("TWELVE_SEED_OCCUPANCY_CONTRASTS\n"+slim.to_string(index=False),flush=True)
     print("TWELVE_SEED_SOURCE_MEANS\n"+means.to_string(index=False),flush=True)
+    print("TWELVE_SEED_STAGE_PLANT_CONTEXT\n"+disagg.to_string(index=False),flush=True)
     return receipt
 
 
