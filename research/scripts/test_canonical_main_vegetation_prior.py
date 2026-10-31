@@ -16,6 +16,12 @@ class MainCanonicalPlantPriorTests(unittest.TestCase):
         x=fake_all_stage_sources()
         x["min_F_B"]=1.
         x["max_F_B"]=2.
+        # The synthetic source fixture exposes beta values; the actual
+        # genuine 80y source also contains each exact sign column.
+        for scale in ("log","raw"):
+            for term in ("OS","OV","SV","OSV"):
+                x[f"sign_{scale}_{term}"]=np.sign(
+                    x[f"beta_{scale}_{term}"]).astype(int)
         cls.x=x
 
     def test_main_3600_canonical_redundant_risk_structure_removed(self):
