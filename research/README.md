@@ -1,5 +1,16 @@
 # 現行研究の入口
 
+## PR #146の現在の主目的：マクロパターンを説明できるシナリオの選定
+
+**ABM/PDEありきではなく、観測結果をよく予測できる機構を選ぶ。** [24候補のnested spatial CV実測結果](MACRO_FIRST_SCENARIO_SELECTION_RESULT_2026-10-31.md)では、4,248地点・63,180回の強発声を5外側fold×3内側foldで評価した。既存の80年決定論的な季節コホート＋年次遅延加入モデルを主解析に採用し、3発生順序×2捕食処理×2避難×2逆転捕食を比較。**両SDM背景で環境対照に勝つシナリオは確認されなかった**。
+
+- 繰り返し選ばれた探索候補：`case_084`（有尾類先行・後にトンボが成長で追い越す・カエル→羽化期トンボ捕食）。各背景で5fold中3fold。ただしOSは観測と逆符号。
+- 同じ条件で逆転捕食だけ外した`case_080`との差は極小で、統計的に区別できず。12組×両背景の24比較でも逆転捕食の独立した予測増分は確認できない。
+- 固定仕様：[事前定義した候補と対照](MACRO_FIRST_SCENARIO_SELECTION_PROTOCOL_2026-10-31.md) ／ 再計算：[実装](scripts/select_macro_trophic_scenarios.py)・[6件のテスト](scripts/test_select_macro_trophic_scenarios.py) ／ [実数値の保存](results/macro_scenario_selection_20261031/) ／ [CI成功](https://github.com/zuizui0223/frogcs/actions/runs/41158677472)。
+
+このPR内の空間ABM/PDEは**二次的な合成シナリオ診断**であり、現時点のマクロ説明機構の選定には使わない。
+
+
 ## 独立探索：世代間の捕食関係逆転（PR #146）
 
 [20年の空間ABM＋反応拡散PDE実装](scripts/multigeneration_reversal.py)は、従来の決定論的な年次コホートモデルを**改変せず**、カエルの変態後段階→トンボ羽化期の捕食が翌年以降の個体群・局所的な消失・移動へどう波及し得るかを比較します。親個体IDと世代番号を追跡するABM、同じ捕食危険を用いた7段階の空間PDEを、8パッチ・20年で実行しました。8テストとGitHub Actionsの全シナリオ再計算は成功しています。
