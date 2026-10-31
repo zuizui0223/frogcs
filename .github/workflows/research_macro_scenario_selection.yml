@@ -1,0 +1,77 @@
+name: Frogcs macro-first scenario selection
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/scripts/select_macro_trophic_scenarios.py
+      - research/scripts/test_select_macro_trophic_scenarios.py
+      - research/MACRO_FIRST_SCENARIO_SELECTION_PROTOCOL_2026-10-31.md
+      - .github/workflows/research_macro_scenario_selection.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heldout-scenario-selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned minimal analysis packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Validate nested selection, source grid, holdout leakage and scoring
+        run: python -m unittest discover -s research/scripts -p 'test_select_macro_trophic_scenarios.py' -v
+      - name: Verify frozen site and 80-year model sources exist
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = [
+              'research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz',
+              'research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz',
+              'research/results/literature_extension_20261029/primary_0_dynamic_cells.csv.gz',
+              'research/results/literature_extension_20261029/primary_1_dynamic_cells.csv.gz',
+          ]
+          for name in files:
+              f=Path(name)
+              if not f.is_file() or f.stat().st_size==0:
+                  raise SystemExit('Missing required frozen original source: '+name)
+              print(name, f.stat().st_size)
+          PY
+      - name: Run 5 outer by 3 inner block CV over fixed 24 scenarios and two nulls
+        run: python -u research/scripts/select_macro_trophic_scenarios.py --run
+      - name: Verify every full-data candidate is selected without outer target leakage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          p=Path('research/results/macro_scenario_selection_20261031')
+          pred=pd.read_csv(p/'outer_heldout_probabilities.csv')
+          inner=pd.read_csv(p/'inner_candidate_scores.csv')
+          choice=pd.read_csv(p/'outer_chosen_scenarios.csv')
+          gain=pd.read_csv(p/'paired_null_comparisons.csv')
+          assert len(pred)==4248*2*3, len(pred)
+          assert len(inner)==2*5*(24+2), len(inner)
+          assert len(choice)==10 and len(gain)==6, (len(choice),len(gain))
+          assert choice.test_vegetated.min()>0
+          assert pred.groupby(['background','candidate','site']).size().max()==1
+          assert (pred.n>0).all() and pred.predicted.between(0,1,inclusive='neither').all()
+          assert set(gain.reference)=={'selected_environment','env_additive','env_interactions'}
+          print('AUDIT OK: 4248 sites, 2 backgrounds, 24 scenarios, 10 nested selections, 6 paired reference contrasts')
+          PY
+      - name: Archive all site-level predictions and methodological receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-macro-first-nested-scenario-selection-20261031
+          path: research/results/macro_scenario_selection_20261031/
+          if-no-files-found: warn
+          retention-days: 30
