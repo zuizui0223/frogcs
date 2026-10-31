@@ -49,3 +49,18 @@ This first pilot IS NOT a field-conditioned posterior ABC or a forecast. Full fi
 - Selected D_first context couples growth and D duration; do not call it change in species arrival order.
 - Model-native 2×2×2 signs do not have same quantitative estimand as measured macro site-level correlations.
 - Original deterministic and stochastic finite-N source models use same conditional hazard/annual mean but different stochastic sampling assumptions; no pathwise numerical equality claimed.
+
+
+## Second pre-result gate — SAME source theta on original 4,248 NAAMP site POM
+
+Without adding new field observations, the genuine 80year F_B vertex responses are projected to the actual original 4,248 sites by ONE predetermined UNFITTED proxy observation mapping. This is separate from the balanced source-model-native POM, fixed before the 80year main results are inspected.
+
+1. For each same-80year source network × context × plant × rate ID × q × mobility × seed, take precisely its eight F_B last20-year source readouts. No biological rerun, changed theta or cross-model joining.
+2. Convert original Odonata and pond-breeding Caudata environmental suitability to global fractional rank (rank−0.5)/N separately within the two original SDM backgrounds, N=4,248. Do not rank separately inside high/low S strata, tune a source warp based on observations, or use observed calling to map latent source supply.
+3. Map each site's original V=0/1 wetland-vegetation flag to the source V coordinate. Use predetermined TRILINEAR interpolation of the original 2×2×2 source F_B cube across S/D percentile ranks. The interpolation weights are nonnegative and sum to one. No observation noise or fitted adult-calling link.
+4. Compare ranks of predicted aquatic F_B with the observed adult strong-calling fraction using original site-POM source six summaries: OS,OV,SV,OSV,low/high-S-mask O–F GLOBAL-rank correlations. Original 56 spatial-block ×999 bootstrap, shrinkage covariance and source heldout route/vegetation statistics stay unchanged.
+5. Report absolute numerical predicted−observed residuals, covariance-aware Mahalanobis distance, and number of six effects within marginal observed 95% block-bootstrap intervals. Six separate 95% bands do NOT form a formal 95% simultaneous adequacy test.
+6. If source F_B is constant (e.g. all zero), mark the model as degenerate and uninformative, not a valid field match. No post-result alternative transformation.
+7. Preserve all original observational denominators and source SHA. This same-theta site proxy makes one common source POM and 80y outcome table possible, but even a six-statistic fit would be conditional on the unvalidated larval-cohort→adult-calling rank link and NOT demonstrated wild predator causation or an ecological posterior.
+
+The previous 132 fixed-site POM used a finer 9×9×2 source response grid. The new 2×2×2 trilinear projection is a distinct *predeclared coarse source approximation*, not a numerical replication of that earlier 132-library adequacy test. No new natural pond observation data have been obtained.
