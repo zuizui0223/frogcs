@@ -1,92 +1,84 @@
-# frogcs — 成果の統合・投稿判断メモ（2026-10-31）
+# frogcs — **単一の統合論文**による投稿方針（2026-10-31）
 
-**編集上の判断メモのみ。野外データ、main原稿、旧RC6、固定snapshotおよびPR #146〜155のソース・数値は変更しない。投稿・事前照会・共著者承認は未実施。**
+**著者方針に従う新しい正式な編集判断：RC6＋main広域マクロ解析＋PR #146〜#155の過程モデルを、別論文としては出さず、一つの原稿へ統合する。** この文書は同日の旧「観測論文A／理論論文B／RC6論文Cに分割する」提案を**明示的に撤回・上書き**する。旧提案の履歴はgit commitで保持。科学的な数値、mainのSHA固定データ、PR #146〜155は変更しない。
 
-## 0. 結論と投稿の順番
+**本原稿の現在の英語ドラフト：** [ONE_INTEGRATED_FROGCS_MANUSCRIPT_DRAFT_2026-10-31.md](ONE_INTEGRATED_FROGCS_MANUSCRIPT_DRAFT_2026-10-31.md)。この編集ブランチは現在の実証原稿のレビュー候補で、**学術誌への実投稿は未実施**。
 
-**今は追加の機構探索を停止する。** 投稿可能性を最優先で考えるなら、現行mainの広域観測結果を中心にした原稿1本を先に整える。PR #146〜155の有限個体モデルは「野外機構を再現した証明」ではなく、**どの条件では機構の符号が変わり得るか／一般化に失敗するかを示したモデル内の補助成果**として整理し、必要なら後続の理論モデル論文の材料にする。
+## 1. 中心の一問と、三つの連続した証拠階層
 
-現行mainの[二部構成原稿](../research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)は、北米マクロ観測と3,600候補機構の比較に基づく。モデル部は野外の観測変数・三者項を十分には再現していない。**現行main原稿の機構比較を、後発のPR155までのソースを加えたことだけで査読準備完了と認定しない**。PR146の理論群・PR147の個体ABM・PR148〜155の有限Nは異なる仮定、母数、観測量を持つ。
+> **カエルの繁殖発声はどのような空間構造を持ち、どのような生物群集・植生の文脈で現れ、その持続や分散を説明する生活史機構はどこまで成立するのか？**
 
-**原稿A（現在の主目標）：広域カエル発声と三群環境適合度・植生・水域履歴に関する条件付き関連。**
-主役はNAAMPの野外**観測的な関連**。未校正の幼生捕食モデルを、観測的結果の原因としてDiscussionで接続しない。モデルを残すなら「互いに異なる説明の成立条件を示す限定的なmodel-native illustration」とし、結果を野外データとの直接適合と言わない。
+**一つの研究構成：**
 
-**原稿B（保留する理論候補）：同じ分散が救済にも長期喪失にもなりうる人口動態の成立条件。**
-SF幼生捕食×局所加入×S成長×有限個体性×移動のモデル内関係。#153のq3必要・十分は#155で人口尺度依存（q3 2/2植物、q6 1/2、q9/12 0/2）と判明。元率ID0の単独成長反転も#151で4率中1率の条件限定。したがって汎用的な「有尾類の成長が分散を悪化」「S→Fだけで必ず反転」は主張不可。**生物率・空間・個体数の広い範囲に一般化していないため、理論誌用の独立投稿原稿は現時点では未完成**。
+1. **現象の定義（短時間の空間パルス）**：RC6のNAAMP雨前後マッチングで、53 taxa・4,236 wetter/drier pairs（うち厳密歴史情報のある2,916 pairs）を解析。補正後でも同一分類群の複数地点に強いコーラスが集中する（観測1.650、帰無1.353、超過0.297、Monte Carlo P=0.000999）。同じ物理地点の過去強発声との対応β=0.151［0.129,0.173］。**個体移動や真の加入ではなく音声活動の空間配置**。
+2. **現れる地域・群集の文脈（観測マクロ）**：別の選別・集計単位のNAAMP4,248地点、GBIF/GloBIから28モデル化種の群別適合度、植生・過去水検出・強発声履歴。トンボ環境適合度と強発声頻度の全域負相関−0.095/−0.086、有尾類適合度高低の相関差−0.385［−0.509,−0.240］/−0.179［−0.328,−0.029］、過去強発声履歴差+27.68pp/4,040 pairs、水検出頻度差−1.481pp/3,907 pairs。OSVの正の三者項は背景・空間尺度依存で**一貫した証拠ではない**。**適合度≠ヤゴや有尾類幼生の実測個体数**。
+3. **機構の可能性と成立境界（数理仮説のテスト）**：mainの3,600機構構成・20候補×24条件では特定候補の三方向成立が1/24に限定、**野外の正の三者項を再現せず**。PR #146〜155では元120日捕食＋80年加入・有限個体・空間移動の同一ソースを段階的に検証し、S→F幼生捕食が特定の合成率・高加入・q3で移動効果の正→負反転に必要かつ十分。**q6では1/2植物設定のみ、q9/q12では0/2**。仮想生物率ID0だけでの成長主因効果は4率中1率だった。**成立する条件と成立しない条件を並べることが論文のモデル貢献**。
 
-**別途保存済み・優先順位を再決定できる原稿C：RC6 JAE音声空間集中。**
-原稿Cは2026-10-26以降のmainの**現行原稿ではない**。科学的結果は保存・初期投稿ファイルQAがSUCCESSで、投稿されたという記録はない。現行の研究方針ではRC6は研究史・参照パッケージである。もし著者が**別原稿として改めて投稿を選ぶ**なら、JAEの元投稿準備ファイルがあり、残るのは著者・責任著者・所属・CRediT・利益相反・Statement on Inclusion等の私的メタデータと共著者/所属承認である。WFTSは指定されたが、取得も検証も行われておらず**現行の提出ゲートではない**。[旧RC6投稿準備](../submission/SUBMISSION_READINESS.md)。NAAMPを共有する原稿A/Cを別誌へ投稿するなら、研究質問・エンドポイント・データ再利用を明示し、重複成果や独立再現扱いを避ける。
+3段階は**一本のResultsの流れ**であるが、推定する対象は互いに異なる。RC6のroute-run行列とmainの地点頻度は同じNAAMPを使用し、独立した野外再現ではない。長期F occupancyを成人カエルのcalling indexに変換する観測モデルは未構築。したがって**モデルが観測された発声や三者項を原因として説明したと書かない**。
 
-## 1. 証拠階層：これが「確かに言える」境界
+## 2. 投稿論文の結論・仮題
 
-| 層 | 確認済み成果 | 主張できること | 主張しないこと |
-|---|---|---|---|
-| Observational macro — main | NAAMP強発声地点4,248、捕食候補3群のGBIF/GloBI選定30候補・28種SDM（カエル15、池性を含む有尾類7、トンボ類6） | トンボ環境適合度との弱い負の全域相関 uniform −0.095/target-group −0.086。池性有尾類の高低条件では関連差 −0.385 [−0.509,−0.240] / −0.179 [−0.328,−0.029] | ヤゴ実測密度・有尾類の捕食行動・局所の因果的効果 |
-| 植生 — main | OS−、OV−は2背景で符号、SV＋とOSV＋は背景依存でCIが0を跨ぐ | 植生が三群の関連を変える「可能性」／環境文脈 | 野外で特定の避難場所や三者高次相互作用を実証 |
-| 長期サイト利用・水 — main | 同条件4,040ペアの過去強発声履歴差 +27.68ポイント [25.07,30.17]、3,907ペアの前年周辺水検出頻度差 −1.481ポイント [−2.601,−0.294] | 発声地点の再利用・周辺の衛星水検出頻度との関連 | 池の湛水日数、真の再定着/繁殖成功 |
-| 機構比較 — main | 3,600構成→20候補×24共通条件、成立候補1479の三方向一致は1/24条件 | 生残・捕食危険と順位回帰の三方向を限定的に生成できる候補は存在 | 野外の正の3者項（uniform +0.037）の再現：候補は負方向を生成した。共通条件への一般化・真機構同定 |
-| 発生と分散 — #146〜149 | 元の季節120日＋80年遅延加入、モデルnative空間輸送・整数個体分散、厳密0→正の再占有と持続を追跡 | 再占有≠長期占有、分散の効果はモデル背景で変わる | 個体標識の親子、野外の成体強発声・繁殖成功を直接生成 |
-| 成長・率依存 — #150〜152 | S成長0.014/0.030×D水中40/60の2×2、4仮想生物率。単独成長で正→負はID0だけ（1/4）。rhoとconversionは外部移入OFFでrho×conversionという同じ積 | 有尾類の成長・局所加入・捕食・生残背景はモデル内の反転を条件付ける | 「発生登場順序が原因」の断定、独立したrho/conversionの2機構 |
-| 捕食方向 — #153 | SF=S幼生→F幼生。高加入・q3・原率背景でSF削除すると反転消失、SFだけONでも反転維持。DF/DS/SD個別削除では反転維持 | **この固定モデル内**ではSF経路が厳密符号パターンに必要・十分 | 実湿地での必要十分性。F完成→D羽化捕食FEは今回のsubsetでは時間重複ゼロ、PR148第三条件では非ゼロ |
-| 個体数尺度 — #154〜155 | q3 / 6 / 9 / 12でSF-only反転が2/2・1/2・0/2・0/2植物設定、全捕食ONも同傾向。12独立seed/条件 | 本モデルの分散救済/喪失は**有限Nの人口規模と占有床・天井に依存**する | 野外の実個体数閾値・汎用的な人口サイズの閾値。q6/9はq12非再現を見た後の追加探索 |
+第一作業題：**Spatially structured frog calling across rainfall pulses and freshwater community contexts: limits of stage-structured demographic explanations**
 
-**注意**：全域順位相関・局所固定比較・合成モデルの長期占有は分母と観測過程が異なり、統合した1つの独立な推定量ではない。GBIF出現記録による潜在ニッチの類似度は、NAAMP地点で実現した捕食者密度ではない。自然データの正の三者項を、モデル内の負の三者項に都合よく合わせない。
+第二候補：**Spatial selectivity in frog choruses and the conditional limits of freshwater trophic explanations**
 
-## 2. 投稿誌の候補・到達条件（2026-10-31、公式スコープに基づく）
+主結論の一文：
 
-| 原稿 | 第一候補 / 到達し得る誌 | 現実的な選択肢 | 投稿判断 |
-|---|---|---|---|
-| A：広域マクロ・条件付き関連 | **Ecography（挑戦的）**：空間・時間の一般パターンとメカニズムへの一般的含意が必要。全国全域だけでなくwithin-route/地域での交絡分離が鍵 | **Freshwater Biology（優先する現実的第一候補）**。河川・池・湿地の個体群・群集関係、野外・理論双方に適合。ただし現地の捕食を実測していない点を誇張しない。さらに Ecology and Evolution をバックアップに検討 | **本文の主張をmacro観測に絞り、適合度や地点の同一性を守る原稿修正が必要**。現行main二部原稿は未投稿 |
-| B：S→F×局所加入×分散の理論モデル | **Oikos（一般原理・予測が成立する場合）** | **Ecological Modelling（モデルを主役とする場合）** | 現時点はhold。4率中1率・q依存・仮想係数の限定が大きく、普遍機構としては未完成 |
-| C：RC6 rain-linked multi-site chorus | **Journal of Animal Ecology（元原稿の投稿先）** | その結果に適した別の行動・群集生態学誌 | 現行mainでは保留された別研究。元投稿ファイルQAは成功、WFTS非取得はブロッカーでない。著者メタデータ／承認が必要 |
+> *Frog calling is spatially selective within rainfall-associated pulses and varies with freshwater guild and landscape context, while stage-structured models show that proposed demographic mechanisms are conditional rather than uniquely identified by these acoustic patterns.*
 
-- Freshwater Biology 公式 scope: https://onlinelibrary.wiley.com/page/journal/13652427/homepage/productinformation.html
-- Ecography 公式 for authors: https://nso-journals.org/ecography-for-authors
-- Oikos 公式 for authors: https://nso-journals.org/oikos-for-authors
-- Ecological Modelling 公式: https://shop.elsevier.com/journals/ecological-modelling/0304-3800
-- Journal of Animal Ecology 公式: https://besjournals.onlinelibrary.wiley.com/hub/journal/13652656/author-guidelines
+「selective」は比較したnullより集中した**空間的パターン**であり、個体が環境・捕食者を「選んだ」と行動の意思を測定した意味ではない。モデルのlong-term persistenceは野外観測されたrepeated callingの原因とはしていない。
 
-**Nature Ecology & Evolution / Ecology Letters のfirst-shotは、この証拠状態では高リスクで投稿の優先順位に置かない。** mainの[高インパクト誌ゲート](../research/manuscript/HIGH_IMPACT_SUBMISSION_GATES_2026-10-27.md)が要求した、観測された3者項まで再現するmechanism、真の共観測池データ、共有環境・地理との識別・一般原理の独立検証はまだない。これは雑誌による判定でなく、現時点の編集提案。
+## 3. 一本の論文としての図5本
 
-## 3. 原稿A：推奨する一文の主張と構成
+**Figure 1 — Rainfall-linked acoustic pulse and site matrix.** NAAMP sequential10 stops、CI0→CI2/3、4,236 wetter/drier pairs、2,916 history focal null: observed1.650 / expected1.353。独立する分類群数・routeと物理サイトの情報。
 
-**中心的な問い**：*Does the association between frog acoustic site use and modelled odonate suitability vary with the suitability of a third freshwater guild and landscape vegetation?*
+**Figure 2 — Recurrent sites and antecedent water.** RC6 taxon×physical-site historical β0.151とmacro strictly prior +27.68pp/4,040pairs、水検出−1.481pp/3,907pairs。母数が異なるため一つの効果にはまとめない。
 
-**作業題名案**：**Third-guild context alters the geographic association between frog calling and odonate niche suitability**
+**Figure 3 — Third-guild and landscape context.** 4,248 acoustic site locations、28 SDM species、two original backgrounds、Odonata×Caudata high/low contrast、vegetation all two-way and uncertain three-way、全域vs within-route（regional common environment対応）。
 
-因果性をさらに抑える代案：**Frog calling–odonate suitability associations vary with caudate and vegetation contexts across North America**
+**Figure 4 — Mechanistic possibilities and explicit failures.** 元mainの3,600機構、20候補×24設定、1/24 selected success、野外三者＋／シミュレーション三者−の不一致。直接/間接捕食・植生機能を仮説のダイアグラムにするが「実証済み経路」とは表示しない。
 
-**主張する一文**：*The geographic association between frog acoustic activity and odonate niche suitability varies with caudate suitability and landscape context, while past site use is a strong correlate of present calling.*
+**Figure 5 — Demographic contingency / limits.** 元120day+80year、F/S/D幼生捕食、S→F-only/no-SF/all-predation-off、rho×conversionの積、q3→6→9→12の strict sign-reversal 2/2→1/2→0/2→0/2。再占有≠人口維持、0/8と8/8床・天井、12 independent RNG labelsを明示。FE reverse predationは該当2発生条件で時間重複ゼロ（PR148第3発生条件では非ゼロ）、過度に主張しない。
 
-**本文の図（4本を標準案）**
-1. NAAMP4,248地点、対象種28、野外発声指標、同じ相互作用の現地測定でないことを示す分布・方法図。
-2. トンボ適合度×強発声の関連を池性有尾類の適合度低高で層別（uniform/target-group両背景・地域全体vsルート内を同じ図に）。これが主図。
-3. 植生を含む3群の二者項と三者項、背景・1km/3km・within-routeによる不確実性（正の三者項は一部だけ）。
-4. 強発声の過去履歴+27.68ポイントと前年水検出頻度−1.481ポイントを、異なる分母・条件付きの衛星観測指標と明示して示す。
+詳細の率・seed・失敗ケース・各モデルのCI・野外の地理/感度結果は統合Supplementary Informationへ。**全部の解析を本文に列挙する必要はないが、全部の結果を一論文の再現資料として保持する**。
 
-**mainモデルは図5と本文の「因果説明の証拠」として追加しない。** 使うならDiscussionの conceptual scenarios またはSIの sensitivity/failed-model audit として、3方向1/24・三者項の不一致を必ず記載。PR146-155の膨大な合成実験を、マクロ論文の独立実証として統合しない。
+## 4. 一つの投稿先を選ぶ
 
-**原稿A用の仮要旨（英語、未推敲・原稿依拠、約165語）**：
+**第一候補：Freshwater Biology, Research Article。** 同誌の[公式Aims & Scope](https://onlinelibrary.wiley.com/page/journal/13652427/homepage/productinformation.html)は淡水における動物行動・個体群・群集相互作用・生物地理学、観測・理論・概念的アプローチを対象にしており、**一本の多尺度観測×過程モデル論文**として最も自然な整合を持つ。査読での最大の弱点は、モデルと観測の直接的対応がないこと。本文では「mechanistic constraints」を前面に出し、当該観測データのcause demonstrationと誤解させない。
 
-> Breeding calls provide spatially extensive records of amphibian activity, yet their associations with potential aquatic community context remain poorly resolved. We analysed repeated acoustic surveys at 4,248 North American locations and modelled environmental suitability for frogs, odonates and caudates using occurrence-based distribution models. Frog strong-calling frequency was weakly negatively correlated with odonate suitability at the regional scale. Importantly, this association differed between locations with low and high suitability for pond-breeding caudates, with negative high-minus-low correlation contrasts under both background specifications. Landscape vegetation modified several two-guild associations, although the three-way term was sensitive to model background and spatial scale. Calling locations also showed strong association with prior calling history, while antecedent satellite water-detection frequency provided a distinct, weaker environmental correlate. These findings identify conditional geographic associations across freshwater guilds and repeated use of acoustic survey locations. Because environmental suitability is not a measure of realised predator density, the results provide observational constraints for future tests of trophic mechanisms rather than evidence of predation-driven site use.
+**挑戦的な代替：Journal of Animal Ecology, Research Article。** [公式Aims](https://besjournals.onlinelibrary.wiley.com/hub/journal/13652656/aims-and-scope/read-full-aims-and-scope)は行動・個体群・群集を横断した一般的原理の試験を要求。既存RC6がJAE向けQA済みであることは論文構成の参考だが、**原稿を統合した時点で旧RC6向けの「投稿ファイルQA成功」を新原稿のQA成功と取り違えない**。JAEへ投稿するなら新しい統合原稿の原理・因果解釈に厳しい査読を想定する。
 
-最後のセンテンスが投稿の防御に重要。observational dataから「predation suppresses breeding」とは書かない。
+**より挑戦的：Ecology Letters (Letter)** [公式ガイド](https://onlinelibrary.wiley.com/page/journal/14610248/homepage/forauthors.html)は簡潔・革新的な仮説検証を重視し、純記述を奨励しない。現状の観測→機構橋渡し不足を抱えたまま第一投稿誌にするとデスクリジェクトリスクが高いため、主張の一般性を追加観測で検証した場合に限る。
 
-## 4. 原稿B：理論的な発見はあるが、今は独立投稿にしない
+**すべて同じ一本の原稿の投稿順序候補**であり、複数の原稿や同時投稿を提案しない。
 
-**作業題名案**：**The limits of dispersal rescue under stage-dependent predation and finite population size**。
+## 5. 新しい統合ドラフトの構成・方法防御
 
-観測ではなく、80年のoriginal-source合成個体群モデルの反証可能な問い：*When does dispersal increase recolonization events without maintaining occupied patches?*
+[英語原稿案](ONE_INTEGRATED_FROGCS_MANUSCRIPT_DRAFT_2026-10-31.md)の章立て：
 
-図案は、(a) 捕食/成熟/移動の厳密な状態流、(b) local recruitment strength×S growthで移動ON−OFFの年80占有符号、(c) S→F-only・no_SF・全直接捕食OFF、(d) q3/6/9/12での反転成立域・床/天井、(e) rateID0/4/8/12の不成立とrho×conversion構造的非識別を同格に示すこと。成功条件だけに色を付けて過剰一般化しない。
+Introduction：rain pulse→site selectivity→third-guild context→why trophic model constraints matter、という一本のギャップと問い。
 
-投稿を始める条件：人工的な率・人口サイズを「真の閾値」と呼ばない理論の中心問いを一つに絞ること、元のモデル内部の必要十分性が他の背景では崩れる事実も結論に含めること、rate/case選定が結果後の探索であること、理論と野外観測の対応が欠けていることを全文で明示すること。単独モデル論文は現在の第一優先でない。
+Methods：RC6のroute-run null、mainのsite-level 4,248とGBIF/GloBI/vegetation/satellite water、3,600機構モデル、120day/80year finiteN/12seed移動、**推定量が違うことの監査**。
 
-## 5. 投稿のために残る最小タスク（解析追加より優先）
+Results：1. rain/recurrent spatial allocation；2. third-guild+vegetation geographic associations；3. water/history；4. limited model explanation incl empirical 3-way mismatch；5. direct predator S→F and recruitment/count-scale dependent movement.
 
-1. **原稿Aの権威を固定**：mainの二部構成稿を、野外4,248地点の条件付き関連を主題とする英語原稿へ改稿。旧RC6は研究史・別原稿、#146〜155は「野外データを説明できた」の証拠にしない。mainの元894ファイルsnapshotには触れない。
-2. **数値と分母を1回だけ監査**：4,248地点・28モデル種・uniform/target-group・有尾類低高・植生/三者項・4,040/3,907ペアの固定snapshotを照合。非再現と地理・共有環境の影響を同時に記載する。
-3. **図4本・短い要旨・査読防御**：平均効果と背景差、within-routeの弱さ、地理的共通環境、音響と幼生モデルの不一致を本文やSIへ明示。仮タイトル/abstractを本編の正しい結論へ落とす。
-4. **雑誌決定と著者チェック**：現状態の第一候補Freshwater Biology、挑戦先Ecography、バックアップEcology and Evolutionを共著者と確認。必要なData availability、作者・所属・CRediT・利益相反・資金・許諾／倫理・著者全員承認を揃える。**本人の承認前に学術誌へ送信しない**。
+Discussion：観測の空間構造は確か、コミュニティ関連は観測的、過程モデルには成立域・否定域、物理池・実幼生密度・成熟までの野外多年度追跡がまだない。一つの原因を一意に同定できないことをそのまま記す。
 
-現段階では**論文投稿、共著者承認、外部審査、出版社からの受理**は実行していない。mainの実科学原稿本文、既存CI・収集契約およびモデルPRは一切変更していない。
+査読防御する分母：
+- 4,236雨前後ペア/53 taxa/585 routes/21 statesと2,916厳密歴史subset；
+- 4,248 acoustic sites/432 route components（別filter）と28モデル化種；
+- 4,040 prior history pairsと3,907 water-detected eligible pairs；
+- 3,600機構と20×24 sensitivity；
+- PR146–155のモデルnative seed 12、仮想qの4値、外部移入OFF。
+**同一NAAMPの二つの解析が「二つの独立した実証データセット」だと誤認されないよう、Figure 1と3のMethodsに重複/異なる単位を注記する**。
+
+## 6. 次の実務：新しい解析でなく提出原稿化
+
+1. 英語統合ドラフトをベースに本文・Methods・図5本と統合Supplementを揃える。古いRC6の投稿向けtitle pageや図をそのまま提出しない。
+2. main/RC6/PR146–155の全数字・定義・引用・重複データを統一したclaim ledgerで確認し、短い要旨と図から逆引きできるようにする。
+3. 特に「野外正の三者項 vs 元モデル負の三者項」「率ID0の単独成長反転は他3率で失敗」「q9/12の反転消失」「SF-onlyの植物機能一部無効」を本文かSIで明示。
+4. 対象誌のスタイルに最終整形し、著者・所属・CRediT・利益相反・許諾/倫理・Data Availability・データ/コードの最終版を責任著者と全共著者が承認した後にのみ、本人の明示的な投稿指示で提出する。
+
+元mainの固定894ファイルSHAの科学的入力、\`paper/\`の旧RC6投稿用原本、\`submission/\`、PR #146–155 の生物モデル・数値は**一切編集しない**。本編集ブランチのドラフトを既存main原稿へ反映するかはPRでレビューする。
+
+**完了状態：** 単一投稿方針へ訂正済み、統合論文の英語working draft完成、全主張・図構成・対象誌候補を統合。**未完了：** Figure本体、SI照合、版下、著者承認、出版社への実投稿。
