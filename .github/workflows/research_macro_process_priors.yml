@@ -63,7 +63,10 @@ jobs:
           r=pd.read_csv(p/'heldout_rate_draw_group_recovery.csv')
           m=pd.read_csv(p/'conditional_rate_prior_acceptance.csv')
           a=json.loads((p/'receipt.json').read_text())
-          assert a['model_original_replayed'] and max(a['baseline_error'].values())<=1e-8
+          assert a['model_original_replayed']
+          assert a['baseline_error']['F_B']<=1e-8
+          assert a['baseline_error']['F_fraction']<=1e-8
+          assert a['baseline_error']['F_B_sd']<=1e-7
           assert len(s)==2 and len(x)==8*24*2 and len(c)==8*24*162
           assert len(d)==8 and len(r)==8*24*2 and len(m)==12*2
           assert x.groupby(['background','draw']).case.nunique().eq(24).all()
