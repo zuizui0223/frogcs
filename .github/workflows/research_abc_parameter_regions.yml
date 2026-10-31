@@ -1,0 +1,88 @@
+name: Frogcs genuine ABC accepted biological parameter regimes
+
+on:
+  push:
+    branches:
+      - research/multigeneration-reversal-abm-pde-20261031
+    paths:
+      - research/MODEL_NATIVE_ABC_PARAMETER_REGION_PROTOCOL_2026-10-31.md
+      - research/scripts/abc_model_parameter_regions.py
+      - research/scripts/test_abc_model_parameter_regions.py
+      - .github/workflows/research_abc_parameter_regions.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  accepted-parameter-conditions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin original reproducibility dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 scikit-learn==1.7.2
+      - name: Test independent prior-draw accounting and prior quartiles
+        run: python -m unittest discover -s research/scripts -p 'test_abc_model_parameter_regions.py' -v
+      - name: Retrieve all three independently completed full 80-year structural prior outputs
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41178134567
+          pattern: frogcs-native-abc-prior-*
+          merge-multiple: true
+          github-token: ${{ github.token }}
+          path: research/results/model_native_abc_rf_20261031
+      - name: Preserve actual rate priors and compute exact accepted parameter ranges
+        run: python -u research/scripts/abc_model_parameter_regions.py --run
+      - name: Verify all 12 original model classes have full 256 independent prior draws
+        run: |
+          python - <<'PY'
+          import json
+          import numpy as np
+          import pandas as pd
+          from pathlib import Path
+          p=Path('research/results/model_native_abc_rf_20261031')
+          q=pd.read_csv(p/'prior_quartile_acceptance.csv')
+          s=pd.read_csv(p/'prior_enrichment_summary.csv')
+          w=pd.read_csv(p/'independently_weighted_rate_draws.csv')
+          r=pd.read_csv(p/'matched_refuge_draw_outcomes.csv')
+          t=pd.read_csv(p/'paired_risk_acceptance.csv')
+          receipt=json.loads((p/'abc_parameter_regions_receipt.json').read_text())
+          assert len(w)==12*256*2
+          assert len(s)==12*8*2
+          assert len(q)==(12*(7*4+2)*2)
+          assert q.groupby(['scale','structure_id','parameter']).n_prior_draws.sum().eq(256).all()
+          assert w.groupby(['scale','structure_id']).draw.nunique().eq(256).all()
+          assert len(r)==256*2 and len(t)==2
+          assert t.n_shared_independent_draws.eq(256).all()
+          assert (t.n_both+t.n_off_only+t.n_on_only+t.n_neither+t.n_partial).eq(256).all()
+          assert s.enough_accepted_for_interpretation.isin([True,False]).all()
+          assert receipt['n_independent_parameter_draws']==256
+          print('ABC_ACCEPTED_PRIOR_REGION_AUDIT_SUCCESS',len(q),'prior-bin exposure records')
+          PY
+      - name: Print verified compact model acceptance regions
+        run: |
+          for name in paired_risk_acceptance.csv prior_enrichment_summary.csv prior_quartile_acceptance.csv; do
+            echo "===== $name ====="
+            cat "research/results/model_native_abc_rf_20261031/$name"
+          done
+      - name: Retain all original actual-rate accepted/declined draw records and receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-true-80y-abc-accepted-parameter-regimes-20261031
+          path: |
+            research/results/model_native_abc_rf_20261031/prior_quartile_acceptance.csv
+            research/results/model_native_abc_rf_20261031/prior_enrichment_summary.csv
+            research/results/model_native_abc_rf_20261031/independently_weighted_rate_draws.csv
+            research/results/model_native_abc_rf_20261031/matched_refuge_draw_outcomes.csv
+            research/results/model_native_abc_rf_20261031/paired_risk_acceptance.csv
+            research/results/model_native_abc_rf_20261031/abc_parameter_regions_receipt.json
+          retention-days: 30
