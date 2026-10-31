@@ -1,0 +1,73 @@
+# Frogcs D+E common-source mechanism comparison — 80-year finite-N nuisance pilot (2026-11-01)
+
+## Scientific purpose
+
+ONE paper: empirical macro third-guild conditional association (B), followed by ONE combined D+E trophic/vegetation mechanism analysis. The E long-run population consequences should not become an unrelated second mechanism claim. Instead, compare trophic structures while dispersal mode and count scale are nuisance assumptions, and extract model-native contrasts and demographic outcomes from the SAME original biological execution.
+
+PR146 D: original 120-day seasonal predation + 80-year delayed cohort recurrence, 12 structures ×256 hypothetical LHS biological-rate draws, four model-native signs OS− OV− SV+ OSV+, canonical plant prior sensitivity.
+PR149–155 E: same predation and annual conditional means WITH newly added binomial completion/survival, Poisson recruitment, integer 8-patch ring movement, true N=0→positive reoccupation. This is NOT the separate PR147 seven-stage pedigree ABM. Deterministic PR146 homogeneous/off replay is exact, but individual finite-N stochastic trajectories are not deterministic replays.
+
+## Source-locked original model design — first pass
+
+Use immutable PR155 scientific-source commit 19d45ffb833e2970aff8d88de101736aee289d26 and import original seasonal/annual/finite-N source without editing the kernels.
+
+- Original fixed LHS rate IDs 0,4,8,12 from 256 exploratory *hypothetical* biological rate vectors. Same attack, growth, rho, conversion, juvenile/adult survival and 2/3y maturation per θ across every nuisance/net contrast.
+- Source biological contexts original and D_first_S_overtakes. Both have D arrival0/S arrival20; the latter changes S growth and D aquatic duration together, and is NOT an isolated arrival-order intervention.
+- Two main-legal plant inputs SF1_DF0_DS0_L1 and SF0_DF0_DS1_L0. A plant refuge whose predator edge is absent is functionally inactive.
+- Reverse predator flag OFF only: original source F-completed→emerging D has zero time overlap in these two contexts, so its ON counterpart is response-equivalent and not an independent draw; the PR148 third timing context *can* activate FE.
+- Six directed predator networks, paired at same θ: all_active (SF,DF,DS,SD), SF_only, no_SF, no_DF, no_DS and all_off. This allows source-equivalent edge-ablation tests, rather than selecting an edge by optimizing different rates.
+- Nuisance movement modes off, recruits, carryover, both EXACT as original finite_n_source_cohort_bridge, not PR147 larval/adult migration. Fixed annual integer-conserving ring transfer fraction .15 across 8 synthetic patches.
+- Nuisance count-per-density scale q=3 or q=12, balanced by design, NO measured natural animal population size. External immigration OFF. Four original RNG labels 101–104 per model cell; patches/corners/years are not independent RNG samples.
+
+## Model-native POM from the SAME model runs
+
+For each structure×θ×network×q×movement×seed, compute:
+- Beginning-of-season F aquatic cohort density averaged over synthetic patches and years 61–80, at every original 2×2×2 factorial vertex in V, S supply and D supply.
+- Source orthogonal contrasts OS,OV,SV,OSV using original PR146 four_contrasts; retain both raw F_B and log1p(F_B). log1p is mandatory when F can be truly zero; it is NOT numerically identical to original PR146 log(F_B).
+- Accepted four signs target −,−,+,+ only as source-MODEL-NATIVE pattern feasibility, not actual site fit.
+- SAME execution year80 occupied frog patches, exact local N=0→positive reoccupation and local extinction, with movement ON versus OFF compared at same original source structure, θ, q, network and seed. RNG labels pair treatments but random streams are not pathwise synchronized across movement modes.
+
+Report exact acceptance by context×plant×trophic network, under each q/mode/θ, as well as equal balanced average over illustrative nuisances and source rate draws. Marginalizing a nuisance does NOT prove robustness. Stratified ranks must be reported, including any sign reversals or instability. Four fixed θ samples cannot estimate an ecological prior.
+
+## Field-model distinction
+
+The observed 4,248-site, 28-species macro dataset has six continuous statistics: O×S,O×V,S×V,O×S×V and low-/high-S subset correlations on GLOBAL ranks, two SDM backgrounds and 56 spatial-block/999-resample covariance. Earlier site-POM found 0/132 original candidate response surfaces within all six descriptive 95% marginal intervals. Site environmental suitability and adult CallingIndex are NOT the model D/S source density and juvenile F cohort. There is NO validated F_B-to-adult-calling observation process.
+
+This first pilot IS NOT a field-conditioned posterior ABC or a forecast. Full field ABC requires exactly the SAME structure×θ×q/mobility site-emission model, six site-level effect magnitudes with covariance, an explicit independently justified or labelled proxy observation map, and absolute adequacy. If none fits, report NO_FIELD_CONDITIONED_DEMOGRAPHIC_PREDICTIONS.
+
+## Hard gates and status
+
+1. Original source biology, complete unique 8 vertices, θ identity and actual network edge-control source tests.
+2. Real 4-year source smoke and q/mode mass/nonnegative integer checks, but no 4y result called biological evidence.
+3. Genuine source 80y runs for ALL 2 q ×4 modes ×two 2-seed shards, four original rates and all six networks.
+4. Independent artifact audit must check all rate×plant×context×network×q×mode×seed source vertices, old true reoccupation event count and source seasonal consistency.
+5. Preserve all negative and positive matched effects; update PR156 Results only after genuine 80y audit passes. PR158 is independent Draft stacked on PR156; no original main or PR146–155 code/data mutated.
+
+### Limits
+
+- q, .15 annual transfer and biological rate priors illustrative; q6/q9 post hoc from PR155 are a distinct prior sensitivity, not evidence of invariance.
+- Selected D_first context couples growth and D duration; do not call it change in species arrival order.
+- Model-native 2×2×2 signs do not have same quantitative estimand as measured macro site-level correlations.
+- Original deterministic and stochastic finite-N source models use same conditional hazard/annual mean but different stochastic sampling assumptions; no pathwise numerical equality claimed.
+
+
+## Second pre-result gate — SAME source theta on original 4,248 NAAMP site POM
+
+Without adding new field observations, the genuine 80year F_B vertex responses are projected to the actual original 4,248 sites by ONE predetermined UNFITTED proxy observation mapping. This is separate from the balanced source-model-native POM, fixed before the 80year main results are inspected.
+
+1. For each same-80year source network × context × plant × rate ID × q × mobility × seed, take precisely its eight F_B last20-year source readouts. No biological rerun, changed theta or cross-model joining.
+2. Convert original Odonata and pond-breeding Caudata environmental suitability to global fractional rank (rank−0.5)/N separately within the two original SDM backgrounds, N=4,248. Do not rank separately inside high/low S strata, tune a source warp based on observations, or use observed calling to map latent source supply.
+3. Map each site's original V=0/1 wetland-vegetation flag to the source V coordinate. Use predetermined TRILINEAR interpolation of the original 2×2×2 source F_B cube across S/D percentile ranks. The interpolation weights are nonnegative and sum to one. No observation noise or fitted adult-calling link.
+4. Compare ranks of predicted aquatic F_B with the observed adult strong-calling fraction using original site-POM source six summaries: OS,OV,SV,OSV,low/high-S-mask O–F GLOBAL-rank correlations. Original 56 spatial-block ×999 bootstrap, shrinkage covariance and source heldout route/vegetation statistics stay unchanged.
+5. Report absolute numerical predicted−observed residuals, covariance-aware Mahalanobis distance, and number of six effects within marginal observed 95% block-bootstrap intervals. Six separate 95% bands do NOT form a formal 95% simultaneous adequacy test.
+6. If source F_B is constant (e.g. all zero), mark the model as degenerate and uninformative, not a valid field match. No post-result alternative transformation.
+7. Preserve all original observational denominators and source SHA. This same-theta site proxy makes one common source POM and 80y outcome table possible, but even a six-statistic fit would be conditional on the unvalidated larval-cohort→adult-calling rank link and NOT demonstrated wild predator causation or an ecological posterior.
+
+The previous 132 fixed-site POM used a finer 9×9×2 source response grid. The new 2×2×2 trilinear projection is a distinct *predeclared coarse source approximation*, not a numerical replication of that earlier 132-library adequacy test. No new natural pond observation data have been obtained.
+
+
+### Seed-marginalized actual-site POM, fixed BEFORE genuine full-year source outcomes
+
+The original finite-N model is stochastic, and seed-specific differences in the 8 supply cells can create spurious factor signs when trophic edges are absent. Therefore the **primary site-level model comparison** averages the SIX *predicted statistics* across all four genuine independently labelled stochastic seed replicates for a fixed network×source structure×rate θ×q×movement×background, then compares that expected pattern to the original measured six site-statistic vector and bootstrap covariance. The primary source grid is **2 contexts×2 plants×4 original rate vectors×6 networks×2 q×4 movement =768 SOURCE predictions per background**, with 4 seed-replicate predictions each. Individual seed-resolved six-pattern predictions and any degenerate cases are all preserved as Monte Carlo sensitivity and not counted as 4 different biological model structures.
+
+Marginalizing site-statistic vectors is not the same as taking the ranks of the 4-seed-average site response, and this choice is fixed here. Any source structure with fewer than four valid/finite site-statistic draws is reported as INCOMPLETE_OR_DEGENERATE, never silently selected on nondegenerate runs. If no averaged structure meets six marginal descriptive intervals, do not choose a field mechanism from a closest-only score. Both SDM backgrounds, their absolute Mahalanobis distances and deviations are kept.
