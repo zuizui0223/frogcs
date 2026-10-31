@@ -1,5 +1,12 @@
 # 現行研究の入口
 
+## 2026-10-31: PR #150 — 12seedによるS成長率×D水中期間の因子分離（結果確定）
+
+[PR #150 (Draft)](https://github.com/zuizui0223/frogcs/pull/150) / [検証済み2×2結果](S_GROWTH_D_DURATION_12SEED_VERIFIED_RESULT_2026-10-31.md) / [真正80年追加実行SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41194882028) / [旧12seed＋新2セルの独立監査SUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41195118831)。
+
+DとSの**登場順序は元の2モデルで同一**（D0日、S20日）。元の差はS成長率0.014→0.030とD水中期間40→60日の2因子だった。新しい2単独変更条件を真の80年間モデルで追加し、過去の12seedと合わせた2×2実験で、**成長率だけを上げると年80分散効果が正→負へ反転**、Dの水中期間だけを延長しても正のままだと確認。成長因子の平均効果はカエルFの8パッチ中 −4.06〜−4.69（12seedモデル内MC区間はいずれも負）、D水中期間と交互作用は現設定で明瞭ではない。ただし仮想生物率draw0、q3、外部流入なし、移動15%、2植物機能での**モデル内因果介入**。未校正の野外因果や主張の普遍性ではない。PR149以前の「発生順序だけが原因」表現は修正済み。
+
+
 ## 2026-10-31: 発生順序という表現の訂正・PR #150の単独因子分解
 
 [検証中のDraft PR #150](https://github.com/zuizui0223/frogcs/pull/150) / [事前固定した2×2設計](S_GROWTH_D_AQUATIC_DURATION_FACTORIAL_PROTOCOL_2026-10-31.md) / [再現テストSUCCESS](https://github.com/zuizui0223/frogcs/actions/runs/41194747767)。
