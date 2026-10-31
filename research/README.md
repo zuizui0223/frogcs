@@ -10,7 +10,9 @@
 - 同じ条件の**避難あり：96/512**（48率draw）＝**18.75%採択**、共有量37.80%（31.57–43.59%）。この2群で**226/254＝88.98%**の条件付き共有量。raw`F_B`でも上位2群は同じ（合計250/270＝92.59%）。
 - ABC-RFは同じ「避難なし」を選び、2段階OOB誤分類から求める主尺度log(F_B)の**選択クラス条件付き近似正解度53.0%**（raw(F_B)では53.8%）。しかし全12構造の保持率drawでの分類精度は**22.3%**（12等確率チャンス8.3%）。**機構の一意識別は弱い**。
 - 受容した独立率drawは、事前中央値より弱めの総捕食倍率とやや高めのカエル生残へ偏る傾向があった。捕食逆転ON/OFFのABC採択可否は全256×12構造で一致したが、一部の四符号自体は違うため「すべて同一のモデル」と呼ばない。
-- **本結果の数値は仮想的なパラメータ事前分布・12構造に条件付けたもの**。野外の実際の捕食率・メカニズムの真の事後確率ではない。R²校正した地点ノイズの旧実験は別の観測過程感度として保存するが、今回の2×2×2の成功基準には使用していない。
+- **追加の真正ABCパラメータ成立条件（検証済み）：** [同じ256率drawでの避難ON/OFF対比較と事前分布四分位](MODEL_NATIVE_ABC_PARAMETER_REGIONS_RESULT_2026-10-31.md)では、元順序・基準処理の4符号一致率が避難なし**65/256**、避難あり**48/256**。差+6.64ポイント（ペア再標本化区間+1.56〜+11.33）。総捕食倍率の最下四分位での一致率は35.9%／40.6%、最上四分位では9.4%／3.1%。[保持率drawのABC-RF軸別検証](results/model_native_abc_rf_20261031/rf_structural_axis_recoverability.csv)では発生順序50.2%（3択）、餌処理方式69.2%（2択）、避難61.9%（2択）、完全12構造22.3%。**構造の粗い成分は絞れるが、細部の唯一解は未確定**。全て仮説的なrate priorsに依存し、野外機構の推定確率ではない。[パラメータCI成功](https://github.com/zuizui0223/frogcs/actions/runs/41179103204)／[RF軸別CI成功](https://github.com/zuizui0223/frogcs/actions/runs/41179497079)。
+
+**本結果の数値は仮想的なパラメータ事前分布・12構造に条件付けたもの**。野外の実際の捕食率・メカニズムの真の事後確率ではない。R²校正した地点ノイズの旧実験は別の観測過程感度として保存するが、今回の2×2×2の成功基準には使用していない。
 
 [main由来4符号とモデル内8条件の固定仕様](MODEL_NATIVE_DIRECTIONAL_ABC_RF_PROTOCOL_2026-10-31.md)／[実数値ABC-12構造](results/model_native_abc_rf_20261031/abc_rejection_model_acceptance.csv)／[rate-drawのペアを守った不確実性](results/model_native_abc_rf_20261031/paired_prior_class_intervals.csv)／[率受容領域](results/model_native_abc_rf_20261031/selected_original_baseline_posterior_parameters_log.csv)。**成功CI：[6,144回モデル＋ABC-RF](https://github.com/zuizui0223/frogcs/actions/runs/41178134567)、[対になった事前率drawの不確実性監査](https://github.com/zuizui0223/frogcs/actions/runs/41178632190)**。ABC-RFと有限12候補群の識別限界を保持し、PR #146はDraft。main、PR #144/#145、原モデルは不変更。
 
