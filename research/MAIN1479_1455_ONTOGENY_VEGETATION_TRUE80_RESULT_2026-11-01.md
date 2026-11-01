@@ -11,7 +11,7 @@
 ## 源モデルと完了監査
 
 - [Source 80y matrix #41274006035](https://github.com/zuizui0223/frogcs/actions/runs/41274006035)：12件の真正80年生物計算ジョブがすべてSUCCESS。元の120日季節捕食・80年成熟遅延加入・有限個体数の二項/Poisson過程・8リングパッチと年次0.15移動。**元の生物学的率4 ID = 0/4/8/12** と **独立RNGラベル4 = 101–104**。3発育条件×6合法植生機能×main 2捕食構造×4率×q3/q12×移動OFF/both×4seed = **2,304個のモデル内読出し、18,432のF×植生/有尾類/ヤゴの2×2×2頂点**。これらは独立の野外標本数ではない。
-- [Corrected independent final audit #41274234934](https://github.com/zuizui0223/frogcs/actions/runs/41274234934)：**SUCCESS**。12源分割、18,432実頂点、2,304四符号＋占有、**268,712件のモデル内N0→正のカエル局所再占有事象**、植生ON/OFF対応比較1,152件、#1479−#1455対応比較1,152件、両比較の層別72行ずつを完全照合。保存した8つのFコホート頂点から raw/log1p のOS/OV/SV/OSV係数を独立再計算し、年80占有・植生層別占有と照合。外部移入0、整数質量・再占有会計を検査。
+- [Independent clean end-to-end verification #41274234900](https://github.com/zuizui0223/frogcs/actions/runs/41274234900)：**14/14ジョブSUCCESS**（4年モデルテスト×1、80年本計算×12、独立完全監査×1）。元の8頂点データ・4率・4seed・元のモデルが変わっていないことを再照合した。別実行の監査結果で**層別72行の植生効果CSV、72行の#1479–#1455比較CSV、全源レシートがバイト一致**。個別1,152行の浮動小数点差は最大4.44×10⁻¹⁶のみ。\n- [Corrected independent final audit #41274234934](https://github.com/zuizui0223/frogcs/actions/runs/41274234934)：**SUCCESS**。12源分割、18,432実頂点、2,304四符号＋占有、**268,712件のモデル内N0→正のカエル局所再占有事象**、植生ON/OFF対応比較1,152件、#1479−#1455対応比較1,152件、両比較の層別72行ずつを完全照合。保存した8つのFコホート頂点から raw/log1p のOS/OV/SV/OSV係数を独立再計算し、年80占有・植生層別占有と照合。外部移入0、整数質量・再占有会計を検査。
 - 最初のsource #41274006035付属の **旧auditジョブだけは失敗**。原因は4年smoke以降に判明した期待行数の誤設定（1分割あたりF頂点を768、4符号を96と誤計上。実値は1,536と192）。生物計算の失敗ではない。監査期待行数を修正し、元の12個の不変source artifactを再利用して独立監査をSUCCESSにした。生物モデルを再実行・再調整して判定を変えたのではない。
 - 別のActions実行の D_first_S_overtakes/q3/seed101–102 は、元の4ファイル（圧縮F元頂点・4符号と80年動態・source receipt・会計CSV）が**バイナリ完全一致**。
 - [Complete source-audit CSV artifact](https://github.com/zuizui0223/frogcs/actions/runs/41274234934) はGitHub Actions（保存期間30日）にある。将来同じ比較を再生成する実行コード・凍結プロトコルはPR #159に保存。
@@ -77,6 +77,6 @@ S→D捕食を持つ #1479 と、それだけを除いた #1455 の**年80占有
 - [元の季節/年次カーネルを呼ぶ真正80年有限N runner](scripts/run_main_mechanism_ontogeny_demography_80y.py)
 - [F8頂点・占有・再占有の独立監査](scripts/audit_main_mechanism_ontogeny_demography_80y.py)
 - [source jobs 12本（独立の元実行）](https://github.com/zuizui0223/frogcs/actions/runs/41274006035)
-- [修正版の独立全源監査・完全72行CSV artifact](https://github.com/zuizui0223/frogcs/actions/runs/41274234934)
+- [14/14 SUCCESSの元生物計算＋独立監査](https://github.com/zuizui0223/frogcs/actions/runs/41274234900)\n- [修正版の独立全源監査・完全72行CSV artifact](https://github.com/zuizui0223/frogcs/actions/runs/41274234934)
 
 元の `main`・PR #146・PR #158 の科学結果とソースには変更を加えていない。**PR #159 はDraft・未マージ・未投稿**。
