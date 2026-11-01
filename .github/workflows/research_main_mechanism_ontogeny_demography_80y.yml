@@ -7,6 +7,13 @@ on:
     paths:
       - .github/workflows/research_main_mechanism_ontogeny_demography_80y.yml
   workflow_dispatch:
+  pull_request:
+    branches:
+      - research/common-engine-D-E-nuisance-pom-20261101
+    paths:
+      - .github/workflows/research_main_mechanism_ontogeny_demography_80y.yml
+      - research/scripts/run_main_mechanism_ontogeny_demography_80y.py
+      - research/scripts/test_main_mechanism_ontogeny_demography_80y.py
 
 permissions:
   contents: read
@@ -49,6 +56,7 @@ jobs:
           if-no-files-found: warn
 
   genuine-original-80year-ontogeny-by-plant-and-main-edge:
+    if: github.event_name != 'pull_request'
     needs: source-identity-and-fouryear-method-smoke
     runs-on: ubuntu-latest
     timeout-minutes: 100
@@ -90,6 +98,7 @@ jobs:
           if-no-files-found: warn
 
   independent-complete-source-and-paired-effect-audit:
+    if: github.event_name != 'pull_request'
     needs: genuine-original-80year-ontogeny-by-plant-and-main-edge
     runs-on: ubuntu-latest
     timeout-minutes: 25
