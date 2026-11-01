@@ -1,6 +1,11 @@
 name: Frogcs PR160 matched-source stage uncertainty independent audit
 
 on:
+  push:
+    branches:
+      - research/abc-pom-main3600-joint-20261101
+    paths:
+      - .github/workflows/research_integrated_234_stage_uncertainty.yml
   workflow_dispatch:
 
 permissions:
@@ -25,10 +30,21 @@ jobs:
         run: |
           mkdir -p research/results/integrated_234_stage_uncertainty_20261101/input
           gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --name 'integrated-234-paired-stage-vegetation' --dir research/results/integrated_234_stage_uncertainty_20261101/input
+      - name: Download original 96 selected structural source IDs and original survival-floor flags
+        run: |
+          mkdir -p research/results/integrated_234_stage_uncertainty_20261101/selected
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --name 'integrated-234-80y-locked-source' --dir research/results/integrated_234_stage_uncertainty_20261101/selected
       - name: Require genuine frozen source records and recompute paired draw bootstrap
         run: |
           python research/scripts/audit_integrated_234_stage_uncertainty.py \
             --paired research/results/integrated_234_stage_uncertainty_20261101/input/posterior_paired_plant_stage.csv \
+            --output research/results/integrated_234_stage_uncertainty_20261101/audit \
+            --bootstrap 20000
+      - name: Recalculate 50-source viability and 77-source active-edge sensitivity from immutable original records
+        run: |
+          python research/scripts/audit_integrated_234_viability_sensitivity.py \
+            --paired research/results/integrated_234_stage_uncertainty_20261101/input/posterior_paired_plant_stage.csv \
+            --selected research/results/integrated_234_stage_uncertainty_20261101/selected/selected_draws.csv \
             --output research/results/integrated_234_stage_uncertainty_20261101/audit \
             --bootstrap 20000
       - name: Preserve full interval table and exact provenance
