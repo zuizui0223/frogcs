@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - research/abc-pom-main3600-joint-20261101
+    paths:
+      - research/scripts/abc_pom_main3600.py
+      - research/scripts/audit_main3600_direction.py
+      - research/scripts/test_abc_pom_main3600.py
+      - .github/workflows/research_abc_pom_main3600.yml
   workflow_dispatch:
 
 permissions:
