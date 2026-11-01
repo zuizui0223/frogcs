@@ -1,0 +1,121 @@
+name: Frogcs main 1479 vs 1455 stage-vegetation true80 demographic bridge
+
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-identity-and-fouryear-method-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 19d45ffb833e2970aff8d88de101736aee289d26
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/literature_extension_20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original numerical-model dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Check original main 1479/1455 feature fingerprints and immutable PR155 theta/stage basis
+        run: python -m unittest discover -s paper/research/scripts -p test_main_mechanism_ontogeny_demography_80y.py -v
+      - name: Execute real original four-year source method smoke
+        run: |
+          python paper/research/scripts/run_main_mechanism_ontogeny_demography_80y.py --run --stage original --q 3 --seed-start 101 --years 4 --out paper/research/results/main_ontogeny_demography_20261101/smoke
+      - name: Preserve the smoke source-only receipt (not biological evidence)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-main-ontogeny-methods-only
+          path: paper/research/results/main_ontogeny_demography_20261101/smoke/
+          retention-days: 30
+          if-no-files-found: warn
+
+  genuine-original-80year-ontogeny-by-plant-and-main-edge:
+    needs: source-identity-and-fouryear-method-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        stage: [original, D_first_S_overtakes, S_first_D_overtakes]
+        q: [3, 12]
+        seed_start: [101, 103]
+    env:
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 19d45ffb833e2970aff8d88de101736aee289d26
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/literature_extension_20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install exactly source-compatible numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Run original 120-day trophic + true80y finite-N simulation; all theta/roles/networks and both movement states
+        run: |
+          python paper/research/scripts/run_main_mechanism_ontogeny_demography_80y.py --run --stage "${{ matrix.stage }}" --q ${{ matrix.q }} --seed-start ${{ matrix.seed_start }} --years 80 --out paper/research/results/main_ontogeny_demography_20261101/current_true80
+      - name: Save all source F vertex results, matched model-native four signs and actual year80 patch occupancy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-main-ontogeny-${{ matrix.stage }}-q${{ matrix.q }}-seed${{ matrix.seed_start }}
+          path: paper/research/results/main_ontogeny_demography_20261101/current_true80/
+          retention-days: 30
+          if-no-files-found: warn
+
+  independent-complete-source-and-paired-effect-audit:
+    needs: genuine-original-80year-ontogeny-by-plant-and-main-edge
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 19d45ffb833e2970aff8d88de101736aee289d26
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/literature_extension_20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-main-ontogeny-*-q*-seed*
+          path: paper/research/results/main_ontogeny_demography_20261101/all_shards
+          merge-multiple: false
+      - name: Independently check all 12 80y shards and reconstruct paired model-native and year80 effects
+        run: |
+          python paper/research/scripts/audit_main_mechanism_ontogeny_demography_80y.py --input paper/research/results/main_ontogeny_demography_20261101/all_shards --output paper/research/results/main_ontogeny_demography_20261101/audit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-main-1479-1455-ontogeny-vegetation-true80-audited
+          path: paper/research/results/main_ontogeny_demography_20261101/audit/
+          retention-days: 30
+          if-no-files-found: warn
