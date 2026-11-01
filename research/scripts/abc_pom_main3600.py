@@ -125,6 +125,8 @@ def run_subset(
             for i, name in enumerate(("OS", "OV", "SV", "OSV")):
                 record["log_" + name] = logc[:, i]
                 record["raw_" + name] = rawc[:, i]
+            record["mean_F_B"] = fb.mean(axis=(1, 2, 3))
+            record["mean_log_F_B"] = np.log(fb).mean(axis=(1, 2, 3))
             record["accepted"] = accepted_signs(logc, eps)
             record["raw_accepted"] = accepted_signs(rawc, eps)
             record["min_F"] = simulated.minimum_F_survival.to_numpy().reshape(-1, 8).min(axis=1)
