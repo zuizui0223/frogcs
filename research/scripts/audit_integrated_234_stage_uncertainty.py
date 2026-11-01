@@ -48,7 +48,7 @@ def validate_source(frame):
         raise AssertionError("All source weights must sum to 1")
     if not frame.groupby(["source_draw_id","axis"]).counterfactual_context.nunique().eq(3).all():
         raise AssertionError("Source counterfactual stage matching incomplete")
-    if not frame.groupby(["source_draw_id","counterfactual_context"]).axis.nunique().eq(2).all():
+    if not frame.groupby(["source_draw_id","counterfactual_context"])["axis"].nunique().eq(2).all():
         raise AssertionError("Source plant-contrast matching incomplete")
     for m in METRICS:
         if m not in frame or not np.isfinite(frame[m]).all():
