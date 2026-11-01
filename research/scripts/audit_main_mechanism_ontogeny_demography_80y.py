@@ -98,6 +98,52 @@ def load_complete_source(root):
                                    rtol=0,atol=1e-10)
                 or not g.vertex.nunique().eq(8).all()):
             raise AssertionError("Source F vertex readback differs from saved year80 output")
+        # Independently reconstruct the signed 2x2x2 model response from
+        # the original saved F aquatic vertices (not the stored sign values).
+        recreated=[]
+        for identity, subset in g:
+            y=subset.sort_values("vertex").mean_cohort_B_last_window.to_numpy(float)
+            if len(y)!=8 or not np.isfinite(y).all() or (y<0).any():
+                raise AssertionError("Invalid actual original F cohort vertices")
+            row=dict(zip(KEY,identity))
+            for transform, arr in (("raw",y),("log1p",np.log1p(y))):
+                cube=arr.reshape(2,2,2)  # original index order is V,S,D
+                dd=cube[:,:,1]-cube[:,:,0]
+                ss=cube[:,1,:]-cube[:,0,:]
+                contrasts=np.asarray([
+                    np.mean(dd[:,1]-dd[:,0]),
+                    np.mean(dd[1,:]-dd[0,:]),
+                    np.mean(ss[1,:]-ss[0,:]),
+                    (dd[1,1]-dd[1,0])-(dd[0,1]-dd[0,0]),
+                ],dtype=float)
+                signs=np.where(contrasts>1e-9,1,
+                               np.where(contrasts<-1e-9,-1,0))
+                for name,val in zip(("OS","OV","SV","OSV"),contrasts):
+                    row["beta_"+transform+"_"+name]=float(val)
+                row["matches_"+transform]=bool(np.array_equal(signs,[-1,-1,1,1]))
+            row["f_v0_occupied"]=float(subset.loc[subset.vertex<4,
+                                                     "final_occupied_patches"].mean())
+            row["f_v1_occupied"]=float(subset.loc[subset.vertex>=4,
+                                                     "final_occupied_patches"].mean())
+            row["f_v0_returns"]=float(subset.loc[subset.vertex<4,
+                                                   "n_local_returns"].mean())
+            row["f_v1_returns"]=float(subset.loc[subset.vertex>=4,
+                                                   "n_local_returns"].mean())
+            recreated.append(row)
+        rec=pd.DataFrame(recreated).set_index(KEY).sort_index()
+        if not rec.index.equals(s2.index):
+            raise AssertionError("Reconstructed source contrast keys disagree")
+        for field in (["matches_raw","matches_log1p","f_v0_occupied",
+                       "f_v1_occupied","f_v0_returns","f_v1_returns"]+
+                      [f"beta_{scale}_{effect}" for scale in ("raw","log1p")
+                       for effect in ("OS","OV","SV","OSV")]):
+            if pd.api.types.is_bool_dtype(rec[field]):
+                if not np.array_equal(rec[field].to_numpy(),
+                                      s2[field].to_numpy().astype(bool)):
+                    raise AssertionError("Saved four-sign classification differs: "+field)
+            elif not np.allclose(rec[field].to_numpy(float),
+                                 s2[field].to_numpy(float),rtol=0,atol=1e-10):
+                raise AssertionError("Saved source contrast differs: "+field)
         f_parts.append(f)
         s_parts.append(s)
         receipts.append(dict(stage=r["stage"],q=r["q"],seed_start=ids[0],
