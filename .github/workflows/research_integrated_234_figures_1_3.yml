@@ -1,13 +1,6 @@
 name: Frogcs manuscript Figures 1 and 3 exact source evidence
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - .github/workflows/research_integrated_234_figures_1_3.yml
-      - research/scripts/plot_integrated_234_macro_fig1.py
-      - research/scripts/plot_integrated_234_population_fig3.py
   workflow_dispatch:
 
 permissions:
