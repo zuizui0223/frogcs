@@ -176,10 +176,16 @@ def run_finite_batch(arms: pd.DataFrame, *, years=YEARS, dt=DT,
     movement_assisted_returns = np.zeros(n, dtype=int)
     mean_occupied_20 = np.zeros(n)
     mean_F_total_20 = np.zeros(n)
-    a_key = (f"INTEGRATED_MAIN3600_{int(arms.gate_code.iloc[0])}_"
-             f"{arms.behavior.iloc[0]}_{int(arms.litter.iloc[0])}")
-    rng_seed = int.from_bytes(hashlib.blake2b(a_key.encode(),digest_size=8).digest(),"big")
-    rng = np.random.default_rng(rng_seed)
+    # One independent deterministic RNG stream per SOURCE DRAW and arm.
+    # Changing shard counts or group sizes cannot alter a completed draw.
+    rngs = []
+    for row in arms.itertuples(index=False):
+        key = (f"main3600|20261101|{int(row.draw_id)}|{int(row.q)}|"
+               f"{int(row.edge_SF_on)}|{int(row.move_on)}|{int(row.seed)}")
+        rng_seed = int.from_bytes(
+            hashlib.blake2b(key.encode(), digest_size=8).digest(), "big"
+        )
+        rngs.append(np.random.default_rng(rng_seed))
     for yr in range(years):
         result = simulate(
             kernel, dt=dt,
@@ -197,28 +203,42 @@ def run_finite_batch(arms: pd.DataFrame, *, years=YEARS, dt=DT,
             finished, current_density,
             out=np.zeros_like(finished), where=(N > 0)
         )
-        completed = rng.binomial(N, np.clip(completion_p,0,1))
+        completed = np.stack([
+            rng.binomial(N[i], np.clip(completion_p[i],0,1))
+            for i,rng in enumerate(rngs)
+        ])
         due = np.empty_like(N)
         # Original main delay 2,2,1: current S/D completion, and F/S from
         # prior year for the two guilds with delay two.
         due[:,:,0] = prev_complete[:,:,0]
         due[:,:,1] = prev_complete[:,:,1]
         due[:,:,2] = completed[:,:,2]
-        carry = rng.binomial(N, survival)
+        carry = np.stack([
+            rng.binomial(N[i], survival) for i,rng in enumerate(rngs)
+        ])
         local_density = (
             rho * conv.reshape(n,PATCHES,3) *
             juvenile**(delay-1) * (due / scale) /
             (1 + (due / scale) / K)
         )
         ext_density = (1-rho)*(1-survival)*source
-        recruits = rng.poisson(scale*local_density)
-        external = rng.poisson(scale*ext_density)
-        moved_carry, incoming_c, _ = sample_ring_transfer(carry, transfer, rng)
-        moved_recruits, incoming_r, _ = sample_ring_transfer(recruits, transfer, rng)
-        N_next = (
-            np.where(movement, moved_carry, carry) +
-            np.where(movement, moved_recruits, recruits) + external
-        )
+        recruits = np.stack([
+            rng.poisson((scale*local_density)[i])
+            for i,rng in enumerate(rngs)
+        ])
+        external = np.stack([
+            rng.poisson((scale*ext_density)[i])
+            for i,rng in enumerate(rngs)
+        ])
+        N_next = carry + recruits + external
+        incoming_f = np.zeros((n, PATCHES), dtype=int)
+        for i,rng in enumerate(rngs):
+            if not movement[i,0,0]:
+                continue
+            shifted_c, ci, _ = sample_ring_transfer(carry[i:i+1], transfer, rng)
+            shifted_r, ri, _ = sample_ring_transfer(recruits[i:i+1], transfer, rng)
+            N_next[i] = shifted_c[0] + shifted_r[0] + external[i]
+            incoming_f[i] = (ci[0] + ri[0])[:,0]
         if not np.array_equal(N_next.sum(axis=1),
                               (carry+recruits+external).sum(axis=1)):
             raise AssertionError("Movement cannot create/destroy individuals")
@@ -226,7 +246,6 @@ def run_finite_batch(arms: pd.DataFrame, *, years=YEARS, dt=DT,
         now = N_next[:,:,0] > 0
         total_recolonizations += ((~was) & now).sum(axis=1)
         total_local_extinctions += (was & (~now)).sum(axis=1)
-        incoming_f = (incoming_c + incoming_r)[:,:,0]
         movement_assisted_returns += (
             ((~was) & now & (incoming_f>0) & movement[:,:,0])
         ).sum(axis=1)
