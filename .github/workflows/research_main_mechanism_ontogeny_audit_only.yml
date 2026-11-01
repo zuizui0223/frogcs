@@ -1,12 +1,6 @@
 name: Frogcs audit-only main 1479 1455 genuine80 source reuse
 
 on:
-  pull_request:
-    branches:
-      - research/common-engine-D-E-nuisance-pom-20261101
-    paths:
-      - .github/workflows/research_main_mechanism_ontogeny_audit_only.yml
-      - research/scripts/audit_main_mechanism_ontogeny_demography_80y.py
   workflow_dispatch:
 
 permissions:
