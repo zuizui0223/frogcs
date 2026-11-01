@@ -63,7 +63,7 @@ def load_complete_source(root):
         f = pd.read_csv(d / "original_80y_frog_vertex_demography.csv.gz")
         s = pd.read_csv(d / "same_model_four_sign_and_occupancy.csv")
         grp = pd.read_csv(d / "source_group_accounting.csv")
-        if (len(f) != 768 or len(s) != 96 or len(grp) != 48
+        if (len(f) != 1536 or len(s) != 192 or len(grp) != 48
                 or f.duplicated(KEY+["vertex"]).any()
                 or s.duplicated(KEY).any()
                 or set(f.context) != {r["stage"]}
@@ -154,7 +154,7 @@ def load_complete_source(root):
         raise AssertionError("Source stage/q/seed factorial incomplete")
     f = pd.concat(f_parts,ignore_index=True)
     s = pd.concat(s_parts,ignore_index=True)
-    if (len(f) != 9216 or len(s) != 1152
+    if (len(f) != 18432 or len(s) != 2304
             or f.duplicated(KEY+["vertex"]).any() or s.duplicated(KEY).any()):
         raise AssertionError("Full original 80y output row inventory incomplete")
     return f,s,pd.DataFrame(receipts)
