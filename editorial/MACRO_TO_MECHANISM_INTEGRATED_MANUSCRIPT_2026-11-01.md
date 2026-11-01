@@ -138,7 +138,7 @@ The general insight supported now is modest but useful: **ecological relationshi
 
 Across 4,248 repeatedly surveyed North American acoustic locations, the environmental association between odonate suitability and frog calling varies with potential caudate habitat. A broad original-kernel model comparison shows that diverse stage-structured food webs can produce simplified versions of this conditional pattern without any single required S→D trophic edge. Matched source interventions further separate **the recipient-specific demographic benefit of vegetation refuge** from **the model's ability to recreate a four-sign association pattern**. Finite-population persistence is highly conditional on synthetic demographic scale and does not supply a robust predation-specific movement mechanism. The geographical association is an observational result; the trophic explanation and long-run wild population consequence remain open. Our biological contribution is a falsifiable distinction among *habitat protection, interaction signatures and population persistence*, rather than a claim that one predator pathway has already been identified.
 
-## Three-figure editorial design (not yet rendered)
+## Figures: source-backed Figure 2 panels and planned Figures 1 and 3
 
 **Figure 1 — Third-guild context in the observed macroecology.** Same 4,248 listening locations, Odonata and pond-Caudata potential environmental suitability, field high-versus-low Caudata association contrasts and two SDM-background route-bootstrap uncertainty ranges. Include O×S and O×V regression coefficients, and mark the positive three-way interaction as background-sensitive; the 4,040 prior-calling and 3,907 water-eligible matched comparisons belong in SI rather than a separate ecology story.
 
@@ -146,7 +146,7 @@ Across 4,248 repeatedly surveyed North American acoustic locations, the environm
 
 **Figure 3 — Long-run consequences versus actual field adequacy.** (a) Same accepted-source finite-N q3/q12 80-year frog occupancy under S→F and movement ON/OFF, with source-draw uncertainty; (b) q12 ceiling and no robust S→F-specific movement moderation; (c) distinct empirical six-statistic source-proxy failure (0/768 uniform, 7/768 target-group, none common), explicitly noting the observation link is not calibrated. This juxtaposition prevents equating success in an idealized sign test with causal explanation of field calling.
 
-**The figures are a design, not yet rendered.** Full original ecological result tables and manuscript scope checks are preserved in PRs #146, #156, #158, #159 and #160.
+**Figure 2A and 2B are now rendered from the frozen 96-source intervention table and 50-source original-survival-floor sensitivity.** [Successful source-audit and downloadable 2-panel figure artifact](https://github.com/zuizui0223/frogcs/actions/runs/41298704170) · [reproducible plotting code](../research/scripts/plot_integrated_234_refuge_fig2.py) · [source-floor and predator-edge evidence table](../research/INTEGRATED_MAIN3600_SURVIVAL_FLOOR_EDGE_SENSITIVITY_2026-11-01.md). Figures 1 and 3 remain editorial designs. Full original ecological results and scope checks are preserved in PRs #146, #156, #158, #159 and #160.
 
 ## Proposed Supplementary Information for one paper
 
