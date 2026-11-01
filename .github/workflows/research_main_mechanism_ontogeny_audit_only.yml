@@ -1,0 +1,71 @@
+name: Frogcs audit-only main 1479 1455 genuine80 source reuse
+
+on:
+  pull_request:
+    branches:
+      - research/common-engine-D-E-nuisance-pom-20261101
+    paths:
+      - .github/workflows/research_main_mechanism_ontogeny_audit_only.yml
+      - research/scripts/audit_main_mechanism_ontogeny_demography_80y.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-original-genuine-source-without-biological-rerun:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_TRUE80_RUN_ID: '41274006035'
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 19d45ffb833e2970aff8d88de101736aee289d26
+          path: source
+          sparse-checkout: |
+            research/scripts
+            research/results/literature_extension_20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install exact original numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'scipy>=1.11,<2'
+      - name: Require precisely twelve genuine source artifacts from original fixed biological workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_total=0
+          for attempt in $(seq 1 90); do
+            source_total=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${ORIGINAL_TRUE80_RUN_ID}/artifacts?per_page=100" --jq '.artifacts[].name' | grep -E -c '^frogcs-main-ontogeny-(original|D_first_S_overtakes|S_first_D_overtakes)-q(3|12)-seed(101|103)$' || true)
+            echo "ORIGINAL_GENUINE_80Y_SOURCE_ARTIFACTS_READY=${source_total}/12"
+            if [ "${source_total}" -eq 12 ]; then
+              break
+            fi
+            sleep 15
+          done
+          if [ "${source_total}" -ne 12 ]; then
+            echo "FAIL_CLOSED: Original source 80y computation did not yield all 12 artifacts" >&2
+            exit 1
+          fi
+      - name: Download original unmodified 12 true80y source artifacts (no resimulation)
+        run: |
+          mkdir -p paper/research/results/main_ontogeny_demography_20261101/reused_source_shards
+          gh run download "$ORIGINAL_TRUE80_RUN_ID" --repo "$GITHUB_REPOSITORY" --pattern 'frogcs-main-ontogeny-*-q*-seed*' --dir paper/research/results/main_ontogeny_demography_20261101/reused_source_shards
+      - name: Independently recompute all F vertex 4 signs, main edge and vegetation contrasts, and year80 occupancy/returns
+        run: |
+          python paper/research/scripts/audit_main_mechanism_ontogeny_demography_80y.py --input paper/research/results/main_ontogeny_demography_20261101/reused_source_shards --output paper/research/results/main_ontogeny_demography_20261101/audited_true80
+      - name: Save canonical 3-context same theta ecological results and source receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-main-1479-1455-true80-independent-audit
+          path: paper/research/results/main_ontogeny_demography_20261101/audited_true80/
+          retention-days: 30
+          if-no-files-found: warn
