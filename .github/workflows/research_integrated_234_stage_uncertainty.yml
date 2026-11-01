@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - .github/workflows/research_integrated_234_stage_uncertainty.yml
+      - research/scripts/audit_integrated_234_stage_uncertainty.py
+      - research/scripts/audit_integrated_234_viability_sensitivity.py
   workflow_dispatch:
 
 permissions:
