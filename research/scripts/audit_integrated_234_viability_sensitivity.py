@@ -37,7 +37,7 @@ def source_identity_checks(paired, selected):
     if not selected.groupby("context_id").size().eq(32).all():
         raise AssertionError("Expected 32 accepted source draws from each original context")
     key = ["source_draw_id", "axis", "counterfactual_context"]
-    if paired.duplicated(key).any() or set(paired.axis) != set(AXES):
+    if paired.duplicated(key).any() or set(paired["axis"]) != set(AXES):
         raise AssertionError("Duplicate/missing source intervention identities")
     if not paired.groupby(["source_draw_id", "axis"]).counterfactual_context.nunique().eq(3).all():
         raise AssertionError("All 3 within-source counterfactual contexts required")
@@ -69,7 +69,7 @@ def source_identity_checks(paired, selected):
         raise AssertionError("Invalid model-native four-sign ON/OFF changes")
     # A refuge for S against D has no biological meaning when D->S
     # predation is removed. Verify this is an exact structural null.
-    inactive = j[(j.axis == "cover_DS") & (j.edge_DS == 0)]
+    inactive = j[(j["axis"] == "cover_DS") & (j.edge_DS == 0)]
     if (len(inactive) != 19*3 or
         np.max(np.abs(inactive[list(METRICS)].to_numpy(dtype=float))) > 1e-12):
         raise AssertionError("Inactive D->S network unexpectedly reacts to S refuge")
@@ -97,7 +97,7 @@ def resampled_conditional_effects(joined, condition, mask, draws=REPEATS):
     ids = choices.source_draw_id.to_numpy()
     rows = []
     for axis in AXES:
-        part = joined[joined.axis == axis]
+        part = joined[joined["axis"] == axis]
         for metric in METRICS:
             wide = part.pivot(index="source_draw_id",
                               columns="counterfactual_context", values=metric).loc[ids]
