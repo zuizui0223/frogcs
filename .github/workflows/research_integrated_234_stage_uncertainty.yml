@@ -1,0 +1,46 @@
+name: Frogcs PR160 matched-source stage uncertainty independent audit
+
+on:
+  push:
+    branches:
+      - research/abc-pom-main3600-joint-20261101
+    paths:
+      - .github/workflows/research_integrated_234_stage_uncertainty.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-original-paired-96-source-draws:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41262102436'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source audit dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3'
+      - name: Download original successful PR160 paired stage and vegetation source
+        run: |
+          mkdir -p research/results/integrated_234_stage_uncertainty_20261101/input
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --name 'integrated-234-paired-stage-vegetation' --dir research/results/integrated_234_stage_uncertainty_20261101/input
+      - name: Require genuine frozen source records and recompute paired draw bootstrap
+        run: |
+          python research/scripts/audit_integrated_234_stage_uncertainty.py \
+            --paired research/results/integrated_234_stage_uncertainty_20261101/input/posterior_paired_plant_stage.csv \
+            --output research/results/integrated_234_stage_uncertainty_20261101/audit \
+            --bootstrap 20000
+      - name: Preserve full interval table and exact provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-main3600-stage-96-source-weighted-CI
+          path: research/results/integrated_234_stage_uncertainty_20261101/audit/
+          retention-days: 30
+          if-no-files-found: warn
