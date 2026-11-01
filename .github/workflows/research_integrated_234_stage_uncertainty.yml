@@ -1,11 +1,6 @@
 name: Frogcs PR160 matched-source stage uncertainty independent audit
 
 on:
-  push:
-    branches:
-      - research/abc-pom-main3600-joint-20261101
-    paths:
-      - .github/workflows/research_integrated_234_stage_uncertainty.yml
   workflow_dispatch:
 
 permissions:
