@@ -2,7 +2,7 @@
 
 **2026-11-01 | Verified GitHub Actions SUCCESS #41262102436 | Draft PR #160 | post-main research.** Same original main seasonal food-web model, same original nuisance rates and the same accepted original draw IDs throughout. Main results are preserved without replacement.
 
-## Single scientific question
+> **2026-11-01 independent 96-source refinement:** [Weighted stage/refuge inference audit](INTEGRATED_MAIN3600_REFUGE_STAGE_INFERENCE_AUDIT_2026-11-01.md) and [updated single-paper manuscript](../editorial/MACRO_TO_MECHANISM_INTEGRATED_MANUSCRIPT_2026-11-01.md) retain this frozen biological source result. A new 20,000-draw source-ID-stratified bootstrap, with original 317/265/212 context source mass, finds that F-from-S shelter increases mean log(F_B) in all three developmental contexts while its stage-specific effect on **four-sign compatibility is individually imprecise** (each 95% source Monte Carlo interval includes zero). By contrast, S-from-D shelter in context 2 **reduces** F log density (−0.01391 [−0.01842,−0.00985]) while **increasing** four-sign success (+7.72 percentage points [+1.67,+13.98]). This is a within-model distinction between population benefit and signature generation, not empirical field causality. The independent source audit *does not change* the 20,000 original model runs, selected 96 draw IDs or finite-N source results.\n\n## Single scientific question
 
 Under what ontogenetic arrangement and vegetation function does a food-web mechanism generate four originally observed macro directions, and does that *same compatible M,T,θ* imply a robust long-run population consequence of dispersal and S-larva→F-larva predation?
 
