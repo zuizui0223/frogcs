@@ -36,7 +36,7 @@ For *each* context×theta×plant×main model×q×movement×seed, record from the
 4. Report *every* stage and q/movement setting, including zero and reversed effects. Does the plant function's effect on **long-run occupancy/returns** also change sign across developmental contexts? This is independent of whether its effect on four-sign compatibility flips.
 5. Source-audit exact 12 stage×q×2seed-shard receipts; model flag fingerprint; 4year original deterministic replay; 4 original theta IDs; all 8 corners; 4 RNG seed labels; source guild, migration and return conservation; recompute paired effects without selecting favorable arms.
 
-Numerical inventory: 3 stages × 2 main models × 6 legal plant roles × 4 real source-rate vectors × 2 count scales × 2 movement modes × 4 seeds = **1,152 original finite-N 80year scenario-group readouts**, each with 8 V×S×D source vertices, i.e. **9,216 genuine F source vertices**, each containing 8 patches. The four seeds and four hypothetical theta vectors—not the 9,216 model cells—are the variability levels. This is a *subset of main's 3,600 mechanisms*.
+Numerical inventory: 3 stages × 2 main models × 6 legal plant roles × 4 real source-rate vectors × 2 count scales × 2 movement modes × 4 seeds = **2,304 original finite-N 80year scenario-group readouts**, each with 8 V×S×D source vertices, i.e. **18,432 genuine F source vertices**, each containing 8 patches. The four seeds and four hypothetical theta vectors—not the 18,432 model cells—are the variability levels. This is a *subset of main's 3,600 mechanisms*.
 
 ## Predeclared inference boundary and decision rule
 
