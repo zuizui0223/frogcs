@@ -56,12 +56,12 @@ jobs:
       - name: Re-evaluate original 20000 seeded joint structure-rate IDs at 80 years
         run: >-
           python research/scripts/abc_pom_main3600.py
-          --draws 20000 --seed 20261101 --shards 8 --shard \${{ matrix.shard }}
+          --draws 20000 --seed 20261101 --shards 8 --shard ${{ matrix.shard }}
           --years 80 --window 20 --dt 0.5 --chunk 72
           --out research/results/abc_pom_main3600_80y_20261101
       - uses: actions/upload-artifact@v4
         with:
-          name: integrated-80year-abc-shard-\${{ matrix.shard }}
+          name: integrated-80year-abc-shard-${{ matrix.shard }}
           path: research/results/abc_pom_main3600_80y_20261101/shard_*.csv.gz
           if-no-files-found: error
 
@@ -142,10 +142,10 @@ jobs:
       - name: Same 80y finite-N q3/q12 x SF ON/OFF x movement ON/OFF
         run: >-
           python research/scripts/integrated_finite_main3600.py
-          --shards 4 --shard \${{ matrix.shard }} --years 80 --dt 0.5
+          --shards 4 --shard ${{ matrix.shard }} --years 80 --dt 0.5
       - uses: actions/upload-artifact@v4
         with:
-          name: integrated-234-finite-\${{ matrix.shard }}
+          name: integrated-234-finite-${{ matrix.shard }}
           path: research/results/abc_pom_integrated_20261101/finite_predictions_shard_*.csv.gz
           if-no-files-found: error
 
