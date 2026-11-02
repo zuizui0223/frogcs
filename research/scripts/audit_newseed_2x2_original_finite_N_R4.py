@@ -100,9 +100,14 @@ def load_sources(root):
             and set(data.q)==set(Q) and set(data.move_on)==set(MOVE)
             and set(data.seed)==set(SEEDS) and data.edge_SF_on.eq(1).all(),
             "Unplanned arm, stage or original predation edge in finiteN source")
-    require(data.occupied_year80.between(0,8).all() and
-            data.occupied_mean_year61_80.between(0,8).all(),
-            "Original eight-patch model out of bounds")
+    final=data.occupied_year80.to_numpy(dtype=float)
+    mean=data.occupied_mean_year61_80.to_numpy(dtype=float)
+    require(np.isfinite(final).all() and np.isfinite(mean).all() and
+            (final>=0).all() and (final<=8).all() and
+            np.array_equal(final,np.rint(final)),
+            "Year80 final source occupied patches must be exact integers within 0–8")
+    require((mean>=-1e-10).all() and (mean<=8+1e-10).all(),
+            "Original 20-year mean patch occupancy exceeds 0–8 after float tolerance")
     for metric in ("recolonization_events_80y","local_extinction_events_80y",
                    "movement_assisted_returns_80y"):
         require(data[metric].ge(0).all() and
