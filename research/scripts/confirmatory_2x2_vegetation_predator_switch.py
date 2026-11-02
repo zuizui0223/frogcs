@@ -71,7 +71,7 @@ def original_draws():
         original={k:getattr(base,k) for k in FEATURES}
         require(original["cover_SF"]==0 and original["support_DF"]==0 and
                 original["behavior"]!="risk_refuge","Illegal initial plant background")
-        rates=nuisance.iloc[sid].to_dict()
+        rates=nuisance.iloc[sid][["attack","rho","conversion","strength","refuge_order","gate_code"]].to_dict()
         for context in range(3):
             for pos,(arm,cover,support) in enumerate(ARMS):
                 feat={**original,"cover_SF":cover,"support_DF":support}
