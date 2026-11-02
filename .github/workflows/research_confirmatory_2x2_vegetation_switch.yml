@@ -1,0 +1,156 @@
+name: Frogcs confirm new-seed canonical paired 2x2 vegetation predator switch
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-source-preregistered-method-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: source
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact source compatible scientific numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify original canonical catalog, 256 new random backgrounds and model-source replay
+        run: |
+          python -m unittest discover -s paper/research/scripts -p 'test_confirmatory_2x2_vegetation_predator_switch.py' -v
+      - name: Save only original 4-year proof-of-method receipt, not a scientific result
+        run: |
+          python -u paper/research/scripts/confirmatory_2x2_vegetation_predator_switch.py \
+            --shard 0 --years 4 \
+            --out paper/research/results/confirmatory_2x2_20261102/smoke
+      - name: Keep 4-year scientific method audit separate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-newseed-paired-2x2-method-smoke-only
+          path: paper/research/results/confirmatory_2x2_20261102/smoke/
+          if-no-files-found: warn
+          retention-days: 30
+
+  genuine-80year-original-season-annual-kernel:
+    needs: frozen-source-preregistered-method-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: source
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Run exact 256 source backgrounds x three developmental contexts x legal plant switch quartet
+        run: |
+          python -u paper/research/scripts/confirmatory_2x2_vegetation_predator_switch.py \
+            --shard ${{ matrix.shard }} --years 80 \
+            --out paper/research/results/confirmatory_2x2_20261102/shard
+      - name: Preserve original individual source year80 and eight V S D corner outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-newseed-paired-2x2-shard-${{ matrix.shard }}
+          path: paper/research/results/confirmatory_2x2_20261102/shard/
+          if-no-files-found: warn
+          retention-days: 30
+
+  complete-independent-source-cohort-hazard-audit:
+    needs: genuine-80year-original-season-annual-kernel
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: source
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned source scipy pandas numpy dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-newseed-paired-2x2-shard-*
+          path: paper/research/results/confirmatory_2x2_20261102/all_original_80y_shards
+          merge-multiple: false
+      - name: Independently recalculate all 24576 source vertices and paired 2x2 hazards and acceptance
+        run: |
+          python -u paper/research/scripts/audit_confirmatory_2x2_vegetation_predator_switch.py \
+            --input paper/research/results/confirmatory_2x2_20261102/all_original_80y_shards \
+            --output paper/research/results/confirmatory_2x2_20261102/audited
+      - name: Independently require all 256 source backgrounds and exact preregistered 2x2 source outputs
+        run: |
+          python - <<'PY'
+          import json
+          import pandas as pd
+          from pathlib import Path
+          out=Path('paper/research/results/confirmatory_2x2_20261102/audited')
+          receipt=json.loads((out/'true80_independent_audit_receipt.json').read_text())
+          terms=pd.read_csv(out/'paired_2x2_source_background_95MC.csv')
+          proposals=pd.read_csv(out/'true80_canonical_paired_2x2_proposals.csv.gz',dtype={'arm':str})
+          assert receipt['status']=='CONFIRMATORY_NEW_SEED_PAIRED_2x2_ORIGINAL_80Y_SOURCE_AUDIT_SUCCESS'
+          assert receipt['base_canonical_structures']==256
+          assert receipt['new_80year_model_proposals']==3072
+          assert receipt['original_80year_vertices']==24576
+          assert receipt['original_background_V0_pathway_null_verified']
+          assert len(proposals)==3072 and proposals.draw_id.nunique()==3072
+          assert len(terms)==480
+          assert all(terms[(terms.metric=='accepted')&
+                           (terms.context=='pooled')&
+                           (terms.contrast.isin(['both_minus_neither','factorial_synergy']))]
+                           .n_source_backgrounds==256)
+          print('FROGCS_NEW_INDEPENDENT_SEED_256_PAIR_SOURCE_AUDIT_FINAL_SUCCESS')
+          PY
+      - name: Preserve source truth and both positive and negative scientific results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-newseed-256-background-2x2-original80y-full-audited
+          path: paper/research/results/confirmatory_2x2_20261102/audited/
+          retention-days: 30
+          if-no-files-found: warn
