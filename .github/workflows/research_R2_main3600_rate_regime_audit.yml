@@ -1,12 +1,6 @@
 name: Frogcs R2 original 20k rate regime and structural ABC audit
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - .github/workflows/research_R2_main3600_rate_regime_audit.yml
-      - research/scripts/audit_main3600_R2_rate_structure_regimes.py
   workflow_dispatch:
 
 permissions:
