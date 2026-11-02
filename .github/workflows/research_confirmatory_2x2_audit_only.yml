@@ -1,0 +1,88 @@
+name: Frogcs confirmatory 2x2 independent original80y audit-only reuse
+
+on:
+  pull_request:
+    branches:
+      - research/abc-pom-main3600-joint-20261101
+    paths:
+      - .github/workflows/research_confirmatory_2x2_audit_only.yml
+      - research/scripts/audit_confirmatory_2x2_vegetation_predator_switch.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-8-shards-independent-audit-without-rerunning-biology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_RUN_ID: '41407292958'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original main model and summary audit numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Require eight original success source artifacts and no invalid alternate scientific source
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ["GITHUB_REPOSITORY"];run=os.environ["ORIGINAL_RUN_ID"]
+          p=subprocess.run(["gh","api",f"repos/{repo}/actions/runs/{run}/artifacts?per_page=100"],
+                           capture_output=True,text=True,check=True)
+          arts=json.loads(p.stdout)["artifacts"]
+          names={x["name"] for x in arts if not x.get("expired")}
+          expected={f"frogcs-newseed-paired-2x2-shard-{i}" for i in range(8)}
+          assert expected.issubset(names),(expected-names)
+          print("CONFIRMATORY_2x2_ALL_EIGHT_UNCHANGED_SOURCE_ARTIFACTS_FOUND")
+          PY
+      - name: Download original untouched genuine original80 year source shards
+        run: |
+          mkdir -p paper/research/results/confirmatory_2x2_20261102/original_shards
+          gh run download "$ORIGINAL_RUN_ID" --repo "$GITHUB_REPOSITORY" --pattern 'frogcs-newseed-paired-2x2-shard-*' --dir paper/research/results/confirmatory_2x2_20261102/original_shards
+      - name: Independently audit canonical quartet, all 24576 source vertices, V0 null, original four signs, survival and hazards
+        run: |
+          python -u paper/research/scripts/audit_confirmatory_2x2_vegetation_predator_switch.py \
+            --input paper/research/results/confirmatory_2x2_20261102/original_shards \
+            --output paper/research/results/confirmatory_2x2_20261102/audited
+      - name: Validate eight-source inventory and 256-background cluster results before scientific interpretation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,pandas as pd
+          d=Path("paper/research/results/confirmatory_2x2_20261102/audited")
+          r=json.loads((d/"true80_independent_audit_receipt.json").read_text())
+          t=pd.read_csv(d/"paired_2x2_source_background_95MC.csv")
+          a=pd.read_csv(d/"true80_canonical_paired_2x2_proposals.csv.gz",dtype={"arm":str})
+          assert r["status"]=="CONFIRMATORY_NEW_SEED_PAIRED_2x2_ORIGINAL_80Y_SOURCE_AUDIT_SUCCESS"
+          assert (r["base_canonical_structures"],r["new_80year_model_proposals"],
+                  r["original_80year_vertices"])==(256,3072,24576)
+          assert r["original_background_V0_pathway_null_verified"]
+          assert len(t)==480 and len(a)==3072
+          assert t.loc[(t.metric=="accepted")&(t.context=="pooled")&
+              (t.contrast.isin(["both_minus_neither","factorial_synergy"]))].n_source_backgrounds.eq(256).all()
+          print("CONFIRMATORY_2x2_NEWSEED_256_MODEL_HAZARD_AND_COHORT_INDEPENDENT_AUDIT_SUCCESS")
+          PY
+      - name: Preserve original scientific evidence, direct predator hazard and 2x2 acceptance interaction
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-newseed-independent-2x2-genuine80y-canonical-audited
+          path: paper/research/results/confirmatory_2x2_20261102/audited/
+          if-no-files-found: warn
+          retention-days: 30
