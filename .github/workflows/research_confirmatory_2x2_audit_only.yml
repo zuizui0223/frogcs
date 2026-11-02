@@ -1,13 +1,6 @@
 name: Frogcs confirmatory 2x2 independent original80y audit-only reuse
 
 on:
-  pull_request:
-    branches:
-      - research/abc-pom-main3600-joint-20261101
-    paths:
-      - .github/workflows/research_confirmatory_2x2_audit_only.yml
-      - research/scripts/audit_confirmatory_2x2_vegetation_predator_switch.py
-      - research/scripts/plot_confirmatory_2x2_vegetation_predator_switch.py
   workflow_dispatch:
 
 permissions:
