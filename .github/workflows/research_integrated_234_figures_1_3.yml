@@ -1,0 +1,85 @@
+name: Frogcs manuscript Figures 1 and 3 exact source evidence
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-verified-field-and-model-figures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: field-source
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/results/naamp_odonata_caudata_associations_20261026
+            research/results/naamp_remote_vegetation_20261026
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install plotting and source-audit numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'matplotlib>=3.7,<4'
+      - name: Retrieve frozen PR160 original four 80-year finite-population shards
+        run: |
+          mkdir -p paper/research/results/integrated_234_manuscript_figures_20261101/input/finite
+          gh run download 41262102436 --repo "$GITHUB_REPOSITORY" --pattern 'integrated-234-finite-*' --dir paper/research/results/integrated_234_manuscript_figures_20261101/input/finite
+      - name: Retrieve fixed main3600 80-year 20000-draw and source-bootstrap results
+        run: |
+          mkdir -p paper/research/results/integrated_234_manuscript_figures_20261101/input/pr160
+          gh run download 41262102436 --repo "$GITHUB_REPOSITORY" --name 'integrated-234-final-scientific-receipts' --dir paper/research/results/integrated_234_manuscript_figures_20261101/input/pr160
+      - name: Retrieve independent PR158 original same-theta field-site six-statistic source audit
+        run: |
+          mkdir -p paper/research/results/integrated_234_manuscript_figures_20261101/input/real_site
+          gh run download 41215171866 --repo "$GITHUB_REPOSITORY" --name 'frogcs-DE-true80y-same-theta-4248site-6pattern-both-backgrounds-audited' --dir paper/research/results/integrated_234_manuscript_figures_20261101/input/real_site
+      - name: Render field Figure 1 with both source SDM backgrounds, route intervals and vegetation interactions
+        run: |
+          python paper/research/scripts/plot_integrated_234_macro_fig1.py \
+            --strata field-source/research/results/naamp_odonata_caudata_associations_20261026/stratified_correlations.csv \
+            --contrasts field-source/research/results/naamp_odonata_caudata_associations_20261026/high_low_contrasts.csv \
+            --vegetation field-source/research/results/naamp_remote_vegetation_20261026/network_rank_coefficients.csv \
+            --output paper/research/results/integrated_234_manuscript_figures_20261101/figures
+      - name: Render Figure 3 with real 80-year source models, paired demographic sensitivity and separate field adequacy
+        run: |
+          python paper/research/scripts/plot_integrated_234_population_fig3.py \
+            --finite-dir paper/research/results/integrated_234_manuscript_figures_20261101/input/finite \
+            --source-bootstrap paper/research/results/integrated_234_manuscript_figures_20261101/input/pr160/draw_bootstrap_predictive_interval.csv \
+            --main-abc-summary paper/research/results/integrated_234_manuscript_figures_20261101/input/pr160/summary.json \
+            --site-models paper/research/results/integrated_234_manuscript_figures_20261101/input/real_site/all_original_same_theta_4248_site_POM_and_80year_outcomes.csv.gz \
+            --site-summary paper/research/results/integrated_234_manuscript_figures_20261101/input/real_site/real_site_six_pattern_model_adequacy_by_background.csv \
+            --output paper/research/results/integrated_234_manuscript_figures_20261101/figures
+      - name: Require exactly four reproducible manuscript scientific figure panels and receipts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          root=Path('paper/research/results/integrated_234_manuscript_figures_20261101/figures')
+          imgs=sorted(root.glob('Figure*.png'))
+          assert len(imgs)==4, [x.name for x in imgs]
+          assert all(x.stat().st_size>18000 for x in imgs), 'Empty or corrupted scientific figure'
+          a=json.loads((root/'Figure1_source_receipt.json').read_text())
+          b=json.loads((root/'Figure3_source_receipt.json').read_text())
+          assert a['observed_listening_sites']==4248
+          assert b['n_true_80year_finite_arms']==1536
+          assert b['n_real_site_comparison_per_sdm']==768
+          assert b['no_model_adequate_both_backgrounds']
+          print('FROGCS_FIGURES_1_3_FOUR_PANELS_SOURCE_AUDITED_SUCCESS')
+          PY
+      - name: Preserve PNGs, genuine source summary, SHA256 receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-PR160-figure1-figure3-real-field-and-model-verified
+          path: paper/research/results/integrated_234_manuscript_figures_20261101/figures/
+          retention-days: 30
+          if-no-files-found: warn

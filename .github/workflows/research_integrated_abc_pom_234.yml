@@ -1,0 +1,186 @@
+name: Frogcs integrated 234 ABC 80-year same-main mechanism pipeline
+
+on:
+  push:
+    branches:
+      - research/abc-pom-main3600-joint-20261101
+    paths:
+      - research/scripts/abc_pom_main3600.py
+      - research/scripts/integrated_80y_prepare.py
+      - research/scripts/integrated_paired_stage_vegetation.py
+      - research/scripts/integrated_finite_main3600.py
+      - research/scripts/integrated_main3600_joint_report.py
+      - research/scripts/test_integrated_234_main3600.py
+      - .github/workflows/research_integrated_abc_pom_234.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  OPENBLAS_NUM_THREADS: "1"
+  OMP_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"
+  NUMEXPR_NUM_THREADS: "1"
+
+jobs:
+  verify-same-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3 scipy==1.15.3
+      - name: Unchanged main numerical replay and finite-N ledger tests
+        run: python -m unittest discover -s research/scripts -p 'test_integrated_234_main3600.py' -v
+      - name: Original 4-direction identity tests
+        run: python -m unittest discover -s research/scripts -p 'test_abc_pom_main3600.py' -v
+
+  source-80year-abc:
+    needs: verify-same-engine
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3 scipy==1.15.3
+      - name: Re-evaluate original 20000 seeded joint structure-rate IDs at 80 years
+        run: >-
+          python research/scripts/abc_pom_main3600.py
+          --draws 20000 --seed 20261101 --shards 8 --shard ${{ matrix.shard }}
+          --years 80 --window 20 --dt 0.5 --chunk 72
+          --out research/results/abc_pom_main3600_80y_20261101
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-80year-abc-shard-${{ matrix.shard }}
+          path: research/results/abc_pom_main3600_80y_20261101/shard_*.csv.gz
+          if-no-files-found: error
+
+  select-same-posterior:
+    needs: source-80year-abc
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: integrated-80year-abc-shard-*
+          merge-multiple: true
+          path: research/results/abc_pom_main3600_80y_20261101
+      - name: Verify exact 20k prior IDs, accept deterministic 80y and lock 96 source draws
+        run: python research/scripts/integrated_80y_prepare.py --draws 20000 --shards 8 --selected 96
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-234-80y-locked-source
+          path: |
+            research/results/abc_pom_integrated_20261101/summary.json
+            research/results/abc_pom_integrated_20261101/axis_acceptance.csv
+            research/results/abc_pom_integrated_20261101/context_structural_conditional.csv
+            research/results/abc_pom_integrated_20261101/mechanism_stage_combinations.csv
+            research/results/abc_pom_integrated_20261101/integrated_design.json
+            research/results/abc_pom_integrated_20261101/selected_draws.csv
+          if-no-files-found: error
+
+  matched-vegetation-stage:
+    needs: select-same-posterior
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          name: integrated-234-80y-locked-source
+          path: research/results/abc_pom_integrated_20261101
+      - name: Same 96 draw theta x 3 stage contexts x cover_SF/DS ON-OFF
+        run: python research/scripts/integrated_paired_stage_vegetation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-234-paired-stage-vegetation
+          path: |
+            research/results/abc_pom_integrated_20261101/posterior_paired_plant_stage.csv
+            research/results/abc_pom_integrated_20261101/posterior_plant_stage_summary.csv
+            research/results/abc_pom_integrated_20261101/same_draw_stage_effect_reversals.csv
+            research/results/abc_pom_integrated_20261101/stage_intervention_audit.json
+          if-no-files-found: error
+
+  finite-population-prediction:
+    needs: select-same-posterior
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          name: integrated-234-80y-locked-source
+          path: research/results/abc_pom_integrated_20261101
+      - name: Same 80y finite-N q3/q12 x SF ON/OFF x movement ON/OFF
+        run: >-
+          python research/scripts/integrated_finite_main3600.py
+          --shards 4 --shard ${{ matrix.shard }} --years 80 --dt 0.5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-234-finite-${{ matrix.shard }}
+          path: research/results/abc_pom_integrated_20261101/finite_predictions_shard_*.csv.gz
+          if-no-files-found: error
+
+  single-integrated-report:
+    needs: [select-same-posterior, matched-vegetation-stage, finite-population-prediction]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.3.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: integrated-234-*
+          merge-multiple: true
+          path: research/results/abc_pom_integrated_20261101
+      - name: Require exact same draw IDs and generate joint stage-population effects
+        run: python research/scripts/integrated_main3600_joint_report.py --shards 4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: integrated-234-final-scientific-receipts
+          path: |
+            research/results/abc_pom_integrated_20261101/summary.json
+            research/results/abc_pom_integrated_20261101/axis_acceptance.csv
+            research/results/abc_pom_integrated_20261101/context_structural_conditional.csv
+            research/results/abc_pom_integrated_20261101/mechanism_stage_combinations.csv
+            research/results/abc_pom_integrated_20261101/integrated_design.json
+            research/results/abc_pom_integrated_20261101/stage_intervention_audit.json
+            research/results/abc_pom_integrated_20261101/posterior_plant_stage_summary.csv
+            research/results/abc_pom_integrated_20261101/same_draw_stage_effect_reversals.csv
+            research/results/abc_pom_integrated_20261101/joint_mechanism_stage_population.csv
+            research/results/abc_pom_integrated_20261101/paired_finite_movement_sfpredation.csv
+            research/results/abc_pom_integrated_20261101/context_structure_q_posterior_predictive.csv
+            research/results/abc_pom_integrated_20261101/draw_bootstrap_predictive_interval.csv
+            research/results/abc_pom_integrated_20261101/integrated_result_manifest.json
+          if-no-files-found: error

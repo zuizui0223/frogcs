@@ -1,0 +1,90 @@
+name: Frogcs G1 third-guild vs nonlinear shared-environment heldout source audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/research_g1_shared_environment_block_cv.yml
+      - research/scripts/g1_shared_environment_spatial_block.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-4248-site-spatial-block-environment-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'bridge-source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: field-source
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/results/naamp_remote_vegetation_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+            research/results/naamp_odonata_caudata_associations_20261026
+      - uses: actions/checkout@v4
+        with:
+          path: bridge-source
+          ref: a5ddc281ba17017a52b404a5725327f6e829824f
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exactly matching source statistical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Enforce independent frozen original site, acoustic, and PR145 code sources
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          names=[
+            'field-source/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz',
+            'field-source/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz',
+            'field-source/research/results/naamp_odonata_caudata_associations_20261026/high_low_contrasts.csv',
+            'bridge-source/research/scripts/acoustic_mechanism_cv.py'
+          ]
+          assert all(Path(p).is_file() for p in names),[p for p in names if not Path(p).is_file()]
+          print('FROGCS_G1_THREE_FROZEN_SOURCE_FILES_AND_ORIGINAL_BRIDGE_PRESENT')
+          PY
+      - name: Compute eight precommitted model architectures under original five heldout geographic folds and both source SDM backgrounds
+        run: |
+          python -u paper/research/scripts/g1_shared_environment_spatial_block.py \
+            --sites field-source/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz \
+            --visits field-source/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz \
+            --observed-contrasts field-source/research/results/naamp_odonata_caudata_associations_20261026/high_low_contrasts.csv \
+            --output paper/research/results/g1_shared_environment_spatial_block_20261102
+      - name: Require independent source NLL replay, full model ablation and valid 56-block uncertainty intervals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd,json
+          out=Path('paper/research/results/g1_shared_environment_spatial_block_20261102')
+          receipt=json.loads((out/'g1_source_receipt.json').read_text())
+          scores=pd.read_csv(out/'nested_environment_models_heldout_scores.csv')
+          gains=pd.read_csv(out/'paired_56_block_gains.csv')
+          assert receipt['status']=='G1_FROGCS_FROZEN_SHARED_ENVIRONMENT_SPATIAL_BLOCK_COMPARISON_SUCCESS'
+          assert (receipt['sites'],receipt['completed_surveys'],receipt['spatial_blocks'])==(4248,63180,56)
+          assert len(scores)==16 and len(gains)==10
+          assert all(scores.n_surveys.eq(63180)) and all(scores.n_blocks.eq(56))
+          assert all(gains.bootstrap_95_low<=gains.gain_nll_per_survey) and all(gains.gain_nll_per_survey<=gains.bootstrap_95_high)
+          print('FROGCS_G1_SOURCE_SPATIAL_BLOCK_4248_AND_FULL_NESTED_COMPARISON_AUDIT_SUCCESS')
+          PY
+      - name: Save complete heldout predictions and paired 56-block source uncertainties
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-G1-shared-environment-spatial-block-4248-verified
+          path: paper/research/results/g1_shared_environment_spatial_block_20261102/
+          if-no-files-found: warn
+          retention-days: 30

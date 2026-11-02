@@ -1,0 +1,58 @@
+name: Frogcs PR160 matched-source stage uncertainty independent audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-original-paired-96-source-draws:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41262102436'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source audit dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'matplotlib>=3.7,<4'
+      - name: Download original successful PR160 paired stage and vegetation source
+        run: |
+          mkdir -p research/results/integrated_234_stage_uncertainty_20261101/input
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --name 'integrated-234-paired-stage-vegetation' --dir research/results/integrated_234_stage_uncertainty_20261101/input
+      - name: Download original 96 selected structural source IDs and original survival-floor flags
+        run: |
+          mkdir -p research/results/integrated_234_stage_uncertainty_20261101/selected
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --name 'integrated-234-80y-locked-source' --dir research/results/integrated_234_stage_uncertainty_20261101/selected
+      - name: Require genuine frozen source records and recompute paired draw bootstrap
+        run: |
+          python research/scripts/audit_integrated_234_stage_uncertainty.py \
+            --paired research/results/integrated_234_stage_uncertainty_20261101/input/posterior_paired_plant_stage.csv \
+            --output research/results/integrated_234_stage_uncertainty_20261101/audit \
+            --bootstrap 20000
+      - name: Recalculate 50-source viability and 77-source active-edge sensitivity from immutable original records
+        run: |
+          python research/scripts/audit_integrated_234_viability_sensitivity.py \
+            --paired research/results/integrated_234_stage_uncertainty_20261101/input/posterior_paired_plant_stage.csv \
+            --selected research/results/integrated_234_stage_uncertainty_20261101/selected/selected_draws.csv \
+            --output research/results/integrated_234_stage_uncertainty_20261101/audit \
+            --bootstrap 20000
+      - name: Reproduce Figure 2 abundance and four-sign patterns with source bootstrap intervals
+        run: |
+          python research/scripts/plot_integrated_234_refuge_fig2.py \
+            --primary research/results/integrated_234_stage_uncertainty_20261101/audit/source_weighted_stage_interventions_bootstrap.csv \
+            --sensitivity research/results/integrated_234_stage_uncertainty_20261101/audit/original_survival_floor_stage_refuge_sensitivity.csv \
+            --output research/results/integrated_234_stage_uncertainty_20261101/audit/figures
+      - name: Preserve full interval table and exact provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-main3600-stage-96-source-weighted-CI
+          path: research/results/integrated_234_stage_uncertainty_20261101/audit/
+          retention-days: 30
+          if-no-files-found: warn
