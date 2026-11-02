@@ -169,7 +169,7 @@ def simulate_original_80y(proposals,models,*,years=80,window=20,dt=.5,chunk=CHUN
 def check_source_replay(models,proposals,effects,years=4):
     # Independent source implementation replay uses unchanged PR160 helper.
     chk=proposals.sort_values("draw_id").head(8).copy()
-    original=run_subset(chk,models,years=years,window=min(2,years),dt=.5)
+    original=run_subset(chk.drop(columns=["cover_SF","support_DF"]),models,years=years,window=min(2,years),dt=.5)
     matching=effects.set_index("draw_id").loc[chk.draw_id].reset_index(drop=True)
     for col in ("log_OS","log_OV","log_SV","log_OSV",
                 "mean_F_B","mean_log_F_B","min_F","min_S"):
