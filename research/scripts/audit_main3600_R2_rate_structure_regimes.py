@@ -121,8 +121,8 @@ def load_sources(shard_root,final_receipt):
     for name in CONDITIONAL_AXES:
         require(set(d[name])=={0,1},f"Model structure feature {name} changed")
     # The original source 80y algorithm's sign convention, which includes
-    # strict negative OS,OV and positive SV,OSV, must be recounted.
-    sign=(d.log_OS<0)&(d.log_OV<0)&(d.log_SV>0)&(d.log_OSV>0)
+    # source epsilon = 1e-6; strict negative OS,OV and positive SV,OSV, must be recounted.
+    sign=(d.log_OS < -1e-6)&(d.log_OV < -1e-6)&(d.log_SV > 1e-6)&(d.log_OSV > 1e-6)
     require(np.array_equal(sign.to_numpy(bool),d.accepted.to_numpy(bool)),
             "Saved original four-sign compatibility changed")
     require(np.isfinite(d[list(MAIN_SIGNS)].to_numpy(float)).all(),
