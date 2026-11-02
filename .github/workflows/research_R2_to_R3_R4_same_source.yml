@@ -1,13 +1,6 @@
 name: Frogcs R2 regime to R3 R4 original source-ID conditional audit
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - .github/workflows/research_R2_to_R3_R4_same_source.yml
-      - research/scripts/audit_R2_to_R3_R4_same_source_regime.py
-      - research/scripts/plot_main3600_R2_R4_regime_consequences.py
   workflow_dispatch:
 
 permissions:
