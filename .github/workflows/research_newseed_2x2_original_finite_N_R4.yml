@@ -1,0 +1,166 @@
+name: Frogcs R4 newseed same256 vegetation 2x2 true80 finiteN demographic consequences
+
+on:
+  pull_request:
+    branches:
+      - research/confirmatory-paired-vegetation-2x2-20261102
+    paths:
+      - .github/workflows/research_newseed_2x2_original_finite_N_R4.yml
+      - research/scripts/run_newseed_2x2_original_finite_N_R4.py
+      - research/scripts/audit_newseed_2x2_original_finite_N_R4.py
+      - research/scripts/test_newseed_2x2_original_finite_N_R4.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-PR160-season-annual-and-finiteN-method-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 2cb46f452bd31fe2ace1b1d9db8985b3529612f4
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Require inherited original PR160 finiteN stochastic source script unchanged
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          a=Path("paper/research/scripts/integrated_finite_main3600.py")
+          b=Path("source/research/scripts/integrated_finite_main3600.py")
+          assert a.is_file() and b.is_file()
+          assert hashlib.sha256(a.read_bytes()).digest()==hashlib.sha256(b.read_bytes()).digest()
+          print("PR161_256_R4_ORIGINAL_PR160_FINITE_N_SOURCE_IDENTICAL")
+          PY
+      - name: Test source 256 backgrounds and true original 20y finiteN model without changing biology
+        run: |
+          python -m unittest discover -s paper/research/scripts -p 'test_newseed_2x2_original_finite_N_R4.py' -v
+
+  original-finiteN-true80-source-shards:
+    needs: original-PR160-season-annual-and-finiteN-method-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 105
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 2cb46f452bd31fe2ace1b1d9db8985b3529612f4
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Run genuinely stochastic finiteN 80-year source on same original PR161 256 model × stage × four plant interventions
+        run: |
+          python -u paper/research/scripts/run_newseed_2x2_original_finite_N_R4.py \
+            --shard ${{ matrix.shard }} --years 80 \
+            --out paper/research/results/newseed_2x2_R4_20261102/biological_source
+      - name: Preserve true80 source cohort counts occupancy reoccupations and SHA identity
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-newseed2x2-R4-true80-shard-${{ matrix.shard }}
+          path: paper/research/results/newseed_2x2_R4_20261102/biological_source/
+          retention-days: 30
+          if-no-files-found: warn
+
+  independent-source-audit-and-256-background-population-contrasts:
+    needs: original-finiteN-true80-source-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 2cb46f452bd31fe2ace1b1d9db8985b3529612f4
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-newseed2x2-R4-true80-shard-*
+          path: paper/research/results/newseed_2x2_R4_20261102/all_source_shards
+          merge-multiple: false
+      - name: Retrieve original independent PR161 3072 true80 stage-model-vegetation source before auditing R4
+        run: |
+          mkdir -p paper/research/results/newseed_2x2_R4_20261102/original_PR161
+          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
+            --dir paper/research/results/newseed_2x2_R4_20261102/original_PR161
+      - name: Independently validate same 256 original background IDs 24576 full genuine80 stochastic arms and paired effects
+        run: |
+          python -u paper/research/scripts/audit_newseed_2x2_original_finite_N_R4.py \
+            --input paper/research/results/newseed_2x2_R4_20261102/all_source_shards \
+            --original-PR161-source paper/research/results/newseed_2x2_R4_20261102/original_PR161/true80_canonical_paired_2x2_proposals.csv.gz \
+            --output paper/research/results/newseed_2x2_R4_20261102/audited
+      - name: Require 256 original source clusters 24,576 stochastic 80year arms and full ecological comparisons
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          root=Path("paper/research/results/newseed_2x2_R4_20261102/audited")
+          r=json.loads((root/"R4_256_source_audit_receipt.json").read_text())
+          x=pd.read_csv(root/"R4_genuine_all_24576_model_80y_arms.csv.gz",dtype={"arm":str})
+          t=pd.read_csv(root/"R4_full_256_model_2x2_occupancy_and_events.csv")
+          m=pd.read_csv(root/"R4_paired_256_model_plant_and_movement_contrasts.csv")
+          assert r["status"]=="PR161_SAME256_R4_GENUINE80_FINITE_N_INDEPENDENT_SOURCE_AUDIT_SUCCESS"
+          assert r["genuine_stochastic_80year_arms"]==24576
+          assert r["original_canonical_structures"]==256
+          assert len(x)==24576 and x.source_id.nunique()==256
+          assert len(t)==1280 and len(m)==256
+          assert x.occupied_year80.between(0,8).all()
+          assert r["external_immigration_in_original_finiteN_source"]
+          assert not r["factual_NAAMP_predation_estimated"]
+          print("PR161_NEWSEED_R4_256_SOURCE_ORIGINAL_80YEAR_FULL_INDEPENDENT_AUDIT_SUCCESS")
+          PY
+      - name: Save complete source and model population interaction outcome evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-newseed-PR161-R4-same256-true80-full-source-audited
+          path: paper/research/results/newseed_2x2_R4_20261102/audited/
+          retention-days: 30
+          if-no-files-found: warn
