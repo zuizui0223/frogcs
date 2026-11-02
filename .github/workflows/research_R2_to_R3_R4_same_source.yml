@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/research_R2_to_R3_R4_same_source.yml
       - research/scripts/audit_R2_to_R3_R4_same_source_regime.py
+      - research/scripts/plot_main3600_R2_R4_regime_consequences.py
   workflow_dispatch:
 
 permissions:
@@ -28,7 +29,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install pandas numpy source-only dependencies
-        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3'
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'matplotlib>=3.7,<4'
       - name: Download immutable selected 96 original M-stage-theta source IDs
         run: |
           mkdir -p paper/research/results/R2_to_R4_20261102/input/selected
@@ -53,6 +54,13 @@ jobs:
             --joined paper/research/results/R2_to_R4_20261102/input/joined/joint_mechanism_stage_population.csv \
             --r2-stage-structure paper/research/results/R2_to_R4_20261102/input/r2/weak_high_rho_stage_x_plant_mechanism.csv \
             --output paper/research/results/R2_to_R4_20261102/audited
+      - name: Draw source-ID conditional year80 population consequence without overinterpreting small selected source sets
+        run: |
+          python paper/research/scripts/plot_main3600_R2_R4_regime_consequences.py \
+            --full-source-interval paper/research/results/R2_to_R4_20261102/input/joined/draw_bootstrap_predictive_interval.csv \
+            --conditional-source-effects paper/research/results/R2_to_R4_20261102/audited/r2_regime_same_source_r3_r4_effects.csv \
+            --conditional-receipt paper/research/results/R2_to_R4_20261102/audited/source_locked_conditional_receipt.json \
+            --out paper/research/results/R2_to_R4_20261102/audited
       - name: Independently verify source subset inventory without wild posterior inference
         run: |
           python - <<'PY'
