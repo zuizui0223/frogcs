@@ -26,7 +26,7 @@ RATE_RHO=.75
 ARMS=(("00",0,0),("10",1,0),("01",0,1),("11",1,1))
 CHUNK=24
 SOURCE_MAIN_SHA="5e2f0a87c639df373fa2700b29403d2ab417a1cc"
-ESSENTIAL=("source_id","context_id","arm","model_id","attack","rho",
+ESSENTIAL=("draw_id","source_id","context_id","arm","model_id","attack","rho",
            "conversion","strength","refuge_order","gate_code")
 VERTEX_DATA=("F_B","S_B","D_B","F_fraction","audit_H_SF","audit_H_DF",
              "audit_H_DS","audit_H_SD","minimum_F_survival",
