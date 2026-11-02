@@ -125,9 +125,18 @@ def run_shard(*,shard,output,years=80):
     require(result.source_id.mod(N_SHARDS).eq(shard).all() and
             result.groupby(["source_id","context_id","arm"]).size().eq(8).all(),
             "Original PR161 source ID annotation diverged from model results")
-    require(result.occupied_year80.between(0,8).all()
-            and result.occupied_mean_year61_80.between(0,8).all(),
-            "Original finite-N 80year occupancy outside artificial eight patches")
+    final=result.occupied_year80.to_numpy(dtype=float)
+    avg=result.occupied_mean_year61_80.to_numpy(dtype=float)
+    require(np.isfinite(final).all() and np.isfinite(avg).all() and
+            (final>=0).all() and (final<=8).all() and
+            np.allclose(final,np.rint(final),atol=0,rtol=0),
+            "True final 80-year patch count must be an integer in 0–8")
+    # PR160 accumulates 20 terms of n/20 in floating arithmetic:
+    # exact 8.0 occupancy can appear as 8.000000000000002.
+    # Do not clip or change the original model values.
+    require((avg>=-1e-10).all() and (avg<=8+1e-10).all(),
+            f"Original finite-N 61–80y mean truly outside 0–8 "
+            f"(min={float(np.nanmin(avg))}, max={float(np.nanmax(avg))})")
     for key in ("recolonization_events_80y","local_extinction_events_80y",
                 "movement_assisted_returns_80y"):
         require((result[key]>=0).all() and
