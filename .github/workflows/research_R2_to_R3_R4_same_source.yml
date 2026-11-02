@@ -1,0 +1,80 @@
+name: Frogcs R2 regime to R3 R4 original source-ID conditional audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/research_R2_to_R3_R4_same_source.yml
+      - research/scripts/audit_R2_to_R3_R4_same_source_regime.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-locked-23-14-rate-regime-to-longrun:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pandas numpy source-only dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3'
+      - name: Download immutable selected 96 original M-stage-theta source IDs
+        run: |
+          mkdir -p paper/research/results/R2_to_R4_20261102/input/selected
+          gh run download 41262102436 --repo "$GITHUB_REPOSITORY" --name integrated-234-80y-locked-source --dir paper/research/results/R2_to_R4_20261102/input/selected
+      - name: Download original matched R3 vegetation intervention across all 96 source IDs
+        run: |
+          mkdir -p paper/research/results/R2_to_R4_20261102/input/paired
+          gh run download 41262102436 --repo "$GITHUB_REPOSITORY" --name integrated-234-paired-stage-vegetation --dir paper/research/results/R2_to_R4_20261102/input/paired
+      - name: Download original combined same M-theta R3 R4 192-row annual cohort effects
+        run: |
+          mkdir -p paper/research/results/R2_to_R4_20261102/input/joined
+          gh run download 41262102436 --repo "$GITHUB_REPOSITORY" --name integrated-234-final-scientific-receipts --dir paper/research/results/R2_to_R4_20261102/input/joined
+      - name: Download full original 20k source acceptance stage x refuge mechanism denominators
+        run: |
+          mkdir -p paper/research/results/R2_to_R4_20261102/input/r2
+          gh run download 41390511365 --repo "$GITHUB_REPOSITORY" --name frogcs-main3600-original20k-R2-rate-structure-regimes --dir paper/research/results/R2_to_R4_20261102/input/r2
+      - name: Verify SHA original selected 96 and match model conditional 23/14 IDs to R3 and R4 outcomes
+        run: |
+          python -u paper/research/scripts/audit_R2_to_R3_R4_same_source_regime.py \
+            --selected paper/research/results/R2_to_R4_20261102/input/selected/selected_draws.csv \
+            --paired paper/research/results/R2_to_R4_20261102/input/paired/posterior_paired_plant_stage.csv \
+            --joined paper/research/results/R2_to_R4_20261102/input/joined/joint_mechanism_stage_population.csv \
+            --r2-stage-structure paper/research/results/R2_to_R4_20261102/input/r2/weak_high_rho_stage_x_plant_mechanism.csv \
+            --output paper/research/results/R2_to_R4_20261102/audited
+      - name: Independently verify source subset inventory without wild posterior inference
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          root=Path('paper/research/results/R2_to_R4_20261102/audited')
+          r=json.loads((root/'source_locked_conditional_receipt.json').read_text())
+          a=pd.read_csv(root/'r2_regime_same_source_r3_r4_effects.csv')
+          b=pd.read_csv(root/'original_source_23_14_id_audit.csv')
+          assert r["status"]=="R2_RATE_REGION_SAME_ORIGINAL_R3_R4_SOURCE_MATCHED_AUDIT_SUCCESS"
+          assert len(a)==40 and len(b)==37
+          assert b.groupby("regime").draw_id.nunique().sort_values().tolist()==[14,23]
+          assert sorted(a.component.unique())==["R3_refuge","R4_longrun"]
+          assert not r["independent_real_field_data"] and not r["original_field_posterior"]
+          assert a[["weighted_mean","mc95_low","mc95_high"]].notna().all().all()
+          print("R2_R3_R4_23_AND_14_SAME_SOURCE_LINK_AND_STRATIFIED_MC_AUDIT_SUCCESS")
+          PY
+      - name: Preserve source table and conditional R3 R4 long-run uncertainty
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-original-main3600-R2-R3-R4-same-source-23-14-audited
+          path: paper/research/results/R2_to_R4_20261102/audited/
+          retention-days: 30
+          if-no-files-found: warn
