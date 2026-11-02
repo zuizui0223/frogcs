@@ -176,8 +176,9 @@ def frame(a):
     cols={}
     for metric in metrics:
         w=out.pivot(index=k,columns="arm",values=metric).sort_index()
-        require(list(w.columns)==list(ARM_LABELS),
+        require(set(w.columns)==set(ARM_LABELS),
                 "Source quartet member missing in "+metric)
+        w=w.loc[:,list(ARM_LABELS)]  # canonical treatment order, not lexicographic sort
         cols[metric]=w.astype(float)
     rows=[]
     for metric,w in cols.items():
