@@ -1,14 +1,6 @@
 name: Frogcs confirm new-seed canonical paired 2x2 vegetation predator switch
 
 on:
-  pull_request:
-    branches:
-      - research/abc-pom-main3600-joint-20261101
-    paths:
-      - .github/workflows/research_confirmatory_2x2_vegetation_switch.yml
-      - research/scripts/confirmatory_2x2_vegetation_predator_switch.py
-      - research/scripts/audit_confirmatory_2x2_vegetation_predator_switch.py
-      - research/scripts/test_confirmatory_2x2_vegetation_predator_switch.py
   workflow_dispatch:
 
 permissions:
