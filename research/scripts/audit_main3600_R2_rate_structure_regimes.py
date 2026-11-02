@@ -61,7 +61,8 @@ def wilson(k,n,z=1.959963984540054):
 def grouped(data,keys, *,outcome="accepted"):
     out=[]
     for group,g in data.groupby(keys,sort=True,dropna=False):
-        group=(group,) if len(keys)==1 else tuple(group)
+        group=tuple(group) if isinstance(group,tuple) else (group,)
+        require(len(group)==len(keys),"Grouping source key arity mismatch")
         k=int(g[outcome].sum())
         n=len(g)
         lo,hi=wilson(k,n)
@@ -228,12 +229,15 @@ def figure_heatmap(grid,output):
         ax.set_title(f"Attack coefficient = {attack:g}")
         ax.set_xlabel("Hypothetical conversion")
     axs[0].set_ylabel("Hypothetical local recruitment fraction ρ")
-    fig.colorbar(m0,ax=axs.ravel().tolist(),shrink=.78,label="Four-sign compatibility (%)")
+    # Dedicated colorbar axis is outside the third attack panel; do not
+    # overlay its cell counts or rate labels.
+    fig.subplots_adjust(left=.08,right=.90,top=.82,bottom=.16,wspace=.12)
+    bar_axis=fig.add_axes([.925,.19,.014,.60])
+    fig.colorbar(m0,cax=bar_axis,label="Four-sign compatibility (%)")
     fig.suptitle("Original main3600: all 20,000 80-year source draws (no post hoc rate filtering)")
     fig.text(.02,.012,
         "Simulation sign acceptance; 27 source-prior rate cells. No field-calibrated predation, "
         "recruitment or empirical mechanism posterior.",fontsize=9)
-    fig.subplots_adjust(left=.08,right=.90,top=.82,bottom=.16,wspace=.12)
     fig.savefig(output,dpi=190)
     plt.close(fig)
 
