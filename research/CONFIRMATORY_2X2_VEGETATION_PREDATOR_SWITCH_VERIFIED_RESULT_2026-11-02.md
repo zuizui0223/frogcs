@@ -86,3 +86,9 @@
 **投稿上の主張：** 「生物が実際に観測した湿地植生は捕食者を入れ替える」ではなく、「植物の機能が2つの捕食経路を反対方向に調節するモデルでは、その組合せは一部の生活史・加入条件で相互作用パターンを非加法的に生成し、それは必ずしも焦点種の個体群量の増加を意味しない」。この対立を自然の食物網へ一般化するには直接の捕食率・植物機能、幼生→成体発声・検出の測定が必要。
 
 PR #161はPR #160に積み上げたDraft。歴史的なmain、PR145/146/158/159/160及び元sourceを変更せず、投稿はしていない。
+
+## 新しいsource-backed図
+
+- [Figure R2：4つの元合法植生機能処理の生成率と発育条件別の2要因非加法相互作用](https://github.com/zuizui0223/frogcs/actions/runs/41408471121) — 完全な256元構造×3文脈の95%モデルsource-bootstrap。条件2の交互作用は負であり、全体プラスの結果と併記する。
+- [Figure R3：モデル内の捕食ハザード比と水生カエル量の違い](https://github.com/zuizui0223/frogcs/actions/runs/41408471121) — 元季節モデルのV=1/S2/D2のS→F、D→Fハザード比と、同一モデル4機能の元8corner平均logFを区別した。
+- [実行・再現用描画コード](scripts/plot_confirmatory_2x2_vegetation_predator_switch.py)。同Actions artifact `frogcs-newseed-independent-2x2-genuine80y-canonical-audited` 内に2枚のPNG、元3072源結果、元24576頂点、480行の全bootstrap対比、全SHA256監査記録を保持する（Actions保存期限30日）。
