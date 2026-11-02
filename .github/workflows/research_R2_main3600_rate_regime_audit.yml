@@ -1,0 +1,74 @@
+name: Frogcs R2 original 20k rate regime and structural ABC audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/research_R2_main3600_rate_regime_audit.yml
+      - research/scripts/audit_main3600_R2_rate_structure_regimes.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-20000-source-conditional-rate-and-structure-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN: '41262102436'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original source reaggregation and figure dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'pandas>=2,<3' 'matplotlib>=3.7,<4'
+      - name: Download 8 immutable original 20k M-stage-theta 80year source shards
+        run: |
+          mkdir -p paper/research/results/main3600_R2_source_regimes_20261102/original_shards
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --pattern 'integrated-80year-abc-shard-*' --dir paper/research/results/main3600_R2_source_regimes_20261102/original_shards
+      - name: Download original authoritative 20000-draw source summary
+        run: |
+          mkdir -p paper/research/results/main3600_R2_source_regimes_20261102/original_summary
+          gh run download "$SOURCE_RUN" --repo "$GITHUB_REPOSITORY" --name 'integrated-234-final-scientific-receipts' --dir paper/research/results/main3600_R2_source_regimes_20261102/original_summary
+      - name: Independently recompute all 27 rate cells and prior-normalized plant and edge acceptance
+        run: |
+          python -u paper/research/scripts/audit_main3600_R2_rate_structure_regimes.py \
+            --shards paper/research/results/main3600_R2_source_regimes_20261102/original_shards \
+            --original-summary paper/research/results/main3600_R2_source_regimes_20261102/original_summary/summary.json \
+            --output paper/research/results/main3600_R2_source_regimes_20261102/audited
+      - name: Audit 20k 794 426 source rate denominators and 27-cell plot
+        run: |
+          python - <<'PY'
+          import pandas as pd,json
+          from pathlib import Path
+          p=Path('paper/research/results/main3600_R2_source_regimes_20261102/audited')
+          r=json.loads((p/'r2_original_source_receipt.json').read_text())
+          t=pd.read_csv(p/'twentyseven_rate_cells.csv')
+          u=pd.read_csv(p/'exploratory_regimes_with_denominators.csv')
+          v=pd.read_csv(p/'weak_high_rho_plant_mechanism_joint.csv')
+          w=pd.read_csv(p/'rate_survival_floor_sensitivity.csv')
+          assert r["status"]=="FROGCS_MAIN3600_R2_ALL_20000_SOURCE_RATES_STRUCTURES_VERIFIED"
+          assert len(t)==27 and int(t.n_proposals.sum())==20000 and int(t.n_accepted.sum())==794
+          assert len(u)==11 and len(v)==4
+          assert int(w.accepted_and_floor.sum())==426
+          assert int(v.n_proposals.sum())==2245 and int(v.n_accepted.sum())==179
+          img=p/'Figure_R2_full_27_rate_cell_compatibility.png'
+          assert img.is_file() and img.stat().st_size>20000
+          print("FROGCS_R2_20000_SOURCE_AND_27_RATE_CELL_PLOT_AUDITED_SUCCESS")
+          PY
+      - name: Save source rate and structural tables and Figure R2
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-main3600-original20k-R2-rate-structure-regimes
+          path: paper/research/results/main3600_R2_source_regimes_20261102/audited/
+          retention-days: 30
+          if-no-files-found: warn
