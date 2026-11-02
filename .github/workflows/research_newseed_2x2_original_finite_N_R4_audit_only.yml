@@ -1,0 +1,90 @@
+name: Frogcs R4 same256 original 80y independent audit replay only
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-finiteN-16-shards-reused-without-biology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_FINITEN_RUN: '41413937240'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 2cb46f452bd31fe2ace1b1d9db8985b3529612f4
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Require exactly sixteen archived genuine 80y source shards before any source interpretation
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          run=os.environ['ORIGINAL_FINITEN_RUN']
+          p=subprocess.run(['gh','api',f'repos/{repo}/actions/runs/{run}/artifacts?per_page=100'],
+                           check=True,capture_output=True,text=True)
+          arts=json.loads(p.stdout)['artifacts']
+          names={a['name'] for a in arts if not a.get('expired')}
+          need={f'frogcs-newseed2x2-R4-true80-shard-{i}' for i in range(16)}
+          assert need.issubset(names),need-names
+          print('FROGCS_NEWSEED_R4_ALL16_UNMODIFIED_SOURCE_SHARDS_AVAILABLE')
+          PY
+      - name: Download original sixteen 80y source artifacts without running biological engine
+        run: |
+          mkdir -p paper/research/results/newseed_2x2_R4_20261102/all_source_shards
+          gh run download "$ORIGINAL_FINITEN_RUN" --repo "$GITHUB_REPOSITORY" \
+            --pattern 'frogcs-newseed2x2-R4-true80-shard-*' \
+            --dir paper/research/results/newseed_2x2_R4_20261102/all_source_shards
+      - name: Retrieve immutable PR161 3072 original canonical source proposals
+        run: |
+          mkdir -p paper/research/results/newseed_2x2_R4_20261102/original_PR161
+          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
+            --dir paper/research/results/newseed_2x2_R4_20261102/original_PR161
+      - name: Reconstruct all original source contrasts and 10k cluster Monte Carlo without resimulation
+        run: |
+          python -u paper/research/scripts/audit_newseed_2x2_original_finite_N_R4.py \
+            --input paper/research/results/newseed_2x2_R4_20261102/all_source_shards \
+            --original-PR161-source paper/research/results/newseed_2x2_R4_20261102/original_PR161/true80_canonical_paired_2x2_proposals.csv.gz \
+            --output paper/research/results/newseed_2x2_R4_20261102/audited
+      - name: Strictly audit source denominators and preserve all negative outcomes
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          out=Path('paper/research/results/newseed_2x2_R4_20261102/audited')
+          r=json.loads((out/'R4_256_source_audit_receipt.json').read_text())
+          t=pd.read_csv(out/'R4_full_256_model_2x2_occupancy_and_events.csv')
+          m=pd.read_csv(out/'R4_paired_256_model_plant_and_movement_contrasts.csv')
+          assert r['status']=='PR161_SAME256_R4_GENUINE80_FINITE_N_INDEPENDENT_SOURCE_AUDIT_SUCCESS'
+          assert (r['genuine_stochastic_80year_arms'],r['original_canonical_structures'])==(24576,256)
+          assert len(t)==1280 and len(m)==256
+          assert (t.mc95_low<=t['mean']).all() and (t['mean']<=t.mc95_high).all()
+          assert r['external_immigration_in_original_finiteN_source']
+          print('FROGCS_PR161_R4_SOURCE16_INDEPENDENT_AUDIT_ONLY_SUCCESS')
+          PY
+      - name: Archive source-only full R4 actual output and audit receipt
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-PR161-R4-same256-independent-reused-source-audit
+          path: paper/research/results/newseed_2x2_R4_20261102/audited/
+          retention-days: 30
+          if-no-files-found: warn
