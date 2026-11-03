@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 60
     env:
       GH_TOKEN: ${{ github.token }}
-      ORIGINAL_FINITEN_RUN: '41413937240'
+      ORIGINAL_FINITEN_RUN: '41414717527'
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
       PYTHONHASHSEED: '0'
