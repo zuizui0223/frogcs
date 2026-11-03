@@ -1,0 +1,92 @@
+name: Frogcs G2 acoustic any versus strong observation-outcome source audit
+
+on:
+  pull_request:
+    branches:
+      - research/confirmatory-paired-vegetation-2x2-20261102
+    paths:
+      - .github/workflows/research_g2_acoustic_outcome_audit.yml
+      - research/scripts/g2_acoustic_outcome_definition_audit.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  same-original-4248-site-acoustic-outcome-source-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONHASHSEED: '0'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONPATH: source/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/scripts
+            research/results/naamp_site_use_associations_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+            research/results/naamp_odonata_caudata_associations_20261026
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-identical analysis dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Verify all original frozen field and R1 source inputs are present
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          paths=[
+            'source/research/results/naamp_site_use_associations_20261026/primary_site_characteristics.csv.gz',
+            'source/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz',
+            'source/research/results/naamp_odonata_caudata_associations_20261026/high_low_contrasts.csv',
+            'source/research/scripts/naamp_site_use_associations.py',
+            'source/research/scripts/naamp_odonata_caudata_associations.py',
+          ]
+          assert all(Path(p).is_file() for p in paths),[p for p in paths if not Path(p).is_file()]
+          print('G2_ORIGINAL_VISITS_SITES_AND_SOURCE_INTERACTION_ANALYTICS_PRESENT')
+          PY
+      - name: Independently replay original R1 strong estimates and contrast any vs strong among 4248 same observed sites
+        run: |
+          python -u paper/research/scripts/g2_acoustic_outcome_definition_audit.py \
+            --site source/research/results/naamp_site_use_associations_20261026/primary_site_characteristics.csv.gz \
+            --visits source/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz \
+            --original-high-low source/research/results/naamp_odonata_caudata_associations_20261026/high_low_contrasts.csv \
+            --out paper/research/results/g2_acoustic_outcome_definition_20261103
+      - name: Require old R1 full replay and all alternative observed acoustic response scores
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          root=Path('paper/research/results/g2_acoustic_outcome_definition_20261103')
+          rec=json.loads((root/'G2_source_replay_receipt.json').read_text())
+          a=pd.read_csv(root/'observed_stratified_correlations_by_call_definition.csv')
+          b=pd.read_csv(root/'observed_high_low_by_call_definition.csv')
+          c=pd.read_csv(root/'paired_original_source_strong_minus_any.csv')
+          s=pd.read_csv(root/'original_tertile_call_event_support.csv')
+          assert rec['status']=='G2_ORIGINAL_4248_VISITS_REPLAY_AND_ACOUSTIC_OUTCOME_DECOMPOSITION_SUCCESS'
+          assert (rec['n_original_sites'],rec['n_original_completed_acoustic_surveys'])==(4248,63180)
+          assert rec['original_R1_strong_acoustic_contrast_and_route_interval_reproduced']
+          assert len(a)==36 and len(b)==12 and len(c)==4 and len(s)==6
+          assert set(b.outcome)=={'strong_all','any_all','strong_given_any'}
+          assert (s.n_any_positive_sites+s.n_any_zero_sites==s.n_source_sites).all()
+          assert not rec['original_observation_bridge_larval_to_adult_calibrated']
+          fig=root/'G2_R1_three_acoustic_outcome_contrasts.png'
+          assert fig.is_file() and fig.stat().st_size>20000
+          print('G2_4248_SOURCE_OBSERVATION_OUTCOME_REPLAY_AND_ALL_CI_AUDITED_SUCCESS')
+          PY
+      - name: Preserve full route bootstrap intervals, acoustic event denominators, figure and original source SHA
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-G2-original4248-acoustic-any-vs-strong-source-audited
+          path: paper/research/results/g2_acoustic_outcome_definition_20261103/
+          retention-days: 30
+          if-no-files-found: warn
