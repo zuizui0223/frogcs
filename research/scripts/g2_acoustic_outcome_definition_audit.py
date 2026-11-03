@@ -228,12 +228,12 @@ def plot(contrasts,out):
     ]
     # Keep the legend outside original confidence intervals, including the
     # negative strong-given-any interval at the bottom of the figure.
-    ax.legend(handles=handles,loc="upper center",bbox_to_anchor=(.5,1.18),
+    ax.legend(handles=handles,loc="upper center",bbox_to_anchor=(.5,1.10),
               ncol=2,fontsize=8,frameon=False)
     fig.text(.02,.015,
        "95% original fixed-score route-cluster bootstrap intervals. Conditional strong excludes zero-any sites. "
        "Acoustic responses are neither pond occupancy nor observed larval predation.",fontsize=8)
-    fig.tight_layout(rect=(0,.055,1,.78))
+    fig.tight_layout(rect=(0,.06,1,.88))
     fig.savefig(out/"G2_R1_three_acoustic_outcome_contrasts.png",dpi=190)
     plt.close(fig)
 
