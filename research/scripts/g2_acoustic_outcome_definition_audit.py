@@ -228,7 +228,7 @@ def plot(contrasts,out):
     ]
     # Keep the legend outside original confidence intervals, including the
     # negative strong-given-any interval at the bottom of the figure.
-    ax.legend(handles=handles,loc="upper center",bbox_to_anchor=(.5,1.10),
+    ax.legend(handles=handles,loc="upper center",bbox_to_anchor=(.5,1.15),
               ncol=2,fontsize=8,frameon=False)
     fig.text(.02,.015,
        "95% original fixed-score route-cluster bootstrap intervals. Conditional strong excludes zero-any sites. "
