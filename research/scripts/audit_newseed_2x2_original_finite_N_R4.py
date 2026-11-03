@@ -151,10 +151,11 @@ def verify_link(data, original_PR161_source):
 
 def resample_source(x, metric, contrast, kind, q, move, context, draw):
     """Compute paired interventions first, then cluster bootstrap 256 sources."""
-    if context=="pooled":
-        selection=x[x.q.eq(q) & x.move_on.eq(move)]
-    else:
-        selection=x[x.q.eq(q) & x.move_on.eq(move) & x.context_id.eq(int(context))]
+    # Every source's three contexts remain paired in the matrix below.
+    # Choosing a single context *before* unstacking leaves two NaN columns
+    # and falsely claims that the original 80y source records were missing.
+    # Select one context only after all three source columns are verified.
+    selection=x[x.q.eq(q) & x.move_on.eq(move)]
     # Average process seeds within each canonical source×context×arm.
     grouped=(selection.groupby(["source_id","context_id","arm"],sort=True)
                     [metric].mean().reset_index())
