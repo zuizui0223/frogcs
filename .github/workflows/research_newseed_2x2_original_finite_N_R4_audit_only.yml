@@ -1,6 +1,13 @@
 name: Frogcs R4 same256 original 80y independent audit replay only
 
 on:
+  pull_request:
+    branches:
+      - research/confirmatory-paired-vegetation-2x2-20261102
+    paths:
+      - .github/workflows/research_newseed_2x2_original_finite_N_R4_audit_only.yml
+      - research/scripts/audit_newseed_2x2_original_finite_N_R4.py
+      - research/scripts/plot_newseed_2x2_original_finite_N_R4.py
   workflow_dispatch:
 
 permissions:
