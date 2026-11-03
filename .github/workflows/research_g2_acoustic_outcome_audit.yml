@@ -1,12 +1,6 @@
 name: Frogcs G2 acoustic any versus strong observation-outcome source audit
 
 on:
-  pull_request:
-    branches:
-      - research/confirmatory-paired-vegetation-2x2-20261102
-    paths:
-      - .github/workflows/research_g2_acoustic_outcome_audit.yml
-      - research/scripts/g2_acoustic_outcome_definition_audit.py
   workflow_dispatch:
 
 permissions:
