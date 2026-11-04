@@ -264,15 +264,15 @@ def graphic(comp,out):
     ax.set_yticks(range(4),list(reversed(label)))
     ax.axvline(0,color="grey",linewidth=1)
     ax.set_xlabel("Held-out NLL reduction after O×S addition (positive = improvement)")
-    ax.set_title("G2B · Does third-guild information survive a two-part acoustic observation model?")
+    fig.suptitle("G2B · Does third-guild information survive a two-part acoustic observation model?",y=.965)
     ax.grid(axis="x",alpha=.2)
     from matplotlib.lines import Line2D
-    ax.legend(handles=[
+    fig.legend(handles=[
         Line2D([0],[0],color="C0",marker="o",linestyle="none",label="Uniform SDM"),
         Line2D([0],[0],color="C1",marker="s",linestyle="none",label="Target-group SDM"),
-    ],loc="upper center",bbox_to_anchor=(.5,1.09),ncol=2,frameon=False)
+    ],loc="upper center",bbox_to_anchor=(.5,.89),ncol=2,frameon=False)
     fig.text(.015,.01,"Source 56-block bootstrap intervals, 999 draws. Conditional stage scores per recorded any-call; others per completed visit. Adult calls ≠ aquatic predator ecology.",fontsize=8)
-    fig.tight_layout(rect=(0,.06,1,.85))
+    fig.tight_layout(rect=(0,.08,1,.81))
     fig.savefig(out/"G2B_spatial_holdout_two_part_acoustic_incremental_OS.png",dpi=180)
     plt.close(fig)
 
