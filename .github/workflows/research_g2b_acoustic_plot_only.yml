@@ -1,11 +1,6 @@
 name: Frogcs G2B figure-only original source-reuse verification
 
 on:
-  pull_request:
-    branches:
-      - research/confirmatory-paired-vegetation-2x2-20261102
-    paths:
-      - .github/workflows/research_g2b_acoustic_plot_only.yml
   workflow_dispatch:
 
 permissions:
