@@ -1,0 +1,98 @@
+name: Frogcs G2B two-part adult frog calling spatial block source audit
+
+on:
+  pull_request:
+    branches:
+      - research/confirmatory-paired-vegetation-2x2-20261102
+    paths:
+      - .github/workflows/research_g2b_two_part_acoustic_spatial_cv.yml
+      - research/scripts/g2b_two_part_acoustic_spatial_cv.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-4248-site-any-and-strong-spatial-heldout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: source
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/results/naamp_remote_vegetation_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+      - uses: actions/checkout@v4
+        with:
+          path: bridge-source
+          ref: a5ddc281ba17017a52b404a5725327f6e829824f
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original source statistical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Require exact original source data and original PR145 original acoustic statistical functions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          a=Path('source/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz')
+          b=Path('source/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz')
+          c=Path('bridge-source/research/scripts/acoustic_mechanism_cv.py')
+          d=Path('paper/research/scripts/g1_shared_environment_spatial_block.py')
+          e=Path('paper/research/scripts/g2_acoustic_outcome_definition_audit.py')
+          assert all(z.is_file() for z in (a,b,c,d,e))
+          print('G2B_ORIGINAL_VISITS_SITE_PR145_G1_AND_G2_STATISTICAL_SOURCE_PRESENT')
+          PY
+      - name: Refit only training block adult acoustic statistics, never juvenile predator biology
+        env:
+          PYTHONPATH: 'bridge-source/research/scripts:paper/research/scripts'
+        run: |
+          python -u paper/research/scripts/g2b_two_part_acoustic_spatial_cv.py \
+            --sites source/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz \
+            --visits source/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz \
+            --output paper/research/results/g2b_two_part_acoustic_spatial_cv_20261105
+      - name: Fail closed on source 4248 denominator, original R1/G1 prediction replay and full two-stage model inventory
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,pandas as pd
+          root=Path('paper/research/results/g2b_two_part_acoustic_spatial_cv_20261105')
+          r=json.loads((root/'G2B_source_receipt.json').read_text())
+          s=pd.read_csv(root/'G2B_stage_model_scores.csv')
+          c=pd.read_csv(root/'G2B_56block_paired_increments.csv')
+          x=pd.read_csv(root/'source_4248_site_two_part_heldout_predictions.csv.gz')
+          assert r['status']=='G2B_ORIGINAL_4248_SITE_TWO_PART_ACOUSTIC_SPATIAL_HELDOUT_SOURCE_AUDITED'
+          assert (r['n_original_sites'],r['n_original_completed_visits'],
+                  r['n_geographic_blocks'],r['n_folds'])==(4248,63180,56,5)
+          assert r['original_G1_direct_strong_source_replay']
+          assert len(s)==32 and len(c)==24 and len(x)==33984
+          assert set(s.observation_stage)=={'any_all','strong_given_any','strong_all_direct','strong_all_factored'}
+          assert x[['pred_any','pred_given_any','pred_strong_direct','pred_strong_factored']].notna().all().all()
+          assert (x.pred_strong_factored<=x.pred_any+1e-12).all()
+          assert s.loc[s.observation_stage=='strong_given_any','trials'].eq(47912).all()
+          assert s.loc[s.observation_stage=='strong_all_factored','trials'].eq(63180).all()
+          assert not r['larval_to_calling_biological_observation_link_calibrated']
+          fig=root/'G2B_spatial_holdout_two_part_acoustic_incremental_OS.png'
+          assert fig.is_file() and fig.stat().st_size>18000
+          print('G2B_SOURCE_REPLAY_4248_SITES_TWO_PART_AND_ALL_SPATIAL_CI_AUDIT_PASS')
+          PY
+      - name: Preserve source-observed 56-block model scores, each heldout site estimate, original SHA receipts and diagnostic figure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-G2B-original4248-two-part-acoustic-56block-verified
+          path: paper/research/results/g2b_two_part_acoustic_spatial_cv_20261105/
+          retention-days: 30
+          if-no-files-found: warn
