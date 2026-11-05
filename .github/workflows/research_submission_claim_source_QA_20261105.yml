@@ -1,0 +1,82 @@
+name: Frogcs R1 to R4 concise manuscript and Supplement source claim QA
+
+on:
+  pull_request:
+    branches:
+      - research/confirmatory-paired-vegetation-2x2-20261102
+    paths:
+      - .github/workflows/research_submission_claim_source_QA_20261105.yml
+      - research/scripts/audit_submission_claims_20261105.py
+      - editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md
+      - editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-source-backed-paper-numerical-claim-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source table verification dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Retrieve the ORIGINAL 27-cell mechanism/prior acceptance source
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/R2
+          gh run download 41390511365 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-main3600-original20k-R2-rate-structure-regimes \
+            --dir paper/research/results/submission_source_QA_20261105/input/R2
+      - name: Retrieve the ORIGINAL 256-background plant 2x2 and predator hazard source
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/R3
+          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
+            --dir paper/research/results/submission_source_QA_20261105/input/R3
+      - name: Retrieve ORIGINAL 24,576 population arms and 256 source-cluster R4 audit
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/R4
+          gh run download 41551412003 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-PR161-R4-same256-independent-reused-source-audit \
+            --dir paper/research/results/submission_source_QA_20261105/input/R4
+      - name: Retrieve the actual 4,248-site G2 observed acoustic source/route response contrast
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/G2
+          gh run download 41562618381 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-G2-original4248-acoustic-any-vs-strong-source-audited \
+            --dir paper/research/results/submission_source_QA_20261105/input/G2
+      - name: Retrieve complete G2B independent two-stage source heldout score audit
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/G2B
+          gh run download 41921634037 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-G2B-original4248-two-part-acoustic-56block-verified \
+            --dir paper/research/results/submission_source_QA_20261105/input/G2B
+      - name: Recompute main headline values from five separately frozen authoritative sources
+        run: |
+          python -u paper/research/scripts/audit_submission_claims_20261105.py \
+            --r2 paper/research/results/submission_source_QA_20261105/input/R2 \
+            --pr161 paper/research/results/submission_source_QA_20261105/input/R3 \
+            --r4 paper/research/results/submission_source_QA_20261105/input/R4 \
+            --g2 paper/research/results/submission_source_QA_20261105/input/G2 \
+            --g2b paper/research/results/submission_source_QA_20261105/input/G2B \
+            --main paper/editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si paper/editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out paper/research/results/submission_source_QA_20261105/audited
+      - name: Preserve source numerators denominators manuscript structure and original record SHA checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-R1-R4-concise-main-SI-original-source-claim-QA
+          path: paper/research/results/submission_source_QA_20261105/audited/
+          retention-days: 30
+          if-no-files-found: warn

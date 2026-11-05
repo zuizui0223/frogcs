@@ -1,0 +1,70 @@
+name: Frogcs G2B figure-only original source-reuse verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-verified-acoustic-two-part-display-without-refitting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONPATH: 'bridge-source/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: bridge-source
+          ref: a5ddc281ba17017a52b404a5725327f6e829824f
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Download the successful frozen G2B geographic heldout prediction artifact only
+        run: |
+          mkdir -p paper/research/results/g2b_sourceonly_plot_20261105
+          gh run download 41921634037 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-G2B-original4248-two-part-acoustic-56block-verified \
+            --dir paper/research/results/g2b_sourceonly_plot_20261105
+      - name: Verify 24 original source outcomes and render publication candidate without any model refit
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          import pandas as pd
+          from g2b_two_part_acoustic_spatial_cv import graphic
+          root=Path('paper/research/results/g2b_sourceonly_plot_20261105')
+          r=json.loads((root/'G2B_source_receipt.json').read_text())
+          c=pd.read_csv(root/'G2B_56block_paired_increments.csv')
+          assert r['status']=='G2B_ORIGINAL_4248_SITE_TWO_PART_ACOUSTIC_SPATIAL_HELDOUT_SOURCE_AUDITED'
+          assert r['original_G1_direct_strong_source_replay'] and len(c)==24
+          assert (r['n_original_sites'],r['n_geographic_blocks'])==(4248,56)
+          source_hash=hashlib.sha256((root/'G2B_56block_paired_increments.csv').read_bytes()).hexdigest()
+          graphic(c,root)
+          img=root/'G2B_spatial_holdout_two_part_acoustic_incremental_OS.png'
+          assert img.is_file() and img.stat().st_size>25000
+          receipt={'status':'G2B_PUBLICATION_CI_FIGURE_SOURCE_REUSE_SUCCESS',
+                   'original_source_run':41921634037,'original_source_scores_sha256':source_hash,
+                   'unmodified_24_source_comparisons':True,'source_sites':4248,
+                   'source_model_refits':0,'independently_observed_predation':False}
+          (root/'G2B_figure_only_source_receipt.json').write_text(
+             json.dumps(receipt,indent=2)+'\n')
+          print('G2B_PUBLICATION_FIGURE_ONLY_SOURCE_REUSE_SUCCESS',receipt)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-G2B-publication-figure-source-reused-without-refit
+          path: |
+            paper/research/results/g2b_sourceonly_plot_20261105/G2B_spatial_holdout_two_part_acoustic_incremental_OS.png
+            paper/research/results/g2b_sourceonly_plot_20261105/G2B_figure_only_source_receipt.json
+          retention-days: 30
+          if-no-files-found: warn
