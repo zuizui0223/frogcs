@@ -58,8 +58,8 @@ def original_shards(root):
                 hashlib.sha256(e.read_bytes()).hexdigest()==rec["file_sha256"][e.name] and
                 hashlib.sha256(v.read_bytes()).hexdigest()==rec["file_sha256"][v.name],
                 "Original P1 SHA256 source file mismatch")
-        group=pd.read_csv(e,dtype={"arm":str,"timing":str})
-        vv=pd.read_csv(v,dtype={"arm":str,"timing":str})
+        group=pd.read_csv(e,dtype={"arm":str,"stage_design":str})
+        vv=pd.read_csv(v,dtype={"arm":str,"stage_design":str})
         require(len(group)==512 and len(vv)==4096 and
                 group.source_id.mod(N_SHARDS).eq(shard).all() and
                 vv.source_id.mod(N_SHARDS).eq(shard).all(),
@@ -73,8 +73,8 @@ def original_shards(root):
             and v.draw_id.eq(np.repeat(a.draw_id,8)).all()
             and not v.duplicated(["draw_id","vertex"]).any(),
             "Not the complete original 4096×8 80-year study")
-    require(a.source_id.nunique()==N_BASE and set(a.timing)==set(BOUNDS)
-            and a.groupby(["source_id","timing"]).arm.nunique().eq(4).all(),
+    require(a.source_id.nunique()==N_BASE and set(a.stage_design)==set(BOUNDS)
+            and a.groupby(["source_id","stage_design"]).arm.nunique().eq(4).all(),
             "Original 256 background/4 timing/4 plant source incomplete")
     return a,v,recs
 
@@ -82,7 +82,7 @@ def original_shards(root):
 def independently_replay_original_source(a,v,old_effect_path,old_vertex_path):
     models,prior=create_factorial()
     indexed=a.set_index("draw_id").loc[prior.draw_id].reset_index()
-    for col in ("source_id","model_id","original_draw_id","timing",
+    for col in ("source_id","model_id","original_draw_id","stage_design",
                 "timing_context_id","S_arrival","S_duration","gate_code",
                 "attack","rho","conversion","strength","refuge_order","arm"):
         if col not in indexed.columns:
@@ -98,7 +98,7 @@ def independently_replay_original_source(a,v,old_effect_path,old_vertex_path):
     require(len(original)==3072 and original.draw_id.nunique()==3072
             and len(original_vertices)==24576,
             "True original PR161 model source is not the archived 3072/24576 result")
-    sub=a[a.timing.isin(["LS","EL"])].sort_values("original_draw_id")
+    sub=a[a.stage_design.isin(["LS","EL"])].sort_values("original_draw_id")
     orig=original[original.context_id.isin([1,2])].sort_values("draw_id")
     require(len(sub)==2048 and len(orig)==2048 and
             np.array_equal(sub.original_draw_id.to_numpy(),orig.draw_id.to_numpy()),
@@ -131,7 +131,7 @@ def independently_replay_original_source(a,v,old_effect_path,old_vertex_path):
     # All 4 original legal plant variant source paths must coincide at V=0.
     neg=v[v.vegetation.eq(0)].copy()
     for col in V_COLUMNS:
-        w=neg.groupby(["source_id","timing","vertex"])[col].agg(["min","max"])
+        w=neg.groupby(["source_id","stage_design","vertex"])[col].agg(["min","max"])
         gap=float((w["max"]-w["min"]).abs().max())
         require(gap<=1e-9,"V0 source model unexpectedly changes with plants: "+
                 col+" gap "+str(gap))
@@ -152,13 +152,13 @@ def independently_replay_original_source(a,v,old_effect_path,old_vertex_path):
 
 
 def summarize(a):
-    require(len(a)==N_SCENARIOS and set(a.timing)==set(BOUNDS),
+    require(len(a)==N_SCENARIOS and set(a.stage_design)==set(BOUNDS),
             "No independent four-timing source results")
     rng=np.random.default_rng(SEED)
     idx=rng.integers(0,N_BASE,size=(BOOT,N_BASE))
     summaries=[];mechanisms=[];moderators=[]
     for metric in METRICS:
-        w=a.pivot(index="source_id",columns=["timing","arm"],values=metric).astype(float)
+        w=a.pivot(index="source_id",columns=["stage_design","arm"],values=metric).astype(float)
         require(w.shape==(N_BASE,16) and
                 set(w.columns)=={(t,x[0]) for t in BOUNDS for x in ARMS},
                 "An original M×theta model lacks a timing/plant intervention")
