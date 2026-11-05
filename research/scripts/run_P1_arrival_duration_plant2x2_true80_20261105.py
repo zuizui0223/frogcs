@@ -76,7 +76,7 @@ def create_factorial():
                     original_draw_id=original_id,
                     source_id=sid,
                     timing_context_id=ti,
-                    timing=label,
+                    stage_design=label,
                     original_context_id=original_cid,
                     source_main_model_id=int(src.model_id),
                     model_id=int(src.model_id),
@@ -95,8 +95,8 @@ def create_factorial():
     x=pd.DataFrame(stage_rows).sort_values("draw_id").reset_index(drop=True)
     require(len(x)==N_SCENARIOS and x.draw_id.eq(np.arange(N_SCENARIOS)).all(),
             "Independent two-factor stage and four-plant complete source missing")
-    require(x.groupby(["source_id","timing"]).arm.nunique().eq(4).all() and
-            x.groupby(["source_id","arm"]).timing.nunique().eq(4).all(),
+    require(x.groupby(["source_id","stage_design"]).arm.nunique().eq(4).all() and
+            x.groupby(["source_id","arm"]).stage_design.nunique().eq(4).all(),
             "Original canonical 2x2×2x2 pairing missing")
     require(x.groupby("source_id")[["attack","rho","conversion","strength",
             "refuge_order","gate_code"]].nunique().max().max()==1,
@@ -105,7 +105,7 @@ def create_factorial():
             "Only vegetation model ID should vary within each source")
     for group in ("LS","EL"):
         id1=1 if group=="LS" else 2
-        q=x[x.timing.eq(group)]
+        q=x[x.stage_design.eq(group)]
         require(q.original_context_id.eq(id1).all() and
                 np.array_equal(q.original_draw_id.to_numpy(),
                                q.source_id.to_numpy()*12+id1*4+
@@ -146,7 +146,7 @@ def seasonal_original(proposals,models,*,years=YEARS,window=WINDOW,dt=DT):
             log_sign=corner_contrasts(np.log(frog))
             raw_sign=corner_contrasts(frog)
             keep=b[["draw_id","original_draw_id","source_id","model_id",
-                    "timing_context_id","timing","original_context_id","arm",
+                    "timing_context_id","stage_design","original_context_id","arm",
                     "attack","rho","conversion","strength","refuge_order",
                     "gate_code","S_arrival","S_duration"]].copy()
             for i,name in enumerate(("OS","OV","SV","OSV")):
@@ -173,7 +173,7 @@ def seasonal_original(proposals,models,*,years=YEARS,window=WINDOW,dt=DT):
                                 "minimum_F_survival","minimum_S_survival"]].copy()
             from_states["draw_id"]=np.repeat(b.draw_id.to_numpy(),8)
             from_states["source_id"]=np.repeat(b.source_id.to_numpy(),8)
-            from_states["timing"]=np.repeat(b.timing.to_numpy(),8)
+            from_states["stage_design"]=np.repeat(b.stage_design.to_numpy(),8)
             from_states["arm"]=np.repeat(b.arm.to_numpy(),8)
             from_states["original_draw_id"]=np.repeat(b.original_draw_id.to_numpy(),8)
             from_states["vertex"]=np.tile(np.arange(8),len(b))
