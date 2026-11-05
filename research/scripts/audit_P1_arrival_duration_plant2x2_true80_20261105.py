@@ -83,12 +83,12 @@ def independently_replay_original_source(a,v,old_effect_path,old_vertex_path):
     models,prior=create_factorial()
     indexed=a.set_index("draw_id").loc[prior.draw_id].reset_index()
     for col in ("source_id","model_id","original_draw_id","stage_design",
-                "timing_context_id","S_arrival","S_duration","gate_code",
+                "timing_context_id","s_arrival","S_duration","gate_code",
                 "attack","rho","conversion","strength","refuge_order","arm"):
         if col not in indexed.columns:
             # Context-specific values exist in the proposal manifest,
             # source output includes only the columns necessary to match.
-            if col in ("S_arrival","S_duration"):
+            if col in ("s_arrival","S_duration"):
                 continue
             raise AssertionError("Source context/model input field missing "+col)
         require(np.array_equal(indexed[col].to_numpy(),prior[col].to_numpy()),
