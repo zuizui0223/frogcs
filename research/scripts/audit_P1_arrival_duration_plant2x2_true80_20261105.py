@@ -70,7 +70,8 @@ def original_shards(root):
         ["draw_id","vertex"]).reset_index(drop=True)
     require(len(a)==N_SCENARIOS and len(v)==N_VERTICES
             and a.draw_id.eq(np.arange(N_SCENARIOS)).all()
-            and v.draw_id.eq(np.repeat(a.draw_id,8)).all()
+            and np.array_equal(v.draw_id.to_numpy(dtype=int),
+                               np.repeat(a.draw_id.to_numpy(dtype=int),8))
             and not v.duplicated(["draw_id","vertex"]).any(),
             "Not the complete original 4096×8 80-year study")
     require(a.source_id.nunique()==N_BASE and set(a.stage_design)==set(BOUNDS)
