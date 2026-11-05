@@ -1,0 +1,86 @@
+name: frogcs G3 response-blind GBIF egg-stage feasibility before priority × vegetation
+
+on:
+  pull_request:
+    branches:
+      - research/newseed-2x2-finite-population-R4-20261102
+    paths:
+      - .github/workflows/research_g3_gbif_egg_stage_source_preflight.yml
+      - research/scripts/g3_gbif_egg_stage_source_preflight_20261105.py
+      - research/scripts/test_g3_gbif_egg_stage_source_preflight_20261105.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-pond-breeder-stage-coverage-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: original
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/results/interaction_species_sdm_20261026/ssdm/species_thresholds.csv
+            research/scripts/naamp_site_use_associations.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require exact 28 original model taxon inventory and pond guild role
+        run: |
+          test -s original/research/results/interaction_species_sdm_20261026/ssdm/species_thresholds.csv
+          test -s original/research/scripts/naamp_site_use_associations.py
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('original/research/results/interaction_species_sdm_20261026/ssdm/species_thresholds.csv')
+          print('G3_ORIGINAL_28_TAXON_MANIFEST_SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Unit tests — no early adult occurrence counted as breeding and API error is not a true zero
+        run: |
+          PYTHONPATH=paper/research/scripts python -m unittest discover \
+            -s paper/research/scripts -p 'test_g3_gbif_egg_stage_source_preflight_20261105.py' -v
+      - name: Query only original 22 amphibian-taxon egg-stage GBIF metadata (US, 2010-2025)
+        run: |
+          python -u paper/research/scripts/g3_gbif_egg_stage_source_preflight_20261105.py \
+            --source-manifest original/research/results/interaction_species_sdm_20261026/ssdm/species_thresholds.csv \
+            --out paper/research/results/g3_gbif_egg_stage_G0_20261105
+      - name: Audit source coverage, do not run field response unless qualified
+        run: |
+          python - <<'PY'
+          import json,csv
+          from pathlib import Path
+          p=Path('paper/research/results/g3_gbif_egg_stage_G0_20261105')
+          rec=json.loads((p/'G3_GBIF_POND_BREEDING_G0_SOURCE_RECEIPT.json').read_text())
+          rows=list(csv.DictReader((p/'original_22_taxon_lifestage_coverage.csv').open()))
+          assert rec['original_taxa_queried']==22 and len(rows)==22
+          roles={}
+          for row in rows:
+              roles[row['role']]=roles.get(row['role'],0)+1
+          assert roles=={'frog_original_15':15,'pond_caudata_original_5':5,
+                         'nonpond_caudata_control_2':2}
+          assert not rec['regional_breeding_lead_computed']
+          assert not rec['field_vegetation_x_priority_regression_run']
+          assert not rec['early_spring_adult_records_accepted_as_breeding']
+          assert not rec['g0_result']['field_test_allowed']
+          assert rec['g0_result']['status'] in {
+             'UNKNOWN_API_OR_SOURCE_INCOMPLETE',
+             'G0_NOT_QUALIFIED_INSUFFICIENT_EXPLICIT_EGG_STAGE',
+             'G0_COUNTRY_STAGE_FACET_MINIMUM_PASSED_NEEDS_DATE_EFFORT_G1'}
+          print('G3_GBIF_ORIGINAL_TAXON_BREEDING_ONSET_SOURCE_GATE_AUDITED',rec['g0_result'])
+          PY
+      - name: Preserve complete raw facet label counts and evidence insufficiency/eligibility
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-G3-NAAMP-original22-US-egg-stage-G0-facets
+          path: paper/research/results/g3_gbif_egg_stage_G0_20261105/
+          retention-days: 30
+          if-no-files-found: warn
