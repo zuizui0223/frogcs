@@ -145,8 +145,7 @@ def run(root,out):
       real_natural_pond_breeding_priority_measured=False,
     )
     (out/"P1_figure_source_manifest.json").write_text(
-        json.dumps(manifest,indent=2,ensure_ascii=False)+"
-")
+        json.dumps(manifest,indent=2,ensure_ascii=False)+"\n")
     print("P1_ORIGINAL256_PURE_TIMING_FIGURES_SOURCE_VERIFIED",json.dumps(manifest),flush=True)
 
 
