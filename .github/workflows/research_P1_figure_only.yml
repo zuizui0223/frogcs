@@ -1,0 +1,63 @@
+name: Frogcs P1 source-only arrival duration publication figures
+
+on:
+  pull_request:
+    branches:
+      - research/phenology-priority-outcome-eligibility-20261105
+    paths:
+      - .github/workflows/research_P1_figure_only.yml
+      - research/scripts/plot_P1_arrival_duration_moderators_20261105.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reuse-original-4096-model-audit-without-recomputing-biology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 'matplotlib>=3.7,<4'
+      - name: Fetch immutable independently replayed original 4096 true80 source result tables
+        run: |
+          mkdir -p paper/research/results/P1_original80_20261105/sourceonly
+          gh run download 41987600437 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-P1-256-source-arrival-duration-audit-reused-original80 \
+            --dir paper/research/results/P1_original80_20261105/sourceonly
+      - name: Plot pure timing-versus-duration model effect and ecological sign-abundance divergence
+        run: |
+          python paper/research/scripts/plot_P1_arrival_duration_moderators_20261105.py \
+            --source paper/research/results/P1_original80_20261105/sourceonly \
+            --output paper/research/results/P1_original80_20261105/figures
+      - name: Require original source-matched 256-background figure report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("paper/research/results/P1_original80_20261105/figures")
+          rec=json.loads((root/"P1_figure_source_manifest.json").read_text())
+          assert rec["status"]=="P1_TWO_SOURCE_BACKED_256_BACKGROUND_STAGE_FIGURES_VERIFIED"
+          assert rec["model_source_backgrounds"]==256
+          assert rec["original_true80_scenarios"]==4096
+          assert rec["complete_original_pr161_replay"]
+          assert len(rec["figures"])==2
+          assert not rec["real_natural_pond_breeding_priority_measured"]
+          print("P1_SOURCE_ONLY_TWO_PUBLICATION_FIGURES_ACCEPTED")
+          PY
+      - name: Preserve two source-linked publication candidate PNGs and original 4096-source receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-P1-arrival-duration-256-source-two-figures
+          path: paper/research/results/P1_original80_20261105/figures/
+          retention-days: 30
+          if-no-files-found: warn

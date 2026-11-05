@@ -1,0 +1,99 @@
+name: Frogcs P1 isolated pure arrival versus duration source-only audit
+
+on:
+  pull_request:
+    branches:
+      - research/phenology-priority-outcome-eligibility-20261105
+    paths:
+      - .github/workflows/research_P1_isolated_stage_original80_audit_only.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-4096-80year-same256-source-independent-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ORIGINAL_P1_RUN: '41986676287'
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'original/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: original
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Check all eight original genuinely completed source artifacts before outcome inspection
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          run=os.environ['ORIGINAL_P1_RUN']
+          z=json.loads(subprocess.run(['gh','api',f'repos/{repo}/actions/runs/{run}/artifacts?per_page=100'],
+               capture_output=True,text=True,check=True).stdout)
+          actual={a['name'] for a in z['artifacts'] if not a.get('expired')}
+          required={f'frogcs-P1-pure-arrival-duration-true80-shard-{i}' for i in range(8)}
+          assert required.issubset(actual),required-actual
+          print('P1_ALL_EIGHT_UNTOUCHED_TRUE80_ORIGINAL_MODEL_SOURCE_FILES_AVAILABLE')
+          PY
+      - name: Download eight ORIGINAL true80 source shards without rerunning model biology
+        run: |
+          mkdir -p paper/research/results/P1_original80_20261105/shards
+          gh run download "$ORIGINAL_P1_RUN" --repo "$GITHUB_REPOSITORY" \
+            --pattern 'frogcs-P1-pure-arrival-duration-true80-shard-*' \
+            --dir paper/research/results/P1_original80_20261105/shards
+      - name: Download successful ORIGINAL PR161 256 × 3 × 4 80-year source outputs
+        run: |
+          mkdir -p paper/research/results/P1_original80_20261105/old_PR161
+          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
+            --dir paper/research/results/P1_original80_20261105/old_PR161
+      - name: Independent original model/vertex replay and 256-source cluster moderation of arrival duration
+        run: |
+          python -u paper/research/scripts/audit_P1_arrival_duration_plant2x2_true80_20261105.py \
+            --shards paper/research/results/P1_original80_20261105/shards \
+            --original-PR161-scores paper/research/results/P1_original80_20261105/old_PR161/true80_canonical_paired_2x2_proposals.csv.gz \
+            --original-PR161-vertices paper/research/results/P1_original80_20261105/old_PR161/true80_all_24576_original_model_vertices.csv.gz \
+            --output paper/research/results/P1_original80_20261105/audited
+      - name: Do not promote numerical developmental results unless exact source models and fourfold estimands passed
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          out=Path('paper/research/results/P1_original80_20261105/audited')
+          r=json.loads((out/'P1_isolated_stage_source_receipt.json').read_text())
+          s=pd.read_csv(out/'P1_original4096_isolated_timing_duration_80year.csv.gz')
+          m=pd.read_csv(out/'P1_pure_arrival_duration_and_interaction.csv')
+          assert r['status']=='P1_PURE_SALAMANDER_ARRIVAL_VS_DURATION_ORIGINAL80_SOURCE_AUDIT_SUCCESS'
+          assert len(s)==4096 and s.source_id.nunique()==256
+          assert len(m)==36 and set(m.contrast)=={
+             'pure_arrival_moderation_of_plant_effect',
+             'pure_duration_moderation_of_plant_effect',
+             'arrival_x_duration_moderation_of_plant_effect'}
+          assert r['source_original_stage1_2_replay']['legacy_original_2048_true80_source_rows_replayed']
+          assert r['source_original_stage1_2_replay']['legacy_original_16384_original_vertices_replayed']
+          assert not r['estimated_breeding_priority_wild']
+          print('P1_256_SOURCE_OLD_STAGE_TRUE80_REPLAY_AND_PURE_ARRIVAL_DURATION_QA_SUCCESS')
+          PY
+      - name: Preserve whole original 4096 model rows, 32768 source vertices and all positive/negative moderators
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-P1-256-source-arrival-duration-audit-reused-original80
+          path: paper/research/results/P1_original80_20261105/audited/
+          retention-days: 30
+          if-no-files-found: warn
