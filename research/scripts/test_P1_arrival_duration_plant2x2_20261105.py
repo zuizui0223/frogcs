@@ -26,10 +26,10 @@ class PureSalamanderArrivalDurationTest(unittest.TestCase):
         self.assertTrue(p.groupby(["source_id","stage_design"]).arm.nunique().eq(4).all())
         self.assertTrue(p.groupby(["source_id","arm"]).stage_design.nunique().eq(4).all())
         self.assertEqual(set(p.stage_design),{"LS","LL","ES","EL"})
-        self.assertEqual(set(p.S_arrival),{0,40})
+        self.assertEqual(set(p.s_arrival),{0,40})
         self.assertEqual(set(p.S_duration),{40,60})
         self.assertTrue(p.D_duration.eq(60).all())
-        self.assertTrue(p.F_arrival.eq(20).all())
+        self.assertTrue(p.f_arrival.eq(20).all())
         self.assertTrue(p.attack.eq(.5).all())
         self.assertTrue(p.rho.eq(.75).all())
         self.assertTrue(p.groupby("source_id")["model_id"].nunique().eq(4).all())
@@ -37,7 +37,7 @@ class PureSalamanderArrivalDurationTest(unittest.TestCase):
     def test_exact_original_stage1_and_stage2_precommitted(self):
         orig_models,original,_=original_draws()
         old=original[original.context_id.isin([1,2])].copy()
-        p=self.proposals[self.proposals.timing.isin(["LS","EL"])].copy()
+        p=self.proposals[self.proposals.stage_design.isin(["LS","EL"])].copy()
         old_id=old.set_index("draw_id")
         for row in p.itertuples(index=False):
             src=old_id.loc[row.original_draw_id]
