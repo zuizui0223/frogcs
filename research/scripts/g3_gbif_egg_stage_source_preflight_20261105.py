@@ -230,7 +230,8 @@ def main():
             w=csv.DictWriter(fh,fieldnames=fields)
             w.writeheader()
             w.writerows(data)
-    save_csv("original_22_taxon_lifestage_coverage.csv",rows,list(rows[0]))
+    save_csv("original_22_taxon_lifestage_coverage.csv",rows,
+             sorted(set().union(*(set(item) for item in rows))))
     save_csv("raw_gbif_lifestage_facet_labels.csv",labels,
              ["role","species","gbif_species_key","raw_lifeStage_label",
               "reported_count","counted_as_explicit_egg"])
