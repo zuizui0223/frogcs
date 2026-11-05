@@ -89,7 +89,7 @@ def create_factorial():
                     gate_code=int(src.gate_code),
                     cover_SF=int(src.cover_SF),
                     support_DF=int(src.support_DF),
-                    F_arrival=20,S_arrival=sarrival,D_arrival=20,
+                    f_arrival=20,s_arrival=sarrival,d_arrival=20,
                     F_duration=45,S_duration=sduration,D_duration=60
                 ))
     x=pd.DataFrame(stage_rows).sort_values("draw_id").reset_index(drop=True)
@@ -148,7 +148,7 @@ def seasonal_original(proposals,models,*,years=YEARS,window=WINDOW,dt=DT):
             keep=b[["draw_id","original_draw_id","source_id","model_id",
                     "timing_context_id","stage_design","original_context_id","arm",
                     "attack","rho","conversion","strength","refuge_order",
-                    "gate_code","S_arrival","S_duration"]].copy()
+                    "gate_code","s_arrival","S_duration"]].copy()
             for i,name in enumerate(("OS","OV","SV","OSV")):
                 keep["log_"+name]=log_sign[:,i]
                 keep["raw_"+name]=raw_sign[:,i]
@@ -215,8 +215,8 @@ def run(*,shard,out,years=YEARS):
         source_rows=len(effects),source_vertices=len(verts),
         n_timing_conditions=4,n_plant_roles=4,
         contexts=[dict(label=x,arrival=y,duration=z,legacy_context=c) for x,y,z,c in TIMING],
-        source_F_arrival=20,source_F_duration=45,
-        source_D_arrival=20,source_D_duration=60,
+        source_f_arrival=20,source_F_duration=45,
+        source_d_arrival=20,source_D_duration=60,
         years=years,window=20 if years==80 else 2,dt=DT,
         positive_field_breeding_priority_measured=False,
         ecological_breeding_onset_field_test_run=False,
