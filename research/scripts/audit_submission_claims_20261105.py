@@ -188,7 +188,7 @@ def verify_submission_docs(main_path,si_path):
       "external_immigration_on_in_main":("external immigration ON" in main),
       "supplement_all_seven_methods":all("Supplementary Methods S"+str(i) in si for i in range(1,8)),
       "conditional_acoustic_denominator_declared":("47,912" in si and "63,180" in si),
-      "source_model_priors_not_field_posteriors":("not a posterior" in main and
+      "source_model_priors_not_field_posteriors":("not a field-conditioned ABC posterior" in main and
                                                   "not a posterior" in si),
       "source_main_and_SI_crosslinked":("SUPPLEMENTARY_METHODS" not in main or True),
     }
