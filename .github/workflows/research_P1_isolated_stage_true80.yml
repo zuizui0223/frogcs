@@ -1,14 +1,6 @@
 name: Frogcs P1 isolate salamander arrival vs aquatic duration in original true80 food web
 
 on:
-  pull_request:
-    branches:
-      - research/phenology-priority-outcome-eligibility-20261105
-    paths:
-      - .github/workflows/research_P1_isolated_stage_true80.yml
-      - research/scripts/run_P1_arrival_duration_plant2x2_true80_20261105.py
-      - research/scripts/audit_P1_arrival_duration_plant2x2_true80_20261105.py
-      - research/scripts/test_P1_arrival_duration_plant2x2_20261105.py
   workflow_dispatch:
 
 permissions:
