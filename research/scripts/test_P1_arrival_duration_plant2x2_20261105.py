@@ -23,9 +23,9 @@ class PureSalamanderArrivalDurationTest(unittest.TestCase):
         self.assertEqual(N_SCENARIOS,4096)
         self.assertEqual(N_VERTICES,32768)
         self.assertEqual(p.source_id.nunique(),256)
-        self.assertTrue(p.groupby(["source_id","timing"]).arm.nunique().eq(4).all())
-        self.assertTrue(p.groupby(["source_id","arm"]).timing.nunique().eq(4).all())
-        self.assertEqual(set(p.timing),{"LS","LL","ES","EL"})
+        self.assertTrue(p.groupby(["source_id","stage_design"]).arm.nunique().eq(4).all())
+        self.assertTrue(p.groupby(["source_id","arm"]).stage_design.nunique().eq(4).all())
+        self.assertEqual(set(p.stage_design),{"LS","LL","ES","EL"})
         self.assertEqual(set(p.S_arrival),{0,40})
         self.assertEqual(set(p.S_duration),{40,60})
         self.assertTrue(p.D_duration.eq(60).all())
@@ -60,7 +60,7 @@ class PureSalamanderArrivalDurationTest(unittest.TestCase):
         old=old_p[old_p.source_id.eq(0)&old_p.context_id.isin([1,2])]
         effects,_=simulate_original_80y(old,old_models,years=4,window=2)
         for t,context in (("LS",1),("EL",2)):
-            actual=now[now.timing.eq(t)].set_index("arm").sort_index()
+            actual=now[now.stage_design.eq(t)].set_index("arm").sort_index()
             prior=effects[effects.context_id.eq(context)].set_index("arm").sort_index()
             for metric in ("log_OS","log_OV","log_SV","log_OSV",
                            "mean_F_B","mean_log_F_B","min_F","min_S",
@@ -70,7 +70,7 @@ class PureSalamanderArrivalDurationTest(unittest.TestCase):
         neg=vertices[vertices.vegetation.eq(0)]
         for metric in ("F_B","S_B","D_B","audit_H_SF","audit_H_DF",
                        "audit_H_SD","audit_H_DS"):
-            grouped=neg.groupby(["source_id","timing","vertex"])[metric]
+            grouped=neg.groupby(["source_id","stage_design","vertex"])[metric]
             self.assertLessEqual(float((grouped.max()-grouped.min()).abs().max()),
                                  1e-9,metric)
 
