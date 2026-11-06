@@ -32,7 +32,7 @@ class OriginalFieldModelAlignmentTests(unittest.TestCase):
     def test_reject_nonbinary_or_missing_original_source_grid(self):
         v={c:1. for c in CORNERS}
         with self.assertRaises(AssertionError):
-            surface_interpolation(v,{0:1.},[.1],[0])
+            surface_interpolation(v,[1.1],[.1],[0])
         with self.assertRaises(AssertionError):
             surface_interpolation({(0,0,0):1.},[.1],[.1],[0])
         with self.assertRaises(AssertionError):
