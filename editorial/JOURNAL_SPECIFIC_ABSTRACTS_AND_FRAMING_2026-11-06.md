@@ -6,7 +6,7 @@
 
 Large-scale species associations can resemble interaction signatures without identifying their demographic consequences. Across 4,248 North American frog-calling sites, odonate suitability covaried differently with calling across caudate-suitability environments. A fixed model-derived interaction shape showed directional acoustic predictive compatibility, concentrated descriptively at locations with recorded landscape flooded vegetation; uncertainty and lower errors from simpler environmental models prevented mechanism discrimination. In stage-structured food-web simulations, combined vegetation-mediated frog refuge and odonate feeding support increased four-sign compatibility from 3.52% to 14.06% across 256 matched backgrounds while reducing mean frog abundance. Separating salamander arrival from aquatic-stage duration showed that early arrival with prolonged aquatic presence reversed this abundance response as compatibility gains declined. Across 24,576 stochastic 80-year population simulations, the vegetation combination did not consistently improve occupied patches. Pattern generation, predator-hazard redistribution and population benefit are distinct outcomes; the natural processes remain unresolved.
 
-**Submission status:** integrated draft, not submitted. The previously verified Letter guide specified ≤150-word abstract, ≤5,000-word main text and ≤6 combined main display items. The current complete main file is 4,866 words, with four assembled main-figure candidates and G6 as Supplementary Figure S1. Confirm journal-specific counting at submission.
+**Submission status:** integrated draft, not submitted. The previously verified Letter guide specified ≤150-word abstract, ≤5,000-word main text and ≤6 combined main display items. The current complete main file is 4,914 words, with four assembled main-figure candidates and G6 as Supplementary Figure S1. Confirm journal-specific counting at submission.
 
 ## Global Ecology and Biogeography — Research Article structured abstract (alternative only)
 
@@ -14,7 +14,7 @@ Large-scale species associations can resemble interaction signatures without ide
 
 **Location:** North American Amphibian Monitoring Program acoustic monitoring locations in the United States, with hypothetical pond food webs modelled independently of specific NAAMP sites.
 
-**Time period:** Repeated NAAMP survey dates as archived in the original dataset (**exact start and end years to be verified for the journal's formal metadata**); original simulations covered 80 synthetic model years.
+**Time period:** Completed NAAMP visits in the retained analytical cohort span **2001–2015**; simulations covered 80 synthetic model years.
 
 **Major taxa studied:** Frogs (15 SDM-modelled taxa), salamanders (seven modelled, five pond-breeding focal taxa) and odonates (six modelled taxa).
 
@@ -24,7 +24,7 @@ Large-scale species associations can resemble interaction signatures without ide
 
 **Main conclusions:** Interaction-like geographical patterns and successful pattern-generating food-web models need not predict focal-population benefit. Inference from the acoustic association to actual wetland predation remains unverified.
 
-**Submission status:** Draft only. The structured GEB abstract has seven specified headings. Verify the actual NAAMP survey-year start/end from original individual records before any GEB submission; do not invent this metadata.
+**Submission status:** Draft only. The structured GEB abstract has seven specified headings. Its 2001–2015 analytical interval is verified from the original records in the [data provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md).
 
 ## Oikos — Research Paper framing
 
@@ -45,4 +45,4 @@ Only consider if the submission explicitly generalizes the counterexample beyond
 - Oikos author instructions: https://nso-journals.org/oikos-for-authors
 - American Naturalist major article: https://www.journals.uchicago.edu/journals/an/instruct
 
-**Editorial prohibition:** Do not silently re-use the GEB structured abstract under the Ecology Letters 150-word limit, or the unstructured Ecology Letters abstract in a GEB Research Article submission. Neither version is submitted, and the pending data-use permissions, bibliography, production-grade four figures and coauthor approval remain blockers.
+**Editorial prohibition:** Do not silently re-use the GEB structured abstract under the Ecology Letters 150-word limit, or the unstructured Ecology Letters abstract in a GEB Research Article submission. Neither version is submitted, and project licensing and third-party archive packaging, final journal formatting, figure production review and coauthor approval remain pending. The [primary references and source provenance](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md) are now documented.
