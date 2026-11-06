@@ -1,0 +1,29 @@
+{
+  "status": "G4_ORIGINAL_FIELD_EIGHT_CORNER_AND_MODEL_SPAN_AUDIT_SUCCESS",
+  "original_main_SHA": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "original_pr161_source_run": 41408471121,
+  "original_field_sites": 4248,
+  "original_survey_visits": 63180,
+  "original_vegetated_sites": 506,
+  "original_routes": 432,
+  "original_spatial_blocks": 56,
+  "observed_field_cells": 16,
+  "observed_cells_supported": 15,
+  "both_SDM_backgrounds_all_eight_corners_supported": false,
+  "observed_eight_corner_direct_sign_inference_allowed": false,
+  "original_model_backgrounds": 256,
+  "original_model_stage_repeats": 3,
+  "original_model_arms_averaged": [
+    "00",
+    "11"
+  ],
+  "saturated_basis_contains_original_model_interpolated_surfaces": true,
+  "independent_field_model_predation_causal_link_identified": false,
+  "ecological_predator_mechanism_model_comparison_fitted": false,
+  "requires_G5_out_of_block_prediction_and_actual_pond_predator_measurements": true,
+  "original_input_SHA256": {
+    "primary_site_landscape_context.csv.gz": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+    "naamp_completed_site_surveys.csv.gz": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+    "true80_all_24576_original_model_vertices.csv.gz": "6c20261e4f1261b27fae2824ea410ef895b2304cbd19cf0c290a500fd9de2a0c"
+  }
+}

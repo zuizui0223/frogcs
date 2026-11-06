@@ -1,0 +1,39 @@
+{
+  "status": "G6_ARCHIVED_PREDICTION_CONTEXT_DIAGNOSTIC_VERIFIED",
+  "original_repository_sha": "e963b2bf8f8522117f7ac1cf6c10389f1766fbb2",
+  "protocol_commit": "adb76a9",
+  "original_G4_run": 42173236906,
+  "original_G5_run": 42173456057,
+  "original_sites": 4248,
+  "original_visits": 63180,
+  "original_source_predictions": 50976,
+  "original_blocks": 56,
+  "original_routes": 432,
+  "original_vegetated_sites": 506,
+  "nll_replay_max_error": 2.220446049250313e-16,
+  "brier_replay_max_error": 1.1102230246251565e-16,
+  "whole_cohort_contribution_max_error": 8.673617379884035e-19,
+  "original_R1_points_reproduced": true,
+  "source_sha256": {
+    "primary_site_landscape_context.csv.gz": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+    "G4_all_4248_site_source_tertile_assignments.csv.gz": "948195dd1419d01693c41b02c652c96650bcdc64f2cf1c643481be6548385ea8",
+    "G4_source_geometry_receipt.json": "585a2c5d32db0f874351b9a2847461c5bf93ee79392c1e5a24fef343244abe58",
+    "G5_4248_original_site_source_holdout_predictions.csv.gz": "037a363a8b327d8cb3ad003b4baee0f14e33cc5e3b69bf18b690cc7f03eced49",
+    "G5_original_site_binomial_acoustic_scores.csv": "160b0c85f09d13255486f4800d89b14382596b5f03a381c0fbd1bb344ef182b0",
+    "G5_source_constrained_observation_receipt.json": "2370895c4c9f1635ce9799e0b31bf023e33e20fbd00fd9236241e02331a3d025"
+  },
+  "outputs": {
+    "scores": 324,
+    "gains": 216,
+    "heterogeneity": 8,
+    "support": 54
+  },
+  "rank_output_rows": 42,
+  "model_refits": 0,
+  "original_G4_all_corner_gate_passed": false,
+  "original_G5_two_background_primary_gate_passed": false,
+  "independent_new_validation": false,
+  "causal_vegetation_effect": false,
+  "uncertainty": "pointwise 999 paired whole-block draws, conditional on archived fits; no multiplicity adjustment",
+  "rank_diagnostic": "smooth predicted probabilities versus noisy observed visit fractions; not full predictive distributions"
+}
