@@ -55,7 +55,7 @@ jobs:
       - name: Retrieve original G4 eight-corner field and genuine 256-background synthetic source
         run: |
           mkdir -p paper/research/results/G5_source_link_20261106/original_G4
-          gh run download 42172357235 --repo "$GITHUB_REPOSITORY" \
+          gh run download 42173236906 --repo "$GITHUB_REPOSITORY" \
             --name frogcs-G4-4248field-256model-eightcorner-identifiability \
             --dir paper/research/results/G5_source_link_20261106/original_G4
       - name: Fit predeclared source-prior interaction shape on TRAIN blocks ONLY and score never-seen acoustic regions
