@@ -1,0 +1,127 @@
+{
+  "status": "G7_FIXED_COMPOSITION_ANALYSIS_COMPLETE",
+  "protocol_path": "/workspace/scratch/10ba59a03d49/frogcs/research/G7_TRAIT_INFORMED_COMPOSITION_PROTOCOL_2026-11-06.md",
+  "protocol_sha256": "22ec3bfcb26175e01804e035e1ca5e6224b0c14beefc3e54242bb9089629860a",
+  "implementation_sha256": "b41435ddf868b69d684b2a27707cdcb327deeb78fbccfe1e06e6ed21a4542044",
+  "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "original_acoustic_helper_commit": "a5ddc281ba17017a52b404a5725327f6e829824f",
+  "original_acoustic_helper_sha256": "8bfb608a90320b6193ca2c01ef5839141f457f3559cd011cf4695e2c0d161179",
+  "original_sources": [
+    {
+      "source": "predictions",
+      "path": "/workspace/scratch/10ba59a03d49/frogcs/research/results/interaction_species_sdm_20261026/naamp_species_suitability.csv.gz",
+      "sha256": "a2a7018e747349ff94b0b98c36fed0958458f652bfa658568c3a498141bdb637",
+      "n_bytes": 8628269
+    },
+    {
+      "source": "sites",
+      "path": "/workspace/scratch/10ba59a03d49/frogcs/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz",
+      "sha256": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+      "n_bytes": 792276
+    },
+    {
+      "source": "visits",
+      "path": "/workspace/scratch/10ba59a03d49/frogcs/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz",
+      "sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+      "n_bytes": 1325594
+    }
+  ],
+  "n_sites": 4248,
+  "n_completed_visits": 63180,
+  "n_canonical_routes": 432,
+  "n_geographic_blocks": 56,
+  "n_folds": 5,
+  "vegetation_positive_sites": 506,
+  "vegetation_zero_sites": 3742,
+  "source_integrity_passed": true,
+  "species_prediction_rows": 42480,
+  "support_gates": [
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "passed": true
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "passed": true
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "passed": true
+    },
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "passed": true
+    }
+  ],
+  "new_outcome_associations_computed": true,
+  "grouping_changed_after_outcomes": false,
+  "sdm_refits": 0,
+  "ridge": 10.0,
+  "bootstrap_seed": 20261107,
+  "requested_bootstraps": 999,
+  "species_group_is_measured_duration": false,
+  "independent_field_replication": false,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  },
+  "original_additive_environment_score_sha256": "160b0c85f09d13255486f4800d89b14382596b5f03a381c0fbd1bb344ef182b0",
+  "completed_bootstraps_per_comparison": 999,
+  "protocol_bootstrap_count_used": true,
+  "valid_bootstraps": [
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "n_valid": 999,
+      "n_failed": 0
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "n_valid": 999,
+      "n_failed": 0
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "n_valid": 999,
+      "n_failed": 0
+    },
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "n_valid": 999,
+      "n_failed": 0
+    }
+  ],
+  "primary_positive_association_both_backgrounds": false,
+  "primary_positive_predictive_gain_both_backgrounds": false,
+  "heldout_fits_all_converged": true,
+  "duration_or_joint_arrival_mechanism_identified": false,
+  "bootstrap_uncertainty": "penalized-model percentile intervals, conditional on fixed SDMs, group definitions and covariates",
+  "score_uncertainty": "paired whole-block resampling conditional on saved held-out predictions",
+  "elapsed_seconds": 22.651,
+  "output_sha256": {
+    "G7_all_fitted_coefficients.csv": "1056659c7fe7541cad7348b82b76841781ef70c56585abcc6b1df6cfcf8dcc34",
+    "G7_bootstrap_coefficients.csv.gz": "b72f1a5ac3dd3bd148591add28f46e57f3c01e7012572f5b352e32dd421465b2",
+    "G7_coefficient_summary.csv": "b742bbab269ba1e638c74f03f5ee219d18f07d1f46ff2eaf1da15d9be577c026",
+    "G7_contrast_geographic_variance.csv": "2f75028648ce927d2722e40b5f620385e02d4cca7335458949663db0352b1111",
+    "G7_fixed_bootstrap_numerical_scaling.csv": "e0cd76bdebe95076c9b75f3067126be77ce887e4ba5a84cddb7ec89cd576d64b",
+    "G7_group_index_standardization.csv": "5d3cc6f8b960a4d5337ae827417466c38c194ccfe9d5d5c4e9570e48b8bc4e9a",
+    "G7_heldout_fit_diagnostics.csv": "6e38507056dd50074a9fca649ff5a4524dd3712e97407c8588766c02539f54b9",
+    "G7_heldout_paired_gains.csv": "7cc150ce2e9f2b5fc6f4bfe2404ba51d75be40922aaeef6884b77f4c1c3287b5",
+    "G7_heldout_scores.csv": "bb4a102b343196af1eb436377158bdc133629e85db0ce86ff4362d1340a0702a",
+    "G7_heldout_site_predictions.csv.gz": "dcc5b01b27495af4f3a3b86d6dfba86a69842831279de8aae082f55219753df6",
+    "G7_paired_block_multiplicities.csv.gz": "ba57eabd316558d9bf788edb2229655429dd17af1cbfc6bd5be8216f2e372406",
+    "G7_predictor_cell_support.csv": "58ba0247a70017aa488b84dca120b766b930e7b6a05edccfcb1479425727d70f",
+    "G7_preflight_receipt.json": "ac77c11290eb9389853e0d0fb16ed96637f7cb6a8788a220d0f406bd75c3d464",
+    "G7_residual_information.csv": "ed7d06c390b553faccdae76f17332b37e8b1f438ab774400085d7b356534526c",
+    "G7_site_group_predictor_manifest.csv.gz": "fa5ccd9bffbad5765c5a16c5b99bdcb4408fb99e4637852f3d0bd54b565bf532",
+    "G7_species_prediction_coverage.csv": "3f7976339332f3d5dbcbac56352434039ebc5c3abb5ccb6da2aaf5ddd60f86bd"
+  }
+}

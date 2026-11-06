@@ -2,10 +2,12 @@
 
 ## 読む順番
 
-1. [二部構成の論文原稿](manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)
-2. [最終機構比較と全検証結果](manuscript/FINAL_MECHANISM_COMPARISON_2026-10-27.md)
-3. [考察と結論](manuscript/ECOLOGICAL_DISCUSSION_CONCLUSION_2026-10-27.md)
-4. [植生機能の一次文献と適用範囲](manuscript/VEGETATION_FUNCTION_EVIDENCE_2026-10-27.md)
+1. [現行の統合原稿：R1–R4・P1・G4–G7](../editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+2. [現行Supplement](../editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)
+3. [G7の結果・種群の根拠・停止判断](G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)
+4. [一次文献とデータ・コードの由来](../editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
+
+G7は仕様を新しい結果を見る前に固定し、元の5種別SDMを使って完了しました。主係数は両背景で正方向でしたが、区間はゼロを含み、地域外予測も改善しませんでした。[固定仕様](G7_TRAIT_INFORMED_COMPOSITION_PROTOCOL_2026-11-06.md)・[再現コード](scripts/g7_trait_composition_bridge.py)・[出力と独立検証](results/g7_trait_composition_20261106/)。
 
 ## マクロ解析
 
@@ -41,4 +43,4 @@ python research/scripts/summarize_final_mechanisms.py
 
 [legacyの索引](../legacy/README.md)から旧機構監査・旧原稿へ進んでください。移動元と移動先は[移動台帳](../legacy/archive_manifest_20261027.json)に保存しました。
 
-`results/`と`scripts/`には、現行結果の由来・比較対象・再現依存として必要な過去の計算も残っています。古い結果を現在の主結論に採用するという意味ではありません。研究ルート直下の旧契約・収集計画と旧統合原稿2件は、894ファイルの固定スナップショットや既存QAが参照するため原位置に保持しています。現在の入口は上記の二部構成原稿です。
+`results/`と`scripts/`には、現行結果の由来・比較対象・再現依存として必要な過去の計算も残っています。古い結果を現在の主結論に採用するという意味ではありません。研究ルート直下の旧契約・収集計画と旧統合原稿2件は、894ファイルの固定スナップショットや既存QAが参照するため原位置に保持しています。現在の入口は上記のR1–R4・P1・G4–G7統合原稿です。

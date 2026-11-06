@@ -1,6 +1,6 @@
-# Primary references — R1–R4, P1 and G6
+# Primary references — R1–R4, P1 and G4–G7
 
-**Verified 6 November 2026.** These 16 references support the current main text and Supplementary Methods. Original dataset-provider attributions, acquisition versions and claim limits are retained separately in the [data/code provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). Journal-specific final style remains an author production task.
+**Verified 6 November 2026.** These 17 primary research/data references support the current main text and Supplementary Methods. G7 adds Takahashi & Parris (2008); the earlier 16-reference audit remains a historical record. Natural-history synthesis accounts used to qualify G7 are listed separately below. Original dataset-provider attributions, acquisition versions and claim limits are retained in the [data/code provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). Journal-specific final style remains an author production task.
 
 Alford, R. A., & Wilbur, H. M. (1985). Priority Effects in Experimental Pond Communities: Competition between Bufo and Rana. *Ecology, 66(4), 1097–1105*. [10.2307/1939161](https://doi.org/10.2307/1939161).
 
@@ -32,7 +32,21 @@ Rasmussen, N. L., Van Allen, B. G., & Rudolf, V. H. W. (2014). Linking phenologi
 
 Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera-Arroita, G., Hauenstein, S., Lahoz-Monfort, J. J., Schröder, B., Thuiller, W., Warton, D. I., Wintle, B. A., Hartig, F., & Dormann, C. F. (2017). Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. *Ecography, 40(8), 913–929*. [10.1111/ecog.02881](https://doi.org/10.1111/ecog.02881).
 
+Takahashi, M. K., & Parris, M. J. (2008). Life cycle polyphenism as a factor affecting ecological divergence within *Notophthalmus viridescens*. *Oecologia, 158(1), 23–34*. [10.1007/s00442-008-1125-8](https://doi.org/10.1007/s00442-008-1125-8). Primary experiment; abstract verified through the [authors' institutional record](https://digitalcommons.memphis.edu/facpubs/675/). Hydroperiod-dependent developmental pathways differed among subspecies; the experiment does not estimate aquatic duration at NAAMP sites.
+
 Tuanmu, M.-N., & Jetz, W. (2014). A global 1-km consensus land-cover product for biodiversity and ecosystem modelling. *Global Ecology and Biogeography, 23(9), 1031–1045*. [10.1111/geb.12182](https://doi.org/10.1111/geb.12182).
+
+## G7 natural-history accounts and classification limits
+
+These accounts establish overlapping reported developmental ranges and motivate keeping the newt separate. They do not establish a universal long-versus-short larval-duration trait or observed local breeding priority.
+
+- COSEWIC (2012). *Western Tiger Salamander, Ambystoma mavortium, assessment and status report*. [Government of Canada report](https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/western-tiger-salamander-2012.html), Life Cycle and Reproduction.
+- COSEWIC (2013). *Eastern Tiger Salamander, Ambystoma tigrinum, assessment and status report*. [Government of Canada report](https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/eastern-tiger-salamander-2013.html), Life Cycle and Reproduction.
+- USA National Phenology Network. [Spotted salamander species account](https://mynpn.usanpn.org/npnapps/species/Ambystoma/maculatum), accessed 6 November 2026.
+- Minnesota Department of Natural Resources. [Blue-spotted salamander species account](https://www.dnr.state.mn.us/reptiles_amphibians/salamanders-blue_spotted.html), accessed through indexed provider text on 6 November 2026; direct browser access returned HTTP 403.
+- Illinois Department of Natural Resources. [Eastern newt species account](https://dnr.illinois.gov/education/wildaboutpages/wildaboutsalamanders/waseasternnewt.html), accessed 6 November 2026.
+
+Taxon keys and fixed analytical groups are recorded in the [G7 evidence table](../research/g7_trait_evidence_20261106.csv).
 
 ## Reference-manager and audit files
 

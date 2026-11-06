@@ -1,0 +1,31 @@
+{
+  "base_commit": "be77b4c4",
+  "checks": {
+    "P1_main_methods_results_unchanged": true,
+    "P1_SI_S8_unchanged": true,
+    "P1_SI_S9_unchanged": true,
+    "abstract_versions_identical": true,
+    "abstract_opaque_phrase_removed": true,
+    "main_words_at_most5000": true,
+    "abstract_words_at_most150": true,
+    "unchanged_Figure1_Observed_ThirdGuild_AcousticAssociation.png": true,
+    "unchanged_Figure2_InteractionSignature_VsFrogAbundance.png": true,
+    "unchanged_Figure3_Arrival_Duration_P1_PureMechanism.png": true,
+    "unchanged_Figure4_GenuineFinitePopulation_R4.png": true,
+    "all_relative_links_resolve": true
+  },
+  "relative_links_checked": 117,
+  "broken_links": [],
+  "main_words": 4981,
+  "abstract_words": 133,
+  "supplement_words": 7567,
+  "research_tests": {
+    "tests": 192,
+    "seconds": 24.118,
+    "failures": 0,
+    "warnings": "Existing PendingDeprecationWarning in rasterio.transform and test_prior_water_context"
+  },
+  "new_G7_behavioral_tests": 15,
+  "figure_visual_review": "G7 PNG visually inspected after note-spacing correction; estimates and units match source tables",
+  "publication": "Local revision only; GitHub push blocked by automatic approval review pending explicit authorization."
+}

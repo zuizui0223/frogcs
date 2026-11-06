@@ -1,0 +1,73 @@
+{
+  "status": "G7_PREFLIGHT_COMPLETE",
+  "protocol_path": "/workspace/scratch/10ba59a03d49/frogcs/research/G7_TRAIT_INFORMED_COMPOSITION_PROTOCOL_2026-11-06.md",
+  "protocol_sha256": "22ec3bfcb26175e01804e035e1ca5e6224b0c14beefc3e54242bb9089629860a",
+  "implementation_sha256": "b41435ddf868b69d684b2a27707cdcb327deeb78fbccfe1e06e6ed21a4542044",
+  "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "original_acoustic_helper_commit": "a5ddc281ba17017a52b404a5725327f6e829824f",
+  "original_acoustic_helper_sha256": "8bfb608a90320b6193ca2c01ef5839141f457f3559cd011cf4695e2c0d161179",
+  "original_sources": [
+    {
+      "source": "predictions",
+      "path": "/workspace/scratch/10ba59a03d49/frogcs/research/results/interaction_species_sdm_20261026/naamp_species_suitability.csv.gz",
+      "sha256": "a2a7018e747349ff94b0b98c36fed0958458f652bfa658568c3a498141bdb637",
+      "n_bytes": 8628269
+    },
+    {
+      "source": "sites",
+      "path": "/workspace/scratch/10ba59a03d49/frogcs/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz",
+      "sha256": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+      "n_bytes": 792276
+    },
+    {
+      "source": "visits",
+      "path": "/workspace/scratch/10ba59a03d49/frogcs/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz",
+      "sha256": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+      "n_bytes": 1325594
+    }
+  ],
+  "n_sites": 4248,
+  "n_completed_visits": 63180,
+  "n_canonical_routes": 432,
+  "n_geographic_blocks": 56,
+  "n_folds": 5,
+  "vegetation_positive_sites": 506,
+  "vegetation_zero_sites": 3742,
+  "source_integrity_passed": true,
+  "species_prediction_rows": 42480,
+  "support_gates": [
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "passed": true
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "passed": true
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "passed": true
+    },
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "passed": true
+    }
+  ],
+  "new_outcome_associations_computed": false,
+  "grouping_changed_after_outcomes": false,
+  "sdm_refits": 0,
+  "ridge": 10.0,
+  "bootstrap_seed": 20261107,
+  "requested_bootstraps": 999,
+  "species_group_is_measured_duration": false,
+  "independent_field_replication": false,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3"
+  }
+}
