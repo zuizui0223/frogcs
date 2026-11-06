@@ -1,0 +1,88 @@
+name: frogcs G4 field-model 8-corner and observation-span source identifiability audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-acoustic-vs-stage-mechanism-8-corner-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONPATH: bridge-source/research/scripts:original/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: original
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/results/naamp_remote_vegetation_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+            research/scripts/naamp_odonata_caudata_associations.py
+      - uses: actions/checkout@v4
+        with:
+          path: bridge-source
+          ref: a5ddc281ba17017a52b404a5725327f6e829824f
+          sparse-checkout: |
+            research/scripts/acoustic_mechanism_cv.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Prove eight original model source corners lie inside unrestricted empirical main/interaction basis
+        run: |
+          python -m unittest discover \
+            -s paper/research/scripts \
+            -p 'test_g4_field_model_alignment_8corner_audit_20261106.py' -v
+      - name: Retrieve unchanged original PR161 source model 256×3×4×8 from successful biological audit
+        run: |
+          mkdir -p paper/research/results/G4_alignment_20261106/input_original
+          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
+            --dir paper/research/results/G4_alignment_20261106/input_original
+      - name: Audit original R1 4248 sites, 16 field corners, and full source-model structural redundancy
+        run: |
+          python -u paper/research/scripts/g4_field_model_alignment_8corner_audit_20261106.py \
+            --sites original/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz \
+            --visits original/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz \
+            --vertices paper/research/results/G4_alignment_20261106/input_original/true80_all_24576_original_model_vertices.csv.gz \
+            --out paper/research/results/G4_alignment_20261106/audited
+      - name: Preserve failure-as-science if field treatment source support insufficient
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          p=Path('paper/research/results/G4_alignment_20261106/audited')
+          r=json.loads((p/'G4_source_geometry_receipt.json').read_text())
+          x=pd.read_csv(p/'G4_original_field_eight_corner_support.csv')
+          a=pd.read_csv(p/'G4_source_surface_collinearity_audit.csv')
+          src=pd.read_csv(p/'G4_predirected_source_priors_two_plant_arms.csv')
+          assert r['status']=='G4_ORIGINAL_FIELD_EIGHT_CORNER_AND_MODEL_SPAN_AUDIT_SUCCESS'
+          assert (r['original_field_sites'],r['original_survey_visits'],
+                  r['original_vegetated_sites'])==(4248,63180,506)
+          assert len(x)==16 and len(a)==4 and len(src)==16
+          assert a.max_absolute_source_projection_residual.le(1e-9).all()
+          assert not r['independent_field_model_predation_causal_link_identified']
+          assert not r['ecological_predator_mechanism_model_comparison_fitted']
+          print('G4_PREDECLARED_GEOMETRY_COVERAGE_RESULT',
+                r['both_SDM_backgrounds_all_eight_corners_supported'],
+                'supported',r['observed_cells_supported'],'of 16')
+          print('G4_STRUCTURAL_NONIDENTIFIABILITY_SOURCE_VERIFIED')
+          PY
+      - name: Archive all field/model source denominators and structural nonidentifiability receipts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-G4-4248field-256model-eightcorner-identifiability
+          path: paper/research/results/G4_alignment_20261106/audited/
+          retention-days: 30
+          if-no-files-found: warn
