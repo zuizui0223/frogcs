@@ -47,6 +47,21 @@ TARGETS = {
     "g2b_conditional_strong_flex_OS_target": (-0.000515, 1e-5),
     "g2b_factored_additive_gain_uniform": (0.000415, 1e-5),
     "g2b_factored_additive_gain_target": (0.000860, 1e-5),
+    "p1_4096_true80_source_models": (4096, 0),
+    "p1_log_LS": (-0.1864, 0.0002),
+    "p1_log_LL": (-0.1860, 0.0002),
+    "p1_log_ES": (0.0021, 0.0002),
+    "p1_log_EL": (0.1163, 0.0002),
+    "p1_compat_LS_pp": (13.28125, 0.02),
+    "p1_compat_LL_pp": (10.9375, 0.02),
+    "p1_compat_ES_pp": (9.375, 0.02),
+    "p1_compat_EL_pp": (2.34375, 0.02),
+    "p1_early_arrival_log_moderator": (0.245389, 0.0001),
+    "p1_long_aquatic_log_moderator": (0.057381, 0.0001),
+    "p1_arrival_x_duration_log": (0.113819, 0.0001),
+    "p1_early_arrival_signature_moderator_pp": (-6.25, 0.02),
+    "p1_long_aquatic_signature_moderator_pp": (-4.6875, 0.02),
+    "p1_arrival_x_duration_signature_moderator_pp": (-4.6875, 0.02),
 }
 G2B_STAGES={"any_all","strong_given_any","strong_all_direct","strong_all_factored"}
 ARMS=("00","10","01","11")
@@ -63,7 +78,7 @@ def load(root, filename, **kw):
     return pd.read_csv(p, **kw)
 
 
-def audited_metrics(r2, pr161, r4, g2, g2b):
+def audited_metrics(r2, pr161, r4, g2, g2b, p1):
     full = load(r2,"twentyseven_rate_cells.csv")
     regimes=load(r2,"exploratory_regimes_with_denominators.csv")
     plants=load(r2,"weak_high_rho_plant_mechanism_joint.csv")
@@ -140,6 +155,34 @@ def audited_metrics(r2, pr161, r4, g2, g2b):
         require(len(rows)==1,"Missing G2B original background/stage/contrast "+str((bg,stage,compare,base)))
         return float(rows.iloc[0].gain_nll_per_trial)
 
+    p1_models=load(p1,"P1_original4096_isolated_timing_duration_80year.csv.gz",
+                   compression="gzip",dtype={"timing":str,"arm":str})
+    p1_effects=load(p1,"P1_within_timing_paired_vegetation_effects.csv",
+                    dtype={"timing":str})
+    p1_mod=load(p1,"P1_pure_arrival_duration_and_interaction.csv")
+    p1_receipt=json.loads((Path(p1)/"P1_isolated_stage_source_receipt.json").read_text())
+    require(p1_receipt["status"]==
+            "P1_PURE_SALAMANDER_ARRIVAL_VS_DURATION_ORIGINAL80_SOURCE_AUDIT_SUCCESS"
+            and len(p1_models)==4096
+            and p1_models.source_id.nunique()==256
+            and len(p1_effects)==192
+            and len(p1_mod)==36
+            and p1_receipt["source_original_stage1_2_replay"]
+                     ["legacy_original_2048_true80_source_rows_replayed"],
+            "P1 did not independently replay the original true80 stage biology")
+    def pv(metric,timing):
+        q=p1_effects[(p1_effects.metric==metric)&
+                     (p1_effects.timing==timing)&
+                     (p1_effects.contrast=="both_minus_neither")]
+        require(len(q)==1 and int(q.iloc[0].n_original_source_backgrounds)==256,
+                "P1 four original stage effects not exactly source paired")
+        return float(q.iloc[0]["mean"])
+    def pm(metric,term):
+        q=p1_mod[(p1_mod.metric==metric)&(p1_mod.contrast==term)]
+        require(len(q)==1 and int(q.iloc[0].n_original_source_backgrounds)==256,
+                "P1 pure arrival/duration estimate not exact original source")
+        return float(q.iloc[0]["mean"])
+
     return {
         "r2_proposals":int(full.n_proposals.sum()),
         "r2_accepted":int(full.n_accepted.sum()),
@@ -167,6 +210,15 @@ def audited_metrics(r2, pr161, r4, g2, g2b):
         "g2b_conditional_strong_flex_OS_target":gv("target_group","strong_given_any","incremental_OS","flex_add"),
         "g2b_factored_additive_gain_uniform":gv("uniform","strong_all_factored","factored_vs_direct_strong","env_add"),
         "g2b_factored_additive_gain_target":gv("target_group","strong_all_factored","factored_vs_direct_strong","env_add"),
+        "p1_4096_true80_source_models":len(p1_models),
+        **{"p1_log_"+stage:pv("mean_log_F_B",stage) for stage in ("LS","LL","ES","EL")},
+        **{"p1_compat_"+stage+"_pp":pv("accepted",stage)*100 for stage in ("LS","LL","ES","EL")},
+        "p1_early_arrival_log_moderator":pm("mean_log_F_B","pure_arrival_moderation_of_plant_effect"),
+        "p1_long_aquatic_log_moderator":pm("mean_log_F_B","pure_duration_moderation_of_plant_effect"),
+        "p1_arrival_x_duration_log":pm("mean_log_F_B","arrival_x_duration_moderation_of_plant_effect"),
+        "p1_early_arrival_signature_moderator_pp":100*pm("accepted","pure_arrival_moderation_of_plant_effect"),
+        "p1_long_aquatic_signature_moderator_pp":100*pm("accepted","pure_duration_moderation_of_plant_effect"),
+        "p1_arrival_x_duration_signature_moderator_pp":100*pm("accepted","arrival_x_duration_moderation_of_plant_effect"),
     }
 
 
@@ -175,9 +227,9 @@ def verify_submission_docs(main_path,si_path):
     si=Path(si_path).read_text(encoding="utf-8")
     words=main.split("## Abstract\n")[1].split("**Keywords:**")[0].strip().split()
     checks={
-      "abstract_max250":len(words)<=250,
-      "main_text_3000_to_6000_words":3000<=len(main.split())<=6000,
-      "one_each_main_figure":all(main.count("**Figure "+str(i)+" |")==1 for i in (1,2,3)),
+      "abstract_max150_for_Ecology_Letters":len(words)<=150,
+      "main_text_3000_to_5000_words":3000<=len(main.split())<=5000,
+      "one_each_main_figure":all(main.count("**Figure "+str(i)+" |")==1 for i in (1,2,3,4)),
       "three_model_response_sections":all(("### R"+str(i)+".") in main for i in (1,2,3,4)),
       "no_wild_causal_identification":("do not establish" in main or
                                       "not establish" in main),
@@ -186,11 +238,11 @@ def verify_submission_docs(main_path,si_path):
       "mean_of_hazard_shares_distinction":("mean of source-specific hazard shares" in main and
                                            "not the ratio" in main),
       "external_immigration_on_in_main":("external immigration ON" in main),
-      "supplement_all_seven_methods":all("Supplementary Methods S"+str(i) in si for i in range(1,8)),
+      "supplement_all_nine_methods":all("Supplementary Methods S"+str(i) in si for i in range(1,10)),
       "conditional_acoustic_denominator_declared":("47,912" in si and "63,180" in si),
       "source_model_priors_not_field_posteriors":("not a field-conditioned ABC posterior" in main and
                                                   "not a posterior" in si),
-      "source_main_and_SI_crosslinked":("SUPPLEMENTARY_METHODS" not in main or True),
+      "source_main_and_SI_crosslinked":("SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md" in main),
     }
     require(all(checks.values()),
             "Main/SI publication-source safeguards failed: "+
@@ -200,10 +252,10 @@ def verify_submission_docs(main_path,si_path):
 
 def main():
     p=argparse.ArgumentParser()
-    for flag in ("r2","pr161","r4","g2","g2b","main","si","out"):
+    for flag in ("r2","pr161","r4","g2","g2b","p1","main","si","out"):
         p.add_argument("--"+flag,type=Path,required=True)
     a=p.parse_args()
-    data=audited_metrics(a.r2,a.pr161,a.r4,a.g2,a.g2b)
+    data=audited_metrics(a.r2,a.pr161,a.r4,a.g2,a.g2b,a.p1)
     require(set(data)==set(TARGETS),
             "Missing independent high-consequence source checks")
     rows=[]
@@ -227,7 +279,7 @@ def main():
         "main_words":main_words,"supplementary_words":si_words,
         "source_file_sha256":{
            str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest()
-           for root in (a.r2,a.pr161,a.r4,a.g2,a.g2b)
+           for root in (a.r2,a.pr161,a.r4,a.g2,a.g2b,a.p1)
            for p in root.glob("*.csv*")
         },
         "wild_predator_mechanism_identified":False,
