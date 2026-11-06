@@ -1,0 +1,154 @@
+{
+  "status": "PASS_INDEPENDENT_P1_DECOMPOSITION_VALIDATION",
+  "validated_at_utc": "2026-11-06T13:18:30.577511+00:00",
+  "reviewer": "positive_evidence subagent; separate implementation; production module not imported",
+  "scope": [
+    "All 4096 original P1 scenarios reconstructed from all 32768 F_B vertices",
+    "Complete 256 backgrounds x 4 timings x 4 intervention arms; no source exclusion",
+    "All 1024 background/timing decomposition rows; all 32 summary means and pointwise 95% intervals",
+    "Shared-index 10000-replicate bootstrap with seed 20261126, independently evaluated as resampling-count matrix multiplication",
+    "All four sign-count rows, all 256 transition rows, full 3x3 transition table, and retained original P1 intervals",
+    "Manual complete production-script inspection for term definitions, pairing, metadata handling, and interpretive claims"
+  ],
+  "source_commit": "053add0cc445975f26a6a0f61445a98810d177f2",
+  "new_samples_or_biological_simulations": 0,
+  "full_family": {
+    "backgrounds": 256,
+    "timings": [
+      "LS",
+      "LL",
+      "ES",
+      "EL"
+    ],
+    "arms": [
+      "00",
+      "10",
+      "01",
+      "11"
+    ],
+    "scenarios": 4096,
+    "vertices": 32768,
+    "background_timing_rows": 1024,
+    "summary_rows": 32,
+    "bootstrap_replicates": 10000,
+    "source_exclusions": 0,
+    "complete": true
+  },
+  "maximum_absolute_differences": {
+    "vertices_to_scenario_mean_log_F_B": 6.661338147750939e-16,
+    "vertices_to_scenario_mean_F_B": 1.3322676295501878e-15,
+    "independent_decomposition_to_reported": 1.3322676295501878e-15,
+    "source_decomposition_identity": 2.220446049250313e-16,
+    "summary_means": 1.3877787807814457e-16,
+    "summary_mc95_low": 1.6653345369377348e-16,
+    "summary_mc95_high": 1.942890293094024e-16,
+    "bootstrap_decomposition_identity": 5.551115123125783e-16,
+    "background_timing_transition_values": 8.881784197001252e-16,
+    "retained_original_intervals": 0.0,
+    "vegetation_absent_arm_control": 0.0
+  },
+  "numerical_tolerance": 1e-12,
+  "source_corner_keys_exact": true,
+  "source_metadata_pairing_exact": true,
+  "source_rate_vectors_held_fixed": true,
+  "developmental_timing_definition_exact": true,
+  "bootstrap_seed": 20261126,
+  "bootstrap_indices_sha256": "4c92b667e43d748b12f79c4ce4c2127877834b3e09fb8a5ff0012699230acf8c",
+  "minimum_abs_net_effect": 7.345765844846142e-05,
+  "minimum_abs_LS_to_EL_shift": 6.823826947122136e-05,
+  "sign_counts": [
+    {
+      "timing": "LS",
+      "n_sources": 256,
+      "positive": 59,
+      "negative": 197,
+      "zero": 0
+    },
+    {
+      "timing": "LL",
+      "n_sources": 256,
+      "positive": 59,
+      "negative": 197,
+      "zero": 0
+    },
+    {
+      "timing": "ES",
+      "n_sources": 256,
+      "positive": 124,
+      "negative": 132,
+      "zero": 0
+    },
+    {
+      "timing": "EL",
+      "n_sources": 256,
+      "positive": 183,
+      "negative": 73,
+      "zero": 0
+    }
+  ],
+  "LS_to_EL_transition": {
+    "row_order": [
+      "negative",
+      "zero",
+      "positive"
+    ],
+    "column_order": [
+      "negative",
+      "zero",
+      "positive"
+    ],
+    "counts": [
+      [
+        73,
+        0,
+        124
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        59
+      ]
+    ],
+    "negative_to_positive": 124,
+    "positive_to_negative": 0,
+    "positive_shift": 246,
+    "negative_shift": 10,
+    "zero_shift": 0
+  },
+  "source_input_sha256": {
+    "research/results/submission_frozen_sources_20261106/P1/P1_original4096_isolated_timing_duration_80year.csv.gz": "24d7250b023ab9cd826490d4401074a571a1384ce49b61e4e814d86b04046227",
+    "research/results/submission_frozen_sources_20261106/P1/P1_original32768_vegetation_predator_corners.csv.gz": "b716b60506e740830c687b5e3da8b5b6c20cfd96911243af9da10ac7842c6147",
+    "research/results/submission_frozen_sources_20261106/P1/P1_within_timing_paired_vegetation_effects.csv": "9004bce33100aa550d82b5069ada3f93e5e7c0afc6efa8e525c2afd18bbadd10"
+  },
+  "source_inputs_match_original_G7_checkout": true,
+  "analysis_code_sha256": "ef7695dbfbd424d547b245517c1c4cfe12286a1f0aaa71344fd5825981fdbf2e",
+  "output_sha256_excluding_this_audit": {
+    "P1_vegetation_benefit_decomposition.pdf": "38de3ddf7086663b313456f99f48ea67f0bdad3d1d56fdf11852e42c7859908d",
+    "P1_vegetation_benefit_decomposition.png": "38d8100bba636ce461869d09be21b23f65862255e4ae45a78ba36584b264413c",
+    "p1_all_256_background_decompositions.csv": "8952f02b7e1feb68f71d5c3f2568b0992f88ed5bbaf872cf8d09296a1153ab3f",
+    "p1_background_sign_transitions.csv": "dcbfe1239acf426132d6d853cded00463b83568157a055f5eb6e1c86f0376705",
+    "p1_complete_sign_transition_table.csv": "a71a2faa3f6f5179cac4067986ffa916d3509ccf62a2fc6df4c21bf0e1219e05",
+    "p1_decomposition_receipt.json": "03eb019c9fd330ee4b8256e3d515979c0c10af6c43530671055c657e554c4215",
+    "p1_decomposition_summary.csv": "4889fb8e5e95ecc76118e44a1696e62f799b3b48a4d9ce27c30e2e8fd2892d95",
+    "p1_net_effect_sign_counts.csv": "de6c15fe4d5d0e89a2e040204cd094893a60511d2277377a8247b799921576fb",
+    "p1_original_net_effect_intervals.csv": "5e6c85b6bb152d074b96434a8cccf6bb2c7ab6bc1a45b7106a67ccbb8425725d"
+  },
+  "scientific_interpretation": {
+    "status": "VALID_WITH_STATED_MODEL_CONDITIONS",
+    "positive_result": "Within the same sampled model backgrounds, the earlier-arrival/longer-duration condition strengthens the refuge increment and reduces the mean negative feeding-support increment, yielding the previously established net-benefit reversal.",
+    "decomposition": "Exact factorial intervention decomposition around arm 00; all components include model feedback. It is not identification of natural direct/mediated mortality paths.",
+    "posthoc": true,
+    "uncertainty": "Pointwise source-bootstrap intervals conditional on the sampled synthetic model family and the earlier exploratory attack=0.5/rho=0.75 regime; no new confirmatory test or field confidence interval.",
+    "not_every_source_reverses": true,
+    "no_field_causal_validation": true,
+    "G7_decision_unchanged": true,
+    "outcome": "mean of log aquatic frog cohort over 8 equal V/S/D corners; each F_B is a final-20-year mean from the deterministic 80-year model; arm 00 disables the two focal functions, not all vegetation."
+  },
+  "material_gaps": [],
+  "read_only_except_audit_file": true
+}

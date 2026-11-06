@@ -273,6 +273,38 @@ The source result is more nuanced than a universal natural priority benefit. Und
 
 Numerical evidence: [original eight-source 80-year computation #41986676287](https://github.com/zuizui0223/frogcs/actions/runs/41986676287), [unchanged archived source identity replay and 256-cluster independent audit SUCCESS #41987600437](https://github.com/zuizui0223/frogcs/actions/runs/41987600437), and [two independent source-only plotted comparisons SUCCESS #41988533772](https://github.com/zuizui0223/frogcs/actions/runs/41988533772). Full [P1 numerical scientific report](../research/P1_PURE_ARRIVAL_DURATION_TRUE80_VERIFIED_RESULT_2026-11-05.md).
 
+### S8b. Post-hoc explanation of the P1 vegetation-benefit reversal
+
+After the original P1 outcomes were known, we decomposed the complete factorial into its two single-function increments and their nonadditivity. This is a **post-hoc explanation of the existing intervention**, not an additional independent biological experiment or field validation. All 256 source backgrounds, four developmental timings and four vegetation arms were retained; there were no outcome-based exclusions, newly fitted biological rates or additional simulations.
+
+For each source background and timing, let Y_ab be the source mean_log_F_B in vegetation-function arm ab. The refuge increment is C=Y_10−Y_00, feeding-support increment D=Y_01−Y_00, and nonadditivity I=Y_11−Y_10−Y_01+Y_00. The net effect T=Y_11−Y_00 satisfies T=C+D+I. These intervention effects include downstream demographic feedback; they are not fractions of directly observed predator mortality. Arm00 switches off the two focal functions while preserving other background features; it is not vegetation absence.
+
+Each Y_ab averages log F_B equally across the eight original V×S×D corners, where F_B is the mean aquatic cohort abundance during the final 20 of 80 simulated years. The V=0 corners have exactly zero focal-intervention effect. Thus these values are neither observed adult counts nor field abundance percentages. The original P1 net-effect intervals in S8 are preserved. The new decomposition uses one common array of 10,000 resamples of the 256 source backgrounds (seed20261126) across all timings, terms and timing moderators. Its pointwise 95% percentile intervals describe the synthetic source sample, without multiple-comparison correction or a new confirmatory significance claim. Original attack=.5 and recruitment=.75 remain conditional on the earlier exploratory regime choice.
+
+**Table S8b. Complete P1 decomposition, mean log aquatic cohort effects.** Each row is based on the same 256 backgrounds.
+
+| Salamander timing | Refuge increment C | Feeding-support increment D | Nonadditivity I | Net effect T | Backgrounds with T>0 |
+|---|---:|---:|---:|---:|---:|
+| Late/short LS | +0.0593 | −0.2435 | −0.0023 | −0.1864 | 59/256 |
+| Late/long LL | +0.0580 | −0.2431 | −0.0009 | −0.1860 | 59/256 |
+| Early/short ES | +0.1458 | −0.1303 | −0.0135 | +0.0021 | 124/256 |
+| Early/long EL | +0.2312 | −0.0959 | −0.0190 | +0.1163 | 183/256 |
+
+**Table S8c. Contributions to the already established LS→EL reversal.** Intervals use the new shared resamples.
+
+| Component change | Mean | Pointwise source-bootstrap 95% interval |
+|---|---:|---:|
+| Refuge benefit increase | +0.1719 | [+0.1422,+0.2042] |
+| Feeding-support cost attenuation | +0.1476 | [+0.1157,+0.1829] |
+| Nonadditivity change | −0.0167 | [−0.0248,−0.0093] |
+| Net-effect change | +0.3028 | [+0.2500,+0.3612] |
+
+Of 256 backgrounds, 124 changed from a negative to a positive net effect, zero changed in the reverse direction, 59 were positive in both conditions and 73 negative in both. Effects shifted positively in 246 backgrounds and negatively in 10; a positive shift is not necessarily a sign reversal. All four timings' counts and the complete transition table are retained. The complete 32-estimate family includes four terms at each timing, plus four terms for average arrival, average duration, arrival×duration and EL−LS contrasts.
+
+The [analysis plan](../research/P1_VEGETATION_BENEFIT_DECOMPOSITION_PLAN_2026-11-06.md), [all source-level decompositions](../research/results/p1_vegetation_benefit_20261106/p1_all_256_background_decompositions.csv), [32 estimates and intervals](../research/results/p1_vegetation_benefit_20261106/p1_decomposition_summary.csv), [execution receipt](../research/results/p1_vegetation_benefit_20261106/p1_decomposition_receipt.json) and [independent recalculation](../research/results/p1_vegetation_benefit_20261106/p1_independent_validation.json) preserve source hashes and pairing. Every source mean was reconstructed from all 32,768 original vertices. The factor decomposition held at each background and bootstrap sample; the V=0 negative control was exact. G7 outcomes and all original P1 estimates remain unchanged.
+
+**Supplementary Figure S3. The P1 vegetation-benefit reversal and its complete decomposition.** [PNG](../research/results/p1_vegetation_benefit_20261106/P1_vegetation_benefit_decomposition.png) / [PDF](../research/results/p1_vegetation_benefit_20261106/P1_vegetation_benefit_decomposition.pdf). Panel A retains all four timings and both intervention increments, nonadditivity and their net effect; panel B shows every contribution to EL−LS with pointwise paired source-bootstrap intervals. This figure explains existing model outcomes; it does not introduce a new field result.
+
 ## Supplementary Methods S9. Source-blind field breeding chronology eligibility (G3)
 
 The proposed regional hypothesis that earlier salamander breeding changes the vegetation–adult frog-calling association was **not tested against an invented proxy**. Original 15 NAAMP frog taxa, five *pond-breeding* caudates and two nonpond caudate controls were fixed to original main species keys. GBIF occurrence lifeStage facets for the United States, 2010–2025, passed all 22 API/source requests, but explicit egg-stage records were concentrated in two frog species (2,618 total; two taxa with ≥50 reports) and one pond caudate species (4,255 total; one taxon with ≥50 reports). The preregistered minimum was five frogs and three pond caudates with ≥50 records each. Therefore **G0 was NOT QUALIFIED** and no egg-onset region-year surface, no NAAMP vegetation×salamander-lead field interaction and no independent phenological field validation was performed. Early-season adult sightings are not a valid substitute for breeding onset. [G3 original metadata-only audited result #41976215608](https://github.com/zuizui0223/frogcs/actions/runs/41976215608) and [complete stop-gate report](../research/G3_GBIF_EGG_STAGE_G0_NOT_QUALIFIED_VERIFIED_2026-11-05.md).
@@ -289,6 +321,7 @@ The proposed regional hypothesis that earlier salamander breeding changes the ve
 | [Main Figure 4](figures/Figure4_GenuineFinitePopulation_R4.png) | Same new-256-background genuine 80-year finite-N frog occupancy and factorial by q, movement, developmental context | [R4 source audit and three panels](https://github.com/zuizui0223/frogcs/actions/runs/41551412003) |
 | [Supplementary Figure S1](../research/results/g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png) | G6 saved-prediction context gains and original R1 rank-contrast diagnostic | [G6 source/replay receipt](../research/results/g6_observation_context_20261106/G6_source_and_replay_receipt.json) and [validation](../research/results/g6_observation_context_20261106/G6_validation_record.json) |
 | [Supplementary Figure S2](../research/results/g7_trait_composition_20261106/G7_trait_composition_bridge.png) | Fixed G7 species-group coefficient intervals and held-out NLL gains | [Execution receipt](../research/results/g7_trait_composition_20261106/G7_execution_receipt.json) and [independent validation](../research/results/g7_trait_composition_20261106/G7_independent_validation.json) |
+| [Supplementary Figure S3](../research/results/p1_vegetation_benefit_20261106/P1_vegetation_benefit_decomposition.png) | Complete P1 post-hoc decomposition and LS→EL contributions | [All32 estimates](../research/results/p1_vegetation_benefit_20261106/p1_decomposition_summary.csv) and [independent verification](../research/results/p1_vegetation_benefit_20261106/p1_independent_validation.json) |
 | Supplementary G1 | O×S increment under additive vs flexible shared environmental heldout prediction | [G1 source](https://github.com/zuizui0223/frogcs/actions/runs/41389390897) |
 | Supplementary G2 | Adult strong vs any vs conditional strong acoustic geographic contrasts | [G2 source](https://github.com/zuizui0223/frogcs/actions/runs/41562618381) |
 | Supplementary G2B | Two-part adult calling heldout O×S increments and factored vs direct strong score comparison | [G2B models](https://github.com/zuizui0223/frogcs/actions/runs/41921634037) and [figure-only reuse](https://github.com/zuizui0223/frogcs/actions/runs/41922244821) |
