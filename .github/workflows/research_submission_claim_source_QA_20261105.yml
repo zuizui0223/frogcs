@@ -11,6 +11,9 @@ on:
       - editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md
       - editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md
       - editorial/SUBMISSION_STRATEGY_SIGNATURE_VS_DEMOGRAPHY_2026-11-06.md
+      - editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.md
+      - editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md
+      - research/results/submission_frozen_sources_20261106/**
   workflow_dispatch:
 
 permissions:
@@ -22,7 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      GH_TOKEN: ${{ github.token }}
       PYTHONHASHSEED: '0'
     steps:
       - uses: actions/checkout@v4
@@ -33,51 +35,44 @@ jobs:
           python-version: '3.11'
       - name: Install source table verification dependencies
         run: python -m pip install numpy==2.2.6 pandas==2.2.3
-      - name: Retrieve the ORIGINAL 27-cell mechanism/prior acceptance source
+      - name: Verify 28 original numerical inputs and the required P1 source receipt
         run: |
-          mkdir -p paper/research/results/submission_source_QA_20261105/input/R2
-          gh run download 41390511365 --repo "$GITHUB_REPOSITORY" \
-            --name frogcs-main3600-original20k-R2-rate-structure-regimes \
-            --dir paper/research/results/submission_source_QA_20261105/input/R2
-      - name: Retrieve the ORIGINAL 256-background plant 2x2 and predator hazard source
-        run: |
-          mkdir -p paper/research/results/submission_source_QA_20261105/input/R3
-          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
-            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
-            --dir paper/research/results/submission_source_QA_20261105/input/R3
-      - name: Retrieve ORIGINAL 24,576 population arms and 256 source-cluster R4 audit
-        run: |
-          mkdir -p paper/research/results/submission_source_QA_20261105/input/R4
-          gh run download 41551412003 --repo "$GITHUB_REPOSITORY" \
-            --name frogcs-PR161-R4-same256-independent-reused-source-audit \
-            --dir paper/research/results/submission_source_QA_20261105/input/R4
-      - name: Retrieve the actual 4,248-site G2 observed acoustic source/route response contrast
-        run: |
-          mkdir -p paper/research/results/submission_source_QA_20261105/input/G2
-          gh run download 41562618381 --repo "$GITHUB_REPOSITORY" \
-            --name frogcs-G2-original4248-acoustic-any-vs-strong-source-audited \
-            --dir paper/research/results/submission_source_QA_20261105/input/G2
-      - name: Retrieve complete G2B independent two-stage source heldout score audit
-        run: |
-          mkdir -p paper/research/results/submission_source_QA_20261105/input/G2B
-          gh run download 41921634037 --repo "$GITHUB_REPOSITORY" \
-            --name frogcs-G2B-original4248-two-part-acoustic-56block-verified \
-            --dir paper/research/results/submission_source_QA_20261105/input/G2B
-      - name: Retrieve original P1 controlled arrival-by-duration numerical source and 2048 old model replay
-        run: |
-          mkdir -p paper/research/results/submission_source_QA_20261105/input/P1
-          gh run download 41987600437 --repo "$GITHUB_REPOSITORY" \
-            --name frogcs-P1-256-source-arrival-duration-audit-reused-original80 \
-            --dir paper/research/results/submission_source_QA_20261105/input/P1
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          root = Path("paper")
+          bundle = root / "research/results/submission_frozen_sources_20261106"
+          manifest = json.loads((bundle / "source_bundle_manifest.json").read_text())
+          receipt = root / manifest["original_file_hash_receipt"]
+          assert hashlib.sha256(receipt.read_bytes()).hexdigest() == manifest["original_file_hash_receipt_sha256"]
+          expected = json.loads(receipt.read_text())["source_file_sha256"]
+          entries = manifest["files"]
+          assert len(entries) == len(expected) == 28
+          assert {entry["filename"] for entry in entries} == set(expected)
+          assert {str(path.relative_to(bundle)) for path in bundle.glob("*/*.csv*")} == {entry["path"] for entry in entries}
+          for entry in entries:
+              path = bundle / entry["path"]
+              assert path.resolve().is_relative_to(bundle.resolve())
+              assert path.stat().st_size == entry["bytes"]
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == entry["sha256"] == expected[entry["filename"]]
+          auxiliary = manifest["auxiliary_files"]
+          assert len(auxiliary) == 1 and auxiliary[0]["path"] == "P1/P1_isolated_stage_source_receipt.json"
+          for entry in auxiliary:
+              path = bundle / entry["path"]
+              assert path.stat().st_size == entry["bytes"]
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == entry["sha256"]
+          print("FROZEN_28_NUMERIC_INPUTS_AND_P1_RECEIPT_HASHES_PASS_NO_ARTIFACT_DOWNLOAD")
+          PY
       - name: Recompute main headline values from six separately frozen authoritative sources
         run: |
           python -u paper/research/scripts/audit_submission_claims_20261105.py \
-            --r2 paper/research/results/submission_source_QA_20261105/input/R2 \
-            --pr161 paper/research/results/submission_source_QA_20261105/input/R3 \
-            --r4 paper/research/results/submission_source_QA_20261105/input/R4 \
-            --g2 paper/research/results/submission_source_QA_20261105/input/G2 \
-            --g2b paper/research/results/submission_source_QA_20261105/input/G2B \
-            --p1 paper/research/results/submission_source_QA_20261105/input/P1 \
+            --r2 paper/research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 paper/research/results/submission_frozen_sources_20261106/R3 \
+            --r4 paper/research/results/submission_frozen_sources_20261106/R4 \
+            --g2 paper/research/results/submission_frozen_sources_20261106/G2 \
+            --g2b paper/research/results/submission_frozen_sources_20261106/G2B \
+            --p1 paper/research/results/submission_frozen_sources_20261106/P1 \
             --main paper/editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
             --si paper/editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
             --out paper/research/results/submission_source_QA_20261105/audited

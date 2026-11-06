@@ -1,0 +1,436 @@
+{
+  "status": "P1_PURE_SALAMANDER_ARRIVAL_VS_DURATION_ORIGINAL80_SOURCE_AUDIT_SUCCESS",
+  "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "source_original_PR161_run": 41408471121,
+  "original_PR161_256_source_seed": 20261123,
+  "source_256_backgrounds": 256,
+  "source_80year_scenarios": 4096,
+  "source_8corner_80year_outputs": 32768,
+  "shards": 8,
+  "source_original_stage1_2_replay": {
+    "legacy_original_2048_true80_source_rows_replayed": true,
+    "legacy_original_16384_original_vertices_replayed": true,
+    "original_max_absolute_error": {
+      "log_OS": 9.003214840319629e-16,
+      "log_OV": 6.106226635438361e-16,
+      "log_SV": 4.999256217330661e-16,
+      "log_OSV": 1.0998146837692957e-15,
+      "mean_F_B": 8.881784197001252e-16,
+      "mean_log_F_B": 4.440892098500626e-16,
+      "min_F": 1.1102230246251565e-16,
+      "min_S": 2.220446049250313e-16,
+      "H_SF_V1_S2_D2": 8.881784197001252e-16,
+      "H_DF_V1_S2_D2": 1.7763568394002505e-15,
+      "D_F_hazard_share_V1_S2_D2": 3.3306690738754696e-16
+    },
+    "original_vegetation_zero_negative_control_passed": true
+  },
+  "source_model_cluster_bootstrap": 10000,
+  "bootstrap_seed": 20261126,
+  "estimated_breeding_priority_wild": false,
+  "original_G3_GBIF_egg_stage_G0_qualified": false,
+  "field_vegetation_x_breeding_lead_model_run": false,
+  "source_biological_theta_unchanged": true,
+  "source_shard_receipts": [
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 0,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_00_effects.csv.gz": "4416f6e4e8acaf8972b189731dcf9c9d9b34bdbc7eebaf4e705859494db059ed",
+        "factorial_original80_shard_00_vertices.csv.gz": "ffc9ad1e2c2797d4051c84bea85bcfc3cf1ec9f552f06a3eb96321d93b758bbb"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 1,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_01_effects.csv.gz": "45eebef58db57a3edc1f6e9947b9cb961b65cc1f4bc465930b2fed51534a4187",
+        "factorial_original80_shard_01_vertices.csv.gz": "a3d69a75ede0cf9bd129492b3d49bb301c4bb163bd664fb936d11617980dd33f"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 2,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_02_effects.csv.gz": "21d7afcb6449c2a28c2a8c45bc7b32df509434b7bc36b17acc3a99ef59dbc120",
+        "factorial_original80_shard_02_vertices.csv.gz": "14f06bef7052baf6ea4f019c62a1ce3d574d7075098c17889f54eb9dc15ac36d"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 3,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_03_effects.csv.gz": "1e9331af158c2244b7b149d315ed126d431a69b577ba65b625abbd33808d0800",
+        "factorial_original80_shard_03_vertices.csv.gz": "eeeaf4b6c2e28ab29e98c4545ad7b385c0b35ad2b946098a445b190494dc317c"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 4,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_04_effects.csv.gz": "95fce629c547ac996b1839f1daa318bc17c720babef999a60e464fc665834ac0",
+        "factorial_original80_shard_04_vertices.csv.gz": "c23302f6b851f7a2280dbc67cc47220441fa0e5f4f79a1c2f25941622061a492"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 5,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_05_effects.csv.gz": "358f5282cddc8d5af6d478448e25bff58ee2d34c079bbe4ef844fbe14e9fd71e",
+        "factorial_original80_shard_05_vertices.csv.gz": "77612abed4e04689a6adc695d2c2ad386d63cd7108506bdee09a39b8993bc937"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 6,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_06_effects.csv.gz": "52e2706753846c1c711d7df44bd48672bbce793c135fc6123d006f61113d7e49",
+        "factorial_original80_shard_06_vertices.csv.gz": "6f24873d3bc266d9d9d343c700f4998999bb9603dd0e164bbda96cb44a267b7f"
+      }
+    },
+    {
+      "status": "P1_TRUE80_CONTEXTS_ISOLATED",
+      "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+      "original_PR161_source_seed": 20261123,
+      "shard": 7,
+      "original_backgrounds": 32,
+      "source_rows": 512,
+      "source_vertices": 4096,
+      "n_timing_conditions": 4,
+      "n_plant_roles": 4,
+      "contexts": [
+        {
+          "label": "LS",
+          "arrival": 40,
+          "duration": 40,
+          "legacy_context": 1
+        },
+        {
+          "label": "LL",
+          "arrival": 40,
+          "duration": 60,
+          "legacy_context": -1
+        },
+        {
+          "label": "ES",
+          "arrival": 0,
+          "duration": 40,
+          "legacy_context": -1
+        },
+        {
+          "label": "EL",
+          "arrival": 0,
+          "duration": 60,
+          "legacy_context": 2
+        }
+      ],
+      "source_f_arrival": 20,
+      "source_F_duration": 45,
+      "source_d_arrival": 20,
+      "source_D_duration": 60,
+      "years": 80,
+      "window": 20,
+      "dt": 0.5,
+      "positive_field_breeding_priority_measured": false,
+      "ecological_breeding_onset_field_test_run": false,
+      "file_sha256": {
+        "factorial_original80_shard_07_effects.csv.gz": "cc77cf88210a7a53136c089805bdb580c42ff6e21d54778d965583097ef0034c",
+        "factorial_original80_shard_07_vertices.csv.gz": "70ac1a7a055107440b90a8b787ea7c50382d61c7fbe8f06e29dd8d101285d50b"
+      }
+    }
+  ]
+}
