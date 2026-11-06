@@ -1,0 +1,99 @@
+name: frogcs G5 precommitted source-constrained acoustic heldout prediction
+
+on:
+  pull_request:
+    branches:
+      - research/isolated-ontogeny-timing-duration-20261105
+    paths:
+      - .github/workflows/research_g5_source_constrained_acoustic_holdout.yml
+      - research/scripts/g5_source_constrained_acoustic_holdout_20261106.py
+      - research/scripts/test_g5_source_constrained_acoustic_holdout_20261106.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-4248-acoustic-and-model-source-shape-spatial-predictive-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: 'bridge-source/research/scripts:original/research/scripts:paper/research/scripts'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          path: original
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          sparse-checkout: |
+            research/results/naamp_remote_vegetation_20261026
+            research/results/naamp_three_guild_occurrence/full_naamp_history
+            research/scripts/naamp_odonata_caudata_associations.py
+      - uses: actions/checkout@v4
+        with:
+          path: bridge-source
+          ref: a5ddc281ba17017a52b404a5725327f6e829824f
+          sparse-checkout: |
+            research/scripts/acoustic_mechanism_cv.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original PR145 acoustic statistical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Verify genuine original source surface and monotone calling observation link tests
+        run: |
+          python -m unittest discover \
+            -s paper/research/scripts \
+            -p 'test_g5_source_constrained_acoustic_holdout_20261106.py' -v
+      - name: Retrieve original G4 eight-corner field and genuine 256-background synthetic source
+        run: |
+          mkdir -p paper/research/results/G5_source_link_20261106/original_G4
+          gh run download 42172357235 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-G4-4248field-256model-eightcorner-identifiability \
+            --dir paper/research/results/G5_source_link_20261106/original_G4
+      - name: Fit predeclared source-prior interaction shape on TRAIN blocks ONLY and score never-seen acoustic regions
+        run: |
+          python -u paper/research/scripts/g5_source_constrained_acoustic_holdout_20261106.py \
+            --sites original/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz \
+            --visits original/research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz \
+            --source-file paper/research/results/G5_source_link_20261106/original_G4/G4_predirected_source_priors_two_plant_arms.csv \
+            --g4-receipt paper/research/results/G5_source_link_20261106/original_G4/G4_source_geometry_receipt.json \
+            --out paper/research/results/G5_source_link_20261106/audited
+      - name: Strictly preserve all candidate scores and negative outcomes without choosing a field-favorable model
+        run: |
+          python - <<'PY'
+          import json,pandas as pd
+          from pathlib import Path
+          root=Path('paper/research/results/G5_source_link_20261106/audited')
+          r=json.loads((root/'G5_source_constrained_observation_receipt.json').read_text())
+          a=pd.read_csv(root/'G5_original_site_binomial_acoustic_scores.csv')
+          b=pd.read_csv(root/'G5_56block_source_repeated_model_comparisons.csv')
+          p=pd.read_csv(root/'G5_4248_original_site_source_holdout_predictions.csv.gz')
+          s=pd.read_csv(root/'G5_5fold_constrained_acoustic_source_slopes.csv')
+          assert r['status']=='G5_ORIGINAL_SOURCE_CONSTRAINED_ACOUSTIC_HOLDOUT_AUDIT_SUCCESS'
+          assert len(a)==12 and len(b)==12 and len(p)==50976 and len(s)==60
+          assert r['original_field_sites']==4248 and r['original_completed_visits']==63180
+          assert r['original_geographic_blocks']==56 and not r['identified_actual_pond_predation']
+          assert not r['calibrated_larval_to_adult_observation_link']
+          assert not r['original_field_corner_support_passed_both_backgrounds']
+          assert b[b.contrast=='primary_11_vs_flex_environment'].shape[0]==2
+          assert (p.groupby(['background','candidate']).site.nunique()==4248).all()
+          assert (p.predicted>=0).all() and (p.predicted<=1).all()
+          print('G5_SOURCE_CONSTRAINED_TWO_BACKGROUND_SPATIAL_FIELD_PREDICTION_COMPLETE',
+                'primary_positive_both=',r['independent_geographic_predictive_gain_both_backgrounds'])
+          PY
+      - name: Archive full site-level actual acoustic holdouts, source comparison CI, and nonidentifiability limits
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-G5-field4248-source256-observation-link-audited
+          path: paper/research/results/G5_source_link_20261106/audited/
+          retention-days: 30
+          if-no-files-found: warn
