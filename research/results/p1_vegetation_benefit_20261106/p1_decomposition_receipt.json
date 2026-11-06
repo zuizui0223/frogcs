@@ -1,0 +1,36 @@
+{
+  "status": "POSTHOC_P1_COMPLETE_FACTORIAL_DECOMPOSITION_VERIFIED",
+  "source_commit": "053add0cc445975f26a6a0f61445a98810d177f2",
+  "new_biological_simulations": 0,
+  "source_backgrounds": 256,
+  "timing_conditions": 4,
+  "intervention_arms": 4,
+  "original_scenarios": 4096,
+  "original_vertices": 32768,
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261126,
+  "bootstrap_indices_sha256": "4c92b667e43d748b12f79c4ce4c2127877834b3e09fb8a5ff0012699230acf8c",
+  "bootstrap_columns": 32,
+  "complete_contrasts": 32,
+  "source_input_sha256": {
+    "research/results/submission_frozen_sources_20261106/P1/P1_original4096_isolated_timing_duration_80year.csv.gz": "24d7250b023ab9cd826490d4401074a571a1384ce49b61e4e814d86b04046227",
+    "research/results/submission_frozen_sources_20261106/P1/P1_original32768_vegetation_predator_corners.csv.gz": "b716b60506e740830c687b5e3da8b5b6c20cfd96911243af9da10ac7842c6147",
+    "research/results/submission_frozen_sources_20261106/P1/P1_within_timing_paired_vegetation_effects.csv": "9004bce33100aa550d82b5069ada3f93e5e7c0afc6efa8e525c2afd18bbadd10"
+  },
+  "analysis_code_sha256": "ef7695dbfbd424d547b245517c1c4cfe12286a1f0aaa71344fd5825981fdbf2e",
+  "decomposition_max_abs_error": 2.220446049250313e-16,
+  "original_P1_mean_max_abs_error": 8.326672684688674e-17,
+  "negative_to_positive": 124,
+  "positive_to_negative": 0,
+  "positive_shift": 246,
+  "negative_shift": 10,
+  "inference": "Post-hoc algebraic explanation; pointwise source-bootstrap intervals; no field inference",
+  "g7_decision_changed": false,
+  "outcome_based_exclusions": 0,
+  "response_reconstruction_max_abs_errors": {
+    "mean_log_F_B": 8.881784197001252e-16,
+    "mean_F_B": 1.7763568394002505e-15
+  },
+  "vegetation_zero_max_arm_difference": 0.0,
+  "minimum_F_B": 0.2504237698387458
+}

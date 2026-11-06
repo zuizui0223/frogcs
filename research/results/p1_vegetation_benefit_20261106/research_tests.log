@@ -1,0 +1,11 @@
+............................................................................................................................................./home/agent/.local/lib/python3.12/site-packages/rasterio/transform.py:178: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  return Affine.translation(west, north) * Affine.scale(xsize, -ysize)
+./workspace/scratch/d0f05e4c5c8c/frogcs/research/scripts/test_prior_water_context.py:17: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  right=circle_sums(data[:,2:],transform*Affine.translation(2,0),0,0,3000)
+.........Verified snapshot files: 1
+.Verified snapshot files: 1
+..............................................
+----------------------------------------------------------------------
+Ran 198 tests in 22.226s
+
+OK
