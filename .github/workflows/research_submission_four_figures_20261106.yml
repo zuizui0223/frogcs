@@ -1,0 +1,91 @@
+name: Frogcs four main submission figures source-only verified composite
+
+on:
+  pull_request:
+    branches:
+      - research/isolated-ontogeny-timing-duration-20261105
+    paths:
+      - .github/workflows/research_submission_four_figures_20261106.yml
+      - research/scripts/assemble_R1_R4_submission_figures_20261105.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-audited-9-panel-four-figure-assembly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image layout only (no model estimation)
+        run: python -m pip install 'pillow>=10,<13'
+      - name: Download original immutable Figure1 actual field data plots
+        run: |
+          mkdir -p paper/research/results/four_submission_figures_20261106/input/fig1
+          gh run download 41317178174 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-PR160-figure1-figure3-real-field-and-model-verified \
+            --dir paper/research/results/four_submission_figures_20261106/input/fig1
+      - name: Download independent PR161 original plant mechanism and predator hazard plots
+        run: |
+          mkdir -p paper/research/results/four_submission_figures_20261106/input/plant
+          gh run download 41408471121 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-newseed-independent-2x2-genuine80y-canonical-audited \
+            --dir paper/research/results/four_submission_figures_20261106/input/plant
+      - name: Download independently audited 256-model pure salamander arrival and duration plots
+        run: |
+          mkdir -p paper/research/results/four_submission_figures_20261106/input/p1
+          gh run download 41988533772 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-P1-arrival-duration-256-source-two-figures \
+            --dir paper/research/results/four_submission_figures_20261106/input/p1
+      - name: Download full genuine 80-year stochastic population R4 original plots
+        run: |
+          mkdir -p paper/research/results/four_submission_figures_20261106/input/r4
+          gh run download 41551412003 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-PR161-R4-same256-independent-reused-source-audit \
+            --dir paper/research/results/four_submission_figures_20261106/input/r4
+      - name: Assemble four print candidate figures from original SHA-locked plots without recomputing science
+        run: |
+          python paper/research/scripts/assemble_R1_R4_submission_figures_20261105.py \
+            --fig1 paper/research/results/four_submission_figures_20261106/input/fig1 \
+            --plant paper/research/results/four_submission_figures_20261106/input/plant \
+            --p1 paper/research/results/four_submission_figures_20261106/input/p1 \
+            --r4 paper/research/results/four_submission_figures_20261106/input/r4 \
+            --output paper/research/results/four_submission_figures_20261106/assembled
+      - name: Require exactly four source-verified model/observation composites and nine archived numeric panels
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path("paper/research/results/four_submission_figures_20261106/assembled")
+          r=json.loads((p/"R1_R4_submitted_figure_source_receipt.json").read_text())
+          assert r["status"]=="R1_R4_FOUR_SUBMISSION_FIGURES_SOURCE_ONLY_ASSEMBLY_PASS"
+          assert r["original_figure_count"]==4
+          assert r["panel_count"]==9
+          assert len(r["main_figures"])==4 and len(r["source_panels"])==9
+          assert r["input_original_numeric_panels_preserved_without_data_recomputation"]
+          for f in r["main_figures"]:
+              file=p/f["filename"]
+              assert file.stat().st_size>100000
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==f["sha256"]
+          assert all(len(x["original_sha256"])==64 for x in r["source_panels"])
+          assert not r["observational_and_simulation_inference_distinct"] is False
+          print("FROGCS_EL_FOUR_FIGURES_NINE_SOURCE_PANELS_SHA256_AUDITED_SUCCESS")
+          PY
+      - name: Preserve four quantitative main figures and all original source SHA256 audit records
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-EL-four-main-source-backed-figures-20261106
+          path: paper/research/results/four_submission_figures_20261106/assembled/
+          retention-days: 30
+          if-no-files-found: warn
