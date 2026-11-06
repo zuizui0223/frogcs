@@ -1,0 +1,173 @@
+{
+  "status": "P1_G6_EDITORIAL_INTEGRATION_LOCAL_QA_PASS",
+  "date": "2026-11-06",
+  "source_heads": {
+    "PR165": "ac53197127bb1196589b09f1d49038fad66f8dc5",
+    "PR166": "e963b2bf8f8522117f7ac1cf6c10389f1766fbb2",
+    "PR167": "c6756ed18ca44dd43b9eec5d5d92b6a4f8f4d7a0"
+  },
+  "input_archive_sha256": {
+    "PR165_44_claim_QA_artifact_13480184326": "539089cd34204847b95ed75baf640918bd31bd2759606b4ca5252de6423f9141",
+    "four_figures_artifact_13479644364": "45a64e6fbf176870f127b99053d7d802b8073d98fd2c35c7686b83443ecf1d31"
+  },
+  "structural_checks": {
+    "abstract_max150_for_Ecology_Letters": true,
+    "main_text_3000_to_5000_words": true,
+    "one_each_main_figure": true,
+    "three_model_response_sections": true,
+    "no_wild_causal_identification": true,
+    "exploratory_regime_labeled": true,
+    "mean_of_hazard_shares_distinction": true,
+    "external_immigration_on_in_main": true,
+    "supplement_all_nine_methods": true,
+    "conditional_acoustic_denominator_declared": true,
+    "source_model_priors_not_field_posteriors": true,
+    "source_main_and_SI_crosslinked": true,
+    "P1_main_section_bodies_unchanged_from_PR165": true,
+    "SI_S8_S9_unchanged_from_PR165": true,
+    "G6_S3d_and_S3e_present": true,
+    "V_specific_rank_statement_cites_S3e": true
+  },
+  "abstract_words": 137,
+  "main_file_words": 4866,
+  "si_file_words": 5929,
+  "EL_abstract_matches_main_exactly": true,
+  "GEB_abstract_words_including_headings": 264,
+  "relative_link_occurrences_checked": 62,
+  "missing_relative_links": [],
+  "document_sha256": {
+    "editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md": "6030122f3892492269cd12f2f50750bc10d8f6a681bd510cb0428d74c2e441ce",
+    "editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md": "ba3f7830b18a014a65183b19a3237cc290001f2eb2513b8acaf0ef1c0220bb6e",
+    "editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md": "ce29c90f7a9ffe5bcd2e39caca8c29c8e2e077dce8d62e17cb53198bba110d4a",
+    "editorial/FOUR_FIGURE_SOURCE_ASSEMBLY_RECORD_2026-11-06.md": "735e16e896b59e42d759d81c286c7582d2c75693fda61ebd88b704b46736bb23",
+    "editorial/JOURNAL_SPECIFIC_ABSTRACTS_AND_FRAMING_2026-11-06.md": "cbbfc669271ce3844a8838bf4539b1e17e9904ba94ac3c03262cee38b91fb6da",
+    "editorial/SUBMISSION_STRATEGY_SIGNATURE_VS_DEMOGRAPHY_2026-11-06.md": "eb956fa0514864eedec053af32383db1ea64159e48842bc76b12c211394e3768",
+    "editorial/P1_G6_INTEGRATION_RECORD_2026-11-06.md": "c1a038e0812c0cb4cc31edd01958ad3fa2956c15ec61ef62ac775d242c1adae1"
+  },
+  "main_figure_count": 4,
+  "supplementary_figure_count": 1,
+  "four_original_figure_hashes_verified": [
+    {
+      "filename": "Figure1_Observed_ThirdGuild_AcousticAssociation.png",
+      "width": 3000,
+      "height": 2636,
+      "sha256": "69901620694cfa5ffb9d05a14a1505e592466eb924a810bbe1afd02450b817ad",
+      "panels": 2
+    },
+    {
+      "filename": "Figure2_InteractionSignature_VsFrogAbundance.png",
+      "width": 3000,
+      "height": 2605,
+      "sha256": "4af159f48178506b69e68f9220b90b0113f05444d1032f33917c304cc4d8a563",
+      "panels": 2
+    },
+    {
+      "filename": "Figure3_Arrival_Duration_P1_PureMechanism.png",
+      "width": 3000,
+      "height": 2693,
+      "sha256": "3f1967b7696d1fd3b4d845225adfc956ef87ba03842c7baf7d6c2ed1ccef6c5f",
+      "panels": 2
+    },
+    {
+      "filename": "Figure4_GenuineFinitePopulation_R4.png",
+      "width": 3000,
+      "height": 3629,
+      "sha256": "3f70cf3225a90217fc8faab9cf4c15a5dbca87ff3a825efe14fb6cff821c5cc6",
+      "panels": 3
+    }
+  ],
+  "archived_PR165_claims": {
+    "count": 44,
+    "all_match_current_auditor_targets": true,
+    "archived_files_preserved_exactly": true,
+    "original_run_id": 42169682353,
+    "new_full_six_archive_recomputation_in_this_local_check": false
+  },
+  "regression_suite": {
+    "passed": 177,
+    "elapsed_seconds": 21.002,
+    "command": "PYTHONPATH=/workspace/scratch/13a79f151ba6/g5_bridge_source:research/scripts OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest discover -s research/scripts -p test_*.py -v",
+    "log": "verification/research_regression_177.log",
+    "log_sha256": "a5dfd266d804259995ffe00ae4bc8cc9dc0c8b885947a40bea17343f99477806"
+  },
+  "G6_replay": {
+    "all_eight_tables_pass": true,
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "model_refits": 0,
+    "original_R1_points_reproduced": true,
+    "original_G4_gate_passed": false,
+    "original_G5_gate_passed": false,
+    "independent_new_validation": false,
+    "analysis_and_bundled_results_unchanged_from_PR167": true,
+    "table_checks": [
+      {
+        "file": "G6_R1_observed_and_heldout_rank_contrasts.csv",
+        "rows": 42,
+        "source_sha256": "2f4736b23d161b997ee9e6bff16a6cb7fdd1932e8332f45506bb1bab4cf090a6",
+        "replay_sha256": "2f4736b23d161b997ee9e6bff16a6cb7fdd1932e8332f45506bb1bab4cf090a6",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_context_gains.csv",
+        "rows": 216,
+        "source_sha256": "63750131c8f90fdeb235e045c5c72712252cb16938fa35663d2eaa7bd8591a28",
+        "replay_sha256": "63750131c8f90fdeb235e045c5c72712252cb16938fa35663d2eaa7bd8591a28",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_context_heterogeneity.csv",
+        "rows": 8,
+        "source_sha256": "9092b5b46fe0918962029d19b0ac9489b4c54896371fde2bdc6a6de4a7699a9d",
+        "replay_sha256": "9092b5b46fe0918962029d19b0ac9489b4c54896371fde2bdc6a6de4a7699a9d",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_context_scores.csv",
+        "rows": 324,
+        "source_sha256": "15b1a23e0642f05d2379d7a4daca7208a8fb6c4beb914303739a1b8be73bf449",
+        "replay_sha256": "15b1a23e0642f05d2379d7a4daca7208a8fb6c4beb914303739a1b8be73bf449",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_context_support.csv",
+        "rows": 54,
+        "source_sha256": "f879c172d18160780ec05582a2270438fe19c8fda9aacdd7eecb7c7cb44d7805",
+        "replay_sha256": "f879c172d18160780ec05582a2270438fe19c8fda9aacdd7eecb7c7cb44d7805",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_original_G5_score_replay.csv",
+        "rows": 12,
+        "source_sha256": "8922e06904d39b80bd72a078f62aa3b86ba2ec231451df08a2c7a17fa11eaeae",
+        "replay_sha256": "8922e06904d39b80bd72a078f62aa3b86ba2ec231451df08a2c7a17fa11eaeae",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_original_predictor_tertile_boundaries.csv",
+        "rows": 4,
+        "source_sha256": "657a01cc8ef338776be72a9ff8365a7644075181a43f628a6057e79d4666d4c8",
+        "replay_sha256": "657a01cc8ef338776be72a9ff8365a7644075181a43f628a6057e79d4666d4c8",
+        "dataframe_equal_at_declared_tolerance": true
+      },
+      {
+        "file": "G6_source_site_context_manifest.csv.gz",
+        "rows": 8496,
+        "source_sha256": "e37f31212f84f62a91244e70616fafce97c1e4705d7f29caf2ed590908e5b0bd",
+        "replay_sha256": "e37f31212f84f62a91244e70616fafce97c1e4705d7f29caf2ed590908e5b0bd",
+        "dataframe_equal_at_declared_tolerance": true
+      }
+    ],
+    "log": "verification/G6_eight_table_replay.log",
+    "log_sha256": "806924229975e475923a03c29d666d4946a13336446544e5606f7f5771205412"
+  },
+  "workflow_yaml_and_embedded_python_valid": true,
+  "independent_scientific_review": {
+    "scope": "Main, SI, cover letter, journal abstracts, strategy, figure record, four main PNGs and G6 S1",
+    "outstanding_material_issues": 0,
+    "corrected_issue": "V-specific rank contrast now cites Supplementary Table S3e instead of pooled Figure S1; correction independently rechecked."
+  },
+  "remote_CI_status_at_this_prepublication_receipt": "not yet run; PR will report actual result",
+  "wild_predator_mechanism_identified": false,
+  "manuscript_submitted": false
+}

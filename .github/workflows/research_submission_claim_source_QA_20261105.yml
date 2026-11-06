@@ -3,12 +3,14 @@ name: Frogcs R1 to R4 concise manuscript and Supplement source claim QA
 on:
   pull_request:
     branches:
-      - research/confirmatory-paired-vegetation-2x2-20261102
+      - research/isolated-ontogeny-timing-duration-20261105
+      - research/g6-vegetation-source-diagnostic-20261106
     paths:
       - .github/workflows/research_submission_claim_source_QA_20261105.yml
       - research/scripts/audit_submission_claims_20261105.py
       - editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md
       - editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md
+      - editorial/SUBMISSION_STRATEGY_SIGNATURE_VS_DEMOGRAPHY_2026-11-06.md
   workflow_dispatch:
 
 permissions:
@@ -61,7 +63,13 @@ jobs:
           gh run download 41921634037 --repo "$GITHUB_REPOSITORY" \
             --name frogcs-G2B-original4248-two-part-acoustic-56block-verified \
             --dir paper/research/results/submission_source_QA_20261105/input/G2B
-      - name: Recompute main headline values from five separately frozen authoritative sources
+      - name: Retrieve original P1 controlled arrival-by-duration numerical source and 2048 old model replay
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/P1
+          gh run download 41987600437 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-P1-256-source-arrival-duration-audit-reused-original80 \
+            --dir paper/research/results/submission_source_QA_20261105/input/P1
+      - name: Recompute main headline values from six separately frozen authoritative sources
         run: |
           python -u paper/research/scripts/audit_submission_claims_20261105.py \
             --r2 paper/research/results/submission_source_QA_20261105/input/R2 \
@@ -69,14 +77,45 @@ jobs:
             --r4 paper/research/results/submission_source_QA_20261105/input/R4 \
             --g2 paper/research/results/submission_source_QA_20261105/input/G2 \
             --g2b paper/research/results/submission_source_QA_20261105/input/G2B \
+            --p1 paper/research/results/submission_source_QA_20261105/input/P1 \
             --main paper/editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
             --si paper/editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
             --out paper/research/results/submission_source_QA_20261105/audited
+      - name: Replay G6 from the unchanged archived predictions and verify every saved table
+        run: |
+          python -u paper/research/scripts/run_g6_observation_context_diagnostic.py \
+            --sites paper/research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz \
+            --g4-dir paper/research/results/g6_observation_context_20261106/source \
+            --g5-dir paper/research/results/g6_observation_context_20261106/source \
+            --out paper/research/results/submission_source_QA_20261105/g6_replay
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import pandas as pd
+          original = Path("paper/research/results/g6_observation_context_20261106")
+          replay = Path("paper/research/results/submission_source_QA_20261105/g6_replay")
+          tables = sorted(original.glob("*.csv*"))
+          assert len(tables) == 8
+          for source in tables:
+              pd.testing.assert_frame_equal(
+                  pd.read_csv(source), pd.read_csv(replay / source.name),
+                  check_exact=False, rtol=1e-12, atol=1e-14,
+              )
+          receipt = json.loads((replay / "G6_source_and_replay_receipt.json").read_text())
+          assert receipt["model_refits"] == 0
+          assert receipt["original_R1_points_reproduced"]
+          assert receipt["original_G4_all_corner_gate_passed"] is False
+          assert receipt["original_G5_two_background_primary_gate_passed"] is False
+          assert receipt["independent_new_validation"] is False
+          print("G6_BUNDLED_SOURCE_EIGHT_TABLE_REPLAY_PASS_NO_REFITTING")
+          PY
       - name: Preserve source numerators denominators manuscript structure and original record SHA checks
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: frogcs-R1-R4-concise-main-SI-original-source-claim-QA
-          path: paper/research/results/submission_source_QA_20261105/audited/
+          path: |
+            paper/research/results/submission_source_QA_20261105/audited/
+            paper/research/results/submission_source_QA_20261105/g6_replay/
           retention-days: 30
           if-no-files-found: warn
