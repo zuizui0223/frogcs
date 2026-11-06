@@ -168,7 +168,7 @@ Crucially, **late/short (LS)** and **early/long (EL)** were not new counterfactu
 |---|---|---|
 | Earlier salamander arrival, averaging both durations | **+0.2454 [+0.1967, +0.2976]** | **−6.25 [−10.74, −1.95]** |
 | Longer aquatic salamander stage, averaging both arrivals | **+0.0574 [+0.0438, +0.0714]** | **−4.69 [−7.23, −2.15]** |
-| Early-arrival × long-stage interaction | **+0.1138 [+0.0880, +0.1409]** | Source-audited in full model table; do not infer its sign from separate main effects |
+| Early-arrival × long-stage interaction | **+0.1138 [+0.0880, +0.1409]** | −4.69 [−10.16, +0.39] (interval includes zero) |
 
 The source result is more nuanced than a universal natural priority benefit. Under the same model, earlier salamander arrival made a negative vegetation effect on frog abundance *less negative*, but an unambiguously positive effect emerged only with **early arrival and prolonged aquatic duration together**. Meanwhile, the increase in compatibility of the four idealized signs was smallest under that condition. This provides a controlled **counterexample to equating signature generation with focal-population benefit**, while leaving both mechanisms' true occurrence and magnitude in observed North American ponds unknown.
 
