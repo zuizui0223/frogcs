@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "repository": "zuizui0223/frogcs",
+  "draft_pr_url": "https://github.com/zuizui0223/frogcs/pull/169",
+  "publication_date_jst": "2026-11-06",
+  "transport": "Connected GitHub Git Data API; shell git push had no GitHub credentials",
+  "original_history": {
+    "bundle": "research/provenance/g7_local_freeze_history_20261106.bundle",
+    "bytes": 1608818,
+    "sha256": "793d81f9e9697fc6d6b137156666fb45ca9083f3f9d3318081bcc7a19bb81cf1",
+    "required_commit": "4e9884d8d18702428fa7ef87d3dba3a8722288f6",
+    "source_head": "fed98fae5746ee29d5f9287d1264809c7d5284fd",
+    "source_checkout_shallow_boundary": "e6a1a7b1",
+    "restoration_verified": true,
+    "six_raw_commit_objects_byte_identical": true,
+    "isolated_bundle_verify_exit_code": 0,
+    "isolated_fsck_exit_code": 0
+  },
+  "publication": {
+    "base_branch": "editorial/p1-g6-review-package-20261106",
+    "head_branch": "research/g7-developmental-trait-bridge-20261106",
+    "head_before_provenance_record": "31007c63d55a48269a2476f7954752685b88fde5",
+    "all_six_tree_hashes_identical": true,
+    "published_unique_blobs": 58,
+    "all_blob_hashes_identical": true
+  },
+  "qualification": "The original local Git order and timestamps are preserved exactly. API publication commits have new IDs and publication timestamps. This is not an independently timestamped public preregistration. The later provenance/publication commit adds the archive, mapping and publication metadata; it is separate from the six identical content trees.",
+  "commits": [
+    {
+      "source_commit": "b12b0823f7101b70e16a9c21e481c0b6ea7be2e4",
+      "source_tree": "94ab9fdbded7c5934a8125cbb17371c3803f19a7",
+      "source_parents": [
+        "4e9884d8d18702428fa7ef87d3dba3a8722288f6"
+      ],
+      "published_commit": "a67f077b8d6375680e8f0250a09f2d0cc4f884dd",
+      "published_parent": "4e9884d8d18702428fa7ef87d3dba3a8722288f6",
+      "published_tree": "94ab9fdbded7c5934a8125cbb17371c3803f19a7",
+      "tree_identical": true,
+      "source_header": "tree 94ab9fdbded7c5934a8125cbb17371c3803f19a7\nparent 4e9884d8d18702428fa7ef87d3dba3a8722288f6\nauthor Codex <codex@openai.com> 1793955536 +0900\ncommitter Codex <codex@openai.com> 1793965163 +0900",
+      "source_message": "editorial: verify primary references and actual data-model provenance\n"
+    },
+    {
+      "source_commit": "21fda6b3f8155a0eb8583fd0f70ef43a36874c0e",
+      "source_tree": "163c51d55ec5e0c1b2fc15d42dcc95d84ac6a875",
+      "source_parents": [
+        "b12b0823f7101b70e16a9c21e481c0b6ea7be2e4"
+      ],
+      "published_commit": "706063c6ecfd76513ee73b5979736149f4045acf",
+      "published_parent": "a67f077b8d6375680e8f0250a09f2d0cc4f884dd",
+      "published_tree": "163c51d55ec5e0c1b2fc15d42dcc95d84ac6a875",
+      "tree_identical": true,
+      "source_header": "tree 163c51d55ec5e0c1b2fc15d42dcc95d84ac6a875\nparent b12b0823f7101b70e16a9c21e481c0b6ea7be2e4\nauthor Codex <codex@openai.com> 1793965396 +0900\ncommitter Codex <codex@openai.com> 1793965396 +0900",
+      "source_message": "research: freeze literature-qualified G7 species-group vegetation test before outcomes\n"
+    },
+    {
+      "source_commit": "be77b4c4321eeaa2e29c680cac8ed201fa9dc673",
+      "source_tree": "7ab02e3dea70823fc83d00d712b00483d7bf87f6",
+      "source_parents": [
+        "21fda6b3f8155a0eb8583fd0f70ef43a36874c0e"
+      ],
+      "published_commit": "5ec0d7b703ca30fc85ff61944f20c906ee16ed68",
+      "published_parent": "706063c6ecfd76513ee73b5979736149f4045acf",
+      "published_tree": "7ab02e3dea70823fc83d00d712b00483d7bf87f6",
+      "tree_identical": true,
+      "source_header": "tree 7ab02e3dea70823fc83d00d712b00483d7bf87f6\nparent 21fda6b3f8155a0eb8583fd0f70ef43a36874c0e\nauthor Codex <codex@openai.com> 1793965890 +0900\ncommitter Codex <codex@openai.com> 1793965890 +0900",
+      "source_message": "research: implement and verify frozen G7 before empirical fits\n"
+    },
+    {
+      "source_commit": "922eb96f3c1eb1c146cd2c78ec0b54efc8a08133",
+      "source_tree": "0312496ffc3eb8273d6f686cd74adde835e674be",
+      "source_parents": [
+        "be77b4c4321eeaa2e29c680cac8ed201fa9dc673"
+      ],
+      "published_commit": "ef2392931537770c10d5a197f2fb071704b35911",
+      "published_parent": "5ec0d7b703ca30fc85ff61944f20c906ee16ed68",
+      "published_tree": "0312496ffc3eb8273d6f686cd74adde835e674be",
+      "tree_identical": true,
+      "source_header": "tree 0312496ffc3eb8273d6f686cd74adde835e674be\nparent be77b4c4321eeaa2e29c680cac8ed201fa9dc673\nauthor Codex <codex@openai.com> 1793966429 +0900\ncommitter Codex <codex@openai.com> 1793966429 +0900",
+      "source_message": "research: complete fixed G7 and integrate verified results into plain-language manuscript\n"
+    },
+    {
+      "source_commit": "059aab440c6a49513dde758d186c9efcf4150157",
+      "source_tree": "e4850a64a1d1816734e4f04bebeba834fd96e7e9",
+      "source_parents": [
+        "922eb96f3c1eb1c146cd2c78ec0b54efc8a08133"
+      ],
+      "published_commit": "17b50a09a757281526b863f4ac3fadbcd5e02250",
+      "published_parent": "ef2392931537770c10d5a197f2fb071704b35911",
+      "published_tree": "e4850a64a1d1816734e4f04bebeba834fd96e7e9",
+      "tree_identical": true,
+      "source_header": "tree e4850a64a1d1816734e4f04bebeba834fd96e7e9\nparent 922eb96f3c1eb1c146cd2c78ec0b54efc8a08133\nauthor Codex <codex@openai.com> 1793968911 +0900\ncommitter Codex <codex@openai.com> 1793968911 +0900",
+      "source_message": "docs: record authorization and final checks for G7 draft publication\n"
+    },
+    {
+      "source_commit": "fed98fae5746ee29d5f9287d1264809c7d5284fd",
+      "source_tree": "57dc8eda6555530f56adaa1a1e57de787f5fb9f1",
+      "source_parents": [
+        "059aab440c6a49513dde758d186c9efcf4150157"
+      ],
+      "published_commit": "31007c63d55a48269a2476f7954752685b88fde5",
+      "published_parent": "17b50a09a757281526b863f4ac3fadbcd5e02250",
+      "published_tree": "57dc8eda6555530f56adaa1a1e57de787f5fb9f1",
+      "tree_identical": true,
+      "source_header": "tree 57dc8eda6555530f56adaa1a1e57de787f5fb9f1\nparent 059aab440c6a49513dde758d186c9efcf4150157\nauthor Codex <codex@openai.com> 1793969022 +0900\ncommitter Codex <codex@openai.com> 1793969022 +0900",
+      "source_message": "docs: preserve verified public destination and unresolved publication block\n"
+    }
+  ]
+}

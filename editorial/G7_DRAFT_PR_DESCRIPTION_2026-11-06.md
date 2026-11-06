@@ -1,6 +1,6 @@
 # Complete G7 species-group vegetation test and simplify the integrated manuscript
 
-**Prepared Draft review package; external publication remains blocked by automatic approval review.**
+**Published as [Draft PR #169](https://github.com/zuizui0223/frogcs/pull/169).**
 
 Base: `editorial/p1-g6-review-package-20261106`.
 Head: `research/g7-developmental-trait-bridge-20261106`.
@@ -36,4 +36,4 @@ Evidence: [G7 report](../research/G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md), [p
 
 ## Publication status
 
-On 6 November 2026, the user replied `進めて` to the request to send this branch and create a Draft PR. A second push attempt was blocked by automatic approval review, which required end-user-authored approval explicitly covering disclosure of the unpublished research payload. A read-only check verified that `zuizui0223/frogcs` is public and that the new remote branch and Draft PR do not exist. The completed research package and final verification remain saved locally. The remaining action requires an explicit approval naming the public destination and the manuscript, results, protocol and code to be sent.
+The user explicitly authorized publishing the unpublished G7 manuscript, results, fixed protocol and code to the public repository `zuizui0223/frogcs`. Draft PR #169 was created on 6 November 2026. Publication used the connected GitHub app because shell Git lacked credentials. Every one of the six copied content trees and all 58 uploaded blob hashes matched the local originals. The original commit IDs, timestamps and sequence are preserved in the [history archive and restoration guide](../research/provenance/G7_HISTORY_README_2026-11-06.md), with a complete source-to-publication mapping. This preserves local chronology; it is not an external preregistration. The PR remains Draft.
