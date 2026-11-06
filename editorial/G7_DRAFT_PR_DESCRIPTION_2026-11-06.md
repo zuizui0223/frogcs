@@ -1,9 +1,9 @@
 # Complete G7 species-group vegetation test and simplify the integrated manuscript
 
-**Prepared locally; no new PR has been opened.**
+**Draft review package; publication authorized on 6 November 2026.**
 
-Proposed base: `editorial/p1-g6-review-package-20261106`.
-Proposed head: `research/g7-developmental-trait-bridge-20261106`.
+Base: `editorial/p1-g6-review-package-20261106`.
+Head: `research/g7-developmental-trait-bridge-20261106`.
 Keep Draft; do not merge or send a journal submission as part of this action.
 
 ## Why this change
@@ -34,6 +34,6 @@ The positive-association and predictive-improvement criteria were unmet. The sui
 
 Evidence: [G7 report](../research/G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md), [protocol](../research/G7_TRAIT_INFORMED_COMPOSITION_PROTOCOL_2026-11-06.md), [independent validation](../research/results/g7_trait_composition_20261106/G7_independent_validation.json), [editorial validation](../research/results/g7_trait_composition_20261106/G7_editorial_validation.json).
 
-## Publication status
+## Publication scope
 
-The attempted GitHub push was rejected by automatic approval review because explicit authorization to send this unpublished research payload to the remote was not established. All analysis and editorial work has been completed locally. Publication of this prepared branch and creation of its Draft PR await the user's explicit authorization. No journal submission or coauthor approval is claimed.
+The user explicitly authorized sending this completed branch to `zuizui0223/frogcs` and creating a Draft PR on 6 November 2026. This package is ready for review; merging and journal submission are outside this publication action.
