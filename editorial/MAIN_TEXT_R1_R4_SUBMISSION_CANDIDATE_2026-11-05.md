@@ -132,6 +132,8 @@ A third-guild-dependent geographical association in adult frog calling coexists 
 
 ## Evidence, reproducibility and status
 
+The detailed [source-audited Supplementary Methods and numerical evidence](SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md) contains G1/G2/G2B observation sensitivities, 27 synthetic rate cells, the P1 arrival×duration factorial and G3 insufficient egg-stage reporting. No independent natural predator mechanism or larval-to-adult calling observation calibration is claimed.
+
 The [controlled P1 original-source report](../research/P1_PURE_ARRIVAL_DURATION_TRUE80_VERIFIED_RESULT_2026-11-05.md) and [GBIF breeding-stage eligibility failure](../research/G3_GBIF_EGG_STAGE_G0_NOT_QUALIFIED_VERIFIED_2026-11-05.md) distinguish simulated timing interventions from unmeasured phenology.
 
 The [original complete-source manuscript](MACRO_TO_MECHANISM_INTEGRATED_MANUSCRIPT_2026-11-01.md) and [source claim-gate ledger](../research/R1_R4_SUBMISSION_CLAIM_AND_SOURCE_GATES_2026-11-03.md) retain full analyses and failures. The [R1–R4 source evidence ledger](../research/R1_R4_NEWSEED_256_SOURCE_EVIDENCE_LEDGER_2026-11-03.md), [PR161 independent 2×2 test](https://github.com/zuizui0223/frogcs/pull/161), [PR162 genuine 80-year source audit](https://github.com/zuizui0223/frogcs/actions/runs/41551412003), [G1 shared-environment audit](https://github.com/zuizui0223/frogcs/actions/runs/41389390897), and [G2B original acoustic source audit](https://github.com/zuizui0223/frogcs/actions/runs/41921634037) document the numerical endpoints.
