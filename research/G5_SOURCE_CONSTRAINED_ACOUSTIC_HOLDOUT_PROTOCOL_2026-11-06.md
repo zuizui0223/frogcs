@@ -4,7 +4,7 @@
 
 ## Reason / prior result
 
-G4 original-source preflight (Actions #42172357235) recovered all 4,248 NAAMP physical acoustic sites, 63,180 completed visits, 506 vegetation-positive sites, 432 route components and 56 geographic blocks. **15 of 16** low/high O/S × V field cells met the prespecified minimum; the target-group-background V1 / high caudate / high odonate cell had 18 sites, below the 20-site minimum. Hence a universal eight-corner field-sign claim across both backgrounds is **not source-eligible**.
+G4 original-source preflight (Actions #42173236906) recovered all 4,248 NAAMP physical acoustic sites, 63,180 completed visits, 506 vegetation-positive sites, 432 route components and 56 geographic blocks. **15 of 16** low/high O/S × V field cells met the prespecified minimum; the target-group-background V1 / high caudate / high odonate cell had 18 sites, below the 20-site minimum. Hence a universal eight-corner field-sign claim across both backgrounds is **not source-eligible**.
 
 G4 also demonstrated to numerical precision (maximum residual <1e−15) that multilinearly interpolated eight-corner source F_B values fall in the span of saturated empirical `1,O,S,V,OS,OV,SV,OSV`. Therefore adding a mechanistic column to the full interaction regression could only reparameterize the same predictor space under ridge, not identify the underlying trophic process.
 
@@ -13,7 +13,7 @@ G4 also demonstrated to numerical precision (maximum residual <1e−15) that mul
 ## Frozen source inputs
 
 1. Original field: same 4,248 sites / 63,180 completed acoustic visits, both original uniform and target-group SDM backgrounds; original site/visit files from `main` SHA `5e2f0a87c639df373fa2700b29403d2ab417a1cc`.
-2. Source geometry: G4's archived `G4_predirected_source_priors_two_plant_arms.csv` from [Actions #42172357235](https://github.com/zuizui0223/frogcs/actions/runs/42172357235). The source prior averages **all** 256 independently sampled original PR161 model backgrounds × three developmental contexts, regardless of model four-sign acceptance or frog amount, into the eight source log F_B corners of **both** plant mechanisms active (11) and neither plant mechanism active (00); not selected by NAAMP responses.
+2. Source geometry: G4's archived `G4_predirected_source_priors_two_plant_arms.csv` from [Actions #42173236906](https://github.com/zuizui0223/frogcs/actions/runs/42173236906). The source prior averages **all** 256 independently sampled original PR161 model backgrounds × three developmental contexts, regardless of model four-sign acceptance or frog amount, into the eight source log F_B corners of **both** plant mechanisms active (11) and neither plant mechanism active (00); not selected by NAAMP responses.
 3. Original PR145 fixed five geographically held-out folds and train-only binomial penalization ridge=10, source `acoustic_mechanism_cv` SHA `a5ddc281ba17017a52b404a5725327f6e829824f`; and unchanged G1 `design_matrices` from PR162. No spatial fold tuning on held-out calls.
 4. Original O and S *environmental suitability* rank transforms (affine to [0,1]), binary landscape V. Direct source 8-corner logF_B interpolation has no independent dimension beyond the full free factorial; strip its additive components and retain only its fixed O×S/O×V/S×V/O×S×V **interaction geometry**. Source-interaction columns are calculated without using calling outcomes.
 
