@@ -147,21 +147,53 @@ The source PR158 site-map comparison tested 768 finite-N candidate scenarios per
 
 The original **20,000-proposal rate-region selection was retrospective**. The subsequent 256-background plant-factorial calculation used a new independent numerical draw after freezing its synthetic rate and legal-catalogue design, which tests *model generality within those assumptions* rather than independent environmental or wild biological validity. There is no fitted likelihood of the NAAMP field observations over the original synthetic attack, recruitment or vegetation coefficients. The acoustic measurements are observed **adult male calling**, while F_B and per-frog hazard refer to a **simulated aquatic cohort**. Their mismatch is a binding limit, not an unreported nuisance sensitivity.
 
+## Supplementary Methods S8. Decoupling salamander arrival and aquatic-stage duration (P1)
+
+The original three-developmental-context experiment was confounded: salamanders arriving early were assigned longer aquatic exposure as well. After preregistering this problem, we crossed salamander arrival (day 0/40) and aquatic-stage duration (40/60 d) while fixing frog arrival to day 20 and frog aquatic duration to 45 d, and odonate arrival to day 20 and aquatic duration to 60 d. We reused **all 256 independently drawn canonical model backgrounds and their unchanged biological rate vectors**, including unsuccessful four-sign source models, and the original four legal vegetation interventions. The full design produced **4,096 genuine 80-year models and 32,768 original eight-corner biological responses**; 10,000 source-background resamples quantified Monte Carlo variation.
+
+Crucially, **late/short (LS)** and **early/long (EL)** were not new counterfactual claims built from scratch: they were numerically verified copies of the original PR161 contexts 1 and 2. The independent audit reproduced **2,048 original 80-year source models and 16,384 source-corner outcomes** against archived source SHA records to machine numerical precision, including predation hazards and four interaction coefficients. At vegetation absent, all four plant interventions produced the same original biological source output. The only new input combinations were **late/long (LL)** and **early/short (ES)**, isolating arrival from residence duration. The fixed original attack=0.5 and local recruitment fraction=0.75 remain retrospectively chosen synthetic rates and are not inferred from original NAAMP adult calling.
+
+**Table S7. Four developmental combinations and the model-native effect of turning both vegetation functions ON versus neither function.**
+
+| Salamander timing × aquatic duration | Arrival/duration | Δ mean log aquatic frog cohort, 11−00 [source MC95%] | Δ four-sign compatibility, 11−00 [source MC95%] |
+|---|---|---|---|
+| LS: late/short | day40 / 40 d | **−0.1864 [−0.2266, −0.1464]** | +13.28 pp [+8.59, +17.97] |
+| LL: late/long | day40 / 60 d | **−0.1860 [−0.2271, −0.1463]** | +10.94 pp [+6.25, +16.02] |
+| ES: early/short | day0 / 40 d | +0.0021 [−0.0264, +0.0317] | +9.38 pp [+5.47, +13.28] |
+| EL: early/long | day0 / 60 d | **+0.1163 [+0.0787, +0.1560]** | +2.34 pp [+0.78, +4.30] |
+
+**Table S8. Pure arrival, pure duration and their difference-in-differences, moderating the both-minus-neither vegetation response.** These are contrasts between **model inputs**, not coefficients relating natural-pond phenology to calling.
+
+| Moderator | Δ log aquatic F response [MC95%] | Δ four-sign compatibility (percentage points) [MC95%] |
+|---|---|---|
+| Earlier salamander arrival, averaging both durations | **+0.2454 [+0.1967, +0.2976]** | **−6.25 [−10.74, −1.95]** |
+| Longer aquatic salamander stage, averaging both arrivals | **+0.0574 [+0.0438, +0.0714]** | **−4.69 [−7.23, −2.15]** |
+| Early-arrival × long-stage interaction | **+0.1138 [+0.0880, +0.1409]** | −4.69 [−10.16, +0.39] (interval includes zero) |
+
+The source result is more nuanced than a universal natural priority benefit. Under the same model, earlier salamander arrival made a negative vegetation effect on frog abundance *less negative*, but an unambiguously positive effect emerged only with **early arrival and prolonged aquatic duration together**. Meanwhile, the increase in compatibility of the four idealized signs was smallest under that condition. This provides a controlled **counterexample to equating signature generation with focal-population benefit**, while leaving both mechanisms' true occurrence and magnitude in observed North American ponds unknown.
+
+Numerical evidence: [original eight-source 80-year computation #41986676287](https://github.com/zuizui0223/frogcs/actions/runs/41986676287), [unchanged archived source identity replay and 256-cluster independent audit SUCCESS #41987600437](https://github.com/zuizui0223/frogcs/actions/runs/41987600437), and [two independent source-only plotted comparisons SUCCESS #41988533772](https://github.com/zuizui0223/frogcs/actions/runs/41988533772). Full [P1 numerical scientific report](../research/P1_PURE_ARRIVAL_DURATION_TRUE80_VERIFIED_RESULT_2026-11-05.md).
+
+## Supplementary Methods S9. Source-blind field breeding chronology eligibility (G3)
+
+The proposed regional hypothesis that earlier salamander breeding changes the vegetation–adult frog-calling association was **not tested against an invented proxy**. Original 15 NAAMP frog taxa, five *pond-breeding* caudates and two nonpond caudate controls were fixed to original main species keys. GBIF occurrence lifeStage facets for the United States, 2010–2025, passed all 22 API/source requests, but explicit egg-stage records were concentrated in two frog species (2,618 total; two taxa with ≥50 reports) and one pond caudate species (4,255 total; one taxon with ≥50 reports). The preregistered minimum was five frogs and three pond caudates with ≥50 records each. Therefore **G0 was NOT QUALIFIED** and no egg-onset region-year surface, no NAAMP vegetation×salamander-lead field interaction and no independent phenological field validation was performed. Early-season adult sightings are not a valid substitute for breeding onset. [G3 original metadata-only audited result #41976215608](https://github.com/zuizui0223/frogcs/actions/runs/41976215608) and [complete stop-gate report](../research/G3_GBIF_EGG_STAGE_G0_NOT_QUALIFIED_VERIFIED_2026-11-05.md).
+
 ## Supplementary figure inventory and reproducibility
 
-The main three-figure arrangement is a **proposed final composition**; the original individual panels and data sources below were generated and source-audited, but an editor-ready three-composite-layout package has not yet been finalized.
+The four-figure arrangement is a **proposed final submission composition**. The original individual panels were source-audited, but the four final editor-ready composited figure files have not yet been independently audited as one journal-specific package.
 
 | Proposed output | Independently source-backed panels / data | Original run or code |
 |---|---|---|
 | Main Figure 1 | Observed high/low caudate suitability O–frog calling correlations and 3-km vegetation association terms | [Figure 1 source CI](https://github.com/zuizui0223/frogcs/actions/runs/41317178174) |
 | Main Figure 2 | Original 27-cell rate prior; same-background 256-model vegetation 2×2 interaction; per-source predator-hazard share vs mean frog cohort | [27-cell audit](https://github.com/zuizui0223/frogcs/actions/runs/41390511365) and [new-seed 2×2 source CI](https://github.com/zuizui0223/frogcs/actions/runs/41408471121) |
-| Main Figure 3 | Same new-256-background year80 frog occupancy and factorial by q, movement, developmental context | [R4 source audit and three panels](https://github.com/zuizui0223/frogcs/actions/runs/41551412003) |
+| Main Figure 3 | Controlled P1 independent salamander arrival × aquatic duration, four plant states and opposite directions of sign-compatibility and frog cohort response | [P1 source independent audit](https://github.com/zuizui0223/frogcs/actions/runs/41987600437) and [two plotted comparisons](https://github.com/zuizui0223/frogcs/actions/runs/41988533772) |
+| Main Figure 4 | Same new-256-background genuine 80-year finite-N frog occupancy and factorial by q, movement, developmental context | [R4 source audit and three panels](https://github.com/zuizui0223/frogcs/actions/runs/41551412003) |
 | Supplementary G1 | O×S increment under additive vs flexible shared environmental heldout prediction | [G1 source](https://github.com/zuizui0223/frogcs/actions/runs/41389390897) |
 | Supplementary G2 | Adult strong vs any vs conditional strong acoustic geographic contrasts | [G2 source](https://github.com/zuizui0223/frogcs/actions/runs/41562618381) |
 | Supplementary G2B | Two-part adult calling heldout O×S increments and factored vs direct strong score comparison | [G2B models](https://github.com/zuizui0223/frogcs/actions/runs/41921634037) and [figure-only reuse](https://github.com/zuizui0223/frogcs/actions/runs/41922244821) |
 | Supplementary mechanism/field fit | PR160 selected-96 source survival-floor sensitivity; original same-biological-source six-statistic failure; additional q/seed/migration scenarios | [Source audit](https://github.com/zuizui0223/frogcs/actions/runs/41298704170) and [field proxy](https://github.com/zuizui0223/frogcs/actions/runs/41215171866) |
 
-The original files reside in the stacked draft branches PR160→PR161→PR162. The most recent source-backed original analysis manuscript is [here](MACRO_TO_MECHANISM_INTEGRATED_MANUSCRIPT_2026-11-01.md); the concise main text is [here](MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md). PR162 is Draft, no original source biology was modified in this submission splitting task, and neither a manuscript submission nor coauthor approval is implied.
+The original files reside in the stacked draft branches PR160→PR161→PR162→PR163→PR164. The most recent source-backed original analysis manuscript is [here](MACRO_TO_MECHANISM_INTEGRATED_MANUSCRIPT_2026-11-01.md); the concise main text is [here](MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md). PR164 and preceding stacked PRs are Draft; this submission reframing did not modify original main-model biological kernels. Neither submission nor coauthor approval is implied.
 
 ## Bibliography, data permissions and open science gates (incomplete)
 
@@ -169,4 +201,4 @@ The original files reside in the stacked draft branches PR160→PR161→PR162. T
 
 **Data availability and permissions not yet approved.** Verify NAAMP source redistribution terms and whether site-level/geographic records may be deposited; verify GBIF-derived occurrence DOIs and original survey protocols. Only promise a specific archive or DOI after it is actually deposited. If raw files are restricted, specify a compliant script/data-access route rather than uploading source bytes without permission.
 
-**Author and submission decisions still pending.** Three final composited figure files, original site-map graphic permission review, code archive version, author contributions/approval, journal-specific structure and a completed reference list. More synthetic sampling without new biological constraints would not resolve the missing field trophic/observation calibration.
+**Author and submission decisions still pending.** Four final composited figure files, original site-map graphic permission review, code archive version, author contributions/approval, journal-specific structure and a completed reference list. More synthetic sampling without new biological constraints would not resolve the missing field trophic/observation calibration.

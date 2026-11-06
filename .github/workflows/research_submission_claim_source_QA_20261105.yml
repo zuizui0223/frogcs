@@ -3,12 +3,13 @@ name: Frogcs R1 to R4 concise manuscript and Supplement source claim QA
 on:
   pull_request:
     branches:
-      - research/confirmatory-paired-vegetation-2x2-20261102
+      - research/isolated-ontogeny-timing-duration-20261105
     paths:
       - .github/workflows/research_submission_claim_source_QA_20261105.yml
       - research/scripts/audit_submission_claims_20261105.py
       - editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md
       - editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md
+      - editorial/SUBMISSION_STRATEGY_SIGNATURE_VS_DEMOGRAPHY_2026-11-06.md
   workflow_dispatch:
 
 permissions:
@@ -61,7 +62,13 @@ jobs:
           gh run download 41921634037 --repo "$GITHUB_REPOSITORY" \
             --name frogcs-G2B-original4248-two-part-acoustic-56block-verified \
             --dir paper/research/results/submission_source_QA_20261105/input/G2B
-      - name: Recompute main headline values from five separately frozen authoritative sources
+      - name: Retrieve original P1 controlled arrival-by-duration numerical source and 2048 old model replay
+        run: |
+          mkdir -p paper/research/results/submission_source_QA_20261105/input/P1
+          gh run download 41987600437 --repo "$GITHUB_REPOSITORY" \
+            --name frogcs-P1-256-source-arrival-duration-audit-reused-original80 \
+            --dir paper/research/results/submission_source_QA_20261105/input/P1
+      - name: Recompute main headline values from six separately frozen authoritative sources
         run: |
           python -u paper/research/scripts/audit_submission_claims_20261105.py \
             --r2 paper/research/results/submission_source_QA_20261105/input/R2 \
@@ -69,6 +76,7 @@ jobs:
             --r4 paper/research/results/submission_source_QA_20261105/input/R4 \
             --g2 paper/research/results/submission_source_QA_20261105/input/G2 \
             --g2b paper/research/results/submission_source_QA_20261105/input/G2B \
+            --p1 paper/research/results/submission_source_QA_20261105/input/P1 \
             --main paper/editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
             --si paper/editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
             --out paper/research/results/submission_source_QA_20261105/audited
