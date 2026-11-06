@@ -1,6 +1,6 @@
 # Complete G7 species-group vegetation test and simplify the integrated manuscript
 
-**Draft review package; publication authorized on 6 November 2026.**
+**Prepared Draft review package; external publication remains blocked by automatic approval review.**
 
 Base: `editorial/p1-g6-review-package-20261106`.
 Head: `research/g7-developmental-trait-bridge-20261106`.
@@ -34,6 +34,6 @@ The positive-association and predictive-improvement criteria were unmet. The sui
 
 Evidence: [G7 report](../research/G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md), [protocol](../research/G7_TRAIT_INFORMED_COMPOSITION_PROTOCOL_2026-11-06.md), [independent validation](../research/results/g7_trait_composition_20261106/G7_independent_validation.json), [editorial validation](../research/results/g7_trait_composition_20261106/G7_editorial_validation.json).
 
-## Publication scope
+## Publication status
 
-The user explicitly authorized sending this completed branch to `zuizui0223/frogcs` and creating a Draft PR on 6 November 2026. This package is ready for review; merging and journal submission are outside this publication action.
+On 6 November 2026, the user replied `進めて` to the request to send this branch and create a Draft PR. A second push attempt was blocked by automatic approval review, which required end-user-authored approval explicitly covering disclosure of the unpublished research payload. A read-only check verified that `zuizui0223/frogcs` is public and that the new remote branch and Draft PR do not exist. The completed research package and final verification remain saved locally. The remaining action requires an explicit approval naming the public destination and the manuscript, results, protocol and code to be sent.

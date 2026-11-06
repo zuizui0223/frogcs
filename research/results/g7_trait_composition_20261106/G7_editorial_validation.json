@@ -27,7 +27,7 @@
   },
   "new_G7_behavioral_tests": 15,
   "figure_visual_review": "G7 PNG visually inspected after note-spacing correction; estimates and units match source tables",
-  "publication": "User explicitly authorized sending the completed branch to zuizui0223/frogcs and creating a Draft PR on 6 November 2026.",
+  "publication": "Local only. A second push attempt was blocked by automatic approval review; read-only verification found no new remote branch or Draft PR.",
   "pre_publication_verification": {
     "date_jst": "2026-11-06",
     "tested_research_commit": "922eb96f3c1eb1c146cd2c78ec0b54efc8a08133",
@@ -39,5 +39,15 @@
     "head": "research/g7-developmental-trait-bridge-20261106",
     "base": "editorial/p1-g6-review-package-20261106",
     "draft": true
+  },
+  "publication_blocker": {
+    "date_jst": "2026-11-06",
+    "user_reply": "進めて",
+    "automatic_review_reason": "End-user-authored approval explicitly covering disclosure of the unpublished research payload was not established.",
+    "verified_destination": "zuizui0223/frogcs",
+    "verified_destination_visibility": "public",
+    "remote_branch_present": false,
+    "draft_pr_created": false,
+    "required_input": "Explicit approval to send the completed unpublished manuscript, results, protocol and code to the public repository and create its Draft PR."
   }
 }
