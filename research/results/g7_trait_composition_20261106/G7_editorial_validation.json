@@ -1,0 +1,72 @@
+{
+  "base_commit": "be77b4c4",
+  "checks": {
+    "P1_main_methods_results_unchanged": true,
+    "P1_SI_S8_unchanged": true,
+    "P1_SI_S9_unchanged": true,
+    "abstract_versions_identical": true,
+    "abstract_opaque_phrase_removed": true,
+    "main_words_at_most5000": true,
+    "abstract_words_at_most150": true,
+    "unchanged_Figure1_Observed_ThirdGuild_AcousticAssociation.png": true,
+    "unchanged_Figure2_InteractionSignature_VsFrogAbundance.png": true,
+    "unchanged_Figure3_Arrival_Duration_P1_PureMechanism.png": true,
+    "unchanged_Figure4_GenuineFinitePopulation_R4.png": true,
+    "all_relative_links_resolve": true
+  },
+  "relative_links_checked": 117,
+  "broken_links": [],
+  "main_words": 4981,
+  "abstract_words": 133,
+  "supplement_words": 7567,
+  "research_tests": {
+    "tests": 192,
+    "seconds": 24.118,
+    "failures": 0,
+    "warnings": "Existing PendingDeprecationWarning in rasterio.transform and test_prior_water_context"
+  },
+  "new_G7_behavioral_tests": 15,
+  "figure_visual_review": "G7 PNG visually inspected after note-spacing correction; estimates and units match source tables",
+  "publication": "Published as Draft PR #169: https://github.com/zuizui0223/frogcs/pull/169",
+  "pre_publication_verification": {
+    "date_jst": "2026-11-06",
+    "tested_research_commit": "922eb96f3c1eb1c146cd2c78ec0b54efc8a08133",
+    "research_tests": 192,
+    "seconds": 22.773,
+    "failures": 0,
+    "research_code_and_results_changed_since_test": false,
+    "publication_target": "zuizui0223/frogcs",
+    "head": "research/g7-developmental-trait-bridge-20261106",
+    "base": "editorial/p1-g6-review-package-20261106",
+    "draft": true
+  },
+  "previous_publication_blocker": {
+    "date_jst": "2026-11-06",
+    "user_reply": "進めて",
+    "automatic_review_reason": "End-user-authored approval explicitly covering disclosure of the unpublished research payload was not established.",
+    "verified_destination": "zuizui0223/frogcs",
+    "verified_destination_visibility": "public",
+    "remote_branch_present": false,
+    "draft_pr_created": false,
+    "required_input": "Explicit approval to send the completed unpublished manuscript, results, protocol and code to the public repository and create its Draft PR.",
+    "resolved": true,
+    "resolution": "The user explicitly authorized sending the unpublished G7 manuscript, results, protocol and code to the public repository and creating its Draft PR."
+  },
+  "publication_provenance": {
+    "date_jst": "2026-11-06",
+    "repository": "zuizui0223/frogcs",
+    "visibility": "public",
+    "pr_number": 169,
+    "pr_url": "https://github.com/zuizui0223/frogcs/pull/169",
+    "draft": true,
+    "transport": "Connected GitHub Git Data API",
+    "source_head": "fed98fae5746ee29d5f9287d1264809c7d5284fd",
+    "published_head_before_provenance_record": "31007c63d55a48269a2476f7954752685b88fde5",
+    "all_six_original_content_trees_identical": true,
+    "all_58_uploaded_blobs_identical": true,
+    "original_history_bundle": "research/provenance/g7_local_freeze_history_20261106.bundle",
+    "commit_mapping": "research/provenance/G7_PUBLICATION_COMMIT_MAP_2026-11-06.json",
+    "independent_bundle_restoration_passed": true,
+    "research_code_protocol_results_figures_and_manuscript_unchanged": true
+  }
+}

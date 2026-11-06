@@ -29,4 +29,4 @@ The four original composite PNGs were retrieved from artifact `13479644364` of r
 
 The four main review copies were visually inspected for labels, legends, intervals and panel completeness. Their typography and publication-size reproduction remain subject to final author and journal production review. Figure 2 contains the paired vegetation experiment and the hazard/cohort diagnostic; the full 27-cell rate grid remains in Supplementary Methods S4, not in that composite. Supplementary Figure S1 does not add a fifth main figure or provide an independent field validation of P1.
 
-**No manuscript submission, journal recommendation from an editor, deposition DOI, raw-data redistribution permission or coauthor approval has occurred in this workflow.**
+**No manuscript submission, journal recommendation from an editor, project deposition DOI or coauthor approval has occurred in this workflow.** Source-specific rights and the current reference/provenance checks are recorded in the [data/code record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). The four figure files remain byte-identical to the audited integration baseline.

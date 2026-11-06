@@ -4,13 +4,13 @@
 
 ## 現在の成果物
 
-- [論文原稿：マクロ解析とシミュレーション](research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md)
-- [最新の考察・結論](research/manuscript/ECOLOGICAL_DISCUSSION_CONCLUSION_2026-10-27.md)
-- [最終機構比較：3,600構成と追加検証](research/manuscript/FINAL_MECHANISM_COMPARISON_2026-10-27.md)
-- [固定したマクロ解析の結果](research/FROGCS_MACRO_ANALYSIS_FINAL_REPORT_2026-10-26.md)
+- [現行の統合原稿：R1–R4・P1・G4–G7](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [補足Methods・全結果・推論の範囲](editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)
+- [G7：種群と植生の追加検定の結果](research/G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)
+- [一次文献とデータ・コードの由来](editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
 - [コード・データ・再現手順の入口](research/README.md)
 
-現時点で残るのは、相手別の植生保護、ヤゴによる有尾類捕食、密度依存的な捕食を組み合わせた条件付きの候補です。共通24条件の1条件で三方向を同時再現しましたが、野外の原因やマクロ全体の適合を確定したものではありません。鳴き声は繁殖成功、適合度は捕食者密度、景観植生は池内の隠れ場の直接測定ではありません。
+現行稿の主線は、相互作用らしい方向を生成できる機構が、カエルの個体数や長期占有を改善するとは限らないことです。同一256構造の比較と、加入時期×水中期間の独立操作でこれを検証しました。野外とのG4–G7比較では方向的な対応はあるものの、機構を選べる確かな予測改善には届いていません。鳴き声は繁殖成功、適合度は捕食者密度、景観植生は池内の隠れ場の直接測定ではありません。
 
 ## 過去の内容
 

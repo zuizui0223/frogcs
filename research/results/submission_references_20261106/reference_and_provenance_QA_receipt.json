@@ -1,0 +1,112 @@
+{
+  "status": "PRIMARY_REFERENCE_DATA_PROVENANCE_AND_OFFLINE_REPLAY_PASS",
+  "verified_on": "2026-11-06",
+  "baseline_public_commit": "f96b8653a50321f849c344954f7c01d47aba3d8f",
+  "scope": "Citation/provenance clarification and preservation of existing numeric source inputs; no ecological model refits or new biological observations.",
+  "word_counts": {
+    "main_complete_file": 4914,
+    "abstract": 137,
+    "supplementary_complete_file": 6497,
+    "GEB_alternative_with_seven_labels": 250
+  },
+  "references": {
+    "count": 16,
+    "unique_dois": 15,
+    "non_doi_primary_record": "Pedregosa2011: JMLR canonical article URL",
+    "all_references_cited_in_main_or_SI": {
+      "Alford1985": true,
+      "Anderson2016": true,
+      "Blanchet2020": true,
+      "Davenport2013": true,
+      "Fick2017": true,
+      "Foreman2017": true,
+      "Grimm2012": true,
+      "Hossie2010": true,
+      "Kishida2009": true,
+      "Mocq2021": true,
+      "Pedregosa2011": true,
+      "Phillips2009": true,
+      "Poelen2014": true,
+      "Rasmussen2014": true,
+      "Roberts2017": true,
+      "Tuanmu2014": true
+    },
+    "bibtex_entries": 16,
+    "bibtex_braces_balanced": true
+  },
+  "source_checks": {
+    "preserved_original_numeric_files": 28,
+    "required_P1_source_JSON": 1,
+    "source_bundle_files_total": 29,
+    "all_bundle_hashes_pass": true,
+    "source_bytes": 5891060,
+    "GBIF_occurrence_files_verified": 30,
+    "GBIF_dataset_citations": 60,
+    "GBIF_dataset_license_counts": {
+      "http://creativecommons.org/publicdomain/zero/1.0/legalcode": 30,
+      "http://creativecommons.org/licenses/by/4.0/legalcode": 15,
+      "http://creativecommons.org/licenses/by-nc/4.0/legalcode": 15
+    },
+    "NAAMP_period_recomputed_against_frozen_cohort": true
+  },
+  "existing_workflow_replay": {
+    "actual_YAML_steps_executed_locally": 3,
+    "independently_recomputed_manuscript_claims": 44,
+    "all_original_document_structure_gates_pass": true,
+    "G6_tables_replayed": 8,
+    "G6_model_refits": 0,
+    "downloaded_Actions_artifacts_during_replay": false,
+    "markers": [
+      "FROZEN_28_NUMERIC_INPUTS_AND_P1_RECEIPT_HASHES_PASS_NO_ARTIFACT_DOWNLOAD",
+      "G6_BUNDLED_SOURCE_EIGHT_TABLE_REPLAY_PASS_NO_REFITTING"
+    ]
+  },
+  "baseline_text_preservation": {
+    "main_abstract": true,
+    "main_results_entire": true,
+    "P1_methods": true,
+    "SI_S8_P1": true,
+    "SI_S9_G3": true
+  },
+  "main_figure_sha256_unchanged": {
+    "editorial/figures/Figure1_Observed_ThirdGuild_AcousticAssociation.png": "69901620694cfa5ffb9d05a14a1505e592466eb924a810bbe1afd02450b817ad",
+    "editorial/figures/Figure2_InteractionSignature_VsFrogAbundance.png": "4af159f48178506b69e68f9220b90b0113f05444d1032f33917c304cc4d8a563",
+    "editorial/figures/Figure3_Arrival_Duration_P1_PureMechanism.png": "3f1967b7696d1fd3b4d845225adfc956ef87ba03842c7baf7d6c2ed1ccef6c5f",
+    "editorial/figures/Figure4_GenuineFinitePopulation_R4.png": "3f70cf3225a90217fc8faab9cf4c15a5dbca87ff3a825efe14fb6cff821c5cc6"
+  },
+  "independent_reviews": {
+    "methods": "PASS: final source cohort, filters, fitted algorithm, backgrounds, fold distinction and interpretation",
+    "ecology": "PASS: seven cited studies, life stages, claim scope and P1/R4 positive result preservation",
+    "data": "PASS after correcting 4040-site to 4040-pair in provenance; source versions, DOI/rights and acquisition boundaries"
+  },
+  "relative_markdown_links_checked": 108,
+  "relative_markdown_links_broken": [],
+  "biological_analysis_code_changed": false,
+  "full_177_test_suite_rerun_this_stage": false,
+  "historical_integration_receipts_modified": false,
+  "manuscript_submitted": false,
+  "new_archival_DOI_claimed": false,
+  "file_sha256": {
+    "editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md": "e54e100308420316c6740c98c0e060c2a33f6111822e3a3f1831b6395ade25c0",
+    "editorial/FOUR_FIGURE_SOURCE_ASSEMBLY_RECORD_2026-11-06.md": "2f51993d86e566bdda40be2d516ca8a82c56e32a29ead05aad40015ef58a96d0",
+    "editorial/JOURNAL_SPECIFIC_ABSTRACTS_AND_FRAMING_2026-11-06.md": "4b9d3cd9f0a69872c4617a6db520b330834222f2593f5154717d5154bd13a4b6",
+    "editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md": "35c9189ea1818eba62e3e45335d1c98fda660adddb73d9734a5d3ec5fc9ef58b",
+    "editorial/SUBMISSION_STRATEGY_SIGNATURE_VS_DEMOGRAPHY_2026-11-06.md": "2c9b2e0a034ddb4f109c43cabd03deeb7ff20d45f0da85e03348730e865f6ded",
+    "editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md": "03759b7a8dc59a1023e7fefdd6e2a028cf2cf825a5efb99251515cfd3b2ff818",
+    "research/results/submission_frozen_sources_20261106/README.md": "20d844a3a838688ec1e103f07c4195f2369d78cdf53188168f26f479bbe3935a",
+    "editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.md": "62f114c57426512a5ccc234c476efb781a75183df39bb6f56527967fe0948a57",
+    "editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md": "af9841b559ceffea6c9cfaab050f027cc926bb0a37226fd3bc177548f418f955",
+    "editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.bib": "c6e8950f5fee41b2a79a26a1474a6f2c611fe1c3d961852bb8737b9341de693c",
+    ".github/workflows/research_submission_claim_source_QA_20261105.yml": "84ea8588c7c2a6fdbc017a2ab439c7935eadb4bc3b479023bed2856eceaf03f8",
+    "research/results/submission_references_20261106/verified_references.json": "61743145c442c93c5c5b988dd79be5169abaebeec986f55d2d6bb5954dd0c15b",
+    "research/results/submission_references_20261106/G6_replay_receipt.json": "88256312159f751757bf43a16f1e26558ef4d1eda4d42bb0405c87f468b816c3",
+    "research/results/submission_references_20261106/NAAMP_analytical_period_verification.json": "5cd761daf9944a6c1af434c7d8f13cdd596eb7fb3e9bb470e933f67051a70832",
+    "research/results/submission_references_20261106/submission_source_QA_receipt.json": "65281ad288d72d5fe3e62b09bf6ce52aa700162c15b815baba71a5411a7eda41",
+    "research/results/submission_references_20261106/source_claim_checks.csv": "27f29ddf779a8b3399c889429bfdff2ff49a919332b2c233aedbbafaa8a0c54a"
+  },
+  "remaining_author_decisions": [
+    "Project-owned code/material license",
+    "Third-party redistribution and final archive packaging",
+    "Actual archive accession if required, coauthor and journal production approval"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "status": "PASS_WITH_DECLARED_INFERENTIAL_LIMITS",
+  "validated_at_utc": "2026-11-06T11:54:42.579893+00:00",
+  "code_commit": "be77b4c4321eeaa2e29c680cac8ed201fa9dc673",
+  "protocol_freeze_commit": "21fda6b3f8155a0eb8583fd0f70ef43a36874c0e",
+  "protocol_sha256": "22ec3bfcb26175e01804e035e1ca5e6224b0c14beefc3e54242bb9089629860a",
+  "implementation_sha256": "b41435ddf868b69d684b2a27707cdcb327deeb78fbccfe1e06e6ed21a4542044",
+  "execution_receipt_sha256": "5e00b044ce90743bfa0b7bb42b5e09b351d70963987c2f54dd400754fce70281",
+  "scope": "Independent arithmetic replay of all four coefficient intervals, all eight heldout scores, all four paired block score gains; source identities and block/fold/weight audit; two primary point fits via independent SciPy optimizer.",
+  "original_outputs_unchanged": true,
+  "original_output_hashes_verified": 16,
+  "source_files_verified": 3,
+  "source_site_count": 4248,
+  "completed_visits": 63180,
+  "strong_call_events": 36554,
+  "geographic_blocks": 56,
+  "canonical_routes": 432,
+  "folds": 5,
+  "species_group_algebra_max_abs_error": 2.220446049250313e-16,
+  "bootstrap_draws_verified": 3996,
+  "holdout_fit_diagnostics_verified": 40,
+  "shared_block_schedule_exact": true,
+  "source_fold_reconstruction_exact": true,
+  "max_abs_coefficient_interval_error": 6.938893903907228e-17,
+  "max_abs_prediction_score_error": 2.220446049250313e-16,
+  "max_abs_paired_gain_error": 9.71445146547012e-17,
+  "coefficient_interval_replay": [
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "theta": 0.0761408790447915,
+      "low": -0.07407844776983107,
+      "high": 0.27067325389450075,
+      "max_abs_interval_error": 6.938893903907228e-17,
+      "valid_draws": 999
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "theta": 0.0278574065921853,
+      "low": -0.21386259455691503,
+      "high": 0.2673400288713488,
+      "max_abs_interval_error": 5.551115123125783e-17,
+      "valid_draws": 999
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "theta": -0.0190904490051687,
+      "low": -0.19864797945640753,
+      "high": 0.2062998268668353,
+      "max_abs_interval_error": 5.551115123125783e-17,
+      "valid_draws": 999
+    },
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "theta": 0.0672309096544131,
+      "low": -0.14154019553507632,
+      "high": 0.31907375504869756,
+      "max_abs_interval_error": 5.551115123125783e-17,
+      "valid_draws": 999
+    }
+  ],
+  "prediction_score_replay": [
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "candidate": "full",
+      "nll_per_survey": 0.6754581156705943,
+      "brier_per_survey": 0.24075716969233585,
+      "max_abs_error": 2.220446049250313e-16
+    },
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "candidate": "null",
+      "nll_per_survey": 0.675262803095522,
+      "brier_per_survey": 0.24068587636251226,
+      "max_abs_error": 1.1102230246251565e-16
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "candidate": "full",
+      "nll_per_survey": 0.6790119829124538,
+      "brier_per_survey": 0.2419324945467975,
+      "max_abs_error": 0.0
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "candidate": "null",
+      "nll_per_survey": 0.6779120241136765,
+      "brier_per_survey": 0.2415329699025878,
+      "max_abs_error": 1.1102230246251565e-16
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "candidate": "full",
+      "nll_per_survey": 0.6726853339311678,
+      "brier_per_survey": 0.2395752465786944,
+      "max_abs_error": 0.0
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "candidate": "null",
+      "nll_per_survey": 0.6725849592773406,
+      "brier_per_survey": 0.23953381509030067,
+      "max_abs_error": 5.551115123125783e-17
+    },
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "candidate": "full",
+      "nll_per_survey": 0.6727447510091754,
+      "brier_per_survey": 0.23957738082538368,
+      "max_abs_error": 2.7755575615628914e-17
+    },
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "candidate": "null",
+      "nll_per_survey": 0.6725483896120463,
+      "brier_per_survey": 0.2395036659349141,
+      "max_abs_error": 0.0
+    }
+  ],
+  "paired_prediction_gain_replay": [
+    {
+      "background": "target_group",
+      "variant": "pooled_newt_sensitivity",
+      "gain_nll_per_survey": -0.00019531257507242816,
+      "low": -0.0006121273974612971,
+      "high": 0.00012160560390182275,
+      "max_abs_error": 9.71445146547012e-17
+    },
+    {
+      "background": "target_group",
+      "variant": "primary",
+      "gain_nll_per_survey": -0.0010999587987773484,
+      "low": -0.0031029758058234032,
+      "high": 1.8285557600782444e-05,
+      "max_abs_error": 4.83554168928535e-17
+    },
+    {
+      "background": "uniform",
+      "variant": "pooled_newt_sensitivity",
+      "gain_nll_per_survey": -0.00010037465382702374,
+      "low": -0.0003380828551178553,
+      "high": 0.00015536837796978817,
+      "max_abs_error": 8.817274167738365e-17
+    },
+    {
+      "background": "uniform",
+      "variant": "primary",
+      "gain_nll_per_survey": -0.00019636139712911888,
+      "low": -0.0008078280704544317,
+      "high": 0.0004621184247662262,
+      "max_abs_error": 3.165870343657673e-17
+    }
+  ],
+  "independent_primary_point_refits": [
+    {
+      "background": "uniform",
+      "optimizer": "scipy.optimize.minimize trust-exact",
+      "success": true,
+      "status": 0,
+      "iterations": 4,
+      "gradient_max": 1.9408057383429878e-08,
+      "theta": 0.06723090965387893,
+      "recorded_theta": 0.0672309096544131,
+      "absolute_theta_error": 5.341699305105863e-13,
+      "max_abs_all_coefficient_error": 5.2851611975768265e-12,
+      "frozen_design_builder_reused": true,
+      "production_fit_function_used": false
+    },
+    {
+      "background": "target_group",
+      "optimizer": "scipy.optimize.minimize trust-exact",
+      "success": true,
+      "status": 0,
+      "iterations": 4,
+      "gradient_max": 1.1566556601394495e-08,
+      "theta": 0.027857406596549426,
+      "recorded_theta": 0.0278574065921853,
+      "absolute_theta_error": 4.3641271152417005e-12,
+      "max_abs_all_coefficient_error": 1.5429879596240426e-11,
+      "frozen_design_builder_reused": true,
+      "production_fit_function_used": false
+    }
+  ],
+  "primary_positive_association_both_backgrounds": false,
+  "primary_positive_predictive_gain_both_backgrounds": false,
+  "material_errors_found": [],
+  "replay_notes": [
+    "The literal CSV candidate label null is valid data. Read candidate-bearing files with keep_default_na=False; pandas default NA parsing otherwise converts it to missing."
+  ],
+  "conditional_caveats": [
+    "Coefficient intervals describe a penalized model conditional on fixed SDMs, groups, covariates and ridge; they do not propagate SDM or trait uncertainty.",
+    "Prediction intervals condition on saved heldout fits.",
+    "Both SDM backgrounds reuse the same acoustic cohort and are not independent replication.",
+    "The group contrast is not measured larval duration, early arrival, predator abundance, or a causal vegetation intervention.",
+    "Block clustering accounts for dependence but does not eliminate geographic or habitat confounding.",
+    "Independent optimizer reused the already audited frozen design builder, but not the production fit, scoring, bootstrap-summary or gain functions."
+  ],
+  "no_new_hypotheses_or_sensitivities": true,
+  "bootstrap_models_not_rerun": true
+}
