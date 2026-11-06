@@ -1,13 +1,6 @@
 name: frogcs G4 field-model 8-corner and observation-span source identifiability audit
 
 on:
-  pull_request:
-    branches:
-      - research/isolated-ontogeny-timing-duration-20261105
-    paths:
-      - .github/workflows/research_g4_field_model_eight_corner_identifiability.yml
-      - research/scripts/g4_field_model_alignment_8corner_audit_20261106.py
-      - research/scripts/test_g4_field_model_alignment_8corner_audit_20261106.py
   workflow_dispatch:
 
 permissions:
