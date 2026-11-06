@@ -1,13 +1,6 @@
 name: frogcs G5 precommitted source-constrained acoustic heldout prediction
 
 on:
-  pull_request:
-    branches:
-      - research/isolated-ontogeny-timing-duration-20261105
-    paths:
-      - .github/workflows/research_g5_source_constrained_acoustic_holdout.yml
-      - research/scripts/g5_source_constrained_acoustic_holdout_20261106.py
-      - research/scripts/test_g5_source_constrained_acoustic_holdout_20261106.py
   workflow_dispatch:
 
 permissions:
