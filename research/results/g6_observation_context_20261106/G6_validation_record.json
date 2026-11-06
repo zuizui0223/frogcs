@@ -1,0 +1,50 @@
+{
+  "new_tests": {
+    "passed": 20,
+    "tdd_red_observed": true
+  },
+  "research_test_suite": {
+    "passed": 177,
+    "errors": 0,
+    "seconds": 24.495
+  },
+  "initial_suite_incident": {
+    "error_modules": [
+      "test_broad_species_sdm",
+      "test_prior_water_context",
+      "test_remote_vegetation_context"
+    ],
+    "cause": "rasterio absent in execution environment",
+    "resolution": "Installed source-pinned rasterio 1.4.4 and shapely 2.1.2; whole suite rerun succeeded"
+  },
+  "independent_recalculation": {
+    "nll_gain_rows": 24,
+    "nll_gain_max_error": 9.84e-17,
+    "whole_contribution_rows": 24,
+    "whole_contribution_max_error": 8.67e-17,
+    "rank_rows": 42,
+    "rank_max_error": 2.64e-16,
+    "rank_discrepancy_max_error": 2.84e-16,
+    "primary_interval_endpoints_checked": 12,
+    "primary_interval_max_error": 8.5e-17
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8"
+  },
+  "full_suite_acoustic_dependency": {
+    "repository_commit": "a5ddc281ba17017a52b404a5725327f6e829824f",
+    "path": "research/scripts/acoustic_mechanism_cv.py",
+    "note": "Original pinned external source import, as in G5 workflow; G6 itself does not import it."
+  },
+  "figure_visually_verified": true,
+  "bundled_source_replay": {
+    "exact_match_tables": 8,
+    "check_exact": true,
+    "source": "Unchanged G4/G5 inputs archived in source/"
+  },
+  "new_remote_ci_run": false
+}

@@ -1,0 +1,29 @@
+{
+  "status": "G5_ORIGINAL_SOURCE_CONSTRAINED_ACOUSTIC_HOLDOUT_AUDIT_SUCCESS",
+  "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "source_G4_run": 42173236906,
+  "original_field_sites": 4248,
+  "original_completed_visits": 63180,
+  "original_geographic_blocks": 56,
+  "original_routes": 432,
+  "original_256_model_source_all_models_pooled": true,
+  "source_acoustic_environment_G1_replay_passed": true,
+  "source_predictor_span_inside_original_four_interactions": true,
+  "source_model_mechanism_as_positively_constrained_train_slope": true,
+  "independent_geographic_predictive_gain_both_backgrounds": false,
+  "source_prediction_rows": 50976,
+  "source_score_rows": 12,
+  "source_paired_contrast_rows": 12,
+  "model_penalty": 10.0,
+  "source_model_bootstrap": 999,
+  "source_bootstrap_seed": 20261106,
+  "identified_actual_pond_predation": false,
+  "calibrated_larval_to_adult_observation_link": false,
+  "original_field_corner_support_passed_both_backgrounds": false,
+  "original_input_sha256": {
+    "primary_site_landscape_context.csv.gz": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+    "naamp_completed_site_surveys.csv.gz": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c",
+    "G4_predirected_source_priors_two_plant_arms.csv": "328692a16ca83bcec56d2650acb5ad9f2eedb0450da8fcf8078886fded3cfe02",
+    "G4_source_geometry_receipt.json": "585a2c5d32db0f874351b9a2847461c5bf93ee79392c1e5a24fef343244abe58"
+  }
+}
