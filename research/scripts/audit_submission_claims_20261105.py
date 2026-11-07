@@ -226,9 +226,16 @@ def verify_submission_docs(main_path,si_path):
     main=Path(main_path).read_text(encoding="utf-8")
     si=Path(si_path).read_text(encoding="utf-8")
     words=main.split("## Abstract\n")[1].split("**Keywords:**")[0].strip().split()
+    # Ecology Letters counts ONLY the main body: title, abstract, figure legends,
+    # reference/admin provenance, and Supplementary Information are excluded.
+    # Retain headings in the count as an extra-conservative safeguard.
+    start=main.index("## Introduction\n")
+    stop=main.index("## Figure captions and submission layout")
+    main_body=main[start:stop]
+    main_body_words=len(main_body.split())
     checks={
       "abstract_max150_for_Ecology_Letters":len(words)<=150,
-      "main_text_3000_to_5000_words":3000<=len(main.split())<=5000,
+      "main_text_3000_to_5000_words":3000<=main_body_words<=5000,
       "one_each_main_figure":all(main.count("**Figure "+str(i)+" |")==1 for i in (1,2,3,4)),
       "three_model_response_sections":all(("### R"+str(i)+".") in main for i in (1,2,3,4)),
       "no_wild_causal_identification":("do not establish" in main or
@@ -239,6 +246,10 @@ def verify_submission_docs(main_path,si_path):
                                            "not the ratio" in main),
       "external_immigration_on_in_main":("external immigration ON" in main),
       "supplement_all_nine_methods":all("Supplementary Methods S"+str(i) in si for i in range(1,10)),
+      "g8_complete_27rate_source_results_declared":(
+          "### G8. Rate sweeps" in main and "Supplementary Methods S10" in si
+          and "82,944" in main and "663,552" in si
+          and "not quantitative fits" in main),
       "conditional_acoustic_denominator_declared":("47,912" in si and "63,180" in si),
       "source_model_priors_not_field_posteriors":("not a field-conditioned ABC posterior" in main and
                                                   "not a posterior" in si),
@@ -247,7 +258,7 @@ def verify_submission_docs(main_path,si_path):
     require(all(checks.values()),
             "Main/SI publication-source safeguards failed: "+
             str([k for k,v in checks.items() if not v]))
-    return checks,len(words),len(main.split()),len(si.split())
+    return checks,len(words),main_body_words,len(si.split())
 
 
 def main():
@@ -277,6 +288,7 @@ def main():
         "document_structural_checks":structural,
         "abstract_words":abstract_words,
         "main_words":main_words,"supplementary_words":si_words,
+        "journal_count_policy":"Introduction through Conclusion; headings retained; abstract and figure captions excluded",
         "source_file_sha256":{
            str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest()
            for root in (a.r2,a.pr161,a.r4,a.g2,a.g2b,a.p1)
