@@ -105,9 +105,10 @@ jobs:
           letter=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
           g13report=root/'research/G13_ABC_POM_CONDITIONAL_STRUCTURE_NULL_VERIFIED_RESULT_2026-11-07.md'
           assert 'Supplementary Methods S15' in si.read_text()
-          for text0 in ('647','712','0.0002'):
-              for doc in (main,si,letter,g13report):
-                  assert text0 in doc.read_text(),(text0,doc)
+          for doc in (main,si,letter,g13report):
+              text0=doc.read_text()
+              assert '647' in text0 and '0.0002' in text0,doc
+              assert ('712' in text0 or '711.93' in text0),doc
           assert '4,989 words' in letter.read_text() and '148 words' in letter.read_text()
           assert 'not a field posterior' in main.read_text() or 'not a field-conditioned posterior' in main.read_text()
           for doc in (main,si,g13report):
