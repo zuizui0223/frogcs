@@ -156,7 +156,7 @@ def main():
         "−0.04125" in main_text and
         "G11" in main_text and
         "## Supplementary Methods S13." in si_text and
-        "not a clear" in main_text and
+        "no clear rate×context-adjusted excess loss" in main_text and
         "612" in si_text and "571" in si_text and
         "G5/G7" in si_text and
         "64-shard" in report and
