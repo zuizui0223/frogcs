@@ -131,9 +131,14 @@ def shard_run(source,out,shard):
         for bg in BACKGROUNDS:
             a=df[(df.candidate=="ABC_794")&(df.background==bg)]
             b=original[(original.background==bg)&(original.candidate=="ABC_accepted")]
-            require(len(b)==1 and len(a)==N_SITE and
-                    abs(a.loss.sum()/N_VISITS-b.nll_per_visit.iloc[0])<1e-10,
-                    "Original frozen G14 ABC acoustic prediction not replayed: "+bg)
+            actual=float(a.loss.sum()/N_VISITS)
+            expected=float(b.nll_per_visit.iloc[0]) if len(b)==1 else float("nan")
+            print("G15_G14_ORIGINAL_ABC_REPLAY_DIAGNOSTIC",bg,
+                  {"actual":actual,"expected":expected,"delta":actual-expected,
+                   "n_original":len(a),"baseline_rows":len(b)},flush=True)
+            require(len(b)==1 and len(a)==N_SITE and abs(actual-expected)<1e-10,
+                    "Original frozen G14 ABC acoustic prediction not replayed: "+bg+
+                    f" actual={actual:.16g}, expected={expected:.16g}, delta={actual-expected:.5g}")
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
     name=f"g15_predictive_null_shard_{shard:02d}"
     site=out/(name+"_full_site.csv.gz")
