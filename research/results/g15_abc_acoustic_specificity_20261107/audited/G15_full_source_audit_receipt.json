@@ -1,0 +1,38 @@
+{
+  "status": "G15_199_RATE_CONTEXT_NULL_ACOUSTIC_FIELD_SOURCE_COMPLETE",
+  "source_template_sha256": "427ee0a9f6d0c9e391917395a7a4bb0060c7a816b3f9f750bc55abf7ec86f305",
+  "G14_accepted_794_reproduced": true,
+  "original_G14_NLL_replay_error_by_background": {
+    "uniform": 2.0229109376490584e-07,
+    "target_group": 9.14004216756581e-08
+  },
+  "declared_NLL_numerical_tolerance": 1e-06,
+  "declared_probability_numerical_tolerance": 0.0001,
+  "original_G14_dual_background_field_gate_pass": false,
+  "original_G14_unrestricted_interaction_gate_pass": false,
+  "source_specificity_fixed_joint_gate_pass": false,
+  "original_G14_artifact_source_outcomes_not_refitted": true,
+  "null_rate_context_strata": 81,
+  "null_replicates": 199,
+  "original_source_accepted": 794,
+  "templates_total": 201,
+  "field_SDM_backgrounds": 2,
+  "field_sites": 4248,
+  "source_shards": 4,
+  "original_original_site_scores": 1707696,
+  "original_field_sites": 4248,
+  "original_surveys": 63180,
+  "geographic_blocks": 56,
+  "no_biological_reruns": true,
+  "not_independent_field_observations": true,
+  "no_wild_trophic_mechanism_identified": true,
+  "no_empirical_ABC_posterior": true,
+  "file_sha256": {
+    "G15_199_rate_context_null_template_field_scores.csv": "7259bcaf7982ea96aa348b614a910e5fa91d5b2800c4db222d0913bcf9d0da29",
+    "G15_G14_signonly_vs_ABC_null_comparison.csv": "0159e83ef90308fde305075189112c492a3afa79082d1fbd5c2229d9fa450833",
+    "G15_all_null_fold_source_slopes.csv": "465d4fffb7eb80515fdbeef8dac3cd5e835d91985f8b395caebc34b61479d8b5",
+    "G15_all_null_56block_losses.csv": "d764bf715d2f411410be73d7666304344131cdf04125a2e6e72740c20f79cc6b",
+    "G15_frozen_source_templates.csv": "f6f6adfc9fb171466f0dfc5452b3b2673bc18c9f9fa9fe78d5dae27a1a472e59"
+  },
+  "source_G14_sha256": "7548587c4cbfc145469a3f171d9a9cf2af7852a18e53a5ed03f4b064ac8be663"
+}

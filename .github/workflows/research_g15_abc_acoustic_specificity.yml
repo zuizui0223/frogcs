@@ -1,0 +1,186 @@
+name: Frogcs G15 original ABC-specificity vs sign-only and 199 rate-context nulls
+on:
+  push:
+    branches:
+      - research/g15-abc-selection-specificity-20261107
+    paths:
+      - research/G15_ABC_ACOUSTIC_SELECTION_SPECIFICITY_PROTOCOL_2026-11-07.md
+      - research/scripts/g15_abc_selection_specificity_holdout.py
+      - research/scripts/test_g15_abc_selection_specificity_holdout.py
+      - .github/workflows/research_g15_abc_acoustic_specificity.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  PYTHONHASHSEED: '0'
+  PYTHONPATH: research/scripts
+
+jobs:
+  freeze-all-199-source-null-templates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - name: Source-only unit tests and original 8-corner sign algebra
+        run: python -m unittest discover -s research/scripts -p 'test_g15_abc_selection_specificity_holdout.py' -v
+      - name: Frozen 199 source nulls within 81 rate/context strata and one sign-only target
+        run: |
+          python -u research/scripts/g15_abc_selection_specificity_holdout.py \
+            --stage prepare \
+            --out research/results/g15_abc_acoustic_specificity_20261107/preflight
+      - name: Check each null is complete and G14 ABC source exactly replays before field scoring
+        run: |
+          python - <<'PY'
+          import pandas as pd,json,hashlib
+          from pathlib import Path
+          p=Path('research/results/g15_abc_acoustic_specificity_20261107/preflight')
+          r=json.loads((p/'g15_source_template_receipt.json').read_text())
+          d=pd.read_csv(p/'g15_frozen_model_source_templates.csv')
+          assert r['status']=='G15_SOURCE_TEMPLATES_FROZEN_BEFORE_NEW_FIELD_FITS'
+          assert r['frozen_null_count']==199 and r['original_accepted']==794
+          assert r['original_rate_context_strata']==81 and r['original_proposed']==20000
+          assert len(d)==201 and d.candidate.nunique()==201
+          assert d[d.null_id>=0].model_draws.eq(794).all()
+          assert d[d.null_id>=0].null_id.nunique()==199
+          assert r['original_ABCG14_source_shape_reproduced']
+          assert r['original_ABC_source_shape_replay_max_abs']<1e-12
+          assert hashlib.sha256((p/'g15_frozen_model_source_templates.csv').read_bytes()).hexdigest()==r['template_file_sha256']
+          print('G15_ORIGINAL_SOURCE_NULL_SELECTION_AND_SIGNONLY_FIXED_BEFORE_FIELD')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g15-frozen-199-rate-context-null-source-templates
+          path: research/results/g15_abc_acoustic_specificity_20261107/preflight/
+          if-no-files-found: error
+          retention-days: 60
+
+  run-199-original-field-source-null-folds:
+    needs: freeze-all-199-source-null-templates
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0,1,2,3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - uses: actions/download-artifact@v4
+        with:
+          name: frogcs-g15-frozen-199-rate-context-null-source-templates
+          path: research/results/g15_abc_acoustic_specificity_20261107/preflight/
+      - name: Independently geographic-fold score original source shapes 0/1/2/3
+        run: |
+          python -u research/scripts/g15_abc_selection_specificity_holdout.py \
+            --stage shard --shard ${{ matrix.shard }} \
+            --source research/results/g15_abc_acoustic_specificity_20261107/preflight \
+            --out research/results/g15_abc_acoustic_specificity_20261107/shards
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g15-source-null-geo-heldout-shard-${{ matrix.shard }}
+          path: research/results/g15_abc_acoustic_specificity_20261107/shards/
+          if-no-files-found: warn
+          retention-days: 60
+
+  complete-199-source-null-independent-audit:
+    needs: run-199-original-field-source-null-folds
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - uses: actions/download-artifact@v4
+        with:
+          name: frogcs-g15-frozen-199-rate-context-null-source-templates
+          path: research/results/g15_abc_acoustic_specificity_20261107/preflight/
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-g15-source-null-geo-heldout-shard-*
+          path: research/results/g15_abc_acoustic_specificity_20261107/all4_shards/
+          merge-multiple: true
+      - name: Original every site/NLL probability source and signed null-vs-ABC 199 permutations
+        run: |
+          python -u research/scripts/g15_abc_selection_specificity_holdout.py \
+            --stage aggregate \
+            --source research/results/g15_abc_acoustic_specificity_20261107/preflight \
+            --shards research/results/g15_abc_acoustic_specificity_20261107/all4_shards \
+            --out research/results/g15_abc_acoustic_specificity_20261107/audited
+      - name: Independent exact source outcome and G14 verified field replay plus negative result guard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd,numpy as np,json,hashlib
+          p=Path('research/results/g15_abc_acoustic_specificity_20261107/audited')
+          pre=Path('research/results/g15_abc_acoustic_specificity_20261107/preflight')
+          r=json.loads((p/'G15_full_source_audit_receipt.json').read_text())
+          source=json.loads((pre/'g15_source_template_receipt.json').read_text())
+          assert r['status']=='G15_199_RATE_CONTEXT_NULL_ACOUSTIC_FIELD_SOURCE_COMPLETE'
+          assert r['source_template_sha256']==source['template_file_sha256']
+          assert r['templates_total']==201 and r['null_replicates']==199
+          assert r['original_G14_artifact_source_outcomes_not_refitted']
+          assert r['field_sites']==4248 and r['original_surveys']==63180
+          assert r['original_original_site_scores']==201*2*4248
+          assert r['G14_accepted_794_reproduced']
+          assert not r['original_G14_dual_background_field_gate_pass']
+          assert not r['original_G14_unrestricted_interaction_gate_pass']
+          for name,sha in r['file_sha256'].items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==sha
+          t=pd.read_csv(p/'G15_G14_signonly_vs_ABC_null_comparison.csv')
+          nulls=pd.read_csv(p/'G15_199_rate_context_null_template_field_scores.csv')
+          b=pd.read_csv(p/'G15_all_null_56block_losses.csv')
+          fits=pd.read_csv(p/'G15_all_null_fold_source_slopes.csv')
+          assert len(t)==2 and set(t.background)=={'uniform','target_group'}
+          assert len(nulls)==199*2 and nulls.groupby('background').null_id.nunique().eq(199).all()
+          assert len(b)==201*2*56 and len(fits)==201*2*5
+          assert b.groupby(['background','candidate']).spatial_block.nunique().eq(56).all()
+          assert fits.groupby(['background','candidate']).fold.nunique().eq(5).all()
+          for x in t.itertuples(index=False):
+              n=nulls[nulls.background==x.background].NLL_per_visit.to_numpy()
+              assert abs(n.mean()-x.null_mean_NLL)<1e-12
+              assert abs(np.median(n)-x.null_median_NLL)<1e-12
+              assert abs((1+(n<=x.accepted_ABC_NLL).sum())/200-x.empirical_upper_tail_p)<1e-12
+              assert x.source_selection_specific_ABC_better_signonly==(x.accepted_ABC_NLL<x.signonly_NLL)
+              a=b[(b.background==x.background)&(b.candidate=='ABC_794')]
+              sn=b[(b.background==x.background)&(b.candidate=='SIGN_ONLY')]
+              assert abs(a.total_loss.sum()/63180-x.accepted_ABC_NLL)<1e-12
+              assert abs(sn.total_loss.sum()/63180-x.signonly_NLL)<1e-12
+          print('G15_ALL_199_SOURCE_RANDOMIZATION_SIGNONLY_4FOLD_INDEPENDENT_QA_SUCCESS')
+          print(t.to_string(index=False))
+          PY
+      - name: Preserve complete source templates, original 56-block summaries, trained slopes and gate receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g15_abc_acoustic_specificity_20261107/audited/
+          if git diff --cached --quiet; then
+            echo 'G15 audited result files unchanged'
+          else
+            git commit -m "results: archive 199 original-stratum G15 source null acoustic comparisons and signonly model"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g15-complete-source-audited-199-null-acoustic-results
+          path: research/results/g15_abc_acoustic_specificity_20261107/audited/
+          if-no-files-found: warn
+          retention-days: 60
