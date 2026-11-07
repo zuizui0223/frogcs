@@ -12,6 +12,7 @@
 | G2B factored acoustic observation | The *same* site/visit cohort and spatial block | 4,248 sites; 47,912 any-call visits; 56 blocks | Statistical factorization of adult recording strength | A juvenile-to-adult biological maturation model |
 | G6 observation-context diagnostic | Same original sites, visits and 56 blocks; saved G5 predictions | 4,248 sites; 63,180 visits; 50,976 site×background×candidate probabilities | Retrospective location of predictive agreement and descriptive R1 response-shape comparison | Independent validation, a vegetation intervention effect or field predator-pathway identification |
 | R2 joint mechanism proposal | One original-catalogue structure×developmental context×synthetic rate draw | 20,000 original proposals, from 3,600 legal model IDs | Whether four idealized source model contrast signs occur | Probability that a particular food-web model is the cause of field acoustics |
+| G12 source-prior and sign-threshold audit of original ABC-style POM | Original R2 20,000 synthetic 80-year proposals, including 794 accepted and all rejected draws (exact 8 source shard SHA256s) | 20,000 original proposals; 9 illustrative rate priors; 7 model-native log-sign acceptance epsilons; no biological rerun | Synthetic-prior dependence, number/effective diversity of accepted models and sensitivity to response scale | Field-calibrated Bayesian ABC posterior probabilities, uniquely identified wild mechanisms or natural ecological-rate distributions |
 | PR161 new-seed paired mechanism | One independent canonical background with four plant variants and three developmental repeats | **256 independently sampled backgrounds**, 3,072 biology proposals / 24,576 2×2×2 source vertices | Within-background response to model-coded vegetation pathway interventions | Wild predation or vegetation refuge rates |
 | PR162 genuine finite-N | One original plant/stage biology scenario×q×movement×stochastic seed | **24,576 simulated 80-year arms** from those same 256 independent backgrounds | Modelled frog counts and eight-patch colonization/extinction states | 24,576 independent natural ponds; calibrated long-term forecasts |
 | G8 complete rate generality | Same original 256 model backgrounds repeated across every synthetic rate/context/plant intervention | 82,944 80-year scenarios; 663,552 source corners; 27 rate cells | Whether model-generated four-sign gains and frog abundance effects change with hypothetical attack/recruitment/conversion | Calibration to wild predator rates, tadpole abundances or an independent field mechanism test |
@@ -444,6 +445,59 @@ G8's source-level rate summary did not include all-rate within-context rows. For
 
 **Unchanged field inference.** G11 reinforces the internally modelled distinction between sign-compatible interaction-like patterns and demographic effects across disjoint legal original structures. It does **not** identify a natural pond predator mechanism, independently reproduce R1 acoustic outcomes, calibrate wild attack/recruitment rates, or bridge simulated larval cohorts to adult calling. The G5/G7 field-prediction gates remain negative/uncertain, and the strong *relative excess harm* interpretation remains unsupported.
 
+
+## Supplementary Methods S14. Identifiability and prior dependence of the original model-native rejection ABC–POM screen (G12)
+
+**Origin and inferential unit.** G12 reanalysed the **original, genuine 80-year**, 20,000 synthetic structure×developmental-context×rate proposals from [source run #41262102436](https://github.com/zuizui0223/frogcs/actions/runs/41262102436), not the newer G8/G11 model grid and not a simulated adult-acoustic observation process. The eight immutable gzip shards, 2,500 proposal IDs per shard, were reacquired and checked byte-for-byte against the authoritative original [R2 independent source audit #41390511365](https://github.com/zuizui0223/frogcs/actions/runs/41390511365) and original canonical main model SHA \`5e2f0a87c639df373fa2700b29403d2ab417a1cc\`. Proposal IDs 0–19,999, all **27 original rate-cell numerators/denominators**, original nine one-axis rate margins, and the model-native acceptance based on original log(F_B) four-contrast signs with epsilon 10⁻⁶ were independently reconciled. Exactly **794/20,000 (3.970%)** model draws match the four signs, **426/20,000** also meet the artificial 5% minimum-survival floor; **647 distinct canonical model IDs** among 3,582 unique proposed IDs were accepted.
+
+**Not an empirical posterior.** The word "ABC" here refers to a *rejection ABC-style model-native pattern screen*: synthetic log-cohort interaction signs (OS−, OV−, SV+, OSV+) define the acceptance criterion, not a likelihood or discrepancy model fitted to NAAMP adult frog calling, pond odonate/caudate abundance or field predation. Accordingly \`accepted_share\` and prior-weighted model counts are not estimates of posterior probabilities that a specific trophic mechanism operated in wild North American wetlands. Nor do the 3,600 possible canonical model IDs represent equal-frequency biological mechanisms in nature. G12 was designed after the original R2/G8–G11 outcomes, and its nine alternative priors and seven epsilon values were documented [before computing these G12 alternatives](../research/G12_ABC_POM_PRIOR_IDENTIFIABILITY_PROTOCOL_2026-11-07.md).
+
+**Alternative discrete synthetic priors.** The original rate prior assigned probability 1/3 to each level of attack (0.5/1.5/3.0), recruitment fraction (0.25/0.50/0.75) and conversion (2/4/8); the model and context priors were left unchanged. To diagnose rate-prior sensitivity without further biological simulations, each of the full original 20,000 draws was assigned a strictly positive importance weight
+
+\[
+w_i = \prod_{a \in \{\mathrm{attack},\rho,\mathrm{conversion}\}}\frac{p_{\mathrm{target}}(\theta_{ia})}{1/3},
+\qquad
+\widehat{P}_{\mathrm{prior}}(\mathrm{four\ signs})
+=\frac{\sum_i w_i \mathbf{1}\{\mathrm{accepted}_i\}}{\sum_i w_i}.
+\]
+
+The alternative "low", "middle", "high" rate masses are (0.60,0.30,0.10) when the low level is favoured and (0.10,0.30,0.60) when the high level is favoured. Each individual-axis test holds the two other axes uniform; the two joint tests alter all three axes simultaneously. The original model outputs and flags never change. Kish effective sample size (ESS) of accepted weighted draws is \((\sum_i w_i I_i)^2/\sum_i (w_i I_i)^2\).
+
+**Table S14a. Weighted model-native four-sign acceptance under all nine predeclared illustrative synthetic rate priors.** Acceptance is a prior-predictive property of the **same** 20,000 simulations. Shannon and Simpson effective numbers measure concentration over the 3,600 indexed model categories, not a count of identified natural mechanisms.
+
+| Rate-prior scenario | Four-sign acceptance % | Accepted-weight Kish ESS | Shannon effective canonical IDs | Simpson effective IDs |
+|---|---:|---:|---:|---:|
+| Original uniform | **3.970** | 794.0 | **604.8** | 555.0 |
+| Weak attack favoured | 5.059 | 648.2 | 534.3 | 461.8 |
+| Strong attack favoured | 2.953 | 506.8 | 482.3 | 382.9 |
+| High recruitment favoured | 5.149 | 667.6 | 552.4 | 489.7 |
+| Low recruitment favoured | 2.787 | 518.4 | 492.9 | 398.7 |
+| Fast conversion favoured | 4.896 | 650.1 | 549.6 | 486.4 |
+| Slow conversion favoured | 3.020 | 529.7 | 482.8 | 379.7 |
+| Weak attack + high recruitment + fast conversion | **6.847** | 481.9 | 480.9 | 386.5 |
+| Strong attack + low recruitment + slow conversion | **1.091** | 381.1 | 428.8 | 298.5 |
+
+These nine acceptance estimates were **independently reproduced using only the original stored 27 rate-cell proposal and acceptance counts**, rather than by reusing the per-proposal weights code. Because all alternative weights are positive, the support of accepted IDs remains the same 647 original sampled canonical IDs; changing their relative weights decreases Shannon effective diversity from 604.8 (uniform) to 428.8 in the strongly unfavourable case. The original accepted ID mass is diffuse: the top ten IDs together contribute only 3.90% under the uniform synthetic prior and the top 50 contribute 15.49%. Thus the four signs alone do not point to one well-identified mechanism. The model catalogue encodes some processes more often than others, so these diversity measures are conditional on catalog construction.
+
+**All mechanism-feature levels retained.** G12 archived original proposal/accepted frequencies and weighted priors/accepted enrichments for every original structural feature, context, synthetic gate and nuisance level, under each of the nine rate priors. For example, original \`support_DF=1\` (vegetation-assisted D→F feeding) appears in **50.36% of all original proposals**, compared with **67.38% of four-sign accepted proposals** under the uniform prior, a conditional accepted/prior share ratio of 1.34. Its accepted share ranges **64.48–71.58%** across the nine reweightings. This is a *between-model selected correlation* and **not** a necessary/sufficient causal process or observed trophic control. The separate paired R2/G8/G11 interventions test vegetation consequences conditional on encoded assumptions.
+
+**Table S14b. Sensitivity to the minimum model-native log frog-cohort interaction magnitude.** Each epsilon must satisfy all four strict signs. These are threshold sensitivity analyses of the **original outputs**, not observed acoustic-correlation tolerances.
+
+| Log(F_B) epsilon | Original proposals accepted / 20,000 | Distinct accepted canonical IDs | Both signs and artificial 5% survival |
+|---:|---:|---:|---:|
+| 0 | 830 | 667 | 426 |
+| **0.000001** (original) | **794** | **647** | **426** |
+| 0.0001 | 733 | 601 | 384 |
+| 0.001 | 538 | 453 | 245 |
+| **0.01** | **267** | **239** | **99** |
+| **0.05** | **71** | **66** | **9** |
+| 0.1 | 8 | 7 | 0 |
+
+Using **raw aquatic frog-cohort abundance** rather than log abundance for the same sign rule at epsilon 10⁻⁶ gave **584 accepted proposals**, with **462 also log-accepted**, **332 log-only**, and **122 raw-only**. Raw and log interaction contrasts are *different outcomes* (a monotone transform does not preserve a factorial interaction's sign), so neither criterion may be chosen after seeing a favourable result. This source-scale dependence and synthetic prior sensitivity limit the identification strength of the ABC-style step.
+
+**Inference and transparent negative results.** The original screen is informative as *mechanism generation* within a fixed, synthetic hypothesis family. It does not produce posterior weights conditioned on observed frog calls or a calibrated field predictive check. Its 647 accepted original model IDs and effective model diversity support **equifinality**; the apparent sign-matching rate varies **1.09–6.85%** across nine hypothetical rate priors and collapses under larger minimum model effect thresholds. These facts must be reported along with the **separately** positive independent-structure G8/G11 findings and the **unchanged** negative G5/G7 field-predictive conclusions. The G8/G11 replicated pattern–population mismatch is not made invalid by G12, but G12 cannot establish which of the candidate mechanisms generated the observed adult acoustic association.
+
+**Complete source archive and replay:** [original 8×2,500 original 80-year proposals](../research/results/g12_abc_pom_prior_20261107/original_20k/); [original audit receipt and independently published 27 rate cells](../research/results/g12_abc_pom_prior_20261107/source_receipt/); [all nine prior scenarios and ESS](../research/results/g12_abc_pom_prior_20261107/audited/G12_prior_sensitivity.csv); [all nine × original feature-level prior enrichments](../research/results/g12_abc_pom_prior_20261107/audited/G12_all_feature_level_enrichments.csv); [seven epsilon criteria](../research/results/g12_abc_pom_prior_20261107/audited/G12_four_sign_epsilon_sensitivity.csv); [raw versus log four-sign outcome](../research/results/g12_abc_pom_prior_20261107/audited/G12_raw_vs_log_contrast.json); [original SHA + result receipt](../research/results/g12_abc_pom_prior_20261107/audited/G12_full_source_receipt.json); [code](../research/scripts/g12_abc_pom_prior_identifiability.py) and [successful independent G12 GitHub Actions audit](https://github.com/zuizui0223/frogcs/actions/runs/42370722253).
 
 ## Supplementary figure inventory and reproducibility
 
