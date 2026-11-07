@@ -1,0 +1,125 @@
+name: G13 original ABC–POM source-conditioned structural identifiability
+on:
+  push:
+    branches:
+      - research/g13-abc-conditional-structure-null-20261107
+    paths:
+      - .github/workflows/research_g13_abc_conditional_structure_null.yml
+      - research/G13_ABC_POM_CONDITIONAL_STRUCTURE_NULL_PROTOCOL_2026-11-07.md
+      - research/scripts/g13_abc_pom_conditional_structure_null.py
+      - research/scripts/test_g13_abc_pom_conditional_structure_null.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-20k-source-and-81-strata-null:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Unit-test entropy, features and finite-population hypergeometric variance
+        run: python -m unittest discover -s research/scripts -p 'test_g13_abc_pom_conditional_structure_null.py' -v
+      - name: Audit original G12 SHA-verified 20k, randomize original ABC acceptance within all 81 rate × context cells
+        run: |
+          python -u research/scripts/g13_abc_pom_conditional_structure_null.py \
+            --source research/results/g12_abc_pom_prior_20261107 \
+            --out research/results/g13_abc_structure_null_20261107
+      - name: Independent analytic structural-null expectation and complete feature-level control
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          from scipy.special import gammaln
+          folder=Path('research/results/g13_abc_structure_null_20261107')
+          old=Path('research/results/g12_abc_pom_prior_20261107')
+          r=json.loads((folder/'G13_source_audit_receipt.json').read_text())
+          assert r['status']=='G13_81_RATE_CONTEXT_CONDITIONAL_NULL_ABC_STRUCTURE_AUDIT_SUCCESS'
+          assert (r['original_proposals'],r['original_four_sign_accepted'],
+                  r['original_with_5pct_floor'])==(20000,794,426)
+          assert r['synthetic_rate_by_context_strata']==81 and r['null_replicates']==4999
+          assert r['original_unique']==647 and r['original_proposed_distinct_model_ids']==3582
+          assert r['null_preserves_exact_source_strata']
+          assert not r['posterior_for_natural_field_mechanism'] and r['no_new_biological_model_run']
+          for name,sha in r['outputs_sha256'].items():
+              assert hashlib.sha256((folder/name).read_bytes()).hexdigest()==sha
+          orig=json.loads((old/'source_receipt/r2_original_source_receipt.json').read_text())
+          assert r['original_eight_shard_sha256']==orig['original_shard_sha256']
+          all_records=pd.concat([pd.read_csv(x) for x in sorted((old/'original_20k').glob('shard_*.csv.gz'))])
+          assert len(all_records)==20000 and all_records.draw_id.nunique()==20000
+          grouping=all_records.groupby(['attack','rho','conversion','context_id'])
+          assert grouping.ngroups==81
+          # Exact expected number of unique accepted canonical IDs under each
+          # within-stratum hypergeometric null, using P(no selected model ID).
+          log_avoid=np.zeros(3600,float)
+          total=0
+          for _,q in grouping:
+              n=len(q); k=int(q.accepted.sum())
+              total+=k
+              m=np.bincount(q.model_id.to_numpy(int),minlength=3600)
+              safe=n-m>=k
+              lp=np.full(3600,-np.inf,float)
+              if np.any(safe):
+                  z=m[safe]
+                  lp[safe]=gammaln(n-z+1)-gammaln(n-z-k+1)-gammaln(n+1)+gammaln(n-k+1)
+              log_avoid+=lp
+          assert total==794
+          exact_mean_unique=float(np.sum(1-np.exp(log_avoid)))
+          summary=pd.read_csv(folder/'G13_conditional_structure_concentration.csv')
+          assert len(summary)==4
+          target=summary[(summary.criterion=='original_four_sign') &
+                         (summary.metric=='distinct_accepted_canonical_IDs')].iloc[0]
+          assert target.observed==647
+          assert abs(float(target.conditional_null_mean)-exact_mean_unique)<1.0,(
+              target.conditional_null_mean,exact_mean_unique)
+          dist=pd.read_csv(folder/'G13_4999_exact_stratum_permutation_null.csv.gz')
+          assert len(dist)==4999 and int(dist.permutation.min())==1
+          assert dist.permutation.max()==4999
+          assert np.array_equal(dist.four_sign_distinct_models.to_numpy(),
+                                dist.four_sign_distinct_models.astype(int).to_numpy())
+          assert np.isclose(dist.four_sign_distinct_models.mean(),target.conditional_null_mean)
+          features=pd.read_csv(folder/'G13_all_feature_level_rate_context_adjusted.csv')
+          assert features.feature.nunique()==16 and len(features)>25
+          assert features.maxT_family_eligible.sum()==r['null_eligible_feature_levels']
+          assert (features.accepted_proposals>=0).all()
+          for ax,g in features.groupby('feature'):
+              assert g.original_proposals.sum()==20000
+              assert g.accepted_proposals.sum()==794
+              assert abs(g.expected_accepted_count.sum()-794)<1e-9
+              assert abs(g.accepted_minus_conditional_null_expected_pp.sum())<1e-9
+          assert features.loc[features.maxT_family_eligible,
+                              'maxT_familywise_adjusted_p'].ge(1/5000-1e-12).all()
+          print('G13_EXACT_ANALYTIC_STRATIFIED_UNIQUE_MODEL_NULL_MEAN',exact_mean_unique)
+          print('G13_ALL_20K_81_CONDITIONED_STRATA_4999_SHUFFLES_INDEPENDENT_AUDIT_SUCCESS')
+          PY
+      - name: Archive complete G13 null distributions, 16-feature table and source audit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g13_abc_structure_null_20261107/
+          if git diff --cached --quiet; then
+            echo 'No new G13 audited files'
+          else
+            git commit -m 'results: archive complete conditional ABC-POM model null and maxT source tests'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g13-all-20k-rate-context-conditioned-structure-null
+          path: research/results/g13_abc_structure_null_20261107/
+          if-no-files-found: warn
+          retention-days: 60
