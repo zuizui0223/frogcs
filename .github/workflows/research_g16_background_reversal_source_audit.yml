@@ -1,0 +1,139 @@
+name: Frogcs G16 original 56-block and SDM predictor-reversal source audit
+
+on:
+  push:
+    branches:
+      - research/g16-sdm-background-reversal-audit-20261108
+    paths:
+      - research/G16_SDM_BACKGROUND_REVERSAL_AUDIT_PROTOCOL_2026-11-08.md
+      - research/scripts/g16_original_SDM_background_reversal.py
+      - research/scripts/test_g16_original_SDM_background_reversal.py
+      - .github/workflows/research_g16_background_reversal_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  complete-original-G15-field-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Load frozen numerical and spatial/plot original dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - name: Test fixed 56-block paired resampling and no omissions
+        run: python -m unittest discover -s research/scripts -p 'test_g16_original_SDM_background_reversal.py' -v
+      - name: Retrieve original complete 201-template geographic CV site outputs from successful G15 run only
+        uses: actions/download-artifact@v4
+        with:
+          repository: zuizui0223/frogcs
+          run-id: 42379659618
+          github-token: ${{ github.token }}
+          pattern: frogcs-g15-source-null-geo-heldout-shard-*
+          path: research/results/g16_sdm_background_reversal_20261108/original_source_4shards
+          merge-multiple: true
+      - name: Require exact four source receipts and original site forecast data before G16
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path=Path('research/results/g16_sdm_background_reversal_20261108/original_source_4shards')
+          for shard in range(4):
+              base=f'g15_predictive_null_shard_{shard:02d}'
+              for name in (base+'_receipt.json',base+'_56blocks.csv',base+'_train_slopes.csv',
+                           base+'_full_site.csv.gz'):
+                  assert (path/name).is_file(),name
+          assert len(list(path.glob('g15_predictive_null_shard_*_receipt.json')))==4
+          print('G16_ALL_FOUR_SHA_VERIFIED_G15_SITE_SOURCE_ARTIFACTS_PRESENT')
+          PY
+      - name: Read all 1,707,696 site predictions and rederive original G15 score/background reversal
+        run: |
+          python -u research/scripts/g16_original_SDM_background_reversal.py \
+            --shards research/results/g16_sdm_background_reversal_20261108/original_source_4shards \
+            --out research/results/g16_sdm_background_reversal_20261108/audited
+      - name: Independently check every 56-block and V0/V1 contribution plus original 199-null NLL
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          import numpy as np,pandas as pd
+          p=Path('research/results/g16_sdm_background_reversal_20261108/audited')
+          source=Path('research/results/g15_abc_acoustic_specificity_20261107/audited')
+          r=json.loads((p/'G16_complete_original_source_receipt.json').read_text())
+          assert r['status']=='G16_G15_SDM_BACKGROUND_REVERSAL_SOURCE_AUDIT_SUCCESS'
+          assert r['original_G15_run']==42379659618
+          assert (r['original_heldout_source_site_rows'],r['original_ABC_source_templates'],
+                  r['original_199_null_templates'])==(1707696,201,199)
+          assert (r['original_56_geographical_blocks'],r['original_NAAMP_sites'],
+                  r['original_completed_visits'],r['original_vegetated_landscape_sites'])==(
+                  56,4248,63180,506)
+          assert not r['original_G15_dual_background_specificity_gate_pass']
+          assert not r['original_G14_dual_background_field_gate_pass']
+          assert r['no_new_model_fitting'] and r['no_ecological_causal_identification']
+          for name,sha in r['G16_files_sha256'].items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==sha,name
+          original=pd.read_csv(source/'G15_G14_signonly_vs_ABC_null_comparison.csv')
+          block=pd.read_csv(p/'G16_56block_ABC_minus_mean_null_gains.csv')
+          boot=pd.read_csv(p/'G16_geographic_bootstrap_9999_summary.csv')
+          loo=pd.read_csv(p/'G16_56_block_leave_one_out.csv')
+          stress=pd.read_csv(p/'G16_top_1_3_5_block_influence.csv')
+          V=pd.read_csv(p/'G16_original_V0_V1_landscape_contributions.csv')
+          ranks=pd.read_csv(p/'G16_SDM_predictor_rank_concordance.csv')
+          pair=pd.read_csv(p/'G16_4248_original_site_pair_diagnostic.csv.gz')
+          assert len(block)==len(loo)==56
+          assert len(stress)==3 and set(stress.blocks_removed)=={1,3,5}
+          assert len(boot)==3 and boot.bootstrap_draws.eq(9999).all()
+          assert len(pair)==4248 and pair.site.is_unique
+          assert pair.n.sum()==63180 and pair.V.sum()==506 and pair.k.sum()==36554
+          assert len(V)==4 and V.groupby('background').sites.sum().eq(4248).all()
+          assert len(ranks)==6 and set(ranks.guild)=={'O','S'}
+          for bg in ('uniform','target_group'):
+              raw=original[original.background==bg].iloc[0]
+              actual=pair[bg+'_gain_sum'].sum()/pair.n.sum()
+              fromblocks=block[bg+'_gain_sum'].sum()/block.n_completed.sum()
+              fromV=V[V.background==bg].abc_minus_mean_null_contribution_to_whole_NLL_per_visit.sum()
+              claimed=float(raw.null_mean_NLL-raw.accepted_ABC_NLL)
+              assert abs(actual-claimed)<1e-10
+              assert abs(fromblocks-claimed)<1e-10
+              assert abs(fromV-claimed)<1e-10
+              assert abs(r['source_pooled_gains'][bg+'_ABC_minus_mean_null_gain']-claimed)<1e-10
+              assert pair[bg+'_gain_sum'].notna().all()
+          cross=float(
+              (pair.uniform_gain_sum-pair.target_group_gain_sum).sum()/pair.n.sum())
+          assert abs(cross-r['source_pooled_gains']['uniform_minus_target_background_difference'])<1e-12
+          assert len(r['original_4_shard_SHA_receipts'])==4
+          assert all(0<=r.Spearman_cross_SDM_rank<=1 for r in ranks.itertuples(index=False))
+          print('G16_ORIGINAL_1707696_SOURCE_SITE_56BLOCK_AND_506_V_POSITIVE_INDEPENDENT_QA_SUCCESS')
+          print('G16_PAIRED_CROSS_BACKGROUND_GAIN',cross)
+          PY
+      - name: Archive G16 site/SDM/56-block audit and posthoc source receipt
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g16_sdm_background_reversal_20261108/audited/
+          if git diff --cached --quiet; then
+            echo 'G16 audited outputs already retained'
+          else
+            git commit -m 'results: archive G16 full original G15 source and SDM-background geographic reversal decomposition'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g16-all-original-G15-site-block-background-reversal-audited
+          path: research/results/g16_sdm_background_reversal_20261108/audited/
+          if-no-files-found: warn
+          retention-days: 60
