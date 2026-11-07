@@ -1,0 +1,33 @@
+{
+  "status": "G12_ORIGINAL_20K_MODEL_NATIVE_ABC_POM_PRIOR_AUDIT_SUCCESS",
+  "source_original_actions_run": 41262102436,
+  "source_R2_verified_actions_run": 41390511365,
+  "original_main_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "source_shard_sha256": {
+    "shard_00.csv.gz": "6489e86bdeacc897ae3ce904662059b943969f7700c1c84722bde043d7ba4035",
+    "shard_01.csv.gz": "e2d6948791598b44d66981c35590dfb42f596eb4148949b32315c93c367f2a0a",
+    "shard_02.csv.gz": "5291eafd768e7d9c0696f76ef23b4013065cccc6bdce78bb5b604d71330f1dbe",
+    "shard_03.csv.gz": "61d3944678e581858dc1e9227958687d3cb9c1173bebfaca24950a1a410f5142",
+    "shard_04.csv.gz": "8bbd38639b76d14f2e885fedba46e9fd6b848bf15408a1da3e064da208aff5fd",
+    "shard_05.csv.gz": "3e911234f5d431e117ce1ab753b46a94d05a0a1d348049a09c5fbc6e7bb4c190",
+    "shard_06.csv.gz": "e5e7a08d6e7a04cdcee90da832fd92357746cf7b9ec602517ca6ea6ed44aa690",
+    "shard_07.csv.gz": "15598dd2762c10d8b03e27de97338eec0bfc0c40417fa992a39e94a4528fbc1d"
+  },
+  "n_proposals": 20000,
+  "accepted_4sign": 794,
+  "accepted_synthetic_floor": 426,
+  "distinct_accepted_canonical_models": 647,
+  "alternative_synthetic_rate_priors": 9,
+  "model_sign_tolerances": 7,
+  "full_27_rate_original_numerators_denominators_verified": true,
+  "all_9_original_one_axis_rate_margins_verified": true,
+  "posterior_calibrated_to_field_observations": false,
+  "no_new_biological_simulations": true,
+  "no_field_mechanism_identification": true,
+  "files_sha256": {
+    "G12_all_feature_level_enrichments.csv": "8b191d971a37d85677746e4b58f558678a7157ad7fa1ac5e6769b51772a0a937",
+    "G12_prior_sensitivity.csv": "d28f147d2e603bb05e08bc8e304ad4e3215b351ce00e5fe80d61ab087c14acbc",
+    "G12_four_sign_epsilon_sensitivity.csv": "a92e4a99d68740a758c4d42f38c85676c458a85a9f779334d2795f851eba9aa2",
+    "G12_raw_vs_log_contrast.json": "72111c168115b966f7228b9bccd6a0cd674446fb72e6d7b9ec1bc8a56295caa8"
+  }
+}
