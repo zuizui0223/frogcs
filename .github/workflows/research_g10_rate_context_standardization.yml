@@ -1,0 +1,105 @@
+name: G10 rate-context-standardized G9 sign benefit audit
+
+on:
+  push:
+    branches:
+      - research/g10-rate-context-adjusted-pattern-benefit-20261107
+    paths:
+      - .github/workflows/research_g10_rate_context_standardization.yml
+      - research/scripts/g10_rate_context_standardized_sign_benefit.py
+      - research/scripts/test_g10_rate_context_standardized_sign_benefit.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-g8-source-standardization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Test the standardization algebra and missing-overlap rejection
+        run: python -m unittest discover -s research/scripts -p test_g10_rate_context_standardized_sign_benefit.py -v
+      - name: Recompute G10 source-cluster standardized contrasts from full G8 original audited table
+        run: |
+          python research/scripts/g10_rate_context_standardized_sign_benefit.py \
+            --source research/results/g8_27rate_paired_20261107/audited \
+            --out research/results/g10_standardized_sign_benefit_20261107
+      - name: Independently recompute source-standardized primary from all 81 rate-context cells
+        run: |
+          python - <<'PY'
+          import pandas as pd, numpy as np, json, hashlib
+          from pathlib import Path
+          src=Path('research/results/g8_27rate_paired_20261107/audited')
+          out=Path('research/results/g10_standardized_sign_benefit_20261107')
+          d=pd.read_csv(src/'g8_all_source_rate_context_paired.csv.gz')
+          g8=json.loads((src/'g8_completion_receipt.json').read_text())
+          receipt=json.loads((out/'g10_source_receipt.json').read_text())
+          assert receipt['status']=='G10_RATE_CONTEXT_STANDARDIZED_SOURCE_AUDIT_SUCCESS'
+          assert len(d)==20736 and d.source_id.nunique()==256 and d.rate_id.nunique()==27
+          assert receipt['input_g8_sha256']==g8['output_sha256']['g8_all_source_rate_context_paired.csv.gz']
+          d['new']=d.compatibility.eq(1)
+          d['loss']=d.frog_log_cohort.lt(0)
+          strata=[]
+          for key,q in d.groupby(['rate_id','context_id']):
+              e=q[q.new];ctrl=q[~q.new]
+              if len(e)>0 and len(ctrl)>0:
+                  strata.append((len(e),e.loss.mean(),ctrl.loss.mean(),
+                                 e.frog_log_cohort.mean(),ctrl.frog_log_cohort.mean()))
+          assert len(strata)==50
+          v=np.asarray(strata,dtype=float)
+          assert int(v[:,0].sum())==782
+          p1=np.average(v[:,1],weights=v[:,0])
+          p0=np.average(v[:,2],weights=v[:,0])
+          disc=100*(p1-p0)
+          fdisc=np.average(v[:,3]-v[:,4],weights=v[:,0])
+          results=pd.read_csv(out/'g10_standardized_comparisons.csv')
+          primary=results[(results.group=='all') & (results.comparator=='other') &
+                          (results.support_rule=='any')].iloc[0]
+          assert abs(p1-571/782)<1e-12
+          assert abs(primary.p_loss_new-p1)<1e-12 and abs(primary.p_loss_comparator_standardized-p0)<1e-12
+          assert abs(primary.adjusted_loss_difference_pp-disc)<1e-12
+          assert abs(primary.adjusted_log_difference-fdisc)<1e-12
+          assert primary.new_cases_covered==782 and primary.n_supported_strata==50
+          assert abs(d.loss.mean()-13802/20736)<1e-12
+          assert 0<primary.bootstrap_valid<=10000
+          cells=pd.read_csv(out/'g10_all_81_strata.csv')
+          assert len(cells)==81 and cells.n_backgrounds.eq(256).all()
+          assert cells.n_new.sum()==782 and cells.n_loss_new.sum()==571
+          assert cells.comparable.sum()==50
+          for name,sha in receipt['results_sha256'].items():
+              assert hashlib.sha256((out/name).read_bytes()).hexdigest()==sha
+          print('G10_INDEPENDENT_RATE_CONTEXT_STANDARDIZED_G9_FULL_SOURCE_REPLAY_SUCCESS',
+                {'raw_event_loss_pct':100*p1,'adjusted_comparator_pct':100*p0,
+                 'adjusted_difference_pp':disc,'continuous_difference':fdisc})
+          PY
+      - name: Publish complete denominator support, adjusted estimates and source receipt
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g10_standardized_sign_benefit_20261107/
+          if git diff --cached --quiet; then
+            echo "G10 numerical results already present"
+          else
+            git commit -m 'results: archive G10 source-standardized 81-stratum diagnostic'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g10-all-81-rate-context-standardized-results
+          path: research/results/g10_standardized_sign_benefit_20261107/
+          if-no-files-found: warn
+          retention-days: 60
