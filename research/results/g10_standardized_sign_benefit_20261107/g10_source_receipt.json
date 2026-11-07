@@ -1,0 +1,28 @@
+{
+  "status": "G10_RATE_CONTEXT_STANDARDIZED_SOURCE_AUDIT_SUCCESS",
+  "input_g8_sha256": "b8f92ee81b863a4b9e66fe13e4f1260bab020742a60a51fa1708bd976a21c04b",
+  "n_source_structures": 256,
+  "n_rates": 27,
+  "n_contexts": 3,
+  "n_source_rate_context": 20736,
+  "n_new_sign": 782,
+  "n_new_sign_loss": 571,
+  "original_all_population_loss_fraction": 0.6656057098765432,
+  "primary_supported_strata": 50,
+  "primary_new_cases_covered": 782,
+  "primary_adjusted_loss_difference_pp": -4.925530385112786,
+  "primary_adjusted_loss_ci95_pp": [
+    -11.281359674324651,
+    0.8287416739042355
+  ],
+  "primary_valid_bootstrap": 10000,
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261107,
+  "posthoc": true,
+  "no_biological_reruns": true,
+  "no_field_causal_identification": true,
+  "results_sha256": {
+    "g10_all_81_strata.csv": "13109793b4f00d3f785bf418ecb8d503f2174b7e56a3e0d778608293fbb3da6b",
+    "g10_standardized_comparisons.csv": "f8ffa5ff0f2fe6deec1e8c30753e42244c928d2fc893796a598cd6ad76efc835"
+  }
+}
