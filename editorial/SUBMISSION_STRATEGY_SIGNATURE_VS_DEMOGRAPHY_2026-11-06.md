@@ -2,6 +2,17 @@
 
 **2026-11-06｜PR168の統合稿に、仕様固定後のG7種群比較まで反映した編集版。** 本文 [MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md](MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)、詳細 [SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md](SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)。R1–R4とP1の既存結果を保持し、固定予測を用いた野外との条件別の整合を加える。統合範囲と検証は [P1–G6統合記録](P1_G6_INTEGRATION_RECORD_2026-11-06.md) に記載する。雑誌への送信、共著者承認、DOI発行はしていない。
 
+## 2026-11-07 G8 addendum — current submission decision
+
+**The current manuscript and this addendum supersede the 6 November framing below wherever they differ.** The 6 November strategy notes remain as historical decisions, not an authority that overrides the now-completed G8 test.
+
+- **Now audited:** 256 legal original model backgrounds × 27 hypothetical attack/recruitment/conversion rate cells × 3 original developmental contexts × 4 vegetation-function arms = **82,944 genuine 80-year scenarios**, 663,552 model vertices. All 64 shards / 66 jobs, complete original-rate replay and manuscript source QA succeeded ([G8 full result](../research/G8_27RATE_VERIFIED_RESULT_2026-11-07.md)).
+- **Model-conditional finding:** four-sign generation gains average **+2.705 percentage points [2.021,3.410]**, while model mean log frog cohort declines **−0.04030 [−0.04918,−0.03109]**. This establishes a pattern–population mismatch over the fixed synthetic rate grid, not a fitted North American trophic mechanism.
+- **Bound of generality:** gains occur in 15/27 rate cells (negative 7, zero 5), strongest at weak attack (9/9 positive point estimates). The *fixed-rate* positive nonadditivity is **not** a general rate-grid result (pooled −0.709 points [−1.461,+0.010]). Wild rate distributions are unknown.
+- **Why conditionality matters:** model developmental context2 yields **+0.02521** mean log frog-cohort effect across all rates versus negative effects in contexts0/1. The separate P1 two-factor design identifies early salamander arrival and prolonged aquatic exposure at the originally fixed rate; G8 original contexts co-vary odonate duration.
+- **Current paper identity:** *Food webs that reproduce frog–predator association signs need not benefit frogs*. Pattern-oriented macroecology is the study type, with the generalizable model lesson as its result. R1 is a conditional adult-calling association, not a wild predation census. G5/G7 field prediction gates were unmet, and no demographic-acoustic calibration was achieved.
+- **Ecology Letters format:** body **4,943 words including headings**, Abstract **145 words**, four original main figures plus Supplement S1–S4. The manuscript is a coauthor-review **Draft**, not submitted or accepted. Novelty must be framed as a source-checked mechanistic counterexample, not an empirical explanation of measured association magnitudes. Main manuscript, Supplement S10 and revised cover letter are aligned. Other journal choices remain contingent on the same acknowledged field/model gap.
+
 ## 1. Scientific positioning — the one generalizable claim
 
 **What we demonstrably show within the frozen model family:**
