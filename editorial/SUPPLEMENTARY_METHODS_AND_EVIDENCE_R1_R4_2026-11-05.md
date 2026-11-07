@@ -1,6 +1,6 @@
 # Supplementary Information — third-guild acoustic context and stage-structured vegetation-mediated trophic pathways
 
-**Source-preserving integrated draft · 6 November 2026 · accompanies [shortened manuscript main text](MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)**
+**Source-preserving integrated draft · 7 November 2026 · accompanies [shortened manuscript main text](MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)**
 
 ## Supplementary Methods S1. Evidence levels and non-interchangeable source units
 
@@ -14,8 +14,9 @@
 | R2 joint mechanism proposal | One original-catalogue structure×developmental context×synthetic rate draw | 20,000 original proposals, from 3,600 legal model IDs | Whether four idealized source model contrast signs occur | Probability that a particular food-web model is the cause of field acoustics |
 | PR161 new-seed paired mechanism | One independent canonical background with four plant variants and three developmental repeats | **256 independently sampled backgrounds**, 3,072 biology proposals / 24,576 2×2×2 source vertices | Within-background response to model-coded vegetation pathway interventions | Wild predation or vegetation refuge rates |
 | PR162 genuine finite-N | One original plant/stage biology scenario×q×movement×stochastic seed | **24,576 simulated 80-year arms** from those same 256 independent backgrounds | Modelled frog counts and eight-patch colonization/extinction states | 24,576 independent natural ponds; calibrated long-term forecasts |
+| G8 complete rate generality | Same original 256 model backgrounds repeated across every synthetic rate/context/plant intervention | 82,944 80-year scenarios; 663,552 source corners; 27 rate cells | Whether model-generated four-sign gains and frog abundance effects change with hypothetical attack/recruitment/conversion | Calibration to wild predator rates, tadpole abundances or an independent field mechanism test |
 
-**Four distinct uncertainty types.** R1 source-route resampling intervals account conditionally for acoustic route clustering and hold SDM suitability fixed. G1/G2B/G5 block resampling intervals summarize prediction uncertainty under fixed original geographical folds and model specifications. G6 pointwise paired-block intervals additionally condition on the already saved fitted predictions, without refitting or multiplicity adjustment. R2 proposal fractions and their conditional Wilson intervals quantify finite Monte Carlo exploration of a synthetic model prior and are not a posterior from field observation. PR161/P1/PR162 intervals resample original simulated model backgrounds and are **not** biological field confidence intervals. We do not equate or pool them.
+**Four distinct uncertainty types.** R1 source-route resampling intervals account conditionally for acoustic route clustering and hold SDM suitability fixed. G1/G2B/G5 block resampling intervals summarize prediction uncertainty under fixed original geographical folds and model specifications. G6 pointwise paired-block intervals additionally condition on the already saved fitted predictions, without refitting or multiplicity adjustment. R2 proposal fractions and their conditional Wilson intervals quantify finite Monte Carlo exploration of a synthetic model prior and are not a posterior from field observation. PR161/P1/PR162/G8 intervals resample original simulated model backgrounds and are **not** biological field confidence intervals. We do not equate or pool them.
 
 ## Supplementary Methods S2. R1 data and measured acoustic response definitions
 
@@ -309,9 +310,57 @@ The [analysis plan](../research/P1_VEGETATION_BENEFIT_DECOMPOSITION_PLAN_2026-11
 
 The proposed regional hypothesis that earlier salamander breeding changes the vegetation–adult frog-calling association was **not tested against an invented proxy**. Original 15 NAAMP frog taxa, five *pond-breeding* caudates and two nonpond caudate controls were fixed to original main species keys. GBIF occurrence lifeStage facets for the United States, 2010–2025, passed all 22 API/source requests, but explicit egg-stage records were concentrated in two frog species (2,618 total; two taxa with ≥50 reports) and one pond caudate species (4,255 total; one taxon with ≥50 reports). The preregistered minimum was five frogs and three pond caudates with ≥50 records each. Therefore **G0 was NOT QUALIFIED** and no egg-onset region-year surface, no NAAMP vegetation×salamander-lead field interaction and no independent phenological field validation was performed. Early-season adult sightings are not a valid substitute for breeding onset. [G3 original metadata-only audited result #41976215608](https://github.com/zuizui0223/frogcs/actions/runs/41976215608) and [complete stop-gate report](../research/G3_GBIF_EGG_STAGE_G0_NOT_QUALIFIED_VERIFIED_2026-11-05.md).
 
+## Supplementary Methods S10. Complete same-structure rate generality and demographic mismatch (G8)
+
+**Question and pre-outcome protocol.** Rather than estimate any rate from observed calling data or select an optimally matching hypothetical rate, G8 asked whether model-defined frog-refuge and odonate-feeding-support features affect four idealized association directions across the entire synthetic 3×3×3 rate space. The [G8 protocol](../research/G8_27RATE_PAIRED_FACTORIAL_PROTOCOL_2026-11-07.md) was committed as \`4a6596c3\` before any new 80-year G8 result. It reuses the original 3,600 canonical model catalogue and 80-year seasonal kernel at \`5e2f0a87...\`, the same 256 source backgrounds drawn by seed 20261123, and all four *legal* vegetation function settings 00/10/01/11. Attack was 0.5/1.5/3.0, local recruitment fraction 0.25/0.50/0.75 and maturation conversion 2/4/8. For each rate, three original developmental contexts were kept, each with eight V/S/D source corners. No successful-background filtering, nuisance retuning, or new field-acoustic fitting occurred. The fully matched design consists of **256 sources ×27 rates ×3 contexts ×4 arms = 82,944 80-year scenarios**, and **663,552 original model corners**.
+
+**Fixed effects, uncertainty and checks.** For source s, rate r, context c and arm a, let I(s,r,c,a) indicate the strict four-log-sign criterion (OS−, OV−, SV+, OSV+, threshold 1e−6), and let L(s,r,c,a) be the mean of log aquatic-frog-cohort abundance over eight corners and the final 20 of 80 years. The paired compatibility gain is I(11)−I(00), the factorial nonadditivity is I(11)−I(10)−I(01)+I(00), and the demographic effect is L(11)−L(00), keeping the same source/rate/context. The viability sensitivity uses I×1{minimum F and S source survival ≥5%} for *both* arms on the complete source denominator (no post-selection). The 5% is an arbitrary synthetic criterion, not a field-estimated survival probability.
+
+All reported intervals use 10,000 background-resampling draws (seed 20261107), with the **same 256 source IDs** indexed across every rate/context/arm and 27 cells equally weighted. All 64 original true80 shards, all 66 GitHub workflow jobs, four-year old-source smoke gate, 27-rate parameter invariants and V=0 negative controls passed. The independent audit reproduced the original rate-matched PR161 source scenarios within maximum absolute error 1.78e−15. [Original completed run](https://github.com/zuizui0223/frogcs/actions/runs/42320535778); [retained audit receipt](../research/results/g8_27rate_paired_20261107/audited/g8_completion_receipt.json). No model was fitted to predator density or to adult-frog detection.
+
+**Table S10a. All 27 hypothetical rates.** Values are model-source pooled equally over three original developmental contexts; deltas compare both vegetation functions ON vs both OFF. Positive compatibility indicates more four-sign model outcomes; negative log F indicates lower mean aquatic frog cohort. The full source-paired 95% interval for every row, plus each separate developmental context, is in [the complete 654-line summary](../research/results/g8_27rate_paired_20261107/audited/g8_full_27rate_compatibility_abundance_summary.csv).
+
+| Attack | Local ρ | Conversion | Four-sign Δ (points) | Four-sign+artificial viability Δ (points) | Mean log F Δ |
+|---:|---:|---:|---:|---:|---:|
+| 0.5 | 0.25 | 2 | 0.13 | 0.13 | -0.0103 |
+| 0.5 | 0.25 | 4 | 4.04 | 4.04 | -0.0201 |
+| 0.5 | 0.25 | 8 | 7.94 | 7.94 | -0.0384 |
+| 0.5 | 0.50 | 2 | 5.86 | 5.86 | -0.0175 |
+| 0.5 | 0.50 | 4 | 13.15 | 13.15 | -0.0316 |
+| 0.5 | 0.50 | 8 | 9.11 | 8.85 | -0.0914 |
+| 0.5 | 0.75 | 2 | 15.36 | 15.36 | -0.0076 |
+| 0.5 | 0.75 | 4 | 9.51 | 9.51 | -0.0296 |
+| 0.5 | 0.75 | 8 | 5.34 | 3.26 | -0.1843 |
+| 1.5 | 0.25 | 2 | 0.00 | 0.00 | -0.0121 |
+| 1.5 | 0.25 | 4 | 0.00 | 0.00 | -0.0201 |
+| 1.5 | 0.25 | 8 | 0.39 | 0.00 | -0.0375 |
+| 1.5 | 0.50 | 2 | 0.00 | 0.00 | -0.0209 |
+| 1.5 | 0.50 | 4 | -0.52 | 0.13 | -0.0382 |
+| 1.5 | 0.50 | 8 | -0.13 | 0.00 | -0.0695 |
+| 1.5 | 0.75 | 2 | 1.04 | 1.04 | -0.0102 |
+| 1.5 | 0.75 | 4 | 2.08 | 1.56 | -0.0679 |
+| 1.5 | 0.75 | 8 | 1.82 | 0.00 | -0.0919 |
+| 3.0 | 0.25 | 2 | 0.00 | 0.00 | -0.0089 |
+| 3.0 | 0.25 | 4 | 0.00 | 0.00 | -0.0150 |
+| 3.0 | 0.25 | 8 | -0.78 | 0.00 | -0.0334 |
+| 3.0 | 0.50 | 2 | -0.91 | 0.00 | -0.0157 |
+| 3.0 | 0.50 | 4 | -1.04 | 0.00 | -0.0400 |
+| 3.0 | 0.50 | 8 | -0.78 | 0.00 | -0.0451 |
+| 3.0 | 0.75 | 2 | -0.65 | -0.13 | -0.0192 |
+| 3.0 | 0.75 | 4 | 1.82 | 0.00 | -0.0639 |
+| 3.0 | 0.75 | 8 | 0.26 | 0.00 | -0.0481 |
+
+All 27 rates, all outcomes: [complete input to Table S10a](../research/results/g8_27rate_paired_20261107/audited/g8_27rate_descriptive_counts.csv); [20,736 paired source×rate×context contrasts](../research/results/g8_27rate_paired_20261107/audited/g8_all_source_rate_context_paired.csv.gz). Figure S4 plots all cells with pointwise 95% intervals rather than filtering to favorable rate cells.
+
+**Pooled full-grid effects.** Across equal-weight rate/context conditions, the 4-sign 11−00 gain is **+2.705 points [2.021,3.410]**, while the survival-filtered acceptance gain is **+2.619 points [2.054,3.226]**. The corresponding mean log aquatic frog-cohort difference is **−0.04030 [−0.04918,−0.03109]**. Factorial nonadditivity for 4-sign compatibility is **−0.709 points [−1.461,+0.010]**, so the previous exploratory-rate positive nonadditivity does not generalize across the entire rate grid. Of 27 cells, compatibility gain is positive in 15, negative in 7 and exactly zero in 5; nine pointwise intervals exclude zero positively and three exclude zero negatively, without multiplicity adjustment. The gain is positive in all nine tested rate cells with attack 0.5, not all rate cells.
+
+**Developmental-context heterogeneity.** Across the entire grid, equal-weight rate/context source means of log F differences are original context0 **−0.07227 [−0.08327,−0.06103]**, context1 **−0.07384 [−0.08525,−0.06217]**, and context2 **+0.02521 [+0.01507,+0.03543]**. These context-pooled intervals were calculated after the initial complete G8 audit with the same fixed source-resampling indices, and are presented as supplementary descriptive comparisons. Context2 was positive in 20 of 27 rate cells, but original contexts change odonate and salamander developmental features together. The independent salamander arrival×duration identification is specific to P1's controlled 2×2 experiment, not this rate grid.
+
+**Interpretation boundary.** G8 corroborates a model-internal divergence between compatibility and frog population benefits. The field measurements are adult strong calling, environmental suitability of odonate/caudate taxa and a 3-km flooded-vegetation proxy, not direct pond larval abundance or species-specific stage-structured predation. The model-generated four-sign criterion does not quantitatively fit those acoustic data. Held-out G5 and G7 predictive gates remain unmet. Across rate cells, 95% intervals are pointwise synthetic-background resampling ranges; 27-rate means are correlated, not 27 independent biological studies. No conclusion about the true North American pond mechanism, real attack-rate range or field demographic benefit follows from this synthetic extension.
+
 ## Supplementary figure inventory and reproducibility
 
-**Four main figure candidates have been assembled** from nine previously source-audited panels in [successful Actions #42169682447](https://github.com/zuizui0223/frogcs/actions/runs/42169682447). The [assembly record](FOUR_FIGURE_SOURCE_ASSEMBLY_RECORD_2026-11-06.md) identifies their original sources and composite SHA256 receipt. They remain candidates for author and journal production review, not approved print proofs. G6 and G7 are Supplementary Figures S1 and S2, preserving the four-figure R1/mechanism/P1/R4 structure.
+**Four main figure candidates have been assembled** from nine previously source-audited panels in [successful Actions #42169682447](https://github.com/zuizui0223/frogcs/actions/runs/42169682447). The [assembly record](FOUR_FIGURE_SOURCE_ASSEMBLY_RECORD_2026-11-06.md) identifies their original sources and composite SHA256 receipt. They remain candidates for author and journal production review, not approved print proofs. G6, G7, P1 decomposition and G8 rate sensitivity are Supplementary Figures S1–S4, preserving the four-figure R1/mechanism/P1/R4 structure.
 
 | Output | Independently source-backed panels / data | Original run or code |
 |---|---|---|
@@ -322,6 +371,7 @@ The proposed regional hypothesis that earlier salamander breeding changes the ve
 | [Supplementary Figure S1](../research/results/g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png) | G6 saved-prediction context gains and original R1 rank-contrast diagnostic | [G6 source/replay receipt](../research/results/g6_observation_context_20261106/G6_source_and_replay_receipt.json) and [validation](../research/results/g6_observation_context_20261106/G6_validation_record.json) |
 | [Supplementary Figure S2](../research/results/g7_trait_composition_20261106/G7_trait_composition_bridge.png) | Fixed G7 species-group coefficient intervals and held-out NLL gains | [Execution receipt](../research/results/g7_trait_composition_20261106/G7_execution_receipt.json) and [independent validation](../research/results/g7_trait_composition_20261106/G7_independent_validation.json) |
 | [Supplementary Figure S3](../research/results/p1_vegetation_benefit_20261106/P1_vegetation_benefit_decomposition.png) | Complete P1 post-hoc decomposition and LS→EL contributions | [All32 estimates](../research/results/p1_vegetation_benefit_20261106/p1_decomposition_summary.csv) and [independent verification](../research/results/p1_vegetation_benefit_20261106/p1_independent_validation.json) |
+| [Supplementary Figure S4](../research/results/g8_27rate_paired_20261107/audited/G8_27rate_pattern_vs_population.png) | Complete original-background 27 hypothetical rate cells, paired 4-sign compatibility versus log frog-cohort responses | [G8 64-shard audit](https://github.com/zuizui0223/frogcs/actions/runs/42320535778) and [all 654 summary estimates](../research/results/g8_27rate_paired_20261107/audited/g8_full_27rate_compatibility_abundance_summary.csv) |
 | Supplementary G1 | O×S increment under additive vs flexible shared environmental heldout prediction | [G1 source](https://github.com/zuizui0223/frogcs/actions/runs/41389390897) |
 | Supplementary G2 | Adult strong vs any vs conditional strong acoustic geographic contrasts | [G2 source](https://github.com/zuizui0223/frogcs/actions/runs/41562618381) |
 | Supplementary G2B | Two-part adult calling heldout O×S increments and factored vs direct strong score comparison | [G2B models](https://github.com/zuizui0223/frogcs/actions/runs/41921634037) and [figure-only reuse](https://github.com/zuizui0223/frogcs/actions/runs/41922244821) |
