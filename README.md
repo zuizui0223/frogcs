@@ -4,7 +4,8 @@
 
 ## 現在の成果物
 
-- [現行の統合原稿：R1–R4・P1・G4–G13](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [現行の統合原稿：R1–R4・P1・G4–G14](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [G14：元のABC794採択モデルと北米4,248地点の地理的発声予測を接続](research/G14_ABC_POM_FIELD_ACOUSTIC_ENSEMBLE_VERIFIED_RESULT_2026-11-07.md)
 - [G13：ABC型POMで率・発育条件を調整しても残る食物網構造の識別力](research/G13_ABC_POM_CONDITIONAL_STRUCTURE_NULL_VERIFIED_RESULT_2026-11-07.md)
 - [G12：ABC型POM 20,000提案のprior感度・647機構の識別可能性](research/G12_ABC_POM_PRIOR_IDENTIFIABILITY_VERIFIED_RESULT_2026-11-07.md)
 - [G11：旧256構造と重複しない新256構造で再現した肯定結果](research/G11_DISJOINT_STRUCTURE_HOLDOUT_VERIFIED_RESULT_2026-11-07.md)
@@ -24,6 +25,8 @@
 **ABC型POMの追加監査G12では、元の794/20,000提案が647構造に分散し、仮想率priorの再重み付けで4符号採択率が1.09〜6.85%へ変わりました。** 採択機構は自然の事後確率でなく、モデル内の候補です。G11では別の256構造において4符号生成増加とカエル量低下の両方向が再現されました。
 
 **G13の条件付き帰無では、4符号に適合する647モデルIDは、元81率×発育条件だけで採択が決まる場合の平均712より少なく（p=0.0002）、構造の選別情報が残りました。** 一方、647種類の候補が残り、自然湿地の機構や野外ABC事後確率は特定できません。
+
+**G14では、ABCで採択した794提案の平均応答形を地理的に分離した野外データへ適用し、uniform背景でだけ環境モデルへの追加予測改善が得られました（NLL改善+0.001155［+0.000253,+0.002427］）。target-group背景と自由な4交互作用モデルに対する頑健な優位性は確認できず、事前固定した両背景ゲートは不合格です。**
 
 野外とのG4–G7比較では機構を選べる確かな予測改善には届いておらず、[G7の結果・固定仕様・不確実性](research/G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)も保持しています。鳴き声は繁殖成功、適合度は捕食者密度、景観植生は池内の隠れ場の直接測定ではありません。
 

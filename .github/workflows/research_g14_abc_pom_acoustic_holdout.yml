@@ -1,0 +1,124 @@
+name: Frogcs G14 original ABC ensemble vs geographic acoustic heldouts
+
+on:
+  push:
+    branches:
+      - research/g14-abc-ensemble-acoustic-holdout-20261107
+    paths:
+      - research/G14_ABC_POM_FIELD_ACOUSTIC_ENSEMBLE_PROTOCOL_2026-11-07.md
+      - research/scripts/g14_abc_ensemble_geographic_acoustic_holdout.py
+      - research/scripts/test_g14_abc_ensemble_geographic_acoustic_holdout.py
+      - .github/workflows/research_g14_abc_pom_acoustic_holdout.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-R2-ABC-vs-R1-field:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen original numerical packages
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - name: Check balanced original eight-corner model interaction and source template definitions
+        run: python -m unittest discover -s research/scripts -p 'test_g14_abc_ensemble_geographic_acoustic_holdout.py' -v
+      - name: Read original R2 source and original R1 field; evaluate five geographic folds and both SDM backgrounds
+        run: |
+          python -u research/scripts/g14_abc_ensemble_geographic_acoustic_holdout.py \
+            --out research/results/g14_abc_pom_field_ensemble_20261107
+      - name: Independently recompute NLL from each original heldout site and verify all fixed comparison gates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          import numpy as np,pandas as pd
+          p=Path('research/results/g14_abc_pom_field_ensemble_20261107')
+          r=json.loads((p/'G14_source_holds_and_claim_limits.json').read_text())
+          assert r['status']=='G14_ORIGINAL_ABC_ENSEMBLE_GEOGRAPHIC_ACOUSTIC_HOLDOUT_SOURCE_AUDIT_PASS'
+          assert (r['field_sites'],r['field_visits'],r['field_strong_events'])==(4248,63180,36554)
+          assert (r['field_routes'],r['geographic_blocks'],r['original_folds'])==(432,56,5)
+          assert (r['original_ABC_proposals'],r['original_ABC_accepted'],
+                  r['original_ABC_accepted_viable'],r['original_ABC_rejected'])==(20000,794,426,19206)
+          assert r['source_predictor_in_saturated_interaction_span']
+          assert not r['no_new_field_observations'] is False
+          assert r['no_natural_predator_mechanism_identification'] and r['no_empirical_ABC_posterior']
+          for file,sha in r['source_file_sha256'].items():
+              assert hashlib.sha256((p/file).read_bytes()).hexdigest()==sha
+          d=pd.read_csv(p/'G14_all_4248_heldout_site_predictions.csv.gz')
+          assert len(d)==4248*2*6 and not d.duplicated(['site','background','candidate']).any()
+          assert d.groupby(['background','candidate']).site.nunique().eq(4248).all()
+          assert d.groupby(['background','candidate']).n_completed.sum().eq(63180).all()
+          assert d.groupby(['background','candidate']).k_strong.sum().eq(36554).all()
+          pred=d.predicted.to_numpy(float)
+          k=d.k_strong.to_numpy(int);n=d.n_completed.to_numpy(int)
+          assert np.isfinite(pred).all() and (pred>0).all() and (pred<1).all()
+          original_nll=-(k*np.log(pred)+(n-k)*np.log1p(-pred))
+          d['independently_recalculated_nll']=original_nll
+          scores=pd.read_csv(p/'G14_original_acoustic_NLL_scores.csv')
+          assert len(scores)==2*6
+          for row in scores.itertuples(index=False):
+              subset=d[(d.background==row.background)&(d.candidate==row.candidate)]
+              nll=subset.independently_recalculated_nll.sum()/subset.n_completed.sum()
+              assert abs(nll-row.nll_per_visit)<1e-12,(row.background,row.candidate,nll,row.nll_per_visit)
+          comparisons=pd.read_csv(p/'G14_block_paired_all_source_template_competitions.csv')
+          assert len(comparisons)==2*2*4
+          assert comparisons.source_blocks.eq(56).all() and comparisons.original_visits.eq(63180).all()
+          for row in comparisons.itertuples(index=False):
+              a=d[(d.background==row.background)&(d.candidate==row.baseline)]
+              b=d[(d.background==row.background)&(d.candidate==row.mechanism)]
+              loss=(a.independently_recalculated_nll.sum()-b.independently_recalculated_nll.sum())/63180
+              assert abs(loss-row.gain_nll_per_visit)<1e-12
+          for baseline,flag in [('flex_add','improves_flexible_environment_additive_in_both_backgrounds'),
+                               ('flex_all','beats_unrestricted_four_interactions_in_both_backgrounds')]:
+              subset=comparisons[(comparisons.baseline==baseline)&
+                                 (comparisons.mechanism=='ABC_accepted')]
+              assert len(subset)==2
+              assert bool(subset.block_bootstrap95_low.gt(0).all())==r['comparison_gates'][flag]
+          assert r['comparison_gates']['joint_strong_predictive_compatibility']==all([
+               r['comparison_gates']['improves_flexible_environment_additive_in_both_backgrounds'],
+               r['comparison_gates']['beats_unrestricted_four_interactions_in_both_backgrounds']])
+          coefs=pd.read_csv(p/'G14_original_ABC_source_templates.csv')
+          assert tuple(coefs.template)==tuple(r['source_templates'])
+          assert tuple(coefs.source_n)==(794,426,20000,19206)
+          folds=pd.read_csv(p/'G14_5fold_source_slope_fits.csv')
+          assert len(folds)==2*5*6
+          assert folds[folds.candidate.str.startswith('ABC_')].source_beta.ge(-1e-12).all()
+          # Original two backgrounds are the same NAAMP sites, not independent study units.
+          for bg,gg in d.groupby('background'):
+              assert gg.groupby('spatial_block').fold.nunique().eq(1).all()
+              assert gg.spatial_block.nunique()==56
+          print('G14_ORIGINAL_20K_SOURCE_4248_NAAMP_56BLOCK_ACOUSTIC_NLL_INDEPENDENT_QA_SUCCESS',
+                json.dumps(r['comparison_gates']))
+          PY
+      - name: Archive full source-backed field predictions, score comparisons and complete success/failure receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g14_abc_pom_field_ensemble_20261107/
+          if git diff --cached --quiet; then
+            echo "No changed G14 source results"
+          else
+            git commit -m "results: preserve G14 ABC model-native ensemble geographic acoustic tests and field nulls"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g14-full-ABC-ensemble-original-NAAMP-geographic-holdout
+          path: research/results/g14_abc_pom_field_ensemble_20261107/
+          if-no-files-found: warn
+          retention-days: 60
