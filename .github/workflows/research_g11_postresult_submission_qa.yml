@@ -1,0 +1,51 @@
+name: G11 full source and submission postresult QA
+
+on:
+  push:
+    branches:
+      - research/g11-disjoint-structure-holdout-20261107
+    paths:
+      - .github/workflows/research_g11_postresult_submission_qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate-all-g11-and-prior-source-claims:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Frozen numerical environment
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Check all original 44 claims, 13 safeguards, 64 G11 shards, 27 cells, complete SHA receipts and 5k/150-word limits
+        run: python -u research/scripts/qa_g11_source_submission_20261107.py
+      - name: Archive only complete positive/negative evidence and fully passed QA
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g11_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo "G11 publication-source QA already archived"
+          else
+            git commit -m "qa: archive complete G11 44claim and 13-structural manuscript source audit"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g11-44claim-27rate-letter-manuscript-QA
+          path: research/results/g11_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 60
