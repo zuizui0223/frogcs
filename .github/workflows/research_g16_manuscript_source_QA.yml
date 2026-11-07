@@ -1,0 +1,187 @@
+name: Frogcs G16 complete original 44-claim and cross-SDM geographic source manuscript QA
+on:
+  push:
+    branches:
+      - research/g16-sdm-background-reversal-audit-20261108
+    paths:
+      - .github/workflows/research_g16_manuscript_source_QA.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-R1-R4-P1-and-G16-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Recalculate original 44 source-backed field/mechanism/P1 manuscript claims and 13 structural checks
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g16_submission_QA_20261108
+      - name: Independently recompute G16 source geographic and landscape decomposition and 9999 paired-block intervals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re
+          import numpy as np,pandas as pd
+          from scipy.stats import spearmanr
+          root=Path('.')
+          p=root/'research/results/g16_sdm_background_reversal_20261108/audited'
+          o=root/'research/results/g16_submission_QA_20261108'
+          g15=root/'research/results/g15_abc_acoustic_specificity_20261107/audited'
+          rec=json.loads((p/'G16_complete_original_source_receipt.json').read_text())
+          previous=json.loads((g15/'G15_full_source_audit_receipt.json').read_text())
+          qa=json.loads((o/'submission_source_QA_receipt.json').read_text())
+          assert rec['status']=='G16_G15_SDM_BACKGROUND_REVERSAL_SOURCE_AUDIT_SUCCESS'
+          assert rec['original_G15_run']==42379659618
+          assert (rec['original_heldout_source_site_rows'],rec['original_ABC_source_templates'],
+                  rec['original_199_null_templates'])==(1707696,201,199)
+          assert (rec['original_56_geographical_blocks'],rec['original_NAAMP_sites'],
+                  rec['original_completed_visits'],rec['original_vegetated_landscape_sites'])==(56,4248,63180,506)
+          assert rec['source_G15_sha256']==hashlib.sha256(
+              (g15/'G15_full_source_audit_receipt.json').read_bytes()).hexdigest()
+          assert rec['source_G15_archive_replay_max_abs']<1e-10
+          assert len(rec['original_4_shard_SHA_receipts'])==4
+          assert rec['no_new_model_fitting'] and rec['posthoc_followup']
+          assert not rec['original_G15_dual_background_specificity_gate_pass']
+          assert not rec['original_G14_dual_background_field_gate_pass']
+          assert not previous['source_specificity_fixed_joint_gate_pass']
+          for file,digest in rec['G16_files_sha256'].items():
+              assert hashlib.sha256((p/file).read_bytes()).hexdigest()==digest,file
+          site=pd.read_csv(p/'G16_4248_original_site_pair_diagnostic.csv.gz')
+          block=pd.read_csv(p/'G16_56block_ABC_minus_mean_null_gains.csv')
+          loo=pd.read_csv(p/'G16_56_block_leave_one_out.csv')
+          boot=pd.read_csv(p/'G16_geographic_bootstrap_9999_summary.csv')
+          V=pd.read_csv(p/'G16_original_V0_V1_landscape_contributions.csv')
+          ranks=pd.read_csv(p/'G16_SDM_predictor_rank_concordance.csv')
+          stress=pd.read_csv(p/'G16_top_1_3_5_block_influence.csv')
+          assert len(site)==4248 and site.site.is_unique
+          assert len(block)==len(loo)==56 and block.spatial_block.is_unique
+          assert len(V)==4 and len(boot)==3 and len(ranks)==6
+          assert len(stress)==3 and set(stress.blocks_removed)=={1,3,5}
+          assert site.n.sum()==63180 and site.k.sum()==36554 and site.V.sum()==506
+          assert block.n_completed.sum()==63180 and block.n_V1.sum()==506
+          assert V.groupby('background').completed_visits.sum().eq(63180).all()
+          assert V.groupby('background').sites.sum().eq(4248).all()
+          assert loo.retained_blocks.eq(55).all()
+          assert loo.uniform_gain_after_removal.gt(0).all()
+          assert loo.target_group_gain_after_removal.lt(0).all()
+          assert loo.paired_background_difference_after_removal.gt(0).all()
+          summary=boot.set_index('metric')
+          original=pd.read_csv(g15/'G15_G14_signonly_vs_ABC_null_comparison.csv').set_index('background')
+          for bg in ('uniform','target_group'):
+              observed=site[bg+'_gain_sum'].sum()/63180
+              compare=(original.loc[bg,'null_mean_NLL']-
+                       original.loc[bg,'accepted_ABC_NLL'])
+              assert abs(observed-compare)<1e-10
+              assert abs(block[bg+'_gain_sum'].sum()/63180-observed)<1e-12
+              assert abs(V[V.background==bg].abc_minus_mean_null_contribution_to_whole_NLL_per_visit.sum()-observed)<1e-12
+              assert abs(summary.loc[bg+'_ABC_minus_mean_null_gain','estimate']-observed)<1e-12
+          delta=(site.uniform_gain_sum-site.target_group_gain_sum).sum()/63180
+          assert abs(delta-summary.loc['uniform_minus_target_background_difference','estimate'])<1e-12
+          assert np.isclose(delta,0.0006079140333429448,rtol=0,atol=1e-12)
+          # Separate implementation of the fixed common-block resampling:
+          ordered=block.sort_values('spatial_block')
+          i=np.random.default_rng(20261108).integers(0,56,size=(9999,56))
+          n=ordered.n_completed.to_numpy(float)
+          au=ordered.uniform_gain_sum.to_numpy(float)
+          at=ordered.target_group_gain_sum.to_numpy(float)
+          u=au[i].sum(axis=1)/n[i].sum(axis=1)
+          t=at[i].sum(axis=1)/n[i].sum(axis=1)
+          for name,values in [
+             ('uniform_ABC_minus_mean_null_gain',u),
+             ('target_group_ABC_minus_mean_null_gain',t),
+             ('uniform_minus_target_background_difference',u-t)]:
+              lower,upper=np.quantile(values,[.025,.975])
+              z=summary.loc[name]
+              assert abs(lower-z.pointwise_MC95_low)<1e-12
+              assert abs(upper-z.pointwise_MC95_high)<1e-12
+              assert z.bootstrap_draws==9999
+          v0=V[V.landscape_flooded_vegetation==0].set_index('background')
+          v1=V[V.landscape_flooded_vegetation==1].set_index('background')
+          contribution=float(v0.loc['uniform','abc_minus_mean_null_contribution_to_whole_NLL_per_visit']-
+                             v0.loc['target_group','abc_minus_mean_null_contribution_to_whole_NLL_per_visit'])
+          assert abs(contribution/delta-0.9560575865235344)<1e-10
+          assert abs((v1.loc['uniform','abc_minus_mean_null_contribution_to_whole_NLL_per_visit']-
+                      v1.loc['target_group','abc_minus_mean_null_contribution_to_whole_NLL_per_visit'])+
+                      contribution-delta)<1e-12
+          for guild in ('O','S'):
+              a=site[f'{guild}_rank_uniform']
+              b=site[f'{guild}_rank_target_group']
+              r=float(spearmanr(a,b).statistic)
+              q=ranks[(ranks.group=='all')&(ranks.guild==guild)].iloc[0]
+              assert abs(r-q.Spearman_cross_SDM_rank)<1e-12
+          assert qa['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert qa['independently_recomputed_numerical_claims']==44
+          assert len(qa['document_structural_checks'])==13
+          assert all(qa['document_structural_checks'].values())
+          assert (qa['main_words'],qa['abstract_words'])==(4969,148)
+          main=root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          si=root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          letter=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          report=root/'research/G16_SDM_BACKGROUND_REVERSAL_VERIFIED_RESULT_2026-11-08.md'
+          assert 'Supplementary Methods S18' in si.read_text()
+          assert '4,969 words' in letter.read_text() and '148 words' in letter.read_text()
+          for doc in (main,si,letter,report):
+              text=doc.read_text()
+              assert '95.6' in text and '56' in text and 'target-group' in text
+          for doc in (main,si,report):
+              for target in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if target.startswith(('https://','http://','mailto:','#')): continue
+                  rel=target.split('#',1)[0]
+                  if rel and '?' not in rel:
+                      assert (doc.parent/rel).exists(),(str(doc),target)
+          receipt=dict(status='G16_ORIGINAL_1707696_SITE_56BLOCK_44_CLAIM_LETTER_QA_SUCCESS',
+                previous_original_claim_checks=44,
+                previous_manuscript_structure_checks=13,
+                main_body_words=qa['main_words'],abstract_words=qa['abstract_words'],
+                original_site_predictions=1707696,original_geographic_blocks=56,
+                original_source_V0_sites=3742,original_source_V1_sites=506,
+                original_G15_ABC_199_null_rank_reversal_preserved=True,
+                paired_background_gain_difference=delta,
+                V0_contribution_fraction=contribution/delta,
+                all_56_single_block_removals_preserve_reversal=True,
+                all_9999_block_bootstraps_independently_reproduced=True,
+                robust_dual_background_field_gate_pass=False,
+                original_wild_trophic_mechanism_identified=False,
+                submitted_to_journal=False)
+          (o/'G16_manuscript_source_QA_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print('G16_ORIGINAL_SITE_AND_PAIRED_BLOCK_44_CLAIM_EDITORIAL_QA_SUCCESS',
+                json.dumps(receipt))
+          PY
+      - name: Archive verified G16 original and manuscript source receipt
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g16_submission_QA_20261108/
+          if git diff --cached --quiet; then
+            echo 'G16 original source manuscript receipt unchanged'
+          else
+            git commit -m 'qa: archive G16 original 1707696 predictions, 56-block and 44 paper claim checks'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g16-original-1707696-prediction-44claim-editorial-QA
+          path: research/results/g16_submission_QA_20261108/
+          if-no-files-found: warn
+          retention-days: 60
