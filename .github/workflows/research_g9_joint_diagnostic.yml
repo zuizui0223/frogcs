@@ -73,7 +73,8 @@ jobs:
             echo 'No new results'
           else
             git commit -m 'results: archive complete G9 sign/benefit joint source diagnostics'
-            git push
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
           fi
       - if: always()
         uses: actions/upload-artifact@v4
