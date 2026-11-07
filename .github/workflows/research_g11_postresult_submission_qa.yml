@@ -6,6 +6,7 @@ on:
       - research/g11-disjoint-structure-holdout-20261107
     paths:
       - .github/workflows/research_g11_postresult_submission_qa.yml
+      - research/scripts/qa_g11_source_submission_20261107.py
   workflow_dispatch:
 
 permissions:
