@@ -113,7 +113,12 @@ jobs:
               assert line.source_selection_specific_ABC_better_signonly==(a<line.signonly_NLL)
               assert abs(line.ABC_minus_signonly_NLL-(a-line.signonly_NLL))<1e-12
               assert r['original_G14_NLL_replay_error_by_background'][line.background]<1e-6
-              assert abs(a-g14['source_file_sha256'].__len__())>0 # no field model identity is inferred from a count
+              saved_g14=pd.read_csv(
+              ROOT/'research/results/g14_abc_pom_field_ensemble_20261107/G14_original_acoustic_NLL_scores.csv')
+          source_g14=saved_g14[(saved_g14.background==line.background)&
+                               (saved_g14.candidate=='ABC_accepted')]
+          assert len(source_g14)==1
+          assert abs(a-float(source_g14.nll_per_visit.iloc[0]))<1e-6
           u=comp.set_index('background')
           assert u.loc['uniform','null_NLL_less_or_equal_ABC']==0
           assert u.loc['target_group','null_NLL_less_or_equal_ABC']==199
