@@ -1,0 +1,145 @@
+name: G10 fully sourced paper, rate-context and submission QA
+
+on:
+  push:
+    branches:
+      - research/g10-rate-context-adjusted-pattern-benefit-20261107
+    paths:
+      - .github/workflows/research_g10_submission_source_qa.yml
+      - research/scripts/audit_submission_claims_20261105.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  original-source-and-G10-manuscript-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Reaudit all 44 original R1-R4 and P1 claims, 13 structure safeguards and Letter limits
+        run: |
+          python research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g10_submission_QA_20261107
+      - name: Independently check G10 strata, original G8 data hash, G9 tally and all paper wording
+        run: |
+          python - <<'PY'
+          import pandas as pd, numpy as np, json, hashlib, re
+          from pathlib import Path
+          root=Path(".")
+          o=root/"research/results/g10_submission_QA_20261107"
+          g8=root/"research/results/g8_27rate_paired_20261107/audited"
+          g9=root/"research/results/g9_pattern_demography_20261107"
+          g10=root/"research/results/g10_standardized_sign_benefit_20261107"
+          receipt=json.loads((g10/"g10_source_receipt.json").read_text())
+          old=json.loads((g8/"g8_completion_receipt.json").read_text())
+          g9rec=json.loads((g9/"g9_completion_receipt.json").read_text())
+          assert receipt["status"]=="G10_RATE_CONTEXT_STANDARDIZED_SOURCE_AUDIT_SUCCESS"
+          assert receipt["input_g8_sha256"]==old["output_sha256"]["g8_all_source_rate_context_paired.csv.gz"]
+          assert receipt["input_g8_sha256"]==g9rec["input_sha256"]
+          assert (receipt["n_source_structures"],receipt["n_rates"],receipt["n_contexts"])==(256,27,3)
+          assert (receipt["n_new_sign"],receipt["n_new_sign_loss"])==(782,571)
+          assert (receipt["primary_supported_strata"],receipt["primary_new_cases_covered"])==(50,782)
+          assert receipt["primary_valid_bootstrap"]==10000 and receipt["posthoc"]
+          assert receipt["no_biological_reruns"] and receipt["no_field_causal_identification"]
+          assert receipt["primary_adjusted_loss_ci95_pp"][0] < 0 < receipt["primary_adjusted_loss_ci95_pp"][1]
+          for f,sha in receipt["results_sha256"].items():
+              assert hashlib.sha256((g10/f).read_bytes()).hexdigest()==sha
+          d=pd.read_csv(g8/"g8_all_source_rate_context_paired.csv.gz")
+          assert len(d)==20736 and not d.duplicated(["source_id","rate_id","context_id"]).any()
+          new=d.compatibility==1
+          loss=d.frog_log_cohort<0
+          assert (new.sum(),(new&loss).sum(),loss.sum())==(782,571,13802)
+          # Independent basic rate/context standardization; do not import G10 implementation.
+          accum=[]
+          for _,q in d.groupby(["rate_id","context_id"]):
+              a=q[q.compatibility==1]
+              b=q[q.compatibility!=1]
+              if len(a) and len(b):
+                  accum.append((len(a),float((a.frog_log_cohort<0).mean()),
+                                float((b.frog_log_cohort<0).mean())))
+          w=np.asarray(accum)
+          assert len(w)==50 and int(w[:,0].sum())==782
+          diff=100*np.average(w[:,1]-w[:,2],weights=w[:,0])
+          assert abs(diff-receipt["primary_adjusted_loss_difference_pp"])<1e-11
+          s=pd.read_csv(g10/"g10_standardized_comparisons.csv")
+          p=s[(s.group=="all")&(s.comparator=="other")&(s.support_rule=="any")].iloc[0]
+          assert abs(float(p.adjusted_loss_difference_pp)-diff)<1e-11
+          assert abs(float(p.p_loss_new)-571/782)<1e-12
+          assert len(s)==9 and int(p.bootstrap_valid)==10000
+          assert s.query("group=='all' and comparator=='unchanged'").new_cases_covered.iloc[0]==782
+          assert s.query("support_rule=='5_each'").new_cases_covered.iloc[0]==751
+          ss=pd.read_csv(g10/"g10_all_81_strata.csv")
+          assert len(ss)==81 and ss.comparable.sum()==50
+          assert ss.n_new.sum()==782 and ss.n_loss_new.sum()==571
+          legacy=json.loads((o/"submission_source_QA_receipt.json").read_text())
+          assert legacy["status"]=="R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS"
+          assert legacy["independently_recomputed_numerical_claims"]==44
+          assert len(legacy["document_structural_checks"])==13
+          assert all(legacy["document_structural_checks"].values())
+          assert legacy["main_words"]==4978 and legacy["abstract_words"]==143
+          main=root/"editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md"
+          si=root/"editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md"
+          letter=root/"editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md"
+          report=root/"research/G10_RATE_CONTEXT_STANDARDIZED_G9_VERIFIED_RESULT_2026-11-07.md"
+          for f in (main,si,letter,report):
+              t=f.read_text()
+              assert "782" in t and "571" in t and "−4.93" in t,f
+          assert "Supplementary Methods S12" in si.read_text()
+          assert "4,978 words" in letter.read_text() and "143 words" in letter.read_text()
+          assert "not a clear excess loss" in main.read_text()
+          for f in (main,si,report):
+              for dest in re.findall(r'\]\(([^)]+)\)',f.read_text()):
+                  if dest.startswith(("https://","http://","mailto:","#")):continue
+                  dest=dest.split("#",1)[0]
+                  if not dest or "?" in dest:continue
+                  assert (f.parent/dest).is_file(),(str(f),dest)
+          result={"status":"G10_MANUSCRIPT_ORIGINAL_44_AND_ADJUSTED_81_STRATA_QA_SUCCESS",
+                  "main_words":legacy["main_words"],"abstract_words":legacy["abstract_words"],
+                  "existing_source_claims":44,"existing_structure_checks":13,
+                  "rate_context_strata":81,"supported_strata":50,
+                  "g9_event_count":782,"g9_frog_loss_count":571,
+                  "g10_adjusted_risk_difference_pp":float(p.adjusted_loss_difference_pp),
+                  "g10_risk_difference_source_ci95":[float(p.adjusted_loss_low_pp),
+                                                      float(p.adjusted_loss_high_pp)],
+                  "no_field_predator_identification":True,"submitted":False}
+          (o/"G10_manuscript_QA_receipt.json").write_text(json.dumps(result,indent=2)+"\n")
+          print("G10_PAPER_COMPLETE_QA_SUCCESS",json.dumps(result))
+          PY
+      - name: Preserve source audit evidence on this PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g10_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo "G10 source QA already archived"
+          else
+            git commit -m "qa: archive verified G10 model and manuscript cross-checks"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g10-manuscript-44claim-81strata-QA
+          path: research/results/g10_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 60
