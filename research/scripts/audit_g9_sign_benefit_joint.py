@@ -23,8 +23,7 @@ def run(source, out):
                                 ["new","lost"],default="unchanged")
     x["frog_class"] = np.select([x.frog_log_cohort>0,x.frog_log_cohort<0],
                                 ["gain","loss"],default="zero")
-    grid = x.pivot_table(index=["sign_class","frog_class"],values="source_id",
-                         aggfunc="size").rename("count").reset_index()
+    grid = x.groupby(["sign_class","frog_class"],observed=True).size().rename("count").reset_index()
     out.mkdir(parents=True,exist_ok=True)
     grid.to_csv(out/"g9_full_joint_sign_benefit.csv",index=False)
     rates = []
