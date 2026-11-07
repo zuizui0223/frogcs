@@ -1,0 +1,159 @@
+name: Frogcs G12 ABC-POM integrated 44-claim manuscript and original-source QA
+on:
+  push:
+    branches:
+      - research/g12-abc-prior-identifiability-20261107
+    paths:
+      - .github/workflows/research_g12_abc_pom_manuscript_source_qa.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify-prior-and-manuscript-source-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical source audit dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Reproduce the original 44 R1–R4/P1 manuscript claims and 13 safeguards
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g12_submission_QA_20261107
+      - name: Independently verify G12 complete source, 27 rate denominators, 9 priors, 7 epsilons and article integrity
+        run: |
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          root=Path('.')
+          p=root/'research/results/g12_abc_pom_prior_20261107'
+          g12=p/'audited'
+          prior=json.loads((g12/'G12_full_source_receipt.json').read_text())
+          q=json.loads((root/'research/results/g12_submission_QA_20261107/submission_source_QA_receipt.json').read_text())
+          assert prior['status']=='G12_ORIGINAL_20K_MODEL_NATIVE_ABC_POM_PRIOR_AUDIT_SUCCESS'
+          assert (prior['n_proposals'],prior['accepted_4sign'],prior['accepted_synthetic_floor'])==(20000,794,426)
+          assert prior['distinct_accepted_canonical_models']==647 and prior['alternative_synthetic_rate_priors']==9
+          assert prior['model_sign_tolerances']==7 and not prior['posterior_calibrated_to_field_observations']
+          assert q['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert q['independently_recomputed_numerical_claims']==44
+          assert len(q['document_structural_checks'])==13 and all(q['document_structural_checks'].values())
+          assert 3000 <= q['main_words'] <= 5000 and q['abstract_words']<=150
+          assert (q['main_words'],q['abstract_words'])==(4972,141)
+          for fname,digest in prior['source_shard_sha256'].items():
+              b=(p/'original_20k'/fname).read_bytes()
+              assert hashlib.sha256(b).hexdigest()==digest
+          for fname,digest in prior['files_sha256'].items():
+              assert hashlib.sha256((g12/fname).read_bytes()).hexdigest()==digest
+          src=pd.concat([pd.read_csv(f) for f in sorted((p/'original_20k').glob('shard_*.csv.gz'))],
+                        ignore_index=True)
+          assert len(src)==20000 and src.draw_id.nunique()==20000
+          assert int(src.accepted.sum())==794 and src.loc[src.accepted,'model_id'].nunique()==647
+          original_rates=pd.read_csv(p/'source_receipt/twentyseven_rate_cells.csv')
+          assert len(original_rates)==27 and original_rates.n_accepted.sum()==794
+          # Independent calculation from ORIGINAL rate-cell numerators/denominators,
+          # deliberately not importing the G12 reweighting script.
+          results=pd.read_csv(g12/'G12_prior_sensitivity.csv')
+          u=(1/3,1/3,1/3); lo=(.6,.3,.1); hi=(.1,.3,.6)
+          psets={
+            'uniform_original':(u,u,u),
+            'weak_attack':(lo,u,u),'strong_attack':(hi,u,u),
+            'high_recruitment':(u,hi,u),'low_recruitment':(u,lo,u),
+            'fast_conversion':(u,u,hi),'slow_conversion':(u,u,lo),
+            'joint_pattern_favorable':(lo,hi,hi),
+            'joint_pattern_unfavorable':(hi,lo,lo),
+          }
+          assert set(results.scenario)==set(psets)
+          for name,levels in psets.items():
+              w=np.ones(27,float)
+              for axis,vals,probs in zip(('attack','rho','conversion'),
+                  ((.5,1.5,3.),(.25,.5,.75),(2.,4.,8.)),levels):
+                  w *= 3*original_rates[axis].map(dict(zip(vals,probs))).to_numpy(float)
+              independent=np.sum(w*original_rates.n_accepted)/np.sum(w*original_rates.n_proposals)
+              actual=float(results[results.scenario==name].weighted_acceptance_probability.iloc[0])
+              assert abs(independent-actual)<1e-12
+          assert results.distinct_accepted_models.eq(647).all()
+          assert (results.accepted_effective_sample_size>0).all()
+          eps=pd.read_csv(g12/'G12_four_sign_epsilon_sensitivity.csv')
+          z=src[['log_OS','log_OV','log_SV','log_OSV']].to_numpy(float)
+          assert len(eps)==7
+          for row in eps.itertuples(index=False):
+              e=float(row.epsilon)
+              a=(z[:,0]<-e)&(z[:,1]<-e)&(z[:,2]>e)&(z[:,3]>e)
+              assert int(a.sum())==int(row.n_accepted)
+              assert int((a&src.floor_ok.to_numpy(bool)).sum())==int(row.n_accepted_and_floor)
+          r=json.loads((g12/'G12_raw_vs_log_contrast.json').read_text())
+          raw=src[['raw_OS','raw_OV','raw_SV','raw_OSV']].to_numpy(float)
+          accepted=(raw[:,0]<-1e-6)&(raw[:,1]<-1e-6)&(raw[:,2]>1e-6)&(raw[:,3]>1e-6)
+          assert (int(accepted.sum()),r['both'],r['raw_only'],r['log_only'])==(584,462,122,332)
+          main=root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          supp=root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          letter=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          g12report=root/'research/G12_ABC_POM_PRIOR_IDENTIFIABILITY_VERIFIED_RESULT_2026-11-07.md'
+          assert '647 canonical model IDs' in main.read_text()
+          for doc in (main,supp,letter,g12report):
+              txt=doc.read_text()
+              assert '647' in txt and '794' in txt,doc
+          assert 'Supplementary Methods S14' in supp.read_text()
+          assert '4,972 words' in letter.read_text() and '141 words' in letter.read_text()
+          assert 'not a field-conditioned posterior' in main.read_text() or 'not a field ABC posterior' in main.read_text()
+          # Relative-path validation across new sections; allow directory links,
+          # but never waive the required original source files.
+          for doc in (main,supp,g12report):
+              for url in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if url.startswith(('https://','http://','mailto:','#')):continue
+                  qpath=url.split('#',1)[0]
+                  if not qpath or '?' in qpath:continue
+                  assert (doc.parent/qpath).exists(),(str(doc),url)
+          receipt=dict(status='G12_ABC_POM_ORIGINAL_20K_AND_PAPER_44CLAIM_QA_SUCCESS',
+              original_R1_R4_P1_claims=44,
+              preexisting_structural_checks=13,
+              main_scientific_body_words=q['main_words'],
+              abstract_words=q['abstract_words'],
+              sha_verified_original_80y_proposals=20000,
+              accepted_idealized_model_signs=794,
+              distinct_accepted_canonical_model_ids=647,
+              alternative_rate_prior_scenarios=9,
+              original_model_sign_tolerances=7,
+              original_27_rate_cells_independently_reweighted=True,
+              no_field_ABC_posterior=True,no_journal_submission=True)
+          out=root/'research/results/g12_submission_QA_20261107'
+          (out/'G12_abc_pom_manuscript_QA_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print('G12_44_ORIGINAL_CLAIMS_NINE_PRIORS_SEVEN_TOLERANCES_FULL_MANUSCRIPT_QA_SUCCESS',
+                 json.dumps(receipt))
+          PY
+      - name: Preserve source-checked article QA receipt
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g12_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo 'G12 manuscript QA already archived'
+          else
+            git commit -m 'qa: archive R1–R4 and G12 exact source/manuscript verification'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g12-original-abc-pom-44claim-source-manuscript-qa
+          path: research/results/g12_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 60
