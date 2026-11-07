@@ -1,0 +1,177 @@
+name: Frogcs G15 original 199-source-null and manuscript 44-claim QA
+on:
+  push:
+    branches:
+      - research/g15-abc-selection-specificity-20261107
+    paths:
+      - .github/workflows/research_g15_abc_pom_manuscript_QA.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify-all-original-source-and-field-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Reproduce original 44 R1-R4/P1 numerical claims and 13 structural article checks
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g15_submission_QA_20261107
+      - name: Independently reconstruct all 199 source null templates from 20k original proposals and cross-check geographic acoustic scores
+        run: |
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          ROOT=Path('.')
+          source=ROOT/'research/results/g12_abc_pom_prior_20261107/original_20k'
+          base=ROOT/'research/results/g15_abc_acoustic_specificity_20261107/audited'
+          qa=ROOT/'research/results/g15_submission_QA_20261107'
+          r=json.loads((base/'G15_full_source_audit_receipt.json').read_text())
+          old=json.loads((ROOT/'research/results/g12_abc_pom_prior_20261107/source_receipt/r2_original_source_receipt.json').read_text())
+          g14=json.loads((ROOT/'research/results/g14_abc_pom_field_ensemble_20261107/G14_source_holds_and_claim_limits.json').read_text())
+          assert r['status']=='G15_199_RATE_CONTEXT_NULL_ACOUSTIC_FIELD_SOURCE_COMPLETE'
+          assert r['null_replicates']==199 and r['null_rate_context_strata']==81
+          assert r['source_shards']==4 and r['templates_total']==201
+          assert r['original_original_site_scores']==201*2*4248
+          assert r['original_surveys']==63180 and r['field_sites']==4248
+          assert r['G14_accepted_794_reproduced']
+          assert not r['source_specificity_fixed_joint_gate_pass']
+          assert not r['original_G14_dual_background_field_gate_pass']
+          assert not r['original_G14_unrestricted_interaction_gate_pass']
+          assert r['no_wild_trophic_mechanism_identified'] and r['no_empirical_ABC_posterior']
+          for name,digest in r['file_sha256'].items():
+              assert hashlib.sha256((base/name).read_bytes()).hexdigest()==digest
+          for name,digest in old['original_shard_sha256'].items():
+              assert hashlib.sha256((source/name).read_bytes()).hexdigest()==digest
+          raw=pd.concat([pd.read_csv(p) for p in sorted(source.glob('shard_*.csv.gz'))],
+                        ignore_index=True).sort_values('draw_id').reset_index(drop=True)
+          assert len(raw)==20000 and raw.accepted.sum()==794
+          z=raw[['log_OS','log_OV','log_SV','log_OSV']].to_numpy(float)
+          coef=np.column_stack((z[:,0]-z[:,3]/2,z[:,1]-z[:,3]/2,z[:,2]-z[:,3]/2,z[:,3]))
+          groups=raw.groupby(['attack','rho','conversion','context_id'],sort=True)
+          assert groups.ngroups==81
+          indices=[];ks=[]
+          for _,g in groups:
+              indices.append(g.index.to_numpy(dtype=int))
+              ks.append(int(g.accepted.sum()))
+          assert sum(ks)==794
+          rng=np.random.default_rng(20261108)
+          T=pd.read_csv(base/'G15_frozen_source_templates.csv').set_index('candidate')
+          assert len(T)==201 and T.index.is_unique
+          cols=['coefficient_OS','coefficient_OV','coefficient_SV','coefficient_OSV']
+          for j in range(199):
+              chosen=np.concatenate([
+                  rng.choice(ix,size=k,replace=False)
+                  for ix,k in zip(indices,ks) if k>0])
+              assert len(chosen)==794 and len(set(chosen))==794
+              template=f'STRAT_NULL_{j:03d}'
+              actual=T.loc[template,cols].to_numpy(float)
+              independently=coef[chosen].mean(axis=0)
+              assert np.max(np.abs(actual-independently))<1e-12,template
+          assert np.max(np.abs(T.loc['ABC_794',cols].to_numpy(float)-
+                     coef[raw.accepted.to_numpy(bool)].mean(axis=0)))<1e-12
+          np.testing.assert_allclose(T.loc['SIGN_ONLY',cols].to_numpy(float),
+                                     [-1.5,-1.5,.5,1.],atol=0,rtol=0)
+          comp=pd.read_csv(base/'G15_G14_signonly_vs_ABC_null_comparison.csv')
+          nulls=pd.read_csv(base/'G15_199_rate_context_null_template_field_scores.csv')
+          blocks=pd.read_csv(base/'G15_all_null_56block_losses.csv')
+          fits=pd.read_csv(base/'G15_all_null_fold_source_slopes.csv')
+          assert len(comp)==2 and len(nulls)==398 and len(blocks)==201*2*56
+          assert len(fits)==201*2*5
+          assert fits.groupby(['candidate','background']).fold.nunique().eq(5).all()
+          assert blocks.groupby(['candidate','background']).spatial_block.nunique().eq(56).all()
+          assert blocks.groupby(['candidate','background']).original_visits.sum().eq(63180).all()
+          assert blocks.groupby(['candidate','background']).strong_calls.sum().eq(36554).all()
+          assert fits.loc[fits.candidate=='ABC_794','slope'].ge(-1e-12).all()
+          for line in comp.itertuples(index=False):
+              this=nulls[nulls.background==line.background].sort_values('null_id')
+              val=this.NLL_per_visit.to_numpy(float)
+              assert len(this)==199 and np.isfinite(val).all()
+              a=float(line.accepted_ABC_NLL)
+              assert abs(val.mean()-line.null_mean_NLL)<1e-12
+              assert abs(np.median(val)-line.null_median_NLL)<1e-12
+              assert abs((1+(val<=a).sum())/200-line.empirical_upper_tail_p)<1e-12
+              assert line.source_selection_specific_ABC_better_signonly==(a<line.signonly_NLL)
+              assert abs(line.ABC_minus_signonly_NLL-(a-line.signonly_NLL))<1e-12
+              assert r['original_G14_NLL_replay_error_by_background'][line.background]<1e-6
+              assert abs(a-g14['source_file_sha256'].__len__())>0 # no field model identity is inferred from a count
+          u=comp.set_index('background')
+          assert u.loc['uniform','null_NLL_less_or_equal_ABC']==0
+          assert u.loc['target_group','null_NLL_less_or_equal_ABC']==199
+          assert u.loc['uniform','empirical_upper_tail_p']==.005
+          assert u.loc['target_group','empirical_upper_tail_p']==1.
+          assert u.source_selection_specific_ABC_better_signonly.all()
+          q=json.loads((qa/'submission_source_QA_receipt.json').read_text())
+          assert q['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert q['independently_recomputed_numerical_claims']==44
+          assert len(q['document_structural_checks'])==13
+          assert all(q['document_structural_checks'].values())
+          assert (q['main_words'],q['abstract_words'])==(4975,148)
+          main=ROOT/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          supp=ROOT/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          letter=ROOT/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          report=ROOT/'research/G15_ABC_ACOUSTIC_SELECTION_SPECIFICITY_VERIFIED_RESULT_2026-11-07.md'
+          for doc in (main,supp,letter,report):
+              content=doc.read_text()
+              assert '199' in content and ('target-group' in content or 'target_group' in content),doc
+          assert 'Supplementary Methods S17' in supp.read_text()
+          assert '4,975 words' in letter.read_text() and '148 words' in letter.read_text()
+          for doc in (main,supp,report):
+              for url in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if url.startswith(('http://','https://','mailto:','#')):continue
+                  rpath=url.split('#',1)[0]
+                  if rpath and '?' not in rpath:
+                      assert (doc.parent/rpath).exists(),(str(doc),url)
+          info=dict(status='G15_199_RATE_CONTEXT_SOURCE_NULL_AND_ORIGINAL_44_CLAIM_MANUSCRIPT_QA_SUCCESS',
+               original_source_claims=44,original_document_checks=13,
+               body_words=q['main_words'],abstract_words=q['abstract_words'],
+               original_ABC_proposals=20000,original_ABC_accepted=794,
+               exact_81_rate_context_null_template_reconstructions=199,
+               acoustic_heldout_source_site_rows=r['original_original_site_scores'],
+               geographic_blocks=56,SDM_backgrounds=2,
+               uniform_ABC_better_than_null_count=199,
+               target_ABC_better_than_null_count=0,
+               fixed_joint_specificity_gate=False,
+               field_calibrated_mechanism=False,
+               journal_submitted=False)
+          (qa/'G15_postresult_submission_source_QA_receipt.json').write_text(json.dumps(info,indent=2)+'\n')
+          print('G15_199_SOURCE_NULL_AND_44_MANUSCRIPT_CLAIM_QA_SUCCESS',json.dumps(info))
+          PY
+      - name: Archive audited manuscript QA receipt after source replay
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g15_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo 'G15 source QA unchanged'
+          else
+            git commit -m 'qa: archive G15 original-source specificity and entire Letter source audits'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g15-199-null-44claim-manuscript-QA
+          path: research/results/g15_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 60
