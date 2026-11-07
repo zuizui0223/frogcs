@@ -1,0 +1,137 @@
+name: Frogcs G12 original 20k ABC-POM prior and identifiability audit
+on:
+  push:
+    branches:
+      - research/g12-abc-prior-identifiability-20261107
+    paths:
+      - research/G12_ABC_POM_PRIOR_IDENTIFIABILITY_PROTOCOL_2026-11-07.md
+      - research/scripts/g12_abc_pom_prior_identifiability.py
+      - research/scripts/test_g12_abc_pom_prior_identifiability.py
+      - .github/workflows/research_g12_abc_pom_prior_identifiability.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  verify-and-archive-original-20k-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      GH_TOKEN: ${{ github.token }}
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen original screen analysis dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Unit-test all synthetic prior and four-sign definitions
+        run: python -m unittest discover -s research/scripts -p 'test_g12_abc_pom_prior_identifiability.py' -v
+      - name: Recover all original SHA-controlled 80-year 20k source proposals from successful run 41262102436
+        run: |
+          mkdir -p /tmp/g12original
+          mkdir -p research/results/g12_abc_pom_prior_20261107/original_20k
+          gh run download 41262102436 -R "$GITHUB_REPOSITORY" \
+            --pattern 'integrated-80year-abc-shard-*' \
+            --dir /tmp/g12original
+          find /tmp/g12original -type f -name 'shard_*.csv.gz' -exec cp '{}' \
+            research/results/g12_abc_pom_prior_20261107/original_20k/ \;
+          test "$(find research/results/g12_abc_pom_prior_20261107/original_20k \
+            -maxdepth 1 -name 'shard_*.csv.gz' -type f | wc -l)" -eq 8
+      - name: Recover original independently frozen source hashes and full 27-cell table
+        run: |
+          mkdir -p research/results/g12_abc_pom_prior_20261107/source_receipt
+          gh run download 41390511365 -R "$GITHUB_REPOSITORY" \
+            --name frogcs-main3600-original20k-R2-rate-structure-regimes \
+            --dir research/results/g12_abc_pom_prior_20261107/source_receipt
+          test -s research/results/g12_abc_pom_prior_20261107/source_receipt/r2_original_source_receipt.json
+          test -s research/results/g12_abc_pom_prior_20261107/source_receipt/twentyseven_rate_cells.csv
+          test -s research/results/g12_abc_pom_prior_20261107/source_receipt/original_prior_marginal_acceptance.csv
+      - name: Recalculate all G12 prior and tolerance effects from entire hashed original source
+        run: |
+          python -u research/scripts/g12_abc_pom_prior_identifiability.py \
+            --source research/results/g12_abc_pom_prior_20261107/original_20k \
+            --receipt research/results/g12_abc_pom_prior_20261107/source_receipt/r2_original_source_receipt.json \
+            --rates research/results/g12_abc_pom_prior_20261107/source_receipt/twentyseven_rate_cells.csv \
+            --marginals research/results/g12_abc_pom_prior_20261107/source_receipt/original_prior_marginal_acceptance.csv \
+            --out research/results/g12_abc_pom_prior_20261107/audited
+      - name: Independently reproduce every synthetic prior weighted acceptance from the 27 original published rate cells
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          root=Path('research/results/g12_abc_pom_prior_20261107')
+          source=root/'original_20k';refs=root/'source_receipt';out=root/'audited'
+          receipt=json.loads((out/'G12_full_source_receipt.json').read_text())
+          src=json.loads((refs/'r2_original_source_receipt.json').read_text())
+          assert receipt['status']=='G12_ORIGINAL_20K_MODEL_NATIVE_ABC_POM_PRIOR_AUDIT_SUCCESS'
+          assert receipt['n_proposals']==20000 and receipt['accepted_4sign']==794
+          assert receipt['accepted_synthetic_floor']==426 and receipt['distinct_accepted_canonical_models']==647
+          assert receipt['alternative_synthetic_rate_priors']==9 and receipt['model_sign_tolerances']==7
+          assert not receipt['posterior_calibrated_to_field_observations']
+          for name,sha in src['original_shard_sha256'].items():
+              assert hashlib.sha256((source/name).read_bytes()).hexdigest()==sha
+          for name,sha in receipt['files_sha256'].items():
+              assert hashlib.sha256((out/name).read_bytes()).hexdigest()==sha
+          published=pd.read_csv(refs/'twentyseven_rate_cells.csv')
+          result=pd.read_csv(out/'G12_prior_sensitivity.csv')
+          u=(1/3,1/3,1/3);l=(.6,.3,.1);h=(.1,.3,.6)
+          pp={'uniform_original':(u,u,u),'weak_attack':(l,u,u),
+              'strong_attack':(h,u,u),'high_recruitment':(u,h,u),
+              'low_recruitment':(u,l,u),'fast_conversion':(u,u,h),
+              'slow_conversion':(u,u,l),'joint_pattern_favorable':(l,h,h),
+              'joint_pattern_unfavorable':(h,l,l)}
+          for k,prior in pp.items():
+              w=np.ones(len(published),float)
+              for ax,levels,masses in zip(('attack','rho','conversion'),
+                  ((.5,1.5,3.),(.25,.5,.75),(2.,4.,8.)),prior):
+                  w *= 3*published[ax].map(dict(zip(levels,masses))).to_numpy(float)
+              independently=np.sum(w*published.n_accepted)/np.sum(w*published.n_proposals)
+              own=float(result[result.scenario==k].weighted_acceptance_probability.iloc[0])
+              assert abs(independently-own)<1e-12,(k,independently,own)
+          assert len(result)==9 and result.accepted_effective_sample_size.gt(0).all()
+          assert result.distinct_accepted_models.eq(647).all()
+          assert result.proposal_effective_sample_size.le(20000+1e-9).all()
+          all_source=pd.concat([pd.read_csv(p) for p in sorted(source.glob('shard_*.csv.gz'))])
+          z=all_source[['log_OS','log_OV','log_SV','log_OSV']].to_numpy(float)
+          eps=pd.read_csv(out/'G12_four_sign_epsilon_sensitivity.csv')
+          for row in eps.itertuples(index=False):
+              ep=float(row.epsilon)
+              v=(z[:,0]<-ep)&(z[:,1]<-ep)&(z[:,2]>ep)&(z[:,3]>ep)
+              assert int(v.sum())==int(row.n_accepted)
+              assert int((v&all_source.floor_ok.to_numpy(bool)).sum())==int(row.n_accepted_and_floor)
+          raw=all_source[['raw_OS','raw_OV','raw_SV','raw_OSV']].to_numpy(float)
+          raw_accepted=(raw[:,0]<-1e-6)&(raw[:,1]<-1e-6)&(raw[:,2]>1e-6)&(raw[:,3]>1e-6)
+          raw_receipt=json.loads((out/'G12_raw_vs_log_contrast.json').read_text())
+          assert int(raw_accepted.sum())==raw_receipt['raw_accepted']
+          assert len(eps)==7
+          print('G12_20000_SHA_PRIOR_9_EPSILON_7_INDEPENDENT_SOURCE_AUDIT_PASS')
+          PY
+      - name: Archive immutable original 20k source and verified G12 tables on stacked Draft branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g12_abc_pom_prior_20261107/
+          if git diff --cached --quiet; then
+            echo "G12 original source and analysis already archived"
+          else
+            git commit -m "results: archive original 20k ABC-POM source and audited G12 prior sensitivity"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g12-abc-pom-original-20k-prior-and-tolerance-audit
+          path: |
+            research/results/g12_abc_pom_prior_20261107/audited/
+            research/results/g12_abc_pom_prior_20261107/source_receipt/r2_original_source_receipt.json
+          if-no-files-found: warn
+          retention-days: 60
