@@ -1,0 +1,45 @@
+{
+  "status": "G11_64_SHARD_DISJOINT_MODEL_AND_COMPLETE_MANUSCRIPT_QA_SUCCESS",
+  "existing_independently_rechecked_source_claims": 44,
+  "existing_document_structure_checks": 13,
+  "original_model_pool": 3600,
+  "eligible_original_counterfactual_baselines": 720,
+  "old_source_models": 256,
+  "disjoint_holdout_models": 256,
+  "overlap": 0,
+  "original_true80_shards": 64,
+  "original_true80_scenarios": 82944,
+  "original_source_vertices": 663552,
+  "source_paired_comparisons": 20736,
+  "model_rate_cells": 27,
+  "model_contexts": 3,
+  "holdout_gates": {
+    "higher_compatibility_in_unseen_structures": true,
+    "lower_mean_frog_cohort_in_unseen_structures": true,
+    "joint_compatibility_population_mismatch": true
+  },
+  "G8_new_sign_and_losses": [
+    782,
+    571
+  ],
+  "G11_new_sign_and_losses": [
+    835,
+    612
+  ],
+  "source_bootstrap_draws": 10000,
+  "abstract_words": 138,
+  "main_body_words": 4988,
+  "supplement_words": 11991,
+  "completed_source_audit_link": "https://github.com/zuizui0223/frogcs/actions/runs/42368396463",
+  "failed_original_aggregate_audit_explained": true,
+  "manuscript_submitted": false,
+  "wild_predator_mechanism_identified": false,
+  "source_files_sha256": {
+    "MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md": "596c24f7c2c104de487f2fcef3e59669417976bdcd1d535d85429c2d0341054e",
+    "SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md": "b0a4bde7f043823d3ddf675e5540dc6b2ec6be32bf0f020bb4bfdb4bf495c647",
+    "ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md": "d63a4a650133cd1b23173becbcab1d2382bfa88497a9c9d5fa7a54be0c074abe",
+    "G11_DISJOINT_STRUCTURE_HOLDOUT_VERIFIED_RESULT_2026-11-07.md": "8a331cc3e578696f0e034eeb98901c33e3c54b9e5e119a00ac4c53db90060517",
+    "G11_DISJOINT_STRUCTURE_HOLDOUT_PROTOCOL_2026-11-07.md": "212aeaaeaf1fbb7f4508a3831180cca912ba617c4c86fd1487ee29b7bb273d64",
+    "g11_final_independent_validation_receipt.json": "9c9b49accb5f50cfc8f88bb55b67c5caa04955a575fca678c3651085c0de3be2"
+  }
+}
