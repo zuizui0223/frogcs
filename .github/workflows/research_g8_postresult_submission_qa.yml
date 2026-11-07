@@ -1,0 +1,130 @@
+name: Frogcs G8 integrated manuscript and 27-rate source QA
+
+on:
+  push:
+    branches:
+      - research/g8-27rate-paired-factorial-20261107
+    paths:
+      - .github/workflows/research_g8_postresult_submission_qa.yml
+      - editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md
+      - editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md
+      - editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md
+      - research/G8_27RATE_VERIFIED_RESULT_2026-11-07.md
+      - research/scripts/audit_submission_claims_20261105.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  complete-legacy-and-G8-original-source-submission-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Reproduce the 44 R1–R4/P1 existing numerical claims and correct EL body word count
+        run: |
+          python -u paper/research/scripts/audit_submission_claims_20261105.py \
+            --r2 paper/research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 paper/research/results/submission_frozen_sources_20261106/R3 \
+            --r4 paper/research/results/submission_frozen_sources_20261106/R4 \
+            --g2 paper/research/results/submission_frozen_sources_20261106/G2 \
+            --g2b paper/research/results/submission_frozen_sources_20261106/G2B \
+            --p1 paper/research/results/submission_frozen_sources_20261106/P1 \
+            --main paper/editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si paper/editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out paper/research/results/g8_submission_QA_20261107
+      - name: Audit all G8 original background-rate rows, published claims and exact Letter constraints
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,hashlib
+          import numpy as np,pandas as pd
+          root=Path('paper')
+          p=root/'research/results/g8_27rate_paired_20261107/audited'
+          q=root/'research/results/g8_submission_QA_20261107'
+          audit=json.loads((q/'submission_source_QA_receipt.json').read_text())
+          assert audit['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert audit['independently_recomputed_numerical_claims']==44
+          assert all(audit['document_structural_checks'].values())
+          assert 3000<=audit['main_words']<=5000 and audit['abstract_words']<=150
+          assert audit['main_words'] <= 4980, "Leave margin for editorial changes"
+          r=json.loads((p/'g8_completion_receipt.json').read_text())
+          assert r['status']=='G8_27RATE_TRUE80_ALL_256_SOURCE_SUCCESS'
+          assert r['source_shards']==64 and r['n_original_true80_scenarios']==82944
+          assert r['n_source_vertices']==663552 and r['original_model_pr161_rate_cell_replay_max_abs']<1e-10
+          for fname,sha in r['output_sha256'].items():
+              assert hashlib.sha256((p/fname).read_bytes()).hexdigest()==sha
+          d=pd.read_csv(p/'g8_all_source_rate_context_paired.csv.gz')
+          s=pd.read_csv(p/'g8_full_27rate_compatibility_abundance_summary.csv')
+          c=pd.read_csv(p/'g8_27rate_descriptive_counts.csv')
+          assert len(d)==256*27*3 and not d.duplicated(['source_id','rate_id','context_id']).any()
+          assert len(s)==654 and len(c)==27 and c.n_source_context.eq(768).all()
+          for metric,value in [('compatibility',.027054398148148147),('viable_compatibility',.02618634259259259),
+                               ('frog_log_cohort',-.04029997695177505),('factorial_compatibility',-.007089120370370371)]:
+              assert abs(d[metric].mean()-value)<1e-12
+              row=s[(s.rate_id=='pooled_27')&(s.context=='pooled_3')&(s.metric==metric)]
+              assert len(row)==1 and abs(float(row.iloc[0]['mean'])-value)<1e-12
+          main=(root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md').read_text()
+          si=(root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md').read_text()
+          letter=(root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md').read_text()
+          assert main.startswith('# Food webs that reproduce frog–predator association signs need not benefit frogs')
+          for value in ('+2.705','−0.04030','+0.02521','−0.709','15/27','82,944'):
+              assert value in main and value in si, value
+          for value in ('−0.1864','+0.1163','4,248','63,180'):
+              assert value in main, value
+          for phrase in ('5,000-word', '145 words', 'held-out'):
+              assert phrase in letter, phrase
+          assert 'G7' in main and ('did not support' in main or 'did not independently support' in main or 'did not yield' in main)
+          fig=p/'G8_27rate_pattern_vs_population.png'
+          assert fig.stat().st_size>30000
+          for doc in [root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md',
+                      root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md',
+                      root/'research/G8_27RATE_VERIFIED_RESULT_2026-11-07.md']:
+              txt=doc.read_text()
+              for target in re.findall(r'\]\(([^)]+)\)',txt):
+                  if target.startswith(('https://','http://','mailto:','#')): continue
+                  path=target.split('#',1)[0]
+                  if not path or '?' in path: continue
+                  assert (doc.parent/path).is_file(),(doc,target)
+          rec={'status':'PASS_G8_PAPER_SOURCE_WORDCOUNT_LINKS_AND_27_RATE_RESULT',
+               'run_id':42320535778,
+               'main_body_words':audit['main_words'],'abstract_words':audit['abstract_words'],
+               'previous_numeric_claim_checks':44,
+               'structural_checks':audit['document_structural_checks'],
+               'model_scenarios':82944,'source_rate_context_rows':len(d),
+               'model_output_source_sha256':r['output_sha256'],
+               'no_natural_predator_mechanism_identified':True,
+               'no_journal_submission_or_coauthor_approval':True}
+          (q/'G8_submission_postresult_receipt.json').write_text(json.dumps(rec,indent=2)+'\n')
+          print('G8_FULL_ORIGINAL_SOURCE_EDITORIAL_AUDIT_PASS',json.dumps({k:rec[k] for k in ('status','main_body_words','abstract_words','previous_numeric_claim_checks')}))
+          PY
+      - name: Publish the verified manuscript-source QA receipt with its evidence
+        run: |
+          cd paper
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g8_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo "No QA receipt changes"
+          else
+            git commit -m "qa: retain G8 complete-grid and EL manuscript verification"
+            git push
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g8-integrated-paper-source-claim-qa
+          path: paper/research/results/g8_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 45
