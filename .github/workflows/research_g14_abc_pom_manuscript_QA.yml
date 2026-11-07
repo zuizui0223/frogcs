@@ -1,0 +1,168 @@
+name: Frogcs G14 ABC field acoustic bridge complete manuscript source QA
+on:
+  push:
+    branches:
+      - research/g14-abc-ensemble-acoustic-holdout-20261107
+    paths:
+      - .github/workflows/research_g14_abc_pom_manuscript_QA.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-field-44claim-and-ABC-bridge-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install same analysis numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Independently reproduce original 44 R1–R4/P1 headline numerical claims and 13 manuscript safeguards
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g14_submission_QA_20261107
+      - name: Independently replay G14 source hashes, 4248 sites, all 50976 heldout predictions and both failure gates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,re
+          import numpy as np,pandas as pd
+          root=Path('.')
+          p=root/'research/results/g14_abc_pom_field_ensemble_20261107'
+          q=root/'research/results/g14_submission_QA_20261107'
+          g12=root/'research/results/g12_abc_pom_prior_20261107'
+          prior=json.loads((g12/'source_receipt/r2_original_source_receipt.json').read_text())
+          g14=json.loads((p/'G14_source_holds_and_claim_limits.json').read_text())
+          qa=json.loads((q/'submission_source_QA_receipt.json').read_text())
+          assert g14['status']=='G14_ORIGINAL_ABC_ENSEMBLE_GEOGRAPHIC_ACOUSTIC_HOLDOUT_SOURCE_AUDIT_PASS'
+          assert (g14['field_sites'],g14['field_visits'],g14['field_strong_events'])==(4248,63180,36554)
+          assert (g14['field_routes'],g14['geographic_blocks'],g14['original_folds'])==(432,56,5)
+          assert (g14['original_ABC_proposals'],g14['original_ABC_accepted'],
+                  g14['original_ABC_accepted_viable'],g14['original_ABC_rejected'])==(20000,794,426,19206)
+          assert g14['original_R2_source_shard_sha256']==prior['original_shard_sha256']
+          for name,sha in g14['original_R2_source_shard_sha256'].items():
+              assert hashlib.sha256((g12/'original_20k'/name).read_bytes()).hexdigest()==sha
+          for name,sha in g14['field_original_data_sha256'].items():
+              pp={'site':root/'research/results/naamp_remote_vegetation_20261026/primary_site_landscape_context.csv.gz',
+                  'visits':root/'research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz'}[name]
+              assert hashlib.sha256(pp.read_bytes()).hexdigest()==sha
+          for name,sha in g14['source_file_sha256'].items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==sha
+          assert g14['source_predictor_in_saturated_interaction_span']
+          assert g14['model_source_slope_nonnegative_training_only']
+          assert g14['no_natural_predator_mechanism_identification'] and g14['no_empirical_ABC_posterior']
+          assert not any(g14['comparison_gates'].values()),"No field gates should flip after the full source run"
+          records=pd.read_csv(p/'G14_all_4248_heldout_site_predictions.csv.gz')
+          assert len(records)==4248*2*6 and records.site.nunique()==4248
+          assert not records.duplicated(['site','background','candidate']).any()
+          assert records.groupby(['background','candidate']).site.nunique().eq(4248).all()
+          assert records.groupby(['background','candidate']).n_completed.sum().eq(63180).all()
+          assert records.groupby(['background','candidate']).k_strong.sum().eq(36554).all()
+          assert records.groupby(['background','candidate']).spatial_block.nunique().eq(56).all()
+          assert records.groupby(['spatial_block','background']).fold.nunique().eq(1).all()
+          probabilities=records.predicted.to_numpy(float)
+          k=records.k_strong.to_numpy(dtype=float)
+          n=records.n_completed.to_numpy(dtype=float)
+          assert (probabilities>0).all() and (probabilities<1).all()
+          records['independent_loss']=-k*np.log(probabilities)-(n-k)*np.log1p(-probabilities)
+          score=pd.read_csv(p/'G14_original_acoustic_NLL_scores.csv')
+          compare=pd.read_csv(p/'G14_block_paired_all_source_template_competitions.csv')
+          source=pd.read_csv(p/'G14_original_ABC_source_templates.csv')
+          fits=pd.read_csv(p/'G14_5fold_source_slope_fits.csv')
+          assert len(score)==12 and len(compare)==16 and len(source)==4 and len(fits)==60
+          assert tuple(source.source_n)==(794,426,20000,19206)
+          for row in score.itertuples(index=False):
+              t=records[(records.background==row.background)&(records.candidate==row.candidate)]
+              actual=float(t.independent_loss.sum()/t.n_completed.sum())
+              assert abs(actual-row.nll_per_visit)<1e-12,(row.candidate,row.background)
+          for row in compare.itertuples(index=False):
+              old=records[(records.background==row.background)&(records.candidate==row.baseline)]
+              new=records[(records.background==row.background)&(records.candidate==row.mechanism)]
+              gain=(old.independent_loss.sum()-new.independent_loss.sum())/63180
+              assert abs(gain-row.gain_nll_per_visit)<1e-12
+              assert row.source_blocks==56 and row.bootstrap==999
+          core=compare[(compare.baseline=='flex_add')&(compare.mechanism=='ABC_accepted')]
+          assert len(core)==2
+          uniform=core[core.background=='uniform'].iloc[0]
+          target=core[core.background=='target_group'].iloc[0]
+          assert 0<uniform.block_bootstrap95_low and uniform.gain_nll_per_visit>0
+          assert target.block_bootstrap95_low<0<target.block_bootstrap95_high
+          control=compare[(compare.baseline=='flex_all')&(compare.mechanism=='ABC_accepted')]
+          assert len(control)==2 and control.block_bootstrap95_low.le(0).all()
+          assert fits[fits.candidate=='ABC_accepted'].source_beta.gt(0).all()
+          assert qa['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert qa['independently_recomputed_numerical_claims']==44
+          assert len(qa['document_structural_checks'])==13
+          assert all(qa['document_structural_checks'].values())
+          assert (qa['main_words'],qa['abstract_words'])==(4982,148)
+          main=root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          si=root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          letter=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          report=root/'research/G14_ABC_POM_FIELD_ACOUSTIC_ENSEMBLE_VERIFIED_RESULT_2026-11-07.md'
+          assert 'Supplementary Methods S16' in si.read_text()
+          assert '4,982 words' in letter.read_text() and '148 words' in letter.read_text()
+          for doc in (main,si,letter,report):
+              text0=doc.read_text()
+              assert '0.001155' in text0 and ('target-group' in text0.lower() or 'target_group' in text0)
+          assert 'Both pre-fixed dual-background prediction gates failed' in main.read_text()
+          for doc in (main,si,report):
+              for url in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if url.startswith(('http://','https://','mailto:','#')):continue
+                  relative=url.split('#',1)[0]
+                  if relative and '?' not in relative:
+                      assert (doc.parent/relative).exists(),(str(doc),url)
+          rec=dict(
+              status='G14_ORIGINAL_ABC_794_SOURCE_FIELD_56BLOCK_AND_44_CLAIM_LETTER_QA_SUCCESS',
+              original_44_numerical_claims=44,preexisting_13_structure_checks=13,
+              body_words=qa['main_words'],abstract_words=qa['abstract_words'],
+              field_sites=4248,original_visits=63180,
+              geographic_blocks=56,heldout_site_background_candidate_rows=len(records),
+              original_ABC_source_models=20000,
+              primary_ABC_accepted_source_models=794,
+              positive_uniform_gain=float(uniform.gain_nll_per_visit),
+              uniform_block_mc95=[float(uniform.block_bootstrap95_low),
+                                  float(uniform.block_bootstrap95_high)],
+              uncertain_target_group_gain=float(target.gain_nll_per_visit),
+              target_group_block_mc95=[float(target.block_bootstrap95_low),
+                                       float(target.block_bootstrap95_high)],
+              precommitted_dual_background_prediction_gate_passed=False,
+              precommitted_unrestricted_interaction_gate_passed=False,
+              no_empirical_ABC_posterior=True,no_wild_mechanism_identified=True,
+              submitted=False)
+          (q/'G14_abc_field_source_manuscript_QA_receipt.json').write_text(json.dumps(rec,indent=2)+'\n')
+          print('G14_COMPLETE_ACOUSTIC_20K_SOURCE_AND_44_CLAIM_QA_SUCCESS',json.dumps(rec))
+          PY
+      - name: Archive G14 manuscript source and field acoustic QA
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g14_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo "G14 verified source QA unchanged"
+          else
+            git commit -m "qa: retain G14 source-locked original 794 ABC and 4248 acoustic predictive gates"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g14-original-source-and-44claim-editorial-QA
+          path: research/results/g14_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 60
