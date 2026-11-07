@@ -2,18 +2,17 @@
 
 ## 読む順番
 
-1. [現行の統合原稿：R1–R4・P1・G4–G10](../editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
-1a. [G10：率×発育条件内の比較で分かった73%の解釈](G10_RATE_CONTEXT_STANDARDIZED_G9_VERIFIED_RESULT_2026-11-07.md)
-2. [G9：4符号の新規生成782組のカエル量帰結](G9_COMPATIBILITY_DEMOGRAPHY_JOINT_RESULT_2026-11-07.md)
-3. [G8：27率条件の全結果と一般化の判定](G8_27RATE_VERIFIED_RESULT_2026-11-07.md)
-4. [P1：植生がカエルに有利になる条件と反転の内訳](P1_VEGETATION_BENEFIT_RESULT_2026-11-06.md)
-5. [現行Supplement（G8はS10、G9はS11）](../editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)
-6. [G7の野外予測未達と停止判断](G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)
-7. [一次文献とデータ・コードの由来](../editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
+1. [現行統合原稿：R1–R4・P1・G4–G12](../editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+2. [G12：ABC型POMの20,000提案・9事前分布・7符号閾値と647候補の識別限界](G12_ABC_POM_PRIOR_IDENTIFIABILITY_VERIFIED_RESULT_2026-11-07.md)
+3. [G11：旧256構造と重複しない新256構造の全27率・80年独立再現](G11_DISJOINT_STRUCTURE_HOLDOUT_VERIFIED_RESULT_2026-11-07.md)
+4. [G8〜G10：27率条件の反事実実験と符号生成・個体群利益の乖離](G8_27RATE_VERIFIED_RESULT_2026-11-07.md)、[直接対応表](G9_COMPATIBILITY_DEMOGRAPHY_JOINT_RESULT_2026-11-07.md)、[率×発育条件の補正](G10_RATE_CONTEXT_STANDARDIZED_G9_VERIFIED_RESULT_2026-11-07.md)
+5. [P1：加入時期・水中期間による人口学的効果の反転](P1_VEGETATION_BENEFIT_RESULT_2026-11-06.md)／[現行Supplement S1〜S14](../editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)／[G7の野外予測未達](G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)／[文献・データ由来](../editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
 
 **主結果は、パターン生成と焦点カエルの人口学的利益の乖離です（合成モデル内）。** P1は元の256食物網構造・全4植生処理を保ち、有尾類の加入時期と水中期間を独立に操作しました。早期加入が植生の不利益をほぼ解消し、早期加入に長い水中期間が加わるとカエル量への効果が正になりました。固定率の植生二機能による4方向成立率増加（3.52%→14.06%）に加え、G8は同じ256構造の**27率条件で全体平均+2.705ポイント［+2.021,+3.410］、平均logカエル量−0.04030［−0.04918,−0.03109］**を示しました。成立率が改善する率条件は限られ、発育条件2ではカエル量への効果が正へ反転します。G8は真の80年モデル82,944本・64分割の監査が完了し、原稿QAも成功。**追加のG9事後診断では、4符号を新たに成立させた782組中571組（73.0%）でカエル量への効果が負**であり、符号生成の成否が個体群利益と同じではないことを直接集計しました。
 
 **G10で率×発育条件を揃えて非生成群と比較すると、減少割合の差は−4.93ポイント［−11.28,+0.83］で、明確な超過減少はありませんでした。** 発育条件0・1と2では関連の方向が逆です。これは事後的な合成モデル内の比較であり、野外因果を同定しません。
+
+**G12補足：** 元の20,000提案・794採択を全8原本SHA256で再検証し、採択647モデルID・Shannon有効モデル数約605・9つの仮想率prior下で採択率1.09〜6.85%を確認しました。これはモデル内のrejection ABC-style screenであり、野外の発声を条件としたABC事後分布ではありません。G11の独立256構造でも、全27率平均のパターン生成+2.754ポイントとlogカエル量−0.04125が再現しています。
 
 ## 野外との接続
 
@@ -53,4 +52,4 @@ python research/scripts/summarize_final_mechanisms.py
 
 [legacyの索引](../legacy/README.md)から旧機構監査・旧原稿へ進んでください。移動元と移動先は[移動台帳](../legacy/archive_manifest_20261027.json)に保存しました。
 
-`results/`と`scripts/`には、現行結果の由来・比較対象・再現依存として必要な過去の計算も残っています。古い結果を現在の主結論に採用するという意味ではありません。研究ルート直下の旧契約・収集計画と旧統合原稿2件は、894ファイルの固定スナップショットや既存QAが参照するため原位置に保持しています。現在の入口は上記のR1–R4・P1・G4–G10統合原稿です。
+`results/`と`scripts/`には、現行結果の由来・比較対象・再現依存として必要な過去の計算も残っています。古い結果を現在の主結論に採用するという意味ではありません。研究ルート直下の旧契約・収集計画と旧統合原稿2件は、894ファイルの固定スナップショットや既存QAが参照するため原位置に保持しています。現在の入口は上記のR1–R4・P1・G4–G12統合原稿です。
