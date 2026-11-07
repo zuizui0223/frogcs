@@ -1,0 +1,85 @@
+name: G9 independently audit sign-generation vs frog demographic benefit
+on:
+  push:
+    branches:
+      - research/g9-pattern-demography-discrimination-20261107
+    paths:
+      - .github/workflows/research_g9_joint_diagnostic.yml
+      - research/scripts/audit_g9_sign_benefit_joint.py
+      - research/G9_COMPATIBILITY_VS_BENEFIT_DIAGNOSTIC_PROTOCOL_2026-11-07.md
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  full-source-verified-G9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Recompute all 20736 joint sign-benefit observations and paired source CIs
+        run: |
+          python -u research/scripts/audit_g9_sign_benefit_joint.py \
+            --source research/results/g8_27rate_paired_20261107/audited \
+            --out research/results/g9_pattern_demography_20261107
+      - name: Independently cross-tabulate joint outcomes without importing G9 helpers
+        run: |
+          python - <<'PY'
+          import pandas as pd,hashlib,json,numpy as np
+          from pathlib import Path
+          p=Path('research/results/g9_pattern_demography_20261107')
+          g=Path('research/results/g8_27rate_paired_20261107/audited')
+          d=pd.read_csv(g/'g8_all_source_rate_context_paired.csv.gz')
+          assert len(d)==256*27*3
+          d['created']=(d.arm11_compatibility==1)&(d.arm00_compatibility==0)
+          d['lost']=(d.arm11_compatibility==0)&(d.arm00_compatibility==1)
+          d['gain']=d.frog_log_cohort>0
+          counts=pd.read_csv(p/'g9_full_joint_sign_benefit.csv')
+          lookup=lambda sign,benefit: int(counts[(counts.sign_class==sign)&(counts.frog_class==benefit)]['count'].sum())
+          assert d.created.sum()==782 and d.lost.sum()==221
+          assert int((d.created &~d.gain).sum())==571
+          assert int((d.created &d.gain).sum())==211
+          assert lookup('new','loss')==571 and lookup('new','gain')==211
+          assert lookup('lost','gain')==129 and lookup('lost','loss')==92
+          assert int(counts['count'].sum())==20736
+          s=pd.read_csv(p/'g9_source_cluster_bootstrap.csv')
+          x=s[(s.group=='all')&(s.metric=='loss_fraction_new_sign')].iloc[0]
+          assert abs(x.value-571/782)<1e-12 and x.bootstrap_low>.5 and x.bootstrap_high<1
+          assert (s.valid_bootstrap_draws==10000).all()
+          cov=pd.read_csv(p/'g9_rate_context_coverage.csv')
+          assert len(cov)==81 and int(cov.comparable.sum())==50
+          rec=json.loads((p/'g9_completion_receipt.json').read_text())
+          assert rec['status']=='G9_ALL_20736_G8_JOINT_DIAGNOSTIC_PASS'
+          assert rec['n_new_compatible']==782 and rec['new_sign_frog_losses']==571
+          assert rec['no_new_biological_simulations'] and rec['posthoc']
+          for name,sha in rec['output_sha256'].items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==sha
+          print('G9_INDEPENDENT_JOINT_CROSS_TAB_AND_CLUSTER_CI_SUCCESS')
+          PY
+      - name: Preserve result tables and source receipt in the PR branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g9_pattern_demography_20261107/
+          if git diff --cached --quiet; then
+            echo 'No new results'
+          else
+            git commit -m 'results: archive complete G9 sign/benefit joint source diagnostics'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g9-full-joint-pattern-demography-validated
+          path: research/results/g9_pattern_demography_20261107/
+          if-no-files-found: warn
+          retention-days: 60

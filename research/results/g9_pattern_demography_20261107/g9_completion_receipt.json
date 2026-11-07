@@ -1,0 +1,21 @@
+{
+  "status": "G9_ALL_20736_G8_JOINT_DIAGNOSTIC_PASS",
+  "input_sha256": "b8f92ee81b863a4b9e66fe13e4f1260bab020742a60a51fa1708bd976a21c04b",
+  "n_structures": 256,
+  "n_rates": 27,
+  "n_contexts": 3,
+  "n_records": 20736,
+  "n_new_compatible": 782,
+  "new_sign_frog_losses": 571,
+  "n_strata_both_compatibility_classes": 50,
+  "bootstrap": 10000,
+  "bootstrap_source_cluster_seed": 20261107,
+  "posthoc": true,
+  "no_new_biological_simulations": true,
+  "not_empirical_field_validation": true,
+  "output_sha256": {
+    "g9_rate_context_coverage.csv": "85ed99ab5216393fc328c6972e97e17f6910afc41f7a108169789aab025701de",
+    "g9_full_joint_sign_benefit.csv": "6570d1262f72bd7be4dd75d6346a2a8bbc8d5c421ef4e9c59915b5f2887209b9",
+    "g9_source_cluster_bootstrap.csv": "af9d36a4ec4d36712a304a0e28a387680e6dfbe1ffd5438ee4bb5eea297835f4"
+  }
+}

@@ -1,0 +1,124 @@
+name: G9 integrated paper numerical and joint-outcome QA
+on:
+  push:
+    branches:
+      - research/g9-pattern-demography-discrimination-20261107
+    paths:
+      - .github/workflows/research_g9_submission_source_qa.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-matched-paper-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Recheck all 44 pre-G9 original source numerical claims and manuscript structure
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g9_submission_QA_20261107
+      - name: Verify G8 and G9 original hash, full 3 by 3 joint table, article counts, and links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re
+          import numpy as np, pandas as pd
+          root=Path('.')
+          p=root/'research/results/g9_pattern_demography_20261107'
+          b=root/'research/results/g8_27rate_paired_20261107/audited'
+          qa=root/'research/results/g9_submission_QA_20261107'
+          r=json.loads((p/'g9_completion_receipt.json').read_text())
+          b8=json.loads((b/'g8_completion_receipt.json').read_text())
+          assert r['status']=='G9_ALL_20736_G8_JOINT_DIAGNOSTIC_PASS'
+          assert r['n_records']==20736 and r['n_new_compatible']==782
+          assert r['new_sign_frog_losses']==571 and r['n_strata_both_compatibility_classes']==50
+          assert r['input_sha256']==b8['output_sha256']['g8_all_source_rate_context_paired.csv.gz']
+          assert r['no_new_biological_simulations'] and r['posthoc']
+          for f,sha in r['output_sha256'].items():
+              assert hashlib.sha256((p/f).read_bytes()).hexdigest()==sha
+          d=pd.read_csv(b/'g8_all_source_rate_context_paired.csv.gz')
+          assert len(d)==20736 and not d.duplicated(['source_id','rate_id','context_id']).any()
+          new=(d.arm11_compatibility==1)&(d.arm00_compatibility==0)
+          assert new.sum()==782
+          assert int((new &(d.frog_log_cohort<0)).sum())==571
+          assert int((new &(d.frog_log_cohort>0)).sum())==211
+          assert int((new &(d.frog_log_cohort==0)).sum())==0
+          grid=pd.read_csv(p/'g9_full_joint_sign_benefit.csv')
+          assert grid['count'].sum()==20736
+          assert int(grid[(grid.sign_class=='new')&(grid.frog_class=='loss')]['count'].sum())==571
+          est=pd.read_csv(p/'g9_source_cluster_bootstrap.csv')
+          row=est[(est.group=='all') & (est.metric=='loss_fraction_new_sign')].iloc[0]
+          assert abs(float(row.value)-571/782)<1e-12
+          assert row.bootstrap_low>.60 and row.bootstrap_high<.82
+          assert int(row.valid_bootstrap_draws)==10000
+          guard=json.loads((qa/'submission_source_QA_receipt.json').read_text())
+          assert guard['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert guard['independently_recomputed_numerical_claims']==44
+          assert all(guard['document_structural_checks'].values())
+          assert guard['main_words']<=5000 and guard['abstract_words']<=150
+          assert guard['main_words']<=4980
+          main=root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          si=root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          letter=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          g9=root/'research/G9_COMPATIBILITY_DEMOGRAPHY_JOINT_RESULT_2026-11-07.md'
+          assert main.read_text().startswith('# Food webs that reproduce frog–predator association signs need not benefit frogs')
+          for file in (main,si,letter,g9):
+              s=file.read_text()
+              assert '571' in s and '782' in s,file
+          assert 'Supplementary Methods S11' in si.read_text()
+          assert '4,966 words' in letter.read_text() and '138 words' in letter.read_text()
+          for doc in (main,si,g9):
+              for target in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if target.startswith(('https://','http://','mailto:','#')): continue
+                  name=target.split('#',1)[0]
+                  if not name or '?' in name: continue
+                  assert (doc.parent/name).is_file(),(str(doc),target)
+          output={'status':'G9_PAPER_44_CLAIM_13_STRUCTURAL_20736_JOINT_QA_PASS',
+                  'main_words':guard['main_words'],'abstract_words':guard['abstract_words'],
+                  'original_claim_checks':44,
+                  'g8_source_records':20736,'g9_new_sign_cases':782,
+                  'g9_negative_frog_outcomes':571,
+                  'g9_new_sign_loss_bootstrap_interval':[float(row.bootstrap_low),float(row.bootstrap_high)],
+                  'g9_source_sha':r['input_sha256'],
+                  'no_field_identified_trophic_mechanism':True,
+                  'coauthor_approved_or_submitted':False}
+          (qa/'G9_submission_QA_receipt.json').write_text(json.dumps(output,indent=2)+'\n')
+          print('G9_EDITORIAL_SOURCE_GATES_PASS',json.dumps(output))
+          PY
+      - name: Archive reproducible submission source QA
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g9_submission_QA_20261107/
+          if git diff --cached --quiet; then
+            echo "G9 QA receipt unchanged"
+          else
+            git commit -m 'qa: archive G9 full joint-sign manuscript evidence checks'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g9-manuscript-source-audit
+          path: research/results/g9_submission_QA_20261107/
+          if-no-files-found: warn
+          retention-days: 60
