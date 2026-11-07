@@ -1,0 +1,58 @@
+{
+  "status": "G14_ORIGINAL_ABC_ENSEMBLE_GEOGRAPHIC_ACOUSTIC_HOLDOUT_SOURCE_AUDIT_PASS",
+  "original_source_R2_run": 41262102436,
+  "original_R2_source_shard_sha256": {
+    "shard_00.csv.gz": "6489e86bdeacc897ae3ce904662059b943969f7700c1c84722bde043d7ba4035",
+    "shard_01.csv.gz": "e2d6948791598b44d66981c35590dfb42f596eb4148949b32315c93c367f2a0a",
+    "shard_02.csv.gz": "5291eafd768e7d9c0696f76ef23b4013065cccc6bdce78bb5b604d71330f1dbe",
+    "shard_03.csv.gz": "61d3944678e581858dc1e9227958687d3cb9c1173bebfaca24950a1a410f5142",
+    "shard_04.csv.gz": "8bbd38639b76d14f2e885fedba46e9fd6b848bf15408a1da3e064da208aff5fd",
+    "shard_05.csv.gz": "3e911234f5d431e117ce1ab753b46a94d05a0a1d348049a09c5fbc6e7bb4c190",
+    "shard_06.csv.gz": "e5e7a08d6e7a04cdcee90da832fd92357746cf7b9ec602517ca6ea6ed44aa690",
+    "shard_07.csv.gz": "15598dd2762c10d8b03e27de97338eec0bfc0c40417fa992a39e94a4528fbc1d"
+  },
+  "original_model_kernel_sha": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+  "field_sites": 4248,
+  "field_visits": 63180,
+  "field_strong_events": 36554,
+  "field_routes": 432,
+  "geographic_blocks": 56,
+  "original_folds": 5,
+  "field_original_data_sha256": {
+    "site": "cbb389264f8bf167f53b5dfd38c5e1a17aec6243cc6ce30cbb7ae3b5417f75ff",
+    "visits": "74d28435ce6e1a842e003eaa6754c6db373e026728cfbf457784814c47cd997c"
+  },
+  "original_ABC_proposals": 20000,
+  "original_ABC_accepted": 794,
+  "original_ABC_accepted_viable": 426,
+  "original_ABC_rejected": 19206,
+  "source_templates": [
+    "ABC_accepted",
+    "ABC_accepted_viable",
+    "all_20000_prior",
+    "R2_rejected"
+  ],
+  "original_SDM_backgrounds": [
+    "uniform",
+    "target_group"
+  ],
+  "source_predictor_in_saturated_interaction_span": true,
+  "model_source_slope_nonnegative_training_only": true,
+  "original_field_target_not_independently_discovered": true,
+  "comparison_gates": {
+    "improves_flexible_environment_additive_in_both_backgrounds": false,
+    "beats_unrestricted_four_interactions_in_both_backgrounds": false,
+    "joint_strong_predictive_compatibility": false
+  },
+  "source_bootstrap_block_draws": 999,
+  "source_file_sha256": {
+    "G14_5fold_source_slope_fits.csv": "109b8b06cafaa1f49c4c61e5a3be0323a0cd89026832dbfb1a96c7be22685133",
+    "G14_all_4248_heldout_site_predictions.csv.gz": "f8b5bb760a7724bf870b4203c3183976317d2d67c624cfaa13c673384bd8d138",
+    "G14_block_paired_all_source_template_competitions.csv": "47617232c99bba01af636d58d15cb55fc191d9d5b2e606b733cf681908d4313a",
+    "G14_original_ABC_source_templates.csv": "4db4744315f6f63035978b53d3e7e744568919530e2c79b683e1c18ab614afc0",
+    "G14_original_acoustic_NLL_scores.csv": "296f6165a1d8e5000f2d4f24fc31abea5656e5d7a4cbb1c2d00487fbd2d8ceb5"
+  },
+  "no_new_field_observations": true,
+  "no_natural_predator_mechanism_identification": true,
+  "no_empirical_ABC_posterior": true
+}
