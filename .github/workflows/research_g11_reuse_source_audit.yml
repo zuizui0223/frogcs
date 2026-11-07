@@ -1,0 +1,107 @@
+name: Frogcs G11 64-shard source audit recovery (reuse immutable 80-year shards)
+
+on:
+  push:
+    branches:
+      - research/g11-disjoint-structure-holdout-20261107
+    paths:
+      - .github/workflows/research_g11_reuse_source_audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  reaggregate-original-64-shards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: original/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: original
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen source numerical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify first original 80-year run completed all 64 shards
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api repos/zuizui0223/frogcs/actions/runs/42366300373/jobs?per_page=100 \
+            --jq '[.jobs[] | select(.name | startswith("unseen-256-source-x-27-rate-original80")) | select(.conclusion=="success")] | length' > /tmp/g11_successful.txt
+          cat /tmp/g11_successful.txt
+          test "$(cat /tmp/g11_successful.txt)" -eq 64
+      - name: Reuse exactly 64 frozen original 80-year source artifacts (no biological resimulation)
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 42366300373
+          github-token: ${{ github.token }}
+          pattern: frogcs-g11-disjoint-original80-shard-*
+          path: paper/research/results/g11_disjoint_holdout_20261107/all64
+          merge-multiple: true
+      - name: Independently re-audit original 8 corners, all 27 cells, 3 contexts and 256 unseen structures
+        run: |
+          python -u paper/research/scripts/audit_g11_disjoint_structure_27rate.py \
+            --shards paper/research/results/g11_disjoint_holdout_20261107/all64 \
+            --g8-summary paper/research/results/g8_27rate_paired_20261107/audited/g8_full_27rate_compatibility_abundance_summary.csv \
+            --out paper/research/results/g11_disjoint_holdout_20261107/audited
+      - name: Verify both pre-fixed replication gates, and all original source data (do not require positive outcome)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,pandas as pd,hashlib
+          o=Path('paper/research/results/g11_disjoint_holdout_20261107/audited')
+          receipt=json.loads((o/'g11_final_independent_validation_receipt.json').read_text())
+          assert receipt['status']=='G11_DISJOINT_256_STRUCTURE_27_RATE_TRUE80_AUDIT_SUCCESS'
+          assert receipt['full_shards']==64
+          assert receipt['source_scenarios']==82944
+          assert receipt['source_vertices']==663552
+          assert receipt['matched_source_rate_context']==20736
+          assert receipt['old_new_model_structure_overlap']==0
+          assert receipt['all_64_independent_source_sign_gates_passed']
+          assert len(receipt['shard_independent_receipts'])==64
+          assert len(pd.read_csv(o/'g11_all_27_rate_paired_effects.csv'))==27
+          assert len(pd.read_csv(o/'g11_developmental_context_vs_g8.csv'))==3*4
+          for filename,digest in receipt['archived_files_sha256'].items():
+              assert hashlib.sha256((o/filename).read_bytes()).hexdigest()==digest
+          # Failures of either predicted direction are scientifically valid outcomes.
+          gates=receipt['fixed_replication_gates']
+          assert all(type(v)==bool for v in gates.values())
+          print('G11_HOLDOUT_64_SHARDS_AND_FULL_INDEPENDENT_AUDIT_SUCCESS')
+          print('G11_PREDECLARED_TRANSFER_CHECKS',json.dumps(gates))
+          print('G11_SOURCE_POOLED_EFFECTS',json.dumps(receipt['holdout_pooled_effects']))
+          PY
+      - name: Commit only fully audited original outcomes into existing Draft PR branch
+        run: |
+          cd paper
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g11_disjoint_holdout_20261107/audited/
+          if git diff --cached --quiet; then
+            echo "G11 audit outcomes already committed"
+          else
+            git commit -m "results: complete independent G11 64-shard source-only audit using immutable previous run"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g11-64-shard-independent-audited-recovery
+          path: paper/research/results/g11_disjoint_holdout_20261107/audited/
+          if-no-files-found: warn
+          retention-days: 60

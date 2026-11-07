@@ -1,0 +1,2579 @@
+{
+  "selection": {
+    "protocol": "G11_DISJOINT_STRUCTURE_HOLDOUT_PROTOCOL_2026-11-07.md",
+    "original_main_commit": "5e2f0a87c639df373fa2700b29403d2ab417a1cc",
+    "selection_seed": 20261107,
+    "eligible_legal_base_structures": 720,
+    "original_g8_base_structures": 256,
+    "remaining_preselection_structures": 464,
+    "selected_g11_new_structures": 256,
+    "remaining_unselected": 208,
+    "old_base_ids_sorted": [
+      4,
+      5,
+      6,
+      7,
+      16,
+      17,
+      18,
+      20,
+      23,
+      26,
+      29,
+      30,
+      31,
+      36,
+      37,
+      38,
+      43,
+      44,
+      46,
+      47,
+      102,
+      106,
+      112,
+      115,
+      119,
+      121,
+      122,
+      123,
+      128,
+      129,
+      130,
+      133,
+      137,
+      138,
+      141,
+      142,
+      193,
+      194,
+      201,
+      204,
+      205,
+      206,
+      208,
+      212,
+      215,
+      217,
+      219,
+      225,
+      226,
+      228,
+      233,
+      235,
+      236,
+      291,
+      292,
+      293,
+      295,
+      296,
+      298,
+      299,
+      302,
+      309,
+      310,
+      311,
+      313,
+      317,
+      323,
+      325,
+      327,
+      328,
+      330,
+      387,
+      392,
+      395,
+      396,
+      397,
+      398,
+      399,
+      404,
+      405,
+      433,
+      438,
+      448,
+      454,
+      481,
+      484,
+      485,
+      486,
+      487,
+      490,
+      494,
+      529,
+      532,
+      535,
+      536,
+      537,
+      539,
+      542,
+      545,
+      548,
+      550,
+      579,
+      583,
+      586,
+      587,
+      592,
+      597,
+      600,
+      642,
+      649,
+      653,
+      655,
+      660,
+      666,
+      668,
+      671,
+      709,
+      713,
+      716,
+      721,
+      730,
+      733,
+      770,
+      773,
+      775,
+      776,
+      782,
+      783,
+      785,
+      789,
+      791,
+      798,
+      799,
+      833,
+      835,
+      842,
+      843,
+      845,
+      866,
+      867,
+      868,
+      869,
+      872,
+      875,
+      878,
+      879,
+      897,
+      902,
+      904,
+      907,
+      909,
+      910,
+      928,
+      932,
+      934,
+      935,
+      936,
+      937,
+      939,
+      940,
+      942,
+      963,
+      965,
+      966,
+      968,
+      969,
+      970,
+      971,
+      972,
+      975,
+      976,
+      978,
+      982,
+      1008,
+      1009,
+      1010,
+      1011,
+      1015,
+      1018,
+      1019,
+      1025,
+      1031,
+      1059,
+      1060,
+      1063,
+      1065,
+      1070,
+      1071,
+      1072,
+      1074,
+      1075,
+      1109,
+      1110,
+      1111,
+      1115,
+      1118,
+      1119,
+      1121,
+      1152,
+      1157,
+      1159,
+      1160,
+      1163,
+      1185,
+      1186,
+      1187,
+      1200,
+      1201,
+      1203,
+      1204,
+      1208,
+      1210,
+      1211,
+      1226,
+      1231,
+      1233,
+      1235,
+      1248,
+      1257,
+      1263,
+      1281,
+      1283,
+      1285,
+      1286,
+      1293,
+      1294,
+      1313,
+      1314,
+      1315,
+      1319,
+      1322,
+      1323,
+      1324,
+      1326,
+      1327,
+      1344,
+      1347,
+      1348,
+      1350,
+      1351,
+      1357,
+      1358,
+      1377,
+      1379,
+      1382,
+      1383,
+      1392,
+      1395,
+      1408,
+      1411,
+      1415,
+      1425,
+      1428,
+      1429,
+      1430,
+      1431
+    ],
+    "new_base_ids_by_source": [
+      1288,
+      224,
+      125,
+      983,
+      1413,
+      34,
+      1356,
+      1184,
+      724,
+      534,
+      203,
+      105,
+      1057,
+      333,
+      605,
+      834,
+      216,
+      930,
+      906,
+      318,
+      1325,
+      202,
+      977,
+      598,
+      530,
+      528,
+      300,
+      239,
+      103,
+      549,
+      436,
+      784,
+      718,
+      903,
+      607,
+      3,
+      778,
+      1107,
+      658,
+      403,
+      594,
+      796,
+      1022,
+      901,
+      794,
+      1352,
+      544,
+      214,
+      447,
+      108,
+      960,
+      1066,
+      640,
+      1126,
+      388,
+      33,
+      1258,
+      489,
+      719,
+      113,
+      706,
+      1058,
+      964,
+      1177,
+      659,
+      876,
+      1021,
+      452,
+      32,
+      223,
+      1312,
+      606,
+      211,
+      314,
+      394,
+      726,
+      303,
+      400,
+      1014,
+      196,
+      1182,
+      727,
+      1113,
+      11,
+      1078,
+      198,
+      1292,
+      1206,
+      28,
+      483,
+      1320,
+      1108,
+      1224,
+      1230,
+      790,
+      492,
+      1155,
+      288,
+      441,
+      837,
+      1079,
+      1114,
+      213,
+      440,
+      771,
+      110,
+      1345,
+      234,
+      1251,
+      705,
+      143,
+      0,
+      832,
+      1355,
+      1161,
+      118,
+      307,
+      962,
+      435,
+      795,
+      710,
+      1381,
+      443,
+      588,
+      1290,
+      495,
+      502,
+      1262,
+      715,
+      589,
+      1398,
+      1253,
+      646,
+      648,
+      929,
+      578,
+      774,
+      40,
+      446,
+      604,
+      1321,
+      1359,
+      97,
+      1378,
+      1026,
+      1180,
+      312,
+      322,
+      1104,
+      538,
+      294,
+      1349,
+      603,
+      1280,
+      432,
+      335,
+      19,
+      444,
+      644,
+      786,
+      1154,
+      222,
+      792,
+      231,
+      647,
+      450,
+      1409,
+      1261,
+      580,
+      717,
+      1259,
+      546,
+      1061,
+      788,
+      1255,
+      1227,
+      135,
+      140,
+      777,
+      331,
+      117,
+      1250,
+      899,
+      1179,
+      1209,
+      1124,
+      943,
+      1229,
+      139,
+      728,
+      540,
+      723,
+      334,
+      729,
+      1076,
+      390,
+      434,
+      99,
+      1112,
+      836,
+      114,
+      933,
+      650,
+      871,
+      1225,
+      839,
+      1414,
+      120,
+      599,
+      407,
+      131,
+      324,
+      1013,
+      386,
+      195,
+      1127,
+      15,
+      134,
+      769,
+      779,
+      1027,
+      1069,
+      1316,
+      1020,
+      449,
+      900,
+      107,
+      734,
+      601,
+      321,
+      651,
+      665,
+      707,
+      641,
+      232,
+      787,
+      401,
+      1376,
+      667,
+      39,
+      1023,
+      301,
+      585,
+      21,
+      1077,
+      209,
+      237,
+      9,
+      1073,
+      1256,
+      1062,
+      116,
+      712,
+      1120,
+      793,
+      1017
+    ],
+    "new_nuisance_by_source": [
+      {
+        "source_id": 0,
+        "baseline_model_id": 1288,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 1,
+        "baseline_model_id": 224,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 2,
+        "baseline_model_id": 125,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 3,
+        "baseline_model_id": 983,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 4,
+        "baseline_model_id": 1413,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 5,
+        "baseline_model_id": 34,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 6,
+        "baseline_model_id": 1356,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 7,
+        "baseline_model_id": 1184,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 8,
+        "baseline_model_id": 724,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 9,
+        "baseline_model_id": 534,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 10,
+        "baseline_model_id": 203,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 11,
+        "baseline_model_id": 105,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 12,
+        "baseline_model_id": 1057,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 13,
+        "baseline_model_id": 333,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 14,
+        "baseline_model_id": 605,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 15,
+        "baseline_model_id": 834,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 16,
+        "baseline_model_id": 216,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 17,
+        "baseline_model_id": 930,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 18,
+        "baseline_model_id": 906,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 19,
+        "baseline_model_id": 318,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 20,
+        "baseline_model_id": 1325,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 21,
+        "baseline_model_id": 202,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 22,
+        "baseline_model_id": 977,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 23,
+        "baseline_model_id": 598,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 24,
+        "baseline_model_id": 530,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 25,
+        "baseline_model_id": 528,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 26,
+        "baseline_model_id": 300,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 27,
+        "baseline_model_id": 239,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 28,
+        "baseline_model_id": 103,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 29,
+        "baseline_model_id": 549,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 30,
+        "baseline_model_id": 436,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 31,
+        "baseline_model_id": 784,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 32,
+        "baseline_model_id": 718,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 33,
+        "baseline_model_id": 903,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 34,
+        "baseline_model_id": 607,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 35,
+        "baseline_model_id": 3,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 36,
+        "baseline_model_id": 778,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 37,
+        "baseline_model_id": 1107,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 38,
+        "baseline_model_id": 658,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 39,
+        "baseline_model_id": 403,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 40,
+        "baseline_model_id": 594,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 41,
+        "baseline_model_id": 796,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 42,
+        "baseline_model_id": 1022,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 43,
+        "baseline_model_id": 901,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 44,
+        "baseline_model_id": 794,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 45,
+        "baseline_model_id": 1352,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 46,
+        "baseline_model_id": 544,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 47,
+        "baseline_model_id": 214,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 48,
+        "baseline_model_id": 447,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 49,
+        "baseline_model_id": 108,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 50,
+        "baseline_model_id": 960,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 51,
+        "baseline_model_id": 1066,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 52,
+        "baseline_model_id": 640,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 53,
+        "baseline_model_id": 1126,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 54,
+        "baseline_model_id": 388,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 55,
+        "baseline_model_id": 33,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 56,
+        "baseline_model_id": 1258,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 57,
+        "baseline_model_id": 489,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 58,
+        "baseline_model_id": 719,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 59,
+        "baseline_model_id": 113,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 60,
+        "baseline_model_id": 706,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 61,
+        "baseline_model_id": 1058,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 62,
+        "baseline_model_id": 964,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 63,
+        "baseline_model_id": 1177,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 64,
+        "baseline_model_id": 659,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 65,
+        "baseline_model_id": 876,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 66,
+        "baseline_model_id": 1021,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 67,
+        "baseline_model_id": 452,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 68,
+        "baseline_model_id": 32,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 69,
+        "baseline_model_id": 223,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 70,
+        "baseline_model_id": 1312,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 71,
+        "baseline_model_id": 606,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 72,
+        "baseline_model_id": 211,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 73,
+        "baseline_model_id": 314,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 74,
+        "baseline_model_id": 394,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 75,
+        "baseline_model_id": 726,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 76,
+        "baseline_model_id": 303,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 77,
+        "baseline_model_id": 400,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 78,
+        "baseline_model_id": 1014,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 79,
+        "baseline_model_id": 196,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 80,
+        "baseline_model_id": 1182,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 81,
+        "baseline_model_id": 727,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 82,
+        "baseline_model_id": 1113,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 83,
+        "baseline_model_id": 11,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 84,
+        "baseline_model_id": 1078,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 85,
+        "baseline_model_id": 198,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 86,
+        "baseline_model_id": 1292,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 87,
+        "baseline_model_id": 1206,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 88,
+        "baseline_model_id": 28,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 89,
+        "baseline_model_id": 483,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 90,
+        "baseline_model_id": 1320,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 91,
+        "baseline_model_id": 1108,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 92,
+        "baseline_model_id": 1224,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 93,
+        "baseline_model_id": 1230,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 94,
+        "baseline_model_id": 790,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 95,
+        "baseline_model_id": 492,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 96,
+        "baseline_model_id": 1155,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 97,
+        "baseline_model_id": 288,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 98,
+        "baseline_model_id": 441,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 99,
+        "baseline_model_id": 837,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 100,
+        "baseline_model_id": 1079,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 101,
+        "baseline_model_id": 1114,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 102,
+        "baseline_model_id": 213,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 103,
+        "baseline_model_id": 440,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 104,
+        "baseline_model_id": 771,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 105,
+        "baseline_model_id": 110,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 106,
+        "baseline_model_id": 1345,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 107,
+        "baseline_model_id": 234,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 108,
+        "baseline_model_id": 1251,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 109,
+        "baseline_model_id": 705,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 110,
+        "baseline_model_id": 143,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 111,
+        "baseline_model_id": 0,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 112,
+        "baseline_model_id": 832,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 113,
+        "baseline_model_id": 1355,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 114,
+        "baseline_model_id": 1161,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 115,
+        "baseline_model_id": 118,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 116,
+        "baseline_model_id": 307,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 117,
+        "baseline_model_id": 962,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 118,
+        "baseline_model_id": 435,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 119,
+        "baseline_model_id": 795,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 120,
+        "baseline_model_id": 710,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 121,
+        "baseline_model_id": 1381,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 122,
+        "baseline_model_id": 443,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 123,
+        "baseline_model_id": 588,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 124,
+        "baseline_model_id": 1290,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 125,
+        "baseline_model_id": 495,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 126,
+        "baseline_model_id": 502,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 127,
+        "baseline_model_id": 1262,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 128,
+        "baseline_model_id": 715,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 129,
+        "baseline_model_id": 589,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 130,
+        "baseline_model_id": 1398,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 131,
+        "baseline_model_id": 1253,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 132,
+        "baseline_model_id": 646,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 133,
+        "baseline_model_id": 648,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 134,
+        "baseline_model_id": 929,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 135,
+        "baseline_model_id": 578,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 136,
+        "baseline_model_id": 774,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 137,
+        "baseline_model_id": 40,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 138,
+        "baseline_model_id": 446,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 139,
+        "baseline_model_id": 604,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 140,
+        "baseline_model_id": 1321,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 141,
+        "baseline_model_id": 1359,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 142,
+        "baseline_model_id": 97,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 143,
+        "baseline_model_id": 1378,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 144,
+        "baseline_model_id": 1026,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 145,
+        "baseline_model_id": 1180,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 146,
+        "baseline_model_id": 312,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 147,
+        "baseline_model_id": 322,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 148,
+        "baseline_model_id": 1104,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 149,
+        "baseline_model_id": 538,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 150,
+        "baseline_model_id": 294,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 151,
+        "baseline_model_id": 1349,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 152,
+        "baseline_model_id": 603,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 153,
+        "baseline_model_id": 1280,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 154,
+        "baseline_model_id": 432,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 155,
+        "baseline_model_id": 335,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 156,
+        "baseline_model_id": 19,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 157,
+        "baseline_model_id": 444,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 158,
+        "baseline_model_id": 644,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 159,
+        "baseline_model_id": 786,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 160,
+        "baseline_model_id": 1154,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 161,
+        "baseline_model_id": 222,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 162,
+        "baseline_model_id": 792,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 163,
+        "baseline_model_id": 231,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 164,
+        "baseline_model_id": 647,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 165,
+        "baseline_model_id": 450,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 166,
+        "baseline_model_id": 1409,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 167,
+        "baseline_model_id": 1261,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 168,
+        "baseline_model_id": 580,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 169,
+        "baseline_model_id": 717,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 170,
+        "baseline_model_id": 1259,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 171,
+        "baseline_model_id": 546,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 172,
+        "baseline_model_id": 1061,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 173,
+        "baseline_model_id": 788,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 174,
+        "baseline_model_id": 1255,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 175,
+        "baseline_model_id": 1227,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 176,
+        "baseline_model_id": 135,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 177,
+        "baseline_model_id": 140,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 178,
+        "baseline_model_id": 777,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 179,
+        "baseline_model_id": 331,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 180,
+        "baseline_model_id": 117,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 181,
+        "baseline_model_id": 1250,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 182,
+        "baseline_model_id": 899,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 183,
+        "baseline_model_id": 1179,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 184,
+        "baseline_model_id": 1209,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 185,
+        "baseline_model_id": 1124,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 186,
+        "baseline_model_id": 943,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 187,
+        "baseline_model_id": 1229,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 188,
+        "baseline_model_id": 139,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 189,
+        "baseline_model_id": 728,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 190,
+        "baseline_model_id": 540,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 191,
+        "baseline_model_id": 723,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 192,
+        "baseline_model_id": 334,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 193,
+        "baseline_model_id": 729,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 194,
+        "baseline_model_id": 1076,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 195,
+        "baseline_model_id": 390,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 196,
+        "baseline_model_id": 434,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 197,
+        "baseline_model_id": 99,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 198,
+        "baseline_model_id": 1112,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 199,
+        "baseline_model_id": 836,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 200,
+        "baseline_model_id": 114,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 201,
+        "baseline_model_id": 933,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 202,
+        "baseline_model_id": 650,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 203,
+        "baseline_model_id": 871,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 204,
+        "baseline_model_id": 1225,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 205,
+        "baseline_model_id": 839,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 206,
+        "baseline_model_id": 1414,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 207,
+        "baseline_model_id": 120,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 208,
+        "baseline_model_id": 599,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 209,
+        "baseline_model_id": 407,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 210,
+        "baseline_model_id": 131,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 211,
+        "baseline_model_id": 324,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 212,
+        "baseline_model_id": 1013,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 213,
+        "baseline_model_id": 386,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 214,
+        "baseline_model_id": 195,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 215,
+        "baseline_model_id": 1127,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 216,
+        "baseline_model_id": 15,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 217,
+        "baseline_model_id": 134,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 218,
+        "baseline_model_id": 769,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 219,
+        "baseline_model_id": 779,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 220,
+        "baseline_model_id": 1027,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 221,
+        "baseline_model_id": 1069,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 222,
+        "baseline_model_id": 1316,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 223,
+        "baseline_model_id": 1020,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 224,
+        "baseline_model_id": 449,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 225,
+        "baseline_model_id": 900,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 226,
+        "baseline_model_id": 107,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 227,
+        "baseline_model_id": 734,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 228,
+        "baseline_model_id": 601,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 229,
+        "baseline_model_id": 321,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 230,
+        "baseline_model_id": 651,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 231,
+        "baseline_model_id": 665,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 232,
+        "baseline_model_id": 707,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 233,
+        "baseline_model_id": 641,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 234,
+        "baseline_model_id": 232,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 235,
+        "baseline_model_id": 787,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 236,
+        "baseline_model_id": 401,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 237,
+        "baseline_model_id": 1376,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 238,
+        "baseline_model_id": 667,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 239,
+        "baseline_model_id": 39,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 240,
+        "baseline_model_id": 1023,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 241,
+        "baseline_model_id": 301,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 242,
+        "baseline_model_id": 585,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "D",
+        "gate_code": 0
+      },
+      {
+        "source_id": 243,
+        "baseline_model_id": 21,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 244,
+        "baseline_model_id": 1077,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 245,
+        "baseline_model_id": 209,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 246,
+        "baseline_model_id": 237,
+        "original_conversion": 2.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 247,
+        "baseline_model_id": 9,
+        "original_conversion": 8.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 1
+      },
+      {
+        "source_id": 248,
+        "baseline_model_id": 1073,
+        "original_conversion": 4.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 0
+      },
+      {
+        "source_id": 249,
+        "baseline_model_id": 1256,
+        "original_conversion": 8.0,
+        "strength": 1.0,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 250,
+        "baseline_model_id": 1062,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 251,
+        "baseline_model_id": 116,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 252,
+        "baseline_model_id": 712,
+        "original_conversion": 2.0,
+        "strength": 0.5,
+        "refuge_order": "equal",
+        "gate_code": 1
+      },
+      {
+        "source_id": 253,
+        "baseline_model_id": 1120,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "S",
+        "gate_code": 0
+      },
+      {
+        "source_id": 254,
+        "baseline_model_id": 793,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      },
+      {
+        "source_id": 255,
+        "baseline_model_id": 1017,
+        "original_conversion": 4.0,
+        "strength": 1.0,
+        "refuge_order": "D",
+        "gate_code": 1
+      }
+    ]
+  },
+  "sha256": "75a885adf1aff4c33819cc27869d2d49c57328537f970295538f24518182e718"
+}

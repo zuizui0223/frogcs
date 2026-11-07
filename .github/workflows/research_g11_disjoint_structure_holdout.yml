@@ -1,0 +1,193 @@
+name: Frogcs G11 disjoint structure holdout full 27-rate 80-year source
+
+on:
+  push:
+    branches:
+      - research/g11-disjoint-structure-holdout-20261107
+    paths:
+      - research/G11_DISJOINT_STRUCTURE_HOLDOUT_PROTOCOL_2026-11-07.md
+      - research/scripts/run_g11_disjoint_structure_27rate.py
+      - research/scripts/audit_g11_disjoint_structure_27rate.py
+      - research/scripts/test_g11_disjoint_structure_27rate.py
+      - .github/workflows/research_g11_disjoint_structure_holdout.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  frozen-methods-and-source-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: original/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: original
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Verify exact disjoint selection, legal original model IDs and full grid
+        run: python -m unittest discover -s paper/research/scripts -p 'test_g11_disjoint_structure_27rate.py' -v
+      - name: Run original four-year method-only replay on two rate cells
+        run: |
+          python -u paper/research/scripts/run_g11_disjoint_structure_27rate.py \
+            --shard 0 --smoke \
+            --out paper/research/results/g11_disjoint_holdout_20261107/smoke
+      - name: Freeze selected source structural IDs before biological 80-year shards
+        run: |
+          python - <<'PY'
+          import sys,json,hashlib
+          from pathlib import Path
+          sys.path.insert(0,'paper/research/scripts')
+          from run_g11_disjoint_structure_27rate import frozen_selection
+          _,nu,sel,sha=frozen_selection()
+          assert len(set(sel['new_base_ids_by_source']))==256
+          assert not set(sel['old_base_ids_sorted'])&set(sel['new_base_ids_by_source'])
+          o=Path('paper/research/results/g11_disjoint_holdout_20261107/smoke')
+          o.mkdir(parents=True,exist_ok=True)
+          (o/'G11_RESPONSE_BLIND_SELECTION_BEFORE_TRUE80.json').write_text(json.dumps(
+             {'selection':sel,'canonical_sha256':sha,'before_all_g11_80y_outcomes':True},
+             ensure_ascii=False,indent=2)+'\n')
+          print('G11_HOLDOUT_FROZEN_NEW_STRUCTURAL_IDS',sha,'old=256 new=256 eligible=720')
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g11-preoutcome-structure-selection-and-fouryear-methods
+          path: paper/research/results/g11_disjoint_holdout_20261107/smoke/
+          if-no-files-found: warn
+          retention-days: 60
+
+  unseen-256-source-x-27-rate-original80:
+    needs: frozen-methods-and-source-replay
+    runs-on: ubuntu-latest
+    timeout-minutes: 160
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: original/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: original
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Original 80-year biological outcomes for all four unseen sources ×27 rates ×3 developmental contexts ×4 plant arms
+        run: |
+          python -u paper/research/scripts/run_g11_disjoint_structure_27rate.py \
+            --shard ${{ matrix.shard }} \
+            --out paper/research/results/g11_disjoint_holdout_20261107/shards
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g11-disjoint-original80-shard-${{ matrix.shard }}
+          path: paper/research/results/g11_disjoint_holdout_20261107/shards/
+          if-no-files-found: warn
+          retention-days: 60
+
+  complete-disjoint-original-source-independent-audit:
+    needs: unseen-256-source-x-27-rate-original80
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: original/research/scripts:paper/research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+          persist-credentials: true
+      - uses: actions/checkout@v4
+        with:
+          ref: 5e2f0a87c639df373fa2700b29403d2ab417a1cc
+          path: original
+          sparse-checkout: |
+            research/scripts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-g11-disjoint-original80-shard-*
+          path: paper/research/results/g11_disjoint_holdout_20261107/all64
+          merge-multiple: true
+      - name: Independently require 64 shards, new disjoint 256 original models, all 663552 source corners and 27 rate cells
+        run: |
+          python -u paper/research/scripts/audit_g11_disjoint_structure_27rate.py \
+            --shards paper/research/results/g11_disjoint_holdout_20261107/all64 \
+            --g8-summary paper/research/results/g8_27rate_paired_20261107/audited/g8_full_27rate_compatibility_abundance_summary.csv \
+            --out paper/research/results/g11_disjoint_holdout_20261107/audited
+      - name: Check independently sampled source support and both pre-fixed replication criteria
+        run: |
+          python - <<'PY'
+          import json,pandas as pd,hashlib
+          from pathlib import Path
+          p=Path('paper/research/results/g11_disjoint_holdout_20261107/audited')
+          r=json.loads((p/'g11_final_independent_validation_receipt.json').read_text())
+          assert r['status']=='G11_DISJOINT_256_STRUCTURE_27_RATE_TRUE80_AUDIT_SUCCESS'
+          assert r['source_scenarios']==82944 and r['source_vertices']==663552
+          assert (r['matched_source_rate_context'],r['full_shards'])==(20736,64)
+          assert r['old_new_model_structure_overlap']==0
+          assert r['eligible_legal_base_structures']==720
+          assert r['all_64_independent_source_sign_gates_passed']
+          assert set(r['fixed_replication_gates'])=={
+              'higher_compatibility_in_unseen_structures',
+              'lower_mean_frog_cohort_in_unseen_structures',
+              'joint_compatibility_population_mismatch'}
+          for filename,sha in r['archived_files_sha256'].items():
+              assert hashlib.sha256((p/filename).read_bytes()).hexdigest()==sha
+          assert len(pd.read_csv(p/'g11_all_27_rate_paired_effects.csv'))==27
+          # The replication booleans may be True or False: never turn a null
+          # holdout into an error or silently suppress a negative result.
+          print('G11_INDEPENDENT_HOLDOUT_COMPLETE',r['fixed_replication_gates'])
+          PY
+      - name: Publish full audited heldout original results, all 27 rates and complete source receipt
+        run: |
+          cd paper
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/results/g11_disjoint_holdout_20261107/audited/
+          if git diff --cached --quiet; then
+            echo "Original G11 heldout results already archived"
+          else
+            git commit -m "results: archive complete G11 unseen 256-structure 27-rate true80 holdout"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g11-disjoint-full-256-source-original80-audited
+          path: paper/research/results/g11_disjoint_holdout_20261107/audited/
+          if-no-files-found: warn
+          retention-days: 60
