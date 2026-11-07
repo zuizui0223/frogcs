@@ -96,7 +96,8 @@ def features(d):
             columns.append((axis,lev))
             binary.append(vals==lev)
     f=np.stack(binary,axis=1)
-    require(len(columns)>=25 and f.shape[0]==N,"Incomplete mechanism/nuisance features")
+    require(len(columns)>=25 and f.shape[0]==len(d) and len(d)>0,
+            "Incomplete mechanism/nuisance feature encoding")
     return columns,f
 
 def expectation_by_strata(features,indices,ks):
