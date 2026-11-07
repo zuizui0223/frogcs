@@ -122,6 +122,40 @@ def verify_shard(archive, shard, source_identity_sha, base_ids):
                "selection_sha256":source_identity_sha}
 
 
+def developmental_context_summary(contrasts, *, seed=SEED, boot=B):
+    """Newly calculate 27-rate pooled contrasts within each original context.
+
+    G8's original 654-row summary provides (rate,context) rows and an all-rate,
+    all-context pooled row, but deliberately omits all-rate *per-context* rows.
+    Do NOT attempt to select those nonexistent cells. Recompute from original
+    source-rate-context pairs, preserving 256 source clusters in the bootstrap.
+    """
+    require(len(contrasts)==256*27*3 and
+            not contrasts.duplicated(["source_id","rate_id","context_id"]).any(),
+            "Original context source-rate rows absent/duplicated")
+    ids=np.arange(256,dtype=int)
+    rng=np.random.default_rng(seed)
+    resample=rng.integers(0,256,size=(boot,256))
+    rows=[]
+    for context in range(3):
+        q=contrasts.loc[contrasts.context_id.eq(context)].copy()
+        require(len(q)==256*27 and q.rate_id.nunique()==27 and
+                q.source_id.nunique()==256 and
+                q.groupby("source_id").size().eq(27).all(),
+                "Incomplete 27-rate per-context support")
+        g=q.groupby("source_id")[list(METRICS)].mean().reindex(ids)
+        require(not g.isna().any().any(), "Context source missing after 27-rate pool")
+        for metric in METRICS:
+            vals=g[metric].to_numpy(float)
+            draws=vals[resample].mean(axis=1)
+            lo,hi=np.quantile(draws,[.025,.975])
+            rows.append(dict(context=str(context), metric=metric,
+                             mean=float(vals.mean()),
+                             pointwise_mc95_low=float(lo),
+                             pointwise_mc95_high=float(hi)))
+    return pd.DataFrame(rows)
+
+
 def run(shards, old_summary, out):
     shards,old_summary,out=map(Path,(shards,old_summary,out))
     _,new_ids,selection,selection_sha=frozen_selection()
@@ -171,14 +205,37 @@ def run(shards, old_summary, out):
         primary["frog_log_cohort"]["pointwise_mc95_high"]<0,
     }
     replication["joint_compatibility_population_mismatch"]=all(replication.values())
-    context={}
+    # G8 has no pooled_27/context=0,1,2 summary rows. Compute those
+    # explicitly from all 27 rates, using paired source-level averages.
+    old_paired_path=old_summary.with_name("g8_all_source_rate_context_paired.csv.gz")
+    require(old_paired_path.is_file(),
+            "Missing original G8 20,736 paired source-rate-context rows")
+    old_paired=pd.read_csv(old_paired_path)
+    old_ctx=developmental_context_summary(old_paired)
+    new_ctx=developmental_context_summary(compare)
+    context={};context_g8={}
+    context_table=[]
     for ci in range(3):
-        p=summary[(summary.rate_id=="pooled_27")&
-                  (summary.context==str(ci))&
-                  (summary.metric=="frog_log_cohort")]
-        require(len(p)==1,"Missing heldout developmental context "+str(ci))
-        context[str(ci)]={k:float(p.iloc[0][k]) for k in
-                          ("mean","pointwise_mc95_low","pointwise_mc95_high")}
+        for metric in METRICS:
+            p=new_ctx[(new_ctx.context==str(ci)) & (new_ctx.metric==metric)]
+            q=old_ctx[(old_ctx.context==str(ci)) & (old_ctx.metric==metric)]
+            require(len(p)==1 and len(q)==1,
+                    "Incomplete G8/G11 context transfer "+str(ci)+"/"+metric)
+            now={k:float(p.iloc[0][k]) for k in
+                 ("mean","pointwise_mc95_low","pointwise_mc95_high")}
+            oldvalue={k:float(q.iloc[0][k]) for k in
+                      ("mean","pointwise_mc95_low","pointwise_mc95_high")}
+            context_table.append(dict(context=ci,metric=metric,
+                                      g8_mean=oldvalue["mean"],
+                                      g8_pointwise_mc95_low=oldvalue["pointwise_mc95_low"],
+                                      g8_pointwise_mc95_high=oldvalue["pointwise_mc95_high"],
+                                      g11_mean=now["mean"],
+                                      g11_pointwise_mc95_low=now["pointwise_mc95_low"],
+                                      g11_pointwise_mc95_high=now["pointwise_mc95_high"],
+                                      g11_minus_g8_mean=now["mean"]-oldvalue["mean"]))
+            if metric=="frog_log_cohort":
+                context[str(ci)]=now
+                context_g8[str(ci)]=oldvalue
     new=(compare.compatibility==1)
     loss=(compare.frog_log_cohort<0)
     nnew=int(new.sum());nloss=int((new&loss).sum());ngain=int((new&~loss).sum())
@@ -218,6 +275,8 @@ def run(shards, old_summary, out):
         table.append(entry)
     tb=out/"g11_all_27_rate_paired_effects.csv"
     pd.DataFrame(table).to_csv(tb,index=False)
+    ctx_path=out/"g11_developmental_context_vs_g8.csv"
+    pd.DataFrame(context_table).to_csv(ctx_path,index=False)
     receipt=dict(
        status="G11_DISJOINT_256_STRUCTURE_27_RATE_TRUE80_AUDIT_SUCCESS",
        original_main_sha="5e2f0a87c639df373fa2700b29403d2ab417a1cc",
@@ -231,6 +290,8 @@ def run(shards, old_summary, out):
        old_G8_pooled_means=old_baseline,holdout_pooled_effects=primary,
        fixed_replication_gates=replication,
        holdout_context_log_frog_effects=context,
+       original_G8_context_log_frog_effects=context_g8,
+       context_comparison_recomputed_from_full_paired_G8_and_G11=True,
        G11_new_sign_generation_cases=nnew,
        G11_new_sign_cases_frog_loss=nloss,
        G11_new_sign_cases_frog_nonloss=ngain,
@@ -241,7 +302,7 @@ def run(shards, old_summary, out):
        all_64_independent_source_sign_gates_passed=True,
        original_structure_and_rates_unchanged=True,
        no_field_model_identification=True,
-       archived_files_sha256={p.name:sha(p) for p in (ef,cf,sm,selection_path,tb)},
+       archived_files_sha256={p.name:sha(p) for p in (ef,cf,sm,selection_path,tb,ctx_path)},
        shard_independent_receipts=audit,
     )
     (out/"g11_final_independent_validation_receipt.json").write_text(
