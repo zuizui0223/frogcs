@@ -88,7 +88,7 @@ The retrospective G6 diagnosis localized the positive point gains to the 506 V=1
 
 The G7 vegetation×species-group coefficient was positive but uncertain: **+0.067 [−0.142,+0.319]** under uniform SDMs and **+0.028 [−0.214,+0.267]** under target-group SDMs. Adding it produced negative held-out NLL point gains (**−0.000196/−0.001100**), with intervals spanning zero. Thus this comparison did not support the proposed positive moderation (Supplementary Methods S3e).
 
-G14 evaluated a fixed interaction template averaged over **794 original ABC-accepted models** on the same geographic heldouts. Compared with flexible additive environment alone, heldout NLL improved under uniform SDMs by **+0.001155** [0.000253,+0.002427] per visit, but not robustly under target-group SDMs (**+0.000163** [−0.000548,+0.000931]). The source template also failed to outperform unrestricted O/S/V interactions robustly in either background. **Both pre-fixed dual-background prediction gates failed** (Supplementary Methods S16).
+G14's **794-model ABC-accepted template** improved heldout adult-calling NLL over flexible additive environment under uniform SDMs (**+0.001155** [0.000253,+0.002427]) but not robustly under target-group SDMs (**+0.000163** [−0.000548,+0.000931]). G15 then compared it with a fixed sign-only shape and **199 rate/context-preserving source-null templates**. ABC beat sign-only in both backgrounds, but was better than **199/199 nulls under uniform and 0/199 under target-group**. Neither the G14 nor G15 fixed dual-background gate passed (Supplementary Methods S16–S17).
 
 ### R2. The generator depends on recruitment, predation and combinations of vegetation functions
 
@@ -148,7 +148,7 @@ These simulation findings are conditional in three ways. First, the attack and l
 
 ### Third-guild context is an observation, not a predator census
 
-Caudate-dependent calling associations vary geographically, but shared environmental filtering remains a plausible explanation. G2/G2B revealed response-definition sensitivity without calibrating larval abundance to adult calls. G4/G5 model surfaces lie within unrestricted O/S/V interactions and failed the prediction gate; G6 located uncertain directional agreement in vegetated landscapes. G14's ABC-accepted source ensemble improved geographic prediction over flexible additive environment under uniform SDMs alone, not consistently under target-group SDMs or over unrestricted interactions. Its signal regularizes existing predictor interactions rather than measuring a trophic pathway. Landscape flooded vegetation is not observed pond refuge, and neither larval predation nor the larval-to-calling observation link is calibrated.
+Caudate-dependent calling associations vary geographically, but shared environmental filtering remains a plausible explanation. G2/G2B revealed response-definition sensitivity without calibrating larval abundance to adult calls. G4/G5 model surfaces lie within unrestricted O/S/V interactions and failed the prediction gate; G6 located uncertain directional agreement in vegetated landscapes. G14's ABC source improved uniform-only prediction, while G15's matched source-null ranking reversed completely between SDM backgrounds. Both features regularize existing interactions, not measure trophic pathways. Landscape flooded vegetation is not observed pond refuge, and neither larval predation nor the larval-to-calling observation link is calibrated.
 
 ### A specific prediction for field tests of vegetation benefit
 
