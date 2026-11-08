@@ -60,7 +60,7 @@ jobs:
           assert 'no project' not in title.lower() or '[INSERT' in title
           assert len(list(out.glob('Figure*.png')))==4
           assert 'Supplementary Methods S21.' in (out/'Letter_SI_AUTHOR_REVIEW.md').read_text()
-          assert 'USGS surveys linked concurrent calls and larvae' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
+          assert 'USGS linked concurrent calls with larvae' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
           assert 'Zurell' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
           assert 'Glorioso' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
           required=[
