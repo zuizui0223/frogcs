@@ -17,6 +17,12 @@ MAIN = ED / "MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md"
 SUPP = ED / "SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md"
 REFS = ED / "REFERENCES_R1_R4_P1_G6_2026-11-06.md"
 COVER = SUB / "COVER_LETTER_AUTHOR_REVIEW.md"
+TITLEPAGE = SUB / "TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL.md"
+ADMIN = [
+    SUB / "COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md",
+    SUB / "EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md",
+    SUB / "NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md",
+]
 FIGS = [
     "Figure1_Observed_ThirdGuild_AcousticAssociation.png",
     "Figure2_InteractionSignature_VsFrogAbundance.png",
@@ -33,12 +39,18 @@ def check_source() -> tuple[str, str, str]:
     refs = REFS.read_text(encoding="utf-8")
     required = {
         "g13_structure_main": "647 canonical IDs" in main and "p=0.0002" in main,
-        "g18_independent_observation_main": "In independent USGS surveys" in main,
+        "g18_independent_observation_main": "USGS linked concurrent calls with larvae" in main,
         "g12_prior_in_supp": "Supplementary Methods S14." in supp,
         "g13_structure_in_supp": "Supplementary Methods S15." in supp,
         "g14_g17_limits_in_supp": all(f"Supplementary Methods S{i}." in supp for i in range(16, 20)),
         "g18_stage_in_supp": "Supplementary Methods S20." in supp,
-        "g17_failure_preserved": "G17's original replay gate failed" in main,
+        "g17_failure_preserved": "G17\'s replay failed" in main,
+        "r5_s21_present": "Supplementary Methods S21." in supp,
+        "r5_conditional_observer_limits": (
+            "hypothetical proxy mismatch can obscure known simulated responses" in main
+            and "not why the field tests failed" in main
+            and "simulation independently manipulates vegetation functions and predator timing" in main
+        ),
         "rate_mismatch_positive": "+2.71" in main and "−0.040" in main,
         "developmental_benefit_positive": "+0.116" in main,
     }
@@ -126,26 +138,38 @@ def main() -> None:
     (OUT / "Letter_SI_AUTHOR_REVIEW.md").write_text(supp_src, encoding="utf-8")
     (OUT / "Cover_Letter_AUTHOR_REVIEW.md").write_text(
         COVER.read_text(encoding="utf-8"), encoding="utf-8")
+    # An Ecology Letters title page is mandatory and MUST NOT use the unrelated
+    # Journal of Animal Ecology frog-chorus title page in paper/.
+    (OUT / "TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL.md").write_text(
+        TITLEPAGE.read_text(encoding="utf-8"), encoding="utf-8")
+    for path in ADMIN:
+        (OUT / path.name).write_text(path.read_text(encoding="utf-8"), encoding="utf-8")
     for stem in ["Letter_MAIN", "Letter_SI", "Cover_Letter"]:
         src = OUT / (stem + "_AUTHOR_REVIEW.md")
         to_docx(src, OUT / (stem + "_AUTHOR_REVIEW.docx"))
+    to_docx(OUT / "TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL.md",
+            OUT / "TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL.docx")
     for fig in FIGS:
         shutil.copyfile(ED / "figures" / fig, OUT / fig)
     (OUT / "READ_ME_FIRST_NOT_SUBMITTED.txt").write_text(
         "Ecology Letters submission preparation / frozen 2026-11-08.\n"
         "AUTHOR REVIEW COPY, NOT JOURNAL-SUBMITTED OR ARCHIVAL DOI-COMPLETE.\n"
         "No scientific model or original numerical output was rerun here.\n"
-        "Do not upload until: all coauthors approve; title page/corresponding author and "
-        "reviewer data are verified; project data/code archive DOI is entered; "
-        "third-party rights/licensing cleared; all figure sizes and captions approved.\n"
-        "See ../SCIENCE_FREEZE_AND_HANDOFF.md in the GitHub branch.\n",
+        "Do not upload until: all coauthors approve, including author order and contributions; "
+        "title-page and corresponding-author contact fields are verified; "
+        "novelty relative to cited recent coauthor work and reviewer/conflict lists are confirmed; "
+        "project data/code archive DOI and reviewer access exist; "
+        "third-party rights/licensing are cleared; figures and journal proof are approved.\n"
+        "Do not substitute paper/title_page.template.md (different frog-chorus JAE manuscript).\n"
+        "See EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md in this bundle.\n",
         encoding="utf-8",
     )
-    sources = [MAIN, SUPP, REFS, COVER] + [ED / "figures" / f for f in FIGS]
+    sources = [MAIN, SUPP, REFS, COVER, TITLEPAGE] + ADMIN + [ED / "figures" / f for f in FIGS]
     manifest = {
         "journal": "Ecology Letters",
         "article_type": "Letter",
-        "source_base_commit": "e6f6b941ff75e008658bdff0910868eb03e44673",
+        "frozen_science_pr": "https://github.com/zuizui0223/frogcs/pull/184",
+        "frozen_science_head": "75d2fe81ab8d797e405876225d6bc9d05323a819",
         "current_build_commit": os.getenv("GITHUB_SHA", "not-set"),
         "source_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sources},
         "bundle_sha256": {p.name: sha256(p) for p in sorted(OUT.iterdir()) if p.is_file()},
@@ -153,6 +177,9 @@ def main() -> None:
         "journal_submitted": False,
         "author_approval_complete": False,
         "project_archive_doi_verified": False,
+        "mandatory_titlepage_author_fields_verified": False,
+        "cover_letter_prior_coauthor_novelty_verified": False,
+        "reviewer_conflicts_author_verified": False,
         "status": "AUTHOR_REVIEW_ONLY",
     }
     (OUT / "freeze_bundle_manifest.json").write_text(

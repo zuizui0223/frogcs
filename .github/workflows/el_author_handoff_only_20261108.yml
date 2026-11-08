@@ -1,0 +1,93 @@
+name: Ecology Letters final author handoff (frozen claims, no new science)
+
+on:
+  push:
+    branches:
+      - submission/ecology-letters-author-handoff-20261108
+    paths:
+      - 'submission/ecology_letters_20261108/**'
+      - 'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+      - '.github/workflows/el_author_handoff_only_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  author-packet-and-journal-format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install only source-auditor and document-formatting dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scipy==1.17.0 python-docx
+      - name: Independently recheck original 44 claims and exact Ecology Letters word counts (no new simulation)
+        run: |
+          python research/scripts/audit_submission_claims_20261105.py             --r2 research/results/submission_frozen_sources_20261106/R2             --pr161 research/results/submission_frozen_sources_20261106/R3             --r4 research/results/submission_frozen_sources_20261106/R4             --g2 research/results/submission_frozen_sources_20261106/G2             --g2b research/results/submission_frozen_sources_20261106/G2B             --p1 research/results/submission_frozen_sources_20261106/P1             --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md             --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md             --out submission/ecology_letters_20261108/_review_QA
+      - name: Convert exact science-frozen content to Word and attach correct title page
+        run: python submission/ecology_letters_20261108/build_editorial_bundle.py
+      - name: Verify approved journal type, source refs and explicit external blockers
+        run: |
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          from docx import Document
+          root=Path('submission/ecology_letters_20261108')
+          out=root/'_review_bundle'
+          src=root/'_review_QA'/'submission_source_QA_receipt.json'
+          r=json.loads(src.read_text())
+          m=json.loads((out/'freeze_bundle_manifest.json').read_text())
+          assert r['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert r['independently_recomputed_numerical_claims']==44
+          assert 3000<=r['main_words']<=5000 and r['abstract_words']<=150
+          assert m['journal']=='Ecology Letters' and m['article_type']=='Letter'
+          assert m['journal_submitted'] is False and m['author_approval_complete'] is False
+          assert m['project_archive_doi_verified'] is False
+          assert m['mandatory_titlepage_author_fields_verified'] is False
+          title=(out/'TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL.md').read_text()
+          assert 'Food webs that reproduce frog' in title
+          assert 'Journal of Animal Ecology' not in title
+          assert 'Data and code accessibility' in title
+          assert 'no project' not in title.lower() or '[INSERT' in title
+          assert len(list(out.glob('Figure*.png')))==4
+          assert 'Supplementary Methods S21.' in (out/'Letter_SI_AUTHOR_REVIEW.md').read_text()
+          assert 'USGS linked concurrent calls with larvae' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
+          assert 'Zurell' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
+          assert 'Glorioso' in (out/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
+          required=[
+              'TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL.docx',
+              'Letter_MAIN_AUTHOR_REVIEW.docx',
+              'Letter_SI_AUTHOR_REVIEW.docx',
+              'Cover_Letter_AUTHOR_REVIEW.docx',
+              'COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md',
+              'EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md',
+              'NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md',
+          ]
+          assert all((out/p).is_file() for p in required)
+          for n in ['TITLE_PAGE_ECOLOGY_LETTERS_AUTHOR_APPROVAL','Letter_MAIN_AUTHOR_REVIEW',
+                    'Letter_SI_AUTHOR_REVIEW','Cover_Letter_AUTHOR_REVIEW']:
+              doc=Document(out/(n+'.docx'))
+              assert len(doc.paragraphs)>2 and len(doc.sections)>0,n
+          print('EL_FINAL_AUTHOR_HANDOFF_REVIEW_ONLY_PASS',
+                'body_words',r['main_words'],'abstract_words',r['abstract_words'],
+                'four_main_figures','44_original_numerical_claims','not_submitted')
+          PY
+      - name: Add word-count and source-QA receipt to author-only packet
+        run: |
+          cp submission/ecology_letters_20261108/_review_QA/submission_source_QA_receipt.json             submission/ecology_letters_20261108/_review_bundle/EDITORIAL_44_CLAIMS_WORD_COUNT_QA.json
+      - name: Upload author-review packet, not journal submission
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-letters-foodweb-R5-author-handoff-with-correct-title-page-20261108
+          path: submission/ecology_letters_20261108/_review_bundle/
+          retention-days: 30
+          if-no-files-found: error
