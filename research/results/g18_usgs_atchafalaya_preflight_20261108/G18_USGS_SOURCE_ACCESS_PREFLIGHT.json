@@ -10,8 +10,8 @@
   "item_metadata_success": true,
   "item_metadata_url": "https://www.sciencebase.gov/catalog/item/5eb5880c82ce25b5135ae784?format=json",
   "item_original_files_listed": 8,
-  "original_data_files_downloaded": 7,
-  "original_data_tables_with_csv_headers": 7,
+  "original_data_files_downloaded": 8,
+  "original_data_tables_with_csv_headers": 8,
   "metadata_attempts": [
     {
       "ok": true,
@@ -31,9 +31,10 @@
       "content_type": "application/fgdc+xml",
       "qualifying_file": true,
       "original_index": 0,
-      "status": "ORIGINAL_DOWNLOAD_FAILED",
-      "error": "HTML_OR_XML_NOT_SOURCE_FILE",
-      "http_status": 200
+      "sha256": "990d0c3fbc8cc05f97cc458911342aea4e74a05088ce81c65fbae99a5a933a11",
+      "md5_calculated": "8c314271f0f028692261961ebfe041dd",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_00_ATCH_Metadata.xml",
+      "status": "DOWNLOADED_ORIGINAL"
     },
     {
       "name": "Observations.csv",
@@ -121,6 +122,11 @@
     }
   ],
   "source_schema_without_response_values": [
+    {
+      "source_file": "ATCH_Metadata.xml",
+      "original_path": "ATCH_Metadata.xml",
+      "header_status": "SOURCE_CODEBOOK_XML_NO_RESPONSE_OPENED"
+    },
     {
       "source_file": "Observations.csv",
       "original_path": "Observations.csv",
