@@ -1,0 +1,42 @@
+name: R5 reporting-only category-ID source audit and full power contrast
+
+on:
+  push:
+    branches:
+      - research/r5-observation-identifiability-last-test-20261108
+    paths:
+      - 'research/scripts/r5_reporting_only_dtype_repair_20261108.py'
+      - '.github/workflows/research_r5_reporting_only_QA_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  no-simulation-reporting-repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install reporting-only libraries
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3
+      - name: Fetch exact complete-source original R5 24-condition artefact
+        run: |
+          mkdir -p research/results/R5_observation_power_20261108/verified_original
+          gh run download 42446291543 --repo "$GITHUB_REPOSITORY"             --name frogcs-R5-24worlds-100rep-full-audited-results             --dir research/results/R5_observation_power_20261108/verified_original
+      - name: Repair labels only, recalculate summary, check every control and 4800 source rows
+        run: |
+          python -u research/scripts/r5_reporting_only_dtype_repair_20261108.py             --source research/results/R5_observation_power_20261108/verified_original             --out research/results/R5_observation_power_20261108/reporting_QA
+      - name: Preserve all data, negative outcomes and error-documented repaired summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-R5-observer-power-complete-reporting-qa
+          path: research/results/R5_observation_power_20261108/reporting_QA/
+          if-no-files-found: error
+          retention-days: 30

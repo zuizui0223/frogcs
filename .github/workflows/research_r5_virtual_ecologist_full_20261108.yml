@@ -1,0 +1,91 @@
+name: R5 FINAL fixed virtual observer 24x100 all conditions (original 56-block CV)
+
+on:
+  push:
+    branches:
+      - research/r5-observation-identifiability-last-test-20261108
+    paths:
+      - 'research/scripts/r5_virtual_observer_frozen_20261108.py'
+      - '.github/workflows/research_r5_virtual_ecologist_full_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r5-observer-all-cases:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        truth_bg: [uniform, target_group]
+        arm: ['00', '11']
+        gamma: ['0.0', '0.25', '1.0']
+        flip: ['0.0', '0.25']
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONPATH: paper/research/scripts
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - name: Checkout response-blind fixed source and simulation code
+        uses: actions/checkout@v4
+        with:
+          path: paper
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen numerical sources
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Byte-compile R5 implementation and original G4/G5/G14 modules
+        run: |
+          python -m py_compile             paper/research/scripts/r5_virtual_observer_frozen_20261108.py             paper/research/scripts/r5_observation_preflight_20261108.py             paper/research/scripts/g5_source_constrained_acoustic_holdout_20261106.py             paper/research/scripts/g14_abc_ensemble_geographic_acoustic_holdout.py
+      - name: Retrieve original G4 source corners, never refit original biological model
+        run: |
+          mkdir -p paper/research/results/R5_observation_power_20261108/input_original
+          gh run download 42173236906 --repo "$GITHUB_REPOSITORY"             --name frogcs-G4-4248field-256model-eightcorner-identifiability             --dir paper/research/results/R5_observation_power_20261108/input_original
+      - name: Exactly 100 replicates for each preregistered source/proxy/noise case
+        run: |
+          python -u paper/research/scripts/r5_virtual_observer_frozen_20261108.py             --mode scenario             --truth-bg '${{ matrix.truth_bg }}'             --arm '${{ matrix.arm }}'             --gamma '${{ matrix.gamma }}'             --flip '${{ matrix.flip }}'             --reps 100             --source paper/research/results/R5_observation_power_20261108/input_original/G4_predirected_source_priors_two_plant_arms.csv             --out paper/research/results/R5_observation_power_20261108/scenario
+      - name: Preserve full scenario and all 100 source-site fold scores (no filtering)
+        uses: actions/upload-artifact@v4
+        with:
+          name: r5-frozen-${{ matrix.truth_bg }}-${{ matrix.arm }}-${{ matrix.gamma }}-${{ matrix.flip }}
+          path: paper/research/results/R5_observation_power_20261108/scenario/
+          if-no-files-found: error
+          retention-days: 30
+
+  r5-aggregate-24-source-gate:
+    runs-on: ubuntu-latest
+    needs: [r5-observer-all-cases]
+    if: ${{ success() }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact aggregator dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Download every source and every negative and positive scenario
+        uses: actions/download-artifact@v4
+        with:
+          pattern: r5-frozen-*
+          path: research/results/R5_observation_power_20261108/all_24
+          merge-multiple: false
+      - name: Refuse incomplete or cherry-picked R5; summarize exactly 24x100x2
+        run: |
+          PYTHONPATH=research/scripts python -u research/scripts/r5_virtual_observer_frozen_20261108.py             --mode aggregate             --input research/results/R5_observation_power_20261108/all_24             --out research/results/R5_observation_power_20261108/audited
+      - name: Preserve complete 4800-row source-observer audit and signed uncertainty
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-R5-24worlds-100rep-full-audited-results
+          path: research/results/R5_observation_power_20261108/audited/
+          if-no-files-found: error
+          retention-days: 30

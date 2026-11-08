@@ -1,6 +1,6 @@
 # Primary references — R1–R4, P1 and G4–G7
 
-**Verified 6 November 2026.** These 17 primary research/data references support the current main text and Supplementary Methods. G7 adds Takahashi & Parris (2008); the earlier 16-reference audit remains a historical record. Natural-history synthesis accounts used to qualify G7 are listed separately below. Original dataset-provider attributions, acquisition versions and claim limits are retained in the [data/code provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). Journal-specific final style remains an author production task.
+**Original 17 references verified 6 November 2026; R5 virtual-observer methodological reference verified against the original publisher record 8 November 2026.** These 18 entries support the current main text and Supplementary Methods. G7 adds Takahashi & Parris (2008); the earlier 16-reference audit remains a historical record. Natural-history synthesis accounts used to qualify G7 are listed separately below. Original dataset-provider attributions, acquisition versions and claim limits are retained in the [data/code provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). Journal-specific final style remains an author production task.
 
 Alford, R. A., & Wilbur, H. M. (1985). Priority Effects in Experimental Pond Communities: Competition between Bufo and Rana. *Ecology, 66(4), 1097–1105*. [10.2307/1939161](https://doi.org/10.2307/1939161).
 
@@ -35,6 +35,8 @@ Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera-Arroita, 
 Takahashi, M. K., & Parris, M. J. (2008). Life cycle polyphenism as a factor affecting ecological divergence within *Notophthalmus viridescens*. *Oecologia, 158(1), 23–34*. [10.1007/s00442-008-1125-8](https://doi.org/10.1007/s00442-008-1125-8). Primary experiment; abstract verified through the [authors' institutional record](https://digitalcommons.memphis.edu/facpubs/675/). Hydroperiod-dependent developmental pathways differed among subspecies; the experiment does not estimate aquatic duration at NAAMP sites.
 
 Tuanmu, M.-N., & Jetz, W. (2014). A global 1-km consensus land-cover product for biodiversity and ecosystem modelling. *Global Ecology and Biogeography, 23(9), 1031–1045*. [10.1111/geb.12182](https://doi.org/10.1111/geb.12182).
+
+Zurell, D., Berger, U., Cabral, J. S., Jeltsch, F., Meynard, C. N., Münkemüller, T., Nehrbass, N., Pagel, J., Reineking, B., Schröder, B., & Grimm, V. (2010). The virtual ecologist approach: simulating data and observers. *Oikos, 119(4), 622–635*. [10.1111/j.1600-0706.2009.18284.x](https://doi.org/10.1111/j.1600-0706.2009.18284.x).
 
 ## G7 natural-history accounts and classification limits
 
