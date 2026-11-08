@@ -143,7 +143,7 @@ def run(root:Path,out:Path):
         "negative_control_false_11_Wilson95":list(map(float,fp)),
         "off_truth_nonzero_gamma_wrong_11_recoveries":wrong,
         "off_truth_nonzero_gamma_trials":len(off),
-        "false_positive_nominal5pct_calibrated":fp[0]<=.05<=fp[1],
+        "false_positive_nominal5pct_calibrated":bool(fp[0]<=.05<=fp[1]),
         "true_on_matching_background":primary.to_dict("records"),
         "proxy_comparison_all_not_selected":comp.to_dict("records"),
         "causal_reasons_for_actual_G14_failure_identified":False,
