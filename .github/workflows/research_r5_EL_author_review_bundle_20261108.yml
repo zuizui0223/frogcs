@@ -1,0 +1,63 @@
+name: EL R5 verified Letter plus SI21 author-review Word bundle (no science rerun)
+
+on:
+  push:
+    branches:
+      - research/r5-observation-identifiability-last-test-20261108
+    paths:
+      - 'submission/ecology_letters_20261108/COVER_LETTER_AUTHOR_REVIEW.md'
+      - '.github/workflows/research_r5_EL_author_review_bundle_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  author-review-submission-documents-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Word formatting software only
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+          python -m pip install python-docx
+      - name: Build frozen R5 manuscript/S21, preserve four original PNGs
+        run: |
+          python submission/ecology_letters_20261108/build_editorial_bundle.py
+      - name: Verify R5 supplement and no unverifiable archive DOI
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from docx import Document
+          r=Path('submission/ecology_letters_20261108/_review_bundle')
+          m=(r/'Letter_MAIN_AUTHOR_REVIEW.md').read_text()
+          si=(r/'Letter_SI_AUTHOR_REVIEW.md').read_text()
+          cover=(r/'Cover_Letter_AUTHOR_REVIEW.md').read_text()
+          audit=json.loads((r/'freeze_bundle_manifest.json').read_text())
+          assert 'R5 virtual observers showed conditional detection loss' in m
+          assert 'Supplementary Methods S21.' in si
+          assert '9/1,600' in si and '12/100' in si and '100/100' in si
+          assert 'prespecified virtual-observer sensitivity test' in cover
+          assert audit['journal_submitted'] is False
+          assert audit['author_approval_complete'] is False
+          assert audit['project_archive_doi_verified'] is False
+          assert (r/'Letter_MAIN_AUTHOR_REVIEW.docx').is_file()
+          assert (r/'Letter_SI_AUTHOR_REVIEW.docx').is_file()
+          assert (r/'Cover_Letter_AUTHOR_REVIEW.docx').is_file()
+          assert len([f for f in r.glob('Figure*.png')])==4
+          assert 'Zurell' in '\n'.join(p.text for p in Document(r/'Letter_MAIN_AUTHOR_REVIEW.docx').paragraphs)
+          print('R5_21_SUPP_MAIN_COVER_FOUR_IMAGES_DOCX_PACKAGE_AUTHOR_REVIEW_ONLY_PASS')
+          PY
+      - name: Upload distinct R5 Letter/21-section SI/cover/figure review package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-letters-R5-verified-virtual-observer-21SI-author-review
+          path: submission/ecology_letters_20261108/_review_bundle/
+          if-no-files-found: error
+          retention-days: 30
