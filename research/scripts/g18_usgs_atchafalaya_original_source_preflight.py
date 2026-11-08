@@ -19,7 +19,7 @@ URLS=(
 USGSXML=f"https://data.usgs.gov/datacatalog/metadata/USGS.{ITEM}.xml"
 MAX_METADATA=5_000_000
 MAX_FILE=50_000_000
-SUFFIXES=(".csv",".tsv",".txt",".xlsx",".xls",".zip")
+SUFFIXES=(".csv",".tsv",".txt",".xlsx",".xls",".zip",".xml")
 HEADERS={"User-Agent":"frogcs-open-original-source-schema-check/1.0 (academic research; USGS DOI P9T71JCO)",
          "Accept":"application/json, application/xml, text/plain, */*"}
 
@@ -89,6 +89,8 @@ def member_headers(name,raw):
     elif ext in (".xlsx",".xls"):
         out.append(dict(original_path=name,
                         header_status="SPREADSHEET_SHEET_SCHEMA_NOT_INSPECTED"))
+    elif ext==".xml":
+        out.append(dict(original_path=name,header_status="SOURCE_CODEBOOK_XML_NO_RESPONSE_OPENED"))
     return out
 
 def run(out):
