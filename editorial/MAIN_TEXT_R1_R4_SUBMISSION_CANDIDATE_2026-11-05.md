@@ -148,7 +148,7 @@ These simulation findings are conditional in three ways. First, the attack and l
 
 ### Third-guild context is an observation, not a predator census
 
-Shared environmental filtering may explain adult calling. G5/G7 did not identify wild predation; G14/G15 gains were uniform-SDM-specific. G16/G17b traced sensitivity to mapped vegetation-absent sites and O/S ranks; G17's original replay gate failed. In independent USGS surveys, calls and larvae co-occurred, but earlier calls did not reliably predict later larvae (Supplementary Methods S20). R5 virtual observers showed conditional detection loss under hypothetical SDM-rank and vegetation mismatch (Supplementary Methods S21); neither result calibrates calling to cohorts or identifies wild predation.
+Shared environmental filtering may explain calling. G5/G7 did not identify wild predation; G14/G15 depended on SDM background, with G16/G17b implicating vegetation-absent sites and O/S ranks; G17 replay failed. USGS surveys linked concurrent calls and larvae, not later detection (Supplementary Methods S20). R5 showed that hypothetical SDM-rank and vegetation mismatches can impede detection despite simulated truth, although aligned proxies retained high power (Supplementary Methods S21). Failure neither proves absence nor identifies its cause; tests require pond-level vegetation, predator counts and calibrated larval-to-call links.
 
 ### A specific prediction for field tests of vegetation benefit
 
