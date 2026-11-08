@@ -1,0 +1,160 @@
+name: G18 original USGS acoustic-tadpole independent source and stage observation audit
+on:
+  push:
+    branches:
+      - research/g18-usgs-independent-acoustic-larval-source-20261108
+    paths:
+      - research/G18B_USGS_ADULT_CALL_TO_LARVA_FROZEN_ANALYSIS_2026-11-08.md
+      - research/G18C_USGS_FGDC_RESPONSE_CODING_GATE_2026-11-08.md
+      - research/scripts/g18_USGS_independent_acoustic_larval_observation.py
+      - research/scripts/test_g18_USGS_independent_acoustic_larval_observation.py
+      - .github/workflows/research_g18_usgs_stage_observation_analysis.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  original-USGS-stage-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install fixed source and regularized CV numeric packages
+        run: python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 scipy==1.17.0
+      - name: Unit tests of source identity and preread site-history logistic definition
+        run: |
+          python -m unittest discover -s research/scripts \
+            -p test_g18_USGS_independent_acoustic_larval_observation.py -v
+      - name: Acquire official USGS FGDC XML and seven original CC0 csv files again, preserve byte hashes
+        run: |
+          python -u research/scripts/g18_usgs_atchafalaya_original_source_preflight.py \
+            --out research/results/g18_usgs_atchafalaya_preflight_20261108
+      - name: Require all original stage response files and official 0/1/codebook before source outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/results/g18_usgs_atchafalaya_preflight_20261108')
+          r=json.loads((p/'G18_USGS_SOURCE_ACCESS_PREFLIGHT.json').read_text())
+          assert r['status']=='SCHEMA_READY'
+          assert r['source_doi']=='10.5066/P9T71JCO'
+          assert r['original_data_files_downloaded']==8
+          assert r['source_item_id']=='5eb5880c82ce25b5135ae784'
+          assert not r['taxon_species_stage_response_values_inspected']
+          for name in (
+             'USGS_original_00_ATCH_Metadata.xml',
+             'USGS_original_03_Sample_Data.csv',
+             'USGS_original_06_Tadpoles_Larvae.csv',
+             'USGS_original_07_Vocalizations.csv'):
+              assert (p/'original_ephemeral'/name).is_file(),name
+          print('G18_OFFICIAL_USGS_FGDC_CODEBOOK_AND_ORIGINAL_SHA_GATES_PASS')
+          PY
+      - name: Evaluate same sample stage observations and strictly earlier calls versus later larva by original physical sites
+        run: |
+          python -u research/scripts/g18_USGS_independent_acoustic_larval_observation.py \
+            --source research/results/g18_usgs_atchafalaya_preflight_20261108 \
+            --out research/results/g18_USGS_original_stage_observation_20261108/audited
+      - name: Independently recompute original 13702 stage opportunities and all fitted original CV outcomes
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          pre=Path('research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral')
+          out=Path('research/results/g18_USGS_original_stage_observation_20261108/audited')
+          rec=json.loads((out/'G18_USGS_INDEPENDENT_STAGE_OBSERVATION_RESULT.json').read_text())
+          assert rec['status']=='G18_USGS_INDEPENDENT_ACOUSTIC_LARVAL_SOURCE_AND_STAGE_BRIDGE_AUDITED'
+          assert rec['original_data_doi']=='10.5066/P9T71JCO'
+          assert rec['original_FGDC_SHA256']=='990d0c3fbc8cc05f97cc458911342aea4e74a05088ce81c65fbae99a5a933a11'
+          assert rec['same_sample_ids_valid_for_both']==1054 and rec['original_source_sample_rows']==2221
+          assert rec['source_sample_rows_without_sample_number']==5
+          assert len(rec['original_source_shared_taxa'])==13
+          for key,fname in [('sample','USGS_original_03_Sample_Data.csv'),
+                            ('vocal','USGS_original_07_Vocalizations.csv'),
+                            ('larvae','USGS_original_06_Tadpoles_Larvae.csv'),
+                            ('fgdc','USGS_original_00_ATCH_Metadata.xml')]:
+              assert hashlib.sha256((pre/fname).read_bytes()).hexdigest()==rec['original_original_file_SHA256'][key]
+          stage=rec['same_event']
+          assert stage['source_sites']==64 and stage['paired_source_samples']==1054
+          assert stage['species_by_sample_opportunities']==13702
+          assert sum(stage[k] for k in ('in_call_and_larva','in_call_only','in_larva_only','both_explicit_nondetection'))==13702
+          # Independent cross-method tally from unchanged source bytes (not import of learner).
+          sample=pd.read_csv(pre/'USGS_original_03_Sample_Data.csv')
+          vo=pd.read_csv(pre/'USGS_original_07_Vocalizations.csv')
+          la=pd.read_csv(pre/'USGS_original_06_Tadpoles_Larvae.csv')
+          merged=vo.merge(la,on='Sample ID',how='inner')
+          merged=merged.merge(sample[['Sample ID','Sample #','Site','Date']],on='Sample ID',how='inner')
+          merged=merged.dropna(subset=['Sample #'])
+          assert len(merged)==1054 and merged.Site.nunique()==64
+          ycounts=np.zeros(4,int)
+          species=rec['original_source_shared_taxa']
+          larval_columns={name.strip():name for name in la.columns if name!='Sample ID'}
+          for t in species:
+              c=merged[t+'_In'].to_numpy(dtype=int)>0
+              l=merged[larval_columns[t]].to_numpy(dtype=int)>0
+              ycounts += np.array([np.sum(c&l),np.sum(c&~l),np.sum(~c&l),np.sum(~c&~l)])
+          expected=np.array([stage['in_call_and_larva'],stage['in_call_only'],
+                 stage['in_larva_only'],stage['both_explicit_nondetection']])
+          assert np.array_equal(ycounts,expected),ycounts
+          table=pd.read_csv(out/'G18_13_exact_frog_species_within_sample_detection.csv')
+          assert len(table)==26
+          for key in ('call_in','call_out'):
+              q=table[table.call_scope==key]
+              assert len(q)==13 and q.source_samples.eq(1054).all()
+          stage_predict=pd.read_csv(out/'G18_lagged_original_site_year_species_heldout_predictions.csv')
+          hold=rec['first_strictly_later_larval_observation']
+          assert (len(stage_predict),hold['n_source_lag_rows'])==(2990,2990)
+          assert stage_predict.opaque_site_group.nunique()==64
+          assert stage_predict.larva.sum()==hold['larval_positives']
+          assert stage_predict.prior_call.sum()==hold['prior_call_positives']
+          assert stage_predict.lag_since_last_prior_days.ge(1).all()
+          assert stage_predict.groupby('opaque_site_group').fold.nunique().eq(1).all()
+          for m in ('M0','M1'):
+              p=stage_predict['p_'+m].to_numpy(float)
+              truth=stage_predict.larva.to_numpy(float)
+              brier=(truth-p)**2
+              logloss=-(truth*np.log(p)+(1-truth)*np.log1p(-p))
+              assert np.max(abs(brier-stage_predict['brier_'+m].to_numpy(float)))<1e-12
+              assert np.max(abs(logloss-stage_predict['logloss_'+m].to_numpy(float)))<1e-12
+              assert abs(brier.mean()-hold['brier']['pooled_original_'+m])<1e-12
+              assert abs(logloss.mean()-hold['logloss']['pooled_original_'+m])<1e-12
+          assert hold['forward_2015_2016']['source_test_2015_2016_rows']==884
+          assert hold['forward_2015_2016']['future_larval_positives']==15
+          assert not rec['source_ABC_field_posterior_estimated']
+          assert not rec['odonate_or_salamander_predation_causally_estimated']
+          for name,digest in rec['outputs_SHA256'].items():
+              assert hashlib.sha256((out/name).read_bytes()).hexdigest()==digest
+          print('G18_ORIGINAL_USGS_SOURCE_1054_MATCHED_SAMPLES_13_TAXA_2990_LAGGED_64SITE_INDEPENDENT_QA_PASS')
+          print(json.dumps({'same_event':stage,'site_CV':hold['brier'],
+                           'future_holdout':hold['forward_2015_2016']},ensure_ascii=False))
+          PY
+      - name: Archive only aggregated/anonymized original stage data and QA; no precise wildlife coordinates or personnel
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g18_USGS_original_stage_observation_20261108/audited/
+          git add research/results/g18_usgs_atchafalaya_preflight_20261108/G18_USGS_SOURCE_ACCESS_PREFLIGHT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'results: archive source-verified USGS independent adult-calling/tadpole detection and time-holdout limits'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g18-independent-USGS-source-stage-bridge-original-and-time-holdout
+          path: |
+            research/results/g18_USGS_original_stage_observation_20261108/audited/
+            research/results/g18_usgs_atchafalaya_preflight_20261108/G18_USGS_SOURCE_ACCESS_PREFLIGHT.json
+          if-no-files-found: warn
+          retention-days: 60
