@@ -6,8 +6,8 @@
 
 - Existing geographical co-occurrence and call records can motivate hypotheses, but do not directly establish predator densities or predation.
 - Two independent 256-structure × 27 synthetic-rate food-web sets support a positive gain in pattern generation concurrent with negative average model frog-cohort changes; the early/long predator developmental setting can reverse the effect.
-- Pre-outcome-frozen R5 shows that **under specified** call-link and proxy-discordance values, an otherwise detectable model pathway can lose observation power; it does not identify which process was operating in monitored wetlands.
-- The manuscript contrasts matching *a pattern*, benefiting *a population*, and identifying *a mechanism from observation*. These are its general-ecology contributions, not an assertion that all other studies missed them.
+- **R5 is methodological support, not a third major biological finding:** under hypothetical call-link/proxy errors, model mechanisms can be difficult to recover from field-style observations. This explains why the available acoustic/SDM/landscape data cannot substitute for simulated independent manipulation of vegetation functions and predator timing; it does **not** show that such field measurements are inherently impossible, or reveal the reason actual G14/G15 failed.
+- The manuscript's **two biological contributions** are (i) pattern generation need not confer demographic benefit, and (ii) predator developmental conditions reverse vegetation's effect within the stipulated model family. Do not pitch R5 as an independent ecological discovery.
 
 ## Journal-required author-specific comparison — HOLD
 
