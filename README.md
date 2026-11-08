@@ -4,7 +4,9 @@
 
 ## 現在の成果物
 
-- [現行の統合原稿：R1–R4・P1・G4–G16](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [現行の統合原稿：R1–R4・P1・G4–G17b](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [G17b：元G15の保存済み予測を対角に固定し、O/S適合度順位の影響を分離](research/G17B_EXACT_G15_ANCHORED_CROSSSWAP_VERIFIED_RESULT_2026-11-08.md)
+- [G17：元G15対角の固定数値再現基準が不合格だった記録](research/G17_FAILED_ORIGINAL_DIAGONAL_NUMERICAL_REPLAY_2026-11-08.md)
 - [G16：ABC野外予測の背景依存性を56地理ブロック・V0/V1・SDM順位まで分解](research/G16_SDM_BACKGROUND_REVERSAL_VERIFIED_RESULT_2026-11-08.md)
 - [G15：ABC選別794提案と199率×発育条件帰無での野外予測背景依存性](research/G15_ABC_ACOUSTIC_SELECTION_SPECIFICITY_VERIFIED_RESULT_2026-11-07.md)
 - [G14：元のABC794採択モデルと北米4,248地点の地理的発声予測を接続](research/G14_ABC_POM_FIELD_ACOUSTIC_ENSEMBLE_VERIFIED_RESULT_2026-11-07.md)
@@ -33,6 +35,8 @@
 **G15でABC選別の独自性をさらに検証すると、同じNAAMP地点に対して199条件付き帰無モデルすべてに勝つのはuniform背景だけで、target-group背景では199モデルすべてに負けました。4符号だけの固定対照には両背景で勝ちましたが、独立した野外機構同定には至りません。**
 
 **G16では、G15の全1,707,696地点予測を原本から再照合し、SDM背景間のABC−帰無利益の差の95.6%が景観冠水植生なしの3,742地点に由来することを確認しました。全56地理ブロックの一つずつの除外でも逆転方向は維持され、O/S適合度順位は背景間で完全には一致しません。これは結果の由来の診断であって、野外の捕食機構を実証するものではありません。**
+
+**G17bでは、G17の数値再現ゲート不合格を保持したうえで、元G15の保存済み対角予測を使う別の事後的検証により、ABCの帰無モデルに対する勝敗は環境モデルよりO/S適合度の順位入力に依存することを確認しました。** 元G17は不合格のままで、野外捕食機構を同定したとは扱いません。
 
 野外とのG4–G7比較では機構を選べる確かな予測改善には届いておらず、[G7の結果・固定仕様・不確実性](research/G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)も保持しています。鳴き声は繁殖成功、適合度は捕食者密度、景観植生は池内の隠れ場の直接測定ではありません。
 
