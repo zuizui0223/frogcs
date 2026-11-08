@@ -127,8 +127,10 @@ def run(out):
                 r=http_get(info["url"],MAX_FILE,timeout=75)
                 raw=r.pop("raw",b"")
                 if r["ok"] and raw[:80].lstrip().lower().startswith((
-                    b"<!doctype html",b"<html",b"<?xml")):
-                    r["ok"]=False;r["error"]="HTML_OR_XML_NOT_SOURCE_FILE"
+                    b"<!doctype html",b"<html")):
+                    r["ok"]=False;r["error"]="HTML_NOT_SOURCE_FILE"
+                # The official source's ATCH_Metadata.xml is legitimate FGDC
+                # metadata and MUST NOT be rejected merely for '<?xml'.
                 if r["ok"] and len(raw)>0:
                     entry["sha256"]=hashlib.sha256(raw).hexdigest()
                     entry["md5_calculated"]=hashlib.md5(raw).hexdigest()
