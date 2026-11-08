@@ -39,17 +39,17 @@ def check_source() -> tuple[str, str, str]:
     refs = REFS.read_text(encoding="utf-8")
     required = {
         "g13_structure_main": "647 canonical IDs" in main and "p=0.0002" in main,
-        "g18_independent_observation_main": "USGS surveys linked concurrent calls and larvae" in main,
+        "g18_independent_observation_main": "USGS linked concurrent calls with larvae" in main,
         "g12_prior_in_supp": "Supplementary Methods S14." in supp,
         "g13_structure_in_supp": "Supplementary Methods S15." in supp,
         "g14_g17_limits_in_supp": all(f"Supplementary Methods S{i}." in supp for i in range(16, 20)),
         "g18_stage_in_supp": "Supplementary Methods S20." in supp,
-        "g17_failure_preserved": "G17 replay failed" in main,
+        "g17_failure_preserved": "G17\'s replay failed" in main,
         "r5_s21_present": "Supplementary Methods S21." in supp,
         "r5_conditional_observer_limits": (
-            "hypothetical SDM-rank and vegetation mismatches can impede detection" in main
-            and "neither proves absence nor identifies its cause" in main
-            and "pond-level vegetation, predator counts" in main
+            "hypothetical proxy mismatch can obscure known simulated responses" in main
+            and "not why the field tests failed" in main
+            and "simulation independently manipulates vegetation functions and predator timing" in main
         ),
         "rate_mismatch_positive": "+2.71" in main and "−0.040" in main,
         "developmental_benefit_positive": "+0.116" in main,
