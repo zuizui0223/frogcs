@@ -119,7 +119,14 @@ def run_shard(shard,out):
     for e,r in PAIR_CELLS:
         env=envs[e]
         # Original fixed source-shape 4 coefficients × original rank interactions.
-        allphi=ranks[r]@source_coeff.T
+        # Preserve *exact* original G15 numerical evaluation order: its
+        # predictor_templates used target @ one coefficient vector (GEMV)
+        # per source. A batched GEMM changes summation order at machine
+        # precision and may alter L-BFGS-B's stopping path. This technical
+        # correction changes no coefficient, original site, fold or tuning.
+        allphi=np.column_stack([
+            ranks[r]@source_coeff[ii] for ii in range(len(chosen))
+        ])
         require(allphi.shape==(N_SITE,len(chosen)) and np.isfinite(allphi).all(),
                 "G17 source rank cross-swap feature null or incomplete")
         for fold in range(N_FOLD):
