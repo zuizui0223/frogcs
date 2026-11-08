@@ -148,7 +148,7 @@ These simulation findings are conditional in three ways. First, the attack and l
 
 ### Third-guild context is an observation, not a predator census
 
-Shared environmental filtering may explain calling. G5/G7 did not identify wild predation; G14/G15 depended on SDM background, with G16/G17b implicating vegetation-absent sites and O/S ranks; G17 replay failed. USGS surveys linked concurrent calls and larvae, not later detection (Supplementary Methods S20). R5 showed that hypothetical SDM-rank and vegetation mismatches can impede detection despite simulated truth, although aligned proxies retained high power (Supplementary Methods S21). Failure neither proves absence nor identifies its cause; tests require pond-level vegetation, predator counts and calibrated larval-to-call links.
+Calls and suitability proxies cannot measure predation or timing. G5/G7/G14/G15 did not identify wild mechanisms; G17's replay failed. USGS linked concurrent calls with larvae, but did not reliably predict later detection (Supplementary Methods S20). R5 shows hypothetical proxy mismatch can obscure known simulated responses, not why the field tests failed (Supplementary Methods S21). Hence simulation independently manipulates vegetation functions and predator timing, comparing pattern generation with frog demographic effects inaccessible from these field records. Identifying natural mechanisms still requires direct pond measurements.
 
 ### A specific prediction for field tests of vegetation benefit
 
