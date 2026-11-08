@@ -1,0 +1,126 @@
+{
+  "status": "G18_USGS_INDEPENDENT_ACOUSTIC_LARVAL_SOURCE_AND_STAGE_BRIDGE_AUDITED",
+  "original_data_doi": "10.5066/P9T71JCO",
+  "original_ScienceBase_item_id": "5eb5880c82ce25b5135ae784",
+  "original_FGDC_SHA256": "990d0c3fbc8cc05f97cc458911342aea4e74a05088ce81c65fbae99a5a933a11",
+  "original_original_file_SHA256": {
+    "sample": "24fed6f95e262cb287f755a7782b2ee213f59b81d869bfde7d8060705b839da8",
+    "vocal": "e776f9baaf3f972edfa3fe302501a8721d954bc820effb096ef106a9b22be9af",
+    "larvae": "274914675782cd241ce10878faaf932be4baee8c6c023f82ba244fcd4d8487b4",
+    "fgdc": "990d0c3fbc8cc05f97cc458911342aea4e74a05088ce81c65fbae99a5a933a11"
+  },
+  "original_source_sample_rows": 2221,
+  "source_sample_rows_without_sample_number": 5,
+  "original_vocalization_rows": 2222,
+  "original_larval_table_rows": 1055,
+  "same_sample_ids_valid_for_both": 1054,
+  "original_source_shared_taxa": [
+    "Acris blanchardi",
+    "Anaxyrus fowleri",
+    "Gastrophryne carolinensis",
+    "Hyla chrysoscelis",
+    "Hyla cinerea",
+    "Hyla squirella",
+    "Incilius nebulifer",
+    "Lithobates catesbeianus",
+    "Lithobates clamitans",
+    "Lithobates grylio",
+    "Lithobates sphenocephalus",
+    "Pseudacris crucifer",
+    "Pseudacris fouquettei"
+  ],
+  "original_publication": "Glorioso and Waddle (2025), USGS CC0",
+  "same_event": {
+    "source_sites": 64,
+    "paired_source_samples": 1054,
+    "matched_species": 13,
+    "species_by_sample_opportunities": 13702,
+    "in_call_and_larva": 45,
+    "in_call_only": 815,
+    "in_larva_only": 125,
+    "both_explicit_nondetection": 12717,
+    "larva_detection_given_in_call": 0.05232558139534884,
+    "larva_detection_given_in_nocall": 0.009733686341691325,
+    "raw_paired_risk_difference": 0.042591895053657514,
+    "original_site_resampled_95_low": 0.022083204947561844,
+    "original_site_resampled_95_high": 0.06731823478948301,
+    "raw_paired_risk_ratio": 5.375720930232559,
+    "ratio_source_bootstrap_95_low": 3.468846875140918,
+    "ratio_source_bootstrap_95_high": 8.38765324306441,
+    "source_original_site_bootstraps": 10000,
+    "source_original_site_bootstrap_seed": 20261108,
+    "not_larval_survival": true
+  },
+  "first_strictly_later_larval_observation": {
+    "brier": {
+      "site_equal_M0": 0.012214793627069228,
+      "site_equal_M1": 0.012094233261198087,
+      "added_prior_call_gain": 0.00012056036587114105,
+      "source_site_bootstrap95": [
+        -0.00012172803999678217,
+        0.00040500203767644574
+      ],
+      "pooled_original_M0": 0.014999524457606835,
+      "pooled_original_M1": 0.014847279127845427
+    },
+    "logloss": {
+      "site_equal_M0": 0.057692171729290725,
+      "site_equal_M1": 0.05659151010893712,
+      "added_prior_call_gain": 0.0011006616203536,
+      "source_site_bootstrap95": [
+        -0.0007262457563425226,
+        0.0030063394363581057
+      ],
+      "pooled_original_M0": 0.06886144185786414,
+      "pooled_original_M1": 0.06760312055206966
+    },
+    "n_source_lag_rows": 2990,
+    "source_sites": 64,
+    "source_siteyears": 230,
+    "larval_positives": 47,
+    "larval_explicit_negatives": 2943,
+    "prior_call_positives": 133,
+    "n_original_geographic_site_folds": 5,
+    "fixed_site_bootstrap_source_units": 64,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261108,
+    "original_source_year_counts": {
+      "2012": 832,
+      "2013": 832,
+      "2014": 442,
+      "2015": 442,
+      "2016": 442
+    },
+    "forward_2015_2016": {
+      "source_training_2012_2014_rows": 2106,
+      "source_test_2015_2016_rows": 884,
+      "future_source_sites": 34,
+      "future_larval_positives": 15,
+      "models": {
+        "M0": {
+          "brier": 0.016170510501563075,
+          "logloss": 0.07328202634572076,
+          "mean_predicted_presence": 0.015593689757722155
+        },
+        "M1": {
+          "brier": 0.01699990061049415,
+          "logloss": 0.07826365147843918,
+          "mean_predicted_presence": 0.016511217744833846
+        }
+      },
+      "brier_added_prior_call_gain": -0.0008293901089310753,
+      "logloss_added_prior_call_gain": -0.004981625132718423,
+      "no_larval_survival_interpretation": true
+    }
+  },
+  "original_source_data_outcomes_are_stage_detection_not_survival": true,
+  "source_ABC_field_posterior_estimated": false,
+  "odonate_or_salamander_predation_causally_estimated": false,
+  "no_new_biological_simulations": true,
+  "original_G14_G15_field_two_background_gates_unchanged": true,
+  "future_year_predictive_stage_link_supported": false,
+  "outputs_SHA256": {
+    "G18_13_exact_frog_species_within_sample_detection.csv": "bc93ac5660af6bf8fae91b5ce1238181978d865f44fa1d8b6b77910c83844209",
+    "G18_lagged_original_site_year_species_heldout_predictions.csv": "ea9dd7ffbdaa0c07a5fe2c6854b45fdf85b89ed67a9f239c5e2946f1926ecf07"
+  }
+}

@@ -4,7 +4,8 @@
 
 ## 現在の成果物
 
-- [現行の統合原稿：R1–R4・P1・G4–G17b](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [現行の統合原稿：R1–R4・P1・G4–G18](editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+- [G18：独立USGSの発声・幼生同一調査の肯定的関連と、後年予測の未達](research/G18_USGS_INDEPENDENT_CALL_LARVA_OBSERVATION_VERIFIED_RESULT_2026-11-08.md)
 - [G17b：元G15の保存済み予測を対角に固定し、O/S適合度順位の影響を分離](research/G17B_EXACT_G15_ANCHORED_CROSSSWAP_VERIFIED_RESULT_2026-11-08.md)
 - [G17：元G15対角の固定数値再現基準が不合格だった記録](research/G17_FAILED_ORIGINAL_DIAGONAL_NUMERICAL_REPLAY_2026-11-08.md)
 - [G16：ABC野外予測の背景依存性を56地理ブロック・V0/V1・SDM順位まで分解](research/G16_SDM_BACKGROUND_REVERSAL_VERIFIED_RESULT_2026-11-08.md)
@@ -21,6 +22,8 @@
 - [補足Methods・全結果・推論の範囲](editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)
 - [一次文献とデータ・コードの由来](editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
 - [コード・データ・再現手順の入口](research/README.md)
+
+**独立したUSGS野外データG18では、同じサンプルの発声と幼生検出に正の関連がありました（発声あり45/860、なし125/12,842）。しかし、先行発声を加えても後日の幼生検出の地点外予測改善は不確実で、2015〜2016年への予測は悪化しました。** 幼生生残・実測捕食圧・野外ABC事後機構の同定には至っていません。
 
 現行稿の主結果は、**理想化した広域の相互作用符号を生成できても、カエル個体群に利益をもたらすとは限らず、その損得は発育条件で逆転する**ことです。同一256食物網構造のモデル内で、加入時期と水中期間を独立に操作しました。植生の二機能を両方ONにする効果は、遅い加入・短い水中期間で平均logカエル量 −0.1864、早い加入・長い水中期間で +0.1163 でした。早期加入が不利益をほぼ解消し、長い水中期間が加わると利益になります。[P1の全4条件と区間](research/P1_PURE_ARRIVAL_DURATION_TRUE80_VERIFIED_RESULT_2026-11-05.md)を保持しています。
 

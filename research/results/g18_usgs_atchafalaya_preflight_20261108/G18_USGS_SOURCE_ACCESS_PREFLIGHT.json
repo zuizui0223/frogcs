@@ -1,0 +1,285 @@
+{
+  "status": "SCHEMA_READY",
+  "source": "USGS ScienceBase original item metadata and source files",
+  "source_doi": "10.5066/P9T71JCO",
+  "source_item_id": "5eb5880c82ce25b5135ae784",
+  "source_title": "Data from time-constrained visual encounter surveys and acoustic surveys for amphibians and reptiles in the Atchafalaya Basin conducted from 2008 through 2016",
+  "original_dates": "2008-02-19 through 2016-07-13",
+  "source_license": "CC0 (as described by USGS data release landing page)",
+  "source_original_release_url": "https://doi.org/10.5066/P9T71JCO",
+  "item_metadata_success": true,
+  "item_metadata_url": "https://www.sciencebase.gov/catalog/item/5eb5880c82ce25b5135ae784?format=json",
+  "item_original_files_listed": 8,
+  "original_data_files_downloaded": 8,
+  "original_data_tables_with_csv_headers": 8,
+  "metadata_attempts": [
+    {
+      "ok": true,
+      "status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "bytes": 17927,
+      "etag": null,
+      "original_url": "https://www.sciencebase.gov/catalog/item/5eb5880c82ce25b5135ae784?format=json",
+      "parsed_usable_item": true
+    }
+  ],
+  "source_file_manifest": [
+    {
+      "name": "ATCH_Metadata.xml",
+      "size": 147872,
+      "md5": null,
+      "content_type": "application/fgdc+xml",
+      "qualifying_file": true,
+      "original_index": 0,
+      "sha256": "990d0c3fbc8cc05f97cc458911342aea4e74a05088ce81c65fbae99a5a933a11",
+      "md5_calculated": "8c314271f0f028692261961ebfe041dd",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_00_ATCH_Metadata.xml",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Observations.csv",
+      "size": 1063489,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 1,
+      "sha256": "e9a95ab45c15a0f7ce0482ba337e3924cc88acaa9426ddf7282bd0e16a8af04b",
+      "md5_calculated": "1a55975e164e59b4641070f9adfeecf4",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_01_Observations.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Personnel.csv",
+      "size": 818,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 2,
+      "sha256": "f300dd8674d33c8ac0d72f42f1d8890960a9b262fdfc1aa567d67c65725b51c9",
+      "md5_calculated": "ee651bd3ffd83f5274008a472fe66ce4",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_02_Personnel.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Sample_Data.csv",
+      "size": 197012,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 3,
+      "sha256": "24fed6f95e262cb287f755a7782b2ee213f59b81d869bfde7d8060705b839da8",
+      "md5_calculated": "a5345bd3ed4dc14c605a824b197d22fe",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_03_Sample_Data.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Sample_Matrix.csv",
+      "size": 7375,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 4,
+      "sha256": "8439aa7738b394f3711d1d11b45da71520865308f0cb103a4ee646aea586c054",
+      "md5_calculated": "337a5477676477f414f5e407d9d86a4f",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_04_Sample_Matrix.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Site_Var_Loc_Desc.csv",
+      "size": 17570,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 5,
+      "sha256": "eafc13b859af5cee129a9c29752d334276ee977f1610e595056a83e7f91afe67",
+      "md5_calculated": "76df320db60a6daa2cb7e9941c977de8",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_05_Site_Var_Loc_Desc.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Tadpoles_Larvae.csv",
+      "size": 46810,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 6,
+      "sha256": "274914675782cd241ce10878faaf932be4baee8c6c023f82ba244fcd4d8487b4",
+      "md5_calculated": "759b39421b302f0b439f5489a83fc99a",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_06_Tadpoles_Larvae.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    },
+    {
+      "name": "Vocalizations.csv",
+      "size": 137346,
+      "md5": null,
+      "content_type": "text/csv",
+      "qualifying_file": true,
+      "original_index": 7,
+      "sha256": "e776f9baaf3f972edfa3fe302501a8721d954bc820effb096ef106a9b22be9af",
+      "md5_calculated": "71d3994d84a2e7e881ee57d47f42075b",
+      "ephemeral_original_path": "research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/USGS_original_07_Vocalizations.csv",
+      "status": "DOWNLOADED_ORIGINAL"
+    }
+  ],
+  "source_schema_without_response_values": [
+    {
+      "source_file": "ATCH_Metadata.xml",
+      "original_path": "ATCH_Metadata.xml",
+      "header_status": "SOURCE_CODEBOOK_XML_NO_RESPONSE_OPENED"
+    },
+    {
+      "source_file": "Observations.csv",
+      "original_path": "Observations.csv",
+      "header": [
+        "Sample ID",
+        "Species",
+        "Sex",
+        "Length",
+        "Substrate Code",
+        "Substrate",
+        "Height",
+        "Comments"
+      ],
+      "line_count_raw_newlines": 17365
+    },
+    {
+      "source_file": "Personnel.csv",
+      "original_path": "Personnel.csv",
+      "header": [
+        "Code",
+        "Name"
+      ],
+      "line_count_raw_newlines": 46
+    },
+    {
+      "source_file": "Sample_Data.csv",
+      "original_path": "Sample_Data.csv",
+      "header": [
+        "Sample ID",
+        "Sample #",
+        "Site",
+        "Date",
+        "Start",
+        "End",
+        "Personnel",
+        "Air Temperature",
+        "Humidity",
+        "Wind",
+        "Salinity",
+        "Water Temperature",
+        "Permanent Water",
+        "Ephemeral Water",
+        "Water Depth",
+        "Weather",
+        "Comments"
+      ],
+      "line_count_raw_newlines": 2222
+    },
+    {
+      "source_file": "Sample_Matrix.csv",
+      "original_path": "Sample_Matrix.csv",
+      "header": [
+        "Site",
+        "2008_SampleCount",
+        "2009_SampleCount",
+        "2010_SampleCount",
+        "2011_SampleCount",
+        "2012_SampleCount",
+        "2013_SampleCount",
+        "2014_SampleCount",
+        "2015_SampleCount",
+        "2016_SampleCount",
+        "Comments"
+      ],
+      "line_count_raw_newlines": 71
+    },
+    {
+      "source_file": "Site_Var_Loc_Desc.csv",
+      "original_path": "Site_Var_Loc_Desc.csv",
+      "header": [
+        "Site",
+        "Site Access",
+        "Management Unit",
+        "Owner",
+        "Parish",
+        "Latitude",
+        "Longitude",
+        "Comments",
+        "Permanent Water",
+        "Ephemeral Water",
+        "Permanent Dry Land",
+        "Description"
+      ],
+      "line_count_raw_newlines": 71
+    },
+    {
+      "source_file": "Tadpoles_Larvae.csv",
+      "original_path": "Tadpoles_Larvae.csv",
+      "header": [
+        "Sample ID",
+        "Acris blanchardi",
+        "Anaxyrus fowleri",
+        "Gastrophryne carolinensis",
+        "Hyla chrysoscelis",
+        "Hyla cinerea",
+        "Hyla squirella",
+        "Incilius nebulifer",
+        "Lithobates catesbeianus ",
+        "Lithobates clamitans",
+        "Lithobates grylio",
+        "Lithobates sphenocephalus ",
+        "Pseudacris crucifer ",
+        "Pseudacris fouquettei",
+        "Ambystoma opacum",
+        "Anaxyrus fowleri/Incilius nebulifer",
+        "Hyla species",
+        "Lithobates species",
+        "Pseudacris species",
+        "Unknown species"
+      ],
+      "line_count_raw_newlines": 1056
+    },
+    {
+      "source_file": "Vocalizations.csv",
+      "original_path": "Vocalizations.csv",
+      "header": [
+        "Sample ID",
+        "Acris blanchardi_In",
+        "Acris blanchardi_Out",
+        "Anaxyrus fowleri_In",
+        "Anaxyrus fowleri_Out",
+        "Incilius nebulifer_In",
+        "Incilius nebulifer_Out",
+        "Gastrophryne carolinensis_In",
+        "Gastrophryne carolinensis_Out",
+        "Hyla chrysoscelis_In",
+        "Hyla chrysoscelis_Out",
+        "Hyla cinerea_In",
+        "Hyla cinerea_Out",
+        "Hyla squirella_In",
+        "Hyla squirella_Out",
+        "Pseudacris crucifer_In",
+        "Pseudacris crucifer_Out",
+        "Pseudacris fouquettei_In",
+        "Pseudacris fouquettei_Out",
+        "Lithobates catesbeianus_In",
+        "Lithobates catesbeianus_Out",
+        "Lithobates grylio_In",
+        "Lithobates grylio_Out",
+        "Lithobates clamitans_In",
+        "Lithobates clamitans_Out",
+        "Lithobates sphenocephalus_In",
+        "Lithobates sphenocephalus_Out",
+        "Eleutherodactylus cystignathoides_In",
+        "Eleutherodactylus cystignathoides_Out"
+      ],
+      "line_count_raw_newlines": 2223
+    }
+  ],
+  "adult_call_to_larva_stage_link_eligible": null,
+  "matched_taxon_site_sample_date_opportunities_verified": false,
+  "taxon_species_stage_response_values_inspected": false,
+  "no_field_ABCs_or_new_biology": true,
+  "no_natural_trophic_mechanism_identified": true,
+  "not_field_mechanism_nonreplication": false
+}

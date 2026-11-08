@@ -2,7 +2,8 @@
 
 ## 読む順番
 
-1. [現行統合原稿：R1–R4・P1・G4–G17b](../editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+1. [現行統合原稿：R1–R4・P1・G4–G18](../editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)
+1a. [G18：USGS独立原本の発声×幼生観測と後日予測（地点外・後年では頑健でない）](G18_USGS_INDEPENDENT_CALL_LARVA_OBSERVATION_VERIFIED_RESULT_2026-11-08.md)
 1a. [G17b：元G15対角を再フィットせず原本に固定した2×2の背景・順位分解](G17B_EXACT_G15_ANCHORED_CROSSSWAP_VERIFIED_RESULT_2026-11-08.md)
 1b. [G17：当初の固定数値再現ゲート未達記録](G17_FAILED_ORIGINAL_DIAGONAL_NUMERICAL_REPLAY_2026-11-08.md)
 1a. [G16：元G15野外予測の背景依存性を全56ブロックとV0/V1で分解](G16_SDM_BACKGROUND_REVERSAL_VERIFIED_RESULT_2026-11-08.md)
@@ -12,7 +13,7 @@
 2. [G12：ABC型POMの20,000提案・9事前分布・7符号閾値と647候補の識別限界](G12_ABC_POM_PRIOR_IDENTIFIABILITY_VERIFIED_RESULT_2026-11-07.md)
 3. [G11：旧256構造と重複しない新256構造の全27率・80年独立再現](G11_DISJOINT_STRUCTURE_HOLDOUT_VERIFIED_RESULT_2026-11-07.md)
 4. [G8〜G10：27率条件の反事実実験と符号生成・個体群利益の乖離](G8_27RATE_VERIFIED_RESULT_2026-11-07.md)、[直接対応表](G9_COMPATIBILITY_DEMOGRAPHY_JOINT_RESULT_2026-11-07.md)、[率×発育条件の補正](G10_RATE_CONTEXT_STANDARDIZED_G9_VERIFIED_RESULT_2026-11-07.md)
-5. [P1：加入時期・水中期間による人口学的効果の反転](P1_VEGETATION_BENEFIT_RESULT_2026-11-06.md)／[現行Supplement S1〜S19](../editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)／[G7の野外予測未達](G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)／[文献・データ由来](../editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
+5. [P1：加入時期・水中期間による人口学的効果の反転](P1_VEGETATION_BENEFIT_RESULT_2026-11-06.md)／[現行Supplement S1〜S20](../editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md)／[G7の野外予測未達](G7_TRAIT_COMPOSITION_RESULT_2026-11-06.md)／[文献・データ由来](../editorial/DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md)
 
 **主結果は、パターン生成と焦点カエルの人口学的利益の乖離です（合成モデル内）。** P1は元の256食物網構造・全4植生処理を保ち、有尾類の加入時期と水中期間を独立に操作しました。早期加入が植生の不利益をほぼ解消し、早期加入に長い水中期間が加わるとカエル量への効果が正になりました。固定率の植生二機能による4方向成立率増加（3.52%→14.06%）に加え、G8は同じ256構造の**27率条件で全体平均+2.705ポイント［+2.021,+3.410］、平均logカエル量−0.04030［−0.04918,−0.03109］**を示しました。成立率が改善する率条件は限られ、発育条件2ではカエル量への効果が正へ反転します。G8は真の80年モデル82,944本・64分割の監査が完了し、原稿QAも成功。**追加のG9事後診断では、4符号を新たに成立させた782組中571組（73.0%）でカエル量への効果が負**であり、符号生成の成否が個体群利益と同じではないことを直接集計しました。
 
@@ -29,6 +30,8 @@
 **G16ではG15の1,707,696予測行をSHA監査済みの原本から照合し、ABC−199帰無モデル平均の差の95.61%が景観V=0サイト由来であることを示しました。全56ブロックの単独削除では背景差の方向は変わらず、同じNAAMP地点のO/S順位一致はSpearman 0.625/0.736でした。** ただし、これは元NAAMPとSDM背景に依存する予測感度で、野外の捕食機構の同定ではありません。
 
 **G17bでは、元G17の対角再現基準不合格を残したうえで元G15の保存済み確率を対角2条件に使用し、同じ4,248地点の交差比較で、野外NLLのABC−199帰無の勝敗がO/S順位入力のSDM背景と連動すると確認しました。** 環境モデル側の差は符号が不確実であり、実測捕食機構を同定した結果ではありません。
+
+**G18で独立したUSGS野外データの発声と幼生検出を元Sample IDで照合しました。** 同一調査の13種・1,054サンプルで発声と幼生検出に正の関連がありましたが、2,990件の厳密な先行発声→後日の幼生検出の地点外予測では改善が不確実で、2015〜2016年への時間外予測は悪化しました。実測幼生個体数や捕食者密度、野外のABC機構同定とは区別します。
 
 ## 野外との接続
 
@@ -68,4 +71,4 @@ python research/scripts/summarize_final_mechanisms.py
 
 [legacyの索引](../legacy/README.md)から旧機構監査・旧原稿へ進んでください。移動元と移動先は[移動台帳](../legacy/archive_manifest_20261027.json)に保存しました。
 
-`results/`と`scripts/`には、現行結果の由来・比較対象・再現依存として必要な過去の計算も残っています。古い結果を現在の主結論に採用するという意味ではありません。研究ルート直下の旧契約・収集計画と旧統合原稿2件は、894ファイルの固定スナップショットや既存QAが参照するため原位置に保持しています。現在の入口は上記のR1–R4・P1・G4–G17b統合原稿です。
+`results/`と`scripts/`には、現行結果の由来・比較対象・再現依存として必要な過去の計算も残っています。古い結果を現在の主結論に採用するという意味ではありません。研究ルート直下の旧契約・収集計画と旧統合原稿2件は、894ファイルの固定スナップショットや既存QAが参照するため原位置に保持しています。現在の入口は上記のR1–R4・P1・G4–G18統合原稿です。

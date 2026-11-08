@@ -1,0 +1,176 @@
+name: G18 independent USGS stage observation and 44-claim Ecology Letters manuscript QA
+on:
+  push:
+    branches:
+      - research/g18-usgs-independent-acoustic-larval-source-20261108
+    paths:
+      - .github/workflows/research_g18_integrated_manuscript_source_QA.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independently-audit-source-stages-and-paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.3.5 pandas==2.2.3 scipy==1.17.0
+      - name: Preserve original 44 numerical claims and 13 structural safeguards after G18
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g18_submission_QA_20261108
+      - name: Independently reconcile original USGS 13-taxon 2x2 and future-stage failure, source hashes and article crossrefs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,re
+          import numpy as np,pandas as pd
+          root=Path('.')
+          source=root/'research/results/g18_USGS_original_stage_observation_20261108/audited'
+          prior=root/'research/results/g18_usgs_atchafalaya_preflight_20261108/G18_USGS_SOURCE_ACCESS_PREFLIGHT.json'
+          output=root/'research/results/g18_submission_QA_20261108'
+          r=json.loads((source/'G18_USGS_INDEPENDENT_STAGE_OBSERVATION_RESULT.json').read_text())
+          p=json.loads(prior.read_text())
+          q=json.loads((output/'submission_source_QA_receipt.json').read_text())
+          assert r['status']=='G18_USGS_INDEPENDENT_ACOUSTIC_LARVAL_SOURCE_AND_STAGE_BRIDGE_AUDITED'
+          assert r['original_data_doi']==p['source_doi']=='10.5066/P9T71JCO'
+          assert r['original_ScienceBase_item_id']==p['source_item_id']=='5eb5880c82ce25b5135ae784'
+          assert r['original_FGDC_SHA256']=='990d0c3fbc8cc05f97cc458911342aea4e74a05088ce81c65fbae99a5a933a11'
+          assert p['status']=='SCHEMA_READY' and p['original_data_files_downloaded']==8
+          assert not p['taxon_species_stage_response_values_inspected']
+          manifest={x['name']:x for x in p['source_file_manifest']}
+          file_by_source={'sample':'Sample_Data.csv','vocal':'Vocalizations.csv',
+                          'larvae':'Tadpoles_Larvae.csv','fgdc':'ATCH_Metadata.xml'}
+          for name,source_file in file_by_source.items():
+              assert manifest[source_file]['sha256']==r['original_original_file_SHA256'][name]
+          assert r['original_source_sample_rows']==2221
+          assert r['source_sample_rows_without_sample_number']==5
+          assert r['original_vocalization_rows']==2222
+          assert r['original_larval_table_rows']==1055
+          assert r['same_sample_ids_valid_for_both']==1054
+          assert len(r['original_source_shared_taxa'])==13
+          s=r['same_event']
+          assert (s['source_sites'],s['paired_source_samples'],s['matched_species'])==(64,1054,13)
+          assert s['species_by_sample_opportunities']==13702
+          assert (s['in_call_and_larva'],s['in_call_only'],
+                  s['in_larva_only'],s['both_explicit_nondetection'])==(45,815,125,12717)
+          assert abs(s['raw_paired_risk_difference']-(45/860-125/12842))<1e-12
+          assert s['original_site_resampled_95_low']>0
+          assert s['source_original_site_bootstraps']==10000
+          t=pd.read_csv(source/'G18_13_exact_frog_species_within_sample_detection.csv')
+          assert len(t)==26 and t.taxon.nunique()==13
+          main=t[t.call_scope=='call_in']
+          assert len(main)==13 and main.source_samples.eq(1054).all()
+          for key,attr in [('call_and_larva','in_call_and_larva'),
+                           ('call_only','in_call_only'),
+                           ('larva_only','in_larva_only'),
+                           ('both_explicit_nondetection','both_explicit_nondetection')]:
+              assert int(main[key].sum())==int(s[attr])
+          later=r['first_strictly_later_larval_observation']
+          assert later['n_source_lag_rows']==2990 and later['source_sites']==64
+          assert later['source_siteyears']==230
+          assert later['larval_positives']==47 and later['prior_call_positives']==133
+          assert later['n_original_geographic_site_folds']==5
+          stage=pd.read_csv(source/'G18_lagged_original_site_year_species_heldout_predictions.csv')
+          assert len(stage)==2990 and stage.opaque_site_group.nunique()==64
+          assert not stage.duplicated(['opaque_site_group','taxon','year']).any()
+          assert stage.groupby('opaque_site_group').fold.nunique().eq(1).all()
+          assert stage.lag_since_last_prior_days.ge(1).all()
+          for m in ('M0','M1'):
+              prob=stage['p_'+m].to_numpy(float)
+              truth=stage.larva.to_numpy(float)
+              assert ((prob>0)&(prob<1)).all()
+              b=(truth-prob)**2
+              L=-(truth*np.log(prob)+(1-truth)*np.log1p(-prob))
+              assert np.max(abs(b-stage['brier_'+m].to_numpy(float)))<1e-12
+              assert np.max(abs(L-stage['logloss_'+m].to_numpy(float)))<1e-12
+              assert abs(b.mean()-later['brier']['pooled_original_'+m])<1e-12
+              assert abs(L.mean()-later['logloss']['pooled_original_'+m])<1e-12
+          for metric in ('brier','logloss'):
+              assert later[metric]['source_site_bootstrap95'][0]<0<later[metric]['source_site_bootstrap95'][1]
+          future=later['forward_2015_2016']
+          assert future['source_training_2012_2014_rows']==2106
+          assert future['source_test_2015_2016_rows']==884
+          assert future['future_source_sites']==34 and future['future_larval_positives']==15
+          assert future['brier_added_prior_call_gain']<0
+          assert future['logloss_added_prior_call_gain']<0
+          assert not r['source_ABC_field_posterior_estimated']
+          assert not r['odonate_or_salamander_predation_causally_estimated']
+          for name,digest in r['outputs_SHA256'].items():
+              assert hashlib.sha256((source/name).read_bytes()).hexdigest()==digest,name
+          assert q['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert q['independently_recomputed_numerical_claims']==44
+          assert len(q['document_structural_checks'])==13
+          assert all(q['document_structural_checks'].values())
+          assert (q['main_words'],q['abstract_words'])==(4984,148)
+          main_file=root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          supp=root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          letter=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          report=root/'research/G18_USGS_INDEPENDENT_CALL_LARVA_OBSERVATION_VERIFIED_RESULT_2026-11-08.md'
+          assert '## Supplementary Methods S20.' in supp.read_text()
+          assert '4,984 words' in letter.read_text() and '148 words' in letter.read_text()
+          for doc in (main_file,supp,letter,report):
+              text=doc.read_text()
+              assert 'USGS' in text and ('larva' in text or 'tadpole' in text),doc
+          for doc in (main_file,supp,report):
+              for target in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if target.startswith(('https://','http://','mailto:','#')):continue
+                  rel=target.split('#',1)[0]
+                  if rel and '?' not in rel:
+                      assert (doc.parent/rel).exists(),(str(doc),target)
+          receipt=dict(status='G18_ORIGINAL_USGS_STAGE_13702_COOBS_2990_LAGGED_44CLAIM_PAPER_QA_SUCCESS',
+              source_doi='10.5066/P9T71JCO',
+              source_codebook_and_original_files_sha_verified=True,
+              original_site_samples_joined=1054,original_matched_frog_taxa=13,
+              original_site_cluster_units=64,
+              original_same_event_species_opportunities=13702,
+              original_call_larva_both_positive=45,
+              original_call_nondetection_larva_detected=125,
+              original_risk_difference=s['raw_paired_risk_difference'],
+              original_lagged_site_taxon_year_rows=2990,
+              site_holdout_improvement_uncertain=True,
+              later_year_2015_2016_brier_gain=future['brier_added_prior_call_gain'],
+              later_year_2015_2016_logloss_gain=future['logloss_added_prior_call_gain'],
+              future_year_transfer_improved=False,
+              independently_recomputed_legacy_numerical_claims=44,
+              passed_legacy_manuscript_structural_checks=13,
+              body_words=q['main_words'],abstract_words=q['abstract_words'],
+              calibrated_field_trophic_mechanism=False,
+              journal_submitted=False)
+          (output/'G18_integrated_manuscript_source_QA_receipt.json').write_text(
+              json.dumps(receipt,indent=2)+'\n')
+          print('G18_ORIGINAL_USGS_STAGE_AND_44_SOURCE_CLAIMS_MANUSCRIPT_QA_SUCCESS',
+                json.dumps(receipt))
+          PY
+      - name: Commit source-verifiable G18 paper QA receipt to stacked Draft
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g18_submission_QA_20261108/
+          if ! git diff --cached --quiet; then
+            git commit -m 'qa: archive original USGS stage association, future-year failure and legacy 44 manuscript claims'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g18-independent-usgs-stage-44claim-manuscript-QA
+          path: research/results/g18_submission_QA_20261108/
+          if-no-files-found: warn
