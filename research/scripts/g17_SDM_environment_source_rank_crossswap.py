@@ -20,10 +20,11 @@ from g14_abc_ensemble_geographic_acoustic_holdout import (
     read_field,predictor_templates,N_SITE,N_VISITS,N_STRONG,N_FOLD,N_BLOCK,
 )
 from g15_abc_selection_specificity_holdout import (
-    OUT as SOURCE_DIR,REP as N_NULLS,SEED as ORIGINAL_NULL_SEED,
+    OUT as G15_ROOT,REP as N_NULLS,SEED as ORIGINAL_NULL_SEED,
 )
 
 ROOT=Path(__file__).resolve().parents[2]
+SOURCE_DIR=G15_ROOT/"audited"  # G15 retained source-verified receipt and templates
 OUT=ROOT/"research/results/g17_sdm_env_rank_crossswap_20261108"
 N_TEMPLATES=N_NULLS+2
 NSHARDS=4
