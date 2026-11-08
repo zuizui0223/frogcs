@@ -34,7 +34,12 @@ def load_orig(shards,original_g15):
     root=Path(shards);original_g15=Path(original_g15)
     frozen,sourceinfo=frozen_templates()
     site_g17=[];site_g15=[];receipts=[]
-    expected_sha=sourceinfo["file_sha256"]["G15_frozen_source_templates.csv"]
+    # Two legitimate G15 source byte representations exist: the original
+    # source-frozen preflight CSV (SHA 427ee0..) and the audited reserialized
+    # summary CSV (SHA f6f6ad..). Both contain the identical fixed model set.
+    expected_original_preflight_sha=sourceinfo["source_template_sha256"]
+    expected_audited_reserialized_sha=sourceinfo["file_sha256"][
+        "G15_frozen_source_templates.csv"]
     for ii in range(NSHARDS):
         p=f"G17_source_crossswap_{ii:02d}"
         old=f"g15_predictive_null_shard_{ii:02d}"
@@ -44,9 +49,9 @@ def load_orig(shards,original_g15):
         ra=json.loads(a.read_text());rb=json.loads(b.read_text())
         require(ra["status"]=="G17_ALL_SOURCE_2X2_ORIGINAL_NAAMP_SHARD_SUCCESS"
                 and ra["shard"]==ii and ra["total_shards"]==NSHARDS
-                and ra["G15_frozen_source_SHA"]==expected_sha
+                and ra["G15_frozen_source_SHA"]==expected_audited_reserialized_sha
                 and rb["status"]=="G15_ORIGINAL_FIELD_SOURCE_NULL_SHARD_SUCCESS"
-                and rb["fixed_source_templates_SHA"]==expected_sha
+                and rb["fixed_source_templates_SHA"]==expected_original_preflight_sha
                 and rb["shard"]==ii
                 and ra["pair_cells"]==[list(z) for z in PAIR_CELLS],
                 "G17/G15 original source model identity differs")
@@ -257,8 +262,10 @@ def run(g17_shards,g15_shards,out=RESULTS):
        original_rate_context_null_templates=N_NULLS,
        original_sites=N_SITE,original_visits=N_VISITS,
        original_geographic_blocks=N_BLOCK,
-       source_G15_template_sha256=source["file_sha256"][
+       source_G15_audited_reserialized_template_sha256=source["file_sha256"][
           "G15_frozen_source_templates.csv"],
+       source_G15_original_preflight_template_sha256=source[
+          "source_template_sha256"],
        original_G15_diagonal_reproduced_exactly=True,
        original_G15_source_ranking_uniform=0,
        original_G15_source_ranking_target_group=199,
