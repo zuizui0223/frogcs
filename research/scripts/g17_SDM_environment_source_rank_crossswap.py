@@ -20,7 +20,7 @@ from g14_abc_ensemble_geographic_acoustic_holdout import (
     read_field,predictor_templates,N_SITE,N_VISITS,N_STRONG,N_FOLD,N_BLOCK,
 )
 from g15_abc_selection_specificity_holdout import (
-    G15 as SOURCE_DIR,REP as N_NULLS,SEED as ORIGINAL_NULL_SEED,
+    OUT as SOURCE_DIR,REP as N_NULLS,SEED as ORIGINAL_NULL_SEED,
 )
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -56,7 +56,7 @@ def frozen_templates():
            "G15 original 201-source metadata or negative gate changed")
     f=SOURCE_DIR/"G15_frozen_source_templates.csv"
     require(sha(f)==rec["file_sha256"][f.name],"G15 source coefficient SHA drift")
-    t=pd.read_csv(f).sort_values("null_id",ascending=True).reset_index(drop=True)
+    t=pd.read_csv(f) # Preserve original G15 nulls-then-ABC/SIGN_ONLY source order
     require(len(t)==N_TEMPLATES and t.candidate.is_unique
            and set(t.null_id)==set(range(N_NULLS))|{-1,-2}
            and t.query("null_id >= 0").model_draws.eq(794).all(),
