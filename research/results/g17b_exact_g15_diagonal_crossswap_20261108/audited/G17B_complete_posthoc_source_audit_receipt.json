@@ -1,0 +1,125 @@
+{
+  "status": "G17B_EXACT_G15_ANCHORED_POSTHOC_2X2_SOURCE_AUDIT_SUCCESS",
+  "original_G17_frozen_numeric_source_gate_pass": false,
+  "original_G17_attempts_with_failed_source_gates": [
+    42431413331,
+    42431674245
+  ],
+  "G17b_is_a_new_posthoc_method_after_gate_failure": true,
+  "G17_original_successful_source_shards": 4,
+  "G15_original_successful_source_shards": 4,
+  "G17_original_complete_site_refits": 3415392,
+  "G17b_exact_anchored_site_rows": 3415392,
+  "original_G15_diagonal_site_rows": 1707696,
+  "original_ABC_source_templates": 201,
+  "original_rate_context_null_templates": 199,
+  "original_sites": 4248,
+  "original_visits": 63180,
+  "original_geographic_blocks": 56,
+  "source_G15_audited_reserialized_template_sha256": "f6f6adfc9fb171466f0dfc5452b3b2673bc18c9f9fa9fe78d5dae27a1a472e59",
+  "source_G15_original_preflight_template_sha256": "427ee0a9f6d0c9e391917395a7a4bb0060c7a816b3f9f750bc55abf7ec86f305",
+  "original_G15_diagonal_reproduced_exactly": true,
+  "original_G15_source_ranking_uniform": 0,
+  "original_G15_source_ranking_target_group": 199,
+  "original_2x2_anchored_effects": {
+    "original_diagonal_difference": 0.0006079140333429267,
+    "environment_main_effect": -0.0001808328266114656,
+    "source_rank_main_effect": 0.0007887468599543923,
+    "crossed_nonlinear_interaction": 0.0006166268408006603,
+    "environment_fraction_of_signed_diagonal": -0.2974644714435422,
+    "rank_fraction_of_signed_diagonal": 1.2974644714435422,
+    "D_UU": 0.0004307863376291632,
+    "D_UT": -0.0006662739427255593,
+    "D_TU": 0.0003033057438402986,
+    "D_TT": -0.00017712769571376352
+  },
+  "original_2x2_G17_refit_effects": {
+    "original_diagonal_difference": 0.0006081730949865083,
+    "environment_main_effect": -0.0001807032957896748,
+    "source_rank_main_effect": 0.0007888763907761831,
+    "crossed_nonlinear_interaction": 0.000616621178714194,
+    "environment_fraction_of_signed_diagonal": -0.2971247779280396,
+    "rank_fraction_of_signed_diagonal": 1.2971247779280397,
+    "D_UU": 0.0004309130374077208,
+    "D_UT": -0.0006662739427255593,
+    "D_TU": 0.0003033057438402986,
+    "D_TT": -0.0001772600575787875
+  },
+  "max_absolute_main_factorial_effect_refit_difference": 2.590616435815818e-07,
+  "all_factorial_component_signs_unchanged_by_exact_diagonal_anchor": true,
+  "G14_G15_both_background_field_mechanism_gates_pass": false,
+  "no_new_model_fits": true,
+  "no_new_biological_models": true,
+  "not_independent_field_validation": true,
+  "no_wild_ABC_mechanism_posterior": true,
+  "source_original_shard_SHA_receipts": [
+    {
+      "shard": 0,
+      "G17_refit_receipt_sha": "b3a7ee35156d7c3d15d4425d8183af4390ac96330aac5bb99b482067a7153ac8",
+      "G15_original_receipt_sha": "3371bc844969247ec6e8af9626732962a9d0439a1457348f40d25113ed6efc46",
+      "G17_files": {
+        "G17_source_crossswap_00_sites.csv.gz": "d97e028d6e955cb9f7b113070669199816d828e14331f74d9b538f82459047d4",
+        "G17_source_crossswap_00_blocks.csv": "ee2ef4d46d85a88a42095f49b1a9d2c85826b6e78ceb4088347163638f72c01e",
+        "G17_source_crossswap_00_slopes.csv": "6408f09428663333a786b4338284e5c7ea6b9c35d565f71d5d46c96ca41fe9d2"
+      },
+      "G15_original_files": {
+        "g15_predictive_null_shard_00_full_site.csv.gz": "bd6e5dbefb2b2880a7eb64e46bce2e54ea941cd9e3df770358a16f1c655238e5",
+        "g15_predictive_null_shard_00_train_slopes.csv": "0733bad383a0580d20d062acdf069d1afee9891f1197d405eb2dbb526e036f9b",
+        "g15_predictive_null_shard_00_56blocks.csv": "73e90b9f4fe440be5b2309c50d385f6d9470ad9e361363663ffe0518ba5849f9"
+      }
+    },
+    {
+      "shard": 1,
+      "G17_refit_receipt_sha": "4e27c57872f0ec1de3c6d0510d2e45589db66c45fefec45cd82a50d9ea2c7214",
+      "G15_original_receipt_sha": "9be42f78fa7bf8b4f3fd7e0d2e8e6927f5f1b3e9bc6eac57f5e4864828e87fc3",
+      "G17_files": {
+        "G17_source_crossswap_01_sites.csv.gz": "f60dbefd1e2cd16d2854da7fe6260a566b61a791d01955c62163d12f9a3f50da",
+        "G17_source_crossswap_01_blocks.csv": "03d58d68fd38e8742bcff5144285d2fa75fce642217a5795fa091277ce546cbb",
+        "G17_source_crossswap_01_slopes.csv": "38d09d15538f78a39edbd9018dea2d33fff2ee1fd9cd0ea1e993c4466de050bd"
+      },
+      "G15_original_files": {
+        "g15_predictive_null_shard_01_full_site.csv.gz": "7ac79cd79532018f986f2771ca3f51b2e6f5d43a6ab7479f61fd55dd6d017f4d",
+        "g15_predictive_null_shard_01_train_slopes.csv": "03a92052e739b6873ae22cbcde7060a2e63e3985a94e682124d8f1142e995ec3",
+        "g15_predictive_null_shard_01_56blocks.csv": "afc2bb657f75019d25f8bbcbc4399e1b39b24bd0b1ac4b808aae0c18415024c5"
+      }
+    },
+    {
+      "shard": 2,
+      "G17_refit_receipt_sha": "d9fd2b5d985f39bc0263f6a1e5f9abddfef88dfa5afae70768be31aad739c25c",
+      "G15_original_receipt_sha": "d10918dd2776b8afd75a55ec56a0efd4e1ce3391447470fa78540d5454d01422",
+      "G17_files": {
+        "G17_source_crossswap_02_sites.csv.gz": "37b7104addc2b5160eabf279cb9b53eca41c79040bb65db31588f00b78989ef8",
+        "G17_source_crossswap_02_blocks.csv": "c11ff2b5583e2ea658a954be0f83579e9f4e66a8869e105ecb1ce43f870480e9",
+        "G17_source_crossswap_02_slopes.csv": "4750a46d427e8e7bb30558311e89109659ab4d5af0ede59c20ee96a01c6f45d6"
+      },
+      "G15_original_files": {
+        "g15_predictive_null_shard_02_full_site.csv.gz": "6d8c6df7edfc5fa83ec25942c17be2b65784cd59257b77c15354ab3c136f7867",
+        "g15_predictive_null_shard_02_train_slopes.csv": "7c99b8a3a026df61d653520add6db07a87fc9c98b57613c2f9b1f95e6830db33",
+        "g15_predictive_null_shard_02_56blocks.csv": "93f6de75d05526390d35604afd0266039b252b4a4fff75dc0279ec2a6119b2c8"
+      }
+    },
+    {
+      "shard": 3,
+      "G17_refit_receipt_sha": "e4a5e3eef9d2be7056a5146016a87e7e9f08deafd1d5cac97e2adf7aa0f6684a",
+      "G15_original_receipt_sha": "6a5cda3006bf8df365056f2ae5731888eeb3f99f23edccb0d5883fc713da64a5",
+      "G17_files": {
+        "G17_source_crossswap_03_sites.csv.gz": "7b8263cb08648f8da9abeeabc368e91f36eeb8cd00a7a71e51ca9faa1558f38c",
+        "G17_source_crossswap_03_blocks.csv": "8cb36be6a51c0b51423aa3c28a80437cd8aac5d3a1f32ee27e9b1468121ca2e5",
+        "G17_source_crossswap_03_slopes.csv": "3e2a9d06847c192d1a91116380924ae601b7c82ff408b55ec6ed9fa905b967fe"
+      },
+      "G15_original_files": {
+        "g15_predictive_null_shard_03_full_site.csv.gz": "0f8ab1c4c664c77d0a554c566618c0c8b50cc422b6f121c222f94c8a085264c7",
+        "g15_predictive_null_shard_03_train_slopes.csv": "f3a4170dd20c5c67da9fb32b4539f49418a537cc93bef0a30b1518d9e6929a40",
+        "g15_predictive_null_shard_03_56blocks.csv": "9b2b46e0eb8994419676afb527ef265ece70c47c718971dac467715254075bf2"
+      }
+    }
+  ],
+  "files_sha256": {
+    "G17B_all_four_ABC_vs_199source_null.csv": "46fc3d7c6a0a36baf7dcfd3ad51d25752d9705d28eada7f24706162bbdd17d84",
+    "G17B_all_804_source_template_NLL_scores.csv": "1e97cab0dc0a901d37f1b3fc95ecbeee06573b93b465e61dfb90b5a9439b9250",
+    "G17B_original_45024_geographic_block_losses.csv.gz": "d061d1d1243af1c08927a298915b41fe63dfec4979e498e74c77c753e76bbcad",
+    "G17B_frozen_56block_bootstrap_9999_effects.csv": "e596059e366a271e9dfdcc4e7f694d5af68befe276b6974ee55413e95220e6bc",
+    "G17B_original_failed_G17_numeric_replay_diagnostic.csv": "49f43610f29fc5828b70dab5196ce447f84996149c935b9af9c3e76d4e677b36",
+    "G17B_refit_vs_exact_diagonal_factorial_sensitivity.csv": "f4e16469afad47b778b602ef3e50e4e93d2d09b35ae44275e7a53d996c152222"
+  }
+}
