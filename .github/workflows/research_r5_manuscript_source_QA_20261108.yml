@@ -1,0 +1,104 @@
+name: R5 original 44-claim plus 21-SI-section Ecology Letters manuscript QA
+
+on:
+  push:
+    branches:
+      - research/r5-observation-identifiability-last-test-20261108
+    paths:
+      - 'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+      - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.bib'
+      - '.github/workflows/research_r5_manuscript_source_QA_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  no-new-science-manuscript-QA:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.3.5 pandas==2.2.3 scipy==1.17.0
+      - name: Original unchanged 44 results claims and manuscript structural audit
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py             --r2 research/results/submission_frozen_sources_20261106/R2             --pr161 research/results/submission_frozen_sources_20261106/R3             --r4 research/results/submission_frozen_sources_20261106/R4             --g2 research/results/submission_frozen_sources_20261106/G2             --g2b research/results/submission_frozen_sources_20261106/G2B             --p1 research/results/submission_frozen_sources_20261106/P1             --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md             --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md             --out research/results/r5_manuscript_QA_20261108
+      - name: Retrieve independently audited corrected original R5 power report (without simulation)
+        run: |
+          mkdir -p research/results/r5_manuscript_QA_20261108/original_R5
+          gh run download 42446992844 --repo "$GITHUB_REPOSITORY"             --name frogcs-R5-observer-power-complete-reporting-qa             --dir research/results/r5_manuscript_QA_20261108/original_R5
+      - name: Verify exact R5 numerical claims, wording, crossrefs, and journal limits
+        run: |
+          python - <<'PY'
+          import json,re,hashlib
+          from pathlib import Path
+          import pandas as pd
+          out=Path('research/results/r5_manuscript_QA_20261108')
+          base=out/'original_R5'
+          d=json.loads((base/'R5_VERIFIED_REPORTING_ONLY_CORRECTED_AUDIT.json').read_text())
+          x=pd.read_csv(base/'R5_all_48_conditional_recovery_cells_ARM_IDS_FIXED.csv',
+                        dtype={'true_source_arm':str})
+          a=json.loads((out/'submission_source_QA_receipt.json').read_text())
+          paper=Path('editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md').read_text()
+          si=Path('editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md').read_text()
+          refs=Path('editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.md').read_text()
+          report=Path('research/R5_OBSERVABILITY_FULL_VERIFIED_RESULT_2026-11-08.md').read_text()
+          assert a['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert a['independently_recomputed_numerical_claims']==44
+          assert all(a['document_structural_checks'].values())
+          assert 3000<=a['main_words']<=5000 and a['abstract_words']<=150
+          assert d['status']=='R5_REPORTING_ONLY_LABEL_REPAIR_QA_PASS'
+          assert d['n_main_true_on_matching_cells']==12
+          assert d['negative_control_gamma_zero_false_11_calls']==9
+          assert d['negative_control_gamma_zero_total_observer_trials']==1600
+          assert d['off_truth_nonzero_gamma_wrong_11_recoveries']==0
+          assert d['all_2400_simulations_verified'] and d['all_4800_observer_predictions_verified']
+          assert set(x.true_source_arm)=={'00','11'} and len(x)==48
+          assert all(f'## Supplementary Methods S{i}.' in si for i in range(1,22))
+          for token in ('100/100','87/100','80/100','55/100','12/100',
+                        '9/1,600','0/1,600','γ=0.25','γ=1'):
+              assert token in si,token
+          assert 'R5 virtual observers showed conditional detection loss' in paper
+          assert 'Supplementary Methods S21' in paper and 'Supplementary Methods S20' in paper
+          assert "G17's original replay gate failed" in paper
+          assert 'calibrates calling to cohorts or identifies wild predation' in paper
+          assert 'FIELD' not in d['status']
+          assert 'causal_reasons_for_actual_G14_failure_identified' in d
+          assert d['causal_reasons_for_actual_G14_failure_identified'] is False
+          assert 'Zurell, D., Berger' in refs and '10.1111/j.1600-0706.2009.18284.x' in si
+          assert 'original 794-proposal' not in paper.lower()
+          for source in [Path('editorial/figures/Figure1_Observed_ThirdGuild_AcousticAssociation.png'),
+                         Path('editorial/figures/Figure2_InteractionSignature_VsFrogAbundance.png'),
+                         Path('editorial/figures/Figure3_Arrival_Duration_P1_PureMechanism.png'),
+                         Path('editorial/figures/Figure4_GenuineFinitePopulation_R4.png')]:
+              assert source.is_file() and source.stat().st_size>100000,source
+          receipt={'status':'R5_24_SCENARIO_44_ORIGINAL_CLAIM_21_SI_SECTION_EL_QA_SUCCESS',
+                   'main_words':a['main_words'],'abstract_words':a['abstract_words'],
+                   'original_claims_recomputed':44,'original_SI_sections':21,
+                   'all_R5_scenarios':24,'all_R5_replicates':2400,
+                   'all_R5_observer_scored_rows':4800,
+                   'source_reporting_QA_run':42446992844,
+                   'no_original_model_or_observer_simulation_rerun':True,
+                   'all_results_including_failures_preserved':True,
+                   'article_submitted':False,'coauthor_approval_received':False}
+          (out/'R5_FINAL_EL_MANUSCRIPT_QA_receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print('R5_FINAL_EL_MANUSCRIPT_QA_SUCCESS',json.dumps(receipt))
+          PY
+      - name: Upload full QA receipts and original R5 corrected source summary
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-R5-EL-letter-44claims-21supplement-source-QA
+          path: research/results/r5_manuscript_QA_20261108/
+          retention-days: 30
+          if-no-files-found: warn
