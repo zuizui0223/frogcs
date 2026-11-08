@@ -76,6 +76,12 @@ def make_main(main: str, refs: str) -> str:
     )
     return main + "\n\n" + access + "\n## References\n\n" + entries + "\n\n" + usgs + "\n"
 
+def make_supplement(supp: str) -> str:
+    """Preserve all scientific SI S1–S20; omit only author-side status notes."""
+    supp = re.sub(r"(?m)^\*\*Source-preserving integrated draft[^\n]*\n+", "", supp)
+    supp = re.sub(r"(?m)^\*\*Remaining author decisions:\*\*[^\n]*\n?", "", supp)
+    return supp
+
 def to_docx(md: Path, dest: Path) -> None:
     subprocess.run(
         ["pandoc", str(md), "--from=markdown", "--to=docx",
@@ -123,7 +129,7 @@ def main() -> None:
     main_src, supp_src, refs = check_source()
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "Letter_MAIN_AUTHOR_REVIEW.md").write_text(make_main(main_src, refs), encoding="utf-8")
-    (OUT / "Letter_SI_AUTHOR_REVIEW.md").write_text(supp_src, encoding="utf-8")
+    (OUT / "Letter_SI_AUTHOR_REVIEW.md").write_text(make_supplement(supp_src), encoding="utf-8")
     (OUT / "Cover_Letter_AUTHOR_REVIEW.md").write_text(
         COVER.read_text(encoding="utf-8"), encoding="utf-8")
     for stem in ["Letter_MAIN", "Letter_SI", "Cover_Letter"]:
