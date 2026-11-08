@@ -1,0 +1,39 @@
+name: EL frozen G18 first-shot editorial bundle (no science rerun)
+
+on:
+  push:
+    branches:
+      - submission/ecology-letters-science-freeze-20261108
+    paths:
+      - 'submission/ecology_letters_20261108/**'
+      - '.github/workflows/el_frozen_editorial_bundle_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  editorial-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout frozen scientific source
+        uses: actions/checkout@v4
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install document-formatting tools ONLY
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+          python -m pip install --disable-pip-version-check python-docx
+      - name: Build author-review Word files and unchanged figures; do not rerun analyses
+        run: python submission/ecology_letters_20261108/build_editorial_bundle.py
+      - name: Upload author-review editorial package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-letters-g18-frozen-author-review-20261108
+          path: submission/ecology_letters_20261108/_review_bundle/
+          if-no-files-found: error
+          retention-days: 30
