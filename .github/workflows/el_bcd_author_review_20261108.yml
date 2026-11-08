@@ -1,0 +1,80 @@
+name: EL B premises C observation D mechanism editorial author-review source QA
+
+on:
+  push:
+    branches:
+      - editorial/ecology-letters-bcd-structure-20261108
+    paths:
+      - 'editorial/MAIN_TEXT_BCD_ECOLOGY_LETTERS_2026-11-08.md'
+      - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.*'
+      - 'research/scripts/build_bcd_editorial_figures_20261108.py'
+      - 'submission/ecology_letters_20261108/build_bcd_author_review.py'
+      - 'submission/ecology_letters_20261108/COVER_LETTER_BCD_AUTHOR_REVIEW.md'
+      - 'submission/ecology_letters_20261108/TITLE_PAGE_BCD_AUTHOR_REVIEW.md'
+      - 'submission/ecology_letters_20261108/COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md'
+      - 'submission/ecology_letters_20261108/EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md'
+      - 'submission/ecology_letters_20261108/NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md'
+      - '.github/workflows/el_bcd_author_review_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-scientific-reruns-editorial-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install publishing and original source audit dependencies only
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scipy==1.17.0 "matplotlib>=3.7,<4" pillow python-docx
+      - name: Recheck original 44 audited science claims against unchanged original main manuscript
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py             --r2 research/results/submission_frozen_sources_20261106/R2             --pr161 research/results/submission_frozen_sources_20261106/R3             --r4 research/results/submission_frozen_sources_20261106/R4             --g2 research/results/submission_frozen_sources_20261106/G2             --g2b research/results/submission_frozen_sources_20261106/G2B             --p1 research/results/submission_frozen_sources_20261106/P1             --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md             --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md             --out submission/ecology_letters_20261108/_bcd_old_source_QA
+      - name: Build B/C/D candidate and source-backed editorial-only figures
+        run: |
+          python -u submission/ecology_letters_20261108/build_bcd_author_review.py
+      - name: Assert not submitted, three figure candidates, 22 SI methods, B source limits
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('submission/ecology_letters_20261108')
+          b=root/'_bcd_review_bundle'
+          j=json.loads((b/'BCD_SOURCE_AND_MANUSCRIPT_QA.json').read_text())
+          orig=json.loads((root/'_bcd_old_source_QA'/'submission_source_QA_receipt.json').read_text())
+          assert orig['independently_recomputed_numerical_claims']==44
+          assert orig['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert j['status']=='BCD_AUTHOR_REVIEW_COMPLETE_NOT_SUBMITTED'
+          assert 3000<=j['main_body_words']<=5000 and j['abstract_words']<=150
+          assert j['supplementary_sections']==22 and j['main_figure_candidates']==3
+          assert not j['journal_submitted'] and not j['coauthor_approval'] and not j['archive_doi_verified']
+          assert not j['mohonk_29_30_source_verified'] and not j['inbo_phi_0262_source_verified']
+          for p in ['Figure1_BC_StageAndContinentalContext_EDITORIAL.png',
+                    'Figure2_D_OriginalVegetationMechanism_AUDITED.png',
+                    'Figure3_D_RateAndDevelopment_EDITORIAL.png',
+                    'Supplementary_Figure_S5_OriginalR4_AUDITED.png']:
+              assert (b/'figures'/p).is_file(),p
+          assert (b/'Letter_BCD_MAIN_AUTHOR_REVIEW.docx').is_file()
+          assert (b/'Letter_BCD_SI_S1_S22_AUTHOR_REVIEW.docx').is_file()
+          print('BCD_EDITORIAL_SOURCE_QA_PASSED',
+                j['main_body_words'],j['abstract_words'],j['main_figure_candidates'],
+                'original_science_claims',orig['independently_recomputed_numerical_claims'])
+          PY
+      - name: Package old source 44-claim verification alongside latest author review
+        run: |
+          cp submission/ecology_letters_20261108/_bcd_old_source_QA/submission_source_QA_receipt.json              submission/ecology_letters_20261108/_bcd_review_bundle/ORIGINAL_44_SOURCE_CLAIMS_QA.json
+      - name: Upload non-submitted coauthor Word, SI and three new figure candidates
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-EL-B-C-D-3figure-22SI-author-review-20261108
+          path: submission/ecology_letters_20261108/_bcd_review_bundle/
+          retention-days: 30
+          if-no-files-found: error
