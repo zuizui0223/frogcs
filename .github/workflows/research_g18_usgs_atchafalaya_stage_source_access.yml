@@ -1,0 +1,69 @@
+name: G18 independent USGS amphibian acoustic/larva original-source eligibility
+on:
+  push:
+    branches: [research/g18-usgs-independent-acoustic-larval-source-20261108]
+    paths:
+      - research/G18_USGS_ATCHAFALAYA_STAGE_OBSERVATION_PREFLIGHT_PROTOCOL_2026-11-08.md
+      - research/scripts/g18_usgs_atchafalaya_original_source_preflight.py
+      - research/scripts/test_g18_usgs_atchafalaya_original_source_preflight.py
+      - .github/workflows/research_g18_usgs_atchafalaya_stage_source_access.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  metadata-and-response-blind-original-source-schema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact CC0 USGS data item ID and response-blind header extraction
+        run: python -m unittest discover -s research/scripts -p test_g18_usgs_atchafalaya_original_source_preflight.py -v
+      - name: Try original USGS ScienceBase item and download read-only source headers, fail closed if inaccessible
+        run: |
+          python -u research/scripts/g18_usgs_atchafalaya_original_source_preflight.py \
+            --out research/results/g18_usgs_atchafalaya_preflight_20261108
+      - name: Verify access decision never claims field biological replication on a blocked source
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("research/results/g18_usgs_atchafalaya_preflight_20261108/G18_USGS_SOURCE_ACCESS_PREFLIGHT.json")
+          r=json.loads(p.read_text())
+          assert r["source_doi"]=="10.5066/P9T71JCO"
+          assert r["source_item_id"]=="5eb5880c82ce25b5135ae784"
+          assert r["status"] in ("SCHEMA_READY","METADATA_READY","ACCESS_BLOCKED_OR_SCHEMA_UNKNOWN")
+          assert r["taxon_species_stage_response_values_inspected"] is False
+          assert r["matched_taxon_site_sample_date_opportunities_verified"] is False
+          assert r["no_field_ABCs_or_new_biology"] and r["no_natural_trophic_mechanism_identified"]
+          assert r["adult_call_to_larva_stage_link_eligible"] is None
+          if r["status"]=="ACCESS_BLOCKED_OR_SCHEMA_UNKNOWN":
+              assert not r["item_metadata_success"]
+              assert r["not_field_mechanism_nonreplication"]
+          print("G18_RESPONSE_BLIND_ORIGINAL_USGS_SOURCE_GATE",r["status"])
+          PY
+      - name: Preserve public source access/header manifest on G18 Draft PR branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g18_usgs_atchafalaya_preflight_20261108/G18_USGS_SOURCE_ACCESS_PREFLIGHT.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'provenance: archive response-blind Atchafalaya USGS source-access and schema gate'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g18-original-usgs-stage-observation-schema-and-source-receipt
+          path: |
+            research/results/g18_usgs_atchafalaya_preflight_20261108/G18_USGS_SOURCE_ACCESS_PREFLIGHT.json
+            research/results/g18_usgs_atchafalaya_preflight_20261108/original_ephemeral/
+          if-no-files-found: warn
+          retention-days: 30
