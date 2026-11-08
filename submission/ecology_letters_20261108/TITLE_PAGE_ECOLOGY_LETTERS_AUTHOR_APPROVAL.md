@@ -1,53 +1,37 @@
-# Ecology Letters — TITLE PAGE (author verification required; not yet journal-submitted)
+# Ecology Letters — Title page (author-approval copy)
 
-**Manuscript title:** Food webs that reproduce frog–predator association signs need not benefit frogs
+**Title:** Food webs that reproduce frog–predator association signs need not benefit frogs
 
-**Article category:** Letter
+**Running title:** Food-web patterns versus frog benefit (37 characters including spaces; limit <45)
 
-**Running title:** Food-web patterns versus frog benefit (37 characters, including spaces; journal limit <45)
+**Manuscript category:** Letter
 
-## Authors, affiliation and correspondence
+**Authors in approved order:** [FULL NAMES TO BE CONFIRMED]
 
-**Full names in approved order:** [INSERT APPROVED AUTHOR LIST — DO NOT INFER AUTHORS FROM ANOTHER frogcs / JAE MANUSCRIPT]
+**Affiliations and email addresses for all authors:** [CONFIRM FOR EACH AUTHOR]
 
-**Affiliations, each with institutional addresses:** [VERIFY AND INSERT FOR EVERY AUTHOR]
+**Corresponding author:** [FULL NAME; FULL POSTAL ADDRESS; TELEPHONE; FAX IF APPLICABLE; EMAIL — REQUIRED]
 
-**Email address for every author:** [VERIFY AND INSERT]
+**Author contributions:** [CONFIRM WHO DESIGNED, PERFORMED, ANALYZED, PROVIDED MATERIAL, WROTE, AND REVISED THE STUDY]
 
-**Corresponding author (full name):** [AUTHOR CONFIRMATION REQUIRED]
+**Abstract words:** 148
 
-**Corresponding author mailing address, telephone, fax if applicable, email:** [AUTHOR CONFIRMATION REQUIRED]
+**Main-text words:** 4,998 (Introduction–Conclusion including headings; excludes abstract, legends, references)
 
-**Equal contributions, if applicable:** [VERIFY; OTHERWISE REMOVE]
+**References:** 19 (18 original records including Zurell 2010, plus USGS G18 data citation)
 
-## Manuscript statistics — original source QA at 2026-11-08 R5 freeze
+**Figures / main tables / text boxes:** 4 / 0 / 0
 
-- Article type: **Letter**
-- **Abstract: 148 words** (journal maximum 150)
-- **Main scientific body: 4,994 words** (journal maximum 5,000; Introduction through Conclusion including headings, excluding abstract, figure legends, reference list and administrative sections; independently recalculated in [R5 QA #42447376542](https://github.com/zuizui0223/frogcs/actions/runs/42447376542))
-- **References: 19 in the current review-copy manuscript** (18 verified original/reference-register entries including Zurell 2010, plus independent Glorioso & Waddle 2025 USGS data source appended by the editorial builder; check final Word list after formatting)
-- **Main figures: 4** (figure source masters unmodified); **main tables: 0**; **main text boxes: 0**
-- **Supplementary Methods: S1–S21**; supplementary figures are separate from the main-figure count
-- **Keywords (8):** amphibian calling; caudate guild; dragonfly larvae; conditional associations; ontogeny; vegetation refuge; stage-structured food webs; finite-population persistence
+**Keywords (8):** amphibian calling; caudate guild; dragonfly larvae; conditional associations; ontogeny; vegetation refuge; stage-structured food webs; finite-population persistence
 
-## Authorship contributions
+**Acknowledgements and funding:** [AUTHOR CONFIRMATION REQUIRED]
 
-[CONFIRM AND WRITE EACH AUTHOR'S ACTUAL ROLES: conceptualization / source acquisition / modelling / code / analysis / visualization / supervision / original draft / review and editing. Do not assert a contribution without its author's agreement.]
+**Conflict of interest:** [COLLECT AND CONFIRM ALL AUTHORS' DISCLOSURES; DO NOT ASSUME NONE]
 
-**Submission permission:** [ALL AUTHORS MUST CONFIRM THE FINAL AUTHOR ORDER, ACTUAL CONTRIBUTIONS, AND APPROVAL TO SUBMIT THIS VERSION TO ECOLOGY LETTERS.]
+**Ethics / permissions:** Secondary analysis of USGS monitoring data and original simulation; no new field collection or animal experiment reported. [AUTHORS TO CONFIRM PERMISSIONS AND WORDING]
 
-## Conflict of interest and ethics
+**Data and code accessibility:** [INSERT ACTUAL EXTERNAL ARCHIVE DOI(S), ACCESSIBLE REPOSITORY AND DATA/CODE STATEMENT AFTER RIGHTS REVIEW; THIS IS NOT YET COMPLETE]
 
-**Conflicts of interest:** [COLLECT DISCLOSURES FROM ALL AUTHORS; do not assume “none”. The journal requests pertinent relationships in the manuscript acknowledgments and cover letter as appropriate.]
+**All-author approval to submit:** [NOT YET CONFIRMED]
 
-**Ethical / permits statement:** This manuscript reuses independently published NAAMP/USGS public monitoring data and original simulations; it reports no new animal capture, field manipulation or direct frog-juvenile survival sampling. [AUTHORS TO CONFIRM WHETHER ANY ADDITIONAL PERMISSION OR INSTITUTIONAL REPORTING IS REQUIRED.]
-
-**Funding and acknowledgments:** [VERIFY GRANTS, DATA PROVIDERS, AUTHORIZED ACKNOWLEDGMENTS AND SOURCE-SPECIFIC CITATIONS.]
-
-## Data and code accessibility (mandatory publisher field)
-
-Data and code underlying the manuscript must be accessible to editors and reviewers in a DOI-assigned external repository on **initial submission**. [INSERT REAL DOI(S), A FUNCTIONAL REPOSITORY ACCESS LINK OR PRIVATE PEER-REVIEW LINK, DATA/CODE FILE LIST AND LICENSING STATUS ONLY AFTER DEPOSIT HAS BEEN COMPLETED.] Public GitHub PRs and original USGS dataset DOIs do not replace a project-specific reproducibility deposit.
-
-**Status:** AUTHOR-REVIEW TEMPLATE ONLY. No coauthor approval, project archive DOI or Ecology Letters submission is represented as completed.
-
-Official policy: https://onlinelibrary.wiley.com/page/journal/14610248/homepage/ForAuthors.html
+**Document status:** AUTHOR REVIEW ONLY — NOT SUBMITTED. The separate `paper/title_page.template.md` concerns a different JAE frog-chorus manuscript and must not be substituted.
