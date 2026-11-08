@@ -1,0 +1,80 @@
+name: G17b exact original G15 diagonal cross-swap audit
+on:
+  push:
+    branches: [research/g17b-exact-original-g15-anchored-crossswap-20261108]
+    paths:
+      - research/scripts/g17b_original_G15_exact_diagonal_anchored_crossswap.py
+      - .github/workflows/research_g17b_exact_anchor.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  source-exact-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONPATH: research/scripts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - uses: actions/download-artifact@v4
+        with:
+          repository: zuizui0223/frogcs
+          run-id: 42431674245
+          github-token: ${{ github.token }}
+          pattern: frogcs-g17-original-crossed-4248-source-shard-*
+          path: /tmp/G17
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          repository: zuizui0223/frogcs
+          run-id: 42379659618
+          github-token: ${{ github.token }}
+          pattern: frogcs-g15-source-null-geo-heldout-shard-*
+          path: /tmp/G15
+          merge-multiple: true
+      - name: Exact original source SHA and all 3.4m site-level loss gate
+        run: |
+          python -u research/scripts/g17b_original_G15_exact_diagonal_anchored_crossswap.py \
+            --g17-shards /tmp/G17 --g15-shards /tmp/G15 \
+            --out research/results/g17b_exact_g15_diagonal_crossswap_20261108/audited
+      - name: Original G17 failure must stay failed; preserve source findings
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/results/g17b_exact_g15_diagonal_crossswap_20261108/audited')
+          r=json.loads((p/'G17B_complete_posthoc_source_audit_receipt.json').read_text())
+          assert r['original_G17_frozen_numeric_source_gate_pass'] is False
+          assert r['G17b_is_a_new_posthoc_method_after_gate_failure']
+          assert r['original_G15_diagonal_reproduced_exactly']
+          assert r['G17b_exact_anchored_site_rows']==201*4*4248
+          assert r['original_G15_source_ranking_uniform']==0
+          assert r['original_G15_source_ranking_target_group']==199
+          assert not r['G14_G15_both_background_field_mechanism_gates_pass']
+          print('G17B_EXACT_SOURCE_FOUR_CELLS_AND_G17_FAILURE_PRESERVED')
+          PY
+      - name: Archive verified G17b analysis and receipts on Draft branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g17b_exact_g15_diagonal_crossswap_20261108/audited/
+          if ! git diff --cached --quiet; then
+            git commit -m 'results: archive exact G15 anchored G17b 2x2 source effects'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g17b-exact-anchored-original-source-audit
+          path: research/results/g17b_exact_g15_diagonal_crossswap_20261108/audited/
+          if-no-files-found: warn
