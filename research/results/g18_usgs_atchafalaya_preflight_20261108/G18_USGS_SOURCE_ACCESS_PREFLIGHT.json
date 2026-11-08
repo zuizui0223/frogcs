@@ -29,9 +29,11 @@
       "size": 147872,
       "md5": null,
       "content_type": "application/fgdc+xml",
-      "qualifying_file": false,
+      "qualifying_file": true,
       "original_index": 0,
-      "status": "NON_DATA_FILE"
+      "status": "ORIGINAL_DOWNLOAD_FAILED",
+      "error": "HTML_OR_XML_NOT_SOURCE_FILE",
+      "http_status": 200
     },
     {
       "name": "Observations.csv",
