@@ -1,6 +1,6 @@
 # Primary references — R1–R4, P1 and G4–G7
 
-**Original 17 references verified 6 November 2026; R5 virtual-observer methodological reference verified against the original publisher record 8 November 2026.** These 18 entries support the current main text and Supplementary Methods. G7 adds Takahashi & Parris (2008); the earlier 16-reference audit remains a historical record. Natural-history synthesis accounts used to qualify G7 are listed separately below. Original dataset-provider attributions, acquisition versions and claim limits are retained in the [data/code provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). Journal-specific final style remains an author production task.
+**Original 17 references verified 6 November 2026; R5 virtual-observer methodological reference verified against the original publisher record 8 November 2026.** These 19 entries support the current main text and Supplementary Methods. G7 adds Takahashi & Parris (2008); the earlier 16-reference audit remains a historical record. Natural-history synthesis accounts used to qualify G7 are listed separately below. Original dataset-provider attributions, acquisition versions and claim limits are retained in the [data/code provenance record](DATA_CODE_AND_REFERENCE_PROVENANCE_2026-11-06.md). Journal-specific final style remains an author production task.
 
 Alford, R. A., & Wilbur, H. M. (1985). Priority Effects in Experimental Pond Communities: Competition between Bufo and Rana. *Ecology, 66(4), 1097–1105*. [10.2307/1939161](https://doi.org/10.2307/1939161).
 
@@ -37,6 +37,8 @@ Takahashi, M. K., & Parris, M. J. (2008). Life cycle polyphenism as a factor aff
 Tuanmu, M.-N., & Jetz, W. (2014). A global 1-km consensus land-cover product for biodiversity and ecosystem modelling. *Global Ecology and Biogeography, 23(9), 1031–1045*. [10.1111/geb.12182](https://doi.org/10.1111/geb.12182).
 
 Zurell, D., Berger, U., Cabral, J. S., Jeltsch, F., Meynard, C. N., Münkemüller, T., Nehrbass, N., Pagel, J., Reineking, B., Schröder, B., & Grimm, V. (2010). The virtual ecologist approach: simulating data and observers. *Oikos, 119(4), 622–635*. [10.1111/j.1600-0706.2009.18284.x](https://doi.org/10.1111/j.1600-0706.2009.18284.x).
+
+Garretson, A., Napoli, M., Feldsine, N., Adler-Colvin, P., & Long, E. (2020). Vernal pool amphibian breeding ecology monitoring from 1931 to present: A harmonised historical and ongoing observational ecology dataset. *Biodiversity Data Journal, 8*, e50121. [10.3897/BDJ.8.e50121](https://doi.org/10.3897/BDJ.8.e50121).
 
 ## G7 natural-history accounts and classification limits
 
