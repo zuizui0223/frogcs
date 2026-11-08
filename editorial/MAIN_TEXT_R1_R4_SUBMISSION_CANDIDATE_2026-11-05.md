@@ -148,7 +148,7 @@ These simulation findings are conditional in three ways. First, the attack and l
 
 ### Third-guild context is an observation, not a predator census
 
-Shared environmental filtering still plausibly explains adult calling. G5/G7 did not establish a wild trophic mechanism, and G14/G15 gains were uniform-SDM-specific. G16/G17b traced this sensitivity to landscape-V0 sites and O/S ranks; G17's original replay gate failed. In independent USGS surveys, calls and tadpoles co-occurred, but prior calls failed to improve forward-year larval-detection prediction (Supplementary Methods S20). Neither result calibrates cohort abundance to calling or identifies natural predator effects.
+Shared environmental filtering may explain adult calling. G5/G7 did not identify wild predation; G14/G15 gains were uniform-SDM-specific. G16/G17b traced sensitivity to mapped vegetation-absent sites and O/S ranks; G17's original replay gate failed. In independent USGS surveys, calls and larvae co-occurred, but earlier calls did not reliably predict later larvae (Supplementary Methods S20). R5 virtual observers showed conditional detection loss under hypothetical SDM-rank and vegetation mismatch (Supplementary Methods S21); neither result calibrates calling to cohorts or identifies wild predation.
 
 ### A specific prediction for field tests of vegetation benefit
 
