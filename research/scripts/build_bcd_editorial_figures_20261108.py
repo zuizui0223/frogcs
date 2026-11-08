@@ -60,8 +60,8 @@ def figure1(out):
     ax.set_yticks(y,names);ax.set_xlim(0.20,0.39)
     ax.set_xlabel("Brier loss (lower is better)")
     ax.set_title("A   INBO: adult calling → later larval detection",loc="left",weight="bold")
-    ax.legend(frameon=False,loc="lower right",fontsize=8)
-    ax.text(.205,-0.46,"245 site-years (main); future 35 rows. Temporal transfer fails.",fontsize=8,color="0.25")
+    ax.legend(frameon=False,loc="upper right",fontsize=8)
+    # INBO denominators and negative forward-year transfer are in the caption.
     # B: source observation probabilities, no survival inference
     ax=axes[0,1]
     vals=[pn,pa];labs=["No call\n(n=12,842)","Adult call\n(n=860)"]
@@ -70,7 +70,8 @@ def figure1(out):
         ax.text(i,val*100+.18,f"{val*100:.2f}%",ha="center",va="bottom",fontsize=10)
     ax.set_xticks([0,1],labs);ax.set_ylabel("Same-sample larval detection (%)")
     ax.set_ylim(0,7.4);ax.set_title("B   USGS: independent co-detection",loc="left",weight="bold")
-    ax.text(-.42,7.0,"13 frog species; 64 physical sites; not survival.",fontsize=8,color="0.25")
+    ax.text(.02,.98,"13 frog species; 64 sites; not survival.",transform=ax.transAxes,
+            va="top",ha="left",fontsize=8,color="0.25")
     # C: published original pre-G1 historical rank-interaction table
     ax=axes[1,0]
     groups=["Odonata × Caudata","Odonata × landscape V"]
