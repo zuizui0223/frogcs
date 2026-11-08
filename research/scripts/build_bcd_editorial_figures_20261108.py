@@ -16,7 +16,7 @@ BASE = ROOT/"editorial"/"figures"
 INBO = ROOT/"research/results/part2_inbo_hyla_g1/observed_results.json"
 USGS = ROOT/"research/results/g18_USGS_original_stage_observation_20261108/audited/G18_USGS_INDEPENDENT_STAGE_OBSERVATION_RESULT.json"
 S_C = ROOT/"research/manuscript/TWO_PART_MANUSCRIPT_DRAFT_2026-10-26.md"
-P1 = ROOT/"research/P1_PURE_ARRIVAL_DURATION_TRUE80_VERIFIED_RESULT_2026-11-05.md"
+P1 = ROOT/"research/P1_VEGETATION_BENEFIT_RESULT_2026-11-06.md"
 G11 = ROOT/"research/G11_DISJOINT_STRUCTURE_HOLDOUT_VERIFIED_RESULT_2026-11-07.md"
 G8 = ROOT/"research/G8_27RATE_VERIFIED_RESULT_2026-11-07.md"
 
