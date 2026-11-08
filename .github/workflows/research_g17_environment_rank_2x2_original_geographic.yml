@@ -1,0 +1,226 @@
+name: Frogcs G17 crossed SDM environment and source rank predictors
+
+on:
+  push:
+    branches:
+      - research/g17-sdm-environment-rank-crossswap-20261108
+    paths:
+      - research/G17_SDM_ENVIRONMENT_RANK_CROSSSWAP_PROTOCOL_2026-11-08.md
+      - research/scripts/g17_SDM_environment_source_rank_crossswap.py
+      - research/scripts/test_g17_SDM_environment_source_rank_crossswap.py
+      - .github/workflows/research_g17_sdm_environment_rank_crossswap.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  PYTHONHASHSEED: '0'
+  PYTHONPATH: research/scripts
+
+jobs:
+  fixed-source-and-factorial-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - name: Verify exact 2x2 cross-swap identity and 199-null geographic source template partition
+        run: |
+          python -m unittest discover -s research/scripts \
+            -p test_g17_SDM_environment_source_rank_crossswap.py -v
+      - name: Check source artifact SHA, 201 original null/ABC/sign-only templates, original 4,248 listening sites
+        run: |
+          python - <<'PY'
+          import json,sys
+          import numpy as np
+          sys.path.insert(0,'research/scripts')
+          from g17_SDM_environment_source_rank_crossswap import (
+              frozen_templates,rank_basis,PAIR_CELLS,N_EXPECTED,N_TEMPLATES)
+          from g14_abc_ensemble_geographic_acoustic_holdout import read_field
+          from g1_shared_environment_spatial_block import design_matrices
+          d,folds=read_field()
+          t,info=frozen_templates()
+          assert len(t)==201 and N_EXPECTED==3415392
+          assert len(d)==4248 and int(d.n.sum())==63180
+          assert d.spatial_block.nunique()==56
+          assert len(PAIR_CELLS)==4
+          for b in ('uniform','target_group'):
+              x=design_matrices(d,b)['flex_add']
+              y=rank_basis(d,b)
+              assert x.shape[0]==4248 and y.shape==(4248,4)
+              assert np.isfinite(x).all() and np.isfinite(y).all()
+          print('G17_SOURCE_LOCKED_201_TEMPLATES_4_ORIGINAL_CROSSED_CELLS_PREFLIGHT_PASS')
+          PY
+
+  full-crossed-201-template-NAAMP-56block-predictions:
+    needs: fixed-source-and-factorial-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 135
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0,1,2,3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - name: All 2 environment backgrounds × 2 source rank backgrounds × source shard 201 accepted/null templates
+        run: |
+          python -u research/scripts/g17_SDM_environment_source_rank_crossswap.py \
+            --stage shard \
+            --shard ${{ matrix.shard }} \
+            --out research/results/g17_sdm_env_rank_crossswap_20261108/shards
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g17-original-crossed-4248-source-shard-${{ matrix.shard }}
+          path: research/results/g17_sdm_env_rank_crossswap_20261108/shards/
+          if-no-files-found: warn
+          retention-days: 60
+
+  independent-all-source-and-original-G15-diagonal-audit:
+    needs: full-crossed-201-template-NAAMP-56block-predictions
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 matplotlib==3.10.7
+      - name: Rehydrate all 3,415,392 new G17 original geographic heldout site predictions
+        uses: actions/download-artifact@v4
+        with:
+          pattern: frogcs-g17-original-crossed-4248-source-shard-*
+          path: research/results/g17_sdm_env_rank_crossswap_20261108/all4
+          merge-multiple: true
+      - name: Rehydrate all original G15 1,707,696 heldout site-prediction scores for strict diagonal replay
+        uses: actions/download-artifact@v4
+        with:
+          repository: zuizui0223/frogcs
+          run-id: 42379659618
+          github-token: ${{ github.token }}
+          pattern: frogcs-g15-source-null-geo-heldout-shard-*
+          path: research/results/g17_sdm_env_rank_crossswap_20261108/original_g15_4_shards
+          merge-multiple: true
+      - name: Require full 4+4 frozen source receipts before any scientific interpretation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('research/results/g17_sdm_env_rank_crossswap_20261108')
+          for j in range(4):
+              g=f'G17_source_crossswap_{j:02d}'
+              h=f'g15_predictive_null_shard_{j:02d}'
+              for name in (g+'_sites.csv.gz',g+'_blocks.csv',g+'_slopes.csv',
+                           g+'_receipt.json'):
+                  assert (p/'all4'/name).is_file(),name
+              for name in (h+'_full_site.csv.gz',h+'_56blocks.csv',
+                           h+'_train_slopes.csv',h+'_receipt.json'):
+                  assert (p/'original_g15_4_shards'/name).is_file(),name
+          assert len(list((p/'all4').glob('G17_source_crossswap_*_receipt.json')))==4
+          print('G17_ALL_EIGHT_ORIGINAL_SOURCE_SHA_RECORDS_PRESENT')
+          PY
+      - name: Independently verify every original G17 binomial score, G15 site diagonal and complete 2x2 source background contrast
+        run: |
+          python -u research/scripts/g17_SDM_environment_source_rank_crossswap.py \
+            --stage aggregate \
+            --source-shards research/results/g17_sdm_env_rank_crossswap_20261108/all4 \
+            --original-g15-shards research/results/g17_sdm_env_rank_crossswap_20261108/original_g15_4_shards \
+            --out research/results/g17_sdm_env_rank_crossswap_20261108/audited
+      - name: Independently reconstruct 2x2 decomposition, source p and G15 diagonal, and archive failure as result
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          import numpy as np,pandas as pd
+          p=Path('research/results/g17_sdm_env_rank_crossswap_20261108/audited')
+          r=json.loads((p/'G17_complete_original_source_audit.json').read_text())
+          assert r['status']=='G17_ORIGINAL_2X2_SDM_ENV_RANK_CROSSSWAP_ALL_SOURCE_SUCCESS'
+          assert r['original_G15_source_run']==42379659618
+          assert r['original_source_templates']==201 and r['original_null_templates']==199
+          assert r['original_source_shards']==4 and r['original_source_rows']==3415392
+          assert (r['original_NAAMP_sites'],r['original_visits'],
+                  r['original_geo_blocks'],r['original_strong_calls'])==(4248,63180,56,36554)
+          assert not r['original_G14_G15_dual_SDM_field_predictive_gates_pass']
+          assert r['no_new_field_observations'] and r['no_biological_source_simulations']
+          assert r['no_wild_field_trophic_identification'] and r['posthoc_diagnostic']
+          for name,digest in r['output_sha256'].items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==digest,name
+          diag=pd.read_csv(p/'G17_g15_numerical_source_replay.csv')
+          assert len(diag)==2 and diag.numerical_source_replay_pass.all()
+          cells=pd.read_csv(p/'G17_four_cells_ABC_vs_199source_null.csv')
+          estimates=pd.read_csv(p/'G17_2x2_paired56block_bootstrap_effects.csv')
+          block=pd.read_csv(p/'G17_all_45024_source_geographic_block_losses.csv.gz')
+          score=pd.read_csv(p/'G17_complete_804_source_template_NLL_scores.csv')
+          slopes=pd.read_csv(p/'G17_all_4020_source_slope_folds.csv')
+          assert len(cells)==4 and len(estimates)==8
+          assert len(block)==201*4*56 and len(score)==201*4 and len(slopes)==201*4*5
+          assert not score.duplicated(['candidate','env_bg','rank_bg']).any()
+          assert block.groupby(['candidate','env_bg','rank_bg']).spatial_block.nunique().eq(56).all()
+          assert slopes.groupby(['candidate','env_bg','rank_bg']).fold.nunique().eq(5).all()
+          for row in cells.itertuples(index=False):
+              q=score[(score.env_bg==row.env_bg)&(score.rank_bg==row.rank_bg)].set_index('candidate')
+              abc=float(q.loc['ABC_794','NLL_per_visit'])
+              sign=float(q.loc['SIGN_ONLY','NLL_per_visit'])
+              null=q.loc[[f'STRAT_NULL_{i:03d}' for i in range(199)],'NLL_per_visit'].to_numpy(float)
+              assert abs(abc-row.ABC_794_nll)<1e-12 and abs(sign-row.SIGN_ONLY_nll)<1e-12
+              assert abs(null.mean()-row.mean199null_nll)<1e-12
+              assert abs((1+(null<=abc).sum())/200-row.conditional_source_p)<1e-12
+              assert abs((null.mean()-abc)-row.ABC_minus_null_gain)<1e-12
+          q=cells.set_index(['env_bg','rank_bg'])
+          U='uniform';T='target_group'
+          d=lambda a,b:float(q.loc[(a,b),'ABC_minus_null_gain'])
+          uu,ut,tu,tt=d(U,U),d(U,T),d(T,U),d(T,T)
+          delta=uu-tt
+          env=.5*((uu-tu)+(ut-tt))
+          ranks=.5*((uu-ut)+(tu-tt))
+          interaction=uu-ut-tu+tt
+          assert abs(delta-env-ranks)<1e-12
+          reported=r['original_diagonal_cross_sdm_gains']
+          assert abs(reported['original_diagonal_difference']-delta)<1e-12
+          assert abs(reported['environment_main_effect']-env)<1e-12
+          assert abs(reported['source_rank_main_effect']-ranks)<1e-12
+          assert abs(reported['crossed_nonlinear_interaction']-interaction)<1e-12
+          old=pd.read_csv('research/results/g15_abc_acoustic_specificity_20261107/audited/G15_G14_signonly_vs_ABC_null_comparison.csv')
+          for bg in (U,T):
+              row=q.loc[(bg,bg)]
+              oldrow=old[old.background==bg].iloc[0]
+              assert row.source_nulls_better_or_equal_ABC==oldrow.null_NLL_less_or_equal_ABC
+              assert abs(row.ABC_minus_null_gain-(oldrow.null_mean_NLL-oldrow.accepted_ABC_NLL))<1e-6
+          assert all(estimates.n_bootstrap==9999)
+          print('G17_ALL_3415392_SOURCE_SITE_AND_ORIGINAL_G15_CROSSED_56BLOCK_QA_PASS')
+          print(cells.to_string(index=False))
+          print('G17_2X2_EFFECTS',json.dumps(reported))
+          PY
+      - name: Archive full G17 crossed 56-block scores, template source effects and complete source receipts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g17_sdm_env_rank_crossswap_20261108/audited/
+          if git diff --cached --quiet; then
+            echo 'Original G17 audited outputs already present'
+          else
+            git commit -m 'results: archive G17 2x2 environmental versus source-rank 201-template original geographic holdout'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g17-original-site-2x2-env-rank-audited-results
+          path: research/results/g17_sdm_env_rank_crossswap_20261108/audited/
+          if-no-files-found: warn
+          retention-days: 60
