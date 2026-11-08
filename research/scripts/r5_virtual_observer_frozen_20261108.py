@@ -166,8 +166,13 @@ def virtual_true_signal(d, source, bg,arm, flip):
     v=d.V.to_numpy(float).copy()
     if flip>0:
         rng=np.random.default_rng(seed_for("vegetation-mask"))
-        nflip=int(round(flip*len(v)))
-        indices=rng.permutation(len(v))[:nflip]
+        # Freeze the same 25% disagreement fraction separately within
+        # mapped V=0 and V=1 classes, never based on acoustic responses.
+        indices=np.concatenate([
+            rng.permutation(np.flatnonzero(v==state))[:int(round(flip*np.sum(v==state)))]
+            for state in (0.0,1.0)
+        ])
+        nflip=len(indices)
         v[indices]=1-v[indices]
         require(int((v!=d.V.to_numpy(float)).sum())==nflip,
                 "Frozen response-blind V error mask changed")
