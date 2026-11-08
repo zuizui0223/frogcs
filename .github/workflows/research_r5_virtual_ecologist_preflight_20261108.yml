@@ -1,0 +1,50 @@
+name: R5 virtual ecologist response-blind source/geometry preflight (no observer sim)
+
+on:
+  push:
+    branches:
+      - research/r5-observation-identifiability-last-test-20261108
+    paths:
+      - 'research/R5_VIRTUAL_ECOLOGIST_OBSERVABILITY_FROZEN_PROTOCOL_2026-11-08.md'
+      - 'research/scripts/r5_observation_preflight_20261108.py'
+      - '.github/workflows/research_r5_virtual_ecologist_preflight_20261108.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  fixed-source-geometry-not-field-calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PYTHONPATH: paper/research/scripts
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: paper
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen source analytical dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3 'matplotlib>=3.7,<4'
+      - name: Retrieve original G4 256-source model surface, never refit
+        run: |
+          mkdir -p paper/research/results/R5_observer_preflight_20261108/input_original
+          gh run download 42173236906 --repo "$GITHUB_REPOSITORY"             --name frogcs-G4-4248field-256model-eightcorner-identifiability             --dir paper/research/results/R5_observer_preflight_20261108/input_original
+      - name: Verify exactly pinned original 4248 sites, SDM ranks, model source span
+        run: |
+          python -u paper/research/scripts/r5_observation_preflight_20261108.py             --source paper/research/results/R5_observer_preflight_20261108/input_original/G4_predirected_source_priors_two_plant_arms.csv             --out paper/research/results/R5_observer_preflight_20261108/audited
+      - name: Store R5 eligibility receipt; no simulated calling and no new science outcome
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frogcs-R5-response-blind-observability-preflight
+          path: paper/research/results/R5_observer_preflight_20261108/audited/
+          retention-days: 30
+          if-no-files-found: warn
