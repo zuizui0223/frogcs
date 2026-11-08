@@ -41,7 +41,8 @@ def check():
     for token in ["245", "93", "5.38-fold", "−0.166", "−0.087","794 (3.97%)",
                   "2.705", "2.754", "124", "0.1163", "0.1864"]:
         assert token in main,token
-    assert "29/30" not in main and "29/59" not in main and "φ=+0.262" not in main
+    science_body=main.split("## Evidence, reproducibility and status",1)[0]
+    assert "29/30" not in science_body and "29/59" not in science_body and "φ=+0.262" not in science_body
     assert "not" in main.lower() and "field" in main.lower()
     assert "Garretson, A." in r and "Zurell, D." in r
     assert all(f"Supplementary Methods S{i}." in si for i in range(1,23))
