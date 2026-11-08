@@ -8,8 +8,8 @@
 |---|---|---|
 | Type / scope | Letter, original ecology contribution | Letter; pattern reproduction ≠ demographic benefit |
 | Main text | ≤5,000 scientific words excluding abstract, figure legends and references | **4,994 at original R5 source QA; revised editorial phrasing to be recounted** |
-| Abstract | ≤150 words | **148** |
-| Main graphics/tables/text boxes | ≤6 combined | 4 main figures, no main tables or boxes |
+| Abstract | ≤150 words | **149** |
+| Main graphics/tables/text boxes | ≤6 combined | 3 author-review main figure candidates, no main tables or boxes (original R4 Figure4 moved to SI S5) |
 | Manuscript | Double-spaced; author-approved text; separate figures or combined .doc/PDF initial submission | Word copies exist; original PNGs copied unmodified |
 | Title page | All author names, institutional addresses/emails, running title <45 characters, word/reference/figure counts, corresponding-author postal/phone/fax/email, contributions, data accessibility | **New dedicated Ecology Letters template made; author-specific fields still missing** |
 | Cover letter | Specific novelty and general ecological contribution, **plus explicit novelty relative to cited recent publications of authors/coauthors** | Core letter ready; prior-work comparison requires real author review |
