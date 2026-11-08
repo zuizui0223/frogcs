@@ -1,0 +1,134 @@
+name: G17b original source plus complete Ecology Letters manuscript QA
+on:
+  push:
+    branches: [research/g17b-exact-original-g15-anchored-crossswap-20261108]
+    paths:
+      - .github/workflows/research_g17b_manuscript_source_QA.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-and-manuscript-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.2.6 pandas==2.2.3 scipy==1.15.3
+      - name: Recheck all original 44 numerical source claims and 13 manuscript safeguards
+        run: |
+          python research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out research/results/g17b_submission_QA_20261108
+      - name: G17b exact G15 source, G17 failed replay, 56block 2x2 and article link audits
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,re
+          import pandas as pd
+          root=Path('.')
+          p=root/'research/results/g17b_exact_g15_diagonal_crossswap_20261108/audited'
+          output=root/'research/results/g17b_submission_QA_20261108'
+          r=json.loads((p/'G17B_complete_posthoc_source_audit_receipt.json').read_text())
+          q=json.loads((output/'submission_source_QA_receipt.json').read_text())
+          assert r['status']=='G17B_EXACT_G15_ANCHORED_POSTHOC_2X2_SOURCE_AUDIT_SUCCESS'
+          assert r['original_G17_frozen_numeric_source_gate_pass'] is False
+          assert r['G17b_is_a_new_posthoc_method_after_gate_failure']
+          assert r['original_G15_diagonal_reproduced_exactly']
+          assert (r['G17b_exact_anchored_site_rows'],r['original_G15_diagonal_site_rows'])==(201*4*4248,201*2*4248)
+          assert (r['original_ABC_source_templates'],r['original_rate_context_null_templates'])==(201,199)
+          assert (r['original_G15_source_ranking_uniform'],r['original_G15_source_ranking_target_group'])==(0,199)
+          assert len(r['source_original_shard_SHA_receipts'])==4
+          assert r['all_factorial_component_signs_unchanged_by_exact_diagonal_anchor']
+          assert r['max_absolute_main_factorial_effect_refit_difference']<3e-7
+          assert r['G14_G15_both_background_field_mechanism_gates_pass'] is False
+          for name,digest in r['files_sha256'].items():
+              assert hashlib.sha256((p/name).read_bytes()).hexdigest()==digest,name
+          cells=pd.read_csv(p/'G17B_all_four_ABC_vs_199source_null.csv').set_index(['env_bg','rank_bg'])
+          qU='uniform';qT='target_group'
+          for e in (qU,qT):
+              assert cells.loc[(e,qU),'source_nulls_better_or_equal_ABC']==0
+              assert cells.loc[(e,qT),'source_nulls_better_or_equal_ABC']==199
+              assert cells.loc[(e,qU),'conditional_source_p']==.005
+              assert cells.loc[(e,qT),'conditional_source_p']==1.
+          d=lambda e,k:float(cells.loc[(e,k),'ABC_minus_null_gain'])
+          uu,ut,tu,tt=d(qU,qU),d(qU,qT),d(qT,qU),d(qT,qT)
+          env=((uu-tu)+(ut-tt))/2
+          ranks=((uu-ut)+(tu-tt))/2
+          assert abs(uu-tt-env-ranks)<1e-12
+          a=r['original_2x2_anchored_effects']
+          assert abs(a['environment_main_effect']-env)<1e-12
+          assert abs(a['source_rank_main_effect']-ranks)<1e-12
+          assert ranks>0 and env<0
+          bt=pd.read_csv(p/'G17B_frozen_56block_bootstrap_9999_effects.csv').set_index('component')
+          assert (bt.original_block_bootstrap_replicates==9999).all()
+          assert bt.loc['source_rank_main_effect','original_56block_bootstrap_low']>0
+          assert bt.loc['environment_main_effect','original_56block_bootstrap_low']<0<bt.loc['environment_main_effect','original_56block_bootstrap_high']
+          assert q['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert q['independently_recomputed_numerical_claims']==44
+          assert len(q['document_structural_checks'])==13
+          assert all(q['document_structural_checks'].values())
+          assert (q['main_words'],q['abstract_words'])==(4983,148)
+          main=root/'editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md'
+          si=root/'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+          cover=root/'editorial/ECOLOGY_LETTERS_COVER_LETTER_DRAFT_2026-11-06.md'
+          report=root/'research/G17B_EXACT_G15_ANCHORED_CROSSSWAP_VERIFIED_RESULT_2026-11-08.md'
+          failure=root/'research/G17_FAILED_ORIGINAL_DIAGONAL_NUMERICAL_REPLAY_2026-11-08.md'
+          assert failure.is_file() and '不合格' in failure.read_text()
+          assert 'Supplementary Methods S19' in si.read_text()
+          assert '4,983 words' in cover.read_text() and '148 words' in cover.read_text()
+          for doc in (main,si,cover,report):
+              content=doc.read_text()
+              assert 'G17' in content and 'G15' in content,doc
+          for doc in (main,si,report):
+              for link in re.findall(r'\]\(([^)]+)\)',doc.read_text()):
+                  if link.startswith(('http://','https://','mailto:','#')):continue
+                  relative=link.split('#',1)[0]
+                  if relative and '?' not in relative:
+                      assert (doc.parent/relative).exists(),(str(doc),link)
+          result=dict(status='G17B_EXACT_SOURCE_44CLAIM_13STRUCT_2X2_4983LETTER_QA_SUCCESS',
+              old_G17_fixed_numeric_gate_passed=False,
+              G17b_original_G15_diagonal_exact=True,
+              original_source_template_models=201,
+              original_source_199_nulls=199,
+              exact_source_site_score_rows=3415392,
+              original_site_count=4248,geographic_blocks=56,
+              rank_input_effect=ranks,environment_effect=env,
+              rank_effect_bootstrap95=[float(bt.loc['source_rank_main_effect','original_56block_bootstrap_low']),float(bt.loc['source_rank_main_effect','original_56block_bootstrap_high'])],
+              original_numeric_claims=44,manuscript_structure_checks=13,
+              body_words=4983,abstract_words=148,
+              field_trophic_mechanism_identified=False,
+              journal_submitted=False)
+          (output/'G17B_final_manuscript_QA_receipt.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('G17B_COMPLETE_ORIGINAL_SOURCE_44CLAIM_13STRUCT_QA_SUCCESS',json.dumps(result))
+          PY
+      - name: Archive reproducible G17b article QA
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/results/g17b_submission_QA_20261108/
+          if ! git diff --cached --quiet; then
+            git commit -m 'qa: preserve G17b exact original source and Letter checks'
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-g17b-source-manuscript-44-claim-QA
+          path: research/results/g17b_submission_QA_20261108/
+          if-no-files-found: warn
