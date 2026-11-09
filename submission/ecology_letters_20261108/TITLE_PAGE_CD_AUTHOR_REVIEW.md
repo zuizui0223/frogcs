@@ -12,7 +12,7 @@
 
 **Corresponding author name, postal address, telephone, fax if applicable and email:** [VERIFY]
 
-**Abstract:** 143 words
+**Abstract:** 147 words
 
 **Scientific body:** 3,890 words (Introduction–Conclusion, headings included; final source QA to confirm)
 
