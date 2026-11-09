@@ -90,6 +90,10 @@ def build():
             ("figS6_species.png", "figures/Supplementary_Figure_S6.png"),
             *[(name, f"tables/{name}") for name in ("interaction_results.csv", "species_support.csv", "detected_route_sensitivity.csv")],
         ],
+        "frog_arrival_20261109": [
+            ("arrival_comparison.png", "figures/Supplementary_Figure_S8.png"),
+            *[(name, f"tables/frog_arrival_{name}") for name in ("summary.csv", "paired_change_from_baseline.csv", "validation.json")],
+        ],
         "naamp_shared_site_pair_20261109": [
             ("shared_sites_and_season.png", "figures/Supplementary_Figure_S7.png"),
             *[(name, f"tables/{name}") for name in ("monthly.csv", "timing.csv", "paired_coefficients.csv")],
@@ -154,7 +158,7 @@ def build():
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "supplementary_figures":7,"main_figures":3,"SI_sections":22,
+        "supplementary_figures":8,"main_figures":3,"SI_sections":22,
         "original_main_figure_1_and_2_bytes_unchanged":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
         "stage_B_sources_in_SI_only":True,

@@ -58,7 +58,7 @@ jobs:
           assert old['independently_recomputed_numerical_claims']==44
           assert a['status']=='CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY'
           assert 3000<=a['scientific_main_words']<=5000 and a['abstract_words']<=150
-          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==7
+          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==8
           assert a['original_main_figure_1_and_2_bytes_unchanged']
           assert a['original_R4_supplementary_figure_bytes_unchanged']
           assert a['stage_B_sources_in_SI_only'] and not a['tadpole_birth_directly_observed_from_calls']
