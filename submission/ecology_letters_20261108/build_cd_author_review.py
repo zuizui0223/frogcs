@@ -35,8 +35,8 @@ def verify() -> tuple[str, str, str, int, int]:
     assert main.count("### D1.") == 1 and main.count("### D4.") == 1
     assert main.count("### B. Calls and larval records") == 0
     assert "tadpole hatching" in main and "not" in main.lower()
-    assert "Supplementary Methods S20" in main and "Supplementary Methods S22" in main
-    assert "Supplementary Methods S21" in main
+    assert "Supplementary Methods S20 and S22" in main and "S20, S22" in main
+    assert "S21" in main and "Supplementary Methods S21." in si
     for token in ["−0.166", "−0.087", "794 (3.97%)",
                   "2.705", "2.754", "124", "0.1163", "0.1864"]:
         assert token in main, token
