@@ -2,10 +2,12 @@ name: EL C macro observation D stage-foodweb mechanisms (authors only)
 
 on:
   push:
-    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109, editorial/chorus-vegetation-revision-20261109]
+    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109, editorial/chorus-vegetation-revision-20261109, editorial/el-primary-literature-novelty-20261109]
     paths:
       - 'editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md'
       - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.*'
+      - 'editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md'
       - 'submission/ecology_letters_20261108/build_cd_author_review.py'
       - 'submission/ecology_letters_20261108/COVER_LETTER_CD_AUTHOR_REVIEW.md'
       - 'submission/ecology_letters_20261108/TITLE_PAGE_CD_AUTHOR_REVIEW.md'
@@ -59,6 +61,11 @@ jobs:
           assert a['status']=='CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY'
           assert 3000<=a['scientific_main_words']<=5000 and a['abstract_words']<=150
           assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==8
+          assert a['literature_registry_entries']==35
+          assert a['main_manuscript_references_including_USGS_builder']==36
+          assert a['primary_literature_audit_included'] is True
+          assert (root/'_cd_review_bundle/PRIMARY_LITERATURE_NOVELTY_AUDIT_20261109.md').is_file()
+          assert (root/'_cd_review_bundle/VERIFIED_REFERENCES_20261109.bib').is_file()
           assert a['original_main_figure_1_and_2_bytes_unchanged']
           assert a['original_R4_supplementary_figure_bytes_unchanged']
           assert a['stage_B_sources_in_SI_only'] and not a['tadpole_birth_directly_observed_from_calls']
