@@ -11,6 +11,8 @@ OUT = PREP / "_cd_review_bundle"
 MAIN = ROOT / "editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md"
 SI = ROOT / "editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md"
 REFS = ROOT / "editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.md"
+BIB = ROOT / "editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.bib"
+NOVELTY = ROOT / "editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md"
 COVER = PREP / "COVER_LETTER_CD_AUTHOR_REVIEW.md"
 TITLE = PREP / "TITLE_PAGE_CD_AUTHOR_REVIEW.md"
 SRCFIG = ROOT / "editorial/figures"
@@ -58,6 +60,33 @@ def verify() -> tuple[str, str, str, int, int]:
     assert all(f"Supplementary Methods S{i}." in si for i in range(1,23))
     assert "## Supplementary Methods S22. Auxiliary biological premise" in si
     assert "Garretson, A." in refs and "Zurell, D." in refs
+    required_literature = [
+        ("Caldwell, J. P.", "10.1007/BF00346253"),
+        ("Wilbur, H. M., & Fauth", "10.1086/285038"),
+        ("Klecka, J.", "10.1007/s00442-014-3007-6"),
+        ("McCoy, M. W.", "10.1111/ele.12005"),
+        ("Baker, R. S.", "10.1111/1365-2656.70083"),
+        ("Urushihara, R.", "10.1111/fwb.70223"),
+    ]
+    for author, doi in required_literature:
+        assert author in refs and doi in refs, (author,doi)
+    ref_block = refs.split("Alford, R. A.", 1)[1].split(
+        "## G7 natural-history accounts", 1)[0]
+    ref_count = 1 + len(re.findall(r"(?m)^.+\(\d{4}\)\.", ref_block)) - 1
+    # Count reference entries via blank-line separated paragraphs, not text matches.
+    entries = ["Alford, R. A." + p for p in []]  # explicit below avoids a fake first entry
+    all_refs = "Alford, R. A." + ref_block
+    entries = [p for p in all_refs.strip().split("\n\n") if p.strip()]
+    assert len(entries) == 35, (len(entries), "Reference registry mismatch")
+    bib_keys = re.findall(r"@\w+\{([^,]+),", BIB.read_text(encoding="utf-8"))
+    assert len(bib_keys) == len(set(bib_keys)) == 35
+    assert NOVELTY.is_file()
+    assert "Wilbur & Fauth (1990)" in main
+    assert "Klecka & Boukal (2014)" in main
+    assert "Baker, Mott & Whiteman, 2025" in main
+    assert "3,811" in TITLE.read_text(encoding="utf-8")
+    assert "143 words" in TITLE.read_text(encoding="utf-8")
+    assert "36" in TITLE.read_text(encoding="utf-8")
     return main, si, refs, aw, mw
 
 def build():
@@ -124,6 +153,8 @@ def build():
         to_docx(OUT/file, OUT/Path(file).with_suffix(".docx").name)
     for file in ADMIN:
         shutil.copyfile(file, OUT/file.name)
+    shutil.copyfile(NOVELTY, OUT / "PRIMARY_LITERATURE_NOVELTY_AUDIT_20261109.md")
+    shutil.copyfile(BIB, OUT / "VERIFIED_REFERENCES_20261109.bib")
 
     figs=OUT/"figures"
     figs.mkdir(parents=True,exist_ok=True)
@@ -157,11 +188,14 @@ def build():
         "Awaiting all coauthors' explicit approval, permissions and actual project DOI. "
         "Never treated as journal submission.\n",
         encoding="utf-8")
-    files=[MAIN,SI,REFS,COVER,TITLE]+ADMIN
+    files=[MAIN,SI,REFS,BIB,NOVELTY,COVER,TITLE]+ADMIN
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
         "supplementary_figures":8,"main_figures":3,"SI_sections":22,
+        "literature_registry_entries":35,
+        "main_manuscript_references_including_USGS_builder":36,
+        "primary_literature_audit_included":True,
         "original_main_figure_1_and_2_bytes_unchanged":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
         "stage_B_sources_in_SI_only":True,
