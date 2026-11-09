@@ -28,13 +28,24 @@ def verify() -> tuple[str, str, str, int, int]:
     si = SI.read_text(encoding="utf-8")
     refs = REFS.read_text(encoding="utf-8")
     abs_text = main.split("## Abstract\n\n",1)[1].split("\n\n**Keywords:",1)[0]
-    body = main.split("## Introduction\n",1)[1].split("## Figure captions",1)[0]
+    body = main.split("## Introduction\n",1)[1].split("## Figure legends",1)[0]
     aw, mw = len(abs_text.split()), len(body.split())
     assert 0 < aw <= 150 and 3000 <= mw <= 5000, (aw,mw)
-    assert main.count("### C. The continental acoustic association") == 1
-    assert main.count("### D1.") == 1 and main.count("### D4.") == 1
-    assert main.count("### B. Calls and larval records") == 0
+    # All submission-section headings must describe the finding, not internal run IDs.
+    assert main.count("### Frog-calling associations vary with caudates and vegetation") == 1
+    assert main.count("### Salamander development reverses the demographic effect of vegetation") == 1
+    assert main.count("### Rate-wide evaluation and independent structural replication") == 1
+    assert "## Figure legends" in main and "## Figure captions and submission layout" not in main
+    assert not re.search(r"(?m)^###\\s+(?:[A-Z]\\d?\\.|G\\d|R\\d|P\\d)",main)
+    assert "## Evidence, reproducibility and status" not in main
+    assert "author-review candidate" not in main
+    assert "### B. Calls and larval records" not in main
     assert "tadpole hatching" in main and "not" in main.lower()
+    assert "245 site-years; Brier gain +0.0155" in main
+    assert "5.23% with calls versus 0.97% without" in main
+    assert "60% to 74% at one fixed setting" in main
+    assert "refuge benefits increased while odonate-support costs diminished" in main
+    assert "647 canonical structures versus 712" not in main.split("## Introduction",1)[0]
     assert "Supplementary Methods S20 and S22" in main and "S20, S22" in main
     assert "S21" in main and "Supplementary Methods S21." in si
     for token in ["−0.166", "−0.087", "794 (3.97%)",
