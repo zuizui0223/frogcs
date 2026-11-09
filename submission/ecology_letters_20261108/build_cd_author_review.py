@@ -63,7 +63,7 @@ def build():
     }
     for file, contents in prose.items():
         (OUT/file).write_text(contents, encoding="utf-8")
-        to_docx(OUT/file, OUT/(file[:-3]+"docx"))
+        to_docx(OUT/file, OUT/Path(file).with_suffix(".docx").name)
     for file in ADMIN:
         shutil.copyfile(file, OUT/file.name)
 
