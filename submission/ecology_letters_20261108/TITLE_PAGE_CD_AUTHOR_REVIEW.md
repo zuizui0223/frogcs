@@ -14,7 +14,7 @@
 
 **Abstract:** 143 words
 
-**Scientific body:** 3,811 words (Introduction–Conclusion, headings included; final source QA to confirm)
+**Scientific body:** 3,897 words (Introduction–Conclusion, headings included; final source QA to confirm)
 
 **Main figures:** 3 (original continental acoustic Figure 1; original vegetation mechanisms Figure 2; source-backed rate/development Figure 3)
 
@@ -22,7 +22,7 @@
 
 **Supplementary Methods:** S1–S22; supporting acoustic→larval detection evidence in S20/S22; R4 in S6 and Figure S5; R5 in S21
 
-**References:** 36 in the current document builder (35 journal/data source-register entries plus the separately appended Glorioso & Waddle 2025 USGS data citation); author/journal style check still required.
+**References:** 28 in the author-review Word manuscript (27 cited original research/data entries plus Glorioso & Waddle 2025 USGS source); the separate literature audit and BibTeX include 35 reviewed entries. Final journal style requires author approval.
 
 **Keywords:** amphibian calling; caudate guild; dragonfly larvae; conditional associations; ontogeny; vegetation refuge; stage-structured food webs; finite-population persistence
 
