@@ -85,6 +85,14 @@ def build():
         shutil.copyfile(original, destination)
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
+    species_dir = ROOT / "research/results/naamp_species_sensitivity_20261109"
+    for name in ["figS6_species.png", "interaction_results.csv", "species_support.csv", "detected_route_sensitivity.csv"]:
+        relative = "figures/Supplementary_Figure_S6.png" if name.endswith(".png") else f"tables/{name}"
+        destination = OUT / relative
+        destination.parent.mkdir(exist_ok=True)
+        shutil.copyfile(species_dir / name, destination)
+        assert sha(species_dir / name) == sha(destination)
+        review_links[f"../research/results/{species_dir.name}/{name}"] = relative
     for original_link, package_link in review_links.items():
         assert f"({original_link})" in si
         si = si.replace(f"({original_link})", f"({package_link})")
@@ -136,7 +144,7 @@ def build():
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "supplementary_figures":5,"main_figures":3,"SI_sections":22,
+        "supplementary_figures":6,"main_figures":3,"SI_sections":22,
         "original_main_figure_1_and_2_bytes_unchanged":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
         "stage_B_sources_in_SI_only":True,

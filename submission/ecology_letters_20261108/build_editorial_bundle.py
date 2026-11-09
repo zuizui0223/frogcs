@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import os
 from pathlib import Path
 import re
 import shutil
@@ -90,7 +91,7 @@ def make_main(main: str, refs: str) -> str:
 
 def to_docx(md: Path, dest: Path) -> None:
     subprocess.run(
-        ["pandoc", str(md), "--from=markdown", "--to=docx",
+        ["pandoc", str(md), "--resource-path", str(md.parent.resolve()) + os.pathsep + str(ROOT), "--from=markdown", "--to=docx",
          "--standalone", "--output", str(dest)],
         cwd=ROOT, check=True,
     )
