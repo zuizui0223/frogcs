@@ -36,7 +36,7 @@ def verify() -> tuple[str, str, str, int, int]:
     assert main.count("### Salamander development reverses the demographic effect of vegetation") == 1
     assert main.count("### Rate-wide evaluation and independent structural replication") == 1
     assert "## Figure legends" in main and "## Figure captions and submission layout" not in main
-    assert not re.search(r"(?m)^###\\s+(?:[A-Z]\\d?\\.|G\\d|R\\d|P\\d)",main)
+    assert not re.search(r"(?m)^###\s+(?:[A-Z]\d?\.|G\d|R\d|P\d)",main)
     assert "## Evidence, reproducibility and status" not in main
     assert "author-review candidate" not in main
     assert "### B. Calls and larval records" not in main
