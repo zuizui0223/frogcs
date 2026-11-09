@@ -20,6 +20,8 @@ ADMIN = [
     PREP / "COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md",
     PREP / "EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md",
     PREP / "NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md",
+    PREP / "CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md",
+    PREP / "DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md",
 ]
 
 def sha(p: Path) -> str:
@@ -79,6 +81,8 @@ def verify() -> tuple[str, str, str, int, int]:
     bib_keys = re.findall(r"@\w+\{([^,]+),", BIB.read_text(encoding="utf-8"))
     assert len(bib_keys) == len(set(bib_keys)) == 35
     assert NOVELTY.is_file()
+    assert (PREP / "CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md").is_file()
+    assert (PREP / "DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md").is_file()
     assert all(s in main for s in ("Warfe & Barmuta, 2004", "McCoy et al., 2012", "Urushihara & Takatsu, 2026"))
     assert "Wilbur & Fauth, 1990" in main
     assert "Klecka & Boukal (2014)" in main
