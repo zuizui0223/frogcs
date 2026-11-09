@@ -6,6 +6,13 @@ on:
       - submission/el-model-only-doi-staging-20261109
     paths:
       - 'submission/ecology_letters_20261108/build_model_only_archive_candidate.py'
+      - 'editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md'
+      - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.*'
+      - 'editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md'
+      - 'submission/ecology_letters_20261108/CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md'
+      - 'submission/ecology_letters_20261108/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md'
+      - 'submission/ecology_letters_20261108/ZENODO_PRIVATE_REVIEW_AND_AUTHOR_ACTIONS_20261109.md'
       - '.github/workflows/el_model_only_archive_candidate_20261109.yml'
   workflow_dispatch:
 
