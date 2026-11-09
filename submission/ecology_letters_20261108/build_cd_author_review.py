@@ -72,9 +72,7 @@ def verify() -> tuple[str, str, str, int, int]:
         assert author in refs and doi in refs, (author,doi)
     ref_block = refs.split("Alford, R. A.", 1)[1].split(
         "## G7 natural-history accounts", 1)[0]
-    ref_count = 1 + len(re.findall(r"(?m)^.+\(\d{4}\)\.", ref_block)) - 1
-    # Count reference entries via blank-line separated paragraphs, not text matches.
-    entries = ["Alford, R. A." + p for p in []]  # explicit below avoids a fake first entry
+    # Count the 35 actual bibliography paragraphs, not journal footnotes.
     all_refs = "Alford, R. A." + ref_block
     entries = [p for p in all_refs.strip().split("\n\n") if p.strip()]
     assert len(entries) == 35, (len(entries), "Reference registry mismatch")
