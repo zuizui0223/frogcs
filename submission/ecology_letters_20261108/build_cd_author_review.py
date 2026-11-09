@@ -90,6 +90,9 @@ def build():
             ("figS6_species.png", "figures/Supplementary_Figure_S6.png"),
             *[(name, f"tables/{name}") for name in ("interaction_results.csv", "species_support.csv", "detected_route_sensitivity.csv")],
         ],
+        "public_larval_overlap_20261109": [
+            (name, f"tables/{name}") for name in ("reviewed_paired_vouchers.csv", "usgs_brookshire_crosswalk.csv")
+        ],
         "frog_arrival_20261109": [
             ("arrival_comparison.png", "figures/Supplementary_Figure_S8.png"),
             *[(name, f"tables/frog_arrival_{name}") for name in ("summary.csv", "paired_change_from_baseline.csv", "validation.json")],

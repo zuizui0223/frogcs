@@ -143,6 +143,21 @@ For timing, we took each species’ median observed calling day in each shared s
 
 **Supplementary Figure S7.** Left, percentage of surveyed visits with a recorded call by month at the 317 shared sites. Right, paired species difference in the odonate × caudate interaction across geographic and calendar restrictions; horizontal lines are pointwise 95% route bootstrap intervals. The two point series use alternative suitability backgrounds. [Monthly counts and visit denominators](../research/results/naamp_shared_site_pair_20261109/monthly.csv), [paired date contrasts](../research/results/naamp_shared_site_pair_20261109/timing.csv) and [all interaction contrasts](../research/results/naamp_shared_site_pair_20261109/paired_coefficients.csv).
 
+### S2d. Dated field records of tadpoles and aquatic predators
+
+We checked the timing prediction against publicly archived aquatic-stage records from sites independent of the matched NAAMP listening sites. The US GBIF screen retained positive occurrences with an explicit larval or tadpole stage and a single collection day, deduplicated by record key. For salamanders, each reviewed voucher pair matched on dataset, state, waterbody description and date; both specimens carried aquatic-stage labels. The reviewed examples covered 12 waterbody-days at 10 localities for *P. crucifer* and three waterbody-days at two localities for *A. gryllus*. Counts refer to distinct waterbody-days, even when more than one predator species was collected.
+
+**Table S2d. Aquatic-stage overlap and the evidence for its timing.**
+
+| Tadpoles and predator group | Field observations | Temporal resolution and source |
+|---|---|---|
+| *A. gryllus* and salamander larvae | Twin Oak Pond, Florida, 6 and 9 June 1947: *Ambystoma talpoideum* and *Notophthalmus perstriatus* on both dates. At a second Florida pond on 15 June 1947: *N. viridescens*. | Same waterbody and day on both specimen labels. [Tadpole](https://www.gbif.org/occurrence/786082140) and [salamander](https://www.gbif.org/occurrence/786082138) vouchers from the first visit. |
+| *P. crucifer* and salamander larvae | One Virginia pool, 19 May and 10 June 1979: *A. maculatum*. One Maryland pond, 29 May and 11 June 1991: *N. viridescens*. | Same waterbody and day on each visit. [Tadpole](https://www.gbif.org/occurrence/1143472616) and [salamander](https://www.gbif.org/occurrence/1143472646) vouchers from Virginia. |
+| *P. crucifer* and odonate larvae | Brookshire Rd Pond, North Carolina. The frog file dates 10 tadpoles to 28 June 2023. At the corresponding site (BS), the study lists 15 dragonfly larvae from Aeshnidae, Corduliidae and Libellulidae. | Same-collection inference: the authors describe simultaneous sampling, and site identity matches across sources. The dragonfly table reports counts by site without individual collection dates. [USGS frog data](https://doi.org/10.5066/P16HVH7D); [Tornabene et al., methods and supplementary Table S6](https://doi.org/10.1007/s10646-026-03090-z). |
+| *A. gryllus* and odonate larvae | Ocala National Forest, Florida. Box traps detected tadpoles on dates including 21 May, 8 June and 12 July 2001. Darner and skimmer nymphs were reported from the study wetlands. | Wetland-complex evidence only. The published table gives frog detections by visit without pond-by-day odonate detections, so same-day overlap remains unresolved. [Greenberg et al., Table 3 and Discussion](https://research.fs.usda.gov/download/treesearch/54728.pdf). |
+
+These records show when tadpoles could encounter predators. They do not measure continuous exposure between visits, attack rates or the net effect of vegetation. In particular, a same-day salamander record leaves odonate presence open unless both groups were surveyed. The field comparisons therefore constrain the plausibility of the overlap scenarios in S8c, while the 78-day adult calling difference remains distinct from the hypothetical shifts in tadpole arrival. [All paired specimen identifiers and dates](../research/results/public_larval_overlap_20261109/reviewed_paired_vouchers.csv); [Brookshire collection crosswalk](../research/results/public_larval_overlap_20261109/usgs_brookshire_crosswalk.csv).
+
 ## Supplementary Methods S3. Spatial environment and adult-acoustic diagnostics (G1–G2B, G4–G7)
 
 ### S3a. Shared-environment G1
