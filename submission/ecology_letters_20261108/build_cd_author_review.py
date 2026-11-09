@@ -34,7 +34,8 @@ def verify() -> tuple[str, str, str, int, int]:
     abs_text = main.split("## Abstract\n\n",1)[1].split("\n\n**Keywords:",1)[0]
     body = main.split("## Introduction\n",1)[1].split("## Figure legends",1)[0]
     aw, mw = len(abs_text.split()), len(body.split())
-    assert 0 < aw <= 150 and 3000 <= mw <= 5000, (aw,mw)
+    assert aw == 147 and 3000 <= mw <= 5000, (aw,mw)
+    assert "when tadpoles overlapped longer with salamander larvae in the tested calendars" in abs_text
     # All submission-section headings must describe the finding, not internal run IDs.
     assert main.count("### Frog-calling associations vary with caudates and vegetation") == 1
     assert main.count("### Salamander development reverses the demographic effect of vegetation") == 1
@@ -88,7 +89,7 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "Klecka & Boukal (2014)" in main
     assert "Baker et al., 2025" in main
     assert "3,890" in TITLE.read_text(encoding="utf-8")
-    assert "143 words" in TITLE.read_text(encoding="utf-8")
+    assert "147 words" in TITLE.read_text(encoding="utf-8")
     assert "**References:** 36" in TITLE.read_text(encoding="utf-8")
     return main, si, refs, aw, mw
 
