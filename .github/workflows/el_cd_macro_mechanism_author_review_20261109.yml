@@ -1,0 +1,84 @@
+name: EL C macro observation D stage-foodweb mechanisms (authors only)
+
+on:
+  push:
+    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109]
+    paths:
+      - 'editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md'
+      - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'submission/ecology_letters_20261108/build_cd_author_review.py'
+      - 'submission/ecology_letters_20261108/COVER_LETTER_CD_AUTHOR_REVIEW.md'
+      - 'submission/ecology_letters_20261108/TITLE_PAGE_CD_AUTHOR_REVIEW.md'
+      - 'submission/ecology_letters_20261108/COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md'
+      - 'submission/ecology_letters_20261108/EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md'
+      - 'submission/ecology_letters_20261108/NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md'
+      - '.github/workflows/el_cd_macro_mechanism_author_review_20261109.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-frozen-editorial-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install publishing and existing science QA dependencies only
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+          python -m pip install numpy==2.3.5 pandas==2.2.3 scipy==1.17.0 "matplotlib>=3.7,<4" python-docx pillow
+      - name: Original frozen 44 numerical source-claim audit (no rerun of biology)
+        run: |
+          python -u research/scripts/audit_submission_claims_20261105.py \
+            --r2 research/results/submission_frozen_sources_20261106/R2 \
+            --pr161 research/results/submission_frozen_sources_20261106/R3 \
+            --r4 research/results/submission_frozen_sources_20261106/R4 \
+            --g2 research/results/submission_frozen_sources_20261106/G2 \
+            --g2b research/results/submission_frozen_sources_20261106/G2B \
+            --p1 research/results/submission_frozen_sources_20261106/P1 \
+            --main editorial/MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md \
+            --si editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md \
+            --out submission/ecology_letters_20261108/_cd_legacy_44QA
+      - name: Build publication Word candidate and original C source figure
+        run: python -u submission/ecology_letters_20261108/build_cd_author_review.py
+      - name: Verify two biological contributions, not tadpole births from calls
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('submission/ecology_letters_20261108')
+          a=json.loads((root/'_cd_review_bundle/CD_AUTHOR_REVIEW_SOURCE_QA.json').read_text())
+          old=json.loads((root/'_cd_legacy_44QA/submission_source_QA_receipt.json').read_text())
+          assert old['status']=='R1_R4_SUBMISSION_SOURCE_CLAIMS_AND_MANUSCRIPT_STRUCTURAL_QA_PASS'
+          assert old['independently_recomputed_numerical_claims']==44
+          assert a['status']=='CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY'
+          assert 3000<=a['scientific_main_words']<=5000 and a['abstract_words']<=150
+          assert a['main_figures']==3 and a['SI_sections']==22
+          assert a['original_main_figure_1_and_2_bytes_unchanged']
+          assert a['original_R4_supplementary_figure_bytes_unchanged']
+          assert a['stage_B_sources_in_SI_only'] and not a['tadpole_birth_directly_observed_from_calls']
+          assert a['original_scientific_simulations_rerun']==0
+          assert not a['mechanism_identified_in_field']
+          assert not a['journal_submitted'] and not a['project_archive_doi_verified']
+          for name in ('Letter_CD_MAIN_AUTHOR_REVIEW','Letter_CD_SI_S1_S22_AUTHOR_REVIEW',
+                       'Letter_CD_COVER_AUTHOR_REVIEW','TITLE_PAGE_CD_AUTHOR_REVIEW'):
+              assert (root/'_cd_review_bundle'/(name+'.docx')).stat().st_size>10000
+          print('CD_MACRO_MECHANISM_EL_AUTHOR_REVIEW_QA_PASS',a['scientific_main_words'],
+                a['abstract_words'],'44_original_claims_verified_no_simulations')
+          PY
+      - name: Copy independently original-sourced 44-claim QA receipt
+        run: |
+          cp submission/ecology_letters_20261108/_cd_legacy_44QA/submission_source_QA_receipt.json \
+             submission/ecology_letters_20261108/_cd_review_bundle/ORIGINAL_44_CLAIM_QA.json
+      - name: Archive coauthor-only Word, SI and 3 C/D figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogcs-EL-CD-macro-stage-model-proxy-not-birth-20261109
+          path: submission/ecology_letters_20261108/_cd_review_bundle/
+          retention-days: 30
+          if-no-files-found: error
