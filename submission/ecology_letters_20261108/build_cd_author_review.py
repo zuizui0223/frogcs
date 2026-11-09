@@ -85,33 +85,20 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "Baker, Mott & Whiteman, 2025" in main
     assert "3,897" in TITLE.read_text(encoding="utf-8")
     assert "143 words" in TITLE.read_text(encoding="utf-8")
-    assert "**References:** 28" in TITLE.read_text(encoding="utf-8")
+    assert "**References:** 36" in TITLE.read_text(encoding="utf-8")
     return main, si, refs, aw, mw
 
 def build():
     main, si, refs, aw, mw = verify()
     OUT.mkdir(parents=True, exist_ok=True)
-    # The literature audit is a *reading library* (35 records), not a license
-    # to pad the journal References with eight studies only discussed in the
-    # novelty review. Retain all 35 in the audit and BibTeX, but include the
-    # 27 sources actually mentioned in the main manuscript or SI.
-    first_ref = "Alford, R. A."
-    records = (first_ref + refs.split(first_ref,1)[1].split(
-        "## G7 natural-history accounts",1)[0]).strip().split("\n\n")
-    audit_only = (
-        "García-Oliva, O.", "Grimm, V., Revilla", "Hanusch, M.",
-        "Holt, R. D.", "Kloskowski, J.", "Shen, C.", "Sih, A.",
-        "Werner, E. E.",
-    )
-    in_paper = [record for record in records if not record.startswith(audit_only)]
-    assert len(records) == 35 and len(in_paper) == 27, (len(records),len(in_paper))
-    # make_main appends the separately USGS G18 original data record.
-    journal_refs = "\n\n".join(in_paper) + "\n\n## G7 natural-history accounts\n"
+    # The S4/S5 evidence-to-assumption table cites the full source-verified
+    # registry. Retain these cited papers in the manuscript reference list;
+    # the separate USGS G18 dataset citation is appended by make_main.
     review_main = make_main(
         re.sub(r"(?m)^\*\*C \(observation\) → D \(mechanism\) author-review candidate[^\n]*\n+",
-               "",main),journal_refs)
+               "",main),refs)
     final_reference_text = review_main.split("\n## References\n\n",1)[1]
-    assert len([r for r in final_reference_text.strip().split("\n\n") if r.strip()]) == 28
+    assert len([r for r in final_reference_text.strip().split("\n\n") if r.strip()]) == 36
     supplementary_sources = [
         "g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png",
         "g7_trait_composition_20261106/G7_trait_composition_bridge.png",
@@ -211,8 +198,8 @@ def build():
         "abstract_words":aw,"scientific_main_words":mw,
         "supplementary_figures":8,"main_figures":3,"SI_sections":22,
         "literature_registry_entries":35,
-        "main_manuscript_references_including_USGS_builder":28,
-        "research_audit_only_reference_entries":8,
+        "main_manuscript_references_including_USGS_builder":36,
+        "research_audit_only_reference_entries":0,
         "primary_literature_audit_included":True,
         "original_main_figure_1_and_2_bytes_unchanged":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
