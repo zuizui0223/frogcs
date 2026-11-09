@@ -53,6 +53,12 @@ CODE = [
     "research/scripts/g13_abc_pom_conditional_structure_null.py",
     "research/scripts/audit_submission_claims_20261105.py",
 ]
+ENVIRONMENT_WORKFLOWS = [
+    ".github/workflows/research_g8_27rate_paired_factorial.yml",
+    ".github/workflows/research_g11_disjoint_structure_holdout.yml",
+    ".github/workflows/research_P1_isolated_stage_true80.yml",
+    ".github/workflows/research_g13_abc_conditional_structure_null.yml",
+]
 DOCUMENTATION = [
     "editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md",
     "editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md",
@@ -99,6 +105,11 @@ The R5 full 4,800-virtual-observer outcome backup and G4 site-geometry source
 are preserved privately for author review; they are NOT in this model-only ZIP.
 
 Filenames and SHA256 values for all included files are in MANIFEST_SHA256.tsv.
+COLUMN_DICTIONARY_AUTHOR_COMPLETION_REQUIRED.tsv lists the original CSV
+headers with their scientific meanings and units intentionally left PENDING.
+These must be completed from original variable definitions before depositing.
+Original execution workflow YAML files are included as environment provenance,
+not proof that this candidate is independently turnkey-reproducible.
 See DEPOSIT_LIMITATIONS.json and SOURCE_DOI_ACCESS.md before public distribution.
 
 IMPORTANT: This is a pre-deposit REVIEW CANDIDATE, NOT a licensed public
@@ -157,11 +168,16 @@ def test_csv_schema(path: str) -> str | None:
 
 def main(archive:Path,receipt:Path) -> None:
     entries=[]
-    sets={"generated_model_results":RESULTS,"analysis_and_audit_code":CODE,"source_documentation":DOCUMENTATION}
-    assert len(set(RESULTS+CODE+DOCUMENTATION))==sum(map(len,sets.values()))
+    sets={
+        "generated_model_results":RESULTS,
+        "analysis_and_audit_code":CODE,
+        "original_execution_workflows":ENVIRONMENT_WORKFLOWS,
+        "source_documentation":DOCUMENTATION,
+    }
+    assert len(set(RESULTS+CODE+ENVIRONMENT_WORKFLOWS+DOCUMENTATION))==sum(map(len,sets.values()))
     for label,files in sets.items():
         for rel in files:
-            assert rel.startswith(("research/results/","research/scripts/","editorial/","submission/"))
+            assert rel.startswith(("research/results/","research/scripts/","editorial/","submission/",".github/workflows/"))
             assert not any(token in rel for token in FORBIDDEN_PATHS),rel
             p=ROOT/rel
             if not p.is_file():
@@ -182,6 +198,9 @@ def main(archive:Path,receipt:Path) -> None:
       "total_original_source_bytes":sum(e["bytes"] for e in entries),
       "selected_result_files":len(RESULTS),"selected_code_files":len(CODE),
       "documentation_files":len(DOCUMENTATION),
+      "original_execution_workflows":len(ENVIRONMENT_WORKFLOWS),
+      "column_dictionary_author_verified":False,
+      "complete_units_and_data_definitions_included":False,
       "site_level_or_coordinate_raw_records_exported":False,
       "missing_elements":[
          "Third-party-data rights-cleared source observations and geospatial inputs",
@@ -192,6 +211,17 @@ def main(archive:Path,receipt:Path) -> None:
       "excluded_sources":EXPLICIT_EXCLUSIONS,
       "files":entries,
     }
+    # Do not invent variable definitions: expose every original CSV column
+    # to coauthors in an explicit review-required metadata table.
+    dictionary=[("source_file","column_name","column_meaning_EN","unit","author_verified")]
+    for e in entries:
+        if e["schema"]:
+            for col in e["schema"].split(","):
+                dictionary.append((e["path"],col,"[AUTHOR DEFINE]","[AUTHOR VERIFY]","NO"))
+    meta["unverified_column_dictionary_rows"]=len(dictionary)-1
+    dictionary_text=io.StringIO()
+    dw=csv.writer(dictionary_text,dialect="excel-tab",lineterminator="\n")
+    dw.writerows(dictionary)
     # Keep canonical ZIP layout and an inspectable manifest in archive root.
     index="section\tpath\tbytes\tsha256\n" + "\n".join(
         f"{e['section']}\t{e['path']}\t{e['bytes']}\t{e['sha256']}" for e in entries
@@ -201,6 +231,7 @@ def main(archive:Path,receipt:Path) -> None:
         z.writestr("README_MODEL_ONLY_PREDEPOSIT.md",README)
         z.writestr("SOURCE_DOI_ACCESS.md",DOI_SOURCE_INFO)
         z.writestr("MANIFEST_SHA256.tsv",index)
+        z.writestr("COLUMN_DICTIONARY_AUTHOR_COMPLETION_REQUIRED.tsv",dictionary_text.getvalue())
         z.writestr("DEPOSIT_LIMITATIONS.json",json.dumps({
            k:v for k,v in meta.items() if k!="files"
         },ensure_ascii=False,indent=2)+"\n")
@@ -209,7 +240,7 @@ def main(archive:Path,receipt:Path) -> None:
             z.write(ROOT/rel,arcname="SOURCE_FILES/"+rel)
     with zipfile.ZipFile(archive) as z:
         assert z.testzip() is None
-        assert len(z.namelist())==len(entries)+4
+        assert len(z.namelist())==len(entries)+5
         assert "research/results/naamp_three_guild_occurrence" not in " ".join(z.namelist())
     meta["archive_bytes"]=archive.stat().st_size
     meta["archive_sha256"]=sha(archive.read_bytes())
