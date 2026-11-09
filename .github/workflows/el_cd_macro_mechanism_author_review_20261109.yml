@@ -2,7 +2,7 @@ name: EL C macro observation D stage-foodweb mechanisms (authors only)
 
 on:
   push:
-    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109]
+    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109, editorial/chorus-vegetation-revision-20261109]
     paths:
       - 'editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md'
       - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
@@ -58,7 +58,7 @@ jobs:
           assert old['independently_recomputed_numerical_claims']==44
           assert a['status']=='CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY'
           assert 3000<=a['scientific_main_words']<=5000 and a['abstract_words']<=150
-          assert a['main_figures']==3 and a['SI_sections']==22
+          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==5
           assert a['original_main_figure_1_and_2_bytes_unchanged']
           assert a['original_R4_supplementary_figure_bytes_unchanged']
           assert a['stage_B_sources_in_SI_only'] and not a['tadpole_birth_directly_observed_from_calls']

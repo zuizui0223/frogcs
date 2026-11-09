@@ -1,6 +1,6 @@
 # Supplementary Information — third-guild acoustic context and stage-structured vegetation-mediated trophic pathways
 
-**Source-preserving integrated draft · 7 November 2026 · accompanies [shortened manuscript main text](MAIN_TEXT_R1_R4_SUBMISSION_CANDIDATE_2026-11-05.md)**
+Accompanies the [Ecology Letters main text](MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md).
 
 ## Supplementary Methods S1. Evidence levels and non-interchangeable source units
 
@@ -31,6 +31,64 @@
 ## Supplementary Methods S2. R1 data and measured acoustic response definitions
 
 The primary source selected 4,248 physical acoustic monitoring locations with repeated complete surveys, 432 route components, 63,180 completed original visits and response \`strong_all = n_strong / n_completed\`. Potential Odonata and Caudata predictor surfaces are aggregate SDM suitability for the six and seven retained respective taxa (including pond-breeding Caudata as the focal S subgroup); these estimates are derived from occurrence-environment models, not simultaneous pond larval counts. The plant variable V is a 3-km landscape wetland vegetation proxy, **not a measured in-pond refuge**.
+
+**Table S2a. Frog call records in the analytical cohort.** The [USGS data release](https://doi.org/10.5066/F7G44NG0) spans 1994–2015. The 63,180 completed visits analysed here ran from 14 February 2001 to 9 August 2015. Counts below give completed visits on which each source label was heard at any calling intensity. A visit may include several labels. The nine complex labels retain ambiguous identifications and may overlap individually named species. The separate distribution models use their own eligibility criteria.
+
+| Name in NAAMP records | Completed visits with a detection |
+|---|---:|
+| *Pseudacris crucifer* | 26,173 |
+| *Lithobates clamitans* | 9,647 |
+| *Hyla versicolor* | 7,509 |
+| *Anaxyrus americanus* | 6,670 |
+| *Lithobates catesbeianus* | 6,221 |
+| *Hyla chrysoscelis* | 5,031 |
+| *Anaxyrus fowleri* | 3,562 |
+| *Acris crepitans* | 3,105 |
+| *Lithobates sylvaticus* | 3,035 |
+| *Hyla cinerea* | 2,979 |
+| *Lithobates sphenocephalus* | 2,833 |
+| *Lithobates palustris* | 1,526 |
+| *Hyla chrysoscelis/versicolor complex* | 1,501 |
+| *Pseudacris feriarum* | 1,443 |
+| *Acris gryllus* | 1,227 |
+| *Pseudacris maculata* | 1,159 |
+| *Anaxyrus terrestris* | 1,056 |
+| *Pseudacris maculata/triseriata complex* | 1,013 |
+| *Acris crepitans/gryllus complex* | 746 |
+| *Hyla squirella* | 700 |
+| *Hyla gratiosa* | 548 |
+| *Hyla femoralis* | 531 |
+| *Gastrophryne carolinensis* | 523 |
+| *Pseudacris nigrita* | 460 |
+| *Pseudacris kalmi* | 391 |
+| *Pseudacris ocularis* | 381 |
+| *Lithobates pipiens* | 339 |
+| *Hyla avivoca* | 324 |
+| *Pseudacris brachyphona* | 317 |
+| *Pseudacris feriarum/kalmi complex* | 264 |
+| *Pseudacris feriarum/triseriata complex* | 237 |
+| *Lithobates grylio* | 235 |
+| *Lithobates virgatipes* | 215 |
+| *Pseudacris brimleyi* | 182 |
+| *Pseudacris nigrita/feriarum complex* | 169 |
+| *Anaxyrus quercicus* | 160 |
+| *Scaphiopus holbrookii* | 122 |
+| *Pseudacris ornata* | 114 |
+| *Anaxyrus americanus/terrestris complex* | 108 |
+| *Lithobates septentrionalis* | 88 |
+| *Lithobates blairi* | 74 |
+| *Hyla andersonii* | 62 |
+| *Incilius nebulifer* | 21 |
+| *Anaxyrus cognatus* | 16 |
+| *Anaxyrus fowleri/woodhousii complex* | 14 |
+| *Pseudacris feriarum/fouquettei complex* | 10 |
+| *Pseudacris streckeri* | 6 |
+| *Lithobates capito* | 6 |
+| *Pseudacris clarkii* | 6 |
+| *Scaphiopus couchii* | 5 |
+| *Spea bombifrons* | 4 |
+| *Scaphiopus hurterii* | 2 |
+| *Lithobates areolatus* | 1 |
 
 **Species suitability models and their distinct validation.** The frozen final [interaction-screened cohort](../research/results/interaction_species_sdm_20261026/run_summary.json), from [source run 40280662127](https://github.com/zuizui0223/frogcs/actions/runs/40280662127) at commit `378347495ddad7c7ecc0c9b54b235eadc7d6b71f`, selected 30 taxa; 28 met the minimum of 30 spatially thinned presence cells (15 Anura, seven Caudata, six Odonata). GBIF queries retained US presence records from 1980–2015 within 24–50° N and 125–66° W, with coordinates, no flagged geospatial issue and reported coordinate uncertainty of 0–1,000 m. The [fitting code](../research/scripts/broad_species_sdm.py) restricted records to the focal species and a generalized US land polygon; it excluded fossil and living-specimen records, duplicate occurrence identifiers and datasets identified by title as NAAMP. Within each species, the lowest-ID record was retained per 10-arc-minute cell, followed by exclusion of records missing any predictor. Predictors were WorldClim 2.1 BIO1, BIO4, BIO12 and BIO15 at 10-arc-minute resolution (Fick & Hijmans, 2017) and EarthEnv full-version flooded-vegetation and open-water values at 30-arc-second resolution (Tuanmu & Jetz, 2014). These are long-term climate and landscape layers, not survey-day pond conditions.
 
@@ -799,7 +857,7 @@ No focal first-larval-census row had an original coded permanent-water-column va
 |---|---|---|
 | [Main Figure 1 — C only](figures/Figure1_Observed_ThirdGuild_AcousticAssociation.png) | Observed high/low caudate suitability O–frog calling correlations and 3-km vegetation association terms; no tadpole birth claims | [Figure 1 source CI](https://github.com/zuizui0223/frogcs/actions/runs/41317178174) |
 | [Main Figure 2](figures/Figure2_InteractionSignature_VsFrogAbundance.png) | Same-background 256-model vegetation 2×2 interaction; per-source predator-hazard share vs mean frog cohort | [New-seed 2×2 source CI](https://github.com/zuizui0223/frogcs/actions/runs/41408471121) |
-| [Main Figure 3](figures/Figure3_Arrival_Duration_P1_PureMechanism.png) | Controlled P1 independent salamander arrival × aquatic duration, four plant states and opposite directions of sign-compatibility and frog cohort response | [P1 source independent audit](https://github.com/zuizui0223/frogcs/actions/runs/41987600437) and [two plotted comparisons](https://github.com/zuizui0223/frogcs/actions/runs/41988533772) |
+| [Main Figure 3](figures/Figure3_D_RateAndDevelopment_EDITORIAL.png) | Four-sign compatibility and frog cohorts in two disjoint structure samples across 27 rates (G8/G11), followed by the independent salamander arrival and duration comparison (P1) | [P1 source independent audit](https://github.com/zuizui0223/frogcs/actions/runs/41987600437) and [two plotted comparisons](https://github.com/zuizui0223/frogcs/actions/runs/41988533772) |
 | [Supplementary Figure S5 — previously main Figure 4](figures/Figure4_GenuineFinitePopulation_R4.png) | Same new-256-background genuine 80-year finite-N frog occupancy and factorial by q, movement, developmental context | [R4 source audit and three panels](https://github.com/zuizui0223/frogcs/actions/runs/41551412003) |
 | [Supplementary Figure S1](../research/results/g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png) | G6 saved-prediction context gains and original R1 rank-contrast diagnostic | [G6 source/replay receipt](../research/results/g6_observation_context_20261106/G6_source_and_replay_receipt.json) and [validation](../research/results/g6_observation_context_20261106/G6_validation_record.json) |
 | [Supplementary Figure S2](../research/results/g7_trait_composition_20261106/G7_trait_composition_bridge.png) | Fixed G7 species-group coefficient intervals and held-out NLL gains | [Execution receipt](../research/results/g7_trait_composition_20261106/G7_execution_receipt.json) and [independent validation](../research/results/g7_trait_composition_20261106/G7_independent_validation.json) |

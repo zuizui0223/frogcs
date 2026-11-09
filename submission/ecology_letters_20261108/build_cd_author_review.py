@@ -66,6 +66,28 @@ def build():
     review_main = make_main(
         re.sub(r"(?m)^\*\*C \(observation\) → D \(mechanism\) author-review candidate[^\n]*\n+",
                "",main),refs)
+    supplementary_sources = [
+        "g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png",
+        "g7_trait_composition_20261106/G7_trait_composition_bridge.png",
+        "p1_vegetation_benefit_20261106/P1_vegetation_benefit_decomposition.png",
+        "g8_27rate_paired_20261107/audited/G8_27rate_pattern_vs_population.png",
+    ]
+    review_links = {
+        MAIN.name: "Letter_CD_MAIN_AUTHOR_REVIEW.md",
+        "figures/Figure1_Observed_ThirdGuild_AcousticAssociation.png": "figures/Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png",
+        "figures/Figure2_InteractionSignature_VsFrogAbundance.png": "figures/Figure2_D_VegetationMechanism_ORIGINAL.png",
+        "figures/Figure4_GenuineFinitePopulation_R4.png": "figures/Supplementary_Figure_S5_R4_ORIGINAL.png",
+    }
+    for index, source in enumerate(supplementary_sources, start=1):
+        destination = OUT / "figures" / f"Supplementary_Figure_S{index}.png"
+        destination.parent.mkdir(exist_ok=True)
+        original = ROOT / "research/results" / source
+        shutil.copyfile(original, destination)
+        assert sha(original) == sha(destination)
+        review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
+    for original_link, package_link in review_links.items():
+        assert f"({original_link})" in si
+        si = si.replace(f"({original_link})", f"({package_link})")
     prose = {
         "Letter_CD_MAIN_AUTHOR_REVIEW.md":review_main,
         "Letter_CD_SI_S1_S22_AUTHOR_REVIEW.md":si,
@@ -91,6 +113,8 @@ def build():
     sys.path.insert(0,str(ROOT/"research/scripts"))
     from build_bcd_editorial_figures_20261108 import figure3
     figure3(figs)
+    for figure_link in re.findall(r"\]\((figures/[^)]+\.png)\)", si):
+        assert (OUT / figure_link).is_file(), figure_link
     assert len(list(figs.glob("Figure*.png")))==3
     assert sha(originalC)==sha(figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png")
     assert sha(originalD)==sha(figs/"Figure2_D_VegetationMechanism_ORIGINAL.png")
@@ -112,7 +136,7 @@ def build():
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "main_figures":3,"SI_sections":22,
+        "supplementary_figures":5,"main_figures":3,"SI_sections":22,
         "original_main_figure_1_and_2_bytes_unchanged":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
         "stage_B_sources_in_SI_only":True,
@@ -124,7 +148,7 @@ def build():
         "coauthor_approval":False,"project_archive_doi_verified":False,
         "journal_submitted":False,
         "source_sha256":{str(f.relative_to(ROOT)):sha(f) for f in files},
-        "bundle_sha256":{str(f.relative_to(OUT)):sha(f) for f in OUT.rglob("*") if f.is_file()},
+        "bundle_sha256":{str(f.relative_to(OUT)):sha(f) for f in OUT.rglob("*") if f.is_file() and f.name not in {"CD_AUTHOR_REVIEW_SOURCE_QA.json", "ORIGINAL_44_CLAIM_QA.json"}},
     }
     (OUT/"CD_AUTHOR_REVIEW_SOURCE_QA.json").write_text(
         json.dumps(receipt,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
