@@ -67,6 +67,7 @@ DOCUMENTATION = [
     "editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md",
     "submission/ecology_letters_20261108/CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md",
     "submission/ecology_letters_20261108/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md",
+    "submission/ecology_letters_20261108/ZENODO_PRIVATE_REVIEW_AND_AUTHOR_ACTIONS_20261109.md",
 ]
 # No G4 original site geometry, no site-level NAAMP response data, and no
 # source raw field data in this model-only candidate.
