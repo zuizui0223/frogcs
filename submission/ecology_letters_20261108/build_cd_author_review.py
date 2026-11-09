@@ -79,7 +79,7 @@ def verify() -> tuple[str, str, str, int, int]:
     bib_keys = re.findall(r"@\w+\{([^,]+),", BIB.read_text(encoding="utf-8"))
     assert len(bib_keys) == len(set(bib_keys)) == 35
     assert NOVELTY.is_file()
-    assert "Wilbur & Fauth (1990)" in main
+    assert "Wilbur & Fauth, 1990" in main
     assert "Klecka & Boukal (2014)" in main
     assert "Baker, Mott & Whiteman, 2025" in main
     assert "3,811" in TITLE.read_text(encoding="utf-8")
