@@ -4,10 +4,10 @@
 
 ## Novelty emphasis already supportable from the frozen Letter
 
-- **B is a bounded biological premise**, not a third finding: INBO and USGS associate acoustic records with same-location/year or same-survey larval detection; future-year predictive transfer failed. Mohonk original published source documents stage observations but 29/30 and 29/59 remain unverified. C is continental call/environment association, not direct trophic identification.
+- **No B main-result section**: independent INBO and USGS (SI S20/S22) associate calls with recorded larval detection, but do not confirm mating, oviposition, hatching or recruitment; future-year transfer failed. Mohonk is source-described but the proposed 29/30 and 29/59 counts remain unverified. The main empirical result is C, a continental adult-call/environment association, not predator-mediated birth or survival.
 - Two independent 256-structure × 27 synthetic-rate food-web sets support a positive gain in pattern generation concurrent with negative average model frog-cohort changes; the early/long predator developmental setting can reverse the effect.
 - **R5 is methodological support, not a third major biological finding:** under hypothetical call-link/proxy errors, model mechanisms can be difficult to recover from field-style observations. This explains why the available acoustic/SDM/landscape data cannot substitute for simulated independent manipulation of vegetation functions and predator timing; it does **not** show that such field measurements are inherently impossible, or reveal the reason actual G14/G15 failed.
-- The B/C/D manuscript's **two biological contributions** are (i) pattern generation need not confer demographic benefit, and (ii) predator developmental conditions reverse vegetation's effect within the stipulated model family. Do not pitch R5 as an independent ecological discovery.
+- The C→D manuscript's **two biological contributions** are (i) pattern generation need not confer demographic benefit, and (ii) predator developmental conditions reverse vegetation's effect within the stipulated model family. Do not pitch R5 as an independent ecological discovery.
 
 ## Journal-required author-specific comparison — HOLD
 
