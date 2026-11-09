@@ -22,7 +22,7 @@
 
 **Supplementary Methods:** S1–S22; supporting acoustic→larval detection evidence in S20/S22; R4 in S6 and Figure S5; R5 in S21
 
-**References:** 28 in the author-review Word manuscript (27 cited original research/data entries plus Glorioso & Waddle 2025 USGS source); the separate literature audit and BibTeX include 35 reviewed entries. Final journal style requires author approval.
+**References:** 36 (35 independently sourced papers/data entries cited in main text or SI, plus the separately appended original USGS data release)
 
 **Keywords:** amphibian calling; caudate guild; dragonfly larvae; conditional associations; ontogeny; vegetation refuge; stage-structured food webs; finite-population persistence
 
