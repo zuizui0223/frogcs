@@ -7,8 +7,8 @@
 | Field | Publisher requirement | This C→D Letter candidate status |
 |---|---|---|
 | Type / scope | Letter, original ecology contribution | Letter; pattern reproduction ≠ demographic benefit |
-| Main text | ≤5,000 scientific words excluding abstract, figure legends and references | **3,209 in C→D editorial candidate; abstract 141 words; final CD QA pending** |
-| Abstract | ≤150 words | **141** |
+| Main text | ≤5,000 scientific words excluding abstract, figure legends and references | **3,187 in revised C→D editorial candidate; abstract 144 words; final CD QA pending** |
+| Abstract | ≤150 words | **144** |
 | Main graphics/tables/text boxes | ≤6 combined | 3 author-review main figure candidates, no main tables or boxes (original R4 Figure4 moved to SI S5) |
 | Manuscript | Double-spaced; author-approved text; separate figures or combined .doc/PDF initial submission | Word copies exist; original model Figure2 and SI R4 PNGs copied unchanged; new B/C and D figures are editorial source-backed composites |
 | Title page | All author names, institutional addresses/emails, running title <45 characters, word/reference/figure counts, corresponding-author postal/phone/fax/email, contributions, data accessibility | **New dedicated Ecology Letters template made; author-specific fields still missing** |
