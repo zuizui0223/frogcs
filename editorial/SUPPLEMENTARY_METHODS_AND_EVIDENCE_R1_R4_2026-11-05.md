@@ -918,6 +918,44 @@ No focal first-larval-census row had an original coded permanent-water-column va
 
 **Relevance to D without overreach.** Adult calling can help identify sites with breeding-associated behaviour, but calling is not the occurrence of mating, laying eggs, hatching tadpoles or recruitment. A larval record following an adult call is a detection of an aquatic stage at a monitored location, not a verified birth event or offspring of the calling individual. A causal effect of later offspring predation on earlier adult calling is temporally impossible within the same breeding season; multi-year feedback would require longitudinal individual/cohort tracking. A general developmental-stage hypothesis is ecologically plausible and supported by separate manipulations in the amphibian/odonate literature. The independent B datasets do not identify the predation functions of the simulated food web, establish whether these species share the same physical pond for the required durations, or calibrate a larval-to-call link. D instead applies explicit **within-model interventions**, and C remains an observational association. This division prevents implying that the 4,248 NAAMP sites provide direct stage-structured predation measurement.
 
+### S22a. Earlier choruses and subsequent counts of tadpoles and metamorphs
+
+This exploratory comparison used existing field surveys independent of NAAMP. We matched the same species, original site and calendar year, choosing the first eligible stage census strictly after an acoustic survey. Counts describe animals recorded per survey. The data do not track individual survival.
+
+**Flanders.** We joined the [INBO calling-male surveys](https://doi.org/10.15468/d4bu8j) to the [larva and metamorph surveys](https://doi.org/10.15468/swgure). Only *Hyla arborea* had more than two eligible pond-years for a stage. We averaged daily calling-male counts before the census, retaining explicit zeros. Multiple records on one date were summarized by their median. We excluded surveys with an explicitly incompatible sampling method and examined documented terrestrial metamorph surveys separately. Counts had no common effort denominator. The median interval from the last acoustic survey was 29 days for tadpoles and 40 days for metamorphs. Rank correlations use 95% intervals from 1,500 pond-level bootstrap samples.
+
+| Comparison of earlier male counts with later counts | Tadpoles | Metamorphs |
+|---|---|---|
+| All matched pond-years | 241 in 93 ponds, ρ 0.38 [0.25, 0.49] | 48 in 35 ponds, ρ 0.21 [−0.06, 0.46] |
+| Across pond means, each pond weighted equally | ρ 0.49 [0.32, 0.65] | ρ 0.11 [−0.19, 0.42] |
+| Within repeatedly surveyed ponds, adjusted rank slope | 226 pond-years in 78 ponds, 0.10 [−0.20, 0.40] | 26 pond-years in 13 ponds, 0.01 [−0.09, 0.12] |
+
+The within-pond model used fractional ranks, pond and year fixed effects, census day (linear and quadratic), interval since the last acoustic survey and number of earlier survey days, with pond-clustered intervals. These slopes describe interannual changes within ponds. For an alternative exposure, the fraction of at least two prior survey days with calling correlated with larval counts (ρ 0.42 [0.31, 0.51]). For metamorphs this correlation was 0.41 [0.10, 0.64] in 42 pond-years, but the adjusted slope across ponds included zero (0.16 [−0.10, 0.41]). In the 18 surveys with documented terrestrial counts, the male-count correlation with metamorphs was 0.31 [−0.21, 0.81].
+
+**Louisiana.** In the [USGS surveys](https://doi.org/10.5066/P9T71JCO), each eligible site-year had one prior acoustic survey. Strong calling was an inside-site index of 2 or 3. Table entries give subsequent tadpole detections divided by surveyed site-years for each species. A dash indicates no earlier records in that exposure group. All 13 species share the same 230 site-years at 64 sites.
+
+| Species | Strong | Weak or silent |
+|---|---:|---:|
+| *Acris blanchardi* | 0/7 | 0/223 |
+| *Anaxyrus fowleri* | — | 0/230 |
+| *Gastrophryne carolinensis* | — | 0/230 |
+| *Hyla chrysoscelis* | 0/2 | 2/228 |
+| *Hyla cinerea* | 0/1 | 0/229 |
+| *Hyla squirella* | — | 0/230 |
+| *Incilius nebulifer* | — | 0/230 |
+| *Lithobates catesbeianus* | — | 2/230 |
+| *Lithobates clamitans* | — | 11/230 |
+| *Lithobates grylio* | — | 0/230 |
+| *Lithobates sphenocephalus* | 0/1 | 9/229 |
+| *Pseudacris crucifer* | 5/29 | 5/201 |
+| *Pseudacris fouquettei* | 2/17 | 11/213 |
+
+Only *Pseudacris crucifer* and *P. fouquettei* contributed detections after strong calling. The overall adjusted difference in detection probability was +9.0 percentage points [0.4, 17.6], accounting for species, year, survey day (linear and quadratic) and interval since calling, with site-clustered intervals.
+
+**Predator overlap and vegetation.** At 84 Belgian pond-years with newt larvae confirmed during the tadpole census, the male-count correlation remained positive (ρ 0.31 [0.11, 0.49]). The adjusted change in rank slope with recorded *Triturus cristatus* larvae was uncertain (+0.19 [−0.66, 1.04], 29 positive and nine explicit negative surveys with a single frog count). In Louisiana, the strong-calling detection difference changed by −3.8 percentage points [−10.4, 2.8] per ten-point increase in surrounding flooded vegetation (EarthEnv class 8 within 3 km). Seven Louisiana follow-up site-years included *Ambystoma opacum* larvae. Neither dataset supplied corresponding odonate larval censuses. These comparisons establish opportunities for overlap and leave the modelled vegetation reversal open to field testing.
+
+Aggregate result tables are [inbo adjusted](../research/results/call_to_offspring_20261111/inbo_adjusted.csv), [inbo newt interaction](../research/results/call_to_offspring_20261111/inbo_newt_interaction.csv), [inbo summary](../research/results/call_to_offspring_20261111/inbo_summary.csv), [usgs species summary](../research/results/call_to_offspring_20261111/usgs_species_summary.csv), [usgs summary](../research/results/call_to_offspring_20261111/usgs_summary.csv).
+
 ## Supplementary figure inventory and reproducibility
 
 **The original four main figure candidates have been assembled** from nine previously source-audited panels in [successful Actions #42169682447](https://github.com/zuizui0223/frogcs/actions/runs/42169682447). The [assembly record](FOUR_FIGURE_SOURCE_ASSEMBLY_RECORD_2026-11-06.md) identifies their original sources and composite SHA256 receipt. They remain candidates for author and journal production review, not approved print proofs. The C→D editorial candidate retains three main figures: the **original source-audited C-only continental acoustic Figure 1**, the original vegetation-mechanism Figure 2, and a source-backed G8/G11–P1 Figure 3. The independent INBO/USGS/Mohonk B comparisons remain in SI S20/S22 without a new main panel. The previously assembled original R4 main Figure 4 is retained byte-for-byte as **Supplementary Figure S5**. G6, G7, P1 decomposition and G8 rate sensitivity remain Supplemental Figures S1–S4; actual new main composite art has not yet passed production QA.

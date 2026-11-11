@@ -124,6 +124,9 @@ def build():
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
     datasets = {
+        "call_to_offspring_20261111": [
+            (name, f"tables/{name}") for name in ('inbo_adjusted.csv', 'inbo_newt_interaction.csv', 'inbo_summary.csv', 'usgs_species_summary.csv', 'usgs_summary.csv')
+        ],
         "naamp_species_sensitivity_20261109": [
             ("figS6_species.png", "figures/Supplementary_Figure_S6.png"),
             *[(name, f"tables/{name}") for name in ("interaction_results.csv", "species_support.csv", "detected_route_sensitivity.csv")],
@@ -188,8 +191,8 @@ def build():
     (OUT/"README_NOT_SUBMITTED.txt").write_text(
         "C = continental adult frog calling associations (not tadpole birth).\n"
         "D = hypothetical food-web mechanisms and within-model population effects.\n"
-        "Independent INBO and USGS call/larva associations are SI-only premises "
-        "(S20, S22); temporal transfer is not robust.\n"
+        "Independent follow-up count and detection results appear in the main text "
+        "with species and site comparisons in S22a.\n"
         "Calling is NOT hatching, counted new tadpoles, recruitment or larval survival. "
         "No observed same-year trophic causality claimed.\n"
         "Mohonk 29/30 and 29/59 and INBO phi=0.262 not original-source verified. "
@@ -208,7 +211,7 @@ def build():
         "primary_literature_audit_included":True,
         "original_main_figure_1_and_2_bytes_unchanged":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
-        "stage_B_sources_in_SI_only":True,
+        "field_followup_reported_in_main_and_S22a":True,
         "tadpole_birth_directly_observed_from_calls":False,
         "inbo_phi_0262_source_verified":False,
         "mohonk_29_30_29_59_source_verified":False,
@@ -223,7 +226,7 @@ def build():
         json.dumps(receipt,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("CD_AUTHOR_REVIEW_PACKAGE_PASS",json.dumps({
         "main_words":mw,"abstract_words":aw,"main_figures":3,
-        "SI_sections":22,"no_new_science":True,"not_submitted":True
+        "SI_sections":22,"original_simulations_rerun":0,"not_submitted":True
     }))
 
 if __name__ == "__main__":

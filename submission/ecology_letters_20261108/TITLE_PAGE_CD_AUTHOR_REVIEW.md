@@ -12,9 +12,9 @@
 
 **Corresponding author name, postal address, telephone, fax if applicable and email:** [VERIFY]
 
-**Abstract:** 144 words
+**Abstract:** 150 words
 
-**Scientific body:** 3,938 words (Introduction–Conclusion, headings included; final source QA to confirm)
+**Scientific body:** 3,989 words (Introduction–Conclusion, headings included; final source QA to confirm)
 
 **Main figures:** 3 (original continental acoustic Figure 1; original vegetation mechanisms Figure 2; source-backed rate/development Figure 3)
 
