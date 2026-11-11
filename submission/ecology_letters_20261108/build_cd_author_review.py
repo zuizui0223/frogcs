@@ -34,8 +34,8 @@ def verify() -> tuple[str, str, str, int, int]:
     abs_text = main.split("## Abstract\n\n",1)[1].split("\n\n**Keywords:",1)[0]
     body = main.split("## Introduction\n",1)[1].split("## Figure legends",1)[0]
     aw, mw = len(abs_text.split()), len(body.split())
-    assert aw == 147 and 3000 <= mw <= 5000, (aw,mw)
-    assert "when tadpoles overlapped longer with salamander larvae in the tested calendars" in abs_text
+    assert 0 < aw <= 150 and 3000 <= mw <= 5000, (aw,mw)
+    assert "Longer overlap with salamander larvae" in abs_text
     # All submission-section headings must describe the finding, not internal run IDs.
     assert main.count("### Frog-calling associations vary with caudates and vegetation") == 1
     assert main.count("### Salamander development reverses the demographic effect of vegetation") == 1
@@ -49,7 +49,7 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "245 site-years; Brier gain +0.0155" in main
     assert "5.23% with calls versus 0.97% without" in main
     assert "60% to 74% at one fixed setting" in main
-    assert "refuge benefits increased while odonate-support costs diminished" in main
+    assert "shelter contributed a larger benefit and feeding support imposed a smaller cost" in main
     assert "647 canonical structures versus 712" not in main.split("## Introduction",1)[0]
     assert "Supplementary Methods S20 and S22" in main and "S20, S22" in main
     assert "S21" in main and "Supplementary Methods S21." in si
@@ -88,8 +88,8 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "Wilbur & Fauth, 1990" in main
     assert "Klecka & Boukal (2014)" in main
     assert "Baker et al., 2025" in main
-    assert "3,890" in TITLE.read_text(encoding="utf-8")
-    assert "147 words" in TITLE.read_text(encoding="utf-8")
+    assert f"{mw:,} words" in TITLE.read_text(encoding="utf-8")
+    assert f"{aw} words" in TITLE.read_text(encoding="utf-8")
     assert "**References:** 36" in TITLE.read_text(encoding="utf-8")
     return main, si, refs, aw, mw
 
