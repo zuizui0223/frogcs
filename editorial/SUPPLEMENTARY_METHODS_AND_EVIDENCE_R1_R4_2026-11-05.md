@@ -96,6 +96,17 @@ Each species was fitted separately with scikit-learn 1.6.1 (Pedregosa et al., 20
 
 Final occurrence models used all eligible records and were projected to 11,947 NAAMP locations. Each decision score was converted to its empirical percentile among scores at the same 4,000 uniform-background locations; it is relative suitability, not calibrated occupancy or abundance. The six odonate and five focal pond-breeding caudate percentiles were averaged separately to define O and S, before restricting to the 4,248-site repeated-survey cohort. Projection outside any training-predictor range was flagged rather than automatically excluded. These species-SDM folds differ from the subsequent 56-block acoustic validation in S3. Exact source versions and software are in the [frozen source receipt](../research/results/interaction_species_sdm_20261026/ssdm/observed_results.json).
 
+**Validation of the two habitat indices.** For each focal species we averaged AUC over evaluable held-out folds, then summarized these species means by their median and range. The fold totals show how often the test set supported AUC estimation. The task is to distinguish recorded occurrence environments from the chosen background. GBIF records were not restricted to the aquatic larval stage. A high score in this test cannot establish seasonal larval occupancy at a listening site. [Species-specific cells, folds and original AUC values](../research/results/interaction_species_sdm_20261026/models.json).
+
+| Guild (species) | Background | 2° blocks | 4° blocks |
+|---|---|---|---|
+| Odonates (6) | uniform | 0.84 (0.73–0.89; 30/30 folds) | 0.83 (0.72–0.89; 29/30 folds) |
+| Odonates (6) | target group | 0.74 (0.56–0.95; 30/30 folds) | 0.72 (0.55–0.96; 29/30 folds) |
+| Pond-breeding caudates (5) | uniform | 0.88 (0.57–0.94; 24/25 folds) | 0.85 (0.51–0.95; 23/25 folds) |
+| Pond-breeding caudates (5) | target group | 0.84 (0.67–0.96; 24/25 folds) | 0.80 (0.70–0.94; 23/25 folds) |
+
+Across the 4,248 listening sites, the two background choices produced rank correlations of 0.63 for odonates and 0.74 for pond-breeding caudates (S18). Shared signs across maps indicate consistency of a regional association. Both maps include climate, flooded vegetation and open water as predictors, so the vegetation interaction can also reflect shared environmental structure. The choruses and independent larval co-detections in S22a do not calibrate either predator index against local larval densities. [Cross-background site ranks](../research/results/g16_sdm_background_reversal_20261108/audited/G16_SDM_predictor_rank_concordance.csv).
+
 The original response recomputation from completed site×run records passed the following fixed identities:
 
 | Original visit statistic | Audited count |
