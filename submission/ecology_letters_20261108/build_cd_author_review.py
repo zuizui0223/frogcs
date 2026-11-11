@@ -75,12 +75,12 @@ def verify() -> tuple[str, str, str, int, int]:
         assert author in refs and doi in refs, (author,doi)
     ref_block = refs.split("Alford, R. A.", 1)[1].split(
         "## G7 natural-history accounts", 1)[0]
-    # Count the 35 actual bibliography paragraphs, not journal footnotes.
+    # Count the 38 actual bibliography paragraphs, not journal footnotes.
     all_refs = "Alford, R. A." + ref_block
     entries = [p for p in all_refs.strip().split("\n\n") if p.strip()]
-    assert len(entries) == 35, (len(entries), "Reference registry mismatch")
+    assert len(entries) == 38, (len(entries), "Reference registry mismatch")
     bib_keys = re.findall(r"@\w+\{([^,]+),", BIB.read_text(encoding="utf-8"))
-    assert len(bib_keys) == len(set(bib_keys)) == 35
+    assert len(bib_keys) == len(set(bib_keys)) == 38
     assert NOVELTY.is_file()
     assert (PREP / "CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md").is_file()
     assert (PREP / "DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md").is_file()
@@ -90,7 +90,7 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "Baker et al., 2025" in main
     assert f"{mw:,} words" in TITLE.read_text(encoding="utf-8")
     assert f"{aw} words" in TITLE.read_text(encoding="utf-8")
-    assert "**References:** 36" in TITLE.read_text(encoding="utf-8")
+    assert "**References:** 39" in TITLE.read_text(encoding="utf-8")
     return main, si, refs, aw, mw
 
 def build():
@@ -103,7 +103,7 @@ def build():
         re.sub(r"(?m)^\*\*C \(observation\) → D \(mechanism\) author-review candidate[^\n]*\n+",
                "",main),refs)
     final_reference_text = review_main.split("\n## References\n\n",1)[1]
-    assert len([r for r in final_reference_text.strip().split("\n\n") if r.strip()]) == 36
+    assert len([r for r in final_reference_text.strip().split("\n\n") if r.strip()]) == 39
     supplementary_sources = [
         "g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png",
         "g7_trait_composition_20261106/G7_trait_composition_bridge.png",
@@ -229,8 +229,8 @@ def build():
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
         "supplementary_figures":len(list(figs.glob("Supplementary_Figure_S*.png"))),"main_figures":3,"SI_sections":22,
-        "literature_registry_entries":35,
-        "main_manuscript_references_including_USGS_builder":36,
+        "literature_registry_entries":38,
+        "main_manuscript_references_including_USGS_builder":39,
         "research_audit_only_reference_entries":0,
         "primary_literature_audit_included":True,
         "primary_figure_1_and_original_figure_2_match_source":True,

@@ -1,6 +1,6 @@
 # Primary references — R1–R4, P1 and G4–G7
 
-**Original 19 journal/data sources were registered before this revision. A targeted 9 November 2026 review of historical and 2025–2026 aquatic predator, vegetation and phenology literature added 16 source-checked records, yielding 35 main reference entries; Glorioso & Waddle (2025) USGS data release is also appended automatically by the Word builder.** The extended literature novelty claim/evidence matrix is in [the 2026-11-09 independent audit](EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md). Individual papers support distinct predator, refuge, foraging and timing elements; none independently calibrates the composite NAAMP model. G7 natural-history accounts and dataset attributions remain separately logged. Journal-specific final style and author approval are outstanding.
+**Original 19 journal/data sources were registered before this revision. A targeted 9 November 2026 review of historical and 2025–2026 aquatic predator, vegetation and phenology literature added 16 source-checked records, yielding 35 entries, supplemented on 11 November by three primary studies on calling phenology, recruitment and trophic reversal; Glorioso & Waddle (2025) USGS data release is also appended automatically by the Word builder.** The extended literature novelty claim/evidence matrix is in [the 2026-11-09 independent audit](EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md). Individual papers support distinct predator, refuge, foraging and timing elements; none independently calibrates the composite NAAMP model. G7 natural-history accounts and dataset attributions remain separately logged. Journal-specific final style and author approval are outstanding.
 
 Alford, R. A., & Wilbur, H. M. (1985). Priority Effects in Experimental Pond Communities: Competition between Bufo and Rana. *Ecology, 66(4), 1097–1105*. [10.2307/1939161](https://doi.org/10.2307/1939161).
 
@@ -8,9 +8,15 @@ Anderson, T. L., & Semlitsch, R. D. (2016). Top predators and habitat complexity
 
 Baker, R. S., Mott, C. L., & Whiteman, H. H. (2025). Predation alters community structure through multiple trophic cascades. *Journal of Animal Ecology, 94(9), 1680–1693*. [10.1111/1365-2656.70083](https://doi.org/10.1111/1365-2656.70083).
 
+Beranek, C. T., Clulow, J., & Mahony, M. (2023). Life stage dependent predator–prey reversal between a frog (Litoria aurea) and a dragonfly (Anax papuensis). *Ecology, 104*, e4108. [10.1002/ecy.4108](https://doi.org/10.1002/ecy.4108).
+
+Berven, K. A. (1990). Factors affecting population fluctuations in larval and adult stages of the wood frog (Rana sylvatica). *Ecology, 71*, 1599–1608. [10.2307/1938295](https://doi.org/10.2307/1938295).
+
 Blanchet, F. G., Cazelles, K., & Gravel, D. (2020). Co-occurrence is not evidence of ecological interactions. *Ecology Letters, 23(7), 1050–1063*. [10.1111/ele.13525](https://doi.org/10.1111/ele.13525).
 
 Caldwell, J. P., Thorp, J. H., & Jervey, T. O. (1980). Predator-prey relationships among larval dragonflies, salamanders, and frogs. *Oecologia, 46(3), 285–289*. [10.1007/BF00346253](https://doi.org/10.1007/BF00346253).
+
+Carroll, C. M., Saenz, D., & Rudolf, V. H. W. (2023). Tracking phenological distributions and interaction potential across life stages. *Oikos, 2023*, e09773. [10.1111/oik.09773](https://doi.org/10.1111/oik.09773).
 
 Davenport, J. M., & Chalcraft, D. R. (2013). Nonconsumptive effects in a multiple predator system reduce the foraging efficiency of a keystone predator. *Ecology and Evolution, 3(9), 3063–3072*. [10.1002/ece3.691](https://doi.org/10.1002/ece3.691).
 
