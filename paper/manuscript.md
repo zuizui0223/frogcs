@@ -307,7 +307,7 @@ Jentsch, A., & White, P. (2019). A theory of pulse dynamics and disturbance in e
 
 Kunze, C., Petchey, O. L., Ghosh, S., & Hillebrand, H. (2026). Species interactions determine the importance of response diversity for community stability to pulse disturbances. *Ecology Letters*, 29, e70299. https://doi.org/10.1111/ele.70299
 
-Kusano, T., Maruyama, K., & Kanenko, S. (1999). Breeding site fidelity in the Japanese toad, *Bufo japonicus formosus*. *Herpetological Journal*, 9, 9–13.
+Kusano, T., Maruyama, K., & Kaneko, S. (1999). Breeding site fidelity in the Japanese toad, *Bufo japonicus formosus*. *Herpetological Journal*, 9, 9–13.
 
 Liebhold, A., Koenig, W. D., & Bjørnstad, O. N. (2004). Spatial synchrony in population dynamics. *Annual Review of Ecology, Evolution, and Systematics*, 35, 467–490. https://doi.org/10.1146/annurev.ecolsys.34.011802.132516
 
