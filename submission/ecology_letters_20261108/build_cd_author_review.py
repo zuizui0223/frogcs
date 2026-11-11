@@ -45,9 +45,9 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "## Evidence, reproducibility and status" not in main
     assert "author-review candidate" not in main
     assert "### B. Calls and larval records" not in main
-    assert "tadpole hatching" in main and "not" in main.lower()
-    assert "245 site-years; Brier gain +0.0155" in main
-    assert "5.23% with calls versus 0.97% without" in main
+    assert "Local larval presence, density and seasonal overlap remain unknown" in main
+    assert "S22a. Earlier choruses and subsequent counts" in si
+    assert "Belgian tree frog counts support that interpretation across ponds" in main
     assert "60% to 74% at one fixed setting" in main
     assert "shelter contributed a larger benefit and feeding support imposed a smaller cost" in main
     assert "647 canonical structures versus 712" not in main.split("## Introduction",1)[0]
