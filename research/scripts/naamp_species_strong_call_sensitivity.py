@@ -23,7 +23,7 @@ def read_source(directory, name, columns):
     return pd.read_csv(path, usecols=columns, dtype=str)
 
 
-def build_outcomes(directory, sites):
+def build_outcomes(directory, sites, all_species_ranges=False):
     visits = pd.read_csv(ROOT/'research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz')
     visits = visits.loc[visits.site.isin(sites.site) & visits.timeout.eq(0)].reset_index(drop=True)
     stops = read_source(directory,'Stops.csv',['RunID','StopNumber','SiteID'])
@@ -67,7 +67,7 @@ def build_outcomes(directory, sites):
     for col in ['sites','routes','vegetated_sites']:
         summary[col]=[len(set(sites.loc[(counts['species|'+s].to_numpy()>0) & ((sites.flooded_3000m_mean>0) if col=='vegetated_sites' else True),'route' if col=='routes' else 'site'])) for s in labels]
     site_routes = visits.site.map(sites.set_index('site').route)
-    ranges = {label: set(site_routes[any_call[:,labels.get_loc(label)]]) for label in species[:10]}
+    ranges = {label: set(site_routes[any_call[:,labels.get_loc(label)]]) for label in (species if all_species_ranges else species[:10])}
     return frequency,counts,summary,ranges
 
 
