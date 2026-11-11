@@ -14,7 +14,7 @@
 
 **Abstract:** 150 words
 
-**Scientific body:** 3,989 words (Introduction–Conclusion, headings included; final source QA to confirm)
+**Scientific body:** 4,035 words (Introduction–Conclusion, headings included; final source QA to confirm)
 
 **Main figures:** 3 (original continental acoustic Figure 1; original vegetation mechanisms Figure 2; source-backed rate/development Figure 3)
 
