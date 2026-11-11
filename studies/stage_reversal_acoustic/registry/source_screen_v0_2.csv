@@ -1,0 +1,10 @@
+pair_id,system,predator_species,predator_stage,prey_species,prey_stage,evidence_class,doi,acoustic_eligible,notes
+LA_ANAX,anuran_odonate,Anax papuensis,larva,Litoria aurea,larva,DIRECT_PAIR_DIRECTION,10.1002/ecy.4108,YES,"Earlier frog-tadpole predation evidence cited by Beranek 2023; edge observation not in 2023 XLSX"
+LA_ANAX,anuran_odonate,Litoria aurea,juvenile,Anax papuensis,emerging,DIRECT_PAIR_DIRECTION,10.1002/ecy.4108,YES,"Juvenile frog feeding observations; original dataset monitors emerging dragonflies; vocal response not measured"
+BLEAK_ASP,cyprinid_fish,Leuciscus aspius,adult,Alburnus alburnus,adult,PRIMARY_SOURCE_PAIR_DIRECTION,10.1038/s41598-017-07339-w,NO,"Bleak are prey for asp"
+BLEAK_ASP,cyprinid_fish,Alburnus alburnus,adult,Leuciscus aspius,egg,PRIMARY_SOURCE_PAIR_DIRECTION,10.1038/s41598-017-07339-w,NO,"Bleak consume asp eggs; fish control for role reversal without frog acoustic channel"
+PIKE_STICKLEBACK,fish,Gasterosteus aculeatus,adult,Esox lucius,larva,DIRECT_EXPERIMENTAL_DIRECTION,10.1111/1365-2656.12981,NO,"Direct young-pike predation tested; feeding experiment 97% for pike under 35 mm vs 5% for >35 mm"
+PIKE_STICKLEBACK,fish,Esox lucius,juvenile,Gasterosteus aculeatus,adult,GAPE_MODEL_NOT_DIRECT_OBSERVATION,10.1111/1365-2656.12981,NO,"Gape model suggests juvenile pike can consume smallest adult sticklebacks after pike reach 78 mm; all classes potentially by 175 mm"
+XENOPUS_GAMBUSIA,anuran_fish,Gambusia holbrooki,adult,Xenopus laevis,larva,CONTEXT_DEPENDENT_CANDIDATE,10.3897/neobiota.102.145644,NO,"2025 manipulated predation across frog stages; species-pair reciprocal context-dependent"
+XENOPUS_GAMBUSIA,anuran_fish,Xenopus laevis,adult,Gambusia holbrooki,juvenile,CONTEXT_DEPENDENT_CANDIDATE,10.3897/neobiota.102.145644,NO,"Under low-light experimental context; not universal"
+HYNOBIUS_RANA,non_reciprocal_control,Hynobius retardatus,larva,Rana pirica,larva,NON_RECIPROCAL_NEGATIVE_CONTROL,10.1002/ece3.8894,NO,"Giant salamander larvae prey on tadpoles; does not show Rana preying on Hynobius in opposite stage"

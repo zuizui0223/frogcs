@@ -1,0 +1,84 @@
+{
+  "programme": "ONTO-TIME_G2_PREDATOR_STAGE_CUE_TRANSFER",
+  "status": "METHOD_FROZEN_BEFORE_READING_DIRECT_ORIGINAL_RESPONSE_NUMBERS",
+  "frozen_date": "2026-10-25",
+  "independent_source": {
+    "pmcid": "PMC10965031",
+    "version": 1,
+    "doi": "10.1093/beheco/arae014",
+    "source_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10965031.1/arae014_suppl_supplementary_data.xlsx",
+    "source_pmc_metadata": "https://pmc-oa-opendata.s3.amazonaws.com/metadata/PMC10965031.1.json",
+    "sha256": "a200b66072c5de204efe91536066d66c9cf8b513c5075c321fc44391544d9fa5",
+    "sheets": {
+      "Beetle": 308,
+      "Salamader": 280
+    },
+    "source_rows_total": 588,
+    "original_paper_reported_tested": {
+      "beetle": 360,
+      "salamander": 357
+    },
+    "source_to_paper_row_gap_status": "UNRESOLVED_SELECTION_AND_DENOMINATOR_ISSUE"
+  },
+  "preregistered_analyses": {
+    "y": "recorded individual Change (verify sign and exact agreement with Post-Pre first; negative signifies fewer line crosses after cue)",
+    "factors": "Conditioning stage (larval/adult/water) × test cue (larval/adult), separately by predator species",
+    "experimental_unit": "18 independently conditioned Pail IDs per predator experiment; individual test responses are nested in Pail, Clutch mapping audited but not counted as extra units.",
+    "contrast1": "For each clutch, pooled mean cross-stage response (larval-trained adult-cue and adult-trained larval-cue) minus same-test-cue sham-trained control, equal weight across two directions",
+    "contrast2": "For each clutch, same-stage response (larval-trained larval-cue and adult-trained adult-cue) minus same-test-cue sham-trained controls; compare within-clutch to contrast1",
+    "fallback_if_missing_clutch_crossing": "source-grain issue; use stratum aggregation with no inferential p value and explicitly report incomplete crossover",
+    "uncertainty": "Stratified conditioning-Pail bootstrap (6 pails per train treatment) over equal-pail group means, 10,000 deterministic draws seeded 20261025, 2.5%/97.5% percentile interval. NOT an exact randomized test.",
+    "sensitivity": [
+      "leave-one-pail-out",
+      "source metadata 21 Beetle pail×clutch cells vs 18 actual conditioning pails",
+      "leave-one-clutch-out signs and intervals",
+      "same-vs-cross within-clutch contrast",
+      "all actual measurement rows vs paper-protocol n discrepancy",
+      "untrained sham cue response"
+    ],
+    "multiplicity": "Two systems and three estimands are exploratory, not fully confirmatory; no favorable outcome fishing"
+  },
+  "scientific_hypotheses": [
+    "Prediction: beetle early/late odor cross-stage trained-vs-sham risk response is negative in both reciprocal directions.",
+    "Prediction: salamander cross-stage trained-vs-sham transfer is weaker or absent, while within-stage conditioning yields negative response.",
+    "Alternative: any differences reflect odor concentration/prey experience or cohort selection; not causal phylogenetic generality."
+  ],
+  "claim_ceilings": [
+    "chemical cues not frog advertisement/acoustic warning",
+    "2 independently conducted predator-condition experiments, not 588 independent studies",
+    "predator identity reset does not mean predator-prey attack direction switches",
+    "source/publication counts must not be silently reconciled"
+  ],
+  "next_macro_bridge": "stage-dependent information-transfer indicator under within-study physically distinct predator groups, not pooled comparable attack-rate",
+  "schema_audit_amendment_before_outcome": {
+    "reason": "Original published experiment randomization at conditioning Pail; source shows 18 distinct Pail IDs for each experiment. Beetle sheet contains 21 distinct Pail×Clutch cells across those 18 pails; Clutch is NOT a valid unique independent conditioning-unit identifier.",
+    "counts": {
+      "Beetle": {
+        "rows": 308,
+        "distinctPails": 18,
+        "distinctClutches": 6,
+        "pailClutchCells": 21
+      },
+      "Salamader": {
+        "rows": 280,
+        "distinctPails": 18,
+        "distinctClutches": 6,
+        "pailClutchCells": 18
+      }
+    },
+    "analysis_unit_repaired": "Pail, not Pail×Clutch; means per Pail×test cue, equal Pail weighting and condition-label clustering. Clutch remains an audit/sensitivity variable, not independent replicate.",
+    "bootstrap": "resample complete pails within each conditioning treatment at original n=6 per treatment, 10k deterministic bootstrap draws, readout percentiles and leave-one-pail-out influence; no individual iid standard error.",
+    "model": "within-sheet independent conditioning pails; no cross-paper/multi-clade pseudoreplication; bootstrapped ratio of frozen factor contrasts"
+  },
+  "source_only_second_amendment": {
+    "date": "2026-10-25",
+    "discovery": "Published original Salamader sheet has 17 complete Pail×test-cue pairs among 18 conditioning pails. Exactly one sham-conditioned Pail has larval test-cue records but no adult test-cue observations. Beetle 18/18 conditioning pails complete. Verified BEFORE opening any source response effect values.",
+    "analysis_repair": "Primary uses all available pail×cue cells with explicit changing denominators: sham-adult 5 pails, sham-larval 6, all other treatment-cue group cells 6. Stratified pail bootstrap samples intact pail records (including missing cue), skipping zero-eligible-cue draws rather than inventing missing response.",
+    "prespecified_sensitivity": "Repeat complete-pail-only analysis where sham larval count is reduced from 6 to 5; report signed difference from primary. Do not assume unobserved sham adult outcome was zero.",
+    "limits": [
+      "No valid individual-level independent replicates",
+      "Some original tests not in public workbook; no assertion their missingness is random",
+      "No causal comparison of species taxon mechanism independent of predator physiology/odor concentration"
+    ]
+  }
+}

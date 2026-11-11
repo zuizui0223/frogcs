@@ -1,0 +1,39 @@
+name: ONTO-TIME original Preston 2012 stage-specific trophic evidence audit
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/audit_preston_original_stage_edges.py'
+      - 'studies/stage_reversal_acoustic/macro/results/PRESTON2012_ORIGINAL_STAGE_RECIPROCITY_EVIDENCE_TIER_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_preston_original_stage.py'
+      - '.github/workflows/onto_time_preston_original_stage.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/audit_preston_original_stage_edges.py'
+      - 'studies/stage_reversal_acoustic/macro/results/PRESTON2012_ORIGINAL_STAGE_RECIPROCITY_EVIDENCE_TIER_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_preston_original_stage.py'
+      - '.github/workflows/onto_time_preston_original_stage.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-stage-foodweb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source-specific evidence-tier classifier
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -p "test_preston_original_stage.py" -v
+      - name: Independently retrieve source pinned GloBI foodweb and replay 1905 links
+        run: |
+          python studies/stage_reversal_acoustic/macro/audit_preston_original_stage_edges.py \
+            --out "${{ runner.temp }}/onto_time_preston_2012_stage_evidence_replay.json"
+      - name: Preserve inferred vs observed classification only
+        uses: actions/upload-artifact@v4
+        with:
+          name: onto-time-original-foodweb-stage-evidence-replay
+          path: ${{ runner.temp }}/onto_time_preston_2012_stage_evidence_replay.json
+          if-no-files-found: error

@@ -1,0 +1,65 @@
+{
+  "title": "ONTO-TIME Original Direct Risk & Cue Stage experiments",
+  "version": "0.1",
+  "frozen_before_new_raw_outcomes": true,
+  "date": "2026-10-25",
+  "status": "PROSPECTIVE_SOURCE_SCHEMA_GATE_INDEPENDENT_FROM_AU_MACRO_PANELS",
+  "scientific_targets": [
+    {
+      "programme": "Urushihara_Takatsu_2026",
+      "doi": "10.5061/dryad.31zcrjdzw",
+      "file_ids": [
+        4721257,
+        4721258,
+        4721259,
+        4721260
+      ],
+      "target": "Separate direct lethal size predation window from separately randomized early and late nonlethal exposure effects on tadpole period and risk behavior",
+      "independent_unit": "individual in predation trial or 2-stage tank ID in behavior and life history",
+      "risk_note": "Cannot pool individual ID with tank ID or invent repeated measures"
+    },
+    {
+      "programme": "Thapa_2024",
+      "doi": "10.5061/dryad.prr4xgxtr",
+      "file_ids": [
+        2986323
+      ],
+      "target": "Predator-stage cue recognition transfer across larval/adult beetle versus salamander, with clutch and conditioning pail clustering",
+      "independent_unit": "conditioning pail within clutch, individual tadpole test nested",
+      "risk_note": "36? 18 conditioning pails per experiment, 6 clutches; do not count ~360 tadpoles as independent conditioning units"
+    },
+    {
+      "programme": "Baker_Whiteman_Mott_2025",
+      "doi": "10.5061/dryad.6q573n68k",
+      "file_ids": [
+        4050103,
+        4050104
+      ],
+      "target": "Independent size-structure predator control on tadpole community fate across mesocosms and dates; not reverse predation",
+      "independent_unit": "mesocosm tank, six experimental blocks",
+      "risk_note": "Dependent repeated bouts and treatment replication"
+    }
+  ],
+  "source_download_paths": [
+    "https://datadryad.org/downloads/file_stream/{file_id}",
+    "https://datadryad.org/api/v2/files/{file_id}/download"
+  ],
+  "run_method": "GitHub Actions ephemeral public source fetch then sanitized schema/sha receipt; never upload raw third party files",
+  "reporting": {
+    "source_schema": "file sha256, mime/bytes, columns, nrows/sheets, treatment labels only (no outcomes)",
+    "if_unavailable": "SOURCE_BLOCKED explicit; no synthetic substitutions, no values"
+  },
+  "model_gates": {
+    "size_predation": "prespecified binary survival ~ standardized tadpole SVL + backswimmer TL + trial; cluster by individual/assignment where possible; source context-dependent",
+    "late_nonconsumptive": "tank-level paired factorial stage1 x stage2 randomized treatments; outcomes larval.period plus step2 behavior separate; report group means, equal-tank estimator and factorial contrast if valid",
+    "cue_stage": "post minus pre movement in 3 conditioning × 2 test stage, grouped and cluster-aware by pail/clutch; compare beetle vs salamander only after source schema gate",
+    "salamander_size": "mesocosm-level treatment at repeated bouts; negative/nonreciprocal control only"
+  },
+  "no_claims": [
+    "pooled_meta_effect_of_independent_publications",
+    "acoustic_warning_from_chemical_odor",
+    "repeated_stage_roles_as_one_sample",
+    "species_pair_reversal_time_without_two_direct_edges"
+  ],
+  "original_source_publication_clarity": "The original papers already report directional effects; exploratory reanalysis is not independent discovery, even if raw-data numerical methods are new."
+}

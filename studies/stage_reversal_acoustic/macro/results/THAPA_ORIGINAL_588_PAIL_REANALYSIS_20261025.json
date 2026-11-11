@@ -1,0 +1,389 @@
+{
+  "status": "ORIGINAL_SOURCE_DIRECT_PAIL_LEVEL_RISK_CUE_REANALYSIS",
+  "original_publication": "10.1093/beheco/arae014",
+  "official_source_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10965031.1/arae014_suppl_supplementary_data.xlsx",
+  "origin_pmc": "PMC10965031.1",
+  "sha256": "a200b66072c5de204efe91536066d66c9cf8b513c5075c321fc44391544d9fa5",
+  "claim_boundary": "Measured chemical odor learning/generalization, NOT acoustic warning or direct reciprocal predation",
+  "bootstrap": {
+    "method": "equal conditioning Pail with 6 pails in each train arm",
+    "draws": 10000,
+    "seed": 20261025,
+    "uncertainty": "descriptive percentile bootstrap, not independent external replication"
+  },
+  "systems": {
+    "beetle": {
+      "n_source_rows": 308,
+      "n_pails": 18,
+      "n_clutches": 6,
+      "n_clutch_pail_cells": 21,
+      "n_multiclutch_pails": 3,
+      "n_pre_lt_6": 0,
+      "n_paper_reported_tested": 360,
+      "source_minus_published_reported_n": -52,
+      "group_cell_source_counts": {
+        "sham": {
+          "larval": 57,
+          "adult": 40
+        },
+        "larval": {
+          "larval": 42,
+          "adult": 64
+        },
+        "adult": {
+          "larval": 51,
+          "adult": 54
+        }
+      },
+      "n_pail_cue_pairs_complete": 18,
+      "missing_pail_test_cue_cells": {},
+      "available_pail_count_by_group": {
+        "sham": {
+          "larval": 6,
+          "adult": 6
+        },
+        "larval": {
+          "larval": 6,
+          "adult": 6
+        },
+        "adult": {
+          "larval": 6,
+          "adult": 6
+        }
+      },
+      "complete_pair_only_sensitivity": {
+        "cross_larval_training_to_adult_cue": -4.858532,
+        "cross_adult_training_to_larval_cue": -2.559773,
+        "same_larval_training_larval_cue": -2.88636,
+        "same_adult_training_adult_cue": -5.374272,
+        "cross_stage_mean": -3.709152,
+        "within_stage_mean": -4.130316,
+        "cross_minus_within_stage": 0.421164
+      },
+      "pail_level_mean_change": {
+        "sham": {
+          "larval": -4.611325,
+          "adult": -3.314153
+        },
+        "larval": {
+          "larval": -7.497685,
+          "adult": -8.172685
+        },
+        "adult": {
+          "larval": -7.171098,
+          "adult": -8.688426
+        }
+      },
+      "contrasts": {
+        "cross_larval_training_to_adult_cue": {
+          "estimate": -4.858532,
+          "bootstrap95": [
+            -8.878624,
+            -0.993724
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "cross_adult_training_to_larval_cue": {
+          "estimate": -2.559773,
+          "bootstrap95": [
+            -5.767903,
+            0.454528
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "same_larval_training_larval_cue": {
+          "estimate": -2.88636,
+          "bootstrap95": [
+            -7.073981,
+            0.686475
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "same_adult_training_adult_cue": {
+          "estimate": -5.374272,
+          "bootstrap95": [
+            -8.48255,
+            -2.712221
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "cross_stage_mean": {
+          "estimate": -3.709152,
+          "bootstrap95": [
+            -5.911867,
+            -1.493048
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "within_stage_mean": {
+          "estimate": -4.130316,
+          "bootstrap95": [
+            -6.323802,
+            -2.187052
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "cross_minus_within_stage": {
+          "estimate": 0.421164,
+          "bootstrap95": [
+            -2.261055,
+            3.520451
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        }
+      },
+      "leave_one_pail_out": {
+        "cross_stage_mean": {
+          "min_leave_one_pail": -4.176421,
+          "max_leave_one_pail": -3.216262,
+          "sign_flips": 0,
+          "n_leave_one_pail_analyses": 18
+        },
+        "within_stage_mean": {
+          "min_leave_one_pail": -4.493324,
+          "max_leave_one_pail": -3.330085,
+          "sign_flips": 0,
+          "n_leave_one_pail_analyses": 18
+        },
+        "cross_minus_within_stage": {
+          "min_leave_one_pail": -0.785225,
+          "max_leave_one_pail": 1.153664,
+          "sign_flips": 2,
+          "n_leave_one_pail_analyses": 18
+        }
+      },
+      "posthoc_six_clutch_paired_sensitivity": null,
+      "within_study_sampling_limitation": "Original source row count differs from publication reported tested n; selection/omission mechanism not identified."
+    },
+    "salamander": {
+      "n_source_rows": 280,
+      "n_pails": 18,
+      "n_clutches": 6,
+      "n_clutch_pail_cells": 18,
+      "n_multiclutch_pails": 0,
+      "n_pre_lt_6": 0,
+      "n_paper_reported_tested": 357,
+      "source_minus_published_reported_n": -77,
+      "group_cell_source_counts": {
+        "sham": {
+          "larval": 55,
+          "adult": 41
+        },
+        "larval": {
+          "larval": 42,
+          "adult": 52
+        },
+        "adult": {
+          "larval": 47,
+          "adult": 43
+        }
+      },
+      "n_pail_cue_pairs_complete": 17,
+      "missing_pail_test_cue_cells": {
+        "sham|adult": 1
+      },
+      "available_pail_count_by_group": {
+        "sham": {
+          "larval": 6,
+          "adult": 5
+        },
+        "larval": {
+          "larval": 6,
+          "adult": 6
+        },
+        "adult": {
+          "larval": 6,
+          "adult": 6
+        }
+      },
+      "complete_pair_only_sensitivity": {
+        "cross_larval_training_to_adult_cue": 0.463336,
+        "cross_adult_training_to_larval_cue": -0.974974,
+        "same_larval_training_larval_cue": -7.89369,
+        "same_adult_training_adult_cue": -6.285077,
+        "cross_stage_mean": -0.255819,
+        "within_stage_mean": -7.089384,
+        "cross_minus_within_stage": 6.833565
+      },
+      "pail_level_mean_change": {
+        "sham": {
+          "larval": -3.300397,
+          "adult": -2.640584
+        },
+        "larval": {
+          "larval": -9.104167,
+          "adult": -2.177249
+        },
+        "adult": {
+          "larval": -2.18545,
+          "adult": -8.925661
+        }
+      },
+      "contrasts": {
+        "cross_larval_training_to_adult_cue": {
+          "estimate": 0.463336,
+          "bootstrap95": [
+            -5.701983,
+            6.55981
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "cross_adult_training_to_larval_cue": {
+          "estimate": 1.114947,
+          "bootstrap95": [
+            -5.750655,
+            8.678013
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "same_larval_training_larval_cue": {
+          "estimate": -5.80377,
+          "bootstrap95": [
+            -13.671895,
+            2.350089
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "same_adult_training_adult_cue": {
+          "estimate": -6.285077,
+          "bootstrap95": [
+            -12.655554,
+            -0.329603
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "cross_stage_mean": {
+          "estimate": 0.789141,
+          "bootstrap95": [
+            -3.237276,
+            5.110927
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "within_stage_mean": {
+          "estimate": -6.044423,
+          "bootstrap95": [
+            -10.563835,
+            -1.425089
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        },
+        "cross_minus_within_stage": {
+          "estimate": 6.833565,
+          "bootstrap95": [
+            0.025747,
+            13.482403
+          ],
+          "n_training_pails": {
+            "sham": 6,
+            "larval": 6,
+            "adult": 6
+          }
+        }
+      },
+      "leave_one_pail_out": {
+        "cross_stage_mean": {
+          "min_leave_one_pail": -0.451626,
+          "max_leave_one_pail": 1.609879,
+          "sign_flips": 3,
+          "n_leave_one_pail_analyses": 18
+        },
+        "within_stage_mean": {
+          "min_leave_one_pail": -7.25484,
+          "max_leave_one_pail": -4.72984,
+          "sign_flips": 0,
+          "n_leave_one_pail_analyses": 18
+        },
+        "cross_minus_within_stage": {
+          "min_leave_one_pail": 4.771078,
+          "max_leave_one_pail": 8.754828,
+          "sign_flips": 0,
+          "n_leave_one_pail_analyses": 18
+        }
+      },
+      "posthoc_six_clutch_paired_sensitivity": {
+        "n_clutches": 6,
+        "mean_effect": 6.833565,
+        "sd_between_clutches": 11.796966,
+        "two_sided_t95_df5": [
+          -5.546592,
+          19.213722
+        ],
+        "clutch_bootstrap95": [
+          -1.003902,
+          15.985351
+        ],
+        "n_positive_clutch_effects": 5,
+        "min_effect": -8.642857,
+        "max_effect": 24.99504,
+        "method": "posthoc clutch-matched trained pails, nonsham cross-minus-within difference; no new universal sign claim"
+      },
+      "within_study_sampling_limitation": "Original source row count differs from publication reported tested n; selection/omission mechanism not identified."
+    }
+  },
+  "provenance": {
+    "as_of": "2026-10-25",
+    "github_branch": "study/stage-reversal-acoustic-macro-20261025",
+    "github_actions_url": "https://github.com/zuizui0223/frogcs/actions/runs/40166305852",
+    "source_pmc_article": "PMC10965031.1",
+    "experimental_unit": "18 conditioning pails per predator type, six treatment pails per arm",
+    "analysis_spec": "studies/stage_reversal_acoustic/macro/THAPA_ORIGINAL_CUE_TRANSFER_PRE_ANALYSIS_CONTRACT_V0_1.json",
+    "status": "EXPLORATORY_ORIGINAL_SOURCE_REANALYSIS_NOT_MACRO_CONFIRMATION",
+    "raw_records_redistributed": false,
+    "additional_hierarchy_check": "Six complete salamander clutches each with one sham, one larval-conditioned and one adult-conditioned pail (source label check); 5/6 clutch contrasts positive, 95% intervals cross 0.",
+    "original_reanalysis_actions": "https://github.com/zuizui0223/frogcs/actions/runs/40167386336",
+    "posthoc_disclosure": true
+  }
+}

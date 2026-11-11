@@ -1,0 +1,34 @@
+name: Independent stage-reversal acoustic screen QA
+on:
+  push:
+    branches:
+      - study/stage-reversal-acoustic-macro-20261025
+    paths:
+      - 'studies/stage_reversal_acoustic/**'
+      - '.github/workflows/stage_reversal_acoustic_qa.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/**'
+      - '.github/workflows/stage_reversal_acoustic_qa.yml'
+permissions:
+  contents: read
+jobs:
+  unit-and-fail-closed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source gates and weekly lag semantics
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -v
+      - name: Verify no unsupported original-data claim
+        run: |
+          python studies/stage_reversal_acoustic/src/stage_acoustic_screen.py --out /tmp/readiness.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/readiness.json'))
+          assert p['status']=='NOT_ESTIMABLE'
+          assert p['n_original_rows_analyzed']==0
+          PY

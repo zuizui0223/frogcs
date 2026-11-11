@@ -1,0 +1,37 @@
+name: FrogID original 2018-19 source audit
+on:
+  push:
+    branches:
+      - study/stage-reversal-acoustic-macro-20261025
+    paths:
+      - 'studies/stage_reversal_acoustic/src/reproduce_gbif_frogid_coarse.py'
+      - 'studies/stage_reversal_acoustic/results/FROGID_ANAX_COARSE_WEEKLY_REAL_2018_2019_V1.json'
+      - '.github/workflows/frogid_original_weekly_source_audit.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/src/reproduce_gbif_frogid_coarse.py'
+      - 'studies/stage_reversal_acoustic/results/FROGID_ANAX_COARSE_WEEKLY_REAL_2018_2019_V1.json'
+      - '.github/workflows/frogid_original_weekly_source_audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-original-gbif-public-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce public FrogID 32-week eventID counts
+        run: |
+          python studies/stage_reversal_acoustic/src/reproduce_gbif_frogid_coarse.py \
+            --receipt studies/stage_reversal_acoustic/results/FROGID_ANAX_COARSE_WEEKLY_REAL_2018_2019_V1.json \
+            --out "${{ runner.temp }}/frogid_2018_19_original_aggregate_verification.json" --strict
+      - name: Upload aggregate readback only, not sensitive records
+        uses: actions/upload-artifact@v4
+        with:
+          name: frogid-2018-19-aggregate-source-verification
+          path: ${{ runner.temp }}/frogid_2018_19_original_aggregate_verification.json
+          if-no-files-found: error

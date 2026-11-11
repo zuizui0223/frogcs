@@ -1,0 +1,1226 @@
+{
+  "status": "ORIGINAL_OTAGO_TYPED_STAGE_NETWORK_SOURCE_AUDIT",
+  "as_of": "2026-10-25",
+  "original_publication": "Mouritsen, Poulin, McLaughlin & Thieltges (2011), Food web including metazoan parasites for an intertidal ecosystem in New Zealand",
+  "original_doi": "10.1890/11-0371.1",
+  "original_network": "Otago Harbour, New Zealand intertidal mudflat, not a 2024 field study",
+  "rehosted_code_repo": "OlffLab/2024-LCED-networks",
+  "pinned_commit": "3ce7d7e08ab4c2ccad7143757c98f9ddb496673f",
+  "pinned_source_blob_sha": {
+    "data/Otago_data/Otago_Data_Links.csv": "d2c2765a8a798bbd72029c328302f095f97d095c",
+    "data/Otago_data/Otago_Data_Nodes.csv": "9303b47b997945cd37842df5fd23879fe864d114"
+  },
+  "totals": {
+    "n_source_nodes": 180,
+    "n_source_links": 1924,
+    "source_link_evidence": {
+      "BLANK": 1924
+    },
+    "original_interaction_categories": {
+      "Predation": 1206,
+      "Parasitic Castration": 14,
+      "Macroparasitism": 100,
+      "Commensalism": 1,
+      "Trophically Transmitted Parasitism": 59,
+      "Concomitant Predation on Symbionts": 328,
+      "Trophic Transmission": 104,
+      "Predation on free-living non-feeding stages": 89,
+      "Predation on commensal non-feeding stages": 4,
+      "Parasite intraguild trophic interaction": 19
+    },
+    "n_species_level_stage_resolved_nonself_edges_mixed_types": 404,
+    "n_unique_species_pairs_mixed_types": 338,
+    "n_structural_reciprocal_species_pairs_mixed_types": 50,
+    "n_reciprocal_stage_shift_candidates_mixed_types": 27,
+    "n_mixed_stage_shift_candidates_including_parasite": 27,
+    "n_mixed_stage_shift_candidates_nonparasite": 0,
+    "n_nonparasite_structural_reciprocal_pairs_mixed_types": 12,
+    "n_species_level_stage_resolved_nonself_edges_predation_only": 270,
+    "n_unique_species_pairs_predation_only": 258,
+    "n_structural_reciprocal_species_pairs_predation_only": 12,
+    "n_reciprocal_stage_shift_candidates_predation_only": 0,
+    "n_nonparasite_structural_reciprocal_pairs": 12,
+    "n_nonparasite_stage_shift_candidates": 0,
+    "n_certified_direct_attack_stage_switches": 0
+  },
+  "source_node_stage_summary": {
+    "node_stage_counts": {
+      "Adult": 140,
+      "Parthinitae": 13,
+      "Cercariae": 12,
+      "Metacercariae": 11,
+      "Larvae": 2,
+      "Cystacanth": 2
+    },
+    "organismal_groups": {
+      "Plant": 3,
+      "Zooplankton": 1,
+      "Meiofauna": 1,
+      "Bacteria": 1,
+      "Anthozoan": 3,
+      "Nemertean": 6,
+      "Annelid": 40,
+      "Cumacean": 3,
+      "Tanaid": 1,
+      "Amphipod": 10,
+      "Isopod": 3,
+      "Burrowing Shrimp": 2,
+      "Crab": 5,
+      "Snail": 11,
+      "Bivalve": 7,
+      "Phronoid": 1,
+      "Leptostracan": 1,
+      "Holothuroidean": 1,
+      "Fish": 5,
+      "Elasmobranch": 2,
+      "Bird": 17,
+      "Trematode": 47,
+      "Nematode": 4,
+      "Acanthocephalan": 4,
+      "Copepod": 1
+    }
+  },
+  "mixed_interaction_type_reciprocity": [
+    {
+      "pair": "Anas platyrhynchos::Curtuteria australis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Anas platyrhynchos::Maritrema novaezealandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Anas superciliosa::Curtuteria australis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Ardea novaehollandiae::Maritrema novaezealandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Ardea novaehollandiae::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Ardea novaehollandiae::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Buccinulum pertinax::Hemigrapsus crenulatus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Buccinulum pertinax::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Buccinulum pertinax::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Curtuteria australis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Parasitic Castration"
+      ],
+      "distinct_group_pairs": [
+        "Snail / Trematode",
+        "Trematode / Snail"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Parthinitae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Hemigrapsus crenulatus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Curtuteria australis::Larus bulleri",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Curtuteria australis::Larus novaehollandiae",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Hemigrapsus crenulatus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Maritrema novaezealandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Trematode",
+        "Trematode / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Maritrema novaezealandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Trematode",
+        "Trematode / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus edwardsii::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus edwardsii::Maritrema novaezealandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Trematode",
+        "Trematode / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus edwardsii::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus edwardsii::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Heterophoxus stephenseni::Maritrema novaezealandensis",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Amphipod / Trematode",
+        "Trematode / Amphipod"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Himantopus himantopus::Maritrema novaezealandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Larus bulleri::Maritrema novaezealandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Larus bulleri::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Larus bulleri::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Larus novaehollandiae::Maritrema novaezealandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Larus novaehollandiae::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Larus novaehollandiae::Profilicollis novaezelandensis",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Macrophthalmus hirtipes::Maritrema novaezealandensis",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Trematode",
+        "Trematode / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Macrophthalmus hirtipes::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Cystacanth",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Macrophthalmus hirtipes::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Crab",
+        "Crab / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Cystacanth -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Maritrema novaezealandensis::Phoxocephalus regium",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Amphipod / Trematode",
+        "Trematode / Amphipod"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Maritrema novaezealandensis::Platalea regia",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Maritrema novaezealandensis::Pontharpinia australis",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Trophically Transmitted Parasitism"
+      ],
+      "distinct_group_pairs": [
+        "Amphipod / Trematode",
+        "Trematode / Amphipod"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Metacercariae",
+        "Metacercariae -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Maritrema novaezealandensis::Tadorna variegata",
+      "n_links": 3,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Concomitant Predation on Symbionts",
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae",
+        "Adult -> Parthinitae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Maritrema novaezealandensis::Vanellus miles",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Bird / Trematode",
+        "Trematode / Bird"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Metacercariae"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Phalacrocorax  melanoleucos::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Phalacrocorax  melanoleucos::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Phalacrocorax  varius::Profilicollis antarcticus",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Phalacrocorax  varius::Profilicollis novaezelandensis",
+      "n_links": 2,
+      "structural_stage_difference": true,
+      "includes_parasite_source_group_or_stage": true,
+      "original_link_types": [
+        "Macroparasitism",
+        "Trophic Transmission"
+      ],
+      "distinct_group_pairs": [
+        "Acanthocephalan / Bird",
+        "Bird / Acanthocephalan"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult",
+        "Adult -> Cystacanth"
+      ],
+      "evidence_label_complete": false
+    }
+  ],
+  "predation_only_reciprocity": [
+    {
+      "pair": "Buccinulum pertinax::Hemigrapsus crenulatus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Buccinulum pertinax::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Buccinulum pertinax::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Hemigrapsus crenulatus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Cominella glandiformis::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Snail",
+        "Snail / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Hemigrapsus crenulatus",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Halicarcinus whitei::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Hemigrapsus edwardsii",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus crenulatus::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    },
+    {
+      "pair": "Hemigrapsus edwardsii::Macrophthalmus hirtipes",
+      "n_links": 2,
+      "structural_stage_difference": false,
+      "includes_parasite_source_group_or_stage": false,
+      "original_link_types": [
+        "Predation"
+      ],
+      "distinct_group_pairs": [
+        "Crab / Crab"
+      ],
+      "stage_edge_summaries": [
+        "Adult -> Adult"
+      ],
+      "evidence_label_complete": false
+    }
+  ],
+  "limitations": [
+    "The 27 apparent stage-shift reciprocal pairs in mixed interaction categories all involve helminth parasite stage/host interactions, not free-living ontogenetic predator-prey attack reversal.",
+    "Original 1,924 source links carry 10 separately labelled interaction types. Only 1,206 are exact Predation, and these have 12 reciprocal species pairs but zero developmental stage-shift reciprocal pairs.",
+    "All 1,924 LinkEvidence entries are blank. There is no source-certified directly observed attack direction event in this dataset.",
+    "Counts of species pairs from one network are not independent ecosystems, and stage structure of parasitic life cycles should not be identified with amphibian/odonate metamorphosis."
+  ]
+}

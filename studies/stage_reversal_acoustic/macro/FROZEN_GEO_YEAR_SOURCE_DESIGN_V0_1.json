@@ -1,0 +1,108 @@
+{
+  "version": "0.1",
+  "date": "2026-10-25",
+  "status": "EXPLORATORY_SOURCE_DESIGN_LOCK_AFTER_SMALL_PILOT_BEFORE_36_PANEL_COUNTS",
+  "independent_question": "How does observed seasonal overlap between frog calling records and stage-labelled adult odonate sightings vary over years and latitude within Australia, and when is this observable opportunity inconsistent with trophic-switch/alarm inference?",
+  "target_not_measured": [
+    "predation attack direction timing",
+    "within-individual metamorphosis",
+    "true adult arrival/emergence",
+    "alarm or receiver fear",
+    "calling absence",
+    "true occupancy or density"
+  ],
+  "latitude_bands": [
+    [
+      -44,
+      -38
+    ],
+    [
+      -38,
+      -32
+    ],
+    [
+      -32,
+      -26
+    ],
+    [
+      -26,
+      -20
+    ],
+    [
+      -20,
+      -14
+    ],
+    [
+      -14,
+      -10
+    ]
+  ],
+  "years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "months": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "source_streams": [
+    {
+      "label": "FrogID_positive_species_occurrence",
+      "gbif_datasetKey": "47c9fee2-619a-481c-a114-386bc4748256",
+      "taxon": "Anura",
+      "note": "All documented frog calls; species occurrence rows not distinct recordings and not submitted negatives"
+    },
+    {
+      "label": "Odonata_stage_Adult",
+      "taxonKey": 789,
+      "lifeStage": "Adult",
+      "country": "AU",
+      "note": "Verified explicitly tagged adult odonates, a subset of all records"
+    },
+    {
+      "label": "Odonata_all_life_stage_states",
+      "taxonKey": 789,
+      "country": "AU",
+      "note": "Sensitivity for the missingness/annotation bias of Adult label"
+    }
+  ],
+  "source_api": "https://api.gbif.org/v1/occurrence/search?limit=0&facet=month&facetLimit=12; use country=AU for Odonata, datasetKey for FrogID, year and lat band",
+  "normalization": "p_{g,b,y,m}=n_{g,b,y,m}/sum_m n_{g,b,y,m} for g group. This is within-source seasonal observation composition, not an absolute ecological probability.",
+  "primary_stat": "overlap_coefficient=sum_{m=1}^{12} min(p_frog,p_odonata_adult), 0..1",
+  "secondary_stats": [
+    "peak month",
+    "circular mean month and circular concentration R",
+    "rotational alignment relative to all 12 integer monthly rotations of one vector"
+  ],
+  "eligibility": {
+    "frog_positive_species_rows_min": 100,
+    "odonata_explicit_adult_rows_min": 30,
+    "odonata_all_rows_min": 100,
+    "nonzero_months_in_both_min": 4
+  },
+  "significance_policy": "Original source exploratory; no confirmatory stage reversal or acoustic warning; do not pool 36 correlated cell-year units as independent populations.",
+  "max_claim": "source observation-level seasonal phase/overlap heterogeneity across Australia; possible ecological timing hypothesis only",
+  "missingness_contraints": "Do not replace unknown lifeStage with adult; all odonate records sensitivity only. No co-location to specific wetland. E.g. early source feasibility shows AU Odonata 147911 total (2018–24), Adult 19999, nymph105, Larva3; AU Anura 1378754 total, Larva88, Egg20. Species-specific lifeStage data extremely thin.",
+  "sources": [
+    "https://doi.org/10.15468/wazqft",
+    "https://www.gbif.org",
+    "https://doi.org/10.1002/ecy.4108",
+    "https://doi.org/10.1093/beheco/arae014",
+    "https://doi.org/10.5061/dryad.31zcrjdzw"
+  ],
+  "preregistered": "The six band×six year analysis grid and thresholds are defined before all 36 original readouts; a small 2019 south and 2020 north feasibility pilot was previously read."
+}

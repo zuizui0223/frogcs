@@ -1,0 +1,48 @@
+{
+  "source_study": "Beranek et al. 2022, Factors influencing persistence of a threatened amphibian in restored wetlands despite severe population decline during climate change driven weather extremes",
+  "source_doi": "10.1007/s10531-022-02387-9",
+  "site": "Kooragang Island, Hunter River estuary, NSW, Australia",
+  "source_nine_constructed_wetlands": {
+    "permanent": [
+      "1B",
+      "3A"
+    ],
+    "ephemeral": [
+      "1A",
+      "2A",
+      "2B",
+      "2C",
+      "4A",
+      "4B",
+      "4C"
+    ]
+  },
+  "relation_to_2023_spreadsheet": "LITERAL_CODE_MATCH_ONLY; not verified physical wetland-ID crosswalk for other repeated codes",
+  "original_2018_2019_xlsx_sha256": "25fabdd0df0d8b679ff23033abbb9fc175067c835f1bd1ef41a5fc4890360c74",
+  "published_nine_2018_2019_original_source_subset": {
+    "counted_survey_rows": 230,
+    "positive_visit_rows": 40,
+    "emergence_counts": 189,
+    "permanent_rows": 51,
+    "permanent_emergence": 49,
+    "ephemeral_rows": 179,
+    "ephemeral_emergence": 140
+  },
+  "out_of_published_nine": {
+    "14A": {
+      "numeric_survey_rows": 25,
+      "emergence": 0
+    },
+    "14B": {
+      "numeric_survey_rows": 26,
+      "emergence": 44
+    },
+    "other_16_labels": {
+      "numeric_survey_rows": 17,
+      "emergence": 0
+    }
+  },
+  "verification_status": "EXACT_SOURCE_NAME_MATCH_AND_AGGREGATION_PASS; physical equivalence of 14A/14B to published sites UNKNOWN",
+  "inferential_boundary": "9 wetland codes are named, not 9 independent experimental replicates or standardized larval abundance; no wetland-resolved predation observations",
+  "source_precision": "locations at sensitive threatened frog study site; do not infer or export coordinates from wetland codes"
+}

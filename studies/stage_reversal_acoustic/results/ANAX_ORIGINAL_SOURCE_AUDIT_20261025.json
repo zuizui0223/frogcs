@@ -1,0 +1,118 @@
+{
+  "version": "0.1",
+  "date": "2026-10-25",
+  "evidence_status": "ORIGINAL_UPLOADED_XLSX_REANALYSED_SOURCE_LEVEL_ONLY",
+  "source_original": "Anax_emergence.xlsx",
+  "source_doi": "10.17632/9swstxknpz.1",
+  "paper_doi": "10.1002/ecy.4108",
+  "original_sha256": "25fabdd0df0d8b679ff23033abbb9fc175067c835f1bd1ef41a5fc4890360c74",
+  "source_layout": {
+    "sheet": "Sheet1",
+    "raw_counts": "A:D",
+    "author_monthly_aggregation": "K:M",
+    "range": "A1:M441"
+  },
+  "audit": {
+    "valid_dated_site_surveys": 298,
+    "all_blank_data_rows": 129,
+    "missing_wetland_date_only_rows": 2,
+    "unscorable_2020_NA_rows": 11,
+    "numeric_survey_first": "2018-09-04",
+    "numeric_survey_last": "2019-04-09",
+    "n_distinct_literal_wetland_labels": 27,
+    "n_recurring_labels": 11,
+    "n_recurring_label_survey_rows": 281,
+    "n_extra_label_survey_rows": 17,
+    "n_wetland_labels_with_emergence": 8,
+    "n_positive_visits": 48,
+    "n_surveyed_weeks": 26
+  },
+  "original_monthly_raw_counts_reproduce_all_author_emergence_summaries": true,
+  "original_aggregates": [
+    [
+      "September",
+      47,
+      19,
+      1
+    ],
+    [
+      "October",
+      29,
+      81,
+      3
+    ],
+    [
+      "November",
+      40,
+      81,
+      7
+    ],
+    [
+      "December",
+      46,
+      29,
+      3
+    ],
+    [
+      "January",
+      44,
+      19,
+      0
+    ],
+    [
+      "February",
+      67,
+      4,
+      0
+    ],
+    [
+      "March",
+      14,
+      0,
+      0
+    ],
+    [
+      "April",
+      11,
+      0,
+      0
+    ]
+  ],
+  "original_aggregate_columns": [
+    "month",
+    "date_site_survey_rows",
+    "emergence_individuals",
+    "separate_monthly_predation_entries"
+  ],
+  "total_emergence": 233,
+  "total_monthly_predation": 14,
+  "window": {
+    "first_emergence": "2018-09-25",
+    "last_emergence": "2019-02-12",
+    "first_25_percent_date": "2018-10-16",
+    "median_emergence_date": "2018-11-01",
+    "last_75_percent_date": "2018-11-14",
+    "peak_week_start": "2018-10-29",
+    "peak_week_count": 62,
+    "oct_nov_total": 162,
+    "oct_nov_emergence_fraction": 0.6952789699570815,
+    "oct_nov_predation_entries": 10
+  },
+  "status_of_monthly_predation_period": "NOT_EXPLICITLY_STATED_IN_RAW_K_M_COLUMNS;DO_NOT_ASSIGN_TO_DATE_SITE_ROWS",
+  "diagnostics": [
+    "Do not treat 11 recurring workbook codes as the paper's nine independent wetlands without a physical crosswalk.",
+    "Paper mentions 2016–2020 fieldwork; numeric dated XLSX survey rows are restricted to 2018–2019 season.",
+    "The published prose's seasonal/emergence descriptions and predation monthly labels may not exactly correspond to workbook A:D / K:M. No post-hoc correction.",
+    "Author predation entries are month-only and cannot be matched to visits, attacks, animal behaviour or stage/age.",
+    "No same-recording FrogID presence-absence opportunities, acoustic signals or receiver response, no dated frog egg/tadpole stage series."
+  ],
+  "inferential_status": {
+    "emergence_phenology": "DESCRIPTIVE_VERIFIED",
+    "development_stage_reversal_date": "NOT_IDENTIFIABLE",
+    "acoustic_predictive_lead": "NOT_ESTIMABLE",
+    "receiver_warning_response": "NOT_ESTIMABLE"
+  },
+  "redistributes_raw_original_data": false,
+  "local_analysis_deliverable": "Anax_emergence_reanalysis.xlsx in originating ChatGPT conversation",
+  "independent_reproduction": "python studies/stage_reversal_acoustic/src/audit_anax_original_xlsx.py --source /local/path/Anax_emergence.xlsx --output /local/path/anax_audit.json"
+}

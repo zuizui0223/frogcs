@@ -1,0 +1,39 @@
+name: ONTO-TIME Australian stage-annotation and era robustness
+on:
+  push:
+    branches: [study/stage-reversal-acoustic-macro-20261025]
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/analyze_au_phase_annotation_era_sensitivity.py'
+      - 'studies/stage_reversal_acoustic/macro/results/AU_36_PANEL_POSTHOC_STAGE_LABEL_AND_ERA_ROBUSTNESS_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_au_phase_annotation_era_robustness.py'
+      - '.github/workflows/onto_time_au_robustness.yml'
+  pull_request:
+    paths:
+      - 'studies/stage_reversal_acoustic/macro/analyze_au_phase_annotation_era_sensitivity.py'
+      - 'studies/stage_reversal_acoustic/macro/results/AU_36_PANEL_POSTHOC_STAGE_LABEL_AND_ERA_ROBUSTNESS_V0_1.json'
+      - 'studies/stage_reversal_acoustic/tests/test_au_phase_annotation_era_robustness.py'
+      - '.github/workflows/onto_time_au_robustness.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stage_label_sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Revalidate exact frozen source and honest stage sensitivity
+        run: python -m unittest discover -s studies/stage_reversal_acoustic/tests -p 'test_au_phase_annotation_era_robustness.py' -v
+      - name: Recompute original 108-source stage-label alternate and year splits
+        run: |
+          python studies/stage_reversal_acoustic/macro/analyze_au_phase_annotation_era_sensitivity.py \
+            --out "${{ runner.temp }}/onto_time_au_stage_annotation_sensitivity_readback.json"
+      - name: Retain audited aggregate only
+        uses: actions/upload-artifact@v4
+        with:
+          name: onto-time-au-posthoc-stage-annotation-and-era
+          path: ${{ runner.temp }}/onto_time_au_stage_annotation_sensitivity_readback.json
+          if-no-files-found: error

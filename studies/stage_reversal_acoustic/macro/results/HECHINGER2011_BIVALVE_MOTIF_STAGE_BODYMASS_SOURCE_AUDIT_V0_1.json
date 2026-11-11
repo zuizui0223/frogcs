@@ -1,0 +1,55 @@
+{
+  "status": "HECHINGER_BIVALVE_PREDATION_STAGE_SIZE_ASSUMPTION_AUDIT",
+  "source": {
+    "repo": "globalbioticinteractions/hechinger2011",
+    "commit": "28e6836db3fe18d17e029187971d94e9af8bf9d1",
+    "inputs": {
+      "links_blob": "7defe6a366a2efb8fe738df8f51671d41328cce7",
+      "nodes_blob": "7d4fc3a6707fb72fd90b0b146209e0f5b86851f6"
+    },
+    "stage_network_snapshot": "studies/stage_reversal_acoustic/macro/results/HECHINGER2011_THREE_ESTUARY_ORIGINAL_TYPED_STAGE_V0_1.json"
+  },
+  "as_of": "2026-10-25",
+  "sites": {
+    "CSM": {
+      "n_stage_motif_directed_links": 20,
+      "n_bilateral_species_pairs": 10,
+      "n_distinct_adult_mass_values": 5,
+      "n_distinct_larval_mass_values": 1,
+      "larval_mass_values_g": [
+        0.0000363288
+      ],
+      "larval_mass_estimation_methods": [
+        "approximation"
+      ],
+      "adult_mass_estimation_methods": [
+        "population"
+      ],
+      "median_log10_mass_ratio": 5.855954,
+      "min_log10_mass_ratio": 5.257282,
+      "max_log10_mass_ratio": 6.624417,
+      "note": "Mass ratios describe source-assigned node sizes; shared larval size is an approximation, not independently measured for each link or proof of predation."
+    },
+    "EPB": {
+      "n_stage_motif_directed_links": 20,
+      "n_bilateral_species_pairs": 10,
+      "n_distinct_adult_mass_values": 5,
+      "n_distinct_larval_mass_values": 1,
+      "larval_mass_values_g": [
+        0.0000363288
+      ],
+      "larval_mass_estimation_methods": [
+        "approximation"
+      ],
+      "adult_mass_estimation_methods": [
+        "population"
+      ],
+      "median_log10_mass_ratio": 5.127282,
+      "min_log10_mass_ratio": 3.599634,
+      "max_log10_mass_ratio": 5.393117,
+      "note": "Mass ratios describe source-assigned node sizes; shared larval size is an approximation, not independently measured for each link or proof of predation."
+    }
+  },
+  "source_quality_claim": "All 40 directed bivalve adult→larva links composing 20 pair×site reciprocal motifs use source-assigned larval size 0.0000363288g, method approximation, not direct measured larval mass or recorded attack.",
+  "role_reversal_claim": "SIZE_CANDIDATE_ONLY_NO_DIRECT_PREDATION_RATE"
+}
