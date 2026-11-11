@@ -16,7 +16,7 @@ OUT=ROOT/'research/results/frog_arrival_20261109'
 CALENDARS=[(x,0,0) for x in (0,20,40,60,71,78,84)]+[(78,78,0),(78,0,78),(78,78,78)]
 
 @njit
-def vertex(row,v,ssource,dsource,fa,sa,sdur,da,water):
+def run_vertex(row,v,ssource,dsource,fa,sa,sdur,da,water,pulse):
     cs,cd,cds,csd,surv,timing,support,dsupport,esd,eds,reverse,litter,cue,order,gate,attack,rho,conv,strength=row
     dfactor=np.exp(v*strength*(-(1.5-order)*cd+.8*support))
     dsfactor=np.exp(v*strength*.8*(dsupport-cds))
@@ -39,14 +39,17 @@ def vertex(row,v,ssource,dsource,fa,sa,sdur,da,water):
                          .5*.025*attack*ds*dsfactor*eds*(S and D),.5*.020*attack*sg*sdfactor*esd*(S and D),
                          .5*.06*attack*reverse*(E and t>=fa+45),.5*failure*E,D))
     Bf=Bs=Bd=1.; prevf=prevs=0.; meanf=hsum=dsum=0.
+    emergence_end=next_density=next_hazard=0.0
     for year in range(80):
+        # A pulse changes only year 79, after 78 identical reverse-off seasons.
+        active_reverse = 1 if pulse < 0 else int(year == 78 and pulse == 1)
         f,s,d=Bf,Bs,Bd;hs=hd=0.
         for a,b,c,e,rev,fail,D in schedule:
             sf=a*s/(1.+cue*d*D)
             df=b*d
             if litter:df*=((1-v)*2/(1+f)+v*2*f/(1+f*f))
             ds=c*d; sd=e*s
-            dh=sd+rev*f+fail
+            dh=sd+active_reverse*rev*f+fail
             if sf+df: f*=np.exp(-sf-df)
             if ds:s*=np.exp(-ds)
             if dh:d*=np.exp(-dh)
@@ -58,8 +61,18 @@ def vertex(row,v,ssource,dsource,fa,sa,sdur,da,water):
         Bf=.4*Bf+rho*conv*.8*prevf/(1+prevf)+(1-rho)*.6
         Bs=.5*Bs+rho*conv*.8*prevs/(1+prevs)+(1-rho)*.5*ssource
         Bd=rho*conv*d/(1+d)+(1-rho)*dsource
+        if year == 78:
+            emergence_end=d
+            next_density=Bd
+        if year == 79:
+            next_hazard=hd
         prevf,prevs=f,s
-    return meanf,hsum,dsum
+    return meanf,hsum,dsum,emergence_end,next_density,next_hazard
+
+@njit
+def vertex(row,v,ssource,dsource,fa,sa,sdur,da,water):
+    values=run_vertex(row,v,ssource,dsource,fa,sa,sdur,da,water,-1)
+    return values[0],values[1],values[2]
 
 @njit(parallel=True)
 def batch(parameters,stages,corners,f_offset,s_offset,d_offset,water):

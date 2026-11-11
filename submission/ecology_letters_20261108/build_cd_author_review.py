@@ -124,6 +124,11 @@ def build():
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
     datasets = {
+        "reverse_pulse_20261111": [
+            ("figure_s12.png", "figures/Supplementary_Figure_S12.png"),
+            *((name, f"tables/reverse_pulse_{name}") for name in
+              ("calendar_summary.csv", "overlap_summary.csv", "pairs.csv.gz")),
+        ],
         "joint_density_history_20261111": [
             ("figure_s11.png", "figures/Supplementary_Figure_S11.png"),
             *((name, f"tables/carryover_{name}") for name in (
