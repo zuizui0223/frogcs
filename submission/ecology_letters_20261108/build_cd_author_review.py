@@ -124,6 +124,12 @@ def build():
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
     datasets = {
+        "joint_density_history_20261111": [
+            ("figure_s11.png", "figures/Supplementary_Figure_S11.png"),
+            *((name, f"tables/carryover_{name}") for name in (
+                "high_minus_low_odonate.csv", "interaction_by_vegetation.csv",
+                "interaction_summary.csv", "annual_account_by_draw.csv.gz")),
+        ],
         "forest_use_wetland_species_20261111": [
             ("figure_s10.png", "figures/Supplementary_Figure_S10.png"),
             ("forest_traits_44_species.csv", "tables/Table_S10a_species_habitat.csv"),
@@ -213,7 +219,7 @@ def build():
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "supplementary_figures":10,"main_figures":3,"SI_sections":22,
+        "supplementary_figures":11,"main_figures":3,"SI_sections":22,
         "literature_registry_entries":35,
         "main_manuscript_references_including_USGS_builder":36,
         "research_audit_only_reference_entries":0,
