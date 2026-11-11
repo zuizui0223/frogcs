@@ -83,7 +83,7 @@ jobs:
           assert (root/'_cd_review_bundle/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md').is_file()
           assert a['original_main_figure_1_and_2_bytes_unchanged']
           assert a['original_R4_supplementary_figure_bytes_unchanged']
-          assert a['stage_B_sources_in_SI_only'] and not a['tadpole_birth_directly_observed_from_calls']
+          assert a['field_followup_reported_in_main_and_S22a'] and not a['tadpole_birth_directly_observed_from_calls']
           assert a['original_scientific_simulations_rerun']==0
           assert not a['mechanism_identified_in_field']
           assert not a['journal_submitted'] and not a['project_archive_doi_verified']
