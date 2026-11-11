@@ -224,7 +224,7 @@ def build():
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "supplementary_figures":11,"main_figures":3,"SI_sections":22,
+        "supplementary_figures":len(list(figs.glob("Supplementary_Figure_S*.png"))),"main_figures":3,"SI_sections":22,
         "literature_registry_entries":35,
         "main_manuscript_references_including_USGS_builder":36,
         "research_audit_only_reference_entries":0,

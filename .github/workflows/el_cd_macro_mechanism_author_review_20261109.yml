@@ -67,7 +67,7 @@ jobs:
           assert old['independently_recomputed_numerical_claims']==44
           assert a['status']=='CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY'
           assert 3000<=a['scientific_main_words']<=5000 and a['abstract_words']<=150
-          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==11
+          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==12
           assert a['literature_registry_entries']==35 and a['research_audit_only_reference_entries']==0
           assert a['main_manuscript_references_including_USGS_builder']==36
           assert a['primary_literature_audit_included'] is True
