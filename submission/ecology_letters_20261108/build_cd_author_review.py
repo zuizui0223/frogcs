@@ -124,6 +124,12 @@ def build():
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
     datasets = {
+        "forest_use_wetland_species_20261111": [
+            ("figure_s10.png", "figures/Supplementary_Figure_S10.png"),
+            ("forest_traits_44_species.csv", "tables/Table_S10a_species_habitat.csv"),
+            ("forest_traits_44_results.csv", "tables/Table_S10b_habitat_trends.csv"),
+            ("species.csv", "tables/species_wetland_intervals.csv"),
+        ],
         "annual_nlcd_wetlands_20261111": [("figure_s9.png", "figures/Supplementary_Figure_S9.png"), ("coefficients.csv", "tables/annual_nlcd_wetland_coefficients.csv")],
         "sdm_flooded_omission_20261111": [("coefficients.csv", "tables/sdm_flooded_omission.csv")],
         "call_to_offspring_20261111": [
@@ -206,7 +212,7 @@ def build():
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "supplementary_figures":9,"main_figures":3,"SI_sections":22,
+        "supplementary_figures":10,"main_figures":3,"SI_sections":22,
         "literature_registry_entries":35,
         "main_manuscript_references_including_USGS_builder":36,
         "research_audit_only_reference_entries":0,
