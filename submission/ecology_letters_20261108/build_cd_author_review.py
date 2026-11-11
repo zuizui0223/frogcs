@@ -53,7 +53,7 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "647 canonical structures versus 712" not in main.split("## Introduction",1)[0]
     assert "Supplementary Methods S20 and S22" in main and "S20, S22" in main
     assert "S21" in main and "Supplementary Methods S21." in si
-    for token in ["−0.166", "−0.087", "794 (3.97%)",
+    for token in ["−0.171", "−0.086", "+0.062", "+0.042", "794 (3.97%)",
                   "2.705", "2.754", "124", "0.1163", "0.1864"]:
         assert token in main, token
     scientific = main.split("## Evidence, reproducibility and status",1)[0]
@@ -112,7 +112,7 @@ def build():
     ]
     review_links = {
         MAIN.name: "Letter_CD_MAIN_AUTHOR_REVIEW.md",
-        "figures/Figure1_Observed_ThirdGuild_AcousticAssociation.png": "figures/Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png",
+        "figures/Figure1_Primary_Acoustic_Interactions.png": "figures/Figure1_Primary_Acoustic_Interactions.png",
         "figures/Figure2_InteractionSignature_VsFrogAbundance.png": "figures/Figure2_D_VegetationMechanism_ORIGINAL.png",
         "figures/Figure4_GenuineFinitePopulation_R4.png": "figures/Supplementary_Figure_S5_R4_ORIGINAL.png",
     }
@@ -131,7 +131,7 @@ def build():
             ("species.csv", "tables/species_wetland_intervals.csv"),
         ],
         "annual_nlcd_wetlands_20261111": [("figure_s9.png", "figures/Supplementary_Figure_S9.png"), ("coefficients.csv", "tables/annual_nlcd_wetland_coefficients.csv")],
-        "sdm_flooded_omission_20261111": [("coefficients.csv", "tables/sdm_flooded_omission.csv")],
+        "sdm_flooded_omission_20261111": [("coefficients.csv", "tables/sdm_flooded_omission.csv"), ("uniform_auc_by_fold.csv", "tables/uniform_auc_by_fold.csv")],
         "call_to_offspring_20261111": [
             (name, f"tables/{name}") for name in ('inbo_adjusted.csv', 'inbo_newt_interaction.csv', 'inbo_summary.csv', 'usgs_species_summary.csv', 'usgs_summary.csv')
         ],
@@ -178,10 +178,11 @@ def build():
 
     figs=OUT/"figures"
     figs.mkdir(parents=True,exist_ok=True)
-    originalC=SRCFIG/"Figure1_Observed_ThirdGuild_AcousticAssociation.png"
+    (figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png").unlink(missing_ok=True)
+    originalC=SRCFIG/"Figure1_Primary_Acoustic_Interactions.png"
     originalD=SRCFIG/"Figure2_InteractionSignature_VsFrogAbundance.png"
     originalR4=SRCFIG/"Figure4_GenuineFinitePopulation_R4.png"
-    shutil.copyfile(originalC,figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png")
+    shutil.copyfile(originalC,figs/"Figure1_Primary_Acoustic_Interactions.png")
     shutil.copyfile(originalD,figs/"Figure2_D_VegetationMechanism_ORIGINAL.png")
     shutil.copyfile(originalR4,figs/"Supplementary_Figure_S5_R4_ORIGINAL.png")
 
@@ -192,7 +193,7 @@ def build():
     for figure_link in re.findall(r"\]\((figures/[^)]+\.png)\)", si):
         assert (OUT / figure_link).is_file(), figure_link
     assert len(list(figs.glob("Figure*.png")))==3
-    assert sha(originalC)==sha(figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png")
+    assert sha(originalC)==sha(figs/"Figure1_Primary_Acoustic_Interactions.png")
     assert sha(originalD)==sha(figs/"Figure2_D_VegetationMechanism_ORIGINAL.png")
     assert sha(originalR4)==sha(figs/"Supplementary_Figure_S5_R4_ORIGINAL.png")
 
@@ -217,7 +218,7 @@ def build():
         "main_manuscript_references_including_USGS_builder":36,
         "research_audit_only_reference_entries":0,
         "primary_literature_audit_included":True,
-        "original_main_figure_1_and_2_bytes_unchanged":True,
+        "primary_figure_1_and_original_figure_2_match_source":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
         "field_followup_reported_in_main_and_S22a":True,
         "tadpole_birth_directly_observed_from_calls":False,

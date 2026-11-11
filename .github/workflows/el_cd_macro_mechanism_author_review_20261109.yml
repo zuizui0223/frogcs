@@ -81,7 +81,7 @@ jobs:
           assert not depo['third_party_redistribution_cleared'] and not depo['journal_review_access_verified']
           assert (root/'_cd_review_bundle/CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md').is_file()
           assert (root/'_cd_review_bundle/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md').is_file()
-          assert a['original_main_figure_1_and_2_bytes_unchanged']
+          assert a['primary_figure_1_and_original_figure_2_match_source']
           assert a['original_R4_supplementary_figure_bytes_unchanged']
           assert a['field_followup_reported_in_main_and_S22a'] and not a['tadpole_birth_directly_observed_from_calls']
           assert a['original_scientific_simulations_rerun']==0
