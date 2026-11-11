@@ -124,6 +124,7 @@ def build():
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
     datasets = {
+        "sdm_flooded_omission_20261111": [("coefficients.csv", "tables/sdm_flooded_omission.csv")],
         "call_to_offspring_20261111": [
             (name, f"tables/{name}") for name in ('inbo_adjusted.csv', 'inbo_newt_interaction.csv', 'inbo_summary.csv', 'usgs_species_summary.csv', 'usgs_summary.csv')
         ],
