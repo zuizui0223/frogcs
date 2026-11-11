@@ -2,16 +2,21 @@ name: EL C macro observation D stage-foodweb mechanisms (authors only)
 
 on:
   push:
-    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109, editorial/chorus-vegetation-revision-20261109]
+    branches: [editorial/ecology-letters-cd-breeding-proxy-20261109, editorial/chorus-vegetation-revision-20261109, editorial/el-primary-literature-novelty-20261109]
     paths:
       - 'editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md'
       - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.*'
+      - 'editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md'
       - 'submission/ecology_letters_20261108/build_cd_author_review.py'
       - 'submission/ecology_letters_20261108/COVER_LETTER_CD_AUTHOR_REVIEW.md'
       - 'submission/ecology_letters_20261108/TITLE_PAGE_CD_AUTHOR_REVIEW.md'
       - 'submission/ecology_letters_20261108/COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md'
       - 'submission/ecology_letters_20261108/EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md'
       - 'submission/ecology_letters_20261108/NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md'
+      - 'submission/ecology_letters_20261108/CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md'
+      - 'submission/ecology_letters_20261108/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md'
+      - 'submission/ecology_letters_20261108/audit_el_archive_inputs.py'
       - '.github/workflows/el_cd_macro_mechanism_author_review_20261109.yml'
   workflow_dispatch:
 
@@ -46,6 +51,10 @@ jobs:
             --out submission/ecology_letters_20261108/_cd_legacy_44QA
       - name: Build publication Word candidate and original C source figure
         run: python -u submission/ecology_letters_20261108/build_cd_author_review.py
+      - name: Audit original source file existence and SHA256 (not a data release)
+        run: |
+          python -u submission/ecology_letters_20261108/audit_el_archive_inputs.py \
+            --out submission/ecology_letters_20261108/_cd_review_bundle/DOI_ARCHIVE_INPUT_AVAILABILITY_RECEIPT.json
       - name: Verify two biological contributions, not tadpole births from calls
         run: |
           python - <<'PY'
@@ -58,10 +67,23 @@ jobs:
           assert old['independently_recomputed_numerical_claims']==44
           assert a['status']=='CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY'
           assert 3000<=a['scientific_main_words']<=5000 and a['abstract_words']<=150
-          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==8
-          assert a['original_main_figure_1_and_2_bytes_unchanged']
+          assert a['main_figures']==3 and a['SI_sections']==22 and a['supplementary_figures']==12
+          assert a['literature_registry_entries']==38 and a['research_audit_only_reference_entries']==0
+          assert a['main_manuscript_references_including_USGS_builder']==39
+          assert a['primary_literature_audit_included'] is True
+          assert (root/'_cd_review_bundle/PRIMARY_LITERATURE_NOVELTY_AUDIT_20261109.md').is_file()
+          assert (root/'_cd_review_bundle/VERIFIED_REFERENCES_20261109.bib').is_file()
+          depo=json.loads((root/'_cd_review_bundle/DOI_ARCHIVE_INPUT_AVAILABILITY_RECEIPT.json').read_text())
+          assert depo['status']=='SOURCE_INPUT_EXISTENCE_HASH_AUDITED_NOT_DOI_ARCHIVED'
+          assert depo['required_paths']==depo['present_paths'] and depo['required_paths']>=35
+          assert all(len(f['sha256'])==64 for f in depo['files'])
+          assert not depo['complete_archive_ready'] and not depo['external_archive_DOI_registered']
+          assert not depo['third_party_redistribution_cleared'] and not depo['journal_review_access_verified']
+          assert (root/'_cd_review_bundle/CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md').is_file()
+          assert (root/'_cd_review_bundle/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md').is_file()
+          assert a['primary_figure_1_and_original_figure_2_match_source']
           assert a['original_R4_supplementary_figure_bytes_unchanged']
-          assert a['stage_B_sources_in_SI_only'] and not a['tadpole_birth_directly_observed_from_calls']
+          assert a['field_followup_reported_in_main_and_S22a'] and not a['tadpole_birth_directly_observed_from_calls']
           assert a['original_scientific_simulations_rerun']==0
           assert not a['mechanism_identified_in_field']
           assert not a['journal_submitted'] and not a['project_archive_doi_verified']

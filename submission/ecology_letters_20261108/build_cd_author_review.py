@@ -11,6 +11,8 @@ OUT = PREP / "_cd_review_bundle"
 MAIN = ROOT / "editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md"
 SI = ROOT / "editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md"
 REFS = ROOT / "editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.md"
+BIB = ROOT / "editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.bib"
+NOVELTY = ROOT / "editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md"
 COVER = PREP / "COVER_LETTER_CD_AUTHOR_REVIEW.md"
 TITLE = PREP / "TITLE_PAGE_CD_AUTHOR_REVIEW.md"
 SRCFIG = ROOT / "editorial/figures"
@@ -18,6 +20,8 @@ ADMIN = [
     PREP / "COAUTHOR_REVIEW_AND_SUBMISSION_APPROVAL_REQUEST.md",
     PREP / "EL_OFFICIAL_REQUIREMENTS_AND_ARCHIVE_GATE_20261108.md",
     PREP / "NOVELTY_AND_REVIEWER_AUTHOR_CHECK.md",
+    PREP / "CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md",
+    PREP / "DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md",
 ]
 
 def sha(p: Path) -> str:
@@ -31,6 +35,7 @@ def verify() -> tuple[str, str, str, int, int]:
     body = main.split("## Introduction\n",1)[1].split("## Figure legends",1)[0]
     aw, mw = len(abs_text.split()), len(body.split())
     assert 0 < aw <= 150 and 3000 <= mw <= 5000, (aw,mw)
+    assert "Longer overlap with salamander larvae" in abs_text
     # All submission-section headings must describe the finding, not internal run IDs.
     assert main.count("### Frog-calling associations vary with caudates and vegetation") == 1
     assert main.count("### Salamander development reverses the demographic effect of vegetation") == 1
@@ -40,15 +45,15 @@ def verify() -> tuple[str, str, str, int, int]:
     assert "## Evidence, reproducibility and status" not in main
     assert "author-review candidate" not in main
     assert "### B. Calls and larval records" not in main
-    assert "tadpole hatching" in main and "not" in main.lower()
-    assert "245 site-years; Brier gain +0.0155" in main
-    assert "5.23% with calls versus 0.97% without" in main
+    assert "Local larval presence, density and seasonal overlap remain unknown" in main
+    assert "S22a. Earlier choruses and subsequent counts" in si
+    assert "Belgian tree frog counts support that interpretation across ponds" in main
     assert "60% to 74% at one fixed setting" in main
-    assert "refuge benefits increased while odonate-support costs diminished" in main
+    assert "shelter contributed a larger benefit and feeding support imposed a smaller cost" in main
     assert "647 canonical structures versus 712" not in main.split("## Introduction",1)[0]
     assert "Supplementary Methods S20 and S22" in main and "S20, S22" in main
     assert "S21" in main and "Supplementary Methods S21." in si
-    for token in ["−0.166", "−0.087", "794 (3.97%)",
+    for token in ["−0.171", "−0.086", "+0.062", "+0.042", "794 (3.97%)",
                   "2.705", "2.754", "124", "0.1163", "0.1864"]:
         assert token in main, token
     scientific = main.split("## Evidence, reproducibility and status",1)[0]
@@ -58,14 +63,47 @@ def verify() -> tuple[str, str, str, int, int]:
     assert all(f"Supplementary Methods S{i}." in si for i in range(1,23))
     assert "## Supplementary Methods S22. Auxiliary biological premise" in si
     assert "Garretson, A." in refs and "Zurell, D." in refs
+    required_literature = [
+        ("Caldwell, J. P.", "10.1007/BF00346253"),
+        ("Wilbur, H. M., & Fauth", "10.1086/285038"),
+        ("Klecka, J.", "10.1007/s00442-014-3007-6"),
+        ("McCoy, M. W.", "10.1111/ele.12005"),
+        ("Baker, R. S.", "10.1111/1365-2656.70083"),
+        ("Urushihara, R.", "10.1111/fwb.70223"),
+    ]
+    for author, doi in required_literature:
+        assert author in refs and doi in refs, (author,doi)
+    ref_block = refs.split("Alford, R. A.", 1)[1].split(
+        "## G7 natural-history accounts", 1)[0]
+    # Count the 38 actual bibliography paragraphs, not journal footnotes.
+    all_refs = "Alford, R. A." + ref_block
+    entries = [p for p in all_refs.strip().split("\n\n") if p.strip()]
+    assert len(entries) == 38, (len(entries), "Reference registry mismatch")
+    bib_keys = re.findall(r"@\w+\{([^,]+),", BIB.read_text(encoding="utf-8"))
+    assert len(bib_keys) == len(set(bib_keys)) == 38
+    assert NOVELTY.is_file()
+    assert (PREP / "CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md").is_file()
+    assert (PREP / "DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md").is_file()
+    assert all(s in main for s in ("Warfe & Barmuta, 2004", "McCoy et al., 2012", "Urushihara & Takatsu, 2026"))
+    assert "Wilbur & Fauth, 1990" in main
+    assert "Klecka & Boukal (2014)" in main
+    assert "Baker et al., 2025" in main
+    assert f"{mw:,} words" in TITLE.read_text(encoding="utf-8")
+    assert f"{aw} words" in TITLE.read_text(encoding="utf-8")
+    assert "**References:** 39" in TITLE.read_text(encoding="utf-8")
     return main, si, refs, aw, mw
 
 def build():
     main, si, refs, aw, mw = verify()
     OUT.mkdir(parents=True, exist_ok=True)
+    # The S4/S5 evidence-to-assumption table cites the full source-verified
+    # registry. Retain these cited papers in the manuscript reference list;
+    # the separate USGS G18 dataset citation is appended by make_main.
     review_main = make_main(
         re.sub(r"(?m)^\*\*C \(observation\) → D \(mechanism\) author-review candidate[^\n]*\n+",
                "",main),refs)
+    final_reference_text = review_main.split("\n## References\n\n",1)[1]
+    assert len([r for r in final_reference_text.strip().split("\n\n") if r.strip()]) == 39
     supplementary_sources = [
         "g6_observation_context_20261106/G6_field_mechanism_context_diagnostic.png",
         "g7_trait_composition_20261106/G7_trait_composition_bridge.png",
@@ -74,7 +112,7 @@ def build():
     ]
     review_links = {
         MAIN.name: "Letter_CD_MAIN_AUTHOR_REVIEW.md",
-        "figures/Figure1_Observed_ThirdGuild_AcousticAssociation.png": "figures/Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png",
+        "figures/Figure1_Primary_Acoustic_Interactions.png": "figures/Figure1_Primary_Acoustic_Interactions.png",
         "figures/Figure2_InteractionSignature_VsFrogAbundance.png": "figures/Figure2_D_VegetationMechanism_ORIGINAL.png",
         "figures/Figure4_GenuineFinitePopulation_R4.png": "figures/Supplementary_Figure_S5_R4_ORIGINAL.png",
     }
@@ -86,6 +124,32 @@ def build():
         assert sha(original) == sha(destination)
         review_links[f"../research/results/{source}"] = f"figures/{destination.name}"
     datasets = {
+        "species_predator_correlations_20261111": [
+            (name, f"tables/{name}") for name in ("breeding_traits_44.csv", "timing_matched_pairs.csv",
+                "timing_trait_contrasts.csv", "shared_site_year_pairs.csv", "shared_site_year_summary.csv")
+        ],
+        "reverse_pulse_20261111": [
+            ("figure_s12.png", "figures/Supplementary_Figure_S12.png"),
+            *((name, f"tables/reverse_pulse_{name}") for name in
+              ("calendar_summary.csv", "overlap_summary.csv", "pairs.csv.gz")),
+        ],
+        "joint_density_history_20261111": [
+            ("figure_s11.png", "figures/Supplementary_Figure_S11.png"),
+            *((name, f"tables/carryover_{name}") for name in (
+                "high_minus_low_odonate.csv", "interaction_by_vegetation.csv",
+                "interaction_summary.csv", "annual_account_by_draw.csv.gz")),
+        ],
+        "forest_use_wetland_species_20261111": [
+            ("figure_s10.png", "figures/Supplementary_Figure_S10.png"),
+            ("forest_traits_44_species.csv", "tables/Table_S10a_species_habitat.csv"),
+            ("forest_traits_44_results.csv", "tables/Table_S10b_habitat_trends.csv"),
+            ("species.csv", "tables/species_wetland_intervals.csv"),
+        ],
+        "annual_nlcd_wetlands_20261111": [("figure_s9.png", "figures/Supplementary_Figure_S9.png"), ("coefficients.csv", "tables/annual_nlcd_wetland_coefficients.csv")],
+        "sdm_flooded_omission_20261111": [("coefficients.csv", "tables/sdm_flooded_omission.csv"), ("uniform_auc_by_fold.csv", "tables/uniform_auc_by_fold.csv")],
+        "call_to_offspring_20261111": [
+            (name, f"tables/{name}") for name in ('inbo_adjusted.csv', 'inbo_newt_interaction.csv', 'inbo_summary.csv', 'usgs_species_summary.csv', 'usgs_summary.csv')
+        ],
         "naamp_species_sensitivity_20261109": [
             ("figS6_species.png", "figures/Supplementary_Figure_S6.png"),
             *[(name, f"tables/{name}") for name in ("interaction_results.csv", "species_support.csv", "detected_route_sensitivity.csv")],
@@ -124,13 +188,16 @@ def build():
         to_docx(OUT/file, OUT/Path(file).with_suffix(".docx").name)
     for file in ADMIN:
         shutil.copyfile(file, OUT/file.name)
+    shutil.copyfile(NOVELTY, OUT / "PRIMARY_LITERATURE_NOVELTY_AUDIT_20261109.md")
+    shutil.copyfile(BIB, OUT / "VERIFIED_REFERENCES_20261109.bib")
 
     figs=OUT/"figures"
     figs.mkdir(parents=True,exist_ok=True)
-    originalC=SRCFIG/"Figure1_Observed_ThirdGuild_AcousticAssociation.png"
+    (figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png").unlink(missing_ok=True)
+    originalC=SRCFIG/"Figure1_Primary_Acoustic_Interactions.png"
     originalD=SRCFIG/"Figure2_InteractionSignature_VsFrogAbundance.png"
     originalR4=SRCFIG/"Figure4_GenuineFinitePopulation_R4.png"
-    shutil.copyfile(originalC,figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png")
+    shutil.copyfile(originalC,figs/"Figure1_Primary_Acoustic_Interactions.png")
     shutil.copyfile(originalD,figs/"Figure2_D_VegetationMechanism_ORIGINAL.png")
     shutil.copyfile(originalR4,figs/"Supplementary_Figure_S5_R4_ORIGINAL.png")
 
@@ -141,15 +208,15 @@ def build():
     for figure_link in re.findall(r"\]\((figures/[^)]+\.png)\)", si):
         assert (OUT / figure_link).is_file(), figure_link
     assert len(list(figs.glob("Figure*.png")))==3
-    assert sha(originalC)==sha(figs/"Figure1_C_ContinentalAcousticAssociations_ORIGINAL.png")
+    assert sha(originalC)==sha(figs/"Figure1_Primary_Acoustic_Interactions.png")
     assert sha(originalD)==sha(figs/"Figure2_D_VegetationMechanism_ORIGINAL.png")
     assert sha(originalR4)==sha(figs/"Supplementary_Figure_S5_R4_ORIGINAL.png")
 
     (OUT/"README_NOT_SUBMITTED.txt").write_text(
         "C = continental adult frog calling associations (not tadpole birth).\n"
         "D = hypothetical food-web mechanisms and within-model population effects.\n"
-        "Independent INBO and USGS call/larva associations are SI-only premises "
-        "(S20, S22); temporal transfer is not robust.\n"
+        "Independent follow-up count and detection results appear in the main text "
+        "with species and site comparisons in S22a.\n"
         "Calling is NOT hatching, counted new tadpoles, recruitment or larval survival. "
         "No observed same-year trophic causality claimed.\n"
         "Mohonk 29/30 and 29/59 and INBO phi=0.262 not original-source verified. "
@@ -157,14 +224,18 @@ def build():
         "Awaiting all coauthors' explicit approval, permissions and actual project DOI. "
         "Never treated as journal submission.\n",
         encoding="utf-8")
-    files=[MAIN,SI,REFS,COVER,TITLE]+ADMIN
+    files=[MAIN,SI,REFS,BIB,NOVELTY,COVER,TITLE]+ADMIN
     receipt={
         "status":"CD_MACRO_MECHANISM_AUTHOR_REVIEW_ONLY",
         "abstract_words":aw,"scientific_main_words":mw,
-        "supplementary_figures":8,"main_figures":3,"SI_sections":22,
-        "original_main_figure_1_and_2_bytes_unchanged":True,
+        "supplementary_figures":len(list(figs.glob("Supplementary_Figure_S*.png"))),"main_figures":3,"SI_sections":22,
+        "literature_registry_entries":38,
+        "main_manuscript_references_including_USGS_builder":39,
+        "research_audit_only_reference_entries":0,
+        "primary_literature_audit_included":True,
+        "primary_figure_1_and_original_figure_2_match_source":True,
         "original_R4_supplementary_figure_bytes_unchanged":True,
-        "stage_B_sources_in_SI_only":True,
+        "field_followup_reported_in_main_and_S22a":True,
         "tadpole_birth_directly_observed_from_calls":False,
         "inbo_phi_0262_source_verified":False,
         "mohonk_29_30_29_59_source_verified":False,
@@ -179,7 +250,7 @@ def build():
         json.dumps(receipt,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("CD_AUTHOR_REVIEW_PACKAGE_PASS",json.dumps({
         "main_words":mw,"abstract_words":aw,"main_figures":3,
-        "SI_sections":22,"no_new_science":True,"not_submitted":True
+        "SI_sections":22,"original_simulations_rerun":0,"not_submitted":True
     }))
 
 if __name__ == "__main__":
