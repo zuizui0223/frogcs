@@ -35,7 +35,7 @@ def verify() -> tuple[str, str, str, int, int]:
     body = main.split("## Introduction\n",1)[1].split("## Figure legends",1)[0]
     aw, mw = len(abs_text.split()), len(body.split())
     assert 0 < aw <= 150 and 3000 <= mw <= 5000, (aw,mw)
-    assert "Longer overlap with salamander larvae" in abs_text
+    assert all(term in abs_text.split(".")[-2] for term in ("offspring", "salamander larvae", "odonate larvae"))
     # All submission-section headings must describe the finding, not internal run IDs.
     assert main.count("### Frog-calling associations vary with caudates and vegetation") == 1
     assert main.count("### Salamander development reverses the demographic effect of vegetation") == 1
