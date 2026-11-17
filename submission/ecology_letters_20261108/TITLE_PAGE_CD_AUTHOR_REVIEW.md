@@ -1,10 +1,10 @@
 # Ecology Letters — C macro observation → D food-web mechanisms (author review)
 
-**Title:** Food webs that reproduce frog–predator association signs need not benefit frogs
+**Title:** Predator timing can reverse the effect of vegetation on offspring in food webs consistent with frog calling patterns
 
 **Article type:** Letter
 
-**Running title:** Food-web patterns versus frog benefit (37 characters)
+**Running title:** Predator timing and tadpole survival (36 characters)
 
 **Authors and approved order:** [VERIFY ALL NAMES]
 
@@ -12,17 +12,17 @@
 
 **Corresponding author name, postal address, telephone, fax if applicable and email:** [VERIFY]
 
-**Abstract:** 144 words
+**Abstract:** 141 words
 
-**Scientific body:** 3,187 words (Introduction–Conclusion, headings included; final source QA to confirm)
+**Scientific body:** 4,273 words (Introduction–Conclusion, headings included; final source QA to confirm)
 
-**Main figures:** 3 (original continental acoustic Figure 1; original vegetation mechanisms Figure 2; source-backed rate/development Figure 3)
+**Main figures:** 3 (primary five-predictor acoustic Figure 1; original vegetation mechanisms Figure 2; source-backed rate/development Figure 3)
 
 **Main tables:** 0
 
 **Supplementary Methods:** S1–S22; supporting acoustic→larval detection evidence in S20/S22; R4 in S6 and Figure S5; R5 in S21
 
-**References:** [VERIFY FINAL WORD FILE COUNT AND SOURCE DOI DETAILS]
+**References:** 39 (38 independently sourced papers/data entries cited in main text or SI, plus the separately appended original USGS data release)
 
 **Keywords:** amphibian calling; caudate guild; dragonfly larvae; conditional associations; ontogeny; vegetation refuge; stage-structured food webs; finite-population persistence
 

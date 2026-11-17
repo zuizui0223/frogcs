@@ -10,7 +10,7 @@ from naamp_species_strong_call_sensitivity import ROOT, read_source
 SPECIES = ['Pseudacris crucifer', 'Acris gryllus']
 SEED = 20261109
 
-def get_panel(raw, sites):
+def get_panel(raw, sites, species=SPECIES):
     visits = pd.read_csv(ROOT / 'research/results/naamp_three_guild_occurrence/full_naamp_history/naamp_completed_site_surveys.csv.gz')
     visits = visits[visits.site.isin(sites.index) & visits.timeout.eq(0)].copy()
     stops = read_source(raw, 'Stops.csv', ['RunID','StopNumber','SiteID'])
@@ -19,11 +19,11 @@ def get_panel(raw, sites):
     visits = visits.merge(stops,on=['site','run'],validate='one_to_many')
     assert len(visits)==63180 and not visits.duplicated(['site','run']).any()
     raw_calls = read_source(raw,'Counts.csv',['RunID','StopNumber','Species','CallingIndex'])
-    calls = raw_calls[raw_calls.Species.isin(SPECIES) & raw_calls.CallingIndex.isin(['1','2','3'])].copy()
+    calls = raw_calls[raw_calls.Species.isin(species) & raw_calls.CallingIndex.isin(['1','2','3'])].copy()
     calls['index'] = calls.CallingIndex.astype(int)
     maxima = calls.groupby(['RunID','StopNumber','Species'])['index'].max().unstack()
-    visits = visits.join(maxima,on=['RunID','StopNumber']); visits[SPECIES]=visits[SPECIES].fillna(0)
-    for sp in SPECIES:
+    visits = visits.join(maxima,on=['RunID','StopNumber']); visits[species]=visits[species].fillna(0)
+    for sp in species:
         from_names=visits.source_taxa.fillna('').str.split('|',regex=False).map(lambda names:sp in names)
         assert np.array_equal(from_names,visits[sp]>0)
     return visits
