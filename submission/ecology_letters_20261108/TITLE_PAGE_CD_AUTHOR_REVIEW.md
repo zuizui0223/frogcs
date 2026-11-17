@@ -1,10 +1,10 @@
 # Ecology Letters — C macro observation → D food-web mechanisms (author review)
 
-**Title:** Food webs that reproduce frog–predator association signs need not benefit frogs
+**Title:** Predator timing can reverse the effect of vegetation on offspring in food webs consistent with frog calling patterns
 
 **Article type:** Letter
 
-**Running title:** Food-web patterns versus frog benefit (37 characters)
+**Running title:** Predator timing and tadpole survival (36 characters)
 
 **Authors and approved order:** [VERIFY ALL NAMES]
 

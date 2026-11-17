@@ -1,6 +1,6 @@
 # 共著者確認依頼｜Ecology Letters 原稿最終版（未投稿）
 
-**対象原稿:** *Food webs that reproduce frog–predator association signs need not benefit frogs*
+**対象原稿:** *Predator timing can reverse the effect of vegetation on offspring in food webs consistent with frog calling patterns*
 
 **版:** 2026-11-09 C→D文献照合版。本文 4,273 語（最終自動QAを優先）、要旨141語、主図候補3点、補足 S1–S22。主結果に関する旧44数値の監査は成功しています。11月9日の種組成・相対発育カレンダー・公開幼生同時検出に関する追加解析は探索的に別記し、今回の年初密度の再生実験は補足S5aに収録しています。
 
@@ -39,7 +39,7 @@
 
 先生方
 
-Ecology Lettersへの投稿を予定している論文「Food webs that reproduce frog–predator association signs need not benefit frogs」の最終確認をお願いしたく、ご連絡いたしました。
+Ecology Lettersへの投稿を予定している論文「Predator timing can reverse the effect of vegetation on offspring in food webs consistent with frog calling patterns」の最終確認をお願いしたく、ご連絡いたしました。
 
 R5までの主解析と11/9追加の探索的感度解析を含め、C（大陸でのコーラス関連）→D（先行研究に根拠を持つ食物網の機構的反事実比較）の論文に整理しました。独立調査の発声と後日の幼生数・変態個体数との関係を本文に要約し、種別と池間・池内の比較を補足S22aに収録しました。本文4,273語、Supplementary Information（S1–S22）、主図候補3点、カバーレター、および30件以上の一次文献・近接研究の監査表をまとめました。主な結論は、食物網が野外に似た相互作用パターンを再現しても、カエル個体群の利益には直結せず、その効果が捕食者の発育条件によって逆転し得ることです。R5は第三の主要結果としてではなく、現存の野外データでは植生機能と捕食者の発育条件を独立に操作・識別できないため、シミュレーションによる反事実比較が必要な理由を示す補足検証として扱っています。
 

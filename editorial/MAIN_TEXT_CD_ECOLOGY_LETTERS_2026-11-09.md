@@ -1,4 +1,4 @@
-# Food webs that reproduce frog–predator association signs need not benefit frogs
+# Predator timing can reverse the effect of vegetation on offspring in food webs consistent with frog calling patterns
 
 ## Abstract
 
