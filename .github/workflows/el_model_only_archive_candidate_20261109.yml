@@ -1,0 +1,71 @@
+name: EL model-only reproducibility pre-deposit (NOT publicly archived)
+
+on:
+  push:
+    branches:
+      - submission/el-model-only-doi-staging-20261109
+    paths:
+      - 'submission/ecology_letters_20261108/build_model_only_archive_candidate.py'
+      - 'editorial/MAIN_TEXT_CD_ECOLOGY_LETTERS_2026-11-09.md'
+      - 'editorial/SUPPLEMENTARY_METHODS_AND_EVIDENCE_R1_R4_2026-11-05.md'
+      - 'editorial/REFERENCES_R1_R4_P1_G6_2026-11-06.*'
+      - 'editorial/EL_PRIMARY_LITERATURE_AND_NOVELTY_AUDIT_2026-11-09.md'
+      - 'submission/ecology_letters_20261108/CLAIM_EVIDENCE_REVIEWER_CHECKLIST_20261109.md'
+      - 'submission/ecology_letters_20261108/DATA_CODE_DOI_ARCHIVE_PREFLIGHT_20261109.md'
+      - 'submission/ecology_letters_20261108/ZENODO_PRIVATE_REVIEW_AND_AUTHOR_ACTIONS_20261109.md'
+      - '.github/workflows/el_model_only_archive_candidate_20261109.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  model-only-rights-partition-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build source-only model result/code archive candidate; no refitting
+        run: |
+          python -u submission/ecology_letters_20261108/build_model_only_archive_candidate.py \
+            --out submission/ecology_letters_20261108/_model_only_stage/EL_MODEL_ONLY_PREDEPOSIT_CANDIDATE.zip \
+            --receipt submission/ecology_letters_20261108/_model_only_stage/EL_MODEL_ONLY_SHA256_SOURCE_RECEIPT.json
+      - name: Reopen ZIP, verify original SHA256 and explicit external gates
+        run: |
+          python - <<'PY'
+          import hashlib,json,zipfile
+          from pathlib import Path
+          p=Path('submission/ecology_letters_20261108/_model_only_stage')
+          ar=p/'EL_MODEL_ONLY_PREDEPOSIT_CANDIDATE.zip'
+          r=json.loads((p/'EL_MODEL_ONLY_SHA256_SOURCE_RECEIPT.json').read_text())
+          assert r['status']=='MODEL_ONLY_PREDEPOSIT_SOURCE_PARTITION_QA_PASS_NOT_PUBLIC_ARCHIVED'
+          assert r['included_files']>35 and r['included_files']==len(r['files'])
+          assert r['selected_code_files']>=10 and r['selected_result_files']>=20
+          assert not r['project_doi_issued'] and not r['public_distribution_authorized']
+          assert not r['third_party_redistribution_cleared']
+          assert not r['site_level_or_coordinate_raw_records_exported']
+          assert r['original_simulations_rerun'] is False
+          assert hashlib.sha256(ar.read_bytes()).hexdigest()==r['archive_sha256']
+          with zipfile.ZipFile(ar) as z:
+              assert z.testzip() is None
+              names=set(z.namelist())
+              for f in r['files']:
+                  rel='SOURCE_FILES/'+f['path']
+                  assert rel in names,rel
+                  assert hashlib.sha256(z.read(rel)).hexdigest()==f['sha256'],rel
+              assert not any('G4_all_4248_site_source_tertile_assignments' in n for n in names)
+              assert not any('/naamp_completed_site_surveys' in n for n in names)
+              assert not any('/primary_site_landscape_context' in n for n in names)
+          print('MODEL_ONLY_PREDEPOSIT_ZIP_INTEGRITY_AND_EXCLUSION_QA_PASS',
+                r['included_files'],r['archive_bytes'],'bytes; DOI NOT ISSUED')
+          PY
+      - name: Upload rights-pending review artifacts, never a public DOI
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecology-letters-model-only-predeposit-source-check-20261109
+          path: submission/ecology_letters_20261108/_model_only_stage/
+          retention-days: 30
+          if-no-files-found: error
